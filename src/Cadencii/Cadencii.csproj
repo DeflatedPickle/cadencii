@@ -135,24 +135,41 @@
     <Compile Include="CommandExecuteRequiredEventHandler.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="ControllerBase.cs" />
-    <Compile Include="dsp\Amplifier.cs" />
-    <Compile Include="dsp\FileWaveReceiver.cs" />
-    <Compile Include="dsp\FileWaveSender.cs" />
-    <Compile Include="dsp\generator\AquesTone2WaveGenerator.cs" />
-    <Compile Include="dsp\generator\AquesToneWaveGenerator.cs" />
-    <Compile Include="dsp\generator\AquesToneWaveGeneratorBase.cs" />
-    <Compile Include="dsp\generator\EmptyWaveGenerator.cs" />
-    <Compile Include="dsp\generator\UtauWaveGenerator.cs" />
-    <Compile Include="dsp\generator\VConnectWaveGenerator.cs" />
-    <Compile Include="dsp\generator\VocaloidWaveGenerator.cs" />
-    <Compile Include="dsp\generator\WaveGenerator.cs" />
-    <Compile Include="dsp\generator\WaveSenderDriver.cs" />
-    <Compile Include="dsp\Mixer.cs" />
-    <Compile Include="dsp\MonitorWaveReceiver.cs" />
-    <Compile Include="dsp\Separator.cs" />
-    <Compile Include="dsp\WaveReceiver.cs" />
-    <Compile Include="dsp\WaveSender.cs" />
-    <Compile Include="dsp\WaveUnit.cs" />
+    <Compile Include="dsp\v1\Amplifier.cs" />
+    <Compile Include="dsp\v1\FileWaveReceiver.cs" />
+    <Compile Include="dsp\v1\FileWaveSender.cs" />
+    <Compile Include="dsp\v1\generator\AquesTone2WaveGenerator.cs" />
+    <Compile Include="dsp\v1\generator\AquesToneWaveGenerator.cs" />
+    <Compile Include="dsp\v1\generator\AquesToneWaveGeneratorBase.cs" />
+    <Compile Include="dsp\v1\generator\EmptyWaveGenerator.cs" />
+    <Compile Include="dsp\v1\generator\UtauWaveGenerator.cs" />
+    <Compile Include="dsp\v1\generator\VConnectWaveGenerator.cs" />
+    <Compile Include="dsp\v1\generator\VocaloidWaveGenerator.cs" />
+    <Compile Include="dsp\v1\generator\WaveGenerator.cs" />
+    <Compile Include="dsp\v1\generator\WaveSenderDriver.cs" />
+    <Compile Include="dsp\v1\Mixer.cs" />
+    <Compile Include="dsp\v1\MonitorWaveReceiver.cs" />
+    <Compile Include="dsp\v1\Separator.cs" />
+    <Compile Include="dsp\v1\WaveReceiver.cs" />
+    <Compile Include="dsp\v1\WaveSender.cs" />
+    <Compile Include="dsp\v1\WaveUnit.cs" />
+    <Compile Include="dsp\v2\AudioOutDevice.cs" />
+    <Compile Include="dsp\v2\AudioUnit.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="dsp\v2\AudioUnitRunner.cs" />
+    <Compile Include="dsp\v2\BusBuffer.cs" />
+    <Compile Include="dsp\v2\FileAudioOutDevice.cs" />
+    <Compile Include="dsp\v2\generator\GeneratorUnit.cs" />
+    <Compile Include="dsp\v2\generator\ISingingSynthesizer.cs" />
+    <Compile Include="dsp\v2\generator\IWaveGenerator.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="dsp\v2\generator\RenderCallback.cs" />
+    <Compile Include="dsp\v2\generator\SingingSynthesizerUnit.cs" />
+    <Compile Include="dsp\v2\Mixer.cs" />
+    <Compile Include="dsp\v2\MonitorAudioOutDevice.cs" />
+    <Compile Include="dsp\v2\RingBuffer.cs" />
     <Compile Include="EditedStateChangedEventHandler.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -223,6 +240,16 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="SequenceConfig.cs" />
+    <Compile Include="synthesizer\AquesTone2Synthesizer.cs" />
+    <Compile Include="synthesizer\AquesToneSynthesizer.cs" />
+    <Compile Include="synthesizer\AquesToneSynthesizerBase.cs" />
+    <Compile Include="synthesizer\UtauSynthesizer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="synthesizer\VConnectSynthesizer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="synthesizer\VocaloidSynthesizer.cs" />
     <Compile Include="SynthesizeWorker.cs" />
     <Compile Include="TestFormWorker.cs" />
     <Compile Include="TrackSelectorSingerDropdownMenuItem.cs">
@@ -306,7 +333,6 @@
     <Compile Include="DefaultVibratoLengthEnum.cs" />
     <Compile Include="DefaultVibratoLengthUtil.cs" />
     <Compile Include="DrawObjectType.cs" />
-    <Compile Include="Matrix2D.cs" />
     <Compile Include="DynaffComparisonContext.cs" />
     <Compile Include="EditedZone.cs" />
     <Compile Include="EditedZoneCommand.cs" />
@@ -465,18 +491,22 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSequenceConfig.resx">
       <DependentUpon>FormSequenceConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormShortcutKeys.resx">
       <DependentUpon>FormShortcutKeys.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVibratoConfig.resx">
       <DependentUpon>FormVibratoConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVibratoPreset.resx">
       <DependentUpon>FormVibratoPreset.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="TrackSelector.resx">
       <DependentUpon>TrackSelector.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ui\dotnet\ExceptionNotifyFormUiImpl.resx">
       <DependentUpon>ExceptionNotifyFormUiImpl.cs</DependentUpon>
