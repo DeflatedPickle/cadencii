@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>cadencii.platform.windows</RootNamespace>
+    <AssemblyName>cadencii.platform.windows</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="core\windows.cs" />
+    <Compile Include="core\wingdi.cs" />
+    <Compile Include="core\winmm.cs" />
+    <Compile Include="media\PlaySound.cs" />
+    <Compile Include="apputil\CursorUtil.cs" />
+    <Compile Include="media\VCM.cs" />
+    <Compile Include="media\AviWriterVcm.cs" />
+    <Compile Include="media\AviWriterVfw.cs" />
+    <Compile Include="media\Util.cs" />
+    <Compile Include="media\VFW.cs" />
+    <Compile Include="media\AviReader.cs" />
+    <Compile Include="media\RawAvi2Writer.cs" />
+    <Compile Include="media\PipedAviWriter.cs" />
+    <Compile Include="media\WavePlay.cs" />
+    <Compile Include="media\MidiInDevice.cs" />
+    <Compile Include="media\MidiOutDevice.cs" />
+    <Compile Include="media\IAviWriter.cs" />
+    <Compile Include="winmmhelp.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="core\" />
+    <Folder Include="media\" />
+    <Folder Include="apputil\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.media\cadencii.media.csproj">
+      <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
+      <Name>cadencii.media</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.core\cadencii.core.csproj">
+      <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
+      <Name>cadencii.core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cadencii.midi\cadencii.midi.csproj">
+      <Project>{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}</Project>
+      <Name>cadencii.midi</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

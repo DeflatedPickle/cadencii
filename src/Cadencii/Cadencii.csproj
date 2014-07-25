@@ -2,9 +2,7 @@
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -16,8 +14,6 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <StartupObject>
-    </StartupObject>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <ManifestCertificateThumbprint>3B7855CA5AB710E8AC0C79D614FD5307A8FDC6F3</ManifestCertificateThumbprint>
     <ManifestKeyFile>keyfile.pfx</ManifestKeyFile>
@@ -26,8 +22,6 @@
     <ApplicationIcon>resources\icon.ico</ApplicationIcon>
     <TargetZone>LocalIntranet</TargetZone>
     <SignAssembly>false</SignAssembly>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <TargetFrameworkProfile />
@@ -58,6 +52,8 @@
     <DefineConstants>DEBUG;__TEMPORALY_DISABLED__USE_OLD_SYNTH_IMPL,ENABLE_PROPERTY, ENABLE_VOCALOID, ENABLE_SCRIPT, ENABLE_MIDI, ENABLE_STRIP_DROPDOWN, ENABLE_AQUESTONE, ENABLE_GENERAL_VST, MONITOR_FPS, CSHARP</DefineConstants>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <DocumentationFile>bin\x86\Debug\Cadencii.XML</DocumentationFile>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -66,8 +62,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <DefineConstants>ENABLE_PROPERTY, ENABLE_VOCALOID, ENABLE_SCRIPT, ENABLE_MOUSEHOVER, ENABLE_MIDI, ENABLE_STRIP_DROPDOWN, ENABLE_AQUESTONE, CSHARP</DefineConstants>
     <Optimize>true</Optimize>
-    <DocumentationFile>
-    </DocumentationFile>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugMinimal|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -77,6 +72,8 @@
     <DocumentationFile>bin\x86\Debug\Cadencii.XML</DocumentationFile>
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
+    <WarningLevel>4</WarningLevel>
+    <Optimize>false</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ReleaseMinimal|x86' ">
     <OutputPath>bin\x86\ReleaseMinimal\</OutputPath>
@@ -86,6 +83,7 @@
     <Optimize>true</Optimize>
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MonoRelease|x86' ">
     <OutputPath>bin\x86\MonoRelease\</OutputPath>
@@ -95,6 +93,7 @@
     <Optimize>true</Optimize>
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -130,52 +129,13 @@
     <Compile Include="CadenciiCommandType.cs" />
     <Compile Include="ClipboardEntry.cs" />
     <Compile Include="ClipboardModel.cs" />
-    <Compile Include="ClockResolution.cs" />
-    <Compile Include="ClockResolutionUtility.cs" />
     <Compile Include="CommandExecuteRequiredEventHandler.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="ControllerBase.cs" />
-    <Compile Include="dsp\v1\Amplifier.cs" />
-    <Compile Include="dsp\v1\FileWaveReceiver.cs" />
-    <Compile Include="dsp\v1\FileWaveSender.cs" />
-    <Compile Include="dsp\v1\generator\AquesTone2WaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\AquesToneWaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\AquesToneWaveGeneratorBase.cs" />
-    <Compile Include="dsp\v1\generator\EmptyWaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\UtauWaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\VConnectWaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\VocaloidWaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\WaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\WaveSenderDriver.cs" />
-    <Compile Include="dsp\v1\Mixer.cs" />
-    <Compile Include="dsp\v1\MonitorWaveReceiver.cs" />
-    <Compile Include="dsp\v1\Separator.cs" />
-    <Compile Include="dsp\v1\WaveReceiver.cs" />
-    <Compile Include="dsp\v1\WaveSender.cs" />
-    <Compile Include="dsp\v1\WaveUnit.cs" />
-    <Compile Include="dsp\v2\AudioOutDevice.cs" />
-    <Compile Include="dsp\v2\AudioUnit.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="dsp\v2\AudioUnitRunner.cs" />
-    <Compile Include="dsp\v2\BusBuffer.cs" />
-    <Compile Include="dsp\v2\FileAudioOutDevice.cs" />
-    <Compile Include="dsp\v2\generator\GeneratorUnit.cs" />
-    <Compile Include="dsp\v2\generator\ISingingSynthesizer.cs" />
-    <Compile Include="dsp\v2\generator\IWaveGenerator.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="dsp\v2\generator\RenderCallback.cs" />
-    <Compile Include="dsp\v2\generator\SingingSynthesizerUnit.cs" />
-    <Compile Include="dsp\v2\Mixer.cs" />
-    <Compile Include="dsp\v2\MonitorAudioOutDevice.cs" />
-    <Compile Include="dsp\v2\RingBuffer.cs" />
     <Compile Include="EditedStateChangedEventHandler.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="EditHistoryModel.cs" />
-    <Compile Include="enum\RendererKind.cs" />
-    <Compile Include="enum\RendererKindUtil.cs" />
     <Compile Include="ExceptionNotifyFormController.cs" />
     <Compile Include="ExceptionNotifyFormUi.cs" />
     <Compile Include="ExceptionNotifyFormUiListener.cs" />
@@ -216,7 +176,6 @@
     <Compile Include="FormWordDictionaryUiListener.cs">
     </Compile>
     <Compile Include="FormWorker.cs" />
-    <Compile Include="IAmplifierView.cs" />
     <Compile Include="IFormWorkerControl.cs" />
     <Compile Include="IImageCachedComponentDrawer.cs" />
     <Compile Include="ImageCachedComponentDrawer.cs" />
@@ -229,7 +188,6 @@
     <Compile Include="PictOverview.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="plugin\InterfaceVersion.cs" />
     <Compile Include="plugin\PluginLoader.cs" />
     <Compile Include="plugin\PluginVersion.cs" />
     <Compile Include="plugin\ScriptProcessor.cs" />
@@ -308,10 +266,6 @@
     </Compile>
     <Compile Include="ui\UpdateCheckForm.cs" />
     <Compile Include="updater\UpdateInfo.cs" />
-    <Compile Include="utau\Oto.cs" />
-    <Compile Include="utau\OtoArgs.cs" />
-    <Compile Include="utau\PrefixMap.cs" />
-    <Compile Include="utau\UtauVoiceDB.cs" />
     <Compile Include="VConnectRenderingQueue.cs" />
     <Compile Include="VersionString.cs" />
     <Compile Include="VSTiDllManager.cs" />
@@ -330,7 +284,6 @@
     <Compile Include="WaveformZoomUi.cs">
     </Compile>
     <Compile Include="WaveformZoomUiListener.cs" />
-    <Compile Include="DefaultVibratoLengthEnum.cs" />
     <Compile Include="DefaultVibratoLengthUtil.cs" />
     <Compile Include="DrawObjectType.cs" />
     <Compile Include="DynaffComparisonContext.cs" />
@@ -348,7 +301,6 @@
     <Compile Include="FormIconPalette.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FormMidiImExportConfig.cs" />
     <Compile Include="FormNoteExpressionConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -374,22 +326,18 @@
     <Compile Include="NumberTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PanelState.cs" />
     <Compile Include="PanpotChangedEventHandler.cs" />
     <Compile Include="PictPianoRoll.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PlatformEnum.cs" />
     <Compile Include="PointD.cs" />
     <Compile Include="QuantizeModeUtil.cs" />
     <Compile Include="RenderedStatus.cs" />
-    <Compile Include="NoteNumberExpressionType.cs" />
     <Compile Include="NoteNumberProperty.cs" />
     <Compile Include="NoteNumberPropertyConverter.cs" />
     <Compile Include="PropertyPanelContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="PropertyPanelState.cs" />
     <Compile Include="RenderQueue.cs" />
     <Compile Include="RenderRequiredEventHandler.cs" />
     <Compile Include="ScriptReturnStatus.cs" />
@@ -405,7 +353,6 @@
     <Compile Include="TopMostChangedEventHandler.cs" />
     <Compile Include="UpdateProgressEventHandler.cs" />
     <Compile Include="Utility.cs" />
-    <Compile Include="ValuePairOfStringArrayOfKeys.cs" />
     <Compile Include="CommandTree.cs" />
     <Compile Include="CommandTreeUnit.cs" />
     <Compile Include="CurveType.cs" />
@@ -419,14 +366,12 @@
     <Compile Include="MidiPlayer.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MidiPortConfig.cs" />
     <Compile Include="MidiQueue.cs" />
     <Compile Include="PropertyPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DrawObject.cs" />
     <Compile Include="EditMode.cs" />
-    <Compile Include="EditorConfig.cs" />
     <Compile Include="EditTool.cs" />
     <Compile Include="FormCompileResult.cs">
       <SubType>Form</SubType>
@@ -448,8 +393,6 @@
     </Compile>
     <Compile Include="FormMixer.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AppManager.cs">
     </Compile>
     <Compile Include="FormTrackProperty.cs">
       <SubType>Form</SubType>
@@ -476,7 +419,6 @@
     <Compile Include="PaletteToolServer.cs" />
     <Compile Include="PencilMode.cs" />
     <Compile Include="PencilModeEnum.cs" />
-    <Compile Include="QuantizeMode.cs" />
     <Compile Include="RgbColor.cs" />
     <Compile Include="SandBox.cs">
     </Compile>
@@ -538,7 +480,6 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UtauFreq.cs" />
-    <Compile Include="ValuePairOfStringBoolean.cs" />
     <Compile Include="VersionInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -561,7 +502,6 @@
     </Compile>
     <Compile Include="WaveViewRealoadRequiredEventArgs.cs" />
     <Compile Include="WaveViewRealoadRequiredEventHandler.cs" />
-    <Compile Include="winmmhelp.cs" />
     <Compile Include="WorkerState.cs" />
     <Compile Include="WorkerStateImp.cs" />
     <Compile Include="XmlStaticMemberSerializerEx.cs" />
@@ -574,15 +514,17 @@
     <EmbeddedResource Include="ui\preference\Preference.resx">
       <DependentUpon>Preference.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="plugin\InterfaceVersion.cs" />
+    <Compile Include="AppManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ja.po">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Properties\icon1.ico" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\cursor.cur" />
-    <Content Include="Properties\Icon1.ico" />
     <None Include="kr.po">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -817,10 +759,6 @@
       <Project>{0C58B068-272F-4390-A14F-3D72AFCF3DFB}</Project>
       <Name>cadencii.apputil</Name>
     </ProjectReference>
-    <ProjectReference Include="..\cadencii.helper\cadencii.helper.vcxproj">
-      <Project>{5b7732b0-3322-4b24-9ed2-15b2e5d39432}</Project>
-      <Name>cadencii.helper</Name>
-    </ProjectReference>
     <ProjectReference Include="..\cadencii.media\cadencii.media.csproj">
       <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
       <Name>cadencii.media</Name>
@@ -840,6 +778,22 @@
     <ProjectReference Include="..\cadencii.core\cadencii.core.csproj">
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
       <Name>cadencii.core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.midi\cadencii.midi.csproj">
+      <Project>{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}</Project>
+      <Name>cadencii.midi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.platform.windows\cadencii.platform.windows.csproj">
+      <Project>{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}</Project>
+      <Name>cadencii.platform.windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.dsp\cadencii.dsp.csproj">
+      <Project>{18E7D0BD-734D-482E-BAE8-2512147D88F0}</Project>
+      <Name>cadencii.dsp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.uicore\cadencii.uicore.csproj">
+      <Project>{BF3AE944-08FC-441E-9582-756CFC72C838}</Project>
+      <Name>cadencii.uicore</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

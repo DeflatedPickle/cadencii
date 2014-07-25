@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BF3AE944-08FC-441E-9582-756CFC72C838}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>cadencii.uicore</RootNamespace>
+    <AssemblyName>cadencii.uicore</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DefaultVibratoLengthEnum.cs" />
+    <Compile Include="EditorConfig.cs" />
+    <Compile Include="ClockResolution.cs" />
+    <Compile Include="PlatformEnum.cs" />
+    <Compile Include="QuantizeMode.cs" />
+    <Compile Include="MidiPortConfig.cs" />
+    <Compile Include="ValuePairOfStringArrayOfKeys.cs" />
+    <Compile Include="ValuePairOfStringBoolean.cs" />
+    <Compile Include="PropertyPanelState.cs" />
+    <Compile Include="FormMidiImExportConfig.cs" />
+    <Compile Include="enum\RendererKind.cs" />
+    <Compile Include="enum\RendererKindUtil.cs" />
+    <Compile Include="PanelState.cs" />
+    <Compile Include="NoteNumberExpressionType.cs" />
+    <Compile Include="ClockResolutionUtility.cs" />
+    <Compile Include="ApplicationGlobal.cs" />
+    <Compile Include="IAmplifierView.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.core\cadencii.core.csproj">
+      <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
+      <Name>cadencii.core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.vsq\cadencii.vsq.csproj">
+      <Project>{673347F3-6FC2-4F82-9273-BF158E0F8CB1}</Project>
+      <Name>cadencii.vsq</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.xml\cadencii.xml.csproj">
+      <Project>{23C7549D-A0FD-402A-8470-95DB4BE6081C}</Project>
+      <Name>cadencii.xml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.apputil\cadencii.apputil.csproj">
+      <Project>{0C58B068-272F-4390-A14F-3D72AFCF3DFB}</Project>
+      <Name>cadencii.apputil</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="plugin\" />
+  </ItemGroup>
+</Project>

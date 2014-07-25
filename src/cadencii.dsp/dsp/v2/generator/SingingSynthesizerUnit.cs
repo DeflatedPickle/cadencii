@@ -12,7 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using cadencii.vsq;
-using cadencii.vsti.vocaloid;
+//using cadencii.vsti.vocaloid;
 
 namespace cadencii.dsp.v2.generator
 {

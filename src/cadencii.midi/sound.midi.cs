@@ -268,6 +268,7 @@ namespace cadencii.javax.sound.midi
 
         private static List<MidiDeviceInfoImpl> getMidiIn()
         {
+        /*
             if (mMidiIn == null) {
                 mMidiIn = new List<MidiDeviceInfoImpl>();
                 int num = 0;
@@ -285,10 +286,13 @@ namespace cadencii.javax.sound.midi
                 }
             }
             return mMidiIn;
+        */
+            throw new NotImplementedException ();
         }
 
         private static List<MidiDeviceInfoImpl> getMidiOut()
         {
+        /*
             if (mMidiOut == null) {
                 mMidiOut = new List<MidiDeviceInfoImpl>();
                 int num = 0;
@@ -306,6 +310,8 @@ namespace cadencii.javax.sound.midi
                 }
             }
             return mMidiOut;
+        */
+            throw new NotImplementedException ();
         }
 
         public static MidiDevice.Info[] getMidiDeviceInfo()

@@ -1,0 +1,119 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.apputil", "cadencii.apputil\cadencii.apputil.csproj", "{0C58B068-272F-4390-A14F-3D72AFCF3DFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.media", "cadencii.media\cadencii.media.csproj", "{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.vsq", "cadencii.vsq\cadencii.vsq.csproj", "{673347F3-6FC2-4F82-9273-BF158E0F8CB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.core", "cadencii.core\cadencii.core.csproj", "{C8AAE632-9C6C-4372-8175-811528A66742}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.windows.forms", "cadencii.windows.forms\cadencii.windows.forms.csproj", "{B9481E3B-6842-4AB3-8ED4-29C86C2579A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.xml", "cadencii.xml\cadencii.xml.csproj", "{23C7549D-A0FD-402A-8470-95DB4BE6081C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii", "Cadencii\Cadencii.csproj", "{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptImplement", "ScriptImplement\ScriptImplement.csproj", "{A0B35F11-5790-4473-A508-5868FFA67D70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateKeySound", "GenerateKeySound\GenerateKeySound.csproj", "{AF5EB52F-11D8-4939-ADCD-90F432A71ECC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadenciiTest", "..\tests\CadenciiTest\CadenciiTest.csproj", "{7FC4F869-A95B-439E-93A2-01D85E5A8006}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateUtauPluginManagerPlugin", "..\utils\GenerateUtauPluginManagerPlugin\GenerateUtauPluginManagerPlugin.csproj", "{04B33E1E-C43A-455C-B864-95DDE6E53C32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vConnectStandDBConvert", "vConnectStandDBConvert\vConnectStandDBConvert.csproj", "{3CDB890B-5FCC-4A36-B808-7FB6C571C584}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostBuildCreateVersionInfo", "..\utils\PostBuildCreateVersionInfo\PostBuildCreateVersionInfo.csproj", "{9F4E318A-2A90-4E06-AB65-F81CEA1BB801}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.platform.windows", "..\..\..\..\..\svn\cadencii\src\cadencii.platform.windows\cadencii.platform.windows.csproj", "{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.midi", "..\..\..\..\..\svn\cadencii\src\cadencii.midi\cadencii.midi.csproj", "{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.dsp", "..\..\..\..\..\svn\cadencii\src\cadencii.dsp\cadencii.dsp.csproj", "{18E7D0BD-734D-482E-BAE8-2512147D88F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.uicore", "..\..\..\..\..\svn\cadencii\src\cadencii.uicore\cadencii.uicore.csproj", "{BF3AE944-08FC-441E-9582-756CFC72C838}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04B33E1E-C43A-455C-B864-95DDE6E53C32}.Debug|x86.ActiveCfg = Debug|x86
+		{04B33E1E-C43A-455C-B864-95DDE6E53C32}.Debug|x86.Build.0 = Debug|x86
+		{04B33E1E-C43A-455C-B864-95DDE6E53C32}.Release|x86.ActiveCfg = Release|x86
+		{04B33E1E-C43A-455C-B864-95DDE6E53C32}.Release|x86.Build.0 = Release|x86
+		{0C58B068-272F-4390-A14F-3D72AFCF3DFB}.Debug|x86.ActiveCfg = Debug|x86
+		{0C58B068-272F-4390-A14F-3D72AFCF3DFB}.Debug|x86.Build.0 = Debug|x86
+		{0C58B068-272F-4390-A14F-3D72AFCF3DFB}.Release|x86.ActiveCfg = Release|x86
+		{0C58B068-272F-4390-A14F-3D72AFCF3DFB}.Release|x86.Build.0 = Release|x86
+		{18E7D0BD-734D-482E-BAE8-2512147D88F0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{18E7D0BD-734D-482E-BAE8-2512147D88F0}.Debug|x86.Build.0 = Debug|Any CPU
+		{18E7D0BD-734D-482E-BAE8-2512147D88F0}.Release|x86.ActiveCfg = Release|Any CPU
+		{18E7D0BD-734D-482E-BAE8-2512147D88F0}.Release|x86.Build.0 = Release|Any CPU
+		{23C7549D-A0FD-402A-8470-95DB4BE6081C}.Debug|x86.ActiveCfg = Debug|x86
+		{23C7549D-A0FD-402A-8470-95DB4BE6081C}.Debug|x86.Build.0 = Debug|x86
+		{23C7549D-A0FD-402A-8470-95DB4BE6081C}.Release|x86.ActiveCfg = Release|x86
+		{23C7549D-A0FD-402A-8470-95DB4BE6081C}.Release|x86.Build.0 = Release|x86
+		{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}.Debug|x86.Build.0 = Debug|Any CPU
+		{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}.Release|x86.ActiveCfg = Release|Any CPU
+		{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}.Release|x86.Build.0 = Release|Any CPU
+		{3CDB890B-5FCC-4A36-B808-7FB6C571C584}.Debug|x86.ActiveCfg = Debug|x86
+		{3CDB890B-5FCC-4A36-B808-7FB6C571C584}.Debug|x86.Build.0 = Debug|x86
+		{3CDB890B-5FCC-4A36-B808-7FB6C571C584}.Release|x86.ActiveCfg = Release|x86
+		{3CDB890B-5FCC-4A36-B808-7FB6C571C584}.Release|x86.Build.0 = Release|x86
+		{673347F3-6FC2-4F82-9273-BF158E0F8CB1}.Debug|x86.ActiveCfg = Debug|x86
+		{673347F3-6FC2-4F82-9273-BF158E0F8CB1}.Debug|x86.Build.0 = Debug|x86
+		{673347F3-6FC2-4F82-9273-BF158E0F8CB1}.Release|x86.ActiveCfg = Release|x86
+		{673347F3-6FC2-4F82-9273-BF158E0F8CB1}.Release|x86.Build.0 = Release|x86
+		{7FC4F869-A95B-439E-93A2-01D85E5A8006}.Debug|x86.ActiveCfg = Debug|x86
+		{7FC4F869-A95B-439E-93A2-01D85E5A8006}.Debug|x86.Build.0 = Debug|x86
+		{7FC4F869-A95B-439E-93A2-01D85E5A8006}.Release|x86.ActiveCfg = Release|x86
+		{7FC4F869-A95B-439E-93A2-01D85E5A8006}.Release|x86.Build.0 = Release|x86
+		{9F4E318A-2A90-4E06-AB65-F81CEA1BB801}.Debug|x86.ActiveCfg = Debug|x86
+		{9F4E318A-2A90-4E06-AB65-F81CEA1BB801}.Debug|x86.Build.0 = Debug|x86
+		{9F4E318A-2A90-4E06-AB65-F81CEA1BB801}.Release|x86.ActiveCfg = Release|x86
+		{9F4E318A-2A90-4E06-AB65-F81CEA1BB801}.Release|x86.Build.0 = Release|x86
+		{A0B35F11-5790-4473-A508-5868FFA67D70}.Debug|x86.ActiveCfg = Debug|x86
+		{A0B35F11-5790-4473-A508-5868FFA67D70}.Debug|x86.Build.0 = Debug|x86
+		{A0B35F11-5790-4473-A508-5868FFA67D70}.Release|x86.ActiveCfg = Release|x86
+		{A0B35F11-5790-4473-A508-5868FFA67D70}.Release|x86.Build.0 = Release|x86
+		{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}.Debug|x86.ActiveCfg = Debug|x86
+		{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}.Debug|x86.Build.0 = Debug|x86
+		{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}.Release|x86.ActiveCfg = Release|x86
+		{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}.Release|x86.Build.0 = Release|x86
+		{AF5EB52F-11D8-4939-ADCD-90F432A71ECC}.Debug|x86.ActiveCfg = Debug|x86
+		{AF5EB52F-11D8-4939-ADCD-90F432A71ECC}.Debug|x86.Build.0 = Debug|x86
+		{AF5EB52F-11D8-4939-ADCD-90F432A71ECC}.Release|x86.ActiveCfg = Release|x86
+		{AF5EB52F-11D8-4939-ADCD-90F432A71ECC}.Release|x86.Build.0 = Release|x86
+		{B9481E3B-6842-4AB3-8ED4-29C86C2579A3}.Debug|x86.ActiveCfg = Debug|x86
+		{B9481E3B-6842-4AB3-8ED4-29C86C2579A3}.Debug|x86.Build.0 = Debug|x86
+		{B9481E3B-6842-4AB3-8ED4-29C86C2579A3}.Release|x86.ActiveCfg = Release|x86
+		{B9481E3B-6842-4AB3-8ED4-29C86C2579A3}.Release|x86.Build.0 = Release|x86
+		{BF3AE944-08FC-441E-9582-756CFC72C838}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BF3AE944-08FC-441E-9582-756CFC72C838}.Debug|x86.Build.0 = Debug|Any CPU
+		{BF3AE944-08FC-441E-9582-756CFC72C838}.Release|x86.ActiveCfg = Release|Any CPU
+		{BF3AE944-08FC-441E-9582-756CFC72C838}.Release|x86.Build.0 = Release|Any CPU
+		{C8AAE632-9C6C-4372-8175-811528A66742}.Debug|x86.ActiveCfg = Debug|x86
+		{C8AAE632-9C6C-4372-8175-811528A66742}.Debug|x86.Build.0 = Debug|x86
+		{C8AAE632-9C6C-4372-8175-811528A66742}.Release|x86.ActiveCfg = Release|x86
+		{C8AAE632-9C6C-4372-8175-811528A66742}.Release|x86.Build.0 = Release|x86
+		{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}.Debug|x86.ActiveCfg = Debug|x86
+		{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}.Debug|x86.Build.0 = Debug|x86
+		{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}.Release|x86.ActiveCfg = Release|x86
+		{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}.Release|x86.Build.0 = Release|x86
+		{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}.Debug|x86.Build.0 = Debug|Any CPU
+		{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}.Release|x86.ActiveCfg = Release|Any CPU
+		{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Cadencii\Cadencii.csproj
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

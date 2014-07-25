@@ -390,7 +390,7 @@ namespace cadencii
         public double mLastEventProcessed;
         public bool mSpacekeyDowned = false;
 #if ENABLE_MIDI
-        public MidiInDevice mMidiIn = null;
+        public MidiInDevice     mMidiIn = null;
 #endif
 #if ENABLE_MTC
         public MidiInDevice m_midi_in_mtc = null;

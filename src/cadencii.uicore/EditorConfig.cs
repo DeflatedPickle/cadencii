@@ -20,10 +20,11 @@ using cadencii;
 using cadencii.java.awt;
 using cadencii.java.io;
 using cadencii.java.util;
-using cadencii.windows.forms;
+//using cadencii.windows.forms;
 using cadencii.xml;
 using cadencii.vsq;
 using cadencii.apputil;
+using cadencii.uicore;
 
 
 
@@ -1133,10 +1134,10 @@ namespace cadencii
 
             // key_widthを最大，最小の間に収める
             int draft_key_width = this.KeyWidth;
-            if (draft_key_width < AppManager.MIN_KEY_WIDTH) {
-                draft_key_width = AppManager.MIN_KEY_WIDTH;
-            } else if (AppManager.MAX_KEY_WIDTH < draft_key_width) {
-                draft_key_width = AppManager.MAX_KEY_WIDTH;
+            if (draft_key_width < ApplicationGlobal.MIN_KEY_WIDTH) {
+				draft_key_width = ApplicationGlobal.MIN_KEY_WIDTH;
+			} else if (ApplicationGlobal.MAX_KEY_WIDTH < draft_key_width) {
+				draft_key_width = ApplicationGlobal.MAX_KEY_WIDTH;
             }
 
             if (PathResamplers == null) {

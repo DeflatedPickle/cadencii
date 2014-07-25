@@ -42,7 +42,7 @@ namespace cadencii
         /// <summary>
         /// メインウィンドウへの参照
         /// </summary>
-        protected FormMain mMainWindow;
+        protected object mMainWindow;
 
         /// <summary>
         /// 描画用のストローク
@@ -105,7 +105,7 @@ namespace cadencii
         /// <summary>
         /// メインウィンドウへの参照を設定します
         /// </summary>
-        public virtual void setMainWindow(FormMain main_window)
+        public virtual void setMainWindow(object main_window)
         {
             mMainWindow = main_window;
         }
