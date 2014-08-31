@@ -13,7 +13,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
+    <DefineConstants>DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -70,6 +70,9 @@
     <Compile Include="utau\OtoArgs.cs" />
     <Compile Include="utau\PrefixMap.cs" />
     <Compile Include="utau\UtauVoiceDB.cs" />
+    <Compile Include="dsp\v1\RenderQueue.cs" />
+    <Compile Include="dsp\v1\VConnectRenderingQueue.cs" />
+    <Compile Include="utau\Utau.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

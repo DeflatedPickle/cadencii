@@ -46,7 +46,6 @@
     <Compile Include="FormMidiImExportConfig.cs" />
     <Compile Include="enum\RendererKindUtil.cs" />
     <Compile Include="PanelState.cs" />
-    <Compile Include="NoteNumberExpressionType.cs" />
     <Compile Include="ClockResolutionUtility.cs" />
     <Compile Include="IAmplifierView.cs" />
   </ItemGroup>

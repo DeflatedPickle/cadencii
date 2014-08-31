@@ -33,7 +33,7 @@ namespace cadencii.utau
         public Oto(string oto_ini_file_path, string db_root_directory)
         {
             if (File.Exists(oto_ini_file_path)) {
-                foreach (var encoding_name in AppManager.TEXT_ENCODINGS_IN_UTAU) {
+                foreach (var encoding_name in Utau.TEXT_ENCODINGS_IN_UTAU) {
                     readOtoIni(oto_ini_file_path, encoding_name, db_root_directory);
                 }
             }

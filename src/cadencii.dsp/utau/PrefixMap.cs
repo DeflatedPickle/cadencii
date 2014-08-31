@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Linq;
+using cadencii;
 
 namespace cadencii.utau
 {

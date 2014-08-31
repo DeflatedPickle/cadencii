@@ -27,10 +27,10 @@ namespace cadencii
     [Serializable]
     public class CadenciiCommand : ICommand
     {
-        public CadenciiCommandType type;
-        public VsqCommand vsqCommand;
+        public CadenciiCommandType type { get; set; }
+        public VsqCommand vsqCommand { get; set; }
         private ICommand mParent;
-        public Object[] args;
+        public Object[] args { get; set; }
         private List<ICommand> mChild = new List<ICommand>();
 
         public CadenciiCommand(VsqCommand command)

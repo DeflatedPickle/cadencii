@@ -118,8 +118,6 @@
     </Compile>
     <Compile Include="BooleanEnum.cs" />
     <Compile Include="Cadencii.cs" />
-    <Compile Include="CadenciiCommand.cs" />
-    <Compile Include="CadenciiCommandType.cs" />
     <Compile Include="ClipboardEntry.cs" />
     <Compile Include="ClipboardModel.cs" />
     <Compile Include="CommandExecuteRequiredEventHandler.cs" />
@@ -258,7 +256,6 @@
     </Compile>
     <Compile Include="ui\UpdateCheckForm.cs" />
     <Compile Include="updater\UpdateInfo.cs" />
-    <Compile Include="VConnectRenderingQueue.cs" />
     <Compile Include="VersionString.cs" />
     <Compile Include="VSTiDllManager.cs" />
     <Compile Include="vsti\AquesTone2Driver.cs">
@@ -322,12 +319,9 @@
     </Compile>
     <Compile Include="QuantizeModeUtil.cs" />
     <Compile Include="RenderedStatus.cs" />
-    <Compile Include="NoteNumberProperty.cs" />
-    <Compile Include="NoteNumberPropertyConverter.cs" />
     <Compile Include="PropertyPanelContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="RenderQueue.cs" />
     <Compile Include="RenderRequiredEventHandler.cs" />
     <Compile Include="ScriptReturnStatus.cs" />
     <Compile Include="ScriptServer.cs" />
@@ -469,11 +463,6 @@
     <Compile Include="VersionInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VibratoLengthEditingRule.cs" />
-    <Compile Include="VibratoPointIteratorByClock.cs" />
-    <Compile Include="VibratoPointIteratorBySec.cs" />
-    <Compile Include="VibratoVariation.cs" />
-    <Compile Include="VibratoVariationConverter.cs" />
     <Compile Include="VolumeTracker.cs">
       <SubType>UserControl</SubType>
     </Compile>

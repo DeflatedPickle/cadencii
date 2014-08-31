@@ -93,6 +93,7 @@ namespace cadencii.synthesizer
                 session_.sample_rate_ = sample_rate;
                 string id = AppManager.getID();
                 session_.temp_dir_ = Path.Combine(AppManager.getCadenciiTempDir(), id);
+                /*
                 if (use_wide_character_workaround_) {
                     string junction_path = System.IO.Path.Combine(getSystemRoot(), "cadencii_" + id + "_temp");
                     if (!Directory.Exists(junction_path)) {
@@ -101,6 +102,7 @@ namespace cadencii.synthesizer
                     }
                     session_.temp_dir_ = junction_path;
                 }
+                */
                 session_.sequence_ = (VsqFile)sequence.clone();
                 session_.sequence_.updateTotalClocks();
 
@@ -190,6 +192,7 @@ namespace cadencii.synthesizer
                     if (0 <= program_change && program_change < singer_configs_.Count) {
                         singer_raw = singer_configs_[program_change].VOICEIDSTR;
                         singer = singer_raw;
+                        /*
                         if (use_wide_character_workaround_) {
                             string junction = Path.Combine(getSystemRoot(), "cadencii_" + AppManager.getID() + "_singer_" + program_change);
                             if (!Directory.Exists(junction)) {
@@ -198,6 +201,7 @@ namespace cadencii.synthesizer
                             }
                             singer = junction;
                         }
+                        */
                     }
                     count++;
                     double sec_start = session_.sequence_.getSecFromClock(item.Clock);

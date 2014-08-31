@@ -433,8 +433,8 @@ namespace cadencii
             // まずクロック値を、リプレース後のモノに置き換え
             for (int track = 1; track < this.Track.Count; track++) {
                 // ベジエカーブをシフト
-                for (int i = 0; i < Utility.CURVE_USAGE.Length; i++) {
-                    CurveType ct = Utility.CURVE_USAGE[i];
+                for (int i = 0; i < BezierCurves.CURVE_USAGE.Length; i++) {
+                    CurveType ct = BezierCurves.CURVE_USAGE[i];
                     List<BezierChain> list = this.AttachedCurves.get(track - 1).get(ct);
                     if (list == null) {
                         continue;
@@ -590,8 +590,8 @@ namespace cadencii
                 }
 
                 // コントロールカーブをシフト
-                for (int k = 0; k < Utility.CURVE_USAGE.Length; k++) {
-                    CurveType ct = Utility.CURVE_USAGE[k];
+                for (int k = 0; k < BezierCurves.CURVE_USAGE.Length; k++) {
+                    CurveType ct = BezierCurves.CURVE_USAGE[k];
                     VsqBPList item = track.getCurve(ct.getName());
                     if (item == null) {
                         continue;
@@ -618,8 +618,8 @@ namespace cadencii
                 }
 
                 // ベジエカーブをシフト
-                for (int k = 0; k < Utility.CURVE_USAGE.Length; k++) {
-                    CurveType ct = Utility.CURVE_USAGE[k];
+                for (int k = 0; k < BezierCurves.CURVE_USAGE.Length; k++) {
+                    CurveType ct = BezierCurves.CURVE_USAGE[k];
                     List<BezierChain> list = vsq.AttachedCurves.get(i - 1).get(ct);
                     if (list == null) {
                         continue;
@@ -852,11 +852,11 @@ namespace cadencii
         public ICommand executeCommand(ICommand com)
         {
 #if DEBUG
-            AppManager.debugWriteLine("VsqFileEx.Execute");
+            Debug.WriteLine("VsqFileEx.Execute");
 #endif
             CadenciiCommand command = (CadenciiCommand)com;
 #if DEBUG
-            AppManager.debugWriteLine("VsqFileEx.Execute; command.Type=" + command.type);
+            Debug.WriteLine("VsqFileEx.Execute; command.Type=" + command.type);
 #endif
             CadenciiCommand ret = null;
             if (command.type == CadenciiCommandType.VSQ_COMMAND) {
@@ -918,7 +918,7 @@ namespace cadencii
                 if (command.type == CadenciiCommandType.BEZIER_CHAIN_ADD) {
                     #region AddBezierChain
 #if DEBUG
-                    AppManager.debugWriteLine("    AddBezierChain");
+                    Debug.WriteLine("    AddBezierChain");
 #endif
                     int track = (int)command.args[0];
                     CurveType curve_type = (CurveType)command.args[1];
@@ -1157,7 +1157,7 @@ namespace cadencii
                     for (int i = 0; i < count - 1; i++) {
                         editorStatus.renderRequired[i] = true;
                     }
-                    for (int i = count - 1; i < AppManager.MAX_NUM_TRACK; i++) {
+                    for (int i = count - 1; i < cadencii.uicore.ApplicationGlobal.MAX_NUM_TRACK; i++) {
                         editorStatus.renderRequired[i] = false;
                     }
                     #endregion
@@ -1257,7 +1257,7 @@ namespace cadencii
                 }
                 if (command.vsqCommand != null && ret != null) {
 #if DEBUG
-                    AppManager.debugWriteLine("VsqFileEx.executeCommand; command.VsqCommand.Type=" + command.vsqCommand.Type);
+                    Debug.WriteLine("VsqFileEx.executeCommand; command.VsqCommand.Type=" + command.vsqCommand.Type);
 #endif
                     ret.vsqCommand = base.executeCommand(command.vsqCommand);
                 }
@@ -1378,8 +1378,8 @@ namespace cadencii
                     }
                 } else {
                     foreach (var bc in ret.AttachedCurves.getCurves()) {
-                        for (int k = 0; k < Utility.CURVE_USAGE.Length; k++) {
-                            CurveType ct = Utility.CURVE_USAGE[k];
+                        for (int k = 0; k < BezierCurves.CURVE_USAGE.Length; k++) {
+                            CurveType ct = BezierCurves.CURVE_USAGE[k];
                             List<BezierChain> list = bc.get(ct);
                             int list_size = list.Count;
                             for (int i = 0; i < list_size; i++) {
@@ -1404,7 +1404,7 @@ namespace cadencii
             int c = ret.Track.Count;
             for (int i = 0; i < c; i++) {
                 VsqTrack track = ret.Track[i];
-                foreach (CurveType s in Utility.CURVE_USAGE) {
+                foreach (CurveType s in BezierCurves.CURVE_USAGE) {
                     VsqBPList list = track.getCurve(s.getName());
                     if (list != null) {
                         list.setName(s.getName().ToLower());

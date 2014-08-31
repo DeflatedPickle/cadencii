@@ -170,6 +170,7 @@ namespace cadencii
             mSampleRate = sample_rate;
             string id = AppManager.getID();
             mTempDir = Path.Combine(AppManager.getCadenciiTempDir(), id);
+            /*
             if (mUseWideCharacterWorkaround) {
                 string junction_path = System.IO.Path.Combine(getSystemRoot(), "cadencii_" + id + "_temp");
                 if (!Directory.Exists(junction_path)) {
@@ -178,6 +179,7 @@ namespace cadencii
                 }
                 mTempDir = junction_path;
             }
+            */
 #if DEBUG
             sout.println("UtauWaveGenerator#init; mTempDir=" + mTempDir + "; exists=" + Directory.Exists(mTempDir));
 #endif
@@ -369,6 +371,7 @@ namespace cadencii
                     if (0 <= program_change && program_change < mConfig.UtauSingers.Count) {
                         singer_raw = mConfig.UtauSingers[program_change].VOICEIDSTR;
                         singer = singer_raw;
+                        /*
                         if (mUseWideCharacterWorkaround) {
                             string junction = Path.Combine(getSystemRoot(), "cadencii_" + AppManager.getID() + "_singer_" + program_change);
                             if (!Directory.Exists(junction)) {
@@ -377,6 +380,7 @@ namespace cadencii
                             }
                             singer = junction;
                         }
+                        */
                     }
 #if DEBUG
                     sout.println("UtauWaveGenerator#begin; singer=" + singer + "; singer_raw=" + singer_raw);

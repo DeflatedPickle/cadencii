@@ -16,13 +16,11 @@
     </UpgradeBackupLocation>
     <SignAssembly>false</SignAssembly>
     <TargetFrameworkProfile />
-    <ProductVersion>12.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>DEBUG;CSHARP</DefineConstants>
+    <DefineConstants>DEBUG;CSHARP;ENABLE_PROPERTY</DefineConstants>
     <DocumentationFile>bin\x86\Debug\cadencii.vsq.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
@@ -31,7 +29,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\x86\Release\</OutputPath>
-    <DefineConstants>CSHARP</DefineConstants>
+    <DefineConstants>CSHARP;;ENABLE_PROPERTY</DefineConstants>
     <Prefer32Bit>false</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
     <Optimize>false</Optimize>
@@ -39,7 +37,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugMinimal|x86' ">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\DebugMinimal\</OutputPath>
-    <DefineConstants>DEBUG;CSHARP</DefineConstants>
+    <DefineConstants>DEBUG;CSHARP;ENABLE_PROPERTY</DefineConstants>
     <DocumentationFile>bin\x86\Debug\org.kbinani.vsq.xml</DocumentationFile>
     <PlatformTarget>x86</PlatformTarget>
     <Prefer32Bit>false</Prefer32Bit>
@@ -50,7 +48,7 @@
     <OutputPath>bin\x86\ReleaseMinimal\</OutputPath>
     <DocumentationFile>bin\x86\Release\org.kbinani.vsq.xml</DocumentationFile>
     <PlatformTarget>x86</PlatformTarget>
-    <DefineConstants>CSHARP</DefineConstants>
+    <DefineConstants>CSHARP;ENABLE_PROPERTY</DefineConstants>
     <Prefer32Bit>false</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
     <Optimize>false</Optimize>
@@ -59,7 +57,7 @@
     <OutputPath>bin\x86\MonoRelease\</OutputPath>
     <DocumentationFile>bin\x86\Release\org.kbinani.vsq.xml</DocumentationFile>
     <PlatformTarget>x86</PlatformTarget>
-    <DefineConstants>CSHARP</DefineConstants>
+    <DefineConstants>CSHARP;ENABLE_PROPERTY</DefineConstants>
     <Prefer32Bit>false</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
     <Optimize>false</Optimize>
@@ -154,6 +152,15 @@
     <Compile Include="VsqVoiceLanguage.cs" />
     <Compile Include="WrappedStreamWriter.cs" />
     <Compile Include="VsqFileEx.cs" />
+    <Compile Include="CadenciiCommand.cs" />
+    <Compile Include="VibratoLengthEditingRule.cs" />
+    <Compile Include="VibratoPointIteratorByClock.cs" />
+    <Compile Include="VibratoPointIteratorBySec.cs" />
+    <Compile Include="VibratoVariation.cs" />
+    <Compile Include="VibratoVariationConverter.cs" />
+    <Compile Include="NoteNumberProperty.cs" />
+    <Compile Include="NoteNumberPropertyConverter.cs" />
+    <Compile Include="NoteNumberExpressionType.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cadencii.core\cadencii.core.csproj">

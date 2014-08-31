@@ -287,10 +287,6 @@ namespace cadencii
             Keys.End,
         });
         /// <summary>
-        /// UTAU関連のテキストファイルで受け付けるエンコーディングの種類
-        /// </summary>
-        public static readonly string[] TEXT_ENCODINGS_IN_UTAU = new string[] { "Shift_JIS", "UTF-16", "us-ascii" };
-        /// <summary>
         /// よく使うボーダー線の色
         /// </summary>
         public static readonly Color COLOR_BORDER = new Color(118, 123, 138);
