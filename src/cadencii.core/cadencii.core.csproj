@@ -133,6 +133,7 @@
     <Compile Include="MessageBody.cs" />
     <Compile Include="MessageBodyEntry.cs" />
     <Compile Include="Messaging.cs" />
+    <Compile Include="MemoryManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

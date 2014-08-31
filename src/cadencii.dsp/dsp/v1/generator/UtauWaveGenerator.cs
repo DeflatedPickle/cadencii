@@ -446,8 +446,8 @@ namespace cadencii
                     int millisec = (int)((sec_end_act - sec_start_act) * 1000) + 50;
 
                     OtoArgs oa = new OtoArgs();
-                    if (AppManager.mUtauVoiceDB.ContainsKey(singer_raw)) {
-                        UtauVoiceDB db = AppManager.mUtauVoiceDB[singer_raw];
+                    if (mUtauVoiceDB.ContainsKey(singer_raw)) {
+                        UtauVoiceDB db = mUtauVoiceDB[singer_raw];
                         oa = db.attachFileNameFromLyric(lyric, item.ID.Note);
                     }
 #if MAKEBAT_SP
@@ -1225,6 +1225,11 @@ namespace cadencii
             string head = (new string[] { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" })[odd];
             return head + (note_number / 12 - 1);
         }
+
+	/// <summary>
+        /// UTAUの原音設定のリスト。TreeMapのキーは、oto.iniのあるディレクトリ名になっている。
+        /// </summary>
+        public static SortedDictionary<string, UtauVoiceDB> mUtauVoiceDB = new SortedDictionary<string, UtauVoiceDB>();
     }
 
 }

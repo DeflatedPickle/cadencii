@@ -94,7 +94,7 @@ namespace cadencii
             string vocalo1_dll_path = VocaloSysUtil.getDllPathVsti(SynthesizerType.VOCALOID1);
             if (vocalo2_dll_path != "" &&
                     System.IO.File.Exists(vocalo2_dll_path) &&
-                    !AppManager.editorConfig.DoNotUseVocaloid2) {
+                    !cadencii.core.ApplicationGlobal.appConfig.DoNotUseVocaloid2) {
                 VocaloidDriver vr = new VocaloidDriver(RendererKind.VOCALOID2);
                 vr.path = vocalo2_dll_path;
                 vr.loaded = false;
@@ -102,7 +102,7 @@ namespace cadencii
             }
             if (vocalo1_dll_path != "" &&
                     System.IO.File.Exists(vocalo1_dll_path) &&
-                    !AppManager.editorConfig.DoNotUseVocaloid1) {
+                    !cadencii.core.ApplicationGlobal.appConfig.DoNotUseVocaloid1) {
                 VocaloidDriver vr = new VocaloidDriver(RendererKind.VOCALOID1);
                 vr.path = vocalo1_dll_path;
                 vr.loaded = false;
@@ -138,8 +138,8 @@ namespace cadencii
         /// <returns></returns>
         public static AquesToneDriver getAquesToneDriver()
         {
-            string path = AppManager.editorConfig.PathAquesTone;
-            if (aquesToneDriver == null && !AppManager.editorConfig.DoNotUseAquesTone && System.IO.File.Exists(path)) {
+            string path = cadencii.core.ApplicationGlobal.appConfig.PathAquesTone;
+            if (aquesToneDriver == null && !cadencii.core.ApplicationGlobal.appConfig.DoNotUseAquesTone && System.IO.File.Exists(path)) {
                 aquesToneDriver = new AquesToneDriver(path);
             }
             return aquesToneDriver;
@@ -151,8 +151,8 @@ namespace cadencii
         /// <returns></returns>
         public static AquesTone2Driver getAquesTone2Driver()
         {
-            string path = AppManager.editorConfig.PathAquesTone2;
-            if (aquesTone2Driver == null && !AppManager.editorConfig.DoNotUseAquesTone2 && System.IO.File.Exists(path)) {
+            string path = cadencii.core.ApplicationGlobal.appConfig.PathAquesTone2;
+            if (aquesTone2Driver == null && !cadencii.core.ApplicationGlobal.appConfig.DoNotUseAquesTone2 && System.IO.File.Exists(path)) {
                 aquesTone2Driver = new AquesTone2Driver(path);
                 if (AppManager.mMainWindow != null) {
                     // AquesTone2 は UI のインスタンスを生成してからでないと、合成時にクラッシュする。
@@ -183,55 +183,6 @@ namespace cadencii
             aquesTone2Driver = getAquesTone2Driver();
         }
 #endif
-
-        public static bool isRendererAvailable(RendererKind renderer)
-        {
-#if ENABLE_VOCALOID
-            for (int i = 0; i < vocaloidDriver.Count; i++) {
-                if (renderer == vocaloidDriver[i].getRendererKind() && vocaloidDriver[i].loaded) {
-                    return true;
-                }
-            }
-#endif // ENABLE_VOCALOID
-
-#if ENABLE_AQUESTONE
-            if (renderer == RendererKind.AQUES_TONE && aquesToneDriver != null && aquesToneDriver.loaded) {
-                return true;
-            }
-            if (renderer == RendererKind.AQUES_TONE2 && aquesTone2Driver != null && aquesTone2Driver.loaded) {
-                return true;
-            }
-#endif
-
-            if (renderer == RendererKind.UTAU) {
-                // ここでは，resamplerの内どれかひとつでも使用可能であればOKの判定にする
-                bool resampler_exists = false;
-                int size = AppManager.editorConfig.getResamplerCount();
-                for (int i = 0; i < size; i++) {
-                    string path = AppManager.editorConfig.getResamplerAt(i);
-                    if (System.IO.File.Exists(path)) {
-                        resampler_exists = true;
-                        break;
-                    }
-                }
-                if (resampler_exists &&
-                     !AppManager.editorConfig.PathWavtool.Equals("") && System.IO.File.Exists(AppManager.editorConfig.PathWavtool)) {
-                    if (AppManager.editorConfig.UtauSingers.Count > 0) {
-                        return true;
-                    }
-                }
-            }
-            if (renderer == RendererKind.VCNT) {
-                string synth_path = Path.Combine(PortUtil.getApplicationStartupPath(), VConnectWaveGenerator.STRAIGHT_SYNTH);
-                if (System.IO.File.Exists(synth_path)) {
-                    int count = AppManager.editorConfig.UtauSingers.Count;
-                    if (count > 0) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
 
         public static void terminate()
         {

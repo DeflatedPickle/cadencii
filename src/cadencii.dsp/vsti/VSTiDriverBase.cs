@@ -55,7 +55,7 @@ namespace cadencii
         /// <summary>
         /// プラグインのUI
         /// </summary>
-        protected FormPluginUi ui = null;
+		protected System.Windows.Forms.Form/*FormPluginUi*/ ui = null;
         private bool isUiOpened = false;
 
         protected PVSTMAIN mainDelegate;
@@ -323,7 +323,7 @@ namespace cadencii
             return result;
         }
 
-        public FormPluginUi getUi(System.Windows.Forms.Form main_window)
+		public /*FormPluginUi*/System.Windows.Forms.Form getUi(System.Windows.Forms.Form main_window)
         {
             if (ui == null) {
                 if (main_window != null) {

@@ -43,7 +43,7 @@ namespace cadencii
         /// <summary>
         /// メインウィンドウへの参照
         /// </summary>
-        protected object mMainWindow;
+        protected System.Windows.Forms.Form mMainWindow;
 
         /// <summary>
         /// 描画用のストローク
@@ -107,7 +107,7 @@ namespace cadencii
         /// <summary>
         /// メインウィンドウへの参照を設定します
         /// </summary>
-        public virtual void setMainWindow(object main_window)
+        public virtual void setMainWindow(System.Windows.Forms.Form main_window)
         {
             mMainWindow = main_window;
         }
