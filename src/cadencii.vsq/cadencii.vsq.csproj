@@ -87,7 +87,6 @@
     </Compile>
     <Compile Include="io\VsqxReader.cs" />
     <Compile Include="io\VsqxWriter.cs" />
-    <Compile Include="ITempoMaster.cs" />
     <Compile Include="ITextWriter.cs" />
     <Compile Include="Lyric.cs" />
     <Compile Include="LyricHandle.cs" />
@@ -102,8 +101,6 @@
     <Compile Include="SymbolTable.cs" />
     <Compile Include="SymbolTableEntry.cs" />
     <Compile Include="SynthesizerType.cs" />
-    <Compile Include="TempoVector.cs" />
-    <Compile Include="TempoVectorSearchContext.cs" />
     <Compile Include="TextStream.cs" />
     <Compile Include="Timesig.cs" />
     <Compile Include="TimesigVector.cs" />
@@ -118,10 +115,7 @@
     <Compile Include="UstPortamentoType.cs" />
     <Compile Include="UstTrack.cs" />
     <Compile Include="UstVibrato.cs" />
-    <Compile Include="VibratoBPList.cs" />
-    <Compile Include="VibratoBPPair.cs" />
     <Compile Include="ExpressionConfigSys.cs" />
-    <Compile Include="VibratoHandle.cs" />
     <Compile Include="VocaloSysUtil.cs" />
     <Compile Include="VsqBPPair.cs" />
     <Compile Include="VsqBPPairSearchContext.cs" />
@@ -139,7 +133,6 @@
     <Compile Include="NrpnData.cs" />
     <Compile Include="VsqCommandType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TempoTableEntry.cs" />
     <Compile Include="TimeSigTableEntry.cs" />
     <Compile Include="VsqBarLineType.cs" />
     <Compile Include="VsqBPList.cs" />
@@ -153,14 +146,12 @@
     <Compile Include="WrappedStreamWriter.cs" />
     <Compile Include="VsqFileEx.cs" />
     <Compile Include="CadenciiCommand.cs" />
-    <Compile Include="VibratoLengthEditingRule.cs" />
-    <Compile Include="VibratoPointIteratorByClock.cs" />
-    <Compile Include="VibratoPointIteratorBySec.cs" />
-    <Compile Include="VibratoVariation.cs" />
-    <Compile Include="VibratoVariationConverter.cs" />
     <Compile Include="NoteNumberProperty.cs" />
     <Compile Include="NoteNumberPropertyConverter.cs" />
     <Compile Include="NoteNumberExpressionType.cs" />
+    <Compile Include="VibratoHandle.cs" />
+    <Compile Include="VibratoPointIteratorByClock.cs" />
+    <Compile Include="VibratoPointIteratorBySec.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cadencii.core\cadencii.core.csproj">

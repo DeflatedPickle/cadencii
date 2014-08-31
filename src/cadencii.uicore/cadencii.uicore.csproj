@@ -29,24 +29,17 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="DefaultVibratoLengthEnum.cs" />
     <Compile Include="EditorConfig.cs" />
-    <Compile Include="ClockResolution.cs" />
-    <Compile Include="PlatformEnum.cs" />
-    <Compile Include="QuantizeMode.cs" />
     <Compile Include="MidiPortConfig.cs" />
-    <Compile Include="ValuePairOfStringArrayOfKeys.cs" />
-    <Compile Include="ValuePairOfStringBoolean.cs" />
     <Compile Include="PropertyPanelState.cs" />
     <Compile Include="FormMidiImExportConfig.cs" />
     <Compile Include="enum\RendererKindUtil.cs" />
     <Compile Include="PanelState.cs" />
-    <Compile Include="ClockResolutionUtility.cs" />
     <Compile Include="IAmplifierView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

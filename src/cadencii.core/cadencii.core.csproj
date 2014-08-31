@@ -113,6 +113,23 @@
     <Compile Include="ApplicationGlobal.cs" />
     <Compile Include="EditorStatus.cs" />
     <Compile Include="CadenciiCommandType.cs" />
+    <Compile Include="dspcore\DefaultVibratoLengthEnum.cs" />
+    <Compile Include="dspcore\VibratoBPList.cs" />
+    <Compile Include="dspcore\VibratoBPPair.cs" />
+    <Compile Include="dspcore\VibratoLengthEditingRule.cs" />
+    <Compile Include="dspcore\VibratoVariation.cs" />
+    <Compile Include="dspcore\VibratoVariationConverter.cs" />
+    <Compile Include="EditorConfig.cs" />
+    <Compile Include="dspcore\TempoTableEntry.cs" />
+    <Compile Include="dspcore\TempoVector.cs" />
+    <Compile Include="dspcore\TempoVectorSearchContext.cs" />
+    <Compile Include="dspcore\ITempoMaster.cs" />
+    <Compile Include="ClockResolution.cs" />
+    <Compile Include="PlatformEnum.cs" />
+    <Compile Include="dspcore\QuantizeMode.cs" />
+    <Compile Include="ValuePairOfStringArrayOfKeys.cs" />
+    <Compile Include="ValuePairOfStringBoolean.cs" />
+    <Compile Include="ClockResolutionUtility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -122,4 +139,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="dspcore\" />
+  </ItemGroup>
 </Project>

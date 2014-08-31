@@ -1,9 +1,10 @@
 ﻿using System;
 
-namespace cadencii.uicore
+namespace cadencii
 {
 	public static class ApplicationGlobal
 	{
+		public static EditorConfig appConfig = new EditorConfig ();
 		public const int MIN_KEY_WIDTH = 68;
         public const int MAX_KEY_WIDTH = MIN_KEY_WIDTH * 5;
         /// <summary>

@@ -1157,7 +1157,7 @@ namespace cadencii
                     for (int i = 0; i < count - 1; i++) {
                         editorStatus.renderRequired[i] = true;
                     }
-                    for (int i = count - 1; i < cadencii.uicore.ApplicationGlobal.MAX_NUM_TRACK; i++) {
+                    for (int i = count - 1; i < cadencii.ApplicationGlobal.MAX_NUM_TRACK; i++) {
                         editorStatus.renderRequired[i] = false;
                     }
                     #endregion
