@@ -528,11 +528,11 @@ namespace cadencii
 #if DEBUG
             AppManager.debugWriteLine("FormMain..ctor()");
 #endif
-            AppManager.baseFont10Bold = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.BOLD, AppManager.FONT_SIZE10);
-            AppManager.baseFont8 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, AppManager.FONT_SIZE8);
-            AppManager.baseFont10 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, AppManager.FONT_SIZE10);
-            AppManager.baseFont9 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, AppManager.FONT_SIZE9);
-            AppManager.baseFont50Bold = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.BOLD, AppManager.FONT_SIZE50);
+            EditorConfig.baseFont10Bold = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.BOLD, EditorConfig.FONT_SIZE10);
+            EditorConfig.baseFont8 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, EditorConfig.FONT_SIZE8);
+            EditorConfig.baseFont10 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, EditorConfig.FONT_SIZE10);
+            EditorConfig.baseFont9 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, EditorConfig.FONT_SIZE9);
+            EditorConfig.baseFont50Bold = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.BOLD, EditorConfig.FONT_SIZE50);
 
             s_modifier_key = Keys.Control;
             VsqFileEx tvsq =
@@ -725,7 +725,7 @@ namespace cadencii
             AppManager.mInputTextBox.Width = 80;
             AppManager.mInputTextBox.AcceptsReturn = true;
             AppManager.mInputTextBox.BackColor = System.Drawing.Color.White;
-            AppManager.mInputTextBox.Font = new System.Drawing.Font(AppManager.editorConfig.BaseFontName, AppManager.FONT_SIZE9, System.Drawing.FontStyle.Regular);
+            AppManager.mInputTextBox.Font = new System.Drawing.Font(AppManager.editorConfig.BaseFontName, EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular);
             AppManager.mInputTextBox.Enabled = false;
             AppManager.mInputTextBox.KeyPress += mInputTextBox_KeyPress;
             AppManager.mInputTextBox.Parent = pictPianoRoll;
@@ -5769,7 +5769,7 @@ namespace cadencii
                 float scalex = controller.getScaleX();
                 Font SMALL_FONT = null;
                 try {
-                    SMALL_FONT = new Font(AppManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, AppManager.FONT_SIZE8);
+                    SMALL_FONT = new Font(AppManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, EditorConfig.FONT_SIZE8);
                     int track_height = (int)(100 * controller.getScaleY());
                     VsqFileEx vsq = AppManager.getVsqFile();
                     int track_count = vsq.Track.Count;
@@ -6107,7 +6107,7 @@ namespace cadencii
                 AppManager.mInputTextBox.Text = phrase;
                 AppManager.mInputTextBox.BackColor = System.Drawing.Color.White;
             }
-            AppManager.mInputTextBox.Font = new System.Drawing.Font(AppManager.editorConfig.BaseFontName, AppManager.FONT_SIZE9, System.Drawing.FontStyle.Regular);
+            AppManager.mInputTextBox.Font = new System.Drawing.Font(AppManager.editorConfig.BaseFontName, EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular);
             System.Drawing.Point p = new System.Drawing.Point(position.x + 4, position.y + 2);
             AppManager.mInputTextBox.Location = p;
 
@@ -6351,26 +6351,26 @@ namespace cadencii
                 Util.applyFontRecurse(mDialogPreference, font);
             }
 
-            AppManager.baseFont10Bold = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.BOLD, AppManager.FONT_SIZE10);
-            AppManager.baseFont8 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, AppManager.FONT_SIZE8);
-            AppManager.baseFont10 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, AppManager.FONT_SIZE10);
-            AppManager.baseFont9 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, AppManager.FONT_SIZE9);
-            AppManager.baseFont50Bold = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.BOLD, AppManager.FONT_SIZE50);
-            AppManager.baseFont10OffsetHeight = Util.getStringDrawOffset(AppManager.baseFont10);
-            AppManager.baseFont8OffsetHeight = Util.getStringDrawOffset(AppManager.baseFont8);
-            AppManager.baseFont9OffsetHeight = Util.getStringDrawOffset(AppManager.baseFont9);
-            AppManager.baseFont50OffsetHeight = Util.getStringDrawOffset(AppManager.baseFont50Bold);
-            AppManager.baseFont8Height = Util.measureString(Util.PANGRAM, AppManager.baseFont8).height;
-            AppManager.baseFont9Height = Util.measureString(Util.PANGRAM, AppManager.baseFont9).height;
-            AppManager.baseFont10Height = Util.measureString(Util.PANGRAM, AppManager.baseFont10).height;
-            AppManager.baseFont50Height = Util.measureString(Util.PANGRAM, AppManager.baseFont50Bold).height;
+            EditorConfig.baseFont10Bold = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.BOLD, EditorConfig.FONT_SIZE10);
+            EditorConfig.baseFont8 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, EditorConfig.FONT_SIZE8);
+            EditorConfig.baseFont10 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, EditorConfig.FONT_SIZE10);
+            EditorConfig.baseFont9 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, EditorConfig.FONT_SIZE9);
+            EditorConfig.baseFont50Bold = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.BOLD, EditorConfig.FONT_SIZE50);
+            EditorConfig.baseFont10OffsetHeight = Util.getStringDrawOffset(EditorConfig.baseFont10);
+            EditorConfig.baseFont8OffsetHeight = Util.getStringDrawOffset(EditorConfig.baseFont8);
+            EditorConfig.baseFont9OffsetHeight = Util.getStringDrawOffset(EditorConfig.baseFont9);
+            EditorConfig.baseFont50OffsetHeight = Util.getStringDrawOffset(EditorConfig.baseFont50Bold);
+            EditorConfig.baseFont8Height = Util.measureString(Util.PANGRAM, EditorConfig.baseFont8).height;
+            EditorConfig.baseFont9Height = Util.measureString(Util.PANGRAM, EditorConfig.baseFont9).height;
+            EditorConfig.baseFont10Height = Util.measureString(Util.PANGRAM, EditorConfig.baseFont10).height;
+            EditorConfig.baseFont50Height = Util.measureString(Util.PANGRAM, EditorConfig.baseFont50Bold).height;
         }
 
         public void picturePositionIndicatorDrawTo(java.awt.Graphics g1)
         {
             Graphics2D g = (Graphics2D)g1;
-            Font SMALL_FONT = AppManager.baseFont8;
-            int small_font_offset = AppManager.baseFont8OffsetHeight;
+            Font SMALL_FONT = EditorConfig.baseFont8;
+            int small_font_offset = EditorConfig.baseFont8OffsetHeight;
             try {
                 int key_width = AppManager.keyWidth;
                 int width = picturePositionIndicator.Width;
@@ -11453,7 +11453,7 @@ namespace cadencii
             }
 
             foreach (var track in add_track) {
-                if (replace.Track.Count + 1 >= AppManager.MAX_NUM_TRACK) {
+                if (replace.Track.Count + 1 >= cadencii.core.ApplicationGlobal.MAX_NUM_TRACK) {
                     break;
                 }
                 if (!mDialogMidiImportAndExport.isTempo()) {
@@ -11812,8 +11812,8 @@ namespace cadencii
                 if (mDialogPreference == null) {
                     mDialogPreference = new Preference();
                 }
-                mDialogPreference.setBaseFont(new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, AppManager.FONT_SIZE9));
-                mDialogPreference.setScreenFont(new Font(AppManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, AppManager.FONT_SIZE9));
+                mDialogPreference.setBaseFont(new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, EditorConfig.FONT_SIZE9));
+                mDialogPreference.setScreenFont(new Font(AppManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, EditorConfig.FONT_SIZE9));
                 mDialogPreference.setWheelOrder(AppManager.editorConfig.WheelOrder);
                 mDialogPreference.setCursorFixed(AppManager.editorConfig.CursorFixed);
                 mDialogPreference.setDefaultVibratoLength(AppManager.editorConfig.DefaultVibratoLength);
@@ -13654,7 +13654,7 @@ namespace cadencii
                             break;
                         }
                         string s = PortUtil.formatDecimal("#.00", 60e6 / (float)AppManager.getVsqFile().TempoTable[i].Tempo);
-                        Dimension size = Util.measureString(s, new Font(AppManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, AppManager.FONT_SIZE8));
+                        Dimension size = Util.measureString(s, new Font(AppManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, EditorConfig.FONT_SIZE8));
                         if (Utility.isInRect(new Point(e.X, e.Y), new Rectangle(x, 14, (int)size.width, 14))) {
                             index = i;
                             break;
@@ -13712,7 +13712,7 @@ namespace cadencii
                     for (int i = 0; i < AppManager.getVsqFile().TimesigTable.Count; i++) {
                         string s = AppManager.getVsqFile().TimesigTable[i].Numerator + "/" + AppManager.getVsqFile().TimesigTable[i].Denominator;
                         int x = AppManager.xCoordFromClocks(AppManager.getVsqFile().TimesigTable[i].Clock);
-                        Dimension size = Util.measureString(s, new Font(AppManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, AppManager.FONT_SIZE8));
+                        Dimension size = Util.measureString(s, new Font(AppManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, EditorConfig.FONT_SIZE8));
                         if (Utility.isInRect(new Point(e.X, e.Y), new Rectangle(x, 28, (int)size.width, 14))) {
                             index = i;
                             break;
@@ -13994,7 +13994,7 @@ namespace cadencii
             picturePositionIndicatorDrawTo(g);
 #if MONITOR_FPS
             g.setColor(Color.red);
-            g.setFont(AppManager.baseFont10Bold);
+            g.setFont(EditorConfig.baseFont10Bold);
             g.drawString(PortUtil.formatDecimal("#.00", mFps) + " / " + PortUtil.formatDecimal("#.00", mFps2), 5, 5);
 #endif
         }
@@ -14289,7 +14289,7 @@ namespace cadencii
             /*int selected = AppManager.getSelected();
             Vector<Integer> t = new Vector<Integer>( Arrays.asList( PortUtil.convertIntArray( tracks ) ) );
             if ( t.contains( selected) ) {
-                String file = fsys.combine( AppManager.getTempWaveDir(), selected + ".wav" );
+                String file = fsys.combine( ApplicationGlobal.getTempWaveDir(), selected + ".wav" );
                 if ( PortUtil.isFileExists( file ) ) {
                     Thread loadwave_thread = new Thread( new ParameterizedThreadStart( this.loadWave ) );
                     loadwave_thread.IsBackground = true;

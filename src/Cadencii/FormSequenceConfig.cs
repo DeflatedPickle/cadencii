@@ -20,6 +20,7 @@ using cadencii.java.util;
 using cadencii.media;
 using cadencii.vsq;
 using cadencii.windows.forms;
+using cadencii.core;
 
 
 
@@ -47,7 +48,7 @@ namespace cadencii
 
             // pre-measure
             comboPreMeasure.Items.Clear();
-            for (int i = AppManager.MIN_PRE_MEASURE; i <= AppManager.MAX_PRE_MEASURE; i++) {
+			for (int i = ApplicationGlobal.MIN_PRE_MEASURE; i <= ApplicationGlobal.MAX_PRE_MEASURE; i++) {
                 comboPreMeasure.Items.Add(i);
             }
 
@@ -91,20 +92,20 @@ namespace cadencii
             int indx = comboPreMeasure.SelectedIndex;
             int ret = 1;
             if (indx >= 0) {
-                ret = AppManager.MIN_PRE_MEASURE + indx;
+                ret = ApplicationGlobal.MIN_PRE_MEASURE + indx;
             } else {
                 string s = comboPreMeasure.Text;
                 try {
                     ret = int.Parse(s);
                 } catch (Exception ex) {
-                    ret = AppManager.MIN_PRE_MEASURE;
+                    ret = ApplicationGlobal.MIN_PRE_MEASURE;
                 }
             }
-            if (ret < AppManager.MIN_PRE_MEASURE) {
-                ret = AppManager.MIN_PRE_MEASURE;
+            if (ret < ApplicationGlobal.MIN_PRE_MEASURE) {
+                ret = ApplicationGlobal.MIN_PRE_MEASURE;
             }
-            if (AppManager.MAX_PRE_MEASURE < ret) {
-                ret = AppManager.MAX_PRE_MEASURE;
+            if (ApplicationGlobal.MAX_PRE_MEASURE < ret) {
+                ret = ApplicationGlobal.MAX_PRE_MEASURE;
             }
             return ret;
         }
@@ -115,7 +116,7 @@ namespace cadencii
         /// <param name="value"></param>
         public void setPreMeasure(int value)
         {
-            int indx = value - AppManager.MIN_PRE_MEASURE;
+            int indx = value - ApplicationGlobal.MIN_PRE_MEASURE;
             if (indx < 0) {
                 indx = 0;
             }

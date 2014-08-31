@@ -94,7 +94,7 @@ namespace cadencii
                 Messaging.loadMessages();
                 // システムのデフォルトの言語を調べる．
                 // EditorConfigのコンストラクタは，この判定を自動でやるのでそれを利用
-                EditorConfig ec = new EditorConfig();
+				cadencii.core.EditorConfig ec = new cadencii.core.EditorConfig();
                 Messaging.setLanguage(ec.Language);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".ctor; ex=" + ex + "\n");

@@ -47,7 +47,7 @@ namespace cadencii
             if (apply_singer) {
                 textSingerPath.Text = singer;
                 SingerConfig sc = new SingerConfig();
-                string path_image = Utility.readUtauSingerConfig(singer, sc);
+                string path_image = cadencii.utau.Utau.readUtauSingerConfig(singer, sc);
 #if DEBUG
                 sout.println("FormCheckUnknownSingerAndResampler#.ctor;  path_image=" + path_image);
 #endif

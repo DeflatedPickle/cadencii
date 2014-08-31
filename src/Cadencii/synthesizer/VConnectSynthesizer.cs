@@ -21,6 +21,7 @@ using cadencii.media;
 using cadencii.utau;
 using cadencii.vsq;
 using System.Linq;
+using cadencii.core;
 
 namespace cadencii.synthesizer
 {
@@ -154,7 +155,7 @@ namespace cadencii.synthesizer
 
             for (int i = 0; i < count; i++) {
                 VConnectRenderingQueue queue = queue_[i];
-                string tmp_dir = AppManager.getTempWaveDir();
+                string tmp_dir = ApplicationGlobal.getTempWaveDir();
 
                 string tmp_file = Path.Combine(tmp_dir, "tmp.usq");
                 string hash = "";
@@ -880,7 +881,7 @@ namespace cadencii.synthesizer
 
         public static void clearCache()
         {
-            string tmp_dir = AppManager.getTempWaveDir();
+            string tmp_dir = ApplicationGlobal.getTempWaveDir();
             foreach (var key in cache_.Keys) {
                 try {
                     PortUtil.deleteFile(Path.Combine(tmp_dir, key + ".wav"));

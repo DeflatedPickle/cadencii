@@ -31,15 +31,6 @@ namespace cadencii.core
         private const string CONFIG_FILE_NAME = "config.xml";
 
         public const int MAX_NUM_TRACK = 16;
-
-        /// <summary>
-        /// 鍵盤の表示幅(pixel)
-        /// </summary>
-        public static int keyWidth = MIN_KEY_WIDTH * 2;
-        /// <summary>
-        /// keyWidth+keyOffsetの位置からが、0になってる
-        /// </summary>
-        public const int keyOffset = 6;
 		
         /// <summary>
         /// Cadenciiが使用する一時ディレクトリのパスを取得します。

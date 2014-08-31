@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using cadencii.media;
 using cadencii.vsq;
 using cadencii.java.util;
+using cadencii.core;
 
 namespace cadencii
 {
@@ -24,9 +25,11 @@ namespace cadencii
     {
         private WaveGenerator mGenerator = null;
         private FormMain mMainWindow = null;
+        private string mAppId;
 
-        public SynthesizeWorker(FormMain main_window)
+        public SynthesizeWorker(string appId, FormMain main_window)
         {
+            mAppId = appId;
             mMainWindow = main_window;
         }
 
@@ -40,7 +43,7 @@ namespace cadencii
             List<PatchWorkQueue> queue = (List<PatchWorkQueue>)args[0];
             List<int> tracks = (List<int>)args[1];
             int finished = queue.Count;
-            string temppath = AppManager.getTempWaveDir();
+            string temppath = ApplicationGlobal.getTempWaveDir();
             for (int k = 0; k < tracks.Count; k++) {
                 int track = tracks[k];
                 string wavePath = Path.Combine(temppath, track + ".wav");
@@ -250,7 +253,7 @@ namespace cadencii
             double pan_left_master = VocaloSysUtil.getAmplifyCoeffFromPanLeft(vsq.Mixer.MasterPanpot);
             double pan_right_master = VocaloSysUtil.getAmplifyCoeffFromPanRight(vsq.Mixer.MasterPanpot);
             int numTrack = vsq.Track.Count;
-            string tmppath = AppManager.getTempWaveDir();
+            string tmppath = ApplicationGlobal.getTempWaveDir();
             int track = q.track;
 
             VsqTrack vsq_track = vsq.Track[track];
@@ -274,12 +277,12 @@ namespace cadencii
                 amp.setAmplify(amp_left, amp_right);
             }
             mGenerator.setReceiver(amp);
-            mGenerator.setGlobalConfig(AppManager.editorConfig);
+            mGenerator.setGlobalConfig(ApplicationGlobal.appConfig, AppManager.editorConfig);
             mGenerator.setMainWindow(mMainWindow);
 
             Mixer mixer = new Mixer();
             mixer.setRoot(mGenerator);
-            mixer.setGlobalConfig(AppManager.editorConfig);
+			mixer.setGlobalConfig(ApplicationGlobal.appConfig, AppManager.editorConfig);
             amp.setReceiver(mixer);
 
             if (q.renderAll && vsq.config.WaveFileOutputFromMasterTrack) {
@@ -317,7 +320,7 @@ namespace cadencii
                         amp_i_unit.setAmplify(amp_left_i, amp_right_i);
                         FileWaveSender wave_sender = new FileWaveSender(r);
                         wave_sender.setRoot(mGenerator);
-                        wave_sender.setGlobalConfig(AppManager.editorConfig);
+						wave_sender.setGlobalConfig(ApplicationGlobal.appConfig, AppManager.editorConfig);
 
                         amp_i_unit.setSender(wave_sender);
                         mixer.addSender(amp_i_unit);
@@ -332,7 +335,7 @@ namespace cadencii
 #endif
             FileWaveReceiver wave_receiver = new FileWaveReceiver(q.file, channel, 16, sample_rate);
             wave_receiver.setRoot(mGenerator);
-            wave_receiver.setGlobalConfig(AppManager.editorConfig);
+			wave_receiver.setGlobalConfig(ApplicationGlobal.appConfig, AppManager.editorConfig);
             Amplifier amp_unit_master = new Amplifier();
             amp_unit_master.setRoot(mGenerator);
             if (q.renderAll) {
@@ -345,7 +348,7 @@ namespace cadencii
 
             int end = q.clockEnd;
             if (end == int.MaxValue) end = vsq.TotalClocks + 240;
-            mGenerator.init(vsq, track, q.clockStart, end, sample_rate);
+            mGenerator.init(mAppId, vsq, track, q.clockStart, end, sample_rate);
 
             double sec_start = vsq.getSecFromClock(q.clockStart);
             double sec_end = vsq.getSecFromClock(end);

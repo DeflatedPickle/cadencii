@@ -66,19 +66,6 @@ namespace cadencii.core
         /// </summary>
         [Obsolete]
         private int __revoked__DefaultVibratoDepth = 64;
-        public int PxTrackHeight = 14;
-        public int MouseDragIncrement = 50;
-        public int MouseDragMaximumRate = 600;
-        /// <summary>
-        /// ミキサーウィンドウが表示された状態かどうか
-        /// </summary>
-        public bool MixerVisible = false;
-        /// <summary>
-        /// アイコンパレットが表示された状態かどうか
-        /// <version>3.3+</version>
-        /// </summary>
-        public bool IconPaletteVisible = false;
-        public int PreSendTime = 500;
         public ClockResolution ControlCurveResolution = ClockResolution.L30;
         /// <summary>
         /// 言語設定
@@ -100,35 +87,6 @@ namespace cadencii.core
         /// 実行環境
         /// </summary>
         private PlatformEnum __revoked__Platform = PlatformEnum.Windows;
-        /// <summary>
-        /// ウィンドウが最大化された状態かどうか
-        /// </summary>
-        public bool WindowMaximized = false;
-        /// <summary>
-        /// ウィンドウの位置とサイズ．
-        /// 最小化された状態での値は，この変数に代入されない(ことになっている)
-        /// </summary>
-        public Rectangle WindowRect = new Rectangle(0, 0, 970, 718);
-        /// <summary>
-        /// hScrollのスクロールボックスの最小幅(px)
-        /// </summary>
-        public int MinimumScrollHandleWidth = 20;
-        /// <summary>
-        /// 発音記号入力モードを，維持するかどうか
-        /// </summary>
-        public bool KeepLyricInputMode = false;
-        /// <summary>
-        /// ピアノロールの何もないところをクリックした場合、右クリックでもプレビュー音を再生するかどうか
-        /// </summary>
-        public bool PlayPreviewWhenRightClick = false;
-        /// <summary>
-        /// ゲームコントローラで、異なるイベントと識別する最小の時間間隔(millisec)
-        /// </summary>
-        public int GameControlerMinimumEventInterval = 100;
-        /// <summary>
-        /// カーブの選択範囲もクオンタイズするかどうか
-        /// </summary>
-        public bool CurveSelectingQuantized = true;
 
         /// <summary>
         /// Button index of "△"
@@ -297,83 +255,7 @@ namespace cadencii.core
 #else
             = RendererKind.VCNT;
 #endif
-        /// <summary>
-        /// 再生中に画面を描画するかどうか。デフォルトはfalse
-        /// <version>3.3+</version>
-        /// </summary>
-        public bool SkipDrawWhilePlaying = false;
-        /// <summary>
-        /// ピアノロール画面の縦方向のスケール.
-        /// <verssion>3.3+</verssion>
-        /// </summary>
-        public int PianoRollScaleY = 0;
-        /// <summary>
-        /// ファイル・ツールバーのサイズ
-        /// <version>3.3+</version>
-        /// </summary>
-        public int BandSizeFile = 236;
-        /// <summary>
-        /// ツール・ツールバーのサイズ
-        /// <version>3.3+</version>
-        /// </summary>
-        public int BandSizeTool = 712;
-        /// <summary>
-        /// メジャー・ツールバーのサイズ
-        /// <version>3.3+</version>
-        /// </summary>
-        public int BandSizeMeasure = 714;
-        /// <summary>
-        /// ポジション・ツールバーのサイズ
-        /// <version>3.3+</version>
-        /// </summary>
-        public int BandSizePosition = 234;
-        /// <summary>
-        /// ファイル・ツールバーを新しい行に追加するかどうか
-        /// <version>3.3+</version>
-        /// </summary>
-        public bool BandNewRowFile = false;
-        /// <summary>
-        /// ツール・ツールバーを新しい行に追加するかどうか
-        /// <version>3.3+</version>
-        /// </summary>
-        public bool BandNewRowTool = false;
-        /// <summary>
-        /// メジャー・ツールバーを新しい行に追加するかどうか
-        /// <version>3.3+</version>
-        /// </summary>
-        public bool BandNewRowMeasure = false;
-        /// <summary>
-        /// ポジション・ツールバーを新しい行に追加するかどうか
-        /// <version>3.3+</version>
-        /// </summary>
-        public bool BandNewRowPosition = true;
-        /// <summary>
-        /// ファイル・ツールバーの順番
-        /// <remarks>version 3.3+</remarks>
-        /// </summary>
-        public int BandOrderFile = 0;
-        /// <summary>
-        /// ツール・ツールバーの順番
-        /// <remarks>version 3.3+</remarks>
-        /// </summary>
-        public int BandOrderTool = 1;
-        /// <summary>
-        /// メジャー・ツールバーの順番
-        /// <remarks>version 3.3+</remarks>
-        /// </summary>
-        public int BandOrderMeasure = 3;
-        /// <summary>
-        /// ポジション・ツールバーの順番
-        /// <remarks>version 3.3+</remarks>
-        /// </summary>
-        public int BandOrderPosition = 2;
-        /// <summary>
-        /// ツールバーのChevronの幅．
-        /// Winodws 7(Aero): 17px
-        /// <remarks>version 3.3+</remarks>
-        /// </summary>
-        public int ChevronWidth = 17;
-        /// <summary>
+		/// <summary>
         /// 最後に入力したファイルパスのリスト
         /// リストに入る文字列は，拡張子+タブ文字+パスの形式にする
         /// 拡張子はピリオドを含めない
@@ -402,14 +284,6 @@ namespace cadencii.core
         /// バッファーサイズに設定できる最小値
         /// </summary>
         public const int MIN_BUFFER_MILLIXEC = 100;
-        /// <summary>
-        /// ピアノロールの縦軸の拡大率を表す整数値の最大値
-        /// </summary>
-        public const int MAX_PIANOROLL_SCALEY = 10;
-        /// <summary>
-        /// ピアノロールの縦軸の拡大率を表す整数値の最小値
-        /// </summary>
-        public const int MIN_PIANOROLL_SCALEY = -4;
 		
 		/// <summary>
         /// 自動ビブラートを作成するとき，ユーザー定義タイプのビブラートを利用するかどうか．デフォルトではfalse

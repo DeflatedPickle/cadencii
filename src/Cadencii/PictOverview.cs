@@ -728,8 +728,8 @@ namespace cadencii
                             g.setStroke(getStrokeDefault());
                             if (!barcountstr.Equals("")) {
                                 g.setColor(Color.white);
-                                g.setFont(AppManager.baseFont9);
-                                g.drawString(barcountstr, barcountx + 1 + xoffset, 1 + AppManager.baseFont9Height / 2 - AppManager.baseFont9OffsetHeight + 1);
+                                g.setFont(EditorConfig.baseFont9);
+                                g.drawString(barcountstr, barcountx + 1 + xoffset, 1 + EditorConfig.baseFont9Height / 2 - EditorConfig.baseFont9OffsetHeight + 1);
                             }
                             barcountstr = barcount + "";
                             barcountx = x;

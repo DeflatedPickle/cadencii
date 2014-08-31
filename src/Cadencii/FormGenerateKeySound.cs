@@ -319,7 +319,7 @@ namespace cadencii
                 int sample_rate = vsq.config.SamplingRate;
                 FileWaveReceiver receiver = new FileWaveReceiver(file, 1, 16, sample_rate);
                 generator.setReceiver(receiver);
-                generator.setGlobalConfig(AppManager.editorConfig);
+				generator.setGlobalConfig(ApplicationGlobal.appConfig, AppManager.editorConfig);
 #if DEBUG
                 sout.println("FormGenerateKeySound#GenerateSinglePhone; sample_rate=" + sample_rate);
 #endif

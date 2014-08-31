@@ -384,6 +384,15 @@ namespace cadencii
         /// プレビュー終了位置のクロック
         /// </summary>
         public static int mPreviewEndingClock = 0;
+		
+        /// <summary>
+        /// 鍵盤の表示幅(pixel)
+        /// </summary>
+        public static int keyWidth = MIN_KEY_WIDTH * 2;
+        /// <summary>
+        /// keyWidth+keyOffsetの位置からが、0になってる
+        /// </summary>
+        public const int keyOffset = 6;
 
         #region 裏設定項目
         /// <summary>
