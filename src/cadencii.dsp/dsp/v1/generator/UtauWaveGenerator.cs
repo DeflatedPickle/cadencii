@@ -146,7 +146,7 @@ namespace cadencii
         /// <param name="track"></param>
         /// <param name="start_clock"></param>
         /// <param name="end_clock"></param>
-        public void init(VsqFileEx vsq, int track, int start_clock, int end_clock, int sample_rate)
+        public void init(string appId, VsqFileEx vsq, int track, int start_clock, int end_clock, int sample_rate)
         {
 #if DEBUG
             setQuiet(true);
@@ -168,8 +168,8 @@ namespace cadencii
             sout.println("UtauWaveGenerator#init; mWavtool=" + mWavtool + "; exists=" + System.IO.File.Exists(mWavtool));
 #endif
             mSampleRate = sample_rate;
-            string id = AppManager.getID();
-            mTempDir = Path.Combine(AppManager.getCadenciiTempDir(), id);
+            string id = appId;//AppManager.getID();
+            mTempDir = Path.Combine(cadencii.core.ApplicationGlobal.getCadenciiTempDir(), id);
             /*
             if (mUseWideCharacterWorkaround) {
                 string junction_path = System.IO.Path.Combine(getSystemRoot(), "cadencii_" + id + "_temp");

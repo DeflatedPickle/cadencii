@@ -58,7 +58,7 @@ namespace cadencii
 
             // デバイス名を書く
             PortUtil.drawStringEx(
-                (Graphics)graphics, "Amplifier", AppManager.baseFont10,
+                (Graphics)graphics, "Amplifier", cadencii.EditorConfig.baseFont10,
                 new Rectangle(x, y, width, height),
                 PortUtil.STRING_ALIGN_CENTER, PortUtil.STRING_ALIGN_CENTER);
 

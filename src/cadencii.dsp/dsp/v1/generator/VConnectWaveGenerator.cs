@@ -129,7 +129,7 @@ namespace cadencii
             //TODO:
         }
 
-        public void init(VsqFileEx vsq, int track, int start_clock, int end_clock, int sample_rate)
+        public void init(string appId, VsqFileEx vsq, int track, int start_clock, int end_clock, int sample_rate)
         {
             // VSTiProxyの実装より
             mVsq = (VsqFileEx)vsq.clone();
@@ -273,7 +273,7 @@ namespace cadencii
                     return;
                 }
                 VConnectRenderingQueue queue = mQueue[i];
-                string tmp_dir = AppManager.getTempWaveDir();
+                string tmp_dir = cadencii.core.ApplicationGlobal.getTempWaveDir();
 
                 string tmp_file = Path.Combine(tmp_dir, "tmp.usq");
 #if DEBUG
@@ -509,7 +509,7 @@ namespace cadencii
                                     }
                                     cached_data_length -= append_len;
                                 } catch (Exception ex) {
-                                    AppManager.debugWriteLine("VConnectWaveGenerator#begin; (A),(B); ex=" + ex);
+                                    CDebug.WriteLine("VConnectWaveGenerator#begin; (A),(B); ex=" + ex);
                                 }
                             } else {
 #if DEBUG
@@ -558,7 +558,7 @@ namespace cadencii
                                     // キャッシュの長さは0になる
                                     cached_data_length = 0;
                                 } catch (Exception ex) {
-                                    AppManager.debugWriteLine("VConnectWaveGenerator#begin; (C); ex=" + ex);
+									CDebug.WriteLine("VConnectWaveGenerator#begin; (C); ex=" + ex);
                                 }
                             }
                         } else {
@@ -626,7 +626,7 @@ namespace cadencii
                                         offset += amount;
                                     }
                                 } catch (Exception ex) {
-                                    AppManager.debugWriteLine("VConnectWaveGenerator#begin; (D); ex=" + ex);
+									CDebug.WriteLine("VConnectWaveGenerator#begin; (D); ex=" + ex);
                                 }
                             } else if (next_wave_start < queue.startSample + rendered_length) {
 #if DEBUG
@@ -680,7 +680,7 @@ namespace cadencii
                                     // レンダリング結果を読み込む
                                     wr.read(offset, remain, cached_data_l, cached_data_r);
                                 } catch (Exception ex) {
-                                    AppManager.debugWriteLine("VConnectWaveGenerator#begin; (E); ex=" + ex);
+									CDebug.WriteLine("VConnectWaveGenerator#begin; (E); ex=" + ex);
                                 }
                             } else {
 #if DEBUG
@@ -737,7 +737,7 @@ namespace cadencii
                                     // キャッシュは無くなる
                                     cached_data_length = 0;
                                 } catch (Exception ex) {
-                                    AppManager.debugWriteLine("VConnectWaveGenerator#begin; (F); ex=" + ex);
+									CDebug.WriteLine("VConnectWaveGenerator#begin; (F); ex=" + ex);
                                 }
                             }
                         }
@@ -1109,7 +1109,7 @@ namespace cadencii
 
         public static void clearCache()
         {
-            string tmp_dir = AppManager.getTempWaveDir();
+            string tmp_dir = cadencii.core.ApplicationGlobal.getTempWaveDir();
             foreach (var key in mCache.Keys) {
                 try {
                     PortUtil.deleteFile(Path.Combine(tmp_dir, key + ".wav"));

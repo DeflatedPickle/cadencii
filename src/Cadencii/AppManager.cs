@@ -50,70 +50,6 @@ namespace cadencii
         /// AttachedCurve用のシリアライザ
         /// </summary>
         public static XmlSerializer xmlSerializerListBezierCurves = new XmlSerializer(typeof(AttachedCurve));
-        /// <summary>
-        /// 画面描画に使用する共用のフォントオブジェクト
-        /// </summary>
-        public static Font baseFont8 = new Font("Dialog", Font.PLAIN, FONT_SIZE8);
-        /// <summary>
-        /// 画面描画に使用する共用のフォントオブジェクト
-        /// </summary>
-        public static Font baseFont9 = new Font("Dialog", Font.PLAIN, FONT_SIZE9);
-        /// <summary>
-        /// 画面描画に使用する共用のフォントオブジェクト
-        /// </summary>
-        public static Font baseFont10 = new Font("Dialog", Font.PLAIN, FONT_SIZE10);
-        /// <summary>
-        /// 画面描画に使用する共用のフォントオブジェクト
-        /// </summary>
-        public static Font baseFont10Bold = new Font("Dialog", Font.BOLD, FONT_SIZE10);
-        /// <summary>
-        /// 画面描画に使用する共用のフォントオブジェクト
-        /// </summary>
-        public static Font baseFont50Bold = new Font("Dialog", Font.BOLD, FONT_SIZE50);
-        /// <summary>
-        /// 歌詞を音符の（高さ方向の）真ん中に描画するためのオフセット。
-        /// たとえば，文字列の中心軸がy_centerを通るように描画したい場合は，
-        /// <code>g.drawString( ..., x, y_center - baseFont10OffsetHeight + 1 )</code>
-        /// とすればよい
-        /// </summary>
-        public static int baseFont10OffsetHeight = 0;
-        /// <summary>
-        /// 歌詞を音符の（高さ方向の）真ん中に描画するためのオフセット。
-        /// たとえば，文字列の中心軸がy_centerを通るように描画したい場合は，
-        /// <code>g.drawString( ..., x, y_center - baseFont8OffsetHeight + 1 )</code>
-        /// とすればよい
-        /// </summary>
-        public static int baseFont8OffsetHeight = 0;
-        /// <summary>
-        /// 歌詞を音符の（高さ方向の）真ん中に描画するためのオフセット。
-        /// たとえば，文字列の中心軸がy_centerを通るように描画したい場合は，
-        /// <code>g.drawString( ..., x, y_center - baseFont9OffsetHeight + 1 )</code>
-        /// とすればよい
-        /// </summary>
-        public static int baseFont9OffsetHeight = 0;
-        /// <summary>
-        /// 歌詞を音符の（高さ方向の）真ん中に描画するためのオフセット。
-        /// たとえば，文字列の中心軸がy_centerを通るように描画したい場合は，
-        /// <code>g.drawString( ..., x, y_center - baseFont50OffsetHeight + 1 )</code>
-        /// とすればよい
-        /// </summary>
-        public static int baseFont50OffsetHeight = 0;
-        /// <summary>
-        /// フォントオブジェクトbaseFont8の描画時の高さ
-        /// </summary>
-        public static int baseFont8Height = FONT_SIZE8;
-        /// <summary>
-        /// フォントオブジェクトbaseFont9の描画時の高さ
-        /// </summary>
-        public static int baseFont9Height = FONT_SIZE9;
-        /// <summary>
-        /// フォントオブジェクトbaseFont1-の描画時の高さ
-        /// </summary>
-        public static int baseFont10Height = FONT_SIZE10;
-        /// <summary>
-        /// フォントオブジェクトbaseFont50の描画時の高さ
-        /// </summary>
-        public static int baseFont50Height = FONT_SIZE50;
 #if ENABLE_PROPERTY
         /// <summary>
         /// プロパティパネルのインスタンス
@@ -379,10 +315,6 @@ namespace cadencii
         /// </summary>
         public static string mSelectedPaletteTool = "";
         /// <summary>
-        /// このCadenciiのID。起動ごとにユニークな値が設定され、一時フォルダのフォルダ名等に使用する
-        /// </summary>
-        private static string mID = "";
-        /// <summary>
         /// ダイアログを表示中かどうか
         /// </summary>
         private static bool mShowingDialog = false;
@@ -440,10 +372,6 @@ namespace cadencii
         /// RenderingStatusをXMLシリアライズするためのシリアライザ
         /// </summary>
         public static XmlSerializer mRenderingStatusSerializer = new XmlSerializer(typeof(RenderedStatus));
-        /// <summary>
-        /// wavを出力するための一時ディレクトリのパス。
-        /// </summary>
-        private static string mTempWaveDir = "";
         /// <summary>
         /// 再生開始からの経過時刻がこの秒数以下の場合、再生を止めることが禁止される。
         /// </summary>
@@ -529,8 +457,6 @@ namespace cadencii
         /// 開始時刻＞終了時刻の場合は，partialではなく全体のリロード要求
         /// </summary>
         public static event WaveViewRealoadRequiredEventHandler WaveViewReloadRequired;
-
-        private const string TEMPDIR_NAME = "cadencii";
 
         static AppManager()
         {
@@ -1757,39 +1683,12 @@ namespace cadencii
         }
 
         /// <summary>
-        /// 音声ファイルのキャッシュディレクトリのパスを設定します。
-        /// このメソッドでは、キャッシュディレクトリの変更に伴う他の処理は実行されません。
-        /// </summary>
-        /// <param name="value"></param>
-        public static void setTempWaveDir(string value)
-        {
-#if DEBUG
-            sout.println("AppManager#setTempWaveDir; before: \"" + mTempWaveDir + "\"");
-            sout.println("                           after:  \"" + value + "\"");
-#endif
-            mTempWaveDir = value;
-        }
-
-        /// <summary>
-        /// 音声ファイルのキャッシュディレクトリのパスを取得します。
-        /// </summary>
-        /// <returns></returns>
-        public static string getTempWaveDir()
-        {
-            return mTempWaveDir;
-        }
-
-        /// <summary>
         /// Cadenciiが使用する一時ディレクトリのパスを取得します。
         /// </summary>
         /// <returns></returns>
         public static string getCadenciiTempDir()
         {
-            string temp = Path.Combine(PortUtil.getTempPath(), TEMPDIR_NAME);
-            if (!Directory.Exists(temp)) {
-                PortUtil.createDirectory(temp);
-            }
-            return temp;
+        	return cadencii.core.ApplicationGlobal.getCadenciiTempDir();
         }
 
         /// <summary>
@@ -2501,15 +2400,6 @@ namespace cadencii
             } catch (Exception ex) {
                 serr.println("AppManager#init; ex=" + ex);
             }
-
-#if !TREECOM
-            mID = PortUtil.getMD5FromString((long)PortUtil.getCurrentTime() + "").Replace("_", "");
-            mTempWaveDir = Path.Combine(getCadenciiTempDir(), mID);
-            if (!Directory.Exists(mTempWaveDir)) {
-                PortUtil.createDirectory(mTempWaveDir);
-            }
-            string log = Path.Combine(getTempWaveDir(), "run.log");
-#endif
 
             reloadUtauVoiceDB();
 

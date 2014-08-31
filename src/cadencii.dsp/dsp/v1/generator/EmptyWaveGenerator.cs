@@ -97,7 +97,7 @@ namespace cadencii
             mReceiver = receiver;
         }
 
-        public void init(VsqFileEx vsq, int track, int start_clock, int end_clock, int sample_rate)
+        public void init(string appId, VsqFileEx vsq, int track, int start_clock, int end_clock, int sample_rate)
         {
             mSampleRate = sample_rate;
         }
