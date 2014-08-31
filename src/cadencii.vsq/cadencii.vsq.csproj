@@ -16,6 +16,8 @@
     </UpgradeBackupLocation>
     <SignAssembly>false</SignAssembly>
     <TargetFrameworkProfile />
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -151,11 +153,16 @@
     <Compile Include="VsqTrack.cs" />
     <Compile Include="VsqVoiceLanguage.cs" />
     <Compile Include="WrappedStreamWriter.cs" />
+    <Compile Include="VsqFileEx.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cadencii.core\cadencii.core.csproj">
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
       <Name>cadencii.core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cadencii.xml\cadencii.xml.csproj">
+      <Project>{23C7549D-A0FD-402A-8470-95DB4BE6081C}</Project>
+      <Name>cadencii.xml</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

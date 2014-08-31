@@ -93,6 +93,19 @@
     <Compile Include="ValuePair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="misc.cs" />
+    <Compile Include="WorkerState.cs" />
+    <Compile Include="WorkerStateImp.cs" />
+    <Compile Include="ICommand.cs" />
+    <Compile Include="ICommandRunnable.cs" />
+    <Compile Include="IComparisonContext.cs" />
+    <Compile Include="AttachedCurve.cs" />
+    <Compile Include="BezierChain.cs" />
+    <Compile Include="BezierControlType.cs" />
+    <Compile Include="BezierCurves.cs" />
+    <Compile Include="BezierPickedSide.cs" />
+    <Compile Include="BezierPoint.cs" />
+    <Compile Include="PointD.cs" />
+    <Compile Include="CurveType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

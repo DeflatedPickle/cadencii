@@ -110,15 +110,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttachedCurve.cs" />
     <Compile Include="AttackVariation.cs" />
     <Compile Include="AttackVariationConverter.cs" />
     <Compile Include="BAssemblyInfo.cs" />
-    <Compile Include="BezierChain.cs" />
-    <Compile Include="BezierControlType.cs" />
-    <Compile Include="BezierCurves.cs" />
-    <Compile Include="BezierPickedSide.cs" />
-    <Compile Include="BezierPoint.cs" />
     <Compile Include="BgmFile.cs" />
     <Compile Include="BgmMenuItem.cs">
       <SubType>Component</SubType>
@@ -313,7 +307,6 @@
     <Compile Include="FormSplash.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IComparisonContext.cs" />
     <Compile Include="IconParader.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -330,7 +323,6 @@
     <Compile Include="PictPianoRoll.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PointD.cs" />
     <Compile Include="QuantizeModeUtil.cs" />
     <Compile Include="RenderedStatus.cs" />
     <Compile Include="NoteNumberProperty.cs" />
@@ -355,7 +347,6 @@
     <Compile Include="Utility.cs" />
     <Compile Include="CommandTree.cs" />
     <Compile Include="CommandTreeUnit.cs" />
-    <Compile Include="CurveType.cs" />
     <Compile Include="FormNotePropertyController.cs">
     </Compile>
     <Compile Include="FormShortcutKeys.cs">
@@ -409,8 +400,6 @@
     <Compile Include="FormVibratoConfig.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ICommand.cs" />
-    <Compile Include="ICommandRunnable.cs" />
     <Compile Include="IPaletteTool.cs" />
     <Compile Include="KeySoundPlayer.cs" />
     <Compile Include="NumericUpDownEx.cs">
@@ -492,7 +481,6 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="VsqBPListComparisonContext.cs" />
-    <Compile Include="VsqFileEx.cs" />
     <Compile Include="VstSdk.cs" />
     <Compile Include="WaveDrawContext.cs" />
     <Compile Include="WaveUnitConfig.cs" />
@@ -502,8 +490,6 @@
     </Compile>
     <Compile Include="WaveViewRealoadRequiredEventArgs.cs" />
     <Compile Include="WaveViewRealoadRequiredEventHandler.cs" />
-    <Compile Include="WorkerState.cs" />
-    <Compile Include="WorkerStateImp.cs" />
     <Compile Include="XmlStaticMemberSerializerEx.cs" />
     <EmbeddedResource Include="ui\dotnet\UpdateCheckForm.resx">
       <DependentUpon>UpdateCheckForm.cs</DependentUpon>
