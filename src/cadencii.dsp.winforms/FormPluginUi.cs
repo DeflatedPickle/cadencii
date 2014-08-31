@@ -31,7 +31,8 @@ namespace cadencii
             this.SetStyle(System.Windows.Forms.ControlStyles.UserPaint, true);
             InitializeComponent();
             this.FormClosing += new FormClosingEventHandler(FormPluginUi_FormClosing);
-            this.Icon = Properties.Resources._switch;
+            // FIXME: bring this back
+            //this.Icon = Properties.Resources._switch;
         }
 
         public void FormPluginUi_FormClosing(Object sender, FormClosingEventArgs e)

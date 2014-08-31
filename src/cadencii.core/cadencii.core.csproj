@@ -22,7 +22,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\x86\Debug\</OutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DefineConstants>DEBUG;CSHARP</DefineConstants>
+    <DefineConstants>DEBUG;CSHARP;ENABLE_PROPERTY</DefineConstants>
     <DocumentationFile>intermediates\x86\Debug\cadencii.core.xml</DocumentationFile>
     <WarningLevel>4</WarningLevel>
     <Optimize>false</Optimize>
@@ -31,14 +31,14 @@
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\x86\Release\</OutputPath>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DefineConstants>CSHARP</DefineConstants>
+    <DefineConstants>CSHARP;ENABLE_PROPERTY</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <Optimize>false</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugMinimal|x86' ">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\DebugMinimal\</OutputPath>
-    <DefineConstants>DEBUG;CSHARP</DefineConstants>
+    <DefineConstants>DEBUG;CSHARP;ENABLE_PROPERTY</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DocumentationFile>bin\x86\Debug\org.kbinani.xml</DocumentationFile>
     <PlatformTarget>x86</PlatformTarget>
@@ -50,7 +50,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DocumentationFile>bin\x86\Release\org.kbinani.xml</DocumentationFile>
     <PlatformTarget>x86</PlatformTarget>
-    <DefineConstants>CSHARP</DefineConstants>
+    <DefineConstants>CSHARP;ENABLE_PROPERTY</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <Optimize>false</Optimize>
   </PropertyGroup>
@@ -59,7 +59,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DocumentationFile>bin\x86\Release\org.kbinani.xml</DocumentationFile>
     <PlatformTarget>x86</PlatformTarget>
-    <DefineConstants>CSHARP</DefineConstants>
+    <DefineConstants>CSHARP;ENABLE_PROPERTY</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <Optimize>false</Optimize>
   </PropertyGroup>
@@ -113,20 +113,9 @@
     <Compile Include="ApplicationGlobal.cs" />
     <Compile Include="EditorStatus.cs" />
     <Compile Include="CadenciiCommandType.cs" />
-    <Compile Include="dspcore\DefaultVibratoLengthEnum.cs" />
-    <Compile Include="dspcore\VibratoBPList.cs" />
-    <Compile Include="dspcore\VibratoBPPair.cs" />
-    <Compile Include="dspcore\VibratoLengthEditingRule.cs" />
-    <Compile Include="dspcore\VibratoVariation.cs" />
-    <Compile Include="dspcore\VibratoVariationConverter.cs" />
     <Compile Include="EditorConfig.cs" />
-    <Compile Include="dspcore\TempoTableEntry.cs" />
-    <Compile Include="dspcore\TempoVector.cs" />
-    <Compile Include="dspcore\TempoVectorSearchContext.cs" />
-    <Compile Include="dspcore\ITempoMaster.cs" />
     <Compile Include="ClockResolution.cs" />
     <Compile Include="PlatformEnum.cs" />
-    <Compile Include="dspcore\QuantizeMode.cs" />
     <Compile Include="ValuePairOfStringArrayOfKeys.cs" />
     <Compile Include="ValuePairOfStringBoolean.cs" />
     <Compile Include="ClockResolutionUtility.cs" />
@@ -134,6 +123,14 @@
     <Compile Include="MessageBodyEntry.cs" />
     <Compile Include="Messaging.cs" />
     <Compile Include="MemoryManager.cs" />
+    <Compile Include="dspcore\DefaultVibratoLengthEnum.cs" />
+    <Compile Include="dspcore\VibratoBPList.cs" />
+    <Compile Include="dspcore\VibratoBPPair.cs" />
+    <Compile Include="dspcore\ITempoMaster.cs" />
+    <Compile Include="dspcore\QuantizeMode.cs" />
+    <Compile Include="dspcore\TempoTableEntry.cs" />
+    <Compile Include="dspcore\TempoVector.cs" />
+    <Compile Include="dspcore\TempoVectorSearchContext.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

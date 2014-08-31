@@ -17,7 +17,7 @@ using System.ComponentModel;
 using System.Collections.Generic;
 using cadencii.java.util;
 using cadencii.vsq;
-
+using cadencii.core;
 
 
 namespace cadencii
@@ -48,12 +48,12 @@ namespace cadencii
 
             if (ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType) {
                 // ユーザー定義の中から選ぶ場合
-                int size = ApplicationGlobal.appConfig.AutoVibratoCustom.Count;
+                int size = AppManager.editorConfig.AutoVibratoCustom.Count;
 #if DEBUG
                 sout.println("VibratoVariationConverter#GetStandardValues; size=" + size);
 #endif
                 for (int i = 0; i < size; i++) {
-                    VibratoHandle handle = ApplicationGlobal.appConfig.AutoVibratoCustom[i];
+					VibratoHandle handle = AppManager.editorConfig.AutoVibratoCustom[i];
 #if DEBUG
                     sout.println("VibratoVariationConverter#GetStandardValues; handle.getDisplayString()=" + handle.getDisplayString());
 #endif
@@ -119,9 +119,9 @@ namespace cadencii
                 return new VibratoVariation(VibratoVariation.empty.description);
             } else {
                 if (ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType) {
-                    int size = ApplicationGlobal.appConfig.AutoVibratoCustom.Count;
+                    int size = AppManager.editorConfig.AutoVibratoCustom.Count;
                     for (int i = 0; i < size; i++) {
-                        string display_string = ApplicationGlobal.appConfig.AutoVibratoCustom[i].getDisplayString();
+						string display_string = AppManager.editorConfig.AutoVibratoCustom[i].getDisplayString();
                         if (value.Equals(display_string)) {
                             return new VibratoVariation(display_string);
                         }

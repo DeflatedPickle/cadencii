@@ -280,9 +280,6 @@
     <Compile Include="FormNoteExpressionConfig.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormPluginUi.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FormRandomize.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -473,6 +470,9 @@
     </EmbeddedResource>
     <Compile Include="plugin\InterfaceVersion.cs" />
     <Compile Include="AppManager.cs" />
+    <Compile Include="dspcore\VibratoLengthEditingRule.cs" />
+    <Compile Include="dspcore\VibratoVariation.cs" />
+    <Compile Include="dspcore\VibratoVariationConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ja.po">
@@ -751,6 +751,10 @@
     <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.uicore\cadencii.uicore.csproj">
       <Project>{BF3AE944-08FC-441E-9582-756CFC72C838}</Project>
       <Name>cadencii.uicore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.dsp.winforms\cadencii.dsp.winforms.csproj">
+      <Project>{5F65872D-0431-4C76-973F-CD5DECD388A4}</Project>
+      <Name>cadencii.dsp.winforms</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

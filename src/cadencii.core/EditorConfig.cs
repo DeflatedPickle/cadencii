@@ -411,6 +411,11 @@ namespace cadencii.core
         /// </summary>
         public const int MIN_PIANOROLL_SCALEY = -4;
 		
+		/// <summary>
+        /// 自動ビブラートを作成するとき，ユーザー定義タイプのビブラートを利用するかどうか．デフォルトではfalse
+        /// </summary>
+        public bool UseUserDefinedAutoVibratoType = false;
+
         /// <summary>
         /// コンストラクタ．起動したOSによって動作を変える場合がある
         /// </summary>

@@ -13,7 +13,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;ENABLE_VOCALOID;ENABLE_AQUESTONE</DefineConstants>
+    <DefineConstants>DEBUG;ENABLE_VOCALOID;ENABLE_AQUESTONE;ENABLE_PROPERTY</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -25,7 +25,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <DefineConstants>ENABLE_VOCALOID;ENABLE_AQUESTONE</DefineConstants>
+    <DefineConstants>ENABLE_VOCALOID;ENABLE_AQUESTONE;ENABLE_PROPERTY</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
@@ -38,15 +38,6 @@
     <Compile Include="dsp\v1\Amplifier.cs" />
     <Compile Include="dsp\v1\FileWaveReceiver.cs" />
     <Compile Include="dsp\v1\FileWaveSender.cs" />
-    <Compile Include="dsp\v1\generator\AquesTone2WaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\AquesToneWaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\AquesToneWaveGeneratorBase.cs" />
-    <Compile Include="dsp\v1\generator\EmptyWaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\UtauWaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\VConnectWaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\VocaloidWaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\WaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\WaveSenderDriver.cs" />
     <Compile Include="dsp\v1\Mixer.cs" />
     <Compile Include="dsp\v1\MonitorWaveReceiver.cs" />
     <Compile Include="dsp\v1\Separator.cs" />
@@ -77,20 +68,9 @@
     <Compile Include="dsp\v1\RenderQueue.cs" />
     <Compile Include="dsp\v1\VConnectRenderingQueue.cs" />
     <Compile Include="utau\Utau.cs" />
-    <Compile Include="VSTiDllManager.cs" />
-    <Compile Include="vsti\aquestone\EventQueueSequence.cs" />
-    <Compile Include="vsti\aquestone\MidiEventQueue.cs" />
-    <Compile Include="vsti\aquestone\ParameterEvent.cs" />
-    <Compile Include="vsti\aquestone\SyllableMatcher.cs" />
-    <Compile Include="vsti\AquesTone2Driver.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="vsti\AquesToneDriver.cs" />
-    <Compile Include="vsti\AquesToneDriverBase.cs" />
-    <Compile Include="vsti\VocaloidDriver.cs" />
-    <Compile Include="vsti\VSTiDriverBase.cs" />
     <Compile Include="VstSdk.cs" />
     <Compile Include="KanaDeRomanization.cs" />
+    <Compile Include="dsp\v1\generator\WaveGenerator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

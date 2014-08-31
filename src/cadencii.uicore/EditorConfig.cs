@@ -207,10 +207,6 @@ namespace cadencii
 			item.DEMaccent = ApplicationGlobal.appConfig.DefaultDEMaccent;
         }
 		/// <summary>
-        /// 自動ビブラートを作成するとき，ユーザー定義タイプのビブラートを利用するかどうか．デフォルトではfalse
-        /// </summary>
-        public bool UseUserDefinedAutoVibratoType = false;
-		/// <summary>
         /// ビブラートの自動追加を行うかどうかを決める音符長さの閾値．単位はclock
         /// <version>3.3+</version>
         /// </summary>
@@ -244,7 +240,7 @@ namespace cadencii
         /// <returns></returns>
         public VibratoHandle createAutoVibrato(SynthesizerType type, int vibrato_clocks)
         {
-            if (UseUserDefinedAutoVibratoType) {
+            if (ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType) {
                 if (AutoVibratoCustom == null) {
                     AutoVibratoCustom = new List<VibratoHandle>();
                 }
