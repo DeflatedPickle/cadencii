@@ -83,6 +83,7 @@ namespace cadencii
             string[] jp = new string[] { "ハ", "嬰ハ", "ニ", "変ホ", "ホ", "ヘ", "嬰へ", "ト", "嬰ト", "イ", "変ロ", "ロ" };
             string[] jpfixed = new string[] { "ド", "ド#", "レ", "ミb", "ミ", "ファ", "ファ#", "ソ", "ソ#", "ラ", "シb", "シ", };
             string[] de = { "C", "Cis", "D", "Es", "E", "F", "Fis", "G", "Gis", "A", "Hes", "H" };
+            /*
             if (AppManager.editorConfig != null) {
                 int odd = note % 12;
                 int order = (note - odd) / 12 - 2;
@@ -98,7 +99,7 @@ namespace cadencii
                 } else if (exp_type == NoteNumberExpressionType.Deutsche) {
                     return de[odd] + order;
                 }
-            } else {
+            } else*/ {
                 return VsqNote.getNoteString(note);
             }
             return "";
@@ -113,9 +114,12 @@ namespace cadencii
             value = value.ToUpper();
             try {
                 int draft_note_number = int.Parse(value);
+                // FIXME: bring back this
+                /*
                 if (AppManager.editorConfig != null) {
                     AppManager.editorConfig.PropertyWindowStatus.LastUsedNoteNumberExpression = NoteNumberExpressionType.Numeric;
                 }
+                */
                 return draft_note_number;
             } catch (Exception ex) {
             }
@@ -270,6 +274,8 @@ namespace cadencii
                 } catch (Exception ex) {
                 }
             }
+// FIXME: bring this back
+/*
             if (AppManager.editorConfig != null) {
                 if (exp_type == NoteNumberExpressionType.International &&
                     AppManager.editorConfig.PropertyWindowStatus.LastUsedNoteNumberExpression == NoteNumberExpressionType.Deutsche) {
@@ -278,6 +284,7 @@ namespace cadencii
                     AppManager.editorConfig.PropertyWindowStatus.LastUsedNoteNumberExpression = exp_type;
                 }
             }
+*/
             return 12 * scale + 2 * 12 + odd + offset * (doubled ? 2 : 1);
         }
     }

@@ -62,7 +62,7 @@ namespace cadencii
         /// エディターの設定値を指定します
         /// </summary>
         /// <param name="config"></param>
-        void setGlobalConfig(EditorConfig config);
+        void setGlobalConfig(cadencii.core.EditorConfig config, EditorConfig configUI);
 
         /// <summary>
         /// 合成処理の進捗状況を取得します．

@@ -3,7 +3,7 @@ using System.IO;
 
 namespace cadencii
 {
-	public static class Debug
+	public static class CDebug
 	{
 #if DEBUG
 		private static StreamWriter mDebugLog = null;
@@ -19,8 +19,8 @@ namespace cadencii
 				}
 				mDebugLog.WriteLine(message);
 			} catch (Exception ex) {
-				serr.println("Debug#debugWriteLine; ex=" + ex);
-				Logger.write(typeof(Debug) + ".debugWriteLine; ex=" + ex + "\n");
+				serr.println("Debug#WriteLine; ex=" + ex);
+				Logger.write(typeof(CDebug) + ".WriteLine; ex=" + ex + "\n");
 			}
 			sout.println(message);
 #endif

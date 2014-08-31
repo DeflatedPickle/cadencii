@@ -85,9 +85,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ISO639.cs" />
-    <Compile Include="MessageBodyEntry.cs" />
-    <Compile Include="Messaging.cs" />
-    <Compile Include="MessageBody.cs" />
     <Compile Include="PolylineDrawer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BSplitContainer.cs">

@@ -37,7 +37,8 @@ namespace cadencii
         /// <summary>
         /// エディターの設定値
         /// </summary>
-        protected EditorConfig mConfig;
+        protected cadencii.core.EditorConfig mConfig;
+	protected cadencii.EditorConfig mConfigUI;
 
         /// <summary>
         /// メインウィンドウへの参照
@@ -97,9 +98,10 @@ namespace cadencii
         /// スコアエディタ全体の設定値を設定する．
         /// </summary>
         /// <param name="config"></param>
-        public virtual void setGlobalConfig(EditorConfig config)
+        public virtual void setGlobalConfig(cadencii.core.EditorConfig config, cadencii.EditorConfig configUI)
         {
             mConfig = config;
+            mConfigUI = configUI;
         }
 
         /// <summary>

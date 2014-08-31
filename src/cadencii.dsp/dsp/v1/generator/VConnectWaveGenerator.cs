@@ -164,8 +164,8 @@ namespace cadencii
             // StraightRenderingRunner.ctorの実装より
             mLocker = new Object();
             mQueue = new List<VConnectRenderingQueue>();
-            if (mConfig != null && mConfig.UtauSingers != null) {
-                mSingerConfigSys = mConfig.UtauSingers;
+            if (mConfig != null && mConfigUI.UtauSingers != null) {
+                mSingerConfigSys = mConfigUI.UtauSingers;
             } else {
                 mSingerConfigSys = new List<SingerConfig>();
             }

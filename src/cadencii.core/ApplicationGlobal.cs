@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace cadencii
+namespace cadencii.core
 {
 	public static class ApplicationGlobal
 	{

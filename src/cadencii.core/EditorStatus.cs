@@ -19,11 +19,11 @@ namespace cadencii
         /// <summary>
         /// トラックのレンダリングが必要かどうかを表すフラグ
         /// </summary>
-        public bool[] renderRequired = new bool[cadencii.ApplicationGlobal.MAX_NUM_TRACK];
+        public bool[] renderRequired = new bool[cadencii.core.ApplicationGlobal.MAX_NUM_TRACK];
 
         public EditorStatus()
         {
-			for (int i = 0; i < cadencii.ApplicationGlobal.MAX_NUM_TRACK; i++) {
+			for (int i = 0; i < cadencii.core.ApplicationGlobal.MAX_NUM_TRACK; i++) {
                 renderRequired[i] = false;
             }
         }

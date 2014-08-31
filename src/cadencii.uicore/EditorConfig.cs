@@ -20,12 +20,13 @@ using cadencii;
 using cadencii.java.awt;
 using cadencii.java.io;
 using cadencii.java.util;
-using cadencii.windows.forms;
+//using cadencii.windows.forms;
 using cadencii.xml;
 using cadencii.vsq;
 using cadencii.apputil;
-using cadencii.uicore;
+//using cadencii.uicore;
 using cadencii.vsq;
+using cadencii.core;
 
 
 
@@ -116,9 +117,6 @@ namespace cadencii
                 this.BaseFontName = f.Name;
                 this.ScreenFontName = f.Name;
             }
-
-            // 言語設定を，システムのデフォルトの言語を用いる
-            this.Language = Messaging.getRuntimeLanguageName();
         }
 		
         /// <summary>
@@ -128,12 +126,41 @@ namespace cadencii
         public void applyDefaultSingerStyle(VsqID item)
         {
             if (item == null) return;
-            item.PMBendDepth = this.DefaultPMBendDepth;
-            item.PMBendLength = this.DefaultPMBendLength;
-            item.PMbPortamentoUse = this.DefaultPMbPortamentoUse;
-            item.DEMdecGainRate = this.DefaultDEMdecGainRate;
-            item.DEMaccent = this.DefaultDEMaccent;
+            item.PMBendDepth = ApplicationGlobal.appConfig.DefaultPMBendDepth;
+			item.PMBendLength = ApplicationGlobal.appConfig.DefaultPMBendLength;
+			item.PMbPortamentoUse = ApplicationGlobal.appConfig.DefaultPMbPortamentoUse;
+			item.DEMdecGainRate = ApplicationGlobal.appConfig.DefaultDEMdecGainRate;
+			item.DEMaccent = ApplicationGlobal.appConfig.DefaultDEMaccent;
         }
+		/// <summary>
+        /// 自動ビブラートを作成するとき，ユーザー定義タイプのビブラートを利用するかどうか．デフォルトではfalse
+        /// </summary>
+        public bool UseUserDefinedAutoVibratoType = false;
+		/// <summary>
+        /// ビブラートの自動追加を行うかどうかを決める音符長さの閾値．単位はclock
+        /// <version>3.3+</version>
+        /// </summary>
+        public int AutoVibratoThresholdLength = 480;
+        /// <summary>
+        /// VOCALOID1用のデフォルトビブラート設定
+        /// </summary>
+        public string AutoVibratoType1 = "$04040001";
+        /// <summary>
+        /// VOCALOID2用のデフォルトビブラート設定
+        /// </summary>
+        public string AutoVibratoType2 = "$04040001";
+        /// <summary>
+        /// カスタムのデフォルトビブラート設定
+        /// <version>3.3+</version>
+        /// </summary>
+        public string AutoVibratoTypeCustom = "$04040001";
+        /// <summary>
+        /// ビブラートの自動追加を行うかどうか
+        /// </summary>
+        public bool EnableAutoVibrato = true;
+        /// <summary>
+        /// ピアノロール上での，音符の表示高さ(ピクセル)
+        /// </summary>
 		
         /// <summary>
         /// 自動ビブラートを作成します
@@ -204,6 +231,11 @@ namespace cadencii
         {
             return new Font(BaseFontName, Font.PLAIN, (int)BaseFontSize);
         }
+		private QuantizeMode m_position_quantize = QuantizeMode.p32;
+        private bool m_position_quantize_triplet = false;
+        private QuantizeMode m_length_quantize = QuantizeMode.p32;
+        private bool m_length_quantize_triplet = false;
+        private int m_mouse_hover_time = 500;
 
         public int getMouseHoverTime()
         {
@@ -234,6 +266,145 @@ namespace cadencii
             set
             {
                 setMouseHoverTime(value);
+            }
+        }
+		
+        /// <summary>
+        /// PositionQuantize, PositionQuantizeTriplet, LengthQuantize, LengthQuantizeTripletの描くプロパティのいずれかが
+        /// 変更された時発生します
+        /// </summary>
+        public static event EventHandler QuantizeModeChanged;
+		
+        public QuantizeMode getPositionQuantize()
+        {
+            return m_position_quantize;
+        }
+		
+        public void setPositionQuantize(QuantizeMode value)
+        {
+            if (m_position_quantize != value) {
+                m_position_quantize = value;
+                try {
+                    invokeQuantizeModeChangedEvent();
+                } catch (Exception ex) {
+                    Logger.write(typeof(EditorConfig) + ".getPositionQuantize; ex=" + ex + "\n");
+                    serr.println("EditorConfig#setPositionQuantize; ex=" + ex);
+                }
+            }
+        }
+
+        // XMLシリアライズ用
+        public QuantizeMode PositionQuantize
+        {
+            get
+            {
+                return getPositionQuantize();
+            }
+            set
+            {
+                setPositionQuantize(value);
+            }
+        }
+
+        public bool isPositionQuantizeTriplet()
+        {
+            return m_position_quantize_triplet;
+        }
+
+        public void setPositionQuantizeTriplet(bool value)
+        {
+            if (m_position_quantize_triplet != value) {
+                m_position_quantize_triplet = value;
+                try {
+                    invokeQuantizeModeChangedEvent();
+                } catch (Exception ex) {
+                    serr.println("EditorConfig#setPositionQuantizeTriplet; ex=" + ex);
+                    Logger.write(typeof(EditorConfig) + ".setPositionQuantizeTriplet; ex=" + ex + "\n");
+                }
+            }
+        }
+
+        // XMLシリアライズ用
+        public bool PositionQuantizeTriplet
+        {
+            get
+            {
+                return isPositionQuantizeTriplet();
+            }
+            set
+            {
+                setPositionQuantizeTriplet(value);
+            }
+        }
+
+        public QuantizeMode getLengthQuantize()
+        {
+            return m_length_quantize;
+        }
+
+        public void setLengthQuantize(QuantizeMode value)
+        {
+            if (m_length_quantize != value) {
+                m_length_quantize = value;
+                try {
+                    invokeQuantizeModeChangedEvent();
+                } catch (Exception ex) {
+                    serr.println("EditorConfig#setLengthQuantize; ex=" + ex);
+                    Logger.write(typeof(EditorConfig) + ".setLengthQuantize; ex=" + ex + "\n");
+                }
+            }
+        }
+
+        public QuantizeMode LengthQuantize
+        {
+            get
+            {
+                return getLengthQuantize();
+            }
+            set
+            {
+                setLengthQuantize(value);
+            }
+        }
+
+        public bool isLengthQuantizeTriplet()
+        {
+            return m_length_quantize_triplet;
+        }
+
+        public void setLengthQuantizeTriplet(bool value)
+        {
+            if (m_length_quantize_triplet != value) {
+                m_length_quantize_triplet = value;
+                try {
+                    invokeQuantizeModeChangedEvent();
+                } catch (Exception ex) {
+                    serr.println("EditorConfig#setLengthQuantizeTriplet; ex=" + ex);
+                    Logger.write(typeof(EditorConfig) + ".setLengthQuantizeTriplet; ex=" + ex + "\n");
+                }
+            }
+        }
+
+        /// <summary>
+        /// QuantizeModeChangedイベントを発行します
+        /// </summary>
+        private void invokeQuantizeModeChangedEvent()
+        {
+            if (QuantizeModeChanged != null) {
+                QuantizeModeChanged.Invoke(typeof(EditorConfig), new EventArgs());
+            }
+        }
+
+        // XMLシリアライズ用
+        public bool LengthQuantizeTriplet
+        {
+            get
+            {
+                return isLengthQuantizeTriplet();
+            }
+            set
+            {
+                setLengthQuantizeTriplet(value);
             }
         }
 		

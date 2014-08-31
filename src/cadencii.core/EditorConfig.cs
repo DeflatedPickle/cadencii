@@ -23,12 +23,12 @@ using cadencii.java.util;
 //using cadencii.windows.forms;
 //using cadencii.xml;
 //using cadencii.vsq;
-//using cadencii.apputil;
+using cadencii.apputil;
 //using cadencii.uicore;
 
 
 
-namespace cadencii
+namespace cadencii.core
 {
 
     /// <summary>
@@ -66,31 +66,6 @@ namespace cadencii
         /// </summary>
         [Obsolete]
         private int __revoked__DefaultVibratoDepth = 64;
-        /// <summary>
-        /// ビブラートの自動追加を行うかどうかを決める音符長さの閾値．単位はclock
-        /// <version>3.3+</version>
-        /// </summary>
-        public int AutoVibratoThresholdLength = 480;
-        /// <summary>
-        /// VOCALOID1用のデフォルトビブラート設定
-        /// </summary>
-        public string AutoVibratoType1 = "$04040001";
-        /// <summary>
-        /// VOCALOID2用のデフォルトビブラート設定
-        /// </summary>
-        public string AutoVibratoType2 = "$04040001";
-        /// <summary>
-        /// カスタムのデフォルトビブラート設定
-        /// <version>3.3+</version>
-        /// </summary>
-        public string AutoVibratoTypeCustom = "$04040001";
-        /// <summary>
-        /// ビブラートの自動追加を行うかどうか
-        /// </summary>
-        public bool EnableAutoVibrato = true;
-        /// <summary>
-        /// ピアノロール上での，音符の表示高さ(ピクセル)
-        /// </summary>
         public int PxTrackHeight = 14;
         public int MouseDragIncrement = 50;
         public int MouseDragMaximumRate = 600;
@@ -155,11 +130,6 @@ namespace cadencii
         /// </summary>
         public bool CurveSelectingQuantized = true;
 
-        private QuantizeMode m_position_quantize = QuantizeMode.p32;
-        private bool m_position_quantize_triplet = false;
-        private QuantizeMode m_length_quantize = QuantizeMode.p32;
-        private bool m_length_quantize_triplet = false;
-        private int m_mouse_hover_time = 500;
         /// <summary>
         /// Button index of "△"
         /// </summary>
@@ -328,10 +298,6 @@ namespace cadencii
             = RendererKind.VCNT;
 #endif
         /// <summary>
-        /// 自動ビブラートを作成するとき，ユーザー定義タイプのビブラートを利用するかどうか．デフォルトではfalse
-        /// </summary>
-        public bool UseUserDefinedAutoVibratoType = false;
-        /// <summary>
         /// 再生中に画面を描画するかどうか。デフォルトはfalse
         /// <version>3.3+</version>
         /// </summary>
@@ -444,12 +410,15 @@ namespace cadencii
         /// ピアノロールの縦軸の拡大率を表す整数値の最小値
         /// </summary>
         public const int MIN_PIANOROLL_SCALEY = -4;
-
+		
         /// <summary>
-        /// PositionQuantize, PositionQuantizeTriplet, LengthQuantize, LengthQuantizeTripletの描くプロパティのいずれかが
-        /// 変更された時発生します
+        /// コンストラクタ．起動したOSによって動作を変える場合がある
         /// </summary>
-        public static event EventHandler QuantizeModeChanged;
+        public EditorConfig()
+        {
+            // 言語設定を，システムのデフォルトの言語を用いる
+            this.Language = Messaging.getRuntimeLanguageName();
+        }
 
         #region private static method
         private static string getLastUsedPathCore(List<string> list, string extension)
@@ -669,139 +638,6 @@ namespace cadencii
         public int getControlCurveResolutionValue()
         {
             return ClockResolutionUtility.getValue(ControlCurveResolution);
-        }
-
-        public QuantizeMode getPositionQuantize()
-        {
-            return m_position_quantize;
-        }
-
-        public void setPositionQuantize(QuantizeMode value)
-        {
-            if (m_position_quantize != value) {
-                m_position_quantize = value;
-                try {
-                    invokeQuantizeModeChangedEvent();
-                } catch (Exception ex) {
-                    Logger.write(typeof(EditorConfig) + ".getPositionQuantize; ex=" + ex + "\n");
-                    serr.println("EditorConfig#setPositionQuantize; ex=" + ex);
-                }
-            }
-        }
-
-        // XMLシリアライズ用
-        public QuantizeMode PositionQuantize
-        {
-            get
-            {
-                return getPositionQuantize();
-            }
-            set
-            {
-                setPositionQuantize(value);
-            }
-        }
-
-        public bool isPositionQuantizeTriplet()
-        {
-            return m_position_quantize_triplet;
-        }
-
-        public void setPositionQuantizeTriplet(bool value)
-        {
-            if (m_position_quantize_triplet != value) {
-                m_position_quantize_triplet = value;
-                try {
-                    invokeQuantizeModeChangedEvent();
-                } catch (Exception ex) {
-                    serr.println("EditorConfig#setPositionQuantizeTriplet; ex=" + ex);
-                    Logger.write(typeof(EditorConfig) + ".setPositionQuantizeTriplet; ex=" + ex + "\n");
-                }
-            }
-        }
-
-        // XMLシリアライズ用
-        public bool PositionQuantizeTriplet
-        {
-            get
-            {
-                return isPositionQuantizeTriplet();
-            }
-            set
-            {
-                setPositionQuantizeTriplet(value);
-            }
-        }
-
-        public QuantizeMode getLengthQuantize()
-        {
-            return m_length_quantize;
-        }
-
-        public void setLengthQuantize(QuantizeMode value)
-        {
-            if (m_length_quantize != value) {
-                m_length_quantize = value;
-                try {
-                    invokeQuantizeModeChangedEvent();
-                } catch (Exception ex) {
-                    serr.println("EditorConfig#setLengthQuantize; ex=" + ex);
-                    Logger.write(typeof(EditorConfig) + ".setLengthQuantize; ex=" + ex + "\n");
-                }
-            }
-        }
-
-        public QuantizeMode LengthQuantize
-        {
-            get
-            {
-                return getLengthQuantize();
-            }
-            set
-            {
-                setLengthQuantize(value);
-            }
-        }
-
-        public bool isLengthQuantizeTriplet()
-        {
-            return m_length_quantize_triplet;
-        }
-
-        public void setLengthQuantizeTriplet(bool value)
-        {
-            if (m_length_quantize_triplet != value) {
-                m_length_quantize_triplet = value;
-                try {
-                    invokeQuantizeModeChangedEvent();
-                } catch (Exception ex) {
-                    serr.println("EditorConfig#setLengthQuantizeTriplet; ex=" + ex);
-                    Logger.write(typeof(EditorConfig) + ".setLengthQuantizeTriplet; ex=" + ex + "\n");
-                }
-            }
-        }
-
-        /// <summary>
-        /// QuantizeModeChangedイベントを発行します
-        /// </summary>
-        private void invokeQuantizeModeChangedEvent()
-        {
-            if (QuantizeModeChanged != null) {
-                QuantizeModeChanged.Invoke(typeof(EditorConfig), new EventArgs());
-            }
-        }
-
-        // XMLシリアライズ用
-        public bool LengthQuantizeTriplet
-        {
-            get
-            {
-                return isLengthQuantizeTriplet();
-            }
-            set
-            {
-                setLengthQuantizeTriplet(value);
-            }
         }
         #endregion
 		/// <summary>

@@ -45,7 +45,7 @@ namespace cadencii
             }
         }
 
-        public override void setGlobalConfig(EditorConfig config)
+        public override void setGlobalConfig(cadencii.core.EditorConfig config, cadencii.EditorConfig configUI)
         {
             // do nothing
         }

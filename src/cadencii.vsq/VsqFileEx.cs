@@ -852,11 +852,11 @@ namespace cadencii
         public ICommand executeCommand(ICommand com)
         {
 #if DEBUG
-            Debug.WriteLine("VsqFileEx.Execute");
+            CDebug.WriteLine("VsqFileEx.Execute");
 #endif
             CadenciiCommand command = (CadenciiCommand)com;
 #if DEBUG
-            Debug.WriteLine("VsqFileEx.Execute; command.Type=" + command.type);
+            CDebug.WriteLine("VsqFileEx.Execute; command.Type=" + command.type);
 #endif
             CadenciiCommand ret = null;
             if (command.type == CadenciiCommandType.VSQ_COMMAND) {
@@ -918,7 +918,7 @@ namespace cadencii
                 if (command.type == CadenciiCommandType.BEZIER_CHAIN_ADD) {
                     #region AddBezierChain
 #if DEBUG
-                    Debug.WriteLine("    AddBezierChain");
+                    CDebug.WriteLine("    AddBezierChain");
 #endif
                     int track = (int)command.args[0];
                     CurveType curve_type = (CurveType)command.args[1];
@@ -1157,7 +1157,7 @@ namespace cadencii
                     for (int i = 0; i < count - 1; i++) {
                         editorStatus.renderRequired[i] = true;
                     }
-                    for (int i = count - 1; i < cadencii.ApplicationGlobal.MAX_NUM_TRACK; i++) {
+                    for (int i = count - 1; i < cadencii.core.ApplicationGlobal.MAX_NUM_TRACK; i++) {
                         editorStatus.renderRequired[i] = false;
                     }
                     #endregion
@@ -1257,7 +1257,7 @@ namespace cadencii
                 }
                 if (command.vsqCommand != null && ret != null) {
 #if DEBUG
-                    Debug.WriteLine("VsqFileEx.executeCommand; command.VsqCommand.Type=" + command.vsqCommand.Type);
+                    CDebug.WriteLine("VsqFileEx.executeCommand; command.VsqCommand.Type=" + command.vsqCommand.Type);
 #endif
                     ret.vsqCommand = base.executeCommand(command.vsqCommand);
                 }

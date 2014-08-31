@@ -368,8 +368,8 @@ namespace cadencii
                     }
                     string singer_raw = "";
                     string singer = "";
-                    if (0 <= program_change && program_change < mConfig.UtauSingers.Count) {
-                        singer_raw = mConfig.UtauSingers[program_change].VOICEIDSTR;
+                    if (0 <= program_change && program_change < mConfigUI.UtauSingers.Count) {
+                        singer_raw = mConfigUI.UtauSingers[program_change].VOICEIDSTR;
                         singer = singer_raw;
                         /*
                         if (mUseWideCharacterWorkaround) {

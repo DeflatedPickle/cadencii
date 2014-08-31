@@ -44,7 +44,7 @@ namespace cadencii
         /// </summary>
         void end();
 
-        void setGlobalConfig(EditorConfig config);
+        void setGlobalConfig(cadencii.core.EditorConfig config, EditorConfig configUI);
     }
 
 }
