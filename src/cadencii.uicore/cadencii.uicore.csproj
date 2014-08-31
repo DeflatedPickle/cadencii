@@ -44,12 +44,10 @@
     <Compile Include="ValuePairOfStringBoolean.cs" />
     <Compile Include="PropertyPanelState.cs" />
     <Compile Include="FormMidiImExportConfig.cs" />
-    <Compile Include="enum\RendererKind.cs" />
     <Compile Include="enum\RendererKindUtil.cs" />
     <Compile Include="PanelState.cs" />
     <Compile Include="NoteNumberExpressionType.cs" />
     <Compile Include="ClockResolutionUtility.cs" />
-    <Compile Include="ApplicationGlobal.cs" />
     <Compile Include="IAmplifierView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

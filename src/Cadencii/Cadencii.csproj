@@ -113,7 +113,6 @@
     <Compile Include="AttackVariation.cs" />
     <Compile Include="AttackVariationConverter.cs" />
     <Compile Include="BAssemblyInfo.cs" />
-    <Compile Include="BgmFile.cs" />
     <Compile Include="BgmMenuItem.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -191,7 +190,6 @@
     <Compile Include="RecentFileMenuItem.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SequenceConfig.cs" />
     <Compile Include="synthesizer\AquesTone2Synthesizer.cs" />
     <Compile Include="synthesizer\AquesToneSynthesizer.cs" />
     <Compile Include="synthesizer\AquesToneSynthesizerBase.cs" />
@@ -284,7 +282,6 @@
     <Compile Include="EditedZone.cs" />
     <Compile Include="EditedZoneCommand.cs" />
     <Compile Include="EditedZoneUnit.cs" />
-    <Compile Include="EditorStatus.cs" />
     <Compile Include="FederChangedEventHandler.cs" />
     <Compile Include="FormCurvePointEdit.cs">
       <SubType>Form</SubType>

@@ -106,6 +106,12 @@
     <Compile Include="BezierPoint.cs" />
     <Compile Include="PointD.cs" />
     <Compile Include="CurveType.cs" />
+    <Compile Include="Debug.cs" />
+    <Compile Include="BgmFile.cs" />
+    <Compile Include="RendererKind.cs" />
+    <Compile Include="SequenceConfig.cs" />
+    <Compile Include="ApplicationGlobal.cs" />
+    <Compile Include="EditorStatus.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

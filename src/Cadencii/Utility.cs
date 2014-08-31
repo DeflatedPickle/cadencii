@@ -33,31 +33,6 @@ namespace cadencii
     public class Utility
     {
         private const string CONFIG_DIR_NAME = "Cadencii";
-        public static readonly CurveType[] CURVE_USAGE = new CurveType[]{ CurveType.DYN,
-                                                                          CurveType.BRE,
-                                                                          CurveType.BRI,
-                                                                          CurveType.CLE,
-                                                                          CurveType.OPE,
-                                                                          CurveType.GEN,
-                                                                          CurveType.POR,
-                                                                          CurveType.PIT,
-                                                                          CurveType.PBS,
-                                                                          CurveType.VibratoRate,
-                                                                          CurveType.VibratoDepth,
-                                                                          CurveType.harmonics,
-                                                                          CurveType.fx2depth,
-                                                                          CurveType.reso1amp,
-                                                                          CurveType.reso1bw,
-                                                                          CurveType.reso1freq,
-                                                                          CurveType.reso2amp,
-                                                                          CurveType.reso2bw,
-                                                                          CurveType.reso2freq,
-                                                                          CurveType.reso3amp,
-                                                                          CurveType.reso3bw,
-                                                                          CurveType.reso3freq,
-                                                                          CurveType.reso4amp,
-                                                                          CurveType.reso4bw,
-                                                                          CurveType.reso4freq };
         private static int[] RANDOMIZE_PIT_PATTERN1 = null;
         private static int[] RANDOMIZE_PIT_PATTERN2 = null;
         private static int[] RANDOMIZE_PIT_PATTERN3 = null;

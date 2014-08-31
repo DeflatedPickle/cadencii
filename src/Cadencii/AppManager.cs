@@ -465,13 +465,6 @@ namespace cadencii
         /// </summary>
         public static int mPreviewEndingClock = 0;
 
-#if DEBUG
-        /// <summary>
-        /// ログ出力用
-        /// </summary>
-        private static StreamWriter mDebugLog = null;
-#endif
-
         #region 裏設定項目
         /// <summary>
         /// 再生中にWAVE波形の描画をスキップするかどうか（デフォルトはtrue）
@@ -1746,19 +1739,7 @@ namespace cadencii
 
         public static void debugWriteLine(string message)
         {
-#if DEBUG
-            try {
-                if (mDebugLog == null) {
-                    string log_file = Path.Combine(PortUtil.getApplicationStartupPath(), "log.txt");
-                    mDebugLog = new StreamWriter(log_file);
-                }
-                mDebugLog.WriteLine(message);
-            } catch (Exception ex) {
-                serr.println("AppManager#debugWriteLine; ex=" + ex);
-                Logger.write(typeof(AppManager) + ".debugWriteLine; ex=" + ex + "\n");
-            }
-            sout.println(message);
-#endif
+            cadencii.Debug.WriteLine(message);
         }
 
         /// <summary>

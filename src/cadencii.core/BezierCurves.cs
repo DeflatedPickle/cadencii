@@ -24,6 +24,31 @@ namespace cadencii
     /// </summary>
     public class BezierCurves : ICloneable
     {
+		public static readonly CurveType[] CURVE_USAGE = new CurveType[]{ CurveType.DYN,
+                                                                          CurveType.BRE,
+                                                                          CurveType.BRI,
+                                                                          CurveType.CLE,
+                                                                          CurveType.OPE,
+                                                                          CurveType.GEN,
+                                                                          CurveType.POR,
+                                                                          CurveType.PIT,
+                                                                          CurveType.PBS,
+                                                                          CurveType.VibratoRate,
+                                                                          CurveType.VibratoDepth,
+                                                                          CurveType.harmonics,
+                                                                          CurveType.fx2depth,
+                                                                          CurveType.reso1amp,
+                                                                          CurveType.reso1bw,
+                                                                          CurveType.reso1freq,
+                                                                          CurveType.reso2amp,
+                                                                          CurveType.reso2bw,
+                                                                          CurveType.reso2freq,
+                                                                          CurveType.reso3amp,
+                                                                          CurveType.reso3bw,
+                                                                          CurveType.reso3freq,
+                                                                          CurveType.reso4amp,
+                                                                          CurveType.reso4bw,
+                                                                          CurveType.reso4freq };
         public static readonly CurveType[] CURVES = new CurveType[]{
             CurveType.DYN,
             CurveType.BRE,
@@ -515,8 +540,8 @@ namespace cadencii
         public Object clone()
         {
             BezierCurves ret = new BezierCurves();
-            for (int j = 0; j < Utility.CURVE_USAGE.Length; j++) {
-                CurveType ct = Utility.CURVE_USAGE[j];
+            for (int j = 0; j < BezierCurves.CURVE_USAGE.Length; j++) {
+                CurveType ct = BezierCurves.CURVE_USAGE[j];
                 List<BezierChain> src = this.get(ct);
                 ret.set(ct, new List<BezierChain>());
                 int count = src.Count;

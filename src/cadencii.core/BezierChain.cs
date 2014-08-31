@@ -139,7 +139,7 @@ namespace cadencii
                 if (this.points[i].getBase().getX() < t_start && t_start < this.points[i + 1].getBase().getX()) {
                     if (this.points[i].getBase().getX() < t_end && t_end < this.points[i + 1].getBase().getX()) {
 #if DEBUG
-                        AppManager.debugWriteLine("points[i].Base.X < t_start < t_end < points[i + 1].Base.X");
+                        Debug.WriteLine("points[i].Base.X < t_start < t_end < points[i + 1].Base.X");
 #endif
                         PointD x0 = this.points[i].getBase();
                         PointD x1 = this.points[i + 1].getBase();
@@ -167,7 +167,7 @@ namespace cadencii
                         break;
                     } else {
 #if DEBUG
-                        AppManager.debugWriteLine("points[i].Base.X < t_start < points[i + 1].Base.X");
+                        Debug.WriteLine("points[i].Base.X < t_start < points[i + 1].Base.X");
 #endif
                         PointD x0 = this.points[i].getBase();
                         PointD x1 = this.points[i + 1].getBase();
