@@ -248,8 +248,8 @@ namespace cadencii.synthesizer
                     int millisec = (int)((sec_end_act - sec_start_act) * 1000) + 50;
 
                     OtoArgs oa = new OtoArgs();
-                    if (AppManager.mUtauVoiceDB.ContainsKey(singer_raw)) {
-                        UtauVoiceDB db = AppManager.mUtauVoiceDB[singer_raw];
+                    if (UtauWaveGenerator.mUtauVoiceDB.ContainsKey(singer_raw)) {
+						UtauVoiceDB db = UtauWaveGenerator.mUtauVoiceDB[singer_raw];
                         oa = db.attachFileNameFromLyric(lyric, item.ID.Note);
                     }
                     oa.msPreUtterance = item.UstEvent.getPreUtterance();

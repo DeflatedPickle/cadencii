@@ -39,6 +39,18 @@ namespace cadencii
     public class EditorConfig
     {
 		/// <summary>
+        /// マウスの操作などの許容範囲。プリメジャーにPxToleranceピクセルめり込んだ入力を行っても、エラーにならない。(補正はされる)
+        /// </summary>
+        public int PxTolerance = 10;
+        /// <summary>
+        /// マウスホイールでピアノロールを水平方向にスクロールするかどうか。
+        /// </summary>
+        public bool ScrollHorizontalOnWheel = true;
+        /// <summary>
+        /// 画面描画の最大フレームレート
+        /// </summary>
+        public int MaximumFrameRate = 15;
+		/// <summary>
         /// 再生中に画面を描画するかどうか。デフォルトはfalse
         /// <version>3.3+</version>
         /// </summary>

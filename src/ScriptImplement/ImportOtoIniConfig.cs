@@ -28,9 +28,9 @@ public class ImportOtoIniConfig
             }
             VsqEvent singer = vsq_track.getSingerEventAt(original.Clock);
             SingerConfig sc = AppManager.getSingerInfoUtau(singer.ID.IconHandle.Language, singer.ID.IconHandle.Program);
-            if (sc != null && AppManager.mUtauVoiceDB.ContainsKey(sc.VOICEIDSTR)) {
+            if (sc != null && UtauWaveGenerator.mUtauVoiceDB.ContainsKey(sc.VOICEIDSTR)) {
                 string phrase = original.ID.LyricHandle.L0.Phrase;
-                UtauVoiceDB db = AppManager.mUtauVoiceDB[sc.VOICEIDSTR];
+                UtauVoiceDB db = UtauWaveGenerator.mUtauVoiceDB[sc.VOICEIDSTR];
                 OtoArgs oa = db.attachFileNameFromLyric(phrase, original.ID.Note);
                 VsqEvent editing = vsq_track.findEventFromID(original.InternalID);
                 if (editing.UstEvent == null) {

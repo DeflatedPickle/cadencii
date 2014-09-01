@@ -314,8 +314,8 @@ namespace cadencii
                     VsqTrack vsq_track = vsq.Track[selected];
                     VsqEvent singer = vsq_track.getSingerEventAt(editing.Clock);
                     SingerConfig sc = AppManager.getSingerInfoUtau(singer.ID.IconHandle.Language, singer.ID.IconHandle.Program);
-                    if (sc != null && AppManager.mUtauVoiceDB.ContainsKey(sc.VOICEIDSTR)) {
-                        UtauVoiceDB db = AppManager.mUtauVoiceDB[sc.VOICEIDSTR];
+                    if (sc != null && UtauWaveGenerator.mUtauVoiceDB.ContainsKey(sc.VOICEIDSTR)) {
+                        UtauVoiceDB db = UtauWaveGenerator.mUtauVoiceDB[sc.VOICEIDSTR];
                         OtoArgs oa = db.attachFileNameFromLyric(phrase, editing.ID.Note);
                         if (editing.UstEvent == null) {
                             editing.UstEvent = new UstEvent();

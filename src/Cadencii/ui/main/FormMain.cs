@@ -35,7 +35,7 @@ using cadencii.windows.forms;
 using cadencii.xml;
 using cadencii.utau;
 using cadencii.ui;
-
+using ApplicationGlobal = cadencii.core.ApplicationGlobal;
 
 
 namespace cadencii
@@ -517,7 +517,7 @@ namespace cadencii
             this.controller.setupUi(this);
 
             // 言語設定を反映させる
-            Messaging.setLanguage(AppManager.editorConfig.Language);
+            Messaging.setLanguage(ApplicationGlobal.appConfig.Language);
 
 #if ENABLE_PROPERTY
             AppManager.propertyPanel = new PropertyPanel();
@@ -537,12 +537,12 @@ namespace cadencii
             s_modifier_key = Keys.Control;
             VsqFileEx tvsq =
                 new VsqFileEx(
-                    AppManager.editorConfig.DefaultSingerName,
+					ApplicationGlobal.appConfig.DefaultSingerName,
                     1,
                     4,
                     4,
                     500000);
-            RendererKind kind = AppManager.editorConfig.DefaultSynthesizer;
+			RendererKind kind = ApplicationGlobal.appConfig.DefaultSynthesizer;
             string renderer = kind.getVersionString();
             List<VsqID> singers = AppManager.getSingerListFromRendererKind(kind);
             tvsq.Track[1].changeRenderer(renderer, singers);
@@ -1151,7 +1151,7 @@ namespace cadencii
                         string path = dialog.getSingerPath();
                         if (Directory.Exists(path)) {
                             SingerConfig sc = new SingerConfig();
-                            Utility.readUtauSingerConfig(path, sc);
+                            Utau.readUtauSingerConfig(path, sc);
                             AppManager.editorConfig.UtauSingers.Add(sc);
                         }
                         AppManager.reloadUtauVoiceDB();
@@ -1281,13 +1281,13 @@ namespace cadencii
                 int threshold = AppManager.editorConfig.AutoVibratoThresholdLength;
                 if (note_length >= threshold) {
                     int vibrato_clocks = 0;
-                    if (AppManager.editorConfig.DefaultVibratoLength == DefaultVibratoLengthEnum.L100) {
+                    if (ApplicationGlobal.appConfig.DefaultVibratoLength == DefaultVibratoLengthEnum.L100) {
                         vibrato_clocks = note_length;
-                    } else if (AppManager.editorConfig.DefaultVibratoLength == DefaultVibratoLengthEnum.L50) {
+                    } else if (ApplicationGlobal.appConfig.DefaultVibratoLength == DefaultVibratoLengthEnum.L50) {
                         vibrato_clocks = note_length / 2;
-                    } else if (AppManager.editorConfig.DefaultVibratoLength == DefaultVibratoLengthEnum.L66) {
+                    } else if (ApplicationGlobal.appConfig.DefaultVibratoLength == DefaultVibratoLengthEnum.L66) {
                         vibrato_clocks = note_length * 2 / 3;
-                    } else if (AppManager.editorConfig.DefaultVibratoLength == DefaultVibratoLengthEnum.L75) {
+                    } else if (ApplicationGlobal.appConfig.DefaultVibratoLength == DefaultVibratoLengthEnum.L75) {
                         vibrato_clocks = note_length * 3 / 4;
                     }
                     SynthesizerType type = SynthesizerType.VOCALOID2;
@@ -1307,8 +1307,8 @@ namespace cadencii
                 singerConfig = AppManager.getSingerInfoUtau(item.ID.IconHandle.Language, item.ID.IconHandle.Program);
             }
 
-            if (singerConfig != null && AppManager.mUtauVoiceDB.ContainsKey(singerConfig.VOICEIDSTR)) {
-                UtauVoiceDB utauVoiceDb = AppManager.mUtauVoiceDB[singerConfig.VOICEIDSTR];
+            if (singerConfig != null && UtauWaveGenerator.mUtauVoiceDB.ContainsKey(singerConfig.VOICEIDSTR)) {
+                UtauVoiceDB utauVoiceDb = UtauWaveGenerator.mUtauVoiceDB[singerConfig.VOICEIDSTR];
                 OtoArgs otoArgs = utauVoiceDb.attachFileNameFromLyric(lyric.L0.Phrase, AppManager.mAddingEvent.ID.Note);
                 AppManager.mAddingEvent.UstEvent.setPreUtterance(otoArgs.msPreUtterance);
                 AppManager.mAddingEvent.UstEvent.setVoiceOverlap(otoArgs.msOverlap);
@@ -3897,7 +3897,7 @@ namespace cadencii
             //TODO: システムカウンタは約49日でリセットされてしまい，厳密には実装できないようなので，保留．
 
             // このFormMainのインスタンスが使用したデータを消去する
-            for (int i = 1; i <= AppManager.MAX_NUM_TRACK; i++) {
+            for (int i = 1; i <= ApplicationGlobal.MAX_NUM_TRACK; i++) {
                 string file = Path.Combine(tmppath, i + ".wav");
                 if (System.IO.File.Exists(file)) {
                     for (int error = 0; error < 100; error++) {
@@ -4566,7 +4566,7 @@ namespace cadencii
                 dlg = new FormVibratoConfig(
                     ev.ID.VibratoHandle,
                     ev.ID.getLength(),
-                    AppManager.editorConfig.DefaultVibratoLength,
+                    ApplicationGlobal.appConfig.DefaultVibratoLength,
                     type,
                     AppManager.editorConfig.UseUserDefinedAutoVibratoType);
                 dlg.Location = getFormPreferedLocation(dlg);
@@ -4575,8 +4575,8 @@ namespace cadencii
                     VsqEvent edited = (VsqEvent)ev.clone();
                     if (dlg.getVibratoHandle() != null) {
                         edited.ID.VibratoHandle = (VibratoHandle)dlg.getVibratoHandle().clone();
-                        //edited.ID.VibratoHandle.setStartDepth( AppManager.editorConfig.DefaultVibratoDepth );
-                        //edited.ID.VibratoHandle.setStartRate( AppManager.editorConfig.DefaultVibratoRate );
+                        //edited.ID.VibratoHandle.setStartDepth( ApplicationGlobal.appConfig.DefaultVibratoDepth );
+                        //edited.ID.VibratoHandle.setStartRate( ApplicationGlobal.appConfig.DefaultVibratoRate );
                         edited.ID.VibratoDelay = ev.ID.getLength() - dlg.getVibratoHandle().getLength();
                     } else {
                         edited.ID.VibratoHandle = null;
@@ -4700,7 +4700,7 @@ namespace cadencii
             if (add_required.Count > 0) {
                 AppManager.itemSelection.addEventAll(add_required);
             }
-            foreach (CurveType vct in Utility.CURVE_USAGE) {
+            foreach (CurveType vct in BezierCurves.CURVE_USAGE) {
                 if (vct.isScalar() || vct.isAttachNote()) {
                     continue;
                 }
@@ -4798,7 +4798,7 @@ namespace cadencii
                     List<List<BPPair>> curves = new List<List<BPPair>>();
                     List<CurveType> types = new List<CurveType>();
                     VsqTrack work_vsq_track = work.Track[selected];
-                    foreach (CurveType vct in Utility.CURVE_USAGE) {
+                    foreach (CurveType vct in BezierCurves.CURVE_USAGE) {
                         if (vct.isScalar() || vct.isAttachNote()) {
                             continue;
                         }
@@ -5172,8 +5172,8 @@ namespace cadencii
                 ce.copyStartedClock = start_clock;
                 ce.points = new SortedDictionary<CurveType, VsqBPList>();
                 ce.beziers = new SortedDictionary<CurveType, List<BezierChain>>();
-                for (int i = 0; i < Utility.CURVE_USAGE.Length; i++) {
-                    CurveType vct = Utility.CURVE_USAGE[i];
+                for (int i = 0; i < BezierCurves.CURVE_USAGE.Length; i++) {
+                    CurveType vct = BezierCurves.CURVE_USAGE[i];
                     VsqBPList list = AppManager.getVsqFile().Track[AppManager.getSelected()].getCurve(vct.getName());
                     if (list == null) {
                         continue;
@@ -5329,8 +5329,8 @@ namespace cadencii
                 }
 
                 // BPListに削除処理を施す
-                for (int i = 0; i < Utility.CURVE_USAGE.Length; i++) {
-                    CurveType curve = Utility.CURVE_USAGE[i];
+                for (int i = 0; i < BezierCurves.CURVE_USAGE.Length; i++) {
+                    CurveType curve = BezierCurves.CURVE_USAGE[i];
                     VsqBPList list = work.Track[track].getCurve(curve.getName());
                     if (list == null) {
                         continue;
@@ -5361,8 +5361,8 @@ namespace cadencii
                 List<CurveType> target_curve = new List<CurveType>();
                 if (AppManager.isWholeSelectedIntervalEnabled()) {
                     // ctrlによる全選択モード
-                    for (int i = 0; i < Utility.CURVE_USAGE.Length; i++) {
-                        CurveType ct = Utility.CURVE_USAGE[i];
+                    for (int i = 0; i < BezierCurves.CURVE_USAGE.Length; i++) {
+                        CurveType ct = BezierCurves.CURVE_USAGE[i];
                         if (ct.isScalar() || ct.isAttachNote()) {
                             continue;
                         }
@@ -5559,10 +5559,10 @@ namespace cadencii
             VsqFileEx vsq = AppManager.getVsqFile();
             int i = vsq.Track.Count;
             string name = "Voice" + i;
-            string singer = AppManager.editorConfig.DefaultSingerName;
+            string singer = ApplicationGlobal.appConfig.DefaultSingerName;
             VsqTrack vsq_track = new VsqTrack(name, singer);
 
-            RendererKind kind = AppManager.editorConfig.DefaultSynthesizer;
+            RendererKind kind = ApplicationGlobal.appConfig.DefaultSynthesizer;
             string renderer = kind.getVersionString();
             List<VsqID> singers = AppManager.getSingerListFromRendererKind(kind);
 
@@ -5824,8 +5824,8 @@ namespace cadencii
                             if (0 <= program && program < AppManager.editorConfig.UtauSingers.Count) {
                                 SingerConfig sc = AppManager.editorConfig.UtauSingers[program];
                                 // 通常のUTAU音源
-                                if (AppManager.mUtauVoiceDB.ContainsKey(sc.VOICEIDSTR)) {
-                                    UtauVoiceDB db = AppManager.mUtauVoiceDB[sc.VOICEIDSTR];
+                                if (UtauWaveGenerator.mUtauVoiceDB.ContainsKey(sc.VOICEIDSTR)) {
+                                    UtauVoiceDB db = UtauWaveGenerator.mUtauVoiceDB[sc.VOICEIDSTR];
                                     OtoArgs oa = db.attachFileNameFromLyric(lyric_jp, note);
                                     if (oa.fileName == null ||
                                         (oa.fileName != null && oa.fileName == "")) {
@@ -7545,7 +7545,7 @@ namespace cadencii
                                     dlg = new FormVibratoConfig(
                                         selectedEvent.ID.VibratoHandle,
                                         selectedEvent.ID.getLength(),
-                                        AppManager.editorConfig.DefaultVibratoLength,
+                                        ApplicationGlobal.appConfig.DefaultVibratoLength,
                                         type,
                                         AppManager.editorConfig.UseUserDefinedAutoVibratoType);
                                     dlg.Location = getFormPreferedLocation(dlg);
@@ -7705,7 +7705,7 @@ namespace cadencii
                     AppManager.setCurveSelectedIntervalEnabled(false);
                     AppManager.itemSelection.clearPoint();
                     int startClock = AppManager.clockFromXCoord(e.X);
-                    if (AppManager.editorConfig.CurveSelectingQuantized) {
+                    if (ApplicationGlobal.appConfig.CurveSelectingQuantized) {
                         int unit = AppManager.getPositionQuantizeClock();
                         startClock = doQuantize(startClock, unit);
                     }
@@ -8145,7 +8145,7 @@ namespace cadencii
                 if (AppManager.mIsPointerDowned) {
                     if (AppManager.isWholeSelectedIntervalEnabled()) {
                         int endClock = AppManager.clockFromXCoord(e.X);
-                        if (AppManager.editorConfig.CurveSelectingQuantized) {
+                        if (ApplicationGlobal.appConfig.CurveSelectingQuantized) {
                             int unit = AppManager.getPositionQuantizeClock();
                             endClock = doQuantize(endClock, unit);
                         }
@@ -8826,8 +8826,8 @@ namespace cadencii
                 }
 
                 // 全てのコントロールカーブのデータ点を移動
-                for (int i = 0; i < Utility.CURVE_USAGE.Length; i++) {
-                    CurveType curve_type = Utility.CURVE_USAGE[i];
+                for (int i = 0; i < BezierCurves.CURVE_USAGE.Length; i++) {
+                    CurveType curve_type = BezierCurves.CURVE_USAGE[i];
                     VsqBPList bplist = work.getCurve(curve_type.getName());
                     if (bplist == null) {
                         continue;
@@ -10182,12 +10182,12 @@ namespace cadencii
                 }
             }
 
-            string dir = AppManager.editorConfig.getLastUsedPathOut("xvsq");
+            string dir = ApplicationGlobal.appConfig.getLastUsedPathOut("xvsq");
             saveXmlVsqDialog.SetSelectedFile(dir);
             var dr = AppManager.showModalDialog(saveXmlVsqDialog, false, this);
             if (dr == System.Windows.Forms.DialogResult.OK) {
                 string file = saveXmlVsqDialog.FileName;
-                AppManager.editorConfig.setLastUsedPathOut(file, ".xvsq");
+                ApplicationGlobal.appConfig.setLastUsedPathOut(file, ".xvsq");
                 AppManager.saveTo(file);
                 updateRecentFileMenu();
                 setEdited(false);
@@ -10237,14 +10237,14 @@ namespace cadencii
                     return;
                 }
 
-                string dir = AppManager.editorConfig.getLastUsedPathOut("mid");
+                string dir = ApplicationGlobal.appConfig.getLastUsedPathOut("mid");
                 saveMidiDialog.SetSelectedFile(dir);
                 var dialog_result = AppManager.showModalDialog(saveMidiDialog, false, this);
 
                 if (dialog_result == System.Windows.Forms.DialogResult.OK) {
                     FileStream fs = null;
                     string filename = saveMidiDialog.FileName;
-                    AppManager.editorConfig.setLastUsedPathOut(filename, ".mid");
+                    ApplicationGlobal.appConfig.setLastUsedPathOut(filename, ".mid");
                     try {
                         fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite);
                         // ヘッダー
@@ -10459,7 +10459,7 @@ namespace cadencii
                 if (vsq == null) {
                     return;
                 }
-                string first = AppManager.editorConfig.getLastUsedPathOut("xml");
+                string first = ApplicationGlobal.appConfig.getLastUsedPathOut("xml");
                 dialog = new SaveFileDialog();
                 dialog.SetSelectedFile(first);
                 dialog.Filter = string.Join("|", new[] { _("MusicXML(*.xml)|*.xml"), _("All Files(*.*)|*.*") });
@@ -10470,7 +10470,7 @@ namespace cadencii
                 string file = dialog.FileName;
                 var writer = new MusicXmlWriter();
                 writer.write(vsq, file);
-                AppManager.editorConfig.setLastUsedPathOut(file, ".xml");
+                ApplicationGlobal.appConfig.setLastUsedPathOut(file, ".xml");
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".menuFileExportMusicXml_Click; ex=" + ex + "\n");
                 serr.println("FormMain#menuFileExportMusicXml_Click; ex=" + ex);
@@ -10493,7 +10493,7 @@ namespace cadencii
             FolderBrowserDialog file_dialog = null;
             try {
                 file_dialog = new FolderBrowserDialog();
-                string initial_dir = AppManager.editorConfig.getLastUsedPathOut("wav");
+                string initial_dir = ApplicationGlobal.appConfig.getLastUsedPathOut("wav");
                 file_dialog.Description = _("Choose destination directory");
                 file_dialog.SelectedPath = initial_dir;
                 DialogResult ret = AppManager.showModalDialog(file_dialog, this);
@@ -10503,7 +10503,7 @@ namespace cadencii
                 dir = file_dialog.SelectedPath;
                 // 1.wavはダミー
                 initial_dir = Path.Combine(dir, "1.wav");
-                AppManager.editorConfig.setLastUsedPathOut(initial_dir, ".wav");
+                ApplicationGlobal.appConfig.setLastUsedPathOut(initial_dir, ".wav");
             } catch (Exception ex) {
             } finally {
                 if (file_dialog != null) {
@@ -10586,7 +10586,7 @@ namespace cadencii
             var dialog_result = DialogResult.Cancel;
             string file_name = "";
             try {
-                string last_path = AppManager.editorConfig.getLastUsedPathOut("ust");
+                string last_path = ApplicationGlobal.appConfig.getLastUsedPathOut("ust");
                 dialog = new SaveFileDialog();
                 dialog.SetSelectedFile(last_path);
                 dialog.Title = _("Export UTAU (*.ust)");
@@ -10596,7 +10596,7 @@ namespace cadencii
                     return;
                 }
                 file_name = dialog.FileName;
-                AppManager.editorConfig.setLastUsedPathOut(file_name, ".ust");
+                ApplicationGlobal.appConfig.setLastUsedPathOut(file_name, ".ust");
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".menuFileExportUst_Click; ex=" + ex + "\n");
             } finally {
@@ -10643,7 +10643,7 @@ namespace cadencii
             var dialog_result = DialogResult.Cancel;
             string file_name = "";
             try {
-                string last_path = AppManager.editorConfig.getLastUsedPathOut("vsq");
+                string last_path = ApplicationGlobal.appConfig.getLastUsedPathOut("vsq");
                 dialog = new SaveFileDialog();
                 dialog.SetSelectedFile(last_path);
                 dialog.Title = _("Export VSQ (*.vsq)");
@@ -10653,7 +10653,7 @@ namespace cadencii
                     return;
                 }
                 file_name = dialog.FileName;
-                AppManager.editorConfig.setLastUsedPathOut(file_name, ".vsq");
+                ApplicationGlobal.appConfig.setLastUsedPathOut(file_name, ".vsq");
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".menuFileExportVsq_Click; ex=" + ex + "\n");
             } finally {
@@ -10706,7 +10706,7 @@ namespace cadencii
             var dialog_result = DialogResult.Cancel;
             string file_name = "";
             try {
-                string last_path = AppManager.editorConfig.getLastUsedPathOut("txt");
+                string last_path = ApplicationGlobal.appConfig.getLastUsedPathOut("txt");
                 dialog = new SaveFileDialog();
                 dialog.SetSelectedFile(last_path);
                 dialog.Title = _("Metatext for vConnect");
@@ -10716,7 +10716,7 @@ namespace cadencii
                     return;
                 }
                 file_name = dialog.FileName;
-                AppManager.editorConfig.setLastUsedPathOut(file_name, ".txt");
+                ApplicationGlobal.appConfig.setLastUsedPathOut(file_name, ".txt");
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".menuFileExportVxt_Click; ex=" + ex + "\n");
             } finally {
@@ -10781,7 +10781,7 @@ namespace cadencii
             string filename = "";
             SaveFileDialog sfd = null;
             try {
-                string last_path = AppManager.editorConfig.getLastUsedPathOut("wav");
+                string last_path = ApplicationGlobal.appConfig.getLastUsedPathOut("wav");
 #if DEBUG
                 sout.println("FormMain#menuFileExportWave_Click; last_path=" + last_path);
 #endif
@@ -10794,7 +10794,7 @@ namespace cadencii
                     return;
                 }
                 filename = sfd.FileName;
-                AppManager.editorConfig.setLastUsedPathOut(filename, ".wav");
+                ApplicationGlobal.appConfig.setLastUsedPathOut(filename, ".wav");
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".menuFileExportWave_Click; ex=" + ex + "\n");
             } finally {
@@ -11118,13 +11118,13 @@ namespace cadencii
                 if (!mDialogMidiImportAndExport.listTrack.Items[i].Checked) {
                     continue;
                 }
-                if (work.Track.Count + 1 > AppManager.MAX_NUM_TRACK) {
+                if (work.Track.Count + 1 > ApplicationGlobal.MAX_NUM_TRACK) {
                     break;
                 }
                 VsqTrack work_track = new VsqTrack(mDialogMidiImportAndExport.listTrack.Items[i].SubItems[1].Text, "Miku");
 
                 // デフォルトの音声合成システムに切り替え
-                RendererKind kind = AppManager.editorConfig.DefaultSynthesizer;
+                RendererKind kind = ApplicationGlobal.appConfig.DefaultSynthesizer;
                 string renderer = kind.getVersionString();
                 List<VsqID> singers = AppManager.getSingerListFromRendererKind(kind);
                 work_track.changeRenderer(renderer, singers);
@@ -11220,7 +11220,7 @@ namespace cadencii
                                     int threshold = AppManager.editorConfig.AutoVibratoThresholdLength;
                                     if (note_length >= threshold) {
                                         int vibrato_clocks = 0;
-                                        DefaultVibratoLengthEnum vib_length = AppManager.editorConfig.DefaultVibratoLength;
+                                        DefaultVibratoLengthEnum vib_length = ApplicationGlobal.appConfig.DefaultVibratoLength;
                                         if (vib_length == DefaultVibratoLengthEnum.L100) {
                                             vibrato_clocks = note_length;
                                         } else if (vib_length == DefaultVibratoLengthEnum.L50) {
@@ -11453,7 +11453,7 @@ namespace cadencii
             }
 
             foreach (var track in add_track) {
-                if (replace.Track.Count + 1 >= cadencii.core.ApplicationGlobal.MAX_NUM_TRACK) {
+                if (replace.Track.Count + 1 >= ApplicationGlobal.MAX_NUM_TRACK) {
                     break;
                 }
                 if (!mDialogMidiImportAndExport.isTempo()) {
@@ -11479,7 +11479,7 @@ namespace cadencii
                     }
 
                     // コントロールカーブをシフト
-                    foreach (CurveType ct in Utility.CURVE_USAGE) {
+                    foreach (CurveType ct in BezierCurves.CURVE_USAGE) {
                         VsqBPList item = vsq.Track[track].getCurve(ct.getName());
                         if (item == null) {
                             continue;
@@ -11498,7 +11498,7 @@ namespace cadencii
                     }
 
                     // ベジエカーブをシフト
-                    foreach (CurveType ct in Utility.CURVE_USAGE) {
+                    foreach (CurveType ct in BezierCurves.CURVE_USAGE) {
                         List<BezierChain> list = vsq.AttachedCurves.get(track - 1).get(ct);
                         if (list == null) {
                             continue;
@@ -11709,21 +11709,21 @@ namespace cadencii
             FormSingerStyleConfig dlg = null;
             try {
                 dlg = new FormSingerStyleConfig();
-                dlg.setPMBendDepth(AppManager.editorConfig.DefaultPMBendDepth);
-                dlg.setPMBendLength(AppManager.editorConfig.DefaultPMBendLength);
-                dlg.setPMbPortamentoUse(AppManager.editorConfig.DefaultPMbPortamentoUse);
-                dlg.setDEMdecGainRate(AppManager.editorConfig.DefaultDEMdecGainRate);
-                dlg.setDEMaccent(AppManager.editorConfig.DefaultDEMaccent);
+                dlg.setPMBendDepth(ApplicationGlobal.appConfig.DefaultPMBendDepth);
+                dlg.setPMBendLength(ApplicationGlobal.appConfig.DefaultPMBendLength);
+                dlg.setPMbPortamentoUse(ApplicationGlobal.appConfig.DefaultPMbPortamentoUse);
+                dlg.setDEMdecGainRate(ApplicationGlobal.appConfig.DefaultDEMdecGainRate);
+                dlg.setDEMaccent(ApplicationGlobal.appConfig.DefaultDEMaccent);
 
                 int selected = AppManager.getSelected();
                 dlg.Location = getFormPreferedLocation(dlg);
                 DialogResult dr = AppManager.showModalDialog(dlg, this);
                 if (dr == DialogResult.OK) {
-                    AppManager.editorConfig.DefaultPMBendDepth = dlg.getPMBendDepth();
-                    AppManager.editorConfig.DefaultPMBendLength = dlg.getPMBendLength();
-                    AppManager.editorConfig.DefaultPMbPortamentoUse = dlg.getPMbPortamentoUse();
-                    AppManager.editorConfig.DefaultDEMdecGainRate = dlg.getDEMdecGainRate();
-                    AppManager.editorConfig.DefaultDEMaccent = dlg.getDEMaccent();
+                    ApplicationGlobal.appConfig.DefaultPMBendDepth = dlg.getPMBendDepth();
+                    ApplicationGlobal.appConfig.DefaultPMBendLength = dlg.getPMBendLength();
+                    ApplicationGlobal.appConfig.DefaultPMbPortamentoUse = dlg.getPMbPortamentoUse();
+                    ApplicationGlobal.appConfig.DefaultDEMdecGainRate = dlg.getDEMdecGainRate();
+                    ApplicationGlobal.appConfig.DefaultDEMaccent = dlg.getDEMaccent();
                     if (dlg.getApplyCurrentTrack()) {
                         VsqFileEx vsq = AppManager.getVsqFile();
                         VsqTrack vsq_track = vsq.Track[selected];
@@ -11816,7 +11816,7 @@ namespace cadencii
                 mDialogPreference.setScreenFont(new Font(AppManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, EditorConfig.FONT_SIZE9));
                 mDialogPreference.setWheelOrder(AppManager.editorConfig.WheelOrder);
                 mDialogPreference.setCursorFixed(AppManager.editorConfig.CursorFixed);
-                mDialogPreference.setDefaultVibratoLength(AppManager.editorConfig.DefaultVibratoLength);
+                mDialogPreference.setDefaultVibratoLength(ApplicationGlobal.appConfig.DefaultVibratoLength);
                 mDialogPreference.setAutoVibratoThresholdLength(AppManager.editorConfig.AutoVibratoThresholdLength);
                 mDialogPreference.setAutoVibratoType1(AppManager.editorConfig.AutoVibratoType1);
                 mDialogPreference.setAutoVibratoType2(AppManager.editorConfig.AutoVibratoType2);
@@ -11824,35 +11824,35 @@ namespace cadencii
                 mDialogPreference.setEnableAutoVibrato(AppManager.editorConfig.EnableAutoVibrato);
                 mDialogPreference.setPreSendTime(AppManager.editorConfig.PreSendTime);
                 mDialogPreference.setControlCurveResolution(AppManager.editorConfig.ControlCurveResolution);
-                mDialogPreference.setDefaultSingerName(AppManager.editorConfig.DefaultSingerName);
+                mDialogPreference.setDefaultSingerName(ApplicationGlobal.appConfig.DefaultSingerName);
                 mDialogPreference.setScrollHorizontalOnWheel(AppManager.editorConfig.ScrollHorizontalOnWheel);
                 mDialogPreference.setMaximumFrameRate(AppManager.editorConfig.MaximumFrameRate);
                 mDialogPreference.setKeepLyricInputMode(AppManager.editorConfig.KeepLyricInputMode);
                 mDialogPreference.setPxTrackHeight(AppManager.editorConfig.PxTrackHeight);
                 mDialogPreference.setMouseHoverTime(AppManager.editorConfig.getMouseHoverTime());
                 mDialogPreference.setPlayPreviewWhenRightClick(AppManager.editorConfig.PlayPreviewWhenRightClick);
-                mDialogPreference.setCurveSelectingQuantized(AppManager.editorConfig.CurveSelectingQuantized);
-                mDialogPreference.setCurveVisibleAccent(AppManager.editorConfig.CurveVisibleAccent);
-                mDialogPreference.setCurveVisibleBre(AppManager.editorConfig.CurveVisibleBreathiness);
-                mDialogPreference.setCurveVisibleBri(AppManager.editorConfig.CurveVisibleBrightness);
-                mDialogPreference.setCurveVisibleCle(AppManager.editorConfig.CurveVisibleClearness);
-                mDialogPreference.setCurveVisibleDecay(AppManager.editorConfig.CurveVisibleDecay);
-                mDialogPreference.setCurveVisibleDyn(AppManager.editorConfig.CurveVisibleDynamics);
-                mDialogPreference.setCurveVisibleGen(AppManager.editorConfig.CurveVisibleGendorfactor);
-                mDialogPreference.setCurveVisibleOpe(AppManager.editorConfig.CurveVisibleOpening);
-                mDialogPreference.setCurveVisiblePit(AppManager.editorConfig.CurveVisiblePit);
-                mDialogPreference.setCurveVisiblePbs(AppManager.editorConfig.CurveVisiblePbs);
-                mDialogPreference.setCurveVisiblePor(AppManager.editorConfig.CurveVisiblePortamento);
-                mDialogPreference.setCurveVisibleVel(AppManager.editorConfig.CurveVisibleVelocity);
-                mDialogPreference.setCurveVisibleVibratoDepth(AppManager.editorConfig.CurveVisibleVibratoDepth);
-                mDialogPreference.setCurveVisibleVibratoRate(AppManager.editorConfig.CurveVisibleVibratoRate);
-                mDialogPreference.setCurveVisibleFx2Depth(AppManager.editorConfig.CurveVisibleFx2Depth);
-                mDialogPreference.setCurveVisibleHarmonics(AppManager.editorConfig.CurveVisibleHarmonics);
-                mDialogPreference.setCurveVisibleReso1(AppManager.editorConfig.CurveVisibleReso1);
-                mDialogPreference.setCurveVisibleReso2(AppManager.editorConfig.CurveVisibleReso2);
-                mDialogPreference.setCurveVisibleReso3(AppManager.editorConfig.CurveVisibleReso3);
-                mDialogPreference.setCurveVisibleReso4(AppManager.editorConfig.CurveVisibleReso4);
-                mDialogPreference.setCurveVisibleEnvelope(AppManager.editorConfig.CurveVisibleEnvelope);
+                mDialogPreference.setCurveSelectingQuantized(ApplicationGlobal.appConfig.CurveSelectingQuantized);
+                mDialogPreference.setCurveVisibleAccent(ApplicationGlobal.appConfig.CurveVisibleAccent);
+                mDialogPreference.setCurveVisibleBre(ApplicationGlobal.appConfig.CurveVisibleBreathiness);
+                mDialogPreference.setCurveVisibleBri(ApplicationGlobal.appConfig.CurveVisibleBrightness);
+                mDialogPreference.setCurveVisibleCle(ApplicationGlobal.appConfig.CurveVisibleClearness);
+                mDialogPreference.setCurveVisibleDecay(ApplicationGlobal.appConfig.CurveVisibleDecay);
+                mDialogPreference.setCurveVisibleDyn(ApplicationGlobal.appConfig.CurveVisibleDynamics);
+                mDialogPreference.setCurveVisibleGen(ApplicationGlobal.appConfig.CurveVisibleGendorfactor);
+                mDialogPreference.setCurveVisibleOpe(ApplicationGlobal.appConfig.CurveVisibleOpening);
+                mDialogPreference.setCurveVisiblePit(ApplicationGlobal.appConfig.CurveVisiblePit);
+                mDialogPreference.setCurveVisiblePbs(ApplicationGlobal.appConfig.CurveVisiblePbs);
+                mDialogPreference.setCurveVisiblePor(ApplicationGlobal.appConfig.CurveVisiblePortamento);
+                mDialogPreference.setCurveVisibleVel(ApplicationGlobal.appConfig.CurveVisibleVelocity);
+                mDialogPreference.setCurveVisibleVibratoDepth(ApplicationGlobal.appConfig.CurveVisibleVibratoDepth);
+                mDialogPreference.setCurveVisibleVibratoRate(ApplicationGlobal.appConfig.CurveVisibleVibratoRate);
+                mDialogPreference.setCurveVisibleFx2Depth(ApplicationGlobal.appConfig.CurveVisibleFx2Depth);
+                mDialogPreference.setCurveVisibleHarmonics(ApplicationGlobal.appConfig.CurveVisibleHarmonics);
+                mDialogPreference.setCurveVisibleReso1(ApplicationGlobal.appConfig.CurveVisibleReso1);
+                mDialogPreference.setCurveVisibleReso2(ApplicationGlobal.appConfig.CurveVisibleReso2);
+                mDialogPreference.setCurveVisibleReso3(ApplicationGlobal.appConfig.CurveVisibleReso3);
+                mDialogPreference.setCurveVisibleReso4(ApplicationGlobal.appConfig.CurveVisibleReso4);
+                mDialogPreference.setCurveVisibleEnvelope(ApplicationGlobal.appConfig.CurveVisibleEnvelope);
 #if ENABLE_MIDI
                 mDialogPreference.setMidiInPort(AppManager.editorConfig.MidiInPort.PortNumber);
 #endif
@@ -11879,7 +11879,7 @@ namespace cadencii
                 mDialogPreference.setVocaloid1Required(!AppManager.editorConfig.DoNotUseVocaloid1);
                 mDialogPreference.setVocaloid2Required(!AppManager.editorConfig.DoNotUseVocaloid2);
                 mDialogPreference.setBufferSize(AppManager.editorConfig.BufferSizeMilliSeconds);
-                mDialogPreference.setDefaultSynthesizer(AppManager.editorConfig.DefaultSynthesizer);
+                mDialogPreference.setDefaultSynthesizer(ApplicationGlobal.appConfig.DefaultSynthesizer);
                 mDialogPreference.setUseUserDefinedAutoVibratoType(AppManager.editorConfig.UseUserDefinedAutoVibratoType);
                 mDialogPreference.setEnableWideCharacterWorkaround(AppManager.editorConfig.UseWideCharacterWorkaround);
 
@@ -11901,7 +11901,7 @@ namespace cadencii
                     AppManager.editorConfig.WheelOrder = mDialogPreference.getWheelOrder();
                     AppManager.editorConfig.CursorFixed = mDialogPreference.isCursorFixed();
 
-                    AppManager.editorConfig.DefaultVibratoLength = mDialogPreference.getDefaultVibratoLength();
+                    ApplicationGlobal.appConfig.DefaultVibratoLength = mDialogPreference.getDefaultVibratoLength();
                     AppManager.editorConfig.AutoVibratoThresholdLength = mDialogPreference.getAutoVibratoThresholdLength();
                     AppManager.editorConfig.AutoVibratoType1 = mDialogPreference.getAutoVibratoType1();
                     AppManager.editorConfig.AutoVibratoType2 = mDialogPreference.getAutoVibratoType2();
@@ -11928,7 +11928,7 @@ namespace cadencii
                     }
 
                     AppManager.editorConfig.ControlCurveResolution = mDialogPreference.getControlCurveResolution();
-                    AppManager.editorConfig.DefaultSingerName = mDialogPreference.getDefaultSingerName();
+                    ApplicationGlobal.appConfig.DefaultSingerName = mDialogPreference.getDefaultSingerName();
                     AppManager.editorConfig.ScrollHorizontalOnWheel = mDialogPreference.isScrollHorizontalOnWheel();
                     AppManager.editorConfig.MaximumFrameRate = mDialogPreference.getMaximumFrameRate();
                     int fps = 1000 / AppManager.editorConfig.MaximumFrameRate;
@@ -11941,29 +11941,29 @@ namespace cadencii
                     }
                     AppManager.editorConfig.setMouseHoverTime(mDialogPreference.getMouseHoverTime());
                     AppManager.editorConfig.PlayPreviewWhenRightClick = mDialogPreference.isPlayPreviewWhenRightClick();
-                    AppManager.editorConfig.CurveSelectingQuantized = mDialogPreference.isCurveSelectingQuantized();
+                    ApplicationGlobal.appConfig.CurveSelectingQuantized = mDialogPreference.isCurveSelectingQuantized();
 
-                    AppManager.editorConfig.CurveVisibleAccent = mDialogPreference.isCurveVisibleAccent();
-                    AppManager.editorConfig.CurveVisibleBreathiness = mDialogPreference.isCurveVisibleBre();
-                    AppManager.editorConfig.CurveVisibleBrightness = mDialogPreference.isCurveVisibleBri();
-                    AppManager.editorConfig.CurveVisibleClearness = mDialogPreference.isCurveVisibleCle();
-                    AppManager.editorConfig.CurveVisibleDecay = mDialogPreference.isCurveVisibleDecay();
-                    AppManager.editorConfig.CurveVisibleDynamics = mDialogPreference.isCurveVisibleDyn();
-                    AppManager.editorConfig.CurveVisibleGendorfactor = mDialogPreference.isCurveVisibleGen();
-                    AppManager.editorConfig.CurveVisibleOpening = mDialogPreference.isCurveVisibleOpe();
-                    AppManager.editorConfig.CurveVisiblePit = mDialogPreference.isCurveVisiblePit();
-                    AppManager.editorConfig.CurveVisiblePbs = mDialogPreference.isCurveVisiblePbs();
-                    AppManager.editorConfig.CurveVisiblePortamento = mDialogPreference.isCurveVisiblePor();
-                    AppManager.editorConfig.CurveVisibleVelocity = mDialogPreference.isCurveVisibleVel();
-                    AppManager.editorConfig.CurveVisibleVibratoDepth = mDialogPreference.isCurveVisibleVibratoDepth();
-                    AppManager.editorConfig.CurveVisibleVibratoRate = mDialogPreference.isCurveVisibleVibratoRate();
-                    AppManager.editorConfig.CurveVisibleFx2Depth = mDialogPreference.isCurveVisibleFx2Depth();
-                    AppManager.editorConfig.CurveVisibleHarmonics = mDialogPreference.isCurveVisibleHarmonics();
-                    AppManager.editorConfig.CurveVisibleReso1 = mDialogPreference.isCurveVisibleReso1();
-                    AppManager.editorConfig.CurveVisibleReso2 = mDialogPreference.isCurveVisibleReso2();
-                    AppManager.editorConfig.CurveVisibleReso3 = mDialogPreference.isCurveVisibleReso3();
-                    AppManager.editorConfig.CurveVisibleReso4 = mDialogPreference.isCurveVisibleReso4();
-                    AppManager.editorConfig.CurveVisibleEnvelope = mDialogPreference.isCurveVisibleEnvelope();
+                    ApplicationGlobal.appConfig.CurveVisibleAccent = mDialogPreference.isCurveVisibleAccent();
+                    ApplicationGlobal.appConfig.CurveVisibleBreathiness = mDialogPreference.isCurveVisibleBre();
+                    ApplicationGlobal.appConfig.CurveVisibleBrightness = mDialogPreference.isCurveVisibleBri();
+                    ApplicationGlobal.appConfig.CurveVisibleClearness = mDialogPreference.isCurveVisibleCle();
+                    ApplicationGlobal.appConfig.CurveVisibleDecay = mDialogPreference.isCurveVisibleDecay();
+                    ApplicationGlobal.appConfig.CurveVisibleDynamics = mDialogPreference.isCurveVisibleDyn();
+                    ApplicationGlobal.appConfig.CurveVisibleGendorfactor = mDialogPreference.isCurveVisibleGen();
+                    ApplicationGlobal.appConfig.CurveVisibleOpening = mDialogPreference.isCurveVisibleOpe();
+                    ApplicationGlobal.appConfig.CurveVisiblePit = mDialogPreference.isCurveVisiblePit();
+                    ApplicationGlobal.appConfig.CurveVisiblePbs = mDialogPreference.isCurveVisiblePbs();
+                    ApplicationGlobal.appConfig.CurveVisiblePortamento = mDialogPreference.isCurveVisiblePor();
+                    ApplicationGlobal.appConfig.CurveVisibleVelocity = mDialogPreference.isCurveVisibleVel();
+                    ApplicationGlobal.appConfig.CurveVisibleVibratoDepth = mDialogPreference.isCurveVisibleVibratoDepth();
+                    ApplicationGlobal.appConfig.CurveVisibleVibratoRate = mDialogPreference.isCurveVisibleVibratoRate();
+                    ApplicationGlobal.appConfig.CurveVisibleFx2Depth = mDialogPreference.isCurveVisibleFx2Depth();
+                    ApplicationGlobal.appConfig.CurveVisibleHarmonics = mDialogPreference.isCurveVisibleHarmonics();
+                    ApplicationGlobal.appConfig.CurveVisibleReso1 = mDialogPreference.isCurveVisibleReso1();
+                    ApplicationGlobal.appConfig.CurveVisibleReso2 = mDialogPreference.isCurveVisibleReso2();
+                    ApplicationGlobal.appConfig.CurveVisibleReso3 = mDialogPreference.isCurveVisibleReso3();
+                    ApplicationGlobal.appConfig.CurveVisibleReso4 = mDialogPreference.isCurveVisibleReso4();
+                    ApplicationGlobal.appConfig.CurveVisibleEnvelope = mDialogPreference.isCurveVisibleEnvelope();
 
 #if ENABLE_MIDI
                     AppManager.editorConfig.MidiInPort.PortNumber = mDialogPreference.getMidiInPort();
@@ -12092,7 +12092,7 @@ namespace cadencii
                     AppManager.editorConfig.DoNotUseVocaloid1 = !mDialogPreference.isVocaloid1Required();
                     AppManager.editorConfig.DoNotUseVocaloid2 = !mDialogPreference.isVocaloid2Required();
                     AppManager.editorConfig.BufferSizeMilliSeconds = mDialogPreference.getBufferSize();
-                    AppManager.editorConfig.DefaultSynthesizer = mDialogPreference.getDefaultSynthesizer();
+                    ApplicationGlobal.appConfig.DefaultSynthesizer = mDialogPreference.getDefaultSynthesizer();
                     AppManager.editorConfig.UseUserDefinedAutoVibratoType = mDialogPreference.isUseUserDefinedAutoVibratoType();
                     AppManager.editorConfig.UseWideCharacterWorkaround = mDialogPreference.isEnableWideCharacterWorkaround();
 
@@ -12589,7 +12589,7 @@ namespace cadencii
 
                     for (int track = 1; track < temp.Track.Count; track++) {
                         BezierCurves newbc = new BezierCurves();
-                        foreach (CurveType ct in Utility.CURVE_USAGE) {
+                        foreach (CurveType ct in BezierCurves.CURVE_USAGE) {
                             int index = ct.getIndex();
                             if (index < 0) {
                                 continue;
@@ -12639,7 +12639,7 @@ namespace cadencii
                                 temp.Track[track].getEvent(i).Clock += dclock;
                             }
                         }
-                        foreach (CurveType curve in Utility.CURVE_USAGE) {
+                        foreach (CurveType curve in BezierCurves.CURVE_USAGE) {
                             if (curve.isScalar() || curve.isAttachNote()) {
                                 continue;
                             }
@@ -12795,8 +12795,8 @@ namespace cadencii
                     int dclock = clock_end - clock_start;
                     for (int track = 1; track < temp.Track.Count; track++) {
                         BezierCurves newbc = new BezierCurves();
-                        for (int j = 0; j < Utility.CURVE_USAGE.Length; j++) {
-                            CurveType ct = Utility.CURVE_USAGE[j];
+                        for (int j = 0; j < BezierCurves.CURVE_USAGE.Length; j++) {
+                            CurveType ct = BezierCurves.CURVE_USAGE[j];
                             int index = ct.getIndex();
                             if (index < 0) {
                                 continue;
@@ -14841,10 +14841,10 @@ namespace cadencii
             int tracks = vsq.Track.Count;
             cMenuTrackTabDelete.Enabled = tracks >= 3;
             menuTrackDelete.Enabled = tracks >= 3;
-            cMenuTrackTabAdd.Enabled = tracks <= AppManager.MAX_NUM_TRACK;
-            menuTrackAdd.Enabled = tracks <= AppManager.MAX_NUM_TRACK;
-            cMenuTrackTabCopy.Enabled = tracks <= AppManager.MAX_NUM_TRACK;
-            menuTrackCopy.Enabled = tracks <= AppManager.MAX_NUM_TRACK;
+            cMenuTrackTabAdd.Enabled = tracks <= ApplicationGlobal.MAX_NUM_TRACK;
+            menuTrackAdd.Enabled = tracks <= ApplicationGlobal.MAX_NUM_TRACK;
+            cMenuTrackTabCopy.Enabled = tracks <= ApplicationGlobal.MAX_NUM_TRACK;
+            menuTrackCopy.Enabled = tracks <= ApplicationGlobal.MAX_NUM_TRACK;
 
             bool on = vsq_track.isTrackOn();
             cMenuTrackTabTrackOn.Checked = on;
@@ -15011,14 +15011,14 @@ namespace cadencii
                         CadenciiCommand run = VsqFileEx.generateCommandDeleteBezierChain(selected,
                                                                                           trackSelector.getSelectedCurve(),
                                                                                           chain_id,
-                                                                                          AppManager.editorConfig.getControlCurveResolutionValue());
+                                                                                          ApplicationGlobal.appConfig.getControlCurveResolutionValue());
                         AppManager.editHistory.register(vsq.executeCommand(run));
                     } else {
                         CadenciiCommand run = VsqFileEx.generateCommandReplaceBezierChain(selected,
                                                                                            trackSelector.getSelectedCurve(),
                                                                                            chain_id,
                                                                                            chain,
-                                                                                           AppManager.editorConfig.getControlCurveResolutionValue());
+                                                                                           ApplicationGlobal.appConfig.getControlCurveResolutionValue());
                         AppManager.editHistory.register(vsq.executeCommand(run));
                     }
                     setEdited(true);
@@ -15686,7 +15686,7 @@ namespace cadencii
             }
             string file = AppManager.getFileName();
             if (file.Equals("")) {
-                string last_file = AppManager.editorConfig.getLastUsedPathOut("xvsq");
+                string last_file = ApplicationGlobal.appConfig.getLastUsedPathOut("xvsq");
                 if (!last_file.Equals("")) {
                     string dir = PortUtil.getDirectoryName(last_file);
                     saveXmlVsqDialog.SetSelectedFile(dir);
@@ -15694,7 +15694,7 @@ namespace cadencii
                 var dr = AppManager.showModalDialog(saveXmlVsqDialog, false, this);
                 if (dr == System.Windows.Forms.DialogResult.OK) {
                     file = saveXmlVsqDialog.FileName;
-                    AppManager.editorConfig.setLastUsedPathOut(file, ".xvsq");
+                    ApplicationGlobal.appConfig.setLastUsedPathOut(file, ".xvsq");
                 }
             }
             if (file != "") {
@@ -15748,9 +15748,9 @@ namespace cadencii
                 return;
             }
             AppManager.setSelected(1);
-            VsqFileEx vsq = new VsqFileEx(AppManager.editorConfig.DefaultSingerName, 1, 4, 4, 500000);
+            VsqFileEx vsq = new VsqFileEx(ApplicationGlobal.appConfig.DefaultSingerName, 1, 4, 4, 500000);
 
-            RendererKind kind = AppManager.editorConfig.DefaultSynthesizer;
+            RendererKind kind = ApplicationGlobal.appConfig.DefaultSynthesizer;
             string renderer = kind.getVersionString();
             List<VsqID> singers = AppManager.getSingerListFromRendererKind(kind);
             vsq.Track[1].changeRenderer(renderer, singers);
@@ -16589,8 +16589,8 @@ namespace cadencii
                 }
 
                 // コントロールカーブをシフト
-                for (int j = 0; j < Utility.CURVE_USAGE.Length; j++) {
-                    CurveType ct = Utility.CURVE_USAGE[j];
+                for (int j = 0; j < BezierCurves.CURVE_USAGE.Length; j++) {
+                    CurveType ct = BezierCurves.CURVE_USAGE[j];
                     VsqBPList item = target.Track[track].getCurve(ct.getName());
                     if (item == null) {
                         continue;
@@ -16609,8 +16609,8 @@ namespace cadencii
                 }
 
                 // ベジエカーブをシフト
-                for (int j = 0; j < Utility.CURVE_USAGE.Length; j++) {
-                    CurveType ct = Utility.CURVE_USAGE[j];
+                for (int j = 0; j < BezierCurves.CURVE_USAGE.Length; j++) {
+                    CurveType ct = BezierCurves.CURVE_USAGE[j];
                     List<BezierChain> list = target.AttachedCurves.get(track - 1).get(ct);
                     if (list == null) {
                         continue;

@@ -31,7 +31,7 @@ namespace cadencii
         /// <summary>
         /// 波形描画用のコンテキスト
         /// </summary>
-        private WaveDrawContext[] mDrawer = new WaveDrawContext[AppManager.MAX_NUM_TRACK];
+        private WaveDrawContext[] mDrawer = new WaveDrawContext[ApplicationGlobal.MAX_NUM_TRACK];
         /// <summary>
         /// グラフィクスオブジェクトのキャッシュ
         /// </summary>
@@ -115,7 +115,7 @@ namespace cadencii
                 PortUtil.drawStringEx(
                     g,
                     "(hidden for performance)",
-                    AppManager.baseFont8,
+                    EditorConfig.baseFont8,
                     rc,
                     PortUtil.STRING_ALIGN_CENTER,
                     PortUtil.STRING_ALIGN_CENTER);

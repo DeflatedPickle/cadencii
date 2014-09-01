@@ -28,7 +28,7 @@ namespace cadencii.core
         /// プリメジャーの最大値
         /// </summary>
         public const int MAX_PRE_MEASURE = 8;
-        private const string CONFIG_FILE_NAME = "config.xml";
+        public const string CONFIG_FILE_NAME = "config.xml";
 
         public const int MAX_NUM_TRACK = 16;
 		

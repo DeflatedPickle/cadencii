@@ -102,11 +102,11 @@ namespace cadencii
                 g.fillRect(SPACE + 3, SPACE + 3, 11, 11);
             }
             g.setColor(Color.black);
-            g.setFont(AppManager.baseFont8);
+            g.setFont(EditorConfig.baseFont8);
             g.drawString(
                 "Auto Maximize",
                 SPACE + 16 + SPACE,
-                SPACE + AppManager.baseFont8Height / 2 - AppManager.baseFont8OffsetHeight + 1);
+                SPACE + EditorConfig.baseFont8Height / 2 - EditorConfig.baseFont8OffsetHeight + 1);
 
             // ズーム用ボタンを描く
             int zoom_button_y = SPACE + 16 + SPACE;
@@ -121,7 +121,7 @@ namespace cadencii
             g.setColor(mWaveViewAutoMaximize ? PortUtil.Gray : Color.black);
             rc.y = rc.y + 1;
             PortUtil.drawStringEx(
-                g, (mWaveViewButtonZoomMouseDowned ? "↑Move Mouse↓" : "Zoom"), AppManager.baseFont9,
+                g, (mWaveViewButtonZoomMouseDowned ? "↑Move Mouse↓" : "Zoom"), EditorConfig.baseFont9,
                 rc, PortUtil.STRING_ALIGN_CENTER, PortUtil.STRING_ALIGN_CENTER);
         }
 

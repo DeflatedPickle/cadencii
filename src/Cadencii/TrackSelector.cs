@@ -25,6 +25,7 @@ using cadencii.java.awt;
 using cadencii.java.util;
 using cadencii.vsq;
 using cadencii.windows.forms;
+using ApplicationGlobal = cadencii.core.ApplicationGlobal;
 
 namespace cadencii
 {
@@ -456,73 +457,73 @@ namespace cadencii
         public void updateVisibleCurves()
         {
             mViewingCurves.Clear();
-            if (AppManager.editorConfig.CurveVisibleVelocity) {
+            if (ApplicationGlobal.appConfig.CurveVisibleVelocity) {
                 mViewingCurves.Add(CurveType.VEL);
             }
-            if (AppManager.editorConfig.CurveVisibleAccent) {
+            if (ApplicationGlobal.appConfig.CurveVisibleAccent) {
                 mViewingCurves.Add(CurveType.Accent);
             }
-            if (AppManager.editorConfig.CurveVisibleDecay) {
+            if (ApplicationGlobal.appConfig.CurveVisibleDecay) {
                 mViewingCurves.Add(CurveType.Decay);
             }
-            if (AppManager.editorConfig.CurveVisibleEnvelope) {
+            if (ApplicationGlobal.appConfig.CurveVisibleEnvelope) {
                 mViewingCurves.Add(CurveType.Env);
             }
-            if (AppManager.editorConfig.CurveVisibleDynamics) {
+            if (ApplicationGlobal.appConfig.CurveVisibleDynamics) {
                 mViewingCurves.Add(CurveType.DYN);
             }
-            if (AppManager.editorConfig.CurveVisibleBreathiness) {
+            if (ApplicationGlobal.appConfig.CurveVisibleBreathiness) {
                 mViewingCurves.Add(CurveType.BRE);
             }
-            if (AppManager.editorConfig.CurveVisibleBrightness) {
+            if (ApplicationGlobal.appConfig.CurveVisibleBrightness) {
                 mViewingCurves.Add(CurveType.BRI);
             }
-            if (AppManager.editorConfig.CurveVisibleClearness) {
+            if (ApplicationGlobal.appConfig.CurveVisibleClearness) {
                 mViewingCurves.Add(CurveType.CLE);
             }
-            if (AppManager.editorConfig.CurveVisibleOpening) {
+            if (ApplicationGlobal.appConfig.CurveVisibleOpening) {
                 mViewingCurves.Add(CurveType.OPE);
             }
-            if (AppManager.editorConfig.CurveVisibleGendorfactor) {
+            if (ApplicationGlobal.appConfig.CurveVisibleGendorfactor) {
                 mViewingCurves.Add(CurveType.GEN);
             }
-            if (AppManager.editorConfig.CurveVisiblePortamento) {
+            if (ApplicationGlobal.appConfig.CurveVisiblePortamento) {
                 mViewingCurves.Add(CurveType.POR);
             }
-            if (AppManager.editorConfig.CurveVisiblePit) {
+            if (ApplicationGlobal.appConfig.CurveVisiblePit) {
                 mViewingCurves.Add(CurveType.PIT);
             }
-            if (AppManager.editorConfig.CurveVisiblePbs) {
+            if (ApplicationGlobal.appConfig.CurveVisiblePbs) {
                 mViewingCurves.Add(CurveType.PBS);
             }
-            if (AppManager.editorConfig.CurveVisibleVibratoRate) {
+            if (ApplicationGlobal.appConfig.CurveVisibleVibratoRate) {
                 mViewingCurves.Add(CurveType.VibratoRate);
             }
-            if (AppManager.editorConfig.CurveVisibleVibratoDepth) {
+            if (ApplicationGlobal.appConfig.CurveVisibleVibratoDepth) {
                 mViewingCurves.Add(CurveType.VibratoDepth);
             }
-            if (AppManager.editorConfig.CurveVisibleHarmonics) {
+            if (ApplicationGlobal.appConfig.CurveVisibleHarmonics) {
                 mViewingCurves.Add(CurveType.harmonics);
             }
-            if (AppManager.editorConfig.CurveVisibleFx2Depth) {
+            if (ApplicationGlobal.appConfig.CurveVisibleFx2Depth) {
                 mViewingCurves.Add(CurveType.fx2depth);
             }
-            if (AppManager.editorConfig.CurveVisibleReso1) {
+            if (ApplicationGlobal.appConfig.CurveVisibleReso1) {
                 mViewingCurves.Add(CurveType.reso1freq);
                 mViewingCurves.Add(CurveType.reso1bw);
                 mViewingCurves.Add(CurveType.reso1amp);
             }
-            if (AppManager.editorConfig.CurveVisibleReso2) {
+            if (ApplicationGlobal.appConfig.CurveVisibleReso2) {
                 mViewingCurves.Add(CurveType.reso2freq);
                 mViewingCurves.Add(CurveType.reso2bw);
                 mViewingCurves.Add(CurveType.reso2amp);
             }
-            if (AppManager.editorConfig.CurveVisibleReso3) {
+            if (ApplicationGlobal.appConfig.CurveVisibleReso3) {
                 mViewingCurves.Add(CurveType.reso3freq);
                 mViewingCurves.Add(CurveType.reso3bw);
                 mViewingCurves.Add(CurveType.reso3amp);
             }
-            if (AppManager.editorConfig.CurveVisibleReso4) {
+            if (ApplicationGlobal.appConfig.CurveVisibleReso4) {
                 mViewingCurves.Add(CurveType.reso4freq);
                 mViewingCurves.Add(CurveType.reso4bw);
                 mViewingCurves.Add(CurveType.reso4amp);
@@ -1091,12 +1092,12 @@ namespace cadencii
                 g.setColor(AppManager.COLOR_BORDER);
                 g.drawLine(0, size.height - 2 * OFFSET_TRACK_TAB,
                             size.width - 0, size.height - 2 * OFFSET_TRACK_TAB);
-                g.setFont(AppManager.baseFont8);
+                g.setFont(EditorConfig.baseFont8);
                 g.setColor(brs_string);
                 g.drawString(
                     "SINGER",
                     9,
-                    size.height - 2 * OFFSET_TRACK_TAB + OFFSET_TRACK_TAB / 2 - AppManager.baseFont8OffsetHeight);
+                    size.height - 2 * OFFSET_TRACK_TAB + OFFSET_TRACK_TAB / 2 - EditorConfig.baseFont8OffsetHeight);
                 g.clipRect(key_width, size.height - 2 * OFFSET_TRACK_TAB,
                             size.width - key_width, OFFSET_TRACK_TAB);
                 VsqTrack vsq_track = null;
@@ -1121,7 +1122,7 @@ namespace cadencii
                         g.setColor(brs_string);
                         g.drawString(
                             singer_at_left.ID.IconHandle.IDS,
-                            rc.x, rc.y + OFFSET_TRACK_TAB / 2 - AppManager.baseFont8OffsetHeight);
+                            rc.x, rc.y + OFFSET_TRACK_TAB / 2 - EditorConfig.baseFont8OffsetHeight);
                     }
 
                     // 歌手設定を順に描画
@@ -1151,7 +1152,7 @@ namespace cadencii
                         g.setColor(brs_string);
                         g.drawString(
                             singer_handle.IDS,
-                            rc.x, rc.y + OFFSET_TRACK_TAB / 2 - AppManager.baseFont8OffsetHeight);
+                            rc.x, rc.y + OFFSET_TRACK_TAB / 2 - EditorConfig.baseFont8OffsetHeight);
                     }
                 }
                 g.setClip(last);
@@ -1163,9 +1164,9 @@ namespace cadencii
                 g.drawLine(0, size.height - OFFSET_TRACK_TAB,
                             size.width, size.height - OFFSET_TRACK_TAB);
                 g.setColor(brs_string);
-                g.drawString("TRACK", 9, size.height - OFFSET_TRACK_TAB + OFFSET_TRACK_TAB / 2 - AppManager.baseFont8OffsetHeight);
+                g.drawString("TRACK", 9, size.height - OFFSET_TRACK_TAB + OFFSET_TRACK_TAB / 2 - EditorConfig.baseFont8OffsetHeight);
                 if (vsq != null) {
-                    for (int i = 0; i < AppManager.MAX_NUM_TRACK; i++) {
+                    for (int i = 0; i < ApplicationGlobal.MAX_NUM_TRACK; i++) {
                         int x = key_width + i * selecter_width;
 #if DEBUG
                         try {
@@ -1499,9 +1500,9 @@ namespace cadencii
 
                 if (mCurveVisible) {
                     #region カーブの種類一覧
-                    Font text_font = AppManager.baseFont9;
-                    int text_font_height = AppManager.baseFont9Height;
-                    int text_font_offset = AppManager.baseFont9OffsetHeight;
+                    Font text_font = EditorConfig.baseFont9;
+                    int text_font_height = EditorConfig.baseFont9Height;
+                    int text_font_offset = EditorConfig.baseFont9OffsetHeight;
                     Color font_color_normal = Color.black;
                     g.setColor(new Color(212, 212, 212));
                     g.fillRect(0, 0, key_width, size.height - 2 * OFFSET_TRACK_TAB);
@@ -1561,11 +1562,11 @@ namespace cadencii
                         valign = 1;
                         shift = 100;
                     }
-                    g.setFont(AppManager.baseFont10Bold);
+                    g.setFont(EditorConfig.baseFont10Bold);
                     g.setColor(Color.white);
                     PortUtil.drawStringEx(g,
                                            mMouseValue + "",
-                                           AppManager.baseFont10Bold,
+                                           EditorConfig.baseFont10Bold,
                                            new Rectangle(mouse.x - 100, mouse.y - shift, 100, 100),
                                            align,
                                            valign);
@@ -1575,7 +1576,7 @@ namespace cadencii
                         valign = -1;
                         PortUtil.drawStringEx(g,
                                                PortUtil.formatDecimal("#0.00", delta_note),
-                                               AppManager.baseFont10Bold,
+                                               EditorConfig.baseFont10Bold,
                                                new Rectangle(mouse.x - 100, mouse.y, 100, 100),
                                                align,
                                                valign);
@@ -1757,7 +1758,7 @@ namespace cadencii
         private Dimension getFlagBounds(string flag_title)
         {
             if (mTextWidthPerLetter <= 0.0f) {
-                Font font = AppManager.baseFont10;
+                Font font = EditorConfig.baseFont10;
                 Dimension s = Util.measureString(flag_title + " ", font);
                 mTextWidthPerLetter = s.width / (float)flag_title.Length;
                 mTextHeight = s.height;
@@ -1783,9 +1784,9 @@ namespace cadencii
 
             string s_pre = getFlagTitle(true, preutterance);
             string s_ovl = getFlagTitle(false, overlap);
-            Font font = AppManager.baseFont10;
-            int font_height = AppManager.baseFont10Height;
-            int font_offset = AppManager.baseFont10OffsetHeight;
+            Font font = EditorConfig.baseFont10;
+            int font_height = EditorConfig.baseFont10Height;
+            int font_offset = EditorConfig.baseFont10OffsetHeight;
             Dimension pre_bounds = getFlagBounds(s_pre);
             Dimension ovl_bounds = getFlagBounds(s_ovl);
 
@@ -2119,13 +2120,13 @@ namespace cadencii
                             destRect.x + destRect.width - 10, destRect.y + destRect.height - 1);
             }
             g.clipRect(destRect.x, destRect.y, destRect.width, destRect.height);
-            string title = Utility.trimString(name, AppManager.baseFont8, panel_width);
-            g.setFont(AppManager.baseFont8);
+            string title = Utility.trimString(name, EditorConfig.baseFont8, panel_width);
+            g.setFont(EditorConfig.baseFont8);
             g.setColor(panel_title);
-            g.drawString(title, destRect.x + 2, destRect.y + destRect.height / 2 - AppManager.baseFont8OffsetHeight);
+            g.drawString(title, destRect.x + 2, destRect.y + destRect.height / 2 - EditorConfig.baseFont8OffsetHeight);
             if (render_required) {
                 g.setColor(button_title);
-                g.drawString("R", destRect.x + destRect.width - PX_WIDTH_RENDER, destRect.y + destRect.height / 2 - AppManager.baseFont8OffsetHeight);
+                g.drawString("R", destRect.x + destRect.width - PX_WIDTH_RENDER, destRect.y + destRect.height / 2 - EditorConfig.baseFont8OffsetHeight);
             }
             if (selected) {
                 g.setColor(border);
@@ -2198,7 +2199,7 @@ namespace cadencii
             float scale = AppManager.mMainWindowController.getScaleX();
             int selected = AppManager.getSelected();
 
-            g.setFont(AppManager.baseFont10Bold);
+            g.setFont(EditorConfig.baseFont10Bold);
             bool cursor_should_be_hand = false;
             lock (AppManager.mDrawObjects) {
                 List<DrawObject> target_list = AppManager.mDrawObjects[selected - 1];
@@ -3131,7 +3132,7 @@ namespace cadencii
                 } else if (selected_tool == EditTool.ARROW ||
                             selected_tool == EditTool.ERASER) {
                     int draft_clock = clock;
-                    if (AppManager.editorConfig.CurveSelectingQuantized) {
+                    if (ApplicationGlobal.appConfig.CurveSelectingQuantized) {
                         int unit = AppManager.getPositionQuantizeClock();
                         int odd = clock % unit;
                         int nclock = clock;
@@ -3367,7 +3368,7 @@ namespace cadencii
                 value = max;
             }
 
-            if (AppManager.editorConfig.CurveSelectingQuantized) {
+            if (ApplicationGlobal.appConfig.CurveSelectingQuantized) {
                 AppManager.mCurveSelectingRectangle = new Rectangle(quantized_clock, value, 0, 0);
             } else {
                 AppManager.mCurveSelectingRectangle = new Rectangle(clock, value, 0, 0);
@@ -3413,7 +3414,7 @@ namespace cadencii
                     mMouseTracer.clear();
                     int selecter_width = getSelectorWidth();
                     if (vsq != null) {
-                        for (int i = 0; i < AppManager.MAX_NUM_TRACK; i++) {
+                        for (int i = 0; i < ApplicationGlobal.MAX_NUM_TRACK; i++) {
                             int x = key_width + i * selecter_width;
                             if (vsq.Track.Count > i + 1) {
                                 if (x <= e.X && e.X < x + selecter_width) {
@@ -3811,7 +3812,7 @@ namespace cadencii
                                 if ((mModifierOnMouseDown & mModifierKey) != mModifierKey) {
                                     AppManager.setCurveSelectedIntervalEnabled(false);
                                 }
-                                if (AppManager.editorConfig.CurveSelectingQuantized) {
+                                if (ApplicationGlobal.appConfig.CurveSelectingQuantized) {
                                     AppManager.mCurveSelectingRectangle = new Rectangle(quantized_clock, value, 0, 0);
                                 } else {
                                     AppManager.mCurveSelectingRectangle = new Rectangle(clock, value, 0, 0);
@@ -3853,7 +3854,7 @@ namespace cadencii
                                                                                                                        mSelectedCurve,
                                                                                                                        chain.value.id,
                                                                                                                        work,
-                                                                                                                       AppManager.editorConfig.getControlCurveResolutionValue());
+                                                                                                                       ApplicationGlobal.appConfig.getControlCurveResolutionValue());
                                                     executeCommand(run, true);
                                                     mMouseDownMode = MouseDownMode.NONE;
                                                     Invalidate();
@@ -3863,7 +3864,7 @@ namespace cadencii
                                                     CadenciiCommand run = VsqFileEx.generateCommandDeleteBezierChain(AppManager.getSelected(),
                                                                                                                       mSelectedCurve,
                                                                                                                       chain.value.id,
-                                                                                                                      AppManager.editorConfig.getControlCurveResolutionValue());
+                                                                                                                      ApplicationGlobal.appConfig.getControlCurveResolutionValue());
                                                     executeCommand(run, true);
                                                     mMouseDownMode = MouseDownMode.NONE;
                                                     Invalidate();
@@ -3885,7 +3886,7 @@ namespace cadencii
                                                                                                                    mSelectedCurve,
                                                                                                                    chain.value.id,
                                                                                                                    work,
-                                                                                                                   AppManager.editorConfig.getControlCurveResolutionValue());
+                                                                                                                   ApplicationGlobal.appConfig.getControlCurveResolutionValue());
                                                 executeCommand(run, true);
                                                 mMouseDownMode = MouseDownMode.NONE;
                                                 Invalidate();
@@ -3918,7 +3919,7 @@ namespace cadencii
                                 if ((mModifierOnMouseDown & Keys.Shift) != Keys.Shift && (mModifierOnMouseDown & mModifierKey) != mModifierKey) {
                                     AppManager.itemSelection.clearPoint();
                                 }
-                                if (AppManager.editorConfig.CurveSelectingQuantized) {
+                                if (ApplicationGlobal.appConfig.CurveSelectingQuantized) {
                                     AppManager.mCurveSelectingRectangle = new Rectangle(quantized_clock, value, 0, 0);
                                 } else {
                                     AppManager.mCurveSelectingRectangle = new Rectangle(clock, value, 0, 0);
@@ -4066,7 +4067,7 @@ namespace cadencii
                         CadenciiCommand run = VsqFileEx.generateCommandAddBezierChain(track,
                                                                                 mSelectedCurve,
                                                                                 chain_id,
-                                                                                AppManager.editorConfig.getControlCurveResolutionValue(),
+                                                                                ApplicationGlobal.appConfig.getControlCurveResolutionValue(),
                                                                                 adding);
                         executeCommand(run, false);
                         mMouseDownMode = MouseDownMode.BEZIER_ADD_NEW;
@@ -4082,7 +4083,7 @@ namespace cadencii
                                                                                     mSelectedCurve,
                                                                                     target_chain.id,
                                                                                     target_chain,
-                                                                                    AppManager.editorConfig.getControlCurveResolutionValue());
+                                                                                    ApplicationGlobal.appConfig.getControlCurveResolutionValue());
                         executeCommand(run, false);
                         mMouseDownMode = MouseDownMode.BEZIER_EDIT;
                     }
@@ -4334,12 +4335,12 @@ namespace cadencii
                         CadenciiCommand pre = VsqFileEx.generateCommandDeleteBezierChain(selected,
                                                                                           mSelectedCurve,
                                                                                           chain_id,
-                                                                                          AppManager.editorConfig.getControlCurveResolutionValue());
+                                                                                          ApplicationGlobal.appConfig.getControlCurveResolutionValue());
                         executeCommand(pre, false);
                         CadenciiCommand run = VsqFileEx.generateCommandAddBezierChain(selected,
                                                                                        mSelectedCurve,
                                                                                        chain_id,
-                                                                                       AppManager.editorConfig.getControlCurveResolutionValue(),
+                                                                                       ApplicationGlobal.appConfig.getControlCurveResolutionValue(),
                                                                                        edited);
                         executeCommand(run, true);
                     } else if (mMouseDownMode == MouseDownMode.BEZIER_EDIT) {
@@ -4347,13 +4348,13 @@ namespace cadencii
                                                                                            mSelectedCurve,
                                                                                            chain_id,
                                                                                            mEditingBezierOriginal,
-                                                                                           AppManager.editorConfig.getControlCurveResolutionValue());
+                                                                                           ApplicationGlobal.appConfig.getControlCurveResolutionValue());
                         executeCommand(pre, false);
                         CadenciiCommand run = VsqFileEx.generateCommandReplaceBezierChain(selected,
                                                                                            mSelectedCurve,
                                                                                            chain_id,
                                                                                            edited,
-                                                                                           AppManager.editorConfig.getControlCurveResolutionValue());
+                                                                                           ApplicationGlobal.appConfig.getControlCurveResolutionValue());
                         executeCommand(run, true);
                     } else if (mMouseDownMode == MouseDownMode.BEZIER_MODE && mMouseMoved) {
                         vsq.AttachedCurves.get(selected - 1).setBezierChain(mSelectedCurve, chain_id, mEditingBezierOriginal);
@@ -4361,7 +4362,7 @@ namespace cadencii
                                                                                            mSelectedCurve,
                                                                                            chain_id,
                                                                                            edited,
-                                                                                           AppManager.editorConfig.getControlCurveResolutionValue());
+                                                                                           ApplicationGlobal.appConfig.getControlCurveResolutionValue());
                         executeCommand(run, true);
 #if DEBUG
                         AppManager.debugWriteLine("    m_mouse_down_mode=" + mMouseDownMode);
@@ -4734,7 +4735,7 @@ namespace cadencii
                                 #endregion
                             } else if (mSelectedCurve.equals(CurveType.VibratoRate) || mSelectedCurve.equals(CurveType.VibratoDepth)) {
                                 #region VibratoRate || VibratoDepth
-                                int step_clock = AppManager.editorConfig.getControlCurveResolutionValue();
+                                int step_clock = ApplicationGlobal.appConfig.getControlCurveResolutionValue();
                                 int step_px = (int)(step_clock * AppManager.mMainWindowController.getScaleX());
                                 if (step_px <= 0) {
                                     step_px = 1;
@@ -4855,7 +4856,7 @@ namespace cadencii
                             } else {
                                 #region Other Curves
                                 int track = selected;
-                                int step_clock = AppManager.editorConfig.getControlCurveResolutionValue();
+                                int step_clock = ApplicationGlobal.appConfig.getControlCurveResolutionValue();
                                 int step_px = (int)(step_clock * AppManager.mMainWindowController.getScaleX());
                                 if (step_px <= 0) {
                                     step_px = 1;
@@ -5414,7 +5415,7 @@ namespace cadencii
                                             mSelectedCurve,
                                             chain_id,
                                             before,
-                                            AppManager.editorConfig.getControlCurveResolutionValue());
+                                            ApplicationGlobal.appConfig.getControlCurveResolutionValue());
                                     executeCommand(revert, false);
                                     if (ret == 1) {
                                         // ダイアログの結果がOKで、かつベジエ曲線が単調増加なら編集を適用
@@ -5425,7 +5426,7 @@ namespace cadencii
                                                     mSelectedCurve,
                                                     chain_id,
                                                     after,
-                                                    AppManager.editorConfig.getControlCurveResolutionValue());
+                                                    ApplicationGlobal.appConfig.getControlCurveResolutionValue());
                                             executeCommand(run, true);
                                         }
                                     }
@@ -5530,7 +5531,7 @@ namespace cadencii
                             if (!mCMenuSingerPrepared.Equals(renderer)) {
                                 prepareSingerMenu(renderer);
                             }
-                            string singer = AppManager.editorConfig.DefaultSingerName;
+                            string singer = ApplicationGlobal.appConfig.DefaultSingerName;
                             int clock = AppManager.clockFromXCoord(e.X);
                             int last_clock = 0;
                             for (Iterator<VsqEvent> itr = vsq_track.getSingerEventIterator(); itr.hasNext(); ) {

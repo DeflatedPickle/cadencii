@@ -30,6 +30,7 @@ using cadencii.vsq;
 using cadencii.windows.forms;
 using cadencii.xml;
 using cadencii.utau;
+using ApplicationGlobal = cadencii.core.ApplicationGlobal;
 
 namespace cadencii
 {
@@ -1231,8 +1232,8 @@ namespace cadencii
                 return;
             }
             SingerConfig sc = getSingerInfoUtau(singer.ID.IconHandle.Language, singer.ID.IconHandle.Program);
-            if (sc != null && mUtauVoiceDB.ContainsKey(sc.VOICEIDSTR)) {
-                UtauVoiceDB db = mUtauVoiceDB[sc.VOICEIDSTR];
+            if (sc != null && UtauWaveGenerator.mUtauVoiceDB.ContainsKey(sc.VOICEIDSTR)) {
+                UtauVoiceDB db = UtauWaveGenerator.mUtauVoiceDB[sc.VOICEIDSTR];
                 OtoArgs oa = db.attachFileNameFromLyric(item.ID.LyricHandle.L0.Phrase, item.ID.Note);
                 if (item.UstEvent == null) {
                     item.UstEvent = new UstEvent();
@@ -1693,7 +1694,7 @@ namespace cadencii
         /// <returns></returns>
         public static string getCadenciiTempDir()
         {
-        	return cadencii.core.ApplicationGlobal.getCadenciiTempDir();
+        	return ApplicationGlobal.getCadenciiTempDir();
         }
 
         /// <summary>
@@ -2418,7 +2419,7 @@ namespace cadencii
         /// </summary>
         public static void reloadUtauVoiceDB()
         {
-            mUtauVoiceDB.Clear();
+            UtauWaveGenerator.mUtauVoiceDB.Clear();
             foreach (var config in editorConfig.UtauSingers) {
                 // 通常のUTAU音源
                 UtauVoiceDB db = null;
@@ -2430,7 +2431,7 @@ namespace cadencii
                     Logger.write(typeof(AppManager) + ".reloadUtauVoiceDB; ex=" + ex + "\n");
                 }
                 if (db != null) {
-                    mUtauVoiceDB[config.VOICEIDSTR] = db;
+                    UtauWaveGenerator.mUtauVoiceDB[config.VOICEIDSTR] = db;
                 }
             }
         }
@@ -2540,7 +2541,7 @@ namespace cadencii
             }
 
             // シリアライズして保存
-            string file = Path.Combine(Utility.getConfigPath(), CONFIG_FILE_NAME);
+            string file = Path.Combine(Utility.getConfigPath(), ApplicationGlobal.CONFIG_FILE_NAME);
 #if DEBUG
             sout.println("AppManager#saveConfig; file=" + file);
 #endif
@@ -2568,7 +2569,7 @@ namespace cadencii
             }
 
             // バージョン番号付きのファイル
-            string config_file = Path.Combine(Utility.getConfigPath(), CONFIG_FILE_NAME);
+            string config_file = Path.Combine(Utility.getConfigPath(), ApplicationGlobal.CONFIG_FILE_NAME);
 #if DEBUG
             sout.println("AppManager#loadConfig; config_file=" + config_file);
 #endif
@@ -2638,7 +2639,7 @@ namespace cadencii
                         // 読み込んではいけない
                         continue;
                     }
-                    config_file = Path.Combine(Path.Combine(appdata, vs.getRawString()), CONFIG_FILE_NAME);
+                    config_file = Path.Combine(Path.Combine(appdata, vs.getRawString()), ApplicationGlobal.CONFIG_FILE_NAME);
                     if (System.IO.File.Exists(config_file)) {
                         try {
                             ret = deserializeEditorConfig(config_file);
@@ -2655,7 +2656,7 @@ namespace cadencii
                 // それでも読み込めなかった場合，旧来のデフォルトの位置にある
                 // 設定ファイルを読みに行く
                 if (ret == null) {
-                    config_file = Path.Combine(appdata, CONFIG_FILE_NAME);
+                    config_file = Path.Combine(appdata, ApplicationGlobal.CONFIG_FILE_NAME);
                     if (System.IO.File.Exists(config_file)) {
                         try {
                             ret = deserializeEditorConfig(config_file);
@@ -2811,8 +2812,8 @@ namespace cadencii
         public static bool isRendererAvailable(RendererKind renderer)
         {
 #if ENABLE_VOCALOID
-            for (int i = 0; i < vocaloidDriver.Count; i++) {
-                if (renderer == vocaloidDriver[i].getRendererKind() && vocaloidDriver[i].loaded) {
+            for (int i = 0; i < VSTiDllManager.vocaloidDriver.Count; i++) {
+                if (renderer == VSTiDllManager.vocaloidDriver[i].getRendererKind() && VSTiDllManager.vocaloidDriver[i].loaded) {
                     return true;
                 }
             }
@@ -2830,16 +2831,16 @@ namespace cadencii
             if (renderer == RendererKind.UTAU) {
                 // ここでは，resamplerの内どれかひとつでも使用可能であればOKの判定にする
                 bool resampler_exists = false;
-                int size = cadencii.core.ApplicationGlobal.appConfig.getResamplerCount();
+                int size = ApplicationGlobal.appConfig.getResamplerCount();
                 for (int i = 0; i < size; i++) {
-                    string path = cadencii.core.ApplicationGlobal.appConfig.getResamplerAt(i);
+                    string path = ApplicationGlobal.appConfig.getResamplerAt(i);
                     if (System.IO.File.Exists(path)) {
                         resampler_exists = true;
                         break;
                     }
                 }
                 if (resampler_exists &&
-                     !cadencii.core.ApplicationGlobal.appConfig.PathWavtool.Equals("") && System.IO.File.Exists(cadencii.core.ApplicationGlobal.appConfig.PathWavtool)) {
+                     !ApplicationGlobal.appConfig.PathWavtool.Equals("") && System.IO.File.Exists(ApplicationGlobal.appConfig.PathWavtool)) {
                     if (AppManager.editorConfig.UtauSingers.Count > 0) {
                         return true;
                     }
