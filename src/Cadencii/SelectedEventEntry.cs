@@ -1260,7 +1260,7 @@ namespace cadencii
 
                 if (m_vibrato != null && value != null && !m_vibrato.equals(value)) {
                     string description = value.description;
-                    if (AppManager.editorConfig.UseUserDefinedAutoVibratoType) {
+                    if (cadencii.core.ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType) {
                         int size = AppManager.editorConfig.AutoVibratoCustom.Count;
                         for (int i = 0; i < size; i++) {
                             VibratoHandle handle = AppManager.editorConfig.AutoVibratoCustom[i];

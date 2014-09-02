@@ -92,7 +92,7 @@ namespace cadencii
         /// 初期化メソッド
         /// </summary>
         /// <param name="parameter"></param>
-        public void init(string appId, VsqFileEx vsq, int track, int start_clock, int end_clock, int sample_rate)
+        public void init(VsqFileEx vsq, int track, int start_clock, int end_clock, int sample_rate)
         {
             getDriver().setSampleRate(sample_rate);
             mTrack = track;

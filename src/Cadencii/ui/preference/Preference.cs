@@ -24,6 +24,8 @@ using cadencii.javax.sound.midi;
 using cadencii.media;
 using cadencii.vsq;
 using cadencii.windows.forms;
+using ApplicationGlobal = cadencii.core.ApplicationGlobal;
+using cadencii.utau;
 
 namespace cadencii
 {
@@ -138,8 +140,8 @@ namespace cadencii
             .ForEach((kind) => comboDefaultSynthesizer.Items.Add(kind));
             comboDefaultSynthesizer.SelectedIndex = 0;
 
-            numBuffer.Maximum = EditorConfig.MAX_BUFFER_MILLISEC;
-            numBuffer.Minimum = EditorConfig.MIN_BUFFER_MILLIXEC;
+            numBuffer.Maximum = cadencii.core.EditorConfig.MAX_BUFFER_MILLISEC;
+			numBuffer.Minimum = cadencii.core.EditorConfig.MIN_BUFFER_MILLIXEC;
 
             registerEventHandlers();
             setResources();
@@ -757,7 +759,7 @@ namespace cadencii
             chkChasePastEvent.Mnemonic(Keys.C);
             lblBuffer.Text = _("Buffer Size");
             lblBuffer.Mnemonic(Keys.B);
-            lblBufferSize.Text = "msec(" + EditorConfig.MIN_BUFFER_MILLIXEC + "-" + EditorConfig.MAX_BUFFER_MILLISEC + ")";
+			lblBufferSize.Text = "msec(" + cadencii.core.EditorConfig.MIN_BUFFER_MILLIXEC + "-" + cadencii.core.EditorConfig.MAX_BUFFER_MILLISEC + ")";
             #endregion
 
             #region tabAppearance
@@ -1159,10 +1161,10 @@ namespace cadencii
         public void btnOK_Click(Object sender, EventArgs e)
         {
             bool was_modified = false;
-            if (AppManager.editorConfig.DoNotUseVocaloid2 != (!isVocaloid2Required())) {
+            if (ApplicationGlobal.appConfig.DoNotUseVocaloid2 != (!isVocaloid2Required())) {
                 was_modified = true;
             }
-            if (AppManager.editorConfig.DoNotUseVocaloid1 != (!isVocaloid1Required())) {
+            if (ApplicationGlobal.appConfig.DoNotUseVocaloid1 != (!isVocaloid1Required())) {
                 was_modified = true;
             }
             if (was_modified) {
@@ -1302,7 +1304,7 @@ namespace cadencii
                     dir = PortUtil.getDirectoryName(dir);
                 }
                 SingerConfig sc = new SingerConfig();
-                Utility.readUtauSingerConfig(dir, sc);
+                Utau.readUtauSingerConfig(dir, sc);
                 m_utau_singers.Add(sc);
                 UpdateUtausingerList();
             }

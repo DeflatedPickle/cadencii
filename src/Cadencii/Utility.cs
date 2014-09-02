@@ -999,7 +999,7 @@ namespace cadencii
             compareList(ret, new DynaffComparisonContext(track1, track2));
 
             // VsqBPListの違いを検出
-            foreach (CurveType curve in CURVE_USAGE) {
+            foreach (CurveType curve in BezierCurves.CURVE_USAGE) {
                 VsqBPList list1 = track1.getCurve(curve.getName());
                 if (list1 == null) {
                     continue;

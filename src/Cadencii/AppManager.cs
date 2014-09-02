@@ -334,7 +334,7 @@ namespace cadencii
         /// <summary>
         /// 画面に描かれるエントリのリスト．trackBar.Valueの変更やエントリの編集などのたびに更新される
         /// </summary>
-        public static List<DrawObject>[] mDrawObjects = new List<DrawObject>[MAX_NUM_TRACK];
+        public static List<DrawObject>[] mDrawObjects = new List<DrawObject>[ApplicationGlobal.MAX_NUM_TRACK];
         /// <summary>
         /// 歌詞入力に使用するテキストボックス
         /// </summary>
@@ -351,7 +351,7 @@ namespace cadencii
         /// <summary>
         /// 各トラックがUTAUモードかどうか．mDrawObjectsと同じタイミングで更新される
         /// </summary>
-        public static bool[] mDrawIsUtau = new bool[MAX_NUM_TRACK];
+		public static bool[] mDrawIsUtau = new bool[ApplicationGlobal.MAX_NUM_TRACK];
         /// <summary>
         /// マウスが降りていて，かつ範囲選択をしているときに立つフラグ
         /// </summary>
@@ -364,7 +364,7 @@ namespace cadencii
         /// <summary>
         /// 最後にレンダリングが行われた時の、トラックの情報が格納されている。
         /// </summary>
-        public static RenderedStatus[] mLastRenderedStatus = new RenderedStatus[MAX_NUM_TRACK];
+		public static RenderedStatus[] mLastRenderedStatus = new RenderedStatus[ApplicationGlobal.MAX_NUM_TRACK];
         /// <summary>
         /// RenderingStatusをXMLシリアライズするためのシリアライザ
         /// </summary>
@@ -389,7 +389,7 @@ namespace cadencii
         /// <summary>
         /// 鍵盤の表示幅(pixel)
         /// </summary>
-        public static int keyWidth = MIN_KEY_WIDTH * 2;
+        public static int keyWidth = EditorConfig.MIN_KEY_WIDTH * 2;
         /// <summary>
         /// keyWidth+keyOffsetの位置からが、0になってる
         /// </summary>
@@ -466,7 +466,7 @@ namespace cadencii
 
         static AppManager()
         {
-            for (int i = 0; i < MAX_NUM_TRACK; i++) {
+			for (int i = 0; i < ApplicationGlobal.MAX_NUM_TRACK; i++) {
                 mDrawObjects[i] = new List<DrawObject>();
             }
         }
@@ -482,7 +482,7 @@ namespace cadencii
             int clock = mCurrentClock;
             mDirectPlayShift = (float)mVsq.getSecFromClock(clock);
             // リアルタイム再生で無い場合
-            string tmppath = getTempWaveDir();
+            string tmppath = ApplicationGlobal.getTempWaveDir();
 
             int track_count = mVsq.Track.Count;
 
@@ -677,7 +677,7 @@ namespace cadencii
         public static List<PatchWorkQueue> patchWorkCreateQueue(List<int> tracks)
         {
             mVsq.updateTotalClocks();
-            string temppath = getTempWaveDir();
+            string temppath = ApplicationGlobal.getTempWaveDir();
             int presend = editorConfig.PreSendTime;
             int totalClocks = mVsq.TotalClocks;
 
@@ -1197,7 +1197,7 @@ namespace cadencii
                 singers.AddRange(AquesTone2Driver.Singers.Select((config) => getSingerIDAquesTone2(config.Program)));
 #endif
             } else if (kind == RendererKind.VCNT || kind == RendererKind.UTAU) {
-                List<SingerConfig> list = editorConfig.UtauSingers;
+                List<SingerConfig> list = ApplicationGlobal.appConfig.UtauSingers;
                 singers = new List<VsqID>();
                 foreach (var sc in list) {
                     singers.Add(getSingerIDUtau(sc.Language, sc.Program));
@@ -1667,15 +1667,7 @@ namespace cadencii
 
         public static void debugWriteLine(string message)
         {
-            cadencii.Debug.WriteLine(message);
-        }
-
-        /// <summary>
-        /// FormMainを識別するID
-        /// </summary>
-        public static string getID()
-        {
-            return mID;
+            cadencii.CDebug.WriteLine(message);
         }
 
         /// <summary>
@@ -2033,7 +2025,7 @@ namespace cadencii
         public static void saveTo(string file)
         {
             if (mVsq != null) {
-                if (editorConfig.UseProjectCache) {
+                if (ApplicationGlobal.appConfig.UseProjectCache) {
                     // キャッシュディレクトリの処理
                     string dir = PortUtil.getDirectoryName(file);
                     string name = PortUtil.getFileNameWithoutExtension(file);
@@ -2053,7 +2045,7 @@ namespace cadencii
                         }
                     }
 
-                    string currentCacheDir = getTempWaveDir();
+                    string currentCacheDir = ApplicationGlobal.getTempWaveDir();
                     if (!currentCacheDir.Equals(cacheDir)) {
                         for (int i = 1; i < mVsq.Track.Count; i++) {
                             string wavFrom = Path.Combine(currentCacheDir, i + ".wav");
@@ -2105,7 +2097,7 @@ namespace cadencii
                             }
                         }
 
-                        setTempWaveDir(cacheDir);
+						ApplicationGlobal.setTempWaveDir(cacheDir);
                     }
                     mVsq.cacheDir = cacheDir;
                 }
@@ -2269,15 +2261,15 @@ namespace cadencii
             itemSelection = new ItemSelectionModel();
             editHistory = new EditHistoryModel();
             // UTAU歌手のアイコンを読み込み、起動画面に表示を要求する
-            int c = editorConfig.UtauSingers.Count;
+			int c = ApplicationGlobal.appConfig.UtauSingers.Count;
             for (int i = 0; i < c; i++) {
-                SingerConfig sc = editorConfig.UtauSingers[i];
+				SingerConfig sc = ApplicationGlobal.appConfig.UtauSingers[i];
                 if (sc == null) {
                     continue;
                 }
                 string dir = sc.VOICEIDSTR;
                 SingerConfig sc_temp = new SingerConfig();
-                string path_image = Utility.readUtauSingerConfig(dir, sc_temp);
+                string path_image = Utau.readUtauSingerConfig(dir, sc_temp);
 
 #if DEBUG
                 sout.println("AppManager#init; path_image=" + path_image);
@@ -2420,7 +2412,7 @@ namespace cadencii
         public static void reloadUtauVoiceDB()
         {
             UtauWaveGenerator.mUtauVoiceDB.Clear();
-            foreach (var config in editorConfig.UtauSingers) {
+			foreach (var config in ApplicationGlobal.appConfig.UtauSingers) {
                 // 通常のUTAU音源
                 UtauVoiceDB db = null;
                 try {
@@ -2513,10 +2505,10 @@ namespace cadencii
             }
 
             // バッファーサイズを正規化
-            if (ret.BufferSizeMilliSeconds < EditorConfig.MIN_BUFFER_MILLIXEC) {
-                ret.BufferSizeMilliSeconds = EditorConfig.MIN_BUFFER_MILLIXEC;
-            } else if (EditorConfig.MAX_BUFFER_MILLISEC < ret.BufferSizeMilliSeconds) {
-                ret.BufferSizeMilliSeconds = EditorConfig.MAX_BUFFER_MILLISEC;
+			if (ApplicationGlobal.appConfig.BufferSizeMilliSeconds < cadencii.core.EditorConfig.MIN_BUFFER_MILLIXEC) {
+				ApplicationGlobal.appConfig.BufferSizeMilliSeconds = cadencii.core.EditorConfig.MIN_BUFFER_MILLIXEC;
+			} else if (cadencii.core.EditorConfig.MAX_BUFFER_MILLISEC < ApplicationGlobal.appConfig.BufferSizeMilliSeconds) {
+				ApplicationGlobal.appConfig.BufferSizeMilliSeconds = cadencii.core.EditorConfig.MAX_BUFFER_MILLISEC;
             }
             return ret;
         }
@@ -2684,8 +2676,8 @@ namespace cadencii
             VsqID ret = new VsqID(0);
             ret.type = VsqIDType.Singer;
             int index = language << 7 | program;
-            if (0 <= index && index < editorConfig.UtauSingers.Count) {
-                SingerConfig sc = editorConfig.UtauSingers[index];
+            if (0 <= index && index < ApplicationGlobal.appConfig.UtauSingers.Count) {
+				SingerConfig sc = ApplicationGlobal.appConfig.UtauSingers[index];
                 ret.IconHandle = new IconHandle();
                 ret.IconHandle.IconID = "$0701" + PortUtil.toHexString(language, 2) + PortUtil.toHexString(program, 2);
                 ret.IconHandle.IDS = sc.VOICENAME;
@@ -2710,8 +2702,8 @@ namespace cadencii
         public static SingerConfig getSingerInfoUtau(int language, int program)
         {
             int index = language << 7 | program;
-            if (0 <= index && index < editorConfig.UtauSingers.Count) {
-                return editorConfig.UtauSingers[index];
+			if (0 <= index && index < ApplicationGlobal.appConfig.UtauSingers.Count) {
+				return ApplicationGlobal.appConfig.UtauSingers[index];
             } else {
                 return null;
             }
@@ -2807,55 +2799,6 @@ namespace cadencii
         public static Color getAlertHilightColor()
         {
             return PortUtil.DeepPink;
-        }
-		
-        public static bool isRendererAvailable(RendererKind renderer)
-        {
-#if ENABLE_VOCALOID
-            for (int i = 0; i < VSTiDllManager.vocaloidDriver.Count; i++) {
-                if (renderer == VSTiDllManager.vocaloidDriver[i].getRendererKind() && VSTiDllManager.vocaloidDriver[i].loaded) {
-                    return true;
-                }
-            }
-#endif // ENABLE_VOCALOID
-
-#if ENABLE_AQUESTONE
-            if (renderer == RendererKind.AQUES_TONE && aquesToneDriver != null && aquesToneDriver.loaded) {
-                return true;
-            }
-            if (renderer == RendererKind.AQUES_TONE2 && aquesTone2Driver != null && aquesTone2Driver.loaded) {
-                return true;
-            }
-#endif
-
-            if (renderer == RendererKind.UTAU) {
-                // ここでは，resamplerの内どれかひとつでも使用可能であればOKの判定にする
-                bool resampler_exists = false;
-                int size = ApplicationGlobal.appConfig.getResamplerCount();
-                for (int i = 0; i < size; i++) {
-                    string path = ApplicationGlobal.appConfig.getResamplerAt(i);
-                    if (System.IO.File.Exists(path)) {
-                        resampler_exists = true;
-                        break;
-                    }
-                }
-                if (resampler_exists &&
-                     !ApplicationGlobal.appConfig.PathWavtool.Equals("") && System.IO.File.Exists(ApplicationGlobal.appConfig.PathWavtool)) {
-                    if (AppManager.editorConfig.UtauSingers.Count > 0) {
-                        return true;
-                    }
-                }
-            }
-            if (renderer == RendererKind.VCNT) {
-                string synth_path = Path.Combine(PortUtil.getApplicationStartupPath(), VConnectWaveGenerator.STRAIGHT_SYNTH);
-                if (System.IO.File.Exists(synth_path)) {
-                    int count = AppManager.editorConfig.UtauSingers.Count;
-                    if (count > 0) {
-                        return true;
-                    }
-                }
-            }
-            return false;
         }
     }
 

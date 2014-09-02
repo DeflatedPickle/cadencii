@@ -129,7 +129,7 @@ namespace cadencii
             //TODO:
         }
 
-        public void init(string appId, VsqFileEx vsq, int track, int start_clock, int end_clock, int sample_rate)
+        public void init(VsqFileEx vsq, int track, int start_clock, int end_clock, int sample_rate)
         {
             // VSTiProxyの実装より
             mVsq = (VsqFileEx)vsq.clone();
@@ -164,8 +164,8 @@ namespace cadencii
             // StraightRenderingRunner.ctorの実装より
             mLocker = new Object();
             mQueue = new List<VConnectRenderingQueue>();
-            if (mConfig != null && mConfigUI.UtauSingers != null) {
-                mSingerConfigSys = mConfigUI.UtauSingers;
+            if (mConfig != null && mConfig.UtauSingers != null) {
+                mSingerConfigSys = mConfig.UtauSingers;
             } else {
                 mSingerConfigSys = new List<SingerConfig>();
             }

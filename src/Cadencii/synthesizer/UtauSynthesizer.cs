@@ -91,7 +91,7 @@ namespace cadencii.synthesizer
                 int resampler_index = VsqFileEx.getTrackResamplerUsed(sequence.Track[track_index]);
                 session_.resampler_ = resamplers_.ElementAtOrDefault(resampler_index);
                 session_.sample_rate_ = sample_rate;
-                string id = AppManager.getID();
+                string id = cadencii.core.ApplicationGlobal.getID();
                 session_.temp_dir_ = Path.Combine(AppManager.getCadenciiTempDir(), id);
                 /*
                 if (use_wide_character_workaround_) {
@@ -194,7 +194,7 @@ namespace cadencii.synthesizer
                         singer = singer_raw;
                         /*
                         if (use_wide_character_workaround_) {
-                            string junction = Path.Combine(getSystemRoot(), "cadencii_" + AppManager.getID() + "_singer_" + program_change);
+                            string junction = Path.Combine(getSystemRoot(), "cadencii_" + ApplicationGlobal.getID() + "_singer_" + program_change);
                             if (!Directory.Exists(junction)) {
                                 cadencii.helper.Utils.MountPointCreate(junction, singer_raw);
                                 session_.junctions_.Add(junction);

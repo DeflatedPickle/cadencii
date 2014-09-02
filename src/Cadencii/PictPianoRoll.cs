@@ -64,7 +64,7 @@ namespace cadencii
         private readonly Color COLOR_NOTE_FILL = new Color(181, 220, 86);
         private readonly Color COLOR_DYNAFF_FILL = PortUtil.Pink;
         private readonly Color COLOR_DYNAFF_FILL_HIGHLIGHT = new Color(66, 193, 169);
-        private readonly Font FONT_9PT = new Font("SansSerif", java.awt.Font.PLAIN, AppManager.FONT_SIZE9);
+        private readonly Font FONT_9PT = new Font("SansSerif", java.awt.Font.PLAIN, EditorConfig.FONT_SIZE9);
         /// <summary>
         /// 表情線の先頭部分のピクセル幅
         /// </summary>
@@ -609,7 +609,7 @@ namespace cadencii
                                     }
 
                                     #region ピッチベンド
-                                    if (AppManager.editorConfig.ViewAtcualPitch || AppManager.mCurveOnPianoroll) {
+                                    if (cadencii.core.ApplicationGlobal.appConfig.ViewAtcualPitch || AppManager.mCurveOnPianoroll) {
                                         int cl_start = dobj.mClock;
                                         int cl_end = cl_start + dobj.mLength;
 
@@ -787,7 +787,7 @@ namespace cadencii
                             int length = (int)(AppManager.mAddingEvent.ID.getLength() * scalex);
                             if (AppManager.mAddingEvent.ID.type == VsqIDType.Aicon) {
                                 if (AppManager.mAddingEvent.ID.IconDynamicsHandle.isDynaffType()) {
-                                    length = AppManager.DYNAFF_ITEM_WIDTH;
+                                    length = EditorConfig.DYNAFF_ITEM_WIDTH;
                                 }
                             }
                             if (AppManager.mAddingEvent.ID.getLength() <= 0) {
@@ -819,7 +819,7 @@ namespace cadencii
                                 }
                                 int length = 0;
                                 if (ev.editing.ID.IconDynamicsHandle.isDynaffType()) {
-                                    length = AppManager.DYNAFF_ITEM_WIDTH;
+                                    length = EditorConfig.DYNAFF_ITEM_WIDTH;
                                 } else {
                                     length = (int)(ev.editing.ID.getLength() * scalex);
                                 }
@@ -884,7 +884,7 @@ namespace cadencii
 
                             if (last.ID.type == VsqIDType.Aicon) {
                                 if (last.ID.IconDynamicsHandle.isDynaffType()) {
-                                    length = AppManager.DYNAFF_ITEM_WIDTH;
+                                    length = EditorConfig.DYNAFF_ITEM_WIDTH;
                                 }
                             }
 
@@ -917,7 +917,7 @@ namespace cadencii
 
                         if (AppManager.mAddingEvent.ID.type == VsqIDType.Aicon) {
                             if (AppManager.mAddingEvent.ID.IconDynamicsHandle.isDynaffType()) {
-                                length = AppManager.DYNAFF_ITEM_WIDTH;
+                                length = EditorConfig.DYNAFF_ITEM_WIDTH;
                             }
                         }
 

@@ -146,7 +146,7 @@ namespace cadencii
         /// <param name="track"></param>
         /// <param name="start_clock"></param>
         /// <param name="end_clock"></param>
-        public void init(string appId, VsqFileEx vsq, int track, int start_clock, int end_clock, int sample_rate)
+        public void init(VsqFileEx vsq, int track, int start_clock, int end_clock, int sample_rate)
         {
 #if DEBUG
             setQuiet(true);
@@ -168,7 +168,7 @@ namespace cadencii
             sout.println("UtauWaveGenerator#init; mWavtool=" + mWavtool + "; exists=" + System.IO.File.Exists(mWavtool));
 #endif
             mSampleRate = sample_rate;
-            string id = appId;//AppManager.getID();
+            string id = cadencii.core.ApplicationGlobal.getID();
             mTempDir = Path.Combine(cadencii.core.ApplicationGlobal.getCadenciiTempDir(), id);
             /*
             if (mUseWideCharacterWorkaround) {
@@ -368,12 +368,12 @@ namespace cadencii
                     }
                     string singer_raw = "";
                     string singer = "";
-                    if (0 <= program_change && program_change < mConfigUI.UtauSingers.Count) {
-                        singer_raw = mConfigUI.UtauSingers[program_change].VOICEIDSTR;
+                    if (0 <= program_change && program_change < mConfig.UtauSingers.Count) {
+                        singer_raw = mConfig.UtauSingers[program_change].VOICEIDSTR;
                         singer = singer_raw;
                         /*
                         if (mUseWideCharacterWorkaround) {
-                            string junction = Path.Combine(getSystemRoot(), "cadencii_" + AppManager.getID() + "_singer_" + program_change);
+                            string junction = Path.Combine(getSystemRoot(), "cadencii_" + ApplicationGlobal.getID() + "_singer_" + program_change);
                             if (!Directory.Exists(junction)) {
                                 cadencii.helper.Utils.MountPointCreate(junction, singer_raw);
                                 mJunctions.Add(junction);

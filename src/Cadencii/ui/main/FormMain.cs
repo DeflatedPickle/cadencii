@@ -296,6 +296,8 @@ namespace cadencii
         #endregion
 
         #region fields
+        string appId;
+
         /// <summary>
         /// コントローラ
         /// </summary>
@@ -513,6 +515,7 @@ namespace cadencii
         /// <param name="file">最初に開くxvsq，vsqファイルのパス</param>
         public FormMain(FormMainController controller, string file)
         {
+		this.appId = Handle.ToString ("X32");
             this.controller = controller;
             this.controller.setupUi(this);
 
@@ -837,7 +840,7 @@ namespace cadencii
             menuVisualNoteProperty.Checked = AppManager.editorConfig.ShowExpLine;
             menuVisualLyrics.Checked = AppManager.editorConfig.ShowLyric;
             menuVisualMixer.Checked = AppManager.editorConfig.MixerVisible;
-            menuVisualPitchLine.Checked = AppManager.editorConfig.ViewAtcualPitch;
+			menuVisualPitchLine.Checked = ApplicationGlobal.appConfig.ViewAtcualPitch;
 
             updateMenuFonts();
 
@@ -884,7 +887,7 @@ namespace cadencii
 #if ENABLE_MIDI
             reloadMidiIn();
 #endif
-            menuVisualWaveform.Checked = AppManager.editorConfig.ViewWaveform;
+			menuVisualWaveform.Checked = ApplicationGlobal.appConfig.ViewWaveform;
 
             updateRendererMenu();
 
@@ -1090,8 +1093,8 @@ namespace cadencii
                 // oto.iniが存在する場合
                 // editorConfigに入っていない場合に，ダイアログを出す
                 bool found = false;
-                for (int i = 0; i < AppManager.editorConfig.UtauSingers.Count; i++) {
-                    SingerConfig sc = AppManager.editorConfig.UtauSingers[i];
+                for (int i = 0; i < ApplicationGlobal.appConfig.UtauSingers.Count; i++) {
+                    SingerConfig sc = ApplicationGlobal.appConfig.UtauSingers[i];
                     if (sc == null) {
                         continue;
                     }
@@ -1116,8 +1119,8 @@ namespace cadencii
             }
             if (resampler_dir != "" && System.IO.File.Exists(resampler_path.value)) {
                 bool found = false;
-                for (int i = 0; i < AppManager.editorConfig.getResamplerCount(); i++) {
-                    string resampler = AppManager.editorConfig.getResamplerAt(i);
+                for (int i = 0; i < ApplicationGlobal.appConfig.getResamplerCount(); i++) {
+                    string resampler = ApplicationGlobal.appConfig.getResamplerAt(i);
                     if (resampler == resampler_path.value) {
                         found = true;
                         break;
@@ -1143,7 +1146,7 @@ namespace cadencii
                     if (dialog.isResamplerChecked()) {
                         string path = dialog.getResamplerPath();
                         if (System.IO.File.Exists(path)) {
-                            AppManager.editorConfig.addResampler(path);
+                            ApplicationGlobal.appConfig.addResampler(path);
                         }
                     }
                     // 歌手
@@ -1152,7 +1155,7 @@ namespace cadencii
                         if (Directory.Exists(path)) {
                             SingerConfig sc = new SingerConfig();
                             Utau.readUtauSingerConfig(path, sc);
-                            AppManager.editorConfig.UtauSingers.Add(sc);
+                            ApplicationGlobal.appConfig.UtauSingers.Add(sc);
                         }
                         AppManager.reloadUtauVoiceDB();
                     }
@@ -1832,7 +1835,7 @@ namespace cadencii
                         form.setOkButtonText(_("OK"));
                         form.setTitle(_("Check For Updates"));
                         form.setMessage(string.Format(_("New version {0} is available."), recent_version_string));
-                        form.setAutomaticallyCheckForUpdates(!AppManager.editorConfig.DoNotAutomaticallyCheckForUpdates);
+                        form.setAutomaticallyCheckForUpdates(!ApplicationGlobal.appConfig.DoNotAutomaticallyCheckForUpdates);
                         form.setAutomaticallyCheckForUpdatesMessage(_("Automatically check for updates"));
                         form.okButtonClicked += () => form.close();
                         form.downloadLinkClicked += () => {
@@ -1840,7 +1843,7 @@ namespace cadencii
                             System.Diagnostics.Process.Start(update_info.DownloadUrl);
                         };
                         form.showDialog(this);
-                        AppManager.editorConfig.DoNotAutomaticallyCheckForUpdates = !form.isAutomaticallyCheckForUpdates();
+						ApplicationGlobal.appConfig.DoNotAutomaticallyCheckForUpdates = !form.isAutomaticallyCheckForUpdates();
                     } else if (is_explicit_update_check) {
                         MessageBox.Show(_("Cadencii is up to date"),
                                         _("Info"),
@@ -2512,7 +2515,7 @@ namespace cadencii
             renderer_menu_handler_.ForEach((handler) => handler.updateRendererAvailability(AppManager.editorConfig));
 
             // UTAU用のサブアイテムを更新
-            int count = AppManager.editorConfig.getResamplerCount();
+            int count = ApplicationGlobal.appConfig.getResamplerCount();
             // サブアイテムの個数を整える
             int delta = count - menuTrackRendererUtau.DropDownItems.Count;
             if (delta > 0) {
@@ -2530,7 +2533,7 @@ namespace cadencii
             }
 
             for (int i = 0; i < count; i++) {
-                string path = AppManager.editorConfig.getResamplerAt(i);
+                string path = ApplicationGlobal.appConfig.getResamplerAt(i);
                 string name = PortUtil.getFileNameWithoutExtension(path);
                 menuTrackRendererUtau.DropDownItems[i].Text = name;
                 cMenuTrackTabRendererUtau.DropDownItems[i].Text = name;
@@ -2862,7 +2865,7 @@ namespace cadencii
         /// </summary>
         public void updateSplitContainer2Size(bool save_to_config)
         {
-            if (AppManager.editorConfig.ViewWaveform) {
+			if (ApplicationGlobal.appConfig.ViewWaveform) {
                 splitContainer2.setPanel2MinSize(_SPL2_PANEL2_MIN_HEIGHT);
                 splitContainer2.setSplitterFixed(false);
                 splitContainer2.setPanel2Hidden(false);
@@ -3888,7 +3891,7 @@ namespace cadencii
 
         public void clearTempWave()
         {
-            string tmppath = Path.Combine(AppManager.getCadenciiTempDir(), AppManager.getID());
+            string tmppath = Path.Combine(AppManager.getCadenciiTempDir(), ApplicationGlobal.getID());
             if (!Directory.Exists(tmppath)) {
                 return;
             }
@@ -4568,7 +4571,7 @@ namespace cadencii
                     ev.ID.getLength(),
                     ApplicationGlobal.appConfig.DefaultVibratoLength,
                     type,
-                    AppManager.editorConfig.UseUserDefinedAutoVibratoType);
+					ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType);
                 dlg.Location = getFormPreferedLocation(dlg);
                 DialogResult dr = AppManager.showModalDialog(dlg, this);
                 if (dlg.DialogResult == DialogResult.OK) {
@@ -5821,8 +5824,8 @@ namespace cadencii
                             bool is_valid_for_utau = false;
                             VsqEvent singer_at_clock = vsq_track.getSingerEventAt(timesig);
                             int program = singer_at_clock.ID.IconHandle.Program;
-                            if (0 <= program && program < AppManager.editorConfig.UtauSingers.Count) {
-                                SingerConfig sc = AppManager.editorConfig.UtauSingers[program];
+                            if (0 <= program && program < ApplicationGlobal.appConfig.UtauSingers.Count) {
+                                SingerConfig sc = ApplicationGlobal.appConfig.UtauSingers[program];
                                 // 通常のUTAU音源
                                 if (UtauWaveGenerator.mUtauVoiceDB.ContainsKey(sc.VOICEIDSTR)) {
                                     UtauVoiceDB db = UtauWaveGenerator.mUtauVoiceDB[sc.VOICEIDSTR];
@@ -5882,7 +5885,7 @@ namespace cadencii
                             if (handle.isDynaffType()) {
                                 // 強弱記号
                                 type = DrawObjectType.Dynaff;
-                                width = AppManager.DYNAFF_ITEM_WIDTH;
+                                width = EditorConfig.DYNAFF_ITEM_WIDTH;
                                 int startDyn = handle.getStartDyn();
                                 if (startDyn == 120) {
                                     str = "fff";
@@ -6215,7 +6218,7 @@ namespace cadencii
             AppManager.mMixerWindow.updateStatus();
 
             // キャッシュwaveなどの処理
-            if (AppManager.editorConfig.UseProjectCache) {
+            if (ApplicationGlobal.appConfig.UseProjectCache) {
                 #region キャッシュディレクトリの処理
                 VsqFileEx vsq = AppManager.getVsqFile();
                 string cacheDir = vsq.cacheDir; // xvsqに保存されていたキャッシュのディレクトリ
@@ -6312,7 +6315,7 @@ namespace cadencii
                 }
 
                 // 一時ディレクトリを、cachedirに変更
-                AppManager.setTempWaveDir(cacheDir);
+                ApplicationGlobal.setTempWaveDir(cacheDir);
                 #endregion
             }
             return false;
@@ -7547,7 +7550,7 @@ namespace cadencii
                                         selectedEvent.ID.getLength(),
                                         ApplicationGlobal.appConfig.DefaultVibratoLength,
                                         type,
-                                        AppManager.editorConfig.UseUserDefinedAutoVibratoType);
+                                        ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType);
                                     dlg.Location = getFormPreferedLocation(dlg);
                                     DialogResult dr = AppManager.showModalDialog(dlg, this);
                                     if (dr == DialogResult.OK) {
@@ -7705,7 +7708,7 @@ namespace cadencii
                     AppManager.setCurveSelectedIntervalEnabled(false);
                     AppManager.itemSelection.clearPoint();
                     int startClock = AppManager.clockFromXCoord(e.X);
-                    if (ApplicationGlobal.appConfig.CurveSelectingQuantized) {
+                    if (AppManager.editorConfig.CurveSelectingQuantized) {
                         int unit = AppManager.getPositionQuantizeClock();
                         startClock = doQuantize(startClock, unit);
                     }
@@ -8145,7 +8148,7 @@ namespace cadencii
                 if (AppManager.mIsPointerDowned) {
                     if (AppManager.isWholeSelectedIntervalEnabled()) {
                         int endClock = AppManager.clockFromXCoord(e.X);
-                        if (ApplicationGlobal.appConfig.CurveSelectingQuantized) {
+						if (AppManager.editorConfig.CurveSelectingQuantized) {
                             int unit = AppManager.getPositionQuantizeClock();
                             endClock = doQuantize(endClock, unit);
                         }
@@ -9087,7 +9090,7 @@ namespace cadencii
 
         public void menuVisualPitchLine_CheckedChanged(Object sender, EventArgs e)
         {
-            AppManager.editorConfig.ViewAtcualPitch = menuVisualPitchLine.Checked;
+            ApplicationGlobal.appConfig.ViewAtcualPitch = menuVisualPitchLine.Checked;
         }
 
         public void menuVisualControlTrack_CheckedChanged(Object sender, EventArgs e)
@@ -9097,7 +9100,7 @@ namespace cadencii
 
         public void menuVisualWaveform_CheckedChanged(Object sender, EventArgs e)
         {
-            AppManager.editorConfig.ViewWaveform = menuVisualWaveform.Checked;
+			ApplicationGlobal.appConfig.ViewWaveform = menuVisualWaveform.Checked;
             updateSplitContainer2Size(true);
         }
 
@@ -9538,7 +9541,7 @@ namespace cadencii
             sout.println("FormMain#FormMain_FormClosed");
 #endif
             clearTempWave();
-            string tempdir = Path.Combine(AppManager.getCadenciiTempDir(), AppManager.getID());
+            string tempdir = Path.Combine(AppManager.getCadenciiTempDir(), ApplicationGlobal.getID());
             if (!Directory.Exists(tempdir)) {
                 PortUtil.createDirectory(tempdir);
             }
@@ -9573,8 +9576,8 @@ namespace cadencii
         public void FormMain_FormClosing(Object sender, FormClosingEventArgs e)
         {
             // 設定値を格納
-            if (AppManager.editorConfig.ViewWaveform) {
-                AppManager.editorConfig.SplitContainer2LastDividerLocation = splitContainer2.getDividerLocation();
+			if (ApplicationGlobal.appConfig.ViewWaveform) {
+				AppManager.editorConfig.SplitContainer2LastDividerLocation = splitContainer2.getDividerLocation();
             }
             if (AppManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
                 AppManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.getDividerLocation();
@@ -9811,10 +9814,10 @@ namespace cadencii
             }
 
             bool init_key_sound_player_immediately = true; //FormGenerateKeySoundの終了を待たずにKeySoundPlayer.initするかどうか。
-            if (!AppManager.editorConfig.DoNotAskKeySoundGeneration && cache_is_incomplete) {
+            if (!ApplicationGlobal.appConfig.DoNotAskKeySoundGeneration && cache_is_incomplete) {
                 FormAskKeySoundGenerationController dialog = null;
                 int dialog_result = 0;
-                bool always_check_this = !AppManager.editorConfig.DoNotAskKeySoundGeneration;
+                bool always_check_this = !ApplicationGlobal.appConfig.DoNotAskKeySoundGeneration;
                 try {
                     dialog = new FormAskKeySoundGenerationController();
                     dialog.setupUi(new FormAskKeySoundGenerationUiImpl(dialog));
@@ -9834,7 +9837,7 @@ namespace cadencii
                         }
                     }
                 }
-                AppManager.editorConfig.DoNotAskKeySoundGeneration = !always_check_this;
+                ApplicationGlobal.appConfig.DoNotAskKeySoundGeneration = !always_check_this;
 
                 if (dialog_result == 1) {
                     FormGenerateKeySound form = null;
@@ -9859,7 +9862,7 @@ namespace cadencii
                 }
             }
 
-            if (!AppManager.editorConfig.DoNotAutomaticallyCheckForUpdates) {
+            if (!ApplicationGlobal.appConfig.DoNotAutomaticallyCheckForUpdates) {
                 showUpdateInformationAsync(false);
             }
         }
@@ -10618,18 +10621,18 @@ namespace cadencii
             string voice_dir = "";
             if (singer != null) {
                 int program = singer.ID.IconHandle.Program;
-                int size = AppManager.editorConfig.UtauSingers.Count;
+                int size = ApplicationGlobal.appConfig.UtauSingers.Count;
                 if (0 <= program && program < size) {
-                    SingerConfig cfg = AppManager.editorConfig.UtauSingers[program];
+                    SingerConfig cfg = ApplicationGlobal.appConfig.UtauSingers[program];
                     voice_dir = cfg.VOICEIDSTR;
                 }
             }
             ust.setVoiceDir(voice_dir);
-            ust.setWavTool(AppManager.editorConfig.PathWavtool);
+            ust.setWavTool(ApplicationGlobal.appConfig.PathWavtool);
             int resampler_index = VsqFileEx.getTrackResamplerUsed(vsq_track);
-            if (0 <= resampler_index && resampler_index < AppManager.editorConfig.getResamplerCount()) {
+            if (0 <= resampler_index && resampler_index < ApplicationGlobal.appConfig.getResamplerCount()) {
                 ust.setResampler(
-                    AppManager.editorConfig.getResamplerAt(resampler_index));
+                    ApplicationGlobal.appConfig.getResamplerAt(resampler_index));
             }
             ust.write(file_name);
         }
@@ -10688,7 +10691,7 @@ namespace cadencii
         public void menuFileExportVxt_Click(Object sender, EventArgs e)
         {
             // UTAUの歌手が登録されていない場合は警告を表示
-            if (AppManager.editorConfig.UtauSingers.Count <= 0) {
+            if (ApplicationGlobal.appConfig.UtauSingers.Count <= 0) {
                 DialogResult dr = AppManager.showMessageBox(
                     _("UTAU singer not registered yet.\nContinue ?"),
                     _("Info"),
@@ -10735,7 +10738,7 @@ namespace cadencii
             StreamWriter bw = null;
             try {
                 bw = new StreamWriter(file_name, false, new UTF8Encoding(false));
-                string oto_ini = AppManager.editorConfig.UtauSingers[0].VOICEIDSTR;
+                string oto_ini = ApplicationGlobal.appConfig.UtauSingers[0].VOICEIDSTR;
                 // 先頭に登録されている歌手変更を検出
                 VsqEvent singer = null;
                 int c = vsq_track.getEventCount();
@@ -10749,8 +10752,8 @@ namespace cadencii
                 // 歌手のプログラムチェンジから，歌手の原音設定へのパスを取得する
                 if (singer != null) {
                     int indx = singer.ID.IconHandle.Program;
-                    if (0 <= indx && indx < AppManager.editorConfig.UtauSingers.Count) {
-                        oto_ini = AppManager.editorConfig.UtauSingers[indx].VOICEIDSTR;
+                    if (0 <= indx && indx < ApplicationGlobal.appConfig.UtauSingers.Count) {
+                        oto_ini = ApplicationGlobal.appConfig.UtauSingers[indx].VOICEIDSTR;
                     }
                 }
 
@@ -10874,7 +10877,7 @@ namespace cadencii
             mDialogMidiImportAndExport.listTrack.Items.Clear();
             mDialogMidiImportAndExport.setMode(FormMidiImExport.FormMidiMode.IMPORT);
 
-            string dir = AppManager.editorConfig.getLastUsedPathIn("mid");
+            string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("mid");
             openMidiDialog.SetSelectedFile(dir);
             var dialog_result = AppManager.showModalDialog(openMidiDialog, true, this);
 
@@ -10885,7 +10888,7 @@ namespace cadencii
             MidiFile mf = null;
             try {
                 string filename = openMidiDialog.FileName;
-                AppManager.editorConfig.setLastUsedPathIn(filename, ".mid");
+                ApplicationGlobal.appConfig.setLastUsedPathIn(filename, ".mid");
                 mf = new MidiFile(filename);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".menuFileImportMidi_Click; ex=" + ex + "\n");
@@ -11272,7 +11275,7 @@ namespace cadencii
             OpenFileDialog dialog = null;
             try {
                 // 読み込むファイルを選ぶ
-                string dir = AppManager.editorConfig.getLastUsedPathIn("ust");
+                string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("ust");
                 dialog = new OpenFileDialog();
                 dialog.SetSelectedFile(dir);
                 var dialog_result = AppManager.showModalDialog(dialog, true, this);
@@ -11280,7 +11283,7 @@ namespace cadencii
                     return;
                 }
                 string file = dialog.FileName;
-                AppManager.editorConfig.setLastUsedPathIn(file, ".ust");
+                ApplicationGlobal.appConfig.setLastUsedPathIn(file, ".ust");
 
                 // ustを読み込む
                 UstFile ust = new UstFile(file);
@@ -11302,8 +11305,8 @@ namespace cadencii
 
                 // 歌手変更を何とかする
                 int program = 0;
-                for (int i = 0; i < AppManager.editorConfig.UtauSingers.Count; i++) {
-                    SingerConfig sc = AppManager.editorConfig.UtauSingers[i];
+                for (int i = 0; i < ApplicationGlobal.appConfig.UtauSingers.Count; i++) {
+                    SingerConfig sc = ApplicationGlobal.appConfig.UtauSingers[i];
                     if (sc == null) {
                         continue;
                     }
@@ -11336,8 +11339,8 @@ namespace cadencii
                 // resamplerUsedを更新(可能なら)
                 for (int j = 1; j < vsq.Track.Count; j++) {
                     VsqTrack vsq_track = vsq.Track[j];
-                    for (int i = 0; i < AppManager.editorConfig.getResamplerCount(); i++) {
-                        string resampler = AppManager.editorConfig.getResamplerAt(i);
+                    for (int i = 0; i < ApplicationGlobal.appConfig.getResamplerCount(); i++) {
+                        string resampler = ApplicationGlobal.appConfig.getResamplerAt(i);
                         if (resampler == ref_resampler.value) {
                             VsqFileEx.setTrackResamplerUsed(vsq_track, i);
                             break;
@@ -11382,7 +11385,7 @@ namespace cadencii
 
         public void menuFileImportVsq_Click(Object sender, EventArgs e)
         {
-            string dir = AppManager.editorConfig.getLastUsedPathIn(AppManager.editorConfig.LastUsedExtension);
+            string dir = ApplicationGlobal.appConfig.getLastUsedPathIn(AppManager.editorConfig.LastUsedExtension);
             openMidiDialog.SetSelectedFile(dir);
             var dialog_result = AppManager.showModalDialog(openMidiDialog, true, this);
 
@@ -11391,7 +11394,7 @@ namespace cadencii
             }
             VsqFileEx vsq = null;
             string filename = openMidiDialog.FileName;
-            AppManager.editorConfig.setLastUsedPathIn(filename, ".vsq");
+            ApplicationGlobal.appConfig.setLastUsedPathIn(filename, ".vsq");
             try {
                 vsq = new VsqFileEx(filename, "Shift_JIS");
             } catch (Exception ex) {
@@ -11535,7 +11538,7 @@ namespace cadencii
                 return;
             }
 
-            string dir = AppManager.editorConfig.getLastUsedPathIn("ust");
+            string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("ust");
             openUstDialog.SetSelectedFile(dir);
             var dialog_result = AppManager.showModalDialog(openUstDialog, true, this);
 
@@ -11545,7 +11548,7 @@ namespace cadencii
 
             try {
                 string filename = openUstDialog.FileName;
-                AppManager.editorConfig.setLastUsedPathIn(filename, ".ust");
+                ApplicationGlobal.appConfig.setLastUsedPathIn(filename, ".ust");
 
                 // ust読み込み
                 UstFile ust = new UstFile(filename);
@@ -11567,8 +11570,8 @@ namespace cadencii
 
                 // 歌手変更を何とかする
                 int program = 0;
-                for (int i = 0; i < AppManager.editorConfig.UtauSingers.Count; i++) {
-                    SingerConfig sc = AppManager.editorConfig.UtauSingers[i];
+                for (int i = 0; i < ApplicationGlobal.appConfig.UtauSingers.Count; i++) {
+                    SingerConfig sc = ApplicationGlobal.appConfig.UtauSingers[i];
                     if (sc == null) {
                         continue;
                     }
@@ -11601,8 +11604,8 @@ namespace cadencii
                 // resamplerUsedを更新(可能なら)
                 for (int j = 1; j < vsq.Track.Count; j++) {
                     VsqTrack vsq_track = vsq.Track[j];
-                    for (int i = 0; i < AppManager.editorConfig.getResamplerCount(); i++) {
-                        string resampler = AppManager.editorConfig.getResamplerAt(i);
+                    for (int i = 0; i < ApplicationGlobal.appConfig.getResamplerCount(); i++) {
+                        string resampler = ApplicationGlobal.appConfig.getResamplerAt(i);
                         if (resampler == ref_resampler.value) {
                             VsqFileEx.setTrackResamplerUsed(vsq_track, i);
                             break;
@@ -11643,7 +11646,7 @@ namespace cadencii
             }
 
             openMidiDialog.FilterIndex = filter_index;
-            string dir = AppManager.editorConfig.getLastUsedPathIn(filter);
+            string dir = ApplicationGlobal.appConfig.getLastUsedPathIn(filter);
             openMidiDialog.SetSelectedFile(dir);
             var dialog_result = AppManager.showModalDialog(openMidiDialog, true, this);
             string ext = ".vsq";
@@ -11678,7 +11681,7 @@ namespace cadencii
                 if (isVsqx) {
                     PortUtil.deleteFile(actualReadFile);
                 }
-                AppManager.editorConfig.setLastUsedPathIn(filename, ext);
+                ApplicationGlobal.appConfig.setLastUsedPathIn(filename, ext);
                 AppManager.setVsqFile(vsq);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".menuFileOpenVsq_Click; ex=" + ex + "\n");
@@ -11823,7 +11826,7 @@ namespace cadencii
                 mDialogPreference.setAutoVibratoTypeCustom(AppManager.editorConfig.AutoVibratoTypeCustom);
                 mDialogPreference.setEnableAutoVibrato(AppManager.editorConfig.EnableAutoVibrato);
                 mDialogPreference.setPreSendTime(AppManager.editorConfig.PreSendTime);
-                mDialogPreference.setControlCurveResolution(AppManager.editorConfig.ControlCurveResolution);
+                mDialogPreference.setControlCurveResolution(ApplicationGlobal.appConfig.ControlCurveResolution);
                 mDialogPreference.setDefaultSingerName(ApplicationGlobal.appConfig.DefaultSingerName);
                 mDialogPreference.setScrollHorizontalOnWheel(AppManager.editorConfig.ScrollHorizontalOnWheel);
                 mDialogPreference.setMaximumFrameRate(AppManager.editorConfig.MaximumFrameRate);
@@ -11831,7 +11834,7 @@ namespace cadencii
                 mDialogPreference.setPxTrackHeight(AppManager.editorConfig.PxTrackHeight);
                 mDialogPreference.setMouseHoverTime(AppManager.editorConfig.getMouseHoverTime());
                 mDialogPreference.setPlayPreviewWhenRightClick(AppManager.editorConfig.PlayPreviewWhenRightClick);
-                mDialogPreference.setCurveSelectingQuantized(ApplicationGlobal.appConfig.CurveSelectingQuantized);
+				mDialogPreference.setCurveSelectingQuantized(AppManager.editorConfig.CurveSelectingQuantized);
                 mDialogPreference.setCurveVisibleAccent(ApplicationGlobal.appConfig.CurveVisibleAccent);
                 mDialogPreference.setCurveVisibleBre(ApplicationGlobal.appConfig.CurveVisibleBreathiness);
                 mDialogPreference.setCurveVisibleBri(ApplicationGlobal.appConfig.CurveVisibleBrightness);
@@ -11861,27 +11864,27 @@ namespace cadencii
 
 #endif
                 List<string> resamplers = new List<string>();
-                int size = AppManager.editorConfig.getResamplerCount();
+                int size = ApplicationGlobal.appConfig.getResamplerCount();
                 for (int i = 0; i < size; i++) {
-                    resamplers.Add(AppManager.editorConfig.getResamplerAt(i));
+                    resamplers.Add(ApplicationGlobal.appConfig.getResamplerAt(i));
                 }
                 mDialogPreference.setResamplersConfig(resamplers);
-                mDialogPreference.setPathWavtool(AppManager.editorConfig.PathWavtool);
-                mDialogPreference.setUtausingers(AppManager.editorConfig.UtauSingers);
+                mDialogPreference.setPathWavtool(ApplicationGlobal.appConfig.PathWavtool);
+                mDialogPreference.setUtausingers(ApplicationGlobal.appConfig.UtauSingers);
                 mDialogPreference.setSelfDeRomantization(AppManager.editorConfig.SelfDeRomanization);
                 mDialogPreference.setAutoBackupIntervalMinutes(AppManager.editorConfig.AutoBackupIntervalMinutes);
                 mDialogPreference.setUseSpaceKeyAsMiddleButtonModifier(AppManager.editorConfig.UseSpaceKeyAsMiddleButtonModifier);
-                mDialogPreference.setPathAquesTone(AppManager.editorConfig.PathAquesTone);
-                mDialogPreference.setPathAquesTone2(AppManager.editorConfig.PathAquesTone2);
-                mDialogPreference.setUseProjectCache(AppManager.editorConfig.UseProjectCache);
-                mDialogPreference.setAquesToneRequired(!AppManager.editorConfig.DoNotUseAquesTone);
-                mDialogPreference.setAquesTone2Requried(!AppManager.editorConfig.DoNotUseAquesTone2);
-                mDialogPreference.setVocaloid1Required(!AppManager.editorConfig.DoNotUseVocaloid1);
-                mDialogPreference.setVocaloid2Required(!AppManager.editorConfig.DoNotUseVocaloid2);
-                mDialogPreference.setBufferSize(AppManager.editorConfig.BufferSizeMilliSeconds);
+                mDialogPreference.setPathAquesTone(ApplicationGlobal.appConfig.PathAquesTone);
+                mDialogPreference.setPathAquesTone2(ApplicationGlobal.appConfig.PathAquesTone2);
+                mDialogPreference.setUseProjectCache(ApplicationGlobal.appConfig.UseProjectCache);
+                mDialogPreference.setAquesToneRequired(!ApplicationGlobal.appConfig.DoNotUseAquesTone);
+                mDialogPreference.setAquesTone2Requried(!ApplicationGlobal.appConfig.DoNotUseAquesTone2);
+                mDialogPreference.setVocaloid1Required(!ApplicationGlobal.appConfig.DoNotUseVocaloid1);
+                mDialogPreference.setVocaloid2Required(!ApplicationGlobal.appConfig.DoNotUseVocaloid2);
+				mDialogPreference.setBufferSize(ApplicationGlobal.appConfig.BufferSizeMilliSeconds);
                 mDialogPreference.setDefaultSynthesizer(ApplicationGlobal.appConfig.DefaultSynthesizer);
-                mDialogPreference.setUseUserDefinedAutoVibratoType(AppManager.editorConfig.UseUserDefinedAutoVibratoType);
-                mDialogPreference.setEnableWideCharacterWorkaround(AppManager.editorConfig.UseWideCharacterWorkaround);
+				mDialogPreference.setUseUserDefinedAutoVibratoType(ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType);
+				mDialogPreference.setEnableWideCharacterWorkaround(ApplicationGlobal.appConfig.UseWideCharacterWorkaround);
 
                 mDialogPreference.Location = getFormPreferedLocation(mDialogPreference);
 
@@ -11909,9 +11912,9 @@ namespace cadencii
 
                     AppManager.editorConfig.EnableAutoVibrato = mDialogPreference.isEnableAutoVibrato();
                     AppManager.editorConfig.PreSendTime = mDialogPreference.getPreSendTime();
-                    AppManager.editorConfig.Language = mDialogPreference.getLanguage();
-                    if (!Messaging.getLanguage().Equals(AppManager.editorConfig.Language)) {
-                        Messaging.setLanguage(AppManager.editorConfig.Language);
+                    ApplicationGlobal.appConfig.Language = mDialogPreference.getLanguage();
+                    if (!Messaging.getLanguage().Equals(ApplicationGlobal.appConfig.Language)) {
+                        Messaging.setLanguage(ApplicationGlobal.appConfig.Language);
                         applyLanguage();
                         mDialogPreference.applyLanguage();
                         AppManager.mMixerWindow.applyLanguage();
@@ -11927,7 +11930,7 @@ namespace cadencii
                         }
                     }
 
-                    AppManager.editorConfig.ControlCurveResolution = mDialogPreference.getControlCurveResolution();
+					ApplicationGlobal.appConfig.ControlCurveResolution = mDialogPreference.getControlCurveResolution();
                     ApplicationGlobal.appConfig.DefaultSingerName = mDialogPreference.getDefaultSingerName();
                     AppManager.editorConfig.ScrollHorizontalOnWheel = mDialogPreference.isScrollHorizontalOnWheel();
                     AppManager.editorConfig.MaximumFrameRate = mDialogPreference.getMaximumFrameRate();
@@ -11941,7 +11944,7 @@ namespace cadencii
                     }
                     AppManager.editorConfig.setMouseHoverTime(mDialogPreference.getMouseHoverTime());
                     AppManager.editorConfig.PlayPreviewWhenRightClick = mDialogPreference.isPlayPreviewWhenRightClick();
-                    ApplicationGlobal.appConfig.CurveSelectingQuantized = mDialogPreference.isCurveSelectingQuantized();
+					AppManager.editorConfig.CurveSelectingQuantized = mDialogPreference.isCurveSelectingQuantized();
 
                     ApplicationGlobal.appConfig.CurveVisibleAccent = mDialogPreference.isCurveVisibleAccent();
                     ApplicationGlobal.appConfig.CurveVisibleBreathiness = mDialogPreference.isCurveVisibleBre();
@@ -11978,15 +11981,15 @@ namespace cadencii
 
                     List<string> new_resamplers = new List<string>();
                     mDialogPreference.copyResamplersConfig(new_resamplers);
-                    AppManager.editorConfig.clearResampler();
+					ApplicationGlobal.appConfig.clearResampler();
                     for (int i = 0; i < new_resamplers.Count; i++) {
-                        AppManager.editorConfig.addResampler(new_resamplers[i]);
+						ApplicationGlobal.appConfig.addResampler(new_resamplers[i]);
                     }
-                    AppManager.editorConfig.PathWavtool = mDialogPreference.getPathWavtool();
+                    ApplicationGlobal.appConfig.PathWavtool = mDialogPreference.getPathWavtool();
 
-                    AppManager.editorConfig.UtauSingers.Clear();
+                    ApplicationGlobal.appConfig.UtauSingers.Clear();
                     foreach (var sc in mDialogPreference.getUtausingers()) {
-                        AppManager.editorConfig.UtauSingers.Add((SingerConfig)sc.clone());
+                        ApplicationGlobal.appConfig.UtauSingers.Add((SingerConfig)sc.clone());
                     }
                     AppManager.reloadUtauVoiceDB();
 
@@ -11995,19 +11998,19 @@ namespace cadencii
                     AppManager.editorConfig.UseSpaceKeyAsMiddleButtonModifier = mDialogPreference.isUseSpaceKeyAsMiddleButtonModifier();
 
 #if ENABLE_AQUESTONE
-                    var old_aquestone_config = Tuple.Create(AppManager.editorConfig.PathAquesTone, AppManager.editorConfig.DoNotUseAquesTone);
-                    AppManager.editorConfig.PathAquesTone = mDialogPreference.getPathAquesTone();
-                    AppManager.editorConfig.DoNotUseAquesTone = !mDialogPreference.isAquesToneRequired();
-                    if (old_aquestone_config.Item1 != AppManager.editorConfig.PathAquesTone
-                        || old_aquestone_config.Item2 != AppManager.editorConfig.DoNotUseAquesTone) {
+                    var old_aquestone_config = Tuple.Create(ApplicationGlobal.appConfig.PathAquesTone, ApplicationGlobal.appConfig.DoNotUseAquesTone);
+                    ApplicationGlobal.appConfig.PathAquesTone = mDialogPreference.getPathAquesTone();
+                    ApplicationGlobal.appConfig.DoNotUseAquesTone = !mDialogPreference.isAquesToneRequired();
+                    if (old_aquestone_config.Item1 != ApplicationGlobal.appConfig.PathAquesTone
+                        || old_aquestone_config.Item2 != ApplicationGlobal.appConfig.DoNotUseAquesTone) {
                         VSTiDllManager.reloadAquesTone();
                     }
 
-                    var old_aquestone2_config = Tuple.Create(AppManager.editorConfig.PathAquesTone2, AppManager.editorConfig.DoNotUseAquesTone2);
-                    AppManager.editorConfig.PathAquesTone2 = mDialogPreference.getPathAquesTone2();
-                    AppManager.editorConfig.DoNotUseAquesTone2 = !mDialogPreference.isAquesTone2Required();
-                    if (old_aquestone2_config.Item1 != AppManager.editorConfig.PathAquesTone2
-                        || old_aquestone2_config.Item2 != AppManager.editorConfig.DoNotUseAquesTone2) {
+                    var old_aquestone2_config = Tuple.Create(ApplicationGlobal.appConfig.PathAquesTone2, ApplicationGlobal.appConfig.DoNotUseAquesTone2);
+                    ApplicationGlobal.appConfig.PathAquesTone2 = mDialogPreference.getPathAquesTone2();
+                    ApplicationGlobal.appConfig.DoNotUseAquesTone2 = !mDialogPreference.isAquesTone2Required();
+                    if (old_aquestone2_config.Item1 != ApplicationGlobal.appConfig.PathAquesTone2
+                        || old_aquestone2_config.Item2 != ApplicationGlobal.appConfig.DoNotUseAquesTone2) {
                         VSTiDllManager.reloadAquesTone2();
                     }
 #endif
@@ -12015,7 +12018,7 @@ namespace cadencii
 
                     //AppManager.editorConfig.__revoked__WaveFileOutputFromMasterTrack = mDialogPreference.isWaveFileOutputFromMasterTrack();
                     //AppManager.editorConfig.__revoked__WaveFileOutputChannel = mDialogPreference.getWaveFileOutputChannel();
-                    if (AppManager.editorConfig.UseProjectCache && !mDialogPreference.isUseProjectCache()) {
+                    if (ApplicationGlobal.appConfig.UseProjectCache && !mDialogPreference.isUseProjectCache()) {
                         // プロジェクト用キャッシュを使用していたが，使用しないように変更された場合.
                         // プロジェクト用キャッシュが存在するなら，共用のキャッシュに移動する．
                         string file = AppManager.getFileName();
@@ -12023,7 +12026,7 @@ namespace cadencii
                             string dir = PortUtil.getDirectoryName(file);
                             string name = PortUtil.getFileNameWithoutExtension(file);
                             string projectCacheDir = Path.Combine(dir, name + ".cadencii");
-                            string commonCacheDir = Path.Combine(AppManager.getCadenciiTempDir(), AppManager.getID());
+                            string commonCacheDir = Path.Combine(AppManager.getCadenciiTempDir(), ApplicationGlobal.getID());
                             if (Directory.Exists(projectCacheDir)) {
                                 VsqFileEx vsq = AppManager.getVsqFile();
                                 for (int i = 1; i < vsq.Track.Count; i++) {
@@ -12084,17 +12087,17 @@ namespace cadencii
                                 }
 
                                 // キャッシュのディレクトリを再指定
-                                AppManager.setTempWaveDir(commonCacheDir);
+                                ApplicationGlobal.setTempWaveDir(commonCacheDir);
                             }
                         }
                     }
-                    AppManager.editorConfig.UseProjectCache = mDialogPreference.isUseProjectCache();
-                    AppManager.editorConfig.DoNotUseVocaloid1 = !mDialogPreference.isVocaloid1Required();
-                    AppManager.editorConfig.DoNotUseVocaloid2 = !mDialogPreference.isVocaloid2Required();
-                    AppManager.editorConfig.BufferSizeMilliSeconds = mDialogPreference.getBufferSize();
+                    ApplicationGlobal.appConfig.UseProjectCache = mDialogPreference.isUseProjectCache();
+                    ApplicationGlobal.appConfig.DoNotUseVocaloid1 = !mDialogPreference.isVocaloid1Required();
+                    ApplicationGlobal.appConfig.DoNotUseVocaloid2 = !mDialogPreference.isVocaloid2Required();
+					ApplicationGlobal.appConfig.BufferSizeMilliSeconds = mDialogPreference.getBufferSize();
                     ApplicationGlobal.appConfig.DefaultSynthesizer = mDialogPreference.getDefaultSynthesizer();
-                    AppManager.editorConfig.UseUserDefinedAutoVibratoType = mDialogPreference.isUseUserDefinedAutoVibratoType();
-                    AppManager.editorConfig.UseWideCharacterWorkaround = mDialogPreference.isEnableWideCharacterWorkaround();
+					ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType = mDialogPreference.isUseUserDefinedAutoVibratoType();
+					ApplicationGlobal.appConfig.UseWideCharacterWorkaround = mDialogPreference.isEnableWideCharacterWorkaround();
 
                     trackSelector.prepareSingerMenu(VsqFileEx.getTrackRendererKind(AppManager.getVsqFile().Track[AppManager.getSelected()]));
                     trackSelector.updateVisibleCurves();
@@ -12703,11 +12706,11 @@ namespace cadencii
                     } catch (Exception ex) {
                         result = old_pre_measure;
                     }
-                    if (result < AppManager.MIN_PRE_MEASURE) {
-                        result = AppManager.MIN_PRE_MEASURE;
+                    if (result < ApplicationGlobal.MIN_PRE_MEASURE) {
+                        result = ApplicationGlobal.MIN_PRE_MEASURE;
                     }
-                    if (result > AppManager.MAX_PRE_MEASURE) {
-                        result = AppManager.MAX_PRE_MEASURE;
+                    if (result > ApplicationGlobal.MAX_PRE_MEASURE) {
+                        result = ApplicationGlobal.MAX_PRE_MEASURE;
                     }
                     if (old_pre_measure != result) {
                         CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandChangePreMeasure(result));
@@ -14559,7 +14562,7 @@ namespace cadencii
         {
             List<int> tracks = new List<int>();
             tracks.Add(AppManager.getSelected());
-            AppManager.patchWorkToFreeze(this, tracks);
+			AppManager.patchWorkToFreeze(this, tracks);
         }
 
         public void menuTrackRenderer_DropDownOpening(Object sender, EventArgs e)
@@ -14880,7 +14883,7 @@ namespace cadencii
         {
             List<int> tracks = new List<int>();
             tracks.Add(AppManager.getSelected());
-            AppManager.patchWorkToFreeze(this, tracks);
+			AppManager.patchWorkToFreeze(this, tracks);
         }
 
         public void cMenuTrackTabRenderer_DropDownOpening(Object sender, EventArgs e)
@@ -15267,10 +15270,10 @@ namespace cadencii
             }
             int dx = PortUtil.getMousePosition().x - mKeyLengthSplitterInitialMouse.x;
             int draft = mKeyLengthInitValue + dx;
-            if (draft < AppManager.MIN_KEY_WIDTH) {
-                draft = AppManager.MIN_KEY_WIDTH;
-            } else if (AppManager.MAX_KEY_WIDTH < draft) {
-                draft = AppManager.MAX_KEY_WIDTH;
+            if (draft < EditorConfig.MIN_KEY_WIDTH) {
+                draft = EditorConfig.MIN_KEY_WIDTH;
+			} else if (EditorConfig.MAX_KEY_WIDTH < draft) {
+				draft = EditorConfig.MAX_KEY_WIDTH;
             }
             AppManager.keyWidth = draft;
             int current = trackSelector.getRowsPerColumn();
@@ -15661,7 +15664,7 @@ namespace cadencii
             if (list.Count <= 0) {
                 return;
             }
-            AppManager.patchWorkToFreeze(this, list);
+			AppManager.patchWorkToFreeze(this, list);
         }
 
         public void handleEditorConfig_QuantizeModeChanged(Object sender, EventArgs e)
@@ -15709,7 +15712,7 @@ namespace cadencii
             if (!dirtyCheck()) {
                 return;
             }
-            string dir = AppManager.editorConfig.getLastUsedPathIn("xvsq");
+            string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("xvsq");
             openXmlVsqDialog.SetSelectedFile(dir);
             var dialog_result = AppManager.showModalDialog(openXmlVsqDialog, true, this);
             if (dialog_result != System.Windows.Forms.DialogResult.OK) {
@@ -15719,7 +15722,7 @@ namespace cadencii
                 AppManager.setPlaying(false, this);
             }
             string file = openXmlVsqDialog.FileName;
-            AppManager.editorConfig.setLastUsedPathIn(file, ".xvsq");
+            ApplicationGlobal.appConfig.setLastUsedPathIn(file, ".xvsq");
             if (openVsqCor(file)) {
                 AppManager.showMessageBox(
                     _("Invalid XVSQ file"),
@@ -15765,7 +15768,7 @@ namespace cadencii
             clearTempWave();
 
             // キャッシュディレクトリのパスを、デフォルトに戻す
-            AppManager.setTempWaveDir(Path.Combine(AppManager.getCadenciiTempDir(), AppManager.getID()));
+            ApplicationGlobal.setTempWaveDir(Path.Combine(AppManager.getCadenciiTempDir(), ApplicationGlobal.getID()));
 
             updateDrawObjectList();
             refreshScreen();
@@ -16215,7 +16218,7 @@ namespace cadencii
 
         public void handleBgmAdd_Click(Object sender, EventArgs e)
         {
-            string dir = AppManager.editorConfig.getLastUsedPathIn("wav");
+            string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("wav");
             openWaveDialog.SetSelectedFile(dir);
             var ret = AppManager.showModalDialog(openWaveDialog, true, this);
             if (ret != System.Windows.Forms.DialogResult.OK) {
@@ -16223,7 +16226,7 @@ namespace cadencii
             }
 
             string file = openWaveDialog.FileName;
-            AppManager.editorConfig.setLastUsedPathIn(file, ".wav");
+            ApplicationGlobal.appConfig.setLastUsedPathIn(file, ".wav");
 
             // 既に開かれていたらキャンセル
             int count = AppManager.getBgmCount();

@@ -770,7 +770,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>copy "$(ProjectDir)manual\manual_*.pdf" "$(TargetDir)"
+    <PostBuildEvent Condition="$(PLATFORM)='whatever_windows'">copy "$(ProjectDir)manual\manual_*.pdf" "$(TargetDir)"
 copy "$(SolutionDir)$(Configuration)\vConnect-STAND.exe" "$(TargetDir)"
 copy "$(SolutionDir)lib\libiconv.dll" "$(TargetDir)"
 copy "$(SolutionDir)..\data\libfftw3-3.dll" "$(TargetDir)"

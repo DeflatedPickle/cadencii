@@ -56,7 +56,7 @@ namespace cadencii
         /// この波形生成器を親とする回路の，各波形ラインに流れる波形データのサンプリングレート．
         /// この波形生成器が生成するサンプリングレートを指定するのではないので注意
         /// </param>
-        void init(string appId, VsqFileEx vsq, int track, int start_clock, int end_clock, int sample_rate);
+        void init(VsqFileEx vsq, int track, int start_clock, int end_clock, int sample_rate);
 
         /// <summary>
         /// エディターの設定値を指定します

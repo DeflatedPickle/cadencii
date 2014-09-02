@@ -17,7 +17,7 @@ using cadencii;
 using cadencii.java.awt;
 using cadencii.media;
 using cadencii.windows.forms;
-
+ using ApplicationGlobal = cadencii.core.ApplicationGlobal;
 
 
 namespace cadencii

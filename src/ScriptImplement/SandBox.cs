@@ -100,7 +100,7 @@ public static class AutoBRI
         cadencii.vsq.VsqTrack track = vsq.Track[AppManager.getSelected()];
 
         // コントロールカーブの時間方向の解像度を，Cadenciiの設定値から取得
-        int resol = ApplicationGlobal.appConfig.getControlCurveResolutionValue();
+        int resol = cadencii.core.ApplicationGlobal.appConfig.getControlCurveResolutionValue();
         for (int i = 0; i < ids.Count; i++) {
             int internal_id = ids[i];
 
@@ -171,7 +171,7 @@ public class AutoBRITool : IPaletteTool
     public bool edit(cadencii.vsq.VsqTrack track, int[] ids, System.Windows.Forms.MouseButtons button)
     {
         // コントロールカーブの時間方向の解像度を，Cadenciiの設定値から取得
-        int resol = ApplicationGlobal.appConfig.getControlCurveResolutionValue();
+		int resol = cadencii.core.ApplicationGlobal.appConfig.getControlCurveResolutionValue();
         for (int i = 0; i < ids.Length; i++) {
             int internal_id = ids[i];
 

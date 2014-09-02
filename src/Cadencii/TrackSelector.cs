@@ -831,7 +831,7 @@ namespace cadencii
 
         private int getMaxColumns()
         {
-            int max_columns = AppManager.keyWidth / AppManager.MIN_KEY_WIDTH;
+            int max_columns = AppManager.keyWidth / EditorConfig.MIN_KEY_WIDTH;
             if (max_columns < 1) {
                 max_columns = 1;
             }
@@ -1044,7 +1044,7 @@ namespace cadencii
             }
             int ix = index / row_per_column;
             int iy = index - ix * row_per_column;
-            int x = 7 + ix * AppManager.MIN_KEY_WIDTH;
+            int x = 7 + ix * EditorConfig.MIN_KEY_WIDTH;
             int y = centre - row_per_column * UNIT_HEIGHT_PER_CURVE / 2 + 2 + UNIT_HEIGHT_PER_CURVE * iy;
             int min_size = getPreferredMinSize();
             if (mLastPreferredMinHeight != min_size) {
@@ -3132,7 +3132,7 @@ namespace cadencii
                 } else if (selected_tool == EditTool.ARROW ||
                             selected_tool == EditTool.ERASER) {
                     int draft_clock = clock;
-                    if (ApplicationGlobal.appConfig.CurveSelectingQuantized) {
+                    if (AppManager.editorConfig.CurveSelectingQuantized) {
                         int unit = AppManager.getPositionQuantizeClock();
                         int odd = clock % unit;
                         int nclock = clock;
@@ -3368,7 +3368,7 @@ namespace cadencii
                 value = max;
             }
 
-            if (ApplicationGlobal.appConfig.CurveSelectingQuantized) {
+			if (AppManager.editorConfig.CurveSelectingQuantized) {
                 AppManager.mCurveSelectingRectangle = new Rectangle(quantized_clock, value, 0, 0);
             } else {
                 AppManager.mCurveSelectingRectangle = new Rectangle(clock, value, 0, 0);
@@ -3812,7 +3812,7 @@ namespace cadencii
                                 if ((mModifierOnMouseDown & mModifierKey) != mModifierKey) {
                                     AppManager.setCurveSelectedIntervalEnabled(false);
                                 }
-                                if (ApplicationGlobal.appConfig.CurveSelectingQuantized) {
+								if (AppManager.editorConfig.CurveSelectingQuantized) {
                                     AppManager.mCurveSelectingRectangle = new Rectangle(quantized_clock, value, 0, 0);
                                 } else {
                                     AppManager.mCurveSelectingRectangle = new Rectangle(clock, value, 0, 0);
@@ -3919,7 +3919,7 @@ namespace cadencii
                                 if ((mModifierOnMouseDown & Keys.Shift) != Keys.Shift && (mModifierOnMouseDown & mModifierKey) != mModifierKey) {
                                     AppManager.itemSelection.clearPoint();
                                 }
-                                if (ApplicationGlobal.appConfig.CurveSelectingQuantized) {
+								if (AppManager.editorConfig.CurveSelectingQuantized) {
                                     AppManager.mCurveSelectingRectangle = new Rectangle(quantized_clock, value, 0, 0);
                                 } else {
                                     AppManager.mCurveSelectingRectangle = new Rectangle(clock, value, 0, 0);
@@ -5565,7 +5565,7 @@ namespace cadencii
             cmenuSinger.Items.Clear();
             List<SingerConfig> items = null;
             if (renderer == RendererKind.UTAU || renderer == RendererKind.VCNT) {
-                items = AppManager.editorConfig.UtauSingers;
+                items = ApplicationGlobal.appConfig.UtauSingers;
             } else if (renderer == RendererKind.VOCALOID1) {
                 items = new List<SingerConfig>(VocaloSysUtil.getSingerConfigs(SynthesizerType.VOCALOID1));
             } else if (renderer == RendererKind.VOCALOID2) {

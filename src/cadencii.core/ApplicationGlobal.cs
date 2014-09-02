@@ -18,8 +18,6 @@ namespace cadencii.core
 			#endif
 		}
 		public static EditorConfig appConfig = new EditorConfig ();
-		public const int MIN_KEY_WIDTH = 68;
-        public const int MAX_KEY_WIDTH = MIN_KEY_WIDTH * 5;
         /// <summary>
         /// プリメジャーの最小値
         /// </summary>
@@ -78,6 +76,14 @@ namespace cadencii.core
         {
             return mTempWaveDir;
         }
-	}
+		
+        /// <summary>
+        /// FormMainを識別するID
+        /// </summary>
+        public static string getID()
+        {
+            return mID;
+        }
+    }
 }
 

@@ -25,11 +25,9 @@ namespace cadencii
     {
         private WaveGenerator mGenerator = null;
         private FormMain mMainWindow = null;
-        private string mAppId;
 
-        public SynthesizeWorker(string appId, FormMain main_window)
+        public SynthesizeWorker(FormMain main_window)
         {
-            mAppId = appId;
             mMainWindow = main_window;
         }
 
@@ -278,7 +276,8 @@ namespace cadencii
             }
             mGenerator.setReceiver(amp);
             mGenerator.setGlobalConfig(ApplicationGlobal.appConfig, AppManager.editorConfig);
-            mGenerator.setMainWindow(mMainWindow);
+            // FIXME: enable this
+            //mGenerator.setMainWindow(mMainWindow);
 
             Mixer mixer = new Mixer();
             mixer.setRoot(mGenerator);
@@ -348,7 +347,7 @@ namespace cadencii
 
             int end = q.clockEnd;
             if (end == int.MaxValue) end = vsq.TotalClocks + 240;
-            mGenerator.init(mAppId, vsq, track, q.clockStart, end, sample_rate);
+            mGenerator.init(vsq, track, q.clockStart, end, sample_rate);
 
             double sec_start = vsq.getSecFromClock(q.clockStart);
             double sec_end = vsq.getSecFromClock(end);

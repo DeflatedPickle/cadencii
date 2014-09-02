@@ -115,7 +115,7 @@ namespace cadencii
         /// <param name="start_clock"></param>
         /// <param name="end_clock"></param>
         /// <param name="sample_rate">波形処理ラインのサンプリング周波数</param>
-        public void init(string appId, VsqFileEx vsq, int track, int start_clock, int end_clock, int sample_rate)
+        public void init(VsqFileEx vsq, int track, int start_clock, int end_clock, int sample_rate)
         {
             mVsq = vsq;
             mTrack = track;

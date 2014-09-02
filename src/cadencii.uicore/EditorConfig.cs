@@ -38,6 +38,14 @@ namespace cadencii
     /// </summary>
     public class EditorConfig
     {
+		public const int MIN_KEY_WIDTH = 68;
+        public const int MAX_KEY_WIDTH = MIN_KEY_WIDTH * 5;
+		/// <summary>
+        /// スプリットコンテナのディバイダの位置
+        /// <version>3.3+</version>
+        /// </summary>
+        public int SplitContainer2LastDividerLocation = -1;
+
 		/// <summary>
         /// マウスの操作などの許容範囲。プリメジャーにPxToleranceピクセルめり込んだ入力を行っても、エラーにならない。(補正はされる)
         /// </summary>
@@ -222,8 +230,6 @@ namespace cadencii
         /// </summary>
         public MidiPortConfig MidiInPortMtc = new MidiPortConfig();
 
-        public List<SingerConfig> UtauSingers = new List<SingerConfig>();
-
         public PropertyPanelState PropertyWindowStatus = new PropertyPanelState();
 
         public FormMidiImExportConfig MidiImExportConfigExport = new FormMidiImExportConfig();
@@ -308,6 +314,67 @@ namespace cadencii
         /// カーブの選択範囲もクオンタイズするかどうか
         /// </summary>
         public bool CurveSelectingQuantized = true;
+		/// <summary>
+        /// ピアノロール上に歌詞を表示するかどうか
+        /// </summary>
+        public bool ShowLyric = true;
+        /// <summary>
+        /// ピアノロール上に，ビブラートとアタックの概略を表す波線を表示するかどうか
+        /// </summary>
+        public bool ShowExpLine = true;
+
+		/// <summary>
+        /// Button index of "△"
+        /// </summary>
+        public int GameControlerTriangle = 0;
+        /// <summary>
+        /// Button index of "○"
+        /// </summary>
+        public int GameControlerCircle = 1;
+        /// <summary>
+        /// Button index of "×"
+        /// </summary>
+        public int GameControlerCross = 2;
+        /// <summary>
+        /// Button index of "□"
+        /// </summary>
+        public int GameControlerRectangle = 3;
+        /// <summary>
+        /// Button index of "L1"
+        /// </summary>
+        public int GameControlL1 = 4;
+        /// <summary>
+        /// Button index of "R1"
+        /// </summary>
+        public int GameControlR1 = 5;
+        /// <summary>
+        /// Button index of "L2"
+        /// </summary>
+        public int GameControlL2 = 6;
+        /// <summary>
+        /// Button index of "R2"
+        /// </summary>
+        public int GameControlR2 = 7;
+        /// <summary>
+        /// Button index of "SELECT"
+        /// </summary>
+        public int GameControlSelect = 8;
+        /// <summary>
+        /// Button index of "START"
+        /// </summary>
+        public int GameControlStart = 9;
+        /// <summary>
+        /// Button index of Left Stick
+        /// </summary>
+        public int GameControlStirckL = 10;
+        /// <summary>
+        /// Button index of Right Stick
+        /// </summary>
+        public int GameControlStirckR = 11;
+	public int GameControlPovRight = 9000;
+        public int GameControlPovLeft = 27000;
+        public int GameControlPovUp = 0;
+        public int GameControlPovDown = 18000;
 
 	#region public static method
         /// <summary>
@@ -751,10 +818,10 @@ namespace cadencii
 
             // key_widthを最大，最小の間に収める
             int draft_key_width = this.KeyWidth;
-            if (draft_key_width < ApplicationGlobal.MIN_KEY_WIDTH) {
-				draft_key_width = ApplicationGlobal.MIN_KEY_WIDTH;
-			} else if (ApplicationGlobal.MAX_KEY_WIDTH < draft_key_width) {
-				draft_key_width = ApplicationGlobal.MAX_KEY_WIDTH;
+            if (draft_key_width < MIN_KEY_WIDTH) {
+				draft_key_width = MIN_KEY_WIDTH;
+			} else if (MAX_KEY_WIDTH < draft_key_width) {
+				draft_key_width = MAX_KEY_WIDTH;
             }
         }
    }

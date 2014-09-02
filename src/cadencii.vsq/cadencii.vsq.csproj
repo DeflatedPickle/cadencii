@@ -96,7 +96,6 @@
     <Compile Include="NRPN.cs" />
     <Compile Include="NrpnIterator.cs" />
     <Compile Include="PlayMode.cs" />
-    <Compile Include="SingerConfig.cs" />
     <Compile Include="SingerConfigSys.cs" />
     <Compile Include="SymbolTable.cs" />
     <Compile Include="SymbolTableEntry.cs" />
@@ -104,7 +103,6 @@
     <Compile Include="TextStream.cs" />
     <Compile Include="Timesig.cs" />
     <Compile Include="TimesigVector.cs" />
-    <Compile Include="TransCodeUtil.cs" />
     <Compile Include="UstEnvelope.cs" />
     <Compile Include="UstEvent.cs" />
     <Compile Include="UstEventProperty.cs" />

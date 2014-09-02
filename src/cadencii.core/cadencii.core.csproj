@@ -131,6 +131,8 @@
     <Compile Include="dspcore\TempoTableEntry.cs" />
     <Compile Include="dspcore\TempoVector.cs" />
     <Compile Include="dspcore\TempoVectorSearchContext.cs" />
+    <Compile Include="vsq\SingerConfig.cs" />
+    <Compile Include="vsq\TransCodeUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -142,5 +144,6 @@
   -->
   <ItemGroup>
     <Folder Include="dspcore\" />
+    <Folder Include="vsq\" />
   </ItemGroup>
 </Project>

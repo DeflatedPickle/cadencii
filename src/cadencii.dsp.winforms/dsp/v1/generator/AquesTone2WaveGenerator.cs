@@ -48,7 +48,7 @@ namespace cadencii
 
         public double getProgress() { return position_ / total_samples_ * 100.0; }
 
-        public void init(string appId, VsqFileEx sequence, int track, int start_clock, int end_clock, int sample_rate)
+        public void init(VsqFileEx sequence, int track, int start_clock, int end_clock, int sample_rate)
         {
             sequence_ = (VsqFileEx)sequence.Clone();
             sequence_.updateTotalClocks();

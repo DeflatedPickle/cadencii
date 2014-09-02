@@ -22,7 +22,7 @@ using cadencii.java.io;
 using cadencii.java.util;
 //using cadencii.windows.forms;
 //using cadencii.xml;
-//using cadencii.vsq;
+using cadencii.vsq;
 using cadencii.apputil;
 //using cadencii.uicore;
 
@@ -45,14 +45,6 @@ namespace cadencii.core
         public int DefaultPMbPortamentoUse = 3;
         public int DefaultDEMdecGainRate = 50;
         public int DefaultDEMaccent = 50;
-        /// <summary>
-        /// ピアノロール上に歌詞を表示するかどうか
-        /// </summary>
-        public bool ShowLyric = true;
-        /// <summary>
-        /// ピアノロール上に，ビブラートとアタックの概略を表す波線を表示するかどうか
-        /// </summary>
-        public bool ShowExpLine = true;
         public DefaultVibratoLengthEnum DefaultVibratoLength = DefaultVibratoLengthEnum.L66;
         /// <summary>
         /// デフォルトビブラートのRate
@@ -75,55 +67,9 @@ namespace cadencii.core
         /// 実行環境
         /// </summary>
         private PlatformEnum __revoked__Platform = PlatformEnum.Windows;
+		
+        public List<SingerConfig> UtauSingers = new List<SingerConfig>();
 
-        /// <summary>
-        /// Button index of "△"
-        /// </summary>
-        public int GameControlerTriangle = 0;
-        /// <summary>
-        /// Button index of "○"
-        /// </summary>
-        public int GameControlerCircle = 1;
-        /// <summary>
-        /// Button index of "×"
-        /// </summary>
-        public int GameControlerCross = 2;
-        /// <summary>
-        /// Button index of "□"
-        /// </summary>
-        public int GameControlerRectangle = 3;
-        /// <summary>
-        /// Button index of "L1"
-        /// </summary>
-        public int GameControlL1 = 4;
-        /// <summary>
-        /// Button index of "R1"
-        /// </summary>
-        public int GameControlR1 = 5;
-        /// <summary>
-        /// Button index of "L2"
-        /// </summary>
-        public int GameControlL2 = 6;
-        /// <summary>
-        /// Button index of "R2"
-        /// </summary>
-        public int GameControlR2 = 7;
-        /// <summary>
-        /// Button index of "SELECT"
-        /// </summary>
-        public int GameControlSelect = 8;
-        /// <summary>
-        /// Button index of "START"
-        /// </summary>
-        public int GameControlStart = 9;
-        /// <summary>
-        /// Button index of Left Stick
-        /// </summary>
-        public int GameControlStirckL = 10;
-        /// <summary>
-        /// Button index of Right Stick
-        /// </summary>
-        public int GameControlStirckR = 11;
         public bool CurveVisibleVelocity = true;
         public bool CurveVisibleAccent = true;
         public bool CurveVisibleDecay = true;
@@ -145,19 +91,10 @@ namespace cadencii.core
         public bool CurveVisibleReso3 = false;
         public bool CurveVisibleReso4 = false;
         public bool CurveVisibleEnvelope = false;
-        public int GameControlPovRight = 9000;
-        public int GameControlPovLeft = 27000;
-        public int GameControlPovUp = 0;
-        public int GameControlPovDown = 18000;
         /// <summary>
         /// wave波形を表示するかどうか
         /// </summary>
         public bool ViewWaveform = false;
-        /// <summary>
-        /// スプリットコンテナのディバイダの位置
-        /// <version>3.3+</version>
-        /// </summary>
-        public int SplitContainer2LastDividerLocation = -1;
 
         public bool ViewAtcualPitch = false;
         /// <summary>
@@ -209,6 +146,7 @@ namespace cadencii.core
         /// 3.3で廃止
         /// </summary>
         private bool __revoked__DoNotUseVocaloid101 = false;
+
         /// <summary>
         /// VOCALOID2のDLLを読み込まない場合true。既定ではfalse
         /// </summary>

@@ -20,7 +20,7 @@ using cadencii.java.util;
 using cadencii.media;
 using cadencii.vsq;
 using cadencii.java.io;
-
+using ApplicationGlobal = cadencii.core.ApplicationGlobal;
 
 
 namespace cadencii
@@ -218,6 +218,55 @@ namespace cadencii
         {
             double pos = PlaySound.getPosition();
             return (float)pos;
+        }
+		
+        public static bool isRendererAvailable(RendererKind renderer)
+        {
+#if ENABLE_VOCALOID
+            for (int i = 0; i < VSTiDllManager.vocaloidDriver.Count; i++) {
+                if (renderer == VSTiDllManager.vocaloidDriver[i].getRendererKind() && VSTiDllManager.vocaloidDriver[i].loaded) {
+                    return true;
+                }
+            }
+#endif // ENABLE_VOCALOID
+
+#if ENABLE_AQUESTONE
+            if (renderer == RendererKind.AQUES_TONE && aquesToneDriver != null && aquesToneDriver.loaded) {
+                return true;
+            }
+            if (renderer == RendererKind.AQUES_TONE2 && aquesTone2Driver != null && aquesTone2Driver.loaded) {
+                return true;
+            }
+#endif
+
+            if (renderer == RendererKind.UTAU) {
+                // ここでは，resamplerの内どれかひとつでも使用可能であればOKの判定にする
+                bool resampler_exists = false;
+                int size = ApplicationGlobal.appConfig.getResamplerCount();
+                for (int i = 0; i < size; i++) {
+                    string path = ApplicationGlobal.appConfig.getResamplerAt(i);
+                    if (System.IO.File.Exists(path)) {
+                        resampler_exists = true;
+                        break;
+                    }
+                }
+                if (resampler_exists &&
+                     !ApplicationGlobal.appConfig.PathWavtool.Equals("") && System.IO.File.Exists(ApplicationGlobal.appConfig.PathWavtool)) {
+                    if (ApplicationGlobal.appConfig.UtauSingers.Count > 0) {
+                        return true;
+                    }
+                }
+            }
+            if (renderer == RendererKind.VCNT) {
+                string synth_path = Path.Combine(PortUtil.getApplicationStartupPath(), VConnectWaveGenerator.STRAIGHT_SYNTH);
+                if (System.IO.File.Exists(synth_path)) {
+					int count = ApplicationGlobal.appConfig.UtauSingers.Count;
+                    if (count > 0) {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 

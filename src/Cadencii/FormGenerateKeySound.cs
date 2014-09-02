@@ -19,6 +19,7 @@ using cadencii.java.util;
 using cadencii.media;
 using cadencii.vsq;
 using cadencii.windows.forms;
+using ApplicationGlobal = cadencii.core.ApplicationGlobal;
 
 namespace cadencii
 {
@@ -59,7 +60,7 @@ namespace cadencii
             m_close_when_finished = close_when_finished;
             m_singer_config1 = VocaloSysUtil.getSingerConfigs(SynthesizerType.VOCALOID1);
             m_singer_config2 = VocaloSysUtil.getSingerConfigs(SynthesizerType.VOCALOID2);
-            m_singer_config_utau = AppManager.editorConfig.UtauSingers.ToArray();
+            m_singer_config_utau = ApplicationGlobal.appConfig.UtauSingers.ToArray();
             if (m_singer_config1.Length > 0) {
                 comboSingingSynthSystem.Items.Add("VOCALOID1");
             }
@@ -68,9 +69,9 @@ namespace cadencii
             }
 
             // 取りあえず最初に登録されているresamplerを使うってことで
-            string resampler = AppManager.editorConfig.getResamplerAt(0);
+			string resampler = ApplicationGlobal.appConfig.getResamplerAt(0);
             if (m_singer_config_utau.Length > 0 &&
-                 AppManager.editorConfig.PathWavtool != null && File.Exists(AppManager.editorConfig.PathWavtool) &&
+                 ApplicationGlobal.appConfig.PathWavtool != null && File.Exists(ApplicationGlobal.appConfig.PathWavtool) &&
                  resampler != null && File.Exists(resampler)) {
                 comboSingingSynthSystem.Items.Add("UTAU");
             }
@@ -275,7 +276,7 @@ namespace cadencii
                 }
             }
 
-            foreach (var sc in AppManager.editorConfig.UtauSingers) {
+            foreach (var sc in ApplicationGlobal.appConfig.UtauSingers) {
                 if (first_found_singer.Equals("")) {
                     first_found_singer = sc.VOICENAME;
                     first_found_renderer = VsqFileEx.RENDERER_UTU0;
@@ -301,7 +302,7 @@ namespace cadencii
             vsq.Track[1].addEvent(item);
             vsq.updateTotalClocks();
             int ms_presend = 500;
-            string tempdir = Path.Combine(AppManager.getCadenciiTempDir(), AppManager.getID());
+            string tempdir = Path.Combine(AppManager.getCadenciiTempDir(), ApplicationGlobal.getID());
             if (!Directory.Exists(tempdir)) {
                 try {
                     PortUtil.createDirectory(tempdir);
