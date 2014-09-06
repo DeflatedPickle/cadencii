@@ -102,7 +102,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>@set PATH=$(DevEnvDir);%25PATH%25
+    <PostBuildEvent Condition="'$(OS)'=='whatever_windows'">@set PATH=$(DevEnvDir);%25PATH%25
 "$(DevEnvDir)..\..\VC\bin\editbin.exe" /NXCOMPAT:NO "$(TargetPath)"
 </PostBuildEvent>
   </PropertyGroup>

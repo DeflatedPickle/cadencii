@@ -177,7 +177,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>mkdir "$(ProjectDir)..\Cadencii\bin\x86\$(ConfigurationName)\script"
+    <PostBuildEvent Condition="'$(OS)'='whatever_windows'">mkdir "$(ProjectDir)..\Cadencii\bin\x86\$(ConfigurationName)\script"
 mkdir "$(ProjectDir)..\Cadencii\bin\x86\$(ConfigurationName)\tool"
 "$(SolutionDir)\..\utils\GenerateUtauPluginManagerPlugin\bin\$(PlatformName)\$(ConfigurationName)\GenerateUtauPluginManagerPlugin.exe
 copy "$(ProjectDir)Transpose Plus 1 Degree.cs" "$(ProjectDir)..\Cadencii\bin\x86\$(ConfigurationName)\script\Transpose Plus 1 Degree.txt"
