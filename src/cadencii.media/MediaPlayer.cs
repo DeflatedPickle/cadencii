@@ -14,7 +14,6 @@
 using System;
 using System.Text;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace cadencii.media
 {

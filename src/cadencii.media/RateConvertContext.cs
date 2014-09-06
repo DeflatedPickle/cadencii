@@ -353,7 +353,7 @@ namespace cadencii.media
         }
     }
 
-#if DEBUG
+#if TESTING
     /// <summary>
     /// RateConvertContextをテストするクラス
     /// </summary>
