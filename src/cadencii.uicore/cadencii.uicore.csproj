@@ -35,12 +35,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EditorConfig.cs" />
-    <Compile Include="MidiPortConfig.cs" />
-    <Compile Include="PropertyPanelState.cs" />
-    <Compile Include="FormMidiImExportConfig.cs" />
     <Compile Include="enum\RendererKindUtil.cs" />
-    <Compile Include="PanelState.cs" />
-    <Compile Include="IAmplifierView.cs" />
+    <Compile Include="PropertyPanelState.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

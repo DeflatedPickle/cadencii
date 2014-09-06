@@ -18,13 +18,7 @@ using System.IO;
 using System.Collections.Generic;
 using cadencii;
 using cadencii.java.awt;
-using cadencii.java.io;
-using cadencii.java.util;
-//using cadencii.windows.forms;
 using cadencii.xml;
-using cadencii.vsq;
-using cadencii.apputil;
-//using cadencii.uicore;
 using cadencii.vsq;
 using cadencii.core;
 

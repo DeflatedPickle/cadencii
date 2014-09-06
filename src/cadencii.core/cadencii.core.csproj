@@ -133,6 +133,10 @@
     <Compile Include="dspcore\TempoVectorSearchContext.cs" />
     <Compile Include="vsq\SingerConfig.cs" />
     <Compile Include="vsq\TransCodeUtil.cs" />
+    <Compile Include="FormMidiImExportConfig.cs" />
+    <Compile Include="IAmplifierView.cs" />
+    <Compile Include="MidiPortConfig.cs" />
+    <Compile Include="PanelState.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
