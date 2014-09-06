@@ -40,7 +40,7 @@ namespace cadencii
         /// </summary>
         void end();
 
-        void setGlobalConfig(cadencii.core.EditorConfig config, EditorConfig configUI);
+        void setGlobalConfig(cadencii.core.EditorConfig config);
     }
 
 }

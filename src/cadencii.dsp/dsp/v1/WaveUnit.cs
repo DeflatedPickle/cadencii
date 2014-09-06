@@ -98,10 +98,9 @@ namespace cadencii
         /// スコアエディタ全体の設定値を設定する．
         /// </summary>
         /// <param name="config"></param>
-        public virtual void setGlobalConfig(cadencii.core.EditorConfig config, cadencii.EditorConfig configUI)
+        public virtual void setGlobalConfig(cadencii.core.EditorConfig config)
         {
             mConfig = config;
-            mConfigUI = configUI;
         }
         /*
         /// <summary>

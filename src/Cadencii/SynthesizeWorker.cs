@@ -275,13 +275,13 @@ namespace cadencii
                 amp.setAmplify(amp_left, amp_right);
             }
             mGenerator.setReceiver(amp);
-            mGenerator.setGlobalConfig(ApplicationGlobal.appConfig, AppManager.editorConfig);
+            mGenerator.setGlobalConfig(ApplicationGlobal.appConfig);
             // FIXME: enable this
             //mGenerator.setMainWindow(mMainWindow);
 
             Mixer mixer = new Mixer();
             mixer.setRoot(mGenerator);
-			mixer.setGlobalConfig(ApplicationGlobal.appConfig, AppManager.editorConfig);
+			mixer.setGlobalConfig(ApplicationGlobal.appConfig);
             amp.setReceiver(mixer);
 
             if (q.renderAll && vsq.config.WaveFileOutputFromMasterTrack) {
@@ -319,7 +319,7 @@ namespace cadencii
                         amp_i_unit.setAmplify(amp_left_i, amp_right_i);
                         FileWaveSender wave_sender = new FileWaveSender(r);
                         wave_sender.setRoot(mGenerator);
-						wave_sender.setGlobalConfig(ApplicationGlobal.appConfig, AppManager.editorConfig);
+						wave_sender.setGlobalConfig(ApplicationGlobal.appConfig);
 
                         amp_i_unit.setSender(wave_sender);
                         mixer.addSender(amp_i_unit);
@@ -334,7 +334,7 @@ namespace cadencii
 #endif
             FileWaveReceiver wave_receiver = new FileWaveReceiver(q.file, channel, 16, sample_rate);
             wave_receiver.setRoot(mGenerator);
-			wave_receiver.setGlobalConfig(ApplicationGlobal.appConfig, AppManager.editorConfig);
+			wave_receiver.setGlobalConfig(ApplicationGlobal.appConfig);
             Amplifier amp_unit_master = new Amplifier();
             amp_unit_master.setRoot(mGenerator);
             if (q.renderAll) {
