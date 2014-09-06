@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.uicore", "..\..\..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.dsp.winforms", "..\..\..\..\..\svn\cadencii\src\cadencii.dsp.winforms\cadencii.dsp.winforms.csproj", "{5F65872D-0431-4C76-973F-CD5DECD388A4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{8E950DE0-69AF-4BF8-9E66-EB0089F2116D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GuiAgnostic", "GuiAgnostic", "{8E950DE0-69AF-4BF8-9E66-EB0089F2116D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.core", "cadencii.core\cadencii.core.csproj", "{C8AAE632-9C6C-4372-8175-811528A66742}"
 EndProject
