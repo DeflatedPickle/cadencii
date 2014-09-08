@@ -62,7 +62,7 @@ namespace cadencii
             new Color( 181, 140, 123 ),
             new Color( 181, 126, 123 ) };
         private readonly Color COLOR_NOTE_FILL = new Color(181, 220, 86);
-        private readonly Color COLOR_DYNAFF_FILL = PortUtil.Pink;
+		private readonly Color COLOR_DYNAFF_FILL = cadencii.core2.PortUtil.Pink;
         private readonly Color COLOR_DYNAFF_FILL_HIGHLIGHT = new Color(66, 193, 169);
         private readonly Font FONT_9PT = new Font("SansSerif", java.awt.Font.PLAIN, EditorConfig.FONT_SIZE9);
         /// <summary>
@@ -202,13 +202,13 @@ namespace cadencii
 
                 // 再生中に画面を描画しない設定なら飛ばす
                 if (AppManager.editorConfig.SkipDrawWhilePlaying && AppManager.isPlaying()) {
-                    PortUtil.drawStringEx(
+					cadencii.core2.PortUtil.drawStringEx(
                         g1,
                         "(hidden for performance)",
                         EditorConfig.baseFont10,
                         new Rectangle(0, 0, width, height),
-                        PortUtil.STRING_ALIGN_CENTER,
-                        PortUtil.STRING_ALIGN_CENTER);
+						cadencii.core2.PortUtil.STRING_ALIGN_CENTER,
+						cadencii.core2.PortUtil.STRING_ALIGN_CENTER);
                     return;
                 }
 
@@ -218,7 +218,7 @@ namespace cadencii
                     int selected = AppManager.getSelected();
                     VsqTrack vsq_track = vsq.Track[selected];
 
-                    var p = PortUtil.getMousePosition();
+					var p = cadencii.core2.PortUtil.getMousePosition();
                     var mouse_position = this.PointToClient(new System.Drawing.Point(p.x, p.y));
                     int stdx = AppManager.mMainWindowController.getStartToDrawX();
                     int stdy = AppManager.mMainWindowController.getStartToDrawY();
@@ -615,7 +615,7 @@ namespace cadencii
 
                                         commonDrawer.clear();
                                         //g.nativeGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                                        Color color_normal_picthbend = PortUtil.DarkOrchid;
+										Color color_normal_picthbend = cadencii.core2.PortUtil.DarkOrchid;
                                         Color color_thin_pitchbend = new Color(color_normal_picthbend.getRed(), color_normal_picthbend.getGreen(), color_normal_picthbend.getBlue(), 128);
                                         int viblength = dobj.mLength - dobj.mVibDelay;
                                         int lasty = int.MinValue;
@@ -1009,7 +1009,7 @@ namespace cadencii
                         int align = 1;
                         int valign = 0;
                         g.setColor(Color.black);
-                        PortUtil.drawStringEx(g,
+						cadencii.core2.PortUtil.drawStringEx(g,
                                                VsqNote.getNoteString(hilighted_note),
                                                EditorConfig.baseFont10Bold,
                                                new Rectangle(mouse_position.X - 110, mouse_position.Y - 50, 100, 100),
@@ -1034,7 +1034,7 @@ namespace cadencii
                         }
                     } else if (AppManager.mIsPointerDowned) {
                         // 選択範囲を半透明で塗りつぶす
-                        var mouse_location = PortUtil.getMousePosition();
+						var mouse_location = cadencii.core2.PortUtil.getMousePosition();
                         var mouse = this.PointToClient(new System.Drawing.Point(mouse_location.x, mouse_location.y));
                         // 描く四角形の位置とサイズ
                         int tx, ty, twidth, theight;
@@ -1119,7 +1119,7 @@ namespace cadencii
                                                  CurveType.PBS.getMaximum());
                         }
 
-                        Color pitline = PortUtil.MidnightBlue;
+						Color pitline = cadencii.core2.PortUtil.MidnightBlue;
                         g.setStroke(getStroke2px());
                         List<DrawObject> list = AppManager.mDrawObjects[selected - 1];
                         int j_start = AppManager.mDrawStartIndex[selected - 1];
@@ -1199,7 +1199,7 @@ namespace cadencii
 
                         if (mMouseTracer.size() > 1) {
                             commonDrawer.clear();
-                            g.setColor(PortUtil.Orchid);
+							g.setColor(cadencii.core2.PortUtil.Orchid);
                             g.setStroke(getStroke2px());
                             foreach (var pt in mMouseTracer.iterator()) {
                                 commonDrawer.append(pt.x - stdx, pt.y - stdy);

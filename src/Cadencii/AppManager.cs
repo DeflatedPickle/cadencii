@@ -230,7 +230,7 @@ namespace cadencii
         #endregion
 
         #region Private Static Fields
-        private static Color mHilightBrush = PortUtil.CornflowerBlue;
+		private static Color mHilightBrush = cadencii.core2.PortUtil.CornflowerBlue;
         private static Object mLocker;
         private static System.Windows.Forms.Timer mAutoBackupTimer;
         /// <summary>
@@ -2038,7 +2038,7 @@ namespace cadencii
                             serr.println("AppManager#saveTo; ex=" + ex);
                             showMessageBox(PortUtil.formatMessage(_("failed creating cache directory, '{0}'."), cacheDir),
                                             _("Info."),
-                                            PortUtil.OK_OPTION,
+                                            cadencii.core2.PortUtil.OK_OPTION,
                                             cadencii.windows.forms.Utility.MSGBOX_INFORMATION_MESSAGE);
                             Logger.write(typeof(AppManager) + ".saveTo; ex=" + ex + "\n");
                             return;
@@ -2065,7 +2065,7 @@ namespace cadencii
                                     serr.println("AppManager#saveTo; ex=" + ex);
                                     showMessageBox(PortUtil.formatMessage(_("failed copying WAVE cache file, '{0}'."), wavFrom),
                                                     _("Error"),
-                                                    PortUtil.OK_OPTION,
+										cadencii.core2.PortUtil.OK_OPTION,
                                                     cadencii.windows.forms.Utility.MSGBOX_WARNING_MESSAGE);
                                     Logger.write(typeof(AppManager) + ".saveTo; ex=" + ex + "\n");
                                     break;
@@ -2089,7 +2089,7 @@ namespace cadencii
                                     serr.println("AppManager#saveTo; ex=" + ex);
                                     showMessageBox(PortUtil.formatMessage(_("failed copying XML cache file, '{0}'."), xmlFrom),
                                                     _("Error"),
-                                                    PortUtil.OK_OPTION,
+										cadencii.core2.PortUtil.OK_OPTION,
                                                     cadencii.windows.forms.Utility.MSGBOX_WARNING_MESSAGE);
                                     Logger.write(typeof(AppManager) + ".saveTo; ex=" + ex + "\n");
                                     break;
@@ -2788,7 +2788,7 @@ namespace cadencii
         /// <returns></returns>
         public static Color getAlertColor()
         {
-            return PortUtil.HotPink;
+			return cadencii.core2.PortUtil.HotPink;
         }
 
         /// <summary>
@@ -2798,7 +2798,7 @@ namespace cadencii
         /// <returns></returns>
         public static Color getAlertHilightColor()
         {
-            return PortUtil.DeepPink;
+			return cadencii.core2.PortUtil.DeepPink;
         }
     }
 

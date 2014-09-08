@@ -89,16 +89,16 @@ namespace cadencii
             int height = mUi.getHeight() - 1;
 
             // 背景を塗る
-            g.setColor(PortUtil.DarkGray);
+			g.setColor(cadencii.core2.PortUtil.DarkGray);
             g.fillRect(0, 0, width, height);
 
             // AutoMaximizeのチェックボックスを描く
-            g.setColor(mWaveViewButtonAutoMaximizeMouseDowned ? PortUtil.Gray : PortUtil.LightGray);
+			g.setColor(mWaveViewButtonAutoMaximizeMouseDowned ? cadencii.core2.PortUtil.Gray : cadencii.core2.PortUtil.LightGray);
             g.fillRect(SPACE, SPACE, 16, 16);
-            g.setColor(PortUtil.Gray);
+			g.setColor(cadencii.core2.PortUtil.Gray);
             g.drawRect(SPACE, SPACE, 16, 16);
             if (mWaveViewAutoMaximize) {
-                g.setColor(PortUtil.Gray);
+				g.setColor(cadencii.core2.PortUtil.Gray);
                 g.fillRect(SPACE + 3, SPACE + 3, 11, 11);
             }
             g.setColor(Color.black);
@@ -113,16 +113,16 @@ namespace cadencii
             int zoom_button_height = height - SPACE - zoom_button_y;
             Rectangle rc = getButtonBoundsWaveViewZoom();
             if (!mWaveViewAutoMaximize) {
-                g.setColor(mWaveViewButtonZoomMouseDowned ? PortUtil.Gray : PortUtil.LightGray);
+				g.setColor(mWaveViewButtonZoomMouseDowned ? cadencii.core2.PortUtil.Gray : cadencii.core2.PortUtil.LightGray);
                 g.fillRect(rc.x, rc.y, rc.width, rc.height);
             }
-            g.setColor(PortUtil.Gray);
+			g.setColor(cadencii.core2.PortUtil.Gray);
             g.drawRect(rc.x, rc.y, rc.width, rc.height);
-            g.setColor(mWaveViewAutoMaximize ? PortUtil.Gray : Color.black);
+			g.setColor(mWaveViewAutoMaximize ? cadencii.core2.PortUtil.Gray : Color.black);
             rc.y = rc.y + 1;
-            PortUtil.drawStringEx(
+			cadencii.core2.PortUtil.drawStringEx(
                 g, (mWaveViewButtonZoomMouseDowned ? "↑Move Mouse↓" : "Zoom"), EditorConfig.baseFont9,
-                rc, PortUtil.STRING_ALIGN_CENTER, PortUtil.STRING_ALIGN_CENTER);
+				rc, cadencii.core2.PortUtil.STRING_ALIGN_CENTER, cadencii.core2.PortUtil.STRING_ALIGN_CENTER);
         }
 
         public void receiveMouseDownSignal(int x, int y)

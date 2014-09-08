@@ -65,15 +65,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="awt.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Base64.cs" />
     <Compile Include="ByRef.cs" />
     <Compile Include="cp932.cs" />
@@ -98,13 +93,6 @@
     <Compile Include="ICommand.cs" />
     <Compile Include="ICommandRunnable.cs" />
     <Compile Include="IComparisonContext.cs" />
-    <Compile Include="AttachedCurve.cs" />
-    <Compile Include="BezierChain.cs" />
-    <Compile Include="BezierControlType.cs" />
-    <Compile Include="BezierCurves.cs" />
-    <Compile Include="BezierPickedSide.cs" />
-    <Compile Include="BezierPoint.cs" />
-    <Compile Include="PointD.cs" />
     <Compile Include="CurveType.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="BgmFile.cs" />
@@ -113,10 +101,8 @@
     <Compile Include="ApplicationGlobal.cs" />
     <Compile Include="EditorStatus.cs" />
     <Compile Include="CadenciiCommandType.cs" />
-    <Compile Include="EditorConfig.cs" />
     <Compile Include="ClockResolution.cs" />
     <Compile Include="PlatformEnum.cs" />
-    <Compile Include="ValuePairOfStringArrayOfKeys.cs" />
     <Compile Include="ValuePairOfStringBoolean.cs" />
     <Compile Include="ClockResolutionUtility.cs" />
     <Compile Include="MessageBody.cs" />
@@ -137,6 +123,7 @@
     <Compile Include="IAmplifierView.cs" />
     <Compile Include="MidiPortConfig.cs" />
     <Compile Include="PanelState.cs" />
+    <Compile Include="EditorConfig.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

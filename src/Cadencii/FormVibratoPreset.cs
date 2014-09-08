@@ -21,7 +21,6 @@ using cadencii.java.util;
 using cadencii.windows.forms;
 
 
-
 namespace cadencii
 {
 
@@ -521,7 +520,7 @@ namespace cadencii
             if (mDrawerRate == null) {
                 mDrawerRate = new LineGraphDrawer(LineGraphDrawer.TYPE_STEP);
                 mDrawerRate.setDotMode(LineGraphDrawer.DOTMODE_ALWAYS);
-                mDrawerRate.setFillColor(PortUtil.CornflowerBlue);
+                mDrawerRate.setFillColor(cadencii.core2.PortUtil.CornflowerBlue);
             }
             return mDrawerRate;
         }
@@ -535,7 +534,7 @@ namespace cadencii
             if (mDrawerDepth == null) {
                 mDrawerDepth = new LineGraphDrawer(LineGraphDrawer.TYPE_STEP);
                 mDrawerDepth.setDotMode(LineGraphDrawer.DOTMODE_ALWAYS);
-                mDrawerDepth.setFillColor(PortUtil.CornflowerBlue);
+				mDrawerDepth.setFillColor(cadencii.core2.PortUtil.CornflowerBlue);
             }
             return mDrawerDepth;
         }
@@ -551,7 +550,7 @@ namespace cadencii
                 mDrawerResulting.setDotMode(LineGraphDrawer.DOTMODE_NO);
                 mDrawerResulting.setFill(false);
                 mDrawerResulting.setLineWidth(2);
-                mDrawerResulting.setLineColor(PortUtil.ForestGreen);
+				mDrawerResulting.setLineColor(cadencii.core2.PortUtil.ForestGreen);
             }
             return mDrawerResulting;
         }

@@ -855,8 +855,8 @@ namespace cadencii
             AppManager.mMixerWindow.FormClosing += new FormClosingEventHandler(mixerWindow_FormClosing);
 
             Point p1 = AppManager.editorConfig.FormIconPaletteLocation.toPoint();
-            if (!PortUtil.isPointInScreens(p1)) {
-                Rectangle workingArea = PortUtil.getWorkingArea(this);
+			if (!cadencii.core2.PortUtil.isPointInScreens(p1)) {
+				Rectangle workingArea = cadencii.core2.PortUtil.getWorkingArea(this);
                 p1 = new Point(workingArea.x, workingArea.y);
             }
             AppManager.iconPalette.Location = new System.Drawing.Point(p1.x, p1.y);
@@ -900,7 +900,7 @@ namespace cadencii
             Rectangle bounds = AppManager.editorConfig.WindowRect;
             this.Bounds = new System.Drawing.Rectangle(bounds.x, bounds.y, bounds.width, bounds.height);
             // ウィンドウ位置・サイズの設定値が、使えるディスプレイのどれにも被っていない場合
-            Rectangle rc2 = PortUtil.getScreenBounds(this);
+			Rectangle rc2 = cadencii.core2.PortUtil.getScreenBounds(this);
             if (bounds.x < rc2.x ||
                  rc2.x + rc2.width < bounds.x + bounds.width ||
                  bounds.y < rc2.y ||
@@ -916,7 +916,7 @@ namespace cadencii
             updateScrollRangeVertical();
 
             // プロパティウィンドウの位置を復元
-            Rectangle rc1 = PortUtil.getScreenBounds(this);
+			Rectangle rc1 = cadencii.core2.PortUtil.getScreenBounds(this);
             Rectangle rcScreen = new Rectangle(rc1.x, rc1.y, rc1.width, rc1.height);
             var p = this.Location;
             XmlRectangle xr = AppManager.editorConfig.PropertyWindowStatus.Bounds;
@@ -2409,8 +2409,8 @@ namespace cadencii
         /// <returns></returns>
         public System.Drawing.Point getFormPreferedLocation(int dialogWidth, int dialogHeight)
         {
-            Point mouse = PortUtil.getMousePosition();
-            Rectangle rcScreen = PortUtil.getWorkingArea(this);
+			Point mouse = cadencii.core2.PortUtil.getMousePosition();
+			Rectangle rcScreen = cadencii.core2.PortUtil.getWorkingArea(this);
             int top = mouse.y - dialogHeight / 2;
             if (top + dialogHeight > rcScreen.y + rcScreen.height) {
                 // ダイアログの下端が隠れる場合、位置をずらす
@@ -3729,8 +3729,8 @@ namespace cadencii
                         System.Windows.Forms.ToolStripItem subtsi_tsmi = tsmi.DropDownItems[0];
                         if (subtsi_tsmi is System.Windows.Forms.ToolStripMenuItem) {
                             System.Windows.Forms.ToolStripMenuItem dd_run = (System.Windows.Forms.ToolStripMenuItem)subtsi_tsmi;
-                            if (dict.ContainsKey(PortUtil.getComponentName(dd_run))) {
-                                applyMenuItemShortcut(dict, tsmi, PortUtil.getComponentName(tsi));
+							if (dict.ContainsKey(cadencii.core2.PortUtil.getComponentName(dd_run))) {
+                                applyMenuItemShortcut(dict, tsmi, cadencii.core2.PortUtil.getComponentName(tsi));
                             }
                         }
                     }
@@ -3910,9 +3910,9 @@ namespace cadencii
                         } catch (Exception ex) {
                             Logger.write(typeof(FormMain) + ".clearTempWave; ex=" + ex + "\n");
 #if DEBUG
-                            cadencii.debug.push_log("FormMain+ClearTempWave()");
-                            cadencii.debug.push_log("    ex=" + ex.ToString());
-                            cadencii.debug.push_log("    error_count=" + error);
+                            cadencii.core2.debug.push_log("FormMain+ClearTempWave()");
+                            cadencii.core2.debug.push_log("    ex=" + ex.ToString());
+                            cadencii.core2.debug.push_log("    error_count=" + error);
 #endif
 
                             Thread.Sleep(100);
@@ -6248,7 +6248,7 @@ namespace cadencii
                             serr.println("FormMain#openVsqCor; ex=" + ex);
                             AppManager.showMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
                                                        _("Info."),
-                                                       PortUtil.OK_OPTION,
+                                                       cadencii.core2.PortUtil.OK_OPTION,
                                                        cadencii.windows.forms.Utility.MSGBOX_INFORMATION_MESSAGE);
                             return true;
                         }
@@ -6290,7 +6290,7 @@ namespace cadencii
                         serr.println("FormMain#openVsqCor; ex=" + ex);
                         AppManager.showMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
                                                    _("Info."),
-                                                   PortUtil.OK_OPTION,
+                                                   cadencii.core2.PortUtil.OK_OPTION,
                                                    cadencii.windows.forms.Utility.MSGBOX_INFORMATION_MESSAGE);
                         return true;
                     }
@@ -8959,7 +8959,7 @@ namespace cadencii
 
                         // マウス位置を中心に拡大されるようにしたいので．
                         // マウスのスクリーン座標
-                        Point screen_p_at_mouse = PortUtil.getMousePosition();
+						Point screen_p_at_mouse = cadencii.core2.PortUtil.getMousePosition();
                         // ピアノロール上でのマウスのx座標
                         int x_at_mouse = pictPianoRoll.PointToClient(new System.Drawing.Point(screen_p_at_mouse.x, screen_p_at_mouse.y)).X;
                         // マウス位置でのクロック -> こいつが保存される
@@ -9546,7 +9546,7 @@ namespace cadencii
                 PortUtil.createDirectory(tempdir);
             }
             string log = Path.Combine(tempdir, "run.log");
-            cadencii.debug.close();
+            cadencii.core2.debug.close();
             try {
                 if (System.IO.File.Exists(log)) {
                     PortUtil.deleteFile(log);
@@ -10533,7 +10533,7 @@ namespace cadencii
                 AppManager.showMessageBox(
                     _("invalid rendering region; start>=end"),
                     _("Error"),
-                    PortUtil.OK_OPTION,
+                    cadencii.core2.PortUtil.OK_OPTION,
                     cadencii.windows.forms.Utility.MSGBOX_INFORMATION_MESSAGE);
                 return;
             }
@@ -10817,7 +10817,7 @@ namespace cadencii
                 AppManager.showMessageBox(
                     _("invalid rendering region; start>=end"),
                     _("Error"),
-                    PortUtil.OK_OPTION,
+                    cadencii.core2.PortUtil.OK_OPTION,
                     cadencii.windows.forms.Utility.MSGBOX_INFORMATION_MESSAGE);
                 return;
             }
@@ -14097,7 +14097,7 @@ namespace cadencii
                 AppManager.showMessageBox(
                     _("Log file has not generated yet."),
                     _("Info"),
-                    PortUtil.OK_OPTION,
+                    cadencii.core2.PortUtil.OK_OPTION,
                     cadencii.windows.forms.Utility.MSGBOX_INFORMATION_MESSAGE);
                 return;
             }
@@ -15257,7 +15257,7 @@ namespace cadencii
         public void pictKeyLengthSplitter_MouseDown(Object sender, MouseEventArgs e)
         {
             mKeyLengthSplitterMouseDowned = true;
-            mKeyLengthSplitterInitialMouse = PortUtil.getMousePosition();
+			mKeyLengthSplitterInitialMouse = cadencii.core2.PortUtil.getMousePosition();
             mKeyLengthInitValue = AppManager.keyWidth;
             mKeyLengthTrackSelectorRowsPerColumn = trackSelector.getRowsPerColumn();
             mKeyLengthSplitterDistance = splitContainer1.getDividerLocation();
@@ -15268,7 +15268,7 @@ namespace cadencii
             if (!mKeyLengthSplitterMouseDowned) {
                 return;
             }
-            int dx = PortUtil.getMousePosition().x - mKeyLengthSplitterInitialMouse.x;
+			int dx = cadencii.core2.PortUtil.getMousePosition().x - mKeyLengthSplitterInitialMouse.x;
             int draft = mKeyLengthInitValue + dx;
             if (draft < EditorConfig.MIN_KEY_WIDTH) {
                 draft = EditorConfig.MIN_KEY_WIDTH;
@@ -16668,7 +16668,7 @@ namespace cadencii
         /// <param name="form"></param>
         public static void normalizeFormLocation(Form dlg)
         {
-            Rectangle rcScreen = PortUtil.getWorkingArea(dlg);
+	Rectangle rcScreen = cadencii.core2.PortUtil.getWorkingArea(dlg);
             Point p = getAppropriateDialogLocation(
                 dlg.Left, dlg.Top, dlg.Width, dlg.Height,
                 rcScreen.x, rcScreen.y, rcScreen.width, rcScreen.height

@@ -157,6 +157,10 @@
       <Project>{23C7549D-A0FD-402A-8470-95DB4BE6081C}</Project>
       <Name>cadencii.xml</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.core2\cadencii.core2.csproj">
+      <Project>{7DE0B7EA-E478-4687-9764-B44B8258F255}</Project>
+      <Name>cadencii.core2</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

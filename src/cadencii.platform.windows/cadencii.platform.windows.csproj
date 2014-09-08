@@ -73,5 +73,9 @@
       <Project>{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}</Project>
       <Name>cadencii.midi</Name>
     </ProjectReference>
+    <ProjectReference Include="..\cadencii.core2\cadencii.core2.csproj">
+      <Project>{7DE0B7EA-E478-4687-9764-B44B8258F255}</Project>
+      <Name>cadencii.core2</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

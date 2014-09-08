@@ -122,7 +122,7 @@ namespace cadencii.apputil
 
         public static string getRuntimeLanguageName()
         {
-            var name = System.Windows.Forms.Application.CurrentCulture.Name;
+            var name = System.Globalization.CultureInfo.CurrentCulture.Name;
             if (name == "ja" || name.StartsWith("ja-")) {
                 return "ja";
             } else {

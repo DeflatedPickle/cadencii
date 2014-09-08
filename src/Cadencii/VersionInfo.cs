@@ -178,7 +178,7 @@ namespace cadencii
             Font f = new Font(font_name, java.awt.Font.BOLD, (int)(FONT_SIZE * 1.2f));
             if (m_shadow_enablde) {
                 g.setColor(new Color(0, 0, 0, 40));
-                PortUtil.drawStringEx(
+				cadencii.core2.PortUtil.drawStringEx(
                     g,
                     m_app_name,
                     f,
@@ -187,7 +187,7 @@ namespace cadencii
                     valign);
             }
             g.setColor(Color.black);
-            PortUtil.drawStringEx(
+			cadencii.core2.PortUtil.drawStringEx(
                 g,
                 m_app_name,
                 f,
@@ -204,7 +204,7 @@ namespace cadencii
                 string str = itemi.getName() + (id.Equals("") ? "" : (" (" + id + ")"));
                 if (m_shadow_enablde) {
                     g.setColor(new Color(0, 0, 0, 40));
-                    PortUtil.drawStringEx(
+					cadencii.core2.PortUtil.drawStringEx(
                         g,
                         str,
                         font,
@@ -213,7 +213,7 @@ namespace cadencii
                         valign);
                 }
                 g.setColor(Color.black);
-                PortUtil.drawStringEx(
+				cadencii.core2.PortUtil.drawStringEx(
                     g,
                     str,
                     f2,

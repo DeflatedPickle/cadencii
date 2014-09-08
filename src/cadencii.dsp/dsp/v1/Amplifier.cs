@@ -15,6 +15,7 @@
 using System;
 using cadencii.java.util;
 using cadencii.java.awt;
+using PortUtil = cadencii.core2.PortUtil;
 
 namespace cadencii
 {
@@ -54,13 +55,13 @@ namespace cadencii
             }
 
             // 枠と背景を描画
-            paintBackground(graphics, mStroke, x, y, width, height, Color.black, PortUtil.Pink);
+            paintBackground(graphics, mStroke, x, y, width, height, Color.black, cadencii.core2.PortUtil.Pink);
 
             // デバイス名を書く
-            PortUtil.drawStringEx(
+			cadencii.core2.PortUtil.drawStringEx(
                 (Graphics)graphics, "Amplifier", cadencii.EditorConfig.baseFont10,
                 new Rectangle(x, y, width, height),
-                PortUtil.STRING_ALIGN_CENTER, PortUtil.STRING_ALIGN_CENTER);
+				cadencii.core2.PortUtil.STRING_ALIGN_CENTER, cadencii.core2.PortUtil.STRING_ALIGN_CENTER);
 
             // 描画時のストローク、色を元に戻す
             graphics.setStroke(old_stroke);

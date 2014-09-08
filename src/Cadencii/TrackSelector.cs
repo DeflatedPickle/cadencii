@@ -88,7 +88,7 @@ namespace cadencii
         /// <summary>
         /// ベジエ曲線の色
         /// </summary>
-        private static readonly Color COLOR_BEZIER_CURVE = PortUtil.Navy;
+		private static readonly Color COLOR_BEZIER_CURVE = cadencii.core2.PortUtil.Navy;
         /// <summary>
         /// ベジエ曲線の補助線の色
         /// </summary>
@@ -113,7 +113,7 @@ namespace cadencii
         /// <summary>
         /// データ点のハイライト色
         /// </summary>
-        private static readonly Color COLOR_DOT_HILIGHT = PortUtil.Coral;
+		private static readonly Color COLOR_DOT_HILIGHT = cadencii.core2.PortUtil.Coral;
         private static readonly Color COLOR_A244R255G023B012 = new Color(255, 23, 12, 244);
         private static readonly Color COLOR_A144R255G255B255 = new Color(255, 255, 255, 144);
         private static readonly Color COLOR_A072R255G255B255 = new Color(255, 255, 255, 72);
@@ -1074,10 +1074,10 @@ namespace cadencii
             Color brs_string = Color.black;
             Color rect_curve = new Color(41, 46, 55);
             int centre = HEADER + graph_height / 2;
-            g.setColor(PortUtil.DarkGray);
+			g.setColor(cadencii.core2.PortUtil.DarkGray);
             g.fillRect(0, size.height - 2 * OFFSET_TRACK_TAB, size.width, 2 * OFFSET_TRACK_TAB);
             int numeric_view = mMouseValue;
-            Point p = pointToClient(PortUtil.getMousePosition());
+			Point p = pointToClient(cadencii.core2.PortUtil.getMousePosition());
             Point mouse = new Point(p.x, p.y);
             VsqFileEx vsq = AppManager.getVsqFile();
             int selected = AppManager.getSelected();
@@ -1564,7 +1564,7 @@ namespace cadencii
                     }
                     g.setFont(EditorConfig.baseFont10Bold);
                     g.setColor(Color.white);
-                    PortUtil.drawStringEx(g,
+					cadencii.core2.PortUtil.drawStringEx(g,
                                            mMouseValue + "",
                                            EditorConfig.baseFont10Bold,
                                            new Rectangle(mouse.x - 100, mouse.y - shift, 100, 100),
@@ -1574,7 +1574,7 @@ namespace cadencii
                         float delta_note = mMouseValue * pbs_at_mouse / 8192.0f;
                         align = 1;
                         valign = -1;
-                        PortUtil.drawStringEx(g,
+						cadencii.core2.PortUtil.drawStringEx(g,
                                                PortUtil.formatDecimal("#0.00", delta_note),
                                                EditorConfig.baseFont10Bold,
                                                new Rectangle(mouse.x - 100, mouse.y, 100, 100),
@@ -1607,7 +1607,7 @@ namespace cadencii
             VsqEvent itr_prev = null;
             VsqEvent itr_item = null;
             VsqEvent itr_next = null;
-            Point mouse = pointToClient(PortUtil.getMousePosition());
+			Point mouse = pointToClient(cadencii.core2.PortUtil.getMousePosition());
 
             Color brs = fill_color;
             Point selected_point = new Point();
@@ -1777,9 +1777,9 @@ namespace cadencii
         private void drawPreutteranceAndOverlap(Graphics2D g, int px_preutterance, int px_overlap, float preutterance, float overlap)
         {
             int graph_height = getGraphHeight();
-            g.setColor(PortUtil.Orange);
+			g.setColor(cadencii.core2.PortUtil.Orange);
             g.drawLine(px_preutterance, HEADER + 1, px_preutterance, graph_height + HEADER);
-            g.setColor(PortUtil.LawnGreen);
+			g.setColor(cadencii.core2.PortUtil.LawnGreen);
             g.drawLine(px_overlap, HEADER + 1, px_overlap, graph_height + HEADER);
 
             string s_pre = getFlagTitle(true, preutterance);
@@ -1791,12 +1791,12 @@ namespace cadencii
             Dimension ovl_bounds = getFlagBounds(s_ovl);
 
             Color pen = new Color(0, 0, 0, 50);
-            Color transp = new Color(PortUtil.Orange.getRed(), PortUtil.Orange.getGreen(), PortUtil.Orange.getBlue(), 50);
+			Color transp = new Color(cadencii.core2.PortUtil.Orange.getRed(), cadencii.core2.PortUtil.Orange.getGreen(), cadencii.core2.PortUtil.Orange.getBlue(), 50);
             g.setColor(transp);
             g.fillRect(px_preutterance, OFFSET_PRE - FLAG_SPACE, pre_bounds.width, pre_bounds.height + FLAG_SPACE * 2);
             g.setColor(pen);
             g.drawRect(px_preutterance, OFFSET_PRE - FLAG_SPACE, pre_bounds.width, pre_bounds.height + FLAG_SPACE * 2);
-            transp = new Color(PortUtil.LawnGreen.getRed(), PortUtil.LawnGreen.getGreen(), PortUtil.LawnGreen.getBlue(), 50);
+			transp = new Color(cadencii.core2.PortUtil.LawnGreen.getRed(), cadencii.core2.PortUtil.LawnGreen.getGreen(), cadencii.core2.PortUtil.LawnGreen.getBlue(), 50);
             g.setColor(transp);
             g.fillRect(px_overlap, OFFSET_OVL - FLAG_SPACE, ovl_bounds.width, ovl_bounds.height + FLAG_SPACE * 2);
             g.setColor(pen);
@@ -2179,7 +2179,7 @@ namespace cadencii
         /// <param name="type"></param>
         public void drawVEL(Graphics2D g, VsqTrack track, Color color, bool is_front, CurveType type)
         {
-            Point mouse = pointToClient(PortUtil.getMousePosition());
+			Point mouse = pointToClient(cadencii.core2.PortUtil.getMousePosition());
 
             int HEADER = 8;
             int graph_height = getGraphHeight();
@@ -2333,7 +2333,7 @@ namespace cadencii
                                 Point ctrl1 = (current.getControlRightType() == BezierControlType.None) ? pxCurrent : pxControlCurrent;
                                 Point ctrl2 = (next.getControlLeftType() == BezierControlType.None) ? pxNext : pxControlNext;
                                 g.setColor(COLOR_BEZIER_CURVE);
-                                PortUtil.drawBezier(g, pxCurrent.x, pxCurrent.y,
+								cadencii.core2.PortUtil.drawBezier(g, pxCurrent.x, pxCurrent.y,
                                                         ctrl1.x, ctrl1.y,
                                                         ctrl2.x, ctrl2.y,
                                                         pxNext.x, pxNext.y);
@@ -2576,7 +2576,7 @@ namespace cadencii
         /// <param name="is_front">最前面に表示するモードかどうか</param>
         public void drawVsqBPList(Graphics2D g, VsqBPList list, Color color, bool is_front)
         {
-            Point pmouse = pointToClient(PortUtil.getMousePosition());
+			Point pmouse = pointToClient(cadencii.core2.PortUtil.getMousePosition());
             int max = list.getMaximum();
             int min = list.getMinimum();
             int graph_height = getGraphHeight();
@@ -5094,7 +5094,7 @@ namespace cadencii
                 }
             } else if (mMouseDownMode == MouseDownMode.POINT_MOVE) {
                 if (mMouseMoved) {
-                    Point pmouse = pointToClient(PortUtil.getMousePosition());
+					Point pmouse = pointToClient(cadencii.core2.PortUtil.getMousePosition());
                     Point mouse = new Point(pmouse.x, pmouse.y);
                     int dx = mouse.x + AppManager.mMainWindowController.getStartToDrawX() - mMouseDownLocation.x;
                     int dy = mouse.y - mMouseDownLocation.y;
@@ -5147,7 +5147,7 @@ namespace cadencii
             }
             if (mMouseDowned && !mPencilMoved && AppManager.getSelectedTool() == EditTool.PENCIL &&
                  !mSelectedCurve.equals(CurveType.VEL)) {
-                Point pmouse = pointToClient(PortUtil.getMousePosition());
+				Point pmouse = pointToClient(cadencii.core2.PortUtil.getMousePosition());
                 Point mouse = new Point(pmouse.x, pmouse.y);
                 int clock = AppManager.clockFromXCoord(mouse.x);
                 int value = valueFromYCoord(mouse.y);
@@ -5672,7 +5672,7 @@ namespace cadencii
                 int tip_width = menu.ToolTipPxWidth;
                 var ppts = cmenuSinger.PointToScreen(new System.Drawing.Point(0, 0));
                 Point pts = new Point(ppts.X, ppts.Y);
-                Rectangle rrc = PortUtil.getScreenBounds(this);
+				Rectangle rrc = cadencii.core2.PortUtil.getScreenBounds(this);
                 Rectangle rc = new Rectangle(rrc.x, rrc.y, rrc.width, rrc.height);
                 mTooltipProgram = program;
                 mTooltipLanguage = language;

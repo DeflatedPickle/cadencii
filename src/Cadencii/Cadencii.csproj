@@ -756,6 +756,14 @@
       <Project>{5F65872D-0431-4C76-973F-CD5DECD388A4}</Project>
       <Name>cadencii.dsp.winforms</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.awt\cadencii.awt.csproj">
+      <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
+      <Name>cadencii.awt</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.core2\cadencii.core2.csproj">
+      <Project>{7DE0B7EA-E478-4687-9764-B44B8258F255}</Project>
+      <Name>cadencii.core2</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="manual\" />

@@ -79,9 +79,9 @@ namespace cadencii
                 Graphics2D g = new Graphics2D(System.Drawing.Graphics.FromImage(bmp.image));
                 g.clearRect(0, 0, ICON_WIDTH, ICON_HEIGHT);
                 Font font = new Font(System.Windows.Forms.SystemInformation.MenuFont);
-                PortUtil.drawStringEx(
+				cadencii.core2.PortUtil.drawStringEx(
                     (Graphics)g, singer_name, font, new Rectangle(1, 1, ICON_WIDTH - 2, ICON_HEIGHT - 2),
-                    PortUtil.STRING_ALIGN_NEAR, PortUtil.STRING_ALIGN_NEAR);
+					cadencii.core2.PortUtil.STRING_ALIGN_NEAR, cadencii.core2.PortUtil.STRING_ALIGN_NEAR);
                 ret = bmp;
             }
 

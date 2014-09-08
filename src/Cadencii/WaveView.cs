@@ -112,13 +112,13 @@ namespace cadencii
                 g.drawLine(0, 0, 0, height);
 
                 g.setColor(Color.black);
-                PortUtil.drawStringEx(
+				cadencii.core2.PortUtil.drawStringEx(
                     g,
                     "(hidden for performance)",
                     EditorConfig.baseFont8,
                     rc,
-                    PortUtil.STRING_ALIGN_CENTER,
-                    PortUtil.STRING_ALIGN_CENTER);
+					cadencii.core2.PortUtil.STRING_ALIGN_CENTER,
+					cadencii.core2.PortUtil.STRING_ALIGN_CENTER);
                 return;
             }
 

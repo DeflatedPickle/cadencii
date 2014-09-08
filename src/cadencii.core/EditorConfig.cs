@@ -12,12 +12,12 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 using System.Xml.Serialization;
 using System.IO;
 using System.Collections.Generic;
 using cadencii;
-using cadencii.java.awt;
+//using cadencii.java.awt;
 using cadencii.java.io;
 using cadencii.java.util;
 //using cadencii.windows.forms;

@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BF3AE944-08FC-441E-9582-756CFC72C838}</ProjectGuid>
+    <ProjectGuid>{50B4905B-567F-4B65-9184-6525F755176A}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>cadencii.uicore</RootNamespace>
-    <AssemblyName>cadencii.uicore</AssemblyName>
+    <RootNamespace>cadencii.core.awt</RootNamespace>
+    <AssemblyName>cadencii.core.awt</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,15 +28,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EditorConfig.cs" />
-    <Compile Include="enum\RendererKindUtil.cs" />
-    <Compile Include="PropertyPanelState.cs" />
+    <Compile Include="awt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PointD.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -44,28 +44,5 @@
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
       <Name>cadencii.core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.vsq\cadencii.vsq.csproj">
-      <Project>{673347F3-6FC2-4F82-9273-BF158E0F8CB1}</Project>
-      <Name>cadencii.vsq</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.xml\cadencii.xml.csproj">
-      <Project>{23C7549D-A0FD-402A-8470-95DB4BE6081C}</Project>
-      <Name>cadencii.xml</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.apputil\cadencii.apputil.csproj">
-      <Project>{0C58B068-272F-4390-A14F-3D72AFCF3DFB}</Project>
-      <Name>cadencii.apputil</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\cadencii.core2\cadencii.core2.csproj">
-      <Project>{7DE0B7EA-E478-4687-9764-B44B8258F255}</Project>
-      <Name>cadencii.core2</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\cadencii.awt\cadencii.awt.csproj">
-      <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
-      <Name>cadencii.awt</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="plugin\" />
   </ItemGroup>
 </Project>
