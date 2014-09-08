@@ -55,9 +55,9 @@ namespace cadencii
         {
             base.OnPaint(e);
             if (mGraphicsPanel2 == null) {
-                mGraphicsPanel2 = new Graphics2D(null);
+                mGraphicsPanel2 = new Graphics2D();
             }
-            mGraphicsPanel2.nativeGraphics = e.Graphics;
+            mGraphicsPanel2.NativeGraphics = e.Graphics;
             Graphics g = mGraphicsPanel2;
             mListener.receivePaintSignal(g);
         }

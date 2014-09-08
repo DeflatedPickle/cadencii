@@ -78,7 +78,6 @@
     <Compile Include="BHScrollBar.Designer.cs">
       <DependentUpon>BHScrollBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="BitmapEx.cs" />
     <Compile Include="ColorBar.cs" />
     <Compile Include="CubicSpline.cs" />
     <Compile Include="DockPanelContainer.cs">

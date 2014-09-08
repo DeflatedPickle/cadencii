@@ -126,7 +126,7 @@ namespace cadencii
 
             for (int i = 0; i < mCache.Length; i++) {
                 System.Drawing.Image img = mCache[i];
-                g.nativeGraphics.DrawImage(img, WIDTH * i - x_offset, 0);
+                g.drawImage(img, WIDTH * i - x_offset, 0, null);
             }
         }
 
@@ -141,7 +141,7 @@ namespace cadencii
             }
 
             for (int i = 0; i < mCache.Length; i++) {
-                Graphics2D g = new Graphics2D(System.Drawing.Graphics.FromImage(mCache[i]));
+                Graphics2D g = new Graphics2D() { NativeGraphics = System.Drawing.Graphics.FromImage(mCache[i])};
                 g.translate(-i * WIDTH, 0);
                 component.draw(g, mWidth, mHeight);
             }

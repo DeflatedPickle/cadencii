@@ -529,7 +529,7 @@ namespace cadencii
             if (mMainForm == null) {
                 return;
             }
-            Graphics2D g = new Graphics2D(g1.nativeGraphics);
+            Graphics2D g = new Graphics2D(g1);
             int doffset = (int)(mOverviewStartToDrawClock * mOverviewPixelPerClock);
             mDrawer.draw(doffset, g);
 
@@ -752,9 +752,9 @@ namespace cadencii
         {
             base.OnPaint(pevent);
             if (mGraphics == null) {
-                mGraphics = new Graphics(null);
+                mGraphics = new Graphics();
             }
-            mGraphics.nativeGraphics = pevent.Graphics;
+            mGraphics.NativeGraphics = pevent.Graphics;
             paint(mGraphics);
         }
     }

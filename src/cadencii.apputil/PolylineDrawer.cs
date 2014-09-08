@@ -113,7 +113,7 @@ namespace cadencii.apputil
                     points[i].Y = lasty;
                 }
             }
-            g.nativeGraphics.DrawLines(g.stroke.pen, points);
+            g.DrawLines(points);
             points[0].X = lastx;
             points[0].Y = lasty;
             pos = 1;

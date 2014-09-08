@@ -148,9 +148,8 @@ namespace cadencii.apputil
             float width = this.Width;
             float height = size.height;
             //StringFormat sf = new StringFormat();
-            m_scroll = new Image();
-            m_scroll.image = new System.Drawing.Bitmap((int)width, (int)(40f + m_credit.Length * height * 1.1f), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-            Graphics2D g = new Graphics2D(System.Drawing.Graphics.FromImage(m_scroll.image));
+            m_scroll = new Image((int)width, (int)(40f + m_credit.Length * height * 1.1f));
+            Graphics2D g = new Graphics2D(m_scroll);
             //sf.Alignment = StringAlignment.Center;
             g.setFont(new Font(font_name, java.awt.Font.BOLD, (int)(font_size * 1.1f)));
             if (m_shadow_enablde) {
@@ -176,7 +175,7 @@ namespace cadencii.apputil
             using (var dlg = new System.Windows.Forms.SaveFileDialog()) {
                 if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                     using (var stream = new System.IO.FileStream(dlg.FileName, System.IO.FileMode.Create, System.IO.FileAccess.Write)) {
-                        m_scroll.image.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                        m_scroll.Save(stream);
                     }
                 }
             }
@@ -217,7 +216,7 @@ namespace cadencii.apputil
         private void VersionInfoEx_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
         {
             try {
-                paint(new Graphics2D(e.Graphics));
+                paint(new Graphics2D() { NativeGraphics = e.Graphics });
             } catch (Exception ex) {
 #if DEBUG
                 Console.WriteLine("VersionInfoEx_Paint");

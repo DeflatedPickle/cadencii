@@ -55,8 +55,7 @@ namespace cadencii
                 try {
                     fs = new System.IO.FileStream(path_image, System.IO.FileMode.Open, System.IO.FileAccess.Read);
                     System.Drawing.Image img = System.Drawing.Image.FromStream(fs);
-                    ret = new Image();
-                    ret.image = img;
+					ret.NativeImage = img;
                 } catch (Exception ex) {
                     serr.println("IconParader#createIconImage; ex=" + ex);
                 } finally {
@@ -74,14 +73,13 @@ namespace cadencii
                 // 画像ファイルが無かったか，読み込みに失敗した場合
 
                 // 歌手名が描かれた画像をセットする
-                Image bmp = new Image();
-                bmp.image = new System.Drawing.Bitmap(ICON_WIDTH, ICON_HEIGHT, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-                Graphics2D g = new Graphics2D(System.Drawing.Graphics.FromImage(bmp.image));
+                Image bmp = new Image(ICON_WIDTH, ICON_HEIGHT);
+                Graphics2D g = new Graphics2D(bmp);
                 g.clearRect(0, 0, ICON_WIDTH, ICON_HEIGHT);
                 Font font = new Font(System.Windows.Forms.SystemInformation.MenuFont);
-				cadencii.core2.PortUtil.drawStringEx(
+				cadencii.java.awt.GraphicsUtil.drawStringEx(
                     (Graphics)g, singer_name, font, new Rectangle(1, 1, ICON_WIDTH - 2, ICON_HEIGHT - 2),
-					cadencii.core2.PortUtil.STRING_ALIGN_NEAR, cadencii.core2.PortUtil.STRING_ALIGN_NEAR);
+					cadencii.java.awt.GraphicsUtil.STRING_ALIGN_NEAR, cadencii.java.awt.GraphicsUtil.STRING_ALIGN_NEAR);
                 ret = bmp;
             }
 
@@ -90,12 +88,11 @@ namespace cadencii
 
         public void setImage(Image img)
         {
-            Image bmp = new Image();
-            bmp.image = new System.Drawing.Bitmap(ICON_WIDTH, ICON_HEIGHT, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+            Image bmp = new Image(ICON_WIDTH, ICON_HEIGHT);
             Graphics g = null;
             try {
-                g = new Graphics2D(System.Drawing.Graphics.FromImage(bmp.image));
-                g.nativeGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                g = new Graphics2D(bmp);
+                ((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                 if (img != null) {
                     int img_width = img.getWidth(null);
                     int img_height = img.getHeight(null);
@@ -119,18 +116,18 @@ namespace cadencii
                     }
                     System.Drawing.Rectangle destRect = new System.Drawing.Rectangle(x, y, w, h);
                     System.Drawing.Rectangle srcRect = new System.Drawing.Rectangle(0, 0, img_width, img_height);
-                    g.nativeGraphics.DrawImage(img.image, destRect, srcRect, System.Drawing.GraphicsUnit.Pixel);
+                    ((System.Drawing.Graphics) g.NativeGraphics).DrawImage((System.Drawing.Image) img.NativeImage, destRect, srcRect, System.Drawing.GraphicsUnit.Pixel);
                 }
-                g.nativeGraphics.FillRegion(getBrush(), getInvRegion());
-                g.nativeGraphics.DrawPath(System.Drawing.Pens.DarkGray, getGraphicsPath());
+				((System.Drawing.Graphics) g.NativeGraphics).FillRegion(getBrush(), getInvRegion());
+				((System.Drawing.Graphics) g.NativeGraphics).DrawPath(System.Drawing.Pens.DarkGray, getGraphicsPath());
             } catch (Exception ex) {
                 Logger.write(typeof(IconParader) + ".setImage; ex=" + ex + "\n");
             } finally {
                 if (g != null) {
-                    g.nativeGraphics.Dispose();
+			g.Dispose();
                 }
             }
-            base.Image = bmp.image;
+            base.Image = (System.Drawing.Image) bmp.NativeImage;
         }
 
         /// <summary>

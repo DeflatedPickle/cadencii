@@ -18,9 +18,29 @@ using cadencii.java.awt.geom;
 namespace cadencii.java.awt
 {
 
-    public class Image
+    public class Image : IDisposable
     {
-        public System.Drawing.Image image;
+        System.Drawing.Image image;
+    
+    		public Image ()
+		{
+		}
+
+		public Image (int width, int height)
+		{
+			image = new System.Drawing.Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+		}
+
+        public object NativeImage {
+			get { return image; }
+			set { image = (System.Drawing.Image)value; }
+		}
+
+        public void Dispose ()
+        {
+        	if (image != null)
+        		image.Dispose ();
+        }
 
         public int getWidth(object observer)
         {
@@ -31,6 +51,11 @@ namespace cadencii.java.awt
         {
             return image.Height;
         }
+
+		public void Save (System.IO.FileStream stream)
+		{
+			image.Save (stream, System.Drawing.Imaging.ImageFormat.Png);
+		}
     }
 
     public class Cursor
@@ -52,7 +77,7 @@ namespace cadencii.java.awt
         public const int WAIT_CURSOR = 3;
 
         private int m_type = DEFAULT_CURSOR;
-        public System.Windows.Forms.Cursor cursor = System.Windows.Forms.Cursors.Default;
+        System.Windows.Forms.Cursor cursor = System.Windows.Forms.Cursors.Default;
 
         public Cursor(int type)
         {
@@ -84,24 +109,35 @@ namespace cadencii.java.awt
             }
         }
 
+		public object NativeCursor {
+			get;
+			set;
+		}
+
         public int getType()
         {
             return m_type;
         }
     }
 
-    public class Graphics
+    public class Graphics : IDisposable
     {
-        public System.Drawing.Graphics nativeGraphics;
+        System.Drawing.Graphics nativeGraphics;
         public Color color = Color.black;
         public BasicStroke stroke = new BasicStroke();
         public System.Drawing.SolidBrush brush = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
         public System.Drawing.Font m_font = new System.Drawing.Font("Arial", 10);
 
-        public Graphics(System.Drawing.Graphics g)
+        public Graphics()
         {
-            nativeGraphics = g;
         }
+
+		public object NativeGraphics { get { return nativeGraphics; } set { nativeGraphics = (System.Drawing.Graphics) value; } }
+
+        public void Dispose ()
+		{
+if (nativeGraphics != null) nativeGraphics.Dispose ();
+		}
 
         public void clearRect(int x, int y, int width, int height)
         {
@@ -110,12 +146,12 @@ namespace cadencii.java.awt
 
         public void drawLine(int x1, int y1, int x2, int y2)
         {
-            nativeGraphics.DrawLine(stroke.pen, x1, y1, x2, y2);
+            nativeGraphics.DrawLine((System.Drawing.Pen) stroke.NativePen, x1, y1, x2, y2);
         }
 
         public void drawRect(int x, int y, int width, int height)
         {
-            nativeGraphics.DrawRectangle(stroke.pen, x, y, width, height);
+			nativeGraphics.DrawRectangle((System.Drawing.Pen) stroke.NativePen, x, y, width, height);
         }
 
         public void fillRect(int x, int y, int width, int height)
@@ -125,7 +161,7 @@ namespace cadencii.java.awt
 
         public void drawOval(int x, int y, int width, int height)
         {
-            nativeGraphics.DrawEllipse(stroke.pen, x, y, width, height);
+			nativeGraphics.DrawEllipse((System.Drawing.Pen) stroke.NativePen, x, y, width, height);
         }
 
         public void fillOval(int x, int y, int width, int height)
@@ -136,8 +172,8 @@ namespace cadencii.java.awt
         public void setColor(Color c)
         {
             color = c;
-            stroke.pen.Color = c.color;
-            brush.Color = c.color;
+			((System.Drawing.Pen) stroke.NativePen).Color = c.ToNative ();
+			brush.Color = c.ToNative ();
         }
 
         public Color getColor()
@@ -147,7 +183,7 @@ namespace cadencii.java.awt
 
         public void setFont(Font font)
         {
-            m_font = font.font;
+            m_font = (System.Drawing.Font) font.NativeFont;
         }
 
         public void drawString(string str, float x, float y)
@@ -166,7 +202,7 @@ namespace cadencii.java.awt
             for (int i = 0; i < nPoints; i++) {
                 points[i] = new System.Drawing.Point(xPoints[i], yPoints[i]);
             }
-            nativeGraphics.DrawPolygon(stroke.pen, points);
+			nativeGraphics.DrawPolygon((System.Drawing.Pen) stroke.NativePen, points);
         }
 
         public void drawPolyline(int[] xPoints, int[] yPoints, int nPoints)
@@ -175,7 +211,7 @@ namespace cadencii.java.awt
             for (int i = 0; i < nPoints; i++) {
                 points[i] = new System.Drawing.Point(xPoints[i], yPoints[i]);
             }
-            nativeGraphics.DrawLines(stroke.pen, points);
+			nativeGraphics.DrawLines((System.Drawing.Pen) stroke.NativePen, points);
         }
 
         public void fillPolygon(Polygon p)
@@ -195,7 +231,7 @@ namespace cadencii.java.awt
         public Shape getClip()
         {
             Area ret = new Area();
-            ret.region = nativeGraphics.Clip;
+            ret.NativeRegion = nativeGraphics.Clip;
             return ret;
         }
 
@@ -209,7 +245,7 @@ namespace cadencii.java.awt
             if (clip == null) {
                 nativeGraphics.Clip = new System.Drawing.Region();
             } else if (clip is Area) {
-                nativeGraphics.Clip = ((Area)clip).region;
+                nativeGraphics.Clip = (System.Drawing.Region) ((Area)clip).NativeRegion;
             } else if (clip is Rectangle) {
                 Rectangle rc = (Rectangle)clip;
                 nativeGraphics.Clip = new System.Drawing.Region(new System.Drawing.Rectangle(rc.x, rc.y, rc.width, rc.height));
@@ -235,23 +271,35 @@ namespace cadencii.java.awt
             if (img == null) {
                 return;
             }
-            drawImage(img.image, x, y, obs);
+			drawImage((System.Drawing.Image) img.NativeImage, x, y, obs);
         }
+		
+		public void DrawLines (System.Drawing.Point[] points)
+		{
+			nativeGraphics.DrawLines ((System.Drawing.Pen) stroke.NativePen, points);
+		}
     }
 
     public class Graphics2D : Graphics
     {
-        public Graphics2D(System.Drawing.Graphics g)
-            : base(g)
+    		public Graphics2D (Image image)
+		{
+			NativeGraphics = System.Drawing.Graphics.FromImage((System.Drawing.Image) image.NativeImage);
+		}
+		public Graphics2D(Graphics other)
         {
+			NativeGraphics = (System.Drawing.Graphics) other.NativeGraphics;
         }
+        public Graphics2D () : base ()
+		{
+		}
 
         public void setStroke(Stroke stroke)
         {
             if (stroke is BasicStroke) {
                 BasicStroke bstroke = (BasicStroke)stroke;
-                this.stroke.pen = bstroke.pen;
-                this.stroke.pen.Color = color.color;
+				this.stroke.NativePen = (System.Drawing.Pen) bstroke.NativePen;
+				((System.Drawing.Pen) this.stroke.NativePen).Color = color.ToNative ();
             }
         }
 
@@ -262,12 +310,12 @@ namespace cadencii.java.awt
 
         public void translate(int tx, int ty)
         {
-            nativeGraphics.TranslateTransform(tx, ty);
+			((System.Drawing.Graphics) NativeGraphics).TranslateTransform(tx, ty);
         }
 
         public void translate(double tx, double ty)
         {
-            nativeGraphics.TranslateTransform((float)tx, (float)ty);
+			((System.Drawing.Graphics) NativeGraphics).TranslateTransform((float)tx, (float)ty);
         }
 
         public void fill(Shape s)
@@ -278,12 +326,12 @@ namespace cadencii.java.awt
 
             if (s is Area) {
                 Area a = (Area)s;
-                if (a.region != null) {
-                    nativeGraphics.FillRegion(brush, a.region);
+                if (a.NativeRegion != null) {
+					((System.Drawing.Graphics) NativeGraphics).FillRegion(brush, (System.Drawing.Region) a.NativeRegion);
                 }
             } else if (s is Rectangle) {
                 Rectangle rc = (Rectangle)s;
-                nativeGraphics.FillRectangle(brush, rc.x, rc.y, rc.width, rc.height);
+				((System.Drawing.Graphics) NativeGraphics).FillRectangle(brush, rc.x, rc.y, rc.width, rc.height);
             } else {
                 serr.println(
                     "fixme; org.kbinani.java.awt.Graphics2D#fill; type of argument s is not supported for '" +
@@ -405,7 +453,12 @@ namespace cadencii.java.awt
         /// </summary>
         public static Color YELLOW = new Color(System.Drawing.Color.Yellow);
 
-        public System.Drawing.Color color;
+        System.Drawing.Color color;
+
+        public System.Drawing.Color ToNative ()
+		{
+			return color;
+		}
 
         public Color(System.Drawing.Color value)
         {
@@ -500,7 +553,7 @@ namespace cadencii.java.awt
         public const int PLAIN = 0;
         public const int ITALIC = 2;
         public const int BOLD = 1;
-        public System.Drawing.Font font;
+        System.Drawing.Font font;
 
         public Font(System.Drawing.Font value)
         {
@@ -518,6 +571,16 @@ namespace cadencii.java.awt
             }
             font = new System.Drawing.Font(name, size, fstyle);
         }
+
+		public object NativeFont {
+			get;
+			set;
+		}
+
+		public void Dispose ()
+		{
+			if (font != null) font.Dispose ();
+		}
 
         public string getName()
         {
@@ -547,7 +610,9 @@ namespace cadencii.java.awt
         public const int JOIN_BEVEL = 2;
         public const int JOIN_MITER = 0;
         public const int JOIN_ROUND = 1;
-        public System.Drawing.Pen pen;
+        System.Drawing.Pen pen;
+
+		public object NativePen { get { return pen; } set { pen = (System.Drawing.Pen)value; } }
 
         public BasicStroke()
         {
@@ -649,7 +714,7 @@ namespace cadencii.java.awt.geom
 {
     public class Area : Shape
     {
-        public System.Drawing.Region region;
+        System.Drawing.Region region;
 
         public Area()
         {
@@ -678,6 +743,11 @@ namespace cadencii.java.awt.geom
                 region = new System.Drawing.Region();
             }
         }
+
+		public object NativeRegion {
+			get { return region; }
+			set { region = (System.Drawing.Region) value; }
+		}
 
         public void add(Area rhs)
         {

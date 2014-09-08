@@ -120,9 +120,9 @@ namespace cadencii.apputil
             m_base.Dispose();
         }
 
-        public BitmapEx(Image original)
+        public BitmapEx(java.awt.Image original)
         {
-            m_base = new Bitmap(original);
+            m_base = new Bitmap((System.Drawing.Image) original.NativeImage);
         }
 
         public BitmapEx(string filename)
@@ -135,9 +135,9 @@ namespace cadencii.apputil
             m_base = new Bitmap(stream);
         }
 
-        public BitmapEx(Image original, Size newSize)
+		public BitmapEx(java.awt.Image original, Size newSize)
         {
-            m_base = new Bitmap(original, newSize);
+			m_base = new Bitmap((System.Drawing.Image) original.NativeImage, newSize);
         }
 
         public BitmapEx(int width, int height)
@@ -160,14 +160,14 @@ namespace cadencii.apputil
             m_base = new Bitmap(type, resource);
         }
 
-        public BitmapEx(Image original, int width, int height)
+        public BitmapEx(java.awt.Image original, int width, int height)
         {
-            m_base = new Bitmap(original, width, height);
+			m_base = new Bitmap((System.Drawing.Image) original.NativeImage, width, height);
         }
 
-        public BitmapEx(int width, int height, Graphics g)
+        public BitmapEx(int width, int height, java.awt.Graphics g)
         {
-            m_base = new Bitmap(width, height, g);
+			m_base = new Bitmap(width, height, (System.Drawing.Graphics) g.NativeGraphics);
         }
 
         public BitmapEx(int width, int height, PixelFormat format)

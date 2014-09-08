@@ -99,11 +99,11 @@ namespace cadencii
                 }
             }
             if (valid) {
-                ForeColor = m_textcolor_normal.color;
-                BackColor = m_backcolor_normal.color;
+				ForeColor = m_textcolor_normal.ToNative ();
+				BackColor = m_backcolor_normal.ToNative ();
             } else {
-                ForeColor = m_textcolor_invalid.color;
-                BackColor = m_backcolor_invalid.color;
+				ForeColor = m_textcolor_invalid.ToNative ();
+				BackColor = m_backcolor_invalid.ToNative ();
             }
         }
 

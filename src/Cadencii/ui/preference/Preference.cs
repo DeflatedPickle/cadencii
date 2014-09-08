@@ -1148,7 +1148,7 @@ namespace cadencii
         #region event handlers
         public void btnChangeMenuFont_Click(Object sender, EventArgs e)
         {
-            fontDialog.Font = getBaseFont().font;
+			fontDialog.Font = (System.Drawing.Font) getBaseFont().NativeFont;
             if (fontDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                 if (fontDialog.Font != null) {
                     java.awt.Font f = new java.awt.Font(fontDialog.Font);
@@ -1179,7 +1179,7 @@ namespace cadencii
 
         public void btnChangeScreenFont_Click(Object sender, EventArgs e)
         {
-            fontDialog.Font = m_screen_font.font;
+			fontDialog.Font = (System.Drawing.Font) m_screen_font.NativeFont;
             if (fontDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                 if (fontDialog.Font != null) {
                     java.awt.Font f = new java.awt.Font(fontDialog.Font);

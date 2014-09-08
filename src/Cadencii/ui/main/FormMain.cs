@@ -1831,7 +1831,7 @@ namespace cadencii
                     if (current_version < recent_version) {
                         var form = Factory.createUpdateCheckForm();
                         form.setDownloadUrl(update_info.DownloadUrl);
-                        form.setFont(AppManager.editorConfig.getBaseFont().font);
+                        form.setFont((System.Drawing.Font) AppManager.editorConfig.getBaseFont().NativeFont);
                         form.setOkButtonText(_("OK"));
                         form.setTitle(_("Check For Updates"));
                         form.setMessage(string.Format(_("New version {0} is available."), recent_version_string));
@@ -5995,7 +5995,7 @@ namespace cadencii
                     serr.println("FormMain#updateDrawObjectList; ex=" + ex);
                 } finally {
                     if (SMALL_FONT != null) {
-                        SMALL_FONT.font.Dispose();
+                        SMALL_FONT.Dispose();
                     }
                 }
             }
@@ -6103,7 +6103,7 @@ namespace cadencii
                 AppManager.mInputTextBox.setBufferText(phrase);
                 AppManager.mInputTextBox.setPhoneticSymbolEditMode(true);
                 AppManager.mInputTextBox.Text = phonetic_symbol;
-                AppManager.mInputTextBox.BackColor = mColorTextboxBackcolor.color;
+				AppManager.mInputTextBox.BackColor = mColorTextboxBackcolor.ToNative ();
             } else {
                 AppManager.mInputTextBox.setBufferText(phonetic_symbol);
                 AppManager.mInputTextBox.setPhoneticSymbolEditMode(false);
@@ -6140,7 +6140,7 @@ namespace cadencii
         {
             string new_value = AppManager.mInputTextBox.Text;
             if (!AppManager.mInputTextBox.isPhoneticSymbolEditMode()) {
-                AppManager.mInputTextBox.BackColor = mColorTextboxBackcolor.color;
+				AppManager.mInputTextBox.BackColor = mColorTextboxBackcolor.ToNative ();
             } else {
                 AppManager.mInputTextBox.BackColor = System.Drawing.Color.White;
             }
@@ -13993,7 +13993,7 @@ namespace cadencii
 
         public void picturePositionIndicator_Paint(Object sender, PaintEventArgs e)
         {
-            Graphics2D g = new Graphics2D(e.Graphics);
+            Graphics2D g = new Graphics2D() {NativeGraphics = e.Graphics};
             picturePositionIndicatorDrawTo(g);
 #if MONITOR_FPS
             g.setColor(Color.red);
@@ -15071,9 +15071,9 @@ namespace cadencii
         public void pictureBox2_Paint(Object sender, PaintEventArgs e)
         {
             if (mGraphicsPictureBox2 == null) {
-                mGraphicsPictureBox2 = new Graphics2D(null);
+                mGraphicsPictureBox2 = new Graphics2D();
             }
-            mGraphicsPictureBox2.nativeGraphics = e.Graphics;
+            mGraphicsPictureBox2.NativeGraphics = e.Graphics;
             int width = pictureBox2.Width;
             int height = pictureBox2.Height;
             int unit_height = height / 4;

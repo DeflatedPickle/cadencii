@@ -68,7 +68,7 @@ namespace cadencii
             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
 
             m_credit = new AuthorListEntry[] { };
-            lblVstLogo.ForeColor = m_version_color.color;
+			lblVstLogo.ForeColor = m_version_color.ToNative ();
 #if DEBUG
             //m_scroll = generateAuthorListB( false );
             //m_scroll_with_id = generateAuthorListB( true );
@@ -120,7 +120,7 @@ namespace cadencii
         public void setVersionColor(Color value)
         {
             m_version_color = value;
-            lblVstLogo.ForeColor = value.color;
+			lblVstLogo.ForeColor = value.ToNative ();
         }
 
         /// <summary>
@@ -167,9 +167,8 @@ namespace cadencii
             int width = this.Width;
             int height = size.height;
             //StringFormat sf = new StringFormat();
-            Image ret = new Image();
-            ret.image = new System.Drawing.Bitmap((int)width, (int)(40f + m_credit.Length * height * 1.1f), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-            Graphics2D g = new Graphics2D(System.Drawing.Graphics.FromImage(ret.image));
+            Image ret = new Image((int)width, (int)(40f + m_credit.Length * height * 1.1f));
+            Graphics2D g = new Graphics2D(ret);
             g.setColor(Color.white);
             g.fillRect(0, 0, ret.getWidth(null), ret.getHeight(null));
             int align = 0;
@@ -178,7 +177,7 @@ namespace cadencii
             Font f = new Font(font_name, java.awt.Font.BOLD, (int)(FONT_SIZE * 1.2f));
             if (m_shadow_enablde) {
                 g.setColor(new Color(0, 0, 0, 40));
-				cadencii.core2.PortUtil.drawStringEx(
+				cadencii.java.awt.GraphicsUtil.drawStringEx(
                     g,
                     m_app_name,
                     f,
@@ -187,7 +186,7 @@ namespace cadencii
                     valign);
             }
             g.setColor(Color.black);
-			cadencii.core2.PortUtil.drawStringEx(
+			cadencii.java.awt.GraphicsUtil.drawStringEx(
                 g,
                 m_app_name,
                 f,
@@ -204,7 +203,7 @@ namespace cadencii
                 string str = itemi.getName() + (id.Equals("") ? "" : (" (" + id + ")"));
                 if (m_shadow_enablde) {
                     g.setColor(new Color(0, 0, 0, 40));
-					cadencii.core2.PortUtil.drawStringEx(
+					cadencii.java.awt.GraphicsUtil.drawStringEx(
                         g,
                         str,
                         font,
@@ -213,7 +212,7 @@ namespace cadencii
                         valign);
                 }
                 g.setColor(Color.black);
-				cadencii.core2.PortUtil.drawStringEx(
+				cadencii.java.awt.GraphicsUtil.drawStringEx(
                     g,
                     str,
                     f2,
@@ -230,7 +229,7 @@ namespace cadencii
             using (var dlg = new SaveFileDialog()) {
                 if (dlg.ShowDialog() == DialogResult.OK) {
                     using (var stream = new System.IO.FileStream(dlg.FileName, System.IO.FileMode.Create, System.IO.FileAccess.Write)) {
-                        m_scroll.image.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                        m_scroll.Save(stream);
                     }
                 }
             }
@@ -279,7 +278,7 @@ namespace cadencii
         public void VersionInfo_Paint(Object sender, PaintEventArgs e)
         {
             try {
-                paintCor(new Graphics2D(e.Graphics));
+				paintCor(new Graphics2D() {NativeGraphics = e.Graphics});
             } catch (Exception ex) {
 #if DEBUG
                 serr.println("VersionInfo_Paint; ex=" + ex);

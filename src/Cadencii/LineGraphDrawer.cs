@@ -524,7 +524,7 @@ namespace cadencii
         /// <param name="g"></param>
         public void setGraphics(java.awt.Graphics g)
         {
-            mGraphics = g.nativeGraphics;
+			mGraphics = (System.Drawing.Graphics) g.NativeGraphics;
         }
 
         /// <summary>
@@ -568,27 +568,27 @@ namespace cadencii
         private SolidBrush getFillBrush()
         {
             if (mFillBrush == null) {
-                mFillBrush = new SolidBrush(mFillColor.color);
+				mFillBrush = new SolidBrush(mFillColor.ToNative ());
             }
-            mFillBrush.Color = mFillColor.color;
+			mFillBrush.Color = mFillColor.ToNative ();
             return mFillBrush;
         }
 
         private SolidBrush getDotBrush()
         {
             if (mDotBrush == null) {
-                mDotBrush = new SolidBrush(mDotColor.color);
+				mDotBrush = new SolidBrush(mDotColor.ToNative ());
             }
-            mDotBrush.Color = mDotColor.color;
+			mDotBrush.Color = mDotColor.ToNative ();
             return mDotBrush;
         }
 
         private Pen getLinePen()
         {
             if (mLinePen == null) {
-                mLinePen = new Pen(mLineColor.color);
+				mLinePen = new Pen(mLineColor.ToNative ());
             }
-            mLinePen.Color = mLineColor.color;
+			mLinePen.Color = mLineColor.ToNative ();
             mLinePen.Width = mLineWidth;
             return mLinePen;
         }

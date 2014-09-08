@@ -225,7 +225,7 @@ namespace cadencii.apputil
             if (!isApplyFontRecurseEnabled) {
                 return;
             }
-            item.Font = font.font;
+            item.Font = (System.Drawing.Font) font.NativeFont;
             foreach (ToolStripItem tsi in item.Items) {
                 applyToolStripFontRecurse(tsi, font);
             }
@@ -236,7 +236,7 @@ namespace cadencii.apputil
             if (!isApplyFontRecurseEnabled) {
                 return;
             }
-            item.Font = font.font;
+			item.Font = (System.Drawing.Font) font.NativeFont;
             if (item is ToolStripMenuItem) {
                 ToolStripMenuItem tsmi = (ToolStripMenuItem)item;
                 foreach (ToolStripItem tsi in tsmi.DropDownItems) {
@@ -269,16 +269,15 @@ namespace cadencii.apputil
                 int string_desty = size.height * 2; // 文字列が書き込まれるy座標
                 int w = size.width * 4;
                 int h = size.height * 4;
-                b = new java.awt.Image();
-                b.image = new System.Drawing.Bitmap(w, h, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-                g = new java.awt.Graphics2D(System.Drawing.Graphics.FromImage(b.image));
+                b = new java.awt.Image(w, h);
+                g = new java.awt.Graphics2D(b);
                 g.setColor(java.awt.Color.white);
                 g.fillRect(0, 0, w, h);
                 g.setFont(font);
                 g.setColor(java.awt.Color.black);
                 g.drawString(PANGRAM, size.width, string_desty);
 
-                b2 = new BitmapEx(b.image);
+                b2 = new BitmapEx(b);
                 // 上端に最初に現れる色つきピクセルを探す
                 int firsty = 0;
                 bool found = false;
@@ -318,11 +317,11 @@ namespace cadencii.apputil
             } catch (Exception ex) {
                 serr.println("Util#getStringDrawOffset; ex=" + ex);
             } finally {
-                if (b != null && b.image != null) {
-                    b.image.Dispose();
+                if (b != null) {
+                    b.Dispose();
                 }
                 if (g != null) {
-                    g.nativeGraphics.Dispose();
+                    g.Dispose();
                 }
                 if (b2 != null && b2 != null) {
                     b2.Dispose();
@@ -581,7 +580,7 @@ namespace cadencii.apputil
         {
             using (Bitmap dumy = new Bitmap(1, 1))
             using (Graphics g = Graphics.FromImage(dumy)) {
-                SizeF tmp = g.MeasureString(text, font.font);
+				SizeF tmp = g.MeasureString(text, (System.Drawing.Font) font.NativeFont);
                 return new java.awt.Dimension((int)tmp.Width, (int)tmp.Height);
             }
         }
@@ -614,7 +613,7 @@ namespace cadencii.apputil
         [Obsolete]
         public static void applyFontRecurse(Control c, java.awt.Font font)
         {
-            applyFontRecurse(c, font.font);
+			applyFontRecurse(c, (System.Drawing.Font) font.NativeFont);
         }
 
         /// <summary>

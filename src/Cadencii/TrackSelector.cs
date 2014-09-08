@@ -590,13 +590,13 @@ namespace cadencii
             } else {
                 ret = new cadencii.java.awt.Cursor(cadencii.java.awt.Cursor.CUSTOM_CURSOR);
             }
-            ret.cursor = c;
+            ret.NativeCursor = c;
             return ret;
         }
 
         public void setCursor(cadencii.java.awt.Cursor value)
         {
-            base.Cursor = value.cursor;
+            base.Cursor = (System.Windows.Forms.Cursor) value.NativeCursor;
         }
 
 #if COMPONENT_ENABLE_TOOL_TIP_TEXT
@@ -711,7 +711,7 @@ namespace cadencii
 
         public void setForeground(cadencii.java.awt.Color color)
         {
-            base.ForeColor = color.color;
+			base.ForeColor = color.ToNative ();
         }
 
         public cadencii.java.awt.Color getForeground()
@@ -754,10 +754,10 @@ namespace cadencii
             if (font == null) {
                 return;
             }
-            if (font.font == null) {
+			if ((System.Drawing.Font) font.NativeFont == null) {
                 return;
             }
-            base.Font = font.font;
+			base.Font = (System.Drawing.Font) font.NativeFont;
         }
         #endregion
 
@@ -998,7 +998,7 @@ namespace cadencii
         private Graphics2D getGraphics()
         {
             if (mGraphics == null) {
-                mGraphics = new Graphics2D(null);
+                mGraphics = new Graphics2D();
             }
             return mGraphics;
         }
@@ -1010,7 +1010,7 @@ namespace cadencii
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
         {
             Graphics2D g = getGraphics();
-            g.nativeGraphics = e.Graphics;
+		g.NativeGraphics = e.Graphics;
             paint(g);
         }
 
@@ -1281,8 +1281,8 @@ namespace cadencii
                             }
                             if (mSelectedCurve.equals(CurveType.PIT)) {
                                 #region PBSの値に応じて，メモリを記入する
-                                System.Drawing.Drawing2D.SmoothingMode old = g.nativeGraphics.SmoothingMode;
-                                g.nativeGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+								System.Drawing.Drawing2D.SmoothingMode old = ((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode;
+								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                                 Color nrml = new Color(0, 0, 0, 190);
                                 Color dash = new Color(0, 0, 0, 128);
                                 Stroke nrml_stroke = new BasicStroke();
@@ -1353,7 +1353,7 @@ namespace cadencii
                                     g.setColor(pen);
                                     g.drawLine(x10, y, x20, y);
                                 }
-                                g.nativeGraphics.SmoothingMode = old;
+								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = old;
                                 #endregion
                             }
                             drawAttachedCurve(g, vsq.AttachedCurves.get(AppManager.getSelected() - 1).get(mSelectedCurve));
@@ -1394,9 +1394,9 @@ namespace cadencii
                                 int yini = pt.y;
                                 g.setColor(Color.ORANGE);
                                 g.setStroke(getStroke2px());
-                                g.nativeGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                                 g.drawLine(xini, yini, AppManager.xCoordFromClocks(clock_at_mouse), yCoordFromValue(value));
-                                g.nativeGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
+								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
                                 g.setStroke(getStrokeDefault());
                             }
 #endif
@@ -1564,7 +1564,7 @@ namespace cadencii
                     }
                     g.setFont(EditorConfig.baseFont10Bold);
                     g.setColor(Color.white);
-					cadencii.core2.PortUtil.drawStringEx(g,
+					cadencii.java.awt.GraphicsUtil.drawStringEx(g,
                                            mMouseValue + "",
                                            EditorConfig.baseFont10Bold,
                                            new Rectangle(mouse.x - 100, mouse.y - shift, 100, 100),
@@ -1574,7 +1574,7 @@ namespace cadencii
                         float delta_note = mMouseValue * pbs_at_mouse / 8192.0f;
                         align = 1;
                         valign = -1;
-						cadencii.core2.PortUtil.drawStringEx(g,
+						cadencii.java.awt.GraphicsUtil.drawStringEx(g,
                                                PortUtil.formatDecimal("#0.00", delta_note),
                                                EditorConfig.baseFont10Bold,
                                                new Rectangle(mouse.x - 100, mouse.y, 100, 100),
@@ -2333,7 +2333,7 @@ namespace cadencii
                                 Point ctrl1 = (current.getControlRightType() == BezierControlType.None) ? pxCurrent : pxControlCurrent;
                                 Point ctrl2 = (next.getControlLeftType() == BezierControlType.None) ? pxNext : pxControlNext;
                                 g.setColor(COLOR_BEZIER_CURVE);
-								cadencii.core2.PortUtil.drawBezier(g, pxCurrent.x, pxCurrent.y,
+								cadencii.java.awt.GraphicsUtil.drawBezier(g, pxCurrent.x, pxCurrent.y,
                                                         ctrl1.x, ctrl1.y,
                                                         ctrl2.x, ctrl2.y,
                                                         pxNext.x, pxNext.y);

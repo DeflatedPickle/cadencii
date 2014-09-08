@@ -116,7 +116,7 @@ namespace cadencii
         protected override void OnPaint(PaintEventArgs pe)
         {
             base.OnPaint(pe);
-            paint(new Graphics2D(pe.Graphics));
+			paint(new Graphics2D() {NativeGraphics = pe.Graphics});
         }
 
         #region common APIs of org.kbinani.*
@@ -202,13 +202,13 @@ namespace cadencii
 
                 // 再生中に画面を描画しない設定なら飛ばす
                 if (AppManager.editorConfig.SkipDrawWhilePlaying && AppManager.isPlaying()) {
-					cadencii.core2.PortUtil.drawStringEx(
+					cadencii.java.awt.GraphicsUtil.drawStringEx(
                         g1,
                         "(hidden for performance)",
                         EditorConfig.baseFont10,
                         new Rectangle(0, 0, width, height),
-						cadencii.core2.PortUtil.STRING_ALIGN_CENTER,
-						cadencii.core2.PortUtil.STRING_ALIGN_CENTER);
+						cadencii.java.awt.GraphicsUtil.STRING_ALIGN_CENTER,
+						cadencii.java.awt.GraphicsUtil.STRING_ALIGN_CENTER);
                     return;
                 }
 
@@ -697,7 +697,7 @@ namespace cadencii
                                             }
                                         }
                                         commonDrawer.flush();
-                                        g.nativeGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
+                                        ((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
                                         g.setStroke(getStrokeDefault());
                                     }
                                     #endregion
@@ -757,8 +757,8 @@ namespace cadencii
                                 str += "(" + dobj.mInternalID + ")";
 #endif
                                 g.drawString(str, x + 1, y + track_height + half_track_height - EditorConfig.baseFont10OffsetHeight + 1);
-                                System.Drawing.Drawing2D.SmoothingMode old = g.nativeGraphics.SmoothingMode;
-                                g.nativeGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+								System.Drawing.Drawing2D.SmoothingMode old = ((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode;
+								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                                 if (dobj.mType == DrawObjectType.Crescend) {
                                     g.drawLine(xend - 2, y + 4, x + 3, y + half_track_height);
                                     g.drawLine(x + 3, y + half_track_height, xend - 2, y + track_height - 3);
@@ -766,7 +766,7 @@ namespace cadencii
                                     g.drawLine(x + 3, y + 4, xend - 2, y + half_track_height);
                                     g.drawLine(xend - 2, y + half_track_height, x + 3, y + track_height - 3);
                                 }
-                                g.nativeGraphics.SmoothingMode = old;
+								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = old;
                                 #endregion
                             }
                         }
@@ -1009,7 +1009,7 @@ namespace cadencii
                         int align = 1;
                         int valign = 0;
                         g.setColor(Color.black);
-						cadencii.core2.PortUtil.drawStringEx(g,
+						cadencii.java.awt.GraphicsUtil.drawStringEx(g,
                                                VsqNote.getNoteString(hilighted_note),
                                                EditorConfig.baseFont10Bold,
                                                new Rectangle(mouse_position.X - 110, mouse_position.Y - 50, 100, 100),
@@ -1084,7 +1084,7 @@ namespace cadencii
                         Color pen = new Color(0, 0, 0, 200);
                         g.setColor(new Color(0, 0, 0, 100));
                         g.fillRect(tx, ty, twidth, theight);
-                        g.nativeGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+						((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                         g.setColor(pen);
                         if (vtop && twidth > 1 && ty < height) {
                             g.drawLine(tx, ty, tx + twidth - 1, ty);
@@ -1101,7 +1101,7 @@ namespace cadencii
                     }
                     #endregion
 
-                    g.nativeGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
+					((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
 
                     #region コントロールカーブのオーバーレイ表示
                     if (AppManager.mCurveOnPianoroll) {
@@ -1288,8 +1288,8 @@ namespace cadencii
 #if DEBUG
             g.setColor(Color.red);
 #endif
-            System.Drawing.Drawing2D.SmoothingMode sm = g.nativeGraphics.SmoothingMode;
-            g.nativeGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+			System.Drawing.Drawing2D.SmoothingMode sm = ((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode;
+			((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             int lx = 0;
             for (; itr.hasNext(); ) {
                 PointD p = itr.next();
@@ -1302,7 +1302,7 @@ namespace cadencii
                 lx = x;
             }
             drawer.flush();
-            g.nativeGraphics.SmoothingMode = sm;
+			((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = sm;
         }
 
         private void drawVibratoLine(Graphics g, int origin_x, int origin_y, int vibrato_length)
@@ -1540,7 +1540,7 @@ namespace cadencii
 
         public void setForeground(cadencii.java.awt.Color color)
         {
-            base.ForeColor = color.color;
+			base.ForeColor = color.ToNative ();
         }
 
         public cadencii.java.awt.Color getForeground()
@@ -1583,10 +1583,10 @@ namespace cadencii
             if (font == null) {
                 return;
             }
-            if (font.font == null) {
+			if ((System.Drawing.Font) font.NativeFont == null) {
                 return;
             }
-            base.Font = font.font;
+			base.Font = (System.Drawing.Font) font.NativeFont;
         }
         #endregion
     }

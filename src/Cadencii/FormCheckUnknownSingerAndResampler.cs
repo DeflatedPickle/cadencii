@@ -52,7 +52,7 @@ namespace cadencii
                 sout.println("FormCheckUnknownSingerAndResampler#.ctor;  path_image=" + path_image);
 #endif
                 Image img = IconParader.createIconImage(path_image, sc.VOICENAME);
-                pictureSinger.Image = img.image;
+                pictureSinger.Image = (System.Drawing.Image) img.NativeImage;
                 labelSingerName.Text = sc.VOICENAME;
             }
 

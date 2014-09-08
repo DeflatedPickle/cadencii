@@ -112,13 +112,13 @@ namespace cadencii
                 g.drawLine(0, 0, 0, height);
 
                 g.setColor(Color.black);
-				cadencii.core2.PortUtil.drawStringEx(
+				cadencii.java.awt.GraphicsUtil.drawStringEx(
                     g,
                     "(hidden for performance)",
                     EditorConfig.baseFont8,
                     rc,
-					cadencii.core2.PortUtil.STRING_ALIGN_CENTER,
-					cadencii.core2.PortUtil.STRING_ALIGN_CENTER);
+					cadencii.java.awt.GraphicsUtil.STRING_ALIGN_CENTER,
+					cadencii.java.awt.GraphicsUtil.STRING_ALIGN_CENTER);
                 return;
             }
 
@@ -282,9 +282,9 @@ namespace cadencii
         {
             base.OnPaint(e);
             if (mGraphics == null) {
-                mGraphics = new Graphics2D(null);
+                mGraphics = new Graphics2D();
             }
-            mGraphics.nativeGraphics = e.Graphics;
+		mGraphics.NativeGraphics = e.Graphics;
             paint(mGraphics);
         }
     }
