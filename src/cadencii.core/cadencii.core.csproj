@@ -94,7 +94,6 @@
     <Compile Include="ICommandRunnable.cs" />
     <Compile Include="IComparisonContext.cs" />
     <Compile Include="CurveType.cs" />
-    <Compile Include="Debug.cs" />
     <Compile Include="BgmFile.cs" />
     <Compile Include="RendererKind.cs" />
     <Compile Include="SequenceConfig.cs" />
@@ -124,6 +123,8 @@
     <Compile Include="MidiPortConfig.cs" />
     <Compile Include="PanelState.cs" />
     <Compile Include="EditorConfig.cs" />
+    <Compile Include="debug.cs" />
+    <Compile Include="CDebug.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

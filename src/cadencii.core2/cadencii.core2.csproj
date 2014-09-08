@@ -35,15 +35,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PortUtil2.cs" />
-    <Compile Include="ValuePairOfStringArrayOfKeys.cs" />
-    <Compile Include="debug.cs" />
-    <Compile Include="BezierChain.cs" />
-    <Compile Include="BezierControlType.cs" />
-    <Compile Include="BezierCurves.cs" />
-    <Compile Include="BezierPickedSide.cs" />
-    <Compile Include="BezierPoint.cs" />
-    <Compile Include="PointD.cs" />
-    <Compile Include="AttachedCurve.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

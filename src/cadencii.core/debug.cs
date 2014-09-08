@@ -26,7 +26,7 @@ namespace cadencii.core2
             try {
                 if (s_debug_out == null) {
                     if (s_path == "") {
-                        s_debug_out = new StreamWriter(Path.Combine(System.Windows.Forms.Application.StartupPath, "run.log"));
+						s_debug_out = new StreamWriter(Path.Combine(cadencii.PortUtil.getApplicationStartupPath (), "run.log"));
                     } else {
                         s_debug_out = new StreamWriter(s_path);
                     }
