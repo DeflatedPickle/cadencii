@@ -565,7 +565,7 @@ namespace cadencii
             // ソングポジション
             int px_current_clock = (int)((AppManager.getCurrentClock() - mOverviewStartToDrawClock) * mOverviewPixelPerClock);
             g.setStroke(getStroke2px());
-            g.setColor(Color.white);
+			g.setColor(cadencii.java.awt.PortUtil.White);
             g.drawLine(px_current_clock + xoffset, 0, px_current_clock + xoffset, height);
             g.setStroke(getStrokeDefault());
 
@@ -578,48 +578,48 @@ namespace cadencii
             g.setColor(AppManager.COLOR_BORDER);
             // zoomボタン
             rc = getButtonBoundsZoom();
-            g.setColor(mOverviewButtonZoomMouseDowned ? Color.gray : Color.lightGray);
+            g.setColor(mOverviewButtonZoomMouseDowned ? cadencii.java.awt.PortUtil.Gray : cadencii.java.awt.PortUtil.LightGray);
             g.fillRect(rc.x, rc.y, rc.width, rc.height);
             g.setColor(AppManager.COLOR_BORDER);
             g.drawRect(rc.x, rc.y, rc.width, rc.height);
             int centerx = rc.x + rc.width / 2 + 1;
             int centery = rc.y + rc.height / 2 + 1;
-            g.setColor(mOverviewButtonZoomMouseDowned ? Color.lightGray : Color.gray);
+            g.setColor(mOverviewButtonZoomMouseDowned ? cadencii.java.awt.PortUtil.LightGray : cadencii.java.awt.PortUtil.Gray);
             g.setStroke(getStroke2px());
             g.drawLine(centerx - 4, centery, centerx + 4, centery);
             g.drawLine(centerx, centery - 4, centerx, centery + 4);
             g.setStroke(getStrokeDefault());
             // moozボタン
             rc = getButtonBoundsMooz();
-            g.setColor(mOverviewButtonMoozMouseDowned ? Color.gray : Color.lightGray);
+            g.setColor(mOverviewButtonMoozMouseDowned ? cadencii.java.awt.PortUtil.Gray : cadencii.java.awt.PortUtil.LightGray);
             g.fillRect(rc.x, rc.y, rc.width, rc.height);
             g.setColor(AppManager.COLOR_BORDER);
             g.drawRect(rc.x, rc.y, rc.width, rc.height);
             centerx = rc.x + rc.width / 2 + 1;
             centery = rc.y + rc.height / 2 + 1;
-            g.setColor(mOverviewButtonMoozMouseDowned ? Color.lightGray : Color.gray);
+            g.setColor(mOverviewButtonMoozMouseDowned ? cadencii.java.awt.PortUtil.LightGray : cadencii.java.awt.PortUtil.Gray);
             g.setStroke(getStroke2px());
             g.drawLine(centerx - 4, centery, centerx + 4, centery);
             g.setStroke(getStrokeDefault());
             // left1ボタン
             rc = getButtonBoundsLeft1();
-            g.setColor(mOverviewButtonLeft1MouseDowned ? Color.gray : Color.lightGray);
+            g.setColor(mOverviewButtonLeft1MouseDowned ? cadencii.java.awt.PortUtil.Gray : cadencii.java.awt.PortUtil.LightGray);
             g.fillRect(rc.x, rc.y, rc.width, rc.height);
             g.setColor(AppManager.COLOR_BORDER);
             g.drawRect(rc.x, rc.y, rc.width, rc.height);
             centerx = rc.x + rc.width / 2 + 1;
             centery = rc.y + rc.height / 2 + 1;
-            g.setColor(mOverviewButtonLeft1MouseDowned ? Color.lightGray : Color.gray);
+            g.setColor(mOverviewButtonLeft1MouseDowned ? cadencii.java.awt.PortUtil.LightGray : cadencii.java.awt.PortUtil.Gray);
             g.drawPolyline(new int[] { centerx + 4, centerx - 4, centerx + 4 }, new int[] { centery - 4, centery, centery + 4 }, 3);
             // left2ボタン
             rc = getButtonBoundsLeft2();
-            g.setColor(mOverviewButtonLeft2MouseDowned ? Color.gray : Color.lightGray);
+            g.setColor(mOverviewButtonLeft2MouseDowned ? cadencii.java.awt.PortUtil.Gray : cadencii.java.awt.PortUtil.LightGray);
             g.fillRect(rc.x, rc.y, rc.width, rc.height);
             g.setColor(AppManager.COLOR_BORDER);
             g.drawRect(rc.x, rc.y, rc.width, rc.height);
             centerx = rc.x + rc.width / 2 + 1;
             centery = rc.y + rc.height / 2 + 1;
-            g.setColor(mOverviewButtonLeft2MouseDowned ? Color.lightGray : Color.gray);
+            g.setColor(mOverviewButtonLeft2MouseDowned ? cadencii.java.awt.PortUtil.LightGray : cadencii.java.awt.PortUtil.Gray);
             g.drawPolyline(new int[] { centerx - 4, centerx + 4, centerx - 4 }, new int[] { centery - 4, centery, centery + 4 }, 3);
 
             // 右側のボタン類
@@ -627,23 +627,23 @@ namespace cadencii
             g.fillRect(width - btn_width - 3, 0, btn_width + 3, height);
             // right1ボタン
             rc = getButtonBoundsRight1();
-            g.setColor(mOverviewButtonRight1MouseDowned ? Color.gray : Color.lightGray);
+            g.setColor(mOverviewButtonRight1MouseDowned ? cadencii.java.awt.PortUtil.Gray : cadencii.java.awt.PortUtil.LightGray);
             g.fillRect(rc.x, rc.y, rc.width, rc.height);
             g.setColor(AppManager.COLOR_BORDER);
             g.drawRect(rc.x, rc.y, rc.width, rc.height);
             centerx = rc.x + rc.width / 2 + 1;
             centery = rc.y + rc.height / 2 + 1;
-            g.setColor(mOverviewButtonRight1MouseDowned ? Color.lightGray : Color.gray);
+            g.setColor(mOverviewButtonRight1MouseDowned ? cadencii.java.awt.PortUtil.LightGray : cadencii.java.awt.PortUtil.Gray);
             g.drawPolyline(new int[] { centerx + 4, centerx - 4, centerx + 4 }, new int[] { centery - 4, centery, centery + 4 }, 3);
             // right2ボタン
             rc = getButtonBoundsRight2();
-            g.setColor(mOverviewButtonRight2MouseDowned ? Color.gray : Color.lightGray);
+            g.setColor(mOverviewButtonRight2MouseDowned ? cadencii.java.awt.PortUtil.Gray : cadencii.java.awt.PortUtil.LightGray);
             g.fillRect(rc.x, rc.y, rc.width, rc.height);
             g.setColor(AppManager.COLOR_BORDER);
             g.drawRect(rc.x, rc.y, rc.width, rc.height);
             centerx = rc.x + rc.width / 2 + 1;
             centery = rc.y + rc.height / 2 + 1;
-            g.setColor(mOverviewButtonRight2MouseDowned ? Color.lightGray : Color.gray);
+            g.setColor(mOverviewButtonRight2MouseDowned ? cadencii.java.awt.PortUtil.LightGray : cadencii.java.awt.PortUtil.Gray);
             g.drawPolyline(new int[] { centerx - 4, centerx + 4, centerx - 4 }, new int[] { centery - 4, centery, centery + 4 }, 3);
         }
 
@@ -727,7 +727,7 @@ namespace cadencii
 
                             g.setStroke(getStrokeDefault());
                             if (!barcountstr.Equals("")) {
-                                g.setColor(Color.white);
+								g.setColor(cadencii.java.awt.PortUtil.White);
                                 g.setFont(EditorConfig.baseFont9);
                                 g.drawString(barcountstr, barcountx + 1 + xoffset, 1 + EditorConfig.baseFont9Height / 2 - EditorConfig.baseFont9OffsetHeight + 1);
                             }

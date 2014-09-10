@@ -59,6 +59,8 @@
     <Compile Include="advanced\bezier\BezierPickedSide.cs" />
     <Compile Include="advanced\bezier\BezierPoint.cs" />
     <Compile Include="advanced\PointD.cs" />
+    <Compile Include="models\PortUtil.cs" />
+    <Compile Include="advanced\PanelState.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

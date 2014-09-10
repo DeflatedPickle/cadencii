@@ -271,10 +271,10 @@ namespace cadencii.apputil
                 int h = size.height * 4;
                 b = new java.awt.Image(w, h);
                 g = new java.awt.Graphics(b);
-                g.setColor(java.awt.Color.white);
+                g.setColor(java.awt.PortUtil.White);
                 g.fillRect(0, 0, w, h);
                 g.setFont(font);
-                g.setColor(java.awt.Color.black);
+                g.setColor(cadencii.java.awt.PortUtil.Black);
                 g.drawString(PANGRAM, size.width, string_desty);
 
                 b2 = new BitmapEx(b);

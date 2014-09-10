@@ -103,7 +103,7 @@ namespace cadencii
 
             // 背景を塗りつぶす
             g.setStroke(getStrokeDefault());
-            g.setColor(Color.gray);
+            g.setColor(cadencii.java.awt.PortUtil.Gray);
             g.fillRect(rc.x, rc.y, rc.width, rc.height);
 
             if (AppManager.skipDrawingWaveformWhenPlaying && AppManager.isPlaying()) {
@@ -111,7 +111,7 @@ namespace cadencii
                 g.setColor(mBorderColor);
                 g.drawLine(0, 0, 0, height);
 
-                g.setColor(Color.black);
+                g.setColor(cadencii.java.awt.PortUtil.Black);
 				cadencii.java.awt.GraphicsUtil.drawStringEx(
                     g,
                     "(hidden for performance)",
@@ -124,7 +124,7 @@ namespace cadencii
 
             // スケール線を描く
             int half_height = height / 2;
-            g.setColor(Color.black);
+            g.setColor(cadencii.java.awt.PortUtil.Black);
             g.drawLine(0, half_height, width, half_height);
 
             // 描画コンテキストを用いて波形を描画
@@ -135,7 +135,7 @@ namespace cadencii
                 if (mAutoMaximize) {
                     context.draw(
                         g,
-                        Color.black,
+                        cadencii.java.awt.PortUtil.Black,
                         rc,
                         AppManager.clockFromXCoord(AppManager.keyWidth),
                         AppManager.clockFromXCoord(AppManager.keyWidth + width),
@@ -144,7 +144,7 @@ namespace cadencii
                 } else {
                     context.draw(
                         g,
-                        Color.black,
+                        cadencii.java.awt.PortUtil.Black,
                         rc,
                         AppManager.clockFromXCoord(AppManager.keyWidth),
                         AppManager.clockFromXCoord(AppManager.keyWidth + width),
@@ -161,7 +161,7 @@ namespace cadencii
             // ソングポジション
             int song_pos_x = AppManager.xCoordFromClocks(AppManager.getCurrentClock()) - AppManager.keyWidth;
             if (0 < song_pos_x) {
-                g.setColor(Color.white);
+				g.setColor(cadencii.java.awt.PortUtil.White);
                 g.setStroke(getStroke2px());
                 g.drawLine(song_pos_x, 0, song_pos_x, height);
             }

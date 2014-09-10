@@ -88,11 +88,11 @@ namespace cadencii
         /// <summary>
         /// ベジエ曲線の色
         /// </summary>
-		private static readonly Color COLOR_BEZIER_CURVE = cadencii.core2.PortUtil.Navy;
+		private static readonly Color COLOR_BEZIER_CURVE = cadencii.java.awt.PortUtil.Navy;
         /// <summary>
         /// ベジエ曲線の補助線の色
         /// </summary>
-        private static readonly Color COLOR_BEZIER_AUXILIARY = Color.orange;
+        private static readonly Color COLOR_BEZIER_AUXILIARY = cadencii.java.awt.PortUtil.Orange;
         /// <summary>
         /// ベジエ曲線の制御点の色
         /// </summary>
@@ -113,7 +113,7 @@ namespace cadencii
         /// <summary>
         /// データ点のハイライト色
         /// </summary>
-		private static readonly Color COLOR_DOT_HILIGHT = cadencii.core2.PortUtil.Coral;
+		private static readonly Color COLOR_DOT_HILIGHT = cadencii.java.awt.PortUtil.Coral;
         private static readonly Color COLOR_A244R255G023B012 = new Color(255, 23, 12, 244);
         private static readonly Color COLOR_A144R255G255B255 = new Color(255, 255, 255, 144);
         private static readonly Color COLOR_A072R255G255B255 = new Color(255, 255, 255, 72);
@@ -1071,10 +1071,10 @@ namespace cadencii
             int graph_height = getGraphHeight();
             Dimension size = new Dimension(width + 2, height);
             Graphics g = (Graphics)graphics;
-            Color brs_string = Color.black;
+            Color brs_string = cadencii.java.awt.PortUtil.Black;
             Color rect_curve = new Color(41, 46, 55);
             int centre = HEADER + graph_height / 2;
-			g.setColor(cadencii.core2.PortUtil.DarkGray);
+			g.setColor(cadencii.java.awt.PortUtil.DarkGray);
             g.fillRect(0, size.height - 2 * OFFSET_TRACK_TAB, size.width, 2 * OFFSET_TRACK_TAB);
             int numeric_view = mMouseValue;
 			Point p = pointToClient(cadencii.core2.PortUtil.getMousePosition());
@@ -1115,7 +1115,7 @@ namespace cadencii
                         Rectangle rc =
                             new Rectangle(x_at_left, ycoord,
                                            SINGER_ITEM_WIDTH, OFFSET_TRACK_TAB - 2);
-                        g.setColor(Color.lightGray);
+						g.setColor(cadencii.java.awt.PortUtil.LightGray);
                         g.fillRect(rc.x, rc.y, rc.width, rc.height);
                         g.setColor(COLOR_SINGERBOX_BORDER);
                         g.drawRect(rc.x, rc.y, rc.width, rc.height);
@@ -1144,7 +1144,7 @@ namespace cadencii
                         if (AppManager.itemSelection.isEventContains(selected, ve.InternalID)) {
                             g.setColor(AppManager.getHilightColor());
                         } else {
-                            g.setColor(Color.white);
+                            g.setColor(cadencii.java.awt.PortUtil.White);
                         }
                         g.fillRect(rc.x, rc.y, rc.width, rc.height);
                         g.setColor(COLOR_SINGERBOX_BORDER);
@@ -1392,7 +1392,7 @@ namespace cadencii
                                 Point pt = mMouseTracer.iterator().First();
                                 int xini = pt.X - stdx;
                                 int yini = pt.Y;
-                                g.setColor(Color.ORANGE);
+                                g.setColor(cadencii.java.awt.PortUtil.Orange);
                                 g.setStroke(getStroke2px());
 								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                                 g.drawLine(xini, yini, AppManager.xCoordFromClocks(clock_at_mouse), yCoordFromValue(value));
@@ -1503,7 +1503,7 @@ namespace cadencii
                     Font text_font = EditorConfig.baseFont9;
                     int text_font_height = EditorConfig.baseFont9Height;
                     int text_font_offset = EditorConfig.baseFont9OffsetHeight;
-                    Color font_color_normal = Color.black;
+                    Color font_color_normal = cadencii.java.awt.PortUtil.Black;
                     g.setColor(new Color(212, 212, 212));
                     g.fillRect(0, 0, key_width, size.height - 2 * OFFSET_TRACK_TAB);
 
@@ -1530,7 +1530,7 @@ namespace cadencii
                             n = "INT";
                         }
                         if (curve.equals(mSelectedCurve)) {
-                            g.setColor(Color.white);
+                            g.setColor(cadencii.java.awt.PortUtil.White);
                             g.drawString(n, rc_str_x, rc_str_y);
                         } else {
                             g.setColor(font_color_normal);
@@ -1543,7 +1543,7 @@ namespace cadencii
                 #region 現在のマーカー
                 int marker_x = AppManager.xCoordFromClocks(AppManager.getCurrentClock());
                 if (key_width <= marker_x && marker_x <= size.width) {
-                    g.setColor(Color.white);
+                    g.setColor(cadencii.java.awt.PortUtil.White);
                     g.setStroke(new Stroke(2f));
                     g.drawLine(marker_x, 0, marker_x, size.height - 18);
                     g.setStroke(new Stroke());
@@ -1563,7 +1563,7 @@ namespace cadencii
                         shift = 100;
                     }
                     g.setFont(EditorConfig.baseFont10Bold);
-                    g.setColor(Color.white);
+                    g.setColor(cadencii.java.awt.PortUtil.White);
 					cadencii.java.awt.GraphicsUtil.drawStringEx(g,
                                            mMouseValue + "",
                                            EditorConfig.baseFont10Bold,
@@ -1702,7 +1702,7 @@ namespace cadencii
                 // 多角形
                 g.setColor(brs);
                 g.fillPolygon(points);
-                g.setColor(Color.white);
+                g.setColor(cadencii.java.awt.PortUtil.White);
                 g.drawPolyline(points.xpoints, points.ypoints, points.npoints);
 
                 if (draw_env_points) {
@@ -1777,9 +1777,9 @@ namespace cadencii
         private void drawPreutteranceAndOverlap(Graphics g, int px_preutterance, int px_overlap, float preutterance, float overlap)
         {
             int graph_height = getGraphHeight();
-			g.setColor(cadencii.core2.PortUtil.Orange);
+			g.setColor(cadencii.java.awt.PortUtil.Orange);
             g.drawLine(px_preutterance, HEADER + 1, px_preutterance, graph_height + HEADER);
-			g.setColor(cadencii.core2.PortUtil.LawnGreen);
+			g.setColor(cadencii.java.awt.PortUtil.LawnGreen);
             g.drawLine(px_overlap, HEADER + 1, px_overlap, graph_height + HEADER);
 
             string s_pre = getFlagTitle(true, preutterance);
@@ -1791,19 +1791,19 @@ namespace cadencii
             Dimension ovl_bounds = getFlagBounds(s_ovl);
 
             Color pen = new Color(0, 0, 0, 50);
-			Color transp = new Color(cadencii.core2.PortUtil.Orange.getRed(), cadencii.core2.PortUtil.Orange.getGreen(), cadencii.core2.PortUtil.Orange.getBlue(), 50);
+			Color transp = new Color(cadencii.java.awt.PortUtil.Orange.getRed(), cadencii.java.awt.PortUtil.Orange.getGreen(), cadencii.java.awt.PortUtil.Orange.getBlue(), 50);
             g.setColor(transp);
             g.fillRect(px_preutterance, OFFSET_PRE - FLAG_SPACE, pre_bounds.width, pre_bounds.height + FLAG_SPACE * 2);
             g.setColor(pen);
             g.drawRect(px_preutterance, OFFSET_PRE - FLAG_SPACE, pre_bounds.width, pre_bounds.height + FLAG_SPACE * 2);
-			transp = new Color(cadencii.core2.PortUtil.LawnGreen.getRed(), cadencii.core2.PortUtil.LawnGreen.getGreen(), cadencii.core2.PortUtil.LawnGreen.getBlue(), 50);
+			transp = new Color(cadencii.java.awt.PortUtil.LawnGreen.getRed(), cadencii.java.awt.PortUtil.LawnGreen.getGreen(), cadencii.java.awt.PortUtil.LawnGreen.getBlue(), 50);
             g.setColor(transp);
             g.fillRect(px_overlap, OFFSET_OVL - FLAG_SPACE, ovl_bounds.width, ovl_bounds.height + FLAG_SPACE * 2);
             g.setColor(pen);
             g.drawRect(px_overlap, OFFSET_OVL - FLAG_SPACE, ovl_bounds.width, ovl_bounds.height + FLAG_SPACE * 2);
 
             g.setFont(font);
-            g.setColor(Color.black);
+            g.setColor(cadencii.java.awt.PortUtil.Black);
             g.drawString(s_pre, px_preutterance + 1, OFFSET_PRE + font_height / 2 - font_offset + 1);
             g.drawString(s_ovl, px_overlap + 1, OFFSET_OVL + font_height / 2 - font_offset + 1);
         }
@@ -2090,9 +2090,9 @@ namespace cadencii
             int panel_width = render_required ? destRect.width - 10 : destRect.width;
             Color panel_color = enabled ? hilight : new Color(125, 123, 124);
             Color button_color = enabled ? render_button_hilight : new Color(125, 123, 124);
-            Color panel_title = Color.black;
-            Color button_title = selected ? Color.white : Color.black;
-            Color border = selected ? Color.white : new Color(118, 123, 138);
+            Color panel_title = cadencii.java.awt.PortUtil.Black;
+            Color button_title = selected ? cadencii.java.awt.PortUtil.White : cadencii.java.awt.PortUtil.Black;
+            Color border = selected ? cadencii.java.awt.PortUtil.White : new Color(118, 123, 138);
 
             // 背景(選択されている場合)
             if (selected) {
@@ -2260,7 +2260,7 @@ namespace cadencii
                                     int edit_y = oy - graph_height * (editing - min) / (max - min);
                                     g.setColor(COLOR_A244R255G023B012);
                                     g.fillRect(x, edit_y, VEL_BAR_WIDTH, oy - edit_y);
-                                    g.setColor(Color.white);
+                                    g.setColor(cadencii.java.awt.PortUtil.White);
                                     g.drawString(editing + "", x + VEL_BAR_WIDTH, (edit_y > oy - 20) ? oy - 20 : edit_y);
                                 }
                             }
@@ -2302,7 +2302,7 @@ namespace cadencii
 #endif
                 int visibleMinX = AppManager.keyWidth;
                 int visibleMaxX = mMainWindow.pictPianoRoll.getWidth() + AppManager.keyWidth + AppManager.keyOffset;
-                Color hilight = Color.blue;// AppManager.getHilightColor();
+			Color hilight = cadencii.java.awt.PortUtil.Blue;// AppManager.getHilightColor();
                 int chains_count = chains.Count;
                 for (int i = 0; i < chains_count; i++) {
                     BezierChain target_chain = chains[i];
@@ -2524,7 +2524,7 @@ namespace cadencii
                     d.setFill(true);
                     d.setDotMode(LineGraphDrawer.DOTMODE_NO);
                     d.setDrawLine(false);
-                    d.setLineColor(Color.white);
+                    d.setLineColor(cadencii.java.awt.PortUtil.White);
                     d.setDrawLine(true);
 
                     int draw_width = x2 - x1;
@@ -2598,8 +2598,8 @@ namespace cadencii
             d.setBaseLineY(oy);
             d.setDotSize(DOT_WID);
             d.setFillColor(color);
-            d.setDotColor(Color.white);
-            d.setLineColor(Color.white);
+            d.setDotColor(cadencii.java.awt.PortUtil.White);
+            d.setLineColor(cadencii.java.awt.PortUtil.White);
             int dot_mode = is_front ? LineGraphDrawer.DOTMODE_NEAR : LineGraphDrawer.DOTMODE_NO;
             if (pmouse.Y < 0 || height < pmouse.Y) {
                 dot_mode = LineGraphDrawer.DOTMODE_NO;

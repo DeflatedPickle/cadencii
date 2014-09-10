@@ -121,7 +121,6 @@
     <Compile Include="FormMidiImExportConfig.cs" />
     <Compile Include="IAmplifierView.cs" />
     <Compile Include="MidiPortConfig.cs" />
-    <Compile Include="PanelState.cs" />
     <Compile Include="EditorConfig.cs" />
     <Compile Include="debug.cs" />
     <Compile Include="CDebug.cs" />

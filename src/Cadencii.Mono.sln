@@ -39,9 +39,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.xml", "cadencii.xm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.awt", "..\..\..\..\..\svn\cadencii\src\cadencii.awt\cadencii.awt.csproj", "{711A691F-2113-4EC1-8D4C-C2668C3EA219}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.core2", "..\..\..\..\..\svn\cadencii\src\cadencii.core2\cadencii.core2.csproj", "{7DE0B7EA-E478-4687-9764-B44B8258F255}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.dsp", "..\..\..\..\..\svn\cadencii\src\cadencii.dsp\cadencii.dsp.csproj", "{18E7D0BD-734D-482E-BAE8-2512147D88F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.core2", "..\..\..\..\..\svn\cadencii\src\cadencii.core2\cadencii.core2.csproj", "{7DE0B7EA-E478-4687-9764-B44B8258F255}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -137,7 +137,6 @@ Global
 		{673347F3-6FC2-4F82-9273-BF158E0F8CB1} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
 		{23C7549D-A0FD-402A-8470-95DB4BE6081C} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
 		{711A691F-2113-4EC1-8D4C-C2668C3EA219} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
-		{7DE0B7EA-E478-4687-9764-B44B8258F255} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Cadencii\Cadencii.csproj

@@ -576,7 +576,7 @@ namespace cadencii
             // txtOffset
             // 
             this.txtOffset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.txtOffset.ForeColor = System.Drawing.Color.Black;
+            this.txtOffset.ForeColor = cadencii.java.awt.PortUtil.Black.ToNative ();
             this.txtOffset.Location = new System.Drawing.Point(81, 42);
             this.txtOffset.Name = "txtOffset";
             this.txtOffset.Size = new System.Drawing.Size(100, 19);

@@ -37,7 +37,6 @@
     <Compile Include="EditorConfig.cs" />
     <Compile Include="enum\RendererKindUtil.cs" />
     <Compile Include="PropertyPanelState.cs" />
-    <Compile Include="ValuePairOfStringArrayOfKeys.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

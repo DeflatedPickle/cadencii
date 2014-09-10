@@ -28,7 +28,7 @@ namespace cadencii
         const int m_height = 380;
         const int FONT_SIZE = 10;
 
-        private readonly Color m_background = Color.white;
+		private readonly Color m_background = cadencii.java.awt.PortUtil.White;
 
         private double m_scroll_started;
         private AuthorListEntry[] m_credit;
@@ -42,7 +42,7 @@ namespace cadencii
         private java.awt.Image m_scroll = null;
         private java.awt.Image m_scroll_with_id = null;
         private string m_app_name = "";
-        private Color m_app_name_color = Color.black;
+        private Color m_app_name_color = cadencii.java.awt.PortUtil.Black;
         private Color m_version_color = new Color(105, 105, 105);
         private bool m_shadow_enablde = false;
         private System.Windows.Forms.Timer timer;
@@ -169,7 +169,7 @@ namespace cadencii
             //StringFormat sf = new StringFormat();
             Image ret = new Image((int)width, (int)(40f + m_credit.Length * height * 1.1f));
             Graphics g = new Graphics(ret);
-            g.setColor(Color.white);
+			g.setColor(cadencii.java.awt.PortUtil.White);
             g.fillRect(0, 0, ret.getWidth(null), ret.getHeight(null));
             int align = 0;
             int valign = 0;
@@ -185,7 +185,7 @@ namespace cadencii
                     align,
                     valign);
             }
-            g.setColor(Color.black);
+            g.setColor(cadencii.java.awt.PortUtil.Black);
 			cadencii.java.awt.GraphicsUtil.drawStringEx(
                 g,
                 m_app_name,
@@ -211,7 +211,7 @@ namespace cadencii
                         align,
                         valign);
                 }
-                g.setColor(Color.black);
+                g.setColor(cadencii.java.awt.PortUtil.Black);
 				cadencii.java.awt.GraphicsUtil.drawStringEx(
                     g,
                     str,
@@ -290,7 +290,7 @@ namespace cadencii
         {
             Graphics g = (Graphics)g1;
             g.clipRect(0, 0, this.Width, m_height);
-            g.setColor(Color.white);
+			g.setColor(cadencii.java.awt.PortUtil.White);
             g.fillRect(0, 0, this.Width, this.Height);
             //g.clearRect( 0, 0, getWidth(), getHeight() );
             if (m_credit_mode) {

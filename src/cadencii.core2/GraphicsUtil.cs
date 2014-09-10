@@ -16,7 +16,7 @@ namespace cadencii.java.awt
             if (stroke is Stroke) {
 				pen = (System.Drawing.Pen) ((Stroke)stroke).NativePen;
             } else {
-                pen = new System.Drawing.Pen(System.Drawing.Color.Black);
+				pen = new System.Drawing.Pen(cadencii.java.awt.PortUtil.Black.ToNative ());
             }
             ((System.Drawing.Graphics) g.NativeGraphics).DrawBezier(pen, new System.Drawing.PointF(x1, y1),
                                               new System.Drawing.PointF(ctrlx1, ctrly1),

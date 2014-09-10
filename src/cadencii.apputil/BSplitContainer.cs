@@ -196,7 +196,7 @@ namespace cadencii.apputil
             this.m_panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.m_panel2.BorderColor = System.Drawing.Color.Black;
+            this.m_panel2.BorderColor = cadencii.java.awt.PortUtil.Black.ToNative ();
             this.m_panel2.Location = new System.Drawing.Point(0, 103);
             this.m_panel2.Margin = new System.Windows.Forms.Padding(0);
             this.m_panel2.Name = "m_panel2";
@@ -210,7 +210,7 @@ namespace cadencii.apputil
             this.m_panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.m_panel1.BorderColor = System.Drawing.Color.Black;
+			this.m_panel1.BorderColor = cadencii.java.awt.PortUtil.Black.ToNative ();
             this.m_panel1.Location = new System.Drawing.Point(0, 0);
             this.m_panel1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.m_panel1.Name = "m_panel1";

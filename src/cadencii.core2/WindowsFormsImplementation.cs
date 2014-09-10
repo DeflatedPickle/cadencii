@@ -145,9 +145,9 @@ namespace cadencii.java.awt
 	public class GraphicsAdapterWF : Graphics.GraphicsAdapter
 	{
 		System.Drawing.Graphics nativeGraphics;
-		Color color = Color.black;
+		Color color = cadencii.java.awt.PortUtil.Black;
 		Stroke stroke = new Stroke ();
-		System.Drawing.SolidBrush brush = new System.Drawing.SolidBrush (System.Drawing.Color.Black);
+		System.Drawing.SolidBrush brush = new System.Drawing.SolidBrush (cadencii.java.awt.PortUtil.Black.ToNative ());
 		System.Drawing.Font m_font = new System.Drawing.Font ("Arial", 10);
 
 		public GraphicsAdapterWF ()
@@ -363,7 +363,7 @@ namespace cadencii.java.awt
 
 		public StrokeAdapterWF ()
 		{
-			pen = new System.Drawing.Pen (System.Drawing.Color.Black);
+			pen = new System.Drawing.Pen (cadencii.java.awt.PortUtil.Black.ToNative ());
 		}
 
 		public StrokeAdapterWF (float width)
@@ -378,7 +378,7 @@ namespace cadencii.java.awt
 
 		public StrokeAdapterWF (float width, int cap, int join, float miterlimit)
 		{
-			pen = new System.Drawing.Pen (System.Drawing.Color.Black, width);
+			pen = new System.Drawing.Pen (cadencii.java.awt.PortUtil.Black.ToNative (), width);
 			System.Drawing.Drawing2D.LineCap linecap = System.Drawing.Drawing2D.LineCap.Flat;
 			if (cap == 1) {
 				linecap = System.Drawing.Drawing2D.LineCap.Round;

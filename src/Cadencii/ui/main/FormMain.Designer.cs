@@ -2284,7 +2284,7 @@ namespace cadencii
             this.splitContainerProperty.Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainerProperty.Panel1.BorderColor = System.Drawing.Color.Black;
+            this.splitContainerProperty.Panel1.BorderColor = cadencii.java.awt.PortUtil.Black.ToNative ();
             this.splitContainerProperty.Panel1.Location = new System.Drawing.Point(0, 0);
             this.splitContainerProperty.Panel1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 4);
             this.splitContainerProperty.Panel1.Name = "m_panel1";
@@ -2297,7 +2297,7 @@ namespace cadencii
             this.splitContainerProperty.Panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainerProperty.Panel2.BorderColor = System.Drawing.Color.Black;
+            this.splitContainerProperty.Panel2.BorderColor = cadencii.java.awt.PortUtil.Black.ToNative ();
             this.splitContainerProperty.Panel2.Location = new System.Drawing.Point(46, 0);
             this.splitContainerProperty.Panel2.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainerProperty.Panel2.Name = "m_panel2";
@@ -2325,7 +2325,7 @@ namespace cadencii
             this.splitContainer2.Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer2.Panel1.BorderColor = System.Drawing.Color.Black;
+            this.splitContainer2.Panel1.BorderColor = cadencii.java.awt.PortUtil.Black.ToNative ();
             this.splitContainer2.Panel1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer2.Panel1.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainer2.Panel1.Name = "m_panel1";
@@ -2337,7 +2337,7 @@ namespace cadencii
             // 
             this.splitContainer2.Panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer2.Panel2.BorderColor = System.Drawing.Color.Black;
+            this.splitContainer2.Panel2.BorderColor = cadencii.java.awt.PortUtil.Black.ToNative ();
             this.splitContainer2.Panel2.Location = new System.Drawing.Point(0, 29);
             this.splitContainer2.Panel2.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainer2.Panel2.Name = "m_panel2";
@@ -2366,7 +2366,7 @@ namespace cadencii
             this.splitContainer1.Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Panel1.BorderColor = System.Drawing.Color.Black;
+            this.splitContainer1.Panel1.BorderColor = cadencii.java.awt.PortUtil.Black.ToNative ();
             this.splitContainer1.Panel1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Panel1.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainer1.Panel1.Name = "m_panel1";
@@ -2378,7 +2378,7 @@ namespace cadencii
             // 
             this.splitContainer1.Panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Panel2.BorderColor = System.Drawing.Color.Black;
+            this.splitContainer1.Panel2.BorderColor = cadencii.java.awt.PortUtil.Black.ToNative ();
             this.splitContainer1.Panel2.Location = new System.Drawing.Point(0, 54);
             this.splitContainer1.Panel2.Margin = new System.Windows.Forms.Padding(0);
             this.splitContainer1.Panel2.Name = "m_panel2";

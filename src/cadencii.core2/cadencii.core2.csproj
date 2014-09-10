@@ -40,6 +40,7 @@
     <Compile Include="WindowsFormsImplementation.cs" />
     <Compile Include="GraphicsUtil.cs" />
     <Compile Include="BitmapEx.cs" />
+    <Compile Include="ValuePairOfStringArrayOfKeys.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
