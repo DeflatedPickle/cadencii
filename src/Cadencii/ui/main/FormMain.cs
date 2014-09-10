@@ -6248,7 +6248,7 @@ namespace cadencii
                             serr.println("FormMain#openVsqCor; ex=" + ex);
                             AppManager.showMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
                                                        _("Info."),
-                                                       cadencii.core2.PortUtil.OK_OPTION,
+                                                       cadencii.java.awt.AwtHost.OK_OPTION,
                                                        cadencii.windows.forms.Utility.MSGBOX_INFORMATION_MESSAGE);
                             return true;
                         }
@@ -6290,7 +6290,7 @@ namespace cadencii
                         serr.println("FormMain#openVsqCor; ex=" + ex);
                         AppManager.showMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
                                                    _("Info."),
-                                                   cadencii.core2.PortUtil.OK_OPTION,
+							cadencii.java.awt.AwtHost.OK_OPTION,
                                                    cadencii.windows.forms.Utility.MSGBOX_INFORMATION_MESSAGE);
                         return true;
                     }
@@ -10534,7 +10534,7 @@ namespace cadencii
                 AppManager.showMessageBox(
                     _("invalid rendering region; start>=end"),
                     _("Error"),
-                    cadencii.core2.PortUtil.OK_OPTION,
+					cadencii.java.awt.AwtHost.OK_OPTION,
                     cadencii.windows.forms.Utility.MSGBOX_INFORMATION_MESSAGE);
                 return;
             }
@@ -10818,7 +10818,7 @@ namespace cadencii
                 AppManager.showMessageBox(
                     _("invalid rendering region; start>=end"),
                     _("Error"),
-                    cadencii.core2.PortUtil.OK_OPTION,
+					cadencii.java.awt.AwtHost.OK_OPTION,
                     cadencii.windows.forms.Utility.MSGBOX_INFORMATION_MESSAGE);
                 return;
             }
@@ -14098,7 +14098,7 @@ namespace cadencii
                 AppManager.showMessageBox(
                     _("Log file has not generated yet."),
                     _("Info"),
-                    cadencii.core2.PortUtil.OK_OPTION,
+					cadencii.java.awt.AwtHost.OK_OPTION,
                     cadencii.windows.forms.Utility.MSGBOX_INFORMATION_MESSAGE);
                 return;
             }

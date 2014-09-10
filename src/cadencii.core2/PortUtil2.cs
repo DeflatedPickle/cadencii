@@ -21,29 +21,20 @@ namespace cadencii.core2
 {
     public static class PortUtil
     {
-		
-        public const int YES_OPTION = 0;
-        public const int NO_OPTION = 1;
-        public const int CANCEL_OPTION = 2;
-        public const int OK_OPTION = 0;
-        public const int CLOSED_OPTION = -1;
-
         public static Rectangle getScreenBounds(System.Windows.Forms.Control w)
         {
-            System.Drawing.Rectangle rc = System.Windows.Forms.Screen.GetWorkingArea(w);
-            return new Rectangle(rc.X, rc.Y, rc.Width, rc.Height);
+		return Screen.Instance.getScreenBounds (w);
         }
 
 		
         public static void setMousePosition(Point p)
         {
-            System.Windows.Forms.Cursor.Position = new System.Drawing.Point(p.X, p.Y);
+		Screen.Instance.setMousePosition (p);
         }
 
         public static Point getMousePosition()
         {
-            System.Drawing.Point p = System.Windows.Forms.Control.MousePosition;
-            return new Point(p.X, p.Y);
+		return Screen.Instance.getMousePosition ();
         }
 
         /// <summary>
@@ -53,21 +44,12 @@ namespace cadencii.core2
         /// <returns></returns>
         public static bool isPointInScreens(Point p)
         {
-            foreach (System.Windows.Forms.Screen screen in System.Windows.Forms.Screen.AllScreens) {
-                System.Drawing.Rectangle rc = screen.WorkingArea;
-                if (rc.X <= p.X && p.X <= rc.X + rc.Width) {
-                    if (rc.Y <= p.Y && p.Y <= rc.Y + rc.Height) {
-                        return true;
-                    }
-                }
-            }
-            return false;
+            return Screen.Instance.isPointInScreens (p);
         }
 
         public static Rectangle getWorkingArea(System.Windows.Forms.Form w)
         {
-            System.Drawing.Rectangle r = System.Windows.Forms.Screen.GetWorkingArea(w);
-            return new Rectangle(r.X, r.Y, r.Width, r.Height);
+        	return Screen.Instance.getWorkingArea (w);
         }
 		
         /// <summary>
@@ -78,14 +60,7 @@ namespace cadencii.core2
         /// <returns></returns>
         public static string getComponentName(Object obj)
         {
-            if (obj == null) {
-                return "";
-            }
-            if (obj is System.Windows.Forms.Control) {
-                return ((System.Windows.Forms.Control)obj).Name;
-            } else {
-                return "";
-            }
+        	return AwtHost.Current.getComponentName (obj);
         }
     }
 }

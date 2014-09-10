@@ -99,10 +99,6 @@
       <Project>{7DE0B7EA-E478-4687-9764-B44B8258F255}</Project>
       <Name>cadencii.core2</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.core3\cadencii.core3.csproj">
-      <Project>{BF3AE944-08FC-441E-9582-756CFC72C838}</Project>
-      <Name>cadencii.core3</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Cadencii.GuiCore\Cadencii.GuiCore.csproj">
       <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
       <Name>Cadencii.GuiCore</Name>
@@ -110,6 +106,10 @@
     <ProjectReference Include="..\cadencii.media.windows\cadencii.media.windows.csproj">
       <Project>{84B71038-CB91-4456-8C90-31E73BC93D7C}</Project>
       <Name>cadencii.media.windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cadencii.uiconfig\cadencii.uiconfig.csproj">
+      <Project>{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}</Project>
+      <Name>cadencii.uiconfig</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

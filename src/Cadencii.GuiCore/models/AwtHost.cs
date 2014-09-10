@@ -20,19 +20,25 @@ using System.Linq;
 
 namespace cadencii.java.awt
 {
-	public class AwtHost
+	public abstract class AwtHost
 	{
+		public const int YES_OPTION = 0;
+		public const int NO_OPTION = 1;
+		public const int CANCEL_OPTION = 2;
+		public const int OK_OPTION = 0;
+		public const int CLOSED_OPTION = -1;
+
 		static AwtHost ()
 		{
-			var type = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (a => a.GetTypes ()).First (t => t.IsSubclassOf (typeof (AwtHost)));
-			Current = (AwtHost) Activator.CreateInstance (type);
+			var type = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (a => a.GetTypes ()).First (t => t.IsSubclassOf (typeof(AwtHost)));
+			Current = (AwtHost)Activator.CreateInstance (type);
 		}
+
+		public abstract string getComponentName (Object obj);
 
 		public static AwtHost Current { get; set; }
 
 		protected Dictionary<Type,Type> Types = new Dictionary<Type,Type> ();
-
-		BindingFlags bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
 
 		public T New<T> (params object[] args)
 		{
@@ -44,7 +50,7 @@ namespace cadencii.java.awt
 				else
 					throw new InvalidOperationException (string.Format ("Cannot find {0} from registered types", typeof(T)));
 			}
-			return (T) Activator.CreateInstance (t, args);
+			return (T)Activator.CreateInstance (t, args);
 		}
 	}
 }

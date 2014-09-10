@@ -36,6 +36,24 @@ namespace cadencii.java.awt
 		{
 			Types [typeof(Image.ImageAdapter)] = typeof(ImageAdapterWF);
 		}
+
+        /// <summary>
+        /// java:コンポーネントのnameプロパティを返します。C#:コントロールのNameプロパティを返します。
+        /// objがnullだったり、型がComponent/Controlでない場合は空文字を返します。
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override string getComponentName(Object obj)
+        {
+            if (obj == null) {
+                return "";
+            }
+            if (obj is System.Windows.Forms.Control) {
+                return ((System.Windows.Forms.Control)obj).Name;
+            } else {
+                return "";
+            }
+        }
 	}
 
 	abstract class ImageAdapterWF : Image.ImageAdapter
@@ -580,6 +598,53 @@ namespace cadencii.java.awt
 				ret.NativeRegion = (System.Drawing.Region)region.Clone ();
 			}
 			return ret;
+		}
+	}
+
+	public class ScreenAdapterWF : Screen.ScreenAdapter
+	{
+		public override Rectangle getScreenBounds (object nativeControl)
+		{
+			var w = (System.Windows.Forms.Control)nativeControl;
+			System.Drawing.Rectangle rc = System.Windows.Forms.Screen.GetWorkingArea (w);
+			return new Rectangle (rc.X, rc.Y, rc.Width, rc.Height);
+		}
+
+		
+		public override void setMousePosition (Point p)
+		{
+			System.Windows.Forms.Cursor.Position = new System.Drawing.Point (p.X, p.Y);
+		}
+
+		public override Point getMousePosition ()
+		{
+			System.Drawing.Point p = System.Windows.Forms.Control.MousePosition;
+			return new Point (p.X, p.Y);
+		}
+
+		/// <summary>
+		/// 指定した点が，コンピュータの画面のいずれかに含まれているかどうかを調べます
+		/// </summary>
+		/// <param name="p"></param>
+		/// <returns></returns>
+		public override bool isPointInScreens (Point p)
+		{
+			foreach (System.Windows.Forms.Screen screen in System.Windows.Forms.Screen.AllScreens) {
+				System.Drawing.Rectangle rc = screen.WorkingArea;
+				if (rc.X <= p.X && p.X <= rc.X + rc.Width) {
+					if (rc.Y <= p.Y && p.Y <= rc.Y + rc.Height) {
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+
+		public override Rectangle getWorkingArea (object nativeWindow)
+		{
+			var w = (System.Windows.Forms.Form)nativeWindow;
+			System.Drawing.Rectangle r = System.Windows.Forms.Screen.GetWorkingArea (w);
+			return new Rectangle (r.X, r.Y, r.Width, r.Height);
 		}
 	}
 }
