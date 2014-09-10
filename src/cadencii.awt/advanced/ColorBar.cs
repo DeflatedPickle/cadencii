@@ -12,7 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Drawing;
+using cadencii.java.awt;
 
 namespace cadencii.apputil
 {
@@ -43,7 +43,7 @@ namespace cadencii.apputil
         rflow_rainbow = 20,
     }
 
-    public static partial class Util
+    public static partial class ColorUtil
     {
         const double OPORT_OP_PI = 3.141592653589793238462643383279502884197169399;
         const double OPORT_OP_PI2 = 3.141592653589793238462643383279502884197169399 * 2.0;
@@ -124,7 +124,7 @@ namespace cadencii.apputil
                     h = oport_colorbar_rainbow_banded_h(y);
                     s = oport_colorbar_rainbow_banded_s(y);
                     v = oport_colorbar_rainbow_banded_v(y);
-                    Util.HsvToRgb(h, s, v, out r, out g, out b);
+                    ColorUtil.HsvToRgb(h, s, v, out r, out g, out b);
                     red = (int)(r * 255.0);
                     green = (int)(g * 255.0);
                     blue = (int)(b * 255.0);
@@ -143,7 +143,7 @@ namespace cadencii.apputil
                     h = oport_colorbar_rainbow_striped_h(y);
                     s = oport_colorbar_rainbow_striped_s(y);
                     v = oport_colorbar_rainbow_striped_v(y);
-                    Util.HsvToRgb(h, s, v, out r, out g, out  b);
+                    ColorUtil.HsvToRgb(h, s, v, out r, out g, out  b);
                     red = (int)(r * 255.0);
                     green = (int)(g * 255.0);
                     blue = (int)(b * 255.0);
@@ -189,7 +189,7 @@ namespace cadencii.apputil
                 blue = oport_colorbar_rflow_rainbow_blue(y);
                 break;
             }
-            return Color.FromArgb(red, green, blue);
+            return new Color(red, green, blue);
         }
 
         static int oport_colorbar_rgb2col(int red, int green, int blue)
@@ -1185,6 +1185,73 @@ namespace cadencii.apputil
                 res = 0;
             }
             return res;
+        }
+		
+        public static Color HsvToColor(double h, double s, double v)
+        {
+            double dr, dg, db;
+            HsvToRgb(h, s, v, out dr, out dg, out db);
+            return new Color((int)(dr * 255), (int)(dg * 255), (int)(db * 255));
+        }
+
+        public static void HsvToRgb(double h, double s, double v, out byte r, out byte g, out byte b)
+        {
+            double dr, dg, db;
+            HsvToRgb(h, s, v, out dr, out dg, out db);
+            r = (byte)(dr * 255);
+            g = (byte)(dg * 255);
+            b = (byte)(db * 255);
+        }
+
+        public static void HsvToRgb(double h, double s, double v, out double r, out double g, out double b)
+        {
+            double f, p, q, t, hh;
+            int hi;
+            r = g = b = 0.0;
+            if (s == 0) {
+                r = v;
+                g = v;
+                b = v;
+            } else {
+                hh = h * 360.0;
+                hi = (int)(hh / 60.0) % 6;
+                f = hh / 60.0 - (double)(hi);
+                p = v * (1.0 - s);
+                q = v * (1.0 - f * s);
+                t = v * (1.0 - (1.0 - f) * s);
+                switch (hi) {
+                    case 0:
+                    r = v;
+                    g = t;
+                    b = p;
+                    break;
+                    case 1:
+                    r = q;
+                    g = v;
+                    b = p;
+                    break;
+                    case 2:
+                    r = p;
+                    g = v;
+                    b = t;
+                    break;
+                    case 3:
+                    r = p;
+                    g = q;
+                    b = v;
+                    break;
+                    case 4:
+                    r = t;
+                    g = p;
+                    b = v;
+                    break;
+                    case 5:
+                    r = v;
+                    g = p;
+                    b = q;
+                    break;
+                }
+            }
         }
     }
 

@@ -69,6 +69,7 @@
     <Compile Include="VstSdk.cs" />
     <Compile Include="KanaDeRomanization.cs" />
     <Compile Include="dsp\v1\generator\WaveGenerator.cs" />
+    <Compile Include="dsp\v1\generator\EmptyWaveGenerator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

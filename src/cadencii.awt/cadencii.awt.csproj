@@ -57,6 +57,9 @@
     <Compile Include="models\bezier\BezierPickedSide.cs" />
     <Compile Include="models\bezier\BezierPoint.cs" />
     <Compile Include="models\bezier\AttachedCurve.cs" />
+    <Compile Include="advanced\PolylineDrawer.cs" />
+    <Compile Include="advanced\CubicSpline.cs" />
+    <Compile Include="advanced\ColorBar.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -68,5 +71,6 @@
   <ItemGroup>
     <Folder Include="models\" />
     <Folder Include="models\bezier\" />
+    <Folder Include="advanced\" />
   </ItemGroup>
 </Project>

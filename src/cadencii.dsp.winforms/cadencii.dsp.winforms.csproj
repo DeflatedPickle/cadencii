@@ -51,7 +51,6 @@
     <Compile Include="dsp\v1\generator\AquesTone2WaveGenerator.cs" />
     <Compile Include="dsp\v1\generator\AquesToneWaveGenerator.cs" />
     <Compile Include="dsp\v1\generator\AquesToneWaveGeneratorBase.cs" />
-    <Compile Include="dsp\v1\generator\EmptyWaveGenerator.cs" />
     <Compile Include="dsp\v1\generator\UtauWaveGenerator.cs" />
     <Compile Include="dsp\v1\generator\VConnectWaveGenerator.cs" />
     <Compile Include="dsp\v1\generator\VocaloidWaveGenerator.cs" />

@@ -78,13 +78,9 @@
     <Compile Include="BHScrollBar.Designer.cs">
       <DependentUpon>BHScrollBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="ColorBar.cs" />
-    <Compile Include="CubicSpline.cs" />
     <Compile Include="DockPanelContainer.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ISO639.cs" />
-    <Compile Include="PolylineDrawer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BSplitContainer.cs">
       <SubType>Component</SubType>
