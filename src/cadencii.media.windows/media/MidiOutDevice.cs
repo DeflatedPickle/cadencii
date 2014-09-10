@@ -13,7 +13,7 @@
  */
 using System;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 
 using cadencii;
 
@@ -108,13 +108,15 @@ namespace cadencii.media
                 hdr.dwBufferLength = (uint)data.Length;
                 hdr.dwFlags = 0;
                 win32.midiOutPrepareHeader(m_handle, ref hdr, size);
-                while ((hdr.dwFlags & win32.WHDR_PREPARED) != win32.WHDR_PREPARED) {
-                    Application.DoEvents();
-                }
+		// FIXME: enable these
+                //while ((hdr.dwFlags & win32.WHDR_PREPARED) != win32.WHDR_PREPARED) {
+                //    Application.DoEvents();
+                //}
                 win32.midiOutLongMsg(m_handle, ref hdr, size);
-                while ((hdr.dwFlags & win32.WHDR_DONE) != win32.WHDR_DONE) {
-                    Application.DoEvents();
-                }
+		// FIXME: enable these
+                //while ((hdr.dwFlags & win32.WHDR_DONE) != win32.WHDR_DONE) {
+                //    Application.DoEvents();
+                //}
                 win32.midiOutUnprepareHeader(m_handle, ref hdr, size);
             } catch (Exception ex) {
                 serr.println("MidiOutDevice#SendLong; ex=" + ex);

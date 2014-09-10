@@ -19,7 +19,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 #if DEBUG
-using System.Windows.Forms;
+//using System.Windows.Forms;
 #endif
 
 using cadencii;
