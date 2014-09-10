@@ -48,9 +48,9 @@
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
       <Name>cadencii.core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\cadencii.awt\cadencii.awt.csproj">
+    <ProjectReference Include="..\Cadencii.GuiCore\Cadencii.GuiCore.csproj">
       <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
-      <Name>cadencii.awt</Name>
+      <Name>Cadencii.GuiCore</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

@@ -39,7 +39,6 @@
     <Compile Include="core\wingdi.cs" />
     <Compile Include="core\winmm.cs" />
     <Compile Include="media\PlaySound.cs" />
-    <Compile Include="apputil\CursorUtil.cs" />
     <Compile Include="media\VCM.cs" />
     <Compile Include="media\AviWriterVcm.cs" />
     <Compile Include="media\AviWriterVfw.cs" />
@@ -53,6 +52,7 @@
     <Compile Include="media\MidiOutDevice.cs" />
     <Compile Include="media\IAviWriter.cs" />
     <Compile Include="winmmhelp.cs" />
+    <Compile Include="apputil\CursorUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

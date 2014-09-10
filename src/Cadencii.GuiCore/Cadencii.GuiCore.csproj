@@ -5,8 +5,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>cadencii.awt</RootNamespace>
-    <AssemblyName>cadencii.awt</AssemblyName>
+    <RootNamespace>Cadencii.GuiCore</RootNamespace>
+    <AssemblyName>Cadencii.GuiCore</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

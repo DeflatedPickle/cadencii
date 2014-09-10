@@ -35,7 +35,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.vsq", "cadencii.vs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.xml", "cadencii.xml\cadencii.xml.csproj", "{23C7549D-A0FD-402A-8470-95DB4BE6081C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.awt", "..\..\..\..\..\svn\cadencii\src\cadencii.awt\cadencii.awt.csproj", "{711A691F-2113-4EC1-8D4C-C2668C3EA219}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.GuiCore", "..\..\..\..\..\svn\cadencii\src\Cadencii.GuiCore\Cadencii.GuiCore.csproj", "{711A691F-2113-4EC1-8D4C-C2668C3EA219}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.dsp", "..\..\..\..\..\svn\cadencii\src\cadencii.dsp\cadencii.dsp.csproj", "{18E7D0BD-734D-482E-BAE8-2512147D88F0}"
 EndProject

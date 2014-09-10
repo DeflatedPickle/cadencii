@@ -157,9 +157,9 @@
       <Project>{23C7549D-A0FD-402A-8470-95DB4BE6081C}</Project>
       <Name>cadencii.xml</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.awt\cadencii.awt.csproj">
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.GuiCore\Cadencii.GuiCore.csproj">
       <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
-      <Name>cadencii.awt</Name>
+      <Name>Cadencii.GuiCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
