@@ -38,7 +38,6 @@
     <Compile Include="awt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BitmapEx.cs" />
     <Compile Include="models\Image.cs" />
     <Compile Include="models\Cursor.cs" />
     <Compile Include="models\AwtHost.cs" />
@@ -47,19 +46,19 @@
     <Compile Include="models\Point.cs" />
     <Compile Include="models\Polygon.cs" />
     <Compile Include="models\Dimension.cs" />
-    <Compile Include="models\PointD.cs" />
     <Compile Include="models\Stroke.cs" />
     <Compile Include="models\Font.cs" />
     <Compile Include="models\Shape.cs" />
-    <Compile Include="models\bezier\BezierChain.cs" />
-    <Compile Include="models\bezier\BezierControlType.cs" />
-    <Compile Include="models\bezier\BezierCurves.cs" />
-    <Compile Include="models\bezier\BezierPickedSide.cs" />
-    <Compile Include="models\bezier\BezierPoint.cs" />
-    <Compile Include="models\bezier\AttachedCurve.cs" />
     <Compile Include="advanced\PolylineDrawer.cs" />
     <Compile Include="advanced\CubicSpline.cs" />
     <Compile Include="advanced\ColorBar.cs" />
+    <Compile Include="advanced\bezier\AttachedCurve.cs" />
+    <Compile Include="advanced\bezier\BezierChain.cs" />
+    <Compile Include="advanced\bezier\BezierControlType.cs" />
+    <Compile Include="advanced\bezier\BezierCurves.cs" />
+    <Compile Include="advanced\bezier\BezierPickedSide.cs" />
+    <Compile Include="advanced\bezier\BezierPoint.cs" />
+    <Compile Include="advanced\PointD.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -70,7 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="models\" />
-    <Folder Include="models\bezier\" />
     <Folder Include="advanced\" />
   </ItemGroup>
 </Project>
