@@ -27,7 +27,7 @@ namespace cadencii
         /// <param name="g">描画に用いるグラフィックス</param>
         /// <param name="width">描画幅</param>
         /// <param name="height">描画高さ</param>
-        void draw(Graphics2D g, int width, int height);
+        void draw(Graphics g, int width, int height);
     }
 
 }

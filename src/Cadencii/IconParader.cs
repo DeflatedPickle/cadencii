@@ -74,7 +74,7 @@ namespace cadencii
 
                 // 歌手名が描かれた画像をセットする
                 Image bmp = new Image(ICON_WIDTH, ICON_HEIGHT);
-                Graphics2D g = new Graphics2D(bmp);
+                Graphics g = new Graphics(bmp);
                 g.clearRect(0, 0, ICON_WIDTH, ICON_HEIGHT);
                 Font font = new Font(System.Windows.Forms.SystemInformation.MenuFont);
 				cadencii.java.awt.GraphicsUtil.drawStringEx(
@@ -91,7 +91,7 @@ namespace cadencii
             Image bmp = new Image(ICON_WIDTH, ICON_HEIGHT);
             Graphics g = null;
             try {
-                g = new Graphics2D(bmp);
+                g = new Graphics(bmp);
                 ((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                 if (img != null) {
                     int img_width = img.getWidth(null);

@@ -49,7 +49,7 @@ namespace cadencii
         /// <summary>
         /// 描画用のストローク
         /// </summary>
-        private BasicStroke mStroke;
+        private Stroke mStroke;
 
         /// <summary>
         /// 描画用のフォント
@@ -120,7 +120,7 @@ namespace cadencii
         /// <param name="x">描画する位置のx座標</param>
         /// <param name="y">描画する位置のy座標</param>
         /// <returns>描画された装置図に外接する四角形のサイズ</returns>
-        public virtual void paintTo(Graphics2D graphics, int x, int y, int width, int height)
+        public virtual void paintTo(Graphics graphics, int x, int y, int width, int height)
         {
             // 現在の描画時のストローク、色を保存しておく
             Stroke old_stroke = graphics.getStroke();
@@ -128,7 +128,7 @@ namespace cadencii
 
             // 描画用のストロークが初期化してなかったら初期化
             if (mStroke == null) {
-                mStroke = new BasicStroke();
+                mStroke = new Stroke();
             }
 
             if (mFont == null) {
@@ -150,7 +150,7 @@ namespace cadencii
             graphics.setColor(old_color);
         }
 
-        protected void paintBackground(Graphics2D graphics, Stroke stroke, int x, int y, int width, int height, Color border, Color background)
+        protected void paintBackground(Graphics graphics, Stroke stroke, int x, int y, int width, int height, Color border, Color background)
         {
             // 背景を塗りつぶし
             graphics.setColor(background);

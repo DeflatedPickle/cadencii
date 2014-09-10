@@ -35,7 +35,7 @@ namespace cadencii
         /// <summary>
         /// グラフィクスオブジェクトのキャッシュ
         /// </summary>
-        private Graphics2D mGraphics = null;
+        private Graphics mGraphics = null;
         /// <summary>
         /// 縦軸方向のスケール
         /// </summary>
@@ -53,11 +53,11 @@ namespace cadencii
         /// <summary>
         /// 幅2ピクセルのストローク
         /// </summary>
-        private BasicStroke mStroke2px = null;
+        private Stroke mStroke2px = null;
         /// <summary>
         /// デフォルトのストローク
         /// </summary>
-        private BasicStroke mStrokeDefault = null;
+        private Stroke mStrokeDefault = null;
 
         /// <summary>
         /// コンストラクタ
@@ -99,7 +99,7 @@ namespace cadencii
             int height = Height;
             Rectangle rc = new Rectangle(0, 0, width, height);
 
-            Graphics2D g = (Graphics2D)g1;
+            Graphics g = (Graphics)g1;
 
             // 背景を塗りつぶす
             g.setStroke(getStrokeDefault());
@@ -167,18 +167,18 @@ namespace cadencii
             }
         }
 
-        private BasicStroke getStrokeDefault()
+        private Stroke getStrokeDefault()
         {
             if (mStrokeDefault == null) {
-                mStrokeDefault = new BasicStroke();
+                mStrokeDefault = new Stroke();
             }
             return mStrokeDefault;
         }
 
-        private BasicStroke getStroke2px()
+        private Stroke getStroke2px()
         {
             if (mStroke2px == null) {
-                mStroke2px = new BasicStroke(2.0f);
+                mStroke2px = new Stroke(2.0f);
             }
             return mStroke2px;
         }
@@ -282,7 +282,7 @@ namespace cadencii
         {
             base.OnPaint(e);
             if (mGraphics == null) {
-                mGraphics = new Graphics2D();
+                mGraphics = new Graphics();
             }
 		mGraphics.NativeGraphics = e.Graphics;
             paint(mGraphics);

@@ -20,7 +20,7 @@ using cadencii.windows.forms;
 
 namespace cadencii
 {
-    using Graphics = cadencii.java.awt.Graphics2D;
+    using Graphics = cadencii.java.awt.Graphics;
 
     public class VersionInfo : Form
     {
@@ -168,7 +168,7 @@ namespace cadencii
             int height = size.height;
             //StringFormat sf = new StringFormat();
             Image ret = new Image((int)width, (int)(40f + m_credit.Length * height * 1.1f));
-            Graphics2D g = new Graphics2D(ret);
+            Graphics g = new Graphics(ret);
             g.setColor(Color.white);
             g.fillRect(0, 0, ret.getWidth(null), ret.getHeight(null));
             int align = 0;
@@ -278,7 +278,7 @@ namespace cadencii
         public void VersionInfo_Paint(Object sender, PaintEventArgs e)
         {
             try {
-				paintCor(new Graphics2D() {NativeGraphics = e.Graphics});
+				paintCor(new Graphics() {NativeGraphics = e.Graphics});
             } catch (Exception ex) {
 #if DEBUG
                 serr.println("VersionInfo_Paint; ex=" + ex);
@@ -288,7 +288,7 @@ namespace cadencii
 
         private void paintCor(Graphics g1)
         {
-            Graphics2D g = (Graphics2D)g1;
+            Graphics g = (Graphics)g1;
             g.clipRect(0, 0, this.Width, m_height);
             g.setColor(Color.white);
             g.fillRect(0, 0, this.Width, this.Height);

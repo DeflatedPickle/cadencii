@@ -45,8 +45,8 @@ namespace cadencii
         private Graphics mGraphics;
         private ImageCachedComponentDrawer mDrawer;
         private int mOffsetX;
-        private BasicStroke mStrokeDefault = null;
-        private BasicStroke mStroke2px = null;
+        private Stroke mStrokeDefault = null;
+        private Stroke mStroke2px = null;
         public int mOverviewDirection = 1;
         public Thread mOverviewUpdateThread = null;
         public int mOverviewStartToDrawClockInitialValue;
@@ -504,10 +504,10 @@ namespace cadencii
         /// 幅が2ピクセルのストロークを取得します
         /// </summary>
         /// <returns></returns>
-        private BasicStroke getStroke2px()
+        private Stroke getStroke2px()
         {
             if (mStroke2px == null) {
-                mStroke2px = new BasicStroke(2.0f);
+                mStroke2px = new Stroke(2.0f);
             }
             return mStroke2px;
         }
@@ -516,10 +516,10 @@ namespace cadencii
         /// デフォルトのストロークを取得します
         /// </summary>
         /// <returns></returns>
-        private BasicStroke getStrokeDefault()
+        private Stroke getStrokeDefault()
         {
             if (mStrokeDefault == null) {
-                mStrokeDefault = new BasicStroke();
+                mStrokeDefault = new Stroke();
             }
             return mStrokeDefault;
         }
@@ -529,7 +529,7 @@ namespace cadencii
             if (mMainForm == null) {
                 return;
             }
-            Graphics2D g = new Graphics2D(g1);
+            Graphics g = new Graphics(g1);
             int doffset = (int)(mOverviewStartToDrawClock * mOverviewPixelPerClock);
             mDrawer.draw(doffset, g);
 
@@ -647,7 +647,7 @@ namespace cadencii
             g.drawPolyline(new int[] { centerx - 4, centerx + 4, centerx - 4 }, new int[] { centery - 4, centery, centery + 4 }, 3);
         }
 
-        public void draw(Graphics2D g, int width, int height)
+        public void draw(Graphics g, int width, int height)
         {
             if (mMainForm == null) {
                 return;

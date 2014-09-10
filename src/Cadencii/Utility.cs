@@ -572,7 +572,7 @@ namespace cadencii
         /// <returns></returns>
         public static bool isInRect(Point p, Rectangle rc)
         {
-            return isInRect(p.x, p.y, rc);
+            return isInRect(p.X, p.Y, rc);
         }
 
         /// <summary>

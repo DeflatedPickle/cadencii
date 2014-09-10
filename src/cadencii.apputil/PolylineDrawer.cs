@@ -30,7 +30,7 @@ namespace cadencii.apputil
         /// <summary>
         /// 座標データ
         /// </summary>
-        System.Drawing.Point[] points;
+        Point[] points;
         /// <summary>
         /// 次に書き込むべき、座標データ配列のインデックス
         /// </summary>
@@ -38,21 +38,21 @@ namespace cadencii.apputil
         /// <summary>
         /// 描画に使用するグラフィクスオブジェクト
         /// </summary>
-        Graphics2D g;
+        Graphics g;
 
         /// <summary>
         /// 描画に使用するグラフィクスとバッファの長さを指定したコンストラクタ。
         /// </summary>
         /// <param name="g">描画に使用するグラフィクスオブジェクト。nullでもかまわない</param>
         /// <param name="buffer_length">座標バッファの個数(2より小さい値を指定した場合、替わりに「1024」が使用される)</param>
-        public PolylineDrawer(Graphics2D g, int buffer_length)
+        public PolylineDrawer(Graphics g, int buffer_length)
         {
             this.g = g;
             length = buffer_length;
             if (length < 2) {
                 length = 1024;
             }
-            points = new System.Drawing.Point[length];
+            points = new Point[length];
             pos = 0;
         }
 
@@ -68,7 +68,7 @@ namespace cadencii.apputil
         /// 描画に使用するグラフィクスオブジェクトを指定します。
         /// </summary>
         /// <param name="g"></param>
-        public void setGraphics(Graphics2D g)
+        public void setGraphics(Graphics g)
         {
             this.g = g;
         }
@@ -77,7 +77,7 @@ namespace cadencii.apputil
         /// 描画に使用するグラフィクスオブジェクトを取得します。
         /// </summary>
         /// <returns></returns>
-        public Graphics2D getGraphics()
+        public Graphics getGraphics()
         {
             return this.g;
         }

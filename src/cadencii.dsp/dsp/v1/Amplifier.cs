@@ -35,7 +35,7 @@ namespace cadencii
         private WaveReceiver mReceiver = null;
         private WaveSender mSender = null;
         private int mVersion = 0;
-        private BasicStroke mStroke = null;
+        private Stroke mStroke = null;
         private IAmplifierView mView = null;
 
         public void setAmplifierView(IAmplifierView view)
@@ -43,7 +43,7 @@ namespace cadencii
             mView = view;
         }
 
-        public override void paintTo(Graphics2D graphics, int x, int y, int width, int height)
+        public override void paintTo(Graphics graphics, int x, int y, int width, int height)
         {
             // 現在の描画時のストローク、色を保存しておく
             Stroke old_stroke = graphics.getStroke();
@@ -51,7 +51,7 @@ namespace cadencii
 
             // 描画用のストロークが初期化してなかったら初期化
             if (mStroke == null) {
-                mStroke = new BasicStroke();
+                mStroke = new Stroke();
             }
 
             // 枠と背景を描画

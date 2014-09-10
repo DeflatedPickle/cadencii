@@ -263,14 +263,14 @@ namespace cadencii.apputil
                 return 0;
             }
             java.awt.Image b = null;
-            java.awt.Graphics2D g = null;
+            java.awt.Graphics g = null;
             BitmapEx b2 = null;
             try {
                 int string_desty = size.height * 2; // 文字列が書き込まれるy座標
                 int w = size.width * 4;
                 int h = size.height * 4;
                 b = new java.awt.Image(w, h);
-                g = new java.awt.Graphics2D(b);
+                g = new java.awt.Graphics(b);
                 g.setColor(java.awt.Color.white);
                 g.fillRect(0, 0, w, h);
                 g.setFont(font);
@@ -283,7 +283,8 @@ namespace cadencii.apputil
                 bool found = false;
                 for (int y = 0; y < h; y++) {
                     for (int x = 0; x < w; x++) {
-                        java.awt.Color c = new cadencii.java.awt.Color(b2.GetPixel(x, y));
+						var p = b2.GetPixel(x, y);
+                        java.awt.Color c = new cadencii.java.awt.Color(p.R, p.G, p.B, p.A);
                         if (c.getRed() != 255 || c.getGreen() != 255 || c.getBlue() != 255) {
                             found = true;
                             firsty = y;
@@ -300,7 +301,8 @@ namespace cadencii.apputil
                 found = false;
                 for (int y = h - 1; y >= 0; y--) {
                     for (int x = 0; x < w; x++) {
-                        java.awt.Color c = new cadencii.java.awt.Color(b2.GetPixel(x, y));
+						var p = b2.GetPixel(x, y);
+                        java.awt.Color c = new cadencii.java.awt.Color(p.R, p.G, p.B, p.A);
                         if (c.getRed() != 255 || c.getGreen() != 255 || c.getBlue() != 255) {
                             found = true;
                             endy = y;

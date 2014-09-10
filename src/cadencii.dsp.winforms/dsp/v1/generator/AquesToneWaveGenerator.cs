@@ -264,7 +264,7 @@ namespace cadencii
                     if (clock_start <= clock && clock <= clock_end) {
                         bool contains = false;
                         foreach (var p in pit_send) {
-                            if (p.x <= clock && clock <= p.y) {
+                            if (p.X <= clock && clock <= p.Y) {
                                 contains = true;
                                 break;
                             }

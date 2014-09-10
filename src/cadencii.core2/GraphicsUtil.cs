@@ -6,15 +6,15 @@ namespace cadencii.java.awt
 	public static class GraphicsUtil
 	{
 		#region Graphics extension
-        public static void drawBezier(Graphics2D g, float x1, float y1,
+        public static void drawBezier(Graphics g, float x1, float y1,
                            float ctrlx1, float ctrly1,
                            float ctrlx2, float ctrly2,
                            float x2, float y2)
         {
             Stroke stroke = g.getStroke();
             System.Drawing.Pen pen = null;
-            if (stroke is BasicStroke) {
-				pen = (System.Drawing.Pen) ((BasicStroke)stroke).NativePen;
+            if (stroke is Stroke) {
+				pen = (System.Drawing.Pen) ((Stroke)stroke).NativePen;
             } else {
                 pen = new System.Drawing.Pen(System.Drawing.Color.Black);
             }
@@ -44,7 +44,7 @@ namespace cadencii.java.awt
             } else {
                 mStringFormat.LineAlignment = System.Drawing.StringAlignment.Center;
             }
-			((System.Drawing.Graphics) g1.NativeGraphics).DrawString(s, (System.Drawing.Font) font.NativeFont, g1.brush, new System.Drawing.RectangleF(rect.x, rect.y, rect.width, rect.height), mStringFormat);
+			((System.Drawing.Graphics) g1.NativeGraphics).DrawString(s, (System.Drawing.Font) font.NativeFont, (System.Drawing.Brush) g1.NativeBrush, new System.Drawing.RectangleF(rect.x, rect.y, rect.width, rect.height), mStringFormat);
         }
         #endregion
 		

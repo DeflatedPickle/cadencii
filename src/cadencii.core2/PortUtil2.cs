@@ -190,7 +190,7 @@ namespace cadencii.core2
 		
         public static void setMousePosition(Point p)
         {
-            System.Windows.Forms.Cursor.Position = new System.Drawing.Point(p.x, p.y);
+            System.Windows.Forms.Cursor.Position = new System.Drawing.Point(p.X, p.Y);
         }
 
         public static Point getMousePosition()
@@ -208,8 +208,8 @@ namespace cadencii.core2
         {
             foreach (System.Windows.Forms.Screen screen in System.Windows.Forms.Screen.AllScreens) {
                 System.Drawing.Rectangle rc = screen.WorkingArea;
-                if (rc.X <= p.x && p.x <= rc.X + rc.Width) {
-                    if (rc.Y <= p.y && p.y <= rc.Y + rc.Height) {
+                if (rc.X <= p.X && p.X <= rc.X + rc.Width) {
+                    if (rc.Y <= p.Y && p.Y <= rc.Y + rc.Height) {
                         return true;
                     }
                 }

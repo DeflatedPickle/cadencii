@@ -31,7 +31,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -40,14 +39,24 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BitmapEx.cs" />
-    <Compile Include="GraphicsUtil.cs" />
-    <Compile Include="PointD.cs" />
-    <Compile Include="AttachedCurve.cs" />
-    <Compile Include="BezierChain.cs" />
-    <Compile Include="BezierControlType.cs" />
-    <Compile Include="BezierCurves.cs" />
-    <Compile Include="BezierPickedSide.cs" />
-    <Compile Include="BezierPoint.cs" />
+    <Compile Include="models\Image.cs" />
+    <Compile Include="models\Cursor.cs" />
+    <Compile Include="models\AwtHost.cs" />
+    <Compile Include="models\Graphics.cs" />
+    <Compile Include="models\Rectangle.cs" />
+    <Compile Include="models\Point.cs" />
+    <Compile Include="models\Polygon.cs" />
+    <Compile Include="models\Dimension.cs" />
+    <Compile Include="models\PointD.cs" />
+    <Compile Include="models\Stroke.cs" />
+    <Compile Include="models\Font.cs" />
+    <Compile Include="models\Shape.cs" />
+    <Compile Include="models\bezier\BezierChain.cs" />
+    <Compile Include="models\bezier\BezierControlType.cs" />
+    <Compile Include="models\bezier\BezierCurves.cs" />
+    <Compile Include="models\bezier\BezierPickedSide.cs" />
+    <Compile Include="models\bezier\BezierPoint.cs" />
+    <Compile Include="models\bezier\AttachedCurve.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -55,5 +64,9 @@
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
       <Name>cadencii.core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="models\" />
+    <Folder Include="models\bezier\" />
   </ItemGroup>
 </Project>

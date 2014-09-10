@@ -29,7 +29,7 @@ namespace cadencii
         /// このビューのController
         /// </summary>
         private WaveformZoomUiListener mListener = null;
-        private Graphics2D mGraphicsPanel2 = null;
+        private Graphics mGraphicsPanel2 = null;
 
         public void setListener(WaveformZoomUiListener listener)
         {
@@ -55,7 +55,7 @@ namespace cadencii
         {
             base.OnPaint(e);
             if (mGraphicsPanel2 == null) {
-                mGraphicsPanel2 = new Graphics2D();
+                mGraphicsPanel2 = new Graphics();
             }
             mGraphicsPanel2.NativeGraphics = e.Graphics;
             Graphics g = mGraphicsPanel2;

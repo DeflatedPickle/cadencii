@@ -146,7 +146,7 @@ namespace cadencii
                 // Zoomボタン
                 rc = getButtonBoundsWaveViewZoom();
                 if (Utility.isInRect(p, rc)) {
-                    mWaveViewMouseDownedLocationY = p.y;
+                    mWaveViewMouseDownedLocationY = p.Y;
                     mWaveViewButtonZoomMouseDowned = true;
                     mWaveViewButtonAutoMaximizeMouseDowned = false;
                     mWaveViewInitScale = mWaveView.getScale();

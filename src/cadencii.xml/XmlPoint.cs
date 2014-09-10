@@ -36,8 +36,8 @@ namespace cadencii.xml
 
         public XmlPoint(Point p)
         {
-            x = p.x;
-            y = p.y;
+            x = p.X;
+            y = p.Y;
         }
 
         public Point toPoint()

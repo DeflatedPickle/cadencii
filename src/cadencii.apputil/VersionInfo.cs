@@ -22,7 +22,7 @@ namespace cadencii.apputil
 {
     using java = cadencii.java;
     using javax = cadencii.javax;
-    using Graphics = cadencii.java.awt.Graphics2D;
+    using Graphics = cadencii.java.awt.Graphics;
 
     public partial class VersionInfo : System.Windows.Forms.Form
     {
@@ -149,7 +149,7 @@ namespace cadencii.apputil
             float height = size.height;
             //StringFormat sf = new StringFormat();
             m_scroll = new Image((int)width, (int)(40f + m_credit.Length * height * 1.1f));
-            Graphics2D g = new Graphics2D(m_scroll);
+            Graphics g = new Graphics(m_scroll);
             //sf.Alignment = StringAlignment.Center;
             g.setFont(new Font(font_name, java.awt.Font.BOLD, (int)(font_size * 1.1f)));
             if (m_shadow_enablde) {
@@ -216,7 +216,7 @@ namespace cadencii.apputil
         private void VersionInfoEx_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
         {
             try {
-                paint(new Graphics2D() { NativeGraphics = e.Graphics });
+                paint(new Graphics() { NativeGraphics = e.Graphics });
             } catch (Exception ex) {
 #if DEBUG
                 Console.WriteLine("VersionInfoEx_Paint");
@@ -227,7 +227,7 @@ namespace cadencii.apputil
 
         public void paint(Graphics g1)
         {
-            Graphics2D g = (Graphics2D)g1;
+            Graphics g = (Graphics)g1;
             g.clipRect(0, 0, this.Width, m_height);
             g.clearRect(0, 0, this.Width, this.Height);
             if (m_credit_mode) {

@@ -29,7 +29,7 @@ using ApplicationGlobal = cadencii.core.ApplicationGlobal;
 
 namespace cadencii
 {
-    using Graphics = cadencii.java.awt.Graphics2D;
+    using Graphics = cadencii.java.awt.Graphics;
 
     /// <summary>
     /// コントロールカーブ，トラックの一覧，歌手変更イベントなどを表示するコンポーネント．
@@ -343,16 +343,16 @@ namespace cadencii
         /// <summary>
         /// 描画幅が2ピクセルのストローク
         /// </summary>
-        private BasicStroke mStroke2px = null;
+        private Stroke mStroke2px = null;
         /// <summary>
         /// デフォルトのストローク
         /// </summary>
-        private BasicStroke mStrokeDefault = null;
+        private Stroke mStrokeDefault = null;
         /// <summary>
         /// 折れ線グラフを効率よく描画するための描画器
         /// </summary>
         private LineGraphDrawer mGraphDrawer = null;
-        private Graphics2D mGraphics = null;
+        private Graphics mGraphics = null;
         /// <summary>
         /// メイン画面への参照
         /// </summary>
@@ -652,7 +652,7 @@ namespace cadencii
 
         public void setLocation(cadencii.java.awt.Point p)
         {
-            base.Location = new System.Drawing.Point(p.x, p.y);
+            base.Location = new System.Drawing.Point(p.X, p.Y);
         }
 #endif
 
@@ -766,13 +766,13 @@ namespace cadencii
         public java.awt.Point pointToScreen(java.awt.Point point_on_client)
         {
             java.awt.Point p = getLocationOnScreen();
-            return new java.awt.Point(p.x + point_on_client.x, p.y + point_on_client.y);
+            return new java.awt.Point(p.X + point_on_client.X, p.Y + point_on_client.Y);
         }
 
         public java.awt.Point pointToClient(java.awt.Point point_on_screen)
         {
             java.awt.Point p = getLocationOnScreen();
-            return new java.awt.Point(point_on_screen.x - p.x, point_on_screen.y - p.y);
+            return new java.awt.Point(point_on_screen.X - p.X, point_on_screen.Y - p.Y);
         }
 
         public Object getTag()
@@ -798,10 +798,10 @@ namespace cadencii
         /// 描画幅が2ピクセルのストロークを取得します
         /// </summary>
         /// <returns></returns>
-        private BasicStroke getStroke2px()
+        private Stroke getStroke2px()
         {
             if (mStroke2px == null) {
-                mStroke2px = new BasicStroke(2.0f);
+                mStroke2px = new Stroke(2.0f);
             }
             return mStroke2px;
         }
@@ -810,10 +810,10 @@ namespace cadencii
         /// デフォルトのストロークを取得します
         /// </summary>
         /// <returns></returns>
-        private BasicStroke getStrokeDefault()
+        private Stroke getStrokeDefault()
         {
             if (mStrokeDefault == null) {
-                mStrokeDefault = new BasicStroke();
+                mStrokeDefault = new Stroke();
             }
             return mStrokeDefault;
         }
@@ -995,10 +995,10 @@ namespace cadencii
             mCurveVisible = value;
         }
 
-        private Graphics2D getGraphics()
+        private Graphics getGraphics()
         {
             if (mGraphics == null) {
-                mGraphics = new Graphics2D();
+                mGraphics = new Graphics();
             }
             return mGraphics;
         }
@@ -1009,7 +1009,7 @@ namespace cadencii
         /// <param name="e"></param>
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
         {
-            Graphics2D g = getGraphics();
+            Graphics g = getGraphics();
 		g.NativeGraphics = e.Graphics;
             paint(g);
         }
@@ -1070,7 +1070,7 @@ namespace cadencii
             int height = getHeight();
             int graph_height = getGraphHeight();
             Dimension size = new Dimension(width + 2, height);
-            Graphics2D g = (Graphics2D)graphics;
+            Graphics g = (Graphics)graphics;
             Color brs_string = Color.black;
             Color rect_curve = new Color(41, 46, 55);
             int centre = HEADER + graph_height / 2;
@@ -1078,7 +1078,7 @@ namespace cadencii
             g.fillRect(0, size.height - 2 * OFFSET_TRACK_TAB, size.width, 2 * OFFSET_TRACK_TAB);
             int numeric_view = mMouseValue;
 			Point p = pointToClient(cadencii.core2.PortUtil.getMousePosition());
-            Point mouse = new Point(p.x, p.y);
+            Point mouse = new Point(p.X, p.Y);
             VsqFileEx vsq = AppManager.getVsqFile();
             int selected = AppManager.getSelected();
             int key_width = AppManager.keyWidth;
@@ -1188,7 +1188,7 @@ namespace cadencii
                 }
                 #endregion
 
-                int clock_at_mouse = AppManager.clockFromXCoord(mouse.x);
+                int clock_at_mouse = AppManager.clockFromXCoord(mouse.X);
                 int pbs_at_mouse = 0;
                 if (mCurveVisible) {
                     #region カーブエディタ
@@ -1285,8 +1285,8 @@ namespace cadencii
 								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                                 Color nrml = new Color(0, 0, 0, 190);
                                 Color dash = new Color(0, 0, 0, 128);
-                                Stroke nrml_stroke = new BasicStroke();
-                                Stroke dash_stroke = new BasicStroke(1.0f, 0, 0, 10.0f, new float[] { 2.0f, 2.0f }, 0.0f);
+                                Stroke nrml_stroke = new Stroke();
+                                Stroke dash_stroke = new Stroke(1.0f, 0, 0, 10.0f, new float[] { 2.0f, 2.0f }, 0.0f);
                                 VsqBPList pbs = vsq_track.MetaText.PBS;
                                 pbs_at_mouse = pbs.getValue(clock_at_mouse);
                                 int c = pbs.size();
@@ -1333,7 +1333,7 @@ namespace cadencii
                                             g.drawLine(x1, y, x2, y);
                                         }
                                     }
-                                    g.setStroke(new BasicStroke());
+                                    g.setStroke(new Stroke());
                                     last_clock = cl;
                                     last_pbs = thispbs;
                                 }
@@ -1369,7 +1369,7 @@ namespace cadencii
 
                     if (mMouseDowned) {
                         #region 選択されたツールに応じて描画
-                        int value = valueFromYCoord(mouse.y);
+                        int value = valueFromYCoord(mouse.Y);
                         if (clock_at_mouse < vsq.getPreMeasure()) {
                             clock_at_mouse = vsq.getPreMeasure();
                         }
@@ -1390,8 +1390,8 @@ namespace cadencii
 #else
                             if (mMouseTracer.size() > 0) {
                                 Point pt = mMouseTracer.iterator().First();
-                                int xini = pt.x - stdx;
-                                int yini = pt.y;
+                                int xini = pt.X - stdx;
+                                int yini = pt.Y;
                                 g.setColor(Color.ORANGE);
                                 g.setStroke(getStroke2px());
 								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
@@ -1411,8 +1411,8 @@ namespace cadencii
                                 d.setDrawLine(false);
                                 d.setFillColor(COLOR_MOUSE_TRACER);
                                 foreach (var pt in mMouseTracer.iterator()) {
-                                    int x = pt.x - stdx;
-                                    int y = pt.y;
+                                    int x = pt.X - stdx;
+                                    int y = pt.Y;
                                     if (y < graph_min_y) {
                                         y = graph_min_y;
                                     } else if (graph_max_y < y) {
@@ -1544,14 +1544,14 @@ namespace cadencii
                 int marker_x = AppManager.xCoordFromClocks(AppManager.getCurrentClock());
                 if (key_width <= marker_x && marker_x <= size.width) {
                     g.setColor(Color.white);
-                    g.setStroke(new BasicStroke(2f));
+                    g.setStroke(new Stroke(2f));
                     g.drawLine(marker_x, 0, marker_x, size.height - 18);
-                    g.setStroke(new BasicStroke());
+                    g.setStroke(new Stroke());
                 }
                 #endregion
 
                 // マウス位置での値
-                if (isInRect(mouse.x, mouse.y, new Rectangle(key_width, HEADER, width, graph_height)) &&
+                if (isInRect(mouse.X, mouse.Y, new Rectangle(key_width, HEADER, width, graph_height)) &&
                      mMouseDownMode != MouseDownMode.PRE_UTTERANCE_MOVE &&
                      mMouseDownMode != MouseDownMode.OVERLAP_MOVE &&
                      mMouseDownMode != MouseDownMode.VEL_EDIT) {
@@ -1567,7 +1567,7 @@ namespace cadencii
 					cadencii.java.awt.GraphicsUtil.drawStringEx(g,
                                            mMouseValue + "",
                                            EditorConfig.baseFont10Bold,
-                                           new Rectangle(mouse.x - 100, mouse.y - shift, 100, 100),
+                                           new Rectangle(mouse.X - 100, mouse.Y - shift, 100, 100),
                                            align,
                                            valign);
                     if (mSelectedCurve.equals(CurveType.PIT)) {
@@ -1577,7 +1577,7 @@ namespace cadencii
 						cadencii.java.awt.GraphicsUtil.drawStringEx(g,
                                                PortUtil.formatDecimal("#0.00", delta_note),
                                                EditorConfig.baseFont10Bold,
-                                               new Rectangle(mouse.x - 100, mouse.y, 100, 100),
+                                               new Rectangle(mouse.X - 100, mouse.Y, 100, 100),
                                                align,
                                                valign);
                     }
@@ -1593,7 +1593,7 @@ namespace cadencii
         /// <param name="g"></param>
         /// <param name="track"></param>
         /// <param name="fill_color"></param>
-        private void drawEnvelope(Graphics2D g, int track_index, Color fill_color)
+        private void drawEnvelope(Graphics g, int track_index, Color fill_color)
         {
             int key_width = AppManager.keyWidth;
             int width = getWidth();
@@ -1613,7 +1613,7 @@ namespace cadencii
             Point selected_point = new Point();
             bool selected_found = false;
             // yが範囲内なので，xも検索するときtrue
-            bool search_mouse = (0 <= mouse.y && mouse.y <= height);
+            bool search_mouse = (0 <= mouse.Y && mouse.Y <= height);
             IEnumerator<VsqEvent> itr = track.getNoteEventIterator().GetEnumerator();
             int dotwid = DOT_WID * 2 + 1;
             int tolerance = AppManager.editorConfig.PxTolerance;
@@ -1686,7 +1686,7 @@ namespace cadencii
                 // マウスのx座標が範囲内なら描く
                 if (!draw_env_points) {
                     if (search_mouse) {
-                        if (points.xpoints[0] - tolerance <= mouse.x && mouse.x <= points.xpoints[points.npoints - 1] + tolerance) {
+                        if (points.xpoints[0] - tolerance <= mouse.X && mouse.X <= points.xpoints[points.npoints - 1] + tolerance) {
                             draw_env_points = true;
                         }
                     }
@@ -1709,7 +1709,7 @@ namespace cadencii
                     // データ点の表示
                     for (int i = 1; i < 6; i++) {
                         Point p = new Point(points.xpoints[i], points.ypoints[i]);
-                        Rectangle rc = new Rectangle(p.x - DOT_WID, p.y - DOT_WID, dotwid, dotwid);
+                        Rectangle rc = new Rectangle(p.X - DOT_WID, p.Y - DOT_WID, dotwid, dotwid);
                         g.setColor(COLOR_BEZIER_DOT_NORMAL);
                         g.fillRect(rc.x, rc.y, rc.width, rc.height);
                         g.setColor(COLOR_BEZIER_DOT_NORMAL);
@@ -1726,7 +1726,7 @@ namespace cadencii
 
             // 選択されている点のハイライト表示
             if (selected_found) {
-                Rectangle rc = new Rectangle(selected_point.x - DOT_WID, selected_point.y - DOT_WID, dotwid, dotwid);
+                Rectangle rc = new Rectangle(selected_point.X - DOT_WID, selected_point.Y - DOT_WID, dotwid, dotwid);
                 g.setColor(AppManager.getHilightColor());
                 g.fillRect(rc.x, rc.y, rc.width, rc.height);
                 g.setColor(COLOR_BEZIER_DOT_NORMAL);
@@ -1774,7 +1774,7 @@ namespace cadencii
         /// <param name="px_overlap"></param>
         /// <param name="preutterance"></param>
         /// <param name="overlap"></param>
-        private void drawPreutteranceAndOverlap(Graphics2D g, int px_preutterance, int px_overlap, float preutterance, float overlap)
+        private void drawPreutteranceAndOverlap(Graphics g, int px_preutterance, int px_overlap, float preutterance, float overlap)
         {
             int graph_height = getGraphHeight();
 			g.setColor(cadencii.core2.PortUtil.Orange);
@@ -1946,7 +1946,7 @@ namespace cadencii
                 if (point_kind != null) {
                     for (int i = 5; i >= 1; i--) {
                         Point p = new Point(points.xpoints[i], points.ypoints[i]);
-                        Rectangle rc = new Rectangle(p.x - DOT_WID, p.y - DOT_WID, dotwid, dotwid);
+                        Rectangle rc = new Rectangle(p.X - DOT_WID, p.Y - DOT_WID, dotwid, dotwid);
                         if (isInRect(locx, locy, rc)) {
                             internal_id.value = item.InternalID;
                             point_kind.value = i;
@@ -2084,7 +2084,7 @@ namespace cadencii
             env_end_sec.value = sec_env_end1;
         }
 
-        private void drawTrackTab(Graphics2D g, Rectangle destRect, string name, bool selected, bool enabled, bool render_required, Color hilight, Color render_button_hilight)
+        private void drawTrackTab(Graphics g, Rectangle destRect, string name, bool selected, bool enabled, bool render_required, Color hilight, Color render_button_hilight)
         {
             int x = destRect.x;
             int panel_width = render_required ? destRect.width - 10 : destRect.width;
@@ -2177,7 +2177,7 @@ namespace cadencii
         /// <param name="color"></param>
         /// <param name="is_front"></param>
         /// <param name="type"></param>
-        public void drawVEL(Graphics2D g, VsqTrack track, Color color, bool is_front, CurveType type)
+        public void drawVEL(Graphics g, VsqTrack track, Color color, bool is_front, CurveType type)
         {
 			Point mouse = pointToClient(cadencii.core2.PortUtil.getMousePosition());
 
@@ -2271,7 +2271,7 @@ namespace cadencii
                         if (mMouseDownMode == MouseDownMode.VEL_EDIT) {
                             cursor_should_be_hand = true;
                         } else {
-                            if (AppManager.getSelectedTool() == EditTool.ARROW && is_front && isInRect(mouse.x, mouse.y, new Rectangle(x, y, VEL_BAR_WIDTH, oy - y))) {
+                            if (AppManager.getSelectedTool() == EditTool.ARROW && is_front && isInRect(mouse.X, mouse.Y, new Rectangle(x, y, VEL_BAR_WIDTH, oy - y))) {
                                 cursor_should_be_hand = true;
                             }
                         }
@@ -2295,7 +2295,7 @@ namespace cadencii
         /// </summary>
         /// <param name="g"></param>
         /// <param name="chains"></param>
-        private void drawAttachedCurve(Graphics2D g, List<BezierChain> chains)
+        private void drawAttachedCurve(Graphics g, List<BezierChain> chains)
         {
 #if DEBUG
             try {
@@ -2324,39 +2324,39 @@ namespace cadencii
                         Point pxControlNext = getScreenCoord(next.getControlLeft());
 
                         // ベジエ曲線本体を描く
-                        if (isVisibleOnScreen(visibleMinX, visibleMaxX, pxCurrent.x, pxNext.x)) {
+                        if (isVisibleOnScreen(visibleMinX, visibleMaxX, pxCurrent.X, pxNext.X)) {
                             if (current.getControlRightType() == BezierControlType.None &&
                                  next.getControlLeftType() == BezierControlType.None) {
                                 g.setColor(COLOR_BEZIER_CURVE);
-                                g.drawLine(pxCurrent.x, pxCurrent.y, pxNext.x, pxNext.y);
+                                g.drawLine(pxCurrent.X, pxCurrent.Y, pxNext.X, pxNext.Y);
                             } else {
                                 Point ctrl1 = (current.getControlRightType() == BezierControlType.None) ? pxCurrent : pxControlCurrent;
                                 Point ctrl2 = (next.getControlLeftType() == BezierControlType.None) ? pxNext : pxControlNext;
                                 g.setColor(COLOR_BEZIER_CURVE);
-								cadencii.java.awt.GraphicsUtil.drawBezier(g, pxCurrent.x, pxCurrent.y,
-                                                        ctrl1.x, ctrl1.y,
-                                                        ctrl2.x, ctrl2.y,
-                                                        pxNext.x, pxNext.y);
+								cadencii.java.awt.GraphicsUtil.drawBezier(g, pxCurrent.X, pxCurrent.Y,
+                                                        ctrl1.X, ctrl1.Y,
+                                                        ctrl2.X, ctrl2.Y,
+                                                        pxNext.X, pxNext.Y);
                             }
                         }
-                        int minX = pxCurrent.x;
-                        int maxX = pxNext.x;
+                        int minX = pxCurrent.X;
+                        int maxX = pxNext.X;
 
                         if (current.getControlRightType() != BezierControlType.None) {
-                            if (isVisibleOnScreen(visibleMinX, visibleMaxX, pxCurrent.x, pxControlCurrent.x)) {
+                            if (isVisibleOnScreen(visibleMinX, visibleMaxX, pxCurrent.X, pxControlCurrent.X)) {
                                 g.setColor(COLOR_BEZIER_AUXILIARY);
-                                g.drawLine(pxCurrent.x, pxCurrent.y, pxControlCurrent.x, pxControlCurrent.y);
+                                g.drawLine(pxCurrent.X, pxCurrent.Y, pxControlCurrent.X, pxControlCurrent.Y);
                             }
-                            minX = Math.Min(minX, pxCurrent.x);
-                            maxX = Math.Max(maxX, pxControlCurrent.x);
+                            minX = Math.Min(minX, pxCurrent.X);
+                            maxX = Math.Max(maxX, pxControlCurrent.X);
                         }
                         if (next.getControlLeftType() != BezierControlType.None) {
-                            if (isVisibleOnScreen(visibleMinX, visibleMaxX, pxControlNext.x, pxNext.x)) {
+                            if (isVisibleOnScreen(visibleMinX, visibleMaxX, pxControlNext.X, pxNext.X)) {
                                 g.setColor(COLOR_BEZIER_AUXILIARY);
-                                g.drawLine(pxNext.x, pxNext.y, pxControlNext.x, pxControlNext.y);
+                                g.drawLine(pxNext.X, pxNext.Y, pxControlNext.X, pxControlNext.Y);
                             }
-                            minX = Math.Min(minX, pxControlNext.x);
-                            maxX = Math.Max(maxX, pxNext.x);
+                            minX = Math.Min(minX, pxControlNext.X);
+                            maxX = Math.Max(maxX, pxNext.X);
                         }
 
                         if (visibleMaxX < minX) {
@@ -2366,8 +2366,8 @@ namespace cadencii
 
                         // 右コントロール点
                         if (current.getControlRightType() == BezierControlType.Normal) {
-                            Rectangle rc = new Rectangle(pxControlCurrent.x - DOT_WID,
-                                                          pxControlCurrent.y - DOT_WID,
+                            Rectangle rc = new Rectangle(pxControlCurrent.X - DOT_WID,
+                                                          pxControlCurrent.Y - DOT_WID,
                                                           DOT_WID * 2 + 1,
                                                           DOT_WID * 2 + 1);
                             if (chain_id == mEditingChainID && current.getID() == mEditingPointID) {
@@ -2383,8 +2383,8 @@ namespace cadencii
 
                         // 左コントロール点
                         if (next.getControlLeftType() == BezierControlType.Normal) {
-                            Rectangle rc = new Rectangle(pxControlNext.x - DOT_WID,
-                                                          pxControlNext.y - DOT_WID,
+                            Rectangle rc = new Rectangle(pxControlNext.X - DOT_WID,
+                                                          pxControlNext.Y - DOT_WID,
                                                           DOT_WID * 2 + 1,
                                                           DOT_WID * 2 + 1);
                             if (chain_id == mEditingChainID && next.getID() == mEditingPointID) {
@@ -2399,8 +2399,8 @@ namespace cadencii
                         }
 
                         // データ点
-                        Rectangle rc2 = new Rectangle(pxCurrent.x - DOT_WID,
-                                                        pxCurrent.y - DOT_WID,
+                        Rectangle rc2 = new Rectangle(pxCurrent.X - DOT_WID,
+                                                        pxCurrent.Y - DOT_WID,
                                                         DOT_WID * 2 + 1,
                                                         DOT_WID * 2 + 1);
                         if (chain_id == mEditingChainID && current.getID() == mEditingPointID) {
@@ -2418,8 +2418,8 @@ namespace cadencii
                     if (!breaked) {
                         next = target_chain.points[target_chain.points.Count - 1];
                         pxNext = getScreenCoord(next.getBase());
-                        Rectangle rc_last = new Rectangle(pxNext.x - DOT_WID,
-                                                           pxNext.y - DOT_WID,
+                        Rectangle rc_last = new Rectangle(pxNext.X - DOT_WID,
+                                                           pxNext.Y - DOT_WID,
                                                            DOT_WID * 2 + 1,
                                                            DOT_WID * 2 + 1);
                         if (chain_id == mEditingChainID && next.getID() == mEditingPointID) {
@@ -2467,7 +2467,7 @@ namespace cadencii
         /// <param name="type">描画するカーブの種類</param>
         /// <param name="color">塗りつぶしに使う色</param>
         /// <param name="is_front">最前面に表示するモードかどうか</param>
-        public void drawVibratoControlCurve(Graphics2D g, VsqTrack draw_target, CurveType type, Color color, bool is_front)
+        public void drawVibratoControlCurve(Graphics g, VsqTrack draw_target, CurveType type, Color color, bool is_front)
         {
             if (!is_front) {
                 return;
@@ -2574,7 +2574,7 @@ namespace cadencii
         /// <param name="list">描画するコントロールカーブ</param>
         /// <param name="color">X軸とデータ線の間の塗りつぶしに使用する色</param>
         /// <param name="is_front">最前面に表示するモードかどうか</param>
-        public void drawVsqBPList(Graphics2D g, VsqBPList list, Color color, bool is_front)
+        public void drawVsqBPList(Graphics g, VsqBPList list, Color color, bool is_front)
         {
 			Point pmouse = pointToClient(cadencii.core2.PortUtil.getMousePosition());
             int max = list.getMaximum();
@@ -2601,12 +2601,12 @@ namespace cadencii
             d.setDotColor(Color.white);
             d.setLineColor(Color.white);
             int dot_mode = is_front ? LineGraphDrawer.DOTMODE_NEAR : LineGraphDrawer.DOTMODE_NO;
-            if (pmouse.y < 0 || height < pmouse.y) {
+            if (pmouse.Y < 0 || height < pmouse.Y) {
                 dot_mode = LineGraphDrawer.DOTMODE_NO;
             }
             d.setDotMode(dot_mode);
             d.setDrawLine(is_front);
-            d.setMouseX(pmouse.x);
+            d.setMouseX(pmouse.X);
 
             // グラフの描画
             int first_y = list.getValue(start_clock);
@@ -2667,8 +2667,8 @@ namespace cadencii
 
             // 移動中のデータ点をハイライト表示する
             if (mMouseDownMode == MouseDownMode.POINT_MOVE) {
-                int dx = pmouse.x + AppManager.mMainWindowController.getStartToDrawX() - mMouseDownLocation.x;
-                int dy = pmouse.y - mMouseDownLocation.y;
+                int dx = pmouse.X + AppManager.mMainWindowController.getStartToDrawX() - mMouseDownLocation.X;
+                int dy = pmouse.Y - mMouseDownLocation.Y;
                 foreach (var item in mMovingPoints) {
                     int x = AppManager.xCoordFromClocks(item.Clock) + dx;
                     int y = yCoordFromValue(item.Value) + dy;
@@ -2929,10 +2929,10 @@ namespace cadencii
                     if (!BezierChain.isBezierImplicit(target)) {
                         // X軸について陰でなくなった場合
                         // データ点のX座標だけ元に戻し，もう一度チェックを試みる
-                        item.setBase(new PointD(old.x, value));
+                        item.setBase(new PointD(old.X, value));
                         if (!BezierChain.isBezierImplicit(target)) {
                             // 駄目ならX, Y両方元に戻す
-                            item.setBase(new PointD(old.x, old.y));
+                            item.setBase(new PointD(old.X, old.Y));
                         }
                     }
                     ret = (BezierPoint)target.points[index].clone();
@@ -3099,7 +3099,7 @@ namespace cadencii
                 return;
             }
             int stdx = AppManager.mMainWindowController.getStartToDrawX();
-            if ((e.X + stdx != mMouseDownLocation.x || e.Y != mMouseDownLocation.y)) {
+            if ((e.X + stdx != mMouseDownLocation.X || e.Y != mMouseDownLocation.Y)) {
                 if (mMouseHoverThread != null && mMouseHoverThread.IsAlive) {
                     mMouseHoverThread.Abort();
                 }
@@ -3123,12 +3123,12 @@ namespace cadencii
                  mMouseDownMode == MouseDownMode.CURVE_EDIT) {
                 EditTool selected_tool = AppManager.getSelectedTool();
                 if (selected_tool == EditTool.PENCIL) {
-                    mPencilMoved = e.X + stdx != mMouseDownLocation.x ||
-                                     e.Y != mMouseDownLocation.y;
+                    mPencilMoved = e.X + stdx != mMouseDownLocation.X ||
+                                     e.Y != mMouseDownLocation.Y;
                     mMouseTracer.append(e.X + stdx, e.Y);
                 } else if (selected_tool == EditTool.LINE) {
-                    mPencilMoved = e.X + stdx != mMouseDownLocation.x ||
-                                     e.Y != mMouseDownLocation.y;
+                    mPencilMoved = e.X + stdx != mMouseDownLocation.X ||
+                                     e.Y != mMouseDownLocation.Y;
                 } else if (selected_tool == EditTool.ARROW ||
                             selected_tool == EditTool.ERASER) {
                     int draft_clock = clock;
@@ -3232,8 +3232,8 @@ namespace cadencii
                         item.setControlRightType(BezierControlType.Normal);
                         item.setControlLeftType(BezierControlType.Normal);
                         if (!BezierChain.isBezierImplicit(target)) {
-                            item.setControlLeft(new PointD(old_left.x, old_left.y));
-                            item.setControlRight(new PointD(old_right.x, old_right.y));
+                            item.setControlLeft(new PointD(old_left.X, old_left.Y));
+                            item.setControlRight(new PointD(old_right.X, old_right.Y));
                             item.setControlLeftType(old_left_type);
                             item.setControlRightType(old_right_type);
                         }
@@ -3269,12 +3269,12 @@ namespace cadencii
                     mEnvelopeEditing.v4 = v;
                 }
             } else if (mMouseDownMode == MouseDownMode.PRE_UTTERANCE_MOVE) {
-                int clock_at_downed = AppManager.clockFromXCoord(mMouseDownLocation.x - stdx);
+                int clock_at_downed = AppManager.clockFromXCoord(mMouseDownLocation.X - stdx);
                 double dsec = vsq.getSecFromClock(clock) - vsq.getSecFromClock(clock_at_downed);
                 float draft_preutterance = mPreOverlapOriginal.UstEvent.getPreUtterance() - (float)(dsec * 1000);
                 mPreOverlapEditing.UstEvent.setPreUtterance(draft_preutterance);
             } else if (mMouseDownMode == MouseDownMode.OVERLAP_MOVE) {
-                int clock_at_downed = AppManager.clockFromXCoord(mMouseDownLocation.x - stdx);
+                int clock_at_downed = AppManager.clockFromXCoord(mMouseDownLocation.X - stdx);
                 double dsec = vsq.getSecFromClock(clock) - vsq.getSecFromClock(clock_at_downed);
                 float draft_overlap = mPreOverlapOriginal.UstEvent.getVoiceOverlap() + (float)(dsec * 1000);
                 mPreOverlapEditing.UstEvent.setVoiceOverlap(draft_overlap);
@@ -3311,7 +3311,7 @@ namespace cadencii
                 BezierChain bc = list[i];
                 foreach (var bp in bc.points) {
                     Point p = getScreenCoord(bp.getBase());
-                    Rectangle r = new Rectangle(p.x - shift, p.y - shift, width, width);
+                    Rectangle r = new Rectangle(p.X - shift, p.Y - shift, width, width);
                     if (isInRect(locx, locy, r)) {
                         found_chain.value = bc;
                         found_point.value = bp;
@@ -3321,7 +3321,7 @@ namespace cadencii
 
                     if (bp.getControlLeftType() != BezierControlType.None) {
                         p = getScreenCoord(bp.getControlLeft());
-                        r = new Rectangle(p.x - shift, p.y - shift, width, width);
+                        r = new Rectangle(p.X - shift, p.Y - shift, width, width);
                         if (isInRect(locx, locy, r)) {
                             found_chain.value = bc;
                             found_point.value = bp;
@@ -3332,7 +3332,7 @@ namespace cadencii
 
                     if (bp.getControlRightType() != BezierControlType.None) {
                         p = getScreenCoord(bp.getControlRight());
-                        r = new Rectangle(p.x - shift, p.y - shift, width, width);
+                        r = new Rectangle(p.X - shift, p.Y - shift, width, width);
                         if (isInRect(locx, locy, r)) {
                             found_chain.value = bc;
                             found_point.value = bp;
@@ -3381,8 +3381,8 @@ namespace cadencii
             AppManager.debugWriteLine("TrackSelector_MouseDown");
 #endif
             VsqFileEx vsq = AppManager.getVsqFile();
-            mMouseDownLocation.x = e.X + AppManager.mMainWindowController.getStartToDrawX();
-            mMouseDownLocation.y = e.Y;
+            mMouseDownLocation.X = e.X + AppManager.mMainWindowController.getStartToDrawX();
+            mMouseDownLocation.Y = e.Y;
             int clock = AppManager.clockFromXCoord(e.X);
             int selected = AppManager.getSelected();
             int height = getHeight();
@@ -3652,7 +3652,7 @@ namespace cadencii
                                     BezierChain bc = dict[i];
                                     foreach (var bp in bc.points) {
                                         Point pt = getScreenCoord(bp.getBase());
-                                        Rectangle rc = new Rectangle(pt.x - px_shift, pt.y - px_shift, px_width, px_width);
+                                        Rectangle rc = new Rectangle(pt.X - px_shift, pt.Y - px_shift, px_width, px_width);
                                         if (isInRect(e.X, e.Y, rc)) {
                                             AppManager.itemSelection.addBezier(new SelectedBezierPoint(bc.id, bp.getID(), BezierPickedSide.BASE, bp));
                                             mEditingBezierOriginal = (BezierChain)bc.clone();
@@ -3662,7 +3662,7 @@ namespace cadencii
 
                                         if (bp.getControlLeftType() != BezierControlType.None) {
                                             pt = getScreenCoord(bp.getControlLeft());
-                                            rc = new Rectangle(pt.x - px_shift, pt.y - px_shift, px_width, px_width);
+                                            rc = new Rectangle(pt.X - px_shift, pt.Y - px_shift, px_width, px_width);
                                             if (isInRect(e.X, e.Y, rc)) {
                                                 AppManager.itemSelection.addBezier(new SelectedBezierPoint(bc.id, bp.getID(), BezierPickedSide.LEFT, bp));
                                                 mEditingBezierOriginal = (BezierChain)bc.clone();
@@ -3673,7 +3673,7 @@ namespace cadencii
 
                                         if (bp.getControlRightType() != BezierControlType.None) {
                                             pt = getScreenCoord(bp.getControlRight());
-                                            rc = new Rectangle(pt.x - px_shift, pt.y - px_shift, px_width, px_width);
+                                            rc = new Rectangle(pt.X - px_shift, pt.Y - px_shift, px_width, px_width);
                                             if (isInRect(e.X, e.Y, rc)) {
                                                 AppManager.itemSelection.addBezier(new SelectedBezierPoint(bc.id, bp.getID(), BezierPickedSide.RIGHT, bp));
                                                 mEditingBezierOriginal = (BezierChain)bc.clone();
@@ -3937,7 +3937,7 @@ namespace cadencii
                                     BezierChain bc = dict[i];
                                     foreach (var bp in bc.points) {
                                         Point pt = getScreenCoord(bp.getBase());
-                                        Rectangle rc = new Rectangle(pt.x - DOT_WID, pt.y - DOT_WID, 2 * DOT_WID + 1, 2 * DOT_WID + 1);
+                                        Rectangle rc = new Rectangle(pt.X - DOT_WID, pt.Y - DOT_WID, 2 * DOT_WID + 1, 2 * DOT_WID + 1);
                                         if (isInRect(e.X, e.Y, rc)) {
                                             AppManager.itemSelection.addBezier(new SelectedBezierPoint(bc.id, bp.getID(), BezierPickedSide.BASE, bp));
                                             found = true;
@@ -4016,7 +4016,7 @@ namespace cadencii
                         if (!too_near) {
                             foreach (var bp in bc.points) {
                                 Point pt = getScreenCoord(bp.getBase());
-                                Rectangle rc = new Rectangle(pt.x - px_shift, pt.y - px_shift, px_width, px_width);
+                                Rectangle rc = new Rectangle(pt.X - px_shift, pt.Y - px_shift, px_width, px_width);
                                 if (isInRect(e.X, e.Y, rc)) {
                                     too_near = true;
                                     break;
@@ -4460,13 +4460,13 @@ namespace cadencii
                                         Point basepoint = point.getBase().toPoint();
                                         Point ctrl_l = point.getControlLeft().toPoint();
                                         Point ctrl_r = point.getControlRight().toPoint();
-                                        if (isInRect(basepoint.x, basepoint.y, rc)) {
+                                        if (isInRect(basepoint.X, basepoint.Y, rc)) {
                                             // データ点が選択範囲に入っているので、追加しない
                                             changed = true;
                                             continue;
                                         } else {
-                                            if ((point.getControlLeftType() != BezierControlType.None && isInRect(ctrl_l.x, ctrl_l.y, rc)) ||
-                                                 (point.getControlRightType() != BezierControlType.None && isInRect(ctrl_r.x, ctrl_r.y, rc))) {
+                                            if ((point.getControlLeftType() != BezierControlType.None && isInRect(ctrl_l.X, ctrl_l.Y, rc)) ||
+                                                 (point.getControlRightType() != BezierControlType.None && isInRect(ctrl_r.X, ctrl_r.Y, rc))) {
                                                 // 制御点が選択範囲に入っているので、「滑らかにする」オプションを解除して追加
                                                 BezierPoint point_copy = (BezierPoint)point.clone();
                                                 point_copy.setControlLeftType(BezierControlType.None);
@@ -4664,8 +4664,8 @@ namespace cadencii
                                         int count = mMouseTracer.size();
                                         foreach (var p in mMouseTracer.iterator()) {
                                             i++;
-                                            int key = p.x;
-                                            int value = p.y;
+                                            int key = p.X;
+                                            int value = p.Y;
                                             if (i == 0) {
                                                 lkey = key;
                                                 lvalue = value;
@@ -4776,16 +4776,16 @@ namespace cadencii
                                     ValuePair<float, int> first = null; // xの値が0以下の最大のデータ点
                                     ValuePair<float, int> last = null;//xの値が1以上の最小のデータ点
                                     foreach (var p in mMouseTracer.iterator()) {
-                                        if (p.x < chk_start) {
+                                        if (p.X < chk_start) {
                                             continue;
-                                        } else if (chk_end < p.x) {
+                                        } else if (chk_end < p.X) {
                                             break;
                                         }
-                                        int clock = AppManager.clockFromXCoord(p.x - stdx);
+                                        int clock = AppManager.clockFromXCoord(p.X - stdx);
                                         if (clock - lclock < step_clock) {
                                             continue;
                                         }
-                                        int val = valueFromYCoord(p.y);
+                                        int val = valueFromYCoord(p.Y);
                                         if (val < min) {
                                             val = min;
                                         } else if (max < val) {
@@ -4890,16 +4890,16 @@ namespace cadencii
                                 int lclock = -2 * step_clock;
                                 int index = 0;
                                 foreach (var p in mMouseTracer.iterator()) {
-                                    if (p.x < start) {
+                                    if (p.X < start) {
                                         continue;
-                                    } else if (end < p.x) {
+                                    } else if (end < p.X) {
                                         break;
                                     }
-                                    int clock = AppManager.clockFromXCoord(p.x - stdx);
+                                    int clock = AppManager.clockFromXCoord(p.X - stdx);
                                     if (clock - lclock < step_clock) {
                                         continue;
                                     }
-                                    int value = valueFromYCoord(p.y);
+                                    int value = valueFromYCoord(p.Y);
                                     if (value < min) {
                                         value = min;
                                     } else if (max < value) {
@@ -5095,9 +5095,9 @@ namespace cadencii
             } else if (mMouseDownMode == MouseDownMode.POINT_MOVE) {
                 if (mMouseMoved) {
 					Point pmouse = pointToClient(cadencii.core2.PortUtil.getMousePosition());
-                    Point mouse = new Point(pmouse.x, pmouse.y);
-                    int dx = mouse.x + AppManager.mMainWindowController.getStartToDrawX() - mMouseDownLocation.x;
-                    int dy = mouse.y - mMouseDownLocation.y;
+                    Point mouse = new Point(pmouse.X, pmouse.Y);
+                    int dx = mouse.X + AppManager.mMainWindowController.getStartToDrawX() - mMouseDownLocation.X;
+                    int dy = mouse.Y - mMouseDownLocation.Y;
 
                     string curve = mSelectedCurve.getName();
                     VsqTrack work = (VsqTrack)vsq_track.clone();
@@ -5148,9 +5148,9 @@ namespace cadencii
             if (mMouseDowned && !mPencilMoved && AppManager.getSelectedTool() == EditTool.PENCIL &&
                  !mSelectedCurve.equals(CurveType.VEL)) {
 				Point pmouse = pointToClient(cadencii.core2.PortUtil.getMousePosition());
-                Point mouse = new Point(pmouse.x, pmouse.y);
-                int clock = AppManager.clockFromXCoord(mouse.x);
-                int value = valueFromYCoord(mouse.y);
+                Point mouse = new Point(pmouse.X, pmouse.Y);
+                int clock = AppManager.clockFromXCoord(mouse.X);
+                int value = valueFromYCoord(mouse.Y);
                 int min = mSelectedCurve.getMinimum();
                 int max = mSelectedCurve.getMaximum();
 
@@ -5353,7 +5353,7 @@ namespace cadencii
                                 BezierChain bc = dict[i];
                                 foreach (var bp in bc.points) {
                                     Point pt = getScreenCoord(bp.getBase());
-                                    Rectangle rc = new Rectangle(pt.x - DOT_WID, pt.y - DOT_WID, 2 * DOT_WID + 1, 2 * DOT_WID + 1);
+                                    Rectangle rc = new Rectangle(pt.X - DOT_WID, pt.Y - DOT_WID, 2 * DOT_WID + 1, 2 * DOT_WID + 1);
                                     if (isInRect(e.X, e.Y, rc)) {
                                         found = true;
                                         target_point = (BezierPoint)bp.clone();
@@ -5363,7 +5363,7 @@ namespace cadencii
 
                                     if (bp.getControlLeftType() != BezierControlType.None) {
                                         pt = getScreenCoord(bp.getControlLeft());
-                                        rc = new Rectangle(pt.x - DOT_WID, pt.y - DOT_WID, 2 * DOT_WID + 1, 2 * DOT_WID + 1);
+                                        rc = new Rectangle(pt.X - DOT_WID, pt.Y - DOT_WID, 2 * DOT_WID + 1, 2 * DOT_WID + 1);
                                         if (isInRect(e.X, e.Y, rc)) {
                                             found = true;
                                             target_point = (BezierPoint)bp.clone();
@@ -5373,7 +5373,7 @@ namespace cadencii
                                     }
                                     if (bp.getControlRightType() != BezierControlType.None) {
                                         pt = getScreenCoord(bp.getControlRight());
-                                        rc = new Rectangle(pt.x - DOT_WID, pt.y - DOT_WID, 2 * DOT_WID + 1, 2 * DOT_WID + 1);
+                                        rc = new Rectangle(pt.X - DOT_WID, pt.Y - DOT_WID, 2 * DOT_WID + 1, 2 * DOT_WID + 1);
                                         if (isInRect(e.X, e.Y, rc)) {
                                             found = true;
                                             target_point = (BezierPoint)bp.clone();
@@ -5476,7 +5476,7 @@ namespace cadencii
                                     Point pt = pointToScreen(new Point(tx, 0));
                                     Invalidate();
                                     dialog.Location =
-                                        new System.Drawing.Point(pt.x - dialog.Width / 2, pt.y - dialog.Height);
+                                        new System.Drawing.Point(pt.X - dialog.Width / 2, pt.Y - dialog.Height);
                                     AppManager.showModalDialog(dialog, mMainWindow);
                                 }
                                 #endregion
@@ -5676,7 +5676,7 @@ namespace cadencii
                 Rectangle rc = new Rectangle(rrc.x, rrc.y, rrc.width, rrc.height);
                 mTooltipProgram = program;
                 mTooltipLanguage = language;
-                if (pts.x + cmenuSinger.Width + tip_width > rc.width) {
+                if (pts.X + cmenuSinger.Width + tip_width > rc.width) {
                     toolTip.Show(tip, cmenuSinger, new System.Drawing.Point(-tip_width, y), 5000);
                 } else {
                     toolTip.Show(tip, cmenuSinger, new System.Drawing.Point(cmenuSinger.Width, y), 5000);

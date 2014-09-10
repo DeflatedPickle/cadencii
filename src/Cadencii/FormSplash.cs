@@ -109,7 +109,7 @@ namespace cadencii
         {
             mouseDowned = true;
 			Point screen = cadencii.core2.PortUtil.getMousePosition();
-            var point = this.PointToClient(new System.Drawing.Point(screen.x, screen.y));
+            var point = this.PointToClient(new System.Drawing.Point(screen.X, screen.Y));
             Point p = new Point(point.X, point.Y);
             mouseDownedLocation = p;
         }
@@ -132,7 +132,7 @@ namespace cadencii
             }
 
 			Point screen = cadencii.core2.PortUtil.getMousePosition();
-            var p = new System.Drawing.Point(screen.x - mouseDownedLocation.x, screen.y - mouseDownedLocation.y);
+            var p = new System.Drawing.Point(screen.X - mouseDownedLocation.X, screen.Y - mouseDownedLocation.Y);
             this.Location = p;
         }
         #endregion

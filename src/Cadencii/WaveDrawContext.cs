@@ -50,7 +50,7 @@ namespace cadencii.new_
         /// <param name="pixel_per_clock">ゲートタイムあたりの秒数</param>
         /// <param name="scale_y">Y軸方向の描画スケール。デフォルトは1.0</param>
         public void draw(
-            Graphics2D g,
+            Graphics g,
             Color pen,
             Rectangle rect,
             int clock_start,
@@ -74,7 +74,7 @@ namespace cadencii.new_
         /// <param name="tempo_table">ゲートタイムから秒数を調べる際使用するテンポ・テーブル</param>
         /// <param name="pixel_per_clock">ゲートタイムあたりの秒数</param>
         public void draw(
-            Graphics2D g,
+            Graphics g,
             Color pen,
             Rectangle rect,
             int clock_start,
@@ -98,7 +98,7 @@ namespace cadencii.new_
         /// <param name="scale_y">Y軸方向の描画スケール。デフォルトは1.0</param>
         /// <param name="auto_maximize">自動で最大化するかどうか</param>
         private void drawCore(
-            Graphics2D g,
+            Graphics g,
             Color pen,
             Rectangle rect,
             int clock_start,
@@ -382,7 +382,7 @@ namespace cadencii
         /// <param name="pixel_per_clock">ゲートタイムあたりの秒数</param>
         /// <param name="scale_y">Y軸方向の描画スケール。デフォルトは1.0</param>
         public void draw(
-            Graphics2D g,
+            Graphics g,
             Color pen,
             Rectangle rect,
             int clock_start,
@@ -406,7 +406,7 @@ namespace cadencii
         /// <param name="tempo_table">ゲートタイムから秒数を調べる際使用するテンポ・テーブル</param>
         /// <param name="pixel_per_clock">ゲートタイムあたりの秒数</param>
         public void draw(
-            Graphics2D g,
+            Graphics g,
             Color pen,
             Rectangle rect,
             int clock_start,
@@ -430,7 +430,7 @@ namespace cadencii
         /// <param name="scale_y">Y軸方向の描画スケール。デフォルトは1.0</param>
         /// <param name="auto_maximize">自動で最大化するかどうか</param>
         private void drawCore(
-            Graphics2D g,
+            Graphics g,
             Color pen,
             Rectangle rect,
             int clock_start,

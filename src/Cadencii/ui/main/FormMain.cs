@@ -466,15 +466,15 @@ namespace cadencii
         /// <summary>
         /// デフォルトのストローク
         /// </summary>
-        private BasicStroke mStrokeDefault = null;
+        private Stroke mStrokeDefault = null;
         /// <summary>
         /// 描画幅2pxのストローク
         /// </summary>
-        private BasicStroke mStroke2px = null;
+        private Stroke mStroke2px = null;
         /// <summary>
         /// pictureBox2の描画ループで使うグラフィックス
         /// </summary>
-        private Graphics2D mGraphicsPictureBox2 = null;
+        private Graphics mGraphicsPictureBox2 = null;
         /// <summary>
         /// ピアノロールの縦方向の拡大率を変更するパネル上でのマウスの状態。
         /// 0がデフォルト、&gt;0は+ボタンにマウスが降りた状態、&lt;0は-ボタンにマウスが降りた状態
@@ -859,7 +859,7 @@ namespace cadencii
 				Rectangle workingArea = cadencii.core2.PortUtil.getWorkingArea(this);
                 p1 = new Point(workingArea.x, workingArea.y);
             }
-            AppManager.iconPalette.Location = new System.Drawing.Point(p1.x, p1.y);
+            AppManager.iconPalette.Location = new System.Drawing.Point(p1.X, p1.Y);
             if (AppManager.editorConfig.IconPaletteVisible) {
                 AppManager.iconPalette.Visible = true;
             }
@@ -921,30 +921,30 @@ namespace cadencii
             var p = this.Location;
             XmlRectangle xr = AppManager.editorConfig.PropertyWindowStatus.Bounds;
             Point p0 = new Point(xr.x, xr.y);
-            Point a = new Point(p.X + p0.x, p.Y + p0.y);
-            Rectangle rc = new Rectangle(a.x,
-                                          a.y,
+            Point a = new Point(p.X + p0.X, p.Y + p0.Y);
+            Rectangle rc = new Rectangle(a.X,
+                                          a.Y,
                                           AppManager.editorConfig.PropertyWindowStatus.Bounds.getWidth(),
                                           AppManager.editorConfig.PropertyWindowStatus.Bounds.getHeight());
 
-            if (a.y > rcScreen.y + rcScreen.height) {
-                a = new Point(a.x, rcScreen.y + rcScreen.height - rc.height);
+            if (a.Y > rcScreen.y + rcScreen.height) {
+                a = new Point(a.X, rcScreen.y + rcScreen.height - rc.height);
             }
-            if (a.y < rcScreen.y) {
-                a = new Point(a.x, rcScreen.y);
+            if (a.Y < rcScreen.y) {
+                a = new Point(a.X, rcScreen.y);
             }
-            if (a.x > rcScreen.x + rcScreen.width) {
-                a = new Point(rcScreen.x + rcScreen.width - rc.width, a.y);
+            if (a.X > rcScreen.x + rcScreen.width) {
+                a = new Point(rcScreen.x + rcScreen.width - rc.width, a.Y);
             }
-            if (a.x < rcScreen.x) {
-                a = new Point(rcScreen.x, a.y);
+            if (a.X < rcScreen.x) {
+                a = new Point(rcScreen.x, a.Y);
             }
 #if DEBUG
             AppManager.debugWriteLine("FormMain_Load; a=" + a);
 #endif
 
 #if ENABLE_PROPERTY
-            AppManager.propertyWindow.getUi().setBounds(a.x, a.y, rc.width, rc.height);
+            AppManager.propertyWindow.getUi().setBounds(a.X, a.Y, rc.width, rc.height);
             AppManager.propertyPanel.CommandExecuteRequired += new CommandExecuteRequiredEventHandler(propertyPanel_CommandExecuteRequired);
 #endif
             updateBgmMenuState();
@@ -1463,10 +1463,10 @@ namespace cadencii
         /// デフォルトのストロークを取得します
         /// </summary>
         /// <returns></returns>
-        private BasicStroke getStrokeDefault()
+        private Stroke getStrokeDefault()
         {
             if (mStrokeDefault == null) {
-                mStrokeDefault = new BasicStroke();
+                mStrokeDefault = new Stroke();
             }
             return mStrokeDefault;
         }
@@ -1475,10 +1475,10 @@ namespace cadencii
         /// 描画幅が2pxのストロークを取得します
         /// </summary>
         /// <returns></returns>
-        private BasicStroke getStroke2px()
+        private Stroke getStroke2px()
         {
             if (mStroke2px == null) {
-                mStroke2px = new BasicStroke(2.0f);
+                mStroke2px = new Stroke(2.0f);
             }
             return mStroke2px;
         }
@@ -1663,10 +1663,10 @@ namespace cadencii
             int key_width = AppManager.keyWidth;
 
             // マウスが可視範囲になければ死ぬ
-            if (mouse_position.x < key_width || width < mouse_position.x) {
+            if (mouse_position.X < key_width || width < mouse_position.X) {
                 return null;
             }
-            if (mouse_position.y < 0 || height < mouse_position.y) {
+            if (mouse_position.Y < 0 || height < mouse_position.Y) {
                 return null;
             }
 
@@ -1687,19 +1687,19 @@ namespace cadencii
                     DrawObject dobj = dobj_list[i];
                     int x = dobj.mRectangleInPixel.x + key_width - start_to_draw_x;
                     int y = dobj.mRectangleInPixel.y - start_to_draw_y;
-                    if (mouse_position.x < x) {
+                    if (mouse_position.X < x) {
                         continue;
                     }
-                    if (x + dobj.mRectangleInPixel.width < mouse_position.x) {
+                    if (x + dobj.mRectangleInPixel.width < mouse_position.X) {
                         continue;
                     }
                     if (width < x) {
                         break;
                     }
-                    if (mouse_position.y < y) {
+                    if (mouse_position.Y < y) {
                         continue;
                     }
-                    if (y + dobj.mRectangleInPixel.height < mouse_position.y) {
+                    if (y + dobj.mRectangleInPixel.height < mouse_position.Y) {
                         continue;
                     }
                     int internal_id = dobj.mInternalID;
@@ -1722,7 +1722,7 @@ namespace cadencii
         /// <returns></returns>
         private int computeVScrollValueForMiddleDrag(int mouse_y)
         {
-            int dy = mouse_y - mButtonInitial.y;
+            int dy = mouse_y - mButtonInitial.Y;
             int max = vScroll.Maximum - vScroll.LargeChange;
             int min = vScroll.Minimum;
             double new_vscroll_value = (double)mMiddleButtonVScroll - dy * max / (128.0 * (int)(100.0 * controller.getScaleY()) - (double)pictPianoRoll.getHeight());
@@ -1742,7 +1742,7 @@ namespace cadencii
         /// <returns></returns>
         private int computeHScrollValueForMiddleDrag(int mouse_x)
         {
-            int dx = mouse_x - mButtonInitial.x;
+            int dx = mouse_x - mButtonInitial.X;
             int max = hScroll.Maximum - hScroll.LargeChange;
             int min = hScroll.Minimum;
             double new_hscroll_value = (double)mMiddleButtonHScroll - (double)dx * controller.getScaleXInv();
@@ -2296,8 +2296,8 @@ namespace cadencii
                 var parent = this.Location;
                 XmlRectangle rc = AppManager.editorConfig.PropertyWindowStatus.Bounds;
                 Point property = new Point(rc.x, rc.y);
-                int x = parent.X + property.x;
-                int y = parent.Y + property.y;
+                int x = parent.X + property.X;
+                int y = parent.Y + property.Y;
                 int width = rc.width;
                 int height = rc.height;
                 AppManager.propertyWindow.getUi().setBounds(x, y, width, height);
@@ -2309,7 +2309,7 @@ namespace cadencii
                     x, y, width, height,
                     workingAreaX, workingAreaY, workingAreaWidth, workingAreaHeight
                 );
-                AppManager.propertyWindow.getUi().setBounds(appropriateLocation.x, appropriateLocation.y, width, height);
+                AppManager.propertyWindow.getUi().setBounds(appropriateLocation.X, appropriateLocation.Y, width, height);
                 // setVisible -> NORMALとすると，javaの場合見栄えが悪くなる
                 AppManager.propertyWindow.getUi().setVisible(true);
                 if (AppManager.propertyWindow.getUi().isWindowMinimized()) {
@@ -2411,7 +2411,7 @@ namespace cadencii
         {
 			Point mouse = cadencii.core2.PortUtil.getMousePosition();
 			Rectangle rcScreen = cadencii.core2.PortUtil.getWorkingArea(this);
-            int top = mouse.y - dialogHeight / 2;
+            int top = mouse.Y - dialogHeight / 2;
             if (top + dialogHeight > rcScreen.y + rcScreen.height) {
                 // ダイアログの下端が隠れる場合、位置をずらす
                 top = rcScreen.y + rcScreen.height - dialogHeight;
@@ -2420,7 +2420,7 @@ namespace cadencii
                 // ダイアログの上端が隠れる場合、位置をずらす
                 top = rcScreen.y;
             }
-            int left = mouse.x - dialogWidth / 2;
+            int left = mouse.X - dialogWidth / 2;
             if (left + dialogWidth > rcScreen.x + rcScreen.width) {
                 // ダイアログの右端が隠れる場合，位置をずらす
                 left = rcScreen.x + rcScreen.width - dialogWidth;
@@ -2543,7 +2543,7 @@ namespace cadencii
             }
         }
 
-        public void drawUtauVibrato(Graphics2D g, UstVibrato vibrato, int note, int clock_start, int clock_width)
+        public void drawUtauVibrato(Graphics g, UstVibrato vibrato, int note, int clock_start, int clock_width)
         {
             //SmoothingMode old = g.SmoothingMode;
             //g.SmoothingMode = SmoothingMode.AntiAlias;
@@ -2560,8 +2560,8 @@ namespace cadencii
             Point ul = new Point(x_vibin_end, y0 - boxheight / 2 - px_shift);
             Point dl = new Point(x_vibin_end, y0 + boxheight / 2 - px_shift);
             g.setColor(Color.black);
-            g.drawPolyline(new int[] { x0, ul.x, dl.x },
-                            new int[] { y0, ul.y, dl.y },
+            g.drawPolyline(new int[] { x0, ul.X, dl.X },
+                            new int[] { y0, ul.Y, dl.Y },
                             3);
 
             // vibrato out
@@ -2569,15 +2569,15 @@ namespace cadencii
             int x_vibout_start = AppManager.xCoordFromClocks(cl_vibout_start);
             Point ur = new Point(x_vibout_start, y0 - boxheight / 2 - px_shift);
             Point dr = new Point(x_vibout_start, y0 + boxheight / 2 - px_shift);
-            g.drawPolyline(new int[] { x0 + px_width, ur.x, dr.x },
-                           new int[] { y0, ur.y, dr.y },
+            g.drawPolyline(new int[] { x0 + px_width, ur.X, dr.X },
+                           new int[] { y0, ur.Y, dr.Y },
                            3);
 
             // box
             int boxwidth = x_vibout_start - x_vibin_end;
             if (boxwidth > 0) {
-                g.drawPolyline(new int[] { ul.x, dl.x, dr.x, ur.x },
-                               new int[] { ul.y, dl.y, dr.y, ur.y },
+                g.drawPolyline(new int[] { ul.X, dl.X, dr.X, ur.X },
+                               new int[] { ul.Y, dl.Y, dr.Y, ur.Y },
                                4);
             }
 
@@ -6111,7 +6111,7 @@ namespace cadencii
                 AppManager.mInputTextBox.BackColor = System.Drawing.Color.White;
             }
             AppManager.mInputTextBox.Font = new System.Drawing.Font(AppManager.editorConfig.BaseFontName, EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular);
-            System.Drawing.Point p = new System.Drawing.Point(position.x + 4, position.y + 2);
+            System.Drawing.Point p = new System.Drawing.Point(position.X + 4, position.Y + 2);
             AppManager.mInputTextBox.Location = p;
 
             AppManager.mInputTextBox.Parent = pictPianoRoll;
@@ -6371,7 +6371,7 @@ namespace cadencii
 
         public void picturePositionIndicatorDrawTo(java.awt.Graphics g1)
         {
-            Graphics2D g = (Graphics2D)g1;
+            Graphics g = (Graphics)g1;
             Font SMALL_FONT = EditorConfig.baseFont8;
             int small_font_offset = EditorConfig.baseFont8OffsetHeight;
             try {
@@ -6489,10 +6489,10 @@ namespace cadencii
                 float xoffset = key_width + AppManager.keyOffset - controller.getStartToDrawX();
                 int marker_x = (int)(AppManager.getCurrentClock() * controller.getScaleX() + xoffset);
                 if (key_width <= marker_x && marker_x <= width) {
-                    g.setStroke(new BasicStroke(2.0f));
+                    g.setStroke(new Stroke(2.0f));
                     g.setColor(Color.white);
                     g.drawLine(marker_x, 0, marker_x, height);
-                    g.setStroke(new BasicStroke());
+                    g.setStroke(new Stroke());
                 }
 
                 // スタートマーカーとエンドマーカー
@@ -6506,7 +6506,7 @@ namespace cadencii
                         right = true;
                     } else {
                         g.drawImage(
-                            Properties.Resources.start_marker, x, 3, this);
+                            new java.awt.Image () { NativeImage = Properties.Resources.start_marker }, x, 3, this);
                     }
                 }
                 if (vsq.config.EndMarkerEnabled) {
@@ -6517,7 +6517,7 @@ namespace cadencii
                         right = true;
                     } else {
                         g.drawImage(
-                            Properties.Resources.end_marker, x, 3, this);
+                            new java.awt.Image () { NativeImage = Properties.Resources.end_marker }, x, 3, this);
                     }
                 }
 
@@ -6540,7 +6540,8 @@ namespace cadencii
 
                 #region TEMPO & BEAT
                 // TEMPO BEATの文字の部分。小節数が被っている可能性があるので、塗り潰す
-                g.setColor(new Color(picturePositionIndicator.BackColor));
+				var col = picturePositionIndicator.BackColor;
+                g.setColor(new Color(col.R, col.G, col.B, col.A));
                 g.fillRect(0, 0, AppManager.keyWidth, 48);
                 // 横ライン上
                 g.setColor(new Color(104, 104, 104));
@@ -8017,7 +8018,7 @@ namespace cadencii
                     this.Cursor = HAND;
                 }
 
-                if (e.X != mButtonInitial.x || e.Y != mButtonInitial.y) {
+                if (e.X != mButtonInitial.X || e.Y != mButtonInitial.Y) {
                     mMouseMoved = true;
                 }
                 if (!(edit_mode == EditMode.MIDDLE_DRAG) && AppManager.isPlaying()) {
@@ -8028,7 +8029,7 @@ namespace cadencii
                      edit_mode == EditMode.MOVE_ENTRY_WHOLE_WAIT_MOVE) {
                     int x = e.X + stdx;
                     int y = e.Y + stdy;
-                    if (mMouseMoveInit.x != x || mMouseMoveInit.y != y) {
+                    if (mMouseMoveInit.X != x || mMouseMoveInit.Y != y) {
                         if (edit_mode == EditMode.MOVE_ENTRY_WAIT_MOVE) {
                             AppManager.setEditMode(EditMode.MOVE_ENTRY);
                             edit_mode = EditMode.MOVE_ENTRY;
@@ -8156,21 +8157,21 @@ namespace cadencii
                     } else {
                         Point mouse = new Point(e.X + stdx, e.Y + stdy);
                         int tx, ty, twidth, theight;
-                        int lx = AppManager.mMouseDownLocation.x;
-                        if (lx < mouse.x) {
+                        int lx = AppManager.mMouseDownLocation.X;
+                        if (lx < mouse.X) {
                             tx = lx;
-                            twidth = mouse.x - lx;
+                            twidth = mouse.X - lx;
                         } else {
-                            tx = mouse.x;
-                            twidth = lx - mouse.x;
+                            tx = mouse.X;
+                            twidth = lx - mouse.X;
                         }
-                        int ly = AppManager.mMouseDownLocation.y;
-                        if (ly < mouse.y) {
+                        int ly = AppManager.mMouseDownLocation.Y;
+                        if (ly < mouse.Y) {
                             ty = ly;
-                            theight = mouse.y - ly;
+                            theight = mouse.Y - ly;
                         } else {
-                            ty = mouse.y;
-                            theight = ly - mouse.y;
+                            ty = mouse.Y;
+                            theight = ly - mouse.Y;
                         }
 
                         Rectangle rect = new Rectangle(tx, ty, twidth, theight);
@@ -8559,24 +8560,24 @@ namespace cadencii
                         bool cl_item_start_added = false;
                         int last_px = 0, last_py = 0;
                         foreach (var p in pictPianoRoll.mMouseTracer.iterator()) {
-                            if (p.x < px_item_start) {
-                                last_px = p.x;
-                                last_py = p.y;
+                            if (p.X < px_item_start) {
+                                last_px = p.X;
+                                last_py = p.Y;
                                 continue;
                             }
-                            if (px_item_end < p.x) {
+                            if (px_item_end < p.X) {
                                 break;
                             }
 
-                            int clock = AppManager.clockFromXCoord(p.x - stdx);
+                            int clock = AppManager.clockFromXCoord(p.X - stdx);
                             if (clock < cl_item_start) {
-                                last_px = p.x;
-                                last_py = p.y;
+                                last_px = p.X;
+                                last_py = p.Y;
                                 continue;
                             } else if (cl_item_end < clock) {
                                 break;
                             }
-                            double note = AppManager.noteFromYCoordDoublePrecision(p.y - stdy - half_track_height);
+                            double note = AppManager.noteFromYCoordDoublePrecision(p.Y - stdy - half_track_height);
                             int v_pit = (int)(d2_13 / (double)pbs.getValue(clock) * (note - item.ID.Note));
 
                             // 正規化
@@ -8590,7 +8591,7 @@ namespace cadencii
                                  cl_start <= cl_item_start && cl_item_start < cl_end) {
                                 // これから追加しようとしているデータ点の時刻が、音符の開始時刻よりも後なんだけれど、
                                 // 音符の開始時刻におけるデータをまだ書き込んでない場合
-                                double a = (p.y - last_py) / (double)(p.x - last_px);
+                                double a = (p.Y - last_py) / (double)(p.X - last_px);
                                 double x_at_clock = AppManager.xCoordFromClocks(cl_item_start) + stdx;
                                 double ext_y = last_py + a * (x_at_clock - last_px);
                                 double tnote = AppManager.noteFromYCoordDoublePrecision((int)(ext_y - stdy - half_track_height));
@@ -8639,7 +8640,7 @@ namespace cadencii
                 #region AddEntry || AddFixedLengthEntry
                 if (AppManager.getSelected() >= 0) {
                     if ((edit_mode == EditMode.ADD_FIXED_LENGTH_ENTRY) ||
-                         (edit_mode == EditMode.ADD_ENTRY && (mButtonInitial.x != e.X || mButtonInitial.y != e.Y) && AppManager.mAddingEvent.ID.getLength() > 0)) {
+                         (edit_mode == EditMode.ADD_ENTRY && (mButtonInitial.X != e.X || mButtonInitial.Y != e.Y) && AppManager.mAddingEvent.ID.getLength() > 0)) {
                         if (AppManager.mAddingEvent.Clock < vsq.getPreMeasureClocks()) {
                             SystemSounds.Asterisk.Play();
                         } else {
@@ -8961,7 +8962,7 @@ namespace cadencii
                         // マウスのスクリーン座標
 						Point screen_p_at_mouse = cadencii.core2.PortUtil.getMousePosition();
                         // ピアノロール上でのマウスのx座標
-                        int x_at_mouse = pictPianoRoll.PointToClient(new System.Drawing.Point(screen_p_at_mouse.x, screen_p_at_mouse.y)).X;
+                        int x_at_mouse = pictPianoRoll.PointToClient(new System.Drawing.Point(screen_p_at_mouse.X, screen_p_at_mouse.Y)).X;
                         // マウス位置でのクロック -> こいつが保存される
                         int clock_at_mouse = AppManager.clockFromXCoord(x_at_mouse);
                         // 古い拡大率
@@ -13993,7 +13994,7 @@ namespace cadencii
 
         public void picturePositionIndicator_Paint(Object sender, PaintEventArgs e)
         {
-            Graphics2D g = new Graphics2D() {NativeGraphics = e.Graphics};
+            Graphics g = new Graphics() {NativeGraphics = e.Graphics};
             picturePositionIndicatorDrawTo(g);
 #if MONITOR_FPS
             g.setColor(Color.red);
@@ -15071,7 +15072,7 @@ namespace cadencii
         public void pictureBox2_Paint(Object sender, PaintEventArgs e)
         {
             if (mGraphicsPictureBox2 == null) {
-                mGraphicsPictureBox2 = new Graphics2D();
+                mGraphicsPictureBox2 = new Graphics();
             }
             mGraphicsPictureBox2.NativeGraphics = e.Graphics;
             int width = pictureBox2.Width;
@@ -15268,7 +15269,7 @@ namespace cadencii
             if (!mKeyLengthSplitterMouseDowned) {
                 return;
             }
-			int dx = cadencii.core2.PortUtil.getMousePosition().x - mKeyLengthSplitterInitialMouse.x;
+			int dx = cadencii.core2.PortUtil.getMousePosition().X - mKeyLengthSplitterInitialMouse.X;
             int draft = mKeyLengthInitValue + dx;
             if (draft < EditorConfig.MIN_KEY_WIDTH) {
                 draft = EditorConfig.MIN_KEY_WIDTH;
@@ -16673,7 +16674,7 @@ namespace cadencii
                 dlg.Left, dlg.Top, dlg.Width, dlg.Height,
                 rcScreen.x, rcScreen.y, rcScreen.width, rcScreen.height
             );
-            dlg.Location = new System.Drawing.Point(p.x, p.y);
+            dlg.Location = new System.Drawing.Point(p.X, p.Y);
         }
         #endregion
 

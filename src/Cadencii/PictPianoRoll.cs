@@ -77,15 +77,15 @@ namespace cadencii
         /// <summary>
         /// 幅が2ピクセルのストローク
         /// </summary>
-        private BasicStroke mStroke2px = null;
+        private Stroke mStroke2px = null;
         /// <summary>
         /// デフォルトのストローク
         /// </summary>
-        private BasicStroke mStrokeDefault = null;
+        private Stroke mStrokeDefault = null;
         /// <summary>
         /// 破線を表すストローク
         /// </summary>
-        private BasicStroke mStrokeDashed = null;
+        private Stroke mStrokeDashed = null;
         /// <summary>
         /// 共用の折れ線描画プラクシー
         /// </summary>
@@ -116,7 +116,7 @@ namespace cadencii
         protected override void OnPaint(PaintEventArgs pe)
         {
             base.OnPaint(pe);
-			paint(new Graphics2D() {NativeGraphics = pe.Graphics});
+			paint(new Graphics() {NativeGraphics = pe.Graphics});
         }
 
         #region common APIs of org.kbinani.*
@@ -136,10 +136,10 @@ namespace cadencii
         /// 幅が2ピクセルのストロークを取得します
         /// </summary>
         /// <returns></returns>
-        private BasicStroke getStroke2px()
+        private Stroke getStroke2px()
         {
             if (mStroke2px == null) {
-                mStroke2px = new BasicStroke(2.0f);
+                mStroke2px = new Stroke(2.0f);
             }
             return mStroke2px;
         }
@@ -148,10 +148,10 @@ namespace cadencii
         /// デフォルトのストロークを取得します
         /// </summary>
         /// <returns></returns>
-        private BasicStroke getStrokeDefault()
+        private Stroke getStrokeDefault()
         {
             if (mStrokeDefault == null) {
-                mStrokeDefault = new BasicStroke();
+                mStrokeDefault = new Stroke();
             }
             return mStrokeDefault;
         }
@@ -160,10 +160,10 @@ namespace cadencii
         /// 3ドット間隔の破線を表すストロークを取得します
         /// </summary>
         /// <returns></returns>
-        private BasicStroke getStrokeDashed()
+        private Stroke getStrokeDashed()
         {
             if (mStrokeDashed == null) {
-                mStrokeDashed = new BasicStroke(1.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10.0f, new float[] { 3.0f, 3.0f }, 0.0f);
+                mStrokeDashed = new Stroke(1.0f, Stroke.CAP_SQUARE, Stroke.JOIN_MITER, 10.0f, new float[] { 3.0f, 3.0f }, 0.0f);
             }
             return mStrokeDashed;
         }
@@ -173,7 +173,7 @@ namespace cadencii
         /// </summary>
         /// <param name="g"></param>
         /// <returns></returns>
-        private PolylineDrawer getCommonPolylineDrawer(Graphics2D g)
+        private PolylineDrawer getCommonPolylineDrawer(Graphics g)
         {
             if (mCommonPolylineDrawer == null) {
                 mCommonPolylineDrawer = new PolylineDrawer(g, 1024);
@@ -195,7 +195,7 @@ namespace cadencii
             }
 
             lock (AppManager.mDrawObjects) {
-                Graphics2D g = (Graphics2D)g1;
+                Graphics g = (Graphics)g1;
 
                 int width = getWidth();
                 int height = getHeight();
@@ -219,7 +219,7 @@ namespace cadencii
                     VsqTrack vsq_track = vsq.Track[selected];
 
 					var p = cadencii.core2.PortUtil.getMousePosition();
-                    var mouse_position = this.PointToClient(new System.Drawing.Point(p.x, p.y));
+                    var mouse_position = this.PointToClient(new System.Drawing.Point(p.X, p.Y));
                     int stdx = AppManager.mMainWindowController.getStartToDrawX();
                     int stdy = AppManager.mMainWindowController.getStartToDrawY();
                     int key_width = AppManager.keyWidth;
@@ -1035,7 +1035,7 @@ namespace cadencii
                     } else if (AppManager.mIsPointerDowned) {
                         // 選択範囲を半透明で塗りつぶす
 						var mouse_location = cadencii.core2.PortUtil.getMousePosition();
-                        var mouse = this.PointToClient(new System.Drawing.Point(mouse_location.x, mouse_location.y));
+                        var mouse = this.PointToClient(new System.Drawing.Point(mouse_location.X, mouse_location.Y));
                         // 描く四角形の位置とサイズ
                         int tx, ty, twidth, theight;
                         // 上下左右の枠を表示していいかどうか
@@ -1044,7 +1044,7 @@ namespace cadencii
                         bool vleft = true;
                         bool vright = true;
                         // マウスが下りた位置のx座標
-                        int lx = AppManager.mMouseDownLocation.x - stdx;
+                        int lx = AppManager.mMouseDownLocation.X - stdx;
                         if (lx < mouse.X) {
                             tx = lx;
                             twidth = mouse.X - lx;
@@ -1052,7 +1052,7 @@ namespace cadencii
                             tx = mouse.X;
                             twidth = lx - mouse.X;
                         }
-                        int ly = AppManager.mMouseDownLocation.y - stdy;
+                        int ly = AppManager.mMouseDownLocation.Y - stdy;
                         if (ly < mouse.Y) {
                             ty = ly;
                             theight = mouse.Y - ly;
@@ -1202,7 +1202,7 @@ namespace cadencii
 							g.setColor(cadencii.core2.PortUtil.Orchid);
                             g.setStroke(getStroke2px());
                             foreach (var pt in mMouseTracer.iterator()) {
-                                commonDrawer.append(pt.x - stdx, pt.y - stdy);
+                                commonDrawer.append(pt.X - stdx, pt.Y - stdy);
                             }
                             commonDrawer.flush();
                         }
@@ -1232,8 +1232,8 @@ namespace cadencii
         /// <param name="accent"></param>
         private void drawAccentLine(Graphics g, Point origin, int accent)
         {
-            int x0 = origin.x + 1;
-            int y0 = origin.y + 10;
+            int x0 = origin.X + 1;
+            int y0 = origin.Y + 10;
             int height = 4 + accent * 4 / 100;
             //SmoothingMode sm = g.SmoothingMode;
             //g.SmoothingMode = SmoothingMode.AntiAlias;
@@ -1283,7 +1283,7 @@ namespace cadencii
                                                     clock_start,
                                                     clock_end - clock_start,
                                                     (float)(tempo * 1e-6 / 480.0));
-            Graphics2D g = drawer.getGraphics();
+            Graphics g = drawer.getGraphics();
             g.setColor(Color.blue);
 #if DEBUG
             g.setColor(Color.red);

@@ -12,7 +12,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Drawing;
 using System.Xml.Serialization;
 using System.ComponentModel;
 
