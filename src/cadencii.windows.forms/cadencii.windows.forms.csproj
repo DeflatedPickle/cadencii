@@ -63,6 +63,7 @@
     <Compile Include="RebarBandDesigner.cs" />
     <Compile Include="RebarDesigner.cs" />
     <Compile Include="Utility.cs" />
+    <Compile Include="apputil\CursorUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cadencii.core\cadencii.core.csproj">

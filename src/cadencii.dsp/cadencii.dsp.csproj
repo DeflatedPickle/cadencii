@@ -101,5 +101,9 @@
       <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
       <Name>Cadencii.GuiCore</Name>
     </ProjectReference>
+    <ProjectReference Include="..\cadencii.media.windows\cadencii.media.windows.csproj">
+      <Project>{84B71038-CB91-4456-8C90-31E73BC93D7C}</Project>
+      <Name>cadencii.media.windows</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

@@ -44,7 +44,7 @@ namespace cadencii.java.awt
 				else
 					throw new InvalidOperationException (string.Format ("Cannot find {0} from registered types", typeof(T)));
 			}
-			return (T) Activator.CreateInstance (t, bf, null, args);
+			return (T) Activator.CreateInstance (t, args);
 		}
 	}
 }
