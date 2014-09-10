@@ -21,8 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostBuildCreateVersionInfo"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.platform.windows", "..\..\..\..\..\svn\cadencii\src\cadencii.platform.windows\cadencii.platform.windows.csproj", "{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.uicore", "..\..\..\..\..\svn\cadencii\src\cadencii.uicore\cadencii.uicore.csproj", "{BF3AE944-08FC-441E-9582-756CFC72C838}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.dsp.winforms", "..\..\..\..\..\svn\cadencii\src\cadencii.dsp.winforms\cadencii.dsp.winforms.csproj", "{5F65872D-0431-4C76-973F-CD5DECD388A4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GuiAgnostic", "GuiAgnostic", "{8E950DE0-69AF-4BF8-9E66-EB0089F2116D}"
@@ -42,6 +40,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.dsp", "..\..\..\..\..\svn\cadencii\src\cadencii.dsp\cadencii.dsp.csproj", "{18E7D0BD-734D-482E-BAE8-2512147D88F0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.core2", "..\..\..\..\..\svn\cadencii\src\cadencii.core2\cadencii.core2.csproj", "{7DE0B7EA-E478-4687-9764-B44B8258F255}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.core3", "cadencii.core3\cadencii.core3.csproj", "{BF3AE944-08FC-441E-9582-756CFC72C838}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
