@@ -387,12 +387,15 @@ namespace cadencii
         /// </summary>
         public EditorConfig()
         {
+	        // FIXME: enable this.
+		/*
             // デフォルトのフォントを，システムのメニューフォントと同じにする
             System.Drawing.Font f = System.Windows.Forms.SystemInformation.MenuFont;
             if (f != null) {
                 this.BaseFontName = f.Name;
                 this.ScreenFontName = f.Name;
             }
+			*/
         }
 		
         /// <summary>

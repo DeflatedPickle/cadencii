@@ -30,9 +30,9 @@ namespace cadencii
 
 namespace cadencii.java.awt
 {
-	class UIHostWindowsForms : AwtHost
+	public class AwtHostWindowsForms : AwtHost
 	{
-		public UIHostWindowsForms ()
+		public AwtHostWindowsForms ()
 		{
 			Types [typeof(Image.ImageAdapter)] = typeof(ImageAdapterWF);
 		}
@@ -215,6 +215,24 @@ namespace cadencii.java.awt
 			nativeGraphics.FillEllipse (brush, x, y, width, height);
 		}
 
+		public override void drawBezier (float x1, float y1,
+		                                 float ctrlx1, float ctrly1,
+		                                 float ctrlx2, float ctrly2,
+		                                 float x2, float y2)
+		{
+			Stroke stroke = getStroke ();
+			System.Drawing.Pen pen = null;
+			if (stroke is Stroke) {
+				pen = (System.Drawing.Pen)((Stroke)stroke).NativePen;
+			} else {
+				pen = new System.Drawing.Pen (cadencii.java.awt.PortUtil.Black.ToNative ());
+			}
+			((System.Drawing.Graphics)NativeGraphics).DrawBezier (pen, new System.Drawing.PointF (x1, y1),
+				new System.Drawing.PointF (ctrlx1, ctrly1),
+				new System.Drawing.PointF (ctrlx2, ctrly2),
+				new System.Drawing.PointF (x2, y2));
+		}
+
 		public override void setColor (Color c)
 		{
 			color = c;
@@ -357,12 +375,33 @@ namespace cadencii.java.awt
 
 		public override void translate (int tx, int ty)
 		{
-			((System.Drawing.Graphics)NativeGraphics).TranslateTransform (tx, ty);
+			nativeGraphics.TranslateTransform (tx, ty);
 		}
 
 		public override void translate (double tx, double ty)
 		{
-			((System.Drawing.Graphics)NativeGraphics).TranslateTransform ((float)tx, (float)ty);
+			nativeGraphics.TranslateTransform ((float)tx, (float)ty);
+		}
+
+		System.Drawing.StringFormat mStringFormat = new System.Drawing.StringFormat ();
+
+		public override void drawStringEx (string s, Font font, Rectangle rect, int align, int valign)
+		{
+			if (align > 0) {
+				mStringFormat.Alignment = System.Drawing.StringAlignment.Far;
+			} else if (align < 0) {
+				mStringFormat.Alignment = System.Drawing.StringAlignment.Near;
+			} else {
+				mStringFormat.Alignment = System.Drawing.StringAlignment.Center;
+			}
+			if (valign > 0) {
+				mStringFormat.LineAlignment = System.Drawing.StringAlignment.Far;
+			} else if (valign < 0) {
+				mStringFormat.LineAlignment = System.Drawing.StringAlignment.Near;
+			} else {
+				mStringFormat.LineAlignment = System.Drawing.StringAlignment.Center;
+			}
+			nativeGraphics.DrawString (s, (System.Drawing.Font)font.NativeFont, brush, new System.Drawing.RectangleF (rect.x, rect.y, rect.width, rect.height), mStringFormat);
 		}
 	}
 
@@ -480,7 +519,7 @@ namespace cadencii.java.awt
 			if (s == null) {
 				region = new System.Drawing.Region ();
 			} else if (s is Area) {
-				AreaAdapterWF a = (AreaAdapterWF) ((Area)s).Adapter;
+				AreaAdapterWF a = (AreaAdapterWF)((Area)s).Adapter;
 				if (a.region == null) {
 					region = new System.Drawing.Region ();
 				} else {
@@ -507,7 +546,7 @@ namespace cadencii.java.awt
 			if (rhs == null) {
 				return;
 			}
-			AreaAdapterWF a = (AreaAdapterWF) rhs.Adapter;
+			AreaAdapterWF a = (AreaAdapterWF)rhs.Adapter;
 			if (a.region == null) {
 				return;
 			}
@@ -522,7 +561,7 @@ namespace cadencii.java.awt
 			if (rhs == null) {
 				return;
 			}
-			AreaAdapterWF a = (AreaAdapterWF) rhs.Adapter;
+			AreaAdapterWF a = (AreaAdapterWF)rhs.Adapter;
 			if (a.region == null) {
 				return;
 			}

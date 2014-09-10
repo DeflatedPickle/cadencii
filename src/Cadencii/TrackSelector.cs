@@ -1564,7 +1564,7 @@ namespace cadencii
                     }
                     g.setFont(EditorConfig.baseFont10Bold);
                     g.setColor(cadencii.java.awt.PortUtil.White);
-					cadencii.java.awt.GraphicsUtil.drawStringEx(g,
+					g.drawStringEx(
                                            mMouseValue + "",
                                            EditorConfig.baseFont10Bold,
                                            new Rectangle(mouse.X - 100, mouse.Y - shift, 100, 100),
@@ -1574,7 +1574,7 @@ namespace cadencii
                         float delta_note = mMouseValue * pbs_at_mouse / 8192.0f;
                         align = 1;
                         valign = -1;
-						cadencii.java.awt.GraphicsUtil.drawStringEx(g,
+						g.drawStringEx(
                                                PortUtil.formatDecimal("#0.00", delta_note),
                                                EditorConfig.baseFont10Bold,
                                                new Rectangle(mouse.X - 100, mouse.Y, 100, 100),
@@ -2333,7 +2333,7 @@ namespace cadencii
                                 Point ctrl1 = (current.getControlRightType() == BezierControlType.None) ? pxCurrent : pxControlCurrent;
                                 Point ctrl2 = (next.getControlLeftType() == BezierControlType.None) ? pxNext : pxControlNext;
                                 g.setColor(COLOR_BEZIER_CURVE);
-								cadencii.java.awt.GraphicsUtil.drawBezier(g, pxCurrent.X, pxCurrent.Y,
+								g.drawBezier(pxCurrent.X, pxCurrent.Y,
                                                         ctrl1.X, ctrl1.Y,
                                                         ctrl2.X, ctrl2.Y,
                                                         pxNext.X, pxNext.Y);

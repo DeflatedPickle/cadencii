@@ -104,6 +104,7 @@
     <Compile Include="BVScrollBar.Designer.cs">
       <DependentUpon>BVScrollBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="BitmapEx.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cadencii.core\cadencii.core.csproj">

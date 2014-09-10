@@ -120,9 +120,9 @@ namespace cadencii
             g.drawRect(rc.x, rc.y, rc.width, rc.height);
 			g.setColor(mWaveViewAutoMaximize ? cadencii.java.awt.PortUtil.Gray : cadencii.java.awt.PortUtil.Black);
             rc.y = rc.y + 1;
-			cadencii.java.awt.GraphicsUtil.drawStringEx(
-                g, (mWaveViewButtonZoomMouseDowned ? "↑Move Mouse↓" : "Zoom"), EditorConfig.baseFont9,
-				rc, cadencii.java.awt.GraphicsUtil.STRING_ALIGN_CENTER, cadencii.java.awt.GraphicsUtil.STRING_ALIGN_CENTER);
+			g.drawStringEx(
+                (mWaveViewButtonZoomMouseDowned ? "↑Move Mouse↓" : "Zoom"), EditorConfig.baseFont9,
+				rc, Graphics.STRING_ALIGN_CENTER, Graphics.STRING_ALIGN_CENTER);
         }
 
         public void receiveMouseDownSignal(int x, int y)

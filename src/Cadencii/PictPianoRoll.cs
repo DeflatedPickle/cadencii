@@ -202,13 +202,12 @@ namespace cadencii
 
                 // 再生中に画面を描画しない設定なら飛ばす
                 if (AppManager.editorConfig.SkipDrawWhilePlaying && AppManager.isPlaying()) {
-					cadencii.java.awt.GraphicsUtil.drawStringEx(
-                        g1,
+					g1.drawStringEx(
                         "(hidden for performance)",
                         EditorConfig.baseFont10,
                         new Rectangle(0, 0, width, height),
-						cadencii.java.awt.GraphicsUtil.STRING_ALIGN_CENTER,
-						cadencii.java.awt.GraphicsUtil.STRING_ALIGN_CENTER);
+						Graphics.STRING_ALIGN_CENTER,
+						Graphics.STRING_ALIGN_CENTER);
                     return;
                 }
 
@@ -1009,7 +1008,7 @@ namespace cadencii
                         int align = 1;
                         int valign = 0;
                         g.setColor(cadencii.java.awt.PortUtil.Black);
-						cadencii.java.awt.GraphicsUtil.drawStringEx(g,
+						g.drawStringEx(
                                                VsqNote.getNoteString(hilighted_note),
                                                EditorConfig.baseFont10Bold,
                                                new Rectangle(mouse_position.X - 110, mouse_position.Y - 50, 100, 100),

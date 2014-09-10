@@ -34,18 +34,6 @@ namespace cadencii.core2
             return new Rectangle(rc.X, rc.Y, rc.Width, rc.Height);
         }
 
-        #region Clipboard
-        public static void setClipboardText(string value)
-        {
-            System.Windows.Forms.Clipboard.SetText(value);
-        }
-
-        public static string getClipboardText()
-        {
-            return System.Windows.Forms.Clipboard.GetText();
-        }
-        #endregion
-
 		
         public static void setMousePosition(Point p)
         {

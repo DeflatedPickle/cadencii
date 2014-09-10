@@ -110,6 +110,14 @@ namespace cadencii.java.awt
 			a.drawPolyline (xPoints, yPoints, nPoints);
 		}
 
+		public void drawBezier (float x1, float y1,
+		                              float ctrlx1, float ctrly1,
+		                              float ctrlx2, float ctrly2,
+		                              float x2, float y2)
+		{
+			a.drawBezier (x1, y1, ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2);
+		}
+	
 		public void fillPolygon(Polygon p)
 		{
 			a.fillPolygon (p);
@@ -174,6 +182,14 @@ namespace cadencii.java.awt
 		{
 			a.DrawLines (points);
 		}
+		public void drawStringEx (string s, Font font, Rectangle rect, int align, int valign)
+		{
+			a.drawStringEx (s, font, rect, align, valign);
+		}
+
+		public const int STRING_ALIGN_FAR = 1;
+		public const int STRING_ALIGN_NEAR = -1;
+		public const int STRING_ALIGN_CENTER = 0;
 
 		public abstract class GraphicsAdapter : IDisposable
 		{
@@ -188,6 +204,8 @@ namespace cadencii.java.awt
 			public abstract void drawLine(int x1, int y1, int x2, int y2);
 
 			public abstract void drawRect(int x, int y, int width, int height);
+
+			public abstract void drawBezier(float x1, float y1, float ctrlx1, float ctrly1, float ctrlx2, float ctrly2, float x2, float y2);
 
 			public abstract void fillRect(int x, int y, int width, int height);
 
@@ -234,6 +252,8 @@ namespace cadencii.java.awt
 			public abstract void translate(int tx, int ty);
 
 			public abstract void translate(double tx, double ty);
+
+			public abstract void drawStringEx(string s, Font font, Rectangle rect, int align, int valign);
 		}
 	}
 

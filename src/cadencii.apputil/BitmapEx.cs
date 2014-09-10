@@ -19,7 +19,7 @@ using System.IO;
 namespace cadencii.apputil
 {
 
-    public unsafe class BitmapEx : IDisposable
+    unsafe class BitmapEx : IDisposable
     {
         private Bitmap m_base;
         private bool m_locked = false;

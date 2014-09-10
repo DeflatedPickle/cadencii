@@ -105,7 +105,7 @@ namespace cadencii
                         Logger.write( typeof( ClipboardModel ) + ".setClipboard; ex=" + ex + "\n" );
                         return;
                     }
-                    PortUtil.setClipboardText( clip );
+                    setClipboardText( clip );
 #else
             Clipboard.SetDataObject(item, false);
 #endif
@@ -150,7 +150,7 @@ namespace cadencii
                         Logger.write( typeof( ClipboardModel ) + ".setClipboard; ex=" + ex + "\n" );
                         return;
                     }
-                    PortUtil.setClipboardText( clip );
+                    setClipboardText( clip );
 #else // CLIPBOARD_AS_TEXT
 #if DEBUG
             // ClipboardEntryがシリアライズ可能かどうかを試すため，
@@ -177,7 +177,7 @@ namespace cadencii
         {
             ClipboardEntry ce = null;
 #if CLIPBOARD_AS_TEXT
-                    String clip = PortUtil.getClipboardText();
+                    String clip = getClipboardText();
                     if ( clip != null && str.startsWith( clip, CLIP_PREFIX ) ) {
                         int index1 = clip.IndexOf( ":" );
                         int index2 = clip.IndexOf( ":", index1 + 1 );
@@ -271,6 +271,16 @@ namespace cadencii
         public void setCopiedBezier(SortedDictionary<CurveType, List<BezierChain>> item, int copy_started_clock)
         {
             setClipboard(null, null, null, null, item, copy_started_clock);
+        }
+
+        public static void setClipboardText(string value)
+        {
+            System.Windows.Forms.Clipboard.SetText(value);
+        }
+
+        public static string getClipboardText()
+        {
+            return System.Windows.Forms.Clipboard.GetText();
         }
     }
 

@@ -140,10 +140,7 @@ namespace cadencii
 
             // デバイス名を書く
             string typename = this.GetType().Name;
-			cadencii.java.awt.GraphicsUtil.drawStringEx(
-                (Graphics)graphics, typename, mFont,
-                new Rectangle(x, y, width, height),
-				cadencii.java.awt.GraphicsUtil.STRING_ALIGN_CENTER, cadencii.java.awt.GraphicsUtil.STRING_ALIGN_CENTER);
+			graphics.drawStringEx(typename, mFont, new Rectangle(x, y, width, height), Graphics.STRING_ALIGN_CENTER, Graphics.STRING_ALIGN_CENTER);
 
             // 描画時のストローク、色を元に戻す
             graphics.setStroke(old_stroke);

@@ -64,6 +64,7 @@ namespace cadencii
         public static void Main(string[] args)
         {
 			cadencii.PortUtil.SetApplicationStartupPath(System.Windows.Forms.Application.StartupPath);
+			cadencii.java.awt.AwtHost.Current = new cadencii.java.awt.AwtHostWindowsForms ();
             Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
             Thread.GetDomain().UnhandledException += new UnhandledExceptionEventHandler(Cadencii_UnhandledException);
 

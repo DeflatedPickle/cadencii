@@ -58,10 +58,9 @@ namespace cadencii
 			paintBackground(graphics, mStroke, x, y, width, height, cadencii.java.awt.PortUtil.Black, cadencii.java.awt.PortUtil.Pink);
 
             // デバイス名を書く
-			cadencii.java.awt.GraphicsUtil.drawStringEx(
-                (Graphics)graphics, "Amplifier", cadencii.EditorConfig.baseFont10,
+			graphics.drawStringEx("Amplifier", cadencii.EditorConfig.baseFont10,
                 new Rectangle(x, y, width, height),
-				cadencii.java.awt.GraphicsUtil.STRING_ALIGN_CENTER, cadencii.java.awt.GraphicsUtil.STRING_ALIGN_CENTER);
+				Graphics.STRING_ALIGN_CENTER, Graphics.STRING_ALIGN_CENTER);
 
             // 描画時のストローク、色を元に戻す
             graphics.setStroke(old_stroke);

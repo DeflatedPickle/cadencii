@@ -77,9 +77,9 @@ namespace cadencii
                 Graphics g = new Graphics(bmp);
                 g.clearRect(0, 0, ICON_WIDTH, ICON_HEIGHT);
                 Font font = new Font(System.Windows.Forms.SystemInformation.MenuFont);
-				cadencii.java.awt.GraphicsUtil.drawStringEx(
-                    (Graphics)g, singer_name, font, new Rectangle(1, 1, ICON_WIDTH - 2, ICON_HEIGHT - 2),
-					cadencii.java.awt.GraphicsUtil.STRING_ALIGN_NEAR, cadencii.java.awt.GraphicsUtil.STRING_ALIGN_NEAR);
+				g.drawStringEx(
+                    singer_name, font, new Rectangle(1, 1, ICON_WIDTH - 2, ICON_HEIGHT - 2),
+					Graphics.STRING_ALIGN_NEAR, Graphics.STRING_ALIGN_NEAR);
                 ret = bmp;
             }
 

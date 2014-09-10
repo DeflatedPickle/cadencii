@@ -177,8 +177,7 @@ namespace cadencii
             Font f = new Font(font_name, java.awt.Font.BOLD, (int)(FONT_SIZE * 1.2f));
             if (m_shadow_enablde) {
                 g.setColor(new Color(0, 0, 0, 40));
-				cadencii.java.awt.GraphicsUtil.drawStringEx(
-                    g,
+				g.drawStringEx(
                     m_app_name,
                     f,
                     new Rectangle(shadow_shift, shadow_shift, width, height),
@@ -186,8 +185,7 @@ namespace cadencii
                     valign);
             }
             g.setColor(cadencii.java.awt.PortUtil.Black);
-			cadencii.java.awt.GraphicsUtil.drawStringEx(
-                g,
+			g.drawStringEx(
                 m_app_name,
                 f,
                 new Rectangle(0, 0, width, height),
@@ -203,8 +201,7 @@ namespace cadencii
                 string str = itemi.getName() + (id.Equals("") ? "" : (" (" + id + ")"));
                 if (m_shadow_enablde) {
                     g.setColor(new Color(0, 0, 0, 40));
-					cadencii.java.awt.GraphicsUtil.drawStringEx(
-                        g,
+					g.drawStringEx(
                         str,
                         font,
                         new Rectangle(0 + shadow_shift, 40 + (int)(i * height * 1.1) + shadow_shift, width, height),
@@ -212,8 +209,7 @@ namespace cadencii
                         valign);
                 }
                 g.setColor(cadencii.java.awt.PortUtil.Black);
-				cadencii.java.awt.GraphicsUtil.drawStringEx(
-                    g,
+				g.drawStringEx(
                     str,
                     f2,
                     new Rectangle(0, 40 + (int)(i * height * 1.1), width, height),
