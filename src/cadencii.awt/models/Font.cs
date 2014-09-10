@@ -75,8 +75,3 @@ namespace cadencii.java.awt
     }
     
 }
-
-namespace cadencii.java.awt.geom
-{
-    
-}

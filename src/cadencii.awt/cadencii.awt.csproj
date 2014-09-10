@@ -30,14 +30,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="awt.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="models\Image.cs" />
     <Compile Include="models\Cursor.cs" />
     <Compile Include="models\AwtHost.cs" />
@@ -61,6 +57,10 @@
     <Compile Include="advanced\PointD.cs" />
     <Compile Include="models\PortUtil.cs" />
     <Compile Include="advanced\PanelState.cs" />
+    <Compile Include="models\Color.cs" />
+    <Compile Include="models\Area.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

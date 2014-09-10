@@ -17,6 +17,17 @@ using cadencii.java.awt.geom;
 using System.Collections.Generic;
 using System.Linq;
 
+namespace cadencii
+{
+	public static class ColorExtensionsWF
+	{
+		public static System.Drawing.Color ToNative (this Color c)
+		{
+			return System.Drawing.Color.FromArgb (c.getRed (), c.getGreen (), c.getBlue ());
+		}
+	}
+}
+
 namespace cadencii.java.awt
 {
 	class UIHostWindowsForms : AwtHost
@@ -406,26 +417,26 @@ namespace cadencii.java.awt
 	}
 
 	public class FontAdapterWF : Font.FontAdapter
-    {
+	{
 
-        System.Drawing.Font font;
+		System.Drawing.Font font;
 
-		public FontAdapterWF(object value)
-        {
-			font = (System.Drawing.Font) value;
-        }
+		public FontAdapterWF (object value)
+		{
+			font = (System.Drawing.Font)value;
+		}
 
-		public FontAdapterWF(string name, int style, int size)
-        {
-            System.Drawing.FontStyle fstyle = System.Drawing.FontStyle.Regular;
-            if (style >= Font.BOLD) {
-                fstyle = fstyle | System.Drawing.FontStyle.Bold;
-            }
-            if (style >= Font.ITALIC) {
-                fstyle = fstyle | System.Drawing.FontStyle.Italic;
-            }
-            font = new System.Drawing.Font(name, size, fstyle);
-        }
+		public FontAdapterWF (string name, int style, int size)
+		{
+			System.Drawing.FontStyle fstyle = System.Drawing.FontStyle.Regular;
+			if (style >= Font.BOLD) {
+				fstyle = fstyle | System.Drawing.FontStyle.Bold;
+			}
+			if (style >= Font.ITALIC) {
+				fstyle = fstyle | System.Drawing.FontStyle.Italic;
+			}
+			font = new System.Drawing.Font (name, size, fstyle);
+		}
 
 		public override object NativeFont {
 			get;
@@ -434,24 +445,102 @@ namespace cadencii.java.awt
 
 		public override void Dispose ()
 		{
-			if (font != null) font.Dispose ();
+			if (font != null)
+				font.Dispose ();
 		}
 
-		public override string getName()
-        {
-            return font.Name;
-        }
+		public override string getName ()
+		{
+			return font.Name;
+		}
 
-		public override int getSize()
-        {
-            return (int)font.SizeInPoints;
-        }
+		public override int getSize ()
+		{
+			return (int)font.SizeInPoints;
+		}
 
-		public override float getSize2D()
-        {
-            return font.SizeInPoints;
-        }
-    }
-        
+		public override float getSize2D ()
+		{
+			return font.SizeInPoints;
+		}
+	}
 
+	public class AreaAdapterWF : Area.AreaAdapter
+	{
+		System.Drawing.Region region;
+
+		public AreaAdapterWF ()
+		{
+			region = new System.Drawing.Region ();
+			region.MakeEmpty ();
+		}
+
+		public AreaAdapterWF (Shape s)
+		{
+			if (s == null) {
+				region = new System.Drawing.Region ();
+			} else if (s is Area) {
+				AreaAdapterWF a = (AreaAdapterWF) ((Area)s).Adapter;
+				if (a.region == null) {
+					region = new System.Drawing.Region ();
+				} else {
+					region = (System.Drawing.Region)a.region.Clone ();
+				}
+			} else if (s is Rectangle) {
+				Rectangle rc = (Rectangle)s;
+				region = new System.Drawing.Region (new System.Drawing.Rectangle (rc.x, rc.y, rc.width, rc.height));
+			} else {
+				serr.println (
+					"fixme: org.kbinani.java.awt.Area#.ctor(org.kbinani.java.awt.Shape); type of argument s is not supported for '" +
+					s.GetType () + "'.");
+				region = new System.Drawing.Region ();
+			}
+		}
+
+		public override object NativeRegion {
+			get { return region; }
+			set { region = (System.Drawing.Region)value; }
+		}
+
+		public override void add (Area rhs)
+		{
+			if (rhs == null) {
+				return;
+			}
+			AreaAdapterWF a = (AreaAdapterWF) rhs.Adapter;
+			if (a.region == null) {
+				return;
+			}
+			if (region == null) {
+				region = new System.Drawing.Region ();
+			}
+			region.Union (a.region);
+		}
+
+		public override void subtract (Area rhs)
+		{
+			if (rhs == null) {
+				return;
+			}
+			AreaAdapterWF a = (AreaAdapterWF) rhs.Adapter;
+			if (a.region == null) {
+				return;
+			}
+			if (region == null) {
+				region = new System.Drawing.Region ();
+			}
+			region.Exclude (a.region);
+		}
+
+		public override Area clone ()
+		{
+			Area ret = new Area ();
+			if (region == null) {
+				ret.NativeRegion = new System.Drawing.Region ();
+			} else {
+				ret.NativeRegion = (System.Drawing.Region)region.Clone ();
+			}
+			return ret;
+		}
+	}
 }

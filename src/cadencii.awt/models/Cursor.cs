@@ -61,15 +61,4 @@ namespace cadencii.java.awt
 			return a.Type;
 		}
 	}
-
-    /*public interface Image{
-        int getHeight( object observer );
-        int getWidth( object observer );
-    }*/
-
-}
-
-namespace cadencii.java.awt.geom
-{
-    
 }
