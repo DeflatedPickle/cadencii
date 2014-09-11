@@ -95,10 +95,6 @@
       <Project>{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}</Project>
       <Name>cadencii.platform.windows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\cadencii.core2\cadencii.core2.csproj">
-      <Project>{7DE0B7EA-E478-4687-9764-B44B8258F255}</Project>
-      <Name>cadencii.core2</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Cadencii.GuiCore\Cadencii.GuiCore.csproj">
       <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
       <Name>Cadencii.GuiCore</Name>

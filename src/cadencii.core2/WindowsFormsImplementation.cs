@@ -17,17 +17,6 @@ using cadencii.java.awt.geom;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace cadencii
-{
-	public static class ColorExtensionsWF
-	{
-		public static System.Drawing.Color ToNative (this Color c)
-		{
-			return System.Drawing.Color.FromArgb (c.getRed (), c.getGreen (), c.getBlue ());
-		}
-	}
-}
-
 namespace cadencii.java.awt
 {
 	public class AwtHostWindowsForms : AwtHost
@@ -37,23 +26,23 @@ namespace cadencii.java.awt
 			Types [typeof(Image.ImageAdapter)] = typeof(ImageAdapterWF);
 		}
 
-        /// <summary>
-        /// java:コンポーネントのnameプロパティを返します。C#:コントロールのNameプロパティを返します。
-        /// objがnullだったり、型がComponent/Controlでない場合は空文字を返します。
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public override string getComponentName(Object obj)
-        {
-            if (obj == null) {
-                return "";
-            }
-            if (obj is System.Windows.Forms.Control) {
-                return ((System.Windows.Forms.Control)obj).Name;
-            } else {
-                return "";
-            }
-        }
+		/// <summary>
+		/// java:コンポーネントのnameプロパティを返します。C#:コントロールのNameプロパティを返します。
+		/// objがnullだったり、型がComponent/Controlでない場合は空文字を返します。
+		/// </summary>
+		/// <param name="obj"></param>
+		/// <returns></returns>
+		public override string getComponentName (Object obj)
+		{
+			if (obj == null) {
+				return "";
+			}
+			if (obj is System.Windows.Forms.Control) {
+				return ((System.Windows.Forms.Control)obj).Name;
+			} else {
+				return "";
+			}
+		}
 	}
 
 	abstract class ImageAdapterWF : Image.ImageAdapter

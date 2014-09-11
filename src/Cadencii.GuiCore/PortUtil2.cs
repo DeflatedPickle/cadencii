@@ -21,9 +21,9 @@ namespace cadencii.core2
 {
     public static class PortUtil
     {
-        public static Rectangle getScreenBounds(System.Windows.Forms.Control w)
+        public static Rectangle getScreenBounds(object nativeControl)
         {
-		return Screen.Instance.getScreenBounds (w);
+		return Screen.Instance.getScreenBounds (nativeControl);
         }
 
 		
@@ -47,9 +47,9 @@ namespace cadencii.core2
             return Screen.Instance.isPointInScreens (p);
         }
 
-        public static Rectangle getWorkingArea(System.Windows.Forms.Form w)
+        public static Rectangle getWorkingArea(object nativeWindow)
         {
-        	return Screen.Instance.getWorkingArea (w);
+        	return Screen.Instance.getWorkingArea (nativeWindow);
         }
 		
         /// <summary>

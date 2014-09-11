@@ -36,9 +36,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PortUtil2.cs" />
     <Compile Include="WindowsFormsImplementation.cs" />
   </ItemGroup>
+  <Import Project="..\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.projitems" Label="Shared" Condition="Exists('..\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.projitems')" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.core\cadencii.core.csproj">

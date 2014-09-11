@@ -62,6 +62,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="models\Screen.cs" />
+    <Compile Include="PortUtil2.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
