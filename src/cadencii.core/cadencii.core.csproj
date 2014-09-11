@@ -69,31 +69,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base64.cs" />
-    <Compile Include="ByRef.cs" />
-    <Compile Include="cp932.cs" />
-    <Compile Include="cp932reader.cs" />
-    <Compile Include="cp932writer.cs" />
-    <Compile Include="fft.cs" />
-    <Compile Include="io.cs" />
-    <Compile Include="Iterator.cs" />
-    <Compile Include="ListIterator.cs" />
-    <Compile Include="Logger.cs" />
-    <Compile Include="math.cs" />
     <Compile Include="mman.cs" />
-    <Compile Include="PortUtil.cs" />
-    <Compile Include="serr.cs" />
-    <Compile Include="sout.cs" />
     <Compile Include="TextReaderUtil.cs" />
     <Compile Include="ValuePair.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="misc.cs" />
     <Compile Include="WorkerState.cs" />
     <Compile Include="WorkerStateImp.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="ICommandRunnable.cs" />
     <Compile Include="IComparisonContext.cs" />
-    <Compile Include="CurveType.cs" />
     <Compile Include="BgmFile.cs" />
     <Compile Include="RendererKind.cs" />
     <Compile Include="SequenceConfig.cs" />
@@ -123,7 +107,6 @@
     <Compile Include="MidiPortConfig.cs" />
     <Compile Include="EditorConfig.cs" />
     <Compile Include="debug.cs" />
-    <Compile Include="CDebug.cs" />
     <Compile Include="ISO639.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -137,5 +120,15 @@
   <ItemGroup>
     <Folder Include="dspcore\" />
     <Folder Include="vsq\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.coreutils\cadencii.coreutils.csproj">
+      <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
+      <Name>cadencii.coreutils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.GuiCore\Cadencii.GuiCore.csproj">
+      <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
+      <Name>Cadencii.GuiCore</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

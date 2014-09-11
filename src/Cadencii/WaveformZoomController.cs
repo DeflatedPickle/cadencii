@@ -102,7 +102,7 @@ namespace cadencii
                 g.fillRect(SPACE + 3, SPACE + 3, 11, 11);
             }
             g.setColor(cadencii.java.awt.Colors.Black);
-            g.setFont(EditorConfig.baseFont8);
+            g.setFont(cadencii.core.EditorConfig.baseFont8);
             g.drawString(
                 "Auto Maximize",
                 SPACE + 16 + SPACE,
@@ -121,7 +121,7 @@ namespace cadencii
 			g.setColor(mWaveViewAutoMaximize ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.Black);
             rc.y = rc.y + 1;
 			g.drawStringEx(
-                (mWaveViewButtonZoomMouseDowned ? "↑Move Mouse↓" : "Zoom"), EditorConfig.baseFont9,
+				(mWaveViewButtonZoomMouseDowned ? "↑Move Mouse↓" : "Zoom"), cadencii.core.EditorConfig.baseFont9,
 				rc, Graphics.STRING_ALIGN_CENTER, Graphics.STRING_ALIGN_CENTER);
         }
 

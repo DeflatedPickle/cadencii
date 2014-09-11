@@ -32,7 +32,7 @@ namespace cadencii
     /// </summary>
     public class EditorConfig
     {
-		public const int MIN_KEY_WIDTH = 68;
+	public const int MIN_KEY_WIDTH = 68;
         public const int MAX_KEY_WIDTH = MIN_KEY_WIDTH * 5;
 		/// <summary>
         /// スプリットコンテナのディバイダの位置
@@ -140,31 +140,7 @@ namespace cadencii
         /// 強弱記号の，ピアノロール画面上の表示幅（ピクセル）
         /// </summary>
         public const int DYNAFF_ITEM_WIDTH = 40;
-        public const int FONT_SIZE8 = 8;
-        public const int FONT_SIZE9 = FONT_SIZE8 + 1;
-        public const int FONT_SIZE10 = FONT_SIZE8 + 2;
-        public const int FONT_SIZE50 = FONT_SIZE8 + 42;
 
-        /// <summary>
-        /// 画面描画に使用する共用のフォントオブジェクト
-        /// </summary>
-        public static Font baseFont8 = new Font("Dialog", Font.PLAIN, FONT_SIZE8);
-        /// <summary>
-        /// 画面描画に使用する共用のフォントオブジェクト
-        /// </summary>
-        public static Font baseFont9 = new Font("Dialog", Font.PLAIN, FONT_SIZE9);
-        /// <summary>
-        /// 画面描画に使用する共用のフォントオブジェクト
-        /// </summary>
-        public static Font baseFont10 = new Font("Dialog", Font.PLAIN, FONT_SIZE10);
-        /// <summary>
-        /// 画面描画に使用する共用のフォントオブジェクト
-        /// </summary>
-        public static Font baseFont10Bold = new Font("Dialog", Font.BOLD, FONT_SIZE10);
-        /// <summary>
-        /// 画面描画に使用する共用のフォントオブジェクト
-        /// </summary>
-        public static Font baseFont50Bold = new Font("Dialog", Font.BOLD, FONT_SIZE50);
         /// <summary>
         /// 歌詞を音符の（高さ方向の）真ん中に描画するためのオフセット。
         /// たとえば，文字列の中心軸がy_centerを通るように描画したい場合は，
@@ -196,19 +172,19 @@ namespace cadencii
         /// <summary>
         /// フォントオブジェクトbaseFont8の描画時の高さ
         /// </summary>
-        public static int baseFont8Height = FONT_SIZE8;
+		public static int baseFont8Height = cadencii.core.EditorConfig.FONT_SIZE8;
         /// <summary>
         /// フォントオブジェクトbaseFont9の描画時の高さ
         /// </summary>
-        public static int baseFont9Height = FONT_SIZE9;
+		public static int baseFont9Height = cadencii.core.EditorConfig.FONT_SIZE9;
         /// <summary>
         /// フォントオブジェクトbaseFont1-の描画時の高さ
         /// </summary>
-        public static int baseFont10Height = FONT_SIZE10;
+		public static int baseFont10Height = cadencii.core.EditorConfig.FONT_SIZE10;
         /// <summary>
         /// フォントオブジェクトbaseFont50の描画時の高さ
         /// </summary>
-        public static int baseFont50Height = FONT_SIZE50;
+		public static int baseFont50Height = cadencii.core.EditorConfig.FONT_SIZE50;
 
 	/// <summary>
         /// ユーザー定義のビブラート設定．
@@ -277,7 +253,6 @@ namespace cadencii
         /// <version>3.3+</version>
         /// </summary>
         public bool IconPaletteVisible = false;
-        public int PreSendTime = 500;
 	
 		/// <summary>
         /// ウィンドウが最大化された状態かどうか

@@ -728,7 +728,7 @@ namespace cadencii
                             g.setStroke(getStrokeDefault());
                             if (!barcountstr.Equals("")) {
 								g.setColor(cadencii.java.awt.Colors.White);
-                                g.setFont(EditorConfig.baseFont9);
+                                g.setFont(cadencii.core.EditorConfig.baseFont9);
                                 g.drawString(barcountstr, barcountx + 1 + xoffset, 1 + EditorConfig.baseFont9Height / 2 - EditorConfig.baseFont9OffsetHeight + 1);
                             }
                             barcountstr = barcount + "";

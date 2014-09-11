@@ -58,7 +58,7 @@ namespace cadencii
 			paintBackground(graphics, mStroke, x, y, width, height, cadencii.java.awt.Colors.Black, cadencii.java.awt.Colors.Pink);
 
             // デバイス名を書く
-			graphics.drawStringEx("Amplifier", cadencii.EditorConfig.baseFont10,
+			graphics.drawStringEx("Amplifier", cadencii.core.EditorConfig.baseFont10,
                 new Rectangle(x, y, width, height),
 				Graphics.STRING_ALIGN_CENTER, Graphics.STRING_ALIGN_CENTER);
 

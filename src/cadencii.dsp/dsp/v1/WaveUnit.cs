@@ -39,7 +39,7 @@ namespace cadencii
         /// エディターの設定値
         /// </summary>
         protected cadencii.core.EditorConfig mConfig;
-	protected cadencii.EditorConfig mConfigUI;
+	//protected cadencii.EditorConfig mConfigUI;
 
         /// <summary>
         /// メインウィンドウへの参照

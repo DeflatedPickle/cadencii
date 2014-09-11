@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.xml", "cadencii.xm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.GuiCore", "..\..\..\..\..\svn\cadencii\src\Cadencii.GuiCore\Cadencii.GuiCore.csproj", "{711A691F-2113-4EC1-8D4C-C2668C3EA219}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.coreutils", "..\..\..\..\..\svn\cadencii\src\cadencii.coreutils\cadencii.coreutils.csproj", "{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.dsp", "..\..\..\..\..\svn\cadencii\src\cadencii.dsp\cadencii.dsp.csproj", "{18E7D0BD-734D-482E-BAE8-2512147D88F0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.gui.winforms", "..\..\..\..\..\svn\cadencii\src\cadencii.core2\cadencii.gui.winforms.csproj", "{7DE0B7EA-E478-4687-9764-B44B8258F255}"
@@ -65,6 +67,10 @@ Global
 		{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}.Debug|x86.Build.0 = Debug|Any CPU
 		{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}.Release|x86.ActiveCfg = Release|Any CPU
 		{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}.Release|x86.Build.0 = Release|Any CPU
+		{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}.Debug|x86.Build.0 = Debug|Any CPU
+		{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}.Release|x86.ActiveCfg = Release|Any CPU
+		{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}.Release|x86.Build.0 = Release|Any CPU
 		{18E7D0BD-734D-482E-BAE8-2512147D88F0}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{18E7D0BD-734D-482E-BAE8-2512147D88F0}.Debug|x86.Build.0 = Debug|Any CPU
 		{18E7D0BD-734D-482E-BAE8-2512147D88F0}.Release|x86.ActiveCfg = Release|Any CPU
@@ -145,6 +151,7 @@ Global
 		{673347F3-6FC2-4F82-9273-BF158E0F8CB1} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
 		{23C7549D-A0FD-402A-8470-95DB4BE6081C} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
 		{711A691F-2113-4EC1-8D4C-C2668C3EA219} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
+		{1785CCD0-43CB-459A-9AFF-4E59DB966DF0} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Cadencii\Cadencii.csproj

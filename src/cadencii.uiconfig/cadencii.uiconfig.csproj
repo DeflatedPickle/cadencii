@@ -61,5 +61,9 @@
       <Project>{23C7549D-A0FD-402A-8470-95DB4BE6081C}</Project>
       <Name>cadencii.xml</Name>
     </ProjectReference>
+    <ProjectReference Include="..\cadencii.coreutils\cadencii.coreutils.csproj">
+      <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
+      <Name>cadencii.coreutils</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

@@ -768,6 +768,10 @@
       <Project>{7DE0B7EA-E478-4687-9764-B44B8258F255}</Project>
       <Name>cadencii.gui.winforms</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.coreutils\cadencii.coreutils.csproj">
+      <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
+      <Name>cadencii.coreutils</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="manual\" />

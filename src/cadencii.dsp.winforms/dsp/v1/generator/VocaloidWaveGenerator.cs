@@ -259,7 +259,7 @@ namespace cadencii
             }
 
             // NRPNを作成
-            int ms_present = mConfigUI.PreSendTime;
+            int ms_present = mConfig.PreSendTime;
 #if DEBUG
             sout.println("VocaloidWaveGenerator#begin; ms_present=" + ms_present);
 #endif

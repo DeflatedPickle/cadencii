@@ -17,7 +17,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Collections.Generic;
 using cadencii;
-//using cadencii.java.awt;
+using cadencii.java.awt;
 using cadencii.java.io;
 using cadencii.java.util;
 //using cadencii.windows.forms;
@@ -215,6 +215,36 @@ namespace cadencii.core
         /// 自動ビブラートを作成するとき，ユーザー定義タイプのビブラートを利用するかどうか．デフォルトではfalse
         /// </summary>
         public bool UseUserDefinedAutoVibratoType = false;
+
+		#region used by cadencii.dsp
+	public const int FONT_SIZE8 = 8;
+        public const int FONT_SIZE9 = FONT_SIZE8 + 1;
+        public const int FONT_SIZE10 = FONT_SIZE8 + 2;
+        public const int FONT_SIZE50 = FONT_SIZE8 + 42;
+
+        /// <summary>
+        /// 画面描画に使用する共用のフォントオブジェクト
+        /// </summary>
+        public static Font baseFont8 = new Font("Dialog", Font.PLAIN, FONT_SIZE8);
+        /// <summary>
+        /// 画面描画に使用する共用のフォントオブジェクト
+        /// </summary>
+        public static Font baseFont9 = new Font("Dialog", Font.PLAIN, FONT_SIZE9);
+        /// <summary>
+        /// 画面描画に使用する共用のフォントオブジェクト
+        /// </summary>
+        public static Font baseFont10 = new Font("Dialog", Font.PLAIN, FONT_SIZE10);
+        /// <summary>
+        /// 画面描画に使用する共用のフォントオブジェクト
+        /// </summary>
+        public static Font baseFont10Bold = new Font("Dialog", Font.BOLD, FONT_SIZE10);
+        /// <summary>
+        /// 画面描画に使用する共用のフォントオブジェクト
+        /// </summary>
+        public static Font baseFont50Bold = new Font("Dialog", Font.BOLD, FONT_SIZE50);
+
+	public int PreSendTime = 500;
+#endregion
 
         /// <summary>
         /// コンストラクタ．起動したOSによって動作を変える場合がある

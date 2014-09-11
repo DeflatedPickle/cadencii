@@ -114,7 +114,7 @@ namespace cadencii
                 g.setColor(cadencii.java.awt.Colors.Black);
 				g.drawStringEx(
                     "(hidden for performance)",
-                    EditorConfig.baseFont8,
+					cadencii.core.EditorConfig.baseFont8,
                     rc,
 					Graphics.STRING_ALIGN_CENTER,
 					Graphics.STRING_ALIGN_CENTER);

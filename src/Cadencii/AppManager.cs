@@ -678,7 +678,7 @@ namespace cadencii
         {
             mVsq.updateTotalClocks();
             string temppath = ApplicationGlobal.getTempWaveDir();
-            int presend = editorConfig.PreSendTime;
+            int presend = ApplicationGlobal.appConfig.PreSendTime;
             int totalClocks = mVsq.TotalClocks;
 
             List<PatchWorkQueue> queue = new List<PatchWorkQueue>();
