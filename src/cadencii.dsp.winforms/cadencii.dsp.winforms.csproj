@@ -34,28 +34,21 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="vsti\aquestone\EventQueueSequence.cs" />
-    <Compile Include="vsti\aquestone\MidiEventQueue.cs" />
-    <Compile Include="vsti\aquestone\ParameterEvent.cs" />
-    <Compile Include="vsti\aquestone\SyllableMatcher.cs" />
+    <Compile Include="vsti\VocaloidDriver.cs" />
+    <Compile Include="FormPluginUi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dsp\v1\generator\VocaloidWaveGenerator.cs" />
+    <Compile Include="VSTiDllManager.cs" />
     <Compile Include="vsti\AquesTone2Driver.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="vsti\AquesToneDriver.cs" />
     <Compile Include="vsti\AquesToneDriverBase.cs" />
-    <Compile Include="vsti\VocaloidDriver.cs" />
-    <Compile Include="vsti\VSTiDriverBase.cs" />
-    <Compile Include="FormPluginUi.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="dsp\v1\generator\AquesTone2WaveGenerator.cs" />
     <Compile Include="dsp\v1\generator\AquesToneWaveGenerator.cs" />
     <Compile Include="dsp\v1\generator\AquesToneWaveGeneratorBase.cs" />
-    <Compile Include="dsp\v1\generator\UtauWaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\VConnectWaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\VocaloidWaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\WaveSenderDriver.cs" />
-    <Compile Include="VSTiDllManager.cs" />
+    <Compile Include="UIHostWF.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

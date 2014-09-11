@@ -9113,15 +9113,16 @@ namespace cadencii
             for (int i = 0; i < c; i++) {
                 VocaloidDriver vd = VSTiDllManager.vocaloidDriver[i];
                 bool chkv = true;
+                FormPluginUi ui;
                 if (vd == null) {
                     chkv = false;
                 } else if (!vd.loaded) {
                     chkv = false;
-                } else if (vd.getUi(this) == null) {
+                } else if ((ui = (FormPluginUi) vd.getUi(this)) == null) {
                     chkv = false;
-                } else if (vd.getUi(this).IsDisposed) {
+                } else if (ui.IsDisposed) {
                     chkv = false;
-                } else if (!vd.getUi(this).Visible) {
+                } else if (!ui.Visible) {
                     chkv = false;
                 }
                 RendererKind kind = vd.getRendererKind();
@@ -9142,7 +9143,7 @@ namespace cadencii
             } else if (!drv.loaded) {
                 chk = false;
             } else {
-                FormPluginUi ui = drv.getUi(this);
+				var ui = (FormPluginUi) drv.getUi(this);
                 if (ui == null) {
                     chk = false;
                 } else if (ui.IsDisposed) {
@@ -9182,7 +9183,7 @@ namespace cadencii
                 } else if (!vd.loaded) {
                     chk = false;
                 } else {
-                    FormPluginUi ui = vd.getUi(this);
+					var ui = (FormPluginUi) vd.getUi(this);
                     if (ui == null) {
                         chk = false;
                     } else if (ui.IsDisposed) {
@@ -9198,11 +9199,13 @@ namespace cadencii
                     if (search == RendererKind.VOCALOID1) {
                         v = !menuVisualPluginUiVocaloid1.Checked;
                         menuVisualPluginUiVocaloid1.Checked = v;
-                        vd.getUi(this).Visible = v;
+						var ui = (FormPluginUi) vd.getUi(this);
+						ui.Visible = v;
                     } else if (search == RendererKind.VOCALOID2) {
                         v = !menuVisualPluginUiVocaloid2.Checked;
                         menuVisualPluginUiVocaloid2.Checked = v;
-                        vd.getUi(this).Visible = v;
+						var ui = (FormPluginUi) vd.getUi(this);
+						ui.Visible = v;
                     }
                     break;
                 }
@@ -9222,7 +9225,7 @@ namespace cadencii
             } else if (!drv.loaded) {
                 chk = false;
             } else {
-                ui = drv.getUi(this);
+				ui = (FormPluginUi) drv.getUi(this);
                 if (ui == null) {
                     chk = false;
                 } else if (ui.IsDisposed) {

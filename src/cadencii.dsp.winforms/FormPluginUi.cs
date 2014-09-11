@@ -11,6 +11,9 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
+using cadencii.java.awt;
+
+
 #if ENABLE_AQUESTONE
 using System;
 using System.Windows.Forms;
@@ -34,6 +37,13 @@ namespace cadencii
             // FIXME: bring this back
             //this.Icon = Properties.Resources._switch;
         }
+
+		public bool IsOpened {
+			get;
+			set;
+		}
+
+		internal Dimension WindowRect = new Dimension(373, 158);
 
         public void FormPluginUi_FormClosing(Object sender, FormClosingEventArgs e)
         {
@@ -71,6 +81,28 @@ namespace cadencii
                     lastDrawn = now;
                 }
             }
+        }
+		
+        internal void UpdatePluginUiRect()
+        {
+                try {
+                    win32.EnumChildWindows(Handle, EnumChildProc, 0);
+                } catch (Exception ex) {
+                    serr.println("vstidrv#updatePluginUiRect; ex=" + ex);
+                }
+        }
+
+        private bool EnumChildProc(IntPtr hwnd, int lParam)
+        {
+            RECT rc = new RECT();
+            try {
+                win32.GetWindowRect(hwnd, ref rc);
+            } catch (Exception ex) {
+                serr.println("vstidrv#enumChildProc; ex=" + ex);
+            }
+            childWnd = hwnd;
+            WindowRect = new Dimension(rc.right - rc.left, rc.bottom - rc.top);
+            return false; //最初のやつだけ検出できればおｋなので
         }
     }
 

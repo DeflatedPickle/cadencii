@@ -70,6 +70,15 @@
     <Compile Include="KanaDeRomanization.cs" />
     <Compile Include="dsp\v1\generator\WaveGenerator.cs" />
     <Compile Include="dsp\v1\generator\EmptyWaveGenerator.cs" />
+    <Compile Include="dsp\v1\generator\WaveSenderDriver.cs" />
+    <Compile Include="dsp\v1\generator\UtauWaveGenerator.cs" />
+    <Compile Include="dsp\v1\generator\VConnectWaveGenerator.cs" />
+    <Compile Include="vsti\aquestone\EventQueueSequence.cs" />
+    <Compile Include="vsti\aquestone\MidiEventQueue.cs" />
+    <Compile Include="vsti\aquestone\ParameterEvent.cs" />
+    <Compile Include="vsti\aquestone\SyllableMatcher.cs" />
+    <Compile Include="UIHost.cs" />
+    <Compile Include="VSTiDriverBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -101,5 +110,9 @@
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>cadencii.coreutils</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="vsti\" />
+    <Folder Include="vsti\aquestone\" />
   </ItemGroup>
 </Project>

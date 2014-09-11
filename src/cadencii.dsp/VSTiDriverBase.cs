@@ -21,6 +21,7 @@ using System.Threading;
 using cadencii.java.awt;
 using cadencii.java.util;
 using cadencii.vsq;
+using cadencii.dsp;
 using VstSdk;
 
 namespace cadencii
@@ -52,11 +53,6 @@ namespace cadencii
 
         public bool loaded = false;
         public string path = "";
-        /// <summary>
-        /// プラグインのUI
-        /// </summary>
-	protected FormPluginUi ui = null;
-        private bool isUiOpened = false;
 
         protected PVSTMAIN mainDelegate;
         private IntPtr mainProcPointer;
@@ -64,7 +60,7 @@ namespace cadencii
         /// <summary>
         /// 読込んだdllから作成したVOCALOID2の本体。VOCALOID2への操作はs_aeffect->dispatcherで行う
         /// </summary>
-        protected AEffectWrapper aEffect;
+        public AEffectWrapper aEffect;
         protected IntPtr aEffectPointer;
         /// <summary>
         /// 読込んだdllのハンドル
@@ -98,16 +94,14 @@ namespace cadencii
         /// パラメータの，ロード時のデフォルト値
         /// </summary>
         private float[] paramDefaults = null;
-        /// <summary>
-        /// UIウィンドウのサイズ
-        /// </summary>
-        private Dimension uiWindowRect = new Dimension(373, 158);
         /* /// <summary>
         /// win32.LoadLibraryExを使うかどうか。trueならwin32.LoadLibraryExを使い、falseならutil.dllのLoadDllをつかう。既定ではtrue
         /// </summary>
         private bool useNativeDllLoader = true;*/
         protected MemoryManager memoryManager = new MemoryManager();
         private Object mSyncRoot = new Object();
+
+        UIHost uihost;
 
         /// <summary>
         /// このドライバが担当する、合成エンジンの種類を取得する
@@ -150,7 +144,7 @@ namespace cadencii
             }
         }
 
-        private string getStringCore(int opcode, int index, int str_capacity)
+        public string getStringCore(int opcode, int index, int str_capacity)
         {
             byte[] arr = new byte[str_capacity + 1];
             for (int i = 0; i < str_capacity; i++) {
@@ -323,50 +317,10 @@ namespace cadencii
             return result;
         }
 
-	public FormPluginUi getUi(System.Windows.Forms.Form main_window)
-        {
-            if (ui == null) {
-                if (main_window != null) {
-                    // mainWindowのスレッドで、uiが作成されるようにする
-                    main_window.Invoke(new Action(createPluginUi));
-                }
-            }
-            return ui;
-        }
-
-        private void createPluginUi()
-        {
-            bool hasUi = (aEffect.aeffect.flags & VstAEffectFlags.effFlagsHasEditor) == VstAEffectFlags.effFlagsHasEditor;
-            if (!hasUi) {
-                return;
-            }
-            if (ui == null) {
-                ui = new FormPluginUi();
-            }
-            if (!isUiOpened) {
-                // Editorを持っているかどうかを確認
-                if ((aEffect.aeffect.flags & VstAEffectFlags.effFlagsHasEditor) == VstAEffectFlags.effFlagsHasEditor) {
-                    try {
-                        // プラグインの名前を取得
-                        string product = getStringCore(AEffectXOpcodes.effGetProductString, 0, VstStringConstants.kVstMaxProductStrLen);
-                        ui.Text = product;
-                        ui.Location = new System.Drawing.Point(0, 0);
-                        unsafe {
-                            aEffect.Dispatch(AEffectOpcodes.effEditOpen, 0, 0, ui.Handle, 0.0f);
-                        }
-                        //Thread.Sleep( 250 );
-                        updatePluginUiRect();
-                        ui.ClientSize = new System.Drawing.Size(uiWindowRect.width, uiWindowRect.height);
-                        ui.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-                        isUiOpened = true;
-                    } catch (Exception ex) {
-                        serr.println("vstidrv#open; ex=" + ex);
-                        isUiOpened = false;
-                    }
-                }
-            }
-            return;
-        }
+        public object getUi (object nativeWindow)
+		{
+			return uihost.GetPluginUI (nativeWindow);
+		}
 
         public virtual void setSampleRate(int sample_rate)
         {
@@ -433,41 +387,13 @@ namespace cadencii
             return true;
         }
 
-        private void updatePluginUiRect()
-        {
-            if (ui != null) {
-                try {
-                    win32.EnumChildWindows(ui.Handle, enumChildProc, 0);
-                } catch (Exception ex) {
-                    serr.println("vstidrv#updatePluginUiRect; ex=" + ex);
-                }
-            }
-        }
-
-        private bool enumChildProc(IntPtr hwnd, int lParam)
-        {
-            RECT rc = new RECT();
-            try {
-                win32.GetWindowRect(hwnd, ref rc);
-            } catch (Exception ex) {
-                serr.println("vstidrv#enumChildProc; ex=" + ex);
-            }
-            if (ui != null) {
-                ui.childWnd = hwnd;
-            }
-            uiWindowRect = new Dimension(rc.right - rc.left, rc.bottom - rc.top);
-            return false; //最初のやつだけ検出できればおｋなので
-        }
-
         public virtual void close()
         {
             lock (mSyncRoot) {
 #if TEST
                 sout.println("vstidrv#close");
 #endif
-                if (ui != null && !ui.IsDisposed) {
-                    ui.Close();
-                }
+                uihost.ClosePluginUI ();
                 try {
                     sout.println("vstidrv#close; (aEffect==null)=" + (aEffect == null));
                     if (aEffect != null) {
@@ -486,6 +412,11 @@ namespace cadencii
                 }
                 releaseBuffer();
             }
+        }
+
+        protected VSTiDriverBase ()
+        {
+        	uihost = UIHost.Create ();
         }
 
         ~VSTiDriverBase()
