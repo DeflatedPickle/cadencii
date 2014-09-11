@@ -32,9 +32,9 @@ namespace cadencii
         }
 
         private ValueType m_value_type = ValueType.Double;
-        private Color m_textcolor_normal = cadencii.java.awt.PortUtil.Black;
-		private Color m_textcolor_invalid = cadencii.java.awt.PortUtil.White;
-		private Color m_backcolor_normal = cadencii.java.awt.PortUtil.White;
+        private Color m_textcolor_normal = cadencii.java.awt.Colors.Black;
+		private Color m_textcolor_invalid = cadencii.java.awt.Colors.White;
+		private Color m_backcolor_normal = cadencii.java.awt.Colors.White;
         private Color m_backcolor_invalid = new Color(240, 128, 128);
 
         /// <summary>

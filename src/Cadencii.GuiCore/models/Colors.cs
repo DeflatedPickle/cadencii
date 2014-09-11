@@ -19,7 +19,7 @@ using cadencii.java.util;
 
 namespace cadencii.java.awt
 {
-    public static class PortUtil
+    public static class Colors
     {
         public static Color AliceBlue = new Color(240, 248, 255);
         public static Color AntiqueWhite = new Color(250, 235, 215);

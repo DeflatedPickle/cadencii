@@ -451,7 +451,7 @@ namespace cadencii
             //
             this.txtLeftClock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txtLeftClock.Enabled = false;
-			this.txtLeftClock.ForeColor = cadencii.java.awt.PortUtil.Black.ToNative ();
+			this.txtLeftClock.ForeColor = cadencii.java.awt.Colors.Black.ToNative ();
             this.txtLeftClock.Location = new System.Drawing.Point(66, 26);
             this.txtLeftClock.Name = "txtLeftClock";
             this.txtLeftClock.Size = new System.Drawing.Size(61, 19);
@@ -463,7 +463,7 @@ namespace cadencii
             //
             this.txtLeftValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txtLeftValue.Enabled = false;
-			this.txtLeftValue.ForeColor = cadencii.java.awt.PortUtil.Black.ToNative ();
+			this.txtLeftValue.ForeColor = cadencii.java.awt.Colors.Black.ToNative ();
             this.txtLeftValue.Location = new System.Drawing.Point(66, 51);
             this.txtLeftValue.Name = "txtLeftValue";
             this.txtLeftValue.Size = new System.Drawing.Size(61, 19);

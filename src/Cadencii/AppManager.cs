@@ -230,7 +230,7 @@ namespace cadencii
         #endregion
 
         #region Private Static Fields
-		private static Color mHilightBrush = cadencii.java.awt.PortUtil.CornflowerBlue;
+		private static Color mHilightBrush = cadencii.java.awt.Colors.CornflowerBlue;
         private static Object mLocker;
         private static System.Windows.Forms.Timer mAutoBackupTimer;
         /// <summary>
@@ -2788,7 +2788,7 @@ namespace cadencii
         /// <returns></returns>
         public static Color getAlertColor()
         {
-			return cadencii.java.awt.PortUtil.HotPink;
+			return cadencii.java.awt.Colors.HotPink;
         }
 
         /// <summary>
@@ -2798,7 +2798,7 @@ namespace cadencii
         /// <returns></returns>
         public static Color getAlertHilightColor()
         {
-			return cadencii.java.awt.PortUtil.DeepPink;
+			return cadencii.java.awt.Colors.DeepPink;
         }
     }
 

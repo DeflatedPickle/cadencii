@@ -2559,7 +2559,7 @@ namespace cadencii
             int x_vibin_end = AppManager.xCoordFromClocks(cl_vibin_end);
             Point ul = new Point(x_vibin_end, y0 - boxheight / 2 - px_shift);
             Point dl = new Point(x_vibin_end, y0 + boxheight / 2 - px_shift);
-            g.setColor(cadencii.java.awt.PortUtil.Black);
+            g.setColor(cadencii.java.awt.Colors.Black);
             g.drawPolyline(new int[] { x0, ul.X, dl.X },
                             new int[] { y0, ul.Y, dl.Y },
                             3);
@@ -2627,7 +2627,7 @@ namespace cadencii
                     listy[i] = (int)(y0 + buf2[i]);
                 }
                 if (listx.Length >= 2) {
-                    g.setColor(cadencii.java.awt.PortUtil.Red);
+                    g.setColor(cadencii.java.awt.Colors.Red);
                     g.drawPolyline(listx, listy, listx.Length);
                 }
                 //g.SmoothingMode = old;
@@ -6392,7 +6392,7 @@ namespace cadencii
                         g.drawLine(x, 0, x, 49);
                         // 小節の数字
                         //g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                        g.setColor(cadencii.java.awt.PortUtil.Black);
+                        g.setColor(cadencii.java.awt.Colors.Black);
                         g.setFont(SMALL_FONT);
                         g.drawString(current + "", x + 4, 8 - small_font_offset + 1);
                         //g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
@@ -6432,7 +6432,7 @@ namespace cadencii
                             g.setColor(AppManager.getHilightColor());
                             g.drawString(s, x + 4, 40 - small_font_offset + 1);
                         } else {
-                            g.setColor(cadencii.java.awt.PortUtil.Black);
+                            g.setColor(cadencii.java.awt.Colors.Black);
                             g.drawString(s, x + 4, 40 - small_font_offset + 1);
                         }
 
@@ -6465,7 +6465,7 @@ namespace cadencii
                             g.setColor(AppManager.getHilightColor());
                             g.drawString(s, x + 4, 24 - small_font_offset + 1);
                         } else {
-                            g.setColor(cadencii.java.awt.PortUtil.Black);
+                            g.setColor(cadencii.java.awt.Colors.Black);
                             g.drawString(s, x + 4, 24 - small_font_offset + 1);
                         }
 
@@ -6490,7 +6490,7 @@ namespace cadencii
                 int marker_x = (int)(AppManager.getCurrentClock() * controller.getScaleX() + xoffset);
                 if (key_width <= marker_x && marker_x <= width) {
                     g.setStroke(new Stroke(2.0f));
-                    g.setColor(cadencii.java.awt.PortUtil.White);
+                    g.setColor(cadencii.java.awt.Colors.White);
                     g.drawLine(marker_x, 0, marker_x, height);
                     g.setStroke(new Stroke());
                 }
@@ -6523,14 +6523,14 @@ namespace cadencii
 
                 // 範囲外にスタートマーカーとエンドマーカーがある場合のマーク
                 if (right) {
-                    g.setColor(cadencii.java.awt.PortUtil.White);
+                    g.setColor(cadencii.java.awt.Colors.White);
                     g.fillPolygon(
                         new int[] { width - 6, width, width - 6 },
                         new int[] { 3, 10, 16 },
                         3);
                 }
                 if (left) {
-                    g.setColor(cadencii.java.awt.PortUtil.White);
+                    g.setColor(cadencii.java.awt.Colors.White);
                     g.fillPolygon(
                         new int[] { key_width + 7, key_width + 1, key_width + 7 },
                         new int[] { 3, 10, 16 },
@@ -6555,7 +6555,7 @@ namespace cadencii
                 /* TEMPO&BEATとピアノロールの境界 */
                 g.drawLine(AppManager.keyWidth, 48, width - 18, 48);
                 g.setFont(SMALL_FONT);
-                g.setColor(cadencii.java.awt.PortUtil.Black);
+                g.setColor(cadencii.java.awt.Colors.Black);
                 g.drawString("TEMPO", 11, 24 - small_font_offset + 1);
                 g.drawString("BEAT", 11, 40 - small_font_offset + 1);
                 #endregion
@@ -13997,7 +13997,7 @@ namespace cadencii
             Graphics g = new Graphics() {NativeGraphics = e.Graphics};
             picturePositionIndicatorDrawTo(g);
 #if MONITOR_FPS
-            g.setColor(cadencii.java.awt.PortUtil.Red);
+            g.setColor(cadencii.java.awt.Colors.Red);
             g.setFont(EditorConfig.baseFont10Bold);
             g.drawString(PortUtil.formatDecimal("#.00", mFps) + " / " + PortUtil.formatDecimal("#.00", mFps2), 5, 5);
 #endif
@@ -15081,25 +15081,25 @@ namespace cadencii
             mGraphicsPictureBox2.setColor(mColorR214G214B214);
             mGraphicsPictureBox2.fillRect(0, 0, width, height);
             if (mPianoRollScaleYMouseStatus > 0) {
-                mGraphicsPictureBox2.setColor(cadencii.java.awt.PortUtil.Gray);
+                mGraphicsPictureBox2.setColor(cadencii.java.awt.Colors.Gray);
                 mGraphicsPictureBox2.fillRect(0, 0, width, unit_height);
             } else if (mPianoRollScaleYMouseStatus < 0) {
-                mGraphicsPictureBox2.setColor(cadencii.java.awt.PortUtil.Gray);
+                mGraphicsPictureBox2.setColor(cadencii.java.awt.Colors.Gray);
                 mGraphicsPictureBox2.fillRect(0, unit_height * 2, width, unit_height);
             }
             mGraphicsPictureBox2.setStroke(getStrokeDefault());
-            mGraphicsPictureBox2.setColor(cadencii.java.awt.PortUtil.Gray);
+            mGraphicsPictureBox2.setColor(cadencii.java.awt.Colors.Gray);
             //mGraphicsPictureBox2.drawRect( 0, 0, width - 1, unit_height * 2 );
             mGraphicsPictureBox2.drawLine(0, unit_height, width, unit_height);
             mGraphicsPictureBox2.drawLine(0, unit_height * 2, width, unit_height * 2);
             mGraphicsPictureBox2.setStroke(getStroke2px());
             int cx = width / 2;
             int cy = unit_height / 2;
-            mGraphicsPictureBox2.setColor((mPianoRollScaleYMouseStatus > 0) ? cadencii.java.awt.PortUtil.LightGray : cadencii.java.awt.PortUtil.Gray);
+            mGraphicsPictureBox2.setColor((mPianoRollScaleYMouseStatus > 0) ? cadencii.java.awt.Colors.LightGray : cadencii.java.awt.Colors.Gray);
             mGraphicsPictureBox2.drawLine(cx - 4, cy, cx + 4, cy);
             mGraphicsPictureBox2.drawLine(cx, cy - 4, cx, cy + 4);
             cy += unit_height * 2;
-            mGraphicsPictureBox2.setColor((mPianoRollScaleYMouseStatus < 0) ? cadencii.java.awt.PortUtil.LightGray : cadencii.java.awt.PortUtil.Gray);
+            mGraphicsPictureBox2.setColor((mPianoRollScaleYMouseStatus < 0) ? cadencii.java.awt.Colors.LightGray : cadencii.java.awt.Colors.Gray);
             mGraphicsPictureBox2.drawLine(cx - 4, cy, cx + 4, cy);
         }
 

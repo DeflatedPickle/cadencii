@@ -520,7 +520,7 @@ namespace cadencii
             if (mDrawerRate == null) {
                 mDrawerRate = new LineGraphDrawer(LineGraphDrawer.TYPE_STEP);
                 mDrawerRate.setDotMode(LineGraphDrawer.DOTMODE_ALWAYS);
-                mDrawerRate.setFillColor(cadencii.java.awt.PortUtil.CornflowerBlue);
+                mDrawerRate.setFillColor(cadencii.java.awt.Colors.CornflowerBlue);
             }
             return mDrawerRate;
         }
@@ -534,7 +534,7 @@ namespace cadencii
             if (mDrawerDepth == null) {
                 mDrawerDepth = new LineGraphDrawer(LineGraphDrawer.TYPE_STEP);
                 mDrawerDepth.setDotMode(LineGraphDrawer.DOTMODE_ALWAYS);
-				mDrawerDepth.setFillColor(cadencii.java.awt.PortUtil.CornflowerBlue);
+				mDrawerDepth.setFillColor(cadencii.java.awt.Colors.CornflowerBlue);
             }
             return mDrawerDepth;
         }
@@ -550,7 +550,7 @@ namespace cadencii
                 mDrawerResulting.setDotMode(LineGraphDrawer.DOTMODE_NO);
                 mDrawerResulting.setFill(false);
                 mDrawerResulting.setLineWidth(2);
-				mDrawerResulting.setLineColor(cadencii.java.awt.PortUtil.ForestGreen);
+				mDrawerResulting.setLineColor(cadencii.java.awt.Colors.ForestGreen);
             }
             return mDrawerResulting;
         }

@@ -22,7 +22,7 @@ namespace cadencii.apputil
     public class BSplitterPanel : Panel
     {
         private BorderStyle m_border_style = BorderStyle.None;
-		private Color m_border_color = cadencii.java.awt.PortUtil.Black.ToNative ();
+		private Color m_border_color = cadencii.java.awt.Colors.Black.ToNative ();
 
         public event EventHandler BorderStyleChanged;
 

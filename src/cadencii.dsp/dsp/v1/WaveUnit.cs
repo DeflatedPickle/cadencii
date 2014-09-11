@@ -13,7 +13,7 @@
  */
 using System;
 using cadencii.java.awt;
-using PortUtil = cadencii.java.awt.PortUtil;
+using PortUtil = cadencii.java.awt.Colors;
 
 namespace cadencii
 {
@@ -136,7 +136,7 @@ namespace cadencii
             }
 
             // 枠と背景を描画
-			paintBackground(graphics, mStroke, x, y, width, height, cadencii.java.awt.PortUtil.Black, cadencii.java.awt.PortUtil.Pink);
+			paintBackground(graphics, mStroke, x, y, width, height, cadencii.java.awt.Colors.Black, cadencii.java.awt.Colors.Pink);
 
             // デバイス名を書く
             string typename = this.GetType().Name;

@@ -38,9 +38,9 @@ namespace cadencii.apputil
         int m_button_width_credit = 75;
         Image m_scroll;
         const int m_height = 380;
-        readonly Color m_background = cadencii.java.awt.PortUtil.White;
+        readonly Color m_background = cadencii.java.awt.Colors.White;
         private string m_app_name = "";
-		private Color m_app_name_color = cadencii.java.awt.PortUtil.Black;
+		private Color m_app_name_color = cadencii.java.awt.Colors.Black;
         private Color m_version_color = new Color(105, 105, 105);
         private bool m_shadow_enablde = true;
 
@@ -156,7 +156,7 @@ namespace cadencii.apputil
                 g.setColor(new Color(0, 0, 0, 40));
                 g.drawString(m_app_name, shadow_shift, shadow_shift); //, width, height ), sf );
             }
-			g.setColor(cadencii.java.awt.PortUtil.Black);
+			g.setColor(cadencii.java.awt.Colors.Black);
             g.drawString(m_app_name, 0f, 0f); //, width, height ), sf );
             for (int i = 0; i < m_credit.Length; i++) {
                 g.setFont(new Font(font_name, m_credit[i].getStyle(), font_size));
@@ -164,7 +164,7 @@ namespace cadencii.apputil
                     g.setColor(new Color(0, 0, 0, 40));
                     g.drawString(m_credit[i].getName(), 0f + shadow_shift, 40f + i * height * 1.1f + shadow_shift); //, width, height ), sf );
                 }
-				g.setColor(cadencii.java.awt.PortUtil.Black);
+				g.setColor(cadencii.java.awt.Colors.Black);
                 g.drawString(m_credit[i].getName(), 0f, 40f + i * height * 1.1f);// , width, height ), sf );
             }
         }
