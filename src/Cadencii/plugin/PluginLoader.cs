@@ -62,9 +62,9 @@ namespace cadencii
             CompilerResults cr = null;
             if (ret == null) {
                 CSharpCodeProvider provider = new CSharpCodeProvider();
-                string path = System.Windows.Forms.Application.StartupPath;
+                string path = PortUtil.getApplicationStartupPath ();
 
-                if (System.IO.Path.GetFileName(System.Windows.Forms.Application.ExecutablePath).ToLower().StartsWith("nunit")) {
+                if (System.IO.Path.GetFileName(new Uri (Assembly.GetEntryAssembly ().CodeBase).LocalPath).ToLower().StartsWith("nunit")) {
                     // nunit の場合は、 StartupPath が nunit のものになってしまうため、
                     // CadenciiTest.dll がデプロイされているディレクトリを、アセンブリのロード起点とする。
                     foreach (var asm in AppDomain.CurrentDomain.GetAssemblies()) {

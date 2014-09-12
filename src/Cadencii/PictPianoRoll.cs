@@ -213,7 +213,7 @@ namespace cadencii
 
                 try {
                     PolylineDrawer commonDrawer = getCommonPolylineDrawer(g);
-                    VsqFileEx vsq = AppManager.getVsqFile();
+                    VsqFileEx vsq = MusicManager.getVsqFile();
                     int selected = AppManager.getSelected();
                     VsqTrack vsq_track = vsq.Track[selected];
 
@@ -1268,7 +1268,7 @@ namespace cadencii
             }
             int y0 = AppManager.yCoordFromNote(note - 0.5f);
             float px_track_height = (int)(AppManager.mMainWindowController.getScaleY() * 100);
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             int clock_start = AppManager.clockFromXCoord(x_start);
             int clock_end = AppManager.clockFromXCoord(x_start + px_width);
             int tempo = vsq.getTempoAt(clock_start);

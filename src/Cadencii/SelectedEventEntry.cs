@@ -125,7 +125,7 @@ namespace cadencii
             }
 
             // attack, vibrato
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             if (vsq != null) {
                 SynthesizerType type = SynthesizerType.VOCALOID2;
                 RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[track]);
@@ -161,7 +161,7 @@ namespace cadencii
         /// <returns></returns>
         private int calculateClock(int measure, int beat, int gate)
         {
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             if (vsq == null) {
                 int premeasure = 2;
                 return ((measure + premeasure - 1) * 4 + (beat - 1)) * 480 + gate;
@@ -180,7 +180,7 @@ namespace cadencii
         private PositionSpec getPosition()
         {
             PositionSpec ret = new PositionSpec();
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             int clock = editing.Clock;
             if (vsq == null) {
                 // 4/4拍子, プリメジャー2と仮定
@@ -307,7 +307,7 @@ namespace cadencii
                 editing.ID.LyricHandle.L0.setConsonantAdjustment(consonant_adjustment);
 
                 // overlap, preUtterancec
-                VsqFileEx vsq = AppManager.getVsqFile();
+                VsqFileEx vsq = MusicManager.getVsqFile();
                 if (vsq != null) {
                     int selected = AppManager.getSelected();
                     VsqTrack vsq_track = vsq.Track[selected];
@@ -586,7 +586,7 @@ namespace cadencii
             if (draft < 0) {
                 draft = 0;
             } else {
-                VsqFileEx vsq = AppManager.getVsqFile();
+                VsqFileEx vsq = MusicManager.getVsqFile();
                 if (vsq != null) {
                     int maxlength = vsq.getMaximumNoteLengthAt(editing.Clock);
                     if (maxlength < draft) {
@@ -1127,7 +1127,7 @@ namespace cadencii
         public void setAttack(AttackVariation value)
         {
             m_attack = value;
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             if (vsq != null) {
                 SynthesizerType type = SynthesizerType.VOCALOID2;
                 RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[AppManager.getSelected()]);
@@ -1270,7 +1270,7 @@ namespace cadencii
                             }
                         }
                     } else {
-                        VsqFileEx vsq = AppManager.getVsqFile();
+                        VsqFileEx vsq = MusicManager.getVsqFile();
                         if (vsq != null) {
                             SynthesizerType type = SynthesizerType.VOCALOID2;
                             RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[AppManager.getSelected()]);
@@ -1332,7 +1332,7 @@ namespace cadencii
                     draft = 100;
                 }
                 if (editing.ID.VibratoHandle == null) {
-                    VsqFileEx vsq = AppManager.getVsqFile();
+                    VsqFileEx vsq = MusicManager.getVsqFile();
                     if (vsq != null) {
                         string iconid = AppManager.editorConfig.AutoVibratoType2;
                         SynthesizerType type = SynthesizerType.VOCALOID2;

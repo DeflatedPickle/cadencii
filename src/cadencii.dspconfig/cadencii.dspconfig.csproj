@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{84B71038-CB91-4456-8C90-31E73BC93D7C}</ProjectGuid>
+    <ProjectGuid>{A89A318D-3944-4833-8F9E-CDC41ADD4DEC}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>cadencii.media.windows</RootNamespace>
-    <AssemblyName>cadencii.media.windows</AssemblyName>
+    <RootNamespace>cadencii.dspconfig</RootNamespace>
+    <AssemblyName>cadencii.dspconfig</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -17,7 +17,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -26,37 +25,27 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="media\AviReader.cs" />
-    <Compile Include="media\AviWriterVcm.cs" />
-    <Compile Include="media\AviWriterVfw.cs" />
-    <Compile Include="media\IAviWriter.cs" />
-    <Compile Include="media\PipedAviWriter.cs" />
-    <Compile Include="media\PlaySound.cs" />
-    <Compile Include="media\RawAvi2Writer.cs" />
-    <Compile Include="media\Util.cs" />
-    <Compile Include="media\VCM.cs" />
-    <Compile Include="media\VFW.cs" />
-    <Compile Include="media\WavePlay.cs" />
-    <Compile Include="media\MidiInDevice.cs" />
-    <Compile Include="media\MidiOutDevice.cs" />
+    <Compile Include="MusicManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\cadencii.dsp\cadencii.dsp.csproj">
+      <Project>{18E7D0BD-734D-482E-BAE8-2512147D88F0}</Project>
+      <Name>cadencii.dsp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.core\cadencii.core.csproj">
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
       <Name>cadencii.core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\cadencii.platform.windows\cadencii.platform.windows.csproj">
-      <Project>{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}</Project>
-      <Name>cadencii.platform.windows</Name>
+    <ProjectReference Include="..\cadencii.coreutils\cadencii.coreutils.csproj">
+      <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
+      <Name>cadencii.coreutils</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.media\cadencii.media.csproj">
       <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
@@ -66,9 +55,20 @@
       <Project>{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}</Project>
       <Name>cadencii.midi</Name>
     </ProjectReference>
-    <ProjectReference Include="..\cadencii.coreutils\cadencii.coreutils.csproj">
-      <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
-      <Name>cadencii.coreutils</Name>
+    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.vsq\cadencii.vsq.csproj">
+      <Project>{673347F3-6FC2-4F82-9273-BF158E0F8CB1}</Project>
+      <Name>cadencii.vsq</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Cadencii.GuiCore\Cadencii.GuiCore.csproj">
+      <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
+      <Name>Cadencii.GuiCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.windows.forms\cadencii.windows.forms.csproj">
+      <Project>{B9481E3B-6842-4AB3-8ED4-29C86C2579A3}</Project>
+      <Name>cadencii.windows.forms</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app_dspcore\" />
   </ItemGroup>
 </Project>

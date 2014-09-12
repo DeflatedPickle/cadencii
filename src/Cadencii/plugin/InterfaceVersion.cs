@@ -94,6 +94,7 @@ namespace cadencii
             itemSelection.addEvent(id);
         }
 
+        /*
         [Obsolete]
         public static FormMain mainWindow
         {
@@ -102,6 +103,7 @@ namespace cadencii
                 return mMainWindow;
             }
         }
+*/
     }
 
     [Obsolete]

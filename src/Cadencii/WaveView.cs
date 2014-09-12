@@ -138,7 +138,7 @@ namespace cadencii
                         rc,
                         AppManager.clockFromXCoord(AppManager.keyWidth),
                         AppManager.clockFromXCoord(AppManager.keyWidth + width),
-                        AppManager.getVsqFile().TempoTable,
+                        MusicManager.getVsqFile().TempoTable,
                         AppManager.mMainWindowController.getScaleX());
                 } else {
                     context.draw(
@@ -147,7 +147,7 @@ namespace cadencii
                         rc,
                         AppManager.clockFromXCoord(AppManager.keyWidth),
                         AppManager.clockFromXCoord(AppManager.keyWidth + width),
-                        AppManager.getVsqFile().TempoTable,
+                        MusicManager.getVsqFile().TempoTable,
                         AppManager.mMainWindowController.getScaleX(),
                         mScale);
                 }

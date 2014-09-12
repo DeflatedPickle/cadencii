@@ -40,7 +40,7 @@ namespace cadencii
             m_editing_id = editing_id;
             m_curve = curve;
 
-            VsqBPPairSearchContext context = AppManager.getVsqFile().Track[AppManager.getSelected()].getCurve(m_curve.getName()).findElement(m_editing_id);
+            VsqBPPairSearchContext context = MusicManager.getVsqFile().Track[AppManager.getSelected()].getCurve(m_curve.getName()).findElement(m_editing_id);
             txtDataPointClock.Text = context.clock + "";
             txtDataPointValue.Text = context.point.value + "";
             txtDataPointValue.SelectAll();
@@ -93,7 +93,7 @@ namespace cadencii
             }
 
             int selected = AppManager.getSelected();
-            VsqTrack vsq_track = AppManager.getVsqFile().Track[selected];
+            VsqTrack vsq_track = MusicManager.getVsqFile().Track[selected];
             VsqBPList src = vsq_track.getCurve(m_curve.getName());
             VsqBPList list = (VsqBPList)src.clone();
 
@@ -108,7 +108,7 @@ namespace cadencii
             foreach (var item in zone.iterator()) {
                 zoneUnits.Add(item);
             }
-            AppManager.editHistory.register(AppManager.getVsqFile().executeCommand(run));
+            AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
 
             txtDataPointClock.Text = clock + "";
             txtDataPointValue.Text = value + "";
@@ -165,7 +165,7 @@ namespace cadencii
 
         public void commonButton_Click(Object sender, EventArgs e)
         {
-            VsqBPList list = AppManager.getVsqFile().Track[AppManager.getSelected()].getCurve(m_curve.getName());
+            VsqBPList list = MusicManager.getVsqFile().Track[AppManager.getSelected()].getCurve(m_curve.getName());
             VsqBPPairSearchContext search = list.findElement(m_editing_id);
             int index = search.index;
             if (sender == btnForward) {
@@ -230,7 +230,7 @@ namespace cadencii
             } else {
                 return;
             }
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             bool exists = false;
             if (vsq != null) {
                 exists = vsq.Track[AppManager.getSelected()].getCurve(m_curve.getName()).findElement(m_editing_id).index >= 0;

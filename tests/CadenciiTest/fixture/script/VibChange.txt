@@ -94,7 +94,7 @@ public class VibChange : Form {
         InitializeComponent();
 
         // 現在のトラックの音声合成エンジンを取得。
-        String synth_engine = AppManager.getVsqFile().Track.get( AppManager.getSelected() ).getCommon().Version;
+        String synth_engine = MusicManager.getVsqFile().Track.get( AppManager.getSelected() ).getCommon().Version;
         if ( synth_engine.StartsWith( VSTiProxy.RENDERER_DSB2 ) ) {
             // vocaloid1
             s_synth_type = SynthesizerType.VOCALOID1;

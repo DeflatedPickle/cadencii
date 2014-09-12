@@ -148,7 +148,7 @@ namespace cadencii
         public static bool invokePaletteTool(string id, int track, int[] vsq_event_intrenal_ids, MouseButtons button)
         {
             if (loadedTools.ContainsKey(id)) {
-                VsqFileEx vsq = AppManager.getVsqFile();
+                VsqFileEx vsq = MusicManager.getVsqFile();
                 VsqTrack item = (VsqTrack)vsq.Track[track].clone();
                 Object objPal = loadedTools[id];
                 if (objPal == null) {

@@ -36,7 +36,7 @@ namespace cadencii
 #if DEBUG
             sout.println("SynthesizeWorker#patchWork");
 #endif
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             Object[] args = (Object[])arg;
             List<PatchWorkQueue> queue = (List<PatchWorkQueue>)args[0];
             List<int> tracks = (List<int>)args[1];

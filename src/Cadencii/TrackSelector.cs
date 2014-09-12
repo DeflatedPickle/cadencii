@@ -873,9 +873,9 @@ namespace cadencii
         private void executeCommand(CadenciiCommand command, bool register)
         {
             if (register) {
-                AppManager.editHistory.register(AppManager.getVsqFile().executeCommand(command));
+                AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(command));
             } else {
-                AppManager.getVsqFile().executeCommand(command);
+                MusicManager.getVsqFile().executeCommand(command);
             }
             try {
                 if (CommandExecuted != null) {
@@ -1079,7 +1079,7 @@ namespace cadencii
             int numeric_view = mMouseValue;
 			Point p = pointToClient(cadencii.core2.PortUtil.getMousePosition());
             Point mouse = new Point(p.X, p.Y);
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             int selected = AppManager.getSelected();
             int key_width = AppManager.keyWidth;
             int stdx = AppManager.mMainWindowController.getStartToDrawX();
@@ -1602,7 +1602,7 @@ namespace cadencii
             int clock_start = AppManager.clockFromXCoord(key_width);
             int clock_end = AppManager.clockFromXCoord(width);
 
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             VsqTrack track = vsq.Track[track_index];
             VsqEvent itr_prev = null;
             VsqEvent itr_item = null;
@@ -1826,7 +1826,7 @@ namespace cadencii
                  mSelectedCurve.equals(CurveType.VibratoRate)) {
                 //TODO: この辺
             } else {
-                VsqBPList list = AppManager.getVsqFile().Track[AppManager.getSelected()].getCurve(mSelectedCurve.getName());
+                VsqBPList list = MusicManager.getVsqFile().Track[AppManager.getSelected()].getCurve(mSelectedCurve.getName());
                 int count = list.size();
                 int w = DOT_WID * 2 + 1;
                 for (int i = 0; i < count; i++) {
@@ -1897,7 +1897,7 @@ namespace cadencii
             int clock_start = AppManager.clockFromXCoord(AppManager.keyWidth);
             int clock_end = AppManager.clockFromXCoord(getWidth());
             int dotwid = DOT_WID * 2 + 1;
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             IEnumerator<VsqEvent> itr = vsq.Track[AppManager.getSelected()].getNoteEventIterator().GetEnumerator();
             VsqEvent itr_prev = null;
             VsqEvent itr_item = null;
@@ -2150,7 +2150,7 @@ namespace cadencii
             int draft = TRACK_SELECTOR_MAX_WIDTH;
             int maxTotalWidth = getWidth() - AppManager.keyWidth; // トラックの一覧を表示するのに利用できる最大の描画幅
             int numTrack = 1;
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             if (vsq != null) {
                 numTrack = vsq.Track.Count;
             }
@@ -2729,7 +2729,7 @@ namespace cadencii
                                 }
                             }
                         }
-                        RendererKind kind = VsqFileEx.getTrackRendererKind(AppManager.getVsqFile().Track[AppManager.getSelected()]);
+                        RendererKind kind = VsqFileEx.getTrackRendererKind(MusicManager.getVsqFile().Track[AppManager.getSelected()]);
                         if (kind == RendererKind.VOCALOID1) {
                             cmenuCurveVelocity.Visible = true;
                             cmenuCurveAccent.Visible = true;
@@ -2908,7 +2908,7 @@ namespace cadencii
 
         public BezierPoint HandleMouseMoveForBezierMove(int clock, int value, int value_raw, BezierPickedSide picked)
         {
-            BezierChain target = AppManager.getVsqFile().AttachedCurves.get(AppManager.getSelected() - 1).getBezierChain(mSelectedCurve, AppManager.itemSelection.getLastBezier().chainID);
+            BezierChain target = MusicManager.getVsqFile().AttachedCurves.get(AppManager.getSelected() - 1).getBezierChain(mSelectedCurve, AppManager.itemSelection.getLastBezier().chainID);
             int point_id = AppManager.itemSelection.getLastBezier().pointID;
             int index = -1;
             for (int i = 0; i < target.points.Count; i++) {
@@ -3063,8 +3063,8 @@ namespace cadencii
             int value = valueFromYCoord(e.Y);
             int value_raw = value;
 
-            if (clock < AppManager.getVsqFile().getPreMeasure()) {
-                clock = AppManager.getVsqFile().getPreMeasure();
+            if (clock < MusicManager.getVsqFile().getPreMeasure()) {
+                clock = MusicManager.getVsqFile().getPreMeasure();
             }
             int max = mSelectedCurve.getMaximum();
             int min = mSelectedCurve.getMinimum();
@@ -3113,7 +3113,7 @@ namespace cadencii
             }
             int clock = AppManager.clockFromXCoord(e.X);
 
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             if (clock < vsq.getPreMeasure()) {
                 clock = vsq.getPreMeasure();
             }
@@ -3380,7 +3380,7 @@ namespace cadencii
 #if DEBUG
             AppManager.debugWriteLine("TrackSelector_MouseDown");
 #endif
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             mMouseDownLocation.X = e.X + AppManager.mMainWindowController.getStartToDrawX();
             mMouseDownLocation.Y = e.Y;
             int clock = AppManager.clockFromXCoord(e.X);
@@ -3484,7 +3484,7 @@ namespace cadencii
                             int tmin = Math.Min(ve.Clock, last_clock);
                             int tmax = Math.Max(ve.Clock, last_clock);
                             List<int> add_required = new List<int>();
-                            for (Iterator<VsqEvent> itr = AppManager.getVsqFile().Track[AppManager.getSelected()].getEventIterator(); itr.hasNext(); ) {
+                            for (Iterator<VsqEvent> itr = MusicManager.getVsqFile().Track[AppManager.getSelected()].getEventIterator(); itr.hasNext(); ) {
                                 VsqEvent item = itr.next();
                                 if (item.ID.type == VsqIDType.Singer && tmin <= item.Clock && item.Clock <= tmax) {
                                     add_required.Add(item.InternalID);
@@ -3646,7 +3646,7 @@ namespace cadencii
                                 mMouseDownMode = MouseDownMode.NONE;
                             } else {
                                 // まずベジエ曲線の点にヒットしてないかどうかを検査
-                                List<BezierChain> dict = AppManager.getVsqFile().AttachedCurves.get(AppManager.getSelected() - 1).get(mSelectedCurve);
+                                List<BezierChain> dict = MusicManager.getVsqFile().AttachedCurves.get(AppManager.getSelected() - 1).get(mSelectedCurve);
                                 AppManager.itemSelection.clearBezier();
                                 for (int i = 0; i < dict.Count; i++) {
                                     BezierChain bc = dict[i];
@@ -3719,7 +3719,7 @@ namespace cadencii
                                             int tmin = Math.Min(ve.Clock, last_clock);
                                             int tmax = Math.Max(ve.Clock, last_clock);
                                             List<int> add_required = new List<int>();
-                                            foreach (var item in AppManager.getVsqFile().Track[AppManager.getSelected()].getNoteEventIterator()) {
+                                            foreach (var item in MusicManager.getVsqFile().Track[AppManager.getSelected()].getNoteEventIterator()) {
                                                 if (tmin <= item.Clock && item.Clock <= tmax) {
                                                     add_required.Add(item.InternalID);
                                                 }
@@ -3788,7 +3788,7 @@ namespace cadencii
 
                                     mMouseDownMode = MouseDownMode.POINT_MOVE;
                                     mMovingPoints.Clear();
-                                    VsqBPList list = AppManager.getVsqFile().Track[AppManager.getSelected()].getCurve(mSelectedCurve.getName());
+                                    VsqBPList list = MusicManager.getVsqFile().Track[AppManager.getSelected()].getCurve(mSelectedCurve.getName());
                                     if (list != null) {
                                         int count = list.size();
                                         for (int i = 0; i < count; i++) {
@@ -3897,7 +3897,7 @@ namespace cadencii
                                 } else {
                                     long id = findDataPointAt(e.X, e.Y);
                                     if (id > 0) {
-                                        VsqBPList item = AppManager.getVsqFile().Track[AppManager.getSelected()].getCurve(mSelectedCurve.getName());
+                                        VsqBPList item = MusicManager.getVsqFile().Track[AppManager.getSelected()].getCurve(mSelectedCurve.getName());
                                         if (item != null) {
                                             VsqBPList work = (VsqBPList)item.clone();
                                             VsqBPPairSearchContext context = work.findElement(id);
@@ -3930,7 +3930,7 @@ namespace cadencii
                     } else if (e.Button == MouseButtons.Right) {
                         if (AppManager.isCurveMode()) {
                             if (!mSelectedCurve.equals(CurveType.VEL) && !mSelectedCurve.equals(CurveType.Env)) {
-                                List<BezierChain> dict = AppManager.getVsqFile().AttachedCurves.get(AppManager.getSelected() - 1).get(mSelectedCurve);
+                                List<BezierChain> dict = MusicManager.getVsqFile().AttachedCurves.get(AppManager.getSelected() - 1).get(mSelectedCurve);
                                 AppManager.itemSelection.clearBezier();
                                 bool found = false;
                                 for (int i = 0; i < dict.Count; i++) {
@@ -3982,7 +3982,7 @@ namespace cadencii
             bool is_middle = false;
 
             // check whether bezier point exists on clicked position
-            List<BezierChain> dict = AppManager.getVsqFile().AttachedCurves.get(track - 1).get(mSelectedCurve);
+            List<BezierChain> dict = MusicManager.getVsqFile().AttachedCurves.get(track - 1).get(mSelectedCurve);
             ByRef<BezierChain> found_chain = new ByRef<BezierChain>();
             ByRef<BezierPoint> found_point = new ByRef<BezierPoint>();
             ByRef<BezierPickedSide> found_side = new ByRef<BezierPickedSide>();
@@ -4060,7 +4060,7 @@ namespace cadencii
                         point_id = adding.getNextId();
                         bp.setID(point_id);
                         adding.add(bp);
-                        chain_id = AppManager.getVsqFile().AttachedCurves.get(track - 1).getNextId(mSelectedCurve);
+                        chain_id = MusicManager.getVsqFile().AttachedCurves.get(track - 1).getNextId(mSelectedCurve);
 #if DEBUG
                         AppManager.debugWriteLine("    new chain_id=" + chain_id);
 #endif
@@ -4103,7 +4103,7 @@ namespace cadencii
             if (findPreUtteranceOrOverlapAt(e.X, e.Y, internal_id, found_flag_was_overlap)) {
                 if (found_flag_was_overlap.value) {
                     mOverlapEditingID = internal_id.value;
-                    mPreOverlapEditing = AppManager.getVsqFile().Track[AppManager.getSelected()].findEventFromID(mOverlapEditingID);
+                    mPreOverlapEditing = MusicManager.getVsqFile().Track[AppManager.getSelected()].findEventFromID(mOverlapEditingID);
                     if (mPreOverlapEditing == null) {
                         mMouseDownMode = MouseDownMode.NONE;
                         return false;
@@ -4113,7 +4113,7 @@ namespace cadencii
                     return true;
                 } else {
                     mPreUtteranceEditingID = internal_id.value;
-                    mPreOverlapEditing = AppManager.getVsqFile().Track[AppManager.getSelected()].findEventFromID(mPreUtteranceEditingID);
+                    mPreOverlapEditing = MusicManager.getVsqFile().Track[AppManager.getSelected()].findEventFromID(mPreUtteranceEditingID);
                     if (mPreOverlapEditing == null) {
                         mMouseDownMode = MouseDownMode.NONE;
                         return false;
@@ -4137,7 +4137,7 @@ namespace cadencii
             sout.println("processTrackSelectorMouseDownForEnvelope; internal_id=" + internal_id.value + "; point_kind=" + point_kind.value);
 #endif
             mEnvelopeOriginal = null;
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             VsqTrack vsq_track = vsq.Track[AppManager.getSelected()];
             VsqEvent found = vsq_track.findEventFromID(internal_id.value);
             if (found == null) {
@@ -4256,10 +4256,10 @@ namespace cadencii
         /// <returns></returns>
         private VsqEvent findItemAt(int locx, int locy)
         {
-            if (AppManager.getVsqFile() == null) {
+            if (MusicManager.getVsqFile() == null) {
                 return null;
             }
-            VsqTrack target = AppManager.getVsqFile().Track[AppManager.getSelected()];
+            VsqTrack target = MusicManager.getVsqFile().Track[AppManager.getSelected()];
             int count = target.getEventCount();
             for (int i = 0; i < count; i++) {
                 VsqEvent ve = target.getEvent(i);
@@ -4319,7 +4319,7 @@ namespace cadencii
 
             int max = mSelectedCurve.getMaximum();
             int min = mSelectedCurve.getMinimum();
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             VsqTrack vsq_track = vsq.Track[selected];
 #if DEBUG
             AppManager.debugWriteLine("    max,min=" + max + "," + min);
@@ -5155,7 +5155,7 @@ namespace cadencii
                 int max = mSelectedCurve.getMaximum();
 
                 int selected = AppManager.getSelected();
-                VsqFileEx vsq = AppManager.getVsqFile();
+                VsqFileEx vsq = MusicManager.getVsqFile();
                 VsqTrack vsq_track = vsq.Track[selected];
 
                 if (value < min) {
@@ -5326,7 +5326,7 @@ namespace cadencii
                 mMouseHoverThread.Abort();
             }
 
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             int selected = AppManager.getSelected();
             VsqTrack vsq_track = vsq.Track[selected];
             int height = getHeight();

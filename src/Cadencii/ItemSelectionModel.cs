@@ -141,7 +141,7 @@ namespace cadencii
             clearTempo();
             mSelectedTimesig = barcount;
             if (!mTimesig.ContainsKey(barcount)) {
-                foreach (var tte in AppManager.getVsqFile().TimesigTable) {
+                foreach (var tte in MusicManager.getVsqFile().TimesigTable) {
                     if (tte.BarCount == barcount) {
                         mTimesig[barcount] = new SelectedTimesigEntry(tte, (TimeSigTableEntry)tte.clone());
                         break;
@@ -216,7 +216,7 @@ namespace cadencii
             clearTimesig();
             mLastTempo = clock;
             if (!mTempo.ContainsKey(clock)) {
-                foreach (var tte in AppManager.getVsqFile().TempoTable) {
+                foreach (var tte in MusicManager.getVsqFile().TempoTable) {
                     if (tte.Clock == clock) {
                         mTempo[clock] = new SelectedTempoEntry(tte, (TempoTableEntry)tte.clone());
                         break;
@@ -330,7 +330,7 @@ namespace cadencii
             int count = 0;
             int c = list.Count;
             int selected = AppManager.getSelected();
-            for (Iterator<VsqEvent> itr = AppManager.getVsqFile().Track[selected].getEventIterator(); itr.hasNext(); ) {
+            for (Iterator<VsqEvent> itr = MusicManager.getVsqFile().Track[selected].getEventIterator(); itr.hasNext(); ) {
                 VsqEvent ev = itr.next();
                 int find = -1;
                 for (int i = 0; i < c; i++) {
@@ -375,7 +375,7 @@ namespace cadencii
             clearTempo();
             clearTimesig();
             int selected = AppManager.getSelected();
-            for (Iterator<VsqEvent> itr = AppManager.getVsqFile().Track[selected].getEventIterator(); itr.hasNext(); ) {
+            for (Iterator<VsqEvent> itr = MusicManager.getVsqFile().Track[selected].getEventIterator(); itr.hasNext(); ) {
                 VsqEvent ev = itr.next();
                 if (ev.InternalID == id) {
                     if (isEventContains(selected, id)) {
@@ -505,7 +505,7 @@ namespace cadencii
         /// </summary>
         public void updateSelectedEventInstance()
         {
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             if (vsq == null) {
                 return;
             }

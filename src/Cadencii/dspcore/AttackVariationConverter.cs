@@ -13,7 +13,6 @@
  */
 using System;
 using System.ComponentModel;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using cadencii.vsq;
 using cadencii;
@@ -33,7 +32,7 @@ namespace cadencii
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
             /*SynthesizerType type = SynthesizerType.VOCALOID2;
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             if ( vsq != null ) {
                 RendererKind kind = VsqFileEx.getTrackRendererKind( vsq.Track.get( AppManager.getSelected() ) );
                 if ( kind == RendererKind.VOCALOID1_100 || kind == RendererKind.VOCALOID1_101 ){
@@ -98,7 +97,7 @@ namespace cadencii
                 return new AttackVariation();
             } else {
                 SynthesizerType type = SynthesizerType.VOCALOID2;
-                VsqFileEx vsq = AppManager.getVsqFile();
+                VsqFileEx vsq = MusicManager.getVsqFile();
                 if (vsq != null) {
                     RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[AppManager.getSelected()]);
                     if (kind == RendererKind.VOCALOID1) {
@@ -119,7 +118,7 @@ namespace cadencii
         public List<Object> getStandardValues()
         {
             SynthesizerType type = SynthesizerType.VOCALOID2;
-            VsqFileEx vsq = AppManager.getVsqFile();
+			VsqFileEx vsq = MusicManager.getVsqFile();
             if (vsq != null) {
                 RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[AppManager.getSelected()]);
                 if (kind == RendererKind.VOCALOID1) {

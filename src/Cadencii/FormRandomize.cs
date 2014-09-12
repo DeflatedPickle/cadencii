@@ -100,7 +100,7 @@ namespace cadencii
             int startBeat = getStartBeat();
             int endBar = getEndBar();
             int endBeat = getEndBeat();
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             if (vsq == null) {
                 return;
             }

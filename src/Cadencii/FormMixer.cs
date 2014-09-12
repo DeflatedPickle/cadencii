@@ -88,7 +88,7 @@ namespace cadencii
         /// <returns></returns>
         public VolumeTracker getVolumeTracker(int track)
         {
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             if (1 <= track && track < vsq.Track.Count &&
                  0 <= track - 1 && track - 1 < m_tracker.Count) {
                 return m_tracker[track - 1];
@@ -106,7 +106,7 @@ namespace cadencii
         /// <returns></returns>
         public VolumeTracker getVolumeTrackerBgm(int index)
         {
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             int offset = vsq.Track.Count - 1;
             if (0 <= index + offset && index + offset < m_tracker.Count) {
                 return m_tracker[index + offset];
@@ -120,7 +120,7 @@ namespace cadencii
         /// </summary>
         private void updateSoloMute()
         {
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             if (vsq == null) {
                 return;
             }
@@ -175,7 +175,7 @@ namespace cadencii
         /// </summary>
         public void updateStatus()
         {
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             int num = vsq.Mixer.Slave.Count + AppManager.getBgmCount();
             if (m_tracker == null) {
                 m_tracker = new List<VolumeTracker>();

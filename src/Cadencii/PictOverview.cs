@@ -274,7 +274,7 @@ namespace cadencii
 
         public void updateCachedImage()
         {
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             if (vsq == null) {
                 return;
             }
@@ -304,8 +304,8 @@ namespace cadencii
                 double dt = PortUtil.getCurrentTime() - mOverviewBtnDowned;
                 int draft = (int)(mOverviewStartToDrawClockInitialValue + mOverviewDirection * dt * OVERVIEW_SCROLL_SPEED / mOverviewPixelPerClock);
                 int clock = getOverviewClockFromXCoord(this.Width - key_width, draft);
-                if (AppManager.getVsqFile().TotalClocks < clock) {
-                    draft = AppManager.getVsqFile().TotalClocks - (int)((this.Width - key_width) / mOverviewPixelPerClock);
+                if (MusicManager.getVsqFile().TotalClocks < clock) {
+                    draft = MusicManager.getVsqFile().TotalClocks - (int)((this.Width - key_width) / mOverviewPixelPerClock);
                 }
                 if (draft < 0) {
                     draft = 0;
@@ -367,7 +367,7 @@ namespace cadencii
 
         public void handleResize(Object sender, EventArgs e)
         {
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             int max = AppManager.getCurrentClock();
             int total_clocks = vsq.TotalClocks;
             if (max < total_clocks) max = total_clocks;
@@ -489,8 +489,8 @@ namespace cadencii
                 int draft = mOverviewStartToDrawClockInitialValue - (int)(dx / mOverviewPixelPerClock);
                 int key_width = AppManager.keyWidth;
                 int clock = getOverviewClockFromXCoord(this.Width - xoffset, draft);
-                if (AppManager.getVsqFile().TotalClocks < clock) {
-                    draft = AppManager.getVsqFile().TotalClocks - (int)((this.Width - xoffset) / mOverviewPixelPerClock);
+                if (MusicManager.getVsqFile().TotalClocks < clock) {
+                    draft = MusicManager.getVsqFile().TotalClocks - (int)((this.Width - xoffset) / mOverviewPixelPerClock);
                 }
                 if (draft < 0) {
                     draft = 0;
@@ -660,7 +660,7 @@ namespace cadencii
                 g.setColor(FormMain.mColorNoteFill);
                 int key_width = AppManager.keyWidth;
                 int xoffset = key_width + AppManager.keyOffset;
-                VsqFileEx vsq = AppManager.getVsqFile();
+                VsqFileEx vsq = MusicManager.getVsqFile();
 
                 int overview_dot_diam = 2;
 

@@ -110,8 +110,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttackVariation.cs" />
-    <Compile Include="AttackVariationConverter.cs" />
     <Compile Include="BAssemblyInfo.cs" />
     <Compile Include="BgmMenuItem.cs">
       <SubType>Component</SubType>
@@ -179,9 +177,6 @@
     <Compile Include="PictOverview.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="plugin\PluginLoader.cs" />
-    <Compile Include="plugin\PluginVersion.cs" />
-    <Compile Include="plugin\ScriptProcessor.cs" />
     <Compile Include="ProgressBarWithLabel.cs" />
     <Compile Include="PropertyWindowListener.cs" />
     <Compile Include="PureVirtualFunctionAttribute.cs" />
@@ -387,7 +382,6 @@
     </Compile>
     <Compile Include="ScriptInvoker.cs" />
     <Compile Include="SelectedBezierPoint.cs" />
-    <Compile Include="SelectedEventEntry.cs" />
     <Compile Include="SelectedRegion.cs" />
     <Compile Include="SelectedTempoEntry.cs" />
     <Compile Include="SelectedTimesigEntry.cs" />
@@ -468,11 +462,17 @@
     <EmbeddedResource Include="ui\preference\Preference.resx">
       <DependentUpon>Preference.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="plugin\InterfaceVersion.cs" />
     <Compile Include="AppManager.cs" />
     <Compile Include="dspcore\VibratoLengthEditingRule.cs" />
     <Compile Include="dspcore\VibratoVariation.cs" />
     <Compile Include="dspcore\VibratoVariationConverter.cs" />
+    <Compile Include="SelectedEventEntry.cs" />
+    <Compile Include="plugin\InterfaceVersion.cs" />
+    <Compile Include="plugin\PluginLoader.cs" />
+    <Compile Include="plugin\PluginVersion.cs" />
+    <Compile Include="plugin\ScriptProcessor.cs" />
+    <Compile Include="dspcore\AttackVariation.cs" />
+    <Compile Include="dspcore\AttackVariationConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ja.po">
@@ -756,10 +756,6 @@
       <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
       <Name>Cadencii.GuiCore</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.media.windows\cadencii.media.windows.csproj">
-      <Project>{84B71038-CB91-4456-8C90-31E73BC93D7C}</Project>
-      <Name>cadencii.media.windows</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.uiconfig\cadencii.uiconfig.csproj">
       <Project>{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}</Project>
       <Name>cadencii.uiconfig</Name>
@@ -771,6 +767,14 @@
     <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.coreutils\cadencii.coreutils.csproj">
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>cadencii.coreutils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.media.windows\cadencii.media.windows.csproj">
+      <Project>{84B71038-CB91-4456-8C90-31E73BC93D7C}</Project>
+      <Name>cadencii.media.windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.dspconfig\cadencii.dspconfig.csproj">
+      <Project>{A89A318D-3944-4833-8F9E-CDC41ADD4DEC}</Project>
+      <Name>cadencii.dspconfig</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

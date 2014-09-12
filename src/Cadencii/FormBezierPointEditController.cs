@@ -61,7 +61,7 @@ namespace cadencii
             m_chain_id = selected_chain_id;
             m_point_id = selected_point_id;
             bool found = false;
-            VsqFileEx vsq = AppManager.getVsqFile();
+            VsqFileEx vsq = MusicManager.getVsqFile();
             BezierCurves attached = vsq.AttachedCurves.get(m_track - 1);
             List<BezierChain> chains = attached.get(m_curve_type);
             for (int i = 0; i < chains.Count; i++) {
@@ -317,7 +317,7 @@ namespace cadencii
             }
 
             // 選択中のデータ点を検索し，次に選択するデータ点を決める
-            BezierChain target = AppManager.getVsqFile().AttachedCurves.get(m_track - 1).getBezierChain(m_curve_type, m_chain_id);
+            BezierChain target = MusicManager.getVsqFile().AttachedCurves.get(m_track - 1).getBezierChain(m_curve_type, m_chain_id);
             int index = -2;
             int size = target.size();
             for (int i = 0; i < size; i++) {
