@@ -2275,7 +2275,7 @@ namespace cadencii
 #if DEBUG
                 sout.println("FormMain#updatePropertyPanelState; state=Docked; w=" + w);
 #endif
-                AppManager.editorConfig.PropertyWindowStatus.WindowState = FormWindowState.Minimized;
+                AppManager.editorConfig.PropertyWindowStatus.IsMinimized = true;
                 AppManager.propertyWindow.getUi().hideWindow();
             } else if (state == PanelState.Hidden) {
                 if (AppManager.propertyWindow.getUi().isVisible()) {
@@ -2325,7 +2325,7 @@ namespace cadencii
                 splitContainerProperty.setDividerLocation(0);
                 splitContainerProperty.setDividerSize(0);
                 splitContainerProperty.setSplitterFixed(true);
-                AppManager.editorConfig.PropertyWindowStatus.WindowState = FormWindowState.Normal;
+                AppManager.editorConfig.PropertyWindowStatus.IsMinimized = false;
             }
         }
 #endif
@@ -9039,7 +9039,7 @@ namespace cadencii
         {
 #if ENABLE_PROPERTY
             if (menuVisualProperty.Checked) {
-                if (AppManager.editorConfig.PropertyWindowStatus.WindowState == FormWindowState.Minimized) {
+                if (AppManager.editorConfig.PropertyWindowStatus.IsMinimized) {
                     updatePropertyPanelState(PanelState.Docked);
                 } else {
                     updatePropertyPanelState(PanelState.Window);
