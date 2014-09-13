@@ -93,6 +93,8 @@
     <Compile Include="dsp\v1\generator\VocaloidWaveGenerator.cs" />
     <Compile Include="VSTiDllManager.cs" />
     <Compile Include="MusicManager.cs" />
+    <Compile Include="cadencii_app\QuantizeModeUtil.cs" />
+    <Compile Include="cadencii_app\UtauFreq.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -128,5 +130,6 @@
   <ItemGroup>
     <Folder Include="vsti\" />
     <Folder Include="vsti\aquestone\" />
+    <Folder Include="cadencii_app\" />
   </ItemGroup>
 </Project>

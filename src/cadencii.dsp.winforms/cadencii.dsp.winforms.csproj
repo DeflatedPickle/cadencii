@@ -82,10 +82,6 @@
       <Project>{84B71038-CB91-4456-8C90-31E73BC93D7C}</Project>
       <Name>cadencii.media.windows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\cadencii.uiconfig\cadencii.uiconfig.csproj">
-      <Project>{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}</Project>
-      <Name>cadencii.uiconfig</Name>
-    </ProjectReference>
     <ProjectReference Include="..\cadencii.coreutils\cadencii.coreutils.csproj">
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>cadencii.coreutils</Name>

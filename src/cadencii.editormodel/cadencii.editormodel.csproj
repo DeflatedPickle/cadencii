@@ -5,8 +5,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>cadencii.uiconfig</RootNamespace>
-    <AssemblyName>cadencii.uiconfig</AssemblyName>
+    <RootNamespace>cadencii.editormodel</RootNamespace>
+    <AssemblyName>cadencii.editormodel</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,27 +41,27 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.core\cadencii.core.csproj">
+    <ProjectReference Include="..\cadencii.core\cadencii.core.csproj">
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
       <Name>cadencii.core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cadencii.GuiCore\Cadencii.GuiCore.csproj">
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.GuiCore\Cadencii.GuiCore.csproj">
       <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
       <Name>Cadencii.GuiCore</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.vsq\cadencii.vsq.csproj">
+    <ProjectReference Include="..\cadencii.vsq\cadencii.vsq.csproj">
       <Project>{673347F3-6FC2-4F82-9273-BF158E0F8CB1}</Project>
       <Name>cadencii.vsq</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.media\cadencii.media.csproj">
+    <ProjectReference Include="..\cadencii.media\cadencii.media.csproj">
       <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
       <Name>cadencii.media</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.xml\cadencii.xml.csproj">
+    <ProjectReference Include="..\cadencii.xml\cadencii.xml.csproj">
       <Project>{23C7549D-A0FD-402A-8470-95DB4BE6081C}</Project>
       <Name>cadencii.xml</Name>
     </ProjectReference>
-    <ProjectReference Include="..\cadencii.coreutils\cadencii.coreutils.csproj">
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.coreutils\cadencii.coreutils.csproj">
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>cadencii.coreutils</Name>
     </ProjectReference>

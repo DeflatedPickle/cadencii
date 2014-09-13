@@ -45,9 +45,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.gui.winforms", "..
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.media.windows", "..\..\..\..\..\svn\cadencii\src\cadencii.media.windows\cadencii.media.windows.csproj", "{84B71038-CB91-4456-8C90-31E73BC93D7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.uiconfig", "..\..\..\..\..\svn\cadencii\src\cadencii.uiconfig\cadencii.uiconfig.csproj", "{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}"
-EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "cadencii.gui.winforms.shared", "..\..\..\..\..\svn\cadencii\src\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.shproj", "{EF416C94-7EA3-4B62-B5B4-6B768654845C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.editormodel", "cadencii.editormodel\cadencii.editormodel.csproj", "{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -152,6 +152,7 @@ Global
 		{23C7549D-A0FD-402A-8470-95DB4BE6081C} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
 		{711A691F-2113-4EC1-8D4C-C2668C3EA219} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
 		{1785CCD0-43CB-459A-9AFF-4E59DB966DF0} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
+		{18E7D0BD-734D-482E-BAE8-2512147D88F0} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Cadencii\Cadencii.csproj

@@ -163,10 +163,6 @@
       <Project>{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}</Project>
       <Name>cadencii.platform.windows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.uiconfig\cadencii.uiconfig.csproj">
-      <Project>{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}</Project>
-      <Name>cadencii.uiconfig</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.coreutils\cadencii.coreutils.csproj">
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>cadencii.coreutils</Name>
@@ -174,6 +170,10 @@
     <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.GuiCore\Cadencii.GuiCore.csproj">
       <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
       <Name>Cadencii.GuiCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cadencii.editormodel\cadencii.editormodel.csproj">
+      <Project>{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}</Project>
+      <Name>cadencii.editormodel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

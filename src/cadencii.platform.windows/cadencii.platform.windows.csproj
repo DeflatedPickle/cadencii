@@ -35,15 +35,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="core\windows.cs" />
-    <Compile Include="core\wingdi.cs" />
-    <Compile Include="core\winmm.cs" />
     <Compile Include="winmmhelp.cs" />
+    <Compile Include="windows.cs" />
+    <Compile Include="wingdi.cs" />
+    <Compile Include="winmm.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="core\" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.media\cadencii.media.csproj">
       <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>

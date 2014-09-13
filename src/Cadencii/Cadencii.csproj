@@ -296,7 +296,6 @@
     <Compile Include="PictPianoRoll.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="QuantizeModeUtil.cs" />
     <Compile Include="RenderedStatus.cs" />
     <Compile Include="PropertyPanelContainer.cs">
       <SubType>UserControl</SubType>
@@ -377,7 +376,6 @@
     <Compile Include="PaletteToolServer.cs" />
     <Compile Include="PencilMode.cs" />
     <Compile Include="PencilModeEnum.cs" />
-    <Compile Include="RgbColor.cs" />
     <Compile Include="SandBox.cs">
     </Compile>
     <Compile Include="ScriptInvoker.cs" />
@@ -436,7 +434,6 @@
     <Compile Include="TrackSelector.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UtauFreq.cs" />
     <Compile Include="VersionInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -756,10 +753,6 @@
       <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
       <Name>Cadencii.GuiCore</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.uiconfig\cadencii.uiconfig.csproj">
-      <Project>{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}</Project>
-      <Name>cadencii.uiconfig</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.core2\cadencii.gui.winforms.csproj">
       <Project>{7DE0B7EA-E478-4687-9764-B44B8258F255}</Project>
       <Name>cadencii.gui.winforms</Name>
@@ -771,6 +764,10 @@
     <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.media.windows\cadencii.media.windows.csproj">
       <Project>{84B71038-CB91-4456-8C90-31E73BC93D7C}</Project>
       <Name>cadencii.media.windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cadencii.editormodel\cadencii.editormodel.csproj">
+      <Project>{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}</Project>
+      <Name>cadencii.editormodel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

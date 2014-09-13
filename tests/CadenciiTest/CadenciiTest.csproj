@@ -134,10 +134,6 @@
       <Project>{5F65872D-0431-4C76-973F-CD5DECD388A4}</Project>
       <Name>cadencii.dsp.winforms</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.uiconfig\cadencii.uiconfig.csproj">
-      <Project>{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}</Project>
-      <Name>cadencii.uiconfig</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.core2\cadencii.gui.winforms.csproj">
       <Project>{7DE0B7EA-E478-4687-9764-B44B8258F255}</Project>
       <Name>cadencii.gui.winforms</Name>
@@ -145,6 +141,10 @@
     <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.coreutils\cadencii.coreutils.csproj">
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>cadencii.coreutils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\cadencii.editormodel\cadencii.editormodel.csproj">
+      <Project>{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}</Project>
+      <Name>cadencii.editormodel</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
