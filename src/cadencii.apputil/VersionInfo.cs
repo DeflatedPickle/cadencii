@@ -266,7 +266,7 @@ namespace cadencii.apputil
 
         private void VersionInfoEx_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            if ((e.KeyCode & System.Windows.Forms.Keys.Escape) == System.Windows.Forms.Keys.Escape) {
+            if (((Keys) e.KeyCode & Keys.Escape) == Keys.Escape) {
                 this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
                 this.Close();
             }

@@ -16,7 +16,7 @@ using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii;
 using cadencii.windows.forms;
-
+using Keys = cadencii.java.awt.Keys;
 
 
 namespace cadencii

@@ -31,6 +31,7 @@ using cadencii.windows.forms;
 using cadencii.xml;
 using cadencii.utau;
 using ApplicationGlobal = cadencii.core.ApplicationGlobal;
+using Keys = cadencii.java.awt.Keys;
 
 namespace cadencii
 {

@@ -49,11 +49,11 @@ namespace cadencii
             this.Text = _("Global Tempo");
             groupPosition.Text = _("Position");
             lblBar.Text = _("Measure");
-            lblBar.Mnemonic(Keys.M);
+            lblBar.Mnemonic(System.Windows.Forms.Keys.M);
             lblBeat.Text = _("Beat");
-            lblBeat.Mnemonic(Keys.B);
+            lblBeat.Mnemonic(System.Windows.Forms.Keys.B);
             lblClock.Text = _("Clock");
-            lblClock.Mnemonic(Keys.L);
+            lblClock.Mnemonic(System.Windows.Forms.Keys.L);
             groupTempo.Text = _("Tempo");
             btnOK.Text = _("OK");
             btnCancel.Text = _("Cancel");

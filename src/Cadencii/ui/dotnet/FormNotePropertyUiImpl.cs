@@ -15,6 +15,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using cadencii.apputil;
+using Keys = cadencii.java.awt.Keys;
 
 namespace cadencii
 {
@@ -68,7 +69,7 @@ namespace cadencii
 
         public void setMenuCloseAccelerator(Keys value)
         {
-            this.menuClose.ShortcutKeys = value;
+            this.menuClose.ShortcutKeys = (System.Windows.Forms.Keys) value;
         }
 
         public void setAlwaysOnTop(bool alwaysOnTop)

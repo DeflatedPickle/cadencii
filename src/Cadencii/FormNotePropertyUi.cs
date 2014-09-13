@@ -11,6 +11,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
+using cadencii.java.awt;
 namespace cadencii
 {
 
@@ -68,7 +69,7 @@ namespace cadencii
         /// </summary>
         /// <param name="value"></param>
         [PureVirtualFunction]
-        void setMenuCloseAccelerator(System.Windows.Forms.Keys value);
+        void setMenuCloseAccelerator(Keys value);
 
         /// <summary>
         /// ウィンドウが可視状態かどうかを設定する

@@ -1392,7 +1392,7 @@ namespace cadencii
             // menuHiddenEditLyric
             // 
             this.menuHiddenEditLyric.Name = "menuHiddenEditLyric";
-            this.menuHiddenEditLyric.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.menuHiddenEditLyric.ShortcutKeys = Keys.F2;
             this.menuHiddenEditLyric.Size = new System.Drawing.Size(304, 22);
             this.menuHiddenEditLyric.Text = "Start Lyric Input";
             this.menuHiddenEditLyric.Visible = false;
@@ -1400,7 +1400,7 @@ namespace cadencii
             // menuHiddenEditFlipToolPointerPencil
             // 
             this.menuHiddenEditFlipToolPointerPencil.Name = "menuHiddenEditFlipToolPointerPencil";
-            this.menuHiddenEditFlipToolPointerPencil.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
+            this.menuHiddenEditFlipToolPointerPencil.ShortcutKeys = ((Keys)((Keys.Control | Keys.W)));
             this.menuHiddenEditFlipToolPointerPencil.Size = new System.Drawing.Size(304, 22);
             this.menuHiddenEditFlipToolPointerPencil.Text = "Change Tool Pointer / Pencil";
             this.menuHiddenEditFlipToolPointerPencil.Visible = false;
@@ -1408,7 +1408,7 @@ namespace cadencii
             // menuHiddenEditFlipToolPointerEraser
             // 
             this.menuHiddenEditFlipToolPointerEraser.Name = "menuHiddenEditFlipToolPointerEraser";
-            this.menuHiddenEditFlipToolPointerEraser.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.menuHiddenEditFlipToolPointerEraser.ShortcutKeys = ((Keys)((Keys.Control | Keys.E)));
             this.menuHiddenEditFlipToolPointerEraser.Size = new System.Drawing.Size(304, 22);
             this.menuHiddenEditFlipToolPointerEraser.Text = "Change Tool Pointer/ Eraser";
             this.menuHiddenEditFlipToolPointerEraser.Visible = false;
@@ -1416,8 +1416,8 @@ namespace cadencii
             // menuHiddenVisualForwardParameter
             // 
             this.menuHiddenVisualForwardParameter.Name = "menuHiddenVisualForwardParameter";
-            this.menuHiddenVisualForwardParameter.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt)
-            | System.Windows.Forms.Keys.Next)));
+            this.menuHiddenVisualForwardParameter.ShortcutKeys = ((Keys)(((Keys.Control | Keys.Alt)
+            | Keys.Next)));
             this.menuHiddenVisualForwardParameter.Size = new System.Drawing.Size(304, 22);
             this.menuHiddenVisualForwardParameter.Text = "Next Control Curve";
             this.menuHiddenVisualForwardParameter.Visible = false;
@@ -1425,8 +1425,8 @@ namespace cadencii
             // menuHiddenVisualBackwardParameter
             // 
             this.menuHiddenVisualBackwardParameter.Name = "menuHiddenVisualBackwardParameter";
-            this.menuHiddenVisualBackwardParameter.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt)
-            | System.Windows.Forms.Keys.PageUp)));
+            this.menuHiddenVisualBackwardParameter.ShortcutKeys = ((Keys)(((Keys.Control | Keys.Alt)
+            | Keys.PageUp)));
             this.menuHiddenVisualBackwardParameter.Size = new System.Drawing.Size(304, 22);
             this.menuHiddenVisualBackwardParameter.Text = "Previous Control Curve";
             this.menuHiddenVisualBackwardParameter.Visible = false;
@@ -1434,7 +1434,7 @@ namespace cadencii
             // menuHiddenTrackNext
             // 
             this.menuHiddenTrackNext.Name = "menuHiddenTrackNext";
-            this.menuHiddenTrackNext.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Next)));
+            this.menuHiddenTrackNext.ShortcutKeys = ((Keys)((Keys.Control | Keys.Next)));
             this.menuHiddenTrackNext.Size = new System.Drawing.Size(304, 22);
             this.menuHiddenTrackNext.Text = "Next Track";
             this.menuHiddenTrackNext.Visible = false;
@@ -1442,7 +1442,7 @@ namespace cadencii
             // menuHiddenTrackBack
             // 
             this.menuHiddenTrackBack.Name = "menuHiddenTrackBack";
-            this.menuHiddenTrackBack.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.PageUp)));
+            this.menuHiddenTrackBack.ShortcutKeys = ((Keys)((Keys.Control | Keys.PageUp)));
             this.menuHiddenTrackBack.Size = new System.Drawing.Size(304, 22);
             this.menuHiddenTrackBack.Text = "Previous Track";
             this.menuHiddenTrackBack.Visible = false;
@@ -1468,14 +1468,14 @@ namespace cadencii
             // menuHiddenSelectForward
             // 
             this.menuHiddenSelectForward.Name = "menuHiddenSelectForward";
-            this.menuHiddenSelectForward.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Right)));
+            this.menuHiddenSelectForward.ShortcutKeys = ((Keys)((Keys.Alt | Keys.Right)));
             this.menuHiddenSelectForward.Size = new System.Drawing.Size(304, 22);
             this.menuHiddenSelectForward.Text = "Select Forward";
             // 
             // menuHiddenSelectBackward
             // 
             this.menuHiddenSelectBackward.Name = "menuHiddenSelectBackward";
-            this.menuHiddenSelectBackward.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Left)));
+            this.menuHiddenSelectBackward.ShortcutKeys = ((Keys)((Keys.Alt | Keys.Left)));
             this.menuHiddenSelectBackward.Size = new System.Drawing.Size(304, 22);
             this.menuHiddenSelectBackward.Text = "Select Backward";
             // 

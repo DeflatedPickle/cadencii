@@ -64,6 +64,7 @@
     <Compile Include="PortUtil2.cs" />
     <Compile Include="models\Colors.cs" />
     <Compile Include="models\Dialog.cs" />
+    <Compile Include="models\Keys.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

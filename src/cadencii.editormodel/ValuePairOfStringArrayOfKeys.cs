@@ -13,8 +13,8 @@
  */
 using System;
 using System.Xml.Serialization;
-using System.Windows.Forms;
 //using cadencii.windows.forms;
+ using cadencii.java.awt;
 
 namespace cadencii
 {

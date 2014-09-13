@@ -20,6 +20,7 @@ using cadencii.java.awt;
 using cadencii.java.util;
 using cadencii.vsq;
 using cadencii.windows.forms;
+using Keys = cadencii.java.awt.Keys;
 
 namespace cadencii
 {
@@ -162,7 +163,7 @@ namespace cadencii
 
         public void applyShortcut(Keys shortcut)
         {
-            menuVisualReturn.ShortcutKeys = shortcut;
+            menuVisualReturn.ShortcutKeys = (System.Windows.Forms.Keys) shortcut;
         }
 
         public void applyLanguage()

@@ -26,6 +26,7 @@ using cadencii.vsq;
 using cadencii.windows.forms;
 using cadencii.xml;
 using cadencii.java.awt;
+using Keys = cadencii.java.awt.Keys;
 
 namespace cadencii
 {

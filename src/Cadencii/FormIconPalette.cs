@@ -20,6 +20,7 @@ using cadencii.java.awt;
 using cadencii.java.util;
 using cadencii.vsq;
 using cadencii.windows.forms;
+using Keys = cadencii.java.awt.Keys;
 
 namespace cadencii
 {
@@ -61,7 +62,7 @@ namespace cadencii
                 Keys[] keys = dict["menuVisualIconPalette"];
                 Keys shortcut = Keys.None;
                 keys.Aggregate(shortcut, (seed, key) => seed | key);
-                menuWindowHide.ShortcutKeys = shortcut;
+                menuWindowHide.ShortcutKeys = (System.Windows.Forms.Keys) shortcut;
             }
         }
 
@@ -89,7 +90,7 @@ namespace cadencii
 
         public void applyShortcut(Keys shortcut)
         {
-            menuWindowHide.ShortcutKeys = shortcut;
+            menuWindowHide.ShortcutKeys = (System.Windows.Forms.Keys) shortcut;
         }
         #endregion
 

@@ -105,7 +105,7 @@ namespace cadencii
             try {
                 int divide_threshold = Numerator * 480 * 4 / Denominator;
                 Console.WriteLine("s_divide_threshold=" + divide_threshold);
-                Keys modifier = Control.ModifierKeys;
+                Keys modifier = (Keys) Control.ModifierKeys;
                 bool middle_mode = button == MouseButtons.Middle;
                 if (getModifier().Equals("Alt")) {
                     if ((modifier & Keys.Alt) == Keys.Alt) {

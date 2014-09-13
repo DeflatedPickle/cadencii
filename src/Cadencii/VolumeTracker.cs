@@ -18,7 +18,7 @@ using cadencii.windows.forms;
 using cadencii.java.awt;
 using cadencii.vsq;
 
-
+using Keys = cadencii.java.awt.Keys;
 
 namespace cadencii
 {
@@ -365,7 +365,7 @@ namespace cadencii
 
         public void txtFeder_KeyDown(Object sender, KeyEventArgs e)
         {
-            if ((e.KeyCode & Keys.Enter) != Keys.Enter) {
+            if (((Keys) e.KeyCode & Keys.Enter) != Keys.Enter) {
                 return;
             }
             try {
@@ -387,7 +387,7 @@ namespace cadencii
 
         public void txtPanpot_KeyDown(Object sender, KeyEventArgs e)
         {
-            if ((e.KeyCode & Keys.Enter) != Keys.Enter) {
+            if (((Keys) e.KeyCode & Keys.Enter) != Keys.Enter) {
                 return;
             }
             try {

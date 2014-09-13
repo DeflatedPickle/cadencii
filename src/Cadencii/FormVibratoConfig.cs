@@ -114,9 +114,9 @@ namespace cadencii
         {
             this.Text = _("Vibrato property");
             lblVibratoLength.Text = _("Vibrato length");
-            lblVibratoLength.Mnemonic(Keys.L);
+            lblVibratoLength.Mnemonic(System.Windows.Forms.Keys.L);
             lblVibratoType.Text = _("Vibrato Type");
-            lblVibratoType.Mnemonic(Keys.T);
+            lblVibratoType.Mnemonic(System.Windows.Forms.Keys.T);
             btnOK.Text = _("OK");
             btnCancel.Text = _("Cancel");
             groupSelect.Text = _("Select from");

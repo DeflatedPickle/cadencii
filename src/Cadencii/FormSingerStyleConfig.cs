@@ -18,7 +18,7 @@ using cadencii;
 using cadencii.java.awt;
 using cadencii.windows.forms;
 
-
+using Keys = cadencii.java.awt.Keys;
 
 namespace cadencii
 {
@@ -54,27 +54,27 @@ namespace cadencii
         public void applyLanguage()
         {
             lblTemplate.Text = _("Template");
-            lblTemplate.Mnemonic(Keys.T);
+			lblTemplate.Mnemonic(System.Windows.Forms.Keys.T);
             groupPitchControl.Text = _("Pitch Control");
             lblBendDepth.Text = _("Bend Depth");
-            lblBendDepth.Mnemonic(Keys.B);
+			lblBendDepth.Mnemonic(System.Windows.Forms.Keys.B);
             lblBendLength.Text = _("Bend Length");
-            lblBendLength.Mnemonic(Keys.L);
+			lblBendLength.Mnemonic(System.Windows.Forms.Keys.L);
             chkUpPortamento.Text = _("Add portamento in rising movement");
-            chkUpPortamento.Mnemonic(Keys.R);
+			chkUpPortamento.Mnemonic(System.Windows.Forms.Keys.R);
             chkDownPortamento.Text = _("Add portamento in falling movement");
-            chkDownPortamento.Mnemonic(Keys.F);
+			chkDownPortamento.Mnemonic(System.Windows.Forms.Keys.F);
 
             groupDynamicsControl.Text = _("Dynamics Control");
             lblDecay.Text = _("Decay");
-            lblDecay.Mnemonic(Keys.D);
+			lblDecay.Mnemonic(System.Windows.Forms.Keys.D);
             lblAccent.Text = _("Accent");
-            lblAccent.Mnemonic(Keys.A);
+			lblAccent.Mnemonic(System.Windows.Forms.Keys.A);
 
             btnOK.Text = _("OK");
             btnCancel.Text = _("Cancel");
             btnApply.Text = _("Apply to current track");
-            btnApply.Mnemonic(Keys.C);
+			btnApply.Mnemonic(System.Windows.Forms.Keys.C);
 
             lblTemplate.Left = comboTemplate.Left - lblTemplate.Width;
             this.Text = _("Default Singer Style");

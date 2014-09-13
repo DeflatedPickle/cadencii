@@ -19,7 +19,7 @@ using cadencii;
 using cadencii.java.util;
 using cadencii.windows.forms;
 
-
+using Keys = cadencii.java.awt.Keys;
 
 namespace cadencii
 {

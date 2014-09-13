@@ -157,7 +157,7 @@ namespace cadencii
         #region event handlers
         public void commonTextBox_KeyUp(Object sender, KeyEventArgs e)
         {
-            if ((e.KeyCode & System.Windows.Forms.Keys.Enter) != System.Windows.Forms.Keys.Enter) {
+            if (((Keys) e.KeyCode & Keys.Enter) != Keys.Enter) {
                 return;
             }
             applyValue((sender == txtDataPointClock));

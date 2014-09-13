@@ -13,6 +13,7 @@
  */
 using System;
 using cadencii;
+using cadencii.java.awt;
 
 namespace cadencii.windows.forms
 {

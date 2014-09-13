@@ -17,6 +17,7 @@ using cadencii.apputil;
 using cadencii;
 using cadencii.java.awt;
 using cadencii.windows.forms;
+using Keys = cadencii.java.awt.Keys;
 
 namespace cadencii
 {
@@ -329,7 +330,7 @@ namespace cadencii
 
         private void VersionInfo_KeyDown(Object sender, KeyEventArgs e)
         {
-            if ((e.KeyCode & Keys.Escape) == Keys.Escape) {
+            if (((Keys) e.KeyCode & Keys.Escape) == Keys.Escape) {
                 this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
                 Close();
             }

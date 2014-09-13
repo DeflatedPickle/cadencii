@@ -26,6 +26,7 @@ using cadencii.java.util;
 using cadencii.vsq;
 using cadencii.windows.forms;
 using ApplicationGlobal = cadencii.core.ApplicationGlobal;
+using Keys = cadencii.java.awt.Keys;
 
 namespace cadencii
 {
@@ -3346,7 +3347,7 @@ namespace cadencii
 
         private void processMouseDownSelectRegion(MouseEventArgs e)
         {
-            if ((Control.ModifierKeys & Keys.Control) != Keys.Control) {
+            if (((Keys) Control.ModifierKeys & Keys.Control) != Keys.Control) {
                 AppManager.itemSelection.clearPoint();
             }
 
@@ -3396,7 +3397,7 @@ namespace cadencii
                 return;
             }
             int stdx = AppManager.mMainWindowController.getStartToDrawX();
-            mModifierOnMouseDown = Control.ModifierKeys;
+            mModifierOnMouseDown = (Keys) Control.ModifierKeys;
             int max = mSelectedCurve.getMaximum();
             int min = mSelectedCurve.getMinimum();
             int value = valueFromYCoord(e.Y);
@@ -3479,7 +3480,7 @@ namespace cadencii
                             } else {
                                 AppManager.itemSelection.addEvent(ve.InternalID);
                             }
-                        } else if ((Control.ModifierKeys & Keys.Shift) == Keys.Shift) {
+                        } else if (((Keys) Control.ModifierKeys & Keys.Shift) == Keys.Shift) {
                             int last_clock = AppManager.itemSelection.getLastEvent().original.Clock;
                             int tmin = Math.Min(ve.Clock, last_clock);
                             int tmax = Math.Max(ve.Clock, last_clock);
@@ -3711,7 +3712,7 @@ namespace cadencii
                                         }
                                         AppManager.itemSelection.clearEvent();
                                         AppManager.itemSelection.addEventAll(list);
-                                    } else if ((Control.ModifierKeys & Keys.Shift) == Keys.Shift) {
+                                    } else if (((Keys) Control.ModifierKeys & Keys.Shift) == Keys.Shift) {
                                         // clicked with Shift key
                                         SelectedEventEntry last_selected = AppManager.itemSelection.getLastEvent();
                                         if (last_selected != null) {
@@ -3975,7 +3976,7 @@ namespace cadencii
             }
             int px_shift = DOT_WID + AppManager.editorConfig.PxToleranceBezier;
             int px_width = px_shift * 2 + 1;
-            Keys modifier = Control.ModifierKeys;
+            Keys modifier = (Keys) Control.ModifierKeys;
 
             int track = AppManager.getSelected();
             bool too_near = false; // clicked position is too near to existing bezier points
@@ -5746,14 +5747,14 @@ namespace cadencii
 
         public void TrackSelector_KeyDown(Object sender, KeyEventArgs e)
         {
-            if ((e.KeyCode & System.Windows.Forms.Keys.Space) == System.Windows.Forms.Keys.Space) {
+            if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
                 mSpaceKeyDowned = true;
             }
         }
 
         public void TrackSelector_KeyUp(Object sender, KeyEventArgs e)
         {
-            if ((e.KeyCode & System.Windows.Forms.Keys.Space) == System.Windows.Forms.Keys.Space) {
+            if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
                 mSpaceKeyDowned = false;
             }
         }
