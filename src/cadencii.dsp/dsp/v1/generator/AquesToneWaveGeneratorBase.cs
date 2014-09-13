@@ -149,7 +149,7 @@ namespace cadencii
             var mDriver = getDriver();
 #if DEBUG
             sout.println("AquesToneRenderingRunner#begin; (mDriver==null)=" + (mDriver == null));
-            string file = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "AquesToneWaveGenerator.txt");
+            string file = System.IO.Path.Combine(PortUtil.getApplicationStartupPath (), "AquesToneWaveGenerator.txt");
             log = new System.IO.StreamWriter(file);
             log.AutoFlush = true;
 #endif

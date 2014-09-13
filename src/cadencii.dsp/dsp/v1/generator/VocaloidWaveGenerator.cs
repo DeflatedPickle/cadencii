@@ -24,25 +24,6 @@ using cadencii.java.util;
 using cadencii.media;
 using cadencii.vsq;
 
-
-namespace cadencii
-{
-
-    /// <summary>
-    /// ドライバーからの波形を受け取るためのインターフェース
-    /// </summary>
-    public interface IWaveIncoming
-    {
-        /// <summary>
-        /// ドライバから波形を受け取るためのコールバック関数
-        /// </summary>
-        /// <param name="l">左チャンネルの波形データ</param>
-        /// <param name="r">右チャンネルの波形データ</param>
-        /// <param name="length">波形データの長さ。配列の長さよりも短い場合がある</param>
-        void waveIncomingImpl(double[] l, double[] r, int length, WorkerState state);
-    }
-}
-
 namespace cadencii
 {
 

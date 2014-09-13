@@ -34,20 +34,9 @@
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="vsti\VocaloidDriver.cs" />
     <Compile Include="FormPluginUi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dsp\v1\generator\VocaloidWaveGenerator.cs" />
-    <Compile Include="VSTiDllManager.cs" />
-    <Compile Include="vsti\AquesTone2Driver.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="vsti\AquesToneDriver.cs" />
-    <Compile Include="vsti\AquesToneDriverBase.cs" />
-    <Compile Include="dsp\v1\generator\AquesTone2WaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\AquesToneWaveGenerator.cs" />
-    <Compile Include="dsp\v1\generator\AquesToneWaveGeneratorBase.cs" />
     <Compile Include="UIHostWF.cs" />
     <Compile Include="PluginUIWF.cs" />
   </ItemGroup>
@@ -105,9 +94,5 @@
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>cadencii.coreutils</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="dsp\" />
-    <Folder Include="dsp\v1\" />
   </ItemGroup>
 </Project>

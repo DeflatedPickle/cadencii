@@ -80,6 +80,18 @@
     <Compile Include="UIHost.cs" />
     <Compile Include="VSTiDriverBase.cs" />
     <Compile Include="PluginUI.cs" />
+    <Compile Include="vsti\AquesToneDriverBase.cs" />
+    <Compile Include="vsti\AquesTone2Driver.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="vsti\AquesToneDriver.cs" />
+    <Compile Include="vsti\VocaloidDriver.cs" />
+    <Compile Include="dsp\v1\generator\AquesTone2WaveGenerator.cs" />
+    <Compile Include="dsp\v1\generator\AquesToneWaveGenerator.cs" />
+    <Compile Include="dsp\v1\generator\AquesToneWaveGeneratorBase.cs" />
+    <Compile Include="dsp\v1\generator\IWaveIncoming.cs" />
+    <Compile Include="dsp\v1\generator\VocaloidWaveGenerator.cs" />
+    <Compile Include="VSTiDllManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
