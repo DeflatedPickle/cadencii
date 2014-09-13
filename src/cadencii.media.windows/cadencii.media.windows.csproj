@@ -50,7 +50,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.core\cadencii.core.csproj">
+    <ProjectReference Include="..\cadencii.core\cadencii.core.csproj">
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
       <Name>cadencii.core</Name>
     </ProjectReference>
@@ -58,7 +58,7 @@
       <Project>{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}</Project>
       <Name>cadencii.platform.windows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.media\cadencii.media.csproj">
+    <ProjectReference Include="..\cadencii.media\cadencii.media.csproj">
       <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
       <Name>cadencii.media</Name>
     </ProjectReference>

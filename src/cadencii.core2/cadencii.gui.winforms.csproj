@@ -41,10 +41,6 @@
   <Import Project="..\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.projitems" Label="Shared" Condition="Exists('..\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.projitems')" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.core\cadencii.core.csproj">
-      <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
-      <Name>cadencii.core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Cadencii.GuiCore\Cadencii.GuiCore.csproj">
       <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
       <Name>Cadencii.GuiCore</Name>
@@ -52,6 +48,10 @@
     <ProjectReference Include="..\cadencii.coreutils\cadencii.coreutils.csproj">
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>cadencii.coreutils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cadencii.core\cadencii.core.csproj">
+      <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
+      <Name>cadencii.core</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
