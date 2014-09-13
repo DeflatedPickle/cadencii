@@ -30,7 +30,7 @@ using org.kbinani.cadencii;
 public class MakeUST {
 	public static ScriptReturnStatus Edit( VsqFile Vsq ) {
 		//選択されているトラック番号
-		int trackno = AppManager.getSelected();
+		int trackno = EditorManager.Selected;
 		if (trackno <= 0 ){
 			MessageBox.Show("現在のトラックが取得できません。");
 			return ScriptReturnStatus.NOT_EDITED;

@@ -43,9 +43,9 @@ public class SmartHtml
     public static bool Edit( VsqFile vsq ) {
         int selectedid = -1;
         Form f;
-        int track = AppManager.getSelected();
+        int track = EditorManager.Selected;
         bool begin_count = false;
-        if ( AppManager.getSelectedEventCount() <= 0 ) {
+        if ( EditorManager.getSelectedEventCount() <= 0 ) {
             // 選択状態の音符がひとつも無い場合。
             // 曲の最初の音符から検索することにする
             for ( Iterator<VsqEvent> itr = vsq.Track[track].getNoteEventIterator(); itr.hasNext(); ) {
@@ -97,7 +97,7 @@ public static class AutoBRI
             ids.Add(entry.original.InternalID);
         }
 
-        cadencii.vsq.VsqTrack track = vsq.Track[AppManager.getSelected()];
+        cadencii.vsq.VsqTrack track = vsq.Track[EditorManager.Selected];
 
         // コントロールカーブの時間方向の解像度を，Cadenciiの設定値から取得
         int resol = cadencii.core.ApplicationGlobal.appConfig.getControlCurveResolutionValue();

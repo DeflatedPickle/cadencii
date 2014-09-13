@@ -85,7 +85,7 @@ public static class PrintLyricLUKA
             MessageBox.Show("値の範囲外");
             return false;
         }
-        int track = AppManager.getSelected();
+        int track = EditorManager.Selected;
         int next_ac = 0;
         bool nwrite = false;
         bool saisyo = true;

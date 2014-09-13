@@ -13,18 +13,18 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
+    <DefineConstants>DEBUG;__TEMPORALY_DISABLED__USE_OLD_SYNTH_IMPL;ENABLE_PROPERTY; ENABLE_VOCALOID; ENABLE_SCRIPT; ENABLE_MIDI;ENABLE_STRIP_DROPDOWN;ENABLE_MOUSEHOVER;ENABLE_AQUESTONE;ENABLE_GENERAL_VST;MONITOR_FPS;CSHARP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <DefineConstants>__TEMPORALY_DISABLED__USE_OLD_SYNTH_IMPL;ENABLE_PROPERTY; ENABLE_VOCALOID; ENABLE_SCRIPT; ENABLE_MIDI;ENABLE_STRIP_DROPDOWN;ENABLE_MOUSEHOVER;ENABLE_AQUESTONE;ENABLE_GENERAL_VST;MONITOR_FPS;CSHARP</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -35,6 +35,8 @@
     <Compile Include="EditorConfig.cs" />
     <Compile Include="PropertyPanelState.cs" />
     <Compile Include="RendererKindUtil.cs" />
+    <Compile Include="EditorManager.cs" />
+    <Compile Include="EditTool.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -61,6 +63,10 @@
     <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.coreutils\cadencii.coreutils.csproj">
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>cadencii.coreutils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.dsp\cadencii.dsp.csproj">
+      <Project>{18E7D0BD-734D-482E-BAE8-2512147D88F0}</Project>
+      <Name>cadencii.dsp</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

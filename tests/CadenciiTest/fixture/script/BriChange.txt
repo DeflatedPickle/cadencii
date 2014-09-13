@@ -24,7 +24,7 @@ public class BriChange {
             return false;
         }
         //選択されているトラック
-        Boare.Lib.Vsq.VsqTrack track = Vsq.Track.get( AppManager.getSelected() );
+        Boare.Lib.Vsq.VsqTrack track = Vsq.Track.get( EditorManager.Selected );
         // Brightnessカーブを取得
         Boare.Lib.Vsq.VsqBPList bri = track.getCurve( "BRI" );
         int default_value = bri.getDefault();

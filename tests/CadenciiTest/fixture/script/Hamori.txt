@@ -145,8 +145,8 @@ public class Hamori : Form
         }
 
         int note, tmp;
-        VsqTrack track = vsq.Track[AppManager.getSelected()];
-        for (Iterator<SelectedEventEntry> itr = AppManager.getSelectedEventIterator(); itr.hasNext();) {
+        VsqTrack track = vsq.Track[EditorManager.Selected];
+        for (Iterator<SelectedEventEntry> itr = EditorManager.getSelectedEventIterator(); itr.hasNext();) {
             VsqEvent item = track.findEventFromID(itr.next().original.InternalID);
             if (item.ID.type == VsqIDType.Anote) {
                 tmp = (item.ID.Note + 12 - basecode) % 12;

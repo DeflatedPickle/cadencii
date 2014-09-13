@@ -214,7 +214,7 @@ namespace cadencii
                 try {
                     PolylineDrawer commonDrawer = getCommonPolylineDrawer(g);
                     VsqFileEx vsq = MusicManager.getVsqFile();
-                    int selected = AppManager.getSelected();
+                    int selected = EditorManager.Selected;
                     VsqTrack vsq_track = vsq.Track[selected];
 
 					var p = cadencii.core2.PortUtil.getMousePosition();

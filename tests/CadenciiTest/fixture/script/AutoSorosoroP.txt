@@ -135,7 +135,7 @@ public class AutoSorosoroP : Form {
 	
 	public static bool Edit( VsqFile Vsq ) {
 		//選択されているトラック番号
-		int trackno = AppManager.getSelected();
+		int trackno = EditorManager.Selected;
 		if (trackno <= 0 ){
 			MessageBox.Show("トラック番号が不正です。");
 			return false;

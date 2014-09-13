@@ -127,7 +127,7 @@ namespace cadencii
             g.drawLine(0, half_height, width, half_height);
 
             // 描画コンテキストを用いて波形を描画
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             WaveDrawContext context = mDrawer[selected - 1];
 
             if (context != null) {

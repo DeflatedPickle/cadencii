@@ -13,11 +13,11 @@ public class CountNote
         int count2 = 0;
         int count4 = 0;
         bool begin_count = false;    // selectedidの音符が現れるまでは数えない。これがtureになったら数え始める
-        if (AppManager.getSelectedEventCount() == 0){
+        if (EditorManager.getSelectedEventCount() == 0){
 			MessageBox.Show("音符が選択されていません");
 			return false;
 		}
-        VsqTrack track = vsq.Track[AppManager.getSelected()];
+        VsqTrack track = vsq.Track[EditorManager.Selected];
 		selectedid = AppManager.getLastSelectedEvent().original.InternalID;
         int current_clock = AppManager.getLastSelectedEvent().original.Clock;  //選択されている最後の音符のクロック;
         int last_clock2 = (int)(current_clock / 1920) * 1920 + 1920 * 2;

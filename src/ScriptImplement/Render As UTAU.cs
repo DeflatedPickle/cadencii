@@ -211,7 +211,7 @@ public class RenderAsUtau : Form
                     }
                 }
 
-                int track = AppManager.getSelected();
+                int track = EditorManager.Selected;
                 List<Phon> phons = new List<Phon>();
                 if (!Directory.Exists(temp_dir)) {
                     Directory.CreateDirectory(temp_dir);

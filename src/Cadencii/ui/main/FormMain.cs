@@ -1270,7 +1270,7 @@ namespace cadencii
         private void fixAddingEvent()
         {
             VsqFileEx vsq = MusicManager.getVsqFile();
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqTrack vsq_track = vsq.Track[selected];
             LyricHandle lyric = new LyricHandle("あ", "a");
             VibratoHandle vibrato = null;
@@ -1362,7 +1362,7 @@ namespace cadencii
                 items[0].ID.VibratoDelay = vibrato_delay;
                 items[0].ID.VibratoHandle = vibrato;
 
-                CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandEventAddRange(AppManager.getSelected(), items));
+                CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandEventAddRange(EditorManager.Selected, items));
                 AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                 setEdited(true);
             }
@@ -1498,7 +1498,7 @@ namespace cadencii
                 return;
             }
 
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
 
             List<VsqEvent> items = new List<VsqEvent>();
             foreach (var item in AppManager.itemSelection.getEventIterator()) {
@@ -1569,7 +1569,7 @@ namespace cadencii
             }
 
             List<VsqEvent> items = new List<VsqEvent>();
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             int note_max = -1;
             int note_min = 129;
             int clock_max = int.MinValue;
@@ -1671,7 +1671,7 @@ namespace cadencii
             }
 
             // 表示中のトラック番号が異常だったら死ぬ
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             if (selected < 1) {
                 return null;
             }
@@ -2102,7 +2102,7 @@ namespace cadencii
             if (vsq == null) {
                 return;
             }
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqTrack vsq_track = vsq.Track[selected];
 
             // 選択されている音符のうち、最も前方にあるものがどれかを調べる
@@ -2157,7 +2157,7 @@ namespace cadencii
             if (vsq == null) {
                 return;
             }
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqTrack vsq_track = vsq.Track[selected];
 
             // 選択されている音符のうち、最も後方にあるものがどれかを調べる
@@ -2924,7 +2924,7 @@ namespace cadencii
             SelectedEventEntry last_selected_event = AppManager.itemSelection.getLastEvent();
             bool phonetic_symbol_edit_mode = AppManager.mInputTextBox.isPhoneticSymbolEditMode();
 
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqFileEx vsq = MusicManager.getVsqFile();
             VsqTrack vsq_track = vsq.Track[selected];
 
@@ -3345,7 +3345,7 @@ namespace cadencii
                     draft = hScroll.Maximum;
                 }
                 if (hScroll.Value != draft) {
-                    AppManager.mDrawStartIndex[AppManager.getSelected() - 1] = 0;
+                    AppManager.mDrawStartIndex[EditorManager.Selected - 1] = 0;
                     hScroll.Value = draft;
                 }
             }
@@ -4455,7 +4455,7 @@ namespace cadencii
         public void importLyric()
         {
             int start = 0;
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqFileEx vsq = MusicManager.getVsqFile();
             VsqTrack vsq_track = vsq.Track[selected];
             int selectedid = AppManager.itemSelection.getLastEvent().original.InternalID;
@@ -4557,7 +4557,7 @@ namespace cadencii
             }
 
             VsqEvent ev = item.original;
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqFileEx vsq = MusicManager.getVsqFile();
             RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[selected]);
             SynthesizerType type = SynthesizerType.VOCALOID2;
@@ -4615,7 +4615,7 @@ namespace cadencii
 
             VsqEvent ev = item.original;
             SynthesizerType type = SynthesizerType.VOCALOID2;
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqFileEx vsq = MusicManager.getVsqFile();
             RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[selected]);
             if (kind == RendererKind.VOCALOID1) {
@@ -4692,7 +4692,7 @@ namespace cadencii
             int max = int.MinValue;
             int premeasure = MusicManager.getVsqFile().getPreMeasureClocks();
             List<int> add_required = new List<int>();
-            for (Iterator<VsqEvent> itr = MusicManager.getVsqFile().Track[AppManager.getSelected()].getEventIterator(); itr.hasNext(); ) {
+            for (Iterator<VsqEvent> itr = MusicManager.getVsqFile().Track[EditorManager.Selected].getEventIterator(); itr.hasNext(); ) {
                 VsqEvent ve = itr.next();
                 if (premeasure <= ve.Clock) {
                     add_required.Add(ve.InternalID);
@@ -4707,7 +4707,7 @@ namespace cadencii
                 if (vct.isScalar() || vct.isAttachNote()) {
                     continue;
                 }
-                VsqBPList target = MusicManager.getVsqFile().Track[AppManager.getSelected()].getCurve(vct.getName());
+                VsqBPList target = MusicManager.getVsqFile().Track[EditorManager.Selected].getCurve(vct.getName());
                 if (target == null) {
                     continue;
                 }
@@ -4744,7 +4744,7 @@ namespace cadencii
             AppManager.itemSelection.clearTimesig();
             AppManager.itemSelection.clearEvent();
             AppManager.itemSelection.clearPoint();
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqFileEx vsq = MusicManager.getVsqFile();
             VsqTrack vsq_track = vsq.Track[selected];
             int premeasureclock = vsq.getPreMeasureClocks();
@@ -4778,7 +4778,7 @@ namespace cadencii
             }
 #endif
 
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqFileEx vsq = MusicManager.getVsqFile();
             VsqTrack vsq_track = vsq.Track[selected];
 
@@ -4957,7 +4957,7 @@ namespace cadencii
                         paste.Add(item);
                     }
                     add_event = VsqCommand.generateCommandEventAddRange(
-                        AppManager.getSelected(), paste.ToArray());
+                        EditorManager.Selected, paste.ToArray());
                 }
             }
             List<TempoTableEntry> copied_tempo = ce.tempo;
@@ -5031,7 +5031,7 @@ namespace cadencii
                     if (curve.isAttachNote()) {
                         //todo: FormMain+PasteEvent; VibratoRate, VibratoDepthカーブのペースト処理
                     } else {
-                        VsqBPList target = (VsqBPList)MusicManager.getVsqFile().Track[AppManager.getSelected()].getCurve(curve.getName()).clone();
+                        VsqBPList target = (VsqBPList)MusicManager.getVsqFile().Track[EditorManager.Selected].getCurve(curve.getName()).clone();
                         int count = list.size();
 #if DEBUG
                         sout.println("FormMain#pasteEvent; list.getCount()=" + count);
@@ -5075,7 +5075,7 @@ namespace cadencii
                         curves[count] = s;
                         bplists[count] = work[s];
                     }
-                    edit_bpcurve = VsqCommand.generateCommandTrackCurveReplaceRange(AppManager.getSelected(), curves, bplists);
+                    edit_bpcurve = VsqCommand.generateCommandTrackCurveReplaceRange(EditorManager.Selected, curves, bplists);
                 }
                 AppManager.itemSelection.clearPoint();
             }
@@ -5088,7 +5088,7 @@ namespace cadencii
 #endif
             if (copied_bezier.Count > 0) {
                 int dclock = clock - copy_started_clock;
-                BezierCurves attached_curve = (BezierCurves)MusicManager.getVsqFile().AttachedCurves.get(AppManager.getSelected() - 1).clone();
+                BezierCurves attached_curve = (BezierCurves)MusicManager.getVsqFile().AttachedCurves.get(EditorManager.Selected - 1).clone();
                 SortedDictionary<CurveType, List<BezierChain>> command_arg = new SortedDictionary<CurveType, List<BezierChain>>();
                 foreach (var curve in copied_bezier.Keys) {
                     if (curve.isScalar()) {
@@ -5107,7 +5107,7 @@ namespace cadencii
                     }
                     command_arg[curve] = arg;
                 }
-                edit_bezier = VsqFileEx.generateCommandReplaceAttachedCurveRange(AppManager.getSelected(), command_arg);
+                edit_bezier = VsqFileEx.generateCommandReplaceAttachedCurveRange(EditorManager.Selected, command_arg);
             }
 
             int commands = 0;
@@ -5177,12 +5177,12 @@ namespace cadencii
                 ce.beziers = new SortedDictionary<CurveType, List<BezierChain>>();
                 for (int i = 0; i < BezierCurves.CURVE_USAGE.Length; i++) {
                     CurveType vct = BezierCurves.CURVE_USAGE[i];
-                    VsqBPList list = MusicManager.getVsqFile().Track[AppManager.getSelected()].getCurve(vct.getName());
+                    VsqBPList list = MusicManager.getVsqFile().Track[EditorManager.Selected].getCurve(vct.getName());
                     if (list == null) {
                         continue;
                     }
                     List<BezierChain> tmp_bezier = new List<BezierChain>();
-                    copyCurveCor(AppManager.getSelected(),
+                    copyCurveCor(EditorManager.Selected,
                                   vct,
                                   start_clock,
                                   end_clock,
@@ -5247,7 +5247,7 @@ namespace cadencii
                 int end = t.getValue();
                 ce.copyStartedClock = start;
                 List<BezierChain> tmp_bezier = new List<BezierChain>();
-                copyCurveCor(AppManager.getSelected(),
+                copyCurveCor(EditorManager.Selected,
                               trackSelector.getSelectedCurve(),
                               start,
                               end,
@@ -5257,7 +5257,7 @@ namespace cadencii
                     // 範囲内のデータ点を追加する
                     ce.beziers[trackSelector.getSelectedCurve()] = tmp_bezier;
                     CurveType curve = trackSelector.getSelectedCurve();
-                    VsqBPList list = MusicManager.getVsqFile().Track[AppManager.getSelected()].getCurve(curve.getName());
+                    VsqBPList list = MusicManager.getVsqFile().Track[EditorManager.Selected].getCurve(curve.getName());
                     if (list != null) {
                         VsqBPList tmp_bplist = new VsqBPList(list.getName(), list.getDefault(), list.getMinimum(), list.getMaximum());
                         int c = list.size();
@@ -5275,7 +5275,7 @@ namespace cadencii
                     // ベジエ曲線がコピーされなかった場合
                     // AppManager.selectedPointIDIteratorの中身のみを選択
                     CurveType curve = trackSelector.getSelectedCurve();
-                    VsqBPList list = MusicManager.getVsqFile().Track[AppManager.getSelected()].getCurve(curve.getName());
+                    VsqBPList list = MusicManager.getVsqFile().Track[EditorManager.Selected].getCurve(curve.getName());
                     if (list != null) {
                         VsqBPList tmp_bplist = new VsqBPList(curve.getName(), curve.getDefault(), curve.getMinimum(), curve.getMaximum());
                         foreach (var id in AppManager.itemSelection.getPointIDIterator()) {
@@ -5299,7 +5299,7 @@ namespace cadencii
             // まずコピー
             copyEvent();
 
-            int track = AppManager.getSelected();
+            int track = EditorManager.Selected;
 
             // 選択されたノートイベントがあれば、まず、削除を行うコマンドを発行
             VsqCommand delete_event = null;
@@ -5309,7 +5309,7 @@ namespace cadencii
                 foreach (var item in AppManager.itemSelection.getEventIterator()) {
                     ids.Add(item.original.InternalID);
                 }
-                delete_event = VsqCommand.generateCommandEventDeleteRange(AppManager.getSelected(), ids);
+                delete_event = VsqCommand.generateCommandEventDeleteRange(EditorManager.Selected, ids);
             }
 
             // Ctrlキーを押しながらドラッグしたか、そうでないかで分岐
@@ -5375,7 +5375,7 @@ namespace cadencii
                     // 普通の選択モード
                     target_curve.Add(trackSelector.getSelectedCurve());
                 }
-                work.AttachedCurves.get(AppManager.getSelected() - 1).deleteBeziers(target_curve, start_clock, end_clock);
+                work.AttachedCurves.get(EditorManager.Selected - 1).deleteBeziers(target_curve, start_clock, end_clock);
 
                 // コマンドを発行し、実行
                 CadenciiCommand run = VsqFileEx.generateCommandReplace(work);
@@ -5488,7 +5488,7 @@ namespace cadencii
         public void copyTrackCore()
         {
             VsqFileEx vsq = MusicManager.getVsqFile();
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqTrack track = (VsqTrack)vsq.Track[selected].clone();
             track.setName(track.getName() + " (1)");
             CadenciiCommand run = VsqFileEx.generateCommandAddTrack(track,
@@ -5508,7 +5508,7 @@ namespace cadencii
         {
             InputBox ib = null;
             try {
-                int selected = AppManager.getSelected();
+                int selected = EditorManager.Selected;
                 VsqFileEx vsq = MusicManager.getVsqFile();
                 ib = new InputBox(_("Input new name of track"));
                 ib.setResult(vsq.Track[selected].getName());
@@ -5535,7 +5535,7 @@ namespace cadencii
         /// </summary>
         public void deleteTrackCore()
         {
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqFileEx vsq = MusicManager.getVsqFile();
             if (AppManager.showMessageBox(
                     PortUtil.formatMessage(_("Do you wish to remove track? {0} : '{1}'"), selected, vsq.Track[selected].getName()),
@@ -5544,7 +5544,7 @@ namespace cadencii
                     cadencii.Dialog.MSGBOX_QUESTION_MESSAGE) == DialogResult.Yes) {
                 CadenciiCommand run = VsqFileEx.generateCommandDeleteTrack(selected);
                 if (selected >= 2) {
-                    AppManager.setSelected(selected - 1);
+                    EditorManager.Selected = selected - 1;
                 }
                 AppManager.editHistory.register(vsq.executeCommand(run));
                 updateDrawObjectList();
@@ -5577,7 +5577,7 @@ namespace cadencii
             AppManager.editHistory.register(vsq.executeCommand(run));
             updateDrawObjectList();
             setEdited(true);
-            AppManager.setSelected(i);
+            EditorManager.Selected = (i);
             AppManager.mMixerWindow.updateStatus();
             refreshScreen();
         }
@@ -5682,7 +5682,7 @@ namespace cadencii
         /// </summary>
         public void applySelectedTool()
         {
-            EditTool tool = AppManager.getSelectedTool();
+            EditTool tool = EditorManager.SelectedTool;
 
             int count = toolBarTool.Buttons.Count;
             for (int i = 0; i < count; i++) {
@@ -5731,7 +5731,7 @@ namespace cadencii
                 }
             }
 
-            EditTool selected_tool = AppManager.getSelectedTool();
+            EditTool selected_tool = EditorManager.SelectedTool;
             cMenuPianoPointer.Checked = (selected_tool == EditTool.ARROW);
             cMenuPianoPencil.Checked = (selected_tool == EditTool.PENCIL);
             cMenuPianoEraser.Checked = (selected_tool == EditTool.ERASER);
@@ -6074,13 +6074,13 @@ namespace cadencii
             cMenuTrackSelectorUndo.Enabled = undo;
             stripBtnUndo.Enabled = undo;
             stripBtnRedo.Enabled = redo;
-            //AppManager.setRenderRequired( AppManager.getSelected(), true );
+            //AppManager.setRenderRequired( EditorManager.Selected, true );
             updateScrollRangeHorizontal();
             updateDrawObjectList();
             panelOverview.updateCachedImage();
 
 #if ENABLE_PROPERTY
-            AppManager.propertyPanel.updateValue(AppManager.getSelected());
+            AppManager.propertyPanel.updateValue(EditorManager.Selected);
 #endif
         }
 
@@ -6168,7 +6168,7 @@ namespace cadencii
 
 #if ENABLE_PROPERTY
                 if (AppManager.propertyPanel != null) {
-                    AppManager.propertyPanel.updateValue(AppManager.getSelected());
+                    AppManager.propertyPanel.updateValue(EditorManager.Selected);
                 }
 #endif
             }
@@ -6193,7 +6193,7 @@ namespace cadencii
 
 #if ENABLE_PROPERTY
                 if (AppManager.propertyPanel != null) {
-                    AppManager.propertyPanel.updateValue(AppManager.getSelected());
+                    AppManager.propertyPanel.updateValue(EditorManager.Selected);
                 }
 #endif
             }
@@ -6948,7 +6948,7 @@ namespace cadencii
             bool enter = (Keys) e.KeyCode == Keys.Return;
             if (tab || enter) {
                 executeLyricChangeCommand();
-                int selected = AppManager.getSelected();
+                int selected = EditorManager.Selected;
                 int index = -1;
                 int width = pictPianoRoll.getWidth();
                 int height = pictPianoRoll.getHeight();
@@ -7146,7 +7146,7 @@ namespace cadencii
             sout.println("FormMain#AppManager_PreviewStarted");
 #endif
             AppManager.mAddingEvent = null;
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqFileEx vsq = MusicManager.getVsqFile();
             RendererKind renderer = VsqFileEx.getTrackRendererKind(vsq.Track[selected]);
             int clock = AppManager.getCurrentClock();
@@ -7213,7 +7213,7 @@ namespace cadencii
             EditMode edit_mode = AppManager.getEditMode();
 
             bool is_button_left = e.Button == MouseButtons.Left;
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
 
             if (e.Button == MouseButtons.Left) {
 #if ENABLE_MOUSEHOVER
@@ -7244,14 +7244,14 @@ namespace cadencii
                     AppManager.itemSelection.addEvent(item.InternalID);
                     int internal_id = item.InternalID;
                     hideInputTextBox();
-                    if (AppManager.getSelectedTool() == EditTool.ERASER) {
+                    if (EditorManager.SelectedTool == EditTool.ERASER) {
                         CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandEventDelete(selected, internal_id));
                         AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                         setEdited(true);
                         AppManager.itemSelection.clearEvent();
                         return;
 #if ENABLE_SCRIPT
-                    } else if (AppManager.getSelectedTool() == EditTool.PALETTE_TOOL) {
+                    } else if (EditorManager.SelectedTool == EditTool.PALETTE_TOOL) {
                         List<int> internal_ids = new List<int>();
                         foreach (var see in AppManager.itemSelection.getEventIterator()) {
                             internal_ids.Add(see.original.InternalID);
@@ -7284,7 +7284,7 @@ namespace cadencii
                         }
                         hideInputTextBox();
                     }
-                    if (AppManager.getSelectedTool() == EditTool.ERASER) {
+                    if (EditorManager.SelectedTool == EditTool.ERASER) {
                         // マウス位置にビブラートの波波があったら削除する
                         int stdx = controller.getStartToDrawX();
                         int stdy = controller.getStartToDrawY();
@@ -7350,7 +7350,7 @@ namespace cadencii
                     VsqEvent item = getItemAtClickedPosition(new Point(e.X, e.Y), out_id_rect);
                     Rectangle id_rect = out_id_rect.value;
                     if (item != null) {
-                        if (!AppManager.itemSelection.isEventContains(AppManager.getSelected(), item.InternalID)) {
+                        if (!AppManager.itemSelection.isEventContains(EditorManager.Selected, item.InternalID)) {
                             AppManager.itemSelection.clearEvent();
                         }
                         AppManager.itemSelection.addEvent(item.InternalID);
@@ -7382,7 +7382,7 @@ namespace cadencii
                 }
             } else if (e.Button == MouseButtons.Middle) {
 #if ENABLE_SCRIPT
-                if (AppManager.getSelectedTool() == EditTool.PALETTE_TOOL) {
+                if (EditorManager.SelectedTool == EditTool.PALETTE_TOOL) {
                     ByRef<Rectangle> out_id_rect = new ByRef<Rectangle>();
                     VsqEvent item = getItemAtClickedPosition(new Point(e.X, e.Y), out_id_rect);
                     Rectangle id_rect = out_id_rect.value;
@@ -7394,7 +7394,7 @@ namespace cadencii
                             internal_ids.Add(see.original.InternalID);
                         }
                         bool result = PaletteToolServer.invokePaletteTool(AppManager.mSelectedPaletteTool,
-                                                                           AppManager.getSelected(),
+                                                                           EditorManager.Selected,
                                                                            internal_ids.ToArray(),
                                                                            e.Button);
                         if (result) {
@@ -7416,11 +7416,11 @@ namespace cadencii
             ByRef<Rectangle> out_rect = new ByRef<Rectangle>();
             VsqEvent item = getItemAtClickedPosition(new Point(e.X, e.Y), out_rect);
             Rectangle rect = out_rect.value;
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqFileEx vsq = MusicManager.getVsqFile();
             if (item != null && item.ID.type == VsqIDType.Anote) {
 #if ENABLE_SCRIPT
-                if (AppManager.getSelectedTool() != EditTool.PALETTE_TOOL)
+                if (EditorManager.SelectedTool != EditTool.PALETTE_TOOL)
 #endif
 
  {
@@ -7607,10 +7607,10 @@ namespace cadencii
             } else if (e.Button == MouseButtons.Middle) {
                 // ツールをポインター <--> 鉛筆に切り替える
                 if (AppManager.keyWidth < e.X) {
-                    if (AppManager.getSelectedTool() == EditTool.ARROW) {
-                        AppManager.setSelectedTool(EditTool.PENCIL);
+                    if (EditorManager.SelectedTool == EditTool.ARROW) {
+                        EditorManager.SelectedTool = EditTool.PENCIL;
                     } else {
-                        AppManager.setSelectedTool(EditTool.ARROW);
+                        EditorManager.SelectedTool = EditTool.ARROW;
                     }
                 }
             }
@@ -7649,7 +7649,7 @@ namespace cadencii
             mButtonInitial = new Point(e.X, e.Y);
             Keys modefier = (Keys) Control.ModifierKeys;
 
-            EditTool selected_tool = AppManager.getSelectedTool();
+            EditTool selected_tool = EditorManager.SelectedTool;
 #if ENABLE_SCRIPT
             if (selected_tool != EditTool.PALETTE_TOOL && e.Button == MouseButtons.Middle) {
 #else
@@ -7684,7 +7684,7 @@ namespace cadencii
             }
 #endif
 
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqFileEx vsq = MusicManager.getVsqFile();
             VsqTrack vsq_track = vsq.Track[selected];
             int key_width = AppManager.keyWidth;
@@ -8003,8 +8003,8 @@ namespace cadencii
                 EditMode edit_mode = AppManager.getEditMode();
                 int stdx = controller.getStartToDrawX();
                 int stdy = controller.getStartToDrawY();
-                int selected = AppManager.getSelected();
-                EditTool selected_tool = AppManager.getSelectedTool();
+                int selected = EditorManager.Selected;
+                EditTool selected_tool = EditorManager.SelectedTool;
 
                 if (edit_mode == EditMode.CURVE_ON_PIANOROLL && AppManager.mCurveOnPianoroll) {
                     pictPianoRoll.mMouseTracer.append(e.X + stdx, e.Y + stdy);
@@ -8497,7 +8497,7 @@ namespace cadencii
 
             EditMode edit_mode = AppManager.getEditMode();
             VsqFileEx vsq = MusicManager.getVsqFile();
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqTrack vsq_track = vsq.Track[selected];
             CurveType selected_curve = trackSelector.getSelectedCurve();
             int stdx = controller.getStartToDrawX();
@@ -8638,7 +8638,7 @@ namespace cadencii
                 this.Cursor = Cursors.Default;
             } else if (edit_mode == EditMode.ADD_ENTRY || edit_mode == EditMode.ADD_FIXED_LENGTH_ENTRY) {
                 #region AddEntry || AddFixedLengthEntry
-                if (AppManager.getSelected() >= 0) {
+                if (EditorManager.Selected >= 0) {
                     if ((edit_mode == EditMode.ADD_FIXED_LENGTH_ENTRY) ||
                          (edit_mode == EditMode.ADD_ENTRY && (mButtonInitial.X != e.X || mButtonInitial.Y != e.Y) && AppManager.mAddingEvent.ID.getLength() > 0)) {
                         if (AppManager.mAddingEvent.Clock < vsq.getPreMeasureClocks()) {
@@ -9472,7 +9472,7 @@ namespace cadencii
                 return;
             }
 
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqTrack vsq_track = vsq.Track[selected];
             VsqTrack work = (VsqTrack)vsq_track.clone();
 
@@ -10127,7 +10127,7 @@ namespace cadencii
 #endif
                         if (AppManager.isPlaying()) {
                             int clock = AppManager.getCurrentClock();
-                            int selected = AppManager.getSelected();
+                            int selected = EditorManager.Selected;
                             if (AppManager.mAddingEvent != null) {
                                 AppManager.mAddingEvent.ID.setLength(clock - AppManager.mAddingEvent.Clock);
                                 CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandEventAdd(selected,
@@ -10208,7 +10208,7 @@ namespace cadencii
 
         public void menuFileExport_DropDownOpening(Object sender, EventArgs e)
         {
-            menuFileExportWave.Enabled = (MusicManager.getVsqFile().Track[AppManager.getSelected()].getEventCount() > 0);
+            menuFileExportWave.Enabled = (MusicManager.getVsqFile().Track[EditorManager.Selected].getEventCount() > 0);
         }
 
         public void menuFileExportMidi_Click(Object sender, EventArgs e)
@@ -10586,7 +10586,7 @@ namespace cadencii
             VsqFileEx vsq = (VsqFileEx)MusicManager.getVsqFile().clone();
 
             // どのトラックを出力するか決める
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
 
             // 出力先のファイル名を選ぶ
             SaveFileDialog dialog = null;
@@ -10737,7 +10737,7 @@ namespace cadencii
             }
 
             // 出力処理
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqTrack vsq_track = vsq.Track[selected];
             StreamWriter bw = null;
             try {
@@ -10826,7 +10826,7 @@ namespace cadencii
                 return;
             }
             List<int> other_tracks = new List<int>();
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             for (int i = 1; i < vsq.Track.Count; i++) {
                 if (i != selected) {
                     other_tracks.Add(i);
@@ -11699,7 +11699,7 @@ namespace cadencii
                     cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
                 return;
             }
-            AppManager.setSelected(1);
+            EditorManager.Selected = (1);
             clearExistingData();
             setEdited(true);
             AppManager.mMixerWindow.updateStatus();
@@ -11722,7 +11722,7 @@ namespace cadencii
                 dlg.setDEMdecGainRate(ApplicationGlobal.appConfig.DefaultDEMdecGainRate);
                 dlg.setDEMaccent(ApplicationGlobal.appConfig.DefaultDEMaccent);
 
-                int selected = AppManager.getSelected();
+                int selected = EditorManager.Selected;
                 dlg.Location = getFormPreferedLocation(dlg);
                 DialogResult dr = AppManager.showModalDialog(dlg, this);
                 if (dr == DialogResult.OK) {
@@ -11927,7 +11927,7 @@ namespace cadencii
                         }
 #if ENABLE_PROPERTY
                         AppManager.propertyWindow.applyLanguage();
-                        AppManager.propertyPanel.updateValue(AppManager.getSelected());
+                        AppManager.propertyPanel.updateValue(EditorManager.Selected);
 #endif
                         if (mDialogMidiImportAndExport != null) {
                             mDialogMidiImportAndExport.applyLanguage();
@@ -12103,7 +12103,7 @@ namespace cadencii
 					ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType = mDialogPreference.isUseUserDefinedAutoVibratoType();
 					ApplicationGlobal.appConfig.UseWideCharacterWorkaround = mDialogPreference.isEnableWideCharacterWorkaround();
 
-                    trackSelector.prepareSingerMenu(VsqFileEx.getTrackRendererKind(MusicManager.getVsqFile().Track[AppManager.getSelected()]));
+                    trackSelector.prepareSingerMenu(VsqFileEx.getTrackRendererKind(MusicManager.getVsqFile().Track[EditorManager.Selected]));
                     trackSelector.updateVisibleCurves();
 
                     updateRendererMenu();
@@ -12364,7 +12364,7 @@ namespace cadencii
             if (vsq == null) {
                 return;
             }
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqTrack vsq_track = vsq.Track[selected];
             foreach (var item in vsq_track.getNoteEventIterator()) {
                 VsqID id = item.ID;
@@ -12408,7 +12408,7 @@ namespace cadencii
         public void menuLyricApplyUtauParameters_Click(Object sender, EventArgs e)
         {
             // 選択されているトラックの番号
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             // シーケンス
             VsqFileEx vsq = MusicManager.getVsqFile();
             VsqTrack vsq_track = vsq.Track[selected];
@@ -12485,12 +12485,12 @@ namespace cadencii
             } else {
                 // menuJobConnect(音符の結合)がEnableされるかどうかは、選択されている音符がピアノロール上で連続かどうかで決まる
                 int[] list = new int[AppManager.itemSelection.getEventCount()];
-                for (int i = 0; i < MusicManager.getVsqFile().Track[AppManager.getSelected()].getEventCount(); i++) {
+                for (int i = 0; i < MusicManager.getVsqFile().Track[EditorManager.Selected].getEventCount(); i++) {
                     int count = -1;
                     foreach (var item in AppManager.itemSelection.getEventIterator()) {
                         int key = item.original.InternalID;
                         count++;
-                        if (key == MusicManager.getVsqFile().Track[AppManager.getSelected()].getEvent(i).InternalID) {
+                        if (key == MusicManager.getVsqFile().Track[EditorManager.Selected].getEvent(i).InternalID) {
                             list[count] = i;
                             break;
                         }
@@ -12562,7 +12562,7 @@ namespace cadencii
                 ids[j].setLength(clocks[j + 1] - clocks[j]);
             }
             CadenciiCommand run = new CadenciiCommand(
-                VsqCommand.generateCommandEventChangeIDContaintsRange(AppManager.getSelected(), internalids, ids));
+                VsqCommand.generateCommandEventChangeIDContaintsRange(EditorManager.Selected, internalids, ids));
             AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
             setEdited(true);
             Refresh();
@@ -12882,7 +12882,7 @@ namespace cadencii
         public void menuJobNormalize_Click(Object sender, EventArgs e)
         {
             VsqFile work = (VsqFile)MusicManager.getVsqFile().clone();
-            int track = AppManager.getSelected();
+            int track = EditorManager.Selected;
             bool changed = true;
             bool total_changed = false;
 
@@ -12956,7 +12956,7 @@ namespace cadencii
                     int startClock = startBarClock + startBeat * 480 * 4 / startTimesig.denominator;
                     int endClock = endBarClock + endBeat * 480 * 4 / endTimesig.denominator;
 
-                    int selected = AppManager.getSelected();
+                    int selected = EditorManager.Selected;
                     VsqTrack vsq_track = vsq.Track[selected];
                     VsqTrack work = (VsqTrack)vsq_track.clone();
                     Random r = new Random();
@@ -13184,10 +13184,10 @@ namespace cadencii
             if (e.Button == MouseButtons.Middle) {
                 // ツールをポインター <--> 鉛筆に切り替える
                 if (e.Y < trackSelector.getHeight() - TrackSelector.OFFSET_TRACK_TAB * 2) {
-                    if (AppManager.getSelectedTool() == EditTool.ARROW) {
-                        AppManager.setSelectedTool(EditTool.PENCIL);
+                    if (EditorManager.SelectedTool == EditTool.ARROW) {
+                        EditorManager.SelectedTool = (EditTool.PENCIL);
                     } else {
-                        AppManager.setSelectedTool(EditTool.ARROW);
+                        EditorManager.SelectedTool = (EditTool.ARROW);
                     }
                 }
             }
@@ -13301,7 +13301,7 @@ namespace cadencii
                             }
                         }
                         if (index >= 0) {
-                            if (AppManager.getSelectedTool() == EditTool.ERASER) {
+                            if (EditorManager.SelectedTool == EditTool.ERASER) {
                                 #region ツールがEraser
                                 if (vsq.TempoTable[index].Clock == 0) {
                                     string msg = _("Cannot remove first symbol of track!");
@@ -13366,7 +13366,7 @@ namespace cadencii
                         AppManager.itemSelection.clearEvent();
                         AppManager.itemSelection.clearTempo();
                         AppManager.itemSelection.clearTimesig();
-                        EditTool selected = AppManager.getSelectedTool();
+                        EditTool selected = EditorManager.SelectedTool;
                         if (selected == EditTool.PENCIL ||
                             selected == EditTool.LINE) {
                             int changing_clock = AppManager.clockFromXCoord(e.X);
@@ -13451,7 +13451,7 @@ namespace cadencii
                                 break;
                             }
                         }
-                        if (AppManager.getSelectedTool() == EditTool.ERASER) {
+                        if (EditorManager.SelectedTool == EditTool.ERASER) {
                             #region ツールがEraser
                             if (vsq.TimesigTable[index].Clock == 0) {
                                 string msg = _("Cannot remove first symbol of track!");
@@ -13532,7 +13532,7 @@ namespace cadencii
                         AppManager.itemSelection.clearEvent();
                         AppManager.itemSelection.clearTempo();
                         AppManager.itemSelection.clearTimesig();
-                        EditTool selected = AppManager.getSelectedTool();
+                        EditTool selected = EditorManager.SelectedTool;
                         if (selected == EditTool.PENCIL ||
                             selected == EditTool.LINE) {
                             int pre_measure = MusicManager.getVsqFile().getPreMeasure();
@@ -13670,7 +13670,7 @@ namespace cadencii
 
                     if (index >= 0) {
                         int clock = MusicManager.getVsqFile().TempoTable[index].Clock;
-                        if (AppManager.getSelectedTool() != EditTool.ERASER) {
+                        if (EditorManager.SelectedTool != EditTool.ERASER) {
                             int mouse_clock = AppManager.clockFromXCoord(e.X);
                             mTempoDraggingDeltaClock = mouse_clock - clock;
                             mPositionIndicatorMouseDownMode = PositionIndicatorMouseDownMode.TEMPO;
@@ -13728,7 +13728,7 @@ namespace cadencii
 
                     if (index >= 0) {
                         int barcount = MusicManager.getVsqFile().TimesigTable[index].BarCount;
-                        if (AppManager.getSelectedTool() != EditTool.ERASER) {
+                        if (EditorManager.SelectedTool != EditTool.ERASER) {
                             int barcount_clock = MusicManager.getVsqFile().getClockFromBarCount(barcount);
                             int mouse_clock = AppManager.clockFromXCoord(e.X);
                             mTimesigDraggingDeltaClock = mouse_clock - barcount_clock;
@@ -13818,7 +13818,7 @@ namespace cadencii
                                     break;
                                 }
                             }
-                            if (index >= 0 && AppManager.getSelectedTool() == EditTool.ERASER) {
+                            if (index >= 0 && EditorManager.SelectedTool == EditTool.ERASER) {
                                 #region ツールがEraser
                                 if (vsq.TempoTable[index].Clock == 0) {
                                     string msg = _("Cannot remove first symbol of track!");
@@ -13852,7 +13852,7 @@ namespace cadencii
                                     break;
                                 }
                             }
-                            if (AppManager.getSelectedTool() == EditTool.ERASER) {
+                            if (EditorManager.SelectedTool == EditTool.ERASER) {
                                 #region ツールがEraser
                                 if (vsq.TimesigTable[index].Clock == 0) {
                                     string msg = _("Cannot remove first symbol of track!");
@@ -14142,10 +14142,10 @@ namespace cadencii
                 // ツールをポインター <--> 鉛筆に切り替える
                 if (AppManager.keyWidth < e.X &&
                      e.Y < trackSelector.getHeight() - TrackSelector.OFFSET_TRACK_TAB * 2) {
-                    if (AppManager.getSelectedTool() == EditTool.ARROW) {
-                        AppManager.setSelectedTool(EditTool.PENCIL);
+                    if (EditorManager.SelectedTool == EditTool.ARROW) {
+                        EditorManager.SelectedTool = (EditTool.PENCIL);
                     } else {
-                        AppManager.setSelectedTool(EditTool.ARROW);
+                        EditorManager.SelectedTool = (EditTool.ARROW);
                     }
                 }
             }
@@ -14293,7 +14293,7 @@ namespace cadencii
             List<int> list = new List<int>();
             list.Add(track);
             AppManager.patchWorkToFreeze(this, list);
-            /*int selected = AppManager.getSelected();
+            /*int selected = EditorManager.Selected;
             Vector<Integer> t = new Vector<Integer>( Arrays.asList( PortUtil.convertIntArray( tracks ) ) );
             if ( t.contains( selected) ) {
                 String file = fsys.combine( ApplicationGlobal.getTempWaveDir(), selected + ".wav" );
@@ -14351,7 +14351,7 @@ namespace cadencii
         {
             if (AppManager.itemSelection.getEventCount() > 0) {
                 VsqFileEx vsq = MusicManager.getVsqFile();
-                int selected = AppManager.getSelected();
+                int selected = EditorManager.Selected;
                 SynthesizerType type = SynthesizerType.VOCALOID2;
                 RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[selected]);
                 if (kind == RendererKind.VOCALOID1) {
@@ -14397,17 +14397,17 @@ namespace cadencii
 
         public void cMenuPianoPointer_Click(Object sender, EventArgs e)
         {
-            AppManager.setSelectedTool(EditTool.ARROW);
+            EditorManager.SelectedTool = (EditTool.ARROW);
         }
 
         public void cMenuPianoPencil_Click(Object sender, EventArgs e)
         {
-            AppManager.setSelectedTool(EditTool.PENCIL);
+            EditorManager.SelectedTool = (EditTool.PENCIL);
         }
 
         public void cMenuPianoEraser_Click(Object sender, EventArgs e)
         {
-            AppManager.setSelectedTool(EditTool.ERASER);
+            EditorManager.SelectedTool = (EditTool.ERASER);
         }
 
         public void cMenuPianoGrid_Click(Object sender, EventArgs e)
@@ -14565,7 +14565,7 @@ namespace cadencii
         public void menuTrackRenderCurrent_Click(Object sender, EventArgs e)
         {
             List<int> tracks = new List<int>();
-            tracks.Add(AppManager.getSelected());
+            tracks.Add(EditorManager.Selected);
 			AppManager.patchWorkToFreeze(this, tracks);
         }
 
@@ -14589,10 +14589,10 @@ namespace cadencii
 
         public void menuHiddenTrackNext_Click(Object sender, EventArgs e)
         {
-            if (AppManager.getSelected() == MusicManager.getVsqFile().Track.Count - 1) {
-                AppManager.setSelected(1);
+            if (EditorManager.Selected == MusicManager.getVsqFile().Track.Count - 1) {
+                EditorManager.Selected = (1);
             } else {
-                AppManager.setSelected(AppManager.getSelected() + 1);
+                EditorManager.Selected = (EditorManager.Selected + 1);
             }
             refreshScreen();
         }
@@ -14607,10 +14607,10 @@ namespace cadencii
 
         public void menuHiddenTrackBack_Click(Object sender, EventArgs e)
         {
-            if (AppManager.getSelected() == 1) {
-                AppManager.setSelected(MusicManager.getVsqFile().Track.Count - 1);
+            if (EditorManager.Selected == 1) {
+                EditorManager.Selected = (MusicManager.getVsqFile().Track.Count - 1);
             } else {
-                AppManager.setSelected(AppManager.getSelected() - 1);
+                EditorManager.Selected = (EditorManager.Selected - 1);
             }
             refreshScreen();
         }
@@ -14769,20 +14769,20 @@ namespace cadencii
 
         public void menuHiddenEditFlipToolPointerPencil_Click(Object sender, EventArgs e)
         {
-            if (AppManager.getSelectedTool() == EditTool.ARROW) {
-                AppManager.setSelectedTool(EditTool.PENCIL);
+            if (EditorManager.SelectedTool == EditTool.ARROW) {
+                EditorManager.SelectedTool = (EditTool.PENCIL);
             } else {
-                AppManager.setSelectedTool(EditTool.ARROW);
+                EditorManager.SelectedTool = (EditTool.ARROW);
             }
             refreshScreen();
         }
 
         public void menuHiddenEditFlipToolPointerEraser_Click(Object sender, EventArgs e)
         {
-            if (AppManager.getSelectedTool() == EditTool.ARROW) {
-                AppManager.setSelectedTool(EditTool.ERASER);
+            if (EditorManager.SelectedTool == EditTool.ARROW) {
+                EditorManager.SelectedTool = (EditTool.ERASER);
             } else {
-                AppManager.setSelectedTool(EditTool.ARROW);
+                EditorManager.SelectedTool = (EditTool.ARROW);
             }
             refreshScreen();
         }
@@ -14843,7 +14843,7 @@ namespace cadencii
         public void updateTrackMenuStatus()
         {
             VsqFileEx vsq = MusicManager.getVsqFile();
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqTrack vsq_track = vsq.Track[selected];
             int tracks = vsq.Track.Count;
             cMenuTrackTabDelete.Enabled = tracks >= 3;
@@ -14886,7 +14886,7 @@ namespace cadencii
         public void cMenuTrackTabRenderCurrent_Click(Object sender, EventArgs e)
         {
             List<int> tracks = new List<int>();
-            tracks.Add(AppManager.getSelected());
+            tracks.Add(EditorManager.Selected);
 			AppManager.patchWorkToFreeze(this, tracks);
         }
 
@@ -14937,7 +14937,7 @@ namespace cadencii
             cMenuTrackSelectorPencil.Checked = false;
             cMenuTrackSelectorLine.Checked = false;
             cMenuTrackSelectorEraser.Checked = false;
-            EditTool tool = AppManager.getSelectedTool();
+            EditTool tool = EditorManager.SelectedTool;
             if (tool == EditTool.ARROW) {
                 cMenuTrackSelectorPointer.Checked = true;
             } else if (tool == EditTool.PENCIL) {
@@ -14952,24 +14952,24 @@ namespace cadencii
 
         public void cMenuTrackSelectorPointer_Click(Object sender, EventArgs e)
         {
-            AppManager.setSelectedTool(EditTool.ARROW);
+            EditorManager.SelectedTool = (EditTool.ARROW);
             refreshScreen();
         }
 
         public void cMenuTrackSelectorPencil_Click(Object sender, EventArgs e)
         {
-            AppManager.setSelectedTool(EditTool.PENCIL);
+            EditorManager.SelectedTool = (EditTool.PENCIL);
             refreshScreen();
         }
 
         public void cMenuTrackSelectorLine_Click(Object sender, EventArgs e)
         {
-            AppManager.setSelectedTool(EditTool.LINE);
+            EditorManager.SelectedTool = (EditTool.LINE);
         }
 
         public void cMenuTrackSelectorEraser_Click(Object sender, EventArgs e)
         {
-            AppManager.setSelectedTool(EditTool.ERASER);
+            EditorManager.SelectedTool = (EditTool.ERASER);
         }
 
         public void cMenuTrackSelectorCurve_Click(Object sender, EventArgs e)
@@ -15003,7 +15003,7 @@ namespace cadencii
                 int chain_id = sbp.chainID;
                 int point_id = sbp.pointID;
                 VsqFileEx vsq = MusicManager.getVsqFile();
-                int selected = AppManager.getSelected();
+                int selected = EditorManager.Selected;
                 BezierChain chain = (BezierChain)vsq.AttachedCurves.get(selected - 1).getBezierChain(trackSelector.getSelectedCurve(), chain_id).clone();
                 int index = -1;
                 for (int i = 0; i < chain.points.Count; i++) {
@@ -15155,22 +15155,22 @@ namespace cadencii
 
         public void stripBtnArrow_Click(Object sender, EventArgs e)
         {
-            AppManager.setSelectedTool(EditTool.ARROW);
+            EditorManager.SelectedTool = (EditTool.ARROW);
         }
 
         public void stripBtnPencil_Click(Object sender, EventArgs e)
         {
-            AppManager.setSelectedTool(EditTool.PENCIL);
+            EditorManager.SelectedTool = (EditTool.PENCIL);
         }
 
         public void stripBtnLine_Click(Object sender, EventArgs e)
         {
-            AppManager.setSelectedTool(EditTool.LINE);
+            EditorManager.SelectedTool = (EditTool.LINE);
         }
 
         public void stripBtnEraser_Click(Object sender, EventArgs e)
         {
-            AppManager.setSelectedTool(EditTool.ERASER);
+            EditorManager.SelectedTool = (EditTool.ERASER);
         }
 
         public void stripBtnCurve_Click(Object sender, EventArgs e)
@@ -15588,7 +15588,7 @@ namespace cadencii
                 if (tsb.Tag != null && tsb.Tag is string) {
                     id = (string)tsb.Tag;
                     AppManager.mSelectedPaletteTool = id;
-                    AppManager.setSelectedTool(EditTool.PALETTE_TOOL);
+                    EditorManager.SelectedTool = (EditTool.PALETTE_TOOL);
                     tsb.Pushed = true;
                 }
             } else if (sender is ToolStripMenuItem) {
@@ -15596,7 +15596,7 @@ namespace cadencii
                 if (tsmi.Tag != null && tsmi.Tag is string) {
                     id = (string)tsmi.Tag;
                     AppManager.mSelectedPaletteTool = id;
-                    AppManager.setSelectedTool(EditTool.PALETTE_TOOL);
+                    EditorManager.SelectedTool = (EditTool.PALETTE_TOOL);
                     tsmi.Checked = true;
                 }
             }
@@ -15639,7 +15639,7 @@ namespace cadencii
 
         public void handleTrackOn_Click(Object sender, EventArgs e)
         {
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqTrack vsq_track = MusicManager.getVsqFile().Track[selected];
             bool old_status = vsq_track.isTrackOn();
             bool new_status = !old_status;
@@ -15754,7 +15754,7 @@ namespace cadencii
             if (!dirtyCheck()) {
                 return;
             }
-            AppManager.setSelected(1);
+            EditorManager.Selected = (1);
             VsqFileEx vsq = new VsqFileEx(ApplicationGlobal.appConfig.DefaultSingerName, 1, 4, 4, 500000);
 
             RendererKind kind = ApplicationGlobal.appConfig.DefaultSynthesizer;
@@ -16106,7 +16106,7 @@ namespace cadencii
             }
 
             VsqFileEx vsq = MusicManager.getVsqFile();
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqTrack vsq_track = vsq.Track[selected];
             RendererKind old = VsqFileEx.getTrackRendererKind(vsq_track);
             int old_resampler_index = VsqFileEx.getTrackResamplerUsed(vsq_track);
@@ -16339,7 +16339,7 @@ namespace cadencii
                     if (ScriptServer.invokeScript(id, MusicManager.getVsqFile())) {
                         setEdited(true);
                         updateDrawObjectList();
-                        int selected = AppManager.getSelected();
+                        int selected = EditorManager.Selected;
 #if DEBUG
                         sout.println("FormMain#handleScriptMenuItem_Click; ScriptServer.invokeScript has returned TRUE");
 #endif
@@ -16486,7 +16486,7 @@ namespace cadencii
                         len = unit;
                     }
                     AppManager.mAddingEvent.ID.Length = len;
-                    int selected = AppManager.getSelected();
+                    int selected = EditorManager.Selected;
                     CadenciiCommand run = new CadenciiCommand( VsqCommand.generateCommandEventAdd( selected,
                                                                                                    AppManager.mAddingEvent ) );
                     AppManager.register( MusicManager.getVsqFile().executeCommand( run ) );

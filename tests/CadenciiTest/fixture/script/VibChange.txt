@@ -94,7 +94,7 @@ public class VibChange : Form {
         InitializeComponent();
 
         // 現在のトラックの音声合成エンジンを取得。
-        String synth_engine = MusicManager.getVsqFile().Track.get( AppManager.getSelected() ).getCommon().Version;
+        String synth_engine = MusicManager.getVsqFile().Track.get( EditorManager.Selected ).getCommon().Version;
         if ( synth_engine.StartsWith( VSTiProxy.RENDERER_DSB2 ) ) {
             // vocaloid1
             s_synth_type = SynthesizerType.VOCALOID1;
@@ -160,7 +160,7 @@ public class VibChange : Form {
                     }
                 }
 
-                int track = AppManager.getSelected();
+                int track = EditorManager.Selected;
                 for ( Iterator<VsqEvent> itr = vsq.Track.get( track ).getNoteEventIterator(); itr.hasNext(); ) {
                     VsqEvent item = itr.next();
                     if ( vibrato == null ) {

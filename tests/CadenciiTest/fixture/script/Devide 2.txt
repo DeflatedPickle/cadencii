@@ -11,7 +11,7 @@ using Boare.Cadencii;
 public class Devide2 {
     public static bool Edit( VsqFile Vsq ) {
 		//選択されているトラック番号
-		int trackno = AppManager.getSelected();
+		int trackno = EditorManager.Selected;
 		if (trackno <= 0 ){
 			MessageBox.Show("音符を選択してください");
 			return false;

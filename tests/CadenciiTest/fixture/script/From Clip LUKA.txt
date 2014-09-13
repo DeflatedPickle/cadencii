@@ -165,7 +165,7 @@ public class FromClipLUKA {
                                          new param( "＠",   0,  0 ) };        //歌詞による設定値　★この行の上に追加する　この行は反映されない
 
     public static bool Edit( VsqFileEx vsq ) {
-        if( AppManager.getSelectedEventCount() <= 0 ){
+        if( EditorManager.getSelectedEventCount() <= 0 ){
             return false;
         }
         int selectedid = AppManager.getLastSelectedEvent().original.InternalID;
@@ -177,7 +177,7 @@ public class FromClipLUKA {
         int pre_id = 0;	//一つ前の音符のID
         int pre_note = 0;
         int current_clock = AppManager.getLastSelectedEvent().original.Clock;  //選択されている最後の音符のクロック;
-        for ( Iterator<VsqEvent> itr = vsq.Track.get( AppManager.getSelected() ).getNoteEventIterator(); itr.hasNext(); ) {
+        for ( Iterator<VsqEvent> itr = vsq.Track.get( EditorManager.Selected ).getNoteEventIterator(); itr.hasNext(); ) {
             VsqEvent item = (VsqEvent)itr.next();
             if ( item.InternalID == selectedid ) {
                 begin_count = true;
@@ -199,7 +199,7 @@ public class FromClipLUKA {
             if ( wphrases[0] == "" ) {
                 return false;
             }
-            liric_import( vsq, wphrases, count, selectedid, AppManager.getSelected(), pre_id, pre_note, current_clock );
+            liric_import( vsq, wphrases, count, selectedid, EditorManager.Selected, pre_id, pre_note, current_clock );
             return true;
         } else {
             // @kbinani: クリップボードに文字列がなかった場合

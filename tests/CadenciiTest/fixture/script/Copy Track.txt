@@ -21,7 +21,7 @@ public class CopyTrack
         }
         int barclock = Vsq.getClockFromBarCount(barcount - 1);
 
-        int track = AppManager.getSelected();
+        int track = EditorManager.Selected;
         //データトラック番号を探す
         int data_track = 0;
         for (int i = 1; i < Vsq.Track.Count; i++)

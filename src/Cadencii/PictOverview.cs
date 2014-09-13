@@ -664,7 +664,7 @@ namespace cadencii
 
                 int overview_dot_diam = 2;
 
-                int selected = AppManager.getSelected();
+                int selected = EditorManager.Selected;
                 List<DrawObject> objs = AppManager.mDrawObjects[selected - 1];
 
                 // 平均ノートナンバーを調べる

@@ -309,7 +309,7 @@ namespace cadencii
                 // overlap, preUtterancec
                 VsqFileEx vsq = MusicManager.getVsqFile();
                 if (vsq != null) {
-                    int selected = AppManager.getSelected();
+                    int selected = EditorManager.Selected;
                     VsqTrack vsq_track = vsq.Track[selected];
                     VsqEvent singer = vsq_track.getSingerEventAt(editing.Clock);
                     SingerConfig sc = MusicManager.getSingerInfoUtau(singer.ID.IconHandle.Language, singer.ID.IconHandle.Program);
@@ -1130,7 +1130,7 @@ namespace cadencii
             VsqFileEx vsq = MusicManager.getVsqFile();
             if (vsq != null) {
                 SynthesizerType type = SynthesizerType.VOCALOID2;
-                RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[AppManager.getSelected()]);
+                RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[EditorManager.Selected]);
                 if (kind == RendererKind.VOCALOID1) {
                     type = SynthesizerType.VOCALOID1;
                 }
@@ -1273,7 +1273,7 @@ namespace cadencii
                         VsqFileEx vsq = MusicManager.getVsqFile();
                         if (vsq != null) {
                             SynthesizerType type = SynthesizerType.VOCALOID2;
-                            RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[AppManager.getSelected()]);
+                            RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[EditorManager.Selected]);
                             if (kind == RendererKind.VOCALOID1) {
                                 type = SynthesizerType.VOCALOID1;
                             }
@@ -1336,7 +1336,7 @@ namespace cadencii
                     if (vsq != null) {
                         string iconid = AppManager.editorConfig.AutoVibratoType2;
                         SynthesizerType type = SynthesizerType.VOCALOID2;
-                        RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[AppManager.getSelected()]);
+                        RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[EditorManager.Selected]);
                         if (kind == RendererKind.VOCALOID1) {
                             type = SynthesizerType.VOCALOID1;
                         }

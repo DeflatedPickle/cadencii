@@ -331,7 +331,6 @@
     </Compile>
     <Compile Include="DrawObject.cs" />
     <Compile Include="EditMode.cs" />
-    <Compile Include="EditTool.cs" />
     <Compile Include="FormCompileResult.cs">
       <SubType>Form</SubType>
     </Compile>

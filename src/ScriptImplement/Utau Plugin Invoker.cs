@@ -82,7 +82,7 @@ public class Utau_Plugin_Invoker : Form
         }
 
         // 現在のトラック
-        int selected = AppManager.getSelected();
+        int selected = EditorManager.Selected;
         VsqTrack vsq_track = vsq.Track[selected];
         vsq_track.sortEvent();
 

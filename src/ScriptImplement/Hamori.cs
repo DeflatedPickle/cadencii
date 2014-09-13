@@ -119,7 +119,7 @@ public class Hamori : System.Windows.Forms.Form
         foreach (var see in AppManager.itemSelection.getEventIterator()) {
             target_ids.Add(see.original.InternalID, 0);
         }
-        int track = AppManager.getSelected();
+        int track = EditorManager.Selected;
         int tmp;
         if (opt == 0) {
             for (int j = 0; j < vsq.Track[track].getEventCount(); j++) {

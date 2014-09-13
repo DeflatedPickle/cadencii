@@ -294,7 +294,7 @@ namespace cadencii
             }
             if (!silent) {
 #if ENABLE_PROPERTY
-                AppManager.propertyPanel.updateValue(AppManager.getSelected());
+                AppManager.propertyPanel.updateValue(EditorManager.Selected);
 #endif
             }
         }
@@ -317,7 +317,7 @@ namespace cadencii
                 mEvents.RemoveAt(i);
             }
 #if ENABLE_PROPERTY
-            AppManager.propertyPanel.updateValue(AppManager.getSelected());
+            AppManager.propertyPanel.updateValue(EditorManager.Selected);
 #endif
             checkSelectedItemExistence();
         }
@@ -329,7 +329,7 @@ namespace cadencii
             VsqEvent[] index = new VsqEvent[list.Count];
             int count = 0;
             int c = list.Count;
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             for (Iterator<VsqEvent> itr = MusicManager.getVsqFile().Track[selected].getEventIterator(); itr.hasNext(); ) {
                 VsqEvent ev = itr.next();
                 int find = -1;
@@ -374,7 +374,7 @@ namespace cadencii
         {
             clearTempo();
             clearTimesig();
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             for (Iterator<VsqEvent> itr = MusicManager.getVsqFile().Track[selected].getEventIterator(); itr.hasNext(); ) {
                 VsqEvent ev = itr.next();
                 if (ev.InternalID == id) {
@@ -408,7 +408,7 @@ namespace cadencii
         {
             mEvents.Clear();
 #if ENABLE_PROPERTY
-            AppManager.propertyPanel.updateValue(AppManager.getSelected());
+            AppManager.propertyPanel.updateValue(EditorManager.Selected);
 #endif
             checkSelectedItemExistence();
         }
@@ -509,7 +509,7 @@ namespace cadencii
             if (vsq == null) {
                 return;
             }
-            int selected = AppManager.getSelected();
+            int selected = EditorManager.Selected;
             VsqTrack vsq_track = vsq.Track[selected];
 
             for (int i = 0; i < mEvents.Count; i++) {

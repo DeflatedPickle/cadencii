@@ -57,7 +57,7 @@ namespace cadencii
             applyLanguage();
             m_parent = parent;
             m_curve_type = curve_type;
-            m_track = AppManager.getSelected();
+            m_track = EditorManager.Selected;
             m_chain_id = selected_chain_id;
             m_point_id = selected_point_id;
             bool found = false;

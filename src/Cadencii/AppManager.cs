@@ -247,7 +247,6 @@ namespace cadencii
         /// </summary>
         private static Thread mPreviewThread;
 
-        private static int mSelected = 1;
         private static int mCurrentClock = 0;
         private static bool mPlaying = false;
         private static bool mRepeatMode = false;
@@ -257,7 +256,6 @@ namespace cadencii
         /// トラックのオーバーレイ表示
         /// </summary>
         private static bool mOverlay = true;
-        private static EditTool mSelectedTool = EditTool.PENCIL;
 
         /// <summary>
         /// Playingプロパティにロックをかけるためのオブジェクト
@@ -474,7 +472,7 @@ namespace cadencii
         /// </summary>
         private static bool previewStart(FormMain form)
         {
-            int selected = mSelected;
+            int selected = EditorManager.Selected;
             RendererKind renderer = VsqFileEx.getTrackRendererKind(mVsq.Track[selected]);
             int clock = mCurrentClock;
             mDirectPlayShift = (float)mVsq.getSecFromClock(clock);
@@ -582,7 +580,7 @@ namespace cadencii
             double end_sec = mVsq.getSecFromClock(end_clock);
             int sample_rate = mVsq.config.SamplingRate;
             long samples = (long)((end_sec - mDirectPlayShift) * sample_rate);
-            driver.init(mVsq, mSelected, 0, end_clock, sample_rate);
+            driver.init(mVsq, EditorManager.Selected, 0, end_clock, sample_rate);
 #if DEBUG
             sout.println("AppManager.previewStart; calling runGenerator...");
 #endif
@@ -1590,8 +1588,8 @@ namespace cadencii
                 if (run.vsqCommand != null) {
                     if (run.vsqCommand.Type == VsqCommandType.TRACK_DELETE) {
                         int track = (int)run.vsqCommand.Args[0];
-                        if (track == getSelected() && track >= 2) {
-                            setSelected(track - 1);
+						if (track == EditorManager.Selected && track >= 2) {
+							EditorManager.Selected = track - 1;
                         }
                     }
                 }
@@ -1629,8 +1627,8 @@ namespace cadencii
                 if (run.vsqCommand != null) {
                     if (run.vsqCommand.Type == VsqCommandType.TRACK_DELETE) {
                         int track = (int)run.args[0];
-                        if (track == getSelected() && track >= 2) {
-                            setSelected(track - 1);
+                        if (track == EditorManager.Selected && track >= 2) {
+							EditorManager.Selected = track - 1;
                         }
                     }
                 }
@@ -1678,23 +1676,14 @@ namespace cadencii
 #endif
 
         /// <summary>
-        /// 現在選択されているツールを取得します。
-        /// </summary>
-        /// <returns></returns>
-        public static EditTool getSelectedTool()
-        {
-            return mSelectedTool;
-        }
-
-        /// <summary>
         /// 現在選択されているツールを設定します。
         /// </summary>
         /// <param name="value"></param>
         public static void setSelectedTool(EditTool value)
         {
-            EditTool old = mSelectedTool;
-            mSelectedTool = value;
-            if (old != mSelectedTool) {
+            EditTool old = EditorManager.SelectedTool;
+			EditorManager.SelectedTool = value;
+			if (old != EditorManager.SelectedTool) {
                 try {
                     if (SelectedToolChanged != null) {
                         SelectedToolChanged.Invoke(typeof(AppManager), new EventArgs());
@@ -1882,40 +1871,14 @@ namespace cadencii
         {
             mCurrentClock = value;
         }
-
-        /// <summary>
-        /// 現在選択されているトラックを取得または設定します
-        /// </summary>
-        public static int getSelected()
-        {
-            int tracks = mVsq.Track.Count;
-            if (tracks <= mSelected) {
-                mSelected = tracks - 1;
-            }
-            return mSelected;
-        }
-
-        public static void setSelected(int value)
-        {
-            mSelected = value;
-        }
-
-        [Obsolete]
-        public static int Selected
-        {
-            get
-            {
-                return getSelected();
-            }
-        }
 		public static bool readVsq (string file)
 		{
-			mSelected = 1;
+			EditorManager.Selected = 1;
 			return MusicManager.readVsq (file, hasTracks => {
 	    if (hasTracks) {
-                mSelected = 1;
+					EditorManager.Selected = 1;
             } else {
-                mSelected = -1;
+					EditorManager.Selected = -1;
             }
             try {
                 if (UpdateBgmStatusRequired != null) {

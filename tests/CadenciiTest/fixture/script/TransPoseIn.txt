@@ -30,7 +30,7 @@ public class TransPoseIn
 
         //トランスポーズ　実行
         int note;
-        int track = AppManager.getSelected();
+        int track = EditorManager.Selected;
         for ( Iterator<VsqEvent> itr = Vsq.Track[track].getNoteEventIterator(); itr.hasNext(); ) {
                 VsqEvent item = (VsqEvent)itr.next();
 	            if (item.ID.type == VsqIDType.Anote)

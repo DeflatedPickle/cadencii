@@ -64,7 +64,7 @@ namespace cadencii
                 SynthesizerType type = SynthesizerType.VOCALOID2;
                 VsqFileEx vsq = MusicManager.getVsqFile();
                 if (vsq != null) {
-                    RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[AppManager.getSelected()]);
+                    RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[EditorManager.Selected]);
                     if (kind == RendererKind.VOCALOID1) {
                         type = SynthesizerType.VOCALOID1;
                     }
@@ -130,7 +130,7 @@ namespace cadencii
                     SynthesizerType type = SynthesizerType.VOCALOID2;
                     VsqFileEx vsq = MusicManager.getVsqFile();
                     if (vsq != null) {
-                        RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[AppManager.getSelected()]);
+                        RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[EditorManager.Selected]);
                         if (kind == RendererKind.VOCALOID1) {
                             type = SynthesizerType.VOCALOID1;
                         }

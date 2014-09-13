@@ -37,7 +37,7 @@ class ResoXAmp : Form
         if (form.ShowDialog() != DialogResult.OK) {
             return false;
         }
-        VsqTrack track = vsq.Track[AppManager.Selected];
+        VsqTrack track = vsq.Track[EditorManager.Selected];
         VsqBPList source = track.getCurve(CurveType.reso1amp.getName());
         VsqBPList reso2amp = (VsqBPList)track.getCurve(CurveType.reso2amp.getName()).clone();
         VsqBPList reso3amp = (VsqBPList)track.getCurve(CurveType.reso3amp.getName()).clone();
