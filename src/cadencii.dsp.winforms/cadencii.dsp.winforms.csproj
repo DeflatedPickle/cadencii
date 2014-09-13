@@ -54,10 +54,6 @@
       <Project>{0C58B068-272F-4390-A14F-3D72AFCF3DFB}</Project>
       <Name>cadencii.apputil</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.windows.forms\cadencii.windows.forms.csproj">
-      <Project>{B9481E3B-6842-4AB3-8ED4-29C86C2579A3}</Project>
-      <Name>cadencii.windows.forms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.xml\cadencii.xml.csproj">
       <Project>{23C7549D-A0FD-402A-8470-95DB4BE6081C}</Project>
       <Name>cadencii.xml</Name>

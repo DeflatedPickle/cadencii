@@ -84,6 +84,16 @@ namespace cadencii.core
         {
             return mID;
         }
+		
+        /// <summary>
+        /// gettext
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public static string _(string id)
+        {
+            return cadencii.apputil.Messaging.getMessage(id);
+        }
     }
 }
 

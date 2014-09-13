@@ -12,23 +12,13 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
+using cadencii;
 
 namespace cadencii.windows.forms
 {
 
     public static class Utility
     {
-        public const int MSGBOX_DEFAULT_OPTION = -1;
-        public const int MSGBOX_YES_NO_OPTION = 0;
-        public const int MSGBOX_YES_NO_CANCEL_OPTION = 1;
-        public const int MSGBOX_OK_CANCEL_OPTION = 2;
-
-        public const int MSGBOX_ERROR_MESSAGE = 0;
-        public const int MSGBOX_INFORMATION_MESSAGE = 1;
-        public const int MSGBOX_WARNING_MESSAGE = 2;
-        public const int MSGBOX_QUESTION_MESSAGE = 3;
-        public const int MSGBOX_PLAIN_MESSAGE = -1;
-
         public static string SelectedFilter(this System.Windows.Forms.FileDialog dialog)
         {
             string[] filters = dialog.Filter.Split('|');
@@ -119,26 +109,26 @@ namespace cadencii.windows.forms
         {
             System.Windows.Forms.DialogResult ret = System.Windows.Forms.DialogResult.Cancel;
             System.Windows.Forms.MessageBoxButtons btn = System.Windows.Forms.MessageBoxButtons.OK;
-            if (optionType == MSGBOX_YES_NO_CANCEL_OPTION) {
+            if (optionType == Dialog.MSGBOX_YES_NO_CANCEL_OPTION) {
                 btn = System.Windows.Forms.MessageBoxButtons.YesNoCancel;
-            } else if (optionType == MSGBOX_YES_NO_OPTION) {
+			} else if (optionType == Dialog.MSGBOX_YES_NO_OPTION) {
                 btn = System.Windows.Forms.MessageBoxButtons.YesNo;
-            } else if (optionType == MSGBOX_OK_CANCEL_OPTION) {
+			} else if (optionType == Dialog.MSGBOX_OK_CANCEL_OPTION) {
                 btn = System.Windows.Forms.MessageBoxButtons.OKCancel;
             } else {
                 btn = System.Windows.Forms.MessageBoxButtons.OK;
             }
 
             System.Windows.Forms.MessageBoxIcon icon = System.Windows.Forms.MessageBoxIcon.None;
-            if (messageType == MSGBOX_ERROR_MESSAGE) {
+			if (messageType == Dialog.MSGBOX_ERROR_MESSAGE) {
                 icon = System.Windows.Forms.MessageBoxIcon.Error;
-            } else if (messageType == MSGBOX_INFORMATION_MESSAGE) {
+			} else if (messageType == Dialog.MSGBOX_INFORMATION_MESSAGE) {
                 icon = System.Windows.Forms.MessageBoxIcon.Information;
-            } else if (messageType == MSGBOX_PLAIN_MESSAGE) {
+			} else if (messageType == Dialog.MSGBOX_PLAIN_MESSAGE) {
                 icon = System.Windows.Forms.MessageBoxIcon.None;
-            } else if (messageType == MSGBOX_QUESTION_MESSAGE) {
+			} else if (messageType == Dialog.MSGBOX_QUESTION_MESSAGE) {
                 icon = System.Windows.Forms.MessageBoxIcon.Question;
-            } else if (messageType == MSGBOX_WARNING_MESSAGE) {
+			} else if (messageType == Dialog.MSGBOX_WARNING_MESSAGE) {
                 icon = System.Windows.Forms.MessageBoxIcon.Warning;
             }
 

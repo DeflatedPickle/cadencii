@@ -99,8 +99,8 @@ namespace cadencii
                     AppManager.showMessageBox(
                         _("Invalid value"),
                         _("Error"),
-                        cadencii.windows.forms.Utility.MSGBOX_DEFAULT_OPTION,
-                        cadencii.windows.forms.Utility.MSGBOX_ERROR_MESSAGE
+                        cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
+                        cadencii.Dialog.MSGBOX_ERROR_MESSAGE
                     );
                     return;
                 }
@@ -115,8 +115,8 @@ namespace cadencii
                 AppManager.showMessageBox(
                     _("Integer format error"),
                     _("Error"),
-                    cadencii.windows.forms.Utility.MSGBOX_DEFAULT_OPTION,
-                    cadencii.windows.forms.Utility.MSGBOX_ERROR_MESSAGE
+                    cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
+                    cadencii.Dialog.MSGBOX_ERROR_MESSAGE
                 );
                 this.ui.setDialogResult(false);
                 Logger.write(typeof(FormBezierPointEditController) + ".btnOK_Click; ex=" + ex + "\n");

@@ -92,7 +92,7 @@ namespace cadencii.synthesizer
                 session_.resampler_ = resamplers_.ElementAtOrDefault(resampler_index);
                 session_.sample_rate_ = sample_rate;
                 string id = cadencii.core.ApplicationGlobal.getID();
-                session_.temp_dir_ = Path.Combine(AppManager.getCadenciiTempDir(), id);
+                session_.temp_dir_ = Path.Combine(cadencii.core.ApplicationGlobal.getCadenciiTempDir(), id);
                 /*
                 if (use_wide_character_workaround_) {
                     string junction_path = System.IO.Path.Combine(getSystemRoot(), "cadencii_" + id + "_temp");

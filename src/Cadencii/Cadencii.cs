@@ -116,8 +116,8 @@ namespace cadencii
                         _("Info: This is test version of Cadencii version {0}"),
                         BAssemblyInfo.fileVersionMeasure + "." + (minor + 1)),
                     "Cadencii",
-                    cadencii.windows.forms.Utility.MSGBOX_DEFAULT_OPTION,
-                    cadencii.windows.forms.Utility.MSGBOX_INFORMATION_MESSAGE);
+                    cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
+                    cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
             }
 
             // スプラッシュを表示するスレッドを開始

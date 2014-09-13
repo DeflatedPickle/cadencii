@@ -463,16 +463,16 @@
       <DependentUpon>Preference.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="AppManager.cs" />
-    <Compile Include="dspcore\VibratoLengthEditingRule.cs" />
-    <Compile Include="dspcore\VibratoVariation.cs" />
-    <Compile Include="dspcore\VibratoVariationConverter.cs" />
     <Compile Include="SelectedEventEntry.cs" />
     <Compile Include="plugin\InterfaceVersion.cs" />
     <Compile Include="plugin\PluginLoader.cs" />
     <Compile Include="plugin\PluginVersion.cs" />
     <Compile Include="plugin\ScriptProcessor.cs" />
-    <Compile Include="dspcore\AttackVariation.cs" />
-    <Compile Include="dspcore\AttackVariationConverter.cs" />
+    <Compile Include="app_dspcore\AttackVariation.cs" />
+    <Compile Include="app_dspcore\AttackVariationConverter.cs" />
+    <Compile Include="app_dspcore\VibratoLengthEditingRule.cs" />
+    <Compile Include="app_dspcore\VibratoVariation.cs" />
+    <Compile Include="app_dspcore\VibratoVariationConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ja.po">
@@ -771,10 +771,6 @@
     <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.media.windows\cadencii.media.windows.csproj">
       <Project>{84B71038-CB91-4456-8C90-31E73BC93D7C}</Project>
       <Name>cadencii.media.windows</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.dspconfig\cadencii.dspconfig.csproj">
-      <Project>{A89A318D-3944-4833-8F9E-CDC41ADD4DEC}</Project>
-      <Name>cadencii.dspconfig</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

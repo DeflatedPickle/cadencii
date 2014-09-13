@@ -49,8 +49,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.uiconfig", "..\..\
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "cadencii.gui.winforms.shared", "..\..\..\..\..\svn\cadencii\src\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.shproj", "{EF416C94-7EA3-4B62-B5B4-6B768654845C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.dspconfig", "..\..\..\..\..\svn\cadencii\src\cadencii.dspconfig\cadencii.dspconfig.csproj", "{A89A318D-3944-4833-8F9E-CDC41ADD4DEC}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -121,10 +119,6 @@ Global
 		{A0B35F11-5790-4473-A508-5868FFA67D70}.Debug|x86.Build.0 = Debug|x86
 		{A0B35F11-5790-4473-A508-5868FFA67D70}.Release|x86.ActiveCfg = Release|x86
 		{A0B35F11-5790-4473-A508-5868FFA67D70}.Release|x86.Build.0 = Release|x86
-		{A89A318D-3944-4833-8F9E-CDC41ADD4DEC}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A89A318D-3944-4833-8F9E-CDC41ADD4DEC}.Debug|x86.Build.0 = Debug|Any CPU
-		{A89A318D-3944-4833-8F9E-CDC41ADD4DEC}.Release|x86.ActiveCfg = Release|Any CPU
-		{A89A318D-3944-4833-8F9E-CDC41ADD4DEC}.Release|x86.Build.0 = Release|Any CPU
 		{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}.Debug|x86.ActiveCfg = Debug|x86
 		{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}.Debug|x86.Build.0 = Debug|x86
 		{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}.Release|x86.ActiveCfg = Release|x86

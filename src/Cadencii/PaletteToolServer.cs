@@ -165,8 +165,8 @@ namespace cadencii
                     AppManager.showMessageBox(
                         PortUtil.formatMessage(_("Palette tool '{0}' reported an error.\nPlease copy the exception text and report it to developper."), id),
                         "Error",
-                        cadencii.windows.forms.Utility.MSGBOX_DEFAULT_OPTION,
-                        cadencii.windows.forms.Utility.MSGBOX_ERROR_MESSAGE);
+                        cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
+                        cadencii.Dialog.MSGBOX_ERROR_MESSAGE);
                     serr.println(typeof(PaletteToolServer) + ".invokePaletteTool; ex=" + ex);
                     edited = false;
                 }

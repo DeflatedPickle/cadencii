@@ -137,7 +137,7 @@ namespace cadencii
                         ret = ScriptReturnStatus.ERROR;
                     }
                     if (ret == ScriptReturnStatus.ERROR) {
-                        AppManager.showMessageBox(_("Script aborted"), "Cadencii", cadencii.windows.forms.Utility.MSGBOX_DEFAULT_OPTION, cadencii.windows.forms.Utility.MSGBOX_INFORMATION_MESSAGE);
+                        AppManager.showMessageBox(_("Script aborted"), "Cadencii", cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
                     } else if (ret == ScriptReturnStatus.EDITED) {
                         CadenciiCommand run = VsqFileEx.generateCommandReplace(work);
                         AppManager.editHistory.register(vsq.executeCommand(run));
@@ -165,11 +165,11 @@ namespace cadencii
                     }
                     return (ret == ScriptReturnStatus.EDITED);
                 } catch (Exception ex) {
-                    AppManager.showMessageBox(_("Script runtime error:") + " " + ex, _("Error"), cadencii.windows.forms.Utility.MSGBOX_DEFAULT_OPTION, cadencii.windows.forms.Utility.MSGBOX_INFORMATION_MESSAGE);
+                    AppManager.showMessageBox(_("Script runtime error:") + " " + ex, _("Error"), cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
                     serr.println("AppManager#invokeScript; ex=" + ex);
                 }
             } else {
-                AppManager.showMessageBox(_("Script compilation failed."), _("Error"), cadencii.windows.forms.Utility.MSGBOX_DEFAULT_OPTION, cadencii.windows.forms.Utility.MSGBOX_WARNING_MESSAGE);
+                AppManager.showMessageBox(_("Script compilation failed."), _("Error"), cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
             }
             return false;
         }

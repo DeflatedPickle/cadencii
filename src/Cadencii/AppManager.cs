@@ -1375,17 +1375,17 @@ namespace cadencii
         #region MessageBoxのラッパー
         public static DialogResult showMessageBox(string text)
         {
-            return showMessageBox(text, "", cadencii.windows.forms.Utility.MSGBOX_DEFAULT_OPTION, cadencii.windows.forms.Utility.MSGBOX_PLAIN_MESSAGE);
+            return showMessageBox(text, "", cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_PLAIN_MESSAGE);
         }
 
         public static DialogResult showMessageBox(string text, string caption)
         {
-            return showMessageBox(text, caption, cadencii.windows.forms.Utility.MSGBOX_DEFAULT_OPTION, cadencii.windows.forms.Utility.MSGBOX_PLAIN_MESSAGE);
+            return showMessageBox(text, caption, cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_PLAIN_MESSAGE);
         }
 
         public static DialogResult showMessageBox(string text, string caption, int optionType)
         {
-            return showMessageBox(text, caption, optionType, cadencii.windows.forms.Utility.MSGBOX_PLAIN_MESSAGE);
+            return showMessageBox(text, caption, optionType, cadencii.Dialog.MSGBOX_PLAIN_MESSAGE);
         }
 
         /// <summary>
@@ -1648,23 +1648,9 @@ namespace cadencii
             cadencii.CDebug.WriteLine(message);
         }
 
-        /// <summary>
-        /// gettext
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public static string _(string id)
+        static string _(string id)
         {
             return Messaging.getMessage(id);
-        }
-
-        /// <summary>
-        /// Cadenciiが使用する一時ディレクトリのパスを取得します。
-        /// </summary>
-        /// <returns></returns>
-        public static string getCadenciiTempDir()
-        {
-        	return ApplicationGlobal.getCadenciiTempDir();
         }
 
         /// <summary>

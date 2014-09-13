@@ -302,7 +302,7 @@ namespace cadencii
             vsq.Track[1].addEvent(item);
             vsq.updateTotalClocks();
             int ms_presend = 500;
-            string tempdir = Path.Combine(AppManager.getCadenciiTempDir(), ApplicationGlobal.getID());
+            string tempdir = Path.Combine(ApplicationGlobal.getCadenciiTempDir(), ApplicationGlobal.getID());
             if (!Directory.Exists(tempdir)) {
                 try {
                     PortUtil.createDirectory(tempdir);

@@ -1170,8 +1170,8 @@ namespace cadencii
             if (was_modified) {
                 AppManager.showMessageBox(_("Restart Cadencii to complete your changes\n(restart will NOT be automatically done)"),
                                            "Cadencii",
-                                           cadencii.windows.forms.Utility.MSGBOX_DEFAULT_OPTION,
-                                           cadencii.windows.forms.Utility.MSGBOX_INFORMATION_MESSAGE);
+                                           cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
+                                           cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
             }
 
             this.DialogResult = System.Windows.Forms.DialogResult.OK;

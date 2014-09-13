@@ -16,7 +16,6 @@ using cadencii.java.awt;
 #if ENABLE_AQUESTONE
 using System;
 using System.Windows.Forms;
-using cadencii.windows.forms;
 
 namespace cadencii
 {

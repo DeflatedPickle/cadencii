@@ -92,6 +92,7 @@
     <Compile Include="dsp\v1\generator\IWaveIncoming.cs" />
     <Compile Include="dsp\v1\generator\VocaloidWaveGenerator.cs" />
     <Compile Include="VSTiDllManager.cs" />
+    <Compile Include="MusicManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
