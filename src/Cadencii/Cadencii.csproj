@@ -124,7 +124,6 @@
     <Compile Include="EditedStateChangedEventHandler.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EditHistoryModel.cs" />
     <Compile Include="ExceptionNotifyFormController.cs" />
     <Compile Include="ExceptionNotifyFormUi.cs" />
     <Compile Include="ExceptionNotifyFormUiListener.cs" />

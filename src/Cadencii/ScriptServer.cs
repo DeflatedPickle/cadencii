@@ -140,7 +140,7 @@ namespace cadencii
                         AppManager.showMessageBox(_("Script aborted"), "Cadencii", cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
                     } else if (ret == ScriptReturnStatus.EDITED) {
                         CadenciiCommand run = VsqFileEx.generateCommandReplace(work);
-                        AppManager.editHistory.register(vsq.executeCommand(run));
+                        EditorManager.editHistory.register(vsq.executeCommand(run));
                     }
                     string config_file = configFileNameFromScriptFileName(script_invoker.ScriptFile);
                     FileStream fs = null;

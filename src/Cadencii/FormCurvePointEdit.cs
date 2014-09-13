@@ -45,8 +45,8 @@ namespace cadencii
             txtDataPointValue.Text = context.point.value + "";
             txtDataPointValue.SelectAll();
 
-            btnUndo.Enabled = AppManager.editHistory.hasUndoHistory();
-            btnRedo.Enabled = AppManager.editHistory.hasRedoHistory();
+            btnUndo.Enabled = EditorManager.editHistory.hasUndoHistory();
+            btnRedo.Enabled = EditorManager.editHistory.hasRedoHistory();
         }
 
         #region public methods
@@ -108,7 +108,7 @@ namespace cadencii
             foreach (var item in zone.iterator()) {
                 zoneUnits.Add(item);
             }
-            AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+            EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
 
             txtDataPointClock.Text = clock + "";
             txtDataPointValue.Text = value + "";
@@ -125,8 +125,8 @@ namespace cadencii
                 txtDataPointValue.SelectAll();
             }
 
-            btnUndo.Enabled = AppManager.editHistory.hasUndoHistory();
-            btnRedo.Enabled = AppManager.editHistory.hasRedoHistory();
+            btnUndo.Enabled = EditorManager.editHistory.hasUndoHistory();
+            btnRedo.Enabled = EditorManager.editHistory.hasRedoHistory();
             m_changed = false;
         }
 
@@ -257,8 +257,8 @@ namespace cadencii
                 mMainWindow.updateDrawObjectList();
                 mMainWindow.refreshScreen();
             }
-            btnUndo.Enabled = AppManager.editHistory.hasUndoHistory();
-            btnRedo.Enabled = AppManager.editHistory.hasRedoHistory();
+            btnUndo.Enabled = EditorManager.editHistory.hasUndoHistory();
+            btnRedo.Enabled = EditorManager.editHistory.hasRedoHistory();
         }
 
         public void btnExit_Click(Object sender, EventArgs e)

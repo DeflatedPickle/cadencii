@@ -75,10 +75,6 @@ namespace cadencii
         /// 選択アイテムの管理クラスのインスタンス
         /// </summary>
         public static ItemSelectionModel itemSelection = null;
-        /// <summary>
-        /// 編集履歴を管理するmodel
-        /// </summary>
-        public static EditHistoryModel editHistory = null;
 
         #region Static Readonly Fields
         /// <summary>
@@ -1461,7 +1457,7 @@ namespace cadencii
 		public static void removeBgm (int index)
 		{
 			MusicManager.removeBgm (index, resultCmd => {
-				editHistory.register (resultCmd);
+				EditorManager.editHistory.register (resultCmd);
 				try {
 					if (EditedStateChanged != null) {
 						EditedStateChanged.Invoke (typeof(AppManager), true);
@@ -1477,7 +1473,7 @@ namespace cadencii
 		public static void clearBgm ()
 		{
 			MusicManager.clearBgm (resultCmd => {
-				editHistory.register (resultCmd);
+				EditorManager.editHistory.register (resultCmd);
 				try {
 					if (EditedStateChanged != null) {
 						EditedStateChanged.Invoke (typeof(AppManager), true);
@@ -1492,7 +1488,7 @@ namespace cadencii
 		public static void addBgm (string file)
 		{
 			MusicManager.addBgm (file, resultCmd => {
-			editHistory.register (resultCmd);
+			EditorManager.editHistory.register (resultCmd);
 			try {
 				if (EditedStateChanged != null) {
 					EditedStateChanged.Invoke (typeof(AppManager), true);
@@ -1577,13 +1573,13 @@ namespace cadencii
         /// </summary>
         public static void undo()
         {
-            if (editHistory.hasUndoHistory()) {
+            if (EditorManager.editHistory.hasUndoHistory()) {
                 List<ValuePair<int, int>> before_ids = new List<ValuePair<int, int>>();
                 foreach (var item in itemSelection.getEventIterator()) {
                     before_ids.Add(new ValuePair<int, int>(item.track, item.original.InternalID));
                 }
 
-                ICommand run_src = editHistory.getUndo();
+                ICommand run_src = EditorManager.editHistory.getUndo();
                 CadenciiCommand run = (CadenciiCommand)run_src;
                 if (run.vsqCommand != null) {
                     if (run.vsqCommand.Type == VsqCommandType.TRACK_DELETE) {
@@ -1604,7 +1600,7 @@ namespace cadencii
                         serr.println(typeof(AppManager) + ".undo; ex=" + ex);
                     }
                 }
-                editHistory.registerAfterUndo(inv);
+                EditorManager.editHistory.registerAfterUndo(inv);
 
                 cleanupDeadSelection(before_ids);
                 itemSelection.updateSelectedEventInstance();
@@ -1616,13 +1612,13 @@ namespace cadencii
         /// </summary>
         public static void redo()
         {
-            if (editHistory.hasRedoHistory()) {
+            if (EditorManager.editHistory.hasRedoHistory()) {
                 List<ValuePair<int, int>> before_ids = new List<ValuePair<int, int>>();
                 foreach (var item in itemSelection.getEventIterator()) {
                     before_ids.Add(new ValuePair<int, int>(item.track, item.original.InternalID));
                 }
 
-                ICommand run_src = editHistory.getRedo();
+                ICommand run_src = EditorManager.editHistory.getRedo();
                 CadenciiCommand run = (CadenciiCommand)run_src;
                 if (run.vsqCommand != null) {
                     if (run.vsqCommand.Type == VsqCommandType.TRACK_DELETE) {
@@ -1643,7 +1639,7 @@ namespace cadencii
                         serr.println(typeof(AppManager) + ".redo; ex=" + ex);
                     }
                 }
-                editHistory.registerAfterRedo(inv);
+                EditorManager.editHistory.registerAfterRedo(inv);
 
                 cleanupDeadSelection(before_ids);
                 itemSelection.updateSelectedEventInstance();
@@ -1912,7 +1908,6 @@ namespace cadencii
             loadConfig();
             clipboard = new ClipboardModel();
             itemSelection = new ItemSelectionModel();
-            editHistory = new EditHistoryModel();
             // UTAU歌手のアイコンを読み込み、起動画面に表示を要求する
 			int c = ApplicationGlobal.appConfig.UtauSingers.Count;
             for (int i = 0; i < c; i++) {

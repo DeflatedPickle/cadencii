@@ -37,6 +37,8 @@
     <Compile Include="RendererKindUtil.cs" />
     <Compile Include="EditorManager.cs" />
     <Compile Include="EditTool.cs" />
+    <Compile Include="EditHistoryModel.cs" />
+    <Compile Include="MusicManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

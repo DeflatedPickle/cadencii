@@ -172,7 +172,7 @@ namespace cadencii
                 }
                 if (edited) {
                     CadenciiCommand run = VsqFileEx.generateCommandTrackReplace(track, item, vsq.AttachedCurves.get(track - 1));
-                    AppManager.editHistory.register(vsq.executeCommand(run));
+                    EditorManager.editHistory.register(vsq.executeCommand(run));
                 }
                 return edited;
             } else {

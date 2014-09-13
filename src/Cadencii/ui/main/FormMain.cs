@@ -1350,7 +1350,7 @@ namespace cadencii
                 CadenciiCommand run = VsqFileEx.generateCommandTrackReplace(selected,
                                                                              work,
                                                                              MusicManager.getVsqFile().AttachedCurves.get(selected - 1));
-                AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                 setEdited(true);
             } else {
                 VsqEvent[] items = new VsqEvent[1];
@@ -1363,7 +1363,7 @@ namespace cadencii
                 items[0].ID.VibratoHandle = vibrato;
 
                 CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandEventAddRange(EditorManager.Selected, items));
-                AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                 setEdited(true);
             }
         }
@@ -1542,7 +1542,7 @@ namespace cadencii
             CadenciiCommand run = new CadenciiCommand(
                 VsqCommand.generateCommandEventReplaceRange(
                     selected, items.ToArray()));
-            AppManager.editHistory.register(vsq.executeCommand(run));
+            EditorManager.editHistory.register(vsq.executeCommand(run));
 
             // 編集されたものを再選択する
             foreach (var item in items) {
@@ -1613,7 +1613,7 @@ namespace cadencii
             CadenciiCommand run = new CadenciiCommand(
                 VsqCommand.generateCommandEventReplaceRange(
                     selected, items.ToArray()));
-            AppManager.editHistory.register(vsq.executeCommand(run));
+            EditorManager.editHistory.register(vsq.executeCommand(run));
 
             // 編集されたものを再選択する
             foreach (var item in items) {
@@ -2800,7 +2800,7 @@ namespace cadencii
         /// </summary>
         public void clearExistingData()
         {
-            AppManager.editHistory.clear();
+            EditorManager.editHistory.clear();
             AppManager.itemSelection.clearBezier();
             AppManager.itemSelection.clearEvent();
             AppManager.itemSelection.clearTempo();
@@ -3097,7 +3097,7 @@ namespace cadencii
                 }
 
                 CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandEventReplaceRange(selected, items));
-                AppManager.editHistory.register(vsq.executeCommand(run));
+                EditorManager.editHistory.register(vsq.executeCommand(run));
                 setEdited(true);
             }
         }
@@ -4535,7 +4535,7 @@ namespace cadencii
                     }
                     CadenciiCommand run = new CadenciiCommand(
                         VsqCommand.generateCommandEventReplaceRange(selected, new_events));
-                    AppManager.editHistory.register(vsq.executeCommand(run));
+                    EditorManager.editHistory.register(vsq.executeCommand(run));
                     setEdited(true);
                     Refresh();
                 }
@@ -4586,7 +4586,7 @@ namespace cadencii
                     }
                     CadenciiCommand run = new CadenciiCommand(
                         VsqCommand.generateCommandEventChangeIDContaints(selected, ev.InternalID, edited.ID));
-                    AppManager.editHistory.register(vsq.executeCommand(run));
+                    EditorManager.editHistory.register(vsq.executeCommand(run));
                     setEdited(true);
                     refreshScreen();
                 }
@@ -4642,7 +4642,7 @@ namespace cadencii
                     edited.ID.NoteHeadHandle = dlg.getEditedNoteHeadHandle();
                     CadenciiCommand run = new CadenciiCommand(
                         VsqCommand.generateCommandEventChangeIDContaints(selected, ev.InternalID, edited.ID));
-                    AppManager.editHistory.register(vsq.executeCommand(run));
+                    EditorManager.editHistory.register(vsq.executeCommand(run));
                     setEdited(true);
                     refreshScreen();
                 }
@@ -4823,7 +4823,7 @@ namespace cadencii
                         work.Track[selected].reflectDynamics();
                     }
                     CadenciiCommand run2 = new CadenciiCommand(VsqCommand.generateCommandReplace(work));
-                    AppManager.editHistory.register(vsq.executeCommand(run2));
+                    EditorManager.editHistory.register(vsq.executeCommand(run2));
                     setEdited(true);
                 } else {
                     CadenciiCommand run2 = null;
@@ -4838,7 +4838,7 @@ namespace cadencii
                     } else {
                         run2 = new CadenciiCommand(run);
                     }
-                    AppManager.editHistory.register(vsq.executeCommand(run2));
+                    EditorManager.editHistory.register(vsq.executeCommand(run2));
                     setEdited(true);
                     AppManager.itemSelection.clearEvent();
                 }
@@ -4862,7 +4862,7 @@ namespace cadencii
                     VsqCommand.generateCommandUpdateTempoRange(PortUtil.convertIntArray(clocks.ToArray()),
                                                                 PortUtil.convertIntArray(clocks.ToArray()),
                                                                 dum));
-                AppManager.editHistory.register(vsq.executeCommand(run));
+                EditorManager.editHistory.register(vsq.executeCommand(run));
                 setEdited(true);
                 AppManager.itemSelection.clearTempo();
                 Refresh();
@@ -4890,7 +4890,7 @@ namespace cadencii
                 }
                 CadenciiCommand run = new CadenciiCommand(
                     VsqCommand.generateCommandUpdateTimesigRange(barcounts, barcounts, numerators, denominators));
-                AppManager.editHistory.register(vsq.executeCommand(run));
+                EditorManager.editHistory.register(vsq.executeCommand(run));
                 setEdited(true);
                 AppManager.itemSelection.clearTimesig();
                 Refresh();
@@ -4920,7 +4920,7 @@ namespace cadencii
                         VsqCommand.generateCommandTrackCurveReplace(selected,
                                                                      trackSelector.getSelectedCurve().getName(),
                                                                      list));
-                    AppManager.editHistory.register(vsq.executeCommand(run));
+                    EditorManager.editHistory.register(vsq.executeCommand(run));
                     setEdited(true);
                 } else {
                     //todo: FormMain+DeleteEvent; VibratoDepth, VibratoRateの場合
@@ -4974,7 +4974,7 @@ namespace cadencii
                 }
                 CadenciiCommand run = new CadenciiCommand(
                     VsqCommand.generateCommandUpdateTempoRange(clocks, clocks, tempos));
-                AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                 setEdited(true);
                 refreshScreen();
                 return;
@@ -5001,7 +5001,7 @@ namespace cadencii
                 CadenciiCommand run = new CadenciiCommand(
                     VsqCommand.generateCommandUpdateTimesigRange(
                         barcounts, barcounts, numerators, denominators));
-                AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                 setEdited(true);
                 refreshScreen();
                 return;
@@ -5124,12 +5124,12 @@ namespace cadencii
             if (commands == 1) {
                 if (add_event != null) {
                     CadenciiCommand run = new CadenciiCommand(add_event);
-                    AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                    EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                 } else if (edit_bpcurve != null) {
                     CadenciiCommand run = new CadenciiCommand(edit_bpcurve);
-                    AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                    EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                 } else if (edit_bezier != null) {
-                    AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(edit_bezier));
+                    EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(edit_bezier));
                 }
                 MusicManager.getVsqFile().updateTotalClocks();
                 setEdited(true);
@@ -5147,7 +5147,7 @@ namespace cadencii
                     work.executeCommand(edit_bpcurve);
                 }
                 CadenciiCommand run = VsqFileEx.generateCommandReplace(work);
-                AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                 MusicManager.getVsqFile().updateTotalClocks();
                 setEdited(true);
                 refreshScreen();
@@ -5379,7 +5379,7 @@ namespace cadencii
 
                 // コマンドを発行し、実行
                 CadenciiCommand run = VsqFileEx.generateCommandReplace(work);
-                AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                 this.setEdited(true);
 
                 other_command_executed = true;
@@ -5396,7 +5396,7 @@ namespace cadencii
                     clocks[count] = value.original.Clock;
                 }
                 CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandUpdateTempoRange(clocks, clocks, dum));
-                AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                 setEdited(true);
                 other_command_executed = true;
             } else if (AppManager.itemSelection.getTimesigCount() > 0) {
@@ -5415,7 +5415,7 @@ namespace cadencii
                 }
                 CadenciiCommand run = new CadenciiCommand(
                     VsqCommand.generateCommandUpdateTimesigRange(barcounts, barcounts, numerators, denominators));
-                AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                 setEdited(true);
                 other_command_executed = true;
             }
@@ -5423,7 +5423,7 @@ namespace cadencii
             // 冒頭で作成した音符イベント削除以外に、コマンドが実行されなかった場合
             if (delete_event != null && !other_command_executed) {
                 CadenciiCommand run = new CadenciiCommand(delete_event);
-                AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                 setEdited(true);
             }
 
@@ -5495,7 +5495,7 @@ namespace cadencii
                                                                      vsq.Mixer.Slave[selected - 1],
                                                                      vsq.Track.Count,
                                                                      vsq.AttachedCurves.get(selected - 1)); ;
-            AppManager.editHistory.register(vsq.executeCommand(run));
+            EditorManager.editHistory.register(vsq.executeCommand(run));
             setEdited(true);
             AppManager.mMixerWindow.updateStatus();
             refreshScreen();
@@ -5518,7 +5518,7 @@ namespace cadencii
                     string ret = ib.getResult();
                     CadenciiCommand run = new CadenciiCommand(
                         VsqCommand.generateCommandTrackChangeName(selected, ret));
-                    AppManager.editHistory.register(vsq.executeCommand(run));
+                    EditorManager.editHistory.register(vsq.executeCommand(run));
                     setEdited(true);
                     refreshScreen();
                 }
@@ -5546,7 +5546,7 @@ namespace cadencii
                 if (selected >= 2) {
                     EditorManager.Selected = selected - 1;
                 }
-                AppManager.editHistory.register(vsq.executeCommand(run));
+                EditorManager.editHistory.register(vsq.executeCommand(run));
                 updateDrawObjectList();
                 setEdited(true);
                 AppManager.mMixerWindow.updateStatus();
@@ -5574,7 +5574,7 @@ namespace cadencii
                                                                      new VsqMixerEntry(0, 0, 0, 0),
                                                                      i,
                                                                      new BezierCurves());
-            AppManager.editHistory.register(vsq.executeCommand(run));
+            EditorManager.editHistory.register(vsq.executeCommand(run));
             updateDrawObjectList();
             setEdited(true);
             EditorManager.Selected = (i);
@@ -6064,8 +6064,8 @@ namespace cadencii
             if (this.Text != title) {
                 this.Text = title;
             }
-            bool redo = AppManager.editHistory.hasRedoHistory();
-            bool undo = AppManager.editHistory.hasUndoHistory();
+            bool redo = EditorManager.editHistory.hasRedoHistory();
+            bool undo = EditorManager.editHistory.hasUndoHistory();
             menuEditRedo.Enabled = redo;
             menuEditUndo.Enabled = undo;
             cMenuPianoRedo.Enabled = redo;
@@ -6154,14 +6154,14 @@ namespace cadencii
         /// </summary>
         public void undo()
         {
-            if (AppManager.editHistory.hasUndoHistory()) {
+            if (EditorManager.editHistory.hasUndoHistory()) {
                 AppManager.undo();
-                menuEditRedo.Enabled = AppManager.editHistory.hasRedoHistory();
-                menuEditUndo.Enabled = AppManager.editHistory.hasUndoHistory();
-                cMenuPianoRedo.Enabled = AppManager.editHistory.hasRedoHistory();
-                cMenuPianoUndo.Enabled = AppManager.editHistory.hasUndoHistory();
-                cMenuTrackSelectorRedo.Enabled = AppManager.editHistory.hasRedoHistory();
-                cMenuTrackSelectorUndo.Enabled = AppManager.editHistory.hasUndoHistory();
+                menuEditRedo.Enabled = EditorManager.editHistory.hasRedoHistory();
+                menuEditUndo.Enabled = EditorManager.editHistory.hasUndoHistory();
+                cMenuPianoRedo.Enabled = EditorManager.editHistory.hasRedoHistory();
+                cMenuPianoUndo.Enabled = EditorManager.editHistory.hasUndoHistory();
+                cMenuTrackSelectorRedo.Enabled = EditorManager.editHistory.hasRedoHistory();
+                cMenuTrackSelectorUndo.Enabled = EditorManager.editHistory.hasUndoHistory();
                 AppManager.mMixerWindow.updateStatus();
                 setEdited(true);
                 updateDrawObjectList();
@@ -6179,14 +6179,14 @@ namespace cadencii
         /// </summary>
         public void redo()
         {
-            if (AppManager.editHistory.hasRedoHistory()) {
+            if (EditorManager.editHistory.hasRedoHistory()) {
                 AppManager.redo();
-                menuEditRedo.Enabled = AppManager.editHistory.hasRedoHistory();
-                menuEditUndo.Enabled = AppManager.editHistory.hasUndoHistory();
-                cMenuPianoRedo.Enabled = AppManager.editHistory.hasRedoHistory();
-                cMenuPianoUndo.Enabled = AppManager.editHistory.hasUndoHistory();
-                cMenuTrackSelectorRedo.Enabled = AppManager.editHistory.hasRedoHistory();
-                cMenuTrackSelectorUndo.Enabled = AppManager.editHistory.hasUndoHistory();
+                menuEditRedo.Enabled = EditorManager.editHistory.hasRedoHistory();
+                menuEditUndo.Enabled = EditorManager.editHistory.hasUndoHistory();
+                cMenuPianoRedo.Enabled = EditorManager.editHistory.hasRedoHistory();
+                cMenuPianoUndo.Enabled = EditorManager.editHistory.hasUndoHistory();
+                cMenuTrackSelectorRedo.Enabled = EditorManager.editHistory.hasRedoHistory();
+                cMenuTrackSelectorUndo.Enabled = EditorManager.editHistory.hasUndoHistory();
                 AppManager.mMixerWindow.updateStatus();
                 setEdited(true);
                 updateDrawObjectList();
@@ -6214,7 +6214,7 @@ namespace cadencii
             AppManager.editorConfig.pushRecentFiles(file);
             updateRecentFileMenu();
             setEdited(false);
-            AppManager.editHistory.clear();
+            EditorManager.editHistory.clear();
             AppManager.mMixerWindow.updateStatus();
 
             // キャッシュwaveなどの処理
@@ -7246,7 +7246,7 @@ namespace cadencii
                     hideInputTextBox();
                     if (EditorManager.SelectedTool == EditTool.ERASER) {
                         CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandEventDelete(selected, internal_id));
-                        AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                        EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                         setEdited(true);
                         AppManager.itemSelection.clearEvent();
                         return;
@@ -7318,7 +7318,7 @@ namespace cadencii
                                         VsqCommand.generateCommandEventChangeIDContaints(selected,
                                                                                           internal_id,
                                                                                           item2));
-                                    AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                                    EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                                     setEdited(true);
                                 }
                                 break;
@@ -7493,7 +7493,7 @@ namespace cadencii
                                         id.NoteHeadHandle = dlg.getEditedNoteHeadHandle();
                                         CadenciiCommand run = new CadenciiCommand(
                                             VsqCommand.generateCommandEventChangeIDContaints(selected, selectedEvent.InternalID, id));
-                                        AppManager.editHistory.register(vsq.executeCommand(run));
+                                        EditorManager.editHistory.register(vsq.executeCommand(run));
                                         setEdited(true);
                                         refreshScreen();
                                     }
@@ -7574,7 +7574,7 @@ namespace cadencii
                                                 selected,
                                                 selectedEvent.InternalID,
                                                 t));
-                                        AppManager.editHistory.register(vsq.executeCommand(run));
+                                        EditorManager.editHistory.register(vsq.executeCommand(run));
                                         setEdited(true);
                                         refreshScreen();
                                     }
@@ -8625,7 +8625,7 @@ namespace cadencii
                     if (edited) {
                         CadenciiCommand run = new CadenciiCommand(
                             VsqCommand.generateCommandTrackCurveReplace(selected, "PIT", pit));
-                        AppManager.editHistory.register(vsq.executeCommand(run));
+                        EditorManager.editHistory.register(vsq.executeCommand(run));
                         setEdited(true);
                     }
                 }
@@ -8697,7 +8697,7 @@ namespace cadencii
                             CadenciiCommand run = VsqFileEx.generateCommandTrackReplace(selected,
                                                                                          copied,
                                                                                          vsq.AttachedCurves.get(selected - 1));
-                            AppManager.editHistory.register(vsq.executeCommand(run));
+                            EditorManager.editHistory.register(vsq.executeCommand(run));
                             AppManager.itemSelection.updateSelectedEventInstance();
                             setEdited(true);
                         }
@@ -8758,7 +8758,7 @@ namespace cadencii
                                                                                  clocks,
                                                                                  values));
                     }
-                    AppManager.editHistory.register(vsq.executeCommand(run));
+                    EditorManager.editHistory.register(vsq.executeCommand(run));
                     setEdited(true);
                 }
                 #endregion
@@ -8788,7 +8788,7 @@ namespace cadencii
                         }
                         CadenciiCommand run = new CadenciiCommand(
                             VsqCommand.generateCommandEventChangeIDContaints(selected, mVibratoEditingId, item.ID));
-                        AppManager.editHistory.register(vsq.executeCommand(run));
+                        EditorManager.editHistory.register(vsq.executeCommand(run));
                         setEdited(true);
                     }
                 }
@@ -8871,7 +8871,7 @@ namespace cadencii
                 CadenciiCommand run = VsqFileEx.generateCommandTrackReplace(selected,
                                                                              work,
                                                                              vsq.AttachedCurves.get(selected - 1));
-                AppManager.editHistory.register(vsq.executeCommand(run));
+                EditorManager.editHistory.register(vsq.executeCommand(run));
 
                 // 選択範囲を更新
                 AppManager.mWholeSelectedInterval = new SelectedRegion(dst_clock_start);
@@ -9342,7 +9342,7 @@ namespace cadencii
 #if DEBUG
             AppManager.debugWriteLine("m_note_property_dlg_CommandExecuteRequired");
 #endif
-            AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(command));
+            EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(command));
             updateDrawObjectList();
             refreshScreen();
             setEdited(true);
@@ -9486,7 +9486,7 @@ namespace cadencii
             work.addEvent(item);
             work.reflectDynamics();
             CadenciiCommand run = VsqFileEx.generateCommandTrackReplace(selected, work, vsq.AttachedCurves.get(selected - 1));
-            AppManager.editHistory.register(vsq.executeCommand(run));
+            EditorManager.editHistory.register(vsq.executeCommand(run));
             setEdited(true);
             AppManager.setEditMode(EditMode.NONE);
             refreshScreen();
@@ -10132,7 +10132,7 @@ namespace cadencii
                                 AppManager.mAddingEvent.ID.setLength(clock - AppManager.mAddingEvent.Clock);
                                 CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandEventAdd(selected,
                                                                                                                AppManager.mAddingEvent));
-                                AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                                EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                                 if (!isEdited()) {
                                     setEdited(true);
                                 }
@@ -11269,7 +11269,7 @@ namespace cadencii
             }
 
             CadenciiCommand lastrun = VsqFileEx.generateCommandReplace(work);
-            AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(lastrun));
+            EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(lastrun));
             setEdited(true);
             refreshScreen();
         }
@@ -11371,7 +11371,7 @@ namespace cadencii
 
                 // コマンドを発行して実行
                 CadenciiCommand run = VsqFileEx.generateCommandReplace(dst);
-                AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                 AppManager.mMixerWindow.updateStatus();
                 setEdited(true);
                 refreshScreen(true);
@@ -11532,7 +11532,7 @@ namespace cadencii
 
             // コマンドを発行し、実行
             CadenciiCommand run = VsqFileEx.generateCommandReplace(replace);
-            AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+            EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
             setEdited(true);
         }
 
@@ -11748,7 +11748,7 @@ namespace cadencii
                                     selected,
                                     copy,
                                     vsq.AttachedCurves.get(selected - 1));
-                            AppManager.editHistory.register(vsq.executeCommand(run));
+                            EditorManager.editHistory.register(vsq.executeCommand(run));
                             updateDrawObjectList();
                             refreshScreen();
                         }
@@ -12395,7 +12395,7 @@ namespace cadencii
                     selected,
                     PortUtil.convertIntArray(internal_ids.ToArray()),
                     ids.ToArray()));
-            AppManager.editHistory.register(vsq.executeCommand(run));
+            EditorManager.editHistory.register(vsq.executeCommand(run));
             setEdited(true);
         }
 
@@ -12435,7 +12435,7 @@ namespace cadencii
             CadenciiCommand run = new CadenciiCommand(
                 VsqCommand.generateCommandEventReplaceRange(selected, replace.ToArray()));
             // コマンドを実行
-            AppManager.editHistory.register(vsq.executeCommand(run));
+            EditorManager.editHistory.register(vsq.executeCommand(run));
             setEdited(true);
         }
 
@@ -12563,7 +12563,7 @@ namespace cadencii
             }
             CadenciiCommand run = new CadenciiCommand(
                 VsqCommand.generateCommandEventChangeIDContaintsRange(EditorManager.Selected, internalids, ids));
-            AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+            EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
             setEdited(true);
             Refresh();
         }
@@ -12676,7 +12676,7 @@ namespace cadencii
                     temp.updateTimesigInfo();
 
                     CadenciiCommand run = VsqFileEx.generateCommandReplace(temp);
-                    AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                    EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                     setEdited(true);
                     Refresh();
                 }
@@ -12718,7 +12718,7 @@ namespace cadencii
                     }
                     if (old_pre_measure != result) {
                         CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandChangePreMeasure(result));
-                        AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                        EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                         MusicManager.getVsqFile().updateTotalClocks();
                         refreshScreen(true);
                         setEdited(true);
@@ -12767,7 +12767,7 @@ namespace cadencii
                     new_channels,
                     new_output_master,
                     new_pre_measure);
-            AppManager.editHistory.register(vsq.executeCommand(run));
+            EditorManager.editHistory.register(vsq.executeCommand(run));
             setEdited(true);
         }
 
@@ -12862,7 +12862,7 @@ namespace cadencii
 
                     temp.removePart(clock_start, clock_end);
                     CadenciiCommand run = VsqFileEx.generateCommandReplace(temp);
-                    AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                    EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                     setEdited(true);
                     Refresh();
                 }
@@ -12929,7 +12929,7 @@ namespace cadencii
 
             if (total_changed) {
                 CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandReplace(work));
-                AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                 setEdited(true);
                 refreshScreen();
             }
@@ -13129,7 +13129,7 @@ namespace cadencii
                     #endregion
 
                     CadenciiCommand run = VsqFileEx.generateCommandTrackReplace(selected, work, vsq.AttachedCurves.get(selected - 1));
-                    AppManager.editHistory.register(vsq.executeCommand(run));
+                    EditorManager.editHistory.register(vsq.executeCommand(run));
                     setEdited(true);
                 }
             } catch (Exception ex) {
@@ -13313,7 +13313,7 @@ namespace cadencii
                                     VsqCommand.generateCommandUpdateTempo(vsq.TempoTable[index].Clock,
                                                                            vsq.TempoTable[index].Clock,
                                                                            -1));
-                                AppManager.editHistory.register(vsq.executeCommand(run));
+                                EditorManager.editHistory.register(vsq.executeCommand(run));
                                 setEdited(true);
                                 #endregion
                             } else {
@@ -13340,7 +13340,7 @@ namespace cadencii
                                         int new_clock = bar_top_clock + (new_beat - 1) * clock_per_beat + new_clocks_in_beat;
                                         CadenciiCommand run = new CadenciiCommand(
                                             VsqCommand.generateCommandUpdateTempo(new_clock, new_clock, (int)(6e7 / (double)dlg.getTempo())));
-                                        AppManager.editHistory.register(vsq.executeCommand(run));
+                                        EditorManager.editHistory.register(vsq.executeCommand(run));
                                         setEdited(true);
                                         refreshScreen();
                                     }
@@ -13417,7 +13417,7 @@ namespace cadencii
 #endif
                                     CadenciiCommand run = new CadenciiCommand(
                                         VsqCommand.generateCommandUpdateTempo(new_clock, new_clock, (int)(6e7 / (double)dlg.getTempo())));
-                                    AppManager.editHistory.register(vsq.executeCommand(run));
+                                    EditorManager.editHistory.register(vsq.executeCommand(run));
                                     setEdited(true);
                                     refreshScreen();
                                 }
@@ -13461,7 +13461,7 @@ namespace cadencii
                             }
                             int barcount = vsq.TimesigTable[index].BarCount;
                             CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandUpdateTimesig(barcount, barcount, -1, -1));
-                            AppManager.editHistory.register(vsq.executeCommand(run));
+                            EditorManager.editHistory.register(vsq.executeCommand(run));
                             setEdited(true);
                             #endregion
                         } else {
@@ -13494,7 +13494,7 @@ namespace cadencii
                                         barcounts[1] = dlg.getEnd() + pre_measure - 1;
                                         CadenciiCommand run = new CadenciiCommand(
                                             VsqCommand.generateCommandUpdateTimesigRange(barcounts, new_barcounts, numerators, denominators));
-                                        AppManager.editHistory.register(vsq.executeCommand(run));
+                                        EditorManager.editHistory.register(vsq.executeCommand(run));
                                         setEdited(true);
                                     } else {
 #if DEBUG
@@ -13507,7 +13507,7 @@ namespace cadencii
                                                                                      dlg.getStart() + pre_measure - 1,
                                                                                      dlg.getNumerator(),
                                                                                      dlg.getDenominator()));
-                                        AppManager.editHistory.register(vsq.executeCommand(run));
+                                        EditorManager.editHistory.register(vsq.executeCommand(run));
                                         setEdited(true);
                                     }
                                 }
@@ -13570,7 +13570,7 @@ namespace cadencii
                                         barcounts[1] = dlg.getEnd() + pre_measure - 1 + 1;
                                         CadenciiCommand run = new CadenciiCommand(
                                             VsqCommand.generateCommandUpdateTimesigRange(barcounts, new_barcounts, numerators, denominators));
-                                        AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                                        EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                                         setEdited(true);
                                     } else {
                                         CadenciiCommand run = new CadenciiCommand(
@@ -13578,7 +13578,7 @@ namespace cadencii
                                                                            dlg.getStart() + pre_measure - 1,
                                                                            dlg.getNumerator(),
                                                                            dlg.getDenominator()));
-                                        AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                                        EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                                         setEdited(true);
                                     }
                                 }
@@ -13830,7 +13830,7 @@ namespace cadencii
                                     VsqCommand.generateCommandUpdateTempo(vsq.TempoTable[index].Clock,
                                                                            vsq.TempoTable[index].Clock,
                                                                            -1));
-                                AppManager.editHistory.register(vsq.executeCommand(run));
+                                EditorManager.editHistory.register(vsq.executeCommand(run));
                                 setEdited(true);
                                 #endregion
                             }
@@ -13862,7 +13862,7 @@ namespace cadencii
                                 }
                                 int barcount = vsq.TimesigTable[index].BarCount;
                                 CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandUpdateTimesig(barcount, barcount, -1, -1));
-                                AppManager.editHistory.register(vsq.executeCommand(run));
+                                EditorManager.editHistory.register(vsq.executeCommand(run));
                                 setEdited(true);
                                 #endregion
                             }
@@ -13893,7 +13893,7 @@ namespace cadencii
                         SystemSounds.Asterisk.Play();
                     } else {
                         CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandUpdateTempoRange(clocks, new_clocks, tempos));
-                        AppManager.editHistory.register(vsq.executeCommand(run));
+                        EditorManager.editHistory.register(vsq.executeCommand(run));
                         setEdited(true);
                     }
                 } else if (mPositionIndicatorMouseDownMode == PositionIndicatorMouseDownMode.TIMESIG) {
@@ -13922,7 +13922,7 @@ namespace cadencii
                     } else {
                         CadenciiCommand run = new CadenciiCommand(
                             VsqCommand.generateCommandUpdateTimesigRange(barcounts, new_barcounts, numerators, denominators));
-                        AppManager.editHistory.register(vsq.executeCommand(run));
+                        EditorManager.editHistory.register(vsq.executeCommand(run));
                         setEdited(true);
                     }
                 }
@@ -14378,7 +14378,7 @@ namespace cadencii
                         copy.NoteHeadHandle = dlg.getEditedNoteHeadHandle();
                         CadenciiCommand run = new CadenciiCommand(
                             VsqCommand.generateCommandEventChangeIDContaints(selected, id, copy));
-                        AppManager.editHistory.register(vsq.executeCommand(run));
+                        EditorManager.editHistory.register(vsq.executeCommand(run));
                         setEdited(true);
                     }
                 } catch (Exception ex) {
@@ -15019,14 +15019,14 @@ namespace cadencii
                                                                                           trackSelector.getSelectedCurve(),
                                                                                           chain_id,
                                                                                           ApplicationGlobal.appConfig.getControlCurveResolutionValue());
-                        AppManager.editHistory.register(vsq.executeCommand(run));
+                        EditorManager.editHistory.register(vsq.executeCommand(run));
                     } else {
                         CadenciiCommand run = VsqFileEx.generateCommandReplaceBezierChain(selected,
                                                                                            trackSelector.getSelectedCurve(),
                                                                                            chain_id,
                                                                                            chain,
                                                                                            ApplicationGlobal.appConfig.getControlCurveResolutionValue());
-                        AppManager.editHistory.register(vsq.executeCommand(run));
+                        EditorManager.editHistory.register(vsq.executeCommand(run));
                     }
                     setEdited(true);
                     refreshScreen();
@@ -15649,7 +15649,7 @@ namespace cadencii
                     selected,
                     new_status ? last_play_mode : PlayMode.Off,
                     last_play_mode));
-            AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+            EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
             menuTrackOn.Checked = new_status;
             cMenuTrackTabTrackOn.Checked = new_status;
             setEdited(true);
@@ -16133,7 +16133,7 @@ namespace cadencii
             CadenciiCommand run = VsqFileEx.generateCommandTrackReplace(selected,
                                                                          track_copy,
                                                                          vsq.AttachedCurves.get(selected - 1));
-            AppManager.editHistory.register(vsq.executeCommand(run));
+            EditorManager.editHistory.register(vsq.executeCommand(run));
 
             renderer_menu_handler_.ForEach((handler) => handler.updateCheckedState(kind));
             for (int i = 0; i < cMenuTrackTabRendererUtau.DropDownItems.Count; i++) {
@@ -16182,7 +16182,7 @@ namespace cadencii
                     Logger.write(typeof(FormMain) + ".handleBgmOffsetSeconds_Click; ex=" + ex3 + "\n");
                 }
                 CadenciiCommand run = VsqFileEx.generateCommandBgmUpdate(list);
-                AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+                EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
                 setEdited(true);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".handleBgmOffsetSeconds_Click; ex=" + ex + "\n");
@@ -16216,7 +16216,7 @@ namespace cadencii
                 }
             }
             CadenciiCommand run = VsqFileEx.generateCommandBgmUpdate(list);
-            AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+            EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
             setEdited(true);
         }
 

@@ -874,7 +874,7 @@ namespace cadencii
         private void executeCommand(CadenciiCommand command, bool register)
         {
             if (register) {
-                AppManager.editHistory.register(MusicManager.getVsqFile().executeCommand(command));
+                EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(command));
             } else {
                 MusicManager.getVsqFile().executeCommand(command);
             }
