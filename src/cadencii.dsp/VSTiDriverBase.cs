@@ -317,7 +317,7 @@ namespace cadencii
             return result;
         }
 
-        public object getUi (object nativeWindow)
+        public PluginUI getUi (object nativeWindow)
 		{
 			return uihost.GetPluginUI (nativeWindow);
 		}

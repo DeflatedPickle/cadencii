@@ -49,6 +49,7 @@
     <Compile Include="dsp\v1\generator\AquesToneWaveGenerator.cs" />
     <Compile Include="dsp\v1\generator\AquesToneWaveGeneratorBase.cs" />
     <Compile Include="UIHostWF.cs" />
+    <Compile Include="PluginUIWF.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

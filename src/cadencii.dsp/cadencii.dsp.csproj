@@ -79,6 +79,7 @@
     <Compile Include="vsti\aquestone\SyllableMatcher.cs" />
     <Compile Include="UIHost.cs" />
     <Compile Include="VSTiDriverBase.cs" />
+    <Compile Include="PluginUI.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

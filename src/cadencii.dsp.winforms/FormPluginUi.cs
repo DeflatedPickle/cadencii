@@ -22,10 +22,11 @@ using cadencii.windows.forms;
 namespace cadencii
 {
 
-    public class FormPluginUi : Form
+
+    class FormPluginUi : Form
     {
         private System.ComponentModel.IContainer components;
-        public IntPtr childWnd = IntPtr.Zero;
+        IntPtr childWnd = IntPtr.Zero;
         private double lastDrawn = 0.0;
 
         public FormPluginUi()
@@ -45,7 +46,7 @@ namespace cadencii
 
 		internal Dimension WindowRect = new Dimension(373, 158);
 
-        public void FormPluginUi_FormClosing(Object sender, FormClosingEventArgs e)
+        void FormPluginUi_FormClosing(Object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
             this.Visible = false;

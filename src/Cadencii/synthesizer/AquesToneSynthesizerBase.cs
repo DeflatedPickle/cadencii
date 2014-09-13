@@ -157,9 +157,9 @@ namespace cadencii.synthesizer
                     if (queue.pit.Count > 0 && !noteoff_send) {
                         mDriver.send(queue.pit.ToArray());
                     }
-					var ui = (FormPluginUi) mDriver.getUi(main_window_);
+					var ui = (PluginUI) mDriver.getUi(main_window_);
                     if (ui != null) {
-                        ui.invalidateUi();
+                        ui.InvalidateUI();
                     }
                 }
             }

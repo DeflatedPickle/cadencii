@@ -9113,12 +9113,12 @@ namespace cadencii
             for (int i = 0; i < c; i++) {
                 VocaloidDriver vd = VSTiDllManager.vocaloidDriver[i];
                 bool chkv = true;
-                FormPluginUi ui;
+                PluginUI ui;
                 if (vd == null) {
                     chkv = false;
                 } else if (!vd.loaded) {
                     chkv = false;
-                } else if ((ui = (FormPluginUi) vd.getUi(this)) == null) {
+                } else if ((ui = vd.getUi(this)) == null) {
                     chkv = false;
                 } else if (ui.IsDisposed) {
                     chkv = false;
@@ -9143,7 +9143,7 @@ namespace cadencii
             } else if (!drv.loaded) {
                 chk = false;
             } else {
-				var ui = (FormPluginUi) drv.getUi(this);
+				var ui = drv.getUi(this);
                 if (ui == null) {
                     chk = false;
                 } else if (ui.IsDisposed) {
@@ -9183,7 +9183,7 @@ namespace cadencii
                 } else if (!vd.loaded) {
                     chk = false;
                 } else {
-					var ui = (FormPluginUi) vd.getUi(this);
+					var ui = vd.getUi(this);
                     if (ui == null) {
                         chk = false;
                     } else if (ui.IsDisposed) {
@@ -9199,12 +9199,12 @@ namespace cadencii
                     if (search == RendererKind.VOCALOID1) {
                         v = !menuVisualPluginUiVocaloid1.Checked;
                         menuVisualPluginUiVocaloid1.Checked = v;
-						var ui = (FormPluginUi) vd.getUi(this);
+						var ui = vd.getUi(this);
 						ui.Visible = v;
                     } else if (search == RendererKind.VOCALOID2) {
                         v = !menuVisualPluginUiVocaloid2.Checked;
                         menuVisualPluginUiVocaloid2.Checked = v;
-						var ui = (FormPluginUi) vd.getUi(this);
+						var ui = vd.getUi(this);
 						ui.Visible = v;
                     }
                     break;
@@ -9219,13 +9219,13 @@ namespace cadencii
             menu.Checked = visible;
 #if ENABLE_AQUESTONE
             bool chk = true;
-            FormPluginUi ui = null;
+            PluginUI ui = null;
             if (drv == null) {
                 chk = false;
             } else if (!drv.loaded) {
                 chk = false;
             } else {
-				ui = (FormPluginUi) drv.getUi(this);
+				ui = drv.getUi(this);
                 if (ui == null) {
                     chk = false;
                 } else if (ui.IsDisposed) {

@@ -15,21 +15,21 @@ namespace cadencii.dsp.winforms
 		/// <summary>
 		/// プラグインのUI
 		/// </summary>
-		FormPluginUi ui = null;
+		PluginUIWF ui = null;
 
 		public override void ClosePluginUI ()
 		{
 			if (ui != null && !ui.IsDisposed) {
-				ui.Close ();
+				ui.UI.Close ();
 			}
 		}
 
-		public override object GetPluginUI (object nativeWindow)
+		public override PluginUI GetPluginUI (object nativeWindow)
 		{
 			return getUi ((System.Windows.Forms.Form)nativeWindow);
 		}
 
-		public FormPluginUi getUi (System.Windows.Forms.Form main_window)
+		public PluginUI getUi (System.Windows.Forms.Form main_window)
 		{
 			if (ui == null) {
 				if (main_window != null) {
@@ -48,7 +48,7 @@ namespace cadencii.dsp.winforms
 				return;
 			}
 			if (ui == null) {
-				ui = new FormPluginUi ();
+				ui = new PluginUIWF ();
 			}
 			if (!ui.IsOpened) {
 				// Editorを持っているかどうかを確認
@@ -56,14 +56,14 @@ namespace cadencii.dsp.winforms
 					try {
 						// プラグインの名前を取得
 						string product = vsti.getStringCore (AEffectXOpcodes.effGetProductString, 0, VstStringConstants.kVstMaxProductStrLen);
-						ui.Text = product;
-						ui.Location = new System.Drawing.Point (0, 0);
-						aEffect.Dispatch (AEffectOpcodes.effEditOpen, 0, 0, ui.Handle, 0.0f);
+						ui.UI.Text = product;
+						ui.UI.Location = new System.Drawing.Point (0, 0);
+						aEffect.Dispatch (AEffectOpcodes.effEditOpen, 0, 0, ui.UI.Handle, 0.0f);
 						//Thread.Sleep( 250 );
-						ui.UpdatePluginUiRect ();
-						var rect = ui.WindowRect;
-						ui.ClientSize = new System.Drawing.Size (rect.width, rect.height);
-						ui.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+						ui.UI.UpdatePluginUiRect ();
+						var rect = ui.UI.WindowRect;
+						ui.UI.ClientSize = new System.Drawing.Size (rect.width, rect.height);
+						ui.UI.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 						ui.IsOpened = true;
 					} catch (Exception ex) {
 						serr.println ("vstidrv#open; ex=" + ex);
