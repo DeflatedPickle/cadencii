@@ -727,14 +727,14 @@ namespace cadencii
             #region tabSequence
             lblResolution.Text = _("Resolution(VSTi)");
             lblResolControlCurve.Text = _("Control Curve");
-            lblResolControlCurve.Mnemonic(System.Windows.Forms.Keys.C);
+            lblResolControlCurve.Mnemonic(Keys.C);
 
             chkEnableAutoVibrato.Text = _("Enable Automatic Vibrato");
-            chkEnableAutoVibrato.Mnemonic(System.Windows.Forms.Keys.E);
+            chkEnableAutoVibrato.Mnemonic(Keys.E);
             lblVibratoLength.Text = _("Default Vibrato Length");
-            lblVibratoLength.Mnemonic(System.Windows.Forms.Keys.L);
+            lblVibratoLength.Mnemonic(Keys.L);
             lblAutoVibratoThresholdLength.Text = _("Minimum note length for Automatic Vibrato");
-            lblAutoVibratoThresholdLength.Mnemonic(System.Windows.Forms.Keys.M);
+            lblAutoVibratoThresholdLength.Mnemonic(Keys.M);
 
             lblAutoVibratoType.Text = _("Auto Vibrato Type");
             groupVocaloidEditorCompatible.Text = _("VOCALOID Editor Compatible");
@@ -742,24 +742,24 @@ namespace cadencii
             radioVocaloidEditorCompatible.Text = _("VOCALOID Editor Compatible");
             radioUserDefined.Text = _("User Defined");
             chkEnableAutoVibrato.Text = _("Enable Automatic Vibrato");
-            chkEnableAutoVibrato.Mnemonic(System.Windows.Forms.Keys.E);
+            chkEnableAutoVibrato.Mnemonic(Keys.E);
             lblAutoVibratoType1.Text = _("Vibrato Type") + ": VOCALOID1";
-            lblAutoVibratoType1.Mnemonic(System.Windows.Forms.Keys.T);
+            lblAutoVibratoType1.Mnemonic(Keys.T);
             lblAutoVibratoType2.Text = _("Vibrato Type") + ": VOCALOID2";
-            lblAutoVibratoType2.Mnemonic(System.Windows.Forms.Keys.T);
+            lblAutoVibratoType2.Mnemonic(Keys.T);
             #endregion
 
             #region tabAnother
             lblDefaultSinger.Text = _("Default Singer");
-            lblDefaultSinger.Mnemonic(System.Windows.Forms.Keys.S);
+            lblDefaultSinger.Mnemonic(Keys.S);
             lblPreSendTime.Text = _("Pre-Send time");
-            lblPreSendTime.Mnemonic(System.Windows.Forms.Keys.P);
+            lblPreSendTime.Mnemonic(Keys.P);
             lblWait.Text = _("Waiting Time");
-            lblWait.Mnemonic(System.Windows.Forms.Keys.W);
+            lblWait.Mnemonic(Keys.W);
             chkChasePastEvent.Text = _("Chase Event");
-            chkChasePastEvent.Mnemonic(System.Windows.Forms.Keys.C);
+            chkChasePastEvent.Mnemonic(Keys.C);
             lblBuffer.Text = _("Buffer Size");
-            lblBuffer.Mnemonic(System.Windows.Forms.Keys.B);
+            lblBuffer.Mnemonic(Keys.B);
 			lblBufferSize.Text = "msec(" + cadencii.core.EditorConfig.MIN_BUFFER_MILLIXEC + "-" + cadencii.core.EditorConfig.MAX_BUFFER_MILLISEC + ")";
             #endregion
 

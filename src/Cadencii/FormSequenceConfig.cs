@@ -67,9 +67,9 @@ namespace cadencii
 
             groupWaveFileOutput.Text = _("Wave File Output");
             lblChannel.Text = _("Channel");
-            lblChannel.Mnemonic(System.Windows.Forms.Keys.C);
+            lblChannel.Mnemonic(Keys.C);
             labelSampleRate.Text = _("Sample rate");
-            labelSampleRate.Mnemonic(System.Windows.Forms.Keys.S);
+            labelSampleRate.Mnemonic(Keys.S);
             radioMasterTrack.Text = _("Master Track");
             radioCurrentTrack.Text = _("Current Track");
             labelSampleRate.Text = _("Sample rate");

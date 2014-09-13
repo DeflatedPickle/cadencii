@@ -18,6 +18,7 @@ using cadencii.apputil;
 using cadencii.vsq;
 using cadencii.windows.forms;
 using cadencii.java.util;
+using Keys = cadencii.java.awt.Keys;
 
 namespace cadencii
 {
@@ -99,23 +100,23 @@ namespace cadencii
         public void applyLanguage()
         {
             lblTemplate.Text = _("Template");
-            lblTemplate.Mnemonic(System.Windows.Forms.Keys.T);
+            lblTemplate.Mnemonic(Keys.T);
             groupPitchControl.Text = _("Pitch Control");
             lblBendDepth.Text = _("Bend Depth");
-            lblBendDepth.Mnemonic(System.Windows.Forms.Keys.B);
+            lblBendDepth.Mnemonic(Keys.B);
             lblBendLength.Text = _("Bend Length");
-            lblBendLength.Mnemonic(System.Windows.Forms.Keys.L);
+            lblBendLength.Mnemonic(Keys.L);
             chkUpPortamento.Text = _("Add portamento in rising movement");
-            chkUpPortamento.Mnemonic(System.Windows.Forms.Keys.R);
+            chkUpPortamento.Mnemonic(Keys.R);
             chkDownPortamento.Text = _("Add portamento in falling movement");
-            chkDownPortamento.Mnemonic(System.Windows.Forms.Keys.F);
+            chkDownPortamento.Mnemonic(Keys.F);
 
             groupAttack.Text = _("Attack Control (VOCALOID1)");
             groupDynamicsControl.Text = _("Dynamics Control (VOCALOID2)");
             lblDecay.Text = _("Decay");
-            lblDecay.Mnemonic(System.Windows.Forms.Keys.D);
+            lblDecay.Mnemonic(Keys.D);
             lblAccent.Text = _("Accent");
-            lblAccent.Mnemonic(System.Windows.Forms.Keys.A);
+            lblAccent.Mnemonic(Keys.A);
 
             btnOK.Text = _("OK");
             btnCancel.Text = _("Cancel");

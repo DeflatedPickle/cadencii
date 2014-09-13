@@ -15,7 +15,7 @@ using System;
 using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii.windows.forms;
-
+using Keys = cadencii.java.awt.Keys;
 
 
 namespace cadencii
@@ -49,11 +49,11 @@ namespace cadencii
             this.Text = _("Global Tempo");
             groupPosition.Text = _("Position");
             lblBar.Text = _("Measure");
-            lblBar.Mnemonic(System.Windows.Forms.Keys.M);
+            lblBar.Mnemonic(Keys.M);
             lblBeat.Text = _("Beat");
-            lblBeat.Mnemonic(System.Windows.Forms.Keys.B);
+            lblBeat.Mnemonic(Keys.B);
             lblClock.Text = _("Clock");
-            lblClock.Mnemonic(System.Windows.Forms.Keys.L);
+            lblClock.Mnemonic(Keys.L);
             groupTempo.Text = _("Tempo");
             btnOK.Text = _("OK");
             btnCancel.Text = _("Cancel");

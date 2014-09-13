@@ -18,7 +18,7 @@ using cadencii.apputil;
 using cadencii.vsq;
 using cadencii.windows.forms;
 using cadencii.java.util;
-
+using Keys = cadencii.java.awt.Keys;
 
 
 namespace cadencii
@@ -114,9 +114,9 @@ namespace cadencii
         {
             this.Text = _("Vibrato property");
             lblVibratoLength.Text = _("Vibrato length");
-            lblVibratoLength.Mnemonic(System.Windows.Forms.Keys.L);
+            lblVibratoLength.Mnemonic(Keys.L);
             lblVibratoType.Text = _("Vibrato Type");
-            lblVibratoType.Mnemonic(System.Windows.Forms.Keys.T);
+            lblVibratoType.Mnemonic(Keys.T);
             btnOK.Text = _("OK");
             btnCancel.Text = _("Cancel");
             groupSelect.Text = _("Select from");
