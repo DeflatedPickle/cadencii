@@ -73,11 +73,11 @@ namespace cadencii
             } else if (renderer_kind == RendererKind.VOCALOID2) {
                 item = VocaloSysUtil.getSingerID(language, program, SynthesizerType.VOCALOID2);
             } else if (renderer_kind == RendererKind.UTAU || renderer_kind == RendererKind.VCNT) {
-                item = AppManager.getSingerIDUtau(language, program);
+                item = MusicManager.getSingerIDUtau(language, program);
             } else if (renderer_kind == RendererKind.AQUES_TONE) {
-                item = AppManager.getSingerIDAquesTone(program);
+                item = MusicManager.getSingerIDAquesTone(program);
             } else if (renderer_kind == RendererKind.AQUES_TONE2) {
-                item = AppManager.getSingerIDAquesTone2(program);
+                item = MusicManager.getSingerIDAquesTone2(program);
             }
             return item;
         }

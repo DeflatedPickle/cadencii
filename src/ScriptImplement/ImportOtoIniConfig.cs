@@ -27,7 +27,7 @@ public class ImportOtoIniConfig
                 continue;
             }
             VsqEvent singer = vsq_track.getSingerEventAt(original.Clock);
-            SingerConfig sc = AppManager.getSingerInfoUtau(singer.ID.IconHandle.Language, singer.ID.IconHandle.Program);
+            SingerConfig sc = MusicManager.getSingerInfoUtau(singer.ID.IconHandle.Language, singer.ID.IconHandle.Program);
             if (sc != null && UtauWaveGenerator.mUtauVoiceDB.ContainsKey(sc.VOICEIDSTR)) {
                 string phrase = original.ID.LyricHandle.L0.Phrase;
                 UtauVoiceDB db = UtauWaveGenerator.mUtauVoiceDB[sc.VOICEIDSTR];

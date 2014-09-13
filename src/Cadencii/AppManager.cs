@@ -526,10 +526,10 @@ namespace cadencii
                 }
             }
 
-            int bgm_count = getBgmCount();
+            int bgm_count = MusicManager.getBgmCount();
             double pre_measure_sec = mVsq.getSecFromClock(mVsq.getPreMeasureClocks());
             for (int i = 0; i < bgm_count; i++) {
-                BgmFile bgm = getBgm(i);
+                BgmFile bgm = MusicManager.getBgm(i);
                 WaveReader wr = null;
                 try {
                     wr = new WaveReader(bgm.file);
@@ -1175,71 +1175,6 @@ namespace cadencii
         }
 
         /// <summary>
-        /// 指定した音声合成システムが使用する歌手のリストを取得します
-        /// </summary>
-        /// <param name="kind">音声合成システムの種類</param>
-        /// <returns>歌手のリスト</returns>
-        public static List<VsqID> getSingerListFromRendererKind(RendererKind kind)
-        {
-            List<VsqID> singers = null;
-            if (kind == RendererKind.AQUES_TONE) {
-                singers = new List<VsqID>();
-#if ENABLE_AQUESTONE
-                singers.AddRange(AquesToneDriver.Singers.Select((config) => getSingerIDAquesTone(config.Program)));
-#endif
-            } else if (kind == RendererKind.AQUES_TONE2) {
-                singers = new List<VsqID>();
-#if ENABLE_AQUESTONE
-                singers.AddRange(AquesTone2Driver.Singers.Select((config) => getSingerIDAquesTone2(config.Program)));
-#endif
-            } else if (kind == RendererKind.VCNT || kind == RendererKind.UTAU) {
-                List<SingerConfig> list = ApplicationGlobal.appConfig.UtauSingers;
-                singers = new List<VsqID>();
-                foreach (var sc in list) {
-                    singers.Add(getSingerIDUtau(sc.Language, sc.Program));
-                }
-            } else if (kind == RendererKind.VOCALOID1) {
-                SingerConfig[] configs = VocaloSysUtil.getSingerConfigs(SynthesizerType.VOCALOID1);
-                singers = new List<VsqID>();
-                for (int i = 0; i < configs.Length; i++) {
-                    SingerConfig sc = configs[i];
-                    singers.Add(VocaloSysUtil.getSingerID(sc.Language, sc.Program, SynthesizerType.VOCALOID1));
-                }
-            } else if (kind == RendererKind.VOCALOID2) {
-                singers = new List<VsqID>();
-                SingerConfig[] configs = VocaloSysUtil.getSingerConfigs(SynthesizerType.VOCALOID2);
-                for (int i = 0; i < configs.Length; i++) {
-                    SingerConfig sc = configs[i];
-                    singers.Add(VocaloSysUtil.getSingerID(sc.Language, sc.Program, SynthesizerType.VOCALOID2));
-                }
-            }
-            return singers;
-        }
-
-        /// <summary>
-        /// 指定したトラックの，指定した音符イベントについて，UTAUのパラメータを適用します
-        /// </summary>
-        /// <param name="vsq_track"></param>
-        /// <param name="item"></param>
-        public static void applyUtauParameter(VsqTrack vsq_track, VsqEvent item)
-        {
-            VsqEvent singer = vsq_track.getSingerEventAt(item.Clock);
-            if (singer == null) {
-                return;
-            }
-            SingerConfig sc = getSingerInfoUtau(singer.ID.IconHandle.Language, singer.ID.IconHandle.Program);
-            if (sc != null && UtauWaveGenerator.mUtauVoiceDB.ContainsKey(sc.VOICEIDSTR)) {
-                UtauVoiceDB db = UtauWaveGenerator.mUtauVoiceDB[sc.VOICEIDSTR];
-                OtoArgs oa = db.attachFileNameFromLyric(item.ID.LyricHandle.L0.Phrase, item.ID.Note);
-                if (item.UstEvent == null) {
-                    item.UstEvent = new UstEvent();
-                }
-                item.UstEvent.setVoiceOverlap(oa.msOverlap);
-                item.UstEvent.setPreUtterance(oa.msPreUtterance);
-            }
-        }
-
-        /// <summary>
         /// 指定したディレクトリにある合成ステータスのxmlデータを読み込みます
         /// </summary>
         /// <param name="directory">読み込むxmlが保存されたディレクトリ</param>
@@ -1524,98 +1459,53 @@ namespace cadencii
         }
         #endregion
 
-        #region BGM 関連
-        public static int getBgmCount()
-        {
-            if (mVsq == null) {
-                return 0;
-            } else {
-                return mVsq.BgmFiles.Count;
-            }
-        }
+		public static void removeBgm (int index)
+		{
+			MusicManager.removeBgm (index, resultCmd => {
+				editHistory.register (resultCmd);
+				try {
+					if (EditedStateChanged != null) {
+						EditedStateChanged.Invoke (typeof(AppManager), true);
+					}
+				} catch (Exception ex) {
+					Logger.write (typeof(AppManager) + ".removeBgm; ex=" + ex + "\n");
+					serr.println (typeof(AppManager) + ".removeBgm; ex=" + ex);
+				}
+				mMixerWindow.updateStatus ();
+			});
+		}
 
-        public static BgmFile getBgm(int index)
-        {
-            if (mVsq == null) {
-                return null;
-            }
-            return mVsq.BgmFiles[index];
-        }
-
-        public static void removeBgm(int index)
-        {
-            if (mVsq == null) {
-                return;
-            }
-            List<BgmFile> list = new List<BgmFile>();
-            int count = mVsq.BgmFiles.Count;
-            for (int i = 0; i < count; i++) {
-                if (i != index) {
-                    list.Add((BgmFile)mVsq.BgmFiles[i].clone());
-                }
-            }
-            CadenciiCommand run = VsqFileEx.generateCommandBgmUpdate(list);
-            editHistory.register(mVsq.executeCommand(run));
-            try {
-                if (EditedStateChanged != null) {
-                    EditedStateChanged.Invoke(typeof(AppManager), true);
-                }
-            } catch (Exception ex) {
-                Logger.write(typeof(AppManager) + ".removeBgm; ex=" + ex + "\n");
-                serr.println(typeof(AppManager) + ".removeBgm; ex=" + ex);
-            }
-            mMixerWindow.updateStatus();
-        }
-
-        public static void clearBgm()
-        {
-            if (mVsq == null) {
-                return;
-            }
-            List<BgmFile> list = new List<BgmFile>();
-            CadenciiCommand run = VsqFileEx.generateCommandBgmUpdate(list);
-            editHistory.register(mVsq.executeCommand(run));
-            try {
-                if (EditedStateChanged != null) {
-                    EditedStateChanged.Invoke(typeof(AppManager), true);
-                }
-            } catch (Exception ex) {
-                Logger.write(typeof(AppManager) + ".removeBgm; ex=" + ex + "\n");
-                serr.println(typeof(AppManager) + ".removeBgm; ex=" + ex);
-            }
-            mMixerWindow.updateStatus();
-        }
-
-        public static void addBgm(string file)
-        {
-            if (mVsq == null) {
-                return;
-            }
-            List<BgmFile> list = new List<BgmFile>();
-            int count = mVsq.BgmFiles.Count;
-            for (int i = 0; i < count; i++) {
-                list.Add((BgmFile)mVsq.BgmFiles[i].clone());
-            }
-            BgmFile item = new BgmFile();
-            item.file = file;
-            item.feder = 0;
-            item.panpot = 0;
-            list.Add(item);
-            CadenciiCommand run = VsqFileEx.generateCommandBgmUpdate(list);
-            editHistory.register(mVsq.executeCommand(run));
-            try {
-                if (EditedStateChanged != null) {
-                    EditedStateChanged.Invoke(typeof(AppManager), true);
-                }
-            } catch (Exception ex) {
-                Logger.write(typeof(AppManager) + ".removeBgm; ex=" + ex + "\n");
-                serr.println(typeof(AppManager) + ".removeBgm; ex=" + ex);
-            }
-            mMixerWindow.updateStatus();
-        }
-        #endregion
-
-        #region 自動保存
+		public static void clearBgm ()
+		{
+			MusicManager.clearBgm (resultCmd => {
+				editHistory.register (resultCmd);
+				try {
+					if (EditedStateChanged != null) {
+						EditedStateChanged.Invoke (typeof(AppManager), true);
+					}
+				} catch (Exception ex) {
+					Logger.write (typeof(AppManager) + ".removeBgm; ex=" + ex + "\n");
+					serr.println (typeof(AppManager) + ".removeBgm; ex=" + ex);
+				}
+				mMixerWindow.updateStatus ();
+			});
+		}
+		public static void addBgm (string file)
+		{
+			MusicManager.addBgm (file, resultCmd => {
+			editHistory.register (resultCmd);
+			try {
+				if (EditedStateChanged != null) {
+					EditedStateChanged.Invoke (typeof(AppManager), true);
+				}
+			} catch (Exception ex) {
+				Logger.write (typeof(AppManager) + ".removeBgm; ex=" + ex + "\n");
+				serr.println (typeof(AppManager) + ".removeBgm; ex=" + ex);
+			}
+			mMixerWindow.updateStatus ();
+			});
+		}
+		#region 自動保存
         public static void updateAutoBackupTimerStatus()
         {
         // FIXME: enable this (using Rx probably)
@@ -2470,44 +2360,6 @@ namespace cadencii
             keyWidth = editorConfig.KeyWidth;
         }
 
-        public static VsqID getSingerIDUtau(int language, int program)
-        {
-            VsqID ret = new VsqID(0);
-            ret.type = VsqIDType.Singer;
-            int index = language << 7 | program;
-            if (0 <= index && index < ApplicationGlobal.appConfig.UtauSingers.Count) {
-				SingerConfig sc = ApplicationGlobal.appConfig.UtauSingers[index];
-                ret.IconHandle = new IconHandle();
-                ret.IconHandle.IconID = "$0701" + PortUtil.toHexString(language, 2) + PortUtil.toHexString(program, 2);
-                ret.IconHandle.IDS = sc.VOICENAME;
-                ret.IconHandle.Index = 0;
-                ret.IconHandle.Language = language;
-                ret.IconHandle.setLength(1);
-                ret.IconHandle.Original = language << 8 | program;
-                ret.IconHandle.Program = program;
-                ret.IconHandle.Caption = "";
-                return ret;
-            } else {
-                ret.IconHandle = new IconHandle();
-                ret.IconHandle.Program = 0;
-                ret.IconHandle.Language = 0;
-                ret.IconHandle.IconID = "$0701" + PortUtil.toHexString(0, 4);
-                ret.IconHandle.IDS = "Unknown";
-                ret.type = VsqIDType.Singer;
-                return ret;
-            }
-        }
-
-        public static SingerConfig getSingerInfoUtau(int language, int program)
-        {
-            int index = language << 7 | program;
-			if (0 <= index && index < ApplicationGlobal.appConfig.UtauSingers.Count) {
-				return ApplicationGlobal.appConfig.UtauSingers[index];
-            } else {
-                return null;
-            }
-        }
-
         /// <summary>
         /// TODO: 廃止する。AquesToneDriver から取得するようにする
         /// </summary>
@@ -2519,54 +2371,6 @@ namespace cadencii
             return AquesToneDriver.getSingerConfig(program_change);
 #else
             return null;
-#endif
-        }
-
-        private static VsqID createAquesToneSingerID(int program, Func<int, SingerConfig> get_singer_config)
-        {
-            VsqID ret = new VsqID(0);
-            ret.type = VsqIDType.Singer;
-            SingerConfig config = null;
-            if (get_singer_config != null) {
-                config = get_singer_config(program);
-            }
-            if (config != null) {
-                int lang = 0;
-                ret.IconHandle = new IconHandle();
-                ret.IconHandle.IconID = "$0701" + PortUtil.toHexString(lang, 2) + PortUtil.toHexString(program, 2);
-                ret.IconHandle.IDS = config.VOICENAME;
-                ret.IconHandle.Index = 0;
-                ret.IconHandle.Language = lang;
-                ret.IconHandle.setLength(1);
-                ret.IconHandle.Original = lang << 8 | program;
-                ret.IconHandle.Program = program;
-                ret.IconHandle.Caption = "";
-            } else {
-                ret.IconHandle = new IconHandle();
-                ret.IconHandle.Program = 0;
-                ret.IconHandle.Language = 0;
-                ret.IconHandle.IconID = "$0701" + PortUtil.toHexString(0, 2) + PortUtil.toHexString(0, 2);
-                ret.IconHandle.IDS = "Unknown";
-                ret.type = VsqIDType.Singer;
-            }
-            return ret;
-        }
-
-        public static VsqID getSingerIDAquesTone(int program)
-        {
-#if ENABLE_AQUESTONE
-            return createAquesToneSingerID(program, AquesToneDriver.getSingerConfig);
-#else
-            return createAquesToneSingerID( program, null );
-#endif
-        }
-
-        public static VsqID getSingerIDAquesTone2(int program)
-        {
-#if ENABLE_AQUESTONE
-            return createAquesToneSingerID(program, AquesTone2Driver.getSingerConfig);
-#else
-            return createAquesToneSingerID( program, null );
 #endif
         }
 

@@ -547,7 +547,7 @@ namespace cadencii
                     500000);
 			RendererKind kind = ApplicationGlobal.appConfig.DefaultSynthesizer;
             string renderer = kind.getVersionString();
-            List<VsqID> singers = AppManager.getSingerListFromRendererKind(kind);
+            List<VsqID> singers = MusicManager.getSingerListFromRendererKind(kind);
             tvsq.Track[1].changeRenderer(renderer, singers);
             AppManager.setVsqFile(tvsq);
 
@@ -1307,7 +1307,7 @@ namespace cadencii
             VsqEvent item = vsq_track.getSingerEventAt(AppManager.mAddingEvent.Clock);
             SingerConfig singerConfig = null;
             if (item != null && item.ID != null && item.ID.IconHandle != null) {
-                singerConfig = AppManager.getSingerInfoUtau(item.ID.IconHandle.Language, item.ID.IconHandle.Program);
+                singerConfig = MusicManager.getSingerInfoUtau(item.ID.IconHandle.Language, item.ID.IconHandle.Program);
             }
 
             if (singerConfig != null && UtauWaveGenerator.mUtauVoiceDB.ContainsKey(singerConfig.VOICEIDSTR)) {
@@ -2214,10 +2214,10 @@ namespace cadencii
         public void updateBgmMenuState()
         {
             menuTrackBgm.DropDownItems.Clear();
-            int count = AppManager.getBgmCount();
+            int count = MusicManager.getBgmCount();
             if (count > 0) {
                 for (int i = 0; i < count; i++) {
-                    BgmFile item = AppManager.getBgm(i);
+                    BgmFile item = MusicManager.getBgm(i);
                     var menu = new ToolStripMenuItem();
                     menu.Text = PortUtil.getFileName(item.file);
                     menu.ToolTipText = item.file;
@@ -3083,7 +3083,7 @@ namespace cadencii
                     } else {
                         items[j].ID.LyricHandle.L0.Phrase = phrase[j];
                         items[j].ID.LyricHandle.L0.setPhoneticSymbol(phonetic_symbol[j]);
-                        AppManager.applyUtauParameter(vsq_track, items[j]);
+                        MusicManager.applyUtauParameter(vsq_track, items[j]);
                     }
                     if (original_symbol[j] != phonetic_symbol[j]) {
                         List<string> spl = items[j].ID.LyricHandle.L0.getPhoneticSymbolList();
@@ -4528,7 +4528,7 @@ namespace cadencii
                         new_events[indx] = (VsqEvent)item.clone();
                         new_events[indx].ID.LyricHandle.L0.Phrase = new_phrases[indx];
                         new_events[indx].ID.LyricHandle.L0.setPhoneticSymbol(new_symbols[indx]);
-                        AppManager.applyUtauParameter(vsq_track, new_events[indx]);
+                        MusicManager.applyUtauParameter(vsq_track, new_events[indx]);
                         if (indx + 1 >= new_phrases.Count) {
                             break;
                         }
@@ -5567,7 +5567,7 @@ namespace cadencii
 
             RendererKind kind = ApplicationGlobal.appConfig.DefaultSynthesizer;
             string renderer = kind.getVersionString();
-            List<VsqID> singers = AppManager.getSingerListFromRendererKind(kind);
+            List<VsqID> singers = MusicManager.getSingerListFromRendererKind(kind);
 
             vsq_track.changeRenderer(renderer, singers);
             CadenciiCommand run = VsqFileEx.generateCommandAddTrack(vsq_track,
@@ -9289,7 +9289,7 @@ namespace cadencii
                 return;
             }
             if (track < 0) {
-                AppManager.getBgm(-track - 1).mute = mute ? 1 : 0;
+                MusicManager.getBgm(-track - 1).mute = mute ? 1 : 0;
             } else {
                 vsq.setMute(track, mute);
             }
@@ -9307,7 +9307,7 @@ namespace cadencii
                 // slave
                 MusicManager.getVsqFile().Mixer.Slave[track - 1].Panpot = panpot;
             } else {
-                AppManager.getBgm(-track - 1).panpot = panpot;
+                MusicManager.getBgm(-track - 1).panpot = panpot;
             }
         }
 
@@ -9321,7 +9321,7 @@ namespace cadencii
             } else if (track > 0) {
                 MusicManager.getVsqFile().Mixer.Slave[track - 1].Feder = feder;
             } else {
-                AppManager.getBgm(-track - 1).feder = feder;
+                MusicManager.getBgm(-track - 1).feder = feder;
             }
         }
         #endregion
@@ -11133,7 +11133,7 @@ namespace cadencii
                 // デフォルトの音声合成システムに切り替え
                 RendererKind kind = ApplicationGlobal.appConfig.DefaultSynthesizer;
                 string renderer = kind.getVersionString();
-                List<VsqID> singers = AppManager.getSingerListFromRendererKind(kind);
+                List<VsqID> singers = MusicManager.getSingerListFromRendererKind(kind);
                 work_track.changeRenderer(renderer, singers);
 
                 List<MidiEvent> events = mf.getMidiEventList(i);
@@ -12422,7 +12422,7 @@ namespace cadencii
                 }
                 VsqEvent edit = (VsqEvent)item.clone();
                 // UTAUのパラメータを適用
-                AppManager.applyUtauParameter(vsq_track, edit);
+                MusicManager.applyUtauParameter(vsq_track, edit);
                 // 合成したとき，意味のある変更が行われたか？
                 if (edit.UstEvent.equalsForSynth(item.UstEvent)) {
                     continue;
@@ -15759,7 +15759,7 @@ namespace cadencii
 
             RendererKind kind = ApplicationGlobal.appConfig.DefaultSynthesizer;
             string renderer = kind.getVersionString();
-            List<VsqID> singers = AppManager.getSingerListFromRendererKind(kind);
+            List<VsqID> singers = MusicManager.getSingerListFromRendererKind(kind);
             vsq.Track[1].changeRenderer(renderer, singers);
 
             AppManager.setVsqFile(vsq);
@@ -16118,7 +16118,7 @@ namespace cadencii
             if (!changed) { return; }
 
             var track_copy = (VsqTrack)vsq_track.clone();
-            List<VsqID> singers = AppManager.getSingerListFromRendererKind(kind);
+            List<VsqID> singers = MusicManager.getSingerListFromRendererKind(kind);
             string renderer = kind.getVersionString();
             if (singers == null) {
                 serr.println("FormMain#changeRendererCor; singers is null");
@@ -16157,20 +16157,20 @@ namespace cadencii
             try {
                 ib = new InputBox(_("Input Offset Seconds"));
                 ib.Location = getFormPreferedLocation(ib);
-                ib.setResult(AppManager.getBgm(index).readOffsetSeconds + "");
+                ib.setResult(MusicManager.getBgm(index).readOffsetSeconds + "");
                 DialogResult dr = AppManager.showModalDialog(ib, this);
                 if (dr != DialogResult.OK) {
                     return;
                 }
                 List<BgmFile> list = new List<BgmFile>();
-                int count = AppManager.getBgmCount();
+                int count = MusicManager.getBgmCount();
                 BgmFile item = null;
                 for (int i = 0; i < count; i++) {
                     if (i == index) {
-                        item = (BgmFile)AppManager.getBgm(i).clone();
+                        item = (BgmFile)MusicManager.getBgm(i).clone();
                         list.Add(item);
                     } else {
-                        list.Add(AppManager.getBgm(i));
+                        list.Add(MusicManager.getBgm(i));
                     }
                 }
                 double draft;
@@ -16205,14 +16205,14 @@ namespace cadencii
             BgmMenuItem menu = (BgmMenuItem)sender;
             int index = menu.getBgmIndex();
             List<BgmFile> list = new List<BgmFile>();
-            int count = AppManager.getBgmCount();
+            int count = MusicManager.getBgmCount();
             for (int i = 0; i < count; i++) {
                 if (i == index) {
-                    BgmFile item = (BgmFile)AppManager.getBgm(i).clone();
+                    BgmFile item = (BgmFile)MusicManager.getBgm(i).clone();
                     item.startAfterPremeasure = menu.Checked;
                     list.Add(item);
                 } else {
-                    list.Add(AppManager.getBgm(i));
+                    list.Add(MusicManager.getBgm(i));
                 }
             }
             CadenciiCommand run = VsqFileEx.generateCommandBgmUpdate(list);
@@ -16233,10 +16233,10 @@ namespace cadencii
             ApplicationGlobal.appConfig.setLastUsedPathIn(file, ".wav");
 
             // 既に開かれていたらキャンセル
-            int count = AppManager.getBgmCount();
+            int count = MusicManager.getBgmCount();
             bool found = false;
             for (int i = 0; i < count; i++) {
-                BgmFile item = AppManager.getBgm(i);
+                BgmFile item = MusicManager.getBgm(i);
                 if (file == item.file) {
                     found = true;
                     break;
@@ -16264,7 +16264,7 @@ namespace cadencii
             }
             BgmMenuItem parent = (BgmMenuItem)sender;
             int index = parent.getBgmIndex();
-            BgmFile bgm = AppManager.getBgm(index);
+            BgmFile bgm = MusicManager.getBgm(index);
             if (AppManager.showMessageBox(PortUtil.formatMessage(_("remove '{0}'?"), bgm.file),
                                   "Cadencii",
                                   cadencii.Dialog.MSGBOX_YES_NO_OPTION,

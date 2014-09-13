@@ -176,7 +176,7 @@ namespace cadencii
         public void updateStatus()
         {
             VsqFileEx vsq = MusicManager.getVsqFile();
-            int num = vsq.Mixer.Slave.Count + AppManager.getBgmCount();
+            int num = vsq.Mixer.Slave.Count + MusicManager.getBgmCount();
             if (m_tracker == null) {
                 m_tracker = new List<VolumeTracker>();
             }
@@ -216,7 +216,7 @@ namespace cadencii
             int screen_num = num <= max_num ? num : max_num; //スクリーン上に表示するVolumeTrackerの個数
 
             // panelSlaves上に配置するVolumeTrackerの個数
-            int num_vtracker_on_panel = vsq.Mixer.Slave.Count + AppManager.getBgmCount();
+            int num_vtracker_on_panel = vsq.Mixer.Slave.Count + MusicManager.getBgmCount();
             // panelSlaves上に一度に表示可能なVolumeTrackerの個数
             int panel_capacity = max_num - 1;
 
@@ -256,10 +256,10 @@ namespace cadencii
                 tracker.setSoloButtonVisible(true);
                 addToPanelSlaves(tracker, j);
             }
-            int count = AppManager.getBgmCount();
+            int count = MusicManager.getBgmCount();
             for (int i = 0; i < count; i++) {
                 j++;
-                BgmFile item = AppManager.getBgm(i);
+                BgmFile item = MusicManager.getBgm(i);
                 VolumeTracker tracker = m_tracker[j];
                 tracker.setFeder(item.feder);
                 tracker.setPanpot(item.panpot);

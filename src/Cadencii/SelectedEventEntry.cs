@@ -312,7 +312,7 @@ namespace cadencii
                     int selected = AppManager.getSelected();
                     VsqTrack vsq_track = vsq.Track[selected];
                     VsqEvent singer = vsq_track.getSingerEventAt(editing.Clock);
-                    SingerConfig sc = AppManager.getSingerInfoUtau(singer.ID.IconHandle.Language, singer.ID.IconHandle.Program);
+                    SingerConfig sc = MusicManager.getSingerInfoUtau(singer.ID.IconHandle.Language, singer.ID.IconHandle.Program);
                     if (sc != null && UtauWaveGenerator.mUtauVoiceDB.ContainsKey(sc.VOICEIDSTR)) {
                         UtauVoiceDB db = UtauWaveGenerator.mUtauVoiceDB[sc.VOICEIDSTR];
                         OtoArgs oa = db.attachFileNameFromLyric(phrase, editing.ID.Note);
