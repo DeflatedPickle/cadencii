@@ -1833,9 +1833,9 @@ namespace cadencii
 		public static void saveTo (string file)
 		{
 			MusicManager.saveTo (file, (a,b,c,d) => showMessageBox(a,b,c,d), _, mFile => {
-					editorConfig.pushRecentFiles(mFile);
-                if (!mAutoBackupTimer.Enabled && editorConfig.AutoBackupIntervalMinutes > 0) {
-                    double millisec = editorConfig.AutoBackupIntervalMinutes * 60.0 * 1000.0;
+					EditorManager.editorConfig.pushRecentFiles(mFile);
+				if (!mAutoBackupTimer.Enabled && EditorManager.editorConfig.AutoBackupIntervalMinutes > 0) {
+					double millisec = EditorManager.editorConfig.AutoBackupIntervalMinutes * 60.0 * 1000.0;
                     int draft = (int)millisec;
                     if (millisec > int.MaxValue) {
                         draft = int.MaxValue;
@@ -1930,8 +1930,8 @@ namespace cadencii
 
             VocaloSysUtil.init();
 
-            editorConfig.check();
-            keyWidth = editorConfig.KeyWidth;
+			EditorManager.editorConfig.check();
+			keyWidth = EditorManager.editorConfig.KeyWidth;
             VSTiDllManager.init();
             // アイコンパレード, VOCALOID1
             SingerConfigSys singer_config_sys1 = VocaloSysUtil.getSingerConfigSys(SynthesizerType.VOCALOID1);
@@ -2010,9 +2010,9 @@ namespace cadencii
                 }
                 // editorConfig.UserDictionariesの設定値をコピー
                 List<ValuePair<string, Boolean>> config_data = new List<ValuePair<string, Boolean>>();
-                int count = editorConfig.UserDictionaries.Count;
+				int count = EditorManager.editorConfig.UserDictionaries.Count;
                 for (int i = 0; i < count; i++) {
-                    string[] spl = PortUtil.splitString(editorConfig.UserDictionaries[i], new char[] { '\t' }, 2);
+					string[] spl = PortUtil.splitString(EditorManager.editorConfig.UserDictionaries[i], new char[] { '\t' }, 2);
                     config_data.Add(new ValuePair<string, Boolean>(spl[0], (spl[1].Equals("T") ? true : false)));
 #if DEBUG
                     AppManager.debugWriteLine("    " + spl[0] + "," + spl[1]);
@@ -2078,7 +2078,7 @@ namespace cadencii
         /// <returns></returns>
         public static int getPositionQuantizeClock()
         {
-            return QuantizeModeUtil.getQuantizeClock(editorConfig.getPositionQuantize(), editorConfig.isPositionQuantizeTriplet());
+			return QuantizeModeUtil.getQuantizeClock(EditorManager.editorConfig.getPositionQuantize(), EditorManager.editorConfig.isPositionQuantizeTriplet());
         }
 
         /// <summary>
@@ -2087,7 +2087,7 @@ namespace cadencii
         /// <returns></returns>
         public static int getLengthQuantizeClock()
         {
-            return QuantizeModeUtil.getQuantizeClock(editorConfig.getLengthQuantize(), editorConfig.isLengthQuantizeTriplet());
+			return QuantizeModeUtil.getQuantizeClock(EditorManager.editorConfig.getLengthQuantize(), EditorManager.editorConfig.isLengthQuantizeTriplet());
         }
 
         public static void serializeEditorConfig(EditorConfig instance, string file)
@@ -2163,17 +2163,17 @@ namespace cadencii
         public static void saveConfig()
         {
             // ユーザー辞書の情報を取り込む
-            editorConfig.UserDictionaries.Clear();
+			EditorManager.editorConfig.UserDictionaries.Clear();
             int count = SymbolTable.getCount();
             for (int i = 0; i < count; i++) {
                 SymbolTable table = SymbolTable.getSymbolTable(i);
-                editorConfig.UserDictionaries.Add(table.getName() + "\t" + (table.isEnabled() ? "T" : "F"));
+				EditorManager.editorConfig.UserDictionaries.Add(table.getName() + "\t" + (table.isEnabled() ? "T" : "F"));
             }
-            editorConfig.KeyWidth = keyWidth;
+			EditorManager.editorConfig.KeyWidth = keyWidth;
 
             // chevronの幅を保存
             if (Rebar.CHEVRON_WIDTH > 0) {
-                editorConfig.ChevronWidth = Rebar.CHEVRON_WIDTH;
+				EditorManager.editorConfig.ChevronWidth = Rebar.CHEVRON_WIDTH;
             }
 
             // シリアライズして保存
@@ -2182,7 +2182,7 @@ namespace cadencii
             sout.println("AppManager#saveConfig; file=" + file);
 #endif
             try {
-                serializeEditorConfig(editorConfig, file);
+				serializeEditorConfig(EditorManager.editorConfig, file);
             } catch (Exception ex) {
                 serr.println("AppManager#saveConfig; ex=" + ex);
                 Logger.write(typeof(AppManager) + ".saveConfig; ex=" + ex + "\n");
@@ -2200,7 +2200,7 @@ namespace cadencii
             sout.println("AppManager#loadConfig; appdata=" + appdata);
 #endif
             if (appdata.Equals("")) {
-                editorConfig = new EditorConfig();
+				EditorManager.editorConfig = new EditorConfig();
                 return;
             }
 
@@ -2310,9 +2310,9 @@ namespace cadencii
             if (ret == null) {
                 ret = new EditorConfig();
             }
-            editorConfig = ret;
+			EditorManager.editorConfig = ret;
 
-            keyWidth = editorConfig.KeyWidth;
+			keyWidth = EditorManager.editorConfig.KeyWidth;
         }
 
         /// <summary>
