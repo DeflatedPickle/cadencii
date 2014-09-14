@@ -96,7 +96,7 @@ namespace cadencii
                     compiled = true;
                 } catch (Exception ex) {
                     serr.println("Utility#compileScript; ex=" + ex);
-                    Logger.write(typeof(Utility) + ".compileScript; ex=" + ex + "\n");
+                    Logger.write(typeof(EditorManager) + ".compileScript; ex=" + ex + "\n");
                 }
                 if (!compiled) {
                     int c = cr.Errors.Count;
@@ -115,14 +115,14 @@ namespace cadencii
                         PortUtil.deleteFile(cached_asm_file);
                     } catch (Exception ex) {
                         serr.println("Utility#compileScript; ex=" + ex);
-                        Logger.write(typeof(Utility) + ".compileScript; ex=" + ex + "\n");
+                        Logger.write(typeof(EditorManager) + ".compileScript; ex=" + ex + "\n");
                     }
                 }
                 try {
                     PortUtil.copyFile(cr.PathToAssembly, cached_asm_file);
                 } catch (Exception ex) {
                     serr.println("Utility#compileScript; ex=" + ex);
-                    Logger.write(typeof(Utility) + ".compileScript; ex=" + ex + "\n");
+                    Logger.write(typeof(EditorManager) + ".compileScript; ex=" + ex + "\n");
                 }
             }
 
@@ -155,7 +155,7 @@ namespace cadencii
                         PortUtil.deleteFile(full);
                     } catch (Exception ex) {
                         serr.println("Utility#cleanupUnusedAssemblyCache; ex=" + ex);
-                        Logger.write(typeof(Utility) + ".cleanupUnusedAssemblyCache; ex=" + ex + "\n");
+                        Logger.write(typeof(EditorManager) + ".cleanupUnusedAssemblyCache; ex=" + ex + "\n");
                     }
                 }
             }
@@ -245,7 +245,7 @@ namespace cadencii
                             ret.Serializer.deserialize(fs);
                         } catch (Exception ex) {
                             serr.println("Utility#loadScript; ex=" + ex);
-                            Logger.write(typeof(Utility) + ".loadScript; ex=" + ex + "\n");
+                            Logger.write(typeof(EditorManager) + ".loadScript; ex=" + ex + "\n");
                             delete_when_exit = true;
                         } finally {
                             if (fs != null) {
@@ -256,7 +256,7 @@ namespace cadencii
                                     }
                                 } catch (Exception ex2) {
                                     serr.println("Utility#loadScript; ex2=" + ex2);
-                                    Logger.write(typeof(Utility) + ".loadScritp; ex=" + ex2 + "\n");
+                                    Logger.write(typeof(EditorManager) + ".loadScritp; ex=" + ex2 + "\n");
                                 }
                             }
                         }

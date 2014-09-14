@@ -47,6 +47,16 @@
     <Compile Include="app_dspcore\VibratoVariationConverter.cs" />
     <Compile Include="BAssemblyInfo.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="ScriptInvoker.cs" />
+    <Compile Include="ScriptReturnStatus.cs" />
+    <Compile Include="ScriptServer.cs" />
+    <Compile Include="XmlStaticMemberSerializerEx.cs" />
+    <Compile Include="plugin\PluginLoader.cs" />
+    <Compile Include="plugin\PluginVersion.cs" />
+    <Compile Include="plugin\ScriptProcessor.cs" />
+    <Compile Include="SelectedEventEntry.cs" />
+    <Compile Include="SelectedEventEntryPropertyDescriptor.cs" />
+    <Compile Include="SelectedEventEntryTypeConverter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

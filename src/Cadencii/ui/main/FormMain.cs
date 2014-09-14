@@ -873,7 +873,7 @@ namespace cadencii
             // RunOnceという名前のスクリプトがあれば，そいつを実行
             foreach (var id in ScriptServer.getScriptIdIterator()) {
                 if (PortUtil.getFileNameWithoutExtension(id).ToLower() == "runonce") {
-                    ScriptServer.invokeScript(id, MusicManager.getVsqFile());
+                    ScriptServer.invokeScript(id, MusicManager.getVsqFile(), (x1,x2,x3,x4) => AppManager.showMessageBox (x1, x2, x3, x4));
                     break;
                 }
             }
@@ -1257,10 +1257,10 @@ namespace cadencii
             int start = item.Clock;
             int length = song_position - start;
             if (length < 0) length = 0;
-            Utility.editLengthOfVsqEvent(
+            EditorManager.editLengthOfVsqEvent(
                 item,
                 length,
-                AppManager.vibratoLengthEditingRule);
+				EditorManager.vibratoLengthEditingRule);
         }
 
         /// <summary>
@@ -1530,7 +1530,7 @@ namespace cadencii
 
                 // ビブラートの長さを変更
                 VsqEvent add = (VsqEvent)item.editing.clone();
-                Utility.editLengthOfVsqEvent(add, draft, AppManager.vibratoLengthEditingRule);
+				EditorManager.editLengthOfVsqEvent(add, draft, EditorManager.vibratoLengthEditingRule);
                 items.Add(add);
             }
 
@@ -8319,7 +8319,7 @@ namespace cadencii
                             new_length = unit;
                         }
                         item.editing.Clock = end_clock - new_length;
-                        if (AppManager.vibratoLengthEditingRule == VibratoLengthEditingRule.PERCENTAGE) {
+				if (EditorManager.vibratoLengthEditingRule == VibratoLengthEditingRule.PERCENTAGE) {
                             double percentage = item.original.ID.VibratoDelay / (double)item.original.ID.getLength() * 100.0;
                             int newdelay = (int)(new_length * percentage / 100.0);
                             item.editing.ID.VibratoDelay = newdelay;
@@ -8338,7 +8338,7 @@ namespace cadencii
                         if (new_length <= 0) {
                             new_length = unit;
                         }
-                        if (AppManager.vibratoLengthEditingRule == VibratoLengthEditingRule.PERCENTAGE) {
+				if (EditorManager.vibratoLengthEditingRule == VibratoLengthEditingRule.PERCENTAGE) {
                             double percentage = item.original.ID.VibratoDelay / (double)item.original.ID.getLength() * 100.0;
                             int newdelay = (int)(new_length * percentage / 100.0);
                             item.editing.ID.VibratoDelay = newdelay;
@@ -8731,7 +8731,7 @@ namespace cadencii
                         }
                         i++;
 
-                        Utility.editLengthOfVsqEvent(ev.editing, ev.editing.ID.getLength(), AppManager.vibratoLengthEditingRule);
+				EditorManager.editLengthOfVsqEvent(ev.editing, ev.editing.ID.getLength(), EditorManager.vibratoLengthEditingRule);
                         ids[i] = ev.original.InternalID;
                         clocks[i] = ev.editing.Clock;
                         values[i] = ev.editing.ID;
@@ -16336,7 +16336,7 @@ namespace cadencii
                     ScriptServer.reload(id);
                 }
                 if (ScriptServer.isAvailable(id)) {
-                    if (ScriptServer.invokeScript(id, MusicManager.getVsqFile())) {
+		if (ScriptServer.invokeScript(id, MusicManager.getVsqFile(), (p1,p2,p3,p4) => AppManager.showMessageBox (p1, p2, p3, p4))) {
                         setEdited(true);
                         updateDrawObjectList();
                         int selected = EditorManager.Selected;
@@ -16523,10 +16523,10 @@ namespace cadencii
                         EditorManager.editorConfig.isLengthQuantizeTriplet());
 
                 // 音符の長さを設定
-                Utility.editLengthOfVsqEvent(
+	EditorManager.editLengthOfVsqEvent(
                     AppManager.mAddingEvent,
                     length,
-                    AppManager.vibratoLengthEditingRule);
+		EditorManager.vibratoLengthEditingRule);
 
                 // 現在位置は，音符の末尾になる
                 AppManager.setCurrentClock(clock + length);

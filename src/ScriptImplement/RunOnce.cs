@@ -20,7 +20,7 @@ public class RunOnce
         // 起動時のツール．デフォルトはEditTool.PENCIL
         EditorManager.SelectedTool = (EditTool.PENCIL);
         // 音符の長さを変えたとき，ビブラート長さがどう影響を受けるかを決める．
-        AppManager.vibratoLengthEditingRule = VibratoLengthEditingRule.PERCENTAGE;
+		EditorManager.vibratoLengthEditingRule = VibratoLengthEditingRule.PERCENTAGE;
 
         return ScriptReturnStatus.NOT_EDITED;
     }

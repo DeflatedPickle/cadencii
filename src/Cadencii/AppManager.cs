@@ -400,10 +400,6 @@ namespace cadencii
         /// </summary>
         public static bool drawOverSynthNameOnPianoroll = true;
         /// <summary>
-        /// 音符の長さが変更されたとき、ビブラートの長さがどう影響を受けるかを決める因子
-        /// </summary>
-        public static VibratoLengthEditingRule vibratoLengthEditingRule = VibratoLengthEditingRule.PERCENTAGE;
-        /// <summary>
         /// ピアノロール上で右クリックでコンテキストメニューを表示するかどうか
         /// </summary>
         public static bool showContextMenuWhenRightClickedOnPianoroll = true;

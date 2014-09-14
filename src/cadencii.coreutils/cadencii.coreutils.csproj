@@ -50,6 +50,7 @@
     <Compile Include="CDebug.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="PortUtil.cs" />
+    <Compile Include="BooleanEnum.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

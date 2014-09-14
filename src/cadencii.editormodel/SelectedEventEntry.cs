@@ -235,13 +235,13 @@ namespace cadencii
                     for (int i = 0; i < diff; i++) {
                         eq = "(" + eq;
                     }
-                    draft = (int)Utility.eval(draft, eq);
+                    draft = (int)EditorManager.eval(draft, eq);
                 } catch (Exception ex) {
                     draft = old_value;
                 }
             } else {
                 try {
-                    draft = (int)Utility.eval(old_value, received_string);
+		draft = (int)EditorManager.eval(old_value, received_string);
                 } catch (Exception ex) {
                     draft = old_value;
                 }
@@ -596,7 +596,7 @@ namespace cadencii
             }
 
             // ビブラートの長さを調節
-            Utility.editLengthOfVsqEvent(editing, draft, AppManager.vibratoLengthEditingRule);
+            EditorManager.editLengthOfVsqEvent(editing, draft, EditorManager.vibratoLengthEditingRule);
         }
 
         public string getLength()

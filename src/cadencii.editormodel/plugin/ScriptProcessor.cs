@@ -40,7 +40,8 @@ namespace cadencii
                 .Replace("org.kbinani", "cadencii")
                 .Replace("bocoreex", "cadencii.javax")
                 .Replace("bocoree", "cadencii.java")
-                .Replace("InputBox", typeof(cadencii.windows.forms.InputBox).FullName)
+                // FIXME: may need some fix
+				.Replace("InputBox", "cadencii.windows.forms.InputBox") // typeof (cadencii.windows.forms.InputBox).FullName
                 ;
         }
     }
