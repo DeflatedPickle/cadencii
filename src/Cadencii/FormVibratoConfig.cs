@@ -47,8 +47,8 @@ namespace cadencii
             InitializeComponent();
 
 #if DEBUG
-            AppManager.debugWriteLine("FormVibratoConfig.ctor(Vsqhandle,int,DefaultVibratoLength)");
-            AppManager.debugWriteLine("    (vibrato_handle==null)=" + (vibrato_handle == null));
+            CDebug.WriteLine("FormVibratoConfig.ctor(Vsqhandle,int,DefaultVibratoLength)");
+            CDebug.WriteLine("    (vibrato_handle==null)=" + (vibrato_handle == null));
             sout.println("    type=" + type);
 #endif
             if (use_original) {
@@ -267,8 +267,8 @@ namespace cadencii
         public void txtVibratoLength_TextChanged(Object sender, EventArgs e)
         {
 #if DEBUG
-            AppManager.debugWriteLine("txtVibratoLength_TextChanged");
-            AppManager.debugWriteLine("    (m_vibrato==null)=" + (m_vibrato == null));
+            CDebug.WriteLine("txtVibratoLength_TextChanged");
+            CDebug.WriteLine("    (m_vibrato==null)=" + (m_vibrato == null));
 #endif
             int percent = 0;
             try {

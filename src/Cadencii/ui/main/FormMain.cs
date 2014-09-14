@@ -529,7 +529,7 @@ namespace cadencii
 #endif
 
 #if DEBUG
-            AppManager.debugWriteLine("FormMain..ctor()");
+            CDebug.WriteLine("FormMain..ctor()");
 #endif
 			cadencii.core.EditorConfig.baseFont10Bold = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE10);
 			cadencii.core.EditorConfig.baseFont8 = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8);
@@ -940,7 +940,7 @@ namespace cadencii
                 a = new Point(rcScreen.x, a.Y);
             }
 #if DEBUG
-            AppManager.debugWriteLine("FormMain_Load; a=" + a);
+            CDebug.WriteLine("FormMain_Load; a=" + a);
 #endif
 
 #if ENABLE_PROPERTY
@@ -2634,7 +2634,7 @@ namespace cadencii
             } catch (Exception oex) {
                 Logger.write(typeof(FormMain) + ".drawUtauVibato; ex=" + oex + "\n");
 #if DEBUG
-                AppManager.debugWriteLine("DrawUtauVibrato; oex=" + oex);
+                CDebug.WriteLine("DrawUtauVibrato; oex=" + oex);
 #endif
             }
         }
@@ -2981,9 +2981,9 @@ namespace cadencii
             }
 
 #if DEBUG
-            AppManager.debugWriteLine("    original_phase,symbol=" + original_phrase + "," + original_symbol[0]);
-            AppManager.debugWriteLine("    phonetic_symbol_edit_mode=" + phonetic_symbol_edit_mode);
-            AppManager.debugWriteLine("    AppManager.mInputTextBox.setText(=" + AppManager.mInputTextBox.Text);
+            CDebug.WriteLine("    original_phase,symbol=" + original_phrase + "," + original_symbol[0]);
+            CDebug.WriteLine("    phonetic_symbol_edit_mode=" + phonetic_symbol_edit_mode);
+            CDebug.WriteLine("    AppManager.mInputTextBox.setText(=" + AppManager.mInputTextBox.Text);
 #endif
             string[] phrase = new string[count];
             string[] phonetic_symbol = new string[count];
@@ -3074,7 +3074,7 @@ namespace cadencii
                     }
                 }
 #if DEBUG
-                AppManager.debugWriteLine("    phrase,phonetic_symbol=" + phrase + "," + phonetic_symbol);
+                CDebug.WriteLine("    phrase,phonetic_symbol=" + phrase + "," + phonetic_symbol);
 #endif
 
                 for (int j = 0; j < count; j++) {
@@ -3144,8 +3144,8 @@ namespace cadencii
                 Logger.write(typeof(FormMain) + ".loadGameControler; ex=" + ex + "\n");
                 mGameMode = GameControlMode.DISABLED;
 #if DEBUG
-                AppManager.debugWriteLine("FormMain+ReloadGameControler");
-                AppManager.debugWriteLine("    ex=" + ex);
+                CDebug.WriteLine("FormMain+ReloadGameControler");
+                CDebug.WriteLine("    ex=" + ex);
 #endif
             }
             updateGameControlerStatus(null, null);
@@ -4382,7 +4382,7 @@ namespace cadencii
 
             // Palette Tool
 #if DEBUG
-            AppManager.debugWriteLine("FormMain#applyLanguage; Messaging.Language=" + Messaging.getLanguage());
+            CDebug.WriteLine("FormMain#applyLanguage; Messaging.Language=" + Messaging.getLanguage());
 #endif
 #if ENABLE_SCRIPT
             int count = toolBarTool.Buttons.Count;// toolStripTool.getComponentCount();
@@ -4764,7 +4764,7 @@ namespace cadencii
         public void deleteEvent()
         {
 #if DEBUG
-            AppManager.debugWriteLine(
+            CDebug.WriteLine(
                 "FormMain#deleteEvent(); AppManager.mInputTextBox.isEnabled()=" +
                 AppManager.mInputTextBox.Enabled);
 #endif
@@ -4868,7 +4868,7 @@ namespace cadencii
                 Refresh();
             } else if (AppManager.itemSelection.getTimesigCount() > 0) {
 #if DEBUG
-                AppManager.debugWriteLine("    Timesig");
+                CDebug.WriteLine("    Timesig");
 #endif
                 int[] barcounts = new int[AppManager.itemSelection.getTimesigCount()];
                 int[] numerators = new int[AppManager.itemSelection.getTimesigCount()];
@@ -4897,7 +4897,7 @@ namespace cadencii
             }
             if (AppManager.itemSelection.getPointIDCount() > 0) {
 #if DEBUG
-                AppManager.debugWriteLine("    Curve");
+                CDebug.WriteLine("    Curve");
 #endif
                 string curve;
                 if (!trackSelector.getSelectedCurve().isAttachNote()) {
@@ -5020,7 +5020,7 @@ namespace cadencii
                 foreach (var curve in copied_curve.Keys) {
                     VsqBPList list = copied_curve[curve];
 #if DEBUG
-                    AppManager.debugWriteLine("FormMain#pasteEvent; curve=" + curve);
+                    CDebug.WriteLine("FormMain#pasteEvent; curve=" + curve);
 #endif
                     if (curve.isScalar()) {
                         continue;
@@ -5116,10 +5116,10 @@ namespace cadencii
             commands += (edit_bezier != null) ? 1 : 0;
 
 #if DEBUG
-            AppManager.debugWriteLine("FormMain#pasteEvent; commands=" + commands);
-            AppManager.debugWriteLine("FormMain#pasteEvent; (add_event != null)=" + (add_event != null));
-            AppManager.debugWriteLine("FormMain#pasteEvent; (edit_bpcurve != null)=" + (edit_bpcurve != null));
-            AppManager.debugWriteLine("FormMain#pasteEvent; (edit_bezier != null)=" + (edit_bezier != null));
+            CDebug.WriteLine("FormMain#pasteEvent; commands=" + commands);
+            CDebug.WriteLine("FormMain#pasteEvent; (add_event != null)=" + (add_event != null));
+            CDebug.WriteLine("FormMain#pasteEvent; (edit_bpcurve != null)=" + (edit_bpcurve != null));
+            CDebug.WriteLine("FormMain#pasteEvent; (edit_bezier != null)=" + (edit_bezier != null));
 #endif
             if (commands == 1) {
                 if (add_event != null) {
@@ -5160,7 +5160,7 @@ namespace cadencii
         public void copyEvent()
         {
 #if DEBUG
-            AppManager.debugWriteLine("FormMain#copyEvent");
+            CDebug.WriteLine("FormMain#copyEvent");
 #endif
             int min = int.MaxValue; // コピーされたアイテムの中で、最小の開始クロック
 
@@ -6090,7 +6090,7 @@ namespace cadencii
         public void showInputTextBox(string phrase, string phonetic_symbol, Point position, bool phonetic_symbol_edit_mode)
         {
 #if DEBUG
-            AppManager.debugWriteLine("InitializeInputTextBox");
+            CDebug.WriteLine("InitializeInputTextBox");
 #endif
             hideInputTextBox();
 
@@ -7207,7 +7207,7 @@ namespace cadencii
         public void pictPianoRoll_MouseClick(Object sender, MouseEventArgs e)
         {
 #if DEBUG
-            AppManager.debugWriteLine("pictPianoRoll_MouseClick");
+            CDebug.WriteLine("pictPianoRoll_MouseClick");
 #endif
             Keys modefiers = (Keys) Control.ModifierKeys;
             EditMode edit_mode = AppManager.getEditMode();
@@ -7227,7 +7227,7 @@ namespace cadencii
                 VsqEvent item = getItemAtClickedPosition(new Point(e.X, e.Y), out_id_rect);
                 Rectangle id_rect = out_id_rect.value;
 #if DEBUG
-                AppManager.debugWriteLine("    (item==null)=" + (item == null));
+                CDebug.WriteLine("    (item==null)=" + (item == null));
 #endif
                 if (item != null &&
                      edit_mode != EditMode.MOVE_ENTRY_WAIT_MOVE &&
@@ -7373,7 +7373,7 @@ namespace cadencii
                     VsqEvent item = getItemAtClickedPosition(mButtonInitial, out_id_rect);
                     Rectangle id_rect = out_id_rect.value;
 #if DEBUG
-                    AppManager.debugWriteLine("pitcPianoRoll_MouseClick; button is right; (item==null)=" + (item == null));
+                    CDebug.WriteLine("pitcPianoRoll_MouseClick; button is right; (item==null)=" + (item == null));
 #endif
                     if (item != null) {
                         int itemx = AppManager.xCoordFromClocks(item.Clock);
@@ -7411,7 +7411,7 @@ namespace cadencii
         public void pictPianoRoll_MouseDoubleClick(Object sender, MouseEventArgs e)
         {
 #if DEBUG
-            AppManager.debugWriteLine("FormMain#pictPianoRoll_MouseDoubleClick");
+            CDebug.WriteLine("FormMain#pictPianoRoll_MouseDoubleClick");
 #endif
             ByRef<Rectangle> out_rect = new ByRef<Rectangle>();
             VsqEvent item = getItemAtClickedPosition(new Point(e.X, e.Y), out_rect);
@@ -7619,7 +7619,7 @@ namespace cadencii
         public void pictPianoRoll_MouseDown(Object sender, MouseEventArgs e0)
         {
 #if DEBUG
-            AppManager.debugWriteLine("pictPianoRoll_MouseDown");
+            CDebug.WriteLine("pictPianoRoll_MouseDown");
 #endif
             MouseButtons btn0 = e0.Button;
             if (isMouseMiddleButtonDowned(btn0)) {
@@ -7696,7 +7696,7 @@ namespace cadencii
                 }
                 #region 音符がなかった時
 #if DEBUG
-                AppManager.debugWriteLine("    No Event");
+                CDebug.WriteLine("    No Event");
 #endif
                 if (AppManager.itemSelection.getLastEvent() != null) {
                     executeLyricChangeCommand();
@@ -7790,7 +7790,7 @@ namespace cadencii
                                     AppManager.mAddingEvent.ID.Note = note;
                                     this.Cursor = Cursors.Default;
 #if DEBUG
-                                    AppManager.debugWriteLine("    EditMode=" + AppManager.getEditMode());
+                                    CDebug.WriteLine("    EditMode=" + AppManager.getEditMode());
 #endif
                                 } else {
                                     AppManager.setEditMode(EditMode.ADD_FIXED_LENGTH_ENTRY);
@@ -7811,7 +7811,7 @@ namespace cadencii
                             AppManager.mMouseDownLocation = new Point(e.X + stdx, e.Y + stdy);
                             AppManager.mIsPointerDowned = true;
 #if DEBUG
-                            AppManager.debugWriteLine("    EditMode=" + AppManager.getEditMode());
+                            CDebug.WriteLine("    EditMode=" + AppManager.getEditMode());
 #endif
                         }
                     }
@@ -7829,7 +7829,7 @@ namespace cadencii
             } else {
                 #region 音符があった時
 #if DEBUG
-                AppManager.debugWriteLine("    Event Found");
+                CDebug.WriteLine("    Event Found");
 #endif
                 if (AppManager.itemSelection.isEventContains(selected, item.InternalID)) {
                     executeLyricChangeCommand();
@@ -7872,7 +7872,7 @@ namespace cadencii
                                 this.Cursor = System.Windows.Forms.Cursors.VSplit;
                                 refreshScreen();
 #if DEBUG
-                                AppManager.debugWriteLine("    EditMode=" + AppManager.getEditMode());
+                                CDebug.WriteLine("    EditMode=" + AppManager.getEditMode());
 #endif
                                 return;
                             }
@@ -7977,8 +7977,8 @@ namespace cadencii
 
                             this.Cursor = Cursors.Hand;
 #if DEBUG
-                            AppManager.debugWriteLine("    EditMode=" + AppManager.getEditMode());
-                            AppManager.debugWriteLine("    m_config.SelectedEvent.Count=" + AppManager.itemSelection.getEventCount());
+                            CDebug.WriteLine("    EditMode=" + AppManager.getEditMode());
+                            CDebug.WriteLine("    m_config.SelectedEvent.Count=" + AppManager.itemSelection.getEventCount());
 #endif
                         }
                 }
@@ -8487,8 +8487,8 @@ namespace cadencii
         public void pictPianoRoll_MouseUp(Object sender, MouseEventArgs e)
         {
 #if DEBUG
-            AppManager.debugWriteLine("pictureBox1_MouseUp");
-            AppManager.debugWriteLine("    m_config.EditMode=" + AppManager.getEditMode());
+            CDebug.WriteLine("pictureBox1_MouseUp");
+            CDebug.WriteLine("    m_config.EditMode=" + AppManager.getEditMode());
 #endif
             AppManager.mIsPointerDowned = false;
             mMouseDowned = false;
@@ -9263,9 +9263,9 @@ namespace cadencii
         public void mixerWindow_SoloChanged(int track, bool solo)
         {
 #if DEBUG
-            AppManager.debugWriteLine("FormMain#mixerWindow_SoloChanged");
-            AppManager.debugWriteLine("    track=" + track);
-            AppManager.debugWriteLine("    solo=" + solo);
+            CDebug.WriteLine("FormMain#mixerWindow_SoloChanged");
+            CDebug.WriteLine("    track=" + track);
+            CDebug.WriteLine("    solo=" + solo);
 #endif
             VsqFileEx vsq = MusicManager.getVsqFile();
             if (vsq == null) {
@@ -9280,9 +9280,9 @@ namespace cadencii
         public void mixerWindow_MuteChanged(int track, bool mute)
         {
 #if DEBUG
-            AppManager.debugWriteLine("FormMain#mixerWindow_MuteChanged");
-            AppManager.debugWriteLine("    track=" + track);
-            AppManager.debugWriteLine("    mute=" + mute);
+            CDebug.WriteLine("FormMain#mixerWindow_MuteChanged");
+            CDebug.WriteLine("    track=" + track);
+            CDebug.WriteLine("    mute=" + mute);
 #endif
             VsqFileEx vsq = MusicManager.getVsqFile();
             if (vsq == null) {
@@ -9340,7 +9340,7 @@ namespace cadencii
         public void propertyPanel_CommandExecuteRequired(Object sender, CadenciiCommand command)
         {
 #if DEBUG
-            AppManager.debugWriteLine("m_note_property_dlg_CommandExecuteRequired");
+            CDebug.WriteLine("m_note_property_dlg_CommandExecuteRequired");
 #endif
             EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(command));
             updateDrawObjectList();
@@ -10122,8 +10122,8 @@ namespace cadencii
                     mLastPovU = pov_u;
                     if (note >= 0) {
 #if DEBUG
-                        AppManager.debugWriteLine("FormMain#mTimer_Tick");
-                        AppManager.debugWriteLine("    note=" + note);
+                        CDebug.WriteLine("FormMain#mTimer_Tick");
+                        CDebug.WriteLine("    note=" + note);
 #endif
                         if (AppManager.isPlaying()) {
                             int clock = AppManager.getCurrentClock();
@@ -10155,7 +10155,7 @@ namespace cadencii
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".mTimer_Tick; ex=" + ex + "\n");
 #if DEBUG
-                AppManager.debugWriteLine("    ex=" + ex);
+                CDebug.WriteLine("    ex=" + ex);
 #endif
                 mGameMode = GameControlMode.DISABLED;
                 updateGameControlerStatus(null, null);
@@ -11656,7 +11656,7 @@ namespace cadencii
             string ext = ".vsq";
             if (dialog_result == System.Windows.Forms.DialogResult.OK) {
 #if DEBUG
-                AppManager.debugWriteLine("openMidiDialog.Filter=" + openMidiDialog.Filter);
+                CDebug.WriteLine("openMidiDialog.Filter=" + openMidiDialog.Filter);
 #endif
                 string selected_filter = openMidiDialog.SelectedFilter();
                 if (selected_filter.EndsWith(".mid")) {
@@ -12127,7 +12127,7 @@ namespace cadencii
                 }
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".menuSettingPreference_Click; ex=" + ex + "\n");
-                AppManager.debugWriteLine("FormMain#menuSettingPreference_Click; ex=" + ex);
+                CDebug.WriteLine("FormMain#menuSettingPreference_Click; ex=" + ex);
             }
         }
 
@@ -12297,7 +12297,7 @@ namespace cadencii
         public void handleEditUndo_Click(Object sender, EventArgs e)
         {
 #if DEBUG
-            AppManager.debugWriteLine("menuEditUndo_Click");
+            CDebug.WriteLine("menuEditUndo_Click");
 #endif
             undo();
             refreshScreen();
@@ -12307,7 +12307,7 @@ namespace cadencii
         public void handleEditRedo_Click(Object sender, EventArgs e)
         {
 #if DEBUG
-            AppManager.debugWriteLine("menuEditRedo_Click");
+            CDebug.WriteLine("menuEditRedo_Click");
 #endif
             redo();
             refreshScreen();
@@ -12794,8 +12794,8 @@ namespace cadencii
                     int start = dlg.getStart() + MusicManager.getVsqFile().getPreMeasure() - 1;
                     int end = dlg.getEnd() + MusicManager.getVsqFile().getPreMeasure() - 1;
 #if DEBUG
-                    AppManager.debugWriteLine("FormMain+menuJobDeleteBar_Click");
-                    AppManager.debugWriteLine("    start,end=" + start + "," + end);
+                    CDebug.WriteLine("FormMain+menuJobDeleteBar_Click");
+                    CDebug.WriteLine("    start,end=" + start + "," + end);
 #endif
                     int clock_start = temp.getClockFromBarCount(start);
                     int clock_end = temp.getClockFromBarCount(end);
@@ -13285,7 +13285,7 @@ namespace cadencii
                 if (18 < e.Y && e.Y <= 32) {
                     #region テンポの変更
 #if DEBUG
-                    AppManager.debugWriteLine("TempoChange");
+                    CDebug.WriteLine("TempoChange");
 #endif
                     AppManager.itemSelection.clearEvent();
                     AppManager.itemSelection.clearTimesig();
@@ -13410,10 +13410,10 @@ namespace cadencii
                                     int new_clocks_in_beat = dlg.getClock();
                                     int new_clock = bar_top_clock + (new_beat - 1) * clock_per_beat + new_clocks_in_beat;
 #if DEBUG
-                                    AppManager.debugWriteLine("    new_beat=" + new_beat);
-                                    AppManager.debugWriteLine("    new_clocks_in_beat=" + new_clocks_in_beat);
-                                    AppManager.debugWriteLine("    changing_clock=" + changing_clock);
-                                    AppManager.debugWriteLine("    new_clock=" + new_clock);
+                                    CDebug.WriteLine("    new_beat=" + new_beat);
+                                    CDebug.WriteLine("    new_clocks_in_beat=" + new_clocks_in_beat);
+                                    CDebug.WriteLine("    changing_clock=" + changing_clock);
+                                    CDebug.WriteLine("    new_clock=" + new_clock);
 #endif
                                     CadenciiCommand run = new CadenciiCommand(
                                         VsqCommand.generateCommandUpdateTempo(new_clock, new_clock, (int)(6e7 / (double)dlg.getTempo())));
@@ -13544,7 +13544,7 @@ namespace cadencii
                             //int max_barcount = AppManager.VsqFile.getBarCountFromClock( total_clock ) - pre_measure + 1;
                             //int min_barcount = 1;
 #if DEBUG
-                            AppManager.debugWriteLine("FormMain.picturePositionIndicator_MouseClick; bar_count=" + (bar_count - pre_measure + 1));
+                            CDebug.WriteLine("FormMain.picturePositionIndicator_MouseClick; bar_count=" + (bar_count - pre_measure + 1));
 #endif
                             FormBeatConfigController dlg = null;
                             try {
@@ -13780,7 +13780,7 @@ namespace cadencii
         {
             Keys modifiers = (Keys) Control.ModifierKeys;
 #if DEBUG
-            AppManager.debugWriteLine("picturePositionIndicator_MouseClick");
+            CDebug.WriteLine("picturePositionIndicator_MouseClick");
 #endif
             if (e.Button == MouseButtons.Left) {
                 VsqFileEx vsq = MusicManager.getVsqFile();
@@ -13804,7 +13804,7 @@ namespace cadencii
                     } else if (18 < e.Y && e.Y <= 32) {
                         #region テンポの変更
 #if DEBUG
-                        AppManager.debugWriteLine("TempoChange");
+                        CDebug.WriteLine("TempoChange");
 #endif
                         AppManager.itemSelection.clearEvent();
                         AppManager.itemSelection.clearTimesig();
@@ -15043,7 +15043,7 @@ namespace cadencii
         public void cMenuTrackSelectorUndo_Click(Object sender, EventArgs e)
         {
 #if DEBUG
-            AppManager.debugWriteLine("cMenuTrackSelectorUndo_Click");
+            CDebug.WriteLine("cMenuTrackSelectorUndo_Click");
 #endif
             undo();
             refreshScreen();
@@ -15052,7 +15052,7 @@ namespace cadencii
         public void cMenuTrackSelectorRedo_Click(Object sender, EventArgs e)
         {
 #if DEBUG
-            AppManager.debugWriteLine("cMenuTrackSelectorRedo_Click");
+            CDebug.WriteLine("cMenuTrackSelectorRedo_Click");
 #endif
             redo();
             refreshScreen();
@@ -15786,7 +15786,7 @@ namespace cadencii
         public void handleEditCopy_Click(Object sender, EventArgs e)
         {
 #if DEBUG
-            AppManager.debugWriteLine("handleEditCopy_Click");
+            CDebug.WriteLine("handleEditCopy_Click");
 #endif
             copyEvent();
         }

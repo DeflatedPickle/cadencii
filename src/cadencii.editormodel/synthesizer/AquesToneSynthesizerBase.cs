@@ -12,7 +12,6 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
-using System.Windows.Forms;
 using cadencii.dsp.v2.generator;
 using cadencii.vsq;
 
@@ -33,7 +32,7 @@ namespace cadencii.synthesizer
 
         private const int VERSION = 0;
         private const int BUFLEN = 1024;
-        private readonly Form main_window_;
+        private readonly object main_window_;
         private Session session_;
         private object session_mutex_ = new object();
 
@@ -41,7 +40,7 @@ namespace cadencii.synthesizer
 
         protected abstract AquesToneDriverBase getDriver();
 
-        protected AquesToneSynthesizerBase(Form main_window)
+        protected AquesToneSynthesizerBase(object main_window)
         {
             main_window_ = main_window;
         }

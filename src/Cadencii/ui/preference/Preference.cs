@@ -1338,7 +1338,7 @@ namespace cadencii
         {
             int index = getUtausingersSelectedIndex();
 #if DEBUG
-            AppManager.debugWriteLine("Preference.btnDown_Click; index=" + index);
+            CDebug.WriteLine("Preference.btnDown_Click; index=" + index);
 #endif
             if (0 <= index && index + 1 < m_utau_singers.Count) {
                 SingerConfig buf = (SingerConfig)m_utau_singers[index].clone();
@@ -1356,7 +1356,7 @@ namespace cadencii
         {
             int index = getUtausingersSelectedIndex();
 #if DEBUG
-            AppManager.debugWriteLine("Preference.btnUp_Click; index=" + index);
+            CDebug.WriteLine("Preference.btnUp_Click; index=" + index);
 #endif
             if (0 <= index - 1 && index < m_utau_singers.Count) {
                 SingerConfig buf = (SingerConfig)m_utau_singers[index].clone();

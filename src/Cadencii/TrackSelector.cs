@@ -1182,7 +1182,7 @@ namespace cadencii
                                           AppManager.RENDER[i]);
 #if DEBUG
                         } catch (Exception ex) {
-                            AppManager.debugWriteLine("TrackSelector.DrawTo; ex=" + ex);
+                            CDebug.WriteLine("TrackSelector.DrawTo; ex=" + ex);
                         }
 #endif
                     }
@@ -2436,8 +2436,8 @@ namespace cadencii
                 }
 #if DEBUG
             } catch (Exception ex) {
-                AppManager.debugWriteLine("TrackSelector+DrawAttatchedCurve");
-                AppManager.debugWriteLine("    ex=" + ex);
+                CDebug.WriteLine("TrackSelector+DrawAttatchedCurve");
+                CDebug.WriteLine("    ex=" + ex);
             }
 #endif
         }
@@ -3379,7 +3379,7 @@ namespace cadencii
         public void TrackSelector_MouseDown(Object sender, MouseEventArgs e)
         {
 #if DEBUG
-            AppManager.debugWriteLine("TrackSelector_MouseDown");
+            CDebug.WriteLine("TrackSelector_MouseDown");
 #endif
             VsqFileEx vsq = MusicManager.getVsqFile();
             mMouseDownLocation.X = e.X + AppManager.mMainWindowController.getStartToDrawX();
@@ -3529,7 +3529,7 @@ namespace cadencii
                     }
                 }
 #if DEBUG
-                AppManager.debugWriteLine("    clock_inner_note=" + clock_inner_note);
+                CDebug.WriteLine("    clock_inner_note=" + clock_inner_note);
 #endif
                 if (AppManager.keyWidth <= e.X) {
                     if (e.Button == MouseButtons.Left && !mSpaceKeyDowned) {
@@ -4044,7 +4044,7 @@ namespace cadencii
                     }
 
 #if DEBUG
-                    AppManager.debugWriteLine("    (target_chain==null)=" + (target_chain == null));
+                    CDebug.WriteLine("    (target_chain==null)=" + (target_chain == null));
                     if (target_chain != null && found_point.value != null) {
                         sout.println("TrackSelector::procesMouseDownBezier; before:(" + found_point.value.getPosition(found_side.value) + "," + found_point.value.getPosition(found_side.value) + "); after:(" + clock + "," + value + ")");
                     }
@@ -4063,7 +4063,7 @@ namespace cadencii
                         adding.add(bp);
                         chain_id = MusicManager.getVsqFile().AttachedCurves.get(track - 1).getNextId(mSelectedCurve);
 #if DEBUG
-                        AppManager.debugWriteLine("    new chain_id=" + chain_id);
+                        CDebug.WriteLine("    new chain_id=" + chain_id);
 #endif
                         CadenciiCommand run = VsqFileEx.generateCommandAddBezierChain(track,
                                                                                 mSelectedCurve,
@@ -4299,7 +4299,7 @@ namespace cadencii
         public void TrackSelector_MouseUp(Object sender, MouseEventArgs e)
         {
 #if DEBUG
-            AppManager.debugWriteLine("TrackSelector_MouseUp");
+            CDebug.WriteLine("TrackSelector_MouseUp");
 #endif
             mMouseDowned = false;
             if (mMouseHoverThread != null) {
@@ -4323,7 +4323,7 @@ namespace cadencii
             VsqFileEx vsq = MusicManager.getVsqFile();
             VsqTrack vsq_track = vsq.Track[selected];
 #if DEBUG
-            AppManager.debugWriteLine("    max,min=" + max + "," + min);
+            CDebug.WriteLine("    max,min=" + max + "," + min);
 #endif
             if (mMouseDownMode == MouseDownMode.BEZIER_ADD_NEW ||
                  mMouseDownMode == MouseDownMode.BEZIER_MODE ||
@@ -4366,8 +4366,8 @@ namespace cadencii
                                                                                            ApplicationGlobal.appConfig.getControlCurveResolutionValue());
                         executeCommand(run, true);
 #if DEBUG
-                        AppManager.debugWriteLine("    m_mouse_down_mode=" + mMouseDownMode);
-                        AppManager.debugWriteLine("    chain_id=" + chain_id);
+                        CDebug.WriteLine("    m_mouse_down_mode=" + mMouseDownMode);
+                        CDebug.WriteLine("    chain_id=" + chain_id);
 #endif
 
                     }
@@ -4389,7 +4389,7 @@ namespace cadencii
                                     AppManager.mCurveSelectedInterval = new SelectedRegion(start);
                                     AppManager.mCurveSelectedInterval.setEnd(end);
 #if DEBUG
-                                    AppManager.debugWriteLine("TrackSelector#TrackSelector_MouseUp; selected_region is set to TRUE");
+                                    CDebug.WriteLine("TrackSelector#TrackSelector_MouseUp; selected_region is set to TRUE");
 #endif
                                     AppManager.setCurveSelectedIntervalEnabled(true);
                                 } else {
@@ -4653,8 +4653,8 @@ namespace cadencii
                                 start = AppManager.clockFromXCoord(start - stdx);
                                 end = AppManager.clockFromXCoord(end - stdx);
 #if DEBUG
-                                AppManager.debugWriteLine("        start=" + start);
-                                AppManager.debugWriteLine("        end=" + end);
+                                CDebug.WriteLine("        start=" + start);
+                                CDebug.WriteLine("        end=" + end);
 #endif
                                 SortedDictionary<int, int> velocity = new SortedDictionary<int, int>();
                                 foreach (var ve in vsq_track.getNoteEventIterator()) {
@@ -4677,7 +4677,7 @@ namespace cadencii
                                             int key0_clock = AppManager.clockFromXCoord(key0 - stdx);
                                             int key1_clock = AppManager.clockFromXCoord(key1 - stdx);
 #if DEBUG
-                                            AppManager.debugWriteLine("        key0,key1=" + key0 + "," + key1);
+                                            CDebug.WriteLine("        key0,key1=" + key0 + "," + key1);
 #endif
                                             if (key0_clock < ve.Clock && ve.Clock < key1_clock) {
                                                 int key0_value = valueFromYCoord(lvalue);
@@ -4744,7 +4744,7 @@ namespace cadencii
                                 int start = mMouseTracer.firstKey();
                                 int end = mMouseTracer.lastKey();
 #if DEBUG
-                                AppManager.debugWriteLine("    start,end=" + start + " " + end);
+                                CDebug.WriteLine("    start,end=" + start + " " + end);
 #endif
                                 List<int> internal_ids = new List<int>();
                                 List<VsqID> items = new List<VsqID>();
@@ -5139,8 +5139,8 @@ namespace cadencii
         public void TrackSelector_MouseHover(Object sender, EventArgs e)
         {
 #if DEBUG
-            AppManager.debugWriteLine("TrackSelector_MouseHover");
-            AppManager.debugWriteLine("    m_mouse_downed=" + mMouseDowned);
+            CDebug.WriteLine("TrackSelector_MouseHover");
+            CDebug.WriteLine("    m_mouse_downed=" + mMouseDowned);
 #endif
             //if ( m_selected_curve.equals( CurveType.Accent ) || m_selected_curve.equals( CurveType.Decay ) || m_selected_curve.equals( CurveType.Env ) ) {
             if (mSelectedCurve.equals(CurveType.Env)) {
@@ -5183,7 +5183,7 @@ namespace cadencii
                         }
                     }
 #if DEBUG
-                    AppManager.debugWriteLine("    x=" + x);
+                    CDebug.WriteLine("    x=" + x);
 #endif
                     if (0f <= x && x <= 1f) {
                         if (mSelectedCurve.equals(CurveType.VibratoRate)) {
@@ -5305,10 +5305,10 @@ namespace cadencii
                 }
             } else if (mMouseDownMode == MouseDownMode.VEL_WAIT_HOVER) {
 #if DEBUG
-                AppManager.debugWriteLine("    entered VelEdit");
-                AppManager.debugWriteLine("    m_veledit_selected.Count=" + mVelEditSelected.Count);
-                AppManager.debugWriteLine("    m_veledit_last_selectedid=" + mVelEditLastSelectedID);
-                AppManager.debugWriteLine("    m_veledit_selected.ContainsKey(m_veledit_last_selectedid" + mVelEditSelected.ContainsKey(mVelEditLastSelectedID));
+                CDebug.WriteLine("    entered VelEdit");
+                CDebug.WriteLine("    m_veledit_selected.Count=" + mVelEditSelected.Count);
+                CDebug.WriteLine("    m_veledit_last_selectedid=" + mVelEditLastSelectedID);
+                CDebug.WriteLine("    m_veledit_selected.ContainsKey(m_veledit_last_selectedid" + mVelEditSelected.ContainsKey(mVelEditLastSelectedID));
 #endif
                 mMouseDownMode = MouseDownMode.VEL_EDIT;
                 Invalidate();
@@ -5684,7 +5684,7 @@ namespace cadencii
                 }
             } catch (Exception ex) {
                 sout.println("TarckSelectro.tsmi_MouseHover; ex=" + ex);
-                AppManager.debugWriteLine("TarckSelectro.tsmi_MouseHover; ex=" + ex);
+                CDebug.WriteLine("TarckSelectro.tsmi_MouseHover; ex=" + ex);
             }
         }
 
@@ -5704,7 +5704,7 @@ namespace cadencii
                     CadenciiCommand run = new CadenciiCommand(
                         VsqCommand.generateCommandEventChangeIDContaints(selected, id, item));
 #if DEBUG
-                    AppManager.debugWriteLine("TrackSelector#tsmi_Click; item.IconHandle.Program" + item.IconHandle.Program);
+                    CDebug.WriteLine("TrackSelector#tsmi_Click; item.IconHandle.Program" + item.IconHandle.Program);
 #endif
                     executeCommand(run, true);
                 } else {

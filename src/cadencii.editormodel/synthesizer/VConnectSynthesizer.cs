@@ -346,7 +346,7 @@ namespace cadencii.synthesizer
                                     }
                                     cached_data_length -= append_len;
                                 } catch (Exception ex) {
-                                    AppManager.debugWriteLine(typeof(VConnectSynthesizer) + "#begin; (A),(B); ex=" + ex);
+									cadencii.CDebug.WriteLine(typeof(VConnectSynthesizer) + "#begin; (A),(B); ex=" + ex);
                                 }
                             } else {
                                 // PATTERN C
@@ -396,7 +396,7 @@ namespace cadencii.synthesizer
                                     // キャッシュの長さは0になる
                                     cached_data_length = 0;
                                 } catch (Exception ex) {
-                                    AppManager.debugWriteLine(typeof(VConnectSynthesizer) + "#begin; (C); ex=" + ex);
+									cadencii.CDebug.WriteLine(typeof(VConnectSynthesizer) + "#begin; (C); ex=" + ex);
                                 }
                             }
                         } else {
@@ -463,7 +463,7 @@ namespace cadencii.synthesizer
                                         offset += amount;
                                     }
                                 } catch (Exception ex) {
-                                    AppManager.debugWriteLine(typeof(VConnectSynthesizer) + "#begin; (D); ex=" + ex);
+									cadencii.CDebug.WriteLine(typeof(VConnectSynthesizer) + "#begin; (D); ex=" + ex);
                                 }
                             } else if (next_wave_start < queue.startSample + rendered_length) {
                                 // PATTERN E
@@ -518,7 +518,7 @@ namespace cadencii.synthesizer
                                     // レンダリング結果を読み込む
                                     wr.read(offset, remain, cached_data_l, cached_data_r);
                                 } catch (Exception ex) {
-                                    AppManager.debugWriteLine(typeof(VConnectSynthesizer) + "#begin; (E); ex=" + ex);
+									cadencii.CDebug.WriteLine(typeof(VConnectSynthesizer) + "#begin; (E); ex=" + ex);
                                 }
                             } else {
                                 // PATTERN F
@@ -578,7 +578,7 @@ namespace cadencii.synthesizer
                                     // キャッシュは無くなる
                                     cached_data_length = 0;
                                 } catch (Exception ex) {
-                                    AppManager.debugWriteLine(typeof(VConnectSynthesizer) + "#begin; (F); ex=" + ex);
+									cadencii.CDebug.WriteLine(typeof(VConnectSynthesizer) + "#begin; (F); ex=" + ex);
                                 }
                             }
                         }

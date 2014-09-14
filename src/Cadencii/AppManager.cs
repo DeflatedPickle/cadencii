@@ -1520,11 +1520,6 @@ namespace cadencii
         }
         #endregion
 
-        public static void debugWriteLine(string message)
-        {
-            cadencii.CDebug.WriteLine(message);
-        }
-
         static string _(string id)
         {
             return Messaging.getMessage(id);
@@ -2011,7 +2006,7 @@ namespace cadencii
 					string[] spl = PortUtil.splitString(EditorManager.editorConfig.UserDictionaries[i], new char[] { '\t' }, 2);
                     config_data.Add(new ValuePair<string, Boolean>(spl[0], (spl[1].Equals("T") ? true : false)));
 #if DEBUG
-                    AppManager.debugWriteLine("    " + spl[0] + "," + spl[1]);
+                    CDebug.WriteLine("    " + spl[0] + "," + spl[1]);
 #endif
                 }
                 // 辞書リストとeditorConfigの設定を比較する

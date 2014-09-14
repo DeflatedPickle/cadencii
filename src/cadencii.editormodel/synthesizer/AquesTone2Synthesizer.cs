@@ -14,7 +14,6 @@
  */
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using cadencii.dsp.v2.generator;
 using cadencii.vsq;
 
@@ -33,7 +32,7 @@ namespace cadencii.synthesizer
         private VsqFile sequence_;
         private int track_index_;
 
-        public AquesTone2Synthesizer(AquesTone2Driver driver, Form main_window)
+        public AquesTone2Synthesizer(AquesTone2Driver driver, object main_window)
         {
             driver_ = driver;
             driver_.getUi(main_window);

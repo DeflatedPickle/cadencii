@@ -177,8 +177,8 @@ namespace cadencii
             winmmhelp.JoyGetStatus(0, out btn, out pov);
 
 #if DEBUG
-            AppManager.debugWriteLine("FormGameControlerConfig+timer_Tick");
-            AppManager.debugWriteLine("    pov=" + pov);
+            CDebug.WriteLine("FormGameControlerConfig+timer_Tick");
+            CDebug.WriteLine("    pov=" + pov);
 #endif
             bool added = false;
             if (index <= 4) {

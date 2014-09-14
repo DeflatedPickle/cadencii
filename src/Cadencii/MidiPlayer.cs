@@ -204,7 +204,7 @@ namespace org.kbinani.cadencii {
 
             for ( int track = 1; track < m_vsq.Track.size(); track++ ) {
 #if DEBUG
-                AppManager.debugWriteLine( "Metronome.Start; track=" + track );
+                CDebug.WriteLine( "Metronome.Start; track=" + track );
 #endif
                 for ( Iterator<VsqEvent> itr = m_vsq.Track.get( track ).getNoteEventIterator(); itr.hasNext(); ) {
                     VsqEvent item = itr.next();
@@ -237,7 +237,7 @@ namespace org.kbinani.cadencii {
                 int track = sender.Track;
                 int clock = sender.Clock;
 #if DEBUG
-                AppManager.debugWriteLine( "MidiPlayer#ReGenerateMidiQueue; track=" + track );
+                CDebug.WriteLine( "MidiPlayer#ReGenerateMidiQueue; track=" + track );
 #endif
                 for ( Iterator<VsqEvent> itr = m_vsq.Track.get( track ).getNoteEventIterator(); itr.hasNext(); ) {
                     VsqEvent item = itr.next();
@@ -319,7 +319,7 @@ namespace org.kbinani.cadencii {
                 int wait_millisec = (int)((next_tick - PortUtil.getCurrentTime()) * 1000.0) - PreUtterance;
                 int thiswait = (wait_millisec > TOLERANCE_MILLISEC * 2) ? TOLERANCE_MILLISEC * 2 : wait_millisec;
 #if DEBUG
-                AppManager.debugWriteLine( "MidiPlayer#ThreadProc; wait_millisec=" + wait_millisec );
+                CDebug.WriteLine( "MidiPlayer#ThreadProc; wait_millisec=" + wait_millisec );
 #endif
                 while ( thiswait > TOLERANCE_MILLISEC ) {
                     Thread.Sleep( thiswait );

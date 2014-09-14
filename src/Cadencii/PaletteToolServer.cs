@@ -85,7 +85,7 @@ namespace cadencii
                     if (t.IsClass && t.IsPublic && !t.IsAbstract && t.GetInterface(typeof(IPaletteTool).FullName) != null) {
                         try {
 #if DEBUG
-                            AppManager.debugWriteLine("t.FullName=" + t.FullName);
+                            CDebug.WriteLine("t.FullName=" + t.FullName);
 #endif
                             Object instance = asm.CreateInstance(t.FullName);
                             string dir = Path.Combine(cadencii.core.ApplicationGlobal.getApplicationDataPath(), "tool");

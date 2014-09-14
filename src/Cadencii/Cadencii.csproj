@@ -179,16 +179,6 @@
     <Compile Include="RecentFileMenuItem.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="synthesizer\AquesTone2Synthesizer.cs" />
-    <Compile Include="synthesizer\AquesToneSynthesizer.cs" />
-    <Compile Include="synthesizer\AquesToneSynthesizerBase.cs" />
-    <Compile Include="synthesizer\UtauSynthesizer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="synthesizer\VConnectSynthesizer.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="synthesizer\VocaloidSynthesizer.cs" />
     <Compile Include="SynthesizeWorker.cs" />
     <Compile Include="TestFormWorker.cs" />
     <Compile Include="TrackSelectorSingerDropdownMenuItem.cs">

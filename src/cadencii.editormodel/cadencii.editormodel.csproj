@@ -17,6 +17,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -25,6 +26,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <DefineConstants>__TEMPORALY_DISABLED__USE_OLD_SYNTH_IMPL;ENABLE_PROPERTY; ENABLE_VOCALOID; ENABLE_SCRIPT; ENABLE_MIDI;ENABLE_STRIP_DROPDOWN;ENABLE_MOUSEHOVER;ENABLE_AQUESTONE;ENABLE_GENERAL_VST;MONITOR_FPS;CSHARP</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -57,6 +59,16 @@
     <Compile Include="SelectedEventEntry.cs" />
     <Compile Include="SelectedEventEntryPropertyDescriptor.cs" />
     <Compile Include="SelectedEventEntryTypeConverter.cs" />
+    <Compile Include="synthesizer\AquesTone2Synthesizer.cs" />
+    <Compile Include="synthesizer\AquesToneSynthesizer.cs" />
+    <Compile Include="synthesizer\AquesToneSynthesizerBase.cs" />
+    <Compile Include="synthesizer\UtauSynthesizer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="synthesizer\VConnectSynthesizer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="synthesizer\VocaloidSynthesizer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

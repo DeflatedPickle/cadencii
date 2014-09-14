@@ -34,7 +34,7 @@ namespace cadencii.synthesizer
 
         private AquesToneDriver driver_;
 
-        public AquesToneSynthesizer(AquesToneDriver driver, FormMain main_window)
+        public AquesToneSynthesizer(AquesToneDriver driver, object main_window)
             : base(main_window)
         {
             driver_ = driver;
