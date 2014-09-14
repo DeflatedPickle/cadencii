@@ -283,7 +283,7 @@ namespace cadencii
             if (!old.Equals(value)) {
                 // 歌詞
                 string phrase = value;
-                if (AppManager.editorConfig.SelfDeRomanization) {
+                if (EditorManager.editorConfig.SelfDeRomanization) {
                     phrase = KanaDeRomanization.Attach(value);
                 }
                 editing.ID.LyricHandle.L0.Phrase = phrase;
@@ -1260,9 +1260,9 @@ namespace cadencii
                 if (m_vibrato != null && value != null && !m_vibrato.equals(value)) {
                     string description = value.description;
                     if (cadencii.core.ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType) {
-                        int size = AppManager.editorConfig.AutoVibratoCustom.Count;
+                        int size = EditorManager.editorConfig.AutoVibratoCustom.Count;
                         for (int i = 0; i < size; i++) {
-                            VibratoHandle handle = AppManager.editorConfig.AutoVibratoCustom[i];
+                            VibratoHandle handle = EditorManager.editorConfig.AutoVibratoCustom[i];
                             string display_string = handle.getDisplayString();
                             if (description == display_string) {
                                 editing.ID.VibratoHandle = (VibratoHandle)handle.clone();
@@ -1334,13 +1334,13 @@ namespace cadencii
                 if (editing.ID.VibratoHandle == null) {
                     VsqFileEx vsq = MusicManager.getVsqFile();
                     if (vsq != null) {
-                        string iconid = AppManager.editorConfig.AutoVibratoType2;
+                        string iconid = EditorManager.editorConfig.AutoVibratoType2;
                         SynthesizerType type = SynthesizerType.VOCALOID2;
                         RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[EditorManager.Selected]);
                         if (kind == RendererKind.VOCALOID1) {
                             type = SynthesizerType.VOCALOID1;
                         }
-                        editing.ID.VibratoHandle = AppManager.editorConfig.createAutoVibrato(type, 480); // 480はダミー
+                        editing.ID.VibratoHandle = EditorManager.editorConfig.createAutoVibrato(type, 480); // 480はダミー
                     }
                     if (editing.ID.VibratoHandle == null) {
                         editing.ID.VibratoHandle = new VibratoHandle();

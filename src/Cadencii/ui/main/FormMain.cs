@@ -531,11 +531,11 @@ namespace cadencii
 #if DEBUG
             AppManager.debugWriteLine("FormMain..ctor()");
 #endif
-			cadencii.core.EditorConfig.baseFont10Bold = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE10);
-			cadencii.core.EditorConfig.baseFont8 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8);
-			cadencii.core.EditorConfig.baseFont10 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE10);
-			cadencii.core.EditorConfig.baseFont9 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9);
-			cadencii.core.EditorConfig.baseFont50Bold = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE50);
+			cadencii.core.EditorConfig.baseFont10Bold = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE10);
+			cadencii.core.EditorConfig.baseFont8 = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8);
+			cadencii.core.EditorConfig.baseFont10 = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE10);
+			cadencii.core.EditorConfig.baseFont9 = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9);
+			cadencii.core.EditorConfig.baseFont50Bold = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE50);
 
             s_modifier_key = Keys.Control;
             VsqFileEx tvsq =
@@ -588,10 +588,10 @@ namespace cadencii
             saveMidiDialog = new SaveFileDialog();
             openWaveDialog = new OpenFileDialog();
 
-            /*mOverviewScaleCount = AppManager.editorConfig.OverviewScaleCount;
+            /*mOverviewScaleCount = EditorManager.editorConfig.OverviewScaleCount;
             mOverviewPixelPerClock = getOverviewScaleX( mOverviewScaleCount );*/
 
-            menuVisualOverview.Checked = AppManager.editorConfig.OverviewEnabled;
+            menuVisualOverview.Checked = EditorManager.editorConfig.OverviewEnabled;
 #if ENABLE_PROPERTY
             mPropertyPanelContainer = new PropertyPanelContainer();
 #endif
@@ -703,7 +703,7 @@ namespace cadencii
             panel1.ResumeLayout();
             splitContainer2.Panel1.ResumeLayout();
 
-            updatePropertyPanelState(AppManager.editorConfig.PropertyWindowStatus.State);
+            updatePropertyPanelState(EditorManager.editorConfig.PropertyWindowStatus.State);
 
             pictPianoRoll.MouseWheel += new MouseEventHandler(pictPianoRoll_MouseWheel);
             trackSelector.MouseWheel += new MouseEventHandler(trackSelector_MouseWheel);
@@ -728,13 +728,13 @@ namespace cadencii
             AppManager.mInputTextBox.Width = 80;
             AppManager.mInputTextBox.AcceptsReturn = true;
             AppManager.mInputTextBox.BackColor = System.Drawing.Color.White;
-			AppManager.mInputTextBox.Font = new System.Drawing.Font(AppManager.editorConfig.BaseFontName, cadencii.core.EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular);
+			AppManager.mInputTextBox.Font = new System.Drawing.Font(EditorManager.editorConfig.BaseFontName, cadencii.core.EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular);
             AppManager.mInputTextBox.Enabled = false;
             AppManager.mInputTextBox.KeyPress += mInputTextBox_KeyPress;
             AppManager.mInputTextBox.Parent = pictPianoRoll;
             panel1.Controls.Add(AppManager.mInputTextBox);
 
-            int fps = 1000 / AppManager.editorConfig.MaximumFrameRate;
+            int fps = 1000 / EditorManager.editorConfig.MaximumFrameRate;
             timer.Interval = (fps <= 0) ? 1 : fps;
 
 #if DEBUG
@@ -795,7 +795,7 @@ namespace cadencii
                 }
             }
 
-            trackBar.Value = AppManager.editorConfig.DefaultXScale;
+            trackBar.Value = EditorManager.editorConfig.DefaultXScale;
             AppManager.setCurrentClock(0);
             setEdited(false);
 
@@ -837,9 +837,9 @@ namespace cadencii
             //s_pen_dashed_171_171_171.DashPattern = new float[] { 3, 3 };
             //s_pen_dashed_209_204_172.DashPattern = new float[] { 3, 3 };
 
-            menuVisualNoteProperty.Checked = AppManager.editorConfig.ShowExpLine;
-            menuVisualLyrics.Checked = AppManager.editorConfig.ShowLyric;
-            menuVisualMixer.Checked = AppManager.editorConfig.MixerVisible;
+            menuVisualNoteProperty.Checked = EditorManager.editorConfig.ShowExpLine;
+            menuVisualLyrics.Checked = EditorManager.editorConfig.ShowLyric;
+            menuVisualMixer.Checked = EditorManager.editorConfig.MixerVisible;
 			menuVisualPitchLine.Checked = ApplicationGlobal.appConfig.ViewAtcualPitch;
 
             updateMenuFonts();
@@ -849,18 +849,18 @@ namespace cadencii
             AppManager.mMixerWindow.MuteChanged += new MuteChangedEventHandler(mixerWindow_MuteChanged);
             AppManager.mMixerWindow.SoloChanged += new SoloChangedEventHandler(mixerWindow_SoloChanged);
             AppManager.mMixerWindow.updateStatus();
-            if (AppManager.editorConfig.MixerVisible) {
+            if (EditorManager.editorConfig.MixerVisible) {
                 AppManager.mMixerWindow.Visible = true;
             }
             AppManager.mMixerWindow.FormClosing += new FormClosingEventHandler(mixerWindow_FormClosing);
 
-            Point p1 = AppManager.editorConfig.FormIconPaletteLocation.toPoint();
+            Point p1 = EditorManager.editorConfig.FormIconPaletteLocation.toPoint();
 			if (!cadencii.core2.PortUtil.isPointInScreens(p1)) {
 				Rectangle workingArea = cadencii.core2.PortUtil.getWorkingArea(this);
                 p1 = new Point(workingArea.x, workingArea.y);
             }
             AppManager.iconPalette.Location = new System.Drawing.Point(p1.X, p1.Y);
-            if (AppManager.editorConfig.IconPaletteVisible) {
+            if (EditorManager.editorConfig.IconPaletteVisible) {
                 AppManager.iconPalette.Visible = true;
             }
             AppManager.iconPalette.FormClosing += new FormClosingEventHandler(iconPalette_FormClosing);
@@ -892,12 +892,12 @@ namespace cadencii
             updateRendererMenu();
 
             // ウィンドウの位置・サイズを再現
-            if (AppManager.editorConfig.WindowMaximized) {
+            if (EditorManager.editorConfig.WindowMaximized) {
                 this.WindowState = FormWindowState.Maximized;
             } else {
                 this.WindowState = FormWindowState.Normal;
             }
-            Rectangle bounds = AppManager.editorConfig.WindowRect;
+            Rectangle bounds = EditorManager.editorConfig.WindowRect;
             this.Bounds = new System.Drawing.Rectangle(bounds.x, bounds.y, bounds.width, bounds.height);
             // ウィンドウ位置・サイズの設定値が、使えるディスプレイのどれにも被っていない場合
 			Rectangle rc2 = cadencii.core2.PortUtil.getScreenBounds(this);
@@ -908,7 +908,7 @@ namespace cadencii
                 bounds.x = rc2.x;
                 bounds.y = rc2.y;
                 this.Bounds = new System.Drawing.Rectangle(bounds.x, bounds.y, bounds.width, bounds.height);
-                AppManager.editorConfig.WindowRect = bounds;
+                EditorManager.editorConfig.WindowRect = bounds;
             }
             this.LocationChanged += new EventHandler(FormMain_LocationChanged);
 
@@ -919,13 +919,13 @@ namespace cadencii
 			Rectangle rc1 = cadencii.core2.PortUtil.getScreenBounds(this);
             Rectangle rcScreen = new Rectangle(rc1.x, rc1.y, rc1.width, rc1.height);
             var p = this.Location;
-            XmlRectangle xr = AppManager.editorConfig.PropertyWindowStatus.Bounds;
+            XmlRectangle xr = EditorManager.editorConfig.PropertyWindowStatus.Bounds;
             Point p0 = new Point(xr.x, xr.y);
             Point a = new Point(p.X + p0.X, p.Y + p0.Y);
             Rectangle rc = new Rectangle(a.X,
                                           a.Y,
-                                          AppManager.editorConfig.PropertyWindowStatus.Bounds.getWidth(),
-                                          AppManager.editorConfig.PropertyWindowStatus.Bounds.getHeight());
+                                          EditorManager.editorConfig.PropertyWindowStatus.Bounds.getWidth(),
+                                          EditorManager.editorConfig.PropertyWindowStatus.Bounds.getHeight());
 
             if (a.Y > rcScreen.y + rcScreen.height) {
                 a = new Point(a.X, rcScreen.y + rcScreen.height - rc.height);
@@ -1178,7 +1178,7 @@ namespace cadencii
         /// <param name="delta"></param>
         private void zoomY(int delta)
         {
-            int scaley = AppManager.editorConfig.PianoRollScaleY;
+            int scaley = EditorManager.editorConfig.PianoRollScaleY;
             int draft = scaley + delta;
             if (draft < EditorConfig.MIN_PIANOROLL_SCALEY) {
                 draft = EditorConfig.MIN_PIANOROLL_SCALEY;
@@ -1187,7 +1187,7 @@ namespace cadencii
                 draft = EditorConfig.MAX_PIANOROLL_SCALEY;
             }
             if (scaley != draft) {
-                AppManager.editorConfig.PianoRollScaleY = draft;
+                EditorManager.editorConfig.PianoRollScaleY = draft;
                 updateScrollRangeVertical();
                 controller.setStartToDrawY(calculateStartToDrawY(vScroll.Value));
                 updateDrawObjectList();
@@ -1210,7 +1210,7 @@ namespace cadencii
         private void updateVibratoPresetMenu()
         {
             // 現在の項目数に過不足があれば調節する
-            int size = AppManager.editorConfig.AutoVibratoCustom.Count;
+            int size = EditorManager.editorConfig.AutoVibratoCustom.Count;
             int delta = size - menuLyricCopyVibratoToPreset.DropDownItems.Count;
             if (delta > 0) {
                 // 項目を増やさないといけない
@@ -1231,7 +1231,7 @@ namespace cadencii
 
             // 表示状態を更新
             for (int i = 0; i < size; i++) {
-                VibratoHandle handle = AppManager.editorConfig.AutoVibratoCustom[i];
+                VibratoHandle handle = EditorManager.editorConfig.AutoVibratoCustom[i];
                 menuLyricCopyVibratoToPreset.DropDownItems[i].Text = handle.getCaption();
             }
         }
@@ -1275,13 +1275,13 @@ namespace cadencii
             LyricHandle lyric = new LyricHandle("あ", "a");
             VibratoHandle vibrato = null;
             int vibrato_delay = 0;
-            if (AppManager.editorConfig.EnableAutoVibrato) {
+            if (EditorManager.editorConfig.EnableAutoVibrato) {
                 int note_length = AppManager.mAddingEvent.ID.getLength();
                 // 音符位置での拍子を調べる
                 Timesig timesig = vsq.getTimesigAt(AppManager.mAddingEvent.Clock);
 
                 // ビブラートを自動追加するかどうかを決める閾値
-                int threshold = AppManager.editorConfig.AutoVibratoThresholdLength;
+                int threshold = EditorManager.editorConfig.AutoVibratoThresholdLength;
                 if (note_length >= threshold) {
                     int vibrato_clocks = 0;
                     if (ApplicationGlobal.appConfig.DefaultVibratoLength == DefaultVibratoLengthEnum.L100) {
@@ -1298,7 +1298,7 @@ namespace cadencii
                     if (kind == RendererKind.VOCALOID1) {
                         type = SynthesizerType.VOCALOID1;
                     }
-                    vibrato = AppManager.editorConfig.createAutoVibrato(type, vibrato_clocks);
+                    vibrato = EditorManager.editorConfig.createAutoVibrato(type, vibrato_clocks);
                     vibrato_delay = note_length - vibrato_clocks;
                 }
             }
@@ -1402,27 +1402,27 @@ namespace cadencii
             saveToolbarLocationCore(
                 list,
                 bandFile,
-                out AppManager.editorConfig.BandSizeFile,
-                out AppManager.editorConfig.BandNewRowFile,
-                out AppManager.editorConfig.BandOrderFile);
+                out EditorManager.editorConfig.BandSizeFile,
+                out EditorManager.editorConfig.BandNewRowFile,
+                out EditorManager.editorConfig.BandOrderFile);
             saveToolbarLocationCore(
                 list,
                 bandMeasure,
-                out AppManager.editorConfig.BandSizeMeasure,
-                out AppManager.editorConfig.BandNewRowMeasure,
-                out AppManager.editorConfig.BandOrderMeasure);
+                out EditorManager.editorConfig.BandSizeMeasure,
+                out EditorManager.editorConfig.BandNewRowMeasure,
+                out EditorManager.editorConfig.BandOrderMeasure);
             saveToolbarLocationCore(
                 list,
                 bandPosition,
-                out AppManager.editorConfig.BandSizePosition,
-                out AppManager.editorConfig.BandNewRowPosition,
-                out AppManager.editorConfig.BandOrderPosition);
+                out EditorManager.editorConfig.BandSizePosition,
+                out EditorManager.editorConfig.BandNewRowPosition,
+                out EditorManager.editorConfig.BandOrderPosition);
             saveToolbarLocationCore(
                 list,
                 bandTool,
-                out AppManager.editorConfig.BandSizeTool,
-                out AppManager.editorConfig.BandNewRowTool,
-                out AppManager.editorConfig.BandOrderTool);
+                out EditorManager.editorConfig.BandSizeTool,
+                out EditorManager.editorConfig.BandNewRowTool,
+                out EditorManager.editorConfig.BandOrderTool);
         }
 
         /// <summary>
@@ -1831,7 +1831,7 @@ namespace cadencii
                     if (current_version < recent_version) {
                         var form = Factory.createUpdateCheckForm();
                         form.setDownloadUrl(update_info.DownloadUrl);
-                        form.setFont((System.Drawing.Font) AppManager.editorConfig.getBaseFont().NativeFont);
+                        form.setFont((System.Drawing.Font) EditorManager.editorConfig.getBaseFont().NativeFont);
                         form.setOkButtonText(_("OK"));
                         form.setTitle(_("Check For Updates"));
                         form.setMessage(string.Format(_("New version {0} is available."), recent_version_string));
@@ -1969,7 +1969,7 @@ namespace cadencii
         public bool isMouseMiddleButtonDowned(MouseButtons button)
         {
             bool ret = false;
-            if (AppManager.editorConfig.UseSpaceKeyAsMiddleButtonModifier) {
+            if (EditorManager.editorConfig.UseSpaceKeyAsMiddleButtonModifier) {
                 if (mSpacekeyDowned && button == MouseButtons.Left) {
                     ret = true;
                 }
@@ -1995,7 +1995,7 @@ namespace cadencii
             if ( !bgWorkScreen.IsBusy ) {
                 double now = PortUtil.getCurrentTime();
                 double dt = now - mLastScreenRefreshedSec;
-                double mindt = 1.0 / AppManager.editorConfig.MaximumFrameRate;
+                double mindt = 1.0 / EditorManager.editorConfig.MaximumFrameRate;
                 if ( dt > mindt ) {
                     mLastScreenRefreshedSec = now;
                     bgWorkScreen.RunWorkerAsync();
@@ -2007,7 +2007,7 @@ namespace cadencii
             } else {
                 double now = PortUtil.getCurrentTime();
                 double dt = now - mLastScreenRefreshedSec;
-                double mindt = 1.0 / AppManager.editorConfig.MaximumFrameRate;
+                double mindt = 1.0 / EditorManager.editorConfig.MaximumFrameRate;
                 if (force || (!force && dt > mindt)) {
                     mIsRefreshing = true;
 
@@ -2037,7 +2037,7 @@ namespace cadencii
             if (menuVisualWaveform.Checked) {
                 waveView.Refresh();
             }
-            if (AppManager.editorConfig.OverviewEnabled) {
+            if (EditorManager.editorConfig.OverviewEnabled) {
                 panelOverview.Refresh();
             }
 #if MONITOR_FPS
@@ -2262,12 +2262,12 @@ namespace cadencii
             if (state == PanelState.Docked) {
                 mPropertyPanelContainer.addComponent(AppManager.propertyPanel);
                 menuVisualProperty.Checked = true;
-                AppManager.editorConfig.PropertyWindowStatus.State = PanelState.Docked;
+                EditorManager.editorConfig.PropertyWindowStatus.State = PanelState.Docked;
                 splitContainerProperty.setPanel1Hidden(false);
                 splitContainerProperty.setSplitterFixed(false);
                 splitContainerProperty.setDividerSize(_SPL_SPLITTER_WIDTH);
                 splitContainerProperty.Panel1MinSize = _PROPERTY_DOCK_MIN_WIDTH;
-                int w = AppManager.editorConfig.PropertyWindowStatus.DockWidth;
+                int w = EditorManager.editorConfig.PropertyWindowStatus.DockWidth;
                 if (w < _PROPERTY_DOCK_MIN_WIDTH) {
                     w = _PROPERTY_DOCK_MIN_WIDTH;
                 }
@@ -2275,17 +2275,17 @@ namespace cadencii
 #if DEBUG
                 sout.println("FormMain#updatePropertyPanelState; state=Docked; w=" + w);
 #endif
-                AppManager.editorConfig.PropertyWindowStatus.IsMinimized = true;
+                EditorManager.editorConfig.PropertyWindowStatus.IsMinimized = true;
                 AppManager.propertyWindow.getUi().hideWindow();
             } else if (state == PanelState.Hidden) {
                 if (AppManager.propertyWindow.getUi().isVisible()) {
                     AppManager.propertyWindow.getUi().hideWindow();
                 }
                 menuVisualProperty.Checked = false;
-                if (AppManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
-                    AppManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.getDividerLocation();
+                if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
+                    EditorManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.getDividerLocation();
                 }
-                AppManager.editorConfig.PropertyWindowStatus.State = PanelState.Hidden;
+                EditorManager.editorConfig.PropertyWindowStatus.State = PanelState.Hidden;
                 splitContainerProperty.Panel1MinSize = 0;
                 splitContainerProperty.setPanel1Hidden(true);
                 splitContainerProperty.setDividerLocation(0);
@@ -2294,7 +2294,7 @@ namespace cadencii
             } else if (state == PanelState.Window) {
                 AppManager.propertyWindow.getUi().addComponent(AppManager.propertyPanel);
                 var parent = this.Location;
-                XmlRectangle rc = AppManager.editorConfig.PropertyWindowStatus.Bounds;
+                XmlRectangle rc = EditorManager.editorConfig.PropertyWindowStatus.Bounds;
                 Point property = new Point(rc.x, rc.y);
                 int x = parent.X + property.X;
                 int y = parent.Y + property.Y;
@@ -2316,16 +2316,16 @@ namespace cadencii
                     AppManager.propertyWindow.getUi().deiconfyWindow();
                 }
                 menuVisualProperty.Checked = true;
-                if (AppManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
-                    AppManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.getDividerLocation();
+                if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
+                    EditorManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.getDividerLocation();
                 }
-                AppManager.editorConfig.PropertyWindowStatus.State = PanelState.Window;
+                EditorManager.editorConfig.PropertyWindowStatus.State = PanelState.Window;
                 splitContainerProperty.Panel1MinSize = 0;
                 splitContainerProperty.setPanel1Hidden(true);
                 splitContainerProperty.setDividerLocation(0);
                 splitContainerProperty.setDividerSize(0);
                 splitContainerProperty.setSplitterFixed(true);
-                AppManager.editorConfig.PropertyWindowStatus.IsMinimized = false;
+                EditorManager.editorConfig.PropertyWindowStatus.IsMinimized = false;
             }
         }
 #endif
@@ -2447,7 +2447,7 @@ namespace cadencii
             int width = panel1.Width;
             int height = panel1.Height;
 
-            if (AppManager.editorConfig.OverviewEnabled) {
+            if (EditorManager.editorConfig.OverviewEnabled) {
                 panelOverview.Height = _OVERVIEW_HEIGHT;
             } else {
                 panelOverview.Height = 0;
@@ -2512,7 +2512,7 @@ namespace cadencii
 
         public void updateRendererMenu()
         {
-            renderer_menu_handler_.ForEach((handler) => handler.updateRendererAvailability(AppManager.editorConfig));
+            renderer_menu_handler_.ForEach((handler) => handler.updateRendererAvailability(EditorManager.editorConfig));
 
             // UTAU用のサブアイテムを更新
             int count = ApplicationGlobal.appConfig.getResamplerCount();
@@ -2861,7 +2861,7 @@ namespace cadencii
         }
 
         /// <summary>
-        /// AppManager.editorConfig.ViewWaveformの値をもとに、splitterContainer2の表示状態を更新します
+        /// EditorManager.editorConfig.ViewWaveformの値をもとに、splitterContainer2の表示状態を更新します
         /// </summary>
         public void updateSplitContainer2Size(bool save_to_config)
         {
@@ -2870,7 +2870,7 @@ namespace cadencii
                 splitContainer2.setSplitterFixed(false);
                 splitContainer2.setPanel2Hidden(false);
                 splitContainer2.setDividerSize(_SPL_SPLITTER_WIDTH);
-                int lastloc = AppManager.editorConfig.SplitContainer2LastDividerLocation;
+                int lastloc = EditorManager.editorConfig.SplitContainer2LastDividerLocation;
                 if (lastloc <= 0 || lastloc > splitContainer2.getHeight()) {
                     int draft = splitContainer2.getHeight() - 100;
                     if (draft <= 0) {
@@ -2882,7 +2882,7 @@ namespace cadencii
                 }
             } else {
                 if (save_to_config) {
-                    AppManager.editorConfig.SplitContainer2LastDividerLocation = splitContainer2.getDividerLocation();
+                    EditorManager.editorConfig.SplitContainer2LastDividerLocation = splitContainer2.getDividerLocation();
                 }
                 splitContainer2.setPanel2MinSize(0);
                 splitContainer2.setPanel2Hidden(true);
@@ -3001,7 +3001,7 @@ namespace cadencii
             }
             if (!phonetic_symbol_edit_mode) {
                 // 歌詞を編集するモードで、
-                if (AppManager.editorConfig.SelfDeRomanization) {
+                if (EditorManager.editorConfig.SelfDeRomanization) {
                     // かつローマ字の入力を自動でひらがなに展開する設定だった場合。
                     // ローマ字をひらがなに展開
                     phrase[0] = KanaDeRomanization.Attach(phrase[0]);
@@ -3162,8 +3162,8 @@ namespace cadencii
                 mMidiIn.close();
                 mMidiIn = null;
             }
-            int portNumber = AppManager.editorConfig.MidiInPort.PortNumber;
-            int portNumberMtc = AppManager.editorConfig.MidiInPortMtc.PortNumber;
+            int portNumber = EditorManager.editorConfig.MidiInPort.PortNumber;
+            int portNumberMtc = EditorManager.editorConfig.MidiInPortMtc.PortNumber;
 #if DEBUG
             sout.println("FormMain#reloadMidiIn; portNumber=" + portNumber + "; portNumberMtc=" + portNumberMtc);
 #endif
@@ -3197,7 +3197,7 @@ namespace cadencii
             }
             if ( portNumber != portNumberMtc ) {
                 try {
-                    m_midi_in_mtc = new MidiInDevice( AppManager.editorConfig.MidiInPortMtc.PortNumber );
+                    m_midi_in_mtc = new MidiInDevice( EditorManager.editorConfig.MidiInPortMtc.PortNumber );
                     m_midi_in_mtc.MidiReceived += handleMtcMidiReceived;
                     m_midi_in_mtc.setReceiveSystemCommonMessage( true );
                     m_midi_in_mtc.setReceiveSystemRealtimeMessage( true );
@@ -3215,7 +3215,7 @@ namespace cadencii
 #if ENABLE_MIDI
         public void updateMidiInStatus()
         {
-            int midiport = AppManager.editorConfig.MidiInPort.PortNumber;
+            int midiport = EditorManager.editorConfig.MidiInPort.PortNumber;
             List<MidiDevice.Info> devices = new List<MidiDevice.Info>();
             foreach (MidiDevice.Info info in MidiSystem.getMidiDeviceInfo()) {
                 MidiDevice device = null;
@@ -3236,7 +3236,7 @@ namespace cadencii
             } else {
                 if (midiport >= devices.Count) {
                     midiport = 0;
-                    AppManager.editorConfig.MidiInPort.PortNumber = midiport;
+                    EditorManager.editorConfig.MidiInPort.PortNumber = midiport;
                 }
                 stripLblMidiIn.Text = devices[midiport].getName();
                 stripLblMidiIn.Image = Properties.Resources.piano;
@@ -3279,7 +3279,7 @@ namespace cadencii
                 menuScript.DropDownItems.Add(new ToolStripSeparator());
             }
             menuScript.DropDownItems.Add(menuScriptUpdate);
-            Util.applyToolStripFontRecurse(menuScript, AppManager.editorConfig.getBaseFont());
+            Util.applyToolStripFontRecurse(menuScript, EditorManager.editorConfig.getBaseFont());
             applyShortcut();
         }
 #endif
@@ -3420,7 +3420,7 @@ namespace cadencii
                     }
                 }
             } else if ((Keys) e.KeyCode == Keys.Space) {
-                if (!AppManager.editorConfig.UseSpaceKeyAsMiddleButtonModifier) {
+                if (!EditorManager.editorConfig.UseSpaceKeyAsMiddleButtonModifier) {
                     flipPlaying = true;
                 }
             } else if ((Keys) e.KeyCode == Keys.OemPeriod) {
@@ -3465,7 +3465,7 @@ namespace cadencii
             } else {
                 if (!AppManager.isPlaying()) {
                     // 最初に戻る、の機能を発動
-                    Keys[] specialGoToFirst = AppManager.editorConfig.SpecialShortcutGoToFirst;
+                    Keys[] specialGoToFirst = EditorManager.editorConfig.SpecialShortcutGoToFirst;
                     if (specialGoToFirst != null && specialGoToFirst.Length > 0) {
                         Keys shortcut = specialGoToFirst.Aggregate(Keys.None, (seed, key) => seed | key);
                         if ((Keys) e.KeyCode == shortcut) {
@@ -3516,8 +3516,8 @@ namespace cadencii
 
             int thumb_width = System.Windows.Forms.SystemInformation.HorizontalScrollBarThumbWidth;
             int box_width = (int)(large_change / (float)maximum * (hwidth - 2 * thumb_width));
-            if (box_width < AppManager.editorConfig.MinimumScrollHandleWidth) {
-                box_width = AppManager.editorConfig.MinimumScrollHandleWidth;
+            if (box_width < EditorManager.editorConfig.MinimumScrollHandleWidth) {
+                box_width = EditorManager.editorConfig.MinimumScrollHandleWidth;
                 if (hwidth - 2 * thumb_width > box_width) {
                     maximum = l * (hwidth - 2 * thumb_width) / (hwidth - 2 * thumb_width - box_width);
                     large_change = l * box_width / (hwidth - 2 * thumb_width - box_width);
@@ -3551,8 +3551,8 @@ namespace cadencii
 
             int thumb_height = System.Windows.Forms.SystemInformation.VerticalScrollBarThumbHeight;
             int box_height = (int)(large_change / (float)maximum * (vheight - 2 * thumb_height));
-            if (box_height < AppManager.editorConfig.MinimumScrollHandleWidth) {
-                box_height = AppManager.editorConfig.MinimumScrollHandleWidth;
+            if (box_height < EditorManager.editorConfig.MinimumScrollHandleWidth) {
+                box_height = EditorManager.editorConfig.MinimumScrollHandleWidth;
                 maximum = (int)(((128.0 * (int)(100 * scaley) - pheight) / scaley) * (vheight - 2 * thumb_height) / (vheight - 2 * thumb_height - box_height));
                 large_change = (int)(((128.0 * (int)(100 * scaley) - pheight) / scaley) * box_height / (vheight - 2 * thumb_height - box_height));
             }
@@ -3601,7 +3601,7 @@ namespace cadencii
         public void flipMixerDialogVisible(bool visible)
         {
             AppManager.mMixerWindow.Visible = visible;
-            AppManager.editorConfig.MixerVisible = visible;
+            EditorManager.editorConfig.MixerVisible = visible;
             if (visible != menuVisualMixer.Checked) {
                 menuVisualMixer.Checked = visible;
             }
@@ -3613,7 +3613,7 @@ namespace cadencii
         public void flipIconPaletteVisible(bool visible)
         {
             AppManager.iconPalette.Visible = visible;
-            AppManager.editorConfig.IconPaletteVisible = visible;
+            EditorManager.editorConfig.IconPaletteVisible = visible;
             if (visible != menuVisualIconPalette.Checked) {
                 menuVisualIconPalette.Checked = visible;
             }
@@ -3626,7 +3626,7 @@ namespace cadencii
         {
             mSpecialShortcutHolders.Clear();
 
-            SortedDictionary<string, Keys[]> dict = AppManager.editorConfig.getShortcutKeysDictionary(this.getDefaultShortcutKeys());
+            SortedDictionary<string, Keys[]> dict = EditorManager.editorConfig.getShortcutKeysDictionary(this.getDefaultShortcutKeys());
             #region menuStripMain
             ByRef<Object> parent = new ByRef<Object>(null);
             foreach (var key in dict.Keys) {
@@ -3800,8 +3800,8 @@ namespace cadencii
             }
             int cl_clock = AppManager.getCurrentClock();
             int unit = QuantizeModeUtil.getQuantizeClock(
-                AppManager.editorConfig.getPositionQuantize(),
-                AppManager.editorConfig.isPositionQuantizeTriplet());
+                EditorManager.editorConfig.getPositionQuantize(),
+                EditorManager.editorConfig.isPositionQuantizeTriplet());
             int cl_new = doQuantize(cl_clock + unit, unit);
 
             if (cl_new <= hScroll.Maximum + (pictPianoRoll.getWidth() - AppManager.keyWidth) * controller.getScaleXInv()) {
@@ -3832,8 +3832,8 @@ namespace cadencii
             }
             int cl_clock = AppManager.getCurrentClock();
             int unit = QuantizeModeUtil.getQuantizeClock(
-                AppManager.editorConfig.getPositionQuantize(),
-                AppManager.editorConfig.isPositionQuantizeTriplet());
+                EditorManager.editorConfig.getPositionQuantize(),
+                EditorManager.editorConfig.isPositionQuantizeTriplet());
             int cl_new = doQuantize(cl_clock - unit, unit);
             if (cl_new < 0) {
                 cl_new = 0;
@@ -3950,8 +3950,8 @@ namespace cadencii
 #if ENABLE_MOUSEHOVER
         public void MouseHoverEventGenerator( Object arg ) {
             int note = (int)arg;
-            if ( AppManager.editorConfig.MouseHoverTime > 0 ) {
-                Thread.Sleep( AppManager.editorConfig.MouseHoverTime );
+            if ( EditorManager.editorConfig.MouseHoverTime > 0 ) {
+                Thread.Sleep( EditorManager.editorConfig.MouseHoverTime );
             }
             KeySoundPlayer.play( note );
         }
@@ -4666,7 +4666,7 @@ namespace cadencii
         /// <returns></returns>
         public int computeScrollValueFromWheelDelta(int delta)
         {
-            double new_val = (double)hScroll.Value - delta * AppManager.editorConfig.WheelOrder / (5.0 * controller.getScaleX());
+            double new_val = (double)hScroll.Value - delta * EditorManager.editorConfig.WheelOrder / (5.0 * controller.getScaleX());
             if (new_val < 0.0) {
                 new_val = 0;
             }
@@ -5615,54 +5615,54 @@ namespace cadencii
             menuSettingPositionQuantize128.Checked = false;
             menuSettingPositionQuantizeOff.Checked = false;
 
-            QuantizeMode qm = AppManager.editorConfig.getPositionQuantize();
-            bool triplet = AppManager.editorConfig.isPositionQuantizeTriplet();
+            QuantizeMode qm = EditorManager.editorConfig.getPositionQuantize();
+            bool triplet = EditorManager.editorConfig.isPositionQuantizeTriplet();
             stripDDBtnQuantizeParent.Text =
                 "QUANTIZE " + QuantizeModeUtil.getString(qm) +
                 ((qm != QuantizeMode.off && triplet) ? " [3]" : "");
-            if (AppManager.editorConfig.getPositionQuantize() == QuantizeMode.p4) {
+            if (EditorManager.editorConfig.getPositionQuantize() == QuantizeMode.p4) {
                 cMenuPianoQuantize04.Checked = true;
 #if ENABLE_STRIP_DROPDOWN
                 stripDDBtnQuantize04.Checked = true;
 #endif
                 stripDDBtnQuantizeParent.ImageKey = "note004.png";
                 menuSettingPositionQuantize04.Checked = true;
-            } else if (AppManager.editorConfig.getPositionQuantize() == QuantizeMode.p8) {
+            } else if (EditorManager.editorConfig.getPositionQuantize() == QuantizeMode.p8) {
                 cMenuPianoQuantize08.Checked = true;
 #if ENABLE_STRIP_DROPDOWN
                 stripDDBtnQuantize08.Checked = true;
 #endif
                 stripDDBtnQuantizeParent.ImageKey = "note008.png";
                 menuSettingPositionQuantize08.Checked = true;
-            } else if (AppManager.editorConfig.getPositionQuantize() == QuantizeMode.p16) {
+            } else if (EditorManager.editorConfig.getPositionQuantize() == QuantizeMode.p16) {
                 cMenuPianoQuantize16.Checked = true;
 #if ENABLE_STRIP_DROPDOWN
                 stripDDBtnQuantize16.Checked = true;
 #endif
                 stripDDBtnQuantizeParent.ImageKey = "note016.png";
                 menuSettingPositionQuantize16.Checked = true;
-            } else if (AppManager.editorConfig.getPositionQuantize() == QuantizeMode.p32) {
+            } else if (EditorManager.editorConfig.getPositionQuantize() == QuantizeMode.p32) {
                 cMenuPianoQuantize32.Checked = true;
 #if ENABLE_STRIP_DROPDOWN
                 stripDDBtnQuantize32.Checked = true;
 #endif
                 stripDDBtnQuantizeParent.ImageKey = "note032.png";
                 menuSettingPositionQuantize32.Checked = true;
-            } else if (AppManager.editorConfig.getPositionQuantize() == QuantizeMode.p64) {
+            } else if (EditorManager.editorConfig.getPositionQuantize() == QuantizeMode.p64) {
                 cMenuPianoQuantize64.Checked = true;
 #if ENABLE_STRIP_DROPDOWN
                 stripDDBtnQuantize64.Checked = true;
 #endif
                 stripDDBtnQuantizeParent.ImageKey = "note064.png";
                 menuSettingPositionQuantize64.Checked = true;
-            } else if (AppManager.editorConfig.getPositionQuantize() == QuantizeMode.p128) {
+            } else if (EditorManager.editorConfig.getPositionQuantize() == QuantizeMode.p128) {
                 cMenuPianoQuantize128.Checked = true;
 #if ENABLE_STRIP_DROPDOWN
                 stripDDBtnQuantize128.Checked = true;
 #endif
                 stripDDBtnQuantizeParent.ImageKey = "note128.png";
                 menuSettingPositionQuantize128.Checked = true;
-            } else if (AppManager.editorConfig.getPositionQuantize() == QuantizeMode.off) {
+            } else if (EditorManager.editorConfig.getPositionQuantize() == QuantizeMode.off) {
                 cMenuPianoQuantizeOff.Checked = true;
 #if ENABLE_STRIP_DROPDOWN
                 stripDDBtnQuantizeOff.Checked = true;
@@ -5670,11 +5670,11 @@ namespace cadencii
                 stripDDBtnQuantizeParent.ImageKey = "notenull.png";
                 menuSettingPositionQuantizeOff.Checked = true;
             }
-            cMenuPianoQuantizeTriplet.Checked = AppManager.editorConfig.isPositionQuantizeTriplet();
+            cMenuPianoQuantizeTriplet.Checked = EditorManager.editorConfig.isPositionQuantizeTriplet();
 #if ENABLE_STRIP_DROPDOWN
-            stripDDBtnQuantizeTriplet.Checked = AppManager.editorConfig.isPositionQuantizeTriplet();
+            stripDDBtnQuantizeTriplet.Checked = EditorManager.editorConfig.isPositionQuantizeTriplet();
 #endif
-            menuSettingPositionQuantizeTriplet.Checked = AppManager.editorConfig.isPositionQuantizeTriplet();
+            menuSettingPositionQuantizeTriplet.Checked = EditorManager.editorConfig.isPositionQuantizeTriplet();
         }
 
         /// <summary>
@@ -5772,7 +5772,7 @@ namespace cadencii
                 float scalex = controller.getScaleX();
                 Font SMALL_FONT = null;
                 try {
-                    SMALL_FONT = new Font(AppManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8);
+                    SMALL_FONT = new Font(EditorManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8);
                     int track_height = (int)(100 * controller.getScaleY());
                     VsqFileEx vsq = MusicManager.getVsqFile();
                     int track_count = vsq.Track.Count;
@@ -6008,9 +6008,9 @@ namespace cadencii
         {
             int added = 0;
             menuFileRecent.DropDownItems.Clear();
-            if (AppManager.editorConfig.RecentFiles != null) {
-                for (int i = 0; i < AppManager.editorConfig.RecentFiles.Count; i++) {
-                    string item = AppManager.editorConfig.RecentFiles[i];
+            if (EditorManager.editorConfig.RecentFiles != null) {
+                for (int i = 0; i < EditorManager.editorConfig.RecentFiles.Count; i++) {
+                    string item = EditorManager.editorConfig.RecentFiles[i];
                     if (item == null) {
                         continue;
                     }
@@ -6033,7 +6033,7 @@ namespace cadencii
                     }
                 }
             } else {
-                AppManager.editorConfig.pushRecentFiles("");
+                EditorManager.editorConfig.pushRecentFiles("");
             }
             menuFileRecent.DropDownItems.Add(new ToolStripSeparator());
             menuFileRecent.DropDownItems.Add(menuFileRecentClear);
@@ -6110,7 +6110,7 @@ namespace cadencii
                 AppManager.mInputTextBox.Text = phrase;
                 AppManager.mInputTextBox.BackColor = System.Drawing.Color.White;
             }
-            AppManager.mInputTextBox.Font = new System.Drawing.Font(AppManager.editorConfig.BaseFontName, cadencii.core.EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular);
+            AppManager.mInputTextBox.Font = new System.Drawing.Font(EditorManager.editorConfig.BaseFontName, cadencii.core.EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular);
             System.Drawing.Point p = new System.Drawing.Point(position.X + 4, position.Y + 2);
             AppManager.mInputTextBox.Location = p;
 
@@ -6211,7 +6211,7 @@ namespace cadencii
             if (MusicManager.getVsqFile().Track.Count >= 2) {
                 updateScrollRangeHorizontal();
             }
-            AppManager.editorConfig.pushRecentFiles(file);
+            EditorManager.editorConfig.pushRecentFiles(file);
             updateRecentFileMenu();
             setEdited(false);
             EditorManager.editHistory.clear();
@@ -6323,10 +6323,10 @@ namespace cadencii
 
         public void updateMenuFonts()
         {
-            if (AppManager.editorConfig.BaseFontName == "") {
+            if (EditorManager.editorConfig.BaseFontName == "") {
                 return;
             }
-            Font font = AppManager.editorConfig.getBaseFont();
+            Font font = EditorManager.editorConfig.getBaseFont();
             Util.applyFontRecurse(this, font);
 #if !JAVA_MAC
             Util.applyContextMenuFontRecurse(cMenuPiano, font);
@@ -6354,11 +6354,11 @@ namespace cadencii
                 Util.applyFontRecurse(mDialogPreference, font);
             }
 
-			cadencii.core.EditorConfig.baseFont10Bold = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE10);
-			cadencii.core.EditorConfig.baseFont8 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8);
-			cadencii.core.EditorConfig.baseFont10 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE10);
-			cadencii.core.EditorConfig.baseFont9 = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9);
-			cadencii.core.EditorConfig.baseFont50Bold = new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE50);
+			cadencii.core.EditorConfig.baseFont10Bold = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE10);
+			cadencii.core.EditorConfig.baseFont8 = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8);
+			cadencii.core.EditorConfig.baseFont10 = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE10);
+			cadencii.core.EditorConfig.baseFont9 = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9);
+			cadencii.core.EditorConfig.baseFont50Bold = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE50);
 			EditorConfig.baseFont10OffsetHeight = Util.getStringDrawOffset(cadencii.core.EditorConfig.baseFont10);
 			EditorConfig.baseFont8OffsetHeight = Util.getStringDrawOffset(cadencii.core.EditorConfig.baseFont8);
 			EditorConfig.baseFont9OffsetHeight = Util.getStringDrawOffset(cadencii.core.EditorConfig.baseFont9);
@@ -7330,11 +7330,11 @@ namespace cadencii
                 bool show_context_menu = (e.X > AppManager.keyWidth);
 #if ENABLE_MOUSEHOVER
                 if ( mMouseHoverThread != null ) {
-                    if ( !mMouseHoverThread.IsAlive && AppManager.editorConfig.PlayPreviewWhenRightClick ) {
+                    if ( !mMouseHoverThread.IsAlive && EditorManager.editorConfig.PlayPreviewWhenRightClick ) {
                         show_context_menu = false;
                     }
                 } else {
-                    if ( AppManager.editorConfig.PlayPreviewWhenRightClick ) {
+                    if ( EditorManager.editorConfig.PlayPreviewWhenRightClick ) {
                         show_context_menu = false;
                     }
                 }
@@ -7429,7 +7429,7 @@ namespace cadencii
 #if ENABLE_MOUSEHOVER
                     mMouseHoverThread.Abort();
 #endif
-                    if (!AppManager.editorConfig.KeepLyricInputMode) {
+                    if (!EditorManager.editorConfig.KeepLyricInputMode) {
                         mLastSymbolEditMode = false;
                     }
                     showInputTextBox(
@@ -7443,7 +7443,7 @@ namespace cadencii
             } else {
                 AppManager.itemSelection.clearEvent();
                 hideInputTextBox();
-                if (AppManager.editorConfig.ShowExpLine && AppManager.keyWidth <= e.X) {
+                if (EditorManager.editorConfig.ShowExpLine && AppManager.keyWidth <= e.X) {
                     int stdx = controller.getStartToDrawX();
                     int stdy = controller.getStartToDrawY();
                     foreach (var dobj in AppManager.mDrawObjects[selected - 1]) {
@@ -7709,7 +7709,7 @@ namespace cadencii
                     AppManager.setCurveSelectedIntervalEnabled(false);
                     AppManager.itemSelection.clearPoint();
                     int startClock = AppManager.clockFromXCoord(e.X);
-                    if (AppManager.editorConfig.CurveSelectingQuantized) {
+                    if (EditorManager.editorConfig.CurveSelectingQuantized) {
                         int unit = AppManager.getPositionQuantizeClock();
                         startClock = doQuantize(startClock, unit);
                     }
@@ -7771,7 +7771,7 @@ namespace cadencii
                             e.Button == MouseButtons.Left &&
                             e.X >= key_width) {
                             int clock = AppManager.clockFromXCoord(e.X);
-                            if (MusicManager.getVsqFile().getPreMeasureClocks() - AppManager.editorConfig.PxTolerance * controller.getScaleXInv() <= clock) {
+                            if (MusicManager.getVsqFile().getPreMeasureClocks() - EditorManager.editorConfig.PxTolerance * controller.getScaleXInv() <= clock) {
                                 //10ピクセルまでは許容範囲
                                 if (MusicManager.getVsqFile().getPreMeasureClocks() > clock) { //だけど矯正するよ。
                                     clock = MusicManager.getVsqFile().getPreMeasureClocks();
@@ -7782,7 +7782,7 @@ namespace cadencii
                                 int new_clock = doQuantize(clock, unit);
                                 AppManager.mAddingEvent = new VsqEvent(new_clock, new VsqID(0));
                                 // デフォルトの歌唱スタイルを適用する
-                                AppManager.editorConfig.applyDefaultSingerStyle(AppManager.mAddingEvent.ID);
+                                EditorManager.editorConfig.applyDefaultSingerStyle(AppManager.mAddingEvent.ID);
                                 if (mPencilMode.getMode() == PencilModeEnum.Off) {
                                     AppManager.setEditMode(EditMode.ADD_ENTRY);
                                     mButtonInitial = new Point(e.X, e.Y);
@@ -7816,7 +7816,7 @@ namespace cadencii
                         }
                     }
                 }
-                if (e.Button == MouseButtons.Right && !AppManager.editorConfig.PlayPreviewWhenRightClick) {
+                if (e.Button == MouseButtons.Right && !EditorManager.editorConfig.PlayPreviewWhenRightClick) {
                     start_mouse_hover_generator = false;
                 }
 #if ENABLE_MOUSEHOVER
@@ -8087,9 +8087,9 @@ namespace cadencii
                     dt = now - mTimerDragLastIgnitted;
                 }
                 if (mExtDragX == ExtDragXMode.RIGHT || mExtDragX == ExtDragXMode.LEFT) {
-                    int px_move = AppManager.editorConfig.MouseDragIncrement;
-                    if (px_move / dt > AppManager.editorConfig.MouseDragMaximumRate) {
-                        px_move = (int)(dt * AppManager.editorConfig.MouseDragMaximumRate);
+                    int px_move = EditorManager.editorConfig.MouseDragIncrement;
+                    if (px_move / dt > EditorManager.editorConfig.MouseDragMaximumRate) {
+                        px_move = (int)(dt * EditorManager.editorConfig.MouseDragMaximumRate);
                     }
                     double d_draft;
                     if (mExtDragX == ExtDragXMode.LEFT) {
@@ -8121,9 +8121,9 @@ namespace cadencii
                 if (mExtDragY == ExtDragYMode.UP || mExtDragY == ExtDragYMode.DOWN) {
                     int min = vScroll.Minimum;
                     int max = vScroll.Maximum - vScroll.LargeChange;
-                    int px_move = AppManager.editorConfig.MouseDragIncrement;
-                    if (px_move / dt > AppManager.editorConfig.MouseDragMaximumRate) {
-                        px_move = (int)(dt * AppManager.editorConfig.MouseDragMaximumRate);
+                    int px_move = EditorManager.editorConfig.MouseDragIncrement;
+                    if (px_move / dt > EditorManager.editorConfig.MouseDragMaximumRate) {
+                        px_move = (int)(dt * EditorManager.editorConfig.MouseDragMaximumRate);
                     }
                     px_move += 50;
                     if (mExtDragY == ExtDragYMode.UP) {
@@ -8149,7 +8149,7 @@ namespace cadencii
                 if (AppManager.mIsPointerDowned) {
                     if (AppManager.isWholeSelectedIntervalEnabled()) {
                         int endClock = AppManager.clockFromXCoord(e.X);
-						if (AppManager.editorConfig.CurveSelectingQuantized) {
+						if (EditorManager.editorConfig.CurveSelectingQuantized) {
                             int unit = AppManager.getPositionQuantizeClock();
                             endClock = doQuantize(endClock, unit);
                         }
@@ -8289,7 +8289,7 @@ namespace cadencii
 
                         int dclock = tclock - clock_init;
 
-                        if (AppManager.editorConfig.getPositionQuantize() != QuantizeMode.off) {
+                        if (EditorManager.editorConfig.getPositionQuantize() != QuantizeMode.off) {
                             int unit = AppManager.getPositionQuantizeClock();
                             int new_clock = doQuantize(original.Clock + dclock, unit);
                             dclock = new_clock - clock_init;
@@ -8435,7 +8435,7 @@ namespace cadencii
                                             dobj.mRectangleInPixel.width,
                                             dobj.mRectangleInPixel.height);
                         if (dobj.mType == DrawObjectType.Note) {
-                            if (AppManager.editorConfig.ShowExpLine && !dobj.mIsOverlapped) {
+                            if (EditorManager.editorConfig.ShowExpLine && !dobj.mIsOverlapped) {
                                 rc.height *= 2;
                                 if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
                                     // ビブラートの開始位置
@@ -8938,7 +8938,7 @@ namespace cadencii
         {
             Keys modifier = (Keys) Control.ModifierKeys;
             bool horizontal = (modifier & Keys.Shift) == Keys.Shift;
-            if (AppManager.editorConfig.ScrollHorizontalOnWheel) {
+            if (EditorManager.editorConfig.ScrollHorizontalOnWheel) {
                 horizontal = !horizontal;
             }
             if ((modifier & Keys.Control) == Keys.Control) {
@@ -9024,7 +9024,7 @@ namespace cadencii
         public void iconPalette_LocationChanged(Object sender, EventArgs e)
         {
             var point = AppManager.iconPalette.Location;
-            AppManager.editorConfig.FormIconPaletteLocation = new XmlPoint(point.X, point.Y);
+            EditorManager.editorConfig.FormIconPaletteLocation = new XmlPoint(point.X, point.Y);
         }
 
         public void iconPalette_FormClosing(Object sender, FormClosingEventArgs e)
@@ -9039,7 +9039,7 @@ namespace cadencii
         {
 #if ENABLE_PROPERTY
             if (menuVisualProperty.Checked) {
-                if (AppManager.editorConfig.PropertyWindowStatus.IsMinimized) {
+                if (EditorManager.editorConfig.PropertyWindowStatus.IsMinimized) {
                     updatePropertyPanelState(PanelState.Docked);
                 } else {
                     updatePropertyPanelState(PanelState.Window);
@@ -9055,13 +9055,13 @@ namespace cadencii
 #if DEBUG
             sout.println("FormMain#menuVisualOverview_CheckedChanged; menuVisualOverview.isSelected()=" + menuVisualOverview.Checked);
 #endif
-            AppManager.editorConfig.OverviewEnabled = menuVisualOverview.Checked;
+            EditorManager.editorConfig.OverviewEnabled = menuVisualOverview.Checked;
             updateLayout();
         }
 
         public void menuVisualMixer_Click(Object sender, EventArgs e)
         {
-            bool v = !AppManager.editorConfig.MixerVisible;
+            bool v = !EditorManager.editorConfig.MixerVisible;
             flipMixerDialogVisible(v);
             this.Focus();
         }
@@ -9074,18 +9074,18 @@ namespace cadencii
 
         public void menuVisualIconPalette_Click(Object sender, EventArgs e)
         {
-            bool v = !AppManager.editorConfig.IconPaletteVisible;
+            bool v = !EditorManager.editorConfig.IconPaletteVisible;
             flipIconPaletteVisible(v);
         }
 
         public void menuVisualLyrics_CheckedChanged(Object sender, EventArgs e)
         {
-            AppManager.editorConfig.ShowLyric = menuVisualLyrics.Checked;
+            EditorManager.editorConfig.ShowLyric = menuVisualLyrics.Checked;
         }
 
         public void menuVisualNoteProperty_CheckedChanged(Object sender, EventArgs e)
         {
-            AppManager.editorConfig.ShowExpLine = menuVisualNoteProperty.Checked;
+            EditorManager.editorConfig.ShowExpLine = menuVisualNoteProperty.Checked;
             refreshScreen();
         }
 
@@ -9369,7 +9369,7 @@ namespace cadencii
 #if DEBUG
             sout.println("FormMain#propertyWindow_WindowStateChanged");
 #endif
-            if (AppManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
+            if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
 #if DEBUG
                 sout.println("FormMain#proprtyWindow_WindowStateChanged; isWindowMinimized=" + AppManager.propertyWindow.getUi().isWindowMinimized());
 #endif
@@ -9384,12 +9384,12 @@ namespace cadencii
 #if DEBUG
             sout.println("FormMain#propertyWindow_LocationOrSizeChanged");
 #endif
-            if (AppManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
+            if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
                 if (AppManager.propertyWindow != null && false == AppManager.propertyWindow.getUi().isWindowMinimized()) {
                     var parent = this.Location;
                     int propertyX = AppManager.propertyWindow.getUi().getX();
                     int propertyY = AppManager.propertyWindow.getUi().getY();
-                    AppManager.editorConfig.PropertyWindowStatus.Bounds =
+                    EditorManager.editorConfig.PropertyWindowStatus.Bounds =
                         new XmlRectangle(propertyX - parent.X,
                                           propertyY - parent.Y,
                                           AppManager.propertyWindow.getUi().getWidth(),
@@ -9581,10 +9581,10 @@ namespace cadencii
         {
             // 設定値を格納
 			if (ApplicationGlobal.appConfig.ViewWaveform) {
-				AppManager.editorConfig.SplitContainer2LastDividerLocation = splitContainer2.getDividerLocation();
+				EditorManager.editorConfig.SplitContainer2LastDividerLocation = splitContainer2.getDividerLocation();
             }
-            if (AppManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
-                AppManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.getDividerLocation();
+            if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
+                EditorManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.getDividerLocation();
             }
             if (e.CloseReason == System.Windows.Forms.CloseReason.WindowsShutDown) {
                 return;
@@ -9627,7 +9627,7 @@ namespace cadencii
                     return true;
                 }
             }
-            AppManager.editorConfig.WindowMaximized = (this.WindowState == FormWindowState.Maximized);
+            EditorManager.editorConfig.WindowMaximized = (this.WindowState == FormWindowState.Maximized);
             AppManager.saveConfig();
             UtauWaveGenerator.clearCache();
             VConnectWaveGenerator.clearCache();
@@ -9645,7 +9645,7 @@ namespace cadencii
         {
             if (this.WindowState == FormWindowState.Normal) {
                 var bounds = this.Bounds;
-                AppManager.editorConfig.WindowRect = new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
+                EditorManager.editorConfig.WindowRect = new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
             }
         }
 
@@ -9655,7 +9655,7 @@ namespace cadencii
 
             // ツールバーの位置を復帰させる
             // toolStipの位置を，前回終了時の位置に戻す
-            int chevron_width = AppManager.editorConfig.ChevronWidth;
+            int chevron_width = EditorManager.editorConfig.ChevronWidth;
             this.bandFile = new RebarBand();
             this.bandPosition = new RebarBand();
             this.bandMeasure = new RebarBand();
@@ -9684,8 +9684,8 @@ namespace cadencii
                 this.bandFile.IdealWidth =
                     toolBarFile.Buttons[toolBarFile.Buttons.Count - 1].Rectangle.Right + chevron_width;
             }
-            this.bandFile.BandSize = AppManager.editorConfig.BandSizeFile;
-            this.bandFile.NewRow = AppManager.editorConfig.BandNewRowFile;
+            this.bandFile.BandSize = EditorManager.editorConfig.BandSizeFile;
+            this.bandFile.NewRow = EditorManager.editorConfig.BandNewRowFile;
             // bandPosition
             this.bandPosition.AllowVertical = false;
             this.bandPosition.Child = this.toolBarPosition;
@@ -9697,8 +9697,8 @@ namespace cadencii
                 this.bandPosition.IdealWidth =
                     toolBarPosition.Buttons[toolBarPosition.Buttons.Count - 1].Rectangle.Right + chevron_width;
             }
-            this.bandPosition.BandSize = AppManager.editorConfig.BandSizePosition;
-            this.bandPosition.NewRow = AppManager.editorConfig.BandNewRowPosition;
+            this.bandPosition.BandSize = EditorManager.editorConfig.BandSizePosition;
+            this.bandPosition.NewRow = EditorManager.editorConfig.BandNewRowPosition;
             // bandMeasure
             this.bandMeasure.AllowVertical = false;
             this.bandMeasure.Child = this.toolBarMeasure;
@@ -9710,8 +9710,8 @@ namespace cadencii
                 this.bandMeasure.IdealWidth =
                     toolBarMeasure.Buttons[toolBarMeasure.Buttons.Count - 1].Rectangle.Right + chevron_width;
             }
-            this.bandMeasure.BandSize = AppManager.editorConfig.BandSizeMeasure;
-            this.bandMeasure.NewRow = AppManager.editorConfig.BandNewRowMeasure;
+            this.bandMeasure.BandSize = EditorManager.editorConfig.BandSizeMeasure;
+            this.bandMeasure.NewRow = EditorManager.editorConfig.BandNewRowMeasure;
             // bandTool
             this.bandTool.AllowVertical = false;
             this.bandTool.Child = this.toolBarTool;
@@ -9723,19 +9723,19 @@ namespace cadencii
                 this.bandTool.IdealWidth =
                     toolBarTool.Buttons[toolBarTool.Buttons.Count - 1].Rectangle.Right + chevron_width;
             }
-            this.bandTool.BandSize = AppManager.editorConfig.BandSizeTool;
-            this.bandTool.NewRow = AppManager.editorConfig.BandNewRowTool;
+            this.bandTool.BandSize = EditorManager.editorConfig.BandSizeTool;
+            this.bandTool.NewRow = EditorManager.editorConfig.BandNewRowTool;
             // 一度リストに入れてから追加する
             var bands = new RebarBand[] { null, null, null, null };
             // 番号がおかしくないかチェック
-            if (AppManager.editorConfig.BandOrderFile < 0 || bands.Length <= AppManager.editorConfig.BandOrderFile) AppManager.editorConfig.BandOrderFile = 0;
-            if (AppManager.editorConfig.BandOrderMeasure < 0 || bands.Length <= AppManager.editorConfig.BandOrderMeasure) AppManager.editorConfig.BandOrderMeasure = 0;
-            if (AppManager.editorConfig.BandOrderPosition < 0 || bands.Length <= AppManager.editorConfig.BandOrderPosition) AppManager.editorConfig.BandOrderPosition = 0;
-            if (AppManager.editorConfig.BandOrderTool < 0 || bands.Length <= AppManager.editorConfig.BandOrderTool) AppManager.editorConfig.BandOrderTool = 0;
-            bands[AppManager.editorConfig.BandOrderFile] = bandFile;
-            bands[AppManager.editorConfig.BandOrderMeasure] = bandMeasure;
-            bands[AppManager.editorConfig.BandOrderPosition] = bandPosition;
-            bands[AppManager.editorConfig.BandOrderTool] = bandTool;
+            if (EditorManager.editorConfig.BandOrderFile < 0 || bands.Length <= EditorManager.editorConfig.BandOrderFile) EditorManager.editorConfig.BandOrderFile = 0;
+            if (EditorManager.editorConfig.BandOrderMeasure < 0 || bands.Length <= EditorManager.editorConfig.BandOrderMeasure) EditorManager.editorConfig.BandOrderMeasure = 0;
+            if (EditorManager.editorConfig.BandOrderPosition < 0 || bands.Length <= EditorManager.editorConfig.BandOrderPosition) EditorManager.editorConfig.BandOrderPosition = 0;
+            if (EditorManager.editorConfig.BandOrderTool < 0 || bands.Length <= EditorManager.editorConfig.BandOrderTool) EditorManager.editorConfig.BandOrderTool = 0;
+            bands[EditorManager.editorConfig.BandOrderFile] = bandFile;
+            bands[EditorManager.editorConfig.BandOrderMeasure] = bandMeasure;
+            bands[EditorManager.editorConfig.BandOrderPosition] = bandPosition;
+            bands[EditorManager.editorConfig.BandOrderTool] = bandTool;
             // nullチェック
             bool null_exists = false;
             for (var i = 0; i < bands.Length; i++) {
@@ -9777,7 +9777,7 @@ namespace cadencii
 
             // 鍵盤用の音源の準備．Javaはこの機能は削除で．
             // 鍵盤用のキャッシュが古い位置に保存されている場合。
-            string cache_new = Utility.getKeySoundPath();
+            string cache_new = ApplicationGlobal.getKeySoundPath();
             string cache_old = Path.Combine(PortUtil.getApplicationStartupPath(), "cache");
             if (Directory.Exists(cache_old)) {
                 bool exists = false;
@@ -9890,11 +9890,11 @@ namespace cadencii
             if (state == FormWindowState.Normal || state == FormWindowState.Maximized) {
                 if (state == FormWindowState.Normal) {
                     var bounds = this.Bounds;
-                    AppManager.editorConfig.WindowRect = new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
+                    EditorManager.editorConfig.WindowRect = new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
                 }
 #if ENABLE_PROPERTY
                 // プロパティウィンドウの状態を更新
-                if (AppManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
+                if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
                     if (AppManager.propertyWindow.getUi().isWindowMinimized()) {
                         AppManager.propertyWindow.getUi().deiconfyWindow();
                     }
@@ -9904,7 +9904,7 @@ namespace cadencii
                 }
 #endif
                 // ミキサーウィンドウの状態を更新
-                bool vm = AppManager.editorConfig.MixerVisible;
+                bool vm = EditorManager.editorConfig.MixerVisible;
                 if (vm != AppManager.mMixerWindow.Visible) {
                     AppManager.mMixerWindow.Visible = vm;
                 }
@@ -9928,9 +9928,9 @@ namespace cadencii
             }/* else if ( state == BForm.MAXIMIZED_BOTH ) {
 #if ENABLE_PROPERTY
                 AppManager.propertyWindow.setExtendedState( BForm.NORMAL );
-                AppManager.propertyWindow.setVisible( AppManager.editorConfig.PropertyWindowStatus.State == PanelState.Window );
+                AppManager.propertyWindow.setVisible( EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window );
 #endif
-                AppManager.mMixerWindow.setVisible( AppManager.editorConfig.MixerVisible );
+                AppManager.mMixerWindow.setVisible( EditorManager.editorConfig.MixerVisible );
                 if ( AppManager.iconPalette != null && menuVisualIconPalette.isSelected() ) {
                     AppManager.iconPalette.setVisible( true );
                 }
@@ -10002,7 +10002,7 @@ namespace cadencii
                 bool event_processed = false;
                 double dt_ms = (now - mLastEventProcessed) * 1000.0;
 
-                EditorConfig m = AppManager.editorConfig;
+                EditorConfig m = EditorManager.editorConfig;
                 bool btn_x = (0 <= m.GameControlerCross && m.GameControlerCross < buttons.Length && buttons[m.GameControlerCross] > 0x00);
                 bool btn_o = (0 <= m.GameControlerCircle && m.GameControlerCircle < buttons.Length && buttons[m.GameControlerCircle] > 0x00);
                 bool btn_tr = (0 <= m.GameControlerTriangle && m.GameControlerTriangle < buttons.Length && buttons[m.GameControlerTriangle] > 0x00);
@@ -10029,21 +10029,21 @@ namespace cadencii
                     }
                     mLastBtnO = btn_o;
 
-                    if (!event_processed && pov_r && dt_ms > AppManager.editorConfig.GameControlerMinimumEventInterval) {
+                    if (!event_processed && pov_r && dt_ms > EditorManager.editorConfig.GameControlerMinimumEventInterval) {
                         forward();
                         mLastEventProcessed = now;
                         event_processed = true;
                     }
                     mLastPovR = pov_r;
 
-                    if (!event_processed && pov_l && dt_ms > AppManager.editorConfig.GameControlerMinimumEventInterval) {
+                    if (!event_processed && pov_l && dt_ms > EditorManager.editorConfig.GameControlerMinimumEventInterval) {
                         rewind();
                         mLastEventProcessed = now;
                         event_processed = true;
                     }
                     mLastPovL = pov_l;
 
-                    if (!event_processed && pov_u && dt_ms > AppManager.editorConfig.GameControlerMinimumEventInterval) {
+                    if (!event_processed && pov_u && dt_ms > EditorManager.editorConfig.GameControlerMinimumEventInterval) {
                         int draft_vscroll = vScroll.Value - (int)(100 * controller.getScaleY()) * 3;
                         if (draft_vscroll < vScroll.Minimum) {
                             draft_vscroll = vScroll.Minimum;
@@ -10054,7 +10054,7 @@ namespace cadencii
                         event_processed = true;
                     }
 
-                    if (!event_processed && pov_d && dt_ms > AppManager.editorConfig.GameControlerMinimumEventInterval) {
+                    if (!event_processed && pov_d && dt_ms > EditorManager.editorConfig.GameControlerMinimumEventInterval) {
                         int draft_vscroll = vScroll.Value + (int)(100 * controller.getScaleY()) * 3;
                         if (draft_vscroll > vScroll.Maximum) {
                             draft_vscroll = vScroll.Maximum;
@@ -10168,8 +10168,8 @@ namespace cadencii
         #region menuFile*
         public void menuFileRecentClear_Click(Object sender, EventArgs e)
         {
-            if (AppManager.editorConfig.RecentFiles != null) {
-                AppManager.editorConfig.RecentFiles.Clear();
+            if (EditorManager.editorConfig.RecentFiles != null) {
+                EditorManager.editorConfig.RecentFiles.Clear();
             }
             updateRecentFileMenu();
         }
@@ -11215,16 +11215,16 @@ namespace cadencii
                                 vid.Note = note;
                                 vid.Dynamics = velocity_each_note[note];
                                 // デフォルとの歌唱スタイルを適用する
-                                AppManager.editorConfig.applyDefaultSingerStyle(vid);
+                                EditorManager.editorConfig.applyDefaultSingerStyle(vid);
 
                                 // ビブラート
-                                if (AppManager.editorConfig.EnableAutoVibrato) {
+                                if (EditorManager.editorConfig.EnableAutoVibrato) {
                                     int note_length = vid.getLength();
                                     // 音符位置での拍子を調べる
                                     Timesig timesig = work.getTimesigAt(add_clock_on);
 
                                     // ビブラートを自動追加するかどうかを決める閾値
-                                    int threshold = AppManager.editorConfig.AutoVibratoThresholdLength;
+                                    int threshold = EditorManager.editorConfig.AutoVibratoThresholdLength;
                                     if (note_length >= threshold) {
                                         int vibrato_clocks = 0;
                                         DefaultVibratoLengthEnum vib_length = ApplicationGlobal.appConfig.DefaultVibratoLength;
@@ -11238,7 +11238,7 @@ namespace cadencii
                                             vibrato_clocks = note_length * 3 / 4;
                                         }
                                         // とりあえずVOCALOID2のデフォルトビブラートの設定を使用
-                                        vid.VibratoHandle = AppManager.editorConfig.createAutoVibrato(SynthesizerType.VOCALOID2, vibrato_clocks);
+                                        vid.VibratoHandle = EditorManager.editorConfig.createAutoVibrato(SynthesizerType.VOCALOID2, vibrato_clocks);
                                         vid.VibratoDelay = note_length - vibrato_clocks;
                                     }
                                 }
@@ -11389,7 +11389,7 @@ namespace cadencii
 
         public void menuFileImportVsq_Click(Object sender, EventArgs e)
         {
-            string dir = ApplicationGlobal.appConfig.getLastUsedPathIn(AppManager.editorConfig.LastUsedExtension);
+            string dir = ApplicationGlobal.appConfig.getLastUsedPathIn(EditorManager.editorConfig.LastUsedExtension);
             openMidiDialog.SetSelectedFile(dir);
             var dialog_result = AppManager.showModalDialog(openMidiDialog, true, this);
 
@@ -11644,7 +11644,7 @@ namespace cadencii
             string filter = "";
             foreach (string f in filters) {
                 ++filter_index;
-                if (f.EndsWith(AppManager.editorConfig.LastUsedExtension)) {
+                if (f.EndsWith(EditorManager.editorConfig.LastUsedExtension)) {
                     break;
                 }
             }
@@ -11660,13 +11660,13 @@ namespace cadencii
 #endif
                 string selected_filter = openMidiDialog.SelectedFilter();
                 if (selected_filter.EndsWith(".mid")) {
-                    AppManager.editorConfig.LastUsedExtension = ".mid";
+                    EditorManager.editorConfig.LastUsedExtension = ".mid";
                     ext = ".mid";
                 } else if (selected_filter.EndsWith(".vsq")) {
-                    AppManager.editorConfig.LastUsedExtension = ".vsq";
+                    EditorManager.editorConfig.LastUsedExtension = ".vsq";
                     ext = ".vsq";
                 } else if (selected_filter.EndsWith(".vsqx")) {
-                    AppManager.editorConfig.LastUsedExtension = ".vsqx";
+                    EditorManager.editorConfig.LastUsedExtension = ".vsqx";
                     ext = ".vsqx";
                 }
             } else {
@@ -11738,7 +11738,7 @@ namespace cadencii
                         bool changed = false;
                         for (int i = 0; i < copy.getEventCount(); i++) {
                             if (copy.getEvent(i).ID.type == VsqIDType.Anote) {
-                                AppManager.editorConfig.applyDefaultSingerStyle(copy.getEvent(i).ID);
+                                EditorManager.editorConfig.applyDefaultSingerStyle(copy.getEvent(i).ID);
                                 changed = true;
                             }
                         }
@@ -11785,20 +11785,20 @@ namespace cadencii
                 dlg.Location = getFormPreferedLocation(dlg);
                 DialogResult dr = AppManager.showModalDialog(dlg, this);
                 if (dr == DialogResult.OK) {
-                    AppManager.editorConfig.GameControlerRectangle = dlg.getRectangle();
-                    AppManager.editorConfig.GameControlerTriangle = dlg.getTriangle();
-                    AppManager.editorConfig.GameControlerCircle = dlg.getCircle();
-                    AppManager.editorConfig.GameControlerCross = dlg.getCross();
-                    AppManager.editorConfig.GameControlL1 = dlg.getL1();
-                    AppManager.editorConfig.GameControlL2 = dlg.getL2();
-                    AppManager.editorConfig.GameControlR1 = dlg.getR1();
-                    AppManager.editorConfig.GameControlR2 = dlg.getR2();
-                    AppManager.editorConfig.GameControlSelect = dlg.getSelect();
-                    AppManager.editorConfig.GameControlStart = dlg.getStart();
-                    AppManager.editorConfig.GameControlPovDown = dlg.getPovDown();
-                    AppManager.editorConfig.GameControlPovLeft = dlg.getPovLeft();
-                    AppManager.editorConfig.GameControlPovUp = dlg.getPovUp();
-                    AppManager.editorConfig.GameControlPovRight = dlg.getPovRight();
+                    EditorManager.editorConfig.GameControlerRectangle = dlg.getRectangle();
+                    EditorManager.editorConfig.GameControlerTriangle = dlg.getTriangle();
+                    EditorManager.editorConfig.GameControlerCircle = dlg.getCircle();
+                    EditorManager.editorConfig.GameControlerCross = dlg.getCross();
+                    EditorManager.editorConfig.GameControlL1 = dlg.getL1();
+                    EditorManager.editorConfig.GameControlL2 = dlg.getL2();
+                    EditorManager.editorConfig.GameControlR1 = dlg.getR1();
+                    EditorManager.editorConfig.GameControlR2 = dlg.getR2();
+                    EditorManager.editorConfig.GameControlSelect = dlg.getSelect();
+                    EditorManager.editorConfig.GameControlStart = dlg.getStart();
+                    EditorManager.editorConfig.GameControlPovDown = dlg.getPovDown();
+                    EditorManager.editorConfig.GameControlPovLeft = dlg.getPovLeft();
+                    EditorManager.editorConfig.GameControlPovUp = dlg.getPovUp();
+                    EditorManager.editorConfig.GameControlPovRight = dlg.getPovRight();
                 }
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".menuSettingGrameControlerSetting_Click; ex=" + ex + "\n");
@@ -11819,26 +11819,26 @@ namespace cadencii
                 if (mDialogPreference == null) {
                     mDialogPreference = new Preference();
                 }
-                mDialogPreference.setBaseFont(new Font(AppManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9));
-                mDialogPreference.setScreenFont(new Font(AppManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9));
-                mDialogPreference.setWheelOrder(AppManager.editorConfig.WheelOrder);
-                mDialogPreference.setCursorFixed(AppManager.editorConfig.CursorFixed);
+                mDialogPreference.setBaseFont(new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9));
+                mDialogPreference.setScreenFont(new Font(EditorManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9));
+                mDialogPreference.setWheelOrder(EditorManager.editorConfig.WheelOrder);
+                mDialogPreference.setCursorFixed(EditorManager.editorConfig.CursorFixed);
                 mDialogPreference.setDefaultVibratoLength(ApplicationGlobal.appConfig.DefaultVibratoLength);
-                mDialogPreference.setAutoVibratoThresholdLength(AppManager.editorConfig.AutoVibratoThresholdLength);
-                mDialogPreference.setAutoVibratoType1(AppManager.editorConfig.AutoVibratoType1);
-                mDialogPreference.setAutoVibratoType2(AppManager.editorConfig.AutoVibratoType2);
-                mDialogPreference.setAutoVibratoTypeCustom(AppManager.editorConfig.AutoVibratoTypeCustom);
-                mDialogPreference.setEnableAutoVibrato(AppManager.editorConfig.EnableAutoVibrato);
+                mDialogPreference.setAutoVibratoThresholdLength(EditorManager.editorConfig.AutoVibratoThresholdLength);
+                mDialogPreference.setAutoVibratoType1(EditorManager.editorConfig.AutoVibratoType1);
+                mDialogPreference.setAutoVibratoType2(EditorManager.editorConfig.AutoVibratoType2);
+                mDialogPreference.setAutoVibratoTypeCustom(EditorManager.editorConfig.AutoVibratoTypeCustom);
+                mDialogPreference.setEnableAutoVibrato(EditorManager.editorConfig.EnableAutoVibrato);
 				mDialogPreference.setPreSendTime(ApplicationGlobal.appConfig.PreSendTime);
                 mDialogPreference.setControlCurveResolution(ApplicationGlobal.appConfig.ControlCurveResolution);
                 mDialogPreference.setDefaultSingerName(ApplicationGlobal.appConfig.DefaultSingerName);
-                mDialogPreference.setScrollHorizontalOnWheel(AppManager.editorConfig.ScrollHorizontalOnWheel);
-                mDialogPreference.setMaximumFrameRate(AppManager.editorConfig.MaximumFrameRate);
-                mDialogPreference.setKeepLyricInputMode(AppManager.editorConfig.KeepLyricInputMode);
-                mDialogPreference.setPxTrackHeight(AppManager.editorConfig.PxTrackHeight);
-                mDialogPreference.setMouseHoverTime(AppManager.editorConfig.getMouseHoverTime());
-                mDialogPreference.setPlayPreviewWhenRightClick(AppManager.editorConfig.PlayPreviewWhenRightClick);
-				mDialogPreference.setCurveSelectingQuantized(AppManager.editorConfig.CurveSelectingQuantized);
+                mDialogPreference.setScrollHorizontalOnWheel(EditorManager.editorConfig.ScrollHorizontalOnWheel);
+                mDialogPreference.setMaximumFrameRate(EditorManager.editorConfig.MaximumFrameRate);
+                mDialogPreference.setKeepLyricInputMode(EditorManager.editorConfig.KeepLyricInputMode);
+                mDialogPreference.setPxTrackHeight(EditorManager.editorConfig.PxTrackHeight);
+                mDialogPreference.setMouseHoverTime(EditorManager.editorConfig.getMouseHoverTime());
+                mDialogPreference.setPlayPreviewWhenRightClick(EditorManager.editorConfig.PlayPreviewWhenRightClick);
+				mDialogPreference.setCurveSelectingQuantized(EditorManager.editorConfig.CurveSelectingQuantized);
                 mDialogPreference.setCurveVisibleAccent(ApplicationGlobal.appConfig.CurveVisibleAccent);
                 mDialogPreference.setCurveVisibleBre(ApplicationGlobal.appConfig.CurveVisibleBreathiness);
                 mDialogPreference.setCurveVisibleBri(ApplicationGlobal.appConfig.CurveVisibleBrightness);
@@ -11861,10 +11861,10 @@ namespace cadencii
                 mDialogPreference.setCurveVisibleReso4(ApplicationGlobal.appConfig.CurveVisibleReso4);
                 mDialogPreference.setCurveVisibleEnvelope(ApplicationGlobal.appConfig.CurveVisibleEnvelope);
 #if ENABLE_MIDI
-                mDialogPreference.setMidiInPort(AppManager.editorConfig.MidiInPort.PortNumber);
+                mDialogPreference.setMidiInPort(EditorManager.editorConfig.MidiInPort.PortNumber);
 #endif
 #if ENABLE_MTC
-            	m_preference_dlg.setMtcMidiInPort( AppManager.editorConfig.MidiInPortMtc.PortNumber );
+            	m_preference_dlg.setMtcMidiInPort( EditorManager.editorConfig.MidiInPortMtc.PortNumber );
 
 #endif
                 List<string> resamplers = new List<string>();
@@ -11875,9 +11875,9 @@ namespace cadencii
                 mDialogPreference.setResamplersConfig(resamplers);
                 mDialogPreference.setPathWavtool(ApplicationGlobal.appConfig.PathWavtool);
                 mDialogPreference.setUtausingers(ApplicationGlobal.appConfig.UtauSingers);
-                mDialogPreference.setSelfDeRomantization(AppManager.editorConfig.SelfDeRomanization);
-                mDialogPreference.setAutoBackupIntervalMinutes(AppManager.editorConfig.AutoBackupIntervalMinutes);
-                mDialogPreference.setUseSpaceKeyAsMiddleButtonModifier(AppManager.editorConfig.UseSpaceKeyAsMiddleButtonModifier);
+                mDialogPreference.setSelfDeRomantization(EditorManager.editorConfig.SelfDeRomanization);
+                mDialogPreference.setAutoBackupIntervalMinutes(EditorManager.editorConfig.AutoBackupIntervalMinutes);
+                mDialogPreference.setUseSpaceKeyAsMiddleButtonModifier(EditorManager.editorConfig.UseSpaceKeyAsMiddleButtonModifier);
                 mDialogPreference.setPathAquesTone(ApplicationGlobal.appConfig.PathAquesTone);
                 mDialogPreference.setPathAquesTone2(ApplicationGlobal.appConfig.PathAquesTone2);
                 mDialogPreference.setUseProjectCache(ApplicationGlobal.appConfig.UseProjectCache);
@@ -11894,27 +11894,27 @@ namespace cadencii
 
                 DialogResult dr = AppManager.showModalDialog(mDialogPreference, this);
                 if (dr == DialogResult.OK) {
-                    string old_base_font_name = AppManager.editorConfig.BaseFontName;
-                    float old_base_font_size = AppManager.editorConfig.BaseFontSize;
+                    string old_base_font_name = EditorManager.editorConfig.BaseFontName;
+                    float old_base_font_size = EditorManager.editorConfig.BaseFontSize;
                     Font new_base_font = mDialogPreference.getBaseFont();
                     if (!old_base_font_name.Equals(new_base_font.getName()) ||
                          old_base_font_size != new_base_font.getSize2D()) {
-                        AppManager.editorConfig.BaseFontName = mDialogPreference.getBaseFont().getName();
-                        AppManager.editorConfig.BaseFontSize = mDialogPreference.getBaseFont().getSize2D();
+                        EditorManager.editorConfig.BaseFontName = mDialogPreference.getBaseFont().getName();
+                        EditorManager.editorConfig.BaseFontSize = mDialogPreference.getBaseFont().getSize2D();
                         updateMenuFonts();
                     }
 
-                    AppManager.editorConfig.ScreenFontName = mDialogPreference.getScreenFont().getName();
-                    AppManager.editorConfig.WheelOrder = mDialogPreference.getWheelOrder();
-                    AppManager.editorConfig.CursorFixed = mDialogPreference.isCursorFixed();
+                    EditorManager.editorConfig.ScreenFontName = mDialogPreference.getScreenFont().getName();
+                    EditorManager.editorConfig.WheelOrder = mDialogPreference.getWheelOrder();
+                    EditorManager.editorConfig.CursorFixed = mDialogPreference.isCursorFixed();
 
                     ApplicationGlobal.appConfig.DefaultVibratoLength = mDialogPreference.getDefaultVibratoLength();
-                    AppManager.editorConfig.AutoVibratoThresholdLength = mDialogPreference.getAutoVibratoThresholdLength();
-                    AppManager.editorConfig.AutoVibratoType1 = mDialogPreference.getAutoVibratoType1();
-                    AppManager.editorConfig.AutoVibratoType2 = mDialogPreference.getAutoVibratoType2();
-                    AppManager.editorConfig.AutoVibratoTypeCustom = mDialogPreference.getAutoVibratoTypeCustom();
+                    EditorManager.editorConfig.AutoVibratoThresholdLength = mDialogPreference.getAutoVibratoThresholdLength();
+                    EditorManager.editorConfig.AutoVibratoType1 = mDialogPreference.getAutoVibratoType1();
+                    EditorManager.editorConfig.AutoVibratoType2 = mDialogPreference.getAutoVibratoType2();
+                    EditorManager.editorConfig.AutoVibratoTypeCustom = mDialogPreference.getAutoVibratoTypeCustom();
 
-                    AppManager.editorConfig.EnableAutoVibrato = mDialogPreference.isEnableAutoVibrato();
+                    EditorManager.editorConfig.EnableAutoVibrato = mDialogPreference.isEnableAutoVibrato();
 					ApplicationGlobal.appConfig.PreSendTime = mDialogPreference.getPreSendTime();
                     ApplicationGlobal.appConfig.Language = mDialogPreference.getLanguage();
                     if (!Messaging.getLanguage().Equals(ApplicationGlobal.appConfig.Language)) {
@@ -11936,19 +11936,19 @@ namespace cadencii
 
 					ApplicationGlobal.appConfig.ControlCurveResolution = mDialogPreference.getControlCurveResolution();
                     ApplicationGlobal.appConfig.DefaultSingerName = mDialogPreference.getDefaultSingerName();
-                    AppManager.editorConfig.ScrollHorizontalOnWheel = mDialogPreference.isScrollHorizontalOnWheel();
-                    AppManager.editorConfig.MaximumFrameRate = mDialogPreference.getMaximumFrameRate();
-                    int fps = 1000 / AppManager.editorConfig.MaximumFrameRate;
+                    EditorManager.editorConfig.ScrollHorizontalOnWheel = mDialogPreference.isScrollHorizontalOnWheel();
+                    EditorManager.editorConfig.MaximumFrameRate = mDialogPreference.getMaximumFrameRate();
+                    int fps = 1000 / EditorManager.editorConfig.MaximumFrameRate;
                     timer.Interval = (fps <= 0) ? 1 : fps;
                     applyShortcut();
-                    AppManager.editorConfig.KeepLyricInputMode = mDialogPreference.isKeepLyricInputMode();
-                    if (AppManager.editorConfig.PxTrackHeight != mDialogPreference.getPxTrackHeight()) {
-                        AppManager.editorConfig.PxTrackHeight = mDialogPreference.getPxTrackHeight();
+                    EditorManager.editorConfig.KeepLyricInputMode = mDialogPreference.isKeepLyricInputMode();
+                    if (EditorManager.editorConfig.PxTrackHeight != mDialogPreference.getPxTrackHeight()) {
+                        EditorManager.editorConfig.PxTrackHeight = mDialogPreference.getPxTrackHeight();
                         updateDrawObjectList();
                     }
-                    AppManager.editorConfig.setMouseHoverTime(mDialogPreference.getMouseHoverTime());
-                    AppManager.editorConfig.PlayPreviewWhenRightClick = mDialogPreference.isPlayPreviewWhenRightClick();
-					AppManager.editorConfig.CurveSelectingQuantized = mDialogPreference.isCurveSelectingQuantized();
+                    EditorManager.editorConfig.setMouseHoverTime(mDialogPreference.getMouseHoverTime());
+                    EditorManager.editorConfig.PlayPreviewWhenRightClick = mDialogPreference.isPlayPreviewWhenRightClick();
+					EditorManager.editorConfig.CurveSelectingQuantized = mDialogPreference.isCurveSelectingQuantized();
 
                     ApplicationGlobal.appConfig.CurveVisibleAccent = mDialogPreference.isCurveVisibleAccent();
                     ApplicationGlobal.appConfig.CurveVisibleBreathiness = mDialogPreference.isCurveVisibleBre();
@@ -11973,10 +11973,10 @@ namespace cadencii
                     ApplicationGlobal.appConfig.CurveVisibleEnvelope = mDialogPreference.isCurveVisibleEnvelope();
 
 #if ENABLE_MIDI
-                    AppManager.editorConfig.MidiInPort.PortNumber = mDialogPreference.getMidiInPort();
+                    EditorManager.editorConfig.MidiInPort.PortNumber = mDialogPreference.getMidiInPort();
 #endif
 #if ENABLE_MTC
-                    AppManager.editorConfig.MidiInPortMtc.PortNumber = m_preference_dlg.getMtcMidiInPort();
+                    EditorManager.editorConfig.MidiInPortMtc.PortNumber = m_preference_dlg.getMtcMidiInPort();
 #endif
 #if ENABLE_MIDI || ENABLE_MTC
                     updateMidiInStatus();
@@ -11997,9 +11997,9 @@ namespace cadencii
                     }
                     AppManager.reloadUtauVoiceDB();
 
-                    AppManager.editorConfig.SelfDeRomanization = mDialogPreference.isSelfDeRomantization();
-                    AppManager.editorConfig.AutoBackupIntervalMinutes = mDialogPreference.getAutoBackupIntervalMinutes();
-                    AppManager.editorConfig.UseSpaceKeyAsMiddleButtonModifier = mDialogPreference.isUseSpaceKeyAsMiddleButtonModifier();
+                    EditorManager.editorConfig.SelfDeRomanization = mDialogPreference.isSelfDeRomantization();
+                    EditorManager.editorConfig.AutoBackupIntervalMinutes = mDialogPreference.getAutoBackupIntervalMinutes();
+                    EditorManager.editorConfig.UseSpaceKeyAsMiddleButtonModifier = mDialogPreference.isUseSpaceKeyAsMiddleButtonModifier();
 
 #if ENABLE_AQUESTONE
                     var old_aquestone_config = Tuple.Create(ApplicationGlobal.appConfig.PathAquesTone, ApplicationGlobal.appConfig.DoNotUseAquesTone);
@@ -12020,8 +12020,8 @@ namespace cadencii
 #endif
                     updateRendererMenu();
 
-                    //AppManager.editorConfig.__revoked__WaveFileOutputFromMasterTrack = mDialogPreference.isWaveFileOutputFromMasterTrack();
-                    //AppManager.editorConfig.__revoked__WaveFileOutputChannel = mDialogPreference.getWaveFileOutputChannel();
+                    //EditorManager.editorConfig.__revoked__WaveFileOutputFromMasterTrack = mDialogPreference.isWaveFileOutputFromMasterTrack();
+                    //EditorManager.editorConfig.__revoked__WaveFileOutputChannel = mDialogPreference.getWaveFileOutputChannel();
                     if (ApplicationGlobal.appConfig.UseProjectCache && !mDialogPreference.isUseProjectCache()) {
                         // プロジェクト用キャッシュを使用していたが，使用しないように変更された場合.
                         // プロジェクト用キャッシュが存在するなら，共用のキャッシュに移動する．
@@ -12134,7 +12134,7 @@ namespace cadencii
         public void menuSettingShortcut_Click(Object sender, EventArgs e)
         {
             SortedDictionary<string, ValuePair<string, Keys[]>> dict = new SortedDictionary<string, ValuePair<string, Keys[]>>();
-            SortedDictionary<string, Keys[]> configured = AppManager.editorConfig.getShortcutKeysDictionary(this.getDefaultShortcutKeys());
+            SortedDictionary<string, Keys[]> configured = EditorManager.editorConfig.getShortcutKeysDictionary(this.getDefaultShortcutKeys());
 #if DEBUG
             sout.println("FormMain#menuSettingShortcut_Click; configured=");
             foreach (var name in configured.Keys) {
@@ -12198,7 +12198,7 @@ namespace cadencii
             }
 
             // 最初に戻る、のショートカットキー
-            Keys[] keysGoToFirst = AppManager.editorConfig.SpecialShortcutGoToFirst;
+            Keys[] keysGoToFirst = EditorManager.editorConfig.SpecialShortcutGoToFirst;
             if (keysGoToFirst == null) {
                 keysGoToFirst = new Keys[] { };
             }
@@ -12216,17 +12216,17 @@ namespace cadencii
                         Keys[] keys = res[display].getValue();
                         bool found = false;
                         if (name.Equals("SpecialShortcutGoToFirst")) {
-                            AppManager.editorConfig.SpecialShortcutGoToFirst = keys;
+                            EditorManager.editorConfig.SpecialShortcutGoToFirst = keys;
                         } else {
-                            for (int i = 0; i < AppManager.editorConfig.ShortcutKeys.Count; i++) {
-                                if (AppManager.editorConfig.ShortcutKeys[i].Key.Equals(name)) {
-                                    AppManager.editorConfig.ShortcutKeys[i].Value = keys;
+                            for (int i = 0; i < EditorManager.editorConfig.ShortcutKeys.Count; i++) {
+                                if (EditorManager.editorConfig.ShortcutKeys[i].Key.Equals(name)) {
+                                    EditorManager.editorConfig.ShortcutKeys[i].Value = keys;
                                     found = true;
                                     break;
                                 }
                             }
                             if (!found) {
-                                AppManager.editorConfig.ShortcutKeys.Add(new ValuePairOfStringArrayOfKeys(name, keys));
+                                EditorManager.editorConfig.ShortcutKeys.Add(new ValuePairOfStringArrayOfKeys(name, keys));
                             }
                         }
                     }
@@ -12249,7 +12249,7 @@ namespace cadencii
         {
             FormVibratoPreset dialog = null;
             try {
-                dialog = new FormVibratoPreset(AppManager.editorConfig.AutoVibratoCustom);
+                dialog = new FormVibratoPreset(EditorManager.editorConfig.AutoVibratoCustom);
                 dialog.Location = getFormPreferedLocation(dialog);
                 DialogResult ret = AppManager.showModalDialog(dialog, this);
                 if (ret != DialogResult.OK) {
@@ -12262,9 +12262,9 @@ namespace cadencii
                 // ダイアログ結果を，設定値にコピー
                 // ダイアログのコンストラクタであらかじめcloneされているので，
                 // ここではcloneする必要はない．
-                AppManager.editorConfig.AutoVibratoCustom.Clear();
+                EditorManager.editorConfig.AutoVibratoCustom.Clear();
                 for (int i = 0; i < result.Count; i++) {
-                    AppManager.editorConfig.AutoVibratoCustom.Add(result[i]);
+                    EditorManager.editorConfig.AutoVibratoCustom.Add(result[i]);
                 }
 
                 // メニューの表示状態を更新
@@ -13616,7 +13616,7 @@ namespace cadencii
             if (e.Button == MouseButtons.Left) {
                 if (0 <= e.Y && e.Y <= 18) {
                     #region スタート/エンドマーク
-                    int tolerance = AppManager.editorConfig.PxTolerance;
+                    int tolerance = EditorManager.editorConfig.PxTolerance;
                     int start_marker_width = Properties.Resources.start_marker.Width;
                     int end_marker_width = Properties.Resources.end_marker.Width;
                     int startx = AppManager.xCoordFromClocks(vsq.config.StartMarker);
@@ -13661,7 +13661,7 @@ namespace cadencii
                             break;
                         }
                         string s = PortUtil.formatDecimal("#.00", 60e6 / (float)MusicManager.getVsqFile().TempoTable[i].Tempo);
-                        Dimension size = Util.measureString(s, new Font(AppManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8));
+                        Dimension size = Util.measureString(s, new Font(EditorManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8));
                         if (Utility.isInRect(new Point(e.X, e.Y), new Rectangle(x, 14, (int)size.width, 14))) {
                             index = i;
                             break;
@@ -13719,7 +13719,7 @@ namespace cadencii
                     for (int i = 0; i < MusicManager.getVsqFile().TimesigTable.Count; i++) {
                         string s = MusicManager.getVsqFile().TimesigTable[i].Numerator + "/" + MusicManager.getVsqFile().TimesigTable[i].Denominator;
                         int x = AppManager.xCoordFromClocks(MusicManager.getVsqFile().TimesigTable[i].Clock);
-                        Dimension size = Util.measureString(s, new Font(AppManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8));
+                        Dimension size = Util.measureString(s, new Font(EditorManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8));
                         if (Utility.isInRect(new Point(e.X, e.Y), new Rectangle(x, 28, (int)size.width, 14))) {
                             index = i;
                             break;
@@ -13788,7 +13788,7 @@ namespace cadencii
                     if (4 <= e.Y && e.Y <= 18) {
                         #region マーカー位置の変更
                         int clock = AppManager.clockFromXCoord(e.X);
-                        if (AppManager.editorConfig.getPositionQuantize() != QuantizeMode.off) {
+                        if (EditorManager.editorConfig.getPositionQuantize() != QuantizeMode.off) {
                             int unit = AppManager.getPositionQuantizeClock();
                             clock = doQuantize(clock, unit);
                         }
@@ -14214,9 +14214,9 @@ namespace cadencii
                     double now = PortUtil.getCurrentTime();
                     double dt = now - mTimerDragLastIgnitted;
                     mTimerDragLastIgnitted = now;
-                    int px_move = AppManager.editorConfig.MouseDragIncrement;
-                    if (px_move / dt > AppManager.editorConfig.MouseDragMaximumRate) {
-                        px_move = (int)(dt * AppManager.editorConfig.MouseDragMaximumRate);
+                    int px_move = EditorManager.editorConfig.MouseDragIncrement;
+                    if (px_move / dt > EditorManager.editorConfig.MouseDragMaximumRate) {
+                        px_move = (int)(dt * EditorManager.editorConfig.MouseDragMaximumRate);
                     }
                     px_move += 5;
                     if (mExtDragXTrackSelector == ExtDragXMode.LEFT) {
@@ -14599,8 +14599,8 @@ namespace cadencii
 
         public void menuHiddenShorten_Click(Object sender, EventArgs e)
         {
-            QuantizeMode qmode = AppManager.editorConfig.getLengthQuantize();
-            bool triplet = AppManager.editorConfig.isLengthQuantizeTriplet();
+            QuantizeMode qmode = EditorManager.editorConfig.getLengthQuantize();
+            bool triplet = EditorManager.editorConfig.isLengthQuantizeTriplet();
             int delta = -QuantizeModeUtil.getQuantizeClock(qmode, triplet);
             lengthenSelectedEvent(delta);
         }
@@ -14656,8 +14656,8 @@ namespace cadencii
 
         public void menuHiddenLengthen_Click(Object sender, EventArgs e)
         {
-            QuantizeMode qmode = AppManager.editorConfig.getLengthQuantize();
-            bool triplet = AppManager.editorConfig.isLengthQuantizeTriplet();
+            QuantizeMode qmode = EditorManager.editorConfig.getLengthQuantize();
+            bool triplet = EditorManager.editorConfig.isLengthQuantizeTriplet();
             int delta = QuantizeModeUtil.getQuantizeClock(qmode, triplet);
             lengthenSelectedEvent(delta);
         }
@@ -14740,8 +14740,8 @@ namespace cadencii
 
         public void menuHiddenMoveLeft_Click(Object sender, EventArgs e)
         {
-            QuantizeMode mode = AppManager.editorConfig.getPositionQuantize();
-            bool triplet = AppManager.editorConfig.isPositionQuantizeTriplet();
+            QuantizeMode mode = EditorManager.editorConfig.getPositionQuantize();
+            bool triplet = EditorManager.editorConfig.isPositionQuantizeTriplet();
             int delta = -QuantizeModeUtil.getQuantizeClock(mode, triplet);
 #if DEBUG
             sout.println("FormMain#menuHiddenMoveLeft_Click; delta=" + delta);
@@ -14751,8 +14751,8 @@ namespace cadencii
 
         public void menuHiddenMoveRight_Click(Object sender, EventArgs e)
         {
-            QuantizeMode mode = AppManager.editorConfig.getPositionQuantize();
-            bool triplet = AppManager.editorConfig.isPositionQuantizeTriplet();
+            QuantizeMode mode = EditorManager.editorConfig.getPositionQuantize();
+            bool triplet = EditorManager.editorConfig.isPositionQuantizeTriplet();
             int delta = QuantizeModeUtil.getQuantizeClock(mode, triplet);
             moveUpDownLeftRight(0, delta);
         }
@@ -14795,7 +14795,7 @@ namespace cadencii
                 int clock = original.Clock;
                 int note = original.ID.Note;
                 Point pos = new Point(AppManager.xCoordFromClocks(clock), AppManager.yCoordFromNote(note));
-                if (!AppManager.editorConfig.KeepLyricInputMode) {
+                if (!EditorManager.editorConfig.KeepLyricInputMode) {
                     mLastSymbolEditMode = false;
                 }
                 showInputTextBox(original.ID.LyricHandle.L0.Phrase,
@@ -15113,7 +15113,7 @@ namespace cadencii
             int width = pictureBox2.Width;
             int height4 = height / 4;
             if (0 <= e.X && e.X < width) {
-                int scaley = AppManager.editorConfig.PianoRollScaleY;
+                int scaley = EditorManager.editorConfig.PianoRollScaleY;
                 if (0 <= e.Y && e.Y < height4) {
                     if (scaley + 1 <= EditorConfig.MAX_PIANOROLL_SCALEY) {
                         zoomY(1);
@@ -15421,9 +15421,9 @@ namespace cadencii
 
             // メニューの表示文字列から，どの設定値についてのイベントかを探す
             VibratoHandle target = null;
-            int size = AppManager.editorConfig.AutoVibratoCustom.Count;
+            int size = EditorManager.editorConfig.AutoVibratoCustom.Count;
             for (int i = 0; i < size; i++) {
-                VibratoHandle handle = AppManager.editorConfig.AutoVibratoCustom[i];
+                VibratoHandle handle = EditorManager.editorConfig.AutoVibratoCustom[i];
                 if (text.Equals(handle.getCaption())) {
                     target = handle;
                     break;
@@ -15798,7 +15798,7 @@ namespace cadencii
 
         public void handlePositionQuantize(Object sender, EventArgs e)
         {
-            QuantizeMode qm = AppManager.editorConfig.getPositionQuantize();
+            QuantizeMode qm = EditorManager.editorConfig.getPositionQuantize();
             if (sender == cMenuPianoQuantize04 ||
 #if ENABLE_STRIP_DROPDOWN
  sender == stripDDBtnQuantize04 ||
@@ -15842,16 +15842,16 @@ namespace cadencii
  sender == menuSettingPositionQuantizeOff) {
                 qm = QuantizeMode.off;
             }
-            AppManager.editorConfig.setPositionQuantize(qm);
-            AppManager.editorConfig.setLengthQuantize(qm);
+            EditorManager.editorConfig.setPositionQuantize(qm);
+            EditorManager.editorConfig.setLengthQuantize(qm);
             refreshScreen();
         }
 
         public void handlePositionQuantizeTriplet_Click(Object sender, EventArgs e)
         {
-            bool triplet = !AppManager.editorConfig.isPositionQuantizeTriplet();
-            AppManager.editorConfig.setPositionQuantizeTriplet(triplet);
-            AppManager.editorConfig.setLengthQuantizeTriplet(triplet);
+            bool triplet = !EditorManager.editorConfig.isPositionQuantizeTriplet();
+            EditorManager.editorConfig.setPositionQuantizeTriplet(triplet);
+            EditorManager.editorConfig.setLengthQuantizeTriplet(triplet);
             refreshScreen();
         }
 
@@ -16291,7 +16291,7 @@ namespace cadencii
             IPaletteTool ipt = (IPaletteTool)instance;
             if (ipt.openDialog() == System.Windows.Forms.DialogResult.OK) {
                 XmlSerializer xsms = new XmlSerializer(instance.GetType(), true);
-                string dir = Path.Combine(Utility.getApplicationDataPath(), "tool");
+                string dir = Path.Combine(ApplicationGlobal.getApplicationDataPath(), "tool");
                 if (!Directory.Exists(dir)) {
                     PortUtil.createDirectory(dir);
                 }
@@ -16519,8 +16519,8 @@ namespace cadencii
 
                 // 音符の長さを計算
                 int length = QuantizeModeUtil.getQuantizeClock(
-                        AppManager.editorConfig.getLengthQuantize(),
-                        AppManager.editorConfig.isLengthQuantizeTriplet());
+                        EditorManager.editorConfig.getLengthQuantize(),
+                        EditorManager.editorConfig.isLengthQuantizeTriplet());
 
                 // 音符の長さを設定
                 Utility.editLengthOfVsqEvent(

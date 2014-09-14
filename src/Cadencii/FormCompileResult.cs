@@ -31,7 +31,7 @@ namespace cadencii
             applyLanguage();
             label1.Text = message;
             textBox1.Text = errors;
-            Util.applyFontRecurse(this, AppManager.editorConfig.getBaseFont());
+            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods

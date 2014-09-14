@@ -31,7 +31,7 @@ namespace cadencii
             applyLanguage();
             numStart.Maximum = max_barcount;
             numEnd.Maximum = max_barcount;
-            Util.applyFontRecurse(this, AppManager.editorConfig.getBaseFont());
+            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods

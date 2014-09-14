@@ -44,7 +44,7 @@ namespace cadencii
         private static int mPreviousHeight = 418;
 
         /// <summary>
-        /// AppManager.editorConfig.AutoVibratoCustomからコピーしてきた，
+        /// EditorManager.editorConfig.AutoVibratoCustomからコピーしてきた，
         /// ビブラートハンドルのリスト
         /// </summary>
         private List<VibratoHandle> mHandles;
@@ -73,7 +73,7 @@ namespace cadencii
         {
             InitializeComponent();
             applyLanguage();
-            Util.applyFontRecurse(this, AppManager.editorConfig.getBaseFont());
+            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
             this.Size = new System.Drawing.Size(mPreviousWidth, mPreviousHeight);
             registerEventHandlers();
 

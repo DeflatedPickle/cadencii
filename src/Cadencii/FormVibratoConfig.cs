@@ -106,7 +106,7 @@ namespace cadencii
             setResources();
             applyLanguage();
 
-            Util.applyFontRecurse(this, AppManager.editorConfig.getBaseFont());
+            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods
@@ -157,9 +157,9 @@ namespace cadencii
             // 選択元を元に，選択肢を追加する
             if (radioUserDefined.Checked) {
                 // ユーザー定義のを使う場合
-                int size = AppManager.editorConfig.AutoVibratoCustom.Count;
+                int size = EditorManager.editorConfig.AutoVibratoCustom.Count;
                 for (int i = 0; i < size; i++) {
-                    VibratoHandle handle = AppManager.editorConfig.AutoVibratoCustom[i];
+                    VibratoHandle handle = EditorManager.editorConfig.AutoVibratoCustom[i];
                     comboVibratoType.Items.Add(handle);
                 }
             } else {
@@ -229,9 +229,9 @@ namespace cadencii
                     txtVibratoLength.Enabled = true;
                     VibratoHandle src = null;
                     if (radioUserDefined.Checked) {
-                        int size = AppManager.editorConfig.AutoVibratoCustom.Count;
+                        int size = EditorManager.editorConfig.AutoVibratoCustom.Count;
                         for (int i = 0; i < size; i++) {
-                            VibratoHandle handle = AppManager.editorConfig.AutoVibratoCustom[i];
+                            VibratoHandle handle = EditorManager.editorConfig.AutoVibratoCustom[i];
                             if (s == handle.IconID) {
                                 src = handle;
                                 break;

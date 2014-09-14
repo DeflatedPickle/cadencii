@@ -34,7 +34,7 @@ namespace cadencii
             applyLanguage();
             m_master_tuning = master_tuning_in_cent;
             txtMasterTuning.Text = master_tuning_in_cent + "";
-            Util.applyFontRecurse(this, AppManager.editorConfig.getBaseFont());
+            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods

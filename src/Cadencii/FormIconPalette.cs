@@ -54,10 +54,10 @@ namespace cadencii
             InitializeComponent();
             mMainWindow = main_window;
             applyLanguage();
-            Util.applyFontRecurse(this, AppManager.editorConfig.getBaseFont());
+            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
             init();
             registerEventHandlers();
-            SortedDictionary<string, Keys[]> dict = AppManager.editorConfig.getShortcutKeysDictionary(mMainWindow.getDefaultShortcutKeys());
+            SortedDictionary<string, Keys[]> dict = EditorManager.editorConfig.getShortcutKeysDictionary(mMainWindow.getDefaultShortcutKeys());
             if (dict.ContainsKey("menuVisualIconPalette")) {
                 Keys[] keys = dict["menuVisualIconPalette"];
                 Keys shortcut = Keys.None;

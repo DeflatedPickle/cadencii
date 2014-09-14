@@ -4,11 +4,16 @@ namespace cadencii
 {
 	public static class EditorManager
 	{
+		/// <summary>
+		/// エディタの設定
+		/// </summary>
+		public static EditorConfig editorConfig = new EditorConfig ();
+
 		static EditorManager ()
 		{
 			Selected = 1;
 			SelectedTool = EditTool.PENCIL;
-			editHistory = new EditHistoryModel();
+			editHistory = new EditHistoryModel ();
 		}
 
 		static int mSelected;

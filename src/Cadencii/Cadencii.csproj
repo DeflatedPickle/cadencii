@@ -249,7 +249,6 @@
       <DependentUpon>Preference.cs</DependentUpon>
     </Compile>
     <Compile Include="ui\UpdateCheckForm.cs" />
-    <Compile Include="updater\UpdateInfo.cs" />
     <Compile Include="VersionString.cs" />
     <Compile Include="WaveformZoomController.cs" />
     <Compile Include="WaveformZoomUi.cs">
@@ -367,7 +366,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="IPaletteTool.cs" />
-    <Compile Include="KeySoundPlayer.cs" />
     <Compile Include="NumericUpDownEx.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -463,27 +461,20 @@
     <Compile Include="plugin\PluginLoader.cs" />
     <Compile Include="plugin\PluginVersion.cs" />
     <Compile Include="plugin\ScriptProcessor.cs" />
-    <Compile Include="app_dspcore\AttackVariation.cs" />
-    <Compile Include="app_dspcore\AttackVariationConverter.cs" />
-    <Compile Include="app_dspcore\VibratoLengthEditingRule.cs" />
-    <Compile Include="app_dspcore\VibratoVariation.cs" />
-    <Compile Include="app_dspcore\VibratoVariationConverter.cs" />
+    <Compile Include="KeySoundPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ja.po">
+    <Content Include="Properties\icon1.ico" />
+    <Content Include="po\ja.po">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Properties\icon1.ico" />
+    <Content Include="po\zh-TW.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\cursor.cur" />
-    <None Include="kr.po">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Properties\app.manifest" />
-    <None Include="zh-CN.po">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <Content Include="resources\dict_en.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -501,9 +492,6 @@
     <None Include="resources\note128.png" />
     <None Include="resources\notenull.png" />
     <None Include="resources\plus8x8.png" />
-    <Content Include="zh-TW.po">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="resources\alarm-clock.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -678,6 +666,12 @@
     <Content Include="resources\VSTonWht.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="po\kr.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="po\zh-CN.po">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -770,6 +764,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="manual\" />
+    <Folder Include="po\" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="..\..\..\..\..\..\svn\cadencii\src\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.projitems" Label="Shared" Condition="Exists('..\..\..\..\..\..\svn\cadencii\src\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.projitems')" />

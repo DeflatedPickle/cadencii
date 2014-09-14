@@ -45,10 +45,6 @@ namespace cadencii
     public partial class AppManager
     {
         /// <summary>
-        /// エディタの設定
-        /// </summary>
-        public static EditorConfig editorConfig = new EditorConfig();
-        /// <summary>
         /// AttachedCurve用のシリアライザ
         /// </summary>
         public static XmlSerializer xmlSerializerListBezierCurves = new XmlSerializer(typeof(AttachedCurve));
@@ -2199,7 +2195,7 @@ namespace cadencii
         /// </summary>
         public static void loadConfig()
         {
-            string appdata = Utility.getApplicationDataPath();
+            string appdata = cadencii.core.ApplicationGlobal.getApplicationDataPath();
 #if DEBUG
             sout.println("AppManager#loadConfig; appdata=" + appdata);
 #endif

@@ -39,6 +39,12 @@
     <Compile Include="EditTool.cs" />
     <Compile Include="EditHistoryModel.cs" />
     <Compile Include="MusicManager.cs" />
+    <Compile Include="updater\UpdateInfo.cs" />
+    <Compile Include="app_dspcore\AttackVariation.cs" />
+    <Compile Include="app_dspcore\AttackVariationConverter.cs" />
+    <Compile Include="app_dspcore\VibratoLengthEditingRule.cs" />
+    <Compile Include="app_dspcore\VibratoVariation.cs" />
+    <Compile Include="app_dspcore\VibratoVariationConverter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

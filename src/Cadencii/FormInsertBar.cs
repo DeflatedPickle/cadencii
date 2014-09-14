@@ -30,7 +30,7 @@ namespace cadencii
             setResources();
             applyLanguage();
             numPosition.Maximum = max_position;
-            Util.applyFontRecurse(this, AppManager.editorConfig.getBaseFont());
+            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods

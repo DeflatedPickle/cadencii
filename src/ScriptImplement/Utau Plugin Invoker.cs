@@ -451,7 +451,7 @@ public class Utau_Plugin_Invoker : Form
                     newe.Clock = c;
                     newe.UstEvent = (UstEvent)ue.clone();
                     newe.ID = new VsqID();
-                    AppManager.editorConfig.applyDefaultSingerStyle(newe.ID);
+                    EditorManager.editorConfig.applyDefaultSingerStyle(newe.ID);
                     if (ue.isIntensitySpecified()) {
                         newe.ID.Dynamics = ue.getIntensity();
                     }

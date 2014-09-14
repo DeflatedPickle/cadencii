@@ -80,7 +80,7 @@ namespace cadencii
             } else {
                 mUi.setValueEndNum(bar_count);
             }
-            mUi.setFont(AppManager.editorConfig.BaseFontName, AppManager.editorConfig.BaseFontSize);
+            mUi.setFont(EditorManager.editorConfig.BaseFontName, EditorManager.editorConfig.BaseFontSize);
         }
 
 

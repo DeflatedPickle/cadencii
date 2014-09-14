@@ -32,7 +32,7 @@ namespace cadencii
             setResources();
             applyLanguage();
             setMaxNotes(max_notes);
-            Util.applyFontRecurse(this, AppManager.editorConfig.getBaseFont());
+            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods

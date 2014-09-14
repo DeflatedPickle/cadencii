@@ -88,7 +88,7 @@ namespace cadencii
                             AppManager.debugWriteLine("t.FullName=" + t.FullName);
 #endif
                             Object instance = asm.CreateInstance(t.FullName);
-                            string dir = Path.Combine(Utility.getApplicationDataPath(), "tool");
+                            string dir = Path.Combine(cadencii.core.ApplicationGlobal.getApplicationDataPath(), "tool");
                             string cfg = Path.GetFileNameWithoutExtension(file.FullName) + ".config";
                             string config = Path.Combine(dir, cfg);
                             if (File.Exists(config)) {

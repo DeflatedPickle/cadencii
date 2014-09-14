@@ -55,6 +55,10 @@
       <Project>{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}</Project>
       <Name>Cadencii</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\cadencii.editormodel\cadencii.editormodel.csproj">
+      <Project>{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}</Project>
+      <Name>cadencii.editormodel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

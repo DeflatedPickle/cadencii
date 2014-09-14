@@ -32,7 +32,7 @@ namespace cadencii
             InitializeComponent();
             registerEventHandlers();
             setResources();
-            Util.applyFontRecurse(this, AppManager.editorConfig.getBaseFont());
+            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
 

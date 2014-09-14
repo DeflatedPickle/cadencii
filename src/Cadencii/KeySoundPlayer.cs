@@ -15,7 +15,7 @@ using System;
 using System.IO;
 using cadencii.media;
 using cadencii;
-
+using cadencii.core;
 
 
 namespace cadencii
@@ -38,7 +38,7 @@ namespace cadencii
             m_sound_previewer = new BSoundPlayer[48];
             m_temp_player = null;
             m_prepared = new bool[127];
-            string cache_path = Utility.getKeySoundPath();
+			string cache_path = ApplicationGlobal.getKeySoundPath();
             for (int i = 0; i <= 126; i++) {
                 string path = Path.Combine(cache_path, i + ".wav");
                 if (File.Exists(path)) {
@@ -76,7 +76,7 @@ namespace cadencii
                 if (m_temp_player == null) {
                     m_temp_player = new BSoundPlayer();
                 }
-                string path = Path.Combine(Utility.getKeySoundPath(), note + ".wav");
+				string path = Path.Combine(ApplicationGlobal.getKeySoundPath(), note + ".wav");
                 if (File.Exists(path)) {
                     m_temp_player.setSoundLocation(path);
                     m_temp_player.play();

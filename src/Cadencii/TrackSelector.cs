@@ -1617,7 +1617,7 @@ namespace cadencii
             bool search_mouse = (0 <= mouse.Y && mouse.Y <= height);
             IEnumerator<VsqEvent> itr = track.getNoteEventIterator().GetEnumerator();
             int dotwid = DOT_WID * 2 + 1;
-            int tolerance = AppManager.editorConfig.PxTolerance;
+            int tolerance = EditorManager.editorConfig.PxTolerance;
             // 選択アイテムが1個以上あるので，検索するときtrue
             bool search_sel = AppManager.itemSelection.getEventCount() > 0;
             while (true) {
@@ -3133,7 +3133,7 @@ namespace cadencii
                 } else if (selected_tool == EditTool.ARROW ||
                             selected_tool == EditTool.ERASER) {
                     int draft_clock = clock;
-                    if (AppManager.editorConfig.CurveSelectingQuantized) {
+                    if (EditorManager.editorConfig.CurveSelectingQuantized) {
                         int unit = AppManager.getPositionQuantizeClock();
                         int odd = clock % unit;
                         int nclock = clock;
@@ -3369,7 +3369,7 @@ namespace cadencii
                 value = max;
             }
 
-			if (AppManager.editorConfig.CurveSelectingQuantized) {
+			if (EditorManager.editorConfig.CurveSelectingQuantized) {
                 AppManager.mCurveSelectingRectangle = new Rectangle(quantized_clock, value, 0, 0);
             } else {
                 AppManager.mCurveSelectingRectangle = new Rectangle(clock, value, 0, 0);
@@ -3542,7 +3542,7 @@ namespace cadencii
                             quantized_clock += unit;
                         }
 
-                        int px_shift = DOT_WID + AppManager.editorConfig.PxToleranceBezier;
+                        int px_shift = DOT_WID + EditorManager.editorConfig.PxToleranceBezier;
                         int px_width = px_shift * 2 + 1;
 
                         if (EditorManager.SelectedTool == EditTool.LINE) {
@@ -3813,7 +3813,7 @@ namespace cadencii
                                 if ((mModifierOnMouseDown & mModifierKey) != mModifierKey) {
                                     AppManager.setCurveSelectedIntervalEnabled(false);
                                 }
-								if (AppManager.editorConfig.CurveSelectingQuantized) {
+								if (EditorManager.editorConfig.CurveSelectingQuantized) {
                                     AppManager.mCurveSelectingRectangle = new Rectangle(quantized_clock, value, 0, 0);
                                 } else {
                                     AppManager.mCurveSelectingRectangle = new Rectangle(clock, value, 0, 0);
@@ -3836,7 +3836,7 @@ namespace cadencii
                                         ByRef<BezierChain> chain = new ByRef<BezierChain>();
                                         ByRef<BezierPoint> point = new ByRef<BezierPoint>();
                                         ByRef<BezierPickedSide> side = new ByRef<BezierPickedSide>();
-                                        findBezierPointAt(e.X, e.Y, list, chain, point, side, DOT_WID, AppManager.editorConfig.PxToleranceBezier);
+                                        findBezierPointAt(e.X, e.Y, list, chain, point, side, DOT_WID, EditorManager.editorConfig.PxToleranceBezier);
                                         if (point.value != null) {
                                             if (side.value == BezierPickedSide.BASE) {
                                                 // データ点自体を削除
@@ -3920,7 +3920,7 @@ namespace cadencii
                                 if ((mModifierOnMouseDown & Keys.Shift) != Keys.Shift && (mModifierOnMouseDown & mModifierKey) != mModifierKey) {
                                     AppManager.itemSelection.clearPoint();
                                 }
-								if (AppManager.editorConfig.CurveSelectingQuantized) {
+								if (EditorManager.editorConfig.CurveSelectingQuantized) {
                                     AppManager.mCurveSelectingRectangle = new Rectangle(quantized_clock, value, 0, 0);
                                 } else {
                                     AppManager.mCurveSelectingRectangle = new Rectangle(clock, value, 0, 0);
@@ -3974,7 +3974,7 @@ namespace cadencii
             } else if (max < value) {
                 value = max;
             }
-            int px_shift = DOT_WID + AppManager.editorConfig.PxToleranceBezier;
+            int px_shift = DOT_WID + EditorManager.editorConfig.PxToleranceBezier;
             int px_width = px_shift * 2 + 1;
             Keys modifier = (Keys) Control.ModifierKeys;
 
@@ -3990,7 +3990,7 @@ namespace cadencii
             findBezierPointAt(
                 e.X, e.Y,
                 dict, found_chain, found_point, found_side,
-                DOT_WID, AppManager.editorConfig.PxToleranceBezier);
+                DOT_WID, EditorManager.editorConfig.PxToleranceBezier);
 #if DEBUG
             sout.println("TrackSelector::processMouseDownBezier; (found_chain.value==null)=" + (found_chain.value == null));
 #endif

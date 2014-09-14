@@ -27,13 +27,13 @@ using cadencii.windows.forms;
 using cadencii.xml;
 using cadencii.java.awt;
 using Keys = cadencii.java.awt.Keys;
+using cadencii.core;
 
 namespace cadencii
 {
 
     public class Utility
     {
-        private const string CONFIG_DIR_NAME = "Cadencii";
         private static int[] RANDOMIZE_PIT_PATTERN1 = null;
         private static int[] RANDOMIZE_PIT_PATTERN2 = null;
         private static int[] RANDOMIZE_PIT_PATTERN3 = null;
@@ -1252,32 +1252,12 @@ namespace cadencii
         }
 
         /// <summary>
-        /// アプリケーションデータの保存位置を取得します
-        /// Gets the path for application data
-        /// </summary>
-        public static string getApplicationDataPath()
-        {
-            string dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Boare");
-            if (!Directory.Exists(dir)) {
-                PortUtil.createDirectory(dir);
-            }
-
-            string dir2 = Path.Combine(dir, CONFIG_DIR_NAME);
-            if (!Directory.Exists(dir2)) {
-                PortUtil.createDirectory(dir2);
-            }
-            sout.println("Cadencii accesses ApplicationData at" + dir2 + "\n");//Keep this line for debuging.
-
-            return dir2;
-        }
-
-        /// <summary>
         /// 設定ファイルを保存するディレクトリへのパスを取得します
         /// </summary>
         /// <returns></returns>
         public static string getConfigPath()
         {
-            string dir2 = getApplicationDataPath();
+            string dir2 = ApplicationGlobal.getApplicationDataPath();
             string dir3 = Path.Combine(dir2, BAssemblyInfo.fileVersionMeasure + "." + BAssemblyInfo.fileVersionMinor);
             if (!Directory.Exists(dir3)) {
                 PortUtil.createDirectory(dir3);
@@ -1337,7 +1317,7 @@ namespace cadencii
         /// <returns></returns>
         public static string getCachedAssemblyPath()
         {
-            string dir = Path.Combine(Utility.getApplicationDataPath(), "cachedAssembly");
+            string dir = Path.Combine(ApplicationGlobal.getApplicationDataPath(), "cachedAssembly");
             if (!Directory.Exists(dir)) {
                 PortUtil.createDirectory(dir);
             }
@@ -1355,20 +1335,6 @@ namespace cadencii
                 PortUtil.createDirectory(dir);
             }
             return dir;
-        }
-
-        /// <summary>
-        /// 鍵盤用の音源が保存されているディレクトリへのパスを返します。
-        /// </summary>
-        /// <returns></returns>
-        public static string getKeySoundPath()
-        {
-            string data_path = getApplicationDataPath();
-            string ret = Path.Combine(data_path, "cache");
-            if (!Directory.Exists(ret)) {
-                PortUtil.createDirectory(ret);
-            }
-            return ret;
         }
 
         public static string getVersion()

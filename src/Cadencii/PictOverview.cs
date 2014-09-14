@@ -192,7 +192,7 @@ namespace cadencii
             }
             mOverviewScaleCount = draft;
             mOverviewPixelPerClock = getOverviewScaleX(mOverviewScaleCount);
-            AppManager.editorConfig.OverviewScaleCount = mOverviewScaleCount;
+            EditorManager.editorConfig.OverviewScaleCount = mOverviewScaleCount;
             updateCachedImage();
             mMainForm.refreshScreen();
         }
@@ -205,7 +205,7 @@ namespace cadencii
             }
             mOverviewScaleCount = draft;
             mOverviewPixelPerClock = getOverviewScaleX(mOverviewScaleCount);
-            AppManager.editorConfig.OverviewScaleCount = mOverviewScaleCount;
+            EditorManager.editorConfig.OverviewScaleCount = mOverviewScaleCount;
             updateCachedImage();
             mMainForm.refreshScreen();
         }

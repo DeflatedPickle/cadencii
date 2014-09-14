@@ -84,10 +84,10 @@ namespace cadencii
             string[] jpfixed = new string[] { "ド", "ド#", "レ", "ミb", "ミ", "ファ", "ファ#", "ソ", "ソ#", "ラ", "シb", "シ", };
             string[] de = { "C", "Cis", "D", "Es", "E", "F", "Fis", "G", "Gis", "A", "Hes", "H" };
             /*
-            if (AppManager.editorConfig != null) {
+            if (EditorManager.editorConfig != null) {
                 int odd = note % 12;
                 int order = (note - odd) / 12 - 2;
-                NoteNumberExpressionType exp_type = AppManager.editorConfig.PropertyWindowStatus.LastUsedNoteNumberExpression;
+                NoteNumberExpressionType exp_type = EditorManager.editorConfig.PropertyWindowStatus.LastUsedNoteNumberExpression;
                 if (exp_type == NoteNumberExpressionType.Numeric) {
                     return note + "";
                 } else if (exp_type == NoteNumberExpressionType.International) {
@@ -116,8 +116,8 @@ namespace cadencii
                 int draft_note_number = int.Parse(value);
                 // FIXME: bring back this
                 /*
-                if (AppManager.editorConfig != null) {
-                    AppManager.editorConfig.PropertyWindowStatus.LastUsedNoteNumberExpression = NoteNumberExpressionType.Numeric;
+                if (EditorManager.editorConfig != null) {
+                    EditorManager.editorConfig.PropertyWindowStatus.LastUsedNoteNumberExpression = NoteNumberExpressionType.Numeric;
                 }
                 */
                 return draft_note_number;
@@ -276,12 +276,12 @@ namespace cadencii
             }
 // FIXME: bring this back
 /*
-            if (AppManager.editorConfig != null) {
+            if (EditorManager.editorConfig != null) {
                 if (exp_type == NoteNumberExpressionType.International &&
-                    AppManager.editorConfig.PropertyWindowStatus.LastUsedNoteNumberExpression == NoteNumberExpressionType.Deutsche) {
+                    EditorManager.editorConfig.PropertyWindowStatus.LastUsedNoteNumberExpression == NoteNumberExpressionType.Deutsche) {
                     // do nothing
                 } else {
-                    AppManager.editorConfig.PropertyWindowStatus.LastUsedNoteNumberExpression = exp_type;
+                    EditorManager.editorConfig.PropertyWindowStatus.LastUsedNoteNumberExpression = exp_type;
                 }
             }
 */

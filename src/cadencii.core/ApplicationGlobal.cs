@@ -94,6 +94,41 @@ namespace cadencii.core
         {
             return cadencii.apputil.Messaging.getMessage(id);
         }
+		
+        /// <summary>
+        /// 鍵盤用の音源が保存されているディレクトリへのパスを返します。
+        /// </summary>
+        /// <returns></returns>
+        public static string getKeySoundPath()
+        {
+            string data_path = getApplicationDataPath();
+            string ret = Path.Combine(data_path, "cache");
+            if (!Directory.Exists(ret)) {
+                PortUtil.createDirectory(ret);
+            }
+            return ret;
+        }
+		
+		private const string CONFIG_DIR_NAME = "Cadencii";
+        /// <summary>
+        /// アプリケーションデータの保存位置を取得します
+        /// Gets the path for application data
+        /// </summary>
+        public static string getApplicationDataPath()
+        {
+            string dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Boare");
+            if (!Directory.Exists(dir)) {
+                PortUtil.createDirectory(dir);
+            }
+
+            string dir2 = Path.Combine(dir, CONFIG_DIR_NAME);
+            if (!Directory.Exists(dir2)) {
+                PortUtil.createDirectory(dir2);
+            }
+            sout.println("Cadencii accesses ApplicationData at" + dir2 + "\n");//Keep this line for debuging.
+
+            return dir2;
+        }
     }
 }
 

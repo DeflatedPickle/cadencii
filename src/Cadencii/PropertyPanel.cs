@@ -35,7 +35,7 @@ namespace cadencii
             registerEventHandlers();
             setResources();
             m_items = new List<SelectedEventEntry>();
-            Util.applyFontRecurse(this, AppManager.editorConfig.getBaseFont());
+            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         public bool isEditing()
@@ -66,7 +66,7 @@ namespace cadencii
         {
             if (item.Expandable) {
                 string s = getGridItemIdentifier(item);
-                foreach (var v in AppManager.editorConfig.PropertyWindowStatus.ExpandStatus) {
+                foreach (var v in EditorManager.editorConfig.PropertyWindowStatus.ExpandStatus) {
                     string key = v.getKey();
                     if (key == null) {
                         key = "";
@@ -101,7 +101,7 @@ namespace cadencii
             if (item.Expandable) {
                 string s = getGridItemIdentifier(item);
                 bool found = false;
-                foreach (var v in AppManager.editorConfig.PropertyWindowStatus.ExpandStatus) {
+                foreach (var v in EditorManager.editorConfig.PropertyWindowStatus.ExpandStatus) {
                     string key = v.getKey();
                     if (key == null) {
                         continue;
@@ -112,7 +112,7 @@ namespace cadencii
                     }
                 }
                 if (!found) {
-                    AppManager.editorConfig.PropertyWindowStatus.ExpandStatus.Add(new ValuePairOfStringBoolean(s, item.Expanded));
+                    EditorManager.editorConfig.PropertyWindowStatus.ExpandStatus.Add(new ValuePairOfStringBoolean(s, item.Expanded));
                 }
             }
             foreach (GridItem child in item.GridItems) {

@@ -201,7 +201,7 @@ namespace cadencii
                 int height = getHeight();
 
                 // 再生中に画面を描画しない設定なら飛ばす
-                if (AppManager.editorConfig.SkipDrawWhilePlaying && AppManager.isPlaying()) {
+                if (EditorManager.editorConfig.SkipDrawWhilePlaying && AppManager.isPlaying()) {
 					g1.drawStringEx(
                         "(hidden for performance)",
 						cadencii.core.EditorConfig.baseFont10,
@@ -509,8 +509,8 @@ namespace cadencii
                     }
 
                     // 選択されているトラックの表示を行う
-                    bool show_lyrics = AppManager.editorConfig.ShowLyric;
-                    bool show_exp_line = AppManager.editorConfig.ShowExpLine;
+                    bool show_lyrics = EditorManager.editorConfig.ShowLyric;
+                    bool show_exp_line = EditorManager.editorConfig.ShowExpLine;
                     if (selected >= 1) {
                         Shape r = g.getClip();
                         g.clipRect(key_width, 0,

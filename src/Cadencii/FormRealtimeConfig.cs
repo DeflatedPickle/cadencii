@@ -32,7 +32,7 @@ namespace cadencii
             timer.Interval = 10;
             registerEventHandlers();
             setResources();
-            Util.applyFontRecurse(this, AppManager.editorConfig.getBaseFont());
+            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods
@@ -64,20 +64,20 @@ namespace cadencii
                 winmmhelp.JoyGetStatus(0, out buttons, out pov0);
                 //int[] pov = state.GetPointOfView();
                 //int pov0 = pov[0];
-                bool btn_x = (buttons[AppManager.editorConfig.GameControlerCross] > 0x00);
-                bool btn_o = (buttons[AppManager.editorConfig.GameControlerCircle] > 0x00);
-                bool btn_tr = (buttons[AppManager.editorConfig.GameControlerTriangle] > 0x00);
-                bool btn_re = (buttons[AppManager.editorConfig.GameControlerRectangle] > 0x00);
+                bool btn_x = (buttons[EditorManager.editorConfig.GameControlerCross] > 0x00);
+                bool btn_o = (buttons[EditorManager.editorConfig.GameControlerCircle] > 0x00);
+                bool btn_tr = (buttons[EditorManager.editorConfig.GameControlerTriangle] > 0x00);
+                bool btn_re = (buttons[EditorManager.editorConfig.GameControlerRectangle] > 0x00);
                 bool pov_r = pov0 == 9000;  //(4500 <= pov0 && pov0 <= 13500);
                 bool pov_l = pov0 == 27000; //(22500 <= pov[0] && pov[0] <= 31500);
                 bool pov_u = pov0 == 0;     //(31500 <= pov[0] || (0 <= pov[0] && pov[0] <= 4500));
                 bool pov_d = pov0 == 18000; //(13500 <= pov[0] && pov[0] <= 22500);
-                bool L1 = (buttons[AppManager.editorConfig.GameControlL1] > 0x00);
-                bool R1 = (buttons[AppManager.editorConfig.GameControlR1] > 0x00);
-                bool L2 = (buttons[AppManager.editorConfig.GameControlL2] > 0x00);
-                bool R2 = (buttons[AppManager.editorConfig.GameControlR2] > 0x00);
-                bool SELECT = (buttons[AppManager.editorConfig.GameControlSelect] > 0x00);
-                if (dt_ms > AppManager.editorConfig.GameControlerMinimumEventInterval) {
+                bool L1 = (buttons[EditorManager.editorConfig.GameControlL1] > 0x00);
+                bool R1 = (buttons[EditorManager.editorConfig.GameControlR1] > 0x00);
+                bool L2 = (buttons[EditorManager.editorConfig.GameControlL2] > 0x00);
+                bool R2 = (buttons[EditorManager.editorConfig.GameControlR2] > 0x00);
+                bool SELECT = (buttons[EditorManager.editorConfig.GameControlSelect] > 0x00);
+                if (dt_ms > EditorManager.editorConfig.GameControlerMinimumEventInterval) {
                     if (btnStart.Focused) {
                         if (btn_o) {
                             timer.Stop();

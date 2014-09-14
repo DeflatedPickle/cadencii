@@ -181,7 +181,7 @@ namespace cadencii
         /// <returns></returns>
         public static string configFileNameFromScriptFileName(string script_file)
         {
-            string dir = Path.Combine(Utility.getApplicationDataPath(), "script");
+            string dir = Path.Combine(cadencii.core.ApplicationGlobal.getApplicationDataPath(), "script");
             if (!Directory.Exists(dir)) {
                 PortUtil.createDirectory(dir);
             }

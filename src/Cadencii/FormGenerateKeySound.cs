@@ -79,7 +79,7 @@ namespace cadencii
                 comboSingingSynthSystem.SelectedIndex = 0;
             }
             updateSinger();
-            txtDir.Text = Utility.getKeySoundPath();
+			txtDir.Text = ApplicationGlobal.getKeySoundPath();
 
             registerEventHandlers();
         }

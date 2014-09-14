@@ -58,7 +58,7 @@ namespace cadencii
                 btnSkip.Enabled = false;
                 btnReset.Enabled = false;
             }
-            Util.applyFontRecurse(this, AppManager.editorConfig.getBaseFont());
+            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods

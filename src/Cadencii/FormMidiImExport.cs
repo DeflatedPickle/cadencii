@@ -39,7 +39,7 @@ namespace cadencii
             InitializeComponent();
             applyLanguage();
             setMode(FormMidiMode.EXPORT);
-            Util.applyFontRecurse(this, AppManager.editorConfig.getBaseFont());
+            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
             listTrack.SetColumnHeaders(new string[] { _("Track"), _("Name"), _("Notes") });
             listTrack.Columns[0].Width = columnWidthTrack;
             listTrack.Columns[1].Width = columnWidthName;
@@ -130,31 +130,31 @@ namespace cadencii
                 chkPreMeasure.Text = _("Export pre-measure part");
                 if (chkExportVocaloidNrpn.Checked) {
                     chkPreMeasure.Enabled = false;
-                    AppManager.editorConfig.MidiImExportConfigExport.LastPremeasureCheckStatus = chkPreMeasure.Checked;
+                    EditorManager.editorConfig.MidiImExportConfigExport.LastPremeasureCheckStatus = chkPreMeasure.Checked;
                     chkPreMeasure.Checked = true;
                 } else {
-                    chkPreMeasure.Checked = AppManager.editorConfig.MidiImExportConfigExport.LastPremeasureCheckStatus;
+                    chkPreMeasure.Checked = EditorManager.editorConfig.MidiImExportConfigExport.LastPremeasureCheckStatus;
                 }
                 if (chkNote.Checked) {
                     chkMetaText.Enabled = false;
-                    AppManager.editorConfig.MidiImExportConfigExport.LastMetatextCheckStatus = chkMetaText.Checked;
+                    EditorManager.editorConfig.MidiImExportConfigExport.LastMetatextCheckStatus = chkMetaText.Checked;
                     chkMetaText.Checked = false;
                 } else {
-                    chkMetaText.Checked = AppManager.editorConfig.MidiImExportConfigExport.LastMetatextCheckStatus;
+                    chkMetaText.Checked = EditorManager.editorConfig.MidiImExportConfigExport.LastMetatextCheckStatus;
                 }
                 groupMode.Enabled = false;
             } else if (m_mode == FormMidiMode.IMPORT) {
                 this.Text = _("Midi Import");
                 chkPreMeasure.Text = _("Inserting start at pre-measure");
                 chkMetaText.Enabled = false;
-                AppManager.editorConfig.MidiImExportConfigImport.LastMetatextCheckStatus = chkMetaText.Checked;
+                EditorManager.editorConfig.MidiImExportConfigImport.LastMetatextCheckStatus = chkMetaText.Checked;
                 chkMetaText.Checked = false;
                 groupMode.Enabled = true;
             } else {
                 this.Text = _("VSQ/Vocaloid Midi Import");
                 chkPreMeasure.Text = _("Inserting start at pre-measure");
                 chkPreMeasure.Checked = false;
-                AppManager.editorConfig.MidiImExportConfigImportVsq.LastMetatextCheckStatus = chkMetaText.Checked;
+                EditorManager.editorConfig.MidiImExportConfigImportVsq.LastMetatextCheckStatus = chkMetaText.Checked;
                 chkMetaText.Checked = true;
                 groupMode.Enabled = false;
             }
@@ -256,11 +256,11 @@ namespace cadencii
             if (m_mode == FormMidiMode.EXPORT) {
                 if (chkExportVocaloidNrpn.Checked) {
                     chkPreMeasure.Enabled = false;
-                    AppManager.editorConfig.MidiImExportConfigExport.LastPremeasureCheckStatus = chkPreMeasure.Checked;
+                    EditorManager.editorConfig.MidiImExportConfigExport.LastPremeasureCheckStatus = chkPreMeasure.Checked;
                     chkPreMeasure.Checked = true;
                 } else {
                     chkPreMeasure.Enabled = true;
-                    chkPreMeasure.Checked = AppManager.editorConfig.MidiImExportConfigExport.LastPremeasureCheckStatus;
+                    chkPreMeasure.Checked = EditorManager.editorConfig.MidiImExportConfigExport.LastPremeasureCheckStatus;
                 }
             }
         }
@@ -270,11 +270,11 @@ namespace cadencii
             if (m_mode == FormMidiMode.EXPORT) {
                 if (chkNote.Checked) {
                     chkMetaText.Enabled = false;
-                    AppManager.editorConfig.MidiImExportConfigExport.LastMetatextCheckStatus = chkMetaText.Checked;
+                    EditorManager.editorConfig.MidiImExportConfigExport.LastMetatextCheckStatus = chkMetaText.Checked;
                     chkMetaText.Checked = false;
                 } else {
                     chkMetaText.Enabled = true;
-                    chkMetaText.Checked = AppManager.editorConfig.MidiImExportConfigExport.LastMetatextCheckStatus;
+                    chkMetaText.Checked = EditorManager.editorConfig.MidiImExportConfigExport.LastMetatextCheckStatus;
                 }
             }
         }
@@ -282,7 +282,7 @@ namespace cadencii
         public void chkMetaText_Click(Object sender, EventArgs e)
         {
             if (m_mode == FormMidiMode.EXPORT) {
-                AppManager.editorConfig.MidiImExportConfigExport.LastMetatextCheckStatus = chkMetaText.Checked;
+                EditorManager.editorConfig.MidiImExportConfigExport.LastMetatextCheckStatus = chkMetaText.Checked;
             }
         }
 

@@ -39,7 +39,7 @@ namespace cadencii
 
         /// <summary>
         /// 画面上端位置での、仮想画面上の画面上端から図ったピクセル数．
-        /// FormMain.vScroll.Value，FormMain.vScroll.Height，FormMain.vScroll.Maximum,AppManager.editorConfig.PxTrackHeightによって決まる
+        /// FormMain.vScroll.Value，FormMain.vScroll.Height，FormMain.vScroll.Maximum,EditorManager.editorConfig.PxTrackHeightによって決まる
         /// </summary>
         private int mStartToDrawY;
 
@@ -122,17 +122,17 @@ namespace cadencii
         /// <returns></returns>
         public float getScaleY()
         {
-            if (AppManager.editorConfig.PianoRollScaleY < EditorConfig.MIN_PIANOROLL_SCALEY) {
-                AppManager.editorConfig.PianoRollScaleY = EditorConfig.MIN_PIANOROLL_SCALEY;
-            } else if (EditorConfig.MAX_PIANOROLL_SCALEY < AppManager.editorConfig.PianoRollScaleY) {
-                AppManager.editorConfig.PianoRollScaleY = EditorConfig.MAX_PIANOROLL_SCALEY;
+            if (EditorManager.editorConfig.PianoRollScaleY < EditorConfig.MIN_PIANOROLL_SCALEY) {
+                EditorManager.editorConfig.PianoRollScaleY = EditorConfig.MIN_PIANOROLL_SCALEY;
+            } else if (EditorConfig.MAX_PIANOROLL_SCALEY < EditorManager.editorConfig.PianoRollScaleY) {
+                EditorManager.editorConfig.PianoRollScaleY = EditorConfig.MAX_PIANOROLL_SCALEY;
             }
-            if (AppManager.editorConfig.PianoRollScaleY == 0) {
-                return AppManager.editorConfig.PxTrackHeight / 100.0f;
-            } else if (AppManager.editorConfig.PianoRollScaleY > 0) {
-                return (2 * AppManager.editorConfig.PianoRollScaleY + 5) * AppManager.editorConfig.PxTrackHeight / 5 / 100.0f;
+            if (EditorManager.editorConfig.PianoRollScaleY == 0) {
+                return EditorManager.editorConfig.PxTrackHeight / 100.0f;
+            } else if (EditorManager.editorConfig.PianoRollScaleY > 0) {
+                return (2 * EditorManager.editorConfig.PianoRollScaleY + 5) * EditorManager.editorConfig.PxTrackHeight / 5 / 100.0f;
             } else {
-                return (AppManager.editorConfig.PianoRollScaleY + 8) * AppManager.editorConfig.PxTrackHeight / 8 / 100.0f;
+                return (EditorManager.editorConfig.PianoRollScaleY + 8) * EditorManager.editorConfig.PxTrackHeight / 8 / 100.0f;
             }
         }
 

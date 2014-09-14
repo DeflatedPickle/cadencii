@@ -29,7 +29,7 @@ namespace cadencii
         {
             this.listener = listener;
             InitializeComponent();
-            Util.applyFontRecurse(this, AppManager.editorConfig.getBaseFont());
+            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         public void listDictionariesSetColumnWidth(int columnWidth)

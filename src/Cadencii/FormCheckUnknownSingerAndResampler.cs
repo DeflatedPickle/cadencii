@@ -37,7 +37,7 @@ namespace cadencii
         {
             InitializeComponent();
             applyLanguage();
-            Util.applyFontRecurse(this, AppManager.editorConfig.getBaseFont());
+            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
 
             // singers
             checkSingerImport.Checked = apply_singer;

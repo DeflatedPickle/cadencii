@@ -1408,10 +1408,10 @@ namespace cadencii
         /// </summary>
         private void updateCustomVibrato()
         {
-            int size = AppManager.editorConfig.AutoVibratoCustom.Count;
+            int size = EditorManager.editorConfig.AutoVibratoCustom.Count;
             comboAutoVibratoTypeCustom.Items.Clear();
             for (int i = 0; i < size; i++) {
-                VibratoHandle handle = AppManager.editorConfig.AutoVibratoCustom[i];
+                VibratoHandle handle = EditorManager.editorConfig.AutoVibratoCustom[i];
                 comboAutoVibratoTypeCustom.Items.Add(handle);
             }
         }
