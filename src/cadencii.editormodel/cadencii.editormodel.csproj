@@ -69,6 +69,28 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="synthesizer\VocaloidSynthesizer.cs" />
+    <Compile Include="KeySoundPlayer.cs" />
+    <Compile Include="WaveUnitConfig.cs" />
+    <Compile Include="WaveUnitConfigElement.cs" />
+    <Compile Include="MidiDeviceImp.cs" />
+    <Compile Include="MidiQueue.cs" />
+    <Compile Include="CommandTree.cs" />
+    <Compile Include="CommandTreeUnit.cs" />
+    <Compile Include="DrawObject.cs" />
+    <Compile Include="DrawObjectType.cs" />
+    <Compile Include="MouseTracer.cs" />
+    <Compile Include="EditedStateChangedEventHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EditedZone.cs" />
+    <Compile Include="EditedZoneCommand.cs" />
+    <Compile Include="EditedZoneUnit.cs" />
+    <Compile Include="PatchWorkQueue.cs" />
+    <Compile Include="PencilMode.cs" />
+    <Compile Include="PencilModeEnum.cs" />
+    <Compile Include="PureVirtualFunctionAttribute.cs" />
+    <Compile Include="EditMode.cs" />
+    <Compile Include="DefaultVibratoLengthUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -99,6 +121,10 @@
     <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.dsp\cadencii.dsp.csproj">
       <Project>{18E7D0BD-734D-482E-BAE8-2512147D88F0}</Project>
       <Name>cadencii.dsp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.media.windows\cadencii.media.windows.csproj">
+      <Project>{84B71038-CB91-4456-8C90-31E73BC93D7C}</Project>
+      <Name>cadencii.media.windows</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
