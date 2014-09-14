@@ -13,7 +13,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using cadencii.apputil;
 using cadencii.vsq;
 using cadencii.xml;
 

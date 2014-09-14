@@ -41,7 +41,7 @@ namespace cadencii
         /// </summary>
         public static void init()
         {
-            string path = Utility.getToolPath();
+            string path = EditorManager.getToolPath();
             if (!Directory.Exists(path)) {
                 return;
             }

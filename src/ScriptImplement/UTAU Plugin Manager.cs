@@ -352,7 +352,7 @@ class UtauPluginManager : Form
                 if (!getPlugins().Contains(file)) {
                     string name = getPluginName(file);
                     if (name != "") {
-                        string script_path = Path.Combine(Utility.getScriptPath(), name + ".txt");
+                        string script_path = Path.Combine(EditorManager.getScriptPath(), name + ".txt");
                         if (File.Exists(script_path)) {
                             PortUtil.deleteFile(script_path);
                         }
@@ -377,7 +377,7 @@ class UtauPluginManager : Form
             string text = TEXT;
             string code = text.Replace("{0}", name);
             code = code.Replace("{1}", file);
-            using (StreamWriter sw = new StreamWriter(Path.Combine(Utility.getScriptPath(), name + ".txt"))) {
+            using (StreamWriter sw = new StreamWriter(Path.Combine(EditorManager.getScriptPath(), name + ".txt"))) {
                 sw.WriteLine(code);
             }
         }

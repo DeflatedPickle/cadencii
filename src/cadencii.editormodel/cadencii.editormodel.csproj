@@ -45,6 +45,8 @@
     <Compile Include="app_dspcore\VibratoLengthEditingRule.cs" />
     <Compile Include="app_dspcore\VibratoVariation.cs" />
     <Compile Include="app_dspcore\VibratoVariationConverter.cs" />
+    <Compile Include="BAssemblyInfo.cs" />
+    <Compile Include="Config.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -14037,11 +14037,11 @@ namespace cadencii
             sout.println("FormMain#menuHelpAbout_Click");
 #endif
 
-            string version_str = Utility.getVersion() + "\n\n" +
-                                 Utility.getAssemblyNameAndFileVersion(typeof(cadencii.apputil.Util)) + "\n" +
-                                 Utility.getAssemblyNameAndFileVersion(typeof(cadencii.media.Wave)) + "\n" +
-                                 Utility.getAssemblyNameAndFileVersion(typeof(cadencii.vsq.VsqFile)) + "\n" +
-                                 Utility.getAssemblyNameAndFileVersion(typeof(cadencii.math));
+            string version_str = EditorManager.getVersion() + "\n\n" +
+		EditorManager.getAssemblyNameAndFileVersion(typeof(cadencii.apputil.Util)) + "\n" +
+		EditorManager.getAssemblyNameAndFileVersion(typeof(cadencii.media.Wave)) + "\n" +
+		EditorManager.getAssemblyNameAndFileVersion(typeof(cadencii.vsq.VsqFile)) + "\n" +
+		EditorManager.getAssemblyNameAndFileVersion(typeof(cadencii.math));
             if (mVersionInfo == null) {
                 mVersionInfo = new VersionInfo(_APP_NAME, version_str);
                 mVersionInfo.setAuthorList(_CREDIT);
@@ -16323,7 +16323,7 @@ namespace cadencii
             sout.println("FormMain#handleScriptMenuItem_Click; sender.GetType()=" + sender.GetType());
 #endif
             try {
-                string dir = Utility.getScriptPath();
+                string dir = EditorManager.getScriptPath();
                 string id = "";
                 if (sender is PaletteToolMenuItem) {
                     id = ((PaletteToolMenuItem)sender).getPaletteToolID();

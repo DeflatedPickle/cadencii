@@ -43,7 +43,7 @@ namespace cadencii
             Assembly ret = null;
 
             string md5 = PortUtil.getMD5FromString(code).Replace("_", "");
-            string cached_asm_file = Path.Combine(Utility.getCachedAssemblyPath(), md5 + ".dll");
+            string cached_asm_file = Path.Combine(EditorManager.getCachedAssemblyPath(), md5 + ".dll");
             bool compiled = false;
 
             if (File.Exists(cached_asm_file)) {
@@ -145,7 +145,7 @@ namespace cadencii
         /// </summary>
         public static void cleanupUnusedAssemblyCache()
         {
-            string dir = Utility.getCachedAssemblyPath();
+            string dir = EditorManager.getCachedAssemblyPath();
             string[] files = PortUtil.listFiles(dir, ".dll");
             foreach (string file in files) {
                 string name = PortUtil.getFileName(file);

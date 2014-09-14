@@ -110,7 +110,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BAssemblyInfo.cs" />
     <Compile Include="BgmMenuItem.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -119,7 +118,6 @@
     <Compile Include="ClipboardEntry.cs" />
     <Compile Include="ClipboardModel.cs" />
     <Compile Include="CommandExecuteRequiredEventHandler.cs" />
-    <Compile Include="Config.cs" />
     <Compile Include="ControllerBase.cs" />
     <Compile Include="EditedStateChangedEventHandler.cs">
       <SubType>Code</SubType>
@@ -462,6 +460,7 @@
     <Compile Include="plugin\PluginVersion.cs" />
     <Compile Include="plugin\ScriptProcessor.cs" />
     <Compile Include="KeySoundPlayer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />

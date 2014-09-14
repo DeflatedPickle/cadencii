@@ -36,7 +36,7 @@ namespace cadencii
         /// <param name="id"></param>
         public static void reload(string id)
         {
-            string dir = Utility.getScriptPath();
+            string dir = EditorManager.getScriptPath();
             string file = Path.Combine(dir, id);
 #if DEBUG
             sout.println("ScriptServer#reload; file=" + file + "; isFileExists(file)=" + System.IO.File.Exists(file));
@@ -55,7 +55,7 @@ namespace cadencii
         public static void reload()
         {
             // 拡張子がcs, txtのファイルを列挙
-            string dir = Utility.getScriptPath();
+            string dir = EditorManager.getScriptPath();
             List<string> files = new List<string>();
             files.AddRange(new List<string>(PortUtil.listFiles(dir, ".txt")));
             files.AddRange(new List<string>(PortUtil.listFiles(dir, ".cs")));
