@@ -110,79 +110,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BgmMenuItem.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Cadencii.cs" />
-    <Compile Include="ClipboardEntry.cs" />
     <Compile Include="ClipboardModel.cs" />
-    <Compile Include="CommandExecuteRequiredEventHandler.cs" />
-    <Compile Include="ControllerBase.cs" />
-    <Compile Include="ExceptionNotifyFormController.cs" />
-    <Compile Include="ExceptionNotifyFormUi.cs" />
-    <Compile Include="ExceptionNotifyFormUiListener.cs" />
-    <Compile Include="FormAskKeySoundGenerationController.cs" />
-    <Compile Include="FormAskKeySoundGenerationUi.cs">
-    </Compile>
-    <Compile Include="FormAskKeySoundGenerationUiListener.cs" />
-    <Compile Include="FormBeatConfigController.cs" />
-    <Compile Include="FormBeatConfigUi.cs" />
-    <Compile Include="FormBeatConfigUiListener.cs" />
-    <Compile Include="FormBezierPointEditController.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FormBezierPointEditUi.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FormBezierPointEditUiListener.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FormCheckUnknownSingerAndResampler.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormMainController.cs" />
-    <Compile Include="FormMainUi.cs" />
-    <Compile Include="FormMainUiListener.cs" />
-    <Compile Include="FormNotePropertyUi.cs" />
-    <Compile Include="FormNotePropertyUiListener.cs" />
-    <Compile Include="FormSequenceConfig.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormVibratoPreset.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormWordDictionaryController.cs">
-    </Compile>
-    <Compile Include="FormWordDictionaryUi.cs">
-    </Compile>
-    <Compile Include="FormWordDictionaryUiListener.cs">
-    </Compile>
-    <Compile Include="FormWorker.cs" />
-    <Compile Include="IFormWorkerControl.cs" />
-    <Compile Include="IImageCachedComponentDrawer.cs" />
     <Compile Include="ImageCachedComponentDrawer.cs" />
-    <Compile Include="ItemSelectionModel.cs" />
     <Compile Include="LineGraphDrawer.cs" />
-    <Compile Include="PaletteToolMenuItem.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="PictOverview.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="ProgressBarWithLabel.cs" />
-    <Compile Include="PropertyWindowListener.cs" />
-    <Compile Include="RecentFileMenuItem.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="SynthesizeWorker.cs" />
-    <Compile Include="TestFormWorker.cs" />
-    <Compile Include="TrackSelectorSingerDropdownMenuItem.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="TrackSelectorSingerPopupMenu.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="UiBase.cs" />
     <Compile Include="ui\dotnet\ExceptionNotifyFormUiImpl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,142 +164,17 @@
       <DependentUpon>Preference.cs</DependentUpon>
     </Compile>
     <Compile Include="ui\UpdateCheckForm.cs" />
-    <Compile Include="VersionString.cs" />
-    <Compile Include="WaveformZoomController.cs" />
-    <Compile Include="WaveformZoomUi.cs">
-    </Compile>
-    <Compile Include="WaveformZoomUiListener.cs" />
-    <Compile Include="DynaffComparisonContext.cs" />
     <Compile Include="FederChangedEventHandler.cs" />
-    <Compile Include="FormCurvePointEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormGenerateKeySound.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormIconPalette.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="FormNoteExpressionConfig.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormRandomize.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormSplash.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="IconParader.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="LyricTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="MuteChangedEventHandler.cs" />
-    <Compile Include="NumberTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="PanpotChangedEventHandler.cs" />
-    <Compile Include="PictPianoRoll.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="RenderedStatus.cs" />
-    <Compile Include="PropertyPanelContainer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="RenderRequiredEventHandler.cs" />
-    <Compile Include="SelectedCurveChangedEventHandler.cs" />
-    <Compile Include="SelectedEventChangedEventHandler.cs" />
-    <Compile Include="SelectedTrackChangedEventHandler.cs" />
-    <Compile Include="SingerEventComparisonContext.cs" />
-    <Compile Include="SoloChangedEventHandler.cs" />
-    <Compile Include="StateChangeRequiredEventHandler.cs" />
-    <Compile Include="TopMostChangedEventHandler.cs" />
-    <Compile Include="UpdateProgressEventHandler.cs" />
-    <Compile Include="Utility.cs" />
-    <Compile Include="FormNotePropertyController.cs">
-    </Compile>
-    <Compile Include="FormShortcutKeys.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="MidiPlayer.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PropertyPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FormCompileResult.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormDeleteBar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormGameControlerConfig.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormImportLyric.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormInsertBar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormMidiImExport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormMixer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTrackProperty.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormRealtimeConfig.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormSingerStyleConfig.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormTempoConfig.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormVibratoConfig.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="IPaletteTool.cs" />
-    <Compile Include="NumericUpDownEx.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="PaletteToolServer.cs" />
     <Compile Include="SandBox.cs">
     </Compile>
-    <Compile Include="SelectedBezierPoint.cs" />
-    <Compile Include="SelectedRegion.cs" />
-    <Compile Include="SelectedTempoEntry.cs" />
-    <Compile Include="SelectedTimesigEntry.cs" />
-    <EmbeddedResource Include="FormCheckUnknownSingerAndResampler.resx">
-      <DependentUpon>FormCheckUnknownSingerAndResampler.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormSequenceConfig.resx">
-      <DependentUpon>FormSequenceConfig.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormShortcutKeys.resx">
-      <DependentUpon>FormShortcutKeys.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormVibratoConfig.resx">
-      <DependentUpon>FormVibratoConfig.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormVibratoPreset.resx">
-      <DependentUpon>FormVibratoPreset.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TrackSelector.resx">
-      <DependentUpon>TrackSelector.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ui\dotnet\ExceptionNotifyFormUiImpl.resx">
@@ -389,22 +197,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="ToolStripLocation.cs" />
-    <Compile Include="TrackSelector.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="VersionInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VolumeTracker.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="VsqBPListComparisonContext.cs" />
-    <Compile Include="WaveView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="WaveViewRealoadRequiredEventArgs.cs" />
-    <Compile Include="WaveViewRealoadRequiredEventHandler.cs" />
     <EmbeddedResource Include="ui\dotnet\UpdateCheckForm.resx">
       <DependentUpon>UpdateCheckForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -418,6 +210,178 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="plugin\InterfaceVersion.cs" />
     <Compile Include="WaveDrawContext.cs" />
+    <Compile Include="forms\FormAskKeySoundGenerationController.cs" />
+    <Compile Include="forms\FormAskKeySoundGenerationUi.cs" />
+    <Compile Include="forms\FormAskKeySoundGenerationUiListener.cs" />
+    <Compile Include="forms\FormBeatConfigController.cs" />
+    <Compile Include="forms\FormBeatConfigUi.cs" />
+    <Compile Include="forms\FormBeatConfigUiListener.cs" />
+    <Compile Include="forms\FormBezierPointEditController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="forms\FormBezierPointEditUi.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="forms\FormBezierPointEditUiListener.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="forms\FormCheckUnknownSingerAndResampler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="forms\FormCheckUnknownSingerAndResampler.resx">
+      <DependentUpon>FormCheckUnknownSingerAndResampler.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="forms\FormCompileResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormCurvePointEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormDeleteBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormGameControlerConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormGenerateKeySound.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormIconPalette.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\FormImportLyric.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormInsertBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormMainController.cs" />
+    <Compile Include="forms\FormMainUi.cs" />
+    <Compile Include="forms\FormMainUiListener.cs" />
+    <Compile Include="forms\FormMidiImExport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormMixer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormNoteExpressionConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormNotePropertyController.cs" />
+    <Compile Include="forms\FormNotePropertyUi.cs" />
+    <Compile Include="forms\FormNotePropertyUiListener.cs" />
+    <Compile Include="forms\FormRandomize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormRealtimeConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormSequenceConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="forms\FormSequenceConfig.resx">
+      <DependentUpon>FormSequenceConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="forms\FormShortcutKeys.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="forms\FormShortcutKeys.resx">
+      <DependentUpon>FormShortcutKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="forms\FormSingerStyleConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormTempoConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormTrackProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FormVibratoConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="forms\FormVibratoConfig.resx">
+      <DependentUpon>FormVibratoConfig.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="forms\FormVibratoPreset.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="forms\FormVibratoPreset.resx">
+      <DependentUpon>FormVibratoPreset.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="forms\FormWordDictionaryController.cs" />
+    <Compile Include="forms\FormWordDictionaryUi.cs" />
+    <Compile Include="forms\FormWordDictionaryUiListener.cs" />
+    <Compile Include="forms\FormWorker.cs" />
+    <Compile Include="controls\PictPianoRoll.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controls\BgmMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExceptionNotifyFormController.cs" />
+    <Compile Include="controls\IconParader.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TestFormWorker.cs" />
+    <Compile Include="controls\VolumeTracker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\PictOverview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="forms\VersionInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="controls\TrackSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <EmbeddedResource Include="controls\TrackSelector.resx">
+      <DependentUpon>TrackSelector.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="controls\WaveView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\WaveViewRealoadRequiredEventArgs.cs" />
+    <Compile Include="controls\WaveViewRealoadRequiredEventHandler.cs" />
+    <Compile Include="controls\PropertyPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\PropertyPanelContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="controls\TrackSelectorSingerDropdownMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controls\TrackSelectorSingerPopupMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controls\WaveformZoomController.cs" />
+    <Compile Include="controls\LyricTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controls\NumberTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controls\NumericUpDownEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controls\PaletteToolMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="controls\RecentFileMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="VersionString.cs" />
+    <Compile Include="ItemSelectionModel.cs" />
+    <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />
@@ -721,6 +685,8 @@
   <ItemGroup>
     <Folder Include="manual\" />
     <Folder Include="po\" />
+    <Folder Include="forms\" />
+    <Folder Include="controls\" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="..\..\..\..\..\..\svn\cadencii\src\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.projitems" Label="Shared" Condition="Exists('..\..\..\..\..\..\svn\cadencii\src\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.projitems')" />

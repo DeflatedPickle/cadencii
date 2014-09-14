@@ -91,6 +91,36 @@
     <Compile Include="PureVirtualFunctionAttribute.cs" />
     <Compile Include="EditMode.cs" />
     <Compile Include="DefaultVibratoLengthUtil.cs" />
+    <Compile Include="ControllerBase.cs" />
+    <Compile Include="ClipboardEntry.cs" />
+    <Compile Include="CommandExecuteRequiredEventHandler.cs" />
+    <Compile Include="ExceptionNotifyFormUi.cs" />
+    <Compile Include="ExceptionNotifyFormUiListener.cs" />
+    <Compile Include="UiBase.cs" />
+    <Compile Include="IFormWorkerControl.cs" />
+    <Compile Include="IImageCachedComponentDrawer.cs" />
+    <Compile Include="SelectedTempoEntry.cs" />
+    <Compile Include="SelectedTimesigEntry.cs" />
+    <Compile Include="WaveformZoomUi.cs" />
+    <Compile Include="WaveformZoomUiListener.cs" />
+    <Compile Include="SelectedBezierPoint.cs" />
+    <Compile Include="SelectedRegion.cs" />
+    <Compile Include="ToolStripLocation.cs" />
+    <Compile Include="PropertyWindowListener.cs" />
+    <Compile Include="TopMostChangedEventHandler.cs" />
+    <Compile Include="UpdateProgressEventHandler.cs" />
+    <Compile Include="MuteChangedEventHandler.cs" />
+    <Compile Include="SelectedCurveChangedEventHandler.cs" />
+    <Compile Include="SelectedEventChangedEventHandler.cs" />
+    <Compile Include="SelectedTrackChangedEventHandler.cs" />
+    <Compile Include="SingerEventComparisonContext.cs" />
+    <Compile Include="VsqBPListComparisonContext.cs" />
+    <Compile Include="SoloChangedEventHandler.cs" />
+    <Compile Include="StateChangeRequiredEventHandler.cs" />
+    <Compile Include="RenderRequiredEventHandler.cs" />
+    <Compile Include="PanpotChangedEventHandler.cs" />
+    <Compile Include="RenderedStatus.cs" />
+    <Compile Include="DynaffComparisonContext.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
