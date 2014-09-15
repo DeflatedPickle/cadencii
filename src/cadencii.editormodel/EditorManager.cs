@@ -475,6 +475,39 @@ namespace cadencii
 		}
 
 		#endregion
+
+		#region 選択範囲の管理
+
+		enum SelectedInterval
+		{
+			None,
+			Curve,
+			Whole
+		}
+
+		static SelectedInterval selected_interval;
+
+		public static bool IsWholeSelectedIntervalEnabled {
+			get { return selected_interval == SelectedInterval.Whole; }
+			set {
+				if (value)
+					selected_interval = SelectedInterval.Whole;
+				else
+					selected_interval = selected_interval == SelectedInterval.Whole ? SelectedInterval.None : selected_interval;
+			}
+		}
+
+		public static bool IsCurveSelectedIntervalEnabled {
+			get { return selected_interval == SelectedInterval.Curve; }
+			set {
+				if (value)
+					selected_interval = SelectedInterval.Curve;
+				else
+					selected_interval = selected_interval == SelectedInterval.Curve ? SelectedInterval.None : selected_interval;
+			}
+		}
+
+		#endregion
 	}
 }
 

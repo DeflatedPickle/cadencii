@@ -70,6 +70,7 @@
     <Compile Include="serialization\XmlSerializer.cs" />
     <Compile Include="serialization\XmlSerializeWithDescription.cs" />
     <Compile Include="serialization\XmlStaticMemberSerializer.cs" />
+    <Compile Include="models\DialogResult.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -32,6 +32,7 @@ using cadencii.xml;
 using cadencii.utau;
 using ApplicationGlobal = cadencii.core.ApplicationGlobal;
 using Keys = cadencii.java.awt.Keys;
+using DialogResult = cadencii.java.awt.DialogResult;
 
 namespace cadencii
 {
@@ -1265,34 +1266,6 @@ namespace cadencii
             return (int)((x + mMainWindowController.getStartToDrawX() - keyOffset - keyWidth) * mMainWindowController.getScaleXInv());
         }
 
-        #region 選択範囲の管理
-        public static bool isWholeSelectedIntervalEnabled()
-        {
-            return mWholeSelectedIntervalEnabled;
-        }
-
-        public static bool isCurveSelectedIntervalEnabled()
-        {
-            return mCurveSelectedIntervalEnabled;
-        }
-
-        public static void setWholeSelectedIntervalEnabled(bool value)
-        {
-            mWholeSelectedIntervalEnabled = value;
-            if (value) {
-                mCurveSelectedIntervalEnabled = false;
-            }
-        }
-
-        public static void setCurveSelectedIntervalEnabled(bool value)
-        {
-            mCurveSelectedIntervalEnabled = value;
-            if (value) {
-                mWholeSelectedIntervalEnabled = false;
-            }
-        }
-        #endregion
-
         #region MessageBoxのラッパー
         public static DialogResult showMessageBox(string text)
         {
@@ -1318,9 +1291,9 @@ namespace cadencii
         public static DialogResult showModalDialog(Form dialog, Form parent_form)
         {
             beginShowDialog();
-            DialogResult ret = dialog.ShowDialog(parent_form);
+            var ret = dialog.ShowDialog(parent_form);
             endShowDialog();
-            return ret;
+			return (DialogResult) ret;
         }
 
         /// <summary>
@@ -1346,7 +1319,7 @@ namespace cadencii
         public static DialogResult showModalDialog(FolderBrowserDialog dialog, Form main_form)
         {
             beginShowDialog();
-            DialogResult ret = dialog.ShowDialog(main_form);
+			var ret = (DialogResult) dialog.ShowDialog(main_form);
             endShowDialog();
             return ret;
         }
@@ -1361,7 +1334,7 @@ namespace cadencii
         public static DialogResult showModalDialog(FileDialog dialog, bool open_mode, Form main_form)
         {
             beginShowDialog();
-            DialogResult ret = dialog.ShowDialog(main_form);
+			DialogResult ret = (DialogResult) dialog.ShowDialog(main_form);
             endShowDialog();
             return ret;
         }
@@ -1439,7 +1412,7 @@ namespace cadencii
         public static DialogResult showMessageBox(string text, string caption, int optionType, int messageType)
         {
             beginShowDialog();
-            DialogResult ret = cadencii.windows.forms.Utility.showMessageBox(text, caption, optionType, messageType);
+            var ret = (DialogResult) cadencii.windows.forms.Utility.showMessageBox(text, caption, optionType, messageType);
             endShowDialog();
             return ret;
         }

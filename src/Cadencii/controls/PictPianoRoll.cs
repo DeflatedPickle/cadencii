@@ -1018,9 +1018,9 @@ namespace cadencii
                     #endregion
 
                     #region pictPianoRoll_Paintより
-                    if (AppManager.isWholeSelectedIntervalEnabled()) {
+                    if (EditorManager.IsWholeSelectedIntervalEnabled) {
 #if DEBUG
-                        sout.println("pictPianoRoll#paint; AppManager.isWholeSelectedIntervalEnabled()=" + AppManager.isWholeSelectedIntervalEnabled());
+                        sout.println("pictPianoRoll#paint; EditorManager.IsWholeSelectedIntervalEnabled=" + EditorManager.IsWholeSelectedIntervalEnabled);
 #endif
                         int start = (int)(AppManager.mWholeSelectedInterval.getStart() * scalex) + xoffset;
                         if (start < key_width) {

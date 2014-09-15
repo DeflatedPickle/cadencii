@@ -1207,7 +1207,7 @@ namespace cadencii
                     g.drawLine(key_width, 0,
                                 key_width, size.height - 1);
 
-                    if (AppManager.isCurveSelectedIntervalEnabled()) {
+                    if (EditorManager.IsCurveSelectedIntervalEnabled) {
                         int x0 = AppManager.xCoordFromClocks(AppManager.mCurveSelectedInterval.getStart());
                         int x1 = AppManager.xCoordFromClocks(AppManager.mCurveSelectedInterval.getEnd());
                         g.setColor(COLOR_A072R255G255B255);
@@ -1361,7 +1361,7 @@ namespace cadencii
                         }
                     }
 
-                    if (AppManager.isWholeSelectedIntervalEnabled()) {
+                    if (EditorManager.IsWholeSelectedIntervalEnabled) {
                         int start = AppManager.xCoordFromClocks(AppManager.mWholeSelectedInterval.getStart()) + 2;
                         int end = AppManager.xCoordFromClocks(AppManager.mWholeSelectedInterval.getEnd()) + 2;
                         g.setColor(COLOR_A098R000G000B000);
@@ -3411,7 +3411,7 @@ namespace cadencii
                 if (e.Button == MouseButtons.Left) {
                     #region MouseDown occured on track list
                     mMouseDownMode = MouseDownMode.TRACK_LIST;
-                    //AppManager.isCurveSelectedIntervalEnabled() = false;
+                    //EditorManager.IsCurveSelectedIntervalEnabled = false;
                     mMouseTracer.clear();
                     int selecter_width = getSelectorWidth();
                     if (vsq != null) {
@@ -3811,7 +3811,7 @@ namespace cadencii
                                 }
 
                                 if ((mModifierOnMouseDown & mModifierKey) != mModifierKey) {
-                                    AppManager.setCurveSelectedIntervalEnabled(false);
+                                    EditorManager.IsCurveSelectedIntervalEnabled = false;
                                 }
 								if (EditorManager.editorConfig.CurveSelectingQuantized) {
                                     AppManager.mCurveSelectingRectangle = new Rectangle(quantized_clock, value, 0, 0);
@@ -3953,7 +3953,7 @@ namespace cadencii
                         }
                     }
                 } else {
-                    AppManager.setCurveSelectedIntervalEnabled(false);
+                    EditorManager.IsCurveSelectedIntervalEnabled = false;
                 }
                 #endregion
             }
@@ -4381,9 +4381,9 @@ namespace cadencii
 
                         } else if (!mSelectedCurve.equals(CurveType.VEL) && !mSelectedCurve.equals(CurveType.Accent) && !mSelectedCurve.equals(CurveType.Decay)) {
                             if (AppManager.mCurveSelectingRectangle.width == 0) {
-                                AppManager.setCurveSelectedIntervalEnabled(false);
+                                EditorManager.IsCurveSelectedIntervalEnabled = false;
                             } else {
-                                if (!AppManager.isCurveSelectedIntervalEnabled()) {
+                                if (!EditorManager.IsCurveSelectedIntervalEnabled) {
                                     int start = Math.Min(AppManager.mCurveSelectingRectangle.x, AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);
                                     int end = Math.Max(AppManager.mCurveSelectingRectangle.x, AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);
                                     AppManager.mCurveSelectedInterval = new SelectedRegion(start);
@@ -4391,7 +4391,7 @@ namespace cadencii
 #if DEBUG
                                     CDebug.WriteLine("TrackSelector#TrackSelector_MouseUp; selected_region is set to TRUE");
 #endif
-                                    AppManager.setCurveSelectedIntervalEnabled(true);
+                                    EditorManager.IsCurveSelectedIntervalEnabled = true;
                                 } else {
                                     int start = Math.Min(AppManager.mCurveSelectingRectangle.x, AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);
                                     int end = Math.Max(AppManager.mCurveSelectingRectangle.x, AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);

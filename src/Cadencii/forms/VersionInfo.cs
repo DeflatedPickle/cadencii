@@ -224,7 +224,7 @@ namespace cadencii
         {
 #if DEBUG
             using (var dlg = new SaveFileDialog()) {
-                if (dlg.ShowDialog() == DialogResult.OK) {
+				if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                     using (var stream = new System.IO.FileStream(dlg.FileName, System.IO.FileMode.Create, System.IO.FileAccess.Write)) {
                         m_scroll.Save(stream);
                     }

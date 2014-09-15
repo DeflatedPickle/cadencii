@@ -218,7 +218,7 @@ namespace cadencii
 
         public int showDialog(object parent)
         {
-            DialogResult ret;
+			System.Windows.Forms.DialogResult ret;
             if (parent == null || (parent != null && !(parent is Form))) {
                 ret = base.ShowDialog();
             } else {

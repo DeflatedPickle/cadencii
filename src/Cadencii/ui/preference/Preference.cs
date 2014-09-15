@@ -27,6 +27,8 @@ using cadencii.windows.forms;
 using ApplicationGlobal = cadencii.core.ApplicationGlobal;
 using cadencii.utau;
 using Keys = cadencii.java.awt.Keys;
+using cadencii.java.awt;
+using DialogResult = cadencii.java.awt.DialogResult;
 
 namespace cadencii
 {
@@ -167,7 +169,7 @@ namespace cadencii
             checkEnableWideCharacterWorkaround.Checked = value;
         }
 
-        public DialogResult ShowDialog(System.Windows.Forms.Form parent)
+        public System.Windows.Forms.DialogResult ShowDialog(System.Windows.Forms.Form parent)
         {
             updateMidiDevice();
             updateCustomVibrato();
@@ -1194,7 +1196,7 @@ namespace cadencii
         {
             openUtauCore.SetSelectedFile("resampler.exe");
             var dr = AppManager.showModalDialog(openUtauCore, true, this);
-            if (dr == System.Windows.Forms.DialogResult.OK) {
+            if (dr == cadencii.java.awt.DialogResult.OK) {
                 string path = openUtauCore.FileName;
                 listResampler.AddRow(new string[] { path });
                 if (txtWavtool.Text == "") {
@@ -1261,7 +1263,7 @@ namespace cadencii
                 openUtauCore.SetSelectedFile(txtWavtool.Text);
             }
             var dr = AppManager.showModalDialog(openUtauCore, true, this);
-            if (dr == System.Windows.Forms.DialogResult.OK) {
+			if (dr == cadencii.java.awt.DialogResult.OK) {
                 string path = openUtauCore.FileName;
                 txtWavtool.Text = path;
                 if (listResampler.Items.Count == 0) {
@@ -1284,7 +1286,7 @@ namespace cadencii
                 dialog.SetSelectedFile(text_box.Text);
             }
             var dr = AppManager.showModalDialog(dialog, true, this);
-            if (dr == System.Windows.Forms.DialogResult.OK) {
+			if (dr == cadencii.java.awt.DialogResult.OK) {
                 string path = dialog.FileName;
                 text_box.Text = path;
             }
@@ -1292,7 +1294,7 @@ namespace cadencii
 
         public void btnAdd_Click(Object sender, EventArgs e)
         {
-            if (folderBrowserSingers.ShowDialog(this) == DialogResult.OK) {
+			if (folderBrowserSingers.ShowDialog(this) == System.Windows.Forms.DialogResult.OK) {
                 string dir = folderBrowserSingers.SelectedPath;
 #if DEBUG
                 sout.println("Preference#btnAdd_Click; dir=" + dir);
