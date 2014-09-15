@@ -18,3 +18,39 @@ Cadencii.Platform.Windows) is tightly coupled with the rest of the code,
 so I would deal with them later.
 There wouldn't be non-Windows synthesizer anytime soon anyways.
 
+Projects / Assemblies
+---------------------
+
+- Cadencii.Utilities
+	most common utility API
+- Cadencii.Gui.Framework <- Cadencii.Utilities
+	awt-based API
+- Cadencii.Core <- Cadencii.Gui.Framework
+	fundamental API for every other library
+- Cadencii.Gui.XmlSerialization <- Cadencii.Gui.Framework, Cadencii.Core
+	XML serialization support for the GUI framework.
+- Cadencii.Gui.Framework.WindowsForms <- Cadencii.Gui.Framework
+	GUI framework implementation based on winforms.
+- Cadencii.Gui.Framework.WindowsForms.Shared
+	a hacky shared API to provide conversion from awt Color to GDI+ Color.
+- Cadencii.Platform.Windows
+	provides a set of P/Invokes and marshals for Windows API.
+
+- Cadencii.Media.Midi
+	javax.sound.midi based API
+- Cadencii.Media.Vsq <- Cadencii.Gui.Framework, Cadencii.Gui.XmlSerialization
+	VSQ support library.
+- Cadencii.Media.Windows <- Cadencii.Platform.Windows
+	Windows-specific audio and MIDI API
+- Cadencii.Media.Dsp <- Cadencii.Platform.Windows, Cadencii.Media.Vsq
+	(windows-dependent) DSP hosting API, for utau, aquestone, vocaloid etc.
+- Cadencii.Media.Dsp.WindowsForms
+	winforms-specific implementation for DSP (mostly for Plugin UI).
+
+- Cadencii.Windows.Forms
+	windows forms control that is specific to Cadencii.
+- Cadencii.Appplication.Model
+	GUI-agnostic part of the application
+- Cadencii.Application.Windows.Forms
+	winforms-based application, currently it is the only app.
+
