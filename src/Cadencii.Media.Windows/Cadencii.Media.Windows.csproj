@@ -34,26 +34,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="media\AviReader.cs" />
-    <Compile Include="media\AviWriterVcm.cs" />
-    <Compile Include="media\AviWriterVfw.cs" />
-    <Compile Include="media\IAviWriter.cs" />
-    <Compile Include="media\PipedAviWriter.cs" />
-    <Compile Include="media\PlaySound.cs" />
-    <Compile Include="media\RawAvi2Writer.cs" />
-    <Compile Include="media\Util.cs" />
-    <Compile Include="media\VCM.cs" />
-    <Compile Include="media\VFW.cs" />
-    <Compile Include="media\WavePlay.cs" />
-    <Compile Include="media\MidiInDevice.cs" />
-    <Compile Include="media\MidiOutDevice.cs" />
+    <Compile Include="AviReader.cs" />
+    <Compile Include="AviWriterVcm.cs" />
+    <Compile Include="AviWriterVfw.cs" />
+    <Compile Include="IAviWriter.cs" />
+    <Compile Include="MidiInDevice.cs" />
+    <Compile Include="MidiOutDevice.cs" />
+    <Compile Include="PipedAviWriter.cs" />
+    <Compile Include="PlaySound.cs" />
+    <Compile Include="RawAvi2Writer.cs" />
+    <Compile Include="Util.cs" />
+    <Compile Include="VCM.cs" />
+    <Compile Include="VFW.cs" />
+    <Compile Include="WavePlay.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Cadencii.Core\Cadencii.Core.csproj">
-      <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
-      <Name>Cadencii.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Cadencii.Platform.Windows\Cadencii.Platform.Windows.csproj">
       <Project>{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}</Project>
       <Name>Cadencii.Platform.Windows</Name>
@@ -62,7 +58,11 @@
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>Cadencii.Utilities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cadencii.Media.Base\Cadencii.Media.Base.csproj">
+    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\Cadencii.Core\Cadencii.Core.csproj">
+      <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
+      <Name>Cadencii.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\Cadencii.Media.Base\Cadencii.Media.Base.csproj">
       <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
       <Name>Cadencii.Media.Base</Name>
     </ProjectReference>
