@@ -20,7 +20,7 @@ using System.Linq;
 
 namespace cadencii.java.awt
 {
-	public abstract class AwtHost
+	public abstract partial class AwtHost
 	{
 		public const int YES_OPTION = 0;
 		public const int NO_OPTION = 1;

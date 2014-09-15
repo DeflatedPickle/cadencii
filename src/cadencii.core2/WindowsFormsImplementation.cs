@@ -14,12 +14,12 @@
 using System;
 using cadencii.java.awt;
 using cadencii.java.awt.geom;
-using System.Collections.Generic;
+using System.Windows.Forms;
 using System.Linq;
 
 namespace cadencii.java.awt
 {
-	public class AwtHostWindowsForms : AwtHost
+	public partial class AwtHostWindowsForms : AwtHost
 	{
 		public AwtHostWindowsForms ()
 		{
@@ -342,7 +342,7 @@ namespace cadencii.java.awt
 				points [i] = new System.Drawing.Point (xPoints [i], yPoints [i]);
 			}
 			if (fillColor != null)
-				nativeGraphics.FillPolygon (new System.Drawing.SolidBrush (((Color) fillColor).ToNative ()), points);
+				nativeGraphics.FillPolygon (new System.Drawing.SolidBrush (((Color)fillColor).ToNative ()), points);
 			else
 				nativeGraphics.FillPolygon (brush, points);
 		}

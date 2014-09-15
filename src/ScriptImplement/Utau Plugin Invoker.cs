@@ -89,11 +89,11 @@ public class Utau_Plugin_Invoker : Form
         // プラグイン情報の定義ファイル(plugin.txt)があるかどうかチェック
         string pluginTxtPath = s_plugin_txt_path;
         if (pluginTxtPath == "") {
-            AppManager.showMessageBox("pluginTxtPath=" + pluginTxtPath);
+            DialogManager.showMessageBox("pluginTxtPath=" + pluginTxtPath);
             return ScriptReturnStatus.ERROR;
         }
         if (!System.IO.File.Exists(pluginTxtPath)) {
-            AppManager.showMessageBox("'" + pluginTxtPath + "' does not exists");
+            DialogManager.showMessageBox("'" + pluginTxtPath + "' does not exists");
             return ScriptReturnStatus.ERROR;
         }
 
@@ -116,7 +116,7 @@ public class Utau_Plugin_Invoker : Form
             return ScriptReturnStatus.ERROR;
         }
         if (!System.IO.File.Exists(exe_path)) {
-            AppManager.showMessageBox("'" + exe_path + "' does not exists");
+            DialogManager.showMessageBox("'" + exe_path + "' does not exists");
             return ScriptReturnStatus.ERROR;
         }
 

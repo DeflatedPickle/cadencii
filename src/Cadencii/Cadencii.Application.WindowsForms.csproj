@@ -365,6 +365,7 @@
     <Compile Include="forms\FormBezierPointEditUiListener.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DialogManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />

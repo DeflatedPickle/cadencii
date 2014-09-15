@@ -16,7 +16,6 @@ using System;
 using System.CodeDom.Compiler;
 using System.Reflection;
 using System.Threading;
-using System.Windows.Forms;
 using System.Linq;
 using System.IO;
 using System.Collections.Generic;
@@ -27,7 +26,6 @@ using cadencii.java.io;
 using cadencii.java.util;
 using cadencii.media;
 using cadencii.vsq;
-using cadencii.windows.forms;
 using cadencii.xml;
 using cadencii.utau;
 using ApplicationGlobal = cadencii.core.ApplicationGlobal;
@@ -54,16 +52,7 @@ namespace cadencii
         /// プロパティパネルのインスタンス
         /// </summary>
         public static PropertyPanel propertyPanel;
-        /// <summary>
-        /// プロパティウィンドウが分離した場合のプロパティウィンドウのインスタンス。
-        /// メインウィンドウとプロパティウィンドウが分離している時、propertyPanelがpropertyWindowの子になる
-        /// </summary>
-        public static FormNotePropertyController propertyWindow;
 #endif
-        /// <summary>
-        /// アイコンパレット・ウィンドウのインスタンス
-        /// </summary>
-        public static FormIconPalette iconPalette = null;
         /// <summary>
         /// クリップボード管理クラスのインスタンス
         /// </summary>
@@ -303,10 +292,6 @@ namespace cadencii
         /// </summary>
         public static string mSelectedPaletteTool = "";
         /// <summary>
-        /// ダイアログを表示中かどうか
-        /// </summary>
-        private static bool mShowingDialog = false;
-        /// <summary>
         /// メインの編集画面のインスタンス
         /// </summary>
         public static FormMain mMainWindow = null;
@@ -314,10 +299,6 @@ namespace cadencii
         /// メイン画面のコントローラ
         /// </summary>
         public static FormMainController mMainWindowController = null;
-        /// <summary>
-        /// ミキサーダイアログ
-        /// </summary>
-        public static FormMixer mMixerWindow;
         /// <summary>
         /// 画面に描かれるエントリのリスト．trackBar.Valueの変更やエントリの編集などのたびに更新される
         /// </summary>
@@ -431,11 +412,6 @@ namespace cadencii
         public static event EventHandler UpdateBgmStatusRequired;
 
         /// <summary>
-        /// メインウィンドウにフォーカスを当てる要求があった時発生するイベント
-        /// </summary>
-        public static event EventHandler MainWindowFocusRequired;
-
-        /// <summary>
         /// 編集されたかどうかを表す値に変更が要求されたときに発生するイベント
         /// </summary>
         public static event EditedStateChangedEventHandler EditedStateChanged;
@@ -494,7 +470,7 @@ namespace cadencii
                     Amplifier a = new Amplifier();
                     FileWaveSender f = new FileWaveSender(wr);
                     a.setSender(f);
-                    a.setAmplifierView(mMixerWindow.getVolumeTracker(track));
+                    a.setAmplifierView(DialogManager.mMixerWindow.getVolumeTracker(track));
                     waves.Add(a);
                     a.setRoot(driver);
                     f.setRoot(driver);
@@ -532,7 +508,7 @@ namespace cadencii
                     Amplifier a = new Amplifier();
                     FileWaveSender f = new FileWaveSender(wr);
                     a.setSender(f);
-                    a.setAmplifierView(AppManager.mMixerWindow.getVolumeTrackerBgm(i));
+                    a.setAmplifierView(DialogManager.mMixerWindow.getVolumeTrackerBgm(i));
                     waves.Add(a);
                     a.setRoot(driver);
                     f.setRoot(driver);
@@ -551,7 +527,7 @@ namespace cadencii
             setGenerator(driver);
             Amplifier amp = new Amplifier();
             amp.setRoot(driver);
-            amp.setAmplifierView(mMixerWindow.getVolumeTrackerMaster());
+            amp.setAmplifierView(DialogManager.mMixerWindow.getVolumeTrackerMaster());
             m.setReceiver(amp);
             MonitorWaveReceiver monitor = MonitorWaveReceiver.prepareInstance();
             monitor.setRoot(driver);
@@ -626,12 +602,8 @@ namespace cadencii
             fw.startJob();
 
             // ダイアログを表示する
-            beginShowDialog();
-            bool ret = fw.getUi().showDialogTo(main_window);
-#if DEBUG
-            sout.println("AppManager#patchWorkToFreeze; showDialog returns " + ret);
-#endif
-            endShowDialog();
+            var ret = DialogManager.showDialogTo (fw, main_window);
+
             return ret;
         }
 
@@ -1266,158 +1238,6 @@ namespace cadencii
             return (int)((x + mMainWindowController.getStartToDrawX() - keyOffset - keyWidth) * mMainWindowController.getScaleXInv());
         }
 
-        #region MessageBoxのラッパー
-        public static DialogResult showMessageBox(string text)
-        {
-            return showMessageBox(text, "", cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_PLAIN_MESSAGE);
-        }
-
-        public static DialogResult showMessageBox(string text, string caption)
-        {
-            return showMessageBox(text, caption, cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_PLAIN_MESSAGE);
-        }
-
-        public static DialogResult showMessageBox(string text, string caption, int optionType)
-        {
-            return showMessageBox(text, caption, optionType, cadencii.Dialog.MSGBOX_PLAIN_MESSAGE);
-        }
-
-        /// <summary>
-        /// ダイアログを，メインウィンドウに対してモーダルに表示し，ダイアログの結果を取得します
-        /// </summary>
-        /// <param name="dialog"></param>
-        /// <param name="main_form"></param>
-        /// <returns></returns>
-        public static DialogResult showModalDialog(Form dialog, Form parent_form)
-        {
-            beginShowDialog();
-            var ret = dialog.ShowDialog(parent_form);
-            endShowDialog();
-			return (DialogResult) ret;
-        }
-
-        /// <summary>
-        /// ダイアログを，メインウィンドウに対してモーダルに表示し，ダイアログの結果を取得します
-        /// </summary>
-        /// <param name="dialog"></param>
-        /// <param name="main_form"></param>
-        /// <returns></returns>
-        public static int showModalDialog(UiBase dialog, System.Windows.Forms.Form parent_form)
-        {
-            beginShowDialog();
-            int ret = dialog.showDialog(parent_form);
-            endShowDialog();
-            return ret;
-        }
-
-        /// <summary>
-        /// ダイアログを，メインウィンドウに対してモーダルに表示し，ダイアログの結果を取得します
-        /// </summary>
-        /// <param name="dialog"></param>
-        /// <param name="main_form"></param>
-        /// <returns></returns>
-        public static DialogResult showModalDialog(FolderBrowserDialog dialog, Form main_form)
-        {
-            beginShowDialog();
-			var ret = (DialogResult) dialog.ShowDialog(main_form);
-            endShowDialog();
-            return ret;
-        }
-
-        /// <summary>
-        /// ダイアログを，メインウィンドウに対してモーダルに表示し，ダイアログの結果を取得します
-        /// </summary>
-        /// <param name="dialog"></param>
-        /// <param name="open_mode"></param>
-        /// <param name="main_form"></param>
-        /// <returns></returns>
-        public static DialogResult showModalDialog(FileDialog dialog, bool open_mode, Form main_form)
-        {
-            beginShowDialog();
-			DialogResult ret = (DialogResult) dialog.ShowDialog(main_form);
-            endShowDialog();
-            return ret;
-        }
-
-        /// <summary>
-        /// beginShowDialogが呼ばれた後，endShowDialogがまだ呼ばれていないときにtrue
-        /// </summary>
-        /// <returns></returns>
-        public static bool isShowingDialog()
-        {
-            return mShowingDialog;
-        }
-
-        /// <summary>
-        /// モーダルなダイアログを出すために，プロパティウィンドウとミキサーウィンドウの「最前面に表示」設定を一時的にOFFにします
-        /// </summary>
-        private static void beginShowDialog()
-        {
-            mShowingDialog = true;
-#if ENABLE_PROPERTY
-            if (propertyWindow != null) {
-                bool previous = propertyWindow.getUi().isAlwaysOnTop();
-                propertyWindow.setPreviousAlwaysOnTop(previous);
-                if (previous) {
-                    propertyWindow.getUi().setAlwaysOnTop(false);
-                }
-            }
-#endif
-            if (mMixerWindow != null) {
-                bool previous = mMixerWindow.TopMost;
-                mMixerWindow.setPreviousAlwaysOnTop(previous);
-                if (previous) {
-                    mMixerWindow.TopMost = false;
-                }
-            }
-
-            if (iconPalette != null) {
-                bool previous = iconPalette.TopMost;
-                iconPalette.setPreviousAlwaysOnTop(previous);
-                if (previous) {
-                    iconPalette.TopMost = false;
-                }
-            }
-        }
-
-        /// <summary>
-        /// beginShowDialogで一時的にOFFにした「最前面に表示」設定を元に戻します
-        /// </summary>
-        private static void endShowDialog()
-        {
-#if ENABLE_PROPERTY
-            if (propertyWindow != null) {
-                propertyWindow.getUi().setAlwaysOnTop(propertyWindow.getPreviousAlwaysOnTop());
-            }
-#endif
-            if (mMixerWindow != null) {
-                mMixerWindow.TopMost = mMixerWindow.getPreviousAlwaysOnTop();
-            }
-
-            if (iconPalette != null) {
-                iconPalette.TopMost = iconPalette.getPreviousAlwaysOnTop();
-            }
-
-            try {
-                if (MainWindowFocusRequired != null) {
-                    MainWindowFocusRequired.Invoke(typeof(AppManager), new EventArgs());
-                }
-            } catch (Exception ex) {
-                Logger.write(typeof(AppManager) + ".endShowDialog; ex=" + ex + "\n");
-                sout.println(typeof(AppManager) + ".endShowDialog; ex=" + ex);
-            }
-            mShowingDialog = false;
-        }
-
-        public static DialogResult showMessageBox(string text, string caption, int optionType, int messageType)
-        {
-            beginShowDialog();
-            var ret = (DialogResult) cadencii.windows.forms.Utility.showMessageBox(text, caption, optionType, messageType);
-            endShowDialog();
-            return ret;
-        }
-        #endregion
-
 		public static void removeBgm (int index)
 		{
 			MusicManager.removeBgm (index, resultCmd => {
@@ -1430,7 +1250,7 @@ namespace cadencii
 					Logger.write (typeof(AppManager) + ".removeBgm; ex=" + ex + "\n");
 					serr.println (typeof(AppManager) + ".removeBgm; ex=" + ex);
 				}
-				mMixerWindow.updateStatus ();
+				DialogManager.mMixerWindow.updateStatus ();
 			});
 		}
 
@@ -1446,7 +1266,7 @@ namespace cadencii
 					Logger.write (typeof(AppManager) + ".removeBgm; ex=" + ex + "\n");
 					serr.println (typeof(AppManager) + ".removeBgm; ex=" + ex);
 				}
-				mMixerWindow.updateStatus ();
+				DialogManager.mMixerWindow.updateStatus ();
 			});
 		}
 		public static void addBgm (string file)
@@ -1461,7 +1281,7 @@ namespace cadencii
 				Logger.write (typeof(AppManager) + ".removeBgm; ex=" + ex + "\n");
 				serr.println (typeof(AppManager) + ".removeBgm; ex=" + ex);
 			}
-			mMixerWindow.updateStatus ();
+			DialogManager.mMixerWindow.updateStatus ();
 			});
 		}
 		#region 自動保存
@@ -1795,7 +1615,7 @@ namespace cadencii
 
 		public static void saveTo (string file)
 		{
-			MusicManager.saveTo (file, (a,b,c,d) => showMessageBox(a,b,c,d), _, mFile => {
+			MusicManager.saveTo (file, (a,b,c,d) => DialogManager.showMessageBox(a,b,c,d), _, mFile => {
 					EditorManager.editorConfig.pushRecentFiles(mFile);
 				if (!mAutoBackupTimer.Enabled && EditorManager.editorConfig.AutoBackupIntervalMinutes > 0) {
 					double millisec = EditorManager.editorConfig.AutoBackupIntervalMinutes * 60.0 * 1000.0;
@@ -2134,10 +1954,13 @@ namespace cadencii
             }
 			EditorManager.editorConfig.KeyWidth = keyWidth;
 
+		// FIXME: Enable this
+/*
             // chevronの幅を保存
             if (Rebar.CHEVRON_WIDTH > 0) {
 				EditorManager.editorConfig.ChevronWidth = Rebar.CHEVRON_WIDTH;
             }
+            */
 
             // シリアライズして保存
             string file = Path.Combine(Utility.getConfigPath(), ApplicationGlobal.CONFIG_FILE_NAME);

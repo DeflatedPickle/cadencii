@@ -91,7 +91,6 @@
     <Compile Include="CommandExecuteRequiredEventHandler.cs" />
     <Compile Include="ExceptionNotifyFormUi.cs" />
     <Compile Include="ExceptionNotifyFormUiListener.cs" />
-    <Compile Include="UiBase.cs" />
     <Compile Include="IFormWorkerControl.cs" />
     <Compile Include="IImageCachedComponentDrawer.cs" />
     <Compile Include="SelectedTempoEntry.cs" />
@@ -138,6 +137,7 @@
     <Compile Include="forms\FormWordDictionaryController.cs" />
     <Compile Include="forms\FormWordDictionaryUi.cs" />
     <Compile Include="forms\FormWordDictionaryUiListener.cs" />
+    <Compile Include="UiBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

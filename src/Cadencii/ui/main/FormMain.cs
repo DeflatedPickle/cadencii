@@ -524,8 +524,8 @@ namespace cadencii
 
 #if ENABLE_PROPERTY
             AppManager.propertyPanel = new PropertyPanel();
-            AppManager.propertyWindow = new FormNotePropertyController(c => new FormNotePropertyUiImpl(c), this);
-            AppManager.propertyWindow.getUi().addComponent(AppManager.propertyPanel);
+            DialogManager.propertyWindow = new FormNotePropertyController(c => new FormNotePropertyUiImpl(c), this);
+            DialogManager.propertyWindow.getUi().addComponent(AppManager.propertyPanel);
 #endif
 
 #if DEBUG
@@ -771,8 +771,8 @@ namespace cadencii
             menuHelpLogSwitch.Checked = Logger.isEnabled();
             applyShortcut();
 
-            AppManager.mMixerWindow = new FormMixer(this);
-            AppManager.iconPalette = new FormIconPalette(this);
+            DialogManager.mMixerWindow = new FormMixer(this);
+            DialogManager.iconPalette = new FormIconPalette(this);
 
             // ファイルを開く
             if (file != "") {
@@ -805,7 +805,7 @@ namespace cadencii
             AppManager.itemSelection.SelectedEventChanged += new SelectedEventChangedEventHandler(ItemSelectionModel_SelectedEventChanged);
             AppManager.SelectedToolChanged += new EventHandler(AppManager_SelectedToolChanged);
             AppManager.UpdateBgmStatusRequired += new EventHandler(AppManager_UpdateBgmStatusRequired);
-            AppManager.MainWindowFocusRequired += new EventHandler(AppManager_MainWindowFocusRequired);
+            DialogManager.MainWindowFocusRequired += new EventHandler(AppManager_MainWindowFocusRequired);
             AppManager.EditedStateChanged += new EditedStateChangedEventHandler(AppManager_EditedStateChanged);
             AppManager.WaveViewReloadRequired += new WaveViewRealoadRequiredEventHandler(AppManager_WaveViewRealoadRequired);
             EditorConfig.QuantizeModeChanged += new EventHandler(handleEditorConfig_QuantizeModeChanged);
@@ -844,27 +844,27 @@ namespace cadencii
 
             updateMenuFonts();
 
-            AppManager.mMixerWindow.FederChanged += new FederChangedEventHandler(mixerWindow_FederChanged);
-            AppManager.mMixerWindow.PanpotChanged += new PanpotChangedEventHandler(mixerWindow_PanpotChanged);
-            AppManager.mMixerWindow.MuteChanged += new MuteChangedEventHandler(mixerWindow_MuteChanged);
-            AppManager.mMixerWindow.SoloChanged += new SoloChangedEventHandler(mixerWindow_SoloChanged);
-            AppManager.mMixerWindow.updateStatus();
+            DialogManager.mMixerWindow.FederChanged += new FederChangedEventHandler(mixerWindow_FederChanged);
+            DialogManager.mMixerWindow.PanpotChanged += new PanpotChangedEventHandler(mixerWindow_PanpotChanged);
+            DialogManager.mMixerWindow.MuteChanged += new MuteChangedEventHandler(mixerWindow_MuteChanged);
+            DialogManager.mMixerWindow.SoloChanged += new SoloChangedEventHandler(mixerWindow_SoloChanged);
+            DialogManager.mMixerWindow.updateStatus();
             if (EditorManager.editorConfig.MixerVisible) {
-                AppManager.mMixerWindow.Visible = true;
+                DialogManager.mMixerWindow.Visible = true;
             }
-            AppManager.mMixerWindow.FormClosing += new FormClosingEventHandler(mixerWindow_FormClosing);
+            DialogManager.mMixerWindow.FormClosing += new FormClosingEventHandler(mixerWindow_FormClosing);
 
             Point p1 = EditorManager.editorConfig.FormIconPaletteLocation.toPoint();
 			if (!cadencii.core2.PortUtil.isPointInScreens(p1)) {
 				Rectangle workingArea = cadencii.core2.PortUtil.getWorkingArea(this);
                 p1 = new Point(workingArea.x, workingArea.y);
             }
-            AppManager.iconPalette.Location = new System.Drawing.Point(p1.X, p1.Y);
+            DialogManager.iconPalette.Location = new System.Drawing.Point(p1.X, p1.Y);
             if (EditorManager.editorConfig.IconPaletteVisible) {
-                AppManager.iconPalette.Visible = true;
+                DialogManager.iconPalette.Visible = true;
             }
-            AppManager.iconPalette.FormClosing += new FormClosingEventHandler(iconPalette_FormClosing);
-            AppManager.iconPalette.LocationChanged += new EventHandler(iconPalette_LocationChanged);
+            DialogManager.iconPalette.FormClosing += new FormClosingEventHandler(iconPalette_FormClosing);
+            DialogManager.iconPalette.LocationChanged += new EventHandler(iconPalette_LocationChanged);
 
             trackSelector.CommandExecuted += new EventHandler(trackSelector_CommandExecuted);
 
@@ -873,7 +873,7 @@ namespace cadencii
             // RunOnceという名前のスクリプトがあれば，そいつを実行
             foreach (var id in ScriptServer.getScriptIdIterator()) {
                 if (PortUtil.getFileNameWithoutExtension(id).ToLower() == "runonce") {
-                    ScriptServer.invokeScript(id, MusicManager.getVsqFile(), (x1,x2,x3,x4) => AppManager.showMessageBox (x1, x2, x3, x4));
+                    ScriptServer.invokeScript(id, MusicManager.getVsqFile(), (x1,x2,x3,x4) => DialogManager.showMessageBox (x1, x2, x3, x4));
                     break;
                 }
             }
@@ -944,7 +944,7 @@ namespace cadencii
 #endif
 
 #if ENABLE_PROPERTY
-            AppManager.propertyWindow.getUi().setBounds(a.X, a.Y, rc.width, rc.height);
+            DialogManager.propertyWindow.getUi().setBounds(a.X, a.Y, rc.width, rc.height);
             AppManager.propertyPanel.CommandExecuteRequired += new CommandExecuteRequiredEventHandler(propertyPanel_CommandExecuteRequired);
 #endif
             updateBgmMenuState();
@@ -1136,7 +1136,7 @@ namespace cadencii
                 if (check_unknown_singer || check_unknwon_resampler) {
                     dialog = new FormCheckUnknownSingerAndResampler(singer_path.value, check_unknown_singer, resampler_path.value, check_unknwon_resampler);
                     dialog.Location = getFormPreferedLocation(dialog);
-                    var dr = AppManager.showModalDialog(dialog, this);
+                    var dr = DialogManager.showModalDialog(dialog, this);
                     if (dr != cadencii.java.awt.DialogResult.OK) {
                         return;
                     }
@@ -2276,10 +2276,10 @@ namespace cadencii
                 sout.println("FormMain#updatePropertyPanelState; state=Docked; w=" + w);
 #endif
                 EditorManager.editorConfig.PropertyWindowStatus.IsMinimized = true;
-                AppManager.propertyWindow.getUi().hideWindow();
+                DialogManager.propertyWindow.getUi().hideWindow();
             } else if (state == PanelState.Hidden) {
-                if (AppManager.propertyWindow.getUi().isVisible()) {
-                    AppManager.propertyWindow.getUi().hideWindow();
+                if (DialogManager.propertyWindow.getUi().isVisible()) {
+                    DialogManager.propertyWindow.getUi().hideWindow();
                 }
                 menuVisualProperty.Checked = false;
                 if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
@@ -2292,7 +2292,7 @@ namespace cadencii
                 splitContainerProperty.setDividerSize(0);
                 splitContainerProperty.setSplitterFixed(true);
             } else if (state == PanelState.Window) {
-                AppManager.propertyWindow.getUi().addComponent(AppManager.propertyPanel);
+                DialogManager.propertyWindow.getUi().addComponent(AppManager.propertyPanel);
                 var parent = this.Location;
                 XmlRectangle rc = EditorManager.editorConfig.PropertyWindowStatus.Bounds;
                 Point property = new Point(rc.x, rc.y);
@@ -2300,20 +2300,20 @@ namespace cadencii
                 int y = parent.Y + property.Y;
                 int width = rc.width;
                 int height = rc.height;
-                AppManager.propertyWindow.getUi().setBounds(x, y, width, height);
-                int workingAreaX = AppManager.propertyWindow.getUi().getWorkingAreaX();
-                int workingAreaY = AppManager.propertyWindow.getUi().getWorkingAreaY();
-                int workingAreaWidth = AppManager.propertyWindow.getUi().getWorkingAreaWidth();
-                int workingAreaHeight = AppManager.propertyWindow.getUi().getWorkingAreaHeight();
+                DialogManager.propertyWindow.getUi().setBounds(x, y, width, height);
+                int workingAreaX = DialogManager.propertyWindow.getUi().getWorkingAreaX();
+                int workingAreaY = DialogManager.propertyWindow.getUi().getWorkingAreaY();
+                int workingAreaWidth = DialogManager.propertyWindow.getUi().getWorkingAreaWidth();
+                int workingAreaHeight = DialogManager.propertyWindow.getUi().getWorkingAreaHeight();
                 Point appropriateLocation = getAppropriateDialogLocation(
                     x, y, width, height,
                     workingAreaX, workingAreaY, workingAreaWidth, workingAreaHeight
                 );
-                AppManager.propertyWindow.getUi().setBounds(appropriateLocation.X, appropriateLocation.Y, width, height);
+                DialogManager.propertyWindow.getUi().setBounds(appropriateLocation.X, appropriateLocation.Y, width, height);
                 // setVisible -> NORMALとすると，javaの場合見栄えが悪くなる
-                AppManager.propertyWindow.getUi().setVisible(true);
-                if (AppManager.propertyWindow.getUi().isWindowMinimized()) {
-                    AppManager.propertyWindow.getUi().deiconfyWindow();
+                DialogManager.propertyWindow.getUi().setVisible(true);
+                if (DialogManager.propertyWindow.getUi().isWindowMinimized()) {
+                    DialogManager.propertyWindow.getUi().deiconfyWindow();
                 }
                 menuVisualProperty.Checked = true;
                 if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
@@ -2824,13 +2824,13 @@ namespace cadencii
                 } else {
                     file = PortUtil.getFileName(file);
                 }
-                var dr = AppManager.showMessageBox(_("Save this sequence?"),
+                var dr = DialogManager.showMessageBox(_("Save this sequence?"),
                                                               _("Affirmation"),
                                                               cadencii.Dialog.MSGBOX_YES_NO_CANCEL_OPTION,
                                                               cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
 				if (dr == cadencii.java.awt.DialogResult.Yes) {
                     if (MusicManager.getFileName() == "") {
-                        var dr2 = AppManager.showModalDialog(saveXmlVsqDialog, false, this);
+                        var dr2 = DialogManager.showModalDialog(saveXmlVsqDialog, false, this);
 						if (dr2 == cadencii.java.awt.DialogResult.OK) {
                             string sf = saveXmlVsqDialog.FileName;
                             AppManager.saveTo(sf);
@@ -3600,7 +3600,7 @@ namespace cadencii
         /// <param name="visible">表示状態にする場合true，そうでなければfalse</param>
         public void flipMixerDialogVisible(bool visible)
         {
-            AppManager.mMixerWindow.Visible = visible;
+            DialogManager.mMixerWindow.Visible = visible;
             EditorManager.editorConfig.MixerVisible = visible;
             if (visible != menuVisualMixer.Checked) {
                 menuVisualMixer.Checked = visible;
@@ -3612,7 +3612,7 @@ namespace cadencii
         /// </summary>
         public void flipIconPaletteVisible(bool visible)
         {
-            AppManager.iconPalette.Visible = visible;
+            DialogManager.iconPalette.Visible = visible;
             EditorManager.editorConfig.IconPaletteVisible = visible;
             if (visible != menuVisualIconPalette.Checked) {
                 menuVisualIconPalette.Checked = visible;
@@ -3694,27 +3694,27 @@ namespace cadencii
             }
 
             // ミキサーウィンドウ
-            if (AppManager.mMixerWindow != null) {
+            if (DialogManager.mMixerWindow != null) {
                 if (dict.ContainsKey("menuVisualMixer")) {
                     Keys shortcut = dict["menuVisualMixer"].Aggregate(Keys.None, (seed, key) => seed | key);
-                    AppManager.mMixerWindow.applyShortcut(shortcut);
+                    DialogManager.mMixerWindow.applyShortcut(shortcut);
                 }
             }
 
             // アイコンパレット
-            if (AppManager.iconPalette != null) {
+            if (DialogManager.iconPalette != null) {
                 if (dict.ContainsKey("menuVisualIconPalette")) {
                     Keys shortcut = dict["menuVisualIconPalette"].Aggregate(Keys.None, (seed, key) => seed | key);
-                    AppManager.iconPalette.applyShortcut(shortcut);
+                    DialogManager.iconPalette.applyShortcut(shortcut);
                 }
             }
 
 #if ENABLE_PROPERTY
             // プロパティ
-            if (AppManager.propertyWindow != null) {
+            if (DialogManager.propertyWindow != null) {
                 if (dict.ContainsKey(menuVisualProperty.Name)) {
                     Keys shortcut = dict[menuVisualProperty.Name].Aggregate(Keys.None, (seed, key) => seed | key);
-                    AppManager.propertyWindow.applyShortcut(shortcut);
+                    DialogManager.propertyWindow.applyShortcut(shortcut);
                 }
             }
 #endif
@@ -4474,7 +4474,7 @@ namespace cadencii
                     mDialogImportLyric.setMaxNotes(count);
                 }
                 mDialogImportLyric.Location = getFormPreferedLocation(mDialogImportLyric);
-                var dr = AppManager.showModalDialog(mDialogImportLyric, this);
+                var dr = DialogManager.showModalDialog(mDialogImportLyric, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     string[] phrases = mDialogImportLyric.getLetters();
 #if DEBUG
@@ -4573,7 +4573,7 @@ namespace cadencii
                     type,
 					ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType);
                 dlg.Location = getFormPreferedLocation(dlg);
-                var dr = AppManager.showModalDialog(dlg, this);
+                var dr = DialogManager.showModalDialog(dlg, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     VsqEvent edited = (VsqEvent)ev.clone();
                     if (dlg.getVibratoHandle() != null) {
@@ -4631,7 +4631,7 @@ namespace cadencii
                 dlg.setDEMaccent(ev.ID.DEMaccent);
 
                 dlg.Location = getFormPreferedLocation(dlg);
-                var dr = AppManager.showModalDialog(dlg, this);
+                var dr = DialogManager.showModalDialog(dlg, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     VsqEvent edited = (VsqEvent)ev.clone();
                     edited.ID.PMBendDepth = dlg.getPMBendDepth();
@@ -5497,7 +5497,7 @@ namespace cadencii
                                                                      vsq.AttachedCurves.get(selected - 1)); ;
             EditorManager.editHistory.register(vsq.executeCommand(run));
             setEdited(true);
-            AppManager.mMixerWindow.updateStatus();
+            DialogManager.mMixerWindow.updateStatus();
             refreshScreen();
         }
 
@@ -5513,7 +5513,7 @@ namespace cadencii
                 ib = new InputBox(_("Input new name of track"));
                 ib.setResult(vsq.Track[selected].getName());
                 ib.Location = getFormPreferedLocation(ib);
-                var dr = AppManager.showModalDialog(ib, this);
+                var dr = DialogManager.showModalDialog(ib, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     string ret = ib.getResult();
                     CadenciiCommand run = new CadenciiCommand(
@@ -5537,7 +5537,7 @@ namespace cadencii
         {
             int selected = EditorManager.Selected;
             VsqFileEx vsq = MusicManager.getVsqFile();
-            if (AppManager.showMessageBox(
+            if (DialogManager.showMessageBox(
                     PortUtil.formatMessage(_("Do you wish to remove track? {0} : '{1}'"), selected, vsq.Track[selected].getName()),
                     _APP_NAME,
                     cadencii.Dialog.MSGBOX_YES_NO_OPTION,
@@ -5549,7 +5549,7 @@ namespace cadencii
                 EditorManager.editHistory.register(vsq.executeCommand(run));
                 updateDrawObjectList();
                 setEdited(true);
-                AppManager.mMixerWindow.updateStatus();
+                DialogManager.mMixerWindow.updateStatus();
                 refreshScreen();
             }
         }
@@ -5578,7 +5578,7 @@ namespace cadencii
             updateDrawObjectList();
             setEdited(true);
             EditorManager.Selected = (i);
-            AppManager.mMixerWindow.updateStatus();
+            DialogManager.mMixerWindow.updateStatus();
             refreshScreen();
         }
         #endregion
@@ -6162,7 +6162,7 @@ namespace cadencii
                 cMenuPianoUndo.Enabled = EditorManager.editHistory.hasUndoHistory();
                 cMenuTrackSelectorRedo.Enabled = EditorManager.editHistory.hasRedoHistory();
                 cMenuTrackSelectorUndo.Enabled = EditorManager.editHistory.hasUndoHistory();
-                AppManager.mMixerWindow.updateStatus();
+                DialogManager.mMixerWindow.updateStatus();
                 setEdited(true);
                 updateDrawObjectList();
 
@@ -6187,7 +6187,7 @@ namespace cadencii
                 cMenuPianoUndo.Enabled = EditorManager.editHistory.hasUndoHistory();
                 cMenuTrackSelectorRedo.Enabled = EditorManager.editHistory.hasRedoHistory();
                 cMenuTrackSelectorUndo.Enabled = EditorManager.editHistory.hasUndoHistory();
-                AppManager.mMixerWindow.updateStatus();
+                DialogManager.mMixerWindow.updateStatus();
                 setEdited(true);
                 updateDrawObjectList();
 
@@ -6215,7 +6215,7 @@ namespace cadencii
             updateRecentFileMenu();
             setEdited(false);
             EditorManager.editHistory.clear();
-            AppManager.mMixerWindow.updateStatus();
+            DialogManager.mMixerWindow.updateStatus();
 
             // キャッシュwaveなどの処理
             if (ApplicationGlobal.appConfig.UseProjectCache) {
@@ -6246,7 +6246,7 @@ namespace cadencii
                         } catch (Exception ex) {
                             Logger.write(typeof(FormMain) + ".openVsqCor; ex=" + ex + "\n");
                             serr.println("FormMain#openVsqCor; ex=" + ex);
-                            AppManager.showMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
+                            DialogManager.showMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
                                                        _("Info."),
                                                        cadencii.java.awt.AwtHost.OK_OPTION,
                                                        cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
@@ -6288,7 +6288,7 @@ namespace cadencii
                     } catch (Exception ex) {
                         Logger.write(typeof(FormMain) + ".openVsqCor; ex=" + ex + "\n");
                         serr.println("FormMain#openVsqCor; ex=" + ex);
-                        AppManager.showMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
+                        DialogManager.showMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
                                                    _("Info."),
 							cadencii.java.awt.AwtHost.OK_OPTION,
                                                    cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
@@ -6331,8 +6331,8 @@ namespace cadencii
 #if !JAVA_MAC
             Util.applyContextMenuFontRecurse(cMenuPiano, font);
             Util.applyContextMenuFontRecurse(cMenuTrackSelector, font);
-            if (AppManager.mMixerWindow != null) {
-                Util.applyFontRecurse(AppManager.mMixerWindow, font);
+            if (DialogManager.mMixerWindow != null) {
+                Util.applyFontRecurse(DialogManager.mMixerWindow, font);
             }
             Util.applyContextMenuFontRecurse(cMenuTrackTab, font);
             trackSelector.applyFont(font);
@@ -7482,7 +7482,7 @@ namespace cadencii
                                     dlg.setDEMdecGainRate(selectedEvent.ID.DEMdecGainRate);
                                     dlg.setDEMaccent(selectedEvent.ID.DEMaccent);
                                     dlg.Location = getFormPreferedLocation(dlg);
-                                    var dr = AppManager.showModalDialog(dlg, this);
+                                    var dr = DialogManager.showModalDialog(dlg, this);
 									if (dr == cadencii.java.awt.DialogResult.OK) {
                                         VsqID id = (VsqID)selectedEvent.ID.clone();
                                         id.PMBendDepth = dlg.getPMBendDepth();
@@ -7553,7 +7553,7 @@ namespace cadencii
                                         type,
                                         ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType);
                                     dlg.Location = getFormPreferedLocation(dlg);
-                                    var dr = AppManager.showModalDialog(dlg, this);
+                                    var dr = DialogManager.showModalDialog(dlg, this);
 									if (dr == cadencii.java.awt.DialogResult.OK) {
                                         VsqID t = (VsqID)selectedEvent.ID.clone();
                                         VibratoHandle handle = dlg.getVibratoHandle();
@@ -9023,13 +9023,13 @@ namespace cadencii
         #region iconPalette
         public void iconPalette_LocationChanged(Object sender, EventArgs e)
         {
-            var point = AppManager.iconPalette.Location;
+            var point = DialogManager.iconPalette.Location;
             EditorManager.editorConfig.FormIconPaletteLocation = new XmlPoint(point.X, point.Y);
         }
 
         public void iconPalette_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            flipIconPaletteVisible(AppManager.iconPalette.Visible);
+            flipIconPaletteVisible(DialogManager.iconPalette.Visible);
         }
         #endregion
 
@@ -9257,7 +9257,7 @@ namespace cadencii
         #region mixerWindow
         public void mixerWindow_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            flipMixerDialogVisible(AppManager.mMixerWindow.Visible);
+            flipMixerDialogVisible(DialogManager.mMixerWindow.Visible);
         }
 
         public void mixerWindow_SoloChanged(int track, bool solo)
@@ -9272,8 +9272,8 @@ namespace cadencii
                 return;
             }
             vsq.setSolo(track, solo);
-            if (AppManager.mMixerWindow != null) {
-                AppManager.mMixerWindow.updateStatus();
+            if (DialogManager.mMixerWindow != null) {
+                DialogManager.mMixerWindow.updateStatus();
             }
         }
 
@@ -9293,8 +9293,8 @@ namespace cadencii
             } else {
                 vsq.setMute(track, mute);
             }
-            if (AppManager.mMixerWindow != null) {
-                AppManager.mMixerWindow.updateStatus();
+            if (DialogManager.mMixerWindow != null) {
+                DialogManager.mMixerWindow.updateStatus();
             }
         }
 
@@ -9371,9 +9371,9 @@ namespace cadencii
 #endif
             if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
 #if DEBUG
-                sout.println("FormMain#proprtyWindow_WindowStateChanged; isWindowMinimized=" + AppManager.propertyWindow.getUi().isWindowMinimized());
+                sout.println("FormMain#proprtyWindow_WindowStateChanged; isWindowMinimized=" + DialogManager.propertyWindow.getUi().isWindowMinimized());
 #endif
-                if (AppManager.propertyWindow.getUi().isWindowMinimized()) {
+                if (DialogManager.propertyWindow.getUi().isWindowMinimized()) {
                     updatePropertyPanelState(PanelState.Docked);
                 }
             }
@@ -9385,15 +9385,15 @@ namespace cadencii
             sout.println("FormMain#propertyWindow_LocationOrSizeChanged");
 #endif
             if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
-                if (AppManager.propertyWindow != null && false == AppManager.propertyWindow.getUi().isWindowMinimized()) {
+                if (DialogManager.propertyWindow != null && false == DialogManager.propertyWindow.getUi().isWindowMinimized()) {
                     var parent = this.Location;
-                    int propertyX = AppManager.propertyWindow.getUi().getX();
-                    int propertyY = AppManager.propertyWindow.getUi().getY();
+                    int propertyX = DialogManager.propertyWindow.getUi().getX();
+                    int propertyY = DialogManager.propertyWindow.getUi().getY();
                     EditorManager.editorConfig.PropertyWindowStatus.Bounds =
                         new XmlRectangle(propertyX - parent.X,
                                           propertyY - parent.Y,
-                                          AppManager.propertyWindow.getUi().getWidth(),
-                                          AppManager.propertyWindow.getUi().getHeight());
+                                          DialogManager.propertyWindow.getUi().getWidth(),
+                                          DialogManager.propertyWindow.getUi().getHeight());
                 }
             }
         }
@@ -9607,13 +9607,13 @@ namespace cadencii
                 } else {
                     file = PortUtil.getFileName(file);
                 }
-                var ret = AppManager.showMessageBox(_("Save this sequence?"),
+                var ret = DialogManager.showMessageBox(_("Save this sequence?"),
                                                                _("Affirmation"),
                                                                cadencii.Dialog.MSGBOX_YES_NO_CANCEL_OPTION,
                                                                cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
 				if (ret == cadencii.java.awt.DialogResult.Yes) {
                     if (MusicManager.getFileName().Equals("")) {
-                        var dr = AppManager.showModalDialog(saveXmlVsqDialog, false, this);
+                        var dr = DialogManager.showModalDialog(saveXmlVsqDialog, false, this);
 						if (dr == cadencii.java.awt.DialogResult.OK) {
                             AppManager.saveTo(saveXmlVsqDialog.FileName);
                         } else {
@@ -9826,7 +9826,7 @@ namespace cadencii
                     dialog = new FormAskKeySoundGenerationController();
                     dialog.setupUi(new FormAskKeySoundGenerationUiImpl(dialog));
                     dialog.getUi().setAlwaysPerformThisCheck(always_check_this);
-                    dialog_result = AppManager.showModalDialog(dialog.getUi(), this);
+                    dialog_result = DialogManager.showModalDialog(dialog.getUi(), this);
                     always_check_this = dialog.getUi().isAlwaysPerformThisCheck();
                 } catch (Exception ex) {
                     Logger.write(typeof(FormMain) + ".FormMain_Load; ex=" + ex + "\n");
@@ -9895,44 +9895,44 @@ namespace cadencii
 #if ENABLE_PROPERTY
                 // プロパティウィンドウの状態を更新
                 if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
-                    if (AppManager.propertyWindow.getUi().isWindowMinimized()) {
-                        AppManager.propertyWindow.getUi().deiconfyWindow();
+                    if (DialogManager.propertyWindow.getUi().isWindowMinimized()) {
+                        DialogManager.propertyWindow.getUi().deiconfyWindow();
                     }
-                    if (!AppManager.propertyWindow.getUi().isVisible()) {
-                        AppManager.propertyWindow.getUi().setVisible(true);
+                    if (!DialogManager.propertyWindow.getUi().isVisible()) {
+                        DialogManager.propertyWindow.getUi().setVisible(true);
                     }
                 }
 #endif
                 // ミキサーウィンドウの状態を更新
                 bool vm = EditorManager.editorConfig.MixerVisible;
-                if (vm != AppManager.mMixerWindow.Visible) {
-                    AppManager.mMixerWindow.Visible = vm;
+                if (vm != DialogManager.mMixerWindow.Visible) {
+                    DialogManager.mMixerWindow.Visible = vm;
                 }
 
                 // アイコンパレットの状態を更新
-                if (AppManager.iconPalette != null && menuVisualIconPalette.Checked) {
-                    if (!AppManager.iconPalette.Visible) {
-                        AppManager.iconPalette.Visible = true;
+                if (DialogManager.iconPalette != null && menuVisualIconPalette.Checked) {
+                    if (!DialogManager.iconPalette.Visible) {
+                        DialogManager.iconPalette.Visible = true;
                     }
                 }
                 updateLayout();
                 this.Focus();
             } else if (state == FormWindowState.Minimized) {
 #if ENABLE_PROPERTY
-                AppManager.propertyWindow.getUi().setVisible(false);
+                DialogManager.propertyWindow.getUi().setVisible(false);
 #endif
-                AppManager.mMixerWindow.Visible = false;
-                if (AppManager.iconPalette != null) {
-                    AppManager.iconPalette.Visible = false;
+                DialogManager.mMixerWindow.Visible = false;
+                if (DialogManager.iconPalette != null) {
+                    DialogManager.iconPalette.Visible = false;
                 }
             }/* else if ( state == BForm.MAXIMIZED_BOTH ) {
 #if ENABLE_PROPERTY
-                AppManager.propertyWindow.setExtendedState( BForm.NORMAL );
-                AppManager.propertyWindow.setVisible( EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window );
+                DialogManager.propertyWindow.setExtendedState( BForm.NORMAL );
+                DialogManager.propertyWindow.setVisible( EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window );
 #endif
-                AppManager.mMixerWindow.setVisible( EditorManager.editorConfig.MixerVisible );
-                if ( AppManager.iconPalette != null && menuVisualIconPalette.isSelected() ) {
-                    AppManager.iconPalette.setVisible( true );
+                DialogManager.mMixerWindow.setVisible( EditorManager.editorConfig.MixerVisible );
+                if ( DialogManager.iconPalette != null && menuVisualIconPalette.isSelected() ) {
+                    DialogManager.iconPalette.setVisible( true );
                 }
                 this.requestFocus();
             }*/
@@ -10178,7 +10178,7 @@ namespace cadencii
         {
             for (int track = 1; track < MusicManager.getVsqFile().Track.Count; track++) {
                 if (MusicManager.getVsqFile().Track[track].getEventCount() == 0) {
-                    AppManager.showMessageBox(
+                    DialogManager.showMessageBox(
                         PortUtil.formatMessage(
                             _("Invalid note data.\nTrack {0} : {1}\n\n-> Piano roll : Blank sequence."), track, MusicManager.getVsqFile().Track[track].getName()
                         ),
@@ -10191,7 +10191,7 @@ namespace cadencii
 
             string dir = ApplicationGlobal.appConfig.getLastUsedPathOut("xvsq");
             saveXmlVsqDialog.SetSelectedFile(dir);
-            var dr = AppManager.showModalDialog(saveXmlVsqDialog, false, this);
+            var dr = DialogManager.showModalDialog(saveXmlVsqDialog, false, this);
 			if (dr == cadencii.java.awt.DialogResult.OK) {
                 string file = saveXmlVsqDialog.FileName;
                 ApplicationGlobal.appConfig.setLastUsedPathOut(file, ".xvsq");
@@ -10229,7 +10229,7 @@ namespace cadencii
             }
             mDialogMidiImportAndExport.setMode(FormMidiImExport.FormMidiMode.EXPORT);
             mDialogMidiImportAndExport.Location = getFormPreferedLocation(mDialogMidiImportAndExport);
-            var dr = AppManager.showModalDialog(mDialogMidiImportAndExport, this);
+            var dr = DialogManager.showModalDialog(mDialogMidiImportAndExport, this);
 			if (dr == cadencii.java.awt.DialogResult.OK) {
                 if (!mDialogMidiImportAndExport.isPreMeasure()) {
                     vsq.removePart(0, vsq.getPreMeasureClocks());
@@ -10246,7 +10246,7 @@ namespace cadencii
 
                 string dir = ApplicationGlobal.appConfig.getLastUsedPathOut("mid");
                 saveMidiDialog.SetSelectedFile(dir);
-                var dialog_result = AppManager.showModalDialog(saveMidiDialog, false, this);
+                var dialog_result = DialogManager.showModalDialog(saveMidiDialog, false, this);
 
 				if (dialog_result == cadencii.java.awt.DialogResult.OK) {
                     FileStream fs = null;
@@ -10470,7 +10470,7 @@ namespace cadencii
                 dialog = new SaveFileDialog();
                 dialog.SetSelectedFile(first);
                 dialog.Filter = string.Join("|", new[] { _("MusicXML(*.xml)|*.xml"), _("All Files(*.*)|*.*") });
-                var result = AppManager.showModalDialog(dialog, false, this);
+                var result = DialogManager.showModalDialog(dialog, false, this);
 				if (result != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }
@@ -10503,7 +10503,7 @@ namespace cadencii
                 string initial_dir = ApplicationGlobal.appConfig.getLastUsedPathOut("wav");
                 file_dialog.Description = _("Choose destination directory");
                 file_dialog.SelectedPath = initial_dir;
-                var ret = AppManager.showModalDialog(file_dialog, this);
+                var ret = DialogManager.showModalDialog(file_dialog, this);
 				if (ret != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }
@@ -10534,7 +10534,7 @@ namespace cadencii
             int clockStart = vsq.config.StartMarkerEnabled ? vsq.config.StartMarker : 0;
             int clockEnd = vsq.config.EndMarkerEnabled ? vsq.config.EndMarker : vsq.TotalClocks + 240;
             if (clockStart > clockEnd) {
-                AppManager.showMessageBox(
+                DialogManager.showMessageBox(
                     _("invalid rendering region; start>=end"),
                     _("Error"),
 					cadencii.java.awt.AwtHost.OK_OPTION,
@@ -10568,7 +10568,7 @@ namespace cadencii
                 }
 
                 fw.startJob();
-                AppManager.showModalDialog(fw.getUi(), this);
+                DialogManager.showModalDialog(fw.getUi(), this);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".menuFileExportParaWave; ex=" + ex + "\n");
             } finally {
@@ -10598,7 +10598,7 @@ namespace cadencii
                 dialog.SetSelectedFile(last_path);
                 dialog.Title = _("Export UTAU (*.ust)");
                 dialog.Filter = string.Join("|", new[] { _("UTAU Script Format(*.ust)|*.ust"), _("All Files(*.*)|*.*") });
-                dialog_result = AppManager.showModalDialog(dialog, false, this);
+                dialog_result = DialogManager.showModalDialog(dialog, false, this);
 				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }
@@ -10655,7 +10655,7 @@ namespace cadencii
                 dialog.SetSelectedFile(last_path);
                 dialog.Title = _("Export VSQ (*.vsq)");
                 dialog.Filter = string.Join("|", new[] { _("VSQ Format(*.vsq)|*.vsq"), _("All Files(*.*)|*.*") });
-                dialog_result = AppManager.showModalDialog(dialog, false, this);
+                dialog_result = DialogManager.showModalDialog(dialog, false, this);
 				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }
@@ -10696,7 +10696,7 @@ namespace cadencii
         {
             // UTAUの歌手が登録されていない場合は警告を表示
             if (ApplicationGlobal.appConfig.UtauSingers.Count <= 0) {
-                var dr = AppManager.showMessageBox(
+                var dr = DialogManager.showMessageBox(
                     _("UTAU singer not registered yet.\nContinue ?"),
                     _("Info"),
                     cadencii.Dialog.MSGBOX_YES_NO_OPTION,
@@ -10718,7 +10718,7 @@ namespace cadencii
                 dialog.SetSelectedFile(last_path);
                 dialog.Title = _("Metatext for vConnect");
                 dialog.Filter = string.Join("|", new[] { _("Text File(*.txt)|*.txt"), _("All Files(*.*)|*.*") });
-                dialog_result = AppManager.showModalDialog(dialog, false, this);
+                dialog_result = DialogManager.showModalDialog(dialog, false, this);
 				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }
@@ -10796,7 +10796,7 @@ namespace cadencii
                 sfd.SetSelectedFile(last_path);
                 sfd.Title = _("Wave Export");
                 sfd.Filter = string.Join("|", new[] { _("Wave File(*.wav)|*.wav"), _("All Files(*.*)|*.*") });
-                dialog_result = AppManager.showModalDialog(sfd, false, this);
+                dialog_result = DialogManager.showModalDialog(sfd, false, this);
 				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }
@@ -10818,7 +10818,7 @@ namespace cadencii
             int clockStart = vsq.config.StartMarkerEnabled ? vsq.config.StartMarker : 0;
             int clockEnd = vsq.config.EndMarkerEnabled ? vsq.config.EndMarker : vsq.TotalClocks + 240;
             if (clockStart > clockEnd) {
-                AppManager.showMessageBox(
+                DialogManager.showMessageBox(
                     _("invalid rendering region; start>=end"),
                     _("Error"),
 					cadencii.java.awt.AwtHost.OK_OPTION,
@@ -10859,7 +10859,7 @@ namespace cadencii
                 }
 
                 fs.startJob();
-                AppManager.showModalDialog(fs.getUi(), this);
+                DialogManager.showModalDialog(fs.getUi(), this);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".menuFileExportWave_Click; ex=" + ex + "\n");
             } finally {
@@ -10883,7 +10883,7 @@ namespace cadencii
 
             string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("mid");
             openMidiDialog.SetSelectedFile(dir);
-            var dialog_result = AppManager.showModalDialog(openMidiDialog, true, this);
+            var dialog_result = DialogManager.showModalDialog(openMidiDialog, true, this);
 
 			if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                 return;
@@ -10896,7 +10896,7 @@ namespace cadencii
                 mf = new MidiFile(filename);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".menuFileImportMidi_Click; ex=" + ex + "\n");
-                AppManager.showMessageBox(
+                DialogManager.showMessageBox(
                     _("Invalid MIDI file."),
                     _("Error"),
                     cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
@@ -10904,7 +10904,7 @@ namespace cadencii
                 return;
             }
             if (mf == null) {
-                AppManager.showMessageBox(
+                DialogManager.showMessageBox(
                     _("Invalid MIDI file."),
                     _("Error"),
                     cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
@@ -10955,7 +10955,7 @@ namespace cadencii
                     new string[] { i + "", track_name, notes + "" }, true);
             }
 
-            var dr = AppManager.showModalDialog(mDialogMidiImportAndExport, this);
+            var dr = DialogManager.showModalDialog(mDialogMidiImportAndExport, this);
 			if (dr != cadencii.java.awt.DialogResult.OK) {
                 return;
             }
@@ -11282,7 +11282,7 @@ namespace cadencii
                 string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("ust");
                 dialog = new OpenFileDialog();
                 dialog.SetSelectedFile(dir);
-                var dialog_result = AppManager.showModalDialog(dialog, true, this);
+                var dialog_result = DialogManager.showModalDialog(dialog, true, this);
 				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }
@@ -11372,7 +11372,7 @@ namespace cadencii
                 // コマンドを発行して実行
                 CadenciiCommand run = VsqFileEx.generateCommandReplace(dst);
                 EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
-                AppManager.mMixerWindow.updateStatus();
+                DialogManager.mMixerWindow.updateStatus();
                 setEdited(true);
                 refreshScreen(true);
             } catch (Exception ex) {
@@ -11391,7 +11391,7 @@ namespace cadencii
         {
             string dir = ApplicationGlobal.appConfig.getLastUsedPathIn(EditorManager.editorConfig.LastUsedExtension);
             openMidiDialog.SetSelectedFile(dir);
-            var dialog_result = AppManager.showModalDialog(openMidiDialog, true, this);
+            var dialog_result = DialogManager.showModalDialog(openMidiDialog, true, this);
 
 			if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                 return;
@@ -11403,7 +11403,7 @@ namespace cadencii
                 vsq = new VsqFileEx(filename, "Shift_JIS");
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".menuFileImportVsq_Click; ex=" + ex + "\n");
-                AppManager.showMessageBox(_("Invalid VSQ/VOCALOID MIDI file"), _("Error"), cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
+                DialogManager.showMessageBox(_("Invalid VSQ/VOCALOID MIDI file"), _("Error"), cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
                 return;
             }
             if (mDialogMidiImportAndExport == null) {
@@ -11420,7 +11420,7 @@ namespace cadencii
             mDialogMidiImportAndExport.setTempo(false);
             mDialogMidiImportAndExport.setTimesig(false);
             mDialogMidiImportAndExport.Location = getFormPreferedLocation(mDialogMidiImportAndExport);
-            var dr = AppManager.showModalDialog(mDialogMidiImportAndExport, this);
+            var dr = DialogManager.showModalDialog(mDialogMidiImportAndExport, this);
 			if (dr != cadencii.java.awt.DialogResult.OK) {
                 return;
             }
@@ -11544,7 +11544,7 @@ namespace cadencii
 
             string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("ust");
             openUstDialog.SetSelectedFile(dir);
-            var dialog_result = AppManager.showModalDialog(openUstDialog, true, this);
+            var dialog_result = DialogManager.showModalDialog(openUstDialog, true, this);
 
 			if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                 return;
@@ -11620,7 +11620,7 @@ namespace cadencii
                 clearExistingData();
                 AppManager.setVsqFile(vsq);
                 setEdited(true);
-                AppManager.mMixerWindow.updateStatus();
+                DialogManager.mMixerWindow.updateStatus();
                 clearTempWave();
                 updateDrawObjectList();
                 refreshScreen();
@@ -11652,7 +11652,7 @@ namespace cadencii
             openMidiDialog.FilterIndex = filter_index;
             string dir = ApplicationGlobal.appConfig.getLastUsedPathIn(filter);
             openMidiDialog.SetSelectedFile(dir);
-            var dialog_result = AppManager.showModalDialog(openMidiDialog, true, this);
+            var dialog_result = DialogManager.showModalDialog(openMidiDialog, true, this);
             string ext = ".vsq";
 			if (dialog_result == cadencii.java.awt.DialogResult.OK) {
 #if DEBUG
@@ -11692,7 +11692,7 @@ namespace cadencii
 #if DEBUG
                 sout.println("FormMain#menuFileOpenVsq_Click; ex=" + ex);
 #endif
-                AppManager.showMessageBox(
+                DialogManager.showMessageBox(
                     _("Invalid VSQ/VOCALOID MIDI file"),
                     _("Error"),
                     cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
@@ -11702,7 +11702,7 @@ namespace cadencii
             EditorManager.Selected = (1);
             clearExistingData();
             setEdited(true);
-            AppManager.mMixerWindow.updateStatus();
+            DialogManager.mMixerWindow.updateStatus();
             clearTempWave();
             updateDrawObjectList();
             refreshScreen();
@@ -11724,7 +11724,7 @@ namespace cadencii
 
                 int selected = EditorManager.Selected;
                 dlg.Location = getFormPreferedLocation(dlg);
-                var dr = AppManager.showModalDialog(dlg, this);
+                var dr = DialogManager.showModalDialog(dlg, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     ApplicationGlobal.appConfig.DefaultPMBendDepth = dlg.getPMBendDepth();
                     ApplicationGlobal.appConfig.DefaultPMBendLength = dlg.getPMBendLength();
@@ -11783,7 +11783,7 @@ namespace cadencii
             try {
                 dlg = new FormGameControlerConfig();
                 dlg.Location = getFormPreferedLocation(dlg);
-                var dr = AppManager.showModalDialog(dlg, this);
+                var dr = DialogManager.showModalDialog(dlg, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     EditorManager.editorConfig.GameControlerRectangle = dlg.getRectangle();
                     EditorManager.editorConfig.GameControlerTriangle = dlg.getTriangle();
@@ -11892,7 +11892,7 @@ namespace cadencii
 
                 mDialogPreference.Location = getFormPreferedLocation(mDialogPreference);
 
-                var dr = AppManager.showModalDialog(mDialogPreference, this);
+                var dr = DialogManager.showModalDialog(mDialogPreference, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     string old_base_font_name = EditorManager.editorConfig.BaseFontName;
                     float old_base_font_size = EditorManager.editorConfig.BaseFontSize;
@@ -11921,12 +11921,12 @@ namespace cadencii
                         Messaging.setLanguage(ApplicationGlobal.appConfig.Language);
                         applyLanguage();
                         mDialogPreference.applyLanguage();
-                        AppManager.mMixerWindow.applyLanguage();
+                        DialogManager.mMixerWindow.applyLanguage();
                         if (mVersionInfo != null && !mVersionInfo.IsDisposed) {
                             mVersionInfo.applyLanguage();
                         }
 #if ENABLE_PROPERTY
-                        AppManager.propertyWindow.applyLanguage();
+                        DialogManager.propertyWindow.applyLanguage();
                         AppManager.propertyPanel.updateValue(EditorManager.Selected);
 #endif
                         if (mDialogMidiImportAndExport != null) {
@@ -12208,7 +12208,7 @@ namespace cadencii
             try {
                 form = new FormShortcutKeys(dict, this);
                 form.Location = getFormPreferedLocation(form);
-                var dr = AppManager.showModalDialog(form, this);
+                var dr = DialogManager.showModalDialog(form, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     SortedDictionary<string, ValuePair<string, Keys[]>> res = form.getResult();
                     foreach (var display in res.Keys) {
@@ -12251,7 +12251,7 @@ namespace cadencii
             try {
                 dialog = new FormVibratoPreset(EditorManager.editorConfig.AutoVibratoCustom);
                 dialog.Location = getFormPreferedLocation(dialog);
-                var ret = AppManager.showModalDialog(dialog, this);
+                var ret = DialogManager.showModalDialog(dialog, this);
 				if (ret != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }
@@ -12446,7 +12446,7 @@ namespace cadencii
 		dlg = new FormWordDictionaryController(c => new FormWordDictionaryUiImpl (c));
                 var p = getFormPreferedLocation(dlg.getWidth(), dlg.getHeight());
                 dlg.setLocation(p.X, p.Y);
-                int dr = AppManager.showModalDialog(dlg.getUi(), this);
+                int dr = DialogManager.showModalDialog(dlg.getUi(), this);
                 if (dr == 1) {
                     List<ValuePair<string, Boolean>> result = dlg.getResult();
                     SymbolTable.changeOrder(result);
@@ -12584,7 +12584,7 @@ namespace cadencii
                 dlg.setPosition(draft);
 
                 dlg.Location = getFormPreferedLocation(dlg);
-                var dr = AppManager.showModalDialog(dlg, this);
+                var dr = DialogManager.showModalDialog(dlg, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     int pos = dlg.getPosition() + MusicManager.getVsqFile().getPreMeasure() - 1;
                     int length = dlg.getLength();
@@ -12701,7 +12701,7 @@ namespace cadencii
                 int old_pre_measure = MusicManager.getVsqFile().getPreMeasure();
                 dialog.setResult(old_pre_measure + "");
                 dialog.Location = getFormPreferedLocation(dialog);
-                var ret = AppManager.showModalDialog(dialog, this);
+                var ret = DialogManager.showModalDialog(dialog, this);
 				if (ret == cadencii.java.awt.DialogResult.OK) {
                     string str_result = dialog.getResult();
                     int result = old_pre_measure;
@@ -12752,7 +12752,7 @@ namespace cadencii
             dialog.setPreMeasure(old_pre_measure);
 
             dialog.Location = getFormPreferedLocation(dialog);
-			if (AppManager.showModalDialog(dialog, this) != cadencii.java.awt.DialogResult.OK) {
+			if (DialogManager.showModalDialog(dialog, this) != cadencii.java.awt.DialogResult.OK) {
                 return;
             }
 
@@ -12788,7 +12788,7 @@ namespace cadencii
                 dlg.setEnd(draft + 1);
 
                 dlg.Location = getFormPreferedLocation(dlg);
-                var dr = AppManager.showModalDialog(dlg, this);
+                var dr = DialogManager.showModalDialog(dlg, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     VsqFileEx temp = (VsqFileEx)MusicManager.getVsqFile().clone();
                     int start = dlg.getStart() + MusicManager.getVsqFile().getPreMeasure() - 1;
@@ -12941,7 +12941,7 @@ namespace cadencii
             try {
                 dlg = new FormRandomize();
                 dlg.Location = getFormPreferedLocation(dlg);
-                var dr = AppManager.showModalDialog(dlg, this);
+                var dr = DialogManager.showModalDialog(dlg, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     VsqFileEx vsq = MusicManager.getVsqFile();
                     int preMeasure = vsq.getPreMeasure();
@@ -13333,7 +13333,7 @@ namespace cadencii
                                 try {
                                     dlg = new FormTempoConfig(bar_count, beat_in_bar, timesig.numerator, clocks_in_beat, clock_per_beat, (float)(6e7 / tte.Tempo), MusicManager.getVsqFile().getPreMeasure());
                                     dlg.Location = getFormPreferedLocation(dlg);
-                                    var dr = AppManager.showModalDialog(dlg, this);
+                                    var dr = DialogManager.showModalDialog(dlg, this);
                                     if (dr == cadencii.java.awt.DialogResult.OK) {
                                         int new_beat = dlg.getBeatCount();
                                         int new_clocks_in_beat = dlg.getClock();
@@ -13404,7 +13404,7 @@ namespace cadencii
                                                            (float)(6e7 / changing_tempo),
                                                            vsq.getPreMeasure());
                                 dlg.Location = getFormPreferedLocation(dlg);
-                                cadencii.java.awt.DialogResult dr = AppManager.showModalDialog(dlg, this);
+                                cadencii.java.awt.DialogResult dr = DialogManager.showModalDialog(dlg, this);
                                 if (dr == cadencii.java.awt.DialogResult.OK) {
                                     int new_beat = dlg.getBeatCount();
                                     int new_clocks_in_beat = dlg.getClock();
@@ -13477,7 +13477,7 @@ namespace cadencii
                                 dlg = new FormBeatConfigController(c => new FormBeatConfigUiImpl (c), bar_count - pre_measure + 1, timesig.numerator, timesig.denominator, num_enabled, pre_measure);
                                 var p = getFormPreferedLocation(dlg.getWidth(), dlg.getHeight());
                                 dlg.setLocation(p.X, p.Y);
-                                int dr = AppManager.showModalDialog(dlg.getUi(), this);
+                                int dr = DialogManager.showModalDialog(dlg.getUi(), this);
                                 if (dr == 1) {
                                     if (dlg.isEndSpecified()) {
                                         int[] new_barcounts = new int[2];
@@ -13551,7 +13551,7 @@ namespace cadencii
                                 dlg = new FormBeatConfigController(c => new FormBeatConfigUiImpl (c), bar_count - pre_measure + 1, timesig.numerator, timesig.denominator, true, pre_measure);
                                 var p = getFormPreferedLocation(dlg.getWidth(), dlg.getHeight());
                                 dlg.setLocation(p.X, p.Y);
-                                int dr = AppManager.showModalDialog(dlg.getUi(), this);
+                                int dr = DialogManager.showModalDialog(dlg.getUi(), this);
                                 if (dr == 1) {
                                     if (dlg.isEndSpecified()) {
                                         int[] new_barcounts = new int[2];
@@ -14073,7 +14073,7 @@ namespace cadencii
                 pdf = Path.Combine(PortUtil.getApplicationStartupPath(), "manual_en.pdf");
             }
             if (!System.IO.File.Exists(pdf)) {
-                AppManager.showMessageBox(
+                DialogManager.showMessageBox(
                     _("file not found"),
                     _APP_NAME,
                     cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
@@ -14098,7 +14098,7 @@ namespace cadencii
             string file = Logger.getPath();
             if (file == null || (file != null && (!System.IO.File.Exists(file)))) {
                 // ログがまだできてないのでダイアログ出す
-                AppManager.showMessageBox(
+                DialogManager.showMessageBox(
                     _("Log file has not generated yet."),
                     _("Info"),
 					cadencii.java.awt.AwtHost.OK_OPTION,
@@ -14367,7 +14367,7 @@ namespace cadencii
                     dlg.setPMbPortamentoUse(original.ID.PMbPortamentoUse);
                     dlg.setDEMdecGainRate(original.ID.DEMdecGainRate);
                     dlg.setDEMaccent(original.ID.DEMaccent);
-                    cadencii.java.awt.DialogResult dr = AppManager.showModalDialog(dlg, this);
+                    cadencii.java.awt.DialogResult dr = DialogManager.showModalDialog(dlg, this);
                     if (dr == cadencii.java.awt.DialogResult.OK) {
                         VsqID copy = (VsqID)original.ID.clone();
                         copy.PMBendDepth = dlg.getPMBendDepth();
@@ -15564,7 +15564,7 @@ namespace cadencii
                 }
                 openVsqCor(filename);
                 clearExistingData();
-                AppManager.mMixerWindow.updateStatus();
+                DialogManager.mMixerWindow.updateStatus();
                 clearTempWave();
                 updateDrawObjectList();
                 refreshScreen();
@@ -15680,7 +15680,7 @@ namespace cadencii
         {
             for (int track = 1; track < MusicManager.getVsqFile().Track.Count; track++) {
                 if (MusicManager.getVsqFile().Track[track].getEventCount() == 0) {
-                    AppManager.showMessageBox(
+                    DialogManager.showMessageBox(
                         PortUtil.formatMessage(
                             _("Invalid note data.\nTrack {0} : {1}\n\n-> Piano roll : Blank sequence."),
                             track,
@@ -15698,7 +15698,7 @@ namespace cadencii
                     string dir = PortUtil.getDirectoryName(last_file);
                     saveXmlVsqDialog.SetSelectedFile(dir);
                 }
-                var dr = AppManager.showModalDialog(saveXmlVsqDialog, false, this);
+                var dr = DialogManager.showModalDialog(saveXmlVsqDialog, false, this);
                 if (dr == cadencii.java.awt.DialogResult.OK) {
                     file = saveXmlVsqDialog.FileName;
                     ApplicationGlobal.appConfig.setLastUsedPathOut(file, ".xvsq");
@@ -15718,7 +15718,7 @@ namespace cadencii
             }
             string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("xvsq");
             openXmlVsqDialog.SetSelectedFile(dir);
-            var dialog_result = AppManager.showModalDialog(openXmlVsqDialog, true, this);
+            var dialog_result = DialogManager.showModalDialog(openXmlVsqDialog, true, this);
             if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                 return;
             }
@@ -15728,7 +15728,7 @@ namespace cadencii
             string file = openXmlVsqDialog.FileName;
             ApplicationGlobal.appConfig.setLastUsedPathIn(file, ".xvsq");
             if (openVsqCor(file)) {
-                AppManager.showMessageBox(
+                DialogManager.showMessageBox(
                     _("Invalid XVSQ file"),
                     _("Error"),
                     cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
@@ -15738,7 +15738,7 @@ namespace cadencii
             clearExistingData();
 
             setEdited(false);
-            AppManager.mMixerWindow.updateStatus();
+            DialogManager.mMixerWindow.updateStatus();
             clearTempWave();
             updateDrawObjectList();
             refreshScreen();
@@ -15768,7 +15768,7 @@ namespace cadencii
                 AppManager.mLastRenderedStatus[i] = null;
             }
             setEdited(false);
-            AppManager.mMixerWindow.updateStatus();
+            DialogManager.mMixerWindow.updateStatus();
             clearTempWave();
 
             // キャッシュディレクトリのパスを、デフォルトに戻す
@@ -16158,7 +16158,7 @@ namespace cadencii
                 ib = new InputBox(_("Input Offset Seconds"));
                 ib.Location = getFormPreferedLocation(ib);
                 ib.setResult(MusicManager.getBgm(index).readOffsetSeconds + "");
-                cadencii.java.awt.DialogResult dr = AppManager.showModalDialog(ib, this);
+                cadencii.java.awt.DialogResult dr = DialogManager.showModalDialog(ib, this);
                 if (dr != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }
@@ -16224,7 +16224,7 @@ namespace cadencii
         {
             string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("wav");
             openWaveDialog.SetSelectedFile(dir);
-            var ret = AppManager.showModalDialog(openWaveDialog, true, this);
+            var ret = DialogManager.showModalDialog(openWaveDialog, true, this);
             if (ret != cadencii.java.awt.DialogResult.OK) {
                 return;
             }
@@ -16243,7 +16243,7 @@ namespace cadencii
                 }
             }
             if (found) {
-                AppManager.showMessageBox(
+                DialogManager.showMessageBox(
                     PortUtil.formatMessage(_("file '{0}' is already registered as BGM."), file),
                     _("Error"),
                     cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
@@ -16265,7 +16265,7 @@ namespace cadencii
             BgmMenuItem parent = (BgmMenuItem)sender;
             int index = parent.getBgmIndex();
             BgmFile bgm = MusicManager.getBgm(index);
-            if (AppManager.showMessageBox(PortUtil.formatMessage(_("remove '{0}'?"), bgm.file),
+            if (DialogManager.showMessageBox(PortUtil.formatMessage(_("remove '{0}'?"), bgm.file),
                                   "Cadencii",
                                   cadencii.Dialog.MSGBOX_YES_NO_OPTION,
                                   cadencii.Dialog.MSGBOX_QUESTION_MESSAGE) != cadencii.java.awt.DialogResult.Yes) {
@@ -16336,7 +16336,7 @@ namespace cadencii
                     ScriptServer.reload(id);
                 }
                 if (ScriptServer.isAvailable(id)) {
-		if (ScriptServer.invokeScript(id, MusicManager.getVsqFile(), (p1,p2,p3,p4) => AppManager.showMessageBox (p1, p2, p3, p4))) {
+		if (ScriptServer.invokeScript(id, MusicManager.getVsqFile(), (p1,p2,p3,p4) => DialogManager.showMessageBox (p1, p2, p3, p4))) {
                         setEdited(true);
                         updateDrawObjectList();
                         int selected = EditorManager.Selected;
@@ -16351,7 +16351,7 @@ namespace cadencii
                     FormCompileResult dlg = null;
                     try {
                         dlg = new FormCompileResult(_("Failed loading script."), ScriptServer.getCompileMessage(id));
-                        AppManager.showModalDialog(dlg, this);
+                        DialogManager.showModalDialog(dlg, this);
                     } catch (Exception ex) {
                         Logger.write(typeof(FormMain) + ".handleScriptMenuItem_Click; ex=" + ex + "\n");
                     } finally {

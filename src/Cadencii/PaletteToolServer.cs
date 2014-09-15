@@ -162,7 +162,7 @@ namespace cadencii
                 try {
                     edited = pal.edit(item, vsq_event_intrenal_ids, button);
                 } catch (Exception ex) {
-                    AppManager.showMessageBox(
+                    DialogManager.showMessageBox(
                         PortUtil.formatMessage(_("Palette tool '{0}' reported an error.\nPlease copy the exception text and report it to developper."), id),
                         "Error",
                         cadencii.Dialog.MSGBOX_DEFAULT_OPTION,

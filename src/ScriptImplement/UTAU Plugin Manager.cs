@@ -222,7 +222,7 @@ class UtauPluginManager : Form
 
             if (tname == name) {
                 var dr =
-                    AppManager.showMessageBox(string.Format(_("Script named '{0}' is already registered. Overwrite?"), name),
+                    DialogManager.showMessageBox(string.Format(_("Script named '{0}' is already registered. Overwrite?"), name),
                                                "UTAU Plugin Manager",
                                                cadencii.Dialog.MSGBOX_OK_CANCEL_OPTION,
                                                cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
@@ -330,7 +330,7 @@ class UtauPluginManager : Form
         string path = litem.SubItems[1].Text;
 
         var dr =
-            AppManager.showMessageBox(string.Format(_("Remove '{0}'?"), name),
+            DialogManager.showMessageBox(string.Format(_("Remove '{0}'?"), name),
                                        "UTAU Plugin Manager",
                                        cadencii.Dialog.MSGBOX_YES_NO_OPTION,
                                        cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);

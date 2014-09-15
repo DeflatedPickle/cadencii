@@ -5402,7 +5402,7 @@ namespace cadencii
                                     {//TODO:
                                         sout.println("TrackSelector_MouseDoubleClick; start to show editor");
                                     }
-                                    int ret = AppManager.showModalDialog(fbpe.getUi(), mMainWindow);
+                                    int ret = DialogManager.showModalDialog(fbpe.getUi(), mMainWindow);
                                     {//TODO:
                                         sout.println("TrackSelector_MouseDoubleCLick; ret=" + ret);
                                     }
@@ -5478,7 +5478,7 @@ namespace cadencii
                                     Invalidate();
                                     dialog.Location =
                                         new System.Drawing.Point(pt.X - dialog.Width / 2, pt.Y - dialog.Height);
-                                    AppManager.showModalDialog(dialog, mMainWindow);
+                                    DialogManager.showModalDialog(dialog, mMainWindow);
                                 }
                                 #endregion
                             }
