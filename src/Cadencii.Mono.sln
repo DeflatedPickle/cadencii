@@ -31,8 +31,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Media.Midi", "..\.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Media.Vsq", "cadencii.vsq\Cadencii.Media.Vsq.csproj", "{673347F3-6FC2-4F82-9273-BF158E0F8CB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Gui.XmlSerialization", "cadencii.xml\Cadencii.Gui.XmlSerialization.csproj", "{23C7549D-A0FD-402A-8470-95DB4BE6081C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{1E74ED13-FD40-441A-BDF8-D138268C8167}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateKeySound", "GenerateKeySound\GenerateKeySound.csproj", "{AF5EB52F-11D8-4939-ADCD-90F432A71ECC}"
@@ -71,10 +69,6 @@ Global
 		{18E7D0BD-734D-482E-BAE8-2512147D88F0}.Debug|x86.Build.0 = Debug|Any CPU
 		{18E7D0BD-734D-482E-BAE8-2512147D88F0}.Release|x86.ActiveCfg = Release|Any CPU
 		{18E7D0BD-734D-482E-BAE8-2512147D88F0}.Release|x86.Build.0 = Release|Any CPU
-		{23C7549D-A0FD-402A-8470-95DB4BE6081C}.Debug|x86.ActiveCfg = Debug|x86
-		{23C7549D-A0FD-402A-8470-95DB4BE6081C}.Debug|x86.Build.0 = Debug|x86
-		{23C7549D-A0FD-402A-8470-95DB4BE6081C}.Release|x86.ActiveCfg = Release|x86
-		{23C7549D-A0FD-402A-8470-95DB4BE6081C}.Release|x86.Build.0 = Release|x86
 		{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}.Debug|x86.Build.0 = Debug|Any CPU
 		{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}.Release|x86.ActiveCfg = Release|Any CPU

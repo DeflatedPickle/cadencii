@@ -21,36 +21,20 @@ There wouldn't be non-Windows synthesizer anytime soon anyways.
 Projects / Assemblies
 ---------------------
 
-- Cadencii.Utilities
-	most common utility API
-- Cadencii.Gui.Framework <- Cadencii.Utilities
-	awt-based API
-- Cadencii.Core <- Cadencii.Gui.Framework
-	fundamental API for every other library
-- Cadencii.Gui.XmlSerialization <- Cadencii.Gui.Framework, Cadencii.Core
-	XML serialization support for the GUI framework.
-- Cadencii.Gui.Framework.WindowsForms <- Cadencii.Gui.Framework
-	GUI framework implementation based on winforms.
-- Cadencii.Gui.Framework.WindowsForms.Shared
-	a hacky shared API to provide conversion from awt Color to GDI+ Color.
-- Cadencii.Platform.Windows
-	provides a set of P/Invokes and marshals for Windows API.
+- Cadencii.Utilities - most common utility API
+- Cadencii.Gui.Framework - awt-based API
+- Cadencii.Core - fundamental API for every other library
+- Cadencii.Gui.Framework.WindowsForms - winforms GUI framework implementation
+- Cadencii.Gui.Framework.WindowsForms.Shared - hack for winforms Color
+- Cadencii.Platform.Windows - P/Invokes and marshals for Windows API.
 
-- Cadencii.Media.Midi
-	javax.sound.midi based API
-- Cadencii.Media.Vsq <- Cadencii.Gui.Framework, Cadencii.Gui.XmlSerialization
-	VSQ support library.
-- Cadencii.Media.Windows <- Cadencii.Platform.Windows
-	Windows-specific audio and MIDI API
-- Cadencii.Media.Dsp <- Cadencii.Platform.Windows, Cadencii.Media.Vsq
-	(windows-dependent) DSP hosting API, for utau, aquestone, vocaloid etc.
-- Cadencii.Media.Dsp.WindowsForms
-	winforms-specific implementation for DSP (mostly for Plugin UI).
+- Cadencii.Media.Midi - javax.sound.midi based API
+- Cadencii.Media.Vsq - .vsq support library
+- Cadencii.Media.Windows - Windows-specific audio and MIDI API
+- Cadencii.Media.Dsp - DSP API, for utau, aquestone, vocaloid etc.
+- Cadencii.Media.Dsp.WindowsForms - winforms-specific DSP implementation.
 
-- Cadencii.Windows.Forms
-	windows forms control that is specific to Cadencii.
-- Cadencii.Appplication.Model
-	GUI-agnostic part of the application
-- Cadencii.Application.Windows.Forms
-	winforms-based application, currently it is the only app.
+- Cadencii.Windows.Forms - windows forms control that is specific to Cadencii.
+- Cadencii.Appplication.Model - GUI-agnostic part of the application
+- Cadencii.Application.Windows.Forms - winforms-based application.
 

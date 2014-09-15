@@ -65,11 +65,17 @@
     <Compile Include="models\Colors.cs" />
     <Compile Include="models\Dialog.cs" />
     <Compile Include="models\Keys.cs" />
+    <Compile Include="serialization\XmlPoint.cs" />
+    <Compile Include="serialization\XmlRectangle.cs" />
+    <Compile Include="serialization\XmlSerializer.cs" />
+    <Compile Include="serialization\XmlSerializeWithDescription.cs" />
+    <Compile Include="serialization\XmlStaticMemberSerializer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="models\" />
     <Folder Include="advanced\" />
+    <Folder Include="serialization\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\cadencii.coreutils\Cadencii.Utilities.csproj">

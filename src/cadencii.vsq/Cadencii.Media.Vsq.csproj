@@ -157,10 +157,6 @@
       <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
       <Name>Cadencii.Gui.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\cadencii.xml\Cadencii.Gui.XmlSerialization.csproj">
-      <Project>{23C7549D-A0FD-402A-8470-95DB4BE6081C}</Project>
-      <Name>Cadencii.Gui.XmlSerialization</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.coreutils\Cadencii.Utilities.csproj">
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>Cadencii.Utilities</Name>

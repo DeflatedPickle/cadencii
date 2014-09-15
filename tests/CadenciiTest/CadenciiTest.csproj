@@ -102,10 +102,6 @@
       <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
       <Name>Cadencii.Core.Media</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\cadencii.xml\Cadencii.Gui.XmlSerialization.csproj">
-      <Project>{23C7549D-A0FD-402A-8470-95DB4BE6081C}</Project>
-      <Name>Cadencii.Gui.XmlSerialization</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.midi\Cadencii.Media.Midi.csproj">
       <Project>{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}</Project>
       <Name>Cadencii.Media.Midi</Name>
@@ -141,6 +137,10 @@
     <ProjectReference Include="..\..\src\cadencii.windows.forms\Cadencii.Windows.Forms.csproj">
       <Project>{B9481E3B-6842-4AB3-8ED4-29C86C2579A3}</Project>
       <Name>Cadencii.Windows.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.GuiCore\Cadencii.Gui.Framework.csproj">
+      <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
+      <Name>Cadencii.Gui.Framework</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
