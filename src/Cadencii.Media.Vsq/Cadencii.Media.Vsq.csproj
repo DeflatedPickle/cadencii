@@ -17,47 +17,19 @@
     <SignAssembly>false</SignAssembly>
     <TargetFrameworkProfile />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <OutputPath>bin\x86\Debug\</OutputPath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;CSHARP;ENABLE_PROPERTY</DefineConstants>
-    <DocumentationFile>bin\x86\Debug\Cadencii.Media.Vsq.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\Cadencii.Media.Vsq.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
     <Optimize>false</Optimize>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <OutputPath>bin\x86\Release\</OutputPath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>CSHARP;;ENABLE_PROPERTY</DefineConstants>
-    <Prefer32Bit>false</Prefer32Bit>
-    <WarningLevel>4</WarningLevel>
-    <Optimize>false</Optimize>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugMinimal|x86' ">
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x86\DebugMinimal\</OutputPath>
-    <DefineConstants>DEBUG;CSHARP;ENABLE_PROPERTY</DefineConstants>
-    <DocumentationFile>bin\x86\Debug\org.kbinani.vsq.xml</DocumentationFile>
-    <PlatformTarget>x86</PlatformTarget>
-    <Prefer32Bit>false</Prefer32Bit>
-    <WarningLevel>4</WarningLevel>
-    <Optimize>false</Optimize>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ReleaseMinimal|x86' ">
-    <OutputPath>bin\x86\ReleaseMinimal\</OutputPath>
-    <DocumentationFile>bin\x86\Release\org.kbinani.vsq.xml</DocumentationFile>
-    <PlatformTarget>x86</PlatformTarget>
-    <DefineConstants>CSHARP;ENABLE_PROPERTY</DefineConstants>
-    <Prefer32Bit>false</Prefer32Bit>
-    <WarningLevel>4</WarningLevel>
-    <Optimize>false</Optimize>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'MonoRelease|x86' ">
-    <OutputPath>bin\x86\MonoRelease\</OutputPath>
-    <DocumentationFile>bin\x86\Release\org.kbinani.vsq.xml</DocumentationFile>
-    <PlatformTarget>x86</PlatformTarget>
-    <DefineConstants>CSHARP;ENABLE_PROPERTY</DefineConstants>
     <Prefer32Bit>false</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
     <Optimize>false</Optimize>
@@ -153,11 +125,11 @@
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
       <Name>Cadencii.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.Gui.Framework\Cadencii.Gui.Framework.csproj">
+    <ProjectReference Include="..\Cadencii.Gui.Framework\Cadencii.Gui.Framework.csproj">
       <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
       <Name>Cadencii.Gui.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.Utilities\Cadencii.Utilities.csproj">
+    <ProjectReference Include="..\Cadencii.Utilities\Cadencii.Utilities.csproj">
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>Cadencii.Utilities</Name>
     </ProjectReference>

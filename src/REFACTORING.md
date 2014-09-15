@@ -5,6 +5,7 @@ The project structure reorganization has a few purposes:
   the first step to go, then we can try to port it to Xwt later.
 - decoupling Windows-specific implementation, so that we can adopt this
   to non-Windows vocal synthesizers, if they happened.
+- bring (back) .NET-ism everywhere.
 
 Currently Cadencii.Windows.Forms and Cadencii.Application.Model are
 winforms-only implementation. Everything else is detached from winforms.

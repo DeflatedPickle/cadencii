@@ -17,16 +17,16 @@
     <OldToolsVersion>3.5</OldToolsVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <OutputPath>bin\x86\Debug\</OutputPath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    
+    <OutputPath>bin\Debug\</OutputPath>
     <Prefer32Bit>false</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
     <Optimize>false</Optimize>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <PlatformTarget>x86</PlatformTarget>
-    <OutputPath>bin\x86\Release\</OutputPath>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    
+    <OutputPath>bin\Release\</OutputPath>
     <Prefer32Bit>false</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
     <Optimize>false</Optimize>
@@ -193,11 +193,11 @@
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
       <Name>Cadencii.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.Gui.Framework\Cadencii.Gui.Framework.csproj">
+    <ProjectReference Include="..\..\src\Cadencii.Gui.Framework\Cadencii.Gui.Framework.csproj">
       <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
       <Name>Cadencii.Gui.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.Gui.Framework.WindowsForms\Cadencii.Gui.Framework.WindowsForms.csproj">
+    <ProjectReference Include="..\..\src\Cadencii.Gui.Framework.WindowsForms\Cadencii.Gui.Framework.WindowsForms.csproj">
       <Project>{7DE0B7EA-E478-4687-9764-B44B8258F255}</Project>
       <Name>Cadencii.Gui.Framework.WindowsForms</Name>
     </ProjectReference>
@@ -205,7 +205,7 @@
       <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
       <Name>Cadencii.Media.Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.Media.Dsp\Cadencii.Media.Dsp.csproj">
+    <ProjectReference Include="..\..\src\Cadencii.Media.Dsp\Cadencii.Media.Dsp.csproj">
       <Project>{18E7D0BD-734D-482E-BAE8-2512147D88F0}</Project>
       <Name>Cadencii.Media.Dsp</Name>
     </ProjectReference>
@@ -213,11 +213,11 @@
       <Project>{673347F3-6FC2-4F82-9273-BF158E0F8CB1}</Project>
       <Name>Cadencii.Media.Vsq</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.Media.Windows\Cadencii.Media.Windows.csproj">
+    <ProjectReference Include="..\..\src\Cadencii.Media.Windows\Cadencii.Media.Windows.csproj">
       <Project>{84B71038-CB91-4456-8C90-31E73BC93D7C}</Project>
       <Name>Cadencii.Media.Windows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.Utilities\Cadencii.Utilities.csproj">
+    <ProjectReference Include="..\..\src\Cadencii.Utilities\Cadencii.Utilities.csproj">
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>Cadencii.Utilities</Name>
     </ProjectReference>
