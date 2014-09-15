@@ -42,11 +42,6 @@
     <Compile Include="EditHistoryModel.cs" />
     <Compile Include="MusicManager.cs" />
     <Compile Include="updater\UpdateInfo.cs" />
-    <Compile Include="app_dspcore\AttackVariation.cs" />
-    <Compile Include="app_dspcore\AttackVariationConverter.cs" />
-    <Compile Include="app_dspcore\VibratoLengthEditingRule.cs" />
-    <Compile Include="app_dspcore\VibratoVariation.cs" />
-    <Compile Include="app_dspcore\VibratoVariationConverter.cs" />
     <Compile Include="BAssemblyInfo.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="ScriptInvoker.cs" />
@@ -122,40 +117,45 @@
     <Compile Include="RenderedStatus.cs" />
     <Compile Include="DynaffComparisonContext.cs" />
     <Compile Include="AuthorListEntry.cs" />
+    <Compile Include="dsp\AttackVariation.cs" />
+    <Compile Include="dsp\AttackVariationConverter.cs" />
+    <Compile Include="dsp\VibratoLengthEditingRule.cs" />
+    <Compile Include="dsp\VibratoVariation.cs" />
+    <Compile Include="dsp\VibratoVariationConverter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\cadencii.core\cadencii.core.csproj">
+    <ProjectReference Include="..\cadencii.core\Cadencii.Core.csproj">
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
-      <Name>cadencii.core</Name>
+      <Name>Cadencii.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.GuiCore\Cadencii.GuiCore.csproj">
-      <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
-      <Name>Cadencii.GuiCore</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\cadencii.vsq\cadencii.vsq.csproj">
-      <Project>{673347F3-6FC2-4F82-9273-BF158E0F8CB1}</Project>
-      <Name>cadencii.vsq</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\cadencii.media\cadencii.media.csproj">
+    <ProjectReference Include="..\cadencii.media\Cadencii.Core.Media.csproj">
       <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
-      <Name>cadencii.media</Name>
+      <Name>Cadencii.Core.Media</Name>
     </ProjectReference>
-    <ProjectReference Include="..\cadencii.xml\cadencii.xml.csproj">
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.GuiCore\Cadencii.Gui.Framework.csproj">
+      <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
+      <Name>Cadencii.Gui.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cadencii.xml\Cadencii.Gui.XmlSerialization.csproj">
       <Project>{23C7549D-A0FD-402A-8470-95DB4BE6081C}</Project>
-      <Name>cadencii.xml</Name>
+      <Name>Cadencii.Gui.XmlSerialization</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.coreutils\cadencii.coreutils.csproj">
-      <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
-      <Name>cadencii.coreutils</Name>
+    <ProjectReference Include="..\cadencii.vsq\Cadencii.Media.Vsq.csproj">
+      <Project>{673347F3-6FC2-4F82-9273-BF158E0F8CB1}</Project>
+      <Name>Cadencii.Media.Vsq</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.dsp\cadencii.dsp.csproj">
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.dsp\Cadencii.Media.Dsp.csproj">
       <Project>{18E7D0BD-734D-482E-BAE8-2512147D88F0}</Project>
-      <Name>cadencii.dsp</Name>
+      <Name>Cadencii.Media.Dsp</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.media.windows\cadencii.media.windows.csproj">
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.media.windows\Cadencii.Media.Windows.csproj">
       <Project>{84B71038-CB91-4456-8C90-31E73BC93D7C}</Project>
-      <Name>cadencii.media.windows</Name>
+      <Name>Cadencii.Media.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.coreutils\Cadencii.Utilities.csproj">
+      <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
+      <Name>Cadencii.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

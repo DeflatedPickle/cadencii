@@ -37,7 +37,6 @@
     <Compile Include="cp932.cs" />
     <Compile Include="cp932reader.cs" />
     <Compile Include="cp932writer.cs" />
-    <Compile Include="CurveType.cs" />
     <Compile Include="serr.cs" />
     <Compile Include="sout.cs" />
     <Compile Include="ByRef.cs" />
@@ -51,6 +50,7 @@
     <Compile Include="Logger.cs" />
     <Compile Include="PortUtil.cs" />
     <Compile Include="BooleanEnum.cs" />
+    <Compile Include="CurveType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

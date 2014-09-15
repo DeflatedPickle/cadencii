@@ -51,13 +51,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Cadencii\Cadencii.csproj">
-      <Project>{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}</Project>
-      <Name>Cadencii</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\cadencii.editormodel\cadencii.editormodel.csproj">
+    <ProjectReference Include="..\..\src\cadencii.editormodel\Cadencii.Application.Model.csproj">
       <Project>{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}</Project>
-      <Name>cadencii.editormodel</Name>
+      <Name>Cadencii.Application.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Cadencii\Cadencii.Application.WindowsForms.csproj">
+      <Project>{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}</Project>
+      <Name>Cadencii.Application.WindowsForms</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

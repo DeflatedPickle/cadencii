@@ -72,9 +72,9 @@
     <Folder Include="advanced\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\cadencii.coreutils\cadencii.coreutils.csproj">
+    <ProjectReference Include="..\cadencii.coreutils\Cadencii.Utilities.csproj">
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
-      <Name>cadencii.coreutils</Name>
+      <Name>Cadencii.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7DE0B7EA-E478-4687-9764-B44B8258F255}</ProjectGuid>
+    <ProjectGuid>{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>cadencii.core2</RootNamespace>
-    <AssemblyName>cadencii.core2</AssemblyName>
+    <RootNamespace>cadencii.platform.windows</RootNamespace>
+    <AssemblyName>cadencii.platform.windows</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,28 +30,29 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WindowsFormsImplementation.cs" />
+    <Compile Include="winmmhelp.cs" />
+    <Compile Include="windows.cs" />
+    <Compile Include="wingdi.cs" />
+    <Compile Include="winmm.cs" />
   </ItemGroup>
-  <Import Project="..\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.projitems" Label="Shared" Condition="Exists('..\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.projitems')" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Cadencii.GuiCore\Cadencii.GuiCore.csproj">
-      <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
-      <Name>Cadencii.GuiCore</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\cadencii.coreutils\cadencii.coreutils.csproj">
-      <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
-      <Name>cadencii.coreutils</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\cadencii.core\cadencii.core.csproj">
+    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.core\Cadencii.Core.csproj">
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
-      <Name>cadencii.core</Name>
+      <Name>Cadencii.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.media\Cadencii.Core.Media.csproj">
+      <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
+      <Name>Cadencii.Core.Media</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cadencii.midi\Cadencii.Media.Midi.csproj">
+      <Project>{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}</Project>
+      <Name>Cadencii.Media.Midi</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

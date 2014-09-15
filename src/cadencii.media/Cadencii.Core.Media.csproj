@@ -82,17 +82,17 @@
     <Compile Include="WaveReader.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\cadencii.core\cadencii.core.csproj">
+    <ProjectReference Include="..\cadencii.core\Cadencii.Core.csproj">
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
-      <Name>cadencii.core</Name>
+      <Name>Cadencii.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.midi\cadencii.midi.csproj">
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.midi\Cadencii.Media.Midi.csproj">
       <Project>{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}</Project>
-      <Name>cadencii.midi</Name>
+      <Name>Cadencii.Media.Midi</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.coreutils\cadencii.coreutils.csproj">
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.coreutils\Cadencii.Utilities.csproj">
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
-      <Name>cadencii.coreutils</Name>
+      <Name>Cadencii.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -1,51 +1,53 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.windows.forms", "cadencii.windows.forms\cadencii.windows.forms.csproj", "{B9481E3B-6842-4AB3-8ED4-29C86C2579A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Windows.Forms", "cadencii.windows.forms\Cadencii.Windows.Forms.csproj", "{B9481E3B-6842-4AB3-8ED4-29C86C2579A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii", "Cadencii\Cadencii.csproj", "{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Application.WindowsForms", "Cadencii\Cadencii.Application.WindowsForms.csproj", "{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptImplement", "ScriptImplement\ScriptImplement.csproj", "{A0B35F11-5790-4473-A508-5868FFA67D70}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Platform.Windows", "..\..\..\..\..\svn\cadencii\src\cadencii.platform.windows\Cadencii.Platform.Windows.csproj", "{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Media.Dsp.WindowsForms", "..\..\..\..\..\svn\cadencii\src\cadencii.dsp.winforms\Cadencii.Media.Dsp.WindowsForms.csproj", "{5F65872D-0431-4C76-973F-CD5DECD388A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Gui.Framework.WindowsForms", "..\..\..\..\..\svn\cadencii\src\cadencii.core2\Cadencii.Gui.Framework.WindowsForms.csproj", "{7DE0B7EA-E478-4687-9764-B44B8258F255}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Cadencii.Gui.Framework.WindowsForms.Shared", "..\..\..\..\..\svn\cadencii\src\cadencii.gui.winforms.shared\Cadencii.Gui.Framework.WindowsForms.Shared.shproj", "{EF416C94-7EA3-4B62-B5B4-6B768654845C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Core", "cadencii.core\Cadencii.Core.csproj", "{C8AAE632-9C6C-4372-8175-811528A66742}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Utilities", "..\..\..\..\..\svn\cadencii\src\cadencii.coreutils\Cadencii.Utilities.csproj", "{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Media.Dsp", "..\..\..\..\..\svn\cadencii\src\cadencii.dsp\Cadencii.Media.Dsp.csproj", "{18E7D0BD-734D-482E-BAE8-2512147D88F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Application.Model", "cadencii.editormodel\Cadencii.Application.Model.csproj", "{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Gui.Framework", "..\..\..\..\..\svn\cadencii\src\Cadencii.GuiCore\Cadencii.Gui.Framework.csproj", "{711A691F-2113-4EC1-8D4C-C2668C3EA219}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Core.Media", "cadencii.media\Cadencii.Core.Media.csproj", "{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Media.Windows", "..\..\..\..\..\svn\cadencii\src\cadencii.media.windows\Cadencii.Media.Windows.csproj", "{84B71038-CB91-4456-8C90-31E73BC93D7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Media.Midi", "..\..\..\..\..\svn\cadencii\src\cadencii.midi\Cadencii.Media.Midi.csproj", "{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Media.Vsq", "cadencii.vsq\Cadencii.Media.Vsq.csproj", "{673347F3-6FC2-4F82-9273-BF158E0F8CB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Gui.XmlSerialization", "cadencii.xml\Cadencii.Gui.XmlSerialization.csproj", "{23C7549D-A0FD-402A-8470-95DB4BE6081C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{1E74ED13-FD40-441A-BDF8-D138268C8167}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateKeySound", "GenerateKeySound\GenerateKeySound.csproj", "{AF5EB52F-11D8-4939-ADCD-90F432A71ECC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadenciiTest", "..\tests\CadenciiTest\CadenciiTest.csproj", "{7FC4F869-A95B-439E-93A2-01D85E5A8006}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateUtauPluginManagerPlugin", "..\utils\GenerateUtauPluginManagerPlugin\GenerateUtauPluginManagerPlugin.csproj", "{04B33E1E-C43A-455C-B864-95DDE6E53C32}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vConnectStandDBConvert", "vConnectStandDBConvert\vConnectStandDBConvert.csproj", "{3CDB890B-5FCC-4A36-B808-7FB6C571C584}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostBuildCreateVersionInfo", "..\utils\PostBuildCreateVersionInfo\PostBuildCreateVersionInfo.csproj", "{9F4E318A-2A90-4E06-AB65-F81CEA1BB801}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.platform.windows", "..\..\..\..\..\svn\cadencii\src\cadencii.platform.windows\cadencii.platform.windows.csproj", "{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptImplement", "ScriptImplement\ScriptImplement.csproj", "{A0B35F11-5790-4473-A508-5868FFA67D70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.dsp.winforms", "..\..\..\..\..\svn\cadencii\src\cadencii.dsp.winforms\cadencii.dsp.winforms.csproj", "{5F65872D-0431-4C76-973F-CD5DECD388A4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vConnectStandDBConvert", "vConnectStandDBConvert\vConnectStandDBConvert.csproj", "{3CDB890B-5FCC-4A36-B808-7FB6C571C584}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GuiAgnostic", "GuiAgnostic", "{8E950DE0-69AF-4BF8-9E66-EB0089F2116D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{DAC9FABD-E4A6-439D-AD18-2E614752E997}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.core", "cadencii.core\cadencii.core.csproj", "{C8AAE632-9C6C-4372-8175-811528A66742}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.media", "cadencii.media\cadencii.media.csproj", "{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.midi", "..\..\..\..\..\svn\cadencii\src\cadencii.midi\cadencii.midi.csproj", "{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.vsq", "cadencii.vsq\cadencii.vsq.csproj", "{673347F3-6FC2-4F82-9273-BF158E0F8CB1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.xml", "cadencii.xml\cadencii.xml.csproj", "{23C7549D-A0FD-402A-8470-95DB4BE6081C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.GuiCore", "..\..\..\..\..\svn\cadencii\src\Cadencii.GuiCore\Cadencii.GuiCore.csproj", "{711A691F-2113-4EC1-8D4C-C2668C3EA219}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.coreutils", "..\..\..\..\..\svn\cadencii\src\cadencii.coreutils\cadencii.coreutils.csproj", "{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.dsp", "..\..\..\..\..\svn\cadencii\src\cadencii.dsp\cadencii.dsp.csproj", "{18E7D0BD-734D-482E-BAE8-2512147D88F0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.media.windows", "..\..\..\..\..\svn\cadencii\src\cadencii.media.windows\cadencii.media.windows.csproj", "{84B71038-CB91-4456-8C90-31E73BC93D7C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.editormodel", "cadencii.editormodel\cadencii.editormodel.csproj", "{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.gui.winforms", "..\..\..\..\..\svn\cadencii\src\cadencii.core2\cadencii.gui.winforms.csproj", "{7DE0B7EA-E478-4687-9764-B44B8258F255}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "cadencii.gui.winforms.shared", "..\..\..\..\..\svn\cadencii\src\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.shproj", "{EF416C94-7EA3-4B62-B5B4-6B768654845C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadenciiTest", "..\tests\CadenciiTest\CadenciiTest.csproj", "{7FC4F869-A95B-439E-93A2-01D85E5A8006}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -139,19 +141,15 @@ Global
 		{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{C8AAE632-9C6C-4372-8175-811528A66742} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
-		{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
-		{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
-		{673347F3-6FC2-4F82-9273-BF158E0F8CB1} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
-		{23C7549D-A0FD-402A-8470-95DB4BE6081C} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
-		{711A691F-2113-4EC1-8D4C-C2668C3EA219} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
-		{1785CCD0-43CB-459A-9AFF-4E59DB966DF0} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
-		{18E7D0BD-734D-482E-BAE8-2512147D88F0} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
-		{84B71038-CB91-4456-8C90-31E73BC93D7C} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
-		{10ADD9DE-3B8F-4818-A49D-AC7501057FE0} = {8E950DE0-69AF-4BF8-9E66-EB0089F2116D}
+		{AF5EB52F-11D8-4939-ADCD-90F432A71ECC} = {1E74ED13-FD40-441A-BDF8-D138268C8167}
+		{04B33E1E-C43A-455C-B864-95DDE6E53C32} = {1E74ED13-FD40-441A-BDF8-D138268C8167}
+		{9F4E318A-2A90-4E06-AB65-F81CEA1BB801} = {1E74ED13-FD40-441A-BDF8-D138268C8167}
+		{A0B35F11-5790-4473-A508-5868FFA67D70} = {1E74ED13-FD40-441A-BDF8-D138268C8167}
+		{3CDB890B-5FCC-4A36-B808-7FB6C571C584} = {1E74ED13-FD40-441A-BDF8-D138268C8167}
+		{7FC4F869-A95B-439E-93A2-01D85E5A8006} = {DAC9FABD-E4A6-439D-AD18-2E614752E997}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Cadencii\Cadencii.csproj
+		StartupItem = Cadencii\Cadencii.Application.WindowsForms.csproj
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
