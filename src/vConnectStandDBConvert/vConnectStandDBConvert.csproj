@@ -86,7 +86,7 @@
     <Content Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\cadencii.core\Cadencii.Core.csproj">
+    <ProjectReference Include="..\Cadencii.Core\Cadencii.Core.csproj">
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
       <Name>Cadencii.Core</Name>
     </ProjectReference>

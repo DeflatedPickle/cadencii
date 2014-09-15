@@ -93,52 +93,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\cadencii.core\Cadencii.Core.csproj">
-      <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
-      <Name>Cadencii.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\cadencii.vsq\Cadencii.Media.Vsq.csproj">
-      <Project>{673347F3-6FC2-4F82-9273-BF158E0F8CB1}</Project>
-      <Name>Cadencii.Media.Vsq</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.dsp\Cadencii.Media.Dsp.csproj">
-      <Project>{18E7D0BD-734D-482E-BAE8-2512147D88F0}</Project>
-      <Name>Cadencii.Media.Dsp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.dsp.winforms\Cadencii.Media.Dsp.WindowsForms.csproj">
-      <Project>{5F65872D-0431-4C76-973F-CD5DECD388A4}</Project>
-      <Name>Cadencii.Media.Dsp.WindowsForms</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.core2\Cadencii.Gui.Framework.WindowsForms.csproj">
-      <Project>{7DE0B7EA-E478-4687-9764-B44B8258F255}</Project>
-      <Name>Cadencii.Gui.Framework.WindowsForms</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\cadencii.editormodel\Cadencii.Application.Model.csproj">
-      <Project>{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}</Project>
-      <Name>Cadencii.Application.Model</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Cadencii\Cadencii.Application.WindowsForms.csproj">
-      <Project>{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}</Project>
-      <Name>Cadencii.Application.WindowsForms</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.coreutils\Cadencii.Utilities.csproj">
-      <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
-      <Name>Cadencii.Utilities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\cadencii.windows.forms\Cadencii.Windows.Forms.csproj">
-      <Project>{B9481E3B-6842-4AB3-8ED4-29C86C2579A3}</Project>
-      <Name>Cadencii.Windows.Forms</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.GuiCore\Cadencii.Gui.Framework.csproj">
-      <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
-      <Name>Cadencii.Gui.Framework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\cadencii.media\Cadencii.Media.Base.csproj">
-      <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
-      <Name>Cadencii.Media.Base</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>
     </PostBuildEvent>
@@ -226,4 +180,46 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Cadencii.Application.Model\Cadencii.Application.Model.csproj">
+      <Project>{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}</Project>
+      <Name>Cadencii.Application.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Cadencii\Cadencii.Application.WindowsForms.csproj">
+      <Project>{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}</Project>
+      <Name>Cadencii.Application.WindowsForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Cadencii.Core\Cadencii.Core.csproj">
+      <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
+      <Name>Cadencii.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.Gui.Framework\Cadencii.Gui.Framework.csproj">
+      <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
+      <Name>Cadencii.Gui.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.Gui.Framework.WindowsForms\Cadencii.Gui.Framework.WindowsForms.csproj">
+      <Project>{7DE0B7EA-E478-4687-9764-B44B8258F255}</Project>
+      <Name>Cadencii.Gui.Framework.WindowsForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Cadencii.Media.Base\Cadencii.Media.Base.csproj">
+      <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
+      <Name>Cadencii.Media.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.Media.Dsp\Cadencii.Media.Dsp.csproj">
+      <Project>{18E7D0BD-734D-482E-BAE8-2512147D88F0}</Project>
+      <Name>Cadencii.Media.Dsp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Cadencii.Media.Vsq\Cadencii.Media.Vsq.csproj">
+      <Project>{673347F3-6FC2-4F82-9273-BF158E0F8CB1}</Project>
+      <Name>Cadencii.Media.Vsq</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.Media.Windows\Cadencii.Media.Windows.csproj">
+      <Project>{84B71038-CB91-4456-8C90-31E73BC93D7C}</Project>
+      <Name>Cadencii.Media.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.Utilities\Cadencii.Utilities.csproj">
+      <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
+      <Name>Cadencii.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

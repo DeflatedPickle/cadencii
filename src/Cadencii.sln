@@ -3,16 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.apputil", "cadencii.apputil\cadencii.apputil.csproj", "{0C58B068-272F-4390-A14F-3D72AFCF3DFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.media", "cadencii.media\cadencii.media.csproj", "{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Media.Base", "Cadencii.Media.Base\Cadencii.Media.Base.csproj", "{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}"
 	ProjectSection(ProjectDependencies) = postProject
 		{21D48CB2-CEDA-45C1-AC85-A8FE84797516} = {21D48CB2-CEDA-45C1-AC85-A8FE84797516}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.vsq", "cadencii.vsq\cadencii.vsq.csproj", "{673347F3-6FC2-4F82-9273-BF158E0F8CB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Media.Vsq", "Cadencii.Media.Vsq\Cadencii.Media.Vsq.csproj", "{673347F3-6FC2-4F82-9273-BF158E0F8CB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.core", "cadencii.core\cadencii.core.csproj", "{C8AAE632-9C6C-4372-8175-811528A66742}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Core", "Cadencii.Core\Cadencii.Core.csproj", "{C8AAE632-9C6C-4372-8175-811528A66742}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.windows.forms", "cadencii.windows.forms\cadencii.windows.forms.csproj", "{B9481E3B-6842-4AB3-8ED4-29C86C2579A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Windows.Forms", "Cadencii.Windows.Forms\Cadencii.Windows.Forms.csproj", "{B9481E3B-6842-4AB3-8ED4-29C86C2579A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.xml", "cadencii.xml\cadencii.xml.csproj", "{23C7549D-A0FD-402A-8470-95DB4BE6081C}"
 EndProject
@@ -33,7 +33,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cadencii.helper", "cadencii
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadenciiTest", "..\tests\CadenciiTest\CadenciiTest.csproj", "{7FC4F869-A95B-439E-93A2-01D85E5A8006}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cadencii.media.helper", "cadencii.media.helper\cadencii.media.helper.vcxproj", "{21D48CB2-CEDA-45C1-AC85-A8FE84797516}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cadencii.Media.Base.helper", "Cadencii.Media.Base.helper\Cadencii.Media.Base.helper.vcxproj", "{21D48CB2-CEDA-45C1-AC85-A8FE84797516}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerateUtauPluginManagerPlugin", "..\utils\GenerateUtauPluginManagerPlugin\GenerateUtauPluginManagerPlugin.csproj", "{04B33E1E-C43A-455C-B864-95DDE6E53C32}"
 EndProject

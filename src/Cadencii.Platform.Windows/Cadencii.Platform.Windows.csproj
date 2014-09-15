@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</ProjectGuid>
+    <ProjectGuid>{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>cadencii.coreutils</RootNamespace>
-    <AssemblyName>cadencii.coreutils</AssemblyName>
+    <RootNamespace>Cadencii.Platform.Windows</RootNamespace>
+    <AssemblyName>Cadencii.Platform.Windows</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,27 +30,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="io.cs" />
-    <Compile Include="cp932.cs" />
-    <Compile Include="cp932reader.cs" />
-    <Compile Include="cp932writer.cs" />
-    <Compile Include="serr.cs" />
-    <Compile Include="sout.cs" />
-    <Compile Include="ByRef.cs" />
-    <Compile Include="Base64.cs" />
-    <Compile Include="fft.cs" />
-    <Compile Include="math.cs" />
-    <Compile Include="misc.cs" />
-    <Compile Include="Iterator.cs" />
-    <Compile Include="ListIterator.cs" />
-    <Compile Include="CDebug.cs" />
-    <Compile Include="Logger.cs" />
-    <Compile Include="PortUtil.cs" />
-    <Compile Include="BooleanEnum.cs" />
-    <Compile Include="CurveType.cs" />
+    <Compile Include="winmmhelp.cs" />
+    <Compile Include="windows.cs" />
+    <Compile Include="wingdi.cs" />
+    <Compile Include="winmm.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\Cadencii.Core\Cadencii.Core.csproj">
+      <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
+      <Name>Cadencii.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cadencii.Media.Base\Cadencii.Media.Base.csproj">
+      <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
+      <Name>Cadencii.Media.Base</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

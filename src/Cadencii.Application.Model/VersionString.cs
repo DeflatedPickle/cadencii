@@ -19,7 +19,7 @@ namespace cadencii
     /// <summary>
     /// メジャー，マイナー，およびメンテナンス番号によるバージョン番号を表すクラス
     /// </summary>
-    class VersionString : IComparable<VersionString>
+    public class VersionString : IComparable<VersionString>
     {
         /// <summary>
         /// メジャーバージョンを表す

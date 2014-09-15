@@ -5,8 +5,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Cadencii.GuiCore</RootNamespace>
-    <AssemblyName>Cadencii.GuiCore</AssemblyName>
+    <RootNamespace>Cadencii.Gui.Framework</RootNamespace>
+    <AssemblyName>Cadencii.Gui.Framework</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -79,7 +79,7 @@
     <Folder Include="serialization\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\cadencii.coreutils\Cadencii.Utilities.csproj">
+    <ProjectReference Include="..\Cadencii.Utilities\Cadencii.Utilities.csproj">
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>Cadencii.Utilities</Name>
     </ProjectReference>
