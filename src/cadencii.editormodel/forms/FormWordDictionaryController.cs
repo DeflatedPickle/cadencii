@@ -16,23 +16,21 @@ using System.Collections.Generic;
 namespace cadencii
 {
     using System;
-    using System.Windows.Forms;
     using cadencii.apputil;
     using cadencii.vsq;
     using cadencii;
     using cadencii.java.util;
-    using cadencii.windows.forms;
 
     public class FormWordDictionaryController : ControllerBase, FormWordDictionaryUiListener
     {
-        private FormWordDictionaryUiImpl ui;
+        private FormWordDictionaryUi ui;
         private static int mColumnWidth = 256;
         private static int mWidth = 327;
         private static int mHeight = 404;
 
-        public FormWordDictionaryController()
+	public FormWordDictionaryController(Func<FormWordDictionaryController,FormWordDictionaryUi> createUi)
         {
-            ui = new FormWordDictionaryUiImpl(this);
+            ui = createUi (this);
             applyLanguage();
             ui.setSize(mWidth, mHeight);
             ui.listDictionariesSetColumnWidth(mColumnWidth);

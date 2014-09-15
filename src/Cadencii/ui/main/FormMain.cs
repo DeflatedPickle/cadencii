@@ -524,7 +524,7 @@ namespace cadencii
 
 #if ENABLE_PROPERTY
             AppManager.propertyPanel = new PropertyPanel();
-            AppManager.propertyWindow = new FormNotePropertyController(this);
+            AppManager.propertyWindow = new FormNotePropertyController(c => new FormNotePropertyUiImpl(c), this);
             AppManager.propertyWindow.getUi().addComponent(AppManager.propertyPanel);
 #endif
 
@@ -12443,7 +12443,7 @@ namespace cadencii
         {
             FormWordDictionaryController dlg = null;
             try {
-                dlg = new FormWordDictionaryController();
+		dlg = new FormWordDictionaryController(c => new FormWordDictionaryUiImpl (c));
                 var p = getFormPreferedLocation(dlg.getWidth(), dlg.getHeight());
                 dlg.setLocation(p.X, p.Y);
                 int dr = AppManager.showModalDialog(dlg.getUi(), this);
@@ -13474,7 +13474,7 @@ namespace cadencii
                             bool num_enabled = !(bar_count == 0);
                             FormBeatConfigController dlg = null;
                             try {
-                                dlg = new FormBeatConfigController(bar_count - pre_measure + 1, timesig.numerator, timesig.denominator, num_enabled, pre_measure);
+                                dlg = new FormBeatConfigController(c => new FormBeatConfigUiImpl (c), bar_count - pre_measure + 1, timesig.numerator, timesig.denominator, num_enabled, pre_measure);
                                 var p = getFormPreferedLocation(dlg.getWidth(), dlg.getHeight());
                                 dlg.setLocation(p.X, p.Y);
                                 int dr = AppManager.showModalDialog(dlg.getUi(), this);
@@ -13548,7 +13548,7 @@ namespace cadencii
 #endif
                             FormBeatConfigController dlg = null;
                             try {
-                                dlg = new FormBeatConfigController(bar_count - pre_measure + 1, timesig.numerator, timesig.denominator, true, pre_measure);
+                                dlg = new FormBeatConfigController(c => new FormBeatConfigUiImpl (c), bar_count - pre_measure + 1, timesig.numerator, timesig.denominator, true, pre_measure);
                                 var p = getFormPreferedLocation(dlg.getWidth(), dlg.getHeight());
                                 dlg.setLocation(p.X, p.Y);
                                 int dr = AppManager.showModalDialog(dlg.getUi(), this);

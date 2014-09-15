@@ -16,7 +16,6 @@ namespace cadencii
 {
 
     using System;
-    using cadencii.windows.forms;
     using cadencii.apputil;
 
     public interface FormAskKeySoundGenerationUiListener

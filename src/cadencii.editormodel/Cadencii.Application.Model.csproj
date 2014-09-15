@@ -123,6 +123,21 @@
     <Compile Include="dsp\VibratoVariation.cs" />
     <Compile Include="dsp\VibratoVariationConverter.cs" />
     <Compile Include="LineGraphDrawer.cs" />
+    <Compile Include="forms\FormMainController.cs" />
+    <Compile Include="forms\FormMainUi.cs" />
+    <Compile Include="forms\FormMainUiListener.cs" />
+    <Compile Include="forms\FormAskKeySoundGenerationController.cs" />
+    <Compile Include="forms\FormAskKeySoundGenerationUi.cs" />
+    <Compile Include="forms\FormAskKeySoundGenerationUiListener.cs" />
+    <Compile Include="forms\FormBeatConfigController.cs" />
+    <Compile Include="forms\FormBeatConfigUi.cs" />
+    <Compile Include="forms\FormBeatConfigUiListener.cs" />
+    <Compile Include="forms\FormNotePropertyController.cs" />
+    <Compile Include="forms\FormNotePropertyUi.cs" />
+    <Compile Include="forms\FormNotePropertyUiListener.cs" />
+    <Compile Include="forms\FormWordDictionaryController.cs" />
+    <Compile Include="forms\FormWordDictionaryUi.cs" />
+    <Compile Include="forms\FormWordDictionaryUiListener.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -154,5 +169,8 @@
       <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
       <Name>Cadencii.Media.Base</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="forms\" />
   </ItemGroup>
 </Project>

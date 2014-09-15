@@ -14,7 +14,6 @@
 using System;
 using cadencii.apputil;
 using cadencii;
-using cadencii.windows.forms;
 
 
 
@@ -25,9 +24,9 @@ namespace cadencii
     {
         private FormBeatConfigUi mUi;
 
-        public FormBeatConfigController(int bar_count, int numerator, int denominator, bool num_enabled, int pre_measure)
+	public FormBeatConfigController(Func<FormBeatConfigController,FormBeatConfigUi> createImpl, int bar_count, int numerator, int denominator, bool num_enabled, int pre_measure)
         {
-            mUi = new FormBeatConfigUiImpl(this);
+            mUi = createImpl (this);
 
             applyLanguage();
 

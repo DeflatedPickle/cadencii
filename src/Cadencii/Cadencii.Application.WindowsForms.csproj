@@ -207,21 +207,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="plugin\InterfaceVersion.cs" />
     <Compile Include="WaveDrawContext.cs" />
-    <Compile Include="forms\FormAskKeySoundGenerationController.cs" />
-    <Compile Include="forms\FormAskKeySoundGenerationUi.cs" />
-    <Compile Include="forms\FormAskKeySoundGenerationUiListener.cs" />
-    <Compile Include="forms\FormBeatConfigController.cs" />
-    <Compile Include="forms\FormBeatConfigUi.cs" />
-    <Compile Include="forms\FormBeatConfigUiListener.cs" />
-    <Compile Include="forms\FormBezierPointEditController.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="forms\FormBezierPointEditUi.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="forms\FormBezierPointEditUiListener.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="forms\FormCheckUnknownSingerAndResampler.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -252,9 +237,6 @@
     <Compile Include="forms\FormInsertBar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\FormMainController.cs" />
-    <Compile Include="forms\FormMainUi.cs" />
-    <Compile Include="forms\FormMainUiListener.cs" />
     <Compile Include="forms\FormMidiImExport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,9 +246,6 @@
     <Compile Include="forms\FormNoteExpressionConfig.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\FormNotePropertyController.cs" />
-    <Compile Include="forms\FormNotePropertyUi.cs" />
-    <Compile Include="forms\FormNotePropertyUiListener.cs" />
     <Compile Include="forms\FormRandomize.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -312,9 +291,6 @@
       <DependentUpon>FormVibratoPreset.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="forms\FormWordDictionaryController.cs" />
-    <Compile Include="forms\FormWordDictionaryUi.cs" />
-    <Compile Include="forms\FormWordDictionaryUiListener.cs" />
     <Compile Include="forms\FormWorker.cs" />
     <Compile Include="controls\PictPianoRoll.cs">
       <SubType>Component</SubType>
@@ -380,6 +356,15 @@
     <Compile Include="ItemSelectionModel.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="WFUtility.cs" />
+    <Compile Include="forms\FormBezierPointEditController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="forms\FormBezierPointEditUi.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="forms\FormBezierPointEditUiListener.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />

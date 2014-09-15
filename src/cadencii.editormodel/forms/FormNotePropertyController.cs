@@ -12,10 +12,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii;
-using cadencii.windows.forms;
 using Keys = cadencii.java.awt.Keys;
 
 
@@ -28,10 +26,10 @@ namespace cadencii
         private FormNotePropertyUi ui;
         private PropertyWindowListener propertyWindowListener;
 
-        public FormNotePropertyController(PropertyWindowListener propertyWindowListener)
+		public FormNotePropertyController(Func<FormNotePropertyController,FormNotePropertyUi> createUi, PropertyWindowListener propertyWindowListener)
         {
             this.propertyWindowListener = propertyWindowListener;
-            this.ui = (FormNotePropertyUi)new FormNotePropertyUiImpl(this);
+            this.ui = createUi (this);
             applyLanguage();
         }
 
