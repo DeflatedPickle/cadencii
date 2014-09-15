@@ -23,11 +23,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Application.Model"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Gui.Framework", "..\..\..\..\..\svn\cadencii\src\Cadencii.GuiCore\Cadencii.Gui.Framework.csproj", "{711A691F-2113-4EC1-8D4C-C2668C3EA219}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Core.Media", "cadencii.media\Cadencii.Core.Media.csproj", "{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Media.Base", "cadencii.media\Cadencii.Media.Base.csproj", "{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Media.Windows", "..\..\..\..\..\svn\cadencii\src\cadencii.media.windows\Cadencii.Media.Windows.csproj", "{84B71038-CB91-4456-8C90-31E73BC93D7C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Media.Midi", "..\..\..\..\..\svn\cadencii\src\cadencii.midi\Cadencii.Media.Midi.csproj", "{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii.Media.Vsq", "cadencii.vsq\Cadencii.Media.Vsq.csproj", "{673347F3-6FC2-4F82-9273-BF158E0F8CB1}"
 EndProject
@@ -69,10 +67,6 @@ Global
 		{18E7D0BD-734D-482E-BAE8-2512147D88F0}.Debug|x86.Build.0 = Debug|Any CPU
 		{18E7D0BD-734D-482E-BAE8-2512147D88F0}.Release|x86.ActiveCfg = Release|Any CPU
 		{18E7D0BD-734D-482E-BAE8-2512147D88F0}.Release|x86.Build.0 = Release|Any CPU
-		{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}.Debug|x86.Build.0 = Debug|Any CPU
-		{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}.Release|x86.ActiveCfg = Release|Any CPU
-		{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}.Release|x86.Build.0 = Release|Any CPU
 		{3CDB890B-5FCC-4A36-B808-7FB6C571C584}.Debug|x86.ActiveCfg = Debug|x86
 		{3CDB890B-5FCC-4A36-B808-7FB6C571C584}.Debug|x86.Build.0 = Debug|x86
 		{3CDB890B-5FCC-4A36-B808-7FB6C571C584}.Release|x86.ActiveCfg = Release|x86

@@ -28,7 +28,7 @@ Projects / Assemblies
 - Cadencii.Gui.Framework.WindowsForms.Shared - hack for winforms Color
 - Cadencii.Platform.Windows - P/Invokes and marshals for Windows API.
 
-- Cadencii.Media.Midi - javax.sound.midi based API
+- Cadencii.Media.Base - base audio and MIDI library
 - Cadencii.Media.Vsq - .vsq support library
 - Cadencii.Media.Windows - Windows-specific audio and MIDI API
 - Cadencii.Media.Dsp - DSP API, for utau, aquestone, vocaloid etc.

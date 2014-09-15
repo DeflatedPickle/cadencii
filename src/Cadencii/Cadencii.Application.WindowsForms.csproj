@@ -626,10 +626,6 @@
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
       <Name>Cadencii.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\cadencii.media\Cadencii.Core.Media.csproj">
-      <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
-      <Name>Cadencii.Core.Media</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.platform.windows\Cadencii.Platform.Windows.csproj">
       <Project>{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}</Project>
       <Name>Cadencii.Platform.Windows</Name>
@@ -637,10 +633,6 @@
     <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\Cadencii.GuiCore\Cadencii.Gui.Framework.csproj">
       <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
       <Name>Cadencii.Gui.Framework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.midi\Cadencii.Media.Midi.csproj">
-      <Project>{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}</Project>
-      <Name>Cadencii.Media.Midi</Name>
     </ProjectReference>
     <ProjectReference Include="..\cadencii.vsq\Cadencii.Media.Vsq.csproj">
       <Project>{673347F3-6FC2-4F82-9273-BF158E0F8CB1}</Project>
@@ -673,6 +665,10 @@
     <ProjectReference Include="..\cadencii.windows.forms\Cadencii.Windows.Forms.csproj">
       <Project>{B9481E3B-6842-4AB3-8ED4-29C86C2579A3}</Project>
       <Name>Cadencii.Windows.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cadencii.media\Cadencii.Media.Base.csproj">
+      <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
+      <Name>Cadencii.Media.Base</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

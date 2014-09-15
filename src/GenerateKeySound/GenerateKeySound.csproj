@@ -76,10 +76,6 @@
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
       <Name>Cadencii.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\cadencii.media\Cadencii.Core.Media.csproj">
-      <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
-      <Name>Cadencii.Core.Media</Name>
-    </ProjectReference>
     <ProjectReference Include="..\cadencii.vsq\Cadencii.Media.Vsq.csproj">
       <Project>{673347F3-6FC2-4F82-9273-BF158E0F8CB1}</Project>
       <Name>Cadencii.Media.Vsq</Name>
@@ -91,6 +87,10 @@
     <ProjectReference Include="..\..\..\..\..\..\svn\cadencii\src\cadencii.coreutils\Cadencii.Utilities.csproj">
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>Cadencii.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\cadencii.media\Cadencii.Media.Base.csproj">
+      <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
+      <Name>Cadencii.Media.Base</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
