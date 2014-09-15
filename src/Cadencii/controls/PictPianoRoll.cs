@@ -396,7 +396,7 @@ namespace cadencii
                             }
                         }
                         if (hilighted) {
-                            g.setColor(AppManager.getHilightColor());
+                            g.setColor(EditorManager.getHilightColor());
                             g.fillRect(35, y, key_width - 35, track_height);
                         }
                         if (odd2 == 0 || hilighted) {
@@ -548,15 +548,15 @@ namespace cadencii
                                 Color id_fill = COLOR_NOTE_FILL;
                                 if ((!dobj.mIsValidForUtau && renderer == RendererKind.UTAU) ||
                                         (!dobj.mIsValidForStraight && renderer == RendererKind.VCNT)) {
-                                    id_fill = AppManager.getAlertColor();
+                                    id_fill = EditorManager.getAlertColor();
                                 }
                                 if (AppManager.itemSelection.getEventCount() > 0) {
                                     bool found = AppManager.itemSelection.isEventContains(selected, dobj.mInternalID);
                                     if (found) {
-                                        id_fill = AppManager.getHilightColor();
+                                        id_fill = EditorManager.getHilightColor();
                                         if ((!dobj.mIsValidForUtau && renderer == RendererKind.UTAU) ||
                                                 (!dobj.mIsValidForStraight && renderer == RendererKind.VCNT)) {
-                                            id_fill = AppManager.getAlertHilightColor();
+                                            id_fill = EditorManager.getAlertHilightColor();
                                         }
                                     }
                                 }

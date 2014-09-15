@@ -212,6 +212,16 @@ namespace cadencii.java.awt
 			nativeGraphics.FillRectangle (brush, x, y, width, height);
 		}
 
+		public override void fillRect (Color fillcolor, int x, int y, int width, int height)
+		{
+			nativeGraphics.FillRectangle (new System.Drawing.SolidBrush (fillcolor.ToNative ()), x, y, width, height);
+		}
+
+		public override void fillEllipse (Color mDotColor, int i, int i2, int mDotWidth, int mDotWidth2)
+		{
+			nativeGraphics.FillEllipse (new System.Drawing.SolidBrush (mDotColor.ToNative ()), i, i2, mDotWidth, mDotWidth2);
+		}
+
 		public override void drawOval (int x, int y, int width, int height)
 		{
 			nativeGraphics.DrawEllipse ((System.Drawing.Pen)stroke.NativePen, x, y, width, height);
@@ -304,18 +314,37 @@ namespace cadencii.java.awt
 			nativeGraphics.DrawLines ((System.Drawing.Pen)stroke.NativePen, points.Select (p => new System.Drawing.Point (p.X, p.Y)).ToArray ());
 		}
 
+		public override void drawLines (int mLineWidth, Color mLineColor, Point[] mPoints)
+		{
+			var pen = new System.Drawing.Pen (mLineColor.ToNative ()) { Width = mLineWidth };
+			nativeGraphics.DrawLines (pen, mPoints.Select (p => new System.Drawing.Point (p.X, p.Y)).ToArray ());
+		}
+
 		public override void fillPolygon (Polygon p)
 		{
-			fillPolygon (p.xpoints, p.ypoints, p.npoints);
+			fillPolygon (null, p.xpoints, p.ypoints, p.npoints);
+		}
+
+		public override void fillPolygon (Color fillColor, Polygon p)
+		{
+			fillPolygon (fillColor, p.xpoints, p.ypoints, p.npoints);
 		}
 
 		public override void fillPolygon (int[] xPoints, int[] yPoints, int nPoints)
+		{
+			fillPolygon (null, xPoints, yPoints, nPoints);
+		}
+
+		void fillPolygon (Color? fillColor, int[] xPoints, int[] yPoints, int nPoints)
 		{
 			System.Drawing.Point[] points = new System.Drawing.Point[nPoints];
 			for (int i = 0; i < nPoints; i++) {
 				points [i] = new System.Drawing.Point (xPoints [i], yPoints [i]);
 			}
-			nativeGraphics.FillPolygon (brush, points);
+			if (fillColor != null)
+				nativeGraphics.FillPolygon (new System.Drawing.SolidBrush (((Color) fillColor).ToNative ()), points);
+			else
+				nativeGraphics.FillPolygon (brush, points);
 		}
 
 		public override void fill (Shape s)

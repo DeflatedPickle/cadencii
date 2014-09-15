@@ -14,6 +14,7 @@
 using System;
 using cadencii.java.awt;
 using cadencii.java.awt.geom;
+using System.Linq;
 
 namespace cadencii.java.awt
 {
@@ -45,6 +46,13 @@ namespace cadencii.java.awt
             npoints = npoints_;
             xpoints = xpoints_;
             ypoints = ypoints_;
+        }
+
+        public Polygon(Point[] points)
+        {
+                npoints = points.Length;
+                xpoints = points.Select (p => p.X).ToArray ();
+		xpoints = points.Select (p => p.Y).ToArray ();
         }
     }
 

@@ -122,6 +122,7 @@
     <Compile Include="dsp\VibratoLengthEditingRule.cs" />
     <Compile Include="dsp\VibratoVariation.cs" />
     <Compile Include="dsp\VibratoVariationConverter.cs" />
+    <Compile Include="LineGraphDrawer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

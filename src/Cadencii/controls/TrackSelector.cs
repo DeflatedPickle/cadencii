@@ -1143,7 +1143,7 @@ namespace cadencii
                             new Rectangle(x, ycoord,
                                            SINGER_ITEM_WIDTH, OFFSET_TRACK_TAB - 2);
                         if (AppManager.itemSelection.isEventContains(selected, ve.InternalID)) {
-                            g.setColor(AppManager.getHilightColor());
+                            g.setColor(EditorManager.getHilightColor());
                         } else {
                             g.setColor(cadencii.java.awt.Colors.White);
                         }
@@ -1251,7 +1251,7 @@ namespace cadencii
                     #endregion
 
                     if (vsq_track != null) {
-                        Color color = AppManager.getHilightColor();
+                        Color color = EditorManager.getHilightColor();
                         Color front = new Color(color.getRed(), color.getGreen(), color.getBlue(), 150);
                         Color back = new Color(255, 249, 255, 44);
                         Color vel_color = new Color(64, 78, 30);
@@ -1728,7 +1728,7 @@ namespace cadencii
             // 選択されている点のハイライト表示
             if (selected_found) {
                 Rectangle rc = new Rectangle(selected_point.X - DOT_WID, selected_point.Y - DOT_WID, dotwid, dotwid);
-                g.setColor(AppManager.getHilightColor());
+                g.setColor(EditorManager.getHilightColor());
                 g.fillRect(rc.x, rc.y, rc.width, rc.height);
                 g.setColor(COLOR_BEZIER_DOT_NORMAL);
                 g.drawRect(rc.x, rc.y, rc.width, rc.height);

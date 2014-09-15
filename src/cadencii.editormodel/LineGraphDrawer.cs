@@ -12,7 +12,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Drawing;
+//using System.Drawing;
+ using cadencii.java.awt;
 
 namespace cadencii
 {
@@ -68,7 +69,7 @@ namespace cadencii
         /// <summary>
         /// データ点のバッファ
         /// </summary>
-        private System.Drawing.Point[] mPoints;
+        private Point[] mPoints;
         /// <summary>
         /// 自動flushを行う時のmIndexの値。
         /// mIndex + 1 >= mMaxPointsの時、自動でflushが行われる
@@ -89,7 +90,7 @@ namespace cadencii
         /// <summary>
         /// 描画に使用するグラフィックス
         /// </summary>
-        private System.Drawing.Graphics mGraphics;
+        private Graphics mGraphics;
         /// <summary>
         /// グラフの線とX軸との間隙を塗りつぶすかどうか
         /// </summary>
@@ -98,10 +99,6 @@ namespace cadencii
         /// グラフの線とX軸との間隙の塗りつぶしに使用する色
         /// </summary>
         private java.awt.Color mFillColor = new java.awt.Color(255, 0, 0);
-        /// <summary>
-        /// グラフの線とX軸との間隙の塗りつぶしに使用するブラシ
-        /// </summary>
-        private System.Drawing.SolidBrush mFillBrush = null;
         /// <summary>
         /// データ点を描画するかどうか
         /// </summary>
@@ -124,10 +121,6 @@ namespace cadencii
         /// </summary>
         private java.awt.Color mDotColor = new java.awt.Color(0, 0, 0);
         /// <summary>
-        /// データ点の塗りつぶしに使用するブラシ
-        /// </summary>
-        private System.Drawing.SolidBrush mDotBrush = null;
-        /// <summary>
         /// 線の描画色
         /// </summary>
         private java.awt.Color mLineColor = new java.awt.Color(0, 0, 0);
@@ -139,10 +132,6 @@ namespace cadencii
         /// 線の描画幅
         /// </summary>
         private int mLineWidth = 1;
-        /// <summary>
-        /// 線の描画に使用するペン
-        /// </summary>
-        private System.Drawing.Pen mLinePen = null;
         /// <summary>
         /// 次のappendでデータ点の座標を代入するmPointsのインデックス
         /// </summary>
@@ -427,7 +416,8 @@ namespace cadencii
                     setPointData(mIndex, mLastX, mBaseLineY);
                     setPointData(mIndex + 1, mFirstX, mBaseLineY);
 
-                    mGraphics.FillPolygon(getFillBrush(), mPoints);
+                    // FIXME: set fill brush
+                    mGraphics.fillPolygon(mFillColor, new Polygon (mPoints));
                 }
 
                 // 線を描く
@@ -435,18 +425,18 @@ namespace cadencii
                     for (int i = mIndex - 1; i < BUFLEN; i++) {
                         setPointData(i, mLastX, mLastY);
                     }
-                    mGraphics.DrawLines(getLinePen(), mPoints);
+                    mGraphics.drawLines(mLineWidth, mLineColor, mPoints);
                 }
 
                 // ドットを描く
                 if (mDot != DOTMODE_NO) {
                     // ここでは第mIndex - 1番目のドットまでを描いて、mIndex - 1番目のデータは第0番目にコピーし，次のflushで描く
                     for (int i = 0; i < mIndex - 1; i++) {
-                        System.Drawing.Point p = mPoints[i];
+                        var p = mPoints[i];
                         if (mDotType == DOT_CIRCLE) {
-                            mGraphics.FillEllipse(getDotBrush(), p.X - mDotSize, p.Y - mDotSize, mDotWidth, mDotWidth);
+                            mGraphics.fillEllipse(mDotColor, p.X - mDotSize, p.Y - mDotSize, mDotWidth, mDotWidth);
                         } else if (mDotType == DOT_RECT) {
-                            mGraphics.FillRectangle(getDotBrush(), p.X - mDotSize, p.Y - mDotSize, mDotWidth, mDotWidth);
+                            mGraphics.fillRectangle(mDotColor, p.X - mDotSize, p.Y - mDotSize, mDotWidth, mDotWidth);
                         }
                     }
                 }
@@ -465,7 +455,7 @@ namespace cadencii
                     }
 
                     // 塗りつぶし
-                    mGraphics.FillPolygon(getFillBrush(), mPoints);
+                    mGraphics.fillPolygon(mFillColor, new Polygon (mPoints));
                 }
 
                 if (mLine) {
@@ -473,13 +463,12 @@ namespace cadencii
                     for (int i = mIndex - 1; i < BUFLEN; i++) {
                         setPointData(i, mLastX, mLastY);
                     }
-                    mGraphics.DrawLines(getLinePen(), mPoints);
+                    mGraphics.drawLines(mLineWidth, mLineColor, mPoints);
                 }
 
                 if (mDot != DOTMODE_NO) {
                     // データ点を描く
-                    SolidBrush brs = getDotBrush();
-                    Color c = brs.Color;
+                    Color c = mDotColor;
                     for (int i = 0; i < mIndex; i += 2) {
                         Point p = mPoints[i];
                         int px = p.X;
@@ -487,14 +476,13 @@ namespace cadencii
                         if (alpha <= 0) {
                             continue;
                         }
-                        brs.Color = Color.FromArgb(alpha, c);
+                        var cc = new Color(c.getRed (), c.getGreen (), c.getBlue (), alpha);
                         if (mDotType == DOT_CIRCLE) {
-                            mGraphics.FillEllipse(brs, p.X - mDotSize, p.Y - mDotSize, mDotWidth, mDotWidth);
+                            mGraphics.fillEllipse(cc, p.X - mDotSize, p.Y - mDotSize, mDotWidth, mDotWidth);
                         } else {
-                            mGraphics.FillRectangle(brs, p.X - mDotSize, p.Y - mDotSize, mDotWidth, mDotWidth);
+                            mGraphics.fillRectangle(cc, p.X - mDotSize, p.Y - mDotSize, mDotWidth, mDotWidth);
                         }
                     }
-                    brs.Color = Color.FromArgb(255, c);
                 }
 
                 // 次の描画に備える
@@ -513,18 +501,13 @@ namespace cadencii
             mIndex = 0;
         }
 
-        public void setGraphics(System.Drawing.Graphics g)
-        {
-            mGraphics = g;
-        }
-
         /// <summary>
         /// 描画に使用するグラフィックスを指定します
         /// </summary>
         /// <param name="g"></param>
         public void setGraphics(java.awt.Graphics g)
         {
-			mGraphics = (System.Drawing.Graphics) g.NativeGraphics;
+			mGraphics = g;
         }
 
         /// <summary>
@@ -563,34 +546,6 @@ namespace cadencii
                 ret = 255;
             }
             return ret;
-        }
-
-        private SolidBrush getFillBrush()
-        {
-            if (mFillBrush == null) {
-				mFillBrush = new SolidBrush(mFillColor.ToNative ());
-            }
-			mFillBrush.Color = mFillColor.ToNative ();
-            return mFillBrush;
-        }
-
-        private SolidBrush getDotBrush()
-        {
-            if (mDotBrush == null) {
-				mDotBrush = new SolidBrush(mDotColor.ToNative ());
-            }
-			mDotBrush.Color = mDotColor.ToNative ();
-            return mDotBrush;
-        }
-
-        private Pen getLinePen()
-        {
-            if (mLinePen == null) {
-				mLinePen = new Pen(mLineColor.ToNative ());
-            }
-			mLinePen.Color = mLineColor.ToNative ();
-            mLinePen.Width = mLineWidth;
-            return mLinePen;
         }
 
         private void setPointData(int index, int x, int y)

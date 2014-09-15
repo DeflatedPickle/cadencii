@@ -223,7 +223,6 @@ namespace cadencii
         #endregion
 
         #region Private Static Fields
-		private static Color mHilightBrush = cadencii.java.awt.Colors.CornflowerBlue;
         private static Object mLocker;
         private static System.Windows.Forms.Timer mAutoBackupTimer;
         /// <summary>
@@ -2318,36 +2317,6 @@ namespace cadencii
 #else
             return null;
 #endif
-        }
-
-        public static Color getHilightColor()
-        {
-            return mHilightBrush;
-        }
-
-        public static void setHilightColor(Color value)
-        {
-            mHilightBrush = value;
-        }
-
-        /// <summary>
-        /// ピアノロール上の音符の警告色を取得します．
-        /// 音抜けの可能性がある音符の背景色として利用されます
-        /// </summary>
-        /// <returns></returns>
-        public static Color getAlertColor()
-        {
-			return cadencii.java.awt.Colors.HotPink;
-        }
-
-        /// <summary>
-        /// ピアノロール上の音符の警告色を取得します．
-        /// 音抜けの可能性のある音符であって，かつ現在選択されている音符の背景色として利用されます．
-        /// </summary>
-        /// <returns></returns>
-        public static Color getAlertHilightColor()
-        {
-			return cadencii.java.awt.Colors.DeepPink;
         }
     }
 

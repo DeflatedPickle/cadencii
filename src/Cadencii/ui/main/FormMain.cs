@@ -6429,7 +6429,7 @@ namespace cadencii
                         string s = itemi.Numerator + "/" + itemi.Denominator;
                         g.setFont(SMALL_FONT);
                         if (AppManager.itemSelection.isTimesigContains(barcount)) {
-                            g.setColor(AppManager.getHilightColor());
+                            g.setColor(EditorManager.getHilightColor());
                             g.drawString(s, x + 4, 40 - small_font_offset + 1);
                         } else {
                             g.setColor(cadencii.java.awt.Colors.Black);
@@ -6462,7 +6462,7 @@ namespace cadencii
                         }
                         string s = PortUtil.formatDecimal("#.00", 60e6 / (float)itemi.Tempo);
                         if (AppManager.itemSelection.isTempoContains(clock)) {
-                            g.setColor(AppManager.getHilightColor());
+                            g.setColor(EditorManager.getHilightColor());
                             g.drawString(s, x + 4, 24 - small_font_offset + 1);
                         } else {
                             g.setColor(cadencii.java.awt.Colors.Black);

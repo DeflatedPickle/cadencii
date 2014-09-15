@@ -65,6 +65,11 @@ namespace cadencii.java.awt
 			a.fillRect (x, y, width, height);
 		}
 
+		public void fillEllipse (Color mDotColor, int i, int i2, int mDotWidth, int mDotWidth2)
+		{
+			a.fillEllipse (mDotColor, i, i2, mDotWidth, mDotWidth2);
+		}
+
 		public void drawOval(int x, int y, int width, int height)
 		{
 			a.drawOval (x, y, width, height);
@@ -123,6 +128,11 @@ namespace cadencii.java.awt
 			a.fillPolygon (p);
 		}
 
+		public void fillPolygon(Color fillColor, Polygon p)
+		{
+			a.fillPolygon (fillColor, p);
+		}
+
 		public void fillPolygon(int[] xPoints, int[] yPoints, int nPoints)
 		{
 			a.fillPolygon (xPoints, yPoints, nPoints);
@@ -131,6 +141,11 @@ namespace cadencii.java.awt
 		public void fill(Shape s)
 		{
 			a.fill (s);
+		}
+
+		public void fillRectangle (Color mDotColor, int i, int i2, int mDotWidth, int mDotWidth2)
+		{
+			a.fillRect (mDotColor, i, i2, mDotWidth, mDotWidth2);
 		}
 
 		public Shape getClip()
@@ -182,6 +197,12 @@ namespace cadencii.java.awt
 		{
 			a.DrawLines (points);
 		}
+
+		public void drawLines (int mLineWidth, Color mLineColor, Point[] mPoints)
+		{
+			a.drawLines (mLineWidth, mLineColor, mPoints);
+		}
+
 		public void drawStringEx (string s, Font font, Rectangle rect, int align, int valign)
 		{
 			a.drawStringEx (s, font, rect, align, valign);
@@ -209,6 +230,10 @@ namespace cadencii.java.awt
 
 			public abstract void fillRect(int x, int y, int width, int height);
 
+			public abstract void fillRect(Color fillColor, int x, int y, int width, int height);
+
+			public abstract void fillEllipse (Color mDotColor, int i, int i2, int mDotWidth, int mDotWidth2);
+
 			public abstract void drawOval(int x, int y, int width, int height);
 
 			public abstract void fillOval(int x, int y, int width, int height);
@@ -235,6 +260,8 @@ namespace cadencii.java.awt
 
 			public abstract void fillPolygon(Polygon p);
 
+			public abstract void fillPolygon(Color fillColor, Polygon p);
+
 			public abstract void fillPolygon(int[] xPoints, int[] yPoints, int nPoints);
 
 			public abstract Shape getClip();
@@ -248,6 +275,8 @@ namespace cadencii.java.awt
 			public abstract void drawImage(cadencii.java.awt.Image img, int x, int y, object obs);
 			
 			public abstract void DrawLines (Point[] points);
+
+			public abstract void drawLines (int mLineWidth, Color mLineColor, Point[] mPoints);
 
 			public abstract void translate(int tx, int ty);
 

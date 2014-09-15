@@ -303,7 +303,7 @@ namespace cadencii
 
             // 描画の準備
             LineGraphDrawer d = getDrawerResulting();
-            d.setGraphics(g);
+			d.setGraphics(new cadencii.java.awt.Graphics () { NativeGraphics = g});
 
             // ビブラートのピッチベンドを取得するイテレータを取得
             int width = raw_width;
@@ -376,7 +376,7 @@ namespace cadencii
             // 描画の準備
             LineGraphDrawer d = getDrawerRate();
             d.clear();
-            d.setGraphics(g);
+			d.setGraphics(new cadencii.java.awt.Graphics () { NativeGraphics = g});
             drawVibratoCurve(
                 handle.getRateBP(),
                 handle.getStartRate(),
@@ -401,7 +401,7 @@ namespace cadencii
             // 描画の準備
             LineGraphDrawer d = getDrawerDepth();
             d.clear();
-            d.setGraphics(g);
+            d.setGraphics(new cadencii.java.awt.Graphics () { NativeGraphics = g});
             drawVibratoCurve(
                 handle.getDepthBP(),
                 handle.getStartDepth(),

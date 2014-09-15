@@ -113,7 +113,6 @@
     <Compile Include="Cadencii.cs" />
     <Compile Include="ClipboardModel.cs" />
     <Compile Include="ImageCachedComponentDrawer.cs" />
-    <Compile Include="LineGraphDrawer.cs" />
     <Compile Include="ProgressBarWithLabel.cs" />
     <Compile Include="SynthesizeWorker.cs" />
     <Compile Include="ui\dotnet\ExceptionNotifyFormUiImpl.cs">
@@ -170,8 +169,6 @@
     </Compile>
     <Compile Include="IPaletteTool.cs" />
     <Compile Include="PaletteToolServer.cs" />
-    <Compile Include="SandBox.cs">
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

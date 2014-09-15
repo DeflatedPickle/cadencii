@@ -4,6 +4,7 @@ using cadencii.core;
 using System.Collections.Generic;
 using System.Reflection;
 using cadencii.vsq;
+using cadencii.java.awt;
 
 namespace cadencii
 {
@@ -438,6 +439,42 @@ namespace cadencii
 		/// 音符の長さが変更されたとき、ビブラートの長さがどう影響を受けるかを決める因子
 		/// </summary>
 		public static VibratoLengthEditingRule vibratoLengthEditingRule = VibratoLengthEditingRule.PERCENTAGE;
+
+		#region Colors (this should be customizible and saved somewhere else...)
+
+		private static Color mHilightBrush = cadencii.java.awt.Colors.CornflowerBlue;
+
+		public static Color getHilightColor ()
+		{
+			return mHilightBrush;
+		}
+
+		public static void setHilightColor (Color value)
+		{
+			mHilightBrush = value;
+		}
+
+		/// <summary>
+		/// ピアノロール上の音符の警告色を取得します．
+		/// 音抜けの可能性がある音符の背景色として利用されます
+		/// </summary>
+		/// <returns></returns>
+		public static Color getAlertColor ()
+		{
+			return cadencii.java.awt.Colors.HotPink;
+		}
+
+		/// <summary>
+		/// ピアノロール上の音符の警告色を取得します．
+		/// 音抜けの可能性のある音符であって，かつ現在選択されている音符の背景色として利用されます．
+		/// </summary>
+		/// <returns></returns>
+		public static Color getAlertHilightColor ()
+		{
+			return cadencii.java.awt.Colors.DeepPink;
+		}
+
+		#endregion
 	}
 }
 

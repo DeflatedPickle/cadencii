@@ -559,7 +559,7 @@ namespace cadencii
             Rectangle rc = new Rectangle(x_start, 0, x_end - x_start, height - 1);
             g.setColor(new Color(255, 255, 255, 50));
             g.fillRect(rc.x + xoffset, rc.y, rc.width, rc.height);
-            g.setColor(AppManager.getHilightColor());
+            g.setColor(EditorManager.getHilightColor());
             g.drawRect(rc.x + xoffset, rc.y, rc.width, rc.height);
 
             // ソングポジション
