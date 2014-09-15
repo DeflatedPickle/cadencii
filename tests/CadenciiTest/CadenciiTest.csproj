@@ -183,10 +183,6 @@
       <Project>{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}</Project>
       <Name>Cadencii.Application.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Cadencii\Cadencii.Application.WindowsForms.csproj">
-      <Project>{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}</Project>
-      <Name>Cadencii.Application.WindowsForms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\src\Cadencii.Core\Cadencii.Core.csproj">
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
       <Name>Cadencii.Core</Name>
@@ -218,6 +214,10 @@
     <ProjectReference Include="..\..\src\Cadencii.Utilities\Cadencii.Utilities.csproj">
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>Cadencii.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Cadencii.Application.WindowsForms\Cadencii.Application.WindowsForms.csproj">
+      <Project>{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}</Project>
+      <Name>Cadencii.Application.WindowsForms</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

@@ -52,7 +52,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"$(TargetPath)" "$(SolutionDir)..\update_info\recent.xml"</PostBuildEvent>
+    <PostBuildEvent>"$(TargetPath)" "$(SolutionDir)update_info\recent.xml"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
@@ -66,7 +66,7 @@
       <Project>{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}</Project>
       <Name>Cadencii.Application.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Cadencii\Cadencii.Application.WindowsForms.csproj">
+    <ProjectReference Include="..\..\src\Cadencii.Application.WindowsForms\Cadencii.Application.WindowsForms.csproj">
       <Project>{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}</Project>
       <Name>Cadencii.Application.WindowsForms</Name>
     </ProjectReference>
