@@ -121,6 +121,7 @@
     <Compile Include="PanpotChangedEventHandler.cs" />
     <Compile Include="RenderedStatus.cs" />
     <Compile Include="DynaffComparisonContext.cs" />
+    <Compile Include="AuthorListEntry.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

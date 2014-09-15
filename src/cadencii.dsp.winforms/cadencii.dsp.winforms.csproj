@@ -46,7 +46,7 @@
       <Project>{18E7D0BD-734D-482E-BAE8-2512147D88F0}</Project>
       <Name>cadencii.dsp</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.media\cadencii.media.csproj">
+    <ProjectReference Include="..\cadencii.media\cadencii.media.csproj">
       <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
       <Name>cadencii.media</Name>
     </ProjectReference>
@@ -54,7 +54,7 @@
       <Project>{39468F06-D9D3-4CA6-AE6F-8D1E81FF910A}</Project>
       <Name>cadencii.midi</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.vsq\cadencii.vsq.csproj">
+    <ProjectReference Include="..\cadencii.vsq\cadencii.vsq.csproj">
       <Project>{673347F3-6FC2-4F82-9273-BF158E0F8CB1}</Project>
       <Name>cadencii.vsq</Name>
     </ProjectReference>
@@ -74,15 +74,11 @@
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>cadencii.coreutils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.core\cadencii.core.csproj">
+    <ProjectReference Include="..\cadencii.core\cadencii.core.csproj">
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
       <Name>cadencii.core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.apputil\cadencii.apputil.csproj">
-      <Project>{0C58B068-272F-4390-A14F-3D72AFCF3DFB}</Project>
-      <Name>cadencii.apputil</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\home\atsushi\svn\cadencii\src\cadencii.xml\cadencii.xml.csproj">
+    <ProjectReference Include="..\cadencii.xml\cadencii.xml.csproj">
       <Project>{23C7549D-A0FD-402A-8470-95DB4BE6081C}</Project>
       <Name>cadencii.xml</Name>
     </ProjectReference>

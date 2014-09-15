@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.apputil", "cadencii.apputil\cadencii.apputil.csproj", "{0C58B068-272F-4390-A14F-3D72AFCF3DFB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadencii.windows.forms", "cadencii.windows.forms\cadencii.windows.forms.csproj", "{B9481E3B-6842-4AB3-8ED4-29C86C2579A3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadencii", "Cadencii\Cadencii.csproj", "{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}"
@@ -59,10 +57,6 @@ Global
 		{04B33E1E-C43A-455C-B864-95DDE6E53C32}.Debug|x86.Build.0 = Debug|x86
 		{04B33E1E-C43A-455C-B864-95DDE6E53C32}.Release|x86.ActiveCfg = Release|x86
 		{04B33E1E-C43A-455C-B864-95DDE6E53C32}.Release|x86.Build.0 = Release|x86
-		{0C58B068-272F-4390-A14F-3D72AFCF3DFB}.Debug|x86.ActiveCfg = Debug|x86
-		{0C58B068-272F-4390-A14F-3D72AFCF3DFB}.Debug|x86.Build.0 = Debug|x86
-		{0C58B068-272F-4390-A14F-3D72AFCF3DFB}.Release|x86.ActiveCfg = Release|x86
-		{0C58B068-272F-4390-A14F-3D72AFCF3DFB}.Release|x86.Build.0 = Release|x86
 		{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}.Debug|x86.Build.0 = Debug|Any CPU
 		{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}.Release|x86.ActiveCfg = Release|Any CPU

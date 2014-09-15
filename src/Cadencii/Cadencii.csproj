@@ -382,6 +382,7 @@
     <Compile Include="VersionString.cs" />
     <Compile Include="ItemSelectionModel.cs" />
     <Compile Include="Utility.cs" />
+    <Compile Include="WFUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />
@@ -621,10 +622,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\cadencii.apputil\cadencii.apputil.csproj">
-      <Project>{0C58B068-272F-4390-A14F-3D72AFCF3DFB}</Project>
-      <Name>cadencii.apputil</Name>
-    </ProjectReference>
     <ProjectReference Include="..\cadencii.media\cadencii.media.csproj">
       <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
       <Name>cadencii.media</Name>

@@ -17,7 +17,6 @@ using cadencii.java.awt;
 
 namespace cadencii.windows.forms
 {
-
     public static class Utility
     {
         public static string SelectedFilter(this System.Windows.Forms.FileDialog dialog)
