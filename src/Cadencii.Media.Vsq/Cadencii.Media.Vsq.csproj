@@ -2,7 +2,7 @@
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{673347F3-6FC2-4F82-9273-BF158E0F8CB1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -18,7 +18,6 @@
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;CSHARP;ENABLE_PROPERTY</DefineConstants>
     <DocumentationFile>bin\Debug\Cadencii.Media.Vsq.xml</DocumentationFile>
@@ -27,7 +26,6 @@
     <Optimize>false</Optimize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>CSHARP;;ENABLE_PROPERTY</DefineConstants>
     <Prefer32Bit>false</Prefer32Bit>
