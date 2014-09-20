@@ -5805,7 +5805,7 @@ namespace cadencii
                             int lyric_width = (int)(length * scalex);
                             string lyric_jp = item.ID.LyricHandle.L0.Phrase;
                             string lyric_en = item.ID.LyricHandle.L0.getPhoneticSymbol();
-                            string title = Utility.trimString(lyric_jp + " [" + lyric_en + "]", SMALL_FONT, lyric_width);
+                            string title = cadencii.windows.forms.Utility.trimString(lyric_jp + " [" + lyric_en + "]", SMALL_FONT, lyric_width);
                             int accent = item.ID.DEMaccent;
                             int px_vibrato_start = x + lyric_width;
                             int px_vibrato_end = x;

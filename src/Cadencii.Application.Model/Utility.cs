@@ -965,34 +965,6 @@ namespace cadencii
             return Messaging.getMessage(id);
         }
 
-        /// <summary>
-        /// 文字列itemをfontを用いて描画したとき、幅widthピクセルに収まるようにitemを調節したものを返します。
-        /// 例えば"1 Voice"→"1 Voi..."ナド。
-        /// </summary>
-        /// <param name="item"></param>
-        /// <param name="font"></param>
-        /// <param name="width"></param>
-        /// <returns></returns>
-        public static string trimString(string item, Font font, int width)
-        {
-            string edited = item;
-            int delete_count = PortUtil.getStringLength(item);
-            bool д = true;
-            for (; д; ) {
-                Dimension measured = Util.measureString(edited, font);
-                if (measured.width <= width) {
-                    return edited;
-                }
-                delete_count -= 1;
-                if (delete_count > 0) {
-                    edited = item.Substring(0, delete_count) + "...";
-                } else {
-                    return edited;
-                }
-            }
-            return item;
-        }
-
     }
 
 }

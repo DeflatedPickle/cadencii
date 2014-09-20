@@ -2217,7 +2217,7 @@ namespace cadencii
                             destRect.x + destRect.width - 10, destRect.y + destRect.height - 1);
             }
             g.clipRect(destRect.x, destRect.y, destRect.width, destRect.height);
-			string title = Utility.trimString(name, cadencii.core.EditorConfig.baseFont8, panel_width);
+			string title = cadencii.windows.forms.Utility.trimString(name, cadencii.core.EditorConfig.baseFont8, panel_width);
 			g.setFont(cadencii.core.EditorConfig.baseFont8);
             g.setColor(panel_title);
             g.drawString(title, destRect.x + 2, destRect.y + destRect.height / 2 - EditorConfig.baseFont8OffsetHeight);

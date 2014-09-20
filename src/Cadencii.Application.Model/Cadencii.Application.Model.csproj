@@ -152,6 +152,7 @@
     <Compile Include="SynthesizeWorker.cs" />
     <Compile Include="controls\WaveViewRealoadRequiredEventArgs.cs" />
     <Compile Include="controls\WaveViewRealoadRequiredEventHandler.cs" />
+    <Compile Include="Utility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
