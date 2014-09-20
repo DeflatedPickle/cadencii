@@ -31,6 +31,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,8 +88,6 @@
     <Compile Include="ControllerBase.cs" />
     <Compile Include="ClipboardEntry.cs" />
     <Compile Include="CommandExecuteRequiredEventHandler.cs" />
-    <Compile Include="ExceptionNotifyFormUi.cs" />
-    <Compile Include="ExceptionNotifyFormUiListener.cs" />
     <Compile Include="IFormWorkerControl.cs" />
     <Compile Include="IImageCachedComponentDrawer.cs" />
     <Compile Include="SelectedTempoEntry.cs" />
@@ -153,6 +152,9 @@
     <Compile Include="controls\WaveViewRealoadRequiredEventArgs.cs" />
     <Compile Include="controls\WaveViewRealoadRequiredEventHandler.cs" />
     <Compile Include="Utility.cs" />
+    <Compile Include="forms\ExceptionNotifyFormController.cs" />
+    <Compile Include="forms\ExceptionNotifyFormUi.cs" />
+    <Compile Include="forms\ExceptionNotifyFormUiListener.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

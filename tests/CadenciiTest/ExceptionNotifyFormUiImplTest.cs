@@ -8,7 +8,7 @@ namespace cadencii
     public class ExceptionNotifyFormUiImplTest : ExceptionNotifyFormUiImpl
     {
         public ExceptionNotifyFormUiImplTest()
-            : base(new ExceptionNotifyFormController())
+            : base(new ExceptionNotifyFormController (c => new ExceptionNotifyFormUiImpl (c)))
         {
         }
 

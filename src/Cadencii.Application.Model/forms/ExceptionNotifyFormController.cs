@@ -22,9 +22,9 @@ namespace cadencii
         protected ExceptionNotifyFormUi ui;
         protected string exceptionMessage = "";
 
-        public ExceptionNotifyFormController()
+		public ExceptionNotifyFormController(Func<ExceptionNotifyFormController,ExceptionNotifyFormUi> createUi)
         {
-            ui = (ExceptionNotifyFormUi)new ExceptionNotifyFormUiImpl(this);
+            ui = createUi(this);
             this.applyLanguage();
         }
 

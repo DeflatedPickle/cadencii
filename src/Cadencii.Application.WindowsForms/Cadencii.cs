@@ -55,7 +55,7 @@ namespace cadencii
 
         private static void handleUnhandledException(Exception ex)
         {
-            ExceptionNotifyFormController controller = new ExceptionNotifyFormController();
+			ExceptionNotifyFormController controller = new ExceptionNotifyFormController(c => new ExceptionNotifyFormUiImpl(c));
             controller.setReportTarget(ex);
             controller.getUi().showDialog(null);
         }

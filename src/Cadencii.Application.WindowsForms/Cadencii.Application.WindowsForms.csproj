@@ -203,7 +203,6 @@
     <Compile Include="controls\BgmMenuItem.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ExceptionNotifyFormController.cs" />
     <Compile Include="controls\IconParader.cs">
       <SubType>Component</SubType>
     </Compile>

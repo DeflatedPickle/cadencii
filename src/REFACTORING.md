@@ -54,7 +54,7 @@ Projects / Assemblies
 Milestones
 ----------
 
-- More Utility method removal in winforms app.
+- ClipboardModel needs to be plat-neutral.
 - PropertyPanel needs to be plat-neutral.
   - then ItemSelectionModel can be moved too.
 - Move some more forms to platform agnostic application model dll.

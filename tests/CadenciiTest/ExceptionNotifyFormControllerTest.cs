@@ -8,6 +8,10 @@ namespace cadencii
     [TestFixture]
     public class ExceptionNotifyFormControllerTest : ExceptionNotifyFormController
     {
+	public ExceptionNotifyFormControllerTest ()
+		: base (c => new ExceptionNotifyFormUiImpl(c))
+	{
+	}
         [Test]
         public void testSetReportTarget()
         {
