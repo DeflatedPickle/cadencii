@@ -1,3 +1,14 @@
+WARNING
+-------
+
+This branch does NOT work fine. It is totally untested and would not
+even start. Since I'm working on this on Ubuntu, nothing works
+as expected and my changes are based only on builds.
+
+
+Overview
+--------
+
 The project structure reorganization has a few purposes:
 
 - decoupling Windows Forms implementation from the entire application,
@@ -38,4 +49,17 @@ Projects / Assemblies
 - Cadencii.Windows.Forms - windows forms control that is specific to Cadencii.
 - Cadencii.Appplication.Model - GUI-agnostic part of the application
 - Cadencii.Application.Windows.Forms - winforms-based application.
+
+
+Milestones
+----------
+
+- DialogManager needs to be UI framework agnostic, as it's used by lots of
+  UI code.
+  - To make it possible, some Form types needs to be converted to
+    platform agnostic code.
+- Move some more forms to platform agnostic application model dll.
+- Move controls to (ditto).
+- Reduce Win32-ism.
+- Modify GUI framework to better fit with either WPF or Xwt.
 
