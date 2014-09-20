@@ -146,6 +146,8 @@
     <Compile Include="controls\ProgressBarWithLabelUi.cs" />
     <Compile Include="controls\UiControl.cs" />
     <Compile Include="controls\ProgressBarWithLabel.cs" />
+    <Compile Include="forms\FormWorkerUi.cs" />
+    <Compile Include="FormWorker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

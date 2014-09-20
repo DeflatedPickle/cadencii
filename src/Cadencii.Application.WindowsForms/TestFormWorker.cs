@@ -23,7 +23,7 @@ namespace cadencii
         public static void run()
         {
 			FormWorker fw = new FormWorker(() => new ProgressBarWithLabelUiImpl());
-            fw.setupUi(new FormWorkerUi(fw));
+            fw.setupUi(new FormWorkerUiImpl(fw));
             fw.getUi().show(null);
             TestFormWorker test_instance = new TestFormWorker();
             fw.addJob(test_instance, "testMethod", "job1", 5000, 5000);

@@ -54,8 +54,7 @@ Projects / Assemblies
 Milestones
 ----------
 
-- FormWorkerUi to plat-neutral.
-  - then FormWorker can be moved too.
+- SynthesizeWorker needs to be plat-neutral.
 - PropertyPanel needs to be plat-neutral.
   - then ItemSelectionModel can be moved too.
 - Move some more forms to platform agnostic application model dll.

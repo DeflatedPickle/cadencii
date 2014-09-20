@@ -607,7 +607,7 @@ namespace cadencii
 #endif
 
 			FormWorker fw = new FormWorker(() => new ProgressBarWithLabelUiImpl());
-            fw.setupUi(new FormWorkerUi(fw));
+            fw.setupUi(new FormWorkerUiImpl(fw));
             fw.getUi().setTitle(_("Synthesize"));
             fw.getUi().setText(_("now synthesizing..."));
 
@@ -2124,20 +2124,6 @@ namespace cadencii
 			EditorManager.editorConfig = ret;
 
 			keyWidth = EditorManager.editorConfig.KeyWidth;
-        }
-
-        /// <summary>
-        /// TODO: 廃止する。AquesToneDriver から取得するようにする
-        /// </summary>
-        /// <param name="program_change"></param>
-        /// <returns></returns>
-        public static SingerConfig getSingerInfoAquesTone(int program_change)
-        {
-#if ENABLE_AQUESTONE
-            return AquesToneDriver.getSingerConfig(program_change);
-#else
-            return null;
-#endif
         }
     }
 

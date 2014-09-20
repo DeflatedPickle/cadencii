@@ -10564,7 +10564,7 @@ namespace cadencii
             FormWorker fw = null;
             try {
 				fw = new FormWorker(() => new ProgressBarWithLabelUiImpl());
-                fw.setupUi(new FormWorkerUi(fw));
+                fw.setupUi(new FormWorkerUiImpl(fw));
                 fw.getUi().setTitle(_("Synthesize"));
                 fw.getUi().setText(_("now synthesizing..."));
 
@@ -10856,7 +10856,7 @@ namespace cadencii
             FormWorker fs = null;
             try {
 				fs = new FormWorker(() => new ProgressBarWithLabelUiImpl());
-                fs.setupUi(new FormWorkerUi(fs));
+                fs.setupUi(new FormWorkerUiImpl(fs));
                 fs.getUi().setTitle(_("Synthesize"));
                 fs.getUi().setText(_("now synthesizing..."));
 

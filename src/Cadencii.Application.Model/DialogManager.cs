@@ -97,7 +97,7 @@ namespace cadencii
 
 		#endregion
 
-		public static bool showDialogTo (object formWorker, object mainFormWindow)
+		public static bool showDialogTo (FormWorker formWorker, object mainFormWindow)
 		{
 			return ApplicationUIHost.Instance.Dialogs.ShowDialogTo (formWorker, mainFormWindow);
 		}

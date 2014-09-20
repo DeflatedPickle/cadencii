@@ -20,10 +20,10 @@ namespace cadencii
 			return ret;
 		}
 
-		public override bool ShowDialogTo (object formWorker, object mainWindow)
+		public override bool ShowDialogTo (FormWorker formWorker, object mainWindow)
 		{
 			BeforeShowDialog ();
-			bool ret = ((FormWorker) formWorker).getUi ().showDialogTo ((FormMain) mainWindow);
+			bool ret = formWorker.getUi ().showDialogTo ((FormMain) mainWindow);
 #if DEBUG
 			sout.println ("AppManager#patchWorkToFreeze; showDialog returns " + ret);
 #endif

@@ -26,8 +26,18 @@ using cadencii.apputil;
 
 namespace cadencii
 {
-    public class FormWorkerUi : Form
+    public class FormWorkerUiImpl : Form, FormWorkerUi
     {
+		bool FormWorkerUi.showDialogTo (object formMainWindow)
+		{
+			return showDialogTo ((FormMain) formMainWindow);
+		}
+
+		int UiBase.showDialog (object parent_form)
+		{
+			throw new NotImplementedException (); // not needed
+		}
+
         private ProgressBar progressBar1;
         private FlowLayoutPanel flowLayoutPanel1;
         private Label label1;
@@ -45,7 +55,7 @@ namespace cadencii
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        public FormWorkerUi(IFormWorkerControl control)
+        public FormWorkerUiImpl(IFormWorkerControl control)
         {
             InitializeComponent();
             mControl = control;

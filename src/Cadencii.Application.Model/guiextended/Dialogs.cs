@@ -5,7 +5,7 @@ namespace cadencii
 {
 	public abstract class Dialogs
 	{
-		public abstract bool ShowDialogTo (object formWorker, object mainWindow);
+		public abstract bool ShowDialogTo (FormWorker formWorker, object mainWindow);
 		public abstract bool IsShowingDialog { get; }
 		public abstract DialogResult ShowModalFileDialog (object fileDialog, bool openMode, object mainForm);
 		public abstract DialogResult ShowModalFolderDialog (object folderBrowserDialog, object mainForm);
