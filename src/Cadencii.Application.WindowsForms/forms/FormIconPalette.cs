@@ -237,7 +237,7 @@ namespace cadencii
 
         public void handleCommonMouseDown(Object sender, MouseEventArgs e)
         {
-            if (AppManager.getEditMode() != EditMode.NONE) {
+            if (EditorManager.EditMode != EditMode.NONE) {
                 return;
             }
             DraggableBButton btn = (DraggableBButton)sender;

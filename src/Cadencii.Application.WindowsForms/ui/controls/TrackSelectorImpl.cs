@@ -1498,7 +1498,7 @@ namespace cadencii
                             }
 #endif
                         } else if (tool == EditTool.PENCIL) {
-                            if (mMouseTracer.size() > 0 && !AppManager.isCurveMode()) {
+                            if (mMouseTracer.size() > 0 && !EditorManager.isCurveMode()) {
                                 LineGraphDrawer d = getGraphDrawer();
                                 d.clear();
                                 d.setGraphics(g);
@@ -3643,7 +3643,7 @@ namespace cadencii
 
                         if (EditorManager.SelectedTool == EditTool.LINE) {
                             #region Line
-                            if (AppManager.isCurveMode()) {
+                            if (EditorManager.isCurveMode()) {
                                 if (mSelectedCurve.equals(CurveType.Env)) {
                                     if (processMouseDownEnvelope(e)) {
                                         Invalidate();
@@ -3679,7 +3679,7 @@ namespace cadencii
                             #endregion
                         } else if (EditorManager.SelectedTool == EditTool.PENCIL) {
                             #region Pencil
-                            if (AppManager.isCurveMode()) {
+                            if (EditorManager.isCurveMode()) {
                                 #region CurveMode
                                 if (mSelectedCurve.equals(CurveType.VibratoRate) || mSelectedCurve.equals(CurveType.VibratoDepth)) {
                                     // todo: TrackSelector_MouseDownのベジエ曲線
@@ -3926,7 +3926,7 @@ namespace cadencii
                                                                                                                   ve3.InternalID));
                                 executeCommand(run, true);
                             } else {
-                                if (AppManager.isCurveMode()) {
+                                if (EditorManager.isCurveMode()) {
                                     List<BezierChain> list = vsq.AttachedCurves.get(EditorManager.Selected - 1).get(mSelectedCurve);
                                     if (list != null) {
                                         ByRef<BezierChain> chain = new ByRef<BezierChain>();
@@ -4025,7 +4025,7 @@ namespace cadencii
                             #endregion
                         }
                     } else if (e.Button == MouseButtons.Right) {
-                        if (AppManager.isCurveMode()) {
+                        if (EditorManager.isCurveMode()) {
                             if (!mSelectedCurve.equals(CurveType.VEL) && !mSelectedCurve.equals(CurveType.Env)) {
                                 List<BezierChain> dict = MusicManager.getVsqFile().AttachedCurves.get(EditorManager.Selected - 1).get(mSelectedCurve);
                                 AppManager.itemSelection.clearBezier();
@@ -4534,7 +4534,7 @@ namespace cadencii
                         #endregion
                     } else if (EditorManager.SelectedTool == EditTool.ERASER) {
                         #region Eraser
-                        if (AppManager.isCurveMode()) {
+                        if (EditorManager.isCurveMode()) {
                             List<BezierChain> list = vsq.AttachedCurves.get(selected - 1).get(mSelectedCurve);
                             if (list != null) {
                                 int x = Math.Min(AppManager.mCurveSelectingRectangle.x, AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);
@@ -4738,7 +4738,7 @@ namespace cadencii
                             }
                         }
                         #endregion
-                    } else if (!AppManager.isCurveMode() && (EditorManager.SelectedTool == EditTool.PENCIL || EditorManager.SelectedTool == EditTool.LINE)) {
+                    } else if (!EditorManager.isCurveMode() && (EditorManager.SelectedTool == EditTool.PENCIL || EditorManager.SelectedTool == EditTool.LINE)) {
                         #region Pencil & Line
                         mMouseTracer.append(e.X + stdx, e.Y);
                         if (mPencilMoved) {

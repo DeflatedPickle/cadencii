@@ -1575,6 +1575,71 @@ namespace cadencii
 		}
 
 		#endregion
+
+		#region editing modes
+
+		public static EditMode EditMode { get; set; }
+
+		/// <summary>
+		/// 編集ツールが変化した時発生するイベント
+		/// </summary>
+		public static event EventHandler SelectedToolChanged;
+
+		/// <summary>
+		/// 現在選択されているツールを設定します。
+		/// </summary>
+		/// <param name="value"></param>
+		public static void setSelectedTool (EditTool value)
+		{
+			EditTool old = EditorManager.SelectedTool;
+			EditorManager.SelectedTool = value;
+			if (old != EditorManager.SelectedTool) {
+				try {
+					if (SelectedToolChanged != null) {
+						SelectedToolChanged.Invoke (typeof(EditorManager), new EventArgs ());
+					}
+				} catch (Exception ex) {
+					serr.println ("AppManager#setSelectedTool; ex=" + ex);
+					Logger.write (typeof(EditorManager) + ".setSelectedTool; ex=" + ex + "\n");
+				}
+			}
+		}
+
+		/// <summary>
+		/// Bezierカーブ編集モードが有効かどうかを表す
+		/// </summary>
+		private static bool mIsCurveMode = false;
+
+		/// <summary>
+		/// ベジエ曲線を編集するモードかどうかを取得します。
+		/// </summary>
+		/// <returns></returns>
+		public static bool isCurveMode ()
+		{
+			return mIsCurveMode;
+		}
+
+		/// <summary>
+		/// ベジエ曲線を編集するモードかどうかを設定します。
+		/// </summary>
+		/// <param name="value"></param>
+		public static void setCurveMode (bool value)
+		{
+			bool old = mIsCurveMode;
+			mIsCurveMode = value;
+			if (old != mIsCurveMode) {
+				try {
+					if (SelectedToolChanged != null) {
+						SelectedToolChanged.Invoke (typeof(EditorManager), new EventArgs ());
+					}
+				} catch (Exception ex) {
+					serr.println ("EditorManager#setCurveMode; ex=" + ex);
+					Logger.write (typeof(EditorManager) + ".setCurveMode; ex=" + ex + "\n");
+				}
+			}
+		}
+
+		#endregion
 	}
 }
 

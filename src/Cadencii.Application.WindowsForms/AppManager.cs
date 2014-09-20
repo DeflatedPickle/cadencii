@@ -207,7 +207,6 @@ namespace cadencii
         private static int mCurrentClock = 0;
         private static bool mPlaying = false;
         private static bool mGridVisible = false;
-        private static EditMode mEditMode = EditMode.NONE;
         /// <summary>
         /// トラックのオーバーレイ表示
         /// </summary>
@@ -250,10 +249,6 @@ namespace cadencii
         /// 自動ノーマライズモードかどうかを表す値を取得、または設定します。
         /// </summary>
         public static bool mAutoNormalize = false;
-        /// <summary>
-        /// Bezierカーブ編集モードが有効かどうかを表す
-        /// </summary>
-        private static bool mIsCurveMode = false;
         /// <summary>
         /// 再生時に自動スクロールするかどうか
         /// </summary>
@@ -371,11 +366,6 @@ namespace cadencii
         /// プレビュー再生が終了した時発生するイベント
         /// </summary>
         public static event EventHandler PreviewAborted;
-
-        /// <summary>
-        /// 編集ツールが変化した時発生するイベント
-        /// </summary>
-        public static event EventHandler SelectedToolChanged;
 
         /// <summary>
         /// BGMに何らかの変更があった時発生するイベント
@@ -572,35 +562,6 @@ namespace cadencii
             return Messaging.getMessage(id);
         }
 
-        /// <summary>
-        /// ベジエ曲線を編集するモードかどうかを取得します。
-        /// </summary>
-        /// <returns></returns>
-        public static bool isCurveMode()
-        {
-            return mIsCurveMode;
-        }
-
-        /// <summary>
-        /// ベジエ曲線を編集するモードかどうかを設定します。
-        /// </summary>
-        /// <param name="value"></param>
-        public static void setCurveMode(bool value)
-        {
-            bool old = mIsCurveMode;
-            mIsCurveMode = value;
-            if (old != mIsCurveMode) {
-                try {
-                    if (SelectedToolChanged != null) {
-                        SelectedToolChanged.Invoke(typeof(AppManager), new EventArgs());
-                    }
-                } catch (Exception ex) {
-                    serr.println("AppManager#setCurveMode; ex=" + ex);
-                    Logger.write(typeof(AppManager) + ".setCurveMode; ex=" + ex + "\n");
-                }
-            }
-        }
-
 #if !TREECOM
         /// <summary>
         /// アンドゥ処理を行います。
@@ -705,26 +666,6 @@ namespace cadencii
         }
 #endif
 
-        /// <summary>
-        /// 現在選択されているツールを設定します。
-        /// </summary>
-        /// <param name="value"></param>
-        public static void setSelectedTool(EditTool value)
-        {
-            EditTool old = EditorManager.SelectedTool;
-			EditorManager.SelectedTool = value;
-			if (old != EditorManager.SelectedTool) {
-                try {
-                    if (SelectedToolChanged != null) {
-                        SelectedToolChanged.Invoke(typeof(AppManager), new EventArgs());
-                    }
-                } catch (Exception ex) {
-                    serr.println("AppManager#setSelectedTool; ex=" + ex);
-                    Logger.write(typeof(AppManager) + ".setSelectedTool; ex=" + ex + "\n");
-                }
-            }
-        }
-
         public static bool isOverlay()
         {
             return mOverlay;
@@ -741,23 +682,6 @@ namespace cadencii
                 return false;
             }
             return mVsq.editorStatus.renderRequired[track - 1];
-        }
-
-        /// <summary>
-        /// 現在の編集モードを取得します．
-        /// </summary>
-        public static EditMode getEditMode()
-        {
-            return mEditMode;
-        }
-
-        /// <summary>
-        /// 現在の編集モードを設定します．
-        /// </summary>
-        /// <param name="value"></param>
-        public static void setEditMode(EditMode value)
-        {
-            mEditMode = value;
         }
 
         /// <summary>

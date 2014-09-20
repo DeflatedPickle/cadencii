@@ -258,7 +258,7 @@ namespace cadencii
                     Color bar = renderer.getPianorollBar();
                     Color beat = renderer.getPianorollBeat();
 
-                    EditMode edit_mode = AppManager.getEditMode();
+                    EditMode edit_mode = EditorManager.EditMode;
 
                     #region ピアノロール周りのスクロールバーなど
                     // スクロール画面背景

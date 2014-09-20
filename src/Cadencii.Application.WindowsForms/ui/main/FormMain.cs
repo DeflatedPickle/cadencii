@@ -811,7 +811,7 @@ namespace cadencii
             AppManager.PreviewAborted += new EventHandler(AppManager_PreviewAborted);
             AppManager.GridVisibleChanged += new EventHandler(AppManager_GridVisibleChanged);
             AppManager.itemSelection.SelectedEventChanged += new SelectedEventChangedEventHandler(ItemSelectionModel_SelectedEventChanged);
-            AppManager.SelectedToolChanged += new EventHandler(AppManager_SelectedToolChanged);
+            EditorManager.SelectedToolChanged += new EventHandler(AppManager_SelectedToolChanged);
             AppManager.UpdateBgmStatusRequired += new EventHandler(AppManager_UpdateBgmStatusRequired);
             AppManager.MainWindowFocusRequired = new EventHandler(AppManager_MainWindowFocusRequired);
             EditorManager.EditedStateChanged += new EditedStateChangedEventHandler(AppManager_EditedStateChanged);
@@ -2730,7 +2730,7 @@ namespace cadencii
             int selected_point_id_count = AppManager.itemSelection.getPointIDCount();
             cMenuTrackSelectorCopy.Enabled = selected_point_id_count > 0;
             cMenuTrackSelectorCut.Enabled = selected_point_id_count > 0;
-            cMenuTrackSelectorDeleteBezier.Enabled = (AppManager.isCurveMode() && AppManager.itemSelection.getLastBezier() != null);
+            cMenuTrackSelectorDeleteBezier.Enabled = (EditorManager.isCurveMode() && AppManager.itemSelection.getLastBezier() != null);
             if (selected_point_id_count > 0) {
                 cMenuTrackSelectorDelete.Enabled = true;
             } else {
@@ -3416,7 +3416,7 @@ namespace cadencii
                 return;
             }
 
-            EditMode edit_mode = AppManager.getEditMode();
+            EditMode edit_mode = EditorManager.EditMode;
 
             if ((Keys) e.KeyCode == Keys.Return) {
                 // MIDIステップ入力のときの処理
@@ -5754,9 +5754,9 @@ namespace cadencii
             stripBtnLine.Pushed = (selected_tool == EditTool.LINE);
             stripBtnEraser.Pushed = (selected_tool == EditTool.ERASER);
 
-            cMenuPianoCurve.Checked = AppManager.isCurveMode();
-            cMenuTrackSelectorCurve.Checked = AppManager.isCurveMode();
-            stripBtnCurve.Pushed = AppManager.isCurveMode();
+            cMenuPianoCurve.Checked = EditorManager.isCurveMode();
+            cMenuTrackSelectorCurve.Checked = EditorManager.isCurveMode();
+            stripBtnCurve.Pushed = EditorManager.isCurveMode();
         }
 
         /// <summary>
@@ -7218,7 +7218,7 @@ namespace cadencii
             CDebug.WriteLine("pictPianoRoll_MouseClick");
 #endif
             Keys modefiers = (Keys) Control.ModifierKeys;
-            EditMode edit_mode = AppManager.getEditMode();
+            EditMode edit_mode = EditorManager.EditMode;
 
             bool is_button_left = e.Button == MouseButtons.Left;
             int selected = EditorManager.Selected;
@@ -7663,7 +7663,7 @@ namespace cadencii
 #else
             if ( e.Button == BMouseButtons.Middle ) {
 #endif
-                AppManager.setEditMode(EditMode.MIDDLE_DRAG);
+                EditorManager.EditMode =EditMode.MIDDLE_DRAG;
                 mMiddleButtonVScroll = vScroll.Value;
                 mMiddleButtonHScroll = hScroll.Value;
                 return;
@@ -7675,7 +7675,7 @@ namespace cadencii
                 pictPianoRoll.mMouseTracer.clear();
                 pictPianoRoll.mMouseTracer.appendFirst(e.X + stdx, e.Y + stdy);
                 this.Cursor = Cursors.Default;
-                AppManager.setEditMode(EditMode.CURVE_ON_PIANOROLL);
+                EditorManager.EditMode =EditMode.CURVE_ON_PIANOROLL;
                 return;
             }
 
@@ -7685,7 +7685,7 @@ namespace cadencii
 
 #if ENABLE_SCRIPT
             if (selected_tool == EditTool.PALETTE_TOOL && item == null && e.Button == MouseButtons.Middle) {
-                AppManager.setEditMode(EditMode.MIDDLE_DRAG);
+                EditorManager.EditMode =EditMode.MIDDLE_DRAG;
                 mMiddleButtonVScroll = vScroll.Value;
                 mMiddleButtonHScroll = hScroll.Value;
                 return;
@@ -7770,7 +7770,7 @@ namespace cadencii
                             AppManager.mAddingEvent.ID.setLength(length);
                             AppManager.mAddingEventLength = vibrato_dobj.mLength;
                             AppManager.mAddingEvent.ID.VibratoDelay = length - (int)(px_vibrato_length * controller.getScaleXInv());
-                            AppManager.setEditMode(EditMode.EDIT_VIBRATO_DELAY);
+                            EditorManager.EditMode = EditMode.EDIT_VIBRATO_DELAY;
                             start_mouse_hover_generator = false;
                         }
                     }
@@ -7792,16 +7792,16 @@ namespace cadencii
                                 // デフォルトの歌唱スタイルを適用する
                                 EditorManager.editorConfig.applyDefaultSingerStyle(AppManager.mAddingEvent.ID);
                                 if (mPencilMode.getMode() == PencilModeEnum.Off) {
-                                    AppManager.setEditMode(EditMode.ADD_ENTRY);
+                                    EditorManager.EditMode = EditMode.ADD_ENTRY;
                                     mButtonInitial = new Point(e.X, e.Y);
                                     AppManager.mAddingEvent.ID.setLength(0);
                                     AppManager.mAddingEvent.ID.Note = note;
                                     this.Cursor = Cursors.Default;
 #if DEBUG
-                                    CDebug.WriteLine("    EditMode=" + AppManager.getEditMode());
+                                    CDebug.WriteLine("    EditMode=" + EditorManager.EditMode);
 #endif
                                 } else {
-                                    AppManager.setEditMode(EditMode.ADD_FIXED_LENGTH_ENTRY);
+                                    EditorManager.EditMode = EditMode.ADD_FIXED_LENGTH_ENTRY;
                                     AppManager.mAddingEvent.ID.setLength(mPencilMode.getUnitLength());
                                     AppManager.mAddingEvent.ID.Note = note;
                                     this.Cursor = Cursors.Default;
@@ -7819,7 +7819,7 @@ namespace cadencii
                             AppManager.mMouseDownLocation = new Point(e.X + stdx, e.Y + stdy);
                             AppManager.mIsPointerDowned = true;
 #if DEBUG
-                            CDebug.WriteLine("    EditMode=" + AppManager.getEditMode());
+                            CDebug.WriteLine("    EditMode=" + EditorManager.EditMode);
 #endif
                         }
                     }
@@ -7872,7 +7872,7 @@ namespace cadencii
                                                           dobj.mRectangleInPixel.height);
                             if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
                                 EditorManager.IsWholeSelectedIntervalEnabled = false;
-                                AppManager.setEditMode(EditMode.EDIT_LEFT_EDGE);
+                                EditorManager.EditMode = EditMode.EDIT_LEFT_EDGE;
                                 if (!AppManager.itemSelection.isEventContains(selected, item.InternalID)) {
                                     AppManager.itemSelection.clearEvent();
                                 }
@@ -7880,7 +7880,7 @@ namespace cadencii
                                 this.Cursor = System.Windows.Forms.Cursors.VSplit;
                                 refreshScreen();
 #if DEBUG
-                                CDebug.WriteLine("    EditMode=" + AppManager.getEditMode());
+                                CDebug.WriteLine("    EditMode=" + EditorManager.EditMode);
 #endif
                                 return;
                             }
@@ -7892,7 +7892,7 @@ namespace cadencii
                                                 dobj.mRectangleInPixel.height);
                             if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
                                 EditorManager.IsWholeSelectedIntervalEnabled = false;
-                                AppManager.setEditMode(EditMode.EDIT_RIGHT_EDGE);
+                                EditorManager.EditMode = EditMode.EDIT_RIGHT_EDGE;
                                 if (!AppManager.itemSelection.isEventContains(selected, item.InternalID)) {
                                     AppManager.itemSelection.clearEvent();
                                 }
@@ -7909,7 +7909,7 @@ namespace cadencii
 #if ENABLE_SCRIPT
                     if (selected_tool == EditTool.PALETTE_TOOL) {
                         EditorManager.IsWholeSelectedIntervalEnabled = false;
-                        AppManager.setEditMode(EditMode.NONE);
+                        EditorManager.EditMode = EditMode.NONE;
                         AppManager.itemSelection.clearEvent();
                         AppManager.itemSelection.addEvent(item.InternalID);
                     } else
@@ -7976,16 +7976,16 @@ namespace cadencii
                             if (EditorManager.IsWholeSelectedIntervalEnabled &&
                                  AppManager.mWholeSelectedInterval.getStart() <= item.Clock &&
                                  item.Clock <= AppManager.mWholeSelectedInterval.getEnd()) {
-                                AppManager.setEditMode(EditMode.MOVE_ENTRY_WHOLE_WAIT_MOVE);
+                                EditorManager.EditMode = EditMode.MOVE_ENTRY_WHOLE_WAIT_MOVE;
                                 AppManager.mWholeSelectedIntervalStartForMoving = AppManager.mWholeSelectedInterval.getStart();
                             } else {
                                 EditorManager.IsWholeSelectedIntervalEnabled = false;
-                                AppManager.setEditMode(EditMode.MOVE_ENTRY_WAIT_MOVE);
+                                EditorManager.EditMode = EditMode.MOVE_ENTRY_WAIT_MOVE;
                             }
 
                             this.Cursor = Cursors.Hand;
 #if DEBUG
-                            CDebug.WriteLine("    EditMode=" + AppManager.getEditMode());
+                            CDebug.WriteLine("    EditMode=" + EditorManager.EditMode);
                             CDebug.WriteLine("    m_config.SelectedEvent.Count=" + AppManager.itemSelection.getEventCount());
 #endif
                         }
@@ -8008,7 +8008,7 @@ namespace cadencii
                     }
                 }
 
-                EditMode edit_mode = AppManager.getEditMode();
+                EditMode edit_mode = EditorManager.EditMode;
                 int stdx = controller.getStartToDrawX();
                 int stdy = controller.getStartToDrawY();
                 int selected = EditorManager.Selected;
@@ -8039,10 +8039,10 @@ namespace cadencii
                     int y = e.Y + stdy;
                     if (mMouseMoveInit.X != x || mMouseMoveInit.Y != y) {
                         if (edit_mode == EditMode.MOVE_ENTRY_WAIT_MOVE) {
-                            AppManager.setEditMode(EditMode.MOVE_ENTRY);
+                            EditorManager.EditMode = EditMode.MOVE_ENTRY;
                             edit_mode = EditMode.MOVE_ENTRY;
                         } else {
-                            AppManager.setEditMode(EditMode.MOVE_ENTRY_WHOLE);
+                            EditorManager.EditMode = EditMode.MOVE_ENTRY_WHOLE;
                             edit_mode = EditMode.MOVE_ENTRY_WHOLE;
                         }
                     }
@@ -8496,14 +8496,14 @@ namespace cadencii
         {
 #if DEBUG
             CDebug.WriteLine("pictureBox1_MouseUp");
-            CDebug.WriteLine("    m_config.EditMode=" + AppManager.getEditMode());
+            CDebug.WriteLine("    m_config.EditMode=" + EditorManager.EditMode);
 #endif
             AppManager.mIsPointerDowned = false;
             mMouseDowned = false;
 
             Keys modefiers = (Keys) Control.ModifierKeys;
 
-            EditMode edit_mode = AppManager.getEditMode();
+            EditMode edit_mode = EditorManager.EditMode;
             VsqFileEx vsq = MusicManager.getVsqFile();
             int selected = EditorManager.Selected;
             VsqTrack vsq_track = vsq.Track[selected];
@@ -8638,7 +8638,7 @@ namespace cadencii
                     }
                 }
                 pictPianoRoll.mMouseTracer.clear();
-                AppManager.setEditMode(EditMode.NONE);
+                EditorManager.EditMode = EditMode.NONE;
                 return;
             }
 
@@ -8938,7 +8938,7 @@ namespace cadencii
                 }
             }
         heaven:
-            AppManager.setEditMode(EditMode.NONE);
+            EditorManager.EditMode = EditMode.NONE;
             refreshScreen(true);
         }
 
@@ -9412,7 +9412,7 @@ namespace cadencii
         #region FormMain
         public void handleDragExit()
         {
-            AppManager.setEditMode(EditMode.NONE);
+            EditorManager.EditMode = EditMode.NONE;
             mIconPaletteOnceDragEntered = false;
         }
 
@@ -9426,7 +9426,7 @@ namespace cadencii
         /// </summary>
         public void handleDragOver(int screen_x, int screen_y)
         {
-            if (AppManager.getEditMode() != EditMode.DRAG_DROP) {
+            if (EditorManager.EditMode != EditMode.DRAG_DROP) {
                 return;
             }
             var pt = pictPianoRoll.PointToScreen(System.Drawing.Point.Empty);
@@ -9496,13 +9496,13 @@ namespace cadencii
             CadenciiCommand run = VsqFileEx.generateCommandTrackReplace(selected, work, vsq.AttachedCurves.get(selected - 1));
             EditorManager.editHistory.register(vsq.executeCommand(run));
             setEdited(true);
-            AppManager.setEditMode(EditMode.NONE);
+            EditorManager.EditMode = EditMode.NONE;
             refreshScreen();
         }
 
         private void FormMain_DragDrop(Object sender, System.Windows.Forms.DragEventArgs e)
         {
-            AppManager.setEditMode(EditMode.NONE);
+            EditorManager.EditMode = EditMode.NONE;
             mIconPaletteOnceDragEntered = false;
             mMouseDowned = false;
             if (!e.Data.GetDataPresent(typeof(IconDynamicsHandle))) {
@@ -9532,7 +9532,7 @@ namespace cadencii
         /// </summary>
         public void handleDragEnter()
         {
-            AppManager.setEditMode(EditMode.DRAG_DROP);
+            EditorManager.EditMode = EditMode.DRAG_DROP;
             mMouseDowned = true;
         }
 
@@ -9544,7 +9544,7 @@ namespace cadencii
                 handleDragEnter();
             } else {
                 e.Effect = System.Windows.Forms.DragDropEffects.None;
-                AppManager.setEditMode(EditMode.NONE);
+                EditorManager.EditMode = EditMode.NONE;
             }
         }
         public void FormMain_FormClosed(Object sender, FormClosedEventArgs e)
@@ -13178,7 +13178,7 @@ namespace cadencii
         public void vScroll_ValueChanged(Object sender, EventArgs e)
         {
             controller.setStartToDrawY(calculateStartToDrawY(vScroll.Value));
-            if (AppManager.getEditMode() != EditMode.MIDDLE_DRAG) {
+            if (EditorManager.EditMode != EditMode.MIDDLE_DRAG) {
                 // MIDDLE_DRAGのときは，pictPianoRoll_MouseMoveでrefreshScreenされるので，それ以外のときだけ描画・
                 refreshScreen(true);
             }
@@ -13251,7 +13251,7 @@ namespace cadencii
         {
             int stdx = calculateStartToDrawX();
             controller.setStartToDrawX(stdx);
-            if (AppManager.getEditMode() != EditMode.MIDDLE_DRAG) {
+            if (EditorManager.EditMode != EditMode.MIDDLE_DRAG) {
                 // MIDDLE_DRAGのときは，pictPianoRoll_MouseMoveでrefreshScreenされるので，それ以外のときだけ描画・
                 refreshScreen(true);
             }
@@ -14529,7 +14529,7 @@ namespace cadencii
 
         public void cMenuPianoCurve_Click(Object sender, EventArgs e)
         {
-            AppManager.setCurveMode(!AppManager.isCurveMode());
+            EditorManager.setCurveMode(!EditorManager.isCurveMode());
             applySelectedTool();
         }
         #endregion
@@ -14955,7 +14955,7 @@ namespace cadencii
             } else if (tool == EditTool.ERASER) {
                 cMenuTrackSelectorEraser.Checked = true;
             }
-            cMenuTrackSelectorCurve.Checked = AppManager.isCurveMode();
+            cMenuTrackSelectorCurve.Checked = EditorManager.isCurveMode();
         }
 
         public void cMenuTrackSelectorPointer_Click(Object sender, EventArgs e)
@@ -14982,7 +14982,7 @@ namespace cadencii
 
         public void cMenuTrackSelectorCurve_Click(Object sender, EventArgs e)
         {
-            AppManager.setCurveMode(!AppManager.isCurveMode());
+            EditorManager.setCurveMode(!EditorManager.isCurveMode());
         }
 
         public void cMenuTrackSelectorSelectAll_Click(Object sender, EventArgs e)
@@ -15183,7 +15183,7 @@ namespace cadencii
 
         public void stripBtnCurve_Click(Object sender, EventArgs e)
         {
-            AppManager.setCurveMode(!AppManager.isCurveMode());
+            EditorManager.setCurveMode(!EditorManager.isCurveMode());
         }
 
         public void stripBtnPlay_Click(Object sender, EventArgs e)
@@ -16442,7 +16442,7 @@ namespace cadencii
                 AppManager.setCurrentClock( clock );
 #endif
                 /*if ( !AppManager.isPlaying() ) {
-                    AppManager.setEditMode( EditMode.REALTIME_MTC );
+                    EditorManager.EditMode = EditMode.REALTIME_MTC );
                     AppManager.setPlaying( true );
                     EventHandler handler = new EventHandler( AppManager_PreviewStarted );
                     if ( handler != null ) {
