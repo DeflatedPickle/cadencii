@@ -38,7 +38,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WindowsFormsImplementation.cs" />
   </ItemGroup>
-  <Import Project="..\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.projitems" Label="Shared" Condition="Exists('..\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.projitems')" />
+  <Import Project="..\Cadencii.Gui.Framework.WindowsForms.Shared\cadencii.gui.winforms.shared.projitems" Label="Shared" Condition="Exists('..\Cadencii.Gui.Framework.WindowsForms.Shared\cadencii.gui.winforms.shared.projitems')" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Cadencii.Gui.Framework\Cadencii.Gui.Framework.csproj">

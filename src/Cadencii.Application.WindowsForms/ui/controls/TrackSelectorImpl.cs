@@ -1206,7 +1206,7 @@ namespace cadencii
 
                     // 左端での歌手を最初に描画
                     int x_at_left = EditorManager.keyWidth + EditorManager.keyOffset;
-                    int clock_at_left = AppManager.clockFromXCoord(x_at_left);
+                    int clock_at_left = EditorManager.clockFromXCoord(x_at_left);
                     VsqEvent singer_at_left = vsq_track.getSingerEventAt(clock_at_left);
                     if (singer_at_left != null) {
                         Rectangle rc =
@@ -1231,7 +1231,7 @@ namespace cadencii
                         }
                         int clock = ve.Clock;
                         IconHandle singer_handle = (IconHandle)ve.ID.IconHandle;
-                        int x = AppManager.xCoordFromClocks(clock);
+                        int x = EditorManager.xCoordFromClocks(clock);
                         if (x < x_at_left) {
                             continue;
                         }
@@ -1285,7 +1285,7 @@ namespace cadencii
                 }
                 #endregion
 
-                int clock_at_mouse = AppManager.clockFromXCoord(mouse.X);
+                int clock_at_mouse = EditorManager.clockFromXCoord(mouse.X);
                 int pbs_at_mouse = 0;
                 if (mCurveVisible) {
                     #region カーブエディタ
@@ -1304,8 +1304,8 @@ namespace cadencii
                                 key_width, size.height - 1);
 
                     if (EditorManager.IsCurveSelectedIntervalEnabled) {
-                        int x0 = AppManager.xCoordFromClocks(AppManager.mCurveSelectedInterval.getStart());
-                        int x1 = AppManager.xCoordFromClocks(AppManager.mCurveSelectedInterval.getEnd());
+                        int x0 = EditorManager.xCoordFromClocks(AppManager.mCurveSelectedInterval.getStart());
+                        int x1 = EditorManager.xCoordFromClocks(AppManager.mCurveSelectedInterval.getEnd());
                         g.setColor(COLOR_A072R255G255B255);
                         g.fillRect(x0, HEADER, x1 - x0, graph_height);
                     }
@@ -1315,9 +1315,9 @@ namespace cadencii
                         int dashed_line_step = EditorManager.getPositionQuantizeClock();
                         g.clipRect(key_width, HEADER, size.width - key_width, size.height - 2 * OFFSET_TRACK_TAB);
                         Color white100 = new Color(0, 0, 0, 100);
-                        for (Iterator<VsqBarLineType> itr = vsq.getBarLineIterator(AppManager.clockFromXCoord(width)); itr.hasNext(); ) {
+                        for (Iterator<VsqBarLineType> itr = vsq.getBarLineIterator(EditorManager.clockFromXCoord(width)); itr.hasNext(); ) {
                             VsqBarLineType blt = itr.next();
-                            int x = AppManager.xCoordFromClocks(blt.clock());
+                            int x = EditorManager.xCoordFromClocks(blt.clock());
                             int local_clock_step = 480 * 4 / blt.getLocalDenominator();
                             if (blt.isSeparator()) {
                                 g.setColor(white100);
@@ -1335,7 +1335,7 @@ namespace cadencii
                                 Color pen = new Color(65, 65, 65);
                                 g.setColor(pen);
                                 for (int i = 1; i < numDashedLine; i++) {
-                                    int x2 = AppManager.xCoordFromClocks(blt.clock() + i * dashed_line_step);
+                                    int x2 = EditorManager.xCoordFromClocks(blt.clock() + i * dashed_line_step);
                                     g.drawLine(x2, centre - 2, x2, centre + 3);
                                     g.drawLine(x2, 8, x2, 12);
                                     g.drawLine(x2, size.height - 43, x2, size.height - 43 - 4);
@@ -1388,8 +1388,8 @@ namespace cadencii
                                 pbs_at_mouse = pbs.getValue(clock_at_mouse);
                                 int c = pbs.size();
                                 int premeasure = vsq.getPreMeasureClocks();
-                                int clock_start = AppManager.clockFromXCoord(key_width);
-                                int clock_end = AppManager.clockFromXCoord(width);
+                                int clock_start = EditorManager.clockFromXCoord(key_width);
+                                int clock_end = EditorManager.clockFromXCoord(width);
                                 if (clock_start < premeasure && premeasure < clock_end) {
                                     clock_start = premeasure;
                                 }
@@ -1413,8 +1413,8 @@ namespace cadencii
                                     // last_clockからclの範囲で，PBSの値がlas_pbs
                                     int max = last_pbs;
                                     int min = -last_pbs;
-                                    int x1 = AppManager.xCoordFromClocks(last_clock);
-                                    int x2 = AppManager.xCoordFromClocks(cl);
+                                    int x1 = EditorManager.xCoordFromClocks(last_clock);
+                                    int x2 = EditorManager.xCoordFromClocks(cl);
                                     for (int j = min + 1; j <= max - 1; j++) {
                                         if (j == 0) {
                                             continue;
@@ -1436,8 +1436,8 @@ namespace cadencii
                                 }
                                 int max0 = last_pbs;
                                 int min0 = -last_pbs;
-                                int x10 = AppManager.xCoordFromClocks(last_clock);
-                                int x20 = AppManager.xCoordFromClocks(clock_end);
+                                int x10 = EditorManager.xCoordFromClocks(last_clock);
+                                int x20 = EditorManager.xCoordFromClocks(clock_end);
                                 for (int j = min0 + 1; j <= max0 - 1; j++) {
                                     if (j == 0) {
                                         continue;
@@ -1458,8 +1458,8 @@ namespace cadencii
                     }
 
                     if (EditorManager.IsWholeSelectedIntervalEnabled) {
-                        int start = AppManager.xCoordFromClocks(AppManager.mWholeSelectedInterval.getStart()) + 2;
-                        int end = AppManager.xCoordFromClocks(AppManager.mWholeSelectedInterval.getEnd()) + 2;
+                        int start = EditorManager.xCoordFromClocks(AppManager.mWholeSelectedInterval.getStart()) + 2;
+                        int end = EditorManager.xCoordFromClocks(AppManager.mWholeSelectedInterval.getEnd()) + 2;
                         g.setColor(COLOR_A098R000G000B000);
                         g.fillRect(start, HEADER, end - start, graph_height);
                     }
@@ -1480,10 +1480,10 @@ namespace cadencii
                         EditTool tool = EditorManager.SelectedTool;
                         if (tool == EditTool.LINE) {
 #if OLD_IMPL_MOUSE_TRACER
-                            int xini = AppManager.xCoordFromClocks( m_line_start.x );
+                            int xini = EditorManager.xCoordFromClocks( m_line_start.x );
                             int yini = yCoordFromValue( m_line_start.y );
                             g.setColor( s_pen_050_140_150 );
-                            g.drawLine( xini, yini, AppManager.xCoordFromClocks( clock_at_mouse ), yCoordFromValue( value ) );
+                            g.drawLine( xini, yini, EditorManager.xCoordFromClocks( clock_at_mouse ), yCoordFromValue( value ) );
 #else
                             if (mMouseTracer.size() > 0) {
                                 Point pt = mMouseTracer.iterator().First();
@@ -1492,7 +1492,7 @@ namespace cadencii
                                 g.setColor(cadencii.java.awt.Colors.Orange);
                                 g.setStroke(getStroke2px());
 								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                                g.drawLine(xini, yini, AppManager.xCoordFromClocks(clock_at_mouse), yCoordFromValue(value));
+                                g.drawLine(xini, yini, EditorManager.xCoordFromClocks(clock_at_mouse), yCoordFromValue(value));
 								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
                                 g.setStroke(getStrokeDefault());
                             }
@@ -1555,8 +1555,8 @@ namespace cadencii
                             }
                         } else if (tool == EditTool.ERASER || tool == EditTool.ARROW) {
                             if (mMouseDownMode == MouseDownMode.CURVE_EDIT && mMouseMoved && AppManager.mCurveSelectingRectangle.width != 0) {
-                                int xini = AppManager.xCoordFromClocks(AppManager.mCurveSelectingRectangle.x);
-                                int xend = AppManager.xCoordFromClocks(AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);
+                                int xini = EditorManager.xCoordFromClocks(AppManager.mCurveSelectingRectangle.x);
+                                int xend = EditorManager.xCoordFromClocks(AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);
                                 int x_start = Math.Min(xini, xend);
                                 if (x_start < key_width) {
                                     x_start = key_width;
@@ -1584,7 +1584,7 @@ namespace cadencii
                         }
                         if (mMouseDownMode == MouseDownMode.SINGER_LIST && EditorManager.SelectedTool != EditTool.ERASER) {
                             foreach (var item in AppManager.itemSelection.getEventIterator()) {
-                                int x = AppManager.xCoordFromClocks(item.editing.Clock);
+                                int x = EditorManager.xCoordFromClocks(item.editing.Clock);
                                 g.setColor(COLOR_SINGERBOX_BORDER_HILIGHT);
                                 g.drawRect(x, size.height - 2 * OFFSET_TRACK_TAB + 1,
                                            SINGER_ITEM_WIDTH, OFFSET_TRACK_TAB - 2);
@@ -1638,7 +1638,7 @@ namespace cadencii
                 }
 
                 #region 現在のマーカー
-                int marker_x = AppManager.xCoordFromClocks(AppManager.getCurrentClock());
+                int marker_x = EditorManager.xCoordFromClocks(AppManager.getCurrentClock());
                 if (key_width <= marker_x && marker_x <= size.width) {
                     g.setColor(cadencii.java.awt.Colors.White);
                     g.setStroke(new Stroke(2f));
@@ -1696,8 +1696,8 @@ namespace cadencii
             int width = getWidth();
             int height = getHeight();
             g.setClip(key_width, 0, width - key_width, height);
-            int clock_start = AppManager.clockFromXCoord(key_width);
-            int clock_end = AppManager.clockFromXCoord(width);
+            int clock_start = EditorManager.clockFromXCoord(key_width);
+            int clock_end = EditorManager.clockFromXCoord(width);
 
             VsqFileEx vsq = MusicManager.getVsqFile();
             VsqTrack track = vsq.Track[track_index];
@@ -1929,7 +1929,7 @@ namespace cadencii
                 for (int i = 0; i < count; i++) {
                     int clock = list.getKeyClock(i);
                     VsqBPPair item = list.getElementB(i);
-                    int x = AppManager.xCoordFromClocks(clock);
+                    int x = EditorManager.xCoordFromClocks(clock);
                     if (x + DOT_WID < EditorManager.keyWidth) {
                         continue;
                     }
@@ -1991,8 +1991,8 @@ namespace cadencii
                 point_kind.value = -1;
             }
 
-            int clock_start = AppManager.clockFromXCoord(EditorManager.keyWidth);
-            int clock_end = AppManager.clockFromXCoord(getWidth());
+            int clock_start = EditorManager.clockFromXCoord(EditorManager.keyWidth);
+            int clock_end = EditorManager.clockFromXCoord(getWidth());
             int dotwid = DOT_WID * 2 + 1;
             VsqFileEx vsq = MusicManager.getVsqFile();
             IEnumerator<VsqEvent> itr = vsq.Track[EditorManager.Selected].getNoteEventIterator().GetEnumerator();
@@ -2105,7 +2105,7 @@ namespace cadencii
 
             TempoVectorSearchContext context = new TempoVectorSearchContext();
             int px_env_start1 =
-                AppManager.xCoordFromClocks(
+                EditorManager.xCoordFromClocks(
                     (int)tempo_table.getClockFromSec(sec_env_start1.value, context));
             if (px_pre_utteramce != null) {
                 px_pre_utteramce.value = px_env_start1;
@@ -2115,15 +2115,15 @@ namespace cadencii
             double sec_p5 = sec_env_start1.value + (draw_target.p1 + draw_target.p2 + draw_target.p5) / 1000.0;
             double sec_p3 = sec_env_end1.value - (draw_target.p3 + draw_target.p4) / 1000.0;
             double sec_p4 = sec_env_end1.value - draw_target.p4 / 1000.0;
-            int p1 = AppManager.xCoordFromClocks((int)tempo_table.getClockFromSec(sec_p1, context));
-            int p2 = AppManager.xCoordFromClocks((int)tempo_table.getClockFromSec(sec_p2, context));
-            int p5 = AppManager.xCoordFromClocks((int)tempo_table.getClockFromSec(sec_p5, context));
-            int p3 = AppManager.xCoordFromClocks((int)tempo_table.getClockFromSec(sec_p3, context));
-            int p4 = AppManager.xCoordFromClocks((int)tempo_table.getClockFromSec(sec_p4, context));
-            int px_env_end1 = AppManager.xCoordFromClocks((int)tempo_table.getClockFromSec(sec_env_end1.value, context));
+            int p1 = EditorManager.xCoordFromClocks((int)tempo_table.getClockFromSec(sec_p1, context));
+            int p2 = EditorManager.xCoordFromClocks((int)tempo_table.getClockFromSec(sec_p2, context));
+            int p5 = EditorManager.xCoordFromClocks((int)tempo_table.getClockFromSec(sec_p5, context));
+            int p3 = EditorManager.xCoordFromClocks((int)tempo_table.getClockFromSec(sec_p3, context));
+            int p4 = EditorManager.xCoordFromClocks((int)tempo_table.getClockFromSec(sec_p4, context));
+            int px_env_end1 = EditorManager.xCoordFromClocks((int)tempo_table.getClockFromSec(sec_env_end1.value, context));
             if (px_overlap != null) {
                 px_overlap.value =
-                    AppManager.xCoordFromClocks(
+                    EditorManager.xCoordFromClocks(
                         (int)tempo_table.getClockFromSec(sec_env_start1.value + sec_overlap1, context));
             }
             int v1 = yCoordFromValue(draw_target.v1);
@@ -2415,7 +2415,7 @@ namespace cadencii
                     bool breaked = false;
                     for (int j = 0; j < target_chain_points_count; j++) {
                         next = target_chain.points[j];
-                        int next_x = AppManager.xCoordFromClocks((int)next.getBase().getX());
+                        int next_x = EditorManager.xCoordFromClocks((int)next.getBase().getX());
                         pxNext = new Point(next_x, yCoordFromValue((int)next.getBase().getY()));
                         Point pxControlCurrent = getScreenCoord(current.getControlRight());
                         Point pxControlNext = getScreenCoord(next.getControlLeft());
@@ -2553,7 +2553,7 @@ namespace cadencii
 
         private Point getScreenCoord(PointD pt)
         {
-            return new Point(AppManager.xCoordFromClocks((int)pt.getX()), yCoordFromValue((int)pt.getY()));
+            return new Point(EditorManager.xCoordFromClocks((int)pt.getX()), yCoordFromValue((int)pt.getY()));
         }
 
         /// <summary>
@@ -2577,8 +2577,8 @@ namespace cadencii
             g.clipRect(key_width, HEADER,
                         width - key_width, graph_height);
 
-            int cl_start = AppManager.clockFromXCoord(key_width);
-            int cl_end = AppManager.clockFromXCoord(width);
+            int cl_start = EditorManager.clockFromXCoord(key_width);
+            int cl_end = EditorManager.clockFromXCoord(width);
             int max = type.getMaximum();
             int min = type.getMinimum();
 
@@ -2603,12 +2603,12 @@ namespace cadencii
                 if (handle == null) {
                     continue;
                 }
-                int x1 = AppManager.xCoordFromClocks(start);
+                int x1 = EditorManager.xCoordFromClocks(start);
 
                 // 左側の影付にする部分を描画
                 g.setColor(COLOR_VIBRATO_SHADOW);
                 g.fillRect(last_shadow_x, HEADER, x1 - last_shadow_x, graph_height);
-                int x2 = AppManager.xCoordFromClocks(end);
+                int x2 = EditorManager.xCoordFromClocks(end);
                 last_shadow_x = x2;
 
                 if (x1 < x2) {
@@ -2684,9 +2684,9 @@ namespace cadencii
             int key_width = EditorManager.keyWidth;
 
             int start = key_width;
-            int start_clock = AppManager.clockFromXCoord(start);
+            int start_clock = EditorManager.clockFromXCoord(start);
             int end = width;
-            int end_clock = AppManager.clockFromXCoord(end);
+            int end_clock = EditorManager.clockFromXCoord(end);
 
             // グラフ描画器の取得と設定
             LineGraphDrawer d = getGraphDrawer();
@@ -2713,7 +2713,7 @@ namespace cadencii
             int c = list.size();
             if (c > 0) {
                 int first_clock = list.getKeyClock(0);
-                int last_x = AppManager.xCoordFromClocks(first_clock);
+                int last_x = EditorManager.xCoordFromClocks(first_clock);
                 first_y = list.getValue(first_clock);
                 last_y = oy - (int)((first_y - min) * order);
 
@@ -2725,7 +2725,7 @@ namespace cadencii
                     if (end_clock < clock) {
                         break;
                     }
-                    int x = AppManager.xCoordFromClocks(clock);
+                    int x = EditorManager.xCoordFromClocks(clock);
                     VsqBPPair v = list.getElementB(i);
                     int y = oy - (int)((v.value - min) * order);
                     d.append(x, y);
@@ -2752,7 +2752,7 @@ namespace cadencii
                 int clock = ret.clock;
                 int value = ret.point.value;
 
-                int x = AppManager.xCoordFromClocks(clock);
+                int x = EditorManager.xCoordFromClocks(clock);
                 if (x < key_width) {
                     continue;
                 } else if (width < x) {
@@ -2767,7 +2767,7 @@ namespace cadencii
                 int dx = pmouse.X + EditorManager.MainWindowController.getStartToDrawX() - mMouseDownLocation.X;
                 int dy = pmouse.Y - mMouseDownLocation.Y;
                 foreach (var item in mMovingPoints) {
-                    int x = AppManager.xCoordFromClocks(item.Clock) + dx;
+                    int x = EditorManager.xCoordFromClocks(item.Clock) + dx;
                     int y = yCoordFromValue(item.Value) + dy;
                     g.setColor(COLOR_DOT_HILIGHT);
                     g.fillRect(x - DOT_WID, y - DOT_WID, w, w);
@@ -3156,7 +3156,7 @@ namespace cadencii
 
         public BezierPoint HandleMouseMoveForBezierMove(MouseEventArgs e, BezierPickedSide picked)
         {
-            int clock = AppManager.clockFromXCoord(e.X);
+            int clock = EditorManager.clockFromXCoord(e.X);
             int value = valueFromYCoord(e.Y);
             int value_raw = value;
 
@@ -3208,7 +3208,7 @@ namespace cadencii
             if (AppManager.isPlaying()) {
                 return;
             }
-            int clock = AppManager.clockFromXCoord(e.X);
+            int clock = EditorManager.clockFromXCoord(e.X);
 
             VsqFileEx vsq = MusicManager.getVsqFile();
             if (clock < vsq.getPreMeasure()) {
@@ -3337,7 +3337,7 @@ namespace cadencii
                     }
                 }
             } else if (mMouseDownMode == MouseDownMode.ENVELOPE_MOVE) {
-                double sec = vsq.getSecFromClock(AppManager.clockFromXCoord(e.X));
+                double sec = vsq.getSecFromClock(EditorManager.clockFromXCoord(e.X));
                 int v = valueFromYCoord(e.Y);
                 if (v < 0) {
                     v = 0;
@@ -3366,12 +3366,12 @@ namespace cadencii
                     mEnvelopeEditing.v4 = v;
                 }
             } else if (mMouseDownMode == MouseDownMode.PRE_UTTERANCE_MOVE) {
-                int clock_at_downed = AppManager.clockFromXCoord(mMouseDownLocation.X - stdx);
+                int clock_at_downed = EditorManager.clockFromXCoord(mMouseDownLocation.X - stdx);
                 double dsec = vsq.getSecFromClock(clock) - vsq.getSecFromClock(clock_at_downed);
                 float draft_preutterance = mPreOverlapOriginal.UstEvent.getPreUtterance() - (float)(dsec * 1000);
                 mPreOverlapEditing.UstEvent.setPreUtterance(draft_preutterance);
             } else if (mMouseDownMode == MouseDownMode.OVERLAP_MOVE) {
-                int clock_at_downed = AppManager.clockFromXCoord(mMouseDownLocation.X - stdx);
+                int clock_at_downed = EditorManager.clockFromXCoord(mMouseDownLocation.X - stdx);
                 double dsec = vsq.getSecFromClock(clock) - vsq.getSecFromClock(clock_at_downed);
                 float draft_overlap = mPreOverlapOriginal.UstEvent.getVoiceOverlap() + (float)(dsec * 1000);
                 mPreOverlapEditing.UstEvent.setVoiceOverlap(draft_overlap);
@@ -3447,7 +3447,7 @@ namespace cadencii
                 AppManager.itemSelection.clearPoint();
             }
 
-            int clock = AppManager.clockFromXCoord(e.X);
+            int clock = EditorManager.clockFromXCoord(e.X);
             int quantized_clock = clock;
             int unit = EditorManager.getPositionQuantizeClock();
             int odd = clock % unit;
@@ -3480,7 +3480,7 @@ namespace cadencii
             VsqFileEx vsq = MusicManager.getVsqFile();
             mMouseDownLocation.X = e.X + EditorManager.MainWindowController.getStartToDrawX();
             mMouseDownLocation.Y = e.Y;
-            int clock = AppManager.clockFromXCoord(e.X);
+            int clock = EditorManager.clockFromXCoord(e.X);
             int selected = EditorManager.Selected;
             int height = getHeight();
             int width = getWidth();
@@ -3605,8 +3605,8 @@ namespace cadencii
             } else {
                 #region MouseDown occred on other position
                 bool clock_inner_note = false; //マウスの降りたクロックが，ノートの範囲内かどうかをチェック
-                int left_clock = AppManager.clockFromXCoord(EditorManager.keyWidth);
-                int right_clock = AppManager.clockFromXCoord(getWidth());
+                int left_clock = EditorManager.clockFromXCoord(EditorManager.keyWidth);
+                int right_clock = EditorManager.clockFromXCoord(getWidth());
                 for (Iterator<VsqEvent> itr = vsq_track.getEventIterator(); itr.hasNext(); ) {
                     VsqEvent ve = itr.next();
                     if (ve.ID.type == VsqIDType.Anote) {
@@ -4061,7 +4061,7 @@ namespace cadencii
 #if DEBUG
             sout.println("TrackSelector::processMouseDownBezier");
 #endif
-            int clock = AppManager.clockFromXCoord(e.X);
+            int clock = EditorManager.clockFromXCoord(e.X);
             int max = mSelectedCurve.getMaximum();
             int min = mSelectedCurve.getMinimum();
             int value = valueFromYCoord(e.Y);
@@ -4361,7 +4361,7 @@ namespace cadencii
             for (int i = 0; i < count; i++) {
                 VsqEvent ve = target.getEvent(i);
                 if (ve.ID.type == VsqIDType.Singer) {
-                    int x = AppManager.xCoordFromClocks(ve.Clock);
+                    int x = EditorManager.xCoordFromClocks(ve.Clock);
                     if (getHeight() - 2 * OFFSET_TRACK_TAB <= locy &&
                          locy <= getHeight() - OFFSET_TRACK_TAB &&
                          x <= locx && locx <= x + SINGER_ITEM_WIDTH) {
@@ -4370,7 +4370,7 @@ namespace cadencii
                         //return null;
                     }
                 } else if (ve.ID.type == VsqIDType.Anote) {
-                    int x = AppManager.xCoordFromClocks(ve.Clock);
+                    int x = EditorManager.xCoordFromClocks(ve.Clock);
                     int y = 0;
                     if (mSelectedCurve.equals(CurveType.VEL)) {
                         y = yCoordFromValue(ve.ID.Dynamics);
@@ -4746,8 +4746,8 @@ namespace cadencii
                                 #region VEL Accent Decay
                                 int start = mMouseTracer.firstKey();
                                 int end = mMouseTracer.lastKey();
-                                start = AppManager.clockFromXCoord(start - stdx);
-                                end = AppManager.clockFromXCoord(end - stdx);
+                                start = EditorManager.clockFromXCoord(start - stdx);
+                                end = EditorManager.clockFromXCoord(end - stdx);
 #if DEBUG
                                 CDebug.WriteLine("        start=" + start);
                                 CDebug.WriteLine("        end=" + end);
@@ -4770,8 +4770,8 @@ namespace cadencii
                                             }
                                             int key0 = lkey;
                                             int key1 = key;
-                                            int key0_clock = AppManager.clockFromXCoord(key0 - stdx);
-                                            int key1_clock = AppManager.clockFromXCoord(key1 - stdx);
+                                            int key0_clock = EditorManager.clockFromXCoord(key0 - stdx);
+                                            int key1_clock = EditorManager.clockFromXCoord(key1 - stdx);
 #if DEBUG
                                             CDebug.WriteLine("        key0,key1=" + key0 + "," + key1);
 #endif
@@ -4852,10 +4852,10 @@ namespace cadencii
                                     float cl_vib_length = ve.ID.getLength() - ve.ID.VibratoDelay;
 
                                     // 仮想スクリーン上の、ビブラートの描画開始位置
-                                    int vib_start = AppManager.xCoordFromClocks(cl_vib_start) + stdx;
+                                    int vib_start = EditorManager.xCoordFromClocks(cl_vib_start) + stdx;
 
                                     // 仮想スクリーン上の、ビブラートの描画終了位置
-                                    int vib_end = AppManager.xCoordFromClocks(ve.Clock + ve.ID.getLength()) + stdx;
+                                    int vib_end = EditorManager.xCoordFromClocks(ve.Clock + ve.ID.getLength()) + stdx;
 
                                     // マウスのトレースと、ビブラートの描画範囲がオーバーラップしている部分を検出
                                     int chk_start = Math.Max(vib_start, start);
@@ -4865,8 +4865,8 @@ namespace cadencii
                                         continue;
                                     }
 
-                                    float add_min = (AppManager.clockFromXCoord(chk_start - stdx) - cl_vib_start) / cl_vib_length;
-                                    float add_max = (AppManager.clockFromXCoord(chk_end - stdx) - cl_vib_start) / cl_vib_length;
+                                    float add_min = (EditorManager.clockFromXCoord(chk_start - stdx) - cl_vib_start) / cl_vib_length;
+                                    float add_max = (EditorManager.clockFromXCoord(chk_end - stdx) - cl_vib_start) / cl_vib_length;
 
                                     List<ValuePair<float, int>> edit = new List<ValuePair<float, int>>();
                                     int lclock = -2 * step_clock;
@@ -4878,7 +4878,7 @@ namespace cadencii
                                         } else if (chk_end < p.X) {
                                             break;
                                         }
-                                        int clock = AppManager.clockFromXCoord(p.X - stdx);
+                                        int clock = EditorManager.clockFromXCoord(p.X - stdx);
                                         if (clock - lclock < step_clock) {
                                             continue;
                                         }
@@ -4960,8 +4960,8 @@ namespace cadencii
                                 }
                                 int start = mMouseTracer.firstKey();
                                 int end = mMouseTracer.lastKey();
-                                int clock_start = AppManager.clockFromXCoord(start - stdx);
-                                int clock_end = AppManager.clockFromXCoord(end - stdx);
+                                int clock_start = EditorManager.clockFromXCoord(start - stdx);
+                                int clock_end = EditorManager.clockFromXCoord(end - stdx);
                                 int last = start;
 
 #if DEBUG
@@ -4992,7 +4992,7 @@ namespace cadencii
                                     } else if (end < p.X) {
                                         break;
                                     }
-                                    int clock = AppManager.clockFromXCoord(p.X - stdx);
+                                    int clock = EditorManager.clockFromXCoord(p.X - stdx);
                                     if (clock - lclock < step_clock) {
                                         continue;
                                     }
@@ -5207,10 +5207,10 @@ namespace cadencii
                         int clock = list.getKeyClock(i);
                         VsqBPPair item = list.getElementB(i);
                         if (AppManager.itemSelection.isPointContains(item.id)) {
-                            int x = AppManager.xCoordFromClocks(clock) + dx + 1;
+                            int x = EditorManager.xCoordFromClocks(clock) + dx + 1;
                             int y = yCoordFromValue(item.value) + dy - 1;
 
-                            int nclock = AppManager.clockFromXCoord(x);
+                            int nclock = EditorManager.clockFromXCoord(x);
                             int nvalue = valueFromYCoord(y);
                             if (nvalue < min0) {
                                 nvalue = min0;
@@ -5246,7 +5246,7 @@ namespace cadencii
                  !mSelectedCurve.equals(CurveType.VEL)) {
 				Point pmouse = pointToClient(cadencii.core2.PortUtil.getMousePosition());
                 Point mouse = new Point(pmouse.X, pmouse.Y);
-                int clock = AppManager.clockFromXCoord(mouse.X);
+                int clock = EditorManager.clockFromXCoord(mouse.X);
                 int value = valueFromYCoord(mouse.Y);
                 int min = mSelectedCurve.getMinimum();
                 int max = mSelectedCurve.getMaximum();
@@ -5440,7 +5440,7 @@ namespace cadencii
                              !mSelectedCurve.equals(CurveType.Env)) {
                             // ベジエデータ点にヒットしているかどうかを検査
                             //int track = EditorManager.Selected;
-                            int clock = AppManager.clockFromXCoord(e.X);
+                            int clock = EditorManager.clockFromXCoord(e.X);
                             List<BezierChain> dict = vsq.AttachedCurves.get(selected - 1).get(mSelectedCurve);
                             BezierChain target_chain = null;
                             BezierPoint target_point = null;
@@ -5547,7 +5547,7 @@ namespace cadencii
                                     int list_size = list.size();
                                     for (int i = 0; i < list_size; i++) {
                                         int c = list.getKeyClock(i);
-                                        int bpx = AppManager.xCoordFromClocks(c);
+                                        int bpx = EditorManager.xCoordFromClocks(c);
                                         if (e.X < bpx - DOT_WID) {
                                             break;
                                         }
@@ -5569,7 +5569,7 @@ namespace cadencii
                                     AppManager.itemSelection.addPoint(mSelectedCurve, bp_id);
                                     FormCurvePointEdit dialog =
                                         new FormCurvePointEdit(mMainWindow, bp_id, mSelectedCurve);
-                                    int tx = AppManager.xCoordFromClocks(tclock);
+                                    int tx = EditorManager.xCoordFromClocks(tclock);
                                     Point pt = pointToScreen(new Point(tx, 0));
                                     Invalidate();
                                     dialog.Location =
@@ -5599,7 +5599,7 @@ namespace cadencii
                             if (isInRect(e.X, e.Y, rc_left_singer_box)) {
                                 // マウス位置に歌手変更が無かった場合であって、かつ、
                                 // マウス位置が左端の常時歌手表示部の内部だった場合
-                                int clock_at_left = AppManager.clockFromXCoord(x_at_left);
+                                int clock_at_left = EditorManager.clockFromXCoord(x_at_left);
                                 ve = vsq_track.getSingerEventAt(clock_at_left);
                             }
                         }
@@ -5629,7 +5629,7 @@ namespace cadencii
                                 prepareSingerMenu(renderer);
                             }
                             string singer = ApplicationGlobal.appConfig.DefaultSingerName;
-                            int clock = AppManager.clockFromXCoord(e.X);
+                            int clock = EditorManager.clockFromXCoord(e.X);
                             int last_clock = 0;
                             for (Iterator<VsqEvent> itr = vsq_track.getSingerEventIterator(); itr.hasNext(); ) {
                                 VsqEvent ve2 = itr.next();

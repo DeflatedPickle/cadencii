@@ -18,6 +18,7 @@ namespace cadencii
 
     public interface UiBase
     {
+		bool Visible { get; set; }
         int showDialog(Object parent_form);
     };
 

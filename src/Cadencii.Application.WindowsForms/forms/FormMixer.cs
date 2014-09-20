@@ -24,8 +24,18 @@ using Keys = cadencii.java.awt.Keys;
 
 namespace cadencii
 {
-    public class FormMixer : Form
+    public class FormMixerUiImpl : Form, FormMixerUi
     {
+		event EventHandler FormMixerUi.FormClosing {
+			add { this.FormClosing += (object sender, FormClosingEventArgs e) => value (sender, e); }
+			remove { this.FormClosing -= (object sender, FormClosingEventArgs e) => value (sender, e); }
+		}
+
+		int UiBase.showDialog (object parent_form)
+		{
+			return ShowDialog ((IWin32Window) parent_form) == System.Windows.Forms.DialogResult.OK ? 1 : 0;
+		}
+
         private FormMain m_parent;
         private List<VolumeTracker> m_tracker = null;
         private bool mPreviousAlwaysOnTop;
@@ -38,7 +48,7 @@ namespace cadencii
 
         public event MuteChangedEventHandler MuteChanged;
 
-        public FormMixer(FormMain parent)
+        public FormMixerUiImpl(FormMain parent)
         {
             InitializeComponent();
             registerEventHandlers();
@@ -192,8 +202,8 @@ namespace cadencii
             if (m_tracker.Count < num) {
                 int remain = num - m_tracker.Count;
                 for (int i = 0; i < remain; i++) {
-                    VolumeTracker item = new VolumeTracker();
-                    item.BorderStyle = BorderStyle.FixedSingle;
+                    VolumeTracker item = new VolumeTrackerImpl();
+                    item.BorderStyle = cadencii.java.awt.BorderStyle.FixedSingle;
                     item.Size = volumeMaster.Size;
                     m_tracker.Add(item);
                 }
@@ -211,7 +221,7 @@ namespace cadencii
 			int max = cadencii.core2.PortUtil.getWorkingArea(this).width;
             int bordersize = 4;// TODO: ここもともとは SystemInformation.FrameBorderSize;だった
             int max_client_width = max - 2 * bordersize;
-            int max_num = (int)Math.Floor(max_client_width / (VolumeTracker.WIDTH + 1.0f));
+            int max_num = (int)Math.Floor(max_client_width / (VolumeTrackerController.WIDTH + 1.0f));
             num++;
 
             int screen_num = num <= max_num ? num : max_num; //スクリーン上に表示するVolumeTrackerの個数
@@ -227,16 +237,16 @@ namespace cadencii
                 hScroll.Value = 0;
                 hScroll.Maximum = 0;
                 hScroll.LargeChange = 1;
-                hScroll.Size = new Size((VolumeTracker.WIDTH + 1) * num_vtracker_on_panel, 15);
+                hScroll.Size = new System.Drawing.Size((VolumeTrackerController.WIDTH + 1) * num_vtracker_on_panel, 15);
             } else {
                 // num_vtracker_on_panel個のVolumeTrackerのうち，panel_capacity個しか，画面上に同時表示できない
                 hScroll.Minimum = 0;
                 hScroll.Value = 0;
-                hScroll.Maximum = num_vtracker_on_panel * VolumeTracker.WIDTH;
-                hScroll.LargeChange = panel_capacity * VolumeTracker.WIDTH;
-                hScroll.Size = new Size((VolumeTracker.WIDTH + 1) * panel_capacity, 15);
+				hScroll.Maximum = num_vtracker_on_panel * VolumeTrackerController.WIDTH;
+				hScroll.LargeChange = panel_capacity * VolumeTrackerController.WIDTH;
+				hScroll.Size = new System.Drawing.Size((VolumeTrackerController.WIDTH + 1) * panel_capacity, 15);
             }
-            hScroll.Location = new System.Drawing.Point(0, VolumeTracker.HEIGHT);
+			hScroll.Location = new System.Drawing.Point(0, VolumeTrackerController.HEIGHT);
 
             int j = -1;
             foreach (var vme in vsq.Mixer.Slave) {
@@ -249,7 +259,7 @@ namespace cadencii
                 tracker.setPanpot(vme.Panpot);
                 tracker.setTitle(vsq.Track[j + 1].getName());
                 tracker.setNumber((j + 1) + "");
-                tracker.setLocation(j * (VolumeTracker.WIDTH + 1), 0);
+				tracker.setLocation(j * (VolumeTrackerController.WIDTH + 1), 0);
                 tracker.setSoloButtonVisible(true);
                 tracker.setMuted((vme.Mute == 1));
                 tracker.setSolo((vme.Solo == 1));
@@ -266,7 +276,7 @@ namespace cadencii
                 tracker.setPanpot(item.panpot);
                 tracker.setTitle(PortUtil.getFileName(item.file));
                 tracker.setNumber("");
-                tracker.setLocation(j * (VolumeTracker.WIDTH + 1), 0);
+				tracker.setLocation(j * (VolumeTrackerController.WIDTH + 1), 0);
                 tracker.setSoloButtonVisible(false);
                 tracker.setMuted((item.mute == 1));
                 tracker.setSolo(false);
@@ -288,11 +298,11 @@ namespace cadencii
 
             // ウィンドウのサイズを更新（必要なら）
             if (num_changed) {
-                panelSlaves.Width = (VolumeTracker.WIDTH + 1) * (screen_num - 1);
-                volumeMaster.Location = new System.Drawing.Point((screen_num - 1) * (VolumeTracker.WIDTH + 1) + 3, 0);
-                this.MaximumSize = Size.Empty;
-                this.MinimumSize = Size.Empty;
-                this.ClientSize = new Size(screen_num * (VolumeTracker.WIDTH + 1) + 3, VolumeTracker.HEIGHT + hScroll.Height);
+				panelSlaves.Width = (VolumeTrackerController.WIDTH + 1) * (screen_num - 1);
+				volumeMaster.Location = new cadencii.java.awt.Point((screen_num - 1) * (VolumeTrackerController.WIDTH + 1) + 3, 0);
+                this.MaximumSize = System.Drawing.Size.Empty;
+				this.MinimumSize = System.Drawing.Size.Empty;
+				this.ClientSize = new System.Drawing.Size(screen_num * (VolumeTrackerController.WIDTH + 1) + 3, VolumeTrackerController.HEIGHT + hScroll.Height);
                 this.MinimumSize = this.Size;
                 this.MaximumSize = this.Size;
                 this.Invalidate();
@@ -304,7 +314,7 @@ namespace cadencii
         #region helper methods
         private void addToPanelSlaves(VolumeTracker item, int ix)
         {
-            panelSlaves.Controls.Add(item);
+            panelSlaves.Controls.Add((Control) item.Native);
         }
 
         private static string _(string id)
@@ -408,7 +418,7 @@ namespace cadencii
             try {
                 invokePanpotChangedEvent(track, panpot);
             } catch (Exception ex) {
-                Logger.write(typeof(FormMixer) + ".FormMixer_PanpotChanged; ex=" + ex + "\n");
+                Logger.write(typeof(FormMixerUiImpl) + ".FormMixer_PanpotChanged; ex=" + ex + "\n");
                 serr.println("FormMixer#FormMixer_PanpotChanged; ex=" + ex);
             }
         }
@@ -418,7 +428,7 @@ namespace cadencii
             try {
                 invokeFederChangedEvent(track, feder);
             } catch (Exception ex) {
-                Logger.write(typeof(FormMixer) + ".FormMixer_FederChanged; ex=" + ex + "\n");
+                Logger.write(typeof(FormMixerUiImpl) + ".FormMixer_FederChanged; ex=" + ex + "\n");
                 serr.println("FormMixer#FormMixer_FederChanged; ex=" + ex);
             }
         }
@@ -430,7 +440,7 @@ namespace cadencii
             try {
                 invokeSoloChangedEvent(track, parent.isSolo());
             } catch (Exception ex) {
-                Logger.write(typeof(FormMixer) + ".FormMixer_SoloButtonClick; ex=" + ex + "\n");
+                Logger.write(typeof(FormMixerUiImpl) + ".FormMixer_SoloButtonClick; ex=" + ex + "\n");
                 serr.println("FormMixer#FormMixer_IsSoloChanged; ex=" + ex);
             }
             updateSoloMute();
@@ -443,7 +453,7 @@ namespace cadencii
             try {
                 invokeMuteChangedEvent(track, parent.isMuted());
             } catch (Exception ex) {
-                Logger.write(typeof(FormMixer) + ".FormMixer_MuteButtonClick; ex=" + ex + "\n");
+                Logger.write(typeof(FormMixerUiImpl) + ".FormMixer_MuteButtonClick; ex=" + ex + "\n");
                 serr.println("FormMixer#FormMixer_IsMutedChanged; ex=" + ex);
             }
             updateSoloMute();
@@ -464,7 +474,7 @@ namespace cadencii
         {
             int stdx = hScroll.Value;
             for (int i = 0; i < m_tracker.Count; i++) {
-                m_tracker[i].setLocation(-stdx + (VolumeTracker.WIDTH + 1) * i, 0);
+                m_tracker[i].setLocation(-stdx + (VolumeTrackerController.WIDTH + 1) * i, 0);
             }
             this.Invalidate();
         }
@@ -474,7 +484,7 @@ namespace cadencii
             try {
                 invokeFederChangedEvent(0, feder);
             } catch (Exception ex) {
-                Logger.write(typeof(FormMixer) + ".volumeMaster_FederChanged; ex=" + ex + "\n");
+                Logger.write(typeof(FormMixerUiImpl) + ".volumeMaster_FederChanged; ex=" + ex + "\n");
                 serr.println("FormMixer#volumeMaster_FederChanged; ex=" + ex);
             }
         }
@@ -484,7 +494,7 @@ namespace cadencii
             try {
                 invokePanpotChangedEvent(0, panpot);
             } catch (Exception ex) {
-                Logger.write(typeof(FormMixer) + ".volumeMaster_PanpotChanged; ex=" + ex + "\n");
+                Logger.write(typeof(FormMixerUiImpl) + ".volumeMaster_PanpotChanged; ex=" + ex + "\n");
                 serr.println("FormMixer#volumeMaster_PanpotChanged; ex=" + ex);
             }
         }
@@ -494,7 +504,7 @@ namespace cadencii
             try {
                 invokeMuteChangedEvent(0, volumeMaster.isMuted());
             } catch (Exception ex) {
-                Logger.write(typeof(FormMixer) + ".volumeMaster_MuteButtonClick; ex=" + ex + "\n");
+                Logger.write(typeof(FormMixerUiImpl) + ".volumeMaster_MuteButtonClick; ex=" + ex + "\n");
                 serr.println("FormMixer#volumeMaster_IsMutedChanged; ex=" + ex);
             }
         }
@@ -532,7 +542,7 @@ namespace cadencii
             this.menuVisualReturn = new ToolStripMenuItem();
             this.panelSlaves = new UserControl();
             this.hScroll = new HScrollBar();
-            this.volumeMaster = new cadencii.VolumeTracker();
+            this.volumeMaster = new cadencii.VolumeTrackerImpl();
             this.menuMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -581,12 +591,12 @@ namespace cadencii
             // 
             // volumeMaster
             // 
-            this.volumeMaster.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.volumeMaster.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.volumeMaster.Location = new System.Drawing.Point(85, 0);
-            this.volumeMaster.Margin = new System.Windows.Forms.Padding(0);
+            this.volumeMaster.BackColor = new cadencii.java.awt.Color(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.volumeMaster.BorderStyle = cadencii.java.awt.BorderStyle.FixedSingle;
+            this.volumeMaster.Location = new cadencii.java.awt.Point(85, 0);
+            this.volumeMaster.Margin = new cadencii.java.awt.Padding(0);
             this.volumeMaster.Name = "volumeMaster";
-            this.volumeMaster.Size = new System.Drawing.Size(85, 284);
+            this.volumeMaster.Size = new cadencii.java.awt.Size(85, 284);
             this.volumeMaster.TabIndex = 5;
             // 
             // FormMixer
@@ -596,7 +606,7 @@ namespace cadencii
             this.ClientSize = new System.Drawing.Size(170, 304);
             this.Controls.Add(this.hScroll);
             this.Controls.Add(this.panelSlaves);
-            this.Controls.Add(this.volumeMaster);
+            this.Controls.Add((Control)this.volumeMaster.Native);
             this.Controls.Add(this.menuMain);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuMain;

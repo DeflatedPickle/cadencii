@@ -612,7 +612,7 @@
     <Folder Include="ui\controls\" />
   </ItemGroup>
   <ItemGroup />
-  <Import Project="..\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.projitems" Label="Shared" Condition="Exists('..\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.projitems')" />
+  <Import Project="..\Cadencii.Gui.Framework.WindowsForms.Shared\cadencii.gui.winforms.shared.projitems" Label="Shared" Condition="Exists('..\Cadencii.Gui.Framework.WindowsForms.Shared\cadencii.gui.winforms.shared.projitems')" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

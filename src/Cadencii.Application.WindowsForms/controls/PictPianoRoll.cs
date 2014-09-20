@@ -418,7 +418,7 @@ namespace cadencii
                     #region 小節ごとの線
                     if (vsq != null) {
                         int dashed_line_step = EditorManager.getPositionQuantizeClock();
-                        for (Iterator<VsqBarLineType> itr = vsq.getBarLineIterator(AppManager.clockFromXCoord(width)); itr.hasNext(); ) {
+                        for (Iterator<VsqBarLineType> itr = vsq.getBarLineIterator(EditorManager.clockFromXCoord(width)); itr.hasNext(); ) {
                             VsqBarLineType blt = itr.next();
                             int local_clock_step = 1920 / blt.getLocalDenominator();
                             int x = (int)(blt.clock() * scalex + xoffset);
@@ -641,15 +641,15 @@ namespace cadencii
                                                 float delta = vpit * (float)vpbs / 8192.0f;
                                                 float note = dobj.mNote + delta;
 
-                                                int py = AppManager.yCoordFromNote(note) + half_track_height;
+                                                int py = EditorManager.yCoordFromNote(note) + half_track_height;
                                                 if (cl + 1 == cl_end) {
-                                                    int px = AppManager.xCoordFromClocks(cl + 1);
+                                                    int px = EditorManager.xCoordFromClocks(cl + 1);
                                                     commonDrawer.append(px, lasty);
                                                 } else {
                                                     if (py == lasty) {
                                                         continue;
                                                     }
-                                                    int px = AppManager.xCoordFromClocks(cl);
+                                                    int px = EditorManager.xCoordFromClocks(cl);
                                                     if (cl != cl_start) {
                                                         commonDrawer.append(px, lasty);
                                                     }
@@ -681,15 +681,15 @@ namespace cadencii
                                             }
                                             float note = dobj.mNote + delta;
 
-                                            int py = AppManager.yCoordFromNote(note) + half_track_height;
+                                            int py = EditorManager.yCoordFromNote(note) + half_track_height;
                                             if (cl + 1 == cl_end) {
-                                                int px = AppManager.xCoordFromClocks(cl + 1);
+                                                int px = EditorManager.xCoordFromClocks(cl + 1);
                                                 commonDrawer.append(px, lasty);
                                             } else {
                                                 if (py == lasty) {
                                                     continue;
                                                 }
-                                                int px = AppManager.xCoordFromClocks(cl);
+                                                int px = EditorManager.xCoordFromClocks(cl);
                                                 if (cl != cl_start) {
                                                     commonDrawer.append(px, lasty);
                                                 }
@@ -843,8 +843,8 @@ namespace cadencii
                         if (edit_mode == EditMode.MOVE_ENTRY_WHOLE) {
                             int clock_start = AppManager.mWholeSelectedInterval.getStart();
                             int clock_end = AppManager.mWholeSelectedInterval.getEnd();
-                            int x_start = AppManager.xCoordFromClocks(AppManager.mWholeSelectedIntervalStartForMoving);
-                            int x_end = AppManager.xCoordFromClocks(AppManager.mWholeSelectedIntervalStartForMoving + (clock_end - clock_start));
+                            int x_start = EditorManager.xCoordFromClocks(AppManager.mWholeSelectedIntervalStartForMoving);
+                            int x_end = EditorManager.xCoordFromClocks(AppManager.mWholeSelectedIntervalStartForMoving + (clock_end - clock_start));
                             g.setColor(COLOR_A098R000G000B000);
                             g.drawLine(x_start, 0, x_start, height);
                             g.drawLine(x_end, 0, x_end, height);
@@ -1268,11 +1268,11 @@ namespace cadencii
             if (rate == null || depth == null) {
                 return;
             }
-            int y0 = AppManager.yCoordFromNote(note - 0.5f);
+            int y0 = EditorManager.yCoordFromNote(note - 0.5f);
             float px_track_height = (int)(EditorManager.MainWindowController.getScaleY() * 100);
             VsqFileEx vsq = MusicManager.getVsqFile();
-            int clock_start = AppManager.clockFromXCoord(x_start);
-            int clock_end = AppManager.clockFromXCoord(x_start + px_width);
+            int clock_start = EditorManager.clockFromXCoord(x_start);
+            int clock_end = EditorManager.clockFromXCoord(x_start + px_width);
             int tempo = vsq.getTempoAt(clock_start);
 
             drawer.clear();
@@ -1294,7 +1294,7 @@ namespace cadencii
             int lx = 0;
             for (; itr.hasNext(); ) {
                 PointD p = itr.next();
-                int x = AppManager.xCoordFromClocks(vsq.getClockFromSec(p.getX()));
+                int x = EditorManager.xCoordFromClocks(vsq.getClockFromSec(p.getX()));
                 int y = (int)(p.getY() * px_track_height + y0);
                 if (x - lx > 0) {
                     continue;

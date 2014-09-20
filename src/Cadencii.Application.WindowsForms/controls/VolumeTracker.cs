@@ -12,6 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
+using System.Linq;
 using System.Windows.Forms;
 using cadencii;
 using cadencii.windows.forms;
@@ -25,8 +26,42 @@ using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
 namespace cadencii
 {
 
-    public class VolumeTracker : UserControl, IAmplifierView
+    public class VolumeTrackerImpl : UserControl, VolumeTracker
     {
+		Color VolumeTracker.BackColor {
+			get { return BackColor.ToAwt (); }
+			set { BackColor = value.ToNative (); }
+		}
+
+		Point VolumeTracker.Location {
+			get { return new Point (Location.X, Location.Y); }
+			set { Location = new System.Drawing.Point (value.X, value.Y); }
+		}
+
+		cadencii.java.awt.Size VolumeTracker.Size {
+			get { return new cadencii.java.awt.Size (Size.Width, Size.Height); }
+			set { this.Size = new System.Drawing.Size (value.Width, value.Height); }
+		}
+
+		cadencii.java.awt.BorderStyle VolumeTracker.BorderStyle {
+			get { return (cadencii.java.awt.BorderStyle)BorderStyle; }
+			set { BorderStyle = (System.Windows.Forms.BorderStyle)value; }
+		}
+
+		object UiControl.Native {
+			get { return this; }
+		}
+
+		cadencii.java.awt.Padding UiControl.Margin {
+			get { return new cadencii.java.awt.Padding (Margin.All); }
+			set { Margin = new System.Windows.Forms.Padding (value.All); }
+		}
+
+		cadencii.java.awt.DockStyle UiControl.Dock {
+			get { return (cadencii.java.awt.DockStyle)Dock; }
+			set { Dock = (System.Windows.Forms.DockStyle)value; }
+		}
+
         private int mFeder = 0;
         private string m_number = "0";
         private string m_title = "";
@@ -36,8 +71,6 @@ namespace cadencii
         private int mTrack = 0;
 
         #region Constants
-        public const int WIDTH = 85;
-        public const int HEIGHT = 284;
         private static readonly int[,] _KEY = {
             {55, 26}, 
             {51, 27},
@@ -135,7 +168,7 @@ namespace cadencii
 
         public event EventHandler SoloButtonClick;
 
-        public VolumeTracker()
+        public VolumeTrackerImpl()
         {
             InitializeComponent();
             registerEventHandlers();
@@ -335,8 +368,8 @@ namespace cadencii
 
         public void VolumeTracker_Resize(Object sender, EventArgs e)
         {
-            this.Width = WIDTH;
-            this.Height = HEIGHT;
+			this.Width = VolumeTrackerController.WIDTH;
+			this.Height = VolumeTrackerController.HEIGHT;
         }
 
         public void trackFeder_ValueChanged(Object sender, EventArgs e)

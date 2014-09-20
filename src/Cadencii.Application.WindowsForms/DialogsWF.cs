@@ -46,11 +46,11 @@ namespace cadencii
 				}
 			}
 #endif
-			if (AppManager.mMixerWindow != null) {
-				bool previous = AppManager.mMixerWindow.TopMost;
-				AppManager.mMixerWindow.setPreviousAlwaysOnTop (previous);
+			if (EditorManager.MixerWindow != null) {
+				bool previous = EditorManager.MixerWindow.TopMost;
+				EditorManager.MixerWindow.setPreviousAlwaysOnTop (previous);
 				if (previous) {
-					AppManager.mMixerWindow.TopMost = false;
+					EditorManager.MixerWindow.TopMost = false;
 				}
 			}
 
@@ -72,8 +72,8 @@ namespace cadencii
 				AppManager.propertyWindow.getUi ().setAlwaysOnTop (AppManager.propertyWindow.getPreviousAlwaysOnTop ());
 			}
 #endif
-			if (AppManager.mMixerWindow != null) {
-				AppManager.mMixerWindow.TopMost = AppManager.mMixerWindow.getPreviousAlwaysOnTop ();
+			if (EditorManager.MixerWindow != null) {
+				EditorManager.MixerWindow.TopMost = EditorManager.MixerWindow.getPreviousAlwaysOnTop ();
 			}
 
 			if (AppManager.iconPalette != null) {

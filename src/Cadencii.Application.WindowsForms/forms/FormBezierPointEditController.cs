@@ -276,7 +276,7 @@ namespace cadencii
             PointD pd = m_point.getPosition(side);
             Point loc_on_trackselector =
                 new Point(
-                    AppManager.xCoordFromClocks((int)pd.getX()),
+                    EditorManager.xCoordFromClocks((int)pd.getX()),
                     m_parent.yCoordFromValue((int)pd.getY()));
             Point loc_topleft = m_parent.getLocationOnScreen();
             mScreenMouseDownLocation =

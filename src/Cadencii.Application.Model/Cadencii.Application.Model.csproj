@@ -158,6 +158,9 @@
     <Compile Include="ImageCachedComponentDrawer.cs" />
     <Compile Include="controls\PropertyPanel.cs" />
     <Compile Include="ItemSelectionModel.cs" />
+    <Compile Include="RunGeneratorQueue.cs" />
+    <Compile Include="forms\FormMixerUi.cs" />
+    <Compile Include="controls\VolumeTracker.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

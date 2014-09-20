@@ -7,6 +7,8 @@ using cadencii.vsq;
 using cadencii.java.awt;
 using cadencii.xml;
 using cadencii.utau;
+using cadencii.media;
+using System.Threading;
 
 namespace cadencii
 {
@@ -22,6 +24,10 @@ namespace cadencii
 		/// </summary>
 		public static PropertyPanel propertyPanel;
 		#endif
+		/// <summary>
+		/// ミキサーダイアログ
+		/// </summary>
+		public static FormMixerUi MixerWindow;
 
 		/// <summary>
 		/// 鍵盤の表示幅(pixel)
@@ -920,7 +926,7 @@ namespace cadencii
 				try {
 					db = new UtauVoiceDB (config);
 				} catch (Exception ex) {
-					serr.println ("AppManager#reloadUtauVoiceDB; ex=" + ex);
+					serr.println ("EditorManager#reloadUtauVoiceDB; ex=" + ex);
 					db = null;
 					Logger.write (typeof(EditorManager) + ".reloadUtauVoiceDB; ex=" + ex + "\n");
 				}
@@ -931,6 +937,644 @@ namespace cadencii
 		}
 
 		public static bool IsPreviewRepeatMode { get; set; }
+
+		private static object mLocker = new object ();
+
+		/// <summary>
+		/// 指定したトラックについて，再合成が必要な範囲を抽出し，それらのリストを作成します
+		/// </summary>
+		/// <param name="tracks">リストを作成するトラック番号の一覧</param>
+		/// <returns></returns>
+		public static List<PatchWorkQueue> patchWorkCreateQueue (List<int> tracks)
+		{
+			var mVsq = MusicManager.getVsqFile ();
+			mVsq.updateTotalClocks ();
+			string temppath = ApplicationGlobal.getTempWaveDir ();
+			int presend = ApplicationGlobal.appConfig.PreSendTime;
+			int totalClocks = mVsq.TotalClocks;
+
+			List<PatchWorkQueue> queue = new List<PatchWorkQueue> ();
+			int[] startIndex = new int[tracks.Count + 1]; // startList, endList, trackList, filesの内，第startIndex[j]からが，第tracks[j]トラックについてのレンダリング要求かを表す.
+
+			for (int k = 0; k < tracks.Count; k++) {
+				startIndex [k] = queue.Count;
+				int track = tracks [k];
+				VsqTrack vsq_track = mVsq.Track [track];
+				string wavePath = Path.Combine (temppath, track + ".wav");
+
+				if (EditorManager.LastRenderedStatus [track - 1] == null) {
+					// この場合は全部レンダリングする必要がある
+					PatchWorkQueue q = new PatchWorkQueue ();
+					q.track = track;
+					q.clockStart = 0;
+					q.clockEnd = totalClocks + 240;
+					q.file = wavePath;
+					q.vsq = mVsq;
+					queue.Add (q);
+					continue;
+				}
+
+				// 部分レンダリング
+				EditedZoneUnit[] areas =
+					Utility.detectRenderedStatusDifference (EditorManager.LastRenderedStatus [track - 1],
+						new RenderedStatus (
+							(VsqTrack)vsq_track.clone (),
+							mVsq.TempoTable,
+							(SequenceConfig)mVsq.config.clone ()));
+
+				// areasとかぶっている音符がどれかを判定する
+				EditedZone zone = new EditedZone ();
+				zone.add (areas);
+				checkSerializedEvents (zone, vsq_track, mVsq.TempoTable, areas);
+				checkSerializedEvents (zone, EditorManager.LastRenderedStatus [track - 1].track, EditorManager.LastRenderedStatus [track - 1].tempo, areas);
+
+				// レンダリング済みのwaveがあれば、zoneに格納された編集範囲に隣接する前後が無音でない場合、
+				// 編集範囲を無音部分まで延長する。
+				if (System.IO.File.Exists (wavePath)) {
+					WaveReader wr = null;
+					try {
+						wr = new WaveReader (wavePath);
+						int sampleRate = wr.getSampleRate ();
+						int buflen = 1024;
+						double[] left = new double[buflen];
+						double[] right = new double[buflen];
+
+						// まずzoneから編集範囲を抽出
+						List<EditedZoneUnit> areasList = new List<EditedZoneUnit> ();
+						foreach (var e in zone.iterator()) {
+							areasList.Add ((EditedZoneUnit)e.clone ());
+						}
+
+						foreach (var e in areasList) {
+							int exStart = e.mStart;
+							int exEnd = e.mEnd;
+
+							// 前方に1クロックずつ検索する。
+							int end = e.mStart;
+							int start = end - 1;
+							double secEnd = mVsq.getSecFromClock (end);
+							long saEnd = (long)(secEnd * sampleRate);
+							double secStart = 0.0;
+							long saStart = 0;
+							while (true) {
+								start = end - 1;
+								if (start < 0) {
+									start = 0;
+									break;
+								}
+								secStart = mVsq.getSecFromClock (start);
+								saStart = (long)(secStart * sampleRate);
+								int samples = (int)(saEnd - saStart);
+								long pos = saStart;
+								bool allzero = true;
+								while (samples > 0) {
+									int delta = samples > buflen ? buflen : samples;
+									wr.read (pos, delta, left, right);
+									for (int i = 0; i < delta; i++) {
+										if (left [i] != 0.0 || right [i] != 0.0) {
+											allzero = false;
+											break;
+										}
+									}
+									pos += delta;
+									samples -= delta;
+									if (!allzero) {
+										break;
+									}
+								}
+								if (allzero) {
+									break;
+								}
+								secEnd = secStart;
+								end = start;
+								saEnd = saStart;
+							}
+							// endクロックより先は無音であるようだ。
+							exStart = end;
+
+							// 後方に1クロックずつ検索する
+							if (e.mEnd < int.MaxValue) {
+								start = e.mEnd;
+								secStart = mVsq.getSecFromClock (start);
+								while (true) {
+									end = start + 1;
+									secEnd = mVsq.getSecFromClock (end);
+									saEnd = (long)(secEnd * sampleRate);
+									int samples = (int)(saEnd - saStart);
+									long pos = saStart;
+									bool allzero = true;
+									while (samples > 0) {
+										int delta = samples > buflen ? buflen : samples;
+										wr.read (pos, delta, left, right);
+										for (int i = 0; i < delta; i++) {
+											if (left [i] != 0.0 || right [i] != 0.0) {
+												allzero = false;
+												break;
+											}
+										}
+										pos += delta;
+										samples -= delta;
+										if (!allzero) {
+											break;
+										}
+									}
+									if (allzero) {
+										break;
+									}
+									secStart = secEnd;
+									start = end;
+									saStart = saEnd;
+								}
+								// startクロック以降は無音のようだ
+								exEnd = start;
+							}
+#if DEBUG
+							if (e.mStart != exStart) {
+								sout.println ("FormMain#patchWorkToFreeze; start extended; " + e.mStart + " => " + exStart);
+							}
+							if (e.mEnd != exEnd) {
+								sout.println ("FormMain#patchWorkToFreeze; end extended; " + e.mEnd + " => " + exEnd);
+							}
+#endif
+
+							zone.add (exStart, exEnd);
+						}
+					} catch (Exception ex) {
+						Logger.write (typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex + "\n");
+						serr.println ("FormMain#patchWorkToFreeze; ex=" + ex);
+					} finally {
+						if (wr != null) {
+							try {
+								wr.close ();
+							} catch (Exception ex2) {
+								Logger.write (typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex2 + "\n");
+								serr.println ("FormMain#patchWorkToFreeze; ex2=" + ex2);
+							}
+						}
+					}
+				}
+
+				// zoneに、レンダリングが必要なアイテムの範囲が格納されているので。
+				int j = -1;
+#if DEBUG
+				sout.println ("EditorManager#patchWorkCreateQueue; track#" + track);
+#endif
+				foreach (var unit in zone.iterator()) {
+					j++;
+					PatchWorkQueue q = new PatchWorkQueue ();
+					q.track = track;
+					q.clockStart = unit.mStart;
+					q.clockEnd = unit.mEnd;
+#if DEBUG
+					sout.println ("    start=" + unit.mStart + "; end=" + unit.mEnd);
+#endif
+					q.file = Path.Combine (temppath, track + "_" + j + ".wav");
+					q.vsq = mVsq;
+					queue.Add (q);
+				}
+			}
+			startIndex [tracks.Count] = queue.Count;
+
+			if (queue.Count <= 0) {
+				// パッチワークする必要なし
+				for (int i = 0; i < tracks.Count; i++) {
+					EditorManager.setRenderRequired (tracks [i], false);
+				}
+			}
+
+			return queue;
+		}
+
+		/// <summary>
+		/// 指定されたトラックにあるイベントの内、配列areasで指定されたゲートタイム範囲とオーバーラップしているか、
+		/// または連続している音符を抽出し、その範囲をzoneに追加します。
+		/// </summary>
+		/// <param name="zone"></param>
+		/// <param name="vsq_track"></param>
+		/// <param name="tempo_vector"></param>
+		/// <param name="areas"></param>
+		private static void checkSerializedEvents (EditedZone zone, VsqTrack vsq_track, TempoVector tempo_vector, EditedZoneUnit[] areas)
+		{
+			if (vsq_track == null || zone == null || areas == null) {
+				return;
+			}
+			if (areas.Length == 0) {
+				return;
+			}
+
+			// まず，先行発音も考慮した音符の範囲を列挙する
+			List<int> clockStartList = new List<int> ();
+			List<int> clockEndList = new List<int> ();
+			List<int> internalIdList = new List<int> ();
+			int size = vsq_track.getEventCount ();
+			RendererKind kind = VsqFileEx.getTrackRendererKind (vsq_track);
+			for (int i = 0; i < size; i++) {
+				VsqEvent item = vsq_track.getEvent (i);
+				int clock_start = item.Clock;
+				int clock_end = item.Clock + item.ID.getLength ();
+				int internal_id = item.InternalID;
+				if (item.ID.type == VsqIDType.Anote) {
+					if (kind == RendererKind.UTAU) {
+						// 秒単位の先行発音
+						double sec_pre_utterance = item.UstEvent.getPreUtterance () / 1000.0;
+						// 先行発音を考慮した，音符の開始秒
+						double sec_at_clock_start_act = tempo_vector.getSecFromClock (clock_start) - sec_pre_utterance;
+						// 上記をクロック数に変換した物
+						int clock_start_draft = (int)tempo_vector.getClockFromSec (sec_at_clock_start_act);
+						// くり上がりがあるかもしれないので検査
+						while (sec_at_clock_start_act < tempo_vector.getSecFromClock (clock_start_draft) && 0 < clock_start_draft) {
+							clock_start_draft--;
+						}
+						clock_start = clock_start_draft;
+					}
+				} else {
+					internal_id = -1;
+				}
+
+				// リストに追加
+				clockStartList.Add (clock_start);
+				clockEndList.Add (clock_end);
+				internalIdList.Add (internal_id);
+			}
+
+			SortedDictionary<int, int> ids = new SortedDictionary<int, int> ();
+			//for ( Iterator<Integer> itr = vsq_track.indexIterator( IndexIteratorKind.NOTE ); itr.hasNext(); ) {
+			for (int indx = 0; indx < size; indx++) {
+				int internal_id = internalIdList [indx];
+				if (internal_id == -1) {
+					continue;
+				}
+				int clockStart = clockStartList [indx];// item.Clock;
+				int clockEnd = clockEndList [indx];// clockStart + item.ID.getLength();
+				for (int i = 0; i < areas.Length; i++) {
+					EditedZoneUnit area = areas [i];
+					if (clockStart < area.mEnd && area.mEnd <= clockEnd) {
+						if (!ids.ContainsKey (internal_id)) {
+							ids [internal_id] = indx;
+							zone.add (clockStart, clockEnd);
+						}
+					} else if (clockStart <= area.mStart && area.mStart < clockEnd) {
+						if (!ids.ContainsKey (internal_id)) {
+							ids [internal_id] = indx;
+							zone.add (clockStart, clockEnd);
+						}
+					} else if (area.mStart <= clockStart && clockEnd < area.mEnd) {
+						if (!ids.ContainsKey (internal_id)) {
+							ids [internal_id] = indx;
+							zone.add (clockStart, clockEnd);
+						}
+					} else if (clockStart <= area.mStart && area.mEnd < clockEnd) {
+						if (!ids.ContainsKey (internal_id)) {
+							ids [internal_id] = indx;
+							zone.add (clockStart, clockEnd);
+						}
+					}
+				}
+			}
+
+			// idsに登録された音符のうち、前後がつながっているものを列挙する。
+			bool changed = true;
+			int numEvents = vsq_track.getEventCount ();
+			while (changed) {
+				changed = false;
+				foreach (var id in ids.Keys) {
+					int indx = ids [id]; // InternalIDがidのアイテムの禁書目録
+					//VsqEvent item = vsq_track.getEvent( indx );
+
+					// アイテムを遡り、連続していれば追加する
+					int clock = clockStartList [indx];// item.Clock;
+					for (int i = indx - 1; i >= 0; i--) {
+						//VsqEvent search = vsq_track.getEvent( i );
+						int internal_id = internalIdList [i];
+						if (internal_id == -1) {
+							continue;
+						}
+						int searchClock = clockStartList [i];// search.Clock;
+						//int searchLength = search.ID.getLength();
+						int searchClockEnd = clockEndList [i];//
+						// 一個前の音符の終了位置が，この音符の開始位置と同じが後ろにある場合 -> 重なり有りと判定
+						if (clock <= searchClockEnd) {
+							if (!ids.ContainsKey (internal_id)) {
+								ids [internal_id] = i;
+								zone.add (searchClock, searchClockEnd);
+								changed = true;
+							}
+							clock = searchClock;
+						} else {
+							break;
+						}
+					}
+
+					// アイテムを辿り、連続していれば追加する
+					clock = clockEndList [indx];// item.Clock + item.ID.getLength();
+					for (int i = indx + 1; i < numEvents; i++) {
+						//VsqEvent search = vsq_track.getEvent( i );
+						int internal_id = internalIdList [i];
+						if (internal_id == -1) {
+							continue;
+						}
+						int searchClock = clockStartList [i];// search.Clock;
+						int searchClockEnd = clockEndList [i];// search.ID.getLength();
+						// 一行後ろの音符の開始位置が，この音符の終了位置と同じが後ろにある場合 -> 重なり有りと判定
+						if (searchClock <= clock) {
+							if (!ids.ContainsKey (internal_id)) {
+								ids [internal_id] = i;
+								zone.add (searchClock, searchClockEnd);
+								changed = true;
+							}
+							clock = searchClockEnd;
+						} else {
+							break;
+						}
+					}
+
+					if (changed) {
+						break;
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// 編集されたかどうかを表す値に変更が要求されたときに発生するイベント
+		/// </summary>
+		public static event EditedStateChangedEventHandler EditedStateChanged;
+
+		/// <summary>
+		/// 現在稼働しているWaveGenerator．稼働していないときはnull
+		/// </summary>
+		private static WaveGenerator mWaveGenerator = null;
+		/// <summary>
+		/// mWaveGeneratorの停止を行うためのコマンダー
+		/// </summary>
+		private static WorkerStateImp mWaveGeneratorState = new WorkerStateImp ();
+		/// <summary>
+		/// mWaveGeneratorを動かしているスレッド
+		/// </summary>
+		private static Thread mPreviewThread;
+
+		/// <summary>
+		/// 波形生成器が実行中かどうかを取得します
+		/// </summary>
+		/// <returns></returns>
+		public static bool isGeneratorRunning ()
+		{
+			bool ret = false;
+			lock (mLocker) {
+				WaveGenerator g = mWaveGenerator;
+				if (g != null) {
+					ret = g.isRunning ();
+				}
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// 波形生成器を停止します
+		/// </summary>
+		public static void stopGenerator ()
+		{
+			lock (mLocker) {
+				WaveGenerator g = mWaveGenerator;
+				if (g != null) {
+					mWaveGeneratorState.requestCancel ();
+					while (mWaveGenerator.isRunning ()) {
+						Thread.Sleep (100);
+					}
+				}
+				mWaveGenerator = null;
+			}
+		}
+
+		/// <summary>
+		/// 波形生成器を設定します
+		/// </summary>
+		/// <param name="generator"></param>
+		public static void setGenerator (WaveGenerator generator)
+		{
+			lock (mLocker) {
+				WaveGenerator g = mWaveGenerator;
+				if (g != null) {
+					mWaveGeneratorState.requestCancel ();
+					while (g.isRunning ()) {
+						Thread.Sleep (100);
+					}
+				}
+				mWaveGenerator = generator;
+			}
+		}
+
+		/// <summary>
+		/// 波形生成器を別スレッドで実行します
+		/// </summary>
+		/// <param name="samples">合成するサンプル数．波形合成器のbeginメソッドに渡される</param>
+		public static void runGenerator (long samples)
+		{
+			lock (mLocker) {
+#if DEBUG
+				sout.println ("EditorManager#runGenerator; (mPreviewThread==null)=" + (mPreviewThread == null));
+#endif
+				Thread t = mPreviewThread;
+				if (t != null) {
+#if DEBUG
+					sout.println ("EditorManager#runGenerator; mPreviewThread.ThreadState=" + t.ThreadState);
+#endif
+					if (t.ThreadState != ThreadState.Stopped) {
+						WaveGenerator g = mWaveGenerator;
+						if (g != null) {
+							mWaveGeneratorState.requestCancel ();
+							while (mWaveGenerator.isRunning ()) {
+								Thread.Sleep (100);
+							}
+						}
+#if DEBUG
+						sout.println ("EditorManager#runGenerator; waiting stop...");
+#endif
+						while (t.ThreadState != ThreadState.Stopped) {
+							Thread.Sleep (100);
+						}
+#if DEBUG
+						sout.println ("EditorManager#runGenerator; waiting stop... done");
+#endif
+					}
+				}
+
+				mWaveGeneratorState.reset ();
+				RunGeneratorQueue q = new RunGeneratorQueue ();
+				q.generator = mWaveGenerator;
+				q.samples = samples;
+				mPreviewThread = new Thread (
+					new ParameterizedThreadStart (runGeneratorCore));
+				mPreviewThread.Start (q);
+			}
+		}
+
+		private static void runGeneratorCore (Object argument)
+		{
+			RunGeneratorQueue q = (RunGeneratorQueue)argument;
+			WaveGenerator g = q.generator;
+			long samples = q.samples;
+			try {
+				g.begin (samples, mWaveGeneratorState);
+			} catch (Exception ex) {
+				Logger.write (typeof(EditorManager) + ".runGeneratorCore; ex=" + ex + "\n");
+				sout.println ("EditorManager#runGeneratorCore; ex=" + ex);
+			}
+		}
+
+		/// <summary>
+		/// 音の高さを表すnoteから、画面に描くべきy座標を計算します
+		/// </summary>
+		/// <param name="note"></param>
+		/// <returns></returns>
+		public static int yCoordFromNote (float note)
+		{
+			return yCoordFromNote (note, EditorManager.MainWindowController.getStartToDrawY ());
+		}
+
+		/// <summary>
+		/// 音の高さを表すnoteから、画面に描くべきy座標を計算します
+		/// </summary>
+		/// <param name="note"></param>
+		/// <param name="start_to_draw_y"></param>
+		/// <returns></returns>
+		public static int yCoordFromNote (float note, int start_to_draw_y)
+		{
+			return (int)(-1 * (note - 127.0f) * (int)(EditorManager.MainWindowController.getScaleY () * 100)) - start_to_draw_y;
+		}
+
+		/// <summary>
+		/// ピアノロール画面のy座標から、その位置における音の高さを取得します
+		/// </summary>
+		/// <param name="y"></param>
+		/// <returns></returns>
+		public static int noteFromYCoord (int y)
+		{
+			return 127 - (int)noteFromYCoordCore (y);
+		}
+
+		/// <summary>
+		/// ピアノロール画面のy座標から、その位置における音の高さを取得します
+		/// </summary>
+		/// <param name="y"></param>
+		/// <returns></returns>
+		public static double noteFromYCoordDoublePrecision (int y)
+		{
+			return 127.0 - noteFromYCoordCore (y);
+		}
+
+		private static double noteFromYCoordCore (int y)
+		{
+			return (double)(EditorManager.MainWindowController.getStartToDrawY () + y) / (double)((int)(EditorManager.MainWindowController.getScaleY () * 100));
+		}
+
+		/// <summary>
+		/// クロック数から、画面に描くべきx座標の値を取得します。
+		/// </summary>
+		/// <param name="clocks"></param>
+		/// <returns></returns>
+		public static int xCoordFromClocks (double clocks)
+		{
+			return xCoordFromClocks (clocks, EditorManager.MainWindowController.getScaleX (), EditorManager.MainWindowController.getStartToDrawX ());
+		}
+
+		/// <summary>
+		/// クロック数から、画面に描くべきx座標の値を取得します。
+		/// </summary>
+		/// <param name="clocks"></param>
+		/// <returns></returns>
+		public static int xCoordFromClocks (double clocks, float scalex, int start_to_draw_x)
+		{
+			return (int)(EditorManager.keyWidth + clocks * scalex - start_to_draw_x) + EditorManager.keyOffset;
+		}
+
+		/// <summary>
+		/// 画面のx座標からクロック数を取得します
+		/// </summary>
+		/// <param name="x"></param>
+		/// <returns></returns>
+		public static int clockFromXCoord (int x)
+		{
+			return (int)((x + EditorManager.MainWindowController.getStartToDrawX () - EditorManager.keyOffset - EditorManager.keyWidth) * EditorManager.MainWindowController.getScaleXInv ());
+		}
+
+		public static void removeBgm (int index)
+		{
+			MusicManager.removeBgm (index, resultCmd => {
+				EditorManager.editHistory.register (resultCmd);
+				try {
+					if (EditedStateChanged != null) {
+						EditedStateChanged.Invoke (typeof(EditorManager), true);
+					}
+				} catch (Exception ex) {
+					Logger.write (typeof(EditorManager) + ".removeBgm; ex=" + ex + "\n");
+					serr.println (typeof(EditorManager) + ".removeBgm; ex=" + ex);
+				}
+				EditorManager.MixerWindow.updateStatus ();
+			});
+		}
+
+		public static void clearBgm ()
+		{
+			MusicManager.clearBgm (resultCmd => {
+				EditorManager.editHistory.register (resultCmd);
+				try {
+					if (EditedStateChanged != null) {
+						EditedStateChanged.Invoke (typeof(EditorManager), true);
+					}
+				} catch (Exception ex) {
+					Logger.write (typeof(EditorManager) + ".removeBgm; ex=" + ex + "\n");
+					serr.println (typeof(EditorManager) + ".removeBgm; ex=" + ex);
+				}
+				EditorManager.MixerWindow.updateStatus ();
+			});
+		}
+
+		public static void addBgm (string file)
+		{
+			MusicManager.addBgm (file, resultCmd => {
+				EditorManager.editHistory.register (resultCmd);
+				try {
+					if (EditedStateChanged != null) {
+						EditedStateChanged.Invoke (typeof(EditorManager), true);
+					}
+				} catch (Exception ex) {
+					Logger.write (typeof(EditorManager) + ".removeBgm; ex=" + ex + "\n");
+					serr.println (typeof(EditorManager) + ".removeBgm; ex=" + ex);
+				}
+				EditorManager.MixerWindow.updateStatus ();
+			});
+		}
+
+		#region 自動保存
+
+		public static void updateAutoBackupTimerStatus ()
+		{
+			// FIXME: enable this (using Rx probably)
+			/*
+            if (!mFile.Equals("") && editorConfig.AutoBackupIntervalMinutes > 0) {
+                double millisec = editorConfig.AutoBackupIntervalMinutes * 60.0 * 1000.0;
+                int draft = (int)millisec;
+                if (millisec > int.MaxValue) {
+                    draft = int.MaxValue;
+                }
+                mAutoBackupTimer.Interval = draft;
+                mAutoBackupTimer.Start();
+            } else {
+                mAutoBackupTimer.Stop();
+            }
+*/
+		}
+
+		public static void handleAutoBackupTimerTick (Object sender, EventArgs e)
+		{
+#if DEBUG
+			sout.println ("EditorManager::handleAutoBackupTimerTick");
+#endif
+			MusicManager.ProcessAutoBackup ();
+		}
+
+		#endregion
 	}
 }
 

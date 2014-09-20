@@ -546,9 +546,9 @@ namespace cadencii.apputil
         }
 
         [Obsolete]
-        public static void applyFontRecurse(Control c, java.awt.Font font)
+        public static void applyFontRecurse(object c, java.awt.Font font)
         {
-			applyFontRecurse(c, (System.Drawing.Font) font.NativeFont);
+			applyFontRecurse((Control) c, (System.Drawing.Font) font.NativeFont);
         }
 
         /// <summary>
