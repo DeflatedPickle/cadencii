@@ -38,7 +38,7 @@ namespace cadencii
         /// <summary>
         /// コンポーネント画像のキャッシュ
         /// </summary>
-        private System.Drawing.Image[] mCache;
+        private Image[] mCache;
 
         /// <summary>
         /// コンストラクタ
@@ -56,9 +56,9 @@ namespace cadencii
                 num--;
             }
 
-            mCache = new System.Drawing.Image[num];
+            mCache = new Image[num];
             for (int i = 0; i < num; i++) {
-                mCache[i] = new System.Drawing.Bitmap(WIDTH, mHeight, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+                mCache[i] = new Image (WIDTH, mHeight);
             }
         }
 
@@ -87,13 +87,13 @@ namespace cadencii
                 // 現在のバッファの個数と違うか、バッファがない場合バッファの長さを変更
                 if (mCache == null) {
                     // バッファがない場合
-                    mCache = new System.Drawing.Image[num];
+                    mCache = new Image[num];
                 } else {
                     // バッファがある場合
                     if (mCache.Length > num) {
                         // 短くする場合、削除する分の画像を削除
                         for (int i = num; i < mCache.Length; i++) {
-                            System.Drawing.Image img = mCache[i];
+                            var img = mCache[i];
                             if (img != null) {
                                 img.Dispose();
                             }
@@ -105,7 +105,7 @@ namespace cadencii
                 // 画像がnullの場合新しく作成
                 for (int i = 0; i < num; i++) {
                     if (mCache[i] == null) {
-                        mCache[i] = new System.Drawing.Bitmap(WIDTH, mHeight, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+                        mCache[i] = new Image (WIDTH, mHeight);
                     }
                 }
             }
@@ -141,7 +141,7 @@ namespace cadencii
             }
 
             for (int i = 0; i < mCache.Length; i++) {
-                Graphics g = new Graphics() { NativeGraphics = System.Drawing.Graphics.FromImage(mCache[i])};
+                Graphics g = new Graphics(mCache[i]);
                 g.translate(-i * WIDTH, 0);
                 component.draw(g, mWidth, mHeight);
             }

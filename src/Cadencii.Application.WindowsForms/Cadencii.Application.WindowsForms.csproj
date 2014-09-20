@@ -78,7 +78,6 @@
   <ItemGroup>
     <Compile Include="Cadencii.cs" />
     <Compile Include="ClipboardModel.cs" />
-    <Compile Include="ImageCachedComponentDrawer.cs" />
     <Compile Include="ui\Factory.cs" />
     <Compile Include="ui\main\FormMain.cs">
       <SubType>Form</SubType>
