@@ -12,7 +12,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using cadencii.java.awt;
 using DialogResult = cadencii.java.awt.DialogResult;
 
@@ -23,7 +22,7 @@ namespace cadencii
 		/// <summary>
 		/// ダイアログを表示中かどうか
 		/// </summary>
-		private static bool mShowingDialog = false;
+//		private static bool mShowingDialog = false;
 		#if ENABLE_PROPERTY
 		/// <summary>
 		/// プロパティウィンドウが分離した場合のプロパティウィンドウのインスタンス。
@@ -43,7 +42,7 @@ namespace cadencii
 		/// <summary>
 		/// メインウィンドウにフォーカスを当てる要求があった時発生するイベント
 		/// </summary>
-		public static event EventHandler MainWindowFocusRequired;
+		public static EventHandler MainWindowFocusRequired;
 
 		#region MessageBoxのラッパー
 
@@ -68,12 +67,9 @@ namespace cadencii
 		/// <param name="dialog"></param>
 		/// <param name="main_form"></param>
 		/// <returns></returns>
-		public static DialogResult showModalDialog (Form dialog, Form parent_form)
+		public static DialogResult showModalDialog (object dialogForm, object parentForm)
 		{
-			beginShowDialog ();
-			var ret = dialog.ShowDialog (parent_form);
-			endShowDialog ();
-			return (DialogResult)ret;
+			return ApplicationUIHost.Instance.Dialogs.ShowModalDialog (dialogForm, parentForm);
 		}
 
 		/// <summary>
@@ -82,12 +78,9 @@ namespace cadencii
 		/// <param name="dialog"></param>
 		/// <param name="main_form"></param>
 		/// <returns></returns>
-		public static int showModalDialog (UiBase dialog, System.Windows.Forms.Form parent_form)
+		public static int showModalDialog (UiBase dialog, object parent_form)
 		{
-			beginShowDialog ();
-			int ret = dialog.showDialog (parent_form);
-			endShowDialog ();
-			return ret;
+			return ApplicationUIHost.Instance.Dialogs.ShowModalDialog (dialog, parent_form);
 		}
 
 		/// <summary>
@@ -96,12 +89,9 @@ namespace cadencii
 		/// <param name="dialog"></param>
 		/// <param name="main_form"></param>
 		/// <returns></returns>
-		public static DialogResult showModalDialog (FolderBrowserDialog dialog, Form main_form)
+		public static DialogResult showModalFolderDialog (object folderBrowserDialog, object mainForm)
 		{
-			beginShowDialog ();
-			var ret = (DialogResult)dialog.ShowDialog (main_form);
-			endShowDialog ();
-			return ret;
+			return ApplicationUIHost.Instance.Dialogs.ShowModalFolderDialog (folderBrowserDialog, mainForm);
 		}
 
 		/// <summary>
@@ -111,12 +101,9 @@ namespace cadencii
 		/// <param name="open_mode"></param>
 		/// <param name="main_form"></param>
 		/// <returns></returns>
-		public static DialogResult showModalDialog (FileDialog dialog, bool open_mode, Form main_form)
+		public static DialogResult showModalFileDialog (object fileDialog, bool open_mode, object mainForm)
 		{
-			beginShowDialog ();
-			DialogResult ret = (DialogResult)dialog.ShowDialog (main_form);
-			endShowDialog ();
-			return ret;
+			return ApplicationUIHost.Instance.Dialogs.ShowModalFileDialog (fileDialog, open_mode, mainForm);
 		}
 
 		/// <summary>
@@ -125,91 +112,22 @@ namespace cadencii
 		/// <returns></returns>
 		public static bool isShowingDialog ()
 		{
-			return mShowingDialog;
-		}
-
-		/// <summary>
-		/// モーダルなダイアログを出すために，プロパティウィンドウとミキサーウィンドウの「最前面に表示」設定を一時的にOFFにします
-		/// </summary>
-		private static void beginShowDialog ()
-		{
-			mShowingDialog = true;
-#if ENABLE_PROPERTY
-			if (propertyWindow != null) {
-				bool previous = propertyWindow.getUi ().isAlwaysOnTop ();
-				propertyWindow.setPreviousAlwaysOnTop (previous);
-				if (previous) {
-					propertyWindow.getUi ().setAlwaysOnTop (false);
-				}
-			}
-#endif
-			if (mMixerWindow != null) {
-				bool previous = mMixerWindow.TopMost;
-				mMixerWindow.setPreviousAlwaysOnTop (previous);
-				if (previous) {
-					mMixerWindow.TopMost = false;
-				}
-			}
-
-			if (iconPalette != null) {
-				bool previous = iconPalette.TopMost;
-				iconPalette.setPreviousAlwaysOnTop (previous);
-				if (previous) {
-					iconPalette.TopMost = false;
-				}
-			}
-		}
-
-		/// <summary>
-		/// beginShowDialogで一時的にOFFにした「最前面に表示」設定を元に戻します
-		/// </summary>
-		private static void endShowDialog ()
-		{
-#if ENABLE_PROPERTY
-			if (propertyWindow != null) {
-				propertyWindow.getUi ().setAlwaysOnTop (propertyWindow.getPreviousAlwaysOnTop ());
-			}
-#endif
-			if (mMixerWindow != null) {
-				mMixerWindow.TopMost = mMixerWindow.getPreviousAlwaysOnTop ();
-			}
-
-			if (iconPalette != null) {
-				iconPalette.TopMost = iconPalette.getPreviousAlwaysOnTop ();
-			}
-
-			try {
-				if (MainWindowFocusRequired != null) {
-					MainWindowFocusRequired.Invoke (typeof(AppManager), new EventArgs ());
-				}
-			} catch (Exception ex) {
-				Logger.write (typeof(AppManager) + ".endShowDialog; ex=" + ex + "\n");
-				sout.println (typeof(AppManager) + ".endShowDialog; ex=" + ex);
-			}
-			mShowingDialog = false;
+			return ApplicationUIHost.Instance.Dialogs.IsShowingDialog;
 		}
 
 		public static DialogResult showMessageBox (string text, string caption, int optionType, int messageType)
 		{
-			beginShowDialog ();
+			ApplicationUIHost.Instance.Dialogs.BeforeShowDialog ();
 			var ret = (DialogResult)cadencii.windows.forms.Utility.showMessageBox (text, caption, optionType, messageType);
-			endShowDialog ();
+			ApplicationUIHost.Instance.Dialogs.AfterShowDialog ();
 			return ret;
 		}
 
 		#endregion
 
-		public static bool showDialogTo (FormWorker fw, FormMain main_window)
+		public static bool showDialogTo (FormWorker fw, object mainFormWindow)
 		{
-			
-			beginShowDialog ();
-			bool ret = fw.getUi ().showDialogTo (main_window);
-#if DEBUG
-			sout.println ("AppManager#patchWorkToFreeze; showDialog returns " + ret);
-#endif
-			endShowDialog ();
-
-			return ret;
+			return ApplicationUIHost.Instance.Dialogs.ShowDialogTo (fw, mainFormWindow);
 		}
 	}
 }

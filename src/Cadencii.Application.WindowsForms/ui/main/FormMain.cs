@@ -813,7 +813,7 @@ namespace cadencii
             AppManager.itemSelection.SelectedEventChanged += new SelectedEventChangedEventHandler(ItemSelectionModel_SelectedEventChanged);
             AppManager.SelectedToolChanged += new EventHandler(AppManager_SelectedToolChanged);
             AppManager.UpdateBgmStatusRequired += new EventHandler(AppManager_UpdateBgmStatusRequired);
-            DialogManager.MainWindowFocusRequired += new EventHandler(AppManager_MainWindowFocusRequired);
+            DialogManager.MainWindowFocusRequired = new EventHandler(AppManager_MainWindowFocusRequired);
             AppManager.EditedStateChanged += new EditedStateChangedEventHandler(AppManager_EditedStateChanged);
             AppManager.WaveViewReloadRequired += new WaveViewRealoadRequiredEventHandler(AppManager_WaveViewRealoadRequired);
             EditorConfig.QuantizeModeChanged += new EventHandler(handleEditorConfig_QuantizeModeChanged);
@@ -2838,7 +2838,7 @@ namespace cadencii
                                                               cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
 				if (dr == cadencii.java.awt.DialogResult.Yes) {
                     if (MusicManager.getFileName() == "") {
-                        var dr2 = DialogManager.showModalDialog(saveXmlVsqDialog, false, this);
+                        var dr2 = DialogManager.showModalFileDialog(saveXmlVsqDialog, false, this);
 						if (dr2 == cadencii.java.awt.DialogResult.OK) {
                             string sf = saveXmlVsqDialog.FileName;
                             AppManager.saveTo(sf);
@@ -9621,7 +9621,7 @@ namespace cadencii
                                                                cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
 				if (ret == cadencii.java.awt.DialogResult.Yes) {
                     if (MusicManager.getFileName().Equals("")) {
-                        var dr = DialogManager.showModalDialog(saveXmlVsqDialog, false, this);
+                        var dr = DialogManager.showModalFileDialog(saveXmlVsqDialog, false, this);
 						if (dr == cadencii.java.awt.DialogResult.OK) {
                             AppManager.saveTo(saveXmlVsqDialog.FileName);
                         } else {
@@ -10199,7 +10199,7 @@ namespace cadencii
 
             string dir = ApplicationGlobal.appConfig.getLastUsedPathOut("xvsq");
             saveXmlVsqDialog.SetSelectedFile(dir);
-            var dr = DialogManager.showModalDialog(saveXmlVsqDialog, false, this);
+            var dr = DialogManager.showModalFileDialog(saveXmlVsqDialog, false, this);
 			if (dr == cadencii.java.awt.DialogResult.OK) {
                 string file = saveXmlVsqDialog.FileName;
                 ApplicationGlobal.appConfig.setLastUsedPathOut(file, ".xvsq");
@@ -10254,7 +10254,7 @@ namespace cadencii
 
                 string dir = ApplicationGlobal.appConfig.getLastUsedPathOut("mid");
                 saveMidiDialog.SetSelectedFile(dir);
-                var dialog_result = DialogManager.showModalDialog(saveMidiDialog, false, this);
+                var dialog_result = DialogManager.showModalFileDialog(saveMidiDialog, false, this);
 
 				if (dialog_result == cadencii.java.awt.DialogResult.OK) {
                     FileStream fs = null;
@@ -10478,7 +10478,7 @@ namespace cadencii
                 dialog = new SaveFileDialog();
                 dialog.SetSelectedFile(first);
                 dialog.Filter = string.Join("|", new[] { _("MusicXML(*.xml)|*.xml"), _("All Files(*.*)|*.*") });
-                var result = DialogManager.showModalDialog(dialog, false, this);
+                var result = DialogManager.showModalFileDialog(dialog, false, this);
 				if (result != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }
@@ -10511,7 +10511,7 @@ namespace cadencii
                 string initial_dir = ApplicationGlobal.appConfig.getLastUsedPathOut("wav");
                 file_dialog.Description = _("Choose destination directory");
                 file_dialog.SelectedPath = initial_dir;
-                var ret = DialogManager.showModalDialog(file_dialog, this);
+                var ret = DialogManager.showModalFolderDialog(file_dialog, this);
 				if (ret != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }
@@ -10606,7 +10606,7 @@ namespace cadencii
                 dialog.SetSelectedFile(last_path);
                 dialog.Title = _("Export UTAU (*.ust)");
                 dialog.Filter = string.Join("|", new[] { _("UTAU Script Format(*.ust)|*.ust"), _("All Files(*.*)|*.*") });
-                dialog_result = DialogManager.showModalDialog(dialog, false, this);
+                dialog_result = DialogManager.showModalFileDialog(dialog, false, this);
 				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }
@@ -10663,7 +10663,7 @@ namespace cadencii
                 dialog.SetSelectedFile(last_path);
                 dialog.Title = _("Export VSQ (*.vsq)");
                 dialog.Filter = string.Join("|", new[] { _("VSQ Format(*.vsq)|*.vsq"), _("All Files(*.*)|*.*") });
-                dialog_result = DialogManager.showModalDialog(dialog, false, this);
+                dialog_result = DialogManager.showModalFileDialog(dialog, false, this);
 				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }
@@ -10726,7 +10726,7 @@ namespace cadencii
                 dialog.SetSelectedFile(last_path);
                 dialog.Title = _("Metatext for vConnect");
                 dialog.Filter = string.Join("|", new[] { _("Text File(*.txt)|*.txt"), _("All Files(*.*)|*.*") });
-                dialog_result = DialogManager.showModalDialog(dialog, false, this);
+                dialog_result = DialogManager.showModalFileDialog(dialog, false, this);
 				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }
@@ -10804,7 +10804,7 @@ namespace cadencii
                 sfd.SetSelectedFile(last_path);
                 sfd.Title = _("Wave Export");
                 sfd.Filter = string.Join("|", new[] { _("Wave File(*.wav)|*.wav"), _("All Files(*.*)|*.*") });
-                dialog_result = DialogManager.showModalDialog(sfd, false, this);
+                dialog_result = DialogManager.showModalFileDialog(sfd, false, this);
 				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }
@@ -10891,7 +10891,7 @@ namespace cadencii
 
             string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("mid");
             openMidiDialog.SetSelectedFile(dir);
-            var dialog_result = DialogManager.showModalDialog(openMidiDialog, true, this);
+            var dialog_result = DialogManager.showModalFileDialog(openMidiDialog, true, this);
 
 			if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                 return;
@@ -11290,7 +11290,7 @@ namespace cadencii
                 string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("ust");
                 dialog = new OpenFileDialog();
                 dialog.SetSelectedFile(dir);
-                var dialog_result = DialogManager.showModalDialog(dialog, true, this);
+                var dialog_result = DialogManager.showModalFileDialog(dialog, true, this);
 				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }
@@ -11399,7 +11399,7 @@ namespace cadencii
         {
             string dir = ApplicationGlobal.appConfig.getLastUsedPathIn(EditorManager.editorConfig.LastUsedExtension);
             openMidiDialog.SetSelectedFile(dir);
-            var dialog_result = DialogManager.showModalDialog(openMidiDialog, true, this);
+            var dialog_result = DialogManager.showModalFileDialog(openMidiDialog, true, this);
 
 			if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                 return;
@@ -11552,7 +11552,7 @@ namespace cadencii
 
             string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("ust");
             openUstDialog.SetSelectedFile(dir);
-            var dialog_result = DialogManager.showModalDialog(openUstDialog, true, this);
+            var dialog_result = DialogManager.showModalFileDialog(openUstDialog, true, this);
 
 			if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                 return;
@@ -11660,7 +11660,7 @@ namespace cadencii
             openMidiDialog.FilterIndex = filter_index;
             string dir = ApplicationGlobal.appConfig.getLastUsedPathIn(filter);
             openMidiDialog.SetSelectedFile(dir);
-            var dialog_result = DialogManager.showModalDialog(openMidiDialog, true, this);
+            var dialog_result = DialogManager.showModalFileDialog(openMidiDialog, true, this);
             string ext = ".vsq";
 			if (dialog_result == cadencii.java.awt.DialogResult.OK) {
 #if DEBUG
@@ -15706,7 +15706,7 @@ namespace cadencii
                     string dir = PortUtil.getDirectoryName(last_file);
                     saveXmlVsqDialog.SetSelectedFile(dir);
                 }
-                var dr = DialogManager.showModalDialog(saveXmlVsqDialog, false, this);
+                var dr = DialogManager.showModalFileDialog(saveXmlVsqDialog, false, this);
                 if (dr == cadencii.java.awt.DialogResult.OK) {
                     file = saveXmlVsqDialog.FileName;
                     ApplicationGlobal.appConfig.setLastUsedPathOut(file, ".xvsq");
@@ -15726,7 +15726,7 @@ namespace cadencii
             }
             string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("xvsq");
             openXmlVsqDialog.SetSelectedFile(dir);
-            var dialog_result = DialogManager.showModalDialog(openXmlVsqDialog, true, this);
+            var dialog_result = DialogManager.showModalFileDialog(openXmlVsqDialog, true, this);
             if (dialog_result != cadencii.java.awt.DialogResult.OK) {
                 return;
             }
@@ -16246,7 +16246,7 @@ namespace cadencii
         {
             string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("wav");
             openWaveDialog.SetSelectedFile(dir);
-            var ret = DialogManager.showModalDialog(openWaveDialog, true, this);
+            var ret = DialogManager.showModalFileDialog(openWaveDialog, true, this);
             if (ret != cadencii.java.awt.DialogResult.OK) {
                 return;
             }

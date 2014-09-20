@@ -78,6 +78,7 @@
     <Compile Include="models\winforms\MouseEventHandler.cs" />
     <Compile Include="models\winforms\DockStyle.cs" />
     <Compile Include="models\winforms\Padding.cs" />
+    <Compile Include="models\UiBase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

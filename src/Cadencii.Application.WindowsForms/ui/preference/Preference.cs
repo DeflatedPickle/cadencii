@@ -1195,7 +1195,7 @@ namespace cadencii
         public void buttonResamplerAdd_Click(Object sender, EventArgs e)
         {
             openUtauCore.SetSelectedFile("resampler.exe");
-            var dr = DialogManager.showModalDialog(openUtauCore, true, this);
+            var dr = DialogManager.showModalFileDialog(openUtauCore, true, this);
             if (dr == cadencii.java.awt.DialogResult.OK) {
                 string path = openUtauCore.FileName;
                 listResampler.AddRow(new string[] { path });
@@ -1262,7 +1262,7 @@ namespace cadencii
             if (!txtWavtool.Text.Equals("") && Directory.Exists(PortUtil.getDirectoryName(txtWavtool.Text))) {
                 openUtauCore.SetSelectedFile(txtWavtool.Text);
             }
-            var dr = DialogManager.showModalDialog(openUtauCore, true, this);
+            var dr = DialogManager.showModalFileDialog(openUtauCore, true, this);
 			if (dr == cadencii.java.awt.DialogResult.OK) {
                 string path = openUtauCore.FileName;
                 txtWavtool.Text = path;
@@ -1285,7 +1285,7 @@ namespace cadencii
             if (text_box.Text != "" && Directory.Exists(PortUtil.getDirectoryName(text_box.Text))) {
                 dialog.SetSelectedFile(text_box.Text);
             }
-            var dr = DialogManager.showModalDialog(dialog, true, this);
+            var dr = DialogManager.showModalFileDialog(dialog, true, this);
 			if (dr == cadencii.java.awt.DialogResult.OK) {
                 string path = dialog.FileName;
                 text_box.Text = path;

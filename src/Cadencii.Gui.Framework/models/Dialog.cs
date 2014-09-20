@@ -16,6 +16,5 @@ namespace cadencii
 		public const int MSGBOX_QUESTION_MESSAGE = 3;
 		public const int MSGBOX_PLAIN_MESSAGE = -1;
 	}
-
 }
 

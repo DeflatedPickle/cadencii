@@ -135,10 +135,11 @@
     <Compile Include="forms\FormWordDictionaryController.cs" />
     <Compile Include="forms\FormWordDictionaryUi.cs" />
     <Compile Include="forms\FormWordDictionaryUiListener.cs" />
-    <Compile Include="UiBase.cs" />
     <Compile Include="VersionString.cs" />
     <Compile Include="FederChangedEventHandler.cs" />
     <Compile Include="controls\TrackSelector.cs" />
+    <Compile Include="guiextended\Dialogs.cs" />
+    <Compile Include="guiextended\ApplicationUIHost.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -174,5 +175,6 @@
   <ItemGroup>
     <Folder Include="forms\" />
     <Folder Include="controls\" />
+    <Folder Include="guiextended\" />
   </ItemGroup>
 </Project>
