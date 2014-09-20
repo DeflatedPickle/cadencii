@@ -11,6 +11,13 @@ namespace cadencii
 		private bool mShowingDialog = false;
 
 		#region implemented abstract members of Dialogs
+
+		public override cadencii.java.awt.DialogResult ShowMessageBox (string text, string caption, int optionType, int messageType)
+		{
+			return (cadencii.java.awt.DialogResult) cadencii.windows.forms.Utility.showMessageBox (text, caption, optionType, messageType);
+
+		}
+
 		public override bool ShowDialogTo (object formWorker, object mainWindow)
 		{
 			BeforeShowDialog ();
@@ -29,27 +36,27 @@ namespace cadencii
 		{
 			mShowingDialog = true;
 #if ENABLE_PROPERTY
-			if (DialogManager.propertyWindow != null) {
-				bool previous = DialogManager.propertyWindow.getUi ().isAlwaysOnTop ();
-				DialogManager.propertyWindow.setPreviousAlwaysOnTop (previous);
+			if (AppManager.propertyWindow != null) {
+				bool previous = AppManager.propertyWindow.getUi ().isAlwaysOnTop ();
+				AppManager.propertyWindow.setPreviousAlwaysOnTop (previous);
 				if (previous) {
-					DialogManager.propertyWindow.getUi ().setAlwaysOnTop (false);
+					AppManager.propertyWindow.getUi ().setAlwaysOnTop (false);
 				}
 			}
 #endif
-			if (DialogManager.mMixerWindow != null) {
-				bool previous = DialogManager.mMixerWindow.TopMost;
-				DialogManager.mMixerWindow.setPreviousAlwaysOnTop (previous);
+			if (AppManager.mMixerWindow != null) {
+				bool previous = AppManager.mMixerWindow.TopMost;
+				AppManager.mMixerWindow.setPreviousAlwaysOnTop (previous);
 				if (previous) {
-					DialogManager.mMixerWindow.TopMost = false;
+					AppManager.mMixerWindow.TopMost = false;
 				}
 			}
 
-			if (DialogManager.iconPalette != null) {
-				bool previous = DialogManager.iconPalette.TopMost;
-				DialogManager.iconPalette.setPreviousAlwaysOnTop (previous);
+			if (AppManager.iconPalette != null) {
+				bool previous = AppManager.iconPalette.TopMost;
+				AppManager.iconPalette.setPreviousAlwaysOnTop (previous);
 				if (previous) {
-					DialogManager.iconPalette.TopMost = false;
+					AppManager.iconPalette.TopMost = false;
 				}
 			}
 		}
@@ -59,21 +66,21 @@ namespace cadencii
 		public override void AfterShowDialog ()
 		{
 			#if ENABLE_PROPERTY
-			if (DialogManager.propertyWindow != null) {
-				DialogManager.propertyWindow.getUi ().setAlwaysOnTop (DialogManager.propertyWindow.getPreviousAlwaysOnTop ());
+			if (AppManager.propertyWindow != null) {
+				AppManager.propertyWindow.getUi ().setAlwaysOnTop (AppManager.propertyWindow.getPreviousAlwaysOnTop ());
 			}
 #endif
-			if (DialogManager.mMixerWindow != null) {
-				DialogManager.mMixerWindow.TopMost = DialogManager.mMixerWindow.getPreviousAlwaysOnTop ();
+			if (AppManager.mMixerWindow != null) {
+				AppManager.mMixerWindow.TopMost = AppManager.mMixerWindow.getPreviousAlwaysOnTop ();
 			}
 
-			if (DialogManager.iconPalette != null) {
-				DialogManager.iconPalette.TopMost = DialogManager.iconPalette.getPreviousAlwaysOnTop ();
+			if (AppManager.iconPalette != null) {
+				AppManager.iconPalette.TopMost = AppManager.iconPalette.getPreviousAlwaysOnTop ();
 			}
 
 			try {
-				if (DialogManager.MainWindowFocusRequired != null) {
-					DialogManager.MainWindowFocusRequired.Invoke (typeof(AppManager), new EventArgs ());
+				if (AppManager.MainWindowFocusRequired != null) {
+					AppManager.MainWindowFocusRequired.Invoke (typeof(AppManager), new EventArgs ());
 				}
 			} catch (Exception ex) {
 				Logger.write (typeof(AppManager) + ".endShowDialog; ex=" + ex + "\n");

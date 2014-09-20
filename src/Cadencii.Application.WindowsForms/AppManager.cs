@@ -363,6 +363,31 @@ namespace cadencii
         /// </summary>
         public const int keyOffset = 6;
 
+		/// <summary>
+		/// ダイアログを表示中かどうか
+		/// </summary>
+//		private static bool mShowingDialog = false;
+		#if ENABLE_PROPERTY
+		/// <summary>
+		/// プロパティウィンドウが分離した場合のプロパティウィンドウのインスタンス。
+		/// メインウィンドウとプロパティウィンドウが分離している時、propertyPanelがpropertyWindowの子になる
+		/// </summary>
+		public static FormNotePropertyController propertyWindow;
+		#endif
+		/// <summary>
+		/// ミキサーダイアログ
+		/// </summary>
+		public static FormMixer mMixerWindow;
+		/// <summary>
+		/// アイコンパレット・ウィンドウのインスタンス
+		/// </summary>
+		public static FormIconPalette iconPalette = null;
+
+		/// <summary>
+		/// メインウィンドウにフォーカスを当てる要求があった時発生するイベント
+		/// </summary>
+		public static EventHandler MainWindowFocusRequired;
+
         #region 裏設定項目
         /// <summary>
         /// 再生中にWAVE波形の描画をスキップするかどうか（デフォルトはtrue）
@@ -470,7 +495,7 @@ namespace cadencii
                     Amplifier a = new Amplifier();
                     FileWaveSender f = new FileWaveSender(wr);
                     a.setSender(f);
-                    a.setAmplifierView(DialogManager.mMixerWindow.getVolumeTracker(track));
+                    a.setAmplifierView(AppManager.mMixerWindow.getVolumeTracker(track));
                     waves.Add(a);
                     a.setRoot(driver);
                     f.setRoot(driver);
@@ -508,7 +533,7 @@ namespace cadencii
                     Amplifier a = new Amplifier();
                     FileWaveSender f = new FileWaveSender(wr);
                     a.setSender(f);
-                    a.setAmplifierView(DialogManager.mMixerWindow.getVolumeTrackerBgm(i));
+                    a.setAmplifierView(AppManager.mMixerWindow.getVolumeTrackerBgm(i));
                     waves.Add(a);
                     a.setRoot(driver);
                     f.setRoot(driver);
@@ -527,7 +552,7 @@ namespace cadencii
             setGenerator(driver);
             Amplifier amp = new Amplifier();
             amp.setRoot(driver);
-            amp.setAmplifierView(DialogManager.mMixerWindow.getVolumeTrackerMaster());
+            amp.setAmplifierView(AppManager.mMixerWindow.getVolumeTrackerMaster());
             m.setReceiver(amp);
             MonitorWaveReceiver monitor = MonitorWaveReceiver.prepareInstance();
             monitor.setRoot(driver);
@@ -1250,7 +1275,7 @@ namespace cadencii
 					Logger.write (typeof(AppManager) + ".removeBgm; ex=" + ex + "\n");
 					serr.println (typeof(AppManager) + ".removeBgm; ex=" + ex);
 				}
-				DialogManager.mMixerWindow.updateStatus ();
+				AppManager.mMixerWindow.updateStatus ();
 			});
 		}
 
@@ -1266,7 +1291,7 @@ namespace cadencii
 					Logger.write (typeof(AppManager) + ".removeBgm; ex=" + ex + "\n");
 					serr.println (typeof(AppManager) + ".removeBgm; ex=" + ex);
 				}
-				DialogManager.mMixerWindow.updateStatus ();
+				AppManager.mMixerWindow.updateStatus ();
 			});
 		}
 		public static void addBgm (string file)
@@ -1281,7 +1306,7 @@ namespace cadencii
 				Logger.write (typeof(AppManager) + ".removeBgm; ex=" + ex + "\n");
 				serr.println (typeof(AppManager) + ".removeBgm; ex=" + ex);
 			}
-			DialogManager.mMixerWindow.updateStatus ();
+			AppManager.mMixerWindow.updateStatus ();
 			});
 		}
 		#region 自動保存

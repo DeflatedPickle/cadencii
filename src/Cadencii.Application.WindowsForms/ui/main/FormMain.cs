@@ -532,8 +532,8 @@ namespace cadencii
 
 #if ENABLE_PROPERTY
             AppManager.propertyPanel = new PropertyPanel();
-            DialogManager.propertyWindow = new FormNotePropertyController(c => new FormNotePropertyUiImpl(c), this);
-            DialogManager.propertyWindow.getUi().addComponent(AppManager.propertyPanel);
+            AppManager.propertyWindow = new FormNotePropertyController(c => new FormNotePropertyUiImpl(c), this);
+            AppManager.propertyWindow.getUi().addComponent(AppManager.propertyPanel);
 #endif
 
 #if DEBUG
@@ -779,8 +779,8 @@ namespace cadencii
             menuHelpLogSwitch.Checked = Logger.isEnabled();
             applyShortcut();
 
-            DialogManager.mMixerWindow = new FormMixer(this);
-            DialogManager.iconPalette = new FormIconPalette(this);
+            AppManager.mMixerWindow = new FormMixer(this);
+            AppManager.iconPalette = new FormIconPalette(this);
 
             // ファイルを開く
             if (file != "") {
@@ -813,7 +813,7 @@ namespace cadencii
             AppManager.itemSelection.SelectedEventChanged += new SelectedEventChangedEventHandler(ItemSelectionModel_SelectedEventChanged);
             AppManager.SelectedToolChanged += new EventHandler(AppManager_SelectedToolChanged);
             AppManager.UpdateBgmStatusRequired += new EventHandler(AppManager_UpdateBgmStatusRequired);
-            DialogManager.MainWindowFocusRequired = new EventHandler(AppManager_MainWindowFocusRequired);
+            AppManager.MainWindowFocusRequired = new EventHandler(AppManager_MainWindowFocusRequired);
             AppManager.EditedStateChanged += new EditedStateChangedEventHandler(AppManager_EditedStateChanged);
             AppManager.WaveViewReloadRequired += new WaveViewRealoadRequiredEventHandler(AppManager_WaveViewRealoadRequired);
             EditorConfig.QuantizeModeChanged += new EventHandler(handleEditorConfig_QuantizeModeChanged);
@@ -852,27 +852,27 @@ namespace cadencii
 
             updateMenuFonts();
 
-            DialogManager.mMixerWindow.FederChanged += new FederChangedEventHandler(mixerWindow_FederChanged);
-            DialogManager.mMixerWindow.PanpotChanged += new PanpotChangedEventHandler(mixerWindow_PanpotChanged);
-            DialogManager.mMixerWindow.MuteChanged += new MuteChangedEventHandler(mixerWindow_MuteChanged);
-            DialogManager.mMixerWindow.SoloChanged += new SoloChangedEventHandler(mixerWindow_SoloChanged);
-            DialogManager.mMixerWindow.updateStatus();
+            AppManager.mMixerWindow.FederChanged += new FederChangedEventHandler(mixerWindow_FederChanged);
+            AppManager.mMixerWindow.PanpotChanged += new PanpotChangedEventHandler(mixerWindow_PanpotChanged);
+            AppManager.mMixerWindow.MuteChanged += new MuteChangedEventHandler(mixerWindow_MuteChanged);
+            AppManager.mMixerWindow.SoloChanged += new SoloChangedEventHandler(mixerWindow_SoloChanged);
+            AppManager.mMixerWindow.updateStatus();
             if (EditorManager.editorConfig.MixerVisible) {
-                DialogManager.mMixerWindow.Visible = true;
+                AppManager.mMixerWindow.Visible = true;
             }
-            DialogManager.mMixerWindow.FormClosing += new FormClosingEventHandler(mixerWindow_FormClosing);
+            AppManager.mMixerWindow.FormClosing += new FormClosingEventHandler(mixerWindow_FormClosing);
 
             Point p1 = EditorManager.editorConfig.FormIconPaletteLocation.toPoint();
 			if (!cadencii.core2.PortUtil.isPointInScreens(p1)) {
 				Rectangle workingArea = cadencii.core2.PortUtil.getWorkingArea(this);
                 p1 = new Point(workingArea.x, workingArea.y);
             }
-            DialogManager.iconPalette.Location = new System.Drawing.Point(p1.X, p1.Y);
+            AppManager.iconPalette.Location = new System.Drawing.Point(p1.X, p1.Y);
             if (EditorManager.editorConfig.IconPaletteVisible) {
-                DialogManager.iconPalette.Visible = true;
+                AppManager.iconPalette.Visible = true;
             }
-            DialogManager.iconPalette.FormClosing += new FormClosingEventHandler(iconPalette_FormClosing);
-            DialogManager.iconPalette.LocationChanged += new EventHandler(iconPalette_LocationChanged);
+            AppManager.iconPalette.FormClosing += new FormClosingEventHandler(iconPalette_FormClosing);
+            AppManager.iconPalette.LocationChanged += new EventHandler(iconPalette_LocationChanged);
 
             trackSelector.CommandExecuted += new EventHandler(trackSelector_CommandExecuted);
 
@@ -952,7 +952,7 @@ namespace cadencii
 #endif
 
 #if ENABLE_PROPERTY
-            DialogManager.propertyWindow.getUi().setBounds(a.X, a.Y, rc.width, rc.height);
+            AppManager.propertyWindow.getUi().setBounds(a.X, a.Y, rc.width, rc.height);
             AppManager.propertyPanel.CommandExecuteRequired += new CommandExecuteRequiredEventHandler(propertyPanel_CommandExecuteRequired);
 #endif
             updateBgmMenuState();
@@ -2284,10 +2284,10 @@ namespace cadencii
                 sout.println("FormMain#updatePropertyPanelState; state=Docked; w=" + w);
 #endif
                 EditorManager.editorConfig.PropertyWindowStatus.IsMinimized = true;
-                DialogManager.propertyWindow.getUi().hideWindow();
+                AppManager.propertyWindow.getUi().hideWindow();
             } else if (state == PanelState.Hidden) {
-                if (DialogManager.propertyWindow.getUi().isVisible()) {
-                    DialogManager.propertyWindow.getUi().hideWindow();
+                if (AppManager.propertyWindow.getUi().isVisible()) {
+                    AppManager.propertyWindow.getUi().hideWindow();
                 }
                 menuVisualProperty.Checked = false;
                 if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
@@ -2300,7 +2300,7 @@ namespace cadencii
                 splitContainerProperty.setDividerSize(0);
                 splitContainerProperty.setSplitterFixed(true);
             } else if (state == PanelState.Window) {
-                DialogManager.propertyWindow.getUi().addComponent(AppManager.propertyPanel);
+                AppManager.propertyWindow.getUi().addComponent(AppManager.propertyPanel);
                 var parent = this.Location;
                 XmlRectangle rc = EditorManager.editorConfig.PropertyWindowStatus.Bounds;
                 Point property = new Point(rc.x, rc.y);
@@ -2308,20 +2308,20 @@ namespace cadencii
                 int y = parent.Y + property.Y;
                 int width = rc.width;
                 int height = rc.height;
-                DialogManager.propertyWindow.getUi().setBounds(x, y, width, height);
-                int workingAreaX = DialogManager.propertyWindow.getUi().getWorkingAreaX();
-                int workingAreaY = DialogManager.propertyWindow.getUi().getWorkingAreaY();
-                int workingAreaWidth = DialogManager.propertyWindow.getUi().getWorkingAreaWidth();
-                int workingAreaHeight = DialogManager.propertyWindow.getUi().getWorkingAreaHeight();
+                AppManager.propertyWindow.getUi().setBounds(x, y, width, height);
+                int workingAreaX = AppManager.propertyWindow.getUi().getWorkingAreaX();
+                int workingAreaY = AppManager.propertyWindow.getUi().getWorkingAreaY();
+                int workingAreaWidth = AppManager.propertyWindow.getUi().getWorkingAreaWidth();
+                int workingAreaHeight = AppManager.propertyWindow.getUi().getWorkingAreaHeight();
                 Point appropriateLocation = getAppropriateDialogLocation(
                     x, y, width, height,
                     workingAreaX, workingAreaY, workingAreaWidth, workingAreaHeight
                 );
-                DialogManager.propertyWindow.getUi().setBounds(appropriateLocation.X, appropriateLocation.Y, width, height);
+                AppManager.propertyWindow.getUi().setBounds(appropriateLocation.X, appropriateLocation.Y, width, height);
                 // setVisible -> NORMALとすると，javaの場合見栄えが悪くなる
-                DialogManager.propertyWindow.getUi().setVisible(true);
-                if (DialogManager.propertyWindow.getUi().isWindowMinimized()) {
-                    DialogManager.propertyWindow.getUi().deiconfyWindow();
+                AppManager.propertyWindow.getUi().setVisible(true);
+                if (AppManager.propertyWindow.getUi().isWindowMinimized()) {
+                    AppManager.propertyWindow.getUi().deiconfyWindow();
                 }
                 menuVisualProperty.Checked = true;
                 if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
@@ -3608,7 +3608,7 @@ namespace cadencii
         /// <param name="visible">表示状態にする場合true，そうでなければfalse</param>
         public void flipMixerDialogVisible(bool visible)
         {
-            DialogManager.mMixerWindow.Visible = visible;
+            AppManager.mMixerWindow.Visible = visible;
             EditorManager.editorConfig.MixerVisible = visible;
             if (visible != menuVisualMixer.Checked) {
                 menuVisualMixer.Checked = visible;
@@ -3620,7 +3620,7 @@ namespace cadencii
         /// </summary>
         public void flipIconPaletteVisible(bool visible)
         {
-            DialogManager.iconPalette.Visible = visible;
+            AppManager.iconPalette.Visible = visible;
             EditorManager.editorConfig.IconPaletteVisible = visible;
             if (visible != menuVisualIconPalette.Checked) {
                 menuVisualIconPalette.Checked = visible;
@@ -3702,27 +3702,27 @@ namespace cadencii
             }
 
             // ミキサーウィンドウ
-            if (DialogManager.mMixerWindow != null) {
+            if (AppManager.mMixerWindow != null) {
                 if (dict.ContainsKey("menuVisualMixer")) {
                     Keys shortcut = dict["menuVisualMixer"].Aggregate(Keys.None, (seed, key) => seed | key);
-                    DialogManager.mMixerWindow.applyShortcut(shortcut);
+                    AppManager.mMixerWindow.applyShortcut(shortcut);
                 }
             }
 
             // アイコンパレット
-            if (DialogManager.iconPalette != null) {
+            if (AppManager.iconPalette != null) {
                 if (dict.ContainsKey("menuVisualIconPalette")) {
                     Keys shortcut = dict["menuVisualIconPalette"].Aggregate(Keys.None, (seed, key) => seed | key);
-                    DialogManager.iconPalette.applyShortcut(shortcut);
+                    AppManager.iconPalette.applyShortcut(shortcut);
                 }
             }
 
 #if ENABLE_PROPERTY
             // プロパティ
-            if (DialogManager.propertyWindow != null) {
+            if (AppManager.propertyWindow != null) {
                 if (dict.ContainsKey(menuVisualProperty.Name)) {
                     Keys shortcut = dict[menuVisualProperty.Name].Aggregate(Keys.None, (seed, key) => seed | key);
-                    DialogManager.propertyWindow.applyShortcut(shortcut);
+                    AppManager.propertyWindow.applyShortcut(shortcut);
                 }
             }
 #endif
@@ -5505,7 +5505,7 @@ namespace cadencii
                                                                      vsq.AttachedCurves.get(selected - 1)); ;
             EditorManager.editHistory.register(vsq.executeCommand(run));
             setEdited(true);
-            DialogManager.mMixerWindow.updateStatus();
+            AppManager.mMixerWindow.updateStatus();
             refreshScreen();
         }
 
@@ -5557,7 +5557,7 @@ namespace cadencii
                 EditorManager.editHistory.register(vsq.executeCommand(run));
                 updateDrawObjectList();
                 setEdited(true);
-                DialogManager.mMixerWindow.updateStatus();
+                AppManager.mMixerWindow.updateStatus();
                 refreshScreen();
             }
         }
@@ -5586,7 +5586,7 @@ namespace cadencii
             updateDrawObjectList();
             setEdited(true);
             EditorManager.Selected = (i);
-            DialogManager.mMixerWindow.updateStatus();
+            AppManager.mMixerWindow.updateStatus();
             refreshScreen();
         }
         #endregion
@@ -6170,7 +6170,7 @@ namespace cadencii
                 cMenuPianoUndo.Enabled = EditorManager.editHistory.hasUndoHistory();
                 cMenuTrackSelectorRedo.Enabled = EditorManager.editHistory.hasRedoHistory();
                 cMenuTrackSelectorUndo.Enabled = EditorManager.editHistory.hasUndoHistory();
-                DialogManager.mMixerWindow.updateStatus();
+                AppManager.mMixerWindow.updateStatus();
                 setEdited(true);
                 updateDrawObjectList();
 
@@ -6195,7 +6195,7 @@ namespace cadencii
                 cMenuPianoUndo.Enabled = EditorManager.editHistory.hasUndoHistory();
                 cMenuTrackSelectorRedo.Enabled = EditorManager.editHistory.hasRedoHistory();
                 cMenuTrackSelectorUndo.Enabled = EditorManager.editHistory.hasUndoHistory();
-                DialogManager.mMixerWindow.updateStatus();
+                AppManager.mMixerWindow.updateStatus();
                 setEdited(true);
                 updateDrawObjectList();
 
@@ -6223,7 +6223,7 @@ namespace cadencii
             updateRecentFileMenu();
             setEdited(false);
             EditorManager.editHistory.clear();
-            DialogManager.mMixerWindow.updateStatus();
+            AppManager.mMixerWindow.updateStatus();
 
             // キャッシュwaveなどの処理
             if (ApplicationGlobal.appConfig.UseProjectCache) {
@@ -6339,8 +6339,8 @@ namespace cadencii
 #if !JAVA_MAC
             Util.applyContextMenuFontRecurse(cMenuPiano, font);
             Util.applyContextMenuFontRecurse(cMenuTrackSelector, font);
-            if (DialogManager.mMixerWindow != null) {
-                Util.applyFontRecurse(DialogManager.mMixerWindow, font);
+            if (AppManager.mMixerWindow != null) {
+                Util.applyFontRecurse(AppManager.mMixerWindow, font);
             }
             Util.applyContextMenuFontRecurse(cMenuTrackTab, font);
             trackSelector.applyFont(font);
@@ -9031,13 +9031,13 @@ namespace cadencii
         #region iconPalette
         public void iconPalette_LocationChanged(Object sender, EventArgs e)
         {
-            var point = DialogManager.iconPalette.Location;
+            var point = AppManager.iconPalette.Location;
             EditorManager.editorConfig.FormIconPaletteLocation = new XmlPoint(point.X, point.Y);
         }
 
         public void iconPalette_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            flipIconPaletteVisible(DialogManager.iconPalette.Visible);
+            flipIconPaletteVisible(AppManager.iconPalette.Visible);
         }
         #endregion
 
@@ -9265,7 +9265,7 @@ namespace cadencii
         #region mixerWindow
         public void mixerWindow_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            flipMixerDialogVisible(DialogManager.mMixerWindow.Visible);
+            flipMixerDialogVisible(AppManager.mMixerWindow.Visible);
         }
 
         public void mixerWindow_SoloChanged(int track, bool solo)
@@ -9280,8 +9280,8 @@ namespace cadencii
                 return;
             }
             vsq.setSolo(track, solo);
-            if (DialogManager.mMixerWindow != null) {
-                DialogManager.mMixerWindow.updateStatus();
+            if (AppManager.mMixerWindow != null) {
+                AppManager.mMixerWindow.updateStatus();
             }
         }
 
@@ -9301,8 +9301,8 @@ namespace cadencii
             } else {
                 vsq.setMute(track, mute);
             }
-            if (DialogManager.mMixerWindow != null) {
-                DialogManager.mMixerWindow.updateStatus();
+            if (AppManager.mMixerWindow != null) {
+                AppManager.mMixerWindow.updateStatus();
             }
         }
 
@@ -9379,9 +9379,9 @@ namespace cadencii
 #endif
             if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
 #if DEBUG
-                sout.println("FormMain#proprtyWindow_WindowStateChanged; isWindowMinimized=" + DialogManager.propertyWindow.getUi().isWindowMinimized());
+                sout.println("FormMain#proprtyWindow_WindowStateChanged; isWindowMinimized=" + AppManager.propertyWindow.getUi().isWindowMinimized());
 #endif
-                if (DialogManager.propertyWindow.getUi().isWindowMinimized()) {
+                if (AppManager.propertyWindow.getUi().isWindowMinimized()) {
                     updatePropertyPanelState(PanelState.Docked);
                 }
             }
@@ -9393,15 +9393,15 @@ namespace cadencii
             sout.println("FormMain#propertyWindow_LocationOrSizeChanged");
 #endif
             if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
-                if (DialogManager.propertyWindow != null && false == DialogManager.propertyWindow.getUi().isWindowMinimized()) {
+                if (AppManager.propertyWindow != null && false == AppManager.propertyWindow.getUi().isWindowMinimized()) {
                     var parent = this.Location;
-                    int propertyX = DialogManager.propertyWindow.getUi().getX();
-                    int propertyY = DialogManager.propertyWindow.getUi().getY();
+                    int propertyX = AppManager.propertyWindow.getUi().getX();
+                    int propertyY = AppManager.propertyWindow.getUi().getY();
                     EditorManager.editorConfig.PropertyWindowStatus.Bounds =
                         new XmlRectangle(propertyX - parent.X,
                                           propertyY - parent.Y,
-                                          DialogManager.propertyWindow.getUi().getWidth(),
-                                          DialogManager.propertyWindow.getUi().getHeight());
+                                          AppManager.propertyWindow.getUi().getWidth(),
+                                          AppManager.propertyWindow.getUi().getHeight());
                 }
             }
         }
@@ -9903,44 +9903,44 @@ namespace cadencii
 #if ENABLE_PROPERTY
                 // プロパティウィンドウの状態を更新
                 if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
-                    if (DialogManager.propertyWindow.getUi().isWindowMinimized()) {
-                        DialogManager.propertyWindow.getUi().deiconfyWindow();
+                    if (AppManager.propertyWindow.getUi().isWindowMinimized()) {
+                        AppManager.propertyWindow.getUi().deiconfyWindow();
                     }
-                    if (!DialogManager.propertyWindow.getUi().isVisible()) {
-                        DialogManager.propertyWindow.getUi().setVisible(true);
+                    if (!AppManager.propertyWindow.getUi().isVisible()) {
+                        AppManager.propertyWindow.getUi().setVisible(true);
                     }
                 }
 #endif
                 // ミキサーウィンドウの状態を更新
                 bool vm = EditorManager.editorConfig.MixerVisible;
-                if (vm != DialogManager.mMixerWindow.Visible) {
-                    DialogManager.mMixerWindow.Visible = vm;
+                if (vm != AppManager.mMixerWindow.Visible) {
+                    AppManager.mMixerWindow.Visible = vm;
                 }
 
                 // アイコンパレットの状態を更新
-                if (DialogManager.iconPalette != null && menuVisualIconPalette.Checked) {
-                    if (!DialogManager.iconPalette.Visible) {
-                        DialogManager.iconPalette.Visible = true;
+                if (AppManager.iconPalette != null && menuVisualIconPalette.Checked) {
+                    if (!AppManager.iconPalette.Visible) {
+                        AppManager.iconPalette.Visible = true;
                     }
                 }
                 updateLayout();
                 this.Focus();
             } else if (state == FormWindowState.Minimized) {
 #if ENABLE_PROPERTY
-                DialogManager.propertyWindow.getUi().setVisible(false);
+                AppManager.propertyWindow.getUi().setVisible(false);
 #endif
-                DialogManager.mMixerWindow.Visible = false;
-                if (DialogManager.iconPalette != null) {
-                    DialogManager.iconPalette.Visible = false;
+                AppManager.mMixerWindow.Visible = false;
+                if (AppManager.iconPalette != null) {
+                    AppManager.iconPalette.Visible = false;
                 }
             }/* else if ( state == BForm.MAXIMIZED_BOTH ) {
 #if ENABLE_PROPERTY
-                DialogManager.propertyWindow.setExtendedState( BForm.NORMAL );
-                DialogManager.propertyWindow.setVisible( EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window );
+                AppManager.propertyWindow.setExtendedState( BForm.NORMAL );
+                AppManager.propertyWindow.setVisible( EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window );
 #endif
-                DialogManager.mMixerWindow.setVisible( EditorManager.editorConfig.MixerVisible );
-                if ( DialogManager.iconPalette != null && menuVisualIconPalette.isSelected() ) {
-                    DialogManager.iconPalette.setVisible( true );
+                AppManager.mMixerWindow.setVisible( EditorManager.editorConfig.MixerVisible );
+                if ( AppManager.iconPalette != null && menuVisualIconPalette.isSelected() ) {
+                    AppManager.iconPalette.setVisible( true );
                 }
                 this.requestFocus();
             }*/
@@ -11380,7 +11380,7 @@ namespace cadencii
                 // コマンドを発行して実行
                 CadenciiCommand run = VsqFileEx.generateCommandReplace(dst);
                 EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
-                DialogManager.mMixerWindow.updateStatus();
+                AppManager.mMixerWindow.updateStatus();
                 setEdited(true);
                 refreshScreen(true);
             } catch (Exception ex) {
@@ -11628,7 +11628,7 @@ namespace cadencii
                 clearExistingData();
                 AppManager.setVsqFile(vsq);
                 setEdited(true);
-                DialogManager.mMixerWindow.updateStatus();
+                AppManager.mMixerWindow.updateStatus();
                 clearTempWave();
                 updateDrawObjectList();
                 refreshScreen();
@@ -11710,7 +11710,7 @@ namespace cadencii
             EditorManager.Selected = (1);
             clearExistingData();
             setEdited(true);
-            DialogManager.mMixerWindow.updateStatus();
+            AppManager.mMixerWindow.updateStatus();
             clearTempWave();
             updateDrawObjectList();
             refreshScreen();
@@ -11929,12 +11929,12 @@ namespace cadencii
                         Messaging.setLanguage(ApplicationGlobal.appConfig.Language);
                         applyLanguage();
                         mDialogPreference.applyLanguage();
-                        DialogManager.mMixerWindow.applyLanguage();
+                        AppManager.mMixerWindow.applyLanguage();
                         if (mVersionInfo != null && !mVersionInfo.IsDisposed) {
                             mVersionInfo.applyLanguage();
                         }
 #if ENABLE_PROPERTY
-                        DialogManager.propertyWindow.applyLanguage();
+                        AppManager.propertyWindow.applyLanguage();
                         AppManager.propertyPanel.updateValue(EditorManager.Selected);
 #endif
                         if (mDialogMidiImportAndExport != null) {
@@ -15572,7 +15572,7 @@ namespace cadencii
                 }
                 openVsqCor(filename);
                 clearExistingData();
-                DialogManager.mMixerWindow.updateStatus();
+                AppManager.mMixerWindow.updateStatus();
                 clearTempWave();
                 updateDrawObjectList();
                 refreshScreen();
@@ -15746,7 +15746,7 @@ namespace cadencii
             clearExistingData();
 
             setEdited(false);
-            DialogManager.mMixerWindow.updateStatus();
+            AppManager.mMixerWindow.updateStatus();
             clearTempWave();
             updateDrawObjectList();
             refreshScreen();
@@ -15776,7 +15776,7 @@ namespace cadencii
                 AppManager.mLastRenderedStatus[i] = null;
             }
             setEdited(false);
-            DialogManager.mMixerWindow.updateStatus();
+            AppManager.mMixerWindow.updateStatus();
             clearTempWave();
 
             // キャッシュディレクトリのパスを、デフォルトに戻す

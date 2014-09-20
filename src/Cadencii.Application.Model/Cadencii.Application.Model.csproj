@@ -140,6 +140,7 @@
     <Compile Include="controls\TrackSelector.cs" />
     <Compile Include="guiextended\Dialogs.cs" />
     <Compile Include="guiextended\ApplicationUIHost.cs" />
+    <Compile Include="DialogManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

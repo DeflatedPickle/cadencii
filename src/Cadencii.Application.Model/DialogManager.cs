@@ -19,31 +19,6 @@ namespace cadencii
 {
 	public class DialogManager
 	{
-		/// <summary>
-		/// ダイアログを表示中かどうか
-		/// </summary>
-//		private static bool mShowingDialog = false;
-		#if ENABLE_PROPERTY
-		/// <summary>
-		/// プロパティウィンドウが分離した場合のプロパティウィンドウのインスタンス。
-		/// メインウィンドウとプロパティウィンドウが分離している時、propertyPanelがpropertyWindowの子になる
-		/// </summary>
-		public static FormNotePropertyController propertyWindow;
-		#endif
-		/// <summary>
-		/// ミキサーダイアログ
-		/// </summary>
-		public static FormMixer mMixerWindow;
-		/// <summary>
-		/// アイコンパレット・ウィンドウのインスタンス
-		/// </summary>
-		public static FormIconPalette iconPalette = null;
-
-		/// <summary>
-		/// メインウィンドウにフォーカスを当てる要求があった時発生するイベント
-		/// </summary>
-		public static EventHandler MainWindowFocusRequired;
-
 		#region MessageBoxのラッパー
 
 		public static DialogResult showMessageBox (string text)
@@ -118,16 +93,16 @@ namespace cadencii
 		public static DialogResult showMessageBox (string text, string caption, int optionType, int messageType)
 		{
 			ApplicationUIHost.Instance.Dialogs.BeforeShowDialog ();
-			var ret = (DialogResult)cadencii.windows.forms.Utility.showMessageBox (text, caption, optionType, messageType);
+			var ret = ApplicationUIHost.Instance.Dialogs.ShowMessageBox (text, caption, optionType, messageType);
 			ApplicationUIHost.Instance.Dialogs.AfterShowDialog ();
 			return ret;
 		}
 
 		#endregion
 
-		public static bool showDialogTo (FormWorker fw, object mainFormWindow)
+		public static bool showDialogTo (object formWorker, object mainFormWindow)
 		{
-			return ApplicationUIHost.Instance.Dialogs.ShowDialogTo (fw, mainFormWindow);
+			return ApplicationUIHost.Instance.Dialogs.ShowDialogTo (formWorker, mainFormWindow);
 		}
 	}
 }
