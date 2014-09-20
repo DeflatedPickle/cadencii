@@ -508,6 +508,15 @@ namespace cadencii
 		}
 
 		#endregion
+
+		/// <summary>
+		/// メイン画面のコントローラ
+		/// </summary>
+		public static FormMainController MainWindowController = null;
+		/// <summary>
+		/// keyWidth+keyOffsetの位置からが、0になってる
+		/// </summary>
+		public const int keyOffset = 6;
 	}
 }
 

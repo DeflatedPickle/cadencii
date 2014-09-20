@@ -139,8 +139,8 @@ namespace cadencii
                 Logger.write(typeof(Cadencii) + ".Main; ex=" + ex + "\n");
             }
 #endif
-            AppManager.mMainWindowController = new FormMainController();
-            AppManager.mMainWindow = new FormMain(AppManager.mMainWindowController, file);
+            EditorManager.MainWindowController = new FormMainController();
+            AppManager.mMainWindow = new FormMain(EditorManager.MainWindowController, file);
 #if !MONO
             AppManager.mMainWindow.Load += mainWindow_Load;
 #endif

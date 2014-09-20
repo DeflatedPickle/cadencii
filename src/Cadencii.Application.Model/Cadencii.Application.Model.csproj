@@ -148,6 +148,7 @@
     <Compile Include="controls\ProgressBarWithLabel.cs" />
     <Compile Include="forms\FormWorkerUi.cs" />
     <Compile Include="FormWorker.cs" />
+    <Compile Include="WaveDrawContext.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

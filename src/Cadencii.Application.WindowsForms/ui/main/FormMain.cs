@@ -5775,7 +5775,7 @@ namespace cadencii
                     AppManager.mDrawObjects[i].Clear();
                 }
 
-                int xoffset = AppManager.keyOffset;// 6 + AppManager.keyWidth;
+                int xoffset = EditorManager.keyOffset;// 6 + AppManager.keyWidth;
                 int yoffset = (int)(127 * (int)(100 * controller.getScaleY()));
                 float scalex = controller.getScaleX();
                 Font SMALL_FONT = null;
@@ -6494,7 +6494,7 @@ namespace cadencii
 
                 #region 現在のマーカー
                 // ソングポジション
-                float xoffset = key_width + AppManager.keyOffset - controller.getStartToDrawX();
+                float xoffset = key_width + EditorManager.keyOffset - controller.getStartToDrawX();
                 int marker_x = (int)(AppManager.getCurrentClock() * controller.getScaleX() + xoffset);
                 if (key_width <= marker_x && marker_x <= width) {
                     g.setStroke(new Stroke(2.0f));
@@ -7036,7 +7036,7 @@ namespace cadencii
                             // 右方向に移動していた場合
                             clock_x = key_width + (width - key_width) / 3;
                         }
-                        double draft_d = (key_width + AppManager.keyOffset - clock_x) * controller.getScaleXInv() + clock;
+                        double draft_d = (key_width + EditorManager.keyOffset - clock_x) * controller.getScaleXInv() + clock;
                         if (draft_d < 0.0) {
                             draft_d = 0.0;
                         }

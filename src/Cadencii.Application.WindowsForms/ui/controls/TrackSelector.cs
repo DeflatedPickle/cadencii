@@ -1179,7 +1179,7 @@ namespace cadencii
             VsqFileEx vsq = MusicManager.getVsqFile();
             int selected = EditorManager.Selected;
             int key_width = AppManager.keyWidth;
-            int stdx = AppManager.mMainWindowController.getStartToDrawX();
+            int stdx = EditorManager.MainWindowController.getStartToDrawX();
             int graph_max_y = HEADER + graph_height;
             int graph_min_y = HEADER;
 
@@ -1205,7 +1205,7 @@ namespace cadencii
                     int ycoord = size.height - 2 * OFFSET_TRACK_TAB + 1;
 
                     // 左端での歌手を最初に描画
-                    int x_at_left = AppManager.keyWidth + AppManager.keyOffset;
+                    int x_at_left = AppManager.keyWidth + EditorManager.keyOffset;
                     int clock_at_left = AppManager.clockFromXCoord(x_at_left);
                     VsqEvent singer_at_left = vsq_track.getSingerEventAt(clock_at_left);
                     if (singer_at_left != null) {
@@ -2289,11 +2289,11 @@ namespace cadencii
             int width = getWidth();
             int oy = height - 42;
             Shape last_clip = g.getClip();
-            int stdx = AppManager.mMainWindowController.getStartToDrawX();
+            int stdx = EditorManager.MainWindowController.getStartToDrawX();
             int key_width = AppManager.keyWidth;
             int xoffset = key_width - stdx;
             g.clipRect(key_width, HEADER, width - key_width, graph_height);
-            float scale = AppManager.mMainWindowController.getScaleX();
+            float scale = EditorManager.MainWindowController.getScaleX();
             int selected = EditorManager.Selected;
 
 			g.setFont(cadencii.core.EditorConfig.baseFont10Bold);
@@ -2398,7 +2398,7 @@ namespace cadencii
             try {
 #endif
                 int visibleMinX = AppManager.keyWidth;
-                int visibleMaxX = mMainWindow.pictPianoRoll.getWidth() + AppManager.keyWidth + AppManager.keyOffset;
+                int visibleMaxX = mMainWindow.pictPianoRoll.getWidth() + AppManager.keyWidth + EditorManager.keyOffset;
 			Color hilight = cadencii.java.awt.Colors.Blue;// AppManager.getHilightColor();
                 int chains_count = chains.Count;
                 for (int i = 0; i < chains_count; i++) {
@@ -2764,7 +2764,7 @@ namespace cadencii
 
             // 移動中のデータ点をハイライト表示する
             if (mMouseDownMode == MouseDownMode.POINT_MOVE) {
-                int dx = pmouse.X + AppManager.mMainWindowController.getStartToDrawX() - mMouseDownLocation.X;
+                int dx = pmouse.X + EditorManager.MainWindowController.getStartToDrawX() - mMouseDownLocation.X;
                 int dy = pmouse.Y - mMouseDownLocation.Y;
                 foreach (var item in mMovingPoints) {
                     int x = AppManager.xCoordFromClocks(item.Clock) + dx;
@@ -3014,7 +3014,7 @@ namespace cadencii
                     break;
                 }
             }
-            float scale_x = AppManager.mMainWindowController.getScaleX();
+            float scale_x = EditorManager.MainWindowController.getScaleX();
             float scale_y = getScaleY();
             BezierPoint ret = new BezierPoint(0, 0);
             if (index >= 0) {
@@ -3195,7 +3195,7 @@ namespace cadencii
             if (e.Button == MouseButtons.None) {
                 return;
             }
-            int stdx = AppManager.mMainWindowController.getStartToDrawX();
+            int stdx = EditorManager.MainWindowController.getStartToDrawX();
             if ((e.X + stdx != mMouseDownLocation.X || e.Y != mMouseDownLocation.Y)) {
                 if (mMouseHoverThread != null && mMouseHoverThread.IsAlive) {
                     mMouseHoverThread.Abort();
@@ -3478,7 +3478,7 @@ namespace cadencii
             CDebug.WriteLine("TrackSelector_MouseDown");
 #endif
             VsqFileEx vsq = MusicManager.getVsqFile();
-            mMouseDownLocation.X = e.X + AppManager.mMainWindowController.getStartToDrawX();
+            mMouseDownLocation.X = e.X + EditorManager.MainWindowController.getStartToDrawX();
             mMouseDownLocation.Y = e.Y;
             int clock = AppManager.clockFromXCoord(e.X);
             int selected = EditorManager.Selected;
@@ -3492,7 +3492,7 @@ namespace cadencii
                 System.Media.SystemSounds.Asterisk.Play();
                 return;
             }
-            int stdx = AppManager.mMainWindowController.getStartToDrawX();
+            int stdx = EditorManager.MainWindowController.getStartToDrawX();
             mModifierOnMouseDown = (Keys) Control.ModifierKeys;
             int max = mSelectedCurve.getMaximum();
             int min = mSelectedCurve.getMinimum();
@@ -3717,7 +3717,7 @@ namespace cadencii
                                     }
                                 }
                                 mMouseTracer.clear();
-                                int x = e.X + AppManager.mMainWindowController.getStartToDrawX();
+                                int x = e.X + EditorManager.MainWindowController.getStartToDrawX();
                                 mMouseTracer.appendFirst(x, e.Y);
                                 mPencilMoved = false;
 
@@ -4412,7 +4412,7 @@ namespace cadencii
 
             int selected = EditorManager.Selected;
             bool is_utau_mode = AppManager.mDrawIsUtau[selected - 1];
-            int stdx = AppManager.mMainWindowController.getStartToDrawX();
+            int stdx = EditorManager.MainWindowController.getStartToDrawX();
 
             int max = mSelectedCurve.getMaximum();
             int min = mSelectedCurve.getMinimum();
@@ -4833,7 +4833,7 @@ namespace cadencii
                             } else if (mSelectedCurve.equals(CurveType.VibratoRate) || mSelectedCurve.equals(CurveType.VibratoDepth)) {
                                 #region VibratoRate || VibratoDepth
                                 int step_clock = ApplicationGlobal.appConfig.getControlCurveResolutionValue();
-                                int step_px = (int)(step_clock * AppManager.mMainWindowController.getScaleX());
+                                int step_px = (int)(step_clock * EditorManager.MainWindowController.getScaleX());
                                 if (step_px <= 0) {
                                     step_px = 1;
                                 }
@@ -4954,7 +4954,7 @@ namespace cadencii
                                 #region Other Curves
                                 int track = selected;
                                 int step_clock = ApplicationGlobal.appConfig.getControlCurveResolutionValue();
-                                int step_px = (int)(step_clock * AppManager.mMainWindowController.getScaleX());
+                                int step_px = (int)(step_clock * EditorManager.MainWindowController.getScaleX());
                                 if (step_px <= 0) {
                                     step_px = 1;
                                 }
@@ -5193,7 +5193,7 @@ namespace cadencii
                 if (mMouseMoved) {
 					Point pmouse = pointToClient(cadencii.core2.PortUtil.getMousePosition());
                     Point mouse = new Point(pmouse.X, pmouse.Y);
-                    int dx = mouse.X + AppManager.mMainWindowController.getStartToDrawX() - mMouseDownLocation.X;
+                    int dx = mouse.X + EditorManager.MainWindowController.getStartToDrawX() - mMouseDownLocation.X;
                     int dy = mouse.Y - mMouseDownLocation.Y;
 
                     string curve = mSelectedCurve.getName();
@@ -5590,7 +5590,7 @@ namespace cadencii
                         }
                         RendererKind renderer = VsqFileEx.getTrackRendererKind(vsq_track);
                         if (ve == null) {
-                            int x_at_left = key_width + AppManager.keyOffset;
+                            int x_at_left = key_width + EditorManager.keyOffset;
                             Rectangle rc_left_singer_box =
                                 new Rectangle(
                                     x_at_left,
