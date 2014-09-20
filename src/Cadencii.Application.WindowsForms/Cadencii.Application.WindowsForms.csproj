@@ -246,7 +246,6 @@
     <Compile Include="controls\RecentFileMenuItem.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ItemSelectionModel.cs" />
     <Compile Include="WFUtility.cs" />
     <Compile Include="forms\FormBezierPointEditController.cs">
       <SubType>Code</SubType>

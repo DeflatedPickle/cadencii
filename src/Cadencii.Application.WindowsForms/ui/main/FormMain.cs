@@ -531,9 +531,9 @@ namespace cadencii
             Messaging.setLanguage(ApplicationGlobal.appConfig.Language);
 
 #if ENABLE_PROPERTY
-            AppManager.propertyPanel = new PropertyPanel();
+            EditorManager.propertyPanel = new PropertyPanelImpl();
             AppManager.propertyWindow = new FormNotePropertyController(c => new FormNotePropertyUiImpl(c), this);
-            AppManager.propertyWindow.getUi().addComponent(AppManager.propertyPanel);
+            AppManager.propertyWindow.getUi().addComponent(EditorManager.propertyPanel);
 #endif
 
 #if DEBUG
@@ -953,7 +953,7 @@ namespace cadencii
 
 #if ENABLE_PROPERTY
             AppManager.propertyWindow.getUi().setBounds(a.X, a.Y, rc.width, rc.height);
-            AppManager.propertyPanel.CommandExecuteRequired += new CommandExecuteRequiredEventHandler(propertyPanel_CommandExecuteRequired);
+            EditorManager.propertyPanel.CommandExecuteRequired += new CommandExecuteRequiredEventHandler(propertyPanel_CommandExecuteRequired);
 #endif
             updateBgmMenuState();
             AppManager.mLastTrackSelectorHeight = trackSelector.getPreferredMinSize();
@@ -2268,7 +2268,7 @@ namespace cadencii
             sout.println("FormMain#updatePropertyPanelState; state=" + state);
 #endif
             if (state == PanelState.Docked) {
-                mPropertyPanelContainer.addComponent(AppManager.propertyPanel);
+                mPropertyPanelContainer.addComponent((Control) EditorManager.propertyPanel.Native);
                 menuVisualProperty.Checked = true;
                 EditorManager.editorConfig.PropertyWindowStatus.State = PanelState.Docked;
                 splitContainerProperty.setPanel1Hidden(false);
@@ -2300,7 +2300,7 @@ namespace cadencii
                 splitContainerProperty.setDividerSize(0);
                 splitContainerProperty.setSplitterFixed(true);
             } else if (state == PanelState.Window) {
-                AppManager.propertyWindow.getUi().addComponent(AppManager.propertyPanel);
+                AppManager.propertyWindow.getUi().addComponent(EditorManager.propertyPanel);
                 var parent = this.Location;
                 XmlRectangle rc = EditorManager.editorConfig.PropertyWindowStatus.Bounds;
                 Point property = new Point(rc.x, rc.y);
@@ -4781,7 +4781,7 @@ namespace cadencii
                 return;
             }
 #if ENABLE_PROPERTY
-            if (AppManager.propertyPanel.isEditing()) {
+            if (EditorManager.propertyPanel.isEditing()) {
                 return;
             }
 #endif
@@ -6088,7 +6088,7 @@ namespace cadencii
             panelOverview.updateCachedImage();
 
 #if ENABLE_PROPERTY
-            AppManager.propertyPanel.updateValue(EditorManager.Selected);
+            EditorManager.propertyPanel.updateValue(EditorManager.Selected);
 #endif
         }
 
@@ -6175,8 +6175,8 @@ namespace cadencii
                 updateDrawObjectList();
 
 #if ENABLE_PROPERTY
-                if (AppManager.propertyPanel != null) {
-                    AppManager.propertyPanel.updateValue(EditorManager.Selected);
+                if (EditorManager.propertyPanel != null) {
+                    EditorManager.propertyPanel.updateValue(EditorManager.Selected);
                 }
 #endif
             }
@@ -6200,8 +6200,8 @@ namespace cadencii
                 updateDrawObjectList();
 
 #if ENABLE_PROPERTY
-                if (AppManager.propertyPanel != null) {
-                    AppManager.propertyPanel.updateValue(EditorManager.Selected);
+                if (EditorManager.propertyPanel != null) {
+                    EditorManager.propertyPanel.updateValue(EditorManager.Selected);
                 }
 #endif
             }
@@ -8000,7 +8000,7 @@ namespace cadencii
             lock (AppManager.mDrawObjects) {
                 if (mFormActivated) {
 #if ENABLE_PROPERTY
-                    if (AppManager.mInputTextBox != null && !AppManager.mInputTextBox.IsDisposed && !AppManager.mInputTextBox.Visible && !AppManager.propertyPanel.isEditing()) {
+                    if (AppManager.mInputTextBox != null && !AppManager.mInputTextBox.IsDisposed && !AppManager.mInputTextBox.Visible && !EditorManager.propertyPanel.isEditing()) {
 #else
                     if (AppManager.mInputTextBox != null && !AppManager.mInputTextBox.IsDisposed && !AppManager.mInputTextBox.Visible) {
 #endif
@@ -11935,7 +11935,7 @@ namespace cadencii
                         }
 #if ENABLE_PROPERTY
                         AppManager.propertyWindow.applyLanguage();
-                        AppManager.propertyPanel.updateValue(EditorManager.Selected);
+                        EditorManager.propertyPanel.updateValue(EditorManager.Selected);
 #endif
                         if (mDialogMidiImportAndExport != null) {
                             mDialogMidiImportAndExport.applyLanguage();
@@ -14177,7 +14177,7 @@ namespace cadencii
             if (mFormActivated && AppManager.mInputTextBox != null) {
                 bool input_visible = !AppManager.mInputTextBox.IsDisposed && AppManager.mInputTextBox.Visible;
 #if ENABLE_PROPERTY
-                bool prop_editing = AppManager.propertyPanel.isEditing();
+                bool prop_editing = EditorManager.propertyPanel.isEditing();
 #else
                 bool prop_editing = false;
 #endif
@@ -16366,7 +16366,7 @@ namespace cadencii
                         sout.println("FormMain#handleScriptMenuItem_Click; ScriptServer.invokeScript has returned TRUE");
 #endif
                         AppManager.itemSelection.updateSelectedEventInstance();
-                        AppManager.propertyPanel.updateValue(selected);
+                        EditorManager.propertyPanel.updateValue(selected);
                         refreshScreen();
                     }
                 } else {

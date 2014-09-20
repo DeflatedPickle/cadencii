@@ -15,6 +15,12 @@ namespace cadencii
 		/// メインの編集画面のインスタンス
 		/// </summary>
 		public static FormMainUi MainWindow = null;
+		#if ENABLE_PROPERTY
+		/// <summary>
+		/// プロパティパネルのインスタンス
+		/// </summary>
+		public static PropertyPanel propertyPanel;
+		#endif
 
 		/// <summary>
 		/// 鍵盤の表示幅(pixel)

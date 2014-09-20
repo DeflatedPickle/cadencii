@@ -47,12 +47,6 @@ namespace cadencii
         /// AttachedCurve用のシリアライザ
         /// </summary>
         public static XmlSerializer xmlSerializerListBezierCurves = new XmlSerializer(typeof(AttachedCurve));
-#if ENABLE_PROPERTY
-        /// <summary>
-        /// プロパティパネルのインスタンス
-        /// </summary>
-        public static PropertyPanel propertyPanel;
-#endif
         /// <summary>
         /// クリップボード管理クラスのインスタンス
         /// </summary>

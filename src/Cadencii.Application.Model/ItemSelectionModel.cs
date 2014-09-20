@@ -294,7 +294,7 @@ namespace cadencii
             }
             if (!silent) {
 #if ENABLE_PROPERTY
-                AppManager.propertyPanel.updateValue(EditorManager.Selected);
+                EditorManager.propertyPanel.updateValue(EditorManager.Selected);
 #endif
             }
         }
@@ -317,7 +317,7 @@ namespace cadencii
                 mEvents.RemoveAt(i);
             }
 #if ENABLE_PROPERTY
-            AppManager.propertyPanel.updateValue(EditorManager.Selected);
+            EditorManager.propertyPanel.updateValue(EditorManager.Selected);
 #endif
             checkSelectedItemExistence();
         }
@@ -353,7 +353,7 @@ namespace cadencii
                 }
             }
 #if ENABLE_PROPERTY
-            AppManager.propertyPanel.updateValue(selected);
+            EditorManager.propertyPanel.updateValue(selected);
 #endif
             checkSelectedItemExistence();
         }
@@ -399,7 +399,7 @@ namespace cadencii
             }
             if (!silent) {
 #if ENABLE_PROPERTY
-                AppManager.propertyPanel.updateValue(selected);
+                EditorManager.propertyPanel.updateValue(selected);
 #endif
             }
         }
@@ -408,7 +408,7 @@ namespace cadencii
         {
             mEvents.Clear();
 #if ENABLE_PROPERTY
-            AppManager.propertyPanel.updateValue(EditorManager.Selected);
+            EditorManager.propertyPanel.updateValue(EditorManager.Selected);
 #endif
             checkSelectedItemExistence();
         }

@@ -156,6 +156,8 @@
     <Compile Include="forms\ExceptionNotifyFormUi.cs" />
     <Compile Include="forms\ExceptionNotifyFormUiListener.cs" />
     <Compile Include="ImageCachedComponentDrawer.cs" />
+    <Compile Include="controls\PropertyPanel.cs" />
+    <Compile Include="ItemSelectionModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
