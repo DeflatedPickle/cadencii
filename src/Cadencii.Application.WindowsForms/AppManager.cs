@@ -326,14 +326,6 @@ namespace cadencii
         public static Point mMouseDownLocation = new Point();
         public static int mLastTrackSelectorHeight;
         /// <summary>
-        /// 最後にレンダリングが行われた時の、トラックの情報が格納されている。
-        /// </summary>
-		public static RenderedStatus[] mLastRenderedStatus = new RenderedStatus[ApplicationGlobal.MAX_NUM_TRACK];
-        /// <summary>
-        /// RenderingStatusをXMLシリアライズするためのシリアライザ
-        /// </summary>
-        public static XmlSerializer mRenderingStatusSerializer = new XmlSerializer(typeof(RenderedStatus));
-        /// <summary>
         /// 再生開始からの経過時刻がこの秒数以下の場合、再生を止めることが禁止される。
         /// </summary>
         public static double mForbidFlipPlayingThresholdSeconds = 0.2;
@@ -432,13 +424,6 @@ namespace cadencii
         /// 編集されたかどうかを表す値に変更が要求されたときに発生するイベント
         /// </summary>
         public static event EditedStateChangedEventHandler EditedStateChanged;
-
-        /// <summary>
-        /// 波形ビューのリロードが要求されたとき発生するイベント．
-        /// GeneralEventArgsの引数は，トラック番号,waveファイル名,開始時刻(秒),終了時刻(秒)が格納されたObject[]配列
-        /// 開始時刻＞終了時刻の場合は，partialではなく全体のリロード要求
-        /// </summary>
-        public static event WaveViewRealoadRequiredEventHandler WaveViewReloadRequired;
 
         static AppManager()
         {
@@ -624,23 +609,6 @@ namespace cadencii
             return ret;
         }
 
-        public static void invokeWaveViewReloadRequiredEvent(int track, string wavePath, double secStart, double secEnd)
-        {
-            try {
-                WaveViewRealoadRequiredEventArgs arg = new WaveViewRealoadRequiredEventArgs();
-                arg.track = track;
-                arg.file = wavePath;
-                arg.secStart = secStart;
-                arg.secEnd = secEnd;
-                if (WaveViewReloadRequired != null) {
-                    WaveViewReloadRequired.Invoke(typeof(AppManager), arg);
-                }
-            } catch (Exception ex) {
-                Logger.write(typeof(AppManager) + ".invokeWaveViewReloadRequiredEvent; ex=" + ex + "\n");
-                sout.println(typeof(AppManager) + ".invokeWaveViewReloadRequiredEvent; ex=" + ex);
-            }
-        }
-
         /// <summary>
         /// 指定したトラックについて，再合成が必要な範囲を抽出し，それらのリストを作成します
         /// </summary>
@@ -662,7 +630,7 @@ namespace cadencii
                 VsqTrack vsq_track = mVsq.Track[track];
                 string wavePath = Path.Combine(temppath, track + ".wav");
 
-                if (mLastRenderedStatus[track - 1] == null) {
+                if (EditorManager.LastRenderedStatus[track - 1] == null) {
                     // この場合は全部レンダリングする必要がある
                     PatchWorkQueue q = new PatchWorkQueue();
                     q.track = track;
@@ -676,7 +644,7 @@ namespace cadencii
 
                 // 部分レンダリング
                 EditedZoneUnit[] areas =
-                    Utility.detectRenderedStatusDifference(mLastRenderedStatus[track - 1],
+                    Utility.detectRenderedStatusDifference(EditorManager.LastRenderedStatus[track - 1],
                                                             new RenderedStatus(
                                                                 (VsqTrack)vsq_track.clone(),
                                                                 mVsq.TempoTable,
@@ -686,7 +654,7 @@ namespace cadencii
                 EditedZone zone = new EditedZone();
                 zone.add(areas);
                 checkSerializedEvents(zone, vsq_track, mVsq.TempoTable, areas);
-                checkSerializedEvents(zone, mLastRenderedStatus[track - 1].track, mLastRenderedStatus[track - 1].tempo, areas);
+                checkSerializedEvents(zone, EditorManager.LastRenderedStatus[track - 1].track, EditorManager.LastRenderedStatus[track - 1].tempo, areas);
 
                 // レンダリング済みのwaveがあれば、zoneに格納された編集範囲に隣接する前後が無音でない場合、
                 // 編集範囲を無音部分まで延長する。
@@ -838,7 +806,7 @@ namespace cadencii
             if (queue.Count <= 0) {
                 // パッチワークする必要なし
                 for (int i = 0; i < tracks.Count; i++) {
-                    setRenderRequired(tracks[i], false);
+                    EditorManager.setRenderRequired(tracks[i], false);
                 }
             }
 
@@ -1151,81 +1119,6 @@ namespace cadencii
         }
 
         /// <summary>
-        /// 指定したディレクトリにある合成ステータスのxmlデータを読み込みます
-        /// </summary>
-        /// <param name="directory">読み込むxmlが保存されたディレクトリ</param>
-        /// <param name="track">読み込みを行うトラックの番号</param>
-        public static void deserializeRenderingStatus(string directory, int track)
-        {
-            string xml = Path.Combine(directory, track + ".xml");
-            RenderedStatus status = null;
-            if (System.IO.File.Exists(xml)) {
-                FileStream fs = null;
-                try {
-                    fs = new FileStream(xml, FileMode.Open, FileAccess.Read);
-                    Object obj = mRenderingStatusSerializer.deserialize(fs);
-                    if (obj != null && obj is RenderedStatus) {
-                        status = (RenderedStatus)obj;
-                    }
-                } catch (Exception ex) {
-                    Logger.write(typeof(AppManager) + ".deserializeRederingStatus; ex=" + ex + "\n");
-                    status = null;
-                    serr.println("AppManager#deserializeRederingStatus; ex=" + ex);
-                } finally {
-                    if (fs != null) {
-                        try {
-                            fs.Close();
-                        } catch (Exception ex2) {
-                            Logger.write(typeof(AppManager) + ".deserializeRederingStatus; ex=" + ex2 + "\n");
-                            serr.println("AppManager#deserializeRederingStatus; ex2=" + ex2);
-                        }
-                    }
-                }
-            }
-            mLastRenderedStatus[track - 1] = status;
-        }
-
-        /// <summary>
-        /// 指定したトラックの合成ステータスを，指定したxmlファイルに保存します．
-        /// </summary>
-        /// <param name="temppath"></param>
-        /// <param name="track"></param>
-        public static void serializeRenderingStatus(string temppath, int track)
-        {
-            FileStream fs = null;
-            bool failed = true;
-            string xml = Path.Combine(temppath, track + ".xml");
-            try {
-                fs = new FileStream(xml, FileMode.Create, FileAccess.Write);
-                mRenderingStatusSerializer.serialize(fs, mLastRenderedStatus[track - 1]);
-                failed = false;
-            } catch (Exception ex) {
-                serr.println("FormMain#patchWorkToFreeze; ex=" + ex);
-                Logger.write(typeof(AppManager) + ".serializeRenderingStauts; ex=" + ex + "\n");
-            } finally {
-                if (fs != null) {
-                    try {
-                        fs.Close();
-                    } catch (Exception ex2) {
-                        serr.println("FormMain#patchWorkToFreeze; ex2=" + ex2);
-                        Logger.write(typeof(AppManager) + ".serializeRenderingStatus; ex=" + ex2 + "\n");
-                    }
-                }
-            }
-
-            // シリアライズに失敗した場合，該当するxmlを削除する
-            if (failed) {
-                if (System.IO.File.Exists(xml)) {
-                    try {
-                        PortUtil.deleteFile(xml);
-                    } catch (Exception ex) {
-                        Logger.write(typeof(AppManager) + ".serializeRendererStatus; ex=" + ex + "\n");
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// クロック数から、画面に描くべきx座標の値を取得します。
         /// </summary>
         /// <param name="clocks"></param>
@@ -1503,14 +1396,6 @@ namespace cadencii
                 return false;
             }
             return mVsq.editorStatus.renderRequired[track - 1];
-        }
-
-        public static void setRenderRequired(int track, bool value)
-        {
-            if (mVsq == null) {
-                return;
-            }
-            mVsq.editorStatus.renderRequired[track - 1] = value;
         }
 
         /// <summary>

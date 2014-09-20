@@ -79,7 +79,6 @@
     <Compile Include="Cadencii.cs" />
     <Compile Include="ClipboardModel.cs" />
     <Compile Include="ImageCachedComponentDrawer.cs" />
-    <Compile Include="SynthesizeWorker.cs" />
     <Compile Include="ui\Factory.cs" />
     <Compile Include="ui\main\FormMain.cs">
       <SubType>Form</SubType>
@@ -221,8 +220,6 @@
     <Compile Include="controls\WaveView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="controls\WaveViewRealoadRequiredEventArgs.cs" />
-    <Compile Include="controls\WaveViewRealoadRequiredEventHandler.cs" />
     <Compile Include="controls\PropertyPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>

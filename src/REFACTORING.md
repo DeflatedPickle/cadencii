@@ -54,7 +54,7 @@ Projects / Assemblies
 Milestones
 ----------
 
-- SynthesizeWorker needs to be plat-neutral.
+- More Utility method removal in winforms app.
 - PropertyPanel needs to be plat-neutral.
   - then ItemSelectionModel can be moved too.
 - Move some more forms to platform agnostic application model dll.

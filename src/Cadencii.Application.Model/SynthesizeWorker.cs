@@ -24,9 +24,9 @@ namespace cadencii
     public class SynthesizeWorker
     {
         private WaveGenerator mGenerator = null;
-        private FormMain mMainWindow = null;
+        private object mMainWindow = null;
 
-        public SynthesizeWorker(FormMain main_window)
+		public SynthesizeWorker(object main_window) // FormMain
         {
             mMainWindow = main_window;
         }
@@ -65,10 +65,10 @@ namespace cadencii
                 if (queueIndex.Count == 1 && wavePath.Equals(queue[queueIndex[0]].file)) {
                     // 第trackトラック全体の合成を指示するキューだった場合．
                     // このとき，パッチワークを行う必要なし．
-                    AppManager.mLastRenderedStatus[track - 1] =
+                    EditorManager.LastRenderedStatus[track - 1] =
                         new RenderedStatus((VsqTrack)vsq.Track[track].clone(), vsq.TempoTable, (SequenceConfig)vsq.config.clone());
-                    AppManager.serializeRenderingStatus(temppath, track);
-                    AppManager.invokeWaveViewReloadRequiredEvent(track, wavePath, 1, -1);
+                    EditorManager.serializeRenderingStatus(temppath, track);
+                    EditorManager.invokeWaveViewReloadRequiredEvent(track, wavePath, 1, -1);
                     continue;
                 }
 
@@ -114,14 +114,14 @@ namespace cadencii
                                 state.reportProgress(total);
                             }
                         } catch (Exception ex) {
-                            Logger.write(typeof(AppManager) + ".patchWorkToFreeze; ex=" + ex + "\n");
+                            Logger.write(typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex + "\n");
                             serr.println("AppManager#patchWorkToFreeze; ex=" + ex);
                         } finally {
                             if (wr != null) {
                                 try {
                                     wr.close();
                                 } catch (Exception ex2) {
-                                    Logger.write(typeof(AppManager) + ".patchWorkToFreeze; ex=" + ex2 + "\n");
+                                    Logger.write(typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex2 + "\n");
                                     serr.println("AppManager#patchWorkToFreeze; ex2=" + ex2);
                                 }
                             }
@@ -130,7 +130,7 @@ namespace cadencii
                         try {
                             PortUtil.deleteFile(queue[i].file);
                         } catch (Exception ex) {
-                            Logger.write(typeof(AppManager) + ".patchWorkToFreeze; ex=" + ex + "\n");
+                            Logger.write(typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex + "\n");
                             serr.println("AppManager#patchWorkToFreeze; ex=" + ex);
                         }
                     }
@@ -138,10 +138,10 @@ namespace cadencii
                     VsqTrack vsq_track = vsq.Track[track];
                     if (queueIndex[queueIndex.Count - 1] <= finished) {
                         // 途中で終了せず，このトラックの全てのパッチワークが完了した．
-                        AppManager.mLastRenderedStatus[track - 1] =
+                        EditorManager.LastRenderedStatus[track - 1] =
                             new RenderedStatus((VsqTrack)vsq_track.clone(), vsq.TempoTable, (SequenceConfig)vsq.config.clone());
-                        AppManager.serializeRenderingStatus(temppath, track);
-                        AppManager.setRenderRequired(track, false);
+                        EditorManager.serializeRenderingStatus(temppath, track);
+                        EditorManager.setRenderRequired(track, false);
                     } else {
                         // パッチワークの作成途中で，キャンセルされた
                         // キャンセルされたやつ以降の範囲に、プログラムチェンジ17の歌手変更イベントを挿入する。→AppManager#detectTrackDifferenceに必ず検出してもらえる。
@@ -197,20 +197,20 @@ namespace cadencii
                             copied.sortEvent();
                         }
 
-                        AppManager.mLastRenderedStatus[track - 1] = new RenderedStatus(copied, vsq.TempoTable, (SequenceConfig)vsq.config.clone());
-                        AppManager.serializeRenderingStatus(temppath, track);
+                        EditorManager.LastRenderedStatus[track - 1] = new RenderedStatus(copied, vsq.TempoTable, (SequenceConfig)vsq.config.clone());
+                        EditorManager.serializeRenderingStatus(temppath, track);
                     }
 
                     state.reportComplete();
                 } catch (Exception ex) {
-                    Logger.write(typeof(AppManager) + ".patchWorkToFreeze; ex=" + ex + "\n");
+                    Logger.write(typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex + "\n");
                     serr.println("AppManager#patchWorkToFreeze; ex=" + ex);
                 } finally {
                     if (writer != null) {
                         try {
                             writer.close();
                         } catch (Exception ex2) {
-                            Logger.write(typeof(AppManager) + ".patchWorkToFreeze; ex=" + ex2 + "\n");
+                            Logger.write(typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex2 + "\n");
                             serr.println("AppManager#patchWorkToFreeze; ex2=" + ex2);
                         }
                     }
@@ -231,7 +231,7 @@ namespace cadencii
 
                     invokeWaveViewReloadRequiredEvent( tracks.get( k ), wavePath, secStart, secEnd );
                 }*/
-                AppManager.invokeWaveViewReloadRequiredEvent(track, wavePath, 1, -1);
+                EditorManager.invokeWaveViewReloadRequiredEvent(track, wavePath, 1, -1);
             }
 #if DEBUG
             sout.println("SynthesizeWorker#patchWork; done");

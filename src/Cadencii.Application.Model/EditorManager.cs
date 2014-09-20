@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using cadencii.vsq;
 using cadencii.java.awt;
+using cadencii.xml;
 
 namespace cadencii
 {
@@ -517,6 +518,127 @@ namespace cadencii
 		/// keyWidth+keyOffsetの位置からが、0になってる
 		/// </summary>
 		public const int keyOffset = 6;
+
+		#region used by SynthesizeWorker
+
+		/// <summary>
+		/// 最後にレンダリングが行われた時の、トラックの情報が格納されている。
+		/// </summary>
+		public static RenderedStatus[] LastRenderedStatus = new RenderedStatus[ApplicationGlobal.MAX_NUM_TRACK];
+		/// <summary>
+		/// RenderingStatusをXMLシリアライズするためのシリアライザ
+		/// </summary>
+		public static XmlSerializer RenderingStatusSerializer = new XmlSerializer (typeof(RenderedStatus));
+
+		/// <summary>
+		/// 指定したディレクトリにある合成ステータスのxmlデータを読み込みます
+		/// </summary>
+		/// <param name="directory">読み込むxmlが保存されたディレクトリ</param>
+		/// <param name="track">読み込みを行うトラックの番号</param>
+		public static void deserializeRenderingStatus (string directory, int track)
+		{
+			string xml = Path.Combine (directory, track + ".xml");
+			RenderedStatus status = null;
+			if (System.IO.File.Exists (xml)) {
+				FileStream fs = null;
+				try {
+					fs = new FileStream (xml, FileMode.Open, FileAccess.Read);
+					Object obj = EditorManager.RenderingStatusSerializer.deserialize (fs);
+					if (obj != null && obj is RenderedStatus) {
+						status = (RenderedStatus)obj;
+					}
+				} catch (Exception ex) {
+					Logger.write (typeof(EditorManager) + ".deserializeRederingStatus; ex=" + ex + "\n");
+					status = null;
+					serr.println ("AppManager#deserializeRederingStatus; ex=" + ex);
+				} finally {
+					if (fs != null) {
+						try {
+							fs.Close ();
+						} catch (Exception ex2) {
+							Logger.write (typeof(EditorManager) + ".deserializeRederingStatus; ex=" + ex2 + "\n");
+							serr.println ("AppManager#deserializeRederingStatus; ex2=" + ex2);
+						}
+					}
+				}
+			}
+			EditorManager.LastRenderedStatus [track - 1] = status;
+		}
+
+		/// <summary>
+		/// 指定したトラックの合成ステータスを，指定したxmlファイルに保存します．
+		/// </summary>
+		/// <param name="temppath"></param>
+		/// <param name="track"></param>
+		public static void serializeRenderingStatus (string temppath, int track)
+		{
+			FileStream fs = null;
+			bool failed = true;
+			string xml = Path.Combine (temppath, track + ".xml");
+			try {
+				fs = new FileStream (xml, FileMode.Create, FileAccess.Write);
+				EditorManager.RenderingStatusSerializer.serialize (fs, EditorManager.LastRenderedStatus [track - 1]);
+				failed = false;
+			} catch (Exception ex) {
+				serr.println ("FormMain#patchWorkToFreeze; ex=" + ex);
+				Logger.write (typeof(EditorManager) + ".serializeRenderingStauts; ex=" + ex + "\n");
+			} finally {
+				if (fs != null) {
+					try {
+						fs.Close ();
+					} catch (Exception ex2) {
+						serr.println ("FormMain#patchWorkToFreeze; ex2=" + ex2);
+						Logger.write (typeof(EditorManager) + ".serializeRenderingStatus; ex=" + ex2 + "\n");
+					}
+				}
+			}
+
+			// シリアライズに失敗した場合，該当するxmlを削除する
+			if (failed) {
+				if (System.IO.File.Exists (xml)) {
+					try {
+						PortUtil.deleteFile (xml);
+					} catch (Exception ex) {
+						Logger.write (typeof(EditorManager) + ".serializeRendererStatus; ex=" + ex + "\n");
+					}
+				}
+			}
+		}
+
+		public static void setRenderRequired (int track, bool value)
+		{
+			var v = MusicManager.getVsqFile ();
+			if (v == null) {
+				return;
+			}
+			v.editorStatus.renderRequired [track - 1] = value;
+		}
+
+		public static void invokeWaveViewReloadRequiredEvent (int track, string wavePath, double secStart, double secEnd)
+		{
+			try {
+				WaveViewRealoadRequiredEventArgs arg = new WaveViewRealoadRequiredEventArgs ();
+				arg.track = track;
+				arg.file = wavePath;
+				arg.secStart = secStart;
+				arg.secEnd = secEnd;
+				if (WaveViewReloadRequired != null) {
+					WaveViewReloadRequired.Invoke (typeof(EditorManager), arg);
+				}
+			} catch (Exception ex) {
+				Logger.write (typeof(EditorManager) + ".invokeWaveViewReloadRequiredEvent; ex=" + ex + "\n");
+				sout.println (typeof(EditorManager) + ".invokeWaveViewReloadRequiredEvent; ex=" + ex);
+			}
+		}
+
+		/// <summary>
+		/// 波形ビューのリロードが要求されたとき発生するイベント．
+		/// GeneralEventArgsの引数は，トラック番号,waveファイル名,開始時刻(秒),終了時刻(秒)が格納されたObject[]配列
+		/// 開始時刻＞終了時刻の場合は，partialではなく全体のリロード要求
+		/// </summary>
+		public static event WaveViewRealoadRequiredEventHandler WaveViewReloadRequired;
+
+		#endregion
 	}
 }
 

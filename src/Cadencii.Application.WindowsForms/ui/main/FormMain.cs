@@ -815,7 +815,7 @@ namespace cadencii
             AppManager.UpdateBgmStatusRequired += new EventHandler(AppManager_UpdateBgmStatusRequired);
             AppManager.MainWindowFocusRequired = new EventHandler(AppManager_MainWindowFocusRequired);
             AppManager.EditedStateChanged += new EditedStateChangedEventHandler(AppManager_EditedStateChanged);
-            AppManager.WaveViewReloadRequired += new WaveViewRealoadRequiredEventHandler(AppManager_WaveViewRealoadRequired);
+            EditorManager.WaveViewReloadRequired += new WaveViewRealoadRequiredEventHandler(AppManager_WaveViewRealoadRequired);
             EditorConfig.QuantizeModeChanged += new EventHandler(handleEditorConfig_QuantizeModeChanged);
 
 #if ENABLE_PROPERTY
@@ -6306,7 +6306,7 @@ namespace cadencii
 
                 // RenderedStatusを読み込む
                 for (int i = 1; i < vsq.Track.Count; i++) {
-                    AppManager.deserializeRenderingStatus(cacheDir, i);
+                    EditorManager.deserializeRenderingStatus(cacheDir, i);
                 }
 
                 // キャッシュ内のwavを、waveViewに読み込む
@@ -15772,8 +15772,8 @@ namespace cadencii
 
             AppManager.setVsqFile(vsq);
             clearExistingData();
-            for (int i = 0; i < AppManager.mLastRenderedStatus.Length; i++) {
-                AppManager.mLastRenderedStatus[i] = null;
+            for (int i = 0; i < EditorManager.LastRenderedStatus.Length; i++) {
+                EditorManager.LastRenderedStatus[i] = null;
             }
             setEdited(false);
             AppManager.mMixerWindow.updateStatus();

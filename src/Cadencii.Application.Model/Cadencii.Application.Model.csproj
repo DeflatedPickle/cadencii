@@ -149,6 +149,9 @@
     <Compile Include="forms\FormWorkerUi.cs" />
     <Compile Include="FormWorker.cs" />
     <Compile Include="WaveDrawContext.cs" />
+    <Compile Include="SynthesizeWorker.cs" />
+    <Compile Include="controls\WaveViewRealoadRequiredEventArgs.cs" />
+    <Compile Include="controls\WaveViewRealoadRequiredEventHandler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
