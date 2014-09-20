@@ -14,8 +14,10 @@ namespace cadencii
 
 		public override cadencii.java.awt.DialogResult ShowMessageBox (string text, string caption, int optionType, int messageType)
 		{
-			return (cadencii.java.awt.DialogResult) cadencii.windows.forms.Utility.showMessageBox (text, caption, optionType, messageType);
-
+			BeforeShowDialog ();
+			var ret = (cadencii.java.awt.DialogResult) cadencii.windows.forms.Utility.showMessageBox (text, caption, optionType, messageType);
+			AfterShowDialog ();
+			return ret;
 		}
 
 		public override bool ShowDialogTo (object formWorker, object mainWindow)
@@ -32,7 +34,7 @@ namespace cadencii
 		/// <summary>
 		/// モーダルなダイアログを出すために，プロパティウィンドウとミキサーウィンドウの「最前面に表示」設定を一時的にOFFにします
 		/// </summary>
-		public override void BeforeShowDialog ()
+		void BeforeShowDialog ()
 		{
 			mShowingDialog = true;
 #if ENABLE_PROPERTY
@@ -63,7 +65,7 @@ namespace cadencii
 		/// <summary>
 		/// beginShowDialogで一時的にOFFにした「最前面に表示」設定を元に戻します
 		/// </summary>
-		public override void AfterShowDialog ()
+		void AfterShowDialog ()
 		{
 			#if ENABLE_PROPERTY
 			if (AppManager.propertyWindow != null) {

@@ -2663,7 +2663,7 @@ namespace cadencii
             foreach (var id in PaletteToolServer.loadedTools.Keys) {
                 count++;
                 IPaletteTool ipt = (IPaletteTool)PaletteToolServer.loadedTools[id];
-                System.Drawing.Bitmap icon = ipt.getIcon();
+                var icon = ipt.getIcon();
                 string name = ipt.getName(lang);
                 string desc = ipt.getDescription(lang);
 
@@ -2671,7 +2671,7 @@ namespace cadencii
                 System.Windows.Forms.ToolBarButton tsb = new System.Windows.Forms.ToolBarButton();
                 tsb.Style = System.Windows.Forms.ToolBarButtonStyle.ToggleButton;
                 if (icon != null) {
-                    imageListTool.Images.Add(icon);
+                    imageListTool.Images.Add((System.Drawing.Image) icon.NativeImage);
                     tsb.ImageIndex = imageListTool.Images.Count - 1;
                 }
                 tsb.Text = name;
@@ -7271,7 +7271,7 @@ namespace cadencii
                         bool result = PaletteToolServer.invokePaletteTool(AppManager.mSelectedPaletteTool,
                                                                               selected,
                                                                               internal_ids.ToArray(),
-                                                                              btn);
+                                                                              (cadencii.java.awt.MouseButtons) btn);
                         if (result) {
                             setEdited(true);
                             AppManager.itemSelection.clearEvent();
@@ -7404,7 +7404,7 @@ namespace cadencii
                         bool result = PaletteToolServer.invokePaletteTool(AppManager.mSelectedPaletteTool,
                                                                            EditorManager.Selected,
                                                                            internal_ids.ToArray(),
-                                                                           e.Button);
+                                                                           (cadencii.java.awt.MouseButtons) e.Button);
                         if (result) {
                             setEdited(true);
                             AppManager.itemSelection.clearEvent();
@@ -16311,7 +16311,7 @@ namespace cadencii
             }
             Object instance = PaletteToolServer.loadedTools[id];
             IPaletteTool ipt = (IPaletteTool)instance;
-            if (ipt.openDialog() == System.Windows.Forms.DialogResult.OK) {
+            if (ipt.openDialog() == cadencii.java.awt.DialogResult.OK) {
                 XmlSerializer xsms = new XmlSerializer(instance.GetType(), true);
                 string dir = Path.Combine(ApplicationGlobal.getApplicationDataPath(), "tool");
                 if (!Directory.Exists(dir)) {

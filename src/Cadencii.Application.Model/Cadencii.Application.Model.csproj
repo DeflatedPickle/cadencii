@@ -141,6 +141,8 @@
     <Compile Include="guiextended\Dialogs.cs" />
     <Compile Include="guiextended\ApplicationUIHost.cs" />
     <Compile Include="DialogManager.cs" />
+    <Compile Include="PaletteToolServer.cs" />
+    <Compile Include="IPaletteTool.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

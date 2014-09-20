@@ -92,10 +92,7 @@ namespace cadencii
 
 		public static DialogResult showMessageBox (string text, string caption, int optionType, int messageType)
 		{
-			ApplicationUIHost.Instance.Dialogs.BeforeShowDialog ();
-			var ret = ApplicationUIHost.Instance.Dialogs.ShowMessageBox (text, caption, optionType, messageType);
-			ApplicationUIHost.Instance.Dialogs.AfterShowDialog ();
-			return ret;
+			return ApplicationUIHost.Instance.Dialogs.ShowMessageBox (text, caption, optionType, messageType);
 		}
 
 		#endregion

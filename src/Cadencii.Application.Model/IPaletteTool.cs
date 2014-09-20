@@ -13,10 +13,9 @@
  */
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.Windows.Forms;
 
 using cadencii.vsq;
+using cadencii.java.awt;
 
 
 
@@ -30,7 +29,7 @@ namespace cadencii
         string getDescription(string language);
         bool hasDialog();
         DialogResult openDialog();
-        Bitmap getIcon();
+        Image getIcon();
         void applyLanguage(string language);
     }
 
