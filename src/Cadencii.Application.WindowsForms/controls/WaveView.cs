@@ -136,8 +136,8 @@ namespace cadencii
                         g,
                         cadencii.java.awt.Colors.Black,
                         rc,
-                        AppManager.clockFromXCoord(AppManager.keyWidth),
-                        AppManager.clockFromXCoord(AppManager.keyWidth + width),
+                        AppManager.clockFromXCoord(EditorManager.keyWidth),
+                        AppManager.clockFromXCoord(EditorManager.keyWidth + width),
                         MusicManager.getVsqFile().TempoTable,
                         EditorManager.MainWindowController.getScaleX());
                 } else {
@@ -145,8 +145,8 @@ namespace cadencii
                         g,
                         cadencii.java.awt.Colors.Black,
                         rc,
-                        AppManager.clockFromXCoord(AppManager.keyWidth),
-                        AppManager.clockFromXCoord(AppManager.keyWidth + width),
+                        AppManager.clockFromXCoord(EditorManager.keyWidth),
+                        AppManager.clockFromXCoord(EditorManager.keyWidth + width),
                         MusicManager.getVsqFile().TempoTable,
                         EditorManager.MainWindowController.getScaleX(),
                         mScale);
@@ -158,7 +158,7 @@ namespace cadencii
             g.drawLine(0, 0, 0, height);
 
             // ソングポジション
-            int song_pos_x = AppManager.xCoordFromClocks(AppManager.getCurrentClock()) - AppManager.keyWidth;
+            int song_pos_x = AppManager.xCoordFromClocks(AppManager.getCurrentClock()) - EditorManager.keyWidth;
             if (0 < song_pos_x) {
 				g.setColor(cadencii.java.awt.Colors.White);
                 g.setStroke(getStroke2px());

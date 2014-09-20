@@ -140,11 +140,11 @@ namespace cadencii
             }
 #endif
             EditorManager.MainWindowController = new FormMainController();
-            AppManager.mMainWindow = new FormMain(EditorManager.MainWindowController, file);
+            EditorManager.MainWindow = new FormMain(EditorManager.MainWindowController, file);
 #if !MONO
-            AppManager.mMainWindow.Load += mainWindow_Load;
+            ((FormMain) EditorManager.MainWindow).Load += mainWindow_Load;
 #endif
-            Application.Run(AppManager.mMainWindow);
+            Application.Run((Form) EditorManager.MainWindow);
 #if !DEBUG
             } catch ( Exception ex ) {
                 String str_ex = getExceptionText( ex, 0 );
@@ -220,10 +220,10 @@ namespace cadencii
             // AquesTone2 DLL のリロード時にも同様の処理が必要だが、これは VSTiDllManager.getAquesTone2Driver にて行う。
             var driver = VSTiDllManager.getAquesTone2Driver();
             if (driver != null) {
-                driver.getUi(AppManager.mMainWindow);
+                driver.getUi(EditorManager.MainWindow);
             }
 
-            AppManager.mMainWindow.Load -= mainWindow_Load;
+            ((Form) EditorManager.MainWindow).Load -= mainWindow_Load;
         }
     }
 

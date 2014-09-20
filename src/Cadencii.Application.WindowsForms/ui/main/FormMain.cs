@@ -420,23 +420,23 @@ namespace cadencii
         /// </summary>
         private PositionIndicatorMouseDownMode mPositionIndicatorMouseDownMode = PositionIndicatorMouseDownMode.NONE;
         /// <summary>
-        /// AppManager.keyWidthを調節するモードに入ったかどうか
+        /// EditorManager.keyWidthを調節するモードに入ったかどうか
         /// </summary>
         public bool mKeyLengthSplitterMouseDowned = false;
         /// <summary>
-        /// AppManager.keyWidthを調節するモードに入る直前での、マウスのスクリーン座標
+        /// EditorManager.keyWidthを調節するモードに入る直前での、マウスのスクリーン座標
         /// </summary>
         public Point mKeyLengthSplitterInitialMouse = new Point();
         /// <summary>
-        /// AppManager.keyWidthを調節するモードに入る直前での、keyWidthの値
+        /// EditorManager.keyWidthを調節するモードに入る直前での、keyWidthの値
         /// </summary>
         public int mKeyLengthInitValue = 68;
         /// <summary>
-        /// AppManager.keyWidthを調節するモードに入る直前での、trackSelectorのgetRowsPerColumn()の値
+        /// EditorManager.keyWidthを調節するモードに入る直前での、trackSelectorのgetRowsPerColumn()の値
         /// </summary>
         public int mKeyLengthTrackSelectorRowsPerColumn = 1;
         /// <summary>
-        /// AppManager.keyWidthを調節するモードに入る直前での、splitContainer1のSplitterLocationの値
+        /// EditorManager.keyWidthを調節するモードに入る直前での、splitContainer1のSplitterLocationの値
         /// </summary>
         public int mKeyLengthSplitterDistance = 0;
         public OpenFileDialog openXmlVsqDialog;
@@ -1668,7 +1668,7 @@ namespace cadencii
             rect.value = new Rectangle();
             int width = pictPianoRoll.getWidth();
             int height = pictPianoRoll.getHeight();
-            int key_width = AppManager.keyWidth;
+            int key_width = EditorManager.keyWidth;
 
             // マウスが可視範囲になければ死ぬ
             if (mouse_position.X < key_width || width < mouse_position.X) {
@@ -1880,7 +1880,7 @@ namespace cadencii
         /// <summary>
         /// デフォルトのショートカットキーを格納したリストを取得します
         /// </summary>
-        public List<ValuePairOfStringArrayOfKeys> getDefaultShortcutKeys()
+        public IList<ValuePairOfStringArrayOfKeys> getDefaultShortcutKeys()
         {
 #if JAVA_MAC
             Keys ctrl = Keys.Menu;
@@ -2461,7 +2461,7 @@ namespace cadencii
                 panelOverview.Height = 0;
             }
             panelOverview.Width = width;
-            int key_width = AppManager.keyWidth;
+            int key_width = EditorManager.keyWidth;
 
             /*btnMooz.setBounds( 3, 12, 23, 23 );
             btnZoom.setBounds( 26, 12, 23, 23 );*/
@@ -3337,7 +3337,7 @@ namespace cadencii
         public void ensureVisible(int clock)
         {
             // カーソルが画面内にあるかどうか検査
-            int clock_left = AppManager.clockFromXCoord(AppManager.keyWidth);
+            int clock_left = AppManager.clockFromXCoord(EditorManager.keyWidth);
             int clock_right = AppManager.clockFromXCoord(pictPianoRoll.getWidth());
             int uwidth = clock_right - clock_left;
             if (clock < clock_left || clock_right < clock) {
@@ -3517,7 +3517,7 @@ namespace cadencii
             if (vsq == null) return;
             int l = vsq.TotalClocks;
             float scalex = controller.getScaleX();
-            int key_width = AppManager.keyWidth;
+            int key_width = EditorManager.keyWidth;
             int pict_piano_roll_width = pwidth - key_width;
             int large_change = (int)(pict_piano_roll_width / scalex);
             int maximum = (int)(l + large_change);
@@ -3812,7 +3812,7 @@ namespace cadencii
                 EditorManager.editorConfig.isPositionQuantizeTriplet());
             int cl_new = doQuantize(cl_clock + unit, unit);
 
-            if (cl_new <= hScroll.Maximum + (pictPianoRoll.getWidth() - AppManager.keyWidth) * controller.getScaleXInv()) {
+            if (cl_new <= hScroll.Maximum + (pictPianoRoll.getWidth() - EditorManager.keyWidth) * controller.getScaleXInv()) {
                 // 表示の更新など
                 AppManager.setCurrentClock(cl_new);
 
@@ -5775,7 +5775,7 @@ namespace cadencii
                     AppManager.mDrawObjects[i].Clear();
                 }
 
-                int xoffset = EditorManager.keyOffset;// 6 + AppManager.keyWidth;
+                int xoffset = EditorManager.keyOffset;// 6 + EditorManager.keyWidth;
                 int yoffset = (int)(127 * (int)(100 * controller.getScaleY()));
                 float scalex = controller.getScaleX();
                 Font SMALL_FONT = null;
@@ -6383,7 +6383,7 @@ namespace cadencii
 			Font SMALL_FONT = cadencii.core.EditorConfig.baseFont8;
             int small_font_offset = EditorConfig.baseFont8OffsetHeight;
             try {
-                int key_width = AppManager.keyWidth;
+                int key_width = EditorManager.keyWidth;
                 int width = picturePositionIndicator.Width;
                 int height = picturePositionIndicator.Height;
                 VsqFileEx vsq = MusicManager.getVsqFile();
@@ -6550,7 +6550,7 @@ namespace cadencii
                 // TEMPO BEATの文字の部分。小節数が被っている可能性があるので、塗り潰す
 				var col = picturePositionIndicator.BackColor;
                 g.setColor(new Color(col.R, col.G, col.B, col.A));
-                g.fillRect(0, 0, AppManager.keyWidth, 48);
+                g.fillRect(0, 0, EditorManager.keyWidth, 48);
                 // 横ライン上
                 g.setColor(new Color(104, 104, 104));
                 g.drawLine(0, 17, width, 17);
@@ -6559,9 +6559,9 @@ namespace cadencii
                 // 横ライン下
                 g.drawLine(0, 47, width, 47);
                 // 縦ライン
-                g.drawLine(AppManager.keyWidth, 0, AppManager.keyWidth, 48);
+                g.drawLine(EditorManager.keyWidth, 0, EditorManager.keyWidth, 48);
                 /* TEMPO&BEATとピアノロールの境界 */
-                g.drawLine(AppManager.keyWidth, 48, width - 18, 48);
+                g.drawLine(EditorManager.keyWidth, 48, width - 18, 48);
                 g.setFont(SMALL_FONT);
                 g.setColor(cadencii.java.awt.Colors.Black);
                 g.drawString("TEMPO", 11, 24 - small_font_offset + 1);
@@ -6960,7 +6960,7 @@ namespace cadencii
                 int index = -1;
                 int width = pictPianoRoll.getWidth();
                 int height = pictPianoRoll.getHeight();
-                int key_width = AppManager.keyWidth;
+                int key_width = EditorManager.keyWidth;
                 VsqTrack track = MusicManager.getVsqFile().Track[selected];
                 track.sortEvent();
                 if (tab) {
@@ -7300,10 +7300,10 @@ namespace cadencii
                             DrawObject dobj = AppManager.mDrawObjects[selected - 1][i];
                             if (dobj.mRectangleInPixel.x + controller.getStartToDrawX() + dobj.mRectangleInPixel.width - stdx < 0) {
                                 continue;
-                            } else if (pictPianoRoll.getWidth() < dobj.mRectangleInPixel.x + AppManager.keyWidth - stdx) {
+                            } else if (pictPianoRoll.getWidth() < dobj.mRectangleInPixel.x + EditorManager.keyWidth - stdx) {
                                 break;
                             }
-                            Rectangle rc = new Rectangle(dobj.mRectangleInPixel.x + AppManager.keyWidth + dobj.mVibratoDelayInPixel - stdx,
+                            Rectangle rc = new Rectangle(dobj.mRectangleInPixel.x + EditorManager.keyWidth + dobj.mVibratoDelayInPixel - stdx,
                                                           dobj.mRectangleInPixel.y + (int)(100 * controller.getScaleY()) - stdy,
                                                           dobj.mRectangleInPixel.width - dobj.mVibratoDelayInPixel,
                                                           (int)(100 * controller.getScaleY()));
@@ -7335,7 +7335,7 @@ namespace cadencii
                     }
                 }
             } else if (e.Button == MouseButtons.Right) {
-                bool show_context_menu = (e.X > AppManager.keyWidth);
+                bool show_context_menu = (e.X > EditorManager.keyWidth);
 #if ENABLE_MOUSEHOVER
                 if ( mMouseHoverThread != null ) {
                     if ( !mMouseHoverThread.IsAlive && EditorManager.editorConfig.PlayPreviewWhenRightClick ) {
@@ -7451,13 +7451,13 @@ namespace cadencii
             } else {
                 AppManager.itemSelection.clearEvent();
                 hideInputTextBox();
-                if (EditorManager.editorConfig.ShowExpLine && AppManager.keyWidth <= e.X) {
+                if (EditorManager.editorConfig.ShowExpLine && EditorManager.keyWidth <= e.X) {
                     int stdx = controller.getStartToDrawX();
                     int stdy = controller.getStartToDrawY();
                     foreach (var dobj in AppManager.mDrawObjects[selected - 1]) {
                         // 表情コントロールプロパティを表示するかどうかを決める
                         rect = new Rectangle(
-                            dobj.mRectangleInPixel.x + AppManager.keyWidth - stdx,
+                            dobj.mRectangleInPixel.x + EditorManager.keyWidth - stdx,
                             dobj.mRectangleInPixel.y - stdy + (int)(100 * controller.getScaleY()),
                             21,
                             (int)(100 * controller.getScaleY()));
@@ -7525,7 +7525,7 @@ namespace cadencii
 
                         // ビブラートプロパティダイアログを表示するかどうかを決める
                         rect = new Rectangle(
-                            dobj.mRectangleInPixel.x + AppManager.keyWidth - stdx + 21,
+                            dobj.mRectangleInPixel.x + EditorManager.keyWidth - stdx + 21,
                             dobj.mRectangleInPixel.y - stdy + (int)(100 * controller.getScaleY()),
                             dobj.mRectangleInPixel.width - 21,
                             (int)(100 * controller.getScaleY()));
@@ -7608,13 +7608,13 @@ namespace cadencii
 
             if (e.Button == MouseButtons.Left) {
                 // 必要な操作が何も無ければ，クリック位置にソングポジションを移動
-                if (AppManager.keyWidth < e.X) {
+                if (EditorManager.keyWidth < e.X) {
                     int clock = doQuantize(AppManager.clockFromXCoord(e.X), AppManager.getPositionQuantizeClock());
                     AppManager.setCurrentClock(clock);
                 }
             } else if (e.Button == MouseButtons.Middle) {
                 // ツールをポインター <--> 鉛筆に切り替える
-                if (AppManager.keyWidth < e.X) {
+                if (EditorManager.keyWidth < e.X) {
                     if (EditorManager.SelectedTool == EditTool.ARROW) {
                         EditorManager.SelectedTool = EditTool.PENCIL;
                     } else {
@@ -7636,7 +7636,7 @@ namespace cadencii
             MouseEventArgs e = new MouseEventArgs(btn0, e0.Clicks, e0.X, e0.Y, e0.Delta);
 
             mMouseMoved = false;
-            if (!AppManager.isPlaying() && 0 <= e.X && e.X <= AppManager.keyWidth) {
+            if (!AppManager.isPlaying() && 0 <= e.X && e.X <= EditorManager.keyWidth) {
                 int note = AppManager.noteFromYCoord(e.Y);
                 if (0 <= note && note <= 126) {
                     if (e.Button == MouseButtons.Left) {
@@ -7695,7 +7695,7 @@ namespace cadencii
             int selected = EditorManager.Selected;
             VsqFileEx vsq = MusicManager.getVsqFile();
             VsqTrack vsq_track = vsq.Track[selected];
-            int key_width = AppManager.keyWidth;
+            int key_width = EditorManager.keyWidth;
 
             // マウス位置にある音符を検索
             if (item == null) {
@@ -8057,13 +8057,13 @@ namespace cadencii
                 int clock = AppManager.clockFromXCoord(e.X);
                 if (mMouseDowned) {
                     if (mExtDragX == ExtDragXMode.NONE) {
-                        if (AppManager.keyWidth > e.X) {
+                        if (EditorManager.keyWidth > e.X) {
                             mExtDragX = ExtDragXMode.LEFT;
                         } else if (pictPianoRoll.getWidth() < e.X) {
                             mExtDragX = ExtDragXMode.RIGHT;
                         }
                     } else {
-                        if (AppManager.keyWidth <= e.X && e.X <= pictPianoRoll.getWidth()) {
+                        if (EditorManager.keyWidth <= e.X && e.X <= pictPianoRoll.getWidth()) {
                             mExtDragX = ExtDragXMode.NONE;
                         }
                     }
@@ -8103,7 +8103,7 @@ namespace cadencii
                     if (mExtDragX == ExtDragXMode.LEFT) {
                         px_move *= -1;
                     }
-                    int left_clock = AppManager.clockFromXCoord(AppManager.keyWidth);
+                    int left_clock = AppManager.clockFromXCoord(EditorManager.keyWidth);
                     float inv_scale_x = controller.getScaleXInv();
                     int dclock = (int)(px_move * inv_scale_x);
                     d_draft = 5 * inv_scale_x + left_clock + dclock;
@@ -8186,8 +8186,8 @@ namespace cadencii
                         List<int> add_required = new List<int>();
                         int internal_id = -1;
                         foreach (var dobj in AppManager.mDrawObjects[selected - 1]) {
-                            int x0 = dobj.mRectangleInPixel.x + AppManager.keyWidth;
-                            int x1 = dobj.mRectangleInPixel.x + AppManager.keyWidth + dobj.mRectangleInPixel.width;
+                            int x0 = dobj.mRectangleInPixel.x + EditorManager.keyWidth;
+                            int x1 = dobj.mRectangleInPixel.x + EditorManager.keyWidth + dobj.mRectangleInPixel.width;
                             int y0 = dobj.mRectangleInPixel.y;
                             int y1 = dobj.mRectangleInPixel.y + dobj.mRectangleInPixel.height;
                             internal_id = dobj.mInternalID;
@@ -8417,7 +8417,7 @@ namespace cadencii
 
                             // 音符左側の編集領域
                             rc = new Rectangle(
-                                                dobj.mRectangleInPixel.x + AppManager.keyWidth - stdx,
+                                                dobj.mRectangleInPixel.x + EditorManager.keyWidth - stdx,
                                                 dobj.mRectangleInPixel.y - stdy,
                                                 edit_handle_width,
                                                 (int)(100 * controller.getScaleY()));
@@ -8427,7 +8427,7 @@ namespace cadencii
                             }
 
                             // 音符右側の編集領域
-                            rc = new Rectangle(dobj.mRectangleInPixel.x + AppManager.keyWidth + dobj.mRectangleInPixel.width - stdx - edit_handle_width,
+                            rc = new Rectangle(dobj.mRectangleInPixel.x + EditorManager.keyWidth + dobj.mRectangleInPixel.width - stdx - edit_handle_width,
                                                 dobj.mRectangleInPixel.y - stdy,
                                                 edit_handle_width,
                                                 (int)(100 * controller.getScaleY()));
@@ -8438,7 +8438,7 @@ namespace cadencii
                         }
 
                         // 音符本体
-                        rc = new Rectangle(dobj.mRectangleInPixel.x + AppManager.keyWidth - stdx,
+                        rc = new Rectangle(dobj.mRectangleInPixel.x + EditorManager.keyWidth - stdx,
                                             dobj.mRectangleInPixel.y - stdy,
                                             dobj.mRectangleInPixel.width,
                                             dobj.mRectangleInPixel.height);
@@ -8447,7 +8447,7 @@ namespace cadencii
                                 rc.height *= 2;
                                 if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
                                     // ビブラートの開始位置
-                                    rc = new Rectangle(dobj.mRectangleInPixel.x + AppManager.keyWidth + dobj.mVibratoDelayInPixel - stdx - _EDIT_HANDLE_WIDTH / 2,
+                                    rc = new Rectangle(dobj.mRectangleInPixel.x + EditorManager.keyWidth + dobj.mVibratoDelayInPixel - stdx - _EDIT_HANDLE_WIDTH / 2,
                                                         dobj.mRectangleInPixel.y + (int)(100 * controller.getScaleY()) - stdy,
                                                         _EDIT_HANDLE_WIDTH,
                                                         (int)(100 * controller.getScaleY()));
@@ -8999,7 +8999,7 @@ namespace cadencii
                 }
             } else {
                 // スクロール操作
-                if (e.X <= AppManager.keyWidth || pictPianoRoll.getWidth() < e.X) {
+                if (e.X <= EditorManager.keyWidth || pictPianoRoll.getWidth() < e.X) {
                     horizontal = false;
                 }
                 if (horizontal) {
@@ -9431,7 +9431,7 @@ namespace cadencii
             }
             var pt = pictPianoRoll.PointToScreen(System.Drawing.Point.Empty);
             if (!mIconPaletteOnceDragEntered) {
-                int keywidth = AppManager.keyWidth;
+                int keywidth = EditorManager.keyWidth;
                 Rectangle rc = new Rectangle(pt.X + keywidth, pt.Y, pictPianoRoll.getWidth() - keywidth, pictPianoRoll.getHeight());
                 if (Utility.isInRect(new Point(screen_x, screen_y), rc)) {
                     mIconPaletteOnceDragEntered = true;
@@ -9509,7 +9509,7 @@ namespace cadencii
                 return;
             }
             var locPianoroll = pictPianoRoll.PointToScreen(System.Drawing.Point.Empty);
-            int keywidth = AppManager.keyWidth;
+            int keywidth = EditorManager.keyWidth;
             Rectangle rcPianoroll = new Rectangle(locPianoroll.X + keywidth,
                                                    locPianoroll.Y,
                                                    pictPianoRoll.getWidth() - keywidth,
@@ -9636,7 +9636,7 @@ namespace cadencii
                 }
             }
             EditorManager.editorConfig.WindowMaximized = (this.WindowState == FormWindowState.Maximized);
-            AppManager.saveConfig();
+            EditorManager.saveConfig();
             UtauWaveGenerator.clearCache();
             VConnectWaveGenerator.clearCache();
 
@@ -12124,7 +12124,7 @@ namespace cadencii
                         splitContainer1.setPanel2MinSize(trackSelector.getPreferredMinSize());
                     }
 
-                    AppManager.saveConfig();
+                    EditorManager.saveConfig();
                     applyLanguage();
 #if ENABLE_SCRIPT
                     updateScriptShortcut();
@@ -13270,7 +13270,7 @@ namespace cadencii
 
         public void picturePositionIndicator_MouseClick(Object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right && 0 < e.Y && e.Y <= 18 && AppManager.keyWidth < e.X) {
+            if (e.Button == MouseButtons.Right && 0 < e.Y && e.Y <= 18 && EditorManager.keyWidth < e.X) {
                 // クリックされた位置でのクロックを保存
                 int clock = AppManager.clockFromXCoord(e.X);
                 int unit = AppManager.getPositionQuantizeClock();
@@ -13285,7 +13285,7 @@ namespace cadencii
 
         public void picturePositionIndicator_MouseDoubleClick(Object sender, MouseEventArgs e)
         {
-            if (e.X < AppManager.keyWidth || this.Width - 3 < e.X) {
+            if (e.X < EditorManager.keyWidth || this.Width - 3 < e.X) {
                 return;
             }
             if (e.Button == MouseButtons.Left) {
@@ -13614,7 +13614,7 @@ namespace cadencii
 
         public void picturePositionIndicator_MouseDown(Object sender, MouseEventArgs e)
         {
-            if (e.X < AppManager.keyWidth || this.Width - 3 < e.X) {
+            if (e.X < EditorManager.keyWidth || this.Width - 3 < e.X) {
                 return;
             }
 
@@ -14134,7 +14134,7 @@ namespace cadencii
         public void trackSelector_MouseClick(Object sender, NMouseEventArgs e)
         {
             if (e.Button == NMouseButtons.Right) {
-                if (AppManager.keyWidth < e.X && e.X < trackSelector.Width) {
+                if (EditorManager.keyWidth < e.X && e.X < trackSelector.Width) {
                     if (trackSelector.Height - TrackSelectorImpl.OFFSET_TRACK_TAB <= e.Y && e.Y <= trackSelector.Height) {
                         cMenuTrackTab.Show((Control)trackSelector.Native, e.X, e.Y);
                     } else {
@@ -14148,7 +14148,7 @@ namespace cadencii
         {
             if (e.Button == NMouseButtons.Middle) {
                 // ツールをポインター <--> 鉛筆に切り替える
-                if (AppManager.keyWidth < e.X &&
+                if (EditorManager.keyWidth < e.X &&
                      e.Y < trackSelector.Height - TrackSelectorImpl.OFFSET_TRACK_TAB * 2) {
                     if (EditorManager.SelectedTool == EditTool.ARROW) {
                         EditorManager.SelectedTool = (EditTool.PENCIL);
@@ -14161,7 +14161,7 @@ namespace cadencii
 
         public void trackSelector_MouseDown(Object sender, NMouseEventArgs e)
         {
-            if (AppManager.keyWidth < e.X) {
+            if (EditorManager.keyWidth < e.X) {
                 mMouseDownedTrackSelector = true;
                 if (isMouseMiddleButtonDowned((MouseButtons)e.Button)) {
                     mEditCurveMode = CurveEditMode.MIDDLE_DRAG;
@@ -14204,13 +14204,13 @@ namespace cadencii
             } else {
                 if (mMouseDownedTrackSelector) {
                     if (mExtDragXTrackSelector == ExtDragXMode.NONE) {
-                        if (AppManager.keyWidth > e.X) {
+                        if (EditorManager.keyWidth > e.X) {
                             mExtDragXTrackSelector = ExtDragXMode.LEFT;
                         } else if (parent_width < e.X) {
                             mExtDragXTrackSelector = ExtDragXMode.RIGHT;
                         }
                     } else {
-                        if (AppManager.keyWidth <= e.X && e.X <= parent_width) {
+                        if (EditorManager.keyWidth <= e.X && e.X <= parent_width) {
                             mExtDragXTrackSelector = ExtDragXMode.NONE;
                         }
                     }
@@ -15270,7 +15270,7 @@ namespace cadencii
         {
             mKeyLengthSplitterMouseDowned = true;
 			mKeyLengthSplitterInitialMouse = cadencii.core2.PortUtil.getMousePosition();
-            mKeyLengthInitValue = AppManager.keyWidth;
+            mKeyLengthInitValue = EditorManager.keyWidth;
             mKeyLengthTrackSelectorRowsPerColumn = trackSelector.getRowsPerColumn();
             mKeyLengthSplitterDistance = splitContainer1.getDividerLocation();
         }
@@ -15287,7 +15287,7 @@ namespace cadencii
 			} else if (EditorConfig.MAX_KEY_WIDTH < draft) {
 				draft = EditorConfig.MAX_KEY_WIDTH;
             }
-            AppManager.keyWidth = draft;
+            EditorManager.keyWidth = draft;
             int current = trackSelector.getRowsPerColumn();
             if (current >= mKeyLengthTrackSelectorRowsPerColumn) {
                 int max_divider_location = splitContainer1.getHeight() - splitContainer1.getDividerSize() - splitContainer1.getPanel2MinSize();

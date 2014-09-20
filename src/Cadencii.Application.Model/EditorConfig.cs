@@ -713,7 +713,7 @@ namespace cadencii
             RecentFiles.Insert(0, new_file);
         }
 		
-        public SortedDictionary<string, Keys[]> getShortcutKeysDictionary(List<ValuePairOfStringArrayOfKeys> defs)
+        public SortedDictionary<string, Keys[]> getShortcutKeysDictionary(IList<ValuePairOfStringArrayOfKeys> defs)
         {
             SortedDictionary<string, Keys[]> ret = new SortedDictionary<string, Keys[]>();
             for (int i = 0; i < ShortcutKeys.Count; i++) {
@@ -758,7 +758,7 @@ namespace cadencii
         /// </summary>
         public int AutoBackupIntervalMinutes = 10;
         /// <summary>
-        /// 鍵盤の表示幅、ピクセル,AppManager.keyWidthに代入。
+        /// 鍵盤の表示幅、ピクセル,EditorManager.keyWidthに代入。
         /// </summary>
         public int KeyWidth = 136;
         /// <summary>

@@ -223,7 +223,7 @@ namespace cadencii
                     var mouse_position = this.PointToClient(new System.Drawing.Point(p.X, p.Y));
                     int stdx = EditorManager.MainWindowController.getStartToDrawX();
                     int stdy = EditorManager.MainWindowController.getStartToDrawY();
-                    int key_width = AppManager.keyWidth;
+                    int key_width = EditorManager.keyWidth;
 
                     int track_height = (int)(EditorManager.MainWindowController.getScaleY() * 100);
                     int half_track_height = track_height / 2;
@@ -1312,9 +1312,9 @@ namespace cadencii
             int y0 = origin_y + 10;
             int clipx = origin_x + 1;
             int clip_length = vibrato_length;
-            if (clipx < AppManager.keyWidth) {
-                clipx = AppManager.keyWidth;
-                clip_length = origin_x + 1 + vibrato_length - AppManager.keyWidth;
+            if (clipx < EditorManager.keyWidth) {
+                clipx = EditorManager.keyWidth;
+                clip_length = origin_x + 1 + vibrato_length - EditorManager.keyWidth;
                 if (clip_length <= 0) {
                     return;
                 }

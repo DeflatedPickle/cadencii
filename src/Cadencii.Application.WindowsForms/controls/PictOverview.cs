@@ -219,7 +219,7 @@ namespace cadencii
         /// <returns></returns>
         private Rectangle getButtonBoundsLeft1()
         {
-            return new Rectangle(AppManager.keyWidth - 16 - 2, 1, 16, 26);
+            return new Rectangle(EditorManager.keyWidth - 16 - 2, 1, 16, 26);
         }
 
         /// <summary>
@@ -228,7 +228,7 @@ namespace cadencii
         /// <returns></returns>
         private Rectangle getButtonBoundsLeft2()
         {
-            return new Rectangle(AppManager.keyWidth - 16 - 2, 26 + 3, 16, 19);
+            return new Rectangle(EditorManager.keyWidth - 16 - 2, 26 + 3, 16, 19);
         }
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace cadencii
         /// <returns></returns>
         private Rectangle getButtonBoundsZoom()
         {
-            return new Rectangle(AppManager.keyWidth - 16 - 2 - 24, 13, 22, 23);
+            return new Rectangle(EditorManager.keyWidth - 16 - 2 - 24, 13, 22, 23);
         }
 
         /// <summary>
@@ -264,7 +264,7 @@ namespace cadencii
         /// <returns></returns>
         private Rectangle getButtonBoundsMooz()
         {
-            return new Rectangle(AppManager.keyWidth - 16 - 2 - 48, 13, 22, 23);
+            return new Rectangle(EditorManager.keyWidth - 16 - 2 - 48, 13, 22, 23);
         }
 
         public void updateCachedImage(int width_px)
@@ -303,7 +303,7 @@ namespace cadencii
                 sout.println("FormMain#updateOverview; count=" + count);
 #endif
                 Thread.Sleep(100);
-                int key_width = AppManager.keyWidth;
+                int key_width = EditorManager.keyWidth;
                 double dt = PortUtil.getCurrentTime() - mOverviewBtnDowned;
                 int draft = (int)(mOverviewStartToDrawClockInitialValue + mOverviewDirection * dt * OVERVIEW_SCROLL_SPEED / mOverviewPixelPerClock);
                 int clock = getOverviewClockFromXCoord(this.Width - key_width, draft);
@@ -339,7 +339,7 @@ namespace cadencii
         public int getOverviewStartToDrawX(int mouse_x)
         {
             float clock = mouse_x / mOverviewPixelPerClock + mOverviewStartToDrawClock;
-            int clock_at_left = (int)(clock - (mMainForm.pictPianoRoll.getWidth() - AppManager.keyWidth) * EditorManager.MainWindowController.getScaleXInv() / 2);
+            int clock_at_left = (int)(clock - (mMainForm.pictPianoRoll.getWidth() - EditorManager.keyWidth) * EditorManager.MainWindowController.getScaleXInv() / 2);
             return (int)(clock_at_left * EditorManager.MainWindowController.getScaleX());
         }
 
@@ -390,9 +390,9 @@ namespace cadencii
 
         public void handleMouseDoubleClick(Object sender, MouseEventArgs e)
         {
-            if (AppManager.keyWidth < e.X && e.X < this.Width - 19) {
+            if (EditorManager.keyWidth < e.X && e.X < this.Width - 19) {
                 mOverviewMouseDownMode = OverviewMouseDownMode.NONE;
-                int draft_stdx = getOverviewStartToDrawX(e.X - AppManager.keyWidth - EditorManager.keyOffset);
+                int draft_stdx = getOverviewStartToDrawX(e.X - EditorManager.keyWidth - EditorManager.keyOffset);
                 int draft = (int)(draft_stdx * EditorManager.MainWindowController.getScaleXInv());
                 if (draft < mMainForm.hScroll.Minimum) {
                     draft = mMainForm.hScroll.Minimum;
@@ -415,7 +415,7 @@ namespace cadencii
                 mOverviewMouseDownedLocationX = e.X;
                 mOverviewStartToDrawClockInitialValue = mOverviewStartToDrawClock;
             } else if (e.Button == MouseButtons.Left) {
-                if (e.X <= AppManager.keyWidth || this.Width - 19 <= e.X) {
+                if (e.X <= EditorManager.keyWidth || this.Width - 19 <= e.X) {
                     Point mouse = new Point(e.X, e.Y);
                     if (Utility.isInRect(mouse, getButtonBoundsLeft1())) {
                         btnLeft_MouseDown(null, null);
@@ -440,7 +440,7 @@ namespace cadencii
                 } else {
                     if (e.Clicks == 1) {
                         mOverviewMouseDownMode = OverviewMouseDownMode.LEFT;
-                        int draft = getOverviewStartToDrawX(e.X - AppManager.keyWidth - EditorManager.keyOffset);
+                        int draft = getOverviewStartToDrawX(e.X - EditorManager.keyWidth - EditorManager.keyOffset);
                         if (draft < 0) {
                             draft = 0;
                         }
@@ -479,7 +479,7 @@ namespace cadencii
 
         public void handleMouseMove(Object sender, MouseEventArgs e)
         {
-            int xoffset = AppManager.keyWidth + EditorManager.keyOffset;
+            int xoffset = EditorManager.keyWidth + EditorManager.keyOffset;
             if (mOverviewMouseDownMode == OverviewMouseDownMode.LEFT) {
                 int draft = getOverviewStartToDrawX(e.X - xoffset);
                 if (draft < 0) {
@@ -490,7 +490,7 @@ namespace cadencii
             } else if (mOverviewMouseDownMode == OverviewMouseDownMode.MIDDLE) {
                 int dx = e.X - mOverviewMouseDownedLocationX;
                 int draft = mOverviewStartToDrawClockInitialValue - (int)(dx / mOverviewPixelPerClock);
-                int key_width = AppManager.keyWidth;
+                int key_width = EditorManager.keyWidth;
                 int clock = getOverviewClockFromXCoord(this.Width - xoffset, draft);
                 if (MusicManager.getVsqFile().TotalClocks < clock) {
                     draft = MusicManager.getVsqFile().TotalClocks - (int)((this.Width - xoffset) / mOverviewPixelPerClock);
@@ -536,7 +536,7 @@ namespace cadencii
             int doffset = (int)(mOverviewStartToDrawClock * mOverviewPixelPerClock);
             mDrawer.draw(doffset, g);
 
-            int key_width = AppManager.keyWidth;
+            int key_width = EditorManager.keyWidth;
             int width = this.Width;
             int height = this.Height;
             int xoffset = key_width + EditorManager.keyOffset;
@@ -661,7 +661,7 @@ namespace cadencii
 
                 g.setStroke(getStroke2px());
                 g.setColor(FormMain.mColorNoteFill);
-                int key_width = AppManager.keyWidth;
+                int key_width = EditorManager.keyWidth;
                 int xoffset = key_width + EditorManager.keyOffset;
                 VsqFileEx vsq = MusicManager.getVsqFile();
 

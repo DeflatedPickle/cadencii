@@ -424,7 +424,7 @@ namespace cadencii
 
         public void btnLoadDefault_Click(Object sender, EventArgs e)
         {
-            List<ValuePairOfStringArrayOfKeys> defaults = mMainForm.getDefaultShortcutKeys();
+            var defaults = mMainForm.getDefaultShortcutKeys();
             for (int i = 0; i < defaults.Count; i++) {
                 string name = defaults[i].Key;
                 Keys[] keys = defaults[i].Value;

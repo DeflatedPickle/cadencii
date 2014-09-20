@@ -12,6 +12,16 @@ namespace cadencii
 	public static class EditorManager
 	{
 		/// <summary>
+		/// メインの編集画面のインスタンス
+		/// </summary>
+		public static FormMainUi MainWindow = null;
+
+		/// <summary>
+		/// 鍵盤の表示幅(pixel)
+		/// </summary>
+		public static int keyWidth = EditorConfig.MIN_KEY_WIDTH * 2;
+
+		/// <summary>
 		/// エディタの設定
 		/// </summary>
 		public static EditorConfig editorConfig = new EditorConfig ();
@@ -550,14 +560,14 @@ namespace cadencii
 				} catch (Exception ex) {
 					Logger.write (typeof(EditorManager) + ".deserializeRederingStatus; ex=" + ex + "\n");
 					status = null;
-					serr.println ("AppManager#deserializeRederingStatus; ex=" + ex);
+					serr.println ("EditorManager#deserializeRederingStatus; ex=" + ex);
 				} finally {
 					if (fs != null) {
 						try {
 							fs.Close ();
 						} catch (Exception ex2) {
 							Logger.write (typeof(EditorManager) + ".deserializeRederingStatus; ex=" + ex2 + "\n");
-							serr.println ("AppManager#deserializeRederingStatus; ex2=" + ex2);
+							serr.println ("EditorManager#deserializeRederingStatus; ex2=" + ex2);
 						}
 					}
 				}
@@ -637,6 +647,238 @@ namespace cadencii
 		/// 開始時刻＞終了時刻の場合は，partialではなく全体のリロード要求
 		/// </summary>
 		public static event WaveViewRealoadRequiredEventHandler WaveViewReloadRequired;
+
+		#endregion
+
+		#region serialize configuration
+
+		public static void serializeEditorConfig (EditorConfig instance, string file)
+		{
+			FileStream fs = null;
+			try {
+				fs = new FileStream (file, FileMode.Create, FileAccess.Write);
+				EditorConfig.getSerializer ().serialize (fs, instance);
+			} catch (Exception ex) {
+				Logger.write (typeof(EditorConfig) + ".serialize; ex=" + ex + "\n");
+			} finally {
+				if (fs != null) {
+					try {
+						fs.Close ();
+					} catch (Exception ex2) {
+						Logger.write (typeof(EditorConfig) + ".serialize; ex=" + ex2 + "\n");
+					}
+				}
+			}
+		}
+
+		public static EditorConfig deserializeEditorConfig (string file)
+		{
+			EditorConfig ret = null;
+			FileStream fs = null;
+			try {
+				fs = new FileStream (file, FileMode.Open, FileAccess.Read);
+				ret = (EditorConfig)EditorConfig.getSerializer ().deserialize (fs);
+			} catch (Exception ex) {
+				Logger.write (typeof(EditorConfig) + ".deserialize; ex=" + ex + "\n");
+			} finally {
+				if (fs != null) {
+					try {
+						fs.Close ();
+					} catch (Exception ex2) {
+						Logger.write (typeof(EditorConfig) + ".deserialize; ex=" + ex2 + "\n");
+					}
+				}
+			}
+
+			if (ret == null) {
+				return null;
+			}
+
+			if (EditorManager.MainWindow != null) {
+				var defs = EditorManager.MainWindow.getDefaultShortcutKeys ();
+				foreach (var def in defs) {
+					bool found = false;
+					for (int i = 0; i < ret.ShortcutKeys.Count; i++) {
+						if (def.Key.Equals (ret.ShortcutKeys [i].Key)) {
+							found = true;
+							break;
+						}
+					}
+					if (!found) {
+						ret.ShortcutKeys.Add (def);
+					}
+				}
+			}
+
+			// バッファーサイズを正規化
+			if (ApplicationGlobal.appConfig.BufferSizeMilliSeconds < cadencii.core.EditorConfig.MIN_BUFFER_MILLIXEC) {
+				ApplicationGlobal.appConfig.BufferSizeMilliSeconds = cadencii.core.EditorConfig.MIN_BUFFER_MILLIXEC;
+			} else if (cadencii.core.EditorConfig.MAX_BUFFER_MILLISEC < ApplicationGlobal.appConfig.BufferSizeMilliSeconds) {
+				ApplicationGlobal.appConfig.BufferSizeMilliSeconds = cadencii.core.EditorConfig.MAX_BUFFER_MILLISEC;
+			}
+			return ret;
+		}
+
+		/// <summary>
+		/// 現在の設定を設定ファイルに書き込みます。
+		/// </summary>
+		public static void saveConfig ()
+		{
+			// ユーザー辞書の情報を取り込む
+			EditorManager.editorConfig.UserDictionaries.Clear ();
+			int count = SymbolTable.getCount ();
+			for (int i = 0; i < count; i++) {
+				SymbolTable table = SymbolTable.getSymbolTable (i);
+				EditorManager.editorConfig.UserDictionaries.Add (table.getName () + "\t" + (table.isEnabled () ? "T" : "F"));
+			}
+			EditorManager.editorConfig.KeyWidth = keyWidth;
+
+			// FIXME: Enable this
+/*
+            // chevronの幅を保存
+            if (Rebar.CHEVRON_WIDTH > 0) {
+				EditorManager.editorConfig.ChevronWidth = Rebar.CHEVRON_WIDTH;
+            }
+            */
+
+			// シリアライズして保存
+			string file = Path.Combine (Utility.getConfigPath (), ApplicationGlobal.CONFIG_FILE_NAME);
+#if DEBUG
+			sout.println ("EditorManager#saveConfig; file=" + file);
+#endif
+			try {
+				serializeEditorConfig (EditorManager.editorConfig, file);
+			} catch (Exception ex) {
+				serr.println ("EditorManager#saveConfig; ex=" + ex);
+				Logger.write (typeof(EditorManager) + ".saveConfig; ex=" + ex + "\n");
+			}
+		}
+
+		/// <summary>
+		/// 設定ファイルを読み込みます。
+		/// 設定ファイルが壊れていたり存在しない場合、デフォルトの設定が使われます。
+		/// </summary>
+		public static void loadConfig ()
+		{
+			string appdata = cadencii.core.ApplicationGlobal.getApplicationDataPath ();
+#if DEBUG
+			sout.println ("EditorManager#loadConfig; appdata=" + appdata);
+#endif
+			if (appdata.Equals ("")) {
+				EditorManager.editorConfig = new EditorConfig ();
+				return;
+			}
+
+			// バージョン番号付きのファイル
+			string config_file = Path.Combine (Utility.getConfigPath (), ApplicationGlobal.CONFIG_FILE_NAME);
+#if DEBUG
+			sout.println ("EditorManager#loadConfig; config_file=" + config_file);
+#endif
+			EditorConfig ret = null;
+			if (System.IO.File.Exists (config_file)) {
+				// このバージョン用の設定ファイルがあればそれを利用
+				try {
+					ret = deserializeEditorConfig (config_file);
+				} catch (Exception ex) {
+					serr.println ("EditorManager#loadConfig; ex=" + ex);
+					ret = null;
+					Logger.write (typeof(EditorManager) + ".loadConfig; ex=" + ex + "\n");
+				}
+			} else {
+				// このバージョン用の設定ファイルがなかった場合
+				// まず，古いバージョン用の設定ファイルがないかどうか順に調べる
+				string[] dirs0 = PortUtil.listDirectories (appdata);
+				// 数字と，2個以下のピリオドからなるディレクトリ名のみを抽出
+				List<VersionString> dirs = new List<VersionString> ();
+				foreach (string s0 in dirs0) {
+					string s = PortUtil.getFileName (s0);
+					int length = PortUtil.getStringLength (s);
+					bool register = true;
+					int num_period = 0;
+					for (int i = 0; i < length; i++) {
+						char c = PortUtil.charAt (s, i);
+						if (c == '.') {
+							num_period++;
+						} else {
+							if (!char.IsNumber (c)) {
+								register = false;
+								break;
+							}
+						}
+					}
+					if (register && num_period <= 2) {
+						try {
+							VersionString vs = new VersionString (s);
+							dirs.Add (vs);
+						} catch (Exception ex) {
+						}
+					}
+				}
+
+				// 並べ替える
+				bool changed = true;
+				int size = dirs.Count;
+				while (changed) {
+					changed = false;
+					for (int i = 0; i < size - 1; i++) {
+						VersionString item1 = dirs [i];
+						VersionString item2 = dirs [i + 1];
+						if (item1.compareTo (item2) > 0) {
+							dirs [i] = item2;
+							dirs [i + 1] = item1;
+							changed = true;
+						}
+					}
+				}
+
+				// バージョン番号付きの設定ファイルを新しい順に読み込みを試みる
+				VersionString vs_this = new VersionString (BAssemblyInfo.fileVersionMeasure + "." + BAssemblyInfo.fileVersionMinor);
+				for (int i = size - 1; i >= 0; i--) {
+					VersionString vs = dirs [i];
+					if (vs_this.compareTo (vs) < 0) {
+						// 自分自身のバージョンより新しいものは
+						// 読み込んではいけない
+						continue;
+					}
+					config_file = Path.Combine (Path.Combine (appdata, vs.getRawString ()), ApplicationGlobal.CONFIG_FILE_NAME);
+					if (System.IO.File.Exists (config_file)) {
+						try {
+							ret = deserializeEditorConfig (config_file);
+						} catch (Exception ex) {
+							Logger.write (typeof(EditorManager) + ".loadConfig; ex=" + ex + "\n");
+							ret = null;
+						}
+						if (ret != null) {
+							break;
+						}
+					}
+				}
+
+				// それでも読み込めなかった場合，旧来のデフォルトの位置にある
+				// 設定ファイルを読みに行く
+				if (ret == null) {
+					config_file = Path.Combine (appdata, ApplicationGlobal.CONFIG_FILE_NAME);
+					if (System.IO.File.Exists (config_file)) {
+						try {
+							ret = deserializeEditorConfig (config_file);
+						} catch (Exception ex) {
+							serr.println ("EditorManager#locdConfig; ex=" + ex);
+							ret = null;
+							Logger.write (typeof(EditorManager) + ".loadConfig; ex=" + ex + "\n");
+						}
+					}
+				}
+			}
+
+			// 設定ファイルの読み込みが悉く失敗した場合，
+			// デフォルトの設定とする．
+			if (ret == null) {
+				ret = new EditorConfig ();
+			}
+			EditorManager.editorConfig = ret;
+
+			keyWidth = EditorManager.editorConfig.KeyWidth;
+		}
 
 		#endregion
 	}

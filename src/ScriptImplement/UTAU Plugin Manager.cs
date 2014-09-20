@@ -382,10 +382,10 @@ class UtauPluginManager : Form
             }
         }
 
-        if (AppManager.mMainWindow != null) {
-            VoidDelegate deleg = new VoidDelegate(AppManager.mMainWindow.updateScriptShortcut);
+        if (EditorManager.MainWindow != null) {
+            VoidDelegate deleg = new VoidDelegate(EditorManager.MainWindow.updateScriptShortcut);
             if (deleg != null) {
-                AppManager.mMainWindow.Invoke(deleg);
+                ((Form) EditorManager.MainWindow).Invoke(deleg);
             }
         }
     }

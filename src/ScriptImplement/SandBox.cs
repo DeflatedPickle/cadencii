@@ -77,7 +77,7 @@ public class SmartHtml
                     if ( item.ID.Length < 240 ) {
                         AppManager.addSelectedEvent( item.InternalID );
                         AppManager.setCurrentClock( item.Clock );
-                        AppManager.mMainWindow.ensureCursorVisible();
+                        EditorManager.MainWindow.ensureCursorVisible();
                         break;
                     }
                 }

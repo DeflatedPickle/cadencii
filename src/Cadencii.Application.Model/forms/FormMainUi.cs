@@ -11,6 +11,9 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
+using System.Collections.Generic;
+
+
 namespace cadencii
 {
 
@@ -19,6 +22,9 @@ namespace cadencii
     /// </summary>
     public interface FormMainUi
     {
+		IList<ValuePairOfStringArrayOfKeys> getDefaultShortcutKeys ();
+		void updateScriptShortcut ();
+
         /// <summary>
         /// ピアノロールの部品にフォーカスを持たせる
         /// </summary>

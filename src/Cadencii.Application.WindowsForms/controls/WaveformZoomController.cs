@@ -84,7 +84,7 @@ namespace cadencii
 
         public void receivePaintSignal(Graphics g)
         {
-            int key_width = AppManager.keyWidth;
+            int key_width = EditorManager.keyWidth;
             int width = key_width - 1;
             int height = mUi.getHeight() - 1;
 
@@ -129,7 +129,7 @@ namespace cadencii
         {
             Point p = new Point(x, y);
 
-            int width = AppManager.keyWidth - 1;
+            int width = EditorManager.keyWidth - 1;
             int height = mUi.getHeight();
 
             // AutoMaximizeボタン
@@ -177,7 +177,7 @@ namespace cadencii
 
         public void receiveMouseUpSignal(int x, int y)
         {
-            int width = AppManager.keyWidth - 1;
+            int width = EditorManager.keyWidth - 1;
             int height = mUi.getHeight();
 
             // AutoMaximizeボタン
@@ -199,7 +199,7 @@ namespace cadencii
         /// <returns></returns>
         private Rectangle getButtonBoundsWaveViewZoom()
         {
-            int width = AppManager.keyWidth - 1;
+            int width = EditorManager.keyWidth - 1;
             int height = mUi.getHeight() - 1;
 
             int y = SPACE + 16 + SPACE;

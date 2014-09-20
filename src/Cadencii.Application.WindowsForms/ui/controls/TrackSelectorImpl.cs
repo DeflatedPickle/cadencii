@@ -928,7 +928,7 @@ namespace cadencii
 
         private int getMaxColumns()
         {
-            int max_columns = AppManager.keyWidth / EditorConfig.MIN_KEY_WIDTH;
+            int max_columns = EditorManager.keyWidth / EditorConfig.MIN_KEY_WIDTH;
             if (max_columns < 1) {
                 max_columns = 1;
             }
@@ -1178,7 +1178,7 @@ namespace cadencii
             Point mouse = new Point(p.X, p.Y);
             VsqFileEx vsq = MusicManager.getVsqFile();
             int selected = EditorManager.Selected;
-            int key_width = AppManager.keyWidth;
+            int key_width = EditorManager.keyWidth;
             int stdx = EditorManager.MainWindowController.getStartToDrawX();
             int graph_max_y = HEADER + graph_height;
             int graph_min_y = HEADER;
@@ -1205,7 +1205,7 @@ namespace cadencii
                     int ycoord = size.height - 2 * OFFSET_TRACK_TAB + 1;
 
                     // 左端での歌手を最初に描画
-                    int x_at_left = AppManager.keyWidth + EditorManager.keyOffset;
+                    int x_at_left = EditorManager.keyWidth + EditorManager.keyOffset;
                     int clock_at_left = AppManager.clockFromXCoord(x_at_left);
                     VsqEvent singer_at_left = vsq_track.getSingerEventAt(clock_at_left);
                     if (singer_at_left != null) {
@@ -1692,7 +1692,7 @@ namespace cadencii
         /// <param name="fill_color"></param>
         private void drawEnvelope(Graphics g, int track_index, Color fill_color)
         {
-            int key_width = AppManager.keyWidth;
+            int key_width = EditorManager.keyWidth;
             int width = getWidth();
             int height = getHeight();
             g.setClip(key_width, 0, width - key_width, height);
@@ -1930,7 +1930,7 @@ namespace cadencii
                     int clock = list.getKeyClock(i);
                     VsqBPPair item = list.getElementB(i);
                     int x = AppManager.xCoordFromClocks(clock);
-                    if (x + DOT_WID < AppManager.keyWidth) {
+                    if (x + DOT_WID < EditorManager.keyWidth) {
                         continue;
                     }
                     if (getWidth() < x - DOT_WID) {
@@ -1991,7 +1991,7 @@ namespace cadencii
                 point_kind.value = -1;
             }
 
-            int clock_start = AppManager.clockFromXCoord(AppManager.keyWidth);
+            int clock_start = AppManager.clockFromXCoord(EditorManager.keyWidth);
             int clock_end = AppManager.clockFromXCoord(getWidth());
             int dotwid = DOT_WID * 2 + 1;
             VsqFileEx vsq = MusicManager.getVsqFile();
@@ -2245,7 +2245,7 @@ namespace cadencii
         public int getSelectorWidth()
         {
             int draft = TRACK_SELECTOR_MAX_WIDTH;
-            int maxTotalWidth = getWidth() - AppManager.keyWidth; // トラックの一覧を表示するのに利用できる最大の描画幅
+            int maxTotalWidth = getWidth() - EditorManager.keyWidth; // トラックの一覧を表示するのに利用できる最大の描画幅
             int numTrack = 1;
             VsqFileEx vsq = MusicManager.getVsqFile();
             if (vsq != null) {
@@ -2290,7 +2290,7 @@ namespace cadencii
             int oy = height - 42;
             Shape last_clip = g.getClip();
             int stdx = EditorManager.MainWindowController.getStartToDrawX();
-            int key_width = AppManager.keyWidth;
+            int key_width = EditorManager.keyWidth;
             int xoffset = key_width - stdx;
             g.clipRect(key_width, HEADER, width - key_width, graph_height);
             float scale = EditorManager.MainWindowController.getScaleX();
@@ -2397,8 +2397,8 @@ namespace cadencii
 #if DEBUG
             try {
 #endif
-                int visibleMinX = AppManager.keyWidth;
-                int visibleMaxX = mMainWindow.pictPianoRoll.getWidth() + AppManager.keyWidth + EditorManager.keyOffset;
+                int visibleMinX = EditorManager.keyWidth;
+                int visibleMaxX = mMainWindow.pictPianoRoll.getWidth() + EditorManager.keyWidth + EditorManager.keyOffset;
 			Color hilight = cadencii.java.awt.Colors.Blue;// AppManager.getHilightColor();
                 int chains_count = chains.Count;
                 for (int i = 0; i < chains_count; i++) {
@@ -2571,7 +2571,7 @@ namespace cadencii
             }
             Shape last_clip = g.getClip();
             int graph_height = getGraphHeight();
-            int key_width = AppManager.keyWidth;
+            int key_width = EditorManager.keyWidth;
             int width = getWidth();
             int height = getHeight();
             g.clipRect(key_width, HEADER,
@@ -2681,7 +2681,7 @@ namespace cadencii
             int height = getHeight();
             float order = graph_height / (float)(max - min);
             int oy = height - 42;
-            int key_width = AppManager.keyWidth;
+            int key_width = EditorManager.keyWidth;
 
             int start = key_width;
             int start_clock = AppManager.clockFromXCoord(start);
@@ -2788,7 +2788,7 @@ namespace cadencii
         /// </summary>
         public int getGraphWidth()
         {
-            return getWidth() - AppManager.keyWidth;
+            return getWidth() - EditorManager.keyWidth;
         }
 
         public void TrackSelector_Load(Object sender, EventArgs e)
@@ -2812,7 +2812,7 @@ namespace cadencii
                         }
                     }
                 } else if (e.Button == MouseButtons.Right) {
-                    if (0 <= e.X && e.X <= AppManager.keyWidth &&
+                    if (0 <= e.X && e.X <= EditorManager.keyWidth &&
                          0 <= e.Y && e.Y <= getHeight() - 2 * OFFSET_TRACK_TAB) {
                         foreach (var tsi in cmenuCurve.Items) {
                             if (tsi is ToolStripMenuItem) {
@@ -3484,11 +3484,11 @@ namespace cadencii
             int selected = EditorManager.Selected;
             int height = getHeight();
             int width = getWidth();
-            int key_width = AppManager.keyWidth;
+            int key_width = EditorManager.keyWidth;
             VsqTrack vsq_track = vsq.Track[selected];
             mMouseMoved = false;
             mMouseDowned = true;
-            if (AppManager.keyWidth < e.X && clock < vsq.getPreMeasure()) {
+            if (EditorManager.keyWidth < e.X && clock < vsq.getPreMeasure()) {
                 System.Media.SystemSounds.Asterisk.Play();
                 return;
             }
@@ -3605,7 +3605,7 @@ namespace cadencii
             } else {
                 #region MouseDown occred on other position
                 bool clock_inner_note = false; //マウスの降りたクロックが，ノートの範囲内かどうかをチェック
-                int left_clock = AppManager.clockFromXCoord(AppManager.keyWidth);
+                int left_clock = AppManager.clockFromXCoord(EditorManager.keyWidth);
                 int right_clock = AppManager.clockFromXCoord(getWidth());
                 for (Iterator<VsqEvent> itr = vsq_track.getEventIterator(); itr.hasNext(); ) {
                     VsqEvent ve = itr.next();
@@ -3627,7 +3627,7 @@ namespace cadencii
 #if DEBUG
                 CDebug.WriteLine("    clock_inner_note=" + clock_inner_note);
 #endif
-                if (AppManager.keyWidth <= e.X) {
+                if (EditorManager.keyWidth <= e.X) {
                     if (e.Button == MouseButtons.Left && !mSpaceKeyDowned) {
                         mMouseDownMode = MouseDownMode.CURVE_EDIT;
                         int quantized_clock = clock;
@@ -4382,7 +4382,7 @@ namespace cadencii
                         continue;
                     }
                     if (0 <= locy && locy <= getHeight() - 2 * OFFSET_TRACK_TAB &&
-                         AppManager.keyWidth <= locx && locx <= getWidth()) {
+                         EditorManager.keyWidth <= locx && locx <= getWidth()) {
                         if (y <= locy && locy <= getHeight() - FOOTER && x <= locx && locx <= x + VEL_BAR_WIDTH) {
                             return ve;
                         }
@@ -5428,7 +5428,7 @@ namespace cadencii
             VsqTrack vsq_track = vsq.Track[selected];
             int height = getHeight();
             int width = getWidth();
-            int key_width = AppManager.keyWidth;
+            int key_width = EditorManager.keyWidth;
 
             if (e.Button == MouseButtons.Left) {
                 if (0 <= e.Y && e.Y <= height - 2 * OFFSET_TRACK_TAB) {
