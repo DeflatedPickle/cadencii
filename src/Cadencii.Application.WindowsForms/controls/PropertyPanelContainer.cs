@@ -16,6 +16,8 @@ using System;
 using System.Windows.Forms;
 using cadencii.java.awt;
 using cadencii.windows.forms;
+using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
+using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 
 namespace cadencii
 {
@@ -35,7 +37,7 @@ namespace cadencii
         public void addComponent(Control c)
         {
             panelMain.Controls.Add(c);
-            c.Dock = DockStyle.Fill;
+            c.Dock = System.Windows.Forms.DockStyle.Fill;
         }
 
         public void panelTitle_MouseDoubleClick(Object sender, MouseEventArgs e)

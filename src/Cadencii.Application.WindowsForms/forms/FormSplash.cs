@@ -15,6 +15,8 @@ using System;
 using System.Windows.Forms;
 using cadencii.java.awt;
 using cadencii.windows.forms;
+using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
+using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 
 
 

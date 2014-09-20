@@ -19,6 +19,9 @@ using cadencii.java.awt;
 using cadencii.java.util;
 using cadencii.vsq;
 using cadencii.windows.forms;
+using MouseButtons = System.Windows.Forms.MouseButtons;
+using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
+using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 
 namespace cadencii
 {

@@ -37,6 +37,14 @@ using cadencii.utau;
 using cadencii.ui;
 using ApplicationGlobal = cadencii.core.ApplicationGlobal;
 using Keys = cadencii.java.awt.Keys;
+using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
+using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
+using MouseButtons = System.Windows.Forms.MouseButtons;
+using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
+using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
+using NMouseButtons = cadencii.java.awt.MouseButtons;
+using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
+using NKeyEventArgs = cadencii.java.awt.KeyEventArgs;
 
 namespace cadencii
 {
@@ -551,7 +559,7 @@ namespace cadencii
             tvsq.Track[1].changeRenderer(renderer, singers);
             AppManager.setVsqFile(tvsq);
 
-            trackSelector = new TrackSelector(this); // initializeで引数なしのコンストラクタが呼ばれるのを予防
+            trackSelector = new TrackSelectorImpl(this); // initializeで引数なしのコンストラクタが呼ばれるのを予防
             //TODO: javaのwaveViewはどこで作られるんだっけ？
             waveView = new WaveView();
             //TODO: これはひどい
@@ -608,22 +616,22 @@ namespace cadencii
             trackSelector.setCurveVisible(true);
             trackSelector.setSelectedCurve(CurveType.VEL);
             trackSelector.setLocation(new Point(0, 242));
-            trackSelector.Margin = new System.Windows.Forms.Padding(0);
+            trackSelector.Margin = new cadencii.java.awt.Padding(0);
             trackSelector.Name = "trackSelector";
             trackSelector.setSize(446, 250);
             trackSelector.TabIndex = 0;
-            trackSelector.MouseClick += new MouseEventHandler(trackSelector_MouseClick);
-            trackSelector.MouseUp += new MouseEventHandler(trackSelector_MouseUp);
-            trackSelector.MouseDown += new MouseEventHandler(trackSelector_MouseDown);
-            trackSelector.MouseMove += new MouseEventHandler(trackSelector_MouseMove);
-            trackSelector.KeyDown += new KeyEventHandler(handleSpaceKeyDown);
-            trackSelector.KeyUp += new KeyEventHandler(handleSpaceKeyUp);
-            trackSelector.PreviewKeyDown += new PreviewKeyDownEventHandler(trackSelector_PreviewKeyDown);
+            trackSelector.MouseClick += new cadencii.java.awt.MouseEventHandler(trackSelector_MouseClick);
+			trackSelector.MouseUp += new cadencii.java.awt.MouseEventHandler(trackSelector_MouseUp);
+			trackSelector.MouseDown += new cadencii.java.awt.MouseEventHandler(trackSelector_MouseDown);
+			trackSelector.MouseMove += new cadencii.java.awt.MouseEventHandler(trackSelector_MouseMove);
+            trackSelector.KeyDown += new cadencii.java.awt.KeyEventHandler(handleSpaceKeyDown);
+			trackSelector.KeyUp += new cadencii.java.awt.KeyEventHandler(handleSpaceKeyUp);
+            trackSelector.PreviewKeyDown += new cadencii.java.awt.KeyEventHandler(trackSelector_PreviewKeyDown);
             trackSelector.SelectedTrackChanged += new SelectedTrackChangedEventHandler(trackSelector_SelectedTrackChanged);
             trackSelector.SelectedCurveChanged += new SelectedCurveChangedEventHandler(trackSelector_SelectedCurveChanged);
             trackSelector.RenderRequired += new RenderRequiredEventHandler(trackSelector_RenderRequired);
             trackSelector.PreferredMinHeightChanged += new EventHandler(trackSelector_PreferredMinHeightChanged);
-            trackSelector.MouseDoubleClick += new MouseEventHandler(trackSelector_MouseDoubleClick);
+			trackSelector.MouseDoubleClick += new cadencii.java.awt.MouseEventHandler(trackSelector_MouseDoubleClick);
 
             splitContainer1.Panel2MinSize = trackSelector.getPreferredMinSize();
             var minimum_size = getWindowMinimumSize();
@@ -649,8 +657,8 @@ namespace cadencii
             splitContainer1.Panel1.Controls.Add(splitContainer2);
             panelWaveformZoom.Dock = System.Windows.Forms.DockStyle.Fill;
             splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            splitContainer1.Panel2.Controls.Add(trackSelector);
-            trackSelector.Dock = System.Windows.Forms.DockStyle.Fill;
+            splitContainer1.Panel2.Controls.Add((Control)trackSelector.Native);
+            trackSelector.Dock = cadencii.java.awt.DockStyle.Fill;
             splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             splitContainer1.Panel2MinSize = trackSelector.getPreferredMinSize();
             splitContainerProperty.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
@@ -706,7 +714,7 @@ namespace cadencii
             updatePropertyPanelState(EditorManager.editorConfig.PropertyWindowStatus.State);
 
             pictPianoRoll.MouseWheel += new MouseEventHandler(pictPianoRoll_MouseWheel);
-            trackSelector.MouseWheel += new MouseEventHandler(trackSelector_MouseWheel);
+            trackSelector.MouseWheel += new cadencii.java.awt.MouseEventHandler(trackSelector_MouseWheel);
             picturePositionIndicator.MouseWheel += new MouseEventHandler(picturePositionIndicator_MouseWheel);
 
             menuVisualOverview.CheckedChanged += new EventHandler(menuVisualOverview_CheckedChanged);
@@ -3587,7 +3595,7 @@ namespace cadencii
                 AppManager.mLastTrackSelectorHeight = splitContainer1.getHeight() - splitContainer1.getDividerLocation() - splitContainer1.getDividerSize();
                 splitContainer1.setSplitterFixed(true);
                 splitContainer1.setDividerSize(0);
-                int panel2height = TrackSelector.OFFSET_TRACK_TAB * 2;
+                int panel2height = TrackSelectorImpl.OFFSET_TRACK_TAB * 2;
                 splitContainer1.setDividerLocation(splitContainer1.getHeight() - panel2height - splitContainer1.getDividerSize());
                 splitContainer1.setPanel2MinSize(panel2height);
             }
@@ -13183,7 +13191,7 @@ namespace cadencii
         {
             if (e.Button == MouseButtons.Middle) {
                 // ツールをポインター <--> 鉛筆に切り替える
-                if (e.Y < trackSelector.getHeight() - TrackSelector.OFFSET_TRACK_TAB * 2) {
+                if (e.Y < trackSelector.getHeight() - TrackSelectorImpl.OFFSET_TRACK_TAB * 2) {
                     if (EditorManager.SelectedTool == EditTool.ARROW) {
                         EditorManager.SelectedTool = (EditTool.PENCIL);
                     } else {
@@ -14123,25 +14131,25 @@ namespace cadencii
             refreshScreen();
         }
 
-        public void trackSelector_MouseClick(Object sender, MouseEventArgs e)
+        public void trackSelector_MouseClick(Object sender, NMouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right) {
+            if (e.Button == NMouseButtons.Right) {
                 if (AppManager.keyWidth < e.X && e.X < trackSelector.getWidth()) {
-                    if (trackSelector.getHeight() - TrackSelector.OFFSET_TRACK_TAB <= e.Y && e.Y <= trackSelector.getHeight()) {
-                        cMenuTrackTab.Show(trackSelector, e.X, e.Y);
+                    if (trackSelector.getHeight() - TrackSelectorImpl.OFFSET_TRACK_TAB <= e.Y && e.Y <= trackSelector.getHeight()) {
+                        cMenuTrackTab.Show((Control)trackSelector.Native, e.X, e.Y);
                     } else {
-                        cMenuTrackSelector.Show(trackSelector, e.X, e.Y);
+                        cMenuTrackSelector.Show((Control)trackSelector, e.X, e.Y);
                     }
                 }
             }
         }
 
-        public void trackSelector_MouseDoubleClick(Object sender, MouseEventArgs e)
+        public void trackSelector_MouseDoubleClick(Object sender, NMouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Middle) {
+            if (e.Button == NMouseButtons.Middle) {
                 // ツールをポインター <--> 鉛筆に切り替える
                 if (AppManager.keyWidth < e.X &&
-                     e.Y < trackSelector.getHeight() - TrackSelector.OFFSET_TRACK_TAB * 2) {
+                     e.Y < trackSelector.getHeight() - TrackSelectorImpl.OFFSET_TRACK_TAB * 2) {
                     if (EditorManager.SelectedTool == EditTool.ARROW) {
                         EditorManager.SelectedTool = (EditTool.PENCIL);
                     } else {
@@ -14151,11 +14159,11 @@ namespace cadencii
             }
         }
 
-        public void trackSelector_MouseDown(Object sender, MouseEventArgs e)
+        public void trackSelector_MouseDown(Object sender, NMouseEventArgs e)
         {
             if (AppManager.keyWidth < e.X) {
                 mMouseDownedTrackSelector = true;
-                if (isMouseMiddleButtonDowned(e.Button)) {
+                if (isMouseMiddleButtonDowned((MouseButtons)e.Button)) {
                     mEditCurveMode = CurveEditMode.MIDDLE_DRAG;
                     mButtonInitial = new Point(e.X, e.Y);
                     mMiddleButtonHScroll = hScroll.Value;
@@ -14164,7 +14172,7 @@ namespace cadencii
             }
         }
 
-        public void trackSelector_MouseMove(Object sender, MouseEventArgs e)
+        public void trackSelector_MouseMove(Object sender, NMouseEventArgs e)
         {
             if (mFormActivated && AppManager.mInputTextBox != null) {
                 bool input_visible = !AppManager.mInputTextBox.IsDisposed && AppManager.mInputTextBox.Visible;
@@ -14177,7 +14185,7 @@ namespace cadencii
                     trackSelector.requestFocus();
                 }
             }
-            if (e.Button == MouseButtons.None) {
+            if (e.Button == NMouseButtons.None) {
                 if (!timer.Enabled) {
                     refreshScreen(true);
                 }
@@ -14241,7 +14249,7 @@ namespace cadencii
             }
         }
 
-        public void trackSelector_MouseUp(Object sender, MouseEventArgs e)
+        public void trackSelector_MouseUp(Object sender, NMouseEventArgs e)
         {
             mMouseDownedTrackSelector = false;
             if (mEditCurveMode == CurveEditMode.MIDDLE_DRAG) {
@@ -14250,7 +14258,7 @@ namespace cadencii
             }
         }
 
-        public void trackSelector_MouseWheel(Object sender, MouseEventArgs e)
+        public void trackSelector_MouseWheel(Object sender, NMouseEventArgs e)
         {
 #if DEBUG
             sout.println("FormMain#trackSelector_MouseWheel");
@@ -14282,9 +14290,9 @@ namespace cadencii
             }
         }
 
-        public void trackSelector_PreviewKeyDown(Object sender, PreviewKeyDownEventArgs e)
+        public void trackSelector_PreviewKeyDown(Object sender, NKeyEventArgs e)
         {
-            KeyEventArgs e0 = new KeyEventArgs(e.KeyData);
+            KeyEventArgs e0 = new KeyEventArgs((System.Windows.Forms.Keys) e.KeyData);
             processSpecialShortcutKey(e0, true);
         }
 
@@ -16072,6 +16080,20 @@ namespace cadencii
         }
 
         public void handleSpaceKeyUp(Object sender, KeyEventArgs e)
+        {
+            if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
+                mSpacekeyDowned = false;
+            }
+        }
+		
+        void handleSpaceKeyDown(Object sender, NKeyEventArgs e)
+        {
+            if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
+                mSpacekeyDowned = true;
+            }
+        }
+
+        void handleSpaceKeyUp(Object sender, NKeyEventArgs e)
         {
             if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
                 mSpacekeyDowned = false;

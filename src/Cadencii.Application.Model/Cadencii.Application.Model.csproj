@@ -13,7 +13,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;__TEMPORALY_DISABLED__USE_OLD_SYNTH_IMPL;ENABLE_PROPERTY; ENABLE_VOCALOID; ENABLE_SCRIPT; ENABLE_MIDI;ENABLE_STRIP_DROPDOWN;ENABLE_MOUSEHOVER;ENABLE_AQUESTONE;ENABLE_GENERAL_VST;MONITOR_FPS;CSHARP</DefineConstants>
+    <DefineConstants>DEBUG;__TEMPORALY_DISABLED__USE_OLD_SYNTH_IMPL;ENABLE_PROPERTY; ENABLE_VOCALOID; ENABLE_SCRIPT; ENABLE_MIDI;ENABLE_STRIP_DROPDOWN;ENABLE_MOUSEHOVER;ENABLE_AQUESTONE;ENABLE_GENERAL_VST;MONITOR_FPS;COMPONENT_ENABLE_LOCATION;CSHARP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -25,7 +25,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <DefineConstants>__TEMPORALY_DISABLED__USE_OLD_SYNTH_IMPL;ENABLE_PROPERTY; ENABLE_VOCALOID; ENABLE_SCRIPT; ENABLE_MIDI;ENABLE_STRIP_DROPDOWN;ENABLE_MOUSEHOVER;ENABLE_AQUESTONE;ENABLE_GENERAL_VST;MONITOR_FPS;CSHARP</DefineConstants>
+    <DefineConstants>__TEMPORALY_DISABLED__USE_OLD_SYNTH_IMPL;ENABLE_PROPERTY; ENABLE_VOCALOID; ENABLE_SCRIPT; ENABLE_MIDI;ENABLE_STRIP_DROPDOWN;ENABLE_MOUSEHOVER;ENABLE_AQUESTONE;ENABLE_GENERAL_VST;MONITOR_FPS;COMPONENT_ENABLE_LOCATION;CSHARP</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
@@ -69,8 +69,6 @@
     <Compile Include="WaveUnitConfigElement.cs" />
     <Compile Include="MidiDeviceImp.cs" />
     <Compile Include="MidiQueue.cs" />
-    <Compile Include="CommandTree.cs" />
-    <Compile Include="CommandTreeUnit.cs" />
     <Compile Include="DrawObject.cs" />
     <Compile Include="DrawObjectType.cs" />
     <Compile Include="MouseTracer.cs" />
@@ -140,6 +138,7 @@
     <Compile Include="UiBase.cs" />
     <Compile Include="VersionString.cs" />
     <Compile Include="FederChangedEventHandler.cs" />
+    <Compile Include="controls\TrackSelector.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -174,5 +173,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="forms\" />
+    <Folder Include="controls\" />
   </ItemGroup>
 </Project>

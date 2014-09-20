@@ -19,6 +19,14 @@ using cadencii;
 using cadencii.java.awt;
 using cadencii.java.util;
 using cadencii.windows.forms;
+using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
+using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
+using MouseButtons = System.Windows.Forms.MouseButtons;
+using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
+using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
+using NMouseButtons = cadencii.java.awt.MouseButtons;
+using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
+using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 
 namespace cadencii
 {
@@ -190,9 +198,9 @@ namespace cadencii
             Point loc_trackselector = m_parent.getLocationOnScreen();
             Point loc_on_trackselector =
                 new Point(loc_on_screen.X - loc_trackselector.X, loc_on_screen.Y - loc_trackselector.Y);
-            MouseEventArgs event_arg =
-                new MouseEventArgs(MouseButtons.Left, 0, loc_on_trackselector.X, loc_on_trackselector.Y, 0);
-            m_parent.TrackSelector_MouseUp(this, event_arg);
+            var event_arg =
+                new NMouseEventArgs(NMouseButtons.Left, 0, loc_on_trackselector.X, loc_on_trackselector.Y, 0);
+            m_parent.onMouseUp(this, event_arg);
             cadencii.core2.PortUtil.setMousePosition(m_last_mouse_global_location);
             m_parent.doInvalidate();
         }
@@ -211,8 +219,8 @@ namespace cadencii
                 Point loc_trackselector = m_parent.getLocationOnScreen();
                 Point loc_on_trackselector =
                     new Point(loc_on_screen.X - loc_trackselector.X, loc_on_screen.Y - loc_trackselector.Y);
-                MouseEventArgs event_arg =
-                    new MouseEventArgs(MouseButtons.Left, 0, loc_on_trackselector.X, loc_on_trackselector.Y, 0);
+                var event_arg =
+                    new NMouseEventArgs(NMouseButtons.Left, 0, loc_on_trackselector.X, loc_on_trackselector.Y, 0);
                 BezierPoint ret = m_parent.HandleMouseMoveForBezierMove(event_arg, m_picked_side);
 
                 this.ui.setDataPointClockText(((int)ret.getBase().getX()) + "");
@@ -276,11 +284,11 @@ namespace cadencii
                     loc_topleft.X + loc_on_trackselector.X,
                     loc_topleft.Y + loc_on_trackselector.Y);
             cadencii.core2.PortUtil.setMousePosition(mScreenMouseDownLocation);
-            MouseEventArgs event_arg =
-                new MouseEventArgs(
-                    MouseButtons.Left, 0,
+            var event_arg =
+                new NMouseEventArgs(
+                    NMouseButtons.Left, 0,
                     loc_on_trackselector.X, loc_on_trackselector.Y, 0);
-            m_parent.TrackSelector_MouseDown(this, event_arg);
+            m_parent.onMouseDown(this, event_arg);
             m_picked_side = side;
             m_btn_datapoint_downed = true;
         }
@@ -333,11 +341,11 @@ namespace cadencii
                 m_point_id = target.points[index].getID();
                 m_point = target.points[index];
                 updateStatus();
-                m_parent.mEditingPointID = m_point_id;
+                m_parent.setEditingPointID(m_point_id);
                 m_parent.doInvalidate();
 
                 // スクリーン上でデータ点が見えるようにする
-                FormMain main = m_parent.getMainForm();
+                var main = m_parent.getMainForm();
                 if (main != null) {
                     main.ensureVisible((int)m_point.getBase().getX());
                 }

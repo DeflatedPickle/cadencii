@@ -81,39 +81,6 @@
     <Compile Include="ImageCachedComponentDrawer.cs" />
     <Compile Include="ProgressBarWithLabel.cs" />
     <Compile Include="SynthesizeWorker.cs" />
-    <Compile Include="ui\dotnet\ExceptionNotifyFormUiImpl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ui\dotnet\ExceptionNotifyFormUiImpl.Designer.cs">
-      <DependentUpon>ExceptionNotifyFormUiImpl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ui\dotnet\FormAskKeySoundGenerationUiImpl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ui\dotnet\FormBeatConfigUiImpl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ui\dotnet\FormBezierPointEditUiImpl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ui\dotnet\FormNotePropertyUiImpl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ui\dotnet\FormWordDictionaryUiImpl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ui\dotnet\FormWorkerUi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ui\dotnet\ProgressBarWithLabelUi.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ui\dotnet\UpdateCheckForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ui\dotnet\WaveformZoomUiImpl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="ui\Factory.cs" />
     <Compile Include="ui\main\FormMain.cs">
       <SubType>Form</SubType>
@@ -129,9 +96,6 @@
       <DependentUpon>Preference.cs</DependentUpon>
     </Compile>
     <Compile Include="ui\UpdateCheckForm.cs" />
-    <Compile Include="MidiPlayer.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="IPaletteTool.cs" />
     <Compile Include="PaletteToolServer.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -139,29 +103,11 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ui\dotnet\ExceptionNotifyFormUiImpl.resx">
-      <DependentUpon>ExceptionNotifyFormUiImpl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ui\dotnet\FormBeatConfigUiImpl.resx">
-      <DependentUpon>FormBeatConfigUiImpl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ui\dotnet\FormWordDictionaryUiImpl.resx">
-      <DependentUpon>FormWordDictionaryUiImpl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ui\dotnet\FormWorkerUi.resx">
-      <DependentUpon>FormWorkerUi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ui\dotnet\ProgressBarWithLabelUi.resx">
-      <DependentUpon>ProgressBarWithLabelUi.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ui\dotnet\UpdateCheckForm.resx">
-      <DependentUpon>UpdateCheckForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ui\main\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -277,13 +223,6 @@
     <Compile Include="forms\VersionInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="controls\TrackSelector.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <EmbeddedResource Include="controls\TrackSelector.resx">
-      <DependentUpon>TrackSelector.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <Compile Include="controls\WaveView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -330,6 +269,64 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DialogManager.cs" />
+    <Compile Include="ui\forms\ExceptionNotifyFormUiImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\ExceptionNotifyFormUiImpl.Designer.cs">
+      <DependentUpon>ExceptionNotifyFormUiImpl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ui\forms\FormAskKeySoundGenerationUiImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\FormBeatConfigUiImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\FormBezierPointEditUiImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\FormNotePropertyUiImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\FormWordDictionaryUiImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\FormWorkerUi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\ProgressBarWithLabelUi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ui\forms\UpdateCheckForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\WaveformZoomUiImpl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <EmbeddedResource Include="ui\forms\ExceptionNotifyFormUiImpl.resx">
+      <DependentUpon>ExceptionNotifyFormUiImpl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\forms\FormBeatConfigUiImpl.resx">
+      <DependentUpon>FormBeatConfigUiImpl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\forms\FormWordDictionaryUiImpl.resx">
+      <DependentUpon>FormWordDictionaryUiImpl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\forms\FormWorkerUi.resx">
+      <DependentUpon>FormWorkerUi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\forms\ProgressBarWithLabelUi.resx">
+      <DependentUpon>ProgressBarWithLabelUi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\forms\UpdateCheckForm.resx">
+      <DependentUpon>UpdateCheckForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="ui\controls\TrackSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <EmbeddedResource Include="ui\controls\TrackSelector.resx">
+      <DependentUpon>TrackSelector.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />
@@ -623,6 +620,7 @@
     <Folder Include="po\" />
     <Folder Include="forms\" />
     <Folder Include="controls\" />
+    <Folder Include="ui\controls\" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="..\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.projitems" Label="Shared" Condition="Exists('..\cadencii.gui.winforms.shared\cadencii.gui.winforms.shared.projitems')" />

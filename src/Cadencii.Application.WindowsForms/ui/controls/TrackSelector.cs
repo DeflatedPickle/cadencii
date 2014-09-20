@@ -27,6 +27,14 @@ using cadencii.vsq;
 using cadencii.windows.forms;
 using ApplicationGlobal = cadencii.core.ApplicationGlobal;
 using Keys = cadencii.java.awt.Keys;
+using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
+using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
+using MouseButtons = System.Windows.Forms.MouseButtons;
+using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
+using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
+using NMouseButtons = cadencii.java.awt.MouseButtons;
+using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
+using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 
 namespace cadencii
 {
@@ -35,8 +43,96 @@ namespace cadencii
     /// <summary>
     /// コントロールカーブ，トラックの一覧，歌手変更イベントなどを表示するコンポーネント．
     /// </summary>
-    public class TrackSelector : UserControl
+    public class TrackSelectorImpl : UserControl, TrackSelector
     {
+		static MouseEventArgs ToWF (NMouseEventArgs e)
+		{
+			return new MouseEventArgs ((MouseButtons) e.Button, e.Clicks, e.X, e.Y, e.Delta);
+		}
+
+		static NMouseEventArgs ToAwt (MouseEventArgs e)
+		{
+			return new NMouseEventArgs ((NMouseButtons) e.Button, e.Clicks, e.X, e.Y, e.Delta);
+		}
+
+		cadencii.java.awt.Padding UiControl.Margin {
+			get { return new cadencii.java.awt.Padding (this.Margin.All); }
+			set { this.Margin = new System.Windows.Forms.Padding (value.All); }
+		}
+
+		cadencii.java.awt.DockStyle UiControl.Dock {
+			set { this.Dock = (System.Windows.Forms.DockStyle) value; }
+			get { return (cadencii.java.awt.DockStyle)this.Dock; }
+		}
+
+		BezierPoint TrackSelector.HandleMouseMoveForBezierMove (cadencii.java.awt.MouseEventArgs e, BezierPickedSide picked)
+		{
+			return HandleMouseMoveForBezierMove (ToWF (e), picked);
+		}
+
+		void TrackSelector.setEditingPointID (int id)
+		{
+			mEditingPointID = id;
+		}
+
+		event cadencii.java.awt.KeyEventHandler TrackSelector.PreviewKeyDown {
+			add { this.PreviewKeyDown += (object sender, PreviewKeyDownEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
+			remove { this.PreviewKeyDown -= (object sender, PreviewKeyDownEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
+		}
+
+		event cadencii.java.awt.KeyEventHandler TrackSelector.KeyUp {
+			add { this.KeyUp += (object sender, KeyEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
+			remove { this.KeyUp -= (object sender, KeyEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
+		}
+
+		event cadencii.java.awt.KeyEventHandler TrackSelector.KeyDown {
+			add { this.KeyDown += (object sender, KeyEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
+			remove { this.KeyDown -= (object sender, KeyEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
+		}
+
+		event cadencii.java.awt.MouseEventHandler TrackSelector.MouseClick {
+			add { this.MouseClick += (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
+			remove { this.MouseClick -= (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
+		}
+
+		event cadencii.java.awt.MouseEventHandler TrackSelector.MouseDoubleClick {
+			add { this.MouseDoubleClick += (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
+			remove { this.MouseDoubleClick -= (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
+		}
+
+		event cadencii.java.awt.MouseEventHandler TrackSelector.MouseDown {
+			add { this.MouseDown += (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
+			remove { this.MouseDown -= (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
+		}
+
+		event cadencii.java.awt.MouseEventHandler TrackSelector.MouseUp {
+			add { this.MouseUp += (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
+			remove { this.MouseUp -= (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
+		}
+
+		event cadencii.java.awt.MouseEventHandler TrackSelector.MouseMove {
+			add { this.MouseMove += (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
+			remove { this.MouseMove -= (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
+		}
+		event cadencii.java.awt.MouseEventHandler TrackSelector.MouseWheel {
+			add { this.MouseWheel += (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
+			remove { this.MouseWheel -= (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
+		}
+
+		void TrackSelector.onMouseDown (object sender, cadencii.java.awt.MouseEventArgs e)
+		{
+			onMouseDown (sender, new MouseEventArgs ((MouseButtons)e.Button, e.Clicks, e.X, e.Y, e.Delta));
+		}
+
+		void TrackSelector.onMouseUp (object sender, cadencii.java.awt.MouseEventArgs e)
+		{
+			onMouseUp (sender, new MouseEventArgs ((MouseButtons)e.Button, e.Clicks, e.X, e.Y, e.Delta));
+		}
+
+		object UiControl.Native {
+			get { return this; }
+		}
+
         #region constants and internal enums
         private enum MouseDownMode
         {
@@ -407,7 +503,7 @@ namespace cadencii
         /// <summary>
         /// コンストラクタ．
         /// </summary>
-        public TrackSelector(FormMain main_window)
+        public TrackSelectorImpl(FormMain main_window)
         {
             this.SetStyle(System.Windows.Forms.ControlStyles.DoubleBuffer, true);
             this.SetStyle(System.Windows.Forms.ControlStyles.UserPaint, true);
@@ -861,7 +957,7 @@ namespace cadencii
         /// このコントロールの親ウィンドウを取得します
         /// </summary>
         /// <returns></returns>
-        public FormMain getMainForm()
+        public FormMainUi getMainForm()
         {
             return mMainWindow;
         }
@@ -3376,7 +3472,7 @@ namespace cadencii
             }
         }
 
-        public void TrackSelector_MouseDown(Object sender, MouseEventArgs e)
+        public void onMouseDown(Object sender, MouseEventArgs e)
         {
 #if DEBUG
             CDebug.WriteLine("TrackSelector_MouseDown");
@@ -4296,7 +4392,7 @@ namespace cadencii
             return null;
         }
 
-        public void TrackSelector_MouseUp(Object sender, MouseEventArgs e)
+        public void onMouseUp(Object sender, MouseEventArgs e)
         {
 #if DEBUG
             CDebug.WriteLine("TrackSelector_MouseUp");
@@ -5808,8 +5904,8 @@ namespace cadencii
             this.MouseDoubleClick += new MouseEventHandler(TrackSelector_MouseDoubleClick);
             this.KeyUp += new KeyEventHandler(TrackSelector_KeyUp);
             this.MouseClick += new MouseEventHandler(TrackSelector_MouseClick);
-            this.MouseDown += new MouseEventHandler(TrackSelector_MouseDown);
-            this.MouseUp += new MouseEventHandler(TrackSelector_MouseUp);
+            this.MouseDown += new MouseEventHandler(onMouseDown);
+            this.MouseUp += new MouseEventHandler(onMouseUp);
             this.KeyDown += new KeyEventHandler(TrackSelector_KeyDown);
         }
 

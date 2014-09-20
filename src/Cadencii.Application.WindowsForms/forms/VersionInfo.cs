@@ -18,6 +18,8 @@ using cadencii;
 using cadencii.java.awt;
 using cadencii.windows.forms;
 using Keys = cadencii.java.awt.Keys;
+using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
+using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
 
 namespace cadencii
 {

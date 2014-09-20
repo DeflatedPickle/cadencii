@@ -24,6 +24,13 @@ namespace cadencii
         /// </summary>
         [PureVirtualFunction]
         void focusPianoRoll();
+
+	/// <summary>
+        /// 指定したゲートタイムがピアノロール上で可視状態となるよう、横スクロールバーを移動させます。
+        /// </summary>
+        /// <param name="clock"></param>
+	[PureVirtualFunction]
+	void ensureVisible(int clock);
     }
 
 }
