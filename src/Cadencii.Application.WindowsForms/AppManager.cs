@@ -606,7 +606,7 @@ namespace cadencii
             sout.println("AppManager#patchWorkToFreeze; queue.size()=" + queue.Count);
 #endif
 
-            FormWorker fw = new FormWorker();
+			FormWorker fw = new FormWorker(() => new ProgressBarWithLabelUiImpl());
             fw.setupUi(new FormWorkerUi(fw));
             fw.getUi().setTitle(_("Synthesize"));
             fw.getUi().setText(_("now synthesizing..."));

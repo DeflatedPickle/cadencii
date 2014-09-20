@@ -120,7 +120,7 @@ namespace cadencii
         /// <param name="ui"></param>
         public void removeProgressBar(ProgressBarWithLabelUi ui)
         {
-            flowLayoutPanel1.Controls.Remove(ui);
+            flowLayoutPanel1.Controls.Remove((Control) ui.Native);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace cadencii
             ui.Width = draft_width;
             //ui.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             //ui.Dock = DockStyle.Top;
-            flowLayoutPanel1.Controls.Add(ui);
+            flowLayoutPanel1.Controls.Add((Control)ui.Native);
         }
 
         /// <summary>

@@ -54,10 +54,10 @@ Projects / Assemblies
 Milestones
 ----------
 
-- DialogManager needs to be UI framework agnostic, as it's used by lots of
-  UI code.
-  - To make it possible, some Form types needs to be converted to
-    platform agnostic code.
+- FormWorkerUi to plat-neutral.
+  - then FormWorker can be moved too.
+- PropertyPanel needs to be plat-neutral.
+  - then ItemSelectionModel can be moved too.
 - Move some more forms to platform agnostic application model dll.
 - Move controls to (ditto).
 - Reduce Win32-ism.

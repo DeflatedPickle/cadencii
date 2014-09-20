@@ -143,6 +143,9 @@
     <Compile Include="DialogManager.cs" />
     <Compile Include="PaletteToolServer.cs" />
     <Compile Include="IPaletteTool.cs" />
+    <Compile Include="controls\ProgressBarWithLabelUi.cs" />
+    <Compile Include="controls\UiControl.cs" />
+    <Compile Include="controls\ProgressBarWithLabel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

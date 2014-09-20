@@ -10563,7 +10563,7 @@ namespace cadencii
             // 合成ダイアログを出す
             FormWorker fw = null;
             try {
-                fw = new FormWorker();
+				fw = new FormWorker(() => new ProgressBarWithLabelUiImpl());
                 fw.setupUi(new FormWorkerUi(fw));
                 fw.getUi().setTitle(_("Synthesize"));
                 fw.getUi().setText(_("now synthesizing..."));
@@ -10855,7 +10855,7 @@ namespace cadencii
 
             FormWorker fs = null;
             try {
-                fs = new FormWorker();
+				fs = new FormWorker(() => new ProgressBarWithLabelUiImpl());
                 fs.setupUi(new FormWorkerUi(fs));
                 fs.getUi().setTitle(_("Synthesize"));
                 fs.getUi().setText(_("now synthesizing..."));
@@ -13191,7 +13191,7 @@ namespace cadencii
         {
             if (e.Button == MouseButtons.Middle) {
                 // ツールをポインター <--> 鉛筆に切り替える
-                if (e.Y < trackSelector.getHeight() - TrackSelectorImpl.OFFSET_TRACK_TAB * 2) {
+                if (e.Y < trackSelector.Height - TrackSelectorImpl.OFFSET_TRACK_TAB * 2) {
                     if (EditorManager.SelectedTool == EditTool.ARROW) {
                         EditorManager.SelectedTool = (EditTool.PENCIL);
                     } else {
@@ -14134,8 +14134,8 @@ namespace cadencii
         public void trackSelector_MouseClick(Object sender, NMouseEventArgs e)
         {
             if (e.Button == NMouseButtons.Right) {
-                if (AppManager.keyWidth < e.X && e.X < trackSelector.getWidth()) {
-                    if (trackSelector.getHeight() - TrackSelectorImpl.OFFSET_TRACK_TAB <= e.Y && e.Y <= trackSelector.getHeight()) {
+                if (AppManager.keyWidth < e.X && e.X < trackSelector.Width) {
+                    if (trackSelector.Height - TrackSelectorImpl.OFFSET_TRACK_TAB <= e.Y && e.Y <= trackSelector.Height) {
                         cMenuTrackTab.Show((Control)trackSelector.Native, e.X, e.Y);
                     } else {
                         cMenuTrackSelector.Show((Control)trackSelector, e.X, e.Y);
@@ -14149,7 +14149,7 @@ namespace cadencii
             if (e.Button == NMouseButtons.Middle) {
                 // ツールをポインター <--> 鉛筆に切り替える
                 if (AppManager.keyWidth < e.X &&
-                     e.Y < trackSelector.getHeight() - TrackSelectorImpl.OFFSET_TRACK_TAB * 2) {
+                     e.Y < trackSelector.Height - TrackSelectorImpl.OFFSET_TRACK_TAB * 2) {
                     if (EditorManager.SelectedTool == EditTool.ARROW) {
                         EditorManager.SelectedTool = (EditTool.PENCIL);
                     } else {
@@ -14191,7 +14191,7 @@ namespace cadencii
                 }
                 return;
             }
-            int parent_width = ((TrackSelector)sender).getWidth();
+            int parent_width = ((TrackSelector)sender).Width;
             if (mEditCurveMode == CurveEditMode.MIDDLE_DRAG) {
                 if (AppManager.isPlaying()) {
                     return;

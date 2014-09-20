@@ -22,8 +22,22 @@ using System.Windows.Forms;
 namespace cadencii
 {
 
-    public class ProgressBarWithLabelUi : UserControl
+    public class ProgressBarWithLabelUiImpl : UserControl, ProgressBarWithLabelUi
     {
+		object UiControl.Native {
+			get { return this; }
+		}
+
+		cadencii.java.awt.Padding UiControl.Margin {
+			get { return new cadencii.java.awt.Padding (Margin.All); }
+			set { this.Margin = new Padding (value.All); }
+		}
+
+		cadencii.java.awt.DockStyle UiControl.Dock {
+			get { return (cadencii.java.awt.DockStyle)this.Dock; }
+			set { Dock = (DockStyle)value; }
+		}
+
         private ProgressBar progressBar1;
         private Label label1;
         /// <summary>
@@ -31,7 +45,7 @@ namespace cadencii
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        public ProgressBarWithLabelUi()
+        public ProgressBarWithLabelUiImpl()
         {
             InitializeComponent();
         }
@@ -41,27 +55,24 @@ namespace cadencii
             this.Width = value;
         }
 
-        public void setText(string value)
-        {
-            label1.Text = value;
-        }
+        public string Text {
+			get { return label1.Text; }
+			set { label1.Text = value; }
+		}
 
-        public string getText()
-        {
-            return label1.Text;
-        }
+	public int Progress {
+			set {
+				if (value < progressBar1.Minimum)
+					value = progressBar1.Minimum;
+				if (progressBar1.Maximum < value)
+					value = progressBar1.Maximum;
+				progressBar1.Value = value;
+			}
 
-        public void setProgress(int value)
-        {
-            if (value < progressBar1.Minimum) value = progressBar1.Minimum;
-            if (progressBar1.Maximum < value) value = progressBar1.Maximum;
-            progressBar1.Value = value;
-        }
-
-        public int getProgress()
-        {
-            return progressBar1.Value;
-        }
+			get {
+				return progressBar1.Value;
+			}
+		}
 
         /// <summary>
         /// 使用中のリソースをすべてクリーンアップします。

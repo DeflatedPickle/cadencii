@@ -31,7 +31,7 @@ namespace cadencii
         public void setWidth(int value)
         {
             if (ptrUi == null) return;
-            ptrUi.setWidth(value);
+            ptrUi.Width = value;
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace cadencii
             if (ptrUi == null) {
                 return;
             }
-            ptrUi.setText(value);
+            ptrUi.Text = value;
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace cadencii
             if (ptrUi == null) {
                 return "";
             }
-            return ptrUi.getText();
+            return ptrUi.Text;
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace cadencii
         public void setProgress(int value)
         {
             if (ptrUi == null) return;
-            ptrUi.setProgress(value);
+            ptrUi.Progress = value;
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace cadencii
             if (ptrUi == null) {
                 return 0;
             }
-            return ptrUi.getProgress();
+            return ptrUi.Progress;
         }
     };
 

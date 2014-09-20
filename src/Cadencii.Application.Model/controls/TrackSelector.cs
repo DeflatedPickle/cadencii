@@ -4,15 +4,6 @@ using cadencii.vsq;
 
 namespace cadencii
 {
-	public interface UiControl
-	{
-		object Native { get; }
-		Padding Margin { get; set; }
-		string Name { get; set; }
-		int TabIndex { get; set; }
-		DockStyle Dock { get; set; }
-	}
-
 	public interface TrackSelector : UiControl
 	{
 		void updateVisibleCurves ();
@@ -27,10 +18,6 @@ namespace cadencii
 
 		Object getParent ();
 
-		string getName ();
-
-		void setName (string value);
-
 		cadencii.java.awt.Point getLocationOnScreen ();
 
 		cadencii.java.awt.Point getLocation ();
@@ -40,10 +27,6 @@ namespace cadencii
 		void setLocation (cadencii.java.awt.Point p);
 
 		cadencii.java.awt.Rectangle getBounds ();
-
-		int getWidth ();
-
-		int getHeight ();
 
 		cadencii.java.awt.Dimension getSize ();
 
