@@ -218,9 +218,6 @@
     <Compile Include="controls\WaveView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="controls\PropertyPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="controls\PropertyPanelContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -316,6 +313,9 @@
       <DependentUpon>TrackSelectorImpl.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Compile Include="ui\controls\PropertyPanelImpl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />

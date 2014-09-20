@@ -6,6 +6,7 @@ using System.Reflection;
 using cadencii.vsq;
 using cadencii.java.awt;
 using cadencii.xml;
+using cadencii.utau;
 
 namespace cadencii
 {
@@ -887,6 +888,49 @@ namespace cadencii
 		}
 
 		#endregion
+
+		/// <summary>
+		/// 位置クオンタイズ時の音符の最小単位を、クロック数に換算したものを取得します
+		/// </summary>
+		/// <returns></returns>
+		public static int getPositionQuantizeClock ()
+		{
+			return QuantizeModeUtil.getQuantizeClock (EditorManager.editorConfig.getPositionQuantize (), EditorManager.editorConfig.isPositionQuantizeTriplet ());
+		}
+
+		/// <summary>
+		/// 音符長さクオンタイズ時の音符の最小単位を、クロック数に換算したものを取得します
+		/// </summary>
+		/// <returns></returns>
+		public static int getLengthQuantizeClock ()
+		{
+			return QuantizeModeUtil.getQuantizeClock (EditorManager.editorConfig.getLengthQuantize (), EditorManager.editorConfig.isLengthQuantizeTriplet ());
+		}
+
+		/// <summary>
+		/// utauVoiceDBフィールドのリストを一度クリアし，
+		/// editorConfig.Utausingersの情報を元に最新の情報に更新します
+		/// </summary>
+		public static void reloadUtauVoiceDB ()
+		{
+			UtauWaveGenerator.mUtauVoiceDB.Clear ();
+			foreach (var config in ApplicationGlobal.appConfig.UtauSingers) {
+				// 通常のUTAU音源
+				UtauVoiceDB db = null;
+				try {
+					db = new UtauVoiceDB (config);
+				} catch (Exception ex) {
+					serr.println ("AppManager#reloadUtauVoiceDB; ex=" + ex);
+					db = null;
+					Logger.write (typeof(EditorManager) + ".reloadUtauVoiceDB; ex=" + ex + "\n");
+				}
+				if (db != null) {
+					UtauWaveGenerator.mUtauVoiceDB [config.VOICEIDSTR] = db;
+				}
+			}
+		}
+
+		public static bool IsPreviewRepeatMode { get; set; }
 	}
 }
 

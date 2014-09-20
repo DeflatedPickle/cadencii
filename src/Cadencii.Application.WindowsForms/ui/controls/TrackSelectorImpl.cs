@@ -1312,7 +1312,7 @@ namespace cadencii
 
                     #region 小節ごとのライン
                     if (vsq != null) {
-                        int dashed_line_step = AppManager.getPositionQuantizeClock();
+                        int dashed_line_step = EditorManager.getPositionQuantizeClock();
                         g.clipRect(key_width, HEADER, size.width - key_width, size.height - 2 * OFFSET_TRACK_TAB);
                         Color white100 = new Color(0, 0, 0, 100);
                         for (Iterator<VsqBarLineType> itr = vsq.getBarLineIterator(AppManager.clockFromXCoord(width)); itr.hasNext(); ) {
@@ -3230,7 +3230,7 @@ namespace cadencii
                             selected_tool == EditTool.ERASER) {
                     int draft_clock = clock;
                     if (EditorManager.editorConfig.CurveSelectingQuantized) {
-                        int unit = AppManager.getPositionQuantizeClock();
+                        int unit = EditorManager.getPositionQuantizeClock();
                         int odd = clock % unit;
                         int nclock = clock;
                         nclock -= odd;
@@ -3449,7 +3449,7 @@ namespace cadencii
 
             int clock = AppManager.clockFromXCoord(e.X);
             int quantized_clock = clock;
-            int unit = AppManager.getPositionQuantizeClock();
+            int unit = EditorManager.getPositionQuantizeClock();
             int odd = clock % unit;
             quantized_clock -= odd;
             if (odd > unit / 2) {
@@ -3631,7 +3631,7 @@ namespace cadencii
                     if (e.Button == MouseButtons.Left && !mSpaceKeyDowned) {
                         mMouseDownMode = MouseDownMode.CURVE_EDIT;
                         int quantized_clock = clock;
-                        int unit = AppManager.getPositionQuantizeClock();
+                        int unit = EditorManager.getPositionQuantizeClock();
                         int odd = clock % unit;
                         quantized_clock -= odd;
                         if (odd > unit / 2) {

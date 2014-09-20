@@ -417,7 +417,7 @@ namespace cadencii
                     g.clipRect(key_width, 0, width - key_width, height);
                     #region 小節ごとの線
                     if (vsq != null) {
-                        int dashed_line_step = AppManager.getPositionQuantizeClock();
+                        int dashed_line_step = EditorManager.getPositionQuantizeClock();
                         for (Iterator<VsqBarLineType> itr = vsq.getBarLineIterator(AppManager.clockFromXCoord(width)); itr.hasNext(); ) {
                             VsqBarLineType blt = itr.next();
                             int local_clock_step = 1920 / blt.getLocalDenominator();

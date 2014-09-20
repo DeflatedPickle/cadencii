@@ -224,7 +224,6 @@ namespace cadencii
 
         private static int mCurrentClock = 0;
         private static bool mPlaying = false;
-        private static bool mRepeatMode = false;
         private static bool mGridVisible = false;
         private static EditMode mEditMode = EditMode.NONE;
         /// <summary>
@@ -1428,23 +1427,6 @@ namespace cadencii
         }
 
         /// <summary>
-        /// 現在のプレビューがリピートモードであるかどうかを表す値を取得します
-        /// </summary>
-        public static bool isRepeatMode()
-        {
-            return mRepeatMode;
-        }
-
-        /// <summary>
-        /// 現在のプレビューがリピートモードかどうかを設定します
-        /// </summary>
-        /// <param name="value"></param>
-        public static void setRepeatMode(bool value)
-        {
-            mRepeatMode = value;
-        }
-
-        /// <summary>
         /// 現在プレビュー中かどうかを示す値を取得します
         /// </summary>
         public static bool isPlaying()
@@ -1537,36 +1519,36 @@ namespace cadencii
 		{
 			EditorManager.Selected = 1;
 			return MusicManager.readVsq (file, hasTracks => {
-	    if (hasTracks) {
+				if (hasTracks) {
 					EditorManager.Selected = 1;
-            } else {
+				} else {
 					EditorManager.Selected = -1;
-            }
-            try {
-                if (UpdateBgmStatusRequired != null) {
-                    UpdateBgmStatusRequired.Invoke(typeof(AppManager), new EventArgs());
-                }
-            } catch (Exception ex) {
-                Logger.write(typeof(AppManager) + ".readVsq; ex=" + ex + "\n");
-                serr.println(typeof(AppManager) + ".readVsq; ex=" + ex);
-            }
+				}
+				try {
+					if (UpdateBgmStatusRequired != null) {
+						UpdateBgmStatusRequired.Invoke (typeof(AppManager), new EventArgs ());
+					}
+				} catch (Exception ex) {
+					Logger.write (typeof(AppManager) + ".readVsq; ex=" + ex + "\n");
+					serr.println (typeof(AppManager) + ".readVsq; ex=" + ex);
+				}
 			});
 		}
 
 		public static void setVsqFile (VsqFileEx vsq)
 		{
 			MusicManager.setVsqFile (vsq, preMeasureClocks => {
-			mAutoBackupTimer.Stop();
-            setCurrentClock(preMeasureClocks);
-            try {
-                if (UpdateBgmStatusRequired != null) {
-                    UpdateBgmStatusRequired.Invoke(typeof(AppManager), new EventArgs());
-                }
-            } catch (Exception ex) {
-                Logger.write(typeof(AppManager) + ".setVsqFile; ex=" + ex + "\n");
-                serr.println(typeof(AppManager) + ".setVsqFile; ex=" + ex);
-            }
-});
+				mAutoBackupTimer.Stop ();
+				setCurrentClock (preMeasureClocks);
+				try {
+					if (UpdateBgmStatusRequired != null) {
+						UpdateBgmStatusRequired.Invoke (typeof(AppManager), new EventArgs ());
+					}
+				} catch (Exception ex) {
+					Logger.write (typeof(AppManager) + ".setVsqFile; ex=" + ex + "\n");
+					serr.println (typeof(AppManager) + ".setVsqFile; ex=" + ex);
+				}
+			});
 		}
 
         public static void init()
@@ -1713,51 +1695,10 @@ namespace cadencii
                 serr.println("AppManager#init; ex=" + ex);
             }
 
-            reloadUtauVoiceDB();
+            EditorManager.reloadUtauVoiceDB();
 
             mAutoBackupTimer = new System.Windows.Forms.Timer();
             mAutoBackupTimer.Tick += new EventHandler(handleAutoBackupTimerTick);
-        }
-
-        /// <summary>
-        /// utauVoiceDBフィールドのリストを一度クリアし，
-        /// editorConfig.Utausingersの情報を元に最新の情報に更新します
-        /// </summary>
-        public static void reloadUtauVoiceDB()
-        {
-            UtauWaveGenerator.mUtauVoiceDB.Clear();
-			foreach (var config in ApplicationGlobal.appConfig.UtauSingers) {
-                // 通常のUTAU音源
-                UtauVoiceDB db = null;
-                try {
-                    db = new UtauVoiceDB(config);
-                } catch (Exception ex) {
-                    serr.println("AppManager#reloadUtauVoiceDB; ex=" + ex);
-                    db = null;
-                    Logger.write(typeof(AppManager) + ".reloadUtauVoiceDB; ex=" + ex + "\n");
-                }
-                if (db != null) {
-                    UtauWaveGenerator.mUtauVoiceDB[config.VOICEIDSTR] = db;
-                }
-            }
-        }
-
-        /// <summary>
-        /// 位置クオンタイズ時の音符の最小単位を、クロック数に換算したものを取得します
-        /// </summary>
-        /// <returns></returns>
-        public static int getPositionQuantizeClock()
-        {
-			return QuantizeModeUtil.getQuantizeClock(EditorManager.editorConfig.getPositionQuantize(), EditorManager.editorConfig.isPositionQuantizeTriplet());
-        }
-
-        /// <summary>
-        /// 音符長さクオンタイズ時の音符の最小単位を、クロック数に換算したものを取得します
-        /// </summary>
-        /// <returns></returns>
-        public static int getLengthQuantizeClock()
-        {
-			return QuantizeModeUtil.getQuantizeClock(EditorManager.editorConfig.getLengthQuantize(), EditorManager.editorConfig.isLengthQuantizeTriplet());
         }
     }
 

@@ -1165,7 +1165,7 @@ namespace cadencii
                             Utau.readUtauSingerConfig(path, sc);
                             ApplicationGlobal.appConfig.UtauSingers.Add(sc);
                         }
-                        AppManager.reloadUtauVoiceDB();
+                        EditorManager.reloadUtauVoiceDB();
                     }
                 }
             } catch (Exception ex) {
@@ -4941,7 +4941,7 @@ namespace cadencii
         public void pasteEvent()
         {
             int clock = AppManager.getCurrentClock();
-            int unit = AppManager.getPositionQuantizeClock();
+            int unit = EditorManager.getPositionQuantizeClock();
             clock = doQuantize(clock, unit);
 
             VsqCommand add_event = null; // VsqEventを追加するコマンド
@@ -6389,7 +6389,7 @@ namespace cadencii
                 VsqFileEx vsq = MusicManager.getVsqFile();
 
                 #region 小節ごとの線
-                int dashed_line_step = AppManager.getPositionQuantizeClock();
+                int dashed_line_step = EditorManager.getPositionQuantizeClock();
                 for (Iterator<VsqBarLineType> itr = vsq.getBarLineIterator(AppManager.clockFromXCoord(width)); itr.hasNext(); ) {
                     VsqBarLineType blt = itr.next();
                     int local_clock_step = 480 * 4 / blt.getLocalDenominator();
@@ -7609,7 +7609,7 @@ namespace cadencii
             if (e.Button == MouseButtons.Left) {
                 // 必要な操作が何も無ければ，クリック位置にソングポジションを移動
                 if (EditorManager.keyWidth < e.X) {
-                    int clock = doQuantize(AppManager.clockFromXCoord(e.X), AppManager.getPositionQuantizeClock());
+                    int clock = doQuantize(AppManager.clockFromXCoord(e.X), EditorManager.getPositionQuantizeClock());
                     AppManager.setCurrentClock(clock);
                 }
             } else if (e.Button == MouseButtons.Middle) {
@@ -7718,7 +7718,7 @@ namespace cadencii
                     AppManager.itemSelection.clearPoint();
                     int startClock = AppManager.clockFromXCoord(e.X);
                     if (EditorManager.editorConfig.CurveSelectingQuantized) {
-                        int unit = AppManager.getPositionQuantizeClock();
+                        int unit = EditorManager.getPositionQuantizeClock();
                         startClock = doQuantize(startClock, unit);
                     }
                     AppManager.mWholeSelectedInterval = new SelectedRegion(startClock);
@@ -7786,7 +7786,7 @@ namespace cadencii
                                 }
                                 int note = AppManager.noteFromYCoord(e.Y);
                                 AppManager.itemSelection.clearEvent();
-                                int unit = AppManager.getPositionQuantizeClock();
+                                int unit = EditorManager.getPositionQuantizeClock();
                                 int new_clock = doQuantize(clock, unit);
                                 AppManager.mAddingEvent = new VsqEvent(new_clock, new VsqID(0));
                                 // デフォルトの歌唱スタイルを適用する
@@ -8158,7 +8158,7 @@ namespace cadencii
                     if (EditorManager.IsWholeSelectedIntervalEnabled) {
                         int endClock = AppManager.clockFromXCoord(e.X);
 						if (EditorManager.editorConfig.CurveSelectingQuantized) {
-                            int unit = AppManager.getPositionQuantizeClock();
+                            int unit = EditorManager.getPositionQuantizeClock();
                             endClock = doQuantize(endClock, unit);
                         }
                         AppManager.mWholeSelectedInterval.setEnd(endClock);
@@ -8265,7 +8265,7 @@ namespace cadencii
                     return;
                 } else if (edit_mode == EditMode.ADD_ENTRY) {
                     #region ADD_ENTRY
-                    int unit = AppManager.getLengthQuantizeClock();
+                    int unit = EditorManager.getLengthQuantizeClock();
                     int length = clock - AppManager.mAddingEvent.Clock;
                     int odd = length % unit;
                     int new_length = length - odd;
@@ -8298,7 +8298,7 @@ namespace cadencii
                         int dclock = tclock - clock_init;
 
                         if (EditorManager.editorConfig.getPositionQuantize() != QuantizeMode.off) {
-                            int unit = AppManager.getPositionQuantizeClock();
+                            int unit = EditorManager.getPositionQuantizeClock();
                             int new_clock = doQuantize(original.Clock + dclock, unit);
                             dclock = new_clock - clock_init;
                         }
@@ -8315,7 +8315,7 @@ namespace cadencii
                     #endregion
                 } else if (edit_mode == EditMode.EDIT_LEFT_EDGE) {
                     #region EditLeftEdge
-                    int unit = AppManager.getLengthQuantizeClock();
+                    int unit = EditorManager.getLengthQuantizeClock();
                     VsqEvent original = AppManager.itemSelection.getLastEvent().original;
                     int clock_init = original.Clock;
                     int dclock = clock - clock_init;
@@ -8337,7 +8337,7 @@ namespace cadencii
                     #endregion
                 } else if (edit_mode == EditMode.EDIT_RIGHT_EDGE) {
                     #region EditRightEdge
-                    int unit = AppManager.getLengthQuantizeClock();
+                    int unit = EditorManager.getLengthQuantizeClock();
 
                     VsqEvent original = AppManager.itemSelection.getLastEvent().original;
                     int dlength = clock - (original.Clock + original.ID.getLength());
@@ -8360,7 +8360,7 @@ namespace cadencii
                 } else if (edit_mode == EditMode.ADD_FIXED_LENGTH_ENTRY) {
                     #region AddFixedLengthEntry
                     int note = AppManager.noteFromYCoord(e.Y);
-                    int unit = AppManager.getPositionQuantizeClock();
+                    int unit = EditorManager.getPositionQuantizeClock();
                     int new_clock = doQuantize(AppManager.clockFromXCoord(e.X), unit);
                     AppManager.mAddingEvent.ID.Note = note;
                     AppManager.mAddingEvent.Clock = new_clock;
@@ -8392,7 +8392,7 @@ namespace cadencii
                 } else if (edit_mode == EditMode.DRAG_DROP) {
                     #region DRAG_DROP
                     // クオンタイズの処理
-                    int unit = AppManager.getPositionQuantizeClock();
+                    int unit = EditorManager.getPositionQuantizeClock();
                     int clock1 = doQuantize(clock, unit);
                     int note = AppManager.noteFromYCoord(e.Y);
                     AppManager.mAddingEvent.Clock = clock1;
@@ -9467,7 +9467,7 @@ namespace cadencii
             int clock1 = AppManager.clockFromXCoord(x);
 
             // クオンタイズの処理
-            int unit = AppManager.getPositionQuantizeClock();
+            int unit = EditorManager.getPositionQuantizeClock();
             int clock = doQuantize(clock1, unit);
 
             int note = AppManager.noteFromYCoord(y);
@@ -12003,7 +12003,7 @@ namespace cadencii
                     foreach (var sc in mDialogPreference.getUtausingers()) {
                         ApplicationGlobal.appConfig.UtauSingers.Add((SingerConfig)sc.clone());
                     }
-                    AppManager.reloadUtauVoiceDB();
+                    EditorManager.reloadUtauVoiceDB();
 
                     EditorManager.editorConfig.SelfDeRomanization = mDialogPreference.isSelfDeRomantization();
                     EditorManager.editorConfig.AutoBackupIntervalMinutes = mDialogPreference.getAutoBackupIntervalMinutes();
@@ -13273,7 +13273,7 @@ namespace cadencii
             if (e.Button == MouseButtons.Right && 0 < e.Y && e.Y <= 18 && EditorManager.keyWidth < e.X) {
                 // クリックされた位置でのクロックを保存
                 int clock = AppManager.clockFromXCoord(e.X);
-                int unit = AppManager.getPositionQuantizeClock();
+                int unit = EditorManager.getPositionQuantizeClock();
                 clock = doQuantize(clock, unit);
                 if (clock < 0) {
                     clock = 0;
@@ -13797,7 +13797,7 @@ namespace cadencii
                         #region マーカー位置の変更
                         int clock = AppManager.clockFromXCoord(e.X);
                         if (EditorManager.editorConfig.getPositionQuantize() != QuantizeMode.off) {
-                            int unit = AppManager.getPositionQuantizeClock();
+                            int unit = EditorManager.getPositionQuantizeClock();
                             clock = doQuantize(clock, unit);
                         }
                         if (AppManager.isPlaying()) {
@@ -13945,7 +13945,7 @@ namespace cadencii
             VsqFileEx vsq = MusicManager.getVsqFile();
             if (mPositionIndicatorMouseDownMode == PositionIndicatorMouseDownMode.TEMPO) {
                 int clock = AppManager.clockFromXCoord(e.X) - mTempoDraggingDeltaClock;
-                int step = AppManager.getPositionQuantizeClock();
+                int step = EditorManager.getPositionQuantizeClock();
                 clock = doQuantize(clock, step);
                 int last_clock = AppManager.itemSelection.getLastTempoClock();
                 int dclock = clock - last_clock;
@@ -13966,7 +13966,7 @@ namespace cadencii
                 picturePositionIndicator.Refresh();
             } else if (mPositionIndicatorMouseDownMode == PositionIndicatorMouseDownMode.MARK_START) {
                 int clock = AppManager.clockFromXCoord(e.X);
-                int unit = AppManager.getPositionQuantizeClock();
+                int unit = EditorManager.getPositionQuantizeClock();
                 clock = doQuantize(clock, unit);
                 if (clock < 0) {
                     clock = 0;
@@ -13984,7 +13984,7 @@ namespace cadencii
                 refreshScreen();
             } else if (mPositionIndicatorMouseDownMode == PositionIndicatorMouseDownMode.MARK_END) {
                 int clock = AppManager.clockFromXCoord(e.X);
-                int unit = AppManager.getPositionQuantizeClock();
+                int unit = EditorManager.getPositionQuantizeClock();
                 clock = doQuantize(clock, unit);
                 if (clock < 0) {
                     clock = 0;
@@ -15205,7 +15205,7 @@ namespace cadencii
         public void stripBtnLoop_CheckedChanged(Object sender, EventArgs e)
         {
             bool pushed = stripBtnLoop.Pushed;
-            AppManager.setRepeatMode(pushed);
+            EditorManager.IsPreviewRepeatMode = pushed;
             focusPianoRoll();
         }
 
@@ -15495,7 +15495,7 @@ namespace cadencii
                     ensureCursorVisible();
                 }
                 refreshScreen(true);
-                if (AppManager.isRepeatMode()) {
+                if (EditorManager.IsPreviewRepeatMode) {
                     int dest_clock = 0;
                     VsqFileEx vsq = MusicManager.getVsqFile();
                     if (vsq.config.StartMarkerEnabled) {
@@ -16493,7 +16493,7 @@ namespace cadencii
             int note = (0xff & data[1]);
 
             int clock = AppManager.getCurrentClock();
-            int unit = AppManager.getPositionQuantizeClock();
+            int unit = EditorManager.getPositionQuantizeClock();
             if (unit > 1) {
                 clock = doQuantize(clock, unit);
             }
