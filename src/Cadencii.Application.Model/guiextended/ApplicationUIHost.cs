@@ -19,6 +19,8 @@ namespace cadencii
 		}
 
 		public abstract Dialogs Dialogs { get; }
+
+		public abstract Clipboard Clipboard { get; }
 	}
 }
 

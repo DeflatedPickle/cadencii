@@ -54,9 +54,7 @@ Projects / Assemblies
 Milestones
 ----------
 
-- ClipboardModel needs to be plat-neutral.
-- PropertyPanel needs to be plat-neutral.
-  - then ItemSelectionModel can be moved too.
+- Move most of the AppManager methods to EditorManager.
 - Move some more forms to platform agnostic application model dll.
 - Move controls to (ditto).
 - Reduce Win32-ism.

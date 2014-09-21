@@ -19,7 +19,6 @@ namespace cadencii
     using System;
     using cadencii.vsq;
     using cadencii.java.util;
-    using System.Windows.Forms;
 
     /// <summary>
     /// クリップボードを管理するクラスです．
@@ -107,7 +106,7 @@ namespace cadencii
                     }
                     setClipboardText( clip );
 #else
-            Clipboard.SetDataObject(item, false);
+            ApplicationUIHost.Instance.Clipboard.SetDataObject(item, false);
 #endif
         }
 
@@ -165,7 +164,7 @@ namespace cadencii
                 sout.println("ClipboardModel#setClipboard; ex=" + ex);
             }
 #endif // DEBUG
-            Clipboard.SetDataObject(ce, false);
+            ApplicationUIHost.Instance.Clipboard.SetDataObject(ce, false);
 #endif // CLIPBOARD_AS_TEXT
         }
 
@@ -194,13 +193,7 @@ namespace cadencii
                         }
                     }
 #else
-            IDataObject dobj = Clipboard.GetDataObject();
-            if (dobj != null) {
-                Object obj = dobj.GetData(typeof(ClipboardEntry));
-                if (obj != null && obj is ClipboardEntry) {
-                    ce = (ClipboardEntry)obj;
-                }
-            }
+            ce = ApplicationUIHost.Instance.Clipboard.GetDataObject();
 #endif
             if (ce == null) {
                 ce = new ClipboardEntry();
@@ -275,12 +268,12 @@ namespace cadencii
 
         public static void setClipboardText(string value)
         {
-            System.Windows.Forms.Clipboard.SetText(value);
+            ApplicationUIHost.Instance.Clipboard.SetText(value);
         }
 
         public static string getClipboardText()
         {
-            return System.Windows.Forms.Clipboard.GetText();
+		return ApplicationUIHost.Instance.Clipboard.GetText();
         }
     }
 

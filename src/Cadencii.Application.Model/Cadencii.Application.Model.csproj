@@ -161,6 +161,8 @@
     <Compile Include="RunGeneratorQueue.cs" />
     <Compile Include="forms\FormMixerUi.cs" />
     <Compile Include="controls\VolumeTracker.cs" />
+    <Compile Include="guiextended\Clipboard.cs" />
+    <Compile Include="ClipboardModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
