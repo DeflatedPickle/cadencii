@@ -13,6 +13,28 @@ namespace cadencii
 		DockStyle Dock { get; set; }
 		int Width { get; set; }
 		int Height { get; set; }
+		void Dispose ();
+
+		Color BackColor { get; set; }
+
+		Point Location { get; set; }
+
+		Size Size { get; set; }
+
+		BorderStyle BorderStyle { get; set; }
+
+
+		void Refresh ();
+        
+		event KeyEventHandler PreviewKeyDown;
+		event KeyEventHandler KeyUp;
+		event KeyEventHandler KeyDown;
+		event MouseEventHandler MouseClick;
+		event MouseEventHandler MouseDoubleClick;
+		event MouseEventHandler MouseDown;
+		event MouseEventHandler MouseUp;
+		event MouseEventHandler MouseMove;
+		event MouseEventHandler MouseWheel;
 	}
 	
 }

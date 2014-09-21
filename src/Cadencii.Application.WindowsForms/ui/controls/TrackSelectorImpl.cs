@@ -43,7 +43,7 @@ namespace cadencii
     /// <summary>
     /// コントロールカーブ，トラックの一覧，歌手変更イベントなどを表示するコンポーネント．
     /// </summary>
-    public class TrackSelectorImpl : UserControl, TrackSelector
+    public class TrackSelectorImpl : UserControlImpl, TrackSelector
     {
 		static MouseEventArgs ToWF (NMouseEventArgs e)
 		{
@@ -53,16 +53,6 @@ namespace cadencii
 		static NMouseEventArgs ToAwt (MouseEventArgs e)
 		{
 			return new NMouseEventArgs ((NMouseButtons) e.Button, e.Clicks, e.X, e.Y, e.Delta);
-		}
-
-		cadencii.java.awt.Padding UiControl.Margin {
-			get { return new cadencii.java.awt.Padding (this.Margin.All); }
-			set { this.Margin = new System.Windows.Forms.Padding (value.All); }
-		}
-
-		cadencii.java.awt.DockStyle UiControl.Dock {
-			set { this.Dock = (System.Windows.Forms.DockStyle) value; }
-			get { return (cadencii.java.awt.DockStyle)this.Dock; }
 		}
 
 		BezierPoint TrackSelector.HandleMouseMoveForBezierMove (cadencii.java.awt.MouseEventArgs e, BezierPickedSide picked)
@@ -75,62 +65,14 @@ namespace cadencii
 			mEditingPointID = id;
 		}
 
-		event cadencii.java.awt.KeyEventHandler TrackSelector.PreviewKeyDown {
-			add { this.PreviewKeyDown += (object sender, PreviewKeyDownEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
-			remove { this.PreviewKeyDown -= (object sender, PreviewKeyDownEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
-		}
-
-		event cadencii.java.awt.KeyEventHandler TrackSelector.KeyUp {
-			add { this.KeyUp += (object sender, KeyEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
-			remove { this.KeyUp -= (object sender, KeyEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
-		}
-
-		event cadencii.java.awt.KeyEventHandler TrackSelector.KeyDown {
-			add { this.KeyDown += (object sender, KeyEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
-			remove { this.KeyDown -= (object sender, KeyEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
-		}
-
-		event cadencii.java.awt.MouseEventHandler TrackSelector.MouseClick {
-			add { this.MouseClick += (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
-			remove { this.MouseClick -= (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
-		}
-
-		event cadencii.java.awt.MouseEventHandler TrackSelector.MouseDoubleClick {
-			add { this.MouseDoubleClick += (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
-			remove { this.MouseDoubleClick -= (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
-		}
-
-		event cadencii.java.awt.MouseEventHandler TrackSelector.MouseDown {
-			add { this.MouseDown += (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
-			remove { this.MouseDown -= (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
-		}
-
-		event cadencii.java.awt.MouseEventHandler TrackSelector.MouseUp {
-			add { this.MouseUp += (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
-			remove { this.MouseUp -= (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
-		}
-
-		event cadencii.java.awt.MouseEventHandler TrackSelector.MouseMove {
-			add { this.MouseMove += (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
-			remove { this.MouseMove -= (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
-		}
-		event cadencii.java.awt.MouseEventHandler TrackSelector.MouseWheel {
-			add { this.MouseWheel += (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
-			remove { this.MouseWheel -= (object sender, MouseEventArgs e) => value (sender, ToAwt (e)); }
-		}
-
 		void TrackSelector.onMouseDown (object sender, cadencii.java.awt.MouseEventArgs e)
 		{
-			onMouseDown (sender, new MouseEventArgs ((MouseButtons)e.Button, e.Clicks, e.X, e.Y, e.Delta));
+			onMouseDown (sender, ToWF (e));
 		}
 
 		void TrackSelector.onMouseUp (object sender, cadencii.java.awt.MouseEventArgs e)
 		{
-			onMouseUp (sender, new MouseEventArgs ((MouseButtons)e.Button, e.Clicks, e.X, e.Y, e.Delta));
-		}
-
-		object UiControl.Native {
-			get { return this; }
+			onMouseUp (sender, ToWF (e));
 		}
 
         #region constants and internal enums

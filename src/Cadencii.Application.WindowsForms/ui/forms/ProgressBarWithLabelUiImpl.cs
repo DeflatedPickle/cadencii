@@ -22,22 +22,8 @@ using System.Windows.Forms;
 namespace cadencii
 {
 
-    public class ProgressBarWithLabelUiImpl : UserControl, ProgressBarWithLabelUi
+    public class ProgressBarWithLabelUiImpl : UserControlImpl, ProgressBarWithLabelUi
     {
-		object UiControl.Native {
-			get { return this; }
-		}
-
-		cadencii.java.awt.Padding UiControl.Margin {
-			get { return new cadencii.java.awt.Padding (Margin.All); }
-			set { this.Margin = new Padding (value.All); }
-		}
-
-		cadencii.java.awt.DockStyle UiControl.Dock {
-			get { return (cadencii.java.awt.DockStyle)this.Dock; }
-			set { Dock = (DockStyle)value; }
-		}
-
         private ProgressBar progressBar1;
         private Label label1;
         /// <summary>

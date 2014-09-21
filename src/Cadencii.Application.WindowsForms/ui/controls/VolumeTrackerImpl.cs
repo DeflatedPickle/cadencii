@@ -26,41 +26,8 @@ using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
 namespace cadencii
 {
 
-    public class VolumeTrackerImpl : UserControl, VolumeTracker
+    public class VolumeTrackerImpl : UserControlImpl, VolumeTracker
     {
-		Color VolumeTracker.BackColor {
-			get { return BackColor.ToAwt (); }
-			set { BackColor = value.ToNative (); }
-		}
-
-		Point VolumeTracker.Location {
-			get { return new Point (Location.X, Location.Y); }
-			set { Location = new System.Drawing.Point (value.X, value.Y); }
-		}
-
-		cadencii.java.awt.Size VolumeTracker.Size {
-			get { return new cadencii.java.awt.Size (Size.Width, Size.Height); }
-			set { this.Size = new System.Drawing.Size (value.Width, value.Height); }
-		}
-
-		cadencii.java.awt.BorderStyle VolumeTracker.BorderStyle {
-			get { return (cadencii.java.awt.BorderStyle)BorderStyle; }
-			set { BorderStyle = (System.Windows.Forms.BorderStyle)value; }
-		}
-
-		object UiControl.Native {
-			get { return this; }
-		}
-
-		cadencii.java.awt.Padding UiControl.Margin {
-			get { return new cadencii.java.awt.Padding (Margin.All); }
-			set { Margin = new System.Windows.Forms.Padding (value.All); }
-		}
-
-		cadencii.java.awt.DockStyle UiControl.Dock {
-			get { return (cadencii.java.awt.DockStyle)Dock; }
-			set { Dock = (System.Windows.Forms.DockStyle)value; }
-		}
 
         private int mFeder = 0;
         private string m_number = "0";

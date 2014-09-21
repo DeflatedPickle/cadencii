@@ -204,9 +204,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="TestFormWorker.cs" />
-    <Compile Include="controls\VolumeTracker.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="controls\PictOverview.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -319,6 +316,10 @@
       <Link>ColorExtensions.cs</Link>
     </Compile>
     <Compile Include="ui\TimerWF.cs" />
+    <Compile Include="ui\controls\VolumeTrackerImpl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ui\controls\UserControlImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />

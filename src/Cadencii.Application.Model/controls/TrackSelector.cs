@@ -112,18 +112,6 @@ namespace cadencii
 		BezierPoint HandleMouseMoveForBezierMove(MouseEventArgs e, BezierPickedSide picked);
 		void setEditingPointID(int id);
 
-		void Refresh ();
-        
-		event KeyEventHandler PreviewKeyDown;
-		event KeyEventHandler KeyUp;
-		event KeyEventHandler KeyDown;
-		event MouseEventHandler MouseClick;
-		event MouseEventHandler MouseDoubleClick;
-		event MouseEventHandler MouseDown;
-		event MouseEventHandler MouseUp;
-		event MouseEventHandler MouseMove;
-		event MouseEventHandler MouseWheel;
-
 		/// <summary>
 		/// 最前面に表示するカーブの種類が変更されたとき発生するイベント．
 		/// </summary>

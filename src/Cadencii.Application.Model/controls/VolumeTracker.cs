@@ -10,16 +10,6 @@ namespace cadencii
 	}
 	public interface VolumeTracker : UiControl, IAmplifierView
 	{
-		void Dispose ();
-
-		Color BackColor { get; set; }
-
-		Point Location { get; set; }
-
-		Size Size { get; set; }
-
-		BorderStyle BorderStyle { get; set; }
-
 		int getTrack ();
 
 		void setLocation (int i, int i2);

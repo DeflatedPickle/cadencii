@@ -22,22 +22,8 @@ using cadencii.vsq;
 namespace cadencii
 {
 
-    public class PropertyPanelImpl : UserControl, PropertyPanel
+    public class PropertyPanelImpl : UserControlImpl, PropertyPanel
     {
-		object UiControl.Native {
-			get { return this; }
-		}
-
-		cadencii.java.awt.Padding UiControl.Margin {
-			get { return new cadencii.java.awt.Padding (this.Margin.All); }
-			set { this.Margin = new Padding (value.All); }
-		}
-
-		cadencii.java.awt.DockStyle UiControl.Dock {
-			get { return (cadencii.java.awt.DockStyle)this.Dock; }
-			set { this.Dock = (DockStyle)value; }
-		}
-
         public event CommandExecuteRequiredEventHandler CommandExecuteRequired;
         private List<SelectedEventEntry> m_items;
         private int m_track;
