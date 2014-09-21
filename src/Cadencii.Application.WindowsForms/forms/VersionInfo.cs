@@ -57,7 +57,7 @@ namespace cadencii
             if (this.components == null) {
                 this.components = new System.ComponentModel.Container();
             }
-            timer = new Timer(this.components);
+            timer = new System.Windows.Forms.Timer(this.components);
             m_version = version;
             m_app_name = app_name;
 

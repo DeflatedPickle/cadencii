@@ -59,8 +59,8 @@ namespace cadencii
                 }
 
 #if DEBUG
-                sout.println("AppManager#pathWorkToFreeze; wavePath=" + wavePath + "; queue.get( queueIndex.get( 0 ) ).file=" + queue[queueIndex[0]].file);
-                sout.println("AppManager#pathWorkToFreeze; queueIndex.size()=" + queueIndex.Count);
+                sout.println("EditorManager#pathWorkToFreeze; wavePath=" + wavePath + "; queue.get( queueIndex.get( 0 ) ).file=" + queue[queueIndex[0]].file);
+                sout.println("EditorManager#pathWorkToFreeze; queueIndex.size()=" + queueIndex.Count);
 #endif
                 if (queueIndex.Count == 1 && wavePath.Equals(queue[queueIndex[0]].file)) {
                     // 第trackトラック全体の合成を指示するキューだった場合．
@@ -115,14 +115,14 @@ namespace cadencii
                             }
                         } catch (Exception ex) {
                             Logger.write(typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex + "\n");
-                            serr.println("AppManager#patchWorkToFreeze; ex=" + ex);
+                            serr.println("EditorManager#patchWorkToFreeze; ex=" + ex);
                         } finally {
                             if (wr != null) {
                                 try {
                                     wr.close();
                                 } catch (Exception ex2) {
                                     Logger.write(typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex2 + "\n");
-                                    serr.println("AppManager#patchWorkToFreeze; ex2=" + ex2);
+                                    serr.println("EditorManager#patchWorkToFreeze; ex2=" + ex2);
                                 }
                             }
                         }
@@ -131,7 +131,7 @@ namespace cadencii
                             PortUtil.deleteFile(queue[i].file);
                         } catch (Exception ex) {
                             Logger.write(typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex + "\n");
-                            serr.println("AppManager#patchWorkToFreeze; ex=" + ex);
+                            serr.println("EditorManager#patchWorkToFreeze; ex=" + ex);
                         }
                     }
 
@@ -144,7 +144,7 @@ namespace cadencii
                         EditorManager.setRenderRequired(track, false);
                     } else {
                         // パッチワークの作成途中で，キャンセルされた
-                        // キャンセルされたやつ以降の範囲に、プログラムチェンジ17の歌手変更イベントを挿入する。→AppManager#detectTrackDifferenceに必ず検出してもらえる。
+                        // キャンセルされたやつ以降の範囲に、プログラムチェンジ17の歌手変更イベントを挿入する。→EditorManager#detectTrackDifferenceに必ず検出してもらえる。
                         VsqTrack copied = (VsqTrack)vsq_track.clone();
                         VsqEvent dumy = new VsqEvent();
                         dumy.ID.type = VsqIDType.Singer;
@@ -204,14 +204,14 @@ namespace cadencii
                     state.reportComplete();
                 } catch (Exception ex) {
                     Logger.write(typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex + "\n");
-                    serr.println("AppManager#patchWorkToFreeze; ex=" + ex);
+                    serr.println("EditorManager#patchWorkToFreeze; ex=" + ex);
                 } finally {
                     if (writer != null) {
                         try {
                             writer.close();
                         } catch (Exception ex2) {
                             Logger.write(typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex2 + "\n");
-                            serr.println("AppManager#patchWorkToFreeze; ex2=" + ex2);
+                            serr.println("EditorManager#patchWorkToFreeze; ex2=" + ex2);
                         }
                     }
                 }

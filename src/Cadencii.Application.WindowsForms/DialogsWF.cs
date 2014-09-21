@@ -25,7 +25,7 @@ namespace cadencii
 			BeforeShowDialog ();
 			bool ret = formWorker.getUi ().showDialogTo ((FormMain) mainWindow);
 #if DEBUG
-			sout.println ("AppManager#patchWorkToFreeze; showDialog returns " + ret);
+			sout.println ("EditorManager#patchWorkToFreeze; showDialog returns " + ret);
 #endif
 			AfterShowDialog ();
 
@@ -81,12 +81,12 @@ namespace cadencii
 			}
 
 			try {
-				if (AppManager.MainWindowFocusRequired != null) {
-					AppManager.MainWindowFocusRequired.Invoke (typeof(AppManager), new EventArgs ());
+				if (EditorManager.MainWindowFocusRequired != null) {
+					EditorManager.MainWindowFocusRequired.Invoke (typeof(EditorManager), new EventArgs ());
 				}
 			} catch (Exception ex) {
-				Logger.write (typeof(AppManager) + ".endShowDialog; ex=" + ex + "\n");
-				sout.println (typeof(AppManager) + ".endShowDialog; ex=" + ex);
+				Logger.write (typeof(EditorManager) + ".endShowDialog; ex=" + ex + "\n");
+				sout.println (typeof(EditorManager) + ".endShowDialog; ex=" + ex);
 			}
 			mShowingDialog = false;
 		}

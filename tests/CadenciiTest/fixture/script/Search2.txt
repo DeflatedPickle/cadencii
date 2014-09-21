@@ -20,23 +20,23 @@ public class Search2 {
 
             begin_count = true;
         } else {
-            selectedid = AppManager.getLastSelectedEvent().original.InternalID;
+            selectedid = EditorManager.getLastSelectedEvent().original.InternalID;
         }
         for ( Iterator<VsqEvent> itr = vsq.Track[track].getNoteEventIterator(); itr.hasNext(); ) {
             VsqEvent item = (VsqEvent)itr.next();
             if ( item.InternalID == selectedid ) {
                 begin_count = true;
-                if ( AppManager.isSelectedEventContains( track, item.InternalID ) ) {
-                    AppManager.removeSelectedEvent( item.InternalID );
+                if ( EditorManager.isSelectedEventContains( track, item.InternalID ) ) {
+                    EditorManager.removeSelectedEvent( item.InternalID );
                     continue;
                 }
             }
             if ( begin_count ) {
                 if ( item.ID.type == VsqIDType.Anote ) {
                     if ( item.ID.LyricHandle.L0.Phrase == sagasu  ) {
-                        AppManager.addSelectedEvent( item.InternalID );
-                        AppManager.setCurrentClock( item.Clock );
-                        AppManager.mainWindow.ensureCursorVisible();
+                        EditorManager.addSelectedEvent( item.InternalID );
+                        EditorManager.setCurrentClock( item.Clock );
+                        EditorManager.mainWindow.ensureCursorVisible();
                         break;
                     }
                 }

@@ -77,7 +77,7 @@ public class Utau_Plugin_Invoker : Form
     public static ScriptReturnStatus Edit(VsqFileEx vsq)
     {
         // 選択状態のアイテムがなければ戻る
-        if (AppManager.itemSelection.getEventCount() <= 0) {
+        if (EditorManager.itemSelection.getEventCount() <= 0) {
             return ScriptReturnStatus.NOT_EDITED;
         }
 
@@ -129,7 +129,7 @@ public class Utau_Plugin_Invoker : Form
         int clock_end = int.MinValue;
         int sel_start = 0;
         int sel_end = 0;
-        foreach (var item in AppManager.itemSelection.getEventIterator()) {
+        foreach (var item in EditorManager.itemSelection.getEventIterator()) {
             if (item.original.ID.type != VsqIDType.Anote) {
                 continue;
             }

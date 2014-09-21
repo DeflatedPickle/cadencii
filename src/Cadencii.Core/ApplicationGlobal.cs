@@ -7,7 +7,7 @@ namespace cadencii.core
 	{
 		static ApplicationGlobal ()
 		{
-			// from AppManager#init()
+			// from EditorManager#init()
 			#if !TREECOM
 			mID = PortUtil.getMD5FromString ((long)PortUtil.getCurrentTime () + "").Replace ("_", "");
 			mTempWaveDir = Path.Combine (getCadenciiTempDir (), mID);
@@ -62,7 +62,7 @@ namespace cadencii.core
         public static void setTempWaveDir(string value)
         {
 #if DEBUG
-            sout.println("AppManager#setTempWaveDir; before: \"" + mTempWaveDir + "\"");
+            sout.println("EditorManager#setTempWaveDir; before: \"" + mTempWaveDir + "\"");
             sout.println("                           after:  \"" + value + "\"");
 #endif
             mTempWaveDir = value;

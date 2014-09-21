@@ -203,8 +203,8 @@ namespace cadencii
             txtDataPointValue.Focus();
             txtDataPointValue.SelectAll();
 
-            AppManager.itemSelection.clearPoint();
-            AppManager.itemSelection.addPoint(m_curve, bp.id);
+            EditorManager.itemSelection.clearPoint();
+            EditorManager.itemSelection.addPoint(m_curve, bp.id);
             if (mMainWindow != null) {
                 mMainWindow.ensureVisible(clock);
                 mMainWindow.refreshScreen();
@@ -224,9 +224,9 @@ namespace cadencii
         public void handleUndoRedo_Click(Object sender, EventArgs e)
         {
             if (sender == btnUndo) {
-                AppManager.undo();
+                EditorManager.undo();
             } else if (sender == btnRedo) {
-                AppManager.redo();
+                EditorManager.redo();
             } else {
                 return;
             }
@@ -249,8 +249,8 @@ namespace cadencii
             btnForward3.Enabled = exists;
 
             if (exists) {
-                AppManager.itemSelection.clearPoint();
-                AppManager.itemSelection.addPoint(m_curve, m_editing_id);
+                EditorManager.itemSelection.clearPoint();
+                EditorManager.itemSelection.addPoint(m_curve, m_editing_id);
             }
 
             if (mMainWindow != null) {

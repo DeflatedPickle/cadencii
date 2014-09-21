@@ -82,7 +82,6 @@ namespace cadencii
     /// </summary>
     public class FormWorker : IFormWorkerControl
     {
-		private Func<ProgressBarWithLabelUi> createProgressBarWithLabelUi;
         private FormWorkerUi ptrUi = null;
         private List<ProgressBarWithLabel> mLabels;
         private mman mMemManager;
@@ -92,9 +91,8 @@ namespace cadencii
         /// <summary>
         /// コンストラクタ
         /// </summary>
-		public FormWorker(Func<ProgressBarWithLabelUi> createProgressBarWithLabelUi)
+	public FormWorker()
         {
-        this.createProgressBarWithLabelUi = createProgressBarWithLabelUi;
             mLabels = new List<ProgressBarWithLabel>();
             mMemManager = new mman();
             mArguments = new List<FormWorkerJobArgument>();
@@ -137,7 +135,7 @@ namespace cadencii
         public void addJob(Object obj, string method_name, string job_description, double job_amount, Object argument)
         {
             // プログレスバーのUIを作成
-            ProgressBarWithLabelUi ui = createProgressBarWithLabelUi ();
+		ProgressBarWithLabelUi ui = ApplicationUIHost.Create<ProgressBarWithLabelUi> ();
             ProgressBarWithLabel label = new ProgressBarWithLabel();
             label.setupUi(ui);
             label.setText(job_description);

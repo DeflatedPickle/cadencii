@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-SearchPath-1: cadencii.apputil\n"
 "X-Poedit-SearchPath-2: vConnectStandDBConvert\n"
 
-#: Cadencii/AppManager.cs:735 Cadencii/ui/main/FormMain.CONFLICT.cs:11252
+#: Cadencii/EditorManager.cs:735 Cadencii/ui/main/FormMain.CONFLICT.cs:11252
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:11552
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:28971
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:29271
@@ -30,7 +30,7 @@ msgstr ""
 msgid "Synthesize"
 msgstr "合成"
 
-#: Cadencii/AppManager.cs:736 Cadencii/ui/main/FormMain.CONFLICT.cs:11253
+#: Cadencii/EditorManager.cs:736 Cadencii/ui/main/FormMain.CONFLICT.cs:11253
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:11553
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:28972
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:29272
@@ -42,16 +42,16 @@ msgstr "合成"
 msgid "now synthesizing..."
 msgstr "合成中..."
 
-#: Cadencii/AppManager.cs:748
+#: Cadencii/EditorManager.cs:748
 msgid "patchwork"
 msgstr ""
 
-#: Cadencii/AppManager.cs:2194
+#: Cadencii/EditorManager.cs:2194
 #, csharp-format
 msgid "failed creating cache directory, '{0}'."
 msgstr "创建缓存目录失败, '{0}'."
 
-#: Cadencii/AppManager.cs:2195 Cadencii/ui/main/FormMain.CONFLICT.cs:6799
+#: Cadencii/EditorManager.cs:2195 Cadencii/ui/main/FormMain.CONFLICT.cs:6799
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:6841
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:24518
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:24560
@@ -63,12 +63,12 @@ msgstr "创建缓存目录失败, '{0}'."
 msgid "Info."
 msgstr "信息."
 
-#: Cadencii/AppManager.cs:2221
+#: Cadencii/EditorManager.cs:2221
 #, csharp-format
 msgid "failed copying WAVE cache file, '{0}'."
 msgstr "WAVE缓存文件复制失败, '{0}'."
 
-#: Cadencii/AppManager.cs:2222 Cadencii/AppManager.cs:2246
+#: Cadencii/EditorManager.cs:2222 Cadencii/EditorManager.cs:2246
 #: Cadencii/Cadencii.cs:152 Cadencii/FormBezierPointEditController.cs:101
 #: Cadencii/FormBezierPointEditController.cs:117 Cadencii/ScriptServer.cs:168
 #: Cadencii/ScriptServer.cs:172 Cadencii/ui/main/FormMain.CONFLICT.cs:11231
@@ -113,7 +113,7 @@ msgstr "WAVE缓存文件复制失败, '{0}'."
 msgid "Error"
 msgstr "错误"
 
-#: Cadencii/AppManager.cs:2245
+#: Cadencii/EditorManager.cs:2245
 #, csharp-format
 msgid "failed copying XML cache file, '{0}'."
 msgstr "XML缓存文件复制失败, '{0}'."

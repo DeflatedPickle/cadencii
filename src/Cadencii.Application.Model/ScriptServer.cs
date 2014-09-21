@@ -149,7 +149,7 @@ namespace cadencii
                         fs = new FileStream(config_file, FileMode.Create, FileAccess.Write);
                         script_invoker.Serializer.serialize(fs, null);
                     } catch (Exception ex) {
-                        serr.println("AppManager#invokeScript; ex=" + ex);
+                        serr.println("EditorManager#invokeScript; ex=" + ex);
                         delete_xml_when_exit = true;
                     } finally {
                         if (fs != null) {
@@ -159,14 +159,14 @@ namespace cadencii
                                     PortUtil.deleteFile(config_file);
                                 }
                             } catch (Exception ex2) {
-                                serr.println("AppManager#invokeScript; ex2=" + ex2);
+                                serr.println("EditorManager#invokeScript; ex2=" + ex2);
                             }
                         }
                     }
                     return (ret == ScriptReturnStatus.EDITED);
                 } catch (Exception ex) {
                     showMessageBox(_("Script runtime error:") + " " + ex, _("Error"), cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
-                    serr.println("AppManager#invokeScript; ex=" + ex);
+                    serr.println("EditorManager#invokeScript; ex=" + ex);
                 }
             } else {
                 showMessageBox(_("Script compilation failed."), _("Error"), cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_WARNING_MESSAGE);

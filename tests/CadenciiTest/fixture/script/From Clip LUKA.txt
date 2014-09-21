@@ -168,7 +168,7 @@ public class FromClipLUKA {
         if( EditorManager.getSelectedEventCount() <= 0 ){
             return false;
         }
-        int selectedid = AppManager.getLastSelectedEvent().original.InternalID;
+        int selectedid = EditorManager.getLastSelectedEvent().original.InternalID;
         // @kbinani: "start"以降のイベントが、すべて音符イベントとは限らない（歌手変更イベントもある）。
         // @kbinani: selectedid以降の音符の数を正しく数える。
         int count = 0;
@@ -176,7 +176,7 @@ public class FromClipLUKA {
         //一つ前の音符を探すため
         int pre_id = 0;	//一つ前の音符のID
         int pre_note = 0;
-        int current_clock = AppManager.getLastSelectedEvent().original.Clock;  //選択されている最後の音符のクロック;
+        int current_clock = EditorManager.getLastSelectedEvent().original.Clock;  //選択されている最後の音符のクロック;
         for ( Iterator<VsqEvent> itr = vsq.Track.get( EditorManager.Selected ).getNoteEventIterator(); itr.hasNext(); ) {
             VsqEvent item = (VsqEvent)itr.next();
             if ( item.InternalID == selectedid ) {

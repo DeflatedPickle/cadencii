@@ -284,7 +284,7 @@ namespace cadencii
             if (mMainForm == null) {
                 return;
             }
-            int max = AppManager.getCurrentClock();
+            int max = EditorManager.getCurrentClock();
             int total_clocks = vsq.TotalClocks;
             if (max < total_clocks) max = total_clocks;
             int required_width = (int)(max * mOverviewPixelPerClock) + this.Width;
@@ -371,7 +371,7 @@ namespace cadencii
         public void handleResize(Object sender, EventArgs e)
         {
             VsqFileEx vsq = MusicManager.getVsqFile();
-            int max = AppManager.getCurrentClock();
+            int max = EditorManager.getCurrentClock();
             int total_clocks = vsq.TotalClocks;
             if (max < total_clocks) max = total_clocks;
             int min_width = (int)(max * mOverviewPixelPerClock) + this.Width;
@@ -566,7 +566,7 @@ namespace cadencii
             g.drawRect(rc.x + xoffset, rc.y, rc.width, rc.height);
 
             // ソングポジション
-            int px_current_clock = (int)((AppManager.getCurrentClock() - mOverviewStartToDrawClock) * mOverviewPixelPerClock);
+            int px_current_clock = (int)((EditorManager.getCurrentClock() - mOverviewStartToDrawClock) * mOverviewPixelPerClock);
             g.setStroke(getStroke2px());
 			g.setColor(cadencii.java.awt.Colors.White);
             g.drawLine(px_current_clock + xoffset, 0, px_current_clock + xoffset, height);
@@ -655,7 +655,7 @@ namespace cadencii
             if (mMainForm == null) {
                 return;
             }
-            lock (AppManager.mDrawObjects) {
+            lock (EditorManager.mDrawObjects) {
                 g.setColor(mBackgroundColor);
                 g.fillRect(0, 0, width, height);
 
@@ -668,7 +668,7 @@ namespace cadencii
                 int overview_dot_diam = 2;
 
                 int selected = EditorManager.Selected;
-                List<DrawObject> objs = AppManager.mDrawObjects[selected - 1];
+                List<DrawObject> objs = EditorManager.mDrawObjects[selected - 1];
 
                 // 平均ノートナンバーを調べる
                 double sum = 0.0;

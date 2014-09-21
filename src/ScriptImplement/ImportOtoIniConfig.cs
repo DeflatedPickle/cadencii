@@ -21,7 +21,7 @@ public class ImportOtoIniConfig
             return ScriptReturnStatus.NOT_EDITED;
         }
         bool edited = false;
-        foreach (var item in AppManager.itemSelection.getEventIterator()) {
+        foreach (var item in EditorManager.itemSelection.getEventIterator()) {
             VsqEvent original = item.original;
             if (original.ID.type != VsqIDType.Anote) {
                 continue;

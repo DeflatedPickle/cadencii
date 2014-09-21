@@ -17,7 +17,7 @@ public class Devide2 {
 			return false;
 		}
 		//選択されている音符
-        int selectedid = AppManager.getLastSelectedEvent().original.InternalID;
+        int selectedid = EditorManager.getLastSelectedEvent().original.InternalID;
 		if (selectedid <= 0 ){
 			MessageBox.Show("音符を選択してください");
 			return false;

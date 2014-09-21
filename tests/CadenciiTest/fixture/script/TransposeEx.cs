@@ -84,7 +84,7 @@ public class TransposeEx : Form
     private static void transpose(VsqFile vsq, int step)
     {
         int note;
-        VsqTrack track = vsq.Track[AppManager.Selected];
+        VsqTrack track = vsq.Track[EditorManager.Selected];
         for (Iterator<SelectedEventEntry> itr = EditorManager.getSelectedEventIterator(); itr.hasNext(); ) {
             VsqEvent item = track.findEventFromID(((SelectedEventEntry)itr.next()).original.InternalID);
             if (item.ID.type == VsqIDType.Anote) {

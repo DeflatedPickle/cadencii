@@ -127,7 +127,7 @@ namespace cadencii
             splashThread.Start();
 #endif
 
-            // AppManagerの初期化
+            // EditorManagerの初期化
             AppManager.init();
 
 #if ENABLE_SCRIPT

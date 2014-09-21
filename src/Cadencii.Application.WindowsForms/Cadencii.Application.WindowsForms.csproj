@@ -319,6 +319,7 @@
     <Compile Include="..\Cadencii.Gui.Framework.WindowsForms.Shared\ColorExtensions.cs">
       <Link>ColorExtensions.cs</Link>
     </Compile>
+    <Compile Include="ui\TimerWF.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />

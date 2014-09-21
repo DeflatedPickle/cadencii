@@ -142,9 +142,9 @@ namespace cadencii
             // 現在のGridItemの展開状態を取得
             pushGridItemExpandStatus();
 
-            Object[] objs = new Object[AppManager.itemSelection.getEventCount()];
+            Object[] objs = new Object[EditorManager.itemSelection.getEventCount()];
             int i = -1;
-            foreach (var item in AppManager.itemSelection.getEventIterator()) {
+            foreach (var item in EditorManager.itemSelection.getEventIterator()) {
                 i++;
                 objs[i] = item;
             }
@@ -168,7 +168,7 @@ namespace cadencii
                 CommandExecuteRequired(this, run);
             }
             for (int i = 0; i < len; i++) {
-                AppManager.itemSelection.addEvent(items[i].InternalID);
+                EditorManager.itemSelection.addEvent(items[i].InternalID);
             }
             propertyGrid.Refresh();
             setEditing(false);

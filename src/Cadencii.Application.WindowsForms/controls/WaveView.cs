@@ -106,7 +106,7 @@ namespace cadencii
             g.setColor(cadencii.java.awt.Colors.Gray);
             g.fillRect(rc.x, rc.y, rc.width, rc.height);
 
-            if (AppManager.skipDrawingWaveformWhenPlaying && AppManager.isPlaying()) {
+            if (EditorManager.skipDrawingWaveformWhenPlaying && EditorManager.isPlaying()) {
                 // 左側のボタン部との境界線
                 g.setColor(mBorderColor);
                 g.drawLine(0, 0, 0, height);
@@ -158,7 +158,7 @@ namespace cadencii
             g.drawLine(0, 0, 0, height);
 
             // ソングポジション
-            int song_pos_x = EditorManager.xCoordFromClocks(AppManager.getCurrentClock()) - EditorManager.keyWidth;
+            int song_pos_x = EditorManager.xCoordFromClocks(EditorManager.getCurrentClock()) - EditorManager.keyWidth;
             if (0 < song_pos_x) {
 				g.setColor(cadencii.java.awt.Colors.White);
                 g.setStroke(getStroke2px());

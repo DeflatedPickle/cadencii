@@ -33,7 +33,7 @@ namespace cadencii
         [Obsolete]
         public static PlayPositionSpecifier getPlayPosition()
         {
-            var clock = getCurrentClock();
+            var clock = EditorManager.getCurrentClock();
             var timesig = mVsq.TimesigTable.getTimesigAt(clock);
 
             var result = new PlayPositionSpecifier();
@@ -56,25 +56,25 @@ namespace cadencii
         [Obsolete]
         public static int getSelectedEventCount()
         {
-            return itemSelection.getEventCount();
+            return EditorManager.itemSelection.getEventCount();
         }
 
         [Obsolete]
         public static SelectedEventEntry getLastSelectedEvent()
         {
-            return itemSelection.getLastEvent();
+            return EditorManager.itemSelection.getLastEvent();
         }
 
         [Obsolete]
         public static IEnumerable<SelectedEventEntry> getSelectedEventIterator()
         {
-            return itemSelection.getEventIterator();
+            return EditorManager.itemSelection.getEventIterator();
         }
 
         [Obsolete]
         public static bool isSelectedEventContains(int track, int id)
         {
-            foreach (var item in itemSelection.getEventIterator()) {
+            foreach (var item in EditorManager.itemSelection.getEventIterator()) {
                 if (item.original.InternalID == id && item.track == track) {
                     return true;
                 }
@@ -85,13 +85,13 @@ namespace cadencii
         [Obsolete]
         public static void removeSelectedEvent(int id)
         {
-            itemSelection.removeEvent(id);
+            EditorManager.itemSelection.removeEvent(id);
         }
 
         [Obsolete]
         public static void addSelectedEvent(int id)
         {
-            itemSelection.addEvent(id);
+            EditorManager.itemSelection.addEvent(id);
         }
 
         /*

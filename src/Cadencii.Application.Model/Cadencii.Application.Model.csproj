@@ -163,6 +163,7 @@
     <Compile Include="controls\VolumeTracker.cs" />
     <Compile Include="guiextended\Clipboard.cs" />
     <Compile Include="ClipboardModel.cs" />
+    <Compile Include="guiextended\Timer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

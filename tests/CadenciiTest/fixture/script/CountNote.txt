@@ -18,8 +18,8 @@ public class CountNote
 			return false;
 		}
         VsqTrack track = vsq.Track[EditorManager.Selected];
-		selectedid = AppManager.getLastSelectedEvent().original.InternalID;
-        int current_clock = AppManager.getLastSelectedEvent().original.Clock;  //選択されている最後の音符のクロック;
+		selectedid = EditorManager.getLastSelectedEvent().original.InternalID;
+        int current_clock = EditorManager.getLastSelectedEvent().original.Clock;  //選択されている最後の音符のクロック;
         int last_clock2 = (int)(current_clock / 1920) * 1920 + 1920 * 2;
         int last_clock4 = (int)(current_clock / 1920) * 1920 + 1920 * 4;
         for (Iterator<VsqEvent> itr = track.getNoteEventIterator(); itr.hasNext(); )

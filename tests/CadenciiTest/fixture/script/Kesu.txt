@@ -149,7 +149,7 @@ public class Kesu : Form {
     }
 
     private static void kesu( VsqFileEx vsq, bool wbri, bool waccent, bool wpitch, bool wope, bool wquant, bool wdecay ) {
-        VsqTrack target = vsq.Track[AppManager.Selected];
+        VsqTrack target = vsq.Track[EditorManager.Selected];
         if ( wbri ) {
             clear_curve( target, "bri" );
         }

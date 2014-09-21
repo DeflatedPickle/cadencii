@@ -61,22 +61,22 @@ public class SmartHtml
 
             begin_count = true;
         } else {
-            selectedid = AppManager.getLastSelectedEvent().original.InternalID;
+            selectedid = EditorManager.getLastSelectedEvent().original.InternalID;
         }
         for ( Iterator<VsqEvent> itr = vsq.Track[track].getNoteEventIterator(); itr.hasNext(); ) {
             VsqEvent item = itr.next();
             if ( item.InternalID == selectedid ) {
                 begin_count = true;
-                if ( AppManager.isSelectedEventContains( track, item.InternalID ) ) {
-                    AppManager.removeSelectedEvent( item.InternalID );
+                if ( EditorManager.isSelectedEventContains( track, item.InternalID ) ) {
+                    EditorManager.removeSelectedEvent( item.InternalID );
                     continue;
                 }
             }
             if ( begin_count ) {
                 if ( item.ID.type == VsqIDType.Anote ) {
                     if ( item.ID.Length < 240 ) {
-                        AppManager.addSelectedEvent( item.InternalID );
-                        AppManager.setCurrentClock( item.Clock );
+                        EditorManager.addSelectedEvent( item.InternalID );
+                        EditorManager.setCurrentClock( item.Clock );
                         EditorManager.MainWindow.ensureCursorVisible();
                         break;
                     }
@@ -93,7 +93,7 @@ public static class AutoBRI
     {
         // 選択されているアイテム（のInternalID）をリストアップ
         System.Collections.Generic.List<int> ids = new System.Collections.Generic.List<int>();
-        foreach (var entry in AppManager.itemSelection.getEventIterator()) {
+        foreach (var entry in EditorManager.itemSelection.getEventIterator()) {
             ids.Add(entry.original.InternalID);
         }
 

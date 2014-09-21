@@ -196,14 +196,14 @@ namespace cadencii
                 return;
             }
 
-            lock (AppManager.mDrawObjects) {
+            lock (EditorManager.mDrawObjects) {
                 Graphics g = (Graphics)g1;
 
                 int width = getWidth();
                 int height = getHeight();
 
                 // 再生中に画面を描画しない設定なら飛ばす
-                if (EditorManager.editorConfig.SkipDrawWhilePlaying && AppManager.isPlaying()) {
+                if (EditorManager.editorConfig.SkipDrawWhilePlaying && EditorManager.isPlaying()) {
 					g1.drawStringEx(
                         "(hidden for performance)",
 						cadencii.core.EditorConfig.baseFont10,
@@ -241,8 +241,8 @@ namespace cadencii
                     float scalex = EditorManager.MainWindowController.getScaleX();
                     float inv_scalex = EditorManager.MainWindowController.getScaleXInv();
 
-                    if (AppManager.itemSelection.getEventCount() > 0 && AppManager.mInputTextBox.Visible) {
-                        VsqEvent original = AppManager.itemSelection.getLastEvent().original;
+                    if (EditorManager.itemSelection.getEventCount() > 0 && AppManager.mInputTextBox.Visible) {
+                        VsqEvent original = EditorManager.itemSelection.getLastEvent().original;
                         int event_x = (int)(original.Clock * scalex + xoffset);
                         int event_y = -original.ID.Note * track_height + yoffset;
                         AppManager.mInputTextBox.Left = event_x + 4;
@@ -379,12 +379,12 @@ namespace cadencii
                         g.drawLine(0, y, key_width, y);
                         bool hilighted = false;
                         if (edit_mode == EditMode.ADD_ENTRY) {
-                            if (AppManager.mAddingEvent.ID.Note == i) {
+                            if (EditorManager.mAddingEvent.ID.Note == i) {
                                 hilighted = true;
                                 hilighted_note = i;
                             }
                         } else if (edit_mode == EditMode.EDIT_LEFT_EDGE || edit_mode == EditMode.EDIT_RIGHT_EDGE) {
-                            if (AppManager.itemSelection.getLastEvent().original.ID.Note == i) { //TODO: ここでNullpointer exception
+                            if (EditorManager.itemSelection.getLastEvent().original.ID.Note == i) { //TODO: ここでNullpointer exception
                                 hilighted = true;
                                 hilighted_note = i;
                             }
@@ -432,7 +432,7 @@ namespace cadencii
                                 g.setColor(beat);
                                 g.drawLine(x, 0, x, height);
                             }
-                            if (dashed_line_step > 1 && AppManager.isGridVisible()) {
+                            if (dashed_line_step > 1 && EditorManager.isGridVisible()) {
                                 int numDashedLine = local_clock_step / dashed_line_step;
                                 g.setColor(beat);
                                 g.setStroke(getStrokeDashed());
@@ -447,7 +447,7 @@ namespace cadencii
                     #endregion
 
                     // 現在選択されている歌声合成システムの名前をオーバーレイ表示する
-                    if (AppManager.drawOverSynthNameOnPianoroll) {
+                    if (EditorManager.drawOverSynthNameOnPianoroll) {
 						g.setFont(cadencii.core.EditorConfig.baseFont50Bold);
                         g.setColor(new Color(0, 0, 0, 32));
                         string str = "VOCALOID2";
@@ -467,15 +467,15 @@ namespace cadencii
                     }
 
                     #region トラックのエントリを描画
-                    if (AppManager.isOverlay()) {
+                    if (EditorManager.TrackOverlay) {
                         // まず、選択されていないトラックの簡易表示を行う
-                        int c = AppManager.mDrawObjects.Length;
+                        int c = EditorManager.mDrawObjects.Length;
                         for (int i = 0; i < c; i++) {
                             if (i == selected - 1) {
                                 continue;
                             }
-                            List<DrawObject> target_list = AppManager.mDrawObjects[i];
-                            int j_start = AppManager.mDrawStartIndex[i];
+                            List<DrawObject> target_list = EditorManager.mDrawObjects[i];
+                            int j_start = EditorManager.mDrawStartIndex[i];
                             bool first = true;
                             int shift_center = half_track_height;
                             int target_list_count = target_list.Count;
@@ -492,8 +492,8 @@ namespace cadencii
                                 } else if (width < x) {
                                     break;
                                 }
-                                if (AppManager.isPlaying() && first) {
-                                    AppManager.mDrawStartIndex[i] = j;
+                                if (EditorManager.isPlaying() && first) {
+                                    EditorManager.mDrawStartIndex[i] = j;
                                     first = false;
                                 }
                                 if (y + track_height < 0 || y > height) {
@@ -517,10 +517,10 @@ namespace cadencii
                         Shape r = g.getClip();
                         g.clipRect(key_width, 0,
                                     width - key_width, height);
-                        int j_start = AppManager.mDrawStartIndex[selected - 1];
+                        int j_start = EditorManager.mDrawStartIndex[selected - 1];
 
                         bool first = true;
-                        List<DrawObject> target_list = AppManager.mDrawObjects[selected - 1];
+                        List<DrawObject> target_list = EditorManager.mDrawObjects[selected - 1];
                         VsqBPList pit = vsq_track.MetaText.PIT;
                         VsqBPList pbs = vsq_track.MetaText.PBS;
                         ByRef<int> indx_pit = new ByRef<int>(0);
@@ -537,8 +537,8 @@ namespace cadencii
                             } else if (width < x) {
                                 break;
                             }
-                            if (AppManager.isPlaying() && first) {
-                                AppManager.mDrawStartIndex[selected - 1] = j;
+                            if (EditorManager.isPlaying() && first) {
+                                EditorManager.mDrawStartIndex[selected - 1] = j;
                                 first = false;
                             }
                             if (y + 2 * track_height < 0 || y > height) {
@@ -552,8 +552,8 @@ namespace cadencii
                                         (!dobj.mIsValidForStraight && renderer == RendererKind.VCNT)) {
                                     id_fill = EditorManager.getAlertColor();
                                 }
-                                if (AppManager.itemSelection.getEventCount() > 0) {
-                                    bool found = AppManager.itemSelection.isEventContains(selected, dobj.mInternalID);
+                                if (EditorManager.itemSelection.getEventCount() > 0) {
+                                    bool found = EditorManager.itemSelection.isEventContains(selected, dobj.mInternalID);
                                     if (found) {
                                         id_fill = EditorManager.getHilightColor();
                                         if ((!dobj.mIsValidForUtau && renderer == RendererKind.UTAU) ||
@@ -610,7 +610,7 @@ namespace cadencii
                                     }
 
                                     #region ピッチベンド
-                                    if (cadencii.core.ApplicationGlobal.appConfig.ViewAtcualPitch || AppManager.mCurveOnPianoroll) {
+                                    if (cadencii.core.ApplicationGlobal.appConfig.ViewAtcualPitch || EditorManager.mCurveOnPianoroll) {
                                         int cl_start = dobj.mClock;
                                         int cl_end = cl_start + dobj.mLength;
 
@@ -718,7 +718,7 @@ namespace cadencii
                             } else if (dobj.mType == DrawObjectType.Dynaff) {
                                 #region Dynaff
                                 Color fill = COLOR_DYNAFF_FILL;
-                                if (AppManager.itemSelection.isEventContains(selected, dobj.mInternalID)) {
+                                if (EditorManager.itemSelection.isEventContains(selected, dobj.mInternalID)) {
                                     fill = COLOR_DYNAFF_FILL_HIGHLIGHT;
                                 }
                                 g.setColor(fill);
@@ -740,7 +740,7 @@ namespace cadencii
                                 #region Crescend and Descrescend
                                 int xend = x + lyric_width;
                                 Color fill = COLOR_DYNAFF_FILL;
-                                if (AppManager.itemSelection.isEventContains(selected, dobj.mInternalID)) {
+                                if (EditorManager.itemSelection.isEventContains(selected, dobj.mInternalID)) {
                                     fill = COLOR_DYNAFF_FILL_HIGHLIGHT;
                                 }
                                 g.setColor(fill);
@@ -779,19 +779,19 @@ namespace cadencii
                             edit_mode == EditMode.ADD_FIXED_LENGTH_ENTRY ||
                             edit_mode == EditMode.DRAG_DROP ||
                         EditorManager.MainWindowController.isStepSequencerEnabled()) {
-                        if (AppManager.mAddingEvent != null) {
+                        if (EditorManager.mAddingEvent != null) {
 #if DEBUG
                             sout.println("PictPianoRoll#paint; drawing mAddingEvent");
 #endif
-                            int x = (int)(AppManager.mAddingEvent.Clock * scalex + xoffset);
-                            y = -AppManager.mAddingEvent.ID.Note * track_height + yoffset + 1;
-                            int length = (int)(AppManager.mAddingEvent.ID.getLength() * scalex);
-                            if (AppManager.mAddingEvent.ID.type == VsqIDType.Aicon) {
-                                if (AppManager.mAddingEvent.ID.IconDynamicsHandle.isDynaffType()) {
+                            int x = (int)(EditorManager.mAddingEvent.Clock * scalex + xoffset);
+                            y = -EditorManager.mAddingEvent.ID.Note * track_height + yoffset + 1;
+                            int length = (int)(EditorManager.mAddingEvent.ID.getLength() * scalex);
+                            if (EditorManager.mAddingEvent.ID.type == VsqIDType.Aicon) {
+                                if (EditorManager.mAddingEvent.ID.IconDynamicsHandle.isDynaffType()) {
                                     length = EditorConfig.DYNAFF_ITEM_WIDTH;
                                 }
                             }
-                            if (AppManager.mAddingEvent.ID.getLength() <= 0) {
+                            if (EditorManager.mAddingEvent.ID.getLength() <= 0) {
                                 g.setColor(new Color(171, 171, 171));
                                 g.drawRect(x, y, 10, track_height - 1);
                             } else {
@@ -802,16 +802,16 @@ namespace cadencii
                             }
                         }
                     } else if (edit_mode == EditMode.EDIT_VIBRATO_DELAY) {
-                        int x = (int)(AppManager.mAddingEvent.Clock * scalex + xoffset);
-                        y = -AppManager.mAddingEvent.ID.Note * track_height + yoffset + 1;
-                        int length = (int)(AppManager.mAddingEvent.ID.getLength() * scalex);
+                        int x = (int)(EditorManager.mAddingEvent.Clock * scalex + xoffset);
+                        y = -EditorManager.mAddingEvent.ID.Note * track_height + yoffset + 1;
+                        int length = (int)(EditorManager.mAddingEvent.ID.getLength() * scalex);
                         g.setColor(COLOR_ADDING_NOTE_BORDER);
                         g.drawRect(x, y, length, track_height - 1);
                     } else if ((edit_mode == EditMode.MOVE_ENTRY ||
                                     edit_mode == EditMode.MOVE_ENTRY_WHOLE ||
                                     edit_mode == EditMode.EDIT_LEFT_EDGE ||
-                                    edit_mode == EditMode.EDIT_RIGHT_EDGE) && AppManager.itemSelection.getEventCount() > 0) {
-                        foreach (var ev in AppManager.itemSelection.getEventIterator()) {
+                                    edit_mode == EditMode.EDIT_RIGHT_EDGE) && EditorManager.itemSelection.getEventCount() > 0) {
+                        foreach (var ev in EditorManager.itemSelection.getEventIterator()) {
                             int x = (int)(ev.editing.Clock * scalex + xoffset);
                             y = -ev.editing.ID.Note * track_height + yoffset + 1;
                             if (ev.editing.ID.type == VsqIDType.Aicon) {
@@ -841,10 +841,10 @@ namespace cadencii
                         }
 
                         if (edit_mode == EditMode.MOVE_ENTRY_WHOLE) {
-                            int clock_start = AppManager.mWholeSelectedInterval.getStart();
-                            int clock_end = AppManager.mWholeSelectedInterval.getEnd();
-                            int x_start = EditorManager.xCoordFromClocks(AppManager.mWholeSelectedIntervalStartForMoving);
-                            int x_end = EditorManager.xCoordFromClocks(AppManager.mWholeSelectedIntervalStartForMoving + (clock_end - clock_start));
+                            int clock_start = EditorManager.mWholeSelectedInterval.getStart();
+                            int clock_end = EditorManager.mWholeSelectedInterval.getEnd();
+                            int x_start = EditorManager.xCoordFromClocks(EditorManager.mWholeSelectedIntervalStartForMoving);
+                            int x_end = EditorManager.xCoordFromClocks(EditorManager.mWholeSelectedIntervalStartForMoving + (clock_end - clock_start));
                             g.setColor(COLOR_A098R000G000B000);
                             g.drawLine(x_start, 0, x_start, height);
                             g.drawLine(x_end, 0, x_end, height);
@@ -859,13 +859,13 @@ namespace cadencii
                     #region 音符編集時の補助線
                     if (edit_mode == EditMode.ADD_ENTRY) {
                         #region EditMode.AddEntry
-                        int x = (int)(AppManager.mAddingEvent.Clock * scalex + xoffset);
-                        y = -AppManager.mAddingEvent.ID.Note * track_height + yoffset + 1;
+                        int x = (int)(EditorManager.mAddingEvent.Clock * scalex + xoffset);
+                        y = -EditorManager.mAddingEvent.ID.Note * track_height + yoffset + 1;
                         int length;
-                        if (AppManager.mAddingEvent.ID.getLength() == 0) {
+                        if (EditorManager.mAddingEvent.ID.getLength() == 0) {
                             length = 10;
                         } else {
-                            length = (int)(AppManager.mAddingEvent.ID.getLength() * scalex);
+                            length = (int)(EditorManager.mAddingEvent.ID.getLength() * scalex);
                         }
                         x += length;
                         g.setColor(COLOR_LINE_LU);
@@ -877,8 +877,8 @@ namespace cadencii
                         #endregion
                     } else if (edit_mode == EditMode.MOVE_ENTRY || edit_mode == EditMode.MOVE_ENTRY_WAIT_MOVE) {
                         #region EditMode.MoveEntry || EditMode.MoveEntryWaitMove
-                        if (AppManager.itemSelection.getEventCount() > 0) {
-                            VsqEvent last = AppManager.itemSelection.getLastEvent().editing;
+                        if (EditorManager.itemSelection.getEventCount() > 0) {
+                            VsqEvent last = EditorManager.itemSelection.getLastEvent().editing;
                             int x = (int)(last.Clock * scalex + xoffset);
                             y = -last.ID.Note * track_height + yoffset + 1;
                             int length = (int)(last.ID.getLength() * scalex);
@@ -912,12 +912,12 @@ namespace cadencii
                         #endregion
                     } else if (edit_mode == EditMode.ADD_FIXED_LENGTH_ENTRY || edit_mode == EditMode.DRAG_DROP) {
                         #region ADD_FIXED_LENGTH_ENTRY | DRAG_DROP
-                        int x = (int)(AppManager.mAddingEvent.Clock * scalex + xoffset);
-                        y = -AppManager.mAddingEvent.ID.Note * track_height + yoffset + 1;
-                        int length = (int)(AppManager.mAddingEvent.ID.getLength() * scalex);
+                        int x = (int)(EditorManager.mAddingEvent.Clock * scalex + xoffset);
+                        y = -EditorManager.mAddingEvent.ID.Note * track_height + yoffset + 1;
+                        int length = (int)(EditorManager.mAddingEvent.ID.getLength() * scalex);
 
-                        if (AppManager.mAddingEvent.ID.type == VsqIDType.Aicon) {
-                            if (AppManager.mAddingEvent.ID.IconDynamicsHandle.isDynaffType()) {
+                        if (EditorManager.mAddingEvent.ID.type == VsqIDType.Aicon) {
+                            if (EditorManager.mAddingEvent.ID.IconDynamicsHandle.isDynaffType()) {
                                 length = EditorConfig.DYNAFF_ITEM_WIDTH;
                             }
                         }
@@ -943,7 +943,7 @@ namespace cadencii
                         #endregion
                     } else if (edit_mode == EditMode.EDIT_LEFT_EDGE) {
                         #region EditMode.EditLeftEdge
-                        VsqEvent last = AppManager.itemSelection.getLastEvent().editing;
+                        VsqEvent last = EditorManager.itemSelection.getLastEvent().editing;
                         int x = (int)(last.Clock * scalex + xoffset);
                         y = -last.ID.Note * track_height + yoffset + 1;
                         g.setColor(COLOR_LINE_LU);
@@ -955,7 +955,7 @@ namespace cadencii
                         #endregion
                     } else if (edit_mode == EditMode.EDIT_RIGHT_EDGE) {
                         #region EditMode.EditRightEdge
-                        VsqEvent last = AppManager.itemSelection.getLastEvent().editing;
+                        VsqEvent last = EditorManager.itemSelection.getLastEvent().editing;
                         int x = (int)(last.Clock * scalex + xoffset);
                         y = -last.ID.Note * track_height + yoffset + 1;
                         int length = (int)(last.ID.getLength() * scalex);
@@ -969,23 +969,23 @@ namespace cadencii
                         #endregion
                     } else if (edit_mode == EditMode.EDIT_VIBRATO_DELAY) {
                         #region EditVibratoDelay
-                        int x = (int)(AppManager.mAddingEvent.Clock * scalex + xoffset);
-                        y = -AppManager.mAddingEvent.ID.Note * track_height + yoffset + 1;
+                        int x = (int)(EditorManager.mAddingEvent.Clock * scalex + xoffset);
+                        y = -EditorManager.mAddingEvent.ID.Note * track_height + yoffset + 1;
                         g.setColor(COLOR_LINE_LU);
                         g.drawLine(x, 0, x, y - 1);
                         g.drawLine(x, y + track_height, x, height);
                         g.setColor(COLOR_LINE_RD);
                         g.drawLine(x + 1, 0, x + 1, y - 1);
                         g.drawLine(x + 1, y + track_height, x + 1, height);
-                        double max_length = AppManager.mAddingEventLength - PX_ACCENT_HEADER / scalex;
-                        double drate = AppManager.mAddingEvent.ID.getLength() / max_length;
+                        double max_length = EditorManager.mAddingEvent.ID.Length - PX_ACCENT_HEADER / scalex;
+                        double drate = EditorManager.mAddingEvent.ID.getLength() / max_length;
                         if (drate > 0.99) {
                             drate = 1.00;
                         }
                         int rate = (int)(drate * 100.0);
                         string percent = rate + "%";
 						Dimension size = Util.measureString(percent, cadencii.core.EditorConfig.baseFont9);
-                        int delay_x = (int)((AppManager.mAddingEvent.Clock + AppManager.mAddingEvent.ID.getLength() - AppManager.mAddingEventLength + AppManager.mAddingEvent.ID.VibratoDelay) * scalex + xoffset);
+                        int delay_x = (int)((EditorManager.mAddingEvent.Clock + EditorManager.mAddingEvent.ID.getLength() - EditorManager.mAddingEvent.ID.Length + EditorManager.mAddingEvent.ID.VibratoDelay) * scalex + xoffset);
                         Rectangle pxArea = new Rectangle(delay_x,
                                                           (int)(y + track_height * 2.5),
                                                           (int)(size.width * 1.2),
@@ -1024,16 +1024,16 @@ namespace cadencii
 #if DEBUG
                         sout.println("pictPianoRoll#paint; EditorManager.IsWholeSelectedIntervalEnabled=" + EditorManager.IsWholeSelectedIntervalEnabled);
 #endif
-                        int start = (int)(AppManager.mWholeSelectedInterval.getStart() * scalex) + xoffset;
+                        int start = (int)(EditorManager.mWholeSelectedInterval.getStart() * scalex) + xoffset;
                         if (start < key_width) {
                             start = key_width;
                         }
-                        int end = (int)(AppManager.mWholeSelectedInterval.getEnd() * scalex) + xoffset;
+                        int end = (int)(EditorManager.mWholeSelectedInterval.getEnd() * scalex) + xoffset;
                         if (start < end) {
                             g.setColor(new Color(0, 0, 0, 98));
                             g.fillRect(start, 0, end - start, getHeight());
                         }
-                    } else if (AppManager.mIsPointerDowned) {
+                    } else if (EditorManager.mIsPointerDowned) {
                         // 選択範囲を半透明で塗りつぶす
 						var mouse_location = cadencii.core2.PortUtil.getMousePosition();
                         var mouse = this.PointToClient(new System.Drawing.Point(mouse_location.X, mouse_location.Y));
@@ -1045,7 +1045,7 @@ namespace cadencii
                         bool vleft = true;
                         bool vright = true;
                         // マウスが下りた位置のx座標
-                        int lx = AppManager.mMouseDownLocation.X - stdx;
+                        int lx = EditorManager.mMouseDownLocation.X - stdx;
                         if (lx < mouse.X) {
                             tx = lx;
                             twidth = mouse.X - lx;
@@ -1053,7 +1053,7 @@ namespace cadencii
                             tx = mouse.X;
                             twidth = lx - mouse.X;
                         }
-                        int ly = AppManager.mMouseDownLocation.Y - stdy;
+                        int ly = EditorManager.mMouseDownLocation.Y - stdy;
                         if (ly < mouse.Y) {
                             ty = ly;
                             theight = mouse.Y - ly;
@@ -1105,7 +1105,7 @@ namespace cadencii
 					((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
 
                     #region コントロールカーブのオーバーレイ表示
-                    if (AppManager.mCurveOnPianoroll) {
+                    if (EditorManager.mCurveOnPianoroll) {
                         g.setClip(null);
 
                         Area fillarea = new Area(new Rectangle(key_width, 0, width - key_width, height)); // 塗りつぶす領域．最後に処理する
@@ -1122,8 +1122,8 @@ namespace cadencii
 
 						Color pitline = cadencii.java.awt.Colors.MidnightBlue;
                         g.setStroke(getStroke2px());
-                        List<DrawObject> list = AppManager.mDrawObjects[selected - 1];
-                        int j_start = AppManager.mDrawStartIndex[selected - 1];
+                        List<DrawObject> list = EditorManager.mDrawObjects[selected - 1];
+                        int j_start = EditorManager.mDrawStartIndex[selected - 1];
                         int c = list.Count;
                         int last_x = key_width;
 
@@ -1211,7 +1211,7 @@ namespace cadencii
                     #endregion
 
                     // マーカー
-                    int marker_x = (int)(AppManager.getCurrentClock() * scalex + EditorManager.keyOffset + key_width - stdx);
+                    int marker_x = (int)(EditorManager.getCurrentClock() * scalex + EditorManager.keyOffset + key_width - stdx);
                     if (key_width <= marker_x && marker_x <= width) {
                         g.setColor(cadencii.java.awt.Colors.White);
                         g.setStroke(getStroke2px());

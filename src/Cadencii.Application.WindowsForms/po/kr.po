@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-SearchPath-1: cadencii.apputil\n"
 "X-Poedit-SearchPath-2: vConnectStandDBConvert\n"
 
-#: Cadencii/AppManager.cs:735 Cadencii/ui/main/FormMain.CONFLICT.cs:11252
+#: Cadencii/EditorManager.cs:735 Cadencii/ui/main/FormMain.CONFLICT.cs:11252
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:11552
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:28971
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:29271
@@ -30,7 +30,7 @@ msgstr ""
 msgid "Synthesize"
 msgstr "합성"
 
-#: Cadencii/AppManager.cs:736 Cadencii/ui/main/FormMain.CONFLICT.cs:11253
+#: Cadencii/EditorManager.cs:736 Cadencii/ui/main/FormMain.CONFLICT.cs:11253
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:11553
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:28972
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:29272
@@ -42,16 +42,16 @@ msgstr "합성"
 msgid "now synthesizing..."
 msgstr "합성 중..."
 
-#: Cadencii/AppManager.cs:748
+#: Cadencii/EditorManager.cs:748
 msgid "patchwork"
 msgstr "패치워크"
 
-#: Cadencii/AppManager.cs:2194
+#: Cadencii/EditorManager.cs:2194
 #, csharp-format
 msgid "failed creating cache directory, '{0}'."
 msgstr "캐시 디렉터리 '{0}' 만들기에 실패했습니다."
 
-#: Cadencii/AppManager.cs:2195 Cadencii/ui/main/FormMain.CONFLICT.cs:6799
+#: Cadencii/EditorManager.cs:2195 Cadencii/ui/main/FormMain.CONFLICT.cs:6799
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:6841
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:24518
 #: Cadencii/ui/main/FormMain.CONFLICT.cs:24560
@@ -63,12 +63,12 @@ msgstr "캐시 디렉터리 '{0}' 만들기에 실패했습니다."
 msgid "Info."
 msgstr "정보를 보여줍니다."
 
-#: Cadencii/AppManager.cs:2221
+#: Cadencii/EditorManager.cs:2221
 #, csharp-format
 msgid "failed copying WAVE cache file, '{0}'."
 msgstr "웨이브 캐시 파일 '{0}' 의 복사에 실패했습니다."
 
-#: Cadencii/AppManager.cs:2222 Cadencii/AppManager.cs:2246
+#: Cadencii/EditorManager.cs:2222 Cadencii/EditorManager.cs:2246
 #: Cadencii/Cadencii.cs:152 Cadencii/FormBezierPointEditController.cs:101
 #: Cadencii/FormBezierPointEditController.cs:117 Cadencii/ScriptServer.cs:168
 #: Cadencii/ScriptServer.cs:172 Cadencii/ui/main/FormMain.CONFLICT.cs:11231
@@ -113,7 +113,7 @@ msgstr "웨이브 캐시 파일 '{0}' 의 복사에 실패했습니다."
 msgid "Error"
 msgstr "오류"
 
-#: Cadencii/AppManager.cs:2245
+#: Cadencii/EditorManager.cs:2245
 #, csharp-format
 msgid "failed copying XML cache file, '{0}'."
 msgstr "XML 캐시 파일 '{0}' 의 복사에 실패했습니다."

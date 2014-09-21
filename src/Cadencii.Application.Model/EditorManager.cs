@@ -1,4 +1,16 @@
-﻿using System;
+﻿/*
+ * Copyright © 2009-2011 kbinani
+ *
+ * This file is part of cadencii.
+ *
+ * cadencii is free software; you can redistribute it and/or
+ * modify it under the terms of the GPLv3 License.
+ *
+ * cadencii is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
+using System;
 using System.IO;
 using cadencii.core;
 using System.Collections.Generic;
@@ -9,6 +21,7 @@ using cadencii.xml;
 using cadencii.utau;
 using cadencii.media;
 using System.Threading;
+using cadencii.apputil;
 
 namespace cadencii
 {
@@ -41,9 +54,13 @@ namespace cadencii
 
 		static EditorManager ()
 		{
+			for (int i = 0; i < ApplicationGlobal.MAX_NUM_TRACK; i++)
+				mDrawObjects [i] = new List<DrawObject> ();
 			Selected = 1;
 			SelectedTool = EditTool.PENCIL;
 			editHistory = new EditHistoryModel ();
+			mAutoBackupTimer = ApplicationUIHost.Create<Timer> ();
+			mAutoBackupTimer.Tick += new EventHandler (EditorManager.handleAutoBackupTimerTick);
 		}
 
 		static int mSelected;
@@ -1145,6 +1162,53 @@ namespace cadencii
 			return queue;
 		}
 
+		static string _ (string id)
+		{
+			return Messaging.getMessage (id);
+		}
+
+		/// <summary>
+		/// 指定したトラックのレンダリングが必要な部分を再レンダリングし，ツギハギすることでトラックのキャッシュを最新の状態にします．
+		/// レンダリングが途中でキャンセルされた場合にtrue，そうでない場合にfalseを返します．
+		/// </summary>
+		/// <param name="tracks"></param>
+		public static bool patchWorkToFreeze (object main_window, List<int> tracks)
+		{
+			MusicManager.getVsqFile ().updateTotalClocks ();
+			List<PatchWorkQueue> queue = EditorManager.patchWorkCreateQueue (tracks);
+#if DEBUG
+			sout.println ("AppManager#patchWorkToFreeze; queue.size()=" + queue.Count);
+#endif
+
+			FormWorker fw = new FormWorker ();
+			fw.setupUi (ApplicationUIHost.Create<FormWorkerUi> (fw));
+			fw.getUi ().setTitle (_ ("Synthesize"));
+			fw.getUi ().setText (_ ("now synthesizing..."));
+
+			double total = 0;
+			SynthesizeWorker worker = new SynthesizeWorker (main_window);
+			foreach (PatchWorkQueue q in queue) {
+				// ジョブを追加
+				double job_amount = q.getJobAmount ();
+				fw.addJob (worker, "processQueue", q.getMessage (), job_amount, q);
+				total += job_amount;
+			}
+
+			// パッチワークをするジョブを追加
+			fw.addJob (worker, "patchWork", _ ("patchwork"), total, new Object[] {
+				queue,
+				tracks
+			});
+
+			// ジョブを開始
+			fw.startJob ();
+
+			// ダイアログを表示する
+			var ret = DialogManager.showDialogTo (fw, main_window);
+
+			return ret;
+		}
+
 		/// <summary>
 		/// 指定されたトラックにあるイベントの内、配列areasで指定されたゲートタイム範囲とオーバーラップしているか、
 		/// または連続している音符を抽出し、その範囲をzoneに追加します。
@@ -1640,6 +1704,591 @@ namespace cadencii
 		}
 
 		#endregion
+
+		public static bool TrackOverlay { get; set; }
+
+		#region Grid visibility
+
+		private static bool mGridVisible = false;
+
+		/// <summary>
+		/// メイン画面で、グリッド表示のOn/Offが切り替わった時発生するイベント
+		/// </summary>
+		public static event EventHandler GridVisibleChanged;
+
+		/// <summary>
+		/// グリッドを表示するか否かを表す値を取得します
+		/// </summary>
+		public static bool isGridVisible ()
+		{
+			return mGridVisible;
+		}
+
+		/// <summary>
+		/// グリッドを表示するか否かを設定します
+		/// </summary>
+		/// <param name="value"></param>
+		public static void setGridVisible (bool value)
+		{
+			if (value != mGridVisible) {
+				mGridVisible = value;
+				try {
+					if (GridVisibleChanged != null) {
+						GridVisibleChanged.Invoke (typeof(EditorManager), new EventArgs ());
+					}
+				} catch (Exception ex) {
+					serr.println ("AppManager#setGridVisible; ex=" + ex);
+					Logger.write (typeof(EditorManager) + ".setGridVisible; ex=" + ex + "\n");
+				}
+			}
+		}
+
+		#endregion
+
+		/// <summary>
+		/// BGMに何らかの変更があった時発生するイベント
+		/// </summary>
+		public static event EventHandler UpdateBgmStatusRequired;
+
+		#region Undo/Redo
+
+		/// <summary>
+		/// 選択アイテムの管理クラスのインスタンス
+		/// </summary>
+		public static ItemSelectionModel itemSelection = new ItemSelectionModel ();
+		#if !TREECOM
+		/// <summary>
+		/// アンドゥ処理を行います。
+		/// </summary>
+		public static void undo ()
+		{
+			if (EditorManager.editHistory.hasUndoHistory ()) {
+				List<ValuePair<int, int>> before_ids = new List<ValuePair<int, int>> ();
+				foreach (var item in itemSelection.getEventIterator()) {
+					before_ids.Add (new ValuePair<int, int> (item.track, item.original.InternalID));
+				}
+
+				ICommand run_src = EditorManager.editHistory.getUndo ();
+				CadenciiCommand run = (CadenciiCommand)run_src;
+				if (run.vsqCommand != null) {
+					if (run.vsqCommand.Type == VsqCommandType.TRACK_DELETE) {
+						int track = (int)run.vsqCommand.Args [0];
+						if (track == EditorManager.Selected && track >= 2) {
+							EditorManager.Selected = track - 1;
+						}
+					}
+				}
+				ICommand inv = MusicManager.getVsqFile ().executeCommand (run);
+				if (run.type == CadenciiCommandType.BGM_UPDATE) {
+					try {
+						if (UpdateBgmStatusRequired != null) {
+							UpdateBgmStatusRequired.Invoke (typeof(EditorManager), new EventArgs ());
+						}
+					} catch (Exception ex) {
+						Logger.write (typeof(EditorManager) + ".undo; ex=" + ex + "\n");
+						serr.println (typeof(EditorManager) + ".undo; ex=" + ex);
+					}
+				}
+				EditorManager.editHistory.registerAfterUndo (inv);
+
+				cleanupDeadSelection (before_ids);
+				itemSelection.updateSelectedEventInstance ();
+			}
+		}
+
+		/// <summary>
+		/// リドゥ処理を行います。
+		/// </summary>
+		public static void redo ()
+		{
+			if (EditorManager.editHistory.hasRedoHistory ()) {
+				List<ValuePair<int, int>> before_ids = new List<ValuePair<int, int>> ();
+				foreach (var item in itemSelection.getEventIterator()) {
+					before_ids.Add (new ValuePair<int, int> (item.track, item.original.InternalID));
+				}
+
+				ICommand run_src = EditorManager.editHistory.getRedo ();
+				CadenciiCommand run = (CadenciiCommand)run_src;
+				if (run.vsqCommand != null) {
+					if (run.vsqCommand.Type == VsqCommandType.TRACK_DELETE) {
+						int track = (int)run.args [0];
+						if (track == EditorManager.Selected && track >= 2) {
+							EditorManager.Selected = track - 1;
+						}
+					}
+				}
+				ICommand inv = MusicManager.getVsqFile ().executeCommand (run);
+				if (run.type == CadenciiCommandType.BGM_UPDATE) {
+					try {
+						if (UpdateBgmStatusRequired != null) {
+							UpdateBgmStatusRequired.Invoke (typeof(EditorManager), new EventArgs ());
+						}
+					} catch (Exception ex) {
+						Logger.write (typeof(EditorManager) + ".redo; ex=" + ex + "\n");
+						serr.println (typeof(EditorManager) + ".redo; ex=" + ex);
+					}
+				}
+				EditorManager.editHistory.registerAfterRedo (inv);
+
+				cleanupDeadSelection (before_ids);
+				itemSelection.updateSelectedEventInstance ();
+			}
+		}
+
+		/// <summary>
+		/// 「選択されている」と登録されているオブジェクトのうち、Undo, Redoなどによって存在しなくなったものを登録解除する
+		/// </summary>
+		public static void cleanupDeadSelection (List<ValuePair<int, int>> before_ids)
+		{
+			int size = MusicManager.getVsqFile ().Track.Count;
+			foreach (var specif in before_ids) {
+				bool found = false;
+				int track = specif.getKey ();
+				int internal_id = specif.getValue ();
+				if (1 <= track && track < size) {
+					foreach (var item in MusicManager.getVsqFile ().Track[track].getNoteEventIterator()) {
+						if (item.InternalID == internal_id) {
+							found = true;
+							break;
+						}
+					}
+				}
+				if (!found) {
+					EditorManager.itemSelection.removeEvent (internal_id);
+				}
+			}
+		}
+		#endif
+		#endregion
+
+		private static int mCurrentClock = 0;
+		private static bool mPlaying = false;
+
+		/// <summary>
+		/// 現在の演奏マーカーの位置を取得します。
+		/// </summary>
+		public static int getCurrentClock ()
+		{
+			return mCurrentClock;
+		}
+
+		/// <summary>
+		/// 現在の演奏マーカーの位置を設定します。
+		/// </summary>
+		public static void setCurrentClock (int value)
+		{
+			mCurrentClock = value;
+		}
+
+
+		/// <summary>
+		/// 現在プレビュー中かどうかを示す値を取得します
+		/// </summary>
+		public static bool isPlaying ()
+		{
+			return mPlaying;
+		}
+
+		/// <summary>
+		/// Playingプロパティにロックをかけるためのオブジェクト
+		/// </summary>
+		private static Object mLockerPlayingProperty = new Object ();
+
+		/// <summary>
+		/// プレビュー再生が開始された時発生するイベント
+		/// </summary>
+		public static event EventHandler PreviewStarted;
+		
+		/// <summary>
+		/// プレビュー再生が終了した時発生するイベント
+		/// </summary>
+		public static event EventHandler PreviewAborted;
+
+		/// <summary>
+		/// プレビュー再生中かどうかを設定します．このプロパティーを切り替えることで，再生の開始と停止を行います．
+		/// </summary>
+		/// <param name="value"></param>
+		/// <param name="form"></param>
+		public static void setPlaying (bool value, object formMain)
+		{
+#if DEBUG
+			sout.println ("AppManager#setPlaying; value=" + value);
+#endif
+			lock (mLockerPlayingProperty) {
+				bool previous = mPlaying;
+				mPlaying = value;
+				if (previous != mPlaying) {
+					if (mPlaying) {
+						try {
+							if (previewStart (formMain)) {
+#if DEBUG
+								sout.println ("AppManager#setPlaying; previewStart returns true");
+#endif
+								mPlaying = false;
+								return;
+							}
+							if (PreviewStarted != null) {
+								PreviewStarted.Invoke (typeof(EditorManager), new EventArgs ());
+							}
+						} catch (Exception ex) {
+							serr.println ("AppManager#setPlaying; ex=" + ex);
+							Logger.write (typeof(EditorManager) + ".setPlaying; ex=" + ex + "\n");
+						}
+					} else if (!mPlaying) {
+						try {
+							previewStop ();
+#if DEBUG
+							sout.println ("AppManager#setPlaying; raise previewAbortedEvent");
+#endif
+							if (PreviewAborted != null) {
+								PreviewAborted.Invoke (typeof(EditorManager), new EventArgs ());
+							}
+						} catch (Exception ex) {
+							serr.println ("AppManager#setPlaying; ex=" + ex);
+							Logger.write (typeof(EditorManager) + ".setPlaying; ex=" + ex + "\n");
+						}
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// 直接再生モード時の、再生開始した位置の曲頭からの秒数
+		/// </summary>
+		public static float mDirectPlayShift = 0.0f;
+		/// <summary>
+		/// プレビュー終了位置のクロック
+		/// </summary>
+		public static int mPreviewEndingClock = 0;
+
+		/// <summary>
+		/// プレビュー再生を開始します．
+		/// 合成処理などが途中でキャンセルされた場合にtrue，それ以外の場合にfalseを返します
+		/// </summary>
+		private static bool previewStart (object formMain)
+		{
+			var mVsq = MusicManager.getVsqFile ();
+			int selected = EditorManager.Selected;
+			RendererKind renderer = VsqFileEx.getTrackRendererKind (mVsq.Track [selected]);
+			int clock = mCurrentClock;
+			mDirectPlayShift = (float)mVsq.getSecFromClock (clock);
+			// リアルタイム再生で無い場合
+			string tmppath = ApplicationGlobal.getTempWaveDir ();
+
+			int track_count = mVsq.Track.Count;
+
+			List<int> tracks = new List<int> ();
+			for (int track = 1; track < track_count; track++) {
+				tracks.Add (track);
+			}
+
+			if (EditorManager.patchWorkToFreeze (formMain, tracks)) {
+				// キャンセルされた
+#if DEBUG
+				sout.println ("AppManager#previewStart; patchWorkToFreeze returns true");
+#endif
+				return true;
+			}
+
+			WaveSenderDriver driver = new WaveSenderDriver ();
+			List<Amplifier> waves = new List<Amplifier> ();
+			for (int i = 0; i < tracks.Count; i++) {
+				int track = tracks [i];
+				string file = Path.Combine (tmppath, track + ".wav");
+				WaveReader wr = null;
+				try {
+					wr = new WaveReader (file);
+					wr.setOffsetSeconds (mDirectPlayShift);
+					Amplifier a = new Amplifier ();
+					FileWaveSender f = new FileWaveSender (wr);
+					a.setSender (f);
+					a.setAmplifierView (EditorManager.MixerWindow.getVolumeTracker (track));
+					waves.Add (a);
+					a.setRoot (driver);
+					f.setRoot (driver);
+				} catch (Exception ex) {
+					Logger.write (typeof(EditorManager) + ".previewStart; ex=" + ex + "\n");
+					serr.println ("AppManager.previewStart; ex=" + ex);
+				}
+			}
+
+			// clock以降に音符があるかどうかを調べる
+			int count = 0;
+			foreach (var ve in mVsq.Track[selected].getNoteEventIterator()) {
+				if (ve.Clock >= clock) {
+					count++;
+					break;
+				}
+			}
+
+			int bgm_count = MusicManager.getBgmCount ();
+			double pre_measure_sec = mVsq.getSecFromClock (mVsq.getPreMeasureClocks ());
+			for (int i = 0; i < bgm_count; i++) {
+				BgmFile bgm = MusicManager.getBgm (i);
+				WaveReader wr = null;
+				try {
+					wr = new WaveReader (bgm.file);
+					double offset = bgm.readOffsetSeconds + mDirectPlayShift;
+					if (bgm.startAfterPremeasure) {
+						offset -= pre_measure_sec;
+					}
+					wr.setOffsetSeconds (offset);
+#if DEBUG
+					sout.println ("AppManager.previewStart; bgm.file=" + bgm.file + "; offset=" + offset);
+
+#endif
+					Amplifier a = new Amplifier ();
+					FileWaveSender f = new FileWaveSender (wr);
+					a.setSender (f);
+					a.setAmplifierView (EditorManager.MixerWindow.getVolumeTrackerBgm (i));
+					waves.Add (a);
+					a.setRoot (driver);
+					f.setRoot (driver);
+				} catch (Exception ex) {
+					Logger.write (typeof(EditorManager) + ".previewStart; ex=" + ex + "\n");
+					serr.println ("AppManager.previewStart; ex=" + ex);
+				}
+			}
+
+			// 最初のsenderをドライバにする
+			driver.setSender (waves [0]);
+			Mixer m = new Mixer ();
+			m.setRoot (driver);
+			driver.setReceiver (m);
+			EditorManager.stopGenerator ();
+			EditorManager.setGenerator (driver);
+			Amplifier amp = new Amplifier ();
+			amp.setRoot (driver);
+			amp.setAmplifierView (EditorManager.MixerWindow.getVolumeTrackerMaster ());
+			m.setReceiver (amp);
+			MonitorWaveReceiver monitor = MonitorWaveReceiver.prepareInstance ();
+			monitor.setRoot (driver);
+			amp.setReceiver (monitor);
+			for (int i = 1; i < waves.Count; i++) {
+				m.addSender (waves [i]);
+			}
+
+			int end_clock = mVsq.TotalClocks;
+			if (mVsq.config.EndMarkerEnabled) {
+				end_clock = mVsq.config.EndMarker;
+			}
+			mPreviewEndingClock = end_clock;
+			double end_sec = mVsq.getSecFromClock (end_clock);
+			int sample_rate = mVsq.config.SamplingRate;
+			long samples = (long)((end_sec - mDirectPlayShift) * sample_rate);
+			driver.init (mVsq, EditorManager.Selected, 0, end_clock, sample_rate);
+#if DEBUG
+			sout.println ("AppManager.previewStart; calling runGenerator...");
+#endif
+			EditorManager.runGenerator (samples);
+#if DEBUG
+			sout.println ("AppManager.previewStart; calling runGenerator... done");
+#endif
+			return false;
+		}
+
+		public static int getPreviewEndingClock ()
+		{
+			return mPreviewEndingClock;
+		}
+
+		/// <summary>
+		/// プレビュー再生を停止します
+		/// </summary>
+		private static void previewStop ()
+		{
+			EditorManager.stopGenerator ();
+		}
+
+		public static bool readVsq (string file)
+		{
+			EditorManager.Selected = 1;
+			return MusicManager.readVsq (file, hasTracks => {
+				if (hasTracks) {
+					EditorManager.Selected = 1;
+				} else {
+					EditorManager.Selected = -1;
+				}
+				try {
+					if (EditorManager.UpdateBgmStatusRequired != null)
+						EditorManager.UpdateBgmStatusRequired (typeof(EditorManager), new EventArgs ());
+				} catch (Exception ex) {
+					Logger.write (typeof(EditorManager) + ".readVsq; ex=" + ex + "\n");
+					serr.println (typeof(EditorManager) + ".readVsq; ex=" + ex);
+				}
+			});
+		}
+
+		public static void setVsqFile (VsqFileEx vsq)
+		{
+			MusicManager.setVsqFile (vsq, preMeasureClocks => {
+				mAutoBackupTimer.Stop ();
+				EditorManager.setCurrentClock (preMeasureClocks);
+				try {
+					if (EditorManager.UpdateBgmStatusRequired != null) {
+						EditorManager.UpdateBgmStatusRequired.Invoke (typeof(EditorManager), new EventArgs ());
+					}
+				} catch (Exception ex) {
+					Logger.write (typeof(EditorManager) + ".setVsqFile; ex=" + ex + "\n");
+					serr.println (typeof(EditorManager) + ".setVsqFile; ex=" + ex);
+				}
+			});
+		}
+
+		private static Timer mAutoBackupTimer;
+
+		public static void saveTo (string file)
+		{
+			MusicManager.saveTo (file, (a, b, c, d) => DialogManager.showMessageBox (a, b, c, d), _, mFile => {
+				EditorManager.editorConfig.pushRecentFiles (mFile);
+				if (!mAutoBackupTimer.Enabled && EditorManager.editorConfig.AutoBackupIntervalMinutes > 0) {
+					double millisec = EditorManager.editorConfig.AutoBackupIntervalMinutes * 60.0 * 1000.0;
+					int draft = (int)millisec;
+					if (millisec > int.MaxValue) {
+						draft = int.MaxValue;
+					}
+					mAutoBackupTimer.Interval = draft;
+					mAutoBackupTimer.Start ();
+				}
+			});
+		}
+
+		public static bool getRenderRequired (int track)
+		{
+			var mVsq = MusicManager.getVsqFile ();
+			if (mVsq == null) {
+				return false;
+			}
+			return mVsq.editorStatus.renderRequired [track - 1];
+		}
+
+
+		/// <summary>
+		/// 自動ノーマライズモードかどうかを表す値を取得、または設定します。
+		/// </summary>
+		public static bool mAutoNormalize = false;
+		/// <summary>
+		/// 再生時に自動スクロールするかどうか
+		/// </summary>
+		public static bool mAutoScroll = true;
+		/// <summary>
+		/// プレビュー再生が開始された時刻
+		/// </summary>
+		public static double mPreviewStartedTime;
+		/// <summary>
+		/// 現在選択中のパレットアイテムの名前
+		/// </summary>
+		public static string mSelectedPaletteTool = "";
+		/// <summary>
+		/// 画面に描かれるエントリのリスト．trackBar.Valueの変更やエントリの編集などのたびに更新される
+		/// </summary>
+		public static List<DrawObject>[] mDrawObjects = new List<DrawObject>[ApplicationGlobal.MAX_NUM_TRACK];
+		public static int mAddingEventLength;
+		/// <summary>
+		/// 音符の追加操作における，追加中の音符
+		/// </summary>
+		public static VsqEvent mAddingEvent;
+		/// <summary>
+		/// AppManager.m_draw_objectsを描く際の，最初に検索されるインデクス．
+		/// </summary>
+		public static int[] mDrawStartIndex = new int[] {
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0
+		};
+		/// <summary>
+		/// 各トラックがUTAUモードかどうか．mDrawObjectsと同じタイミングで更新される
+		/// </summary>
+		public static bool[] mDrawIsUtau = new bool[ApplicationGlobal.MAX_NUM_TRACK];
+		/// <summary>
+		/// マウスが降りていて，かつ範囲選択をしているときに立つフラグ
+		/// </summary>
+		public static bool mIsPointerDowned = false;
+		public static int mLastTrackSelectorHeight;
+		/// <summary>
+		/// 再生開始からの経過時刻がこの秒数以下の場合、再生を止めることが禁止される。
+		/// </summary>
+		public static double mForbidFlipPlayingThresholdSeconds = 0.2;
+		/// <summary>
+		/// ピアノロール画面に，コントロールカーブをオーバーレイしているモード
+		/// </summary>
+		public static bool mCurveOnPianoroll = false;
+		/// <summary>
+		/// マウスが降りた仮想スクリーン上の座標(ピクセル)
+		/// </summary>
+		public static Point mMouseDownLocation = new Point ();
+
+		#region 選択範囲の管理
+
+		/// <summary>
+		/// SelectedRegionが有効かどうかを表すフラグ
+		/// </summary>
+		private static bool mWholeSelectedIntervalEnabled = false;
+		/// <summary>
+		/// Ctrlキーを押しながらのマウスドラッグ操作による選択が行われた範囲(単位：クロック)
+		/// </summary>
+		public static SelectedRegion mWholeSelectedInterval = new SelectedRegion (0);
+		/// <summary>
+		/// コントロールカーブ上で現在選択されている範囲（x:クロック、y:各コントロールカーブの単位に同じ）。マウスが動いているときのみ使用
+		/// </summary>
+		public static Rectangle mCurveSelectingRectangle = new Rectangle ();
+		/// <summary>
+		/// コントロールカーブ上で選択された範囲（単位：クロック）
+		/// </summary>
+		public static SelectedRegion mCurveSelectedInterval = new SelectedRegion (0);
+		/// <summary>
+		/// 選択範囲が有効かどうか。
+		/// </summary>
+		private static bool mCurveSelectedIntervalEnabled = false;
+		/// <summary>
+		/// 範囲選択モードで音符を動かしている最中の、選択範囲の開始位置（クロック）。マウスが動いているときのみ使用
+		/// </summary>
+		public static int mWholeSelectedIntervalStartForMoving = 0;
+
+		#endregion
+
+		#region 裏設定項目
+
+		/// <summary>
+		/// 再生中にWAVE波形の描画をスキップするかどうか（デフォルトはtrue）
+		/// </summary>
+		public static bool skipDrawingWaveformWhenPlaying = true;
+		/// <summary>
+		/// コントロールカーブに、音符の境界線を重ね描きするかどうか（デフォルトはtrue）
+		/// </summary>
+		public static bool drawItemBorderInControlCurveView = true;
+		/// <summary>
+		/// コントロールカーブに、データ点を表す四角を描くかどうか（デフォルトはtrue）
+		/// </summary>
+		public static bool drawCurveDotInControlCurveView = true;
+		/// <summary>
+		/// ピアノロール画面に、現在選択中の歌声合成エンジンの種類を描くかどうか
+		/// </summary>
+		public static bool drawOverSynthNameOnPianoroll = true;
+		/// <summary>
+		/// ピアノロール上で右クリックでコンテキストメニューを表示するかどうか
+		/// </summary>
+		public static bool showContextMenuWhenRightClickedOnPianoroll = true;
+
+		#endregion // 裏設定項目
+
+		/// <summary>
+		/// メインウィンドウにフォーカスを当てる要求があった時発生するイベント
+		/// </summary>
+		public static EventHandler MainWindowFocusRequired;
 	}
 }
 

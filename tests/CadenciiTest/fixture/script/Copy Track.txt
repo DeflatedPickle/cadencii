@@ -13,7 +13,7 @@ public class CopyTrack
     public static bool Edit(VsqFile Vsq)
     {
         //選択されているトラック番号
-        int barcount = AppManager.getPlayPosition().barCount;
+        int barcount = EditorManager.getPlayPosition().barCount;
         if (barcount <= 0)
         {
             MessageBox.Show("コピー先のバーを選択してください？");

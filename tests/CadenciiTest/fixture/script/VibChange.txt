@@ -117,7 +117,7 @@ public class VibChange : Form {
     /// <returns></returns>
     private static System.Drawing.Point getFormPreferedLocation( Form dlg ) {
         System.Drawing.Point mouse = Control.MousePosition;
-        System.Drawing.Rectangle rcScreen = Screen.GetWorkingArea( AppManager.mainWindow );
+        System.Drawing.Rectangle rcScreen = Screen.GetWorkingArea( EditorManager.mainWindow );
         int top = mouse.Y - dlg.Height / 2;
         if ( top + dlg.Height > rcScreen.Y + rcScreen.Height ) {
             // ダイアログの下端が隠れる場合、位置をずらす

@@ -256,7 +256,7 @@ namespace cadencii
                 length = 1;
             }
             item.ID.setLength(length);
-            AppManager.mAddingEvent = item;
+            EditorManager.mAddingEvent = item;
 
             btn.DoDragDrop(handle, System.Windows.Forms.DragDropEffects.All);
         }

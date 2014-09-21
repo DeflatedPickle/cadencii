@@ -549,7 +549,7 @@ namespace cadencii
         }
 
         /// <summary>
-        /// 表示するコントロールのカーブの種類を、AppManager.EditorConfigの設定に応じて更新します
+        /// 表示するコントロールのカーブの種類を、EditorManager.EditorConfigの設定に応じて更新します
         /// </summary>
         public void updateVisibleCurves()
         {
@@ -985,8 +985,8 @@ namespace cadencii
 
         public ValuePair<int, int> getSelectedRegion()
         {
-            int x0 = AppManager.mCurveSelectedInterval.getStart();
-            int x1 = AppManager.mCurveSelectedInterval.getEnd();
+            int x0 = EditorManager.mCurveSelectedInterval.getStart();
+            int x1 = EditorManager.mCurveSelectedInterval.getEnd();
             int min = Math.Min(x0, x1);
             int max = Math.Max(x0, x1);
             return new ValuePair<int, int>(min, max);
@@ -1027,7 +1027,7 @@ namespace cadencii
             int min = 0;
             if (mSelectedCurve.equals(CurveType.VEL)) {
                 int selected = EditorManager.Selected;
-                if (AppManager.mDrawIsUtau[selected - 1]) {
+                if (EditorManager.mDrawIsUtau[selected - 1]) {
                     max = UstEvent.MAX_INTENSITY;
                     min = UstEvent.MIN_INTENSITY;
                 } else {
@@ -1054,7 +1054,7 @@ namespace cadencii
             int min = 0;
             if (mSelectedCurve.equals(CurveType.VEL)) {
                 int selected = EditorManager.Selected;
-                if (AppManager.mDrawIsUtau[selected - 1]) {
+                if (EditorManager.mDrawIsUtau[selected - 1]) {
                     max = UstEvent.MAX_INTENSITY;
                     min = UstEvent.MIN_INTENSITY;
                 } else {
@@ -1238,7 +1238,7 @@ namespace cadencii
                         Rectangle rc =
                             new Rectangle(x, ycoord,
                                            SINGER_ITEM_WIDTH, OFFSET_TRACK_TAB - 2);
-                        if (AppManager.itemSelection.isEventContains(selected, ve.InternalID)) {
+                        if (EditorManager.itemSelection.isEventContains(selected, ve.InternalID)) {
                             g.setColor(EditorManager.getHilightColor());
                         } else {
                             g.setColor(cadencii.java.awt.Colors.White);
@@ -1273,7 +1273,7 @@ namespace cadencii
                                           (i + 1 < vsq.Track.Count) ? (i + 1) + " " + vsq.Track[i + 1].getName() : "",
                                           (i == selected - 1),
                                           vsq_track.getCommon().PlayMode >= 0,
-                                          AppManager.getRenderRequired(i + 1),
+                                          EditorManager.getRenderRequired(i + 1),
                                           AppManager.HILIGHT[i],
                                           AppManager.RENDER[i]);
 #if DEBUG
@@ -1304,8 +1304,8 @@ namespace cadencii
                                 key_width, size.height - 1);
 
                     if (EditorManager.IsCurveSelectedIntervalEnabled) {
-                        int x0 = EditorManager.xCoordFromClocks(AppManager.mCurveSelectedInterval.getStart());
-                        int x1 = EditorManager.xCoordFromClocks(AppManager.mCurveSelectedInterval.getEnd());
+                        int x0 = EditorManager.xCoordFromClocks(EditorManager.mCurveSelectedInterval.getStart());
+                        int x1 = EditorManager.xCoordFromClocks(EditorManager.mCurveSelectedInterval.getEnd());
                         g.setColor(COLOR_A072R255G255B255);
                         g.fillRect(x0, HEADER, x1 - x0, graph_height);
                     }
@@ -1330,7 +1330,7 @@ namespace cadencii
                                 g.drawLine(x, 8, x, 14);
                                 g.drawLine(x, size.height - 43, x, size.height - 42 - 6);
                             }
-                            if (dashed_line_step > 1 && AppManager.isGridVisible()) {
+                            if (dashed_line_step > 1 && EditorManager.isGridVisible()) {
                                 int numDashedLine = local_clock_step / dashed_line_step;
                                 Color pen = new Color(65, 65, 65);
                                 g.setColor(pen);
@@ -1458,8 +1458,8 @@ namespace cadencii
                     }
 
                     if (EditorManager.IsWholeSelectedIntervalEnabled) {
-                        int start = EditorManager.xCoordFromClocks(AppManager.mWholeSelectedInterval.getStart()) + 2;
-                        int end = EditorManager.xCoordFromClocks(AppManager.mWholeSelectedInterval.getEnd()) + 2;
+                        int start = EditorManager.xCoordFromClocks(EditorManager.mWholeSelectedInterval.getStart()) + 2;
+                        int end = EditorManager.xCoordFromClocks(EditorManager.mWholeSelectedInterval.getEnd()) + 2;
                         g.setColor(COLOR_A098R000G000B000);
                         g.fillRect(start, HEADER, end - start, graph_height);
                     }
@@ -1554,16 +1554,16 @@ namespace cadencii
                                                nPoints );*/
                             }
                         } else if (tool == EditTool.ERASER || tool == EditTool.ARROW) {
-                            if (mMouseDownMode == MouseDownMode.CURVE_EDIT && mMouseMoved && AppManager.mCurveSelectingRectangle.width != 0) {
-                                int xini = EditorManager.xCoordFromClocks(AppManager.mCurveSelectingRectangle.x);
-                                int xend = EditorManager.xCoordFromClocks(AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);
+                            if (mMouseDownMode == MouseDownMode.CURVE_EDIT && mMouseMoved && EditorManager.mCurveSelectingRectangle.width != 0) {
+                                int xini = EditorManager.xCoordFromClocks(EditorManager.mCurveSelectingRectangle.x);
+                                int xend = EditorManager.xCoordFromClocks(EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.width);
                                 int x_start = Math.Min(xini, xend);
                                 if (x_start < key_width) {
                                     x_start = key_width;
                                 }
                                 int x_end = Math.Max(xini, xend);
-                                int yini = yCoordFromValue(AppManager.mCurveSelectingRectangle.y);
-                                int yend = yCoordFromValue(AppManager.mCurveSelectingRectangle.y + AppManager.mCurveSelectingRectangle.height);
+                                int yini = yCoordFromValue(EditorManager.mCurveSelectingRectangle.y);
+                                int yend = yCoordFromValue(EditorManager.mCurveSelectingRectangle.y + EditorManager.mCurveSelectingRectangle.height);
                                 int y_start = Math.Min(yini, yend);
                                 int y_end = Math.Max(yini, yend);
                                 if (y_start < 8) y_start = 8;
@@ -1583,7 +1583,7 @@ namespace cadencii
                             }
                         }
                         if (mMouseDownMode == MouseDownMode.SINGER_LIST && EditorManager.SelectedTool != EditTool.ERASER) {
-                            foreach (var item in AppManager.itemSelection.getEventIterator()) {
+                            foreach (var item in EditorManager.itemSelection.getEventIterator()) {
                                 int x = EditorManager.xCoordFromClocks(item.editing.Clock);
                                 g.setColor(COLOR_SINGERBOX_BORDER_HILIGHT);
                                 g.drawRect(x, size.height - 2 * OFFSET_TRACK_TAB + 1,
@@ -1607,7 +1607,7 @@ namespace cadencii
                     // 現在表示されているカーブの名前
                     g.setFont(text_font);
                     g.setColor(brs_string);
-                    bool is_utau_mode = AppManager.mDrawIsUtau[selected - 1];
+                    bool is_utau_mode = EditorManager.mDrawIsUtau[selected - 1];
                     string name = (is_utau_mode && mSelectedCurve.equals(CurveType.VEL)) ? "INT" : mSelectedCurve.getName();
                     g.drawString(name, 7, text_font_height / 2 - text_font_offset + 1);
 
@@ -1638,7 +1638,7 @@ namespace cadencii
                 }
 
                 #region 現在のマーカー
-                int marker_x = EditorManager.xCoordFromClocks(AppManager.getCurrentClock());
+                int marker_x = EditorManager.xCoordFromClocks(EditorManager.getCurrentClock());
                 if (key_width <= marker_x && marker_x <= size.width) {
                     g.setColor(cadencii.java.awt.Colors.White);
                     g.setStroke(new Stroke(2f));
@@ -1715,7 +1715,7 @@ namespace cadencii
             int dotwid = DOT_WID * 2 + 1;
             int tolerance = EditorManager.editorConfig.PxTolerance;
             // 選択アイテムが1個以上あるので，検索するときtrue
-            bool search_sel = AppManager.itemSelection.getEventCount() > 0;
+            bool search_sel = EditorManager.itemSelection.getEventCount() > 0;
             while (true) {
                 bool draw_env_points = false;
                 itr_prev = itr_item;
@@ -1791,7 +1791,7 @@ namespace cadencii
 
                 // 選択されてたら描く
                 if (!draw_env_points && search_sel) {
-                    if (AppManager.itemSelection.isEventContains(track_index, item.InternalID)) {
+                    if (EditorManager.itemSelection.isEventContains(track_index, item.InternalID)) {
                         draw_env_points = true;
                     }
                 }
@@ -2298,10 +2298,10 @@ namespace cadencii
 
 			g.setFont(cadencii.core.EditorConfig.baseFont10Bold);
             bool cursor_should_be_hand = false;
-            lock (AppManager.mDrawObjects) {
-                List<DrawObject> target_list = AppManager.mDrawObjects[selected - 1];
+            lock (EditorManager.mDrawObjects) {
+                List<DrawObject> target_list = EditorManager.mDrawObjects[selected - 1];
                 int count = target_list.Count;
-                int i_start = AppManager.mDrawStartIndex[selected - 1];
+                int i_start = EditorManager.mDrawStartIndex[selected - 1];
                 for (int i = i_start; i < count; i++) {
                     DrawObject dobj = target_list[i];
                     if (dobj.mType != DrawObjectType.Note) {
@@ -2315,7 +2315,7 @@ namespace cadencii
                     } else {
                         int value = 0;
                         if (type.equals(CurveType.VEL)) {
-                            if (AppManager.mDrawIsUtau[selected - 1]) {
+                            if (EditorManager.mDrawIsUtau[selected - 1]) {
                                 value = dobj.mIntensity;
                                 max = UstEvent.MAX_INTENSITY;
                                 min = UstEvent.MIN_INTENSITY;
@@ -2336,7 +2336,7 @@ namespace cadencii
                         //float order = (type.equals( CurveType.VEL )) ? graph_height / 127f : graph_height / 100f;
 
                         int y = oy - graph_height * (value - min) / (max - min);
-                        if (is_front && AppManager.itemSelection.isEventContains(selected, dobj.mInternalID)) {
+                        if (is_front && EditorManager.itemSelection.isEventContains(selected, dobj.mInternalID)) {
                             g.setColor(COLOR_A127R008G166B172);
                             g.fillRect(x, y, VEL_BAR_WIDTH, oy - y);
                             if (mMouseDownMode == MouseDownMode.VEL_EDIT) {
@@ -2344,7 +2344,7 @@ namespace cadencii
                                 if (mVelEditSelected.ContainsKey(dobj.mInternalID)) {
                                     VsqEvent ve_editing = mVelEditSelected[dobj.mInternalID].editing;
                                     if (mSelectedCurve.equals(CurveType.VEL)) {
-                                        if (AppManager.mDrawIsUtau[selected - 1]) {
+                                        if (EditorManager.mDrawIsUtau[selected - 1]) {
                                             editing = ve_editing.UstEvent == null ? 100 : ve_editing.UstEvent.getIntensity();
                                         } else {
                                             editing = ve_editing.ID.Dynamics;
@@ -2399,7 +2399,7 @@ namespace cadencii
 #endif
                 int visibleMinX = EditorManager.keyWidth;
                 int visibleMaxX = mMainWindow.pictPianoRoll.getWidth() + EditorManager.keyWidth + EditorManager.keyOffset;
-			Color hilight = cadencii.java.awt.Colors.Blue;// AppManager.getHilightColor();
+			Color hilight = cadencii.java.awt.Colors.Blue;// EditorManager.getHilightColor();
                 int chains_count = chains.Count;
                 for (int i = 0; i < chains_count; i++) {
                     BezierChain target_chain = chains[i];
@@ -2744,7 +2744,7 @@ namespace cadencii
             // 選択されているデータ点をハイライト表示する
             int w = DOT_WID * 2 + 1;
             g.setColor(COLOR_DOT_HILIGHT);
-            foreach (var id in AppManager.itemSelection.getPointIDIterator()) {
+            foreach (var id in EditorManager.itemSelection.getPointIDIterator()) {
                 VsqBPPairSearchContext ret = list.findElement(id);
                 if (ret.index < 0) {
                     continue;
@@ -3005,8 +3005,8 @@ namespace cadencii
 
         public BezierPoint HandleMouseMoveForBezierMove(int clock, int value, int value_raw, BezierPickedSide picked)
         {
-            BezierChain target = MusicManager.getVsqFile().AttachedCurves.get(EditorManager.Selected - 1).getBezierChain(mSelectedCurve, AppManager.itemSelection.getLastBezier().chainID);
-            int point_id = AppManager.itemSelection.getLastBezier().pointID;
+            BezierChain target = MusicManager.getVsqFile().AttachedCurves.get(EditorManager.Selected - 1).getBezierChain(mSelectedCurve, EditorManager.itemSelection.getLastBezier().chainID);
+            int point_id = EditorManager.itemSelection.getLastBezier().pointID;
             int index = -1;
             for (int i = 0; i < target.points.Count; i++) {
                 if (target.points[i].getID() == point_id) {
@@ -3180,7 +3180,7 @@ namespace cadencii
             int max = mSelectedCurve.getMaximum();
             int min = mSelectedCurve.getMinimum();
             int selected = EditorManager.Selected;
-            bool is_utau_mode = AppManager.mDrawIsUtau[selected - 1];
+            bool is_utau_mode = EditorManager.mDrawIsUtau[selected - 1];
             if (is_utau_mode && mSelectedCurve.equals(CurveType.VEL)) {
                 max = UstEvent.MAX_INTENSITY;
                 min = UstEvent.MIN_INTENSITY;
@@ -3205,7 +3205,7 @@ namespace cadencii
                 }
                 mMouseMoved = true;
             }
-            if (AppManager.isPlaying()) {
+            if (EditorManager.isPlaying()) {
                 return;
             }
             int clock = EditorManager.clockFromXCoord(e.X);
@@ -3239,12 +3239,12 @@ namespace cadencii
                         }
                         draft_clock = nclock;
                     }
-                    AppManager.mCurveSelectingRectangle.width = draft_clock - AppManager.mCurveSelectingRectangle.x;
-                    AppManager.mCurveSelectingRectangle.height = value - AppManager.mCurveSelectingRectangle.y;
+                    EditorManager.mCurveSelectingRectangle.width = draft_clock - EditorManager.mCurveSelectingRectangle.x;
+                    EditorManager.mCurveSelectingRectangle.height = value - EditorManager.mCurveSelectingRectangle.y;
                 }
             } else if (mMouseDownMode == MouseDownMode.SINGER_LIST) {
                 int dclock = clock - mSingerMoveStartedClock;
-                foreach (var item in AppManager.itemSelection.getEventIterator()) {
+                foreach (var item in EditorManager.itemSelection.getEventIterator()) {
                     item.editing.Clock = item.original.Clock + dclock;
                 }
             } else if (mMouseDownMode == MouseDownMode.VEL_EDIT) {
@@ -3302,10 +3302,10 @@ namespace cadencii
                     }
                 }
             } else if (mMouseDownMode == MouseDownMode.BEZIER_MODE) {
-                HandleMouseMoveForBezierMove(clock, value, value_raw, AppManager.itemSelection.getLastBezier().picked);
+                HandleMouseMoveForBezierMove(clock, value, value_raw, EditorManager.itemSelection.getLastBezier().picked);
             } else if (mMouseDownMode == MouseDownMode.BEZIER_ADD_NEW || mMouseDownMode == MouseDownMode.BEZIER_EDIT) {
-                BezierChain target = vsq.AttachedCurves.get(selected - 1).getBezierChain(mSelectedCurve, AppManager.itemSelection.getLastBezier().chainID);
-                int point_id = AppManager.itemSelection.getLastBezier().pointID;
+                BezierChain target = vsq.AttachedCurves.get(selected - 1).getBezierChain(mSelectedCurve, EditorManager.itemSelection.getLastBezier().chainID);
+                int point_id = EditorManager.itemSelection.getLastBezier().pointID;
                 int index = -1;
                 for (int i = 0; i < target.points.Count; i++) {
                     if (target.points[i].getID() == point_id) {
@@ -3444,7 +3444,7 @@ namespace cadencii
         private void processMouseDownSelectRegion(MouseEventArgs e)
         {
             if (((Keys) Control.ModifierKeys & Keys.Control) != Keys.Control) {
-                AppManager.itemSelection.clearPoint();
+                EditorManager.itemSelection.clearPoint();
             }
 
             int clock = EditorManager.clockFromXCoord(e.X);
@@ -3466,9 +3466,9 @@ namespace cadencii
             }
 
 			if (EditorManager.editorConfig.CurveSelectingQuantized) {
-                AppManager.mCurveSelectingRectangle = new Rectangle(quantized_clock, value, 0, 0);
+                EditorManager.mCurveSelectingRectangle = new Rectangle(quantized_clock, value, 0, 0);
             } else {
-                AppManager.mCurveSelectingRectangle = new Rectangle(clock, value, 0, 0);
+                EditorManager.mCurveSelectingRectangle = new Rectangle(clock, value, 0, 0);
             }
         }
 
@@ -3528,7 +3528,7 @@ namespace cadencii
                                         Invalidate();
                                         return;
                                     } else if (x + selecter_width - PX_WIDTH_RENDER <= e.X && e.X < e.X + selecter_width) {
-                                        if (AppManager.getRenderRequired(EditorManager.Selected) && !AppManager.isPlaying()) {
+                                        if (EditorManager.getRenderRequired(EditorManager.Selected) && !EditorManager.isPlaying()) {
                                             try {
                                                 if (RenderRequired != null) {
                                                     RenderRequired.Invoke(this, EditorManager.Selected);
@@ -3547,7 +3547,7 @@ namespace cadencii
             } else if (height - 2 * OFFSET_TRACK_TAB <= e.Y && e.Y < height - OFFSET_TRACK_TAB) {
                 #region MouseDown occured on singer tab
                 mMouseDownMode = MouseDownMode.SINGER_LIST;
-                AppManager.itemSelection.clearPoint();
+                EditorManager.itemSelection.clearPoint();
                 mMouseTracer.clear();
                 VsqEvent ve = null;
                 if (key_width <= e.X && e.X <= width) {
@@ -3563,21 +3563,21 @@ namespace cadencii
                 } else {
                     if (ve != null) {
                         if ((mModifierOnMouseDown & mModifierKey) == mModifierKey) {
-                            if (AppManager.itemSelection.isEventContains(EditorManager.Selected, ve.InternalID)) {
+                            if (EditorManager.itemSelection.isEventContains(EditorManager.Selected, ve.InternalID)) {
                                 List<int> old = new List<int>();
-                                foreach (var item in AppManager.itemSelection.getEventIterator()) {
+                                foreach (var item in EditorManager.itemSelection.getEventIterator()) {
                                     int id = item.original.InternalID;
                                     if (id != ve.InternalID) {
                                         old.Add(id);
                                     }
                                 }
-                                AppManager.itemSelection.clearEvent();
-                                AppManager.itemSelection.addEventAll(old);
+                                EditorManager.itemSelection.clearEvent();
+                                EditorManager.itemSelection.addEventAll(old);
                             } else {
-                                AppManager.itemSelection.addEvent(ve.InternalID);
+                                EditorManager.itemSelection.addEvent(ve.InternalID);
                             }
                         } else if (((Keys) Control.ModifierKeys & Keys.Shift) == Keys.Shift) {
-                            int last_clock = AppManager.itemSelection.getLastEvent().original.Clock;
+                            int last_clock = EditorManager.itemSelection.getLastEvent().original.Clock;
                             int tmin = Math.Min(ve.Clock, last_clock);
                             int tmax = Math.Max(ve.Clock, last_clock);
                             List<int> add_required = new List<int>();
@@ -3585,20 +3585,20 @@ namespace cadencii
                                 VsqEvent item = itr.next();
                                 if (item.ID.type == VsqIDType.Singer && tmin <= item.Clock && item.Clock <= tmax) {
                                     add_required.Add(item.InternalID);
-                                    //AppManager.AddSelectedEvent( item.InternalID );
+                                    //EditorManager.AddSelectedEvent( item.InternalID );
                                 }
                             }
                             add_required.Add(ve.InternalID);
-                            AppManager.itemSelection.addEventAll(add_required);
+                            EditorManager.itemSelection.addEventAll(add_required);
                         } else {
-                            if (!AppManager.itemSelection.isEventContains(EditorManager.Selected, ve.InternalID)) {
-                                AppManager.itemSelection.clearEvent();
+                            if (!EditorManager.itemSelection.isEventContains(EditorManager.Selected, ve.InternalID)) {
+                                EditorManager.itemSelection.clearEvent();
                             }
-                            AppManager.itemSelection.addEvent(ve.InternalID);
+                            EditorManager.itemSelection.addEvent(ve.InternalID);
                         }
                         mSingerMoveStartedClock = clock;
                     } else {
-                        AppManager.itemSelection.clearEvent();
+                        EditorManager.itemSelection.clearEvent();
                     }
                 }
                 #endregion
@@ -3744,14 +3744,14 @@ namespace cadencii
                             } else {
                                 // まずベジエ曲線の点にヒットしてないかどうかを検査
                                 List<BezierChain> dict = MusicManager.getVsqFile().AttachedCurves.get(EditorManager.Selected - 1).get(mSelectedCurve);
-                                AppManager.itemSelection.clearBezier();
+                                EditorManager.itemSelection.clearBezier();
                                 for (int i = 0; i < dict.Count; i++) {
                                     BezierChain bc = dict[i];
                                     foreach (var bp in bc.points) {
                                         Point pt = getScreenCoord(bp.getBase());
                                         Rectangle rc = new Rectangle(pt.X - px_shift, pt.Y - px_shift, px_width, px_width);
                                         if (isInRect(e.X, e.Y, rc)) {
-                                            AppManager.itemSelection.addBezier(new SelectedBezierPoint(bc.id, bp.getID(), BezierPickedSide.BASE, bp));
+                                            EditorManager.itemSelection.addBezier(new SelectedBezierPoint(bc.id, bp.getID(), BezierPickedSide.BASE, bp));
                                             mEditingBezierOriginal = (BezierChain)bc.clone();
                                             found = true;
                                             break;
@@ -3761,7 +3761,7 @@ namespace cadencii
                                             pt = getScreenCoord(bp.getControlLeft());
                                             rc = new Rectangle(pt.X - px_shift, pt.Y - px_shift, px_width, px_width);
                                             if (isInRect(e.X, e.Y, rc)) {
-                                                AppManager.itemSelection.addBezier(new SelectedBezierPoint(bc.id, bp.getID(), BezierPickedSide.LEFT, bp));
+                                                EditorManager.itemSelection.addBezier(new SelectedBezierPoint(bc.id, bp.getID(), BezierPickedSide.LEFT, bp));
                                                 mEditingBezierOriginal = (BezierChain)bc.clone();
                                                 found = true;
                                                 break;
@@ -3772,7 +3772,7 @@ namespace cadencii
                                             pt = getScreenCoord(bp.getControlRight());
                                             rc = new Rectangle(pt.X - px_shift, pt.Y - px_shift, px_width, px_width);
                                             if (isInRect(e.X, e.Y, rc)) {
-                                                AppManager.itemSelection.addBezier(new SelectedBezierPoint(bc.id, bp.getID(), BezierPickedSide.RIGHT, bp));
+                                                EditorManager.itemSelection.addBezier(new SelectedBezierPoint(bc.id, bp.getID(), BezierPickedSide.RIGHT, bp));
                                                 mEditingBezierOriginal = (BezierChain)bc.clone();
                                                 found = true;
                                                 break;
@@ -3798,7 +3798,7 @@ namespace cadencii
                                     if ((mModifierOnMouseDown & mModifierKey) == mModifierKey) {
                                         // clicked with CTRL key
                                         List<int> list = new List<int>();
-                                        foreach (var item in AppManager.itemSelection.getEventIterator()) {
+                                        foreach (var item in EditorManager.itemSelection.getEventIterator()) {
                                             VsqEvent ve2 = item.original;
                                             if (ve.InternalID == ve2.InternalID) {
                                                 found2 = true;
@@ -3806,11 +3806,11 @@ namespace cadencii
                                                 list.Add(ve2.InternalID);
                                             }
                                         }
-                                        AppManager.itemSelection.clearEvent();
-                                        AppManager.itemSelection.addEventAll(list);
+                                        EditorManager.itemSelection.clearEvent();
+                                        EditorManager.itemSelection.addEventAll(list);
                                     } else if (((Keys) Control.ModifierKeys & Keys.Shift) == Keys.Shift) {
                                         // clicked with Shift key
-                                        SelectedEventEntry last_selected = AppManager.itemSelection.getLastEvent();
+                                        SelectedEventEntry last_selected = EditorManager.itemSelection.getLastEvent();
                                         if (last_selected != null) {
                                             int last_clock = last_selected.original.Clock;
                                             int tmin = Math.Min(ve.Clock, last_clock);
@@ -3821,22 +3821,22 @@ namespace cadencii
                                                     add_required.Add(item.InternalID);
                                                 }
                                             }
-                                            AppManager.itemSelection.addEventAll(add_required);
+                                            EditorManager.itemSelection.addEventAll(add_required);
                                         }
                                     } else {
                                         // no modefier key
-                                        if (!AppManager.itemSelection.isEventContains(EditorManager.Selected, ve.InternalID)) {
-                                            AppManager.itemSelection.clearEvent();
+                                        if (!EditorManager.itemSelection.isEventContains(EditorManager.Selected, ve.InternalID)) {
+                                            EditorManager.itemSelection.clearEvent();
                                         }
                                     }
                                     if (!found2) {
-                                        AppManager.itemSelection.addEvent(ve.InternalID);
+                                        EditorManager.itemSelection.addEvent(ve.InternalID);
                                     }
 
                                     mMouseDownMode = MouseDownMode.VEL_WAIT_HOVER;
                                     mVelEditLastSelectedID = ve.InternalID;
                                     if (mSelectedCurve.equals(CurveType.VEL)) {
-                                        if (AppManager.mDrawIsUtau[selected - 1]) {
+                                        if (EditorManager.mDrawIsUtau[selected - 1]) {
                                             mVelEditShiftY = e.Y - yCoordFromValue(ve.UstEvent == null ? 100 : ve.UstEvent.getIntensity());
                                         } else {
                                             mVelEditShiftY = e.Y - yCoordFromValue(ve.ID.Dynamics);
@@ -3847,8 +3847,8 @@ namespace cadencii
                                         mVelEditShiftY = e.Y - yCoordFromValue(ve.ID.DEMdecGainRate);
                                     }
                                     mVelEditSelected.Clear();
-                                    if (AppManager.itemSelection.isEventContains(EditorManager.Selected, mVelEditLastSelectedID)) {
-                                        foreach (var item in AppManager.itemSelection.getEventIterator()) {
+                                    if (EditorManager.itemSelection.isEventContains(EditorManager.Selected, mVelEditLastSelectedID)) {
+                                        foreach (var item in EditorManager.itemSelection.getEventIterator()) {
                                             mVelEditSelected[item.original.InternalID] =
                                                                     new SelectedEventEntry(EditorManager.Selected,
                                                                                             item.original,
@@ -3869,18 +3869,18 @@ namespace cadencii
                                 // マウス位置のデータポイントを検索
                                 long id = findDataPointAt(e.X, e.Y);
                                 if (id > 0) {
-                                    if (AppManager.itemSelection.isPointContains(id)) {
+                                    if (EditorManager.itemSelection.isPointContains(id)) {
                                         if ((mModifierOnMouseDown & mModifierKey) == mModifierKey) {
-                                            AppManager.itemSelection.removePoint(id);
+                                            EditorManager.itemSelection.removePoint(id);
                                             mMouseDownMode = MouseDownMode.NONE;
                                             Invalidate();
                                             return;
                                         }
                                     } else {
                                         if ((mModifierOnMouseDown & mModifierKey) != mModifierKey) {
-                                            AppManager.itemSelection.clearPoint();
+                                            EditorManager.itemSelection.clearPoint();
                                         }
-                                        AppManager.itemSelection.addPoint(mSelectedCurve, id);
+                                        EditorManager.itemSelection.addPoint(mSelectedCurve, id);
                                     }
 
                                     mMouseDownMode = MouseDownMode.POINT_MOVE;
@@ -3890,7 +3890,7 @@ namespace cadencii
                                         int count = list.size();
                                         for (int i = 0; i < count; i++) {
                                             VsqBPPair item = list.getElementB(i);
-                                            if (AppManager.itemSelection.isPointContains(item.id)) {
+                                            if (EditorManager.itemSelection.isPointContains(item.id)) {
                                                 mMovingPoints.Add(new BPPair(list.getKeyClock(i), item.value));
                                             }
                                         }
@@ -3899,10 +3899,10 @@ namespace cadencii
                                     }
                                 } else {
                                     if ((mModifierOnMouseDown & Keys.Control) != Keys.Control) {
-                                        AppManager.itemSelection.clearPoint();
+                                        EditorManager.itemSelection.clearPoint();
                                     }
                                     if ((mModifierOnMouseDown & Keys.Shift) != Keys.Shift && (mModifierOnMouseDown & mModifierKey) != mModifierKey) {
-                                        AppManager.itemSelection.clearPoint();
+                                        EditorManager.itemSelection.clearPoint();
                                     }
                                 }
 
@@ -3910,9 +3910,9 @@ namespace cadencii
                                     EditorManager.IsCurveSelectedIntervalEnabled = false;
                                 }
 								if (EditorManager.editorConfig.CurveSelectingQuantized) {
-                                    AppManager.mCurveSelectingRectangle = new Rectangle(quantized_clock, value, 0, 0);
+                                    EditorManager.mCurveSelectingRectangle = new Rectangle(quantized_clock, value, 0, 0);
                                 } else {
-                                    AppManager.mCurveSelectingRectangle = new Rectangle(clock, value, 0, 0);
+                                    EditorManager.mCurveSelectingRectangle = new Rectangle(clock, value, 0, 0);
                                 }
                                 #endregion
                             }
@@ -3921,7 +3921,7 @@ namespace cadencii
                             #region Eraser
                             VsqEvent ve3 = findItemAt(e.X, e.Y);
                             if (ve3 != null) {
-                                AppManager.itemSelection.clearEvent();
+                                EditorManager.itemSelection.clearEvent();
                                 CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandEventDelete(selected,
                                                                                                                   ve3.InternalID));
                                 executeCommand(run, true);
@@ -4014,12 +4014,12 @@ namespace cadencii
                                 }
 
                                 if ((mModifierOnMouseDown & Keys.Shift) != Keys.Shift && (mModifierOnMouseDown & mModifierKey) != mModifierKey) {
-                                    AppManager.itemSelection.clearPoint();
+                                    EditorManager.itemSelection.clearPoint();
                                 }
 								if (EditorManager.editorConfig.CurveSelectingQuantized) {
-                                    AppManager.mCurveSelectingRectangle = new Rectangle(quantized_clock, value, 0, 0);
+                                    EditorManager.mCurveSelectingRectangle = new Rectangle(quantized_clock, value, 0, 0);
                                 } else {
-                                    AppManager.mCurveSelectingRectangle = new Rectangle(clock, value, 0, 0);
+                                    EditorManager.mCurveSelectingRectangle = new Rectangle(clock, value, 0, 0);
                                 }
                             }
                             #endregion
@@ -4028,7 +4028,7 @@ namespace cadencii
                         if (EditorManager.isCurveMode()) {
                             if (!mSelectedCurve.equals(CurveType.VEL) && !mSelectedCurve.equals(CurveType.Env)) {
                                 List<BezierChain> dict = MusicManager.getVsqFile().AttachedCurves.get(EditorManager.Selected - 1).get(mSelectedCurve);
-                                AppManager.itemSelection.clearBezier();
+                                EditorManager.itemSelection.clearBezier();
                                 bool found = false;
                                 for (int i = 0; i < dict.Count; i++) {
                                     BezierChain bc = dict[i];
@@ -4036,7 +4036,7 @@ namespace cadencii
                                         Point pt = getScreenCoord(bp.getBase());
                                         Rectangle rc = new Rectangle(pt.X - DOT_WID, pt.Y - DOT_WID, 2 * DOT_WID + 1, 2 * DOT_WID + 1);
                                         if (isInRect(e.X, e.Y, rc)) {
-                                            AppManager.itemSelection.addBezier(new SelectedBezierPoint(bc.id, bp.getID(), BezierPickedSide.BASE, bp));
+                                            EditorManager.itemSelection.addBezier(new SelectedBezierPoint(bc.id, bp.getID(), BezierPickedSide.BASE, bp));
                                             found = true;
                                             break;
                                         }
@@ -4092,7 +4092,7 @@ namespace cadencii
 #endif
 
             if (found_chain.value != null) {
-                AppManager.itemSelection.addBezier(
+                EditorManager.itemSelection.addBezier(
                     new SelectedBezierPoint(
                         found_chain.value.id, found_point.value.getID(),
                         found_side.value, found_point.value));
@@ -4184,8 +4184,8 @@ namespace cadencii
                         executeCommand(run, false);
                         mMouseDownMode = MouseDownMode.BEZIER_EDIT;
                     }
-                    AppManager.itemSelection.clearBezier();
-                    AppManager.itemSelection.addBezier(new SelectedBezierPoint(chain_id, point_id, BezierPickedSide.BASE, bp));
+                    EditorManager.itemSelection.clearBezier();
+                    EditorManager.itemSelection.addBezier(new SelectedBezierPoint(chain_id, point_id, BezierPickedSide.BASE, bp));
                 } else {
                     mMouseDownMode = MouseDownMode.NONE;
                 }
@@ -4411,7 +4411,7 @@ namespace cadencii
             }
 
             int selected = EditorManager.Selected;
-            bool is_utau_mode = AppManager.mDrawIsUtau[selected - 1];
+            bool is_utau_mode = EditorManager.mDrawIsUtau[selected - 1];
             int stdx = EditorManager.MainWindowController.getStartToDrawX();
 
             int max = mSelectedCurve.getMaximum();
@@ -4425,7 +4425,7 @@ namespace cadencii
                  mMouseDownMode == MouseDownMode.BEZIER_MODE ||
                  mMouseDownMode == MouseDownMode.BEZIER_EDIT) {
                 if (e.Button == MouseButtons.Left && sender is TrackSelector) {
-                    int chain_id = AppManager.itemSelection.getLastBezier().chainID;
+                    int chain_id = EditorManager.itemSelection.getLastBezier().chainID;
                     BezierChain edited = (BezierChain)vsq.AttachedCurves.get(selected - 1).getBezierChain(mSelectedCurve, chain_id).clone();
                     if (mMouseDownMode == MouseDownMode.BEZIER_ADD_NEW) {
                         edited.id = chain_id;
@@ -4476,32 +4476,32 @@ namespace cadencii
                         if (mSelectedCurve.equals(CurveType.Env)) {
 
                         } else if (!mSelectedCurve.equals(CurveType.VEL) && !mSelectedCurve.equals(CurveType.Accent) && !mSelectedCurve.equals(CurveType.Decay)) {
-                            if (AppManager.mCurveSelectingRectangle.width == 0) {
+                            if (EditorManager.mCurveSelectingRectangle.width == 0) {
                                 EditorManager.IsCurveSelectedIntervalEnabled = false;
                             } else {
                                 if (!EditorManager.IsCurveSelectedIntervalEnabled) {
-                                    int start = Math.Min(AppManager.mCurveSelectingRectangle.x, AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);
-                                    int end = Math.Max(AppManager.mCurveSelectingRectangle.x, AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);
-                                    AppManager.mCurveSelectedInterval = new SelectedRegion(start);
-                                    AppManager.mCurveSelectedInterval.setEnd(end);
+                                    int start = Math.Min(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.width);
+                                    int end = Math.Max(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.width);
+                                    EditorManager.mCurveSelectedInterval = new SelectedRegion(start);
+                                    EditorManager.mCurveSelectedInterval.setEnd(end);
 #if DEBUG
                                     CDebug.WriteLine("TrackSelector#TrackSelector_MouseUp; selected_region is set to TRUE");
 #endif
                                     EditorManager.IsCurveSelectedIntervalEnabled = true;
                                 } else {
-                                    int start = Math.Min(AppManager.mCurveSelectingRectangle.x, AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);
-                                    int end = Math.Max(AppManager.mCurveSelectingRectangle.x, AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);
-                                    int old_start = AppManager.mCurveSelectedInterval.getStart();
-                                    int old_end = AppManager.mCurveSelectedInterval.getEnd();
-                                    AppManager.mCurveSelectedInterval = new SelectedRegion(Math.Min(start, old_start));
-                                    AppManager.mCurveSelectedInterval.setEnd(Math.Max(end, old_end));
+                                    int start = Math.Min(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.width);
+                                    int end = Math.Max(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.width);
+                                    int old_start = EditorManager.mCurveSelectedInterval.getStart();
+                                    int old_end = EditorManager.mCurveSelectedInterval.getEnd();
+                                    EditorManager.mCurveSelectedInterval = new SelectedRegion(Math.Min(start, old_start));
+                                    EditorManager.mCurveSelectedInterval.setEnd(Math.Max(end, old_end));
                                 }
 
                                 if ((mModifierOnMouseDown & Keys.Control) != Keys.Control) {
 #if DEBUG
                                     sout.println("TrackSelector#TrackSelector_MouseUp; CTRL was not pressed");
 #endif
-                                    AppManager.itemSelection.clearPoint();
+                                    EditorManager.itemSelection.clearPoint();
                                 }
                                 if (!mSelectedCurve.equals(CurveType.Accent) &&
                                      !mSelectedCurve.equals(CurveType.Decay) &&
@@ -4511,10 +4511,10 @@ namespace cadencii
                                      !mSelectedCurve.equals(CurveType.VibratoRate)) {
                                     VsqBPList list = vsq_track.getCurve(mSelectedCurve.getName());
                                     int count = list.size();
-                                    Rectangle rc = new Rectangle(Math.Min(AppManager.mCurveSelectingRectangle.x, AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width),
-                                                                  Math.Min(AppManager.mCurveSelectingRectangle.y, AppManager.mCurveSelectingRectangle.y + AppManager.mCurveSelectingRectangle.height),
-                                                                  Math.Abs(AppManager.mCurveSelectingRectangle.width),
-                                                                  Math.Abs(AppManager.mCurveSelectingRectangle.height));
+                                    Rectangle rc = new Rectangle(Math.Min(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.width),
+                                                                  Math.Min(EditorManager.mCurveSelectingRectangle.y, EditorManager.mCurveSelectingRectangle.y + EditorManager.mCurveSelectingRectangle.height),
+                                                                  Math.Abs(EditorManager.mCurveSelectingRectangle.width),
+                                                                  Math.Abs(EditorManager.mCurveSelectingRectangle.height));
 #if DEBUG
                                     sout.println("TrackSelectro#TrackSelectro_MouseUp; rc={x=" + rc.x + ", y=" + rc.y + ", width=" + rc.width + ", height=" + rc.height + "}");
 #endif
@@ -4525,7 +4525,7 @@ namespace cadencii
 #if DEBUG
                                             sout.println("TrackSelector#TrackSelectro_MosueUp; selected; clock=" + clock + "; id=" + item.id);
 #endif
-                                            AppManager.itemSelection.addPoint(mSelectedCurve, item.id);
+                                            EditorManager.itemSelection.addPoint(mSelectedCurve, item.id);
                                         }
                                     }
                                 }
@@ -4537,9 +4537,9 @@ namespace cadencii
                         if (EditorManager.isCurveMode()) {
                             List<BezierChain> list = vsq.AttachedCurves.get(selected - 1).get(mSelectedCurve);
                             if (list != null) {
-                                int x = Math.Min(AppManager.mCurveSelectingRectangle.x, AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);
-                                int y = Math.Min(AppManager.mCurveSelectingRectangle.y, AppManager.mCurveSelectingRectangle.y + AppManager.mCurveSelectingRectangle.height);
-                                Rectangle rc = new Rectangle(x, y, Math.Abs(AppManager.mCurveSelectingRectangle.width), Math.Abs(AppManager.mCurveSelectingRectangle.height));
+                                int x = Math.Min(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.width);
+                                int y = Math.Min(EditorManager.mCurveSelectingRectangle.y, EditorManager.mCurveSelectingRectangle.y + EditorManager.mCurveSelectingRectangle.height);
+                                Rectangle rc = new Rectangle(x, y, Math.Abs(EditorManager.mCurveSelectingRectangle.width), Math.Abs(EditorManager.mCurveSelectingRectangle.height));
 
                                 bool changed = false; //1箇所でも削除が実行されたらtrue
 
@@ -4591,13 +4591,13 @@ namespace cadencii
                         } else {
                             if (mSelectedCurve.equals(CurveType.VEL) || mSelectedCurve.equals(CurveType.Accent) || mSelectedCurve.equals(CurveType.Decay)) {
                                 #region VEL Accent Delay
-                                int start = Math.Min(AppManager.mCurveSelectingRectangle.x, AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);
-                                int end = Math.Max(AppManager.mCurveSelectingRectangle.x, AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);
-                                int old_start = AppManager.mCurveSelectedInterval.getStart();
-                                int old_end = AppManager.mCurveSelectedInterval.getEnd();
-                                AppManager.mCurveSelectedInterval = new SelectedRegion(Math.Min(start, old_start));
-                                AppManager.mCurveSelectedInterval.setEnd(Math.Max(end, old_end));
-                                AppManager.itemSelection.clearEvent();
+                                int start = Math.Min(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.width);
+                                int end = Math.Max(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.width);
+                                int old_start = EditorManager.mCurveSelectedInterval.getStart();
+                                int old_end = EditorManager.mCurveSelectedInterval.getEnd();
+                                EditorManager.mCurveSelectedInterval = new SelectedRegion(Math.Min(start, old_start));
+                                EditorManager.mCurveSelectedInterval.setEnd(Math.Max(end, old_end));
+                                EditorManager.itemSelection.clearEvent();
                                 List<int> deleting = new List<int>();
                                 foreach (var ev in vsq_track.getNoteEventIterator()) {
                                     if (start <= ev.Clock && ev.Clock <= end) {
@@ -4612,8 +4612,8 @@ namespace cadencii
                                 #endregion
                             } else if (mSelectedCurve.equals(CurveType.VibratoRate) || mSelectedCurve.equals(CurveType.VibratoDepth)) {
                                 #region VibratoRate ViratoDepth
-                                int er_start = Math.Min(AppManager.mCurveSelectingRectangle.x, AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);
-                                int er_end = Math.Max(AppManager.mCurveSelectingRectangle.x, AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);
+                                int er_start = Math.Min(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.width);
+                                int er_end = Math.Max(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.width);
                                 List<int> internal_ids = new List<int>();
                                 List<VsqID> items = new List<VsqID>();
                                 foreach (var ve in vsq_track.getNoteEventIterator()) {
@@ -4716,9 +4716,9 @@ namespace cadencii
                                 VsqBPList work = vsq_track.getCurve(mSelectedCurve.getName());
 
                                 // 削除するべきデータ点のリストを作成
-                                int x = Math.Min(AppManager.mCurveSelectingRectangle.x, AppManager.mCurveSelectingRectangle.x + AppManager.mCurveSelectingRectangle.width);
-                                int y = Math.Min(AppManager.mCurveSelectingRectangle.y, AppManager.mCurveSelectingRectangle.y + AppManager.mCurveSelectingRectangle.height);
-                                Rectangle rc = new Rectangle(x, y, Math.Abs(AppManager.mCurveSelectingRectangle.width), Math.Abs(AppManager.mCurveSelectingRectangle.height));
+                                int x = Math.Min(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.width);
+                                int y = Math.Min(EditorManager.mCurveSelectingRectangle.y, EditorManager.mCurveSelectingRectangle.y + EditorManager.mCurveSelectingRectangle.height);
+                                Rectangle rc = new Rectangle(x, y, Math.Abs(EditorManager.mCurveSelectingRectangle.width), Math.Abs(EditorManager.mCurveSelectingRectangle.height));
                                 List<long> delete = new List<long>();
                                 int count = work.size();
                                 for (int i = 0; i < count; i++) {
@@ -5034,7 +5034,7 @@ namespace cadencii
                 mMouseDowned = false;
             } else if (mMouseDownMode == MouseDownMode.SINGER_LIST) {
                 if (mMouseMoved) {
-                    int count = AppManager.itemSelection.getEventCount();
+                    int count = EditorManager.itemSelection.getEventCount();
                     if (count > 0) {
                         int[] ids = new int[count];
                         int[] clocks = new int[count];
@@ -5043,7 +5043,7 @@ namespace cadencii
                         bool is_valid = true;
                         bool contains_first_singer = false;
                         int premeasure = vsq.getPreMeasureClocks();
-                        foreach (var item in AppManager.itemSelection.getEventIterator()) {
+                        foreach (var item in EditorManager.itemSelection.getEventIterator()) {
                             i++;
                             ids[i] = item.original.InternalID;
                             clocks[i] = item.editing.Clock;
@@ -5073,7 +5073,7 @@ namespace cadencii
                             }
                             bool changed = false;
                             for (int j = 0; j < ids.Length; j++) {
-                                foreach (var item in AppManager.itemSelection.getEventIterator()) {
+                                foreach (var item in EditorManager.itemSelection.getEventIterator()) {
                                     if (item.original.InternalID == ids[j] && item.original.Clock != clocks[j]) {
                                         changed = true;
                                         break;
@@ -5122,8 +5122,8 @@ namespace cadencii
                     executeCommand(run, true);
                 }
                 if (mVelEditSelected.Count == 1) {
-                    AppManager.itemSelection.clearEvent();
-                    AppManager.itemSelection.addEvent(mVelEditLastSelectedID);
+                    EditorManager.itemSelection.clearEvent();
+                    EditorManager.itemSelection.addEvent(mVelEditLastSelectedID);
                 }
             } else if (mMouseDownMode == MouseDownMode.ENVELOPE_MOVE) {
                 mMouseDownMode = MouseDownMode.NONE;
@@ -5206,7 +5206,7 @@ namespace cadencii
                     for (int i = 0; i < count; i++) {
                         int clock = list.getKeyClock(i);
                         VsqBPPair item = list.getElementB(i);
-                        if (AppManager.itemSelection.isPointContains(item.id)) {
+                        if (EditorManager.itemSelection.isPointContains(item.id)) {
                             int x = EditorManager.xCoordFromClocks(clock) + dx + 1;
                             int y = yCoordFromValue(item.value) + dy - 1;
 
@@ -5565,8 +5565,8 @@ namespace cadencii
                                 }
 
                                 if (bp_found) {
-                                    AppManager.itemSelection.clearPoint();
-                                    AppManager.itemSelection.addPoint(mSelectedCurve, bp_id);
+                                    EditorManager.itemSelection.clearPoint();
+                                    EditorManager.itemSelection.addPoint(mSelectedCurve, bp_id);
                                     FormCurvePointEdit dialog =
                                         new FormCurvePointEdit(mMainWindow, bp_id, mSelectedCurve);
                                     int tx = EditorManager.xCoordFromClocks(tclock);
