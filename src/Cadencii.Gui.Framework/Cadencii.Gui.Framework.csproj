@@ -81,6 +81,7 @@
     <Compile Include="models\UiBase.cs" />
     <Compile Include="models\Size.cs" />
     <Compile Include="models\winforms\BorderStyle.cs" />
+    <Compile Include="models\winforms\DragDropEffects.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

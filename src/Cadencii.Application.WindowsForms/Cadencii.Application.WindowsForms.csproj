@@ -311,6 +311,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ui\controls\UserControlImpl.cs" />
+    <Compile Include="forms\DraggableBButton.cs" />
+    <Compile Include="ui\controls\ButtonImpl.cs" />
+    <Compile Include="forms\FormUiBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />

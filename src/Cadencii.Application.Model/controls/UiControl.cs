@@ -4,6 +4,11 @@ using cadencii.vsq;
 
 namespace cadencii
 {
+	public interface UiUserControl : UiControl
+	{
+		BorderStyle BorderStyle { get; set; }
+	}
+
 	public interface UiControl
 	{
 		object Native { get; }
@@ -20,8 +25,6 @@ namespace cadencii
 		Point Location { get; set; }
 
 		Size Size { get; set; }
-
-		BorderStyle BorderStyle { get; set; }
 
 
 		void Refresh ();

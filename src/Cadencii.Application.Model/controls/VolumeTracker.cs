@@ -6,9 +6,10 @@ namespace cadencii
 	public static class VolumeTrackerController
 	{
 		public const int WIDTH = 85;
-        public const int HEIGHT = 284;
+		public const int HEIGHT = 284;
 	}
-	public interface VolumeTracker : UiControl, IAmplifierView
+
+	public interface VolumeTracker : UiUserControl, IAmplifierView
 	{
 		int getTrack ();
 

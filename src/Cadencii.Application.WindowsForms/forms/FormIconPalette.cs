@@ -26,22 +26,6 @@ using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 
 namespace cadencii
 {
-
-    class DraggableBButton : Button
-    {
-        private IconDynamicsHandle mHandle = null;
-
-        public IconDynamicsHandle getHandle()
-        {
-            return mHandle;
-        }
-
-        public void setHandle(IconDynamicsHandle value)
-        {
-            mHandle = value;
-        }
-    }
-
     public class FormIconPaletteUiImpl : FormUiBase, FormIconPaletteUi
     {
 		int UiBase.showDialog (object parent_form)
@@ -49,9 +33,9 @@ namespace cadencii
 			throw new NotImplementedException ();
 		}
 
-        private List<Button> dynaffButtons = new List<Button>();
-        private List<Button> crescendButtons = new List<Button>();
-        private List<Button> decrescendButtons = new List<Button>();
+		private List<DraggableBButton> dynaffButtons = new List<DraggableBButton>();
+		private List<DraggableBButton> crescendButtons = new List<DraggableBButton>();
+		private List<DraggableBButton> decrescendButtons = new List<DraggableBButton>();
         private int buttonWidth = 40;
         private FormMain mMainWindow = null;
         private bool mPreviousAlwaysOnTop;
@@ -118,14 +102,14 @@ namespace cadencii
         {
             foreach (var handle in VocaloSysUtil.dynamicsConfigIterator(SynthesizerType.VOCALOID1)) {
                 string icon_id = handle.IconID;
-                DraggableBButton btn = new DraggableBButton();
+                DraggableBButton btn = ApplicationUIHost.Create<DraggableBButton> ();
                 btn.Name = icon_id;
                 btn.setHandle(handle);
                 string buttonIconPath = handle.getButtonImageFullPath();
 
                 bool setimg = System.IO.File.Exists(buttonIconPath);
                 if (setimg) {
-                    btn.Image = System.Drawing.Image.FromStream(new System.IO.FileStream(buttonIconPath, System.IO.FileMode.Open, System.IO.FileAccess.Read));
+                    btn.Image = new cadencii.java.awt.Image () { NativeImage = System.Drawing.Image.FromStream(new System.IO.FileStream(buttonIconPath, System.IO.FileMode.Open, System.IO.FileAccess.Read)) };
                 } else {
                     System.Drawing.Image img = null;
                     string str = "";
@@ -168,13 +152,13 @@ namespace cadencii
                         str = "ppp";
                     }
                     if (img != null) {
-                        btn.Image = img;
+                        btn.Image = new cadencii.java.awt.Image () { NativeImage = img };
                     } else {
                         btn.Text = str;
                     }
                 }
-                btn.MouseDown += new MouseEventHandler(handleCommonMouseDown);
-                btn.Size = new System.Drawing.Size(buttonWidth, buttonWidth);
+                btn.MouseDown += new cadencii.java.awt.MouseEventHandler(handleCommonMouseDown);
+                btn.Size = new cadencii.java.awt.Size(buttonWidth, buttonWidth);
                 int iw = 0;
                 int ih = 0;
                 if (icon_id.StartsWith(IconDynamicsHandle.ICONID_HEAD_DYNAFF)) {
@@ -195,8 +179,8 @@ namespace cadencii
                 } else {
                     continue;
                 }
-                btn.Location = new System.Drawing.Point(iw * buttonWidth, ih * buttonWidth);
-                this.Controls.Add(btn);
+                btn.Location = new cadencii.java.awt.Point(iw * buttonWidth, ih * buttonWidth);
+                this.Controls.Add((Control) btn.Native);
                 btn.BringToFront();
             }
 
@@ -240,7 +224,7 @@ namespace cadencii
             this.Visible = false;
         }
 
-        public void handleCommonMouseDown(Object sender, MouseEventArgs e)
+        public void handleCommonMouseDown(Object sender, cadencii.java.awt.MouseEventArgs e)
         {
             if (EditorManager.EditMode != EditMode.NONE) {
                 return;
@@ -263,7 +247,7 @@ namespace cadencii
             item.ID.setLength(length);
             EditorManager.mAddingEvent = item;
 
-            btn.DoDragDrop(handle, System.Windows.Forms.DragDropEffects.All);
+            btn.DoDragDrop(handle, cadencii.java.awt.DragDropEffects.All);
         }
         #endregion
 

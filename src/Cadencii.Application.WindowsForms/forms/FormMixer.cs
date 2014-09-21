@@ -24,28 +24,6 @@ using Keys = cadencii.java.awt.Keys;
 
 namespace cadencii
 {
-	public class FormUiBase : Form, UiBase
- 	{
-		event EventHandler UiBase.LocationChanged {
-			add { this.LocationChanged += (object sender, EventArgs e) => value (sender, e); }
-			remove { this.LocationChanged -= (object sender, EventArgs e) => value (sender, e); }
-		}
-
-		cadencii.java.awt.Point UiBase.Location {
-			get { return new cadencii.java.awt.Point (Location.X, Location.Y); }
-			set { Location = new System.Drawing.Point (value.X, value.Y); }
-		}
-
-		event EventHandler UiBase.FormClosing {
-			add { this.FormClosing += (object sender, FormClosingEventArgs e) => value (sender, e); }
-			remove { this.FormClosing -= (object sender, FormClosingEventArgs e) => value (sender, e); }
-		}
-
-		int UiBase.showDialog (object parent_form)
-		{
-			return ShowDialog ((IWin32Window) parent_form) == System.Windows.Forms.DialogResult.OK ? 1 : 0;
-		}
- 	}
 
 	public class FormMixerUiImpl : FormUiBase, FormMixerUi
     {
