@@ -532,8 +532,8 @@ namespace cadencii
 
 #if ENABLE_PROPERTY
             EditorManager.propertyPanel = new PropertyPanelImpl();
-            AppManager.propertyWindow = new FormNotePropertyController(c => new FormNotePropertyUiImpl(c), this);
-            AppManager.propertyWindow.getUi().addComponent(EditorManager.propertyPanel);
+            EditorManager.propertyWindow = new FormNotePropertyController(c => new FormNotePropertyUiImpl(c), this);
+            EditorManager.propertyWindow.getUi().addComponent(EditorManager.propertyPanel);
 #endif
 
 #if DEBUG
@@ -779,8 +779,8 @@ namespace cadencii
             menuHelpLogSwitch.Checked = Logger.isEnabled();
             applyShortcut();
 
-            EditorManager.MixerWindow = new FormMixerUiImpl(this);
-            AppManager.iconPalette = new FormIconPalette(this);
+			EditorManager.MixerWindow = ApplicationUIHost.Create<FormMixerUi> (this);
+            EditorManager.iconPalette = ApplicationUIHost.Create<FormIconPaletteUi> (this);
 
             // ファイルを開く
             if (file != "") {
@@ -867,12 +867,12 @@ namespace cadencii
 				Rectangle workingArea = cadencii.core2.PortUtil.getWorkingArea(this);
                 p1 = new Point(workingArea.x, workingArea.y);
             }
-            AppManager.iconPalette.Location = new System.Drawing.Point(p1.X, p1.Y);
+            EditorManager.iconPalette.Location = new Point(p1.X, p1.Y);
             if (EditorManager.editorConfig.IconPaletteVisible) {
-                AppManager.iconPalette.Visible = true;
+                EditorManager.iconPalette.Visible = true;
             }
-            AppManager.iconPalette.FormClosing += new FormClosingEventHandler(iconPalette_FormClosing);
-            AppManager.iconPalette.LocationChanged += new EventHandler(iconPalette_LocationChanged);
+            EditorManager.iconPalette.FormClosing += new EventHandler(iconPalette_FormClosing);
+            EditorManager.iconPalette.LocationChanged += new EventHandler(iconPalette_LocationChanged);
 
             trackSelector.CommandExecuted += new EventHandler(trackSelector_CommandExecuted);
 
@@ -952,7 +952,7 @@ namespace cadencii
 #endif
 
 #if ENABLE_PROPERTY
-            AppManager.propertyWindow.getUi().setBounds(a.X, a.Y, rc.width, rc.height);
+            EditorManager.propertyWindow.getUi().setBounds(a.X, a.Y, rc.width, rc.height);
             EditorManager.propertyPanel.CommandExecuteRequired += new CommandExecuteRequiredEventHandler(propertyPanel_CommandExecuteRequired);
 #endif
             updateBgmMenuState();
@@ -2284,10 +2284,10 @@ namespace cadencii
                 sout.println("FormMain#updatePropertyPanelState; state=Docked; w=" + w);
 #endif
                 EditorManager.editorConfig.PropertyWindowStatus.IsMinimized = true;
-                AppManager.propertyWindow.getUi().hideWindow();
+                EditorManager.propertyWindow.getUi().hideWindow();
             } else if (state == PanelState.Hidden) {
-                if (AppManager.propertyWindow.getUi().isVisible()) {
-                    AppManager.propertyWindow.getUi().hideWindow();
+                if (EditorManager.propertyWindow.getUi().isVisible()) {
+                    EditorManager.propertyWindow.getUi().hideWindow();
                 }
                 menuVisualProperty.Checked = false;
                 if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
@@ -2300,7 +2300,7 @@ namespace cadencii
                 splitContainerProperty.setDividerSize(0);
                 splitContainerProperty.setSplitterFixed(true);
             } else if (state == PanelState.Window) {
-                AppManager.propertyWindow.getUi().addComponent(EditorManager.propertyPanel);
+                EditorManager.propertyWindow.getUi().addComponent(EditorManager.propertyPanel);
                 var parent = this.Location;
                 XmlRectangle rc = EditorManager.editorConfig.PropertyWindowStatus.Bounds;
                 Point property = new Point(rc.x, rc.y);
@@ -2308,20 +2308,20 @@ namespace cadencii
                 int y = parent.Y + property.Y;
                 int width = rc.width;
                 int height = rc.height;
-                AppManager.propertyWindow.getUi().setBounds(x, y, width, height);
-                int workingAreaX = AppManager.propertyWindow.getUi().getWorkingAreaX();
-                int workingAreaY = AppManager.propertyWindow.getUi().getWorkingAreaY();
-                int workingAreaWidth = AppManager.propertyWindow.getUi().getWorkingAreaWidth();
-                int workingAreaHeight = AppManager.propertyWindow.getUi().getWorkingAreaHeight();
+                EditorManager.propertyWindow.getUi().setBounds(x, y, width, height);
+                int workingAreaX = EditorManager.propertyWindow.getUi().getWorkingAreaX();
+                int workingAreaY = EditorManager.propertyWindow.getUi().getWorkingAreaY();
+                int workingAreaWidth = EditorManager.propertyWindow.getUi().getWorkingAreaWidth();
+                int workingAreaHeight = EditorManager.propertyWindow.getUi().getWorkingAreaHeight();
                 Point appropriateLocation = getAppropriateDialogLocation(
                     x, y, width, height,
                     workingAreaX, workingAreaY, workingAreaWidth, workingAreaHeight
                 );
-                AppManager.propertyWindow.getUi().setBounds(appropriateLocation.X, appropriateLocation.Y, width, height);
+                EditorManager.propertyWindow.getUi().setBounds(appropriateLocation.X, appropriateLocation.Y, width, height);
                 // setVisible -> NORMALとすると，javaの場合見栄えが悪くなる
-                AppManager.propertyWindow.getUi().setVisible(true);
-                if (AppManager.propertyWindow.getUi().isWindowMinimized()) {
-                    AppManager.propertyWindow.getUi().deiconfyWindow();
+                EditorManager.propertyWindow.getUi().setVisible(true);
+                if (EditorManager.propertyWindow.getUi().isWindowMinimized()) {
+                    EditorManager.propertyWindow.getUi().deiconfyWindow();
                 }
                 menuVisualProperty.Checked = true;
                 if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
@@ -3620,7 +3620,7 @@ namespace cadencii
         /// </summary>
         public void flipIconPaletteVisible(bool visible)
         {
-            AppManager.iconPalette.Visible = visible;
+            EditorManager.iconPalette.Visible = visible;
             EditorManager.editorConfig.IconPaletteVisible = visible;
             if (visible != menuVisualIconPalette.Checked) {
                 menuVisualIconPalette.Checked = visible;
@@ -3710,19 +3710,19 @@ namespace cadencii
             }
 
             // アイコンパレット
-            if (AppManager.iconPalette != null) {
+            if (EditorManager.iconPalette != null) {
                 if (dict.ContainsKey("menuVisualIconPalette")) {
                     Keys shortcut = dict["menuVisualIconPalette"].Aggregate(Keys.None, (seed, key) => seed | key);
-                    AppManager.iconPalette.applyShortcut(shortcut);
+                    EditorManager.iconPalette.applyShortcut(shortcut);
                 }
             }
 
 #if ENABLE_PROPERTY
             // プロパティ
-            if (AppManager.propertyWindow != null) {
+            if (EditorManager.propertyWindow != null) {
                 if (dict.ContainsKey(menuVisualProperty.Name)) {
                     Keys shortcut = dict[menuVisualProperty.Name].Aggregate(Keys.None, (seed, key) => seed | key);
-                    AppManager.propertyWindow.applyShortcut(shortcut);
+                    EditorManager.propertyWindow.applyShortcut(shortcut);
                 }
             }
 #endif
@@ -9031,13 +9031,13 @@ namespace cadencii
         #region iconPalette
         public void iconPalette_LocationChanged(Object sender, EventArgs e)
         {
-            var point = AppManager.iconPalette.Location;
+            var point = EditorManager.iconPalette.Location;
             EditorManager.editorConfig.FormIconPaletteLocation = new XmlPoint(point.X, point.Y);
         }
 
-        public void iconPalette_FormClosing(Object sender, FormClosingEventArgs e)
+        public void iconPalette_FormClosing(Object sender, EventArgs e)
         {
-            flipIconPaletteVisible(AppManager.iconPalette.Visible);
+            flipIconPaletteVisible(EditorManager.iconPalette.Visible);
         }
         #endregion
 
@@ -9379,9 +9379,9 @@ namespace cadencii
 #endif
             if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
 #if DEBUG
-                sout.println("FormMain#proprtyWindow_WindowStateChanged; isWindowMinimized=" + AppManager.propertyWindow.getUi().isWindowMinimized());
+                sout.println("FormMain#proprtyWindow_WindowStateChanged; isWindowMinimized=" + EditorManager.propertyWindow.getUi().isWindowMinimized());
 #endif
-                if (AppManager.propertyWindow.getUi().isWindowMinimized()) {
+                if (EditorManager.propertyWindow.getUi().isWindowMinimized()) {
                     updatePropertyPanelState(PanelState.Docked);
                 }
             }
@@ -9393,15 +9393,15 @@ namespace cadencii
             sout.println("FormMain#propertyWindow_LocationOrSizeChanged");
 #endif
             if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
-                if (AppManager.propertyWindow != null && false == AppManager.propertyWindow.getUi().isWindowMinimized()) {
+                if (EditorManager.propertyWindow != null && false == EditorManager.propertyWindow.getUi().isWindowMinimized()) {
                     var parent = this.Location;
-                    int propertyX = AppManager.propertyWindow.getUi().getX();
-                    int propertyY = AppManager.propertyWindow.getUi().getY();
+                    int propertyX = EditorManager.propertyWindow.getUi().getX();
+                    int propertyY = EditorManager.propertyWindow.getUi().getY();
                     EditorManager.editorConfig.PropertyWindowStatus.Bounds =
                         new XmlRectangle(propertyX - parent.X,
                                           propertyY - parent.Y,
-                                          AppManager.propertyWindow.getUi().getWidth(),
-                                          AppManager.propertyWindow.getUi().getHeight());
+                                          EditorManager.propertyWindow.getUi().getWidth(),
+                                          EditorManager.propertyWindow.getUi().getHeight());
                 }
             }
         }
@@ -9903,11 +9903,11 @@ namespace cadencii
 #if ENABLE_PROPERTY
                 // プロパティウィンドウの状態を更新
                 if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
-                    if (AppManager.propertyWindow.getUi().isWindowMinimized()) {
-                        AppManager.propertyWindow.getUi().deiconfyWindow();
+                    if (EditorManager.propertyWindow.getUi().isWindowMinimized()) {
+                        EditorManager.propertyWindow.getUi().deiconfyWindow();
                     }
-                    if (!AppManager.propertyWindow.getUi().isVisible()) {
-                        AppManager.propertyWindow.getUi().setVisible(true);
+                    if (!EditorManager.propertyWindow.getUi().isVisible()) {
+                        EditorManager.propertyWindow.getUi().setVisible(true);
                     }
                 }
 #endif
@@ -9918,29 +9918,29 @@ namespace cadencii
                 }
 
                 // アイコンパレットの状態を更新
-                if (AppManager.iconPalette != null && menuVisualIconPalette.Checked) {
-                    if (!AppManager.iconPalette.Visible) {
-                        AppManager.iconPalette.Visible = true;
+                if (EditorManager.iconPalette != null && menuVisualIconPalette.Checked) {
+                    if (!EditorManager.iconPalette.Visible) {
+                        EditorManager.iconPalette.Visible = true;
                     }
                 }
                 updateLayout();
                 this.Focus();
             } else if (state == FormWindowState.Minimized) {
 #if ENABLE_PROPERTY
-                AppManager.propertyWindow.getUi().setVisible(false);
+                EditorManager.propertyWindow.getUi().setVisible(false);
 #endif
                 EditorManager.MixerWindow.Visible = false;
-                if (AppManager.iconPalette != null) {
-                    AppManager.iconPalette.Visible = false;
+                if (EditorManager.iconPalette != null) {
+                    EditorManager.iconPalette.Visible = false;
                 }
             }/* else if ( state == BForm.MAXIMIZED_BOTH ) {
 #if ENABLE_PROPERTY
-                AppManager.propertyWindow.setExtendedState( BForm.NORMAL );
-                AppManager.propertyWindow.setVisible( EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window );
+                EditorManager.propertyWindow.setExtendedState( BForm.NORMAL );
+                EditorManager.propertyWindow.setVisible( EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window );
 #endif
                 EditorManager.MixerWindow.setVisible( EditorManager.editorConfig.MixerVisible );
-                if ( AppManager.iconPalette != null && menuVisualIconPalette.isSelected() ) {
-                    AppManager.iconPalette.setVisible( true );
+                if ( EditorManager.iconPalette != null && menuVisualIconPalette.isSelected() ) {
+                    EditorManager.iconPalette.setVisible( true );
                 }
                 this.requestFocus();
             }*/
@@ -11934,7 +11934,7 @@ namespace cadencii
                             mVersionInfo.applyLanguage();
                         }
 #if ENABLE_PROPERTY
-                        AppManager.propertyWindow.applyLanguage();
+                        EditorManager.propertyWindow.applyLanguage();
                         EditorManager.propertyPanel.updateValue(EditorManager.Selected);
 #endif
                         if (mDialogMidiImportAndExport != null) {

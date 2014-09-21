@@ -26,13 +26,8 @@ namespace cadencii
     /// <summary>
     /// 起動時に表示されるスプラッシュウィンドウ
     /// </summary>
-    public class FormSplashUiImpl : Form, FormSplashUi
+    public class FormSplashUiImpl : FormUiBase, FormSplashUi
     {
-		int UiBase.showDialog (object parent_form)
-		{
-			return ShowDialog ((IWin32Window) parent_form) == System.Windows.Forms.DialogResult.OK ? 1 : 0;
-		}
-
         /// <summary>
         /// addIconメソッドを呼び出すときに使うデリゲート
         /// </summary>

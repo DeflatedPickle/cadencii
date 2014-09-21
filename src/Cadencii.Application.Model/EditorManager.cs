@@ -41,6 +41,18 @@ namespace cadencii
 		/// ミキサーダイアログ
 		/// </summary>
 		public static FormMixerUi MixerWindow;
+		/// <summary>
+		/// アイコンパレット・ウィンドウのインスタンス
+		/// </summary>
+		public static FormIconPaletteUi iconPalette;
+
+		#if ENABLE_PROPERTY
+		/// <summary>
+		/// プロパティウィンドウが分離した場合のプロパティウィンドウのインスタンス。
+		/// メインウィンドウとプロパティウィンドウが分離している時、propertyPanelがpropertyWindowの子になる
+		/// </summary>
+		public static FormNotePropertyController propertyWindow;
+		#endif
 
 		/// <summary>
 		/// 鍵盤の表示幅(pixel)

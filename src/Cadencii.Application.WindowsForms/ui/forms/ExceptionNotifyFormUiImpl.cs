@@ -21,7 +21,7 @@ using System.Windows.Forms;
 
 namespace cadencii
 {
-    public partial class ExceptionNotifyFormUiImpl : Form, ExceptionNotifyFormUi
+	public partial class ExceptionNotifyFormUiImpl : FormUiBase, ExceptionNotifyFormUi
     {
         protected ExceptionNotifyFormUiListener uiListener;
 

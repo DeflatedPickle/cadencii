@@ -36,6 +36,8 @@ namespace cadencii.java.awt
 			a = AwtHost.Current.New<GraphicsAdapter> (other);
 		}
 
+		public GraphicsAdapter Adapter { get { return a; } }
+
 		public object NativeGraphics { get { return a.NativeGraphics; } set { a.NativeGraphics = value; } }
 
 		public object NativeBrush { get { return a.NativeBrush; } set { a.NativeBrush = value; } }

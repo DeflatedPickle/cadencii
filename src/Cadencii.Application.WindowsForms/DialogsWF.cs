@@ -38,11 +38,11 @@ namespace cadencii
 		{
 			mShowingDialog = true;
 #if ENABLE_PROPERTY
-			if (AppManager.propertyWindow != null) {
-				bool previous = AppManager.propertyWindow.getUi ().isAlwaysOnTop ();
-				AppManager.propertyWindow.setPreviousAlwaysOnTop (previous);
+			if (EditorManager.propertyWindow != null) {
+				bool previous = EditorManager.propertyWindow.getUi ().isAlwaysOnTop ();
+				EditorManager.propertyWindow.setPreviousAlwaysOnTop (previous);
 				if (previous) {
-					AppManager.propertyWindow.getUi ().setAlwaysOnTop (false);
+					EditorManager.propertyWindow.getUi ().setAlwaysOnTop (false);
 				}
 			}
 #endif
@@ -54,11 +54,11 @@ namespace cadencii
 				}
 			}
 
-			if (AppManager.iconPalette != null) {
-				bool previous = AppManager.iconPalette.TopMost;
-				AppManager.iconPalette.setPreviousAlwaysOnTop (previous);
+			if (EditorManager.iconPalette != null) {
+				bool previous = EditorManager.iconPalette.TopMost;
+				EditorManager.iconPalette.setPreviousAlwaysOnTop (previous);
 				if (previous) {
-					AppManager.iconPalette.TopMost = false;
+					EditorManager.iconPalette.TopMost = false;
 				}
 			}
 		}
@@ -68,16 +68,16 @@ namespace cadencii
 		void AfterShowDialog ()
 		{
 			#if ENABLE_PROPERTY
-			if (AppManager.propertyWindow != null) {
-				AppManager.propertyWindow.getUi ().setAlwaysOnTop (AppManager.propertyWindow.getPreviousAlwaysOnTop ());
+			if (EditorManager.propertyWindow != null) {
+				EditorManager.propertyWindow.getUi ().setAlwaysOnTop (EditorManager.propertyWindow.getPreviousAlwaysOnTop ());
 			}
 #endif
 			if (EditorManager.MixerWindow != null) {
 				EditorManager.MixerWindow.TopMost = EditorManager.MixerWindow.getPreviousAlwaysOnTop ();
 			}
 
-			if (AppManager.iconPalette != null) {
-				AppManager.iconPalette.TopMost = AppManager.iconPalette.getPreviousAlwaysOnTop ();
+			if (EditorManager.iconPalette != null) {
+				EditorManager.iconPalette.TopMost = EditorManager.iconPalette.getPreviousAlwaysOnTop ();
 			}
 
 			try {

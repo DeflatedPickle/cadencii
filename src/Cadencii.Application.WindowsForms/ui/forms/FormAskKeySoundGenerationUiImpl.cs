@@ -21,7 +21,7 @@ using cadencii.apputil;
 namespace cadencii
 {
 
-    public class FormAskKeySoundGenerationUiImpl : Form, FormAskKeySoundGenerationUi
+    public class FormAskKeySoundGenerationUiImpl : FormUiBase, FormAskKeySoundGenerationUi
     {
         private FormAskKeySoundGenerationUiListener mListener;
 

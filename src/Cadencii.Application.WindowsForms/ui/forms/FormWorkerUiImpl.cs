@@ -26,7 +26,7 @@ using cadencii.apputil;
 
 namespace cadencii
 {
-    public class FormWorkerUiImpl : Form, FormWorkerUi
+    public class FormWorkerUiImpl : FormUiBase, FormWorkerUi
     {
 		bool FormWorkerUi.showDialogTo (object formMainWindow)
 		{

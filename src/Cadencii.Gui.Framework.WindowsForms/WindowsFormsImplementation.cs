@@ -45,7 +45,7 @@ namespace cadencii.java.awt
 		}
 	}
 
-	abstract class ImageAdapterWF : Image.ImageAdapter
+	class ImageAdapterWF : Image.ImageAdapter
 	{
 		public ImageAdapterWF ()
 		{
@@ -160,7 +160,7 @@ namespace cadencii.java.awt
 		}
 	}
 
-	public class GraphicsAdapterWF : Graphics.GraphicsAdapter
+	class GraphicsAdapterWF : Graphics.GraphicsAdapter
 	{
 		System.Drawing.Graphics nativeGraphics;
 		Color color = cadencii.java.awt.Colors.Black;
@@ -179,7 +179,9 @@ namespace cadencii.java.awt
 
 		public GraphicsAdapterWF (Graphics other)
 		{
-			NativeGraphics = (System.Drawing.Graphics)other.NativeGraphics;
+			var a = (GraphicsAdapterWF) other.Adapter;
+			nativeGraphics = a.nativeGraphics;
+			m_font = a.m_font;
 		}
 
 		public override object NativeGraphics { get { return nativeGraphics; } set { nativeGraphics = (System.Drawing.Graphics)value; } }
@@ -264,7 +266,10 @@ namespace cadencii.java.awt
 
 		public override void setFont (Font font)
 		{
-			m_font = (System.Drawing.Font)font.NativeFont;
+			var f = (System.Drawing.Font)font.NativeFont;
+			if (f == null)
+				throw new ArgumentException ("Native font is null", "font");
+			m_font = f;
 		}
 
 		public override void setStroke (Stroke stroke)
@@ -491,13 +496,15 @@ namespace cadencii.java.awt
 		}
 	}
 
-	public class FontAdapterWF : Font.FontAdapter
+	class FontAdapterWF : Font.FontAdapter
 	{
 
 		System.Drawing.Font font;
 
 		public FontAdapterWF (object value)
 		{
+			if (value == null)
+				throw new ArgumentNullException ("value");
 			font = (System.Drawing.Font)value;
 		}
 
@@ -514,8 +521,12 @@ namespace cadencii.java.awt
 		}
 
 		public override object NativeFont {
-			get;
-			set;
+			get { return font; }
+			set {
+				if (value == null)
+					throw new ArgumentNullException ("value");
+				font = (System.Drawing.Font) value;
+			}
 		}
 
 		public override void Dispose ()
@@ -540,7 +551,7 @@ namespace cadencii.java.awt
 		}
 	}
 
-	public class AreaAdapterWF : Area.AreaAdapter
+	class AreaAdapterWF : Area.AreaAdapter
 	{
 		System.Drawing.Region region;
 
@@ -619,7 +630,7 @@ namespace cadencii.java.awt
 		}
 	}
 
-	public class ScreenAdapterWF : Screen.ScreenAdapter
+	class ScreenAdapterWF : Screen.ScreenAdapter
 	{
 		public override Rectangle getScreenBounds (object nativeControl)
 		{

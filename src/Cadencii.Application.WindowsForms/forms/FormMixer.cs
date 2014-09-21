@@ -24,9 +24,9 @@ using Keys = cadencii.java.awt.Keys;
 
 namespace cadencii
 {
-    public class FormMixerUiImpl : Form, FormMixerUi
-    {
-		event EventHandler FormMixerUi.FormClosing {
+	public class FormUiBase : Form, UiBase
+ 	{
+		event EventHandler UiBase.FormClosing {
 			add { this.FormClosing += (object sender, FormClosingEventArgs e) => value (sender, e); }
 			remove { this.FormClosing -= (object sender, FormClosingEventArgs e) => value (sender, e); }
 		}
@@ -35,6 +35,10 @@ namespace cadencii
 		{
 			return ShowDialog ((IWin32Window) parent_form) == System.Windows.Forms.DialogResult.OK ? 1 : 0;
 		}
+ 	}
+
+	public class FormMixerUiImpl : FormUiBase, FormMixerUi
+    {
 
         private FormMain m_parent;
         private List<VolumeTracker> m_tracker = null;

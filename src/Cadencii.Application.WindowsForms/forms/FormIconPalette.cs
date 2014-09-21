@@ -42,8 +42,31 @@ namespace cadencii
         }
     }
 
-    public class FormIconPalette : Form
+    public class FormIconPaletteUiImpl : FormUiBase, FormIconPaletteUi
     {
+		event EventHandler FormIconPaletteUi.LocationChanged {
+			add {
+				throw new NotImplementedException ();
+			}
+			remove {
+				throw new NotImplementedException ();
+			}
+		}
+
+		Point FormIconPaletteUi.Location {
+			get {
+				throw new NotImplementedException ();
+			}
+			set {
+				throw new NotImplementedException ();
+			}
+		}
+
+		int UiBase.showDialog (object parent_form)
+		{
+			throw new NotImplementedException ();
+		}
+
         private List<Button> dynaffButtons = new List<Button>();
         private List<Button> crescendButtons = new List<Button>();
         private List<Button> decrescendButtons = new List<Button>();
@@ -51,7 +74,7 @@ namespace cadencii
         private FormMain mMainWindow = null;
         private bool mPreviousAlwaysOnTop;
 
-        public FormIconPalette(FormMain main_window)
+        public FormIconPaletteUiImpl(FormMain main_window)
         {
             InitializeComponent();
             mMainWindow = main_window;

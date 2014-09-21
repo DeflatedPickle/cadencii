@@ -165,6 +165,8 @@
     <Compile Include="ClipboardModel.cs" />
     <Compile Include="guiextended\Timer.cs" />
     <Compile Include="forms\FormSplashUi.cs" />
+    <Compile Include="forms\FormIconPaletteUi.cs" />
+    <Compile Include="guiextended\UiForm.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

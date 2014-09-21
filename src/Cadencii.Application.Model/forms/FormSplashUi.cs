@@ -2,12 +2,8 @@
 
 namespace cadencii
 {
-	public interface FormSplashUi : UiBase
+	public interface FormSplashUi : UiForm
 	{
-		object Invoke (Delegate d);
-
-		void Close ();
-
 		void addIconThreadSafe (string path_image, string vOICENAME);
 	}
 }

@@ -11,6 +11,8 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
+using cadencii.java.awt;
+
 namespace cadencii
 {
 
@@ -18,8 +20,11 @@ namespace cadencii
 
     public interface UiBase
     {
+    		bool TopMost { get; set; }
 		bool Visible { get; set; }
-        int showDialog(Object parent_form);
+		int showDialog(Object parent_form);
+
+		event EventHandler FormClosing;
     };
 
 }

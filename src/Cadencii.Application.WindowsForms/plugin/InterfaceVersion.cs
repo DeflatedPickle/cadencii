@@ -29,7 +29,7 @@ namespace cadencii
     }
 
     public partial class AppManager
-    {
+    {/*
         [Obsolete]
         public static PlayPositionSpecifier getPlayPosition()
         {

@@ -48,25 +48,6 @@ namespace cadencii
         /// 歌詞入力に使用するテキストボックス
         /// </summary>
         public static LyricTextBox mInputTextBox = null;
-
-		#if ENABLE_PROPERTY
-		/// <summary>
-		/// プロパティウィンドウが分離した場合のプロパティウィンドウのインスタンス。
-		/// メインウィンドウとプロパティウィンドウが分離している時、propertyPanelがpropertyWindowの子になる
-		/// </summary>
-		public static FormNotePropertyController propertyWindow;
-		#endif
-		/// <summary>
-		/// アイコンパレット・ウィンドウのインスタンス
-		/// </summary>
-		public static FormIconPalette iconPalette = null;
-
-        static string _(string id)
-        {
-            return Messaging.getMessage(id);
-        }
-
-		static VsqFileEx mVsq { get { return MusicManager.getVsqFile (); } }
     }
 
 }

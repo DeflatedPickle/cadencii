@@ -23,7 +23,7 @@ using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 
 namespace cadencii
 {
-    public class FormBezierPointEditUiImpl : Form, FormBezierPointEditUi
+    public class FormBezierPointEditUiImpl : FormUiBase, FormBezierPointEditUi
     {
         private FormBezierPointEditUiListener listener;
 

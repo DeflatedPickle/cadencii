@@ -3,10 +3,8 @@ using cadencii.java.awt;
 
 namespace cadencii
 {
-	public interface FormMixerUi : UiBase
+	public interface FormMixerUi : UiForm
 	{
-		bool TopMost { get; set; }
-
 		void setPreviousAlwaysOnTop (bool previous);
 
 		bool getPreviousAlwaysOnTop ();
@@ -30,8 +28,6 @@ namespace cadencii
 		event MuteChangedEventHandler MuteChanged;
 
 		event SoloChangedEventHandler SoloChanged;
-
-		event EventHandler FormClosing;
 	}
 }
 
