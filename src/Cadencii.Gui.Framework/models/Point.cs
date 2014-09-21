@@ -21,6 +21,8 @@ namespace cadencii.java.awt
     [Serializable]
     public struct Point
     {
+	public static readonly Point Empty = new Point (0, 0);
+
         public int X;
         public int Y;
 

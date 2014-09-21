@@ -45,19 +45,10 @@ namespace cadencii
     /// </summary>
     public class TrackSelectorImpl : UserControlImpl, TrackSelector
     {
-		static MouseEventArgs ToWF (NMouseEventArgs e)
-		{
-			return new MouseEventArgs ((MouseButtons) e.Button, e.Clicks, e.X, e.Y, e.Delta);
-		}
-
-		static NMouseEventArgs ToAwt (MouseEventArgs e)
-		{
-			return new NMouseEventArgs ((NMouseButtons) e.Button, e.Clicks, e.X, e.Y, e.Delta);
-		}
 
 		BezierPoint TrackSelector.HandleMouseMoveForBezierMove (cadencii.java.awt.MouseEventArgs e, BezierPickedSide picked)
 		{
-			return HandleMouseMoveForBezierMove (ToWF (e), picked);
+			return HandleMouseMoveForBezierMove (e.ToWF (), picked);
 		}
 
 		void TrackSelector.setEditingPointID (int id)
@@ -67,12 +58,12 @@ namespace cadencii
 
 		void TrackSelector.onMouseDown (object sender, cadencii.java.awt.MouseEventArgs e)
 		{
-			onMouseDown (sender, ToWF (e));
+			onMouseDown (sender, e.ToWF ());
 		}
 
 		void TrackSelector.onMouseUp (object sender, cadencii.java.awt.MouseEventArgs e)
 		{
-			onMouseUp (sender, ToWF (e));
+			onMouseUp (sender, e.ToWF ());
 		}
 
         #region constants and internal enums

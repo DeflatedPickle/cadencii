@@ -45,6 +45,10 @@ namespace cadencii
 		/// アイコンパレット・ウィンドウのインスタンス
 		/// </summary>
 		public static FormIconPaletteUi iconPalette;
+		/// <summary>
+		/// 歌詞入力に使用するテキストボックス
+		/// </summary>
+		public static LyricTextBox InputTextBox = null;
 
 		#if ENABLE_PROPERTY
 		/// <summary>
@@ -2351,9 +2355,9 @@ namespace cadencii
 					}
 					string name = sc.VOICENAME.ToLower ();
 					string path_image = Path.Combine (
-						                                   Path.Combine (
-							                                   PortUtil.getApplicationStartupPath (), "resources"),
-						                                   name + ".png");
+						                    Path.Combine (
+							                    PortUtil.getApplicationStartupPath (), "resources"),
+						                    name + ".png");
 #if DEBUG
 					sout.println ("EditorManager#init; path_image=" + path_image);
 #endif
@@ -2377,9 +2381,9 @@ namespace cadencii
 					}
 					string name = sc.VOICENAME.ToLower ();
 					string path_image = Path.Combine (
-						                                   Path.Combine (
-							                                   PortUtil.getApplicationStartupPath (), "resources"),
-						                                   name + ".png");
+						                    Path.Combine (
+							                    PortUtil.getApplicationStartupPath (), "resources"),
+						                    name + ".png");
 #if DEBUG
 					sout.println ("EditorManager#init; path_image=" + path_image);
 #endif
@@ -2454,158 +2458,163 @@ namespace cadencii
 			EditorManager.reloadUtauVoiceDB ();
 
 		}
-		/// <summary>
-        /// AttachedCurve用のシリアライザ
-        /// </summary>
-        public static XmlSerializer xmlSerializerListBezierCurves = new XmlSerializer(typeof(AttachedCurve));
 
 		/// <summary>
-        /// トラックの背景部分の塗りつぶし色。16トラックそれぞれで異なる
-        /// </summary>
-        public static readonly Color[] HILIGHT = new Color[] {
-            new Color( 181, 220, 16 ),
-            new Color( 231, 244, 49 ),
-            new Color( 252, 230, 29 ),
-            new Color( 247, 171, 20 ),
-            new Color( 249, 94, 17 ),
-            new Color( 234, 27, 47 ),
-            new Color( 175, 20, 80 ),
-            new Color( 183, 24, 149 ),
-            new Color( 105, 22, 158 ),
-            new Color( 22, 36, 163 ),
-            new Color( 37, 121, 204 ),
-            new Color( 29, 179, 219 ),
-            new Color( 24, 239, 239 ),
-            new Color( 25, 206, 175 ),
-            new Color( 23, 160, 134 ),
-            new Color( 79, 181, 21 ) };
-        /// <summary>
-        /// トラックをレンダリングするためのボタンの背景色。16トラックそれぞれで異なる
-        /// </summary>
-        public static readonly Color[] RENDER = new Color[]{
-            new Color( 19, 143, 52 ),
-            new Color( 158, 154, 18 ),
-            new Color( 160, 143, 23 ),
-            new Color( 145, 98, 15 ),
-            new Color( 142, 52, 12 ),
-            new Color( 142, 19, 37 ),
-            new Color( 96, 13, 47 ),
-            new Color( 117, 17, 98 ),
-            new Color( 62, 15, 99 ),
-            new Color( 13, 23, 84 ),
-            new Color( 25, 84, 132 ),
-            new Color( 20, 119, 142 ),
-            new Color( 19, 142, 139 ),
-            new Color( 17, 122, 102 ),
-            new Color( 13, 86, 72 ),
-            new Color( 43, 91, 12 ) };
-        /// <summary>
-        /// スクリプトに前置されるusingのリスト
-        /// </summary>
-        public static readonly string[] usingS = new string[] { "using System;",
-                                             "using System.IO;",
-                                             "using cadencii.vsq;",
-                                             "using cadencii;",
-                                             "using cadencii.java.io;",
-                                             "using cadencii.java.util;",
-                                             "using cadencii.java.awt;",
-                                             "using cadencii.media;",
-                                             "using cadencii.apputil;",
-                                             "using System.Windows.Forms;",
-                                             "using System.Collections.Generic;",
-                                             "using System.Drawing;",
-                                             "using System.Text;",
-                                             "using System.Xml.Serialization;" };
-        /// <summary>
-        /// ショートカットキーとして受付可能なキーのリスト
-        /// </summary>
-        public static readonly List<Keys> SHORTCUT_ACCEPTABLE = new List<Keys>(new Keys[] {
-            Keys.A,
-            Keys.B,
-            Keys.Back,
-            Keys.C,
-            Keys.D,
-            Keys.D0,
-            Keys.D1,
-            Keys.D2,
-            Keys.D3,
-            Keys.D4,
-            Keys.D5,
-            Keys.D6,
-            Keys.D7,
-            Keys.D8,
-            Keys.D9,
-            Keys.Down,
-            Keys.E,
-            Keys.F,
-            Keys.F1,
-            Keys.F2,
-            Keys.F3,
-            Keys.F4,
-            Keys.F5,
-            Keys.F6,
-            Keys.F7,
-            Keys.F8,
-            Keys.F9,
-            Keys.F10,
-            Keys.F11,
-            Keys.F12,
-            Keys.F13,
-            Keys.F14,
-            Keys.F15,
-            Keys.F16,
-            Keys.F17,
-            Keys.F18,
-            Keys.F19,
-            Keys.F20,
-            Keys.F21,
-            Keys.F22,
-            Keys.F23,
-            Keys.F24,
-            Keys.G,
-            Keys.H,
-            Keys.I,
-            Keys.J,
-            Keys.K,
-            Keys.L,
-            Keys.Left,
-            Keys.M,
-            Keys.N,
-            Keys.NumPad0,
-            Keys.NumPad1,
-            Keys.NumPad2,
-            Keys.NumPad3,
-            Keys.NumPad4,
-            Keys.NumPad5,
-            Keys.NumPad6,
-            Keys.NumPad7,
-            Keys.NumPad8,
-            Keys.NumPad9,
-            Keys.O,
-            Keys.P,
-            Keys.PageDown,
-            Keys.PageUp,
-            Keys.Q,
-            Keys.R,
-            Keys.Right,
-            Keys.S,
-            Keys.Space,
-            Keys.T,
-            Keys.U,
-            Keys.Up,
-            Keys.V,
-            Keys.W,
-            Keys.X,
-            Keys.Y,
-            Keys.Z,
-            Keys.Delete,
-            Keys.Home,
-            Keys.End,
-        });
-        /// <summary>
-        /// よく使うボーダー線の色
-        /// </summary>
-        public static readonly Color COLOR_BORDER = new Color(118, 123, 138);
+		/// AttachedCurve用のシリアライザ
+		/// </summary>
+		public static XmlSerializer xmlSerializerListBezierCurves = new XmlSerializer (typeof(AttachedCurve));
+
+		/// <summary>
+		/// トラックの背景部分の塗りつぶし色。16トラックそれぞれで異なる
+		/// </summary>
+		public static readonly Color[] HILIGHT = new Color[] {
+			new Color (181, 220, 16),
+			new Color (231, 244, 49),
+			new Color (252, 230, 29),
+			new Color (247, 171, 20),
+			new Color (249, 94, 17),
+			new Color (234, 27, 47),
+			new Color (175, 20, 80),
+			new Color (183, 24, 149),
+			new Color (105, 22, 158),
+			new Color (22, 36, 163),
+			new Color (37, 121, 204),
+			new Color (29, 179, 219),
+			new Color (24, 239, 239),
+			new Color (25, 206, 175),
+			new Color (23, 160, 134),
+			new Color (79, 181, 21)
+		};
+		/// <summary>
+		/// トラックをレンダリングするためのボタンの背景色。16トラックそれぞれで異なる
+		/// </summary>
+		public static readonly Color[] RENDER = new Color[] {
+			new Color (19, 143, 52),
+			new Color (158, 154, 18),
+			new Color (160, 143, 23),
+			new Color (145, 98, 15),
+			new Color (142, 52, 12),
+			new Color (142, 19, 37),
+			new Color (96, 13, 47),
+			new Color (117, 17, 98),
+			new Color (62, 15, 99),
+			new Color (13, 23, 84),
+			new Color (25, 84, 132),
+			new Color (20, 119, 142),
+			new Color (19, 142, 139),
+			new Color (17, 122, 102),
+			new Color (13, 86, 72),
+			new Color (43, 91, 12)
+		};
+		/// <summary>
+		/// スクリプトに前置されるusingのリスト
+		/// </summary>
+		public static readonly string[] usingS = new string[] {
+			"using System;",
+			"using System.IO;",
+			"using cadencii.vsq;",
+			"using cadencii;",
+			"using cadencii.java.io;",
+			"using cadencii.java.util;",
+			"using cadencii.java.awt;",
+			"using cadencii.media;",
+			"using cadencii.apputil;",
+			"using System.Windows.Forms;",
+			"using System.Collections.Generic;",
+			"using System.Drawing;",
+			"using System.Text;",
+			"using System.Xml.Serialization;"
+		};
+		/// <summary>
+		/// ショートカットキーとして受付可能なキーのリスト
+		/// </summary>
+		public static readonly List<Keys> SHORTCUT_ACCEPTABLE = new List<Keys> (new Keys[] {
+			Keys.A,
+			Keys.B,
+			Keys.Back,
+			Keys.C,
+			Keys.D,
+			Keys.D0,
+			Keys.D1,
+			Keys.D2,
+			Keys.D3,
+			Keys.D4,
+			Keys.D5,
+			Keys.D6,
+			Keys.D7,
+			Keys.D8,
+			Keys.D9,
+			Keys.Down,
+			Keys.E,
+			Keys.F,
+			Keys.F1,
+			Keys.F2,
+			Keys.F3,
+			Keys.F4,
+			Keys.F5,
+			Keys.F6,
+			Keys.F7,
+			Keys.F8,
+			Keys.F9,
+			Keys.F10,
+			Keys.F11,
+			Keys.F12,
+			Keys.F13,
+			Keys.F14,
+			Keys.F15,
+			Keys.F16,
+			Keys.F17,
+			Keys.F18,
+			Keys.F19,
+			Keys.F20,
+			Keys.F21,
+			Keys.F22,
+			Keys.F23,
+			Keys.F24,
+			Keys.G,
+			Keys.H,
+			Keys.I,
+			Keys.J,
+			Keys.K,
+			Keys.L,
+			Keys.Left,
+			Keys.M,
+			Keys.N,
+			Keys.NumPad0,
+			Keys.NumPad1,
+			Keys.NumPad2,
+			Keys.NumPad3,
+			Keys.NumPad4,
+			Keys.NumPad5,
+			Keys.NumPad6,
+			Keys.NumPad7,
+			Keys.NumPad8,
+			Keys.NumPad9,
+			Keys.O,
+			Keys.P,
+			Keys.PageDown,
+			Keys.PageUp,
+			Keys.Q,
+			Keys.R,
+			Keys.Right,
+			Keys.S,
+			Keys.Space,
+			Keys.T,
+			Keys.U,
+			Keys.Up,
+			Keys.V,
+			Keys.W,
+			Keys.X,
+			Keys.Y,
+			Keys.Z,
+			Keys.Delete,
+			Keys.Home,
+			Keys.End,
+		});
+		/// <summary>
+		/// よく使うボーダー線の色
+		/// </summary>
+		public static readonly Color COLOR_BORDER = new Color (118, 123, 138);
 	}
 }
 

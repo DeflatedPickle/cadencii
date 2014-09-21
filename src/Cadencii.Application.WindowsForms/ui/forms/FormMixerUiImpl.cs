@@ -588,7 +588,7 @@ namespace cadencii
             this.volumeMaster.Location = new cadencii.java.awt.Point(85, 0);
             this.volumeMaster.Margin = new cadencii.java.awt.Padding(0);
             this.volumeMaster.Name = "volumeMaster";
-            this.volumeMaster.Size = new cadencii.java.awt.Size(85, 284);
+            this.volumeMaster.Size = new cadencii.java.awt.Dimension(85, 284);
             this.volumeMaster.TabIndex = 5;
             // 
             // FormMixer

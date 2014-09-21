@@ -11,6 +11,38 @@ namespace cadencii
 
 	public interface UiControl
 	{
+		
+		cadencii.java.awt.AnchorStyles Anchor {
+			get;
+			set;
+		}
+
+		bool TabStop {
+			get;
+			set;
+		}
+
+		Rectangle Bounds { get; set; }
+
+		Point PointToClient (Point point);
+		Point PointToScreen (Point point);
+
+		event EventHandler Resize;
+
+		event EventHandler ImeModeChanged;
+
+		int Top { get; set; }
+		int Left { get; set; }
+
+		void SuspendLayout ();
+		void ResumeLayout ();
+
+		void Focus ();
+
+		ImeMode ImeMode { get; set; }
+
+		bool IsDisposed { get; }
+
 		object Native { get; }
 		Padding Margin { get; set; }
 		string Name { get; set; }
@@ -24,12 +56,13 @@ namespace cadencii
 
 		Point Location { get; set; }
 
-		Size Size { get; set; }
+		Dimension Size { get; set; }
 
 
 		void Refresh ();
         
 		event KeyEventHandler PreviewKeyDown;
+		event EventHandler<KeyPressEventArgs> KeyPress;
 		event KeyEventHandler KeyUp;
 		event KeyEventHandler KeyDown;
 		event MouseEventHandler MouseClick;

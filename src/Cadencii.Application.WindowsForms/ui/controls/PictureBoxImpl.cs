@@ -12,7 +12,7 @@ using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 
 namespace cadencii
 {
-	public class UserControlImpl : UserControl, UiUserControl
+	public class PictureBoxImpl : PictureBox, UiControl
 	{
 		object UiControl.Native {
 			get { return this; }
@@ -50,11 +50,6 @@ namespace cadencii
 		cadencii.java.awt.Dimension UiControl.Size {
 			get { return new cadencii.java.awt.Dimension (Size.Width, Size.Height); }
 			set { this.Size = new System.Drawing.Size (value.width, value.height); }
-		}
-
-		cadencii.java.awt.BorderStyle UiUserControl.BorderStyle {
-			get { return (cadencii.java.awt.BorderStyle)BorderStyle; }
-			set { BorderStyle = (System.Windows.Forms.BorderStyle)value; }
 		}
 
 		cadencii.java.awt.Padding UiControl.Margin {

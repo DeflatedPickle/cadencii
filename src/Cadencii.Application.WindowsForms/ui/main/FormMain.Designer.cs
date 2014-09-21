@@ -305,7 +305,7 @@ namespace cadencii
             this.imageListTool = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.panelOverview = new cadencii.PictOverview();
-            this.pictPianoRoll = new cadencii.PictPianoRoll();
+            this.pictPianoRoll = new cadencii.PictPianoRollImpl();
             this.hScroll = new System.Windows.Forms.HScrollBar();
             this.rebar = new cadencii.windows.forms.Rebar();
             this.imageListMenu = new System.Windows.Forms.ImageList(this.components);
@@ -2518,7 +2518,7 @@ namespace cadencii
             this.panel1.Controls.Add(this.pictKeyLengthSplitter);
             this.panel1.Controls.Add(this.panelOverview);
             this.panel1.Controls.Add(this.picturePositionIndicator);
-            this.panel1.Controls.Add(this.pictPianoRoll);
+            this.panel1.Controls.Add((Control)this.pictPianoRoll.Native);
             this.panel1.Controls.Add(this.vScroll);
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.pictureBox2);
@@ -2543,14 +2543,14 @@ namespace cadencii
             // 
             // pictPianoRoll
             // 
-            this.pictPianoRoll.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictPianoRoll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.pictPianoRoll.Location = new System.Drawing.Point(0, 94);
-            this.pictPianoRoll.Margin = new System.Windows.Forms.Padding(0);
+			this.pictPianoRoll.Anchor = ((cadencii.java.awt.AnchorStyles)((((cadencii.java.awt.AnchorStyles.Top | cadencii.java.awt.AnchorStyles.Bottom)
+				| cadencii.java.awt.AnchorStyles.Left)
+				| cadencii.java.awt.AnchorStyles.Right)));
+			this.pictPianoRoll.BackColor = new cadencii.java.awt.Color(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+			this.pictPianoRoll.Location = new cadencii.java.awt.Point(0, 94);
+			this.pictPianoRoll.Margin = new cadencii.java.awt.Padding(0);
             this.pictPianoRoll.Name = "pictPianoRoll";
-            this.pictPianoRoll.Size = new System.Drawing.Size(405, 169);
+			this.pictPianoRoll.Size = new cadencii.java.awt.Dimension(405, 169);
             this.pictPianoRoll.TabIndex = 12;
             this.pictPianoRoll.TabStop = false;
             // 

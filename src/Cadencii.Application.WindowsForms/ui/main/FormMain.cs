@@ -44,7 +44,9 @@ using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using NMouseButtons = cadencii.java.awt.MouseButtons;
 using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
+using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 using NKeyEventArgs = cadencii.java.awt.KeyEventArgs;
+using NKeyEventHandler = cadencii.java.awt.KeyEventHandler;
 
 namespace cadencii
 {
@@ -355,7 +357,7 @@ namespace cadencii
         /// </summary>
         public int mMouseMoveOffset;
         /// <summary>
-        /// マウスが降りているかどうかを表すフラグ．AppManager.isPointerDownedとは別なので注意
+        /// マウスが降りているかどうかを表すフラグ．EditorManager.isPointerDownedとは別なので注意
         /// </summary>
         public bool mMouseDowned = false;
         public int mTempoDraggingDeltaClock = 0;
@@ -561,7 +563,7 @@ namespace cadencii
 
             trackSelector = new TrackSelectorImpl(this); // initializeで引数なしのコンストラクタが呼ばれるのを予防
             //TODO: javaのwaveViewはどこで作られるんだっけ？
-            waveView = new WaveView();
+            waveView = new WaveViewImpl();
             //TODO: これはひどい
             panelWaveformZoom = (WaveformZoomUiImpl)(new WaveformZoomController(this, waveView)).getUi();
 
@@ -573,15 +575,15 @@ namespace cadencii
             bgWorkScreen = new System.ComponentModel.BackgroundWorker();
             initializeRendererMenuHandler();
 
-            this.panelWaveformZoom.Controls.Add(this.waveView);
-            this.waveView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.waveView.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
-            this.waveView.Location = new System.Drawing.Point(66, 0);
-            this.waveView.Margin = new System.Windows.Forms.Padding(0);
+            this.panelWaveformZoom.Controls.Add((Control) this.waveView.Native);
+			this.waveView.Anchor = ((cadencii.java.awt.AnchorStyles)((((cadencii.java.awt.AnchorStyles.Top | cadencii.java.awt.AnchorStyles.Bottom)
+				| cadencii.java.awt.AnchorStyles.Left)
+                        | cadencii.java.awt.AnchorStyles.Right)));
+            this.waveView.BackColor = new cadencii.java.awt.Color(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+            this.waveView.Location = new cadencii.java.awt.Point(66, 0);
+            this.waveView.Margin = new cadencii.java.awt.Padding(0);
             this.waveView.Name = "waveView";
-            this.waveView.Size = new System.Drawing.Size(355, 59);
+            this.waveView.Size = new cadencii.java.awt.Dimension(355, 59);
             this.waveView.TabIndex = 17;
             openXmlVsqDialog = new OpenFileDialog();
             openXmlVsqDialog.Filter = string.Join("|", new[] { "VSQ Format(*.vsq)|*.vsq", "XML-VSQ Format(*.xvsq)|*.xvsq" });
@@ -686,7 +688,7 @@ namespace cadencii
             picturePositionIndicator.Top = 0;
             picturePositionIndicator.Width = panel1.Width;
             // pictPianoRoll
-            pictPianoRoll.Bounds = new System.Drawing.Rectangle(0, picturePositionIndicator.Height, panel1.Width - vScroll.Width, panel1.Height - picturePositionIndicator.Height - hScroll.Height);
+            pictPianoRoll.Bounds = new cadencii.java.awt.Rectangle(0, picturePositionIndicator.Height, panel1.Width - vScroll.Width, panel1.Height - picturePositionIndicator.Height - hScroll.Height);
             // vScroll
             vScroll.Left = pictPianoRoll.Width;
             vScroll.Top = picturePositionIndicator.Height;
@@ -713,8 +715,8 @@ namespace cadencii
 
             updatePropertyPanelState(EditorManager.editorConfig.PropertyWindowStatus.State);
 
-            pictPianoRoll.MouseWheel += new MouseEventHandler(pictPianoRoll_MouseWheel);
-            trackSelector.MouseWheel += new cadencii.java.awt.MouseEventHandler(trackSelector_MouseWheel);
+            pictPianoRoll.MouseWheel += new NMouseEventHandler(pictPianoRoll_MouseWheel);
+            trackSelector.MouseWheel += new NMouseEventHandler(trackSelector_MouseWheel);
             picturePositionIndicator.MouseWheel += new MouseEventHandler(picturePositionIndicator_MouseWheel);
 
             menuVisualOverview.CheckedChanged += new EventHandler(menuVisualOverview_CheckedChanged);
@@ -730,17 +732,17 @@ namespace cadencii
             trackSelector.setCurveVisible(true);
 
             // inputTextBoxの初期化
-            AppManager.mInputTextBox = new LyricTextBox();
-            AppManager.mInputTextBox.Visible = false;
-            AppManager.mInputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            AppManager.mInputTextBox.Width = 80;
-            AppManager.mInputTextBox.AcceptsReturn = true;
-            AppManager.mInputTextBox.BackColor = System.Drawing.Color.White;
-			AppManager.mInputTextBox.Font = new System.Drawing.Font(EditorManager.editorConfig.BaseFontName, cadencii.core.EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular);
-            AppManager.mInputTextBox.Enabled = false;
-            AppManager.mInputTextBox.KeyPress += mInputTextBox_KeyPress;
-            AppManager.mInputTextBox.Parent = pictPianoRoll;
-            panel1.Controls.Add(AppManager.mInputTextBox);
+            EditorManager.InputTextBox = new LyricTextBoxImpl();
+            EditorManager.InputTextBox.Visible = false;
+            EditorManager.InputTextBox.BorderStyle = cadencii.java.awt.BorderStyle.None;
+            EditorManager.InputTextBox.Width = 80;
+            EditorManager.InputTextBox.AcceptsReturn = true;
+            EditorManager.InputTextBox.BackColor = System.Drawing.Color.White.ToAwt ();
+			EditorManager.InputTextBox.Font = new cadencii.java.awt.Font (new System.Drawing.Font (EditorManager.editorConfig.BaseFontName, cadencii.core.EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular));
+            EditorManager.InputTextBox.Enabled = false;
+            EditorManager.InputTextBox.KeyPress += mInputTextBox_KeyPress;
+            EditorManager.InputTextBox.Parent = pictPianoRoll;
+            panel1.Controls.Add((Control) EditorManager.InputTextBox.Native);
 
             int fps = 1000 / EditorManager.editorConfig.MaximumFrameRate;
             timer.Interval = (fps <= 0) ? 1 : fps;
@@ -807,15 +809,15 @@ namespace cadencii
             EditorManager.setCurrentClock(0);
             setEdited(false);
 
-			EditorManager.PreviewStarted += new EventHandler(AppManager_PreviewStarted);
-			EditorManager.PreviewAborted += new EventHandler(AppManager_PreviewAborted);
-            EditorManager.GridVisibleChanged += new EventHandler(AppManager_GridVisibleChanged);
+			EditorManager.PreviewStarted += new EventHandler(EditorManager_PreviewStarted);
+			EditorManager.PreviewAborted += new EventHandler(EditorManager_PreviewAborted);
+            EditorManager.GridVisibleChanged += new EventHandler(EditorManager_GridVisibleChanged);
             EditorManager.itemSelection.SelectedEventChanged += new SelectedEventChangedEventHandler(ItemSelectionModel_SelectedEventChanged);
-            EditorManager.SelectedToolChanged += new EventHandler(AppManager_SelectedToolChanged);
-            EditorManager.UpdateBgmStatusRequired += new EventHandler(AppManager_UpdateBgmStatusRequired);
-            EditorManager.MainWindowFocusRequired = new EventHandler(AppManager_MainWindowFocusRequired);
-            EditorManager.EditedStateChanged += new EditedStateChangedEventHandler(AppManager_EditedStateChanged);
-            EditorManager.WaveViewReloadRequired += new WaveViewRealoadRequiredEventHandler(AppManager_WaveViewRealoadRequired);
+            EditorManager.SelectedToolChanged += new EventHandler(EditorManager_SelectedToolChanged);
+            EditorManager.UpdateBgmStatusRequired += new EventHandler(EditorManager_UpdateBgmStatusRequired);
+            EditorManager.MainWindowFocusRequired = new EventHandler(EditorManager_MainWindowFocusRequired);
+            EditorManager.EditedStateChanged += new EditedStateChangedEventHandler(EditorManager_EditedStateChanged);
+            EditorManager.WaveViewReloadRequired += new WaveViewRealoadRequiredEventHandler(EditorManager_WaveViewRealoadRequired);
             EditorConfig.QuantizeModeChanged += new EventHandler(handleEditorConfig_QuantizeModeChanged);
 
 #if ENABLE_PROPERTY
@@ -1364,7 +1366,7 @@ namespace cadencii
                 VsqEvent[] items = new VsqEvent[1];
                 EditorManager.mAddingEvent.ID.type = VsqIDType.Anote;
                 EditorManager.mAddingEvent.ID.Dynamics = 64;
-                items[0] = (VsqEvent)EditorManager.mAddingEvent.clone();// new VsqEvent( 0, AppManager.addingEvent.ID );
+                items[0] = (VsqEvent)EditorManager.mAddingEvent.clone();// new VsqEvent( 0, EditorManager.addingEvent.ID );
                 items[0].Clock = EditorManager.mAddingEvent.Clock;
                 items[0].ID.LyricHandle = lyric;
                 items[0].ID.VibratoDelay = vibrato_delay;
@@ -1974,15 +1976,15 @@ namespace cadencii
         /// </summary>
         /// <param name="button"></param>
         /// <returns></returns>
-        public bool isMouseMiddleButtonDowned(MouseButtons button)
+        public bool isMouseMiddleButtonDowned(NMouseButtons button)
         {
             bool ret = false;
             if (EditorManager.editorConfig.UseSpaceKeyAsMiddleButtonModifier) {
-                if (mSpacekeyDowned && button == MouseButtons.Left) {
+                if (mSpacekeyDowned && button == NMouseButtons.Left) {
                     ret = true;
                 }
             } else {
-                if (button == MouseButtons.Middle) {
+                if (button == NMouseButtons.Middle) {
                     ret = true;
                 }
             }
@@ -2783,20 +2785,20 @@ namespace cadencii
             menuEditPaste.Enabled = enabled;
 
             /*int copy_started_clock;
-            bool copied_is_null = (AppManager.GetCopiedEvent().Count == 0) &&
-                                  (AppManager.GetCopiedTempo( out copy_started_clock ).Count == 0) &&
-                                  (AppManager.GetCopiedTimesig( out copy_started_clock ).Count == 0) &&
-                                  (AppManager.GetCopiedCurve( out copy_started_clock ).Count == 0) &&
-                                  (AppManager.GetCopiedBezier( out copy_started_clock ).Count == 0);
+            bool copied_is_null = (EditorManager.GetCopiedEvent().Count == 0) &&
+                                  (EditorManager.GetCopiedTempo( out copy_started_clock ).Count == 0) &&
+                                  (EditorManager.GetCopiedTimesig( out copy_started_clock ).Count == 0) &&
+                                  (EditorManager.GetCopiedCurve( out copy_started_clock ).Count == 0) &&
+                                  (EditorManager.GetCopiedBezier( out copy_started_clock ).Count == 0);
             menuEditCut.isEnabled() = !selected_is_null;
             menuEditCopy.isEnabled() = !selected_is_null;
             menuEditDelete.isEnabled() = !selected_is_null;
             //stripBtnCopy.isEnabled() = !selected_is_null;
             //stripBtnCut.isEnabled() = !selected_is_null;
 
-            if ( AppManager.GetCopiedEvent().Count != 0 ) {
-                menuEditPaste.isEnabled() = (AppManager.CurrentClock >= AppManager.VsqFile.getPreMeasureClocks());
-                //stripBtnPaste.isEnabled() = (AppManager.CurrentClock >= AppManager.VsqFile.getPreMeasureClocks());
+            if ( EditorManager.GetCopiedEvent().Count != 0 ) {
+                menuEditPaste.isEnabled() = (EditorManager.CurrentClock >= EditorManager.VsqFile.getPreMeasureClocks());
+                //stripBtnPaste.isEnabled() = (EditorManager.CurrentClock >= EditorManager.VsqFile.getPreMeasureClocks());
             } else {
                 menuEditPaste.isEnabled() = !copied_is_null;
                 //stripBtnPaste.isEnabled() = !copied_is_null;
@@ -2919,18 +2921,18 @@ namespace cadencii
         }
 
         /// <summary>
-        /// 現在のAppManager.mInputTextBoxの状態を元に、歌詞の変更を反映させるコマンドを実行します
+        /// 現在のEditorManager.InputTextBoxの状態を元に、歌詞の変更を反映させるコマンドを実行します
         /// </summary>
         public void executeLyricChangeCommand()
         {
-            if (!AppManager.mInputTextBox.Enabled) {
+            if (!EditorManager.InputTextBox.Enabled) {
                 return;
             }
-            if (AppManager.mInputTextBox.IsDisposed) {
+            if (EditorManager.InputTextBox.IsDisposed) {
                 return;
             }
             SelectedEventEntry last_selected_event = EditorManager.itemSelection.getLastEvent();
-            bool phonetic_symbol_edit_mode = AppManager.mInputTextBox.isPhoneticSymbolEditMode();
+            bool phonetic_symbol_edit_mode = EditorManager.InputTextBox.isPhoneticSymbolEditMode();
 
             int selected = EditorManager.Selected;
             VsqFileEx vsq = MusicManager.getVsqFile();
@@ -2991,7 +2993,7 @@ namespace cadencii
 #if DEBUG
             CDebug.WriteLine("    original_phase,symbol=" + original_phrase + "," + original_symbol[0]);
             CDebug.WriteLine("    phonetic_symbol_edit_mode=" + phonetic_symbol_edit_mode);
-            CDebug.WriteLine("    AppManager.mInputTextBox.setText(=" + AppManager.mInputTextBox.Text);
+            CDebug.WriteLine("    EditorManager.InputTextBox.setText(=" + EditorManager.InputTextBox.Text);
 #endif
             string[] phrase = new string[count];
             string[] phonetic_symbol = new string[count];
@@ -2999,7 +3001,7 @@ namespace cadencii
                 phrase[i] = original_phrase[i];
                 phonetic_symbol[i] = original_symbol[i];
             }
-            string txt = AppManager.mInputTextBox.Text;
+            string txt = EditorManager.InputTextBox.Text;
             int txtlen = PortUtil.getStringLength(txt);
             if (txtlen > 0) {
                 // 1文字目は，UTAUの連続音入力のハイフンの可能性があるので，無駄に置換されるのを回避
@@ -3017,12 +3019,12 @@ namespace cadencii
             }
 
             // 発音記号または歌詞が変更された場合の処理
-            if ((phonetic_symbol_edit_mode && AppManager.mInputTextBox.Text != original_symbol[0]) ||
+            if ((phonetic_symbol_edit_mode && EditorManager.InputTextBox.Text != original_symbol[0]) ||
                  (!phonetic_symbol_edit_mode && phrase[0] != original_phrase[0])) {
                 if (phonetic_symbol_edit_mode) {
                     // 発音記号を編集するモード
-                    phrase[0] = AppManager.mInputTextBox.getBufferText();
-                    phonetic_symbol[0] = AppManager.mInputTextBox.Text;
+                    phrase[0] = EditorManager.InputTextBox.getBufferText();
+                    phonetic_symbol[0] = EditorManager.InputTextBox.Text;
 
                     // 入力された発音記号のうち、有効なものだけをピックアップ
                     string[] spl = PortUtil.splitString(phonetic_symbol[0], new char[] { ' ' }, true);
@@ -3372,14 +3374,14 @@ namespace cadencii
         /// </summary>
         /// <param name="e"></param>
         /// <param name="onPreviewKeyDown">PreviewKeyDownイベントから送信されてきた場合、true（送る側が設定する）</param>
-        public void processSpecialShortcutKey(KeyEventArgs e, bool onPreviewKeyDown)
+        public void processSpecialShortcutKey(NKeyEventArgs e, bool onPreviewKeyDown)
         {
 #if DEBUG
             sout.println("FormMain#processSpecialShortcutKey");
 #endif
             // 歌詞入力用のテキストボックスが表示されていたら，何もしない
-            if (AppManager.mInputTextBox.Enabled) {
-                AppManager.mInputTextBox.Focus();
+            if (EditorManager.InputTextBox.Enabled) {
+                EditorManager.InputTextBox.Focus();
                 return;
             }
 
@@ -3628,7 +3630,7 @@ namespace cadencii
         }
 
         /// <summary>
-        /// メニューのショートカットキーを、AppManager.EditorConfig.ShorcutKeysの内容に応じて変更します
+        /// メニューのショートカットキーを、EditorManager.EditorConfig.ShorcutKeysの内容に応じて変更します
         /// </summary>
         public void applyShortcut()
         {
@@ -4737,7 +4739,7 @@ namespace cadencii
                 min = premeasure;
             }
             if (min < max) {
-                //int stdx = AppManager.startToDrawX;
+                //int stdx = EditorManager.startToDrawX;
                 //min = xCoordFromClocks( min ) + stdx;
                 //max = xCoordFromClocks( max ) + stdx;
                 EditorManager.mWholeSelectedInterval = new SelectedRegion(min);
@@ -4773,11 +4775,11 @@ namespace cadencii
         {
 #if DEBUG
             CDebug.WriteLine(
-                "FormMain#deleteEvent(); AppManager.mInputTextBox.isEnabled()=" +
-                AppManager.mInputTextBox.Enabled);
+                "FormMain#deleteEvent(); EditorManager.InputTextBox.isEnabled()=" +
+                EditorManager.InputTextBox.Enabled);
 #endif
 
-            if (AppManager.mInputTextBox.Visible) {
+            if (EditorManager.InputTextBox.Visible) {
                 return;
             }
 #if ENABLE_PROPERTY
@@ -5281,7 +5283,7 @@ namespace cadencii
                     }
                 } else {
                     // ベジエ曲線がコピーされなかった場合
-                    // AppManager.selectedPointIDIteratorの中身のみを選択
+                    // EditorManager.selectedPointIDIteratorの中身のみを選択
                     CurveType curve = trackSelector.getSelectedCurve();
                     VsqBPList list = MusicManager.getVsqFile().Track[EditorManager.Selected].getCurve(curve.getName());
                     if (list != null) {
@@ -5760,7 +5762,7 @@ namespace cadencii
         }
 
         /// <summary>
-        /// 描画すべきオブジェクトのリスト，AppManager.drawObjectsを更新します
+        /// 描画すべきオブジェクトのリスト，EditorManager.drawObjectsを更新します
         /// </summary>
         public void updateDrawObjectList()
         {
@@ -6082,7 +6084,7 @@ namespace cadencii
             cMenuTrackSelectorUndo.Enabled = undo;
             stripBtnUndo.Enabled = undo;
             stripBtnRedo.Enabled = redo;
-            //AppManager.setRenderRequired( EditorManager.Selected, true );
+            //EditorManager.setRenderRequired( EditorManager.Selected, true );
             updateScrollRangeHorizontal();
             updateDrawObjectList();
             panelOverview.updateCachedImage();
@@ -6102,42 +6104,41 @@ namespace cadencii
 #endif
             hideInputTextBox();
 
-            AppManager.mInputTextBox.KeyUp += new KeyEventHandler(mInputTextBox_KeyUp);
-            AppManager.mInputTextBox.KeyDown += new KeyEventHandler(mInputTextBox_KeyDown);
-            AppManager.mInputTextBox.ImeModeChanged += mInputTextBox_ImeModeChanged;
-
-            AppManager.mInputTextBox.ImeMode = mLastIsImeModeOn ? System.Windows.Forms.ImeMode.Hiragana : System.Windows.Forms.ImeMode.Off;
+            EditorManager.InputTextBox.KeyUp += new NKeyEventHandler(mInputTextBox_KeyUp);
+            EditorManager.InputTextBox.KeyDown += new NKeyEventHandler(mInputTextBox_KeyDown);
+            EditorManager.InputTextBox.ImeModeChanged += mInputTextBox_ImeModeChanged;
+            EditorManager.InputTextBox.ImeMode = mLastIsImeModeOn ? cadencii.java.awt.ImeMode.Hiragana : cadencii.java.awt.ImeMode.Off;
             if (phonetic_symbol_edit_mode) {
-                AppManager.mInputTextBox.setBufferText(phrase);
-                AppManager.mInputTextBox.setPhoneticSymbolEditMode(true);
-                AppManager.mInputTextBox.Text = phonetic_symbol;
-				AppManager.mInputTextBox.BackColor = mColorTextboxBackcolor.ToNative ();
+                EditorManager.InputTextBox.setBufferText(phrase);
+                EditorManager.InputTextBox.setPhoneticSymbolEditMode(true);
+                EditorManager.InputTextBox.Text = phonetic_symbol;
+				EditorManager.InputTextBox.BackColor = mColorTextboxBackcolor;
             } else {
-                AppManager.mInputTextBox.setBufferText(phonetic_symbol);
-                AppManager.mInputTextBox.setPhoneticSymbolEditMode(false);
-                AppManager.mInputTextBox.Text = phrase;
-                AppManager.mInputTextBox.BackColor = System.Drawing.Color.White;
+                EditorManager.InputTextBox.setBufferText(phonetic_symbol);
+                EditorManager.InputTextBox.setPhoneticSymbolEditMode(false);
+                EditorManager.InputTextBox.Text = phrase;
+                EditorManager.InputTextBox.BackColor = System.Drawing.Color.White.ToAwt ();
             }
-            AppManager.mInputTextBox.Font = new System.Drawing.Font(EditorManager.editorConfig.BaseFontName, cadencii.core.EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular);
-            System.Drawing.Point p = new System.Drawing.Point(position.X + 4, position.Y + 2);
-            AppManager.mInputTextBox.Location = p;
+            EditorManager.InputTextBox.Font = new cadencii.java.awt.Font (new System.Drawing.Font(EditorManager.editorConfig.BaseFontName, cadencii.core.EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular));
+            var p = new cadencii.java.awt.Point(position.X + 4, position.Y + 2);
+            EditorManager.InputTextBox.Location = p;
 
-            AppManager.mInputTextBox.Parent = pictPianoRoll;
-            AppManager.mInputTextBox.Enabled = true;
-            AppManager.mInputTextBox.Visible = true;
-            AppManager.mInputTextBox.Focus();
-            AppManager.mInputTextBox.SelectAll();
+            EditorManager.InputTextBox.Parent = pictPianoRoll;
+            EditorManager.InputTextBox.Enabled = true;
+            EditorManager.InputTextBox.Visible = true;
+            EditorManager.InputTextBox.Focus();
+            EditorManager.InputTextBox.SelectAll();
         }
 
         public void hideInputTextBox()
         {
-            AppManager.mInputTextBox.KeyUp -= new KeyEventHandler(mInputTextBox_KeyUp);
-            AppManager.mInputTextBox.KeyDown -= new KeyEventHandler(mInputTextBox_KeyDown);
-            AppManager.mInputTextBox.ImeModeChanged -= mInputTextBox_ImeModeChanged;
-            mLastSymbolEditMode = AppManager.mInputTextBox.isPhoneticSymbolEditMode();
-            AppManager.mInputTextBox.Visible = false;
-            AppManager.mInputTextBox.Parent = null;
-            AppManager.mInputTextBox.Enabled = false;
+            EditorManager.InputTextBox.KeyUp -= new NKeyEventHandler(mInputTextBox_KeyUp);
+            EditorManager.InputTextBox.KeyDown -= new NKeyEventHandler(mInputTextBox_KeyDown);
+            EditorManager.InputTextBox.ImeModeChanged -= mInputTextBox_ImeModeChanged;
+            mLastSymbolEditMode = EditorManager.InputTextBox.isPhoneticSymbolEditMode();
+            EditorManager.InputTextBox.Visible = false;
+            EditorManager.InputTextBox.Parent = null;
+            EditorManager.InputTextBox.Enabled = false;
             focusPianoRoll();
         }
 
@@ -6146,15 +6147,15 @@ namespace cadencii
         /// </summary>
         public void flipInputTextBoxMode()
         {
-            string new_value = AppManager.mInputTextBox.Text;
-            if (!AppManager.mInputTextBox.isPhoneticSymbolEditMode()) {
-				AppManager.mInputTextBox.BackColor = mColorTextboxBackcolor.ToNative ();
+            string new_value = EditorManager.InputTextBox.Text;
+            if (!EditorManager.InputTextBox.isPhoneticSymbolEditMode()) {
+				EditorManager.InputTextBox.BackColor = mColorTextboxBackcolor;
             } else {
-                AppManager.mInputTextBox.BackColor = System.Drawing.Color.White;
+                EditorManager.InputTextBox.BackColor = System.Drawing.Color.White.ToAwt ();
             }
-            AppManager.mInputTextBox.Text = AppManager.mInputTextBox.getBufferText();
-            AppManager.mInputTextBox.setBufferText(new_value);
-            AppManager.mInputTextBox.setPhoneticSymbolEditMode(!AppManager.mInputTextBox.isPhoneticSymbolEditMode());
+            EditorManager.InputTextBox.Text = EditorManager.InputTextBox.getBufferText();
+            EditorManager.InputTextBox.setBufferText(new_value);
+            EditorManager.InputTextBox.setPhoneticSymbolEditMode(!EditorManager.InputTextBox.isPhoneticSymbolEditMode());
         }
 
         /// <summary>
@@ -6867,19 +6868,19 @@ namespace cadencii
             picturePositionIndicator.MouseDown += new MouseEventHandler(picturePositionIndicator_MouseDown);
             picturePositionIndicator.MouseUp += new MouseEventHandler(picturePositionIndicator_MouseUp);
             picturePositionIndicator.Paint += new PaintEventHandler(picturePositionIndicator_Paint);
-            pictPianoRoll.PreviewKeyDown += new PreviewKeyDownEventHandler(pictPianoRoll_PreviewKeyDown);
-            pictPianoRoll.KeyUp += new KeyEventHandler(handleSpaceKeyUp);
-            pictPianoRoll.KeyUp += new KeyEventHandler(pictPianoRoll_KeyUp);
-            pictPianoRoll.MouseMove += new MouseEventHandler(pictPianoRoll_MouseMove);
-            pictPianoRoll.MouseDoubleClick += new MouseEventHandler(pictPianoRoll_MouseDoubleClick);
-            pictPianoRoll.MouseClick += new MouseEventHandler(pictPianoRoll_MouseClick);
-            pictPianoRoll.MouseDown += new MouseEventHandler(pictPianoRoll_MouseDown);
-            pictPianoRoll.MouseUp += new MouseEventHandler(pictPianoRoll_MouseUp);
-            pictPianoRoll.KeyDown += new KeyEventHandler(handleSpaceKeyDown);
-            waveView.MouseDoubleClick += new MouseEventHandler(waveView_MouseDoubleClick);
-            waveView.MouseDown += new MouseEventHandler(waveView_MouseDown);
-            waveView.MouseUp += new MouseEventHandler(waveView_MouseUp);
-            waveView.MouseMove += new MouseEventHandler(waveView_MouseMove);
+            pictPianoRoll.PreviewKeyDown += new NKeyEventHandler(pictPianoRoll_PreviewKeyDown2);
+            pictPianoRoll.KeyUp += new NKeyEventHandler(handleSpaceKeyUp);
+            pictPianoRoll.KeyUp += new NKeyEventHandler(pictPianoRoll_KeyUp);
+            pictPianoRoll.MouseMove += new NMouseEventHandler(pictPianoRoll_MouseMove);
+            pictPianoRoll.MouseDoubleClick += new NMouseEventHandler(pictPianoRoll_MouseDoubleClick);
+            pictPianoRoll.MouseClick += new NMouseEventHandler(pictPianoRoll_MouseClick);
+            pictPianoRoll.MouseDown += new NMouseEventHandler(pictPianoRoll_MouseDown);
+            pictPianoRoll.MouseUp += new NMouseEventHandler(pictPianoRoll_MouseUp);
+            pictPianoRoll.KeyDown += new NKeyEventHandler(handleSpaceKeyDown);
+            waveView.MouseDoubleClick += new NMouseEventHandler(waveView_MouseDoubleClick);
+            waveView.MouseDown += new NMouseEventHandler(waveView_MouseDown);
+            waveView.MouseUp += new NMouseEventHandler(waveView_MouseUp);
+            waveView.MouseMove += new NMouseEventHandler(waveView_MouseMove);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(FormMain_DragEnter);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(FormMain_DragDrop);
             this.DragOver += new System.Windows.Forms.DragEventHandler(FormMain_DragOver);
@@ -6945,8 +6946,8 @@ namespace cadencii
         #endregion
 
         //BOOKMARK: inputTextBox
-        #region AppManager.mInputTextBox
-        public void mInputTextBox_KeyDown(Object sender, KeyEventArgs e)
+        #region EditorManager.InputTextBox
+	public void mInputTextBox_KeyDown(Object sender, NKeyEventArgs e)
         {
 #if DEBUG
             sout.println("FormMain#mInputTextBox_KeyDown");
@@ -7006,20 +7007,20 @@ namespace cadencii
                     EditorManager.itemSelection.addEvent(item.InternalID);
                     int x = EditorManager.xCoordFromClocks(item.Clock);
                     int y = EditorManager.yCoordFromNote(item.ID.Note);
-                    bool phonetic_symbol_edit_mode = AppManager.mInputTextBox.isPhoneticSymbolEditMode();
+                    bool phonetic_symbol_edit_mode = EditorManager.InputTextBox.isPhoneticSymbolEditMode();
                     showInputTextBox(
                         item.ID.LyricHandle.L0.Phrase,
                         item.ID.LyricHandle.L0.getPhoneticSymbol(),
                         new Point(x, y),
                         phonetic_symbol_edit_mode);
-                    int clWidth = (int)(AppManager.mInputTextBox.Width * controller.getScaleXInv());
+                    int clWidth = (int)(EditorManager.InputTextBox.Width * controller.getScaleXInv());
 
-                    // 画面上にAppManager.mInputTextBoxが見えるように，移動
+                    // 画面上にEditorManager.InputTextBoxが見えるように，移動
                     int SPACE = 20;
                     // vScrollやhScrollをいじった場合はfalseにする．
                     bool refresh_screen = true;
                     // X軸方向について，見えるように移動
-                    if (x < key_width || width < x + AppManager.mInputTextBox.Width) {
+                    if (x < key_width || width < x + EditorManager.InputTextBox.Width) {
                         int clock, clock_x;
                         if (x < key_width) {
                             // 左に隠れてしまう場合
@@ -7080,7 +7081,7 @@ namespace cadencii
             }
         }
 
-        public void mInputTextBox_KeyUp(Object sender, KeyEventArgs e)
+        public void mInputTextBox_KeyUp(Object sender, NKeyEventArgs e)
         {
 #if DEBUG
             sout.println("FormMain#mInputTextBox_KeyUp");
@@ -7089,7 +7090,7 @@ namespace cadencii
             bool hide = (Keys) e.KeyCode == Keys.Escape;
 
             if (flip) {
-                if (AppManager.mInputTextBox.Visible) {
+                if (EditorManager.InputTextBox.Visible) {
                     flipInputTextBoxMode();
                 }
             } else if (hide) {
@@ -7099,10 +7100,10 @@ namespace cadencii
 
         public void mInputTextBox_ImeModeChanged(Object sender, EventArgs e)
         {
-            mLastIsImeModeOn = AppManager.mInputTextBox.ImeMode == System.Windows.Forms.ImeMode.Hiragana;
+            mLastIsImeModeOn = EditorManager.InputTextBox.ImeMode == cadencii.java.awt.ImeMode.Hiragana;
         }
 
-        public void mInputTextBox_KeyPress(Object sender, KeyPressEventArgs e)
+        public void mInputTextBox_KeyPress(Object sender, cadencii.java.awt.KeyPressEventArgs e)
         {
 #if DEBUG
             sout.println("FormMain#mInputTextBox_KeyPress");
@@ -7112,29 +7113,29 @@ namespace cadencii
         }
         #endregion
 
-        //BOOKMARK: AppManager
-        #region AppManager
-        public void AppManager_EditedStateChanged(Object sender, bool edited)
+        //BOOKMARK: EditorManager
+        #region EditorManager
+        public void EditorManager_EditedStateChanged(Object sender, bool edited)
         {
             setEdited(edited);
         }
 
-        public void AppManager_GridVisibleChanged(Object sender, EventArgs e)
+        public void EditorManager_GridVisibleChanged(Object sender, EventArgs e)
         {
             menuVisualGridline.Checked = EditorManager.isGridVisible();
             stripBtnGrid.Pushed = EditorManager.isGridVisible();
             cMenuPianoGrid.Checked = EditorManager.isGridVisible();
         }
 
-        public void AppManager_MainWindowFocusRequired(Object sender, EventArgs e)
+        public void EditorManager_MainWindowFocusRequired(Object sender, EventArgs e)
         {
             this.Focus();
         }
 
-        public void AppManager_PreviewAborted(Object sender, EventArgs e)
+        public void EditorManager_PreviewAborted(Object sender, EventArgs e)
         {
 #if DEBUG
-            sout.println("FormMain#AppManager_PreviewAborted");
+            sout.println("FormMain#EditorManager_PreviewAborted");
 #endif
             stripBtnPlay.ImageKey = "control.png";
             stripBtnPlay.Text = _("Play");
@@ -7148,10 +7149,10 @@ namespace cadencii
 #endif // ENABLE_MIDI
         }
 
-        public void AppManager_PreviewStarted(Object sender, EventArgs e)
+        public void EditorManager_PreviewStarted(Object sender, EventArgs e)
         {
 #if DEBUG
-            sout.println("FormMain#AppManager_PreviewStarted");
+            sout.println("FormMain#EditorManager_PreviewStarted");
 #endif
             EditorManager.mAddingEvent = null;
             int selected = EditorManager.Selected;
@@ -7166,7 +7167,7 @@ namespace cadencii
             stripBtnPlay.Text = _("Stop");
         }
 
-        public void AppManager_SelectedToolChanged(Object sender, EventArgs e)
+        public void EditorManager_SelectedToolChanged(Object sender, EventArgs e)
         {
             applySelectedTool();
         }
@@ -7186,12 +7187,12 @@ namespace cadencii
             stripBtnCopy.Enabled = !selected_event_is_null;
         }
 
-        public void AppManager_UpdateBgmStatusRequired(Object sender, EventArgs e)
+        public void EditorManager_UpdateBgmStatusRequired(Object sender, EventArgs e)
         {
             updateBgmMenuState();
         }
 
-        public void AppManager_WaveViewRealoadRequired(Object sender, WaveViewRealoadRequiredEventArgs arg)
+        public void EditorManager_WaveViewRealoadRequired(Object sender, WaveViewRealoadRequiredEventArgs arg)
         {
             int track = arg.track;
             string file = arg.file;
@@ -7207,12 +7208,12 @@ namespace cadencii
 
         //BOOKMARK: pictPianoRoll
         #region pictPianoRoll
-        public void pictPianoRoll_KeyUp(Object sender, KeyEventArgs e)
+        public void pictPianoRoll_KeyUp(Object sender, NKeyEventArgs e)
         {
             processSpecialShortcutKey(e, false);
         }
 
-        public void pictPianoRoll_MouseClick(Object sender, MouseEventArgs e)
+        public void pictPianoRoll_MouseClick(Object sender, NMouseEventArgs e)
         {
 #if DEBUG
             CDebug.WriteLine("pictPianoRoll_MouseClick");
@@ -7220,10 +7221,10 @@ namespace cadencii
             Keys modefiers = (Keys) Control.ModifierKeys;
             EditMode edit_mode = EditorManager.EditMode;
 
-            bool is_button_left = e.Button == MouseButtons.Left;
+            bool is_button_left = e.Button == NMouseButtons.Left;
             int selected = EditorManager.Selected;
 
-            if (e.Button == MouseButtons.Left) {
+            if (e.Button == NMouseButtons.Left) {
 #if ENABLE_MOUSEHOVER
                 if ( mMouseHoverThread != null ) {
                     mMouseHoverThread.Abort();
@@ -7264,9 +7265,9 @@ namespace cadencii
                         foreach (var see in EditorManager.itemSelection.getEventIterator()) {
                             internal_ids.Add(see.original.InternalID);
                         }
-                        MouseButtons btn = e.Button;
+                        var btn = e.Button;
                         if (isMouseMiddleButtonDowned(btn)) {
-                            btn = MouseButtons.Middle;
+                            btn = NMouseButtons.Middle;
                         }
                         bool result = PaletteToolServer.invokePaletteTool(EditorManager.mSelectedPaletteTool,
                                                                               selected,
@@ -7334,7 +7335,7 @@ namespace cadencii
                         }
                     }
                 }
-            } else if (e.Button == MouseButtons.Right) {
+            } else if (e.Button == NMouseButtons.Right) {
                 bool show_context_menu = (e.X > EditorManager.keyWidth);
 #if ENABLE_MOUSEHOVER
                 if ( mMouseHoverThread != null ) {
@@ -7375,7 +7376,7 @@ namespace cadencii
                     refreshScreen();
 
                     mContextMenuOpenedPosition = new Point(e.X, e.Y);
-                    cMenuPiano.Show(pictPianoRoll, e.X, e.Y);
+                    cMenuPiano.Show((Control) pictPianoRoll.Native, e.X, e.Y);
                 } else {
                     ByRef<Rectangle> out_id_rect = new ByRef<Rectangle>();
                     VsqEvent item = getItemAtClickedPosition(mButtonInitial, out_id_rect);
@@ -7388,7 +7389,7 @@ namespace cadencii
                         int itemy = EditorManager.yCoordFromNote(item.ID.Note);
                     }
                 }
-            } else if (e.Button == MouseButtons.Middle) {
+            } else if (e.Button == NMouseButtons.Middle) {
 #if ENABLE_SCRIPT
                 if (EditorManager.SelectedTool == EditTool.PALETTE_TOOL) {
                     ByRef<Rectangle> out_id_rect = new ByRef<Rectangle>();
@@ -7416,7 +7417,7 @@ namespace cadencii
             }
         }
 
-        public void pictPianoRoll_MouseDoubleClick(Object sender, MouseEventArgs e)
+        public void pictPianoRoll_MouseDoubleClick(Object sender, NMouseEventArgs e)
         {
 #if DEBUG
             CDebug.WriteLine("FormMain#pictPianoRoll_MouseDoubleClick");
@@ -7606,13 +7607,13 @@ namespace cadencii
                 }
             }
 
-            if (e.Button == MouseButtons.Left) {
+            if (e.Button == NMouseButtons.Left) {
                 // 必要な操作が何も無ければ，クリック位置にソングポジションを移動
                 if (EditorManager.keyWidth < e.X) {
                     int clock = doQuantize(EditorManager.clockFromXCoord(e.X), EditorManager.getPositionQuantizeClock());
                     EditorManager.setCurrentClock(clock);
                 }
-            } else if (e.Button == MouseButtons.Middle) {
+            } else if (e.Button == NMouseButtons.Middle) {
                 // ツールをポインター <--> 鉛筆に切り替える
                 if (EditorManager.keyWidth < e.X) {
                     if (EditorManager.SelectedTool == EditTool.ARROW) {
@@ -7624,22 +7625,22 @@ namespace cadencii
             }
         }
 
-        public void pictPianoRoll_MouseDown(Object sender, MouseEventArgs e0)
+        public void pictPianoRoll_MouseDown(Object sender, NMouseEventArgs e0)
         {
 #if DEBUG
             CDebug.WriteLine("pictPianoRoll_MouseDown");
 #endif
-            MouseButtons btn0 = e0.Button;
+            var btn0 = e0.Button;
             if (isMouseMiddleButtonDowned(btn0)) {
-                btn0 = MouseButtons.Middle;
+                btn0 = NMouseButtons.Middle;
             }
-            MouseEventArgs e = new MouseEventArgs(btn0, e0.Clicks, e0.X, e0.Y, e0.Delta);
+            var e = new NMouseEventArgs(btn0, e0.Clicks, e0.X, e0.Y, e0.Delta);
 
             mMouseMoved = false;
             if (!EditorManager.isPlaying() && 0 <= e.X && e.X <= EditorManager.keyWidth) {
                 int note = EditorManager.noteFromYCoord(e.Y);
                 if (0 <= note && note <= 126) {
-                    if (e.Button == MouseButtons.Left) {
+                    if (e.Button == NMouseButtons.Left) {
                         KeySoundPlayer.play(note);
                     }
                     return;
@@ -7650,7 +7651,7 @@ namespace cadencii
             EditorManager.itemSelection.clearTimesig();
             EditorManager.itemSelection.clearPoint();
             /*if ( e.Button == BMouseButtons.Left ) {
-                AppManager.selectedRegionEnabled = false;
+                EditorManager.selectedRegionEnabled = false;
             }*/
 
             mMouseDowned = true;
@@ -7659,7 +7660,7 @@ namespace cadencii
 
             EditTool selected_tool = EditorManager.SelectedTool;
 #if ENABLE_SCRIPT
-            if (selected_tool != EditTool.PALETTE_TOOL && e.Button == MouseButtons.Middle) {
+            if (selected_tool != EditTool.PALETTE_TOOL && e.Button == NMouseButtons.Middle) {
 #else
             if ( e.Button == BMouseButtons.Middle ) {
 #endif
@@ -7671,7 +7672,7 @@ namespace cadencii
 
             int stdx = controller.getStartToDrawX();
             int stdy = controller.getStartToDrawY();
-            if (e.Button == MouseButtons.Left && EditorManager.mCurveOnPianoroll && (selected_tool == EditTool.PENCIL || selected_tool == EditTool.LINE)) {
+            if (e.Button == NMouseButtons.Left && EditorManager.mCurveOnPianoroll && (selected_tool == EditTool.PENCIL || selected_tool == EditTool.LINE)) {
                 pictPianoRoll.mMouseTracer.clear();
                 pictPianoRoll.mMouseTracer.appendFirst(e.X + stdx, e.Y + stdy);
                 this.Cursor = Cursors.Default;
@@ -7684,7 +7685,7 @@ namespace cadencii
             Rectangle rect = out_rect.value;
 
 #if ENABLE_SCRIPT
-            if (selected_tool == EditTool.PALETTE_TOOL && item == null && e.Button == MouseButtons.Middle) {
+            if (selected_tool == EditTool.PALETTE_TOOL && item == null && e.Button == NMouseButtons.Middle) {
                 EditorManager.EditMode =EditMode.MIDDLE_DRAG;
                 mMiddleButtonVScroll = vScroll.Value;
                 mMiddleButtonHScroll = hScroll.Value;
@@ -7699,7 +7700,7 @@ namespace cadencii
 
             // マウス位置にある音符を検索
             if (item == null) {
-                if (e.Button == MouseButtons.Left) {
+                if (e.Button == NMouseButtons.Left) {
                     EditorManager.IsWholeSelectedIntervalEnabled = false;
                 }
                 #region 音符がなかった時
@@ -7762,8 +7763,8 @@ namespace cadencii
                         }
                         if (vibrato_dobj != null) {
                             int clock = EditorManager.clockFromXCoord(pxFound.x + pxFound.width - px_vibrato_length - stdx);
-                            int note = vibrato_dobj.mNote - 1;// EditorManager.noteFromYCoord( pxFound.y + (int)(100 * AppManager.getScaleY()) - stdy );
-                            int length = vibrato_dobj.mClock + vibrato_dobj.mLength - clock;// (int)(pxFound.width * AppManager.getScaleXInv());
+                            int note = vibrato_dobj.mNote - 1;// EditorManager.noteFromYCoord( pxFound.y + (int)(100 * EditorManager.getScaleY()) - stdy );
+                            int length = vibrato_dobj.mClock + vibrato_dobj.mLength - clock;// (int)(pxFound.width * EditorManager.getScaleXInv());
                             EditorManager.mAddingEvent = new VsqEvent(clock, new VsqID(0));
                             EditorManager.mAddingEvent.ID.type = VsqIDType.Anote;
                             EditorManager.mAddingEvent.ID.Note = note;
@@ -7776,7 +7777,7 @@ namespace cadencii
                     }
                     if (vibrato_dobj == null) {
                         if ((selected_tool == EditTool.PENCIL || selected_tool == EditTool.LINE) &&
-                            e.Button == MouseButtons.Left &&
+                            e.Button == NMouseButtons.Left &&
                             e.X >= key_width) {
                             int clock = EditorManager.clockFromXCoord(e.X);
                             if (MusicManager.getVsqFile().getPreMeasureClocks() - EditorManager.editorConfig.PxTolerance * controller.getScaleXInv() <= clock) {
@@ -7810,7 +7811,7 @@ namespace cadencii
                                 SystemSounds.Asterisk.Play();
                             }
 #if ENABLE_SCRIPT
-                        } else if ((selected_tool == EditTool.ARROW || selected_tool == EditTool.PALETTE_TOOL) && e.Button == MouseButtons.Left) {
+                        } else if ((selected_tool == EditTool.ARROW || selected_tool == EditTool.PALETTE_TOOL) && e.Button == NMouseButtons.Left) {
 #else
                         } else if ( (selected_tool == EditTool.ARROW) && e.Button == BMouseButtons.Left ) {
 #endif
@@ -7824,7 +7825,7 @@ namespace cadencii
                         }
                     }
                 }
-                if (e.Button == MouseButtons.Right && !EditorManager.editorConfig.PlayPreviewWhenRightClick) {
+                if (e.Button == NMouseButtons.Right && !EditorManager.editorConfig.PlayPreviewWhenRightClick) {
                     start_mouse_hover_generator = false;
                 }
 #if ENABLE_MOUSEHOVER
@@ -7854,7 +7855,7 @@ namespace cadencii
                 if (item.ID.type != VsqIDType.Aicon ||
                      (item.ID.type == VsqIDType.Aicon && !item.ID.IconDynamicsHandle.isDynaffType())) {
 #if ENABLE_SCRIPT
-                    if (selected_tool != EditTool.ERASER && selected_tool != EditTool.PALETTE_TOOL && e.Button == MouseButtons.Left) {
+                    if (selected_tool != EditTool.ERASER && selected_tool != EditTool.PALETTE_TOOL && e.Button == NMouseButtons.Left) {
 #else
                     if ( selected_tool != EditTool.ERASER && e.Button == BMouseButtons.Left ) {
 #endif
@@ -7905,7 +7906,7 @@ namespace cadencii
                     }
                 }
 
-                if (e.Button == MouseButtons.Left || e.Button == MouseButtons.Middle) {
+                if (e.Button == NMouseButtons.Left || e.Button == NMouseButtons.Middle) {
 #if ENABLE_SCRIPT
                     if (selected_tool == EditTool.PALETTE_TOOL) {
                         EditorManager.IsWholeSelectedIntervalEnabled = false;
@@ -7995,14 +7996,14 @@ namespace cadencii
             refreshScreen();
         }
 
-        public void pictPianoRoll_MouseMove(Object sender, MouseEventArgs e)
+        public void pictPianoRoll_MouseMove(Object sender, NMouseEventArgs e)
         {
             lock (EditorManager.mDrawObjects) {
                 if (mFormActivated) {
 #if ENABLE_PROPERTY
-                    if (AppManager.mInputTextBox != null && !AppManager.mInputTextBox.IsDisposed && !AppManager.mInputTextBox.Visible && !EditorManager.propertyPanel.isEditing()) {
+                    if (EditorManager.InputTextBox != null && !EditorManager.InputTextBox.IsDisposed && !EditorManager.InputTextBox.Visible && !EditorManager.propertyPanel.isEditing()) {
 #else
-                    if (AppManager.mInputTextBox != null && !AppManager.mInputTextBox.IsDisposed && !AppManager.mInputTextBox.Visible) {
+                    if (EditorManager.InputTextBox != null && !EditorManager.InputTextBox.IsDisposed && !EditorManager.InputTextBox.Visible) {
 #endif
                         focusPianoRoll();
                     }
@@ -8492,7 +8493,7 @@ namespace cadencii
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void pictPianoRoll_MouseUp(Object sender, MouseEventArgs e)
+        public void pictPianoRoll_MouseUp(Object sender, NMouseEventArgs e)
         {
 #if DEBUG
             CDebug.WriteLine("pictureBox1_MouseUp");
@@ -8942,7 +8943,7 @@ namespace cadencii
             refreshScreen(true);
         }
 
-        public void pictPianoRoll_MouseWheel(Object sender, MouseEventArgs e)
+        public void pictPianoRoll_MouseWheel(Object sender, NMouseEventArgs e)
         {
             Keys modifier = (Keys) Control.ModifierKeys;
             bool horizontal = (modifier & Keys.Shift) == Keys.Shift;
@@ -8970,7 +8971,7 @@ namespace cadencii
                         // マウスのスクリーン座標
 						Point screen_p_at_mouse = cadencii.core2.PortUtil.getMousePosition();
                         // ピアノロール上でのマウスのx座標
-                        int x_at_mouse = pictPianoRoll.PointToClient(new System.Drawing.Point(screen_p_at_mouse.X, screen_p_at_mouse.Y)).X;
+                        int x_at_mouse = pictPianoRoll.PointToClient(new cadencii.java.awt.Point(screen_p_at_mouse.X, screen_p_at_mouse.Y)).X;
                         // マウス位置でのクロック -> こいつが保存される
                         int clock_at_mouse = EditorManager.clockFromXCoord(x_at_mouse);
                         // 古い拡大率
@@ -9020,9 +9021,14 @@ namespace cadencii
             refreshScreen();
         }
 
-        public void pictPianoRoll_PreviewKeyDown(Object sender, PreviewKeyDownEventArgs e)
+	public void pictPianoRoll_PreviewKeyDown(Object sender, PreviewKeyDownEventArgs e)
         {
-            KeyEventArgs e0 = new KeyEventArgs(e.KeyData);
+            var e0 = new NKeyEventArgs((cadencii.java.awt.Keys) e.KeyData);
+            processSpecialShortcutKey(e0, true);
+        }
+        public void pictPianoRoll_PreviewKeyDown2(Object sender, NKeyEventArgs e)
+        {
+            var e0 = new NKeyEventArgs(e.KeyData);
             processSpecialShortcutKey(e0, true);
         }
         #endregion
@@ -9429,7 +9435,7 @@ namespace cadencii
             if (EditorManager.EditMode != EditMode.DRAG_DROP) {
                 return;
             }
-            var pt = pictPianoRoll.PointToScreen(System.Drawing.Point.Empty);
+            var pt = pictPianoRoll.PointToScreen(cadencii.java.awt.Point.Empty);
             if (!mIconPaletteOnceDragEntered) {
                 int keywidth = EditorManager.keyWidth;
                 Rectangle rc = new Rectangle(pt.X + keywidth, pt.Y, pictPianoRoll.Width - keywidth, pictPianoRoll.Height);
@@ -9439,7 +9445,7 @@ namespace cadencii
                     return;
                 }
             }
-            MouseEventArgs e0 = new MouseEventArgs(MouseButtons.Left,
+            var e0 = new NMouseEventArgs(NMouseButtons.Left,
                                                     1,
                                                     screen_x - pt.X,
                                                     screen_y - pt.Y,
@@ -9460,7 +9466,7 @@ namespace cadencii
             if (handle == null) {
                 return;
             }
-            var locPianoroll = pictPianoRoll.PointToScreen(System.Drawing.Point.Empty);
+			var locPianoroll = pictPianoRoll.PointToScreen(cadencii.java.awt.Point.Empty);
             // ドロップ位置を特定して，アイテムを追加する
             int x = screen_x - locPianoroll.X;
             int y = screen_y - locPianoroll.Y;
@@ -9508,7 +9514,7 @@ namespace cadencii
             if (!e.Data.GetDataPresent(typeof(IconDynamicsHandle))) {
                 return;
             }
-            var locPianoroll = pictPianoRoll.PointToScreen(System.Drawing.Point.Empty);
+			var locPianoroll = pictPianoRoll.PointToScreen(cadencii.java.awt.Point.Empty);
             int keywidth = EditorManager.keyWidth;
             Rectangle rcPianoroll = new Rectangle(locPianoroll.X + keywidth,
                                                    locPianoroll.Y,
@@ -9973,7 +9979,7 @@ namespace cadencii
 #if DEBUG
             sout.println("FormMain#FormMain_PreviewKeyDown");
 #endif
-            KeyEventArgs ex = new KeyEventArgs(e.KeyData);
+            var ex = new NKeyEventArgs((cadencii.java.awt.Keys) e.KeyData);
             processSpecialShortcutKey(ex, true);
         }
 
@@ -13187,9 +13193,9 @@ namespace cadencii
 
         //BOOKMARK: waveView
         #region waveView
-        public void waveView_MouseDoubleClick(Object sender, MouseEventArgs e)
+        public void waveView_MouseDoubleClick(Object sender, NMouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Middle) {
+            if (e.Button == NMouseButtons.Middle) {
                 // ツールをポインター <--> 鉛筆に切り替える
                 if (e.Y < trackSelector.Height - TrackSelectorImpl.OFFSET_TRACK_TAB * 2) {
                     if (EditorManager.SelectedTool == EditTool.ARROW) {
@@ -13201,7 +13207,7 @@ namespace cadencii
             }
         }
 
-        public void waveView_MouseDown(Object sender, MouseEventArgs e)
+        public void waveView_MouseDown(Object sender, NMouseEventArgs e)
         {
 #if DEBUG
             sout.println("waveView_MouseDown; isMiddleButtonDowned=" + isMouseMiddleButtonDowned(e.Button));
@@ -13214,7 +13220,7 @@ namespace cadencii
             }
         }
 
-        public void waveView_MouseUp(Object sender, MouseEventArgs e)
+        public void waveView_MouseUp(Object sender, NMouseEventArgs e)
         {
             if (mEditCurveMode == CurveEditMode.MIDDLE_DRAG) {
                 mEditCurveMode = CurveEditMode.NONE;
@@ -13222,7 +13228,7 @@ namespace cadencii
             }
         }
 
-        public void waveView_MouseMove(Object sender, MouseEventArgs e)
+        public void waveView_MouseMove(Object sender, NMouseEventArgs e)
         {
             if (mEditCurveMode == CurveEditMode.MIDDLE_DRAG) {
                 int draft = computeHScrollValueForMiddleDrag(e.X);
@@ -13549,7 +13555,7 @@ namespace cadencii
                             int numerator, denominator;
                             Timesig timesig = MusicManager.getVsqFile().getTimesigAt(clock);
                             int total_clock = MusicManager.getVsqFile().TotalClocks;
-                            //int max_barcount = AppManager.VsqFile.getBarCountFromClock( total_clock ) - pre_measure + 1;
+                            //int max_barcount = EditorManager.VsqFile.getBarCountFromClock( total_clock ) - pre_measure + 1;
                             //int min_barcount = 1;
 #if DEBUG
                             CDebug.WriteLine("FormMain.picturePositionIndicator_MouseClick; bar_count=" + (bar_count - pre_measure + 1));
@@ -14016,7 +14022,7 @@ namespace cadencii
 
         public void picturePositionIndicator_PreviewKeyDown(Object sender, PreviewKeyDownEventArgs e)
         {
-            KeyEventArgs e0 = new KeyEventArgs(e.KeyData);
+            var e0 = new NKeyEventArgs((cadencii.java.awt.Keys) e.KeyData);
             processSpecialShortcutKey(e0, true);
         }
         #endregion
@@ -14163,7 +14169,7 @@ namespace cadencii
         {
             if (EditorManager.keyWidth < e.X) {
                 mMouseDownedTrackSelector = true;
-                if (isMouseMiddleButtonDowned((MouseButtons)e.Button)) {
+                if (isMouseMiddleButtonDowned(e.Button)) {
                     mEditCurveMode = CurveEditMode.MIDDLE_DRAG;
                     mButtonInitial = new Point(e.X, e.Y);
                     mMiddleButtonHScroll = hScroll.Value;
@@ -14174,8 +14180,8 @@ namespace cadencii
 
         public void trackSelector_MouseMove(Object sender, NMouseEventArgs e)
         {
-            if (mFormActivated && AppManager.mInputTextBox != null) {
-                bool input_visible = !AppManager.mInputTextBox.IsDisposed && AppManager.mInputTextBox.Visible;
+            if (mFormActivated && EditorManager.InputTextBox != null) {
+                bool input_visible = !EditorManager.InputTextBox.IsDisposed && EditorManager.InputTextBox.Visible;
 #if ENABLE_PROPERTY
                 bool prop_editing = EditorManager.propertyPanel.isEditing();
 #else
@@ -14292,7 +14298,7 @@ namespace cadencii
 
         public void trackSelector_PreviewKeyDown(Object sender, NKeyEventArgs e)
         {
-            KeyEventArgs e0 = new KeyEventArgs((System.Windows.Forms.Keys) e.KeyData);
+            var e0 = new NKeyEventArgs(e.KeyData);
             processSpecialShortcutKey(e0, true);
         }
 
@@ -14797,7 +14803,7 @@ namespace cadencii
 
         public void menuHiddenEditLyric_Click(Object sender, EventArgs e)
         {
-            bool input_enabled = AppManager.mInputTextBox.Enabled;
+            bool input_enabled = EditorManager.InputTextBox.Enabled;
             if (!input_enabled && EditorManager.itemSelection.getEventCount() > 0) {
                 VsqEvent original = EditorManager.itemSelection.getLastEvent().original;
                 int clock = original.Clock;
@@ -14811,7 +14817,7 @@ namespace cadencii
                                   pos, mLastSymbolEditMode);
                 refreshScreen();
             } else if (input_enabled) {
-                if (AppManager.mInputTextBox.isPhoneticSymbolEditMode()) {
+                if (EditorManager.InputTextBox.isPhoneticSymbolEditMode()) {
                     flipInputTextBoxMode();
                 }
             }
@@ -16389,7 +16395,7 @@ namespace cadencii
             } catch (Exception ex3) {
                 Logger.write(typeof(FormMain) + ".handleScriptMenuItem_Click; ex=" + ex3 + "\n");
 #if DEBUG
-                sout.println("AppManager#dd_run_Click; ex3=" + ex3);
+                sout.println("EditorManager#dd_run_Click; ex3=" + ex3);
 #endif
             }
         }
@@ -16444,7 +16450,7 @@ namespace cadencii
                 /*if ( !EditorManager.isPlaying() ) {
                     EditorManager.EditMode = EditMode.REALTIME_MTC );
                     EditorManager.setPlaying( true );
-                    EventHandler handler = new EventHandler( AppManager_PreviewStarted );
+                    EventHandler handler = new EventHandler( EditorManager_PreviewStarted );
                     if ( handler != null ) {
                         this.Invoke( handler );
                         while ( VSTiProxy.getPlayTime() <= 0.0 ) {
@@ -16511,7 +16517,7 @@ namespace cadencii
                     int selected = EditorManager.Selected;
                     CadenciiCommand run = new CadenciiCommand( VsqCommand.generateCommandEventAdd( selected,
                                                                                                    EditorManager.mAddingEvent ) );
-                    AppManager.register( MusicManager.getVsqFile().executeCommand( run ) );
+                    EditorManager.register( MusicManager.getVsqFile().executeCommand( run ) );
                     if ( !isEdited() ) {
                         setEdited( true );
                     }

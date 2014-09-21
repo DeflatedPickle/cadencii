@@ -158,7 +158,7 @@ namespace cadencii
                     }
                 }
                 btn.MouseDown += new cadencii.java.awt.MouseEventHandler(handleCommonMouseDown);
-                btn.Size = new cadencii.java.awt.Size(buttonWidth, buttonWidth);
+                btn.Size = new cadencii.java.awt.Dimension(buttonWidth, buttonWidth);
                 int iw = 0;
                 int ih = 0;
                 if (icon_id.StartsWith(IconDynamicsHandle.ICONID_HEAD_DYNAFF)) {

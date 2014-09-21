@@ -23,8 +23,35 @@ namespace cadencii
     /// <summary>
     /// 歌詞入力用のテキストボックス
     /// </summary>
-    public class LyricTextBox : TextBox
+    public class LyricTextBoxImpl : TextBoxImpl, LyricTextBox
     {
+		PictPianoRoll LyricTextBox.Parent {
+			get {
+				throw new NotImplementedException ();
+			}
+			set {
+				throw new NotImplementedException ();
+			}
+		}
+
+		cadencii.java.awt.Font LyricTextBox.Font {
+			get {
+				throw new NotImplementedException ();
+			}
+			set {
+				throw new NotImplementedException ();
+			}
+		}
+
+		cadencii.java.awt.BorderStyle LyricTextBox.BorderStyle {
+			get {
+				throw new NotImplementedException ();
+			}
+			set {
+				throw new NotImplementedException ();
+			}
+		}
+
         private string m_buf_text;
         private bool m_phonetic_symbol_edit_mode;
 

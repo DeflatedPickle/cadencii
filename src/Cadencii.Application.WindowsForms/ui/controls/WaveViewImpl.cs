@@ -26,7 +26,7 @@ namespace cadencii
     /// <summary>
     /// トラック16個分の波形描画コンテキストを保持し、それらの描画を行うコンポーネントです。
     /// </summary>
-    public class WaveView : UserControl
+    public class WaveViewImpl : UserControlImpl, WaveView
     {
         /// <summary>
         /// 波形描画用のコンテキスト
@@ -62,7 +62,7 @@ namespace cadencii
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public WaveView()
+        public WaveViewImpl()
             :
             base()
         {

@@ -28,7 +28,7 @@ namespace cadencii
     /// <summary>
     /// ピアノロール用のコンポーネント
     /// </summary>
-    public class PictPianoRoll : PictureBox
+    public class PictPianoRollImpl : PictureBoxImpl, PictPianoRoll
     {
         private readonly Color COLOR_R192G192B192 = new Color(192, 192, 192);
         private readonly Color COLOR_A098R000G000B000 = new Color(0, 0, 0, 98);
@@ -75,7 +75,8 @@ namespace cadencii
         /// <summary>
         /// ピアノ上のマウスのトレーサ
         /// </summary>
-        public MouseTracer mMouseTracer = new MouseTracer();
+        public MouseTracer _mMouseTracer = new MouseTracer();
+	public MouseTracer mMouseTracer { get { return _mMouseTracer; } set { _mMouseTracer = value; } }
         /// <summary>
         /// 幅が2ピクセルのストローク
         /// </summary>
@@ -97,16 +98,16 @@ namespace cadencii
         /// </summary>
         private FormMain mMainForm = null;
 
-        public PictPianoRoll()
+        public PictPianoRollImpl()
         { }
 
         /// <summary>
         /// メイン画面への参照を設定します
         /// </summary>
         /// <param name="form"></param>
-        public void setMainForm(FormMain form)
+        public void setMainForm(object form)
         {
-            mMainForm = form;
+		mMainForm = (FormMain) form;
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -241,12 +242,12 @@ namespace cadencii
                     float scalex = EditorManager.MainWindowController.getScaleX();
                     float inv_scalex = EditorManager.MainWindowController.getScaleXInv();
 
-                    if (EditorManager.itemSelection.getEventCount() > 0 && AppManager.mInputTextBox.Visible) {
+                    if (EditorManager.itemSelection.getEventCount() > 0 && EditorManager.InputTextBox.Visible) {
                         VsqEvent original = EditorManager.itemSelection.getLastEvent().original;
                         int event_x = (int)(original.Clock * scalex + xoffset);
                         int event_y = -original.ID.Note * track_height + yoffset;
-                        AppManager.mInputTextBox.Left = event_x + 4;
-                        AppManager.mInputTextBox.Top = event_y + 2;
+                        EditorManager.InputTextBox.Left = event_x + 4;
+                        EditorManager.InputTextBox.Top = event_y + 2;
                     }
 
                     RendererKind renderer = RendererKind.VOCALOID2;

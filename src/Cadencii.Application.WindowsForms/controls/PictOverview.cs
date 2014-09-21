@@ -407,7 +407,7 @@ namespace cadencii
         public void handleMouseDown(Object sender, MouseEventArgs e)
         {
             MouseButtons btn = e.Button;
-            if (mMainForm.isMouseMiddleButtonDowned(e.Button)) {
+            if (mMainForm.isMouseMiddleButtonDowned((cadencii.java.awt.MouseButtons) e.Button)) {
                 btn = MouseButtons.Middle;
             }
             if (btn == MouseButtons.Middle) {

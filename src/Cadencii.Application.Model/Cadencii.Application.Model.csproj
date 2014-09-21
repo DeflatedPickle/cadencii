@@ -177,6 +177,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="controls\DraggableBButton.cs" />
+    <Compile Include="controls\LyricTextBox.cs" />
+    <Compile Include="controls\PictPianoRoll.cs" />
+    <Compile Include="controls\WaveView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

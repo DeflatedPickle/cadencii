@@ -79,9 +79,11 @@
     <Compile Include="models\winforms\DockStyle.cs" />
     <Compile Include="models\winforms\Padding.cs" />
     <Compile Include="models\UiBase.cs" />
-    <Compile Include="models\Size.cs" />
     <Compile Include="models\winforms\BorderStyle.cs" />
     <Compile Include="models\winforms\DragDropEffects.cs" />
+    <Compile Include="models\winforms\ImeMode.cs" />
+    <Compile Include="models\winforms\AnchorStyles.cs" />
+    <Compile Include="models\winforms\KeyPressEventArgs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
