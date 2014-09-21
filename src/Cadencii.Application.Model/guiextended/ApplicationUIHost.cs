@@ -7,7 +7,7 @@ namespace cadencii
 	{
 		public static T Create<T> (params object [] args)
 		{
-			var type = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (a => a.GetTypes ()).First (t => t.IsSubclassOf (typeof(T)));
+			var type = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (a => a.GetTypes ()).First (t => typeof (T).IsInterface ? t.GetInterfaces ().Contains (typeof (T)) : t.IsSubclassOf (typeof(T)));
 			return (T) Activator.CreateInstance (type, args, null);
 		}
 

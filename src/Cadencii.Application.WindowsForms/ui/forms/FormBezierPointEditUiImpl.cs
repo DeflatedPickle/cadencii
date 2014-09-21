@@ -213,9 +213,9 @@ namespace cadencii
         public void setDialogResult(bool result)
         {
             if (result) {
-                this.DialogResult = DialogResult.OK;
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
             } else {
-                this.DialogResult = DialogResult.Cancel;
+		this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             }
         }
 

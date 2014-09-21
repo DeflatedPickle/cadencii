@@ -125,7 +125,7 @@ namespace cadencii
             }
 
             for (int i = 0; i < mCache.Length; i++) {
-                var img = new java.awt.Image () { NativeImage = mCache[i] };
+                var img = mCache[i];
                 g.drawImage(img, WIDTH * i - x_offset, 0, null);
             }
         }

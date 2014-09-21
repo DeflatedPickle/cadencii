@@ -10692,7 +10692,7 @@ namespace cadencii
             using (var dialog = new System.Windows.Forms.SaveFileDialog()) {
                 dialog.Title = _("Export VSQX (*.vsqx)");
                 dialog.Filter = _("VSQX Format(*.vsqx)|*.vsqx") + "|" + _("All Files(*.*)|*.*");
-				if (dialog.ShowDialog() == DialogResult.OK) {
+				if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                     var file_path = dialog.FileName;
                     var writer = new VsqxWriter();
                     writer.write(sequence, file_path);
