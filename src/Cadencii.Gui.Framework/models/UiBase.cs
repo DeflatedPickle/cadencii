@@ -22,9 +22,13 @@ namespace cadencii
     {
     		bool TopMost { get; set; }
 		bool Visible { get; set; }
+		Point Location { get; set; }
+
 		int showDialog(Object parent_form);
 
 		event EventHandler FormClosing;
+
+		event EventHandler LocationChanged;
     };
 
 }

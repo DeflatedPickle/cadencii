@@ -44,24 +44,6 @@ namespace cadencii
 
     public class FormIconPaletteUiImpl : FormUiBase, FormIconPaletteUi
     {
-		event EventHandler FormIconPaletteUi.LocationChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		Point FormIconPaletteUi.Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
-
 		int UiBase.showDialog (object parent_form)
 		{
 			throw new NotImplementedException ();

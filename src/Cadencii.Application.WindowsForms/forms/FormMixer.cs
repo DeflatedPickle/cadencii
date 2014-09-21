@@ -26,6 +26,16 @@ namespace cadencii
 {
 	public class FormUiBase : Form, UiBase
  	{
+		event EventHandler UiBase.LocationChanged {
+			add { this.LocationChanged += (object sender, EventArgs e) => value (sender, e); }
+			remove { this.LocationChanged -= (object sender, EventArgs e) => value (sender, e); }
+		}
+
+		cadencii.java.awt.Point UiBase.Location {
+			get { return new cadencii.java.awt.Point (Location.X, Location.Y); }
+			set { Location = new System.Drawing.Point (value.X, value.Y); }
+		}
+
 		event EventHandler UiBase.FormClosing {
 			add { this.FormClosing += (object sender, FormClosingEventArgs e) => value (sender, e); }
 			remove { this.FormClosing -= (object sender, FormClosingEventArgs e) => value (sender, e); }
