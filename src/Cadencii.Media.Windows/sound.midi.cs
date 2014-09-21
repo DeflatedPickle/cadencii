@@ -95,47 +95,6 @@ namespace cadencii.javax.sound.midi
         }
     }
 
-    public class MidiMessage
-    {
-        protected byte[] data;
-        protected int length;
-
-        /// <summary>
-        /// 本来はprotected
-        /// </summary>
-        /// <param name="data"></param>
-        public MidiMessage(byte[] data)
-        {
-            if (data == null) {
-                this.data = new byte[0];
-                this.length = 0;
-            } else {
-                this.data = new byte[data.Length];
-                for (int i = 0; i < data.Length; i++) {
-                    this.data[i] = (byte)(0xff & data[i]);
-                }
-                this.length = data.Length;
-            }
-        }
-
-        public int getLength()
-        {
-            return length;
-        }
-
-        public byte[] getMessage()
-        {
-            return data;
-        }
-
-        public int getStatus()
-        {
-            if (data != null && data.Length > 0) {
-                return data[0];
-            }
-            return 0;
-        }
-    }
 
     public interface Receiver
     {
@@ -268,7 +227,6 @@ namespace cadencii.javax.sound.midi
 
         private static List<MidiDeviceInfoImpl> getMidiIn()
         {
-        /*
             if (mMidiIn == null) {
                 mMidiIn = new List<MidiDeviceInfoImpl>();
                 int num = 0;
@@ -286,13 +244,10 @@ namespace cadencii.javax.sound.midi
                 }
             }
             return mMidiIn;
-        */
-            throw new NotImplementedException ();
         }
 
         private static List<MidiDeviceInfoImpl> getMidiOut()
         {
-        /*
             if (mMidiOut == null) {
                 mMidiOut = new List<MidiDeviceInfoImpl>();
                 int num = 0;
@@ -310,8 +265,6 @@ namespace cadencii.javax.sound.midi
                 }
             }
             return mMidiOut;
-        */
-            throw new NotImplementedException ();
         }
 
         public static MidiDevice.Info[] getMidiDeviceInfo()

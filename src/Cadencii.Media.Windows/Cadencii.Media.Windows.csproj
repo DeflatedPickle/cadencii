@@ -47,6 +47,7 @@
     <Compile Include="VCM.cs" />
     <Compile Include="VFW.cs" />
     <Compile Include="WavePlay.cs" />
+    <Compile Include="sound.midi.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

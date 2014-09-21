@@ -50,7 +50,7 @@
     <Compile Include="WaveWriter.cs" />
     <Compile Include="WaveRateConverter.cs" />
     <Compile Include="WaveReader.cs" />
-    <Compile Include="sound.midi.cs" />
+    <Compile Include="MidiMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cadencii.Core\Cadencii.Core.csproj">
