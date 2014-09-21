@@ -339,7 +339,7 @@ namespace cadencii
         public int getOverviewStartToDrawX(int mouse_x)
         {
             float clock = mouse_x / mOverviewPixelPerClock + mOverviewStartToDrawClock;
-            int clock_at_left = (int)(clock - (mMainForm.pictPianoRoll.getWidth() - EditorManager.keyWidth) * EditorManager.MainWindowController.getScaleXInv() / 2);
+            int clock_at_left = (int)(clock - (mMainForm.pictPianoRoll.Width - EditorManager.keyWidth) * EditorManager.MainWindowController.getScaleXInv() / 2);
             return (int)(clock_at_left * EditorManager.MainWindowController.getScaleX());
         }
 
@@ -541,7 +541,7 @@ namespace cadencii
             int height = this.Height;
             int xoffset = key_width + EditorManager.keyOffset;
             int current_start = EditorManager.clockFromXCoord(key_width);
-            int current_end = EditorManager.clockFromXCoord(mMainForm.pictPianoRoll.getWidth());
+            int current_end = EditorManager.clockFromXCoord(mMainForm.pictPianoRoll.Width);
             int x_start = getOverviewXCoordFromClock(current_start);
             int x_end = getOverviewXCoordFromClock(current_end);
 
@@ -550,7 +550,7 @@ namespace cadencii
             int act_start_to_draw_x = (int)(mMainForm.hScroll.Value * EditorManager.MainWindowController.getScaleX());
             if (act_start_to_draw_x != stdx) {
                 int act_start_clock = EditorManager.clockFromXCoord(key_width - stdx + act_start_to_draw_x);
-                int act_end_clock = EditorManager.clockFromXCoord(mMainForm.pictPianoRoll.getWidth() - stdx + act_start_to_draw_x);
+                int act_end_clock = EditorManager.clockFromXCoord(mMainForm.pictPianoRoll.Width - stdx + act_start_to_draw_x);
                 int act_start_x = getOverviewXCoordFromClock(act_start_clock);
                 int act_end_x = getOverviewXCoordFromClock(act_end_clock);
                 Rectangle rcm = new Rectangle(act_start_x, 0, act_end_x - act_start_x, height);
@@ -699,7 +699,7 @@ namespace cadencii
 
                 g.setStroke(getStrokeDefault());
                 int current_start = EditorManager.clockFromXCoord(key_width);
-                int current_end = EditorManager.clockFromXCoord(mMainForm.pictPianoRoll.getWidth());
+                int current_end = EditorManager.clockFromXCoord(mMainForm.pictPianoRoll.Width);
                 int x_start = (int)(current_start * mOverviewPixelPerClock);
                 int x_end = (int)(current_end * mOverviewPixelPerClock);
 

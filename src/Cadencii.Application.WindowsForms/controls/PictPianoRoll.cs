@@ -199,8 +199,8 @@ namespace cadencii
             lock (EditorManager.mDrawObjects) {
                 Graphics g = (Graphics)g1;
 
-                int width = getWidth();
-                int height = getHeight();
+                int width = Width;
+                int height = Height;
 
                 // 再生中に画面を描画しない設定なら飛ばす
                 if (EditorManager.editorConfig.SkipDrawWhilePlaying && EditorManager.isPlaying()) {
@@ -1031,7 +1031,7 @@ namespace cadencii
                         int end = (int)(EditorManager.mWholeSelectedInterval.getEnd() * scalex) + xoffset;
                         if (start < end) {
                             g.setColor(new Color(0, 0, 0, 98));
-                            g.fillRect(start, 0, end - start, getHeight());
+                            g.fillRect(start, 0, end - start, Height);
                         }
                     } else if (EditorManager.mIsPointerDowned) {
                         // 選択範囲を半透明で塗りつぶす
@@ -1215,7 +1215,7 @@ namespace cadencii
                     if (key_width <= marker_x && marker_x <= width) {
                         g.setColor(cadencii.java.awt.Colors.White);
                         g.setStroke(getStroke2px());
-                        g.drawLine(marker_x, 0, marker_x, getHeight());
+                        g.drawLine(marker_x, 0, marker_x, Height);
                         g.setStroke(getStrokeDefault());
                     }
                 } catch (Exception ex) {
@@ -1338,258 +1338,10 @@ namespace cadencii
             g.setClip(old);
         }
 
-        #region java.awt.Component
-        // root implementation of java.awt.Component is in BForm.cs
         public java.awt.Dimension getMinimumSize()
         {
             return new cadencii.java.awt.Dimension(base.MinimumSize.Width, base.MinimumSize.Height);
         }
-
-        public void setMinimumSize(java.awt.Dimension value)
-        {
-            base.MinimumSize = new System.Drawing.Size(value.width, value.height);
-        }
-
-        public java.awt.Dimension getMaximumSize()
-        {
-            return new cadencii.java.awt.Dimension(base.MaximumSize.Width, base.MaximumSize.Height);
-        }
-
-        public void setMaximumSize(java.awt.Dimension value)
-        {
-            base.MaximumSize = new System.Drawing.Size(value.width, value.height);
-        }
-
-        public void invalidate()
-        {
-            base.Invalidate();
-        }
-
-#if COMPONENT_ENABLE_REPAINT
-        public void repaint() {
-            base.Refresh();
-        }
-#endif
-
-#if COMPONENT_ENABLE_CURSOR
-        public org.kbinani.java.awt.Cursor getCursor() {
-            System.Windows.Forms.Cursor c = base.Cursor;
-            org.kbinani.java.awt.Cursor ret = null;
-            if( c.Equals( System.Windows.Forms.Cursors.Arrow ) ){
-                ret = new org.kbinani.java.awt.Cursor( org.kbinani.java.awt.Cursor.DEFAULT_CURSOR );
-            } else if ( c.Equals( System.Windows.Forms.Cursors.Cross ) ){
-                ret = new org.kbinani.java.awt.Cursor( org.kbinani.java.awt.Cursor.CROSSHAIR_CURSOR );
-            } else if ( c.Equals( System.Windows.Forms.Cursors.Default ) ){
-                ret = new org.kbinani.java.awt.Cursor( org.kbinani.java.awt.Cursor.DEFAULT_CURSOR );
-            } else if ( c.Equals( System.Windows.Forms.Cursors.Hand ) ){
-                ret = new org.kbinani.java.awt.Cursor( org.kbinani.java.awt.Cursor.HAND_CURSOR );
-            } else if ( c.Equals( System.Windows.Forms.Cursors.IBeam ) ) {
-                ret = new org.kbinani.java.awt.Cursor( org.kbinani.java.awt.Cursor.TEXT_CURSOR );
-            } else if ( c.Equals( System.Windows.Forms.Cursors.PanEast ) ) {
-                ret = new org.kbinani.java.awt.Cursor( org.kbinani.java.awt.Cursor.E_RESIZE_CURSOR );
-            } else if ( c.Equals( System.Windows.Forms.Cursors.PanNE ) ) {
-                ret = new org.kbinani.java.awt.Cursor( org.kbinani.java.awt.Cursor.NE_RESIZE_CURSOR );
-            } else if ( c.Equals( System.Windows.Forms.Cursors.PanNorth ) ) {
-                ret = new org.kbinani.java.awt.Cursor( org.kbinani.java.awt.Cursor.N_RESIZE_CURSOR );
-            } else if ( c.Equals( System.Windows.Forms.Cursors.PanNW ) ) {
-                ret = new org.kbinani.java.awt.Cursor( org.kbinani.java.awt.Cursor.NW_RESIZE_CURSOR );
-            } else if ( c.Equals( System.Windows.Forms.Cursors.PanSE ) ) {
-                ret = new org.kbinani.java.awt.Cursor( org.kbinani.java.awt.Cursor.SE_RESIZE_CURSOR );
-            } else if ( c.Equals( System.Windows.Forms.Cursors.PanSouth ) ) {
-                ret = new org.kbinani.java.awt.Cursor( org.kbinani.java.awt.Cursor.S_RESIZE_CURSOR );
-            } else if ( c.Equals( System.Windows.Forms.Cursors.PanSW ) ) {
-                ret = new org.kbinani.java.awt.Cursor( org.kbinani.java.awt.Cursor.SW_RESIZE_CURSOR );
-            } else if ( c.Equals( System.Windows.Forms.Cursors.PanWest ) ) {
-                ret = new org.kbinani.java.awt.Cursor( org.kbinani.java.awt.Cursor.W_RESIZE_CURSOR );
-            } else if ( c.Equals( System.Windows.Forms.Cursors.SizeAll ) ) {
-                ret = new org.kbinani.java.awt.Cursor( org.kbinani.java.awt.Cursor.MOVE_CURSOR );
-            } else {
-                ret = new org.kbinani.java.awt.Cursor( org.kbinani.java.awt.Cursor.CUSTOM_CURSOR );
-            }
-            ret.cursor = c;
-            return ret;
-        }
-
-        public void setCursor( org.kbinani.java.awt.Cursor value ) {
-            base.Cursor = value.cursor;
-        }
-#endif
-
-        public bool isVisible()
-        {
-            return base.Visible;
-        }
-
-        public void setVisible(bool value)
-        {
-            base.Visible = value;
-        }
-
-#if COMPONENT_ENABLE_TOOL_TIP_TEXT
-        public void setToolTipText( String value )
-        {
-            base.ToolTipText = value;
-        }
-
-        public String getToolTipText()
-        {
-            return base.ToolTipText;
-        }
-#endif
-
-#if COMPONENT_PARENT_AS_OWNERITEM
-        public Object getParent() {
-            return base.OwnerItem;
-        }
-#else
-        public Object getParent()
-        {
-            return base.Parent;
-        }
-#endif
-
-        public string getName()
-        {
-            return base.Name;
-        }
-
-        public void setName(string value)
-        {
-            base.Name = value;
-        }
-
-#if COMPONENT_ENABLE_LOCATION
-        public void setBounds( int x, int y, int width, int height ) {
-            base.Bounds = new System.Drawing.Rectangle( x, y, width, height );
-        }
-
-        public void setBounds( org.kbinani.java.awt.Rectangle rc ) {
-            base.Bounds = new System.Drawing.Rectangle( rc.x, rc.y, rc.width, rc.height );
-        }
-
-        public org.kbinani.java.awt.Point getLocationOnScreen() {
-            System.Drawing.Point p = base.PointToScreen( base.Location );
-            return new org.kbinani.java.awt.Point( p.X, p.Y );
-        }
-
-        public org.kbinani.java.awt.Point getLocation() {
-            System.Drawing.Point loc = this.Location;
-            return new org.kbinani.java.awt.Point( loc.X, loc.Y );
-        }
-
-        public void setLocation( int x, int y ) {
-            base.Location = new System.Drawing.Point( x, y );
-        }
-
-        public void setLocation( org.kbinani.java.awt.Point p ) {
-            base.Location = new System.Drawing.Point( p.x, p.y );
-        }
-#endif
-
-        public cadencii.java.awt.Rectangle getBounds()
-        {
-            System.Drawing.Rectangle r = base.Bounds;
-            return new cadencii.java.awt.Rectangle(r.X, r.Y, r.Width, r.Height);
-        }
-
-#if COMPONENT_ENABLE_X
-        public int getX() {
-            return base.Left;
-        }
-#endif
-
-#if COMPONENT_ENABLE_Y
-        public int getY() {
-            return base.Top;
-        }
-#endif
-
-        public int getWidth()
-        {
-            return base.Width;
-        }
-
-        public int getHeight()
-        {
-            return base.Height;
-        }
-
-        public cadencii.java.awt.Dimension getSize()
-        {
-            return new cadencii.java.awt.Dimension(base.Size.Width, base.Size.Height);
-        }
-
-        public void setSize(int width, int height)
-        {
-            base.Size = new System.Drawing.Size(width, height);
-        }
-
-        public void setSize(cadencii.java.awt.Dimension d)
-        {
-            setSize(d.width, d.height);
-        }
-
-        public void setBackground(cadencii.java.awt.Color color)
-        {
-            base.BackColor = System.Drawing.Color.FromArgb(color.getRed(), color.getGreen(), color.getBlue());
-        }
-
-        public cadencii.java.awt.Color getBackground()
-        {
-            return new cadencii.java.awt.Color(base.BackColor.R, base.BackColor.G, base.BackColor.B);
-        }
-
-        public void setForeground(cadencii.java.awt.Color color)
-        {
-			base.ForeColor = color.ToNative ();
-        }
-
-        public cadencii.java.awt.Color getForeground()
-        {
-            return new cadencii.java.awt.Color(base.ForeColor.R, base.ForeColor.G, base.ForeColor.B);
-        }
-
-        public bool isEnabled()
-        {
-            return base.Enabled;
-        }
-
-        public void setEnabled(bool value)
-        {
-            base.Enabled = value;
-        }
-
-#if COMPONENT_ENABLE_FOCUS
-        public void requestFocus() {
-            base.Focus();
-        }
-
-        public bool isFocusOwner() {
-            return base.Focused;
-        }
-#endif
-
-        public void setPreferredSize(cadencii.java.awt.Dimension size)
-        {
-            base.Size = new System.Drawing.Size(size.width, size.height);
-        }
-
-        public cadencii.java.awt.Font getFont()
-        {
-            return new cadencii.java.awt.Font(base.Font);
-        }
-
-        public void setFont(cadencii.java.awt.Font font)
-        {
-            if (font == null) {
-                return;
-            }
-			if ((System.Drawing.Font) font.NativeFont == null) {
-                return;
-            }
-			base.Font = (System.Drawing.Font) font.NativeFont;
-        }
-        #endregion
     }
 
 }

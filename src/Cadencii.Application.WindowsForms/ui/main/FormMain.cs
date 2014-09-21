@@ -688,9 +688,9 @@ namespace cadencii
             // pictPianoRoll
             pictPianoRoll.Bounds = new System.Drawing.Rectangle(0, picturePositionIndicator.Height, panel1.Width - vScroll.Width, panel1.Height - picturePositionIndicator.Height - hScroll.Height);
             // vScroll
-            vScroll.Left = pictPianoRoll.getWidth();
+            vScroll.Left = pictPianoRoll.Width;
             vScroll.Top = picturePositionIndicator.Height;
-            vScroll.Height = pictPianoRoll.getHeight();
+            vScroll.Height = pictPianoRoll.Height;
             // pictureBox3
             pictureBox3.Left = 0;
             pictureBox3.Top = panel1.Height - hScroll.Height;
@@ -825,7 +825,7 @@ namespace cadencii
             updateRecentFileMenu();
 
             // C3が画面中央に来るように調整
-            int draft_start_to_draw_y = 68 * (int)(100 * controller.getScaleY()) - pictPianoRoll.getHeight() / 2;
+            int draft_start_to_draw_y = 68 * (int)(100 * controller.getScaleY()) - pictPianoRoll.Height / 2;
             int draft_vscroll_value = (int)((draft_start_to_draw_y * (double)vScroll.Maximum) / (128 * (int)(100 * controller.getScaleY()) - vScroll.Height));
             try {
                 vScroll.Value = draft_vscroll_value;
@@ -1666,8 +1666,8 @@ namespace cadencii
         private VsqEvent getItemAtClickedPosition(Point mouse_position, ByRef<Rectangle> rect)
         {
             rect.value = new Rectangle();
-            int width = pictPianoRoll.getWidth();
-            int height = pictPianoRoll.getHeight();
+            int width = pictPianoRoll.Width;
+            int height = pictPianoRoll.Height;
             int key_width = EditorManager.keyWidth;
 
             // マウスが可視範囲になければ死ぬ
@@ -1733,7 +1733,7 @@ namespace cadencii
             int dy = mouse_y - mButtonInitial.Y;
             int max = vScroll.Maximum - vScroll.LargeChange;
             int min = vScroll.Minimum;
-            double new_vscroll_value = (double)mMiddleButtonVScroll - dy * max / (128.0 * (int)(100.0 * controller.getScaleY()) - (double)pictPianoRoll.getHeight());
+            double new_vscroll_value = (double)mMiddleButtonVScroll - dy * max / (128.0 * (int)(100.0 * controller.getScaleY()) - (double)pictPianoRoll.Height);
             int value = (int)new_vscroll_value;
             if (value < min) {
                 value = min;
@@ -3308,7 +3308,7 @@ namespace cadencii
                 vScroll.Value = vScroll.Minimum;
                 return;
             }
-            int height = pictPianoRoll.getHeight();
+            int height = pictPianoRoll.Height;
             int noteTop = EditorManager.noteFromYCoord(0); //画面上端でのノートナンバー
             int noteBottom = EditorManager.noteFromYCoord(height); // 画面下端でのノートナンバー
 
@@ -3338,11 +3338,11 @@ namespace cadencii
         {
             // カーソルが画面内にあるかどうか検査
             int clock_left = EditorManager.clockFromXCoord(EditorManager.keyWidth);
-            int clock_right = EditorManager.clockFromXCoord(pictPianoRoll.getWidth());
+            int clock_right = EditorManager.clockFromXCoord(pictPianoRoll.Width);
             int uwidth = clock_right - clock_left;
             if (clock < clock_left || clock_right < clock) {
                 int cl_new_center = (clock / uwidth) * uwidth + uwidth / 2;
-                float f_draft = cl_new_center - (pictPianoRoll.getWidth() / 2 + 34 - 70) * controller.getScaleXInv();
+                float f_draft = cl_new_center - (pictPianoRoll.Width / 2 + 34 - 70) * controller.getScaleXInv();
                 if (f_draft < 0f) {
                     f_draft = 0;
                 }
@@ -3507,7 +3507,7 @@ namespace cadencii
         public void updateScrollRangeHorizontal()
         {
             // コンポーネントの高さが0の場合，スクロールの設定が出来ないので．
-            int pwidth = pictPianoRoll.getWidth();
+            int pwidth = pictPianoRoll.Width;
             int hwidth = hScroll.Width;
             if (pwidth <= 0 || hwidth <= 0) {
                 return;
@@ -3546,7 +3546,7 @@ namespace cadencii
         public void updateScrollRangeVertical()
         {
             // コンポーネントの高さが0の場合，スクロールの設定が出来ないので．
-            int pheight = pictPianoRoll.getHeight();
+            int pheight = pictPianoRoll.Height;
             int vheight = vScroll.Height;
             if (pheight <= 0 || vheight <= 0) {
                 return;
@@ -3812,7 +3812,7 @@ namespace cadencii
                 EditorManager.editorConfig.isPositionQuantizeTriplet());
             int cl_new = doQuantize(cl_clock + unit, unit);
 
-            if (cl_new <= hScroll.Maximum + (pictPianoRoll.getWidth() - EditorManager.keyWidth) * controller.getScaleXInv()) {
+            if (cl_new <= hScroll.Maximum + (pictPianoRoll.Width - EditorManager.keyWidth) * controller.getScaleXInv()) {
                 // 表示の更新など
                 EditorManager.setCurrentClock(cl_new);
 
@@ -6958,8 +6958,8 @@ namespace cadencii
                 executeLyricChangeCommand();
                 int selected = EditorManager.Selected;
                 int index = -1;
-                int width = pictPianoRoll.getWidth();
-                int height = pictPianoRoll.getHeight();
+                int width = pictPianoRoll.Width;
+                int height = pictPianoRoll.Height;
                 int key_width = EditorManager.keyWidth;
                 VsqTrack track = MusicManager.getVsqFile().Track[selected];
                 track.sortEvent();
@@ -7300,7 +7300,7 @@ namespace cadencii
                             DrawObject dobj = EditorManager.mDrawObjects[selected - 1][i];
                             if (dobj.mRectangleInPixel.x + controller.getStartToDrawX() + dobj.mRectangleInPixel.width - stdx < 0) {
                                 continue;
-                            } else if (pictPianoRoll.getWidth() < dobj.mRectangleInPixel.x + EditorManager.keyWidth - stdx) {
+                            } else if (pictPianoRoll.Width < dobj.mRectangleInPixel.x + EditorManager.keyWidth - stdx) {
                                 break;
                             }
                             Rectangle rc = new Rectangle(dobj.mRectangleInPixel.x + EditorManager.keyWidth + dobj.mVibratoDelayInPixel - stdx,
@@ -7740,7 +7740,7 @@ namespace cadencii
                             }
                             if (dobj.mRectangleInPixel.x + key_width + dobj.mRectangleInPixel.width - stdx < 0) {
                                 continue;
-                            } else if (pictPianoRoll.getWidth() < dobj.mRectangleInPixel.x + key_width - stdx) {
+                            } else if (pictPianoRoll.Width < dobj.mRectangleInPixel.x + key_width - stdx) {
                                 break;
                             }
                             Rectangle rc = new Rectangle(dobj.mRectangleInPixel.x + key_width + dobj.mVibratoDelayInPixel - stdx - _EDIT_HANDLE_WIDTH / 2,
@@ -8059,11 +8059,11 @@ namespace cadencii
                     if (mExtDragX == ExtDragXMode.NONE) {
                         if (EditorManager.keyWidth > e.X) {
                             mExtDragX = ExtDragXMode.LEFT;
-                        } else if (pictPianoRoll.getWidth() < e.X) {
+                        } else if (pictPianoRoll.Width < e.X) {
                             mExtDragX = ExtDragXMode.RIGHT;
                         }
                     } else {
-                        if (EditorManager.keyWidth <= e.X && e.X <= pictPianoRoll.getWidth()) {
+                        if (EditorManager.keyWidth <= e.X && e.X <= pictPianoRoll.Width) {
                             mExtDragX = ExtDragXMode.NONE;
                         }
                     }
@@ -8071,11 +8071,11 @@ namespace cadencii
                     if (mExtDragY == ExtDragYMode.NONE) {
                         if (0 > e.Y) {
                             mExtDragY = ExtDragYMode.UP;
-                        } else if (pictPianoRoll.getHeight() < e.Y) {
+                        } else if (pictPianoRoll.Height < e.Y) {
                             mExtDragY = ExtDragYMode.DOWN;
                         }
                     } else {
-                        if (0 <= e.Y && e.Y <= pictPianoRoll.getHeight()) {
+                        if (0 <= e.Y && e.Y <= pictPianoRoll.Height) {
                             mExtDragY = ExtDragYMode.NONE;
                         }
                     }
@@ -8999,7 +8999,7 @@ namespace cadencii
                 }
             } else {
                 // スクロール操作
-                if (e.X <= EditorManager.keyWidth || pictPianoRoll.getWidth() < e.X) {
+                if (e.X <= EditorManager.keyWidth || pictPianoRoll.Width < e.X) {
                     horizontal = false;
                 }
                 if (horizontal) {
@@ -9432,7 +9432,7 @@ namespace cadencii
             var pt = pictPianoRoll.PointToScreen(System.Drawing.Point.Empty);
             if (!mIconPaletteOnceDragEntered) {
                 int keywidth = EditorManager.keyWidth;
-                Rectangle rc = new Rectangle(pt.X + keywidth, pt.Y, pictPianoRoll.getWidth() - keywidth, pictPianoRoll.getHeight());
+                Rectangle rc = new Rectangle(pt.X + keywidth, pt.Y, pictPianoRoll.Width - keywidth, pictPianoRoll.Height);
                 if (Utility.isInRect(new Point(screen_x, screen_y), rc)) {
                     mIconPaletteOnceDragEntered = true;
                 } else {
@@ -9512,8 +9512,8 @@ namespace cadencii
             int keywidth = EditorManager.keyWidth;
             Rectangle rcPianoroll = new Rectangle(locPianoroll.X + keywidth,
                                                    locPianoroll.Y,
-                                                   pictPianoRoll.getWidth() - keywidth,
-                                                   pictPianoRoll.getHeight());
+                                                   pictPianoRoll.Width - keywidth,
+                                                   pictPianoRoll.Height);
             if (!Utility.isInRect(new Point(e.X, e.Y), rcPianoroll)) {
                 return;
             }

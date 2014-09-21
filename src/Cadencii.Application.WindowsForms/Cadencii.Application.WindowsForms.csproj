@@ -110,7 +110,6 @@
     </EmbeddedResource>
     <Compile Include="AppManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="plugin\InterfaceVersion.cs" />
     <Compile Include="forms\FormCheckUnknownSingerAndResampler.cs">
       <SubType>Form</SubType>
     </Compile>

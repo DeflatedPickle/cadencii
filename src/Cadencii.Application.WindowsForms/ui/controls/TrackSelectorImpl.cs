@@ -2398,8 +2398,8 @@ namespace cadencii
             try {
 #endif
                 int visibleMinX = EditorManager.keyWidth;
-                int visibleMaxX = mMainWindow.pictPianoRoll.getWidth() + EditorManager.keyWidth + EditorManager.keyOffset;
-			Color hilight = cadencii.java.awt.Colors.Blue;// EditorManager.getHilightColor();
+                int visibleMaxX = mMainWindow.pictPianoRoll.Width + EditorManager.keyWidth + EditorManager.keyOffset;
+			Color hilight = EditorManager.getHilightColor();
                 int chains_count = chains.Count;
                 for (int i = 0; i < chains_count; i++) {
                     BezierChain target_chain = chains[i];
