@@ -2750,7 +2750,7 @@ namespace cadencii
             menuEditCut.Enabled = !selected_is_null;
             menuEditDelete.Enabled = !selected_is_null;
 
-            ClipboardEntry ce = AppManager.clipboard.getCopiedItems();
+            ClipboardEntry ce = EditorManager.clipboard.getCopiedItems();
             int copy_started_clock = ce.copyStartedClock;
             SortedDictionary<CurveType, VsqBPList> copied_curve = ce.points;
             SortedDictionary<CurveType, List<BezierChain>> copied_bezier = ce.beziers;
@@ -4946,7 +4946,7 @@ namespace cadencii
 
             VsqCommand add_event = null; // VsqEventを追加するコマンド
 
-            ClipboardEntry ce = AppManager.clipboard.getCopiedItems();
+            ClipboardEntry ce = EditorManager.clipboard.getCopiedItems();
             int copy_started_clock = ce.copyStartedClock;
             List<VsqEvent> copied_events = ce.events;
 #if DEBUG
@@ -5219,14 +5219,14 @@ namespace cadencii
                     }
                     ce.events = list;
                 }
-                AppManager.clipboard.setClipboard(ce);
+                EditorManager.clipboard.setClipboard(ce);
             } else if (EditorManager.itemSelection.getEventCount() > 0) {
                 List<VsqEvent> list = new List<VsqEvent>();
                 foreach (var item in EditorManager.itemSelection.getEventIterator()) {
                     min = Math.Min(item.original.Clock, min);
                     list.Add((VsqEvent)item.original.clone());
                 }
-                AppManager.clipboard.setCopiedEvent(list, min);
+                EditorManager.clipboard.setCopiedEvent(list, min);
             } else if (EditorManager.itemSelection.getTempoCount() > 0) {
                 List<TempoTableEntry> list = new List<TempoTableEntry>();
                 foreach (var item in EditorManager.itemSelection.getTempoIterator()) {
@@ -5235,7 +5235,7 @@ namespace cadencii
                     min = Math.Min(value.original.Clock, min);
                     list.Add((TempoTableEntry)value.original.clone());
                 }
-                AppManager.clipboard.setCopiedTempo(list, min);
+                EditorManager.clipboard.setCopiedTempo(list, min);
             } else if (EditorManager.itemSelection.getTimesigCount() > 0) {
                 List<TimeSigTableEntry> list = new List<TimeSigTableEntry>();
                 foreach (var item in EditorManager.itemSelection.getTimesigIterator()) {
@@ -5244,7 +5244,7 @@ namespace cadencii
                     min = Math.Min(value.original.Clock, min);
                     list.Add((TimeSigTableEntry)value.original.clone());
                 }
-                AppManager.clipboard.setCopiedTimesig(list, min);
+                EditorManager.clipboard.setCopiedTimesig(list, min);
             } else if (EditorManager.itemSelection.getPointIDCount() > 0) {
                 ClipboardEntry ce = new ClipboardEntry();
                 ce.points = new SortedDictionary<CurveType, VsqBPList>();
@@ -5298,7 +5298,7 @@ namespace cadencii
                         }
                     }
                 }
-                AppManager.clipboard.setClipboard(ce);
+                EditorManager.clipboard.setClipboard(ce);
             }
         }
 
@@ -7371,7 +7371,7 @@ namespace cadencii
                     cMenuPianoExpressionProperty.Enabled = !item_is_null;
 
                     int clock = EditorManager.clockFromXCoord(e.X);
-                    cMenuPianoPaste.Enabled = ((AppManager.clipboard.getCopiedItems().events.Count != 0) && (clock >= MusicManager.getVsqFile().getPreMeasureClocks()));
+                    cMenuPianoPaste.Enabled = ((EditorManager.clipboard.getCopiedItems().events.Count != 0) && (clock >= MusicManager.getVsqFile().getPreMeasureClocks()));
                     refreshScreen();
 
                     mContextMenuOpenedPosition = new Point(e.X, e.Y);

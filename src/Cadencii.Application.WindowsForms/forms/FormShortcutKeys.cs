@@ -76,10 +76,10 @@ namespace cadencii
             comboEditKey.Items.Clear();
             comboEditKey.Items.Add(Keys.None);
             // アルファベット順になるように一度配列に入れて並べ替える
-            int size = AppManager.SHORTCUT_ACCEPTABLE.Count;
+            int size = EditorManager.SHORTCUT_ACCEPTABLE.Count;
             Keys[] keys = new Keys[size];
             for (int i = 0; i < size; i++) {
-                keys[i] = AppManager.SHORTCUT_ACCEPTABLE[i];
+                keys[i] = EditorManager.SHORTCUT_ACCEPTABLE[i];
             }
             bool changed = true;
             while (changed) {

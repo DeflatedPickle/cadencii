@@ -22,7 +22,6 @@ namespace cadencii
 {
     public class Cadencii
     {
-        public static FormSplash splash = null;
         static Thread splashThread = null;
         private static string mPathVsq = "";
         private static bool mPrintVersion = false;
@@ -128,7 +127,7 @@ namespace cadencii
 #endif
 
             // EditorManagerの初期化
-            AppManager.init();
+            EditorManager.init();
 
 #if ENABLE_SCRIPT
             try {
@@ -197,10 +196,12 @@ namespace cadencii
             return Messaging.getMessage(id);
         }
 
+        static FormSplashUi splash { get { return EditorManager.splash; } }
+
         static void showSplash()
         {
-            splash = new FormSplash();
-            splash.ShowDialog(null);
+            EditorManager.splash = new FormSplashUiImpl();
+            splash.showDialog(null);
         }
 
         static void closeSplash()
@@ -213,7 +214,7 @@ namespace cadencii
             if (splash != null) {
                 splash.Invoke(new Action(closeSplash));
             }
-            splash = null;
+            EditorManager.splash = null;
 
             // AquesTone2 は UI のインスタンスを生成してからでないと、合成時にクラッシュする。
             // これを回避するため、UI インスタンスの初回生成をココで行う。

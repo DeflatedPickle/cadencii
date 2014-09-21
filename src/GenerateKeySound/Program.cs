@@ -33,7 +33,7 @@ namespace cadencii.generatekeysound
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            AppManager.init();
+            EditorManager.init();
             string singer = "Miku";
             object locker = new object();
             double amp = 1.0;

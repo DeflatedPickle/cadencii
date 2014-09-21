@@ -499,7 +499,7 @@ namespace cadencii
                                 if (y + track_height < 0 || y > height) {
                                     continue;
                                 }
-                                g.setColor(AppManager.HILIGHT[i]);
+                                g.setColor(EditorManager.HILIGHT[i]);
                                 g.drawLine(x + 1, y + shift_center,
                                            x + lyric_width - 1, y + shift_center);
                                 g.setColor(COLORS_HIDDEN[i]);

@@ -578,12 +578,12 @@ namespace cadencii
             g.setStroke(getStrokeDefault());
             g.setColor(btn_bg);
             g.fillRect(0, 0, key_width, height);
-            g.setColor(AppManager.COLOR_BORDER);
+            g.setColor(EditorManager.COLOR_BORDER);
             // zoomボタン
             rc = getButtonBoundsZoom();
             g.setColor(mOverviewButtonZoomMouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
             g.fillRect(rc.x, rc.y, rc.width, rc.height);
-            g.setColor(AppManager.COLOR_BORDER);
+            g.setColor(EditorManager.COLOR_BORDER);
             g.drawRect(rc.x, rc.y, rc.width, rc.height);
             int centerx = rc.x + rc.width / 2 + 1;
             int centery = rc.y + rc.height / 2 + 1;
@@ -596,7 +596,7 @@ namespace cadencii
             rc = getButtonBoundsMooz();
             g.setColor(mOverviewButtonMoozMouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
             g.fillRect(rc.x, rc.y, rc.width, rc.height);
-            g.setColor(AppManager.COLOR_BORDER);
+            g.setColor(EditorManager.COLOR_BORDER);
             g.drawRect(rc.x, rc.y, rc.width, rc.height);
             centerx = rc.x + rc.width / 2 + 1;
             centery = rc.y + rc.height / 2 + 1;
@@ -608,7 +608,7 @@ namespace cadencii
             rc = getButtonBoundsLeft1();
             g.setColor(mOverviewButtonLeft1MouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
             g.fillRect(rc.x, rc.y, rc.width, rc.height);
-            g.setColor(AppManager.COLOR_BORDER);
+            g.setColor(EditorManager.COLOR_BORDER);
             g.drawRect(rc.x, rc.y, rc.width, rc.height);
             centerx = rc.x + rc.width / 2 + 1;
             centery = rc.y + rc.height / 2 + 1;
@@ -618,7 +618,7 @@ namespace cadencii
             rc = getButtonBoundsLeft2();
             g.setColor(mOverviewButtonLeft2MouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
             g.fillRect(rc.x, rc.y, rc.width, rc.height);
-            g.setColor(AppManager.COLOR_BORDER);
+            g.setColor(EditorManager.COLOR_BORDER);
             g.drawRect(rc.x, rc.y, rc.width, rc.height);
             centerx = rc.x + rc.width / 2 + 1;
             centery = rc.y + rc.height / 2 + 1;
@@ -632,7 +632,7 @@ namespace cadencii
             rc = getButtonBoundsRight1();
             g.setColor(mOverviewButtonRight1MouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
             g.fillRect(rc.x, rc.y, rc.width, rc.height);
-            g.setColor(AppManager.COLOR_BORDER);
+            g.setColor(EditorManager.COLOR_BORDER);
             g.drawRect(rc.x, rc.y, rc.width, rc.height);
             centerx = rc.x + rc.width / 2 + 1;
             centery = rc.y + rc.height / 2 + 1;
@@ -642,7 +642,7 @@ namespace cadencii
             rc = getButtonBoundsRight2();
             g.setColor(mOverviewButtonRight2MouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
             g.fillRect(rc.x, rc.y, rc.width, rc.height);
-            g.setColor(AppManager.COLOR_BORDER);
+            g.setColor(EditorManager.COLOR_BORDER);
             g.drawRect(rc.x, rc.y, rc.width, rc.height);
             centerx = rc.x + rc.width / 2 + 1;
             centery = rc.y + rc.height / 2 + 1;

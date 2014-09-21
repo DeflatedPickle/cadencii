@@ -1186,7 +1186,7 @@ namespace cadencii
             try {
                 #region SINGER
                 Shape last = g.getClip();
-                g.setColor(AppManager.COLOR_BORDER);
+                g.setColor(EditorManager.COLOR_BORDER);
                 g.drawLine(0, size.height - 2 * OFFSET_TRACK_TAB,
                             size.width - 0, size.height - 2 * OFFSET_TRACK_TAB);
 				g.setFont(cadencii.core.EditorConfig.baseFont8);
@@ -1257,7 +1257,7 @@ namespace cadencii
 
                 #region トラック選択欄
                 int selecter_width = getSelectorWidth();
-                g.setColor(AppManager.COLOR_BORDER);
+                g.setColor(EditorManager.COLOR_BORDER);
                 g.drawLine(0, size.height - OFFSET_TRACK_TAB,
                             size.width, size.height - OFFSET_TRACK_TAB);
                 g.setColor(brs_string);
@@ -1274,8 +1274,8 @@ namespace cadencii
                                           (i == selected - 1),
                                           vsq_track.getCommon().PlayMode >= 0,
                                           EditorManager.getRenderRequired(i + 1),
-                                          AppManager.HILIGHT[i],
-                                          AppManager.RENDER[i]);
+                                          EditorManager.HILIGHT[i],
+                                          EditorManager.RENDER[i]);
 #if DEBUG
                         } catch (Exception ex) {
                             CDebug.WriteLine("TrackSelector.DrawTo; ex=" + ex);
@@ -2234,7 +2234,7 @@ namespace cadencii
                             destRect.x + destRect.width, destRect.y + destRect.height - 1);
             }
             g.setClip(null);
-            g.setColor(AppManager.COLOR_BORDER);
+            g.setColor(EditorManager.COLOR_BORDER);
             g.drawLine(destRect.x + destRect.width, destRect.y,
                         destRect.x + destRect.width, destRect.y + destRect.height - 1);
         }
