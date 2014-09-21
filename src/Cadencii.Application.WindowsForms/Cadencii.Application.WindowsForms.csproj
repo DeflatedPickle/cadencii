@@ -239,15 +239,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WFUtility.cs" />
-    <Compile Include="forms\FormBezierPointEditController.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="forms\FormBezierPointEditUi.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="forms\FormBezierPointEditUiListener.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="ui\forms\ExceptionNotifyFormUiImpl.cs">
       <SubType>Form</SubType>
     </Compile>

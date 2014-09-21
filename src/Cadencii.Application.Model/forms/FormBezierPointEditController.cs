@@ -12,13 +12,10 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using cadencii.apputil;
 using cadencii;
 using cadencii.java.awt;
-using cadencii.java.util;
-using cadencii.windows.forms;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
 using MouseButtons = System.Windows.Forms.MouseButtons;
@@ -60,7 +57,7 @@ namespace cadencii
             int selected_chain_id,
             int selected_point_id)
         {
-            ui = (FormBezierPointEditUi)new FormBezierPointEditUiImpl(this);
+            ui = ApplicationUIHost.Create<FormBezierPointEditUi> (this);
 
             applyLanguage();
             m_parent = parent;

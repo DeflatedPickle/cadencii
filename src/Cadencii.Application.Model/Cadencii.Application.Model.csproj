@@ -167,6 +167,15 @@
     <Compile Include="forms\FormSplashUi.cs" />
     <Compile Include="forms\FormIconPaletteUi.cs" />
     <Compile Include="guiextended\UiForm.cs" />
+    <Compile Include="forms\FormBezierPointEditController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="forms\FormBezierPointEditUi.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="forms\FormBezierPointEditUiListener.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
