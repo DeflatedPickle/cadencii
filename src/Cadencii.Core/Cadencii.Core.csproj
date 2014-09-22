@@ -79,6 +79,7 @@
     <Compile Include="debug.cs" />
     <Compile Include="ISO639.cs" />
     <Compile Include="ValuePairOfStringArrayOfKeys.cs" />
+    <Compile Include="VersionString.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

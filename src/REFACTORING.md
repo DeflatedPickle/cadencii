@@ -54,7 +54,7 @@ Projects / Assemblies
 Milestones
 ----------
 
-- Move most of the AppManager methods to EditorManager.
+- replace event handler methods into UI commands and actions.
 - Move some more forms to platform agnostic application model dll.
 - Move controls to (ditto).
 - Reduce Win32-ism.
