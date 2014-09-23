@@ -22,6 +22,14 @@ namespace cadencii
     /// </summary>
     public interface FormMainUi
     {
+		int calculateStartToDrawX ();
+
+		bool isMouseMiddleButtonDowned (cadencii.java.awt.MouseButtons mouseButtons);
+
+		UiHScrollBar hScroll { get; set; }
+
+		PictPianoRoll pictPianoRoll { get; set; }
+
 		IList<ValuePairOfStringArrayOfKeys> getDefaultShortcutKeys ();
 
 		void refreshScreen ();

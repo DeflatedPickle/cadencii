@@ -286,9 +286,6 @@
     <Compile Include="ui\controls\PictPianoRollImpl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="controls\PictOverview.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="TimerWF.cs" />
     <Compile Include="ui\forms\ExceptionNotifyFormUiImpl.Designer.cs">
       <DependentUpon>ExceptionNotifyFormUiImpl.cs</DependentUpon>
@@ -325,6 +322,10 @@
     </Compile>
     <Compile Include="ui\controls\IconParaderControllerWF.cs" />
     <Compile Include="ui\controls\IconParaderImpl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ui\winforms\HScrollBarImpl.cs" />
+    <Compile Include="ui\controls\PictOverviewImpl.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>

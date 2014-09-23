@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using cadencii.java.awt;
 using Keys = cadencii.java.awt.Keys;
@@ -16,18 +16,13 @@ using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 
 namespace cadencii
 {
-	public class UserControlImpl : System.Windows.Forms.UserControl, UiUserControl
+	public class HScrollBarImpl : System.Windows.Forms.HScrollBar, UiHScrollBar
 	{
-		// UiUserControl
+		// UiHScrollBar
 
-		void UiUserControl.AddControl (UiControl c)
-		{
-			Controls.Add ((System.Windows.Forms.Control) c.Native);
-		}
-
-		BorderStyle UiUserControl.BorderStyle {
-			get { return (BorderStyle)BorderStyle; }
-			set { BorderStyle = (System.Windows.Forms.BorderStyle)value; }
+		event EventHandler UiHScrollBar.ValueChanged {
+			add { ValueChanged += value; }
+			remove { ValueChanged -= value; }
 		}
 
 		// UiControl

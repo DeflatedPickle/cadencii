@@ -4,37 +4,17 @@ using cadencii.vsq;
 
 namespace cadencii
 {
-
-
-	public interface UiControl
+	public interface UiControl : IDisposable
 	{
 		
-		cadencii.java.awt.AnchorStyles Anchor {
-			get;
-			set;
-		}
+		AnchorStyles Anchor { get; set; }
 
-		bool TabStop {
-			get;
-			set;
-		}
+		bool TabStop { get; set; }
 
 		Rectangle Bounds { get; set; }
 
-		Point PointToClient (Point point);
-		Point PointToScreen (Point point);
-
-		event EventHandler Resize;
-
-		event EventHandler ImeModeChanged;
-
 		int Top { get; set; }
 		int Left { get; set; }
-
-		void SuspendLayout ();
-		void ResumeLayout ();
-
-		void Focus ();
 
 		ImeMode ImeMode { get; set; }
 
@@ -47,7 +27,6 @@ namespace cadencii
 		DockStyle Dock { get; set; }
 		int Width { get; set; }
 		int Height { get; set; }
-		void Dispose ();
 
 		Color BackColor { get; set; }
 		Color ForeColor { get; set; }
@@ -60,13 +39,20 @@ namespace cadencii
 
 		bool Visible { get; set; }
 
-		cadencii.java.awt.Font Font {
-			get;
-			set;
-		}
+		Font Font { get; set; }
+
+		Point PointToClient (Point point);
+		Point PointToScreen (Point point);
+
+		void SuspendLayout ();
+		void ResumeLayout ();
+
+		void Focus ();
 
 		void Refresh ();
         
+		void Invalidate ();
+
 		event KeyEventHandler PreviewKeyDown;
 		event EventHandler<KeyPressEventArgs> KeyPress;
 		event KeyEventHandler KeyUp;
@@ -77,6 +63,10 @@ namespace cadencii
 		event MouseEventHandler MouseUp;
 		event MouseEventHandler MouseMove;
 		event MouseEventHandler MouseWheel;
+		event EventHandler Enter;
+		event EventHandler Resize;
+		event EventHandler ImeModeChanged;
+
 	}
 	
 }

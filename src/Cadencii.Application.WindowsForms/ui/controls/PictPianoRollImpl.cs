@@ -96,7 +96,7 @@ namespace cadencii
         /// <summary>
         /// メイン画面への参照
         /// </summary>
-        private FormMain mMainForm = null;
+        private FormMainUi mMainForm = null;
 
         public PictPianoRollImpl()
         { }
@@ -105,9 +105,9 @@ namespace cadencii
         /// メイン画面への参照を設定します
         /// </summary>
         /// <param name="form"></param>
-        public void setMainForm(object form)
+        public void setMainForm(FormMainUi form)
         {
-		mMainForm = (FormMain) form;
+		mMainForm = form;
         }
 
         protected override void OnMouseDown(MouseEventArgs e)

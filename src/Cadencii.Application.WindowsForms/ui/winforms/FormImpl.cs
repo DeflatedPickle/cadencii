@@ -103,6 +103,11 @@ namespace cadencii
 			Focus ();
 		}
 
+		void UiControl.Invalidate ()
+		{
+			Invalidate ();
+		}
+
 		Point UiControl.PointToClient (Point point)
 		{
 			return PointToClient (point.ToWF ()).ToAwt ();
@@ -111,6 +116,11 @@ namespace cadencii
 		Point UiControl.PointToScreen (Point point)
 		{
 			return PointToScreen (point.ToWF ()).ToAwt ();
+		}
+
+		event EventHandler UiControl.Enter {
+			add { Enter += value; }
+			remove { Enter -= value; }
 		}
 
 		event EventHandler UiControl.Resize {

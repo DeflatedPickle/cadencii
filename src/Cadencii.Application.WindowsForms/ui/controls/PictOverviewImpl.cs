@@ -29,7 +29,7 @@ namespace cadencii
     /// <summary>
     /// ナビゲーションバーを描画するコンポーネント
     /// </summary>
-    public class PictOverview : PictureBox, IImageCachedComponentDrawer
+    public class PictOverviewImpl : PictureBoxImpl, PictOverview, IImageCachedComponentDrawer
     {
         enum OverviewMouseDownMode
         {
@@ -98,11 +98,11 @@ namespace cadencii
         /// ミニチュアピアノロールの縮小ボタン上でマウスが下りている状態かどうか
         /// </summary>
         private bool mOverviewButtonMoozMouseDowned = false;
-        private FormMain mMainForm = null;
+        private FormMainUi mMainForm = null;
         private Color mBackgroundColor = new Color(106, 108, 108);
         private Object mDrawerSyncRoot;
 
-        public PictOverview()
+        public PictOverviewImpl()
         {
             this.SetStyle(System.Windows.Forms.ControlStyles.DoubleBuffer, true);
             this.SetStyle(System.Windows.Forms.ControlStyles.UserPaint, true);
@@ -111,7 +111,7 @@ namespace cadencii
             registerEventHandlers();
         }
 
-        public void setMainForm(FormMain form)
+        public void setMainForm(FormMainUi form)
         {
             mMainForm = form;
         }

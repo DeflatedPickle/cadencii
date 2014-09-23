@@ -6852,8 +6852,8 @@ namespace cadencii
             pictKeyLengthSplitter.MouseMove += new MouseEventHandler(pictKeyLengthSplitter_MouseMove);
             pictKeyLengthSplitter.MouseDown += new MouseEventHandler(pictKeyLengthSplitter_MouseDown);
             pictKeyLengthSplitter.MouseUp += new MouseEventHandler(pictKeyLengthSplitter_MouseUp);
-            panelOverview.KeyUp += new KeyEventHandler(handleSpaceKeyUp);
-            panelOverview.KeyDown += new KeyEventHandler(handleSpaceKeyDown);
+            panelOverview.KeyUp += new NKeyEventHandler(handleSpaceKeyUp);
+            panelOverview.KeyDown += new NKeyEventHandler(handleSpaceKeyDown);
             vScroll.ValueChanged += new EventHandler(vScroll_ValueChanged);
             //this.Resize += new EventHandler( handleVScrollResize );
             pictPianoRoll.Resize += new EventHandler(handleVScrollResize);

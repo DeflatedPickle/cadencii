@@ -304,9 +304,9 @@ namespace cadencii
             this.imageListMeasure = new System.Windows.Forms.ImageList(this.components);
             this.imageListTool = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panelOverview = new cadencii.PictOverview();
+            this.panelOverview = ApplicationUIHost.Create<cadencii.PictOverview>();
             this.pictPianoRoll = new cadencii.PictPianoRollImpl();
-            this.hScroll = new System.Windows.Forms.HScrollBar();
+            this.hScroll = new HScrollBarImpl();
             this.rebar = new cadencii.windows.forms.Rebar();
             this.imageListMenu = new System.Windows.Forms.ImageList(this.components);
             this.toolBarFile = new System.Windows.Forms.ToolBar();
@@ -2516,13 +2516,13 @@ namespace cadencii
             // panel1
             // 
             this.panel1.Controls.Add(this.pictKeyLengthSplitter);
-            this.panel1.Controls.Add(this.panelOverview);
+            this.panel1.Controls.Add((Control)this.panelOverview.Native);
             this.panel1.Controls.Add(this.picturePositionIndicator);
             this.panel1.Controls.Add((Control)this.pictPianoRoll.Native);
             this.panel1.Controls.Add(this.vScroll);
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.hScroll);
+            this.panel1.Controls.Add((Control)this.hScroll.Native);
             this.panel1.Controls.Add(this.trackBar);
             this.panel1.Location = new System.Drawing.Point(15, 13);
             this.panel1.Name = "panel1";
@@ -2531,13 +2531,12 @@ namespace cadencii
             // 
             // panelOverview
             // 
-            this.panelOverview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelOverview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(108)))), ((int)(((byte)(108)))));
-            this.panelOverview.Location = new System.Drawing.Point(0, 1);
-            this.panelOverview.Margin = new System.Windows.Forms.Padding(0);
+	this.panelOverview.Anchor = ((cadencii.java.awt.AnchorStyles)(((cadencii.java.awt.AnchorStyles.Top | cadencii.java.awt.AnchorStyles.Left) | cadencii.java.awt.AnchorStyles.Right)));
+            this.panelOverview.BackColor = new cadencii.java.awt.Color(((int)(((byte)(106)))), ((int)(((byte)(108)))), ((int)(((byte)(108)))));
+            this.panelOverview.Location = new cadencii.java.awt.Point(0, 1);
+            this.panelOverview.Margin = new cadencii.java.awt.Padding(0);
             this.panelOverview.Name = "panelOverview";
-            this.panelOverview.Size = new System.Drawing.Size(700, 45);
+            this.panelOverview.Size = new cadencii.java.awt.Dimension(700, 45);
             this.panelOverview.TabIndex = 19;
             this.panelOverview.TabStop = false;
             // 
@@ -2556,11 +2555,10 @@ namespace cadencii
             // 
             // hScroll
             // 
-            this.hScroll.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.hScroll.Location = new System.Drawing.Point(65, 263);
+            this.hScroll.Anchor = ((cadencii.java.awt.AnchorStyles)(((AnchorStyles.Bottom | AnchorStyles.Left) | AnchorStyles.Right)));
+            this.hScroll.Location = new cadencii.java.awt.Point(65, 263);
             this.hScroll.Name = "hScroll";
-            this.hScroll.Size = new System.Drawing.Size(257, 16);
+            this.hScroll.Size = new cadencii.java.awt.Dimension(257, 16);
             this.hScroll.TabIndex = 16;
             // 
             // rebar
@@ -3143,7 +3141,7 @@ namespace cadencii
         public System.Windows.Forms.MenuItem stripDDBtnQuantizeTriplet;
         public System.Windows.Forms.ToolBarButton stripBtnStartMarker;
         public System.Windows.Forms.ToolBarButton stripBtnEndMarker;
-        public HScrollBar hScroll;
+        public UiHScrollBar hScroll { get; set; }
         public VScrollBar vScroll;
         public ToolStripMenuItem menuLyricVibratoProperty;
         public ToolStripMenuItem cMenuPianoVibratoProperty;
@@ -3208,7 +3206,7 @@ namespace cadencii
         public ToolStripMenuItem menuTrackRendererVCNT;
         //public ToolStripMenuItem menuTrackManager;
         public ToolStripMenuItem cMenuTrackTabRendererStraight;
-        public PictPianoRoll pictPianoRoll;
+        public PictPianoRoll pictPianoRoll { get; set; }
         public TrackSelector trackSelector;
         public PictureBox pictKeyLengthSplitter;
         private ToolStripMenuItem menuTrackRendererAquesTone;
