@@ -129,10 +129,6 @@
       <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
       <Name>Cadencii.Utilities</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cadencii.Windows.Forms\Cadencii.Windows.Forms.csproj">
-      <Project>{B9481E3B-6842-4AB3-8ED4-29C86C2579A3}</Project>
-      <Name>Cadencii.Windows.Forms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Cadencii.Media.Base\Cadencii.Media.Base.csproj">
       <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
       <Name>Cadencii.Media.Base</Name>
