@@ -476,7 +476,7 @@ namespace cadencii
                         if (alpha <= 0) {
                             continue;
                         }
-                        var cc = new Color(c.getRed (), c.getGreen (), c.getBlue (), alpha);
+                        var cc = new Color(c.R, c.G, c.B, alpha);
                         if (mDotType == DOT_CIRCLE) {
                             mGraphics.fillEllipse(cc, p.X - mDotSize, p.Y - mDotSize, mDotWidth, mDotWidth);
                         } else {

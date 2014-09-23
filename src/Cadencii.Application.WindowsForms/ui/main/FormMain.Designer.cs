@@ -3158,7 +3158,7 @@ namespace cadencii
         public ToolStripMenuItem cMenuPianoQuantize128;
         public ToolStripMenuItem cMenuPianoFixed128;
         public ToolStripMenuItem menuVisualWaveform;
-        private WaveformZoomUiImpl panelWaveformZoom;
+        private WaveformZoomUi panelWaveformZoom;
         public ToolStripMenuItem cMenuTrackSelectorDeleteBezier;
         public ToolStripStatusLabel stripLblMidiIn;
         public System.Windows.Forms.ToolStripSeparator toolStripSeparator11;

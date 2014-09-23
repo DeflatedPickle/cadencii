@@ -7,6 +7,24 @@ namespace cadencii
 	public interface UiUserControl : UiControl
 	{
 		BorderStyle BorderStyle { get; set; }
+		void AddControl (UiControl control);
+	}
+
+	public interface UiTextBox : UiControl
+	{
+		event EventHandler TextChanged;
+
+		void SelectAll ();
+
+		bool AcceptsReturn { get; set; }
+
+		BorderStyle BorderStyle { get; set; }
+
+		HorizontalAlignment TextAlign { get; set; }
+
+		int SelectionStart { get; set; }
+
+		string Text { get; set; }
 	}
 
 	public interface UiControl
@@ -53,11 +71,20 @@ namespace cadencii
 		void Dispose ();
 
 		Color BackColor { get; set; }
+		Color ForeColor { get; set; }
 
 		Point Location { get; set; }
 
 		Dimension Size { get; set; }
 
+		bool Enabled { get; set; }
+
+		bool Visible { get; set; }
+
+		cadencii.java.awt.Font Font {
+			get;
+			set;
+		}
 
 		void Refresh ();
         

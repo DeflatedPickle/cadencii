@@ -42,6 +42,16 @@ namespace cadencii
 			set { BackColor = value.ToNative (); }
 		}
 
+		cadencii.java.awt.Font UiControl.Font {
+			get { return Font.ToAwt (); }
+			set { Font = value.ToWF (); }
+		}
+
+		cadencii.java.awt.Color UiControl.ForeColor {
+			get { return ForeColor.ToAwt (); }
+			set { ForeColor = value.ToNative (); }
+		}
+
 		cadencii.java.awt.Point UiControl.Location {
 			get { return Location.ToAwt (); }
 			set { Location = value.ToWF (); }
@@ -70,6 +80,11 @@ namespace cadencii
 		void UiControl.Focus ()
 		{
 			Focus ();
+		}
+
+		void UiUserControl.AddControl (UiControl c)
+		{
+			Controls.Add ((Control) c.Native);
 		}
 
 		cadencii.java.awt.Point UiControl.PointToClient (cadencii.java.awt.Point point)

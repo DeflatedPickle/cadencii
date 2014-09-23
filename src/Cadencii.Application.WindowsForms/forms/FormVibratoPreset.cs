@@ -649,8 +649,8 @@ namespace cadencii
             this.labelName = new Label();
             this.groupPreview = new System.Windows.Forms.GroupBox();
             this.listPresets = new ListBox();
-            this.textDepth = new cadencii.NumberTextBox();
-            this.textRate = new cadencii.NumberTextBox();
+            this.textDepth = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
+            this.textRate = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
             ((System.ComponentModel.ISupportInitialize)(this.pictureRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureDepth)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -865,8 +865,8 @@ namespace cadencii
             this.groupEdit.Controls.Add(this.textName);
             this.groupEdit.Controls.Add(this.labelName);
             this.groupEdit.Controls.Add(this.labelDepth);
-            this.groupEdit.Controls.Add(this.textDepth);
-            this.groupEdit.Controls.Add(this.textRate);
+            this.groupEdit.Controls.Add((Control)this.textDepth.Native);
+            this.groupEdit.Controls.Add((Control)this.textRate.Native);
             this.groupEdit.Controls.Add(this.labelRate);
             this.groupEdit.Location = new System.Drawing.Point(183, 15);
             this.groupEdit.Name = "groupEdit";
@@ -917,23 +917,23 @@ namespace cadencii
             // 
             // textDepth
             // 
-            this.textDepth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.textDepth.ForeColor = System.Drawing.Color.White;
-            this.textDepth.Location = new System.Drawing.Point(86, 37);
+            this.textDepth.BackColor = new cadencii.java.awt.Color(((int)(((byte)(240)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.textDepth.ForeColor = cadencii.java.awt.Colors.White;
+            this.textDepth.Location = new cadencii.java.awt.Point(86, 37);
             this.textDepth.Name = "textDepth";
-            this.textDepth.Size = new System.Drawing.Size(72, 19);
+            this.textDepth.Size = new cadencii.java.awt.Dimension(72, 19);
             this.textDepth.TabIndex = 8;
-            this.textDepth.Type = cadencii.NumberTextBox.ValueType.Integer;
+            this.textDepth.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // textRate
             // 
-            this.textRate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.textRate.ForeColor = System.Drawing.Color.White;
-            this.textRate.Location = new System.Drawing.Point(86, 12);
+            this.textRate.BackColor = new cadencii.java.awt.Color (((int)(((byte)(240)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.textRate.ForeColor = cadencii.java.awt.Colors.White;
+            this.textRate.Location = new cadencii.java.awt.Point(86, 12);
             this.textRate.Name = "textRate";
-            this.textRate.Size = new System.Drawing.Size(72, 19);
+            this.textRate.Size = new cadencii.java.awt.Dimension(72, 19);
             this.textRate.TabIndex = 7;
-            this.textRate.Type = cadencii.NumberTextBox.ValueType.Integer;
+            this.textRate.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // FormVibratoPreset
             // 

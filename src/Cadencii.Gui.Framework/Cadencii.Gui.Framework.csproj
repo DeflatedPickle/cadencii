@@ -84,6 +84,7 @@
     <Compile Include="models\winforms\ImeMode.cs" />
     <Compile Include="models\winforms\AnchorStyles.cs" />
     <Compile Include="models\winforms\KeyPressEventArgs.cs" />
+    <Compile Include="models\winforms\HorizontalAlignment.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

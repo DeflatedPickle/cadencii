@@ -1,4 +1,5 @@
 using cadencii.windows.forms;
+using cadencii.java.awt;
 
 namespace cadencii
 {
@@ -76,7 +77,7 @@ namespace cadencii
             System.Windows.Forms.ListViewGroup listViewGroup44 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.tabPreference = new System.Windows.Forms.TabControl();
             this.tabSequence = new System.Windows.Forms.TabPage();
-            this.txtAutoVibratoThresholdLength = new cadencii.NumberTextBox();
+            this.txtAutoVibratoThresholdLength = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
             this.bLabel1 = new System.Windows.Forms.Label();
             this.radioUserDefined = new System.Windows.Forms.RadioButton();
             this.lblAutoVibratoType = new System.Windows.Forms.Label();
@@ -268,7 +269,7 @@ namespace cadencii
             // 
             // tabSequence
             // 
-            this.tabSequence.Controls.Add(this.txtAutoVibratoThresholdLength);
+            this.tabSequence.Controls.Add((System.Windows.Forms.Control) this.txtAutoVibratoThresholdLength.Native);
             this.tabSequence.Controls.Add(this.bLabel1);
             this.tabSequence.Controls.Add(this.radioUserDefined);
             this.tabSequence.Controls.Add(this.lblAutoVibratoType);
@@ -297,14 +298,14 @@ namespace cadencii
             // 
             // txtAutoVibratoThresholdLength
             // 
-            this.txtAutoVibratoThresholdLength.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAutoVibratoThresholdLength.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.txtAutoVibratoThresholdLength.ForeColor = System.Drawing.Color.White;
-            this.txtAutoVibratoThresholdLength.Location = new System.Drawing.Point(329, 122);
+            this.txtAutoVibratoThresholdLength.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            this.txtAutoVibratoThresholdLength.BackColor = new Color (((int)(((byte)(240)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.txtAutoVibratoThresholdLength.ForeColor = Colors.White;
+            this.txtAutoVibratoThresholdLength.Location = new Point(329, 122);
             this.txtAutoVibratoThresholdLength.Name = "txtAutoVibratoThresholdLength";
-            this.txtAutoVibratoThresholdLength.Size = new System.Drawing.Size(55, 19);
+            this.txtAutoVibratoThresholdLength.Size = new Dimension(55, 19);
             this.txtAutoVibratoThresholdLength.TabIndex = 6;
-            this.txtAutoVibratoThresholdLength.Type = cadencii.NumberTextBox.ValueType.Integer;
+            this.txtAutoVibratoThresholdLength.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // bLabel1
             // 

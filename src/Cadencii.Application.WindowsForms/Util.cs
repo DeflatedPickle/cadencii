@@ -99,7 +99,7 @@ namespace cadencii.apputil
                 g.setColor(cadencii.java.awt.Colors.Black);
                 g.drawString(PANGRAM, size.width, string_desty);
 
-                b2 = new BitmapEx(b);
+                b2 = ApplicationUIHost.Create<BitmapEx> (b);
                 // 上端に最初に現れる色つきピクセルを探す
                 int firsty = 0;
                 bool found = false;
@@ -107,7 +107,7 @@ namespace cadencii.apputil
                     for (int x = 0; x < w; x++) {
 						var p = b2.GetPixel(x, y);
                         java.awt.Color c = new cadencii.java.awt.Color(p.R, p.G, p.B, p.A);
-                        if (c.getRed() != 255 || c.getGreen() != 255 || c.getBlue() != 255) {
+                        if (c.R != 255 || c.G != 255 || c.B != 255) {
                             found = true;
                             firsty = y;
                             break;
@@ -125,7 +125,7 @@ namespace cadencii.apputil
                     for (int x = 0; x < w; x++) {
 						var p = b2.GetPixel(x, y);
                         java.awt.Color c = new cadencii.java.awt.Color(p.R, p.G, p.B, p.A);
-                        if (c.getRed() != 255 || c.getGreen() != 255 || c.getBlue() != 255) {
+                        if (c.R != 255 || c.G != 255 || c.B != 255) {
                             found = true;
                             endy = y;
                             break;

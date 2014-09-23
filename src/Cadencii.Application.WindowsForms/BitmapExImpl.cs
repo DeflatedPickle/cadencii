@@ -19,7 +19,7 @@ using System.IO;
 namespace cadencii.apputil
 {
 
-    unsafe class BitmapEx : IDisposable
+    unsafe class BitmapExImpl : BitmapEx, IDisposable
     {
         private Bitmap m_base;
         private bool m_locked = false;
@@ -62,7 +62,7 @@ namespace cadencii.apputil
             return (Bitmap)m_base.Clone();
         }
 
-        public Color GetPixel(int x, int y)
+        public cadencii.java.awt.Color GetPixel(int x, int y)
         {
             if (!m_locked) {
                 BeginLock();
@@ -76,7 +76,7 @@ namespace cadencii.apputil
             if (m_base.PixelFormat == PixelFormat.Format32bppArgb) {
                 a = dat[location + 3];
             }
-            return Color.FromArgb(a, r, g, b);
+            return new cadencii.java.awt.Color(r, g, b, a);
         }
 
         public void SetPixel(int x, int y, Color color)
@@ -115,69 +115,14 @@ namespace cadencii.apputil
             }
         }
 
-        ~BitmapEx()
+        ~BitmapExImpl()
         {
             m_base.Dispose();
         }
 
-        public BitmapEx(java.awt.Image original)
+        public BitmapExImpl(java.awt.Image original)
         {
             m_base = new Bitmap((System.Drawing.Image) original.NativeImage);
-        }
-
-        public BitmapEx(string filename)
-        {
-            m_base = new Bitmap(filename);
-        }
-
-        public BitmapEx(Stream stream)
-        {
-            m_base = new Bitmap(stream);
-        }
-
-		public BitmapEx(java.awt.Image original, Size newSize)
-        {
-			m_base = new Bitmap((System.Drawing.Image) original.NativeImage, newSize);
-        }
-
-        public BitmapEx(int width, int height)
-        {
-            m_base = new Bitmap(width, height);
-        }
-
-        public BitmapEx(Stream stream, bool useIcm)
-        {
-            m_base = new Bitmap(stream, useIcm);
-        }
-
-        public BitmapEx(string filename, bool useIcm)
-        {
-            m_base = new Bitmap(filename, useIcm);
-        }
-
-        public BitmapEx(Type type, string resource)
-        {
-            m_base = new Bitmap(type, resource);
-        }
-
-        public BitmapEx(java.awt.Image original, int width, int height)
-        {
-			m_base = new Bitmap((System.Drawing.Image) original.NativeImage, width, height);
-        }
-
-        public BitmapEx(int width, int height, java.awt.Graphics g)
-        {
-			m_base = new Bitmap(width, height, (System.Drawing.Graphics) g.NativeGraphics);
-        }
-
-        public BitmapEx(int width, int height, PixelFormat format)
-        {
-            m_base = new Bitmap(width, height, format);
-        }
-
-        public BitmapEx(int width, int height, int stride, PixelFormat format, IntPtr scan0)
-        {
-            m_base = new Bitmap(width, height, stride, format, scan0);
         }
     }
 

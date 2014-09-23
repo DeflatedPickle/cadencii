@@ -44,6 +44,16 @@ namespace cadencii
 			set { ImeMode = (System.Windows.Forms.ImeMode)value; }
 		}
 
+		cadencii.java.awt.Font UiControl.Font {
+			get { return Font.ToAwt (); }
+			set { Font = value.ToWF (); }
+		}
+
+		cadencii.java.awt.Color UiControl.ForeColor {
+			get { return ForeColor.ToAwt (); }
+			set { ForeColor = value.ToNative (); }
+		}
+
 		cadencii.java.awt.Color UiControl.BackColor {
 			get { return BackColor.ToAwt (); }
 			set { BackColor = value.ToNative (); }

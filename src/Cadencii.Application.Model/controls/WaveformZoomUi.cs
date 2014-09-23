@@ -17,7 +17,7 @@ namespace cadencii
     using System;
     using cadencii;
 
-    public interface WaveformZoomUi
+    public interface WaveformZoomUi : UiUserControl
     {
         int getWidth();
 

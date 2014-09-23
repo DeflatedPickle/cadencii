@@ -307,7 +307,7 @@ namespace cadencii
         {
             if (radioGateTime.Checked) {
                 lblOffsetUnit.Text = _("clocks");
-                txtOffset.setType(NumberTextBox.ValueType.Integer);
+                txtOffset.Type = NumberTextBoxValueType.Integer;
             }
         }
 
@@ -315,7 +315,7 @@ namespace cadencii
         {
             if (radioPlayTime.Checked) {
                 lblOffsetUnit.Text = _("seconds");
-                txtOffset.setType(NumberTextBox.ValueType.Double);
+                txtOffset.Type = NumberTextBoxValueType.Double;
             }
         }
         #endregion
@@ -363,7 +363,7 @@ namespace cadencii
             this.chkExportVocaloidNrpn = new CheckBox();
             this.groupMode = new System.Windows.Forms.GroupBox();
             this.lblOffsetUnit = new Label();
-            this.txtOffset = new cadencii.NumberTextBox();
+            this.txtOffset = ApplicationUIHost.Create<cadencii.NumberTextBox>();
             this.lblOffset = new Label();
             this.radioPlayTime = new RadioButton();
             this.radioGateTime = new RadioButton();
@@ -553,7 +553,7 @@ namespace cadencii
             this.groupMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupMode.Controls.Add(this.lblOffsetUnit);
-            this.groupMode.Controls.Add(this.txtOffset);
+            this.groupMode.Controls.Add((Control)this.txtOffset.Native);
             this.groupMode.Controls.Add(this.lblOffset);
             this.groupMode.Controls.Add(this.radioPlayTime);
             this.groupMode.Controls.Add(this.radioGateTime);
@@ -575,15 +575,15 @@ namespace cadencii
             // 
             // txtOffset
             // 
-            this.txtOffset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.txtOffset.ForeColor = cadencii.java.awt.Colors.Black.ToNative ();
-            this.txtOffset.Location = new System.Drawing.Point(81, 42);
+            this.txtOffset.BackColor = new Color(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtOffset.ForeColor = cadencii.java.awt.Colors.Black;
+            this.txtOffset.Location = new Point(81, 42);
             this.txtOffset.Name = "txtOffset";
-            this.txtOffset.Size = new System.Drawing.Size(100, 19);
+            this.txtOffset.Size = new Dimension(100, 19);
             this.txtOffset.TabIndex = 3;
             this.txtOffset.Text = "0";
-            this.txtOffset.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtOffset.Type = cadencii.NumberTextBox.ValueType.Integer;
+            this.txtOffset.TextAlign = cadencii.java.awt.HorizontalAlignment.Right;
+            this.txtOffset.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // lblOffset
             // 

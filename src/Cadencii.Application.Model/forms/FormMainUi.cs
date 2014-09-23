@@ -23,6 +23,9 @@ namespace cadencii
     public interface FormMainUi
     {
 		IList<ValuePairOfStringArrayOfKeys> getDefaultShortcutKeys ();
+
+		void refreshScreen ();
+
 		void updateScriptShortcut ();
 
         /// <summary>

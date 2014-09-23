@@ -22,7 +22,7 @@ namespace cadencii
     /// <summary>
     /// 波形表示の拡大・縮小を行うためのパネルです．
     /// </summary>
-    class WaveformZoomUiImpl : UserControl, WaveformZoomUi
+    class WaveformZoomUiImpl : UserControlImpl, WaveformZoomUi
     {
 
         /// <summary>

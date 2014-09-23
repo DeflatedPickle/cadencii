@@ -575,7 +575,7 @@ namespace cadencii
             bgWorkScreen = new System.ComponentModel.BackgroundWorker();
             initializeRendererMenuHandler();
 
-            this.panelWaveformZoom.Controls.Add((Control) this.waveView.Native);
+			this.panelWaveformZoom.AddControl (this.waveView);
 			this.waveView.Anchor = ((cadencii.java.awt.AnchorStyles)((((cadencii.java.awt.AnchorStyles.Top | cadencii.java.awt.AnchorStyles.Bottom)
 				| cadencii.java.awt.AnchorStyles.Left)
                         | cadencii.java.awt.AnchorStyles.Right)));
@@ -653,11 +653,11 @@ namespace cadencii
             splitContainer1.BackColor = System.Drawing.Color.FromArgb(212, 212, 212);
             splitContainer2.Panel1.Controls.Add(panel1);
             panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            splitContainer2.Panel2.Controls.Add(panelWaveformZoom);
+            splitContainer2.Panel2.Controls.Add((Control) panelWaveformZoom.Native);
             //splitContainer2.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             splitContainer2.Panel2.BorderColor = System.Drawing.Color.FromArgb(112, 112, 112);
             splitContainer1.Panel1.Controls.Add(splitContainer2);
-            panelWaveformZoom.Dock = System.Windows.Forms.DockStyle.Fill;
+            panelWaveformZoom.Dock = cadencii.java.awt.DockStyle.Fill;
             splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             splitContainer1.Panel2.Controls.Add((Control)trackSelector.Native);
             trackSelector.Dock = cadencii.java.awt.DockStyle.Fill;
@@ -737,7 +737,7 @@ namespace cadencii
             EditorManager.InputTextBox.BorderStyle = cadencii.java.awt.BorderStyle.None;
             EditorManager.InputTextBox.Width = 80;
             EditorManager.InputTextBox.AcceptsReturn = true;
-            EditorManager.InputTextBox.BackColor = System.Drawing.Color.White.ToAwt ();
+            EditorManager.InputTextBox.BackColor = Colors.White;
 			EditorManager.InputTextBox.Font = new cadencii.java.awt.Font (new System.Drawing.Font (EditorManager.editorConfig.BaseFontName, cadencii.core.EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular));
             EditorManager.InputTextBox.Enabled = false;
             EditorManager.InputTextBox.KeyPress += mInputTextBox_KeyPress;
@@ -6117,7 +6117,7 @@ namespace cadencii
                 EditorManager.InputTextBox.setBufferText(phonetic_symbol);
                 EditorManager.InputTextBox.setPhoneticSymbolEditMode(false);
                 EditorManager.InputTextBox.Text = phrase;
-                EditorManager.InputTextBox.BackColor = System.Drawing.Color.White.ToAwt ();
+                EditorManager.InputTextBox.BackColor = Colors.White;
             }
             EditorManager.InputTextBox.Font = new cadencii.java.awt.Font (new System.Drawing.Font(EditorManager.editorConfig.BaseFontName, cadencii.core.EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular));
             var p = new cadencii.java.awt.Point(position.X + 4, position.Y + 2);
@@ -6151,7 +6151,7 @@ namespace cadencii
             if (!EditorManager.InputTextBox.isPhoneticSymbolEditMode()) {
 				EditorManager.InputTextBox.BackColor = mColorTextboxBackcolor;
             } else {
-                EditorManager.InputTextBox.BackColor = System.Drawing.Color.White.ToAwt ();
+                EditorManager.InputTextBox.BackColor = Colors.White;
             }
             EditorManager.InputTextBox.Text = EditorManager.InputTextBox.getBufferText();
             EditorManager.InputTextBox.setBufferText(new_value);

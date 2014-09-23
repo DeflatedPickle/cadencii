@@ -618,7 +618,7 @@ namespace cadencii
                                         commonDrawer.clear();
                                         //g.nativeGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 										Color color_normal_picthbend = cadencii.java.awt.Colors.DarkOrchid;
-                                        Color color_thin_pitchbend = new Color(color_normal_picthbend.getRed(), color_normal_picthbend.getGreen(), color_normal_picthbend.getBlue(), 128);
+                                        Color color_thin_pitchbend = new Color(color_normal_picthbend.R, color_normal_picthbend.G, color_normal_picthbend.B, 128);
                                         int viblength = dobj.mLength - dobj.mVibDelay;
                                         int lasty = int.MinValue;
                                         g.setStroke(getStroke2px());

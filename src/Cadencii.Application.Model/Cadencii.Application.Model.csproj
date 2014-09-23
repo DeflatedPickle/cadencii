@@ -180,6 +180,9 @@
     <Compile Include="scripting\ScriptReturnStatus.cs" />
     <Compile Include="scripting\ScriptServer.cs" />
     <Compile Include="forms\UpdateCheckForm.cs" />
+    <Compile Include="forms\WaveformZoomController.cs" />
+    <Compile Include="controls\NumberTextBox.cs" />
+    <Compile Include="controls\BitmapEx.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -351,20 +351,20 @@ namespace cadencii
             this.lblLeftClock = new Label();
             this.groupLeft = new GroupBox();
             this.btnLeft = new Button();
-            this.txtLeftClock = new NumberTextBox();
-            this.txtLeftValue = new NumberTextBox();
+            this.txtLeftClock = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
+            this.txtLeftValue = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
             this.groupDataPoint = new GroupBox();
             this.btnDataPoint = new Button();
             this.lblDataPointValue = new Label();
-            this.txtDataPointClock = new NumberTextBox();
+            this.txtDataPointClock = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
             this.lblDataPointClock = new Label();
-            this.txtDataPointValue = new NumberTextBox();
+            this.txtDataPointValue = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
             this.groupRight = new GroupBox();
             this.btnRight = new Button();
             this.lblRightValue = new Label();
-            this.txtRightClock = new NumberTextBox();
+            this.txtRightClock = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
             this.lblRightClock = new Label();
-            this.txtRightValue = new NumberTextBox();
+            this.txtRightValue = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
             this.btnBackward = new Button();
             this.btnForward = new Button();
             this.groupLeft.SuspendLayout();
@@ -428,9 +428,9 @@ namespace cadencii
             this.groupLeft.AutoSize = true;
             this.groupLeft.Controls.Add(this.btnLeft);
             this.groupLeft.Controls.Add(this.lblLeftValue);
-            this.groupLeft.Controls.Add(this.txtLeftClock);
+            this.groupLeft.Controls.Add((Control)this.txtLeftClock.Native);
             this.groupLeft.Controls.Add(this.lblLeftClock);
-            this.groupLeft.Controls.Add(this.txtLeftValue);
+            this.groupLeft.Controls.Add((Control)this.txtLeftValue.Native);
             this.groupLeft.Location = new System.Drawing.Point(14, 38);
             this.groupLeft.Name = "groupLeft";
             this.groupLeft.Size = new System.Drawing.Size(141, 121);
@@ -450,36 +450,36 @@ namespace cadencii
             //
             // txtLeftClock
             //
-            this.txtLeftClock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtLeftClock.BackColor = new Color(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txtLeftClock.Enabled = false;
-			this.txtLeftClock.ForeColor = cadencii.java.awt.Colors.Black.ToNative ();
-            this.txtLeftClock.Location = new System.Drawing.Point(66, 26);
+			this.txtLeftClock.ForeColor = cadencii.java.awt.Colors.Black;
+            this.txtLeftClock.Location = new Point(66, 26);
             this.txtLeftClock.Name = "txtLeftClock";
-            this.txtLeftClock.Size = new System.Drawing.Size(61, 19);
+            this.txtLeftClock.Size = new Dimension(61, 19);
             this.txtLeftClock.TabIndex = 4;
             this.txtLeftClock.Text = "0";
-            this.txtLeftClock.Type = NumberTextBox.ValueType.Integer;
+            this.txtLeftClock.Type = NumberTextBoxValueType.Integer;
             //
             // txtLeftValue
             //
-            this.txtLeftValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtLeftValue.BackColor = new Color(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txtLeftValue.Enabled = false;
-			this.txtLeftValue.ForeColor = cadencii.java.awt.Colors.Black.ToNative ();
-            this.txtLeftValue.Location = new System.Drawing.Point(66, 51);
+			this.txtLeftValue.ForeColor = cadencii.java.awt.Colors.Black;
+            this.txtLeftValue.Location = new Point(66, 51);
             this.txtLeftValue.Name = "txtLeftValue";
-            this.txtLeftValue.Size = new System.Drawing.Size(61, 19);
+            this.txtLeftValue.Size = new Dimension(61, 19);
             this.txtLeftValue.TabIndex = 5;
             this.txtLeftValue.Text = "0";
-            this.txtLeftValue.Type = NumberTextBox.ValueType.Integer;
+            this.txtLeftValue.Type = NumberTextBoxValueType.Integer;
             //
             // groupDataPoint
             //
             this.groupDataPoint.AutoSize = true;
             this.groupDataPoint.Controls.Add(this.btnDataPoint);
             this.groupDataPoint.Controls.Add(this.lblDataPointValue);
-            this.groupDataPoint.Controls.Add(this.txtDataPointClock);
+            this.groupDataPoint.Controls.Add((Control)this.txtDataPointClock.Native);
             this.groupDataPoint.Controls.Add(this.lblDataPointClock);
-            this.groupDataPoint.Controls.Add(this.txtDataPointValue);
+            this.groupDataPoint.Controls.Add((Control)this.txtDataPointValue.Native);
             this.groupDataPoint.Location = new System.Drawing.Point(161, 38);
             this.groupDataPoint.Name = "groupDataPoint";
             this.groupDataPoint.Size = new System.Drawing.Size(141, 121);
@@ -508,11 +508,11 @@ namespace cadencii
             //
             // txtDataPointClock
             //
-            this.txtDataPointClock.Location = new System.Drawing.Point(66, 26);
+            this.txtDataPointClock.Location = new Point(66, 26);
             this.txtDataPointClock.Name = "txtDataPointClock";
-            this.txtDataPointClock.Size = new System.Drawing.Size(61, 19);
+            this.txtDataPointClock.Size = new Dimension(61, 19);
             this.txtDataPointClock.TabIndex = 7;
-            this.txtDataPointClock.Type = NumberTextBox.ValueType.Integer;
+            this.txtDataPointClock.Type = NumberTextBoxValueType.Integer;
             //
             // lblDataPointClock
             //
@@ -525,20 +525,20 @@ namespace cadencii
             //
             // txtDataPointValue
             //
-            this.txtDataPointValue.Location = new System.Drawing.Point(66, 51);
+            this.txtDataPointValue.Location = new Point(66, 51);
             this.txtDataPointValue.Name = "txtDataPointValue";
-            this.txtDataPointValue.Size = new System.Drawing.Size(61, 19);
+            this.txtDataPointValue.Size = new Dimension(61, 19);
             this.txtDataPointValue.TabIndex = 8;
-            this.txtDataPointValue.Type = NumberTextBox.ValueType.Integer;
+            this.txtDataPointValue.Type = NumberTextBoxValueType.Integer;
             //
             // groupRight
             //
             this.groupRight.AutoSize = true;
             this.groupRight.Controls.Add(this.btnRight);
             this.groupRight.Controls.Add(this.lblRightValue);
-            this.groupRight.Controls.Add(this.txtRightClock);
+            this.groupRight.Controls.Add((Control)this.txtRightClock.Native);
             this.groupRight.Controls.Add(this.lblRightClock);
-            this.groupRight.Controls.Add(this.txtRightValue);
+            this.groupRight.Controls.Add((Control)this.txtRightValue.Native);
             this.groupRight.Location = new System.Drawing.Point(308, 38);
             this.groupRight.Name = "groupRight";
             this.groupRight.Size = new System.Drawing.Size(141, 121);
@@ -568,11 +568,11 @@ namespace cadencii
             // txtRightClock
             //
             this.txtRightClock.Enabled = false;
-            this.txtRightClock.Location = new System.Drawing.Point(66, 26);
+            this.txtRightClock.Location = new Point(66, 26);
             this.txtRightClock.Name = "txtRightClock";
-            this.txtRightClock.Size = new System.Drawing.Size(61, 19);
+            this.txtRightClock.Size = new Dimension(61, 19);
             this.txtRightClock.TabIndex = 10;
-            this.txtRightClock.Type = NumberTextBox.ValueType.Integer;
+            this.txtRightClock.Type = NumberTextBoxValueType.Integer;
             //
             // lblRightClock
             //
@@ -586,11 +586,11 @@ namespace cadencii
             // txtRightValue
             //
             this.txtRightValue.Enabled = false;
-            this.txtRightValue.Location = new System.Drawing.Point(66, 51);
+            this.txtRightValue.Location = new Point(66, 51);
             this.txtRightValue.Name = "txtRightValue";
-            this.txtRightValue.Size = new System.Drawing.Size(61, 19);
+            this.txtRightValue.Size = new Dimension(61, 19);
             this.txtRightValue.TabIndex = 11;
-            this.txtRightValue.Type = NumberTextBox.ValueType.Integer;
+            this.txtRightValue.Type = NumberTextBoxValueType.Integer;
             //
             // btnBackward
             //

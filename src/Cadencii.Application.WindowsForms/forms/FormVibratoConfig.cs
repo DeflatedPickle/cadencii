@@ -329,7 +329,7 @@ namespace cadencii
         {
             this.lblVibratoLength = new System.Windows.Forms.Label();
             this.lblVibratoType = new System.Windows.Forms.Label();
-            this.txtVibratoLength = new cadencii.NumberTextBox();
+            this.txtVibratoLength = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
             this.label3 = new System.Windows.Forms.Label();
             this.comboVibratoType = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -362,11 +362,11 @@ namespace cadencii
             // txtVibratoLength
             // 
             this.txtVibratoLength.Enabled = false;
-            this.txtVibratoLength.Location = new System.Drawing.Point(143, 12);
+            this.txtVibratoLength.Location = new cadencii.java.awt.Point(143, 12);
             this.txtVibratoLength.Name = "txtVibratoLength";
-            this.txtVibratoLength.Size = new System.Drawing.Size(61, 19);
+            this.txtVibratoLength.Size = new cadencii.java.awt.Dimension(61, 19);
             this.txtVibratoLength.TabIndex = 2;
-            this.txtVibratoLength.Type = cadencii.NumberTextBox.ValueType.Integer;
+            this.txtVibratoLength.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // label3
             // 
@@ -469,7 +469,7 @@ namespace cadencii
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.comboVibratoType);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtVibratoLength);
+            this.Controls.Add((Control)this.txtVibratoLength.Native);
             this.Controls.Add(this.lblVibratoType);
             this.Controls.Add(this.lblVibratoLength);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

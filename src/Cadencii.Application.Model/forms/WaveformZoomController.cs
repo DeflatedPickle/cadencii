@@ -16,7 +16,7 @@ using cadencii.java.awt;
 namespace cadencii
 {
 
-    class WaveformZoomController : ControllerBase, WaveformZoomUiListener
+    public class WaveformZoomController : ControllerBase, WaveformZoomUiListener
     {
         /// <summary>
         /// 波形表示部の拡大ボタン上でマウスが下りた状態かどうか
@@ -40,7 +40,7 @@ namespace cadencii
         private float mWaveViewInitScale;
 
         private WaveView mWaveView = null;
-        private FormMain mFormMain = null;
+        private FormMainUi mFormMain = null;
         private WaveformZoomUi mUi = null;
 
         /// <summary>
@@ -48,12 +48,12 @@ namespace cadencii
         /// </summary>
         const int SPACE = 4;
 
-        public WaveformZoomController(FormMain form_main, WaveView wave_view)
+        public WaveformZoomController(FormMainUi form_main, WaveView wave_view)
         {
             mWaveView = wave_view;
             mFormMain = form_main;
 
-            mUi = (WaveformZoomUi)new WaveformZoomUiImpl();
+            mUi = ApplicationUIHost.Create<WaveformZoomUi> ();
             mUi.setListener(this);
         }
 

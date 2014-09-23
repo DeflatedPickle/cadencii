@@ -731,7 +731,7 @@ namespace cadencii
 
         public void setBackground(cadencii.java.awt.Color color)
         {
-            base.BackColor = System.Drawing.Color.FromArgb(color.getRed(), color.getGreen(), color.getBlue());
+            base.BackColor = System.Drawing.Color.FromArgb(color.R, color.G, color.B);
         }
 
         public cadencii.java.awt.Color getBackground()
@@ -1281,7 +1281,7 @@ namespace cadencii
 
                     if (vsq_track != null) {
                         Color color = EditorManager.getHilightColor();
-                        Color front = new Color(color.getRed(), color.getGreen(), color.getBlue(), 150);
+                        Color front = new Color(color.R, color.G, color.B, 150);
                         Color back = new Color(255, 249, 255, 44);
                         Color vel_color = new Color(64, 78, 30);
 
@@ -1821,12 +1821,12 @@ namespace cadencii
             Dimension ovl_bounds = getFlagBounds(s_ovl);
 
             Color pen = new Color(0, 0, 0, 50);
-			Color transp = new Color(cadencii.java.awt.Colors.Orange.getRed(), cadencii.java.awt.Colors.Orange.getGreen(), cadencii.java.awt.Colors.Orange.getBlue(), 50);
+			Color transp = new Color(cadencii.java.awt.Colors.Orange.R, cadencii.java.awt.Colors.Orange.G, cadencii.java.awt.Colors.Orange.B, 50);
             g.setColor(transp);
             g.fillRect(px_preutterance, OFFSET_PRE - FLAG_SPACE, pre_bounds.width, pre_bounds.height + FLAG_SPACE * 2);
             g.setColor(pen);
             g.drawRect(px_preutterance, OFFSET_PRE - FLAG_SPACE, pre_bounds.width, pre_bounds.height + FLAG_SPACE * 2);
-			transp = new Color(cadencii.java.awt.Colors.LawnGreen.getRed(), cadencii.java.awt.Colors.LawnGreen.getGreen(), cadencii.java.awt.Colors.LawnGreen.getBlue(), 50);
+			transp = new Color(cadencii.java.awt.Colors.LawnGreen.R, cadencii.java.awt.Colors.LawnGreen.G, cadencii.java.awt.Colors.LawnGreen.B, 50);
             g.setColor(transp);
             g.fillRect(px_overlap, OFFSET_OVL - FLAG_SPACE, ovl_bounds.width, ovl_bounds.height + FLAG_SPACE * 2);
             g.setColor(pen);

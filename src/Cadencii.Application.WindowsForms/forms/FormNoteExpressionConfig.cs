@@ -504,8 +504,8 @@ namespace cadencii
             this.groupPitchControl = new GroupBox();
             this.label5 = new Label();
             this.label4 = new Label();
-            this.txtBendLength = new cadencii.NumberTextBox();
-            this.txtBendDepth = new cadencii.NumberTextBox();
+            this.txtBendLength = ApplicationUIHost.Create<cadencii.NumberTextBox>();
+            this.txtBendDepth = ApplicationUIHost.Create<cadencii.NumberTextBox>();
             this.trackBendLength = new TrackBar();
             this.trackBendDepth = new TrackBar();
             this.chkDownPortamento = new CheckBox();
@@ -515,8 +515,8 @@ namespace cadencii
             this.groupDynamicsControl = new GroupBox();
             this.label7 = new Label();
             this.label6 = new Label();
-            this.txtAccent = new cadencii.NumberTextBox();
-            this.txtDecay = new cadencii.NumberTextBox();
+			this.txtAccent = ApplicationUIHost.Create<cadencii.NumberTextBox>();
+			this.txtDecay = ApplicationUIHost.Create<cadencii.NumberTextBox>();
             this.trackAccent = new TrackBar();
             this.trackDecay = new TrackBar();
             this.lblAccent = new Label();
@@ -528,8 +528,8 @@ namespace cadencii
             this.groupAttack = new GroupBox();
             this.lblAttackTemplate = new Label();
             this.comboAttackTemplate = new ComboBox();
-            this.txtDepth = new cadencii.NumberTextBox();
-            this.txtDuration = new cadencii.NumberTextBox();
+			this.txtDepth = ApplicationUIHost.Create<cadencii.NumberTextBox>();
+			this.txtDuration = ApplicationUIHost.Create<cadencii.NumberTextBox>();
             this.trackDepth = new TrackBar();
             this.trackDuration = new TrackBar();
             this.lblDepth = new Label();
@@ -555,8 +555,8 @@ namespace cadencii
             // 
             this.groupPitchControl.Controls.Add(this.label5);
             this.groupPitchControl.Controls.Add(this.label4);
-            this.groupPitchControl.Controls.Add(this.txtBendLength);
-            this.groupPitchControl.Controls.Add(this.txtBendDepth);
+			this.groupPitchControl.Controls.Add((Control)this.txtBendLength.Native);
+            this.groupPitchControl.Controls.Add((Control)this.txtBendDepth.Native);
             this.groupPitchControl.Controls.Add(this.trackBendLength);
             this.groupPitchControl.Controls.Add(this.trackBendDepth);
             this.groupPitchControl.Controls.Add(this.chkDownPortamento);
@@ -590,27 +590,27 @@ namespace cadencii
             // 
             // txtBendLength
             // 
-            this.txtBendLength.BackColor = System.Drawing.SystemColors.Window;
-            this.txtBendLength.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtBendLength.Location = new System.Drawing.Point(300, 39);
+            this.txtBendLength.BackColor = System.Drawing.SystemColors.Window.ToAwt ();
+            this.txtBendLength.ForeColor = System.Drawing.SystemColors.WindowText.ToAwt ();
+            this.txtBendLength.Location = new cadencii.java.awt.Point(300, 39);
             this.txtBendLength.Name = "txtBendLength";
-            this.txtBendLength.Size = new System.Drawing.Size(39, 19);
+            this.txtBendLength.Size = new cadencii.java.awt.Dimension(39, 19);
             this.txtBendLength.TabIndex = 5;
             this.txtBendLength.Text = "0";
-            this.txtBendLength.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtBendLength.Type = cadencii.NumberTextBox.ValueType.Integer;
+            this.txtBendLength.TextAlign = cadencii.java.awt.HorizontalAlignment.Right;
+            this.txtBendLength.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // txtBendDepth
             // 
-            this.txtBendDepth.BackColor = System.Drawing.SystemColors.Window;
-            this.txtBendDepth.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtBendDepth.Location = new System.Drawing.Point(300, 13);
+            this.txtBendDepth.BackColor = System.Drawing.SystemColors.Window.ToAwt ();
+            this.txtBendDepth.ForeColor = System.Drawing.SystemColors.WindowText.ToAwt ();
+            this.txtBendDepth.Location = new cadencii.java.awt.Point(300, 13);
             this.txtBendDepth.Name = "txtBendDepth";
-            this.txtBendDepth.Size = new System.Drawing.Size(39, 19);
+            this.txtBendDepth.Size = new cadencii.java.awt.Dimension(39, 19);
             this.txtBendDepth.TabIndex = 2;
             this.txtBendDepth.Text = "8";
-            this.txtBendDepth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtBendDepth.Type = cadencii.NumberTextBox.ValueType.Integer;
+            this.txtBendDepth.TextAlign = cadencii.java.awt.HorizontalAlignment.Right;
+            this.txtBendDepth.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // trackBendLength
             // 
@@ -675,8 +675,8 @@ namespace cadencii
             // 
             this.groupDynamicsControl.Controls.Add(this.label7);
             this.groupDynamicsControl.Controls.Add(this.label6);
-            this.groupDynamicsControl.Controls.Add(this.txtAccent);
-            this.groupDynamicsControl.Controls.Add(this.txtDecay);
+            this.groupDynamicsControl.Controls.Add((Control)this.txtAccent.Native);
+            this.groupDynamicsControl.Controls.Add((Control)this.txtDecay.Native);
             this.groupDynamicsControl.Controls.Add(this.trackAccent);
             this.groupDynamicsControl.Controls.Add(this.trackDecay);
             this.groupDynamicsControl.Controls.Add(this.lblAccent);
@@ -708,27 +708,27 @@ namespace cadencii
             // 
             // txtAccent
             // 
-            this.txtAccent.BackColor = System.Drawing.SystemColors.Window;
-            this.txtAccent.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtAccent.Location = new System.Drawing.Point(300, 43);
+            this.txtAccent.BackColor = System.Drawing.SystemColors.Window.ToAwt ();
+            this.txtAccent.ForeColor = System.Drawing.SystemColors.WindowText.ToAwt ();
+            this.txtAccent.Location = new cadencii.java.awt.Point(300, 43);
             this.txtAccent.Name = "txtAccent";
-            this.txtAccent.Size = new System.Drawing.Size(39, 19);
+            this.txtAccent.Size = new cadencii.java.awt.Dimension(39, 19);
             this.txtAccent.TabIndex = 13;
             this.txtAccent.Text = "50";
-            this.txtAccent.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtAccent.Type = cadencii.NumberTextBox.ValueType.Integer;
+            this.txtAccent.TextAlign = cadencii.java.awt.HorizontalAlignment.Right;
+            this.txtAccent.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // txtDecay
             // 
-            this.txtDecay.BackColor = System.Drawing.SystemColors.Window;
-            this.txtDecay.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtDecay.Location = new System.Drawing.Point(300, 17);
+            this.txtDecay.BackColor = System.Drawing.SystemColors.Window.ToAwt ();
+            this.txtDecay.ForeColor = System.Drawing.SystemColors.WindowText.ToAwt ();
+            this.txtDecay.Location = new cadencii.java.awt.Point(300, 17);
             this.txtDecay.Name = "txtDecay";
-            this.txtDecay.Size = new System.Drawing.Size(39, 19);
+            this.txtDecay.Size = new cadencii.java.awt.Dimension(39, 19);
             this.txtDecay.TabIndex = 10;
             this.txtDecay.Text = "50";
-            this.txtDecay.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtDecay.Type = cadencii.NumberTextBox.ValueType.Integer;
+            this.txtDecay.TextAlign = cadencii.java.awt.HorizontalAlignment.Right;
+            this.txtDecay.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // trackAccent
             // 
@@ -820,8 +820,8 @@ namespace cadencii
             // 
             this.groupAttack.Controls.Add(this.lblAttackTemplate);
             this.groupAttack.Controls.Add(this.comboAttackTemplate);
-            this.groupAttack.Controls.Add(this.txtDepth);
-            this.groupAttack.Controls.Add(this.txtDuration);
+            this.groupAttack.Controls.Add((Control)this.txtDepth.Native);
+            this.groupAttack.Controls.Add((Control)this.txtDuration.Native);
             this.groupAttack.Controls.Add(this.trackDepth);
             this.groupAttack.Controls.Add(this.trackDuration);
             this.groupAttack.Controls.Add(this.lblDepth);
@@ -853,27 +853,27 @@ namespace cadencii
             // 
             // txtDepth
             // 
-            this.txtDepth.BackColor = System.Drawing.SystemColors.Window;
-            this.txtDepth.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtDepth.Location = new System.Drawing.Point(300, 72);
+            this.txtDepth.BackColor = System.Drawing.SystemColors.Window.ToAwt ();
+			this.txtDepth.ForeColor = System.Drawing.SystemColors.WindowText.ToAwt ();
+            this.txtDepth.Location = new cadencii.java.awt.Point(300, 72);
             this.txtDepth.Name = "txtDepth";
-            this.txtDepth.Size = new System.Drawing.Size(39, 19);
+            this.txtDepth.Size = new cadencii.java.awt.Dimension(39, 19);
             this.txtDepth.TabIndex = 13;
             this.txtDepth.Text = "64";
-            this.txtDepth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtDepth.Type = cadencii.NumberTextBox.ValueType.Integer;
+            this.txtDepth.TextAlign = cadencii.java.awt.HorizontalAlignment.Right;
+            this.txtDepth.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // txtDuration
             // 
-            this.txtDuration.BackColor = System.Drawing.SystemColors.Window;
-            this.txtDuration.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtDuration.Location = new System.Drawing.Point(300, 46);
+            this.txtDuration.BackColor = System.Drawing.SystemColors.Window.ToAwt ();
+            this.txtDuration.ForeColor = System.Drawing.SystemColors.WindowText.ToAwt ();
+            this.txtDuration.Location = new cadencii.java.awt.Point(300, 46);
             this.txtDuration.Name = "txtDuration";
-            this.txtDuration.Size = new System.Drawing.Size(39, 19);
+            this.txtDuration.Size = new cadencii.java.awt.Dimension(39, 19);
             this.txtDuration.TabIndex = 10;
             this.txtDuration.Text = "64";
-            this.txtDuration.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtDuration.Type = cadencii.NumberTextBox.ValueType.Integer;
+            this.txtDuration.TextAlign = cadencii.java.awt.HorizontalAlignment.Right;
+            this.txtDuration.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // trackDepth
             // 

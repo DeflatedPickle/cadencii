@@ -39,24 +39,9 @@ namespace cadencii.java.awt
         	this.a = a;
         }
 
-        public int getRed()
-        {
-            return r;
-        }
-
-        public int getGreen()
-        {
-            return g;
-        }
-
-        public int getBlue()
-        {
-            return b;
-        }
-
-        public int getAlpha()
-        {
-        	return a;
-        }
+        public int R { get { return r; } }
+        public int G { get { return g; } }
+        public int B { get { return b; } }
+	public int A { get { return a; } }
     }
 }

@@ -143,9 +143,9 @@ namespace cadencii
             btnForward2.Click += new EventHandler(commonButton_Click);
             btnApply.Click += new EventHandler(btnApply_Click);
             txtDataPointClock.TextChanged += new EventHandler(commonTextBox_TextChanged);
-            txtDataPointClock.KeyUp += new KeyEventHandler(commonTextBox_KeyUp);
+            txtDataPointClock.KeyUp += new cadencii.java.awt.KeyEventHandler(commonTextBox_KeyUp);
             txtDataPointValue.TextChanged += new EventHandler(commonTextBox_TextChanged);
-            txtDataPointValue.KeyUp += new KeyEventHandler(commonTextBox_KeyUp);
+			txtDataPointValue.KeyUp += new cadencii.java.awt.KeyEventHandler(commonTextBox_KeyUp);
             btnBackward3.Click += new EventHandler(commonButton_Click);
             btnForward3.Click += new EventHandler(commonButton_Click);
             btnUndo.Click += new EventHandler(handleUndoRedo_Click);
@@ -155,9 +155,9 @@ namespace cadencii
         #endregion
 
         #region event handlers
-        public void commonTextBox_KeyUp(Object sender, KeyEventArgs e)
+        public void commonTextBox_KeyUp(Object sender, cadencii.java.awt.KeyEventArgs e)
         {
-            if (((Keys) e.KeyCode & Keys.Enter) != Keys.Enter) {
+			if ((e.KeyCode & cadencii.java.awt.Keys.Enter) != cadencii.java.awt.Keys.Enter) {
                 return;
             }
             applyValue((sender == txtDataPointClock));
@@ -299,8 +299,8 @@ namespace cadencii
             this.btnBackward2 = new Button();
             this.btnForward2 = new Button();
             this.btnApply = new Button();
-            this.txtDataPointClock = new cadencii.NumberTextBox();
-            this.txtDataPointValue = new cadencii.NumberTextBox();
+            this.txtDataPointClock = ApplicationUIHost.Create<cadencii.NumberTextBox>();
+		this.txtDataPointValue = ApplicationUIHost.Create<cadencii.NumberTextBox>();
             this.btnBackward3 = new Button();
             this.btnForward3 = new Button();
             this.btnUndo = new Button();
@@ -384,19 +384,19 @@ namespace cadencii
             // 
             // txtDataPointClock
             // 
-            this.txtDataPointClock.Location = new System.Drawing.Point(89, 77);
+            this.txtDataPointClock.Location = new cadencii.java.awt.Point(89, 77);
             this.txtDataPointClock.Name = "txtDataPointClock";
-            this.txtDataPointClock.Size = new System.Drawing.Size(71, 19);
+            this.txtDataPointClock.Size = new cadencii.java.awt.Dimension(71, 19);
             this.txtDataPointClock.TabIndex = 2;
-            this.txtDataPointClock.Type = cadencii.NumberTextBox.ValueType.Integer;
+            this.txtDataPointClock.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // txtDataPointValue
             // 
-            this.txtDataPointValue.Location = new System.Drawing.Point(89, 52);
+            this.txtDataPointValue.Location = new cadencii.java.awt.Point(89, 52);
             this.txtDataPointValue.Name = "txtDataPointValue";
-            this.txtDataPointValue.Size = new System.Drawing.Size(71, 19);
+            this.txtDataPointValue.Size = new cadencii.java.awt.Dimension(71, 19);
             this.txtDataPointValue.TabIndex = 1;
-            this.txtDataPointValue.Type = cadencii.NumberTextBox.ValueType.Integer;
+            this.txtDataPointValue.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // btnBackward3
             // 
@@ -450,10 +450,10 @@ namespace cadencii
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.lblDataPointValue);
             this.Controls.Add(this.btnForward);
-            this.Controls.Add(this.txtDataPointClock);
+            this.Controls.Add((Control)this.txtDataPointClock.Native);
             this.Controls.Add(this.btnBackward);
             this.Controls.Add(this.lblDataPointClock);
-            this.Controls.Add(this.txtDataPointValue);
+		this.Controls.Add((Control)this.txtDataPointValue.Native);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

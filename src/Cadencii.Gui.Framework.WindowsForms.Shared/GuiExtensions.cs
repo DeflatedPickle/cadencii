@@ -20,7 +20,7 @@ namespace cadencii
 
 		public static System.Drawing.Color ToNative (this Color c)
 		{
-			return System.Drawing.Color.FromArgb (c.getRed (), c.getGreen (), c.getBlue ());
+			return System.Drawing.Color.FromArgb (c.R, c.G, c.B);
 		}
 
 		public static cadencii.java.awt.Point ToAwt (this System.Drawing.Point point)
@@ -50,6 +50,16 @@ namespace cadencii
 		public static NMouseEventArgs ToAwt (this MouseEventArgs e)
 		{
 			return new NMouseEventArgs ((NMouseButtons) e.Button, e.Clicks, e.X, e.Y, e.Delta);
+		}
+
+		public static Font ToAwt (this System.Drawing.Font f)
+		{
+			return AwtHost.Current.New<Font> (f);
+		}
+
+		public static System.Drawing.Font ToWF (this Font f)
+		{
+			return (System.Drawing.Font) f.NativeFont;
 		}
 	}
 }

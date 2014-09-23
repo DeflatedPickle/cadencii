@@ -22,16 +22,9 @@ using cadencii.windows.forms;
 namespace cadencii
 {
 
-    public class NumberTextBox : System.Windows.Forms.TextBox
+    public class NumberTextBoxImpl : TextBoxImpl, NumberTextBox
     {
-        public enum ValueType
-        {
-            Double,
-            Float,
-            Integer,
-        }
-
-        private ValueType m_value_type = ValueType.Double;
+        private NumberTextBoxValueType m_value_type = NumberTextBoxValueType.Double;
         private Color m_textcolor_normal = cadencii.java.awt.Colors.Black;
 		private Color m_textcolor_invalid = cadencii.java.awt.Colors.White;
 		private Color m_backcolor_normal = cadencii.java.awt.Colors.White;
@@ -40,7 +33,7 @@ namespace cadencii
         /// <summary>
         /// IDEでのデザイン用
         /// </summary>
-        public ValueType Type
+        public NumberTextBoxValueType Type
         {
             get
             {
@@ -52,12 +45,12 @@ namespace cadencii
             }
         }
 
-        public ValueType getType()
+        public NumberTextBoxValueType getType()
         {
             return m_value_type;
         }
 
-        public void setType(ValueType value)
+        public void setType(NumberTextBoxValueType value)
         {
             m_value_type = value;
         }
@@ -73,7 +66,7 @@ namespace cadencii
         {
             bool valid = false;
             string text = this.Text;
-            if (m_value_type == ValueType.Double) {
+            if (m_value_type == NumberTextBoxValueType.Double) {
                 double dou;
                 try {
                     dou = double.Parse(text);
@@ -81,7 +74,7 @@ namespace cadencii
                 } catch (Exception ex) {
                     valid = false;
                 }
-            } else if (m_value_type == ValueType.Float) {
+            } else if (m_value_type == NumberTextBoxValueType.Float) {
                 float flo;
                 try {
                     flo = (float)double.Parse(text);
@@ -89,7 +82,7 @@ namespace cadencii
                 } catch (Exception ex) {
                     valid = false;
                 }
-            } else if (m_value_type == ValueType.Integer) {
+            } else if (m_value_type == NumberTextBoxValueType.Integer) {
                 int inte;
                 try {
                     inte = int.Parse(text);

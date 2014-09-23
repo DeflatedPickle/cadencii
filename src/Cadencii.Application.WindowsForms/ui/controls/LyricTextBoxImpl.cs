@@ -34,24 +34,6 @@ namespace cadencii
 			}
 		}
 
-		cadencii.java.awt.Font LyricTextBox.Font {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
-
-		cadencii.java.awt.BorderStyle LyricTextBox.BorderStyle {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
-
         private string m_buf_text;
         private bool m_phonetic_symbol_edit_mode;
 
