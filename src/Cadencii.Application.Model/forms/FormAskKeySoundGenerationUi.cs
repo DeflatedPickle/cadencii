@@ -20,7 +20,7 @@ namespace cadencii
     /// <summary>
     /// FormAskKeySoundGenerationフォームのビューが実装すべきメソッドを規定します．
     /// </summary>
-    public interface FormAskKeySoundGenerationUi : UiBase
+    public interface FormAskKeySoundGenerationUi : UiForm
     {
         [PureVirtualFunction]
         void setAlwaysPerformThisCheck(bool value);

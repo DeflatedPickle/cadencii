@@ -53,7 +53,7 @@ namespace cadencii
 		/// <param name="dialog"></param>
 		/// <param name="main_form"></param>
 		/// <returns></returns>
-		public static int showModalDialog (UiBase dialog, object parent_form)
+		public static int showModalDialog (UiForm dialog, object parent_form)
 		{
 			return ApplicationUIHost.Instance.Dialogs.ShowModalDialog (dialog, parent_form);
 		}

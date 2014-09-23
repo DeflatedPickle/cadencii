@@ -81,7 +81,6 @@
     <Compile Include="PaletteToolServer.cs" />
     <Compile Include="IPaletteTool.cs" />
     <Compile Include="controls\ProgressBarWithLabelUi.cs" />
-    <Compile Include="controls\UiControl.cs" />
     <Compile Include="controls\ProgressBarWithLabel.cs" />
     <Compile Include="forms\FormWorkerUi.cs" />
     <Compile Include="controls\WaveViewRealoadRequiredEventArgs.cs" />
@@ -183,6 +182,10 @@
     <Compile Include="forms\WaveformZoomController.cs" />
     <Compile Include="controls\NumberTextBox.cs" />
     <Compile Include="controls\BitmapEx.cs" />
+    <Compile Include="forms\FormCurvePointEdit.cs" />
+    <Compile Include="guiextended\UiControl.cs" />
+    <Compile Include="guiextended\UiTextBox.cs" />
+    <Compile Include="guiextended\UiUserControl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

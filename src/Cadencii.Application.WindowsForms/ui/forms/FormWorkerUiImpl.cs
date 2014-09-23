@@ -26,14 +26,14 @@ using cadencii.apputil;
 
 namespace cadencii
 {
-    public class FormWorkerUiImpl : FormUiBase, FormWorkerUi
+    public class FormWorkerUiImpl : FormImpl, FormWorkerUi
     {
 		bool FormWorkerUi.showDialogTo (object formMainWindow)
 		{
 			return showDialogTo ((FormMain) formMainWindow);
 		}
 
-		int UiBase.showDialog (object parent_form)
+		int UiForm.showDialog (object parent_form)
 		{
 			throw new NotImplementedException (); // not needed
 		}

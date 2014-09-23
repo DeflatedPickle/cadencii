@@ -26,7 +26,7 @@ namespace cadencii
     /// <summary>
     /// 起動時に表示されるスプラッシュウィンドウ
     /// </summary>
-    public class FormSplashUiImpl : FormUiBase, FormSplashUi
+    public class FormSplashUiImpl : FormImpl, FormSplashUi
     {
         /// <summary>
         /// addIconメソッドを呼び出すときに使うデリゲート

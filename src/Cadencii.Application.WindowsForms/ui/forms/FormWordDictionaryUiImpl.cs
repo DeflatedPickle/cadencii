@@ -21,7 +21,7 @@ using cadencii.windows.forms;
 
 namespace cadencii
 {
-    class FormWordDictionaryUiImpl : FormUiBase, FormWordDictionaryUi
+    class FormWordDictionaryUiImpl : FormImpl, FormWordDictionaryUi
     {
         private FormWordDictionaryUiListener listener;
 

@@ -14,7 +14,7 @@
 namespace cadencii
 {
 
-    public interface ExceptionNotifyFormUi : UiBase
+    public interface ExceptionNotifyFormUi : UiForm
     {
         /// <summary>
         /// ウィンドウのタイトルを設定する

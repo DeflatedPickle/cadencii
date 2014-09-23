@@ -122,7 +122,7 @@ namespace cadencii
             ui.close();
         }
 
-        public UiBase getUi()
+        public UiForm getUi()
         {
             return ui;
         }

@@ -17,7 +17,7 @@ using cadencii;
 namespace cadencii
 {
 
-    public interface FormBezierPointEditUi : UiBase
+    public interface FormBezierPointEditUi : UiForm
     {
         [PureVirtualFunction]
         string getDataPointClockText();

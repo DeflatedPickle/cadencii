@@ -13,7 +13,7 @@
  */
 namespace cadencii
 {
-    public interface FormWordDictionaryUi : UiBase
+    public interface FormWordDictionaryUi : UiForm
     {
         /// <summary>
         /// ウィンドウのタイトル文字列を設定します

@@ -28,6 +28,10 @@ namespace cadencii
 
 		void updateScriptShortcut ();
 
+		void setEdited (bool b);
+
+		void updateDrawObjectList ();
+
         /// <summary>
         /// ピアノロールの部品にフォーカスを持たせる
         /// </summary>

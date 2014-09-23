@@ -5500,13 +5500,12 @@ namespace cadencii
                                 if (bp_found) {
                                     EditorManager.itemSelection.clearPoint();
                                     EditorManager.itemSelection.addPoint(mSelectedCurve, bp_id);
-                                    FormCurvePointEdit dialog =
-                                        new FormCurvePointEdit(mMainWindow, bp_id, mSelectedCurve);
+                                    FormCurvePointEdit dialog = ApplicationUIHost.Create<FormCurvePointEdit> (mMainWindow, bp_id, mSelectedCurve);
                                     int tx = EditorManager.xCoordFromClocks(tclock);
                                     Point pt = pointToScreen(new Point(tx, 0));
                                     Invalidate();
                                     dialog.Location =
-                                        new System.Drawing.Point(pt.X - dialog.Width / 2, pt.Y - dialog.Height);
+                                        new Point(pt.X - dialog.Width / 2, pt.Y - dialog.Height);
                                     DialogManager.showModalDialog(dialog, mMainWindow);
                                 }
                                 #endregion

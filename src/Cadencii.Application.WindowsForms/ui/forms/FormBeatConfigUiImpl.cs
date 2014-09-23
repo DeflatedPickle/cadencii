@@ -19,7 +19,7 @@ using cadencii;
 namespace cadencii
 {
 
-    public class FormBeatConfigUiImpl : FormUiBase, FormBeatConfigUi
+    public class FormBeatConfigUiImpl : FormImpl, FormBeatConfigUi
     {
         private FormBeatConfigUiListener mListener;
 

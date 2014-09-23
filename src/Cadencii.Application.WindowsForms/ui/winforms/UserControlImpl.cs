@@ -14,6 +14,20 @@ namespace cadencii
 {
 	public class UserControlImpl : UserControl, UiUserControl
 	{
+		// UiUserControl
+
+		void UiUserControl.AddControl (UiControl c)
+		{
+			Controls.Add ((Control) c.Native);
+		}
+
+		cadencii.java.awt.BorderStyle UiUserControl.BorderStyle {
+			get { return (cadencii.java.awt.BorderStyle)BorderStyle; }
+			set { BorderStyle = (System.Windows.Forms.BorderStyle)value; }
+		}
+
+		// UiControl
+
 		object UiControl.Native {
 			get { return this; }
 		}
@@ -62,11 +76,6 @@ namespace cadencii
 			set { this.Size = new System.Drawing.Size (value.width, value.height); }
 		}
 
-		cadencii.java.awt.BorderStyle UiUserControl.BorderStyle {
-			get { return (cadencii.java.awt.BorderStyle)BorderStyle; }
-			set { BorderStyle = (System.Windows.Forms.BorderStyle)value; }
-		}
-
 		cadencii.java.awt.Padding UiControl.Margin {
 			get { return new cadencii.java.awt.Padding (Margin.All); }
 			set { Margin = new System.Windows.Forms.Padding (value.All); }
@@ -80,11 +89,6 @@ namespace cadencii
 		void UiControl.Focus ()
 		{
 			Focus ();
-		}
-
-		void UiUserControl.AddControl (UiControl c)
-		{
-			Controls.Add ((Control) c.Native);
 		}
 
 		cadencii.java.awt.Point UiControl.PointToClient (cadencii.java.awt.Point point)

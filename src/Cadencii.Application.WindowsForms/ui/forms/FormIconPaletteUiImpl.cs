@@ -26,9 +26,9 @@ using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 
 namespace cadencii
 {
-    public class FormIconPaletteUiImpl : FormUiBase, FormIconPaletteUi
+    public class FormIconPaletteUiImpl : FormImpl, FormIconPaletteUi
     {
-		int UiBase.showDialog (object parent_form)
+		int UiForm.showDialog (object parent_form)
 		{
 			throw new NotImplementedException ();
 		}

@@ -104,7 +104,7 @@ namespace cadencii
 			AfterShowDialog ();
 			return (cadencii.java.awt.DialogResult) ret;
 		}
-		public override int ShowModalDialog (UiBase dialog, object parentForm)
+		public override int ShowModalDialog (UiForm dialog, object parentForm)
 		{
 			BeforeShowDialog ();
 			int ret = dialog.showDialog (parentForm);

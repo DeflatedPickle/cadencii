@@ -2,7 +2,7 @@
 
 namespace cadencii
 {
-	public interface FormWorkerUi : UiBase
+	public interface FormWorkerUi : UiForm
 	{
 		void setTitle(string title);
 		void setText(string text);

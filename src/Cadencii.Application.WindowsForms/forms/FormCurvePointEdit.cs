@@ -23,14 +23,14 @@ using cadencii.java.util;
 namespace cadencii
 {
 
-    public class FormCurvePointEdit : Form
+    public class FormCurvePointEditImpl : FormImpl, FormCurvePointEdit
     {
         private long m_editing_id = -1;
         private CurveType m_curve;
         private bool m_changed = false;
-        private FormMain mMainWindow = null;
+        private FormMainUi mMainWindow = null;
 
-        public FormCurvePointEdit(FormMain main_window, long editing_id, CurveType curve)
+        public FormCurvePointEditImpl(FormMainUi main_window, long editing_id, CurveType curve)
         {
             InitializeComponent();
             mMainWindow = main_window;

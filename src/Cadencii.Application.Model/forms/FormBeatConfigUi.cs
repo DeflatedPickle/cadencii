@@ -14,7 +14,7 @@
 
 namespace cadencii
 {
-    public interface FormBeatConfigUi : UiBase
+    public interface FormBeatConfigUi : UiForm
     {
         [PureVirtualFunction]
         void setFont(string fontName, float fontSize);

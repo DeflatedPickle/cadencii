@@ -3,7 +3,7 @@ using cadencii.java.awt;
 
 namespace cadencii
 {
-	public interface FormIconPaletteUi : UiBase
+	public interface FormIconPaletteUi : UiForm
 	{
 		void applyShortcut (Keys shortcut);
 

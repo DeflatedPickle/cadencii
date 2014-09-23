@@ -25,7 +25,7 @@ using Keys = cadencii.java.awt.Keys;
 namespace cadencii
 {
 
-	public class FormMixerUiImpl : FormUiBase, FormMixerUi
+	public class FormMixerUiImpl : FormImpl, FormMixerUi
     {
 
         private FormMain m_parent;

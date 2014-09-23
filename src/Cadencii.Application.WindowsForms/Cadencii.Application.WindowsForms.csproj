@@ -273,8 +273,6 @@
     <Compile Include="ui\controls\VolumeTrackerImpl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ui\controls\UserControlImpl.cs" />
-    <Compile Include="ui\controls\ButtonImpl.cs" />
     <Compile Include="ui\controls\DraggableBButtonImpl.cs" />
     <Compile Include="ui\forms\FormIconPaletteUiImpl.cs">
       <SubType>Component</SubType>
@@ -285,8 +283,6 @@
     <Compile Include="ui\forms\FormSplashUiImpl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ui\controls\TextBoxImpl.cs" />
-    <Compile Include="ui\controls\PictureBoxImpl.cs" />
     <Compile Include="ui\controls\LyricTextBoxImpl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -322,10 +318,14 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BitmapExImpl.cs" />
-    <Compile Include="ui\forms\FormUiBase.cs" />
     <Compile Include="ui\controls\NumberTextBoxImpl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ui\winforms\ButtonImpl.cs" />
+    <Compile Include="ui\winforms\TextBoxImpl.cs" />
+    <Compile Include="ui\winforms\PictureBoxImpl.cs" />
+    <Compile Include="ui\winforms\UserControlImpl.cs" />
+    <Compile Include="ui\winforms\FormImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />
