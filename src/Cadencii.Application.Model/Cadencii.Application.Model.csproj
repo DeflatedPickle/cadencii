@@ -186,6 +186,8 @@
     <Compile Include="guiextended\UiControl.cs" />
     <Compile Include="guiextended\UiTextBox.cs" />
     <Compile Include="guiextended\UiUserControl.cs" />
+    <Compile Include="controls\IconParader.cs" />
+    <Compile Include="controls\UiPictureBox.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

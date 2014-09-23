@@ -17,8 +17,8 @@ using cadencii.java.awt;
 using cadencii.windows.forms;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
-
-
+using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
+using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 
 namespace cadencii
 {
@@ -72,14 +72,14 @@ namespace cadencii
         /// <param name="singer_name">歌手の名前</param>
         public void addIcon(string path_image, string singer_name)
         {
-            IconParader p = new IconParader();
-            var img = IconParader.createIconImage(path_image, singer_name);
+            IconParader p = ApplicationUIHost.Create<IconParader> ();
+            var img = IconParaderController.createIconImage(path_image, singer_name);
             p.setImage(img);
-            p.MouseDown += new MouseEventHandler(handleMouseDown);
-            p.MouseUp += new MouseEventHandler(handleMouseUp);
-            p.MouseMove += new MouseEventHandler(handleMouseMove);
+            p.MouseDown += (sender, e) => handleMouseDown (sender, e.ToWF ());
+            p.MouseUp += (sender, e) => handleMouseUp (sender, e.ToWF ());
+            p.MouseMove += (sender, e) => handleMouseMove (sender, e.ToWF ());
             panelIcon.BringToFront();
-            panelIcon.Controls.Add(p);
+            panelIcon.Controls.Add((Control) p.Native);
         }
 
         #endregion

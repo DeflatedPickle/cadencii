@@ -12,6 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
+using System.Linq;
 using cadencii.java.awt;
 using cadencii.windows.forms;
 
@@ -23,67 +24,25 @@ namespace cadencii
     /// <summary>
     /// 起動時のスプラッシュウィンドウに表示されるアイコンパレードの、1個のアイコンを表現します
     /// </summary>
-    public class IconParader : System.Windows.Forms.PictureBox
+    public class IconParaderImpl : PictureBoxImpl, IconParader
     {
         const int RADIUS = 6; // 角の丸み
         const int DIAMETER = 2 * RADIUS;
-        public const int ICON_WIDTH = 48;
-        public const int ICON_HEIGHT = 48;
+	const int ICON_WIDTH = IconParaderController.ICON_WIDTH;
+	const int ICON_HEIGHT = IconParaderController.ICON_HEIGHT;
 
         private System.Drawing.Drawing2D.GraphicsPath graphicsPath = null;
         private System.Drawing.Region region = null;
         private System.Drawing.Region invRegion = null;
         private System.Drawing.SolidBrush brush = null;
 
-        public IconParader()
+        public IconParaderImpl()
         {
             var d = new System.Drawing.Size(ICON_WIDTH, ICON_HEIGHT);
             this.Size = d;
             this.MaximumSize = d;
             this.MinimumSize = d;
             this.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-        }
-
-        public static Image createIconImage(string path_image, string singer_name)
-        {
-#if DEBUG
-            sout.println("IconParader#createIconImage; path_image=" + path_image);
-#endif
-            Image ret = null;
-            if (System.IO.File.Exists(path_image)) {
-                System.IO.FileStream fs = null;
-                try {
-                    fs = new System.IO.FileStream(path_image, System.IO.FileMode.Open, System.IO.FileAccess.Read);
-                    System.Drawing.Image img = System.Drawing.Image.FromStream(fs);
-					ret.NativeImage = img;
-                } catch (Exception ex) {
-                    serr.println("IconParader#createIconImage; ex=" + ex);
-                } finally {
-                    if (fs != null) {
-                        try {
-                            fs.Close();
-                        } catch (Exception ex2) {
-                            serr.println("IconParader#createIconImage; ex2=" + ex2);
-                        }
-                    }
-                }
-            }
-
-            if (ret == null) {
-                // 画像ファイルが無かったか，読み込みに失敗した場合
-
-                // 歌手名が描かれた画像をセットする
-                Image bmp = new Image(ICON_WIDTH, ICON_HEIGHT);
-                Graphics g = new Graphics(bmp);
-                g.clearRect(0, 0, ICON_WIDTH, ICON_HEIGHT);
-                Font font = new Font(System.Windows.Forms.SystemInformation.MenuFont);
-				g.drawStringEx(
-                    singer_name, font, new Rectangle(1, 1, ICON_WIDTH - 2, ICON_HEIGHT - 2),
-					Graphics.STRING_ALIGN_NEAR, Graphics.STRING_ALIGN_NEAR);
-                ret = bmp;
-            }
-
-            return ret;
         }
 
         public void setImage(Image img)

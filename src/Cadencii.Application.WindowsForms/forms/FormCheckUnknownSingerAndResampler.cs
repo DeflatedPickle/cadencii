@@ -51,8 +51,7 @@ namespace cadencii
 #if DEBUG
                 sout.println("FormCheckUnknownSingerAndResampler#.ctor;  path_image=" + path_image);
 #endif
-                Image img = IconParader.createIconImage(path_image, sc.VOICENAME);
-                pictureSinger.Image = (System.Drawing.Image) img.NativeImage;
+		pictureSinger.Image = IconParaderController.createIconImage(path_image, sc.VOICENAME);
                 labelSingerName.Text = sc.VOICENAME;
             }
 
@@ -158,7 +157,7 @@ namespace cadencii
             this.buttonOk = new System.Windows.Forms.Button();
             this.labelMessage = new System.Windows.Forms.Label();
             this.checkSingerImport = new System.Windows.Forms.CheckBox();
-            this.pictureSinger = new cadencii.IconParader();
+            this.pictureSinger = ApplicationUIHost.Create<cadencii.IconParader> ();
             this.labelSingerName = new System.Windows.Forms.Label();
             this.textSingerPath = new System.Windows.Forms.TextBox();
             this.checkResamplerImport = new System.Windows.Forms.CheckBox();
@@ -214,12 +213,12 @@ namespace cadencii
             //
             // pictureSinger
             //
-            this.pictureSinger.Location = new System.Drawing.Point(38, 105);
-            this.pictureSinger.MaximumSize = new System.Drawing.Size(48, 48);
-            this.pictureSinger.MinimumSize = new System.Drawing.Size(48, 48);
+            this.pictureSinger.Location = new Point(38, 105);
+            this.pictureSinger.MaximumSize = new Dimension (48, 48);
+            this.pictureSinger.MinimumSize = new Dimension (48, 48);
             this.pictureSinger.Name = "pictureSinger";
-            this.pictureSinger.Size = new System.Drawing.Size(48, 48);
-            this.pictureSinger.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureSinger.Size = new Dimension (48, 48);
+            this.pictureSinger.SizeMode = PictureBoxSizeMode.Zoom;
             this.pictureSinger.TabIndex = 149;
             this.pictureSinger.TabStop = false;
             //
@@ -274,7 +273,7 @@ namespace cadencii
             this.Controls.Add(this.checkResamplerImport);
             this.Controls.Add(this.textSingerPath);
             this.Controls.Add(this.labelSingerName);
-            this.Controls.Add(this.pictureSinger);
+            this.Controls.Add((System.Windows.Forms.Control)this.pictureSinger.Native);
             this.Controls.Add(this.checkSingerImport);
             this.Controls.Add(this.labelMessage);
             this.Controls.Add(this.buttonOk);

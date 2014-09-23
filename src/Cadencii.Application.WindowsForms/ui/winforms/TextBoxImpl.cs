@@ -1,48 +1,91 @@
 ﻿using System;
-using System.Windows.Forms;
+using System.Linq;
+using cadencii.java.awt;
 using Keys = cadencii.java.awt.Keys;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
 using MouseButtons = System.Windows.Forms.MouseButtons;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
+using NKeyEventArgs = cadencii.java.awt.KeyEventArgs;
+using NKeyPressEventArgs = cadencii.java.awt.KeyPressEventArgs;
+using NKeyEventHandler = cadencii.java.awt.KeyEventHandler;
 using NMouseButtons = cadencii.java.awt.MouseButtons;
 using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
 using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 
 namespace cadencii
 {
-	public class TextBoxImpl : TextBox, UiTextBox
+	public class TextBoxImpl : System.Windows.Forms.TextBox, UiTextBox
 	{
-		
-		cadencii.java.awt.BorderStyle UiTextBox.BorderStyle {
-			get { return (cadencii.java.awt.BorderStyle)BorderStyle; }
+		BorderStyle UiTextBox.BorderStyle {
+			get { return (BorderStyle)BorderStyle; }
 			set { BorderStyle = (System.Windows.Forms.BorderStyle) value; }
 		}
 
-		cadencii.java.awt.HorizontalAlignment UiTextBox.TextAlign {
-			get { return (cadencii.java.awt.HorizontalAlignment)TextAlign; }
+		HorizontalAlignment UiTextBox.TextAlign {
+			get { return (HorizontalAlignment)TextAlign; }
 			set { TextAlign = (System.Windows.Forms.HorizontalAlignment) value; }
 		}
 
-		event EventHandler UiControl.Resize {
-			add { Resize += value; }
-			remove { Resize -= value; }
+		// UiControl
+
+		object UiControl.Native {
+			get { return this; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add { ImeModeChanged += value; }
-			remove { ImeModeChanged -= value; }
+		bool UiControl.IsDisposed {
+			get { return IsDisposed; }
 		}
 
-		cadencii.java.awt.Point UiControl.PointToClient (cadencii.java.awt.Point point)
-		{
-			return PointToClient (point.ToWF ()).ToAwt ();
+		AnchorStyles UiControl.Anchor {
+			get { return (AnchorStyles)Anchor; }
+			set { Anchor = (System.Windows.Forms.AnchorStyles) value; }
 		}
 
-		cadencii.java.awt.Point UiControl.PointToScreen (cadencii.java.awt.Point point)
-		{
-			return PointToScreen (point.ToWF ()).ToAwt ();
+		Rectangle UiControl.Bounds {
+			get { return Bounds.ToAwt (); }
+			set { this.Bounds = value.ToWF (); }
+		}
+
+		ImeMode UiControl.ImeMode {
+			get { return (ImeMode)ImeMode; }
+			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
+		}
+
+		Font UiControl.Font {
+			get { return Font.ToAwt (); }
+			set { Font = value.ToWF (); }
+		}
+
+		Color UiControl.ForeColor {
+			get { return ForeColor.ToAwt (); }
+			set { ForeColor = value.ToNative (); }
+		}
+
+		Color UiControl.BackColor {
+			get { return BackColor.ToAwt (); }
+			set { BackColor = value.ToNative (); }
+		}
+
+		Point UiControl.Location {
+			get { return Location.ToAwt (); }
+			set { Location = value.ToWF (); }
+		}
+
+		Dimension UiControl.Size {
+			get { return new Dimension (Size.Width, Size.Height); }
+			set { this.Size = new System.Drawing.Size (value.width, value.height); }
+		}
+
+		Padding UiControl.Margin {
+			get { return new Padding (Margin.All); }
+			set { Margin = new System.Windows.Forms.Padding (value.All); }
+		}
+
+		DockStyle UiControl.Dock {
+			get { return (DockStyle)Dock; }
+			set { Dock = (System.Windows.Forms.DockStyle)value; }
 		}
 
 		void UiControl.Focus ()
@@ -50,107 +93,73 @@ namespace cadencii
 			Focus ();
 		}
 
-		cadencii.java.awt.AnchorStyles UiControl.Anchor {
-			get { return (cadencii.java.awt.AnchorStyles)Anchor; }
-			set { Anchor = (System.Windows.Forms.AnchorStyles) value; }
+		Point UiControl.PointToClient (Point point)
+		{
+			return PointToClient (point.ToWF ()).ToAwt ();
 		}
 
-		cadencii.java.awt.Rectangle UiControl.Bounds {
-			get { return Bounds.ToAwt (); }
-			set { this.Bounds = value.ToWF (); }
+		Point UiControl.PointToScreen (Point point)
+		{
+			return PointToScreen (point.ToWF ()).ToAwt ();
 		}
 
-		cadencii.java.awt.ImeMode UiControl.ImeMode {
-			get { return (cadencii.java.awt.ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode)value; }
+		event EventHandler UiControl.Resize {
+			add { this.Resize += value; }
+			remove { this.Resize -= value; }
 		}
 
-		cadencii.java.awt.Font UiControl.Font {
-			get { return Font.ToAwt (); }
-			set { Font = value.ToWF (); }
+		event EventHandler UiControl.ImeModeChanged {
+			add { this.ImeModeChanged += value; }
+			remove { this.ImeModeChanged -= value; }
 		}
 
-		cadencii.java.awt.Color UiControl.ForeColor {
-			get { return ForeColor.ToAwt (); }
-			set { ForeColor = value.ToNative (); }
+		event NKeyEventHandler UiControl.PreviewKeyDown {
+			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
+			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		cadencii.java.awt.Color UiControl.BackColor {
-			get { return BackColor.ToAwt (); }
-			set { BackColor = value.ToNative (); }
+		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
+			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
+			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
 		}
 
-		cadencii.java.awt.Point UiControl.Location {
-			get { return new cadencii.java.awt.Point (Location.X, Location.Y); }
-			set { Location = new System.Drawing.Point (value.X, value.Y); }
+		event NKeyEventHandler UiControl.KeyUp {
+			add { this.KeyUp += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
+			remove { this.KeyUp -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		cadencii.java.awt.Dimension UiControl.Size {
-			get { return new cadencii.java.awt.Dimension (Size.Width, Size.Height); }
-			set { this.Size = new System.Drawing.Size (value.width, value.height); }
+		event NKeyEventHandler UiControl.KeyDown {
+			add { this.KeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
+			remove { this.KeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		object UiControl.Native {
-			get { return this; }
+		event NMouseEventHandler UiControl.MouseClick {
+			add { this.MouseClick += (sender, e) => value (sender, e.ToAwt ()); }
+			remove { this.MouseClick -= (sender, e) => value (sender, e.ToAwt ()); }
 		}
 
-		cadencii.java.awt.Padding UiControl.Margin {
-			get { return new cadencii.java.awt.Padding (Margin.All); }
-			set { Margin = new System.Windows.Forms.Padding (value.All); }
+		event NMouseEventHandler UiControl.MouseDoubleClick {
+			add { this.MouseDoubleClick += (sender, e) => value (sender, e.ToAwt ()); }
+			remove { this.MouseDoubleClick -= (sender, e) => value (sender, e.ToAwt ()); }
 		}
 
-		cadencii.java.awt.DockStyle UiControl.Dock {
-			get { return (cadencii.java.awt.DockStyle)Dock; }
-			set { Dock = (System.Windows.Forms.DockStyle)value; }
+		event NMouseEventHandler UiControl.MouseDown {
+			add { this.MouseDown += (sender, e) => value (sender, e.ToAwt ()); }
+			remove { this.MouseDown -= (sender, e) => value (sender, e.ToAwt ()); }
 		}
 
-		event cadencii.java.awt.KeyEventHandler UiControl.PreviewKeyDown {
-			add { this.PreviewKeyDown += (object sender, PreviewKeyDownEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
-			remove { this.PreviewKeyDown -= (object sender, PreviewKeyDownEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
+		event NMouseEventHandler UiControl.MouseUp {
+			add { this.MouseUp += (sender, e) => value (sender, e.ToAwt ()); }
+			remove { this.MouseUp -= (sender, e) => value (sender, e.ToAwt ()); }
 		}
 
-		event EventHandler<cadencii.java.awt.KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (object sender, System.Windows.Forms.KeyPressEventArgs e) => value (sender, new cadencii.java.awt.KeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (object sender, System.Windows.Forms.KeyPressEventArgs e) => value (sender, new cadencii.java.awt.KeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
+		event NMouseEventHandler UiControl.MouseMove {
+			add { this.MouseMove += (sender, e) => value (sender, e.ToAwt ()); }
+			remove { this.MouseMove -= (sender, e) => value (sender, e.ToAwt ()); }
 		}
-
-		event cadencii.java.awt.KeyEventHandler UiControl.KeyUp {
-			add { this.KeyUp += (object sender, KeyEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
-			remove { this.KeyUp -= (object sender, KeyEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
-		}
-
-		event cadencii.java.awt.KeyEventHandler UiControl.KeyDown {
-			add { this.KeyDown += (object sender, KeyEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
-			remove { this.KeyDown -= (object sender, KeyEventArgs e) => value (sender, new cadencii.java.awt.KeyEventArgs ((cadencii.java.awt.Keys) e.KeyData)); }
-		}
-
-		event cadencii.java.awt.MouseEventHandler UiControl.MouseClick {
-			add { this.MouseClick += (object sender, MouseEventArgs e) => value (sender, e.ToAwt ()); }
-			remove { this.MouseClick -= (object sender, MouseEventArgs e) => value (sender, e.ToAwt ()); }
-		}
-
-		event cadencii.java.awt.MouseEventHandler UiControl.MouseDoubleClick {
-			add { this.MouseDoubleClick += (object sender, MouseEventArgs e) => value (sender, e.ToAwt ()); }
-			remove { this.MouseDoubleClick -= (object sender, MouseEventArgs e) => value (sender, e.ToAwt ()); }
-		}
-
-		event cadencii.java.awt.MouseEventHandler UiControl.MouseDown {
-			add { this.MouseDown += (object sender, MouseEventArgs e) => value (sender, e.ToAwt ()); }
-			remove { this.MouseDown -= (object sender, MouseEventArgs e) => value (sender, e.ToAwt ()); }
-		}
-
-		event cadencii.java.awt.MouseEventHandler UiControl.MouseUp {
-			add { this.MouseUp += (object sender, MouseEventArgs e) => value (sender, e.ToAwt ()); }
-			remove { this.MouseUp -= (object sender, MouseEventArgs e) => value (sender, e.ToAwt ()); }
-		}
-
-		event cadencii.java.awt.MouseEventHandler UiControl.MouseMove {
-			add { this.MouseMove += (object sender, MouseEventArgs e) => value (sender, e.ToAwt ()); }
-			remove { this.MouseMove -= (object sender, MouseEventArgs e) => value (sender, e.ToAwt ()); }
-		}
-		event cadencii.java.awt.MouseEventHandler UiControl.MouseWheel {
-			add { this.MouseWheel += (object sender, MouseEventArgs e) => value (sender, e.ToAwt ()); }
-			remove { this.MouseWheel -= (object sender, MouseEventArgs e) => value (sender, e.ToAwt ()); }
+		event NMouseEventHandler UiControl.MouseWheel {
+			add { this.MouseWheel += (sender, e) => value (sender, e.ToAwt ()); }
+			remove { this.MouseWheel -= (sender, e) => value (sender, e.ToAwt ()); }
 		}
 	}
 }

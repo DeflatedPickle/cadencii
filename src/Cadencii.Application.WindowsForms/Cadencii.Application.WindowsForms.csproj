@@ -117,9 +117,6 @@
     <Compile Include="forms\FormCompileResult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\FormCurvePointEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="forms\FormDeleteBar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,9 +181,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="controls\BgmMenuItem.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="controls\IconParader.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="TestFormWorker.cs" />
@@ -326,6 +320,13 @@
     <Compile Include="ui\winforms\PictureBoxImpl.cs" />
     <Compile Include="ui\winforms\UserControlImpl.cs" />
     <Compile Include="ui\winforms\FormImpl.cs" />
+    <Compile Include="ui\forms\FormCurvePointEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\controls\IconParaderControllerWF.cs" />
+    <Compile Include="ui\controls\IconParaderImpl.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />

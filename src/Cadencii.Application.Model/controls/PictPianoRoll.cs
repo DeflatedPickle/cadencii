@@ -2,7 +2,7 @@
 
 namespace cadencii
 {
-	public interface PictPianoRoll : UiControl
+	public interface PictPianoRoll : UiPictureBox
 	{
 		MouseTracer mMouseTracer { get; set; }
 

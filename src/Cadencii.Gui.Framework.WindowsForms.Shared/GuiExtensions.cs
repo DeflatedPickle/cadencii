@@ -33,15 +33,36 @@ namespace cadencii
 			return new System.Drawing.Point (point.X, point.Y);
 		}
 		
-		public static cadencii.java.awt.Rectangle ToAwt (this System.Drawing.Rectangle rect)
+		public static cadencii.java.awt.Dimension ToAwt (this System.Drawing.Size size)
 		{
-			return new cadencii.java.awt.Rectangle (rect.X, rect.Y, rect.Width, rect.Height);
+			return new cadencii.java.awt.Dimension (size.Width, size.Height);
 		}
 
-		public static System.Drawing.Rectangle ToWF (this cadencii.java.awt.Rectangle rect)
+		public static System.Drawing.Size ToWF (this Dimension size)
+		{
+			return new System.Drawing.Size (size.width, size.height);
+		}
+		
+		public static Rectangle ToAwt (this System.Drawing.Rectangle rect)
+		{
+			return new Rectangle (rect.X, rect.Y, rect.Width, rect.Height);
+		}
+
+		public static System.Drawing.Rectangle ToWF (this Rectangle rect)
 		{
 			return new System.Drawing.Rectangle (rect.x, rect.y, rect.width, rect.height);
 		}
+
+		public static Image ToAwt (this System.Drawing.Image image)
+		{
+			return new Image () { NativeImage = image };
+		}
+
+		public static System.Drawing.Image ToWF (this Image image)
+		{
+			return (System.Drawing.Image) image.NativeImage;
+		}
+
 		public static MouseEventArgs ToWF (this NMouseEventArgs e)
 		{
 			return new MouseEventArgs ((MouseButtons) e.Button, e.Clicks, e.X, e.Y, e.Delta);
