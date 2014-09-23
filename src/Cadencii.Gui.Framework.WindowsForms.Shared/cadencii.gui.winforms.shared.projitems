@@ -9,6 +9,6 @@
     <Import_RootNamespace>cadencii.gui.winforms.shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)ColorExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GuiExtensions.cs" />
   </ItemGroup>
 </Project>

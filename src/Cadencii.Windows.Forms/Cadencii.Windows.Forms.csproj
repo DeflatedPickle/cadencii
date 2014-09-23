@@ -49,15 +49,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="RebarBandCollection.cs" />
-    <Compile Include="RebarBandCollectionEditor.cs" />
-    <Compile Include="RebarBandDesigner.cs" />
-    <Compile Include="RebarDesigner.cs" />
-    <Compile Include="apputil\BHScrollBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="apputil\BHScrollBar.Designer.cs">
-      <DependentUpon>BHScrollBar.cs</DependentUpon>
-    </Compile>
     <Compile Include="apputil\BitmapEx.cs" />
     <Compile Include="apputil\BSplitContainer.cs">
       <SubType>Component</SubType>
@@ -65,20 +56,7 @@
     <Compile Include="apputil\BSplitterPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="apputil\BTrackBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="apputil\BVScrollBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="apputil\BVScrollBar.Designer.cs">
-      <DependentUpon>BVScrollBar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="apputil\DockPanelContainer.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="apputil\Util.cs" />
-    <Compile Include="apputil\CursorUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cadencii.Core\Cadencii.Core.csproj">

@@ -1841,7 +1841,7 @@ namespace cadencii
                     if (current_version < recent_version) {
                         var form = Factory.createUpdateCheckForm();
                         form.setDownloadUrl(update_info.DownloadUrl);
-                        form.setFont((System.Drawing.Font) EditorManager.editorConfig.getBaseFont().NativeFont);
+                        form.setFont(EditorManager.editorConfig.getBaseFont());
                         form.setOkButtonText(_("OK"));
                         form.setTitle(_("Check For Updates"));
                         form.setMessage(string.Format(_("New version {0} is available."), recent_version_string));
@@ -6341,7 +6341,7 @@ namespace cadencii
             Util.applyContextMenuFontRecurse(cMenuPiano, font);
             Util.applyContextMenuFontRecurse(cMenuTrackSelector, font);
             if (EditorManager.MixerWindow != null) {
-                Util.applyFontRecurse(EditorManager.MixerWindow, font);
+                Util.applyFontRecurse((Control) EditorManager.MixerWindow, font);
             }
             Util.applyContextMenuFontRecurse(cMenuTrackTab, font);
             trackSelector.applyFont(font);

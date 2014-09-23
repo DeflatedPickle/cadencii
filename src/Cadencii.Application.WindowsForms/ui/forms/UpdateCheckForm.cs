@@ -48,7 +48,7 @@ namespace cadencii.ui.dotnet
             Text = title;
         }
 
-        public void setFont(Font font)
+        public void setFont(cadencii.java.awt.Font font)
         {
             cadencii.apputil.Util.applyFontRecurse(this, font);
         }

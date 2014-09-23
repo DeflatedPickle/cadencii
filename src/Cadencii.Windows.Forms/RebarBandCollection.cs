@@ -24,10 +24,6 @@ namespace cadencii.windows.forms
     /// <summary>
     /// Summary description for BandCollection.
     /// </summary>
-#if !MONO
-    [Editor(typeof(cadencii.windows.forms.BandCollectionEditor),
-        typeof(System.Drawing.Design.UITypeEditor))]
-#endif
     public class RebarBandCollection : CollectionBase, IEnumerable
     {
         private Rebar _rebar;

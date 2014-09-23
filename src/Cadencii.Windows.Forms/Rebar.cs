@@ -27,12 +27,6 @@ namespace cadencii.windows.forms
     /// <summary>
     /// Summary description for UserControl1.
     /// </summary>
-#if !MONO
-    [ToolboxItem(true),
-    DefaultProperty("Bands"),
-    Designer(typeof(cadencii.windows.forms.RebarDesigner)),
-    DesignTimeVisible(true)]
-#endif
     public class Rebar : System.Windows.Forms.Control
     {
         /// <summary>
@@ -157,13 +151,6 @@ namespace cadencii.windows.forms
             }
         }
 
-#if !MONO
-        [Category("Behavior"),
-        DesignerSerializationVisibility(DesignerSerializationVisibility.Content),
-        Editor(typeof(cadencii.windows.forms.BandCollectionEditor),
-        typeof(System.Drawing.Design.UITypeEditor)),
-        NotifyParentProperty(true)]
-#endif
         public RebarBandCollection Bands
         {
             get

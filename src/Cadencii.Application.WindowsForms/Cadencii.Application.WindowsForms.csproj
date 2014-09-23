@@ -91,7 +91,6 @@
     <Compile Include="ui\preference\Preference.Designer.cs">
       <DependentUpon>Preference.cs</DependentUpon>
     </Compile>
-    <Compile Include="ui\UpdateCheckForm.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -217,12 +216,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WFUtility.cs" />
-    <Compile Include="ui\forms\ExceptionNotifyFormUiImpl.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ui\forms\ExceptionNotifyFormUiImpl.Designer.cs">
-      <DependentUpon>ExceptionNotifyFormUiImpl.cs</DependentUpon>
-    </Compile>
     <Compile Include="ui\forms\FormAskKeySoundGenerationUiImpl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,9 +237,6 @@
     <Compile Include="ui\forms\WaveformZoomUiImpl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <EmbeddedResource Include="ui\forms\ExceptionNotifyFormUiImpl.resx">
-      <DependentUpon>ExceptionNotifyFormUiImpl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ui\forms\FormBeatConfigUiImpl.resx">
       <DependentUpon>FormBeatConfigUiImpl.cs</DependentUpon>
     </EmbeddedResource>
@@ -281,10 +271,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ClipboardWF.cs" />
-    <Compile Include="..\Cadencii.Gui.Framework.WindowsForms.Shared\ColorExtensions.cs">
-      <Link>ColorExtensions.cs</Link>
+    <Compile Include="..\Cadencii.Gui.Framework.WindowsForms.Shared\GuiExtensions.cs">
+      <Link>GuiExtensions.cs</Link>
     </Compile>
-    <Compile Include="ui\TimerWF.cs" />
     <Compile Include="ui\controls\VolumeTrackerImpl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -315,6 +304,11 @@
     <Compile Include="controls\PictOverview.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="TimerWF.cs" />
+    <Compile Include="ui\forms\ExceptionNotifyFormUiImpl.Designer.cs">
+      <DependentUpon>ExceptionNotifyFormUiImpl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ui\forms\ExceptionNotifyFormUiImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />
@@ -524,6 +518,9 @@
     </None>
     <None Include="po\zh-CN.po">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ui\forms\ExceptionNotifyFormUiImpl.resx">
+      <DependentUpon>ExceptionNotifyFormUiImpl.cs</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

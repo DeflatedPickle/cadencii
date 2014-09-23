@@ -179,6 +179,7 @@
     <Compile Include="scripting\ScriptInvoker.cs" />
     <Compile Include="scripting\ScriptReturnStatus.cs" />
     <Compile Include="scripting\ScriptServer.cs" />
+    <Compile Include="forms\UpdateCheckForm.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

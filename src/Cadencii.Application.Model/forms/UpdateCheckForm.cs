@@ -15,12 +15,12 @@ using System;
 
 namespace cadencii.ui
 {
-    interface UpdateCheckForm
+    public interface UpdateCheckForm
     {
         void showDialog(object parent);
         void setMessage(string message);
         void setDownloadUrl(string url);
-        void setFont(System.Drawing.Font font);
+        void setFont(cadencii.java.awt.Font font);
         void setOkButtonText(string text);
         void setTitle(string title);
         void close();
