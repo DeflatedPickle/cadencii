@@ -34,7 +34,7 @@ namespace cadencii
 {
 
 
-    partial class Preference : Form
+    partial class PreferenceImpl : FormImpl, Preference
     {
         private static int columnWidthHeaderProgramChange = 60;
         private static int columnWidthHeaderName = 100;
@@ -50,7 +50,7 @@ namespace cadencii
         private FontDialog fontDialog;
         private FolderBrowserDialog folderBrowserSingers;
 
-        public Preference()
+        public PreferenceImpl()
         {
             InitializeComponent();
             fontDialog = new FontDialog();

@@ -4,7 +4,7 @@ using cadencii.java.awt;
 namespace cadencii
 {
 
-    partial class Preference
+    partial class PreferenceImpl
     {
         /// <summary>
         /// 必要なデザイナ変数です。
@@ -15,7 +15,7 @@ namespace cadencii
         /// 使用中のリソースをすべてクリーンアップします。
         /// </summary>
         /// <param name="disposing">マネージ リソースが破棄される場合 true、破棄されない場合は false です。</param>
-        protected override void Dispose(bool disposing)
+        protected void Dispose(bool disposing)
         {
             if (disposing && (components != null)) {
                 components.Dispose();

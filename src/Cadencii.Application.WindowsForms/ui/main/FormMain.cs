@@ -6364,7 +6364,7 @@ namespace cadencii
             Util.applyFontRecurse(toolBarPosition, font);
             Util.applyFontRecurse(toolBarTool, font);
             if (mDialogPreference != null) {
-                Util.applyFontRecurse(mDialogPreference, font);
+                Util.applyFontRecurse((Form) mDialogPreference.Native, font);
             }
 
 			cadencii.core.EditorConfig.baseFont10Bold = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE10);
@@ -11835,7 +11835,7 @@ namespace cadencii
         {
             try {
                 if (mDialogPreference == null) {
-                    mDialogPreference = new Preference();
+                    mDialogPreference = ApplicationUIHost.Create<Preference>();
                 }
                 mDialogPreference.setBaseFont(new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9));
                 mDialogPreference.setScreenFont(new Font(EditorManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9));
@@ -11910,7 +11910,7 @@ namespace cadencii
 
                 mDialogPreference.Location = getFormPreferedLocation(mDialogPreference);
 
-                var dr = DialogManager.showModalDialog(mDialogPreference, this);
+                var dr = DialogManager.showModalDialog((Form) mDialogPreference.Native, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     string old_base_font_name = EditorManager.editorConfig.BaseFontName;
                     float old_base_font_size = EditorManager.editorConfig.BaseFontSize;

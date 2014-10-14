@@ -220,6 +220,7 @@
     <Compile Include="forms\FormCheckUnknownSingerAndResampler.cs" />
     <Compile Include="forms\VersionInfo.cs" />
     <Compile Include="forms\InputBox.cs" />
+    <Compile Include="forms\Preference.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
