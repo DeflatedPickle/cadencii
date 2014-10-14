@@ -17,33 +17,29 @@ using cadencii.apputil;
 using cadencii.java.awt;
 using cadencii.windows.forms;
 
+using AnchorStyles = cadencii.java.awt.AnchorStyles;
+using HorizontalAlignment = cadencii.java.awt.HorizontalAlignment;
+
 namespace cadencii
 {
-    public class FormMidiImExport : Form
+    public class FormMidiImExportImpl : Form
     {
-        public enum FormMidiMode
-        {
-            IMPORT,
-            EXPORT,
-            IMPORT_VSQ,
-        }
-
         private FormMidiMode m_mode;
         private VsqFileEx m_vsq;
         private static int columnWidthTrack = 55;
         private static int columnWidthName = 217;
         private static int columnWidthNotes = 58;
 
-        public FormMidiImExport()
+        public FormMidiImExportImpl()
         {
             InitializeComponent();
             applyLanguage();
             setMode(FormMidiMode.EXPORT);
             Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
             listTrack.SetColumnHeaders(new string[] { _("Track"), _("Name"), _("Notes") });
-            listTrack.Columns[0].Width = columnWidthTrack;
-            listTrack.Columns[1].Width = columnWidthName;
-            listTrack.Columns[2].Width = columnWidthNotes;
+            listTrack.GetColumn(0).Width = columnWidthTrack;
+            listTrack.GetColumn(1).Width = columnWidthName;
+            listTrack.GetColumn(2).Width = columnWidthNotes;
 
             System.Drawing.Point p = btnCheckAll.Location;
             btnUncheckAll.Location = new System.Drawing.Point(p.X + btnCheckAll.Width + 6, p.Y);
@@ -239,15 +235,15 @@ namespace cadencii
         #region event handlers
         public void btnCheckAll_Click(Object sender, EventArgs e)
         {
-            for (int i = 0; i < listTrack.Items.Count; i++) {
-                listTrack.Items[i].Checked = true;
+            for (int i = 0; i < listTrack.ItemCount; i++) {
+                listTrack.GetItem(i).Checked = true;
             }
         }
 
         public void btnUnckeckAll_Click(Object sender, EventArgs e)
         {
-            for (int i = 0; i < listTrack.Items.Count; i++) {
-                listTrack.Items[i].Checked = false;
+            for (int i = 0; i < listTrack.ItemCount; i++) {
+                listTrack.GetItem(i).Checked = false;
             }
         }
 
@@ -288,9 +284,9 @@ namespace cadencii
 
         public void FormMidiImExport_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            columnWidthTrack = listTrack.Columns[0].Width;
-            columnWidthName = listTrack.Columns[1].Width;
-            columnWidthNotes = listTrack.Columns[2].Width;
+            columnWidthTrack = listTrack.GetColumn(0).Width;
+            columnWidthName = listTrack.GetColumn(1).Width;
+            columnWidthNotes = listTrack.GetColumn(2).Width;
         }
 
         public void btnCancel_Click(Object sender, EventArgs e)
@@ -344,13 +340,13 @@ namespace cadencii
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            UiListViewGroup listViewGroup1 = new ListViewGroupImpl("ListViewGroup", HorizontalAlignment.Left);
+            UiListViewGroup listViewGroup2 = new ListViewGroupImpl("ListViewGroup", HorizontalAlignment.Left);
+            UiListViewGroup listViewGroup3 = new ListViewGroupImpl("ListViewGroup", HorizontalAlignment.Left);
+            UiListViewGroup listViewGroup4 = new ListViewGroupImpl("ListViewGroup", HorizontalAlignment.Left);
             this.btnCancel = new Button();
             this.btnOK = new Button();
-            this.listTrack = new ListView();
+            this.listTrack = new ListViewImpl();
             this.btnCheckAll = new Button();
             this.btnUncheckAll = new Button();
             this.chkBeat = new CheckBox();
@@ -395,9 +391,7 @@ namespace cadencii
             // 
             // listTrack
             // 
-            this.listTrack.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.listTrack.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             this.listTrack.CheckBoxes = true;
             this.listTrack.FullRowSelect = true;
             listViewGroup1.Header = "ListViewGroup";
@@ -407,17 +401,17 @@ namespace cadencii
             listViewGroup3.Name = null;
             listViewGroup4.Header = "ListViewGroup";
             listViewGroup4.Name = null;
-            this.listTrack.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
+            this.listTrack.AddGroups(new UiListViewGroup[] {
             listViewGroup1,
             listViewGroup2,
             listViewGroup3,
             listViewGroup4});
-            this.listTrack.Location = new System.Drawing.Point(12, 41);
+            this.listTrack.Location = new Point(12, 41);
             this.listTrack.Name = "listTrack";
-            this.listTrack.Size = new System.Drawing.Size(324, 216);
+            this.listTrack.Size = new Dimension(324, 216);
             this.listTrack.TabIndex = 6;
             this.listTrack.UseCompatibleStateImageBehavior = false;
-            this.listTrack.View = System.Windows.Forms.View.Details;
+            this.listTrack.View = cadencii.java.awt.View.Details;
             // 
             // btnCheckAll
             // 
@@ -628,7 +622,7 @@ namespace cadencii
             this.Controls.Add(this.groupCommonOption);
             this.Controls.Add(this.btnUncheckAll);
             this.Controls.Add(this.btnCheckAll);
-            this.Controls.Add(this.listTrack);
+            this.Controls.Add((Control)this.listTrack.Native);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.MaximizeBox = false;
@@ -657,7 +651,7 @@ namespace cadencii
         private CheckBox chkLyric;
         private GroupBox groupCommonOption;
         private CheckBox chkExportVocaloidNrpn;
-        public ListView listTrack;
+        public UiListView listTrack { get ; set; }
         private CheckBox chkPreMeasure;
         private CheckBox chkMetaText;
         private GroupBox groupMode;

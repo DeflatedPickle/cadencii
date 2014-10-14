@@ -4483,14 +4483,14 @@ namespace cadencii
             int count = vsq_track.getEventCount() - 1 - start + 1;
             try {
                 if (mDialogImportLyric == null) {
-                    mDialogImportLyric = new FormImportLyric(count);
+                    mDialogImportLyric = ApplicationUIHost.Create<FormImportLyric>(count);
                 } else {
-                    mDialogImportLyric.setMaxNotes(count);
+                    mDialogImportLyric.setMaxNotes (count);
                 }
                 mDialogImportLyric.Location = getFormPreferedLocation(mDialogImportLyric);
-                var dr = DialogManager.showModalDialog(mDialogImportLyric, this);
+                var dr = DialogManager.showModalDialog((Control)mDialogImportLyric.Native, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
-                    string[] phrases = mDialogImportLyric.getLetters();
+                    string[] phrases = mDialogImportLyric.Letters;
 #if DEBUG
                     foreach (string s in phrases) {
                         sout.println("FormMain#importLyric; phrases; s=" + s);
@@ -10232,9 +10232,9 @@ namespace cadencii
         public void menuFileExportMidi_Click(Object sender, EventArgs e)
         {
             if (mDialogMidiImportAndExport == null) {
-                mDialogMidiImportAndExport = new FormMidiImExport();
+                mDialogMidiImportAndExport = ApplicationUIHost.Create<FormMidiImExport>();
             }
-            mDialogMidiImportAndExport.listTrack.Items.Clear();
+            mDialogMidiImportAndExport.listTrack.ClearItems();
             VsqFileEx vsq = (VsqFileEx)MusicManager.getVsqFile().clone();
 
             for (int i = 0; i < vsq.Track.Count; i++) {
@@ -10245,16 +10245,16 @@ namespace cadencii
                 }
                 mDialogMidiImportAndExport.listTrack.AddRow(new string[] { i + "", track.getName(), notes + "" }, true);
             }
-            mDialogMidiImportAndExport.setMode(FormMidiImExport.FormMidiMode.EXPORT);
+            mDialogMidiImportAndExport.Mode = (FormMidiMode.EXPORT);
             mDialogMidiImportAndExport.Location = getFormPreferedLocation(mDialogMidiImportAndExport);
-            var dr = DialogManager.showModalDialog(mDialogMidiImportAndExport, this);
+            var dr = DialogManager.showModalDialog((Form)mDialogMidiImportAndExport.Native, this);
 			if (dr == cadencii.java.awt.DialogResult.OK) {
                 if (!mDialogMidiImportAndExport.isPreMeasure()) {
                     vsq.removePart(0, vsq.getPreMeasureClocks());
                 }
                 int track_count = 0;
-                for (int i = 0; i < mDialogMidiImportAndExport.listTrack.Items.Count; i++) {
-                    if (mDialogMidiImportAndExport.listTrack.Items[i].Checked) {
+                for (int i = 0; i < mDialogMidiImportAndExport.listTrack.ItemCount; i++) {
+                    if (mDialogMidiImportAndExport.listTrack.GetItem(i).Checked) {
                         track_count++;
                     }
                 }
@@ -10288,8 +10288,8 @@ namespace cadencii
                         fs.WriteByte((byte)0x01);
                         fs.WriteByte((byte)0xe0);
                         int count = -1;
-                        for (int i = 0; i < mDialogMidiImportAndExport.listTrack.Items.Count; i++) {
-                            if (!mDialogMidiImportAndExport.listTrack.Items[i].Checked) {
+                        for (int i = 0; i < mDialogMidiImportAndExport.listTrack.ItemCount; i++) {
+                            if (!mDialogMidiImportAndExport.listTrack.GetItem (i).Checked) {
                                 continue;
                             }
                             VsqTrack track = vsq.Track[i];
@@ -10894,10 +10894,10 @@ namespace cadencii
         public void menuFileImportMidi_Click(Object sender, EventArgs e)
         {
             if (mDialogMidiImportAndExport == null) {
-                mDialogMidiImportAndExport = new FormMidiImExport();
+                mDialogMidiImportAndExport = ApplicationUIHost.Create<FormMidiImExport>();
             }
-            mDialogMidiImportAndExport.listTrack.Items.Clear();
-            mDialogMidiImportAndExport.setMode(FormMidiImExport.FormMidiMode.IMPORT);
+            mDialogMidiImportAndExport.listTrack.ClearItems();
+            mDialogMidiImportAndExport.Mode = (FormMidiMode.IMPORT);
 
             string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("mid");
             openMidiDialog.SetSelectedFile(dir);
@@ -10973,7 +10973,7 @@ namespace cadencii
                     new string[] { i + "", track_name, notes + "" }, true);
             }
 
-            var dr = DialogManager.showModalDialog(mDialogMidiImportAndExport, this);
+            var dr = DialogManager.showModalDialog((Form) mDialogMidiImportAndExport.Native, this);
 			if (dr != cadencii.java.awt.DialogResult.OK) {
                 return;
             }
@@ -11139,14 +11139,14 @@ namespace cadencii
                 work.updateTimesigInfo();
             }
 
-            for (int i = 0; i < mDialogMidiImportAndExport.listTrack.Items.Count; i++) {
-                if (!mDialogMidiImportAndExport.listTrack.Items[i].Checked) {
+            for (int i = 0; i < mDialogMidiImportAndExport.listTrack.ItemCount; i++) {
+                if (!mDialogMidiImportAndExport.listTrack.GetItem(i).Checked) {
                     continue;
                 }
                 if (work.Track.Count + 1 > ApplicationGlobal.MAX_NUM_TRACK) {
                     break;
                 }
-                VsqTrack work_track = new VsqTrack(mDialogMidiImportAndExport.listTrack.Items[i].SubItems[1].Text, "Miku");
+                VsqTrack work_track = new VsqTrack(mDialogMidiImportAndExport.listTrack.GetItem(i).GetSubItem(1).Text, "Miku");
 
                 // デフォルトの音声合成システムに切り替え
                 RendererKind kind = ApplicationGlobal.appConfig.DefaultSynthesizer;
@@ -11425,27 +11425,27 @@ namespace cadencii
                 return;
             }
             if (mDialogMidiImportAndExport == null) {
-                mDialogMidiImportAndExport = new FormMidiImExport();
+                mDialogMidiImportAndExport = ApplicationUIHost.Create<FormMidiImExport>();
             }
-            mDialogMidiImportAndExport.listTrack.Items.Clear();
+            mDialogMidiImportAndExport.listTrack.ClearItems();
             for (int track = 1; track < vsq.Track.Count; track++) {
                 mDialogMidiImportAndExport.listTrack.AddRow(new string[] {
                     track + "",
                     vsq.Track[ track ].getName(),
                     vsq.Track[ track ].getEventCount() + "" }, true);
             }
-            mDialogMidiImportAndExport.setMode(FormMidiImExport.FormMidiMode.IMPORT_VSQ);
+            mDialogMidiImportAndExport.Mode = (FormMidiMode.IMPORT_VSQ);
             mDialogMidiImportAndExport.setTempo(false);
             mDialogMidiImportAndExport.setTimesig(false);
             mDialogMidiImportAndExport.Location = getFormPreferedLocation(mDialogMidiImportAndExport);
-            var dr = DialogManager.showModalDialog(mDialogMidiImportAndExport, this);
+            var dr = DialogManager.showModalDialog((Form) mDialogMidiImportAndExport.Native, this);
 			if (dr != cadencii.java.awt.DialogResult.OK) {
                 return;
             }
 
             List<int> add_track = new List<int>();
-            for (int i = 0; i < mDialogMidiImportAndExport.listTrack.Items.Count; i++) {
-                if (mDialogMidiImportAndExport.listTrack.Items[i].Checked) {
+            for (int i = 0; i < mDialogMidiImportAndExport.listTrack.ItemCount; i++) {
+                if (mDialogMidiImportAndExport.listTrack.GetItem(i).Checked) {
                     add_track.Add(i + 1);
                 }
             }

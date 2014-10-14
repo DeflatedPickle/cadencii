@@ -21,11 +21,11 @@ using cadencii.windows.forms;
 namespace cadencii
 {
 
-    class FormImportLyric : System.Windows.Forms.Form
+    class FormImportLyricImpl : FormImpl, FormImportLyric
     {
         private int m_max_notes = 1;
 
-        public FormImportLyric(int max_notes)
+        public FormImportLyricImpl(int max_notes)
         {
             InitializeComponent();
             registerEventHandlers();
@@ -62,60 +62,68 @@ namespace cadencii
             this.m_max_notes = max_notes;
         }
 
-        public string[] getLetters()
-        {
-            List<char> _SMALL = new List<char>(new char[] { 'ぁ', 'ぃ', 'ぅ', 'ぇ', 'ぉ',
-                                                             'ゃ', 'ゅ', 'ょ',
-                                                             'ァ', 'ィ', 'ゥ', 'ェ', 'ォ',
-                                                             'ャ', 'ュ', 'ョ' });
-            string tmp = "";
-            for (int i = 0; i < m_max_notes; i++) {
-                if (i >= txtLyrics.Lines.Length) {
-                    break;
-                }
-                try {
-                    int start = txtLyrics.GetFirstCharIndexFromLine(i);
-                    int end = txtLyrics.GetFirstCharIndexFromLine(i) + txtLyrics.Lines[i].Length;
-                    tmp += txtLyrics.Text.Substring(start, end - start) + " ";
-                } catch (Exception ex) {
-                    Logger.write(typeof(FormImportLyric) + ".getLetters; ex=" + ex + "\n");
-                }
-            }
-            string[] spl = PortUtil.splitString(tmp, new char[] { '\n', '\t', ' ', '　', '\r' }, true);
-            List<string> ret = new List<string>();
-            for (int j = 0; j < spl.Length; j++) {
-                string s = spl[j];
-                char[] list = s.ToCharArray();
-                string t = "";
-                int i = -1;
-                while (i + 1 < list.Length) {
-                    i++;
-                    if (0x41 <= list[i] && list[i] <= 0x176) {
-                        t += list[i] + "";
-                    } else {
-                        if (PortUtil.getStringLength(t) > 0) {
-                            ret.Add(t);
-                            t = "";
-                        }
-                        if (i + 1 < list.Length) {
-                            if (_SMALL.Contains(list[i + 1])) {
-                                // 次の文字が拗音の場合
-                                ret.Add(list[i] + "" + list[i + 1] + "");
-                                i++;
-                            } else {
-                                ret.Add(list[i] + "");
-                            }
-                        } else {
-                            ret.Add(list[i] + "");
-                        }
-                    }
-                }
-                if (PortUtil.getStringLength(t) > 0) {
-                    ret.Add(t);
-                }
-            }
-            return ret.ToArray();
-        }
+        public string[] Letters {
+			get {
+				List<char> _SMALL = new List<char> (new char[] { 'ぁ', 'ぃ', 'ぅ', 'ぇ', 'ぉ',
+					'ゃ', 'ゅ', 'ょ',
+					'ァ', 'ィ', 'ゥ', 'ェ', 'ォ',
+					'ャ', 'ュ', 'ョ'
+				});
+				string tmp = "";
+				for (int i = 0; i < m_max_notes; i++) {
+					if (i >= txtLyrics.Lines.Length) {
+						break;
+					}
+					try {
+						int start = txtLyrics.GetFirstCharIndexFromLine (i);
+						int end = txtLyrics.GetFirstCharIndexFromLine (i) + txtLyrics.Lines [i].Length;
+						tmp += txtLyrics.Text.Substring (start, end - start) + " ";
+					} catch (Exception ex) {
+						Logger.write (typeof(FormImportLyric) + ".getLetters; ex=" + ex + "\n");
+					}
+				}
+				string[] spl = PortUtil.splitString (tmp, new char[] {
+					'\n',
+					'\t',
+					' ',
+					'　',
+					'\r'
+				}, true);
+				List<string> ret = new List<string> ();
+				for (int j = 0; j < spl.Length; j++) {
+					string s = spl [j];
+					char[] list = s.ToCharArray ();
+					string t = "";
+					int i = -1;
+					while (i + 1 < list.Length) {
+						i++;
+						if (0x41 <= list [i] && list [i] <= 0x176) {
+							t += list [i] + "";
+						} else {
+							if (PortUtil.getStringLength (t) > 0) {
+								ret.Add (t);
+								t = "";
+							}
+							if (i + 1 < list.Length) {
+								if (_SMALL.Contains (list [i + 1])) {
+									// 次の文字が拗音の場合
+									ret.Add (list [i] + "" + list [i + 1] + "");
+									i++;
+								} else {
+									ret.Add (list [i] + "");
+								}
+							} else {
+								ret.Add (list [i] + "");
+							}
+						}
+					}
+					if (PortUtil.getStringLength (t) > 0) {
+						ret.Add (t);
+					}
+				}
+				return ret.ToArray ();
+			}
+		}
         #endregion
 
         #region helper methods

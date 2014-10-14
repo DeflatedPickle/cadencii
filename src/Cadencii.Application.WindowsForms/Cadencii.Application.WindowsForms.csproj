@@ -120,12 +120,6 @@
     <Compile Include="forms\FormGenerateKeySound.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\FormImportLyric.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\FormMidiImExport.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="forms\FormRandomize.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -332,6 +326,16 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ui\forms\FormNoteExpressionConfigImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\FormImportLyricImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\winforms\ListViewImpl.cs" />
+    <Compile Include="ui\winforms\ListViewGroupImpl.cs" />
+    <Compile Include="ui\winforms\ListViewColumnImpl.cs" />
+    <Compile Include="ui\winforms\ListViewItemImpl.cs" />
+    <Compile Include="ui\forms\FormMidiImExportImpl.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

@@ -207,6 +207,9 @@
     <Compile Include="forms\FormInsertBar.cs" />
     <Compile Include="forms\FormRealtimeConfig.cs" />
     <Compile Include="forms\FormNoteExpressionConfig.cs" />
+    <Compile Include="forms\FormImportLyric.cs" />
+    <Compile Include="forms\FormMidiImExport.cs" />
+    <Compile Include="guiextended\UiListView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
