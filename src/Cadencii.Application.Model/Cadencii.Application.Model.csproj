@@ -196,6 +196,9 @@
     <Compile Include="controls\BSplitContainer.cs" />
     <Compile Include="controls\PropertyPanelContainer.cs" />
     <Compile Include="guiextended\UiPanel.cs" />
+    <Compile Include="controls\Rebar.cs" />
+    <Compile Include="controls\RebarBandCollection.cs" />
+    <Compile Include="controls\RebarBand.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

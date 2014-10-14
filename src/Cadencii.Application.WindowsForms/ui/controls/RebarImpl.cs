@@ -27,8 +27,13 @@ namespace cadencii.windows.forms
     /// <summary>
     /// Summary description for UserControl1.
     /// </summary>
-    public class Rebar : System.Windows.Forms.Control
+    public class RebarImpl : UserControlImpl, Rebar
     {
+		cadencii.java.awt.Image Rebar.BackgroundImage {
+			get { return BackgroundImage.ToAwt (); }
+			set { BackgroundImage = (Bitmap) value.ToWF (); }
+		}
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -61,7 +66,7 @@ namespace cadencii.windows.forms
         /// </summary>
         public static int CHEVRON_WIDTH = 0;
 
-        public Rebar()
+        public RebarImpl()
         {
             SetStyle(ControlStyles.StandardClick, true);
             SetStyle(ControlStyles.StandardDoubleClick, true);
@@ -74,7 +79,7 @@ namespace cadencii.windows.forms
 
             _embossHighlight = SystemColors.ControlLightLight;
             _embossShadow = SystemColors.ControlDarkDark;
-            _bands = new RebarBandCollection(this);
+            _bands = ApplicationUIHost.Create<RebarBandCollection>(this);
             // This call is required by the Windows.Forms Form Designer.
             InitializeComponent();
 
@@ -145,7 +150,7 @@ namespace cadencii.windows.forms
             {
                 base.BackgroundImage = value;
                 foreach (RebarBand band in _bands) {
-                    if (band.UseCoolbarPicture & band.FixedBackground) band.BackgroundImage = (Bitmap)base.BackgroundImage;
+                    if (band.UseCoolbarPicture & band.FixedBackground) band.BackgroundImage = new cadencii.java.awt.Image () { NativeImage = (Bitmap)base.BackgroundImage };
 
                 }
             }
@@ -180,7 +185,7 @@ namespace cadencii.windows.forms
         public RebarBand BandHitTest(Point pt)
         {
             foreach (RebarBand band in _bands) {
-                if (band.Bounds.Contains(pt))
+                if (band.Bounds.Contains(pt.ToAwt ()))
                     return band;
             }
             return null;
@@ -330,7 +335,7 @@ namespace cadencii.windows.forms
             }
         }
 
-        internal IntPtr RebarHwnd
+        /*internal*/public IntPtr RebarHwnd
         {
             get
             {
@@ -367,7 +372,7 @@ namespace cadencii.windows.forms
                 if (value != _showBackgroundImage) {
                     _showBackgroundImage = value;
                     foreach (RebarBand band in _bands) {
-                        if (band.UseCoolbarPicture & band.FixedBackground) band.BackgroundImage = (_showBackgroundImage) ? BackgroundImage : null;
+                        if (band.UseCoolbarPicture & band.FixedBackground) band.BackgroundImage = (_showBackgroundImage) ? BackgroundImage.ToAwt () : null;
                     }
                 }
             }
@@ -620,7 +625,7 @@ namespace cadencii.windows.forms
             base.OnMouseDown(e);
             RebarBand band = BandHitTest(new Point(e.X, e.Y));
             if (band != null) {
-                band.OnMouseDown(e);
+                band.OnMouseDown(e.ToAwt ());
             }
         }
 
@@ -644,7 +649,7 @@ namespace cadencii.windows.forms
             base.OnMouseMove(e);
             RebarBand band = BandHitTest(new Point(e.X, e.Y));
             if (band != null) {
-                band.OnMouseMove(e);
+                band.OnMouseMove(e.ToAwt ());
             }
         }
 
@@ -653,7 +658,7 @@ namespace cadencii.windows.forms
             base.OnMouseUp(e);
             RebarBand band = BandHitTest(new Point(e.X, e.Y));
             if (band != null) {
-                band.OnMouseUp(e);
+                band.OnMouseUp(e.ToAwt ());
             }
         }
 
@@ -662,7 +667,7 @@ namespace cadencii.windows.forms
             base.OnMouseWheel(e);
             RebarBand band = BandHitTest(new Point(e.X, e.Y));
             if (band != null) {
-                band.OnMouseWheel(e);
+                band.OnMouseWheel(e.ToAwt ());
             }
         }
 
@@ -824,7 +829,7 @@ namespace cadencii.windows.forms
             int index = nrch.wID;
             if ((index >= 0) && (index < this._bands.Count) &&
                 (this._bands[index] != null)) {
-                Rectangle chevron_rc = new Rectangle(
+                var chevron_rc = new cadencii.java.awt.Rectangle(
                     nrch.rc.left, nrch.rc.top,
                     nrch.rc.right - nrch.rc.left, nrch.rc.bottom - nrch.rc.top);
                 int chevron_width = chevron_rc.Width;

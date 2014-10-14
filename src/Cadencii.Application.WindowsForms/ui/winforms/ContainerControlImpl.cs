@@ -19,6 +19,21 @@ namespace cadencii
 	public class ContainerControlImpl : System.Windows.Forms.ContainerControl, UiControl
 	{
 		// UiControl
+
+		event EventHandler UiControl.SizeChanged {
+			add { this.SizeChanged += value; }
+			remove { this.SizeChanged -= value; }
+		}
+
+		void UiControl.AddControl (UiControl child)
+		{
+			Controls.Add ((System.Windows.Forms.Control) child.Native);
+		}
+
+		void UiControl.ClearControls ()
+		{
+			Controls.Clear ();
+		}
 	
 		object UiControl.Native {
 			get { return this; }

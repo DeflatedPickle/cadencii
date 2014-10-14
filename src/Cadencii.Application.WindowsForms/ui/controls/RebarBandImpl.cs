@@ -31,9 +31,89 @@ namespace cadencii.windows.forms
         Never
     }
 
+	
     [ToolboxItem(false)]
-    public class RebarBand : Component, IDisposable
+    public class RebarBandImpl : Component, IDisposable, RebarBand
     {
+		#region RebarBand implementation
+
+		event EventHandler RebarBand.Resize {
+			add {
+				throw new NotImplementedException ();
+			}
+			remove {
+				throw new NotImplementedException ();
+			}
+		}
+		void RebarBand.CreateBand ()
+		{
+			throw new NotImplementedException ();
+		}
+		void RebarBand.DestroyBand ()
+		{
+			throw new NotImplementedException ();
+		}
+		void RebarBand.Show (UiControl control, cadencii.java.awt.Rectangle chevronRect)
+		{
+			throw new NotImplementedException ();
+		}
+		void RebarBand.OnResize (EventArgs e)
+		{
+			throw new NotImplementedException ();
+		}
+		void RebarBand.OnMouseDown (cadencii.java.awt.MouseEventArgs e)
+		{
+			throw new NotImplementedException ();
+		}
+		void RebarBand.OnMouseMove (cadencii.java.awt.MouseEventArgs e)
+		{
+			throw new NotImplementedException ();
+		}
+		void RebarBand.OnMouseUp (cadencii.java.awt.MouseEventArgs e)
+		{
+			throw new NotImplementedException ();
+		}
+		void RebarBand.OnMouseWheel (cadencii.java.awt.MouseEventArgs e)
+		{
+			throw new NotImplementedException ();
+		}
+		cadencii.java.awt.Point RebarBand.Location {
+			get { return Location.ToAwt (); }
+		}
+		UiControl RebarBand.Child {
+			get {
+				throw new NotImplementedException ();
+			}
+			set {
+				throw new NotImplementedException ();
+			}
+		}
+		cadencii.java.awt.Image RebarBand.BackgroundImage {
+			get {
+				throw new NotImplementedException ();
+			}
+			set {
+				throw new NotImplementedException ();
+			}
+		}
+		cadencii.java.awt.Rectangle RebarBand.Bounds {
+			get {
+				throw new NotImplementedException ();
+			}
+			set {
+				throw new NotImplementedException ();
+			}
+		}
+		RebarBandCollection RebarBand.Bands {
+			get {
+				throw new NotImplementedException ();
+			}
+			set {
+				throw new NotImplementedException ();
+			}
+		}
+		#endregion
+
         private RebarBandCollection _bands;
         private bool _allowVertical = true;
         private Color _backColor;
@@ -79,13 +159,13 @@ namespace cadencii.windows.forms
         public event EventHandler Resize; //Done
         public event EventHandler VisibleChanged; //Done
 
-        public RebarBand()
+        public RebarBandImpl()
         {
             _foreColor = SystemColors.ControlText;
             _backColor = SystemColors.Control;
         }
 
-        ~RebarBand()
+        ~RebarBandImpl()
         {
             Dispose(false);
         }
@@ -305,7 +385,7 @@ namespace cadencii.windows.forms
                     info.fMask = (uint)win32.RBBIM_SIZE;
 
                     win32.SendMessage(
-                        this._bands.Rebar.RebarHwnd,
+			this._bands.Rebar.RebarHwnd,
                         (int)win32.RB_GETBANDINFO,
                         this.BandIndex,
                         ref info);
@@ -325,7 +405,7 @@ namespace cadencii.windows.forms
                     info.cx = (uint)this._bandSize;
 
                     win32.SendMessage(
-                        this._bands.Rebar.RebarHwnd,
+			this._bands.Rebar.RebarHwnd,
                         (int)win32.RB_SETBANDINFOA,
                         this.BandIndex,
                         ref info);
@@ -421,9 +501,9 @@ namespace cadencii.windows.forms
             {
                 if (!Created) {
                     _bands = value;
-                    _id = _bands.NextID();
+					_id = ((RebarBandCollectionImpl) _bands).NextID();
                     if (_useCoolbarPicture)
-                        BackgroundImage = _bands.Rebar.BackgroundImage;
+                        ((RebarBand) this).BackgroundImage = _bands.Rebar.BackgroundImage;
                     CreateBand();
                 }
             }
@@ -482,13 +562,13 @@ namespace cadencii.windows.forms
                         _child.SizeChanged -= new EventHandler(OnChildSizeChanged);
                         _child.Move -= new EventHandler(OnChildMove);
                         _child.ParentChanged -= new EventHandler(OnChildParentChanged);
-                        _child.Parent = _bands.Rebar.Parent;
+						_child.Parent = ((RebarImpl) _bands.Rebar).Parent;
                     }
                     //Code to set Child
 
                     _child = value;
                     if (_bands != null) {
-                        _child.Parent = _bands.Rebar;
+                        _child.Parent = (Control) _bands.Rebar.Native;
                         _child.HandleCreated += new EventHandler(OnChildHandleCreated);
                         _child.SizeChanged += new EventHandler(OnChildSizeChanged);
                         _child.Move += new EventHandler(OnChildMove);
@@ -509,7 +589,7 @@ namespace cadencii.windows.forms
             {
                 if (Created) {
                     RECT rect = new RECT();
-                    win32.SendMessage(_bands.Rebar.RebarHwnd, (int)win32.RB_GETBANDBORDERS, BandIndex, ref rect);
+					win32.SendMessage(((RebarImpl) _bands.Rebar).RebarHwnd, (int)win32.RB_GETBANDBORDERS, BandIndex, ref rect);
                     return new Rectangle(rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top);
                 } else {
                     return new Rectangle(0, 0, 0, 0);
@@ -519,8 +599,8 @@ namespace cadencii.windows.forms
 
         internal void CreateBand()
         {
-            if (!Created && _bands != null && _bands.Rebar.NativeRebar != null) {
-                if (_child != null) _child.Parent = _bands.Rebar;
+			if (!Created && _bands != null && ((RebarImpl) _bands.Rebar).NativeRebar != null) {
+                if (_child != null) _child.Parent = (Control) _bands.Rebar.Native;
                 REBARBANDINFO rbBand = new REBARBANDINFO();
                 rbBand.cbSize = (uint)Marshal.SizeOf(rbBand);
                 rbBand.fMask = (uint)(win32.RBBIM_STYLE
@@ -563,7 +643,7 @@ namespace cadencii.windows.forms
                 rbBand.wID = (uint)_id;
                 rbBand.cxHeader = (uint)_header;
 
-                if (win32.SendMessage(_bands.Rebar.RebarHwnd, (int)win32.RB_INSERTBANDA, -1, ref rbBand) == 0) {
+				if (win32.SendMessage(((RebarImpl) _bands.Rebar).RebarHwnd, (int)win32.RB_INSERTBANDA, -1, ref rbBand) == 0) {
                     int LastErr = Marshal.GetHRForLastWin32Error();
                     try {
                         Marshal.ThrowExceptionForHR(LastErr);
@@ -592,7 +672,7 @@ namespace cadencii.windows.forms
         internal void DestroyBand()
         {
             if (Created) {
-                win32.SendMessage(_bands.Rebar.RebarHwnd, (int)win32.RB_DELETEBAND, (uint)BandIndex, 0U);
+				win32.SendMessage(((RebarImpl) _bands.Rebar).RebarHwnd, (int)win32.RB_DELETEBAND, (uint)BandIndex, 0U);
                 _bands = null;
                 _created = false;
             }

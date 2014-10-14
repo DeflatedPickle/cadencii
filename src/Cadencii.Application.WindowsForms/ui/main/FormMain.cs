@@ -9670,10 +9670,10 @@ namespace cadencii
             // ツールバーの位置を復帰させる
             // toolStipの位置を，前回終了時の位置に戻す
             int chevron_width = EditorManager.editorConfig.ChevronWidth;
-            this.bandFile = new RebarBand();
-            this.bandPosition = new RebarBand();
-            this.bandMeasure = new RebarBand();
-            this.bandTool = new RebarBand();
+            this.bandFile = ApplicationUIHost.Create<RebarBand>();
+            this.bandPosition = ApplicationUIHost.Create<RebarBand>();
+            this.bandMeasure = ApplicationUIHost.Create<RebarBand>();
+            this.bandTool = ApplicationUIHost.Create<RebarBand>();
 
             bool variant_height = false;
             this.bandFile.VariantHeight = variant_height;
@@ -9683,10 +9683,10 @@ namespace cadencii
 
             int MAX_BAND_HEIGHT = 26;// toolBarTool.Height;
 
-            this.rebar.Controls.Add(this.toolBarFile);
-            this.rebar.Controls.Add(this.toolBarTool);
-            this.rebar.Controls.Add(this.toolBarPosition);
-            this.rebar.Controls.Add(this.toolBarMeasure);
+            this.rebar.AddControl(this.toolBarFile);
+            this.rebar.AddControl(this.toolBarTool);
+            this.rebar.AddControl(this.toolBarPosition);
+            this.rebar.AddControl(this.toolBarMeasure);
             // bandFile
             this.bandFile.AllowVertical = false;
             this.bandFile.Child = this.toolBarFile;

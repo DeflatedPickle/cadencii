@@ -50,6 +50,11 @@ namespace cadencii.java.awt
             Height = r.Height;
         }
 
+        public bool Contains (Point p)
+		{
+			return x <= p.X && p.X < x + Width && y <= p.Y && p.Y < y + Height;
+		}
+
         public override string ToString()
         {
             return "{x=" + x + ", y=" + y + ", width=" + Width + ", height=" + Height + "}";

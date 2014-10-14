@@ -20,27 +20,27 @@ namespace cadencii
 	{
 		// UiPanel
 
-		event EventHandler UiPanel.SizeChanged {
-			add { this.SizeChanged += value; }
-			remove { this.SizeChanged -= value; }
-		}
-
-		void UiPanel.AddControl (UiControl child)
-		{
-			Controls.Add ((System.Windows.Forms.Control) child.Native);
-		}
-
-		void UiPanel.ClearControls ()
-		{
-			Controls.Clear ();
-		}
-
 		cadencii.java.awt.BorderStyle UiPanel.BorderStyle {
 			get { return (BorderStyle)BorderStyle; }
 			set { BorderStyle = (System.Windows.Forms.BorderStyle) value; }
 		}
 
 		// UiControl
+
+		event EventHandler UiControl.SizeChanged {
+			add { this.SizeChanged += value; }
+			remove { this.SizeChanged -= value; }
+		}
+
+		void UiControl.AddControl (UiControl child)
+		{
+			Controls.Add ((System.Windows.Forms.Control) child.Native);
+		}
+
+		void UiControl.ClearControls ()
+		{
+			Controls.Clear ();
+		}
 	
 		object UiControl.Native {
 			get { return this; }

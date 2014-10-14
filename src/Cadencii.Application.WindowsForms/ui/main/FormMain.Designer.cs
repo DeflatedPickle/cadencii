@@ -307,9 +307,9 @@ namespace cadencii
             this.panelOverview = ApplicationUIHost.Create<cadencii.PictOverview>();
             this.pictPianoRoll = new cadencii.PictPianoRollImpl();
             this.hScroll = new HScrollBarImpl();
-            this.rebar = new cadencii.windows.forms.Rebar();
+            this.rebar = ApplicationUIHost.Create<cadencii.Rebar>();
             this.imageListMenu = new System.Windows.Forms.ImageList(this.components);
-            this.toolBarFile = new System.Windows.Forms.ToolBar();
+            this.toolBarFile = new ToolBarImpl();
             this.stripBtnFileNew = new System.Windows.Forms.ToolBarButton();
             this.stripBtnFileOpen = new System.Windows.Forms.ToolBarButton();
             this.stripBtnFileSave = new System.Windows.Forms.ToolBarButton();
@@ -320,7 +320,7 @@ namespace cadencii
             this.toolBarButton2 = new System.Windows.Forms.ToolBarButton();
             this.stripBtnUndo = new System.Windows.Forms.ToolBarButton();
             this.stripBtnRedo = new System.Windows.Forms.ToolBarButton();
-            this.toolBarPosition = new System.Windows.Forms.ToolBar();
+            this.toolBarPosition = new ToolBarImpl();
             this.stripBtnMoveTop = new System.Windows.Forms.ToolBarButton();
             this.stripBtnRewind = new System.Windows.Forms.ToolBarButton();
             this.stripBtnForward = new System.Windows.Forms.ToolBarButton();
@@ -329,12 +329,12 @@ namespace cadencii
             this.toolBarButton4 = new System.Windows.Forms.ToolBarButton();
             this.stripBtnScroll = new System.Windows.Forms.ToolBarButton();
             this.stripBtnLoop = new System.Windows.Forms.ToolBarButton();
-            this.toolBarMeasure = new System.Windows.Forms.ToolBar();
+            this.toolBarMeasure = new ToolBarImpl();
             this.stripDDBtnQuantizeParent = new System.Windows.Forms.ToolBarButton();
             this.toolBarButton5 = new System.Windows.Forms.ToolBarButton();
             this.stripBtnStartMarker = new System.Windows.Forms.ToolBarButton();
             this.stripBtnEndMarker = new System.Windows.Forms.ToolBarButton();
-            this.toolBarTool = new System.Windows.Forms.ToolBar();
+            this.toolBarTool = new ToolBarImpl();
             this.stripBtnPointer = new System.Windows.Forms.ToolBarButton();
             this.stripBtnPencil = new System.Windows.Forms.ToolBarButton();
             this.stripBtnLine = new System.Windows.Forms.ToolBarButton();
@@ -2553,10 +2553,10 @@ namespace cadencii
             // 
             // rebar
             // 
-            this.rebar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.rebar.Location = new System.Drawing.Point(0, 26);
+            this.rebar.Dock = cadencii.java.awt.DockStyle.Top;
+            this.rebar.Location = new cadencii.java.awt.Point(0, 26);
             this.rebar.Name = "rebar";
-            this.rebar.Size = new System.Drawing.Size(955, 4);
+            this.rebar.Size = new cadencii.java.awt.Dimension(955, 4);
             this.rebar.TabIndex = 19;
             this.rebar.ToggleDoubleClick = true;
             // 
@@ -2902,7 +2902,7 @@ namespace cadencii
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(955, 689);
             this.Controls.Add(this.toolStripContainer1);
-            this.Controls.Add(this.rebar);
+            this.Controls.Add((Control) this.rebar.Native);
             this.Controls.Add(this.menuStripMain);
             this.Controls.Add((Control)this.splitContainer1.Native);
             this.DoubleBuffered = true;
@@ -3232,17 +3232,17 @@ namespace cadencii
         private RebarBand bandTool;
         public cadencii.apputil.BSplitContainer splitContainer2;
         private UiPanel panel1;
-        private System.Windows.Forms.ToolBar toolBarFile;
+        private ToolBarImpl toolBarFile;
         private System.Windows.Forms.ImageList imageListFile;
         private System.Windows.Forms.ToolBarButton toolBarButton1;
         private System.Windows.Forms.ToolBarButton toolBarButton2;
-        private System.Windows.Forms.ToolBar toolBarTool;
+        private ToolBarImpl toolBarTool;
         private System.Windows.Forms.ToolBarButton toolBarButton3;
         private System.Windows.Forms.ImageList imageListTool;
-        private System.Windows.Forms.ToolBar toolBarPosition;
+        private ToolBarImpl toolBarPosition;
         private System.Windows.Forms.ToolBarButton toolBarButton4;
         private System.Windows.Forms.ImageList imageListPosition;
-        private System.Windows.Forms.ToolBar toolBarMeasure;
+        private ToolBarImpl toolBarMeasure;
         private System.Windows.Forms.ToolBarButton stripDDBtnQuantizeParent;
         private System.Windows.Forms.MenuItem menuItem2;
         private System.Windows.Forms.ToolBarButton toolBarButton5;

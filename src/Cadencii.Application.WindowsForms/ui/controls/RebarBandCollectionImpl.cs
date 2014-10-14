@@ -24,12 +24,12 @@ namespace cadencii.windows.forms
     /// <summary>
     /// Summary description for BandCollection.
     /// </summary>
-    public class RebarBandCollection : CollectionBase, IEnumerable
+    public class RebarBandCollectionImpl : CollectionBase, IEnumerable, RebarBandCollection
     {
         private Rebar _rebar;
         private int _idCounter = 0;
 
-        public RebarBandCollection(Rebar rebar)
+        public RebarBandCollectionImpl(Rebar rebar)
         {
             _rebar = rebar;
         }

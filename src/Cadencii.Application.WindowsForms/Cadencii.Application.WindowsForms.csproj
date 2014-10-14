@@ -285,13 +285,6 @@
       <DependentUpon>ExceptionNotifyFormUiImpl.cs</DependentUpon>
     </Compile>
     <Compile Include="ui\forms\ExceptionNotifyFormUiImpl.cs" />
-    <Compile Include="controls\Rebar.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="controls\RebarBand.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="controls\RebarBandCollection.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="forms\InputBox.cs">
       <SubType>Form</SubType>
@@ -333,6 +326,14 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ui\winforms\ContainerControlImpl.cs" />
+    <Compile Include="ui\winforms\ToolBarImpl.cs" />
+    <Compile Include="ui\controls\RebarBandCollectionImpl.cs" />
+    <Compile Include="ui\controls\RebarBandImpl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ui\controls\RebarImpl.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />

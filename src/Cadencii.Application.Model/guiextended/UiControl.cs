@@ -44,6 +44,9 @@ namespace cadencii
 		Point PointToClient (Point point);
 		Point PointToScreen (Point point);
 
+		void AddControl (UiControl child);
+		void ClearControls ();
+
 		void SuspendLayout ();
 		void ResumeLayout ();
 		void ResumeLayout (bool performLayout);
@@ -66,9 +69,9 @@ namespace cadencii
 		event MouseEventHandler MouseMove;
 		event MouseEventHandler MouseWheel;
 		event EventHandler Enter;
+		event EventHandler SizeChanged;
 		event EventHandler Resize;
 		event EventHandler ImeModeChanged;
-
 	}
 	
 }

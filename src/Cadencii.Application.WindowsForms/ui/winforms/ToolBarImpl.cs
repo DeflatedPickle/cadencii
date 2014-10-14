@@ -16,7 +16,7 @@ using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 
 namespace cadencii
 {
-	public class VScrollBarImpl : System.Windows.Forms.VScrollBar, UiControl
+	public class ToolBarImpl : System.Windows.Forms.ToolBar, UiControl
 	{
 		// UiControl
 
