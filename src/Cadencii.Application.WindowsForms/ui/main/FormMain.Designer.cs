@@ -270,12 +270,12 @@ namespace cadencii
             this.cMenuTrackSelectorDeleteBezier = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem31 = new System.Windows.Forms.ToolStripSeparator();
             this.cMenuTrackSelectorSelectAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.trackBar = new System.Windows.Forms.TrackBar();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictKeyLengthSplitter = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.vScroll = new System.Windows.Forms.VScrollBar();
-            this.picturePositionIndicator = new System.Windows.Forms.PictureBox();
+            this.trackBar = new TrackBarImpl();
+            this.pictureBox3 = new PictureBoxImpl();
+            this.pictKeyLengthSplitter = new PictureBoxImpl();
+            this.pictureBox2 = new PictureBoxImpl();
+            this.vScroll = new VScrollBarImpl();
+            this.picturePositionIndicator = new PictureBoxImpl();
             this.toolStripBottom = new System.Windows.Forms.ToolStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.stripLblGameCtrlMode = new System.Windows.Forms.ToolStripStatusLabel();
@@ -284,9 +284,9 @@ namespace cadencii
             this.stripLblMidiIn = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.stripBtnStepSequencer = new System.Windows.Forms.ToolStripButton();
-            this.splitContainerProperty = new cadencii.apputil.BSplitContainer();
-            this.splitContainer2 = new cadencii.apputil.BSplitContainer();
-            this.splitContainer1 = new cadencii.apputil.BSplitContainer();
+            this.splitContainerProperty = ApplicationUIHost.Create<cadencii.apputil.BSplitContainer>();
+            this.splitContainer2 = ApplicationUIHost.Create<cadencii.apputil.BSplitContainer>();
+            this.splitContainer1 = ApplicationUIHost.Create<cadencii.apputil.BSplitContainer>();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.stripDDBtnQuantize = new System.Windows.Forms.ContextMenu();
             this.stripDDBtnQuantize04 = new System.Windows.Forms.MenuItem();
@@ -303,7 +303,7 @@ namespace cadencii
             this.imageListPosition = new System.Windows.Forms.ImageList(this.components);
             this.imageListMeasure = new System.Windows.Forms.ImageList(this.components);
             this.imageListTool = new System.Windows.Forms.ImageList(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1 = new PanelImpl();
             this.panelOverview = ApplicationUIHost.Create<cadencii.PictOverview>();
             this.pictPianoRoll = new cadencii.PictPianoRollImpl();
             this.hScroll = new HScrollBarImpl();
@@ -2271,40 +2271,36 @@ namespace cadencii
             // 
             // splitContainerProperty
             // 
-            this.splitContainerProperty.Controls.Add(this.splitContainer2);
-            this.splitContainerProperty.FixedPanel = System.Windows.Forms.FixedPanel.None;
-            this.splitContainerProperty.IsSplitterFixed = false;
-            this.splitContainerProperty.Location = new System.Drawing.Point(448, 14);
-            this.splitContainerProperty.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainerProperty.AddControl(this.splitContainer2);
+            this.splitContainerProperty.FixedPanel = cadencii.java.awt.FixedPanel.None;
+            this.splitContainerProperty.SplitterFixed = false;
+            this.splitContainerProperty.Location = new cadencii.java.awt.Point(448, 14);
+            this.splitContainerProperty.Margin = new cadencii.java.awt.Padding(0);
             this.splitContainerProperty.Name = "splitContainerProperty";
-            this.splitContainerProperty.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitContainerProperty.Orientation = cadencii.java.awt.Orientation.Horizontal;
             // 
             // 
             // 
-            this.splitContainerProperty.Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainerProperty.Panel1.BorderColor = cadencii.java.awt.Colors.Black.ToNative ();
-            this.splitContainerProperty.Panel1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerProperty.Panel1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.splitContainerProperty.Panel1.Anchor = cadencii.java.awt.AnchorStyles.Top | cadencii.java.awt.AnchorStyles.Bottom | cadencii.java.awt.AnchorStyles.Left | cadencii.java.awt.AnchorStyles.Right;
+            this.splitContainerProperty.Panel1.BorderColor = cadencii.java.awt.Colors.Black;
+            this.splitContainerProperty.Panel1.Location = new cadencii.java.awt.Point(0, 0);
+            this.splitContainerProperty.Panel1.Margin = new cadencii.java.awt.Padding(0, 0, 0, 4);
             this.splitContainerProperty.Panel1.Name = "m_panel1";
-            this.splitContainerProperty.Panel1.Size = new System.Drawing.Size(42, 348);
+            this.splitContainerProperty.Panel1.Size = new cadencii.java.awt.Dimension(42, 348);
             this.splitContainerProperty.Panel1.TabIndex = 0;
             this.splitContainerProperty.Panel1MinSize = 25;
             // 
             // 
             // 
-            this.splitContainerProperty.Panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainerProperty.Panel2.BorderColor = cadencii.java.awt.Colors.Black.ToNative ();
-            this.splitContainerProperty.Panel2.Location = new System.Drawing.Point(46, 0);
-            this.splitContainerProperty.Panel2.Margin = new System.Windows.Forms.Padding(0);
+			this.splitContainerProperty.Panel2.Anchor = cadencii.java.awt.AnchorStyles.Top | cadencii.java.awt.AnchorStyles.Bottom | cadencii.java.awt.AnchorStyles.Left | cadencii.java.awt.AnchorStyles.Right;
+            this.splitContainerProperty.Panel2.BorderColor = cadencii.java.awt.Colors.Black;
+            this.splitContainerProperty.Panel2.Location = new cadencii.java.awt.Point(46, 0);
+            this.splitContainerProperty.Panel2.Margin = new cadencii.java.awt.Padding(0);
             this.splitContainerProperty.Panel2.Name = "m_panel2";
-            this.splitContainerProperty.Panel2.Size = new System.Drawing.Size(66, 348);
+            this.splitContainerProperty.Panel2.Size = new cadencii.java.awt.Dimension(66, 348);
             this.splitContainerProperty.Panel2.TabIndex = 1;
             this.splitContainerProperty.Panel2MinSize = 25;
-            this.splitContainerProperty.Size = new System.Drawing.Size(112, 348);
+            this.splitContainerProperty.Size = new cadencii.java.awt.Dimension(112, 348);
             this.splitContainerProperty.SplitterDistance = 42;
             this.splitContainerProperty.SplitterWidth = 4;
             this.splitContainerProperty.TabIndex = 20;
@@ -2313,38 +2309,35 @@ namespace cadencii
             // 
             // splitContainer2
             // 
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer2.IsSplitterFixed = false;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 345);
-            this.splitContainer2.Margin = new System.Windows.Forms.Padding(0);
+            this.splitContainer2.FixedPanel = cadencii.java.awt.FixedPanel.Panel2;
+            this.splitContainer2.SplitterFixed = false;
+            this.splitContainer2.Location = new cadencii.java.awt.Point(0, 345);
+            this.splitContainer2.Margin = new cadencii.java.awt.Padding(0);
             this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.splitContainer2.Orientation = cadencii.java.awt.Orientation.Vertical;
             // 
             // 
             // 
-            this.splitContainer2.Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer2.Panel1.BorderColor = cadencii.java.awt.Colors.Black.ToNative ();
-            this.splitContainer2.Panel1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Panel1.Margin = new System.Windows.Forms.Padding(0);
+			this.splitContainer2.Panel2.Anchor = cadencii.java.awt.AnchorStyles.Top | cadencii.java.awt.AnchorStyles.Bottom | cadencii.java.awt.AnchorStyles.Left | cadencii.java.awt.AnchorStyles.Right;
+            this.splitContainer2.Panel1.BorderColor = cadencii.java.awt.Colors.Black;
+            this.splitContainer2.Panel1.Location = new cadencii.java.awt.Point(0, 0);
+            this.splitContainer2.Panel1.Margin = new cadencii.java.awt.Padding(0);
             this.splitContainer2.Panel1.Name = "m_panel1";
-            this.splitContainer2.Panel1.Size = new System.Drawing.Size(115, 25);
+            this.splitContainer2.Panel1.Size = new cadencii.java.awt.Dimension(115, 25);
             this.splitContainer2.Panel1.TabIndex = 0;
             this.splitContainer2.Panel1MinSize = 25;
             // 
             // 
             // 
-            this.splitContainer2.Panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer2.Panel2.BorderColor = cadencii.java.awt.Colors.Black.ToNative ();
-            this.splitContainer2.Panel2.Location = new System.Drawing.Point(0, 29);
-            this.splitContainer2.Panel2.Margin = new System.Windows.Forms.Padding(0);
+			this.splitContainer2.Panel2.Anchor = cadencii.java.awt.AnchorStyles.Bottom | cadencii.java.awt.AnchorStyles.Left | cadencii.java.awt.AnchorStyles.Right;
+            this.splitContainer2.Panel2.BorderColor = cadencii.java.awt.Colors.Black;
+            this.splitContainer2.Panel2.Location = new cadencii.java.awt.Point(0, 29);
+            this.splitContainer2.Panel2.Margin = new cadencii.java.awt.Padding(0);
             this.splitContainer2.Panel2.Name = "m_panel2";
-            this.splitContainer2.Panel2.Size = new System.Drawing.Size(115, 105);
+            this.splitContainer2.Panel2.Size = new cadencii.java.awt.Dimension(115, 105);
             this.splitContainer2.Panel2.TabIndex = 1;
             this.splitContainer2.Panel2MinSize = 25;
-            this.splitContainer2.Size = new System.Drawing.Size(115, 134);
+            this.splitContainer2.Size = new cadencii.java.awt.Dimension(115, 134);
             this.splitContainer2.SplitterDistance = 25;
             this.splitContainer2.SplitterWidth = 4;
             this.splitContainer2.TabIndex = 23;
@@ -2353,39 +2346,36 @@ namespace cadencii
             // 
             // splitContainer1
             // 
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer1.IsSplitterFixed = false;
-            this.splitContainer1.Location = new System.Drawing.Point(2, 2);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.splitContainer1.MinimumSize = new System.Drawing.Size(0, 54);
+            this.splitContainer1.FixedPanel = cadencii.java.awt.FixedPanel.Panel2;
+            this.splitContainer1.SplitterFixed = false;
+            this.splitContainer1.Location = new cadencii.java.awt.Point(2, 2);
+            this.splitContainer1.Margin = new cadencii.java.awt.Padding(0);
+			this.splitContainer1.MinimumSize = new cadencii.java.awt.Dimension(0, 54);
             this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.splitContainer1.Orientation = cadencii.java.awt.Orientation.Vertical;
             // 
             // 
             // 
-            this.splitContainer1.Panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Panel1.BorderColor = cadencii.java.awt.Colors.Black.ToNative ();
-            this.splitContainer1.Panel1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Panel1.Margin = new System.Windows.Forms.Padding(0);
+			this.splitContainer1.Panel1.Anchor = cadencii.java.awt.AnchorStyles.Top | cadencii.java.awt.AnchorStyles.Bottom | cadencii.java.awt.AnchorStyles.Left | cadencii.java.awt.AnchorStyles.Right;
+            this.splitContainer1.Panel1.BorderColor = cadencii.java.awt.Colors.Black;
+            this.splitContainer1.Panel1.Location = new cadencii.java.awt.Point(0, 0);
+            this.splitContainer1.Panel1.Margin = new cadencii.java.awt.Padding(0);
             this.splitContainer1.Panel1.Name = "m_panel1";
-            this.splitContainer1.Panel1.Size = new System.Drawing.Size(953, 50);
+            this.splitContainer1.Panel1.Size = new cadencii.java.awt.Dimension(953, 50);
             this.splitContainer1.Panel1.TabIndex = 0;
             this.splitContainer1.Panel1MinSize = 25;
             // 
             // 
             // 
-            this.splitContainer1.Panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Panel2.BorderColor = cadencii.java.awt.Colors.Black.ToNative ();
-            this.splitContainer1.Panel2.Location = new System.Drawing.Point(0, 54);
-            this.splitContainer1.Panel2.Margin = new System.Windows.Forms.Padding(0);
+			this.splitContainer1.Panel2.Anchor = cadencii.java.awt.AnchorStyles.Bottom | cadencii.java.awt.AnchorStyles.Left | cadencii.java.awt.AnchorStyles.Right;
+            this.splitContainer1.Panel2.BorderColor = cadencii.java.awt.Colors.Black;
+            this.splitContainer1.Panel2.Location = new cadencii.java.awt.Point(0, 54);
+            this.splitContainer1.Panel2.Margin = new cadencii.java.awt.Padding(0);
             this.splitContainer1.Panel2.Name = "m_panel2";
-            this.splitContainer1.Panel2.Size = new System.Drawing.Size(953, 25);
+            this.splitContainer1.Panel2.Size = new cadencii.java.awt.Dimension(953, 25);
             this.splitContainer1.Panel2.TabIndex = 1;
             this.splitContainer1.Panel2MinSize = 25;
-            this.splitContainer1.Size = new System.Drawing.Size(953, 54);
+            this.splitContainer1.Size = new cadencii.java.awt.Dimension(953, 54);
             this.splitContainer1.SplitterDistance = 50;
             this.splitContainer1.SplitterWidth = 4;
             this.splitContainer1.TabIndex = 4;
@@ -2515,18 +2505,18 @@ namespace cadencii
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.pictKeyLengthSplitter);
-            this.panel1.Controls.Add((Control)this.panelOverview.Native);
-            this.panel1.Controls.Add(this.picturePositionIndicator);
-            this.panel1.Controls.Add((Control)this.pictPianoRoll.Native);
-            this.panel1.Controls.Add(this.vScroll);
-            this.panel1.Controls.Add(this.pictureBox3);
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add((Control)this.hScroll.Native);
-            this.panel1.Controls.Add(this.trackBar);
-            this.panel1.Location = new System.Drawing.Point(15, 13);
+            this.panel1.AddControl(this.pictKeyLengthSplitter);
+			this.panel1.AddControl(this.panelOverview);
+			this.panel1.AddControl(this.picturePositionIndicator);
+			this.panel1.AddControl(this.pictPianoRoll);
+			this.panel1.AddControl(this.vScroll);
+			this.panel1.AddControl(this.pictureBox3);
+			this.panel1.AddControl(this.pictureBox2);
+			this.panel1.AddControl(this.hScroll);
+			this.panel1.AddControl(this.trackBar);
+            this.panel1.Location = new cadencii.java.awt.Point(15, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(421, 279);
+            this.panel1.Size = new cadencii.java.awt.Dimension(421, 279);
             this.panel1.TabIndex = 24;
             // 
             // panelOverview
@@ -2846,8 +2836,8 @@ namespace cadencii
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.panel1);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainerProperty);
+            this.toolStripContainer1.ContentPanel.Controls.Add((Control)this.panel1.Native);
+            this.toolStripContainer1.ContentPanel.Controls.Add((Control)this.splitContainerProperty.Native);
             this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(955, 612);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
@@ -2914,7 +2904,7 @@ namespace cadencii
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.rebar);
             this.Controls.Add(this.menuStripMain);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add((Control)this.splitContainer1.Native);
             this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStripMain;
@@ -2996,9 +2986,9 @@ namespace cadencii
         public ToolStripMenuItem menuEditUndo;
         public ToolStripMenuItem menuEditRedo;
         public System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
-        public PictureBox pictureBox2;
-        public PictureBox pictureBox3;
-        public PictureBox picturePositionIndicator;
+        public PictureBoxImpl pictureBox2;
+        public PictureBoxImpl pictureBox3;
+        public PictureBoxImpl picturePositionIndicator;
         public ContextMenuStrip cMenuPiano;
         public ToolStripMenuItem cMenuPianoPointer;
         public ToolStripMenuItem cMenuPianoPencil;
@@ -3115,7 +3105,7 @@ namespace cadencii
         public ToolStripMenuItem menuJobReloadVsti;
         public ToolStripMenuItem cMenuPianoCurve;
         public ToolStripMenuItem cMenuTrackSelectorCurve;
-        public TrackBar trackBar;
+        public TrackBarImpl trackBar;
         public System.Windows.Forms.ToolBarButton stripBtnPointer;
         public System.Windows.Forms.ToolBarButton stripBtnLine;
         public System.Windows.Forms.ToolBarButton stripBtnPencil;
@@ -3142,7 +3132,7 @@ namespace cadencii
         public System.Windows.Forms.ToolBarButton stripBtnStartMarker;
         public System.Windows.Forms.ToolBarButton stripBtnEndMarker;
         public UiHScrollBar hScroll { get; set; }
-        public VScrollBar vScroll;
+        public VScrollBarImpl vScroll;
         public ToolStripMenuItem menuLyricVibratoProperty;
         public ToolStripMenuItem cMenuPianoVibratoProperty;
         public ToolStripMenuItem menuScriptUpdate;
@@ -3208,7 +3198,7 @@ namespace cadencii
         public ToolStripMenuItem cMenuTrackTabRendererStraight;
         public PictPianoRoll pictPianoRoll { get; set; }
         public TrackSelector trackSelector;
-        public PictureBox pictKeyLengthSplitter;
+        public PictureBoxImpl pictKeyLengthSplitter;
         private ToolStripMenuItem menuTrackRendererAquesTone;
         private ToolStripMenuItem cMenuTrackTabRendererAquesTone;
         private ToolStripMenuItem menuVisualPluginUi;
@@ -3241,7 +3231,7 @@ namespace cadencii
         private RebarBand bandMeasure;
         private RebarBand bandTool;
         public cadencii.apputil.BSplitContainer splitContainer2;
-        private System.Windows.Forms.Panel panel1;
+        private UiPanel panel1;
         private System.Windows.Forms.ToolBar toolBarFile;
         private System.Windows.Forms.ImageList imageListFile;
         private System.Windows.Forms.ToolBarButton toolBarButton1;

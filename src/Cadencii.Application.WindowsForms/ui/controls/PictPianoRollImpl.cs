@@ -487,7 +487,7 @@ namespace cadencii
                                 }
                                 int x = dobj.mRectangleInPixel.x + key_width - stdx;
                                 y = dobj.mRectangleInPixel.y - stdy;
-                                int lyric_width = dobj.mRectangleInPixel.width;
+                                int lyric_width = dobj.mRectangleInPixel.Width;
                                 if (x + lyric_width < 0) {
                                     continue;
                                 } else if (width < x) {
@@ -532,7 +532,7 @@ namespace cadencii
                             DrawObject dobj = target_list[j];
                             int x = dobj.mRectangleInPixel.x + key_width - stdx;
                             y = dobj.mRectangleInPixel.y - stdy;
-                            int lyric_width = dobj.mRectangleInPixel.width;
+                            int lyric_width = dobj.mRectangleInPixel.Width;
                             if (x + lyric_width < 0) {
                                 continue;
                             } else if (width < x) {
@@ -589,7 +589,7 @@ namespace cadencii
                                         int vibrato_end = x;
                                         if (dobj.mVibratoDelayInPixel <= lyric_width) {
                                             int vibrato_delay = dobj.mVibratoDelayInPixel;
-                                            int vibrato_width = dobj.mRectangleInPixel.width - vibrato_delay;
+                                            int vibrato_width = dobj.mRectangleInPixel.Width - vibrato_delay;
                                             vibrato_start = x + vibrato_delay;
                                             vibrato_end = x + vibrato_delay + vibrato_width;
                                             if (vibrato_start - x < 21) {
@@ -989,12 +989,12 @@ namespace cadencii
                         int delay_x = (int)((EditorManager.mAddingEvent.Clock + EditorManager.mAddingEvent.ID.getLength() - EditorManager.mAddingEvent.ID.Length + EditorManager.mAddingEvent.ID.VibratoDelay) * scalex + xoffset);
                         Rectangle pxArea = new Rectangle(delay_x,
                                                           (int)(y + track_height * 2.5),
-                                                          (int)(size.width * 1.2),
-                                                          (int)(size.height * 1.2));
+                                                          (int)(size.Width * 1.2),
+                                                          (int)(size.Height * 1.2));
                         g.setColor(COLOR_R192G192B192);
-                        g.fillRect(pxArea.x, pxArea.y, pxArea.width, pxArea.height);
+                        g.fillRect(pxArea.x, pxArea.y, pxArea.Width, pxArea.Height);
                         g.setColor(cadencii.java.awt.Colors.Black);
-                        g.drawRect(pxArea.x, pxArea.y, pxArea.width, pxArea.height);
+                        g.drawRect(pxArea.x, pxArea.y, pxArea.Width, pxArea.Height);
                         // StringFormat sf = new StringFormat();
                         //sf.Alignment = StringAlignment.Center;
                         //sf.LineAlignment = StringAlignment.Center;

@@ -131,15 +131,15 @@ namespace cadencii
         private void InitializeComponent()
         {
             this.groupPosition = new System.Windows.Forms.GroupBox();
-            this.numClock = new cadencii.NumericUpDownEx();
-            this.numBeat = new cadencii.NumericUpDownEx();
-            this.numBar = new cadencii.NumericUpDownEx();
+            this.numClock = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numBeat = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numBar = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
             this.lblClock = new System.Windows.Forms.Label();
             this.lblBeat = new System.Windows.Forms.Label();
             this.lblBar = new System.Windows.Forms.Label();
             this.groupTempo = new System.Windows.Forms.GroupBox();
             this.lblTempoRange = new System.Windows.Forms.Label();
-            this.numTempo = new cadencii.NumericUpDownEx();
+            this.numTempo = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupPosition.SuspendLayout();
@@ -152,9 +152,9 @@ namespace cadencii
             // 
             // groupPosition
             // 
-            this.groupPosition.Controls.Add(this.numClock);
-            this.groupPosition.Controls.Add(this.numBeat);
-            this.groupPosition.Controls.Add(this.numBar);
+			this.groupPosition.Controls.Add((System.Windows.Forms.Control)this.numClock.Native);
+			this.groupPosition.Controls.Add((System.Windows.Forms.Control)this.numBeat.Native);
+			this.groupPosition.Controls.Add((System.Windows.Forms.Control)this.numBar.Native);
             this.groupPosition.Controls.Add(this.lblClock);
             this.groupPosition.Controls.Add(this.lblBeat);
             this.groupPosition.Controls.Add(this.lblBar);
@@ -167,24 +167,24 @@ namespace cadencii
             // 
             // numClock
             // 
-            this.numClock.Location = new System.Drawing.Point(90, 77);
+            this.numClock.Location = new cadencii.java.awt.Point(90, 77);
             this.numClock.Name = "numClock";
-            this.numClock.Size = new System.Drawing.Size(45, 19);
+            this.numClock.Size = new cadencii.java.awt.Dimension(45, 19);
             this.numClock.TabIndex = 5;
             // 
             // numBeat
             // 
-            this.numBeat.Location = new System.Drawing.Point(90, 48);
+            this.numBeat.Location = new cadencii.java.awt.Point(90, 48);
             this.numBeat.Name = "numBeat";
-            this.numBeat.Size = new System.Drawing.Size(45, 19);
+            this.numBeat.Size = new cadencii.java.awt.Dimension(45, 19);
             this.numBeat.TabIndex = 4;
             // 
             // numBar
             // 
             this.numBar.Enabled = false;
-            this.numBar.Location = new System.Drawing.Point(90, 19);
+            this.numBar.Location = new cadencii.java.awt.Point(90, 19);
             this.numBar.Name = "numBar";
-            this.numBar.Size = new System.Drawing.Size(45, 19);
+            this.numBar.Size = new cadencii.java.awt.Dimension(45, 19);
             this.numBar.TabIndex = 3;
             // 
             // lblClock
@@ -217,7 +217,7 @@ namespace cadencii
             // groupTempo
             // 
             this.groupTempo.Controls.Add(this.lblTempoRange);
-            this.groupTempo.Controls.Add(this.numTempo);
+			this.groupTempo.Controls.Add((System.Windows.Forms.Control)this.numTempo.Native);
             this.groupTempo.Location = new System.Drawing.Point(173, 10);
             this.groupTempo.Name = "groupTempo";
             this.groupTempo.Size = new System.Drawing.Size(143, 113);
@@ -237,7 +237,7 @@ namespace cadencii
             // numTempo
             // 
             this.numTempo.DecimalPlaces = 2;
-            this.numTempo.Location = new System.Drawing.Point(13, 19);
+            this.numTempo.Location = new cadencii.java.awt.Point(13, 19);
             this.numTempo.Maximum = new decimal(new int[] {
             300,
             0,
@@ -249,7 +249,7 @@ namespace cadencii
             0,
             0});
             this.numTempo.Name = "numTempo";
-            this.numTempo.Size = new System.Drawing.Size(59, 19);
+            this.numTempo.Size = new cadencii.java.awt.Dimension(59, 19);
             this.numTempo.TabIndex = 5;
             this.numTempo.Value = new decimal(new int[] {
             120,

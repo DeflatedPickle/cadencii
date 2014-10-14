@@ -112,9 +112,9 @@ namespace cadencii
             this.lblWait = new System.Windows.Forms.Label();
             this.lblPreSendTime = new System.Windows.Forms.Label();
             this.lblDefaultSinger = new System.Windows.Forms.Label();
-            this.numBuffer = new cadencii.NumericUpDownEx();
-            this.numWait = new cadencii.NumericUpDownEx();
-            this.numPreSendTime = new cadencii.NumericUpDownEx();
+            this.numBuffer = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numWait = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numPreSendTime = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
             this.tabAppearance = new System.Windows.Forms.TabPage();
             this.groupFont = new System.Windows.Forms.GroupBox();
             this.labelMenu = new System.Windows.Forms.Label();
@@ -148,23 +148,23 @@ namespace cadencii
             this.lblTrackHeight = new System.Windows.Forms.Label();
             this.comboLanguage = new System.Windows.Forms.ComboBox();
             this.lblLanguage = new System.Windows.Forms.Label();
-            this.numTrackHeight = new cadencii.NumericUpDownEx();
+            this.numTrackHeight = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
             this.tabOperation = new System.Windows.Forms.TabPage();
             this.groupMisc = new System.Windows.Forms.GroupBox();
             this.comboMtcMidiInPortNumber = new System.Windows.Forms.ComboBox();
             this.labelMtcMidiInPort = new System.Windows.Forms.Label();
             this.lblMaximumFrameRate = new System.Windows.Forms.Label();
             this.comboMidiInPortNumber = new System.Windows.Forms.ComboBox();
-            this.numMaximumFrameRate = new cadencii.NumericUpDownEx();
+            this.numMaximumFrameRate = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
             this.lblMidiInPort = new System.Windows.Forms.Label();
             this.lblMouseHoverTime = new System.Windows.Forms.Label();
             this.lblMilliSecond = new System.Windows.Forms.Label();
-            this.numMouseHoverTime = new cadencii.NumericUpDownEx();
+            this.numMouseHoverTime = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
             this.groupPianoroll = new System.Windows.Forms.GroupBox();
             this.chkTranslateRoman = new System.Windows.Forms.CheckBox();
             this.chkUseSpaceKeyAsMiddleButtonModifier = new System.Windows.Forms.CheckBox();
             this.labelWheelOrder = new System.Windows.Forms.Label();
-            this.numericUpDownEx1 = new cadencii.NumericUpDownEx();
+            this.numericUpDownEx1 = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
             this.chkCursorFix = new System.Windows.Forms.CheckBox();
             this.chkCurveSelectingQuantized = new System.Windows.Forms.CheckBox();
             this.chkScrollHorizontal = new System.Windows.Forms.CheckBox();
@@ -195,7 +195,7 @@ namespace cadencii
             this.lblAutoBackupMinutes = new System.Windows.Forms.Label();
             this.lblAutoBackupInterval = new System.Windows.Forms.Label();
             this.chkAutoBackup = new System.Windows.Forms.CheckBox();
-            this.numAutoBackupInterval = new cadencii.NumericUpDownEx();
+            this.numAutoBackupInterval = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
             this.tabSingingSynth = new System.Windows.Forms.TabPage();
             this.groupDefaultSynthesizer = new System.Windows.Forms.GroupBox();
             this.comboDefaultSynthesizer = new System.Windows.Forms.ComboBox();
@@ -580,9 +580,9 @@ namespace cadencii
             this.tabAnother.Controls.Add(this.lblWait);
             this.tabAnother.Controls.Add(this.lblPreSendTime);
             this.tabAnother.Controls.Add(this.lblDefaultSinger);
-            this.tabAnother.Controls.Add(this.numBuffer);
-            this.tabAnother.Controls.Add(this.numWait);
-            this.tabAnother.Controls.Add(this.numPreSendTime);
+			this.tabAnother.Controls.Add((System.Windows.Forms.Control)this.numBuffer.Native);
+			this.tabAnother.Controls.Add((System.Windows.Forms.Control)this.numWait.Native);
+			this.tabAnother.Controls.Add((System.Windows.Forms.Control)this.numPreSendTime.Native);
             this.tabAnother.Location = new System.Drawing.Point(4, 40);
             this.tabAnother.Name = "tabAnother";
             this.tabAnother.Padding = new System.Windows.Forms.Padding(3);
@@ -676,7 +676,7 @@ namespace cadencii
             // 
             // numBuffer
             // 
-            this.numBuffer.Location = new System.Drawing.Point(216, 148);
+            this.numBuffer.Location = new Point(216, 148);
             this.numBuffer.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -688,7 +688,7 @@ namespace cadencii
             0,
             0});
             this.numBuffer.Name = "numBuffer";
-            this.numBuffer.Size = new System.Drawing.Size(68, 19);
+            this.numBuffer.Size = new Dimension(68, 19);
             this.numBuffer.TabIndex = 31;
             this.numBuffer.Value = new decimal(new int[] {
             1000,
@@ -699,7 +699,7 @@ namespace cadencii
             // numWait
             // 
             this.numWait.Enabled = false;
-            this.numWait.Location = new System.Drawing.Point(216, 87);
+            this.numWait.Location = new Point(216, 87);
             this.numWait.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -711,7 +711,7 @@ namespace cadencii
             0,
             0});
             this.numWait.Name = "numWait";
-            this.numWait.Size = new System.Drawing.Size(68, 19);
+            this.numWait.Size = new Dimension(68, 19);
             this.numWait.TabIndex = 22;
             this.numWait.Value = new decimal(new int[] {
             300,
@@ -721,7 +721,7 @@ namespace cadencii
             // 
             // numPreSendTime
             // 
-            this.numPreSendTime.Location = new System.Drawing.Point(216, 56);
+            this.numPreSendTime.Location = new Point(216, 56);
             this.numPreSendTime.Maximum = new decimal(new int[] {
             5000,
             0,
@@ -733,7 +733,7 @@ namespace cadencii
             0,
             0});
             this.numPreSendTime.Name = "numPreSendTime";
-            this.numPreSendTime.Size = new System.Drawing.Size(68, 19);
+            this.numPreSendTime.Size = new Dimension(68, 19);
             this.numPreSendTime.TabIndex = 21;
             this.numPreSendTime.Value = new decimal(new int[] {
             500,
@@ -748,7 +748,7 @@ namespace cadencii
             this.tabAppearance.Controls.Add(this.lblTrackHeight);
             this.tabAppearance.Controls.Add(this.comboLanguage);
             this.tabAppearance.Controls.Add(this.lblLanguage);
-            this.tabAppearance.Controls.Add(this.numTrackHeight);
+            this.tabAppearance.Controls.Add((System.Windows.Forms.Control)this.numTrackHeight.Native);
             this.tabAppearance.Location = new System.Drawing.Point(4, 40);
             this.tabAppearance.Name = "tabAppearance";
             this.tabAppearance.Padding = new System.Windows.Forms.Padding(3);
@@ -1094,7 +1094,7 @@ namespace cadencii
             // 
             // numTrackHeight
             // 
-            this.numTrackHeight.Location = new System.Drawing.Point(210, 139);
+            this.numTrackHeight.Location = new Point(210, 139);
             this.numTrackHeight.Maximum = new decimal(new int[] {
             50,
             0,
@@ -1106,7 +1106,7 @@ namespace cadencii
             0,
             0});
             this.numTrackHeight.Name = "numTrackHeight";
-            this.numTrackHeight.Size = new System.Drawing.Size(120, 19);
+            this.numTrackHeight.Size = new Dimension(120, 19);
             this.numTrackHeight.TabIndex = 45;
             this.numTrackHeight.Value = new decimal(new int[] {
             14,
@@ -1132,11 +1132,11 @@ namespace cadencii
             this.groupMisc.Controls.Add(this.labelMtcMidiInPort);
             this.groupMisc.Controls.Add(this.lblMaximumFrameRate);
             this.groupMisc.Controls.Add(this.comboMidiInPortNumber);
-            this.groupMisc.Controls.Add(this.numMaximumFrameRate);
+            this.groupMisc.Controls.Add((System.Windows.Forms.Control)this.numMaximumFrameRate.Native);
             this.groupMisc.Controls.Add(this.lblMidiInPort);
             this.groupMisc.Controls.Add(this.lblMouseHoverTime);
             this.groupMisc.Controls.Add(this.lblMilliSecond);
-            this.groupMisc.Controls.Add(this.numMouseHoverTime);
+            this.groupMisc.Controls.Add((System.Windows.Forms.Control)this.numMouseHoverTime.Native);
             this.groupMisc.Location = new System.Drawing.Point(23, 253);
             this.groupMisc.Name = "groupMisc";
             this.groupMisc.Size = new System.Drawing.Size(407, 143);
@@ -1184,7 +1184,7 @@ namespace cadencii
             // 
             // numMaximumFrameRate
             // 
-            this.numMaximumFrameRate.Location = new System.Drawing.Point(176, 21);
+            this.numMaximumFrameRate.Location = new Point(176, 21);
             this.numMaximumFrameRate.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1196,7 +1196,7 @@ namespace cadencii
             0,
             0});
             this.numMaximumFrameRate.Name = "numMaximumFrameRate";
-            this.numMaximumFrameRate.Size = new System.Drawing.Size(120, 19);
+            this.numMaximumFrameRate.Size = new Dimension(120, 19);
             this.numMaximumFrameRate.TabIndex = 84;
             this.numMaximumFrameRate.Value = new decimal(new int[] {
             30,
@@ -1233,14 +1233,14 @@ namespace cadencii
             // 
             // numMouseHoverTime
             // 
-            this.numMouseHoverTime.Location = new System.Drawing.Point(176, 48);
+            this.numMouseHoverTime.Location = new Point(176, 48);
             this.numMouseHoverTime.Maximum = new decimal(new int[] {
             2000,
             0,
             0,
             0});
             this.numMouseHoverTime.Name = "numMouseHoverTime";
-            this.numMouseHoverTime.Size = new System.Drawing.Size(120, 19);
+            this.numMouseHoverTime.Size = new Dimension(120, 19);
             this.numMouseHoverTime.TabIndex = 86;
             this.numMouseHoverTime.Value = new decimal(new int[] {
             500,
@@ -1253,7 +1253,7 @@ namespace cadencii
             this.groupPianoroll.Controls.Add(this.chkTranslateRoman);
             this.groupPianoroll.Controls.Add(this.chkUseSpaceKeyAsMiddleButtonModifier);
             this.groupPianoroll.Controls.Add(this.labelWheelOrder);
-            this.groupPianoroll.Controls.Add(this.numericUpDownEx1);
+            this.groupPianoroll.Controls.Add((System.Windows.Forms.Control)this.numericUpDownEx1.Native);
             this.groupPianoroll.Controls.Add(this.chkCursorFix);
             this.groupPianoroll.Controls.Add(this.chkCurveSelectingQuantized);
             this.groupPianoroll.Controls.Add(this.chkScrollHorizontal);
@@ -1297,7 +1297,7 @@ namespace cadencii
             // 
             // numericUpDownEx1
             // 
-            this.numericUpDownEx1.Location = new System.Drawing.Point(199, 21);
+            this.numericUpDownEx1.Location = new Point(199, 21);
             this.numericUpDownEx1.Maximum = new decimal(new int[] {
             50,
             0,
@@ -1309,7 +1309,7 @@ namespace cadencii
             0,
             0});
             this.numericUpDownEx1.Name = "numericUpDownEx1";
-            this.numericUpDownEx1.Size = new System.Drawing.Size(120, 19);
+            this.numericUpDownEx1.Size = new Dimension(120, 19);
             this.numericUpDownEx1.TabIndex = 80;
             this.numericUpDownEx1.Value = new decimal(new int[] {
             20,
@@ -1727,7 +1727,7 @@ namespace cadencii
             this.tabFile.Controls.Add(this.lblAutoBackupMinutes);
             this.tabFile.Controls.Add(this.lblAutoBackupInterval);
             this.tabFile.Controls.Add(this.chkAutoBackup);
-            this.tabFile.Controls.Add(this.numAutoBackupInterval);
+            this.tabFile.Controls.Add((System.Windows.Forms.Control)this.numAutoBackupInterval.Native);
             this.tabFile.Location = new System.Drawing.Point(4, 40);
             this.tabFile.Name = "tabFile";
             this.tabFile.Padding = new System.Windows.Forms.Padding(3);
@@ -1776,16 +1776,16 @@ namespace cadencii
             // 
             // numAutoBackupInterval
             // 
-            this.numAutoBackupInterval.Location = new System.Drawing.Point(256, 22);
+            this.numAutoBackupInterval.Location = new Point(256, 22);
             this.numAutoBackupInterval.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.numAutoBackupInterval.Name = "numAutoBackupInterval";
-            this.numAutoBackupInterval.Size = new System.Drawing.Size(69, 19);
+            this.numAutoBackupInterval.Size = new Dimension(69, 19);
             this.numAutoBackupInterval.TabIndex = 2;
-            this.numAutoBackupInterval.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numAutoBackupInterval.TextAlign = HorizontalAlignment.Center;
             this.numAutoBackupInterval.Value = new decimal(new int[] {
             10,
             0,

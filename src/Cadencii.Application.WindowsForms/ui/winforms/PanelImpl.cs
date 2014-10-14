@@ -16,8 +16,30 @@ using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 
 namespace cadencii
 {
-	public class ButtonImpl : System.Windows.Forms.Button, UiControl
+	public class PanelImpl : System.Windows.Forms.Panel, UiPanel
 	{
+		// UiPanel
+
+		event EventHandler UiPanel.SizeChanged {
+			add { this.SizeChanged += value; }
+			remove { this.SizeChanged -= value; }
+		}
+
+		void UiPanel.AddControl (UiControl child)
+		{
+			Controls.Add ((System.Windows.Forms.Control) child.Native);
+		}
+
+		void UiPanel.ClearControls ()
+		{
+			Controls.Clear ();
+		}
+
+		cadencii.java.awt.BorderStyle UiPanel.BorderStyle {
+			get { return (BorderStyle)BorderStyle; }
+			set { BorderStyle = (System.Windows.Forms.BorderStyle) value; }
+		}
+
 		// UiControl
 	
 		object UiControl.Native {

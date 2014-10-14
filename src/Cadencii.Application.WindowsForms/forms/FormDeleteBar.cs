@@ -124,8 +124,8 @@ namespace cadencii
             this.label3 = new System.Windows.Forms.Label();
             this.lblEnd = new System.Windows.Forms.Label();
             this.lblStart = new System.Windows.Forms.Label();
-            this.numEnd = new cadencii.NumericUpDownEx();
-            this.numStart = new cadencii.NumericUpDownEx();
+            this.numEnd = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+			this.numStart = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
             ((System.ComponentModel.ISupportInitialize)(this.numEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStart)).BeginInit();
             this.SuspendLayout();
@@ -187,7 +187,7 @@ namespace cadencii
             // 
             // numEnd
             // 
-            this.numEnd.Location = new System.Drawing.Point(67, 36);
+            this.numEnd.Location = new cadencii.java.awt.Point(67, 36);
             this.numEnd.Maximum = new decimal(new int[] {
             32,
             0,
@@ -199,7 +199,7 @@ namespace cadencii
             0,
             0});
             this.numEnd.Name = "numEnd";
-            this.numEnd.Size = new System.Drawing.Size(52, 19);
+            this.numEnd.Size = new cadencii.java.awt.Dimension(52, 19);
             this.numEnd.TabIndex = 9;
             this.numEnd.Value = new decimal(new int[] {
             1,
@@ -209,14 +209,14 @@ namespace cadencii
             // 
             // numStart
             // 
-            this.numStart.Location = new System.Drawing.Point(67, 11);
+            this.numStart.Location = new cadencii.java.awt.Point(67, 11);
             this.numStart.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.numStart.Name = "numStart";
-            this.numStart.Size = new System.Drawing.Size(52, 19);
+            this.numStart.Size = new cadencii.java.awt.Dimension(52, 19);
             this.numStart.TabIndex = 8;
             this.numStart.Value = new decimal(new int[] {
             1,
@@ -237,8 +237,8 @@ namespace cadencii
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblEnd);
             this.Controls.Add(this.lblStart);
-            this.Controls.Add(this.numEnd);
-            this.Controls.Add(this.numStart);
+            this.Controls.Add((System.Windows.Forms.Control)this.numEnd.Native);
+            this.Controls.Add((System.Windows.Forms.Control)this.numStart.Native);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

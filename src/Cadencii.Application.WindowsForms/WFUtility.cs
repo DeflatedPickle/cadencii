@@ -161,7 +161,7 @@ namespace cadencii.windows.forms
             bool д = true;
             for (; д; ) {
                 Dimension measured = cadencii.apputil.Util.measureString(edited, font);
-                if (measured.width <= width) {
+                if (measured.Width <= width) {
                     return edited;
                 }
                 delete_count -= 1;

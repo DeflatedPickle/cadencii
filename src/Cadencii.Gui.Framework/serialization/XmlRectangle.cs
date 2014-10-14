@@ -44,8 +44,8 @@ namespace cadencii.xml
         {
             x = rc.x;
             y = rc.y;
-            width = rc.width;
-            height = rc.height;
+            width = rc.Width;
+            height = rc.Height;
         }
 
         public Rectangle toRectangle()

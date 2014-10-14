@@ -85,7 +85,7 @@ namespace cadencii
 
 		Dimension UiControl.Size {
 			get { return new Dimension (Size.Width, Size.Height); }
-			set { this.Size = new System.Drawing.Size (value.width, value.height); }
+			set { this.Size = new System.Drawing.Size (value.Width, value.Height); }
 		}
 
 		Padding UiControl.Margin {

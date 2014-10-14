@@ -187,16 +187,10 @@
     <Compile Include="forms\VersionInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="controls\PropertyPanelContainer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="controls\TrackSelectorSingerDropdownMenuItem.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="controls\TrackSelectorSingerPopupMenu.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="controls\NumericUpDownEx.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="controls\PaletteToolMenuItem.cs">
@@ -298,17 +292,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="controls\RebarBandCollection.cs" />
-    <Compile Include="BSplitContainer.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="BSplitterPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Util.cs" />
     <Compile Include="forms\InputBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BitmapExImpl.cs" />
     <Compile Include="ui\controls\NumberTextBoxImpl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -328,6 +315,24 @@
     <Compile Include="ui\controls\PictOverviewImpl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ui\controls\BitmapExImpl.cs" />
+    <Compile Include="ui\winforms\PanelImpl.cs" />
+    <Compile Include="ui\controls\PropertyPanelContainerImpl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ui\controls\BSplitterPanelImpl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ui\controls\BSplitContainerImpl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ui\winforms\VScrollBarImpl.cs" />
+    <Compile Include="ui\winforms\TrackBarImpl.cs" />
+    <Compile Include="ui\winforms\NumericUpDownImpl.cs" />
+    <Compile Include="ui\controls\NumericUpDownExImpl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ui\winforms\ContainerControlImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />

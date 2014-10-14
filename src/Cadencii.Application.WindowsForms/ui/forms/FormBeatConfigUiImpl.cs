@@ -305,15 +305,15 @@ namespace cadencii
             this.groupPosition = new System.Windows.Forms.GroupBox();
             this.lblBar2 = new System.Windows.Forms.Label();
             this.lblBar1 = new System.Windows.Forms.Label();
-            this.numEnd = new cadencii.NumericUpDownEx();
-            this.numStart = new cadencii.NumericUpDownEx();
+            this.numEnd = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numStart = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
             this.chkEnd = new System.Windows.Forms.CheckBox();
             this.lblStart = new System.Windows.Forms.Label();
             this.groupBeat = new System.Windows.Forms.GroupBox();
             this.comboDenominator = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.numNumerator = new cadencii.NumericUpDownEx();
+            this.numNumerator = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupPosition.SuspendLayout();
@@ -329,8 +329,8 @@ namespace cadencii
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupPosition.Controls.Add(this.lblBar2);
             this.groupPosition.Controls.Add(this.lblBar1);
-            this.groupPosition.Controls.Add(this.numEnd);
-            this.groupPosition.Controls.Add(this.numStart);
+			this.groupPosition.Controls.Add((System.Windows.Forms.Control)this.numEnd.Native);
+			this.groupPosition.Controls.Add((System.Windows.Forms.Control)this.numStart.Native);
             this.groupPosition.Controls.Add(this.chkEnd);
             this.groupPosition.Controls.Add(this.lblStart);
             this.groupPosition.Location = new System.Drawing.Point(7, 7);
@@ -360,16 +360,16 @@ namespace cadencii
             // 
             // numEnd
             // 
-            this.numEnd.Location = new System.Drawing.Point(97, 44);
+            this.numEnd.Location = new cadencii.java.awt.Point(97, 44);
             this.numEnd.Name = "numEnd";
-            this.numEnd.Size = new System.Drawing.Size(73, 19);
+            this.numEnd.Size = new cadencii.java.awt.Dimension(73, 19);
             this.numEnd.TabIndex = 6;
             // 
             // numStart
             // 
-            this.numStart.Location = new System.Drawing.Point(97, 18);
+            this.numStart.Location = new cadencii.java.awt.Point(97, 18);
             this.numStart.Name = "numStart";
-            this.numStart.Size = new System.Drawing.Size(73, 19);
+            this.numStart.Size = new cadencii.java.awt.Dimension(73, 19);
             this.numStart.TabIndex = 7;
             // 
             // chkEnd
@@ -399,7 +399,7 @@ namespace cadencii
             this.groupBeat.Controls.Add(this.comboDenominator);
             this.groupBeat.Controls.Add(this.label2);
             this.groupBeat.Controls.Add(this.label1);
-            this.groupBeat.Controls.Add(this.numNumerator);
+			this.groupBeat.Controls.Add((System.Windows.Forms.Control)this.numNumerator.Native);
             this.groupBeat.Location = new System.Drawing.Point(7, 84);
             this.groupBeat.Name = "groupBeat";
             this.groupBeat.Size = new System.Drawing.Size(261, 55);
@@ -435,9 +435,9 @@ namespace cadencii
             // 
             // numNumerator
             // 
-            this.numNumerator.Location = new System.Drawing.Point(23, 21);
+            this.numNumerator.Location = new cadencii.java.awt.Point(23, 21);
             this.numNumerator.Name = "numNumerator";
-            this.numNumerator.Size = new System.Drawing.Size(73, 19);
+            this.numNumerator.Size = new cadencii.java.awt.Dimension(73, 19);
             this.numNumerator.TabIndex = 9;
             // 
             // btnOK

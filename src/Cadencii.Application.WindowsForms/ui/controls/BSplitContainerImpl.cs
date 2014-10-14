@@ -15,13 +15,59 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using cadencii;
+
+using AnchorStyles = cadencii.java.awt.AnchorStyles;
 
 namespace cadencii.apputil
 {
-
     [Serializable]
-    public partial class BSplitContainer : ContainerControl
+    public partial class BSplitContainerImpl : ContainerControlImpl, BSplitContainer
     {
+		cadencii.java.awt.Orientation BSplitContainer.Orientation {
+			get { return (cadencii.java.awt.Orientation)Orientation; }
+			set { Orientation = (System.Windows.Forms.Orientation)value; }
+		}
+
+		cadencii.java.awt.FixedPanel BSplitContainer.FixedPanel {
+			get { return (cadencii.java.awt.FixedPanel)FixedPanel; }
+			set { FixedPanel = (System.Windows.Forms.FixedPanel)value; }
+		}
+
+		void BSplitContainer.AddControl (UiControl child)
+		{
+			Controls.Add ((Control) child.Native);
+		}
+
+		cadencii.java.awt.Dimension BSplitContainer.MinimumSize {
+			get { return MinimumSize.ToAwt (); }
+			set { MinimumSize = value.ToWF (); }
+		}
+
+		bool BSplitContainer.Panel2Hidden {
+			set { setPanel2Hidden (value); }
+		}
+
+		int BSplitContainer.DividerLocation {
+			get { return getDividerLocation (); }
+			set { setDividerLocation (value); }
+		}
+
+		int BSplitContainer.DividerSize {
+			get { return getDividerSize (); }
+			set { setDividerSize (value); }
+		}
+
+		bool BSplitContainer.Panel1Hidden {
+			set { setPanel1Hidden (value); }
+		}
+
+		/*
+		cadencii.java.awt.BorderStyle BSplitContainer.BorderStyle {
+			get { return (cadencii.java.awt.BorderStyle)BorderStyle; }
+			set { BorderStyle = (System.Windows.Forms.BorderStyle)value; }
+		}*/
+
         private Orientation m_orientation = Orientation.Horizontal;
         private int m_splitter_distance = 50;
         private int m_panel1_min = 25;
@@ -44,7 +90,7 @@ namespace cadencii.apputil
         [Browsable(false)]
         public event ControlEventHandler ControlAdded;
 
-        public BSplitContainer()
+        public BSplitContainerImpl()
         {
             InitializeComponent();
             if (m_orientation == Orientation.Horizontal) {
@@ -124,7 +170,7 @@ namespace cadencii.apputil
             }
         }
 
-        public bool IsSplitterFixed
+        public bool SplitterFixed
         {
             get
             {
@@ -147,12 +193,12 @@ namespace cadencii.apputil
 
         public bool isSplitterFixed()
         {
-            return this.IsSplitterFixed;
+            return this.SplitterFixed;
         }
 
         public void setSplitterFixed(bool value)
         {
-            this.IsSplitterFixed = value;
+            this.SplitterFixed = value;
         }
 
         /// <summary> 
@@ -174,8 +220,8 @@ namespace cadencii.apputil
         private void InitializeComponent()
         {
             this.m_lbl_splitter = new System.Windows.Forms.PictureBox();
-            this.m_panel2 = new cadencii.apputil.BSplitterPanel();
-            this.m_panel1 = new cadencii.apputil.BSplitterPanel();
+            this.m_panel2 = ApplicationUIHost.Create<cadencii.apputil.BSplitterPanel>();
+            this.m_panel1 = ApplicationUIHost.Create<cadencii.apputil.BSplitterPanel>();
             ((System.ComponentModel.ISupportInitialize)(this.m_lbl_splitter)).BeginInit();
             this.SuspendLayout();
             // 
@@ -193,38 +239,38 @@ namespace cadencii.apputil
             // 
             // m_panel2
             // 
-            this.m_panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.m_panel2.BorderColor = cadencii.java.awt.Colors.Black.ToNative ();
-            this.m_panel2.Location = new System.Drawing.Point(0, 103);
-            this.m_panel2.Margin = new System.Windows.Forms.Padding(0);
+            this.m_panel2.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
+                        | AnchorStyles.Left)
+                        | AnchorStyles.Right)));
+            this.m_panel2.BorderColor = cadencii.java.awt.Colors.Black;
+            this.m_panel2.Location = new cadencii.java.awt.Point(0, 103);
+            this.m_panel2.Margin = new cadencii.java.awt.Padding(0);
             this.m_panel2.Name = "m_panel2";
-            this.m_panel2.Size = new System.Drawing.Size(441, 245);
+            this.m_panel2.Size = new cadencii.java.awt.Dimension(441, 245);
             this.m_panel2.TabIndex = 1;
             this.m_panel2.BorderStyleChanged += new System.EventHandler(this.m_panel2_BorderStyleChanged);
             this.m_panel2.SizeChanged += new System.EventHandler(this.m_panel2_SizeChanged);
             // 
             // m_panel1
             // 
-            this.m_panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-			this.m_panel1.BorderColor = cadencii.java.awt.Colors.Black.ToNative ();
-            this.m_panel1.Location = new System.Drawing.Point(0, 0);
-            this.m_panel1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 4);
+            this.m_panel1.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
+                        | AnchorStyles.Left)
+                        | AnchorStyles.Right)));
+			this.m_panel1.BorderColor = cadencii.java.awt.Colors.Black;
+            this.m_panel1.Location = new cadencii.java.awt.Point(0, 0);
+            this.m_panel1.Margin = new cadencii.java.awt.Padding(0, 0, 0, 4);
             this.m_panel1.Name = "m_panel1";
-            this.m_panel1.Size = new System.Drawing.Size(441, 99);
+            this.m_panel1.Size = new cadencii.java.awt.Dimension(441, 99);
             this.m_panel1.TabIndex = 0;
             this.m_panel1.BorderStyleChanged += new System.EventHandler(this.m_panel1_BorderStyleChanged);
             this.m_panel1.SizeChanged += new System.EventHandler(this.m_panel1_SizeChanged);
             // 
             // SplitContainerEx
             // 
-            this.Controls.Add(this.m_panel2);
-            this.Controls.Add(this.m_panel1);
+			this.Controls.Add((System.Windows.Forms.Control)this.m_panel2.Native);
+			this.Controls.Add((System.Windows.Forms.Control)this.m_panel1.Native);
             this.Controls.Add(this.m_lbl_splitter);
-            this.Size = new System.Drawing.Size(441, 348);
+            this.Size = new Size(441, 348);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.SplitContainerEx_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.m_lbl_splitter)).EndInit();
             this.ResumeLayout(false);
@@ -260,12 +306,12 @@ namespace cadencii.apputil
                     panel1_visible = false;
                 }
             }
-            if (m_panel1.BorderStyle == BorderStyle.FixedSingle && panel1_visible) {
+            if (m_panel1.BorderStyle == cadencii.java.awt.BorderStyle.FixedSingle && panel1_visible) {
                 if (m_panel1_border == null) {
-                    m_panel1_border = new Pen(m_panel1.BorderColor);
+                    m_panel1_border = new Pen(m_panel1.BorderColor.ToNative ());
                 } else {
                     if (!m_panel1.BorderColor.Equals(m_panel1_border.Color)) {
-                        m_panel1_border = new Pen(m_panel1.BorderColor);
+                        m_panel1_border = new Pen(m_panel1.BorderColor.ToNative ());
                     }
                 }
                 e.Graphics.DrawRectangle(m_panel1_border,
@@ -282,12 +328,12 @@ namespace cadencii.apputil
                     panel2_visible = false;
                 }
             }
-            if (m_panel2.BorderStyle == BorderStyle.FixedSingle && panel2_visible) {
+            if (m_panel2.BorderStyle == cadencii.java.awt.BorderStyle.FixedSingle && panel2_visible) {
                 if (m_panel2_border == null) {
-                    m_panel2_border = new Pen(m_panel2.BorderColor);
+                    m_panel2_border = new Pen(m_panel2.BorderColor.ToNative ());
                 } else {
                     if (!m_panel2.BorderColor.Equals(m_panel2_border.Color)) {
-                        m_panel2_border = new Pen(m_panel2.BorderColor);
+                        m_panel2_border = new Pen(m_panel2.BorderColor.ToNative ());
                     }
                 }
                 e.Graphics.DrawRectangle(m_panel2_border,
@@ -397,8 +443,8 @@ namespace cadencii.apputil
         private bool UpdateLayout(int splitter_distance, int splitter_width, int panel1_min, int panel2_min, bool check_only)
         {
             Point mouse = this.PointToClient(Control.MousePosition);
-            int pad1 = (m_panel1.BorderStyle == BorderStyle.FixedSingle) ? 1 : 0;
-            int pad2 = (m_panel2.BorderStyle == BorderStyle.FixedSingle) ? 1 : 0;
+            int pad1 = (m_panel1.BorderStyle == cadencii.java.awt.BorderStyle.FixedSingle) ? 1 : 0;
+            int pad2 = (m_panel2.BorderStyle == cadencii.java.awt.BorderStyle.FixedSingle) ? 1 : 0;
             if (m_orientation == Orientation.Horizontal) {
                 int p1 = splitter_distance;
                 if (p1 < 0) {
@@ -564,26 +610,26 @@ namespace cadencii.apputil
             }
         }
 
-        public void setTopComponent(Control comp)
+        public void setTopComponent(UiControl comp)
         {
             setLeftComponent(comp);
         }
 
-        public void setBottomComponent(Control comp)
+        public void setBottomComponent(UiControl comp)
         {
             setRightComponent(comp);
         }
 
-        public void setRightComponent(Control comp)
+        public void setRightComponent(UiControl comp)
         {
-            m_panel2.Controls.Clear();
-            m_panel2.Controls.Add(comp);
+            m_panel2.ClearControls();
+            m_panel2.AddControl(comp);
         }
 
-        public void setLeftComponent(Control comp)
+        public void setLeftComponent(UiControl comp)
         {
-            m_panel1.Controls.Clear();
-            m_panel1.Controls.Add(comp);
+            m_panel1.ClearControls();
+            m_panel1.AddControl(comp);
         }
 
         protected override void OnSizeChanged(EventArgs e)

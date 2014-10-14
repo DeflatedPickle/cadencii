@@ -603,7 +603,7 @@ namespace cadencii
 
             menuVisualOverview.Checked = EditorManager.editorConfig.OverviewEnabled;
 #if ENABLE_PROPERTY
-            mPropertyPanelContainer = new PropertyPanelContainer();
+            mPropertyPanelContainer = ApplicationUIHost.Create<PropertyPanelContainer> ();
 #endif
 
             registerEventHandlers();
@@ -637,7 +637,7 @@ namespace cadencii
 
             splitContainer1.Panel2MinSize = trackSelector.getPreferredMinSize();
             var minimum_size = getWindowMinimumSize();
-            this.MinimumSize = new System.Drawing.Size(minimum_size.width, minimum_size.height);
+            this.MinimumSize = new System.Drawing.Size(minimum_size.Width, minimum_size.Height);
             stripBtnScroll.Pushed = EditorManager.mAutoScroll;
 
             applySelectedTool();
@@ -648,34 +648,34 @@ namespace cadencii
             updatePaletteTool();
 #endif
 
-            splitContainer1.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            splitContainer1.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            splitContainer1.BackColor = System.Drawing.Color.FromArgb(212, 212, 212);
-            splitContainer2.Panel1.Controls.Add(panel1);
-            panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            splitContainer2.Panel2.Controls.Add((Control) panelWaveformZoom.Native);
+            splitContainer1.Panel1.BorderStyle = cadencii.java.awt.BorderStyle.None;
+            splitContainer1.Panel2.BorderStyle = cadencii.java.awt.BorderStyle.None;
+            splitContainer1.BackColor = new cadencii.java.awt.Color(212, 212, 212);
+            splitContainer2.Panel1.AddControl(panel1);
+            panel1.Dock = cadencii.java.awt.DockStyle.Fill;
+            splitContainer2.Panel2.AddControl(panelWaveformZoom);
             //splitContainer2.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            splitContainer2.Panel2.BorderColor = System.Drawing.Color.FromArgb(112, 112, 112);
-            splitContainer1.Panel1.Controls.Add(splitContainer2);
+            splitContainer2.Panel2.BorderColor = new cadencii.java.awt.Color(112, 112, 112);
+            splitContainer1.Panel1.AddControl(splitContainer2);
             panelWaveformZoom.Dock = cadencii.java.awt.DockStyle.Fill;
-            splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            splitContainer1.Panel2.Controls.Add((Control)trackSelector.Native);
+			splitContainer2.Dock = cadencii.java.awt.DockStyle.Fill;
+            splitContainer1.Panel2.AddControl(trackSelector);
             trackSelector.Dock = cadencii.java.awt.DockStyle.Fill;
-            splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+			splitContainer1.Dock = cadencii.java.awt.DockStyle.Fill;
             splitContainer1.Panel2MinSize = trackSelector.getPreferredMinSize();
-            splitContainerProperty.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            splitContainerProperty.FixedPanel = cadencii.java.awt.FixedPanel.Panel1;
 
 #if ENABLE_PROPERTY
-            splitContainerProperty.Panel1.Controls.Add(mPropertyPanelContainer);
-            mPropertyPanelContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            splitContainerProperty.Panel1.AddControl(mPropertyPanelContainer);
+            mPropertyPanelContainer.Dock = cadencii.java.awt.DockStyle.Fill;
 #else
             splitContainerProperty.setDividerLocation( 0 );
             splitContainerProperty.setEnabled( false );
             menuVisualProperty.setVisible( false );
 #endif
 
-            splitContainerProperty.Panel2.Controls.Add(splitContainer1);
-            splitContainerProperty.Dock = System.Windows.Forms.DockStyle.Fill;
+            splitContainerProperty.Panel2.AddControl(splitContainer1);
+            splitContainerProperty.Dock = cadencii.java.awt.DockStyle.Fill;
 
             // コントロールの位置・サイズを調節
             splitContainer2.Panel1.SuspendLayout();
@@ -742,7 +742,7 @@ namespace cadencii
             EditorManager.InputTextBox.Enabled = false;
             EditorManager.InputTextBox.KeyPress += mInputTextBox_KeyPress;
             EditorManager.InputTextBox.Parent = pictPianoRoll;
-            panel1.Controls.Add((Control) EditorManager.InputTextBox.Native);
+            panel1.AddControl(EditorManager.InputTextBox);
 
             int fps = 1000 / EditorManager.editorConfig.MaximumFrameRate;
             timer.Interval = (fps <= 0) ? 1 : fps;
@@ -908,16 +908,16 @@ namespace cadencii
                 this.WindowState = FormWindowState.Normal;
             }
             Rectangle bounds = EditorManager.editorConfig.WindowRect;
-            this.Bounds = new System.Drawing.Rectangle(bounds.x, bounds.y, bounds.width, bounds.height);
+            this.Bounds = new System.Drawing.Rectangle(bounds.x, bounds.y, bounds.Width, bounds.Height);
             // ウィンドウ位置・サイズの設定値が、使えるディスプレイのどれにも被っていない場合
 			Rectangle rc2 = cadencii.core2.PortUtil.getScreenBounds(this);
             if (bounds.x < rc2.x ||
-                 rc2.x + rc2.width < bounds.x + bounds.width ||
+                 rc2.x + rc2.Width < bounds.x + bounds.Width ||
                  bounds.y < rc2.y ||
-                 rc2.y + rc2.height < bounds.y + bounds.height) {
+                 rc2.y + rc2.Height < bounds.y + bounds.Height) {
                 bounds.x = rc2.x;
                 bounds.y = rc2.y;
-                this.Bounds = new System.Drawing.Rectangle(bounds.x, bounds.y, bounds.width, bounds.height);
+                this.Bounds = new System.Drawing.Rectangle(bounds.x, bounds.y, bounds.Width, bounds.Height);
                 EditorManager.editorConfig.WindowRect = bounds;
             }
             this.LocationChanged += new EventHandler(FormMain_LocationChanged);
@@ -927,7 +927,7 @@ namespace cadencii
 
             // プロパティウィンドウの位置を復元
 			Rectangle rc1 = cadencii.core2.PortUtil.getScreenBounds(this);
-            Rectangle rcScreen = new Rectangle(rc1.x, rc1.y, rc1.width, rc1.height);
+            Rectangle rcScreen = new Rectangle(rc1.x, rc1.y, rc1.Width, rc1.Height);
             var p = this.Location;
             XmlRectangle xr = EditorManager.editorConfig.PropertyWindowStatus.Bounds;
             Point p0 = new Point(xr.x, xr.y);
@@ -937,14 +937,14 @@ namespace cadencii
                                           EditorManager.editorConfig.PropertyWindowStatus.Bounds.getWidth(),
                                           EditorManager.editorConfig.PropertyWindowStatus.Bounds.getHeight());
 
-            if (a.Y > rcScreen.y + rcScreen.height) {
-                a = new Point(a.X, rcScreen.y + rcScreen.height - rc.height);
+            if (a.Y > rcScreen.y + rcScreen.Height) {
+                a = new Point(a.X, rcScreen.y + rcScreen.Height - rc.Height);
             }
             if (a.Y < rcScreen.y) {
                 a = new Point(a.X, rcScreen.y);
             }
-            if (a.X > rcScreen.x + rcScreen.width) {
-                a = new Point(rcScreen.x + rcScreen.width - rc.width, a.Y);
+            if (a.X > rcScreen.x + rcScreen.Width) {
+                a = new Point(rcScreen.x + rcScreen.Width - rc.Width, a.Y);
             }
             if (a.X < rcScreen.x) {
                 a = new Point(rcScreen.x, a.Y);
@@ -954,7 +954,7 @@ namespace cadencii
 #endif
 
 #if ENABLE_PROPERTY
-            EditorManager.propertyWindow.getUi().setBounds(a.X, a.Y, rc.width, rc.height);
+            EditorManager.propertyWindow.getUi().setBounds(a.X, a.Y, rc.Width, rc.Height);
             EditorManager.propertyPanel.CommandExecuteRequired += new CommandExecuteRequiredEventHandler(propertyPanel_CommandExecuteRequired);
 #endif
             updateBgmMenuState();
@@ -1700,7 +1700,7 @@ namespace cadencii
                     if (mouse_position.X < x) {
                         continue;
                     }
-                    if (x + dobj.mRectangleInPixel.width < mouse_position.X) {
+                    if (x + dobj.mRectangleInPixel.Width < mouse_position.X) {
                         continue;
                     }
                     if (width < x) {
@@ -1709,14 +1709,14 @@ namespace cadencii
                     if (mouse_position.Y < y) {
                         continue;
                     }
-                    if (y + dobj.mRectangleInPixel.height < mouse_position.Y) {
+                    if (y + dobj.mRectangleInPixel.Height < mouse_position.Y) {
                         continue;
                     }
                     int internal_id = dobj.mInternalID;
                     for (Iterator<VsqEvent> itr = vsq_track.getEventIterator(); itr.hasNext(); ) {
                         VsqEvent item = itr.next();
                         if (item.InternalID == internal_id) {
-                            rect.value = new Rectangle(x, y, dobj.mRectangleInPixel.width, dobj.mRectangleInPixel.height);
+                            rect.value = new Rectangle(x, y, dobj.mRectangleInPixel.Width, dobj.mRectangleInPixel.Height);
                             return item;
                         }
                     }
@@ -2270,18 +2270,18 @@ namespace cadencii
             sout.println("FormMain#updatePropertyPanelState; state=" + state);
 #endif
             if (state == PanelState.Docked) {
-                mPropertyPanelContainer.addComponent((Control) EditorManager.propertyPanel.Native);
+                mPropertyPanelContainer.addComponent(EditorManager.propertyPanel);
                 menuVisualProperty.Checked = true;
                 EditorManager.editorConfig.PropertyWindowStatus.State = PanelState.Docked;
-                splitContainerProperty.setPanel1Hidden(false);
-                splitContainerProperty.setSplitterFixed(false);
-                splitContainerProperty.setDividerSize(_SPL_SPLITTER_WIDTH);
+                splitContainerProperty.Panel1Hidden = (false);
+                splitContainerProperty.SplitterFixed = (false);
+                splitContainerProperty.DividerSize = (_SPL_SPLITTER_WIDTH);
                 splitContainerProperty.Panel1MinSize = _PROPERTY_DOCK_MIN_WIDTH;
                 int w = EditorManager.editorConfig.PropertyWindowStatus.DockWidth;
                 if (w < _PROPERTY_DOCK_MIN_WIDTH) {
                     w = _PROPERTY_DOCK_MIN_WIDTH;
                 }
-                splitContainerProperty.setDividerLocation(w);
+                splitContainerProperty.DividerLocation = (w);
 #if DEBUG
                 sout.println("FormMain#updatePropertyPanelState; state=Docked; w=" + w);
 #endif
@@ -2293,14 +2293,14 @@ namespace cadencii
                 }
                 menuVisualProperty.Checked = false;
                 if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
-                    EditorManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.getDividerLocation();
+                    EditorManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.DividerLocation;
                 }
                 EditorManager.editorConfig.PropertyWindowStatus.State = PanelState.Hidden;
                 splitContainerProperty.Panel1MinSize = 0;
-                splitContainerProperty.setPanel1Hidden(true);
-                splitContainerProperty.setDividerLocation(0);
-                splitContainerProperty.setDividerSize(0);
-                splitContainerProperty.setSplitterFixed(true);
+                splitContainerProperty.Panel1Hidden = (true);
+                splitContainerProperty.DividerLocation = (0);
+                splitContainerProperty.DividerSize = (0);
+                splitContainerProperty.SplitterFixed = (true);
             } else if (state == PanelState.Window) {
                 EditorManager.propertyWindow.getUi().addComponent(EditorManager.propertyPanel);
                 var parent = this.Location;
@@ -2308,8 +2308,8 @@ namespace cadencii
                 Point property = new Point(rc.x, rc.y);
                 int x = parent.X + property.X;
                 int y = parent.Y + property.Y;
-                int width = rc.width;
-                int height = rc.height;
+                int width = rc.Width;
+                int height = rc.Height;
                 EditorManager.propertyWindow.getUi().setBounds(x, y, width, height);
                 int workingAreaX = EditorManager.propertyWindow.getUi().getWorkingAreaX();
                 int workingAreaY = EditorManager.propertyWindow.getUi().getWorkingAreaY();
@@ -2327,14 +2327,14 @@ namespace cadencii
                 }
                 menuVisualProperty.Checked = true;
                 if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
-                    EditorManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.getDividerLocation();
+                    EditorManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.DividerLocation;
                 }
                 EditorManager.editorConfig.PropertyWindowStatus.State = PanelState.Window;
                 splitContainerProperty.Panel1MinSize = 0;
-                splitContainerProperty.setPanel1Hidden(true);
-                splitContainerProperty.setDividerLocation(0);
-                splitContainerProperty.setDividerSize(0);
-                splitContainerProperty.setSplitterFixed(true);
+                splitContainerProperty.Panel1Hidden = (true);
+                splitContainerProperty.DividerLocation = (0);
+                splitContainerProperty.DividerSize = (0);
+                splitContainerProperty.SplitterFixed = (true);
                 EditorManager.editorConfig.PropertyWindowStatus.IsMinimized = false;
             }
         }
@@ -2422,18 +2422,18 @@ namespace cadencii
 			Point mouse = cadencii.core2.PortUtil.getMousePosition();
 			Rectangle rcScreen = cadencii.core2.PortUtil.getWorkingArea(this);
             int top = mouse.Y - dialogHeight / 2;
-            if (top + dialogHeight > rcScreen.y + rcScreen.height) {
+            if (top + dialogHeight > rcScreen.y + rcScreen.Height) {
                 // ダイアログの下端が隠れる場合、位置をずらす
-                top = rcScreen.y + rcScreen.height - dialogHeight;
+                top = rcScreen.y + rcScreen.Height - dialogHeight;
             }
             if (top < rcScreen.y) {
                 // ダイアログの上端が隠れる場合、位置をずらす
                 top = rcScreen.y;
             }
             int left = mouse.X - dialogWidth / 2;
-            if (left + dialogWidth > rcScreen.x + rcScreen.width) {
+            if (left + dialogWidth > rcScreen.x + rcScreen.Width) {
                 // ダイアログの右端が隠れる場合，位置をずらす
-                left = rcScreen.x + rcScreen.width - dialogWidth;
+                left = rcScreen.x + rcScreen.Width - dialogWidth;
             }
             if (left < rcScreen.x) {
                 // ダイアログの左端が隠れる場合，位置をずらす
@@ -2876,29 +2876,29 @@ namespace cadencii
         public void updateSplitContainer2Size(bool save_to_config)
         {
 			if (ApplicationGlobal.appConfig.ViewWaveform) {
-                splitContainer2.setPanel2MinSize(_SPL2_PANEL2_MIN_HEIGHT);
-                splitContainer2.setSplitterFixed(false);
-                splitContainer2.setPanel2Hidden(false);
-                splitContainer2.setDividerSize(_SPL_SPLITTER_WIDTH);
+                splitContainer2.Panel2MinSize = (_SPL2_PANEL2_MIN_HEIGHT);
+                splitContainer2.SplitterFixed = (false);
+                splitContainer2.Panel2Hidden = (false);
+                splitContainer2.DividerSize = (_SPL_SPLITTER_WIDTH);
                 int lastloc = EditorManager.editorConfig.SplitContainer2LastDividerLocation;
-                if (lastloc <= 0 || lastloc > splitContainer2.getHeight()) {
-                    int draft = splitContainer2.getHeight() - 100;
+                if (lastloc <= 0 || lastloc > splitContainer2.Height) {
+                    int draft = splitContainer2.Height- 100;
                     if (draft <= 0) {
-                        draft = splitContainer2.getHeight() / 2;
+                        draft = splitContainer2.Height/ 2;
                     }
-                    splitContainer2.setDividerLocation(draft);
+                    splitContainer2.DividerLocation = (draft);
                 } else {
-                    splitContainer2.setDividerLocation(lastloc);
+                    splitContainer2.DividerLocation = (lastloc);
                 }
             } else {
                 if (save_to_config) {
-                    EditorManager.editorConfig.SplitContainer2LastDividerLocation = splitContainer2.getDividerLocation();
+                    EditorManager.editorConfig.SplitContainer2LastDividerLocation = splitContainer2.DividerLocation;
                 }
-                splitContainer2.setPanel2MinSize(0);
-                splitContainer2.setPanel2Hidden(true);
-                splitContainer2.setDividerSize(0);
-                splitContainer2.setDividerLocation(splitContainer2.getHeight());
-                splitContainer2.setSplitterFixed(true);
+                splitContainer2.Panel2MinSize = (0);
+                splitContainer2.Panel2Hidden = (true);
+                splitContainer2.DividerSize = (0);
+                splitContainer2.DividerLocation = (splitContainer2.Height);
+                splitContainer2.SplitterFixed = (true);
             }
         }
 
@@ -2911,12 +2911,12 @@ namespace cadencii
             Dimension current_minsize = new Dimension(MinimumSize.Width, MinimumSize.Height);
             Dimension client = new Dimension(this.ClientSize.Width, this.ClientSize.Height);
             Dimension current = new Dimension(this.Size.Width, this.Size.Height);
-            return new Dimension(current_minsize.width,
-                                  splitContainer1.getPanel2MinSize() +
-                                  _SCROLL_WIDTH + _PICT_POSITION_INDICATOR_HEIGHT + pictPianoRoll.getMinimumSize().height +
+            return new Dimension(current_minsize.Width,
+                                  splitContainer1.Panel2MinSize +
+                                  _SCROLL_WIDTH + _PICT_POSITION_INDICATOR_HEIGHT + pictPianoRoll.MinimumSize.Height +
                                   rebar.Height +
                                   menuStripMain.Height + statusStrip.Height +
-                                  (current.height - client.height) +
+                                  (current.Height - client.Height) +
                                   20);
         }
 
@@ -3589,17 +3589,17 @@ namespace cadencii
         {
             trackSelector.setCurveVisible(visible);
             if (visible) {
-                splitContainer1.setSplitterFixed(false);
-                splitContainer1.setDividerSize(_SPL_SPLITTER_WIDTH);
-                splitContainer1.setDividerLocation(splitContainer1.getHeight() - EditorManager.mLastTrackSelectorHeight - splitContainer1.getDividerSize());
-                splitContainer1.setPanel2MinSize(trackSelector.getPreferredMinSize());
+                splitContainer1.SplitterFixed = (false);
+                splitContainer1.DividerSize = (_SPL_SPLITTER_WIDTH);
+                splitContainer1.DividerLocation = (splitContainer1.Height - EditorManager.mLastTrackSelectorHeight - splitContainer1.DividerSize);
+                splitContainer1.Panel2MinSize = (trackSelector.getPreferredMinSize());
             } else {
-                EditorManager.mLastTrackSelectorHeight = splitContainer1.getHeight() - splitContainer1.getDividerLocation() - splitContainer1.getDividerSize();
-                splitContainer1.setSplitterFixed(true);
-                splitContainer1.setDividerSize(0);
+                EditorManager.mLastTrackSelectorHeight = splitContainer1.Height - splitContainer1.DividerLocation - splitContainer1.DividerSize;
+                splitContainer1.SplitterFixed = (true);
+                splitContainer1.DividerSize = (0);
                 int panel2height = TrackSelectorImpl.OFFSET_TRACK_TAB * 2;
-                splitContainer1.setDividerLocation(splitContainer1.getHeight() - panel2height - splitContainer1.getDividerSize());
-                splitContainer1.setPanel2MinSize(panel2height);
+                splitContainer1.DividerLocation = (splitContainer1.Height - panel2height - splitContainer1.DividerSize);
+                splitContainer1.Panel2MinSize = (panel2height);
             }
             refreshScreen();
         }
@@ -6372,10 +6372,10 @@ namespace cadencii
 			EditorConfig.baseFont8OffsetHeight = Util.getStringDrawOffset(cadencii.core.EditorConfig.baseFont8);
 			EditorConfig.baseFont9OffsetHeight = Util.getStringDrawOffset(cadencii.core.EditorConfig.baseFont9);
 			EditorConfig.baseFont50OffsetHeight = Util.getStringDrawOffset(cadencii.core.EditorConfig.baseFont50Bold);
-			EditorConfig.baseFont8Height = Util.measureString(Util.PANGRAM, cadencii.core.EditorConfig.baseFont8).height;
-			EditorConfig.baseFont9Height = Util.measureString(Util.PANGRAM, cadencii.core.EditorConfig.baseFont9).height;
-			EditorConfig.baseFont10Height = Util.measureString(Util.PANGRAM, cadencii.core.EditorConfig.baseFont10).height;
-			EditorConfig.baseFont50Height = Util.measureString(Util.PANGRAM, cadencii.core.EditorConfig.baseFont50Bold).height;
+			EditorConfig.baseFont8Height = Util.measureString(Util.PANGRAM, cadencii.core.EditorConfig.baseFont8).Height;
+			EditorConfig.baseFont9Height = Util.measureString(Util.PANGRAM, cadencii.core.EditorConfig.baseFont9).Height;
+			EditorConfig.baseFont10Height = Util.measureString(Util.PANGRAM, cadencii.core.EditorConfig.baseFont10).Height;
+			EditorConfig.baseFont50Height = Util.measureString(Util.PANGRAM, cadencii.core.EditorConfig.baseFont50Bold).Height;
         }
 
         public void picturePositionIndicatorDrawTo(java.awt.Graphics g1)
@@ -7299,14 +7299,14 @@ namespace cadencii
                         int stdy = controller.getStartToDrawY();
                         for (int i = 0; i < EditorManager.mDrawObjects[selected - 1].Count; i++) {
                             DrawObject dobj = EditorManager.mDrawObjects[selected - 1][i];
-                            if (dobj.mRectangleInPixel.x + controller.getStartToDrawX() + dobj.mRectangleInPixel.width - stdx < 0) {
+                            if (dobj.mRectangleInPixel.x + controller.getStartToDrawX() + dobj.mRectangleInPixel.Width - stdx < 0) {
                                 continue;
                             } else if (pictPianoRoll.Width < dobj.mRectangleInPixel.x + EditorManager.keyWidth - stdx) {
                                 break;
                             }
                             Rectangle rc = new Rectangle(dobj.mRectangleInPixel.x + EditorManager.keyWidth + dobj.mVibratoDelayInPixel - stdx,
                                                           dobj.mRectangleInPixel.y + (int)(100 * controller.getScaleY()) - stdy,
-                                                          dobj.mRectangleInPixel.width - dobj.mVibratoDelayInPixel,
+                                                          dobj.mRectangleInPixel.Width - dobj.mVibratoDelayInPixel,
                                                           (int)(100 * controller.getScaleY()));
                             if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
                                 //ビブラートの範囲なのでビブラートを消す
@@ -7528,7 +7528,7 @@ namespace cadencii
                         rect = new Rectangle(
                             dobj.mRectangleInPixel.x + EditorManager.keyWidth - stdx + 21,
                             dobj.mRectangleInPixel.y - stdy + (int)(100 * controller.getScaleY()),
-                            dobj.mRectangleInPixel.width - 21,
+                            dobj.mRectangleInPixel.Width - 21,
                             (int)(100 * controller.getScaleY()));
                         if (Utility.isInRect(new Point(e.X, e.Y), rect)) {
                             VsqEvent selectedEvent = null;
@@ -7736,10 +7736,10 @@ namespace cadencii
                         int count = target_list.Count;
                         for (int i = 0; i < count; i++) {
                             DrawObject dobj = target_list[i];
-                            if (dobj.mRectangleInPixel.width <= dobj.mVibratoDelayInPixel) {
+                            if (dobj.mRectangleInPixel.Width <= dobj.mVibratoDelayInPixel) {
                                 continue;
                             }
-                            if (dobj.mRectangleInPixel.x + key_width + dobj.mRectangleInPixel.width - stdx < 0) {
+                            if (dobj.mRectangleInPixel.x + key_width + dobj.mRectangleInPixel.Width - stdx < 0) {
                                 continue;
                             } else if (pictPianoRoll.Width < dobj.mRectangleInPixel.x + key_width - stdx) {
                                 break;
@@ -7754,17 +7754,17 @@ namespace cadencii
                                 mVibratoEditingId = dobj.mInternalID;
                                 pxFound.x = dobj.mRectangleInPixel.x;
                                 pxFound.y = dobj.mRectangleInPixel.y;
-                                pxFound.width = dobj.mRectangleInPixel.width;
-                                pxFound.height = dobj.mRectangleInPixel.height;// = new Rectangle dobj.mRectangleInPixel;
+                                pxFound.Width = dobj.mRectangleInPixel.Width;
+                                pxFound.Height = dobj.mRectangleInPixel.Height;// = new Rectangle dobj.mRectangleInPixel;
                                 pxFound.x += key_width;
-                                px_vibrato_length = dobj.mRectangleInPixel.width - dobj.mVibratoDelayInPixel;
+                                px_vibrato_length = dobj.mRectangleInPixel.Width - dobj.mVibratoDelayInPixel;
                                 break;
                             }
                         }
                         if (vibrato_dobj != null) {
-                            int clock = EditorManager.clockFromXCoord(pxFound.x + pxFound.width - px_vibrato_length - stdx);
+                            int clock = EditorManager.clockFromXCoord(pxFound.x + pxFound.Width - px_vibrato_length - stdx);
                             int note = vibrato_dobj.mNote - 1;// EditorManager.noteFromYCoord( pxFound.y + (int)(100 * EditorManager.getScaleY()) - stdy );
-                            int length = vibrato_dobj.mClock + vibrato_dobj.mLength - clock;// (int)(pxFound.width * EditorManager.getScaleXInv());
+                            int length = vibrato_dobj.mClock + vibrato_dobj.mLength - clock;// (int)(pxFound.Width * EditorManager.getScaleXInv());
                             EditorManager.mAddingEvent = new VsqEvent(clock, new VsqID(0));
                             EditorManager.mAddingEvent.ID.type = VsqIDType.Anote;
                             EditorManager.mAddingEvent.ID.Note = note;
@@ -7862,15 +7862,15 @@ namespace cadencii
                         int min_width = 4 * _EDIT_HANDLE_WIDTH;
                         foreach (var dobj in EditorManager.mDrawObjects[selected - 1]) {
                             int edit_handle_width = _EDIT_HANDLE_WIDTH;
-                            if (dobj.mRectangleInPixel.width < min_width) {
-                                edit_handle_width = dobj.mRectangleInPixel.width / 4;
+                            if (dobj.mRectangleInPixel.Width < min_width) {
+                                edit_handle_width = dobj.mRectangleInPixel.Width / 4;
                             }
 
                             // 左端の"のり代"にマウスがあるかどうか
                             Rectangle rc = new Rectangle(dobj.mRectangleInPixel.x - stdx + key_width,
                                                           dobj.mRectangleInPixel.y - stdy,
                                                           edit_handle_width,
-                                                          dobj.mRectangleInPixel.height);
+                                                          dobj.mRectangleInPixel.Height);
                             if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
                                 EditorManager.IsWholeSelectedIntervalEnabled = false;
                                 EditorManager.EditMode = EditMode.EDIT_LEFT_EDGE;
@@ -7887,10 +7887,10 @@ namespace cadencii
                             }
 
                             // 右端の糊代にマウスがあるかどうか
-                            rc = new Rectangle(dobj.mRectangleInPixel.x + key_width + dobj.mRectangleInPixel.width - stdx - edit_handle_width,
+                            rc = new Rectangle(dobj.mRectangleInPixel.x + key_width + dobj.mRectangleInPixel.Width - stdx - edit_handle_width,
                                                 dobj.mRectangleInPixel.y - stdy,
                                                 edit_handle_width,
-                                                dobj.mRectangleInPixel.height);
+                                                dobj.mRectangleInPixel.Height);
                             if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
                                 EditorManager.IsWholeSelectedIntervalEnabled = false;
                                 EditorManager.EditMode = EditMode.EDIT_RIGHT_EDGE;
@@ -8188,9 +8188,9 @@ namespace cadencii
                         int internal_id = -1;
                         foreach (var dobj in EditorManager.mDrawObjects[selected - 1]) {
                             int x0 = dobj.mRectangleInPixel.x + EditorManager.keyWidth;
-                            int x1 = dobj.mRectangleInPixel.x + EditorManager.keyWidth + dobj.mRectangleInPixel.width;
+                            int x1 = dobj.mRectangleInPixel.x + EditorManager.keyWidth + dobj.mRectangleInPixel.Width;
                             int y0 = dobj.mRectangleInPixel.y;
-                            int y1 = dobj.mRectangleInPixel.y + dobj.mRectangleInPixel.height;
+                            int y1 = dobj.mRectangleInPixel.y + dobj.mRectangleInPixel.Height;
                             internal_id = dobj.mInternalID;
                             if (x1 < tx) {
                                 continue;
@@ -8412,8 +8412,8 @@ namespace cadencii
                         Rectangle rc;
                         if (dobj.mType != DrawObjectType.Dynaff) {
                             int edit_handle_width = _EDIT_HANDLE_WIDTH;
-                            if (dobj.mRectangleInPixel.width < min_width) {
-                                edit_handle_width = dobj.mRectangleInPixel.width / 4;
+                            if (dobj.mRectangleInPixel.Width < min_width) {
+                                edit_handle_width = dobj.mRectangleInPixel.Width / 4;
                             }
 
                             // 音符左側の編集領域
@@ -8428,7 +8428,7 @@ namespace cadencii
                             }
 
                             // 音符右側の編集領域
-                            rc = new Rectangle(dobj.mRectangleInPixel.x + EditorManager.keyWidth + dobj.mRectangleInPixel.width - stdx - edit_handle_width,
+                            rc = new Rectangle(dobj.mRectangleInPixel.x + EditorManager.keyWidth + dobj.mRectangleInPixel.Width - stdx - edit_handle_width,
                                                 dobj.mRectangleInPixel.y - stdy,
                                                 edit_handle_width,
                                                 (int)(100 * controller.getScaleY()));
@@ -8441,11 +8441,11 @@ namespace cadencii
                         // 音符本体
                         rc = new Rectangle(dobj.mRectangleInPixel.x + EditorManager.keyWidth - stdx,
                                             dobj.mRectangleInPixel.y - stdy,
-                                            dobj.mRectangleInPixel.width,
-                                            dobj.mRectangleInPixel.height);
+                                            dobj.mRectangleInPixel.Width,
+                                            dobj.mRectangleInPixel.Height);
                         if (dobj.mType == DrawObjectType.Note) {
                             if (EditorManager.editorConfig.ShowExpLine && !dobj.mIsOverlapped) {
-                                rc.height *= 2;
+                                rc.Height *= 2;
                                 if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
                                     // ビブラートの開始位置
                                     rc = new Rectangle(dobj.mRectangleInPixel.x + EditorManager.keyWidth + dobj.mVibratoDelayInPixel - stdx - _EDIT_HANDLE_WIDTH / 2,
@@ -9595,10 +9595,10 @@ namespace cadencii
         {
             // 設定値を格納
 			if (ApplicationGlobal.appConfig.ViewWaveform) {
-				EditorManager.editorConfig.SplitContainer2LastDividerLocation = splitContainer2.getDividerLocation();
+				EditorManager.editorConfig.SplitContainer2LastDividerLocation = splitContainer2.DividerLocation;
             }
             if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
-                EditorManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.getDividerLocation();
+                EditorManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.DividerLocation;
             }
             if (e.CloseReason == System.Windows.Forms.CloseReason.WindowsShutDown) {
                 return;
@@ -12127,7 +12127,7 @@ namespace cadencii
                     controller.setStartToDrawY(calculateStartToDrawY(vScroll.Value));
 
                     if (menuVisualControlTrack.Checked) {
-                        splitContainer1.setPanel2MinSize(trackSelector.getPreferredMinSize());
+                        splitContainer1.Panel2MinSize = (trackSelector.getPreferredMinSize());
                     }
 
                     EditorManager.saveConfig();
@@ -13676,7 +13676,7 @@ namespace cadencii
                         }
                         string s = PortUtil.formatDecimal("#.00", 60e6 / (float)MusicManager.getVsqFile().TempoTable[i].Tempo);
                         Dimension size = Util.measureString(s, new Font(EditorManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8));
-                        if (Utility.isInRect(new Point(e.X, e.Y), new Rectangle(x, 14, (int)size.width, 14))) {
+                        if (Utility.isInRect(new Point(e.X, e.Y), new Rectangle(x, 14, (int)size.Width, 14))) {
                             index = i;
                             break;
                         }
@@ -13734,7 +13734,7 @@ namespace cadencii
                         string s = MusicManager.getVsqFile().TimesigTable[i].Numerator + "/" + MusicManager.getVsqFile().TimesigTable[i].Denominator;
                         int x = EditorManager.xCoordFromClocks(MusicManager.getVsqFile().TimesigTable[i].Clock);
                         Dimension size = Util.measureString(s, new Font(EditorManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8));
-                        if (Utility.isInRect(new Point(e.X, e.Y), new Rectangle(x, 28, (int)size.width, 14))) {
+                        if (Utility.isInRect(new Point(e.X, e.Y), new Rectangle(x, 28, (int)size.Width, 14))) {
                             index = i;
                             break;
                         }
@@ -14289,7 +14289,7 @@ namespace cadencii
         public void trackSelector_PreferredMinHeightChanged(Object sender, EventArgs e)
         {
             if (menuVisualControlTrack.Checked) {
-                splitContainer1.setPanel2MinSize(trackSelector.getPreferredMinSize());
+                splitContainer1.Panel2MinSize = (trackSelector.getPreferredMinSize());
 #if DEBUG
                 sout.println("FormMain#trackSelector_PreferredMinHeightChanged; splitContainer1.Panel2MinSize changed");
 #endif
@@ -15278,7 +15278,7 @@ namespace cadencii
 			mKeyLengthSplitterInitialMouse = cadencii.core2.PortUtil.getMousePosition();
             mKeyLengthInitValue = EditorManager.keyWidth;
             mKeyLengthTrackSelectorRowsPerColumn = trackSelector.getRowsPerColumn();
-            mKeyLengthSplitterDistance = splitContainer1.getDividerLocation();
+            mKeyLengthSplitterDistance = splitContainer1.DividerLocation;
         }
 
         public void pictKeyLengthSplitter_MouseMove(Object sender, MouseEventArgs e)
@@ -15296,11 +15296,11 @@ namespace cadencii
             EditorManager.keyWidth = draft;
             int current = trackSelector.getRowsPerColumn();
             if (current >= mKeyLengthTrackSelectorRowsPerColumn) {
-                int max_divider_location = splitContainer1.getHeight() - splitContainer1.getDividerSize() - splitContainer1.getPanel2MinSize();
+                int max_divider_location = splitContainer1.Height - splitContainer1.DividerSize - splitContainer1.Panel2MinSize;
                 if (max_divider_location < mKeyLengthSplitterDistance) {
-                    splitContainer1.setDividerLocation(max_divider_location);
+                    splitContainer1.DividerLocation = (max_divider_location);
                 } else {
-                    splitContainer1.setDividerLocation(mKeyLengthSplitterDistance);
+                    splitContainer1.DividerLocation = (mKeyLengthSplitterDistance);
                 }
             }
             updateLayout();
@@ -15553,16 +15553,16 @@ namespace cadencii
             int wid = this.Width;
             int hei = this.Height;
             bool change_size_required = false;
-            if (minsize.width > wid) {
-                wid = minsize.width;
+            if (minsize.Width > wid) {
+                wid = minsize.Width;
                 change_size_required = true;
             }
-            if (minsize.height > hei) {
-                hei = minsize.height;
+            if (minsize.Height > hei) {
+                hei = minsize.Height;
                 change_size_required = true;
             }
             var min_size = getWindowMinimumSize();
-            this.MinimumSize = new System.Drawing.Size(min_size.width, min_size.height);
+            this.MinimumSize = new System.Drawing.Size(min_size.Width, min_size.Height);
             if (change_size_required) {
                 this.Size = new System.Drawing.Size(wid, hei);
             }
@@ -16703,7 +16703,7 @@ namespace cadencii
 	Rectangle rcScreen = cadencii.core2.PortUtil.getWorkingArea(dlg);
             Point p = getAppropriateDialogLocation(
                 dlg.Left, dlg.Top, dlg.Width, dlg.Height,
-                rcScreen.x, rcScreen.y, rcScreen.width, rcScreen.height
+                rcScreen.x, rcScreen.y, rcScreen.Width, rcScreen.Height
             );
             dlg.Location = new System.Drawing.Point(p.X, p.Y);
         }

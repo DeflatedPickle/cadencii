@@ -458,12 +458,12 @@ namespace cadencii
             double cStart = 0.0;
             float order_y = 1.0f;
             if (auto_maximize) {
-                order_y = rect.height / 2.0f / 127.0f * mMaxAmplitude / mActualMaxAmplitude;
+                order_y = rect.Height / 2.0f / 127.0f * mMaxAmplitude / mActualMaxAmplitude;
             } else {
-                order_y = rect.height / 127.0f * scale_y * mMaxAmplitude;
+                order_y = rect.Height / 127.0f * scale_y * mMaxAmplitude;
             }
             int ox = rect.x;
-            int oy = rect.height / 2;
+            int oy = rect.Height / 2;
             int last = mWave[0];
             int lastx = ox;
             int lastYMax = oy - (int)(last * order_y);
@@ -472,7 +472,7 @@ namespace cadencii
             int lasty2 = lastYMin;
             bool skipped = false;
             mDrawer.append(ox, lasty);
-            int xmax = rect.x + rect.width;
+            int xmax = rect.x + rect.Width;
             int lastTempo = 500000;
             for (int i = 0; i <= count; i++) {
                 double time = 0.0;
@@ -522,8 +522,8 @@ namespace cadencii
                 }
                 // 第j1サンプルのデータを画面に描画した時のx座標がいくらになるか？
                 int draftEndX = xoffset + (int)((j1 - sStart) * pixel_per_sample);
-                if (rect.x + rect.width < draftEndX) {
-                    j1 = (int)((rect.x + rect.width - xoffset) / pixel_per_sample) + sStart;
+                if (rect.x + rect.Width < draftEndX) {
+                    j1 = (int)((rect.x + rect.Width - xoffset) / pixel_per_sample) + sStart;
                 }
 
                 bool breakRequired = false;
@@ -579,7 +579,7 @@ namespace cadencii
                 }
             }
 
-            mDrawer.append(rect.x + rect.width, lasty);
+            mDrawer.append(rect.x + rect.Width, lasty);
             mDrawer.flush();
         }
     }

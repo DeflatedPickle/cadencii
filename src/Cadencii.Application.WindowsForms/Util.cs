@@ -81,23 +81,23 @@ namespace cadencii.apputil
         {
             int ret = 0;
             java.awt.Dimension size = measureString(PANGRAM, font);
-            if (size.height <= 0) {
+            if (size.Height <= 0) {
                 return 0;
             }
             java.awt.Image b = null;
             java.awt.Graphics g = null;
             BitmapEx b2 = null;
             try {
-                int string_desty = size.height * 2; // 文字列が書き込まれるy座標
-                int w = size.width * 4;
-                int h = size.height * 4;
+                int string_desty = size.Height * 2; // 文字列が書き込まれるy座標
+                int w = size.Width * 4;
+                int h = size.Height * 4;
                 b = new java.awt.Image(w, h);
                 g = new java.awt.Graphics(b);
                 g.setColor(java.awt.Colors.White);
                 g.fillRect(0, 0, w, h);
                 g.setFont(font);
                 g.setColor(cadencii.java.awt.Colors.Black);
-                g.drawString(PANGRAM, size.width, string_desty);
+                g.drawString(PANGRAM, size.Width, string_desty);
 
                 b2 = ApplicationUIHost.Create<BitmapEx> (b);
                 // 上端に最初に現れる色つきピクセルを探す

@@ -12,20 +12,26 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using cadencii.windows.forms;
+using System.Windows.Forms;
 
 namespace cadencii
 {
-
-    /// <summary>
-    /// MouseWheel��Increment���l�𑝌������邱�Ƃ̂ł���NumericUpDown
-    /// </summary>
-    public class NumericUpDownEx : NumericUpDown
+    public class NumericUpDownExImpl : NumericUpDownImpl, NumericUpDownEx
     {
+		event EventHandler NumericUpDownEx.ValueChanged {
+			add { ValueChanged += value; }
+			remove { ValueChanged -= value; }
+		}
+
+		cadencii.java.awt.HorizontalAlignment NumericUpDownEx.TextAlign {
+			get { return (cadencii.java.awt.HorizontalAlignment)TextAlign; }
+			set { TextAlign = (System.Windows.Forms.HorizontalAlignment)value; }
+		}
+
         private const long serialVersionUID = -4608658084088065812L;
 
-        public NumericUpDownEx()
+        public NumericUpDownExImpl()
         {
             this.GotFocus += new EventHandler(NumericUpDownEx_GotFocus);
         }

@@ -363,11 +363,11 @@ namespace cadencii
             this.lblResolution = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.numResolution = new cadencii.NumericUpDownEx();
-            this.numEndBeat = new cadencii.NumericUpDownEx();
-            this.numEndBar = new cadencii.NumericUpDownEx();
-            this.numStartBeat = new cadencii.NumericUpDownEx();
-            this.numStartBar = new cadencii.NumericUpDownEx();
+            this.numResolution = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numEndBeat = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numEndBar = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numStartBeat = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numStartBar = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
             ((System.ComponentModel.ISupportInitialize)(this.numResolution)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numEndBeat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numEndBar)).BeginInit();
@@ -561,7 +561,7 @@ namespace cadencii
             // 
             // numResolution
             // 
-            this.numResolution.Location = new System.Drawing.Point(267, 147);
+            this.numResolution.Location = new cadencii.java.awt.Point(267, 147);
             this.numResolution.Maximum = new decimal(new int[] {
             30,
             0,
@@ -573,7 +573,7 @@ namespace cadencii
             0,
             0});
             this.numResolution.Name = "numResolution";
-            this.numResolution.Size = new System.Drawing.Size(54, 19);
+            this.numResolution.Size = new cadencii.java.awt.Dimension(54, 19);
             this.numResolution.TabIndex = 21;
             this.numResolution.Value = new decimal(new int[] {
             5,
@@ -583,9 +583,9 @@ namespace cadencii
             // 
             // numEndBeat
             // 
-            this.numEndBeat.Location = new System.Drawing.Point(282, 24);
+            this.numEndBeat.Location = new cadencii.java.awt.Point(282, 24);
             this.numEndBeat.Name = "numEndBeat";
-            this.numEndBeat.Size = new System.Drawing.Size(54, 19);
+            this.numEndBeat.Size = new cadencii.java.awt.Dimension(54, 19);
             this.numEndBeat.TabIndex = 10;
             this.numEndBeat.Value = new decimal(new int[] {
             1,
@@ -595,14 +595,14 @@ namespace cadencii
             // 
             // numEndBar
             // 
-            this.numEndBar.Location = new System.Drawing.Point(222, 24);
+            this.numEndBar.Location = new cadencii.java.awt.Point(222, 24);
             this.numEndBar.Maximum = new decimal(new int[] {
             2147483647,
             0,
             0,
             0});
             this.numEndBar.Name = "numEndBar";
-            this.numEndBar.Size = new System.Drawing.Size(54, 19);
+            this.numEndBar.Size = new cadencii.java.awt.Dimension(54, 19);
             this.numEndBar.TabIndex = 7;
             this.numEndBar.Value = new decimal(new int[] {
             2,
@@ -612,9 +612,9 @@ namespace cadencii
             // 
             // numStartBeat
             // 
-            this.numStartBeat.Location = new System.Drawing.Point(113, 24);
+            this.numStartBeat.Location = new cadencii.java.awt.Point (113, 24);
             this.numStartBeat.Name = "numStartBeat";
-            this.numStartBeat.Size = new System.Drawing.Size(54, 19);
+            this.numStartBeat.Size = new cadencii.java.awt.Dimension(54, 19);
             this.numStartBeat.TabIndex = 4;
             this.numStartBeat.Value = new decimal(new int[] {
             1,
@@ -624,9 +624,9 @@ namespace cadencii
             // 
             // numStartBar
             // 
-            this.numStartBar.Location = new System.Drawing.Point(53, 24);
+            this.numStartBar.Location = new cadencii.java.awt.Point(53, 24);
             this.numStartBar.Name = "numStartBar";
-            this.numStartBar.Size = new System.Drawing.Size(54, 19);
+            this.numStartBar.Size = new cadencii.java.awt.Dimension(54, 19);
             this.numStartBar.TabIndex = 1;
             this.numStartBar.Value = new decimal(new int[] {
             1,
@@ -641,13 +641,13 @@ namespace cadencii
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(347, 286);
-            this.Controls.Add(this.numEndBeat);
-            this.Controls.Add(this.numEndBar);
-            this.Controls.Add(this.numStartBeat);
-            this.Controls.Add(this.numStartBar);
+			this.Controls.Add((System.Windows.Forms.Control)this.numEndBeat.Native);
+			this.Controls.Add((System.Windows.Forms.Control)this.numEndBar.Native);
+			this.Controls.Add((System.Windows.Forms.Control)this.numStartBeat.Native);
+			this.Controls.Add((System.Windows.Forms.Control)this.numStartBar.Native);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.numResolution);
+			this.Controls.Add((System.Windows.Forms.Control)this.numResolution.Native);
             this.Controls.Add(this.lblResolution);
             this.Controls.Add(this.comboPitValue);
             this.Controls.Add(this.lblPitValue);

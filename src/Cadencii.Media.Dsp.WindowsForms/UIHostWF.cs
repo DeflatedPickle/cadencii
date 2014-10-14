@@ -62,7 +62,7 @@ namespace cadencii.dsp.winforms
 						//Thread.Sleep( 250 );
 						ui.UI.UpdatePluginUiRect ();
 						var rect = ui.UI.WindowRect;
-						ui.UI.ClientSize = new System.Drawing.Size (rect.width, rect.height);
+						ui.UI.ClientSize = new System.Drawing.Size (rect.Width, rect.Height);
 						ui.UI.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 						ui.IsOpened = true;
 					} catch (Exception ex) {

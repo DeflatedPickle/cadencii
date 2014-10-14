@@ -16,10 +16,10 @@ using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 
 namespace cadencii
 {
-	public class ButtonImpl : System.Windows.Forms.Button, UiControl
+	public class TrackBarImpl : System.Windows.Forms.TrackBar, UiControl
 	{
 		// UiControl
-	
+
 		object UiControl.Native {
 			get { return this; }
 		}

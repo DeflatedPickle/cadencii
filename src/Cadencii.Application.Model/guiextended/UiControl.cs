@@ -46,12 +46,14 @@ namespace cadencii
 
 		void SuspendLayout ();
 		void ResumeLayout ();
+		void ResumeLayout (bool performLayout);
 
 		void Focus ();
 
 		void Refresh ();
         
 		void Invalidate ();
+		void Invalidate (bool invalidateChildren);
 
 		event KeyEventHandler PreviewKeyDown;
 		event EventHandler<KeyPressEventArgs> KeyPress;

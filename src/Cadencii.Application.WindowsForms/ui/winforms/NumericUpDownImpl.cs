@@ -16,7 +16,7 @@ using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 
 namespace cadencii
 {
-	public class ButtonImpl : System.Windows.Forms.Button, UiControl
+	public class NumericUpDownImpl : System.Windows.Forms.NumericUpDown, UiControl
 	{
 		// UiControl
 	

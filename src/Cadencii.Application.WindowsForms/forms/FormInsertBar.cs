@@ -139,8 +139,8 @@ namespace cadencii
             this.btnCancel = new Button();
             this.btnOK = new Button();
             this.lblPositionPrefix = new Label();
-            this.numLength = new cadencii.NumericUpDownEx();
-            this.numPosition = new cadencii.NumericUpDownEx();
+            this.numLength = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numPosition = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
             ((System.ComponentModel.ISupportInitialize)(this.numLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPosition)).BeginInit();
             this.SuspendLayout();
@@ -214,7 +214,7 @@ namespace cadencii
             // 
             // numLength
             // 
-            this.numLength.Location = new System.Drawing.Point(78, 37);
+            this.numLength.Location = new cadencii.java.awt.Point(78, 37);
             this.numLength.Maximum = new decimal(new int[] {
             32,
             0,
@@ -226,7 +226,7 @@ namespace cadencii
             0,
             0});
             this.numLength.Name = "numLength";
-            this.numLength.Size = new System.Drawing.Size(52, 19);
+            this.numLength.Size = new cadencii.java.awt.Dimension(52, 19);
             this.numLength.TabIndex = 1;
             this.numLength.Value = new decimal(new int[] {
             1,
@@ -236,9 +236,9 @@ namespace cadencii
             // 
             // numPosition
             // 
-            this.numPosition.Location = new System.Drawing.Point(78, 12);
+            this.numPosition.Location = new cadencii.java.awt.Point(78, 12);
             this.numPosition.Name = "numPosition";
-            this.numPosition.Size = new System.Drawing.Size(52, 19);
+            this.numPosition.Size = new cadencii.java.awt.Dimension(52, 19);
             this.numPosition.TabIndex = 0;
             // 
             // FormInsertBar
@@ -248,8 +248,8 @@ namespace cadencii
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(221, 102);
-            this.Controls.Add(this.numLength);
-            this.Controls.Add(this.numPosition);
+            this.Controls.Add((System.Windows.Forms.Control)this.numLength.Native);
+			this.Controls.Add((System.Windows.Forms.Control)this.numPosition.Native);
             this.Controls.Add(this.lblPositionPrefix);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.btnCancel);

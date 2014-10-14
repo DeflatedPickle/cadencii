@@ -191,6 +191,11 @@
     <Compile Include="controls\PictOverview.cs" />
     <Compile Include="guiextended\UiHScrollBar.cs" />
     <Compile Include="forms\MainFormUi.cs" />
+    <Compile Include="controls\NumericUpDownEx.cs" />
+    <Compile Include="controls\BSplitterPanel.cs" />
+    <Compile Include="controls\BSplitContainer.cs" />
+    <Compile Include="controls\PropertyPanelContainer.cs" />
+    <Compile Include="guiextended\UiPanel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

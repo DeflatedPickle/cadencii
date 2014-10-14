@@ -114,10 +114,10 @@ namespace cadencii
             Rectangle rc = getButtonBoundsWaveViewZoom();
             if (!mWaveViewAutoMaximize) {
 				g.setColor(mWaveViewButtonZoomMouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
-                g.fillRect(rc.x, rc.y, rc.width, rc.height);
+                g.fillRect(rc.x, rc.y, rc.Width, rc.Height);
             }
 			g.setColor(cadencii.java.awt.Colors.Gray);
-            g.drawRect(rc.x, rc.y, rc.width, rc.height);
+            g.drawRect(rc.x, rc.y, rc.Width, rc.Height);
 			g.setColor(mWaveViewAutoMaximize ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.Black);
             rc.y = rc.y + 1;
 			g.drawStringEx(

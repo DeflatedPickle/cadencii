@@ -104,7 +104,7 @@ namespace cadencii
             // 背景を塗りつぶす
             g.setStroke(getStrokeDefault());
             g.setColor(cadencii.java.awt.Colors.Gray);
-            g.fillRect(rc.x, rc.y, rc.width, rc.height);
+            g.fillRect(rc.x, rc.y, rc.Width, rc.Height);
 
             if (EditorManager.skipDrawingWaveformWhenPlaying && EditorManager.isPlaying()) {
                 // 左側のボタン部との境界線

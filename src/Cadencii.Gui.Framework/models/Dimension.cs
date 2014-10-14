@@ -20,13 +20,13 @@ namespace cadencii.java.awt
 
     public struct Dimension
     {
-        public int height;
-        public int width;
+        public int Height;
+        public int Width;
 
         public Dimension(int width_, int height_)
         {
-            width = width_;
-            height = height_;
+            Width = width_;
+            Height = height_;
         }
     }
 

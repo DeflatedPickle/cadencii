@@ -95,8 +95,8 @@ namespace cadencii
             string credit = _("Credit");
             Dimension size1 = Util.measureString(about, btnFlip.Font);
             Dimension size2 = Util.measureString(credit, btnFlip.Font);
-            m_button_width_about = Math.Max(75, (int)(size1.width * 1.3));
-            m_button_width_credit = Math.Max(75, (int)(size2.width * 1.3));
+            m_button_width_about = Math.Max(75, (int)(size1.Width * 1.3));
+            m_button_width_credit = Math.Max(75, (int)(size2.Width * 1.3));
             if (m_credit_mode) {
                 btnFlip.Size = new System.Drawing.Size(m_button_width_about, btnFlip.Height);
                 btnFlip.Text = about;
@@ -168,7 +168,7 @@ namespace cadencii
             Font font = new Font(font_name, java.awt.Font.PLAIN, FONT_SIZE);
             Dimension size = Util.measureString("the quick brown fox jumped over the lazy dogs. THE QUICK BROWN FOX JUMPED OVER THE LAZY DOGS. 0123456789", font);
             int width = this.Width;
-            int height = size.height;
+            int height = size.Height;
             //StringFormat sf = new StringFormat();
             Image ret = new Image((int)width, (int)(40f + m_credit.Length * height * 1.1f));
             Graphics g = new Graphics(ret);

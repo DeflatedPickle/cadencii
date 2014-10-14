@@ -85,6 +85,8 @@
     <Compile Include="models\winforms\KeyPressEventArgs.cs" />
     <Compile Include="models\winforms\HorizontalAlignment.cs" />
     <Compile Include="models\winforms\PictureBoxSizeMode.cs" />
+    <Compile Include="models\winforms\FixedPanel.cs" />
+    <Compile Include="models\winforms\Orientation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

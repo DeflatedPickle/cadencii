@@ -555,15 +555,15 @@ namespace cadencii
                 int act_end_x = getOverviewXCoordFromClock(act_end_clock);
                 Rectangle rcm = new Rectangle(act_start_x, 0, act_end_x - act_start_x, height);
                 g.setColor(new Color(0, 0, 0, 100));
-                g.fillRect(rcm.x + xoffset, rcm.y, rcm.width, rcm.height);
+                g.fillRect(rcm.x + xoffset, rcm.y, rcm.Width, rcm.Height);
             }
 
             // 現在の表示範囲
             Rectangle rc = new Rectangle(x_start, 0, x_end - x_start, height - 1);
             g.setColor(new Color(255, 255, 255, 50));
-            g.fillRect(rc.x + xoffset, rc.y, rc.width, rc.height);
+            g.fillRect(rc.x + xoffset, rc.y, rc.Width, rc.Height);
             g.setColor(EditorManager.getHilightColor());
-            g.drawRect(rc.x + xoffset, rc.y, rc.width, rc.height);
+            g.drawRect(rc.x + xoffset, rc.y, rc.Width, rc.Height);
 
             // ソングポジション
             int px_current_clock = (int)((EditorManager.getCurrentClock() - mOverviewStartToDrawClock) * mOverviewPixelPerClock);
@@ -582,11 +582,11 @@ namespace cadencii
             // zoomボタン
             rc = getButtonBoundsZoom();
             g.setColor(mOverviewButtonZoomMouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
-            g.fillRect(rc.x, rc.y, rc.width, rc.height);
+            g.fillRect(rc.x, rc.y, rc.Width, rc.Height);
             g.setColor(EditorManager.COLOR_BORDER);
-            g.drawRect(rc.x, rc.y, rc.width, rc.height);
-            int centerx = rc.x + rc.width / 2 + 1;
-            int centery = rc.y + rc.height / 2 + 1;
+            g.drawRect(rc.x, rc.y, rc.Width, rc.Height);
+            int centerx = rc.x + rc.Width / 2 + 1;
+            int centery = rc.y + rc.Height / 2 + 1;
             g.setColor(mOverviewButtonZoomMouseDowned ? cadencii.java.awt.Colors.LightGray : cadencii.java.awt.Colors.Gray);
             g.setStroke(getStroke2px());
             g.drawLine(centerx - 4, centery, centerx + 4, centery);
@@ -595,11 +595,11 @@ namespace cadencii
             // moozボタン
             rc = getButtonBoundsMooz();
             g.setColor(mOverviewButtonMoozMouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
-            g.fillRect(rc.x, rc.y, rc.width, rc.height);
+            g.fillRect(rc.x, rc.y, rc.Width, rc.Height);
             g.setColor(EditorManager.COLOR_BORDER);
-            g.drawRect(rc.x, rc.y, rc.width, rc.height);
-            centerx = rc.x + rc.width / 2 + 1;
-            centery = rc.y + rc.height / 2 + 1;
+            g.drawRect(rc.x, rc.y, rc.Width, rc.Height);
+            centerx = rc.x + rc.Width / 2 + 1;
+            centery = rc.y + rc.Height / 2 + 1;
             g.setColor(mOverviewButtonMoozMouseDowned ? cadencii.java.awt.Colors.LightGray : cadencii.java.awt.Colors.Gray);
             g.setStroke(getStroke2px());
             g.drawLine(centerx - 4, centery, centerx + 4, centery);
@@ -607,21 +607,21 @@ namespace cadencii
             // left1ボタン
             rc = getButtonBoundsLeft1();
             g.setColor(mOverviewButtonLeft1MouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
-            g.fillRect(rc.x, rc.y, rc.width, rc.height);
+            g.fillRect(rc.x, rc.y, rc.Width, rc.Height);
             g.setColor(EditorManager.COLOR_BORDER);
-            g.drawRect(rc.x, rc.y, rc.width, rc.height);
-            centerx = rc.x + rc.width / 2 + 1;
-            centery = rc.y + rc.height / 2 + 1;
+            g.drawRect(rc.x, rc.y, rc.Width, rc.Height);
+            centerx = rc.x + rc.Width / 2 + 1;
+            centery = rc.y + rc.Height / 2 + 1;
             g.setColor(mOverviewButtonLeft1MouseDowned ? cadencii.java.awt.Colors.LightGray : cadencii.java.awt.Colors.Gray);
             g.drawPolyline(new int[] { centerx + 4, centerx - 4, centerx + 4 }, new int[] { centery - 4, centery, centery + 4 }, 3);
             // left2ボタン
             rc = getButtonBoundsLeft2();
             g.setColor(mOverviewButtonLeft2MouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
-            g.fillRect(rc.x, rc.y, rc.width, rc.height);
+            g.fillRect(rc.x, rc.y, rc.Width, rc.Height);
             g.setColor(EditorManager.COLOR_BORDER);
-            g.drawRect(rc.x, rc.y, rc.width, rc.height);
-            centerx = rc.x + rc.width / 2 + 1;
-            centery = rc.y + rc.height / 2 + 1;
+            g.drawRect(rc.x, rc.y, rc.Width, rc.Height);
+            centerx = rc.x + rc.Width / 2 + 1;
+            centery = rc.y + rc.Height / 2 + 1;
             g.setColor(mOverviewButtonLeft2MouseDowned ? cadencii.java.awt.Colors.LightGray : cadencii.java.awt.Colors.Gray);
             g.drawPolyline(new int[] { centerx - 4, centerx + 4, centerx - 4 }, new int[] { centery - 4, centery, centery + 4 }, 3);
 
@@ -631,21 +631,21 @@ namespace cadencii
             // right1ボタン
             rc = getButtonBoundsRight1();
             g.setColor(mOverviewButtonRight1MouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
-            g.fillRect(rc.x, rc.y, rc.width, rc.height);
+            g.fillRect(rc.x, rc.y, rc.Width, rc.Height);
             g.setColor(EditorManager.COLOR_BORDER);
-            g.drawRect(rc.x, rc.y, rc.width, rc.height);
-            centerx = rc.x + rc.width / 2 + 1;
-            centery = rc.y + rc.height / 2 + 1;
+            g.drawRect(rc.x, rc.y, rc.Width, rc.Height);
+            centerx = rc.x + rc.Width / 2 + 1;
+            centery = rc.y + rc.Height / 2 + 1;
             g.setColor(mOverviewButtonRight1MouseDowned ? cadencii.java.awt.Colors.LightGray : cadencii.java.awt.Colors.Gray);
             g.drawPolyline(new int[] { centerx + 4, centerx - 4, centerx + 4 }, new int[] { centery - 4, centery, centery + 4 }, 3);
             // right2ボタン
             rc = getButtonBoundsRight2();
             g.setColor(mOverviewButtonRight2MouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
-            g.fillRect(rc.x, rc.y, rc.width, rc.height);
+            g.fillRect(rc.x, rc.y, rc.Width, rc.Height);
             g.setColor(EditorManager.COLOR_BORDER);
-            g.drawRect(rc.x, rc.y, rc.width, rc.height);
-            centerx = rc.x + rc.width / 2 + 1;
-            centery = rc.y + rc.height / 2 + 1;
+            g.drawRect(rc.x, rc.y, rc.Width, rc.Height);
+            centerx = rc.x + rc.Width / 2 + 1;
+            centery = rc.y + rc.Height / 2 + 1;
             g.setColor(mOverviewButtonRight2MouseDowned ? cadencii.java.awt.Colors.LightGray : cadencii.java.awt.Colors.Gray);
             g.drawPolyline(new int[] { centerx - 4, centerx + 4, centerx - 4 }, new int[] { centery - 4, centery, centery + 4 }, 3);
         }

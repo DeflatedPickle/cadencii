@@ -21,8 +21,8 @@ namespace cadencii.java.awt
     [Serializable]
     public struct Rectangle : Shape
     {
-        public int height;
-        public int width;
+        public int Height;
+        public int Width;
         public int x;
         public int y;
 
@@ -30,29 +30,29 @@ namespace cadencii.java.awt
         {
             x = 0;
             y = 0;
-            width = width_;
-            height = height_;
+            Width = width_;
+            Height = height_;
         }
 
         public Rectangle(int x_, int y_, int width_, int height_)
         {
             x = x_;
             y = y_;
-            width = width_;
-            height = height_;
+            Width = width_;
+            Height = height_;
         }
 
         public Rectangle(Rectangle r)
         {
             x = r.x;
             y = r.y;
-            width = r.width;
-            height = r.height;
+            Width = r.Width;
+            Height = r.Height;
         }
 
         public override string ToString()
         {
-            return "{x=" + x + ", y=" + y + ", width=" + width + ", height=" + height + "}";
+            return "{x=" + x + ", y=" + y + ", width=" + Width + ", height=" + Height + "}";
         }
     }
 
