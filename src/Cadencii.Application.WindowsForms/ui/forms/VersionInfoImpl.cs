@@ -25,7 +25,7 @@ namespace cadencii
 {
     using Graphics = cadencii.java.awt.Graphics;
 
-    public class VersionInfo : Form
+    public class VersionInfoImpl : FormImpl, VersionInfo
     {
         const float m_speed = 35f;
         const int m_height = 380;
@@ -51,7 +51,7 @@ namespace cadencii
         private System.Windows.Forms.Timer timer;
         private bool m_show_twitter_id = false;
 
-        public VersionInfo(string app_name, string version)
+        public VersionInfoImpl(string app_name, string version)
         {
             InitializeComponent();
             if (this.components == null) {

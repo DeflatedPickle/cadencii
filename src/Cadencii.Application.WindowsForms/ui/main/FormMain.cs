@@ -1144,9 +1144,9 @@ namespace cadencii
             FormCheckUnknownSingerAndResampler dialog = null;
             try {
                 if (check_unknown_singer || check_unknwon_resampler) {
-                    dialog = new FormCheckUnknownSingerAndResampler(singer_path.value, check_unknown_singer, resampler_path.value, check_unknwon_resampler);
+                    dialog = ApplicationUIHost.Create<FormCheckUnknownSingerAndResampler>(singer_path.value, check_unknown_singer, resampler_path.value, check_unknwon_resampler);
                     dialog.Location = getFormPreferedLocation(dialog);
-                    var dr = DialogManager.showModalDialog(dialog, this);
+                    var dr = DialogManager.showModalDialog((Form) dialog.Native, this);
                     if (dr != cadencii.java.awt.DialogResult.OK) {
                         return;
                     }
@@ -4580,14 +4580,14 @@ namespace cadencii
             }
             FormVibratoConfig dlg = null;
             try {
-                dlg = new FormVibratoConfig(
+                dlg = ApplicationUIHost.Create<FormVibratoConfig>(
                     ev.ID.VibratoHandle,
                     ev.ID.getLength(),
                     ApplicationGlobal.appConfig.DefaultVibratoLength,
                     type,
 					ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType);
                 dlg.Location = getFormPreferedLocation(dlg);
-                var dr = DialogManager.showModalDialog(dlg, this);
+                var dr = DialogManager.showModalDialog((Form) dlg.Native, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     VsqEvent edited = (VsqEvent)ev.clone();
                     if (dlg.getVibratoHandle() != null) {
@@ -5524,10 +5524,10 @@ namespace cadencii
             try {
                 int selected = EditorManager.Selected;
                 VsqFileEx vsq = MusicManager.getVsqFile();
-                ib = new InputBox(_("Input new name of track"));
+                ib = ApplicationUIHost.Create<InputBox>(_("Input new name of track"));
                 ib.setResult(vsq.Track[selected].getName());
                 ib.Location = getFormPreferedLocation(ib);
-                var dr = DialogManager.showModalDialog(ib, this);
+                var dr = DialogManager.showModalDialog((Form) ib.Native, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     string ret = ib.getResult();
                     CadenciiCommand run = new CadenciiCommand(
@@ -7559,14 +7559,14 @@ namespace cadencii
                                 }
                                 FormVibratoConfig dlg = null;
                                 try {
-                                    dlg = new FormVibratoConfig(
+                                    dlg = ApplicationUIHost.Create<FormVibratoConfig>(
                                         selectedEvent.ID.VibratoHandle,
                                         selectedEvent.ID.getLength(),
                                         ApplicationGlobal.appConfig.DefaultVibratoLength,
                                         type,
                                         ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType);
                                     dlg.Location = getFormPreferedLocation(dlg);
-                                    var dr = DialogManager.showModalDialog(dlg, this);
+                                    var dr = DialogManager.showModalDialog((Form) dlg.Native, this);
 									if (dr == cadencii.java.awt.DialogResult.OK) {
                                         VsqID t = (VsqID)selectedEvent.ID.clone();
                                         VibratoHandle handle = dlg.getVibratoHandle();
@@ -12224,9 +12224,9 @@ namespace cadencii
 
             FormShortcutKeys form = null;
             try {
-                form = new FormShortcutKeys(dict, this);
+                form = ApplicationUIHost.Create<FormShortcutKeys>(dict, this);
                 form.Location = getFormPreferedLocation(form);
-                var dr = DialogManager.showModalDialog(form, this);
+                var dr = DialogManager.showModalDialog((Form) form.Native, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     SortedDictionary<string, ValuePair<string, Keys[]>> res = form.getResult();
                     foreach (var display in res.Keys) {
@@ -12267,9 +12267,9 @@ namespace cadencii
         {
             FormVibratoPreset dialog = null;
             try {
-                dialog = new FormVibratoPreset(EditorManager.editorConfig.AutoVibratoCustom);
+                dialog = ApplicationUIHost.Create<FormVibratoPreset>(EditorManager.editorConfig.AutoVibratoCustom);
                 dialog.Location = getFormPreferedLocation(dialog);
-                var ret = DialogManager.showModalDialog(dialog, this);
+                var ret = DialogManager.showModalDialog((Form) dialog.Native, this);
 				if (ret != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }
@@ -12715,11 +12715,11 @@ namespace cadencii
         {
             InputBox dialog = null;
             try {
-                dialog = new InputBox(_("input pre-measure"));
+                dialog = ApplicationUIHost.Create<InputBox>(_("input pre-measure"));
                 int old_pre_measure = MusicManager.getVsqFile().getPreMeasure();
                 dialog.setResult(old_pre_measure + "");
                 dialog.Location = getFormPreferedLocation(dialog);
-                var ret = DialogManager.showModalDialog(dialog, this);
+                var ret = DialogManager.showModalDialog((Form) dialog.Native, this);
 				if (ret == cadencii.java.awt.DialogResult.OK) {
                     string str_result = dialog.getResult();
                     int result = old_pre_measure;
@@ -12758,7 +12758,7 @@ namespace cadencii
         {
             VsqFileEx vsq = MusicManager.getVsqFile();
 
-            FormSequenceConfig dialog = new FormSequenceConfig();
+            FormSequenceConfig dialog = ApplicationUIHost.Create<FormSequenceConfig>();
             int old_channels = vsq.config.WaveFileOutputChannel;
             bool old_output_master = vsq.config.WaveFileOutputFromMasterTrack;
             int old_sample_rate = vsq.config.SamplingRate;
@@ -12770,7 +12770,7 @@ namespace cadencii
             dialog.setPreMeasure(old_pre_measure);
 
             dialog.Location = getFormPreferedLocation(dialog);
-			if (DialogManager.showModalDialog(dialog, this) != cadencii.java.awt.DialogResult.OK) {
+			if (DialogManager.showModalDialog((Form) dialog.Native, this) != cadencii.java.awt.DialogResult.OK) {
                 return;
             }
 
@@ -14061,12 +14061,12 @@ namespace cadencii
 		EditorManager.getAssemblyNameAndFileVersion(typeof(cadencii.vsq.VsqFile)) + "\n" +
 		EditorManager.getAssemblyNameAndFileVersion(typeof(cadencii.math));
             if (mVersionInfo == null) {
-                mVersionInfo = new VersionInfo(_APP_NAME, version_str);
+                mVersionInfo = ApplicationUIHost.Create<VersionInfo>(_APP_NAME, version_str);
                 mVersionInfo.setAuthorList(_CREDIT);
                 mVersionInfo.Show();
             } else {
                 if (mVersionInfo.IsDisposed) {
-                    mVersionInfo = new VersionInfo(_APP_NAME, version_str);
+                    mVersionInfo = ApplicationUIHost.Create<VersionInfo>(_APP_NAME, version_str);
                     mVersionInfo.setAuthorList(_CREDIT);
                 }
                 mVersionInfo.Show();
@@ -16187,10 +16187,10 @@ namespace cadencii
             int index = menu.getBgmIndex();
             InputBox ib = null;
             try {
-                ib = new InputBox(_("Input Offset Seconds"));
+                ib = ApplicationUIHost.Create<InputBox>(_("Input Offset Seconds"));
                 ib.Location = getFormPreferedLocation(ib);
                 ib.setResult(MusicManager.getBgm(index).readOffsetSeconds + "");
-                cadencii.java.awt.DialogResult dr = DialogManager.showModalDialog(ib, this);
+                cadencii.java.awt.DialogResult dr = DialogManager.showModalDialog((Form) ib.Native, this);
                 if (dr != cadencii.java.awt.DialogResult.OK) {
                     return;
                 }

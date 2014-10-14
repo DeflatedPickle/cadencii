@@ -18,9 +18,9 @@ using cadencii.windows.forms;
 namespace cadencii.windows.forms
 {
 
-    public class InputBox : Form
+    public class InputBoxImpl : FormImpl, InputBox
     {
-        public InputBox(string message)
+        public InputBoxImpl(string message)
         {
             InitializeComponent();
             registerEventHandlers();

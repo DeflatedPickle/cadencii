@@ -213,6 +213,13 @@
     <Compile Include="forms\FormCompileResult.cs" />
     <Compile Include="forms\FormRandomize.cs" />
     <Compile Include="forms\FormGenerateKeySound.cs" />
+    <Compile Include="forms\FormShortcutKeys.cs" />
+    <Compile Include="forms\FormVibratoPreset.cs" />
+    <Compile Include="forms\FormSequenceConfig.cs" />
+    <Compile Include="forms\FormVibratoConfig.cs" />
+    <Compile Include="forms\FormCheckUnknownSingerAndResampler.cs" />
+    <Compile Include="forms\VersionInfo.cs" />
+    <Compile Include="forms\InputBox.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

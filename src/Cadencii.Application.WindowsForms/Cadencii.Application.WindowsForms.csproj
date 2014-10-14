@@ -108,46 +108,10 @@
       <DependentUpon>Preference.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="forms\FormCheckUnknownSingerAndResampler.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <EmbeddedResource Include="forms\FormCheckUnknownSingerAndResampler.resx">
-      <DependentUpon>FormCheckUnknownSingerAndResampler.cs</DependentUpon>
-    </EmbeddedResource>
-    <Compile Include="forms\FormSequenceConfig.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <EmbeddedResource Include="forms\FormSequenceConfig.resx">
-      <DependentUpon>FormSequenceConfig.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="forms\FormShortcutKeys.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <EmbeddedResource Include="forms\FormShortcutKeys.resx">
-      <DependentUpon>FormShortcutKeys.cs</DependentUpon>
-    </EmbeddedResource>
-    <Compile Include="forms\FormVibratoConfig.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <EmbeddedResource Include="forms\FormVibratoConfig.resx">
-      <DependentUpon>FormVibratoConfig.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="forms\FormVibratoPreset.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <EmbeddedResource Include="forms\FormVibratoPreset.resx">
-      <DependentUpon>FormVibratoPreset.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <Compile Include="controls\BgmMenuItem.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="TestFormWorker.cs" />
-    <Compile Include="forms\VersionInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="controls\TrackSelectorSingerDropdownMenuItem.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -247,9 +211,6 @@
     </Compile>
     <Compile Include="ui\forms\ExceptionNotifyFormUiImpl.cs" />
     <Compile Include="Util.cs" />
-    <Compile Include="forms\InputBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ui\controls\NumberTextBoxImpl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -336,6 +297,45 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ui\forms\FormGenerateKeySoundImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\FormShortcutKeysImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="ui\forms\FormShortcutKeysImpl.resx">
+      <DependentUpon>FormShortcutKeysImpl.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="ui\forms\FormVibratoPresetImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="ui\forms\FormVibratoPresetImpl.resx">
+      <DependentUpon>FormVibratoPresetImpl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="ui\forms\FormSequenceConfigImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="ui\forms\FormSequenceConfigImpl.resx">
+      <DependentUpon>FormSequenceConfigImpl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="ui\forms\FormVibratoConfigImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="ui\forms\FormVibratoConfigImpl.resx">
+      <DependentUpon>FormVibratoConfigImpl.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="ui\forms\FormCheckUnknownSingerAndResamplerImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="ui\forms\FormCheckUnknownSingerAndResamplerImpl.resx">
+      <DependentUpon>FormCheckUnknownSingerAndResamplerImpl.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="ui\forms\VersionInfoImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\InputBoxImpl.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -628,7 +628,6 @@
   <ItemGroup>
     <Folder Include="manual\" />
     <Folder Include="po\" />
-    <Folder Include="forms\" />
     <Folder Include="controls\" />
     <Folder Include="ui\controls\" />
   </ItemGroup>

@@ -24,7 +24,7 @@ using Keys = cadencii.java.awt.Keys;
 namespace cadencii
 {
 
-    public class FormVibratoConfig : System.Windows.Forms.Form
+	public class FormVibratoConfigImpl : FormImpl, FormVibratoConfig
     {
         private VibratoHandle m_vibrato;
         private int m_note_length;
@@ -37,7 +37,7 @@ namespace cadencii
         /// <param name="default_vibrato_length"></param>
         /// <param name="type"></param>
         /// <param name="use_original"></param>
-        public FormVibratoConfig(
+        public FormVibratoConfigImpl(
             VibratoHandle vibrato_handle,
             int note_length,
             DefaultVibratoLengthEnum default_vibrato_length,

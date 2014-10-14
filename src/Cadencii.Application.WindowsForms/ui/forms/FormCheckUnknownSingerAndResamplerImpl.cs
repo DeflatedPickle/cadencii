@@ -24,7 +24,7 @@ using cadencii.java.awt;
 namespace cadencii
 {
 
-    public class FormCheckUnknownSingerAndResampler : System.Windows.Forms.Form
+	public class FormCheckUnknownSingerAndResamplerImpl : FormImpl, FormCheckUnknownSingerAndResampler
     {
         /// <summary>
         /// コンストラクタ．
@@ -33,7 +33,7 @@ namespace cadencii
         /// <param name="apply_singer"></param>
         /// <param name="resampler"></param>
         /// <param name="apply_resampler"></param>
-        public FormCheckUnknownSingerAndResampler(string singer, bool apply_singer, string resampler, bool apply_resampler)
+        public FormCheckUnknownSingerAndResamplerImpl(string singer, bool apply_singer, string resampler, bool apply_resampler)
         {
             InitializeComponent();
             applyLanguage();

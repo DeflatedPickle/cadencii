@@ -24,7 +24,7 @@ using cadencii.windows.forms;
 namespace cadencii
 {
 
-    public class FormVibratoPreset : Form
+    public class FormVibratoPresetImpl : Form
     {
         /// <summary>
         /// プレビューの各グラフにおいて，上下に追加するマージンの高さ(ピクセル)
@@ -69,7 +69,7 @@ namespace cadencii
         /// コンストラクタ．
         /// </summary>
         /// <param name="handles"></param>
-        public FormVibratoPreset(List<VibratoHandle> handles)
+        public FormVibratoPresetImpl(List<VibratoHandle> handles)
         {
             InitializeComponent();
             applyLanguage();

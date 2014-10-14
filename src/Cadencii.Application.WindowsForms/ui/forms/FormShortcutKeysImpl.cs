@@ -24,7 +24,7 @@ using Keys = cadencii.java.awt.Keys;
 namespace cadencii
 {
 
-    public class FormShortcutKeys : Form
+    public class FormShortcutKeysImpl : FormImpl, FormShortcutKeys
     {
         /// <summary>
         /// カテゴリーのリスト
@@ -46,7 +46,7 @@ namespace cadencii
         /// コンストラクタ
         /// </summary>
         /// <param name="dict">メニューアイテムの表示文字列をキーとする，メニューアイテムのフィールド名とショートカットキーのペアを格納したマップ</param>
-        public FormShortcutKeys(SortedDictionary<string, ValuePair<string, Keys[]>> dict, FormMain main_form)
+        public FormShortcutKeysImpl(SortedDictionary<string, ValuePair<string, Keys[]>> dict, FormMain main_form)
         {
             try {
                 InitializeComponent();

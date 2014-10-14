@@ -28,9 +28,9 @@ using Keys = cadencii.java.awt.Keys;
 namespace cadencii
 {
 
-    class FormSequenceConfig : System.Windows.Forms.Form
+	class FormSequenceConfigImpl : FormImpl, FormSequenceConfig
     {
-        public FormSequenceConfig()
+        public FormSequenceConfigImpl()
         {
             InitializeComponent();
             applyLanguage();

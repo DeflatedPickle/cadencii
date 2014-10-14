@@ -21,6 +21,7 @@ namespace cadencii
 
 		int showDialog (object parentForm);
 
+		void Show ();
 		DialogResult ShowDialog ();
 	}
 }

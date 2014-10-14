@@ -5,15 +5,16 @@ using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii.vsq;
 using cadencii.windows.forms;
+using cadencii;
 
 public class GenerateVLF
 {
     public static bool Edit(VsqFile vsq)
     {
         int track = 1;
-        InputBox ib = new InputBox("Input target track index");
+        InputBox ib = ApplicationUIHost.Create<InputBox>("Input target track index");
         ib.setResult(track.ToString());
-        if (ib.ShowDialog() != DialogResult.OK) {
+        if (ib.ShowDialog() != cadencii.java.awt.DialogResult.OK) {
             return false;
         }
         if (!int.TryParse(ib.getResult(), out track)) {
