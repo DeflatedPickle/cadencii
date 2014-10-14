@@ -147,7 +147,7 @@ namespace cadencii
 #if !DEBUG
             } catch ( Exception ex ) {
                 String str_ex = getExceptionText( ex, 0 );
-                FormCompileResult dialog = new FormCompileResult(
+                FormCompileResult dialog = ApplicationUIHost.Create<FormCompileResult>(
                     _( "Failed to launch Cadencii. Please send the exception report to developer" ),
                     str_ex );
                 dialog.Text = _( "Error" );

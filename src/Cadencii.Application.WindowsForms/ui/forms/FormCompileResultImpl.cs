@@ -21,9 +21,9 @@ using cadencii.windows.forms;
 namespace cadencii
 {
 
-    public class FormCompileResult : System.Windows.Forms.Form
+    public class FormCompileResultImpl : FormImpl, FormCompileResult
     {
-        public FormCompileResult(string message, string errors)
+        public FormCompileResultImpl(string message, string errors)
         {
             InitializeComponent();
             registerEventHandlers();

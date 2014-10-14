@@ -18,6 +18,11 @@ namespace cadencii
 {
 	public class FormImpl : System.Windows.Forms.Form, UiForm
  	{
+		cadencii.java.awt.DialogResult UiForm.ShowDialog ()
+		{
+			return (cadencii.java.awt.DialogResult) ShowDialog ();
+		}
+
 		event EventHandler UiForm.LocationChanged {
 			add { this.LocationChanged += (sender, e) => value (sender, e); }
 			remove { this.LocationChanged -= (sender, e) => value (sender, e); }
@@ -31,6 +36,11 @@ namespace cadencii
 		event EventHandler UiForm.FormClosing {
 			add { this.FormClosing += (sender, e) => value (sender, e); }
 			remove { this.FormClosing -= (sender, e) => value (sender, e); }
+		}
+
+		event EventHandler UiForm.FormClosed {
+			add { this.FormClosed += (sender, e) => value (sender, e); }
+			remove { this.FormClosed -= (sender, e) => value (sender, e); }
 		}
 
 		int UiForm.showDialog (object parent_form)

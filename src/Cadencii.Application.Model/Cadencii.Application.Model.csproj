@@ -210,6 +210,9 @@
     <Compile Include="forms\FormImportLyric.cs" />
     <Compile Include="forms\FormMidiImExport.cs" />
     <Compile Include="guiextended\UiListView.cs" />
+    <Compile Include="forms\FormCompileResult.cs" />
+    <Compile Include="forms\FormRandomize.cs" />
+    <Compile Include="forms\FormGenerateKeySound.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

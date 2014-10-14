@@ -21,7 +21,7 @@ using cadencii.windows.forms;
 namespace cadencii
 {
 
-    public class FormRandomize : System.Windows.Forms.Form
+    public class FormRandomizeImpl : FormImpl, FormRandomize
     {
         private static bool lastPositionRandomizeEnabled = true;
         private static int lastPositionRandomizeValue = 3;
@@ -38,7 +38,7 @@ namespace cadencii
         /// </summary>
         private bool lockRequired = false;
 
-        public FormRandomize()
+        public FormRandomizeImpl()
         {
             InitializeComponent();
             registerEventHandlers();

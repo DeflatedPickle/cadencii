@@ -114,15 +114,6 @@
     <EmbeddedResource Include="forms\FormCheckUnknownSingerAndResampler.resx">
       <DependentUpon>FormCheckUnknownSingerAndResampler.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="forms\FormCompileResult.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\FormGenerateKeySound.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\FormRandomize.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="forms\FormSequenceConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -336,6 +327,15 @@
     <Compile Include="ui\winforms\ListViewColumnImpl.cs" />
     <Compile Include="ui\winforms\ListViewItemImpl.cs" />
     <Compile Include="ui\forms\FormMidiImExportImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\FormCompileResultImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\FormRandomizeImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\FormGenerateKeySoundImpl.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

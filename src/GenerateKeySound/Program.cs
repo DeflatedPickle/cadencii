@@ -117,9 +117,9 @@ namespace cadencii.generatekeysound
                 }
             }
             if (arguments == 0) {
-                Application.Run(new FormGenerateKeySound(false));
+                Application.Run((Form) ApplicationUIHost.Create<FormGenerateKeySound>(false).Native);
             } else {
-                FormGenerateKeySound.PrepareStartArgument arg = new FormGenerateKeySound.PrepareStartArgument();
+                PrepareStartArgument arg = new PrepareStartArgument();
                 arg.singer = singer;
                 arg.amplitude = amp;
                 arg.directory = dir;
@@ -154,7 +154,7 @@ namespace cadencii.generatekeysound
             Console.WriteLine("Options can be of the form -option or /option");
         }
 
-        private static void run(FormGenerateKeySound.PrepareStartArgument arg)
+        private static void run(PrepareStartArgument arg)
         {
             string singer = arg.singer;
             double amp = arg.amplitude;
@@ -170,7 +170,7 @@ namespace cadencii.generatekeysound
                 Console.Write("writing \"" + path + "\" ...");
                 if (replace || (!replace && !File.Exists(path))) {
                     try {
-                        FormGenerateKeySound.GenerateSinglePhone(i, singer, path, amp);
+                        FormGenerateKeySoundStatic.GenerateSinglePhone(i, singer, path, amp);
                         if (File.Exists(path)) {
                             try {
                                 Wave wv = new Wave(path);

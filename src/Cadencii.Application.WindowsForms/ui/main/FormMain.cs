@@ -9864,8 +9864,8 @@ namespace cadencii
                 if (dialog_result == 1) {
                     FormGenerateKeySound form = null;
                     try {
-                        form = new FormGenerateKeySound(true);
-                        form.FormClosed += new FormClosedEventHandler(FormGenerateKeySound_FormClosed);
+                        form = ApplicationUIHost.Create<FormGenerateKeySound>(true);
+                        form.FormClosed += FormGenerateKeySound_FormClosed;
                         form.ShowDialog();
                     } catch (Exception ex) {
                         Logger.write(typeof(FormMain) + ".FormMain_Load; ex=" + ex + "\n");
@@ -9889,7 +9889,7 @@ namespace cadencii
             }
         }
 
-        public void FormGenerateKeySound_FormClosed(Object sender, FormClosedEventArgs e)
+        public void FormGenerateKeySound_FormClosed(Object sender, EventArgs e)
         {
             try {
                 KeySoundPlayer.init();
@@ -12957,9 +12957,9 @@ namespace cadencii
         {
             FormRandomize dlg = null;
             try {
-                dlg = new FormRandomize();
+                dlg = ApplicationUIHost.Create<FormRandomize>();
                 dlg.Location = getFormPreferedLocation(dlg);
-                var dr = DialogManager.showModalDialog(dlg, this);
+                var dr = DialogManager.showModalDialog((Form) dlg.Native, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     VsqFileEx vsq = MusicManager.getVsqFile();
                     int preMeasure = vsq.getPreMeasure();
@@ -16382,7 +16382,7 @@ namespace cadencii
                 } else {
                     FormCompileResult dlg = null;
                     try {
-                        dlg = new FormCompileResult(_("Failed loading script."), ScriptServer.getCompileMessage(id));
+                        dlg = ApplicationUIHost.Create<FormCompileResult>(_("Failed loading script."), ScriptServer.getCompileMessage(id));
                         DialogManager.showModalDialog(dlg, this);
                     } catch (Exception ex) {
                         Logger.write(typeof(FormMain) + ".handleScriptMenuItem_Click; ex=" + ex + "\n");

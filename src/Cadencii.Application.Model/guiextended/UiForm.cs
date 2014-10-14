@@ -13,11 +13,14 @@ namespace cadencii
 
 		event EventHandler LocationChanged;
 		event EventHandler FormClosing;
+		event EventHandler FormClosed;
 
 		Point Location { get; set; }
 
 		string Text { get; set; }
 
 		int showDialog (object parentForm);
+
+		DialogResult ShowDialog ();
 	}
 }
