@@ -21,9 +21,9 @@ using Keys = cadencii.java.awt.Keys;
 namespace cadencii
 {
 
-    class FormTempoConfig : System.Windows.Forms.Form
+    class FormTempoConfigImpl : FormImpl, FormTempoConfig
     {
-        public FormTempoConfig(int bar_count, int beat, int beat_max, int clock, int clock_max, float tempo, int pre_measure)
+        public FormTempoConfigImpl(int bar_count, int beat, int beat_max, int clock, int clock_max, float tempo, int pre_measure)
         {
             InitializeComponent();
             registerEventHandlers();
@@ -40,7 +40,7 @@ namespace cadencii
             numClock.Maximum = clock_max;
             numClock.Value = clock;
             numTempo.Value = (decimal)tempo;
-            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            Util.applyFontRecurse((Form) ((UiForm) this).Native, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods
@@ -114,7 +114,7 @@ namespace cadencii
         /// 使用中のリソースをすべてクリーンアップします。
         /// </summary>
         /// <param name="disposing">マネージ リソースが破棄される場合 true、破棄されない場合は false です。</param>
-        protected override void Dispose(bool disposing)
+        protected void Dispose(bool disposing)
         {
             if (disposing && (components != null)) {
                 components.Dispose();

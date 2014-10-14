@@ -200,6 +200,7 @@
     <Compile Include="controls\RebarBandCollection.cs" />
     <Compile Include="controls\RebarBand.cs" />
     <Compile Include="forms\FormDeleteBar.cs" />
+    <Compile Include="forms\FormTempoConfig.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

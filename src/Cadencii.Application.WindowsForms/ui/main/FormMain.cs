@@ -2451,6 +2451,10 @@ namespace cadencii
         {
             return getFormPreferedLocation(dlg.Width, dlg.Height);
         }
+	public cadencii.java.awt.Point getFormPreferedLocation(UiForm dlg)
+        {
+            return getFormPreferedLocation((Form) dlg.Native).ToAwt ();
+        }
 
         public void updateLayout()
         {
@@ -13345,9 +13349,9 @@ namespace cadencii
                                 int clocks_in_beat = clocks_in_bar - (beat_in_bar - 1) * clock_per_beat;
                                 FormTempoConfig dlg = null;
                                 try {
-                                    dlg = new FormTempoConfig(bar_count, beat_in_bar, timesig.numerator, clocks_in_beat, clock_per_beat, (float)(6e7 / tte.Tempo), MusicManager.getVsqFile().getPreMeasure());
-                                    dlg.Location = getFormPreferedLocation(dlg);
-                                    var dr = DialogManager.showModalDialog(dlg, this);
+                                    dlg = ApplicationUIHost.Create<FormTempoConfig>(bar_count, beat_in_bar, timesig.numerator, clocks_in_beat, clock_per_beat, (float)(6e7 / tte.Tempo), MusicManager.getVsqFile().getPreMeasure());
+                                    dlg.Location = getFormPreferedLocation((Form)dlg.Native).ToAwt ();
+                                    var dr = DialogManager.showModalDialog((Form)dlg.Native, this);
                                     if (dr == cadencii.java.awt.DialogResult.OK) {
                                         int new_beat = dlg.getBeatCount();
                                         int new_clocks_in_beat = dlg.getClock();
@@ -13410,7 +13414,7 @@ namespace cadencii
                             int clocks_in_beat = clocks_in_bar - (beat_in_bar - 1) * clock_per_beat;
                             FormTempoConfig dlg = null;
                             try {
-                                dlg = new FormTempoConfig(bar_count - vsq.getPreMeasure() + 1,
+                                dlg = ApplicationUIHost.Create<FormTempoConfig>(bar_count - vsq.getPreMeasure() + 1,
                                                            beat_in_bar,
                                                            local_numerator,
                                                            clocks_in_beat,
@@ -13418,7 +13422,7 @@ namespace cadencii
                                                            (float)(6e7 / changing_tempo),
                                                            vsq.getPreMeasure());
                                 dlg.Location = getFormPreferedLocation(dlg);
-                                cadencii.java.awt.DialogResult dr = DialogManager.showModalDialog(dlg, this);
+                                cadencii.java.awt.DialogResult dr = DialogManager.showModalDialog((Control)dlg.Native, this);
                                 if (dr == cadencii.java.awt.DialogResult.OK) {
                                     int new_beat = dlg.getBeatCount();
                                     int new_clocks_in_beat = dlg.getClock();

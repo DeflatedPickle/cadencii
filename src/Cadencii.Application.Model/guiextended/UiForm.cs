@@ -16,6 +16,8 @@ namespace cadencii
 
 		Point Location { get; set; }
 
+		string Text { get; set; }
+
 		int showDialog (object parentForm);
 	}
 }
