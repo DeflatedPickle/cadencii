@@ -12793,20 +12793,20 @@ namespace cadencii
             int barcount = MusicManager.getVsqFile().getBarCountFromClock(clock);
             FormDeleteBar dlg = null;
             try {
-                dlg = new FormDeleteBar(total_barcount);
+                dlg = ApplicationUIHost.Create<FormDeleteBar>(total_barcount);
                 int draft = barcount - MusicManager.getVsqFile().getPreMeasure() + 1;
                 if (draft <= 0) {
                     draft = 1;
                 }
-                dlg.setStart(draft);
-                dlg.setEnd(draft + 1);
+                dlg.Start = (draft);
+                dlg.End = (draft + 1);
 
-                dlg.Location = getFormPreferedLocation(dlg);
-                var dr = DialogManager.showModalDialog(dlg, this);
+                dlg.Location = getFormPreferedLocation((Form) dlg.Native).ToAwt ();
+                var dr = DialogManager.showModalDialog((Form) dlg.Native, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     VsqFileEx temp = (VsqFileEx)MusicManager.getVsqFile().clone();
-                    int start = dlg.getStart() + MusicManager.getVsqFile().getPreMeasure() - 1;
-                    int end = dlg.getEnd() + MusicManager.getVsqFile().getPreMeasure() - 1;
+                    int start = dlg.Start + MusicManager.getVsqFile().getPreMeasure() - 1;
+                    int end = dlg.End + MusicManager.getVsqFile().getPreMeasure() - 1;
 #if DEBUG
                     CDebug.WriteLine("FormMain+menuJobDeleteBar_Click");
                     CDebug.WriteLine("    start,end=" + start + "," + end);

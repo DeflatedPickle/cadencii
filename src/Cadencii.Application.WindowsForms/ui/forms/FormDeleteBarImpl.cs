@@ -21,9 +21,9 @@ using cadencii.windows.forms;
 namespace cadencii
 {
 
-    class FormDeleteBar : System.Windows.Forms.Form
+    class FormDeleteBarImpl : FormImpl, FormDeleteBar
     {
-        public FormDeleteBar(int max_barcount)
+        public FormDeleteBarImpl(int max_barcount)
         {
             InitializeComponent();
             registerEventHandlers();
@@ -44,24 +44,14 @@ namespace cadencii
             btnCancel.Text = _("Cancel");
         }
 
-        public int getStart()
-        {
-            return (int)numStart.Value;
+        public int Start {
+			get { return (int)numStart.Value; }
+			set { numStart.Value = value; }
         }
 
-        public void setStart(int value)
-        {
-            numStart.Value = value;
-        }
-
-        public int getEnd()
-        {
-            return (int)numEnd.Value;
-        }
-
-        public void setEnd(int value)
-        {
-            numEnd.Value = value;
+        public int End {
+			get { return (int)numEnd.Value; }
+			set { numEnd.Value = value; }
         }
         #endregion
 

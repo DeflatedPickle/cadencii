@@ -117,9 +117,6 @@
     <Compile Include="forms\FormCompileResult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\FormDeleteBar.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="forms\FormGameControlerConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -333,6 +330,9 @@
     </Compile>
     <Compile Include="ui\controls\RebarImpl.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ui\forms\FormDeleteBarImpl.cs">
+      <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

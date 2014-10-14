@@ -199,6 +199,7 @@
     <Compile Include="controls\Rebar.cs" />
     <Compile Include="controls\RebarBandCollection.cs" />
     <Compile Include="controls\RebarBand.cs" />
+    <Compile Include="forms\FormDeleteBar.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
