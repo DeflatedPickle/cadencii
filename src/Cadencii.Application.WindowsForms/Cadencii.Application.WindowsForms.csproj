@@ -123,19 +123,10 @@
     <Compile Include="forms\FormImportLyric.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\FormInsertBar.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="forms\FormMidiImExport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\FormNoteExpressionConfig.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="forms\FormRandomize.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\FormRealtimeConfig.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\FormSequenceConfig.cs">
@@ -151,9 +142,6 @@
     <EmbeddedResource Include="forms\FormShortcutKeys.resx">
       <DependentUpon>FormShortcutKeys.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="forms\FormSingerStyleConfig.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="forms\FormVibratoConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -332,6 +320,18 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ui\forms\FormGameControllerConfigImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\FormSingerStyleConfigImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\FormInsertBarImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\FormRealtimeConfigImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\FormNoteExpressionConfigImpl.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

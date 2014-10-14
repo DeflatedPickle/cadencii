@@ -4637,23 +4637,23 @@ namespace cadencii
             }
             FormNoteExpressionConfig dlg = null;
             try {
-                dlg = new FormNoteExpressionConfig(type, ev.ID.NoteHeadHandle);
-                dlg.setPMBendDepth(ev.ID.PMBendDepth);
-                dlg.setPMBendLength(ev.ID.PMBendLength);
-                dlg.setPMbPortamentoUse(ev.ID.PMbPortamentoUse);
-                dlg.setDEMdecGainRate(ev.ID.DEMdecGainRate);
-                dlg.setDEMaccent(ev.ID.DEMaccent);
+                dlg = ApplicationUIHost.Create<FormNoteExpressionConfig>(type, ev.ID.NoteHeadHandle);
+                dlg.PMBendDepth = (ev.ID.PMBendDepth);
+                dlg.PMBendLength = (ev.ID.PMBendLength);
+                dlg.PMbPortamentoUse = (ev.ID.PMbPortamentoUse);
+                dlg.DEMdecGainRate = (ev.ID.DEMdecGainRate);
+                dlg.DEMaccent = (ev.ID.DEMaccent);
 
                 dlg.Location = getFormPreferedLocation(dlg);
-                var dr = DialogManager.showModalDialog(dlg, this);
+                var dr = DialogManager.showModalDialog((Form)dlg.Native, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     VsqEvent edited = (VsqEvent)ev.clone();
-                    edited.ID.PMBendDepth = dlg.getPMBendDepth();
-                    edited.ID.PMBendLength = dlg.getPMBendLength();
-                    edited.ID.PMbPortamentoUse = dlg.getPMbPortamentoUse();
-                    edited.ID.DEMdecGainRate = dlg.getDEMdecGainRate();
-                    edited.ID.DEMaccent = dlg.getDEMaccent();
-                    edited.ID.NoteHeadHandle = dlg.getEditedNoteHeadHandle();
+                    edited.ID.PMBendDepth = dlg.PMBendDepth;
+                    edited.ID.PMBendLength = dlg.PMBendLength;
+                    edited.ID.PMbPortamentoUse = dlg.PMbPortamentoUse;
+                    edited.ID.DEMdecGainRate = dlg.DEMdecGainRate;
+                    edited.ID.DEMaccent = dlg.DEMaccent;
+                    edited.ID.NoteHeadHandle = dlg.EditedNoteHeadHandle;
                     CadenciiCommand run = new CadenciiCommand(
                         VsqCommand.generateCommandEventChangeIDContaints(selected, ev.InternalID, edited.ID));
                     EditorManager.editHistory.register(vsq.executeCommand(run));
@@ -7488,22 +7488,22 @@ namespace cadencii
                                 }
                                 FormNoteExpressionConfig dlg = null;
                                 try {
-                                    dlg = new FormNoteExpressionConfig(type, selectedEvent.ID.NoteHeadHandle);
-                                    dlg.setPMBendDepth(selectedEvent.ID.PMBendDepth);
-                                    dlg.setPMBendLength(selectedEvent.ID.PMBendLength);
-                                    dlg.setPMbPortamentoUse(selectedEvent.ID.PMbPortamentoUse);
-                                    dlg.setDEMdecGainRate(selectedEvent.ID.DEMdecGainRate);
-                                    dlg.setDEMaccent(selectedEvent.ID.DEMaccent);
+                                    dlg = ApplicationUIHost.Create<FormNoteExpressionConfig>(type, selectedEvent.ID.NoteHeadHandle);
+                                    dlg.PMBendDepth = (selectedEvent.ID.PMBendDepth);
+                                    dlg.PMBendLength = (selectedEvent.ID.PMBendLength);
+                                    dlg.PMbPortamentoUse = (selectedEvent.ID.PMbPortamentoUse);
+                                    dlg.DEMdecGainRate = (selectedEvent.ID.DEMdecGainRate);
+                                    dlg.DEMaccent = (selectedEvent.ID.DEMaccent);
                                     dlg.Location = getFormPreferedLocation(dlg);
-                                    var dr = DialogManager.showModalDialog(dlg, this);
+                                    var dr = DialogManager.showModalDialog((Form) dlg.Native, this);
 									if (dr == cadencii.java.awt.DialogResult.OK) {
                                         VsqID id = (VsqID)selectedEvent.ID.clone();
-                                        id.PMBendDepth = dlg.getPMBendDepth();
-                                        id.PMBendLength = dlg.getPMBendLength();
-                                        id.PMbPortamentoUse = dlg.getPMbPortamentoUse();
-                                        id.DEMdecGainRate = dlg.getDEMdecGainRate();
-                                        id.DEMaccent = dlg.getDEMaccent();
-                                        id.NoteHeadHandle = dlg.getEditedNoteHeadHandle();
+                                        id.PMBendDepth = dlg.PMBendDepth;
+                                        id.PMBendLength = dlg.PMBendLength;
+                                        id.PMbPortamentoUse = dlg.PMbPortamentoUse;
+                                        id.DEMdecGainRate = dlg.DEMdecGainRate;
+                                        id.DEMaccent = dlg.DEMaccent;
+                                        id.NoteHeadHandle = dlg.EditedNoteHeadHandle;
                                         CadenciiCommand run = new CadenciiCommand(
                                             VsqCommand.generateCommandEventChangeIDContaints(selected, selectedEvent.InternalID, id));
                                         EditorManager.editHistory.register(vsq.executeCommand(run));
@@ -11733,23 +11733,23 @@ namespace cadencii
         {
             FormSingerStyleConfig dlg = null;
             try {
-                dlg = new FormSingerStyleConfig();
-                dlg.setPMBendDepth(ApplicationGlobal.appConfig.DefaultPMBendDepth);
-                dlg.setPMBendLength(ApplicationGlobal.appConfig.DefaultPMBendLength);
-                dlg.setPMbPortamentoUse(ApplicationGlobal.appConfig.DefaultPMbPortamentoUse);
-                dlg.setDEMdecGainRate(ApplicationGlobal.appConfig.DefaultDEMdecGainRate);
-                dlg.setDEMaccent(ApplicationGlobal.appConfig.DefaultDEMaccent);
+                dlg = ApplicationUIHost.Create<FormSingerStyleConfig>();
+                dlg.PMBendDepth = (ApplicationGlobal.appConfig.DefaultPMBendDepth);
+                dlg.PMBendLength = (ApplicationGlobal.appConfig.DefaultPMBendLength);
+                dlg.PMbPortamentoUse = (ApplicationGlobal.appConfig.DefaultPMbPortamentoUse);
+                dlg.DEMdecGainRate = (ApplicationGlobal.appConfig.DefaultDEMdecGainRate);
+                dlg.DEMaccent = (ApplicationGlobal.appConfig.DefaultDEMaccent);
 
                 int selected = EditorManager.Selected;
                 dlg.Location = getFormPreferedLocation(dlg);
-                var dr = DialogManager.showModalDialog(dlg, this);
+                var dr = DialogManager.showModalDialog((Form)dlg.Native, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
-                    ApplicationGlobal.appConfig.DefaultPMBendDepth = dlg.getPMBendDepth();
-                    ApplicationGlobal.appConfig.DefaultPMBendLength = dlg.getPMBendLength();
-                    ApplicationGlobal.appConfig.DefaultPMbPortamentoUse = dlg.getPMbPortamentoUse();
-                    ApplicationGlobal.appConfig.DefaultDEMdecGainRate = dlg.getDEMdecGainRate();
-                    ApplicationGlobal.appConfig.DefaultDEMaccent = dlg.getDEMaccent();
-                    if (dlg.getApplyCurrentTrack()) {
+                    ApplicationGlobal.appConfig.DefaultPMBendDepth = dlg.PMBendDepth;
+                    ApplicationGlobal.appConfig.DefaultPMBendLength = dlg.PMBendLength;
+                    ApplicationGlobal.appConfig.DefaultPMbPortamentoUse = dlg.PMbPortamentoUse;
+                    ApplicationGlobal.appConfig.DefaultDEMdecGainRate = dlg.DEMdecGainRate;
+                    ApplicationGlobal.appConfig.DefaultDEMaccent = dlg.DEMaccent;
+                    if (dlg.ApplyCurrentTrack) {
                         VsqFileEx vsq = MusicManager.getVsqFile();
                         VsqTrack vsq_track = vsq.Track[selected];
                         VsqTrack copy = (VsqTrack)vsq_track.clone();
@@ -12592,20 +12592,20 @@ namespace cadencii
             int total_barcount = MusicManager.getVsqFile().getBarCountFromClock(total_clock) + 1;
             FormInsertBar dlg = null;
             try {
-                dlg = new FormInsertBar(total_barcount);
+                dlg = ApplicationUIHost.Create<FormInsertBar>(total_barcount);
                 int current_clock = EditorManager.getCurrentClock();
                 int barcount = MusicManager.getVsqFile().getBarCountFromClock(current_clock);
                 int draft = barcount - MusicManager.getVsqFile().getPreMeasure() + 1;
                 if (draft <= 0) {
                     draft = 1;
                 }
-                dlg.setPosition(draft);
+                dlg.Position = (draft);
 
                 dlg.Location = getFormPreferedLocation(dlg);
-                var dr = DialogManager.showModalDialog(dlg, this);
+                var dr = DialogManager.showModalDialog((Control)dlg.Native, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
-                    int pos = dlg.getPosition() + MusicManager.getVsqFile().getPreMeasure() - 1;
-                    int length = dlg.getLength();
+                    int pos = dlg.Position + MusicManager.getVsqFile().getPreMeasure() - 1;
+                    int length = dlg.Length;
 
                     int clock_start = MusicManager.getVsqFile().getClockFromBarCount(pos);
                     int clock_end = MusicManager.getVsqFile().getClockFromBarCount(pos + length);
@@ -14378,22 +14378,22 @@ namespace cadencii
                 VsqEvent original = EditorManager.itemSelection.getLastEvent().original;
                 FormNoteExpressionConfig dlg = null;
                 try {
-                    dlg = new FormNoteExpressionConfig(type, original.ID.NoteHeadHandle);
+                    dlg = ApplicationUIHost.Create<FormNoteExpressionConfig>(type, original.ID.NoteHeadHandle);
                     int id = EditorManager.itemSelection.getLastEvent().original.InternalID;
-                    dlg.setPMBendDepth(original.ID.PMBendDepth);
-                    dlg.setPMBendLength(original.ID.PMBendLength);
-                    dlg.setPMbPortamentoUse(original.ID.PMbPortamentoUse);
-                    dlg.setDEMdecGainRate(original.ID.DEMdecGainRate);
-                    dlg.setDEMaccent(original.ID.DEMaccent);
-                    cadencii.java.awt.DialogResult dr = DialogManager.showModalDialog(dlg, this);
+                    dlg.PMBendDepth = (original.ID.PMBendDepth);
+                    dlg.PMBendLength = (original.ID.PMBendLength);
+                    dlg.PMbPortamentoUse = (original.ID.PMbPortamentoUse);
+                    dlg.DEMdecGainRate = (original.ID.DEMdecGainRate);
+                    dlg.DEMaccent = (original.ID.DEMaccent);
+                    cadencii.java.awt.DialogResult dr = DialogManager.showModalDialog((Form) dlg.Native, this);
                     if (dr == cadencii.java.awt.DialogResult.OK) {
                         VsqID copy = (VsqID)original.ID.clone();
-                        copy.PMBendDepth = dlg.getPMBendDepth();
-                        copy.PMBendLength = dlg.getPMBendLength();
-                        copy.PMbPortamentoUse = dlg.getPMbPortamentoUse();
-                        copy.DEMdecGainRate = dlg.getDEMdecGainRate();
-                        copy.DEMaccent = dlg.getDEMaccent();
-                        copy.NoteHeadHandle = dlg.getEditedNoteHeadHandle();
+                        copy.PMBendDepth = dlg.PMBendDepth;
+                        copy.PMBendLength = dlg.PMBendLength;
+                        copy.PMbPortamentoUse = dlg.PMbPortamentoUse;
+                        copy.DEMdecGainRate = dlg.DEMdecGainRate;
+                        copy.DEMaccent = dlg.DEMaccent;
+                        copy.NoteHeadHandle = dlg.EditedNoteHeadHandle;
                         CadenciiCommand run = new CadenciiCommand(
                             VsqCommand.generateCommandEventChangeIDContaints(selected, id, copy));
                         EditorManager.editHistory.register(vsq.executeCommand(run));

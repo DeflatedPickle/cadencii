@@ -22,12 +22,12 @@ using Keys = cadencii.java.awt.Keys;
 
 namespace cadencii
 {
-    public class FormNoteExpressionConfig : Form
+    public class FormNoteExpressionConfigImpl : FormImpl, FormNoteExpressionConfig
     {
         bool m_apply_current_track = false;
         NoteHeadHandle m_note_head_handle = null;
 
-        public FormNoteExpressionConfig(SynthesizerType type, NoteHeadHandle note_head_handle)
+        public FormNoteExpressionConfigImpl(SynthesizerType type, NoteHeadHandle note_head_handle)
         {
             InitializeComponent();
             registerEventHandlers();
@@ -92,10 +92,11 @@ namespace cadencii
         }
 
         #region public methods
-        public NoteHeadHandle getEditedNoteHeadHandle()
-        {
-            return m_note_head_handle;
-        }
+        public NoteHeadHandle EditedNoteHeadHandle {
+			get {
+				return m_note_head_handle;
+			}
+		}
 
         public void applyLanguage()
         {
@@ -125,80 +126,81 @@ namespace cadencii
             this.Text = _("Expression control property");
         }
 
-        public int getPMBendDepth()
-        {
-            return trackBendDepth.Value;
-        }
+        public int PMBendDepth {
+			get {
+				return trackBendDepth.Value;
+			}
 
-        public void setPMBendDepth(int value)
-        {
-            trackBendDepth.Value = value;
-            txtBendDepth.Text = value + "";
-        }
+			set {
+				trackBendDepth.Value = value;
+				txtBendDepth.Text = value + "";
+			}
+		}
 
-        public int getPMBendLength()
-        {
-            return trackBendLength.Value;
-        }
+        public int PMBendLength {
+			get {
+				return trackBendLength.Value;
+			}
 
-        public void setPMBendLength(int value)
-        {
-            trackBendLength.Value = value;
-            txtBendLength.Text = value + "";
-        }
+			set {
+				trackBendLength.Value = value;
+				txtBendLength.Text = value + "";
+			}
+		}
 
-        public int getPMbPortamentoUse()
-        {
-            int ret = 0;
-            if (chkUpPortamento.Checked) {
-                ret += 1;
-            }
-            if (chkDownPortamento.Checked) {
-                ret += 2;
-            }
-            return ret;
-        }
+        public int PMbPortamentoUse {
+			get {
+				int ret = 0;
+				if (chkUpPortamento.Checked) {
+					ret += 1;
+				}
+				if (chkDownPortamento.Checked) {
+					ret += 2;
+				}
+				return ret;
+			}
 
-        public void setPMbPortamentoUse(int value)
-        {
-            if (value % 2 == 1) {
-                chkUpPortamento.Checked = true;
-            } else {
-                chkUpPortamento.Checked = false;
-            }
-            if (value >= 2) {
-                chkDownPortamento.Checked = true;
-            } else {
-                chkDownPortamento.Checked = false;
-            }
-        }
+			set {
+				if (value % 2 == 1) {
+					chkUpPortamento.Checked = true;
+				} else {
+					chkUpPortamento.Checked = false;
+				}
+				if (value >= 2) {
+					chkDownPortamento.Checked = true;
+				} else {
+					chkDownPortamento.Checked = false;
+				}
+			}
+		}
 
-        public int getDEMdecGainRate()
-        {
-            return trackDecay.Value;
-        }
+        public int DEMdecGainRate {
+			get {
+				return trackDecay.Value;
+			}
 
-        public void setDEMdecGainRate(int value)
-        {
-            trackDecay.Value = value;
-            txtDecay.Text = value + "";
-        }
+			set {
+				trackDecay.Value = value;
+				txtDecay.Text = value + "";
+			}
+		}
 
-        public int getDEMaccent()
-        {
-            return trackAccent.Value;
-        }
+        public int DEMaccent {
+			get {
+				return trackAccent.Value;
+			}
 
-        public void setDEMaccent(int value)
-        {
-            trackAccent.Value = value;
-            txtAccent.Text = value + "";
-        }
+			set {
+				trackAccent.Value = value;
+				txtAccent.Text = value + "";
+			}
+		}
 
-        public bool getApplyCurrentTrack()
-        {
-            return m_apply_current_track;
-        }
+        public bool ApplyCurrentTrack {
+			get {
+				return m_apply_current_track;
+			}
+		}
         #endregion
 
         #region helper methods
@@ -384,11 +386,11 @@ namespace cadencii
             int[] pmb_portamento_use = new int[] { 0, 0, 0, 3, 3 };
             int[] dem_dec_gain_rate = new int[] { 50, 50, 70, 50, 50 };
             int[] dem_accent = new int[] { 50, 68, 80, 42, 25 };
-            setPMBendDepth(pm_bend_depth[index]);
-            setPMBendLength(pm_bend_length[index]);
-            setPMbPortamentoUse(pmb_portamento_use[index]);
-            setDEMdecGainRate(dem_dec_gain_rate[index]);
-            setDEMaccent(dem_accent[index]);
+            PMBendDepth = (pm_bend_depth[index]);
+            PMBendLength = (pm_bend_length[index]);
+            PMbPortamentoUse = (pmb_portamento_use[index]);
+            DEMdecGainRate = (dem_dec_gain_rate[index]);
+            DEMaccent = (dem_accent[index]);
         }
 
         public void btnApply_Click(Object sender, EventArgs e)

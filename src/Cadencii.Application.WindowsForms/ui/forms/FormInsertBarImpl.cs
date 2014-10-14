@@ -21,9 +21,9 @@ using cadencii.windows.forms;
 namespace cadencii
 {
 
-    public class FormInsertBar : Form
+    public class FormInsertBarImpl : FormImpl, FormInsertBar
     {
-        public FormInsertBar(int max_position)
+        public FormInsertBarImpl(int max_position)
         {
             InitializeComponent();
             registerEventHandlers();
@@ -52,25 +52,25 @@ namespace cadencii
             lblPositionPrefix.Left = numPosition.Left - lblPositionPrefix.Width;
         }
 
-        public int getLength()
-        {
-            return (int)numLength.Value;
-        }
+        public int Length {
+			get {
+				return (int)numLength.Value;
+			}
 
-        public void setLength(int value)
-        {
-            numLength.Value = value;
-        }
+			set {
+				numLength.Value = value;
+			}
+		}
 
-        public int getPosition()
-        {
-            return (int)numPosition.Value;
-        }
+        public int Position {
+			get {
+				return (int)numPosition.Value;
+			}
 
-        public void setPosition(int value)
-        {
-            numPosition.Value = value;
-        }
+			set {
+				numPosition.Value = value;
+			}
+		}
         #endregion
 
         #region helper methods

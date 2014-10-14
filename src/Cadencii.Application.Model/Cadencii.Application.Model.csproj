@@ -203,6 +203,10 @@
     <Compile Include="forms\FormTempoConfig.cs" />
     <Compile Include="forms\FormTrackProperty.cs" />
     <Compile Include="forms\FormGameControllerConfig.cs" />
+    <Compile Include="forms\FormSingerStyleConfig.cs" />
+    <Compile Include="forms\FormInsertBar.cs" />
+    <Compile Include="forms\FormRealtimeConfig.cs" />
+    <Compile Include="forms\FormNoteExpressionConfig.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -19,13 +19,13 @@ using cadencii.apputil;
 namespace cadencii
 {
 
-    public class FormRealtimeConfig : System.Windows.Forms.Form
+    public class FormRealtimeConfigImpl : FormImpl, FormRealtimeConfig
     {
         private bool m_game_ctrl_enabled = false;
         private double m_last_event_processed;
         private System.Windows.Forms.Timer timer;
 
-        public FormRealtimeConfig()
+        public FormRealtimeConfigImpl()
         {
             InitializeComponent();
             timer = new System.Windows.Forms.Timer(this.components);
