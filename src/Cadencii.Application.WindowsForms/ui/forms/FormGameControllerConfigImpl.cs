@@ -23,14 +23,14 @@ using cadencii.windows.forms;
 namespace cadencii
 {
 
-    public class FormGameControlerConfig : System.Windows.Forms.Form
+    public class FormGameControllerConfigImpl : FormImpl, FormGameControllerConfig
     {
         private List<int> m_list = new List<int>();
         private List<int> m_povs = new List<int>();
         private int index;
         private System.Windows.Forms.Timer timer;
 
-        public FormGameControlerConfig()
+        public FormGameControllerConfigImpl()
         {
             InitializeComponent();
 

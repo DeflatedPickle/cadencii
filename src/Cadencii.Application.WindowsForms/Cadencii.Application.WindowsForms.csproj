@@ -117,9 +117,6 @@
     <Compile Include="forms\FormCompileResult.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\FormGameControlerConfig.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="forms\FormGenerateKeySound.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,9 +152,6 @@
       <DependentUpon>FormShortcutKeys.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="forms\FormSingerStyleConfig.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\FormTrackProperty.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\FormVibratoConfig.cs">
@@ -332,6 +326,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ui\forms\FormTempoConfigImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\FormTrackPropertyImpl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\forms\FormGameControllerConfigImpl.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

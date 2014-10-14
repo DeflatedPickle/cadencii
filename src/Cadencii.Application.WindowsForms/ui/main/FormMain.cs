@@ -11797,11 +11797,11 @@ namespace cadencii
 
         public void menuSettingGameControlerSetting_Click(Object sender, EventArgs e)
         {
-            FormGameControlerConfig dlg = null;
+            FormGameControllerConfig dlg = null;
             try {
-                dlg = new FormGameControlerConfig();
+                dlg = ApplicationUIHost.Create<FormGameControllerConfig>();
                 dlg.Location = getFormPreferedLocation(dlg);
-                var dr = DialogManager.showModalDialog(dlg, this);
+                var dr = DialogManager.showModalDialog((Form) dlg.Native, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     EditorManager.editorConfig.GameControlerRectangle = dlg.getRectangle();
                     EditorManager.editorConfig.GameControlerTriangle = dlg.getTriangle();

@@ -22,11 +22,11 @@ using cadencii.windows.forms;
 namespace cadencii
 {
 
-    public class FormTrackProperty : Form
+    public class FormTrackPropertyImpl : FormImpl, FormTrackProperty
     {
         private int m_master_tuning;
 
-        public FormTrackProperty(int master_tuning_in_cent)
+        public FormTrackPropertyImpl(int master_tuning_in_cent)
         {
             InitializeComponent();
             registerEventHandlers();
