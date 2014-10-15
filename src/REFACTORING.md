@@ -54,9 +54,7 @@ Projects / Assemblies
 Milestones
 ----------
 
-- replace event handler methods into UI commands and actions.
-- Move some more forms to platform agnostic application model dll.
-- Move controls to (ditto).
+- Replace event handler methods into UI commands and actions.
 - Reduce Win32-ism.
 - Modify GUI framework to better fit with either WPF or Xwt.
 
