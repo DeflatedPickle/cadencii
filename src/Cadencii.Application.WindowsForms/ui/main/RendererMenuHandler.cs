@@ -25,9 +25,9 @@ namespace cadencii
     class RendererMenuHandler
     {
         public RendererMenuHandler(RendererKind kind,
-                                       ToolStripMenuItem track_menu,
-                                       ToolStripMenuItem context_menu,
-                                       ToolStripMenuItem vsti_ui_menu)
+                                       UiToolStripMenuItem track_menu,
+                                       UiToolStripMenuItem context_menu,
+                                       UiToolStripMenuItem vsti_ui_menu)
         {
             kind_ = kind;
             track_menu_ = track_menu;
@@ -64,9 +64,9 @@ namespace cadencii
 
         public RendererKind RendererKind { get { return kind_; } }
 
-        protected ToolStripMenuItem track_menu_;
-        protected ToolStripMenuItem context_menu_;
-        protected ToolStripMenuItem vsti_ui_menu_;
+        protected UiToolStripMenuItem track_menu_;
+        protected UiToolStripMenuItem context_menu_;
+        protected UiToolStripMenuItem vsti_ui_menu_;
         protected readonly RendererKind kind_;
     }
 }

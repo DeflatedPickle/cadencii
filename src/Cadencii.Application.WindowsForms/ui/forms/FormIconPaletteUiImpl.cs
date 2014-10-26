@@ -255,8 +255,8 @@ namespace cadencii
         private void InitializeComponent()
         {
             this.menuBar = new MenuStrip();
-            this.menuWindow = new ToolStripMenuItem();
-            this.menuWindowHide = new ToolStripMenuItem();
+            this.menuWindow = new ToolStripMenuItemImpl();
+            this.menuWindowHide = new ToolStripMenuItemImpl();
             this.menuBar.SuspendLayout();
             this.SuspendLayout();
             // 

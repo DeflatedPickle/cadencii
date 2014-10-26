@@ -26,6 +26,11 @@ namespace cadencii
 
 		bool isMouseMiddleButtonDowned (cadencii.java.awt.MouseButtons mouseButtons);
 
+		UiContextMenuStrip cMenuTrackTab { get; set; }
+		UiContextMenuStrip cMenuTrackSelector { get; set; }
+
+		TrackSelector trackSelector { get; set; }
+
 		UiHScrollBar hScroll { get; set; }
 
 		PictPianoRoll pictPianoRoll { get; set; }

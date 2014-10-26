@@ -42,8 +42,8 @@ namespace cadencii.xml
 
         public XmlRectangle(Rectangle rc)
         {
-            x = rc.x;
-            y = rc.y;
+            x = rc.X;
+            y = rc.Y;
             width = rc.Width;
             height = rc.Height;
         }

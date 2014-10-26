@@ -7,6 +7,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Cadencii.Gui.Framework</RootNamespace>
     <AssemblyName>Cadencii.Gui.Framework</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -88,6 +89,13 @@
     <Compile Include="models\winforms\FixedPanel.cs" />
     <Compile Include="models\winforms\Orientation.cs" />
     <Compile Include="models\winforms\View.cs" />
+    <Compile Include="models\winforms\ToolBarButtonStyle.cs" />
+    <Compile Include="models\winforms\ToolStripItemDisplayStyle.cs" />
+    <Compile Include="models\winforms\ToolStripItemImageScaling.cs" />
+    <Compile Include="models\winforms\ToolStripRenderMode.cs" />
+    <Compile Include="models\winforms\TextImageRelation.cs" />
+    <Compile Include="models\winforms\CheckState.cs" />
+    <Compile Include="models\winforms\TickStyle.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

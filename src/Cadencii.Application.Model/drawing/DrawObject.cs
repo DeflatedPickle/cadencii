@@ -134,7 +134,7 @@ namespace cadencii
 
         public int compareTo(DrawObject item)
         {
-            return mRectangleInPixel.x - item.mRectangleInPixel.x;
+            return mRectangleInPixel.X - item.mRectangleInPixel.X;
         }
 
         public int CompareTo(DrawObject item)

@@ -68,14 +68,14 @@ namespace cadencii
             /// <summary>
             /// ショートカットキーとの紐付けを行う相手先のメニューアイテム
             /// </summary>
-            public ToolStripMenuItem menu;
+            public UiToolStripMenuItem menu;
 
             /// <summary>
             /// ショートカットキーとメニューアイテムを指定したコンストラクタ
             /// </summary>
             /// <param name="shortcut">ショートカットキー</param>
             /// <param name="menu">ショートカットキーとの紐付けを行うメニューアイテム</param>
-            public SpecialShortcutHolder(Keys shortcut, ToolStripMenuItem menu)
+            public SpecialShortcutHolder(Keys shortcut, UiToolStripMenuItem menu)
             {
                 this.shortcut = shortcut;
                 this.menu = menu;
@@ -414,7 +414,7 @@ namespace cadencii
         public PropertyPanelContainer mPropertyPanelContainer;
 #endif
 #if ENABLE_SCRIPT
-        public List<System.Windows.Forms.ToolBarButton> mPaletteTools = new List<System.Windows.Forms.ToolBarButton>();
+        public List<UiToolBarButton> mPaletteTools = new List<UiToolBarButton>();
 #endif
 
         /// <summary>
@@ -715,11 +715,11 @@ namespace cadencii
 
             updatePropertyPanelState(EditorManager.editorConfig.PropertyWindowStatus.State);
 
-            pictPianoRoll.MouseWheel += new NMouseEventHandler(pictPianoRoll_MouseWheel);
-            trackSelector.MouseWheel += new NMouseEventHandler(trackSelector_MouseWheel);
-            picturePositionIndicator.MouseWheel += new MouseEventHandler(picturePositionIndicator_MouseWheel);
+            pictPianoRoll.MouseWheel += pictPianoRoll_MouseWheel;
+            trackSelector.MouseWheel += trackSelector_MouseWheel;
+            picturePositionIndicator.MouseWheel += picturePositionIndicator_MouseWheel;
 
-            menuVisualOverview.CheckedChanged += new EventHandler(menuVisualOverview_CheckedChanged);
+            menuVisualOverview.CheckedChanged += menuVisualOverview_CheckedChanged;
 
             hScroll.Maximum = MusicManager.getVsqFile().TotalClocks + 240;
             hScroll.LargeChange = 240 * 4;
@@ -867,7 +867,7 @@ namespace cadencii
             Point p1 = EditorManager.editorConfig.FormIconPaletteLocation.toPoint();
 			if (!cadencii.core2.PortUtil.isPointInScreens(p1)) {
 				Rectangle workingArea = cadencii.core2.PortUtil.getWorkingArea(this);
-                p1 = new Point(workingArea.x, workingArea.y);
+                p1 = new Point(workingArea.X, workingArea.Y);
             }
             EditorManager.iconPalette.Location = new Point(p1.X, p1.Y);
             if (EditorManager.editorConfig.IconPaletteVisible) {
@@ -908,16 +908,16 @@ namespace cadencii
                 this.WindowState = FormWindowState.Normal;
             }
             Rectangle bounds = EditorManager.editorConfig.WindowRect;
-            this.Bounds = new System.Drawing.Rectangle(bounds.x, bounds.y, bounds.Width, bounds.Height);
+            this.Bounds = new System.Drawing.Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
             // ウィンドウ位置・サイズの設定値が、使えるディスプレイのどれにも被っていない場合
 			Rectangle rc2 = cadencii.core2.PortUtil.getScreenBounds(this);
-            if (bounds.x < rc2.x ||
-                 rc2.x + rc2.Width < bounds.x + bounds.Width ||
-                 bounds.y < rc2.y ||
-                 rc2.y + rc2.Height < bounds.y + bounds.Height) {
-                bounds.x = rc2.x;
-                bounds.y = rc2.y;
-                this.Bounds = new System.Drawing.Rectangle(bounds.x, bounds.y, bounds.Width, bounds.Height);
+            if (bounds.X < rc2.X ||
+                 rc2.X + rc2.Width < bounds.X + bounds.Width ||
+                 bounds.Y < rc2.Y ||
+                 rc2.Y + rc2.Height < bounds.Y + bounds.Height) {
+                bounds.X = rc2.X;
+                bounds.Y = rc2.Y;
+                this.Bounds = new System.Drawing.Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
                 EditorManager.editorConfig.WindowRect = bounds;
             }
             this.LocationChanged += new EventHandler(FormMain_LocationChanged);
@@ -927,7 +927,7 @@ namespace cadencii
 
             // プロパティウィンドウの位置を復元
 			Rectangle rc1 = cadencii.core2.PortUtil.getScreenBounds(this);
-            Rectangle rcScreen = new Rectangle(rc1.x, rc1.y, rc1.Width, rc1.Height);
+            Rectangle rcScreen = new Rectangle(rc1.X, rc1.Y, rc1.Width, rc1.Height);
             var p = this.Location;
             XmlRectangle xr = EditorManager.editorConfig.PropertyWindowStatus.Bounds;
             Point p0 = new Point(xr.x, xr.y);
@@ -937,17 +937,17 @@ namespace cadencii
                                           EditorManager.editorConfig.PropertyWindowStatus.Bounds.getWidth(),
                                           EditorManager.editorConfig.PropertyWindowStatus.Bounds.getHeight());
 
-            if (a.Y > rcScreen.y + rcScreen.Height) {
-                a = new Point(a.X, rcScreen.y + rcScreen.Height - rc.Height);
+            if (a.Y > rcScreen.Y + rcScreen.Height) {
+                a = new Point(a.X, rcScreen.Y + rcScreen.Height - rc.Height);
             }
-            if (a.Y < rcScreen.y) {
-                a = new Point(a.X, rcScreen.y);
+            if (a.Y < rcScreen.Y) {
+                a = new Point(a.X, rcScreen.Y);
             }
-            if (a.X > rcScreen.x + rcScreen.Width) {
-                a = new Point(rcScreen.x + rcScreen.Width - rc.Width, a.Y);
+            if (a.X > rcScreen.X + rcScreen.Width) {
+                a = new Point(rcScreen.X + rcScreen.Width - rc.Width, a.Y);
             }
-            if (a.X < rcScreen.x) {
-                a = new Point(rcScreen.x, a.Y);
+            if (a.X < rcScreen.X) {
+                a = new Point(rcScreen.X, a.Y);
             }
 #if DEBUG
             CDebug.WriteLine("FormMain_Load; a=" + a);
@@ -1225,15 +1225,14 @@ namespace cadencii
             if (delta > 0) {
                 // 項目を増やさないといけない
                 for (int i = 0; i < delta; i++) {
-                    System.Windows.Forms.ToolStripMenuItem item =
-                        new System.Windows.Forms.ToolStripMenuItem(
+                    var item = new ToolStripMenuItemImpl(
                             "", null, new EventHandler(handleVibratoPresetSubelementClick));
                     menuLyricCopyVibratoToPreset.DropDownItems.Add(item);
                 }
             } else if (delta < 0) {
                 // 項目を減らさないといけない
                 for (int i = 0; i < -delta; i++) {
-                    System.Windows.Forms.ToolStripItem item = menuLyricCopyVibratoToPreset.DropDownItems[0];
+                    var item = menuLyricCopyVibratoToPreset.DropDownItems[0];
                     menuLyricCopyVibratoToPreset.DropDownItems.RemoveAt(0);
                     item.Dispose();
                 }
@@ -1695,8 +1694,8 @@ namespace cadencii
 
                 for (int i = 0; i < count; i++) {
                     DrawObject dobj = dobj_list[i];
-                    int x = dobj.mRectangleInPixel.x + key_width - start_to_draw_x;
-                    int y = dobj.mRectangleInPixel.y - start_to_draw_y;
+                    int x = dobj.mRectangleInPixel.X + key_width - start_to_draw_x;
+                    int y = dobj.mRectangleInPixel.Y - start_to_draw_y;
                     if (mouse_position.X < x) {
                         continue;
                     }
@@ -2228,7 +2227,7 @@ namespace cadencii
             if (count > 0) {
                 for (int i = 0; i < count; i++) {
                     BgmFile item = MusicManager.getBgm(i);
-                    var menu = new ToolStripMenuItem();
+                    var menu = new ToolStripMenuItemImpl();
                     menu.Text = PortUtil.getFileName(item.file);
                     menu.ToolTipText = item.file;
 
@@ -2254,9 +2253,9 @@ namespace cadencii
 
                     menuTrackBgm.DropDownItems.Add(menu);
                 }
-                menuTrackBgm.DropDownItems.Add(new ToolStripSeparator());
+                menuTrackBgm.DropDownItems.Add(new ToolStripSeparatorImpl());
             }
-            var menu_add = new ToolStripMenuItem();
+            var menu_add = new ToolStripMenuItemImpl();
             menu_add.Text = _("Add");
             menu_add.Click += new EventHandler(handleBgmAdd_Click);
             menuTrackBgm.DropDownItems.Add(menu_add);
@@ -2372,12 +2371,12 @@ namespace cadencii
         public Object searchMenuItemRecurse(string name, Object tree, ByRef<Object> parent)
         {
             string tree_name = "";
-            System.Windows.Forms.ToolStripMenuItem menu = null;
-            if (tree is System.Windows.Forms.ToolStripItem) {
-                if (tree is System.Windows.Forms.ToolStripMenuItem) {
-                    menu = (System.Windows.Forms.ToolStripMenuItem)tree;
+            UiToolStripMenuItem menu = null;
+            if (tree is UiToolStripItem) {
+                if (tree is UiToolStripMenuItem) {
+                    menu = (UiToolStripMenuItem)tree;
                 }
-                tree_name = ((System.Windows.Forms.ToolStripItem)tree).Name;
+                tree_name = ((UiToolStripItem)tree).Name;
             } else {
                 return null;
             }
@@ -2391,10 +2390,10 @@ namespace cadencii
                 }
                 int count = menu.DropDownItems.Count;
                 for (int i = 0; i < count; i++) {
-                    System.Windows.Forms.ToolStripItem tsi = menu.DropDownItems[i];
+                    UiToolStripItem tsi = menu.DropDownItems[i];
                     string tsi_name = "";
-                    if (tsi is System.Windows.Forms.ToolStripItem) {
-                        tsi_name = ((System.Windows.Forms.ToolStripItem)tsi).Name;
+                    if (tsi is UiToolStripItem) {
+                        tsi_name = ((UiToolStripItem)tsi).Name;
                     } else {
                         continue;
                     }
@@ -2422,22 +2421,22 @@ namespace cadencii
 			Point mouse = cadencii.core2.PortUtil.getMousePosition();
 			Rectangle rcScreen = cadencii.core2.PortUtil.getWorkingArea(this);
             int top = mouse.Y - dialogHeight / 2;
-            if (top + dialogHeight > rcScreen.y + rcScreen.Height) {
+            if (top + dialogHeight > rcScreen.Y + rcScreen.Height) {
                 // ダイアログの下端が隠れる場合、位置をずらす
-                top = rcScreen.y + rcScreen.Height - dialogHeight;
+                top = rcScreen.Y + rcScreen.Height - dialogHeight;
             }
-            if (top < rcScreen.y) {
+            if (top < rcScreen.Y) {
                 // ダイアログの上端が隠れる場合、位置をずらす
-                top = rcScreen.y;
+                top = rcScreen.Y;
             }
             int left = mouse.X - dialogWidth / 2;
-            if (left + dialogWidth > rcScreen.x + rcScreen.Width) {
+            if (left + dialogWidth > rcScreen.X + rcScreen.Width) {
                 // ダイアログの右端が隠れる場合，位置をずらす
-                left = rcScreen.x + rcScreen.Width - dialogWidth;
+                left = rcScreen.X + rcScreen.Width - dialogWidth;
             }
-            if (left < rcScreen.x) {
+            if (left < rcScreen.X) {
                 // ダイアログの左端が隠れる場合，位置をずらす
-                left = rcScreen.x;
+                left = rcScreen.X;
             }
             return new System.Drawing.Point(left, top);
         }
@@ -2674,8 +2673,8 @@ namespace cadencii
                 string desc = ipt.getDescription(lang);
 
                 // toolStripPaletteTools
-                System.Windows.Forms.ToolBarButton tsb = new System.Windows.Forms.ToolBarButton();
-                tsb.Style = System.Windows.Forms.ToolBarButtonStyle.ToggleButton;
+                UiToolBarButton tsb = new ToolBarButtonImpl();
+                tsb.Style = cadencii.java.awt.ToolBarButtonStyle.ToggleButton;
                 if (icon != null) {
                     imageListTool.Images.Add((System.Drawing.Image) icon.NativeImage);
                     tsb.ImageIndex = imageListTool.Images.Count - 1;
@@ -2684,8 +2683,8 @@ namespace cadencii
                 tsb.ToolTipText = desc;
                 tsb.Tag = id;
                 if (first) {
-                    var sep = new System.Windows.Forms.ToolBarButton();
-                    sep.Style = System.Windows.Forms.ToolBarButtonStyle.Separator;
+                    UiToolBarButton sep = new ToolBarButtonImpl();
+                    sep.Style = cadencii.java.awt.ToolBarButtonStyle.Separator;
                     toolBarTool.Buttons.Add(sep);
                     first = false;
                 }
@@ -3290,7 +3289,7 @@ namespace cadencii
 
             // 「スクリプトのリストを更新」を追加
             if (count > 0) {
-                menuScript.DropDownItems.Add(new ToolStripSeparator());
+                menuScript.DropDownItems.Add(new ToolStripSeparatorImpl());
             }
             menuScript.DropDownItems.Add(menuScriptUpdate);
             Util.applyToolStripFontRecurse(menuScript, EditorManager.editorConfig.getBaseFont());
@@ -3601,7 +3600,7 @@ namespace cadencii
                 EditorManager.mLastTrackSelectorHeight = splitContainer1.Height - splitContainer1.DividerLocation - splitContainer1.DividerSize;
                 splitContainer1.SplitterFixed = (true);
                 splitContainer1.DividerSize = (0);
-                int panel2height = TrackSelectorImpl.OFFSET_TRACK_TAB * 2;
+                int panel2height = TrackSelectorConsts.OFFSET_TRACK_TAB * 2;
                 splitContainer1.DividerLocation = (splitContainer1.Height - panel2height - splitContainer1.DividerSize);
                 splitContainer1.Panel2MinSize = (panel2height);
             }
@@ -3669,33 +3668,33 @@ namespace cadencii
             }
             #endregion
 
-            List<ValuePair<string, ToolStripMenuItem[]>> work = new List<ValuePair<string, ToolStripMenuItem[]>>();
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuEditUndo", new ToolStripMenuItem[] { cMenuPianoUndo, cMenuTrackSelectorUndo }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuEditRedo", new ToolStripMenuItem[] { cMenuPianoRedo, cMenuTrackSelectorRedo }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuEditCut", new ToolStripMenuItem[] { cMenuPianoCut, cMenuTrackSelectorCut, menuEditCut }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuEditCopy", new ToolStripMenuItem[] { cMenuPianoCopy, cMenuTrackSelectorCopy, menuEditCopy }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuEditPaste", new ToolStripMenuItem[] { cMenuPianoPaste, cMenuTrackSelectorPaste, menuEditPaste }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuEditSelectAll", new ToolStripMenuItem[] { cMenuPianoSelectAll, cMenuTrackSelectorSelectAll }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuEditSelectAllEvents", new ToolStripMenuItem[] { cMenuPianoSelectAllEvents }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuEditDelete", new ToolStripMenuItem[] { menuEditDelete }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuVisualGridline", new ToolStripMenuItem[] { cMenuPianoGrid }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuJobLyric", new ToolStripMenuItem[] { cMenuPianoImportLyric }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuLyricExpressionProperty", new ToolStripMenuItem[] { cMenuPianoExpressionProperty }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuLyricVibratoProperty", new ToolStripMenuItem[] { cMenuPianoVibratoProperty }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuTrackOn", new ToolStripMenuItem[] { cMenuTrackTabTrackOn }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuTrackAdd", new ToolStripMenuItem[] { cMenuTrackTabAdd }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuTrackCopy", new ToolStripMenuItem[] { cMenuTrackTabCopy }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuTrackDelete", new ToolStripMenuItem[] { cMenuTrackTabDelete }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuTrackRenderCurrent", new ToolStripMenuItem[] { cMenuTrackTabRenderCurrent }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuTrackRenderAll", new ToolStripMenuItem[] { cMenuTrackTabRenderAll }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuTrackOverlay", new ToolStripMenuItem[] { cMenuTrackTabOverlay }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuTrackRendererVOCALOID1", new ToolStripMenuItem[] { cMenuTrackTabRendererVOCALOID1 }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuTrackRendererVOCALOID2", new ToolStripMenuItem[] { cMenuTrackTabRendererVOCALOID2 }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuTrackRendererAquesTone", new ToolStripMenuItem[] { menuTrackRendererAquesTone }));
-            work.Add(new ValuePair<string, ToolStripMenuItem[]>("menuTrackRendererVCNT", new ToolStripMenuItem[] { menuTrackRendererVCNT }));
+            var work = new List<ValuePair<string, UiToolStripMenuItem[]>>();
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuEditUndo", new UiToolStripMenuItem[] { cMenuPianoUndo, cMenuTrackSelectorUndo }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuEditRedo", new UiToolStripMenuItem[] { cMenuPianoRedo, cMenuTrackSelectorRedo }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuEditCut", new UiToolStripMenuItem[] { cMenuPianoCut, cMenuTrackSelectorCut, menuEditCut }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuEditCopy", new UiToolStripMenuItem[] { cMenuPianoCopy, cMenuTrackSelectorCopy, menuEditCopy }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuEditPaste", new UiToolStripMenuItem[] { cMenuPianoPaste, cMenuTrackSelectorPaste, menuEditPaste }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuEditSelectAll", new UiToolStripMenuItem[] { cMenuPianoSelectAll, cMenuTrackSelectorSelectAll }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuEditSelectAllEvents", new UiToolStripMenuItem[] { cMenuPianoSelectAllEvents }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuEditDelete", new UiToolStripMenuItem[] { menuEditDelete }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuVisualGridline", new UiToolStripMenuItem[] { cMenuPianoGrid }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuJobLyric", new UiToolStripMenuItem[] { cMenuPianoImportLyric }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuLyricExpressionProperty", new UiToolStripMenuItem[] { cMenuPianoExpressionProperty }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuLyricVibratoProperty", new UiToolStripMenuItem[] { cMenuPianoVibratoProperty }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuTrackOn", new UiToolStripMenuItem[] { cMenuTrackTabTrackOn }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuTrackAdd", new UiToolStripMenuItem[] { cMenuTrackTabAdd }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuTrackCopy", new UiToolStripMenuItem[] { cMenuTrackTabCopy }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuTrackDelete", new UiToolStripMenuItem[] { cMenuTrackTabDelete }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuTrackRenderCurrent", new UiToolStripMenuItem[] { cMenuTrackTabRenderCurrent }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuTrackRenderAll", new UiToolStripMenuItem[] { cMenuTrackTabRenderAll }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuTrackOverlay", new UiToolStripMenuItem[] { cMenuTrackTabOverlay }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuTrackRendererVOCALOID1", new UiToolStripMenuItem[] { cMenuTrackTabRendererVOCALOID1 }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuTrackRendererVOCALOID2", new UiToolStripMenuItem[] { cMenuTrackTabRendererVOCALOID2 }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuTrackRendererAquesTone", new UiToolStripMenuItem[] { menuTrackRendererAquesTone }));
+            work.Add(new ValuePair<string, UiToolStripMenuItem[]>("menuTrackRendererVCNT", new UiToolStripMenuItem[] { menuTrackRendererVCNT }));
             int c = work.Count;
             for (int j = 0; j < c; j++) {
-                ValuePair<string, ToolStripMenuItem[]> item = work[j];
+                var item = work[j];
                 if (dict.ContainsKey(item.getKey())) {
                     Keys[] k = dict[item.getKey()];
                     string s = Utility.getShortcutDisplayString(k);
@@ -3736,13 +3735,13 @@ namespace cadencii
             // スクリプトにショートカットを適用
             int count = menuScript.DropDownItems.Count;
             for (int i = 0; i < count; i++) {
-                System.Windows.Forms.ToolStripItem tsi = menuScript.DropDownItems[i];
-                if (tsi is System.Windows.Forms.ToolStripMenuItem) {
-                    System.Windows.Forms.ToolStripMenuItem tsmi = (System.Windows.Forms.ToolStripMenuItem)tsi;
+                var tsi = menuScript.DropDownItems[i];
+                if (tsi is UiToolStripMenuItem) {
+                    UiToolStripMenuItem tsmi = (UiToolStripMenuItem)tsi;
                     if (tsmi.DropDownItems.Count == 1) {
-                        System.Windows.Forms.ToolStripItem subtsi_tsmi = tsmi.DropDownItems[0];
-                        if (subtsi_tsmi is System.Windows.Forms.ToolStripMenuItem) {
-                            System.Windows.Forms.ToolStripMenuItem dd_run = (System.Windows.Forms.ToolStripMenuItem)subtsi_tsmi;
+                        UiToolStripItem subtsi_tsmi = tsmi.DropDownItems[0];
+                        if (subtsi_tsmi is UiToolStripMenuItem) {
+                            UiToolStripMenuItem dd_run = (UiToolStripMenuItem)subtsi_tsmi;
 							if (dict.ContainsKey(cadencii.core2.PortUtil.getComponentName(dd_run))) {
                                 applyMenuItemShortcut(dict, tsmi, cadencii.core2.PortUtil.getComponentName(tsi));
                             }
@@ -3768,30 +3767,30 @@ namespace cadencii
                         throw new Exception("FormMain#applyMenuItemShortcut; item is NOT BMenuItem");
                     }
 #endif // DEBUG
-                    if (item is ToolStripMenuItem) {
-                        ToolStripMenuItem menu = (ToolStripMenuItem)item;
+                    if (item is UiToolStripMenuItem) {
+                        var menu = (UiToolStripMenuItem)item;
                         Keys[] keys = dict[item_name];
                         Keys shortcut = keys.Aggregate(Keys.None, (seed, key) => seed | key);
 
                         if (shortcut == Keys.Delete) {
                             menu.ShortcutKeyDisplayString = "Delete";
-                            menu.ShortcutKeys = System.Windows.Forms.Keys.None;
+                            menu.ShortcutKeys = Keys.None;
                             mSpecialShortcutHolders.Add(new SpecialShortcutHolder(shortcut, menu));
                         } else {
                             try {
                                 menu.ShortcutKeyDisplayString = "";
-						menu.ShortcutKeys = (System.Windows.Forms.Keys) shortcut;
+						menu.ShortcutKeys = shortcut;
                             } catch (Exception ex) {
                                 // ショートカットの適用に失敗する→特殊な取り扱いが必要
                                 menu.ShortcutKeyDisplayString = Utility.getShortcutDisplayString(keys);
-                                menu.ShortcutKeys = System.Windows.Forms.Keys.None;
+                                menu.ShortcutKeys = Keys.None;
                                 mSpecialShortcutHolders.Add(new SpecialShortcutHolder(shortcut, menu));
                             }
                         }
                     }
                 } else {
-                    if (item is System.Windows.Forms.ToolStripMenuItem) {
-                        ((System.Windows.Forms.ToolStripMenuItem)item).ShortcutKeys = System.Windows.Forms.Keys.None;
+                    if (item is UiToolStripMenuItem) {
+                        ((UiToolStripMenuItem)item).ShortcutKeys = Keys.None;
                     }
                 }
             } catch (Exception ex) {
@@ -4402,9 +4401,9 @@ namespace cadencii
             int count = toolBarTool.Buttons.Count;// toolStripTool.getComponentCount();
             for (int i = 0; i < count; i++) {
                 Object tsi = toolBarTool.Buttons[i];// toolStripTool.getComponentAtIndex( i );
-                if (tsi is System.Windows.Forms.ToolBarButton) {
-                    System.Windows.Forms.ToolBarButton tsb = (System.Windows.Forms.ToolBarButton)tsi;
-                    if (tsb.Style == System.Windows.Forms.ToolBarButtonStyle.ToggleButton && tsb.Tag != null && tsb.Tag is string) {
+                if (tsi is UiToolBarButton) {
+                    UiToolBarButton tsb = (UiToolBarButton)tsi;
+                    if (tsb.Style == cadencii.java.awt.ToolBarButtonStyle.ToggleButton && tsb.Tag != null && tsb.Tag is string) {
                         string id = (string)tsb.Tag;
                         if (PaletteToolServer.loadedTools.ContainsKey(id)) {
                             IPaletteTool ipt = (IPaletteTool)PaletteToolServer.loadedTools[id];
@@ -4416,8 +4415,8 @@ namespace cadencii
             }
 
             foreach (var tsi in cMenuPianoPaletteTool.DropDownItems) {
-                if (tsi is System.Windows.Forms.ToolStripMenuItem) {
-                    var tsmi = (System.Windows.Forms.ToolStripMenuItem)tsi;
+                if (tsi is UiToolStripMenuItem) {
+                    var tsmi = (UiToolStripMenuItem)tsi;
                     if (tsmi.Tag != null && tsmi.Tag is string) {
                         string id = (string)tsmi.Tag;
                         if (PaletteToolServer.loadedTools.ContainsKey(id)) {
@@ -4430,8 +4429,8 @@ namespace cadencii
             }
 
             foreach (var tsi in cMenuTrackSelectorPaletteTool.DropDownItems) {
-                if (tsi is System.Windows.Forms.ToolStripMenuItem) {
-                    var tsmi = (System.Windows.Forms.ToolStripMenuItem)tsi;
+                if (tsi is UiToolStripMenuItem) {
+                    var tsmi = (UiToolStripMenuItem)tsi;
                     if (tsmi.Tag != null && tsmi.Tag is string) {
                         string id = (string)tsmi.Tag;
                         if (PaletteToolServer.loadedTools.ContainsKey(id)) {
@@ -4444,8 +4443,8 @@ namespace cadencii
             }
 
             foreach (var tsi in menuSettingPaletteTool.DropDownItems) {
-                if (tsi is System.Windows.Forms.ToolStripMenuItem) {
-                    var tsmi = (System.Windows.Forms.ToolStripMenuItem)tsi;
+                if (tsi is UiToolStripMenuItem) {
+                    var tsmi = (UiToolStripMenuItem)tsi;
                     if (tsmi.Tag != null && tsmi.Tag is string) {
                         string id = (string)tsmi.Tag;
                         if (PaletteToolServer.loadedTools.ContainsKey(id)) {
@@ -5701,10 +5700,10 @@ namespace cadencii
             int count = toolBarTool.Buttons.Count;
             for (int i = 0; i < count; i++) {
                 Object tsi = toolBarTool.Buttons[i];
-                if (tsi is System.Windows.Forms.ToolBarButton) {
-                    System.Windows.Forms.ToolBarButton tsb = (System.Windows.Forms.ToolBarButton)tsi;
+                if (tsi is UiToolBarButton) {
+                    UiToolBarButton tsb = (UiToolBarButton)tsi;
                     Object tag = tsb.Tag;
-                    if (tsb.Style == System.Windows.Forms.ToolBarButtonStyle.ToggleButton && tag != null && tag is string) {
+                    if (tsb.Style == cadencii.java.awt.ToolBarButtonStyle.ToggleButton && tag != null && tag is string) {
 #if ENABLE_SCRIPT
                         if (tool == EditTool.PALETTE_TOOL) {
                             string id = (string)tag;
@@ -6049,7 +6048,7 @@ namespace cadencii
             } else {
                 EditorManager.editorConfig.pushRecentFiles("");
             }
-            menuFileRecent.DropDownItems.Add(new ToolStripSeparator());
+            menuFileRecent.DropDownItems.Add(new ToolStripSeparatorImpl());
             menuFileRecent.DropDownItems.Add(menuFileRecentClear);
             menuFileRecent.Enabled = true;
         }
@@ -6340,12 +6339,12 @@ namespace cadencii
                 return;
             }
             Font font = EditorManager.editorConfig.getBaseFont();
-            Util.applyFontRecurse(this, font);
+            Util.applyFontRecurse((UiForm) this, font);
 #if !JAVA_MAC
             Util.applyContextMenuFontRecurse(cMenuPiano, font);
             Util.applyContextMenuFontRecurse(cMenuTrackSelector, font);
             if (EditorManager.MixerWindow != null) {
-                Util.applyFontRecurse((Control) EditorManager.MixerWindow, font);
+                Util.applyFontRecurse(EditorManager.MixerWindow, font);
             }
             Util.applyContextMenuFontRecurse(cMenuTrackTab, font);
             trackSelector.applyFont(font);
@@ -6364,7 +6363,7 @@ namespace cadencii
             Util.applyFontRecurse(toolBarPosition, font);
             Util.applyFontRecurse(toolBarTool, font);
             if (mDialogPreference != null) {
-                Util.applyFontRecurse((Form) mDialogPreference.Native, font);
+                Util.applyFontRecurse(mDialogPreference, font);
             }
 
 			cadencii.core.EditorConfig.baseFont10Bold = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE10);
@@ -6783,7 +6782,7 @@ namespace cadencii
             menuHiddenPrintPoToCSV.Click += new EventHandler(menuHiddenPrintPoToCSV_Click);
             menuHiddenFlipCurveOnPianorollMode.Click += new EventHandler(menuHiddenFlipCurveOnPianorollMode_Click);
 
-            cMenuPiano.Opening += new CancelEventHandler(cMenuPiano_Opening);
+            cMenuPiano.Opening += (o, e) => cMenuPiano_Opening ();
             cMenuPianoPointer.Click += new EventHandler(cMenuPianoPointer_Click);
             cMenuPianoPencil.Click += new EventHandler(cMenuPianoPencil_Click);
             cMenuPianoEraser.Click += new EventHandler(cMenuPianoEraser_Click);
@@ -6819,7 +6818,7 @@ namespace cadencii
             cMenuPianoImportLyric.Click += new EventHandler(cMenuPianoImportLyric_Click);
             cMenuPianoExpressionProperty.Click += new EventHandler(cMenuPianoProperty_Click);
             cMenuPianoVibratoProperty.Click += new EventHandler(cMenuPianoVibratoProperty_Click);
-            cMenuTrackTab.Opening += new CancelEventHandler(cMenuTrackTab_Opening);
+            cMenuTrackTab.Opening += (o, e) => cMenuTrackTab_Opening();
             cMenuTrackTabTrackOn.Click += new EventHandler(handleTrackOn_Click);
             cMenuTrackTabAdd.Click += new EventHandler(cMenuTrackTabAdd_Click);
             cMenuTrackTabCopy.Click += new EventHandler(cMenuTrackTabCopy_Click);
@@ -6833,7 +6832,7 @@ namespace cadencii
             cMenuTrackTabRendererVOCALOID2.Click += new EventHandler(handleChangeRenderer);
             cMenuTrackTabRendererStraight.Click += new EventHandler(handleChangeRenderer);
             cMenuTrackTabRendererAquesTone.Click += new EventHandler(handleChangeRenderer);
-            cMenuTrackSelector.Opening += new CancelEventHandler(cMenuTrackSelector_Opening);
+            cMenuTrackSelector.Opening += (o, e) => cMenuTrackSelector_Opening ();
             cMenuTrackSelectorPointer.Click += new EventHandler(cMenuTrackSelectorPointer_Click);
             cMenuTrackSelectorPencil.Click += new EventHandler(cMenuTrackSelectorPencil_Click);
             cMenuTrackSelectorLine.Click += new EventHandler(cMenuTrackSelectorLine_Click);
@@ -6853,9 +6852,9 @@ namespace cadencii
             trackBar.Enter += new EventHandler(trackBar_Enter);
             bgWorkScreen.DoWork += new DoWorkEventHandler(bgWorkScreen_DoWork);
             timer.Tick += new EventHandler(timer_Tick);
-            pictKeyLengthSplitter.MouseMove += new MouseEventHandler(pictKeyLengthSplitter_MouseMove);
-            pictKeyLengthSplitter.MouseDown += new MouseEventHandler(pictKeyLengthSplitter_MouseDown);
-            pictKeyLengthSplitter.MouseUp += new MouseEventHandler(pictKeyLengthSplitter_MouseUp);
+            pictKeyLengthSplitter.MouseMove += pictKeyLengthSplitter_MouseMove;
+            pictKeyLengthSplitter.MouseDown += pictKeyLengthSplitter_MouseDown;
+            pictKeyLengthSplitter.MouseUp += pictKeyLengthSplitter_MouseUp;
             panelOverview.KeyUp += new NKeyEventHandler(handleSpaceKeyUp);
             panelOverview.KeyDown += new NKeyEventHandler(handleSpaceKeyDown);
             vScroll.ValueChanged += new EventHandler(vScroll_ValueChanged);
@@ -6865,13 +6864,13 @@ namespace cadencii
             hScroll.ValueChanged += new EventHandler(hScroll_ValueChanged);
             hScroll.Resize += new EventHandler(hScroll_Resize);
             hScroll.Enter += new EventHandler(hScroll_Enter);
-            picturePositionIndicator.PreviewKeyDown += new PreviewKeyDownEventHandler(picturePositionIndicator_PreviewKeyDown);
-            picturePositionIndicator.MouseMove += new MouseEventHandler(picturePositionIndicator_MouseMove);
-            picturePositionIndicator.MouseClick += new MouseEventHandler(picturePositionIndicator_MouseClick);
-            picturePositionIndicator.MouseDoubleClick += new MouseEventHandler(picturePositionIndicator_MouseDoubleClick);
-            picturePositionIndicator.MouseDown += new MouseEventHandler(picturePositionIndicator_MouseDown);
-            picturePositionIndicator.MouseUp += new MouseEventHandler(picturePositionIndicator_MouseUp);
-            picturePositionIndicator.Paint += new PaintEventHandler(picturePositionIndicator_Paint);
+            picturePositionIndicator.PreviewKeyDown += picturePositionIndicator_PreviewKeyDown;
+            picturePositionIndicator.MouseMove += picturePositionIndicator_MouseMove;
+            picturePositionIndicator.MouseClick += picturePositionIndicator_MouseClick;
+            picturePositionIndicator.MouseDoubleClick += picturePositionIndicator_MouseDoubleClick;
+            picturePositionIndicator.MouseDown += picturePositionIndicator_MouseDown;
+            picturePositionIndicator.MouseUp += picturePositionIndicator_MouseUp;
+            picturePositionIndicator.Paint += picturePositionIndicator_Paint;
             pictPianoRoll.PreviewKeyDown += new NKeyEventHandler(pictPianoRoll_PreviewKeyDown2);
             pictPianoRoll.KeyUp += new NKeyEventHandler(handleSpaceKeyUp);
             pictPianoRoll.KeyUp += new NKeyEventHandler(pictPianoRoll_KeyUp);
@@ -6885,15 +6884,15 @@ namespace cadencii
             waveView.MouseDown += new NMouseEventHandler(waveView_MouseDown);
             waveView.MouseUp += new NMouseEventHandler(waveView_MouseUp);
             waveView.MouseMove += new NMouseEventHandler(waveView_MouseMove);
-            this.DragEnter += new System.Windows.Forms.DragEventHandler(FormMain_DragEnter);
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(FormMain_DragDrop);
-            this.DragOver += new System.Windows.Forms.DragEventHandler(FormMain_DragOver);
+            this.DragEnter += FormMain_DragEnter;
+            this.DragDrop += FormMain_DragDrop;
+            this.DragOver += FormMain_DragOver;
             this.DragLeave += new EventHandler(FormMain_DragLeave);
 
-            pictureBox2.MouseDown += new MouseEventHandler(pictureBox2_MouseDown);
-            pictureBox2.MouseUp += new MouseEventHandler(pictureBox2_MouseUp);
-            pictureBox2.Paint += new PaintEventHandler(pictureBox2_Paint);
-            toolBarTool.ButtonClick += new System.Windows.Forms.ToolBarButtonClickEventHandler(toolBarTool_ButtonClick);
+            pictureBox2.MouseDown += pictureBox2_MouseDown;
+            pictureBox2.MouseUp += pictureBox2_MouseUp;
+            pictureBox2.Paint += pictureBox2_Paint;
+            toolBarTool.ButtonClick += toolBarTool_ButtonClick;
             rebar.SizeChanged += new EventHandler(toolStripContainer_TopToolStripPanel_SizeChanged);
             stripDDBtnQuantize04.Click += handlePositionQuantize;
             stripDDBtnQuantize08.Click += handlePositionQuantize;
@@ -6903,16 +6902,16 @@ namespace cadencii
             stripDDBtnQuantize128.Click += handlePositionQuantize;
             stripDDBtnQuantizeOff.Click += handlePositionQuantize;
             stripDDBtnQuantizeTriplet.Click += handlePositionQuantizeTriplet_Click;
-            toolBarFile.ButtonClick += new System.Windows.Forms.ToolBarButtonClickEventHandler(toolBarFile_ButtonClick);
-            toolBarPosition.ButtonClick += new System.Windows.Forms.ToolBarButtonClickEventHandler(toolBarPosition_ButtonClick);
-            toolBarMeasure.ButtonClick += new System.Windows.Forms.ToolBarButtonClickEventHandler(toolBarMeasure_ButtonClick);
-            toolBarMeasure.MouseDown += new MouseEventHandler(toolBarMeasure_MouseDown);
+            toolBarFile.ButtonClick += toolBarFile_ButtonClick;
+            toolBarPosition.ButtonClick += toolBarPosition_ButtonClick;
+            toolBarMeasure.ButtonClick += toolBarMeasure_ButtonClick;
+            toolBarMeasure.MouseDown += toolBarMeasure_MouseDown;
             stripBtnStepSequencer.CheckedChanged += new EventHandler(stripBtnStepSequencer_CheckedChanged);
             this.Deactivate += new EventHandler(FormMain_Deactivate);
             this.Activated += new EventHandler(FormMain_Activated);
             this.FormClosed += new FormClosedEventHandler(FormMain_FormClosed);
             this.FormClosing += new FormClosingEventHandler(FormMain_FormClosing);
-            this.PreviewKeyDown += new PreviewKeyDownEventHandler(FormMain_PreviewKeyDown);
+            this.PreviewKeyDown += FormMain_PreviewKeyDown;
             this.SizeChanged += FormMain_SizeChanged;
             panelOverview.Enter += new EventHandler(panelOverview_Enter);
         }
@@ -7303,13 +7302,13 @@ namespace cadencii
                         int stdy = controller.getStartToDrawY();
                         for (int i = 0; i < EditorManager.mDrawObjects[selected - 1].Count; i++) {
                             DrawObject dobj = EditorManager.mDrawObjects[selected - 1][i];
-                            if (dobj.mRectangleInPixel.x + controller.getStartToDrawX() + dobj.mRectangleInPixel.Width - stdx < 0) {
+                            if (dobj.mRectangleInPixel.X + controller.getStartToDrawX() + dobj.mRectangleInPixel.Width - stdx < 0) {
                                 continue;
-                            } else if (pictPianoRoll.Width < dobj.mRectangleInPixel.x + EditorManager.keyWidth - stdx) {
+                            } else if (pictPianoRoll.Width < dobj.mRectangleInPixel.X + EditorManager.keyWidth - stdx) {
                                 break;
                             }
-                            Rectangle rc = new Rectangle(dobj.mRectangleInPixel.x + EditorManager.keyWidth + dobj.mVibratoDelayInPixel - stdx,
-                                                          dobj.mRectangleInPixel.y + (int)(100 * controller.getScaleY()) - stdy,
+                            Rectangle rc = new Rectangle(dobj.mRectangleInPixel.X + EditorManager.keyWidth + dobj.mVibratoDelayInPixel - stdx,
+                                                          dobj.mRectangleInPixel.Y + (int)(100 * controller.getScaleY()) - stdy,
                                                           dobj.mRectangleInPixel.Width - dobj.mVibratoDelayInPixel,
                                                           (int)(100 * controller.getScaleY()));
                             if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
@@ -7380,7 +7379,7 @@ namespace cadencii
                     refreshScreen();
 
                     mContextMenuOpenedPosition = new Point(e.X, e.Y);
-                    cMenuPiano.Show((Control) pictPianoRoll.Native, e.X, e.Y);
+                    cMenuPiano.Show(pictPianoRoll, e.X, e.Y);
                 } else {
                     ByRef<Rectangle> out_id_rect = new ByRef<Rectangle>();
                     VsqEvent item = getItemAtClickedPosition(mButtonInitial, out_id_rect);
@@ -7448,7 +7447,7 @@ namespace cadencii
                     showInputTextBox(
                         item.ID.LyricHandle.L0.Phrase,
                         item.ID.LyricHandle.L0.getPhoneticSymbol(),
-                        new Point(rect.x, rect.y),
+                        new Point(rect.X, rect.Y),
                         mLastSymbolEditMode);
                     refreshScreen();
                     return;
@@ -7462,8 +7461,8 @@ namespace cadencii
                     foreach (var dobj in EditorManager.mDrawObjects[selected - 1]) {
                         // 表情コントロールプロパティを表示するかどうかを決める
                         rect = new Rectangle(
-                            dobj.mRectangleInPixel.x + EditorManager.keyWidth - stdx,
-                            dobj.mRectangleInPixel.y - stdy + (int)(100 * controller.getScaleY()),
+                            dobj.mRectangleInPixel.X + EditorManager.keyWidth - stdx,
+                            dobj.mRectangleInPixel.Y - stdy + (int)(100 * controller.getScaleY()),
                             21,
                             (int)(100 * controller.getScaleY()));
                         if (Utility.isInRect(new Point(e.X, e.Y), rect)) {
@@ -7530,8 +7529,8 @@ namespace cadencii
 
                         // ビブラートプロパティダイアログを表示するかどうかを決める
                         rect = new Rectangle(
-                            dobj.mRectangleInPixel.x + EditorManager.keyWidth - stdx + 21,
-                            dobj.mRectangleInPixel.y - stdy + (int)(100 * controller.getScaleY()),
+                            dobj.mRectangleInPixel.X + EditorManager.keyWidth - stdx + 21,
+                            dobj.mRectangleInPixel.Y - stdy + (int)(100 * controller.getScaleY()),
                             dobj.mRectangleInPixel.Width - 21,
                             (int)(100 * controller.getScaleY()));
                         if (Utility.isInRect(new Point(e.X, e.Y), rect)) {
@@ -7743,30 +7742,30 @@ namespace cadencii
                             if (dobj.mRectangleInPixel.Width <= dobj.mVibratoDelayInPixel) {
                                 continue;
                             }
-                            if (dobj.mRectangleInPixel.x + key_width + dobj.mRectangleInPixel.Width - stdx < 0) {
+                            if (dobj.mRectangleInPixel.X + key_width + dobj.mRectangleInPixel.Width - stdx < 0) {
                                 continue;
-                            } else if (pictPianoRoll.Width < dobj.mRectangleInPixel.x + key_width - stdx) {
+                            } else if (pictPianoRoll.Width < dobj.mRectangleInPixel.X + key_width - stdx) {
                                 break;
                             }
-                            Rectangle rc = new Rectangle(dobj.mRectangleInPixel.x + key_width + dobj.mVibratoDelayInPixel - stdx - _EDIT_HANDLE_WIDTH / 2,
-                                                dobj.mRectangleInPixel.y + (int)(100 * controller.getScaleY()) - stdy,
+                            Rectangle rc = new Rectangle(dobj.mRectangleInPixel.X + key_width + dobj.mVibratoDelayInPixel - stdx - _EDIT_HANDLE_WIDTH / 2,
+                                                dobj.mRectangleInPixel.Y + (int)(100 * controller.getScaleY()) - stdy,
                                                 _EDIT_HANDLE_WIDTH,
                                                 (int)(100 * controller.getScaleY()));
                             if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
                                 vibrato_dobj = dobj;
                                 //vibrato_found = true;
                                 mVibratoEditingId = dobj.mInternalID;
-                                pxFound.x = dobj.mRectangleInPixel.x;
-                                pxFound.y = dobj.mRectangleInPixel.y;
+                                pxFound.X = dobj.mRectangleInPixel.X;
+                                pxFound.Y = dobj.mRectangleInPixel.Y;
                                 pxFound.Width = dobj.mRectangleInPixel.Width;
                                 pxFound.Height = dobj.mRectangleInPixel.Height;// = new Rectangle dobj.mRectangleInPixel;
-                                pxFound.x += key_width;
+                                pxFound.X += key_width;
                                 px_vibrato_length = dobj.mRectangleInPixel.Width - dobj.mVibratoDelayInPixel;
                                 break;
                             }
                         }
                         if (vibrato_dobj != null) {
-                            int clock = EditorManager.clockFromXCoord(pxFound.x + pxFound.Width - px_vibrato_length - stdx);
+                            int clock = EditorManager.clockFromXCoord(pxFound.X + pxFound.Width - px_vibrato_length - stdx);
                             int note = vibrato_dobj.mNote - 1;// EditorManager.noteFromYCoord( pxFound.y + (int)(100 * EditorManager.getScaleY()) - stdy );
                             int length = vibrato_dobj.mClock + vibrato_dobj.mLength - clock;// (int)(pxFound.Width * EditorManager.getScaleXInv());
                             EditorManager.mAddingEvent = new VsqEvent(clock, new VsqID(0));
@@ -7871,8 +7870,8 @@ namespace cadencii
                             }
 
                             // 左端の"のり代"にマウスがあるかどうか
-                            Rectangle rc = new Rectangle(dobj.mRectangleInPixel.x - stdx + key_width,
-                                                          dobj.mRectangleInPixel.y - stdy,
+                            Rectangle rc = new Rectangle(dobj.mRectangleInPixel.X - stdx + key_width,
+                                                          dobj.mRectangleInPixel.Y - stdy,
                                                           edit_handle_width,
                                                           dobj.mRectangleInPixel.Height);
                             if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
@@ -7891,8 +7890,8 @@ namespace cadencii
                             }
 
                             // 右端の糊代にマウスがあるかどうか
-                            rc = new Rectangle(dobj.mRectangleInPixel.x + key_width + dobj.mRectangleInPixel.Width - stdx - edit_handle_width,
-                                                dobj.mRectangleInPixel.y - stdy,
+                            rc = new Rectangle(dobj.mRectangleInPixel.X + key_width + dobj.mRectangleInPixel.Width - stdx - edit_handle_width,
+                                                dobj.mRectangleInPixel.Y - stdy,
                                                 edit_handle_width,
                                                 dobj.mRectangleInPixel.Height);
                             if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
@@ -8191,10 +8190,10 @@ namespace cadencii
                         List<int> add_required = new List<int>();
                         int internal_id = -1;
                         foreach (var dobj in EditorManager.mDrawObjects[selected - 1]) {
-                            int x0 = dobj.mRectangleInPixel.x + EditorManager.keyWidth;
-                            int x1 = dobj.mRectangleInPixel.x + EditorManager.keyWidth + dobj.mRectangleInPixel.Width;
-                            int y0 = dobj.mRectangleInPixel.y;
-                            int y1 = dobj.mRectangleInPixel.y + dobj.mRectangleInPixel.Height;
+                            int x0 = dobj.mRectangleInPixel.X + EditorManager.keyWidth;
+                            int x1 = dobj.mRectangleInPixel.X + EditorManager.keyWidth + dobj.mRectangleInPixel.Width;
+                            int y0 = dobj.mRectangleInPixel.Y;
+                            int y1 = dobj.mRectangleInPixel.Y + dobj.mRectangleInPixel.Height;
                             internal_id = dobj.mInternalID;
                             if (x1 < tx) {
                                 continue;
@@ -8422,8 +8421,8 @@ namespace cadencii
 
                             // 音符左側の編集領域
                             rc = new Rectangle(
-                                                dobj.mRectangleInPixel.x + EditorManager.keyWidth - stdx,
-                                                dobj.mRectangleInPixel.y - stdy,
+                                                dobj.mRectangleInPixel.X + EditorManager.keyWidth - stdx,
+                                                dobj.mRectangleInPixel.Y - stdy,
                                                 edit_handle_width,
                                                 (int)(100 * controller.getScaleY()));
                             if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
@@ -8432,8 +8431,8 @@ namespace cadencii
                             }
 
                             // 音符右側の編集領域
-                            rc = new Rectangle(dobj.mRectangleInPixel.x + EditorManager.keyWidth + dobj.mRectangleInPixel.Width - stdx - edit_handle_width,
-                                                dobj.mRectangleInPixel.y - stdy,
+                            rc = new Rectangle(dobj.mRectangleInPixel.X + EditorManager.keyWidth + dobj.mRectangleInPixel.Width - stdx - edit_handle_width,
+                                                dobj.mRectangleInPixel.Y - stdy,
                                                 edit_handle_width,
                                                 (int)(100 * controller.getScaleY()));
                             if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
@@ -8443,8 +8442,8 @@ namespace cadencii
                         }
 
                         // 音符本体
-                        rc = new Rectangle(dobj.mRectangleInPixel.x + EditorManager.keyWidth - stdx,
-                                            dobj.mRectangleInPixel.y - stdy,
+                        rc = new Rectangle(dobj.mRectangleInPixel.X + EditorManager.keyWidth - stdx,
+                                            dobj.mRectangleInPixel.Y - stdy,
                                             dobj.mRectangleInPixel.Width,
                                             dobj.mRectangleInPixel.Height);
                         if (dobj.mType == DrawObjectType.Note) {
@@ -8452,8 +8451,8 @@ namespace cadencii
                                 rc.Height *= 2;
                                 if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
                                     // ビブラートの開始位置
-                                    rc = new Rectangle(dobj.mRectangleInPixel.x + EditorManager.keyWidth + dobj.mVibratoDelayInPixel - stdx - _EDIT_HANDLE_WIDTH / 2,
-                                                        dobj.mRectangleInPixel.y + (int)(100 * controller.getScaleY()) - stdy,
+                                    rc = new Rectangle(dobj.mRectangleInPixel.X + EditorManager.keyWidth + dobj.mVibratoDelayInPixel - stdx - _EDIT_HANDLE_WIDTH / 2,
+                                                        dobj.mRectangleInPixel.Y + (int)(100 * controller.getScaleY()) - stdy,
                                                         _EDIT_HANDLE_WIDTH,
                                                         (int)(100 * controller.getScaleY()));
                                     if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
@@ -9027,7 +9026,7 @@ namespace cadencii
 
 	public void pictPianoRoll_PreviewKeyDown(Object sender, PreviewKeyDownEventArgs e)
         {
-            var e0 = new NKeyEventArgs((cadencii.java.awt.Keys) e.KeyData);
+            var e0 = new NKeyEventArgs((Keys) e.KeyData);
             processSpecialShortcutKey(e0, true);
         }
         public void pictPianoRoll_PreviewKeyDown2(Object sender, NKeyEventArgs e)
@@ -9231,7 +9230,7 @@ namespace cadencii
 #endif
         }
 
-        private void onClickVisualPluginUiAquesTone(System.Windows.Forms.ToolStripMenuItem menu, AquesToneDriverBase drv)
+        private void onClickVisualPluginUiAquesTone(UiToolStripMenuItem menu, AquesToneDriverBase drv)
         {
             bool visible = !menu.Checked;
             menu.Checked = visible;
@@ -9983,7 +9982,7 @@ namespace cadencii
 #if DEBUG
             sout.println("FormMain#FormMain_PreviewKeyDown");
 #endif
-            var ex = new NKeyEventArgs((cadencii.java.awt.Keys) e.KeyData);
+            var ex = new NKeyEventArgs((Keys) e.KeyData);
             processSpecialShortcutKey(ex, true);
         }
 
@@ -12165,8 +12164,8 @@ namespace cadencii
             // スクリプトのToolStripMenuITemを蒐集
             List<string> script_shortcut = new List<string>();
             foreach (var tsi in menuScript.DropDownItems) {
-                if (tsi is System.Windows.Forms.ToolStripMenuItem) {
-                    var tsmi = (System.Windows.Forms.ToolStripMenuItem)tsi;
+                if (tsi is UiToolStripMenuItem) {
+                    var tsmi = (UiToolStripMenuItem)tsi;
                     string name = tsmi.Name;
                     script_shortcut.Add(name);
                     if (!configured.ContainsKey(name)) {
@@ -13201,7 +13200,7 @@ namespace cadencii
         {
             if (e.Button == NMouseButtons.Middle) {
                 // ツールをポインター <--> 鉛筆に切り替える
-                if (e.Y < trackSelector.Height - TrackSelectorImpl.OFFSET_TRACK_TAB * 2) {
+                if (e.Y < trackSelector.Height - TrackSelectorConsts.OFFSET_TRACK_TAB * 2) {
                     if (EditorManager.SelectedTool == EditTool.ARROW) {
                         EditorManager.SelectedTool = (EditTool.PENCIL);
                     } else {
@@ -13270,7 +13269,7 @@ namespace cadencii
 
         //BOOKMARK: picturePositionIndicator
         #region picturePositionIndicator
-        public void picturePositionIndicator_MouseWheel(Object sender, MouseEventArgs e)
+        public void picturePositionIndicator_MouseWheel(Object sender, NMouseEventArgs e)
         {
 #if DEBUG
             sout.println("FormMain#picturePositionIndicator_MouseWheel");
@@ -13278,7 +13277,7 @@ namespace cadencii
             hScroll.Value = computeScrollValueFromWheelDelta(e.Delta);
         }
 
-        public void picturePositionIndicator_MouseClick(Object sender, MouseEventArgs e)
+        public void picturePositionIndicator_MouseClick(Object sender, NMouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right && 0 < e.Y && e.Y <= 18 && EditorManager.keyWidth < e.X) {
                 // クリックされた位置でのクロックを保存
@@ -13293,7 +13292,7 @@ namespace cadencii
             }
         }
 
-        public void picturePositionIndicator_MouseDoubleClick(Object sender, MouseEventArgs e)
+        public void picturePositionIndicator_MouseDoubleClick(Object sender, NMouseEventArgs e)
         {
             if (e.X < EditorManager.keyWidth || this.Width - 3 < e.X) {
                 return;
@@ -13622,7 +13621,7 @@ namespace cadencii
             }
         }
 
-        public void picturePositionIndicator_MouseDown(Object sender, MouseEventArgs e)
+        public void picturePositionIndicator_MouseDown(Object sender, NMouseEventArgs e)
         {
             if (e.X < EditorManager.keyWidth || this.Width - 3 < e.X) {
                 return;
@@ -13794,7 +13793,7 @@ namespace cadencii
             refreshScreen();
         }
 
-        public void picturePositionIndicator_MouseUp(Object sender, MouseEventArgs e)
+        public void picturePositionIndicator_MouseUp(Object sender, NMouseEventArgs e)
         {
             Keys modifiers = (Keys) Control.ModifierKeys;
 #if DEBUG
@@ -13950,7 +13949,7 @@ namespace cadencii
             picturePositionIndicator.Refresh();
         }
 
-        public void picturePositionIndicator_MouseMove(Object sender, MouseEventArgs e)
+        public void picturePositionIndicator_MouseMove(Object sender, NMouseEventArgs e)
         {
             VsqFileEx vsq = MusicManager.getVsqFile();
             if (mPositionIndicatorMouseDownMode == PositionIndicatorMouseDownMode.TEMPO) {
@@ -14024,10 +14023,9 @@ namespace cadencii
 #endif
         }
 
-        public void picturePositionIndicator_PreviewKeyDown(Object sender, PreviewKeyDownEventArgs e)
+        public void picturePositionIndicator_PreviewKeyDown(Object sender, NKeyEventArgs e)
         {
-            var e0 = new NKeyEventArgs((cadencii.java.awt.Keys) e.KeyData);
-            processSpecialShortcutKey(e0, true);
+            processSpecialShortcutKey(e, true);
         }
         #endregion
 
@@ -14145,10 +14143,10 @@ namespace cadencii
         {
             if (e.Button == NMouseButtons.Right) {
                 if (EditorManager.keyWidth < e.X && e.X < trackSelector.Width) {
-                    if (trackSelector.Height - TrackSelectorImpl.OFFSET_TRACK_TAB <= e.Y && e.Y <= trackSelector.Height) {
-                        cMenuTrackTab.Show((Control)trackSelector.Native, e.X, e.Y);
+                    if (trackSelector.Height - TrackSelectorConsts.OFFSET_TRACK_TAB <= e.Y && e.Y <= trackSelector.Height) {
+                        cMenuTrackTab.Show(trackSelector, e.X, e.Y);
                     } else {
-                        cMenuTrackSelector.Show((Control)trackSelector, e.X, e.Y);
+                        cMenuTrackSelector.Show(trackSelector, e.X, e.Y);
                     }
                 }
             }
@@ -14159,7 +14157,7 @@ namespace cadencii
             if (e.Button == NMouseButtons.Middle) {
                 // ツールをポインター <--> 鉛筆に切り替える
                 if (EditorManager.keyWidth < e.X &&
-                     e.Y < trackSelector.Height - TrackSelectorImpl.OFFSET_TRACK_TAB * 2) {
+                     e.Y < trackSelector.Height - TrackSelectorConsts.OFFSET_TRACK_TAB * 2) {
                     if (EditorManager.SelectedTool == EditTool.ARROW) {
                         EditorManager.SelectedTool = (EditTool.PENCIL);
                     } else {
@@ -14460,7 +14458,7 @@ namespace cadencii
             importLyric();
         }
 
-        public void cMenuPiano_Opening(Object sender, CancelEventArgs e)
+        public void cMenuPiano_Opening()
         {
             updateCopyAndPasteButtonStatus();
             cMenuPianoImportLyric.Enabled = EditorManager.itemSelection.getLastEvent() != null;
@@ -14850,7 +14848,7 @@ namespace cadencii
             addTrackCore();
         }
 
-        public void cMenuTrackTab_Opening(Object sender, CancelEventArgs e)
+        public void cMenuTrackTab_Opening()
         {
 #if DEBUG
             sout.println("FormMain#cMenuTrackTab_Opening");
@@ -14946,7 +14944,7 @@ namespace cadencii
 
         //BOOKMARK: cMenuTrackSelector
         #region cMenuTrackSelector
-        public void cMenuTrackSelector_Opening(Object sender, CancelEventArgs e)
+        public void cMenuTrackSelector_Opening()
         {
             updateCopyAndPasteButtonStatus();
 
@@ -15124,7 +15122,7 @@ namespace cadencii
             mGraphicsPictureBox2.drawLine(cx - 4, cy, cx + 4, cy);
         }
 
-        public void pictureBox2_MouseDown(Object sender, MouseEventArgs e)
+        public void pictureBox2_MouseDown(Object sender, NMouseEventArgs e)
         {
             // 拡大・縮小ボタンが押されたかどうか判定
             int height = pictureBox2.Height;
@@ -15155,7 +15153,7 @@ namespace cadencii
             refreshScreen();
         }
 
-        public void pictureBox2_MouseUp(Object sender, MouseEventArgs e)
+        public void pictureBox2_MouseUp(Object sender, NMouseEventArgs e)
         {
             mPianoRollScaleYMouseStatus = 0;
             pictureBox2.Invalidate();
@@ -15276,7 +15274,7 @@ namespace cadencii
 
         //BOOKMARK: pictKeyLengthSplitter
         #region pictKeyLengthSplitter
-        public void pictKeyLengthSplitter_MouseDown(Object sender, MouseEventArgs e)
+        public void pictKeyLengthSplitter_MouseDown(Object sender, NMouseEventArgs e)
         {
             mKeyLengthSplitterMouseDowned = true;
 			mKeyLengthSplitterInitialMouse = cadencii.core2.PortUtil.getMousePosition();
@@ -15285,7 +15283,7 @@ namespace cadencii
             mKeyLengthSplitterDistance = splitContainer1.DividerLocation;
         }
 
-        public void pictKeyLengthSplitter_MouseMove(Object sender, MouseEventArgs e)
+        public void pictKeyLengthSplitter_MouseMove(Object sender, NMouseEventArgs e)
         {
             if (!mKeyLengthSplitterMouseDowned) {
                 return;
@@ -15311,19 +15309,19 @@ namespace cadencii
             refreshScreen();
         }
 
-        public void pictKeyLengthSplitter_MouseUp(Object sender, MouseEventArgs e)
+        public void pictKeyLengthSplitter_MouseUp(Object sender, NMouseEventArgs e)
         {
             mKeyLengthSplitterMouseDowned = false;
         }
         #endregion
 
         #region toolBarMeasure
-        void toolBarMeasure_MouseDown(Object sender, System.Windows.Forms.MouseEventArgs e)
+        void toolBarMeasure_MouseDown(Object sender, NMouseEventArgs e)
         {
             // マウス位置にあるボタンを捜す
-            System.Windows.Forms.ToolBarButton c = null;
-            foreach (System.Windows.Forms.ToolBarButton btn in toolBarMeasure.Buttons) {
-                System.Drawing.Rectangle rc = btn.Rectangle;
+            UiToolBarButton c = null;
+            foreach (UiToolBarButton btn in toolBarMeasure.Buttons) {
+                var rc = btn.Rectangle;
                 if (Utility.isInRect(e.X, e.Y, rc.Left, rc.Top, rc.Width, rc.Height)) {
                     c = btn;
                     break;
@@ -15334,14 +15332,14 @@ namespace cadencii
             }
 
             if (c == stripDDBtnQuantizeParent) {
-                System.Drawing.Rectangle rc = stripDDBtnQuantizeParent.Rectangle;
+                var rc = stripDDBtnQuantizeParent.Rectangle;
                 stripDDBtnQuantize.Show(
                     toolBarMeasure,
-                    new System.Drawing.Point(rc.Left, rc.Bottom));
+                    new cadencii.java.awt.Point(rc.Left, rc.Bottom));
             }
         }
 
-        void toolBarMeasure_ButtonClick(Object sender, System.Windows.Forms.ToolBarButtonClickEventArgs e)
+        void toolBarMeasure_ButtonClick(Object sender, UiToolBarButtonEventArgs e)
         {
             if (e.Button == stripBtnStartMarker) {
                 handleStartMarker_Click(e.Button, new EventArgs());
@@ -15361,7 +15359,7 @@ namespace cadencii
         }
         #endregion
 
-        void toolBarTool_ButtonClick(Object sender, System.Windows.Forms.ToolBarButtonClickEventArgs e)
+        void toolBarTool_ButtonClick(Object sender, UiToolBarButtonEventArgs e)
         {
             if (e.Button == stripBtnPointer) {
                 stripBtnArrow_Click(e.Button, new EventArgs());
@@ -15380,7 +15378,7 @@ namespace cadencii
             }
         }
 
-        void toolBarPosition_ButtonClick(Object sender, System.Windows.Forms.ToolBarButtonClickEventArgs e)
+        void toolBarPosition_ButtonClick(Object sender, UiToolBarButtonEventArgs e)
         {
             if (e.Button == stripBtnMoveTop) {
                 stripBtnMoveTop_Click(e.Button, new EventArgs());
@@ -15403,7 +15401,7 @@ namespace cadencii
             }
         }
 
-        void toolBarFile_ButtonClick(Object sender, System.Windows.Forms.ToolBarButtonClickEventArgs e)
+        void toolBarFile_ButtonClick(Object sender, UiToolBarButtonEventArgs e)
         {
             if (e.Button == stripBtnFileNew) {
                 handleFileNew_Click(e.Button, new EventArgs());
@@ -15429,12 +15427,12 @@ namespace cadencii
             if (sender == null) {
                 return;
             }
-            if (!(sender is System.Windows.Forms.ToolStripMenuItem)) {
+            if (!(sender is UiToolStripMenuItem)) {
                 return;
             }
 
             // イベントの送信元を特定
-            System.Windows.Forms.ToolStripMenuItem item = (System.Windows.Forms.ToolStripMenuItem)sender;
+            UiToolStripMenuItem item = (UiToolStripMenuItem)sender;
             string text = item.Text;
 
             // メニューの表示文字列から，どの設定値についてのイベントかを探す
@@ -15601,8 +15599,8 @@ namespace cadencii
         {
             string id = "";  //選択されたツールのID
 #if ENABLE_SCRIPT
-            if (sender is System.Windows.Forms.ToolBarButton) {
-                System.Windows.Forms.ToolBarButton tsb = (System.Windows.Forms.ToolBarButton)sender;
+            if (sender is UiToolBarButton) {
+                UiToolBarButton tsb = (UiToolBarButton)sender;
                 if (tsb.Tag != null && tsb.Tag is string) {
                     id = (string)tsb.Tag;
                     EditorManager.mSelectedPaletteTool = id;
@@ -15623,9 +15621,9 @@ namespace cadencii
             int count = toolBarTool.Buttons.Count;
             for (int i = 0; i < count; i++) {
                 Object item = toolBarTool.Buttons[i];
-                if (item is System.Windows.Forms.ToolBarButton) {
-                    System.Windows.Forms.ToolBarButton button = (System.Windows.Forms.ToolBarButton)item;
-                    if (button.Style == System.Windows.Forms.ToolBarButtonStyle.ToggleButton && button.Tag != null && button.Tag is string) {
+                if (item is UiToolBarButton) {
+                    UiToolBarButton button = (UiToolBarButton)item;
+                    if (button.Style == cadencii.java.awt.ToolBarButtonStyle.ToggleButton && button.Tag != null && button.Tag is string) {
                         if (((string)button.Tag).Equals(id)) {
                             button.Pushed = true;
                         } else {
@@ -16120,8 +16118,8 @@ namespace cadencii
             } else {
                 // イベント送信元のアイテムが，cMenuTrackTabRendererUtauまたは
                 // menuTrackRendererUTAUのサブアイテムかどうかをチェック
-                if (sender is System.Windows.Forms.ToolStripMenuItem) {
-                    System.Windows.Forms.ToolStripMenuItem item = (System.Windows.Forms.ToolStripMenuItem)sender;
+                if (sender is UiToolStripMenuItem) {
+                    UiToolStripMenuItem item = (UiToolStripMenuItem)sender;
                     resampler_index = cMenuTrackTabRendererUtau.DropDownItems.IndexOf(item);
                     if (resampler_index < 0) {
                         resampler_index = menuTrackRendererUtau.DropDownItems.IndexOf(item);
@@ -16169,10 +16167,10 @@ namespace cadencii
 
             renderer_menu_handler_.ForEach((handler) => handler.updateCheckedState(kind));
             for (int i = 0; i < cMenuTrackTabRendererUtau.DropDownItems.Count; i++) {
-                ((System.Windows.Forms.ToolStripMenuItem)cMenuTrackTabRendererUtau.DropDownItems[i]).Checked = (i == resampler_index);
+                ((UiToolStripMenuItem)cMenuTrackTabRendererUtau.DropDownItems[i]).Checked = (i == resampler_index);
             }
             for (int i = 0; i < menuTrackRendererUtau.DropDownItems.Count; i++) {
-                ((System.Windows.Forms.ToolStripMenuItem)menuTrackRendererUtau.DropDownItems[i]).Checked = (i == resampler_index);
+                ((UiToolStripMenuItem)menuTrackRendererUtau.DropDownItems[i]).Checked = (i == resampler_index);
             }
             setEdited(true);
             refreshScreen();
@@ -16707,7 +16705,7 @@ namespace cadencii
 	Rectangle rcScreen = cadencii.core2.PortUtil.getWorkingArea(dlg);
             Point p = getAppropriateDialogLocation(
                 dlg.Left, dlg.Top, dlg.Width, dlg.Height,
-                rcScreen.x, rcScreen.y, rcScreen.Width, rcScreen.Height
+                rcScreen.X, rcScreen.Y, rcScreen.Width, rcScreen.Height
             );
             dlg.Location = new System.Drawing.Point(p.X, p.Y);
         }

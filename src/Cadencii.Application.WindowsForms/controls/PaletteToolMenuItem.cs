@@ -20,7 +20,7 @@ using cadencii.windows.forms;
 namespace cadencii
 {
 
-    public class PaletteToolMenuItem : ToolStripMenuItem
+    public class PaletteToolMenuItem : ToolStripMenuItemImpl
     {
         private string mPaletteToolID;
 

@@ -365,7 +365,7 @@ namespace cadencii.java.awt
 				}
 			} else if (s is Rectangle) {
 				Rectangle rc = (Rectangle)s;
-				((System.Drawing.Graphics)NativeGraphics).FillRectangle (brush, rc.x, rc.y, rc.Width, rc.Height);
+				((System.Drawing.Graphics)NativeGraphics).FillRectangle (brush, rc.X, rc.Y, rc.Width, rc.Height);
 			} else {
 				serr.println (
 					"fixme; org.kbinani.java.awt.Graphics#fill; type of argument s is not supported for '" +
@@ -393,7 +393,7 @@ namespace cadencii.java.awt
 				nativeGraphics.Clip = (System.Drawing.Region)((Area)clip).NativeRegion;
 			} else if (clip is Rectangle) {
 				Rectangle rc = (Rectangle)clip;
-				nativeGraphics.Clip = new System.Drawing.Region (new System.Drawing.Rectangle (rc.x, rc.y, rc.Width, rc.Height));
+				nativeGraphics.Clip = new System.Drawing.Region (new System.Drawing.Rectangle (rc.X, rc.Y, rc.Width, rc.Height));
 			} else {
 				serr.println (
 					"fixme: org.kbinani.java.awt.Graphics#setClip; argument type of clip is not supported for '" +
@@ -442,7 +442,7 @@ namespace cadencii.java.awt
 			} else {
 				mStringFormat.LineAlignment = System.Drawing.StringAlignment.Center;
 			}
-			nativeGraphics.DrawString (s, (System.Drawing.Font)font.NativeFont, brush, new System.Drawing.RectangleF (rect.x, rect.y, rect.Width, rect.Height), mStringFormat);
+			nativeGraphics.DrawString (s, (System.Drawing.Font)font.NativeFont, brush, new System.Drawing.RectangleF (rect.X, rect.Y, rect.Width, rect.Height), mStringFormat);
 		}
 	}
 
@@ -574,7 +574,7 @@ namespace cadencii.java.awt
 				}
 			} else if (s is Rectangle) {
 				Rectangle rc = (Rectangle)s;
-				region = new System.Drawing.Region (new System.Drawing.Rectangle (rc.x, rc.y, rc.Width, rc.Height));
+				region = new System.Drawing.Region (new System.Drawing.Rectangle (rc.X, rc.Y, rc.Width, rc.Height));
 			} else {
 				serr.println (
 					"fixme: org.kbinani.java.awt.Area#.ctor(org.kbinani.java.awt.Shape); type of argument s is not supported for '" +

@@ -18,7 +18,7 @@ using cadencii.windows.forms;
 namespace cadencii
 {
 
-    public class TrackSelectorSingerDropdownMenuItem : ToolStripMenuItem
+    public class TrackSelectorSingerDropdownMenuItem : ToolStripMenuItemImpl
     {
         public int ToolTipPxWidth;
         public string ToolTipText;

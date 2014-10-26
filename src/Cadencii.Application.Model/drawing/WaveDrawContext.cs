@@ -462,7 +462,7 @@ namespace cadencii
             } else {
                 order_y = rect.Height / 127.0f * scale_y * mMaxAmplitude;
             }
-            int ox = rect.x;
+            int ox = rect.X;
             int oy = rect.Height / 2;
             int last = mWave[0];
             int lastx = ox;
@@ -472,7 +472,7 @@ namespace cadencii
             int lasty2 = lastYMin;
             bool skipped = false;
             mDrawer.append(ox, lasty);
-            int xmax = rect.x + rect.Width;
+            int xmax = rect.X + rect.Width;
             int lastTempo = 500000;
             for (int i = 0; i <= count; i++) {
                 double time = 0.0;
@@ -517,13 +517,13 @@ namespace cadencii
 
                 // 第j0サンプルのデータを画面に描画したときのx座標がいくらになるか？
                 int draftStartX = xoffset + (int)((j0 - sStart) * pixel_per_sample);
-                if (draftStartX < rect.x) {
-                    j0 = (int)((rect.x - xoffset) / pixel_per_sample) + sStart;
+                if (draftStartX < rect.X) {
+                    j0 = (int)((rect.X - xoffset) / pixel_per_sample) + sStart;
                 }
                 // 第j1サンプルのデータを画面に描画した時のx座標がいくらになるか？
                 int draftEndX = xoffset + (int)((j1 - sStart) * pixel_per_sample);
-                if (rect.x + rect.Width < draftEndX) {
-                    j1 = (int)((rect.x + rect.Width - xoffset) / pixel_per_sample) + sStart;
+                if (rect.X + rect.Width < draftEndX) {
+                    j1 = (int)((rect.X + rect.Width - xoffset) / pixel_per_sample) + sStart;
                 }
 
                 bool breakRequired = false;
@@ -538,7 +538,7 @@ namespace cadencii
                         breakRequired = true;
                         break;
                     }
-                    if (x < rect.x) {
+                    if (x < rect.X) {
                         continue;
                     }
                     int y = oy - (int)(v * order_y);
@@ -579,7 +579,7 @@ namespace cadencii
                 }
             }
 
-            mDrawer.append(rect.x + rect.Width, lasty);
+            mDrawer.append(rect.X + rect.Width, lasty);
             mDrawer.flush();
         }
     }

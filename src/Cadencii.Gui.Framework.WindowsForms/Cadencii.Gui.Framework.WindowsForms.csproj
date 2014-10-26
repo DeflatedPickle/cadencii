@@ -7,6 +7,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Cadencii.Gui.Framework.WindowsForms</RootNamespace>
     <AssemblyName>Cadencii.Gui.Framework.WindowsForms</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,8 +38,10 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WindowsFormsImplementation.cs" />
+    <Compile Include="..\Cadencii.Gui.Framework.WindowsForms.Shared\GuiExtensions.cs">
+      <Link>GuiExtensions.cs</Link>
+    </Compile>
   </ItemGroup>
-  <Import Project="..\Cadencii.Gui.Framework.WindowsForms.Shared\cadencii.gui.winforms.shared.projitems" Label="Shared" Condition="Exists('..\Cadencii.Gui.Framework.WindowsForms.Shared\cadencii.gui.winforms.shared.projitems')" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Cadencii.Gui.Framework\Cadencii.Gui.Framework.csproj">

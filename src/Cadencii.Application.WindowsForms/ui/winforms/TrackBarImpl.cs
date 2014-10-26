@@ -16,7 +16,7 @@ using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 
 namespace cadencii
 {
-	public class TrackBarImpl : System.Windows.Forms.TrackBar, UiControl
+	public class TrackBarImpl : System.Windows.Forms.TrackBar, UiTrackBar
 	{
 		// UiControl
 

@@ -4,6 +4,15 @@ using System.Text;
 using System.Windows.Forms;
 using cadencii.windows.forms;
 
+using ToolStripRenderMode = cadencii.java.awt.ToolStripRenderMode;
+using ToolStripItemDisplayStyle = cadencii.java.awt.ToolStripItemDisplayStyle;
+using ToolStripItemImageScaling = cadencii.java.awt.ToolStripItemImageScaling;
+using TextImageRelation = cadencii.java.awt.TextImageRelation;
+using CheckState = cadencii.java.awt.CheckState;
+using TickStyle = cadencii.java.awt.TickStyle;
+using Keys = cadencii.java.awt.Keys;
+using AnchorStyles = cadencii.java.awt.AnchorStyles;
+
 namespace cadencii
 {
     public partial class FormMain
@@ -28,248 +37,248 @@ namespace cadencii
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.menuStripMain = new System.Windows.Forms.MenuStrip();
-            this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileSaveNamed = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuFileOpenVsq = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileOpenUst = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileImport = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileImportVsq = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileImportMidi = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileImportUst = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileExport = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileExportWave = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileExportParaWave = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileExportVsq = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileExportVsqx = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileExportMidi = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileExportMusicXml = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileExportUst = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileExportVxt = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuFileRecent = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFileRecentClear = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuFileQuit = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEditUndo = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEditRedo = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuEditCut = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEditCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEditPaste = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEditDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem19 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuEditAutoNormalizeMode = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem20 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuEditSelectAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEditSelectAllEvents = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVisual = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVisualControlTrack = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVisualMixer = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVisualWaveform = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVisualIconPalette = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVisualProperty = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVisualOverview = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVisualPluginUi = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVisualPluginUiVocaloid1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVisualPluginUiVocaloid2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVisualPluginUiAquesTone = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVisualPluginUiAquesTone2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuVisualGridline = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuVisualStartMarker = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVisualEndMarker = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuVisualLyrics = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVisualNoteProperty = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuVisualPitchLine = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuJob = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuJobNormalize = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuJobInsertBar = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuJobDeleteBar = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuJobRandomize = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuJobConnect = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuJobLyric = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuJobRewire = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuJobReloadVsti = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTrack = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTrackOn = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem21 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuTrackAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTrackCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTrackChangeName = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTrackDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem22 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuTrackRenderCurrent = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTrackRenderAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem23 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuTrackOverlay = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTrackRenderer = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTrackRendererVOCALOID1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTrackRendererVOCALOID2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTrackRendererUtau = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTrackRendererVCNT = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTrackRendererAquesTone = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTrackRendererAquesTone2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuTrackBgm = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuLyric = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuLyricExpressionProperty = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuLyricVibratoProperty = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuLyricApplyUtauParameters = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuLyricPhonemeTransformation = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuLyricDictionary = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuLyricCopyVibratoToPreset = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuScript = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuScriptUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSetting = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSettingPreference = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSettingSequence = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSettingPositionQuantize = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSettingPositionQuantize04 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSettingPositionQuantize08 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSettingPositionQuantize16 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSettingPositionQuantize32 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSettingPositionQuantize64 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSettingPositionQuantize128 = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSettingPositionQuantizeOff = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuSettingPositionQuantizeTriplet = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuSettingGameControler = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSettingGameControlerSetting = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSettingGameControlerLoad = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSettingGameControlerRemove = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSettingPaletteTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSettingShortcut = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSettingVibratoPreset = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuSettingDefaultSingerStyle = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuTools = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuToolsCreateVConnectSTANDDb = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHelpManual = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHelpLog = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHelpLogSwitch = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHelpLogOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHelpDebug = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHidden = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenEditLyric = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenEditFlipToolPointerPencil = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenEditFlipToolPointerEraser = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenVisualForwardParameter = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenVisualBackwardParameter = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenTrackNext = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenTrackBack = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenPaste = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenCut = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenSelectForward = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenSelectBackward = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenMoveUp = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenMoveDown = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenMoveLeft = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenMoveRight = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenLengthen = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenShorten = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenGoToStartMarker = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenGoToEndMarker = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenPlayFromStartMarker = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenFlipCurveOnPianorollMode = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHiddenPrintPoToCSV = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPiano = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cMenuPianoPointer = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoPencil = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoEraser = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoPaletteTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
-            this.cMenuPianoCurve = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripSeparator();
-            this.cMenuPianoFixed = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoFixed01 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoFixed02 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoFixed04 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoFixed08 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoFixed16 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoFixed32 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoFixed64 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoFixed128 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoFixedOff = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem18 = new System.Windows.Forms.ToolStripSeparator();
-            this.cMenuPianoFixedTriplet = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoFixedDotted = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoQuantize = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoQuantize04 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoQuantize08 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoQuantize16 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoQuantize32 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoQuantize64 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoQuantize128 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoQuantizeOff = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem26 = new System.Windows.Forms.ToolStripSeparator();
-            this.cMenuPianoQuantizeTriplet = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoGrid = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripSeparator();
-            this.cMenuPianoUndo = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoRedo = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem15 = new System.Windows.Forms.ToolStripSeparator();
-            this.cMenuPianoCut = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoPaste = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem16 = new System.Windows.Forms.ToolStripSeparator();
-            this.cMenuPianoSelectAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoSelectAllEvents = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem17 = new System.Windows.Forms.ToolStripSeparator();
-            this.cMenuPianoImportLyric = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoExpressionProperty = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPianoVibratoProperty = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripMain = new MenuStripImpl();
+            this.menuFile = new ToolStripMenuItemImpl();
+            this.menuFileNew = new ToolStripMenuItemImpl();
+            this.menuFileOpen = new ToolStripMenuItemImpl();
+            this.menuFileSave = new ToolStripMenuItemImpl();
+            this.menuFileSaveNamed = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem10 = new ToolStripSeparatorImpl();
+            this.menuFileOpenVsq = new ToolStripMenuItemImpl();
+            this.menuFileOpenUst = new ToolStripMenuItemImpl();
+            this.menuFileImport = new ToolStripMenuItemImpl();
+            this.menuFileImportVsq = new ToolStripMenuItemImpl();
+            this.menuFileImportMidi = new ToolStripMenuItemImpl();
+            this.menuFileImportUst = new ToolStripMenuItemImpl();
+            this.menuFileExport = new ToolStripMenuItemImpl();
+            this.menuFileExportWave = new ToolStripMenuItemImpl();
+            this.menuFileExportParaWave = new ToolStripMenuItemImpl();
+            this.menuFileExportVsq = new ToolStripMenuItemImpl();
+            this.menuFileExportVsqx = new ToolStripMenuItemImpl();
+            this.menuFileExportMidi = new ToolStripMenuItemImpl();
+            this.menuFileExportMusicXml = new ToolStripMenuItemImpl();
+            this.menuFileExportUst = new ToolStripMenuItemImpl();
+            this.menuFileExportVxt = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem11 = new ToolStripSeparatorImpl();
+            this.menuFileRecent = new ToolStripMenuItemImpl();
+            this.menuFileRecentClear = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem12 = new ToolStripSeparatorImpl();
+            this.menuFileQuit = new ToolStripMenuItemImpl();
+            this.menuEdit = new ToolStripMenuItemImpl();
+            this.menuEditUndo = new ToolStripMenuItemImpl();
+            this.menuEditRedo = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem5 = new ToolStripSeparatorImpl();
+            this.menuEditCut = new ToolStripMenuItemImpl();
+            this.menuEditCopy = new ToolStripMenuItemImpl();
+            this.menuEditPaste = new ToolStripMenuItemImpl();
+            this.menuEditDelete = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem19 = new ToolStripSeparatorImpl();
+            this.menuEditAutoNormalizeMode = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem20 = new ToolStripSeparatorImpl();
+            this.menuEditSelectAll = new ToolStripMenuItemImpl();
+            this.menuEditSelectAllEvents = new ToolStripMenuItemImpl();
+            this.menuVisual = new ToolStripMenuItemImpl();
+            this.menuVisualControlTrack = new ToolStripMenuItemImpl();
+            this.menuVisualMixer = new ToolStripMenuItemImpl();
+            this.menuVisualWaveform = new ToolStripMenuItemImpl();
+            this.menuVisualIconPalette = new ToolStripMenuItemImpl();
+            this.menuVisualProperty = new ToolStripMenuItemImpl();
+            this.menuVisualOverview = new ToolStripMenuItemImpl();
+            this.menuVisualPluginUi = new ToolStripMenuItemImpl();
+            this.menuVisualPluginUiVocaloid1 = new ToolStripMenuItemImpl();
+            this.menuVisualPluginUiVocaloid2 = new ToolStripMenuItemImpl();
+            this.menuVisualPluginUiAquesTone = new ToolStripMenuItemImpl();
+            this.menuVisualPluginUiAquesTone2 = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem1 = new ToolStripSeparatorImpl();
+            this.menuVisualGridline = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem2 = new ToolStripSeparatorImpl();
+            this.menuVisualStartMarker = new ToolStripMenuItemImpl();
+            this.menuVisualEndMarker = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem3 = new ToolStripSeparatorImpl();
+            this.menuVisualLyrics = new ToolStripMenuItemImpl();
+            this.menuVisualNoteProperty = new ToolStripMenuItemImpl();
+            this.menuVisualPitchLine = new ToolStripMenuItemImpl();
+            this.menuJob = new ToolStripMenuItemImpl();
+            this.menuJobNormalize = new ToolStripMenuItemImpl();
+            this.menuJobInsertBar = new ToolStripMenuItemImpl();
+            this.menuJobDeleteBar = new ToolStripMenuItemImpl();
+            this.menuJobRandomize = new ToolStripMenuItemImpl();
+            this.menuJobConnect = new ToolStripMenuItemImpl();
+            this.menuJobLyric = new ToolStripMenuItemImpl();
+            this.menuJobRewire = new ToolStripMenuItemImpl();
+            this.menuJobReloadVsti = new ToolStripMenuItemImpl();
+            this.menuTrack = new ToolStripMenuItemImpl();
+            this.menuTrackOn = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem21 = new ToolStripSeparatorImpl();
+            this.menuTrackAdd = new ToolStripMenuItemImpl();
+            this.menuTrackCopy = new ToolStripMenuItemImpl();
+            this.menuTrackChangeName = new ToolStripMenuItemImpl();
+            this.menuTrackDelete = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem22 = new ToolStripSeparatorImpl();
+            this.menuTrackRenderCurrent = new ToolStripMenuItemImpl();
+            this.menuTrackRenderAll = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem23 = new ToolStripSeparatorImpl();
+            this.menuTrackOverlay = new ToolStripMenuItemImpl();
+            this.menuTrackRenderer = new ToolStripMenuItemImpl();
+            this.menuTrackRendererVOCALOID1 = new ToolStripMenuItemImpl();
+            this.menuTrackRendererVOCALOID2 = new ToolStripMenuItemImpl();
+            this.menuTrackRendererUtau = new ToolStripMenuItemImpl();
+            this.menuTrackRendererVCNT = new ToolStripMenuItemImpl();
+            this.menuTrackRendererAquesTone = new ToolStripMenuItemImpl();
+            this.menuTrackRendererAquesTone2 = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem4 = new ToolStripSeparatorImpl();
+            this.menuTrackBgm = new ToolStripMenuItemImpl();
+            this.menuLyric = new ToolStripMenuItemImpl();
+            this.menuLyricExpressionProperty = new ToolStripMenuItemImpl();
+            this.menuLyricVibratoProperty = new ToolStripMenuItemImpl();
+            this.menuLyricApplyUtauParameters = new ToolStripMenuItemImpl();
+            this.menuLyricPhonemeTransformation = new ToolStripMenuItemImpl();
+            this.menuLyricDictionary = new ToolStripMenuItemImpl();
+            this.menuLyricCopyVibratoToPreset = new ToolStripMenuItemImpl();
+            this.menuScript = new ToolStripMenuItemImpl();
+            this.menuScriptUpdate = new ToolStripMenuItemImpl();
+            this.menuSetting = new ToolStripMenuItemImpl();
+            this.menuSettingPreference = new ToolStripMenuItemImpl();
+            this.menuSettingSequence = new ToolStripMenuItemImpl();
+            this.menuSettingPositionQuantize = new ToolStripMenuItemImpl();
+            this.menuSettingPositionQuantize04 = new ToolStripMenuItemImpl();
+            this.menuSettingPositionQuantize08 = new ToolStripMenuItemImpl();
+            this.menuSettingPositionQuantize16 = new ToolStripMenuItemImpl();
+            this.menuSettingPositionQuantize32 = new ToolStripMenuItemImpl();
+            this.menuSettingPositionQuantize64 = new ToolStripMenuItemImpl();
+            this.menuSettingPositionQuantize128 = new ToolStripMenuItemImpl();
+            this.menuSettingPositionQuantizeOff = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem9 = new ToolStripSeparatorImpl();
+            this.menuSettingPositionQuantizeTriplet = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem8 = new ToolStripSeparatorImpl();
+            this.menuSettingGameControler = new ToolStripMenuItemImpl();
+            this.menuSettingGameControlerSetting = new ToolStripMenuItemImpl();
+            this.menuSettingGameControlerLoad = new ToolStripMenuItemImpl();
+            this.menuSettingGameControlerRemove = new ToolStripMenuItemImpl();
+            this.menuSettingPaletteTool = new ToolStripMenuItemImpl();
+            this.menuSettingShortcut = new ToolStripMenuItemImpl();
+            this.menuSettingVibratoPreset = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem6 = new ToolStripSeparatorImpl();
+            this.menuSettingDefaultSingerStyle = new ToolStripMenuItemImpl();
+            this.menuTools = new ToolStripMenuItemImpl();
+            this.menuToolsCreateVConnectSTANDDb = new ToolStripMenuItemImpl();
+            this.menuHelp = new ToolStripMenuItemImpl();
+            this.menuHelpAbout = new ToolStripMenuItemImpl();
+            this.menuHelpManual = new ToolStripMenuItemImpl();
+            this.menuHelpLog = new ToolStripMenuItemImpl();
+            this.menuHelpLogSwitch = new ToolStripMenuItemImpl();
+            this.menuHelpLogOpen = new ToolStripMenuItemImpl();
+            this.menuHelpDebug = new ToolStripMenuItemImpl();
+            this.menuHidden = new ToolStripMenuItemImpl();
+            this.menuHiddenEditLyric = new ToolStripMenuItemImpl();
+            this.menuHiddenEditFlipToolPointerPencil = new ToolStripMenuItemImpl();
+            this.menuHiddenEditFlipToolPointerEraser = new ToolStripMenuItemImpl();
+            this.menuHiddenVisualForwardParameter = new ToolStripMenuItemImpl();
+            this.menuHiddenVisualBackwardParameter = new ToolStripMenuItemImpl();
+            this.menuHiddenTrackNext = new ToolStripMenuItemImpl();
+            this.menuHiddenTrackBack = new ToolStripMenuItemImpl();
+            this.menuHiddenCopy = new ToolStripMenuItemImpl();
+            this.menuHiddenPaste = new ToolStripMenuItemImpl();
+            this.menuHiddenCut = new ToolStripMenuItemImpl();
+            this.menuHiddenSelectForward = new ToolStripMenuItemImpl();
+            this.menuHiddenSelectBackward = new ToolStripMenuItemImpl();
+            this.menuHiddenMoveUp = new ToolStripMenuItemImpl();
+            this.menuHiddenMoveDown = new ToolStripMenuItemImpl();
+            this.menuHiddenMoveLeft = new ToolStripMenuItemImpl();
+            this.menuHiddenMoveRight = new ToolStripMenuItemImpl();
+            this.menuHiddenLengthen = new ToolStripMenuItemImpl();
+            this.menuHiddenShorten = new ToolStripMenuItemImpl();
+            this.menuHiddenGoToStartMarker = new ToolStripMenuItemImpl();
+            this.menuHiddenGoToEndMarker = new ToolStripMenuItemImpl();
+            this.menuHiddenPlayFromStartMarker = new ToolStripMenuItemImpl();
+            this.menuHiddenFlipCurveOnPianorollMode = new ToolStripMenuItemImpl();
+            this.menuHiddenPrintPoToCSV = new ToolStripMenuItemImpl();
+            this.cMenuPiano = new ContextMenuStripImpl(this.components);
+            this.cMenuPianoPointer = new ToolStripMenuItemImpl();
+            this.cMenuPianoPencil = new ToolStripMenuItemImpl();
+            this.cMenuPianoEraser = new ToolStripMenuItemImpl();
+            this.cMenuPianoPaletteTool = new ToolStripMenuItemImpl();
+            this.toolStripSeparator15 = new ToolStripSeparatorImpl();
+            this.cMenuPianoCurve = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem13 = new ToolStripSeparatorImpl();
+            this.cMenuPianoFixed = new ToolStripMenuItemImpl();
+            this.cMenuPianoFixed01 = new ToolStripMenuItemImpl();
+            this.cMenuPianoFixed02 = new ToolStripMenuItemImpl();
+            this.cMenuPianoFixed04 = new ToolStripMenuItemImpl();
+            this.cMenuPianoFixed08 = new ToolStripMenuItemImpl();
+            this.cMenuPianoFixed16 = new ToolStripMenuItemImpl();
+            this.cMenuPianoFixed32 = new ToolStripMenuItemImpl();
+            this.cMenuPianoFixed64 = new ToolStripMenuItemImpl();
+            this.cMenuPianoFixed128 = new ToolStripMenuItemImpl();
+            this.cMenuPianoFixedOff = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem18 = new ToolStripSeparatorImpl();
+            this.cMenuPianoFixedTriplet = new ToolStripMenuItemImpl();
+            this.cMenuPianoFixedDotted = new ToolStripMenuItemImpl();
+            this.cMenuPianoQuantize = new ToolStripMenuItemImpl();
+            this.cMenuPianoQuantize04 = new ToolStripMenuItemImpl();
+            this.cMenuPianoQuantize08 = new ToolStripMenuItemImpl();
+            this.cMenuPianoQuantize16 = new ToolStripMenuItemImpl();
+            this.cMenuPianoQuantize32 = new ToolStripMenuItemImpl();
+            this.cMenuPianoQuantize64 = new ToolStripMenuItemImpl();
+            this.cMenuPianoQuantize128 = new ToolStripMenuItemImpl();
+            this.cMenuPianoQuantizeOff = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem26 = new ToolStripSeparatorImpl();
+            this.cMenuPianoQuantizeTriplet = new ToolStripMenuItemImpl();
+            this.cMenuPianoGrid = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem14 = new ToolStripSeparatorImpl();
+            this.cMenuPianoUndo = new ToolStripMenuItemImpl();
+            this.cMenuPianoRedo = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem15 = new ToolStripSeparatorImpl();
+            this.cMenuPianoCut = new ToolStripMenuItemImpl();
+            this.cMenuPianoCopy = new ToolStripMenuItemImpl();
+            this.cMenuPianoPaste = new ToolStripMenuItemImpl();
+            this.cMenuPianoDelete = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem16 = new ToolStripSeparatorImpl();
+            this.cMenuPianoSelectAll = new ToolStripMenuItemImpl();
+            this.cMenuPianoSelectAllEvents = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem17 = new ToolStripSeparatorImpl();
+            this.cMenuPianoImportLyric = new ToolStripMenuItemImpl();
+            this.cMenuPianoExpressionProperty = new ToolStripMenuItemImpl();
+            this.cMenuPianoVibratoProperty = new ToolStripMenuItemImpl();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.cMenuTrackTab = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cMenuTrackTabTrackOn = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem24 = new System.Windows.Forms.ToolStripSeparator();
-            this.cMenuTrackTabAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackTabCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackTabChangeName = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackTabDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem25 = new System.Windows.Forms.ToolStripSeparator();
-            this.cMenuTrackTabRenderCurrent = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackTabRenderAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem27 = new System.Windows.Forms.ToolStripSeparator();
-            this.cMenuTrackTabOverlay = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackTabRenderer = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackTabRendererVOCALOID1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackTabRendererVOCALOID2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackTabRendererUtau = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackTabRendererStraight = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackTabRendererAquesTone = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackTabRendererAquesTone2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackSelector = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cMenuTrackSelectorPointer = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackSelectorPencil = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackSelectorLine = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackSelectorEraser = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackSelectorPaletteTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
-            this.cMenuTrackSelectorCurve = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem28 = new System.Windows.Forms.ToolStripSeparator();
-            this.cMenuTrackSelectorUndo = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackSelectorRedo = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem29 = new System.Windows.Forms.ToolStripSeparator();
-            this.cMenuTrackSelectorCut = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackSelectorCopy = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackSelectorPaste = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackSelectorDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuTrackSelectorDeleteBezier = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem31 = new System.Windows.Forms.ToolStripSeparator();
-            this.cMenuTrackSelectorSelectAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.cMenuTrackTab = new ContextMenuStripImpl(this.components);
+            this.cMenuTrackTabTrackOn = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem24 = new ToolStripSeparatorImpl();
+            this.cMenuTrackTabAdd = new ToolStripMenuItemImpl();
+            this.cMenuTrackTabCopy = new ToolStripMenuItemImpl();
+            this.cMenuTrackTabChangeName = new ToolStripMenuItemImpl();
+            this.cMenuTrackTabDelete = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem25 = new ToolStripSeparatorImpl();
+            this.cMenuTrackTabRenderCurrent = new ToolStripMenuItemImpl();
+            this.cMenuTrackTabRenderAll = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem27 = new ToolStripSeparatorImpl();
+            this.cMenuTrackTabOverlay = new ToolStripMenuItemImpl();
+            this.cMenuTrackTabRenderer = new ToolStripMenuItemImpl();
+            this.cMenuTrackTabRendererVOCALOID1 = new ToolStripMenuItemImpl();
+            this.cMenuTrackTabRendererVOCALOID2 = new ToolStripMenuItemImpl();
+            this.cMenuTrackTabRendererUtau = new ToolStripMenuItemImpl();
+            this.cMenuTrackTabRendererStraight = new ToolStripMenuItemImpl();
+            this.cMenuTrackTabRendererAquesTone = new ToolStripMenuItemImpl();
+            this.cMenuTrackTabRendererAquesTone2 = new ToolStripMenuItemImpl();
+            this.cMenuTrackSelector = new ContextMenuStripImpl(this.components);
+            this.cMenuTrackSelectorPointer = new ToolStripMenuItemImpl();
+            this.cMenuTrackSelectorPencil = new ToolStripMenuItemImpl();
+            this.cMenuTrackSelectorLine = new ToolStripMenuItemImpl();
+            this.cMenuTrackSelectorEraser = new ToolStripMenuItemImpl();
+            this.cMenuTrackSelectorPaletteTool = new ToolStripMenuItemImpl();
+            this.toolStripSeparator14 = new ToolStripSeparatorImpl();
+            this.cMenuTrackSelectorCurve = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem28 = new ToolStripSeparatorImpl();
+            this.cMenuTrackSelectorUndo = new ToolStripMenuItemImpl();
+            this.cMenuTrackSelectorRedo = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem29 = new ToolStripSeparatorImpl();
+            this.cMenuTrackSelectorCut = new ToolStripMenuItemImpl();
+            this.cMenuTrackSelectorCopy = new ToolStripMenuItemImpl();
+            this.cMenuTrackSelectorPaste = new ToolStripMenuItemImpl();
+            this.cMenuTrackSelectorDelete = new ToolStripMenuItemImpl();
+            this.cMenuTrackSelectorDeleteBezier = new ToolStripMenuItemImpl();
+            this.toolStripMenuItem31 = new ToolStripSeparatorImpl();
+            this.cMenuTrackSelectorSelectAll = new ToolStripMenuItemImpl();
             this.trackBar = new TrackBarImpl();
             this.pictureBox3 = new PictureBoxImpl();
             this.pictKeyLengthSplitter = new PictureBoxImpl();
@@ -279,16 +288,16 @@ namespace cadencii
             this.toolStripBottom = new System.Windows.Forms.ToolStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.stripLblGameCtrlMode = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator10 = new ToolStripSeparatorImpl();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.stripLblMidiIn = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator11 = new ToolStripSeparatorImpl();
             this.stripBtnStepSequencer = new System.Windows.Forms.ToolStripButton();
             this.splitContainerProperty = ApplicationUIHost.Create<cadencii.apputil.BSplitContainer>();
             this.splitContainer2 = ApplicationUIHost.Create<cadencii.apputil.BSplitContainer>();
             this.splitContainer1 = ApplicationUIHost.Create<cadencii.apputil.BSplitContainer>();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.stripDDBtnQuantize = new System.Windows.Forms.ContextMenu();
+            this.toolStripSeparator2 = new ToolStripSeparatorImpl();
+            this.stripDDBtnQuantize = new ContextMenuImpl();
             this.stripDDBtnQuantize04 = new System.Windows.Forms.MenuItem();
             this.stripDDBtnQuantize08 = new System.Windows.Forms.MenuItem();
             this.stripDDBtnQuantize16 = new System.Windows.Forms.MenuItem();
@@ -298,7 +307,7 @@ namespace cadencii
             this.stripDDBtnQuantizeOff = new System.Windows.Forms.MenuItem();
             this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.stripDDBtnQuantizeTriplet = new System.Windows.Forms.MenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new ToolStripSeparatorImpl();
             this.imageListFile = new System.Windows.Forms.ImageList(this.components);
             this.imageListPosition = new System.Windows.Forms.ImageList(this.components);
             this.imageListMeasure = new System.Windows.Forms.ImageList(this.components);
@@ -310,45 +319,45 @@ namespace cadencii
             this.rebar = ApplicationUIHost.Create<cadencii.Rebar>();
             this.imageListMenu = new System.Windows.Forms.ImageList(this.components);
             this.toolBarFile = new ToolBarImpl();
-            this.stripBtnFileNew = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnFileOpen = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnFileSave = new System.Windows.Forms.ToolBarButton();
-            this.toolBarButton1 = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnCut = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnCopy = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnPaste = new System.Windows.Forms.ToolBarButton();
-            this.toolBarButton2 = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnUndo = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnRedo = new System.Windows.Forms.ToolBarButton();
+            this.stripBtnFileNew = new ToolBarButtonImpl ();
+            this.stripBtnFileOpen = new ToolBarButtonImpl ();
+            this.stripBtnFileSave = new ToolBarButtonImpl ();
+            this.toolBarButton1 = new ToolBarButtonImpl ();
+            this.stripBtnCut = new ToolBarButtonImpl ();
+            this.stripBtnCopy = new ToolBarButtonImpl ();
+            this.stripBtnPaste = new ToolBarButtonImpl ();
+            this.toolBarButton2 = new ToolBarButtonImpl ();
+            this.stripBtnUndo = new ToolBarButtonImpl ();
+            this.stripBtnRedo = new ToolBarButtonImpl ();
             this.toolBarPosition = new ToolBarImpl();
-            this.stripBtnMoveTop = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnRewind = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnForward = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnMoveEnd = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnPlay = new System.Windows.Forms.ToolBarButton();
-            this.toolBarButton4 = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnScroll = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnLoop = new System.Windows.Forms.ToolBarButton();
+            this.stripBtnMoveTop = new ToolBarButtonImpl ();
+            this.stripBtnRewind = new ToolBarButtonImpl ();
+            this.stripBtnForward = new ToolBarButtonImpl ();
+            this.stripBtnMoveEnd = new ToolBarButtonImpl ();
+            this.stripBtnPlay = new ToolBarButtonImpl ();
+            this.toolBarButton4 = new ToolBarButtonImpl ();
+            this.stripBtnScroll = new ToolBarButtonImpl ();
+            this.stripBtnLoop = new ToolBarButtonImpl ();
             this.toolBarMeasure = new ToolBarImpl();
-            this.stripDDBtnQuantizeParent = new System.Windows.Forms.ToolBarButton();
-            this.toolBarButton5 = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnStartMarker = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnEndMarker = new System.Windows.Forms.ToolBarButton();
+            this.stripDDBtnQuantizeParent = new ToolBarButtonImpl ();
+            this.toolBarButton5 = new ToolBarButtonImpl ();
+            this.stripBtnStartMarker = new ToolBarButtonImpl ();
+            this.stripBtnEndMarker = new ToolBarButtonImpl ();
             this.toolBarTool = new ToolBarImpl();
-            this.stripBtnPointer = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnPencil = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnLine = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnEraser = new System.Windows.Forms.ToolBarButton();
-            this.toolBarButton3 = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnGrid = new System.Windows.Forms.ToolBarButton();
-            this.stripBtnCurve = new System.Windows.Forms.ToolBarButton();
+            this.stripBtnPointer = new ToolBarButtonImpl ();
+            this.stripBtnPencil = new ToolBarButtonImpl ();
+            this.stripBtnLine = new ToolBarButtonImpl ();
+            this.stripBtnEraser = new ToolBarButtonImpl ();
+            this.toolBarButton3 = new ToolBarButtonImpl ();
+            this.stripBtnGrid = new ToolBarButtonImpl ();
+            this.stripBtnCurve = new ToolBarButtonImpl ();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.cMenuPositionIndicator = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cMenuPositionIndicatorStartMarker = new System.Windows.Forms.ToolStripMenuItem();
-            this.cMenuPositionIndicatorEndMarker = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuHelpCheckForUpdates = new System.Windows.Forms.ToolStripMenuItem();
+            this.cMenuPositionIndicator = new ContextMenuStripImpl(this.components);
+            this.cMenuPositionIndicatorStartMarker = new ToolStripMenuItemImpl();
+            this.cMenuPositionIndicatorEndMarker = new ToolStripMenuItemImpl();
+            this.menuHelpCheckForUpdates = new ToolStripMenuItemImpl();
             this.menuStripMain.SuspendLayout();
             this.cMenuPiano.SuspendLayout();
             this.cMenuTrackTab.SuspendLayout();
@@ -372,7 +381,7 @@ namespace cadencii
             // 
             // menuStripMain
             // 
-            this.menuStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStripMain.Items.AddRange(new UiToolStripItem[] {
             this.menuFile,
             this.menuEdit,
             this.menuVisual,
@@ -384,17 +393,17 @@ namespace cadencii
             this.menuTools,
             this.menuHelp,
             this.menuHidden});
-            this.menuStripMain.Location = new System.Drawing.Point(0, 0);
+            this.menuStripMain.Location = new cadencii.java.awt.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
-            this.menuStripMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStripMain.Size = new System.Drawing.Size(955, 26);
+            this.menuStripMain.RenderMode = ToolStripRenderMode.System;
+            this.menuStripMain.Size = new cadencii.java.awt.Dimension(955, 26);
             this.menuStripMain.TabIndex = 0;
             this.menuStripMain.Text = "menuStrip1";
             // 
             // menuFile
             // 
-            this.menuFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuFile.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            this.menuFile.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuFileNew,
             this.menuFileOpen,
             this.menuFileSave,
@@ -408,98 +417,98 @@ namespace cadencii
             this.menuFileRecent,
             this.toolStripMenuItem12,
             this.menuFileQuit});
-            this.menuFile.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.menuFile.ImageScaling = ToolStripItemImageScaling.None;
             this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new System.Drawing.Size(57, 22);
+            this.menuFile.Size = new cadencii.java.awt.Dimension(57, 22);
             this.menuFile.Text = "File(&F)";
             // 
             // menuFileNew
             // 
-            this.menuFileNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuFileNew.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuFileNew.Name = "menuFileNew";
-            this.menuFileNew.Size = new System.Drawing.Size(270, 22);
+            this.menuFileNew.Size = new cadencii.java.awt.Dimension(270, 22);
             this.menuFileNew.Text = "New(N)";
-            this.menuFileNew.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.menuFileNew.TextImageRelation = TextImageRelation.Overlay;
             // 
             // menuFileOpen
             // 
-            this.menuFileOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuFileOpen.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuFileOpen.Name = "menuFileOpen";
-            this.menuFileOpen.Size = new System.Drawing.Size(270, 22);
+            this.menuFileOpen.Size = new cadencii.java.awt.Dimension(270, 22);
             this.menuFileOpen.Text = "Open(&O)";
-            this.menuFileOpen.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.menuFileOpen.TextImageRelation = TextImageRelation.Overlay;
             // 
             // menuFileSave
             // 
-            this.menuFileSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuFileSave.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuFileSave.Name = "menuFileSave";
-            this.menuFileSave.Size = new System.Drawing.Size(270, 22);
+            this.menuFileSave.Size = new cadencii.java.awt.Dimension(270, 22);
             this.menuFileSave.Text = "Save(&S)";
-            this.menuFileSave.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.menuFileSave.TextImageRelation = TextImageRelation.Overlay;
             // 
             // menuFileSaveNamed
             // 
-            this.menuFileSaveNamed.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuFileSaveNamed.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuFileSaveNamed.Name = "menuFileSaveNamed";
-            this.menuFileSaveNamed.Size = new System.Drawing.Size(270, 22);
+            this.menuFileSaveNamed.Size = new cadencii.java.awt.Dimension(270, 22);
             this.menuFileSaveNamed.Text = "Save As(&A)";
-            this.menuFileSaveNamed.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.menuFileSaveNamed.TextImageRelation = TextImageRelation.Overlay;
             // 
             // toolStripMenuItem10
             // 
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new System.Drawing.Size(267, 6);
+            this.toolStripMenuItem10.Size = new cadencii.java.awt.Dimension(267, 6);
             // 
             // menuFileOpenVsq
             // 
-            this.menuFileOpenVsq.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuFileOpenVsq.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuFileOpenVsq.Name = "menuFileOpenVsq";
-            this.menuFileOpenVsq.Size = new System.Drawing.Size(270, 22);
+            this.menuFileOpenVsq.Size = new cadencii.java.awt.Dimension(270, 22);
             this.menuFileOpenVsq.Text = "Open VSQX/VSQ/Vocaloid Midi(&V)";
-            this.menuFileOpenVsq.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.menuFileOpenVsq.TextImageRelation = TextImageRelation.Overlay;
             // 
             // menuFileOpenUst
             // 
-            this.menuFileOpenUst.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuFileOpenUst.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuFileOpenUst.Name = "menuFileOpenUst";
-            this.menuFileOpenUst.Size = new System.Drawing.Size(270, 22);
+            this.menuFileOpenUst.Size = new cadencii.java.awt.Dimension(270, 22);
             this.menuFileOpenUst.Text = "Open UTAU Project File(&U)";
-            this.menuFileOpenUst.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.menuFileOpenUst.TextImageRelation = TextImageRelation.Overlay;
             // 
             // menuFileImport
             // 
-            this.menuFileImport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.menuFileImport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuFileImport.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            this.menuFileImport.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuFileImportVsq,
             this.menuFileImportMidi,
             this.menuFileImportUst});
             this.menuFileImport.Name = "menuFileImport";
-            this.menuFileImport.Size = new System.Drawing.Size(270, 22);
+            this.menuFileImport.Size = new cadencii.java.awt.Dimension(270, 22);
             this.menuFileImport.Text = "Import(&I)";
-            this.menuFileImport.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.menuFileImport.TextImageRelation = TextImageRelation.Overlay;
             // 
             // menuFileImportVsq
             // 
             this.menuFileImportVsq.Name = "menuFileImportVsq";
-            this.menuFileImportVsq.Size = new System.Drawing.Size(175, 22);
+            this.menuFileImportVsq.Size = new cadencii.java.awt.Dimension(175, 22);
             this.menuFileImportVsq.Text = "VSQ File";
             // 
             // menuFileImportMidi
             // 
             this.menuFileImportMidi.Name = "menuFileImportMidi";
-            this.menuFileImportMidi.Size = new System.Drawing.Size(175, 22);
+            this.menuFileImportMidi.Size = new cadencii.java.awt.Dimension(175, 22);
             this.menuFileImportMidi.Text = "Standard MIDI";
             // 
             // menuFileImportUst
             // 
             this.menuFileImportUst.Name = "menuFileImportUst";
-            this.menuFileImportUst.Size = new System.Drawing.Size(175, 22);
+            this.menuFileImportUst.Size = new cadencii.java.awt.Dimension(175, 22);
             this.menuFileImportUst.Text = "UTAU project file";
             // 
             // menuFileExport
             // 
-            this.menuFileExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.menuFileExport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuFileExport.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            this.menuFileExport.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuFileExportWave,
             this.menuFileExportParaWave,
             this.menuFileExportVsq,
@@ -509,97 +518,97 @@ namespace cadencii
             this.menuFileExportUst,
             this.menuFileExportVxt});
             this.menuFileExport.Name = "menuFileExport";
-            this.menuFileExport.Size = new System.Drawing.Size(270, 22);
+            this.menuFileExport.Size = new cadencii.java.awt.Dimension(270, 22);
             this.menuFileExport.Text = "Export(&E)";
-            this.menuFileExport.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.menuFileExport.TextImageRelation = TextImageRelation.Overlay;
             // 
             // menuFileExportWave
             // 
             this.menuFileExportWave.Name = "menuFileExportWave";
-            this.menuFileExportWave.Size = new System.Drawing.Size(268, 22);
+            this.menuFileExportWave.Size = new cadencii.java.awt.Dimension(268, 22);
             this.menuFileExportWave.Text = "Wave";
             // 
             // menuFileExportParaWave
             // 
             this.menuFileExportParaWave.Name = "menuFileExportParaWave";
-            this.menuFileExportParaWave.Size = new System.Drawing.Size(268, 22);
+            this.menuFileExportParaWave.Size = new cadencii.java.awt.Dimension(268, 22);
             this.menuFileExportParaWave.Text = "Serial numbered Wave";
             // 
             // menuFileExportVsq
             // 
             this.menuFileExportVsq.Name = "menuFileExportVsq";
-            this.menuFileExportVsq.Size = new System.Drawing.Size(268, 22);
+            this.menuFileExportVsq.Size = new cadencii.java.awt.Dimension(268, 22);
             this.menuFileExportVsq.Text = "VSQ File";
             // 
             // menuFileExportVsqx
             // 
             this.menuFileExportVsqx.Name = "menuFileExportVsqx";
-            this.menuFileExportVsqx.Size = new System.Drawing.Size(268, 22);
+            this.menuFileExportVsqx.Size = new cadencii.java.awt.Dimension(268, 22);
             this.menuFileExportVsqx.Text = "VSQX File";
             // 
             // menuFileExportMidi
             // 
             this.menuFileExportMidi.Name = "menuFileExportMidi";
-            this.menuFileExportMidi.Size = new System.Drawing.Size(268, 22);
+            this.menuFileExportMidi.Size = new cadencii.java.awt.Dimension(268, 22);
             this.menuFileExportMidi.Text = "MIDI";
             // 
             // menuFileExportMusicXml
             // 
             this.menuFileExportMusicXml.Name = "menuFileExportMusicXml";
-            this.menuFileExportMusicXml.Size = new System.Drawing.Size(268, 22);
+            this.menuFileExportMusicXml.Size = new cadencii.java.awt.Dimension(268, 22);
             this.menuFileExportMusicXml.Text = "MusicXML";
             // 
             // menuFileExportUst
             // 
             this.menuFileExportUst.Name = "menuFileExportUst";
-            this.menuFileExportUst.Size = new System.Drawing.Size(268, 22);
+            this.menuFileExportUst.Size = new cadencii.java.awt.Dimension(268, 22);
             this.menuFileExportUst.Text = "UTAU Project File (current track)";
             // 
             // menuFileExportVxt
             // 
             this.menuFileExportVxt.Name = "menuFileExportVxt";
-            this.menuFileExportVxt.Size = new System.Drawing.Size(268, 22);
+            this.menuFileExportVxt.Size = new cadencii.java.awt.Dimension(268, 22);
             this.menuFileExportVxt.Text = "Metatext for vConnect";
             // 
             // toolStripMenuItem11
             // 
             this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new System.Drawing.Size(267, 6);
+            this.toolStripMenuItem11.Size = new cadencii.java.awt.Dimension(267, 6);
             // 
             // menuFileRecent
             // 
-            this.menuFileRecent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.menuFileRecent.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuFileRecent.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            this.menuFileRecent.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuFileRecentClear});
             this.menuFileRecent.Name = "menuFileRecent";
-            this.menuFileRecent.Size = new System.Drawing.Size(270, 22);
+            this.menuFileRecent.Size = new cadencii.java.awt.Dimension(270, 22);
             this.menuFileRecent.Text = "Recent Files(&R)";
-            this.menuFileRecent.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.menuFileRecent.TextImageRelation = TextImageRelation.Overlay;
             // 
             // menuFileRecentClear
             // 
-            this.menuFileRecentClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuFileRecentClear.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuFileRecentClear.Name = "menuFileRecentClear";
-            this.menuFileRecentClear.Size = new System.Drawing.Size(141, 22);
+            this.menuFileRecentClear.Size = new cadencii.java.awt.Dimension(141, 22);
             this.menuFileRecentClear.Text = "Clear Menu";
-            this.menuFileRecentClear.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.menuFileRecentClear.TextImageRelation = TextImageRelation.Overlay;
             // 
             // toolStripMenuItem12
             // 
             this.toolStripMenuItem12.Name = "toolStripMenuItem12";
-            this.toolStripMenuItem12.Size = new System.Drawing.Size(267, 6);
+            this.toolStripMenuItem12.Size = new cadencii.java.awt.Dimension(267, 6);
             // 
             // menuFileQuit
             // 
-            this.menuFileQuit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuFileQuit.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuFileQuit.Name = "menuFileQuit";
-            this.menuFileQuit.Size = new System.Drawing.Size(270, 22);
+            this.menuFileQuit.Size = new cadencii.java.awt.Dimension(270, 22);
             this.menuFileQuit.Text = "Quit(&Q)";
-            this.menuFileQuit.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay;
+            this.menuFileQuit.TextImageRelation = TextImageRelation.Overlay;
             // 
             // menuEdit
             // 
-            this.menuEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuEdit.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuEditUndo,
             this.menuEditRedo,
             this.toolStripMenuItem5,
@@ -613,83 +622,83 @@ namespace cadencii
             this.menuEditSelectAll,
             this.menuEditSelectAllEvents});
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(59, 22);
+            this.menuEdit.Size = new cadencii.java.awt.Dimension(59, 22);
             this.menuEdit.Text = "Edit(&E)";
             // 
             // menuEditUndo
             // 
             this.menuEditUndo.Name = "menuEditUndo";
-            this.menuEditUndo.Size = new System.Drawing.Size(220, 22);
+            this.menuEditUndo.Size = new cadencii.java.awt.Dimension(220, 22);
             this.menuEditUndo.Text = "Undo(&U)";
             // 
             // menuEditRedo
             // 
             this.menuEditRedo.Name = "menuEditRedo";
-            this.menuEditRedo.Size = new System.Drawing.Size(220, 22);
+            this.menuEditRedo.Size = new cadencii.java.awt.Dimension(220, 22);
             this.menuEditRedo.Text = "Redo(&R)";
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(217, 6);
+            this.toolStripMenuItem5.Size = new cadencii.java.awt.Dimension(217, 6);
             // 
             // menuEditCut
             // 
             this.menuEditCut.Name = "menuEditCut";
-            this.menuEditCut.Size = new System.Drawing.Size(220, 22);
+            this.menuEditCut.Size = new cadencii.java.awt.Dimension(220, 22);
             this.menuEditCut.Text = "Cut(&T)";
             // 
             // menuEditCopy
             // 
             this.menuEditCopy.Name = "menuEditCopy";
-            this.menuEditCopy.Size = new System.Drawing.Size(220, 22);
+            this.menuEditCopy.Size = new cadencii.java.awt.Dimension(220, 22);
             this.menuEditCopy.Text = "Copy(&C)";
             // 
             // menuEditPaste
             // 
             this.menuEditPaste.Name = "menuEditPaste";
             this.menuEditPaste.ShortcutKeyDisplayString = "";
-            this.menuEditPaste.Size = new System.Drawing.Size(220, 22);
+            this.menuEditPaste.Size = new cadencii.java.awt.Dimension(220, 22);
             this.menuEditPaste.Text = "Paste(&P)";
             // 
             // menuEditDelete
             // 
             this.menuEditDelete.Name = "menuEditDelete";
-            this.menuEditDelete.Size = new System.Drawing.Size(220, 22);
+            this.menuEditDelete.Size = new cadencii.java.awt.Dimension(220, 22);
             this.menuEditDelete.Text = "Delete(&D)";
             // 
             // toolStripMenuItem19
             // 
             this.toolStripMenuItem19.Name = "toolStripMenuItem19";
-            this.toolStripMenuItem19.Size = new System.Drawing.Size(217, 6);
+            this.toolStripMenuItem19.Size = new cadencii.java.awt.Dimension(217, 6);
             // 
             // menuEditAutoNormalizeMode
             // 
             this.menuEditAutoNormalizeMode.Name = "menuEditAutoNormalizeMode";
-            this.menuEditAutoNormalizeMode.Size = new System.Drawing.Size(220, 22);
+            this.menuEditAutoNormalizeMode.Size = new cadencii.java.awt.Dimension(220, 22);
             this.menuEditAutoNormalizeMode.Text = "Auto Normalize Mode(&N)";
             // 
             // toolStripMenuItem20
             // 
             this.toolStripMenuItem20.Name = "toolStripMenuItem20";
-            this.toolStripMenuItem20.Size = new System.Drawing.Size(217, 6);
+            this.toolStripMenuItem20.Size = new cadencii.java.awt.Dimension(217, 6);
             // 
             // menuEditSelectAll
             // 
             this.menuEditSelectAll.Name = "menuEditSelectAll";
-            this.menuEditSelectAll.Size = new System.Drawing.Size(220, 22);
+            this.menuEditSelectAll.Size = new cadencii.java.awt.Dimension(220, 22);
             this.menuEditSelectAll.Text = "Select All(&A)";
             // 
             // menuEditSelectAllEvents
             // 
             this.menuEditSelectAllEvents.Name = "menuEditSelectAllEvents";
-            this.menuEditSelectAllEvents.Size = new System.Drawing.Size(220, 22);
+            this.menuEditSelectAllEvents.Size = new cadencii.java.awt.Dimension(220, 22);
             this.menuEditSelectAllEvents.Text = "Select All Events(&E)";
             // 
             // menuVisual
             // 
-            this.menuVisual.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.menuVisual.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuVisual.DisplayStyle = ToolStripItemDisplayStyle.Text;
+            this.menuVisual.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuVisualControlTrack,
             this.menuVisualMixer,
             this.menuVisualWaveform,
@@ -707,157 +716,157 @@ namespace cadencii
             this.menuVisualNoteProperty,
             this.menuVisualPitchLine});
             this.menuVisual.Name = "menuVisual";
-            this.menuVisual.Size = new System.Drawing.Size(66, 22);
+            this.menuVisual.Size = new cadencii.java.awt.Dimension(66, 22);
             this.menuVisual.Text = "View(&V)";
             // 
             // menuVisualControlTrack
             // 
             this.menuVisualControlTrack.Checked = true;
             this.menuVisualControlTrack.CheckOnClick = true;
-            this.menuVisualControlTrack.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.menuVisualControlTrack.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuVisualControlTrack.CheckState = CheckState.Checked;
+            this.menuVisualControlTrack.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuVisualControlTrack.Name = "menuVisualControlTrack";
-            this.menuVisualControlTrack.Size = new System.Drawing.Size(237, 22);
+            this.menuVisualControlTrack.Size = new cadencii.java.awt.Dimension(237, 22);
             this.menuVisualControlTrack.Text = "Control Track(&C)";
             // 
             // menuVisualMixer
             // 
-            this.menuVisualMixer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuVisualMixer.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuVisualMixer.Name = "menuVisualMixer";
-            this.menuVisualMixer.Size = new System.Drawing.Size(237, 22);
+            this.menuVisualMixer.Size = new cadencii.java.awt.Dimension(237, 22);
             this.menuVisualMixer.Text = "Mixer(&X)";
             // 
             // menuVisualWaveform
             // 
             this.menuVisualWaveform.CheckOnClick = true;
             this.menuVisualWaveform.Name = "menuVisualWaveform";
-            this.menuVisualWaveform.Size = new System.Drawing.Size(237, 22);
+            this.menuVisualWaveform.Size = new cadencii.java.awt.Dimension(237, 22);
             this.menuVisualWaveform.Text = "Waveform(&W)";
             // 
             // menuVisualIconPalette
             // 
             this.menuVisualIconPalette.CheckOnClick = true;
             this.menuVisualIconPalette.Name = "menuVisualIconPalette";
-            this.menuVisualIconPalette.Size = new System.Drawing.Size(237, 22);
+            this.menuVisualIconPalette.Size = new cadencii.java.awt.Dimension(237, 22);
             this.menuVisualIconPalette.Text = "Icon Palette(&I)";
             // 
             // menuVisualProperty
             // 
             this.menuVisualProperty.CheckOnClick = true;
             this.menuVisualProperty.Name = "menuVisualProperty";
-            this.menuVisualProperty.Size = new System.Drawing.Size(237, 22);
+            this.menuVisualProperty.Size = new cadencii.java.awt.Dimension(237, 22);
             this.menuVisualProperty.Text = "Property Window(&C)";
             // 
             // menuVisualOverview
             // 
             this.menuVisualOverview.CheckOnClick = true;
             this.menuVisualOverview.Name = "menuVisualOverview";
-            this.menuVisualOverview.Size = new System.Drawing.Size(237, 22);
+            this.menuVisualOverview.Size = new cadencii.java.awt.Dimension(237, 22);
             this.menuVisualOverview.Text = "Overview(&O)";
             // 
             // menuVisualPluginUi
             // 
-            this.menuVisualPluginUi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuVisualPluginUi.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuVisualPluginUiVocaloid1,
             this.menuVisualPluginUiVocaloid2,
             this.menuVisualPluginUiAquesTone,
             this.menuVisualPluginUiAquesTone2});
             this.menuVisualPluginUi.Name = "menuVisualPluginUi";
-            this.menuVisualPluginUi.Size = new System.Drawing.Size(237, 22);
+            this.menuVisualPluginUi.Size = new cadencii.java.awt.Dimension(237, 22);
             this.menuVisualPluginUi.Text = "VSTi Plugin UI(&U)";
             // 
             // menuVisualPluginUiVocaloid1
             // 
             this.menuVisualPluginUiVocaloid1.Name = "menuVisualPluginUiVocaloid1";
-            this.menuVisualPluginUiVocaloid1.Size = new System.Drawing.Size(157, 22);
+            this.menuVisualPluginUiVocaloid1.Size = new cadencii.java.awt.Dimension(157, 22);
             this.menuVisualPluginUiVocaloid1.Text = "VOCALOID1";
             // 
             // menuVisualPluginUiVocaloid2
             // 
             this.menuVisualPluginUiVocaloid2.Name = "menuVisualPluginUiVocaloid2";
-            this.menuVisualPluginUiVocaloid2.Size = new System.Drawing.Size(157, 22);
+            this.menuVisualPluginUiVocaloid2.Size = new cadencii.java.awt.Dimension(157, 22);
             this.menuVisualPluginUiVocaloid2.Text = "VOCALOID2";
             // 
             // menuVisualPluginUiAquesTone
             // 
             this.menuVisualPluginUiAquesTone.Name = "menuVisualPluginUiAquesTone";
-            this.menuVisualPluginUiAquesTone.Size = new System.Drawing.Size(157, 22);
+            this.menuVisualPluginUiAquesTone.Size = new cadencii.java.awt.Dimension(157, 22);
             this.menuVisualPluginUiAquesTone.Text = "AquesTone(&A)";
             // 
             // menuVisualPluginUiAquesTone2
             // 
             this.menuVisualPluginUiAquesTone2.Name = "menuVisualPluginUiAquesTone2";
-            this.menuVisualPluginUiAquesTone2.Size = new System.Drawing.Size(157, 22);
+            this.menuVisualPluginUiAquesTone2.Size = new cadencii.java.awt.Dimension(157, 22);
             this.menuVisualPluginUiAquesTone2.Text = "AquesTone2";
             this.menuVisualPluginUiAquesTone2.Click += new System.EventHandler(this.menuVisualPluginUiAquesTone2_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(234, 6);
+            this.toolStripMenuItem1.Size = new cadencii.java.awt.Dimension(234, 6);
             // 
             // menuVisualGridline
             // 
             this.menuVisualGridline.CheckOnClick = true;
-            this.menuVisualGridline.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuVisualGridline.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuVisualGridline.Name = "menuVisualGridline";
-            this.menuVisualGridline.Size = new System.Drawing.Size(237, 22);
+            this.menuVisualGridline.Size = new cadencii.java.awt.Dimension(237, 22);
             this.menuVisualGridline.Text = "Grid Line(&G)";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(234, 6);
+            this.toolStripMenuItem2.Size = new cadencii.java.awt.Dimension(234, 6);
             // 
             // menuVisualStartMarker
             // 
-            this.menuVisualStartMarker.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuVisualStartMarker.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuVisualStartMarker.Name = "menuVisualStartMarker";
-            this.menuVisualStartMarker.Size = new System.Drawing.Size(237, 22);
+            this.menuVisualStartMarker.Size = new cadencii.java.awt.Dimension(237, 22);
             this.menuVisualStartMarker.Text = "Start Marker(&S)";
             // 
             // menuVisualEndMarker
             // 
-            this.menuVisualEndMarker.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuVisualEndMarker.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuVisualEndMarker.Name = "menuVisualEndMarker";
-            this.menuVisualEndMarker.Size = new System.Drawing.Size(237, 22);
+            this.menuVisualEndMarker.Size = new cadencii.java.awt.Dimension(237, 22);
             this.menuVisualEndMarker.Text = "End Marker(&E)";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(234, 6);
+            this.toolStripMenuItem3.Size = new cadencii.java.awt.Dimension(234, 6);
             // 
             // menuVisualLyrics
             // 
             this.menuVisualLyrics.Checked = true;
             this.menuVisualLyrics.CheckOnClick = true;
-            this.menuVisualLyrics.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.menuVisualLyrics.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuVisualLyrics.CheckState = CheckState.Checked;
+            this.menuVisualLyrics.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuVisualLyrics.Name = "menuVisualLyrics";
-            this.menuVisualLyrics.Size = new System.Drawing.Size(237, 22);
+            this.menuVisualLyrics.Size = new cadencii.java.awt.Dimension(237, 22);
             this.menuVisualLyrics.Text = "Lyric/Phoneme(&L)";
             // 
             // menuVisualNoteProperty
             // 
             this.menuVisualNoteProperty.Checked = true;
             this.menuVisualNoteProperty.CheckOnClick = true;
-            this.menuVisualNoteProperty.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.menuVisualNoteProperty.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.menuVisualNoteProperty.CheckState = CheckState.Checked;
+            this.menuVisualNoteProperty.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuVisualNoteProperty.Name = "menuVisualNoteProperty";
-            this.menuVisualNoteProperty.Size = new System.Drawing.Size(237, 22);
+            this.menuVisualNoteProperty.Size = new cadencii.java.awt.Dimension(237, 22);
             this.menuVisualNoteProperty.Text = "Note Expression/Vibrato(&N)";
             // 
             // menuVisualPitchLine
             // 
             this.menuVisualPitchLine.CheckOnClick = true;
             this.menuVisualPitchLine.Name = "menuVisualPitchLine";
-            this.menuVisualPitchLine.Size = new System.Drawing.Size(237, 22);
+            this.menuVisualPitchLine.Size = new cadencii.java.awt.Dimension(237, 22);
             this.menuVisualPitchLine.Text = "Pitch Line(&P)";
             // 
             // menuJob
             // 
-            this.menuJob.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuJob.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuJobNormalize,
             this.menuJobInsertBar,
             this.menuJobDeleteBar,
@@ -867,62 +876,62 @@ namespace cadencii
             this.menuJobRewire,
             this.menuJobReloadVsti});
             this.menuJob.Name = "menuJob";
-            this.menuJob.Size = new System.Drawing.Size(54, 22);
+            this.menuJob.Size = new cadencii.java.awt.Dimension(54, 22);
             this.menuJob.Text = "Job(&J)";
             // 
             // menuJobNormalize
             // 
             this.menuJobNormalize.Name = "menuJobNormalize";
-            this.menuJobNormalize.Size = new System.Drawing.Size(256, 22);
+            this.menuJobNormalize.Size = new cadencii.java.awt.Dimension(256, 22);
             this.menuJobNormalize.Text = "Normalize Notes(&N)";
             // 
             // menuJobInsertBar
             // 
             this.menuJobInsertBar.Name = "menuJobInsertBar";
-            this.menuJobInsertBar.Size = new System.Drawing.Size(256, 22);
+            this.menuJobInsertBar.Size = new cadencii.java.awt.Dimension(256, 22);
             this.menuJobInsertBar.Text = "Insert Bars(&I)";
             // 
             // menuJobDeleteBar
             // 
             this.menuJobDeleteBar.Name = "menuJobDeleteBar";
-            this.menuJobDeleteBar.Size = new System.Drawing.Size(256, 22);
+            this.menuJobDeleteBar.Size = new cadencii.java.awt.Dimension(256, 22);
             this.menuJobDeleteBar.Text = "Delete Bars(&D)";
             // 
             // menuJobRandomize
             // 
             this.menuJobRandomize.Name = "menuJobRandomize";
-            this.menuJobRandomize.Size = new System.Drawing.Size(256, 22);
+            this.menuJobRandomize.Size = new cadencii.java.awt.Dimension(256, 22);
             this.menuJobRandomize.Text = "Randomize(&R)";
             // 
             // menuJobConnect
             // 
             this.menuJobConnect.Name = "menuJobConnect";
-            this.menuJobConnect.Size = new System.Drawing.Size(256, 22);
+            this.menuJobConnect.Size = new cadencii.java.awt.Dimension(256, 22);
             this.menuJobConnect.Text = "Connect Notes(&C)";
             // 
             // menuJobLyric
             // 
             this.menuJobLyric.Name = "menuJobLyric";
-            this.menuJobLyric.Size = new System.Drawing.Size(256, 22);
+            this.menuJobLyric.Size = new cadencii.java.awt.Dimension(256, 22);
             this.menuJobLyric.Text = "Insert Lyrics(&L)";
             // 
             // menuJobRewire
             // 
             this.menuJobRewire.Enabled = false;
             this.menuJobRewire.Name = "menuJobRewire";
-            this.menuJobRewire.Size = new System.Drawing.Size(256, 22);
+            this.menuJobRewire.Size = new cadencii.java.awt.Dimension(256, 22);
             this.menuJobRewire.Text = "Import ReWire Host Tempo(&T)";
             // 
             // menuJobReloadVsti
             // 
             this.menuJobReloadVsti.Name = "menuJobReloadVsti";
-            this.menuJobReloadVsti.Size = new System.Drawing.Size(256, 22);
+            this.menuJobReloadVsti.Size = new cadencii.java.awt.Dimension(256, 22);
             this.menuJobReloadVsti.Text = "Reload VSTi(&R)";
             this.menuJobReloadVsti.Visible = false;
             // 
             // menuTrack
             // 
-            this.menuTrack.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuTrack.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuTrackOn,
             this.toolStripMenuItem21,
             this.menuTrackAdd,
@@ -938,76 +947,76 @@ namespace cadencii
             this.toolStripMenuItem4,
             this.menuTrackBgm});
             this.menuTrack.Name = "menuTrack";
-            this.menuTrack.Size = new System.Drawing.Size(70, 22);
+            this.menuTrack.Size = new cadencii.java.awt.Dimension(70, 22);
             this.menuTrack.Text = "Track(&T)";
             // 
             // menuTrackOn
             // 
             this.menuTrackOn.Name = "menuTrackOn";
-            this.menuTrackOn.Size = new System.Drawing.Size(219, 22);
+            this.menuTrackOn.Size = new cadencii.java.awt.Dimension(219, 22);
             this.menuTrackOn.Text = "Track On(&K)";
             // 
             // toolStripMenuItem21
             // 
             this.toolStripMenuItem21.Name = "toolStripMenuItem21";
-            this.toolStripMenuItem21.Size = new System.Drawing.Size(216, 6);
+            this.toolStripMenuItem21.Size = new cadencii.java.awt.Dimension(216, 6);
             // 
             // menuTrackAdd
             // 
             this.menuTrackAdd.Name = "menuTrackAdd";
-            this.menuTrackAdd.Size = new System.Drawing.Size(219, 22);
+            this.menuTrackAdd.Size = new cadencii.java.awt.Dimension(219, 22);
             this.menuTrackAdd.Text = "Add Track(&A)";
             // 
             // menuTrackCopy
             // 
             this.menuTrackCopy.Name = "menuTrackCopy";
-            this.menuTrackCopy.Size = new System.Drawing.Size(219, 22);
+            this.menuTrackCopy.Size = new cadencii.java.awt.Dimension(219, 22);
             this.menuTrackCopy.Text = "Copy Track(&C)";
             // 
             // menuTrackChangeName
             // 
             this.menuTrackChangeName.Name = "menuTrackChangeName";
-            this.menuTrackChangeName.Size = new System.Drawing.Size(219, 22);
+            this.menuTrackChangeName.Size = new cadencii.java.awt.Dimension(219, 22);
             this.menuTrackChangeName.Text = "Rename Track";
             // 
             // menuTrackDelete
             // 
             this.menuTrackDelete.Name = "menuTrackDelete";
-            this.menuTrackDelete.Size = new System.Drawing.Size(219, 22);
+            this.menuTrackDelete.Size = new cadencii.java.awt.Dimension(219, 22);
             this.menuTrackDelete.Text = "Delete Track(&D)";
             // 
             // toolStripMenuItem22
             // 
             this.toolStripMenuItem22.Name = "toolStripMenuItem22";
-            this.toolStripMenuItem22.Size = new System.Drawing.Size(216, 6);
+            this.toolStripMenuItem22.Size = new cadencii.java.awt.Dimension(216, 6);
             // 
             // menuTrackRenderCurrent
             // 
             this.menuTrackRenderCurrent.Name = "menuTrackRenderCurrent";
-            this.menuTrackRenderCurrent.Size = new System.Drawing.Size(219, 22);
+            this.menuTrackRenderCurrent.Size = new cadencii.java.awt.Dimension(219, 22);
             this.menuTrackRenderCurrent.Text = "Render Current Track(&T)";
             // 
             // menuTrackRenderAll
             // 
             this.menuTrackRenderAll.Enabled = false;
             this.menuTrackRenderAll.Name = "menuTrackRenderAll";
-            this.menuTrackRenderAll.Size = new System.Drawing.Size(219, 22);
+            this.menuTrackRenderAll.Size = new cadencii.java.awt.Dimension(219, 22);
             this.menuTrackRenderAll.Text = "Render All Tracks(&S)";
             // 
             // toolStripMenuItem23
             // 
             this.toolStripMenuItem23.Name = "toolStripMenuItem23";
-            this.toolStripMenuItem23.Size = new System.Drawing.Size(216, 6);
+            this.toolStripMenuItem23.Size = new cadencii.java.awt.Dimension(216, 6);
             // 
             // menuTrackOverlay
             // 
             this.menuTrackOverlay.Name = "menuTrackOverlay";
-            this.menuTrackOverlay.Size = new System.Drawing.Size(219, 22);
+            this.menuTrackOverlay.Size = new cadencii.java.awt.Dimension(219, 22);
             this.menuTrackOverlay.Text = "Overlay(&O)";
             // 
             // menuTrackRenderer
             // 
-            this.menuTrackRenderer.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuTrackRenderer.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuTrackRendererVOCALOID1,
             this.menuTrackRendererVOCALOID2,
             this.menuTrackRendererUtau,
@@ -1015,43 +1024,43 @@ namespace cadencii
             this.menuTrackRendererAquesTone,
             this.menuTrackRendererAquesTone2});
             this.menuTrackRenderer.Name = "menuTrackRenderer";
-            this.menuTrackRenderer.Size = new System.Drawing.Size(219, 22);
+            this.menuTrackRenderer.Size = new cadencii.java.awt.Dimension(219, 22);
             this.menuTrackRenderer.Text = "Renderer(&R)";
             // 
             // menuTrackRendererVOCALOID1
             // 
             this.menuTrackRendererVOCALOID1.Name = "menuTrackRendererVOCALOID1";
-            this.menuTrackRendererVOCALOID1.Size = new System.Drawing.Size(193, 22);
+            this.menuTrackRendererVOCALOID1.Size = new cadencii.java.awt.Dimension(193, 22);
             this.menuTrackRendererVOCALOID1.Text = "VOCALOID1(&1)";
             // 
             // menuTrackRendererVOCALOID2
             // 
             this.menuTrackRendererVOCALOID2.Name = "menuTrackRendererVOCALOID2";
-            this.menuTrackRendererVOCALOID2.Size = new System.Drawing.Size(193, 22);
+            this.menuTrackRendererVOCALOID2.Size = new cadencii.java.awt.Dimension(193, 22);
             this.menuTrackRendererVOCALOID2.Text = "VOCALOID2(&2)";
             // 
             // menuTrackRendererUtau
             // 
             this.menuTrackRendererUtau.Name = "menuTrackRendererUtau";
-            this.menuTrackRendererUtau.Size = new System.Drawing.Size(193, 22);
+            this.menuTrackRendererUtau.Size = new cadencii.java.awt.Dimension(193, 22);
             this.menuTrackRendererUtau.Text = "UTAU(&3)";
             // 
             // menuTrackRendererVCNT
             // 
             this.menuTrackRendererVCNT.Name = "menuTrackRendererVCNT";
-            this.menuTrackRendererVCNT.Size = new System.Drawing.Size(193, 22);
+            this.menuTrackRendererVCNT.Size = new cadencii.java.awt.Dimension(193, 22);
             this.menuTrackRendererVCNT.Text = "vConnect-STAND(&4)";
             // 
             // menuTrackRendererAquesTone
             // 
             this.menuTrackRendererAquesTone.Name = "menuTrackRendererAquesTone";
-            this.menuTrackRendererAquesTone.Size = new System.Drawing.Size(193, 22);
+            this.menuTrackRendererAquesTone.Size = new cadencii.java.awt.Dimension(193, 22);
             this.menuTrackRendererAquesTone.Text = "AquesTone(&5)";
             // 
             // menuTrackRendererAquesTone2
             // 
             this.menuTrackRendererAquesTone2.Name = "menuTrackRendererAquesTone2";
-            this.menuTrackRendererAquesTone2.Size = new System.Drawing.Size(193, 22);
+            this.menuTrackRendererAquesTone2.Size = new cadencii.java.awt.Dimension(193, 22);
             this.menuTrackRendererAquesTone2.Text = "AquesTone2(&6)";
             this.menuTrackRendererAquesTone2.Click += new System.EventHandler(this.handleChangeRenderer);
             this.menuTrackRendererAquesTone2.MouseEnter += new System.EventHandler(this.handleMenuMouseEnter);
@@ -1059,17 +1068,17 @@ namespace cadencii
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(216, 6);
+            this.toolStripMenuItem4.Size = new cadencii.java.awt.Dimension(216, 6);
             // 
             // menuTrackBgm
             // 
             this.menuTrackBgm.Name = "menuTrackBgm";
-            this.menuTrackBgm.Size = new System.Drawing.Size(219, 22);
+            this.menuTrackBgm.Size = new cadencii.java.awt.Dimension(219, 22);
             this.menuTrackBgm.Text = "BGM(&B)";
             // 
             // menuLyric
             // 
-            this.menuLyric.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuLyric.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuLyricExpressionProperty,
             this.menuLyricVibratoProperty,
             this.menuLyricApplyUtauParameters,
@@ -1077,62 +1086,62 @@ namespace cadencii
             this.menuLyricDictionary,
             this.menuLyricCopyVibratoToPreset});
             this.menuLyric.Name = "menuLyric";
-            this.menuLyric.Size = new System.Drawing.Size(70, 22);
+            this.menuLyric.Size = new cadencii.java.awt.Dimension(70, 22);
             this.menuLyric.Text = "Lyrics(&L)";
             // 
             // menuLyricExpressionProperty
             // 
             this.menuLyricExpressionProperty.Name = "menuLyricExpressionProperty";
-            this.menuLyricExpressionProperty.Size = new System.Drawing.Size(262, 22);
+            this.menuLyricExpressionProperty.Size = new cadencii.java.awt.Dimension(262, 22);
             this.menuLyricExpressionProperty.Text = "Note Expression Property(&E)";
             // 
             // menuLyricVibratoProperty
             // 
             this.menuLyricVibratoProperty.Name = "menuLyricVibratoProperty";
-            this.menuLyricVibratoProperty.Size = new System.Drawing.Size(262, 22);
+            this.menuLyricVibratoProperty.Size = new cadencii.java.awt.Dimension(262, 22);
             this.menuLyricVibratoProperty.Text = "Note Vibrato Property(&V)";
             // 
             // menuLyricApplyUtauParameters
             // 
             this.menuLyricApplyUtauParameters.Name = "menuLyricApplyUtauParameters";
-            this.menuLyricApplyUtauParameters.Size = new System.Drawing.Size(262, 22);
+            this.menuLyricApplyUtauParameters.Size = new cadencii.java.awt.Dimension(262, 22);
             this.menuLyricApplyUtauParameters.Text = "Apply UTAU Parameters(&A)";
             // 
             // menuLyricPhonemeTransformation
             // 
             this.menuLyricPhonemeTransformation.Name = "menuLyricPhonemeTransformation";
-            this.menuLyricPhonemeTransformation.Size = new System.Drawing.Size(262, 22);
+            this.menuLyricPhonemeTransformation.Size = new cadencii.java.awt.Dimension(262, 22);
             this.menuLyricPhonemeTransformation.Text = "Phoneme Transformation(&T)";
             // 
             // menuLyricDictionary
             // 
             this.menuLyricDictionary.Name = "menuLyricDictionary";
-            this.menuLyricDictionary.Size = new System.Drawing.Size(262, 22);
+            this.menuLyricDictionary.Size = new cadencii.java.awt.Dimension(262, 22);
             this.menuLyricDictionary.Text = "User Word Dictionary(&C)";
             // 
             // menuLyricCopyVibratoToPreset
             // 
             this.menuLyricCopyVibratoToPreset.Name = "menuLyricCopyVibratoToPreset";
-            this.menuLyricCopyVibratoToPreset.Size = new System.Drawing.Size(262, 22);
+            this.menuLyricCopyVibratoToPreset.Size = new cadencii.java.awt.Dimension(262, 22);
             this.menuLyricCopyVibratoToPreset.Text = "Copy vibrato config to preset(&P)";
             // 
             // menuScript
             // 
-            this.menuScript.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuScript.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuScriptUpdate});
             this.menuScript.Name = "menuScript";
-            this.menuScript.Size = new System.Drawing.Size(72, 22);
+            this.menuScript.Size = new cadencii.java.awt.Dimension(72, 22);
             this.menuScript.Text = "Script(&C)";
             // 
             // menuScriptUpdate
             // 
             this.menuScriptUpdate.Name = "menuScriptUpdate";
-            this.menuScriptUpdate.Size = new System.Drawing.Size(200, 22);
+            this.menuScriptUpdate.Size = new cadencii.java.awt.Dimension(200, 22);
             this.menuScriptUpdate.Text = "Update Script List(&U)";
             // 
             // menuSetting
             // 
-            this.menuSetting.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuSetting.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuSettingPreference,
             this.menuSettingSequence,
             this.menuSettingPositionQuantize,
@@ -1144,24 +1153,24 @@ namespace cadencii
             this.toolStripMenuItem6,
             this.menuSettingDefaultSingerStyle});
             this.menuSetting.Name = "menuSetting";
-            this.menuSetting.Size = new System.Drawing.Size(80, 22);
+            this.menuSetting.Size = new cadencii.java.awt.Dimension(80, 22);
             this.menuSetting.Text = "Setting(&S)";
             // 
             // menuSettingPreference
             // 
             this.menuSettingPreference.Name = "menuSettingPreference";
-            this.menuSettingPreference.Size = new System.Drawing.Size(223, 22);
+            this.menuSettingPreference.Size = new cadencii.java.awt.Dimension(223, 22);
             this.menuSettingPreference.Text = "Preference(&P)";
             // 
             // menuSettingSequence
             // 
             this.menuSettingSequence.Name = "menuSettingSequence";
-            this.menuSettingSequence.Size = new System.Drawing.Size(223, 22);
+            this.menuSettingSequence.Size = new cadencii.java.awt.Dimension(223, 22);
             this.menuSettingSequence.Text = "Sequence config(&S)";
             // 
             // menuSettingPositionQuantize
             // 
-            this.menuSettingPositionQuantize.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuSettingPositionQuantize.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuSettingPositionQuantize04,
             this.menuSettingPositionQuantize08,
             this.menuSettingPositionQuantize16,
@@ -1172,195 +1181,195 @@ namespace cadencii
             this.toolStripMenuItem9,
             this.menuSettingPositionQuantizeTriplet});
             this.menuSettingPositionQuantize.Name = "menuSettingPositionQuantize";
-            this.menuSettingPositionQuantize.Size = new System.Drawing.Size(223, 22);
+            this.menuSettingPositionQuantize.Size = new cadencii.java.awt.Dimension(223, 22);
             this.menuSettingPositionQuantize.Text = "Quantize(&Q)";
             // 
             // menuSettingPositionQuantize04
             // 
             this.menuSettingPositionQuantize04.Name = "menuSettingPositionQuantize04";
-            this.menuSettingPositionQuantize04.Size = new System.Drawing.Size(113, 22);
+            this.menuSettingPositionQuantize04.Size = new cadencii.java.awt.Dimension(113, 22);
             this.menuSettingPositionQuantize04.Text = "1/4";
             // 
             // menuSettingPositionQuantize08
             // 
             this.menuSettingPositionQuantize08.Name = "menuSettingPositionQuantize08";
-            this.menuSettingPositionQuantize08.Size = new System.Drawing.Size(113, 22);
+            this.menuSettingPositionQuantize08.Size = new cadencii.java.awt.Dimension(113, 22);
             this.menuSettingPositionQuantize08.Text = "1/8";
             // 
             // menuSettingPositionQuantize16
             // 
             this.menuSettingPositionQuantize16.Name = "menuSettingPositionQuantize16";
-            this.menuSettingPositionQuantize16.Size = new System.Drawing.Size(113, 22);
+            this.menuSettingPositionQuantize16.Size = new cadencii.java.awt.Dimension(113, 22);
             this.menuSettingPositionQuantize16.Text = "1/16";
             // 
             // menuSettingPositionQuantize32
             // 
             this.menuSettingPositionQuantize32.Name = "menuSettingPositionQuantize32";
-            this.menuSettingPositionQuantize32.Size = new System.Drawing.Size(113, 22);
+            this.menuSettingPositionQuantize32.Size = new cadencii.java.awt.Dimension(113, 22);
             this.menuSettingPositionQuantize32.Text = "1/32";
             // 
             // menuSettingPositionQuantize64
             // 
             this.menuSettingPositionQuantize64.Name = "menuSettingPositionQuantize64";
-            this.menuSettingPositionQuantize64.Size = new System.Drawing.Size(113, 22);
+            this.menuSettingPositionQuantize64.Size = new cadencii.java.awt.Dimension(113, 22);
             this.menuSettingPositionQuantize64.Text = "1/64";
             // 
             // menuSettingPositionQuantize128
             // 
             this.menuSettingPositionQuantize128.Name = "menuSettingPositionQuantize128";
-            this.menuSettingPositionQuantize128.Size = new System.Drawing.Size(113, 22);
+            this.menuSettingPositionQuantize128.Size = new cadencii.java.awt.Dimension(113, 22);
             this.menuSettingPositionQuantize128.Text = "1/128";
             // 
             // menuSettingPositionQuantizeOff
             // 
             this.menuSettingPositionQuantizeOff.Name = "menuSettingPositionQuantizeOff";
-            this.menuSettingPositionQuantizeOff.Size = new System.Drawing.Size(113, 22);
+            this.menuSettingPositionQuantizeOff.Size = new cadencii.java.awt.Dimension(113, 22);
             this.menuSettingPositionQuantizeOff.Text = "Off";
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(110, 6);
+            this.toolStripMenuItem9.Size = new cadencii.java.awt.Dimension(110, 6);
             // 
             // menuSettingPositionQuantizeTriplet
             // 
             this.menuSettingPositionQuantizeTriplet.Name = "menuSettingPositionQuantizeTriplet";
-            this.menuSettingPositionQuantizeTriplet.Size = new System.Drawing.Size(113, 22);
+            this.menuSettingPositionQuantizeTriplet.Size = new cadencii.java.awt.Dimension(113, 22);
             this.menuSettingPositionQuantizeTriplet.Text = "Triplet";
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(220, 6);
+            this.toolStripMenuItem8.Size = new cadencii.java.awt.Dimension(220, 6);
             // 
             // menuSettingGameControler
             // 
-            this.menuSettingGameControler.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuSettingGameControler.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuSettingGameControlerSetting,
             this.menuSettingGameControlerLoad,
             this.menuSettingGameControlerRemove});
             this.menuSettingGameControler.Name = "menuSettingGameControler";
-            this.menuSettingGameControler.Size = new System.Drawing.Size(223, 22);
+            this.menuSettingGameControler.Size = new cadencii.java.awt.Dimension(223, 22);
             this.menuSettingGameControler.Text = "Game Controler(&G)";
             // 
             // menuSettingGameControlerSetting
             // 
             this.menuSettingGameControlerSetting.Name = "menuSettingGameControlerSetting";
-            this.menuSettingGameControlerSetting.Size = new System.Drawing.Size(142, 22);
+            this.menuSettingGameControlerSetting.Size = new cadencii.java.awt.Dimension(142, 22);
             this.menuSettingGameControlerSetting.Text = "Setting(&S)";
             // 
             // menuSettingGameControlerLoad
             // 
             this.menuSettingGameControlerLoad.Name = "menuSettingGameControlerLoad";
-            this.menuSettingGameControlerLoad.Size = new System.Drawing.Size(142, 22);
+            this.menuSettingGameControlerLoad.Size = new cadencii.java.awt.Dimension(142, 22);
             this.menuSettingGameControlerLoad.Text = "Load(&L)";
             // 
             // menuSettingGameControlerRemove
             // 
             this.menuSettingGameControlerRemove.Name = "menuSettingGameControlerRemove";
-            this.menuSettingGameControlerRemove.Size = new System.Drawing.Size(142, 22);
+            this.menuSettingGameControlerRemove.Size = new cadencii.java.awt.Dimension(142, 22);
             this.menuSettingGameControlerRemove.Text = "Remove(&R)";
             // 
             // menuSettingPaletteTool
             // 
             this.menuSettingPaletteTool.Name = "menuSettingPaletteTool";
-            this.menuSettingPaletteTool.Size = new System.Drawing.Size(223, 22);
+            this.menuSettingPaletteTool.Size = new cadencii.java.awt.Dimension(223, 22);
             this.menuSettingPaletteTool.Text = "Palette Tool(&T)";
             // 
             // menuSettingShortcut
             // 
             this.menuSettingShortcut.Name = "menuSettingShortcut";
-            this.menuSettingShortcut.Size = new System.Drawing.Size(223, 22);
+            this.menuSettingShortcut.Size = new cadencii.java.awt.Dimension(223, 22);
             this.menuSettingShortcut.Text = "Shortcut Key(&K)";
             // 
             // menuSettingVibratoPreset
             // 
             this.menuSettingVibratoPreset.Name = "menuSettingVibratoPreset";
-            this.menuSettingVibratoPreset.Size = new System.Drawing.Size(223, 22);
+            this.menuSettingVibratoPreset.Size = new cadencii.java.awt.Dimension(223, 22);
             this.menuSettingVibratoPreset.Text = "Vibrato preset(&V)";
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(220, 6);
+            this.toolStripMenuItem6.Size = new cadencii.java.awt.Dimension(220, 6);
             // 
             // menuSettingDefaultSingerStyle
             // 
             this.menuSettingDefaultSingerStyle.Name = "menuSettingDefaultSingerStyle";
-            this.menuSettingDefaultSingerStyle.Size = new System.Drawing.Size(223, 22);
+            this.menuSettingDefaultSingerStyle.Size = new cadencii.java.awt.Dimension(223, 22);
             this.menuSettingDefaultSingerStyle.Text = "Singing Style Defaults(&D)";
             // 
             // menuTools
             // 
-            this.menuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuTools.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuToolsCreateVConnectSTANDDb});
             this.menuTools.Name = "menuTools";
-            this.menuTools.Size = new System.Drawing.Size(69, 22);
+            this.menuTools.Size = new cadencii.java.awt.Dimension(69, 22);
             this.menuTools.Text = "Tools(&O)";
             // 
             // menuToolsCreateVConnectSTANDDb
             // 
             this.menuToolsCreateVConnectSTANDDb.Name = "menuToolsCreateVConnectSTANDDb";
-            this.menuToolsCreateVConnectSTANDDb.Size = new System.Drawing.Size(240, 22);
+            this.menuToolsCreateVConnectSTANDDb.Size = new cadencii.java.awt.Dimension(240, 22);
             this.menuToolsCreateVConnectSTANDDb.Text = "Create vConnect-STAND DB";
             this.menuToolsCreateVConnectSTANDDb.Click += new System.EventHandler(this.menuToolsCreateVConnectSTANDDb_Click);
             // 
             // menuHelp
             // 
-            this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuHelp.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuHelpAbout,
             this.menuHelpManual,
             this.menuHelpCheckForUpdates,
             this.menuHelpLog,
             this.menuHelpDebug});
             this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new System.Drawing.Size(65, 22);
+            this.menuHelp.Size = new cadencii.java.awt.Dimension(65, 22);
             this.menuHelp.Text = "Help(&H)";
             // 
             // menuHelpAbout
             // 
             this.menuHelpAbout.Name = "menuHelpAbout";
-            this.menuHelpAbout.Size = new System.Drawing.Size(186, 22);
+            this.menuHelpAbout.Size = new cadencii.java.awt.Dimension(186, 22);
             this.menuHelpAbout.Text = "About Cadencii(&A)";
             // 
             // menuHelpManual
             // 
             this.menuHelpManual.Name = "menuHelpManual";
-            this.menuHelpManual.Size = new System.Drawing.Size(186, 22);
+            this.menuHelpManual.Size = new cadencii.java.awt.Dimension(186, 22);
             this.menuHelpManual.Text = "Manual (PDF)";
             // 
             // menuHelpLog
             // 
-            this.menuHelpLog.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuHelpLog.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuHelpLogSwitch,
             this.menuHelpLogOpen});
             this.menuHelpLog.Name = "menuHelpLog";
-            this.menuHelpLog.Size = new System.Drawing.Size(186, 22);
+            this.menuHelpLog.Size = new cadencii.java.awt.Dimension(186, 22);
             this.menuHelpLog.Text = "Log(&L)";
             // 
             // menuHelpLogSwitch
             // 
             this.menuHelpLogSwitch.CheckOnClick = true;
             this.menuHelpLogSwitch.Name = "menuHelpLogSwitch";
-            this.menuHelpLogSwitch.Size = new System.Drawing.Size(156, 22);
+            this.menuHelpLogSwitch.Size = new cadencii.java.awt.Dimension(156, 22);
             this.menuHelpLogSwitch.Text = "Enable Log(&L)";
             // 
             // menuHelpLogOpen
             // 
             this.menuHelpLogOpen.Name = "menuHelpLogOpen";
-            this.menuHelpLogOpen.Size = new System.Drawing.Size(156, 22);
+            this.menuHelpLogOpen.Size = new cadencii.java.awt.Dimension(156, 22);
             this.menuHelpLogOpen.Text = "Open(&O)";
             // 
             // menuHelpDebug
             // 
             this.menuHelpDebug.Name = "menuHelpDebug";
-            this.menuHelpDebug.Size = new System.Drawing.Size(186, 22);
+            this.menuHelpDebug.Size = new cadencii.java.awt.Dimension(186, 22);
             this.menuHelpDebug.Text = "Debug";
             this.menuHelpDebug.Visible = false;
             // 
             // menuHidden
             // 
-            this.menuHidden.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuHidden.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuHiddenEditLyric,
             this.menuHiddenEditFlipToolPointerPencil,
             this.menuHiddenEditFlipToolPointerEraser,
@@ -1385,7 +1394,7 @@ namespace cadencii
             this.menuHiddenFlipCurveOnPianorollMode,
             this.menuHiddenPrintPoToCSV});
             this.menuHidden.Name = "menuHidden";
-            this.menuHidden.Size = new System.Drawing.Size(91, 22);
+            this.menuHidden.Size = new cadencii.java.awt.Dimension(91, 22);
             this.menuHidden.Text = "MenuHidden";
             this.menuHidden.Visible = false;
             // 
@@ -1393,7 +1402,7 @@ namespace cadencii
             // 
             this.menuHiddenEditLyric.Name = "menuHiddenEditLyric";
             this.menuHiddenEditLyric.ShortcutKeys = Keys.F2;
-            this.menuHiddenEditLyric.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenEditLyric.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenEditLyric.Text = "Start Lyric Input";
             this.menuHiddenEditLyric.Visible = false;
             // 
@@ -1401,7 +1410,7 @@ namespace cadencii
             // 
             this.menuHiddenEditFlipToolPointerPencil.Name = "menuHiddenEditFlipToolPointerPencil";
             this.menuHiddenEditFlipToolPointerPencil.ShortcutKeys = ((Keys)((Keys.Control | Keys.W)));
-            this.menuHiddenEditFlipToolPointerPencil.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenEditFlipToolPointerPencil.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenEditFlipToolPointerPencil.Text = "Change Tool Pointer / Pencil";
             this.menuHiddenEditFlipToolPointerPencil.Visible = false;
             // 
@@ -1409,7 +1418,7 @@ namespace cadencii
             // 
             this.menuHiddenEditFlipToolPointerEraser.Name = "menuHiddenEditFlipToolPointerEraser";
             this.menuHiddenEditFlipToolPointerEraser.ShortcutKeys = ((Keys)((Keys.Control | Keys.E)));
-            this.menuHiddenEditFlipToolPointerEraser.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenEditFlipToolPointerEraser.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenEditFlipToolPointerEraser.Text = "Change Tool Pointer/ Eraser";
             this.menuHiddenEditFlipToolPointerEraser.Visible = false;
             // 
@@ -1418,7 +1427,7 @@ namespace cadencii
             this.menuHiddenVisualForwardParameter.Name = "menuHiddenVisualForwardParameter";
             this.menuHiddenVisualForwardParameter.ShortcutKeys = ((Keys)(((Keys.Control | Keys.Alt)
             | Keys.Next)));
-            this.menuHiddenVisualForwardParameter.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenVisualForwardParameter.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenVisualForwardParameter.Text = "Next Control Curve";
             this.menuHiddenVisualForwardParameter.Visible = false;
             // 
@@ -1427,7 +1436,7 @@ namespace cadencii
             this.menuHiddenVisualBackwardParameter.Name = "menuHiddenVisualBackwardParameter";
             this.menuHiddenVisualBackwardParameter.ShortcutKeys = ((Keys)(((Keys.Control | Keys.Alt)
             | Keys.PageUp)));
-            this.menuHiddenVisualBackwardParameter.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenVisualBackwardParameter.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenVisualBackwardParameter.Text = "Previous Control Curve";
             this.menuHiddenVisualBackwardParameter.Visible = false;
             // 
@@ -1435,7 +1444,7 @@ namespace cadencii
             // 
             this.menuHiddenTrackNext.Name = "menuHiddenTrackNext";
             this.menuHiddenTrackNext.ShortcutKeys = ((Keys)((Keys.Control | Keys.Next)));
-            this.menuHiddenTrackNext.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenTrackNext.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenTrackNext.Text = "Next Track";
             this.menuHiddenTrackNext.Visible = false;
             // 
@@ -1443,111 +1452,111 @@ namespace cadencii
             // 
             this.menuHiddenTrackBack.Name = "menuHiddenTrackBack";
             this.menuHiddenTrackBack.ShortcutKeys = ((Keys)((Keys.Control | Keys.PageUp)));
-            this.menuHiddenTrackBack.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenTrackBack.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenTrackBack.Text = "Previous Track";
             this.menuHiddenTrackBack.Visible = false;
             // 
             // menuHiddenCopy
             // 
             this.menuHiddenCopy.Name = "menuHiddenCopy";
-            this.menuHiddenCopy.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenCopy.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenCopy.Text = "Copy";
             // 
             // menuHiddenPaste
             // 
             this.menuHiddenPaste.Name = "menuHiddenPaste";
-            this.menuHiddenPaste.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenPaste.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenPaste.Text = "Paste";
             // 
             // menuHiddenCut
             // 
             this.menuHiddenCut.Name = "menuHiddenCut";
-            this.menuHiddenCut.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenCut.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenCut.Text = "Cut";
             // 
             // menuHiddenSelectForward
             // 
             this.menuHiddenSelectForward.Name = "menuHiddenSelectForward";
             this.menuHiddenSelectForward.ShortcutKeys = ((Keys)((Keys.Alt | Keys.Right)));
-            this.menuHiddenSelectForward.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenSelectForward.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenSelectForward.Text = "Select Forward";
             // 
             // menuHiddenSelectBackward
             // 
             this.menuHiddenSelectBackward.Name = "menuHiddenSelectBackward";
             this.menuHiddenSelectBackward.ShortcutKeys = ((Keys)((Keys.Alt | Keys.Left)));
-            this.menuHiddenSelectBackward.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenSelectBackward.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenSelectBackward.Text = "Select Backward";
             // 
             // menuHiddenMoveUp
             // 
             this.menuHiddenMoveUp.Name = "menuHiddenMoveUp";
-            this.menuHiddenMoveUp.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenMoveUp.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenMoveUp.Text = "Move Up";
             // 
             // menuHiddenMoveDown
             // 
             this.menuHiddenMoveDown.Name = "menuHiddenMoveDown";
-            this.menuHiddenMoveDown.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenMoveDown.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenMoveDown.Text = "Move Down";
             // 
             // menuHiddenMoveLeft
             // 
             this.menuHiddenMoveLeft.Name = "menuHiddenMoveLeft";
-            this.menuHiddenMoveLeft.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenMoveLeft.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenMoveLeft.Text = "Move Left";
             // 
             // menuHiddenMoveRight
             // 
             this.menuHiddenMoveRight.Name = "menuHiddenMoveRight";
-            this.menuHiddenMoveRight.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenMoveRight.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenMoveRight.Text = "Move Right";
             // 
             // menuHiddenLengthen
             // 
             this.menuHiddenLengthen.Name = "menuHiddenLengthen";
-            this.menuHiddenLengthen.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenLengthen.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenLengthen.Text = "Lengthen";
             // 
             // menuHiddenShorten
             // 
             this.menuHiddenShorten.Name = "menuHiddenShorten";
-            this.menuHiddenShorten.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenShorten.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenShorten.Text = "Shorten";
             // 
             // menuHiddenGoToStartMarker
             // 
             this.menuHiddenGoToStartMarker.Name = "menuHiddenGoToStartMarker";
-            this.menuHiddenGoToStartMarker.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenGoToStartMarker.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenGoToStartMarker.Text = "GoTo Start Marker";
             // 
             // menuHiddenGoToEndMarker
             // 
             this.menuHiddenGoToEndMarker.Name = "menuHiddenGoToEndMarker";
-            this.menuHiddenGoToEndMarker.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenGoToEndMarker.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenGoToEndMarker.Text = "GoTo End Marker";
             // 
             // menuHiddenPlayFromStartMarker
             // 
             this.menuHiddenPlayFromStartMarker.Name = "menuHiddenPlayFromStartMarker";
-            this.menuHiddenPlayFromStartMarker.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenPlayFromStartMarker.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenPlayFromStartMarker.Text = "Play From Start Marker";
             // 
             // menuHiddenFlipCurveOnPianorollMode
             // 
             this.menuHiddenFlipCurveOnPianorollMode.Name = "menuHiddenFlipCurveOnPianorollMode";
-            this.menuHiddenFlipCurveOnPianorollMode.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenFlipCurveOnPianorollMode.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenFlipCurveOnPianorollMode.Text = "Change pitch drawing mode";
             // 
             // menuHiddenPrintPoToCSV
             // 
             this.menuHiddenPrintPoToCSV.Name = "menuHiddenPrintPoToCSV";
-            this.menuHiddenPrintPoToCSV.Size = new System.Drawing.Size(304, 22);
+            this.menuHiddenPrintPoToCSV.Size = new cadencii.java.awt.Dimension(304, 22);
             this.menuHiddenPrintPoToCSV.Text = "Print language configs to CSV";
             // 
             // cMenuPiano
             // 
-            this.cMenuPiano.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cMenuPiano.Items.AddRange(new UiToolStripItem[] {
             this.cMenuPianoPointer,
             this.cMenuPianoPencil,
             this.cMenuPianoEraser,
@@ -1574,54 +1583,54 @@ namespace cadencii
             this.cMenuPianoExpressionProperty,
             this.cMenuPianoVibratoProperty});
             this.cMenuPiano.Name = "cMenuPiano";
-            this.cMenuPiano.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.cMenuPiano.RenderMode = ToolStripRenderMode.System;
             this.cMenuPiano.ShowCheckMargin = true;
             this.cMenuPiano.ShowImageMargin = false;
-            this.cMenuPiano.Size = new System.Drawing.Size(242, 458);
+            this.cMenuPiano.Size = new cadencii.java.awt.Dimension(242, 458);
             // 
             // cMenuPianoPointer
             // 
             this.cMenuPianoPointer.Name = "cMenuPianoPointer";
-            this.cMenuPianoPointer.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoPointer.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoPointer.Text = "Arrow(&A)";
             // 
             // cMenuPianoPencil
             // 
             this.cMenuPianoPencil.Name = "cMenuPianoPencil";
-            this.cMenuPianoPencil.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoPencil.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoPencil.Text = "Pencil(&W)";
             // 
             // cMenuPianoEraser
             // 
             this.cMenuPianoEraser.Name = "cMenuPianoEraser";
-            this.cMenuPianoEraser.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoEraser.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoEraser.Text = "Eraser(&E)";
             // 
             // cMenuPianoPaletteTool
             // 
             this.cMenuPianoPaletteTool.Name = "cMenuPianoPaletteTool";
-            this.cMenuPianoPaletteTool.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoPaletteTool.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoPaletteTool.Text = "Palette Tool";
             // 
             // toolStripSeparator15
             // 
             this.toolStripSeparator15.Name = "toolStripSeparator15";
-            this.toolStripSeparator15.Size = new System.Drawing.Size(238, 6);
+            this.toolStripSeparator15.Size = new cadencii.java.awt.Dimension(238, 6);
             // 
             // cMenuPianoCurve
             // 
             this.cMenuPianoCurve.Name = "cMenuPianoCurve";
-            this.cMenuPianoCurve.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoCurve.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoCurve.Text = "Curve(&V)";
             // 
             // toolStripMenuItem13
             // 
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new System.Drawing.Size(238, 6);
+            this.toolStripMenuItem13.Size = new cadencii.java.awt.Dimension(238, 6);
             // 
             // cMenuPianoFixed
             // 
-            this.cMenuPianoFixed.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cMenuPianoFixed.DropDownItems.AddRange(new UiToolStripItem[] {
             this.cMenuPianoFixed01,
             this.cMenuPianoFixed02,
             this.cMenuPianoFixed04,
@@ -1635,83 +1644,83 @@ namespace cadencii
             this.cMenuPianoFixedTriplet,
             this.cMenuPianoFixedDotted});
             this.cMenuPianoFixed.Name = "cMenuPianoFixed";
-            this.cMenuPianoFixed.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoFixed.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoFixed.Text = "Note Fixed Length(&N)";
             // 
             // cMenuPianoFixed01
             // 
             this.cMenuPianoFixed01.Name = "cMenuPianoFixed01";
-            this.cMenuPianoFixed01.Size = new System.Drawing.Size(141, 22);
+            this.cMenuPianoFixed01.Size = new cadencii.java.awt.Dimension(141, 22);
             this.cMenuPianoFixed01.Text = "1/ 1 [1920]";
             // 
             // cMenuPianoFixed02
             // 
             this.cMenuPianoFixed02.Name = "cMenuPianoFixed02";
-            this.cMenuPianoFixed02.Size = new System.Drawing.Size(141, 22);
+            this.cMenuPianoFixed02.Size = new cadencii.java.awt.Dimension(141, 22);
             this.cMenuPianoFixed02.Text = "1/ 2 [960]";
             // 
             // cMenuPianoFixed04
             // 
             this.cMenuPianoFixed04.Name = "cMenuPianoFixed04";
-            this.cMenuPianoFixed04.Size = new System.Drawing.Size(141, 22);
+            this.cMenuPianoFixed04.Size = new cadencii.java.awt.Dimension(141, 22);
             this.cMenuPianoFixed04.Text = "1/ 4 [480]";
             // 
             // cMenuPianoFixed08
             // 
             this.cMenuPianoFixed08.Name = "cMenuPianoFixed08";
-            this.cMenuPianoFixed08.Size = new System.Drawing.Size(141, 22);
+            this.cMenuPianoFixed08.Size = new cadencii.java.awt.Dimension(141, 22);
             this.cMenuPianoFixed08.Text = "1/ 8 [240]";
             // 
             // cMenuPianoFixed16
             // 
             this.cMenuPianoFixed16.Name = "cMenuPianoFixed16";
-            this.cMenuPianoFixed16.Size = new System.Drawing.Size(141, 22);
+            this.cMenuPianoFixed16.Size = new cadencii.java.awt.Dimension(141, 22);
             this.cMenuPianoFixed16.Text = "1/16 [120]";
             // 
             // cMenuPianoFixed32
             // 
             this.cMenuPianoFixed32.Name = "cMenuPianoFixed32";
-            this.cMenuPianoFixed32.Size = new System.Drawing.Size(141, 22);
+            this.cMenuPianoFixed32.Size = new cadencii.java.awt.Dimension(141, 22);
             this.cMenuPianoFixed32.Text = "1/32 [60]";
             // 
             // cMenuPianoFixed64
             // 
             this.cMenuPianoFixed64.Name = "cMenuPianoFixed64";
-            this.cMenuPianoFixed64.Size = new System.Drawing.Size(141, 22);
+            this.cMenuPianoFixed64.Size = new cadencii.java.awt.Dimension(141, 22);
             this.cMenuPianoFixed64.Text = "1/64 [30]";
             // 
             // cMenuPianoFixed128
             // 
             this.cMenuPianoFixed128.Name = "cMenuPianoFixed128";
-            this.cMenuPianoFixed128.Size = new System.Drawing.Size(141, 22);
+            this.cMenuPianoFixed128.Size = new cadencii.java.awt.Dimension(141, 22);
             this.cMenuPianoFixed128.Text = "1/128[15]";
             // 
             // cMenuPianoFixedOff
             // 
             this.cMenuPianoFixedOff.Name = "cMenuPianoFixedOff";
-            this.cMenuPianoFixedOff.Size = new System.Drawing.Size(141, 22);
+            this.cMenuPianoFixedOff.Size = new cadencii.java.awt.Dimension(141, 22);
             this.cMenuPianoFixedOff.Text = "オフ";
             // 
             // toolStripMenuItem18
             // 
             this.toolStripMenuItem18.Name = "toolStripMenuItem18";
-            this.toolStripMenuItem18.Size = new System.Drawing.Size(138, 6);
+            this.toolStripMenuItem18.Size = new cadencii.java.awt.Dimension(138, 6);
             // 
             // cMenuPianoFixedTriplet
             // 
             this.cMenuPianoFixedTriplet.Name = "cMenuPianoFixedTriplet";
-            this.cMenuPianoFixedTriplet.Size = new System.Drawing.Size(141, 22);
+            this.cMenuPianoFixedTriplet.Size = new cadencii.java.awt.Dimension(141, 22);
             this.cMenuPianoFixedTriplet.Text = "3連符";
             // 
             // cMenuPianoFixedDotted
             // 
             this.cMenuPianoFixedDotted.Name = "cMenuPianoFixedDotted";
-            this.cMenuPianoFixedDotted.Size = new System.Drawing.Size(141, 22);
+            this.cMenuPianoFixedDotted.Size = new cadencii.java.awt.Dimension(141, 22);
             this.cMenuPianoFixedDotted.Text = "付点";
             // 
             // cMenuPianoQuantize
             // 
-            this.cMenuPianoQuantize.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cMenuPianoQuantize.DropDownItems.AddRange(new UiToolStripItem[] {
             this.cMenuPianoQuantize04,
             this.cMenuPianoQuantize08,
             this.cMenuPianoQuantize16,
@@ -1722,157 +1731,157 @@ namespace cadencii
             this.toolStripMenuItem26,
             this.cMenuPianoQuantizeTriplet});
             this.cMenuPianoQuantize.Name = "cMenuPianoQuantize";
-            this.cMenuPianoQuantize.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoQuantize.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoQuantize.Text = "Quantize(&Q)";
             // 
             // cMenuPianoQuantize04
             // 
             this.cMenuPianoQuantize04.Name = "cMenuPianoQuantize04";
-            this.cMenuPianoQuantize04.Size = new System.Drawing.Size(109, 22);
+            this.cMenuPianoQuantize04.Size = new cadencii.java.awt.Dimension(109, 22);
             this.cMenuPianoQuantize04.Text = "1/4";
             // 
             // cMenuPianoQuantize08
             // 
             this.cMenuPianoQuantize08.Name = "cMenuPianoQuantize08";
-            this.cMenuPianoQuantize08.Size = new System.Drawing.Size(109, 22);
+            this.cMenuPianoQuantize08.Size = new cadencii.java.awt.Dimension(109, 22);
             this.cMenuPianoQuantize08.Text = "1/8";
             // 
             // cMenuPianoQuantize16
             // 
             this.cMenuPianoQuantize16.Name = "cMenuPianoQuantize16";
-            this.cMenuPianoQuantize16.Size = new System.Drawing.Size(109, 22);
+            this.cMenuPianoQuantize16.Size = new cadencii.java.awt.Dimension(109, 22);
             this.cMenuPianoQuantize16.Text = "1/16";
             // 
             // cMenuPianoQuantize32
             // 
             this.cMenuPianoQuantize32.Name = "cMenuPianoQuantize32";
-            this.cMenuPianoQuantize32.Size = new System.Drawing.Size(109, 22);
+            this.cMenuPianoQuantize32.Size = new cadencii.java.awt.Dimension(109, 22);
             this.cMenuPianoQuantize32.Text = "1/32";
             // 
             // cMenuPianoQuantize64
             // 
             this.cMenuPianoQuantize64.Name = "cMenuPianoQuantize64";
-            this.cMenuPianoQuantize64.Size = new System.Drawing.Size(109, 22);
+            this.cMenuPianoQuantize64.Size = new cadencii.java.awt.Dimension(109, 22);
             this.cMenuPianoQuantize64.Text = "1/64";
             // 
             // cMenuPianoQuantize128
             // 
             this.cMenuPianoQuantize128.Name = "cMenuPianoQuantize128";
-            this.cMenuPianoQuantize128.Size = new System.Drawing.Size(109, 22);
+            this.cMenuPianoQuantize128.Size = new cadencii.java.awt.Dimension(109, 22);
             this.cMenuPianoQuantize128.Text = "1/128";
             // 
             // cMenuPianoQuantizeOff
             // 
             this.cMenuPianoQuantizeOff.Name = "cMenuPianoQuantizeOff";
-            this.cMenuPianoQuantizeOff.Size = new System.Drawing.Size(109, 22);
+            this.cMenuPianoQuantizeOff.Size = new cadencii.java.awt.Dimension(109, 22);
             this.cMenuPianoQuantizeOff.Text = "オフ";
             // 
             // toolStripMenuItem26
             // 
             this.toolStripMenuItem26.Name = "toolStripMenuItem26";
-            this.toolStripMenuItem26.Size = new System.Drawing.Size(106, 6);
+            this.toolStripMenuItem26.Size = new cadencii.java.awt.Dimension(106, 6);
             // 
             // cMenuPianoQuantizeTriplet
             // 
             this.cMenuPianoQuantizeTriplet.Name = "cMenuPianoQuantizeTriplet";
-            this.cMenuPianoQuantizeTriplet.Size = new System.Drawing.Size(109, 22);
+            this.cMenuPianoQuantizeTriplet.Size = new cadencii.java.awt.Dimension(109, 22);
             this.cMenuPianoQuantizeTriplet.Text = "3連符";
             // 
             // cMenuPianoGrid
             // 
             this.cMenuPianoGrid.Name = "cMenuPianoGrid";
-            this.cMenuPianoGrid.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoGrid.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoGrid.Text = "Show/Hide Grid Line(&S)";
             // 
             // toolStripMenuItem14
             // 
             this.toolStripMenuItem14.Name = "toolStripMenuItem14";
-            this.toolStripMenuItem14.Size = new System.Drawing.Size(238, 6);
+            this.toolStripMenuItem14.Size = new cadencii.java.awt.Dimension(238, 6);
             // 
             // cMenuPianoUndo
             // 
             this.cMenuPianoUndo.Name = "cMenuPianoUndo";
-            this.cMenuPianoUndo.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoUndo.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoUndo.Text = "Undo(&U)";
             // 
             // cMenuPianoRedo
             // 
             this.cMenuPianoRedo.Name = "cMenuPianoRedo";
-            this.cMenuPianoRedo.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoRedo.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoRedo.Text = "Redo(&R)";
             // 
             // toolStripMenuItem15
             // 
             this.toolStripMenuItem15.Name = "toolStripMenuItem15";
-            this.toolStripMenuItem15.Size = new System.Drawing.Size(238, 6);
+            this.toolStripMenuItem15.Size = new cadencii.java.awt.Dimension(238, 6);
             // 
             // cMenuPianoCut
             // 
             this.cMenuPianoCut.Name = "cMenuPianoCut";
-            this.cMenuPianoCut.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoCut.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoCut.Text = "Cut(&T)";
             // 
             // cMenuPianoCopy
             // 
             this.cMenuPianoCopy.Name = "cMenuPianoCopy";
-            this.cMenuPianoCopy.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoCopy.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoCopy.Text = "Copy(&C)";
             // 
             // cMenuPianoPaste
             // 
             this.cMenuPianoPaste.Name = "cMenuPianoPaste";
-            this.cMenuPianoPaste.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoPaste.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoPaste.Text = "Paste(&P)";
             // 
             // cMenuPianoDelete
             // 
             this.cMenuPianoDelete.Name = "cMenuPianoDelete";
-            this.cMenuPianoDelete.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoDelete.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoDelete.Text = "Delete(&D)";
             // 
             // toolStripMenuItem16
             // 
             this.toolStripMenuItem16.Name = "toolStripMenuItem16";
-            this.toolStripMenuItem16.Size = new System.Drawing.Size(238, 6);
+            this.toolStripMenuItem16.Size = new cadencii.java.awt.Dimension(238, 6);
             // 
             // cMenuPianoSelectAll
             // 
             this.cMenuPianoSelectAll.Name = "cMenuPianoSelectAll";
-            this.cMenuPianoSelectAll.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoSelectAll.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoSelectAll.Text = "Select All(&A)";
             // 
             // cMenuPianoSelectAllEvents
             // 
             this.cMenuPianoSelectAllEvents.Name = "cMenuPianoSelectAllEvents";
-            this.cMenuPianoSelectAllEvents.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoSelectAllEvents.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoSelectAllEvents.Text = "Select All Events(&E)";
             // 
             // toolStripMenuItem17
             // 
             this.toolStripMenuItem17.Name = "toolStripMenuItem17";
-            this.toolStripMenuItem17.Size = new System.Drawing.Size(238, 6);
+            this.toolStripMenuItem17.Size = new cadencii.java.awt.Dimension(238, 6);
             // 
             // cMenuPianoImportLyric
             // 
             this.cMenuPianoImportLyric.Name = "cMenuPianoImportLyric";
-            this.cMenuPianoImportLyric.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoImportLyric.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoImportLyric.Text = "Insert Lyrics(&L)";
             // 
             // cMenuPianoExpressionProperty
             // 
             this.cMenuPianoExpressionProperty.Name = "cMenuPianoExpressionProperty";
-            this.cMenuPianoExpressionProperty.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoExpressionProperty.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoExpressionProperty.Text = "Note Expression Property(&P)";
             // 
             // cMenuPianoVibratoProperty
             // 
             this.cMenuPianoVibratoProperty.Name = "cMenuPianoVibratoProperty";
-            this.cMenuPianoVibratoProperty.Size = new System.Drawing.Size(241, 22);
+            this.cMenuPianoVibratoProperty.Size = new cadencii.java.awt.Dimension(241, 22);
             this.cMenuPianoVibratoProperty.Text = "Note Vibrato Property";
             // 
             // cMenuTrackTab
             // 
-            this.cMenuTrackTab.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cMenuTrackTab.Items.AddRange(new UiToolStripItem[] {
             this.cMenuTrackTabTrackOn,
             this.toolStripMenuItem24,
             this.cMenuTrackTabAdd,
@@ -1886,77 +1895,77 @@ namespace cadencii
             this.cMenuTrackTabOverlay,
             this.cMenuTrackTabRenderer});
             this.cMenuTrackTab.Name = "cMenuTrackTab";
-            this.cMenuTrackTab.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.cMenuTrackTab.RenderMode = ToolStripRenderMode.System;
             this.cMenuTrackTab.ShowCheckMargin = true;
             this.cMenuTrackTab.ShowImageMargin = false;
-            this.cMenuTrackTab.Size = new System.Drawing.Size(220, 220);
+            this.cMenuTrackTab.Size = new cadencii.java.awt.Dimension(220, 220);
             // 
             // cMenuTrackTabTrackOn
             // 
             this.cMenuTrackTabTrackOn.Name = "cMenuTrackTabTrackOn";
-            this.cMenuTrackTabTrackOn.Size = new System.Drawing.Size(219, 22);
+            this.cMenuTrackTabTrackOn.Size = new cadencii.java.awt.Dimension(219, 22);
             this.cMenuTrackTabTrackOn.Text = "Track On(&K)";
             // 
             // toolStripMenuItem24
             // 
             this.toolStripMenuItem24.Name = "toolStripMenuItem24";
-            this.toolStripMenuItem24.Size = new System.Drawing.Size(216, 6);
+            this.toolStripMenuItem24.Size = new cadencii.java.awt.Dimension(216, 6);
             // 
             // cMenuTrackTabAdd
             // 
             this.cMenuTrackTabAdd.Name = "cMenuTrackTabAdd";
-            this.cMenuTrackTabAdd.Size = new System.Drawing.Size(219, 22);
+            this.cMenuTrackTabAdd.Size = new cadencii.java.awt.Dimension(219, 22);
             this.cMenuTrackTabAdd.Text = "Add Track(&A)";
             // 
             // cMenuTrackTabCopy
             // 
             this.cMenuTrackTabCopy.Name = "cMenuTrackTabCopy";
-            this.cMenuTrackTabCopy.Size = new System.Drawing.Size(219, 22);
+            this.cMenuTrackTabCopy.Size = new cadencii.java.awt.Dimension(219, 22);
             this.cMenuTrackTabCopy.Text = "Copy Track(&C)";
             // 
             // cMenuTrackTabChangeName
             // 
             this.cMenuTrackTabChangeName.Name = "cMenuTrackTabChangeName";
-            this.cMenuTrackTabChangeName.Size = new System.Drawing.Size(219, 22);
+            this.cMenuTrackTabChangeName.Size = new cadencii.java.awt.Dimension(219, 22);
             this.cMenuTrackTabChangeName.Text = "Rename Track";
             // 
             // cMenuTrackTabDelete
             // 
             this.cMenuTrackTabDelete.Name = "cMenuTrackTabDelete";
-            this.cMenuTrackTabDelete.Size = new System.Drawing.Size(219, 22);
+            this.cMenuTrackTabDelete.Size = new cadencii.java.awt.Dimension(219, 22);
             this.cMenuTrackTabDelete.Text = "Delete Track(&D)";
             // 
             // toolStripMenuItem25
             // 
             this.toolStripMenuItem25.Name = "toolStripMenuItem25";
-            this.toolStripMenuItem25.Size = new System.Drawing.Size(216, 6);
+            this.toolStripMenuItem25.Size = new cadencii.java.awt.Dimension(216, 6);
             // 
             // cMenuTrackTabRenderCurrent
             // 
             this.cMenuTrackTabRenderCurrent.Name = "cMenuTrackTabRenderCurrent";
-            this.cMenuTrackTabRenderCurrent.Size = new System.Drawing.Size(219, 22);
+            this.cMenuTrackTabRenderCurrent.Size = new cadencii.java.awt.Dimension(219, 22);
             this.cMenuTrackTabRenderCurrent.Text = "Render Current Track(&T)";
             // 
             // cMenuTrackTabRenderAll
             // 
             this.cMenuTrackTabRenderAll.Name = "cMenuTrackTabRenderAll";
-            this.cMenuTrackTabRenderAll.Size = new System.Drawing.Size(219, 22);
+            this.cMenuTrackTabRenderAll.Size = new cadencii.java.awt.Dimension(219, 22);
             this.cMenuTrackTabRenderAll.Text = "Render All Tracks(&S)";
             // 
             // toolStripMenuItem27
             // 
             this.toolStripMenuItem27.Name = "toolStripMenuItem27";
-            this.toolStripMenuItem27.Size = new System.Drawing.Size(216, 6);
+            this.toolStripMenuItem27.Size = new cadencii.java.awt.Dimension(216, 6);
             // 
             // cMenuTrackTabOverlay
             // 
             this.cMenuTrackTabOverlay.Name = "cMenuTrackTabOverlay";
-            this.cMenuTrackTabOverlay.Size = new System.Drawing.Size(219, 22);
+            this.cMenuTrackTabOverlay.Size = new cadencii.java.awt.Dimension(219, 22);
             this.cMenuTrackTabOverlay.Text = "Overlay(&O)";
             // 
             // cMenuTrackTabRenderer
             // 
-            this.cMenuTrackTabRenderer.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cMenuTrackTabRenderer.DropDownItems.AddRange(new UiToolStripItem[] {
             this.cMenuTrackTabRendererVOCALOID1,
             this.cMenuTrackTabRendererVOCALOID2,
             this.cMenuTrackTabRendererUtau,
@@ -1964,49 +1973,49 @@ namespace cadencii
             this.cMenuTrackTabRendererAquesTone,
             this.cMenuTrackTabRendererAquesTone2});
             this.cMenuTrackTabRenderer.Name = "cMenuTrackTabRenderer";
-            this.cMenuTrackTabRenderer.Size = new System.Drawing.Size(219, 22);
+            this.cMenuTrackTabRenderer.Size = new cadencii.java.awt.Dimension(219, 22);
             this.cMenuTrackTabRenderer.Text = "Renderer(&R)";
             // 
             // cMenuTrackTabRendererVOCALOID1
             // 
             this.cMenuTrackTabRendererVOCALOID1.Name = "cMenuTrackTabRendererVOCALOID1";
-            this.cMenuTrackTabRendererVOCALOID1.Size = new System.Drawing.Size(197, 22);
+            this.cMenuTrackTabRendererVOCALOID1.Size = new cadencii.java.awt.Dimension(197, 22);
             this.cMenuTrackTabRendererVOCALOID1.Text = "VOCALOID1(&1)";
             // 
             // cMenuTrackTabRendererVOCALOID2
             // 
             this.cMenuTrackTabRendererVOCALOID2.Name = "cMenuTrackTabRendererVOCALOID2";
-            this.cMenuTrackTabRendererVOCALOID2.Size = new System.Drawing.Size(197, 22);
+            this.cMenuTrackTabRendererVOCALOID2.Size = new cadencii.java.awt.Dimension(197, 22);
             this.cMenuTrackTabRendererVOCALOID2.Text = "VOCALOID2(&2)";
             // 
             // cMenuTrackTabRendererUtau
             // 
             this.cMenuTrackTabRendererUtau.Name = "cMenuTrackTabRendererUtau";
-            this.cMenuTrackTabRendererUtau.Size = new System.Drawing.Size(197, 22);
+            this.cMenuTrackTabRendererUtau.Size = new cadencii.java.awt.Dimension(197, 22);
             this.cMenuTrackTabRendererUtau.Text = "UTAU(&3)";
             // 
             // cMenuTrackTabRendererStraight
             // 
             this.cMenuTrackTabRendererStraight.Name = "cMenuTrackTabRendererStraight";
-            this.cMenuTrackTabRendererStraight.Size = new System.Drawing.Size(197, 22);
+            this.cMenuTrackTabRendererStraight.Size = new cadencii.java.awt.Dimension(197, 22);
             this.cMenuTrackTabRendererStraight.Text = "vConnect-STAND(&4) ";
             // 
             // cMenuTrackTabRendererAquesTone
             // 
             this.cMenuTrackTabRendererAquesTone.Name = "cMenuTrackTabRendererAquesTone";
-            this.cMenuTrackTabRendererAquesTone.Size = new System.Drawing.Size(197, 22);
+            this.cMenuTrackTabRendererAquesTone.Size = new cadencii.java.awt.Dimension(197, 22);
             this.cMenuTrackTabRendererAquesTone.Text = "AquesTone(&5)";
             // 
             // cMenuTrackTabRendererAquesTone2
             // 
             this.cMenuTrackTabRendererAquesTone2.Name = "cMenuTrackTabRendererAquesTone2";
-            this.cMenuTrackTabRendererAquesTone2.Size = new System.Drawing.Size(197, 22);
+            this.cMenuTrackTabRendererAquesTone2.Size = new cadencii.java.awt.Dimension(197, 22);
             this.cMenuTrackTabRendererAquesTone2.Text = "AquesTone2(&6)";
             this.cMenuTrackTabRendererAquesTone2.Click += new System.EventHandler(this.handleChangeRenderer);
             // 
             // cMenuTrackSelector
             // 
-            this.cMenuTrackSelector.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cMenuTrackSelector.Items.AddRange(new UiToolStripItem[] {
             this.cMenuTrackSelectorPointer,
             this.cMenuTrackSelectorPencil,
             this.cMenuTrackSelectorLine,
@@ -2026,191 +2035,191 @@ namespace cadencii
             this.toolStripMenuItem31,
             this.cMenuTrackSelectorSelectAll});
             this.cMenuTrackSelector.Name = "cMenuTrackSelector";
-            this.cMenuTrackSelector.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.cMenuTrackSelector.RenderMode = ToolStripRenderMode.System;
             this.cMenuTrackSelector.ShowCheckMargin = true;
             this.cMenuTrackSelector.ShowImageMargin = false;
-            this.cMenuTrackSelector.Size = new System.Drawing.Size(206, 336);
+            this.cMenuTrackSelector.Size = new cadencii.java.awt.Dimension(206, 336);
             // 
             // cMenuTrackSelectorPointer
             // 
             this.cMenuTrackSelectorPointer.Name = "cMenuTrackSelectorPointer";
-            this.cMenuTrackSelectorPointer.Size = new System.Drawing.Size(205, 22);
+            this.cMenuTrackSelectorPointer.Size = new cadencii.java.awt.Dimension(205, 22);
             this.cMenuTrackSelectorPointer.Text = "Arrow(&A)";
             // 
             // cMenuTrackSelectorPencil
             // 
             this.cMenuTrackSelectorPencil.Name = "cMenuTrackSelectorPencil";
-            this.cMenuTrackSelectorPencil.Size = new System.Drawing.Size(205, 22);
+            this.cMenuTrackSelectorPencil.Size = new cadencii.java.awt.Dimension(205, 22);
             this.cMenuTrackSelectorPencil.Text = "Pencil(&W)";
             // 
             // cMenuTrackSelectorLine
             // 
             this.cMenuTrackSelectorLine.Name = "cMenuTrackSelectorLine";
-            this.cMenuTrackSelectorLine.Size = new System.Drawing.Size(205, 22);
+            this.cMenuTrackSelectorLine.Size = new cadencii.java.awt.Dimension(205, 22);
             this.cMenuTrackSelectorLine.Text = "Line(&L)";
             // 
             // cMenuTrackSelectorEraser
             // 
             this.cMenuTrackSelectorEraser.Name = "cMenuTrackSelectorEraser";
-            this.cMenuTrackSelectorEraser.Size = new System.Drawing.Size(205, 22);
+            this.cMenuTrackSelectorEraser.Size = new cadencii.java.awt.Dimension(205, 22);
             this.cMenuTrackSelectorEraser.Text = "Eraser(&E)";
             // 
             // cMenuTrackSelectorPaletteTool
             // 
             this.cMenuTrackSelectorPaletteTool.Name = "cMenuTrackSelectorPaletteTool";
-            this.cMenuTrackSelectorPaletteTool.Size = new System.Drawing.Size(205, 22);
+            this.cMenuTrackSelectorPaletteTool.Size = new cadencii.java.awt.Dimension(205, 22);
             this.cMenuTrackSelectorPaletteTool.Text = "Palette Tool";
             // 
             // toolStripSeparator14
             // 
             this.toolStripSeparator14.Name = "toolStripSeparator14";
-            this.toolStripSeparator14.Size = new System.Drawing.Size(202, 6);
+            this.toolStripSeparator14.Size = new cadencii.java.awt.Dimension(202, 6);
             // 
             // cMenuTrackSelectorCurve
             // 
             this.cMenuTrackSelectorCurve.Name = "cMenuTrackSelectorCurve";
-            this.cMenuTrackSelectorCurve.Size = new System.Drawing.Size(205, 22);
+            this.cMenuTrackSelectorCurve.Size = new cadencii.java.awt.Dimension(205, 22);
             this.cMenuTrackSelectorCurve.Text = "Curve(&V)";
             // 
             // toolStripMenuItem28
             // 
             this.toolStripMenuItem28.Name = "toolStripMenuItem28";
-            this.toolStripMenuItem28.Size = new System.Drawing.Size(202, 6);
+            this.toolStripMenuItem28.Size = new cadencii.java.awt.Dimension(202, 6);
             // 
             // cMenuTrackSelectorUndo
             // 
             this.cMenuTrackSelectorUndo.Name = "cMenuTrackSelectorUndo";
-            this.cMenuTrackSelectorUndo.Size = new System.Drawing.Size(205, 22);
+            this.cMenuTrackSelectorUndo.Size = new cadencii.java.awt.Dimension(205, 22);
             this.cMenuTrackSelectorUndo.Text = "Undo(&U)";
             // 
             // cMenuTrackSelectorRedo
             // 
             this.cMenuTrackSelectorRedo.Name = "cMenuTrackSelectorRedo";
-            this.cMenuTrackSelectorRedo.Size = new System.Drawing.Size(205, 22);
+            this.cMenuTrackSelectorRedo.Size = new cadencii.java.awt.Dimension(205, 22);
             this.cMenuTrackSelectorRedo.Text = "Redo(&R)";
             // 
             // toolStripMenuItem29
             // 
             this.toolStripMenuItem29.Name = "toolStripMenuItem29";
-            this.toolStripMenuItem29.Size = new System.Drawing.Size(202, 6);
+            this.toolStripMenuItem29.Size = new cadencii.java.awt.Dimension(202, 6);
             // 
             // cMenuTrackSelectorCut
             // 
             this.cMenuTrackSelectorCut.Name = "cMenuTrackSelectorCut";
-            this.cMenuTrackSelectorCut.Size = new System.Drawing.Size(205, 22);
+            this.cMenuTrackSelectorCut.Size = new cadencii.java.awt.Dimension(205, 22);
             this.cMenuTrackSelectorCut.Text = "Cut(&T)";
             // 
             // cMenuTrackSelectorCopy
             // 
             this.cMenuTrackSelectorCopy.Name = "cMenuTrackSelectorCopy";
-            this.cMenuTrackSelectorCopy.Size = new System.Drawing.Size(205, 22);
+            this.cMenuTrackSelectorCopy.Size = new cadencii.java.awt.Dimension(205, 22);
             this.cMenuTrackSelectorCopy.Text = "Copy(&C)";
             // 
             // cMenuTrackSelectorPaste
             // 
             this.cMenuTrackSelectorPaste.Name = "cMenuTrackSelectorPaste";
-            this.cMenuTrackSelectorPaste.Size = new System.Drawing.Size(205, 22);
+            this.cMenuTrackSelectorPaste.Size = new cadencii.java.awt.Dimension(205, 22);
             this.cMenuTrackSelectorPaste.Text = "Paste(&P)";
             // 
             // cMenuTrackSelectorDelete
             // 
             this.cMenuTrackSelectorDelete.Name = "cMenuTrackSelectorDelete";
-            this.cMenuTrackSelectorDelete.Size = new System.Drawing.Size(205, 22);
+            this.cMenuTrackSelectorDelete.Size = new cadencii.java.awt.Dimension(205, 22);
             this.cMenuTrackSelectorDelete.Text = "Delete(&D)";
             // 
             // cMenuTrackSelectorDeleteBezier
             // 
             this.cMenuTrackSelectorDeleteBezier.Name = "cMenuTrackSelectorDeleteBezier";
-            this.cMenuTrackSelectorDeleteBezier.Size = new System.Drawing.Size(205, 22);
+            this.cMenuTrackSelectorDeleteBezier.Size = new cadencii.java.awt.Dimension(205, 22);
             this.cMenuTrackSelectorDeleteBezier.Text = "Delete Bezier Point(&B)";
             // 
             // toolStripMenuItem31
             // 
             this.toolStripMenuItem31.Name = "toolStripMenuItem31";
-            this.toolStripMenuItem31.Size = new System.Drawing.Size(202, 6);
+            this.toolStripMenuItem31.Size = new cadencii.java.awt.Dimension(202, 6);
             // 
             // cMenuTrackSelectorSelectAll
             // 
             this.cMenuTrackSelectorSelectAll.Name = "cMenuTrackSelectorSelectAll";
-            this.cMenuTrackSelectorSelectAll.Size = new System.Drawing.Size(205, 22);
+            this.cMenuTrackSelectorSelectAll.Size = new cadencii.java.awt.Dimension(205, 22);
             this.cMenuTrackSelectorSelectAll.Text = "Select All Events(&E)";
             // 
             // trackBar
             // 
-            this.trackBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBar.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Right)));
             this.trackBar.AutoSize = false;
-            this.trackBar.Location = new System.Drawing.Point(322, 263);
-            this.trackBar.Margin = new System.Windows.Forms.Padding(0);
+            this.trackBar.Location = new cadencii.java.awt.Point(322, 263);
+            this.trackBar.Margin = new  cadencii.java.awt.Padding(0);
             this.trackBar.Maximum = 609;
             this.trackBar.Minimum = 17;
             this.trackBar.Name = "trackBar";
-            this.trackBar.Size = new System.Drawing.Size(83, 16);
+            this.trackBar.Size = new cadencii.java.awt.Dimension(83, 16);
             this.trackBar.TabIndex = 15;
             this.trackBar.TabStop = false;
             this.trackBar.TickFrequency = 100;
-            this.trackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.trackBar.TickStyle = TickStyle.None;
             this.trackBar.Value = 17;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox3.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.pictureBox3.Location = new System.Drawing.Point(0, 263);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(49, 16);
+            this.pictureBox3.Size = new cadencii.java.awt.Dimension(49, 16);
             this.pictureBox3.TabIndex = 8;
             this.pictureBox3.TabStop = false;
             // 
             // pictKeyLengthSplitter
             // 
-            this.pictKeyLengthSplitter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictKeyLengthSplitter.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
             this.pictKeyLengthSplitter.BackColor = System.Drawing.SystemColors.Control;
             this.pictKeyLengthSplitter.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictKeyLengthSplitter.Cursor = System.Windows.Forms.Cursors.NoMoveHoriz;
             this.pictKeyLengthSplitter.Location = new System.Drawing.Point(49, 263);
             this.pictKeyLengthSplitter.Margin = new System.Windows.Forms.Padding(0);
             this.pictKeyLengthSplitter.Name = "pictKeyLengthSplitter";
-            this.pictKeyLengthSplitter.Size = new System.Drawing.Size(16, 16);
+            this.pictKeyLengthSplitter.Size = new cadencii.java.awt.Dimension(16, 16);
             this.pictKeyLengthSplitter.TabIndex = 20;
             this.pictKeyLengthSplitter.TabStop = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox2.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Right)));
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.pictureBox2.Location = new System.Drawing.Point(405, 231);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(16, 48);
+            this.pictureBox2.Size = new cadencii.java.awt.Dimension(16, 48);
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             // 
             // vScroll
             // 
-            this.vScroll.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.vScroll.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Bottom)
+            | AnchorStyles.Right)));
             this.vScroll.Location = new System.Drawing.Point(405, 94);
             this.vScroll.Name = "vScroll";
-            this.vScroll.Size = new System.Drawing.Size(16, 137);
+            this.vScroll.Size = new cadencii.java.awt.Dimension(16, 137);
             this.vScroll.TabIndex = 17;
             // 
             // picturePositionIndicator
             // 
-            this.picturePositionIndicator.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.picturePositionIndicator.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Left)
+            | AnchorStyles.Right)));
             this.picturePositionIndicator.BackColor = System.Drawing.Color.DarkGray;
             this.picturePositionIndicator.Location = new System.Drawing.Point(0, 46);
             this.picturePositionIndicator.Margin = new System.Windows.Forms.Padding(0);
             this.picturePositionIndicator.Name = "picturePositionIndicator";
-            this.picturePositionIndicator.Size = new System.Drawing.Size(700, 48);
+            this.picturePositionIndicator.Size = new cadencii.java.awt.Dimension(700, 48);
             this.picturePositionIndicator.TabIndex = 10;
             this.picturePositionIndicator.TabStop = false;
             // 
             // toolStripBottom
             // 
             this.toolStripBottom.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStripBottom.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripBottom.Items.AddRange(new UiToolStripItem[] {
             this.toolStripStatusLabel1,
             this.stripLblGameCtrlMode,
             this.toolStripSeparator10,
@@ -2220,45 +2229,45 @@ namespace cadencii
             this.stripBtnStepSequencer});
             this.toolStripBottom.Location = new System.Drawing.Point(15, 0);
             this.toolStripBottom.Name = "toolStripBottom";
-            this.toolStripBottom.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStripBottom.Size = new System.Drawing.Size(347, 25);
+            this.toolStripBottom.RenderMode = ToolStripRenderMode.System;
+            this.toolStripBottom.Size = new cadencii.java.awt.Dimension(347, 25);
             this.toolStripBottom.TabIndex = 22;
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(101, 20);
+            this.toolStripStatusLabel1.Size = new cadencii.java.awt.Dimension(101, 20);
             this.toolStripStatusLabel1.Text = "Game Controler";
             // 
             // stripLblGameCtrlMode
             // 
             this.stripLblGameCtrlMode.Name = "stripLblGameCtrlMode";
-            this.stripLblGameCtrlMode.Size = new System.Drawing.Size(57, 20);
+            this.stripLblGameCtrlMode.Size = new cadencii.java.awt.Dimension(57, 20);
             this.stripLblGameCtrlMode.Text = "Disabled";
             this.stripLblGameCtrlMode.ToolTipText = "Game Controler";
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator10.Size = new cadencii.java.awt.Dimension(6, 25);
             // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(53, 20);
+            this.toolStripStatusLabel2.Size = new cadencii.java.awt.Dimension(53, 20);
             this.toolStripStatusLabel2.Text = "MIDI In";
             // 
             // stripLblMidiIn
             // 
             this.stripLblMidiIn.Name = "stripLblMidiIn";
-            this.stripLblMidiIn.Size = new System.Drawing.Size(57, 20);
+            this.stripLblMidiIn.Size = new cadencii.java.awt.Dimension(57, 20);
             this.stripLblMidiIn.Text = "Disabled";
             this.stripLblMidiIn.ToolTipText = "Midi In Device";
             // 
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator11.Size = new cadencii.java.awt.Dimension(6, 25);
             // 
             // stripBtnStepSequencer
             // 
@@ -2266,7 +2275,7 @@ namespace cadencii
             this.stripBtnStepSequencer.Image = ((System.Drawing.Image)(resources.GetObject("stripBtnStepSequencer.Image")));
             this.stripBtnStepSequencer.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.stripBtnStepSequencer.Name = "stripBtnStepSequencer";
-            this.stripBtnStepSequencer.Size = new System.Drawing.Size(55, 22);
+            this.stripBtnStepSequencer.Size = new cadencii.java.awt.Dimension(55, 22);
             this.stripBtnStepSequencer.Text = "Step";
             // 
             // splitContainerProperty
@@ -2385,7 +2394,7 @@ namespace cadencii
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(57, 6);
+            this.toolStripSeparator2.Size = new cadencii.java.awt.Dimension(57, 6);
             // 
             // stripDDBtnQuantize
             // 
@@ -2448,7 +2457,7 @@ namespace cadencii
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(57, 6);
+            this.toolStripSeparator3.Size = new cadencii.java.awt.Dimension(57, 6);
             // 
             // imageListFile
             // 
@@ -2588,7 +2597,7 @@ namespace cadencii
             this.toolBarFile.Location = new System.Drawing.Point(11, 2);
             this.toolBarFile.Name = "toolBarFile";
             this.toolBarFile.ShowToolTips = true;
-            this.toolBarFile.Size = new System.Drawing.Size(944, 26);
+            this.toolBarFile.Size = new cadencii.java.awt.Dimension(944, 26);
             this.toolBarFile.TabIndex = 25;
             this.toolBarFile.Wrappable = false;
             // 
@@ -2669,7 +2678,7 @@ namespace cadencii
             this.toolBarPosition.Location = new System.Drawing.Point(11, 32);
             this.toolBarPosition.Name = "toolBarPosition";
             this.toolBarPosition.ShowToolTips = true;
-            this.toolBarPosition.Size = new System.Drawing.Size(944, 40);
+            this.toolBarPosition.Size = new cadencii.java.awt.Dimension(944, 40);
             this.toolBarPosition.TabIndex = 25;
             this.toolBarPosition.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
             this.toolBarPosition.Wrappable = false;
@@ -2734,7 +2743,7 @@ namespace cadencii
             this.toolBarMeasure.Location = new System.Drawing.Point(11, 62);
             this.toolBarMeasure.Name = "toolBarMeasure";
             this.toolBarMeasure.ShowToolTips = true;
-            this.toolBarMeasure.Size = new System.Drawing.Size(944, 40);
+            this.toolBarMeasure.Size = new cadencii.java.awt.Dimension(944, 40);
             this.toolBarMeasure.TabIndex = 25;
             this.toolBarMeasure.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
             this.toolBarMeasure.Wrappable = false;
@@ -2778,7 +2787,7 @@ namespace cadencii
             this.toolBarTool.Location = new System.Drawing.Point(11, 92);
             this.toolBarTool.Name = "toolBarTool";
             this.toolBarTool.ShowToolTips = true;
-            this.toolBarTool.Size = new System.Drawing.Size(944, 40);
+            this.toolBarTool.Size = new cadencii.java.awt.Dimension(944, 40);
             this.toolBarTool.TabIndex = 25;
             this.toolBarTool.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
             this.toolBarTool.Wrappable = false;
@@ -2832,19 +2841,19 @@ namespace cadencii
             // 
             this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.toolStripBottom);
             this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.statusStrip);
-            this.toolStripContainer1.BottomToolStripPanel.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.toolStripContainer1.BottomToolStripPanel.RenderMode = ToolStripRenderMode.System;
             // 
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add((Control)this.panel1.Native);
             this.toolStripContainer1.ContentPanel.Controls.Add((Control)this.splitContainerProperty.Native);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(955, 612);
+            this.toolStripContainer1.ContentPanel.Size = new cadencii.java.awt.Dimension(955, 612);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 30);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.RightToolStripPanelVisible = false;
-            this.toolStripContainer1.Size = new System.Drawing.Size(955, 659);
+            this.toolStripContainer1.Size = new cadencii.java.awt.Dimension(955, 659);
             this.toolStripContainer1.TabIndex = 26;
             this.toolStripContainer1.Text = "toolStripContainer1";
             this.toolStripContainer1.TopToolStripPanelVisible = false;
@@ -2852,45 +2861,45 @@ namespace cadencii
             // statusStrip
             // 
             this.statusStrip.Dock = System.Windows.Forms.DockStyle.None;
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusStrip.Items.AddRange(new UiToolStripItem[] {
             this.statusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 25);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(955, 22);
+            this.statusStrip.Size = new cadencii.java.awt.Dimension(955, 22);
             this.statusStrip.TabIndex = 25;
             this.statusStrip.Text = "statusStrip1";
             // 
             // statusLabel
             // 
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(0, 17);
+            this.statusLabel.Size = new cadencii.java.awt.Dimension(0, 17);
             // 
             // cMenuPositionIndicator
             // 
-            this.cMenuPositionIndicator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cMenuPositionIndicator.Items.AddRange(new UiToolStripItem[] {
             this.cMenuPositionIndicatorStartMarker,
             this.cMenuPositionIndicatorEndMarker});
             this.cMenuPositionIndicator.Name = "cMenuTrackTab";
-            this.cMenuPositionIndicator.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.cMenuPositionIndicator.RenderMode = ToolStripRenderMode.System;
             this.cMenuPositionIndicator.ShowImageMargin = false;
-            this.cMenuPositionIndicator.Size = new System.Drawing.Size(151, 48);
+            this.cMenuPositionIndicator.Size = new cadencii.java.awt.Dimension(151, 48);
             // 
             // cMenuPositionIndicatorStartMarker
             // 
             this.cMenuPositionIndicatorStartMarker.Name = "cMenuPositionIndicatorStartMarker";
-            this.cMenuPositionIndicatorStartMarker.Size = new System.Drawing.Size(150, 22);
+            this.cMenuPositionIndicatorStartMarker.Size = new cadencii.java.awt.Dimension(150, 22);
             this.cMenuPositionIndicatorStartMarker.Text = "Set start marker";
             // 
             // cMenuPositionIndicatorEndMarker
             // 
             this.cMenuPositionIndicatorEndMarker.Name = "cMenuPositionIndicatorEndMarker";
-            this.cMenuPositionIndicatorEndMarker.Size = new System.Drawing.Size(150, 22);
+            this.cMenuPositionIndicatorEndMarker.Size = new cadencii.java.awt.Dimension(150, 22);
             this.cMenuPositionIndicatorEndMarker.Text = "Set end marker";
             // 
             // menuHelpCheckForUpdates
             // 
             this.menuHelpCheckForUpdates.Name = "menuHelpCheckForUpdates";
-            this.menuHelpCheckForUpdates.Size = new System.Drawing.Size(186, 22);
+            this.menuHelpCheckForUpdates.Size = new cadencii.java.awt.Dimension(186, 22);
             this.menuHelpCheckForUpdates.Text = "Check For Updates";
             this.menuHelpCheckForUpdates.Click += new System.EventHandler(this.menuHelpCheckForUpdates_Click);
             // 
@@ -2941,223 +2950,223 @@ namespace cadencii
 
         private System.ComponentModel.IContainer components;
 
-        public MenuStrip menuStripMain;
-        public ToolStripMenuItem menuFile;
-        public ToolStripMenuItem menuEdit;
-        public ToolStripMenuItem menuVisual;
-        public ToolStripMenuItem menuJob;
-        public ToolStripMenuItem menuTrack;
-        public ToolStripMenuItem menuLyric;
-        public ToolStripMenuItem menuSetting;
-        public ToolStripMenuItem menuHelp;
-        public ToolStripMenuItem menuVisualControlTrack;
-        public ToolStripMenuItem menuVisualMixer;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        public ToolStripMenuItem menuVisualGridline;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        public ToolStripMenuItem menuVisualStartMarker;
-        public ToolStripMenuItem menuVisualEndMarker;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
-        public ToolStripMenuItem menuVisualLyrics;
-        public ToolStripMenuItem menuVisualNoteProperty;
-        public ToolStripMenuItem menuSettingPreference;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem6;
-        public ToolStripMenuItem menuSettingDefaultSingerStyle;
-        public ToolStripMenuItem menuSettingPositionQuantize;
-        public ToolStripMenuItem menuSettingPositionQuantize04;
-        public ToolStripMenuItem menuSettingPositionQuantize08;
-        public ToolStripMenuItem menuSettingPositionQuantize16;
-        public ToolStripMenuItem menuSettingPositionQuantize32;
-        public ToolStripMenuItem menuSettingPositionQuantize64;
-        public ToolStripMenuItem menuSettingPositionQuantizeOff;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem9;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem8;
-        public ToolStripMenuItem menuSettingPositionQuantizeTriplet;
-        public ToolStripMenuItem menuFileNew;
-        public ToolStripMenuItem menuFileOpen;
-        public ToolStripMenuItem menuFileSave;
-        public ToolStripMenuItem menuFileSaveNamed;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem10;
-        public ToolStripMenuItem menuFileImport;
-        public ToolStripMenuItem menuFileExport;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem11;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem12;
-        public ToolStripMenuItem menuFileQuit;
-        public ToolStripMenuItem menuEditUndo;
-        public ToolStripMenuItem menuEditRedo;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
-        public PictureBoxImpl pictureBox2;
-        public PictureBoxImpl pictureBox3;
-        public PictureBoxImpl picturePositionIndicator;
-        public ContextMenuStrip cMenuPiano;
-        public ToolStripMenuItem cMenuPianoPointer;
-        public ToolStripMenuItem cMenuPianoPencil;
-        public ToolStripMenuItem cMenuPianoEraser;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem13;
-        public ToolStripMenuItem cMenuPianoFixed;
-        public ToolStripMenuItem cMenuPianoQuantize;
-        public ToolStripMenuItem cMenuPianoGrid;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem14;
-        public ToolStripMenuItem cMenuPianoUndo;
-        public ToolStripMenuItem cMenuPianoRedo;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem15;
-        public ToolStripMenuItem cMenuPianoCut;
-        public ToolStripMenuItem cMenuPianoFixed01;
-        public ToolStripMenuItem cMenuPianoFixed02;
-        public ToolStripMenuItem cMenuPianoFixed04;
-        public ToolStripMenuItem cMenuPianoFixed08;
-        public ToolStripMenuItem cMenuPianoFixed16;
-        public ToolStripMenuItem cMenuPianoFixed32;
-        public ToolStripMenuItem cMenuPianoFixed64;
-        public ToolStripMenuItem cMenuPianoFixedOff;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem18;
-        public ToolStripMenuItem cMenuPianoFixedTriplet;
-        public ToolStripMenuItem cMenuPianoFixedDotted;
-        public ToolStripMenuItem cMenuPianoCopy;
-        public ToolStripMenuItem cMenuPianoPaste;
-        public ToolStripMenuItem cMenuPianoDelete;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem16;
-        public ToolStripMenuItem cMenuPianoSelectAll;
-        public ToolStripMenuItem cMenuPianoSelectAllEvents;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem17;
-        public ToolStripMenuItem cMenuPianoImportLyric;
-        public ToolStripMenuItem cMenuPianoExpressionProperty;
-        public ToolStripMenuItem cMenuPianoQuantize04;
-        public ToolStripMenuItem cMenuPianoQuantize08;
-        public ToolStripMenuItem cMenuPianoQuantize16;
-        public ToolStripMenuItem cMenuPianoQuantize32;
-        public ToolStripMenuItem cMenuPianoQuantize64;
-        public ToolStripMenuItem cMenuPianoQuantizeOff;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem26;
-        public ToolStripMenuItem cMenuPianoQuantizeTriplet;
-        public ToolStripMenuItem menuFileRecent;
+        public UiMenuStrip menuStripMain;
+        public UiToolStripMenuItem menuFile;
+        public UiToolStripMenuItem menuEdit;
+        public UiToolStripMenuItem menuVisual;
+        public UiToolStripMenuItem menuJob;
+        public UiToolStripMenuItem menuTrack;
+        public UiToolStripMenuItem menuLyric;
+        public UiToolStripMenuItem menuSetting;
+        public UiToolStripMenuItem menuHelp;
+        public UiToolStripMenuItem menuVisualControlTrack;
+        public UiToolStripMenuItem menuVisualMixer;
+        public UiToolStripSeparator toolStripMenuItem1;
+        public UiToolStripMenuItem menuVisualGridline;
+        public UiToolStripSeparator toolStripMenuItem2;
+        public UiToolStripMenuItem menuVisualStartMarker;
+        public UiToolStripMenuItem menuVisualEndMarker;
+        public UiToolStripSeparator toolStripMenuItem3;
+        public UiToolStripMenuItem menuVisualLyrics;
+        public UiToolStripMenuItem menuVisualNoteProperty;
+        public UiToolStripMenuItem menuSettingPreference;
+        public UiToolStripSeparator toolStripMenuItem6;
+        public UiToolStripMenuItem menuSettingDefaultSingerStyle;
+        public UiToolStripMenuItem menuSettingPositionQuantize;
+        public UiToolStripMenuItem menuSettingPositionQuantize04;
+        public UiToolStripMenuItem menuSettingPositionQuantize08;
+        public UiToolStripMenuItem menuSettingPositionQuantize16;
+        public UiToolStripMenuItem menuSettingPositionQuantize32;
+        public UiToolStripMenuItem menuSettingPositionQuantize64;
+        public UiToolStripMenuItem menuSettingPositionQuantizeOff;
+        public UiToolStripSeparator toolStripMenuItem9;
+        public UiToolStripSeparator toolStripMenuItem8;
+        public UiToolStripMenuItem menuSettingPositionQuantizeTriplet;
+        public UiToolStripMenuItem menuFileNew;
+        public UiToolStripMenuItem menuFileOpen;
+        public UiToolStripMenuItem menuFileSave;
+        public UiToolStripMenuItem menuFileSaveNamed;
+        public UiToolStripSeparator toolStripMenuItem10;
+        public UiToolStripMenuItem menuFileImport;
+        public UiToolStripMenuItem menuFileExport;
+        public UiToolStripSeparator toolStripMenuItem11;
+        public UiToolStripSeparator toolStripMenuItem12;
+        public UiToolStripMenuItem menuFileQuit;
+        public UiToolStripMenuItem menuEditUndo;
+        public UiToolStripMenuItem menuEditRedo;
+        public UiToolStripSeparator toolStripMenuItem5;
+        public UiPictureBox pictureBox2;
+        public UiPictureBox pictureBox3;
+        public UiPictureBox picturePositionIndicator;
+        public UiContextMenuStrip cMenuPiano;
+        public UiToolStripMenuItem cMenuPianoPointer;
+        public UiToolStripMenuItem cMenuPianoPencil;
+        public UiToolStripMenuItem cMenuPianoEraser;
+        public UiToolStripSeparator toolStripMenuItem13;
+        public UiToolStripMenuItem cMenuPianoFixed;
+        public UiToolStripMenuItem cMenuPianoQuantize;
+        public UiToolStripMenuItem cMenuPianoGrid;
+        public UiToolStripSeparator toolStripMenuItem14;
+        public UiToolStripMenuItem cMenuPianoUndo;
+        public UiToolStripMenuItem cMenuPianoRedo;
+        public UiToolStripSeparator toolStripMenuItem15;
+        public UiToolStripMenuItem cMenuPianoCut;
+        public UiToolStripMenuItem cMenuPianoFixed01;
+        public UiToolStripMenuItem cMenuPianoFixed02;
+        public UiToolStripMenuItem cMenuPianoFixed04;
+        public UiToolStripMenuItem cMenuPianoFixed08;
+        public UiToolStripMenuItem cMenuPianoFixed16;
+        public UiToolStripMenuItem cMenuPianoFixed32;
+        public UiToolStripMenuItem cMenuPianoFixed64;
+        public UiToolStripMenuItem cMenuPianoFixedOff;
+        public UiToolStripSeparator toolStripMenuItem18;
+        public UiToolStripMenuItem cMenuPianoFixedTriplet;
+        public UiToolStripMenuItem cMenuPianoFixedDotted;
+        public UiToolStripMenuItem cMenuPianoCopy;
+        public UiToolStripMenuItem cMenuPianoPaste;
+        public UiToolStripMenuItem cMenuPianoDelete;
+        public UiToolStripSeparator toolStripMenuItem16;
+        public UiToolStripMenuItem cMenuPianoSelectAll;
+        public UiToolStripMenuItem cMenuPianoSelectAllEvents;
+        public UiToolStripSeparator toolStripMenuItem17;
+        public UiToolStripMenuItem cMenuPianoImportLyric;
+        public UiToolStripMenuItem cMenuPianoExpressionProperty;
+        public UiToolStripMenuItem cMenuPianoQuantize04;
+        public UiToolStripMenuItem cMenuPianoQuantize08;
+        public UiToolStripMenuItem cMenuPianoQuantize16;
+        public UiToolStripMenuItem cMenuPianoQuantize32;
+        public UiToolStripMenuItem cMenuPianoQuantize64;
+        public UiToolStripMenuItem cMenuPianoQuantizeOff;
+        public UiToolStripSeparator toolStripMenuItem26;
+        public UiToolStripMenuItem cMenuPianoQuantizeTriplet;
+        public UiToolStripMenuItem menuFileRecent;
         public System.Windows.Forms.ToolTip toolTip;
-        public ToolStripMenuItem menuEditCut;
-        public ToolStripMenuItem menuEditCopy;
-        public ToolStripMenuItem menuEditPaste;
-        public ToolStripMenuItem menuEditDelete;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem19;
-        public ToolStripMenuItem menuEditAutoNormalizeMode;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem20;
-        public ToolStripMenuItem menuEditSelectAll;
-        public ToolStripMenuItem menuEditSelectAllEvents;
-        public ToolStripMenuItem menuTrackOn;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem21;
-        public ToolStripMenuItem menuTrackAdd;
-        public ToolStripMenuItem menuTrackCopy;
-        public ToolStripMenuItem menuTrackChangeName;
-        public ToolStripMenuItem menuTrackDelete;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem22;
-        public ToolStripMenuItem menuTrackRenderCurrent;
-        public ToolStripMenuItem menuTrackRenderAll;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem23;
-        public ToolStripMenuItem menuTrackOverlay;
-        public ContextMenuStrip cMenuTrackTab;
-        public ToolStripMenuItem cMenuTrackTabTrackOn;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem24;
-        public ToolStripMenuItem cMenuTrackTabAdd;
-        public ToolStripMenuItem cMenuTrackTabCopy;
-        public ToolStripMenuItem cMenuTrackTabChangeName;
-        public ToolStripMenuItem cMenuTrackTabDelete;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem25;
-        public ToolStripMenuItem cMenuTrackTabRenderCurrent;
-        public ToolStripMenuItem cMenuTrackTabRenderAll;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem27;
-        public ToolStripMenuItem cMenuTrackTabOverlay;
-        public ContextMenuStrip cMenuTrackSelector;
-        public ToolStripMenuItem cMenuTrackSelectorPointer;
-        public ToolStripMenuItem cMenuTrackSelectorPencil;
-        public ToolStripMenuItem cMenuTrackSelectorLine;
-        public ToolStripMenuItem cMenuTrackSelectorEraser;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem28;
-        public ToolStripMenuItem cMenuTrackSelectorUndo;
-        public ToolStripMenuItem cMenuTrackSelectorRedo;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem29;
-        public ToolStripMenuItem cMenuTrackSelectorCut;
-        public ToolStripMenuItem cMenuTrackSelectorCopy;
-        public ToolStripMenuItem cMenuTrackSelectorPaste;
-        public ToolStripMenuItem cMenuTrackSelectorDelete;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem31;
-        public ToolStripMenuItem cMenuTrackSelectorSelectAll;
-        public ToolStripMenuItem menuJobNormalize;
-        public ToolStripMenuItem menuJobInsertBar;
-        public ToolStripMenuItem menuJobDeleteBar;
-        public ToolStripMenuItem menuJobRandomize;
-        public ToolStripMenuItem menuJobConnect;
-        public ToolStripMenuItem menuJobLyric;
-        public ToolStripMenuItem menuJobRewire;
-        public ToolStripMenuItem menuLyricExpressionProperty;
-        public ToolStripMenuItem menuLyricPhonemeTransformation;
-        public ToolStripMenuItem menuLyricDictionary;
-        public ToolStripMenuItem menuHelpAbout;
-        public ToolStripMenuItem menuHelpDebug;
-        public ToolStripMenuItem menuFileExportWave;
-        public ToolStripMenuItem menuFileExportMidi;
-        public ToolStripMenuItem menuScript;
-        public ToolStripMenuItem menuHidden;
-        public ToolStripMenuItem menuHiddenEditLyric;
-        public ToolStripMenuItem menuHiddenEditFlipToolPointerPencil;
-        public ToolStripMenuItem menuHiddenEditFlipToolPointerEraser;
-        public ToolStripMenuItem menuHiddenVisualForwardParameter;
-        public ToolStripMenuItem menuHiddenVisualBackwardParameter;
-        public ToolStripMenuItem menuHiddenTrackNext;
-        public ToolStripMenuItem menuHiddenTrackBack;
-        public ToolStripMenuItem menuJobReloadVsti;
-        public ToolStripMenuItem cMenuPianoCurve;
-        public ToolStripMenuItem cMenuTrackSelectorCurve;
-        public TrackBarImpl trackBar;
-        public System.Windows.Forms.ToolBarButton stripBtnPointer;
-        public System.Windows.Forms.ToolBarButton stripBtnLine;
-        public System.Windows.Forms.ToolBarButton stripBtnPencil;
-        public System.Windows.Forms.ToolBarButton stripBtnEraser;
-        public System.Windows.Forms.ToolBarButton stripBtnGrid;
-        public System.Windows.Forms.ToolBarButton stripBtnMoveTop;
-        public System.Windows.Forms.ToolBarButton stripBtnRewind;
-        public System.Windows.Forms.ToolBarButton stripBtnForward;
-        public System.Windows.Forms.ToolBarButton stripBtnMoveEnd;
-        public System.Windows.Forms.ToolBarButton stripBtnPlay;
-        public System.Windows.Forms.ToolBarButton stripBtnScroll;
-        public System.Windows.Forms.ToolBarButton stripBtnLoop;
-        public System.Windows.Forms.ToolBarButton stripBtnCurve;
-        public System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        public System.Windows.Forms.ContextMenu stripDDBtnQuantize;
+        public UiToolStripMenuItem menuEditCut;
+        public UiToolStripMenuItem menuEditCopy;
+        public UiToolStripMenuItem menuEditPaste;
+        public UiToolStripMenuItem menuEditDelete;
+        public UiToolStripSeparator toolStripMenuItem19;
+        public UiToolStripMenuItem menuEditAutoNormalizeMode;
+        public UiToolStripSeparator toolStripMenuItem20;
+        public UiToolStripMenuItem menuEditSelectAll;
+        public UiToolStripMenuItem menuEditSelectAllEvents;
+        public UiToolStripMenuItem menuTrackOn;
+        public UiToolStripSeparator toolStripMenuItem21;
+        public UiToolStripMenuItem menuTrackAdd;
+        public UiToolStripMenuItem menuTrackCopy;
+        public UiToolStripMenuItem menuTrackChangeName;
+        public UiToolStripMenuItem menuTrackDelete;
+        public UiToolStripSeparator toolStripMenuItem22;
+        public UiToolStripMenuItem menuTrackRenderCurrent;
+        public UiToolStripMenuItem menuTrackRenderAll;
+        public UiToolStripSeparator toolStripMenuItem23;
+        public UiToolStripMenuItem menuTrackOverlay;
+        public UiContextMenuStrip cMenuTrackTab;
+        public UiToolStripMenuItem cMenuTrackTabTrackOn;
+        public UiToolStripSeparator toolStripMenuItem24;
+        public UiToolStripMenuItem cMenuTrackTabAdd;
+        public UiToolStripMenuItem cMenuTrackTabCopy;
+        public UiToolStripMenuItem cMenuTrackTabChangeName;
+        public UiToolStripMenuItem cMenuTrackTabDelete;
+        public UiToolStripSeparator toolStripMenuItem25;
+        public UiToolStripMenuItem cMenuTrackTabRenderCurrent;
+        public UiToolStripMenuItem cMenuTrackTabRenderAll;
+        public UiToolStripSeparator toolStripMenuItem27;
+        public UiToolStripMenuItem cMenuTrackTabOverlay;
+        public UiContextMenuStrip cMenuTrackSelector;
+        public UiToolStripMenuItem cMenuTrackSelectorPointer;
+        public UiToolStripMenuItem cMenuTrackSelectorPencil;
+        public UiToolStripMenuItem cMenuTrackSelectorLine;
+        public UiToolStripMenuItem cMenuTrackSelectorEraser;
+        public UiToolStripSeparator toolStripMenuItem28;
+        public UiToolStripMenuItem cMenuTrackSelectorUndo;
+        public UiToolStripMenuItem cMenuTrackSelectorRedo;
+        public UiToolStripSeparator toolStripMenuItem29;
+        public UiToolStripMenuItem cMenuTrackSelectorCut;
+        public UiToolStripMenuItem cMenuTrackSelectorCopy;
+        public UiToolStripMenuItem cMenuTrackSelectorPaste;
+        public UiToolStripMenuItem cMenuTrackSelectorDelete;
+        public UiToolStripSeparator toolStripMenuItem31;
+        public UiToolStripMenuItem cMenuTrackSelectorSelectAll;
+        public UiToolStripMenuItem menuJobNormalize;
+        public UiToolStripMenuItem menuJobInsertBar;
+        public UiToolStripMenuItem menuJobDeleteBar;
+        public UiToolStripMenuItem menuJobRandomize;
+        public UiToolStripMenuItem menuJobConnect;
+        public UiToolStripMenuItem menuJobLyric;
+        public UiToolStripMenuItem menuJobRewire;
+        public UiToolStripMenuItem menuLyricExpressionProperty;
+        public UiToolStripMenuItem menuLyricPhonemeTransformation;
+        public UiToolStripMenuItem menuLyricDictionary;
+        public UiToolStripMenuItem menuHelpAbout;
+        public UiToolStripMenuItem menuHelpDebug;
+        public UiToolStripMenuItem menuFileExportWave;
+        public UiToolStripMenuItem menuFileExportMidi;
+        public UiToolStripMenuItem menuScript;
+        public UiToolStripMenuItem menuHidden;
+        public UiToolStripMenuItem menuHiddenEditLyric;
+        public UiToolStripMenuItem menuHiddenEditFlipToolPointerPencil;
+        public UiToolStripMenuItem menuHiddenEditFlipToolPointerEraser;
+        public UiToolStripMenuItem menuHiddenVisualForwardParameter;
+        public UiToolStripMenuItem menuHiddenVisualBackwardParameter;
+        public UiToolStripMenuItem menuHiddenTrackNext;
+        public UiToolStripMenuItem menuHiddenTrackBack;
+        public UiToolStripMenuItem menuJobReloadVsti;
+        public UiToolStripMenuItem cMenuPianoCurve;
+        public UiToolStripMenuItem cMenuTrackSelectorCurve;
+        public UiTrackBar trackBar;
+        public UiToolBarButton stripBtnPointer;
+        public UiToolBarButton stripBtnLine;
+        public UiToolBarButton stripBtnPencil;
+        public UiToolBarButton stripBtnEraser;
+        public UiToolBarButton stripBtnGrid;
+        public UiToolBarButton stripBtnMoveTop;
+        public UiToolBarButton stripBtnRewind;
+        public UiToolBarButton stripBtnForward;
+        public UiToolBarButton stripBtnMoveEnd;
+        public UiToolBarButton stripBtnPlay;
+        public UiToolBarButton stripBtnScroll;
+        public UiToolBarButton stripBtnLoop;
+        public UiToolBarButton stripBtnCurve;
+        public UiToolStripSeparator toolStripSeparator2;
+        public UiContextMenu stripDDBtnQuantize;
         public System.Windows.Forms.MenuItem stripDDBtnQuantize04;
         public System.Windows.Forms.MenuItem stripDDBtnQuantize08;
         public System.Windows.Forms.MenuItem stripDDBtnQuantize16;
         public System.Windows.Forms.MenuItem stripDDBtnQuantize32;
         public System.Windows.Forms.MenuItem stripDDBtnQuantize64;
         public System.Windows.Forms.MenuItem stripDDBtnQuantizeOff;
-        public System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        public UiToolStripSeparator toolStripSeparator3;
         public System.Windows.Forms.MenuItem stripDDBtnQuantizeTriplet;
-        public System.Windows.Forms.ToolBarButton stripBtnStartMarker;
-        public System.Windows.Forms.ToolBarButton stripBtnEndMarker;
+        public UiToolBarButton stripBtnStartMarker;
+        public UiToolBarButton stripBtnEndMarker;
         public UiHScrollBar hScroll { get; set; }
         public VScrollBarImpl vScroll;
-        public ToolStripMenuItem menuLyricVibratoProperty;
-        public ToolStripMenuItem cMenuPianoVibratoProperty;
-        public ToolStripMenuItem menuScriptUpdate;
-        public ToolStripMenuItem menuSettingGameControler;
+        public UiToolStripMenuItem menuLyricVibratoProperty;
+        public UiToolStripMenuItem cMenuPianoVibratoProperty;
+        public UiToolStripMenuItem menuScriptUpdate;
+        public UiToolStripMenuItem menuSettingGameControler;
         public ToolStripStatusLabel stripLblGameCtrlMode;
-        public System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
-        public ToolStripMenuItem menuSettingGameControlerSetting;
-        public ToolStripMenuItem menuSettingGameControlerLoad;
+        public UiToolStripSeparator toolStripSeparator10;
+        public UiToolStripMenuItem menuSettingGameControlerSetting;
+        public UiToolStripMenuItem menuSettingGameControlerLoad;
         public System.Windows.Forms.MenuItem stripDDBtnQuantize128;
-        public ToolStripMenuItem menuSettingPositionQuantize128;
-        public ToolStripMenuItem cMenuPianoQuantize128;
-        public ToolStripMenuItem cMenuPianoFixed128;
-        public ToolStripMenuItem menuVisualWaveform;
+        public UiToolStripMenuItem menuSettingPositionQuantize128;
+        public UiToolStripMenuItem cMenuPianoQuantize128;
+        public UiToolStripMenuItem cMenuPianoFixed128;
+        public UiToolStripMenuItem menuVisualWaveform;
         private WaveformZoomUi panelWaveformZoom;
-        public ToolStripMenuItem cMenuTrackSelectorDeleteBezier;
+        public UiToolStripMenuItem cMenuTrackSelectorDeleteBezier;
         public ToolStripStatusLabel stripLblMidiIn;
-        public System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
-        //public ToolStripMenuItem menuJobRealTime;
-        public ToolStripMenuItem cMenuTrackTabRenderer;
-        public ToolStripMenuItem cMenuTrackTabRendererVOCALOID1;
-        public ToolStripMenuItem cMenuTrackTabRendererVOCALOID2;
-        public ToolStripMenuItem cMenuTrackTabRendererUtau;
-        private System.Windows.Forms.ToolStripMenuItem cMenuTrackTabRendererAquesTone2;
-        public ToolStripMenuItem menuVisualPitchLine;
-        public ToolStripMenuItem menuFileImportMidi;
+        public UiToolStripSeparator toolStripSeparator11;
+        //public UiToolStripMenuItem menuJobRealTime;
+        public UiToolStripMenuItem cMenuTrackTabRenderer;
+        public UiToolStripMenuItem cMenuTrackTabRendererVOCALOID1;
+        public UiToolStripMenuItem cMenuTrackTabRendererVOCALOID2;
+        public UiToolStripMenuItem cMenuTrackTabRendererUtau;
+        private UiToolStripMenuItem cMenuTrackTabRendererAquesTone2;
+        public UiToolStripMenuItem menuVisualPitchLine;
+        public UiToolStripMenuItem menuFileImportMidi;
         public ToolStripStatusLabel toolStripStatusLabel1;
         public ToolStripStatusLabel toolStripStatusLabel2;
         public ToolBarButton stripBtnFileSave;
@@ -3168,63 +3177,63 @@ namespace cadencii
         public ToolBarButton stripBtnFileNew;
         public ToolBarButton stripBtnUndo;
         public ToolBarButton stripBtnRedo;
-        public ToolStripMenuItem cMenuTrackSelectorPaletteTool;
-        public ToolStripMenuItem cMenuPianoPaletteTool;
-        public System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
-        public System.Windows.Forms.ToolStripSeparator toolStripSeparator15;
-        public ToolStripMenuItem menuSettingPaletteTool;
-        public ToolStripMenuItem menuTrackRenderer;
-        public ToolStripMenuItem menuTrackRendererVOCALOID1;
-        public ToolStripMenuItem menuTrackRendererVOCALOID2;
-        public ToolStripMenuItem menuTrackRendererUtau;
-        public ToolStripMenuItem menuFileImportVsq;
-        public ToolStripMenuItem menuSettingShortcut;
-        public ToolStripMenuItem menuVisualProperty;
-        public ToolStripMenuItem menuFileOpenVsq;
-        public ToolStripMenuItem menuFileOpenUst;
-        public ToolStripMenuItem menuSettingGameControlerRemove;
-        public ToolStripMenuItem menuHiddenCopy;
-        public ToolStripMenuItem menuHiddenPaste;
-        public ToolStripMenuItem menuHiddenCut;
+        public UiToolStripMenuItem cMenuTrackSelectorPaletteTool;
+        public UiToolStripMenuItem cMenuPianoPaletteTool;
+        public UiToolStripSeparator toolStripSeparator14;
+        public UiToolStripSeparator toolStripSeparator15;
+        public UiToolStripMenuItem menuSettingPaletteTool;
+        public UiToolStripMenuItem menuTrackRenderer;
+        public UiToolStripMenuItem menuTrackRendererVOCALOID1;
+        public UiToolStripMenuItem menuTrackRendererVOCALOID2;
+        public UiToolStripMenuItem menuTrackRendererUtau;
+        public UiToolStripMenuItem menuFileImportVsq;
+        public UiToolStripMenuItem menuSettingShortcut;
+        public UiToolStripMenuItem menuVisualProperty;
+        public UiToolStripMenuItem menuFileOpenVsq;
+        public UiToolStripMenuItem menuFileOpenUst;
+        public UiToolStripMenuItem menuSettingGameControlerRemove;
+        public UiToolStripMenuItem menuHiddenCopy;
+        public UiToolStripMenuItem menuHiddenPaste;
+        public UiToolStripMenuItem menuHiddenCut;
         public ToolStrip toolStripBottom;
         public cadencii.apputil.BSplitContainer splitContainerProperty;
-        public ToolStripMenuItem menuVisualOverview;
+        public UiToolStripMenuItem menuVisualOverview;
         public PictOverview panelOverview;
         public cadencii.apputil.BSplitContainer splitContainer1;
-        public System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
-        public ToolStripMenuItem menuTrackBgm;
-        public ToolStripMenuItem menuTrackRendererVCNT;
-        //public ToolStripMenuItem menuTrackManager;
-        public ToolStripMenuItem cMenuTrackTabRendererStraight;
+        public UiToolStripSeparator toolStripMenuItem4;
+        public UiToolStripMenuItem menuTrackBgm;
+        public UiToolStripMenuItem menuTrackRendererVCNT;
+        //public UiToolStripMenuItem menuTrackManager;
+        public UiToolStripMenuItem cMenuTrackTabRendererStraight;
         public PictPianoRoll pictPianoRoll { get; set; }
         public TrackSelector trackSelector;
-        public PictureBoxImpl pictKeyLengthSplitter;
-        private ToolStripMenuItem menuTrackRendererAquesTone;
-        private ToolStripMenuItem cMenuTrackTabRendererAquesTone;
-        private ToolStripMenuItem menuVisualPluginUi;
-        private ToolStripMenuItem menuVisualPluginUiAquesTone;
-        private ToolStripMenuItem menuVisualPluginUiVocaloid1;
-        private ToolStripMenuItem menuVisualPluginUiVocaloid2;
-        private System.Windows.Forms.ToolStripMenuItem menuTrackRendererAquesTone2;
-        private ToolStripMenuItem menuVisualIconPalette;
-        private ToolStripMenuItem menuFileExportMusicXml;
-        public ToolStripMenuItem menuHiddenSelectForward;
-        public ToolStripMenuItem menuHiddenSelectBackward;
-        public ToolStripMenuItem menuHiddenMoveUp;
-        public ToolStripMenuItem menuHiddenMoveDown;
-        public ToolStripMenuItem menuHiddenMoveLeft;
-        public ToolStripMenuItem menuHiddenMoveRight;
-        public ToolStripMenuItem menuHiddenLengthen;
-        public ToolStripMenuItem menuHiddenShorten;
-        public ToolStripMenuItem menuHiddenGoToStartMarker;
-        public ToolStripMenuItem menuHiddenGoToEndMarker;
-        public ToolStripMenuItem menuHiddenPlayFromStartMarker;
-        public ToolStripMenuItem menuHiddenFlipCurveOnPianorollMode;
+        public UiPictureBox pictKeyLengthSplitter;
+        private UiToolStripMenuItem menuTrackRendererAquesTone;
+        private UiToolStripMenuItem cMenuTrackTabRendererAquesTone;
+        private UiToolStripMenuItem menuVisualPluginUi;
+        private UiToolStripMenuItem menuVisualPluginUiAquesTone;
+        private UiToolStripMenuItem menuVisualPluginUiVocaloid1;
+        private UiToolStripMenuItem menuVisualPluginUiVocaloid2;
+        private UiToolStripMenuItem menuTrackRendererAquesTone2;
+        private UiToolStripMenuItem menuVisualIconPalette;
+        private UiToolStripMenuItem menuFileExportMusicXml;
+        public UiToolStripMenuItem menuHiddenSelectForward;
+        public UiToolStripMenuItem menuHiddenSelectBackward;
+        public UiToolStripMenuItem menuHiddenMoveUp;
+        public UiToolStripMenuItem menuHiddenMoveDown;
+        public UiToolStripMenuItem menuHiddenMoveLeft;
+        public UiToolStripMenuItem menuHiddenMoveRight;
+        public UiToolStripMenuItem menuHiddenLengthen;
+        public UiToolStripMenuItem menuHiddenShorten;
+        public UiToolStripMenuItem menuHiddenGoToStartMarker;
+        public UiToolStripMenuItem menuHiddenGoToEndMarker;
+        public UiToolStripMenuItem menuHiddenPlayFromStartMarker;
+        public UiToolStripMenuItem menuHiddenFlipCurveOnPianorollMode;
         //public CircuitView pictCircuit;
-        private ToolStripMenuItem menuFileExportUst;
-        private ToolStripMenuItem menuHelpLog;
-        private ToolStripMenuItem menuHelpLogSwitch;
-        private ToolStripMenuItem menuHelpLogOpen;
+        private UiToolStripMenuItem menuFileExportUst;
+        private UiToolStripMenuItem menuHelpLog;
+        private UiToolStripMenuItem menuHelpLogSwitch;
+        private UiToolStripMenuItem menuHelpLogOpen;
         private Rebar rebar;
         private RebarBand bandFile;
         private RebarBand bandPosition;
@@ -3232,45 +3241,45 @@ namespace cadencii
         private RebarBand bandTool;
         public cadencii.apputil.BSplitContainer splitContainer2;
         private UiPanel panel1;
-        private ToolBarImpl toolBarFile;
+        private UiToolBar toolBarFile;
         private System.Windows.Forms.ImageList imageListFile;
-        private System.Windows.Forms.ToolBarButton toolBarButton1;
-        private System.Windows.Forms.ToolBarButton toolBarButton2;
-        private ToolBarImpl toolBarTool;
-        private System.Windows.Forms.ToolBarButton toolBarButton3;
+        private UiToolBarButton toolBarButton1;
+        private UiToolBarButton toolBarButton2;
+        private UiToolBar toolBarTool;
+        private UiToolBarButton toolBarButton3;
         private System.Windows.Forms.ImageList imageListTool;
-        private ToolBarImpl toolBarPosition;
-        private System.Windows.Forms.ToolBarButton toolBarButton4;
+        private UiToolBar toolBarPosition;
+        private UiToolBarButton toolBarButton4;
         private System.Windows.Forms.ImageList imageListPosition;
-        private ToolBarImpl toolBarMeasure;
-        private System.Windows.Forms.ToolBarButton stripDDBtnQuantizeParent;
+        private UiToolBar toolBarMeasure;
+        private UiToolBarButton stripDDBtnQuantizeParent;
         private System.Windows.Forms.MenuItem menuItem2;
-        private System.Windows.Forms.ToolBarButton toolBarButton5;
+        private UiToolBarButton toolBarButton5;
         private System.Windows.Forms.ImageList imageListMeasure;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.ImageList imageListMenu;
-        public ToolStripMenuItem menuFileExportVsq;
-        private ToolStripMenuItem menuFileExportVxt;
-        public ToolStripMenuItem menuLyricCopyVibratoToPreset;
-        public ToolStripMenuItem menuSettingVibratoPreset;
-        public ToolStripMenuItem menuSettingSequence;
-        public ToolStripMenuItem menuHiddenPrintPoToCSV;
-        public ToolStripMenuItem menuFileExportParaWave;
-        public ToolStripMenuItem menuFileImportUst;
+        public UiToolStripMenuItem menuFileExportVsq;
+        private UiToolStripMenuItem menuFileExportVxt;
+        public UiToolStripMenuItem menuLyricCopyVibratoToPreset;
+        public UiToolStripMenuItem menuSettingVibratoPreset;
+        public UiToolStripMenuItem menuSettingSequence;
+        public UiToolStripMenuItem menuHiddenPrintPoToCSV;
+        public UiToolStripMenuItem menuFileExportParaWave;
+        public UiToolStripMenuItem menuFileImportUst;
         private System.Windows.Forms.ToolStripButton stripBtnStepSequencer;
-        public ContextMenuStrip cMenuPositionIndicator;
-        public ToolStripMenuItem cMenuPositionIndicatorStartMarker;
-        public ToolStripMenuItem cMenuPositionIndicatorEndMarker;
-        public ToolStripMenuItem menuHelpManual;
+        public UiContextMenuStrip cMenuPositionIndicator;
+        public UiToolStripMenuItem cMenuPositionIndicatorStartMarker;
+        public UiToolStripMenuItem cMenuPositionIndicatorEndMarker;
+        public UiToolStripMenuItem menuHelpManual;
         public WaveView waveView;
-        public ToolStripMenuItem menuFileRecentClear;
-        public ToolStripMenuItem menuLyricApplyUtauParameters;
-        private System.Windows.Forms.ToolStripMenuItem menuVisualPluginUiAquesTone2;
-        private System.Windows.Forms.ToolStripMenuItem menuFileExportVsqx;
-        private System.Windows.Forms.ToolStripMenuItem menuTools;
-        private System.Windows.Forms.ToolStripMenuItem menuToolsCreateVConnectSTANDDb;
-        private ToolStripMenuItem menuHelpCheckForUpdates;
+        public UiToolStripMenuItem menuFileRecentClear;
+        public UiToolStripMenuItem menuLyricApplyUtauParameters;
+        private UiToolStripMenuItem menuVisualPluginUiAquesTone2;
+        private UiToolStripMenuItem menuFileExportVsqx;
+        private UiToolStripMenuItem menuTools;
+        private UiToolStripMenuItem menuToolsCreateVConnectSTANDDb;
+        private UiToolStripMenuItem menuHelpCheckForUpdates;
     }
 }

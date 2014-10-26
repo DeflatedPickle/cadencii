@@ -42,7 +42,7 @@ namespace cadencii.apputil
         /// </summary>
         public static bool isApplyFontRecurseEnabled = true;
 
-        public static void applyContextMenuFontRecurse(ContextMenuStrip item, cadencii.java.awt.Font font)
+        public static void applyContextMenuFontRecurse(UiContextMenuStrip item, cadencii.java.awt.Font font)
         {
             if (!isApplyFontRecurseEnabled) {
                 return;
@@ -53,7 +53,7 @@ namespace cadencii.apputil
             }
         }
 
-        public static void applyToolStripFontRecurse(ToolStripItem item, cadencii.java.awt.Font font)
+        public static void applyToolStripFontRecurse(UiToolStripItem item, cadencii.java.awt.Font font)
         {
             if (!isApplyFontRecurseEnabled) {
                 return;
@@ -183,7 +183,7 @@ namespace cadencii.apputil
         /// </summary>
         /// <param name="c"></param>
         /// <param name="font"></param>
-        public static void applyFontRecurse(Control c, cadencii.java.awt.Font font)
+        public static void applyFontRecurse(UiControl c, cadencii.java.awt.Font font)
         {
             if (!isApplyFontRecurseEnabled) {
                 return;

@@ -11,7 +11,7 @@
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -338,6 +338,13 @@
     <EmbeddedResource Include="ui\forms\PreferenceImpl.resx">
       <DependentUpon>PreferenceImpl.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="ui\controls\ContextMenuStripImpl.cs" />
+    <Compile Include="ui\winforms\ToolStripMenuItemImpl.cs" />
+    <Compile Include="ui\winforms\ToolStripSeparatorImpl.cs" />
+    <Compile Include="ui\winforms\Extensions.cs" />
+    <Compile Include="ui\winforms\MenuStripImpl.cs" />
+    <Compile Include="ui\winforms\ToolBarButtonImpl.cs" />
+    <Compile Include="ui\winforms\ContextMenuImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />

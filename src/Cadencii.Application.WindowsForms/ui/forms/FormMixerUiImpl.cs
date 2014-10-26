@@ -530,8 +530,8 @@ namespace cadencii
         private void InitializeComponent()
         {
             this.menuMain = new MenuStrip();
-            this.menuVisual = new ToolStripMenuItem();
-            this.menuVisualReturn = new ToolStripMenuItem();
+            this.menuVisual = new ToolStripMenuItemImpl();
+            this.menuVisualReturn = new ToolStripMenuItemImpl();
             this.panelSlaves = new UserControl();
             this.hScroll = new HScrollBar();
             this.volumeMaster = new cadencii.VolumeTrackerImpl();

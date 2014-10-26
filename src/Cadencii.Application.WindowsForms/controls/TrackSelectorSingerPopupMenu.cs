@@ -16,7 +16,7 @@ using cadencii.windows.forms;
 namespace cadencii
 {
 
-    public class TrackSelectorSingerPopupMenu : System.Windows.Forms.ContextMenuStrip
+    public class TrackSelectorSingerPopupMenu : ContextMenuStripImpl
     {
         public bool SingerChangeExists;
         public int Clock;

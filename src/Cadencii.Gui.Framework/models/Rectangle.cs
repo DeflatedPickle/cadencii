@@ -23,41 +23,55 @@ namespace cadencii.java.awt
     {
         public int Height;
         public int Width;
-        public int x;
-        public int y;
+        public int X;
+        public int Y;
+
+
+        	public int Left {
+			get { return X; }
+		}
+		public int Right {
+			get { return X + Width; }
+		}
+		public int Top {
+			get { return Y; }
+		}
+		public int Bottom {
+			get { return Y + Height; }
+		}
 
         public Rectangle(int width_, int height_)
         {
-            x = 0;
-            y = 0;
+            X = 0;
+            Y = 0;
             Width = width_;
             Height = height_;
         }
 
         public Rectangle(int x_, int y_, int width_, int height_)
         {
-            x = x_;
-            y = y_;
+            X = x_;
+            Y = y_;
             Width = width_;
             Height = height_;
         }
 
         public Rectangle(Rectangle r)
         {
-            x = r.x;
-            y = r.y;
+            X = r.X;
+            Y = r.Y;
             Width = r.Width;
             Height = r.Height;
         }
 
         public bool Contains (Point p)
 		{
-			return x <= p.X && p.X < x + Width && y <= p.Y && p.Y < y + Height;
+			return X <= p.X && p.X < X + Width && Y <= p.Y && p.Y < Y + Height;
 		}
 
         public override string ToString()
         {
-            return "{x=" + x + ", y=" + y + ", width=" + Width + ", height=" + Height + "}";
+            return "{x=" + X + ", y=" + Y + ", width=" + Width + ", height=" + Height + "}";
         }
     }
 

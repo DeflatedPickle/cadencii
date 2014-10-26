@@ -66,162 +66,6 @@ namespace cadencii
 			onMouseUp (sender, e.ToWF ());
 		}
 
-        #region constants and internal enums
-        private enum MouseDownMode
-        {
-            NONE,
-            CURVE_EDIT,
-            TRACK_LIST,
-            SINGER_LIST,
-            /// <summary>
-            /// マウス長押しによるVELの編集。マウスがDownされ、MouseHoverが発生するのを待っている状態
-            /// </summary>
-            VEL_WAIT_HOVER,
-            /// <summary>
-            /// マウス長押しによるVELの編集。MouseHoverが発生し、編集している状態
-            /// </summary>
-            VEL_EDIT,
-            /// <summary>
-            /// ベジエカーブのデータ点または制御点を移動させているモード
-            /// </summary>
-            BEZIER_MODE,
-            /// <summary>
-            /// ベジエカーブのデータ点の範囲選択をするモード
-            /// </summary>
-            BEZIER_SELECT,
-            /// <summary>
-            /// ベジエカーブのデータ点を新規に追加し、マウスドラッグにより制御点の位置を変えているモード
-            /// </summary>
-            BEZIER_ADD_NEW,
-            /// <summary>
-            /// 既存のベジエカーブのデータ点を追加し、マウスドラッグにより制御点の位置を変えているモード
-            /// </summary>
-            BEZIER_EDIT,
-            /// <summary>
-            ///  エンベロープのデータ点を移動させているモード
-            /// </summary>
-            ENVELOPE_MOVE,
-            /// <summary>
-            /// 先行発音を移動させているモード
-            /// </summary>
-            PRE_UTTERANCE_MOVE,
-            /// <summary>
-            /// オーバーラップを移動させているモード
-            /// </summary>
-            OVERLAP_MOVE,
-            /// <summary>
-            /// データ点を移動しているモード
-            /// </summary>
-            POINT_MOVE,
-        }
-
-        /// <summary>
-        /// ベジエ曲線の色
-        /// </summary>
-		private static readonly Color COLOR_BEZIER_CURVE = cadencii.java.awt.Colors.Navy;
-        /// <summary>
-        /// ベジエ曲線の補助線の色
-        /// </summary>
-        private static readonly Color COLOR_BEZIER_AUXILIARY = cadencii.java.awt.Colors.Orange;
-        /// <summary>
-        /// ベジエ曲線の制御点の色
-        /// </summary>
-        private static readonly Color COLOR_BEZIER_DOT_NORMAL = new Color(237, 107, 158);
-        /// <summary>
-        /// ベジエ曲線の制御点の枠色
-        /// </summary>
-        private static readonly Color COLOR_BEZIER_DOT_NORMAL_DARK = new Color(153, 19, 70);
-        /// <summary>
-        /// ベジエ曲線のデータ点の色
-        /// </summary>
-        private static readonly Color COLOR_BEZIER_DOT_BASE = new Color(125, 198, 34);
-        /// <summary>
-        /// ベジエ曲線のデータ点の枠色
-        /// </summary>
-        private static readonly Color COLOR_BEZIER_DOT_BASE_DARK = new Color(62, 99, 17);
-
-        /// <summary>
-        /// データ点のハイライト色
-        /// </summary>
-		private static readonly Color COLOR_DOT_HILIGHT = cadencii.java.awt.Colors.Coral;
-        private static readonly Color COLOR_A244R255G023B012 = new Color(255, 23, 12, 244);
-        private static readonly Color COLOR_A144R255G255B255 = new Color(255, 255, 255, 144);
-        private static readonly Color COLOR_A072R255G255B255 = new Color(255, 255, 255, 72);
-        private static readonly Color COLOR_A127R008G166B172 = new Color(8, 166, 172, 127);
-        private static readonly Color COLOR_A098R000G000B000 = new Color(0, 0, 0, 98);
-        /// <summary>
-        /// 歌手変更を表すボックスの枠線のハイライト色
-        /// </summary>
-        private static readonly Color COLOR_SINGERBOX_BORDER_HILIGHT = new Color(246, 251, 10);
-        /// <summary>
-        /// 歌手変更を表すボックスの枠線の色
-        /// </summary>
-        private static readonly Color COLOR_SINGERBOX_BORDER = new Color(182, 182, 182);
-        /// <summary>
-        /// ビブラートコントロールカーブの、ビブラート以外の部分を塗りつぶす時の色
-        /// </summary>
-        private static readonly Color COLOR_VIBRATO_SHADOW = new Color(0, 0, 0, 127);
-        /// <summary>
-        /// マウスの軌跡を描くときの塗りつぶし色
-        /// </summary>
-        private static readonly Color COLOR_MOUSE_TRACER = new Color(8, 166, 172, 127);
-        /// <summary>
-        /// ベロシティを画面に描くときの，棒グラフの幅(pixel)
-        /// </summary>
-        public const int VEL_BAR_WIDTH = 8;
-        /// <summary>
-        /// パフォーマンスカウンタ用バッファの容量
-        /// </summary>
-        const int NUM_PCOUNTER = 50;
-        /// <summary>
-        /// コントロールの下辺から、TRACKタブまでのオフセット(px)
-        /// </summary>
-        public const int OFFSET_TRACK_TAB = 19;
-        const int FOOTER = 7;
-        /// <summary>
-        /// コントロールの上端と、グラフのY軸最大値位置との距離
-        /// </summary>
-        public const int HEADER = 8;
-        const int BUF_LEN = 512;
-        /// <summary>
-        /// 歌手変更イベントの表示矩形の幅
-        /// </summary>
-        const int SINGER_ITEM_WIDTH = 66;
-        /// <summary>
-        /// RENDERボタンの幅(px)
-        /// </summary>
-        const int PX_WIDTH_RENDER = 10;
-        /// <summary>
-        /// カーブ制御点の幅（実際は_DOT_WID * 2 + 1ピクセルで描画される）
-        /// </summary>
-        const int DOT_WID = 3;
-        /// <summary>
-        /// カーブの種類を表す部分の，1個あたりの高さ（ピクセル，余白を含む）
-        /// TrackSelectorの推奨表示高さは，HEIGHT_WITHOUT_CURVE + UNIT_HEIGHT_PER_CURVE * (カーブの個数)となる
-        /// </summary>
-        const int UNIT_HEIGHT_PER_CURVE = 18;
-        /// <summary>
-        /// カーブの種類を除いた部分の高さ（ピクセル）．
-        /// TrackSelectorの推奨表示高さは，HEIGHT_WITHOUT_CURVE + UNIT_HEIGHT_PER_CURVE * (カーブの個数)となる
-        /// </summary>
-        const int HEIGHT_WITHOUT_CURVE = OFFSET_TRACK_TAB * 2 + UNIT_HEIGHT_PER_CURVE;
-        /// <summary>
-        /// トラックの名前表示部分の最大表示幅（ピクセル）
-        /// </summary>
-        const int TRACK_SELECTOR_MAX_WIDTH = 80;
-        /// <summary>
-        /// 先行発音を表示する旗を描画する位置のy座標
-        /// </summary>
-        const int OFFSET_PRE = 15;
-        /// <summary>
-        /// オーバーラップを表示する旗を描画する位置のy座標
-        /// </summary>
-        const int OFFSET_OVL = 40;
-        /// <summary>
-        /// 旗の上下に追加するスペース(ピクセル)
-        /// </summary>
-        const int FLAG_SPACE = 2;
-        #endregion
 
         /// <summary>
         /// 現在最前面に表示されているカーブ
@@ -582,7 +426,7 @@ namespace cadencii
 
         public void setBounds(cadencii.java.awt.Rectangle rc)
         {
-            base.Bounds = new System.Drawing.Rectangle(rc.x, rc.y, rc.Width, rc.Height);
+            base.Bounds = new System.Drawing.Rectangle(rc.X, rc.Y, rc.Width, rc.Height);
         }
 
         public cadencii.java.awt.Cursor getCursor()
@@ -1146,13 +990,13 @@ namespace cadencii
                             new Rectangle(x_at_left, ycoord,
                                            SINGER_ITEM_WIDTH, OFFSET_TRACK_TAB - 2);
 						g.setColor(cadencii.java.awt.Colors.LightGray);
-                        g.fillRect(rc.x, rc.y, rc.Width, rc.Height);
+                        g.fillRect(rc.X, rc.Y, rc.Width, rc.Height);
                         g.setColor(COLOR_SINGERBOX_BORDER);
-                        g.drawRect(rc.x, rc.y, rc.Width, rc.Height);
+                        g.drawRect(rc.X, rc.Y, rc.Width, rc.Height);
                         g.setColor(brs_string);
                         g.drawString(
                             singer_at_left.ID.IconHandle.IDS,
-                            rc.x, rc.y + OFFSET_TRACK_TAB / 2 - EditorConfig.baseFont8OffsetHeight);
+                            rc.X, rc.Y + OFFSET_TRACK_TAB / 2 - EditorConfig.baseFont8OffsetHeight);
                     }
 
                     // 歌手設定を順に描画
@@ -1176,13 +1020,13 @@ namespace cadencii
                         } else {
                             g.setColor(cadencii.java.awt.Colors.White);
                         }
-                        g.fillRect(rc.x, rc.y, rc.Width, rc.Height);
+                        g.fillRect(rc.X, rc.Y, rc.Width, rc.Height);
                         g.setColor(COLOR_SINGERBOX_BORDER);
-                        g.drawRect(rc.x, rc.y, rc.Width, rc.Height);
+                        g.drawRect(rc.X, rc.Y, rc.Width, rc.Height);
                         g.setColor(brs_string);
                         g.drawString(
                             singer_handle.IDS,
-                            rc.x, rc.y + OFFSET_TRACK_TAB / 2 - EditorConfig.baseFont8OffsetHeight);
+                            rc.X, rc.Y + OFFSET_TRACK_TAB / 2 - EditorConfig.baseFont8OffsetHeight);
                     }
                 }
                 g.setClip(last);
@@ -1488,15 +1332,15 @@ namespace cadencii
                             }
                         } else if (tool == EditTool.ERASER || tool == EditTool.ARROW) {
                             if (mMouseDownMode == MouseDownMode.CURVE_EDIT && mMouseMoved && EditorManager.mCurveSelectingRectangle.Width != 0) {
-                                int xini = EditorManager.xCoordFromClocks(EditorManager.mCurveSelectingRectangle.x);
-                                int xend = EditorManager.xCoordFromClocks(EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.Width);
+                                int xini = EditorManager.xCoordFromClocks(EditorManager.mCurveSelectingRectangle.X);
+                                int xend = EditorManager.xCoordFromClocks(EditorManager.mCurveSelectingRectangle.X + EditorManager.mCurveSelectingRectangle.Width);
                                 int x_start = Math.Min(xini, xend);
                                 if (x_start < key_width) {
                                     x_start = key_width;
                                 }
                                 int x_end = Math.Max(xini, xend);
-                                int yini = yCoordFromValue(EditorManager.mCurveSelectingRectangle.y);
-                                int yend = yCoordFromValue(EditorManager.mCurveSelectingRectangle.y + EditorManager.mCurveSelectingRectangle.Height);
+                                int yini = yCoordFromValue(EditorManager.mCurveSelectingRectangle.Y);
+                                int yend = yCoordFromValue(EditorManager.mCurveSelectingRectangle.Y + EditorManager.mCurveSelectingRectangle.Height);
                                 int y_start = Math.Min(yini, yend);
                                 int y_end = Math.Max(yini, yend);
                                 if (y_start < 8) y_start = 8;
@@ -1549,12 +1393,12 @@ namespace cadencii
                         Rectangle rc = getRectFromCurveType(curve);
                         if (curve.equals(mSelectedCurve) || curve.equals(mLastSelectedCurve)) {
                             g.setColor(new Color(108, 108, 108));
-                            g.fillRect(rc.x, rc.y, rc.Width, rc.Height);
+                            g.fillRect(rc.X, rc.Y, rc.Width, rc.Height);
                         }
                         g.setColor(rect_curve);
-                        g.drawRect(rc.x, rc.y, rc.Width, rc.Height);
-                        int rc_str_x = rc.x + 2;
-                        int rc_str_y = rc.y + text_font_height / 2 - text_font_offset + 1;
+                        g.drawRect(rc.X, rc.Y, rc.Width, rc.Height);
+                        int rc_str_x = rc.X + 2;
+                        int rc_str_y = rc.Y + text_font_height / 2 - text_font_offset + 1;
                         string n = curve.getName();
                         if (is_utau_mode && curve.equals(CurveType.VEL)) {
                             n = "INT";
@@ -1741,9 +1585,9 @@ namespace cadencii
                         Point p = new Point(points.xpoints[i], points.ypoints[i]);
                         Rectangle rc = new Rectangle(p.X - DOT_WID, p.Y - DOT_WID, dotwid, dotwid);
                         g.setColor(COLOR_BEZIER_DOT_NORMAL);
-                        g.fillRect(rc.x, rc.y, rc.Width, rc.Height);
+                        g.fillRect(rc.X, rc.Y, rc.Width, rc.Height);
                         g.setColor(COLOR_BEZIER_DOT_NORMAL);
-                        g.drawRect(rc.x, rc.y, rc.Width, rc.Height);
+                        g.drawRect(rc.X, rc.Y, rc.Width, rc.Height);
                     }
 
                     // 旗を描く
@@ -1758,9 +1602,9 @@ namespace cadencii
             if (selected_found) {
                 Rectangle rc = new Rectangle(selected_point.X - DOT_WID, selected_point.Y - DOT_WID, dotwid, dotwid);
                 g.setColor(EditorManager.getHilightColor());
-                g.fillRect(rc.x, rc.y, rc.Width, rc.Height);
+                g.fillRect(rc.X, rc.Y, rc.Width, rc.Height);
                 g.setColor(COLOR_BEZIER_DOT_NORMAL);
-                g.drawRect(rc.x, rc.y, rc.Width, rc.Height);
+                g.drawRect(rc.X, rc.Y, rc.Width, rc.Height);
             }
 
             g.setClip(null);
@@ -2116,7 +1960,7 @@ namespace cadencii
 
         private void drawTrackTab(Graphics g, Rectangle destRect, string name, bool selected, bool enabled, bool render_required, Color hilight, Color render_button_hilight)
         {
-            int x = destRect.x;
+            int x = destRect.X;
             int panel_width = render_required ? destRect.Width - 10 : destRect.Width;
             Color panel_color = enabled ? hilight : new Color(125, 123, 124);
             Color button_color = enabled ? render_button_hilight : new Color(125, 123, 124);
@@ -2127,49 +1971,49 @@ namespace cadencii
             // 背景(選択されている場合)
             if (selected) {
                 g.setColor(panel_color);
-                g.fillRect(destRect.x, destRect.y, destRect.Width, destRect.Height);
+                g.fillRect(destRect.X, destRect.Y, destRect.Width, destRect.Height);
                 if (render_required && enabled) {
                     g.setColor(render_button_hilight);
-                    g.fillRect(destRect.x + destRect.Width - 10, destRect.y, 10, destRect.Height);
+                    g.fillRect(destRect.X + destRect.Width - 10, destRect.Y, 10, destRect.Height);
                 }
             }
 
             // 左縦線
             g.setColor(border);
-            g.drawLine(destRect.x, destRect.y,
-                        destRect.x, destRect.y + destRect.Height - 1);
+            g.drawLine(destRect.X, destRect.Y,
+                        destRect.X, destRect.Y + destRect.Height - 1);
             if (PortUtil.getStringLength(name) > 0) {
                 // 上横線
                 g.setColor(border);
-                g.drawLine(destRect.x + 1, destRect.y,
-                            destRect.x + destRect.Width, destRect.y);
+                g.drawLine(destRect.X + 1, destRect.Y,
+                            destRect.X + destRect.Width, destRect.Y);
             }
             if (render_required) {
                 g.setColor(border);
-                g.drawLine(destRect.x + destRect.Width - 10, destRect.y,
-                            destRect.x + destRect.Width - 10, destRect.y + destRect.Height - 1);
+                g.drawLine(destRect.X + destRect.Width - 10, destRect.Y,
+                            destRect.X + destRect.Width - 10, destRect.Y + destRect.Height - 1);
             }
-            g.clipRect(destRect.x, destRect.y, destRect.Width, destRect.Height);
+            g.clipRect(destRect.X, destRect.Y, destRect.Width, destRect.Height);
 			string title = cadencii.windows.forms.Utility.trimString(name, cadencii.core.EditorConfig.baseFont8, panel_width);
 			g.setFont(cadencii.core.EditorConfig.baseFont8);
             g.setColor(panel_title);
-            g.drawString(title, destRect.x + 2, destRect.y + destRect.Height / 2 - EditorConfig.baseFont8OffsetHeight);
+            g.drawString(title, destRect.X + 2, destRect.Y + destRect.Height / 2 - EditorConfig.baseFont8OffsetHeight);
             if (render_required) {
                 g.setColor(button_title);
-                g.drawString("R", destRect.x + destRect.Width - PX_WIDTH_RENDER, destRect.y + destRect.Height / 2 - EditorConfig.baseFont8OffsetHeight);
+                g.drawString("R", destRect.X + destRect.Width - PX_WIDTH_RENDER, destRect.Y + destRect.Height / 2 - EditorConfig.baseFont8OffsetHeight);
             }
             if (selected) {
                 g.setColor(border);
-                g.drawLine(destRect.x + destRect.Width - 1, destRect.y,
-                            destRect.x + destRect.Width - 1, destRect.y + destRect.Height - 1);
+                g.drawLine(destRect.X + destRect.Width - 1, destRect.Y,
+                            destRect.X + destRect.Width - 1, destRect.Y + destRect.Height - 1);
                 g.setColor(border);
-                g.drawLine(destRect.x, destRect.y + destRect.Height - 1,
-                            destRect.x + destRect.Width, destRect.y + destRect.Height - 1);
+                g.drawLine(destRect.X, destRect.Y + destRect.Height - 1,
+                            destRect.X + destRect.Width, destRect.Y + destRect.Height - 1);
             }
             g.setClip(null);
             g.setColor(EditorManager.COLOR_BORDER);
-            g.drawLine(destRect.x + destRect.Width, destRect.y,
-                        destRect.x + destRect.Width, destRect.y + destRect.Height - 1);
+            g.drawLine(destRect.X + destRect.Width, destRect.Y,
+                        destRect.X + destRect.Width, destRect.Y + destRect.Height - 1);
         }
 
         /// <summary>
@@ -2240,7 +2084,7 @@ namespace cadencii
                     if (dobj.mType != DrawObjectType.Note) {
                         continue;
                     }
-                    int x = dobj.mRectangleInPixel.x + xoffset;
+                    int x = dobj.mRectangleInPixel.X + xoffset;
                     if (x + VEL_BAR_WIDTH < 0) {
                         continue;
                     } else if (width < x) {
@@ -2402,13 +2246,13 @@ namespace cadencii
                                                           DOT_WID * 2 + 1);
                             if (chain_id == mEditingChainID && current.getID() == mEditingPointID) {
                                 g.setColor(hilight);
-                                g.fillOval(rc.x, rc.y, rc.Width, rc.Height);
+                                g.fillOval(rc.X, rc.Y, rc.Width, rc.Height);
                             } else {
                                 g.setColor(COLOR_BEZIER_DOT_NORMAL);
-                                g.fillOval(rc.x, rc.y, rc.Width, rc.Height);
+                                g.fillOval(rc.X, rc.Y, rc.Width, rc.Height);
                             }
                             g.setColor(COLOR_BEZIER_DOT_NORMAL_DARK);
-                            g.drawOval(rc.x, rc.y, rc.Width, rc.Height);
+                            g.drawOval(rc.X, rc.Y, rc.Width, rc.Height);
                         }
 
                         // 左コントロール点
@@ -2419,13 +2263,13 @@ namespace cadencii
                                                           DOT_WID * 2 + 1);
                             if (chain_id == mEditingChainID && next.getID() == mEditingPointID) {
                                 g.setColor(hilight);
-                                g.fillOval(rc.x, rc.y, rc.Width, rc.Height);
+                                g.fillOval(rc.X, rc.Y, rc.Width, rc.Height);
                             } else {
                                 g.setColor(COLOR_BEZIER_DOT_NORMAL);
-                                g.fillOval(rc.x, rc.y, rc.Width, rc.Height);
+                                g.fillOval(rc.X, rc.Y, rc.Width, rc.Height);
                             }
                             g.setColor(COLOR_BEZIER_DOT_NORMAL_DARK);
-                            g.drawOval(rc.x, rc.y, rc.Width, rc.Height);
+                            g.drawOval(rc.X, rc.Y, rc.Width, rc.Height);
                         }
 
                         // データ点
@@ -2435,13 +2279,13 @@ namespace cadencii
                                                         DOT_WID * 2 + 1);
                         if (chain_id == mEditingChainID && current.getID() == mEditingPointID) {
                             g.setColor(hilight);
-                            g.fillRect(rc2.x, rc2.y, rc2.Width, rc2.Height);
+                            g.fillRect(rc2.X, rc2.Y, rc2.Width, rc2.Height);
                         } else {
                             g.setColor(COLOR_BEZIER_DOT_BASE);
-                            g.fillRect(rc2.x, rc2.y, rc2.Width, rc2.Height);
+                            g.fillRect(rc2.X, rc2.Y, rc2.Width, rc2.Height);
                         }
                         g.setColor(COLOR_BEZIER_DOT_BASE_DARK);
-                        g.drawRect(rc2.x, rc2.y, rc2.Width, rc2.Height);
+                        g.drawRect(rc2.X, rc2.Y, rc2.Width, rc2.Height);
                         pxCurrent = pxNext;
                         current = next;
                     }
@@ -2454,13 +2298,13 @@ namespace cadencii
                                                            DOT_WID * 2 + 1);
                         if (chain_id == mEditingChainID && next.getID() == mEditingPointID) {
                             g.setColor(hilight);
-                            g.fillRect(rc_last.x, rc_last.y, rc_last.Width, rc_last.Height);
+                            g.fillRect(rc_last.X, rc_last.Y, rc_last.Width, rc_last.Height);
                         } else {
                             g.setColor(COLOR_BEZIER_DOT_BASE);
-                            g.fillRect(rc_last.x, rc_last.y, rc_last.Width, rc_last.Height);
+                            g.fillRect(rc_last.X, rc_last.Y, rc_last.Width, rc_last.Height);
                         }
                         g.setColor(COLOR_BEZIER_DOT_BASE_DARK);
-                        g.drawRect(rc_last.x, rc_last.y, rc_last.Width, rc_last.Height);
+                        g.drawRect(rc_last.X, rc_last.Y, rc_last.Width, rc_last.Height);
                     }
                 }
 #if DEBUG
@@ -3172,8 +3016,8 @@ namespace cadencii
                         }
                         draft_clock = nclock;
                     }
-                    EditorManager.mCurveSelectingRectangle.Width = draft_clock - EditorManager.mCurveSelectingRectangle.x;
-                    EditorManager.mCurveSelectingRectangle.Height = value - EditorManager.mCurveSelectingRectangle.y;
+                    EditorManager.mCurveSelectingRectangle.Width = draft_clock - EditorManager.mCurveSelectingRectangle.X;
+                    EditorManager.mCurveSelectingRectangle.Height = value - EditorManager.mCurveSelectingRectangle.Y;
                 }
             } else if (mMouseDownMode == MouseDownMode.SINGER_LIST) {
                 int dclock = clock - mSingerMoveStartedClock;
@@ -4267,8 +4111,8 @@ namespace cadencii
 
         private static bool isInRect(int x, int y, Rectangle rc)
         {
-            if (rc.x <= x && x <= rc.x + rc.Width) {
-                if (rc.y <= y && y <= rc.y + rc.Height) {
+            if (rc.X <= x && x <= rc.X + rc.Width) {
+                if (rc.Y <= y && y <= rc.Y + rc.Height) {
                     return true;
                 } else {
                     return false;
@@ -4413,8 +4257,8 @@ namespace cadencii
                                 EditorManager.IsCurveSelectedIntervalEnabled = false;
                             } else {
                                 if (!EditorManager.IsCurveSelectedIntervalEnabled) {
-                                    int start = Math.Min(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.Width);
-                                    int end = Math.Max(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.Width);
+                                    int start = Math.Min(EditorManager.mCurveSelectingRectangle.X, EditorManager.mCurveSelectingRectangle.X + EditorManager.mCurveSelectingRectangle.Width);
+                                    int end = Math.Max(EditorManager.mCurveSelectingRectangle.X, EditorManager.mCurveSelectingRectangle.X + EditorManager.mCurveSelectingRectangle.Width);
                                     EditorManager.mCurveSelectedInterval = new SelectedRegion(start);
                                     EditorManager.mCurveSelectedInterval.setEnd(end);
 #if DEBUG
@@ -4422,8 +4266,8 @@ namespace cadencii
 #endif
                                     EditorManager.IsCurveSelectedIntervalEnabled = true;
                                 } else {
-                                    int start = Math.Min(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.Width);
-                                    int end = Math.Max(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.Width);
+                                    int start = Math.Min(EditorManager.mCurveSelectingRectangle.X, EditorManager.mCurveSelectingRectangle.X + EditorManager.mCurveSelectingRectangle.Width);
+                                    int end = Math.Max(EditorManager.mCurveSelectingRectangle.X, EditorManager.mCurveSelectingRectangle.X + EditorManager.mCurveSelectingRectangle.Width);
                                     int old_start = EditorManager.mCurveSelectedInterval.getStart();
                                     int old_end = EditorManager.mCurveSelectedInterval.getEnd();
                                     EditorManager.mCurveSelectedInterval = new SelectedRegion(Math.Min(start, old_start));
@@ -4444,8 +4288,8 @@ namespace cadencii
                                      !mSelectedCurve.equals(CurveType.VibratoRate)) {
                                     VsqBPList list = vsq_track.getCurve(mSelectedCurve.getName());
                                     int count = list.size();
-                                    Rectangle rc = new Rectangle(Math.Min(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.Width),
-                                                                  Math.Min(EditorManager.mCurveSelectingRectangle.y, EditorManager.mCurveSelectingRectangle.y + EditorManager.mCurveSelectingRectangle.Height),
+                                    Rectangle rc = new Rectangle(Math.Min(EditorManager.mCurveSelectingRectangle.X, EditorManager.mCurveSelectingRectangle.X + EditorManager.mCurveSelectingRectangle.Width),
+                                                                  Math.Min(EditorManager.mCurveSelectingRectangle.Y, EditorManager.mCurveSelectingRectangle.Y + EditorManager.mCurveSelectingRectangle.Height),
                                                                   Math.Abs(EditorManager.mCurveSelectingRectangle.Width),
                                                                   Math.Abs(EditorManager.mCurveSelectingRectangle.Height));
 #if DEBUG
@@ -4470,8 +4314,8 @@ namespace cadencii
                         if (EditorManager.isCurveMode()) {
                             List<BezierChain> list = vsq.AttachedCurves.get(selected - 1).get(mSelectedCurve);
                             if (list != null) {
-                                int x = Math.Min(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.Width);
-                                int y = Math.Min(EditorManager.mCurveSelectingRectangle.y, EditorManager.mCurveSelectingRectangle.y + EditorManager.mCurveSelectingRectangle.Height);
+                                int x = Math.Min(EditorManager.mCurveSelectingRectangle.X, EditorManager.mCurveSelectingRectangle.X + EditorManager.mCurveSelectingRectangle.Width);
+                                int y = Math.Min(EditorManager.mCurveSelectingRectangle.Y, EditorManager.mCurveSelectingRectangle.Y + EditorManager.mCurveSelectingRectangle.Height);
                                 Rectangle rc = new Rectangle(x, y, Math.Abs(EditorManager.mCurveSelectingRectangle.Width), Math.Abs(EditorManager.mCurveSelectingRectangle.Height));
 
                                 bool changed = false; //1箇所でも削除が実行されたらtrue
@@ -4524,8 +4368,8 @@ namespace cadencii
                         } else {
                             if (mSelectedCurve.equals(CurveType.VEL) || mSelectedCurve.equals(CurveType.Accent) || mSelectedCurve.equals(CurveType.Decay)) {
                                 #region VEL Accent Delay
-                                int start = Math.Min(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.Width);
-                                int end = Math.Max(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.Width);
+                                int start = Math.Min(EditorManager.mCurveSelectingRectangle.X, EditorManager.mCurveSelectingRectangle.X + EditorManager.mCurveSelectingRectangle.Width);
+                                int end = Math.Max(EditorManager.mCurveSelectingRectangle.X, EditorManager.mCurveSelectingRectangle.X + EditorManager.mCurveSelectingRectangle.Width);
                                 int old_start = EditorManager.mCurveSelectedInterval.getStart();
                                 int old_end = EditorManager.mCurveSelectedInterval.getEnd();
                                 EditorManager.mCurveSelectedInterval = new SelectedRegion(Math.Min(start, old_start));
@@ -4545,8 +4389,8 @@ namespace cadencii
                                 #endregion
                             } else if (mSelectedCurve.equals(CurveType.VibratoRate) || mSelectedCurve.equals(CurveType.VibratoDepth)) {
                                 #region VibratoRate ViratoDepth
-                                int er_start = Math.Min(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.Width);
-                                int er_end = Math.Max(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.Width);
+                                int er_start = Math.Min(EditorManager.mCurveSelectingRectangle.X, EditorManager.mCurveSelectingRectangle.X + EditorManager.mCurveSelectingRectangle.Width);
+                                int er_end = Math.Max(EditorManager.mCurveSelectingRectangle.X, EditorManager.mCurveSelectingRectangle.X + EditorManager.mCurveSelectingRectangle.Width);
                                 List<int> internal_ids = new List<int>();
                                 List<VsqID> items = new List<VsqID>();
                                 foreach (var ve in vsq_track.getNoteEventIterator()) {
@@ -4649,8 +4493,8 @@ namespace cadencii
                                 VsqBPList work = vsq_track.getCurve(mSelectedCurve.getName());
 
                                 // 削除するべきデータ点のリストを作成
-                                int x = Math.Min(EditorManager.mCurveSelectingRectangle.x, EditorManager.mCurveSelectingRectangle.x + EditorManager.mCurveSelectingRectangle.Width);
-                                int y = Math.Min(EditorManager.mCurveSelectingRectangle.y, EditorManager.mCurveSelectingRectangle.y + EditorManager.mCurveSelectingRectangle.Height);
+                                int x = Math.Min(EditorManager.mCurveSelectingRectangle.X, EditorManager.mCurveSelectingRectangle.X + EditorManager.mCurveSelectingRectangle.Width);
+                                int y = Math.Min(EditorManager.mCurveSelectingRectangle.Y, EditorManager.mCurveSelectingRectangle.Y + EditorManager.mCurveSelectingRectangle.Height);
                                 Rectangle rc = new Rectangle(x, y, Math.Abs(EditorManager.mCurveSelectingRectangle.Width), Math.Abs(EditorManager.mCurveSelectingRectangle.Height));
                                 List<long> delete = new List<long>();
                                 int count = work.size();
@@ -5702,7 +5546,7 @@ namespace cadencii
                 var ppts = cmenuSinger.PointToScreen(new System.Drawing.Point(0, 0));
                 Point pts = new Point(ppts.X, ppts.Y);
 				Rectangle rrc = cadencii.core2.PortUtil.getScreenBounds(this);
-                Rectangle rc = new Rectangle(rrc.x, rrc.y, rrc.Width, rrc.Height);
+                Rectangle rc = new Rectangle(rrc.X, rrc.Y, rrc.Width, rrc.Height);
                 mTooltipProgram = program;
                 mTooltipLanguage = language;
                 if (pts.X + cmenuSinger.Width + tip_width > rc.Width) {
@@ -5875,44 +5719,44 @@ namespace cadencii
             this.cmenuSinger = new TrackSelectorSingerPopupMenu(this.components);
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.cmenuCurve = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmenuCurveVelocity = new ToolStripMenuItem();
-            this.cmenuCurveAccent = new ToolStripMenuItem();
-            this.cmenuCurveDecay = new ToolStripMenuItem();
+            this.cmenuCurveVelocity = new ToolStripMenuItemImpl();
+            this.cmenuCurveAccent = new ToolStripMenuItemImpl();
+            this.cmenuCurveDecay = new ToolStripMenuItemImpl();
             this.cmenuCurveSeparator1 = new ToolStripSeparator();
-            this.cmenuCurveDynamics = new ToolStripMenuItem();
-            this.cmenuCurveVibratoRate = new ToolStripMenuItem();
-            this.cmenuCurveVibratoDepth = new ToolStripMenuItem();
+            this.cmenuCurveDynamics = new ToolStripMenuItemImpl();
+            this.cmenuCurveVibratoRate = new ToolStripMenuItemImpl();
+            this.cmenuCurveVibratoDepth = new ToolStripMenuItemImpl();
             this.cmenuCurveSeparator2 = new ToolStripSeparator();
-            this.cmenuCurveReso1 = new ToolStripMenuItem();
-            this.cmenuCurveReso1Freq = new ToolStripMenuItem();
-            this.cmenuCurveReso1BW = new ToolStripMenuItem();
-            this.cmenuCurveReso1Amp = new ToolStripMenuItem();
-            this.cmenuCurveReso2 = new ToolStripMenuItem();
-            this.cmenuCurveReso2Freq = new ToolStripMenuItem();
-            this.cmenuCurveReso2BW = new ToolStripMenuItem();
-            this.cmenuCurveReso2Amp = new ToolStripMenuItem();
-            this.cmenuCurveReso3 = new ToolStripMenuItem();
-            this.cmenuCurveReso3Freq = new ToolStripMenuItem();
-            this.cmenuCurveReso3BW = new ToolStripMenuItem();
-            this.cmenuCurveReso3Amp = new ToolStripMenuItem();
-            this.cmenuCurveReso4 = new ToolStripMenuItem();
-            this.cmenuCurveReso4Freq = new ToolStripMenuItem();
-            this.cmenuCurveReso4BW = new ToolStripMenuItem();
-            this.cmenuCurveReso4Amp = new ToolStripMenuItem();
+            this.cmenuCurveReso1 = new ToolStripMenuItemImpl();
+            this.cmenuCurveReso1Freq = new ToolStripMenuItemImpl();
+            this.cmenuCurveReso1BW = new ToolStripMenuItemImpl();
+            this.cmenuCurveReso1Amp = new ToolStripMenuItemImpl();
+            this.cmenuCurveReso2 = new ToolStripMenuItemImpl();
+            this.cmenuCurveReso2Freq = new ToolStripMenuItemImpl();
+            this.cmenuCurveReso2BW = new ToolStripMenuItemImpl();
+            this.cmenuCurveReso2Amp = new ToolStripMenuItemImpl();
+            this.cmenuCurveReso3 = new ToolStripMenuItemImpl();
+            this.cmenuCurveReso3Freq = new ToolStripMenuItemImpl();
+            this.cmenuCurveReso3BW = new ToolStripMenuItemImpl();
+            this.cmenuCurveReso3Amp = new ToolStripMenuItemImpl();
+            this.cmenuCurveReso4 = new ToolStripMenuItemImpl();
+            this.cmenuCurveReso4Freq = new ToolStripMenuItemImpl();
+            this.cmenuCurveReso4BW = new ToolStripMenuItemImpl();
+            this.cmenuCurveReso4Amp = new ToolStripMenuItemImpl();
             this.cmenuCurveSeparator3 = new ToolStripSeparator();
-            this.cmenuCurveHarmonics = new ToolStripMenuItem();
-            this.cmenuCurveBreathiness = new ToolStripMenuItem();
-            this.cmenuCurveBrightness = new ToolStripMenuItem();
-            this.cmenuCurveClearness = new ToolStripMenuItem();
-            this.cmenuCurveOpening = new ToolStripMenuItem();
-            this.cmenuCurveGenderFactor = new ToolStripMenuItem();
+            this.cmenuCurveHarmonics = new ToolStripMenuItemImpl();
+            this.cmenuCurveBreathiness = new ToolStripMenuItemImpl();
+            this.cmenuCurveBrightness = new ToolStripMenuItemImpl();
+            this.cmenuCurveClearness = new ToolStripMenuItemImpl();
+            this.cmenuCurveOpening = new ToolStripMenuItemImpl();
+            this.cmenuCurveGenderFactor = new ToolStripMenuItemImpl();
             this.cmenuCurveSeparator4 = new ToolStripSeparator();
-            this.cmenuCurvePortamentoTiming = new ToolStripMenuItem();
-            this.cmenuCurvePitchBend = new ToolStripMenuItem();
-            this.cmenuCurvePitchBendSensitivity = new ToolStripMenuItem();
+            this.cmenuCurvePortamentoTiming = new ToolStripMenuItemImpl();
+            this.cmenuCurvePitchBend = new ToolStripMenuItemImpl();
+            this.cmenuCurvePitchBendSensitivity = new ToolStripMenuItemImpl();
             this.cmenuCurveSeparator5 = new ToolStripSeparator();
-            this.cmenuCurveEffect2Depth = new ToolStripMenuItem();
-            this.cmenuCurveEnvelope = new ToolStripMenuItem();
+            this.cmenuCurveEffect2Depth = new ToolStripMenuItemImpl();
+            this.cmenuCurveEnvelope = new ToolStripMenuItemImpl();
             this.cmenuCurve.SuspendLayout();
             this.SuspendLayout();
             //
@@ -6221,7 +6065,7 @@ namespace cadencii
 
         private TrackSelectorSingerPopupMenu cmenuSinger;
         private System.Windows.Forms.ToolTip toolTip;
-        private ContextMenuStrip cmenuCurve;
+        private UiContextMenuStrip cmenuCurve;
         private ToolStripMenuItem cmenuCurveVelocity;
         private ToolStripSeparator cmenuCurveSeparator2;
         private ToolStripMenuItem cmenuCurveReso1;

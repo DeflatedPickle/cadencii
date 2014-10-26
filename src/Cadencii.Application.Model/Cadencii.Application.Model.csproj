@@ -7,6 +7,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Cadencii.Application.Model</RootNamespace>
     <AssemblyName>Cadencii.Application.Model</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,60 +60,15 @@
     <Compile Include="PatchWorkQueue.cs" />
     <Compile Include="ToolStripLocation.cs" />
     <Compile Include="AuthorListEntry.cs" />
-    <Compile Include="forms\FormMainController.cs" />
-    <Compile Include="forms\FormMainUi.cs" />
-    <Compile Include="forms\FormMainUiListener.cs" />
-    <Compile Include="forms\FormAskKeySoundGenerationController.cs" />
-    <Compile Include="forms\FormAskKeySoundGenerationUi.cs" />
-    <Compile Include="forms\FormAskKeySoundGenerationUiListener.cs" />
-    <Compile Include="forms\FormBeatConfigController.cs" />
-    <Compile Include="forms\FormBeatConfigUi.cs" />
-    <Compile Include="forms\FormBeatConfigUiListener.cs" />
-    <Compile Include="forms\FormNotePropertyController.cs" />
-    <Compile Include="forms\FormNotePropertyUi.cs" />
-    <Compile Include="forms\FormNotePropertyUiListener.cs" />
-    <Compile Include="forms\FormWordDictionaryController.cs" />
-    <Compile Include="forms\FormWordDictionaryUi.cs" />
-    <Compile Include="forms\FormWordDictionaryUiListener.cs" />
-    <Compile Include="controls\TrackSelector.cs" />
     <Compile Include="guiextended\Dialogs.cs" />
     <Compile Include="guiextended\ApplicationUIHost.cs" />
     <Compile Include="DialogManager.cs" />
     <Compile Include="PaletteToolServer.cs" />
     <Compile Include="IPaletteTool.cs" />
-    <Compile Include="controls\ProgressBarWithLabelUi.cs" />
-    <Compile Include="controls\ProgressBarWithLabel.cs" />
-    <Compile Include="forms\FormWorkerUi.cs" />
-    <Compile Include="controls\WaveViewRealoadRequiredEventArgs.cs" />
-    <Compile Include="controls\WaveViewRealoadRequiredEventHandler.cs" />
     <Compile Include="Utility.cs" />
-    <Compile Include="forms\ExceptionNotifyFormController.cs" />
-    <Compile Include="forms\ExceptionNotifyFormUi.cs" />
-    <Compile Include="forms\ExceptionNotifyFormUiListener.cs" />
-    <Compile Include="controls\PropertyPanel.cs" />
     <Compile Include="RunGeneratorQueue.cs" />
-    <Compile Include="forms\FormMixerUi.cs" />
-    <Compile Include="controls\VolumeTracker.cs" />
     <Compile Include="guiextended\Clipboard.cs" />
     <Compile Include="guiextended\Timer.cs" />
-    <Compile Include="forms\FormSplashUi.cs" />
-    <Compile Include="forms\FormIconPaletteUi.cs" />
-    <Compile Include="guiextended\UiForm.cs" />
-    <Compile Include="forms\FormBezierPointEditController.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="forms\FormBezierPointEditUi.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="forms\FormBezierPointEditUiListener.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="controls\DraggableBButton.cs" />
-    <Compile Include="controls\LyricTextBox.cs" />
-    <Compile Include="controls\PictPianoRoll.cs" />
-    <Compile Include="controls\WaveView.cs" />
-    <Compile Include="controls\WaveformZoomUi.cs" />
-    <Compile Include="controls\WaveformZoomUiListener.cs" />
     <Compile Include="music\MidiDeviceImp.cs" />
     <Compile Include="music\MidiQueue.cs" />
     <Compile Include="music\MusicManager.cs" />
@@ -161,7 +117,6 @@
     <Compile Include="music\VibratoVariationConverter.cs" />
     <Compile Include="ui_abstraction\FormWorker.cs" />
     <Compile Include="ui_abstraction\IFormWorkerControl.cs" />
-    <Compile Include="forms\PropertyWindowListener.cs" />
     <Compile Include="drawing\IImageCachedComponentDrawer.cs" />
     <Compile Include="drawing\ImageCachedComponentDrawer.cs" />
     <Compile Include="ui_abstraction\PureVirtualFunctionAttribute.cs" />
@@ -178,49 +133,108 @@
     <Compile Include="scripting\ScriptInvoker.cs" />
     <Compile Include="scripting\ScriptReturnStatus.cs" />
     <Compile Include="scripting\ScriptServer.cs" />
-    <Compile Include="forms\UpdateCheckForm.cs" />
-    <Compile Include="forms\WaveformZoomController.cs" />
-    <Compile Include="controls\NumberTextBox.cs" />
-    <Compile Include="controls\BitmapEx.cs" />
-    <Compile Include="forms\FormCurvePointEdit.cs" />
-    <Compile Include="guiextended\UiControl.cs" />
-    <Compile Include="guiextended\UiTextBox.cs" />
-    <Compile Include="guiextended\UiUserControl.cs" />
-    <Compile Include="controls\IconParader.cs" />
-    <Compile Include="controls\UiPictureBox.cs" />
-    <Compile Include="controls\PictOverview.cs" />
-    <Compile Include="guiextended\UiHScrollBar.cs" />
-    <Compile Include="forms\MainFormUi.cs" />
-    <Compile Include="controls\NumericUpDownEx.cs" />
-    <Compile Include="controls\BSplitterPanel.cs" />
-    <Compile Include="controls\BSplitContainer.cs" />
-    <Compile Include="controls\PropertyPanelContainer.cs" />
-    <Compile Include="guiextended\UiPanel.cs" />
-    <Compile Include="controls\Rebar.cs" />
-    <Compile Include="controls\RebarBandCollection.cs" />
-    <Compile Include="controls\RebarBand.cs" />
-    <Compile Include="forms\FormDeleteBar.cs" />
-    <Compile Include="forms\FormTempoConfig.cs" />
-    <Compile Include="forms\FormTrackProperty.cs" />
-    <Compile Include="forms\FormGameControllerConfig.cs" />
-    <Compile Include="forms\FormSingerStyleConfig.cs" />
-    <Compile Include="forms\FormInsertBar.cs" />
-    <Compile Include="forms\FormRealtimeConfig.cs" />
-    <Compile Include="forms\FormNoteExpressionConfig.cs" />
-    <Compile Include="forms\FormImportLyric.cs" />
-    <Compile Include="forms\FormMidiImExport.cs" />
-    <Compile Include="guiextended\UiListView.cs" />
-    <Compile Include="forms\FormCompileResult.cs" />
-    <Compile Include="forms\FormRandomize.cs" />
-    <Compile Include="forms\FormGenerateKeySound.cs" />
-    <Compile Include="forms\FormShortcutKeys.cs" />
-    <Compile Include="forms\FormVibratoPreset.cs" />
-    <Compile Include="forms\FormSequenceConfig.cs" />
-    <Compile Include="forms\FormVibratoConfig.cs" />
-    <Compile Include="forms\FormCheckUnknownSingerAndResampler.cs" />
-    <Compile Include="forms\VersionInfo.cs" />
-    <Compile Include="forms\InputBox.cs" />
-    <Compile Include="forms\Preference.cs" />
+    <Compile Include="app_ui\controls\BitmapEx.cs" />
+    <Compile Include="app_ui\controls\BSplitContainer.cs" />
+    <Compile Include="app_ui\controls\BSplitterPanel.cs" />
+    <Compile Include="app_ui\controls\DraggableBButton.cs" />
+    <Compile Include="app_ui\controls\IconParader.cs" />
+    <Compile Include="app_ui\controls\LyricTextBox.cs" />
+    <Compile Include="app_ui\controls\NumberTextBox.cs" />
+    <Compile Include="app_ui\controls\NumericUpDownEx.cs" />
+    <Compile Include="app_ui\controls\PictOverview.cs" />
+    <Compile Include="app_ui\controls\PictPianoRoll.cs" />
+    <Compile Include="app_ui\controls\ProgressBarWithLabel.cs" />
+    <Compile Include="app_ui\controls\ProgressBarWithLabelUi.cs" />
+    <Compile Include="app_ui\controls\PropertyPanel.cs" />
+    <Compile Include="app_ui\controls\PropertyPanelContainer.cs" />
+    <Compile Include="app_ui\controls\Rebar.cs" />
+    <Compile Include="app_ui\controls\RebarBand.cs" />
+    <Compile Include="app_ui\controls\RebarBandCollection.cs" />
+    <Compile Include="app_ui\controls\TrackSelector.cs" />
+    <Compile Include="app_ui\controls\UiPictureBox.cs" />
+    <Compile Include="app_ui\controls\VolumeTracker.cs" />
+    <Compile Include="app_ui\controls\WaveformZoomUi.cs" />
+    <Compile Include="app_ui\controls\WaveformZoomUiListener.cs" />
+    <Compile Include="app_ui\controls\WaveView.cs" />
+    <Compile Include="app_ui\controls\WaveViewRealoadRequiredEventArgs.cs" />
+    <Compile Include="app_ui\controls\WaveViewRealoadRequiredEventHandler.cs" />
+    <Compile Include="app_ui\forms\ExceptionNotifyFormController.cs" />
+    <Compile Include="app_ui\forms\ExceptionNotifyFormUi.cs" />
+    <Compile Include="app_ui\forms\ExceptionNotifyFormUiListener.cs" />
+    <Compile Include="app_ui\forms\FormAskKeySoundGenerationController.cs" />
+    <Compile Include="app_ui\forms\FormAskKeySoundGenerationUi.cs" />
+    <Compile Include="app_ui\forms\FormAskKeySoundGenerationUiListener.cs" />
+    <Compile Include="app_ui\forms\FormBeatConfigController.cs" />
+    <Compile Include="app_ui\forms\FormBeatConfigUi.cs" />
+    <Compile Include="app_ui\forms\FormBeatConfigUiListener.cs" />
+    <Compile Include="app_ui\forms\FormBezierPointEditController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app_ui\forms\FormBezierPointEditUi.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app_ui\forms\FormBezierPointEditUiListener.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="app_ui\forms\FormCheckUnknownSingerAndResampler.cs" />
+    <Compile Include="app_ui\forms\FormCompileResult.cs" />
+    <Compile Include="app_ui\forms\FormCurvePointEdit.cs" />
+    <Compile Include="app_ui\forms\FormDeleteBar.cs" />
+    <Compile Include="app_ui\forms\FormGameControllerConfig.cs" />
+    <Compile Include="app_ui\forms\FormGenerateKeySound.cs" />
+    <Compile Include="app_ui\forms\FormIconPaletteUi.cs" />
+    <Compile Include="app_ui\forms\FormImportLyric.cs" />
+    <Compile Include="app_ui\forms\FormInsertBar.cs" />
+    <Compile Include="app_ui\forms\FormMainController.cs" />
+    <Compile Include="app_ui\forms\FormMainUi.cs" />
+    <Compile Include="app_ui\forms\FormMainUiListener.cs" />
+    <Compile Include="app_ui\forms\FormMidiImExport.cs" />
+    <Compile Include="app_ui\forms\FormMixerUi.cs" />
+    <Compile Include="app_ui\forms\FormNoteExpressionConfig.cs" />
+    <Compile Include="app_ui\forms\FormNotePropertyController.cs" />
+    <Compile Include="app_ui\forms\FormNotePropertyUi.cs" />
+    <Compile Include="app_ui\forms\FormNotePropertyUiListener.cs" />
+    <Compile Include="app_ui\forms\FormRandomize.cs" />
+    <Compile Include="app_ui\forms\FormRealtimeConfig.cs" />
+    <Compile Include="app_ui\forms\FormSequenceConfig.cs" />
+    <Compile Include="app_ui\forms\FormShortcutKeys.cs" />
+    <Compile Include="app_ui\forms\FormSingerStyleConfig.cs" />
+    <Compile Include="app_ui\forms\FormSplashUi.cs" />
+    <Compile Include="app_ui\forms\FormTempoConfig.cs" />
+    <Compile Include="app_ui\forms\FormTrackProperty.cs" />
+    <Compile Include="app_ui\forms\FormVibratoConfig.cs" />
+    <Compile Include="app_ui\forms\FormVibratoPreset.cs" />
+    <Compile Include="app_ui\forms\FormWordDictionaryController.cs" />
+    <Compile Include="app_ui\forms\FormWordDictionaryUi.cs" />
+    <Compile Include="app_ui\forms\FormWordDictionaryUiListener.cs" />
+    <Compile Include="app_ui\forms\FormWorkerUi.cs" />
+    <Compile Include="app_ui\forms\InputBox.cs" />
+    <Compile Include="app_ui\forms\MainFormUi.cs" />
+    <Compile Include="app_ui\forms\Preference.cs" />
+    <Compile Include="app_ui\forms\PropertyWindowListener.cs" />
+    <Compile Include="app_ui\forms\UpdateCheckForm.cs" />
+    <Compile Include="app_ui\forms\VersionInfo.cs" />
+    <Compile Include="app_ui\forms\WaveformZoomController.cs" />
+    <Compile Include="app_ui\actions\FormMainActions.cs" />
+    <Compile Include="winforms\UiComponent.cs" />
+    <Compile Include="winforms\UiContextMenuStrip.cs" />
+    <Compile Include="winforms\UiControl.cs" />
+    <Compile Include="winforms\UiForm.cs" />
+    <Compile Include="winforms\UiHScrollBar.cs" />
+    <Compile Include="winforms\UiListView.cs" />
+    <Compile Include="winforms\UiMenuStrip.cs" />
+    <Compile Include="winforms\UiPanel.cs" />
+    <Compile Include="winforms\UiTextBox.cs" />
+    <Compile Include="winforms\UiToolBar.cs" />
+    <Compile Include="winforms\UiToolBarButton.cs" />
+    <Compile Include="winforms\UiToolStripDropDownItem.cs" />
+    <Compile Include="winforms\UiToolStripItem.cs" />
+    <Compile Include="winforms\UiToolStripMenuItem.cs" />
+    <Compile Include="winforms\UiToolStripSeparator.cs" />
+    <Compile Include="winforms\UiUserControl.cs" />
+    <Compile Include="winforms\UiToolBarButtonEventArgs.cs" />
+    <Compile Include="winforms\UiContextMenu.cs" />
+    <Compile Include="winforms\UiTrackBar.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -254,13 +268,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="forms\" />
-    <Folder Include="controls\" />
     <Folder Include="guiextended\" />
     <Folder Include="music\" />
     <Folder Include="drawing\" />
     <Folder Include="ui_abstraction\" />
     <Folder Include="editor_features\" />
     <Folder Include="scripting\" />
+    <Folder Include="app_ui\" />
+    <Folder Include="app_ui\actions\" />
   </ItemGroup>
 </Project>

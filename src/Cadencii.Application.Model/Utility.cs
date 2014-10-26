@@ -584,7 +584,7 @@ namespace cadencii
         /// <returns></returns>
         public static bool isInRect(int x, int y, Rectangle rc)
         {
-            return isInRect(x, y, rc.x, rc.y, rc.Width, rc.Height);
+            return isInRect(x, y, rc.X, rc.Y, rc.Width, rc.Height);
         }
 
         /// <summary>

@@ -50,7 +50,7 @@ namespace cadencii
 
 		public static System.Drawing.Rectangle ToWF (this Rectangle rect)
 		{
-			return new System.Drawing.Rectangle (rect.x, rect.y, rect.Width, rect.Height);
+			return new System.Drawing.Rectangle (rect.X, rect.Y, rect.Width, rect.Height);
 		}
 
 		public static Image ToAwt (this System.Drawing.Image image)

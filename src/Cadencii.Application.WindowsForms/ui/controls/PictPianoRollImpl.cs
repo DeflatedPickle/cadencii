@@ -485,8 +485,8 @@ namespace cadencii
                                 if (dobj.mType != DrawObjectType.Note) {
                                     continue;
                                 }
-                                int x = dobj.mRectangleInPixel.x + key_width - stdx;
-                                y = dobj.mRectangleInPixel.y - stdy;
+                                int x = dobj.mRectangleInPixel.X + key_width - stdx;
+                                y = dobj.mRectangleInPixel.Y - stdy;
                                 int lyric_width = dobj.mRectangleInPixel.Width;
                                 if (x + lyric_width < 0) {
                                     continue;
@@ -530,8 +530,8 @@ namespace cadencii
                         int c = target_list.Count;
                         for (int j = j_start; j < c; j++) {
                             DrawObject dobj = target_list[j];
-                            int x = dobj.mRectangleInPixel.x + key_width - stdx;
-                            y = dobj.mRectangleInPixel.y - stdy;
+                            int x = dobj.mRectangleInPixel.X + key_width - stdx;
+                            y = dobj.mRectangleInPixel.Y - stdy;
                             int lyric_width = dobj.mRectangleInPixel.Width;
                             if (x + lyric_width < 0) {
                                 continue;
@@ -992,17 +992,17 @@ namespace cadencii
                                                           (int)(size.Width * 1.2),
                                                           (int)(size.Height * 1.2));
                         g.setColor(COLOR_R192G192B192);
-                        g.fillRect(pxArea.x, pxArea.y, pxArea.Width, pxArea.Height);
+                        g.fillRect(pxArea.X, pxArea.Y, pxArea.Width, pxArea.Height);
                         g.setColor(cadencii.java.awt.Colors.Black);
-                        g.drawRect(pxArea.x, pxArea.y, pxArea.Width, pxArea.Height);
+                        g.drawRect(pxArea.X, pxArea.Y, pxArea.Width, pxArea.Height);
                         // StringFormat sf = new StringFormat();
                         //sf.Alignment = StringAlignment.Center;
                         //sf.LineAlignment = StringAlignment.Center;
 						g.setFont(cadencii.core.EditorConfig.baseFont9);
                         g.drawString(
                             percent,
-                            pxArea.x + 3,
-                            pxArea.y + EditorConfig.baseFont9Height / 2 - EditorConfig.baseFont9OffsetHeight + 2);
+                            pxArea.X + 3,
+                            pxArea.Y + EditorConfig.baseFont9Height / 2 - EditorConfig.baseFont9OffsetHeight + 2);
                         #endregion
                     }
 
