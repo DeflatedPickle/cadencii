@@ -277,7 +277,7 @@ namespace cadencii
         /// <seealso cref="M:System.Windows.Forms.Control.OnPaint"/>
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnPaint(PaintEventArgs e)
+        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
         {
             base.OnPaint(e);
             if (mGraphics == null) {

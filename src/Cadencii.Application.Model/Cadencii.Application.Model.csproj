@@ -235,6 +235,12 @@
     <Compile Include="winforms\UiToolBarButtonEventArgs.cs" />
     <Compile Include="winforms\UiContextMenu.cs" />
     <Compile Include="winforms\UiTrackBar.cs" />
+    <Compile Include="winforms\PaintEventArgs.cs" />
+    <Compile Include="winforms\UiVScrollBar.cs" />
+    <Compile Include="winforms\UiToolStripStatusLabel.cs" />
+    <Compile Include="winforms\UiToolStripButton.cs" />
+    <Compile Include="winforms\UiToolStrip.cs" />
+    <Compile Include="winforms\UiToolStripContainer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

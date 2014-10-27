@@ -116,7 +116,7 @@ namespace cadencii
             this.Focus();
         }
 
-        protected override void OnPaint(PaintEventArgs pe)
+        protected override void OnPaint(System.Windows.Forms.PaintEventArgs pe)
         {
             base.OnPaint(pe);
 			paint(new Graphics() {NativeGraphics = pe.Graphics});

@@ -751,7 +751,7 @@ namespace cadencii
             mOffsetX = value;
         }
 
-        protected override void OnPaint(PaintEventArgs pevent)
+		protected override void OnPaint(System.Windows.Forms.PaintEventArgs pevent)
         {
             base.OnPaint(pevent);
             if (mGraphics == null) {

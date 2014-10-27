@@ -47,6 +47,7 @@ using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
 using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 using NKeyEventArgs = cadencii.java.awt.KeyEventArgs;
 using NKeyEventHandler = cadencii.java.awt.KeyEventHandler;
+using PaintEventArgs = cadencii.PaintEventArgs;
 
 namespace cadencii
 {
@@ -2080,13 +2081,13 @@ namespace cadencii
         {
             if (mGameMode == GameControlMode.DISABLED) {
                 stripLblGameCtrlMode.Text = _("Disabled");
-                stripLblGameCtrlMode.Image = Properties.Resources.slash;
+                stripLblGameCtrlMode.Image = Properties.Resources.slash.ToAwt ();
             } else if (mGameMode == GameControlMode.CURSOR) {
                 stripLblGameCtrlMode.Text = _("Cursor");
                 stripLblGameCtrlMode.Image = null;
             } else if (mGameMode == GameControlMode.KEYBOARD) {
                 stripLblGameCtrlMode.Text = _("Keyboard");
-                stripLblGameCtrlMode.Image = Properties.Resources.piano;
+				stripLblGameCtrlMode.Image = Properties.Resources.piano.ToAwt ();
             } else if (mGameMode == GameControlMode.NORMAL) {
                 stripLblGameCtrlMode.Text = _("Normal");
                 stripLblGameCtrlMode.Image = null;
@@ -3245,14 +3246,14 @@ namespace cadencii
             }
             if (midiport < 0 || devices.Count <= 0) {
                 stripLblMidiIn.Text = _("Disabled");
-                stripLblMidiIn.Image = Properties.Resources.slash;
+				stripLblMidiIn.Image = Properties.Resources.slash.ToAwt ();
             } else {
                 if (midiport >= devices.Count) {
                     midiport = 0;
                     EditorManager.editorConfig.MidiInPort.PortNumber = midiport;
                 }
                 stripLblMidiIn.Text = devices[midiport].getName();
-                stripLblMidiIn.Image = Properties.Resources.piano;
+				stripLblMidiIn.Image = Properties.Resources.piano.ToAwt ();
             }
         }
 #endif
@@ -6919,10 +6920,10 @@ namespace cadencii
         public void setResources()
         {
             try {
-                this.stripLblGameCtrlMode.Image = Properties.Resources.slash;
-                this.stripLblMidiIn.Image = Properties.Resources.slash;
+				this.stripLblGameCtrlMode.Image = Properties.Resources.slash.ToAwt ();
+				this.stripLblMidiIn.Image = Properties.Resources.slash.ToAwt ();
 
-                this.stripBtnStepSequencer.Image = Properties.Resources.piano;
+                this.stripBtnStepSequencer.Image = Properties.Resources.piano.ToAwt ();
                 this.Icon = Properties.Resources.Icon1;
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".setResources; ex=" + ex + "\n");
@@ -10086,7 +10087,7 @@ namespace cadencii
                         event_processed = true;
                         mGameMode = GameControlMode.KEYBOARD;
                         stripLblGameCtrlMode.Text = mGameMode.ToString();
-                        stripLblGameCtrlMode.Image = Properties.Resources.piano;
+						stripLblGameCtrlMode.Image = Properties.Resources.piano.ToAwt ();
                     }
                     mLastBtnSelect = SELECT;
                 } else if (mGameMode == GameControlMode.KEYBOARD) {
@@ -13279,7 +13280,7 @@ namespace cadencii
 
         public void picturePositionIndicator_MouseClick(Object sender, NMouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right && 0 < e.Y && e.Y <= 18 && EditorManager.keyWidth < e.X) {
+            if (e.Button == NMouseButtons.Right && 0 < e.Y && e.Y <= 18 && EditorManager.keyWidth < e.X) {
                 // クリックされた位置でのクロックを保存
                 int clock = EditorManager.clockFromXCoord(e.X);
                 int unit = EditorManager.getPositionQuantizeClock();
@@ -13297,7 +13298,7 @@ namespace cadencii
             if (e.X < EditorManager.keyWidth || this.Width - 3 < e.X) {
                 return;
             }
-            if (e.Button == MouseButtons.Left) {
+            if (e.Button == NMouseButtons.Left) {
                 VsqFileEx vsq = MusicManager.getVsqFile();
                 if (18 < e.Y && e.Y <= 32) {
                     #region テンポの変更
@@ -13630,7 +13631,7 @@ namespace cadencii
             mPositionIndicatorMouseDownMode = PositionIndicatorMouseDownMode.NONE;
             Keys modifiers = (Keys) Control.ModifierKeys;
             VsqFileEx vsq = MusicManager.getVsqFile();
-            if (e.Button == MouseButtons.Left) {
+            if (e.Button == NMouseButtons.Left) {
                 if (0 <= e.Y && e.Y <= 18) {
                     #region スタート/エンドマーク
                     int tolerance = EditorManager.editorConfig.PxTolerance;
@@ -13799,7 +13800,7 @@ namespace cadencii
 #if DEBUG
             CDebug.WriteLine("picturePositionIndicator_MouseClick");
 #endif
-            if (e.Button == MouseButtons.Left) {
+            if (e.Button == NMouseButtons.Left) {
                 VsqFileEx vsq = MusicManager.getVsqFile();
                 if (mPositionIndicatorMouseDownMode == PositionIndicatorMouseDownMode.NONE) {
                     if (4 <= e.Y && e.Y <= 18) {

@@ -345,6 +345,10 @@
     <Compile Include="ui\winforms\MenuStripImpl.cs" />
     <Compile Include="ui\winforms\ToolBarButtonImpl.cs" />
     <Compile Include="ui\winforms\ContextMenuImpl.cs" />
+    <Compile Include="ui\winforms\ToolStripStatusLabelImpl.cs" />
+    <Compile Include="ui\winforms\ToolStripImpl.cs" />
+    <Compile Include="ui\winforms\ToolStripButtonImpl.cs" />
+    <Compile Include="ui\winforms\ToolStripContainerImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />
