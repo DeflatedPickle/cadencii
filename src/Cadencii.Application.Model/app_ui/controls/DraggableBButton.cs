@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using cadencii.vsq;
 using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 

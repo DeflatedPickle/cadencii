@@ -1,4 +1,4 @@
-﻿/*
+/*
  * AquesTone2Driver.cs
  * Copyright © 2013 kbinani
  *

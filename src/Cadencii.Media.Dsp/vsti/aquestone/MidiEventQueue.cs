@@ -1,4 +1,4 @@
-﻿/*
+/*
  * MidiEventQueue.cs
  * Copyright © 2013 kbinani
  *

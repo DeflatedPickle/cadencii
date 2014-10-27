@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using cadencii.java.awt;
 using Keys = cadencii.java.awt.Keys;

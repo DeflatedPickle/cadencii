@@ -1,4 +1,4 @@
-﻿/*
+/*
  * ExceptionNotifyFormUiListener.cs
  * Copyright © 2011 kbinani
  *

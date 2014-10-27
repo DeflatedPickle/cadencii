@@ -1,4 +1,4 @@
-﻿/*
+/*
  * PluginLoader.cs
  * Copyright © 2013 kbinani
  *

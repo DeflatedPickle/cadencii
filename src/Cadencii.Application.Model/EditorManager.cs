@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright © 2009-2011 kbinani
  *
  * This file is part of cadencii.

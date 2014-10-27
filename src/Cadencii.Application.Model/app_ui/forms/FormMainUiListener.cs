@@ -1,4 +1,4 @@
-﻿/*
+/*
  * FormMainUiListener.cs
  * Copyright © 2011 kbinani
  *

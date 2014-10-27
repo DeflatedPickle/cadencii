@@ -1,4 +1,4 @@
-﻿/*
+/*
  * FormWorkerUi.cs
  * Copyright © 2011 kbinani
  *

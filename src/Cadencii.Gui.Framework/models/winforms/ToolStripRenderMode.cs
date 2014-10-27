@@ -1,4 +1,4 @@
-﻿namespace cadencii.java.awt
+namespace cadencii.java.awt
 {
 	public enum ToolStripRenderMode
 	{

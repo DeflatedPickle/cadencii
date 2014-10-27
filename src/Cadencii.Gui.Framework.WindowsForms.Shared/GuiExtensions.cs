@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using cadencii.java.awt;
 using MouseButtons = System.Windows.Forms.MouseButtons;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;

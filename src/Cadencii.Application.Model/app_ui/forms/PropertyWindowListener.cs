@@ -1,4 +1,4 @@
-﻿/*
+/*
  * PropertyWindowListener.cs
  * Copyright © 2012 kbinani
  *

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using cadencii.vsq;
 
 namespace cadencii

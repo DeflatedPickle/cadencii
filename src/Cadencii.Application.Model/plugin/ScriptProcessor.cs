@@ -1,4 +1,4 @@
-﻿/*
+/*
  * ScriptProcessor.cs
  * Copyright © 2013 kbinani
  *

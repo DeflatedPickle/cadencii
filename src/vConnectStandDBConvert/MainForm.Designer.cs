@@ -1,4 +1,4 @@
-﻿namespace cadencii.vconnect
+namespace cadencii.vconnect
 {
     partial class MainForm
     {

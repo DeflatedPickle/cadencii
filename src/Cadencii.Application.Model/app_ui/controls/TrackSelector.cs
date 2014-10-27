@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using cadencii.java.awt;
 using cadencii.vsq;
 

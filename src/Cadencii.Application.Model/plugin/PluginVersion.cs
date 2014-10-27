@@ -1,4 +1,4 @@
-﻿/*
+/*
  * PluginVersion.cs
  * Copyright © 2013 kbinani
  *

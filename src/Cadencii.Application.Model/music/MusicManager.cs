@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using cadencii.core;
 using System.Collections.Generic;

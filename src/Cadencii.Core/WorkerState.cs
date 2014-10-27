@@ -1,4 +1,4 @@
-﻿/*
+/*
  * WorkerState.cs
  * Copyright © 2011 kbinani
  *

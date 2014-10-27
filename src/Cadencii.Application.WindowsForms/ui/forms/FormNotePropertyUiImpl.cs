@@ -1,4 +1,4 @@
-﻿/*
+/*
  * FormNotePropertyUiImpl.cs
  * Copyright © 2012 kbinani
  *

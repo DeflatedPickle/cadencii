@@ -1,4 +1,4 @@
-﻿/*
+/*
  * EditorConfig.cs
  * Copyright © 2008-2011 kbinani
  *
