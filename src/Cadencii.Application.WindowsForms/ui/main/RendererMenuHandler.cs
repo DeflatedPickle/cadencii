@@ -54,7 +54,7 @@ namespace cadencii
         {
             Image icon = null;
             if (!VSTiDllManager.isRendererAvailable(kind_)) {
-                icon = Properties.Resources.slash;
+				icon = Properties.Resources.slash.ToAwt ();
             }
             if (track_menu_ != null) { track_menu_.Image = icon; }
             if (context_menu_ != null) { context_menu_.Image = icon; }

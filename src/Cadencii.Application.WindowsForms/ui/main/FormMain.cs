@@ -2677,7 +2677,7 @@ namespace cadencii
                 UiToolBarButton tsb = new ToolBarButtonImpl();
                 tsb.Style = cadencii.java.awt.ToolBarButtonStyle.ToggleButton;
                 if (icon != null) {
-                    imageListTool.Images.Add((System.Drawing.Image) icon.NativeImage);
+                    imageListTool.Images.Add(icon);
                     tsb.ImageIndex = imageListTool.Images.Count - 1;
                 }
                 tsb.Text = name;

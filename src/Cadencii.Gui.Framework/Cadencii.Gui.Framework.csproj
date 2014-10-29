@@ -96,6 +96,8 @@
     <Compile Include="models\winforms\TextImageRelation.cs" />
     <Compile Include="models\winforms\CheckState.cs" />
     <Compile Include="models\winforms\TickStyle.cs" />
+    <Compile Include="models\winforms\ToolBarAppearance.cs" />
+    <Compile Include="models\winforms\ToolBarTextAlign.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

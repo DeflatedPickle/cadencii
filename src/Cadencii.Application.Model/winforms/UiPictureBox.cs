@@ -5,6 +5,11 @@ namespace cadencii
 {
 	public interface UiPictureBox : UiControl
 	{
+		cadencii.java.awt.Cursor Cursor {
+			get;
+			set;
+		}
+
 		BorderStyle BorderStyle { get; set; }
 
 		PictureBoxSizeMode SizeMode { get; set; }

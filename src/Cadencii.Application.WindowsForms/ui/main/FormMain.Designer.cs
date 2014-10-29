@@ -15,6 +15,9 @@ using AnchorStyles = cadencii.java.awt.AnchorStyles;
 using Color = cadencii.java.awt.Color;
 using BorderStyle = cadencii.java.awt.BorderStyle;
 using DockStyle = cadencii.java.awt.DockStyle;
+using ToolBarButtonStyle = cadencii.java.awt.ToolBarButtonStyle;
+using ToolBarAppearance = cadencii.java.awt.ToolBarAppearance;
+using ToolBarTextAlign = cadencii.java.awt.ToolBarTextAlign;
 
 namespace cadencii
 {
@@ -301,26 +304,26 @@ namespace cadencii
             this.splitContainer1 = ApplicationUIHost.Create<cadencii.apputil.BSplitContainer>();
             this.toolStripSeparator2 = new ToolStripSeparatorImpl();
             this.stripDDBtnQuantize = new ContextMenuImpl();
-            this.stripDDBtnQuantize04 = new System.Windows.Forms.MenuItem();
-            this.stripDDBtnQuantize08 = new System.Windows.Forms.MenuItem();
-            this.stripDDBtnQuantize16 = new System.Windows.Forms.MenuItem();
-            this.stripDDBtnQuantize32 = new System.Windows.Forms.MenuItem();
-            this.stripDDBtnQuantize64 = new System.Windows.Forms.MenuItem();
-            this.stripDDBtnQuantize128 = new System.Windows.Forms.MenuItem();
-            this.stripDDBtnQuantizeOff = new System.Windows.Forms.MenuItem();
-            this.menuItem2 = new System.Windows.Forms.MenuItem();
-            this.stripDDBtnQuantizeTriplet = new System.Windows.Forms.MenuItem();
+            this.stripDDBtnQuantize04 = new MenuItemImpl();
+            this.stripDDBtnQuantize08 = new MenuItemImpl();
+            this.stripDDBtnQuantize16 = new MenuItemImpl();
+            this.stripDDBtnQuantize32 = new MenuItemImpl();
+            this.stripDDBtnQuantize64 = new MenuItemImpl();
+            this.stripDDBtnQuantize128 = new MenuItemImpl();
+            this.stripDDBtnQuantizeOff = new MenuItemImpl();
+            this.menuItem2 = new MenuItemImpl();
+            this.stripDDBtnQuantizeTriplet = new MenuItemImpl();
             this.toolStripSeparator3 = new ToolStripSeparatorImpl();
-            this.imageListFile = new System.Windows.Forms.ImageList(this.components);
-            this.imageListPosition = new System.Windows.Forms.ImageList(this.components);
-            this.imageListMeasure = new System.Windows.Forms.ImageList(this.components);
-            this.imageListTool = new System.Windows.Forms.ImageList(this.components);
+            this.imageListFile = new ImageListImpl(this.components);
+            this.imageListPosition = new ImageListImpl(this.components);
+            this.imageListMeasure = new ImageListImpl(this.components);
+            this.imageListTool = new ImageListImpl(this.components);
             this.panel1 = new PanelImpl();
             this.panelOverview = ApplicationUIHost.Create<cadencii.PictOverview>();
             this.pictPianoRoll = new cadencii.PictPianoRollImpl();
             this.hScroll = new HScrollBarImpl();
             this.rebar = ApplicationUIHost.Create<cadencii.Rebar>();
-            this.imageListMenu = new System.Windows.Forms.ImageList(this.components);
+            this.imageListMenu = new ImageListImpl(this.components);
             this.toolBarFile = new ToolBarImpl();
             this.stripBtnFileNew = new ToolBarButtonImpl ();
             this.stripBtnFileOpen = new ToolBarButtonImpl ();
@@ -355,7 +358,7 @@ namespace cadencii
             this.stripBtnGrid = new ToolBarButtonImpl ();
             this.stripBtnCurve = new ToolBarButtonImpl ();
             this.toolStripContainer1 = new ToolStripContainerImpl();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.statusStrip = new StatusStripImpl();
             this.statusLabel = new ToolStripStatusLabelImpl();
             this.cMenuPositionIndicator = new ContextMenuStripImpl(this.components);
             this.cMenuPositionIndicatorStartMarker = new ToolStripMenuItemImpl();
@@ -2179,7 +2182,7 @@ namespace cadencii
             this.pictKeyLengthSplitter.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
             this.pictKeyLengthSplitter.BackColor = System.Drawing.SystemColors.Control.ToAwt ();
             this.pictKeyLengthSplitter.BorderStyle = BorderStyle.Fixed3D;
-            this.pictKeyLengthSplitter.Cursor = System.Windows.Forms.Cursors.NoMoveHoriz;
+			this.pictKeyLengthSplitter.Cursor = System.Windows.Forms.Cursors.NoMoveHoriz.ToAwt ();
             this.pictKeyLengthSplitter.Location = new  cadencii.java.awt.Point(49, 263);
             this.pictKeyLengthSplitter.Margin = new cadencii.java.awt.Padding(0);
             this.pictKeyLengthSplitter.Name = "pictKeyLengthSplitter";
@@ -2229,7 +2232,7 @@ namespace cadencii
             this.stripLblMidiIn,
             this.toolStripSeparator11,
             this.stripBtnStepSequencer});
-            this.toolStripBottom.Location = new System.Drawing.Point(15, 0);
+			this.toolStripBottom.Location = new cadencii.java.awt.Point(15, 0);
             this.toolStripBottom.Name = "toolStripBottom";
             this.toolStripBottom.RenderMode = ToolStripRenderMode.System;
             this.toolStripBottom.Size = new cadencii.java.awt.Dimension(347, 25);
@@ -2274,8 +2277,8 @@ namespace cadencii
             // stripBtnStepSequencer
             // 
             this.stripBtnStepSequencer.CheckOnClick = true;
-            this.stripBtnStepSequencer.Image = ((System.Drawing.Image)(resources.GetObject("stripBtnStepSequencer.Image")));
-            this.stripBtnStepSequencer.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.stripBtnStepSequencer.Image = ((System.Drawing.Image)(resources.GetObject("stripBtnStepSequencer.Image"))).ToAwt ();
+			this.stripBtnStepSequencer.ImageTransparentColor = cadencii.java.awt.Colors.Magenta;
             this.stripBtnStepSequencer.Name = "stripBtnStepSequencer";
             this.stripBtnStepSequencer.Size = new cadencii.java.awt.Dimension(55, 22);
             this.stripBtnStepSequencer.Text = "Step";
@@ -2400,7 +2403,7 @@ namespace cadencii
             // 
             // stripDDBtnQuantize
             // 
-            this.stripDDBtnQuantize.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.stripDDBtnQuantize.MenuItems.AddRange(new UiMenuItem[] {
             this.stripDDBtnQuantize04,
             this.stripDDBtnQuantize08,
             this.stripDDBtnQuantize16,
@@ -2464,55 +2467,55 @@ namespace cadencii
             // imageListFile
             // 
             this.imageListFile.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListFile.ImageStream")));
-            this.imageListFile.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListFile.Images.SetKeyName(0, "disk__plus.png");
-            this.imageListFile.Images.SetKeyName(1, "folder_horizontal_open.png");
-            this.imageListFile.Images.SetKeyName(2, "disk.png");
-            this.imageListFile.Images.SetKeyName(3, "scissors.png");
-            this.imageListFile.Images.SetKeyName(4, "documents.png");
-            this.imageListFile.Images.SetKeyName(5, "clipboard_paste.png");
-            this.imageListFile.Images.SetKeyName(6, "arrow_skip_180.png");
-            this.imageListFile.Images.SetKeyName(7, "arrow_skip.png");
+            this.imageListFile.TransparentColor = cadencii.java.awt.Colors.Transparent;
+			this.imageListFile.SetImagesKeyName(0, "disk__plus.png");
+            this.imageListFile.SetImagesKeyName(1, "folder_horizontal_open.png");
+            this.imageListFile.SetImagesKeyName(2, "disk.png");
+            this.imageListFile.SetImagesKeyName(3, "scissors.png");
+            this.imageListFile.SetImagesKeyName(4, "documents.png");
+            this.imageListFile.SetImagesKeyName(5, "clipboard_paste.png");
+            this.imageListFile.SetImagesKeyName(6, "arrow_skip_180.png");
+            this.imageListFile.SetImagesKeyName(7, "arrow_skip.png");
             // 
             // imageListPosition
             // 
             this.imageListPosition.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListPosition.ImageStream")));
-            this.imageListPosition.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListPosition.Images.SetKeyName(0, "control_stop_180.png");
-            this.imageListPosition.Images.SetKeyName(1, "control_double_180.png");
-            this.imageListPosition.Images.SetKeyName(2, "control_double.png");
-            this.imageListPosition.Images.SetKeyName(3, "control_stop.png");
-            this.imageListPosition.Images.SetKeyName(4, "control.png");
-            this.imageListPosition.Images.SetKeyName(5, "control_pause.png");
-            this.imageListPosition.Images.SetKeyName(6, "arrow_circle_double.png");
-            this.imageListPosition.Images.SetKeyName(7, "arrow_return.png");
+            this.imageListPosition.TransparentColor = cadencii.java.awt.Colors.Transparent;
+            this.imageListPosition.SetImagesKeyName(0, "control_stop_180.png");
+            this.imageListPosition.SetImagesKeyName(1, "control_double_180.png");
+            this.imageListPosition.SetImagesKeyName(2, "control_double.png");
+            this.imageListPosition.SetImagesKeyName(3, "control_stop.png");
+            this.imageListPosition.SetImagesKeyName(4, "control.png");
+            this.imageListPosition.SetImagesKeyName(5, "control_pause.png");
+            this.imageListPosition.SetImagesKeyName(6, "arrow_circle_double.png");
+            this.imageListPosition.SetImagesKeyName(7, "arrow_return.png");
             // 
             // imageListMeasure
             // 
             this.imageListMeasure.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListMeasure.ImageStream")));
-            this.imageListMeasure.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListMeasure.Images.SetKeyName(0, "pin__arrow.png");
-            this.imageListMeasure.Images.SetKeyName(1, "pin__arrow_inv.png");
-            this.imageListMeasure.Images.SetKeyName(2, "note001.png");
-            this.imageListMeasure.Images.SetKeyName(3, "note002.png");
-            this.imageListMeasure.Images.SetKeyName(4, "note004.png");
-            this.imageListMeasure.Images.SetKeyName(5, "note008.png");
-            this.imageListMeasure.Images.SetKeyName(6, "note016.png");
-            this.imageListMeasure.Images.SetKeyName(7, "note032.png");
-            this.imageListMeasure.Images.SetKeyName(8, "note064.png");
-            this.imageListMeasure.Images.SetKeyName(9, "note128.png");
-            this.imageListMeasure.Images.SetKeyName(10, "notenull.png");
+			this.imageListMeasure.TransparentColor = cadencii.java.awt.Colors.Transparent;
+            this.imageListMeasure.SetImagesKeyName(0, "pin__arrow.png");
+            this.imageListMeasure.SetImagesKeyName(1, "pin__arrow_inv.png");
+            this.imageListMeasure.SetImagesKeyName(2, "note001.png");
+            this.imageListMeasure.SetImagesKeyName(3, "note002.png");
+            this.imageListMeasure.SetImagesKeyName(4, "note004.png");
+            this.imageListMeasure.SetImagesKeyName(5, "note008.png");
+            this.imageListMeasure.SetImagesKeyName(6, "note016.png");
+            this.imageListMeasure.SetImagesKeyName(7, "note032.png");
+            this.imageListMeasure.SetImagesKeyName(8, "note064.png");
+            this.imageListMeasure.SetImagesKeyName(9, "note128.png");
+            this.imageListMeasure.SetImagesKeyName(10, "notenull.png");
             // 
             // imageListTool
             // 
             this.imageListTool.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListTool.ImageStream")));
-            this.imageListTool.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListTool.Images.SetKeyName(0, "arrow_135.png");
-            this.imageListTool.Images.SetKeyName(1, "pencil.png");
-            this.imageListTool.Images.SetKeyName(2, "layer_shape_line.png");
-            this.imageListTool.Images.SetKeyName(3, "eraser.png");
-            this.imageListTool.Images.SetKeyName(4, "ruler_crop.png");
-            this.imageListTool.Images.SetKeyName(5, "layer_shape_curve.png");
+			this.imageListTool.TransparentColor = cadencii.java.awt.Colors.Transparent;
+            this.imageListTool.SetImagesKeyName(0, "arrow_135.png");
+            this.imageListTool.SetImagesKeyName(1, "pencil.png");
+            this.imageListTool.SetImagesKeyName(2, "layer_shape_line.png");
+            this.imageListTool.SetImagesKeyName(3, "eraser.png");
+            this.imageListTool.SetImagesKeyName(4, "ruler_crop.png");
+            this.imageListTool.SetImagesKeyName(5, "layer_shape_curve.png");
             // 
             // panel1
             // 
@@ -2574,13 +2577,13 @@ namespace cadencii
             // imageListMenu
             // 
             this.imageListMenu.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageListMenu.ImageSize = new System.Drawing.Size(1, 16);
-            this.imageListMenu.TransparentColor = System.Drawing.Color.Transparent;
+			this.imageListMenu.ImageSize = new cadencii.java.awt.Dimension(1, 16);
+            this.imageListMenu.TransparentColor = cadencii.java.awt.Colors.Transparent;
             // 
             // toolBarFile
             // 
-            this.toolBarFile.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
-            this.toolBarFile.Buttons.AddRange(new System.Windows.Forms.ToolBarButton[] {
+			this.toolBarFile.Appearance = cadencii.java.awt.ToolBarAppearance.Flat;
+            this.toolBarFile.Buttons.AddRange(new UiToolBarButton[] {
             this.stripBtnFileNew,
             this.stripBtnFileOpen,
             this.stripBtnFileSave,
@@ -2591,12 +2594,12 @@ namespace cadencii
             this.toolBarButton2,
             this.stripBtnUndo,
             this.stripBtnRedo});
-            this.toolBarFile.ButtonSize = new System.Drawing.Size(23, 22);
+			this.toolBarFile.ButtonSize = new cadencii.java.awt.Dimension(23, 22);
             this.toolBarFile.Divider = false;
             this.toolBarFile.Dock = DockStyle.None;
             this.toolBarFile.DropDownArrows = true;
             this.toolBarFile.ImageList = this.imageListFile;
-            this.toolBarFile.Location = new System.Drawing.Point(11, 2);
+			this.toolBarFile.Location = new cadencii.java.awt.Point(11, 2);
             this.toolBarFile.Name = "toolBarFile";
             this.toolBarFile.ShowToolTips = true;
             this.toolBarFile.Size = new cadencii.java.awt.Dimension(944, 26);
@@ -2624,7 +2627,7 @@ namespace cadencii
             // toolBarButton1
             // 
             this.toolBarButton1.Name = "toolBarButton1";
-            this.toolBarButton1.Style = System.Windows.Forms.ToolBarButtonStyle.Separator;
+            this.toolBarButton1.Style = ToolBarButtonStyle.Separator;
             // 
             // stripBtnCut
             // 
@@ -2647,7 +2650,7 @@ namespace cadencii
             // toolBarButton2
             // 
             this.toolBarButton2.Name = "toolBarButton2";
-            this.toolBarButton2.Style = System.Windows.Forms.ToolBarButtonStyle.Separator;
+            this.toolBarButton2.Style = ToolBarButtonStyle.Separator;
             // 
             // stripBtnUndo
             // 
@@ -2663,8 +2666,8 @@ namespace cadencii
             // 
             // toolBarPosition
             // 
-            this.toolBarPosition.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
-            this.toolBarPosition.Buttons.AddRange(new System.Windows.Forms.ToolBarButton[] {
+            this.toolBarPosition.Appearance = ToolBarAppearance.Flat;
+            this.toolBarPosition.Buttons.AddRange(new UiToolBarButton[] {
             this.stripBtnMoveTop,
             this.stripBtnRewind,
             this.stripBtnForward,
@@ -2677,12 +2680,12 @@ namespace cadencii
             this.toolBarPosition.Dock = DockStyle.None;
             this.toolBarPosition.DropDownArrows = true;
             this.toolBarPosition.ImageList = this.imageListPosition;
-            this.toolBarPosition.Location = new System.Drawing.Point(11, 32);
+			this.toolBarPosition.Location = new cadencii.java.awt.Point(11, 32);
             this.toolBarPosition.Name = "toolBarPosition";
             this.toolBarPosition.ShowToolTips = true;
             this.toolBarPosition.Size = new cadencii.java.awt.Dimension(944, 40);
             this.toolBarPosition.TabIndex = 25;
-            this.toolBarPosition.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
+            this.toolBarPosition.TextAlign = ToolBarTextAlign.Right;
             this.toolBarPosition.Wrappable = false;
             // 
             // stripBtnMoveTop
@@ -2718,7 +2721,7 @@ namespace cadencii
             // toolBarButton4
             // 
             this.toolBarButton4.Name = "toolBarButton4";
-            this.toolBarButton4.Style = System.Windows.Forms.ToolBarButtonStyle.Separator;
+            this.toolBarButton4.Style = ToolBarButtonStyle.Separator;
             // 
             // stripBtnScroll
             // 
@@ -2732,8 +2735,8 @@ namespace cadencii
             // 
             // toolBarMeasure
             // 
-            this.toolBarMeasure.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
-            this.toolBarMeasure.Buttons.AddRange(new System.Windows.Forms.ToolBarButton[] {
+            this.toolBarMeasure.Appearance = ToolBarAppearance.Flat;
+            this.toolBarMeasure.Buttons.AddRange(new UiToolBarButton[] {
             this.stripDDBtnQuantizeParent,
             this.toolBarButton5,
             this.stripBtnStartMarker,
@@ -2742,12 +2745,12 @@ namespace cadencii
             this.toolBarMeasure.Dock = DockStyle.None;
             this.toolBarMeasure.DropDownArrows = true;
             this.toolBarMeasure.ImageList = this.imageListMeasure;
-            this.toolBarMeasure.Location = new System.Drawing.Point(11, 62);
+			this.toolBarMeasure.Location = new cadencii.java.awt.Point(11, 62);
             this.toolBarMeasure.Name = "toolBarMeasure";
             this.toolBarMeasure.ShowToolTips = true;
             this.toolBarMeasure.Size = new cadencii.java.awt.Dimension(944, 40);
             this.toolBarMeasure.TabIndex = 25;
-            this.toolBarMeasure.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
+            this.toolBarMeasure.TextAlign = ToolBarTextAlign.Right;
             this.toolBarMeasure.Wrappable = false;
             // 
             // stripDDBtnQuantizeParent
@@ -2757,24 +2760,24 @@ namespace cadencii
             // toolBarButton5
             // 
             this.toolBarButton5.Name = "toolBarButton5";
-            this.toolBarButton5.Style = System.Windows.Forms.ToolBarButtonStyle.Separator;
+            this.toolBarButton5.Style = ToolBarButtonStyle.Separator;
             // 
             // stripBtnStartMarker
             // 
             this.stripBtnStartMarker.ImageIndex = 0;
             this.stripBtnStartMarker.Name = "stripBtnStartMarker";
-            this.stripBtnStartMarker.Style = System.Windows.Forms.ToolBarButtonStyle.ToggleButton;
+            this.stripBtnStartMarker.Style = ToolBarButtonStyle.ToggleButton;
             // 
             // stripBtnEndMarker
             // 
             this.stripBtnEndMarker.ImageIndex = 1;
             this.stripBtnEndMarker.Name = "stripBtnEndMarker";
-            this.stripBtnEndMarker.Style = System.Windows.Forms.ToolBarButtonStyle.ToggleButton;
+            this.stripBtnEndMarker.Style = ToolBarButtonStyle.ToggleButton;
             // 
             // toolBarTool
             // 
-            this.toolBarTool.Appearance = System.Windows.Forms.ToolBarAppearance.Flat;
-            this.toolBarTool.Buttons.AddRange(new System.Windows.Forms.ToolBarButton[] {
+            this.toolBarTool.Appearance = ToolBarAppearance.Flat;
+            this.toolBarTool.Buttons.AddRange(new UiToolBarButton[] {
             this.stripBtnPointer,
             this.stripBtnPencil,
             this.stripBtnLine,
@@ -2786,12 +2789,12 @@ namespace cadencii
             this.toolBarTool.Dock = DockStyle.None;
             this.toolBarTool.DropDownArrows = true;
             this.toolBarTool.ImageList = this.imageListTool;
-            this.toolBarTool.Location = new System.Drawing.Point(11, 92);
+			this.toolBarTool.Location = new cadencii.java.awt.Point(11, 92);
             this.toolBarTool.Name = "toolBarTool";
             this.toolBarTool.ShowToolTips = true;
             this.toolBarTool.Size = new cadencii.java.awt.Dimension(944, 40);
             this.toolBarTool.TabIndex = 25;
-            this.toolBarTool.TextAlign = System.Windows.Forms.ToolBarTextAlign.Right;
+            this.toolBarTool.TextAlign = ToolBarTextAlign.Right;
             this.toolBarTool.Wrappable = false;
             // 
             // stripBtnPointer
@@ -2822,7 +2825,7 @@ namespace cadencii
             // toolBarButton3
             // 
             this.toolBarButton3.Name = "toolBarButton3";
-            this.toolBarButton3.Style = System.Windows.Forms.ToolBarButtonStyle.Separator;
+            this.toolBarButton3.Style = ToolBarButtonStyle.Separator;
             // 
             // stripBtnGrid
             // 
@@ -2847,12 +2850,12 @@ namespace cadencii
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Controls.Add((Control)this.panel1.Native);
-            this.toolStripContainer1.ContentPanel.Controls.Add((Control)this.splitContainerProperty.Native);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.panel1);
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainerProperty);
             this.toolStripContainer1.ContentPanel.Size = new cadencii.java.awt.Dimension(955, 612);
             this.toolStripContainer1.Dock = DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
-            this.toolStripContainer1.Location = new System.Drawing.Point(0, 30);
+			this.toolStripContainer1.Location = new cadencii.java.awt.Point(0, 30);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.RightToolStripPanelVisible = false;
             this.toolStripContainer1.Size = new cadencii.java.awt.Dimension(955, 659);
@@ -2865,7 +2868,7 @@ namespace cadencii
             this.statusStrip.Dock = DockStyle.None;
             this.statusStrip.Items.AddRange(new UiToolStripItem[] {
             this.statusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(0, 25);
+			this.statusStrip.Location = new cadencii.java.awt.Point(0, 25);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new cadencii.java.awt.Dimension(955, 22);
             this.statusStrip.TabIndex = 25;
@@ -2912,13 +2915,13 @@ namespace cadencii
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(955, 689);
-            this.Controls.Add(this.toolStripContainer1);
+			this.Controls.Add((Control)this.toolStripContainer1.Native);
             this.Controls.Add((Control) this.rebar.Native);
-            this.Controls.Add(this.menuStripMain);
+			this.Controls.Add((Control)this.menuStripMain.Native);
             this.Controls.Add((Control)this.splitContainer1.Native);
             this.DoubleBuffered = true;
             this.KeyPreview = true;
-            this.MainMenuStrip = this.menuStripMain;
+			this.MainMenuStrip = (MenuStrip) this.menuStripMain.Native;
             this.Name = "FormMain";
             this.Text = "Cadencii";
             this.menuStripMain.ResumeLayout(false);
@@ -3132,14 +3135,14 @@ namespace cadencii
         public UiToolBarButton stripBtnCurve;
         public UiToolStripSeparator toolStripSeparator2;
         public UiContextMenu stripDDBtnQuantize;
-        public System.Windows.Forms.MenuItem stripDDBtnQuantize04;
-        public System.Windows.Forms.MenuItem stripDDBtnQuantize08;
-        public System.Windows.Forms.MenuItem stripDDBtnQuantize16;
-        public System.Windows.Forms.MenuItem stripDDBtnQuantize32;
-        public System.Windows.Forms.MenuItem stripDDBtnQuantize64;
-        public System.Windows.Forms.MenuItem stripDDBtnQuantizeOff;
+        public UiMenuItem stripDDBtnQuantize04;
+        public UiMenuItem stripDDBtnQuantize08;
+        public UiMenuItem stripDDBtnQuantize16;
+        public UiMenuItem stripDDBtnQuantize32;
+        public UiMenuItem stripDDBtnQuantize64;
+        public UiMenuItem stripDDBtnQuantizeOff;
         public UiToolStripSeparator toolStripSeparator3;
-        public System.Windows.Forms.MenuItem stripDDBtnQuantizeTriplet;
+        public UiMenuItem stripDDBtnQuantizeTriplet;
         public UiToolBarButton stripBtnStartMarker;
         public UiToolBarButton stripBtnEndMarker;
         public UiHScrollBar hScroll { get; set; }
@@ -3152,7 +3155,7 @@ namespace cadencii
         public UiToolStripSeparator toolStripSeparator10;
         public UiToolStripMenuItem menuSettingGameControlerSetting;
         public UiToolStripMenuItem menuSettingGameControlerLoad;
-        public System.Windows.Forms.MenuItem stripDDBtnQuantize128;
+        public UiMenuItem stripDDBtnQuantize128;
         public UiToolStripMenuItem menuSettingPositionQuantize128;
         public UiToolStripMenuItem cMenuPianoQuantize128;
         public UiToolStripMenuItem cMenuPianoFixed128;
@@ -3171,14 +3174,14 @@ namespace cadencii
         public UiToolStripMenuItem menuFileImportMidi;
         public UiToolStripStatusLabel toolStripStatusLabel1;
         public UiToolStripStatusLabel toolStripStatusLabel2;
-        public ToolBarButton stripBtnFileSave;
-        public ToolBarButton stripBtnFileOpen;
-        public ToolBarButton stripBtnCut;
-        public ToolBarButton stripBtnCopy;
-        public ToolBarButton stripBtnPaste;
-        public ToolBarButton stripBtnFileNew;
-        public ToolBarButton stripBtnUndo;
-        public ToolBarButton stripBtnRedo;
+        public UiToolBarButton stripBtnFileSave;
+        public UiToolBarButton stripBtnFileOpen;
+        public UiToolBarButton stripBtnCut;
+        public UiToolBarButton stripBtnCopy;
+        public UiToolBarButton stripBtnPaste;
+        public UiToolBarButton stripBtnFileNew;
+        public UiToolBarButton stripBtnUndo;
+        public UiToolBarButton stripBtnRedo;
         public UiToolStripMenuItem cMenuTrackSelectorPaletteTool;
         public UiToolStripMenuItem cMenuPianoPaletteTool;
         public UiToolStripSeparator toolStripSeparator14;
@@ -3244,24 +3247,24 @@ namespace cadencii
         public cadencii.apputil.BSplitContainer splitContainer2;
         private UiPanel panel1;
         private UiToolBar toolBarFile;
-        private System.Windows.Forms.ImageList imageListFile;
+        private UiImageList imageListFile;
         private UiToolBarButton toolBarButton1;
         private UiToolBarButton toolBarButton2;
         private UiToolBar toolBarTool;
         private UiToolBarButton toolBarButton3;
-        private System.Windows.Forms.ImageList imageListTool;
+        private UiImageList imageListTool;
         private UiToolBar toolBarPosition;
         private UiToolBarButton toolBarButton4;
-        private System.Windows.Forms.ImageList imageListPosition;
+        private UiImageList imageListPosition;
         private UiToolBar toolBarMeasure;
         private UiToolBarButton stripDDBtnQuantizeParent;
-        private System.Windows.Forms.MenuItem menuItem2;
+        private UiMenuItem menuItem2;
         private UiToolBarButton toolBarButton5;
-        private System.Windows.Forms.ImageList imageListMeasure;
-        private System.Windows.Forms.ToolStripContainer toolStripContainer1;
-        private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
-        private System.Windows.Forms.ImageList imageListMenu;
+        private UiImageList imageListMeasure;
+        private UiToolStripContainer toolStripContainer1;
+        private UiStatusStrip statusStrip;
+        private UiToolStripStatusLabel statusLabel;
+        private UiImageList imageListMenu;
         public UiToolStripMenuItem menuFileExportVsq;
         private UiToolStripMenuItem menuFileExportVxt;
         public UiToolStripMenuItem menuLyricCopyVibratoToPreset;

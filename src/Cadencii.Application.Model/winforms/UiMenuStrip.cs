@@ -6,6 +6,8 @@ namespace cadencii
 {
 	public interface UiMenuStrip : UiControl
 	{
+		void PerformLayout ();
+
 		ToolStripRenderMode RenderMode { get; set; }
 
 		string Text { get; set; }

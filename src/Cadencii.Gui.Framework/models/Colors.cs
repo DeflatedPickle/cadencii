@@ -21,6 +21,8 @@ namespace cadencii.java.awt
 {
     public static class Colors
     {
+		public static Color Transparent = new Color(0, 0, 0, 0xFF);
+
         public static Color AliceBlue = new Color(240, 248, 255);
         public static Color AntiqueWhite = new Color(250, 235, 215);
         public static Color Aqua = new Color(0, 255, 255);

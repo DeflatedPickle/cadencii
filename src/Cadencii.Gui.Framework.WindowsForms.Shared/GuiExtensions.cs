@@ -23,6 +23,16 @@ namespace cadencii
 			return System.Drawing.Color.FromArgb (c.R, c.G, c.B);
 		}
 
+		public static Cursor ToAwt (this System.Windows.Forms.Cursor c)
+		{
+			return new Cursor (0) { NativeCursor = c };
+		}
+
+		public static System.Windows.Forms.Cursor ToNative (this Cursor c)
+		{
+			return (System.Windows.Forms.Cursor) c.NativeCursor;
+		}
+
 		public static cadencii.java.awt.Point ToAwt (this System.Drawing.Point point)
 		{
 			return new cadencii.java.awt.Point (point.X, point.Y);

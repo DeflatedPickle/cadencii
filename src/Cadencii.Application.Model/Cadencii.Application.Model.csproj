@@ -151,7 +151,6 @@
     <Compile Include="app_ui\controls\RebarBand.cs" />
     <Compile Include="app_ui\controls\RebarBandCollection.cs" />
     <Compile Include="app_ui\controls\TrackSelector.cs" />
-    <Compile Include="app_ui\controls\UiPictureBox.cs" />
     <Compile Include="app_ui\controls\VolumeTracker.cs" />
     <Compile Include="app_ui\controls\WaveformZoomUi.cs" />
     <Compile Include="app_ui\controls\WaveformZoomUiListener.cs" />
@@ -241,6 +240,11 @@
     <Compile Include="winforms\UiToolStripButton.cs" />
     <Compile Include="winforms\UiToolStrip.cs" />
     <Compile Include="winforms\UiToolStripContainer.cs" />
+    <Compile Include="winforms\UiPictureBox.cs" />
+    <Compile Include="winforms\UiMenuItem.cs" />
+    <Compile Include="winforms\UiImageList.cs" />
+    <Compile Include="winforms\UiStatusStrip.cs" />
+    <Compile Include="winforms\UiToolStripPanel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
