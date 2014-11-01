@@ -185,13 +185,11 @@
     <Compile Include="app_ui\forms\FormImportLyric.cs" />
     <Compile Include="app_ui\forms\FormInsertBar.cs" />
     <Compile Include="app_ui\forms\FormMainController.cs" />
-    <Compile Include="app_ui\forms\FormMainUi.cs" />
     <Compile Include="app_ui\forms\FormMainUiListener.cs" />
     <Compile Include="app_ui\forms\FormMidiImExport.cs" />
     <Compile Include="app_ui\forms\FormMixerUi.cs" />
     <Compile Include="app_ui\forms\FormNoteExpressionConfig.cs" />
     <Compile Include="app_ui\forms\FormNotePropertyController.cs" />
-    <Compile Include="app_ui\forms\FormNotePropertyUi.cs" />
     <Compile Include="app_ui\forms\FormNotePropertyUiListener.cs" />
     <Compile Include="app_ui\forms\FormRandomize.cs" />
     <Compile Include="app_ui\forms\FormRealtimeConfig.cs" />
@@ -245,6 +243,9 @@
     <Compile Include="winforms\UiImageList.cs" />
     <Compile Include="winforms\UiStatusStrip.cs" />
     <Compile Include="winforms\UiToolStripPanel.cs" />
+    <Compile Include="app_ui\forms\UiFormNoteProperty.cs" />
+    <Compile Include="app_ui\forms\UiFormMain.cs" />
+    <Compile Include="app_ui\controls\TrackSelectorConsts.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

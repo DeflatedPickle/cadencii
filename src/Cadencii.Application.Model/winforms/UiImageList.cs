@@ -7,6 +7,16 @@ namespace cadencii
 {
 	public interface UiImageList : UiComponent
 	{
+		ColorDepth ColorDepth {
+			get;
+			set;
+		}
+
+		object ImageStream {
+			get;
+			set;
+		}
+
 		Dimension ImageSize {
 			get;
 			set;

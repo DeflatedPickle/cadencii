@@ -1,3 +1,4 @@
+#if SUPPORT_UPDATE_FORM
 /*
  * Factory.cs
  * Copyright © 2013 kbinani
@@ -18,3 +19,4 @@ namespace cadencii.ui
         public static UpdateCheckForm createUpdateCheckForm() { return new dotnet.UpdateCheckForm(); }
     }
 }
+#endif

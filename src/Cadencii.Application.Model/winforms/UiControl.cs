@@ -1,12 +1,16 @@
 using System;
 using cadencii.java.awt;
 using cadencii.vsq;
+using System.Collections.Generic;
 
 namespace cadencii
 {
 	public interface UiControl : IDisposable
 	{
-		
+		IEnumerable<UiControl> Controls { get; }
+
+		void PerformLayout ();
+
 		AnchorStyles Anchor { get; set; }
 
 		bool TabStop { get; set; }

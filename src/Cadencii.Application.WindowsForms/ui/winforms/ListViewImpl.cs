@@ -58,6 +58,10 @@ namespace cadencii
 
 		// UiControl
 
+		System.Collections.Generic.IEnumerable<UiControl> UiControl.Controls {
+			get { return Controls.Cast<UiControl> (); }
+		}
+
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }
 			remove { this.SizeChanged -= value; }

@@ -5,6 +5,11 @@ namespace cadencii
 {
 	public interface UiToolStripItem : UiComponent, IDisposable
 	{
+		Font Font {
+			get;
+			set;
+		}
+
 		bool Enabled { get; set; }
 		bool Visible { get; set; }
 		string Name { get; set; }

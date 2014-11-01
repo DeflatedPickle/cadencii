@@ -98,7 +98,7 @@ namespace cadencii
         /// ミニチュアピアノロールの縮小ボタン上でマウスが下りている状態かどうか
         /// </summary>
         private bool mOverviewButtonMoozMouseDowned = false;
-        private FormMainUi mMainForm = null;
+        private UiFormMain mMainForm = null;
         private Color mBackgroundColor = new Color(106, 108, 108);
         private Object mDrawerSyncRoot;
 
@@ -111,7 +111,7 @@ namespace cadencii
             registerEventHandlers();
         }
 
-        public void setMainForm(FormMainUi form)
+        public void setMainForm(UiFormMain form)
         {
             mMainForm = form;
         }

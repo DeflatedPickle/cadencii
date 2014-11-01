@@ -40,7 +40,7 @@ namespace cadencii
         private float mWaveViewInitScale;
 
         private WaveView mWaveView = null;
-        private FormMainUi mFormMain = null;
+        private UiFormMain mFormMain = null;
         private WaveformZoomUi mUi = null;
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace cadencii
         /// </summary>
         const int SPACE = 4;
 
-        public WaveformZoomController(FormMainUi form_main, WaveView wave_view)
+        public WaveformZoomController(UiFormMain form_main, WaveView wave_view)
         {
             mWaveView = wave_view;
             mFormMain = form_main;

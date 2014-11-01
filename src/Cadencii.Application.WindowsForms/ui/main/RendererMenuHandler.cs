@@ -52,7 +52,7 @@ namespace cadencii
         /// <param name="config">エディタの設定情報</param>
         public void updateRendererAvailability(EditorConfig config)
         {
-            Image icon = null;
+			cadencii.java.awt.Image icon = null;
             if (!VSTiDllManager.isRendererAvailable(kind_)) {
 				icon = Properties.Resources.slash.ToAwt ();
             }

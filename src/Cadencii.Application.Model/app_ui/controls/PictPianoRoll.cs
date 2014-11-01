@@ -8,7 +8,7 @@ namespace cadencii
 
 		cadencii.java.awt.Dimension getMinimumSize ();
 
-		void setMainForm (FormMainUi formMain);
+		void setMainForm (UiFormMain formMain);
 	}
 }
 

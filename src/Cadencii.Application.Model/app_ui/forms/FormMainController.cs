@@ -48,7 +48,7 @@ namespace cadencii
         /// </summary>
         private bool mStepSequencerEnabled = false;
 
-        private FormMainUi ui;
+        private UiFormMain ui;
 
         public FormMainController()
         {
@@ -83,7 +83,7 @@ namespace cadencii
             mStepSequencerEnabled = value;
         }
 
-        public void setupUi(FormMainUi ui)
+        public void setupUi(UiFormMain ui)
         {
             this.ui = ui;
         }

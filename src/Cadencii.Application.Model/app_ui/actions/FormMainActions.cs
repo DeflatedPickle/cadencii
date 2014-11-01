@@ -9,14 +9,14 @@ namespace cadencii
 		{
 		}
 
-		public static void TrackSelector_MouseClick (FormMainUi window, MouseEventArgs e)
+		public static void TrackSelector_MouseClick (UiFormMain window, MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Right) {
-				if (EditorManager.keyWidth < e.X && e.X < window.trackSelector.Width) {
-					if (window.trackSelector.Height - TrackSelectorConsts.OFFSET_TRACK_TAB <= e.Y && e.Y <= window.trackSelector.Height) {
-						window.cMenuTrackTab.Show (window.trackSelector, e.X, e.Y);
+				if (EditorManager.keyWidth < e.X && e.X < window.TrackSelector.Width) {
+					if (window.TrackSelector.Height - TrackSelectorConsts.OFFSET_TRACK_TAB <= e.Y && e.Y <= window.TrackSelector.Height) {
+						window.MenuTrackTab.Show (window.TrackSelector, e.X, e.Y);
 					} else {
-						window.cMenuTrackSelector.Show (window.trackSelector, e.X, e.Y);
+						window.MenuTrackSelector.Show (window.TrackSelector, e.X, e.Y);
 					}
 				}
 			}

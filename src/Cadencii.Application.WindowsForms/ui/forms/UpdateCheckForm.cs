@@ -1,3 +1,4 @@
+#if SUPPORT_UPDATE_FORM
 /*
  * UpdateCheckForm.cs
  * Copyright © 2013 kbinani
@@ -172,3 +173,4 @@ namespace cadencii.ui.dotnet
         }
     }
 }
+#endif

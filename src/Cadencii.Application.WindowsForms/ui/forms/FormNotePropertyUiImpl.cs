@@ -19,7 +19,7 @@ using Keys = cadencii.java.awt.Keys;
 
 namespace cadencii
 {
-    public class FormNotePropertyUiImpl : Form, FormNotePropertyUi
+    public class FormNotePropertyUiImpl : FormImpl, UiFormNoteProperty
     {
         private FormNotePropertyUiListener listener;
         protected System.Windows.Forms.FormWindowState lastWindowState = System.Windows.Forms.FormWindowState.Normal;

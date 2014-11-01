@@ -98,6 +98,7 @@
     <Compile Include="models\winforms\TickStyle.cs" />
     <Compile Include="models\winforms\ToolBarAppearance.cs" />
     <Compile Include="models\winforms\ToolBarTextAlign.cs" />
+    <Compile Include="models\winforms\ColorDepth.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

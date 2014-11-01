@@ -55,8 +55,23 @@ namespace cadencii
     /// <summary>
     /// エディタのメイン画面クラス
     /// </summary>
-    public partial class FormMain : Form, FormMainUi, PropertyWindowListener
+	public partial class FormMain : FormImpl, UiFormMain, PropertyWindowListener
     {
+		UiContextMenuStrip UiFormMain.MenuTrackTab {
+			get { return cMenuTrackTab; }
+			set { cMenuTrackTab = value; }
+		}
+
+		UiContextMenuStrip UiFormMain.MenuTrackSelector {
+			get { return cMenuTrackSelector; }
+			set { cMenuTrackSelector = value; }
+		}
+
+		TrackSelector UiFormMain.TrackSelector {
+			get { return trackSelector; }
+			set { trackSelector = value; }
+		}
+
         /// <summary>
         /// 特殊なキーの組み合わせのショートカットと、メニューアイテムとの紐付けを保持するクラスです。
         /// </summary>
@@ -1827,6 +1842,8 @@ namespace cadencii
         /// </summary>
         private void showUpdateInformationAsync(bool is_explicit_update_check)
         {
+			MessageBox.Show ("Automatic Update is not supported in this buid");
+			#if SUPPORT_UPDATE_FORM
             menuHelpCheckForUpdates.Enabled = false;
             updater.UpdateInfo update_info = null;
             var worker = new System.ComponentModel.BackgroundWorker();
@@ -1875,6 +1892,7 @@ namespace cadencii
                 t.Start();
             };
             worker.RunWorkerAsync();
+			#endif
         }
         #endregion
 

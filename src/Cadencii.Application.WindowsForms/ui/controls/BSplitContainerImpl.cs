@@ -271,7 +271,7 @@ namespace cadencii.apputil
 			this.Controls.Add((System.Windows.Forms.Control)this.m_panel1.Native);
             this.Controls.Add(this.m_lbl_splitter);
             this.Size = new Size(441, 348);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.SplitContainerEx_Paint);
+            this.Paint += this.SplitContainerEx_Paint;
             ((System.ComponentModel.ISupportInitialize)(this.m_lbl_splitter)).EndInit();
             this.ResumeLayout(false);
         }

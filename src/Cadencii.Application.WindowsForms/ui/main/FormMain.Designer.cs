@@ -2576,7 +2576,7 @@ namespace cadencii
             // 
             // imageListMenu
             // 
-            this.imageListMenu.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+			this.imageListMenu.ColorDepth = cadencii.java.awt.ColorDepth.Depth8Bit;
 			this.imageListMenu.ImageSize = new cadencii.java.awt.Dimension(1, 16);
             this.imageListMenu.TransparentColor = cadencii.java.awt.Colors.Transparent;
             // 
@@ -3066,7 +3066,7 @@ namespace cadencii
         public UiToolStripMenuItem menuTrackRenderAll;
         public UiToolStripSeparator toolStripMenuItem23;
         public UiToolStripMenuItem menuTrackOverlay;
-        public UiContextMenuStrip cMenuTrackTab;
+		public UiContextMenuStrip cMenuTrackTab;
         public UiToolStripMenuItem cMenuTrackTabTrackOn;
         public UiToolStripSeparator toolStripMenuItem24;
         public UiToolStripMenuItem cMenuTrackTabAdd;

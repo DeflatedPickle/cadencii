@@ -15,7 +15,7 @@ using cadencii.java.awt;
 namespace cadencii
 {
 
-    public interface FormNotePropertyUi
+    public interface UiFormNoteProperty : UiForm
     {
         /// <summary>
         /// プロパティウィンドウのトップレベルコンポーネントを追加する

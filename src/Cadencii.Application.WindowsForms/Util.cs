@@ -47,8 +47,8 @@ namespace cadencii.apputil
             if (!isApplyFontRecurseEnabled) {
                 return;
             }
-            item.Font = (System.Drawing.Font) font.NativeFont;
-            foreach (ToolStripItem tsi in item.Items) {
+            item.Font = font;
+            foreach (var tsi in item.Items) {
                 applyToolStripFontRecurse(tsi, font);
             }
         }
@@ -58,15 +58,15 @@ namespace cadencii.apputil
             if (!isApplyFontRecurseEnabled) {
                 return;
             }
-			item.Font = (System.Drawing.Font) font.NativeFont;
-            if (item is ToolStripMenuItem) {
-                ToolStripMenuItem tsmi = (ToolStripMenuItem)item;
-                foreach (ToolStripItem tsi in tsmi.DropDownItems) {
+			item.Font = font;
+            if (item is UiToolStripMenuItem) {
+                var tsmi = (UiToolStripMenuItem)item;
+                foreach (var tsi in tsmi.DropDownItems) {
                     applyToolStripFontRecurse(tsi, font);
                 }
-            } else if (item is ToolStripDropDownItem) {
-                ToolStripDropDownItem tsdd = (ToolStripDropDownItem)item;
-                foreach (ToolStripItem tsi in tsdd.DropDownItems) {
+            } else if (item is UiToolStripDropDownItem) {
+                var tsdd = (UiToolStripDropDownItem)item;
+                foreach (var tsi in tsdd.DropDownItems) {
                     applyToolStripFontRecurse(tsi, font);
                 }
             }
@@ -188,9 +188,9 @@ namespace cadencii.apputil
             if (!isApplyFontRecurseEnabled) {
                 return;
             }
-            c.Font = (Font) font.NativeFont;
-            for (int i = 0; i < c.Controls.Count; i++) {
-                applyFontRecurse(c.Controls[i], font);
+            c.Font = font;
+			foreach (var cc in c.Controls) {
+                applyFontRecurse(cc, font);
             }
         }
     }

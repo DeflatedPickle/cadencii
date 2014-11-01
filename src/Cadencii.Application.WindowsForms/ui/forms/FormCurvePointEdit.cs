@@ -28,9 +28,9 @@ namespace cadencii
         private long m_editing_id = -1;
         private CurveType m_curve;
         private bool m_changed = false;
-        private FormMainUi mMainWindow = null;
+        private UiFormMain mMainWindow = null;
 
-        public FormCurvePointEditImpl(FormMainUi main_window, long editing_id, CurveType curve)
+        public FormCurvePointEditImpl(UiFormMain main_window, long editing_id, CurveType curve)
         {
             InitializeComponent();
             mMainWindow = main_window;

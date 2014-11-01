@@ -96,7 +96,7 @@ namespace cadencii
         /// <summary>
         /// メイン画面への参照
         /// </summary>
-        private FormMainUi mMainForm = null;
+        private UiFormMain mMainForm = null;
 
         public PictPianoRollImpl()
         { }
@@ -105,7 +105,7 @@ namespace cadencii
         /// メイン画面への参照を設定します
         /// </summary>
         /// <param name="form"></param>
-        public void setMainForm(FormMainUi form)
+        public void setMainForm(UiFormMain form)
         {
 		mMainForm = form;
         }

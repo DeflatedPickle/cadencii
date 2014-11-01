@@ -20,16 +20,16 @@ namespace cadencii
     /// <summary>
     /// メイン画面の実装クラスが持つべきメソッドを定義するインターフェース
     /// </summary>
-    public interface FormMainUi
+    public interface UiFormMain : UiForm
     {
 		int calculateStartToDrawX ();
 
 		bool isMouseMiddleButtonDowned (cadencii.java.awt.MouseButtons mouseButtons);
 
-		UiContextMenuStrip cMenuTrackTab { get; set; }
-		UiContextMenuStrip cMenuTrackSelector { get; set; }
+		UiContextMenuStrip MenuTrackTab { get; set; }
+		UiContextMenuStrip MenuTrackSelector { get; set; }
 
-		TrackSelector trackSelector { get; set; }
+		TrackSelector TrackSelector { get; set; }
 
 		UiHScrollBar hScroll { get; set; }
 

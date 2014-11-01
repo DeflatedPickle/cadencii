@@ -5,6 +5,11 @@ namespace cadencii
 {
 	public interface UiToolStripMenuItem : UiToolStripDropDownItem
 	{
+		cadencii.java.awt.Image Image {
+			get;
+			set;
+		}
+
 		CheckState CheckState { get; set; }
 		ToolStripItemDisplayStyle DisplayStyle { get; set; }
 		ToolStripItemImageScaling ImageScaling { get; set; }

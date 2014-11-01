@@ -23,10 +23,10 @@ namespace cadencii
     public class FormNotePropertyController : FormNotePropertyUiListener
     {
         private bool mPreviousAlwaysOnTop;
-        private FormNotePropertyUi ui;
+        private UiFormNoteProperty ui;
         private PropertyWindowListener propertyWindowListener;
 
-		public FormNotePropertyController(Func<FormNotePropertyController,FormNotePropertyUi> createUi, PropertyWindowListener propertyWindowListener)
+		public FormNotePropertyController(Func<FormNotePropertyController,UiFormNoteProperty> createUi, PropertyWindowListener propertyWindowListener)
         {
             this.propertyWindowListener = propertyWindowListener;
             this.ui = createUi (this);
@@ -62,7 +62,7 @@ namespace cadencii
             this.ui.setMenuCloseAccelerator(value);
         }
 
-        public FormNotePropertyUi getUi()
+        public UiFormNoteProperty getUi()
         {
             return this.ui;
         }
