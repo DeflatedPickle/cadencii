@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace cadencii
 {
-	public interface UiContextMenu : UiControl
+	public interface UiContextMenu : UiComponent
 	{
 		List<UiMenuItem> MenuItems { get; }
 

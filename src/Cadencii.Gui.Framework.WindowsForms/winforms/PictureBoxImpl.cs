@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using cadencii.java.awt;
 using Keys = cadencii.java.awt.Keys;
@@ -16,8 +16,55 @@ using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 
 namespace cadencii
 {
-	public class StatusStripImpl : System.Windows.Forms.StatusStrip, UiStatusStrip
+	public class PictureBoxImpl : System.Windows.Forms.PictureBox, UiPictureBox
 	{
+		event EventHandler<PaintEventArgs> UiPictureBox.Paint {
+			add {
+				throw new NotImplementedException ();
+			}
+			remove {
+				throw new NotImplementedException ();
+			}
+		}
+
+		cadencii.java.awt.Cursor UiPictureBox.Cursor {
+			get {
+				throw new NotImplementedException ();
+			}
+			set {
+				throw new NotImplementedException ();
+			}
+		}
+
+		cadencii.java.awt.BorderStyle UiPictureBox.BorderStyle {
+			get {
+				throw new NotImplementedException ();
+			}
+			set {
+				throw new NotImplementedException ();
+			}
+		}
+
+		PictureBoxSizeMode UiPictureBox.SizeMode {
+			get { return (PictureBoxSizeMode) SizeMode; }
+			set { SizeMode = (System.Windows.Forms.PictureBoxSizeMode) value; }
+		}
+
+		Dimension UiPictureBox.MaximumSize {
+			get { return MaximumSize.ToAwt (); }
+			set { MaximumSize = value.ToWF (); }
+		}
+
+		Dimension UiPictureBox.MinimumSize {
+			get { return MinimumSize.ToAwt (); }
+			set { MinimumSize = value.ToWF (); }
+		}
+
+		Image UiPictureBox.Image {
+			get { return Image.ToAwt (); }
+			set { Image = (System.Drawing.Image) value.NativeImage; }
+		}
+
 		// UiControl
 
 		System.Collections.Generic.IEnumerable<UiControl> UiControl.Controls {

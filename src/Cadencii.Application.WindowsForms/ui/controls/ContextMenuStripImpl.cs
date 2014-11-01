@@ -13,6 +13,7 @@ using NKeyEventHandler = cadencii.java.awt.KeyEventHandler;
 using NMouseButtons = cadencii.java.awt.MouseButtons;
 using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
 using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
+using System.ComponentModel;
 
 namespace cadencii
 {
@@ -21,6 +22,40 @@ namespace cadencii
 		public ContextMenuStripImpl (System.ComponentModel.IContainer components)
 			: base (components)
 		{
+			// FIXME: there should be some weak event
+			Opening += (o, e) => opening (o, new CancelEventArgs ());
+		}
+
+		event EventHandler opening;
+		event EventHandler UiContextMenuStrip.Opening {
+			add { opening += value; }
+			remove { opening -= value; }
+		}
+
+		void UiContextMenuStrip.Show (UiControl control, int x, int y)
+		{
+			throw new NotImplementedException ();
+		}
+
+		System.Collections.Generic.List<UiToolStripItem> UiContextMenuStrip.Items {
+			get {
+				throw new NotImplementedException ();
+			}
+		}
+
+		ToolStripRenderMode UiContextMenuStrip.RenderMode {
+			get {
+				throw new NotImplementedException ();
+			}
+			set {
+				throw new NotImplementedException ();
+			}
+		}
+
+		System.Collections.Generic.IEnumerable<UiControl> UiControl.Controls {
+			get {
+				throw new NotImplementedException ();
+			}
 		}
 
 		// UiControl

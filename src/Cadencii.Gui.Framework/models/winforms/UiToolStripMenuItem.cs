@@ -1,11 +1,12 @@
 using System;
+using System.Linq;
 using cadencii.java.awt;
 
 namespace cadencii
 {
 	public interface UiToolStripMenuItem : UiToolStripDropDownItem
 	{
-		cadencii.java.awt.Image Image {
+		Image Image {
 			get;
 			set;
 		}

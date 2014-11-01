@@ -62,6 +62,11 @@ namespace cadencii.java.awt
 			a.drawRect (x, y, width, height);
 		}
 
+		public void drawRect(Stroke pen, Rectangle rect)
+		{
+			a.drawRect (pen, rect);
+		}
+
 		public void fillRect(int x, int y, int width, int height)
 		{
 			a.fillRect (x, y, width, height);
@@ -227,6 +232,8 @@ namespace cadencii.java.awt
 			public abstract void drawLine(int x1, int y1, int x2, int y2);
 
 			public abstract void drawRect(int x, int y, int width, int height);
+
+			public abstract void drawRect(Stroke pen, Rectangle rect);
 
 			public abstract void drawBezier(float x1, float y1, float ctrlx1, float ctrly1, float ctrlx2, float ctrly2, float x2, float y2);
 

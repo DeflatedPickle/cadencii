@@ -13,47 +13,21 @@ using NKeyEventHandler = cadencii.java.awt.KeyEventHandler;
 using NMouseButtons = cadencii.java.awt.MouseButtons;
 using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
 using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
-using System.Collections.Generic;
 
 namespace cadencii
 {
-	public class ListViewImpl : System.Windows.Forms.ListView, UiListView
+	public class ToolStripContainerImpl : System.Windows.Forms.ToolStripContainer, UiToolStripContainer
 	{
-		// UiListView
-
-		int UiListView.ItemCount {
-			get { return Items.Count; }
+		UiToolStripPanel UiToolStripContainer.ContentPanel {
+			get {
+				throw new NotImplementedException ();
+			}
 		}
 
-		void UiListView.AddRow(string[] items, bool selected)
-		{
-			cadencii.windows.forms.Utility.AddRow (this, items, selected);
-		}
-
-		void UiListView.SetColumnHeaders (string[] headers)
-		{
-			cadencii.windows.forms.Utility.SetColumnHeaders (this, headers);
-		}
-
-		UiListViewItem UiListView.GetItem (int i)
-		{
-			return new ListViewItemImpl (Items [i]);
-		}
-		void UiListView.ClearItems ()
-		{
-			Items.Clear ();
-		}
-		UiListViewColumn UiListView.GetColumn (int i)
-		{
-			return new ListViewColumnImpl (Columns [i]);
-		}
-		void UiListView.AddGroups (IEnumerable<UiListViewGroup> groups)
-		{
-			Groups.AddRange (groups.Select (g => (System.Windows.Forms.ListViewGroup) g.Native).ToArray ());
-		}
-		cadencii.java.awt.View UiListView.View {
-			get { return (cadencii.java.awt.View) View; }
-			set { View = (System.Windows.Forms.View) value; } 
+		UiToolStripPanel UiToolStripContainer.BottomToolStripPanel {
+			get {
+				throw new NotImplementedException ();
+			}
 		}
 
 		// UiControl
@@ -76,7 +50,7 @@ namespace cadencii
 		{
 			Controls.Clear ();
 		}
-	
+
 		object UiControl.Native {
 			get { return this; }
 		}

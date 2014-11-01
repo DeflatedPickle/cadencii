@@ -18,6 +18,24 @@ namespace cadencii
 {
 	public class TrackBarImpl : System.Windows.Forms.TrackBar, UiTrackBar
 	{
+		event EventHandler UiTrackBar.ValueChanged {
+			add {
+				throw new NotImplementedException ();
+			}
+			remove {
+				throw new NotImplementedException ();
+			}
+		}
+
+		cadencii.java.awt.TickStyle UiTrackBar.TickStyle {
+			get {
+				throw new NotImplementedException ();
+			}
+			set {
+				throw new NotImplementedException ();
+			}
+		}
+
 		// UiControl
 
 		System.Collections.Generic.IEnumerable<UiControl> UiControl.Controls {

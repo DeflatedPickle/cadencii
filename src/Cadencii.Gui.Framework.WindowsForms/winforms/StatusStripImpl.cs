@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using cadencii.java.awt;
 using Keys = cadencii.java.awt.Keys;
@@ -16,8 +16,12 @@ using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 
 namespace cadencii
 {
-	public class ToolStripContainerImpl : System.Windows.Forms.ToolStripContainer, UiToolStripContainer
+	public class StatusStripImpl : System.Windows.Forms.StatusStrip, UiStatusStrip
 	{
+		System.Collections.Generic.IList<UiToolStripItem> UiStatusStrip.Items {
+			get { return new CastingList<UiToolStripItem, System.Windows.Forms.ToolStripItem> (Items, null, null); }
+		}
+
 		// UiControl
 
 		System.Collections.Generic.IEnumerable<UiControl> UiControl.Controls {

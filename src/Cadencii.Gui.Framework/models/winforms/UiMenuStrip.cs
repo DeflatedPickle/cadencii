@@ -10,7 +10,7 @@ namespace cadencii
 
 		string Text { get; set; }
 
-		List<UiToolStripItem> Items { get; }
+		IList<UiToolStripItem> Items { get; }
 	}
 }
 

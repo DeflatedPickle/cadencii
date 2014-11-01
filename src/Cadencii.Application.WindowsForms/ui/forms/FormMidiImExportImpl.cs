@@ -22,7 +22,7 @@ using HorizontalAlignment = cadencii.java.awt.HorizontalAlignment;
 
 namespace cadencii
 {
-    public class FormMidiImExportImpl : Form
+    public class FormMidiImExportImpl : FormImpl
     {
         private FormMidiMode m_mode;
         private VsqFileEx m_vsq;

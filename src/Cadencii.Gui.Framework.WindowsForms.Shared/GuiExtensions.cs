@@ -92,6 +92,11 @@ namespace cadencii
 		{
 			return (System.Drawing.Font) f.NativeFont;
 		}
+
+		public static cadencii.PaintEventArgs ToAwt (this System.Windows.Forms.PaintEventArgs e)
+		{
+			return new PaintEventArgs () { Graphics = new Graphics () { NativeGraphics = e.Graphics } };
+		}
 	}
 }
 

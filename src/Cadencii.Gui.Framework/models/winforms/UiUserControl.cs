@@ -1,6 +1,5 @@
 using System;
 using cadencii.java.awt;
-using cadencii.vsq;
 
 namespace cadencii
 {

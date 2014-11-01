@@ -40,7 +40,7 @@ namespace cadencii
             numClock.Maximum = clock_max;
             numClock.Value = clock;
             numTempo.Value = (decimal)tempo;
-            Util.applyFontRecurse((Form) ((UiForm) this).Native, EditorManager.editorConfig.getBaseFont());
+            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods

@@ -115,7 +115,6 @@
     <Compile Include="controls\RecentFileMenuItem.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="WFUtility.cs" />
     <Compile Include="ui\forms\FormAskKeySoundGenerationUiImpl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,11 +204,6 @@
     <Compile Include="ui\controls\NumberTextBoxImpl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ui\winforms\ButtonImpl.cs" />
-    <Compile Include="ui\winforms\TextBoxImpl.cs" />
-    <Compile Include="ui\winforms\PictureBoxImpl.cs" />
-    <Compile Include="ui\winforms\UserControlImpl.cs" />
-    <Compile Include="ui\winforms\FormImpl.cs" />
     <Compile Include="ui\forms\FormCurvePointEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,12 +211,10 @@
     <Compile Include="ui\controls\IconParaderImpl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ui\winforms\HScrollBarImpl.cs" />
     <Compile Include="ui\controls\PictOverviewImpl.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ui\controls\BitmapExImpl.cs" />
-    <Compile Include="ui\winforms\PanelImpl.cs" />
     <Compile Include="ui\controls\PropertyPanelContainerImpl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -232,14 +224,9 @@
     <Compile Include="ui\controls\BSplitContainerImpl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ui\winforms\VScrollBarImpl.cs" />
-    <Compile Include="ui\winforms\TrackBarImpl.cs" />
-    <Compile Include="ui\winforms\NumericUpDownImpl.cs" />
     <Compile Include="ui\controls\NumericUpDownExImpl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ui\winforms\ContainerControlImpl.cs" />
-    <Compile Include="ui\winforms\ToolBarImpl.cs" />
     <Compile Include="ui\controls\RebarBandCollectionImpl.cs" />
     <Compile Include="ui\controls\RebarBandImpl.cs">
       <SubType>Component</SubType>
@@ -274,10 +261,6 @@
     <Compile Include="ui\forms\FormImportLyricImpl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ui\winforms\ListViewImpl.cs" />
-    <Compile Include="ui\winforms\ListViewGroupImpl.cs" />
-    <Compile Include="ui\winforms\ListViewColumnImpl.cs" />
-    <Compile Include="ui\winforms\ListViewItemImpl.cs" />
     <Compile Include="ui\forms\FormMidiImExportImpl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -339,19 +322,7 @@
       <DependentUpon>PreferenceImpl.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="ui\controls\ContextMenuStripImpl.cs" />
-    <Compile Include="ui\winforms\ToolStripMenuItemImpl.cs" />
-    <Compile Include="ui\winforms\ToolStripSeparatorImpl.cs" />
-    <Compile Include="ui\winforms\Extensions.cs" />
-    <Compile Include="ui\winforms\MenuStripImpl.cs" />
-    <Compile Include="ui\winforms\ToolBarButtonImpl.cs" />
-    <Compile Include="ui\winforms\ContextMenuImpl.cs" />
-    <Compile Include="ui\winforms\ToolStripStatusLabelImpl.cs" />
-    <Compile Include="ui\winforms\ToolStripImpl.cs" />
-    <Compile Include="ui\winforms\ToolStripButtonImpl.cs" />
-    <Compile Include="ui\winforms\ToolStripContainerImpl.cs" />
-    <Compile Include="ui\winforms\MenuItemImpl.cs" />
-    <Compile Include="ui\winforms\ImageListImpl.cs" />
-    <Compile Include="ui\winforms\StatusStripImpl.cs" />
+    <Compile Include="WFUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />

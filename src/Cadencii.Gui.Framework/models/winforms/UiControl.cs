@@ -1,6 +1,5 @@
 using System;
 using cadencii.java.awt;
-using cadencii.vsq;
 using System.Collections.Generic;
 
 namespace cadencii

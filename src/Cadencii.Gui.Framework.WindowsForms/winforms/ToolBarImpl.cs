@@ -16,8 +16,59 @@ using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 
 namespace cadencii
 {
-	public class ToolStripImpl : System.Windows.Forms.ToolStrip, UiToolStrip
+	public class ToolBarImpl : System.Windows.Forms.ToolBar, UiToolBar
 	{
+		event EventHandler<UiToolBarButtonEventArgs> UiToolBar.ButtonClick {
+			add {
+				throw new NotImplementedException ();
+			}
+			remove {
+				throw new NotImplementedException ();
+			}
+		}
+
+		ToolBarTextAlign UiToolBar.TextAlign {
+			get {
+				throw new NotImplementedException ();
+			}
+			set {
+				throw new NotImplementedException ();
+			}
+		}
+
+		UiImageList UiToolBar.ImageList {
+			get {
+				throw new NotImplementedException ();
+			}
+			set {
+				throw new NotImplementedException ();
+			}
+		}
+
+		Dimension UiToolBar.ButtonSize {
+			get {
+				throw new NotImplementedException ();
+			}
+			set {
+				throw new NotImplementedException ();
+			}
+		}
+
+		ToolBarAppearance UiToolBar.Appearance {
+			get {
+				throw new NotImplementedException ();
+			}
+			set {
+				throw new NotImplementedException ();
+			}
+		}
+
+		System.Collections.Generic.List<UiToolBarButton> UiToolBar.Buttons {
+			get {
+				throw new NotImplementedException ();
+			}
+		}
+
 		// UiControl
 
 		System.Collections.Generic.IEnumerable<UiControl> UiControl.Controls {

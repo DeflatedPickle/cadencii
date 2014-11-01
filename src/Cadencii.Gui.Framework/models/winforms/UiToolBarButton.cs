@@ -22,7 +22,7 @@ namespace cadencii
 		object Tag { get; set; }
 		string Text { get; set; }
 		string ToolTipText { get; set; }
-		Rectangle Rectangle { get; set; }
+		Rectangle Rectangle { get; }
 	}
 }
 

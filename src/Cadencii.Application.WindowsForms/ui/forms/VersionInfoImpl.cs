@@ -341,7 +341,7 @@ namespace cadencii
         private void VersionInfo_FontChanged(Object sender, EventArgs e)
         {
             for (int i = 0; i < this.Controls.Count; i++) {
-                Util.applyFontRecurse(this.Controls[i], new java.awt.Font(this.Font));
+				Util.applyFontRecurse((UiControl) this.Controls[i], new java.awt.Font(this.Font));
             }
         }
 
@@ -353,7 +353,7 @@ namespace cadencii
 
         private void registerEventHandlers()
         {
-            this.Paint += new PaintEventHandler(this.VersionInfo_Paint);
+			this.Paint += (o, e) => this.VersionInfo_Paint (o, e.ToAwt ());
             this.KeyDown += new KeyEventHandler(this.VersionInfo_KeyDown);
             this.FontChanged += new EventHandler(this.VersionInfo_FontChanged);
             this.timer.Tick += new EventHandler(timer_Tick);

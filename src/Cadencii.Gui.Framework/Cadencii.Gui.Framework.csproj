@@ -99,6 +99,36 @@
     <Compile Include="models\winforms\ToolBarAppearance.cs" />
     <Compile Include="models\winforms\ToolBarTextAlign.cs" />
     <Compile Include="models\winforms\ColorDepth.cs" />
+    <Compile Include="models\winforms\PaintEventArgs.cs" />
+    <Compile Include="models\winforms\UiComponent.cs" />
+    <Compile Include="models\winforms\UiContextMenu.cs" />
+    <Compile Include="models\winforms\UiContextMenuStrip.cs" />
+    <Compile Include="models\winforms\UiControl.cs" />
+    <Compile Include="models\winforms\UiForm.cs" />
+    <Compile Include="models\winforms\UiHScrollBar.cs" />
+    <Compile Include="models\winforms\UiImageList.cs" />
+    <Compile Include="models\winforms\UiListView.cs" />
+    <Compile Include="models\winforms\UiMenuItem.cs" />
+    <Compile Include="models\winforms\UiMenuStrip.cs" />
+    <Compile Include="models\winforms\UiPanel.cs" />
+    <Compile Include="models\winforms\UiPictureBox.cs" />
+    <Compile Include="models\winforms\UiStatusStrip.cs" />
+    <Compile Include="models\winforms\UiTextBox.cs" />
+    <Compile Include="models\winforms\UiToolBar.cs" />
+    <Compile Include="models\winforms\UiToolBarButton.cs" />
+    <Compile Include="models\winforms\UiToolBarButtonEventArgs.cs" />
+    <Compile Include="models\winforms\UiToolStrip.cs" />
+    <Compile Include="models\winforms\UiToolStripButton.cs" />
+    <Compile Include="models\winforms\UiToolStripContainer.cs" />
+    <Compile Include="models\winforms\UiToolStripDropDownItem.cs" />
+    <Compile Include="models\winforms\UiToolStripItem.cs" />
+    <Compile Include="models\winforms\UiToolStripMenuItem.cs" />
+    <Compile Include="models\winforms\UiToolStripPanel.cs" />
+    <Compile Include="models\winforms\UiToolStripSeparator.cs" />
+    <Compile Include="models\winforms\UiToolStripStatusLabel.cs" />
+    <Compile Include="models\winforms\UiTrackBar.cs" />
+    <Compile Include="models\winforms\UiUserControl.cs" />
+    <Compile Include="models\winforms\UiVScrollBar.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

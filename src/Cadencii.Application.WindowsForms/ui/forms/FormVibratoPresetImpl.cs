@@ -24,7 +24,7 @@ using cadencii.windows.forms;
 namespace cadencii
 {
 
-    public class FormVibratoPresetImpl : Form
+    public class FormVibratoPresetImpl : FormImpl
     {
         /// <summary>
         /// プレビューの各グラフにおいて，上下に追加するマージンの高さ(ピクセル)
@@ -292,7 +292,7 @@ namespace cadencii
             // 背景を描画
             int raw_width = pictureResulting.Width;
             int raw_height = pictureResulting.Height;
-            System.Drawing.Graphics g = e.Graphics;
+			var g = (System.Drawing.Graphics) e.Graphics.NativeGraphics;
             g.FillRectangle(System.Drawing.Brushes.LightGray, 0, 0, raw_width, raw_height);
 
             // 選択中のハンドルを取得
@@ -364,7 +364,7 @@ namespace cadencii
             // 背景を描画
             int width = pictureRate.Width;
             int height = pictureRate.Height;
-            System.Drawing.Graphics g = e.Graphics;
+			var g = (System.Drawing.Graphics) e.Graphics.NativeGraphics;
             g.FillRectangle(System.Drawing.Brushes.LightGray, 0, 0, width, height);
 
             // 選択中のハンドルを取得
@@ -389,7 +389,7 @@ namespace cadencii
             // 背景を描画
             int width = pictureDepth.Width;
             int height = pictureDepth.Height;
-            System.Drawing.Graphics g = e.Graphics;
+			var g = (System.Drawing.Graphics) e.Graphics.NativeGraphics;
             g.FillRectangle(System.Drawing.Brushes.LightGray, 0, 0, width, height);
 
             // 選択中のハンドルを取得
@@ -434,9 +434,9 @@ namespace cadencii
             buttonUp.Click += new EventHandler(handleUpDownButtonClick);
             buttonDown.Click += new EventHandler(handleUpDownButtonClick);
 
-            pictureDepth.Paint += new PaintEventHandler(pictureDepth_Paint);
-            pictureRate.Paint += new PaintEventHandler(pictureRate_Paint);
-            pictureResulting.Paint += new PaintEventHandler(pictureResulting_Paint);
+			pictureDepth.Paint += (o, e) => pictureDepth_Paint (o, e.ToAwt ());
+			pictureRate.Paint += (o, e) => pictureRate_Paint (o, e.ToAwt ());
+			pictureResulting.Paint += (o, e) => pictureResulting_Paint (o, e.ToAwt ());
 
             this.Resize += new EventHandler(FormVibratoPreset_Resize);
             buttonOk.Click += new EventHandler(buttonOk_Click);

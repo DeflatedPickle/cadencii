@@ -271,7 +271,7 @@ namespace cadencii.apputil
 			this.Controls.Add((System.Windows.Forms.Control)this.m_panel1.Native);
             this.Controls.Add(this.m_lbl_splitter);
             this.Size = new Size(441, 348);
-            this.Paint += this.SplitContainerEx_Paint;
+			this.Paint += (o,e) => this.SplitContainerEx_Paint (o, new PaintEventArgs () { Graphics = new cadencii.java.awt.Graphics () { NativeGraphics = e.Graphics } });
             ((System.ComponentModel.ISupportInitialize)(this.m_lbl_splitter)).EndInit();
             this.ResumeLayout(false);
         }
@@ -314,8 +314,8 @@ namespace cadencii.apputil
                         m_panel1_border = new Pen(m_panel1.BorderColor.ToNative ());
                     }
                 }
-                e.Graphics.DrawRectangle(m_panel1_border,
-                                          new Rectangle(m_panel1.Left - 1, m_panel1.Top - 1, m_panel1.Width + 1, m_panel1.Height + 1));
+				e.Graphics.drawRect(new cadencii.java.awt.Stroke () { NativePen = m_panel1_border },
+                                          new cadencii.java.awt.Rectangle(m_panel1.Left - 1, m_panel1.Top - 1, m_panel1.Width + 1, m_panel1.Height + 1));
             }
 
             bool panel2_visible = true;
@@ -336,8 +336,8 @@ namespace cadencii.apputil
                         m_panel2_border = new Pen(m_panel2.BorderColor.ToNative ());
                     }
                 }
-                e.Graphics.DrawRectangle(m_panel2_border,
-                                          new Rectangle(m_panel2.Left - 1, m_panel2.Top - 1, m_panel2.Width + 1, m_panel2.Height + 1));
+				e.Graphics.drawRect(new cadencii.java.awt.Stroke () { NativePen = m_panel2_border },
+					new cadencii.java.awt.Rectangle(m_panel2.Left - 1, m_panel2.Top - 1, m_panel2.Width + 1, m_panel2.Height + 1));
             }
         }
 

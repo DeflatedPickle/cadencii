@@ -10,7 +10,7 @@ namespace cadencii
 			set;
 		}
 
-		List<UiToolStripItem> Items {
+		IList<UiToolStripItem> Items {
 			get;
 		}
 	}

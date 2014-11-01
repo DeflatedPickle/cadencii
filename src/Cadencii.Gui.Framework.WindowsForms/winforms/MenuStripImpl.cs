@@ -13,29 +13,19 @@ using NKeyEventHandler = cadencii.java.awt.KeyEventHandler;
 using NMouseButtons = cadencii.java.awt.MouseButtons;
 using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
 using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
+using System.Collections.Generic;
 
 namespace cadencii
 {
-	public class PictureBoxImpl : System.Windows.Forms.PictureBox, UiPictureBox
+	public class MenuStripImpl : System.Windows.Forms.MenuStrip, UiMenuStrip
 	{
-		PictureBoxSizeMode UiPictureBox.SizeMode {
-			get { return (PictureBoxSizeMode) SizeMode; }
-			set { SizeMode = (System.Windows.Forms.PictureBoxSizeMode) value; }
+		ToolStripRenderMode UiMenuStrip.RenderMode {
+			get { return (ToolStripRenderMode)RenderMode; }
+			set { RenderMode = (System.Windows.Forms.ToolStripRenderMode) value; }
 		}
 
-		Dimension UiPictureBox.MaximumSize {
-			get { return MaximumSize.ToAwt (); }
-			set { MaximumSize = value.ToWF (); }
-		}
-
-		Dimension UiPictureBox.MinimumSize {
-			get { return MinimumSize.ToAwt (); }
-			set { MinimumSize = value.ToWF (); }
-		}
-
-		Image UiPictureBox.Image {
-			get { return Image.ToAwt (); }
-			set { Image = (System.Drawing.Image) value.NativeImage; }
+		IList<UiToolStripItem> UiMenuStrip.Items {
+			get { return new CastingList<UiToolStripItem, System.Windows.Forms.ToolStripItem> (Items, null, null); }
 		}
 
 		// UiControl

@@ -22,14 +22,14 @@ namespace cadencii
 			set;
 		}
 
-		void SetImagesKeyName (int i, string diskpluspng);
+		void SetImagesKeyName (int i, string name);
 
 		Color TransparentColor {
 			get;
 			set;
 		}
 
-		List<Image> Images { get; }
+		ICollection<Image> Images { get; }
 	}
 
 }

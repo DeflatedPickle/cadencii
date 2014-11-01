@@ -41,6 +41,36 @@
     <Compile Include="..\Cadencii.Gui.Framework.WindowsForms.Shared\GuiExtensions.cs">
       <Link>GuiExtensions.cs</Link>
     </Compile>
+    <Compile Include="winforms\ButtonImpl.cs" />
+    <Compile Include="winforms\ContainerControlImpl.cs" />
+    <Compile Include="winforms\ContextMenuImpl.cs" />
+    <Compile Include="winforms\Extensions.cs" />
+    <Compile Include="winforms\FormImpl.cs" />
+    <Compile Include="winforms\HScrollBarImpl.cs" />
+    <Compile Include="winforms\ImageListImpl.cs" />
+    <Compile Include="winforms\ListViewColumnImpl.cs" />
+    <Compile Include="winforms\ListViewGroupImpl.cs" />
+    <Compile Include="winforms\ListViewImpl.cs" />
+    <Compile Include="winforms\ListViewItemImpl.cs" />
+    <Compile Include="winforms\MenuItemImpl.cs" />
+    <Compile Include="winforms\MenuStripImpl.cs" />
+    <Compile Include="winforms\NumericUpDownImpl.cs" />
+    <Compile Include="winforms\PanelImpl.cs" />
+    <Compile Include="winforms\PictureBoxImpl.cs" />
+    <Compile Include="winforms\StatusStripImpl.cs" />
+    <Compile Include="winforms\TextBoxImpl.cs" />
+    <Compile Include="winforms\ToolBarButtonImpl.cs" />
+    <Compile Include="winforms\ToolBarImpl.cs" />
+    <Compile Include="winforms\ToolStripButtonImpl.cs" />
+    <Compile Include="winforms\ToolStripContainerImpl.cs" />
+    <Compile Include="winforms\ToolStripImpl.cs" />
+    <Compile Include="winforms\ToolStripMenuItemImpl.cs" />
+    <Compile Include="winforms\ToolStripSeparatorImpl.cs" />
+    <Compile Include="winforms\ToolStripStatusLabelImpl.cs" />
+    <Compile Include="winforms\TrackBarImpl.cs" />
+    <Compile Include="winforms\UserControlImpl.cs" />
+    <Compile Include="winforms\VScrollBarImpl.cs" />
+    <Compile Include="winforms\CastingList.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

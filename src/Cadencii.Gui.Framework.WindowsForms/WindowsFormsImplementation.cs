@@ -209,6 +209,11 @@ namespace cadencii.java.awt
 			nativeGraphics.DrawRectangle ((System.Drawing.Pen)stroke.NativePen, x, y, width, height);
 		}
 
+		public override void drawRect (Stroke pen, Rectangle rect)
+		{
+			nativeGraphics.DrawRectangle ((System.Drawing.Pen) pen.NativePen, rect.X, rect.Y, rect.Width, rect.Height);
+		}
+
 		public override void fillRect (int x, int y, int width, int height)
 		{
 			nativeGraphics.FillRectangle (brush, x, y, width, height);

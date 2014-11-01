@@ -40,41 +40,17 @@ namespace cadencii.windows.forms
             return dialog;
         }
 
-        public static void AddRow(this System.Windows.Forms.ListView list_view, string[] items, bool selected = false)
-        {
-            var item = new System.Windows.Forms.ListViewItem(items);
-            item.Checked = selected;
-            if (list_view.Columns.Count < items.Length) {
-                for (int i = list_view.Columns.Count; i < items.Length; i++) {
-                    list_view.Columns.Add("");
-                }
-            }
-            list_view.Items.Add(item);
-        }
+		public static System.Windows.Forms.Control Mnemonic(this System.Windows.Forms.Control control, Keys value)
+		{
+			control.Text = GetMnemonicString(control.Text, value);
+			return control;
+		}
 
-        public static void SetColumnHeaders(this System.Windows.Forms.ListView list_view, string[] headers)
-        {
-            if (list_view.Columns.Count < headers.Length) {
-                for (int i = list_view.Columns.Count; i < headers.Length; i++) {
-                    list_view.Columns.Add("");
-                }
-            }
-            for (int i = 0; i < headers.Length; i++) {
-                list_view.Columns[i].Text = headers[i];
-            }
-        }
-
-        public static System.Windows.Forms.Control Mnemonic(this System.Windows.Forms.Control control, Keys value)
-        {
-            control.Text = GetMnemonicString(control.Text, value);
-            return control;
-        }
-
-        public static System.Windows.Forms.ToolStripItem Mnemonic(this System.Windows.Forms.ToolStripItem item, Keys value)
-        {
-            item.Text = GetMnemonicString(item.Text, value);
-            return item;
-        }
+		public static System.Windows.Forms.ToolStripItem Mnemonic(this System.Windows.Forms.ToolStripItem item, Keys value)
+		{
+			item.Text = GetMnemonicString(item.Text, value);
+			return item;
+		}
 
         private static string GetMnemonicString(string text, Keys keys)
         {
