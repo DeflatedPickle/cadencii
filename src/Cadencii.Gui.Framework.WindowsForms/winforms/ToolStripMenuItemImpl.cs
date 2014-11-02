@@ -66,6 +66,8 @@ namespace cadencii
 			get { return new CastingList<UiToolStripItem,System.Windows.Forms.ToolStripItem> (DropDownItems, null, null); }
 		}
 
+		// UiToolStripItem
+
 		event EventHandler UiToolStripItem.MouseEnter {
 			add { MouseEnter += (sender, e) => value (sender, e); }
 			remove {

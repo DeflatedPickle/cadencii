@@ -15358,7 +15358,7 @@ namespace cadencii
             }
         }
 
-        void toolBarMeasure_ButtonClick(Object sender, UiToolBarButtonEventArgs e)
+        void toolBarMeasure_ButtonClick(Object sender, ToolBarButtonClickEventArgs e)
         {
             if (e.Button == stripBtnStartMarker) {
                 handleStartMarker_Click(e.Button, new EventArgs());
@@ -15378,7 +15378,7 @@ namespace cadencii
         }
         #endregion
 
-        void toolBarTool_ButtonClick(Object sender, UiToolBarButtonEventArgs e)
+        void toolBarTool_ButtonClick(Object sender, ToolBarButtonClickEventArgs e)
         {
             if (e.Button == stripBtnPointer) {
                 stripBtnArrow_Click(e.Button, new EventArgs());
@@ -15397,7 +15397,7 @@ namespace cadencii
             }
         }
 
-        void toolBarPosition_ButtonClick(Object sender, UiToolBarButtonEventArgs e)
+        void toolBarPosition_ButtonClick(Object sender, ToolBarButtonClickEventArgs e)
         {
             if (e.Button == stripBtnMoveTop) {
                 stripBtnMoveTop_Click(e.Button, new EventArgs());
@@ -15420,7 +15420,7 @@ namespace cadencii
             }
         }
 
-        void toolBarFile_ButtonClick(Object sender, UiToolBarButtonEventArgs e)
+        void toolBarFile_ButtonClick(Object sender, ToolBarButtonClickEventArgs e)
         {
             if (e.Button == stripBtnFileNew) {
                 handleFileNew_Click(e.Button, new EventArgs());

@@ -1,56 +1,39 @@
 using System;
+using cadencii.java.awt;
 
 namespace cadencii
 {
 	public class ToolStripStatusLabelImpl : System.Windows.Forms.ToolStripStatusLabel, UiToolStripStatusLabel
 	{
-		event EventHandler UiToolStripItem.MouseEnter {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-		event EventHandler UiToolStripItem.Click {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-		cadencii.java.awt.Font UiToolStripItem.Font {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
-		string UiToolStripItem.ShortcutKeyDisplayString {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
-		cadencii.java.awt.Dimension UiToolStripItem.Size {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
 		cadencii.java.awt.Image UiToolStripStatusLabel.Image {
-			get {
+			get { return Image.ToAwt (); }
+			set { Image = value.ToWF (); }
+		}
+
+		// UiToolStripItem
+
+		event EventHandler UiToolStripItem.MouseEnter {
+			add { MouseEnter += (sender, e) => value (sender, e); }
+			remove {
 				throw new NotImplementedException ();
 			}
-			set {
+		}
+
+		event EventHandler UiToolStripItem.Click {
+			add { Click += (sender, e) => value (sender, e); }
+			remove {
 				throw new NotImplementedException ();
 			}
+		}
+
+		Font UiToolStripItem.Font {
+			get { return Font.ToAwt (); }
+			set { Font = value.ToWF (); }
+		}
+
+		Dimension UiToolStripItem.Size {
+			get { return Size.ToAwt (); }
+			set { Size = value.ToWF (); }
 		}
 	}
 }

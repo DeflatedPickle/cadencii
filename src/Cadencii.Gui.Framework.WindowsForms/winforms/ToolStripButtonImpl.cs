@@ -1,72 +1,49 @@
 using System;
+using cadencii.java.awt;
 
 namespace cadencii
 {
 	public class ToolStripButtonImpl : System.Windows.Forms.ToolStripButton, UiToolStripButton
 	{
 		event EventHandler UiToolStripButton.CheckedChanged {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { CheckedChanged += (sender, e) => value (sender, e); }
 			remove {
 				throw new NotImplementedException ();
 			}
 		}
 		cadencii.java.awt.Color UiToolStripButton.ImageTransparentColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return ImageTransparentColor.ToAwt (); }
+			set { ImageTransparentColor = value.ToNative (); }
 		}
 		cadencii.java.awt.Image UiToolStripButton.Image {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return Image.ToAwt (); }
+			set { Image = value.ToWF (); }
 		}
+
+		// UiToolStripItem
+
 		event EventHandler UiToolStripItem.MouseEnter {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { MouseEnter += (sender, e) => value (sender, e); }
 			remove {
 				throw new NotImplementedException ();
 			}
 		}
+
 		event EventHandler UiToolStripItem.Click {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { Click += (sender, e) => value (sender, e); }
 			remove {
 				throw new NotImplementedException ();
 			}
 		}
-		cadencii.java.awt.Font UiToolStripItem.Font {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+
+		Font UiToolStripItem.Font {
+			get { return Font.ToAwt (); }
+			set { Font = value.ToWF (); }
 		}
-		string UiToolStripItem.ShortcutKeyDisplayString {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
-		cadencii.java.awt.Dimension UiToolStripItem.Size {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+
+		Dimension UiToolStripItem.Size {
+			get { return Size.ToAwt (); }
+			set { Size = value.ToWF (); }
 		}
 	}
 }

@@ -5,15 +5,6 @@ namespace cadencii
 {
 	public class ToolStripSeparatorImpl : System.Windows.Forms.ToolStripSeparator, UiToolStripSeparator
 	{
-		string UiToolStripItem.ShortcutKeyDisplayString {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler UiToolStripItem.MouseEnter {
 			add { MouseEnter += (sender, e) => value (sender, e); }
 			remove {

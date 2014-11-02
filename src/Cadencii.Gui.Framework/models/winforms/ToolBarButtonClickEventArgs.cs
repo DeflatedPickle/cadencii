@@ -2,9 +2,9 @@ using System;
 
 namespace cadencii
 {
-	public class UiToolBarButtonEventArgs : EventArgs
+	public class ToolBarButtonClickEventArgs : EventArgs
 	{
-		public UiToolBarButtonEventArgs ()
+		public ToolBarButtonClickEventArgs ()
 		{
 		}
 

@@ -16,7 +16,6 @@ namespace cadencii
 		object Tag { get; set; }
 		string Text { get; set; }
 		string ToolTipText { get; set; }
-		string ShortcutKeyDisplayString { get; set; }
 		Dimension Size { get; set; }
 
 		void PerformClick ();

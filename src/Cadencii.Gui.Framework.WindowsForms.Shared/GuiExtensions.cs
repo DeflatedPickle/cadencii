@@ -97,6 +97,11 @@ namespace cadencii
 		{
 			return new PaintEventArgs () { Graphics = new Graphics () { NativeGraphics = e.Graphics } };
 		}
+
+		public static cadencii.ToolBarButtonClickEventArgs ToAwt (this System.Windows.Forms.ToolBarButtonClickEventArgs e)
+		{
+			return new ToolBarButtonClickEventArgs () { Button = (UiToolBarButton) e.Button };
+		}
 	}
 }
 

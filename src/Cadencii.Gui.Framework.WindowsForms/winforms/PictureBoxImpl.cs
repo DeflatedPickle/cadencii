@@ -20,30 +20,20 @@ namespace cadencii
 	public class PictureBoxImpl : System.Windows.Forms.PictureBox, UiPictureBox
 	{
 		event EventHandler<PaintEventArgs> UiPictureBox.Paint {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { Paint += (sender, e) => value (sender, e.ToAwt ()); }
 			remove {
 				throw new NotImplementedException ();
 			}
 		}
 
-		cadencii.java.awt.Cursor UiPictureBox.Cursor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+		Cursor UiPictureBox.Cursor {
+			get { return Cursor.ToAwt (); }
+			set { Cursor = value.ToNative (); }
 		}
 
-		cadencii.java.awt.BorderStyle UiPictureBox.BorderStyle {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+		BorderStyle UiPictureBox.BorderStyle {
+			get { return (BorderStyle) BorderStyle; }
+			set { BorderStyle = (System.Windows.Forms.BorderStyle) value; }
 		}
 
 		PictureBoxSizeMode UiPictureBox.SizeMode {

@@ -12,6 +12,7 @@ namespace cadencii
 		}
 
 		CheckState CheckState { get; set; }
+		string ShortcutKeyDisplayString { get; set; }
 		ToolStripItemDisplayStyle DisplayStyle { get; set; }
 		ToolStripItemImageScaling ImageScaling { get; set; }
 		TextImageRelation TextImageRelation { get; set; }

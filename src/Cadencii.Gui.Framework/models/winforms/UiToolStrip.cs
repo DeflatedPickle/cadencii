@@ -8,7 +8,7 @@ namespace cadencii
 	{
 		ToolStripRenderMode RenderMode { get; set; }
 
-		List<UiToolStripItem> Items { get; }
+		IList<UiToolStripItem> Items { get; }
 	}
 }
 

@@ -19,55 +19,35 @@ namespace cadencii
 {
 	public class ToolBarImpl : System.Windows.Forms.ToolBar, UiToolBar
 	{
-		event EventHandler<UiToolBarButtonEventArgs> UiToolBar.ButtonClick {
-			add {
-				throw new NotImplementedException ();
-			}
+		event EventHandler<ToolBarButtonClickEventArgs> UiToolBar.ButtonClick {
+			add { ButtonClick += (sender, e) => value (sender, ExtensionsWF.ToAwt (e)); }
 			remove {
 				throw new NotImplementedException ();
 			}
 		}
 
 		ToolBarTextAlign UiToolBar.TextAlign {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (ToolBarTextAlign) TextAlign; }
+			set { TextAlign = (System.Windows.Forms.ToolBarTextAlign) value; }
 		}
 
 		UiImageList UiToolBar.ImageList {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (UiImageList) (object) ImageList; }
+			set { ImageList = (System.Windows.Forms.ImageList) (object) value; }
 		}
 
 		Dimension UiToolBar.ButtonSize {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return ButtonSize.ToAwt (); }
+			set { ButtonSize = value.ToWF (); }
 		}
 
 		ToolBarAppearance UiToolBar.Appearance {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (ToolBarAppearance)Appearance; }
+			set { Appearance = (System.Windows.Forms.ToolBarAppearance) value; }
 		}
 
-		System.Collections.Generic.List<UiToolBarButton> UiToolBar.Buttons {
-			get {
-				throw new NotImplementedException ();
-			}
+		IList<UiToolBarButton> UiToolBar.Buttons {
+			get { return new CastingList<UiToolBarButton,System.Windows.Forms.ToolBarButton> (Buttons, null, null); }
 		}
 
 		// UiControl

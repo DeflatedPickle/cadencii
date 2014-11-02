@@ -6,7 +6,7 @@ namespace cadencii
 {
 	public interface UiContextMenu : UiComponent
 	{
-		List<UiMenuItem> MenuItems { get; }
+		IList<UiMenuItem> MenuItems { get; }
 
 		void Show (UiControl control, Point point);
 	}

@@ -46,8 +46,8 @@ namespace cadencii
 			set;
 		}
 
-		List<UiToolBarButton> Buttons { get; }
-		event EventHandler<UiToolBarButtonEventArgs> ButtonClick;
+		IList<UiToolBarButton> Buttons { get; }
+		event EventHandler<ToolBarButtonClickEventArgs> ButtonClick;
 	}
 }
 

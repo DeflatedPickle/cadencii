@@ -20,18 +20,12 @@ namespace cadencii
 	public class ToolStripImpl : System.Windows.Forms.ToolStrip, UiToolStrip
 	{
 		ToolStripRenderMode UiToolStrip.RenderMode {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (ToolStripRenderMode)RenderMode; }
+			set { RenderMode = (System.Windows.Forms.ToolStripRenderMode) value; }
 		}
 
-		System.Collections.Generic.List<UiToolStripItem> UiToolStrip.Items {
-			get {
-				throw new NotImplementedException ();
-			}
+		IList<UiToolStripItem> UiToolStrip.Items {
+			get { return new CastingList<UiToolStripItem, System.Windows.Forms.ToolStripItem> (Items, null, null); }
 		}
 
 		// UiControl

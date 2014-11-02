@@ -116,7 +116,6 @@
     <Compile Include="models\winforms\UiTextBox.cs" />
     <Compile Include="models\winforms\UiToolBar.cs" />
     <Compile Include="models\winforms\UiToolBarButton.cs" />
-    <Compile Include="models\winforms\UiToolBarButtonEventArgs.cs" />
     <Compile Include="models\winforms\UiToolStrip.cs" />
     <Compile Include="models\winforms\UiToolStripButton.cs" />
     <Compile Include="models\winforms\UiToolStripContainer.cs" />
@@ -129,6 +128,7 @@
     <Compile Include="models\winforms\UiTrackBar.cs" />
     <Compile Include="models\winforms\UiUserControl.cs" />
     <Compile Include="models\winforms\UiVScrollBar.cs" />
+    <Compile Include="models\winforms\ToolBarButtonClickEventArgs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

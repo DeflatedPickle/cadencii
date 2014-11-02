@@ -13,6 +13,7 @@ using NKeyEventHandler = cadencii.java.awt.KeyEventHandler;
 using NMouseButtons = cadencii.java.awt.MouseButtons;
 using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
 using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
+using System.Collections.Generic;
 
 namespace cadencii
 {
@@ -21,12 +22,11 @@ namespace cadencii
 		#region UiContextMenu implementation
 		void UiContextMenu.Show (UiControl control, Point point)
 		{
-			throw new NotImplementedException ();
+			Show ((System.Windows.Forms.Control) control, point.ToWF ());
 		}
-		System.Collections.Generic.List<UiMenuItem> UiContextMenu.MenuItems {
-			get {
-				throw new NotImplementedException ();
-			}
+
+		IList<UiMenuItem> UiContextMenu.MenuItems {
+			get { return new CastingList<UiMenuItem, System.Windows.Forms.MenuItem> (MenuItems, null, null); }
 		}
 		#endregion
 	}
