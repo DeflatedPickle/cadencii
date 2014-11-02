@@ -70,6 +70,14 @@
       <Project>{10ADD9DE-3B8F-4818-A49D-AC7501057FE0}</Project>
       <Name>Cadencii.Application.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Cadencii.Gui.Framework\Cadencii.Gui.Framework.csproj">
+      <Project>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</Project>
+      <Name>Cadencii.Gui.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cadencii.Gui.Framework.WindowsForms\Cadencii.Gui.Framework.WindowsForms.csproj">
+      <Project>{7DE0B7EA-E478-4687-9764-B44B8258F255}</Project>
+      <Name>Cadencii.Gui.Framework.WindowsForms</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
