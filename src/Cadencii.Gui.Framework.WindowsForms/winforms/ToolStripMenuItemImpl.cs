@@ -1,4 +1,6 @@
 using System;
+using cadencii.java.awt;
+using System.Collections.Generic;
 
 namespace cadencii
 {
@@ -14,12 +16,8 @@ namespace cadencii
 		}
 
 		event EventHandler UiToolStripMenuItem.CheckedChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { CheckedChanged += (o, e) => value (o, e); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		void UiToolStripMenuItem.Mnemonic (cadencii.java.awt.Keys keys)
@@ -27,109 +25,69 @@ namespace cadencii
 			throw new NotImplementedException ();
 		}
 
-		cadencii.java.awt.Image UiToolStripMenuItem.Image {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+		Image UiToolStripMenuItem.Image {
+			get { return Image.ToAwt (); }
+			set { Image = value.ToWF (); }
 		}
 
-		cadencii.java.awt.CheckState UiToolStripMenuItem.CheckState {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+		CheckState UiToolStripMenuItem.CheckState {
+			get { return (CheckState)CheckState; }
+			set { CheckState = (System.Windows.Forms.CheckState)value; }
 		}
 
-		cadencii.java.awt.ToolStripItemDisplayStyle UiToolStripMenuItem.DisplayStyle {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+		ToolStripItemDisplayStyle UiToolStripMenuItem.DisplayStyle {
+			get { return (ToolStripItemDisplayStyle)DisplayStyle; }
+			set { DisplayStyle = (System.Windows.Forms.ToolStripItemDisplayStyle) value; }
 		}
 
-		cadencii.java.awt.ToolStripItemImageScaling UiToolStripMenuItem.ImageScaling {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+		ToolStripItemImageScaling UiToolStripMenuItem.ImageScaling {
+			get { return (ToolStripItemImageScaling)ImageScaling; }
+			set { ImageScaling = (System.Windows.Forms.ToolStripItemImageScaling) value; }
 		}
 
-		cadencii.java.awt.TextImageRelation UiToolStripMenuItem.TextImageRelation {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+		TextImageRelation UiToolStripMenuItem.TextImageRelation {
+			get { return (TextImageRelation)TextImageRelation; }
+			set { TextImageRelation = (System.Windows.Forms.TextImageRelation) value; }
 		}
 
-		cadencii.java.awt.Keys UiToolStripMenuItem.ShortcutKeys {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+		Keys UiToolStripMenuItem.ShortcutKeys {
+			get { return (Keys)ShortcutKeys; }
+			set { ShortcutKeys = (System.Windows.Forms.Keys) value; }
 		}
 
 		event EventHandler UiToolStripDropDownItem.DropDownOpening {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { DropDownOpening += (sender, e) => value (sender, e); }
 			remove {
 				throw new NotImplementedException ();
 			}
 		}
 
-		System.Collections.Generic.IList<UiToolStripItem> UiToolStripDropDownItem.DropDownItems {
-			get {
-				throw new NotImplementedException ();
-			}
+		IList<UiToolStripItem> UiToolStripDropDownItem.DropDownItems {
+			get { return new CastingList<UiToolStripItem,System.Windows.Forms.ToolStripItem> (DropDownItems, null, null); }
 		}
 
 		event EventHandler UiToolStripItem.MouseEnter {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { MouseEnter += (sender, e) => value (sender, e); }
 			remove {
 				throw new NotImplementedException ();
 			}
 		}
 
 		event EventHandler UiToolStripItem.Click {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { Click += (sender, e) => value (sender, e); }
 			remove {
 				throw new NotImplementedException ();
 			}
 		}
 
-		cadencii.java.awt.Font UiToolStripItem.Font {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+		Font UiToolStripItem.Font {
+			get { return Font.ToAwt (); }
+			set { Font = value.ToWF (); }
 		}
 
-		cadencii.java.awt.Dimension UiToolStripItem.Size {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+		Dimension UiToolStripItem.Size {
+			get { return Size.ToAwt (); }
+			set { Size = value.ToWF (); }
 		}
 	}
 }

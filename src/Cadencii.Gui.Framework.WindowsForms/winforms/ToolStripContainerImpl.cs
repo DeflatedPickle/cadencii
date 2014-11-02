@@ -13,27 +13,59 @@ using NKeyEventHandler = cadencii.java.awt.KeyEventHandler;
 using NMouseButtons = cadencii.java.awt.MouseButtons;
 using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
 using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
+using System.Collections.Generic;
 
 namespace cadencii
 {
 	public class ToolStripContainerImpl : System.Windows.Forms.ToolStripContainer, UiToolStripContainer
 	{
-		UiToolStripPanel UiToolStripContainer.ContentPanel {
-			get {
-				throw new NotImplementedException ();
-			}
+		void UiToolStripContainer.BottomToolStripPanel_SuspendLayout ()
+		{
+			BottomToolStripPanel.SuspendLayout ();
 		}
 
-		UiToolStripPanel UiToolStripContainer.BottomToolStripPanel {
-			get {
-				throw new NotImplementedException ();
-			}
+		void UiToolStripContainer.ContentPanel_SuspendLayout ()
+		{
+			ContentPanel.SuspendLayout ();
+		}
+
+		void UiToolStripContainer.BottomToolStripPanel_ResumeLayout (bool b)
+		{
+			BottomToolStripPanel.ResumeLayout (b);
+		}
+
+		void UiToolStripContainer.BottomToolStripPanel_PerformLayout ()
+		{
+			BottomToolStripPanel.PerformLayout ();
+		}
+
+		void UiToolStripContainer.ContentPanel_ResumeLayout (bool b)
+		{
+			ContentPanel.ResumeLayout (b);
+		}
+
+		IList<UiControl> UiToolStripContainer.BottomToolStripPanel_Controls {
+			get { return new CastingList<UiControl,System.Windows.Forms.Control> (BottomToolStripPanel.Controls, null, null); }
+		}
+
+		ToolStripRenderMode UiToolStripContainer.BottomToolStripPanel_RenderMode {
+			get { return (ToolStripRenderMode)BottomToolStripPanel.RenderMode; }
+			set { BottomToolStripPanel.RenderMode = (System.Windows.Forms.ToolStripRenderMode) value;}
+		}
+
+		IList<UiControl> UiToolStripContainer.ContentPanel_Controls {
+			get { return new CastingList<UiControl,System.Windows.Forms.Control> (ContentPanel.Controls, null, null); }
+		}
+
+		Dimension UiToolStripContainer.ContentPanel_Size {
+			get { return ContentPanel.Size.ToAwt (); }
+			set { ContentPanel.Size = value.ToWF (); }
 		}
 
 		// UiControl
 
-		System.Collections.Generic.IEnumerable<UiControl> UiControl.Controls {
-			get { return Controls.Cast<UiControl> (); }
+		IList<UiControl> UiControl.Controls {
+			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {

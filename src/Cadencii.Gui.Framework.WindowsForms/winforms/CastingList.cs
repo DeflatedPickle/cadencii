@@ -16,7 +16,7 @@ namespace cadencii
 		}
 	}
 
-	class CastingList<A,W> : IList<A>
+	public class CastingList<A,W> : IList<A>
 	{
 		IList source;
 		Func<W,A> forward;

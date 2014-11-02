@@ -185,14 +185,24 @@ namespace cadencii.apputil
         /// <param name="font"></param>
         public static void applyFontRecurse(UiControl c, cadencii.java.awt.Font font)
         {
-            if (!isApplyFontRecurseEnabled) {
-                return;
-            }
-            c.Font = font;
-			foreach (var cc in c.Controls) {
-                applyFontRecurse(cc, font);
-            }
+			applyFontRecurseW ((Control)c, font);
         }
+
+		/// <summary>
+		/// 指定したコントロールと、その子コントロールのフォントを再帰的に変更します
+		/// </summary>
+		/// <param name="c"></param>
+		/// <param name="font"></param>
+		public static void applyFontRecurseW(Control c, cadencii.java.awt.Font font)
+		{
+			if (!isApplyFontRecurseEnabled) {
+				return;
+			}
+			c.Font = (Font) font.NativeFont;
+			foreach (Control cc in c.Controls) {
+				applyFontRecurseW (cc, font);
+			}
+		}
     }
 
 }

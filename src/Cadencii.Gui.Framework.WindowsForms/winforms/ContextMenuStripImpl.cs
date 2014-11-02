@@ -14,6 +14,7 @@ using NMouseButtons = cadencii.java.awt.MouseButtons;
 using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
 using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace cadencii
 {
@@ -34,31 +35,23 @@ namespace cadencii
 
 		void UiContextMenuStrip.Show (UiControl control, int x, int y)
 		{
-			throw new NotImplementedException ();
+			Show ((System.Windows.Forms.Control) control, x, y);
 		}
 
-		System.Collections.Generic.List<UiToolStripItem> UiContextMenuStrip.Items {
-			get {
-				throw new NotImplementedException ();
-			}
+		IList<UiToolStripItem> UiContextMenuStrip.Items {
+			get { return new CastingList<UiToolStripItem, System.Windows.Forms.ToolStripItem> (Items, null, null); }
 		}
 
 		ToolStripRenderMode UiContextMenuStrip.RenderMode {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
-
-		System.Collections.Generic.IEnumerable<UiControl> UiControl.Controls {
-			get {
-				throw new NotImplementedException ();
-			}
+			get { return (ToolStripRenderMode)RenderMode; }
+			set { RenderMode = (System.Windows.Forms.ToolStripRenderMode) value; }
 		}
 
 		// UiControl
+
+		IList<UiControl> UiControl.Controls {
+			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Items, null, null); }
+		}
 
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }

@@ -8,7 +8,7 @@ namespace cadencii
 	{
 		bool ShowImageMargin { get; set; }
 		bool ShowCheckMargin { get; set; }
-		List<UiToolStripItem> Items { get; }
+		IList<UiToolStripItem> Items { get; }
 		ToolStripRenderMode RenderMode { get; set; }
 		void Show (UiControl control, int x, int y);
 		event EventHandler Opening;

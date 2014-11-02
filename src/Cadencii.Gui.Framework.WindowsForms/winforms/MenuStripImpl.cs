@@ -30,8 +30,8 @@ namespace cadencii
 
 		// UiControl
 
-		System.Collections.Generic.IEnumerable<UiControl> UiControl.Controls {
-			get { return Controls.Cast<UiControl> (); }
+		IList<UiControl> UiControl.Controls {
+			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Items, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {

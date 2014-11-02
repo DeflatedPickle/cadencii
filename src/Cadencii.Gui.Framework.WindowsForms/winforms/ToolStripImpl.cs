@@ -13,6 +13,7 @@ using NKeyEventHandler = cadencii.java.awt.KeyEventHandler;
 using NMouseButtons = cadencii.java.awt.MouseButtons;
 using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
 using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
+using System.Collections.Generic;
 
 namespace cadencii
 {
@@ -35,8 +36,8 @@ namespace cadencii
 
 		// UiControl
 
-		System.Collections.Generic.IEnumerable<UiControl> UiControl.Controls {
-			get { return Controls.Cast<UiControl> (); }
+		IList<UiControl> UiControl.Controls {
+			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Items, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {

@@ -71,6 +71,7 @@
     <Compile Include="winforms\UserControlImpl.cs" />
     <Compile Include="winforms\VScrollBarImpl.cs" />
     <Compile Include="winforms\CastingList.cs" />
+    <Compile Include="winforms\ContextMenuStripImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -6,7 +6,7 @@ namespace cadencii
 {
 	public interface UiControl : IDisposable
 	{
-		IEnumerable<UiControl> Controls { get; }
+		IList<UiControl> Controls { get; }
 
 		void PerformLayout ();
 

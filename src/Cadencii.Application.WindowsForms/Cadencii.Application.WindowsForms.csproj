@@ -321,7 +321,6 @@
     <EmbeddedResource Include="ui\forms\PreferenceImpl.resx">
       <DependentUpon>PreferenceImpl.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="ui\controls\ContextMenuStripImpl.cs" />
     <Compile Include="WFUtility.cs" />
   </ItemGroup>
   <ItemGroup>

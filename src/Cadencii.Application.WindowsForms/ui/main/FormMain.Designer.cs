@@ -379,8 +379,8 @@ namespace cadencii
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelOverview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictPianoRoll)).BeginInit();
-            this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
-            this.toolStripContainer1.ContentPanel.SuspendLayout();
+            this.toolStripContainer1.BottomToolStripPanel_SuspendLayout();
+            this.toolStripContainer1.ContentPanel_SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.cMenuPositionIndicator.SuspendLayout();
@@ -2845,15 +2845,15 @@ namespace cadencii
             // 
             // toolStripContainer1.BottomToolStripPanel
             // 
-            this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.toolStripBottom);
-            this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.statusStrip);
-            this.toolStripContainer1.BottomToolStripPanel.RenderMode = ToolStripRenderMode.System;
+            this.toolStripContainer1.BottomToolStripPanel_Controls.Add(this.toolStripBottom);
+            this.toolStripContainer1.BottomToolStripPanel_Controls.Add(this.statusStrip);
+            this.toolStripContainer1.BottomToolStripPanel_RenderMode = ToolStripRenderMode.System;
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.panel1);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainerProperty);
-            this.toolStripContainer1.ContentPanel.Size = new cadencii.java.awt.Dimension(955, 612);
+            this.toolStripContainer1.ContentPanel_Controls.Add(this.panel1);
+            this.toolStripContainer1.ContentPanel_Controls.Add(this.splitContainerProperty);
+            this.toolStripContainer1.ContentPanel_Size = new cadencii.java.awt.Dimension(955, 612);
             this.toolStripContainer1.Dock = DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
 			this.toolStripContainer1.Location = new cadencii.java.awt.Point(0, 30);
@@ -2941,9 +2941,9 @@ namespace cadencii
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelOverview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictPianoRoll)).EndInit();
-            this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
-            this.toolStripContainer1.BottomToolStripPanel.PerformLayout();
-            this.toolStripContainer1.ContentPanel.ResumeLayout(false);
+            this.toolStripContainer1.BottomToolStripPanel_ResumeLayout(false);
+            this.toolStripContainer1.BottomToolStripPanel_PerformLayout();
+            this.toolStripContainer1.ContentPanel_ResumeLayout(false);
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
             this.statusStrip.ResumeLayout(false);
