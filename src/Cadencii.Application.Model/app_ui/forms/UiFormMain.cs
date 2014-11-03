@@ -22,6 +22,17 @@ namespace cadencii
     /// </summary>
     public interface UiFormMain : UiForm
     {
+		UiOpenFileDialog openXmlVsqDialog { get; set; }
+		UiSaveFileDialog saveXmlVsqDialog { get; set; }
+		UiOpenFileDialog openUstDialog { get; set; }
+		UiOpenFileDialog openMidiDialog { get; set; }
+		UiSaveFileDialog saveMidiDialog { get; set; }
+		UiOpenFileDialog openWaveDialog { get; set; }
+
+		WaveView waveView { get; set; }
+
+		bool mEdited { get; set; }
+
 		int calculateStartToDrawX ();
 
 		bool isMouseMiddleButtonDowned (cadencii.java.awt.MouseButtons mouseButtons);

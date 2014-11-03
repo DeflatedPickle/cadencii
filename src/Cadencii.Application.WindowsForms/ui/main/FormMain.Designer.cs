@@ -3279,7 +3279,7 @@ namespace cadencii
         public UiToolStripMenuItem cMenuPositionIndicatorStartMarker;
         public UiToolStripMenuItem cMenuPositionIndicatorEndMarker;
         public UiToolStripMenuItem menuHelpManual;
-        public WaveView waveView;
+		public WaveView waveView { get; set; }
         public UiToolStripMenuItem menuFileRecentClear;
         public UiToolStripMenuItem menuLyricApplyUtauParameters;
         private UiToolStripMenuItem menuVisualPluginUiAquesTone2;

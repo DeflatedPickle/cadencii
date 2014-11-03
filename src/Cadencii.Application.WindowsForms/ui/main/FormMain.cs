@@ -57,6 +57,8 @@ namespace cadencii
     /// </summary>
 	public partial class FormMain : FormImpl, UiFormMain, PropertyWindowListener
     {
+		FormMainModel model;
+
 		UiContextMenuStrip UiFormMain.MenuTrackTab {
 			get { return cMenuTrackTab; }
 			set { cMenuTrackTab = value; }
@@ -342,7 +344,7 @@ namespace cadencii
         /// 真ん中ボタンがダウンされたときのhscrollのvalue値
         /// </summary>
         public int mMiddleButtonHScroll;
-        public bool mEdited = false;
+		public bool mEdited { get; set; }
         /// <summary>
         /// 最後にメイン画面が更新された時刻(秒単位)
         /// </summary>
@@ -457,12 +459,12 @@ namespace cadencii
         /// EditorManager.keyWidthを調節するモードに入る直前での、splitContainer1のSplitterLocationの値
         /// </summary>
         public int mKeyLengthSplitterDistance = 0;
-        public OpenFileDialog openXmlVsqDialog;
-        public SaveFileDialog saveXmlVsqDialog;
-        public OpenFileDialog openUstDialog;
-        public OpenFileDialog openMidiDialog;
-        public SaveFileDialog saveMidiDialog;
-        public OpenFileDialog openWaveDialog;
+		public UiOpenFileDialog openXmlVsqDialog { get; set; }
+		public UiSaveFileDialog saveXmlVsqDialog { get; set; }
+		public UiOpenFileDialog openUstDialog { get; set; }
+		public UiOpenFileDialog openMidiDialog { get; set; }
+		public UiSaveFileDialog saveMidiDialog { get; set; }
+		public UiOpenFileDialog openWaveDialog { get; set; }
         public System.Windows.Forms.Timer timer;
         public System.ComponentModel.BackgroundWorker bgWorkScreen;
         /// <summary>
@@ -541,6 +543,8 @@ namespace cadencii
         /// <param name="file">最初に開くxvsq，vsqファイルのパス</param>
         public FormMain(FormMainController controller, string file)
         {
+			model = new FormMainModel (this);
+
 		this.appId = Handle.ToString ("X32");
             this.controller = controller;
             this.controller.setupUi(this);
@@ -601,18 +605,18 @@ namespace cadencii
             this.waveView.Name = "waveView";
             this.waveView.Size = new cadencii.java.awt.Dimension(355, 59);
             this.waveView.TabIndex = 17;
-            openXmlVsqDialog = new OpenFileDialog();
+			openXmlVsqDialog = new OpenFileDialogImpl();
             openXmlVsqDialog.Filter = string.Join("|", new[] { "VSQ Format(*.vsq)|*.vsq", "XML-VSQ Format(*.xvsq)|*.xvsq" });
 
-            saveXmlVsqDialog = new SaveFileDialog();
+            saveXmlVsqDialog = new SaveFileDialogImpl();
             saveXmlVsqDialog.Filter = string.Join("|", new[] { "VSQ Format(*.vsq)|*.vsq", "XML-VSQ Format(*.xvsq)|*.xvsq", "All files(*.*)|*.*" });
 
-            openUstDialog = new OpenFileDialog();
+            openUstDialog = new OpenFileDialogImpl();
             openUstDialog.Filter = string.Join("|", new[] { "UTAU Project File(*.ust)|*.ust", "All Files(*.*)|*.*" });
 
-            openMidiDialog = new OpenFileDialog();
-            saveMidiDialog = new SaveFileDialog();
-            openWaveDialog = new OpenFileDialog();
+            openMidiDialog = new OpenFileDialogImpl();
+            saveMidiDialog = new SaveFileDialogImpl();
+            openWaveDialog = new OpenFileDialogImpl();
 
             /*mOverviewScaleCount = EditorManager.editorConfig.OverviewScaleCount;
             mOverviewPixelPerClock = getOverviewScaleX( mOverviewScaleCount );*/
@@ -905,7 +909,7 @@ namespace cadencii
             }
 #endif
 
-            clearTempWave();
+            model.ClearTempWave();
             updateVibratoPresetMenu();
             mPencilMode.setMode(PencilModeEnum.Off);
             updateCMenuPianoFixed();
@@ -2826,64 +2830,7 @@ namespace cadencii
                 //stripBtnPaste.isEnabled() = !copied_is_null;
             }*/
         }
-
-        /// <summary>
-        /// 現在の編集データを全て破棄する。DirtyCheckは行われない。
-        /// </summary>
-        public void clearExistingData()
-        {
-            EditorManager.editHistory.clear();
-            EditorManager.itemSelection.clearBezier();
-            EditorManager.itemSelection.clearEvent();
-            EditorManager.itemSelection.clearTempo();
-            EditorManager.itemSelection.clearTimesig();
-            if (EditorManager.isPlaying()) {
-                EditorManager.setPlaying(false, this);
-            }
-            waveView.unloadAll();
-        }
-
-        /// <summary>
-        /// 保存されていない編集内容があるかどうかチェックし、必要なら確認ダイアログを出す。
-        /// </summary>
-        /// <returns>保存されていない保存内容などない場合、または、保存する必要がある場合で（保存しなくてよいと指定された場合または保存が行われた場合）にtrueを返す</returns>
-        public bool dirtyCheck()
-        {
-            if (mEdited) {
-                string file = MusicManager.getFileName();
-                if (file == "") {
-                    file = "Untitled";
-                } else {
-                    file = PortUtil.getFileName(file);
-                }
-                var dr = DialogManager.showMessageBox(_("Save this sequence?"),
-                                                              _("Affirmation"),
-                                                              cadencii.Dialog.MSGBOX_YES_NO_CANCEL_OPTION,
-                                                              cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
-				if (dr == cadencii.java.awt.DialogResult.Yes) {
-                    if (MusicManager.getFileName() == "") {
-                        var dr2 = DialogManager.showModalFileDialog(saveXmlVsqDialog, false, this);
-						if (dr2 == cadencii.java.awt.DialogResult.OK) {
-                            string sf = saveXmlVsqDialog.FileName;
-                            EditorManager.saveTo(sf);
-                            return true;
-                        } else {
-                            return false;
-                        }
-                    } else {
-                        EditorManager.saveTo(MusicManager.getFileName());
-                        return true;
-                    }
-				} else if (dr == cadencii.java.awt.DialogResult.No) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                return true;
-            }
-        }
-
+	
         public void loadWave(Object arg)
         {
             Object[] argArr = (Object[])arg;
@@ -3919,55 +3866,6 @@ namespace cadencii
             }
             cMenuPianoFixedTriplet.Checked = mPencilMode.isTriplet();
             cMenuPianoFixedDotted.Checked = mPencilMode.isDot();
-        }
-
-        public void clearTempWave()
-        {
-            string tmppath = Path.Combine(ApplicationGlobal.getCadenciiTempDir(), ApplicationGlobal.getID());
-            if (!Directory.Exists(tmppath)) {
-                return;
-            }
-
-            // 今回このPCが起動されるよりも以前に，Cadenciiが残したデータを削除する
-            //TODO: システムカウンタは約49日でリセットされてしまい，厳密には実装できないようなので，保留．
-
-            // このFormMainのインスタンスが使用したデータを消去する
-            for (int i = 1; i <= ApplicationGlobal.MAX_NUM_TRACK; i++) {
-                string file = Path.Combine(tmppath, i + ".wav");
-                if (System.IO.File.Exists(file)) {
-                    for (int error = 0; error < 100; error++) {
-                        try {
-                            PortUtil.deleteFile(file);
-                            break;
-                        } catch (Exception ex) {
-                            Logger.write(typeof(FormMain) + ".clearTempWave; ex=" + ex + "\n");
-#if DEBUG
-                            cadencii.core2.debug.push_log("FormMain+ClearTempWave()");
-                            cadencii.core2.debug.push_log("    ex=" + ex.ToString());
-                            cadencii.core2.debug.push_log("    error_count=" + error);
-#endif
-
-                            Thread.Sleep(100);
-                        }
-                    }
-                }
-            }
-            string whd = Path.Combine(tmppath, UtauWaveGenerator.FILEBASE + ".whd");
-            if (System.IO.File.Exists(whd)) {
-                try {
-                    PortUtil.deleteFile(whd);
-                } catch (Exception ex) {
-                    Logger.write(typeof(FormMain) + ".clearTempWave; ex=" + ex + "\n");
-                }
-            }
-            string dat = Path.Combine(tmppath, UtauWaveGenerator.FILEBASE + ".dat");
-            if (System.IO.File.Exists(dat)) {
-                try {
-                    PortUtil.deleteFile(dat);
-                } catch (Exception ex) {
-                    Logger.write(typeof(FormMain) + ".clearTempWave; ex=" + ex + "\n");
-                }
-            }
         }
 
         /// <summary>
@@ -6603,7 +6501,7 @@ namespace cadencii
         {
             this.Load += new EventHandler(FormMain_Load);
             menuFileNew.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuFileNew.Click += new EventHandler(handleFileNew_Click);
+			menuFileNew.Click += (o, e) => model.MainMenu.RunFileNewCommand ();
             menuFileOpen.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuFileOpen.Click += new EventHandler(handleFileOpen_Click);
             menuFileSave.MouseEnter += new EventHandler(handleMenuMouseEnter);
@@ -9580,7 +9478,7 @@ namespace cadencii
 #if DEBUG
             sout.println("FormMain#FormMain_FormClosed");
 #endif
-            clearTempWave();
+            model.ClearTempWave();
             string tempdir = Path.Combine(ApplicationGlobal.getCadenciiTempDir(), ApplicationGlobal.getID());
             if (!Directory.Exists(tempdir)) {
                 PortUtil.createDirectory(tempdir);
@@ -11574,7 +11472,7 @@ namespace cadencii
 
         public void menuFileOpenUst_Click(Object sender, EventArgs e)
         {
-            if (!dirtyCheck()) {
+            if (!model.DirtyCheck()) {
                 return;
             }
 
@@ -11653,11 +11551,11 @@ namespace cadencii
                     }
                 }
 
-                clearExistingData();
+                model.ClearExistingData();
                 EditorManager.setVsqFile(vsq);
                 setEdited(true);
                 EditorManager.MixerWindow.updateStatus();
-                clearTempWave();
+                model.ClearTempWave();
                 updateDrawObjectList();
                 refreshScreen();
 
@@ -11671,7 +11569,7 @@ namespace cadencii
 
         public void menuFileOpenVsq_Click(Object sender, EventArgs e)
         {
-            if (!dirtyCheck()) {
+            if (!model.DirtyCheck()) {
                 return;
             }
 
@@ -11736,10 +11634,10 @@ namespace cadencii
                 return;
             }
             EditorManager.Selected = (1);
-            clearExistingData();
+            model.ClearExistingData();
             setEdited(true);
             EditorManager.MixerWindow.updateStatus();
-            clearTempWave();
+            model.ClearTempWave();
             updateDrawObjectList();
             refreshScreen();
         }
@@ -15422,8 +15320,8 @@ namespace cadencii
 
         void toolBarFile_ButtonClick(Object sender, ToolBarButtonClickEventArgs e)
         {
-            if (e.Button == stripBtnFileNew) {
-                handleFileNew_Click(e.Button, new EventArgs());
+			if (e.Button == stripBtnFileNew) {
+				model.MainMenu.RunFileNewCommand ();
             } else if (e.Button == stripBtnFileOpen) {
                 handleFileOpen_Click(e.Button, new EventArgs());
             } else if (e.Button == stripBtnFileSave) {
@@ -15594,13 +15492,13 @@ namespace cadencii
             if (sender is RecentFileMenuItem) {
                 RecentFileMenuItem item = (RecentFileMenuItem)sender;
                 string filename = item.getFilePath();
-                if (!dirtyCheck()) {
+                if (!model.DirtyCheck()) {
                     return;
                 }
                 openVsqCor(filename);
-                clearExistingData();
+                model.ClearExistingData();
                 EditorManager.MixerWindow.updateStatus();
-                clearTempWave();
+                model.ClearTempWave();
                 updateDrawObjectList();
                 refreshScreen();
             }
@@ -15748,7 +15646,7 @@ namespace cadencii
 
         public void handleFileOpen_Click(Object sender, EventArgs e)
         {
-            if (!dirtyCheck()) {
+            if (!model.DirtyCheck()) {
                 return;
             }
             string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("xvsq");
@@ -15770,11 +15668,11 @@ namespace cadencii
                     cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
                 return;
             }
-            clearExistingData();
+            model.ClearExistingData();
 
             setEdited(false);
             EditorManager.MixerWindow.updateStatus();
-            clearTempWave();
+            model.ClearTempWave();
             updateDrawObjectList();
             refreshScreen();
         }
@@ -15782,35 +15680,6 @@ namespace cadencii
         public void handleStripButton_Enter(Object sender, EventArgs e)
         {
             focusPianoRoll();
-        }
-
-        public void handleFileNew_Click(Object sender, EventArgs e)
-        {
-            if (!dirtyCheck()) {
-                return;
-            }
-            EditorManager.Selected = (1);
-            VsqFileEx vsq = new VsqFileEx(ApplicationGlobal.appConfig.DefaultSingerName, 1, 4, 4, 500000);
-
-            RendererKind kind = ApplicationGlobal.appConfig.DefaultSynthesizer;
-            string renderer = kind.getVersionString();
-            List<VsqID> singers = MusicManager.getSingerListFromRendererKind(kind);
-            vsq.Track[1].changeRenderer(renderer, singers);
-
-            EditorManager.setVsqFile(vsq);
-            clearExistingData();
-            for (int i = 0; i < EditorManager.LastRenderedStatus.Length; i++) {
-                EditorManager.LastRenderedStatus[i] = null;
-            }
-            setEdited(false);
-            EditorManager.MixerWindow.updateStatus();
-            clearTempWave();
-
-            // キャッシュディレクトリのパスを、デフォルトに戻す
-            ApplicationGlobal.setTempWaveDir(Path.Combine(ApplicationGlobal.getCadenciiTempDir(), ApplicationGlobal.getID()));
-
-            updateDrawObjectList();
-            refreshScreen();
         }
 
         public void handleEditPaste_Click(Object sender, EventArgs e)

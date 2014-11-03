@@ -212,10 +212,11 @@
     <Compile Include="app_ui\forms\UpdateCheckForm.cs" />
     <Compile Include="app_ui\forms\VersionInfo.cs" />
     <Compile Include="app_ui\forms\WaveformZoomController.cs" />
-    <Compile Include="app_ui\actions\FormMainActions.cs" />
     <Compile Include="app_ui\forms\UiFormNoteProperty.cs" />
     <Compile Include="app_ui\forms\UiFormMain.cs" />
     <Compile Include="app_ui\controls\TrackSelectorConsts.cs" />
+    <Compile Include="app_ui\models\FormMainModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.MainMenuModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -256,6 +257,6 @@
     <Folder Include="editor_features\" />
     <Folder Include="scripting\" />
     <Folder Include="app_ui\" />
-    <Folder Include="app_ui\actions\" />
+    <Folder Include="app_ui\models\" />
   </ItemGroup>
 </Project>

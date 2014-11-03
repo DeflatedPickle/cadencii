@@ -72,6 +72,9 @@
     <Compile Include="winforms\VScrollBarImpl.cs" />
     <Compile Include="winforms\CastingList.cs" />
     <Compile Include="winforms\ContextMenuStripImpl.cs" />
+    <Compile Include="winforms\SaveFileDialogImpl.cs" />
+    <Compile Include="winforms\OpenFileDialogImpl.cs" />
+    <Compile Include="winforms\FileDialogImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
