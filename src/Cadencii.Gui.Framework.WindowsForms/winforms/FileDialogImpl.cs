@@ -39,6 +39,11 @@ namespace cadencii
 		{
 			impl.SetSelectedFile (filename);
 		}
+
+		public string Title {
+			get { return impl.Title; }
+			set { impl.Title = value; }
+		}
 	}
 }
 

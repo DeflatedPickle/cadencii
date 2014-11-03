@@ -1002,6 +1002,97 @@ namespace cadencii
 				EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
 				parent.form.setEdited(true);
 			}
+			public void menuFileExportWave_Click(Object sender, EventArgs e)
+			{
+				var dialog_result = cadencii.java.awt.DialogResult.Cancel;
+				string filename = "";
+				UiSaveFileDialog sfd = null;
+				try {
+					string last_path = ApplicationGlobal.appConfig.getLastUsedPathOut("wav");
+					#if DEBUG
+					sout.println("FormMain#menuFileExportWave_Click; last_path=" + last_path);
+					#endif
+					sfd = ApplicationUIHost.Create<UiSaveFileDialog> ();
+					sfd.SetSelectedFile(last_path);
+					sfd.Title = _("Wave Export");
+					sfd.Filter = string.Join("|", new[] { _("Wave File(*.wav)|*.wav"), _("All Files(*.*)|*.*") });
+					dialog_result = DialogManager.showModalFileDialog(sfd, false, this);
+					if (dialog_result != cadencii.java.awt.DialogResult.OK) {
+						return;
+					}
+					filename = sfd.FileName;
+					ApplicationGlobal.appConfig.setLastUsedPathOut(filename, ".wav");
+				} catch (Exception ex) {
+					Logger.write(GetType () + ".menuFileExportWave_Click; ex=" + ex + "\n");
+				} finally {
+					if (sfd != null) {
+						try {
+							sfd.Dispose();
+						} catch (Exception ex2) {
+							Logger.write(GetType () + ".menuFileExportWave_Click; ex=" + ex2 + "\n");
+						}
+					}
+				}
+
+				VsqFileEx vsq = MusicManager.getVsqFile();
+				int clockStart = vsq.config.StartMarkerEnabled ? vsq.config.StartMarker : 0;
+				int clockEnd = vsq.config.EndMarkerEnabled ? vsq.config.EndMarker : vsq.TotalClocks + 240;
+				if (clockStart > clockEnd) {
+					DialogManager.showMessageBox(
+						_("invalid rendering region; start>=end"),
+						_("Error"),
+						cadencii.java.awt.AwtHost.OK_OPTION,
+						cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
+					return;
+				}
+				List<int> other_tracks = new List<int>();
+				int selected = EditorManager.Selected;
+				for (int i = 1; i < vsq.Track.Count; i++) {
+					if (i != selected) {
+						other_tracks.Add(i);
+					}
+				}
+				List<PatchWorkQueue> queue =
+					EditorManager.patchWorkCreateQueue(other_tracks);
+				PatchWorkQueue q = new PatchWorkQueue();
+				q.track = selected;
+				q.clockStart = clockStart;
+				q.clockEnd = clockEnd;
+				q.file = filename;
+				q.renderAll = true;
+				q.vsq = vsq;
+				// 末尾に追加
+				queue.Add(q);
+				double started = PortUtil.getCurrentTime();
+
+				FormWorker fs = null;
+				try {
+					fs = new FormWorker();
+					fs.setupUi(ApplicationUIHost.Create<FormWorkerUi> (fs));
+					fs.getUi().setTitle(_("Synthesize"));
+					fs.getUi().setText(_("now synthesizing..."));
+
+					SynthesizeWorker worker = new SynthesizeWorker(this);
+
+					foreach (PatchWorkQueue qb in queue) {
+						fs.addJob(worker, "processQueue", qb.getMessage(), qb.getJobAmount(), qb);
+					}
+
+					fs.startJob();
+					DialogManager.showModalDialog(fs.getUi(), this);
+				} catch (Exception ex) {
+					Logger.write(GetType () + ".menuFileExportWave_Click; ex=" + ex + "\n");
+				} finally {
+					if (fs != null) {
+						try {
+							fs.getUi().close();
+						} catch (Exception ex2) {
+							Logger.write(GetType () + ".menuFileExportWave_Click; ex=" + ex2 + "\n");
+						}
+					}
+				}
+			}
+
 		}
 	}
 }

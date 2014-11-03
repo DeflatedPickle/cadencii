@@ -13,6 +13,7 @@ namespace cadencii
 		int FilterIndex { get; set; }
 		void SetSelectedFile (string filename);
 		string SelectedFilter ();
+		string Title { get; set; }
 	}
 
 	public interface UiOpenFileDialog : UiFileDialog
