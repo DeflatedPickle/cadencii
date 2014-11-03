@@ -8,6 +8,7 @@ using cadencii.vsq;
 using cadencii.vsq.io;
 using System.Text;
 using System.Linq;
+using cadencii.java.util;
 
 namespace cadencii
 {
@@ -850,6 +851,156 @@ namespace cadencii
 				EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(lastrun));
 				parent.form.setEdited(true);
 				parent.form.refreshScreen();
+			}
+
+			public void RunFileImportVsqCommand()
+			{
+				string dir = ApplicationGlobal.appConfig.getLastUsedPathIn(EditorManager.editorConfig.LastUsedExtension);
+				parent.form.openMidiDialog.SetSelectedFile(dir);
+				var dialog_result = DialogManager.showModalFileDialog(parent.form.openMidiDialog, true, this);
+
+				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
+					return;
+				}
+				VsqFileEx vsq = null;
+				string filename = parent.form.openMidiDialog.FileName;
+				ApplicationGlobal.appConfig.setLastUsedPathIn(filename, ".vsq");
+				try {
+					vsq = new VsqFileEx(filename, "Shift_JIS");
+				} catch (Exception ex) {
+					Logger.write(GetType () + ".menuFileImportVsq_Click; ex=" + ex + "\n");
+					DialogManager.showMessageBox(_("Invalid VSQ/VOCALOID MIDI file"), _("Error"), cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
+					return;
+				}
+				if (parent.form.mDialogMidiImportAndExport == null) {
+					parent.form.mDialogMidiImportAndExport = ApplicationUIHost.Create<FormMidiImExport>();
+				}
+				var dlg = parent.form.mDialogMidiImportAndExport;
+				dlg.listTrack.ClearItems();
+				for (int track = 1; track < vsq.Track.Count; track++) {
+					dlg.listTrack.AddRow(new string[] {
+						track + "",
+						vsq.Track[ track ].getName(),
+						vsq.Track[ track ].getEventCount() + "" }, true);
+				}
+				dlg.Mode = (FormMidiMode.IMPORT_VSQ);
+				dlg.setTempo(false);
+				dlg.setTimesig(false);
+				dlg.Location = parent.getFormPreferedLocation(dlg.Width, dlg.Height);
+				var dr = DialogManager.showModalDialog(dlg, this);
+				if (dr != 1) {
+					return;
+				}
+
+				List<int> add_track = new List<int>();
+				for (int i = 0; i < dlg.listTrack.ItemCount; i++) {
+					if (dlg.listTrack.GetItem(i).Checked) {
+						add_track.Add(i + 1);
+					}
+				}
+				if (add_track.Count <= 0) {
+					return;
+				}
+
+				VsqFileEx replace = (VsqFileEx)MusicManager.getVsqFile().clone();
+				double premeasure_sec_replace = replace.getSecFromClock(replace.getPreMeasureClocks());
+				double premeasure_sec_vsq = vsq.getSecFromClock(vsq.getPreMeasureClocks());
+
+				if (dlg.isTempo()) {
+					FormMainModel.ShiftClockToMatchWith(replace, vsq, premeasure_sec_replace - premeasure_sec_vsq);
+					// テンポテーブルを置き換え
+					replace.TempoTable.Clear();
+					for (int i = 0; i < vsq.TempoTable.Count; i++) {
+						replace.TempoTable.Add((TempoTableEntry)vsq.TempoTable[i].clone());
+					}
+					replace.updateTempoInfo();
+					replace.updateTotalClocks();
+				}
+
+				if (dlg.isTimesig()) {
+					// 拍子をリプレースする場合
+					replace.TimesigTable.Clear();
+					for (int i = 0; i < vsq.TimesigTable.Count; i++) {
+						replace.TimesigTable.Add((TimeSigTableEntry)vsq.TimesigTable[i].clone());
+					}
+					replace.updateTimesigInfo();
+				}
+
+				foreach (var track in add_track) {
+					if (replace.Track.Count + 1 >= ApplicationGlobal.MAX_NUM_TRACK) {
+						break;
+					}
+					if (!dlg.isTempo()) {
+						// テンポをリプレースしない場合。インポートするトラックのクロックを調節する
+						for (Iterator<VsqEvent> itr2 = vsq.Track[track].getEventIterator(); itr2.hasNext(); ) {
+							VsqEvent item = itr2.next();
+							if (item.ID.type == VsqIDType.Singer && item.Clock == 0) {
+								continue;
+							}
+							int clock = item.Clock;
+							double sec_start = vsq.getSecFromClock(clock) - premeasure_sec_vsq + premeasure_sec_replace;
+							double sec_end = vsq.getSecFromClock(clock + item.ID.getLength()) - premeasure_sec_vsq + premeasure_sec_replace;
+							int clock_start = (int)replace.getClockFromSec(sec_start);
+							int clock_end = (int)replace.getClockFromSec(sec_end);
+							item.Clock = clock_start;
+							item.ID.setLength(clock_end - clock_start);
+							if (item.ID.VibratoHandle != null) {
+								double sec_vib_start = vsq.getSecFromClock(clock + item.ID.VibratoDelay) - premeasure_sec_vsq + premeasure_sec_replace;
+								int clock_vib_start = (int)replace.getClockFromSec(sec_vib_start);
+								item.ID.VibratoDelay = clock_vib_start - clock_start;
+								item.ID.VibratoHandle.setLength(clock_end - clock_vib_start);
+							}
+						}
+
+						// コントロールカーブをシフト
+						foreach (CurveType ct in BezierCurves.CURVE_USAGE) {
+							VsqBPList item = vsq.Track[track].getCurve(ct.getName());
+							if (item == null) {
+								continue;
+							}
+							VsqBPList repl = new VsqBPList(item.getName(), item.getDefault(), item.getMinimum(), item.getMaximum());
+							for (int i = 0; i < item.size(); i++) {
+								int clock = item.getKeyClock(i);
+								int value = item.getElement(i);
+								double sec = vsq.getSecFromClock(clock) - premeasure_sec_vsq + premeasure_sec_replace;
+								if (sec >= premeasure_sec_replace) {
+									int clock_new = (int)replace.getClockFromSec(sec);
+									repl.add(clock_new, value);
+								}
+							}
+							vsq.Track[track].setCurve(ct.getName(), repl);
+						}
+
+						// ベジエカーブをシフト
+						foreach (CurveType ct in BezierCurves.CURVE_USAGE) {
+							List<BezierChain> list = vsq.AttachedCurves.get(track - 1).get(ct);
+							if (list == null) {
+								continue;
+							}
+							foreach (var chain in list) {
+								foreach (var point in chain.points) {
+									PointD bse = new PointD(replace.getClockFromSec(vsq.getSecFromClock(point.getBase().getX()) - premeasure_sec_vsq + premeasure_sec_replace),
+										point.getBase().getY());
+									PointD ctrl_r = new PointD(replace.getClockFromSec(vsq.getSecFromClock(point.controlLeft.getX()) - premeasure_sec_vsq + premeasure_sec_replace),
+										point.controlLeft.getY());
+									PointD ctrl_l = new PointD(replace.getClockFromSec(vsq.getSecFromClock(point.controlRight.getX()) - premeasure_sec_vsq + premeasure_sec_replace),
+										point.controlRight.getY());
+									point.setBase(bse);
+									point.controlLeft = ctrl_l;
+									point.controlRight = ctrl_r;
+								}
+							}
+						}
+					}
+					replace.Mixer.Slave.Add(new VsqMixerEntry());
+					replace.Track.Add(vsq.Track[track]);
+					replace.AttachedCurves.add(vsq.AttachedCurves.get(track - 1));
+				}
+
+				// コマンドを発行し、実行
+				CadenciiCommand run = VsqFileEx.generateCommandReplace(replace);
+				EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
+				parent.form.setEdited(true);
 			}
 		}
 	}
