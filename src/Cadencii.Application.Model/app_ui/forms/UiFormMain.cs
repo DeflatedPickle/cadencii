@@ -22,6 +22,12 @@ namespace cadencii
     /// </summary>
     public interface UiFormMain : UiForm
     {
+		void updateScrollRangeHorizontal();
+
+		UiToolStripStatusLabel statusLabel { get; set; }
+		UiToolStripMenuItem menuFileRecentClear { get; set; }
+		UiToolStripMenuItem menuFileRecent { get; set; }
+
 		UiOpenFileDialog openXmlVsqDialog { get; set; }
 		UiSaveFileDialog saveXmlVsqDialog { get; set; }
 		UiOpenFileDialog openUstDialog { get; set; }

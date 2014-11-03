@@ -48,6 +48,58 @@ namespace cadencii
 				parent.form.updateDrawObjectList();
 				parent.form.refreshScreen();
 			}
+
+			public void RunFileOpenCommand ()
+			{
+				if (!parent.DirtyCheck()) {
+					return;
+				}
+				string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("xvsq");
+				parent.form.openXmlVsqDialog.SetSelectedFile(dir);
+				var dialog_result = DialogManager.showModalFileDialog(parent.form.openXmlVsqDialog, true, this);
+				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
+					return;
+				}
+				if (EditorManager.isPlaying()) {
+					EditorManager.setPlaying(false, this);
+				}
+				string file = parent.form.openXmlVsqDialog.FileName;
+				ApplicationGlobal.appConfig.setLastUsedPathIn(file, ".xvsq");
+				if (parent.OpenVsqCor(file)) {
+					DialogManager.showMessageBox(
+						_("Invalid XVSQ file"),
+						_("Error"),
+						cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
+						cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
+					return;
+				}
+				parent.ClearExistingData();
+
+				parent.form.setEdited(false);
+				EditorManager.MixerWindow.updateStatus();
+				parent.ClearTempWave();
+				parent.form.updateDrawObjectList();
+				parent.form.refreshScreen();
+			}
+
+			public void ShowRecentFileInMenuItem (RecentFileMenuItem item)
+			{
+				string filename = item.getFilePath();
+				if (!parent.DirtyCheck()) {
+					return;
+				}
+				parent.OpenVsqCor(filename);
+				parent.ClearExistingData();
+				EditorManager.MixerWindow.updateStatus();
+				parent.ClearTempWave();
+				parent.form.updateDrawObjectList();
+				parent.form.refreshScreen();
+			}
+
+			public void UpdateStatusBarLabelByRecentFile (RecentFileMenuItem item)
+			{
+				parent.form.statusLabel.Text = item.ToolTipText;
+			}
 		}
 	}
 }

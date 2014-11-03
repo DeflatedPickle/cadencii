@@ -20,11 +20,11 @@ using cadencii.windows.forms;
 namespace cadencii
 {
 
-    public class RecentFileMenuItem : ToolStripMenuItemImpl
+    public class RecentFileMenuItemImpl : ToolStripMenuItemImpl, RecentFileMenuItem
     {
         private string mFilePath;
 
-        public RecentFileMenuItem(string file_path)
+        public RecentFileMenuItemImpl(string file_path)
             : base()
         {
             mFilePath = file_path;

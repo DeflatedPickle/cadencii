@@ -3045,7 +3045,7 @@ namespace cadencii
         public UiToolStripMenuItem cMenuPianoQuantizeOff;
         public UiToolStripSeparator toolStripMenuItem26;
         public UiToolStripMenuItem cMenuPianoQuantizeTriplet;
-        public UiToolStripMenuItem menuFileRecent;
+		public UiToolStripMenuItem menuFileRecent { get; set; }
         public System.Windows.Forms.ToolTip toolTip;
         public UiToolStripMenuItem menuEditCut;
         public UiToolStripMenuItem menuEditCopy;
@@ -3264,7 +3264,7 @@ namespace cadencii
         private UiImageList imageListMeasure;
         private UiToolStripContainer toolStripContainer1;
         private UiStatusStrip statusStrip;
-        private UiToolStripStatusLabel statusLabel;
+		public UiToolStripStatusLabel statusLabel { get; set; }
         private UiImageList imageListMenu;
         public UiToolStripMenuItem menuFileExportVsq;
         private UiToolStripMenuItem menuFileExportVxt;
@@ -3280,7 +3280,7 @@ namespace cadencii
         public UiToolStripMenuItem cMenuPositionIndicatorEndMarker;
         public UiToolStripMenuItem menuHelpManual;
 		public WaveView waveView { get; set; }
-        public UiToolStripMenuItem menuFileRecentClear;
+		public UiToolStripMenuItem menuFileRecentClear { get; set; }
         public UiToolStripMenuItem menuLyricApplyUtauParameters;
         private UiToolStripMenuItem menuVisualPluginUiAquesTone2;
         private UiToolStripMenuItem menuFileExportVsqx;
