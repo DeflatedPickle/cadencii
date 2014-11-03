@@ -112,9 +112,6 @@
     <Compile Include="controls\PaletteToolMenuItem.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="controls\RecentFileMenuItem.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="ui\forms\FormAskKeySoundGenerationUiImpl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -322,6 +319,9 @@
       <DependentUpon>PreferenceImpl.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="WFUtility.cs" />
+    <Compile Include="ui\controls\RecentFileMenuItemImpl.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />
