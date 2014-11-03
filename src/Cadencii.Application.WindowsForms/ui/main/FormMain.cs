@@ -6251,9 +6251,9 @@ namespace cadencii
 			menuFileExportVxt.Click += (o, e) => model.MainMenu.RunFileExportVxtCommand ();
             menuFileRecent.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuFileRecentClear.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuFileRecentClear.Click += new EventHandler(menuFileRecentClear_Click);
+			menuFileRecentClear.Click += (o, e) => model.MainMenu.RunFileRecentClearCommand ();
             menuFileQuit.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuFileQuit.Click += new EventHandler(menuFileQuit_Click);
+			menuFileQuit.Click += (o, e) => model.MainMenu.RunFileQuitCommand ();
             menuEdit.DropDownOpening += new EventHandler(menuEdit_DropDownOpening);
             menuEditUndo.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuEditUndo.Click += new EventHandler(handleEditUndo_Click);
@@ -9812,19 +9812,6 @@ namespace cadencii
 
         //BOOKMARK: menuFile
         #region menuFile*
-        public void menuFileRecentClear_Click(Object sender, EventArgs e)
-        {
-            if (EditorManager.editorConfig.RecentFiles != null) {
-                EditorManager.editorConfig.RecentFiles.Clear();
-            }
-            model.UpdateRecentFileMenu();
-        }
-
-        public void menuFileQuit_Click(Object sender, EventArgs e)
-        {
-            Close();
-        }
-
         public void menuFileExport_DropDownOpening(Object sender, EventArgs e)
         {
             menuFileExportWave.Enabled = (MusicManager.getVsqFile().Track[EditorManager.Selected].getEventCount() > 0);

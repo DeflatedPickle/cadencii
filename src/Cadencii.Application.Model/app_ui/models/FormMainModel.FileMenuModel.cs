@@ -15,11 +15,11 @@ namespace cadencii
 {
 	public partial class FormMainModel
 	{
-		public class MainMenuModel
+		public class FileMenuModel
 		{
 			readonly FormMainModel parent;
 
-			public MainMenuModel (FormMainModel parent)
+			public FileMenuModel (FormMainModel parent)
 			{
 				this.parent = parent;
 			}
@@ -1665,6 +1665,19 @@ namespace cadencii
 						}
 					}
 				}
+			}
+
+			public void RunFileRecentClearCommand()
+			{
+				if (EditorManager.editorConfig.RecentFiles != null) {
+					EditorManager.editorConfig.RecentFiles.Clear();
+				}
+				parent.UpdateRecentFileMenu();
+			}
+
+			public void RunFileQuitCommand()
+			{
+				parent.form.Close();
 			}
 
 		}

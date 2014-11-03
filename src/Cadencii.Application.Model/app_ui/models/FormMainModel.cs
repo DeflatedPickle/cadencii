@@ -25,10 +25,10 @@ namespace cadencii
 		public FormMainModel (UiFormMain form)
 		{
 			this.form = form;
-			MainMenu = new MainMenuModel (this);
+			MainMenu = new FileMenuModel (this);
 		}
 			
-		public MainMenuModel MainMenu { get; private set; }
+		public FileMenuModel MainMenu { get; private set; }
 
 		public static void TrackSelector_MouseClick (UiFormMain window, MouseEventArgs e)
 		{
