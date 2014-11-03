@@ -14033,7 +14033,7 @@ namespace cadencii
 
         public void picturePositionIndicator_Paint(Object sender, PaintEventArgs e)
         {
-            Graphics g = new Graphics() {NativeGraphics = e.Graphics};
+            Graphics g = e.Graphics;
             picturePositionIndicatorDrawTo(g);
 #if MONITOR_FPS
             g.setColor(cadencii.java.awt.Colors.Red);
@@ -15112,7 +15112,7 @@ namespace cadencii
             if (mGraphicsPictureBox2 == null) {
                 mGraphicsPictureBox2 = new Graphics();
             }
-            mGraphicsPictureBox2.NativeGraphics = e.Graphics;
+            mGraphicsPictureBox2.NativeGraphics = e.Graphics.NativeGraphics;
             int width = pictureBox2.Width;
             int height = pictureBox2.Height;
             int unit_height = height / 4;
