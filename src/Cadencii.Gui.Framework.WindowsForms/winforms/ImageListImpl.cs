@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using cadencii.java.awt;
 using System.Collections;
+using System.ComponentModel;
 
 namespace cadencii
 {
@@ -12,9 +13,18 @@ namespace cadencii
 	{
 		readonly System.Windows.Forms.ImageList impl;
 
-		public ImageListImpl (System.ComponentModel.IContainer components)
+		public ImageListImpl (System.Windows.Forms.ImageList impl)
 		{
-			impl = new System.Windows.Forms.ImageList (components);
+			this.impl = impl;
+		}
+
+		public ImageListImpl (IContainer components)
+		{
+			this.impl = new System.Windows.Forms.ImageList (components);
+		}
+
+		public System.Windows.Forms.ImageList Native {
+			get { return impl; }
 		}
 
 		#region UiImageList implementation

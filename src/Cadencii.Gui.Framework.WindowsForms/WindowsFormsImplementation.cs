@@ -24,6 +24,7 @@ namespace cadencii.java.awt
 		public AwtHostWindowsForms ()
 		{
 			Types [typeof(Image.ImageAdapter)] = typeof(ImageAdapterWF);
+			Types [typeof(Graphics.GraphicsAdapter)] = typeof(GraphicsAdapterWF);
 		}
 
 		/// <summary>

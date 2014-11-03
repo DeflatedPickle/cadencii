@@ -14,11 +14,19 @@ using NMouseButtons = cadencii.java.awt.MouseButtons;
 using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
 using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace cadencii
 {
 	public class ToolBarImpl : System.Windows.Forms.ToolBar, UiToolBar
 	{
+		UiImageList image_list;
+
+		public ToolBarImpl ()
+		{
+			image_list = new ImageListImpl (this.ImageList);
+		}
+
 		event EventHandler<ToolBarButtonClickEventArgs> UiToolBar.ButtonClick {
 			add { ButtonClick += (sender, e) => value (sender, ExtensionsWF.ToAwt (e)); }
 			remove {
@@ -32,8 +40,11 @@ namespace cadencii
 		}
 
 		UiImageList UiToolBar.ImageList {
-			get { return (UiImageList) (object) ImageList; }
-			set { ImageList = (System.Windows.Forms.ImageList) (object) value; }
+			get { return image_list; }
+			set {
+				image_list = value;
+				this.ImageList = ((ImageListImpl) value).Native;
+			}
 		}
 
 		Dimension UiToolBar.ButtonSize {

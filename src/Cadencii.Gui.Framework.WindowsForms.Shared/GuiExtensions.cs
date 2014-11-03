@@ -93,9 +93,19 @@ namespace cadencii
 			return (System.Drawing.Font) f.NativeFont;
 		}
 
+		public static Graphics ToAwt (this System.Drawing.Graphics g)
+		{
+			return new Graphics () { NativeGraphics = g };
+		}
+
+		public static System.Drawing.Graphics ToWF (this Graphics g)
+		{
+			return (System.Drawing.Graphics) g.NativeGraphics;
+		}
+
 		public static cadencii.PaintEventArgs ToAwt (this System.Windows.Forms.PaintEventArgs e)
 		{
-			return new PaintEventArgs () { Graphics = new Graphics () { NativeGraphics = e.Graphics } };
+			return new PaintEventArgs () { Graphics = e.Graphics.ToAwt () };
 		}
 
 		public static cadencii.ToolBarButtonClickEventArgs ToAwt (this System.Windows.Forms.ToolBarButtonClickEventArgs e)
