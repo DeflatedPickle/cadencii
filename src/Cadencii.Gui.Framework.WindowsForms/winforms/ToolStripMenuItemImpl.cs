@@ -22,7 +22,7 @@ namespace cadencii
 
 		void UiToolStripMenuItem.Mnemonic (cadencii.java.awt.Keys keys)
 		{
-			throw new NotImplementedException ();
+			ProcessMnemonic ((char) keys);
 		}
 
 		Image UiToolStripMenuItem.Image {

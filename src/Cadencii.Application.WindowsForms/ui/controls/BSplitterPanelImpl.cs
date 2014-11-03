@@ -75,45 +75,6 @@ namespace cadencii.apputil
                 }
             }
         }
-
-        [Browsable(false)]
-        public new int Width
-        {
-            get
-            {
-                return base.Width;
-            }
-            internal set
-            {
-                base.Width = value;
-            }
-        }
-
-        [Browsable(false)]
-        public new int Height
-        {
-            get
-            {
-                return base.Height;
-            }
-            internal set
-            {
-                base.Height = value;
-            }
-        }
-
-        [Browsable(false)]
-        public new Rectangle Bounds
-        {
-            get
-            {
-                return base.Bounds;
-            }
-            internal set
-            {
-                base.Bounds = value;
-            }
-        }
     }
 
 }

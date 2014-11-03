@@ -54,10 +54,12 @@ namespace cadencii.java.awt
 
 		public ImageAdapterWF (int width, int height)
 		{
+			should_dispose = true;
 			image = new System.Drawing.Bitmap (width, height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 		}
 
 		System.Drawing.Image image;
+		bool should_dispose;
 
 		public override object NativeImage {
 			get { return image; }
@@ -66,7 +68,7 @@ namespace cadencii.java.awt
 
 		public override void Dispose ()
 		{
-			if (image != null)
+			if (should_dispose && image != null)
 				image.Dispose ();
 		}
 
@@ -168,6 +170,7 @@ namespace cadencii.java.awt
 		Stroke stroke = new Stroke ();
 		System.Drawing.SolidBrush brush = new System.Drawing.SolidBrush (cadencii.java.awt.Colors.Black.ToNative ());
 		System.Drawing.Font m_font = new System.Drawing.Font ("Arial", 10);
+		bool should_dispose;
 
 		public GraphicsAdapterWF ()
 		{
@@ -175,7 +178,8 @@ namespace cadencii.java.awt
 
 		public GraphicsAdapterWF (Image image)
 		{
-			NativeGraphics = System.Drawing.Graphics.FromImage ((System.Drawing.Image)image.NativeImage);
+			should_dispose = true;
+			nativeGraphics = System.Drawing.Graphics.FromImage ((System.Drawing.Image)image.NativeImage);
 		}
 
 		public GraphicsAdapterWF (Graphics other)
@@ -191,7 +195,7 @@ namespace cadencii.java.awt
 
 		public override void Dispose ()
 		{
-			if (nativeGraphics != null)
+			if (should_dispose && nativeGraphics != null)
 				nativeGraphics.Dispose ();
 		}
 
@@ -455,11 +459,13 @@ namespace cadencii.java.awt
 	class StrokeAdapterWF : Stroke.StrokeAdapter
 	{
 		System.Drawing.Pen pen;
+		bool should_dispose;
 
 		public override object NativePen { get { return pen; } set { pen = (System.Drawing.Pen)value; } }
 
 		public StrokeAdapterWF ()
 		{
+			should_dispose = true;
 			pen = new System.Drawing.Pen (cadencii.java.awt.Colors.Black.ToNative ());
 		}
 
@@ -500,12 +506,19 @@ namespace cadencii.java.awt
 			pen.DashPattern = dash;
 			pen.DashOffset = dash_phase;
 		}
+
+		public void Dispose ()
+		{
+			if (should_dispose && pen != null)
+				pen.Dispose ();
+		}
 	}
 
 	class FontAdapterWF : Font.FontAdapter
 	{
 
 		System.Drawing.Font font;
+		bool should_dispose;
 
 		public FontAdapterWF (object value)
 		{
@@ -523,6 +536,7 @@ namespace cadencii.java.awt
 			if (style >= Font.ITALIC) {
 				fstyle = fstyle | System.Drawing.FontStyle.Italic;
 			}
+			should_dispose = true;
 			font = new System.Drawing.Font (name, size, fstyle);
 		}
 
@@ -537,7 +551,7 @@ namespace cadencii.java.awt
 
 		public override void Dispose ()
 		{
-			if (font != null)
+			if (should_dispose && font != null)
 				font.Dispose ();
 		}
 

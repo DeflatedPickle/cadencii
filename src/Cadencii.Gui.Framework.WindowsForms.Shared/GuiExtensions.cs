@@ -65,12 +65,12 @@ namespace cadencii
 
 		public static Image ToAwt (this System.Drawing.Image image)
 		{
-			return new Image () { NativeImage = image };
+			return image == null ? null : new Image () { NativeImage = image };
 		}
 
 		public static System.Drawing.Image ToWF (this Image image)
 		{
-			return (System.Drawing.Image) image.NativeImage;
+			return image == null ? null : (System.Drawing.Image) image.NativeImage;
 		}
 
 		public static MouseEventArgs ToWF (this NMouseEventArgs e)
