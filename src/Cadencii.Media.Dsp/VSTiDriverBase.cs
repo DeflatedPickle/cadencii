@@ -101,7 +101,7 @@ namespace cadencii
         protected MemoryManager memoryManager = new MemoryManager();
         private Object mSyncRoot = new Object();
 
-        UIHost uihost;
+        readonly DspUIHost uihost;
 
         /// <summary>
         /// このドライバが担当する、合成エンジンの種類を取得する
@@ -416,7 +416,7 @@ namespace cadencii
 
         protected VSTiDriverBase ()
         {
-        	uihost = UIHost.Create ();
+        	uihost = DspUIHost.Create (this);
         }
 
         ~VSTiDriverBase()

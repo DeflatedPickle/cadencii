@@ -38,8 +38,8 @@
     <Compile Include="FormPluginUi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UIHostWF.cs" />
     <Compile Include="PluginUIWF.cs" />
+    <Compile Include="DspUIHostWF.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -78,7 +78,6 @@
     <Compile Include="vsti\aquestone\MidiEventQueue.cs" />
     <Compile Include="vsti\aquestone\ParameterEvent.cs" />
     <Compile Include="vsti\aquestone\SyllableMatcher.cs" />
-    <Compile Include="UIHost.cs" />
     <Compile Include="VSTiDriverBase.cs" />
     <Compile Include="PluginUI.cs" />
     <Compile Include="vsti\AquesToneDriverBase.cs" />
@@ -95,6 +94,7 @@
     <Compile Include="VSTiDllManager.cs" />
     <Compile Include="cadencii_app\QuantizeModeUtil.cs" />
     <Compile Include="cadencii_app\UtauFreq.cs" />
+    <Compile Include="DspUIHost.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

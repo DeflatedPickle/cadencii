@@ -3,9 +3,9 @@ using VstSdk;
 
 namespace cadencii.dsp.winforms
 {
-	public class UIHostWF : UIHost
+	public class DspUIHostWF : DspUIHost
 	{
-		public UIHostWF (VSTiDriverBase vsti)
+		public DspUIHostWF (VSTiDriverBase vsti)
 		{
 			this.vsti = vsti;
 		}
