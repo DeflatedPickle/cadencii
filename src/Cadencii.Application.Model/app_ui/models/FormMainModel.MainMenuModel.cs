@@ -9,6 +9,7 @@ using cadencii.vsq.io;
 using System.Text;
 using System.Linq;
 using cadencii.java.util;
+using cadencii.java.awt;
 
 namespace cadencii
 {
@@ -1002,7 +1003,8 @@ namespace cadencii
 				EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
 				parent.form.setEdited(true);
 			}
-			public void menuFileExportWave_Click(Object sender, EventArgs e)
+
+			public void RunFileExportWaveCommand()
 			{
 				var dialog_result = cadencii.java.awt.DialogResult.Cancel;
 				string filename = "";
@@ -1093,7 +1095,578 @@ namespace cadencii
 				}
 			}
 
+			public void RunFileExportParaWaveCommand()
+			{
+				// 出力するディレクトリを選択
+				string dir = "";
+				UiFolderBrowserDialog file_dialog = null;
+				try {
+					file_dialog = ApplicationUIHost.Create<UiFolderBrowserDialog> ();
+					string initial_dir = ApplicationGlobal.appConfig.getLastUsedPathOut("wav");
+					file_dialog.Description = _("Choose destination directory");
+					file_dialog.SelectedPath = initial_dir;
+					var ret = DialogManager.showModalFolderDialog(file_dialog, this);
+					if (ret != cadencii.java.awt.DialogResult.OK) {
+						return;
+					}
+					dir = file_dialog.SelectedPath;
+					// 1.wavはダミー
+					initial_dir = Path.Combine(dir, "1.wav");
+					ApplicationGlobal.appConfig.setLastUsedPathOut(initial_dir, ".wav");
+				} catch (Exception ex) {
+				} finally {
+					if (file_dialog != null) {
+						try {
+							file_dialog.Dispose();
+						} catch (Exception ex2) {
+						}
+					}
+				}
+
+				// 全部レンダリング済みの状態にするためのキュー
+				VsqFileEx vsq = MusicManager.getVsqFile();
+				List<int> tracks = new List<int>();
+				int size = vsq.Track.Count;
+				for (int i = 1; i < size; i++) {
+					tracks.Add(i);
+				}
+				List<PatchWorkQueue> queue = EditorManager.patchWorkCreateQueue(tracks);
+
+				// 全トラックをファイルに出力するためのキュー
+				int clockStart = vsq.config.StartMarkerEnabled ? vsq.config.StartMarker : 0;
+				int clockEnd = vsq.config.EndMarkerEnabled ? vsq.config.EndMarker : vsq.TotalClocks + 240;
+				if (clockStart > clockEnd) {
+					DialogManager.showMessageBox(
+						_("invalid rendering region; start>=end"),
+						_("Error"),
+						cadencii.java.awt.AwtHost.OK_OPTION,
+						cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
+					return;
+				}
+				for (int i = 1; i < size; i++) {
+					PatchWorkQueue q = new PatchWorkQueue();
+					q.track = i;
+					q.clockStart = clockStart;
+					q.clockEnd = clockEnd;
+					q.file = Path.Combine(dir, i + ".wav");
+					q.renderAll = true;
+					q.vsq = vsq;
+					queue.Add(q);
+				}
+
+				// 合成ダイアログを出す
+				FormWorker fw = null;
+				try {
+					fw = new FormWorker();
+					fw.setupUi(ApplicationUIHost.Create<FormWorkerUi>(fw));
+					fw.getUi().setTitle(_("Synthesize"));
+					fw.getUi().setText(_("now synthesizing..."));
+
+					SynthesizeWorker worker = new SynthesizeWorker(this);
+
+					for (int i = 0; i < queue.Count; i++) {
+						PatchWorkQueue q = queue[i];
+						fw.addJob(worker, "processQueue", q.getMessage(), q.getJobAmount(), q);
+					}
+
+					fw.startJob();
+					DialogManager.showModalDialog(fw.getUi(), this);
+				} catch (Exception ex) {
+					Logger.write(GetType () + ".menuFileExportParaWave; ex=" + ex + "\n");
+				} finally {
+					if (fw != null) {
+						try {
+							fw.getUi().close();
+						} catch (Exception ex2) {
+						}
+					}
+				}
+			}
+
+			public void RunFileExportMidiCommand()
+			{
+				if (parent.form.mDialogMidiImportAndExport == null) {
+					parent.form.mDialogMidiImportAndExport = ApplicationUIHost.Create<FormMidiImExport>();
+				}
+				var dlg = parent.form.mDialogMidiImportAndExport;
+				dlg.listTrack.ClearItems();
+				VsqFileEx vsq = (VsqFileEx)MusicManager.getVsqFile().clone();
+
+				for (int i = 0; i < vsq.Track.Count; i++) {
+					VsqTrack track = vsq.Track[i];
+					int notes = 0;
+					foreach (var obj in track.getNoteEventIterator()) {
+						notes++;
+					}
+					dlg.listTrack.AddRow(new string[] { i + "", track.getName(), notes + "" }, true);
+				}
+				dlg.Mode = (FormMidiMode.EXPORT);
+				dlg.Location = parent.getFormPreferedLocation(dlg.Width, dlg.Height);
+				var dr = DialogManager.showModalDialog(dlg, this);
+				if (dr == 1) {
+					if (!dlg.isPreMeasure()) {
+						vsq.removePart(0, vsq.getPreMeasureClocks());
+					}
+					int track_count = 0;
+					for (int i = 0; i < dlg.listTrack.ItemCount; i++) {
+						if (dlg.listTrack.GetItem(i).Checked) {
+							track_count++;
+						}
+					}
+					if (track_count == 0) {
+						return;
+					}
+
+					string dir = ApplicationGlobal.appConfig.getLastUsedPathOut("mid");
+					parent.form.saveMidiDialog.SetSelectedFile(dir);
+					var dialog_result = DialogManager.showModalFileDialog(parent.form.saveMidiDialog, false, this);
+
+					if (dialog_result == cadencii.java.awt.DialogResult.OK) {
+						FileStream fs = null;
+						string filename = parent.form.saveMidiDialog.FileName;
+						ApplicationGlobal.appConfig.setLastUsedPathOut(filename, ".mid");
+						try {
+							fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+							// ヘッダー
+							fs.Write(new byte[] { 0x4d, 0x54, 0x68, 0x64 }, 0, 4);
+							//データ長
+							fs.WriteByte((byte)0x00);
+							fs.WriteByte((byte)0x00);
+							fs.WriteByte((byte)0x00);
+							fs.WriteByte((byte)0x06);
+							//フォーマット
+							fs.WriteByte((byte)0x00);
+							fs.WriteByte((byte)0x01);
+							//トラック数
+							VsqFile.writeUnsignedShort(fs, track_count);
+							//時間単位
+							fs.WriteByte((byte)0x01);
+							fs.WriteByte((byte)0xe0);
+							int count = -1;
+							for (int i = 0; i < dlg.listTrack.ItemCount; i++) {
+								if (!dlg.listTrack.GetItem (i).Checked) {
+									continue;
+								}
+								VsqTrack track = vsq.Track[i];
+								count++;
+								fs.Write(new byte[] { 0x4d, 0x54, 0x72, 0x6b }, 0, 4);
+								//データ長。とりあえず0を入れておく
+								fs.Write(new byte[] { 0x00, 0x00, 0x00, 0x00 }, 0, 4);
+								long first_position = fs.Position;
+								//トラック名
+								VsqFile.writeFlexibleLengthUnsignedLong(fs, 0);//デルタタイム
+								fs.WriteByte((byte)0xff);//ステータスタイプ
+								fs.WriteByte((byte)0x03);//イベントタイプSequence/Track Name
+								byte[] track_name = PortUtil.getEncodedByte("Shift_JIS", track.getName());
+								fs.WriteByte((byte)track_name.Length);
+								fs.Write(track_name, 0, track_name.Length);
+
+								List<MidiEvent> events = new List<MidiEvent>();
+
+								// tempo
+								bool print_tempo = dlg.isTempo();
+								if (print_tempo && count == 0) {
+									List<MidiEvent> tempo_events = vsq.generateTempoChange();
+									for (int j = 0; j < tempo_events.Count; j++) {
+										events.Add(tempo_events[j]);
+									}
+								}
+
+								// timesig
+								if (dlg.isTimesig() && count == 0) {
+									List<MidiEvent> timesig_events = vsq.generateTimeSig();
+									for (int j = 0; j < timesig_events.Count; j++) {
+										events.Add(timesig_events[j]);
+									}
+								}
+
+								// Notes
+								if (dlg.isNotes()) {
+									foreach (var ve in track.getNoteEventIterator()) {
+										int clock_on = ve.Clock;
+										int clock_off = ve.Clock + ve.ID.getLength();
+										if (!print_tempo) {
+											// テンポを出力しない場合、テンポを500000（120）と見なしてクロックを再計算
+											double time_on = vsq.getSecFromClock(clock_on);
+											double time_off = vsq.getSecFromClock(clock_off);
+											clock_on = (int)(960.0 * time_on);
+											clock_off = (int)(960.0 * time_off);
+										}
+										MidiEvent noteon = new MidiEvent();
+										noteon.clock = clock_on;
+										noteon.firstByte = 0x90;
+										noteon.data = new int[2];
+										noteon.data[0] = ve.ID.Note;
+										noteon.data[1] = ve.ID.Dynamics;
+										events.Add(noteon);
+										MidiEvent noteoff = new MidiEvent();
+										noteoff.clock = clock_off;
+										noteoff.firstByte = 0x80;
+										noteoff.data = new int[2];
+										noteoff.data[0] = ve.ID.Note;
+										noteoff.data[1] = 0x7f;
+										events.Add(noteoff);
+									}
+								}
+
+								// lyric
+								if (dlg.isLyric()) {
+									foreach (var ve in track.getNoteEventIterator()) {
+										int clock_on = ve.Clock;
+										if (!print_tempo) {
+											double time_on = vsq.getSecFromClock(clock_on);
+											clock_on = (int)(960.0 * time_on);
+										}
+										MidiEvent add = new MidiEvent();
+										add.clock = clock_on;
+										add.firstByte = 0xff;
+										byte[] lyric = PortUtil.getEncodedByte("Shift_JIS", ve.ID.LyricHandle.L0.Phrase);
+										add.data = new int[lyric.Length + 1];
+										add.data[0] = 0x05;
+										for (int j = 0; j < lyric.Length; j++) {
+											add.data[j + 1] = lyric[j];
+										}
+										events.Add(add);
+									}
+								}
+
+								// vocaloid metatext
+								List<MidiEvent> meta;
+								if (dlg.isVocaloidMetatext() && i > 0) {
+									meta = vsq.generateMetaTextEvent(i, "Shift_JIS");
+								} else {
+									meta = new List<MidiEvent>();
+								}
+
+								// vocaloid nrpn
+								List<MidiEvent> vocaloid_nrpn_midievent;
+								if (dlg.isVocaloidNrpn() && i > 0) {
+									VsqNrpn[] vsqnrpn = VsqFileEx.generateNRPN((VsqFile)vsq, i, ApplicationGlobal.appConfig.PreSendTime);
+									NrpnData[] nrpn = VsqNrpn.convert(vsqnrpn);
+
+									vocaloid_nrpn_midievent = new List<MidiEvent>();
+									for (int j = 0; j < nrpn.Length; j++) {
+										MidiEvent me = new MidiEvent();
+										me.clock = nrpn[j].getClock();
+										me.firstByte = 0xb0;
+										me.data = new int[2];
+										me.data[0] = nrpn[j].getParameter();
+										me.data[1] = nrpn[j].Value;
+										vocaloid_nrpn_midievent.Add(me);
+									}
+								} else {
+									vocaloid_nrpn_midievent = new List<MidiEvent>();
+								}
+								#if DEBUG
+								sout.println("menuFileExportMidi_Click");
+								sout.println("    vocaloid_nrpn_midievent.size()=" + vocaloid_nrpn_midievent.Count);
+								#endif
+
+								// midi eventを出力
+								events.Sort();
+								long last_clock = 0;
+								int events_count = events.Count;
+								if (events_count > 0) {
+									for (int j = 0; j < events_count; j++) {
+										if (events[j].clock > 0 && meta.Count > 0) {
+											for (int k = 0; k < meta.Count; k++) {
+												VsqFile.writeFlexibleLengthUnsignedLong(fs, 0);
+												meta[k].writeData(fs);
+											}
+											meta.Clear();
+											last_clock = 0;
+										}
+										long clock = events[j].clock;
+										while (vocaloid_nrpn_midievent.Count > 0 && vocaloid_nrpn_midievent[0].clock < clock) {
+											VsqFile.writeFlexibleLengthUnsignedLong(fs, (long)(vocaloid_nrpn_midievent[0].clock - last_clock));
+											last_clock = vocaloid_nrpn_midievent[0].clock;
+											vocaloid_nrpn_midievent[0].writeData(fs);
+											vocaloid_nrpn_midievent.RemoveAt(0);
+										}
+										VsqFile.writeFlexibleLengthUnsignedLong(fs, (long)(events[j].clock - last_clock));
+										events[j].writeData(fs);
+										last_clock = events[j].clock;
+									}
+								} else {
+									int c = vocaloid_nrpn_midievent.Count;
+									for (int k = 0; k < meta.Count; k++) {
+										VsqFile.writeFlexibleLengthUnsignedLong(fs, 0);
+										meta[k].writeData(fs);
+									}
+									meta.Clear();
+									last_clock = 0;
+									for (int j = 0; j < c; j++) {
+										MidiEvent item = vocaloid_nrpn_midievent[j];
+										long clock = item.clock;
+										VsqFile.writeFlexibleLengthUnsignedLong(fs, (long)(clock - last_clock));
+										item.writeData(fs);
+										last_clock = clock;
+									}
+								}
+
+								// トラックエンドを記入し、
+								VsqFile.writeFlexibleLengthUnsignedLong(fs, (long)0);
+								fs.WriteByte((byte)0xff);
+								fs.WriteByte((byte)0x2f);
+								fs.WriteByte((byte)0x00);
+								// チャンクの先頭に戻ってチャンクのサイズを記入
+								long pos = fs.Position;
+								fs.Seek(first_position - 4, SeekOrigin.Begin);
+								VsqFile.writeUnsignedInt(fs, pos - first_position);
+								// ファイルを元の位置にseek
+								fs.Seek(pos, SeekOrigin.Begin);
+							}
+						} catch (Exception ex) {
+							Logger.write(GetType () + ".menuFileExportMidi_Click; ex=" + ex + "\n");
+						} finally {
+							if (fs != null) {
+								try {
+									fs.Close();
+								} catch (Exception ex2) {
+									Logger.write(GetType () + ".menuFileExportMidi_Click; ex=" + ex2 + "\n");
+								}
+							}
+						}
+					}
+				}
+			}
+
+			public void RunFileExportMusicXmlCommand()
+			{
+				UiSaveFileDialog dialog = null;
+				try {
+					VsqFileEx vsq = MusicManager.getVsqFile();
+					if (vsq == null) {
+						return;
+					}
+					string first = ApplicationGlobal.appConfig.getLastUsedPathOut("xml");
+					dialog = ApplicationUIHost.Create<UiSaveFileDialog> ();
+					dialog.SetSelectedFile(first);
+					dialog.Filter = string.Join("|", new[] { _("MusicXML(*.xml)|*.xml"), _("All Files(*.*)|*.*") });
+					var result = DialogManager.showModalFileDialog(dialog, false, this);
+					if (result != cadencii.java.awt.DialogResult.OK) {
+						return;
+					}
+					string file = dialog.FileName;
+					var writer = new MusicXmlWriter();
+					writer.write(vsq, file);
+					ApplicationGlobal.appConfig.setLastUsedPathOut(file, ".xml");
+				} catch (Exception ex) {
+					Logger.write(GetType () + ".menuFileExportMusicXml_Click; ex=" + ex + "\n");
+					serr.println("FormMain#menuFileExportMusicXml_Click; ex=" + ex);
+				} finally {
+					if (dialog != null) {
+						try {
+							dialog.Dispose();
+						} catch (Exception ex2) {
+							Logger.write(GetType () + ".menuFileExportMusicXml_Click; ex=" + ex2 + "\n");
+							serr.println("FormMain#menuFileExportMusicXml_Click; ex2=" + ex2);
+						}
+					}
+				}
+			}
+
+			public void RunFileExportUstCommand()
+			{
+				VsqFileEx vsq = (VsqFileEx)MusicManager.getVsqFile().clone();
+
+				// どのトラックを出力するか決める
+				int selected = EditorManager.Selected;
+
+				// 出力先のファイル名を選ぶ
+				UiSaveFileDialog dialog = null;
+				var dialog_result = cadencii.java.awt.DialogResult.Cancel;
+				string file_name = "";
+				try {
+					string last_path = ApplicationGlobal.appConfig.getLastUsedPathOut("ust");
+					dialog = ApplicationUIHost.Create<UiSaveFileDialog> ();
+					dialog.SetSelectedFile(last_path);
+					dialog.Title = _("Export UTAU (*.ust)");
+					dialog.Filter = string.Join("|", new[] { _("UTAU Script Format(*.ust)|*.ust"), _("All Files(*.*)|*.*") });
+					dialog_result = DialogManager.showModalFileDialog(dialog, false, this);
+					if (dialog_result != cadencii.java.awt.DialogResult.OK) {
+						return;
+					}
+					file_name = dialog.FileName;
+					ApplicationGlobal.appConfig.setLastUsedPathOut(file_name, ".ust");
+				} catch (Exception ex) {
+					Logger.write(GetType () + ".menuFileExportUst_Click; ex=" + ex + "\n");
+				} finally {
+					if (dialog != null) {
+						try {
+							dialog.Dispose();
+						} catch (Exception ex2) {
+							Logger.write(GetType () + ".menuFileExportUst_Click; ex=" + ex2 + "\n");
+						}
+					}
+				}
+
+				// 出力処理
+				vsq.removePart(0, vsq.getPreMeasureClocks());
+				UstFile ust = new UstFile(vsq, selected);
+				// voice dirを設定
+				VsqTrack vsq_track = vsq.Track[selected];
+				VsqEvent singer = vsq_track.getSingerEventAt(0);
+				string voice_dir = "";
+				if (singer != null) {
+					int program = singer.ID.IconHandle.Program;
+					int size = ApplicationGlobal.appConfig.UtauSingers.Count;
+					if (0 <= program && program < size) {
+						SingerConfig cfg = ApplicationGlobal.appConfig.UtauSingers[program];
+						voice_dir = cfg.VOICEIDSTR;
+					}
+				}
+				ust.setVoiceDir(voice_dir);
+				ust.setWavTool(ApplicationGlobal.appConfig.PathWavtool);
+				int resampler_index = VsqFileEx.getTrackResamplerUsed(vsq_track);
+				if (0 <= resampler_index && resampler_index < ApplicationGlobal.appConfig.getResamplerCount()) {
+					ust.setResampler(
+						ApplicationGlobal.appConfig.getResamplerAt(resampler_index));
+				}
+				ust.write(file_name);
+			}
+
+			public void RunFileExportVsqCommand()
+			{
+				VsqFileEx vsq = MusicManager.getVsqFile();
+
+				// 出力先のファイル名を選ぶ
+				UiSaveFileDialog dialog = null;
+				var dialog_result = cadencii.java.awt.DialogResult.Cancel;
+				string file_name = "";
+				try {
+					string last_path = ApplicationGlobal.appConfig.getLastUsedPathOut("vsq");
+					dialog = ApplicationUIHost.Create<UiSaveFileDialog>();
+					dialog.SetSelectedFile(last_path);
+					dialog.Title = _("Export VSQ (*.vsq)");
+					dialog.Filter = string.Join("|", new[] { _("VSQ Format(*.vsq)|*.vsq"), _("All Files(*.*)|*.*") });
+					dialog_result = DialogManager.showModalFileDialog(dialog, false, this);
+					if (dialog_result != cadencii.java.awt.DialogResult.OK) {
+						return;
+					}
+					file_name = dialog.FileName;
+					ApplicationGlobal.appConfig.setLastUsedPathOut(file_name, ".vsq");
+				} catch (Exception ex) {
+					Logger.write(GetType () + ".menuFileExportVsq_Click; ex=" + ex + "\n");
+				} finally {
+					if (dialog != null) {
+						try {
+							dialog.Dispose();
+						} catch (Exception ex2) {
+							Logger.write(GetType () + ".menuFileExportVsq_Click; ex=" + ex2 + "\n");
+						}
+					}
+				}
+
+				// 出力処理
+				VsqFile tvsq = (VsqFile)vsq;
+				tvsq.write(file_name, ApplicationGlobal.appConfig.PreSendTime, "Shift_JIS");
+			}
+
+			public void RunFileExportVsqxCommand()
+			{
+				VsqFileEx sequence = MusicManager.getVsqFile();
+				using (var dialog = ApplicationUIHost.Create<UiSaveFileDialog> ()) {
+					dialog.Title = _("Export VSQX (*.vsqx)");
+					dialog.Filter = _("VSQX Format(*.vsqx)|*.vsqx") + "|" + _("All Files(*.*)|*.*");
+					if (dialog.ShowDialog() == DialogResult.OK) {
+						var file_path = dialog.FileName;
+						var writer = new VsqxWriter();
+						writer.write(sequence, file_path);
+					}
+				}
+			}
+
+			public void RunFileExportVxtCommand()
+			{
+				// UTAUの歌手が登録されていない場合は警告を表示
+				if (ApplicationGlobal.appConfig.UtauSingers.Count <= 0) {
+					var dr = DialogManager.showMessageBox(
+						_("UTAU singer not registered yet.\nContinue ?"),
+						_("Info"),
+						cadencii.Dialog.MSGBOX_YES_NO_OPTION,
+						cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
+					if (dr != cadencii.java.awt.DialogResult.Yes) {
+						return;
+					}
+				}
+
+				VsqFileEx vsq = MusicManager.getVsqFile();
+
+				// 出力先のファイル名を選ぶ
+				UiSaveFileDialog dialog = null;
+				var dialog_result = cadencii.java.awt.DialogResult.Cancel;
+				string file_name = "";
+				try {
+					string last_path = ApplicationGlobal.appConfig.getLastUsedPathOut("txt");
+					dialog = ApplicationUIHost.Create<UiSaveFileDialog> ();
+					dialog.SetSelectedFile(last_path);
+					dialog.Title = _("Metatext for vConnect");
+					dialog.Filter = string.Join("|", new[] { _("Text File(*.txt)|*.txt"), _("All Files(*.*)|*.*") });
+					dialog_result = DialogManager.showModalFileDialog(dialog, false, this);
+					if (dialog_result != cadencii.java.awt.DialogResult.OK) {
+						return;
+					}
+					file_name = dialog.FileName;
+					ApplicationGlobal.appConfig.setLastUsedPathOut(file_name, ".txt");
+				} catch (Exception ex) {
+					Logger.write(GetType () + ".menuFileExportVxt_Click; ex=" + ex + "\n");
+				} finally {
+					if (dialog != null) {
+						try {
+							dialog.Dispose();
+						} catch (Exception ex2) {
+							Logger.write(GetType () + ".menuFileExportVxt_Click; ex=" + ex2 + "\n");
+						}
+					}
+				}
+
+				// 出力処理
+				int selected = EditorManager.Selected;
+				VsqTrack vsq_track = vsq.Track[selected];
+				StreamWriter bw = null;
+				try {
+					bw = new StreamWriter(file_name, false, new UTF8Encoding(false));
+					string oto_ini = ApplicationGlobal.appConfig.UtauSingers[0].VOICEIDSTR;
+					// 先頭に登録されている歌手変更を検出
+					VsqEvent singer = null;
+					int c = vsq_track.getEventCount();
+					for (int i = 0; i < c; i++) {
+						VsqEvent itemi = vsq_track.getEvent(i);
+						if (itemi.ID.type == VsqIDType.Singer) {
+							singer = itemi;
+							break;
+						}
+					}
+					// 歌手のプログラムチェンジから，歌手の原音設定へのパスを取得する
+					if (singer != null) {
+						int indx = singer.ID.IconHandle.Program;
+						if (0 <= indx && indx < ApplicationGlobal.appConfig.UtauSingers.Count) {
+							oto_ini = ApplicationGlobal.appConfig.UtauSingers[indx].VOICEIDSTR;
+						}
+					}
+
+					// oto.iniで終わってる？
+					if (!oto_ini.EndsWith("oto.ini")) {
+						oto_ini = Path.Combine(oto_ini, "oto.ini");
+					}
+
+					// 出力
+					VConnectWaveGenerator.prepareMetaText(
+						bw, vsq_track, oto_ini, vsq.TotalClocks, false);
+				} catch (Exception ex) {
+					Logger.write(GetType () + ".menuFileExportVxt_Click; ex=" + ex + "\n");
+					serr.println(GetType () + ".menuFileExportVxt_Click; ex=" + ex);
+				} finally {
+					if (bw != null) {
+						try {
+							bw.Close();
+						} catch (Exception ex2) {
+						}
+					}
+				}
+			}
+
 		}
 	}
 }
-

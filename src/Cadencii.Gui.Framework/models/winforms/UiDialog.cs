@@ -1,4 +1,5 @@
 ﻿using System;
+using cadencii.java.awt;
 
 namespace cadencii
 {
@@ -14,6 +15,7 @@ namespace cadencii
 		void SetSelectedFile (string filename);
 		string SelectedFilter ();
 		string Title { get; set; }
+		DialogResult ShowDialog ();
 	}
 
 	public interface UiOpenFileDialog : UiFileDialog
@@ -22,6 +24,12 @@ namespace cadencii
 
 	public interface UiSaveFileDialog : UiFileDialog
 	{
+	}
+
+	public interface UiFolderBrowserDialog : UiDialog
+	{
+		string Description { get; set; }
+		string SelectedPath { get; set; }
 	}
 }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using cadencii.java.awt;
 
 namespace cadencii
 {
@@ -43,6 +44,11 @@ namespace cadencii
 		public string Title {
 			get { return impl.Title; }
 			set { impl.Title = value; }
+		}
+
+		public DialogResult ShowDialog ()
+		{
+			return (DialogResult) impl.ShowDialog ();
 		}
 	}
 }
