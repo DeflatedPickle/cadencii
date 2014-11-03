@@ -6,6 +6,7 @@ using cadencii.vsq;
 using System.IO;
 using System.Threading;
 using cadencii.apputil;
+using cadencii.utau;
 
 namespace cadencii
 {
@@ -306,6 +307,142 @@ namespace cadencii
 				#endregion
 			}
 			return false;
+		}
+
+		/// <summary>
+		/// 指定した歌手とリサンプラーについて，設定値に登録されていないものだったら登録する．
+		/// </summary>
+		/// <param name="resampler_path"></param>
+		/// <param name="singer_path"></param>
+		private void CheckUnknownResamplerAndSinger(ByRef<string> resampler_path, ByRef<string> singer_path)
+		{
+			string utau = Utility.getExecutingUtau();
+			string utau_dir = "";
+			if (utau != "") {
+				utau_dir = PortUtil.getDirectoryName(utau);
+			}
+
+			// 可能なら，VOICEの文字列を置換する
+			string search = "%VOICE%";
+			if (singer_path.value.StartsWith(search) && singer_path.value.Length > search.Length) {
+				singer_path.value = singer_path.value.Substring(search.Length);
+				singer_path.value = Path.Combine(Path.Combine(utau_dir, "voice"), singer_path.value);
+			}
+
+			// 歌手はknownかunknownか？
+			// 歌手指定が知らない歌手だった場合に，ダイアログを出すかどうか
+			bool check_unknown_singer = false;
+			if (System.IO.File.Exists(Path.Combine(singer_path.value, "oto.ini"))) {
+				// oto.iniが存在する場合
+				// editorConfigに入っていない場合に，ダイアログを出す
+				bool found = false;
+				for (int i = 0; i < ApplicationGlobal.appConfig.UtauSingers.Count; i++) {
+					SingerConfig sc = ApplicationGlobal.appConfig.UtauSingers[i];
+					if (sc == null) {
+						continue;
+					}
+					if (sc.VOICEIDSTR == singer_path.value) {
+						found = true;
+						break;
+					}
+				}
+				check_unknown_singer = !found;
+			}
+
+			// リサンプラーが知っているやつかどうか
+			bool check_unknwon_resampler = false;
+			#if DEBUG
+			sout.println("FormMain#checkUnknownResamplerAndSinger; resampler_path.value=" + resampler_path.value);
+			#endif
+			string resampler_dir = PortUtil.getDirectoryName(resampler_path.value);
+			if (resampler_dir == "") {
+				// ディレクトリが空欄なので，UTAUのデフォルトのリサンプラー指定である
+				resampler_path.value = Path.Combine(utau_dir, resampler_path.value);
+				resampler_dir = PortUtil.getDirectoryName(resampler_path.value);
+			}
+			if (resampler_dir != "" && System.IO.File.Exists(resampler_path.value)) {
+				bool found = false;
+				for (int i = 0; i < ApplicationGlobal.appConfig.getResamplerCount(); i++) {
+					string resampler = ApplicationGlobal.appConfig.getResamplerAt(i);
+					if (resampler == resampler_path.value) {
+						found = true;
+						break;
+					}
+				}
+				check_unknwon_resampler = !found;
+			}
+
+			// unknownな歌手やリサンプラーが発見された場合.
+			// 登録するかどうか問い合わせるダイアログを出す
+			FormCheckUnknownSingerAndResampler dialog = null;
+			try {
+				if (check_unknown_singer || check_unknwon_resampler) {
+					dialog = ApplicationUIHost.Create<FormCheckUnknownSingerAndResampler>(singer_path.value, check_unknown_singer, resampler_path.value, check_unknwon_resampler);
+					dialog.Location = getFormPreferedLocation(dialog.Width, dialog.Height);
+					var dr = DialogManager.showModalDialog(dialog, this);
+					if (dr != 1) {
+						return;
+					}
+
+					// 登録する
+					// リサンプラー
+					if (dialog.isResamplerChecked()) {
+						string path = dialog.getResamplerPath();
+						if (System.IO.File.Exists(path)) {
+							ApplicationGlobal.appConfig.addResampler(path);
+						}
+					}
+					// 歌手
+					if (dialog.isSingerChecked()) {
+						string path = dialog.getSingerPath();
+						if (Directory.Exists(path)) {
+							SingerConfig sc = new SingerConfig();
+							Utau.readUtauSingerConfig(path, sc);
+							ApplicationGlobal.appConfig.UtauSingers.Add(sc);
+						}
+						EditorManager.reloadUtauVoiceDB();
+					}
+				}
+			} catch (Exception ex) {
+				Logger.write(GetType () + ".checkUnknownResamplerAndSinger; ex=" + ex + "\n");
+			} finally {
+				if (dialog != null) {
+					try {
+						dialog.Close();
+					} catch (Exception ex2) {
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// フォームをマウス位置に出す場合に推奨されるフォーム位置を計算します
+		/// </summary>
+		/// <param name="dlg"></param>
+		/// <returns></returns>
+		public Point getFormPreferedLocation(int dialogWidth, int dialogHeight)
+		{
+			Point mouse = cadencii.core2.PortUtil.getMousePosition();
+			Rectangle rcScreen = cadencii.core2.PortUtil.getWorkingArea(this);
+			int top = mouse.Y - dialogHeight / 2;
+			if (top + dialogHeight > rcScreen.Y + rcScreen.Height) {
+				// ダイアログの下端が隠れる場合、位置をずらす
+				top = rcScreen.Y + rcScreen.Height - dialogHeight;
+			}
+			if (top < rcScreen.Y) {
+				// ダイアログの上端が隠れる場合、位置をずらす
+				top = rcScreen.Y;
+			}
+			int left = mouse.X - dialogWidth / 2;
+			if (left + dialogWidth > rcScreen.X + rcScreen.Width) {
+				// ダイアログの右端が隠れる場合，位置をずらす
+				left = rcScreen.X + rcScreen.Width - dialogWidth;
+			}
+			if (left < rcScreen.X) {
+				// ダイアログの左端が隠れる場合，位置をずらす
+				left = rcScreen.X;
+			}
+			return new Point(left, top);
 		}
 	}
 }

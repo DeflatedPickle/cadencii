@@ -1094,111 +1094,6 @@ namespace cadencii
                                                                  menuVisualPluginUiAquesTone2));
         }
 
-        /// <summary>
-        /// 指定した歌手とリサンプラーについて，設定値に登録されていないものだったら登録する．
-        /// </summary>
-        /// <param name="resampler_path"></param>
-        /// <param name="singer_path"></param>
-        private void checkUnknownResamplerAndSinger(ByRef<string> resampler_path, ByRef<string> singer_path)
-        {
-            string utau = Utility.getExecutingUtau();
-            string utau_dir = "";
-            if (utau != "") {
-                utau_dir = PortUtil.getDirectoryName(utau);
-            }
-
-            // 可能なら，VOICEの文字列を置換する
-            string search = "%VOICE%";
-            if (singer_path.value.StartsWith(search) && singer_path.value.Length > search.Length) {
-                singer_path.value = singer_path.value.Substring(search.Length);
-                singer_path.value = Path.Combine(Path.Combine(utau_dir, "voice"), singer_path.value);
-            }
-
-            // 歌手はknownかunknownか？
-            // 歌手指定が知らない歌手だった場合に，ダイアログを出すかどうか
-            bool check_unknown_singer = false;
-            if (System.IO.File.Exists(Path.Combine(singer_path.value, "oto.ini"))) {
-                // oto.iniが存在する場合
-                // editorConfigに入っていない場合に，ダイアログを出す
-                bool found = false;
-                for (int i = 0; i < ApplicationGlobal.appConfig.UtauSingers.Count; i++) {
-                    SingerConfig sc = ApplicationGlobal.appConfig.UtauSingers[i];
-                    if (sc == null) {
-                        continue;
-                    }
-                    if (sc.VOICEIDSTR == singer_path.value) {
-                        found = true;
-                        break;
-                    }
-                }
-                check_unknown_singer = !found;
-            }
-
-            // リサンプラーが知っているやつかどうか
-            bool check_unknwon_resampler = false;
-#if DEBUG
-            sout.println("FormMain#checkUnknownResamplerAndSinger; resampler_path.value=" + resampler_path.value);
-#endif
-            string resampler_dir = PortUtil.getDirectoryName(resampler_path.value);
-            if (resampler_dir == "") {
-                // ディレクトリが空欄なので，UTAUのデフォルトのリサンプラー指定である
-                resampler_path.value = Path.Combine(utau_dir, resampler_path.value);
-                resampler_dir = PortUtil.getDirectoryName(resampler_path.value);
-            }
-            if (resampler_dir != "" && System.IO.File.Exists(resampler_path.value)) {
-                bool found = false;
-                for (int i = 0; i < ApplicationGlobal.appConfig.getResamplerCount(); i++) {
-                    string resampler = ApplicationGlobal.appConfig.getResamplerAt(i);
-                    if (resampler == resampler_path.value) {
-                        found = true;
-                        break;
-                    }
-                }
-                check_unknwon_resampler = !found;
-            }
-
-            // unknownな歌手やリサンプラーが発見された場合.
-            // 登録するかどうか問い合わせるダイアログを出す
-            FormCheckUnknownSingerAndResampler dialog = null;
-            try {
-                if (check_unknown_singer || check_unknwon_resampler) {
-                    dialog = ApplicationUIHost.Create<FormCheckUnknownSingerAndResampler>(singer_path.value, check_unknown_singer, resampler_path.value, check_unknwon_resampler);
-                    dialog.Location = getFormPreferedLocation(dialog);
-                    var dr = DialogManager.showModalDialog((Form) dialog.Native, this);
-                    if (dr != cadencii.java.awt.DialogResult.OK) {
-                        return;
-                    }
-
-                    // 登録する
-                    // リサンプラー
-                    if (dialog.isResamplerChecked()) {
-                        string path = dialog.getResamplerPath();
-                        if (System.IO.File.Exists(path)) {
-                            ApplicationGlobal.appConfig.addResampler(path);
-                        }
-                    }
-                    // 歌手
-                    if (dialog.isSingerChecked()) {
-                        string path = dialog.getSingerPath();
-                        if (Directory.Exists(path)) {
-                            SingerConfig sc = new SingerConfig();
-                            Utau.readUtauSingerConfig(path, sc);
-                            ApplicationGlobal.appConfig.UtauSingers.Add(sc);
-                        }
-                        EditorManager.reloadUtauVoiceDB();
-                    }
-                }
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".checkUnknownResamplerAndSinger; ex=" + ex + "\n");
-            } finally {
-                if (dialog != null) {
-                    try {
-                        dialog.Close();
-                    } catch (Exception ex2) {
-                    }
-                }
-            }
-        }
 
         /// <summary>
         /// ピアノロールの縦軸の拡大率をdelta段階上げます
@@ -2439,27 +2334,7 @@ namespace cadencii
         /// <returns></returns>
         public System.Drawing.Point getFormPreferedLocation(int dialogWidth, int dialogHeight)
         {
-			Point mouse = cadencii.core2.PortUtil.getMousePosition();
-			Rectangle rcScreen = cadencii.core2.PortUtil.getWorkingArea(this);
-            int top = mouse.Y - dialogHeight / 2;
-            if (top + dialogHeight > rcScreen.Y + rcScreen.Height) {
-                // ダイアログの下端が隠れる場合、位置をずらす
-                top = rcScreen.Y + rcScreen.Height - dialogHeight;
-            }
-            if (top < rcScreen.Y) {
-                // ダイアログの上端が隠れる場合、位置をずらす
-                top = rcScreen.Y;
-            }
-            int left = mouse.X - dialogWidth / 2;
-            if (left + dialogWidth > rcScreen.X + rcScreen.Width) {
-                // ダイアログの右端が隠れる場合，位置をずらす
-                left = rcScreen.X + rcScreen.Width - dialogWidth;
-            }
-            if (left < rcScreen.X) {
-                // ダイアログの左端が隠れる場合，位置をずらす
-                left = rcScreen.X;
-            }
-            return new System.Drawing.Point(left, top);
+			return model.getFormPreferedLocation (dialogWidth, dialogHeight).ToWF ();
         }
 
         /// <summary>
@@ -6348,12 +6223,12 @@ namespace cadencii
             menuFileOpenVsq.MouseEnter += new EventHandler(handleMenuMouseEnter);
 			menuFileOpenVsq.Click += (o, e) => model.MainMenu.RunFileOpenVsqCommand ();
             menuFileOpenUst.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuFileOpenUst.Click += new EventHandler(menuFileOpenUst_Click);
+			menuFileOpenUst.Click += (o, e) => model.MainMenu.RunFileOpenUstCommand ();
             menuFileImport.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuFileImportMidi.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuFileImportMidi.Click += new EventHandler(menuFileImportMidi_Click);
             menuFileImportUst.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuFileImportUst.Click += new EventHandler(menuFileImportUst_Click);
+			menuFileImportUst.Click += (o, e) => model.MainMenu.RunFileImportUstCommand ();
             menuFileImportVsq.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuFileImportVsq.Click += new EventHandler(menuFileImportVsq_Click);
             menuFileExport.MouseEnter += new EventHandler(handleMenuMouseEnter);
@@ -11016,119 +10891,6 @@ namespace cadencii
             EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(lastrun));
             setEdited(true);
             refreshScreen();
-        }
-
-        public void menuFileImportUst_Click(Object sender, EventArgs e)
-        {
-            OpenFileDialog dialog = null;
-            try {
-                // 読み込むファイルを選ぶ
-                string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("ust");
-                dialog = new OpenFileDialog();
-                dialog.SetSelectedFile(dir);
-                var dialog_result = DialogManager.showModalFileDialog(dialog, true, this);
-				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
-                    return;
-                }
-                string file = dialog.FileName;
-                ApplicationGlobal.appConfig.setLastUsedPathIn(file, ".ust");
-
-                // ustを読み込む
-                UstFile ust = new UstFile(file);
-
-                // vsqに変換
-                VsqFile vsq = new VsqFile(ust);
-                vsq.insertBlank(0, vsq.getPreMeasureClocks());
-
-                // RendererKindをUTAUに指定
-                for (int i = 1; i < vsq.Track.Count; i++) {
-                    VsqTrack vsq_track = vsq.Track[i];
-                    VsqFileEx.setTrackRendererKind(vsq_track, RendererKind.UTAU);
-                }
-
-                // unknownな歌手とresamplerを何とかする
-                ByRef<string> ref_resampler = new ByRef<string>(ust.getResampler());
-                ByRef<string> ref_singer = new ByRef<string>(ust.getVoiceDir());
-                checkUnknownResamplerAndSinger(ref_resampler, ref_singer);
-
-                // 歌手変更を何とかする
-                int program = 0;
-                for (int i = 0; i < ApplicationGlobal.appConfig.UtauSingers.Count; i++) {
-                    SingerConfig sc = ApplicationGlobal.appConfig.UtauSingers[i];
-                    if (sc == null) {
-                        continue;
-                    }
-                    if (sc.VOICEIDSTR == ref_singer.value) {
-                        program = i;
-                        break;
-                    }
-                }
-                // 歌手変更のテンプレートを作成
-                VsqID singer_id = Utility.getSingerID(RendererKind.UTAU, program, 0);
-                if (singer_id == null) {
-                    singer_id = new VsqID();
-                    singer_id.type = VsqIDType.Singer;
-                    singer_id.IconHandle = new IconHandle();
-                    singer_id.IconHandle.Program = program;
-                    singer_id.IconHandle.IconID = "$0401" + PortUtil.toHexString(0, 4);
-                }
-                // トラックの歌手変更イベントをすべて置き換える
-                for (int i = 1; i < vsq.Track.Count; i++) {
-                    VsqTrack vsq_track = vsq.Track[i];
-                    int c = vsq_track.getEventCount();
-                    for (int j = 0; j < c; j++) {
-                        VsqEvent itemj = vsq_track.getEvent(j);
-                        if (itemj.ID.type == VsqIDType.Singer) {
-                            itemj.ID = (VsqID)singer_id.clone();
-                        }
-                    }
-                }
-
-                // resamplerUsedを更新(可能なら)
-                for (int j = 1; j < vsq.Track.Count; j++) {
-                    VsqTrack vsq_track = vsq.Track[j];
-                    for (int i = 0; i < ApplicationGlobal.appConfig.getResamplerCount(); i++) {
-                        string resampler = ApplicationGlobal.appConfig.getResamplerAt(i);
-                        if (resampler == ref_resampler.value) {
-                            VsqFileEx.setTrackResamplerUsed(vsq_track, i);
-                            break;
-                        }
-                    }
-                }
-
-                // 読込先のvsqと，インポートするvsqではテンポテーブルがずれているので，
-                // 読み込んだ方のvsqの内容を，現在のvsqと合致するように編集する
-                VsqFileEx dst = (VsqFileEx)MusicManager.getVsqFile().clone();
-                vsq.adjustClockToMatchWith(dst.TempoTable);
-
-                // トラック数の上限になるまで挿入を実行
-                int size = vsq.Track.Count;
-                for (int i = 1; i < size; i++) {
-                    if (dst.Track.Count + 1 >= VsqFile.MAX_TRACKS + 1) {
-                        // トラック数の上限
-                        break;
-                    }
-                    dst.Track.Add(vsq.Track[i]);
-                    dst.AttachedCurves.add(new BezierCurves());
-                    dst.Mixer.Slave.Add(new VsqMixerEntry());
-                }
-
-                // コマンドを発行して実行
-                CadenciiCommand run = VsqFileEx.generateCommandReplace(dst);
-                EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
-                EditorManager.MixerWindow.updateStatus();
-                setEdited(true);
-                refreshScreen(true);
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".menuFileImportUst_Click; ex=" + ex + "\t");
-            } finally {
-                if (dialog != null) {
-                    try {
-                        dialog.Dispose();
-                    } catch (Exception ex) {
-                    }
-                }
-            }
         }
 
         public void menuFileImportVsq_Click(Object sender, EventArgs e)

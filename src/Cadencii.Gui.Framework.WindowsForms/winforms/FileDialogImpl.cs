@@ -11,6 +11,11 @@ namespace cadencii
 			this.impl = impl;
 		}
 
+		public void Dispose ()
+		{
+			impl.Dispose ();
+		}
+
 		public string FileName {
 			get { return impl.FileName; }
 		}

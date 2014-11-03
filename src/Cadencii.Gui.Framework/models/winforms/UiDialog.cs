@@ -2,7 +2,7 @@
 
 namespace cadencii
 {
-	public interface UiDialog
+	public interface UiDialog : IDisposable
 	{
 	}
 

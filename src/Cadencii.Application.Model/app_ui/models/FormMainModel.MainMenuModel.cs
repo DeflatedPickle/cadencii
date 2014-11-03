@@ -14,7 +14,7 @@ namespace cadencii
 
 		public class MainMenuModel
 		{
-			FormMainModel parent;
+			readonly FormMainModel parent;
 
 			public MainMenuModel (FormMainModel parent)
 			{
@@ -273,7 +273,7 @@ namespace cadencii
 					// unknownな歌手やresamplerを何とかする
 					ByRef<string> ref_resampler = new ByRef<string>(ust.getResampler());
 					ByRef<string> ref_singer = new ByRef<string>(ust.getVoiceDir());
-					parent.form.checkUnknownResamplerAndSinger(ref_resampler, ref_singer);
+					parent.CheckUnknownResamplerAndSinger(ref_resampler, ref_singer);
 
 					// 歌手変更を何とかする
 					int program = 0;
@@ -333,6 +333,119 @@ namespace cadencii
 					#if DEBUG
 					sout.println("FormMain#menuFileOpenUst_Click; ex=" + ex);
 					#endif
+				}
+			}
+
+			public void RunFileImportUstCommand()
+			{
+				UiOpenFileDialog dialog = null;
+				try {
+					// 読み込むファイルを選ぶ
+					string dir = ApplicationGlobal.appConfig.getLastUsedPathIn ("ust");
+					dialog = ApplicationUIHost.Create<UiOpenFileDialog> ();
+					dialog.SetSelectedFile (dir);
+					var dialog_result = DialogManager.showModalFileDialog (dialog, true, this);
+					if (dialog_result != cadencii.java.awt.DialogResult.OK) {
+						return;
+					}
+					string file = dialog.FileName;
+					ApplicationGlobal.appConfig.setLastUsedPathIn (file, ".ust");
+
+					// ustを読み込む
+					UstFile ust = new UstFile (file);
+
+					// vsqに変換
+					VsqFile vsq = new VsqFile (ust);
+					vsq.insertBlank (0, vsq.getPreMeasureClocks ());
+
+					// RendererKindをUTAUに指定
+					for (int i = 1; i < vsq.Track.Count; i++) {
+						VsqTrack vsq_track = vsq.Track [i];
+						VsqFileEx.setTrackRendererKind (vsq_track, RendererKind.UTAU);
+					}
+
+					// unknownな歌手とresamplerを何とかする
+					ByRef<string> ref_resampler = new ByRef<string> (ust.getResampler ());
+					ByRef<string> ref_singer = new ByRef<string> (ust.getVoiceDir ());
+					parent.CheckUnknownResamplerAndSinger (ref_resampler, ref_singer);
+
+					// 歌手変更を何とかする
+					int program = 0;
+					for (int i = 0; i < ApplicationGlobal.appConfig.UtauSingers.Count; i++) {
+						SingerConfig sc = ApplicationGlobal.appConfig.UtauSingers [i];
+						if (sc == null) {
+							continue;
+						}
+						if (sc.VOICEIDSTR == ref_singer.value) {
+							program = i;
+							break;
+						}
+					}
+					// 歌手変更のテンプレートを作成
+					VsqID singer_id = Utility.getSingerID (RendererKind.UTAU, program, 0);
+					if (singer_id == null) {
+						singer_id = new VsqID ();
+						singer_id.type = VsqIDType.Singer;
+						singer_id.IconHandle = new IconHandle ();
+						singer_id.IconHandle.Program = program;
+						singer_id.IconHandle.IconID = "$0401" + PortUtil.toHexString (0, 4);
+					}
+					// トラックの歌手変更イベントをすべて置き換える
+					for (int i = 1; i < vsq.Track.Count; i++) {
+						VsqTrack vsq_track = vsq.Track [i];
+						int c = vsq_track.getEventCount ();
+						for (int j = 0; j < c; j++) {
+							VsqEvent itemj = vsq_track.getEvent (j);
+							if (itemj.ID.type == VsqIDType.Singer) {
+								itemj.ID = (VsqID)singer_id.clone ();
+							}
+						}
+					}
+
+					// resamplerUsedを更新(可能なら)
+					for (int j = 1; j < vsq.Track.Count; j++) {
+						VsqTrack vsq_track = vsq.Track [j];
+						for (int i = 0; i < ApplicationGlobal.appConfig.getResamplerCount (); i++) {
+							string resampler = ApplicationGlobal.appConfig.getResamplerAt (i);
+							if (resampler == ref_resampler.value) {
+								VsqFileEx.setTrackResamplerUsed (vsq_track, i);
+								break;
+							}
+						}
+					}
+
+					// 読込先のvsqと，インポートするvsqではテンポテーブルがずれているので，
+					// 読み込んだ方のvsqの内容を，現在のvsqと合致するように編集する
+					VsqFileEx dst = (VsqFileEx)MusicManager.getVsqFile ().clone ();
+					vsq.adjustClockToMatchWith (dst.TempoTable);
+
+					// トラック数の上限になるまで挿入を実行
+					int size = vsq.Track.Count;
+					for (int i = 1; i < size; i++) {
+						if (dst.Track.Count + 1 >= VsqFile.MAX_TRACKS + 1) {
+							// トラック数の上限
+							break;
+						}
+						dst.Track.Add (vsq.Track [i]);
+						dst.AttachedCurves.add (new BezierCurves ());
+						dst.Mixer.Slave.Add (new VsqMixerEntry ());
+					}
+
+					// コマンドを発行して実行
+					CadenciiCommand run = VsqFileEx.generateCommandReplace (dst);
+					EditorManager.editHistory.register (MusicManager.getVsqFile ().executeCommand (run));
+					EditorManager.MixerWindow.updateStatus ();
+					parent.form.setEdited (true);
+					parent.form.refreshScreen (true);
+				} catch (Exception ex) {
+					Logger.write (GetType () + ".menuFileImportUst_Click; ex=" + ex + "\t");
+				} finally {
+					if (dialog != null) {
+						try {
+							dialog.Dispose ();
+						} catch (Exception ex) {
+						}
+					}
 				}
 			}
 		}

@@ -54,6 +54,7 @@ namespace cadencii
 		IList<ValuePairOfStringArrayOfKeys> getDefaultShortcutKeys ();
 
 		void refreshScreen ();
+		void refreshScreen (bool b);
 
 		void updateScriptShortcut ();
 
