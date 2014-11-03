@@ -9,7 +9,7 @@ using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
 
 namespace cadencii
 {
-	// This file is directly added to Cadencii.Appication.WindowsForms.csproj because 
+	// This file is directly added to Cadencii.Appication.WindowsForms.csproj because
 	// the shared project somehow causes resgen compilation error.
 	static class ExtensionsWF
 	{
@@ -30,7 +30,7 @@ namespace cadencii
 
 		public static System.Windows.Forms.Cursor ToNative (this Cursor c)
 		{
-			return (System.Windows.Forms.Cursor) c.NativeCursor;
+			return (System.Windows.Forms.Cursor)c.NativeCursor;
 		}
 
 		public static cadencii.java.awt.Point ToAwt (this System.Drawing.Point point)
@@ -42,7 +42,7 @@ namespace cadencii
 		{
 			return new System.Drawing.Point (point.X, point.Y);
 		}
-		
+
 		public static cadencii.java.awt.Dimension ToAwt (this System.Drawing.Size size)
 		{
 			return new cadencii.java.awt.Dimension (size.Width, size.Height);
@@ -52,7 +52,7 @@ namespace cadencii
 		{
 			return new System.Drawing.Size (size.Width, size.Height);
 		}
-		
+
 		public static Rectangle ToAwt (this System.Drawing.Rectangle rect)
 		{
 			return new Rectangle (rect.X, rect.Y, rect.Width, rect.Height);
@@ -70,17 +70,17 @@ namespace cadencii
 
 		public static System.Drawing.Image ToWF (this Image image)
 		{
-			return image == null ? null : (System.Drawing.Image) image.NativeImage;
+			return image == null ? null : (System.Drawing.Image)image.NativeImage;
 		}
 
 		public static MouseEventArgs ToWF (this NMouseEventArgs e)
 		{
-			return new MouseEventArgs ((MouseButtons) e.Button, e.Clicks, e.X, e.Y, e.Delta);
+			return new MouseEventArgs ((MouseButtons)e.Button, e.Clicks, e.X, e.Y, e.Delta);
 		}
 
 		public static NMouseEventArgs ToAwt (this MouseEventArgs e)
 		{
-			return new NMouseEventArgs ((NMouseButtons) e.Button, e.Clicks, e.X, e.Y, e.Delta);
+			return new NMouseEventArgs ((NMouseButtons)e.Button, e.Clicks, e.X, e.Y, e.Delta);
 		}
 
 		public static Font ToAwt (this System.Drawing.Font f)
@@ -90,7 +90,7 @@ namespace cadencii
 
 		public static System.Drawing.Font ToWF (this Font f)
 		{
-			return (System.Drawing.Font) f.NativeFont;
+			return (System.Drawing.Font)f.NativeFont;
 		}
 
 		public static Graphics ToAwt (this System.Drawing.Graphics g)
@@ -100,7 +100,7 @@ namespace cadencii
 
 		public static System.Drawing.Graphics ToWF (this Graphics g)
 		{
-			return (System.Drawing.Graphics) g.NativeGraphics;
+			return (System.Drawing.Graphics)g.NativeGraphics;
 		}
 
 		public static cadencii.PaintEventArgs ToAwt (this System.Windows.Forms.PaintEventArgs e)
@@ -110,7 +110,48 @@ namespace cadencii
 
 		public static cadencii.ToolBarButtonClickEventArgs ToAwt (this System.Windows.Forms.ToolBarButtonClickEventArgs e)
 		{
-			return new ToolBarButtonClickEventArgs () { Button = (UiToolBarButton) e.Button };
+			return new ToolBarButtonClickEventArgs () { Button = (UiToolBarButton)e.Button };
+		}
+
+		public static System.Windows.Forms.Control Mnemonic (this System.Windows.Forms.Control control, Keys value)
+		{
+			control.Text = GetMnemonicString (control.Text, value);
+			return control;
+		}
+
+		public static System.Windows.Forms.ToolStripItem Mnemonic (this System.Windows.Forms.ToolStripItem item, Keys value)
+		{
+			item.Text = GetMnemonicString (item.Text, value);
+			return item;
+		}
+
+		private static string GetMnemonicString (string text, Keys keys)
+		{
+			int value = (int)keys;
+			if (value == 0) {
+				return text;
+			}
+			if ((value < 48 || 57 < value) && (value < 65 || 90 < value)) {
+				return text;
+			}
+
+			if (text.Length >= 2) {
+				char lastc = text [0];
+				int index = -1; // 第index文字目が、ニーモニック
+				for (int i = 1; i < text.Length; i++) {
+					char c = text [i];
+					if (lastc == '&' && c != '&') {
+						index = i;
+					}
+					lastc = c;
+				}
+
+				if (index >= 0) {
+					string newtext = text.Substring (0, index) + new string ((char)value, 1) + ((index + 1 < text.Length) ? text.Substring (index + 1) : "");
+					return newtext;
+				}
+			}
+			return text + "(&" + new string ((char)value, 1) + ")";
 		}
 	}
 }

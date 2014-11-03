@@ -40,47 +40,6 @@ namespace cadencii.windows.forms
             return dialog;
         }
 
-		public static System.Windows.Forms.Control Mnemonic(this System.Windows.Forms.Control control, Keys value)
-		{
-			control.Text = GetMnemonicString(control.Text, value);
-			return control;
-		}
-
-		public static System.Windows.Forms.ToolStripItem Mnemonic(this System.Windows.Forms.ToolStripItem item, Keys value)
-		{
-			item.Text = GetMnemonicString(item.Text, value);
-			return item;
-		}
-
-        private static string GetMnemonicString(string text, Keys keys)
-        {
-            int value = (int)keys;
-            if (value == 0) {
-                return text;
-            }
-            if ((value < 48 || 57 < value) && (value < 65 || 90 < value)) {
-                return text;
-            }
-
-            if (text.Length >= 2) {
-                char lastc = text[0];
-                int index = -1; // 第index文字目が、ニーモニック
-                for (int i = 1; i < text.Length; i++) {
-                    char c = text[i];
-                    if (lastc == '&' && c != '&') {
-                        index = i;
-                    }
-                    lastc = c;
-                }
-
-                if (index >= 0) {
-                    string newtext = text.Substring(0, index) + new string((char)value, 1) + ((index + 1 < text.Length) ? text.Substring(index + 1) : "");
-                    return newtext;
-                }
-            }
-            return text + "(&" + new string((char)value, 1) + ")";
-        }
-
         public static System.Windows.Forms.DialogResult showMessageBox(string text, string caption, int optionType, int messageType)
         {
             System.Windows.Forms.DialogResult ret = System.Windows.Forms.DialogResult.Cancel;

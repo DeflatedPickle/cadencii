@@ -22,7 +22,7 @@ namespace cadencii
 
 		void UiToolStripMenuItem.Mnemonic (cadencii.java.awt.Keys keys)
 		{
-			ProcessMnemonic ((char) keys);
+			this.Mnemonic (keys);
 		}
 
 		Image UiToolStripMenuItem.Image {
