@@ -22,7 +22,7 @@ namespace cadencii
 		bool UseCoolbarPicture { get; set; }
 		bool FixedBackground { get; set; }
 		Image BackgroundImage { get; set; }
-		Rectangle Bounds { get; set; }
+		Rectangle Bounds { get; }
 		int ID { get; }
 
 		void CreateBand ();

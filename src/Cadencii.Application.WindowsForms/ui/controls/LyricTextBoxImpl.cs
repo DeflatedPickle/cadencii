@@ -26,12 +26,8 @@ namespace cadencii
     public class LyricTextBoxImpl : TextBoxImpl, LyricTextBox
     {
 		PictPianoRoll LyricTextBox.Parent {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (PictPianoRoll) this.Parent; }
+			set { Parent = (Control) value; }
 		}
 
         private string m_buf_text;

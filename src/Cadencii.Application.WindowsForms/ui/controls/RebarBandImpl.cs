@@ -37,80 +37,43 @@ namespace cadencii.windows.forms
     {
 		#region RebarBand implementation
 
-		event EventHandler RebarBand.Resize {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-		void RebarBand.CreateBand ()
-		{
-			throw new NotImplementedException ();
-		}
-		void RebarBand.DestroyBand ()
-		{
-			throw new NotImplementedException ();
-		}
 		void RebarBand.Show (UiControl control, cadencii.java.awt.Rectangle chevronRect)
 		{
-			throw new NotImplementedException ();
+			Show ((Control)control.Native, chevronRect.ToWF ());
 		}
 		void RebarBand.OnResize (EventArgs e)
 		{
-			throw new NotImplementedException ();
+			OnResize (e);
 		}
 		void RebarBand.OnMouseDown (cadencii.java.awt.MouseEventArgs e)
 		{
-			throw new NotImplementedException ();
+			OnMouseDown (e.ToWF ());
 		}
 		void RebarBand.OnMouseMove (cadencii.java.awt.MouseEventArgs e)
 		{
-			throw new NotImplementedException ();
+			OnMouseMove (e.ToWF ());
 		}
 		void RebarBand.OnMouseUp (cadencii.java.awt.MouseEventArgs e)
 		{
-			throw new NotImplementedException ();
-		}
+			OnMouseUp (e.ToWF ());
+	}
 		void RebarBand.OnMouseWheel (cadencii.java.awt.MouseEventArgs e)
 		{
-			throw new NotImplementedException ();
+			OnMouseWheel (e.ToWF ());
 		}
 		cadencii.java.awt.Point RebarBand.Location {
 			get { return Location.ToAwt (); }
 		}
 		UiControl RebarBand.Child {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (UiControl)Child; }
+			set { Child = (Control)value.Native; }
 		}
 		cadencii.java.awt.Image RebarBand.BackgroundImage {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return BackgroundImage.ToAwt (); }
+			set { BackgroundImage = (Bitmap) value.ToWF (); }
 		}
 		cadencii.java.awt.Rectangle RebarBand.Bounds {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
-		RebarBandCollection RebarBand.Bands {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return Bounds.ToAwt (); }
 		}
 		#endregion
 
@@ -597,7 +560,7 @@ namespace cadencii.windows.forms
             }
         }
 
-        internal void CreateBand()
+        public void CreateBand()
         {
 			if (!Created && _bands != null && ((RebarImpl) _bands.Rebar).NativeRebar != null) {
                 if (_child != null) _child.Parent = (Control) _bands.Rebar.Native;
@@ -669,7 +632,7 @@ namespace cadencii.windows.forms
             }
         }
 
-        internal void DestroyBand()
+        public void DestroyBand()
         {
             if (Created) {
 				win32.SendMessage(((RebarImpl) _bands.Rebar).RebarHwnd, (int)win32.RB_DELETEBAND, (uint)BandIndex, 0U);
