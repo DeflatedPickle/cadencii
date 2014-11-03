@@ -318,7 +318,7 @@ namespace cadencii
         public void btnApply_Click(Object sender, EventArgs e)
         {
             if (DialogManager.showMessageBox(_("Would you like to change singer style for all events?"),
-                                  FormMain._APP_NAME,
+				FormMainModel.ApplicationName,
                                   cadencii.Dialog.MSGBOX_YES_NO_OPTION,
 				cadencii.Dialog.MSGBOX_WARNING_MESSAGE) == cadencii.java.awt.DialogResult.Yes) {
                 m_apply_current_track = true;

@@ -16,7 +16,6 @@ using System.Collections.Generic;
 
 namespace cadencii
 {
-
     /// <summary>
     /// メイン画面の実装クラスが持つべきメソッドを定義するインターフェース
     /// </summary>

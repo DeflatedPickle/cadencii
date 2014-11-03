@@ -11,6 +11,8 @@ namespace cadencii
 {
 	public partial class FormMainModel
 	{
+		public const string ApplicationName = "Cadencii";
+
 		static string _(string id)
 		{
 			return Messaging.getMessage(id);
