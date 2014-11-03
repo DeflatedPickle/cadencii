@@ -21,6 +21,8 @@ namespace cadencii
     /// </summary>
     public interface UiFormMain : UiForm
     {
+		FormMidiImExport mDialogMidiImportAndExport { get; set; }
+
 		void updateScrollRangeHorizontal();
 
 		UiToolStripStatusLabel statusLabel { get; set; }

@@ -7,6 +7,7 @@ using System.IO;
 using System.Threading;
 using cadencii.apputil;
 using cadencii.utau;
+using cadencii.java.util;
 
 namespace cadencii
 {
@@ -443,6 +444,85 @@ namespace cadencii
 				left = rcScreen.X;
 			}
 			return new Point(left, top);
+		}
+
+		/// <summary>
+		/// VsqEvent, VsqBPList, BezierCurvesの全てのクロックを、tempoに格納されているテンポテーブルに
+		/// 合致するようにシフトします．ただし，このメソッド内ではtargetのテンポテーブルは変更せず，クロック値だけが変更される．
+		/// </summary>
+		/// <param name="work"></param>
+		/// <param name="tempo"></param>
+		public static void ShiftClockToMatchWith(VsqFileEx target, VsqFile tempo, double shift_seconds)
+		{
+			// テンポをリプレースする場合。
+			// まずクロック値を、リプレース後のモノに置き換え
+			for (int track = 1; track < target.Track.Count; track++) {
+				// ノート・歌手イベントをシフト
+				for (Iterator<VsqEvent> itr = target.Track[track].getEventIterator(); itr.hasNext(); ) {
+					VsqEvent item = itr.next();
+					if (item.ID.type == VsqIDType.Singer && item.Clock == 0) {
+						continue;
+					}
+					int clock = item.Clock;
+					double sec_start = target.getSecFromClock(clock) + shift_seconds;
+					double sec_end = target.getSecFromClock(clock + item.ID.getLength()) + shift_seconds;
+					int clock_start = (int)tempo.getClockFromSec(sec_start);
+					int clock_end = (int)tempo.getClockFromSec(sec_end);
+					item.Clock = clock_start;
+					item.ID.setLength(clock_end - clock_start);
+					if (item.ID.VibratoHandle != null) {
+						double sec_vib_start = target.getSecFromClock(clock + item.ID.VibratoDelay) + shift_seconds;
+						int clock_vib_start = (int)tempo.getClockFromSec(sec_vib_start);
+						item.ID.VibratoDelay = clock_vib_start - clock_start;
+						item.ID.VibratoHandle.setLength(clock_end - clock_vib_start);
+					}
+				}
+
+				// コントロールカーブをシフト
+				for (int j = 0; j < BezierCurves.CURVE_USAGE.Length; j++) {
+					CurveType ct = BezierCurves.CURVE_USAGE[j];
+					VsqBPList item = target.Track[track].getCurve(ct.getName());
+					if (item == null) {
+						continue;
+					}
+					VsqBPList repl = new VsqBPList(item.getName(), item.getDefault(), item.getMinimum(), item.getMaximum());
+					for (int i = 0; i < item.size(); i++) {
+						int clock = item.getKeyClock(i);
+						int value = item.getElement(i);
+						double sec = target.getSecFromClock(clock) + shift_seconds;
+						if (sec >= 0) {
+							int clock_new = (int)tempo.getClockFromSec(sec);
+							repl.add(clock_new, value);
+						}
+					}
+					target.Track[track].setCurve(ct.getName(), repl);
+				}
+
+				// ベジエカーブをシフト
+				for (int j = 0; j < BezierCurves.CURVE_USAGE.Length; j++) {
+					CurveType ct = BezierCurves.CURVE_USAGE[j];
+					List<BezierChain> list = target.AttachedCurves.get(track - 1).get(ct);
+					if (list == null) {
+						continue;
+					}
+					foreach (var chain in list) {
+						foreach (var point in chain.points) {
+							PointD bse = new PointD(tempo.getClockFromSec(target.getSecFromClock(point.getBase().getX()) + shift_seconds),
+								point.getBase().getY());
+							double rx = point.getBase().getX() + point.controlRight.getX();
+							double new_rx = tempo.getClockFromSec(target.getSecFromClock(rx) + shift_seconds);
+							PointD ctrl_r = new PointD(new_rx - bse.getX(), point.controlRight.getY());
+
+							double lx = point.getBase().getX() + point.controlLeft.getX();
+							double new_lx = tempo.getClockFromSec(target.getSecFromClock(lx) + shift_seconds);
+							PointD ctrl_l = new PointD(new_lx - bse.getX(), point.controlLeft.getY());
+							point.setBase(bse);
+							point.controlLeft = ctrl_l;
+							point.controlRight = ctrl_r;
+						}
+					}
+				}
+			}
 		}
 	}
 }
