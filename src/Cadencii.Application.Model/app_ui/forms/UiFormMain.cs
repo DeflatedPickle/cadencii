@@ -21,6 +21,24 @@ namespace cadencii
     /// </summary>
     public interface UiFormMain : UiForm
     {
+		void updateLayout();
+		UiToolStripMenuItem menuVisualPluginUiAquesTone { get; set; }
+		UiToolStripMenuItem menuVisualPluginUiVocaloid1 { get; set; }
+		UiToolStripMenuItem menuVisualPluginUiVocaloid2 { get; set; }
+		UiToolStripMenuItem menuTrackRendererAquesTone2 { get; set; }
+		UiToolStripMenuItem menuVisualPluginUiAquesTone2 { get; set; }
+		UiToolStripMenuItem menuVisualIconPalette { get; set; }
+		UiToolStripMenuItem menuVisualWaveform { get; set; }
+		UiToolStripMenuItem menuVisualPitchLine { get; set; }
+		UiToolStripMenuItem menuVisualNoteProperty { get; set; }
+		UiToolStripMenuItem menuVisualLyrics { get; set; }
+		UiToolStripMenuItem menuVisualGridline { get; set; }
+		UiToolStripMenuItem menuVisualMixer { get; set; }
+		UiToolStripMenuItem menuVisualOverview { get; set; }
+		UiToolStripMenuItem menuVisualProperty { get; set; }
+		void updatePropertyPanelState(PanelState state);
+		void updateSplitContainer2Size (bool save_to_config);
+
 		UiToolStripMenuItem cMenuTrackSelectorUndo { get; set; }
 		UiToolStripMenuItem cMenuTrackSelectorRedo { get; set; }
 		UiToolStripMenuItem cMenuPianoUndo { get; set; }

@@ -14,6 +14,10 @@ namespace cadencii
 	public partial class FormMainModel
 	{
 		public const string ApplicationName = "Cadencii";
+		/// <summary>
+		/// splitContainer*で使用するSplitterWidthプロパティの値
+		/// </summary>
+		public const int _SPL_SPLITTER_WIDTH = 4;
 
 		static string _(string id)
 		{
@@ -27,12 +31,14 @@ namespace cadencii
 			this.form = form;
 			FileMenu = new FileMenuModel (this);
 			EditMenu = new EditMenuModel (this);
+			VisualMenu = new VisualMenuModel (this);
 			LyricMenu = new LyricMenuModel (this);
 			SettingsMenu = new SettingsMenuModel (this);
 		}
 			
 		public FileMenuModel FileMenu { get; private set; }
 		public EditMenuModel EditMenu { get; private set; }
+		public VisualMenuModel VisualMenu { get; private set; }
 		public LyricMenuModel LyricMenu { get; private set; }
 		public SettingsMenuModel SettingsMenu { get; private set; }
 
@@ -657,6 +663,53 @@ namespace cadencii
 					}
 				}
 			}
+		}
+
+		/// <summary>
+		/// ミキサーダイアログの表示・非表示状態を更新します
+		/// </summary>
+		/// <param name="visible">表示状態にする場合true，そうでなければfalse</param>
+		public void flipMixerDialogVisible(bool visible)
+		{
+			EditorManager.MixerWindow.Visible = visible;
+			EditorManager.editorConfig.MixerVisible = visible;
+			if (visible != form.menuVisualMixer.Checked) {
+				form.menuVisualMixer.Checked = visible;
+			}
+		}
+
+		/// <summary>
+		/// アイコンパレットの表示・非表示状態を更新します
+		/// </summary>
+		public void flipIconPaletteVisible(bool visible)
+		{
+			EditorManager.iconPalette.Visible = visible;
+			EditorManager.editorConfig.IconPaletteVisible = visible;
+			if (visible != form.menuVisualIconPalette.Checked) {
+				form.menuVisualIconPalette.Checked = visible;
+			}
+		}
+
+		/// <summary>
+		/// コントロールトラックの表示・非表示状態を更新します
+		/// </summary>
+		public void flipControlCurveVisible(bool visible)
+		{
+			form.TrackSelector.setCurveVisible(visible);
+			if (visible) {
+				form.splitContainer1.SplitterFixed = (false);
+				form.splitContainer1.DividerSize = (FormMainModel._SPL_SPLITTER_WIDTH);
+				form.splitContainer1.DividerLocation = (form.splitContainer1.Height - EditorManager.mLastTrackSelectorHeight - form.splitContainer1.DividerSize);
+				form.splitContainer1.Panel2MinSize = (form.TrackSelector.getPreferredMinSize());
+			} else {
+				EditorManager.mLastTrackSelectorHeight = form.splitContainer1.Height - form.splitContainer1.DividerLocation - form.splitContainer1.DividerSize;
+				form.splitContainer1.SplitterFixed = (true);
+				form.splitContainer1.DividerSize = (0);
+				int panel2height = TrackSelectorConsts.OFFSET_TRACK_TAB * 2;
+				form.splitContainer1.DividerLocation = (form.splitContainer1.Height - panel2height - form.splitContainer1.DividerSize);
+				form.splitContainer1.Panel2MinSize = (panel2height);
+			}
+			form.refreshScreen();
 		}
 
 	}

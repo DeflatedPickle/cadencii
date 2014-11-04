@@ -805,7 +805,7 @@ namespace cadencii
             this.menuVisualPluginUiAquesTone2.Name = "menuVisualPluginUiAquesTone2";
             this.menuVisualPluginUiAquesTone2.Size = new cadencii.java.awt.Dimension(157, 22);
             this.menuVisualPluginUiAquesTone2.Text = "AquesTone2";
-            this.menuVisualPluginUiAquesTone2.Click += new System.EventHandler(this.menuVisualPluginUiAquesTone2_Click);
+			this.menuVisualPluginUiAquesTone2.Click += (o, e) => model.VisualMenu.RunVisualPluginUiAquesTone2Command ();
             // 
             // toolStripMenuItem1
             // 
@@ -2966,15 +2966,15 @@ namespace cadencii
         public UiToolStripMenuItem menuSetting;
         public UiToolStripMenuItem menuHelp;
 		public UiToolStripMenuItem menuVisualControlTrack { get; set; }
-        public UiToolStripMenuItem menuVisualMixer;
+		public UiToolStripMenuItem menuVisualMixer { get; set; }
         public UiToolStripSeparator toolStripMenuItem1;
-        public UiToolStripMenuItem menuVisualGridline;
+		public UiToolStripMenuItem menuVisualGridline { get; set; }
         public UiToolStripSeparator toolStripMenuItem2;
         public UiToolStripMenuItem menuVisualStartMarker;
         public UiToolStripMenuItem menuVisualEndMarker;
         public UiToolStripSeparator toolStripMenuItem3;
-        public UiToolStripMenuItem menuVisualLyrics;
-        public UiToolStripMenuItem menuVisualNoteProperty;
+		public UiToolStripMenuItem menuVisualLyrics { get; set; }
+		public UiToolStripMenuItem menuVisualNoteProperty { get; set; }
         public UiToolStripMenuItem menuSettingPreference;
         public UiToolStripSeparator toolStripMenuItem6;
         public UiToolStripMenuItem menuSettingDefaultSingerStyle;
@@ -3160,7 +3160,7 @@ namespace cadencii
         public UiToolStripMenuItem menuSettingPositionQuantize128;
         public UiToolStripMenuItem cMenuPianoQuantize128;
         public UiToolStripMenuItem cMenuPianoFixed128;
-        public UiToolStripMenuItem menuVisualWaveform;
+		public UiToolStripMenuItem menuVisualWaveform { get; set; }
         private WaveformZoomUi panelWaveformZoom;
         public UiToolStripMenuItem cMenuTrackSelectorDeleteBezier;
         public UiToolStripStatusLabel stripLblMidiIn;
@@ -3171,7 +3171,7 @@ namespace cadencii
         public UiToolStripMenuItem cMenuTrackTabRendererVOCALOID2;
         public UiToolStripMenuItem cMenuTrackTabRendererUtau;
         private UiToolStripMenuItem cMenuTrackTabRendererAquesTone2;
-        public UiToolStripMenuItem menuVisualPitchLine;
+		public UiToolStripMenuItem menuVisualPitchLine { get;set; }
         public UiToolStripMenuItem menuFileImportMidi;
         public UiToolStripStatusLabel toolStripStatusLabel1;
         public UiToolStripStatusLabel toolStripStatusLabel2;
@@ -3194,7 +3194,7 @@ namespace cadencii
         public UiToolStripMenuItem menuTrackRendererUtau;
         public UiToolStripMenuItem menuFileImportVsq;
         public UiToolStripMenuItem menuSettingShortcut;
-        public UiToolStripMenuItem menuVisualProperty;
+		public UiToolStripMenuItem menuVisualProperty { get; set; }
         public UiToolStripMenuItem menuFileOpenVsq;
         public UiToolStripMenuItem menuFileOpenUst;
         public UiToolStripMenuItem menuSettingGameControlerRemove;
@@ -3203,7 +3203,7 @@ namespace cadencii
         public UiToolStripMenuItem menuHiddenCut;
         public UiToolStrip toolStripBottom;
         public cadencii.apputil.BSplitContainer splitContainerProperty;
-        public UiToolStripMenuItem menuVisualOverview;
+		public UiToolStripMenuItem menuVisualOverview { get; set; }
         public PictOverview panelOverview;
 		public cadencii.apputil.BSplitContainer splitContainer1 { get; set; }
         public UiToolStripSeparator toolStripMenuItem4;
@@ -3217,11 +3217,11 @@ namespace cadencii
         private UiToolStripMenuItem menuTrackRendererAquesTone;
         private UiToolStripMenuItem cMenuTrackTabRendererAquesTone;
         private UiToolStripMenuItem menuVisualPluginUi;
-        private UiToolStripMenuItem menuVisualPluginUiAquesTone;
-        private UiToolStripMenuItem menuVisualPluginUiVocaloid1;
-        private UiToolStripMenuItem menuVisualPluginUiVocaloid2;
-        private UiToolStripMenuItem menuTrackRendererAquesTone2;
-        private UiToolStripMenuItem menuVisualIconPalette;
+		public UiToolStripMenuItem menuVisualPluginUiAquesTone { get; set; }
+		public UiToolStripMenuItem menuVisualPluginUiVocaloid1 { get; set; }
+		public UiToolStripMenuItem menuVisualPluginUiVocaloid2 { get; set; }
+		public UiToolStripMenuItem menuTrackRendererAquesTone2 { get; set; }
+		public UiToolStripMenuItem menuVisualIconPalette { get; set; }
         private UiToolStripMenuItem menuFileExportMusicXml;
         public UiToolStripMenuItem menuHiddenSelectForward;
         public UiToolStripMenuItem menuHiddenSelectBackward;
@@ -3282,7 +3282,7 @@ namespace cadencii
 		public WaveView waveView { get; set; }
 		public UiToolStripMenuItem menuFileRecentClear { get; set; }
         public UiToolStripMenuItem menuLyricApplyUtauParameters;
-        private UiToolStripMenuItem menuVisualPluginUiAquesTone2;
+		public UiToolStripMenuItem menuVisualPluginUiAquesTone2 { get; set; }
         private UiToolStripMenuItem menuFileExportVsqx;
         private UiToolStripMenuItem menuTools;
         private UiToolStripMenuItem menuToolsCreateVConnectSTANDDb;

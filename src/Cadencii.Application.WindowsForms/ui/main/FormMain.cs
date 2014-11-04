@@ -286,10 +286,6 @@ namespace cadencii
         /// splitContainer2.Panel2の最小サイズ
         /// </summary>
         public const int _SPL2_PANEL2_MIN_HEIGHT = 25;
-        /// <summary>
-        /// splitContainer*で使用するSplitterWidthプロパティの値
-        /// </summary>
-        public const int _SPL_SPLITTER_WIDTH = 4;
         const int _PICT_POSITION_INDICATOR_HEIGHT = 48;
         const int _SCROLL_WIDTH = 16;
         /// <summary>
@@ -737,7 +733,7 @@ namespace cadencii
             trackSelector.MouseWheel += trackSelector_MouseWheel;
             picturePositionIndicator.MouseWheel += picturePositionIndicator_MouseWheel;
 
-            menuVisualOverview.CheckedChanged += menuVisualOverview_CheckedChanged;
+			menuVisualOverview.CheckedChanged += (o, e) => model.VisualMenu.RunVisualOverviewCheckedChanged ();
 
             hScroll.Maximum = MusicManager.getVsqFile().TotalClocks + 240;
             hScroll.LargeChange = 240 * 4;
@@ -977,7 +973,7 @@ namespace cadencii
 #endif
             updateBgmMenuState();
             EditorManager.mLastTrackSelectorHeight = trackSelector.getPreferredMinSize();
-            flipControlCurveVisible(true);
+            model.flipControlCurveVisible(true);
 
             Refresh();
             updateLayout();
@@ -2180,7 +2176,7 @@ namespace cadencii
                 EditorManager.editorConfig.PropertyWindowStatus.State = PanelState.Docked;
                 splitContainerProperty.Panel1Hidden = (false);
                 splitContainerProperty.SplitterFixed = (false);
-                splitContainerProperty.DividerSize = (_SPL_SPLITTER_WIDTH);
+				splitContainerProperty.DividerSize = (FormMainModel._SPL_SPLITTER_WIDTH);
                 splitContainerProperty.Panel1MinSize = _PROPERTY_DOCK_MIN_WIDTH;
                 int w = EditorManager.editorConfig.PropertyWindowStatus.DockWidth;
                 if (w < _PROPERTY_DOCK_MIN_WIDTH) {
@@ -2707,7 +2703,7 @@ namespace cadencii
                 splitContainer2.Panel2MinSize = (_SPL2_PANEL2_MIN_HEIGHT);
                 splitContainer2.SplitterFixed = (false);
                 splitContainer2.Panel2Hidden = (false);
-                splitContainer2.DividerSize = (_SPL_SPLITTER_WIDTH);
+                splitContainer2.DividerSize = (FormMainModel._SPL_SPLITTER_WIDTH);
                 int lastloc = EditorManager.editorConfig.SplitContainer2LastDividerLocation;
                 if (lastloc <= 0 || lastloc > splitContainer2.Height) {
                     int draft = splitContainer2.Height- 100;
@@ -3407,53 +3403,6 @@ namespace cadencii
             }
             if (vScroll.Value > new_value) {
                 vScroll.Value = new_value;
-            }
-        }
-
-        /// <summary>
-        /// コントロールトラックの表示・非表示状態を更新します
-        /// </summary>
-        public void flipControlCurveVisible(bool visible)
-        {
-            trackSelector.setCurveVisible(visible);
-            if (visible) {
-                splitContainer1.SplitterFixed = (false);
-                splitContainer1.DividerSize = (_SPL_SPLITTER_WIDTH);
-                splitContainer1.DividerLocation = (splitContainer1.Height - EditorManager.mLastTrackSelectorHeight - splitContainer1.DividerSize);
-                splitContainer1.Panel2MinSize = (trackSelector.getPreferredMinSize());
-            } else {
-                EditorManager.mLastTrackSelectorHeight = splitContainer1.Height - splitContainer1.DividerLocation - splitContainer1.DividerSize;
-                splitContainer1.SplitterFixed = (true);
-                splitContainer1.DividerSize = (0);
-                int panel2height = TrackSelectorConsts.OFFSET_TRACK_TAB * 2;
-                splitContainer1.DividerLocation = (splitContainer1.Height - panel2height - splitContainer1.DividerSize);
-                splitContainer1.Panel2MinSize = (panel2height);
-            }
-            refreshScreen();
-        }
-
-        /// <summary>
-        /// ミキサーダイアログの表示・非表示状態を更新します
-        /// </summary>
-        /// <param name="visible">表示状態にする場合true，そうでなければfalse</param>
-        public void flipMixerDialogVisible(bool visible)
-        {
-            EditorManager.MixerWindow.Visible = visible;
-            EditorManager.editorConfig.MixerVisible = visible;
-            if (visible != menuVisualMixer.Checked) {
-                menuVisualMixer.Checked = visible;
-            }
-        }
-
-        /// <summary>
-        /// アイコンパレットの表示・非表示状態を更新します
-        /// </summary>
-        public void flipIconPaletteVisible(bool visible)
-        {
-            EditorManager.iconPalette.Visible = visible;
-            EditorManager.editorConfig.IconPaletteVisible = visible;
-            if (visible != menuVisualIconPalette.Checked) {
-                menuVisualIconPalette.Checked = visible;
             }
         }
 
@@ -5297,33 +5246,33 @@ namespace cadencii
             menuEditSelectAllEvents.MouseEnter += new EventHandler(handleMenuMouseEnter);
 			menuEditSelectAllEvents.Click += (o, e) => model.EditMenu.RunEditSelectAllEventsCommand();
             menuVisualOverview.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuVisualControlTrack.CheckedChanged += new EventHandler(menuVisualControlTrack_CheckedChanged);
+			menuVisualControlTrack.CheckedChanged += (o, e) => model.VisualMenu.RunVisualControlTrackCheckedChanged ();
             menuVisualControlTrack.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuVisualMixer.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuVisualMixer.Click += new EventHandler(menuVisualMixer_Click);
-            menuVisualWaveform.CheckedChanged += new EventHandler(menuVisualWaveform_CheckedChanged);
+			menuVisualMixer.Click += (o, e) => model.VisualMenu.RunVisualMixerCommand ();
+			menuVisualWaveform.CheckedChanged += (o, e) => model.VisualMenu.RunVisualWaveformCheckedChanged ();
             menuVisualWaveform.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuVisualProperty.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuVisualProperty.CheckedChanged += new EventHandler(menuVisualProperty_CheckedChanged);
-            menuVisualGridline.CheckedChanged += new EventHandler(menuVisualGridline_CheckedChanged);
+			menuVisualProperty.CheckedChanged += (o, e) => model.VisualMenu.RunVisualPropertyCheckedChanged ();
+			menuVisualGridline.CheckedChanged += (o, e) => model.VisualMenu.RunVisualGridlineCheckedChanged ();
             menuVisualGridline.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuVisualIconPalette.Click += new EventHandler(menuVisualIconPalette_Click);
+			menuVisualIconPalette.Click += (o, e) => model.VisualMenu.RunVisualIconPaletteCommand ();
             menuVisualIconPalette.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuVisualStartMarker.Click += new EventHandler(handleStartMarker_Click);
             menuVisualStartMarker.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuVisualEndMarker.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuVisualEndMarker.Click += new EventHandler(handleEndMarker_Click);
-            menuVisualLyrics.CheckedChanged += new EventHandler(menuVisualLyrics_CheckedChanged);
+			menuVisualLyrics.CheckedChanged += (o, e) => model.VisualMenu.RunVisualLyricsCheckedChanged ();
             menuVisualLyrics.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuVisualNoteProperty.CheckedChanged += new EventHandler(menuVisualNoteProperty_CheckedChanged);
+			menuVisualNoteProperty.CheckedChanged += (o, e) => model.VisualMenu.RunVisualNotePropertyCheckedChanged ();
             menuVisualNoteProperty.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuVisualPitchLine.CheckedChanged += new EventHandler(menuVisualPitchLine_CheckedChanged);
+			menuVisualPitchLine.CheckedChanged += (o, e) => model.VisualMenu.RunVisualPitchLineCheckedChanged ();
             menuVisualPitchLine.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuVisualPluginUi.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuVisualPluginUi.DropDownOpening += new EventHandler(menuVisualPluginUi_DropDownOpening);
-            menuVisualPluginUiVocaloid1.Click += new EventHandler(menuVisualPluginUiVocaloidCommon_Click);
-            menuVisualPluginUiVocaloid2.Click += new EventHandler(menuVisualPluginUiVocaloidCommon_Click);
-            menuVisualPluginUiAquesTone.Click += new EventHandler(menuVisualPluginUiAquesTone_Click);
+			menuVisualPluginUi.DropDownOpening += (o, e) => model.VisualMenu.RunVisualPluginUiDropDownOpening ();
+			menuVisualPluginUiVocaloid1.Click += (o, e) => model.VisualMenu.RunVisualPluginUiVocaloidCommonCommand (RendererKind.VOCALOID1);
+			menuVisualPluginUiVocaloid2.Click += (o, e) => model.VisualMenu.RunVisualPluginUiVocaloidCommonCommand (RendererKind.VOCALOID2);
+			menuVisualPluginUiAquesTone.Click += (o, e) => model.VisualMenu.RunVisualPluginUiAquesToneCommand ();
             menuJob.DropDownOpening += new EventHandler(menuJob_DropDownOpening);
             menuJobNormalize.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuJobNormalize.Click += new EventHandler(menuJobNormalize_Click);
@@ -7698,235 +7647,16 @@ namespace cadencii
 
         public void iconPalette_FormClosing(Object sender, EventArgs e)
         {
-            flipIconPaletteVisible(EditorManager.iconPalette.Visible);
+            model.flipIconPaletteVisible(EditorManager.iconPalette.Visible);
         }
         #endregion
 
-        //BOOKMARK: menuVisual
-        #region menuVisual*
-        public void menuVisualProperty_CheckedChanged(Object sender, EventArgs e)
-        {
-#if ENABLE_PROPERTY
-            if (menuVisualProperty.Checked) {
-                if (EditorManager.editorConfig.PropertyWindowStatus.IsMinimized) {
-                    updatePropertyPanelState(PanelState.Docked);
-                } else {
-                    updatePropertyPanelState(PanelState.Window);
-                }
-            } else {
-                updatePropertyPanelState(PanelState.Hidden);
-            }
-#endif
-        }
-
-        public void menuVisualOverview_CheckedChanged(Object sender, EventArgs e)
-        {
-#if DEBUG
-            sout.println("FormMain#menuVisualOverview_CheckedChanged; menuVisualOverview.isSelected()=" + menuVisualOverview.Checked);
-#endif
-            EditorManager.editorConfig.OverviewEnabled = menuVisualOverview.Checked;
-            updateLayout();
-        }
-
-        public void menuVisualMixer_Click(Object sender, EventArgs e)
-        {
-            bool v = !EditorManager.editorConfig.MixerVisible;
-            flipMixerDialogVisible(v);
-            this.Focus();
-        }
-
-        public void menuVisualGridline_CheckedChanged(Object sender, EventArgs e)
-        {
-            EditorManager.setGridVisible(menuVisualGridline.Checked);
-            refreshScreen();
-        }
-
-        public void menuVisualIconPalette_Click(Object sender, EventArgs e)
-        {
-            bool v = !EditorManager.editorConfig.IconPaletteVisible;
-            flipIconPaletteVisible(v);
-        }
-
-        public void menuVisualLyrics_CheckedChanged(Object sender, EventArgs e)
-        {
-            EditorManager.editorConfig.ShowLyric = menuVisualLyrics.Checked;
-        }
-
-        public void menuVisualNoteProperty_CheckedChanged(Object sender, EventArgs e)
-        {
-            EditorManager.editorConfig.ShowExpLine = menuVisualNoteProperty.Checked;
-            refreshScreen();
-        }
-
-        public void menuVisualPitchLine_CheckedChanged(Object sender, EventArgs e)
-        {
-            ApplicationGlobal.appConfig.ViewAtcualPitch = menuVisualPitchLine.Checked;
-        }
-
-        public void menuVisualControlTrack_CheckedChanged(Object sender, EventArgs e)
-        {
-            flipControlCurveVisible(menuVisualControlTrack.Checked);
-        }
-
-        public void menuVisualWaveform_CheckedChanged(Object sender, EventArgs e)
-        {
-			ApplicationGlobal.appConfig.ViewWaveform = menuVisualWaveform.Checked;
-            updateSplitContainer2Size(true);
-        }
-
-        public void menuVisualPluginUi_DropDownOpening(Object sender, EventArgs e)
-        {
-#if ENABLE_VOCALOID
-            // VOCALOID1, 2
-            int c = VSTiDllManager.vocaloidDriver.Count;
-            for (int i = 0; i < c; i++) {
-                VocaloidDriver vd = VSTiDllManager.vocaloidDriver[i];
-                bool chkv = true;
-                PluginUI ui;
-                if (vd == null) {
-                    chkv = false;
-                } else if (!vd.loaded) {
-                    chkv = false;
-                } else if ((ui = vd.getUi(this)) == null) {
-                    chkv = false;
-                } else if (ui.IsDisposed) {
-                    chkv = false;
-                } else if (!ui.Visible) {
-                    chkv = false;
-                }
-                RendererKind kind = vd.getRendererKind();
-                if (kind == RendererKind.VOCALOID1) {
-                    menuVisualPluginUiVocaloid1.Checked = chkv;
-                } else if (kind == RendererKind.VOCALOID2) {
-                    menuVisualPluginUiVocaloid2.Checked = chkv;
-                }
-            }
-#endif
-
-#if ENABLE_AQUESTONE
-            // AquesTone
-            AquesToneDriver drv = VSTiDllManager.getAquesToneDriver();
-            bool chk = true;
-            if (drv == null) {
-                chk = false;
-            } else if (!drv.loaded) {
-                chk = false;
-            } else {
-				var ui = drv.getUi(this);
-                if (ui == null) {
-                    chk = false;
-                } else if (ui.IsDisposed) {
-                    chk = false;
-                } else if (!ui.Visible) {
-                    chk = false;
-                }
-            }
-            menuVisualPluginUiAquesTone.Checked = chk;
-#endif
-        }
-
-        public void menuVisualPluginUiVocaloidCommon_Click(Object sender, EventArgs e)
-        {
-            RendererKind search = RendererKind.NULL;
-            //int vocaloid = 0;
-            if (sender == menuVisualPluginUiVocaloid1) {
-                search = RendererKind.VOCALOID1;
-                //vocaloid = 1;
-            } else if (sender == menuVisualPluginUiVocaloid2) {
-                search = RendererKind.VOCALOID2;
-                //vocaloid = 2;
-            } else {
-                return;
-            }
-#if DEBUG
-            sout.println("FormMain#menuVisualPluginVocaloidCommon_Click; search=" + search);
-#endif
-
-#if ENABLE_VOCALOID
-            int c = VSTiDllManager.vocaloidDriver.Count;
-            for (int i = 0; i < c; i++) {
-                VocaloidDriver vd = VSTiDllManager.vocaloidDriver[i];
-                bool chk = true;
-                if (vd == null) {
-                    chk = false;
-                } else if (!vd.loaded) {
-                    chk = false;
-                } else {
-					var ui = vd.getUi(this);
-                    if (ui == null) {
-                        chk = false;
-                    } else if (ui.IsDisposed) {
-                        chk = false;
-                    }
-                }
-                if (!chk) {
-                    continue;
-                }
-                RendererKind kind = vd.getRendererKind();
-                bool v = true;
-                if (kind == search) {
-                    if (search == RendererKind.VOCALOID1) {
-                        v = !menuVisualPluginUiVocaloid1.Checked;
-                        menuVisualPluginUiVocaloid1.Checked = v;
-						var ui = vd.getUi(this);
-						ui.Visible = v;
-                    } else if (search == RendererKind.VOCALOID2) {
-                        v = !menuVisualPluginUiVocaloid2.Checked;
-                        menuVisualPluginUiVocaloid2.Checked = v;
-						var ui = vd.getUi(this);
-						ui.Visible = v;
-                    }
-                    break;
-                }
-            }
-#endif
-        }
-
-        private void onClickVisualPluginUiAquesTone(UiToolStripMenuItem menu, AquesToneDriverBase drv)
-        {
-            bool visible = !menu.Checked;
-            menu.Checked = visible;
-#if ENABLE_AQUESTONE
-            bool chk = true;
-            PluginUI ui = null;
-            if (drv == null) {
-                chk = false;
-            } else if (!drv.loaded) {
-                chk = false;
-            } else {
-				ui = drv.getUi(this);
-                if (ui == null) {
-                    chk = false;
-                } else if (ui.IsDisposed) {
-                    chk = false;
-                }
-            }
-            if (!chk) {
-                menu.Checked = false;
-                return;
-            }
-            if (ui != null && !ui.IsDisposed) {
-                ui.Visible = visible;
-            }
-#endif
-        }
-
-        public void menuVisualPluginUiAquesTone_Click(Object sender, EventArgs e)
-        {
-            onClickVisualPluginUiAquesTone(menuVisualPluginUiAquesTone, VSTiDllManager.getAquesToneDriver());
-        }
-
-        private void menuVisualPluginUiAquesTone2_Click(object sender, EventArgs e)
-        {
-            onClickVisualPluginUiAquesTone(menuVisualPluginUiAquesTone2, VSTiDllManager.getAquesTone2Driver());
-        }
-        #endregion
 
         //BOOKMARK: mixerWindow
         #region mixerWindow
         public void mixerWindow_FormClosing(Object sender, EventArgs e)
         {
-            flipMixerDialogVisible(EditorManager.MixerWindow.Visible);
+            model.flipMixerDialogVisible(EditorManager.MixerWindow.Visible);
         }
 
         public void mixerWindow_SoloChanged(int track, bool solo)

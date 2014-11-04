@@ -222,6 +222,7 @@
     <Compile Include="app_ui\models\FormMainModel.LyricMenuModel.cs" />
     <Compile Include="app_ui\models\FormMainModel.EditMenuModel.cs" />
     <Compile Include="app_ui\models\FormMainModel.Editing.cs" />
+    <Compile Include="app_ui\models\FormMainModel.VisualMenuModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
