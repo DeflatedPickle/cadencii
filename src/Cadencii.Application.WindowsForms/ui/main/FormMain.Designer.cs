@@ -3268,7 +3268,7 @@ namespace cadencii
         private UiImageList imageListMenu;
         public UiToolStripMenuItem menuFileExportVsq;
         private UiToolStripMenuItem menuFileExportVxt;
-        public UiToolStripMenuItem menuLyricCopyVibratoToPreset;
+		public UiToolStripMenuItem menuLyricCopyVibratoToPreset { get; set; }
         public UiToolStripMenuItem menuSettingVibratoPreset;
         public UiToolStripMenuItem menuSettingSequence;
         public UiToolStripMenuItem menuHiddenPrintPoToCSV;

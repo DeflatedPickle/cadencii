@@ -26,10 +26,12 @@ namespace cadencii
 		{
 			this.form = form;
 			MainMenu = new FileMenuModel (this);
+			LyricMenu = new LyricMenuModel (this);
 			SettingsMenu = new SettingsMenuModel (this);
 		}
 			
 		public FileMenuModel MainMenu { get; private set; }
+		public LyricMenuModel LyricMenu { get; private set; }
 		public SettingsMenuModel SettingsMenu { get; private set; }
 
 		public static void TrackSelector_MouseClick (UiFormMain window, MouseEventArgs e)
@@ -43,6 +45,11 @@ namespace cadencii
 					}
 				}
 			}
+		}
+
+		public Point GetFormPreferedLocation(UiForm dlg)
+		{
+			return GetFormPreferedLocation(dlg.Width, dlg.Height);
 		}
 
 		/// <summary>
@@ -526,6 +533,120 @@ namespace cadencii
 				}
 			}
 		}
+
+		/// <summary>
+		/// 選択されている音符の表情を編集するためのダイアログを起動し、編集を行います。
+		/// </summary>
+		public void EditNoteExpressionProperty()
+		{
+			SelectedEventEntry item = EditorManager.itemSelection.getLastEvent();
+			if (item == null) {
+				return;
+			}
+
+			VsqEvent ev = item.original;
+			SynthesizerType type = SynthesizerType.VOCALOID2;
+			int selected = EditorManager.Selected;
+			VsqFileEx vsq = MusicManager.getVsqFile();
+			RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[selected]);
+			if (kind == RendererKind.VOCALOID1) {
+				type = SynthesizerType.VOCALOID1;
+			}
+			FormNoteExpressionConfig dlg = null;
+			try {
+				dlg = ApplicationUIHost.Create<FormNoteExpressionConfig>(type, ev.ID.NoteHeadHandle);
+				dlg.PMBendDepth = (ev.ID.PMBendDepth);
+				dlg.PMBendLength = (ev.ID.PMBendLength);
+				dlg.PMbPortamentoUse = (ev.ID.PMbPortamentoUse);
+				dlg.DEMdecGainRate = (ev.ID.DEMdecGainRate);
+				dlg.DEMaccent = (ev.ID.DEMaccent);
+
+				dlg.Location = GetFormPreferedLocation(dlg.Width, dlg.Height);
+				var dr = DialogManager.showModalDialog(dlg, this);
+				if (dr == 1) {
+					VsqEvent edited = (VsqEvent)ev.clone();
+					edited.ID.PMBendDepth = dlg.PMBendDepth;
+					edited.ID.PMBendLength = dlg.PMBendLength;
+					edited.ID.PMbPortamentoUse = dlg.PMbPortamentoUse;
+					edited.ID.DEMdecGainRate = dlg.DEMdecGainRate;
+					edited.ID.DEMaccent = dlg.DEMaccent;
+					edited.ID.NoteHeadHandle = dlg.EditedNoteHeadHandle;
+					CadenciiCommand run = new CadenciiCommand(
+						VsqCommand.generateCommandEventChangeIDContaints(selected, ev.InternalID, edited.ID));
+					EditorManager.editHistory.register(vsq.executeCommand(run));
+					form.setEdited(true);
+					form.refreshScreen();
+				}
+			} catch (Exception ex) {
+				Logger.write(GetType () + ".editNoteExpressionProperty; ex=" + ex + "\n");
+			} finally {
+				if (dlg != null) {
+					try {
+						dlg.Close();
+					} catch (Exception ex2) {
+						Logger.write(GetType () + ".editNoteExpressionProperty; ex=" + ex2 + "\n");
+					}
+				}
+			}
+		}
+
+		/// <summary>
+		/// 選択されている音符のビブラートを編集するためのダイアログを起動し、編集を行います。
+		/// </summary>
+		public void EditNoteVibratoProperty()
+		{
+			SelectedEventEntry item = EditorManager.itemSelection.getLastEvent();
+			if (item == null) {
+				return;
+			}
+
+			VsqEvent ev = item.original;
+			int selected = EditorManager.Selected;
+			VsqFileEx vsq = MusicManager.getVsqFile();
+			RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[selected]);
+			SynthesizerType type = SynthesizerType.VOCALOID2;
+			if (kind == RendererKind.VOCALOID1) {
+				type = SynthesizerType.VOCALOID1;
+			}
+			FormVibratoConfig dlg = null;
+			try {
+				dlg = ApplicationUIHost.Create<FormVibratoConfig>(
+					ev.ID.VibratoHandle,
+					ev.ID.getLength(),
+					ApplicationGlobal.appConfig.DefaultVibratoLength,
+					type,
+					ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType);
+				dlg.Location = GetFormPreferedLocation(dlg);
+				var dr = DialogManager.showModalDialog(dlg, this);
+				if (dr == 1) {
+					VsqEvent edited = (VsqEvent)ev.clone();
+					if (dlg.getVibratoHandle() != null) {
+						edited.ID.VibratoHandle = (VibratoHandle)dlg.getVibratoHandle().clone();
+						//edited.ID.VibratoHandle.setStartDepth( ApplicationGlobal.appConfig.DefaultVibratoDepth );
+						//edited.ID.VibratoHandle.setStartRate( ApplicationGlobal.appConfig.DefaultVibratoRate );
+						edited.ID.VibratoDelay = ev.ID.getLength() - dlg.getVibratoHandle().getLength();
+					} else {
+						edited.ID.VibratoHandle = null;
+					}
+					CadenciiCommand run = new CadenciiCommand(
+						VsqCommand.generateCommandEventChangeIDContaints(selected, ev.InternalID, edited.ID));
+					EditorManager.editHistory.register(vsq.executeCommand(run));
+					form.setEdited(true);
+					form.refreshScreen();
+				}
+			} catch (Exception ex) {
+				Logger.write(GetType () + ".editNoteVibratoProperty; ex=" + ex + "\n");
+			} finally {
+				if (dlg != null) {
+					try {
+						dlg.Close();
+					} catch (Exception ex2) {
+						Logger.write(GetType () + ".editNoteVibratoProperty; ex=" + ex2 + "\n");
+					}
+				}
+			}
+		}
+
 	}
 }
 

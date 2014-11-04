@@ -2346,10 +2346,6 @@ namespace cadencii
         {
             return getFormPreferedLocation(dlg.Width, dlg.Height);
         }
-	public cadencii.java.awt.Point getFormPreferedLocation(UiForm dlg)
-        {
-            return getFormPreferedLocation((Form) dlg.Native).ToAwt ();
-        }
 
         public void updateLayout()
         {
@@ -4276,7 +4272,7 @@ namespace cadencii
                 } else {
                     mDialogImportLyric.setMaxNotes (count);
                 }
-                mDialogImportLyric.Location = getFormPreferedLocation(mDialogImportLyric);
+                mDialogImportLyric.Location = model.GetFormPreferedLocation(mDialogImportLyric);
                 var dr = DialogManager.showModalDialog((Control)mDialogImportLyric.Native, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     string[] phrases = mDialogImportLyric.Letters;
@@ -4346,119 +4342,6 @@ namespace cadencii
                 Logger.write(typeof(FormMain) + ".importLyric; ex=" + ex + "\n");
             } finally {
                 mDialogImportLyric.Hide();
-            }
-        }
-
-        /// <summary>
-        /// 選択されている音符のビブラートを編集するためのダイアログを起動し、編集を行います。
-        /// </summary>
-        public void editNoteVibratoProperty()
-        {
-            SelectedEventEntry item = EditorManager.itemSelection.getLastEvent();
-            if (item == null) {
-                return;
-            }
-
-            VsqEvent ev = item.original;
-            int selected = EditorManager.Selected;
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[selected]);
-            SynthesizerType type = SynthesizerType.VOCALOID2;
-            if (kind == RendererKind.VOCALOID1) {
-                type = SynthesizerType.VOCALOID1;
-            }
-            FormVibratoConfig dlg = null;
-            try {
-                dlg = ApplicationUIHost.Create<FormVibratoConfig>(
-                    ev.ID.VibratoHandle,
-                    ev.ID.getLength(),
-                    ApplicationGlobal.appConfig.DefaultVibratoLength,
-                    type,
-					ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType);
-                dlg.Location = getFormPreferedLocation(dlg);
-                var dr = DialogManager.showModalDialog((Form) dlg.Native, this);
-				if (dr == cadencii.java.awt.DialogResult.OK) {
-                    VsqEvent edited = (VsqEvent)ev.clone();
-                    if (dlg.getVibratoHandle() != null) {
-                        edited.ID.VibratoHandle = (VibratoHandle)dlg.getVibratoHandle().clone();
-                        //edited.ID.VibratoHandle.setStartDepth( ApplicationGlobal.appConfig.DefaultVibratoDepth );
-                        //edited.ID.VibratoHandle.setStartRate( ApplicationGlobal.appConfig.DefaultVibratoRate );
-                        edited.ID.VibratoDelay = ev.ID.getLength() - dlg.getVibratoHandle().getLength();
-                    } else {
-                        edited.ID.VibratoHandle = null;
-                    }
-                    CadenciiCommand run = new CadenciiCommand(
-                        VsqCommand.generateCommandEventChangeIDContaints(selected, ev.InternalID, edited.ID));
-                    EditorManager.editHistory.register(vsq.executeCommand(run));
-                    setEdited(true);
-                    refreshScreen();
-                }
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".editNoteVibratoProperty; ex=" + ex + "\n");
-            } finally {
-                if (dlg != null) {
-                    try {
-                        dlg.Close();
-                    } catch (Exception ex2) {
-                        Logger.write(typeof(FormMain) + ".editNoteVibratoProperty; ex=" + ex2 + "\n");
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// 選択されている音符の表情を編集するためのダイアログを起動し、編集を行います。
-        /// </summary>
-        public void editNoteExpressionProperty()
-        {
-            SelectedEventEntry item = EditorManager.itemSelection.getLastEvent();
-            if (item == null) {
-                return;
-            }
-
-            VsqEvent ev = item.original;
-            SynthesizerType type = SynthesizerType.VOCALOID2;
-            int selected = EditorManager.Selected;
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[selected]);
-            if (kind == RendererKind.VOCALOID1) {
-                type = SynthesizerType.VOCALOID1;
-            }
-            FormNoteExpressionConfig dlg = null;
-            try {
-                dlg = ApplicationUIHost.Create<FormNoteExpressionConfig>(type, ev.ID.NoteHeadHandle);
-                dlg.PMBendDepth = (ev.ID.PMBendDepth);
-                dlg.PMBendLength = (ev.ID.PMBendLength);
-                dlg.PMbPortamentoUse = (ev.ID.PMbPortamentoUse);
-                dlg.DEMdecGainRate = (ev.ID.DEMdecGainRate);
-                dlg.DEMaccent = (ev.ID.DEMaccent);
-
-                dlg.Location = getFormPreferedLocation(dlg);
-                var dr = DialogManager.showModalDialog((Form)dlg.Native, this);
-				if (dr == cadencii.java.awt.DialogResult.OK) {
-                    VsqEvent edited = (VsqEvent)ev.clone();
-                    edited.ID.PMBendDepth = dlg.PMBendDepth;
-                    edited.ID.PMBendLength = dlg.PMBendLength;
-                    edited.ID.PMbPortamentoUse = dlg.PMbPortamentoUse;
-                    edited.ID.DEMdecGainRate = dlg.DEMdecGainRate;
-                    edited.ID.DEMaccent = dlg.DEMaccent;
-                    edited.ID.NoteHeadHandle = dlg.EditedNoteHeadHandle;
-                    CadenciiCommand run = new CadenciiCommand(
-                        VsqCommand.generateCommandEventChangeIDContaints(selected, ev.InternalID, edited.ID));
-                    EditorManager.editHistory.register(vsq.executeCommand(run));
-                    setEdited(true);
-                    refreshScreen();
-                }
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".editNoteExpressionProperty; ex=" + ex + "\n");
-            } finally {
-                if (dlg != null) {
-                    try {
-                        dlg.Close();
-                    } catch (Exception ex2) {
-                        Logger.write(typeof(FormMain) + ".editNoteExpressionProperty; ex=" + ex2 + "\n");
-                    }
-                }
             }
         }
 
@@ -5315,7 +5198,7 @@ namespace cadencii
                 VsqFileEx vsq = MusicManager.getVsqFile();
                 ib = ApplicationUIHost.Create<InputBox>(_("Input new name of track"));
                 ib.setResult(vsq.Track[selected].getName());
-                ib.Location = getFormPreferedLocation(ib);
+                ib.Location = model.GetFormPreferedLocation(ib);
                 var dr = DialogManager.showModalDialog((Form) ib.Native, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     string ret = ib.getResult();
@@ -6345,17 +6228,17 @@ namespace cadencii
             menuTrackRendererVCNT.Click += new EventHandler(handleChangeRenderer);
             menuTrackRendererAquesTone.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuTrackRendererAquesTone.Click += new EventHandler(handleChangeRenderer);
-            menuLyric.DropDownOpening += new EventHandler(menuLyric_DropDownOpening);
+			menuLyric.DropDownOpening += (o, e) => model.LyricMenu.RunLyricDropDownOpening ();
             menuLyricCopyVibratoToPreset.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuLyricExpressionProperty.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuLyricExpressionProperty.Click += new EventHandler(menuLyricExpressionProperty_Click);
+			menuLyricExpressionProperty.Click += (o, e) => model.LyricMenu.RunLyricExpressionPropertyCommand ();
             menuLyricVibratoProperty.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuLyricVibratoProperty.Click += new EventHandler(menuLyricVibratoProperty_Click);
+			menuLyricVibratoProperty.Click += (o, e) => model.LyricMenu.RunLyricVibratoPropertyCommand ();
             menuLyricPhonemeTransformation.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuLyricDictionary.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuLyricDictionary.Click += new EventHandler(menuLyricDictionary_Click);
-            menuLyricPhonemeTransformation.Click += new EventHandler(menuLyricPhonemeTransformation_Click);
-            menuLyricApplyUtauParameters.Click += new EventHandler(menuLyricApplyUtauParameters_Click);
+			menuLyricDictionary.Click += (o, e) => model.LyricMenu.RunLyricDictionaryCommand ();
+			menuLyricPhonemeTransformation.Click += (o, e) => model.LyricMenu.RunLyricPhonemeTransformationCommand ();
+			menuLyricApplyUtauParameters.Click += (o, e) => model.LyricMenu.RunLyricApplyUtauParametersCommand ();
             menuScriptUpdate.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuScriptUpdate.Click += new EventHandler(menuScriptUpdate_Click);
             menuSettingPreference.MouseEnter += new EventHandler(handleMenuMouseEnter);
@@ -7122,7 +7005,7 @@ namespace cadencii
                                     dlg.PMbPortamentoUse = (selectedEvent.ID.PMbPortamentoUse);
                                     dlg.DEMdecGainRate = (selectedEvent.ID.DEMdecGainRate);
                                     dlg.DEMaccent = (selectedEvent.ID.DEMaccent);
-                                    dlg.Location = getFormPreferedLocation(dlg);
+                                    dlg.Location = model.GetFormPreferedLocation(dlg);
                                     var dr = DialogManager.showModalDialog((Form) dlg.Native, this);
 									if (dr == cadencii.java.awt.DialogResult.OK) {
                                         VsqID id = (VsqID)selectedEvent.ID.clone();
@@ -7193,7 +7076,7 @@ namespace cadencii
                                         ApplicationGlobal.appConfig.DefaultVibratoLength,
                                         type,
                                         ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType);
-                                    dlg.Location = getFormPreferedLocation(dlg);
+                                    dlg.Location = model.GetFormPreferedLocation(dlg);
                                     var dr = DialogManager.showModalDialog((Form) dlg.Native, this);
 									if (dr == cadencii.java.awt.DialogResult.OK) {
                                         VsqID t = (VsqID)selectedEvent.ID.clone();
@@ -9872,147 +9755,6 @@ namespace cadencii
         }
         #endregion
 
-        //BOOKMARK: menuLyric
-        #region menuLyric*
-        public void menuLyric_DropDownOpening(Object sender, EventArgs e)
-        {
-            menuLyricCopyVibratoToPreset.Enabled = false;
-
-            int num = EditorManager.itemSelection.getEventCount();
-            if (num <= 0) {
-                return;
-            }
-            SelectedEventEntry item = EditorManager.itemSelection.getEventIterator().First();
-            if (item.original.ID.type != VsqIDType.Anote) {
-                return;
-            }
-            if (item.original.ID.VibratoHandle == null) {
-                return;
-            }
-
-            menuLyricCopyVibratoToPreset.Enabled = true;
-        }
-
-        public void menuLyricExpressionProperty_Click(Object sender, EventArgs e)
-        {
-            editNoteExpressionProperty();
-        }
-
-        public void menuLyricPhonemeTransformation_Click(Object sender, EventArgs e)
-        {
-            List<int> internal_ids = new List<int>();
-            List<VsqID> ids = new List<VsqID>();
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            if (vsq == null) {
-                return;
-            }
-            int selected = EditorManager.Selected;
-            VsqTrack vsq_track = vsq.Track[selected];
-            foreach (var item in vsq_track.getNoteEventIterator()) {
-                VsqID id = item.ID;
-                if (id.LyricHandle.L0.PhoneticSymbolProtected) {
-                    continue;
-                }
-                string phrase = id.LyricHandle.L0.Phrase;
-                string symbolOld = id.LyricHandle.L0.getPhoneticSymbol();
-                string symbolResult = symbolOld;
-                SymbolTableEntry entry = SymbolTable.attatch(phrase);
-                if (entry == null) {
-                    continue;
-                }
-                symbolResult = entry.getSymbol();
-                if (symbolResult.Equals(symbolOld)) {
-                    continue;
-                }
-                VsqID idNew = (VsqID)id.clone();
-                idNew.LyricHandle.L0.setPhoneticSymbol(symbolResult);
-                ids.Add(idNew);
-                internal_ids.Add(item.InternalID);
-            }
-            if (ids.Count <= 0) {
-                return;
-            }
-            CadenciiCommand run = new CadenciiCommand(
-                VsqCommand.generateCommandEventChangeIDContaintsRange(
-                    selected,
-                    PortUtil.convertIntArray(internal_ids.ToArray()),
-                    ids.ToArray()));
-            EditorManager.editHistory.register(vsq.executeCommand(run));
-            setEdited(true);
-        }
-
-        /// <summary>
-        /// 現在表示しているトラックの，選択状態の音符イベントについて，それぞれのイベントの
-        /// 時刻でのUTAU歌手に応じて，UTAUの各種パラメータを原音設定のものにリセットします
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void menuLyricApplyUtauParameters_Click(Object sender, EventArgs e)
-        {
-            // 選択されているトラックの番号
-            int selected = EditorManager.Selected;
-            // シーケンス
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            VsqTrack vsq_track = vsq.Track[selected];
-
-            // 選択状態にあるイベントを取り出す
-            List<VsqEvent> replace = new List<VsqEvent>();
-            foreach (var sel_item in EditorManager.itemSelection.getEventIterator()) {
-                VsqEvent item = sel_item.original;
-                if (item.ID.type != VsqIDType.Anote) {
-                    continue;
-                }
-                VsqEvent edit = (VsqEvent)item.clone();
-                // UTAUのパラメータを適用
-                MusicManager.applyUtauParameter(vsq_track, edit);
-                // 合成したとき，意味のある変更が行われたか？
-                if (edit.UstEvent.equalsForSynth(item.UstEvent)) {
-                    continue;
-                }
-                // 意味のある変更があったので，リストに登録
-                replace.Add(edit);
-            }
-
-            // コマンドを発行
-            CadenciiCommand run = new CadenciiCommand(
-                VsqCommand.generateCommandEventReplaceRange(selected, replace.ToArray()));
-            // コマンドを実行
-            EditorManager.editHistory.register(vsq.executeCommand(run));
-            setEdited(true);
-        }
-
-        public void menuLyricDictionary_Click(Object sender, EventArgs e)
-        {
-            FormWordDictionaryController dlg = null;
-            try {
-		dlg = new FormWordDictionaryController(c => new FormWordDictionaryUiImpl (c));
-                var p = getFormPreferedLocation(dlg.getWidth(), dlg.getHeight());
-                dlg.setLocation(p.X, p.Y);
-                int dr = DialogManager.showModalDialog(dlg.getUi(), this);
-                if (dr == 1) {
-                    List<ValuePair<string, Boolean>> result = dlg.getResult();
-                    SymbolTable.changeOrder(result);
-                }
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".menuLyricDictionary_Click; ex=" + ex + "\n");
-                serr.println("FormMain#menuLyricDictionary_Click; ex=" + ex);
-            } finally {
-                if (dlg != null) {
-                    try {
-                        dlg.close();
-                    } catch (Exception ex2) {
-                        Logger.write(typeof(FormMain) + ".menuLyricDictionary_Click; ex=" + ex2 + "\n");
-                    }
-                }
-            }
-        }
-
-        public void menuLyricVibratoProperty_Click(Object sender, EventArgs e)
-        {
-            editNoteVibratoProperty();
-        }
-        #endregion
-
         //BOOKMARK: menuJob
         #region menuJob
         public void menuJobReloadVsti_Click(Object sender, EventArgs e)
@@ -10125,7 +9867,7 @@ namespace cadencii
                 }
                 dlg.Position = (draft);
 
-                dlg.Location = getFormPreferedLocation(dlg);
+                dlg.Location = model.GetFormPreferedLocation(dlg);
                 var dr = DialogManager.showModalDialog((Control)dlg.Native, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     int pos = dlg.Position + MusicManager.getVsqFile().getPreMeasure() - 1;
@@ -10242,7 +9984,7 @@ namespace cadencii
                 dialog = ApplicationUIHost.Create<InputBox>(_("input pre-measure"));
                 int old_pre_measure = MusicManager.getVsqFile().getPreMeasure();
                 dialog.setResult(old_pre_measure + "");
-                dialog.Location = getFormPreferedLocation(dialog);
+                dialog.Location = model.GetFormPreferedLocation(dialog);
                 var ret = DialogManager.showModalDialog((Form) dialog.Native, this);
 				if (ret == cadencii.java.awt.DialogResult.OK) {
                     string str_result = dialog.getResult();
@@ -10293,7 +10035,7 @@ namespace cadencii
             dialog.setSampleRate(old_sample_rate);
             dialog.setPreMeasure(old_pre_measure);
 
-            dialog.Location = getFormPreferedLocation(dialog);
+            dialog.Location = model.GetFormPreferedLocation(dialog);
 			if (DialogManager.showModalDialog((Form) dialog.Native, this) != cadencii.java.awt.DialogResult.OK) {
                 return;
             }
@@ -10482,7 +10224,7 @@ namespace cadencii
             FormRandomize dlg = null;
             try {
                 dlg = ApplicationUIHost.Create<FormRandomize>();
-                dlg.Location = getFormPreferedLocation(dlg);
+                dlg.Location = model.GetFormPreferedLocation(dlg);
                 var dr = DialogManager.showModalDialog((Form) dlg.Native, this);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
                     VsqFileEx vsq = MusicManager.getVsqFile();
@@ -10945,7 +10687,7 @@ namespace cadencii
                                                            clock_per_beat,
                                                            (float)(6e7 / changing_tempo),
                                                            vsq.getPreMeasure());
-                                dlg.Location = getFormPreferedLocation(dlg);
+                                dlg.Location = model.GetFormPreferedLocation(dlg);
                                 cadencii.java.awt.DialogResult dr = DialogManager.showModalDialog((Control)dlg.Native, this);
                                 if (dr == cadencii.java.awt.DialogResult.OK) {
                                     int new_beat = dlg.getBeatCount();
@@ -11870,7 +11612,7 @@ namespace cadencii
 
         public void cMenuPianoVibratoProperty_Click(Object sender, EventArgs e)
         {
-            editNoteVibratoProperty();
+            model.EditNoteVibratoProperty();
         }
 
         public void cMenuPianoPaste_Click(Object sender, EventArgs e)
@@ -11975,7 +11717,7 @@ namespace cadencii
 
         public void cMenuPianoProperty_Click(Object sender, EventArgs e)
         {
-            editNoteExpressionProperty();
+            model.EditNoteExpressionProperty();
         }
 
         public void cMenuPianoImportLyric_Click(Object sender, EventArgs e)
@@ -13589,7 +13331,7 @@ namespace cadencii
             InputBox ib = null;
             try {
                 ib = ApplicationUIHost.Create<InputBox>(_("Input Offset Seconds"));
-                ib.Location = getFormPreferedLocation(ib);
+                ib.Location = model.GetFormPreferedLocation(ib);
                 ib.setResult(MusicManager.getBgm(index).readOffsetSeconds + "");
                 cadencii.java.awt.DialogResult dr = DialogManager.showModalDialog((Form) ib.Native, this);
                 if (dr != cadencii.java.awt.DialogResult.OK) {

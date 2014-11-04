@@ -21,6 +21,8 @@ namespace cadencii
     /// </summary>
     public interface UiFormMain : UiForm
     {
+		UiToolStripMenuItem menuLyricCopyVibratoToPreset { get; set; }
+
 		object searchMenuItemFromName (string name, ByRef<object> parent);
 		cadencii.apputil.BSplitContainer splitContainer1 { get; set;}
 		UiToolStripMenuItem menuHidden { get; set; }
