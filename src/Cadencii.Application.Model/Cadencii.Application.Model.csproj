@@ -60,15 +60,11 @@
     <Compile Include="PatchWorkQueue.cs" />
     <Compile Include="ToolStripLocation.cs" />
     <Compile Include="AuthorListEntry.cs" />
-    <Compile Include="guiextended\Dialogs.cs" />
-    <Compile Include="guiextended\ApplicationUIHost.cs" />
     <Compile Include="DialogManager.cs" />
     <Compile Include="PaletteToolServer.cs" />
     <Compile Include="IPaletteTool.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="RunGeneratorQueue.cs" />
-    <Compile Include="guiextended\Clipboard.cs" />
-    <Compile Include="guiextended\Timer.cs" />
     <Compile Include="music\MidiDeviceImp.cs" />
     <Compile Include="music\MidiQueue.cs" />
     <Compile Include="music\MusicManager.cs" />
@@ -120,8 +116,6 @@
     <Compile Include="drawing\IImageCachedComponentDrawer.cs" />
     <Compile Include="drawing\ImageCachedComponentDrawer.cs" />
     <Compile Include="ui_abstraction\PureVirtualFunctionAttribute.cs" />
-    <Compile Include="guiextended\ClipboardEntry.cs" />
-    <Compile Include="guiextended\ClipboardModel.cs" />
     <Compile Include="music\DynaffComparisonContext.cs" />
     <Compile Include="music\SingerEventComparisonContext.cs" />
     <Compile Include="editor_features\RenderRequiredEventHandler.cs" />
@@ -223,6 +217,11 @@
     <Compile Include="app_ui\models\FormMainModel.EditMenuModel.cs" />
     <Compile Include="app_ui\models\FormMainModel.Editing.cs" />
     <Compile Include="app_ui\models\FormMainModel.VisualMenuModel.cs" />
+    <Compile Include="gui_fx_extended\Clipboard.cs" />
+    <Compile Include="gui_fx_extended\ClipboardEntry.cs" />
+    <Compile Include="gui_fx_extended\ClipboardModel.cs" />
+    <Compile Include="gui_fx_extended\ApplicationUIHost.cs" />
+    <Compile Include="gui_fx_extended\Dialogs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -256,7 +255,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="guiextended\" />
     <Folder Include="music\" />
     <Folder Include="drawing\" />
     <Folder Include="ui_abstraction\" />
@@ -264,5 +262,6 @@
     <Folder Include="scripting\" />
     <Folder Include="app_ui\" />
     <Folder Include="app_ui\models\" />
+    <Folder Include="gui_fx_extended\" />
   </ItemGroup>
 </Project>

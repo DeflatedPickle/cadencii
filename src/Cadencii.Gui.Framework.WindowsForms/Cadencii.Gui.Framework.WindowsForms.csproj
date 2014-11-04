@@ -76,6 +76,7 @@
     <Compile Include="winforms\OpenFileDialogImpl.cs" />
     <Compile Include="winforms\FileDialogImpl.cs" />
     <Compile Include="winforms\FolderBrowserDialogImpl.cs" />
+    <Compile Include="TimerWF.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
