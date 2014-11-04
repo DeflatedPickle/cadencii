@@ -221,6 +221,28 @@ namespace cadencii
 			{
 				onClickVisualPluginUiAquesTone(parent.form.menuVisualPluginUiAquesTone2, VSTiDllManager.getAquesTone2Driver());
 			}
+
+			public void RunStartMarkerCommand()
+			{
+				VsqFileEx vsq = MusicManager.getVsqFile();
+				vsq.config.StartMarkerEnabled = !vsq.config.StartMarkerEnabled;
+				parent.form.menuVisualStartMarker.Checked = vsq.config.StartMarkerEnabled;
+				parent.form.setEdited(true);
+				parent.form.focusPianoRoll();
+				parent.form.refreshScreen();
+			}
+
+			public void RunEndMarkerCommand()
+			{
+				VsqFileEx vsq = MusicManager.getVsqFile();
+				vsq.config.EndMarkerEnabled = !vsq.config.EndMarkerEnabled;
+				parent.form.stripBtnEndMarker.Pushed = vsq.config.EndMarkerEnabled;
+				parent.form.menuVisualEndMarker.Checked = vsq.config.EndMarkerEnabled;
+				parent.form.setEdited(true);
+				parent.form.focusPianoRoll();
+				parent.form.refreshScreen();
+			}
+
 			#endregion
 		}
 	}

@@ -2970,8 +2970,8 @@ namespace cadencii
         public UiToolStripSeparator toolStripMenuItem1;
 		public UiToolStripMenuItem menuVisualGridline { get; set; }
         public UiToolStripSeparator toolStripMenuItem2;
-        public UiToolStripMenuItem menuVisualStartMarker;
-        public UiToolStripMenuItem menuVisualEndMarker;
+		public UiToolStripMenuItem menuVisualStartMarker { get; set; }
+		public UiToolStripMenuItem menuVisualEndMarker { get; set; }
         public UiToolStripSeparator toolStripMenuItem3;
 		public UiToolStripMenuItem menuVisualLyrics { get; set; }
 		public UiToolStripMenuItem menuVisualNoteProperty { get; set; }
@@ -3145,7 +3145,7 @@ namespace cadencii
         public UiToolStripSeparator toolStripSeparator3;
         public UiMenuItem stripDDBtnQuantizeTriplet;
         public UiToolBarButton stripBtnStartMarker;
-        public UiToolBarButton stripBtnEndMarker;
+		public UiToolBarButton stripBtnEndMarker { get; set; }
         public UiHScrollBar hScroll { get; set; }
 		public UiVScrollBar vScroll { get; set; }
         public UiToolStripMenuItem menuLyricVibratoProperty;

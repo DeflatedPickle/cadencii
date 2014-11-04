@@ -5258,10 +5258,10 @@ namespace cadencii
             menuVisualGridline.MouseEnter += new EventHandler(handleMenuMouseEnter);
 			menuVisualIconPalette.Click += (o, e) => model.VisualMenu.RunVisualIconPaletteCommand ();
             menuVisualIconPalette.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuVisualStartMarker.Click += new EventHandler(handleStartMarker_Click);
+			menuVisualStartMarker.Click += (o, e) => model.VisualMenu.RunStartMarkerCommand ();
             menuVisualStartMarker.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuVisualEndMarker.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuVisualEndMarker.Click += new EventHandler(handleEndMarker_Click);
+			menuVisualEndMarker.Click += (o, e) => model.VisualMenu.RunEndMarkerCommand ();
 			menuVisualLyrics.CheckedChanged += (o, e) => model.VisualMenu.RunVisualLyricsCheckedChanged ();
             menuVisualLyrics.MouseEnter += new EventHandler(handleMenuMouseEnter);
 			menuVisualNoteProperty.CheckedChanged += (o, e) => model.VisualMenu.RunVisualNotePropertyCheckedChanged ();
@@ -11440,9 +11440,9 @@ namespace cadencii
         void toolBarMeasure_ButtonClick(Object sender, ToolBarButtonClickEventArgs e)
         {
             if (e.Button == stripBtnStartMarker) {
-                handleStartMarker_Click(e.Button, new EventArgs());
+				model.VisualMenu.RunStartMarkerCommand ();
             } else if (e.Button == stripBtnEndMarker) {
-                handleEndMarker_Click(e.Button, new EventArgs());
+				model.VisualMenu.RunEndMarkerCommand ();
             }/* else if ( e.Button == stripDDBtnLengthParent ) {
                 System.Drawing.Rectangle rc = stripDDBtnLengthParent.Rectangle;
                 stripDDBtnLength.Show(
@@ -11844,27 +11844,6 @@ namespace cadencii
             bool triplet = !EditorManager.editorConfig.isPositionQuantizeTriplet();
             EditorManager.editorConfig.setPositionQuantizeTriplet(triplet);
             EditorManager.editorConfig.setLengthQuantizeTriplet(triplet);
-            refreshScreen();
-        }
-
-        public void handleStartMarker_Click(Object sender, EventArgs e)
-        {
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            vsq.config.StartMarkerEnabled = !vsq.config.StartMarkerEnabled;
-            menuVisualStartMarker.Checked = vsq.config.StartMarkerEnabled;
-            setEdited(true);
-            focusPianoRoll();
-            refreshScreen();
-        }
-
-        public void handleEndMarker_Click(Object sender, EventArgs e)
-        {
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            vsq.config.EndMarkerEnabled = !vsq.config.EndMarkerEnabled;
-            stripBtnEndMarker.Pushed = vsq.config.EndMarkerEnabled;
-            menuVisualEndMarker.Checked = vsq.config.EndMarkerEnabled;
-            setEdited(true);
-            focusPianoRoll();
             refreshScreen();
         }
 

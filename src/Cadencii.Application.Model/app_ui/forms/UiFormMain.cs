@@ -22,6 +22,9 @@ namespace cadencii
     public interface UiFormMain : UiForm
     {
 		void updateLayout();
+		UiToolStripMenuItem menuVisualStartMarker { get; set; }
+		UiToolStripMenuItem menuVisualEndMarker { get; set; }
+		UiToolBarButton stripBtnEndMarker { get; set; }
 		UiToolStripMenuItem menuVisualPluginUiAquesTone { get; set; }
 		UiToolStripMenuItem menuVisualPluginUiVocaloid1 { get; set; }
 		UiToolStripMenuItem menuVisualPluginUiVocaloid2 { get; set; }
