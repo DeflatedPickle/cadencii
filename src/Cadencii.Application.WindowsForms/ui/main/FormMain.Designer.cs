@@ -2998,8 +2998,8 @@ namespace cadencii
         public UiToolStripSeparator toolStripMenuItem11;
         public UiToolStripSeparator toolStripMenuItem12;
         public UiToolStripMenuItem menuFileQuit;
-        public UiToolStripMenuItem menuEditUndo;
-        public UiToolStripMenuItem menuEditRedo;
+		public UiToolStripMenuItem menuEditUndo { get; set; }
+		public UiToolStripMenuItem menuEditRedo { get; set; }
         public UiToolStripSeparator toolStripMenuItem5;
         public UiPictureBox pictureBox2;
         public UiPictureBox pictureBox3;
@@ -3013,8 +3013,8 @@ namespace cadencii
         public UiToolStripMenuItem cMenuPianoQuantize;
         public UiToolStripMenuItem cMenuPianoGrid;
         public UiToolStripSeparator toolStripMenuItem14;
-        public UiToolStripMenuItem cMenuPianoUndo;
-        public UiToolStripMenuItem cMenuPianoRedo;
+		public UiToolStripMenuItem cMenuPianoUndo { get; set; }
+		public UiToolStripMenuItem cMenuPianoRedo { get; set; }
         public UiToolStripSeparator toolStripMenuItem15;
         public UiToolStripMenuItem cMenuPianoCut;
         public UiToolStripMenuItem cMenuPianoFixed01;
@@ -3052,7 +3052,7 @@ namespace cadencii
         public UiToolStripMenuItem menuEditPaste;
         public UiToolStripMenuItem menuEditDelete;
         public UiToolStripSeparator toolStripMenuItem19;
-        public UiToolStripMenuItem menuEditAutoNormalizeMode;
+		public UiToolStripMenuItem menuEditAutoNormalizeMode { get; set; }
         public UiToolStripSeparator toolStripMenuItem20;
         public UiToolStripMenuItem menuEditSelectAll;
         public UiToolStripMenuItem menuEditSelectAllEvents;
@@ -3085,8 +3085,8 @@ namespace cadencii
         public UiToolStripMenuItem cMenuTrackSelectorLine;
         public UiToolStripMenuItem cMenuTrackSelectorEraser;
         public UiToolStripSeparator toolStripMenuItem28;
-        public UiToolStripMenuItem cMenuTrackSelectorUndo;
-        public UiToolStripMenuItem cMenuTrackSelectorRedo;
+		public UiToolStripMenuItem cMenuTrackSelectorUndo { get; set; }
+		public UiToolStripMenuItem cMenuTrackSelectorRedo { get; set; }
         public UiToolStripSeparator toolStripMenuItem29;
         public UiToolStripMenuItem cMenuTrackSelectorCut;
         public UiToolStripMenuItem cMenuTrackSelectorCopy;

@@ -25,12 +25,14 @@ namespace cadencii
 		public FormMainModel (UiFormMain form)
 		{
 			this.form = form;
-			MainMenu = new FileMenuModel (this);
+			FileMenu = new FileMenuModel (this);
+			EditMenu = new EditMenuModel (this);
 			LyricMenu = new LyricMenuModel (this);
 			SettingsMenu = new SettingsMenuModel (this);
 		}
 			
-		public FileMenuModel MainMenu { get; private set; }
+		public FileMenuModel FileMenu { get; private set; }
+		public EditMenuModel EditMenu { get; private set; }
 		public LyricMenuModel LyricMenu { get; private set; }
 		public SettingsMenuModel SettingsMenu { get; private set; }
 
@@ -45,6 +47,16 @@ namespace cadencii
 					}
 				}
 			}
+		}
+
+		public static int Quantize(int clock, int unit)
+		{
+			int odd = clock % unit;
+			int new_clock = clock - odd;
+			if (odd > unit / 2) {
+				new_clock += unit;
+			}
+			return new_clock;
 		}
 
 		public Point GetFormPreferedLocation(UiForm dlg)
@@ -183,8 +195,8 @@ namespace cadencii
 						tooltip += item;
 						itm.ToolTipText = tooltip;
 						itm.Enabled = available;
-						itm.Click += (o, e) => MainMenu.ShowRecentFileInMenuItem (itm);
-						itm.MouseEnter += (o, e) => MainMenu.UpdateStatusBarLabelByRecentFile (itm);
+						itm.Click += (o, e) => FileMenu.ShowRecentFileInMenuItem (itm);
+						itm.MouseEnter += (o, e) => FileMenu.UpdateStatusBarLabelByRecentFile (itm);
 						form.menuFileRecent.DropDownItems.Add(itm);
 						added++;
 					}

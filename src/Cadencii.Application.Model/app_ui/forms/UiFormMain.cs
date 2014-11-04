@@ -21,6 +21,14 @@ namespace cadencii
     /// </summary>
     public interface UiFormMain : UiForm
     {
+		UiToolStripMenuItem cMenuTrackSelectorUndo { get; set; }
+		UiToolStripMenuItem cMenuTrackSelectorRedo { get; set; }
+		UiToolStripMenuItem cMenuPianoUndo { get; set; }
+		UiToolStripMenuItem cMenuPianoRedo { get; set; }
+		UiToolStripMenuItem menuEditUndo { get; set; }
+		UiToolStripMenuItem menuEditRedo { get; set; }
+		UiToolStripMenuItem menuEditAutoNormalizeMode { get; set; }
+
 		UiToolStripMenuItem menuLyricCopyVibratoToPreset { get; set; }
 
 		object searchMenuItemFromName (string name, ByRef<object> parent);
