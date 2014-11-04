@@ -21,6 +21,26 @@ namespace cadencii
     /// </summary>
     public interface UiFormMain : UiForm
     {
+		object searchMenuItemFromName (string name, ByRef<object> parent);
+		cadencii.apputil.BSplitContainer splitContainer1 { get; set;}
+		UiToolStripMenuItem menuHidden { get; set; }
+		UiToolStripMenuItem menuScript { get; set;}
+		UiToolStripMenuItem menuVisualControlTrack { get; set; }
+		UiVScrollBar vScroll { get; set; }
+		int calculateStartToDrawY(int vscroll_value);
+		void updateVibratoPresetMenu();
+		void updateRendererMenu();
+		void reloadMidiIn();
+		void updateMidiInStatus();
+		Timer timer { get; set; }
+		VersionInfo mVersionInfo { get; set; }
+		void applyShortcut ();
+		void applyLanguage ();
+		void updateMenuFonts ();
+		Preference mDialogPreference { get; set; }
+		void loadGameController ();
+		void removeGameControler ();
+
 		FormMidiImExport mDialogMidiImportAndExport { get; set; }
 
 		void updateScrollRangeHorizontal();
@@ -39,6 +59,8 @@ namespace cadencii
 		WaveView waveView { get; set; }
 
 		bool mEdited { get; set; }
+
+		FormMainController controller { get; set; }
 
 		int calculateStartToDrawX ();
 

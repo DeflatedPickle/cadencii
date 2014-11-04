@@ -1,10 +1,21 @@
 using System;
+using System.ComponentModel;
 
 namespace cadencii
 {
 	public class TimerWF : Timer
 	{
-		readonly System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer ();
+		readonly System.Windows.Forms.Timer timer;
+
+		public TimerWF ()
+		{
+			timer = new System.Windows.Forms.Timer ();
+		}
+
+		public TimerWF (IContainer components)
+		{
+			timer = new System.Windows.Forms.Timer (components);
+		}
 
 		public override event EventHandler Tick {
 			add { timer.Tick += value; }

@@ -327,8 +327,8 @@ namespace cadencii
         /// <summary>
         /// コントローラ
         /// </summary>
-        private FormMainController controller = null;
-        public VersionInfo mVersionInfo = null;
+		public FormMainController controller { get; set; }
+		public VersionInfo mVersionInfo { get; set; }
         public System.Windows.Forms.Cursor HAND;
         /// <summary>
         /// ボタンがDownされた位置。(座標はpictureBox基準)
@@ -425,7 +425,7 @@ namespace cadencii
 #endif
 		public FormMidiImExport mDialogMidiImportAndExport { get; set; }
         public SortedDictionary<EditTool, java.awt.Cursor> mCursor = new SortedDictionary<EditTool, java.awt.Cursor>();
-        private Preference mDialogPreference;
+		public Preference mDialogPreference { get; set; }
 #if ENABLE_PROPERTY
         public PropertyPanelContainer mPropertyPanelContainer;
 #endif
@@ -463,7 +463,7 @@ namespace cadencii
 		public UiOpenFileDialog openMidiDialog { get; set; }
 		public UiSaveFileDialog saveMidiDialog { get; set; }
 		public UiOpenFileDialog openWaveDialog { get; set; }
-        public System.Windows.Forms.Timer timer;
+		public Timer timer { get; set; }
         public System.ComponentModel.BackgroundWorker bgWorkScreen;
         /// <summary>
         /// アイコンパレットのドラッグ＆ドロップ処理中，一度でもpictPianoRoll内にマウスが入ったかどうか
@@ -586,7 +586,7 @@ namespace cadencii
             panelWaveformZoom = (WaveformZoomUiImpl)(new WaveformZoomController(this, waveView)).getUi();
 
             InitializeComponent();
-            timer = new System.Windows.Forms.Timer(this.components);
+			timer = ApplicationUIHost.Create<Timer> (this.components);
 
             panelOverview.setMainForm(this);
             pictPianoRoll.setMainForm(this);
@@ -911,7 +911,7 @@ namespace cadencii
             updateVibratoPresetMenu();
             mPencilMode.setMode(PencilModeEnum.Off);
             updateCMenuPianoFixed();
-            loadGameControler();
+            loadGameController();
 #if ENABLE_MIDI
             reloadMidiIn();
 #endif
@@ -1130,7 +1130,7 @@ namespace cadencii
         /// <summary>
         /// ユーザー定義のビブラートのプリセット関係のメニューの表示状態を更新します
         /// </summary>
-        private void updateVibratoPresetMenu()
+        public void updateVibratoPresetMenu()
         {
             // 現在の項目数に過不足があれば調節する
             int size = EditorManager.editorConfig.AutoVibratoCustom.Count;
@@ -1689,7 +1689,7 @@ namespace cadencii
         /// <summary>
         /// 現在表示されているピアノロール画面の右上の、仮想スクリーン上座標で見たときのy座標(pixel)を取得します
         /// </summary>
-        private int calculateStartToDrawY(int vscroll_value)
+        public int calculateStartToDrawY(int vscroll_value)
         {
             int min = vScroll.Minimum;
             int max = vScroll.Maximum - vScroll.LargeChange;
@@ -2334,7 +2334,7 @@ namespace cadencii
         /// <returns></returns>
         public System.Drawing.Point getFormPreferedLocation(int dialogWidth, int dialogHeight)
         {
-			return model.getFormPreferedLocation (dialogWidth, dialogHeight).ToWF ();
+			return model.GetFormPreferedLocation (dialogWidth, dialogHeight).ToWF ();
         }
 
         /// <summary>
@@ -2971,7 +2971,7 @@ namespace cadencii
         /// <summary>
         /// PCに接続されているゲームコントローラを識別・接続します
         /// </summary>
-        public void loadGameControler()
+        public void loadGameController()
         {
             try {
                 bool init_success = false;
@@ -6359,19 +6359,19 @@ namespace cadencii
             menuScriptUpdate.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuScriptUpdate.Click += new EventHandler(menuScriptUpdate_Click);
             menuSettingPreference.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuSettingPreference.Click += new EventHandler(menuSettingPreference_Click);
+			menuSettingPreference.Click += (o, e) => model.SettingsMenu.RunSettingPreferenceCommand ();
             menuSettingGameControler.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuSettingGameControlerSetting.Click += new EventHandler(menuSettingGameControlerSetting_Click);
-            menuSettingGameControlerLoad.Click += new EventHandler(menuSettingGameControlerLoad_Click);
-            menuSettingGameControlerRemove.Click += new EventHandler(menuSettingGameControlerRemove_Click);
+			menuSettingGameControlerSetting.Click += (o, e) => model.SettingsMenu.RunSettingGameControlerSettingCommand();
+			menuSettingGameControlerLoad.Click += (o, e) => model.SettingsMenu.RunSettingGameControlerLoadCommand();
+			menuSettingGameControlerRemove.Click += (o, e) => model.SettingsMenu.RunSettingGameControlerRemoveCommand();
             menuSettingSequence.Click += new EventHandler(menuSettingSequence_Click);
             menuSettingSequence.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuSettingShortcut.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuSettingShortcut.Click += new EventHandler(menuSettingShortcut_Click);
+			menuSettingShortcut.Click += (o, e) => model.SettingsMenu.RunSettingShortcutCommand();
             menuSettingVibratoPreset.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuSettingVibratoPreset.Click += new EventHandler(menuSettingVibratoPreset_Click);
+			menuSettingVibratoPreset.Click += (o, e) => model.SettingsMenu.RunSettingVibratoPresetCommand();
             menuSettingDefaultSingerStyle.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuSettingDefaultSingerStyle.Click += new EventHandler(menuSettingDefaultSingerStyle_Click);
+			menuSettingDefaultSingerStyle.Click += (o, e) => model.SettingsMenu.RunSettingDefaultSingerStyleCommand();
             menuSettingPaletteTool.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuSettingPositionQuantize.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuSettingPositionQuantize04.Click += new EventHandler(handlePositionQuantize);
@@ -9822,575 +9822,6 @@ namespace cadencii
 
         //BOOKMARK: menuSetting
         #region menuSetting*
-        public void menuSettingDefaultSingerStyle_Click(Object sender, EventArgs e)
-        {
-            FormSingerStyleConfig dlg = null;
-            try {
-                dlg = ApplicationUIHost.Create<FormSingerStyleConfig>();
-                dlg.PMBendDepth = (ApplicationGlobal.appConfig.DefaultPMBendDepth);
-                dlg.PMBendLength = (ApplicationGlobal.appConfig.DefaultPMBendLength);
-                dlg.PMbPortamentoUse = (ApplicationGlobal.appConfig.DefaultPMbPortamentoUse);
-                dlg.DEMdecGainRate = (ApplicationGlobal.appConfig.DefaultDEMdecGainRate);
-                dlg.DEMaccent = (ApplicationGlobal.appConfig.DefaultDEMaccent);
-
-                int selected = EditorManager.Selected;
-                dlg.Location = getFormPreferedLocation(dlg);
-                var dr = DialogManager.showModalDialog((Form)dlg.Native, this);
-				if (dr == cadencii.java.awt.DialogResult.OK) {
-                    ApplicationGlobal.appConfig.DefaultPMBendDepth = dlg.PMBendDepth;
-                    ApplicationGlobal.appConfig.DefaultPMBendLength = dlg.PMBendLength;
-                    ApplicationGlobal.appConfig.DefaultPMbPortamentoUse = dlg.PMbPortamentoUse;
-                    ApplicationGlobal.appConfig.DefaultDEMdecGainRate = dlg.DEMdecGainRate;
-                    ApplicationGlobal.appConfig.DefaultDEMaccent = dlg.DEMaccent;
-                    if (dlg.ApplyCurrentTrack) {
-                        VsqFileEx vsq = MusicManager.getVsqFile();
-                        VsqTrack vsq_track = vsq.Track[selected];
-                        VsqTrack copy = (VsqTrack)vsq_track.clone();
-                        bool changed = false;
-                        for (int i = 0; i < copy.getEventCount(); i++) {
-                            if (copy.getEvent(i).ID.type == VsqIDType.Anote) {
-                                EditorManager.editorConfig.applyDefaultSingerStyle(copy.getEvent(i).ID);
-                                changed = true;
-                            }
-                        }
-                        if (changed) {
-                            CadenciiCommand run =
-                                VsqFileEx.generateCommandTrackReplace(
-                                    selected,
-                                    copy,
-                                    vsq.AttachedCurves.get(selected - 1));
-                            EditorManager.editHistory.register(vsq.executeCommand(run));
-                            updateDrawObjectList();
-                            refreshScreen();
-                        }
-                    }
-                }
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".menuSettingDefaultSingerStyle_Click; ex=" + ex + "\n");
-            } finally {
-                if (dlg != null) {
-                    try {
-                        dlg.Close();
-                    } catch (Exception ex2) {
-                        Logger.write(typeof(FormMain) + ".menuSettingDefaultSingerStyle_Click; ex=" + ex2 + "\n");
-                    }
-                }
-            }
-        }
-
-        public void menuSettingGameControlerLoad_Click(Object sender, EventArgs e)
-        {
-            loadGameControler();
-        }
-
-        public void menuSettingGameControlerRemove_Click(Object sender, EventArgs e)
-        {
-            removeGameControler();
-        }
-
-        public void menuSettingGameControlerSetting_Click(Object sender, EventArgs e)
-        {
-            FormGameControllerConfig dlg = null;
-            try {
-                dlg = ApplicationUIHost.Create<FormGameControllerConfig>();
-                dlg.Location = getFormPreferedLocation(dlg);
-                var dr = DialogManager.showModalDialog((Form) dlg.Native, this);
-				if (dr == cadencii.java.awt.DialogResult.OK) {
-                    EditorManager.editorConfig.GameControlerRectangle = dlg.getRectangle();
-                    EditorManager.editorConfig.GameControlerTriangle = dlg.getTriangle();
-                    EditorManager.editorConfig.GameControlerCircle = dlg.getCircle();
-                    EditorManager.editorConfig.GameControlerCross = dlg.getCross();
-                    EditorManager.editorConfig.GameControlL1 = dlg.getL1();
-                    EditorManager.editorConfig.GameControlL2 = dlg.getL2();
-                    EditorManager.editorConfig.GameControlR1 = dlg.getR1();
-                    EditorManager.editorConfig.GameControlR2 = dlg.getR2();
-                    EditorManager.editorConfig.GameControlSelect = dlg.getSelect();
-                    EditorManager.editorConfig.GameControlStart = dlg.getStart();
-                    EditorManager.editorConfig.GameControlPovDown = dlg.getPovDown();
-                    EditorManager.editorConfig.GameControlPovLeft = dlg.getPovLeft();
-                    EditorManager.editorConfig.GameControlPovUp = dlg.getPovUp();
-                    EditorManager.editorConfig.GameControlPovRight = dlg.getPovRight();
-                }
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".menuSettingGrameControlerSetting_Click; ex=" + ex + "\n");
-            } finally {
-                if (dlg != null) {
-                    try {
-                        dlg.Close();
-                    } catch (Exception ex2) {
-                        Logger.write(typeof(FormMain) + ".menuSettingGameControlerSetting_Click; ex=" + ex2 + "\n");
-                    }
-                }
-            }
-        }
-
-        public void menuSettingPreference_Click(Object sender, EventArgs e)
-        {
-            try {
-                if (mDialogPreference == null) {
-                    mDialogPreference = ApplicationUIHost.Create<Preference>();
-                }
-                mDialogPreference.setBaseFont(new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9));
-                mDialogPreference.setScreenFont(new Font(EditorManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9));
-                mDialogPreference.setWheelOrder(EditorManager.editorConfig.WheelOrder);
-                mDialogPreference.setCursorFixed(EditorManager.editorConfig.CursorFixed);
-                mDialogPreference.setDefaultVibratoLength(ApplicationGlobal.appConfig.DefaultVibratoLength);
-                mDialogPreference.setAutoVibratoThresholdLength(EditorManager.editorConfig.AutoVibratoThresholdLength);
-                mDialogPreference.setAutoVibratoType1(EditorManager.editorConfig.AutoVibratoType1);
-                mDialogPreference.setAutoVibratoType2(EditorManager.editorConfig.AutoVibratoType2);
-                mDialogPreference.setAutoVibratoTypeCustom(EditorManager.editorConfig.AutoVibratoTypeCustom);
-                mDialogPreference.setEnableAutoVibrato(EditorManager.editorConfig.EnableAutoVibrato);
-				mDialogPreference.setPreSendTime(ApplicationGlobal.appConfig.PreSendTime);
-                mDialogPreference.setControlCurveResolution(ApplicationGlobal.appConfig.ControlCurveResolution);
-                mDialogPreference.setDefaultSingerName(ApplicationGlobal.appConfig.DefaultSingerName);
-                mDialogPreference.setScrollHorizontalOnWheel(EditorManager.editorConfig.ScrollHorizontalOnWheel);
-                mDialogPreference.setMaximumFrameRate(EditorManager.editorConfig.MaximumFrameRate);
-                mDialogPreference.setKeepLyricInputMode(EditorManager.editorConfig.KeepLyricInputMode);
-                mDialogPreference.setPxTrackHeight(EditorManager.editorConfig.PxTrackHeight);
-                mDialogPreference.setMouseHoverTime(EditorManager.editorConfig.getMouseHoverTime());
-                mDialogPreference.setPlayPreviewWhenRightClick(EditorManager.editorConfig.PlayPreviewWhenRightClick);
-				mDialogPreference.setCurveSelectingQuantized(EditorManager.editorConfig.CurveSelectingQuantized);
-                mDialogPreference.setCurveVisibleAccent(ApplicationGlobal.appConfig.CurveVisibleAccent);
-                mDialogPreference.setCurveVisibleBre(ApplicationGlobal.appConfig.CurveVisibleBreathiness);
-                mDialogPreference.setCurveVisibleBri(ApplicationGlobal.appConfig.CurveVisibleBrightness);
-                mDialogPreference.setCurveVisibleCle(ApplicationGlobal.appConfig.CurveVisibleClearness);
-                mDialogPreference.setCurveVisibleDecay(ApplicationGlobal.appConfig.CurveVisibleDecay);
-                mDialogPreference.setCurveVisibleDyn(ApplicationGlobal.appConfig.CurveVisibleDynamics);
-                mDialogPreference.setCurveVisibleGen(ApplicationGlobal.appConfig.CurveVisibleGendorfactor);
-                mDialogPreference.setCurveVisibleOpe(ApplicationGlobal.appConfig.CurveVisibleOpening);
-                mDialogPreference.setCurveVisiblePit(ApplicationGlobal.appConfig.CurveVisiblePit);
-                mDialogPreference.setCurveVisiblePbs(ApplicationGlobal.appConfig.CurveVisiblePbs);
-                mDialogPreference.setCurveVisiblePor(ApplicationGlobal.appConfig.CurveVisiblePortamento);
-                mDialogPreference.setCurveVisibleVel(ApplicationGlobal.appConfig.CurveVisibleVelocity);
-                mDialogPreference.setCurveVisibleVibratoDepth(ApplicationGlobal.appConfig.CurveVisibleVibratoDepth);
-                mDialogPreference.setCurveVisibleVibratoRate(ApplicationGlobal.appConfig.CurveVisibleVibratoRate);
-                mDialogPreference.setCurveVisibleFx2Depth(ApplicationGlobal.appConfig.CurveVisibleFx2Depth);
-                mDialogPreference.setCurveVisibleHarmonics(ApplicationGlobal.appConfig.CurveVisibleHarmonics);
-                mDialogPreference.setCurveVisibleReso1(ApplicationGlobal.appConfig.CurveVisibleReso1);
-                mDialogPreference.setCurveVisibleReso2(ApplicationGlobal.appConfig.CurveVisibleReso2);
-                mDialogPreference.setCurveVisibleReso3(ApplicationGlobal.appConfig.CurveVisibleReso3);
-                mDialogPreference.setCurveVisibleReso4(ApplicationGlobal.appConfig.CurveVisibleReso4);
-                mDialogPreference.setCurveVisibleEnvelope(ApplicationGlobal.appConfig.CurveVisibleEnvelope);
-#if ENABLE_MIDI
-                mDialogPreference.setMidiInPort(EditorManager.editorConfig.MidiInPort.PortNumber);
-#endif
-#if ENABLE_MTC
-            	m_preference_dlg.setMtcMidiInPort( EditorManager.editorConfig.MidiInPortMtc.PortNumber );
-
-#endif
-                List<string> resamplers = new List<string>();
-                int size = ApplicationGlobal.appConfig.getResamplerCount();
-                for (int i = 0; i < size; i++) {
-                    resamplers.Add(ApplicationGlobal.appConfig.getResamplerAt(i));
-                }
-                mDialogPreference.setResamplersConfig(resamplers);
-                mDialogPreference.setPathWavtool(ApplicationGlobal.appConfig.PathWavtool);
-                mDialogPreference.setUtausingers(ApplicationGlobal.appConfig.UtauSingers);
-                mDialogPreference.setSelfDeRomantization(EditorManager.editorConfig.SelfDeRomanization);
-                mDialogPreference.setAutoBackupIntervalMinutes(EditorManager.editorConfig.AutoBackupIntervalMinutes);
-                mDialogPreference.setUseSpaceKeyAsMiddleButtonModifier(EditorManager.editorConfig.UseSpaceKeyAsMiddleButtonModifier);
-                mDialogPreference.setPathAquesTone(ApplicationGlobal.appConfig.PathAquesTone);
-                mDialogPreference.setPathAquesTone2(ApplicationGlobal.appConfig.PathAquesTone2);
-                mDialogPreference.setUseProjectCache(ApplicationGlobal.appConfig.UseProjectCache);
-                mDialogPreference.setAquesToneRequired(!ApplicationGlobal.appConfig.DoNotUseAquesTone);
-                mDialogPreference.setAquesTone2Requried(!ApplicationGlobal.appConfig.DoNotUseAquesTone2);
-                mDialogPreference.setVocaloid1Required(!ApplicationGlobal.appConfig.DoNotUseVocaloid1);
-                mDialogPreference.setVocaloid2Required(!ApplicationGlobal.appConfig.DoNotUseVocaloid2);
-				mDialogPreference.setBufferSize(ApplicationGlobal.appConfig.BufferSizeMilliSeconds);
-                mDialogPreference.setDefaultSynthesizer(ApplicationGlobal.appConfig.DefaultSynthesizer);
-				mDialogPreference.setUseUserDefinedAutoVibratoType(ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType);
-				mDialogPreference.setEnableWideCharacterWorkaround(ApplicationGlobal.appConfig.UseWideCharacterWorkaround);
-
-                mDialogPreference.Location = getFormPreferedLocation(mDialogPreference);
-
-                var dr = DialogManager.showModalDialog((Form) mDialogPreference.Native, this);
-				if (dr == cadencii.java.awt.DialogResult.OK) {
-                    string old_base_font_name = EditorManager.editorConfig.BaseFontName;
-                    float old_base_font_size = EditorManager.editorConfig.BaseFontSize;
-                    Font new_base_font = mDialogPreference.getBaseFont();
-                    if (!old_base_font_name.Equals(new_base_font.getName()) ||
-                         old_base_font_size != new_base_font.getSize2D()) {
-                        EditorManager.editorConfig.BaseFontName = mDialogPreference.getBaseFont().getName();
-                        EditorManager.editorConfig.BaseFontSize = mDialogPreference.getBaseFont().getSize2D();
-                        updateMenuFonts();
-                    }
-
-                    EditorManager.editorConfig.ScreenFontName = mDialogPreference.getScreenFont().getName();
-                    EditorManager.editorConfig.WheelOrder = mDialogPreference.getWheelOrder();
-                    EditorManager.editorConfig.CursorFixed = mDialogPreference.isCursorFixed();
-
-                    ApplicationGlobal.appConfig.DefaultVibratoLength = mDialogPreference.getDefaultVibratoLength();
-                    EditorManager.editorConfig.AutoVibratoThresholdLength = mDialogPreference.getAutoVibratoThresholdLength();
-                    EditorManager.editorConfig.AutoVibratoType1 = mDialogPreference.getAutoVibratoType1();
-                    EditorManager.editorConfig.AutoVibratoType2 = mDialogPreference.getAutoVibratoType2();
-                    EditorManager.editorConfig.AutoVibratoTypeCustom = mDialogPreference.getAutoVibratoTypeCustom();
-
-                    EditorManager.editorConfig.EnableAutoVibrato = mDialogPreference.isEnableAutoVibrato();
-					ApplicationGlobal.appConfig.PreSendTime = mDialogPreference.getPreSendTime();
-                    ApplicationGlobal.appConfig.Language = mDialogPreference.getLanguage();
-                    if (!Messaging.getLanguage().Equals(ApplicationGlobal.appConfig.Language)) {
-                        Messaging.setLanguage(ApplicationGlobal.appConfig.Language);
-                        applyLanguage();
-                        mDialogPreference.applyLanguage();
-                        EditorManager.MixerWindow.applyLanguage();
-                        if (mVersionInfo != null && !mVersionInfo.IsDisposed) {
-                            mVersionInfo.applyLanguage();
-                        }
-#if ENABLE_PROPERTY
-                        EditorManager.propertyWindow.applyLanguage();
-                        EditorManager.propertyPanel.updateValue(EditorManager.Selected);
-#endif
-                        if (mDialogMidiImportAndExport != null) {
-                            mDialogMidiImportAndExport.applyLanguage();
-                        }
-                    }
-
-					ApplicationGlobal.appConfig.ControlCurveResolution = mDialogPreference.getControlCurveResolution();
-                    ApplicationGlobal.appConfig.DefaultSingerName = mDialogPreference.getDefaultSingerName();
-                    EditorManager.editorConfig.ScrollHorizontalOnWheel = mDialogPreference.isScrollHorizontalOnWheel();
-                    EditorManager.editorConfig.MaximumFrameRate = mDialogPreference.getMaximumFrameRate();
-                    int fps = 1000 / EditorManager.editorConfig.MaximumFrameRate;
-                    timer.Interval = (fps <= 0) ? 1 : fps;
-                    applyShortcut();
-                    EditorManager.editorConfig.KeepLyricInputMode = mDialogPreference.isKeepLyricInputMode();
-                    if (EditorManager.editorConfig.PxTrackHeight != mDialogPreference.getPxTrackHeight()) {
-                        EditorManager.editorConfig.PxTrackHeight = mDialogPreference.getPxTrackHeight();
-                        updateDrawObjectList();
-                    }
-                    EditorManager.editorConfig.setMouseHoverTime(mDialogPreference.getMouseHoverTime());
-                    EditorManager.editorConfig.PlayPreviewWhenRightClick = mDialogPreference.isPlayPreviewWhenRightClick();
-					EditorManager.editorConfig.CurveSelectingQuantized = mDialogPreference.isCurveSelectingQuantized();
-
-                    ApplicationGlobal.appConfig.CurveVisibleAccent = mDialogPreference.isCurveVisibleAccent();
-                    ApplicationGlobal.appConfig.CurveVisibleBreathiness = mDialogPreference.isCurveVisibleBre();
-                    ApplicationGlobal.appConfig.CurveVisibleBrightness = mDialogPreference.isCurveVisibleBri();
-                    ApplicationGlobal.appConfig.CurveVisibleClearness = mDialogPreference.isCurveVisibleCle();
-                    ApplicationGlobal.appConfig.CurveVisibleDecay = mDialogPreference.isCurveVisibleDecay();
-                    ApplicationGlobal.appConfig.CurveVisibleDynamics = mDialogPreference.isCurveVisibleDyn();
-                    ApplicationGlobal.appConfig.CurveVisibleGendorfactor = mDialogPreference.isCurveVisibleGen();
-                    ApplicationGlobal.appConfig.CurveVisibleOpening = mDialogPreference.isCurveVisibleOpe();
-                    ApplicationGlobal.appConfig.CurveVisiblePit = mDialogPreference.isCurveVisiblePit();
-                    ApplicationGlobal.appConfig.CurveVisiblePbs = mDialogPreference.isCurveVisiblePbs();
-                    ApplicationGlobal.appConfig.CurveVisiblePortamento = mDialogPreference.isCurveVisiblePor();
-                    ApplicationGlobal.appConfig.CurveVisibleVelocity = mDialogPreference.isCurveVisibleVel();
-                    ApplicationGlobal.appConfig.CurveVisibleVibratoDepth = mDialogPreference.isCurveVisibleVibratoDepth();
-                    ApplicationGlobal.appConfig.CurveVisibleVibratoRate = mDialogPreference.isCurveVisibleVibratoRate();
-                    ApplicationGlobal.appConfig.CurveVisibleFx2Depth = mDialogPreference.isCurveVisibleFx2Depth();
-                    ApplicationGlobal.appConfig.CurveVisibleHarmonics = mDialogPreference.isCurveVisibleHarmonics();
-                    ApplicationGlobal.appConfig.CurveVisibleReso1 = mDialogPreference.isCurveVisibleReso1();
-                    ApplicationGlobal.appConfig.CurveVisibleReso2 = mDialogPreference.isCurveVisibleReso2();
-                    ApplicationGlobal.appConfig.CurveVisibleReso3 = mDialogPreference.isCurveVisibleReso3();
-                    ApplicationGlobal.appConfig.CurveVisibleReso4 = mDialogPreference.isCurveVisibleReso4();
-                    ApplicationGlobal.appConfig.CurveVisibleEnvelope = mDialogPreference.isCurveVisibleEnvelope();
-
-#if ENABLE_MIDI
-                    EditorManager.editorConfig.MidiInPort.PortNumber = mDialogPreference.getMidiInPort();
-#endif
-#if ENABLE_MTC
-                    EditorManager.editorConfig.MidiInPortMtc.PortNumber = m_preference_dlg.getMtcMidiInPort();
-#endif
-#if ENABLE_MIDI || ENABLE_MTC
-                    updateMidiInStatus();
-                    reloadMidiIn();
-#endif
-
-                    List<string> new_resamplers = new List<string>();
-                    mDialogPreference.copyResamplersConfig(new_resamplers);
-					ApplicationGlobal.appConfig.clearResampler();
-                    for (int i = 0; i < new_resamplers.Count; i++) {
-						ApplicationGlobal.appConfig.addResampler(new_resamplers[i]);
-                    }
-                    ApplicationGlobal.appConfig.PathWavtool = mDialogPreference.getPathWavtool();
-
-                    ApplicationGlobal.appConfig.UtauSingers.Clear();
-                    foreach (var sc in mDialogPreference.getUtausingers()) {
-                        ApplicationGlobal.appConfig.UtauSingers.Add((SingerConfig)sc.clone());
-                    }
-                    EditorManager.reloadUtauVoiceDB();
-
-                    EditorManager.editorConfig.SelfDeRomanization = mDialogPreference.isSelfDeRomantization();
-                    EditorManager.editorConfig.AutoBackupIntervalMinutes = mDialogPreference.getAutoBackupIntervalMinutes();
-                    EditorManager.editorConfig.UseSpaceKeyAsMiddleButtonModifier = mDialogPreference.isUseSpaceKeyAsMiddleButtonModifier();
-
-#if ENABLE_AQUESTONE
-                    var old_aquestone_config = Tuple.Create(ApplicationGlobal.appConfig.PathAquesTone, ApplicationGlobal.appConfig.DoNotUseAquesTone);
-                    ApplicationGlobal.appConfig.PathAquesTone = mDialogPreference.getPathAquesTone();
-                    ApplicationGlobal.appConfig.DoNotUseAquesTone = !mDialogPreference.isAquesToneRequired();
-                    if (old_aquestone_config.Item1 != ApplicationGlobal.appConfig.PathAquesTone
-                        || old_aquestone_config.Item2 != ApplicationGlobal.appConfig.DoNotUseAquesTone) {
-                        VSTiDllManager.reloadAquesTone();
-                    }
-
-                    var old_aquestone2_config = Tuple.Create(ApplicationGlobal.appConfig.PathAquesTone2, ApplicationGlobal.appConfig.DoNotUseAquesTone2);
-                    ApplicationGlobal.appConfig.PathAquesTone2 = mDialogPreference.getPathAquesTone2();
-                    ApplicationGlobal.appConfig.DoNotUseAquesTone2 = !mDialogPreference.isAquesTone2Required();
-                    if (old_aquestone2_config.Item1 != ApplicationGlobal.appConfig.PathAquesTone2
-                        || old_aquestone2_config.Item2 != ApplicationGlobal.appConfig.DoNotUseAquesTone2) {
-                        VSTiDllManager.reloadAquesTone2();
-                    }
-#endif
-                    updateRendererMenu();
-
-                    //EditorManager.editorConfig.__revoked__WaveFileOutputFromMasterTrack = mDialogPreference.isWaveFileOutputFromMasterTrack();
-                    //EditorManager.editorConfig.__revoked__WaveFileOutputChannel = mDialogPreference.getWaveFileOutputChannel();
-                    if (ApplicationGlobal.appConfig.UseProjectCache && !mDialogPreference.isUseProjectCache()) {
-                        // プロジェクト用キャッシュを使用していたが，使用しないように変更された場合.
-                        // プロジェクト用キャッシュが存在するなら，共用のキャッシュに移動する．
-                        string file = MusicManager.getFileName();
-                        if (file != null && !file.Equals("")) {
-                            string dir = PortUtil.getDirectoryName(file);
-                            string name = PortUtil.getFileNameWithoutExtension(file);
-                            string projectCacheDir = Path.Combine(dir, name + ".cadencii");
-                            string commonCacheDir = Path.Combine(ApplicationGlobal.getCadenciiTempDir(), ApplicationGlobal.getID());
-                            if (Directory.Exists(projectCacheDir)) {
-                                VsqFileEx vsq = MusicManager.getVsqFile();
-                                for (int i = 1; i < vsq.Track.Count; i++) {
-                                    // wavを移動
-                                    string wavFrom = Path.Combine(projectCacheDir, i + ".wav");
-                                    string wavTo = Path.Combine(commonCacheDir, i + ".wav");
-                                    if (!System.IO.File.Exists(wavFrom)) {
-                                        continue;
-                                    }
-                                    if (System.IO.File.Exists(wavTo)) {
-                                        try {
-                                            PortUtil.deleteFile(wavTo);
-                                        } catch (Exception ex) {
-                                            Logger.write(typeof(FormMain) + ".menuSettingPreference_Click; ex=" + ex + "\n");
-                                            serr.println("FormMain#menuSettingPreference_Click; ex=" + ex);
-                                            continue;
-                                        }
-                                    }
-                                    try {
-                                        PortUtil.moveFile(wavFrom, wavTo);
-                                    } catch (Exception ex) {
-                                        Logger.write(typeof(FormMain) + ".menuSettingPreference_Click; ex=" + ex + "\n");
-                                        serr.println("FormMain#menuSettingPreference_Click; ex=" + ex);
-                                    }
-
-                                    // xmlを移動
-                                    string xmlFrom = Path.Combine(projectCacheDir, i + ".xml");
-                                    string xmlTo = Path.Combine(commonCacheDir, i + ".xml");
-                                    if (!System.IO.File.Exists(xmlFrom)) {
-                                        continue;
-                                    }
-                                    if (System.IO.File.Exists(xmlTo)) {
-                                        try {
-                                            PortUtil.deleteFile(xmlTo);
-                                        } catch (Exception ex) {
-                                            Logger.write(typeof(FormMain) + ".menuSettingPreference_Click; ex=" + ex + "\n");
-                                            serr.println("FormMain#menuSettingPreference_Click; ex=" + ex);
-                                            continue;
-                                        }
-                                    }
-                                    try {
-                                        PortUtil.moveFile(xmlFrom, xmlTo);
-                                    } catch (Exception ex) {
-                                        Logger.write(typeof(FormMain) + ".menuSettingPreference_Click; ex=" + ex + "\n");
-                                        serr.println("FormMain#menuSettingPreference_Click; ex=" + ex);
-                                    }
-                                }
-
-                                // projectCacheDirが空なら，ディレクトリごと削除する
-                                string[] files = PortUtil.listFiles(projectCacheDir, "*.*");
-                                if (files.Length <= 0) {
-                                    try {
-                                        PortUtil.deleteDirectory(projectCacheDir);
-                                    } catch (Exception ex) {
-                                        Logger.write(typeof(FormMain) + ".menuSettingPreference_Click; ex=" + ex + "\n");
-                                        serr.println("FormMain#menuSettingPreference_Click; ex=" + ex);
-                                    }
-                                }
-
-                                // キャッシュのディレクトリを再指定
-                                ApplicationGlobal.setTempWaveDir(commonCacheDir);
-                            }
-                        }
-                    }
-                    ApplicationGlobal.appConfig.UseProjectCache = mDialogPreference.isUseProjectCache();
-                    ApplicationGlobal.appConfig.DoNotUseVocaloid1 = !mDialogPreference.isVocaloid1Required();
-                    ApplicationGlobal.appConfig.DoNotUseVocaloid2 = !mDialogPreference.isVocaloid2Required();
-					ApplicationGlobal.appConfig.BufferSizeMilliSeconds = mDialogPreference.getBufferSize();
-                    ApplicationGlobal.appConfig.DefaultSynthesizer = mDialogPreference.getDefaultSynthesizer();
-					ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType = mDialogPreference.isUseUserDefinedAutoVibratoType();
-					ApplicationGlobal.appConfig.UseWideCharacterWorkaround = mDialogPreference.isEnableWideCharacterWorkaround();
-
-                    trackSelector.prepareSingerMenu(VsqFileEx.getTrackRendererKind(MusicManager.getVsqFile().Track[EditorManager.Selected]));
-                    trackSelector.updateVisibleCurves();
-
-                    updateRendererMenu();
-                    EditorManager.updateAutoBackupTimerStatus();
-
-                    // editorConfig.PxTrackHeightが変更されている可能性があるので，更新が必要
-                    controller.setStartToDrawY(calculateStartToDrawY(vScroll.Value));
-
-                    if (menuVisualControlTrack.Checked) {
-                        splitContainer1.Panel2MinSize = (trackSelector.getPreferredMinSize());
-                    }
-
-                    EditorManager.saveConfig();
-                    applyLanguage();
-#if ENABLE_SCRIPT
-                    updateScriptShortcut();
-#endif
-
-                    updateDrawObjectList();
-                    refreshScreen();
-                }
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".menuSettingPreference_Click; ex=" + ex + "\n");
-                CDebug.WriteLine("FormMain#menuSettingPreference_Click; ex=" + ex);
-            }
-        }
-
-        public void menuSettingShortcut_Click(Object sender, EventArgs e)
-        {
-            SortedDictionary<string, ValuePair<string, Keys[]>> dict = new SortedDictionary<string, ValuePair<string, Keys[]>>();
-            SortedDictionary<string, Keys[]> configured = EditorManager.editorConfig.getShortcutKeysDictionary(this.getDefaultShortcutKeys());
-#if DEBUG
-            sout.println("FormMain#menuSettingShortcut_Click; configured=");
-            foreach (var name in configured.Keys) {
-                Keys[] keys = configured[name];
-                string disp = Utility.getShortcutDisplayString(keys);
-                sout.println("    " + name + " -> " + disp);
-            }
-#endif
-
-            // スクリプトのToolStripMenuITemを蒐集
-            List<string> script_shortcut = new List<string>();
-            foreach (var tsi in menuScript.DropDownItems) {
-                if (tsi is UiToolStripMenuItem) {
-                    var tsmi = (UiToolStripMenuItem)tsi;
-                    string name = tsmi.Name;
-                    script_shortcut.Add(name);
-                    if (!configured.ContainsKey(name)) {
-                        configured[name] = new Keys[] { };
-                    }
-                }
-            }
-
-            foreach (var name in configured.Keys) {
-                ByRef<Object> owner = new ByRef<Object>(null);
-                Object menu = searchMenuItemFromName(name, owner);
-#if DEBUG
-                if (menu == null || owner.value == null) {
-                    serr.println("FormMain#enuSettingShrtcut_Click; name=" + name + "; menu is null");
-                    continue;
-                }
-#endif
-                ToolStripMenuItem casted_owner_item = null;
-                if (owner.value is ToolStripMenuItem) {
-                    casted_owner_item = (ToolStripMenuItem)owner.value;
-                }
-                if (casted_owner_item == null) {
-                    continue;
-                }
-                string parent = "";
-                if (!casted_owner_item.Name.Equals(menuHidden.Name)) {
-                    string s = casted_owner_item.Text;
-                    int i = s.IndexOf("(&");
-                    if (i > 0) {
-                        s = s.Substring(0, i);
-                    }
-                    parent = s + " -> ";
-                }
-                ToolStripMenuItem casted_menu = null;
-                if (menu is ToolStripMenuItem) {
-                    casted_menu = (ToolStripMenuItem)menu;
-                }
-                if (casted_menu == null) {
-                    continue;
-                }
-                string s1 = casted_menu.Text;
-                int i1 = s1.IndexOf("(&");
-                if (i1 > 0) {
-                    s1 = s1.Substring(0, i1);
-                }
-                dict[parent + s1] = new ValuePair<string, Keys[]>(name, configured[name]);
-            }
-
-            // 最初に戻る、のショートカットキー
-            Keys[] keysGoToFirst = EditorManager.editorConfig.SpecialShortcutGoToFirst;
-            if (keysGoToFirst == null) {
-                keysGoToFirst = new Keys[] { };
-            }
-            dict[_("Go to the first")] = new ValuePair<string, Keys[]>("SpecialShortcutGoToFirst", keysGoToFirst);
-
-            FormShortcutKeys form = null;
-            try {
-                form = ApplicationUIHost.Create<FormShortcutKeys>(dict, this);
-                form.Location = getFormPreferedLocation(form);
-                var dr = DialogManager.showModalDialog((Form) form.Native, this);
-				if (dr == cadencii.java.awt.DialogResult.OK) {
-                    SortedDictionary<string, ValuePair<string, Keys[]>> res = form.getResult();
-                    foreach (var display in res.Keys) {
-                        string name = res[display].getKey();
-                        Keys[] keys = res[display].getValue();
-                        bool found = false;
-                        if (name.Equals("SpecialShortcutGoToFirst")) {
-                            EditorManager.editorConfig.SpecialShortcutGoToFirst = keys;
-                        } else {
-                            for (int i = 0; i < EditorManager.editorConfig.ShortcutKeys.Count; i++) {
-                                if (EditorManager.editorConfig.ShortcutKeys[i].Key.Equals(name)) {
-                                    EditorManager.editorConfig.ShortcutKeys[i].Value = keys;
-                                    found = true;
-                                    break;
-                                }
-                            }
-                            if (!found) {
-                                EditorManager.editorConfig.ShortcutKeys.Add(new ValuePairOfStringArrayOfKeys(name, keys));
-                            }
-                        }
-                    }
-                    applyShortcut();
-                }
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".menuSettingShortcut_Click; ex=" + ex + "\n");
-            } finally {
-                if (form != null) {
-                    try {
-                        form.Close();
-                    } catch (Exception ex2) {
-                        Logger.write(typeof(FormMain) + ".menuSettingSHortcut_Click; ex=" + ex2 + "\n");
-                    }
-                }
-            }
-        }
-
-        public void menuSettingVibratoPreset_Click(Object sender, EventArgs e)
-        {
-            FormVibratoPreset dialog = null;
-            try {
-                dialog = ApplicationUIHost.Create<FormVibratoPreset>(EditorManager.editorConfig.AutoVibratoCustom);
-                dialog.Location = getFormPreferedLocation(dialog);
-                var ret = DialogManager.showModalDialog((Form) dialog.Native, this);
-				if (ret != cadencii.java.awt.DialogResult.OK) {
-                    return;
-                }
-
-                // ダイアログの結果を取得
-                List<VibratoHandle> result = dialog.getResult();
-
-                // ダイアログ結果を，設定値にコピー
-                // ダイアログのコンストラクタであらかじめcloneされているので，
-                // ここではcloneする必要はない．
-                EditorManager.editorConfig.AutoVibratoCustom.Clear();
-                for (int i = 0; i < result.Count; i++) {
-                    EditorManager.editorConfig.AutoVibratoCustom.Add(result[i]);
-                }
-
-                // メニューの表示状態を更新
-                updateVibratoPresetMenu();
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".menuSettingVibratoPreset_Click; ex=" + ex + "\n");
-            } finally {
-                if (dialog != null) {
-                    try {
-                        dialog.Dispose();
-                    } catch (Exception ex2) {
-                    }
-                }
-            }
-        }
         #endregion
 
         //BOOKMARK: menuEdit

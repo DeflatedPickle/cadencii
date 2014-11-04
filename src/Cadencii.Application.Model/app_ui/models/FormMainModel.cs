@@ -26,9 +26,11 @@ namespace cadencii
 		{
 			this.form = form;
 			MainMenu = new FileMenuModel (this);
+			SettingsMenu = new SettingsMenuModel (this);
 		}
 			
 		public FileMenuModel MainMenu { get; private set; }
+		public SettingsMenuModel SettingsMenu { get; private set; }
 
 		public static void TrackSelector_MouseClick (UiFormMain window, MouseEventArgs e)
 		{
@@ -379,7 +381,7 @@ namespace cadencii
 			try {
 				if (check_unknown_singer || check_unknwon_resampler) {
 					dialog = ApplicationUIHost.Create<FormCheckUnknownSingerAndResampler>(singer_path.value, check_unknown_singer, resampler_path.value, check_unknwon_resampler);
-					dialog.Location = getFormPreferedLocation(dialog.Width, dialog.Height);
+					dialog.Location = GetFormPreferedLocation(dialog.Width, dialog.Height);
 					var dr = DialogManager.showModalDialog(dialog, this);
 					if (dr != 1) {
 						return;
@@ -421,7 +423,7 @@ namespace cadencii
 		/// </summary>
 		/// <param name="dlg"></param>
 		/// <returns></returns>
-		public Point getFormPreferedLocation(int dialogWidth, int dialogHeight)
+		public Point GetFormPreferedLocation(int dialogWidth, int dialogHeight)
 		{
 			Point mouse = cadencii.core2.PortUtil.getMousePosition();
 			Rectangle rcScreen = cadencii.core2.PortUtil.getWorkingArea(this);

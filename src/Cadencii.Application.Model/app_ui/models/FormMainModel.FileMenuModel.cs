@@ -468,7 +468,7 @@ namespace cadencii
 				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
 					return;
 				}
-				dlg.Location = parent.getFormPreferedLocation(dlg.Width, dlg.Height);
+				dlg.Location = parent.GetFormPreferedLocation(dlg.Width, dlg.Height);
 				MidiFile mf = null;
 				try {
 					string filename = parent.form.openMidiDialog.FileName;
@@ -887,7 +887,7 @@ namespace cadencii
 				dlg.Mode = (FormMidiMode.IMPORT_VSQ);
 				dlg.setTempo(false);
 				dlg.setTimesig(false);
-				dlg.Location = parent.getFormPreferedLocation(dlg.Width, dlg.Height);
+				dlg.Location = parent.GetFormPreferedLocation(dlg.Width, dlg.Height);
 				var dr = DialogManager.showModalDialog(dlg, this);
 				if (dr != 1) {
 					return;
@@ -1201,7 +1201,7 @@ namespace cadencii
 					dlg.listTrack.AddRow(new string[] { i + "", track.getName(), notes + "" }, true);
 				}
 				dlg.Mode = (FormMidiMode.EXPORT);
-				dlg.Location = parent.getFormPreferedLocation(dlg.Width, dlg.Height);
+				dlg.Location = parent.GetFormPreferedLocation(dlg.Width, dlg.Height);
 				var dr = DialogManager.showModalDialog(dlg, this);
 				if (dr == 1) {
 					if (!dlg.isPreMeasure()) {

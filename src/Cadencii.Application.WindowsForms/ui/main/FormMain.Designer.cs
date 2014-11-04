@@ -2965,7 +2965,7 @@ namespace cadencii
         public UiToolStripMenuItem menuLyric;
         public UiToolStripMenuItem menuSetting;
         public UiToolStripMenuItem menuHelp;
-        public UiToolStripMenuItem menuVisualControlTrack;
+		public UiToolStripMenuItem menuVisualControlTrack { get; set; }
         public UiToolStripMenuItem menuVisualMixer;
         public UiToolStripSeparator toolStripMenuItem1;
         public UiToolStripMenuItem menuVisualGridline;
@@ -3108,8 +3108,8 @@ namespace cadencii
         public UiToolStripMenuItem menuHelpDebug;
         public UiToolStripMenuItem menuFileExportWave;
         public UiToolStripMenuItem menuFileExportMidi;
-        public UiToolStripMenuItem menuScript;
-        public UiToolStripMenuItem menuHidden;
+		public UiToolStripMenuItem menuScript { get; set;}
+		public UiToolStripMenuItem menuHidden { get; set; }
         public UiToolStripMenuItem menuHiddenEditLyric;
         public UiToolStripMenuItem menuHiddenEditFlipToolPointerPencil;
         public UiToolStripMenuItem menuHiddenEditFlipToolPointerEraser;
@@ -3147,7 +3147,7 @@ namespace cadencii
         public UiToolBarButton stripBtnStartMarker;
         public UiToolBarButton stripBtnEndMarker;
         public UiHScrollBar hScroll { get; set; }
-        public UiVScrollBar vScroll;
+		public UiVScrollBar vScroll { get; set; }
         public UiToolStripMenuItem menuLyricVibratoProperty;
         public UiToolStripMenuItem cMenuPianoVibratoProperty;
         public UiToolStripMenuItem menuScriptUpdate;
@@ -3205,7 +3205,7 @@ namespace cadencii
         public cadencii.apputil.BSplitContainer splitContainerProperty;
         public UiToolStripMenuItem menuVisualOverview;
         public PictOverview panelOverview;
-        public cadencii.apputil.BSplitContainer splitContainer1;
+		public cadencii.apputil.BSplitContainer splitContainer1 { get; set; }
         public UiToolStripSeparator toolStripMenuItem4;
         public UiToolStripMenuItem menuTrackBgm;
         public UiToolStripMenuItem menuTrackRendererVCNT;

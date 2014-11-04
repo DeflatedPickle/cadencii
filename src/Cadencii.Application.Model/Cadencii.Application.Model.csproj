@@ -218,6 +218,7 @@
     <Compile Include="app_ui\models\FormMainModel.cs" />
     <Compile Include="app_ui\controls\RecentFileMenuItem.cs" />
     <Compile Include="app_ui\models\FormMainModel.FileMenuModel.cs" />
+    <Compile Include="app_ui\models\FormMainMenu.SettingsMenuModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
