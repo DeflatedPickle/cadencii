@@ -235,7 +235,7 @@ namespace cadencii
 			}
 		}
 
-		public void PasteEvent()
+		public void Paste()
 		{
 			int clock = EditorManager.getCurrentClock();
 			int unit = EditorManager.getPositionQuantizeClock();
@@ -462,7 +462,7 @@ namespace cadencii
 		/// <summary>
 		/// アイテムのコピーを行います
 		/// </summary>
-		public void CopyEvent()
+		public void Copy()
 		{
 			#if DEBUG
 			CDebug.WriteLine("FormMain#copyEvent");
@@ -599,10 +599,10 @@ namespace cadencii
 			}
 		}
 
-		public void CutEvent()
+		public void Cut()
 		{
 			// まずコピー
-			CopyEvent();
+			Copy();
 
 			int track = EditorManager.Selected;
 

@@ -5232,11 +5232,11 @@ namespace cadencii
             menuEditRedo.MouseEnter += new EventHandler(handleMenuMouseEnter);
 			menuEditRedo.Click += (o, e) => model.EditMenu.RunEditRedoCommand();
             menuEditCut.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuEditCut.Click += new EventHandler(handleEditCut_Click);
+			menuEditCut.Click += (o, e) => model.Cut ();
             menuEditCopy.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuEditCopy.Click += new EventHandler(handleEditCopy_Click);
+			menuEditCopy.Click += (o, e) => model.Copy ();
             menuEditPaste.MouseEnter += new EventHandler(handleMenuMouseEnter);
-            menuEditPaste.Click += new EventHandler(handleEditPaste_Click);
+			menuEditPaste.Click += (o, e) => model.Paste ();
             menuEditDelete.MouseEnter += new EventHandler(handleMenuMouseEnter);
 			menuEditDelete.Click += (o, e) => model.EditMenu.RunEditDeleteCommand();
             menuEditAutoNormalizeMode.MouseEnter += new EventHandler(handleMenuMouseEnter);
@@ -5366,9 +5366,9 @@ namespace cadencii
             menuHiddenVisualBackwardParameter.Click += new EventHandler(menuHiddenVisualBackwardParameter_Click);
             menuHiddenTrackNext.Click += new EventHandler(menuHiddenTrackNext_Click);
             menuHiddenTrackBack.Click += new EventHandler(menuHiddenTrackBack_Click);
-            menuHiddenCopy.Click += new EventHandler(handleEditCopy_Click);
-            menuHiddenPaste.Click += new EventHandler(handleEditPaste_Click);
-            menuHiddenCut.Click += new EventHandler(handleEditCut_Click);
+			menuHiddenCopy.Click += (o, e) => model.Copy ();
+			menuHiddenPaste.Click += (o, e) => model.Paste ();
+			menuHiddenCut.Click += (o, e) => model.Cut ();
             menuHiddenSelectBackward.Click += new EventHandler(menuHiddenSelectBackward_Click);
             menuHiddenSelectForward.Click += new EventHandler(menuHiddenSelectForward_Click);
             menuHiddenMoveUp.Click += new EventHandler(menuHiddenMoveUp_Click);
@@ -10448,17 +10448,17 @@ namespace cadencii
 
         public void cMenuPianoPaste_Click(Object sender, EventArgs e)
         {
-            model.PasteEvent();
+            model.Paste();
         }
 
         public void cMenuPianoCopy_Click(Object sender, EventArgs e)
         {
-            model.CopyEvent();
+            model.Copy();
         }
 
         public void cMenuPianoCut_Click(Object sender, EventArgs e)
         {
-            model.CutEvent();
+            model.Cut();
         }
 
         public void cMenuPianoExpression_Click(Object sender, EventArgs e)
@@ -10731,7 +10731,7 @@ namespace cadencii
 
         public void menuHiddenEditPaste_Click(Object sender, EventArgs e)
         {
-            model.PasteEvent();
+            model.Paste();
         }
 
         public void menuHiddenFlipCurveOnPianorollMode_Click(Object sender, EventArgs e)
@@ -11098,12 +11098,12 @@ namespace cadencii
 
         public void cMenuTrackSelectorCut_Click(Object sender, EventArgs e)
         {
-            model.CutEvent();
+            model.Cut();
         }
 
         public void cMenuTrackSelectorCopy_Click(Object sender, EventArgs e)
         {
-            model.CopyEvent();
+            model.Copy();
         }
 
         public void cMenuTrackSelectorDelete_Click(Object sender, EventArgs e)
@@ -11151,7 +11151,7 @@ namespace cadencii
 
         public void cMenuTrackSelectorPaste_Click(Object sender, EventArgs e)
         {
-            model.PasteEvent();
+            model.Paste();
         }
 
         public void cMenuTrackSelectorUndo_Click(Object sender, EventArgs e)
@@ -11500,25 +11500,25 @@ namespace cadencii
         }
 
         void toolBarFile_ButtonClick(Object sender, ToolBarButtonClickEventArgs e)
-        {
+		{
 			if (e.Button == stripBtnFileNew) {
 				model.FileMenu.RunFileNewCommand ();
-            } else if (e.Button == stripBtnFileOpen) {
+			} else if (e.Button == stripBtnFileOpen) {
 				model.FileMenu.RunFileOpenCommand ();
-            } else if (e.Button == stripBtnFileSave) {
+			} else if (e.Button == stripBtnFileSave) {
 				model.FileMenu.RunFileSaveCommand ();
-            } else if (e.Button == stripBtnCut) {
-                handleEditCut_Click(e.Button, new EventArgs());
-            } else if (e.Button == stripBtnCopy) {
-                handleEditCopy_Click(e.Button, new EventArgs());
-            } else if (e.Button == stripBtnPaste) {
-                handleEditPaste_Click(e.Button, new EventArgs());
-            } else if (e.Button == stripBtnUndo) {
+			} else if (e.Button == stripBtnCut) {
+				model.Cut ();
+			} else if (e.Button == stripBtnCopy) {
+				model.Copy ();
+			} else if (e.Button == stripBtnPaste) {
+				model.Paste ();
+			} else if (e.Button == stripBtnUndo) {
 				model.EditMenu.RunEditUndoCommand ();
-            } else if (e.Button == stripBtnRedo) {
+			} else if (e.Button == stripBtnRedo) {
 				model.EditMenu.RunEditRedoCommand ();
-            }
-        }
+			}
+		}
 
         public void handleVibratoPresetSubelementClick(Object sender, EventArgs e)
         {
@@ -11768,24 +11768,6 @@ namespace cadencii
         public void handleStripButton_Enter(Object sender, EventArgs e)
         {
             focusPianoRoll();
-        }
-
-        public void handleEditPaste_Click(Object sender, EventArgs e)
-        {
-            model.PasteEvent();
-        }
-
-        public void handleEditCopy_Click(Object sender, EventArgs e)
-        {
-#if DEBUG
-            CDebug.WriteLine("handleEditCopy_Click");
-#endif
-            model.CopyEvent();
-        }
-
-        public void handleEditCut_Click(Object sender, EventArgs e)
-        {
-            model.CutEvent();
         }
 
         public void handlePositionQuantize(Object sender, EventArgs e)
