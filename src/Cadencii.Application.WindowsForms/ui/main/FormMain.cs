@@ -10708,7 +10708,7 @@ namespace cadencii
         #region cMenuPiano*
         public void cMenuPianoDelete_Click(Object sender, EventArgs e)
         {
-            model.deleteEvent();
+            model.DeleteEvent();
         }
 
         public void cMenuPianoVibratoProperty_Click(Object sender, EventArgs e)
@@ -10718,17 +10718,17 @@ namespace cadencii
 
         public void cMenuPianoPaste_Click(Object sender, EventArgs e)
         {
-            model.pasteEvent();
+            model.PasteEvent();
         }
 
         public void cMenuPianoCopy_Click(Object sender, EventArgs e)
         {
-            model.copyEvent();
+            model.CopyEvent();
         }
 
         public void cMenuPianoCut_Click(Object sender, EventArgs e)
         {
-            model.cutEvent();
+            model.CutEvent();
         }
 
         public void cMenuPianoExpression_Click(Object sender, EventArgs e)
@@ -10803,17 +10803,17 @@ namespace cadencii
 
         public void cMenuPianoUndo_Click(Object sender, EventArgs e)
         {
-            model.undo();
+            model.Undo();
         }
 
         public void cMenuPianoRedo_Click(Object sender, EventArgs e)
         {
-            model.redo();
+            model.Redo();
         }
 
         public void cMenuPianoSelectAllEvents_Click(Object sender, EventArgs e)
         {
-            model.selectAllEvent();
+            model.SelectAllEvent();
         }
 
         public void cMenuPianoProperty_Click(Object sender, EventArgs e)
@@ -10834,7 +10834,7 @@ namespace cadencii
 
         public void cMenuPianoSelectAll_Click(Object sender, EventArgs e)
         {
-            model.selectAll();
+            model.SelectAll();
         }
 
         public void cMenuPianoFixed01_Click(Object sender, EventArgs e)
@@ -11001,7 +11001,7 @@ namespace cadencii
 
         public void menuHiddenEditPaste_Click(Object sender, EventArgs e)
         {
-            model.pasteEvent();
+            model.PasteEvent();
         }
 
         public void menuHiddenFlipCurveOnPianorollMode_Click(Object sender, EventArgs e)
@@ -11363,22 +11363,22 @@ namespace cadencii
 
         public void cMenuTrackSelectorSelectAll_Click(Object sender, EventArgs e)
         {
-            model.selectAllEvent();
+            model.SelectAllEvent();
         }
 
         public void cMenuTrackSelectorCut_Click(Object sender, EventArgs e)
         {
-            model.cutEvent();
+            model.CutEvent();
         }
 
         public void cMenuTrackSelectorCopy_Click(Object sender, EventArgs e)
         {
-            model.copyEvent();
+            model.CopyEvent();
         }
 
         public void cMenuTrackSelectorDelete_Click(Object sender, EventArgs e)
         {
-            model.deleteEvent();
+            model.DeleteEvent();
         }
 
         public void cMenuTrackSelectorDeleteBezier_Click(Object sender, EventArgs e)
@@ -11421,7 +11421,7 @@ namespace cadencii
 
         public void cMenuTrackSelectorPaste_Click(Object sender, EventArgs e)
         {
-            model.pasteEvent();
+            model.PasteEvent();
         }
 
         public void cMenuTrackSelectorUndo_Click(Object sender, EventArgs e)
@@ -11429,7 +11429,7 @@ namespace cadencii
 #if DEBUG
             CDebug.WriteLine("cMenuTrackSelectorUndo_Click");
 #endif
-            model.undo();
+            model.Undo();
             refreshScreen();
         }
 
@@ -11438,7 +11438,7 @@ namespace cadencii
 #if DEBUG
             CDebug.WriteLine("cMenuTrackSelectorRedo_Click");
 #endif
-            model.redo();
+            model.Redo();
             refreshScreen();
         }
         #endregion
@@ -12042,7 +12042,7 @@ namespace cadencii
 
         public void handleEditPaste_Click(Object sender, EventArgs e)
         {
-            model.pasteEvent();
+            model.PasteEvent();
         }
 
         public void handleEditCopy_Click(Object sender, EventArgs e)
@@ -12050,12 +12050,12 @@ namespace cadencii
 #if DEBUG
             CDebug.WriteLine("handleEditCopy_Click");
 #endif
-            model.copyEvent();
+            model.CopyEvent();
         }
 
         public void handleEditCut_Click(Object sender, EventArgs e)
         {
-            model.cutEvent();
+            model.CutEvent();
         }
 
         public void handlePositionQuantize(Object sender, EventArgs e)
