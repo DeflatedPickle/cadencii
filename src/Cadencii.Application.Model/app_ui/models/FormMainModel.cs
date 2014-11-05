@@ -8,6 +8,7 @@ using System.Threading;
 using cadencii.apputil;
 using cadencii.utau;
 using cadencii.java.util;
+using cadencii.windows.forms;
 
 namespace cadencii
 {
@@ -32,6 +33,7 @@ namespace cadencii
 			FileMenu = new FileMenuModel (this);
 			EditMenu = new EditMenuModel (this);
 			VisualMenu = new VisualMenuModel (this);
+			TrackMenu = new TrackMenuModel (this);
 			JobMenu = new JobMenuModel (this);
 			LyricMenu = new LyricMenuModel (this);
 			SettingsMenu = new SettingsMenuModel (this);
@@ -40,6 +42,7 @@ namespace cadencii
 		public FileMenuModel FileMenu { get; private set; }
 		public EditMenuModel EditMenu { get; private set; }
 		public VisualMenuModel VisualMenu { get; private set; }
+		public TrackMenuModel TrackMenu { get; private set; }
 		public JobMenuModel JobMenu { get; private set; }
 		public LyricMenuModel LyricMenu { get; private set; }
 		public SettingsMenuModel SettingsMenu { get; private set; }
@@ -828,6 +831,109 @@ namespace cadencii
 			EditorManager.editorConfig.setLengthQuantizeTriplet(triplet);
 			form.refreshScreen();
 		}
+
+		#region トラックの編集関連
+		/// <summary>
+		/// トラック全体のコピーを行います。
+		/// </summary>
+		public void copyTrackCore()
+		{
+			VsqFileEx vsq = MusicManager.getVsqFile();
+			int selected = EditorManager.Selected;
+			VsqTrack track = (VsqTrack)vsq.Track[selected].clone();
+			track.setName(track.getName() + " (1)");
+			CadenciiCommand run = VsqFileEx.generateCommandAddTrack(track,
+				vsq.Mixer.Slave[selected - 1],
+				vsq.Track.Count,
+				vsq.AttachedCurves.get(selected - 1)); ;
+			EditorManager.editHistory.register(vsq.executeCommand(run));
+			form.setEdited(true);
+			EditorManager.MixerWindow.updateStatus();
+			form.refreshScreen();
+		}
+
+		/// <summary>
+		/// トラックの名前変更を行います。
+		/// </summary>
+		public void changeTrackNameCore()
+		{
+			InputBox ib = null;
+			try {
+				int selected = EditorManager.Selected;
+				VsqFileEx vsq = MusicManager.getVsqFile();
+				ib = ApplicationUIHost.Create<InputBox>(_("Input new name of track"));
+				ib.setResult(vsq.Track[selected].getName());
+				ib.Location = GetFormPreferedLocation(ib);
+				var dr = DialogManager.showModalDialog(ib, this);
+				if (dr == 1) {
+					string ret = ib.getResult();
+					CadenciiCommand run = new CadenciiCommand(
+						VsqCommand.generateCommandTrackChangeName(selected, ret));
+					EditorManager.editHistory.register(vsq.executeCommand(run));
+					form.setEdited(true);
+					form.refreshScreen();
+				}
+			} catch (Exception ex) {
+			} finally {
+				if (ib != null) {
+					ib.Close();
+				}
+			}
+		}
+
+		/// <summary>
+		/// トラックの削除を行います。
+		/// </summary>
+		public void deleteTrackCore()
+		{
+			int selected = EditorManager.Selected;
+			VsqFileEx vsq = MusicManager.getVsqFile();
+			if (DialogManager.showMessageBox(
+				PortUtil.formatMessage(_("Do you wish to remove track? {0} : '{1}'"), selected, vsq.Track[selected].getName()),
+				FormMainModel.ApplicationName,
+				cadencii.Dialog.MSGBOX_YES_NO_OPTION,
+				cadencii.Dialog.MSGBOX_QUESTION_MESSAGE) == cadencii.java.awt.DialogResult.Yes) {
+				CadenciiCommand run = VsqFileEx.generateCommandDeleteTrack(selected);
+				if (selected >= 2) {
+					EditorManager.Selected = selected - 1;
+				}
+				EditorManager.editHistory.register(vsq.executeCommand(run));
+				form.updateDrawObjectList();
+				form.setEdited(true);
+				EditorManager.MixerWindow.updateStatus();
+				form.refreshScreen();
+			}
+		}
+
+		/// <summary>
+		/// トラックの追加を行います。
+		/// </summary>
+		public void addTrackCore()
+		{
+			VsqFileEx vsq = MusicManager.getVsqFile();
+			int i = vsq.Track.Count;
+			string name = "Voice" + i;
+			string singer = ApplicationGlobal.appConfig.DefaultSingerName;
+			VsqTrack vsq_track = new VsqTrack(name, singer);
+
+			RendererKind kind = ApplicationGlobal.appConfig.DefaultSynthesizer;
+			string renderer = kind.getVersionString();
+			List<VsqID> singers = MusicManager.getSingerListFromRendererKind(kind);
+
+			vsq_track.changeRenderer(renderer, singers);
+			CadenciiCommand run = VsqFileEx.generateCommandAddTrack(vsq_track,
+				new VsqMixerEntry(0, 0, 0, 0),
+				i,
+				new BezierCurves());
+			EditorManager.editHistory.register(vsq.executeCommand(run));
+			form.updateDrawObjectList();
+			form.setEdited(true);
+			EditorManager.Selected = (i);
+			EditorManager.MixerWindow.updateStatus();
+			form.refreshScreen();
+		}
+		#endregion
+
 	}
 }
 

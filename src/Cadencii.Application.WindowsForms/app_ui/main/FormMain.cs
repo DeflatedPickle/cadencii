@@ -2685,7 +2685,8 @@ namespace cadencii
                 //stripBtnPaste.isEnabled() = !copied_is_null;
             }*/
         }
-	
+
+	/*
         public void loadWave(Object arg)
         {
             Object[] argArr = (Object[])arg;
@@ -2693,6 +2694,7 @@ namespace cadencii
             int track = (int)argArr[1];
             waveView.load(track, file);
         }
+        */
 
         /// <summary>
         /// EditorManager.editorConfig.ViewWaveformの値をもとに、splitterContainer2の表示状態を更新します
@@ -4208,109 +4210,6 @@ namespace cadencii
             return draft;
         }
 
-
-        #region トラックの編集関連
-        /// <summary>
-        /// トラック全体のコピーを行います。
-        /// </summary>
-        public void copyTrackCore()
-        {
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            int selected = EditorManager.Selected;
-            VsqTrack track = (VsqTrack)vsq.Track[selected].clone();
-            track.setName(track.getName() + " (1)");
-            CadenciiCommand run = VsqFileEx.generateCommandAddTrack(track,
-                                                                     vsq.Mixer.Slave[selected - 1],
-                                                                     vsq.Track.Count,
-                                                                     vsq.AttachedCurves.get(selected - 1)); ;
-            EditorManager.editHistory.register(vsq.executeCommand(run));
-            setEdited(true);
-            EditorManager.MixerWindow.updateStatus();
-            refreshScreen();
-        }
-
-        /// <summary>
-        /// トラックの名前変更を行います。
-        /// </summary>
-        public void changeTrackNameCore()
-        {
-            InputBox ib = null;
-            try {
-                int selected = EditorManager.Selected;
-                VsqFileEx vsq = MusicManager.getVsqFile();
-                ib = ApplicationUIHost.Create<InputBox>(_("Input new name of track"));
-                ib.setResult(vsq.Track[selected].getName());
-                ib.Location = model.GetFormPreferedLocation(ib);
-                var dr = DialogManager.showModalDialog((Form) ib.Native, this);
-				if (dr == cadencii.java.awt.DialogResult.OK) {
-                    string ret = ib.getResult();
-                    CadenciiCommand run = new CadenciiCommand(
-                        VsqCommand.generateCommandTrackChangeName(selected, ret));
-                    EditorManager.editHistory.register(vsq.executeCommand(run));
-                    setEdited(true);
-                    refreshScreen();
-                }
-            } catch (Exception ex) {
-            } finally {
-                if (ib != null) {
-                    ib.Close();
-                }
-            }
-        }
-
-        /// <summary>
-        /// トラックの削除を行います。
-        /// </summary>
-        public void deleteTrackCore()
-        {
-            int selected = EditorManager.Selected;
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            if (DialogManager.showMessageBox(
-                    PortUtil.formatMessage(_("Do you wish to remove track? {0} : '{1}'"), selected, vsq.Track[selected].getName()),
-                    FormMainModel.ApplicationName,
-                    cadencii.Dialog.MSGBOX_YES_NO_OPTION,
-				cadencii.Dialog.MSGBOX_QUESTION_MESSAGE) == cadencii.java.awt.DialogResult.Yes) {
-                CadenciiCommand run = VsqFileEx.generateCommandDeleteTrack(selected);
-                if (selected >= 2) {
-                    EditorManager.Selected = selected - 1;
-                }
-                EditorManager.editHistory.register(vsq.executeCommand(run));
-                updateDrawObjectList();
-                setEdited(true);
-                EditorManager.MixerWindow.updateStatus();
-                refreshScreen();
-            }
-        }
-
-        /// <summary>
-        /// トラックの追加を行います。
-        /// </summary>
-        public void addTrackCore()
-        {
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            int i = vsq.Track.Count;
-            string name = "Voice" + i;
-            string singer = ApplicationGlobal.appConfig.DefaultSingerName;
-            VsqTrack vsq_track = new VsqTrack(name, singer);
-
-            RendererKind kind = ApplicationGlobal.appConfig.DefaultSynthesizer;
-            string renderer = kind.getVersionString();
-            List<VsqID> singers = MusicManager.getSingerListFromRendererKind(kind);
-
-            vsq_track.changeRenderer(renderer, singers);
-            CadenciiCommand run = VsqFileEx.generateCommandAddTrack(vsq_track,
-                                                                     new VsqMixerEntry(0, 0, 0, 0),
-                                                                     i,
-                                                                     new BezierCurves());
-            EditorManager.editHistory.register(vsq.executeCommand(run));
-            updateDrawObjectList();
-            setEdited(true);
-            EditorManager.Selected = (i);
-            EditorManager.MixerWindow.updateStatus();
-            refreshScreen();
-        }
-        #endregion
-
         /// <summary>
         /// length, positionの各Quantizeモードに応じて、
         /// 関連する全てのメニュー・コンテキストメニューの表示状態を更新します。
@@ -5224,16 +5123,16 @@ namespace cadencii
 			menuJobRandomize.Click += (o, e) => model.JobMenu.RunJobRandomizeCommand ();
 			menuJobConnect.Click += (o, e) => model.JobMenu.RunJobConnectCommand ();
 			menuJobLyric.Click += (o, e) => model.JobMenu.RunJobLyricCommand ();
-            menuTrack.DropDownOpening += new EventHandler(menuTrack_DropDownOpening);
-            menuTrackOn.Click += new EventHandler(handleTrackOn_Click);
-            menuTrackAdd.Click += new EventHandler(menuTrackAdd_Click);
-            menuTrackCopy.Click += new EventHandler(menuTrackCopy_Click);
-            menuTrackChangeName.Click += new EventHandler(menuTrackChangeName_Click);
-            menuTrackDelete.Click += new EventHandler(menuTrackDelete_Click);
-            menuTrackRenderCurrent.Click += new EventHandler(menuTrackRenderCurrent_Click);
-            menuTrackRenderAll.Click += new EventHandler(handleTrackRenderAll_Click);
-            menuTrackOverlay.Click += new EventHandler(menuTrackOverlay_Click);
-            menuTrackRenderer.DropDownOpening += new EventHandler(menuTrackRenderer_DropDownOpening);
+			menuTrack.DropDownOpening += (o, e) => model.TrackMenu.RunTrackDropDownOpening ();
+			menuTrackOn.Click += (o, e) => model.TrackMenu.RunTrackOnCommand ();
+			menuTrackAdd.Click += (o, e) => model.addTrackCore ();
+			menuTrackCopy.Click += (o, e) => model.copyTrackCore ();
+			menuTrackChangeName.Click += (o, e) => model.changeTrackNameCore ();
+			menuTrackDelete.Click += (o, e) => model.deleteTrackCore ();
+			menuTrackRenderCurrent.Click += (o, e) => model.TrackMenu.RunTrackRenderCurrentCommand ();
+			menuTrackRenderAll.Click += (o, e) => model.TrackMenu.RunTrackRenderAllCommand ();
+			menuTrackOverlay.Click += (o, e) => model.TrackMenu.RunTrackOverlayCommand ();
+			menuTrackRenderer.DropDownOpening += (o, e) => model.TrackMenu.RunTrackRendererDropDownOpening ();
             menuTrackRendererVOCALOID1.Click += new EventHandler(handleChangeRenderer);
             menuTrackRendererVOCALOID2.Click += new EventHandler(handleChangeRenderer);
             //UTAUはresamplerを識別するのでmenuTrackRendererUtauのサブアイテムのClickイベントを拾う
@@ -5329,13 +5228,13 @@ namespace cadencii
             cMenuPianoExpressionProperty.Click += new EventHandler(cMenuPianoProperty_Click);
             cMenuPianoVibratoProperty.Click += new EventHandler(cMenuPianoVibratoProperty_Click);
             cMenuTrackTab.Opening += (o, e) => cMenuTrackTab_Opening();
-            cMenuTrackTabTrackOn.Click += new EventHandler(handleTrackOn_Click);
-            cMenuTrackTabAdd.Click += new EventHandler(cMenuTrackTabAdd_Click);
-            cMenuTrackTabCopy.Click += new EventHandler(cMenuTrackTabCopy_Click);
-            cMenuTrackTabChangeName.Click += new EventHandler(cMenuTrackTabChangeName_Click);
-            cMenuTrackTabDelete.Click += new EventHandler(cMenuTrackTabDelete_Click);
+			cMenuTrackTabTrackOn.Click += (o, e) => model.TrackMenu.RunTrackOnCommand ();
+			cMenuTrackTabAdd.Click += (o, e) => model.addTrackCore ();
+			cMenuTrackTabCopy.Click += (o, e) => model.copyTrackCore ();
+			cMenuTrackTabChangeName.Click += (o, e) => model.changeTrackNameCore ();
+			cMenuTrackTabDelete.Click += (o, e) => model.deleteTrackCore ();
             cMenuTrackTabRenderCurrent.Click += new EventHandler(cMenuTrackTabRenderCurrent_Click);
-            cMenuTrackTabRenderAll.Click += new EventHandler(handleTrackRenderAll_Click);
+			cMenuTrackTabRenderAll.Click += (o, e) => model.TrackMenu.RunTrackRenderAllCommand ();
             cMenuTrackTabOverlay.Click += new EventHandler(cMenuTrackTabOverlay_Click);
             cMenuTrackTabRenderer.DropDownOpening += new EventHandler(cMenuTrackTabRenderer_DropDownOpening);
             cMenuTrackTabRendererVOCALOID1.Click += new EventHandler(handleChangeRenderer);
@@ -9871,55 +9770,6 @@ namespace cadencii
         }
         #endregion
 
-        //BOOKMARK: menuTrack
-        #region menuTrack*
-        public void menuTrack_DropDownOpening(Object sender, EventArgs e)
-        {
-#if DEBUG
-            sout.println("FormMain#menuTrack_DropDownOpening");
-#endif
-            updateTrackMenuStatus();
-        }
-
-        public void menuTrackCopy_Click(Object sender, EventArgs e)
-        {
-            copyTrackCore();
-        }
-
-        public void menuTrackChangeName_Click(Object sender, EventArgs e)
-        {
-            changeTrackNameCore();
-        }
-
-        public void menuTrackDelete_Click(Object sender, EventArgs e)
-        {
-            deleteTrackCore();
-        }
-
-        public void menuTrackAdd_Click(Object sender, EventArgs e)
-        {
-            addTrackCore();
-        }
-
-        public void menuTrackOverlay_Click(Object sender, EventArgs e)
-        {
-            EditorManager.TrackOverlay = (!EditorManager.TrackOverlay);
-            refreshScreen();
-        }
-
-        public void menuTrackRenderCurrent_Click(Object sender, EventArgs e)
-        {
-            List<int> tracks = new List<int>();
-            tracks.Add(EditorManager.Selected);
-			EditorManager.patchWorkToFreeze(this, tracks);
-        }
-
-        public void menuTrackRenderer_DropDownOpening(Object sender, EventArgs e)
-        {
-            updateRendererMenu();
-        }
-        #endregion
-
         //BOOKMARK: menuHidden
         #region menuHidden*
         public void menuHiddenVisualForwardParameter_Click(Object sender, EventArgs e)
@@ -10157,25 +10007,6 @@ namespace cadencii
 
         //BOOKMARK: cMenuTrackTab
         #region cMenuTrackTab
-        public void cMenuTrackTabCopy_Click(Object sender, EventArgs e)
-        {
-            copyTrackCore();
-        }
-
-        public void cMenuTrackTabChangeName_Click(Object sender, EventArgs e)
-        {
-            changeTrackNameCore();
-        }
-
-        public void cMenuTrackTabDelete_Click(Object sender, EventArgs e)
-        {
-            deleteTrackCore();
-        }
-
-        public void cMenuTrackTabAdd_Click(Object sender, EventArgs e)
-        {
-            addTrackCore();
-        }
 
         public void cMenuTrackTab_Opening()
         {
@@ -10955,40 +10786,6 @@ namespace cadencii
                     menu.Checked = (id == tagged_id);
                 }
             }
-        }
-
-        public void handleTrackOn_Click(Object sender, EventArgs e)
-        {
-            int selected = EditorManager.Selected;
-            VsqTrack vsq_track = MusicManager.getVsqFile().Track[selected];
-            bool old_status = vsq_track.isTrackOn();
-            bool new_status = !old_status;
-            int last_play_mode = vsq_track.getCommon().LastPlayMode;
-            CadenciiCommand run = new CadenciiCommand(
-                VsqCommand.generateCommandTrackChangePlayMode(
-                    selected,
-                    new_status ? last_play_mode : PlayMode.Off,
-                    last_play_mode));
-            EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
-            menuTrackOn.Checked = new_status;
-            cMenuTrackTabTrackOn.Checked = new_status;
-            setEdited(true);
-            refreshScreen();
-        }
-
-        public void handleTrackRenderAll_Click(Object sender, EventArgs e)
-        {
-            List<int> list = new List<int>();
-            int c = MusicManager.getVsqFile().Track.Count;
-            for (int i = 1; i < c; i++) {
-                if (EditorManager.getRenderRequired(i)) {
-                    list.Add(i);
-                }
-            }
-            if (list.Count <= 0) {
-                return;
-            }
-			EditorManager.patchWorkToFreeze(this, list);
         }
 
         public void handleEditorConfig_QuantizeModeChanged(Object sender, EventArgs e)

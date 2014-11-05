@@ -21,6 +21,10 @@ namespace cadencii
     /// </summary>
     public interface UiFormMain : UiForm
     {
+		void updateTrackMenuStatus();
+		UiToolStripMenuItem menuTrackOn { get; set; }
+		UiToolStripMenuItem cMenuTrackTabTrackOn { get; set; }
+
 		UiToolStripMenuItem menuJobConnect { get; set; }
 		UiToolStripMenuItem menuJobLyric { get; set; }
 		FormImportLyric mDialogImportLyric { get; set; }

@@ -3055,7 +3055,7 @@ namespace cadencii
         public UiToolStripSeparator toolStripMenuItem20;
         public UiToolStripMenuItem menuEditSelectAll;
         public UiToolStripMenuItem menuEditSelectAllEvents;
-        public UiToolStripMenuItem menuTrackOn;
+		public UiToolStripMenuItem menuTrackOn { get; set; }
         public UiToolStripSeparator toolStripMenuItem21;
         public UiToolStripMenuItem menuTrackAdd;
         public UiToolStripMenuItem menuTrackCopy;
@@ -3067,7 +3067,7 @@ namespace cadencii
         public UiToolStripSeparator toolStripMenuItem23;
         public UiToolStripMenuItem menuTrackOverlay;
 		public UiContextMenuStrip cMenuTrackTab;
-        public UiToolStripMenuItem cMenuTrackTabTrackOn;
+		public UiToolStripMenuItem cMenuTrackTabTrackOn { get; set; }
         public UiToolStripSeparator toolStripMenuItem24;
         public UiToolStripMenuItem cMenuTrackTabAdd;
         public UiToolStripMenuItem cMenuTrackTabCopy;
