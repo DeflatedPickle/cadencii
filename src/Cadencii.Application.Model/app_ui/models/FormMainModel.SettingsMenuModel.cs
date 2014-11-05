@@ -595,6 +595,42 @@ namespace cadencii
 					}
 				}
 			}
+
+			public void RunSettingSequenceCommand()
+			{
+				VsqFileEx vsq = MusicManager.getVsqFile();
+
+				FormSequenceConfig dialog = ApplicationUIHost.Create<FormSequenceConfig>();
+				int old_channels = vsq.config.WaveFileOutputChannel;
+				bool old_output_master = vsq.config.WaveFileOutputFromMasterTrack;
+				int old_sample_rate = vsq.config.SamplingRate;
+				int old_pre_measure = vsq.getPreMeasure();
+
+				dialog.setWaveFileOutputChannel(old_channels);
+				dialog.setWaveFileOutputFromMasterTrack(old_output_master);
+				dialog.setSampleRate(old_sample_rate);
+				dialog.setPreMeasure(old_pre_measure);
+
+				dialog.Location = parent.GetFormPreferedLocation(dialog);
+				if (DialogManager.showModalDialog(dialog, this) != 1) {
+					return;
+				}
+
+				int new_channels = dialog.getWaveFileOutputChannel();
+				bool new_output_master = dialog.isWaveFileOutputFromMasterTrack();
+				int new_sample_rate = dialog.getSampleRate();
+				int new_pre_measure = dialog.getPreMeasure();
+
+				CadenciiCommand run =
+					VsqFileEx.generateCommandChangeSequenceConfig(
+						new_sample_rate,
+						new_channels,
+						new_output_master,
+						new_pre_measure);
+				EditorManager.editHistory.register(vsq.executeCommand(run));
+				parent.form.setEdited(true);
+			}
+
 		}
 	}
 }

@@ -32,13 +32,15 @@ namespace cadencii
 			FileMenu = new FileMenuModel (this);
 			EditMenu = new EditMenuModel (this);
 			VisualMenu = new VisualMenuModel (this);
+			JobMenu = new JobMenuModel (this);
 			LyricMenu = new LyricMenuModel (this);
 			SettingsMenu = new SettingsMenuModel (this);
 		}
-			
+
 		public FileMenuModel FileMenu { get; private set; }
 		public EditMenuModel EditMenu { get; private set; }
 		public VisualMenuModel VisualMenu { get; private set; }
+		public JobMenuModel JobMenu { get; private set; }
 		public LyricMenuModel LyricMenu { get; private set; }
 		public SettingsMenuModel SettingsMenu { get; private set; }
 

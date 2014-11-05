@@ -222,6 +222,7 @@
     <Compile Include="gui_fx_extended\ClipboardModel.cs" />
     <Compile Include="gui_fx_extended\ApplicationUIHost.cs" />
     <Compile Include="gui_fx_extended\Dialogs.cs" />
+    <Compile Include="app_ui\models\FormMainModel.JobMenuModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

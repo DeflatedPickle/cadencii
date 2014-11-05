@@ -5336,7 +5336,7 @@ namespace cadencii
 			menuSettingGameControlerSetting.Click += (o, e) => model.SettingsMenu.RunSettingGameControlerSettingCommand();
 			menuSettingGameControlerLoad.Click += (o, e) => model.SettingsMenu.RunSettingGameControlerLoadCommand();
 			menuSettingGameControlerRemove.Click += (o, e) => model.SettingsMenu.RunSettingGameControlerRemoveCommand();
-            menuSettingSequence.Click += new EventHandler(menuSettingSequence_Click);
+			menuSettingSequence.Click += (o, e) => model.SettingsMenu.RunSettingSequenceCommand ();
             menuSettingSequence.MouseEnter += new EventHandler(handleMenuMouseEnter);
             menuSettingShortcut.MouseEnter += new EventHandler(handleMenuMouseEnter);
 			menuSettingShortcut.Click += (o, e) => model.SettingsMenu.RunSettingShortcutCommand();
@@ -8849,41 +8849,6 @@ namespace cadencii
                     }
                 }
             }
-        }
-
-        public void menuSettingSequence_Click(Object sender, EventArgs e)
-        {
-            VsqFileEx vsq = MusicManager.getVsqFile();
-
-            FormSequenceConfig dialog = ApplicationUIHost.Create<FormSequenceConfig>();
-            int old_channels = vsq.config.WaveFileOutputChannel;
-            bool old_output_master = vsq.config.WaveFileOutputFromMasterTrack;
-            int old_sample_rate = vsq.config.SamplingRate;
-            int old_pre_measure = vsq.getPreMeasure();
-
-            dialog.setWaveFileOutputChannel(old_channels);
-            dialog.setWaveFileOutputFromMasterTrack(old_output_master);
-            dialog.setSampleRate(old_sample_rate);
-            dialog.setPreMeasure(old_pre_measure);
-
-            dialog.Location = model.GetFormPreferedLocation(dialog);
-			if (DialogManager.showModalDialog((Form) dialog.Native, this) != cadencii.java.awt.DialogResult.OK) {
-                return;
-            }
-
-            int new_channels = dialog.getWaveFileOutputChannel();
-            bool new_output_master = dialog.isWaveFileOutputFromMasterTrack();
-            int new_sample_rate = dialog.getSampleRate();
-            int new_pre_measure = dialog.getPreMeasure();
-
-            CadenciiCommand run =
-                VsqFileEx.generateCommandChangeSequenceConfig(
-                    new_sample_rate,
-                    new_channels,
-                    new_output_master,
-                    new_pre_measure);
-            EditorManager.editHistory.register(vsq.executeCommand(run));
-            setEdited(true);
         }
 
         public void menuJobDeleteBar_Click(Object sender, EventArgs e)
