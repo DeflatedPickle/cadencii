@@ -5,6 +5,7 @@ namespace cadencii
 {
 	public interface UiDialog : IDisposable
 	{
+		object Native { get; }
 	}
 
 	public interface UiFileDialog : UiDialog

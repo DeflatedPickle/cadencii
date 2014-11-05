@@ -90,17 +90,17 @@ namespace cadencii
 			}
 			mShowingDialog = false;
 		}
-		public override cadencii.java.awt.DialogResult ShowModalFileDialog (object fileDialog, bool openMode, object mainForm)
+		public override cadencii.java.awt.DialogResult ShowModalFileDialog (UiFileDialog fileDialog, bool openMode, UiForm mainForm)
 		{
 			BeforeShowDialog ();
-			var ret = ((FileDialog) fileDialog).ShowDialog ((Form) mainForm);
+			var ret = ((FileDialog) fileDialog.Native).ShowDialog ((Form) mainForm);
 			AfterShowDialog ();
 			return (cadencii.java.awt.DialogResult) ret;
 		}
-		public override cadencii.java.awt.DialogResult ShowModalFolderDialog (object folderBrowserDialog, object mainForm)
+		public override cadencii.java.awt.DialogResult ShowModalFolderDialog (UiFolderBrowserDialog folderBrowserDialog, UiForm mainForm)
 		{
 			BeforeShowDialog ();
-			var ret = ((FolderBrowserDialog) folderBrowserDialog).ShowDialog ((Form) mainForm);
+			var ret = ((FolderBrowserDialog) folderBrowserDialog.Native).ShowDialog ((Form) mainForm);
 			AfterShowDialog ();
 			return (cadencii.java.awt.DialogResult) ret;
 		}

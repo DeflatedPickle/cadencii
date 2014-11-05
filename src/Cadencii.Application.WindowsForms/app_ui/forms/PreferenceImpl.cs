@@ -46,7 +46,7 @@ namespace cadencii
         private PlatformEnum m_platform = PlatformEnum.Windows;
         private List<SingerConfig> m_utau_singers = new List<SingerConfig>();
 
-        private OpenFileDialog openUtauCore;
+        private UiOpenFileDialog openUtauCore;
         private FontDialog fontDialog;
         private FolderBrowserDialog folderBrowserSingers;
 
@@ -58,7 +58,7 @@ namespace cadencii
             fontDialog.AllowVerticalFonts = false;
             fontDialog.FontMustExist = true;
             fontDialog.ShowEffects = false;
-            openUtauCore = new OpenFileDialog();
+			openUtauCore = ApplicationUIHost.Create<UiOpenFileDialog>();
 
             folderBrowserSingers = new FolderBrowserDialog();
             folderBrowserSingers.ShowNewFolderButton = false;
@@ -1281,7 +1281,7 @@ namespace cadencii
 
         private void onAquesToneChooseButtonClicked(System.Windows.Forms.TextBox text_box)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
+			UiOpenFileDialog dialog = ApplicationUIHost.Create<UiOpenFileDialog>();
             if (text_box.Text != "" && Directory.Exists(PortUtil.getDirectoryName(text_box.Text))) {
                 dialog.SetSelectedFile(text_box.Text);
             }

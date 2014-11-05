@@ -66,7 +66,7 @@ namespace cadencii
 		/// <param name="dialog"></param>
 		/// <param name="main_form"></param>
 		/// <returns></returns>
-		public static DialogResult showModalFolderDialog (object folderBrowserDialog, UiForm mainForm)
+		public static DialogResult showModalFolderDialog (UiFolderBrowserDialog folderBrowserDialog, UiForm mainForm)
 		{
 			return ApplicationUIHost.Instance.Dialogs.ShowModalFolderDialog (folderBrowserDialog, mainForm);
 		}
@@ -78,7 +78,7 @@ namespace cadencii
 		/// <param name="open_mode"></param>
 		/// <param name="main_form"></param>
 		/// <returns></returns>
-		public static DialogResult showModalFileDialog (object fileDialog, bool open_mode, UiForm mainForm)
+		public static DialogResult showModalFileDialog (UiFileDialog fileDialog, bool open_mode, UiForm mainForm)
 		{
 			return ApplicationUIHost.Instance.Dialogs.ShowModalFileDialog (fileDialog, open_mode, mainForm);
 		}

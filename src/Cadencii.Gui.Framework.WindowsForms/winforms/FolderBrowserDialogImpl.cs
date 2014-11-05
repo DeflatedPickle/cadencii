@@ -16,6 +16,10 @@ namespace cadencii
 			this.impl = impl;
 		}
 
+		public object Native {
+			get { return impl; }
+		}
+
 		public void Dispose ()
 		{
 			impl.Dispose ();
