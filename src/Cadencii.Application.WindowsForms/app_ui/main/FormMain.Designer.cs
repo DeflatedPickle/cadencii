@@ -1070,7 +1070,6 @@ namespace cadencii
             this.menuTrackRendererAquesTone2.Size = new cadencii.java.awt.Dimension(193, 22);
             this.menuTrackRendererAquesTone2.Text = "AquesTone2(&6)";
             this.menuTrackRendererAquesTone2.Click += new System.EventHandler(this.handleChangeRenderer);
-            this.menuTrackRendererAquesTone2.MouseEnter += new System.EventHandler(this.handleMenuMouseEnter);
             // 
             // toolStripMenuItem4
             // 
