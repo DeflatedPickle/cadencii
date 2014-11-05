@@ -15,7 +15,7 @@ namespace cadencii.java.awt
 
 		public abstract class ScreenAdapter
 		{
-			public abstract Rectangle getScreenBounds (object nativeContrl);
+			public abstract Rectangle getScreenBounds (object nativeControl);
 			public abstract void setMousePosition (Point p);
 			public abstract Point getMousePosition ();
 			public abstract bool isPointInScreens (Point p);
@@ -38,9 +38,9 @@ namespace cadencii.java.awt
 		{
 			return a.isPointInScreens (p);
 		}
-		public Rectangle getWorkingArea (object nativeWindow)
+		public Rectangle getWorkingArea (UiForm nativeWindow)
 		{
-			return a.getWorkingArea (nativeWindow);
+			return a.getWorkingArea (nativeWindow.Native);
 		}
 	}
 }

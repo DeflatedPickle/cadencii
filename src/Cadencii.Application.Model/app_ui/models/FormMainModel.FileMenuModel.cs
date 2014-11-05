@@ -60,12 +60,12 @@ namespace cadencii
 				}
 				string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("xvsq");
 				parent.form.openXmlVsqDialog.SetSelectedFile(dir);
-				var dialog_result = DialogManager.showModalFileDialog(parent.form.openXmlVsqDialog, true, this);
+				var dialog_result = DialogManager.showModalFileDialog(parent.form.openXmlVsqDialog, true, parent.form);
 				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
 					return;
 				}
 				if (EditorManager.isPlaying()) {
-					EditorManager.setPlaying(false, this);
+					EditorManager.setPlaying(false, parent.form);
 				}
 				string file = parent.form.openXmlVsqDialog.FileName;
 				ApplicationGlobal.appConfig.setLastUsedPathIn(file, ".xvsq");
@@ -127,7 +127,7 @@ namespace cadencii
 						string dir = PortUtil.getDirectoryName(last_file);
 						parent.form.saveXmlVsqDialog.SetSelectedFile(dir);
 					}
-					var dr = DialogManager.showModalFileDialog(parent.form.saveXmlVsqDialog, false, this);
+					var dr = DialogManager.showModalFileDialog(parent.form.saveXmlVsqDialog, false, parent.form);
 					if (dr == cadencii.java.awt.DialogResult.OK) {
 						file = parent.form.saveXmlVsqDialog.FileName;
 						ApplicationGlobal.appConfig.setLastUsedPathOut(file, ".xvsq");
@@ -157,7 +157,7 @@ namespace cadencii
 
 				string dir = ApplicationGlobal.appConfig.getLastUsedPathOut("xvsq");
 				parent.form.saveXmlVsqDialog.SetSelectedFile(dir);
-				var dr = DialogManager.showModalFileDialog(parent.form.saveXmlVsqDialog, false, this);
+				var dr = DialogManager.showModalFileDialog(parent.form.saveXmlVsqDialog, false, parent.form);
 				if (dr == cadencii.java.awt.DialogResult.OK) {
 					string file = parent.form.saveXmlVsqDialog.FileName;
 					ApplicationGlobal.appConfig.setLastUsedPathOut(file, ".xvsq");
@@ -186,7 +186,7 @@ namespace cadencii
 				parent.form.openMidiDialog.FilterIndex = filter_index;
 				string dir = ApplicationGlobal.appConfig.getLastUsedPathIn(filter);
 				parent.form.openMidiDialog.SetSelectedFile(dir);
-				var dialog_result = DialogManager.showModalFileDialog(parent.form.openMidiDialog, true, this);
+				var dialog_result = DialogManager.showModalFileDialog(parent.form.openMidiDialog, true, parent.form);
 				string ext = ".vsq";
 				if (dialog_result == cadencii.java.awt.DialogResult.OK) {
 					#if DEBUG
@@ -250,7 +250,7 @@ namespace cadencii
 
 				string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("ust");
 				parent.form.openUstDialog.SetSelectedFile(dir);
-				var dialog_result = DialogManager.showModalFileDialog(parent.form.openUstDialog, true, this);
+				var dialog_result = DialogManager.showModalFileDialog(parent.form.openUstDialog, true, parent.form);
 
 				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
 					return;
@@ -347,7 +347,7 @@ namespace cadencii
 					string dir = ApplicationGlobal.appConfig.getLastUsedPathIn ("ust");
 					dialog = ApplicationUIHost.Create<UiOpenFileDialog> ();
 					dialog.SetSelectedFile (dir);
-					var dialog_result = DialogManager.showModalFileDialog (dialog, true, this);
+					var dialog_result = DialogManager.showModalFileDialog (dialog, true, parent.form);
 					if (dialog_result != cadencii.java.awt.DialogResult.OK) {
 						return;
 					}
@@ -463,7 +463,7 @@ namespace cadencii
 
 				string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("mid");
 				parent.form.openMidiDialog.SetSelectedFile(dir);
-				var dialog_result = DialogManager.showModalFileDialog(parent.form.openMidiDialog, true, this);
+				var dialog_result = DialogManager.showModalFileDialog(parent.form.openMidiDialog, true, parent.form);
 
 				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
 					return;
@@ -535,7 +535,7 @@ namespace cadencii
 						new string[] { i + "", track_name, notes + "" }, true);
 				}
 
-				var dr = DialogManager.showModalDialog(dlg, this);
+				var dr = DialogManager.showModalDialog(dlg, parent.form);
 				if (dr != 1) {
 					return;
 				}
@@ -858,7 +858,7 @@ namespace cadencii
 			{
 				string dir = ApplicationGlobal.appConfig.getLastUsedPathIn(EditorManager.editorConfig.LastUsedExtension);
 				parent.form.openMidiDialog.SetSelectedFile(dir);
-				var dialog_result = DialogManager.showModalFileDialog(parent.form.openMidiDialog, true, this);
+				var dialog_result = DialogManager.showModalFileDialog(parent.form.openMidiDialog, true, parent.form);
 
 				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
 					return;
@@ -888,7 +888,7 @@ namespace cadencii
 				dlg.setTempo(false);
 				dlg.setTimesig(false);
 				dlg.Location = parent.GetFormPreferedLocation(dlg.Width, dlg.Height);
-				var dr = DialogManager.showModalDialog(dlg, this);
+				var dr = DialogManager.showModalDialog(dlg, parent.form);
 				if (dr != 1) {
 					return;
 				}
@@ -1018,7 +1018,7 @@ namespace cadencii
 					sfd.SetSelectedFile(last_path);
 					sfd.Title = _("Wave Export");
 					sfd.Filter = string.Join("|", new[] { _("Wave File(*.wav)|*.wav"), _("All Files(*.*)|*.*") });
-					dialog_result = DialogManager.showModalFileDialog(sfd, false, this);
+					dialog_result = DialogManager.showModalFileDialog(sfd, false, parent.form);
 					if (dialog_result != cadencii.java.awt.DialogResult.OK) {
 						return;
 					}
@@ -1074,14 +1074,14 @@ namespace cadencii
 					fs.getUi().setTitle(_("Synthesize"));
 					fs.getUi().setText(_("now synthesizing..."));
 
-					SynthesizeWorker worker = new SynthesizeWorker(this);
+					SynthesizeWorker worker = new SynthesizeWorker(parent.form);
 
 					foreach (PatchWorkQueue qb in queue) {
 						fs.addJob(worker, "processQueue", qb.getMessage(), qb.getJobAmount(), qb);
 					}
 
 					fs.startJob();
-					DialogManager.showModalDialog(fs.getUi(), this);
+					DialogManager.showModalDialog(fs.getUi(), parent.form);
 				} catch (Exception ex) {
 					Logger.write(GetType () + ".menuFileExportWave_Click; ex=" + ex + "\n");
 				} finally {
@@ -1105,7 +1105,7 @@ namespace cadencii
 					string initial_dir = ApplicationGlobal.appConfig.getLastUsedPathOut("wav");
 					file_dialog.Description = _("Choose destination directory");
 					file_dialog.SelectedPath = initial_dir;
-					var ret = DialogManager.showModalFolderDialog(file_dialog, this);
+					var ret = DialogManager.showModalFolderDialog(file_dialog, parent.form);
 					if (ret != cadencii.java.awt.DialogResult.OK) {
 						return;
 					}
@@ -1162,7 +1162,7 @@ namespace cadencii
 					fw.getUi().setTitle(_("Synthesize"));
 					fw.getUi().setText(_("now synthesizing..."));
 
-					SynthesizeWorker worker = new SynthesizeWorker(this);
+					SynthesizeWorker worker = new SynthesizeWorker(parent.form);
 
 					for (int i = 0; i < queue.Count; i++) {
 						PatchWorkQueue q = queue[i];
@@ -1170,7 +1170,7 @@ namespace cadencii
 					}
 
 					fw.startJob();
-					DialogManager.showModalDialog(fw.getUi(), this);
+					DialogManager.showModalDialog(fw.getUi(), parent.form);
 				} catch (Exception ex) {
 					Logger.write(GetType () + ".menuFileExportParaWave; ex=" + ex + "\n");
 				} finally {
@@ -1202,7 +1202,7 @@ namespace cadencii
 				}
 				dlg.Mode = (FormMidiMode.EXPORT);
 				dlg.Location = parent.GetFormPreferedLocation(dlg.Width, dlg.Height);
-				var dr = DialogManager.showModalDialog(dlg, this);
+				var dr = DialogManager.showModalDialog(dlg, parent.form);
 				if (dr == 1) {
 					if (!dlg.isPreMeasure()) {
 						vsq.removePart(0, vsq.getPreMeasureClocks());
@@ -1219,7 +1219,7 @@ namespace cadencii
 
 					string dir = ApplicationGlobal.appConfig.getLastUsedPathOut("mid");
 					parent.form.saveMidiDialog.SetSelectedFile(dir);
-					var dialog_result = DialogManager.showModalFileDialog(parent.form.saveMidiDialog, false, this);
+					var dialog_result = DialogManager.showModalFileDialog(parent.form.saveMidiDialog, false, parent.form);
 
 					if (dialog_result == cadencii.java.awt.DialogResult.OK) {
 						FileStream fs = null;
@@ -1443,7 +1443,7 @@ namespace cadencii
 					dialog = ApplicationUIHost.Create<UiSaveFileDialog> ();
 					dialog.SetSelectedFile(first);
 					dialog.Filter = string.Join("|", new[] { _("MusicXML(*.xml)|*.xml"), _("All Files(*.*)|*.*") });
-					var result = DialogManager.showModalFileDialog(dialog, false, this);
+					var result = DialogManager.showModalFileDialog(dialog, false, parent.form);
 					if (result != cadencii.java.awt.DialogResult.OK) {
 						return;
 					}
@@ -1483,7 +1483,7 @@ namespace cadencii
 					dialog.SetSelectedFile(last_path);
 					dialog.Title = _("Export UTAU (*.ust)");
 					dialog.Filter = string.Join("|", new[] { _("UTAU Script Format(*.ust)|*.ust"), _("All Files(*.*)|*.*") });
-					dialog_result = DialogManager.showModalFileDialog(dialog, false, this);
+					dialog_result = DialogManager.showModalFileDialog(dialog, false, parent.form);
 					if (dialog_result != cadencii.java.awt.DialogResult.OK) {
 						return;
 					}
@@ -1540,7 +1540,7 @@ namespace cadencii
 					dialog.SetSelectedFile(last_path);
 					dialog.Title = _("Export VSQ (*.vsq)");
 					dialog.Filter = string.Join("|", new[] { _("VSQ Format(*.vsq)|*.vsq"), _("All Files(*.*)|*.*") });
-					dialog_result = DialogManager.showModalFileDialog(dialog, false, this);
+					dialog_result = DialogManager.showModalFileDialog(dialog, false, parent.form);
 					if (dialog_result != cadencii.java.awt.DialogResult.OK) {
 						return;
 					}
@@ -1603,7 +1603,7 @@ namespace cadencii
 					dialog.SetSelectedFile(last_path);
 					dialog.Title = _("Metatext for vConnect");
 					dialog.Filter = string.Join("|", new[] { _("Text File(*.txt)|*.txt"), _("All Files(*.*)|*.*") });
-					dialog_result = DialogManager.showModalFileDialog(dialog, false, this);
+					dialog_result = DialogManager.showModalFileDialog(dialog, false, parent.form);
 					if (dialog_result != cadencii.java.awt.DialogResult.OK) {
 						return;
 					}

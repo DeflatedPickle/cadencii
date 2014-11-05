@@ -46,7 +46,7 @@ namespace cadencii
 				if (list.Count <= 0) {
 					return;
 				}
-				EditorManager.patchWorkToFreeze(this, list);
+				EditorManager.patchWorkToFreeze(parent.form, list);
 			}
 
 			//BOOKMARK: menuTrack
@@ -69,7 +69,7 @@ namespace cadencii
 			{
 				List<int> tracks = new List<int>();
 				tracks.Add(EditorManager.Selected);
-				EditorManager.patchWorkToFreeze(this, tracks);
+				EditorManager.patchWorkToFreeze(parent.form, tracks);
 			}
 
 			public void RunTrackRendererDropDownOpening()

@@ -36,6 +36,7 @@ namespace cadencii
 			return showMessageBox (text, caption, optionType, cadencii.Dialog.MSGBOX_PLAIN_MESSAGE);
 		}
 
+		/*
 		/// <summary>
 		/// ダイアログを，メインウィンドウに対してモーダルに表示し，ダイアログの結果を取得します
 		/// </summary>
@@ -46,6 +47,7 @@ namespace cadencii
 		{
 			return ApplicationUIHost.Instance.Dialogs.ShowModalDialog (dialogForm, parentForm);
 		}
+		*/
 
 		/// <summary>
 		/// ダイアログを，メインウィンドウに対してモーダルに表示し，ダイアログの結果を取得します
@@ -53,7 +55,7 @@ namespace cadencii
 		/// <param name="dialog"></param>
 		/// <param name="main_form"></param>
 		/// <returns></returns>
-		public static int showModalDialog (UiForm dialog, object parent_form)
+		public static int showModalDialog (UiForm dialog, UiForm parent_form)
 		{
 			return ApplicationUIHost.Instance.Dialogs.ShowModalDialog (dialog, parent_form);
 		}
@@ -64,7 +66,7 @@ namespace cadencii
 		/// <param name="dialog"></param>
 		/// <param name="main_form"></param>
 		/// <returns></returns>
-		public static DialogResult showModalFolderDialog (object folderBrowserDialog, object mainForm)
+		public static DialogResult showModalFolderDialog (object folderBrowserDialog, UiForm mainForm)
 		{
 			return ApplicationUIHost.Instance.Dialogs.ShowModalFolderDialog (folderBrowserDialog, mainForm);
 		}
@@ -76,7 +78,7 @@ namespace cadencii
 		/// <param name="open_mode"></param>
 		/// <param name="main_form"></param>
 		/// <returns></returns>
-		public static DialogResult showModalFileDialog (object fileDialog, bool open_mode, object mainForm)
+		public static DialogResult showModalFileDialog (object fileDialog, bool open_mode, UiForm mainForm)
 		{
 			return ApplicationUIHost.Instance.Dialogs.ShowModalFileDialog (fileDialog, open_mode, mainForm);
 		}

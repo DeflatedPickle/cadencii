@@ -9,7 +9,7 @@ namespace cadencii
 		void close();
 		void close(bool value);
 		void show(object obj);
-		bool showDialogTo(object formMainWindow);
+		bool showDialogTo(UiForm formMainWindow);
 		void applyLanguage();
 		void addProgressBar (ProgressBarWithLabelUi ui);
 		void removeProgressBar (ProgressBarWithLabelUi progressBarWithLabelUi);

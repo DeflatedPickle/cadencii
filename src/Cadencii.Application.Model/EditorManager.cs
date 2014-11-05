@@ -1188,7 +1188,7 @@ namespace cadencii
 		/// レンダリングが途中でキャンセルされた場合にtrue，そうでない場合にfalseを返します．
 		/// </summary>
 		/// <param name="tracks"></param>
-		public static bool patchWorkToFreeze (object main_window, List<int> tracks)
+		public static bool patchWorkToFreeze (UiForm main_window, List<int> tracks)
 		{
 			MusicManager.getVsqFile ().updateTotalClocks ();
 			List<PatchWorkQueue> queue = EditorManager.patchWorkCreateQueue (tracks);
@@ -1925,7 +1925,7 @@ namespace cadencii
 		/// </summary>
 		/// <param name="value"></param>
 		/// <param name="form"></param>
-		public static void setPlaying (bool value, object formMain)
+		public static void setPlaying (bool value, UiForm formMain)
 		{
 #if DEBUG
 			sout.println ("EditorManager#setPlaying; value=" + value);
@@ -1981,7 +1981,7 @@ namespace cadencii
 		/// プレビュー再生を開始します．
 		/// 合成処理などが途中でキャンセルされた場合にtrue，それ以外の場合にfalseを返します
 		/// </summary>
-		private static bool previewStart (object formMain)
+		private static bool previewStart (UiForm formMain)
 		{
 			var mVsq = MusicManager.getVsqFile ();
 			int selected = EditorManager.Selected;

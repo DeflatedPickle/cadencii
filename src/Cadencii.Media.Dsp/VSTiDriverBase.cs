@@ -317,9 +317,9 @@ namespace cadencii
             return result;
         }
 
-        public PluginUI getUi (object nativeWindow)
+        public PluginUI getUi (UiForm window)
 		{
-			return uihost.GetPluginUI (nativeWindow);
+			return uihost.GetPluginUI (window);
 		}
 
         public virtual void setSampleRate(int sample_rate)

@@ -44,7 +44,7 @@ namespace cadencii
         /// <summary>
         /// メインウィンドウへの参照
         /// </summary>
-        //protected System.Windows.Forms.Form mMainWindow;
+        protected UiForm mMainWindow;
 
         /// <summary>
         /// 描画用のストローク
@@ -103,15 +103,14 @@ namespace cadencii
         {
             mConfig = config;
         }
-        /*
+        
         /// <summary>
         /// メインウィンドウへの参照を設定します
         /// </summary>
-        public virtual void setMainWindow(System.Windows.Forms.Form main_window)
+        public virtual void setMainWindow(UiForm main_window)
         {
             mMainWindow = main_window;
         }
-*/
 
         /// <summary>
         /// このユニットを指定した位置に描画します。

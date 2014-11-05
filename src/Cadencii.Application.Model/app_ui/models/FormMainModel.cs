@@ -86,7 +86,7 @@ namespace cadencii
 			EditorManager.itemSelection.clearTempo();
 			EditorManager.itemSelection.clearTimesig();
 			if (EditorManager.isPlaying()) {
-				EditorManager.setPlaying(false, this);
+				EditorManager.setPlaying(false, form);
 			}
 			form.waveView.unloadAll();
 		}
@@ -159,7 +159,7 @@ namespace cadencii
 					cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
 				if (dr == cadencii.java.awt.DialogResult.Yes) {
 					if (MusicManager.getFileName() == "") {
-						var dr2 = DialogManager.showModalFileDialog(form.saveXmlVsqDialog, false, this);
+						var dr2 = DialogManager.showModalFileDialog(form.saveXmlVsqDialog, false, form);
 						if (dr2 == cadencii.java.awt.DialogResult.OK) {
 							string sf = form.saveXmlVsqDialog.FileName;
 							EditorManager.saveTo(sf);
@@ -412,7 +412,7 @@ namespace cadencii
 				if (check_unknown_singer || check_unknwon_resampler) {
 					dialog = ApplicationUIHost.Create<FormCheckUnknownSingerAndResampler>(singer_path.value, check_unknown_singer, resampler_path.value, check_unknwon_resampler);
 					dialog.Location = GetFormPreferedLocation(dialog.Width, dialog.Height);
-					var dr = DialogManager.showModalDialog(dialog, this);
+					var dr = DialogManager.showModalDialog(dialog, form);
 					if (dr != 1) {
 						return;
 					}
@@ -456,7 +456,7 @@ namespace cadencii
 		public Point GetFormPreferedLocation(int dialogWidth, int dialogHeight)
 		{
 			Point mouse = cadencii.core2.PortUtil.getMousePosition();
-			Rectangle rcScreen = cadencii.core2.PortUtil.getWorkingArea(this);
+			Rectangle rcScreen = cadencii.core2.PortUtil.getWorkingArea(form);
 			int top = mouse.Y - dialogHeight / 2;
 			if (top + dialogHeight > rcScreen.Y + rcScreen.Height) {
 				// ダイアログの下端が隠れる場合、位置をずらす
@@ -585,7 +585,7 @@ namespace cadencii
 				dlg.DEMaccent = (ev.ID.DEMaccent);
 
 				dlg.Location = GetFormPreferedLocation(dlg.Width, dlg.Height);
-				var dr = DialogManager.showModalDialog(dlg, this);
+				var dr = DialogManager.showModalDialog(dlg, form);
 				if (dr == 1) {
 					VsqEvent edited = (VsqEvent)ev.clone();
 					edited.ID.PMBendDepth = dlg.PMBendDepth;
@@ -640,7 +640,7 @@ namespace cadencii
 					type,
 					ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType);
 				dlg.Location = GetFormPreferedLocation(dlg);
-				var dr = DialogManager.showModalDialog(dlg, this);
+				var dr = DialogManager.showModalDialog(dlg, form);
 				if (dr == 1) {
 					VsqEvent edited = (VsqEvent)ev.clone();
 					if (dlg.getVibratoHandle() != null) {
@@ -743,7 +743,7 @@ namespace cadencii
 				}
 				var dlg = form.mDialogImportLyric;
 				dlg.Location = GetFormPreferedLocation(dlg);
-				var dr = DialogManager.showModalDialog(dlg, this);
+				var dr = DialogManager.showModalDialog(dlg, form);
 				if (dr == 1) {
 					string[] phrases = dlg.Letters;
 					#if DEBUG
@@ -864,7 +864,7 @@ namespace cadencii
 				ib = ApplicationUIHost.Create<InputBox>(_("Input new name of track"));
 				ib.setResult(vsq.Track[selected].getName());
 				ib.Location = GetFormPreferedLocation(ib);
-				var dr = DialogManager.showModalDialog(ib, this);
+				var dr = DialogManager.showModalDialog(ib, form);
 				if (dr == 1) {
 					string ret = ib.getResult();
 					CadenciiCommand run = new CadenciiCommand(

@@ -5903,8 +5903,8 @@ namespace cadencii
                                     dlg.DEMdecGainRate = (selectedEvent.ID.DEMdecGainRate);
                                     dlg.DEMaccent = (selectedEvent.ID.DEMaccent);
                                     dlg.Location = model.GetFormPreferedLocation(dlg);
-                                    var dr = DialogManager.showModalDialog((Form) dlg.Native, this);
-									if (dr == cadencii.java.awt.DialogResult.OK) {
+                                    var dr = DialogManager.showModalDialog(dlg, this);
+					if (dr == 1) {
                                         VsqID id = (VsqID)selectedEvent.ID.clone();
                                         id.PMBendDepth = dlg.PMBendDepth;
                                         id.PMBendLength = dlg.PMBendLength;
@@ -5974,8 +5974,8 @@ namespace cadencii
                                         type,
                                         ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType);
                                     dlg.Location = model.GetFormPreferedLocation(dlg);
-                                    var dr = DialogManager.showModalDialog((Form) dlg.Native, this);
-									if (dr == cadencii.java.awt.DialogResult.OK) {
+                                    var dr = DialogManager.showModalDialog(dlg, this);
+									if (dr == 1) {
                                         VsqID t = (VsqID)selectedEvent.ID.clone();
                                         VibratoHandle handle = dlg.getVibratoHandle();
 #if DEBUG
@@ -8578,8 +8578,8 @@ namespace cadencii
                                 try {
                                     dlg = ApplicationUIHost.Create<FormTempoConfig>(bar_count, beat_in_bar, timesig.numerator, clocks_in_beat, clock_per_beat, (float)(6e7 / tte.Tempo), MusicManager.getVsqFile().getPreMeasure());
                                     dlg.Location = getFormPreferedLocation((Form)dlg.Native).ToAwt ();
-                                    var dr = DialogManager.showModalDialog((Form)dlg.Native, this);
-                                    if (dr == cadencii.java.awt.DialogResult.OK) {
+                                    var dr = DialogManager.showModalDialog(dlg, this);
+                                    if (dr == 1) {
                                         int new_beat = dlg.getBeatCount();
                                         int new_clocks_in_beat = dlg.getClock();
                                         int new_clock = bar_top_clock + (new_beat - 1) * clock_per_beat + new_clocks_in_beat;
@@ -8649,8 +8649,8 @@ namespace cadencii
                                                            (float)(6e7 / changing_tempo),
                                                            vsq.getPreMeasure());
                                 dlg.Location = model.GetFormPreferedLocation(dlg);
-                                cadencii.java.awt.DialogResult dr = DialogManager.showModalDialog((Control)dlg.Native, this);
-                                if (dr == cadencii.java.awt.DialogResult.OK) {
+                                var dr = DialogManager.showModalDialog(dlg, this);
+                                if (dr == 1) {
                                     int new_beat = dlg.getBeatCount();
                                     int new_clocks_in_beat = dlg.getClock();
                                     int new_clock = bar_top_clock + (new_beat - 1) * clock_per_beat + new_clocks_in_beat;
@@ -9611,8 +9611,8 @@ namespace cadencii
                     dlg.PMbPortamentoUse = (original.ID.PMbPortamentoUse);
                     dlg.DEMdecGainRate = (original.ID.DEMdecGainRate);
                     dlg.DEMaccent = (original.ID.DEMaccent);
-                    cadencii.java.awt.DialogResult dr = DialogManager.showModalDialog((Form) dlg.Native, this);
-                    if (dr == cadencii.java.awt.DialogResult.OK) {
+                    var dr = DialogManager.showModalDialog(dlg, this);
+                    if (dr == 1) {
                         VsqID copy = (VsqID)original.ID.clone();
                         copy.PMBendDepth = dlg.PMBendDepth;
                         copy.PMBendLength = dlg.PMBendLength;
@@ -11096,8 +11096,8 @@ namespace cadencii
                 ib = ApplicationUIHost.Create<InputBox>(_("Input Offset Seconds"));
                 ib.Location = model.GetFormPreferedLocation(ib);
                 ib.setResult(MusicManager.getBgm(index).readOffsetSeconds + "");
-                cadencii.java.awt.DialogResult dr = DialogManager.showModalDialog((Form) ib.Native, this);
-                if (dr != cadencii.java.awt.DialogResult.OK) {
+                var dr = DialogManager.showModalDialog(ib, this);
+                if (dr != 1) {
                     return;
                 }
                 List<BgmFile> list = new List<BgmFile>();
@@ -11523,20 +11523,6 @@ namespace cadencii
                 left = workingAreaX;
             }
             return new Point(left, top);
-        }
-
-        /// <summary>
-        /// フォームのタイトルバーが画面内に入るよう、Locationを正規化します
-        /// </summary>
-        /// <param name="form"></param>
-        public static void normalizeFormLocation(Form dlg)
-        {
-	Rectangle rcScreen = cadencii.core2.PortUtil.getWorkingArea(dlg);
-            Point p = getAppropriateDialogLocation(
-                dlg.Left, dlg.Top, dlg.Width, dlg.Height,
-                rcScreen.X, rcScreen.Y, rcScreen.Width, rcScreen.Height
-            );
-            dlg.Location = new System.Drawing.Point(p.X, p.Y);
         }
         #endregion
 

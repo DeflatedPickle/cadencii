@@ -47,7 +47,7 @@ namespace cadencii.core2
             return Screen.Instance.isPointInScreens (p);
         }
 
-        public static Rectangle getWorkingArea(object nativeWindow)
+        public static Rectangle getWorkingArea(UiForm nativeWindow)
         {
         	return Screen.Instance.getWorkingArea (nativeWindow);
         }

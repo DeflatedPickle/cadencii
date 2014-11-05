@@ -28,7 +28,7 @@ namespace cadencii
 {
     public class FormWorkerUiImpl : FormImpl, FormWorkerUi
     {
-		bool FormWorkerUi.showDialogTo (object formMainWindow)
+		bool FormWorkerUi.showDialogTo (UiForm formMainWindow)
 		{
 			return showDialogTo ((FormMain) formMainWindow);
 		}

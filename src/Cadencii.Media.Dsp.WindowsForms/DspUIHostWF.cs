@@ -24,9 +24,9 @@ namespace cadencii.dsp.winforms
 			}
 		}
 
-		public override PluginUI GetPluginUI (object nativeWindow)
+		public override PluginUI GetPluginUI (UiForm window)
 		{
-			return getUi ((System.Windows.Forms.Form)nativeWindow);
+			return getUi ((System.Windows.Forms.Form) window.Native);
 		}
 
 		public PluginUI getUi (System.Windows.Forms.Form main_window)

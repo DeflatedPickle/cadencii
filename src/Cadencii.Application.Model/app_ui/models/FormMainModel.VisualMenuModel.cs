@@ -99,7 +99,7 @@ namespace cadencii
 						chkv = false;
 					} else if (!vd.loaded) {
 						chkv = false;
-					} else if ((ui = vd.getUi(this)) == null) {
+					} else if ((ui = vd.getUi(parent.form)) == null) {
 						chkv = false;
 					} else if (ui.IsDisposed) {
 						chkv = false;
@@ -124,7 +124,7 @@ namespace cadencii
 				} else if (!drv.loaded) {
 					chk = false;
 				} else {
-					var ui = drv.getUi(this);
+					var ui = drv.getUi(parent.form);
 					if (ui == null) {
 						chk = false;
 					} else if (ui.IsDisposed) {
@@ -153,7 +153,7 @@ namespace cadencii
 					} else if (!vd.loaded) {
 						chk = false;
 					} else {
-						var ui = vd.getUi(this);
+						var ui = vd.getUi(parent.form);
 						if (ui == null) {
 							chk = false;
 						} else if (ui.IsDisposed) {
@@ -169,12 +169,12 @@ namespace cadencii
 						if (search == RendererKind.VOCALOID1) {
 							v = !parent.form.menuVisualPluginUiVocaloid1.Checked;
 							parent.form.menuVisualPluginUiVocaloid1.Checked = v;
-							var ui = vd.getUi(this);
+							var ui = vd.getUi(parent.form);
 							ui.Visible = v;
 						} else if (search == RendererKind.VOCALOID2) {
 							v = !parent.form.menuVisualPluginUiVocaloid2.Checked;
 							parent.form.menuVisualPluginUiVocaloid2.Checked = v;
-							var ui = vd.getUi(this);
+							var ui = vd.getUi(parent.form);
 							ui.Visible = v;
 						}
 						break;
@@ -195,7 +195,7 @@ namespace cadencii
 				} else if (!drv.loaded) {
 					chk = false;
 				} else {
-					ui = drv.getUi(this);
+					ui = drv.getUi(parent.form);
 					if (ui == null) {
 						chk = false;
 					} else if (ui.IsDisposed) {

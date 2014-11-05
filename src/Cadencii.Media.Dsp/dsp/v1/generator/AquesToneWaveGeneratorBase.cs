@@ -322,12 +322,9 @@ namespace cadencii
 #endif
                         mDriver.send(queue.pit.ToArray());
                     }
-			// FIXME: enable this
-			/*
                     if (mDriver.getUi(mMainWindow) != null) {
-                        mDriver.getUi(mMainWindow).invalidateUi();
+                        mDriver.getUi(mMainWindow).InvalidateUI();
                     }
-                        */
                 }
             }
 

@@ -24,9 +24,9 @@ namespace cadencii
     public class SynthesizeWorker
     {
         private WaveGenerator mGenerator = null;
-        private object mMainWindow = null;
+        private UiForm mMainWindow = null;
 
-		public SynthesizeWorker(object main_window) // FormMain
+		public SynthesizeWorker(UiForm main_window) // FormMain
         {
             mMainWindow = main_window;
         }
@@ -276,8 +276,7 @@ namespace cadencii
             }
             mGenerator.setReceiver(amp);
             mGenerator.setGlobalConfig(ApplicationGlobal.appConfig);
-            // FIXME: enable this
-            //mGenerator.setMainWindow(mMainWindow);
+            mGenerator.setMainWindow(mMainWindow);
 
             Mixer mixer = new Mixer();
             mixer.setRoot(mGenerator);

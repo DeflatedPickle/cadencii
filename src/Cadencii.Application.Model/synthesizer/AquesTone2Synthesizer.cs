@@ -32,7 +32,7 @@ namespace cadencii.synthesizer
         private VsqFile sequence_;
         private int track_index_;
 
-        public AquesTone2Synthesizer(AquesTone2Driver driver, object main_window)
+        public AquesTone2Synthesizer(AquesTone2Driver driver, UiForm main_window)
         {
             driver_ = driver;
             driver_.getUi(main_window);

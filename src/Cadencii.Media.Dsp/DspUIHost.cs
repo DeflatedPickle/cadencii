@@ -14,7 +14,7 @@ namespace cadencii.dsp
 			return (DspUIHost) Activator.CreateInstance (CurrentType, vstiDriverBase);
 		}
 
-		public abstract PluginUI GetPluginUI (object nativeWindow);
+		public abstract PluginUI GetPluginUI (UiForm window);
 
 		public abstract void ClosePluginUI ();
 	}

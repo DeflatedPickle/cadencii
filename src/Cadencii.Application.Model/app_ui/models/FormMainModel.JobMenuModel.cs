@@ -130,7 +130,7 @@ namespace cadencii
 					dlg.Position = (draft);
 
 					dlg.Location = parent.GetFormPreferedLocation(dlg);
-					var dr = DialogManager.showModalDialog(dlg, this);
+					var dr = DialogManager.showModalDialog(dlg, parent.form);
 					if (dr == 1) {
 						int pos = dlg.Position + MusicManager.getVsqFile().getPreMeasure() - 1;
 						int length = dlg.Length;
@@ -247,7 +247,7 @@ namespace cadencii
 					int old_pre_measure = MusicManager.getVsqFile().getPreMeasure();
 					dialog.setResult(old_pre_measure + "");
 					dialog.Location = parent.GetFormPreferedLocation(dialog);
-					var ret = DialogManager.showModalDialog(dialog, this);
+					var ret = DialogManager.showModalDialog(dialog, parent.form);
 					if (ret == 1) {
 						string str_result = dialog.getResult();
 						int result = old_pre_measure;
@@ -299,7 +299,7 @@ namespace cadencii
 					dlg.End = (draft + 1);
 
 					dlg.Location = parent.GetFormPreferedLocation(dlg);
-					var dr = DialogManager.showModalDialog(dlg, this);
+					var dr = DialogManager.showModalDialog(dlg, parent.form);
 					if (dr == 1) {
 						VsqFileEx temp = (VsqFileEx)MusicManager.getVsqFile().clone();
 						int start = dlg.Start + MusicManager.getVsqFile().getPreMeasure() - 1;
@@ -452,7 +452,7 @@ namespace cadencii
 				try {
 					dlg = ApplicationUIHost.Create<FormRandomize>();
 					dlg.Location = parent.GetFormPreferedLocation(dlg);
-					var dr = DialogManager.showModalDialog(dlg, this);
+					var dr = DialogManager.showModalDialog(dlg, parent.form);
 					if (dr == 1) {
 						VsqFileEx vsq = MusicManager.getVsqFile();
 						int preMeasure = vsq.getPreMeasure();
