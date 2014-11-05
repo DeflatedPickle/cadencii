@@ -382,48 +382,48 @@
     <None Include="po\zh-CN.po">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="app_ui\controls\TrackSelectorImpl.resx">
+    <EmbeddedResource Include="app_ui\controls\TrackSelectorImpl.resx">
       <DependentUpon>TrackSelectorImpl.cs</DependentUpon>
-    </None>
-    <None Include="app_ui\forms\ExceptionNotifyFormUiImpl.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\ExceptionNotifyFormUiImpl.resx">
       <DependentUpon>ExceptionNotifyFormUiImpl.cs</DependentUpon>
-    </None>
-    <None Include="app_ui\forms\FormBeatConfigUiImpl.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormBeatConfigUiImpl.resx">
       <DependentUpon>FormBeatConfigUiImpl.cs</DependentUpon>
-    </None>
-    <None Include="app_ui\forms\FormCheckUnknownSingerAndResamplerImpl.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormCheckUnknownSingerAndResamplerImpl.resx">
       <DependentUpon>FormCheckUnknownSingerAndResamplerImpl.cs</DependentUpon>
-    </None>
-    <None Include="app_ui\forms\FormSequenceConfigImpl.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormSequenceConfigImpl.resx">
       <DependentUpon>FormSequenceConfigImpl.cs</DependentUpon>
-    </None>
-    <None Include="app_ui\forms\FormShortcutKeysImpl.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormShortcutKeysImpl.resx">
       <DependentUpon>FormShortcutKeysImpl.cs</DependentUpon>
-    </None>
-    <None Include="app_ui\forms\FormVibratoConfigImpl.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormVibratoConfigImpl.resx">
       <DependentUpon>FormVibratoConfigImpl.cs</DependentUpon>
-    </None>
-    <None Include="app_ui\forms\FormVibratoPresetImpl.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormVibratoPresetImpl.resx">
       <DependentUpon>FormVibratoPresetImpl.cs</DependentUpon>
-    </None>
-    <None Include="app_ui\forms\FormWordDictionaryUiImpl.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormWordDictionaryUiImpl.resx">
       <DependentUpon>FormWordDictionaryUiImpl.cs</DependentUpon>
-    </None>
-    <None Include="app_ui\forms\FormWorkerUiImpl.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormWorkerUiImpl.resx">
       <DependentUpon>FormWorkerUiImpl.cs</DependentUpon>
-    </None>
-    <None Include="app_ui\forms\PreferenceImpl.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\PreferenceImpl.resx">
       <DependentUpon>PreferenceImpl.cs</DependentUpon>
-    </None>
-    <None Include="app_ui\forms\ProgressBarWithLabelUiImpl.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\ProgressBarWithLabelUiImpl.resx">
       <DependentUpon>ProgressBarWithLabelUiImpl.cs</DependentUpon>
-    </None>
-    <None Include="app_ui\forms\UpdateCheckForm.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\UpdateCheckForm.resx">
       <DependentUpon>UpdateCheckForm.cs</DependentUpon>
-    </None>
-    <None Include="app_ui\main\FormMain.resx">
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\main\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </None>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
