@@ -3098,8 +3098,8 @@ namespace cadencii
         public UiToolStripMenuItem menuJobInsertBar;
         public UiToolStripMenuItem menuJobDeleteBar;
         public UiToolStripMenuItem menuJobRandomize;
-        public UiToolStripMenuItem menuJobConnect;
-        public UiToolStripMenuItem menuJobLyric;
+		public UiToolStripMenuItem menuJobConnect { get; set; }
+		public UiToolStripMenuItem menuJobLyric { get; set; }
         public UiToolStripMenuItem menuJobRewire;
         public UiToolStripMenuItem menuLyricExpressionProperty;
         public UiToolStripMenuItem menuLyricPhonemeTransformation;

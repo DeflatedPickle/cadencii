@@ -714,6 +714,104 @@ namespace cadencii
 			form.refreshScreen();
 		}
 
+		/// <summary>
+		/// 歌詞の流し込みダイアログを開き，選択された音符を起点に歌詞を流し込みます
+		/// </summary>
+		public void ImportLyric()
+		{
+			int start = 0;
+			int selected = EditorManager.Selected;
+			VsqFileEx vsq = MusicManager.getVsqFile();
+			VsqTrack vsq_track = vsq.Track[selected];
+			int selectedid = EditorManager.itemSelection.getLastEvent().original.InternalID;
+			int numEvents = vsq_track.getEventCount();
+			for (int i = 0; i < numEvents; i++) {
+				if (selectedid == vsq_track.getEvent(i).InternalID) {
+					start = i;
+					break;
+				}
+			}
+			int count = vsq_track.getEventCount() - 1 - start + 1;
+			try {
+				if (form.mDialogImportLyric == null) {
+					form.mDialogImportLyric = ApplicationUIHost.Create<FormImportLyric>(count);
+				} else {
+					form.mDialogImportLyric.setMaxNotes (count);
+				}
+				var dlg = form.mDialogImportLyric;
+				dlg.Location = GetFormPreferedLocation(dlg);
+				var dr = DialogManager.showModalDialog(dlg, this);
+				if (dr == 1) {
+					string[] phrases = dlg.Letters;
+					#if DEBUG
+					foreach (string s in phrases) {
+						sout.println("FormMain#importLyric; phrases; s=" + s);
+					}
+					#endif
+					int min = Math.Min(count, phrases.Length);
+					List<string> new_phrases = new List<string>();
+					List<string> new_symbols = new List<string>();
+					for (int i = 0; i < phrases.Length; i++) {
+						SymbolTableEntry entry = SymbolTable.attatch(phrases[i]);
+						if (new_phrases.Count + 1 > count) {
+							break;
+						}
+						if (entry == null) {
+							new_phrases.Add(phrases[i]);
+							new_symbols.Add("a");
+						} else {
+							if (entry.Word.IndexOf('-') >= 0) {
+								// 分節に分割する必要がある
+								string[] spl = PortUtil.splitString(entry.Word, '\t');
+								if (new_phrases.Count + spl.Length > count) {
+									// 分節の全部を分割すると制限個数を超えてしまう
+									// 分割せずにハイフンを付けたまま登録
+									new_phrases.Add(entry.Word.Replace("\t", ""));
+									new_symbols.Add(entry.getSymbol());
+								} else {
+									string[] spl_symbol = PortUtil.splitString(entry.getRawSymbol(), '\t');
+									for (int j = 0; j < spl.Length; j++) {
+										new_phrases.Add(spl[j]);
+										new_symbols.Add(spl_symbol[j]);
+									}
+								}
+							} else {
+								// 分節に分割しない
+								new_phrases.Add(phrases[i]);
+								new_symbols.Add(entry.getSymbol());
+							}
+						}
+					}
+					VsqEvent[] new_events = new VsqEvent[new_phrases.Count];
+					int indx = -1;
+					for (Iterator<int> itr = vsq_track.indexIterator(IndexIteratorKind.NOTE); itr.hasNext(); ) {
+						int index = itr.next();
+						if (index < start) {
+							continue;
+						}
+						indx++;
+						VsqEvent item = vsq_track.getEvent(index);
+						new_events[indx] = (VsqEvent)item.clone();
+						new_events[indx].ID.LyricHandle.L0.Phrase = new_phrases[indx];
+						new_events[indx].ID.LyricHandle.L0.setPhoneticSymbol(new_symbols[indx]);
+						MusicManager.applyUtauParameter(vsq_track, new_events[indx]);
+						if (indx + 1 >= new_phrases.Count) {
+							break;
+						}
+					}
+					CadenciiCommand run = new CadenciiCommand(
+						VsqCommand.generateCommandEventReplaceRange(selected, new_events));
+					EditorManager.editHistory.register(vsq.executeCommand(run));
+					form.setEdited(true);
+					form.Refresh();
+				}
+			} catch (Exception ex) {
+				Logger.write(GetType () + ".importLyric; ex=" + ex + "\n");
+			} finally {
+				form.mDialogImportLyric.Hide();
+			}
+		}
+
 	}
 }
 
