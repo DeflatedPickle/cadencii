@@ -812,6 +812,22 @@ namespace cadencii
 			}
 		}
 
+
+		public void HandlePositionQuantize(QuantizeMode? quantizeMode)
+		{
+			QuantizeMode qm = quantizeMode ?? EditorManager.editorConfig.getPositionQuantize();
+			EditorManager.editorConfig.setPositionQuantize(qm);
+			EditorManager.editorConfig.setLengthQuantize(qm);
+			form.refreshScreen();
+		}
+
+		public void HandlePositionQuantizeTriplet ()
+		{
+			bool triplet = !EditorManager.editorConfig.isPositionQuantizeTriplet();
+			EditorManager.editorConfig.setPositionQuantizeTriplet(triplet);
+			EditorManager.editorConfig.setLengthQuantizeTriplet(triplet);
+			form.refreshScreen();
+		}
 	}
 }
 

@@ -5255,14 +5255,14 @@ namespace cadencii
 			menuSettingShortcut.Click += (o, e) => model.SettingsMenu.RunSettingShortcutCommand();
 			menuSettingVibratoPreset.Click += (o, e) => model.SettingsMenu.RunSettingVibratoPresetCommand();
 			menuSettingDefaultSingerStyle.Click += (o, e) => model.SettingsMenu.RunSettingDefaultSingerStyleCommand();
-            menuSettingPositionQuantize04.Click += new EventHandler(handlePositionQuantize);
-            menuSettingPositionQuantize08.Click += new EventHandler(handlePositionQuantize);
-            menuSettingPositionQuantize16.Click += new EventHandler(handlePositionQuantize);
-            menuSettingPositionQuantize32.Click += new EventHandler(handlePositionQuantize);
-            menuSettingPositionQuantize64.Click += new EventHandler(handlePositionQuantize);
-            menuSettingPositionQuantize128.Click += new EventHandler(handlePositionQuantize);
-            menuSettingPositionQuantizeOff.Click += new EventHandler(handlePositionQuantize);
-            menuSettingPositionQuantizeTriplet.Click += new EventHandler(handlePositionQuantizeTriplet_Click);
+			menuSettingPositionQuantize04.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p4);
+			menuSettingPositionQuantize08.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p8);
+			menuSettingPositionQuantize16.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p16);
+			menuSettingPositionQuantize32.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p32);
+			menuSettingPositionQuantize64.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p64);
+			menuSettingPositionQuantize128.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p128);
+			menuSettingPositionQuantizeOff.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.off);
+			menuSettingPositionQuantizeTriplet.Click += (o, e) => model.HandlePositionQuantizeTriplet ();
             menuHelpAbout.Click += new EventHandler(menuHelpAbout_Click);
             menuHelpManual.Click += new EventHandler(menuHelpManual_Click);
             menuHelpLogSwitch.CheckedChanged += new EventHandler(menuHelpLogSwitch_CheckedChanged);
@@ -5308,14 +5308,14 @@ namespace cadencii
             cMenuPianoFixedOff.Click += new EventHandler(cMenuPianoFixedOff_Click);
             cMenuPianoFixedTriplet.Click += new EventHandler(cMenuPianoFixedTriplet_Click);
             cMenuPianoFixedDotted.Click += new EventHandler(cMenuPianoFixedDotted_Click);
-            cMenuPianoQuantize04.Click += new EventHandler(handlePositionQuantize);
-            cMenuPianoQuantize08.Click += new EventHandler(handlePositionQuantize);
-            cMenuPianoQuantize16.Click += new EventHandler(handlePositionQuantize);
-            cMenuPianoQuantize32.Click += new EventHandler(handlePositionQuantize);
-            cMenuPianoQuantize64.Click += new EventHandler(handlePositionQuantize);
-            cMenuPianoQuantize128.Click += new EventHandler(handlePositionQuantize);
-            cMenuPianoQuantizeOff.Click += new EventHandler(handlePositionQuantize);
-            cMenuPianoQuantizeTriplet.Click += new EventHandler(handlePositionQuantizeTriplet_Click);
+			cMenuPianoQuantize04.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p4);
+			cMenuPianoQuantize08.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p8);
+			cMenuPianoQuantize16.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p16);
+			cMenuPianoQuantize32.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p32);
+			cMenuPianoQuantize64.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p64);
+			cMenuPianoQuantize128.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p128);
+			cMenuPianoQuantizeOff.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.off);
+			cMenuPianoQuantizeTriplet.Click += (o, e) => model.HandlePositionQuantizeTriplet ();
             cMenuPianoGrid.Click += new EventHandler(cMenuPianoGrid_Click);
             cMenuPianoUndo.Click += new EventHandler(cMenuPianoUndo_Click);
             cMenuPianoRedo.Click += new EventHandler(cMenuPianoRedo_Click);
@@ -5404,14 +5404,14 @@ namespace cadencii
             pictureBox2.Paint += pictureBox2_Paint;
             toolBarTool.ButtonClick += toolBarTool_ButtonClick;
             rebar.SizeChanged += new EventHandler(toolStripContainer_TopToolStripPanel_SizeChanged);
-            stripDDBtnQuantize04.Click += handlePositionQuantize;
-            stripDDBtnQuantize08.Click += handlePositionQuantize;
-            stripDDBtnQuantize16.Click += handlePositionQuantize;
-            stripDDBtnQuantize32.Click += handlePositionQuantize;
-            stripDDBtnQuantize64.Click += handlePositionQuantize;
-            stripDDBtnQuantize128.Click += handlePositionQuantize;
-            stripDDBtnQuantizeOff.Click += handlePositionQuantize;
-            stripDDBtnQuantizeTriplet.Click += handlePositionQuantizeTriplet_Click;
+			stripDDBtnQuantize04.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p4);
+			stripDDBtnQuantize08.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p8);
+			stripDDBtnQuantize16.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p16);
+			stripDDBtnQuantize32.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p32);
+			stripDDBtnQuantize64.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p64);
+			stripDDBtnQuantize128.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p128);
+			stripDDBtnQuantizeOff.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.off);
+			stripDDBtnQuantizeTriplet.Click += (o, e) => model.HandlePositionQuantizeTriplet ();
             toolBarFile.ButtonClick += toolBarFile_ButtonClick;
             toolBarPosition.ButtonClick += toolBarPosition_ButtonClick;
             toolBarMeasure.ButtonClick += toolBarMeasure_ButtonClick;
@@ -10999,65 +10999,6 @@ namespace cadencii
         public void handleStripButton_Enter(Object sender, EventArgs e)
         {
             focusPianoRoll();
-        }
-
-        public void handlePositionQuantize(Object sender, EventArgs e)
-        {
-            QuantizeMode qm = EditorManager.editorConfig.getPositionQuantize();
-            if (sender == cMenuPianoQuantize04 ||
-#if ENABLE_STRIP_DROPDOWN
- sender == stripDDBtnQuantize04 ||
-#endif
- sender == menuSettingPositionQuantize04) {
-                qm = QuantizeMode.p4;
-            } else if (sender == cMenuPianoQuantize08 ||
-#if ENABLE_STRIP_DROPDOWN
- sender == stripDDBtnQuantize08 ||
-#endif
- sender == menuSettingPositionQuantize08) {
-                qm = QuantizeMode.p8;
-            } else if (sender == cMenuPianoQuantize16 ||
-#if ENABLE_STRIP_DROPDOWN
- sender == stripDDBtnQuantize16 ||
-#endif
- sender == menuSettingPositionQuantize16) {
-                qm = QuantizeMode.p16;
-            } else if (sender == cMenuPianoQuantize32 ||
-#if ENABLE_STRIP_DROPDOWN
- sender == stripDDBtnQuantize32 ||
-#endif
- sender == menuSettingPositionQuantize32) {
-                qm = QuantizeMode.p32;
-            } else if (sender == cMenuPianoQuantize64 ||
-#if ENABLE_STRIP_DROPDOWN
- sender == stripDDBtnQuantize64 ||
-#endif
- sender == menuSettingPositionQuantize64) {
-                qm = QuantizeMode.p64;
-            } else if (sender == cMenuPianoQuantize128 ||
-#if ENABLE_STRIP_DROPDOWN
- sender == stripDDBtnQuantize128 ||
-#endif
- sender == menuSettingPositionQuantize128) {
-                qm = QuantizeMode.p128;
-            } else if (sender == cMenuPianoQuantizeOff ||
-#if ENABLE_STRIP_DROPDOWN
- sender == stripDDBtnQuantizeOff ||
-#endif
- sender == menuSettingPositionQuantizeOff) {
-                qm = QuantizeMode.off;
-            }
-            EditorManager.editorConfig.setPositionQuantize(qm);
-            EditorManager.editorConfig.setLengthQuantize(qm);
-            refreshScreen();
-        }
-
-        public void handlePositionQuantizeTriplet_Click(Object sender, EventArgs e)
-        {
-            bool triplet = !EditorManager.editorConfig.isPositionQuantizeTriplet();
-            EditorManager.editorConfig.setPositionQuantizeTriplet(triplet);
-            EditorManager.editorConfig.setLengthQuantizeTriplet(triplet);
-            refreshScreen();
         }
 
 #if ENABLE_MOUSE_ENTER_STATUS_LABEL
