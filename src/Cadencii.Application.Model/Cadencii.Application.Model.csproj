@@ -224,6 +224,8 @@
     <Compile Include="gui_fx_extended\Dialogs.cs" />
     <Compile Include="app_ui\models\FormMainModel.JobMenuModel.cs" />
     <Compile Include="app_ui\models\FormMainModel.TrackMenuModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.ScriptMenuModel.cs" />
+    <Compile Include="app_ui\controls\PaletteToolMenuItem.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

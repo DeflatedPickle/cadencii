@@ -58,6 +58,10 @@ namespace cadencii
     {
 		FormMainModel model;
 
+		FormMainModel UiFormMain.Model {
+			get { return model; }
+		}
+
 		UiContextMenuStrip UiFormMain.MenuTrackTab {
 			get { return cMenuTrackTab; }
 			set { cMenuTrackTab = value; }
@@ -893,7 +897,7 @@ namespace cadencii
             trackSelector.CommandExecuted += new EventHandler(trackSelector_CommandExecuted);
 
 #if ENABLE_SCRIPT
-            updateScriptShortcut();
+            model.UpdateScriptShortcut();
             // RunOnceという名前のスクリプトがあれば，そいつを実行
             foreach (var id in ScriptServer.getScriptIdIterator()) {
                 if (PortUtil.getFileNameWithoutExtension(id).ToLower() == "runonce") {
@@ -2570,14 +2574,14 @@ namespace cadencii
                 toolBarTool.Buttons.Add(tsb);
 
                 // cMenuTrackSelector
-                PaletteToolMenuItem tsmi = new PaletteToolMenuItem(id);
+				PaletteToolMenuItem tsmi = ApplicationUIHost.Create<PaletteToolMenuItem> (id);
                 tsmi.Text = name;
                 tsmi.ToolTipText = desc;
                 tsmi.Click += new EventHandler(handleStripPaletteTool_Click);
                 cMenuTrackSelectorPaletteTool.DropDownItems.Add(tsmi);
 
                 // cMenuPiano
-                PaletteToolMenuItem tsmi2 = new PaletteToolMenuItem(id);
+				PaletteToolMenuItem tsmi2 = ApplicationUIHost.Create<PaletteToolMenuItem> (id);
                 tsmi2.Text = name;
                 tsmi2.ToolTipText = desc;
                 tsmi2.Click += new EventHandler(handleStripPaletteTool_Click);
@@ -2585,7 +2589,7 @@ namespace cadencii
 
                 // menuSettingPaletteTool
                 if (ipt.hasDialog()) {
-                    PaletteToolMenuItem tsmi3 = new PaletteToolMenuItem(id);
+					PaletteToolMenuItem tsmi3 = ApplicationUIHost.Create<PaletteToolMenuItem> (id);
                     tsmi3.Text = name;
                     tsmi3.Click += new EventHandler(handleSettingPaletteTool);
                     menuSettingPaletteTool.DropDownItems.Add(tsmi3);
@@ -3077,46 +3081,6 @@ namespace cadencii
                 stripLblMidiIn.Text = devices[midiport].getName();
 				stripLblMidiIn.Image = Properties.Resources.piano.ToAwt ();
             }
-        }
-#endif
-
-#if ENABLE_SCRIPT
-        /// <summary>
-        /// スクリプトフォルダ中のスクリプトへのショートカットを作成する
-        /// </summary>
-        public void updateScriptShortcut()
-        {
-            // 既存のアイテムを削除
-            menuScript.DropDownItems.Clear();
-            // スクリプトをリロード
-            ScriptServer.reload();
-
-            // スクリプトごとのメニューを追加
-            int count = 0;
-            foreach (var id in ScriptServer.getScriptIdIterator()) {
-                if (PortUtil.getFileNameWithoutExtension(id).ToLower() == "runonce") {
-                    continue;
-                }
-                string display = ScriptServer.getDisplayName(id);
-                // スクリプトのメニューに共通のヘッダー(menuScript)を付ける．
-                // こうしておくと，menuSettingShortcut_Clickで，スクリプトのメニューが
-                // menuScriptの子だと自動で認識される
-                string name = "menuScript" + id.Replace('.', '_');
-                PaletteToolMenuItem item = new PaletteToolMenuItem(id);
-                item.Text = display;
-                item.Name = name;
-                item.Click += new EventHandler(handleScriptMenuItem_Click);
-                menuScript.DropDownItems.Add(item);
-                count++;
-            }
-
-            // 「スクリプトのリストを更新」を追加
-            if (count > 0) {
-                menuScript.DropDownItems.Add(new ToolStripSeparatorImpl());
-            }
-            menuScript.DropDownItems.Add(menuScriptUpdate);
-            Util.applyToolStripFontRecurse(menuScript, EditorManager.editorConfig.getBaseFont());
-            applyShortcut();
         }
 #endif
         /// <summary>
@@ -4744,22 +4708,22 @@ namespace cadencii
             Font font = EditorManager.editorConfig.getBaseFont();
             Util.applyFontRecurse((UiForm) this, font);
 #if !JAVA_MAC
-            Util.applyContextMenuFontRecurse(cMenuPiano, font);
-            Util.applyContextMenuFontRecurse(cMenuTrackSelector, font);
+            Utility.applyContextMenuFontRecurse(cMenuPiano, font);
+            Utility.applyContextMenuFontRecurse(cMenuTrackSelector, font);
             if (EditorManager.MixerWindow != null) {
                 Util.applyFontRecurse(EditorManager.MixerWindow, font);
             }
-            Util.applyContextMenuFontRecurse(cMenuTrackTab, font);
+            Utility.applyContextMenuFontRecurse(cMenuTrackTab, font);
             trackSelector.applyFont(font);
-            Util.applyToolStripFontRecurse(menuFile, font);
-            Util.applyToolStripFontRecurse(menuEdit, font);
-            Util.applyToolStripFontRecurse(menuVisual, font);
-            Util.applyToolStripFontRecurse(menuJob, font);
-            Util.applyToolStripFontRecurse(menuTrack, font);
-            Util.applyToolStripFontRecurse(menuLyric, font);
-            Util.applyToolStripFontRecurse(menuScript, font);
-            Util.applyToolStripFontRecurse(menuSetting, font);
-            Util.applyToolStripFontRecurse(menuHelp, font);
+            Utility.applyToolStripFontRecurse(menuFile, font);
+            Utility.applyToolStripFontRecurse(menuEdit, font);
+            Utility.applyToolStripFontRecurse(menuVisual, font);
+            Utility.applyToolStripFontRecurse(menuJob, font);
+            Utility.applyToolStripFontRecurse(menuTrack, font);
+            Utility.applyToolStripFontRecurse(menuLyric, font);
+            Utility.applyToolStripFontRecurse(menuScript, font);
+            Utility.applyToolStripFontRecurse(menuSetting, font);
+            Utility.applyToolStripFontRecurse(menuHelp, font);
 #endif
             Util.applyFontRecurse(toolBarFile, font);
             Util.applyFontRecurse(toolBarMeasure, font);
@@ -5125,10 +5089,10 @@ namespace cadencii
 			menuJobLyric.Click += (o, e) => model.JobMenu.RunJobLyricCommand ();
 			menuTrack.DropDownOpening += (o, e) => model.TrackMenu.RunTrackDropDownOpening ();
 			menuTrackOn.Click += (o, e) => model.TrackMenu.RunTrackOnCommand ();
-			menuTrackAdd.Click += (o, e) => model.addTrackCore ();
-			menuTrackCopy.Click += (o, e) => model.copyTrackCore ();
-			menuTrackChangeName.Click += (o, e) => model.changeTrackNameCore ();
-			menuTrackDelete.Click += (o, e) => model.deleteTrackCore ();
+			menuTrackAdd.Click += (o, e) => model.AddTrack ();
+			menuTrackCopy.Click += (o, e) => model.CopyTrack ();
+			menuTrackChangeName.Click += (o, e) => model.ChangeTrackName ();
+			menuTrackDelete.Click += (o, e) => model.DeleteTrack ();
 			menuTrackRenderCurrent.Click += (o, e) => model.TrackMenu.RunTrackRenderCurrentCommand ();
 			menuTrackRenderAll.Click += (o, e) => model.TrackMenu.RunTrackRenderAllCommand ();
 			menuTrackOverlay.Click += (o, e) => model.TrackMenu.RunTrackOverlayCommand ();
@@ -5145,7 +5109,7 @@ namespace cadencii
 			menuLyricDictionary.Click += (o, e) => model.LyricMenu.RunLyricDictionaryCommand ();
 			menuLyricPhonemeTransformation.Click += (o, e) => model.LyricMenu.RunLyricPhonemeTransformationCommand ();
 			menuLyricApplyUtauParameters.Click += (o, e) => model.LyricMenu.RunLyricApplyUtauParametersCommand ();
-            menuScriptUpdate.Click += new EventHandler(menuScriptUpdate_Click);
+			menuScriptUpdate.Click += (o, e) => model.ScriptMenu.RunScriptUpdateCommand ();
 			menuSettingPreference.Click += (o, e) => model.SettingsMenu.RunSettingPreferenceCommand ();
 			menuSettingGameControlerSetting.Click += (o, e) => model.SettingsMenu.RunSettingGameControlerSettingCommand();
 			menuSettingGameControlerLoad.Click += (o, e) => model.SettingsMenu.RunSettingGameControlerLoadCommand();
@@ -5229,10 +5193,10 @@ namespace cadencii
             cMenuPianoVibratoProperty.Click += new EventHandler(cMenuPianoVibratoProperty_Click);
             cMenuTrackTab.Opening += (o, e) => cMenuTrackTab_Opening();
 			cMenuTrackTabTrackOn.Click += (o, e) => model.TrackMenu.RunTrackOnCommand ();
-			cMenuTrackTabAdd.Click += (o, e) => model.addTrackCore ();
-			cMenuTrackTabCopy.Click += (o, e) => model.copyTrackCore ();
-			cMenuTrackTabChangeName.Click += (o, e) => model.changeTrackNameCore ();
-			cMenuTrackTabDelete.Click += (o, e) => model.deleteTrackCore ();
+			cMenuTrackTabAdd.Click += (o, e) => model.AddTrack ();
+			cMenuTrackTabCopy.Click += (o, e) => model.CopyTrack ();
+			cMenuTrackTabChangeName.Click += (o, e) => model.ChangeTrackName ();
+			cMenuTrackTabDelete.Click += (o, e) => model.DeleteTrack ();
             cMenuTrackTabRenderCurrent.Click += new EventHandler(cMenuTrackTabRenderCurrent_Click);
 			cMenuTrackTabRenderAll.Click += (o, e) => model.TrackMenu.RunTrackRenderAllCommand ();
             cMenuTrackTabOverlay.Click += new EventHandler(cMenuTrackTabOverlay_Click);
@@ -8394,17 +8358,6 @@ namespace cadencii
 
         #endregion
 
-        //BOOKMARK: menuScript
-        #region menuScript
-        public void menuScriptUpdate_Click(Object sender, EventArgs e)
-        {
-#if ENABLE_SCRIPT
-            updateScriptShortcut();
-            applyShortcut();
-#endif
-        }
-        #endregion
-
         //BOOKMARK: vScroll
         #region vScroll
         public void vScroll_Enter(Object sender, EventArgs e)
@@ -11253,63 +11206,6 @@ namespace cadencii
             }
 #endif
         }
-
-#if ENABLE_SCRIPT
-        public void handleScriptMenuItem_Click(Object sender, EventArgs e)
-        {
-#if DEBUG
-            sout.println("FormMain#handleScriptMenuItem_Click; sender.GetType()=" + sender.GetType());
-#endif
-            try {
-                string dir = EditorManager.getScriptPath();
-                string id = "";
-                if (sender is PaletteToolMenuItem) {
-                    id = ((PaletteToolMenuItem)sender).getPaletteToolID();
-                }
-#if DEBUG
-                sout.println("FormMain#handleScriptMenuItem_Click; id=" + id);
-#endif
-                string script_file = Path.Combine(dir, id);
-                if (ScriptServer.getTimestamp(id) != PortUtil.getFileLastModified(script_file)) {
-                    ScriptServer.reload(id);
-                }
-                if (ScriptServer.isAvailable(id)) {
-		if (ScriptServer.invokeScript(id, MusicManager.getVsqFile(), (p1,p2,p3,p4) => DialogManager.showMessageBox (p1, p2, p3, p4))) {
-                        setEdited(true);
-                        updateDrawObjectList();
-                        int selected = EditorManager.Selected;
-#if DEBUG
-                        sout.println("FormMain#handleScriptMenuItem_Click; ScriptServer.invokeScript has returned TRUE");
-#endif
-                        EditorManager.itemSelection.updateSelectedEventInstance();
-                        EditorManager.propertyPanel.updateValue(selected);
-                        refreshScreen();
-                    }
-                } else {
-                    FormCompileResult dlg = null;
-                    try {
-                        dlg = ApplicationUIHost.Create<FormCompileResult>(_("Failed loading script."), ScriptServer.getCompileMessage(id));
-                        DialogManager.showModalDialog(dlg, this);
-                    } catch (Exception ex) {
-                        Logger.write(typeof(FormMain) + ".handleScriptMenuItem_Click; ex=" + ex + "\n");
-                    } finally {
-                        if (dlg != null) {
-                            try {
-                                dlg.Close();
-                            } catch (Exception ex2) {
-                                Logger.write(typeof(FormMain) + ".handleScriptMenuItem_Click; ex=" + ex2 + "\n");
-                            }
-                        }
-                    }
-                }
-            } catch (Exception ex3) {
-                Logger.write(typeof(FormMain) + ".handleScriptMenuItem_Click; ex=" + ex3 + "\n");
-#if DEBUG
-                sout.println("EditorManager#dd_run_Click; ex3=" + ex3);
-#endif
-            }
-        }
-#endif
 
 #if ENABLE_MTC
         /// <summary>

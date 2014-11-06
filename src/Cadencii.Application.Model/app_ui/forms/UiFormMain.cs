@@ -21,6 +21,10 @@ namespace cadencii
     /// </summary>
     public interface UiFormMain : UiForm
     {
+		FormMainModel Model { get; }
+
+		UiToolStripMenuItem menuScriptUpdate { get; set; }
+
 		void updateTrackMenuStatus();
 		UiToolStripMenuItem menuTrackOn { get; set; }
 		UiToolStripMenuItem cMenuTrackTabTrackOn { get; set; }
@@ -118,8 +122,6 @@ namespace cadencii
 
 		void refreshScreen ();
 		void refreshScreen (bool b);
-
-		void updateScriptShortcut ();
 
 		void setEdited (bool b);
 

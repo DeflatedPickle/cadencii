@@ -3149,7 +3149,7 @@ namespace cadencii
 		public UiVScrollBar vScroll { get; set; }
         public UiToolStripMenuItem menuLyricVibratoProperty;
         public UiToolStripMenuItem cMenuPianoVibratoProperty;
-        public UiToolStripMenuItem menuScriptUpdate;
+		public UiToolStripMenuItem menuScriptUpdate { get; set; }
         public UiToolStripMenuItem menuSettingGameControler;
         public UiToolStripStatusLabel stripLblGameCtrlMode;
         public UiToolStripSeparator toolStripSeparator10;

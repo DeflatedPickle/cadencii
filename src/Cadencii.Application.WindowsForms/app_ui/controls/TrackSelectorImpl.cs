@@ -701,8 +701,8 @@ namespace cadencii
         public void applyFont(java.awt.Font font)
         {
             Util.applyFontRecurse(this, font);
-            Util.applyContextMenuFontRecurse(cmenuSinger, font);
-            Util.applyContextMenuFontRecurse(cmenuCurve, font);
+            Utility.applyContextMenuFontRecurse(cmenuSinger, font);
+            Utility.applyContextMenuFontRecurse(cmenuCurve, font);
         }
 
         private int getMaxColumns()

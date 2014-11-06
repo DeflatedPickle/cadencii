@@ -35,6 +35,7 @@ namespace cadencii
 			VisualMenu = new VisualMenuModel (this);
 			TrackMenu = new TrackMenuModel (this);
 			JobMenu = new JobMenuModel (this);
+			ScriptMenu = new ScriptMenuModel (this);
 			LyricMenu = new LyricMenuModel (this);
 			SettingsMenu = new SettingsMenuModel (this);
 		}
@@ -44,6 +45,7 @@ namespace cadencii
 		public VisualMenuModel VisualMenu { get; private set; }
 		public TrackMenuModel TrackMenu { get; private set; }
 		public JobMenuModel JobMenu { get; private set; }
+		public ScriptMenuModel ScriptMenu { get; private set; }
 		public LyricMenuModel LyricMenu { get; private set; }
 		public SettingsMenuModel SettingsMenu { get; private set; }
 
@@ -836,7 +838,7 @@ namespace cadencii
 		/// <summary>
 		/// トラック全体のコピーを行います。
 		/// </summary>
-		public void copyTrackCore()
+		public void CopyTrack()
 		{
 			VsqFileEx vsq = MusicManager.getVsqFile();
 			int selected = EditorManager.Selected;
@@ -855,7 +857,7 @@ namespace cadencii
 		/// <summary>
 		/// トラックの名前変更を行います。
 		/// </summary>
-		public void changeTrackNameCore()
+		public void ChangeTrackName()
 		{
 			InputBox ib = null;
 			try {
@@ -884,7 +886,7 @@ namespace cadencii
 		/// <summary>
 		/// トラックの削除を行います。
 		/// </summary>
-		public void deleteTrackCore()
+		public void DeleteTrack()
 		{
 			int selected = EditorManager.Selected;
 			VsqFileEx vsq = MusicManager.getVsqFile();
@@ -908,7 +910,7 @@ namespace cadencii
 		/// <summary>
 		/// トラックの追加を行います。
 		/// </summary>
-		public void addTrackCore()
+		public void AddTrack()
 		{
 			VsqFileEx vsq = MusicManager.getVsqFile();
 			int i = vsq.Track.Count;
@@ -934,6 +936,46 @@ namespace cadencii
 		}
 		#endregion
 
+
+		#if ENABLE_SCRIPT
+		/// <summary>
+		/// スクリプトフォルダ中のスクリプトへのショートカットを作成する
+		/// </summary>
+		public void UpdateScriptShortcut()
+		{
+			// 既存のアイテムを削除
+			form.menuScript.DropDownItems.Clear();
+			// スクリプトをリロード
+			ScriptServer.reload();
+
+			// スクリプトごとのメニューを追加
+			int count = 0;
+			foreach (var id in ScriptServer.getScriptIdIterator()) {
+				if (PortUtil.getFileNameWithoutExtension(id).ToLower() == "runonce") {
+					continue;
+				}
+				string display = ScriptServer.getDisplayName(id);
+				// スクリプトのメニューに共通のヘッダー(menuScript)を付ける．
+				// こうしておくと，menuSettingShortcut_Clickで，スクリプトのメニューが
+				// menuScriptの子だと自動で認識される
+				string name = "menuScript" + id.Replace('.', '_');
+				PaletteToolMenuItem item = ApplicationUIHost.Create<PaletteToolMenuItem> (id);
+				item.Text = display;
+				item.Name = name;
+				item.Click += (o, e) => ScriptMenu.RunScriptMenuItemCommand (item.getPaletteToolID ());
+				form.menuScript.DropDownItems.Add(item);
+				count++;
+			}
+
+			// 「スクリプトのリストを更新」を追加
+			if (count > 0) {
+				form.menuScript.DropDownItems.Add(ApplicationUIHost.Create<UiToolStripSeparator> ());
+			}
+			form.menuScript.DropDownItems.Add(form.menuScriptUpdate);
+			Utility.applyToolStripFontRecurse(form.menuScript, EditorManager.editorConfig.getBaseFont());
+			form.applyShortcut();
+		}
+		#endif
 	}
 }
 

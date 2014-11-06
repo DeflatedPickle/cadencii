@@ -36,41 +36,6 @@ namespace cadencii.apputil
     public static partial class Util
     {
         public static readonly string PANGRAM = "cozy lummox gives smart squid who asks for job pen. 01234567890 THE QUICK BROWN FOX JUMPED OVER THE LAZY DOGS.";
-        /// <summary>
-        /// このクラスのメソッド'applyFontRecurse', 'applyToolStripFontRecurse', 'applyContextMenuFontRecurse'の呼び出しを有効とするかどうか。
-        /// デフォルトではtrue
-        /// </summary>
-        public static bool isApplyFontRecurseEnabled = true;
-
-        public static void applyContextMenuFontRecurse(UiContextMenuStrip item, cadencii.java.awt.Font font)
-        {
-            if (!isApplyFontRecurseEnabled) {
-                return;
-            }
-            item.Font = font;
-            foreach (var tsi in item.Items) {
-                applyToolStripFontRecurse(tsi, font);
-            }
-        }
-
-        public static void applyToolStripFontRecurse(UiToolStripItem item, cadencii.java.awt.Font font)
-        {
-            if (!isApplyFontRecurseEnabled) {
-                return;
-            }
-			item.Font = font;
-            if (item is UiToolStripMenuItem) {
-                var tsmi = (UiToolStripMenuItem)item;
-                foreach (var tsi in tsmi.DropDownItems) {
-                    applyToolStripFontRecurse(tsi, font);
-                }
-            } else if (item is UiToolStripDropDownItem) {
-                var tsdd = (UiToolStripDropDownItem)item;
-                foreach (var tsi in tsdd.DropDownItems) {
-                    applyToolStripFontRecurse(tsi, font);
-                }
-            }
-        }
 
         /// <summary>
         /// 指定したフォントを描画するとき、描画指定したy座標と、描かれる文字の中心線のズレを調べます
@@ -195,7 +160,7 @@ namespace cadencii.apputil
 		/// <param name="font"></param>
 		public static void applyFontRecurseW(Control c, cadencii.java.awt.Font font)
 		{
-			if (!isApplyFontRecurseEnabled) {
+			if (!Utility.isApplyFontRecurseEnabled) {
 				return;
 			}
 			c.Font = (Font) font.NativeFont;

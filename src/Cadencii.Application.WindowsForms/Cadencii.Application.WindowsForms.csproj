@@ -98,9 +98,6 @@
     <Compile Include="controls\TrackSelectorSingerPopupMenu.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="controls\PaletteToolMenuItem.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="..\Cadencii.Gui.Framework.WindowsForms.Shared\GuiExtensions.cs">
       <Link>GuiExtensions.cs</Link>
     </Compile>
@@ -172,6 +169,9 @@
     </Compile>
     <Compile Include="app_ui\main\FormMain.cs" />
     <Compile Include="app_ui\main\RendererMenuHandler.cs" />
+    <Compile Include="app_ui\controls\PaletteToolMenuItemImpl.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />

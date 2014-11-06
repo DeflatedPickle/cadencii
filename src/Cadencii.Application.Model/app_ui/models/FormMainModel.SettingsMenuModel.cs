@@ -434,7 +434,7 @@ namespace cadencii
 						EditorManager.saveConfig ();
 						parent.form.applyLanguage ();
 						#if ENABLE_SCRIPT
-						parent.form.updateScriptShortcut ();
+						parent.UpdateScriptShortcut ();
 						#endif
 
 						parent.form.updateDrawObjectList ();
