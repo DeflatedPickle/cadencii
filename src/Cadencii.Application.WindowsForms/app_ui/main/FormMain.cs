@@ -120,89 +120,6 @@ namespace cadencii
         private readonly Color mColorR065G065B065 = new Color(65, 65, 65);
         private readonly Color mColorTextboxBackcolor = new Color(128, 128, 128);
         private readonly Color mColorR214G214B214 = new Color(214, 214, 214);
-        private readonly AuthorListEntry[] _CREDIT = new AuthorListEntry[]{
-            new AuthorListEntry( "is developped by:", 2 ),
-            new AuthorListEntry( "kbinani", "@kbinani" ),
-            new AuthorListEntry( "修羅場P", "@shurabaP" ),
-            new AuthorListEntry( "もみじぱん", "@momijipan" ),
-            new AuthorListEntry( "結晶", "@gondam" ),
-            new AuthorListEntry( "" ),
-            new AuthorListEntry(),
-            new AuthorListEntry(),
-            new AuthorListEntry( "Special Thanks to", 3 ),
-            new AuthorListEntry(),
-            new AuthorListEntry( "tool icons designer:", 2 ),
-            new AuthorListEntry( "Yusuke KAMIYAMANE", "@ykamiyamane" ),
-            new AuthorListEntry(),
-            new AuthorListEntry( "developper of WORLD:", 2 ),
-            new AuthorListEntry( "Masanori MORISE", "@m_morise" ),
-            new AuthorListEntry(),
-            new AuthorListEntry( "developper of v.Connect-STAND:", 2 ),
-            new AuthorListEntry( "修羅場P", "@shurabaP" ),
-            new AuthorListEntry(),
-            new AuthorListEntry( "developper of UTAU:", 2 ),
-            new AuthorListEntry( "飴屋/菖蒲", "@ameyaP_" ),
-            new AuthorListEntry(),
-            new AuthorListEntry( "developper of RebarDotNet:", 2 ),
-            new AuthorListEntry( "Anthony Baraff" ),
-            new AuthorListEntry(),
-            new AuthorListEntry( "promoter:", 2 ),
-            new AuthorListEntry( "zhuo", "@zhuop" ),
-            new AuthorListEntry(),
-            new AuthorListEntry( "library tester:", 2 ),
-            new AuthorListEntry( "evm" ),
-            new AuthorListEntry( "そろそろP" ),
-            new AuthorListEntry( "めがね１１０" ),
-            new AuthorListEntry( "上総" ),
-            new AuthorListEntry( "NOIKE", "@knoike" ),
-            new AuthorListEntry( "逃亡者" ),
-            new AuthorListEntry(),
-            new AuthorListEntry( "translator:", 2 ),
-            new AuthorListEntry( "Eji (zh-TW translation)", "@ejiwarp" ),
-            new AuthorListEntry( "kankan (zh-TW translation)" ),
-            new AuthorListEntry( "yxmline (zh-CN translation)" ),
-            new AuthorListEntry( "BubblyYoru (en translation)", "@BubblyYoru" ),
-            new AuthorListEntry( "BeForU (kr translation)", "@BeForU" ),
-            new AuthorListEntry(),
-            new AuthorListEntry(),
-            new AuthorListEntry( "Thanks to", 3 ),
-            new AuthorListEntry(),
-            new AuthorListEntry( "ないしょの人" ),
-            new AuthorListEntry( "naquadah" ),
-            new AuthorListEntry( "1zo" ),
-            new AuthorListEntry( "Amby" ),
-            new AuthorListEntry( "ケロッグ" ),
-            new AuthorListEntry( "beginner" ),
-            new AuthorListEntry( "b2ox", "@b2ox" ),
-            new AuthorListEntry( "麻太郎" ),
-            new AuthorListEntry( "PEX", "@pex_zeo" ),
-            new AuthorListEntry( "やなぎがうら" ),
-            new AuthorListEntry( "cocoonP", "@cocoonP" ),
-            new AuthorListEntry( "かつ" ),
-            new AuthorListEntry( "ちゃそ", "@marimarikerori" ),
-            new AuthorListEntry( "ちょむ" ),
-            new AuthorListEntry( "whimsoft" ),
-            new AuthorListEntry( "kitiketao", "@okoktaokokta" ),
-            new AuthorListEntry( "カプチ２" ),
-            new AuthorListEntry( "あにぃ" ),
-            new AuthorListEntry( "tomo" ),
-            new AuthorListEntry( "ナウ□マP", "@now_romaP" ),
-            new AuthorListEntry( "内藤　魅亜", "@mianaito" ),
-            new AuthorListEntry( "空茶", "@maizeziam" ),
-            new AuthorListEntry( "いぬくま" ),
-            new AuthorListEntry( "shu-t", "@shu_sonicwave" ),
-            new AuthorListEntry( "さささ", "@sasasa3396" ),
-            new AuthorListEntry( "あろも～ら", "@aromora" ),
-            new AuthorListEntry( "空耳P", "@soramiku" ),
-            new AuthorListEntry( "kotoi" ),
-            new AuthorListEntry( "げっぺータロー", "@geppeitaro" ),
-            new AuthorListEntry( "みけCAT", "@mikecat_mixc" ),
-            new AuthorListEntry( "ぎんじ" ),
-            new AuthorListEntry( "BeForU", "@BeForU" ),
-            new AuthorListEntry( "all members of Cadencii bbs", 2 ),
-            new AuthorListEntry(),
-            new AuthorListEntry( "     ... and you !", 3 ),
-        };
         #endregion
 
         #region constants and internal enums
@@ -5123,11 +5040,11 @@ namespace cadencii
 			menuSettingPositionQuantize128.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p128);
 			menuSettingPositionQuantizeOff.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.off);
 			menuSettingPositionQuantizeTriplet.Click += (o, e) => model.HandlePositionQuantizeTriplet ();
-            menuHelpAbout.Click += new EventHandler(menuHelpAbout_Click);
-            menuHelpManual.Click += new EventHandler(menuHelpManual_Click);
-            menuHelpLogSwitch.CheckedChanged += new EventHandler(menuHelpLogSwitch_CheckedChanged);
-            menuHelpLogOpen.Click += new EventHandler(menuHelpLogOpen_Click);
-            menuHelpDebug.Click += new EventHandler(menuHelpDebug_Click);
+			menuHelpAbout.Click += (o, e) => model.HelpMenu.RunHelpAboutCommand ();
+			menuHelpManual.Click += (o, e) => model.HelpMenu.RunHelpManualCommand ();
+			menuHelpLogSwitch.CheckedChanged += (o, e) => model.HelpMenu.RunHelpLogSwitchCheckedChanged ();
+			menuHelpLogOpen.Click += (o, e) => model.HelpMenu.RunHelpLogOpenCommand ();
+			menuHelpDebug.Click += (o, e) => model.HelpMenu.RunHelpDebugCommand ();
             menuHiddenEditLyric.Click += new EventHandler(menuHiddenEditLyric_Click);
             menuHiddenEditFlipToolPointerPencil.Click += new EventHandler(menuHiddenEditFlipToolPointerPencil_Click);
             menuHiddenEditFlipToolPointerEraser.Click += new EventHandler(menuHiddenEditFlipToolPointerEraser_Click);
@@ -9220,92 +9137,6 @@ namespace cadencii
             controller.setStartToDrawX(calculateStartToDrawX());
             updateDrawObjectList();
             Refresh();
-        }
-        #endregion
-
-        //BOOKMARK: menuHelp
-        #region menuHelp
-        public void menuHelpAbout_Click(Object sender, EventArgs e)
-        {
-#if DEBUG
-            sout.println("FormMain#menuHelpAbout_Click");
-#endif
-
-            string version_str = EditorManager.getVersion() + "\n\n" +
-		EditorManager.getAssemblyNameAndFileVersion(typeof(cadencii.apputil.Util)) + "\n" +
-		EditorManager.getAssemblyNameAndFileVersion(typeof(cadencii.media.Wave)) + "\n" +
-		EditorManager.getAssemblyNameAndFileVersion(typeof(cadencii.vsq.VsqFile)) + "\n" +
-		EditorManager.getAssemblyNameAndFileVersion(typeof(cadencii.math));
-            if (mVersionInfo == null) {
-				mVersionInfo = ApplicationUIHost.Create<VersionInfo>(FormMainModel.ApplicationName, version_str);
-                mVersionInfo.setAuthorList(_CREDIT);
-                mVersionInfo.Show();
-            } else {
-                if (mVersionInfo.IsDisposed) {
-					mVersionInfo = ApplicationUIHost.Create<VersionInfo>(FormMainModel.ApplicationName, version_str);
-                    mVersionInfo.setAuthorList(_CREDIT);
-                }
-                mVersionInfo.Show();
-            }
-        }
-
-        public void menuHelpDebug_Click(Object sender, EventArgs e)
-        {
-#if DEBUG
-            int.Parse("X");
-            sout.println("FormMain#menuHelpDebug_Click");
-#endif
-        }
-
-        public void menuHelpManual_Click(Object sender, EventArgs e)
-        {
-            // 現在のUI言語と同じ版のマニュアルファイルがあるかどうか探す
-            string lang = Messaging.getLanguage();
-            string pdf = Path.Combine(PortUtil.getApplicationStartupPath(), "manual_" + lang + ".pdf");
-            if (!System.IO.File.Exists(pdf)) {
-                // 無ければ英語版のマニュアルを表示することにする
-                pdf = Path.Combine(PortUtil.getApplicationStartupPath(), "manual_en.pdf");
-            }
-            if (!System.IO.File.Exists(pdf)) {
-                DialogManager.showMessageBox(
-                    _("file not found"),
-					FormMainModel.ApplicationName,
-                    cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
-                    cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
-                return;
-            }
-            System.Diagnostics.Process.Start(pdf);
-        }
-
-        public void menuHelpLogSwitch_CheckedChanged(Object sender, EventArgs e)
-        {
-            Logger.setEnabled(menuHelpLogSwitch.Checked);
-            if (menuHelpLogSwitch.Checked) {
-                menuHelpLogSwitch.Text = _("Enabled");
-            } else {
-                menuHelpLogSwitch.Text = _("Disabled");
-            }
-        }
-
-        public void menuHelpLogOpen_Click(Object sender, EventArgs e)
-        {
-            string file = Logger.getPath();
-            if (file == null || (file != null && (!System.IO.File.Exists(file)))) {
-                // ログがまだできてないのでダイアログ出す
-                DialogManager.showMessageBox(
-                    _("Log file has not generated yet."),
-                    _("Info"),
-					cadencii.java.awt.AwtHost.OK_OPTION,
-                    cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
-                return;
-            }
-
-            // ログファイルを開く
-            try {
-                System.Diagnostics.Process.Start(file);
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".menuHelpLogOpen_Click; ex=" + ex + "\n");
-            }
         }
         #endregion
 

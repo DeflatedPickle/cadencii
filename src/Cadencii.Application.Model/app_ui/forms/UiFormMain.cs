@@ -23,6 +23,8 @@ namespace cadencii
     {
 		FormMainModel Model { get; }
 
+		UiToolStripMenuItem menuHelpLogSwitch { get; set; }
+
 		UiToolStripMenuItem menuScriptUpdate { get; set; }
 
 		void initializeRendererMenuHandler();

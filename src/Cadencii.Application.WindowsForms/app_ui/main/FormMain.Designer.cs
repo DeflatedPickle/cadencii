@@ -3237,7 +3237,7 @@ namespace cadencii
         //public CircuitView pictCircuit;
         private UiToolStripMenuItem menuFileExportUst;
         private UiToolStripMenuItem menuHelpLog;
-        private UiToolStripMenuItem menuHelpLogSwitch;
+		public UiToolStripMenuItem menuHelpLogSwitch { get; set; }
         private UiToolStripMenuItem menuHelpLogOpen;
         private Rebar rebar;
         private RebarBand bandFile;
