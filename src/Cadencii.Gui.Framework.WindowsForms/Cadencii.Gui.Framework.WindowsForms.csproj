@@ -77,6 +77,7 @@
     <Compile Include="winforms\FileDialogImpl.cs" />
     <Compile Include="winforms\FolderBrowserDialogImpl.cs" />
     <Compile Include="TimerWF.cs" />
+    <Compile Include="winforms\ToolTipImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

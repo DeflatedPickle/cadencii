@@ -174,6 +174,11 @@ namespace cadencii
 			dialog.InitialDirectory = initial_directory;
 			return dialog;
 		}
+
+		public static cadencii.DrawToolTipEventArgs ToAwt (this System.Windows.Forms.DrawToolTipEventArgs e)
+		{
+			return new DrawToolTipEventArgs (e.Bounds.ToAwt (), e.DrawBackground, e.DrawBorder, f => e.DrawText ((System.Windows.Forms.TextFormatFlags) f));
+		}
 	}
 }
 

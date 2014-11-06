@@ -5493,7 +5493,7 @@ namespace cadencii
                 }
                 if (sc != null) {
                     TrackSelectorSingerDropdownMenuItem tsmi =
-                        new TrackSelectorSingerDropdownMenuItem();
+			ApplicationUIHost.Create<TrackSelectorSingerDropdownMenuItem>();
                     tsmi.Text = sc.VOICENAME;
                     tsmi.ToolTipText = tip;
                     tsmi.ToolTipPxWidth = 0;
@@ -5516,7 +5516,7 @@ namespace cadencii
 
         public void cmenuSinger_VisibleChanged(Object sender, EventArgs e)
         {
-            toolTip.Hide(cmenuSinger);
+			toolTip.Hide(cmenuSinger);
         }
 
         public void cmenusinger_MouseEnter(Object sender, EventArgs e)
@@ -5545,16 +5545,15 @@ namespace cadencii
                 }
 
                 int tip_width = menu.ToolTipPxWidth;
-                var ppts = cmenuSinger.PointToScreen(new System.Drawing.Point(0, 0));
-                Point pts = new Point(ppts.X, ppts.Y);
+                var pts = cmenuSinger.PointToScreen(new Point(0, 0));
 				Rectangle rrc = cadencii.core2.PortUtil.getScreenBounds(this);
                 Rectangle rc = new Rectangle(rrc.X, rrc.Y, rrc.Width, rrc.Height);
                 mTooltipProgram = program;
                 mTooltipLanguage = language;
                 if (pts.X + cmenuSinger.Width + tip_width > rc.Width) {
-                    toolTip.Show(tip, cmenuSinger, new System.Drawing.Point(-tip_width, y), 5000);
+                    toolTip.Show(tip, cmenuSinger, new Point(-tip_width, y), 5000);
                 } else {
-                    toolTip.Show(tip, cmenuSinger, new System.Drawing.Point(cmenuSinger.Width, y), 5000);
+                    toolTip.Show(tip, cmenuSinger, new Point(cmenuSinger.Width, y), 5000);
                 }
             } catch (Exception ex) {
                 sout.println("TarckSelectro.tsmi_MouseHover; ex=" + ex);
@@ -5590,14 +5589,13 @@ namespace cadencii
             }
         }
 
-        private void toolTip_Draw(Object sender, System.Windows.Forms.DrawToolTipEventArgs e)
+        private void toolTip_Draw(Object sender, cadencii.DrawToolTipEventArgs e)
         {
             if (!(sender is System.Windows.Forms.ToolTip)) {
                 return;
             }
 
-            System.Drawing.Rectangle rrc = e.Bounds;
-            Rectangle rc = new Rectangle(rrc.X, rrc.Y, rrc.Width, rrc.Height);
+            var rc = e.Bounds;
 #if DEBUG
             sout.println("TrackSelector#toolTip_Draw; sender.GetType()=" + sender.GetType());
 #endif
@@ -5616,7 +5614,7 @@ namespace cadencii
             }
             e.DrawBackground();
             e.DrawBorder();
-            e.DrawText(System.Windows.Forms.TextFormatFlags.VerticalCenter | System.Windows.Forms.TextFormatFlags.Left | System.Windows.Forms.TextFormatFlags.NoFullWidthCharacterBreak);
+            e.DrawText(TextFormatFlags.VerticalCenter | TextFormatFlags.Left | TextFormatFlags.NoFullWidthCharacterBreak);
         }
 
         public void TrackSelector_KeyDown(Object sender, KeyEventArgs e)
@@ -5646,7 +5644,7 @@ namespace cadencii
 
         private void registerEventHandlers()
         {
-            this.toolTip.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTip_Draw);
+			this.toolTip.Draw += new EventHandler<DrawToolTipEventArgs>(this.toolTip_Draw);
             this.cmenuCurveVelocity.Click += new EventHandler(cmenuCurveCommon_Click);
             this.cmenuCurveAccent.Click += new EventHandler(cmenuCurveCommon_Click);
             this.cmenuCurveDecay.Click += new EventHandler(cmenuCurveCommon_Click);
@@ -5718,8 +5716,8 @@ namespace cadencii
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.cmenuSinger = new TrackSelectorSingerPopupMenu(this.components);
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.cmenuSinger = ApplicationUIHost.Create<TrackSelectorSingerPopupMenu>(this.components);
+            this.toolTip = new ToolTipImpl(this.components);
             this.cmenuCurve = new ContextMenuStripImpl(this.components);
             this.cmenuCurveVelocity = new ToolStripMenuItemImpl();
             this.cmenuCurveAccent = new ToolStripMenuItemImpl();
@@ -5765,10 +5763,10 @@ namespace cadencii
             // cmenuSinger
             //
             this.cmenuSinger.Name = "cmenuSinger";
-            this.cmenuSinger.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.cmenuSinger.RenderMode = ToolStripRenderMode.System;
             this.cmenuSinger.ShowCheckMargin = true;
             this.cmenuSinger.ShowImageMargin = false;
-			this.cmenuSinger.Size =new System.Drawing.Size(153, 26);
+			this.cmenuSinger.Size =new Dimension(153, 26);
             //
             // toolTip
             //
@@ -6066,7 +6064,7 @@ namespace cadencii
         #endregion
 
         private TrackSelectorSingerPopupMenu cmenuSinger;
-        private ToolTip toolTip;
+        private UiToolTip toolTip;
         private UiContextMenuStrip cmenuCurve;
         private UiToolStripMenuItem cmenuCurveVelocity;
         private UiToolStripSeparator cmenuCurveSeparator2;

@@ -19,11 +19,11 @@ using cadencii;
 namespace cadencii
 {
 
-    public class BgmMenuItem : ToolStripMenuItemImpl
+	public class BgmMenuItemImpl : ToolStripMenuItemImpl, BgmMenuItem
     {
         private int mBgmIndex;
 
-        public BgmMenuItem(int bgm_index)
+        public BgmMenuItemImpl(int bgm_index)
             : base()
         {
             mBgmIndex = bgm_index;

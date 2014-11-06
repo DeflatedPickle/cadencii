@@ -12,6 +12,7 @@ namespace cadencii
 
 		bool Enabled { get; set; }
 		bool Visible { get; set; }
+		int Height { get; }
 		string Name { get; set; }
 		object Tag { get; set; }
 		string Text { get; set; }

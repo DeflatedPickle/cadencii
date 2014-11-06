@@ -1,5 +1,5 @@
 /*
- * TrackSelectorSingerPopupMenu.cs
+ * TrackSelectorSingerDropdownMenuItem.cs
  * Copyright © 2011 kbinani
  *
  * This file is part of cadencii.
@@ -11,21 +11,19 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
+using System;
+using System.Windows.Forms;
 using cadencii.windows.forms;
 
 namespace cadencii
 {
 
-    public class TrackSelectorSingerPopupMenu : ContextMenuStripImpl
+	public class TrackSelectorSingerDropdownMenuItemImpl : ToolStripMenuItemImpl, TrackSelectorSingerDropdownMenuItem
     {
-        public bool SingerChangeExists;
-        public int Clock;
-        public int InternalID;
-
-        public TrackSelectorSingerPopupMenu(System.ComponentModel.IContainer cont)
-            : base(cont)
-        {
-        }
+		public int ToolTipPxWidth { get; set; }
+		public string ToolTipText { get; set; }
+		public int Language { get; set; }
+		public int Program { get; set; }
     }
 
 }

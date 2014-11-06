@@ -1845,17 +1845,17 @@ namespace cadencii
             if (count > 0) {
                 for (int i = 0; i < count; i++) {
                     BgmFile item = MusicManager.getBgm(i);
-                    var menu = new ToolStripMenuItemImpl();
+					UiToolStripMenuItem menu = new ToolStripMenuItemImpl();
                     menu.Text = PortUtil.getFileName(item.file);
                     menu.ToolTipText = item.file;
 
-                    BgmMenuItem menu_remove = new BgmMenuItem(i);
+					BgmMenuItem menu_remove = ApplicationUIHost.Create<BgmMenuItem>(i);
                     menu_remove.Text = _("Remove");
                     menu_remove.ToolTipText = item.file;
                     menu_remove.Click += new EventHandler(handleBgmRemove_Click);
                     menu.DropDownItems.Add(menu_remove);
 
-                    BgmMenuItem menu_start_after_premeasure = new BgmMenuItem(i);
+					BgmMenuItem menu_start_after_premeasure = ApplicationUIHost.Create<BgmMenuItem>(i);
                     menu_start_after_premeasure.Text = _("Start After Premeasure");
                     menu_start_after_premeasure.Name = "menu_start_after_premeasure" + i;
                     menu_start_after_premeasure.CheckOnClick = true;
@@ -1863,7 +1863,7 @@ namespace cadencii
                     menu_start_after_premeasure.CheckedChanged += new EventHandler(handleBgmStartAfterPremeasure_CheckedChanged);
                     menu.DropDownItems.Add(menu_start_after_premeasure);
 
-                    BgmMenuItem menu_offset_second = new BgmMenuItem(i);
+					BgmMenuItem menu_offset_second = ApplicationUIHost.Create<BgmMenuItem>(i);
                     menu_offset_second.Text = _("Set Offset Seconds");
                     menu_offset_second.ToolTipText = item.readOffsetSeconds + " " + _("seconds");
                     menu_offset_second.Click += new EventHandler(handleBgmOffsetSeconds_Click);

@@ -229,6 +229,9 @@
     <Compile Include="app_ui\forms\RendererMenuHandler.cs" />
     <Compile Include="app_ui\models\FormMainModel.HelpMenuModel.cs" />
     <Compile Include="app_ui\models\FormMainModel.HiddenMenuModel.cs" />
+    <Compile Include="app_ui\controls\BgmMenuItem.cs" />
+    <Compile Include="app_ui\controls\TrackSelectorSingerDropdownMenuItem.cs" />
+    <Compile Include="app_ui\controls\TrackSelectorSingerPopupMenu.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

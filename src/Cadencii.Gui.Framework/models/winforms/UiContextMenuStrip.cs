@@ -12,6 +12,7 @@ namespace cadencii
 		ToolStripRenderMode RenderMode { get; set; }
 		void Show (UiControl control, int x, int y);
 		event EventHandler Opening;
+		event EventHandler VisibleChanged;
 	}
 }
 

@@ -21,6 +21,7 @@ namespace cadencii
 		bool CheckOnClick { get; set; }
 		void Mnemonic (Keys keys);
 		event EventHandler CheckedChanged;
+		event EventHandler MouseHover;
 	}
 }
 

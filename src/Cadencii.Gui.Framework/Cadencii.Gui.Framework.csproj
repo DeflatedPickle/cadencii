@@ -131,6 +131,9 @@
     <Compile Include="models\winforms\ToolBarButtonClickEventArgs.cs" />
     <Compile Include="models\winforms\UiDialog.cs" />
     <Compile Include="models\Timer.cs" />
+    <Compile Include="models\winforms\UiToolTip.cs" />
+    <Compile Include="models\winforms\DrawToolTipEventArgs.cs" />
+    <Compile Include="models\winforms\TextFormatFlags.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
