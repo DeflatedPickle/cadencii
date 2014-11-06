@@ -168,7 +168,6 @@
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="app_ui\main\FormMain.cs" />
-    <Compile Include="app_ui\main\RendererMenuHandler.cs" />
     <Compile Include="app_ui\controls\PaletteToolMenuItemImpl.cs">
       <SubType>Component</SubType>
     </Compile>

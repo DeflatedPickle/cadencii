@@ -14,26 +14,36 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Windows.Forms;
-using System.Drawing;
+using cadencii.java.awt;
 
 namespace cadencii
 {
     /// <summary>
     /// 合成器のメニュー項目へのアクションに応答するハンドラ
     /// </summary>
-    class RendererMenuHandler
+    public class RendererMenuHandler
     {
-        public RendererMenuHandler(RendererKind kind,
+        public RendererMenuHandler(Image slashIcon, RendererKind kind,
                                        UiToolStripMenuItem track_menu,
                                        UiToolStripMenuItem context_menu,
                                        UiToolStripMenuItem vsti_ui_menu)
         {
+			slash_icon = slashIcon;
             kind_ = kind;
             track_menu_ = track_menu;
             context_menu_ = context_menu;
             vsti_ui_menu_ = vsti_ui_menu;
         }
+
+		public RendererKind RenderKind {
+			get { return kind_; }
+		}
+		public UiToolStripMenuItem TrackMenuItem {
+			get { return track_menu_; }
+		}
+		public UiToolStripMenuItem ContextMenuItem {
+			get { return context_menu_; }
+		}
 
         /// <summary>
         /// 現在選択されている合成器を設定する。これにより、メニューのチェック状態が更新される
@@ -54,7 +64,7 @@ namespace cadencii
         {
 			cadencii.java.awt.Image icon = null;
             if (!VSTiDllManager.isRendererAvailable(kind_)) {
-				icon = Properties.Resources.slash.ToAwt ();
+				icon = slash_icon;
             }
             if (track_menu_ != null) { track_menu_.Image = icon; }
             if (context_menu_ != null) { context_menu_.Image = icon; }
@@ -68,5 +78,6 @@ namespace cadencii
         protected UiToolStripMenuItem context_menu_;
         protected UiToolStripMenuItem vsti_ui_menu_;
         protected readonly RendererKind kind_;
+		Image slash_icon;
     }
 }

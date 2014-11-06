@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using cadencii.vsq;
+using System.Linq;
 
 namespace cadencii
 {
@@ -77,6 +78,52 @@ namespace cadencii
 				parent.form.updateRendererMenu();
 			}
 			#endregion
+
+			public void RunChangeRendererCommand(RendererKind kind, int resampler_index)
+			{
+				VsqFileEx vsq = MusicManager.getVsqFile ();
+				int selected = EditorManager.Selected;
+				VsqTrack vsq_track = vsq.Track [selected];
+				RendererKind old = VsqFileEx.getTrackRendererKind (vsq_track);
+				int old_resampler_index = VsqFileEx.getTrackResamplerUsed (vsq_track);
+				bool changed = (old != kind);
+				if (!changed && kind == RendererKind.UTAU) {
+					changed = (old_resampler_index != resampler_index);
+				}
+
+				if (!changed) {
+					return;
+				}
+
+				var track_copy = (VsqTrack)vsq_track.clone ();
+				List<VsqID> singers = MusicManager.getSingerListFromRendererKind (kind);
+				string renderer = kind.getVersionString ();
+				if (singers == null) {
+					serr.println ("FormMain#changeRendererCor; singers is null");
+					return;
+				}
+
+				track_copy.changeRenderer (renderer, singers);
+				VsqFileEx.setTrackRendererKind (track_copy, kind);
+				if (kind == RendererKind.UTAU) {
+					VsqFileEx.setTrackResamplerUsed (track_copy, resampler_index);
+				}
+				CadenciiCommand run = VsqFileEx.generateCommandTrackReplace (selected,
+					                      track_copy,
+					                      vsq.AttachedCurves.get (selected - 1));
+				EditorManager.editHistory.register (vsq.executeCommand (run));
+
+				parent.RendererMenuHandlers.ForEach ((handler) => handler.updateCheckedState (kind));
+				var utau = parent.RendererMenuHandlers.FirstOrDefault (h => h.RenderKind == RendererKind.UTAU);
+				for (int i = 0; i < utau.ContextMenuItem.DropDownItems.Count; i++) {
+					((UiToolStripMenuItem)utau.ContextMenuItem.DropDownItems [i]).Checked = (i == resampler_index);
+				}
+				for (int i = 0; i < utau.TrackMenuItem.DropDownItems.Count; i++) {
+					((UiToolStripMenuItem)utau.TrackMenuItem.DropDownItems [i]).Checked = (i == resampler_index);
+				}
+				parent.form.setEdited (true);
+				parent.form.refreshScreen ();
+			}
 		}
 	}
 }

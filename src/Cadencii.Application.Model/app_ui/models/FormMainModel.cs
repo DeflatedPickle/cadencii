@@ -38,6 +38,8 @@ namespace cadencii
 			ScriptMenu = new ScriptMenuModel (this);
 			LyricMenu = new LyricMenuModel (this);
 			SettingsMenu = new SettingsMenuModel (this);
+
+			form.initializeRendererMenuHandler();
 		}
 
 		public FileMenuModel FileMenu { get; private set; }
@@ -48,6 +50,11 @@ namespace cadencii
 		public ScriptMenuModel ScriptMenu { get; private set; }
 		public LyricMenuModel LyricMenu { get; private set; }
 		public SettingsMenuModel SettingsMenu { get; private set; }
+
+		/// <summary>
+		/// 合成器の種類のメニュー項目を管理するハンドラをまとめたリスト
+		/// </summary>
+		public List<RendererMenuHandler> RendererMenuHandlers;
 
 		public static void TrackSelector_MouseClick (UiFormMain window, MouseEventArgs e)
 		{

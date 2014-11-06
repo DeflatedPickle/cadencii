@@ -1069,7 +1069,7 @@ namespace cadencii
             this.menuTrackRendererAquesTone2.Name = "menuTrackRendererAquesTone2";
             this.menuTrackRendererAquesTone2.Size = new cadencii.java.awt.Dimension(193, 22);
             this.menuTrackRendererAquesTone2.Text = "AquesTone2(&6)";
-            this.menuTrackRendererAquesTone2.Click += new System.EventHandler(this.handleChangeRenderer);
+			this.menuTrackRendererAquesTone2.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.AQUES_TONE2, -1);
             // 
             // toolStripMenuItem4
             // 
@@ -2017,7 +2017,7 @@ namespace cadencii
             this.cMenuTrackTabRendererAquesTone2.Name = "cMenuTrackTabRendererAquesTone2";
             this.cMenuTrackTabRendererAquesTone2.Size = new cadencii.java.awt.Dimension(197, 22);
             this.cMenuTrackTabRendererAquesTone2.Text = "AquesTone2(&6)";
-            this.cMenuTrackTabRendererAquesTone2.Click += new System.EventHandler(this.handleChangeRenderer);
+			this.cMenuTrackTabRendererAquesTone2.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.AQUES_TONE2, -1);
             // 
             // cMenuTrackSelector
             // 

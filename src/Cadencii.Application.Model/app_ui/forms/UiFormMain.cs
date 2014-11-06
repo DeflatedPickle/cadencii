@@ -25,6 +25,7 @@ namespace cadencii
 
 		UiToolStripMenuItem menuScriptUpdate { get; set; }
 
+		void initializeRendererMenuHandler();
 		void updateTrackMenuStatus();
 		UiToolStripMenuItem menuTrackOn { get; set; }
 		UiToolStripMenuItem cMenuTrackTabTrackOn { get; set; }

@@ -514,10 +514,6 @@ namespace cadencii
         /// PositionIndicatorに表示しているポップアップのクロック位置
         /// </summary>
         private int mPositionIndicatorPopupShownClock;
-        /// <summary>
-        /// 合成器の種類のメニュー項目を管理するハンドラをまとめたリスト
-        /// </summary>
-        private List<RendererMenuHandler> renderer_menu_handler_;
         private FormWindowState mWindowState = FormWindowState.Normal;
 #if MONITOR_FPS
         /// <summary>
@@ -591,7 +587,6 @@ namespace cadencii
             panelOverview.setMainForm(this);
             pictPianoRoll.setMainForm(this);
             bgWorkScreen = new System.ComponentModel.BackgroundWorker();
-            initializeRendererMenuHandler();
 
 			this.panelWaveformZoom.AddControl (this.waveView);
 			this.waveView.Anchor = ((cadencii.java.awt.AnchorStyles)((((cadencii.java.awt.AnchorStyles.Top | cadencii.java.awt.AnchorStyles.Bottom)
@@ -1064,31 +1059,33 @@ namespace cadencii
         /// <summary>
         /// renderer_menu_handler_ を初期化する
         /// </summary>
-        private void initializeRendererMenuHandler()
+        public void initializeRendererMenuHandler()
         {
-            renderer_menu_handler_ = new List<RendererMenuHandler>();
+            var renderer_menu_handler_ = new List<RendererMenuHandler>();
+			model.RendererMenuHandlers = renderer_menu_handler_;
             renderer_menu_handler_.Clear();
-            renderer_menu_handler_.Add(new RendererMenuHandler(RendererKind.VOCALOID1,
+			var icon = Properties.Resources.slash.ToAwt ();
+			renderer_menu_handler_.Add(new RendererMenuHandler(icon, RendererKind.VOCALOID1,
                                                                  menuTrackRendererVOCALOID1,
                                                                  cMenuTrackTabRendererVOCALOID1,
                                                                  menuVisualPluginUiVocaloid1));
-            renderer_menu_handler_.Add(new RendererMenuHandler(RendererKind.VOCALOID2,
+			renderer_menu_handler_.Add(new RendererMenuHandler(icon, RendererKind.VOCALOID2,
                                                                  menuTrackRendererVOCALOID2,
                                                                  cMenuTrackTabRendererVOCALOID2,
                                                                  menuVisualPluginUiVocaloid2));
-            renderer_menu_handler_.Add(new RendererMenuHandler(RendererKind.STRAIGHT_UTAU,
+			renderer_menu_handler_.Add(new RendererMenuHandler(icon, RendererKind.STRAIGHT_UTAU,
                                                                  menuTrackRendererVCNT,
                                                                  cMenuTrackTabRendererStraight,
                                                                  null));
-            renderer_menu_handler_.Add(new RendererMenuHandler(RendererKind.UTAU,
+			renderer_menu_handler_.Add(new RendererMenuHandler(icon, RendererKind.UTAU,
                                                                  menuTrackRendererUtau,
                                                                  cMenuTrackTabRendererUtau,
                                                                  null));
-            renderer_menu_handler_.Add(new RendererMenuHandler(RendererKind.AQUES_TONE,
+			renderer_menu_handler_.Add(new RendererMenuHandler(icon, RendererKind.AQUES_TONE,
                                                                  menuTrackRendererAquesTone,
                                                                  cMenuTrackTabRendererAquesTone,
                                                                  menuVisualPluginUiAquesTone));
-            renderer_menu_handler_.Add(new RendererMenuHandler(RendererKind.AQUES_TONE2,
+			renderer_menu_handler_.Add(new RendererMenuHandler(icon, RendererKind.AQUES_TONE2,
                                                                  menuTrackRendererAquesTone2,
                                                                  cMenuTrackTabRendererAquesTone2,
                                                                  menuVisualPluginUiAquesTone2));
@@ -2407,7 +2404,7 @@ namespace cadencii
 
         public void updateRendererMenu()
         {
-            renderer_menu_handler_.ForEach((handler) => handler.updateRendererAvailability(EditorManager.editorConfig));
+			model.RendererMenuHandlers.ForEach((handler) => handler.updateRendererAvailability(EditorManager.editorConfig));
 
             // UTAU用のサブアイテムを更新
             int count = ApplicationGlobal.appConfig.getResamplerCount();
@@ -2416,8 +2413,8 @@ namespace cadencii
             if (delta > 0) {
                 // 増やす
                 for (int i = 0; i < delta; i++) {
-                    cMenuTrackTabRendererUtau.DropDownItems.Add("", null, new EventHandler(handleChangeRenderer));
-                    menuTrackRendererUtau.DropDownItems.Add("", null, new EventHandler(handleChangeRenderer));
+					cMenuTrackTabRendererUtau.DropDownItems.Add("", null, (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.UTAU, count + i));
+					menuTrackRendererUtau.DropDownItems.Add("", null, (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.UTAU, count + i));
                 }
             } else if (delta < 0) {
                 // 減らす
@@ -5097,12 +5094,12 @@ namespace cadencii
 			menuTrackRenderAll.Click += (o, e) => model.TrackMenu.RunTrackRenderAllCommand ();
 			menuTrackOverlay.Click += (o, e) => model.TrackMenu.RunTrackOverlayCommand ();
 			menuTrackRenderer.DropDownOpening += (o, e) => model.TrackMenu.RunTrackRendererDropDownOpening ();
-            menuTrackRendererVOCALOID1.Click += new EventHandler(handleChangeRenderer);
-            menuTrackRendererVOCALOID2.Click += new EventHandler(handleChangeRenderer);
+			menuTrackRendererVOCALOID1.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.VOCALOID1, -1);
+			menuTrackRendererVOCALOID2.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.VOCALOID2, -1);
             //UTAUはresamplerを識別するのでmenuTrackRendererUtauのサブアイテムのClickイベントを拾う
             //menuTrackRendererUtau.Click += new EventHandler( handleChangeRenderer );
-            menuTrackRendererVCNT.Click += new EventHandler(handleChangeRenderer);
-            menuTrackRendererAquesTone.Click += new EventHandler(handleChangeRenderer);
+			menuTrackRendererVCNT.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.VCNT, -1);
+			menuTrackRendererAquesTone.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.AQUES_TONE, -1);
 			menuLyric.DropDownOpening += (o, e) => model.LyricMenu.RunLyricDropDownOpening ();
 			menuLyricExpressionProperty.Click += (o, e) => model.LyricMenu.RunLyricExpressionPropertyCommand ();
 			menuLyricVibratoProperty.Click += (o, e) => model.LyricMenu.RunLyricVibratoPropertyCommand ();
@@ -5201,10 +5198,10 @@ namespace cadencii
 			cMenuTrackTabRenderAll.Click += (o, e) => model.TrackMenu.RunTrackRenderAllCommand ();
             cMenuTrackTabOverlay.Click += new EventHandler(cMenuTrackTabOverlay_Click);
             cMenuTrackTabRenderer.DropDownOpening += new EventHandler(cMenuTrackTabRenderer_DropDownOpening);
-            cMenuTrackTabRendererVOCALOID1.Click += new EventHandler(handleChangeRenderer);
-            cMenuTrackTabRendererVOCALOID2.Click += new EventHandler(handleChangeRenderer);
-            cMenuTrackTabRendererStraight.Click += new EventHandler(handleChangeRenderer);
-            cMenuTrackTabRendererAquesTone.Click += new EventHandler(handleChangeRenderer);
+			cMenuTrackTabRendererVOCALOID1.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.VOCALOID1, -1);
+			cMenuTrackTabRendererVOCALOID2.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.VOCALOID2, -1);
+			cMenuTrackTabRendererStraight.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.STRAIGHT_UTAU, -1);
+			cMenuTrackTabRendererAquesTone.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.AQUES_TONE, -1);
             cMenuTrackSelector.Opening += (o, e) => cMenuTrackSelector_Opening ();
             cMenuTrackSelectorPointer.Click += new EventHandler(cMenuTrackSelectorPointer_Click);
             cMenuTrackSelectorPencil.Click += new EventHandler(cMenuTrackSelectorPencil_Click);
@@ -10003,7 +10000,7 @@ namespace cadencii
             menuTrackRenderAll.Enabled = !EditorManager.isPlaying();
 
             var kind = VsqFileEx.getTrackRendererKind(vsq_track);
-            renderer_menu_handler_.ForEach((handler) => handler.updateCheckedState(kind));
+			model.RendererMenuHandlers.ForEach((handler) => handler.updateCheckedState(kind));
         }
 
         public void cMenuTrackTabOverlay_Click(Object sender, EventArgs e)
@@ -10967,74 +10964,6 @@ namespace cadencii
             if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
                 mSpacekeyDowned = false;
             }
-        }
-
-        public void handleChangeRenderer(Object sender, EventArgs e)
-        {
-            RendererKind kind = RendererKind.NULL;
-            int resampler_index = -1;
-            var menu_handler = renderer_menu_handler_.FirstOrDefault((handler) => handler.isMatch(sender));
-            if (menu_handler != null && menu_handler.RendererKind != RendererKind.UTAU) {
-                kind = menu_handler.RendererKind;
-            } else {
-                // イベント送信元のアイテムが，cMenuTrackTabRendererUtauまたは
-                // menuTrackRendererUTAUのサブアイテムかどうかをチェック
-                if (sender is UiToolStripMenuItem) {
-                    UiToolStripMenuItem item = (UiToolStripMenuItem)sender;
-                    resampler_index = cMenuTrackTabRendererUtau.DropDownItems.IndexOf(item);
-                    if (resampler_index < 0) {
-                        resampler_index = menuTrackRendererUtau.DropDownItems.IndexOf(item);
-                    }
-                }
-                if (resampler_index < 0) {
-                    // 検出できないのでbailout
-                    return;
-                }
-
-                // 検出できた
-                // このばあいは確実にUTAU
-                kind = RendererKind.UTAU;
-            }
-
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            int selected = EditorManager.Selected;
-            VsqTrack vsq_track = vsq.Track[selected];
-            RendererKind old = VsqFileEx.getTrackRendererKind(vsq_track);
-            int old_resampler_index = VsqFileEx.getTrackResamplerUsed(vsq_track);
-            bool changed = (old != kind);
-            if (!changed && kind == RendererKind.UTAU) {
-                changed = (old_resampler_index != resampler_index);
-            }
-
-            if (!changed) { return; }
-
-            var track_copy = (VsqTrack)vsq_track.clone();
-            List<VsqID> singers = MusicManager.getSingerListFromRendererKind(kind);
-            string renderer = kind.getVersionString();
-            if (singers == null) {
-                serr.println("FormMain#changeRendererCor; singers is null");
-                return;
-            }
-
-            track_copy.changeRenderer(renderer, singers);
-            VsqFileEx.setTrackRendererKind(track_copy, kind);
-            if (kind == RendererKind.UTAU) {
-                VsqFileEx.setTrackResamplerUsed(track_copy, resampler_index);
-            }
-            CadenciiCommand run = VsqFileEx.generateCommandTrackReplace(selected,
-                                                                         track_copy,
-                                                                         vsq.AttachedCurves.get(selected - 1));
-            EditorManager.editHistory.register(vsq.executeCommand(run));
-
-            renderer_menu_handler_.ForEach((handler) => handler.updateCheckedState(kind));
-            for (int i = 0; i < cMenuTrackTabRendererUtau.DropDownItems.Count; i++) {
-                ((UiToolStripMenuItem)cMenuTrackTabRendererUtau.DropDownItems[i]).Checked = (i == resampler_index);
-            }
-            for (int i = 0; i < menuTrackRendererUtau.DropDownItems.Count; i++) {
-                ((UiToolStripMenuItem)menuTrackRendererUtau.DropDownItems[i]).Checked = (i == resampler_index);
-            }
-            setEdited(true);
-            refreshScreen();
         }
 
         public void handleBgmOffsetSeconds_Click(Object sender, EventArgs e)
