@@ -15,10 +15,10 @@ using System;
 using System.Collections.Generic;
 using cadencii.apputil;
 using cadencii;
-using cadencii.java.awt;
-using NMouseButtons = cadencii.java.awt.MouseButtons;
-using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
-using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
+using Cadencii.Gui;
+using NMouseButtons = Cadencii.Gui.MouseButtons;
+using NMouseEventArgs = Cadencii.Gui.MouseEventArgs;
+using NMouseEventHandler = Cadencii.Gui.MouseEventHandler;
 
 namespace cadencii
 {

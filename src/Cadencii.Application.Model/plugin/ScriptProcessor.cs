@@ -83,7 +83,7 @@ namespace cadencii
                 "using org.kbinani;" +
                 "using org.kbinani.java.io;" +
                 "using org.kbinani.java.util;" +
-                "using org.kbinani.java.awt;" +
+                "using org.kbinani.Cadencii.Gui;" +
                 "using org.kbinani.media;" +
                 "using org.kbinani.apputil;" +
                 "using System.Windows.Forms;" +
@@ -107,7 +107,7 @@ namespace cadencii
                 "using cadencii;" +
                 "using cadencii.java.io;" +
                 "using cadencii.java.util;" +
-                "using cadencii.java.awt;" +
+                "using Cadencii.Gui;" +
                 "using cadencii.media;" +
                 "using cadencii.apputil;" +
                 "using System.Windows.Forms;" +

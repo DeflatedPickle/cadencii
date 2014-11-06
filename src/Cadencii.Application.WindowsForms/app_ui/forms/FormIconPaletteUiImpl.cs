@@ -16,11 +16,11 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Collections.Generic;
 using cadencii.apputil;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.java.util;
 using cadencii.vsq;
 using cadencii.windows.forms;
-using Keys = cadencii.java.awt.Keys;
+using Keys = Cadencii.Gui.Keys;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 
@@ -109,7 +109,7 @@ namespace cadencii
 
                 bool setimg = System.IO.File.Exists(buttonIconPath);
                 if (setimg) {
-                    btn.Image = new cadencii.java.awt.Image () { NativeImage = System.Drawing.Image.FromStream(new System.IO.FileStream(buttonIconPath, System.IO.FileMode.Open, System.IO.FileAccess.Read)) };
+                    btn.Image = new Cadencii.Gui.Image () { NativeImage = System.Drawing.Image.FromStream(new System.IO.FileStream(buttonIconPath, System.IO.FileMode.Open, System.IO.FileAccess.Read)) };
                 } else {
                     System.Drawing.Image img = null;
                     string str = "";
@@ -152,13 +152,13 @@ namespace cadencii
                         str = "ppp";
                     }
                     if (img != null) {
-                        btn.Image = new cadencii.java.awt.Image () { NativeImage = img };
+                        btn.Image = new Cadencii.Gui.Image () { NativeImage = img };
                     } else {
                         btn.Text = str;
                     }
                 }
-                btn.MouseDown += new cadencii.java.awt.MouseEventHandler(handleCommonMouseDown);
-                btn.Size = new cadencii.java.awt.Dimension(buttonWidth, buttonWidth);
+                btn.MouseDown += new Cadencii.Gui.MouseEventHandler(handleCommonMouseDown);
+                btn.Size = new Cadencii.Gui.Dimension(buttonWidth, buttonWidth);
                 int iw = 0;
                 int ih = 0;
                 if (icon_id.StartsWith(IconDynamicsHandle.ICONID_HEAD_DYNAFF)) {
@@ -179,7 +179,7 @@ namespace cadencii
                 } else {
                     continue;
                 }
-                btn.Location = new cadencii.java.awt.Point(iw * buttonWidth, ih * buttonWidth);
+                btn.Location = new Cadencii.Gui.Point(iw * buttonWidth, ih * buttonWidth);
                 this.Controls.Add((Control) btn.Native);
                 btn.BringToFront();
             }
@@ -224,7 +224,7 @@ namespace cadencii
             this.Visible = false;
         }
 
-        public void handleCommonMouseDown(Object sender, cadencii.java.awt.MouseEventArgs e)
+        public void handleCommonMouseDown(Object sender, Cadencii.Gui.MouseEventArgs e)
         {
             if (EditorManager.EditMode != EditMode.NONE) {
                 return;
@@ -247,7 +247,7 @@ namespace cadencii
             item.ID.setLength(length);
             EditorManager.mAddingEvent = item;
 
-            btn.DoDragDrop(handle, cadencii.java.awt.DragDropEffects.All);
+            btn.DoDragDrop(handle, Cadencii.Gui.DragDropEffects.All);
         }
         #endregion
 

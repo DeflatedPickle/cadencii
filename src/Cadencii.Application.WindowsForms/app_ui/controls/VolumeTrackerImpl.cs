@@ -16,10 +16,10 @@ using System.Linq;
 using System.Windows.Forms;
 using cadencii;
 using cadencii.windows.forms;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.vsq;
 
-using Keys = cadencii.java.awt.Keys;
+using Keys = Cadencii.Gui.Keys;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
 

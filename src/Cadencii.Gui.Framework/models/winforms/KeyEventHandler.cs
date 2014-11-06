@@ -1,3 +1,3 @@
-namespace cadencii.java.awt {
+namespace Cadencii.Gui {
 	public delegate void KeyEventHandler (object sender, KeyEventArgs e);
 }

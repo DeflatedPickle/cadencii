@@ -12,8 +12,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using cadencii.java.awt;
-using DialogResult = cadencii.java.awt.DialogResult;
+using Cadencii.Gui;
+using DialogResult = Cadencii.Gui.DialogResult;
 
 namespace cadencii
 {

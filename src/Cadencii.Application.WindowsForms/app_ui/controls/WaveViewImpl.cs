@@ -14,7 +14,7 @@
 using System;
 using System.Windows.Forms;
 using cadencii;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.media;
 using cadencii.windows.forms;
  using ApplicationGlobal = cadencii.core.ApplicationGlobal;
@@ -103,7 +103,7 @@ namespace cadencii
 
             // 背景を塗りつぶす
             g.setStroke(getStrokeDefault());
-            g.setColor(cadencii.java.awt.Colors.Gray);
+            g.setColor(Cadencii.Gui.Colors.Gray);
             g.fillRect(rc.X, rc.Y, rc.Width, rc.Height);
 
             if (EditorManager.skipDrawingWaveformWhenPlaying && EditorManager.isPlaying()) {
@@ -111,7 +111,7 @@ namespace cadencii
                 g.setColor(mBorderColor);
                 g.drawLine(0, 0, 0, height);
 
-                g.setColor(cadencii.java.awt.Colors.Black);
+                g.setColor(Cadencii.Gui.Colors.Black);
 				g.drawStringEx(
                     "(hidden for performance)",
 					cadencii.core.EditorConfig.baseFont8,
@@ -123,7 +123,7 @@ namespace cadencii
 
             // スケール線を描く
             int half_height = height / 2;
-            g.setColor(cadencii.java.awt.Colors.Black);
+            g.setColor(Cadencii.Gui.Colors.Black);
             g.drawLine(0, half_height, width, half_height);
 
             // 描画コンテキストを用いて波形を描画
@@ -134,7 +134,7 @@ namespace cadencii
                 if (mAutoMaximize) {
                     context.draw(
                         g,
-                        cadencii.java.awt.Colors.Black,
+                        Cadencii.Gui.Colors.Black,
                         rc,
                         EditorManager.clockFromXCoord(EditorManager.keyWidth),
                         EditorManager.clockFromXCoord(EditorManager.keyWidth + width),
@@ -143,7 +143,7 @@ namespace cadencii
                 } else {
                     context.draw(
                         g,
-                        cadencii.java.awt.Colors.Black,
+                        Cadencii.Gui.Colors.Black,
                         rc,
                         EditorManager.clockFromXCoord(EditorManager.keyWidth),
                         EditorManager.clockFromXCoord(EditorManager.keyWidth + width),
@@ -160,7 +160,7 @@ namespace cadencii
             // ソングポジション
             int song_pos_x = EditorManager.xCoordFromClocks(EditorManager.getCurrentClock()) - EditorManager.keyWidth;
             if (0 < song_pos_x) {
-				g.setColor(cadencii.java.awt.Colors.White);
+				g.setColor(Cadencii.Gui.Colors.White);
                 g.setStroke(getStroke2px());
                 g.drawLine(song_pos_x, 0, song_pos_x, height);
             }

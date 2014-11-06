@@ -1,5 +1,5 @@
 using System;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.vsq;
 
 namespace cadencii
@@ -11,11 +11,11 @@ namespace cadencii
         /// <summary>
         /// ベジエ曲線の色
         /// </summary>
-		public static readonly Color COLOR_BEZIER_CURVE = cadencii.java.awt.Colors.Navy;
+		public static readonly Color COLOR_BEZIER_CURVE = Cadencii.Gui.Colors.Navy;
         /// <summary>
         /// ベジエ曲線の補助線の色
         /// </summary>
-        public static readonly Color COLOR_BEZIER_AUXILIARY = cadencii.java.awt.Colors.Orange;
+        public static readonly Color COLOR_BEZIER_AUXILIARY = Cadencii.Gui.Colors.Orange;
         /// <summary>
         /// ベジエ曲線の制御点の色
         /// </summary>
@@ -36,7 +36,7 @@ namespace cadencii
         /// <summary>
         /// データ点のハイライト色
         /// </summary>
-		public static readonly Color COLOR_DOT_HILIGHT = cadencii.java.awt.Colors.Coral;
+		public static readonly Color COLOR_DOT_HILIGHT = Cadencii.Gui.Colors.Coral;
         public static readonly Color COLOR_A244R255G023B012 = new Color(255, 23, 12, 244);
         public static readonly Color COLOR_A144R255G255B255 = new Color(255, 255, 255, 144);
         public static readonly Color COLOR_A072R255G255B255 = new Color(255, 255, 255, 72);

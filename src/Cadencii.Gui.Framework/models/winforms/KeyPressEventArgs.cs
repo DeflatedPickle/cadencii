@@ -1,6 +1,6 @@
 using System;
 
-namespace cadencii.java.awt {
+namespace Cadencii.Gui {
 	public class KeyPressEventArgs : EventArgs 
 	{
 		public KeyPressEventArgs (char keyChar)

@@ -303,7 +303,7 @@ namespace cadencii
 
             // 描画の準備
             LineGraphDrawer d = getDrawerResulting();
-			d.setGraphics(new cadencii.java.awt.Graphics () { NativeGraphics = g});
+			d.setGraphics(new Cadencii.Gui.Graphics () { NativeGraphics = g});
 
             // ビブラートのピッチベンドを取得するイテレータを取得
             int width = raw_width;
@@ -376,7 +376,7 @@ namespace cadencii
             // 描画の準備
             LineGraphDrawer d = getDrawerRate();
             d.clear();
-			d.setGraphics(new cadencii.java.awt.Graphics () { NativeGraphics = g});
+			d.setGraphics(new Cadencii.Gui.Graphics () { NativeGraphics = g});
             drawVibratoCurve(
                 handle.getRateBP(),
                 handle.getStartRate(),
@@ -401,7 +401,7 @@ namespace cadencii
             // 描画の準備
             LineGraphDrawer d = getDrawerDepth();
             d.clear();
-            d.setGraphics(new cadencii.java.awt.Graphics () { NativeGraphics = g});
+            d.setGraphics(new Cadencii.Gui.Graphics () { NativeGraphics = g});
             drawVibratoCurve(
                 handle.getDepthBP(),
                 handle.getStartDepth(),
@@ -520,7 +520,7 @@ namespace cadencii
             if (mDrawerRate == null) {
                 mDrawerRate = new LineGraphDrawer(LineGraphDrawer.TYPE_STEP);
                 mDrawerRate.setDotMode(LineGraphDrawer.DOTMODE_ALWAYS);
-                mDrawerRate.setFillColor(cadencii.java.awt.Colors.CornflowerBlue);
+                mDrawerRate.setFillColor(Cadencii.Gui.Colors.CornflowerBlue);
             }
             return mDrawerRate;
         }
@@ -534,7 +534,7 @@ namespace cadencii
             if (mDrawerDepth == null) {
                 mDrawerDepth = new LineGraphDrawer(LineGraphDrawer.TYPE_STEP);
                 mDrawerDepth.setDotMode(LineGraphDrawer.DOTMODE_ALWAYS);
-				mDrawerDepth.setFillColor(cadencii.java.awt.Colors.CornflowerBlue);
+				mDrawerDepth.setFillColor(Cadencii.Gui.Colors.CornflowerBlue);
             }
             return mDrawerDepth;
         }
@@ -550,7 +550,7 @@ namespace cadencii
                 mDrawerResulting.setDotMode(LineGraphDrawer.DOTMODE_NO);
                 mDrawerResulting.setFill(false);
                 mDrawerResulting.setLineWidth(2);
-				mDrawerResulting.setLineColor(cadencii.java.awt.Colors.ForestGreen);
+				mDrawerResulting.setLineColor(Cadencii.Gui.Colors.ForestGreen);
             }
             return mDrawerResulting;
         }
@@ -917,21 +917,21 @@ namespace cadencii
             // 
             // textDepth
             // 
-            this.textDepth.BackColor = new cadencii.java.awt.Color(((int)(((byte)(240)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.textDepth.ForeColor = cadencii.java.awt.Colors.White;
-            this.textDepth.Location = new cadencii.java.awt.Point(86, 37);
+            this.textDepth.BackColor = new Cadencii.Gui.Color(((int)(((byte)(240)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.textDepth.ForeColor = Cadencii.Gui.Colors.White;
+            this.textDepth.Location = new Cadencii.Gui.Point(86, 37);
             this.textDepth.Name = "textDepth";
-            this.textDepth.Size = new cadencii.java.awt.Dimension(72, 19);
+            this.textDepth.Size = new Cadencii.Gui.Dimension(72, 19);
             this.textDepth.TabIndex = 8;
             this.textDepth.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // textRate
             // 
-            this.textRate.BackColor = new cadencii.java.awt.Color (((int)(((byte)(240)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.textRate.ForeColor = cadencii.java.awt.Colors.White;
-            this.textRate.Location = new cadencii.java.awt.Point(86, 12);
+            this.textRate.BackColor = new Cadencii.Gui.Color (((int)(((byte)(240)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.textRate.ForeColor = Cadencii.Gui.Colors.White;
+            this.textRate.Location = new Cadencii.Gui.Point(86, 12);
             this.textRate.Name = "textRate";
-            this.textRate.Size = new cadencii.java.awt.Dimension(72, 19);
+            this.textRate.Size = new Cadencii.Gui.Dimension(72, 19);
             this.textRate.TabIndex = 7;
             this.textRate.Type = cadencii.NumberTextBoxValueType.Integer;
             // 

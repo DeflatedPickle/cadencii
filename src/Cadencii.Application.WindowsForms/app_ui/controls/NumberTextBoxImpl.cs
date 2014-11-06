@@ -14,7 +14,7 @@
 #define COMPONENT_ENABLE_LOCATION
 using System;
 using cadencii;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.windows.forms;
 
 
@@ -25,9 +25,9 @@ namespace cadencii
     public class NumberTextBoxImpl : TextBoxImpl, NumberTextBox
     {
         private NumberTextBoxValueType m_value_type = NumberTextBoxValueType.Double;
-        private Color m_textcolor_normal = cadencii.java.awt.Colors.Black;
-		private Color m_textcolor_invalid = cadencii.java.awt.Colors.White;
-		private Color m_backcolor_normal = cadencii.java.awt.Colors.White;
+        private Color m_textcolor_normal = Cadencii.Gui.Colors.Black;
+		private Color m_textcolor_invalid = Cadencii.Gui.Colors.White;
+		private Color m_backcolor_normal = Cadencii.Gui.Colors.White;
         private Color m_backcolor_invalid = new Color(240, 128, 128);
 
         /// <summary>

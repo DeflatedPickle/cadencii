@@ -1,11 +1,11 @@
 using System;
-using cadencii.java.awt;
+using Cadencii.Gui;
 
 namespace cadencii
 {
 	public class ToolStripStatusLabelImpl : System.Windows.Forms.ToolStripStatusLabel, UiToolStripStatusLabel
 	{
-		cadencii.java.awt.Image UiToolStripStatusLabel.Image {
+		Cadencii.Gui.Image UiToolStripStatusLabel.Image {
 			get { return Image.ToAwt (); }
 			set { Image = value.ToWF (); }
 		}

@@ -123,7 +123,7 @@ namespace cadencii
 
         public void setFont(string fontName, float fontSize)
         {
-            Util.applyFontRecurse(this, new cadencii.java.awt.Font(new System.Drawing.Font(fontName, fontSize)));
+            Util.applyFontRecurse(this, new Cadencii.Gui.Font(new System.Drawing.Font(fontName, fontSize)));
         }
 
         public void setTextPositionGroup(string value)
@@ -360,16 +360,16 @@ namespace cadencii
             // 
             // numEnd
             // 
-            this.numEnd.Location = new cadencii.java.awt.Point(97, 44);
+            this.numEnd.Location = new Cadencii.Gui.Point(97, 44);
             this.numEnd.Name = "numEnd";
-            this.numEnd.Size = new cadencii.java.awt.Dimension(73, 19);
+            this.numEnd.Size = new Cadencii.Gui.Dimension(73, 19);
             this.numEnd.TabIndex = 6;
             // 
             // numStart
             // 
-            this.numStart.Location = new cadencii.java.awt.Point(97, 18);
+            this.numStart.Location = new Cadencii.Gui.Point(97, 18);
             this.numStart.Name = "numStart";
-            this.numStart.Size = new cadencii.java.awt.Dimension(73, 19);
+            this.numStart.Size = new Cadencii.Gui.Dimension(73, 19);
             this.numStart.TabIndex = 7;
             // 
             // chkEnd
@@ -435,9 +435,9 @@ namespace cadencii
             // 
             // numNumerator
             // 
-            this.numNumerator.Location = new cadencii.java.awt.Point(23, 21);
+            this.numNumerator.Location = new Cadencii.Gui.Point(23, 21);
             this.numNumerator.Name = "numNumerator";
-            this.numNumerator.Size = new cadencii.java.awt.Dimension(73, 19);
+            this.numNumerator.Size = new Cadencii.Gui.Dimension(73, 19);
             this.numNumerator.TabIndex = 9;
             // 
             // btnOK

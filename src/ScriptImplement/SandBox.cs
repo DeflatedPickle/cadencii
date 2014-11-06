@@ -168,7 +168,7 @@ public class AutoBRITool : IPaletteTool
     /// <param name="ids">クリックされたイベントのInternalIDが格納された配列</param>
     /// <param name="button">クリックされたときのマウスボタン</param>
     /// <returns></returns>
-	public bool edit(cadencii.vsq.VsqTrack track, int[] ids, cadencii.java.awt.MouseButtons button)
+	public bool edit(cadencii.vsq.VsqTrack track, int[] ids, Cadencii.Gui.MouseButtons button)
     {
         // コントロールカーブの時間方向の解像度を，Cadenciiの設定値から取得
 		int resol = cadencii.core.ApplicationGlobal.appConfig.getControlCurveResolutionValue();
@@ -261,9 +261,9 @@ public class AutoBRITool : IPaletteTool
     /// IPaletteToolのメンバー．このパレットツールの設定ダイアログを開き，ダイアログの結果を返す．
     /// </summary>
     /// <returns></returns>
-	public cadencii.java.awt.DialogResult openDialog()
+	public Cadencii.Gui.DialogResult openDialog()
     {
-		return cadencii.java.awt.DialogResult.Cancel;
+		return Cadencii.Gui.DialogResult.Cancel;
     }
 
     /// <summary>
@@ -279,7 +279,7 @@ public class AutoBRITool : IPaletteTool
     /// IPaletteToolのメンバー．このパレットツールのアイコンを返す．
     /// </summary>
     /// <returns></returns>
-	public cadencii.java.awt.Image getIcon()
+	public Cadencii.Gui.Image getIcon()
     {
         return null;
     }

@@ -27,7 +27,7 @@
 using System;
 using System.ComponentModel;
 
-namespace cadencii.java.awt {
+namespace Cadencii.Gui {
 
 	public struct Padding {
 

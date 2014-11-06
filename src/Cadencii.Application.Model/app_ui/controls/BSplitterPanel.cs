@@ -13,7 +13,7 @@
  */
 using System;
 using System.ComponentModel;
-using cadencii.java.awt;
+using Cadencii.Gui;
 
 namespace cadencii.apputil
 {

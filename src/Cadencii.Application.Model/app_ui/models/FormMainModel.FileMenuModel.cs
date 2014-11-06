@@ -9,7 +9,7 @@ using cadencii.vsq.io;
 using System.Text;
 using System.Linq;
 using cadencii.java.util;
-using cadencii.java.awt;
+using Cadencii.Gui;
 
 namespace cadencii
 {
@@ -61,7 +61,7 @@ namespace cadencii
 				string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("xvsq");
 				parent.form.openXmlVsqDialog.SetSelectedFile(dir);
 				var dialog_result = DialogManager.showModalFileDialog(parent.form.openXmlVsqDialog, true, parent.form);
-				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
+				if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 					return;
 				}
 				if (EditorManager.isPlaying()) {
@@ -128,7 +128,7 @@ namespace cadencii
 						parent.form.saveXmlVsqDialog.SetSelectedFile(dir);
 					}
 					var dr = DialogManager.showModalFileDialog(parent.form.saveXmlVsqDialog, false, parent.form);
-					if (dr == cadencii.java.awt.DialogResult.OK) {
+					if (dr == Cadencii.Gui.DialogResult.OK) {
 						file = parent.form.saveXmlVsqDialog.FileName;
 						ApplicationGlobal.appConfig.setLastUsedPathOut(file, ".xvsq");
 					}
@@ -158,7 +158,7 @@ namespace cadencii
 				string dir = ApplicationGlobal.appConfig.getLastUsedPathOut("xvsq");
 				parent.form.saveXmlVsqDialog.SetSelectedFile(dir);
 				var dr = DialogManager.showModalFileDialog(parent.form.saveXmlVsqDialog, false, parent.form);
-				if (dr == cadencii.java.awt.DialogResult.OK) {
+				if (dr == Cadencii.Gui.DialogResult.OK) {
 					string file = parent.form.saveXmlVsqDialog.FileName;
 					ApplicationGlobal.appConfig.setLastUsedPathOut(file, ".xvsq");
 					EditorManager.saveTo(file);
@@ -188,7 +188,7 @@ namespace cadencii
 				parent.form.openMidiDialog.SetSelectedFile(dir);
 				var dialog_result = DialogManager.showModalFileDialog(parent.form.openMidiDialog, true, parent.form);
 				string ext = ".vsq";
-				if (dialog_result == cadencii.java.awt.DialogResult.OK) {
+				if (dialog_result == Cadencii.Gui.DialogResult.OK) {
 					#if DEBUG
 					CDebug.WriteLine("openMidiDialog.Filter=" + parent.form.openMidiDialog.Filter);
 					#endif
@@ -252,7 +252,7 @@ namespace cadencii
 				parent.form.openUstDialog.SetSelectedFile(dir);
 				var dialog_result = DialogManager.showModalFileDialog(parent.form.openUstDialog, true, parent.form);
 
-				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
+				if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 					return;
 				}
 
@@ -348,7 +348,7 @@ namespace cadencii
 					dialog = ApplicationUIHost.Create<UiOpenFileDialog> ();
 					dialog.SetSelectedFile (dir);
 					var dialog_result = DialogManager.showModalFileDialog (dialog, true, parent.form);
-					if (dialog_result != cadencii.java.awt.DialogResult.OK) {
+					if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 						return;
 					}
 					string file = dialog.FileName;
@@ -465,7 +465,7 @@ namespace cadencii
 				parent.form.openMidiDialog.SetSelectedFile(dir);
 				var dialog_result = DialogManager.showModalFileDialog(parent.form.openMidiDialog, true, parent.form);
 
-				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
+				if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 					return;
 				}
 				dlg.Location = parent.GetFormPreferedLocation(dlg.Width, dlg.Height);
@@ -860,7 +860,7 @@ namespace cadencii
 				parent.form.openMidiDialog.SetSelectedFile(dir);
 				var dialog_result = DialogManager.showModalFileDialog(parent.form.openMidiDialog, true, parent.form);
 
-				if (dialog_result != cadencii.java.awt.DialogResult.OK) {
+				if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 					return;
 				}
 				VsqFileEx vsq = null;
@@ -1006,7 +1006,7 @@ namespace cadencii
 
 			public void RunFileExportWaveCommand()
 			{
-				var dialog_result = cadencii.java.awt.DialogResult.Cancel;
+				var dialog_result = Cadencii.Gui.DialogResult.Cancel;
 				string filename = "";
 				UiSaveFileDialog sfd = null;
 				try {
@@ -1019,7 +1019,7 @@ namespace cadencii
 					sfd.Title = _("Wave Export");
 					sfd.Filter = string.Join("|", new[] { _("Wave File(*.wav)|*.wav"), _("All Files(*.*)|*.*") });
 					dialog_result = DialogManager.showModalFileDialog(sfd, false, parent.form);
-					if (dialog_result != cadencii.java.awt.DialogResult.OK) {
+					if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 						return;
 					}
 					filename = sfd.FileName;
@@ -1043,7 +1043,7 @@ namespace cadencii
 					DialogManager.showMessageBox(
 						_("invalid rendering region; start>=end"),
 						_("Error"),
-						cadencii.java.awt.AwtHost.OK_OPTION,
+						Cadencii.Gui.AwtHost.OK_OPTION,
 						cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
 					return;
 				}
@@ -1106,7 +1106,7 @@ namespace cadencii
 					file_dialog.Description = _("Choose destination directory");
 					file_dialog.SelectedPath = initial_dir;
 					var ret = DialogManager.showModalFolderDialog(file_dialog, parent.form);
-					if (ret != cadencii.java.awt.DialogResult.OK) {
+					if (ret != Cadencii.Gui.DialogResult.OK) {
 						return;
 					}
 					dir = file_dialog.SelectedPath;
@@ -1139,7 +1139,7 @@ namespace cadencii
 					DialogManager.showMessageBox(
 						_("invalid rendering region; start>=end"),
 						_("Error"),
-						cadencii.java.awt.AwtHost.OK_OPTION,
+						Cadencii.Gui.AwtHost.OK_OPTION,
 						cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
 					return;
 				}
@@ -1221,7 +1221,7 @@ namespace cadencii
 					parent.form.saveMidiDialog.SetSelectedFile(dir);
 					var dialog_result = DialogManager.showModalFileDialog(parent.form.saveMidiDialog, false, parent.form);
 
-					if (dialog_result == cadencii.java.awt.DialogResult.OK) {
+					if (dialog_result == Cadencii.Gui.DialogResult.OK) {
 						FileStream fs = null;
 						string filename = parent.form.saveMidiDialog.FileName;
 						ApplicationGlobal.appConfig.setLastUsedPathOut(filename, ".mid");
@@ -1444,7 +1444,7 @@ namespace cadencii
 					dialog.SetSelectedFile(first);
 					dialog.Filter = string.Join("|", new[] { _("MusicXML(*.xml)|*.xml"), _("All Files(*.*)|*.*") });
 					var result = DialogManager.showModalFileDialog(dialog, false, parent.form);
-					if (result != cadencii.java.awt.DialogResult.OK) {
+					if (result != Cadencii.Gui.DialogResult.OK) {
 						return;
 					}
 					string file = dialog.FileName;
@@ -1475,7 +1475,7 @@ namespace cadencii
 
 				// 出力先のファイル名を選ぶ
 				UiSaveFileDialog dialog = null;
-				var dialog_result = cadencii.java.awt.DialogResult.Cancel;
+				var dialog_result = Cadencii.Gui.DialogResult.Cancel;
 				string file_name = "";
 				try {
 					string last_path = ApplicationGlobal.appConfig.getLastUsedPathOut("ust");
@@ -1484,7 +1484,7 @@ namespace cadencii
 					dialog.Title = _("Export UTAU (*.ust)");
 					dialog.Filter = string.Join("|", new[] { _("UTAU Script Format(*.ust)|*.ust"), _("All Files(*.*)|*.*") });
 					dialog_result = DialogManager.showModalFileDialog(dialog, false, parent.form);
-					if (dialog_result != cadencii.java.awt.DialogResult.OK) {
+					if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 						return;
 					}
 					file_name = dialog.FileName;
@@ -1532,7 +1532,7 @@ namespace cadencii
 
 				// 出力先のファイル名を選ぶ
 				UiSaveFileDialog dialog = null;
-				var dialog_result = cadencii.java.awt.DialogResult.Cancel;
+				var dialog_result = Cadencii.Gui.DialogResult.Cancel;
 				string file_name = "";
 				try {
 					string last_path = ApplicationGlobal.appConfig.getLastUsedPathOut("vsq");
@@ -1541,7 +1541,7 @@ namespace cadencii
 					dialog.Title = _("Export VSQ (*.vsq)");
 					dialog.Filter = string.Join("|", new[] { _("VSQ Format(*.vsq)|*.vsq"), _("All Files(*.*)|*.*") });
 					dialog_result = DialogManager.showModalFileDialog(dialog, false, parent.form);
-					if (dialog_result != cadencii.java.awt.DialogResult.OK) {
+					if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 						return;
 					}
 					file_name = dialog.FileName;
@@ -1586,7 +1586,7 @@ namespace cadencii
 						_("Info"),
 						cadencii.Dialog.MSGBOX_YES_NO_OPTION,
 						cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
-					if (dr != cadencii.java.awt.DialogResult.Yes) {
+					if (dr != Cadencii.Gui.DialogResult.Yes) {
 						return;
 					}
 				}
@@ -1595,7 +1595,7 @@ namespace cadencii
 
 				// 出力先のファイル名を選ぶ
 				UiSaveFileDialog dialog = null;
-				var dialog_result = cadencii.java.awt.DialogResult.Cancel;
+				var dialog_result = Cadencii.Gui.DialogResult.Cancel;
 				string file_name = "";
 				try {
 					string last_path = ApplicationGlobal.appConfig.getLastUsedPathOut("txt");
@@ -1604,7 +1604,7 @@ namespace cadencii
 					dialog.Title = _("Metatext for vConnect");
 					dialog.Filter = string.Join("|", new[] { _("Text File(*.txt)|*.txt"), _("All Files(*.*)|*.*") });
 					dialog_result = DialogManager.showModalFileDialog(dialog, false, parent.form);
-					if (dialog_result != cadencii.java.awt.DialogResult.OK) {
+					if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 						return;
 					}
 					file_name = dialog.FileName;

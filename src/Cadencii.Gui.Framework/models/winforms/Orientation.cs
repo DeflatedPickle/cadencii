@@ -1,7 +1,7 @@
 using System;
-using cadencii.java.awt;
+using Cadencii.Gui;
 
-namespace cadencii.java.awt
+namespace Cadencii.Gui
 {
 	public enum Orientation
 	{

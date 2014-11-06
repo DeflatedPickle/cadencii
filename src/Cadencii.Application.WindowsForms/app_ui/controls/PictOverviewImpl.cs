@@ -15,7 +15,7 @@ using System;
 using System.Threading;
 using System.Windows.Forms;
 using System.Collections.Generic;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.java.util;
 using cadencii.vsq;
 using cadencii.windows.forms;
@@ -407,7 +407,7 @@ namespace cadencii
         public void handleMouseDown(Object sender, MouseEventArgs e)
         {
             MouseButtons btn = e.Button;
-            if (mMainForm.isMouseMiddleButtonDowned((cadencii.java.awt.MouseButtons) e.Button)) {
+            if (mMainForm.isMouseMiddleButtonDowned((Cadencii.Gui.MouseButtons) e.Button)) {
                 btn = MouseButtons.Middle;
             }
             if (btn == MouseButtons.Middle) {
@@ -568,7 +568,7 @@ namespace cadencii
             // ソングポジション
             int px_current_clock = (int)((EditorManager.getCurrentClock() - mOverviewStartToDrawClock) * mOverviewPixelPerClock);
             g.setStroke(getStroke2px());
-			g.setColor(cadencii.java.awt.Colors.White);
+			g.setColor(Cadencii.Gui.Colors.White);
             g.drawLine(px_current_clock + xoffset, 0, px_current_clock + xoffset, height);
             g.setStroke(getStrokeDefault());
 
@@ -581,48 +581,48 @@ namespace cadencii
             g.setColor(EditorManager.COLOR_BORDER);
             // zoomボタン
             rc = getButtonBoundsZoom();
-            g.setColor(mOverviewButtonZoomMouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
+            g.setColor(mOverviewButtonZoomMouseDowned ? Cadencii.Gui.Colors.Gray : Cadencii.Gui.Colors.LightGray);
             g.fillRect(rc.X, rc.Y, rc.Width, rc.Height);
             g.setColor(EditorManager.COLOR_BORDER);
             g.drawRect(rc.X, rc.Y, rc.Width, rc.Height);
             int centerx = rc.X + rc.Width / 2 + 1;
             int centery = rc.Y + rc.Height / 2 + 1;
-            g.setColor(mOverviewButtonZoomMouseDowned ? cadencii.java.awt.Colors.LightGray : cadencii.java.awt.Colors.Gray);
+            g.setColor(mOverviewButtonZoomMouseDowned ? Cadencii.Gui.Colors.LightGray : Cadencii.Gui.Colors.Gray);
             g.setStroke(getStroke2px());
             g.drawLine(centerx - 4, centery, centerx + 4, centery);
             g.drawLine(centerx, centery - 4, centerx, centery + 4);
             g.setStroke(getStrokeDefault());
             // moozボタン
             rc = getButtonBoundsMooz();
-            g.setColor(mOverviewButtonMoozMouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
+            g.setColor(mOverviewButtonMoozMouseDowned ? Cadencii.Gui.Colors.Gray : Cadencii.Gui.Colors.LightGray);
             g.fillRect(rc.X, rc.Y, rc.Width, rc.Height);
             g.setColor(EditorManager.COLOR_BORDER);
             g.drawRect(rc.X, rc.Y, rc.Width, rc.Height);
             centerx = rc.X + rc.Width / 2 + 1;
             centery = rc.Y + rc.Height / 2 + 1;
-            g.setColor(mOverviewButtonMoozMouseDowned ? cadencii.java.awt.Colors.LightGray : cadencii.java.awt.Colors.Gray);
+            g.setColor(mOverviewButtonMoozMouseDowned ? Cadencii.Gui.Colors.LightGray : Cadencii.Gui.Colors.Gray);
             g.setStroke(getStroke2px());
             g.drawLine(centerx - 4, centery, centerx + 4, centery);
             g.setStroke(getStrokeDefault());
             // left1ボタン
             rc = getButtonBoundsLeft1();
-            g.setColor(mOverviewButtonLeft1MouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
+            g.setColor(mOverviewButtonLeft1MouseDowned ? Cadencii.Gui.Colors.Gray : Cadencii.Gui.Colors.LightGray);
             g.fillRect(rc.X, rc.Y, rc.Width, rc.Height);
             g.setColor(EditorManager.COLOR_BORDER);
             g.drawRect(rc.X, rc.Y, rc.Width, rc.Height);
             centerx = rc.X + rc.Width / 2 + 1;
             centery = rc.Y + rc.Height / 2 + 1;
-            g.setColor(mOverviewButtonLeft1MouseDowned ? cadencii.java.awt.Colors.LightGray : cadencii.java.awt.Colors.Gray);
+            g.setColor(mOverviewButtonLeft1MouseDowned ? Cadencii.Gui.Colors.LightGray : Cadencii.Gui.Colors.Gray);
             g.drawPolyline(new int[] { centerx + 4, centerx - 4, centerx + 4 }, new int[] { centery - 4, centery, centery + 4 }, 3);
             // left2ボタン
             rc = getButtonBoundsLeft2();
-            g.setColor(mOverviewButtonLeft2MouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
+            g.setColor(mOverviewButtonLeft2MouseDowned ? Cadencii.Gui.Colors.Gray : Cadencii.Gui.Colors.LightGray);
             g.fillRect(rc.X, rc.Y, rc.Width, rc.Height);
             g.setColor(EditorManager.COLOR_BORDER);
             g.drawRect(rc.X, rc.Y, rc.Width, rc.Height);
             centerx = rc.X + rc.Width / 2 + 1;
             centery = rc.Y + rc.Height / 2 + 1;
-            g.setColor(mOverviewButtonLeft2MouseDowned ? cadencii.java.awt.Colors.LightGray : cadencii.java.awt.Colors.Gray);
+            g.setColor(mOverviewButtonLeft2MouseDowned ? Cadencii.Gui.Colors.LightGray : Cadencii.Gui.Colors.Gray);
             g.drawPolyline(new int[] { centerx - 4, centerx + 4, centerx - 4 }, new int[] { centery - 4, centery, centery + 4 }, 3);
 
             // 右側のボタン類
@@ -630,23 +630,23 @@ namespace cadencii
             g.fillRect(width - btn_width - 3, 0, btn_width + 3, height);
             // right1ボタン
             rc = getButtonBoundsRight1();
-            g.setColor(mOverviewButtonRight1MouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
+            g.setColor(mOverviewButtonRight1MouseDowned ? Cadencii.Gui.Colors.Gray : Cadencii.Gui.Colors.LightGray);
             g.fillRect(rc.X, rc.Y, rc.Width, rc.Height);
             g.setColor(EditorManager.COLOR_BORDER);
             g.drawRect(rc.X, rc.Y, rc.Width, rc.Height);
             centerx = rc.X + rc.Width / 2 + 1;
             centery = rc.Y + rc.Height / 2 + 1;
-            g.setColor(mOverviewButtonRight1MouseDowned ? cadencii.java.awt.Colors.LightGray : cadencii.java.awt.Colors.Gray);
+            g.setColor(mOverviewButtonRight1MouseDowned ? Cadencii.Gui.Colors.LightGray : Cadencii.Gui.Colors.Gray);
             g.drawPolyline(new int[] { centerx + 4, centerx - 4, centerx + 4 }, new int[] { centery - 4, centery, centery + 4 }, 3);
             // right2ボタン
             rc = getButtonBoundsRight2();
-            g.setColor(mOverviewButtonRight2MouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
+            g.setColor(mOverviewButtonRight2MouseDowned ? Cadencii.Gui.Colors.Gray : Cadencii.Gui.Colors.LightGray);
             g.fillRect(rc.X, rc.Y, rc.Width, rc.Height);
             g.setColor(EditorManager.COLOR_BORDER);
             g.drawRect(rc.X, rc.Y, rc.Width, rc.Height);
             centerx = rc.X + rc.Width / 2 + 1;
             centery = rc.Y + rc.Height / 2 + 1;
-            g.setColor(mOverviewButtonRight2MouseDowned ? cadencii.java.awt.Colors.LightGray : cadencii.java.awt.Colors.Gray);
+            g.setColor(mOverviewButtonRight2MouseDowned ? Cadencii.Gui.Colors.LightGray : Cadencii.Gui.Colors.Gray);
             g.drawPolyline(new int[] { centerx - 4, centerx + 4, centerx - 4 }, new int[] { centery - 4, centery, centery + 4 }, 3);
         }
 
@@ -708,7 +708,7 @@ namespace cadencii
                 int clock_end = (int)(width / mOverviewPixelPerClock);
                 int premeasure = vsq.getPreMeasure();
                 g.setClip(null);
-                Color pen_color = new java.awt.Color(0, 0, 0, 130);
+                Color pen_color = new Cadencii.Gui.Color(0, 0, 0, 130);
 
                 int barcountx = 0;
                 string barcountstr = "";
@@ -730,7 +730,7 @@ namespace cadencii
 
                             g.setStroke(getStrokeDefault());
                             if (!barcountstr.Equals("")) {
-								g.setColor(cadencii.java.awt.Colors.White);
+								g.setColor(Cadencii.Gui.Colors.White);
                                 g.setFont(cadencii.core.EditorConfig.baseFont9);
                                 g.drawString(barcountstr, barcountx + 1 + xoffset, 1 + EditorConfig.baseFont9Height / 2 - EditorConfig.baseFont9OffsetHeight + 1);
                             }

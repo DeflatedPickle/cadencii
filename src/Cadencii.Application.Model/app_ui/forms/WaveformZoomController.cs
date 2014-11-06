@@ -11,7 +11,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
-using cadencii.java.awt;
+using Cadencii.Gui;
 
 namespace cadencii
 {
@@ -89,19 +89,19 @@ namespace cadencii
             int height = mUi.getHeight() - 1;
 
             // 背景を塗る
-			g.setColor(cadencii.java.awt.Colors.DarkGray);
+			g.setColor(Cadencii.Gui.Colors.DarkGray);
             g.fillRect(0, 0, width, height);
 
             // AutoMaximizeのチェックボックスを描く
-			g.setColor(mWaveViewButtonAutoMaximizeMouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
+			g.setColor(mWaveViewButtonAutoMaximizeMouseDowned ? Cadencii.Gui.Colors.Gray : Cadencii.Gui.Colors.LightGray);
             g.fillRect(SPACE, SPACE, 16, 16);
-			g.setColor(cadencii.java.awt.Colors.Gray);
+			g.setColor(Cadencii.Gui.Colors.Gray);
             g.drawRect(SPACE, SPACE, 16, 16);
             if (mWaveViewAutoMaximize) {
-				g.setColor(cadencii.java.awt.Colors.Gray);
+				g.setColor(Cadencii.Gui.Colors.Gray);
                 g.fillRect(SPACE + 3, SPACE + 3, 11, 11);
             }
-            g.setColor(cadencii.java.awt.Colors.Black);
+            g.setColor(Cadencii.Gui.Colors.Black);
             g.setFont(cadencii.core.EditorConfig.baseFont8);
             g.drawString(
                 "Auto Maximize",
@@ -113,12 +113,12 @@ namespace cadencii
             int zoom_button_height = height - SPACE - zoom_button_y;
             Rectangle rc = getButtonBoundsWaveViewZoom();
             if (!mWaveViewAutoMaximize) {
-				g.setColor(mWaveViewButtonZoomMouseDowned ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.LightGray);
+				g.setColor(mWaveViewButtonZoomMouseDowned ? Cadencii.Gui.Colors.Gray : Cadencii.Gui.Colors.LightGray);
                 g.fillRect(rc.X, rc.Y, rc.Width, rc.Height);
             }
-			g.setColor(cadencii.java.awt.Colors.Gray);
+			g.setColor(Cadencii.Gui.Colors.Gray);
             g.drawRect(rc.X, rc.Y, rc.Width, rc.Height);
-			g.setColor(mWaveViewAutoMaximize ? cadencii.java.awt.Colors.Gray : cadencii.java.awt.Colors.Black);
+			g.setColor(mWaveViewAutoMaximize ? Cadencii.Gui.Colors.Gray : Cadencii.Gui.Colors.Black);
             rc.Y = rc.Y + 1;
 			g.drawStringEx(
 				(mWaveViewButtonZoomMouseDowned ? "↑Move Mouse↓" : "Zoom"), cadencii.core.EditorConfig.baseFont9,

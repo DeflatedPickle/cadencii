@@ -12,10 +12,10 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using cadencii.java.awt;
-using cadencii.java.awt.geom;
+using Cadencii.Gui;
+using Cadencii.Gui.geom;
 
-namespace cadencii.java.awt
+namespace Cadencii.Gui
 {
 
     public class Font

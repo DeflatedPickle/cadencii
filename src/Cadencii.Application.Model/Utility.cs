@@ -24,8 +24,8 @@ using cadencii.java.util;
 using cadencii.vsq;
 //using cadencii.windows.forms;
 using cadencii.xml;
-using cadencii.java.awt;
-using Keys = cadencii.java.awt.Keys;
+using Cadencii.Gui;
+using Keys = Cadencii.Gui.Keys;
 using cadencii.core;
 
 namespace cadencii
@@ -966,7 +966,7 @@ namespace cadencii
 		/// </summary>
 		public static bool isApplyFontRecurseEnabled = true;
 
-		public static void applyContextMenuFontRecurse(UiContextMenuStrip item, cadencii.java.awt.Font font)
+		public static void applyContextMenuFontRecurse(UiContextMenuStrip item, Cadencii.Gui.Font font)
 		{
 			if (!isApplyFontRecurseEnabled) {
 				return;
@@ -977,7 +977,7 @@ namespace cadencii
 			}
 		}
 
-		public static void applyToolStripFontRecurse(UiToolStripItem item, cadencii.java.awt.Font font)
+		public static void applyToolStripFontRecurse(UiToolStripItem item, Cadencii.Gui.Font font)
 		{
 			if (!isApplyFontRecurseEnabled) {
 				return;

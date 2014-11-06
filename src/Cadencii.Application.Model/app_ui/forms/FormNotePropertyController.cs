@@ -14,7 +14,7 @@
 using System;
 using cadencii.apputil;
 using cadencii;
-using Keys = cadencii.java.awt.Keys;
+using Keys = Cadencii.Gui.Keys;
 
 
 namespace cadencii

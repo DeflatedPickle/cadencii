@@ -1,7 +1,7 @@
 
 using System;
 using System.Collections.Generic;
-using cadencii.java.awt;
+using Cadencii.Gui;
 
 namespace cadencii
 {

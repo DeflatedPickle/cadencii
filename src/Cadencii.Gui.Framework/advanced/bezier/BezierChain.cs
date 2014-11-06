@@ -14,7 +14,7 @@
 using System;
 using System.Runtime.Serialization;
 using System.Collections.Generic;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.java.util;
 
 namespace cadencii
@@ -397,7 +397,7 @@ namespace cadencii
         public BezierChain()
         {
             points = new List<BezierPoint>();
-            mColor = cadencii.java.awt.Colors.Black;
+            mColor = Cadencii.Gui.Colors.Black;
         }
 
         public Color getColor()
@@ -414,7 +414,7 @@ namespace cadencii
         {
             if (points == null) {
                 points = new List<BezierPoint>();
-				mColor = cadencii.java.awt.Colors.Black;
+				mColor = Cadencii.Gui.Colors.Black;
             }
             points.Add(bp);
             points.Sort();

@@ -13,7 +13,7 @@
  */
 using System;
 using System.Collections.Generic;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.java.util;
 
 namespace cadencii

@@ -9,7 +9,7 @@ using cadencii.vsq.io;
 using System.Text;
 using System.Linq;
 using cadencii.java.util;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.apputil;
 
 namespace cadencii
@@ -134,8 +134,8 @@ namespace cadencii
 						parent.form.mDialogPreference = ApplicationUIHost.Create<Preference> ();
 					}
 					var dlg = parent.form.mDialogPreference;
-					dlg.setBaseFont (new Font (EditorManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9));
-					dlg.setScreenFont (new Font (EditorManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9));
+					dlg.setBaseFont (new Font (EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9));
+					dlg.setScreenFont (new Font (EditorManager.editorConfig.ScreenFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9));
 					dlg.setWheelOrder (EditorManager.editorConfig.WheelOrder);
 					dlg.setCursorFixed (EditorManager.editorConfig.CursorFixed);
 					dlg.setDefaultVibratoLength (ApplicationGlobal.appConfig.DefaultVibratoLength);

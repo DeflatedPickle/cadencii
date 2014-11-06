@@ -5,20 +5,20 @@ using System.Text;
 using System.Windows.Forms;
 using cadencii.windows.forms;
 
-using ToolStripRenderMode = cadencii.java.awt.ToolStripRenderMode;
-using ToolStripItemDisplayStyle = cadencii.java.awt.ToolStripItemDisplayStyle;
-using ToolStripItemImageScaling = cadencii.java.awt.ToolStripItemImageScaling;
-using TextImageRelation = cadencii.java.awt.TextImageRelation;
-using CheckState = cadencii.java.awt.CheckState;
-using TickStyle = cadencii.java.awt.TickStyle;
-using Keys = cadencii.java.awt.Keys;
-using AnchorStyles = cadencii.java.awt.AnchorStyles;
-using Color = cadencii.java.awt.Color;
-using BorderStyle = cadencii.java.awt.BorderStyle;
-using DockStyle = cadencii.java.awt.DockStyle;
-using ToolBarButtonStyle = cadencii.java.awt.ToolBarButtonStyle;
-using ToolBarAppearance = cadencii.java.awt.ToolBarAppearance;
-using ToolBarTextAlign = cadencii.java.awt.ToolBarTextAlign;
+using ToolStripRenderMode = Cadencii.Gui.ToolStripRenderMode;
+using ToolStripItemDisplayStyle = Cadencii.Gui.ToolStripItemDisplayStyle;
+using ToolStripItemImageScaling = Cadencii.Gui.ToolStripItemImageScaling;
+using TextImageRelation = Cadencii.Gui.TextImageRelation;
+using CheckState = Cadencii.Gui.CheckState;
+using TickStyle = Cadencii.Gui.TickStyle;
+using Keys = Cadencii.Gui.Keys;
+using AnchorStyles = Cadencii.Gui.AnchorStyles;
+using Color = Cadencii.Gui.Color;
+using BorderStyle = Cadencii.Gui.BorderStyle;
+using DockStyle = Cadencii.Gui.DockStyle;
+using ToolBarButtonStyle = Cadencii.Gui.ToolBarButtonStyle;
+using ToolBarAppearance = Cadencii.Gui.ToolBarAppearance;
+using ToolBarTextAlign = Cadencii.Gui.ToolBarTextAlign;
 
 namespace cadencii
 {
@@ -400,10 +400,10 @@ namespace cadencii
             this.menuTools,
             this.menuHelp,
             this.menuHidden});
-            this.menuStripMain.Location = new cadencii.java.awt.Point(0, 0);
+            this.menuStripMain.Location = new Cadencii.Gui.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
             this.menuStripMain.RenderMode = ToolStripRenderMode.System;
-            this.menuStripMain.Size = new cadencii.java.awt.Dimension(955, 26);
+            this.menuStripMain.Size = new Cadencii.Gui.Dimension(955, 26);
             this.menuStripMain.TabIndex = 0;
             this.menuStripMain.Text = "menuStrip1";
             // 
@@ -426,14 +426,14 @@ namespace cadencii
             this.menuFileQuit});
             this.menuFile.ImageScaling = ToolStripItemImageScaling.None;
             this.menuFile.Name = "menuFile";
-            this.menuFile.Size = new cadencii.java.awt.Dimension(57, 22);
+            this.menuFile.Size = new Cadencii.Gui.Dimension(57, 22);
             this.menuFile.Text = "File(&F)";
             // 
             // menuFileNew
             // 
             this.menuFileNew.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuFileNew.Name = "menuFileNew";
-            this.menuFileNew.Size = new cadencii.java.awt.Dimension(270, 22);
+            this.menuFileNew.Size = new Cadencii.Gui.Dimension(270, 22);
             this.menuFileNew.Text = "New(N)";
             this.menuFileNew.TextImageRelation = TextImageRelation.Overlay;
             // 
@@ -441,7 +441,7 @@ namespace cadencii
             // 
             this.menuFileOpen.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuFileOpen.Name = "menuFileOpen";
-            this.menuFileOpen.Size = new cadencii.java.awt.Dimension(270, 22);
+            this.menuFileOpen.Size = new Cadencii.Gui.Dimension(270, 22);
             this.menuFileOpen.Text = "Open(&O)";
             this.menuFileOpen.TextImageRelation = TextImageRelation.Overlay;
             // 
@@ -449,7 +449,7 @@ namespace cadencii
             // 
             this.menuFileSave.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuFileSave.Name = "menuFileSave";
-            this.menuFileSave.Size = new cadencii.java.awt.Dimension(270, 22);
+            this.menuFileSave.Size = new Cadencii.Gui.Dimension(270, 22);
             this.menuFileSave.Text = "Save(&S)";
             this.menuFileSave.TextImageRelation = TextImageRelation.Overlay;
             // 
@@ -457,20 +457,20 @@ namespace cadencii
             // 
             this.menuFileSaveNamed.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuFileSaveNamed.Name = "menuFileSaveNamed";
-            this.menuFileSaveNamed.Size = new cadencii.java.awt.Dimension(270, 22);
+            this.menuFileSaveNamed.Size = new Cadencii.Gui.Dimension(270, 22);
             this.menuFileSaveNamed.Text = "Save As(&A)";
             this.menuFileSaveNamed.TextImageRelation = TextImageRelation.Overlay;
             // 
             // toolStripMenuItem10
             // 
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
-            this.toolStripMenuItem10.Size = new cadencii.java.awt.Dimension(267, 6);
+            this.toolStripMenuItem10.Size = new Cadencii.Gui.Dimension(267, 6);
             // 
             // menuFileOpenVsq
             // 
             this.menuFileOpenVsq.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuFileOpenVsq.Name = "menuFileOpenVsq";
-            this.menuFileOpenVsq.Size = new cadencii.java.awt.Dimension(270, 22);
+            this.menuFileOpenVsq.Size = new Cadencii.Gui.Dimension(270, 22);
             this.menuFileOpenVsq.Text = "Open VSQX/VSQ/Vocaloid Midi(&V)";
             this.menuFileOpenVsq.TextImageRelation = TextImageRelation.Overlay;
             // 
@@ -478,7 +478,7 @@ namespace cadencii
             // 
             this.menuFileOpenUst.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuFileOpenUst.Name = "menuFileOpenUst";
-            this.menuFileOpenUst.Size = new cadencii.java.awt.Dimension(270, 22);
+            this.menuFileOpenUst.Size = new Cadencii.Gui.Dimension(270, 22);
             this.menuFileOpenUst.Text = "Open UTAU Project File(&U)";
             this.menuFileOpenUst.TextImageRelation = TextImageRelation.Overlay;
             // 
@@ -490,26 +490,26 @@ namespace cadencii
             this.menuFileImportMidi,
             this.menuFileImportUst});
             this.menuFileImport.Name = "menuFileImport";
-            this.menuFileImport.Size = new cadencii.java.awt.Dimension(270, 22);
+            this.menuFileImport.Size = new Cadencii.Gui.Dimension(270, 22);
             this.menuFileImport.Text = "Import(&I)";
             this.menuFileImport.TextImageRelation = TextImageRelation.Overlay;
             // 
             // menuFileImportVsq
             // 
             this.menuFileImportVsq.Name = "menuFileImportVsq";
-            this.menuFileImportVsq.Size = new cadencii.java.awt.Dimension(175, 22);
+            this.menuFileImportVsq.Size = new Cadencii.Gui.Dimension(175, 22);
             this.menuFileImportVsq.Text = "VSQ File";
             // 
             // menuFileImportMidi
             // 
             this.menuFileImportMidi.Name = "menuFileImportMidi";
-            this.menuFileImportMidi.Size = new cadencii.java.awt.Dimension(175, 22);
+            this.menuFileImportMidi.Size = new Cadencii.Gui.Dimension(175, 22);
             this.menuFileImportMidi.Text = "Standard MIDI";
             // 
             // menuFileImportUst
             // 
             this.menuFileImportUst.Name = "menuFileImportUst";
-            this.menuFileImportUst.Size = new cadencii.java.awt.Dimension(175, 22);
+            this.menuFileImportUst.Size = new Cadencii.Gui.Dimension(175, 22);
             this.menuFileImportUst.Text = "UTAU project file";
             // 
             // menuFileExport
@@ -525,62 +525,62 @@ namespace cadencii
             this.menuFileExportUst,
             this.menuFileExportVxt});
             this.menuFileExport.Name = "menuFileExport";
-            this.menuFileExport.Size = new cadencii.java.awt.Dimension(270, 22);
+            this.menuFileExport.Size = new Cadencii.Gui.Dimension(270, 22);
             this.menuFileExport.Text = "Export(&E)";
             this.menuFileExport.TextImageRelation = TextImageRelation.Overlay;
             // 
             // menuFileExportWave
             // 
             this.menuFileExportWave.Name = "menuFileExportWave";
-            this.menuFileExportWave.Size = new cadencii.java.awt.Dimension(268, 22);
+            this.menuFileExportWave.Size = new Cadencii.Gui.Dimension(268, 22);
             this.menuFileExportWave.Text = "Wave";
             // 
             // menuFileExportParaWave
             // 
             this.menuFileExportParaWave.Name = "menuFileExportParaWave";
-            this.menuFileExportParaWave.Size = new cadencii.java.awt.Dimension(268, 22);
+            this.menuFileExportParaWave.Size = new Cadencii.Gui.Dimension(268, 22);
             this.menuFileExportParaWave.Text = "Serial numbered Wave";
             // 
             // menuFileExportVsq
             // 
             this.menuFileExportVsq.Name = "menuFileExportVsq";
-            this.menuFileExportVsq.Size = new cadencii.java.awt.Dimension(268, 22);
+            this.menuFileExportVsq.Size = new Cadencii.Gui.Dimension(268, 22);
             this.menuFileExportVsq.Text = "VSQ File";
             // 
             // menuFileExportVsqx
             // 
             this.menuFileExportVsqx.Name = "menuFileExportVsqx";
-            this.menuFileExportVsqx.Size = new cadencii.java.awt.Dimension(268, 22);
+            this.menuFileExportVsqx.Size = new Cadencii.Gui.Dimension(268, 22);
             this.menuFileExportVsqx.Text = "VSQX File";
             // 
             // menuFileExportMidi
             // 
             this.menuFileExportMidi.Name = "menuFileExportMidi";
-            this.menuFileExportMidi.Size = new cadencii.java.awt.Dimension(268, 22);
+            this.menuFileExportMidi.Size = new Cadencii.Gui.Dimension(268, 22);
             this.menuFileExportMidi.Text = "MIDI";
             // 
             // menuFileExportMusicXml
             // 
             this.menuFileExportMusicXml.Name = "menuFileExportMusicXml";
-            this.menuFileExportMusicXml.Size = new cadencii.java.awt.Dimension(268, 22);
+            this.menuFileExportMusicXml.Size = new Cadencii.Gui.Dimension(268, 22);
             this.menuFileExportMusicXml.Text = "MusicXML";
             // 
             // menuFileExportUst
             // 
             this.menuFileExportUst.Name = "menuFileExportUst";
-            this.menuFileExportUst.Size = new cadencii.java.awt.Dimension(268, 22);
+            this.menuFileExportUst.Size = new Cadencii.Gui.Dimension(268, 22);
             this.menuFileExportUst.Text = "UTAU Project File (current track)";
             // 
             // menuFileExportVxt
             // 
             this.menuFileExportVxt.Name = "menuFileExportVxt";
-            this.menuFileExportVxt.Size = new cadencii.java.awt.Dimension(268, 22);
+            this.menuFileExportVxt.Size = new Cadencii.Gui.Dimension(268, 22);
             this.menuFileExportVxt.Text = "Metatext for vConnect";
             // 
             // toolStripMenuItem11
             // 
             this.toolStripMenuItem11.Name = "toolStripMenuItem11";
-            this.toolStripMenuItem11.Size = new cadencii.java.awt.Dimension(267, 6);
+            this.toolStripMenuItem11.Size = new Cadencii.Gui.Dimension(267, 6);
             // 
             // menuFileRecent
             // 
@@ -588,7 +588,7 @@ namespace cadencii
             this.menuFileRecent.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuFileRecentClear});
             this.menuFileRecent.Name = "menuFileRecent";
-            this.menuFileRecent.Size = new cadencii.java.awt.Dimension(270, 22);
+            this.menuFileRecent.Size = new Cadencii.Gui.Dimension(270, 22);
             this.menuFileRecent.Text = "Recent Files(&R)";
             this.menuFileRecent.TextImageRelation = TextImageRelation.Overlay;
             // 
@@ -596,20 +596,20 @@ namespace cadencii
             // 
             this.menuFileRecentClear.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuFileRecentClear.Name = "menuFileRecentClear";
-            this.menuFileRecentClear.Size = new cadencii.java.awt.Dimension(141, 22);
+            this.menuFileRecentClear.Size = new Cadencii.Gui.Dimension(141, 22);
             this.menuFileRecentClear.Text = "Clear Menu";
             this.menuFileRecentClear.TextImageRelation = TextImageRelation.Overlay;
             // 
             // toolStripMenuItem12
             // 
             this.toolStripMenuItem12.Name = "toolStripMenuItem12";
-            this.toolStripMenuItem12.Size = new cadencii.java.awt.Dimension(267, 6);
+            this.toolStripMenuItem12.Size = new Cadencii.Gui.Dimension(267, 6);
             // 
             // menuFileQuit
             // 
             this.menuFileQuit.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuFileQuit.Name = "menuFileQuit";
-            this.menuFileQuit.Size = new cadencii.java.awt.Dimension(270, 22);
+            this.menuFileQuit.Size = new Cadencii.Gui.Dimension(270, 22);
             this.menuFileQuit.Text = "Quit(&Q)";
             this.menuFileQuit.TextImageRelation = TextImageRelation.Overlay;
             // 
@@ -629,77 +629,77 @@ namespace cadencii
             this.menuEditSelectAll,
             this.menuEditSelectAllEvents});
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new cadencii.java.awt.Dimension(59, 22);
+            this.menuEdit.Size = new Cadencii.Gui.Dimension(59, 22);
             this.menuEdit.Text = "Edit(&E)";
             // 
             // menuEditUndo
             // 
             this.menuEditUndo.Name = "menuEditUndo";
-            this.menuEditUndo.Size = new cadencii.java.awt.Dimension(220, 22);
+            this.menuEditUndo.Size = new Cadencii.Gui.Dimension(220, 22);
             this.menuEditUndo.Text = "Undo(&U)";
             // 
             // menuEditRedo
             // 
             this.menuEditRedo.Name = "menuEditRedo";
-            this.menuEditRedo.Size = new cadencii.java.awt.Dimension(220, 22);
+            this.menuEditRedo.Size = new Cadencii.Gui.Dimension(220, 22);
             this.menuEditRedo.Text = "Redo(&R)";
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new cadencii.java.awt.Dimension(217, 6);
+            this.toolStripMenuItem5.Size = new Cadencii.Gui.Dimension(217, 6);
             // 
             // menuEditCut
             // 
             this.menuEditCut.Name = "menuEditCut";
-            this.menuEditCut.Size = new cadencii.java.awt.Dimension(220, 22);
+            this.menuEditCut.Size = new Cadencii.Gui.Dimension(220, 22);
             this.menuEditCut.Text = "Cut(&T)";
             // 
             // menuEditCopy
             // 
             this.menuEditCopy.Name = "menuEditCopy";
-            this.menuEditCopy.Size = new cadencii.java.awt.Dimension(220, 22);
+            this.menuEditCopy.Size = new Cadencii.Gui.Dimension(220, 22);
             this.menuEditCopy.Text = "Copy(&C)";
             // 
             // menuEditPaste
             // 
             this.menuEditPaste.Name = "menuEditPaste";
             this.menuEditPaste.ShortcutKeyDisplayString = "";
-            this.menuEditPaste.Size = new cadencii.java.awt.Dimension(220, 22);
+            this.menuEditPaste.Size = new Cadencii.Gui.Dimension(220, 22);
             this.menuEditPaste.Text = "Paste(&P)";
             // 
             // menuEditDelete
             // 
             this.menuEditDelete.Name = "menuEditDelete";
-            this.menuEditDelete.Size = new cadencii.java.awt.Dimension(220, 22);
+            this.menuEditDelete.Size = new Cadencii.Gui.Dimension(220, 22);
             this.menuEditDelete.Text = "Delete(&D)";
             // 
             // toolStripMenuItem19
             // 
             this.toolStripMenuItem19.Name = "toolStripMenuItem19";
-            this.toolStripMenuItem19.Size = new cadencii.java.awt.Dimension(217, 6);
+            this.toolStripMenuItem19.Size = new Cadencii.Gui.Dimension(217, 6);
             // 
             // menuEditAutoNormalizeMode
             // 
             this.menuEditAutoNormalizeMode.Name = "menuEditAutoNormalizeMode";
-            this.menuEditAutoNormalizeMode.Size = new cadencii.java.awt.Dimension(220, 22);
+            this.menuEditAutoNormalizeMode.Size = new Cadencii.Gui.Dimension(220, 22);
             this.menuEditAutoNormalizeMode.Text = "Auto Normalize Mode(&N)";
             // 
             // toolStripMenuItem20
             // 
             this.toolStripMenuItem20.Name = "toolStripMenuItem20";
-            this.toolStripMenuItem20.Size = new cadencii.java.awt.Dimension(217, 6);
+            this.toolStripMenuItem20.Size = new Cadencii.Gui.Dimension(217, 6);
             // 
             // menuEditSelectAll
             // 
             this.menuEditSelectAll.Name = "menuEditSelectAll";
-            this.menuEditSelectAll.Size = new cadencii.java.awt.Dimension(220, 22);
+            this.menuEditSelectAll.Size = new Cadencii.Gui.Dimension(220, 22);
             this.menuEditSelectAll.Text = "Select All(&A)";
             // 
             // menuEditSelectAllEvents
             // 
             this.menuEditSelectAllEvents.Name = "menuEditSelectAllEvents";
-            this.menuEditSelectAllEvents.Size = new cadencii.java.awt.Dimension(220, 22);
+            this.menuEditSelectAllEvents.Size = new Cadencii.Gui.Dimension(220, 22);
             this.menuEditSelectAllEvents.Text = "Select All Events(&E)";
             // 
             // menuVisual
@@ -723,7 +723,7 @@ namespace cadencii
             this.menuVisualNoteProperty,
             this.menuVisualPitchLine});
             this.menuVisual.Name = "menuVisual";
-            this.menuVisual.Size = new cadencii.java.awt.Dimension(66, 22);
+            this.menuVisual.Size = new Cadencii.Gui.Dimension(66, 22);
             this.menuVisual.Text = "View(&V)";
             // 
             // menuVisualControlTrack
@@ -733,42 +733,42 @@ namespace cadencii
             this.menuVisualControlTrack.CheckState = CheckState.Checked;
             this.menuVisualControlTrack.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuVisualControlTrack.Name = "menuVisualControlTrack";
-            this.menuVisualControlTrack.Size = new cadencii.java.awt.Dimension(237, 22);
+            this.menuVisualControlTrack.Size = new Cadencii.Gui.Dimension(237, 22);
             this.menuVisualControlTrack.Text = "Control Track(&C)";
             // 
             // menuVisualMixer
             // 
             this.menuVisualMixer.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuVisualMixer.Name = "menuVisualMixer";
-            this.menuVisualMixer.Size = new cadencii.java.awt.Dimension(237, 22);
+            this.menuVisualMixer.Size = new Cadencii.Gui.Dimension(237, 22);
             this.menuVisualMixer.Text = "Mixer(&X)";
             // 
             // menuVisualWaveform
             // 
             this.menuVisualWaveform.CheckOnClick = true;
             this.menuVisualWaveform.Name = "menuVisualWaveform";
-            this.menuVisualWaveform.Size = new cadencii.java.awt.Dimension(237, 22);
+            this.menuVisualWaveform.Size = new Cadencii.Gui.Dimension(237, 22);
             this.menuVisualWaveform.Text = "Waveform(&W)";
             // 
             // menuVisualIconPalette
             // 
             this.menuVisualIconPalette.CheckOnClick = true;
             this.menuVisualIconPalette.Name = "menuVisualIconPalette";
-            this.menuVisualIconPalette.Size = new cadencii.java.awt.Dimension(237, 22);
+            this.menuVisualIconPalette.Size = new Cadencii.Gui.Dimension(237, 22);
             this.menuVisualIconPalette.Text = "Icon Palette(&I)";
             // 
             // menuVisualProperty
             // 
             this.menuVisualProperty.CheckOnClick = true;
             this.menuVisualProperty.Name = "menuVisualProperty";
-            this.menuVisualProperty.Size = new cadencii.java.awt.Dimension(237, 22);
+            this.menuVisualProperty.Size = new Cadencii.Gui.Dimension(237, 22);
             this.menuVisualProperty.Text = "Property Window(&C)";
             // 
             // menuVisualOverview
             // 
             this.menuVisualOverview.CheckOnClick = true;
             this.menuVisualOverview.Name = "menuVisualOverview";
-            this.menuVisualOverview.Size = new cadencii.java.awt.Dimension(237, 22);
+            this.menuVisualOverview.Size = new Cadencii.Gui.Dimension(237, 22);
             this.menuVisualOverview.Text = "Overview(&O)";
             // 
             // menuVisualPluginUi
@@ -779,70 +779,70 @@ namespace cadencii
             this.menuVisualPluginUiAquesTone,
             this.menuVisualPluginUiAquesTone2});
             this.menuVisualPluginUi.Name = "menuVisualPluginUi";
-            this.menuVisualPluginUi.Size = new cadencii.java.awt.Dimension(237, 22);
+            this.menuVisualPluginUi.Size = new Cadencii.Gui.Dimension(237, 22);
             this.menuVisualPluginUi.Text = "VSTi Plugin UI(&U)";
             // 
             // menuVisualPluginUiVocaloid1
             // 
             this.menuVisualPluginUiVocaloid1.Name = "menuVisualPluginUiVocaloid1";
-            this.menuVisualPluginUiVocaloid1.Size = new cadencii.java.awt.Dimension(157, 22);
+            this.menuVisualPluginUiVocaloid1.Size = new Cadencii.Gui.Dimension(157, 22);
             this.menuVisualPluginUiVocaloid1.Text = "VOCALOID1";
             // 
             // menuVisualPluginUiVocaloid2
             // 
             this.menuVisualPluginUiVocaloid2.Name = "menuVisualPluginUiVocaloid2";
-            this.menuVisualPluginUiVocaloid2.Size = new cadencii.java.awt.Dimension(157, 22);
+            this.menuVisualPluginUiVocaloid2.Size = new Cadencii.Gui.Dimension(157, 22);
             this.menuVisualPluginUiVocaloid2.Text = "VOCALOID2";
             // 
             // menuVisualPluginUiAquesTone
             // 
             this.menuVisualPluginUiAquesTone.Name = "menuVisualPluginUiAquesTone";
-            this.menuVisualPluginUiAquesTone.Size = new cadencii.java.awt.Dimension(157, 22);
+            this.menuVisualPluginUiAquesTone.Size = new Cadencii.Gui.Dimension(157, 22);
             this.menuVisualPluginUiAquesTone.Text = "AquesTone(&A)";
             // 
             // menuVisualPluginUiAquesTone2
             // 
             this.menuVisualPluginUiAquesTone2.Name = "menuVisualPluginUiAquesTone2";
-            this.menuVisualPluginUiAquesTone2.Size = new cadencii.java.awt.Dimension(157, 22);
+            this.menuVisualPluginUiAquesTone2.Size = new Cadencii.Gui.Dimension(157, 22);
             this.menuVisualPluginUiAquesTone2.Text = "AquesTone2";
 			this.menuVisualPluginUiAquesTone2.Click += (o, e) => model.VisualMenu.RunVisualPluginUiAquesTone2Command ();
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new cadencii.java.awt.Dimension(234, 6);
+            this.toolStripMenuItem1.Size = new Cadencii.Gui.Dimension(234, 6);
             // 
             // menuVisualGridline
             // 
             this.menuVisualGridline.CheckOnClick = true;
             this.menuVisualGridline.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuVisualGridline.Name = "menuVisualGridline";
-            this.menuVisualGridline.Size = new cadencii.java.awt.Dimension(237, 22);
+            this.menuVisualGridline.Size = new Cadencii.Gui.Dimension(237, 22);
             this.menuVisualGridline.Text = "Grid Line(&G)";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new cadencii.java.awt.Dimension(234, 6);
+            this.toolStripMenuItem2.Size = new Cadencii.Gui.Dimension(234, 6);
             // 
             // menuVisualStartMarker
             // 
             this.menuVisualStartMarker.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuVisualStartMarker.Name = "menuVisualStartMarker";
-            this.menuVisualStartMarker.Size = new cadencii.java.awt.Dimension(237, 22);
+            this.menuVisualStartMarker.Size = new Cadencii.Gui.Dimension(237, 22);
             this.menuVisualStartMarker.Text = "Start Marker(&S)";
             // 
             // menuVisualEndMarker
             // 
             this.menuVisualEndMarker.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuVisualEndMarker.Name = "menuVisualEndMarker";
-            this.menuVisualEndMarker.Size = new cadencii.java.awt.Dimension(237, 22);
+            this.menuVisualEndMarker.Size = new Cadencii.Gui.Dimension(237, 22);
             this.menuVisualEndMarker.Text = "End Marker(&E)";
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new cadencii.java.awt.Dimension(234, 6);
+            this.toolStripMenuItem3.Size = new Cadencii.Gui.Dimension(234, 6);
             // 
             // menuVisualLyrics
             // 
@@ -851,7 +851,7 @@ namespace cadencii
             this.menuVisualLyrics.CheckState = CheckState.Checked;
             this.menuVisualLyrics.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuVisualLyrics.Name = "menuVisualLyrics";
-            this.menuVisualLyrics.Size = new cadencii.java.awt.Dimension(237, 22);
+            this.menuVisualLyrics.Size = new Cadencii.Gui.Dimension(237, 22);
             this.menuVisualLyrics.Text = "Lyric/Phoneme(&L)";
             // 
             // menuVisualNoteProperty
@@ -861,14 +861,14 @@ namespace cadencii
             this.menuVisualNoteProperty.CheckState = CheckState.Checked;
             this.menuVisualNoteProperty.DisplayStyle = ToolStripItemDisplayStyle.Text;
             this.menuVisualNoteProperty.Name = "menuVisualNoteProperty";
-            this.menuVisualNoteProperty.Size = new cadencii.java.awt.Dimension(237, 22);
+            this.menuVisualNoteProperty.Size = new Cadencii.Gui.Dimension(237, 22);
             this.menuVisualNoteProperty.Text = "Note Expression/Vibrato(&N)";
             // 
             // menuVisualPitchLine
             // 
             this.menuVisualPitchLine.CheckOnClick = true;
             this.menuVisualPitchLine.Name = "menuVisualPitchLine";
-            this.menuVisualPitchLine.Size = new cadencii.java.awt.Dimension(237, 22);
+            this.menuVisualPitchLine.Size = new Cadencii.Gui.Dimension(237, 22);
             this.menuVisualPitchLine.Text = "Pitch Line(&P)";
             // 
             // menuJob
@@ -883,56 +883,56 @@ namespace cadencii
             this.menuJobRewire,
             this.menuJobReloadVsti});
             this.menuJob.Name = "menuJob";
-            this.menuJob.Size = new cadencii.java.awt.Dimension(54, 22);
+            this.menuJob.Size = new Cadencii.Gui.Dimension(54, 22);
             this.menuJob.Text = "Job(&J)";
             // 
             // menuJobNormalize
             // 
             this.menuJobNormalize.Name = "menuJobNormalize";
-            this.menuJobNormalize.Size = new cadencii.java.awt.Dimension(256, 22);
+            this.menuJobNormalize.Size = new Cadencii.Gui.Dimension(256, 22);
             this.menuJobNormalize.Text = "Normalize Notes(&N)";
             // 
             // menuJobInsertBar
             // 
             this.menuJobInsertBar.Name = "menuJobInsertBar";
-            this.menuJobInsertBar.Size = new cadencii.java.awt.Dimension(256, 22);
+            this.menuJobInsertBar.Size = new Cadencii.Gui.Dimension(256, 22);
             this.menuJobInsertBar.Text = "Insert Bars(&I)";
             // 
             // menuJobDeleteBar
             // 
             this.menuJobDeleteBar.Name = "menuJobDeleteBar";
-            this.menuJobDeleteBar.Size = new cadencii.java.awt.Dimension(256, 22);
+            this.menuJobDeleteBar.Size = new Cadencii.Gui.Dimension(256, 22);
             this.menuJobDeleteBar.Text = "Delete Bars(&D)";
             // 
             // menuJobRandomize
             // 
             this.menuJobRandomize.Name = "menuJobRandomize";
-            this.menuJobRandomize.Size = new cadencii.java.awt.Dimension(256, 22);
+            this.menuJobRandomize.Size = new Cadencii.Gui.Dimension(256, 22);
             this.menuJobRandomize.Text = "Randomize(&R)";
             // 
             // menuJobConnect
             // 
             this.menuJobConnect.Name = "menuJobConnect";
-            this.menuJobConnect.Size = new cadencii.java.awt.Dimension(256, 22);
+            this.menuJobConnect.Size = new Cadencii.Gui.Dimension(256, 22);
             this.menuJobConnect.Text = "Connect Notes(&C)";
             // 
             // menuJobLyric
             // 
             this.menuJobLyric.Name = "menuJobLyric";
-            this.menuJobLyric.Size = new cadencii.java.awt.Dimension(256, 22);
+            this.menuJobLyric.Size = new Cadencii.Gui.Dimension(256, 22);
             this.menuJobLyric.Text = "Insert Lyrics(&L)";
             // 
             // menuJobRewire
             // 
             this.menuJobRewire.Enabled = false;
             this.menuJobRewire.Name = "menuJobRewire";
-            this.menuJobRewire.Size = new cadencii.java.awt.Dimension(256, 22);
+            this.menuJobRewire.Size = new Cadencii.Gui.Dimension(256, 22);
             this.menuJobRewire.Text = "Import ReWire Host Tempo(&T)";
             // 
             // menuJobReloadVsti
             // 
             this.menuJobReloadVsti.Name = "menuJobReloadVsti";
-            this.menuJobReloadVsti.Size = new cadencii.java.awt.Dimension(256, 22);
+            this.menuJobReloadVsti.Size = new Cadencii.Gui.Dimension(256, 22);
             this.menuJobReloadVsti.Text = "Reload VSTi(&R)";
             this.menuJobReloadVsti.Visible = false;
             // 
@@ -954,71 +954,71 @@ namespace cadencii
             this.toolStripMenuItem4,
             this.menuTrackBgm});
             this.menuTrack.Name = "menuTrack";
-            this.menuTrack.Size = new cadencii.java.awt.Dimension(70, 22);
+            this.menuTrack.Size = new Cadencii.Gui.Dimension(70, 22);
             this.menuTrack.Text = "Track(&T)";
             // 
             // menuTrackOn
             // 
             this.menuTrackOn.Name = "menuTrackOn";
-            this.menuTrackOn.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.menuTrackOn.Size = new Cadencii.Gui.Dimension(219, 22);
             this.menuTrackOn.Text = "Track On(&K)";
             // 
             // toolStripMenuItem21
             // 
             this.toolStripMenuItem21.Name = "toolStripMenuItem21";
-            this.toolStripMenuItem21.Size = new cadencii.java.awt.Dimension(216, 6);
+            this.toolStripMenuItem21.Size = new Cadencii.Gui.Dimension(216, 6);
             // 
             // menuTrackAdd
             // 
             this.menuTrackAdd.Name = "menuTrackAdd";
-            this.menuTrackAdd.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.menuTrackAdd.Size = new Cadencii.Gui.Dimension(219, 22);
             this.menuTrackAdd.Text = "Add Track(&A)";
             // 
             // menuTrackCopy
             // 
             this.menuTrackCopy.Name = "menuTrackCopy";
-            this.menuTrackCopy.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.menuTrackCopy.Size = new Cadencii.Gui.Dimension(219, 22);
             this.menuTrackCopy.Text = "Copy Track(&C)";
             // 
             // menuTrackChangeName
             // 
             this.menuTrackChangeName.Name = "menuTrackChangeName";
-            this.menuTrackChangeName.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.menuTrackChangeName.Size = new Cadencii.Gui.Dimension(219, 22);
             this.menuTrackChangeName.Text = "Rename Track";
             // 
             // menuTrackDelete
             // 
             this.menuTrackDelete.Name = "menuTrackDelete";
-            this.menuTrackDelete.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.menuTrackDelete.Size = new Cadencii.Gui.Dimension(219, 22);
             this.menuTrackDelete.Text = "Delete Track(&D)";
             // 
             // toolStripMenuItem22
             // 
             this.toolStripMenuItem22.Name = "toolStripMenuItem22";
-            this.toolStripMenuItem22.Size = new cadencii.java.awt.Dimension(216, 6);
+            this.toolStripMenuItem22.Size = new Cadencii.Gui.Dimension(216, 6);
             // 
             // menuTrackRenderCurrent
             // 
             this.menuTrackRenderCurrent.Name = "menuTrackRenderCurrent";
-            this.menuTrackRenderCurrent.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.menuTrackRenderCurrent.Size = new Cadencii.Gui.Dimension(219, 22);
             this.menuTrackRenderCurrent.Text = "Render Current Track(&T)";
             // 
             // menuTrackRenderAll
             // 
             this.menuTrackRenderAll.Enabled = false;
             this.menuTrackRenderAll.Name = "menuTrackRenderAll";
-            this.menuTrackRenderAll.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.menuTrackRenderAll.Size = new Cadencii.Gui.Dimension(219, 22);
             this.menuTrackRenderAll.Text = "Render All Tracks(&S)";
             // 
             // toolStripMenuItem23
             // 
             this.toolStripMenuItem23.Name = "toolStripMenuItem23";
-            this.toolStripMenuItem23.Size = new cadencii.java.awt.Dimension(216, 6);
+            this.toolStripMenuItem23.Size = new Cadencii.Gui.Dimension(216, 6);
             // 
             // menuTrackOverlay
             // 
             this.menuTrackOverlay.Name = "menuTrackOverlay";
-            this.menuTrackOverlay.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.menuTrackOverlay.Size = new Cadencii.Gui.Dimension(219, 22);
             this.menuTrackOverlay.Text = "Overlay(&O)";
             // 
             // menuTrackRenderer
@@ -1031,55 +1031,55 @@ namespace cadencii
             this.menuTrackRendererAquesTone,
             this.menuTrackRendererAquesTone2});
             this.menuTrackRenderer.Name = "menuTrackRenderer";
-            this.menuTrackRenderer.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.menuTrackRenderer.Size = new Cadencii.Gui.Dimension(219, 22);
             this.menuTrackRenderer.Text = "Renderer(&R)";
             // 
             // menuTrackRendererVOCALOID1
             // 
             this.menuTrackRendererVOCALOID1.Name = "menuTrackRendererVOCALOID1";
-            this.menuTrackRendererVOCALOID1.Size = new cadencii.java.awt.Dimension(193, 22);
+            this.menuTrackRendererVOCALOID1.Size = new Cadencii.Gui.Dimension(193, 22);
             this.menuTrackRendererVOCALOID1.Text = "VOCALOID1(&1)";
             // 
             // menuTrackRendererVOCALOID2
             // 
             this.menuTrackRendererVOCALOID2.Name = "menuTrackRendererVOCALOID2";
-            this.menuTrackRendererVOCALOID2.Size = new cadencii.java.awt.Dimension(193, 22);
+            this.menuTrackRendererVOCALOID2.Size = new Cadencii.Gui.Dimension(193, 22);
             this.menuTrackRendererVOCALOID2.Text = "VOCALOID2(&2)";
             // 
             // menuTrackRendererUtau
             // 
             this.menuTrackRendererUtau.Name = "menuTrackRendererUtau";
-            this.menuTrackRendererUtau.Size = new cadencii.java.awt.Dimension(193, 22);
+            this.menuTrackRendererUtau.Size = new Cadencii.Gui.Dimension(193, 22);
             this.menuTrackRendererUtau.Text = "UTAU(&3)";
             // 
             // menuTrackRendererVCNT
             // 
             this.menuTrackRendererVCNT.Name = "menuTrackRendererVCNT";
-            this.menuTrackRendererVCNT.Size = new cadencii.java.awt.Dimension(193, 22);
+            this.menuTrackRendererVCNT.Size = new Cadencii.Gui.Dimension(193, 22);
             this.menuTrackRendererVCNT.Text = "vConnect-STAND(&4)";
             // 
             // menuTrackRendererAquesTone
             // 
             this.menuTrackRendererAquesTone.Name = "menuTrackRendererAquesTone";
-            this.menuTrackRendererAquesTone.Size = new cadencii.java.awt.Dimension(193, 22);
+            this.menuTrackRendererAquesTone.Size = new Cadencii.Gui.Dimension(193, 22);
             this.menuTrackRendererAquesTone.Text = "AquesTone(&5)";
             // 
             // menuTrackRendererAquesTone2
             // 
             this.menuTrackRendererAquesTone2.Name = "menuTrackRendererAquesTone2";
-            this.menuTrackRendererAquesTone2.Size = new cadencii.java.awt.Dimension(193, 22);
+            this.menuTrackRendererAquesTone2.Size = new Cadencii.Gui.Dimension(193, 22);
             this.menuTrackRendererAquesTone2.Text = "AquesTone2(&6)";
 			this.menuTrackRendererAquesTone2.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.AQUES_TONE2, -1);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new cadencii.java.awt.Dimension(216, 6);
+            this.toolStripMenuItem4.Size = new Cadencii.Gui.Dimension(216, 6);
             // 
             // menuTrackBgm
             // 
             this.menuTrackBgm.Name = "menuTrackBgm";
-            this.menuTrackBgm.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.menuTrackBgm.Size = new Cadencii.Gui.Dimension(219, 22);
             this.menuTrackBgm.Text = "BGM(&B)";
             // 
             // menuLyric
@@ -1092,43 +1092,43 @@ namespace cadencii
             this.menuLyricDictionary,
             this.menuLyricCopyVibratoToPreset});
             this.menuLyric.Name = "menuLyric";
-            this.menuLyric.Size = new cadencii.java.awt.Dimension(70, 22);
+            this.menuLyric.Size = new Cadencii.Gui.Dimension(70, 22);
             this.menuLyric.Text = "Lyrics(&L)";
             // 
             // menuLyricExpressionProperty
             // 
             this.menuLyricExpressionProperty.Name = "menuLyricExpressionProperty";
-            this.menuLyricExpressionProperty.Size = new cadencii.java.awt.Dimension(262, 22);
+            this.menuLyricExpressionProperty.Size = new Cadencii.Gui.Dimension(262, 22);
             this.menuLyricExpressionProperty.Text = "Note Expression Property(&E)";
             // 
             // menuLyricVibratoProperty
             // 
             this.menuLyricVibratoProperty.Name = "menuLyricVibratoProperty";
-            this.menuLyricVibratoProperty.Size = new cadencii.java.awt.Dimension(262, 22);
+            this.menuLyricVibratoProperty.Size = new Cadencii.Gui.Dimension(262, 22);
             this.menuLyricVibratoProperty.Text = "Note Vibrato Property(&V)";
             // 
             // menuLyricApplyUtauParameters
             // 
             this.menuLyricApplyUtauParameters.Name = "menuLyricApplyUtauParameters";
-            this.menuLyricApplyUtauParameters.Size = new cadencii.java.awt.Dimension(262, 22);
+            this.menuLyricApplyUtauParameters.Size = new Cadencii.Gui.Dimension(262, 22);
             this.menuLyricApplyUtauParameters.Text = "Apply UTAU Parameters(&A)";
             // 
             // menuLyricPhonemeTransformation
             // 
             this.menuLyricPhonemeTransformation.Name = "menuLyricPhonemeTransformation";
-            this.menuLyricPhonemeTransformation.Size = new cadencii.java.awt.Dimension(262, 22);
+            this.menuLyricPhonemeTransformation.Size = new Cadencii.Gui.Dimension(262, 22);
             this.menuLyricPhonemeTransformation.Text = "Phoneme Transformation(&T)";
             // 
             // menuLyricDictionary
             // 
             this.menuLyricDictionary.Name = "menuLyricDictionary";
-            this.menuLyricDictionary.Size = new cadencii.java.awt.Dimension(262, 22);
+            this.menuLyricDictionary.Size = new Cadencii.Gui.Dimension(262, 22);
             this.menuLyricDictionary.Text = "User Word Dictionary(&C)";
             // 
             // menuLyricCopyVibratoToPreset
             // 
             this.menuLyricCopyVibratoToPreset.Name = "menuLyricCopyVibratoToPreset";
-            this.menuLyricCopyVibratoToPreset.Size = new cadencii.java.awt.Dimension(262, 22);
+            this.menuLyricCopyVibratoToPreset.Size = new Cadencii.Gui.Dimension(262, 22);
             this.menuLyricCopyVibratoToPreset.Text = "Copy vibrato config to preset(&P)";
             // 
             // menuScript
@@ -1136,13 +1136,13 @@ namespace cadencii
             this.menuScript.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuScriptUpdate});
             this.menuScript.Name = "menuScript";
-            this.menuScript.Size = new cadencii.java.awt.Dimension(72, 22);
+            this.menuScript.Size = new Cadencii.Gui.Dimension(72, 22);
             this.menuScript.Text = "Script(&C)";
             // 
             // menuScriptUpdate
             // 
             this.menuScriptUpdate.Name = "menuScriptUpdate";
-            this.menuScriptUpdate.Size = new cadencii.java.awt.Dimension(200, 22);
+            this.menuScriptUpdate.Size = new Cadencii.Gui.Dimension(200, 22);
             this.menuScriptUpdate.Text = "Update Script List(&U)";
             // 
             // menuSetting
@@ -1159,19 +1159,19 @@ namespace cadencii
             this.toolStripMenuItem6,
             this.menuSettingDefaultSingerStyle});
             this.menuSetting.Name = "menuSetting";
-            this.menuSetting.Size = new cadencii.java.awt.Dimension(80, 22);
+            this.menuSetting.Size = new Cadencii.Gui.Dimension(80, 22);
             this.menuSetting.Text = "Setting(&S)";
             // 
             // menuSettingPreference
             // 
             this.menuSettingPreference.Name = "menuSettingPreference";
-            this.menuSettingPreference.Size = new cadencii.java.awt.Dimension(223, 22);
+            this.menuSettingPreference.Size = new Cadencii.Gui.Dimension(223, 22);
             this.menuSettingPreference.Text = "Preference(&P)";
             // 
             // menuSettingSequence
             // 
             this.menuSettingSequence.Name = "menuSettingSequence";
-            this.menuSettingSequence.Size = new cadencii.java.awt.Dimension(223, 22);
+            this.menuSettingSequence.Size = new Cadencii.Gui.Dimension(223, 22);
             this.menuSettingSequence.Text = "Sequence config(&S)";
             // 
             // menuSettingPositionQuantize
@@ -1187,66 +1187,66 @@ namespace cadencii
             this.toolStripMenuItem9,
             this.menuSettingPositionQuantizeTriplet});
             this.menuSettingPositionQuantize.Name = "menuSettingPositionQuantize";
-            this.menuSettingPositionQuantize.Size = new cadencii.java.awt.Dimension(223, 22);
+            this.menuSettingPositionQuantize.Size = new Cadencii.Gui.Dimension(223, 22);
             this.menuSettingPositionQuantize.Text = "Quantize(&Q)";
             // 
             // menuSettingPositionQuantize04
             // 
             this.menuSettingPositionQuantize04.Name = "menuSettingPositionQuantize04";
-            this.menuSettingPositionQuantize04.Size = new cadencii.java.awt.Dimension(113, 22);
+            this.menuSettingPositionQuantize04.Size = new Cadencii.Gui.Dimension(113, 22);
             this.menuSettingPositionQuantize04.Text = "1/4";
             // 
             // menuSettingPositionQuantize08
             // 
             this.menuSettingPositionQuantize08.Name = "menuSettingPositionQuantize08";
-            this.menuSettingPositionQuantize08.Size = new cadencii.java.awt.Dimension(113, 22);
+            this.menuSettingPositionQuantize08.Size = new Cadencii.Gui.Dimension(113, 22);
             this.menuSettingPositionQuantize08.Text = "1/8";
             // 
             // menuSettingPositionQuantize16
             // 
             this.menuSettingPositionQuantize16.Name = "menuSettingPositionQuantize16";
-            this.menuSettingPositionQuantize16.Size = new cadencii.java.awt.Dimension(113, 22);
+            this.menuSettingPositionQuantize16.Size = new Cadencii.Gui.Dimension(113, 22);
             this.menuSettingPositionQuantize16.Text = "1/16";
             // 
             // menuSettingPositionQuantize32
             // 
             this.menuSettingPositionQuantize32.Name = "menuSettingPositionQuantize32";
-            this.menuSettingPositionQuantize32.Size = new cadencii.java.awt.Dimension(113, 22);
+            this.menuSettingPositionQuantize32.Size = new Cadencii.Gui.Dimension(113, 22);
             this.menuSettingPositionQuantize32.Text = "1/32";
             // 
             // menuSettingPositionQuantize64
             // 
             this.menuSettingPositionQuantize64.Name = "menuSettingPositionQuantize64";
-            this.menuSettingPositionQuantize64.Size = new cadencii.java.awt.Dimension(113, 22);
+            this.menuSettingPositionQuantize64.Size = new Cadencii.Gui.Dimension(113, 22);
             this.menuSettingPositionQuantize64.Text = "1/64";
             // 
             // menuSettingPositionQuantize128
             // 
             this.menuSettingPositionQuantize128.Name = "menuSettingPositionQuantize128";
-            this.menuSettingPositionQuantize128.Size = new cadencii.java.awt.Dimension(113, 22);
+            this.menuSettingPositionQuantize128.Size = new Cadencii.Gui.Dimension(113, 22);
             this.menuSettingPositionQuantize128.Text = "1/128";
             // 
             // menuSettingPositionQuantizeOff
             // 
             this.menuSettingPositionQuantizeOff.Name = "menuSettingPositionQuantizeOff";
-            this.menuSettingPositionQuantizeOff.Size = new cadencii.java.awt.Dimension(113, 22);
+            this.menuSettingPositionQuantizeOff.Size = new Cadencii.Gui.Dimension(113, 22);
             this.menuSettingPositionQuantizeOff.Text = "Off";
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new cadencii.java.awt.Dimension(110, 6);
+            this.toolStripMenuItem9.Size = new Cadencii.Gui.Dimension(110, 6);
             // 
             // menuSettingPositionQuantizeTriplet
             // 
             this.menuSettingPositionQuantizeTriplet.Name = "menuSettingPositionQuantizeTriplet";
-            this.menuSettingPositionQuantizeTriplet.Size = new cadencii.java.awt.Dimension(113, 22);
+            this.menuSettingPositionQuantizeTriplet.Size = new Cadencii.Gui.Dimension(113, 22);
             this.menuSettingPositionQuantizeTriplet.Text = "Triplet";
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new cadencii.java.awt.Dimension(220, 6);
+            this.toolStripMenuItem8.Size = new Cadencii.Gui.Dimension(220, 6);
             // 
             // menuSettingGameControler
             // 
@@ -1255,54 +1255,54 @@ namespace cadencii
             this.menuSettingGameControlerLoad,
             this.menuSettingGameControlerRemove});
             this.menuSettingGameControler.Name = "menuSettingGameControler";
-            this.menuSettingGameControler.Size = new cadencii.java.awt.Dimension(223, 22);
+            this.menuSettingGameControler.Size = new Cadencii.Gui.Dimension(223, 22);
             this.menuSettingGameControler.Text = "Game Controler(&G)";
             // 
             // menuSettingGameControlerSetting
             // 
             this.menuSettingGameControlerSetting.Name = "menuSettingGameControlerSetting";
-            this.menuSettingGameControlerSetting.Size = new cadencii.java.awt.Dimension(142, 22);
+            this.menuSettingGameControlerSetting.Size = new Cadencii.Gui.Dimension(142, 22);
             this.menuSettingGameControlerSetting.Text = "Setting(&S)";
             // 
             // menuSettingGameControlerLoad
             // 
             this.menuSettingGameControlerLoad.Name = "menuSettingGameControlerLoad";
-            this.menuSettingGameControlerLoad.Size = new cadencii.java.awt.Dimension(142, 22);
+            this.menuSettingGameControlerLoad.Size = new Cadencii.Gui.Dimension(142, 22);
             this.menuSettingGameControlerLoad.Text = "Load(&L)";
             // 
             // menuSettingGameControlerRemove
             // 
             this.menuSettingGameControlerRemove.Name = "menuSettingGameControlerRemove";
-            this.menuSettingGameControlerRemove.Size = new cadencii.java.awt.Dimension(142, 22);
+            this.menuSettingGameControlerRemove.Size = new Cadencii.Gui.Dimension(142, 22);
             this.menuSettingGameControlerRemove.Text = "Remove(&R)";
             // 
             // menuSettingPaletteTool
             // 
             this.menuSettingPaletteTool.Name = "menuSettingPaletteTool";
-            this.menuSettingPaletteTool.Size = new cadencii.java.awt.Dimension(223, 22);
+            this.menuSettingPaletteTool.Size = new Cadencii.Gui.Dimension(223, 22);
             this.menuSettingPaletteTool.Text = "Palette Tool(&T)";
             // 
             // menuSettingShortcut
             // 
             this.menuSettingShortcut.Name = "menuSettingShortcut";
-            this.menuSettingShortcut.Size = new cadencii.java.awt.Dimension(223, 22);
+            this.menuSettingShortcut.Size = new Cadencii.Gui.Dimension(223, 22);
             this.menuSettingShortcut.Text = "Shortcut Key(&K)";
             // 
             // menuSettingVibratoPreset
             // 
             this.menuSettingVibratoPreset.Name = "menuSettingVibratoPreset";
-            this.menuSettingVibratoPreset.Size = new cadencii.java.awt.Dimension(223, 22);
+            this.menuSettingVibratoPreset.Size = new Cadencii.Gui.Dimension(223, 22);
             this.menuSettingVibratoPreset.Text = "Vibrato preset(&V)";
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new cadencii.java.awt.Dimension(220, 6);
+            this.toolStripMenuItem6.Size = new Cadencii.Gui.Dimension(220, 6);
             // 
             // menuSettingDefaultSingerStyle
             // 
             this.menuSettingDefaultSingerStyle.Name = "menuSettingDefaultSingerStyle";
-            this.menuSettingDefaultSingerStyle.Size = new cadencii.java.awt.Dimension(223, 22);
+            this.menuSettingDefaultSingerStyle.Size = new Cadencii.Gui.Dimension(223, 22);
             this.menuSettingDefaultSingerStyle.Text = "Singing Style Defaults(&D)";
             // 
             // menuTools
@@ -1310,13 +1310,13 @@ namespace cadencii
             this.menuTools.DropDownItems.AddRange(new UiToolStripItem[] {
             this.menuToolsCreateVConnectSTANDDb});
             this.menuTools.Name = "menuTools";
-            this.menuTools.Size = new cadencii.java.awt.Dimension(69, 22);
+            this.menuTools.Size = new Cadencii.Gui.Dimension(69, 22);
             this.menuTools.Text = "Tools(&O)";
             // 
             // menuToolsCreateVConnectSTANDDb
             // 
             this.menuToolsCreateVConnectSTANDDb.Name = "menuToolsCreateVConnectSTANDDb";
-            this.menuToolsCreateVConnectSTANDDb.Size = new cadencii.java.awt.Dimension(240, 22);
+            this.menuToolsCreateVConnectSTANDDb.Size = new Cadencii.Gui.Dimension(240, 22);
             this.menuToolsCreateVConnectSTANDDb.Text = "Create vConnect-STAND DB";
             this.menuToolsCreateVConnectSTANDDb.Click += new System.EventHandler(this.menuToolsCreateVConnectSTANDDb_Click);
             // 
@@ -1329,19 +1329,19 @@ namespace cadencii
             this.menuHelpLog,
             this.menuHelpDebug});
             this.menuHelp.Name = "menuHelp";
-            this.menuHelp.Size = new cadencii.java.awt.Dimension(65, 22);
+            this.menuHelp.Size = new Cadencii.Gui.Dimension(65, 22);
             this.menuHelp.Text = "Help(&H)";
             // 
             // menuHelpAbout
             // 
             this.menuHelpAbout.Name = "menuHelpAbout";
-            this.menuHelpAbout.Size = new cadencii.java.awt.Dimension(186, 22);
+            this.menuHelpAbout.Size = new Cadencii.Gui.Dimension(186, 22);
             this.menuHelpAbout.Text = "About Cadencii(&A)";
             // 
             // menuHelpManual
             // 
             this.menuHelpManual.Name = "menuHelpManual";
-            this.menuHelpManual.Size = new cadencii.java.awt.Dimension(186, 22);
+            this.menuHelpManual.Size = new Cadencii.Gui.Dimension(186, 22);
             this.menuHelpManual.Text = "Manual (PDF)";
             // 
             // menuHelpLog
@@ -1350,26 +1350,26 @@ namespace cadencii
             this.menuHelpLogSwitch,
             this.menuHelpLogOpen});
             this.menuHelpLog.Name = "menuHelpLog";
-            this.menuHelpLog.Size = new cadencii.java.awt.Dimension(186, 22);
+            this.menuHelpLog.Size = new Cadencii.Gui.Dimension(186, 22);
             this.menuHelpLog.Text = "Log(&L)";
             // 
             // menuHelpLogSwitch
             // 
             this.menuHelpLogSwitch.CheckOnClick = true;
             this.menuHelpLogSwitch.Name = "menuHelpLogSwitch";
-            this.menuHelpLogSwitch.Size = new cadencii.java.awt.Dimension(156, 22);
+            this.menuHelpLogSwitch.Size = new Cadencii.Gui.Dimension(156, 22);
             this.menuHelpLogSwitch.Text = "Enable Log(&L)";
             // 
             // menuHelpLogOpen
             // 
             this.menuHelpLogOpen.Name = "menuHelpLogOpen";
-            this.menuHelpLogOpen.Size = new cadencii.java.awt.Dimension(156, 22);
+            this.menuHelpLogOpen.Size = new Cadencii.Gui.Dimension(156, 22);
             this.menuHelpLogOpen.Text = "Open(&O)";
             // 
             // menuHelpDebug
             // 
             this.menuHelpDebug.Name = "menuHelpDebug";
-            this.menuHelpDebug.Size = new cadencii.java.awt.Dimension(186, 22);
+            this.menuHelpDebug.Size = new Cadencii.Gui.Dimension(186, 22);
             this.menuHelpDebug.Text = "Debug";
             this.menuHelpDebug.Visible = false;
             // 
@@ -1400,7 +1400,7 @@ namespace cadencii
             this.menuHiddenFlipCurveOnPianorollMode,
             this.menuHiddenPrintPoToCSV});
             this.menuHidden.Name = "menuHidden";
-            this.menuHidden.Size = new cadencii.java.awt.Dimension(91, 22);
+            this.menuHidden.Size = new Cadencii.Gui.Dimension(91, 22);
             this.menuHidden.Text = "MenuHidden";
             this.menuHidden.Visible = false;
             // 
@@ -1408,7 +1408,7 @@ namespace cadencii
             // 
             this.menuHiddenEditLyric.Name = "menuHiddenEditLyric";
             this.menuHiddenEditLyric.ShortcutKeys = Keys.F2;
-            this.menuHiddenEditLyric.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenEditLyric.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenEditLyric.Text = "Start Lyric Input";
             this.menuHiddenEditLyric.Visible = false;
             // 
@@ -1416,7 +1416,7 @@ namespace cadencii
             // 
             this.menuHiddenEditFlipToolPointerPencil.Name = "menuHiddenEditFlipToolPointerPencil";
             this.menuHiddenEditFlipToolPointerPencil.ShortcutKeys = ((Keys)((Keys.Control | Keys.W)));
-            this.menuHiddenEditFlipToolPointerPencil.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenEditFlipToolPointerPencil.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenEditFlipToolPointerPencil.Text = "Change Tool Pointer / Pencil";
             this.menuHiddenEditFlipToolPointerPencil.Visible = false;
             // 
@@ -1424,7 +1424,7 @@ namespace cadencii
             // 
             this.menuHiddenEditFlipToolPointerEraser.Name = "menuHiddenEditFlipToolPointerEraser";
             this.menuHiddenEditFlipToolPointerEraser.ShortcutKeys = ((Keys)((Keys.Control | Keys.E)));
-            this.menuHiddenEditFlipToolPointerEraser.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenEditFlipToolPointerEraser.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenEditFlipToolPointerEraser.Text = "Change Tool Pointer/ Eraser";
             this.menuHiddenEditFlipToolPointerEraser.Visible = false;
             // 
@@ -1433,7 +1433,7 @@ namespace cadencii
             this.menuHiddenVisualForwardParameter.Name = "menuHiddenVisualForwardParameter";
             this.menuHiddenVisualForwardParameter.ShortcutKeys = ((Keys)(((Keys.Control | Keys.Alt)
             | Keys.Next)));
-            this.menuHiddenVisualForwardParameter.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenVisualForwardParameter.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenVisualForwardParameter.Text = "Next Control Curve";
             this.menuHiddenVisualForwardParameter.Visible = false;
             // 
@@ -1442,7 +1442,7 @@ namespace cadencii
             this.menuHiddenVisualBackwardParameter.Name = "menuHiddenVisualBackwardParameter";
             this.menuHiddenVisualBackwardParameter.ShortcutKeys = ((Keys)(((Keys.Control | Keys.Alt)
             | Keys.PageUp)));
-            this.menuHiddenVisualBackwardParameter.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenVisualBackwardParameter.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenVisualBackwardParameter.Text = "Previous Control Curve";
             this.menuHiddenVisualBackwardParameter.Visible = false;
             // 
@@ -1450,7 +1450,7 @@ namespace cadencii
             // 
             this.menuHiddenTrackNext.Name = "menuHiddenTrackNext";
             this.menuHiddenTrackNext.ShortcutKeys = ((Keys)((Keys.Control | Keys.Next)));
-            this.menuHiddenTrackNext.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenTrackNext.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenTrackNext.Text = "Next Track";
             this.menuHiddenTrackNext.Visible = false;
             // 
@@ -1458,106 +1458,106 @@ namespace cadencii
             // 
             this.menuHiddenTrackBack.Name = "menuHiddenTrackBack";
             this.menuHiddenTrackBack.ShortcutKeys = ((Keys)((Keys.Control | Keys.PageUp)));
-            this.menuHiddenTrackBack.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenTrackBack.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenTrackBack.Text = "Previous Track";
             this.menuHiddenTrackBack.Visible = false;
             // 
             // menuHiddenCopy
             // 
             this.menuHiddenCopy.Name = "menuHiddenCopy";
-            this.menuHiddenCopy.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenCopy.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenCopy.Text = "Copy";
             // 
             // menuHiddenPaste
             // 
             this.menuHiddenPaste.Name = "menuHiddenPaste";
-            this.menuHiddenPaste.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenPaste.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenPaste.Text = "Paste";
             // 
             // menuHiddenCut
             // 
             this.menuHiddenCut.Name = "menuHiddenCut";
-            this.menuHiddenCut.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenCut.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenCut.Text = "Cut";
             // 
             // menuHiddenSelectForward
             // 
             this.menuHiddenSelectForward.Name = "menuHiddenSelectForward";
             this.menuHiddenSelectForward.ShortcutKeys = ((Keys)((Keys.Alt | Keys.Right)));
-            this.menuHiddenSelectForward.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenSelectForward.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenSelectForward.Text = "Select Forward";
             // 
             // menuHiddenSelectBackward
             // 
             this.menuHiddenSelectBackward.Name = "menuHiddenSelectBackward";
             this.menuHiddenSelectBackward.ShortcutKeys = ((Keys)((Keys.Alt | Keys.Left)));
-            this.menuHiddenSelectBackward.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenSelectBackward.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenSelectBackward.Text = "Select Backward";
             // 
             // menuHiddenMoveUp
             // 
             this.menuHiddenMoveUp.Name = "menuHiddenMoveUp";
-            this.menuHiddenMoveUp.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenMoveUp.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenMoveUp.Text = "Move Up";
             // 
             // menuHiddenMoveDown
             // 
             this.menuHiddenMoveDown.Name = "menuHiddenMoveDown";
-            this.menuHiddenMoveDown.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenMoveDown.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenMoveDown.Text = "Move Down";
             // 
             // menuHiddenMoveLeft
             // 
             this.menuHiddenMoveLeft.Name = "menuHiddenMoveLeft";
-            this.menuHiddenMoveLeft.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenMoveLeft.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenMoveLeft.Text = "Move Left";
             // 
             // menuHiddenMoveRight
             // 
             this.menuHiddenMoveRight.Name = "menuHiddenMoveRight";
-            this.menuHiddenMoveRight.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenMoveRight.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenMoveRight.Text = "Move Right";
             // 
             // menuHiddenLengthen
             // 
             this.menuHiddenLengthen.Name = "menuHiddenLengthen";
-            this.menuHiddenLengthen.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenLengthen.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenLengthen.Text = "Lengthen";
             // 
             // menuHiddenShorten
             // 
             this.menuHiddenShorten.Name = "menuHiddenShorten";
-            this.menuHiddenShorten.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenShorten.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenShorten.Text = "Shorten";
             // 
             // menuHiddenGoToStartMarker
             // 
             this.menuHiddenGoToStartMarker.Name = "menuHiddenGoToStartMarker";
-            this.menuHiddenGoToStartMarker.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenGoToStartMarker.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenGoToStartMarker.Text = "GoTo Start Marker";
             // 
             // menuHiddenGoToEndMarker
             // 
             this.menuHiddenGoToEndMarker.Name = "menuHiddenGoToEndMarker";
-            this.menuHiddenGoToEndMarker.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenGoToEndMarker.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenGoToEndMarker.Text = "GoTo End Marker";
             // 
             // menuHiddenPlayFromStartMarker
             // 
             this.menuHiddenPlayFromStartMarker.Name = "menuHiddenPlayFromStartMarker";
-            this.menuHiddenPlayFromStartMarker.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenPlayFromStartMarker.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenPlayFromStartMarker.Text = "Play From Start Marker";
             // 
             // menuHiddenFlipCurveOnPianorollMode
             // 
             this.menuHiddenFlipCurveOnPianorollMode.Name = "menuHiddenFlipCurveOnPianorollMode";
-            this.menuHiddenFlipCurveOnPianorollMode.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenFlipCurveOnPianorollMode.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenFlipCurveOnPianorollMode.Text = "Change pitch drawing mode";
             // 
             // menuHiddenPrintPoToCSV
             // 
             this.menuHiddenPrintPoToCSV.Name = "menuHiddenPrintPoToCSV";
-            this.menuHiddenPrintPoToCSV.Size = new cadencii.java.awt.Dimension(304, 22);
+            this.menuHiddenPrintPoToCSV.Size = new Cadencii.Gui.Dimension(304, 22);
             this.menuHiddenPrintPoToCSV.Text = "Print language configs to CSV";
             // 
             // cMenuPiano
@@ -1592,47 +1592,47 @@ namespace cadencii
             this.cMenuPiano.RenderMode = ToolStripRenderMode.System;
             this.cMenuPiano.ShowCheckMargin = true;
             this.cMenuPiano.ShowImageMargin = false;
-            this.cMenuPiano.Size = new cadencii.java.awt.Dimension(242, 458);
+            this.cMenuPiano.Size = new Cadencii.Gui.Dimension(242, 458);
             // 
             // cMenuPianoPointer
             // 
             this.cMenuPianoPointer.Name = "cMenuPianoPointer";
-            this.cMenuPianoPointer.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoPointer.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoPointer.Text = "Arrow(&A)";
             // 
             // cMenuPianoPencil
             // 
             this.cMenuPianoPencil.Name = "cMenuPianoPencil";
-            this.cMenuPianoPencil.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoPencil.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoPencil.Text = "Pencil(&W)";
             // 
             // cMenuPianoEraser
             // 
             this.cMenuPianoEraser.Name = "cMenuPianoEraser";
-            this.cMenuPianoEraser.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoEraser.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoEraser.Text = "Eraser(&E)";
             // 
             // cMenuPianoPaletteTool
             // 
             this.cMenuPianoPaletteTool.Name = "cMenuPianoPaletteTool";
-            this.cMenuPianoPaletteTool.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoPaletteTool.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoPaletteTool.Text = "Palette Tool";
             // 
             // toolStripSeparator15
             // 
             this.toolStripSeparator15.Name = "toolStripSeparator15";
-            this.toolStripSeparator15.Size = new cadencii.java.awt.Dimension(238, 6);
+            this.toolStripSeparator15.Size = new Cadencii.Gui.Dimension(238, 6);
             // 
             // cMenuPianoCurve
             // 
             this.cMenuPianoCurve.Name = "cMenuPianoCurve";
-            this.cMenuPianoCurve.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoCurve.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoCurve.Text = "Curve(&V)";
             // 
             // toolStripMenuItem13
             // 
             this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new cadencii.java.awt.Dimension(238, 6);
+            this.toolStripMenuItem13.Size = new Cadencii.Gui.Dimension(238, 6);
             // 
             // cMenuPianoFixed
             // 
@@ -1650,78 +1650,78 @@ namespace cadencii
             this.cMenuPianoFixedTriplet,
             this.cMenuPianoFixedDotted});
             this.cMenuPianoFixed.Name = "cMenuPianoFixed";
-            this.cMenuPianoFixed.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoFixed.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoFixed.Text = "Note Fixed Length(&N)";
             // 
             // cMenuPianoFixed01
             // 
             this.cMenuPianoFixed01.Name = "cMenuPianoFixed01";
-            this.cMenuPianoFixed01.Size = new cadencii.java.awt.Dimension(141, 22);
+            this.cMenuPianoFixed01.Size = new Cadencii.Gui.Dimension(141, 22);
             this.cMenuPianoFixed01.Text = "1/ 1 [1920]";
             // 
             // cMenuPianoFixed02
             // 
             this.cMenuPianoFixed02.Name = "cMenuPianoFixed02";
-            this.cMenuPianoFixed02.Size = new cadencii.java.awt.Dimension(141, 22);
+            this.cMenuPianoFixed02.Size = new Cadencii.Gui.Dimension(141, 22);
             this.cMenuPianoFixed02.Text = "1/ 2 [960]";
             // 
             // cMenuPianoFixed04
             // 
             this.cMenuPianoFixed04.Name = "cMenuPianoFixed04";
-            this.cMenuPianoFixed04.Size = new cadencii.java.awt.Dimension(141, 22);
+            this.cMenuPianoFixed04.Size = new Cadencii.Gui.Dimension(141, 22);
             this.cMenuPianoFixed04.Text = "1/ 4 [480]";
             // 
             // cMenuPianoFixed08
             // 
             this.cMenuPianoFixed08.Name = "cMenuPianoFixed08";
-            this.cMenuPianoFixed08.Size = new cadencii.java.awt.Dimension(141, 22);
+            this.cMenuPianoFixed08.Size = new Cadencii.Gui.Dimension(141, 22);
             this.cMenuPianoFixed08.Text = "1/ 8 [240]";
             // 
             // cMenuPianoFixed16
             // 
             this.cMenuPianoFixed16.Name = "cMenuPianoFixed16";
-            this.cMenuPianoFixed16.Size = new cadencii.java.awt.Dimension(141, 22);
+            this.cMenuPianoFixed16.Size = new Cadencii.Gui.Dimension(141, 22);
             this.cMenuPianoFixed16.Text = "1/16 [120]";
             // 
             // cMenuPianoFixed32
             // 
             this.cMenuPianoFixed32.Name = "cMenuPianoFixed32";
-            this.cMenuPianoFixed32.Size = new cadencii.java.awt.Dimension(141, 22);
+            this.cMenuPianoFixed32.Size = new Cadencii.Gui.Dimension(141, 22);
             this.cMenuPianoFixed32.Text = "1/32 [60]";
             // 
             // cMenuPianoFixed64
             // 
             this.cMenuPianoFixed64.Name = "cMenuPianoFixed64";
-            this.cMenuPianoFixed64.Size = new cadencii.java.awt.Dimension(141, 22);
+            this.cMenuPianoFixed64.Size = new Cadencii.Gui.Dimension(141, 22);
             this.cMenuPianoFixed64.Text = "1/64 [30]";
             // 
             // cMenuPianoFixed128
             // 
             this.cMenuPianoFixed128.Name = "cMenuPianoFixed128";
-            this.cMenuPianoFixed128.Size = new cadencii.java.awt.Dimension(141, 22);
+            this.cMenuPianoFixed128.Size = new Cadencii.Gui.Dimension(141, 22);
             this.cMenuPianoFixed128.Text = "1/128[15]";
             // 
             // cMenuPianoFixedOff
             // 
             this.cMenuPianoFixedOff.Name = "cMenuPianoFixedOff";
-            this.cMenuPianoFixedOff.Size = new cadencii.java.awt.Dimension(141, 22);
+            this.cMenuPianoFixedOff.Size = new Cadencii.Gui.Dimension(141, 22);
             this.cMenuPianoFixedOff.Text = "オフ";
             // 
             // toolStripMenuItem18
             // 
             this.toolStripMenuItem18.Name = "toolStripMenuItem18";
-            this.toolStripMenuItem18.Size = new cadencii.java.awt.Dimension(138, 6);
+            this.toolStripMenuItem18.Size = new Cadencii.Gui.Dimension(138, 6);
             // 
             // cMenuPianoFixedTriplet
             // 
             this.cMenuPianoFixedTriplet.Name = "cMenuPianoFixedTriplet";
-            this.cMenuPianoFixedTriplet.Size = new cadencii.java.awt.Dimension(141, 22);
+            this.cMenuPianoFixedTriplet.Size = new Cadencii.Gui.Dimension(141, 22);
             this.cMenuPianoFixedTriplet.Text = "3連符";
             // 
             // cMenuPianoFixedDotted
             // 
             this.cMenuPianoFixedDotted.Name = "cMenuPianoFixedDotted";
-            this.cMenuPianoFixedDotted.Size = new cadencii.java.awt.Dimension(141, 22);
+            this.cMenuPianoFixedDotted.Size = new Cadencii.Gui.Dimension(141, 22);
             this.cMenuPianoFixedDotted.Text = "付点";
             // 
             // cMenuPianoQuantize
@@ -1737,152 +1737,152 @@ namespace cadencii
             this.toolStripMenuItem26,
             this.cMenuPianoQuantizeTriplet});
             this.cMenuPianoQuantize.Name = "cMenuPianoQuantize";
-            this.cMenuPianoQuantize.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoQuantize.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoQuantize.Text = "Quantize(&Q)";
             // 
             // cMenuPianoQuantize04
             // 
             this.cMenuPianoQuantize04.Name = "cMenuPianoQuantize04";
-            this.cMenuPianoQuantize04.Size = new cadencii.java.awt.Dimension(109, 22);
+            this.cMenuPianoQuantize04.Size = new Cadencii.Gui.Dimension(109, 22);
             this.cMenuPianoQuantize04.Text = "1/4";
             // 
             // cMenuPianoQuantize08
             // 
             this.cMenuPianoQuantize08.Name = "cMenuPianoQuantize08";
-            this.cMenuPianoQuantize08.Size = new cadencii.java.awt.Dimension(109, 22);
+            this.cMenuPianoQuantize08.Size = new Cadencii.Gui.Dimension(109, 22);
             this.cMenuPianoQuantize08.Text = "1/8";
             // 
             // cMenuPianoQuantize16
             // 
             this.cMenuPianoQuantize16.Name = "cMenuPianoQuantize16";
-            this.cMenuPianoQuantize16.Size = new cadencii.java.awt.Dimension(109, 22);
+            this.cMenuPianoQuantize16.Size = new Cadencii.Gui.Dimension(109, 22);
             this.cMenuPianoQuantize16.Text = "1/16";
             // 
             // cMenuPianoQuantize32
             // 
             this.cMenuPianoQuantize32.Name = "cMenuPianoQuantize32";
-            this.cMenuPianoQuantize32.Size = new cadencii.java.awt.Dimension(109, 22);
+            this.cMenuPianoQuantize32.Size = new Cadencii.Gui.Dimension(109, 22);
             this.cMenuPianoQuantize32.Text = "1/32";
             // 
             // cMenuPianoQuantize64
             // 
             this.cMenuPianoQuantize64.Name = "cMenuPianoQuantize64";
-            this.cMenuPianoQuantize64.Size = new cadencii.java.awt.Dimension(109, 22);
+            this.cMenuPianoQuantize64.Size = new Cadencii.Gui.Dimension(109, 22);
             this.cMenuPianoQuantize64.Text = "1/64";
             // 
             // cMenuPianoQuantize128
             // 
             this.cMenuPianoQuantize128.Name = "cMenuPianoQuantize128";
-            this.cMenuPianoQuantize128.Size = new cadencii.java.awt.Dimension(109, 22);
+            this.cMenuPianoQuantize128.Size = new Cadencii.Gui.Dimension(109, 22);
             this.cMenuPianoQuantize128.Text = "1/128";
             // 
             // cMenuPianoQuantizeOff
             // 
             this.cMenuPianoQuantizeOff.Name = "cMenuPianoQuantizeOff";
-            this.cMenuPianoQuantizeOff.Size = new cadencii.java.awt.Dimension(109, 22);
+            this.cMenuPianoQuantizeOff.Size = new Cadencii.Gui.Dimension(109, 22);
             this.cMenuPianoQuantizeOff.Text = "オフ";
             // 
             // toolStripMenuItem26
             // 
             this.toolStripMenuItem26.Name = "toolStripMenuItem26";
-            this.toolStripMenuItem26.Size = new cadencii.java.awt.Dimension(106, 6);
+            this.toolStripMenuItem26.Size = new Cadencii.Gui.Dimension(106, 6);
             // 
             // cMenuPianoQuantizeTriplet
             // 
             this.cMenuPianoQuantizeTriplet.Name = "cMenuPianoQuantizeTriplet";
-            this.cMenuPianoQuantizeTriplet.Size = new cadencii.java.awt.Dimension(109, 22);
+            this.cMenuPianoQuantizeTriplet.Size = new Cadencii.Gui.Dimension(109, 22);
             this.cMenuPianoQuantizeTriplet.Text = "3連符";
             // 
             // cMenuPianoGrid
             // 
             this.cMenuPianoGrid.Name = "cMenuPianoGrid";
-            this.cMenuPianoGrid.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoGrid.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoGrid.Text = "Show/Hide Grid Line(&S)";
             // 
             // toolStripMenuItem14
             // 
             this.toolStripMenuItem14.Name = "toolStripMenuItem14";
-            this.toolStripMenuItem14.Size = new cadencii.java.awt.Dimension(238, 6);
+            this.toolStripMenuItem14.Size = new Cadencii.Gui.Dimension(238, 6);
             // 
             // cMenuPianoUndo
             // 
             this.cMenuPianoUndo.Name = "cMenuPianoUndo";
-            this.cMenuPianoUndo.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoUndo.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoUndo.Text = "Undo(&U)";
             // 
             // cMenuPianoRedo
             // 
             this.cMenuPianoRedo.Name = "cMenuPianoRedo";
-            this.cMenuPianoRedo.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoRedo.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoRedo.Text = "Redo(&R)";
             // 
             // toolStripMenuItem15
             // 
             this.toolStripMenuItem15.Name = "toolStripMenuItem15";
-            this.toolStripMenuItem15.Size = new cadencii.java.awt.Dimension(238, 6);
+            this.toolStripMenuItem15.Size = new Cadencii.Gui.Dimension(238, 6);
             // 
             // cMenuPianoCut
             // 
             this.cMenuPianoCut.Name = "cMenuPianoCut";
-            this.cMenuPianoCut.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoCut.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoCut.Text = "Cut(&T)";
             // 
             // cMenuPianoCopy
             // 
             this.cMenuPianoCopy.Name = "cMenuPianoCopy";
-            this.cMenuPianoCopy.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoCopy.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoCopy.Text = "Copy(&C)";
             // 
             // cMenuPianoPaste
             // 
             this.cMenuPianoPaste.Name = "cMenuPianoPaste";
-            this.cMenuPianoPaste.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoPaste.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoPaste.Text = "Paste(&P)";
             // 
             // cMenuPianoDelete
             // 
             this.cMenuPianoDelete.Name = "cMenuPianoDelete";
-            this.cMenuPianoDelete.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoDelete.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoDelete.Text = "Delete(&D)";
             // 
             // toolStripMenuItem16
             // 
             this.toolStripMenuItem16.Name = "toolStripMenuItem16";
-            this.toolStripMenuItem16.Size = new cadencii.java.awt.Dimension(238, 6);
+            this.toolStripMenuItem16.Size = new Cadencii.Gui.Dimension(238, 6);
             // 
             // cMenuPianoSelectAll
             // 
             this.cMenuPianoSelectAll.Name = "cMenuPianoSelectAll";
-            this.cMenuPianoSelectAll.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoSelectAll.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoSelectAll.Text = "Select All(&A)";
             // 
             // cMenuPianoSelectAllEvents
             // 
             this.cMenuPianoSelectAllEvents.Name = "cMenuPianoSelectAllEvents";
-            this.cMenuPianoSelectAllEvents.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoSelectAllEvents.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoSelectAllEvents.Text = "Select All Events(&E)";
             // 
             // toolStripMenuItem17
             // 
             this.toolStripMenuItem17.Name = "toolStripMenuItem17";
-            this.toolStripMenuItem17.Size = new cadencii.java.awt.Dimension(238, 6);
+            this.toolStripMenuItem17.Size = new Cadencii.Gui.Dimension(238, 6);
             // 
             // cMenuPianoImportLyric
             // 
             this.cMenuPianoImportLyric.Name = "cMenuPianoImportLyric";
-            this.cMenuPianoImportLyric.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoImportLyric.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoImportLyric.Text = "Insert Lyrics(&L)";
             // 
             // cMenuPianoExpressionProperty
             // 
             this.cMenuPianoExpressionProperty.Name = "cMenuPianoExpressionProperty";
-            this.cMenuPianoExpressionProperty.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoExpressionProperty.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoExpressionProperty.Text = "Note Expression Property(&P)";
             // 
             // cMenuPianoVibratoProperty
             // 
             this.cMenuPianoVibratoProperty.Name = "cMenuPianoVibratoProperty";
-            this.cMenuPianoVibratoProperty.Size = new cadencii.java.awt.Dimension(241, 22);
+            this.cMenuPianoVibratoProperty.Size = new Cadencii.Gui.Dimension(241, 22);
             this.cMenuPianoVibratoProperty.Text = "Note Vibrato Property";
             // 
             // cMenuTrackTab
@@ -1904,69 +1904,69 @@ namespace cadencii
             this.cMenuTrackTab.RenderMode = ToolStripRenderMode.System;
             this.cMenuTrackTab.ShowCheckMargin = true;
             this.cMenuTrackTab.ShowImageMargin = false;
-            this.cMenuTrackTab.Size = new cadencii.java.awt.Dimension(220, 220);
+            this.cMenuTrackTab.Size = new Cadencii.Gui.Dimension(220, 220);
             // 
             // cMenuTrackTabTrackOn
             // 
             this.cMenuTrackTabTrackOn.Name = "cMenuTrackTabTrackOn";
-            this.cMenuTrackTabTrackOn.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.cMenuTrackTabTrackOn.Size = new Cadencii.Gui.Dimension(219, 22);
             this.cMenuTrackTabTrackOn.Text = "Track On(&K)";
             // 
             // toolStripMenuItem24
             // 
             this.toolStripMenuItem24.Name = "toolStripMenuItem24";
-            this.toolStripMenuItem24.Size = new cadencii.java.awt.Dimension(216, 6);
+            this.toolStripMenuItem24.Size = new Cadencii.Gui.Dimension(216, 6);
             // 
             // cMenuTrackTabAdd
             // 
             this.cMenuTrackTabAdd.Name = "cMenuTrackTabAdd";
-            this.cMenuTrackTabAdd.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.cMenuTrackTabAdd.Size = new Cadencii.Gui.Dimension(219, 22);
             this.cMenuTrackTabAdd.Text = "Add Track(&A)";
             // 
             // cMenuTrackTabCopy
             // 
             this.cMenuTrackTabCopy.Name = "cMenuTrackTabCopy";
-            this.cMenuTrackTabCopy.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.cMenuTrackTabCopy.Size = new Cadencii.Gui.Dimension(219, 22);
             this.cMenuTrackTabCopy.Text = "Copy Track(&C)";
             // 
             // cMenuTrackTabChangeName
             // 
             this.cMenuTrackTabChangeName.Name = "cMenuTrackTabChangeName";
-            this.cMenuTrackTabChangeName.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.cMenuTrackTabChangeName.Size = new Cadencii.Gui.Dimension(219, 22);
             this.cMenuTrackTabChangeName.Text = "Rename Track";
             // 
             // cMenuTrackTabDelete
             // 
             this.cMenuTrackTabDelete.Name = "cMenuTrackTabDelete";
-            this.cMenuTrackTabDelete.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.cMenuTrackTabDelete.Size = new Cadencii.Gui.Dimension(219, 22);
             this.cMenuTrackTabDelete.Text = "Delete Track(&D)";
             // 
             // toolStripMenuItem25
             // 
             this.toolStripMenuItem25.Name = "toolStripMenuItem25";
-            this.toolStripMenuItem25.Size = new cadencii.java.awt.Dimension(216, 6);
+            this.toolStripMenuItem25.Size = new Cadencii.Gui.Dimension(216, 6);
             // 
             // cMenuTrackTabRenderCurrent
             // 
             this.cMenuTrackTabRenderCurrent.Name = "cMenuTrackTabRenderCurrent";
-            this.cMenuTrackTabRenderCurrent.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.cMenuTrackTabRenderCurrent.Size = new Cadencii.Gui.Dimension(219, 22);
             this.cMenuTrackTabRenderCurrent.Text = "Render Current Track(&T)";
             // 
             // cMenuTrackTabRenderAll
             // 
             this.cMenuTrackTabRenderAll.Name = "cMenuTrackTabRenderAll";
-            this.cMenuTrackTabRenderAll.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.cMenuTrackTabRenderAll.Size = new Cadencii.Gui.Dimension(219, 22);
             this.cMenuTrackTabRenderAll.Text = "Render All Tracks(&S)";
             // 
             // toolStripMenuItem27
             // 
             this.toolStripMenuItem27.Name = "toolStripMenuItem27";
-            this.toolStripMenuItem27.Size = new cadencii.java.awt.Dimension(216, 6);
+            this.toolStripMenuItem27.Size = new Cadencii.Gui.Dimension(216, 6);
             // 
             // cMenuTrackTabOverlay
             // 
             this.cMenuTrackTabOverlay.Name = "cMenuTrackTabOverlay";
-            this.cMenuTrackTabOverlay.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.cMenuTrackTabOverlay.Size = new Cadencii.Gui.Dimension(219, 22);
             this.cMenuTrackTabOverlay.Text = "Overlay(&O)";
             // 
             // cMenuTrackTabRenderer
@@ -1979,43 +1979,43 @@ namespace cadencii
             this.cMenuTrackTabRendererAquesTone,
             this.cMenuTrackTabRendererAquesTone2});
             this.cMenuTrackTabRenderer.Name = "cMenuTrackTabRenderer";
-            this.cMenuTrackTabRenderer.Size = new cadencii.java.awt.Dimension(219, 22);
+            this.cMenuTrackTabRenderer.Size = new Cadencii.Gui.Dimension(219, 22);
             this.cMenuTrackTabRenderer.Text = "Renderer(&R)";
             // 
             // cMenuTrackTabRendererVOCALOID1
             // 
             this.cMenuTrackTabRendererVOCALOID1.Name = "cMenuTrackTabRendererVOCALOID1";
-            this.cMenuTrackTabRendererVOCALOID1.Size = new cadencii.java.awt.Dimension(197, 22);
+            this.cMenuTrackTabRendererVOCALOID1.Size = new Cadencii.Gui.Dimension(197, 22);
             this.cMenuTrackTabRendererVOCALOID1.Text = "VOCALOID1(&1)";
             // 
             // cMenuTrackTabRendererVOCALOID2
             // 
             this.cMenuTrackTabRendererVOCALOID2.Name = "cMenuTrackTabRendererVOCALOID2";
-            this.cMenuTrackTabRendererVOCALOID2.Size = new cadencii.java.awt.Dimension(197, 22);
+            this.cMenuTrackTabRendererVOCALOID2.Size = new Cadencii.Gui.Dimension(197, 22);
             this.cMenuTrackTabRendererVOCALOID2.Text = "VOCALOID2(&2)";
             // 
             // cMenuTrackTabRendererUtau
             // 
             this.cMenuTrackTabRendererUtau.Name = "cMenuTrackTabRendererUtau";
-            this.cMenuTrackTabRendererUtau.Size = new cadencii.java.awt.Dimension(197, 22);
+            this.cMenuTrackTabRendererUtau.Size = new Cadencii.Gui.Dimension(197, 22);
             this.cMenuTrackTabRendererUtau.Text = "UTAU(&3)";
             // 
             // cMenuTrackTabRendererStraight
             // 
             this.cMenuTrackTabRendererStraight.Name = "cMenuTrackTabRendererStraight";
-            this.cMenuTrackTabRendererStraight.Size = new cadencii.java.awt.Dimension(197, 22);
+            this.cMenuTrackTabRendererStraight.Size = new Cadencii.Gui.Dimension(197, 22);
             this.cMenuTrackTabRendererStraight.Text = "vConnect-STAND(&4) ";
             // 
             // cMenuTrackTabRendererAquesTone
             // 
             this.cMenuTrackTabRendererAquesTone.Name = "cMenuTrackTabRendererAquesTone";
-            this.cMenuTrackTabRendererAquesTone.Size = new cadencii.java.awt.Dimension(197, 22);
+            this.cMenuTrackTabRendererAquesTone.Size = new Cadencii.Gui.Dimension(197, 22);
             this.cMenuTrackTabRendererAquesTone.Text = "AquesTone(&5)";
             // 
             // cMenuTrackTabRendererAquesTone2
             // 
             this.cMenuTrackTabRendererAquesTone2.Name = "cMenuTrackTabRendererAquesTone2";
-            this.cMenuTrackTabRendererAquesTone2.Size = new cadencii.java.awt.Dimension(197, 22);
+            this.cMenuTrackTabRendererAquesTone2.Size = new Cadencii.Gui.Dimension(197, 22);
             this.cMenuTrackTabRendererAquesTone2.Text = "AquesTone2(&6)";
 			this.cMenuTrackTabRendererAquesTone2.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.AQUES_TONE2, -1);
             // 
@@ -2044,122 +2044,122 @@ namespace cadencii
             this.cMenuTrackSelector.RenderMode = ToolStripRenderMode.System;
             this.cMenuTrackSelector.ShowCheckMargin = true;
             this.cMenuTrackSelector.ShowImageMargin = false;
-            this.cMenuTrackSelector.Size = new cadencii.java.awt.Dimension(206, 336);
+            this.cMenuTrackSelector.Size = new Cadencii.Gui.Dimension(206, 336);
             // 
             // cMenuTrackSelectorPointer
             // 
             this.cMenuTrackSelectorPointer.Name = "cMenuTrackSelectorPointer";
-            this.cMenuTrackSelectorPointer.Size = new cadencii.java.awt.Dimension(205, 22);
+            this.cMenuTrackSelectorPointer.Size = new Cadencii.Gui.Dimension(205, 22);
             this.cMenuTrackSelectorPointer.Text = "Arrow(&A)";
             // 
             // cMenuTrackSelectorPencil
             // 
             this.cMenuTrackSelectorPencil.Name = "cMenuTrackSelectorPencil";
-            this.cMenuTrackSelectorPencil.Size = new cadencii.java.awt.Dimension(205, 22);
+            this.cMenuTrackSelectorPencil.Size = new Cadencii.Gui.Dimension(205, 22);
             this.cMenuTrackSelectorPencil.Text = "Pencil(&W)";
             // 
             // cMenuTrackSelectorLine
             // 
             this.cMenuTrackSelectorLine.Name = "cMenuTrackSelectorLine";
-            this.cMenuTrackSelectorLine.Size = new cadencii.java.awt.Dimension(205, 22);
+            this.cMenuTrackSelectorLine.Size = new Cadencii.Gui.Dimension(205, 22);
             this.cMenuTrackSelectorLine.Text = "Line(&L)";
             // 
             // cMenuTrackSelectorEraser
             // 
             this.cMenuTrackSelectorEraser.Name = "cMenuTrackSelectorEraser";
-            this.cMenuTrackSelectorEraser.Size = new cadencii.java.awt.Dimension(205, 22);
+            this.cMenuTrackSelectorEraser.Size = new Cadencii.Gui.Dimension(205, 22);
             this.cMenuTrackSelectorEraser.Text = "Eraser(&E)";
             // 
             // cMenuTrackSelectorPaletteTool
             // 
             this.cMenuTrackSelectorPaletteTool.Name = "cMenuTrackSelectorPaletteTool";
-            this.cMenuTrackSelectorPaletteTool.Size = new cadencii.java.awt.Dimension(205, 22);
+            this.cMenuTrackSelectorPaletteTool.Size = new Cadencii.Gui.Dimension(205, 22);
             this.cMenuTrackSelectorPaletteTool.Text = "Palette Tool";
             // 
             // toolStripSeparator14
             // 
             this.toolStripSeparator14.Name = "toolStripSeparator14";
-            this.toolStripSeparator14.Size = new cadencii.java.awt.Dimension(202, 6);
+            this.toolStripSeparator14.Size = new Cadencii.Gui.Dimension(202, 6);
             // 
             // cMenuTrackSelectorCurve
             // 
             this.cMenuTrackSelectorCurve.Name = "cMenuTrackSelectorCurve";
-            this.cMenuTrackSelectorCurve.Size = new cadencii.java.awt.Dimension(205, 22);
+            this.cMenuTrackSelectorCurve.Size = new Cadencii.Gui.Dimension(205, 22);
             this.cMenuTrackSelectorCurve.Text = "Curve(&V)";
             // 
             // toolStripMenuItem28
             // 
             this.toolStripMenuItem28.Name = "toolStripMenuItem28";
-            this.toolStripMenuItem28.Size = new cadencii.java.awt.Dimension(202, 6);
+            this.toolStripMenuItem28.Size = new Cadencii.Gui.Dimension(202, 6);
             // 
             // cMenuTrackSelectorUndo
             // 
             this.cMenuTrackSelectorUndo.Name = "cMenuTrackSelectorUndo";
-            this.cMenuTrackSelectorUndo.Size = new cadencii.java.awt.Dimension(205, 22);
+            this.cMenuTrackSelectorUndo.Size = new Cadencii.Gui.Dimension(205, 22);
             this.cMenuTrackSelectorUndo.Text = "Undo(&U)";
             // 
             // cMenuTrackSelectorRedo
             // 
             this.cMenuTrackSelectorRedo.Name = "cMenuTrackSelectorRedo";
-            this.cMenuTrackSelectorRedo.Size = new cadencii.java.awt.Dimension(205, 22);
+            this.cMenuTrackSelectorRedo.Size = new Cadencii.Gui.Dimension(205, 22);
             this.cMenuTrackSelectorRedo.Text = "Redo(&R)";
             // 
             // toolStripMenuItem29
             // 
             this.toolStripMenuItem29.Name = "toolStripMenuItem29";
-            this.toolStripMenuItem29.Size = new cadencii.java.awt.Dimension(202, 6);
+            this.toolStripMenuItem29.Size = new Cadencii.Gui.Dimension(202, 6);
             // 
             // cMenuTrackSelectorCut
             // 
             this.cMenuTrackSelectorCut.Name = "cMenuTrackSelectorCut";
-            this.cMenuTrackSelectorCut.Size = new cadencii.java.awt.Dimension(205, 22);
+            this.cMenuTrackSelectorCut.Size = new Cadencii.Gui.Dimension(205, 22);
             this.cMenuTrackSelectorCut.Text = "Cut(&T)";
             // 
             // cMenuTrackSelectorCopy
             // 
             this.cMenuTrackSelectorCopy.Name = "cMenuTrackSelectorCopy";
-            this.cMenuTrackSelectorCopy.Size = new cadencii.java.awt.Dimension(205, 22);
+            this.cMenuTrackSelectorCopy.Size = new Cadencii.Gui.Dimension(205, 22);
             this.cMenuTrackSelectorCopy.Text = "Copy(&C)";
             // 
             // cMenuTrackSelectorPaste
             // 
             this.cMenuTrackSelectorPaste.Name = "cMenuTrackSelectorPaste";
-            this.cMenuTrackSelectorPaste.Size = new cadencii.java.awt.Dimension(205, 22);
+            this.cMenuTrackSelectorPaste.Size = new Cadencii.Gui.Dimension(205, 22);
             this.cMenuTrackSelectorPaste.Text = "Paste(&P)";
             // 
             // cMenuTrackSelectorDelete
             // 
             this.cMenuTrackSelectorDelete.Name = "cMenuTrackSelectorDelete";
-            this.cMenuTrackSelectorDelete.Size = new cadencii.java.awt.Dimension(205, 22);
+            this.cMenuTrackSelectorDelete.Size = new Cadencii.Gui.Dimension(205, 22);
             this.cMenuTrackSelectorDelete.Text = "Delete(&D)";
             // 
             // cMenuTrackSelectorDeleteBezier
             // 
             this.cMenuTrackSelectorDeleteBezier.Name = "cMenuTrackSelectorDeleteBezier";
-            this.cMenuTrackSelectorDeleteBezier.Size = new cadencii.java.awt.Dimension(205, 22);
+            this.cMenuTrackSelectorDeleteBezier.Size = new Cadencii.Gui.Dimension(205, 22);
             this.cMenuTrackSelectorDeleteBezier.Text = "Delete Bezier Point(&B)";
             // 
             // toolStripMenuItem31
             // 
             this.toolStripMenuItem31.Name = "toolStripMenuItem31";
-            this.toolStripMenuItem31.Size = new cadencii.java.awt.Dimension(202, 6);
+            this.toolStripMenuItem31.Size = new Cadencii.Gui.Dimension(202, 6);
             // 
             // cMenuTrackSelectorSelectAll
             // 
             this.cMenuTrackSelectorSelectAll.Name = "cMenuTrackSelectorSelectAll";
-            this.cMenuTrackSelectorSelectAll.Size = new cadencii.java.awt.Dimension(205, 22);
+            this.cMenuTrackSelectorSelectAll.Size = new Cadencii.Gui.Dimension(205, 22);
             this.cMenuTrackSelectorSelectAll.Text = "Select All Events(&E)";
             // 
             // trackBar
             // 
             this.trackBar.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Right)));
             this.trackBar.AutoSize = false;
-            this.trackBar.Location = new cadencii.java.awt.Point(322, 263);
-            this.trackBar.Margin = new  cadencii.java.awt.Padding(0);
+            this.trackBar.Location = new Cadencii.Gui.Point(322, 263);
+            this.trackBar.Margin = new  Cadencii.Gui.Padding(0);
             this.trackBar.Maximum = 609;
             this.trackBar.Minimum = 17;
             this.trackBar.Name = "trackBar";
-            this.trackBar.Size = new cadencii.java.awt.Dimension(83, 16);
+            this.trackBar.Size = new Cadencii.Gui.Dimension(83, 16);
             this.trackBar.TabIndex = 15;
             this.trackBar.TabStop = false;
             this.trackBar.TickFrequency = 100;
@@ -2170,10 +2170,10 @@ namespace cadencii
             // 
             this.pictureBox3.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
             this.pictureBox3.BackColor = new Color (((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pictureBox3.Location = new cadencii.java.awt.Point (0, 263);
-            this.pictureBox3.Margin = new cadencii.java.awt.Padding(0);
+            this.pictureBox3.Location = new Cadencii.Gui.Point (0, 263);
+            this.pictureBox3.Margin = new Cadencii.Gui.Padding(0);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new cadencii.java.awt.Dimension(49, 16);
+            this.pictureBox3.Size = new Cadencii.Gui.Dimension(49, 16);
             this.pictureBox3.TabIndex = 8;
             this.pictureBox3.TabStop = false;
             // 
@@ -2183,10 +2183,10 @@ namespace cadencii
             this.pictKeyLengthSplitter.BackColor = System.Drawing.SystemColors.Control.ToAwt ();
             this.pictKeyLengthSplitter.BorderStyle = BorderStyle.Fixed3D;
 			this.pictKeyLengthSplitter.Cursor = System.Windows.Forms.Cursors.NoMoveHoriz.ToAwt ();
-            this.pictKeyLengthSplitter.Location = new  cadencii.java.awt.Point(49, 263);
-            this.pictKeyLengthSplitter.Margin = new cadencii.java.awt.Padding(0);
+            this.pictKeyLengthSplitter.Location = new  Cadencii.Gui.Point(49, 263);
+            this.pictKeyLengthSplitter.Margin = new Cadencii.Gui.Padding(0);
             this.pictKeyLengthSplitter.Name = "pictKeyLengthSplitter";
-            this.pictKeyLengthSplitter.Size = new cadencii.java.awt.Dimension(16, 16);
+            this.pictKeyLengthSplitter.Size = new Cadencii.Gui.Dimension(16, 16);
             this.pictKeyLengthSplitter.TabIndex = 20;
             this.pictKeyLengthSplitter.TabStop = false;
             // 
@@ -2194,10 +2194,10 @@ namespace cadencii
             // 
             this.pictureBox2.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Right)));
             this.pictureBox2.BackColor = new Color(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.pictureBox2.Location = new cadencii.java.awt.Point(405, 231);
-            this.pictureBox2.Margin = new cadencii.java.awt.Padding(0);
+            this.pictureBox2.Location = new Cadencii.Gui.Point(405, 231);
+            this.pictureBox2.Margin = new Cadencii.Gui.Padding(0);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new cadencii.java.awt.Dimension(16, 48);
+            this.pictureBox2.Size = new Cadencii.Gui.Dimension(16, 48);
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             // 
@@ -2205,19 +2205,19 @@ namespace cadencii
             // 
             this.vScroll.Anchor = ((AnchorStyles)(((AnchorStyles.Top | AnchorStyles.Bottom)
             | AnchorStyles.Right)));
-            this.vScroll.Location = new cadencii.java.awt.Point(405, 94);
+            this.vScroll.Location = new Cadencii.Gui.Point(405, 94);
             this.vScroll.Name = "vScroll";
-            this.vScroll.Size = new cadencii.java.awt.Dimension(16, 137);
+            this.vScroll.Size = new Cadencii.Gui.Dimension(16, 137);
             this.vScroll.TabIndex = 17;
             // 
             // picturePositionIndicator
             // 
             this.picturePositionIndicator.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            this.picturePositionIndicator.BackColor = cadencii.java.awt.Colors.DarkGray;
-            this.picturePositionIndicator.Location = new cadencii.java.awt.Point(0, 46);
-            this.picturePositionIndicator.Margin = new cadencii.java.awt.Padding(0);
+            this.picturePositionIndicator.BackColor = Cadencii.Gui.Colors.DarkGray;
+            this.picturePositionIndicator.Location = new Cadencii.Gui.Point(0, 46);
+            this.picturePositionIndicator.Margin = new Cadencii.Gui.Padding(0);
             this.picturePositionIndicator.Name = "picturePositionIndicator";
-            this.picturePositionIndicator.Size = new cadencii.java.awt.Dimension(700, 48);
+            this.picturePositionIndicator.Size = new Cadencii.Gui.Dimension(700, 48);
             this.picturePositionIndicator.TabIndex = 10;
             this.picturePositionIndicator.TabStop = false;
             // 
@@ -2232,89 +2232,89 @@ namespace cadencii
             this.stripLblMidiIn,
             this.toolStripSeparator11,
             this.stripBtnStepSequencer});
-			this.toolStripBottom.Location = new cadencii.java.awt.Point(15, 0);
+			this.toolStripBottom.Location = new Cadencii.Gui.Point(15, 0);
             this.toolStripBottom.Name = "toolStripBottom";
             this.toolStripBottom.RenderMode = ToolStripRenderMode.System;
-            this.toolStripBottom.Size = new cadencii.java.awt.Dimension(347, 25);
+            this.toolStripBottom.Size = new Cadencii.Gui.Dimension(347, 25);
             this.toolStripBottom.TabIndex = 22;
             // 
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new cadencii.java.awt.Dimension(101, 20);
+            this.toolStripStatusLabel1.Size = new Cadencii.Gui.Dimension(101, 20);
             this.toolStripStatusLabel1.Text = "Game Controler";
             // 
             // stripLblGameCtrlMode
             // 
             this.stripLblGameCtrlMode.Name = "stripLblGameCtrlMode";
-            this.stripLblGameCtrlMode.Size = new cadencii.java.awt.Dimension(57, 20);
+            this.stripLblGameCtrlMode.Size = new Cadencii.Gui.Dimension(57, 20);
             this.stripLblGameCtrlMode.Text = "Disabled";
             this.stripLblGameCtrlMode.ToolTipText = "Game Controler";
             // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new cadencii.java.awt.Dimension(6, 25);
+            this.toolStripSeparator10.Size = new Cadencii.Gui.Dimension(6, 25);
             // 
             // toolStripStatusLabel2
             // 
             this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new cadencii.java.awt.Dimension(53, 20);
+            this.toolStripStatusLabel2.Size = new Cadencii.Gui.Dimension(53, 20);
             this.toolStripStatusLabel2.Text = "MIDI In";
             // 
             // stripLblMidiIn
             // 
             this.stripLblMidiIn.Name = "stripLblMidiIn";
-            this.stripLblMidiIn.Size = new cadencii.java.awt.Dimension(57, 20);
+            this.stripLblMidiIn.Size = new Cadencii.Gui.Dimension(57, 20);
             this.stripLblMidiIn.Text = "Disabled";
             this.stripLblMidiIn.ToolTipText = "Midi In Device";
             // 
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new cadencii.java.awt.Dimension(6, 25);
+            this.toolStripSeparator11.Size = new Cadencii.Gui.Dimension(6, 25);
             // 
             // stripBtnStepSequencer
             // 
             this.stripBtnStepSequencer.CheckOnClick = true;
 			this.stripBtnStepSequencer.Image = ((System.Drawing.Image)(resources.GetObject("stripBtnStepSequencer.Image"))).ToAwt ();
-			this.stripBtnStepSequencer.ImageTransparentColor = cadencii.java.awt.Colors.Magenta;
+			this.stripBtnStepSequencer.ImageTransparentColor = Cadencii.Gui.Colors.Magenta;
             this.stripBtnStepSequencer.Name = "stripBtnStepSequencer";
-            this.stripBtnStepSequencer.Size = new cadencii.java.awt.Dimension(55, 22);
+            this.stripBtnStepSequencer.Size = new Cadencii.Gui.Dimension(55, 22);
             this.stripBtnStepSequencer.Text = "Step";
             // 
             // splitContainerProperty
             // 
             this.splitContainerProperty.AddControl(this.splitContainer2);
-            this.splitContainerProperty.FixedPanel = cadencii.java.awt.FixedPanel.None;
+            this.splitContainerProperty.FixedPanel = Cadencii.Gui.FixedPanel.None;
             this.splitContainerProperty.SplitterFixed = false;
-            this.splitContainerProperty.Location = new cadencii.java.awt.Point(448, 14);
-            this.splitContainerProperty.Margin = new cadencii.java.awt.Padding(0);
+            this.splitContainerProperty.Location = new Cadencii.Gui.Point(448, 14);
+            this.splitContainerProperty.Margin = new Cadencii.Gui.Padding(0);
             this.splitContainerProperty.Name = "splitContainerProperty";
-            this.splitContainerProperty.Orientation = cadencii.java.awt.Orientation.Horizontal;
+            this.splitContainerProperty.Orientation = Cadencii.Gui.Orientation.Horizontal;
             // 
             // 
             // 
-            this.splitContainerProperty.Panel1.Anchor = cadencii.java.awt.AnchorStyles.Top | cadencii.java.awt.AnchorStyles.Bottom | cadencii.java.awt.AnchorStyles.Left | cadencii.java.awt.AnchorStyles.Right;
-            this.splitContainerProperty.Panel1.BorderColor = cadencii.java.awt.Colors.Black;
-            this.splitContainerProperty.Panel1.Location = new cadencii.java.awt.Point(0, 0);
-            this.splitContainerProperty.Panel1.Margin = new cadencii.java.awt.Padding(0, 0, 0, 4);
+            this.splitContainerProperty.Panel1.Anchor = Cadencii.Gui.AnchorStyles.Top | Cadencii.Gui.AnchorStyles.Bottom | Cadencii.Gui.AnchorStyles.Left | Cadencii.Gui.AnchorStyles.Right;
+            this.splitContainerProperty.Panel1.BorderColor = Cadencii.Gui.Colors.Black;
+            this.splitContainerProperty.Panel1.Location = new Cadencii.Gui.Point(0, 0);
+            this.splitContainerProperty.Panel1.Margin = new Cadencii.Gui.Padding(0, 0, 0, 4);
             this.splitContainerProperty.Panel1.Name = "m_panel1";
-            this.splitContainerProperty.Panel1.Size = new cadencii.java.awt.Dimension(42, 348);
+            this.splitContainerProperty.Panel1.Size = new Cadencii.Gui.Dimension(42, 348);
             this.splitContainerProperty.Panel1.TabIndex = 0;
             this.splitContainerProperty.Panel1MinSize = 25;
             // 
             // 
             // 
-			this.splitContainerProperty.Panel2.Anchor = cadencii.java.awt.AnchorStyles.Top | cadencii.java.awt.AnchorStyles.Bottom | cadencii.java.awt.AnchorStyles.Left | cadencii.java.awt.AnchorStyles.Right;
-            this.splitContainerProperty.Panel2.BorderColor = cadencii.java.awt.Colors.Black;
-            this.splitContainerProperty.Panel2.Location = new cadencii.java.awt.Point(46, 0);
-            this.splitContainerProperty.Panel2.Margin = new cadencii.java.awt.Padding(0);
+			this.splitContainerProperty.Panel2.Anchor = Cadencii.Gui.AnchorStyles.Top | Cadencii.Gui.AnchorStyles.Bottom | Cadencii.Gui.AnchorStyles.Left | Cadencii.Gui.AnchorStyles.Right;
+            this.splitContainerProperty.Panel2.BorderColor = Cadencii.Gui.Colors.Black;
+            this.splitContainerProperty.Panel2.Location = new Cadencii.Gui.Point(46, 0);
+            this.splitContainerProperty.Panel2.Margin = new Cadencii.Gui.Padding(0);
             this.splitContainerProperty.Panel2.Name = "m_panel2";
-            this.splitContainerProperty.Panel2.Size = new cadencii.java.awt.Dimension(66, 348);
+            this.splitContainerProperty.Panel2.Size = new Cadencii.Gui.Dimension(66, 348);
             this.splitContainerProperty.Panel2.TabIndex = 1;
             this.splitContainerProperty.Panel2MinSize = 25;
-            this.splitContainerProperty.Size = new cadencii.java.awt.Dimension(112, 348);
+            this.splitContainerProperty.Size = new Cadencii.Gui.Dimension(112, 348);
             this.splitContainerProperty.SplitterDistance = 42;
             this.splitContainerProperty.SplitterWidth = 4;
             this.splitContainerProperty.TabIndex = 20;
@@ -2323,35 +2323,35 @@ namespace cadencii
             // 
             // splitContainer2
             // 
-            this.splitContainer2.FixedPanel = cadencii.java.awt.FixedPanel.Panel2;
+            this.splitContainer2.FixedPanel = Cadencii.Gui.FixedPanel.Panel2;
             this.splitContainer2.SplitterFixed = false;
-            this.splitContainer2.Location = new cadencii.java.awt.Point(0, 345);
-            this.splitContainer2.Margin = new cadencii.java.awt.Padding(0);
+            this.splitContainer2.Location = new Cadencii.Gui.Point(0, 345);
+            this.splitContainer2.Margin = new Cadencii.Gui.Padding(0);
             this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = cadencii.java.awt.Orientation.Vertical;
+            this.splitContainer2.Orientation = Cadencii.Gui.Orientation.Vertical;
             // 
             // 
             // 
-			this.splitContainer2.Panel2.Anchor = cadencii.java.awt.AnchorStyles.Top | cadencii.java.awt.AnchorStyles.Bottom | cadencii.java.awt.AnchorStyles.Left | cadencii.java.awt.AnchorStyles.Right;
-            this.splitContainer2.Panel1.BorderColor = cadencii.java.awt.Colors.Black;
-            this.splitContainer2.Panel1.Location = new cadencii.java.awt.Point(0, 0);
-            this.splitContainer2.Panel1.Margin = new cadencii.java.awt.Padding(0);
+			this.splitContainer2.Panel2.Anchor = Cadencii.Gui.AnchorStyles.Top | Cadencii.Gui.AnchorStyles.Bottom | Cadencii.Gui.AnchorStyles.Left | Cadencii.Gui.AnchorStyles.Right;
+            this.splitContainer2.Panel1.BorderColor = Cadencii.Gui.Colors.Black;
+            this.splitContainer2.Panel1.Location = new Cadencii.Gui.Point(0, 0);
+            this.splitContainer2.Panel1.Margin = new Cadencii.Gui.Padding(0);
             this.splitContainer2.Panel1.Name = "m_panel1";
-            this.splitContainer2.Panel1.Size = new cadencii.java.awt.Dimension(115, 25);
+            this.splitContainer2.Panel1.Size = new Cadencii.Gui.Dimension(115, 25);
             this.splitContainer2.Panel1.TabIndex = 0;
             this.splitContainer2.Panel1MinSize = 25;
             // 
             // 
             // 
-			this.splitContainer2.Panel2.Anchor = cadencii.java.awt.AnchorStyles.Bottom | cadencii.java.awt.AnchorStyles.Left | cadencii.java.awt.AnchorStyles.Right;
-            this.splitContainer2.Panel2.BorderColor = cadencii.java.awt.Colors.Black;
-            this.splitContainer2.Panel2.Location = new cadencii.java.awt.Point(0, 29);
-            this.splitContainer2.Panel2.Margin = new cadencii.java.awt.Padding(0);
+			this.splitContainer2.Panel2.Anchor = Cadencii.Gui.AnchorStyles.Bottom | Cadencii.Gui.AnchorStyles.Left | Cadencii.Gui.AnchorStyles.Right;
+            this.splitContainer2.Panel2.BorderColor = Cadencii.Gui.Colors.Black;
+            this.splitContainer2.Panel2.Location = new Cadencii.Gui.Point(0, 29);
+            this.splitContainer2.Panel2.Margin = new Cadencii.Gui.Padding(0);
             this.splitContainer2.Panel2.Name = "m_panel2";
-            this.splitContainer2.Panel2.Size = new cadencii.java.awt.Dimension(115, 105);
+            this.splitContainer2.Panel2.Size = new Cadencii.Gui.Dimension(115, 105);
             this.splitContainer2.Panel2.TabIndex = 1;
             this.splitContainer2.Panel2MinSize = 25;
-            this.splitContainer2.Size = new cadencii.java.awt.Dimension(115, 134);
+            this.splitContainer2.Size = new Cadencii.Gui.Dimension(115, 134);
             this.splitContainer2.SplitterDistance = 25;
             this.splitContainer2.SplitterWidth = 4;
             this.splitContainer2.TabIndex = 23;
@@ -2360,36 +2360,36 @@ namespace cadencii
             // 
             // splitContainer1
             // 
-            this.splitContainer1.FixedPanel = cadencii.java.awt.FixedPanel.Panel2;
+            this.splitContainer1.FixedPanel = Cadencii.Gui.FixedPanel.Panel2;
             this.splitContainer1.SplitterFixed = false;
-            this.splitContainer1.Location = new cadencii.java.awt.Point(2, 2);
-            this.splitContainer1.Margin = new cadencii.java.awt.Padding(0);
-			this.splitContainer1.MinimumSize = new cadencii.java.awt.Dimension(0, 54);
+            this.splitContainer1.Location = new Cadencii.Gui.Point(2, 2);
+            this.splitContainer1.Margin = new Cadencii.Gui.Padding(0);
+			this.splitContainer1.MinimumSize = new Cadencii.Gui.Dimension(0, 54);
             this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = cadencii.java.awt.Orientation.Vertical;
+            this.splitContainer1.Orientation = Cadencii.Gui.Orientation.Vertical;
             // 
             // 
             // 
-			this.splitContainer1.Panel1.Anchor = cadencii.java.awt.AnchorStyles.Top | cadencii.java.awt.AnchorStyles.Bottom | cadencii.java.awt.AnchorStyles.Left | cadencii.java.awt.AnchorStyles.Right;
-            this.splitContainer1.Panel1.BorderColor = cadencii.java.awt.Colors.Black;
-            this.splitContainer1.Panel1.Location = new cadencii.java.awt.Point(0, 0);
-            this.splitContainer1.Panel1.Margin = new cadencii.java.awt.Padding(0);
+			this.splitContainer1.Panel1.Anchor = Cadencii.Gui.AnchorStyles.Top | Cadencii.Gui.AnchorStyles.Bottom | Cadencii.Gui.AnchorStyles.Left | Cadencii.Gui.AnchorStyles.Right;
+            this.splitContainer1.Panel1.BorderColor = Cadencii.Gui.Colors.Black;
+            this.splitContainer1.Panel1.Location = new Cadencii.Gui.Point(0, 0);
+            this.splitContainer1.Panel1.Margin = new Cadencii.Gui.Padding(0);
             this.splitContainer1.Panel1.Name = "m_panel1";
-            this.splitContainer1.Panel1.Size = new cadencii.java.awt.Dimension(953, 50);
+            this.splitContainer1.Panel1.Size = new Cadencii.Gui.Dimension(953, 50);
             this.splitContainer1.Panel1.TabIndex = 0;
             this.splitContainer1.Panel1MinSize = 25;
             // 
             // 
             // 
-			this.splitContainer1.Panel2.Anchor = cadencii.java.awt.AnchorStyles.Bottom | cadencii.java.awt.AnchorStyles.Left | cadencii.java.awt.AnchorStyles.Right;
-            this.splitContainer1.Panel2.BorderColor = cadencii.java.awt.Colors.Black;
-            this.splitContainer1.Panel2.Location = new cadencii.java.awt.Point(0, 54);
-            this.splitContainer1.Panel2.Margin = new cadencii.java.awt.Padding(0);
+			this.splitContainer1.Panel2.Anchor = Cadencii.Gui.AnchorStyles.Bottom | Cadencii.Gui.AnchorStyles.Left | Cadencii.Gui.AnchorStyles.Right;
+            this.splitContainer1.Panel2.BorderColor = Cadencii.Gui.Colors.Black;
+            this.splitContainer1.Panel2.Location = new Cadencii.Gui.Point(0, 54);
+            this.splitContainer1.Panel2.Margin = new Cadencii.Gui.Padding(0);
             this.splitContainer1.Panel2.Name = "m_panel2";
-            this.splitContainer1.Panel2.Size = new cadencii.java.awt.Dimension(953, 25);
+            this.splitContainer1.Panel2.Size = new Cadencii.Gui.Dimension(953, 25);
             this.splitContainer1.Panel2.TabIndex = 1;
             this.splitContainer1.Panel2MinSize = 25;
-            this.splitContainer1.Size = new cadencii.java.awt.Dimension(953, 54);
+            this.splitContainer1.Size = new Cadencii.Gui.Dimension(953, 54);
             this.splitContainer1.SplitterDistance = 50;
             this.splitContainer1.SplitterWidth = 4;
             this.splitContainer1.TabIndex = 4;
@@ -2399,7 +2399,7 @@ namespace cadencii
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new cadencii.java.awt.Dimension(57, 6);
+            this.toolStripSeparator2.Size = new Cadencii.Gui.Dimension(57, 6);
             // 
             // stripDDBtnQuantize
             // 
@@ -2462,12 +2462,12 @@ namespace cadencii
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new cadencii.java.awt.Dimension(57, 6);
+            this.toolStripSeparator3.Size = new Cadencii.Gui.Dimension(57, 6);
             // 
             // imageListFile
             // 
             this.imageListFile.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListFile.ImageStream")));
-            this.imageListFile.TransparentColor = cadencii.java.awt.Colors.Transparent;
+            this.imageListFile.TransparentColor = Cadencii.Gui.Colors.Transparent;
 			this.imageListFile.SetImagesKeyName(0, "disk__plus.png");
             this.imageListFile.SetImagesKeyName(1, "folder_horizontal_open.png");
             this.imageListFile.SetImagesKeyName(2, "disk.png");
@@ -2480,7 +2480,7 @@ namespace cadencii
             // imageListPosition
             // 
             this.imageListPosition.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListPosition.ImageStream")));
-            this.imageListPosition.TransparentColor = cadencii.java.awt.Colors.Transparent;
+            this.imageListPosition.TransparentColor = Cadencii.Gui.Colors.Transparent;
             this.imageListPosition.SetImagesKeyName(0, "control_stop_180.png");
             this.imageListPosition.SetImagesKeyName(1, "control_double_180.png");
             this.imageListPosition.SetImagesKeyName(2, "control_double.png");
@@ -2493,7 +2493,7 @@ namespace cadencii
             // imageListMeasure
             // 
             this.imageListMeasure.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListMeasure.ImageStream")));
-			this.imageListMeasure.TransparentColor = cadencii.java.awt.Colors.Transparent;
+			this.imageListMeasure.TransparentColor = Cadencii.Gui.Colors.Transparent;
             this.imageListMeasure.SetImagesKeyName(0, "pin__arrow.png");
             this.imageListMeasure.SetImagesKeyName(1, "pin__arrow_inv.png");
             this.imageListMeasure.SetImagesKeyName(2, "note001.png");
@@ -2509,7 +2509,7 @@ namespace cadencii
             // imageListTool
             // 
             this.imageListTool.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListTool.ImageStream")));
-			this.imageListTool.TransparentColor = cadencii.java.awt.Colors.Transparent;
+			this.imageListTool.TransparentColor = Cadencii.Gui.Colors.Transparent;
             this.imageListTool.SetImagesKeyName(0, "arrow_135.png");
             this.imageListTool.SetImagesKeyName(1, "pencil.png");
             this.imageListTool.SetImagesKeyName(2, "layer_shape_line.png");
@@ -2528,61 +2528,61 @@ namespace cadencii
 			this.panel1.AddControl(this.pictureBox2);
 			this.panel1.AddControl(this.hScroll);
 			this.panel1.AddControl(this.trackBar);
-            this.panel1.Location = new cadencii.java.awt.Point(15, 13);
+            this.panel1.Location = new Cadencii.Gui.Point(15, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new cadencii.java.awt.Dimension(421, 279);
+            this.panel1.Size = new Cadencii.Gui.Dimension(421, 279);
             this.panel1.TabIndex = 24;
             // 
             // panelOverview
             // 
-	this.panelOverview.Anchor = ((cadencii.java.awt.AnchorStyles)(((cadencii.java.awt.AnchorStyles.Top | cadencii.java.awt.AnchorStyles.Left) | cadencii.java.awt.AnchorStyles.Right)));
-            this.panelOverview.BackColor = new cadencii.java.awt.Color(((int)(((byte)(106)))), ((int)(((byte)(108)))), ((int)(((byte)(108)))));
-            this.panelOverview.Location = new cadencii.java.awt.Point(0, 1);
-            this.panelOverview.Margin = new cadencii.java.awt.Padding(0);
+	this.panelOverview.Anchor = ((Cadencii.Gui.AnchorStyles)(((Cadencii.Gui.AnchorStyles.Top | Cadencii.Gui.AnchorStyles.Left) | Cadencii.Gui.AnchorStyles.Right)));
+            this.panelOverview.BackColor = new Cadencii.Gui.Color(((int)(((byte)(106)))), ((int)(((byte)(108)))), ((int)(((byte)(108)))));
+            this.panelOverview.Location = new Cadencii.Gui.Point(0, 1);
+            this.panelOverview.Margin = new Cadencii.Gui.Padding(0);
             this.panelOverview.Name = "panelOverview";
-            this.panelOverview.Size = new cadencii.java.awt.Dimension(700, 45);
+            this.panelOverview.Size = new Cadencii.Gui.Dimension(700, 45);
             this.panelOverview.TabIndex = 19;
             this.panelOverview.TabStop = false;
             // 
             // pictPianoRoll
             // 
-			this.pictPianoRoll.Anchor = ((cadencii.java.awt.AnchorStyles)((((cadencii.java.awt.AnchorStyles.Top | cadencii.java.awt.AnchorStyles.Bottom)
-				| cadencii.java.awt.AnchorStyles.Left)
-				| cadencii.java.awt.AnchorStyles.Right)));
-			this.pictPianoRoll.BackColor = new cadencii.java.awt.Color(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-			this.pictPianoRoll.Location = new cadencii.java.awt.Point(0, 94);
-			this.pictPianoRoll.Margin = new cadencii.java.awt.Padding(0);
+			this.pictPianoRoll.Anchor = ((Cadencii.Gui.AnchorStyles)((((Cadencii.Gui.AnchorStyles.Top | Cadencii.Gui.AnchorStyles.Bottom)
+				| Cadencii.Gui.AnchorStyles.Left)
+				| Cadencii.Gui.AnchorStyles.Right)));
+			this.pictPianoRoll.BackColor = new Cadencii.Gui.Color(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+			this.pictPianoRoll.Location = new Cadencii.Gui.Point(0, 94);
+			this.pictPianoRoll.Margin = new Cadencii.Gui.Padding(0);
             this.pictPianoRoll.Name = "pictPianoRoll";
-			this.pictPianoRoll.Size = new cadencii.java.awt.Dimension(405, 169);
+			this.pictPianoRoll.Size = new Cadencii.Gui.Dimension(405, 169);
             this.pictPianoRoll.TabIndex = 12;
             this.pictPianoRoll.TabStop = false;
             // 
             // hScroll
             // 
-            this.hScroll.Anchor = ((cadencii.java.awt.AnchorStyles)(((AnchorStyles.Bottom | AnchorStyles.Left) | AnchorStyles.Right)));
-            this.hScroll.Location = new cadencii.java.awt.Point(65, 263);
+            this.hScroll.Anchor = ((Cadencii.Gui.AnchorStyles)(((AnchorStyles.Bottom | AnchorStyles.Left) | AnchorStyles.Right)));
+            this.hScroll.Location = new Cadencii.Gui.Point(65, 263);
             this.hScroll.Name = "hScroll";
-            this.hScroll.Size = new cadencii.java.awt.Dimension(257, 16);
+            this.hScroll.Size = new Cadencii.Gui.Dimension(257, 16);
             this.hScroll.TabIndex = 16;
             // 
             // rebar
             // 
-            this.rebar.Dock = cadencii.java.awt.DockStyle.Top;
-            this.rebar.Location = new cadencii.java.awt.Point(0, 26);
+            this.rebar.Dock = Cadencii.Gui.DockStyle.Top;
+            this.rebar.Location = new Cadencii.Gui.Point(0, 26);
             this.rebar.Name = "rebar";
-            this.rebar.Size = new cadencii.java.awt.Dimension(955, 4);
+            this.rebar.Size = new Cadencii.Gui.Dimension(955, 4);
             this.rebar.TabIndex = 19;
             this.rebar.ToggleDoubleClick = true;
             // 
             // imageListMenu
             // 
-			this.imageListMenu.ColorDepth = cadencii.java.awt.ColorDepth.Depth8Bit;
-			this.imageListMenu.ImageSize = new cadencii.java.awt.Dimension(1, 16);
-            this.imageListMenu.TransparentColor = cadencii.java.awt.Colors.Transparent;
+			this.imageListMenu.ColorDepth = Cadencii.Gui.ColorDepth.Depth8Bit;
+			this.imageListMenu.ImageSize = new Cadencii.Gui.Dimension(1, 16);
+            this.imageListMenu.TransparentColor = Cadencii.Gui.Colors.Transparent;
             // 
             // toolBarFile
             // 
-			this.toolBarFile.Appearance = cadencii.java.awt.ToolBarAppearance.Flat;
+			this.toolBarFile.Appearance = Cadencii.Gui.ToolBarAppearance.Flat;
             this.toolBarFile.Buttons.AddRange(new UiToolBarButton[] {
             this.stripBtnFileNew,
             this.stripBtnFileOpen,
@@ -2594,15 +2594,15 @@ namespace cadencii
             this.toolBarButton2,
             this.stripBtnUndo,
             this.stripBtnRedo});
-			this.toolBarFile.ButtonSize = new cadencii.java.awt.Dimension(23, 22);
+			this.toolBarFile.ButtonSize = new Cadencii.Gui.Dimension(23, 22);
             this.toolBarFile.Divider = false;
             this.toolBarFile.Dock = DockStyle.None;
             this.toolBarFile.DropDownArrows = true;
             this.toolBarFile.ImageList = this.imageListFile;
-			this.toolBarFile.Location = new cadencii.java.awt.Point(11, 2);
+			this.toolBarFile.Location = new Cadencii.Gui.Point(11, 2);
             this.toolBarFile.Name = "toolBarFile";
             this.toolBarFile.ShowToolTips = true;
-            this.toolBarFile.Size = new cadencii.java.awt.Dimension(944, 26);
+            this.toolBarFile.Size = new Cadencii.Gui.Dimension(944, 26);
             this.toolBarFile.TabIndex = 25;
             this.toolBarFile.Wrappable = false;
             // 
@@ -2680,10 +2680,10 @@ namespace cadencii
             this.toolBarPosition.Dock = DockStyle.None;
             this.toolBarPosition.DropDownArrows = true;
             this.toolBarPosition.ImageList = this.imageListPosition;
-			this.toolBarPosition.Location = new cadencii.java.awt.Point(11, 32);
+			this.toolBarPosition.Location = new Cadencii.Gui.Point(11, 32);
             this.toolBarPosition.Name = "toolBarPosition";
             this.toolBarPosition.ShowToolTips = true;
-            this.toolBarPosition.Size = new cadencii.java.awt.Dimension(944, 40);
+            this.toolBarPosition.Size = new Cadencii.Gui.Dimension(944, 40);
             this.toolBarPosition.TabIndex = 25;
             this.toolBarPosition.TextAlign = ToolBarTextAlign.Right;
             this.toolBarPosition.Wrappable = false;
@@ -2745,10 +2745,10 @@ namespace cadencii
             this.toolBarMeasure.Dock = DockStyle.None;
             this.toolBarMeasure.DropDownArrows = true;
             this.toolBarMeasure.ImageList = this.imageListMeasure;
-			this.toolBarMeasure.Location = new cadencii.java.awt.Point(11, 62);
+			this.toolBarMeasure.Location = new Cadencii.Gui.Point(11, 62);
             this.toolBarMeasure.Name = "toolBarMeasure";
             this.toolBarMeasure.ShowToolTips = true;
-            this.toolBarMeasure.Size = new cadencii.java.awt.Dimension(944, 40);
+            this.toolBarMeasure.Size = new Cadencii.Gui.Dimension(944, 40);
             this.toolBarMeasure.TabIndex = 25;
             this.toolBarMeasure.TextAlign = ToolBarTextAlign.Right;
             this.toolBarMeasure.Wrappable = false;
@@ -2789,10 +2789,10 @@ namespace cadencii
             this.toolBarTool.Dock = DockStyle.None;
             this.toolBarTool.DropDownArrows = true;
             this.toolBarTool.ImageList = this.imageListTool;
-			this.toolBarTool.Location = new cadencii.java.awt.Point(11, 92);
+			this.toolBarTool.Location = new Cadencii.Gui.Point(11, 92);
             this.toolBarTool.Name = "toolBarTool";
             this.toolBarTool.ShowToolTips = true;
-            this.toolBarTool.Size = new cadencii.java.awt.Dimension(944, 40);
+            this.toolBarTool.Size = new Cadencii.Gui.Dimension(944, 40);
             this.toolBarTool.TabIndex = 25;
             this.toolBarTool.TextAlign = ToolBarTextAlign.Right;
             this.toolBarTool.Wrappable = false;
@@ -2852,13 +2852,13 @@ namespace cadencii
             // 
             this.toolStripContainer1.ContentPanel_Controls.Add(this.panel1);
             this.toolStripContainer1.ContentPanel_Controls.Add(this.splitContainerProperty);
-            this.toolStripContainer1.ContentPanel_Size = new cadencii.java.awt.Dimension(955, 612);
+            this.toolStripContainer1.ContentPanel_Size = new Cadencii.Gui.Dimension(955, 612);
             this.toolStripContainer1.Dock = DockStyle.Fill;
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
-			this.toolStripContainer1.Location = new cadencii.java.awt.Point(0, 30);
+			this.toolStripContainer1.Location = new Cadencii.Gui.Point(0, 30);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.RightToolStripPanelVisible = false;
-            this.toolStripContainer1.Size = new cadencii.java.awt.Dimension(955, 659);
+            this.toolStripContainer1.Size = new Cadencii.Gui.Dimension(955, 659);
             this.toolStripContainer1.TabIndex = 26;
             this.toolStripContainer1.Text = "toolStripContainer1";
             this.toolStripContainer1.TopToolStripPanelVisible = false;
@@ -2868,16 +2868,16 @@ namespace cadencii
             this.statusStrip.Dock = DockStyle.None;
             this.statusStrip.Items.AddRange(new UiToolStripItem[] {
             this.statusLabel});
-			this.statusStrip.Location = new cadencii.java.awt.Point(0, 25);
+			this.statusStrip.Location = new Cadencii.Gui.Point(0, 25);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new cadencii.java.awt.Dimension(955, 22);
+            this.statusStrip.Size = new Cadencii.Gui.Dimension(955, 22);
             this.statusStrip.TabIndex = 25;
             this.statusStrip.Text = "statusStrip1";
             // 
             // statusLabel
             // 
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new cadencii.java.awt.Dimension(0, 17);
+            this.statusLabel.Size = new Cadencii.Gui.Dimension(0, 17);
             // 
             // cMenuPositionIndicator
             // 
@@ -2887,24 +2887,24 @@ namespace cadencii
             this.cMenuPositionIndicator.Name = "cMenuTrackTab";
             this.cMenuPositionIndicator.RenderMode = ToolStripRenderMode.System;
             this.cMenuPositionIndicator.ShowImageMargin = false;
-            this.cMenuPositionIndicator.Size = new cadencii.java.awt.Dimension(151, 48);
+            this.cMenuPositionIndicator.Size = new Cadencii.Gui.Dimension(151, 48);
             // 
             // cMenuPositionIndicatorStartMarker
             // 
             this.cMenuPositionIndicatorStartMarker.Name = "cMenuPositionIndicatorStartMarker";
-            this.cMenuPositionIndicatorStartMarker.Size = new cadencii.java.awt.Dimension(150, 22);
+            this.cMenuPositionIndicatorStartMarker.Size = new Cadencii.Gui.Dimension(150, 22);
             this.cMenuPositionIndicatorStartMarker.Text = "Set start marker";
             // 
             // cMenuPositionIndicatorEndMarker
             // 
             this.cMenuPositionIndicatorEndMarker.Name = "cMenuPositionIndicatorEndMarker";
-            this.cMenuPositionIndicatorEndMarker.Size = new cadencii.java.awt.Dimension(150, 22);
+            this.cMenuPositionIndicatorEndMarker.Size = new Cadencii.Gui.Dimension(150, 22);
             this.cMenuPositionIndicatorEndMarker.Text = "Set end marker";
             // 
             // menuHelpCheckForUpdates
             // 
             this.menuHelpCheckForUpdates.Name = "menuHelpCheckForUpdates";
-            this.menuHelpCheckForUpdates.Size = new cadencii.java.awt.Dimension(186, 22);
+            this.menuHelpCheckForUpdates.Size = new Cadencii.Gui.Dimension(186, 22);
             this.menuHelpCheckForUpdates.Text = "Check For Updates";
             this.menuHelpCheckForUpdates.Click += new System.EventHandler(this.menuHelpCheckForUpdates_Click);
             // 

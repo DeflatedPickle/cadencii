@@ -12,10 +12,10 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using cadencii.java.awt;
-using cadencii.java.awt.geom;
+using Cadencii.Gui;
+using Cadencii.Gui.geom;
 
-namespace cadencii.java.awt
+namespace Cadencii.Gui
 {
 	public class Graphics : IDisposable
 	{
@@ -195,7 +195,7 @@ namespace cadencii.java.awt
 			a.translate (tx, ty);
 		}
 
-		public void drawImage(cadencii.java.awt.Image img, int x, int y, object obs)
+		public void drawImage(Cadencii.Gui.Image img, int x, int y, object obs)
 		{
 			a.drawImage (img, x, y, obs);
 		}
@@ -281,7 +281,7 @@ namespace cadencii.java.awt
 
 			public abstract void clipRect(int x, int y, int width, int height);
 
-			public abstract void drawImage(cadencii.java.awt.Image img, int x, int y, object obs);
+			public abstract void drawImage(Cadencii.Gui.Image img, int x, int y, object obs);
 			
 			public abstract void DrawLines (Point[] points);
 

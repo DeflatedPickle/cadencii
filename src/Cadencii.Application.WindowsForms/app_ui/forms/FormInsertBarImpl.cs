@@ -214,7 +214,7 @@ namespace cadencii
             // 
             // numLength
             // 
-            this.numLength.Location = new cadencii.java.awt.Point(78, 37);
+            this.numLength.Location = new Cadencii.Gui.Point(78, 37);
             this.numLength.Maximum = new decimal(new int[] {
             32,
             0,
@@ -226,7 +226,7 @@ namespace cadencii
             0,
             0});
             this.numLength.Name = "numLength";
-            this.numLength.Size = new cadencii.java.awt.Dimension(52, 19);
+            this.numLength.Size = new Cadencii.Gui.Dimension(52, 19);
             this.numLength.TabIndex = 1;
             this.numLength.Value = new decimal(new int[] {
             1,
@@ -236,9 +236,9 @@ namespace cadencii
             // 
             // numPosition
             // 
-            this.numPosition.Location = new cadencii.java.awt.Point(78, 12);
+            this.numPosition.Location = new Cadencii.Gui.Point(78, 12);
             this.numPosition.Name = "numPosition";
-            this.numPosition.Size = new cadencii.java.awt.Dimension(52, 19);
+            this.numPosition.Size = new Cadencii.Gui.Dimension(52, 19);
             this.numPosition.TabIndex = 0;
             // 
             // FormInsertBar

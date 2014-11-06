@@ -9,7 +9,7 @@ using cadencii.vsq.io;
 using System.Text;
 using System.Linq;
 using cadencii.java.util;
-using cadencii.java.awt;
+using Cadencii.Gui;
 
 namespace cadencii
 {

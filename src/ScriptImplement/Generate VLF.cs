@@ -14,7 +14,7 @@ public class GenerateVLF
         int track = 1;
         InputBox ib = ApplicationUIHost.Create<InputBox>("Input target track index");
         ib.setResult(track.ToString());
-        if (ib.ShowDialog() != cadencii.java.awt.DialogResult.OK) {
+        if (ib.ShowDialog() != Cadencii.Gui.DialogResult.OK) {
             return false;
         }
         if (!int.TryParse(ib.getResult(), out track)) {

@@ -1,5 +1,5 @@
 using System;
-using cadencii.java.awt;
+using Cadencii.Gui;
 
 namespace cadencii
 {
@@ -11,11 +11,11 @@ namespace cadencii
 				throw new NotImplementedException ();
 			}
 		}
-		cadencii.java.awt.Color UiToolStripButton.ImageTransparentColor {
+		Cadencii.Gui.Color UiToolStripButton.ImageTransparentColor {
 			get { return ImageTransparentColor.ToAwt (); }
 			set { ImageTransparentColor = value.ToNative (); }
 		}
-		cadencii.java.awt.Image UiToolStripButton.Image {
+		Cadencii.Gui.Image UiToolStripButton.Image {
 			get { return Image.ToAwt (); }
 			set { Image = value.ToWF (); }
 		}

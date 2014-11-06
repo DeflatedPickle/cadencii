@@ -24,8 +24,8 @@ namespace cadencii
 			remove { ValueChanged -= value; }
 		}
 
-		cadencii.java.awt.HorizontalAlignment NumericUpDownEx.TextAlign {
-			get { return (cadencii.java.awt.HorizontalAlignment)TextAlign; }
+		Cadencii.Gui.HorizontalAlignment NumericUpDownEx.TextAlign {
+			get { return (Cadencii.Gui.HorizontalAlignment)TextAlign; }
 			set { TextAlign = (System.Windows.Forms.HorizontalAlignment)value; }
 		}
 

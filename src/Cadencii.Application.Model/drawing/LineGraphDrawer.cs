@@ -13,7 +13,7 @@
  */
 using System;
 //using System.Drawing;
- using cadencii.java.awt;
+ using Cadencii.Gui;
 
 namespace cadencii
 {
@@ -98,7 +98,7 @@ namespace cadencii
         /// <summary>
         /// グラフの線とX軸との間隙の塗りつぶしに使用する色
         /// </summary>
-        private java.awt.Color mFillColor = new java.awt.Color(255, 0, 0);
+        private Cadencii.Gui.Color mFillColor = new Cadencii.Gui.Color(255, 0, 0);
         /// <summary>
         /// データ点を描画するかどうか
         /// </summary>
@@ -119,11 +119,11 @@ namespace cadencii
         /// <summary>
         /// データ点の描画色
         /// </summary>
-        private java.awt.Color mDotColor = new java.awt.Color(0, 0, 0);
+        private Cadencii.Gui.Color mDotColor = new Cadencii.Gui.Color(0, 0, 0);
         /// <summary>
         /// 線の描画色
         /// </summary>
-        private java.awt.Color mLineColor = new java.awt.Color(0, 0, 0);
+        private Cadencii.Gui.Color mLineColor = new Cadencii.Gui.Color(0, 0, 0);
         /// <summary>
         /// 線を描画するかどうか
         /// </summary>
@@ -214,7 +214,7 @@ namespace cadencii
         /// グラフの線の描画色を設定します
         /// </summary>
         /// <param name="value"></param>
-        public void setLineColor(java.awt.Color value)
+        public void setLineColor(Cadencii.Gui.Color value)
         {
             mLineColor = value;
         }
@@ -223,7 +223,7 @@ namespace cadencii
         /// グラフの線の描画色を取得します
         /// </summary>
         /// <returns></returns>
-        public java.awt.Color getLineColor()
+        public Cadencii.Gui.Color getLineColor()
         {
             return mLineColor;
         }
@@ -250,7 +250,7 @@ namespace cadencii
         /// データ点の描画色を設定します
         /// </summary>
         /// <param name="value"></param>
-        public void setDotColor(java.awt.Color value)
+        public void setDotColor(Cadencii.Gui.Color value)
         {
             mDotColor = value;
         }
@@ -259,7 +259,7 @@ namespace cadencii
         /// データ点の描画色を取得します
         /// </summary>
         /// <returns></returns>
-        public java.awt.Color getDotColor()
+        public Cadencii.Gui.Color getDotColor()
         {
             return mDotColor;
         }
@@ -286,7 +286,7 @@ namespace cadencii
         /// グラフの線とX軸の間を塗りつぶす場合の色を設定します
         /// </summary>
         /// <param name="c"></param>
-        public void setFillColor(java.awt.Color c)
+        public void setFillColor(Cadencii.Gui.Color c)
         {
             mFillColor = c;
         }
@@ -295,7 +295,7 @@ namespace cadencii
         /// グラフの線とX軸の間を塗りつぶす場合の色を取得します
         /// </summary>
         /// <returns></returns>
-        public java.awt.Color getFillColor()
+        public Cadencii.Gui.Color getFillColor()
         {
             return mFillColor;
         }
@@ -505,7 +505,7 @@ namespace cadencii
         /// 描画に使用するグラフィックスを指定します
         /// </summary>
         /// <param name="g"></param>
-        public void setGraphics(java.awt.Graphics g)
+        public void setGraphics(Cadencii.Gui.Graphics g)
         {
 			mGraphics = g;
         }

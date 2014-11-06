@@ -21,13 +21,13 @@ namespace cadencii.apputil
 
     public class BSplitterPanelImpl : PanelImpl, BSplitterPanel
     {
-		cadencii.java.awt.Color BSplitterPanel.BorderColor {
+		Cadencii.Gui.Color BSplitterPanel.BorderColor {
 			get { return BorderColor.ToAwt (); }
 			set { BorderColor = value.ToNative (); }
 		}
 
         private BorderStyle m_border_style = BorderStyle.None;
-		private Color m_border_color = cadencii.java.awt.Colors.Black.ToNative ();
+		private Color m_border_color = Cadencii.Gui.Colors.Black.ToNative ();
 
         public event EventHandler BorderStyleChanged;
 

@@ -20,7 +20,7 @@ using cadencii.apputil;
 
 namespace cadencii
 {
-    public class Cadencii
+    public class CadenciiDriver
     {
         static Thread splashThread = null;
         private static string mPathVsq = "";
@@ -63,7 +63,7 @@ namespace cadencii
         public static void Main(string[] args)
         {
 			cadencii.PortUtil.SetApplicationStartupPath(System.Windows.Forms.Application.StartupPath);
-			cadencii.java.awt.AwtHost.Current = new cadencii.java.awt.AwtHostWindowsForms ();
+			Cadencii.Gui.AwtHost.Current = new Cadencii.Gui.AwtHostWindowsForms ();
 			cadencii.dsp.DspUIHost.CurrentType = typeof (cadencii.dsp.winforms.DspUIHostWF);
             Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
             Thread.GetDomain().UnhandledException += new UnhandledExceptionEventHandler(Cadencii_UnhandledException);
@@ -136,7 +136,7 @@ namespace cadencii
                 PaletteToolServer.init();
             } catch (Exception ex) {
                 serr.println("Cadencii::Main; ex=" + ex);
-                Logger.write(typeof(Cadencii) + ".Main; ex=" + ex + "\n");
+                Logger.write(typeof(CadenciiDriver) + ".Main; ex=" + ex + "\n");
             }
 #endif
             EditorManager.MainWindowController = new FormMainController();

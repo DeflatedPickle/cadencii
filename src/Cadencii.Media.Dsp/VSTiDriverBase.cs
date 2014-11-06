@@ -18,7 +18,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.java.util;
 using cadencii.vsq;
 using cadencii.dsp;

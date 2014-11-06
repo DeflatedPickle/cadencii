@@ -62,7 +62,7 @@ namespace cadencii.apputil
             return (Bitmap)m_base.Clone();
         }
 
-        public cadencii.java.awt.Color GetPixel(int x, int y)
+        public Cadencii.Gui.Color GetPixel(int x, int y)
         {
             if (!m_locked) {
                 BeginLock();
@@ -76,7 +76,7 @@ namespace cadencii.apputil
             if (m_base.PixelFormat == PixelFormat.Format32bppArgb) {
                 a = dat[location + 3];
             }
-            return new cadencii.java.awt.Color(r, g, b, a);
+            return new Cadencii.Gui.Color(r, g, b, a);
         }
 
         public void SetPixel(int x, int y, Color color)
@@ -120,7 +120,7 @@ namespace cadencii.apputil
             m_base.Dispose();
         }
 
-        public BitmapExImpl(java.awt.Image original)
+        public BitmapExImpl(Cadencii.Gui.Image original)
         {
             m_base = new Bitmap((System.Drawing.Image) original.NativeImage);
         }

@@ -20,7 +20,7 @@ namespace cadencii.ui
         void showDialog(object parent);
         void setMessage(string message);
         void setDownloadUrl(string url);
-        void setFont(cadencii.java.awt.Font font);
+        void setFont(Cadencii.Gui.Font font);
         void setOkButtonText(string text);
         void setTitle(string title);
         void close();

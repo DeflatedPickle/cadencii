@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using cadencii.java.awt;
+using Cadencii.Gui;
 
 namespace cadencii
 {

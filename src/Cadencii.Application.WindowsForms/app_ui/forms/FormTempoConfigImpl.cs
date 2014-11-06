@@ -15,7 +15,7 @@ using System;
 using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii.windows.forms;
-using Keys = cadencii.java.awt.Keys;
+using Keys = Cadencii.Gui.Keys;
 
 
 namespace cadencii
@@ -167,24 +167,24 @@ namespace cadencii
             // 
             // numClock
             // 
-            this.numClock.Location = new cadencii.java.awt.Point(90, 77);
+            this.numClock.Location = new Cadencii.Gui.Point(90, 77);
             this.numClock.Name = "numClock";
-            this.numClock.Size = new cadencii.java.awt.Dimension(45, 19);
+            this.numClock.Size = new Cadencii.Gui.Dimension(45, 19);
             this.numClock.TabIndex = 5;
             // 
             // numBeat
             // 
-            this.numBeat.Location = new cadencii.java.awt.Point(90, 48);
+            this.numBeat.Location = new Cadencii.Gui.Point(90, 48);
             this.numBeat.Name = "numBeat";
-            this.numBeat.Size = new cadencii.java.awt.Dimension(45, 19);
+            this.numBeat.Size = new Cadencii.Gui.Dimension(45, 19);
             this.numBeat.TabIndex = 4;
             // 
             // numBar
             // 
             this.numBar.Enabled = false;
-            this.numBar.Location = new cadencii.java.awt.Point(90, 19);
+            this.numBar.Location = new Cadencii.Gui.Point(90, 19);
             this.numBar.Name = "numBar";
-            this.numBar.Size = new cadencii.java.awt.Dimension(45, 19);
+            this.numBar.Size = new Cadencii.Gui.Dimension(45, 19);
             this.numBar.TabIndex = 3;
             // 
             // lblClock
@@ -237,7 +237,7 @@ namespace cadencii
             // numTempo
             // 
             this.numTempo.DecimalPlaces = 2;
-            this.numTempo.Location = new cadencii.java.awt.Point(13, 19);
+            this.numTempo.Location = new Cadencii.Gui.Point(13, 19);
             this.numTempo.Maximum = new decimal(new int[] {
             300,
             0,
@@ -249,7 +249,7 @@ namespace cadencii
             0,
             0});
             this.numTempo.Name = "numTempo";
-            this.numTempo.Size = new cadencii.java.awt.Dimension(59, 19);
+            this.numTempo.Size = new Cadencii.Gui.Dimension(59, 19);
             this.numTempo.TabIndex = 5;
             this.numTempo.Value = new decimal(new int[] {
             120,

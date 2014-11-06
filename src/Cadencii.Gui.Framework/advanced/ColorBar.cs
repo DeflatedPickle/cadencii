@@ -12,7 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using cadencii.java.awt;
+using Cadencii.Gui;
 
 namespace cadencii.apputil
 {

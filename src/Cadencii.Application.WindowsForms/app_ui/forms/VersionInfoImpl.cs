@@ -15,15 +15,15 @@ using System;
 using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.windows.forms;
-using Keys = cadencii.java.awt.Keys;
+using Keys = Cadencii.Gui.Keys;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
 
 namespace cadencii
 {
-    using Graphics = cadencii.java.awt.Graphics;
+    using Graphics = Cadencii.Gui.Graphics;
 
     public class VersionInfoImpl : FormImpl, VersionInfo
     {
@@ -31,7 +31,7 @@ namespace cadencii
         const int m_height = 380;
         const int FONT_SIZE = 10;
 
-		private readonly Color m_background = cadencii.java.awt.Colors.White;
+		private readonly Color m_background = Cadencii.Gui.Colors.White;
 
         private double m_scroll_started;
         private AuthorListEntry[] m_credit;
@@ -42,10 +42,10 @@ namespace cadencii
         private float m_shift = 0f;
         private int m_button_width_about = 75;
         private int m_button_width_credit = 75;
-        private java.awt.Image m_scroll = null;
-        private java.awt.Image m_scroll_with_id = null;
+        private Cadencii.Gui.Image m_scroll = null;
+        private Cadencii.Gui.Image m_scroll_with_id = null;
         private string m_app_name = "";
-        private Color m_app_name_color = cadencii.java.awt.Colors.Black;
+        private Color m_app_name_color = Cadencii.Gui.Colors.Black;
         private Color m_version_color = new Color(105, 105, 105);
         private bool m_shadow_enablde = false;
         private System.Windows.Forms.Timer timer;
@@ -139,7 +139,7 @@ namespace cadencii
             m_app_name_color = value;
         }
 
-        public void setCredit(java.awt.Image value)
+        public void setCredit(Cadencii.Gui.Image value)
         {
             m_scroll = value;
         }
@@ -165,19 +165,19 @@ namespace cadencii
         {
             int shadow_shift = 2;
             string font_name = "Arial";
-            Font font = new Font(font_name, java.awt.Font.PLAIN, FONT_SIZE);
+            Font font = new Font(font_name, Cadencii.Gui.Font.PLAIN, FONT_SIZE);
             Dimension size = Util.measureString("the quick brown fox jumped over the lazy dogs. THE QUICK BROWN FOX JUMPED OVER THE LAZY DOGS. 0123456789", font);
             int width = this.Width;
             int height = size.Height;
             //StringFormat sf = new StringFormat();
             Image ret = new Image((int)width, (int)(40f + m_credit.Length * height * 1.1f));
             Graphics g = new Graphics(ret);
-			g.setColor(cadencii.java.awt.Colors.White);
+			g.setColor(Cadencii.Gui.Colors.White);
             g.fillRect(0, 0, ret.getWidth(null), ret.getHeight(null));
             int align = 0;
             int valign = 0;
             //sf.Alignment = StringAlignment.Center;
-            Font f = new Font(font_name, java.awt.Font.BOLD, (int)(FONT_SIZE * 1.2f));
+            Font f = new Font(font_name, Cadencii.Gui.Font.BOLD, (int)(FONT_SIZE * 1.2f));
             if (m_shadow_enablde) {
                 g.setColor(new Color(0, 0, 0, 40));
 				g.drawStringEx(
@@ -187,7 +187,7 @@ namespace cadencii
                     align,
                     valign);
             }
-            g.setColor(cadencii.java.awt.Colors.Black);
+            g.setColor(Cadencii.Gui.Colors.Black);
 			g.drawStringEx(
                 m_app_name,
                 f,
@@ -211,7 +211,7 @@ namespace cadencii
                         align,
                         valign);
                 }
-                g.setColor(cadencii.java.awt.Colors.Black);
+                g.setColor(Cadencii.Gui.Colors.Black);
 				g.drawStringEx(
                     str,
                     f2,
@@ -289,7 +289,7 @@ namespace cadencii
         {
             Graphics g = (Graphics)g1;
             g.clipRect(0, 0, this.Width, m_height);
-			g.setColor(cadencii.java.awt.Colors.White);
+			g.setColor(Cadencii.Gui.Colors.White);
             g.fillRect(0, 0, this.Width, this.Height);
             //g.clearRect( 0, 0, getWidth(), getHeight() );
             if (m_credit_mode) {
@@ -313,7 +313,7 @@ namespace cadencii
                 g.clipRect(0, m_height - grad_height + 1, this.Width, grad_height - 1);
                 g.setClip(null);
             } else {
-                g.setFont(new Font("Century Gorhic", java.awt.Font.BOLD, FONT_SIZE * 2));
+                g.setFont(new Font("Century Gorhic", Cadencii.Gui.Font.BOLD, FONT_SIZE * 2));
                 g.setColor(m_app_name_color);
                 g.drawString(m_app_name, 20, 60);
                 g.setFont(new Font("Arial", 0, FONT_SIZE));
@@ -341,7 +341,7 @@ namespace cadencii
         private void VersionInfo_FontChanged(Object sender, EventArgs e)
         {
             for (int i = 0; i < this.Controls.Count; i++) {
-				Util.applyFontRecurse((UiControl) this.Controls[i], new java.awt.Font(this.Font));
+				Util.applyFontRecurse((UiControl) this.Controls[i], new Cadencii.Gui.Font(this.Font));
             }
         }
 

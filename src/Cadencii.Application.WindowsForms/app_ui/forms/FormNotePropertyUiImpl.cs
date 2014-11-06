@@ -15,7 +15,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using cadencii.apputil;
-using Keys = cadencii.java.awt.Keys;
+using Keys = Cadencii.Gui.Keys;
 
 namespace cadencii
 {

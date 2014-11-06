@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using System.Collections;
 
 namespace cadencii

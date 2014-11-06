@@ -12,12 +12,13 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using cadencii.java.awt;
-using cadencii.java.awt.geom;
+using cadencii;
+using Cadencii.Gui;
+using Cadencii.Gui.geom;
 using System.Windows.Forms;
 using System.Linq;
 
-namespace cadencii.java.awt
+namespace Cadencii.Gui
 {
 	public partial class AwtHostWindowsForms : AwtHost
 	{
@@ -166,9 +167,9 @@ namespace cadencii.java.awt
 	class GraphicsAdapterWF : Graphics.GraphicsAdapter
 	{
 		System.Drawing.Graphics nativeGraphics;
-		Color color = cadencii.java.awt.Colors.Black;
+		Color color = Cadencii.Gui.Colors.Black;
 		Stroke stroke = new Stroke ();
-		System.Drawing.SolidBrush brush = new System.Drawing.SolidBrush (cadencii.java.awt.Colors.Black.ToNative ());
+		System.Drawing.SolidBrush brush = new System.Drawing.SolidBrush (Cadencii.Gui.Colors.Black.ToNative ());
 		System.Drawing.Font m_font = new System.Drawing.Font ("Arial", 10);
 		bool should_dispose;
 
@@ -254,7 +255,7 @@ namespace cadencii.java.awt
 			if (stroke is Stroke) {
 				pen = (System.Drawing.Pen)((Stroke)stroke).NativePen;
 			} else {
-				pen = new System.Drawing.Pen (cadencii.java.awt.Colors.Black.ToNative ());
+				pen = new System.Drawing.Pen (Cadencii.Gui.Colors.Black.ToNative ());
 			}
 			((System.Drawing.Graphics)NativeGraphics).DrawBezier (pen, new System.Drawing.PointF (x1, y1),
 				new System.Drawing.PointF (ctrlx1, ctrly1),
@@ -378,7 +379,7 @@ namespace cadencii.java.awt
 				((System.Drawing.Graphics)NativeGraphics).FillRectangle (brush, rc.X, rc.Y, rc.Width, rc.Height);
 			} else {
 				serr.println (
-					"fixme; org.kbinani.java.awt.Graphics#fill; type of argument s is not supported for '" +
+					"fixme; org.kbinani.Cadencii.Gui.Graphics#fill; type of argument s is not supported for '" +
 					s.GetType () + "'.");
 			}
 		}
@@ -406,7 +407,7 @@ namespace cadencii.java.awt
 				nativeGraphics.Clip = new System.Drawing.Region (new System.Drawing.Rectangle (rc.X, rc.Y, rc.Width, rc.Height));
 			} else {
 				serr.println (
-					"fixme: org.kbinani.java.awt.Graphics#setClip; argument type of clip is not supported for '" +
+					"fixme: org.kbinani.Cadencii.Gui.Graphics#setClip; argument type of clip is not supported for '" +
 					clip.GetType () + "'.");
 			}
 		}
@@ -416,7 +417,7 @@ namespace cadencii.java.awt
 			nativeGraphics.Clip = new System.Drawing.Region (new System.Drawing.Rectangle (x, y, width, height));
 		}
 
-		public override void drawImage (cadencii.java.awt.Image img, int x, int y, object obs)
+		public override void drawImage (Cadencii.Gui.Image img, int x, int y, object obs)
 		{
 			if (img == null) {
 				return;
@@ -466,7 +467,7 @@ namespace cadencii.java.awt
 		public StrokeAdapterWF ()
 		{
 			should_dispose = true;
-			pen = new System.Drawing.Pen (cadencii.java.awt.Colors.Black.ToNative ());
+			pen = new System.Drawing.Pen (Cadencii.Gui.Colors.Black.ToNative ());
 		}
 
 		public StrokeAdapterWF (float width)
@@ -481,7 +482,7 @@ namespace cadencii.java.awt
 
 		public StrokeAdapterWF (float width, int cap, int join, float miterlimit)
 		{
-			pen = new System.Drawing.Pen (cadencii.java.awt.Colors.Black.ToNative (), width);
+			pen = new System.Drawing.Pen (Cadencii.Gui.Colors.Black.ToNative (), width);
 			System.Drawing.Drawing2D.LineCap linecap = System.Drawing.Drawing2D.LineCap.Flat;
 			if (cap == 1) {
 				linecap = System.Drawing.Drawing2D.LineCap.Round;
@@ -597,7 +598,7 @@ namespace cadencii.java.awt
 				region = new System.Drawing.Region (new System.Drawing.Rectangle (rc.X, rc.Y, rc.Width, rc.Height));
 			} else {
 				serr.println (
-					"fixme: org.kbinani.java.awt.Area#.ctor(org.kbinani.java.awt.Shape); type of argument s is not supported for '" +
+					"fixme: org.kbinani.Cadencii.Gui.Area#.ctor(org.kbinani.Cadencii.Gui.Shape); type of argument s is not supported for '" +
 					s.GetType () + "'.");
 				region = new System.Drawing.Region ();
 			}

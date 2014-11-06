@@ -4,7 +4,7 @@ using cadencii.apputil;
 using System.IO;
 using System.Text;
 using cadencii.vsq;
-using cadencii.java.awt;
+using Cadencii.Gui;
 
 namespace cadencii
 {

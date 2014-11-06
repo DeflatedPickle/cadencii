@@ -1,5 +1,5 @@
 using System;
-namespace cadencii.java.awt
+namespace Cadencii.Gui
 {
 	public enum FixedPanel
 	{

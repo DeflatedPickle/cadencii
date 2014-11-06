@@ -98,14 +98,14 @@ namespace cadencii
             }
         }
 
-        public bool edit(VsqTrack track, int[] event_internal_ids, cadencii.java.awt.MouseButtons button)
+        public bool edit(VsqTrack track, int[] event_internal_ids, Cadencii.Gui.MouseButtons button)
         {
             bool edited = false;
             try {
                 int divide_threshold = Numerator * 480 * 4 / Denominator;
                 Console.WriteLine("s_divide_threshold=" + divide_threshold);
                 Keys modifier = (Keys) Control.ModifierKeys;
-				bool middle_mode = button == cadencii.java.awt.MouseButtons.Middle;
+				bool middle_mode = button == Cadencii.Gui.MouseButtons.Middle;
                 if (getModifier().Equals("Alt")) {
                     if ((modifier & Keys.Alt) == Keys.Alt) {
                         middle_mode = true;
@@ -196,7 +196,7 @@ namespace cadencii
             return true;
         }
 
-		public cadencii.java.awt.DialogResult openDialog()
+		public Cadencii.Gui.DialogResult openDialog()
         {
             int num = Numerator;
             int den = Denominator;
@@ -208,12 +208,12 @@ namespace cadencii
                 Denominator = den;
                 Modifier = key;
             }
-			return (cadencii.java.awt.DialogResult) ret;
+			return (Cadencii.Gui.DialogResult) ret;
         }
 
-		public cadencii.java.awt.Image getIcon()
+		public Cadencii.Gui.Image getIcon()
         {
-            return new cadencii.java.awt.Image () { NativeImage = m_icon };
+            return new Cadencii.Gui.Image () { NativeImage = m_icon };
         }
 
         private void InitializeComponent()

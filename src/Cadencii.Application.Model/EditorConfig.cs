@@ -16,7 +16,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Collections.Generic;
 using cadencii;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.xml;
 using cadencii.vsq;
 using cadencii.core;

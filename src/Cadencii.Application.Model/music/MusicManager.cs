@@ -85,7 +85,7 @@ namespace cadencii
 							serr.println ("EditorManager#saveTo; ex=" + ex);
 							showMessageBox (PortUtil.formatMessage (_ ("failed creating cache directory, '{0}'."), cacheDir),
 								_ ("Info."),
-								cadencii.java.awt.AwtHost.OK_OPTION,
+								Cadencii.Gui.AwtHost.OK_OPTION,
 								Dialog.MSGBOX_INFORMATION_MESSAGE);
 							Logger.write (typeof(MusicManager) + ".saveTo; ex=" + ex + "\n");
 							return;
@@ -112,7 +112,7 @@ namespace cadencii
 									serr.println ("EditorManager#saveTo; ex=" + ex);
 									showMessageBox (PortUtil.formatMessage (_ ("failed copying WAVE cache file, '{0}'."), wavFrom),
 										_ ("Error"),
-										cadencii.java.awt.AwtHost.OK_OPTION,
+										Cadencii.Gui.AwtHost.OK_OPTION,
 										Dialog.MSGBOX_WARNING_MESSAGE);
 									Logger.write (typeof(MusicManager) + ".saveTo; ex=" + ex + "\n");
 									break;
@@ -136,7 +136,7 @@ namespace cadencii
 									serr.println ("EditorManager#saveTo; ex=" + ex);
 									showMessageBox (PortUtil.formatMessage (_ ("failed copying XML cache file, '{0}'."), xmlFrom),
 										_ ("Error"),
-										cadencii.java.awt.AwtHost.OK_OPTION,
+										Cadencii.Gui.AwtHost.OK_OPTION,
 										Dialog.MSGBOX_WARNING_MESSAGE);
 									Logger.write (typeof(MusicManager) + ".saveTo; ex=" + ex + "\n");
 									break;

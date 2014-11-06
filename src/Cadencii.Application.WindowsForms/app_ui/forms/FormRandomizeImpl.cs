@@ -561,7 +561,7 @@ namespace cadencii
             // 
             // numResolution
             // 
-            this.numResolution.Location = new cadencii.java.awt.Point(267, 147);
+            this.numResolution.Location = new Cadencii.Gui.Point(267, 147);
             this.numResolution.Maximum = new decimal(new int[] {
             30,
             0,
@@ -573,7 +573,7 @@ namespace cadencii
             0,
             0});
             this.numResolution.Name = "numResolution";
-            this.numResolution.Size = new cadencii.java.awt.Dimension(54, 19);
+            this.numResolution.Size = new Cadencii.Gui.Dimension(54, 19);
             this.numResolution.TabIndex = 21;
             this.numResolution.Value = new decimal(new int[] {
             5,
@@ -583,9 +583,9 @@ namespace cadencii
             // 
             // numEndBeat
             // 
-            this.numEndBeat.Location = new cadencii.java.awt.Point(282, 24);
+            this.numEndBeat.Location = new Cadencii.Gui.Point(282, 24);
             this.numEndBeat.Name = "numEndBeat";
-            this.numEndBeat.Size = new cadencii.java.awt.Dimension(54, 19);
+            this.numEndBeat.Size = new Cadencii.Gui.Dimension(54, 19);
             this.numEndBeat.TabIndex = 10;
             this.numEndBeat.Value = new decimal(new int[] {
             1,
@@ -595,14 +595,14 @@ namespace cadencii
             // 
             // numEndBar
             // 
-            this.numEndBar.Location = new cadencii.java.awt.Point(222, 24);
+            this.numEndBar.Location = new Cadencii.Gui.Point(222, 24);
             this.numEndBar.Maximum = new decimal(new int[] {
             2147483647,
             0,
             0,
             0});
             this.numEndBar.Name = "numEndBar";
-            this.numEndBar.Size = new cadencii.java.awt.Dimension(54, 19);
+            this.numEndBar.Size = new Cadencii.Gui.Dimension(54, 19);
             this.numEndBar.TabIndex = 7;
             this.numEndBar.Value = new decimal(new int[] {
             2,
@@ -612,9 +612,9 @@ namespace cadencii
             // 
             // numStartBeat
             // 
-            this.numStartBeat.Location = new cadencii.java.awt.Point (113, 24);
+            this.numStartBeat.Location = new Cadencii.Gui.Point (113, 24);
             this.numStartBeat.Name = "numStartBeat";
-            this.numStartBeat.Size = new cadencii.java.awt.Dimension(54, 19);
+            this.numStartBeat.Size = new Cadencii.Gui.Dimension(54, 19);
             this.numStartBeat.TabIndex = 4;
             this.numStartBeat.Value = new decimal(new int[] {
             1,
@@ -624,9 +624,9 @@ namespace cadencii
             // 
             // numStartBar
             // 
-            this.numStartBar.Location = new cadencii.java.awt.Point(53, 24);
+            this.numStartBar.Location = new Cadencii.Gui.Point(53, 24);
             this.numStartBar.Name = "numStartBar";
-            this.numStartBar.Size = new cadencii.java.awt.Dimension(54, 19);
+            this.numStartBar.Size = new Cadencii.Gui.Dimension(54, 19);
             this.numStartBar.TabIndex = 1;
             this.numStartBar.Value = new decimal(new int[] {
             1,

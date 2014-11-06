@@ -16,11 +16,11 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using cadencii.apputil;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.java.util;
 using cadencii.vsq;
 using cadencii.windows.forms;
-using Keys = cadencii.java.awt.Keys;
+using Keys = Cadencii.Gui.Keys;
 
 namespace cadencii
 {
@@ -195,7 +195,7 @@ namespace cadencii
                 int remain = num - m_tracker.Count;
                 for (int i = 0; i < remain; i++) {
                     VolumeTracker item = new VolumeTrackerImpl();
-                    item.BorderStyle = cadencii.java.awt.BorderStyle.FixedSingle;
+                    item.BorderStyle = Cadencii.Gui.BorderStyle.FixedSingle;
                     item.Size = volumeMaster.Size;
                     m_tracker.Add(item);
                 }
@@ -291,7 +291,7 @@ namespace cadencii
             // ウィンドウのサイズを更新（必要なら）
             if (num_changed) {
 				panelSlaves.Width = (VolumeTrackerController.WIDTH + 1) * (screen_num - 1);
-				volumeMaster.Location = new cadencii.java.awt.Point((screen_num - 1) * (VolumeTrackerController.WIDTH + 1) + 3, 0);
+				volumeMaster.Location = new Cadencii.Gui.Point((screen_num - 1) * (VolumeTrackerController.WIDTH + 1) + 3, 0);
                 this.MaximumSize = System.Drawing.Size.Empty;
 				this.MinimumSize = System.Drawing.Size.Empty;
 				this.ClientSize = new System.Drawing.Size(screen_num * (VolumeTrackerController.WIDTH + 1) + 3, VolumeTrackerController.HEIGHT + hScroll.Height);
@@ -583,12 +583,12 @@ namespace cadencii
             // 
             // volumeMaster
             // 
-            this.volumeMaster.BackColor = new cadencii.java.awt.Color(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.volumeMaster.BorderStyle = cadencii.java.awt.BorderStyle.FixedSingle;
-            this.volumeMaster.Location = new cadencii.java.awt.Point(85, 0);
-            this.volumeMaster.Margin = new cadencii.java.awt.Padding(0);
+            this.volumeMaster.BackColor = new Cadencii.Gui.Color(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.volumeMaster.BorderStyle = Cadencii.Gui.BorderStyle.FixedSingle;
+            this.volumeMaster.Location = new Cadencii.Gui.Point(85, 0);
+            this.volumeMaster.Margin = new Cadencii.Gui.Padding(0);
             this.volumeMaster.Name = "volumeMaster";
-            this.volumeMaster.Size = new cadencii.java.awt.Dimension(85, 284);
+            this.volumeMaster.Size = new Cadencii.Gui.Dimension(85, 284);
             this.volumeMaster.TabIndex = 5;
             // 
             // FormMixer

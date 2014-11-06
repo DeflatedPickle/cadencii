@@ -13,7 +13,7 @@
  */
 using System;
 using System.Linq;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.windows.forms;
 
 

@@ -14,7 +14,7 @@
 using System;
 using System.Windows.Forms;
 
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.windows.forms;
 
 namespace cadencii

@@ -18,7 +18,7 @@ using cadencii.apputil;
 using cadencii.vsq;
 using cadencii.windows.forms;
 using cadencii.java.util;
-using Keys = cadencii.java.awt.Keys;
+using Keys = Cadencii.Gui.Keys;
 
 namespace cadencii
 {
@@ -398,7 +398,7 @@ namespace cadencii
             if (DialogManager.showMessageBox(_("Would you like to change singer style for all events?"),
 				FormMainModel.ApplicationName,
                                   cadencii.Dialog.MSGBOX_YES_NO_OPTION,
-                                  cadencii.Dialog.MSGBOX_WARNING_MESSAGE) == cadencii.java.awt.DialogResult.Yes) {
+                                  cadencii.Dialog.MSGBOX_WARNING_MESSAGE) == Cadencii.Gui.DialogResult.Yes) {
                 m_apply_current_track = true;
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
             }
@@ -594,24 +594,24 @@ namespace cadencii
             // 
             this.txtBendLength.BackColor = System.Drawing.SystemColors.Window.ToAwt ();
             this.txtBendLength.ForeColor = System.Drawing.SystemColors.WindowText.ToAwt ();
-            this.txtBendLength.Location = new cadencii.java.awt.Point(300, 39);
+            this.txtBendLength.Location = new Cadencii.Gui.Point(300, 39);
             this.txtBendLength.Name = "txtBendLength";
-            this.txtBendLength.Size = new cadencii.java.awt.Dimension(39, 19);
+            this.txtBendLength.Size = new Cadencii.Gui.Dimension(39, 19);
             this.txtBendLength.TabIndex = 5;
             this.txtBendLength.Text = "0";
-            this.txtBendLength.TextAlign = cadencii.java.awt.HorizontalAlignment.Right;
+            this.txtBendLength.TextAlign = Cadencii.Gui.HorizontalAlignment.Right;
             this.txtBendLength.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // txtBendDepth
             // 
             this.txtBendDepth.BackColor = System.Drawing.SystemColors.Window.ToAwt ();
             this.txtBendDepth.ForeColor = System.Drawing.SystemColors.WindowText.ToAwt ();
-            this.txtBendDepth.Location = new cadencii.java.awt.Point(300, 13);
+            this.txtBendDepth.Location = new Cadencii.Gui.Point(300, 13);
             this.txtBendDepth.Name = "txtBendDepth";
-            this.txtBendDepth.Size = new cadencii.java.awt.Dimension(39, 19);
+            this.txtBendDepth.Size = new Cadencii.Gui.Dimension(39, 19);
             this.txtBendDepth.TabIndex = 2;
             this.txtBendDepth.Text = "8";
-            this.txtBendDepth.TextAlign = cadencii.java.awt.HorizontalAlignment.Right;
+            this.txtBendDepth.TextAlign = Cadencii.Gui.HorizontalAlignment.Right;
             this.txtBendDepth.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // trackBendLength
@@ -712,24 +712,24 @@ namespace cadencii
             // 
             this.txtAccent.BackColor = System.Drawing.SystemColors.Window.ToAwt ();
             this.txtAccent.ForeColor = System.Drawing.SystemColors.WindowText.ToAwt ();
-            this.txtAccent.Location = new cadencii.java.awt.Point(300, 43);
+            this.txtAccent.Location = new Cadencii.Gui.Point(300, 43);
             this.txtAccent.Name = "txtAccent";
-            this.txtAccent.Size = new cadencii.java.awt.Dimension(39, 19);
+            this.txtAccent.Size = new Cadencii.Gui.Dimension(39, 19);
             this.txtAccent.TabIndex = 13;
             this.txtAccent.Text = "50";
-            this.txtAccent.TextAlign = cadencii.java.awt.HorizontalAlignment.Right;
+            this.txtAccent.TextAlign = Cadencii.Gui.HorizontalAlignment.Right;
             this.txtAccent.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // txtDecay
             // 
             this.txtDecay.BackColor = System.Drawing.SystemColors.Window.ToAwt ();
             this.txtDecay.ForeColor = System.Drawing.SystemColors.WindowText.ToAwt ();
-            this.txtDecay.Location = new cadencii.java.awt.Point(300, 17);
+            this.txtDecay.Location = new Cadencii.Gui.Point(300, 17);
             this.txtDecay.Name = "txtDecay";
-            this.txtDecay.Size = new cadencii.java.awt.Dimension(39, 19);
+            this.txtDecay.Size = new Cadencii.Gui.Dimension(39, 19);
             this.txtDecay.TabIndex = 10;
             this.txtDecay.Text = "50";
-            this.txtDecay.TextAlign = cadencii.java.awt.HorizontalAlignment.Right;
+            this.txtDecay.TextAlign = Cadencii.Gui.HorizontalAlignment.Right;
             this.txtDecay.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // trackAccent
@@ -857,24 +857,24 @@ namespace cadencii
             // 
             this.txtDepth.BackColor = System.Drawing.SystemColors.Window.ToAwt ();
 			this.txtDepth.ForeColor = System.Drawing.SystemColors.WindowText.ToAwt ();
-            this.txtDepth.Location = new cadencii.java.awt.Point(300, 72);
+            this.txtDepth.Location = new Cadencii.Gui.Point(300, 72);
             this.txtDepth.Name = "txtDepth";
-            this.txtDepth.Size = new cadencii.java.awt.Dimension(39, 19);
+            this.txtDepth.Size = new Cadencii.Gui.Dimension(39, 19);
             this.txtDepth.TabIndex = 13;
             this.txtDepth.Text = "64";
-            this.txtDepth.TextAlign = cadencii.java.awt.HorizontalAlignment.Right;
+            this.txtDepth.TextAlign = Cadencii.Gui.HorizontalAlignment.Right;
             this.txtDepth.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // txtDuration
             // 
             this.txtDuration.BackColor = System.Drawing.SystemColors.Window.ToAwt ();
             this.txtDuration.ForeColor = System.Drawing.SystemColors.WindowText.ToAwt ();
-            this.txtDuration.Location = new cadencii.java.awt.Point(300, 46);
+            this.txtDuration.Location = new Cadencii.Gui.Point(300, 46);
             this.txtDuration.Name = "txtDuration";
-            this.txtDuration.Size = new cadencii.java.awt.Dimension(39, 19);
+            this.txtDuration.Size = new Cadencii.Gui.Dimension(39, 19);
             this.txtDuration.TabIndex = 10;
             this.txtDuration.Text = "64";
-            this.txtDuration.TextAlign = cadencii.java.awt.HorizontalAlignment.Right;
+            this.txtDuration.TextAlign = Cadencii.Gui.HorizontalAlignment.Right;
             this.txtDuration.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // trackDepth

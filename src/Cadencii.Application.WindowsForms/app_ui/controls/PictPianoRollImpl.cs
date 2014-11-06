@@ -15,8 +15,8 @@ using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using cadencii.apputil;
-using cadencii.java.awt;
-using cadencii.java.awt.geom;
+using Cadencii.Gui;
+using Cadencii.Gui.geom;
 using cadencii.java.util;
 using cadencii.vsq;
 using cadencii.windows.forms;
@@ -64,9 +64,9 @@ namespace cadencii
             new Color( 181, 140, 123 ),
             new Color( 181, 126, 123 ) };
         private readonly Color COLOR_NOTE_FILL = new Color(181, 220, 86);
-		private readonly Color COLOR_DYNAFF_FILL = cadencii.java.awt.Colors.Pink;
+		private readonly Color COLOR_DYNAFF_FILL = Cadencii.Gui.Colors.Pink;
         private readonly Color COLOR_DYNAFF_FILL_HIGHLIGHT = new Color(66, 193, 169);
-		private readonly Font FONT_9PT = new Font("SansSerif", java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9);
+		private readonly Font FONT_9PT = new Font("SansSerif", Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9);
         /// <summary>
         /// 表情線の先頭部分のピクセル幅
         /// </summary>
@@ -264,7 +264,7 @@ namespace cadencii
                     #region ピアノロール周りのスクロールバーなど
                     // スクロール画面背景
                     if (height > 0) {
-                        g.setColor(cadencii.java.awt.Colors.White);
+                        g.setColor(Cadencii.Gui.Colors.White);
                         g.fillRect(3, 0, width, height);
                         g.setColor(COLOR_R240G240B240);
                         g.fillRect(3, 0, key_width, height);
@@ -291,7 +291,7 @@ namespace cadencii
                             bool note_is_whitekey = VsqNote.isNoteWhiteKey(i);
 
                             #region ピアノロール背景
-                            Color b = cadencii.java.awt.Colors.Black;
+                            Color b = Cadencii.Gui.Colors.Black;
                             Color border;
                             bool paint_required = true;
                             if (order == -2 || order == -1 || (6 <= order && order <= 8)) {
@@ -573,7 +573,7 @@ namespace cadencii
                                         g.setFont(lyric_font);
                                         if ((!dobj.mIsValidForUtau && renderer == RendererKind.UTAU) ||
                                                 (!dobj.mIsValidForStraight && renderer == RendererKind.VCNT)) {
-                                            g.setColor(cadencii.java.awt.Colors.White);
+                                            g.setColor(Cadencii.Gui.Colors.White);
                                         } else {
                                             g.setColor(COLOR_R147G147B147);
                                         }
@@ -617,7 +617,7 @@ namespace cadencii
 
                                         commonDrawer.clear();
                                         //g.nativeGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-										Color color_normal_picthbend = cadencii.java.awt.Colors.DarkOrchid;
+										Color color_normal_picthbend = Cadencii.Gui.Colors.DarkOrchid;
                                         Color color_thin_pitchbend = new Color(color_normal_picthbend.R, color_normal_picthbend.G, color_normal_picthbend.B, 128);
                                         int viblength = dobj.mLength - dobj.mVibDelay;
                                         int lasty = int.MinValue;
@@ -708,9 +708,9 @@ namespace cadencii
                                         g.setFont(lyric_font);
                                         if ((!dobj.mIsValidForUtau && renderer == RendererKind.UTAU) ||
                                                 (!dobj.mIsValidForStraight && renderer == RendererKind.VCNT)) {
-                                            g.setColor(cadencii.java.awt.Colors.White);
+                                            g.setColor(Cadencii.Gui.Colors.White);
                                         } else {
-                                            g.setColor(cadencii.java.awt.Colors.Black);
+                                            g.setColor(Cadencii.Gui.Colors.Black);
                                         }
                                         g.drawString(dobj.mText, x + 1, y + half_track_height - EditorConfig.baseFont10OffsetHeight + 1);
                                     }
@@ -726,7 +726,7 @@ namespace cadencii
                                 g.fillRect(x, y, 40, track_height);
                                 g.setColor(COLOR_R125G123B124);
                                 g.drawRect(x, y, 40, track_height);
-                                g.setColor(cadencii.java.awt.Colors.Black);
+                                g.setColor(Cadencii.Gui.Colors.Black);
 								g.setFont(cadencii.core.EditorConfig.baseFont10);
                                 if (dobj.mIsOverlapped) {
                                     g.setColor(COLOR_R147G147B147);
@@ -751,7 +751,7 @@ namespace cadencii
                                 if (dobj.mIsOverlapped) {
                                     g.setColor(COLOR_R147G147B147);
                                 } else {
-                                    g.setColor(cadencii.java.awt.Colors.Black);
+                                    g.setColor(Cadencii.Gui.Colors.Black);
                                 }
 								g.setFont(cadencii.core.EditorConfig.baseFont10);
                                 string str = dobj.mText;
@@ -993,7 +993,7 @@ namespace cadencii
                                                           (int)(size.Height * 1.2));
                         g.setColor(COLOR_R192G192B192);
                         g.fillRect(pxArea.X, pxArea.Y, pxArea.Width, pxArea.Height);
-                        g.setColor(cadencii.java.awt.Colors.Black);
+                        g.setColor(Cadencii.Gui.Colors.Black);
                         g.drawRect(pxArea.X, pxArea.Y, pxArea.Width, pxArea.Height);
                         // StringFormat sf = new StringFormat();
                         //sf.Alignment = StringAlignment.Center;
@@ -1010,7 +1010,7 @@ namespace cadencii
                     if (hilighted_note >= 0) {
                         int align = 1;
                         int valign = 0;
-                        g.setColor(cadencii.java.awt.Colors.Black);
+                        g.setColor(Cadencii.Gui.Colors.Black);
 						g.drawStringEx(
                                                VsqNote.getNoteString(hilighted_note),
 							cadencii.core.EditorConfig.baseFont10Bold,
@@ -1121,7 +1121,7 @@ namespace cadencii
                                                  CurveType.PBS.getMaximum());
                         }
 
-						Color pitline = cadencii.java.awt.Colors.MidnightBlue;
+						Color pitline = Cadencii.Gui.Colors.MidnightBlue;
                         g.setStroke(getStroke2px());
                         List<DrawObject> list = EditorManager.mDrawObjects[selected - 1];
                         int j_start = EditorManager.mDrawStartIndex[selected - 1];
@@ -1201,7 +1201,7 @@ namespace cadencii
 
                         if (mMouseTracer.size() > 1) {
                             commonDrawer.clear();
-							g.setColor(cadencii.java.awt.Colors.Orchid);
+							g.setColor(Cadencii.Gui.Colors.Orchid);
                             g.setStroke(getStroke2px());
                             foreach (var pt in mMouseTracer.iterator()) {
                                 commonDrawer.append(pt.X - stdx, pt.Y - stdy);
@@ -1214,7 +1214,7 @@ namespace cadencii
                     // マーカー
                     int marker_x = (int)(EditorManager.getCurrentClock() * scalex + EditorManager.keyOffset + key_width - stdx);
                     if (key_width <= marker_x && marker_x <= width) {
-                        g.setColor(cadencii.java.awt.Colors.White);
+                        g.setColor(Cadencii.Gui.Colors.White);
                         g.setStroke(getStroke2px());
                         g.drawLine(marker_x, 0, marker_x, Height);
                         g.setStroke(getStrokeDefault());
@@ -1239,7 +1239,7 @@ namespace cadencii
             int height = 4 + accent * 4 / 100;
             //SmoothingMode sm = g.SmoothingMode;
             //g.SmoothingMode = SmoothingMode.AntiAlias;
-            g.setColor(cadencii.java.awt.Colors.Black);
+            g.setColor(Cadencii.Gui.Colors.Black);
             g.drawPolyline(new int[] { x0, x0 + 2, x0 + 8, x0 + 13, x0 + 16, x0 + 20 },
                             new int[] { y0, y0, y0 - height, y0, y0, y0 - 4 },
                             6);
@@ -1286,9 +1286,9 @@ namespace cadencii
                                                     clock_end - clock_start,
                                                     (float)(tempo * 1e-6 / 480.0));
             Graphics g = drawer.getGraphics();
-            g.setColor(cadencii.java.awt.Colors.Blue);
+            g.setColor(Cadencii.Gui.Colors.Blue);
 #if DEBUG
-			g.setColor(cadencii.java.awt.Colors.Red);
+			g.setColor(Cadencii.Gui.Colors.Red);
 #endif
 			System.Drawing.Drawing2D.SmoothingMode sm = ((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode;
 			((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
@@ -1328,7 +1328,7 @@ namespace cadencii
             int[] _BASE_Y = new int[] { y0 - 4, y0 - 7, y0 - 7, y0 - 1, y0 - 1, y0 - 4 };
             Shape old = g.getClip();
             g.clipRect(clipx, origin_y + 10 - 8, clip_length, 10);
-            g.setColor(cadencii.java.awt.Colors.Black);
+            g.setColor(Cadencii.Gui.Colors.Black);
             for (int i = 0; i < count; i++) {
                 for (int j = 0; j < _BASE_X.Length; j++) {
                     _BASE_X[j] += _UWID;
@@ -1339,9 +1339,9 @@ namespace cadencii
             g.setClip(old);
         }
 
-        public java.awt.Dimension getMinimumSize()
+        public Cadencii.Gui.Dimension getMinimumSize()
         {
-            return new cadencii.java.awt.Dimension(base.MinimumSize.Width, base.MinimumSize.Height);
+            return new Cadencii.Gui.Dimension(base.MinimumSize.Width, base.MinimumSize.Height);
         }
     }
 

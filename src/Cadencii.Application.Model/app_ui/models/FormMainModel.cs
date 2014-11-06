@@ -1,5 +1,5 @@
 using System;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.core;
 using System.Collections.Generic;
 using cadencii.vsq;
@@ -267,10 +267,10 @@ namespace cadencii
 					_("Affirmation"),
 					cadencii.Dialog.MSGBOX_YES_NO_CANCEL_OPTION,
 					cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
-				if (dr == cadencii.java.awt.DialogResult.Yes) {
+				if (dr == Cadencii.Gui.DialogResult.Yes) {
 					if (MusicManager.getFileName() == "") {
 						var dr2 = DialogManager.showModalFileDialog(form.saveXmlVsqDialog, false, form);
-						if (dr2 == cadencii.java.awt.DialogResult.OK) {
+						if (dr2 == Cadencii.Gui.DialogResult.OK) {
 							string sf = form.saveXmlVsqDialog.FileName;
 							EditorManager.saveTo(sf);
 							return true;
@@ -281,7 +281,7 @@ namespace cadencii
 						EditorManager.saveTo(MusicManager.getFileName());
 						return true;
 					}
-				} else if (dr == cadencii.java.awt.DialogResult.No) {
+				} else if (dr == Cadencii.Gui.DialogResult.No) {
 					return true;
 				} else {
 					return false;
@@ -379,7 +379,7 @@ namespace cadencii
 							serr.println("FormMain#openVsqCor; ex=" + ex);
 							DialogManager.showMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
 								_("Info."),
-								cadencii.java.awt.AwtHost.OK_OPTION,
+								Cadencii.Gui.AwtHost.OK_OPTION,
 								cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
 							return true;
 						}
@@ -421,7 +421,7 @@ namespace cadencii
 						serr.println("FormMain#openVsqCor; ex=" + ex);
 						DialogManager.showMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
 							_("Info."),
-							cadencii.java.awt.AwtHost.OK_OPTION,
+							Cadencii.Gui.AwtHost.OK_OPTION,
 							cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
 						return true;
 					}
@@ -1002,7 +1002,7 @@ namespace cadencii
 				PortUtil.formatMessage(_("Do you wish to remove track? {0} : '{1}'"), selected, vsq.Track[selected].getName()),
 				FormMainModel.ApplicationName,
 				cadencii.Dialog.MSGBOX_YES_NO_OPTION,
-				cadencii.Dialog.MSGBOX_QUESTION_MESSAGE) == cadencii.java.awt.DialogResult.Yes) {
+				cadencii.Dialog.MSGBOX_QUESTION_MESSAGE) == Cadencii.Gui.DialogResult.Yes) {
 				CadenciiCommand run = VsqFileEx.generateCommandDeleteTrack(selected);
 				if (selected >= 2) {
 					EditorManager.Selected = selected - 1;

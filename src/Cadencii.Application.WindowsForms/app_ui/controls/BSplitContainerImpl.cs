@@ -17,20 +17,20 @@ using System.Drawing;
 using System.Windows.Forms;
 using cadencii;
 
-using AnchorStyles = cadencii.java.awt.AnchorStyles;
+using AnchorStyles = Cadencii.Gui.AnchorStyles;
 
 namespace cadencii.apputil
 {
     [Serializable]
     public partial class BSplitContainerImpl : ContainerControlImpl, BSplitContainer
     {
-		cadencii.java.awt.Orientation BSplitContainer.Orientation {
-			get { return (cadencii.java.awt.Orientation)Orientation; }
+		Cadencii.Gui.Orientation BSplitContainer.Orientation {
+			get { return (Cadencii.Gui.Orientation)Orientation; }
 			set { Orientation = (System.Windows.Forms.Orientation)value; }
 		}
 
-		cadencii.java.awt.FixedPanel BSplitContainer.FixedPanel {
-			get { return (cadencii.java.awt.FixedPanel)FixedPanel; }
+		Cadencii.Gui.FixedPanel BSplitContainer.FixedPanel {
+			get { return (Cadencii.Gui.FixedPanel)FixedPanel; }
 			set { FixedPanel = (System.Windows.Forms.FixedPanel)value; }
 		}
 
@@ -39,7 +39,7 @@ namespace cadencii.apputil
 			Controls.Add ((Control) child.Native);
 		}
 
-		cadencii.java.awt.Dimension BSplitContainer.MinimumSize {
+		Cadencii.Gui.Dimension BSplitContainer.MinimumSize {
 			get { return MinimumSize.ToAwt (); }
 			set { MinimumSize = value.ToWF (); }
 		}
@@ -63,8 +63,8 @@ namespace cadencii.apputil
 		}
 
 		/*
-		cadencii.java.awt.BorderStyle BSplitContainer.BorderStyle {
-			get { return (cadencii.java.awt.BorderStyle)BorderStyle; }
+		Cadencii.Gui.BorderStyle BSplitContainer.BorderStyle {
+			get { return (Cadencii.Gui.BorderStyle)BorderStyle; }
 			set { BorderStyle = (System.Windows.Forms.BorderStyle)value; }
 		}*/
 
@@ -242,11 +242,11 @@ namespace cadencii.apputil
             this.m_panel2.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
                         | AnchorStyles.Left)
                         | AnchorStyles.Right)));
-            this.m_panel2.BorderColor = cadencii.java.awt.Colors.Black;
-            this.m_panel2.Location = new cadencii.java.awt.Point(0, 103);
-            this.m_panel2.Margin = new cadencii.java.awt.Padding(0);
+            this.m_panel2.BorderColor = Cadencii.Gui.Colors.Black;
+            this.m_panel2.Location = new Cadencii.Gui.Point(0, 103);
+            this.m_panel2.Margin = new Cadencii.Gui.Padding(0);
             this.m_panel2.Name = "m_panel2";
-            this.m_panel2.Size = new cadencii.java.awt.Dimension(441, 245);
+            this.m_panel2.Size = new Cadencii.Gui.Dimension(441, 245);
             this.m_panel2.TabIndex = 1;
             this.m_panel2.BorderStyleChanged += new System.EventHandler(this.m_panel2_BorderStyleChanged);
             this.m_panel2.SizeChanged += new System.EventHandler(this.m_panel2_SizeChanged);
@@ -256,11 +256,11 @@ namespace cadencii.apputil
             this.m_panel1.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
                         | AnchorStyles.Left)
                         | AnchorStyles.Right)));
-			this.m_panel1.BorderColor = cadencii.java.awt.Colors.Black;
-            this.m_panel1.Location = new cadencii.java.awt.Point(0, 0);
-            this.m_panel1.Margin = new cadencii.java.awt.Padding(0, 0, 0, 4);
+			this.m_panel1.BorderColor = Cadencii.Gui.Colors.Black;
+            this.m_panel1.Location = new Cadencii.Gui.Point(0, 0);
+            this.m_panel1.Margin = new Cadencii.Gui.Padding(0, 0, 0, 4);
             this.m_panel1.Name = "m_panel1";
-            this.m_panel1.Size = new cadencii.java.awt.Dimension(441, 99);
+            this.m_panel1.Size = new Cadencii.Gui.Dimension(441, 99);
             this.m_panel1.TabIndex = 0;
             this.m_panel1.BorderStyleChanged += new System.EventHandler(this.m_panel1_BorderStyleChanged);
             this.m_panel1.SizeChanged += new System.EventHandler(this.m_panel1_SizeChanged);
@@ -271,7 +271,7 @@ namespace cadencii.apputil
 			this.Controls.Add((System.Windows.Forms.Control)this.m_panel1.Native);
             this.Controls.Add(this.m_lbl_splitter);
             this.Size = new Size(441, 348);
-			this.Paint += (o,e) => this.SplitContainerEx_Paint (o, new PaintEventArgs () { Graphics = new cadencii.java.awt.Graphics () { NativeGraphics = e.Graphics } });
+			this.Paint += (o,e) => this.SplitContainerEx_Paint (o, new PaintEventArgs () { Graphics = new Cadencii.Gui.Graphics () { NativeGraphics = e.Graphics } });
             ((System.ComponentModel.ISupportInitialize)(this.m_lbl_splitter)).EndInit();
             this.ResumeLayout(false);
         }
@@ -306,7 +306,7 @@ namespace cadencii.apputil
                     panel1_visible = false;
                 }
             }
-            if (m_panel1.BorderStyle == cadencii.java.awt.BorderStyle.FixedSingle && panel1_visible) {
+            if (m_panel1.BorderStyle == Cadencii.Gui.BorderStyle.FixedSingle && panel1_visible) {
                 if (m_panel1_border == null) {
                     m_panel1_border = new Pen(m_panel1.BorderColor.ToNative ());
                 } else {
@@ -314,8 +314,8 @@ namespace cadencii.apputil
                         m_panel1_border = new Pen(m_panel1.BorderColor.ToNative ());
                     }
                 }
-				e.Graphics.drawRect(new cadencii.java.awt.Stroke () { NativePen = m_panel1_border },
-                                          new cadencii.java.awt.Rectangle(m_panel1.Left - 1, m_panel1.Top - 1, m_panel1.Width + 1, m_panel1.Height + 1));
+				e.Graphics.drawRect(new Cadencii.Gui.Stroke () { NativePen = m_panel1_border },
+                                          new Cadencii.Gui.Rectangle(m_panel1.Left - 1, m_panel1.Top - 1, m_panel1.Width + 1, m_panel1.Height + 1));
             }
 
             bool panel2_visible = true;
@@ -328,7 +328,7 @@ namespace cadencii.apputil
                     panel2_visible = false;
                 }
             }
-            if (m_panel2.BorderStyle == cadencii.java.awt.BorderStyle.FixedSingle && panel2_visible) {
+            if (m_panel2.BorderStyle == Cadencii.Gui.BorderStyle.FixedSingle && panel2_visible) {
                 if (m_panel2_border == null) {
                     m_panel2_border = new Pen(m_panel2.BorderColor.ToNative ());
                 } else {
@@ -336,8 +336,8 @@ namespace cadencii.apputil
                         m_panel2_border = new Pen(m_panel2.BorderColor.ToNative ());
                     }
                 }
-				e.Graphics.drawRect(new cadencii.java.awt.Stroke () { NativePen = m_panel2_border },
-					new cadencii.java.awt.Rectangle(m_panel2.Left - 1, m_panel2.Top - 1, m_panel2.Width + 1, m_panel2.Height + 1));
+				e.Graphics.drawRect(new Cadencii.Gui.Stroke () { NativePen = m_panel2_border },
+					new Cadencii.Gui.Rectangle(m_panel2.Left - 1, m_panel2.Top - 1, m_panel2.Width + 1, m_panel2.Height + 1));
             }
         }
 
@@ -443,8 +443,8 @@ namespace cadencii.apputil
         private bool UpdateLayout(int splitter_distance, int splitter_width, int panel1_min, int panel2_min, bool check_only)
         {
             Point mouse = this.PointToClient(Control.MousePosition);
-            int pad1 = (m_panel1.BorderStyle == cadencii.java.awt.BorderStyle.FixedSingle) ? 1 : 0;
-            int pad2 = (m_panel2.BorderStyle == cadencii.java.awt.BorderStyle.FixedSingle) ? 1 : 0;
+            int pad1 = (m_panel1.BorderStyle == Cadencii.Gui.BorderStyle.FixedSingle) ? 1 : 0;
+            int pad2 = (m_panel2.BorderStyle == Cadencii.Gui.BorderStyle.FixedSingle) ? 1 : 0;
             if (m_orientation == Orientation.Horizontal) {
                 int p1 = splitter_distance;
                 if (p1 < 0) {

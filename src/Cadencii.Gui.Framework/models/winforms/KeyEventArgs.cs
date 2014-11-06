@@ -29,7 +29,7 @@
 
 using System;
 
-namespace cadencii.java.awt {
+namespace Cadencii.Gui {
 	public class KeyEventArgs : EventArgs {
 		private Keys	key_data;
 		private bool	event_handled;

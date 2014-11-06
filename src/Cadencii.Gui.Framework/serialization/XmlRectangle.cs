@@ -12,7 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System.Xml.Serialization;
-using cadencii.java.awt;
+using Cadencii.Gui;
 
 namespace cadencii.xml
 {

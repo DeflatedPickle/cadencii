@@ -16,7 +16,7 @@ using cadencii.core;
 using System.Collections.Generic;
 using System.Reflection;
 using cadencii.vsq;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.xml;
 using cadencii.utau;
 using cadencii.media;
@@ -75,7 +75,7 @@ namespace cadencii
 			Selected = 1;
 			SelectedTool = EditTool.PENCIL;
 			editHistory = new EditHistoryModel ();
-			mAutoBackupTimer = ApplicationUIHost.Create<Timer> ();
+			mAutoBackupTimer = ApplicationUIHost.Create<Cadencii.Gui.Timer> ();
 			mAutoBackupTimer.Tick += new EventHandler (EditorManager.handleAutoBackupTimerTick);
 		}
 
@@ -499,7 +499,7 @@ namespace cadencii
 
 		#region Colors (this should be customizible and saved somewhere else...)
 
-		private static Color mHilightBrush = cadencii.java.awt.Colors.CornflowerBlue;
+		private static Color mHilightBrush = Cadencii.Gui.Colors.CornflowerBlue;
 
 		public static Color getHilightColor ()
 		{
@@ -518,7 +518,7 @@ namespace cadencii
 		/// <returns></returns>
 		public static Color getAlertColor ()
 		{
-			return cadencii.java.awt.Colors.HotPink;
+			return Cadencii.Gui.Colors.HotPink;
 		}
 
 		/// <summary>
@@ -528,7 +528,7 @@ namespace cadencii
 		/// <returns></returns>
 		public static Color getAlertHilightColor ()
 		{
-			return cadencii.java.awt.Colors.DeepPink;
+			return Cadencii.Gui.Colors.DeepPink;
 		}
 
 		#endregion
@@ -2151,7 +2151,7 @@ namespace cadencii
 			});
 		}
 
-		private static Timer mAutoBackupTimer;
+		private static Cadencii.Gui.Timer mAutoBackupTimer;
 
 		public static void saveTo (string file)
 		{
@@ -2516,7 +2516,7 @@ namespace cadencii
 			"using cadencii;",
 			"using cadencii.java.io;",
 			"using cadencii.java.util;",
-			"using cadencii.java.awt;",
+			"using Cadencii.Gui;",
 			"using cadencii.media;",
 			"using cadencii.apputil;",
 			"using System.Windows.Forms;",

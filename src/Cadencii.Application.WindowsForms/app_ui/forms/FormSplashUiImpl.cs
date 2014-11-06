@@ -13,12 +13,12 @@
  */
 using System;
 using System.Windows.Forms;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.windows.forms;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
-using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
-using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
+using NMouseEventArgs = Cadencii.Gui.MouseEventArgs;
+using NMouseEventHandler = Cadencii.Gui.MouseEventHandler;
 
 namespace cadencii
 {

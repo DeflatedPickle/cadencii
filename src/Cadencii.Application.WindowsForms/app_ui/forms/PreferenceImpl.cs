@@ -17,7 +17,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Collections.Generic;
 using cadencii.apputil;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.java.io;
 using cadencii.java.util;
 using cadencii.javax.sound.midi;
@@ -26,9 +26,9 @@ using cadencii.vsq;
 using cadencii.windows.forms;
 using ApplicationGlobal = cadencii.core.ApplicationGlobal;
 using cadencii.utau;
-using Keys = cadencii.java.awt.Keys;
-using cadencii.java.awt;
-using DialogResult = cadencii.java.awt.DialogResult;
+using Keys = Cadencii.Gui.Keys;
+using Cadencii.Gui;
+using DialogResult = Cadencii.Gui.DialogResult;
 
 namespace cadencii
 {
@@ -1053,12 +1053,12 @@ namespace cadencii
             labelScreenFontName.Text = m_screen_font.getName();
         }
 
-        public java.awt.Font getBaseFont()
+        public Cadencii.Gui.Font getBaseFont()
         {
             return m_base_font;
         }
 
-        public void setBaseFont(java.awt.Font value)
+        public void setBaseFont(Cadencii.Gui.Font value)
         {
             m_base_font = value;
             labelMenuFontName.Text = m_base_font.getName();
@@ -1154,7 +1154,7 @@ namespace cadencii
 			fontDialog.Font = (System.Drawing.Font) getBaseFont().NativeFont;
             if (fontDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                 if (fontDialog.Font != null) {
-                    java.awt.Font f = new java.awt.Font(fontDialog.Font);
+                    Cadencii.Gui.Font f = new Cadencii.Gui.Font(fontDialog.Font);
                     m_base_font = f;
                     labelMenuFontName.Text = f.getName();
                 }
@@ -1185,7 +1185,7 @@ namespace cadencii
 			fontDialog.Font = (System.Drawing.Font) m_screen_font.NativeFont;
             if (fontDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
                 if (fontDialog.Font != null) {
-                    java.awt.Font f = new java.awt.Font(fontDialog.Font);
+                    Cadencii.Gui.Font f = new Cadencii.Gui.Font(fontDialog.Font);
                     m_screen_font = f;
                     labelScreenFontName.Text = f.getName();
                 }
@@ -1196,7 +1196,7 @@ namespace cadencii
         {
             openUtauCore.SetSelectedFile("resampler.exe");
             var dr = DialogManager.showModalFileDialog(openUtauCore, true, this);
-            if (dr == cadencii.java.awt.DialogResult.OK) {
+            if (dr == Cadencii.Gui.DialogResult.OK) {
                 string path = openUtauCore.FileName;
                 listResampler.AddRow(new string[] { path });
                 if (txtWavtool.Text == "") {
@@ -1263,7 +1263,7 @@ namespace cadencii
                 openUtauCore.SetSelectedFile(txtWavtool.Text);
             }
             var dr = DialogManager.showModalFileDialog(openUtauCore, true, this);
-			if (dr == cadencii.java.awt.DialogResult.OK) {
+			if (dr == Cadencii.Gui.DialogResult.OK) {
                 string path = openUtauCore.FileName;
                 txtWavtool.Text = path;
                 if (listResampler.Items.Count == 0) {
@@ -1286,7 +1286,7 @@ namespace cadencii
                 dialog.SetSelectedFile(text_box.Text);
             }
             var dr = DialogManager.showModalFileDialog(dialog, true, this);
-			if (dr == cadencii.java.awt.DialogResult.OK) {
+			if (dr == Cadencii.Gui.DialogResult.OK) {
                 string path = dialog.FileName;
                 text_box.Text = path;
             }
@@ -1506,7 +1506,7 @@ namespace cadencii
             if (f == null) {
                 return;
             }
-            Font font = new Font(font_name, java.awt.Font.PLAIN, (int)f.SizeInPoints);
+            Font font = new Font(font_name, Cadencii.Gui.Font.PLAIN, (int)f.SizeInPoints);
             Util.applyFontRecurse(this, font);
         }
 

@@ -21,26 +21,26 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using cadencii;
 using cadencii.apputil;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.java.util;
 using cadencii.vsq;
 using cadencii.windows.forms;
 using ApplicationGlobal = cadencii.core.ApplicationGlobal;
-using Keys = cadencii.java.awt.Keys;
+using Keys = Cadencii.Gui.Keys;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
 using MouseButtons = System.Windows.Forms.MouseButtons;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
-using NMouseButtons = cadencii.java.awt.MouseButtons;
-using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
-using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
-using ToolStripRenderMode = cadencii.java.awt.ToolStripRenderMode;
+using NMouseButtons = Cadencii.Gui.MouseButtons;
+using NMouseEventArgs = Cadencii.Gui.MouseEventArgs;
+using NMouseEventHandler = Cadencii.Gui.MouseEventHandler;
+using ToolStripRenderMode = Cadencii.Gui.ToolStripRenderMode;
 using TS = cadencii.TrackSelectorConsts;
 
 namespace cadencii
 {
-    using Graphics = cadencii.java.awt.Graphics;
+    using Graphics = Cadencii.Gui.Graphics;
 
     /// <summary>
     /// コントロールカーブ，トラックの一覧，歌手変更イベントなどを表示するコンポーネント．
@@ -48,7 +48,7 @@ namespace cadencii
     public class TrackSelectorImpl : UserControlImpl, TrackSelector
     {
 
-		BezierPoint TrackSelector.HandleMouseMoveForBezierMove (cadencii.java.awt.MouseEventArgs e, BezierPickedSide picked)
+		BezierPoint TrackSelector.HandleMouseMoveForBezierMove (Cadencii.Gui.MouseEventArgs e, BezierPickedSide picked)
 		{
 			return HandleMouseMoveForBezierMove (e.ToWF (), picked);
 		}
@@ -58,12 +58,12 @@ namespace cadencii
 			mEditingPointID = id;
 		}
 
-		void TrackSelector.onMouseDown (object sender, cadencii.java.awt.MouseEventArgs e)
+		void TrackSelector.onMouseDown (object sender, Cadencii.Gui.MouseEventArgs e)
 		{
 			onMouseDown (sender, e.ToWF ());
 		}
 
-		void TrackSelector.onMouseUp (object sender, cadencii.java.awt.MouseEventArgs e)
+		void TrackSelector.onMouseUp (object sender, Cadencii.Gui.MouseEventArgs e)
 		{
 			onMouseUp (sender, e.ToWF ());
 		}
@@ -420,57 +420,57 @@ namespace cadencii
             return CurveType.Empty;
         }
 
-        #region java.awt.Component
+        #region Cadencii.Gui.Component
         public void setBounds(int x, int y, int width, int height)
         {
             base.Bounds = new System.Drawing.Rectangle(x, y, width, height);
         }
 
-        public void setBounds(cadencii.java.awt.Rectangle rc)
+        public void setBounds(Cadencii.Gui.Rectangle rc)
         {
             base.Bounds = new System.Drawing.Rectangle(rc.X, rc.Y, rc.Width, rc.Height);
         }
 
-        public cadencii.java.awt.Cursor getCursor()
+        public Cadencii.Gui.Cursor getCursor()
         {
             System.Windows.Forms.Cursor c = base.Cursor;
-            cadencii.java.awt.Cursor ret = null;
+            Cadencii.Gui.Cursor ret = null;
             if (c.Equals(System.Windows.Forms.Cursors.Arrow)) {
-                ret = new cadencii.java.awt.Cursor(cadencii.java.awt.Cursor.DEFAULT_CURSOR);
+                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.DEFAULT_CURSOR);
             } else if (c.Equals(System.Windows.Forms.Cursors.Cross)) {
-                ret = new cadencii.java.awt.Cursor(cadencii.java.awt.Cursor.CROSSHAIR_CURSOR);
+                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.CROSSHAIR_CURSOR);
             } else if (c.Equals(System.Windows.Forms.Cursors.Default)) {
-                ret = new cadencii.java.awt.Cursor(cadencii.java.awt.Cursor.DEFAULT_CURSOR);
+                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.DEFAULT_CURSOR);
             } else if (c.Equals(System.Windows.Forms.Cursors.Hand)) {
-                ret = new cadencii.java.awt.Cursor(cadencii.java.awt.Cursor.HAND_CURSOR);
+                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.HAND_CURSOR);
             } else if (c.Equals(System.Windows.Forms.Cursors.IBeam)) {
-                ret = new cadencii.java.awt.Cursor(cadencii.java.awt.Cursor.TEXT_CURSOR);
+                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.TEXT_CURSOR);
             } else if (c.Equals(System.Windows.Forms.Cursors.PanEast)) {
-                ret = new cadencii.java.awt.Cursor(cadencii.java.awt.Cursor.E_RESIZE_CURSOR);
+                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.E_RESIZE_CURSOR);
             } else if (c.Equals(System.Windows.Forms.Cursors.PanNE)) {
-                ret = new cadencii.java.awt.Cursor(cadencii.java.awt.Cursor.NE_RESIZE_CURSOR);
+                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.NE_RESIZE_CURSOR);
             } else if (c.Equals(System.Windows.Forms.Cursors.PanNorth)) {
-                ret = new cadencii.java.awt.Cursor(cadencii.java.awt.Cursor.N_RESIZE_CURSOR);
+                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.N_RESIZE_CURSOR);
             } else if (c.Equals(System.Windows.Forms.Cursors.PanNW)) {
-                ret = new cadencii.java.awt.Cursor(cadencii.java.awt.Cursor.NW_RESIZE_CURSOR);
+                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.NW_RESIZE_CURSOR);
             } else if (c.Equals(System.Windows.Forms.Cursors.PanSE)) {
-                ret = new cadencii.java.awt.Cursor(cadencii.java.awt.Cursor.SE_RESIZE_CURSOR);
+                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.SE_RESIZE_CURSOR);
             } else if (c.Equals(System.Windows.Forms.Cursors.PanSouth)) {
-                ret = new cadencii.java.awt.Cursor(cadencii.java.awt.Cursor.S_RESIZE_CURSOR);
+                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.S_RESIZE_CURSOR);
             } else if (c.Equals(System.Windows.Forms.Cursors.PanSW)) {
-                ret = new cadencii.java.awt.Cursor(cadencii.java.awt.Cursor.SW_RESIZE_CURSOR);
+                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.SW_RESIZE_CURSOR);
             } else if (c.Equals(System.Windows.Forms.Cursors.PanWest)) {
-                ret = new cadencii.java.awt.Cursor(cadencii.java.awt.Cursor.W_RESIZE_CURSOR);
+                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.W_RESIZE_CURSOR);
             } else if (c.Equals(System.Windows.Forms.Cursors.SizeAll)) {
-                ret = new cadencii.java.awt.Cursor(cadencii.java.awt.Cursor.MOVE_CURSOR);
+                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.MOVE_CURSOR);
             } else {
-                ret = new cadencii.java.awt.Cursor(cadencii.java.awt.Cursor.CUSTOM_CURSOR);
+                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.CUSTOM_CURSOR);
             }
             ret.NativeCursor = c;
             return ret;
         }
 
-        public void setCursor(cadencii.java.awt.Cursor value)
+        public void setCursor(Cadencii.Gui.Cursor value)
         {
             base.Cursor = (System.Windows.Forms.Cursor) value.NativeCursor;
         }
@@ -509,16 +509,16 @@ namespace cadencii
         }
 
 #if COMPONENT_ENABLE_LOCATION
-        public cadencii.java.awt.Point getLocationOnScreen()
+        public Cadencii.Gui.Point getLocationOnScreen()
         {
             System.Drawing.Point p = base.PointToScreen(base.Location);
-            return new cadencii.java.awt.Point(p.X, p.Y);
+            return new Cadencii.Gui.Point(p.X, p.Y);
         }
 
-        public cadencii.java.awt.Point getLocation()
+        public Cadencii.Gui.Point getLocation()
         {
             System.Drawing.Point loc = this.Location;
-            return new cadencii.java.awt.Point(loc.X, loc.Y);
+            return new Cadencii.Gui.Point(loc.X, loc.Y);
         }
 
         public void setLocation(int x, int y)
@@ -526,16 +526,16 @@ namespace cadencii
             base.Location = new System.Drawing.Point(x, y);
         }
 
-        public void setLocation(cadencii.java.awt.Point p)
+        public void setLocation(Cadencii.Gui.Point p)
         {
             base.Location = new System.Drawing.Point(p.X, p.Y);
         }
 #endif
 
-        public cadencii.java.awt.Rectangle getBounds()
+        public Cadencii.Gui.Rectangle getBounds()
         {
             System.Drawing.Rectangle r = base.Bounds;
-            return new cadencii.java.awt.Rectangle(r.X, r.Y, r.Width, r.Height);
+            return new Cadencii.Gui.Rectangle(r.X, r.Y, r.Width, r.Height);
         }
 
 #if COMPONENT_ENABLE_X
@@ -560,9 +560,9 @@ namespace cadencii
             return base.Height;
         }
 
-        public cadencii.java.awt.Dimension getSize()
+        public Cadencii.Gui.Dimension getSize()
         {
-            return new cadencii.java.awt.Dimension(base.Size.Width, base.Size.Height);
+            return new Cadencii.Gui.Dimension(base.Size.Width, base.Size.Height);
         }
 
         public void setSize(int width, int height)
@@ -570,29 +570,29 @@ namespace cadencii
 			base.Size =new System.Drawing.Size(width, height);
         }
 
-        public void setSize(cadencii.java.awt.Dimension d)
+        public void setSize(Cadencii.Gui.Dimension d)
         {
             setSize(d.Width, d.Height);
         }
 
-        public void setBackground(cadencii.java.awt.Color color)
+        public void setBackground(Cadencii.Gui.Color color)
         {
             base.BackColor = System.Drawing.Color.FromArgb(color.R, color.G, color.B);
         }
 
-        public cadencii.java.awt.Color getBackground()
+        public Cadencii.Gui.Color getBackground()
         {
-            return new cadencii.java.awt.Color(base.BackColor.R, base.BackColor.G, base.BackColor.B);
+            return new Cadencii.Gui.Color(base.BackColor.R, base.BackColor.G, base.BackColor.B);
         }
 
-        public void setForeground(cadencii.java.awt.Color color)
+        public void setForeground(Cadencii.Gui.Color color)
         {
 			base.ForeColor = color.ToNative ();
         }
 
-        public cadencii.java.awt.Color getForeground()
+        public Cadencii.Gui.Color getForeground()
         {
-            return new cadencii.java.awt.Color(base.ForeColor.R, base.ForeColor.G, base.ForeColor.B);
+            return new Cadencii.Gui.Color(base.ForeColor.R, base.ForeColor.G, base.ForeColor.B);
         }
 
         public bool isEnabled()
@@ -615,17 +615,17 @@ namespace cadencii
             return base.Focused;
         }
 
-        public void setPreferredSize(cadencii.java.awt.Dimension size)
+        public void setPreferredSize(Cadencii.Gui.Dimension size)
         {
 			base.Size =new System.Drawing.Size(size.Width, size.Height);
         }
 
-        public cadencii.java.awt.Font getFont()
+        public Cadencii.Gui.Font getFont()
         {
-            return new cadencii.java.awt.Font(base.Font);
+            return new Cadencii.Gui.Font(base.Font);
         }
 
-        public void setFont(cadencii.java.awt.Font font)
+        public void setFont(Cadencii.Gui.Font font)
         {
             if (font == null) {
                 return;
@@ -639,16 +639,16 @@ namespace cadencii
 
         #region common APIs of org.kbinani.*
         // root implementation is in BForm.cs
-        public java.awt.Point pointToScreen(java.awt.Point point_on_client)
+        public Cadencii.Gui.Point pointToScreen(Cadencii.Gui.Point point_on_client)
         {
-            java.awt.Point p = getLocationOnScreen();
-            return new java.awt.Point(p.X + point_on_client.X, p.Y + point_on_client.Y);
+            Cadencii.Gui.Point p = getLocationOnScreen();
+            return new Cadencii.Gui.Point(p.X + point_on_client.X, p.Y + point_on_client.Y);
         }
 
-        public java.awt.Point pointToClient(java.awt.Point point_on_screen)
+        public Cadencii.Gui.Point pointToClient(Cadencii.Gui.Point point_on_screen)
         {
-            java.awt.Point p = getLocationOnScreen();
-            return new java.awt.Point(point_on_screen.X - p.X, point_on_screen.Y - p.Y);
+            Cadencii.Gui.Point p = getLocationOnScreen();
+            return new Cadencii.Gui.Point(point_on_screen.X - p.X, point_on_screen.Y - p.Y);
         }
 
         public Object getTag()
@@ -698,7 +698,7 @@ namespace cadencii
         {
         }
 
-        public void applyFont(java.awt.Font font)
+        public void applyFont(Cadencii.Gui.Font font)
         {
             Util.applyFontRecurse(this, font);
             Utility.applyContextMenuFontRecurse(cmenuSinger, font);
@@ -947,10 +947,10 @@ namespace cadencii
             int graph_height = getGraphHeight();
             Dimension size = new Dimension(width + 2, height);
             Graphics g = (Graphics)graphics;
-            Color brs_string = cadencii.java.awt.Colors.Black;
+            Color brs_string = Cadencii.Gui.Colors.Black;
             Color rect_curve = new Color(41, 46, 55);
             int centre = TS.HEADER + graph_height / 2;
-			g.setColor(cadencii.java.awt.Colors.DarkGray);
+			g.setColor(Cadencii.Gui.Colors.DarkGray);
             g.fillRect(0, size.Height - 2 * TS.OFFSET_TRACK_TAB, size.Width, 2 * TS.OFFSET_TRACK_TAB);
             int numeric_view = mMouseValue;
 			Point p = pointToClient(cadencii.core2.PortUtil.getMousePosition());
@@ -991,7 +991,7 @@ namespace cadencii
                         Rectangle rc =
                             new Rectangle(x_at_left, ycoord,
                                            TS.SINGER_ITEM_WIDTH, TS.OFFSET_TRACK_TAB - 2);
-						g.setColor(cadencii.java.awt.Colors.LightGray);
+						g.setColor(Cadencii.Gui.Colors.LightGray);
                         g.fillRect(rc.X, rc.Y, rc.Width, rc.Height);
                         g.setColor(TS.COLOR_SINGERBOX_BORDER);
                         g.drawRect(rc.X, rc.Y, rc.Width, rc.Height);
@@ -1020,7 +1020,7 @@ namespace cadencii
                         if (EditorManager.itemSelection.isEventContains(selected, ve.InternalID)) {
                             g.setColor(EditorManager.getHilightColor());
                         } else {
-                            g.setColor(cadencii.java.awt.Colors.White);
+                            g.setColor(Cadencii.Gui.Colors.White);
                         }
                         g.fillRect(rc.X, rc.Y, rc.Width, rc.Height);
                         g.setColor(TS.COLOR_SINGERBOX_BORDER);
@@ -1268,7 +1268,7 @@ namespace cadencii
                                 Point pt = mMouseTracer.iterator().First();
                                 int xini = pt.X - stdx;
                                 int yini = pt.Y;
-                                g.setColor(cadencii.java.awt.Colors.Orange);
+                                g.setColor(Cadencii.Gui.Colors.Orange);
                                 g.setStroke(getStroke2px());
 								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                                 g.drawLine(xini, yini, EditorManager.xCoordFromClocks(clock_at_mouse), yCoordFromValue(value));
@@ -1379,7 +1379,7 @@ namespace cadencii
 					Font text_font = cadencii.core.EditorConfig.baseFont9;
                     int text_font_height = EditorConfig.baseFont9Height;
                     int text_font_offset = EditorConfig.baseFont9OffsetHeight;
-                    Color font_color_normal = cadencii.java.awt.Colors.Black;
+                    Color font_color_normal = Cadencii.Gui.Colors.Black;
                     g.setColor(new Color(212, 212, 212));
                     g.fillRect(0, 0, key_width, size.Height - 2 * TS.OFFSET_TRACK_TAB);
 
@@ -1406,7 +1406,7 @@ namespace cadencii
                             n = "INT";
                         }
                         if (curve.equals(mSelectedCurve)) {
-                            g.setColor(cadencii.java.awt.Colors.White);
+                            g.setColor(Cadencii.Gui.Colors.White);
                             g.drawString(n, rc_str_x, rc_str_y);
                         } else {
                             g.setColor(font_color_normal);
@@ -1419,7 +1419,7 @@ namespace cadencii
                 #region 現在のマーカー
                 int marker_x = EditorManager.xCoordFromClocks(EditorManager.getCurrentClock());
                 if (key_width <= marker_x && marker_x <= size.Width) {
-                    g.setColor(cadencii.java.awt.Colors.White);
+                    g.setColor(Cadencii.Gui.Colors.White);
                     g.setStroke(new Stroke(2f));
                     g.drawLine(marker_x, 0, marker_x, size.Height - 18);
                     g.setStroke(new Stroke());
@@ -1439,7 +1439,7 @@ namespace cadencii
                         shift = 100;
                     }
 					g.setFont(cadencii.core.EditorConfig.baseFont10Bold);
-                    g.setColor(cadencii.java.awt.Colors.White);
+                    g.setColor(Cadencii.Gui.Colors.White);
 					g.drawStringEx(
                                            mMouseValue + "",
 						cadencii.core.EditorConfig.baseFont10Bold,
@@ -1578,7 +1578,7 @@ namespace cadencii
                 // 多角形
                 g.setColor(brs);
                 g.fillPolygon(points);
-                g.setColor(cadencii.java.awt.Colors.White);
+                g.setColor(Cadencii.Gui.Colors.White);
                 g.drawPolyline(points.xpoints, points.ypoints, points.npoints);
 
                 if (draw_env_points) {
@@ -1653,9 +1653,9 @@ namespace cadencii
         private void drawPreutteranceAndOverlap(Graphics g, int px_preutterance, int px_overlap, float preutterance, float overlap)
         {
             int graph_height = getGraphHeight();
-			g.setColor(cadencii.java.awt.Colors.Orange);
+			g.setColor(Cadencii.Gui.Colors.Orange);
             g.drawLine(px_preutterance, TS.HEADER + 1, px_preutterance, graph_height + TS.HEADER);
-			g.setColor(cadencii.java.awt.Colors.LawnGreen);
+			g.setColor(Cadencii.Gui.Colors.LawnGreen);
             g.drawLine(px_overlap, TS.HEADER + 1, px_overlap, graph_height + TS.HEADER);
 
             string s_pre = getFlagTitle(true, preutterance);
@@ -1667,19 +1667,19 @@ namespace cadencii
             Dimension ovl_bounds = getFlagBounds(s_ovl);
 
             Color pen = new Color(0, 0, 0, 50);
-			Color transp = new Color(cadencii.java.awt.Colors.Orange.R, cadencii.java.awt.Colors.Orange.G, cadencii.java.awt.Colors.Orange.B, 50);
+			Color transp = new Color(Cadencii.Gui.Colors.Orange.R, Cadencii.Gui.Colors.Orange.G, Cadencii.Gui.Colors.Orange.B, 50);
             g.setColor(transp);
             g.fillRect(px_preutterance, TS.OFFSET_PRE - TS.FLAG_SPACE, pre_bounds.Width, pre_bounds.Height + TS.FLAG_SPACE * 2);
             g.setColor(pen);
             g.drawRect(px_preutterance, TS.OFFSET_PRE - TS.FLAG_SPACE, pre_bounds.Width, pre_bounds.Height + TS.FLAG_SPACE * 2);
-			transp = new Color(cadencii.java.awt.Colors.LawnGreen.R, cadencii.java.awt.Colors.LawnGreen.G, cadencii.java.awt.Colors.LawnGreen.B, 50);
+			transp = new Color(Cadencii.Gui.Colors.LawnGreen.R, Cadencii.Gui.Colors.LawnGreen.G, Cadencii.Gui.Colors.LawnGreen.B, 50);
             g.setColor(transp);
             g.fillRect(px_overlap, TS.OFFSET_OVL - TS.FLAG_SPACE, ovl_bounds.Width, ovl_bounds.Height + TS.FLAG_SPACE * 2);
             g.setColor(pen);
             g.drawRect(px_overlap, TS.OFFSET_OVL - TS.FLAG_SPACE, ovl_bounds.Width, ovl_bounds.Height + TS.FLAG_SPACE * 2);
 
             g.setFont(font);
-            g.setColor(cadencii.java.awt.Colors.Black);
+            g.setColor(Cadencii.Gui.Colors.Black);
             g.drawString(s_pre, px_preutterance + 1, TS.OFFSET_PRE + font_height / 2 - font_offset + 1);
             g.drawString(s_ovl, px_overlap + 1, TS.OFFSET_OVL + font_height / 2 - font_offset + 1);
         }
@@ -1966,9 +1966,9 @@ namespace cadencii
             int panel_width = render_required ? destRect.Width - 10 : destRect.Width;
             Color panel_color = enabled ? hilight : new Color(125, 123, 124);
             Color button_color = enabled ? render_button_hilight : new Color(125, 123, 124);
-            Color panel_title = cadencii.java.awt.Colors.Black;
-            Color button_title = selected ? cadencii.java.awt.Colors.White : cadencii.java.awt.Colors.Black;
-            Color border = selected ? cadencii.java.awt.Colors.White : new Color(118, 123, 138);
+            Color panel_title = Cadencii.Gui.Colors.Black;
+            Color button_title = selected ? Cadencii.Gui.Colors.White : Cadencii.Gui.Colors.Black;
+            Color border = selected ? Cadencii.Gui.Colors.White : new Color(118, 123, 138);
 
             // 背景(選択されている場合)
             if (selected) {
@@ -2136,7 +2136,7 @@ namespace cadencii
                                     int edit_y = oy - graph_height * (editing - min) / (max - min);
                                     g.setColor(TS.COLOR_A244R255G023B012);
                                     g.fillRect(x, edit_y, TS.VEL_BAR_WIDTH, oy - edit_y);
-                                    g.setColor(cadencii.java.awt.Colors.White);
+                                    g.setColor(Cadencii.Gui.Colors.White);
                                     g.drawString(editing + "", x + TS.VEL_BAR_WIDTH, (edit_y > oy - 20) ? oy - 20 : edit_y);
                                 }
                             }
@@ -2155,12 +2155,12 @@ namespace cadencii
                 }
             }
             if (cursor_should_be_hand) {
-                if (getCursor().getType() != java.awt.Cursor.HAND_CURSOR) {
-                    setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                if (getCursor().getType() != Cadencii.Gui.Cursor.HAND_CURSOR) {
+                    setCursor(new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.HAND_CURSOR));
                 }
             } else {
-                if (getCursor().getType() != java.awt.Cursor.DEFAULT_CURSOR) {
-                    setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+                if (getCursor().getType() != Cadencii.Gui.Cursor.DEFAULT_CURSOR) {
+                    setCursor(new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.DEFAULT_CURSOR));
                 }
             }
             g.setClip(last_clip);
@@ -2400,7 +2400,7 @@ namespace cadencii
                     d.setFill(true);
                     d.setDotMode(LineGraphDrawer.DOTMODE_NO);
                     d.setDrawLine(false);
-                    d.setLineColor(cadencii.java.awt.Colors.White);
+                    d.setLineColor(Cadencii.Gui.Colors.White);
                     d.setDrawLine(true);
 
                     int draw_width = x2 - x1;
@@ -2474,8 +2474,8 @@ namespace cadencii
             d.setBaseLineY(oy);
             d.setDotSize(TS.DOT_WID);
             d.setFillColor(color);
-            d.setDotColor(cadencii.java.awt.Colors.White);
-            d.setLineColor(cadencii.java.awt.Colors.White);
+            d.setDotColor(Cadencii.Gui.Colors.White);
+            d.setLineColor(Cadencii.Gui.Colors.White);
             int dot_mode = is_front ? LineGraphDrawer.DOTMODE_NEAR : LineGraphDrawer.DOTMODE_NO;
             if (pmouse.Y < 0 || height < pmouse.Y) {
                 dot_mode = LineGraphDrawer.DOTMODE_NO;
@@ -5814,48 +5814,48 @@ namespace cadencii
             // cmenuCurveVelocity
             //
             this.cmenuCurveVelocity.Name = "cmenuCurveVelocity";
-            this.cmenuCurveVelocity.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveVelocity.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveVelocity.Text = "Velocity(&V)";
             //
             // cmenuCurveAccent
             //
             this.cmenuCurveAccent.Name = "cmenuCurveAccent";
-            this.cmenuCurveAccent.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveAccent.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveAccent.Text = "Accent";
             //
             // cmenuCurveDecay
             //
             this.cmenuCurveDecay.Name = "cmenuCurveDecay";
-            this.cmenuCurveDecay.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveDecay.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveDecay.Text = "Decay";
             //
             // cmenuCurveSeparator1
             //
             this.cmenuCurveSeparator1.Name = "cmenuCurveSeparator1";
-            this.cmenuCurveSeparator1.Size =new cadencii.java.awt.Dimension(156, 6);
+            this.cmenuCurveSeparator1.Size =new Cadencii.Gui.Dimension(156, 6);
             //
             // cmenuCurveDynamics
             //
             this.cmenuCurveDynamics.Name = "cmenuCurveDynamics";
-            this.cmenuCurveDynamics.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveDynamics.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveDynamics.Text = "Dynamics";
             //
             // cmenuCurveVibratoRate
             //
             this.cmenuCurveVibratoRate.Name = "cmenuCurveVibratoRate";
-            this.cmenuCurveVibratoRate.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveVibratoRate.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveVibratoRate.Text = "Vibrato Rate";
             //
             // cmenuCurveVibratoDepth
             //
             this.cmenuCurveVibratoDepth.Name = "cmenuCurveVibratoDepth";
-            this.cmenuCurveVibratoDepth.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveVibratoDepth.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveVibratoDepth.Text = "Vibrato Depth";
             //
             // cmenuCurveSeparator2
             //
             this.cmenuCurveSeparator2.Name = "cmenuCurveSeparator2";
-            this.cmenuCurveSeparator2.Size =new cadencii.java.awt.Dimension(156, 6);
+            this.cmenuCurveSeparator2.Size =new Cadencii.Gui.Dimension(156, 6);
             //
             // cmenuCurveReso1
             //
@@ -5864,25 +5864,25 @@ namespace cadencii
             this.cmenuCurveReso1BW,
             this.cmenuCurveReso1Amp});
             this.cmenuCurveReso1.Name = "cmenuCurveReso1";
-            this.cmenuCurveReso1.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveReso1.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveReso1.Text = "Resonance 1";
             //
             // cmenuCurveReso1Freq
             //
             this.cmenuCurveReso1Freq.Name = "cmenuCurveReso1Freq";
-            this.cmenuCurveReso1Freq.Size =new cadencii.java.awt.Dimension(128, 22);
+            this.cmenuCurveReso1Freq.Size =new Cadencii.Gui.Dimension(128, 22);
             this.cmenuCurveReso1Freq.Text = "Frequency";
             //
             // cmenuCurveReso1BW
             //
             this.cmenuCurveReso1BW.Name = "cmenuCurveReso1BW";
-            this.cmenuCurveReso1BW.Size =new cadencii.java.awt.Dimension(128, 22);
+            this.cmenuCurveReso1BW.Size =new Cadencii.Gui.Dimension(128, 22);
             this.cmenuCurveReso1BW.Text = "Band Width";
             //
             // cmenuCurveReso1Amp
             //
             this.cmenuCurveReso1Amp.Name = "cmenuCurveReso1Amp";
-            this.cmenuCurveReso1Amp.Size =new cadencii.java.awt.Dimension(128, 22);
+            this.cmenuCurveReso1Amp.Size =new Cadencii.Gui.Dimension(128, 22);
             this.cmenuCurveReso1Amp.Text = "Amplitude";
             //
             // cmenuCurveReso2
@@ -5892,25 +5892,25 @@ namespace cadencii
             this.cmenuCurveReso2BW,
             this.cmenuCurveReso2Amp});
             this.cmenuCurveReso2.Name = "cmenuCurveReso2";
-            this.cmenuCurveReso2.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveReso2.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveReso2.Text = "Resonance 2";
             //
             // cmenuCurveReso2Freq
             //
             this.cmenuCurveReso2Freq.Name = "cmenuCurveReso2Freq";
-            this.cmenuCurveReso2Freq.Size =new cadencii.java.awt.Dimension(128, 22);
+            this.cmenuCurveReso2Freq.Size =new Cadencii.Gui.Dimension(128, 22);
             this.cmenuCurveReso2Freq.Text = "Frequency";
             //
             // cmenuCurveReso2BW
             //
             this.cmenuCurveReso2BW.Name = "cmenuCurveReso2BW";
-            this.cmenuCurveReso2BW.Size =new cadencii.java.awt.Dimension(128, 22);
+            this.cmenuCurveReso2BW.Size =new Cadencii.Gui.Dimension(128, 22);
             this.cmenuCurveReso2BW.Text = "Band Width";
             //
             // cmenuCurveReso2Amp
             //
             this.cmenuCurveReso2Amp.Name = "cmenuCurveReso2Amp";
-            this.cmenuCurveReso2Amp.Size =new cadencii.java.awt.Dimension(128, 22);
+            this.cmenuCurveReso2Amp.Size =new Cadencii.Gui.Dimension(128, 22);
             this.cmenuCurveReso2Amp.Text = "Amplitude";
             //
             // cmenuCurveReso3
@@ -5920,25 +5920,25 @@ namespace cadencii
             this.cmenuCurveReso3BW,
             this.cmenuCurveReso3Amp});
             this.cmenuCurveReso3.Name = "cmenuCurveReso3";
-            this.cmenuCurveReso3.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveReso3.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveReso3.Text = "Resonance 3";
             //
             // cmenuCurveReso3Freq
             //
             this.cmenuCurveReso3Freq.Name = "cmenuCurveReso3Freq";
-            this.cmenuCurveReso3Freq.Size =new cadencii.java.awt.Dimension(128, 22);
+            this.cmenuCurveReso3Freq.Size =new Cadencii.Gui.Dimension(128, 22);
             this.cmenuCurveReso3Freq.Text = "Frequency";
             //
             // cmenuCurveReso3BW
             //
             this.cmenuCurveReso3BW.Name = "cmenuCurveReso3BW";
-            this.cmenuCurveReso3BW.Size =new cadencii.java.awt.Dimension(128, 22);
+            this.cmenuCurveReso3BW.Size =new Cadencii.Gui.Dimension(128, 22);
             this.cmenuCurveReso3BW.Text = "Band Width";
             //
             // cmenuCurveReso3Amp
             //
             this.cmenuCurveReso3Amp.Name = "cmenuCurveReso3Amp";
-            this.cmenuCurveReso3Amp.Size =new cadencii.java.awt.Dimension(128, 22);
+            this.cmenuCurveReso3Amp.Size =new Cadencii.Gui.Dimension(128, 22);
             this.cmenuCurveReso3Amp.Text = "Amplitude";
             //
             // cmenuCurveReso4
@@ -5948,106 +5948,106 @@ namespace cadencii
             this.cmenuCurveReso4BW,
             this.cmenuCurveReso4Amp});
             this.cmenuCurveReso4.Name = "cmenuCurveReso4";
-            this.cmenuCurveReso4.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveReso4.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveReso4.Text = "Resonance 4";
             //
             // cmenuCurveReso4Freq
             //
             this.cmenuCurveReso4Freq.Name = "cmenuCurveReso4Freq";
-            this.cmenuCurveReso4Freq.Size =new cadencii.java.awt.Dimension(128, 22);
+            this.cmenuCurveReso4Freq.Size =new Cadencii.Gui.Dimension(128, 22);
             this.cmenuCurveReso4Freq.Text = "Frequency";
             //
             // cmenuCurveReso4BW
             //
             this.cmenuCurveReso4BW.Name = "cmenuCurveReso4BW";
-            this.cmenuCurveReso4BW.Size =new cadencii.java.awt.Dimension(128, 22);
+            this.cmenuCurveReso4BW.Size =new Cadencii.Gui.Dimension(128, 22);
             this.cmenuCurveReso4BW.Text = "Band Width";
             //
             // cmenuCurveReso4Amp
             //
             this.cmenuCurveReso4Amp.Name = "cmenuCurveReso4Amp";
-            this.cmenuCurveReso4Amp.Size =new cadencii.java.awt.Dimension(128, 22);
+            this.cmenuCurveReso4Amp.Size =new Cadencii.Gui.Dimension(128, 22);
             this.cmenuCurveReso4Amp.Text = "Amplitude";
             //
             // cmenuCurveSeparator3
             //
             this.cmenuCurveSeparator3.Name = "cmenuCurveSeparator3";
-            this.cmenuCurveSeparator3.Size =new cadencii.java.awt.Dimension(156, 6);
+            this.cmenuCurveSeparator3.Size =new Cadencii.Gui.Dimension(156, 6);
             //
             // cmenuCurveHarmonics
             //
             this.cmenuCurveHarmonics.Name = "cmenuCurveHarmonics";
-            this.cmenuCurveHarmonics.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveHarmonics.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveHarmonics.Text = "Harmonics";
             //
             // cmenuCurveBreathiness
             //
             this.cmenuCurveBreathiness.Name = "cmenuCurveBreathiness";
-            this.cmenuCurveBreathiness.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveBreathiness.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveBreathiness.Text = "Noise";
             //
             // cmenuCurveBrightness
             //
             this.cmenuCurveBrightness.Name = "cmenuCurveBrightness";
-            this.cmenuCurveBrightness.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveBrightness.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveBrightness.Text = "Brightness";
             //
             // cmenuCurveClearness
             //
             this.cmenuCurveClearness.Name = "cmenuCurveClearness";
-            this.cmenuCurveClearness.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveClearness.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveClearness.Text = "Clearness";
             //
             // cmenuCurveOpening
             //
             this.cmenuCurveOpening.Name = "cmenuCurveOpening";
-            this.cmenuCurveOpening.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveOpening.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveOpening.Text = "Opening";
             //
             // cmenuCurveGenderFactor
             //
             this.cmenuCurveGenderFactor.Name = "cmenuCurveGenderFactor";
-            this.cmenuCurveGenderFactor.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveGenderFactor.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveGenderFactor.Text = "Gender Factor";
             //
             // cmenuCurveSeparator4
             //
             this.cmenuCurveSeparator4.Name = "cmenuCurveSeparator4";
-            this.cmenuCurveSeparator4.Size =new cadencii.java.awt.Dimension(156, 6);
+            this.cmenuCurveSeparator4.Size =new Cadencii.Gui.Dimension(156, 6);
             //
             // cmenuCurvePortamentoTiming
             //
             this.cmenuCurvePortamentoTiming.Name = "cmenuCurvePortamentoTiming";
-            this.cmenuCurvePortamentoTiming.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurvePortamentoTiming.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurvePortamentoTiming.Text = "Portamento Timing";
             //
             // cmenuCurvePitchBend
             //
             this.cmenuCurvePitchBend.Name = "cmenuCurvePitchBend";
-            this.cmenuCurvePitchBend.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurvePitchBend.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurvePitchBend.Text = "Pitch Bend";
             //
             // cmenuCurvePitchBendSensitivity
             //
             this.cmenuCurvePitchBendSensitivity.Name = "cmenuCurvePitchBendSensitivity";
-            this.cmenuCurvePitchBendSensitivity.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurvePitchBendSensitivity.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurvePitchBendSensitivity.Text = "Pitch Bend Sensitivity";
             //
             // cmenuCurveSeparator5
             //
             this.cmenuCurveSeparator5.Name = "cmenuCurveSeparator5";
-            this.cmenuCurveSeparator5.Size =new cadencii.java.awt.Dimension(156, 6);
+            this.cmenuCurveSeparator5.Size =new Cadencii.Gui.Dimension(156, 6);
             //
             // cmenuCurveEffect2Depth
             //
             this.cmenuCurveEffect2Depth.Name = "cmenuCurveEffect2Depth";
-            this.cmenuCurveEffect2Depth.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveEffect2Depth.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveEffect2Depth.Text = "Effect2 Depth";
             //
             // cmenuCurveEnvelope
             //
             this.cmenuCurveEnvelope.Name = "cmenuCurveEnvelope";
-            this.cmenuCurveEnvelope.Size =new cadencii.java.awt.Dimension(159, 22);
+            this.cmenuCurveEnvelope.Size =new Cadencii.Gui.Dimension(159, 22);
             this.cmenuCurveEnvelope.Text = "Envelope";
             //
             // TrackSelector

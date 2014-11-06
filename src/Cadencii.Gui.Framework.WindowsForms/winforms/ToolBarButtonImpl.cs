@@ -1,5 +1,5 @@
 using System;
-using cadencii.java.awt;
+using Cadencii.Gui;
 
 namespace cadencii
 {
@@ -10,7 +10,7 @@ namespace cadencii
 			set { Style = (System.Windows.Forms.ToolBarButtonStyle) value; }
 		}
 
-		cadencii.java.awt.Rectangle UiToolBarButton.Rectangle {
+		Cadencii.Gui.Rectangle UiToolBarButton.Rectangle {
 			get { return Rectangle.ToAwt (); }
 		}
 	}

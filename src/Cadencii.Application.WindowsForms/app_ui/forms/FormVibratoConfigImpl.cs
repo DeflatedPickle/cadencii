@@ -18,7 +18,7 @@ using cadencii.apputil;
 using cadencii.vsq;
 using cadencii.windows.forms;
 using cadencii.java.util;
-using Keys = cadencii.java.awt.Keys;
+using Keys = Cadencii.Gui.Keys;
 
 
 namespace cadencii
@@ -362,9 +362,9 @@ namespace cadencii
             // txtVibratoLength
             // 
             this.txtVibratoLength.Enabled = false;
-            this.txtVibratoLength.Location = new cadencii.java.awt.Point(143, 12);
+            this.txtVibratoLength.Location = new Cadencii.Gui.Point(143, 12);
             this.txtVibratoLength.Name = "txtVibratoLength";
-            this.txtVibratoLength.Size = new cadencii.java.awt.Dimension(61, 19);
+            this.txtVibratoLength.Size = new Cadencii.Gui.Dimension(61, 19);
             this.txtVibratoLength.TabIndex = 2;
             this.txtVibratoLength.Type = cadencii.NumberTextBoxValueType.Integer;
             // 

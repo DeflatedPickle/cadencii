@@ -21,7 +21,7 @@ using System.IO;
 using System.Collections.Generic;
 using Microsoft.CSharp;
 using cadencii.apputil;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.java.io;
 using cadencii.java.util;
 using cadencii.media;
@@ -29,8 +29,8 @@ using cadencii.vsq;
 using cadencii.xml;
 using cadencii.utau;
 using ApplicationGlobal = cadencii.core.ApplicationGlobal;
-using Keys = cadencii.java.awt.Keys;
-using DialogResult = cadencii.java.awt.DialogResult;
+using Keys = Cadencii.Gui.Keys;
+using DialogResult = Cadencii.Gui.DialogResult;
 
 namespace cadencii
 {

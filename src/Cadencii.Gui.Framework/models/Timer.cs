@@ -1,6 +1,6 @@
 using System;
 
-namespace cadencii
+namespace Cadencii.Gui
 {
 	public abstract class Timer
 	{

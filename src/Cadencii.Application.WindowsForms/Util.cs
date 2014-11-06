@@ -42,26 +42,26 @@ namespace cadencii.apputil
         /// </summary>
         /// <param name="font"></param>
         /// <returns></returns>
-        public static int getStringDrawOffset(java.awt.Font font)
+        public static int getStringDrawOffset(Cadencii.Gui.Font font)
         {
             int ret = 0;
-            java.awt.Dimension size = measureString(PANGRAM, font);
+            Cadencii.Gui.Dimension size = measureString(PANGRAM, font);
             if (size.Height <= 0) {
                 return 0;
             }
-            java.awt.Image b = null;
-            java.awt.Graphics g = null;
+            Cadencii.Gui.Image b = null;
+            Cadencii.Gui.Graphics g = null;
             BitmapEx b2 = null;
             try {
                 int string_desty = size.Height * 2; // 文字列が書き込まれるy座標
                 int w = size.Width * 4;
                 int h = size.Height * 4;
-                b = new java.awt.Image(w, h);
-                g = new java.awt.Graphics(b);
-                g.setColor(java.awt.Colors.White);
+                b = new Cadencii.Gui.Image(w, h);
+                g = new Cadencii.Gui.Graphics(b);
+                g.setColor(Cadencii.Gui.Colors.White);
                 g.fillRect(0, 0, w, h);
                 g.setFont(font);
-                g.setColor(cadencii.java.awt.Colors.Black);
+                g.setColor(Cadencii.Gui.Colors.Black);
                 g.drawString(PANGRAM, size.Width, string_desty);
 
                 b2 = ApplicationUIHost.Create<BitmapEx> (b);
@@ -71,7 +71,7 @@ namespace cadencii.apputil
                 for (int y = 0; y < h; y++) {
                     for (int x = 0; x < w; x++) {
 						var p = b2.GetPixel(x, y);
-                        java.awt.Color c = new cadencii.java.awt.Color(p.R, p.G, p.B, p.A);
+                        Cadencii.Gui.Color c = new Cadencii.Gui.Color(p.R, p.G, p.B, p.A);
                         if (c.R != 255 || c.G != 255 || c.B != 255) {
                             found = true;
                             firsty = y;
@@ -89,7 +89,7 @@ namespace cadencii.apputil
                 for (int y = h - 1; y >= 0; y--) {
                     for (int x = 0; x < w; x++) {
 						var p = b2.GetPixel(x, y);
-                        java.awt.Color c = new cadencii.java.awt.Color(p.R, p.G, p.B, p.A);
+                        Cadencii.Gui.Color c = new Cadencii.Gui.Color(p.R, p.G, p.B, p.A);
                         if (c.R != 255 || c.G != 255 || c.B != 255) {
                             found = true;
                             endy = y;
@@ -125,21 +125,21 @@ namespace cadencii.apputil
         /// <param name="text"></param>
         /// <param name="font"></param>
         /// <returns></returns>
-        public static java.awt.Dimension measureString(string text, java.awt.Font font)
+        public static Cadencii.Gui.Dimension measureString(string text, Cadencii.Gui.Font font)
         {
             using (Bitmap dumy = new Bitmap(1, 1))
             using (Graphics g = Graphics.FromImage(dumy)) {
 				SizeF tmp = g.MeasureString(text, (System.Drawing.Font) font.NativeFont);
-                return new java.awt.Dimension((int)tmp.Width, (int)tmp.Height);
+                return new Cadencii.Gui.Dimension((int)tmp.Width, (int)tmp.Height);
             }
         }
 
-        public static java.awt.Dimension measureString(string text, Font font)
+        public static Cadencii.Gui.Dimension measureString(string text, Font font)
         {
             using (Bitmap dumy = new Bitmap(1, 1))
             using (Graphics g = Graphics.FromImage(dumy)) {
                 SizeF tmp = g.MeasureString(text, font);
-                return new java.awt.Dimension((int)tmp.Width, (int)tmp.Height);
+                return new Cadencii.Gui.Dimension((int)tmp.Width, (int)tmp.Height);
             }
         }
 
@@ -148,7 +148,7 @@ namespace cadencii.apputil
         /// </summary>
         /// <param name="c"></param>
         /// <param name="font"></param>
-        public static void applyFontRecurse(UiControl c, cadencii.java.awt.Font font)
+        public static void applyFontRecurse(UiControl c, Cadencii.Gui.Font font)
         {
 			applyFontRecurseW ((Control)c, font);
         }
@@ -158,7 +158,7 @@ namespace cadencii.apputil
 		/// </summary>
 		/// <param name="c"></param>
 		/// <param name="font"></param>
-		public static void applyFontRecurseW(Control c, cadencii.java.awt.Font font)
+		public static void applyFontRecurseW(Control c, Cadencii.Gui.Font font)
 		{
 			if (!Utility.isApplyFontRecurseEnabled) {
 				return;

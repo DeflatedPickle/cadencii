@@ -6,7 +6,7 @@ namespace cadencii
 	{
 		MouseTracer mMouseTracer { get; set; }
 
-		cadencii.java.awt.Dimension getMinimumSize ();
+		Cadencii.Gui.Dimension getMinimumSize ();
 
 		void setMainForm (UiFormMain formMain);
 	}

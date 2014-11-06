@@ -12,7 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System.Collections.Generic;
-using cadencii.java.awt;
+using Cadencii.Gui;
 
 
 namespace cadencii
@@ -116,7 +116,7 @@ namespace cadencii
 
 		int calculateStartToDrawX ();
 
-		bool isMouseMiddleButtonDowned (cadencii.java.awt.MouseButtons mouseButtons);
+		bool isMouseMiddleButtonDowned (Cadencii.Gui.MouseButtons mouseButtons);
 
 		UiContextMenuStrip MenuTrackTab { get; set; }
 		UiContextMenuStrip MenuTrackSelector { get; set; }

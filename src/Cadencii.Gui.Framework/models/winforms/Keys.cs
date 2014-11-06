@@ -1,6 +1,6 @@
 using System;
 
-namespace cadencii.java.awt {
+namespace Cadencii.Gui {
 	[Flags]
 	public enum Keys {
 		None		= 0x00000000,

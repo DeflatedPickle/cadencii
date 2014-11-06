@@ -14,14 +14,14 @@
 using System;
 using System.Windows.Forms;
 using cadencii.apputil;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.java.io;
 using cadencii.java.util;
 using cadencii.media;
 using cadencii.vsq;
 using cadencii.windows.forms;
 using cadencii.core;
-using Keys = cadencii.java.awt.Keys;
+using Keys = Cadencii.Gui.Keys;
 
 
 

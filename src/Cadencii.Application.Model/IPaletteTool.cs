@@ -15,7 +15,7 @@ using System;
 using System.Collections.Generic;
 
 using cadencii.vsq;
-using cadencii.java.awt;
+using Cadencii.Gui;
 
 
 

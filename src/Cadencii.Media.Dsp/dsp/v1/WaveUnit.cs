@@ -12,8 +12,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using cadencii.java.awt;
-using PortUtil = cadencii.java.awt.Colors;
+using Cadencii.Gui;
+using PortUtil = Cadencii.Gui.Colors;
 
 namespace cadencii
 {
@@ -135,7 +135,7 @@ namespace cadencii
             }
 
             // 枠と背景を描画
-			paintBackground(graphics, mStroke, x, y, width, height, cadencii.java.awt.Colors.Black, cadencii.java.awt.Colors.Pink);
+			paintBackground(graphics, mStroke, x, y, width, height, Cadencii.Gui.Colors.Black, Cadencii.Gui.Colors.Pink);
 
             // デバイス名を書く
             string typename = this.GetType().Name;

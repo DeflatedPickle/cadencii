@@ -14,7 +14,7 @@
 using System;
 using System.Xml.Serialization;
 //using cadencii.windows.forms;
- using cadencii.java.awt;
+ using Cadencii.Gui;
 
 namespace cadencii
 {

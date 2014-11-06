@@ -12,10 +12,10 @@ namespace cadencii
 
 		#region implemented abstract members of Dialogs
 
-		public override cadencii.java.awt.DialogResult ShowMessageBox (string text, string caption, int optionType, int messageType)
+		public override Cadencii.Gui.DialogResult ShowMessageBox (string text, string caption, int optionType, int messageType)
 		{
 			BeforeShowDialog ();
-			var ret = (cadencii.java.awt.DialogResult) cadencii.windows.forms.Utility.showMessageBox (text, caption, optionType, messageType);
+			var ret = (Cadencii.Gui.DialogResult) cadencii.windows.forms.Utility.showMessageBox (text, caption, optionType, messageType);
 			AfterShowDialog ();
 			return ret;
 		}
@@ -90,19 +90,19 @@ namespace cadencii
 			}
 			mShowingDialog = false;
 		}
-		public override cadencii.java.awt.DialogResult ShowModalFileDialog (UiFileDialog fileDialog, bool openMode, UiForm mainForm)
+		public override Cadencii.Gui.DialogResult ShowModalFileDialog (UiFileDialog fileDialog, bool openMode, UiForm mainForm)
 		{
 			BeforeShowDialog ();
 			var ret = ((FileDialog) fileDialog.Native).ShowDialog ((Form) mainForm);
 			AfterShowDialog ();
-			return (cadencii.java.awt.DialogResult) ret;
+			return (Cadencii.Gui.DialogResult) ret;
 		}
-		public override cadencii.java.awt.DialogResult ShowModalFolderDialog (UiFolderBrowserDialog folderBrowserDialog, UiForm mainForm)
+		public override Cadencii.Gui.DialogResult ShowModalFolderDialog (UiFolderBrowserDialog folderBrowserDialog, UiForm mainForm)
 		{
 			BeforeShowDialog ();
 			var ret = ((FolderBrowserDialog) folderBrowserDialog.Native).ShowDialog ((Form) mainForm);
 			AfterShowDialog ();
-			return (cadencii.java.awt.DialogResult) ret;
+			return (Cadencii.Gui.DialogResult) ret;
 		}
 		public override int ShowModalDialog (UiForm dialog, object parentForm)
 		{
@@ -111,12 +111,12 @@ namespace cadencii
 			AfterShowDialog ();
 			return ret;
 		}
-		public override cadencii.java.awt.DialogResult ShowModalDialog (object dialog, object parentForm)
+		public override Cadencii.Gui.DialogResult ShowModalDialog (object dialog, object parentForm)
 		{
 			BeforeShowDialog ();
 			var ret = ((Form) dialog).ShowDialog ((Form) parentForm);
 			AfterShowDialog ();
-			return (cadencii.java.awt.DialogResult)ret;
+			return (Cadencii.Gui.DialogResult)ret;
 		}
 		public override bool IsShowingDialog {
 			get { return mShowingDialog; }

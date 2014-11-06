@@ -27,6 +27,6 @@
 
 // COMPLETE
 
-namespace cadencii.java.awt {
+namespace Cadencii.Gui {
 	public delegate void MouseEventHandler (object sender, MouseEventArgs e);
 }

@@ -14,7 +14,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using cadencii.java.awt;
+using Cadencii.Gui;
 
 namespace cadencii
 {
@@ -62,7 +62,7 @@ namespace cadencii
         /// <param name="config">エディタの設定情報</param>
         public void updateRendererAvailability(EditorConfig config)
         {
-			cadencii.java.awt.Image icon = null;
+			Cadencii.Gui.Image icon = null;
             if (!VSTiDllManager.isRendererAvailable(kind_)) {
 				icon = slash_icon;
             }

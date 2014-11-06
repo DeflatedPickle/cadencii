@@ -1,6 +1,6 @@
 using System;
 using cadencii.vsq;
-using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
+using NMouseEventHandler = Cadencii.Gui.MouseEventHandler;
 
 namespace cadencii
 {
@@ -8,7 +8,7 @@ namespace cadencii
 	{
 		string Text { get; set; }
 
-		cadencii.java.awt.Image Image { get; set; }
+		Cadencii.Gui.Image Image { get; set; }
 
 		IconDynamicsHandle getHandle ();
 
@@ -16,7 +16,7 @@ namespace cadencii
 
 		void BringToFront ();
 
-		void DoDragDrop (IconDynamicsHandle handle, cadencii.java.awt.DragDropEffects all);
+		void DoDragDrop (IconDynamicsHandle handle, Cadencii.Gui.DragDropEffects all);
 	}
 }
 

@@ -1,6 +1,7 @@
 using System;
+using cadencii;
 
-namespace cadencii.java.awt
+namespace Cadencii.Gui
 {
 	public class Screen
 	{

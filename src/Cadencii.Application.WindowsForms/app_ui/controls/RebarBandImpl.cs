@@ -37,7 +37,7 @@ namespace cadencii.windows.forms
     {
 		#region RebarBand implementation
 
-		void RebarBand.Show (UiControl control, cadencii.java.awt.Rectangle chevronRect)
+		void RebarBand.Show (UiControl control, Cadencii.Gui.Rectangle chevronRect)
 		{
 			Show ((Control)control.Native, chevronRect.ToWF ());
 		}
@@ -45,34 +45,34 @@ namespace cadencii.windows.forms
 		{
 			OnResize (e);
 		}
-		void RebarBand.OnMouseDown (cadencii.java.awt.MouseEventArgs e)
+		void RebarBand.OnMouseDown (Cadencii.Gui.MouseEventArgs e)
 		{
 			OnMouseDown (e.ToWF ());
 		}
-		void RebarBand.OnMouseMove (cadencii.java.awt.MouseEventArgs e)
+		void RebarBand.OnMouseMove (Cadencii.Gui.MouseEventArgs e)
 		{
 			OnMouseMove (e.ToWF ());
 		}
-		void RebarBand.OnMouseUp (cadencii.java.awt.MouseEventArgs e)
+		void RebarBand.OnMouseUp (Cadencii.Gui.MouseEventArgs e)
 		{
 			OnMouseUp (e.ToWF ());
 	}
-		void RebarBand.OnMouseWheel (cadencii.java.awt.MouseEventArgs e)
+		void RebarBand.OnMouseWheel (Cadencii.Gui.MouseEventArgs e)
 		{
 			OnMouseWheel (e.ToWF ());
 		}
-		cadencii.java.awt.Point RebarBand.Location {
+		Cadencii.Gui.Point RebarBand.Location {
 			get { return Location.ToAwt (); }
 		}
 		UiControl RebarBand.Child {
 			get { return (UiControl)Child; }
 			set { Child = (Control)value.Native; }
 		}
-		cadencii.java.awt.Image RebarBand.BackgroundImage {
+		Cadencii.Gui.Image RebarBand.BackgroundImage {
 			get { return BackgroundImage.ToAwt (); }
 			set { BackgroundImage = (Bitmap) value.ToWF (); }
 		}
-		cadencii.java.awt.Rectangle RebarBand.Bounds {
+		Cadencii.Gui.Rectangle RebarBand.Bounds {
 			get { return Bounds.ToAwt (); }
 		}
 		#endregion

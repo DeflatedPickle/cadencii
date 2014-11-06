@@ -14,11 +14,11 @@
 using System;
 using System.Windows.Forms;
 using cadencii.apputil;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.windows.forms;
 
-using AnchorStyles = cadencii.java.awt.AnchorStyles;
-using HorizontalAlignment = cadencii.java.awt.HorizontalAlignment;
+using AnchorStyles = Cadencii.Gui.AnchorStyles;
+using HorizontalAlignment = Cadencii.Gui.HorizontalAlignment;
 
 namespace cadencii
 {
@@ -411,7 +411,7 @@ namespace cadencii
             this.listTrack.Size = new Dimension(324, 216);
             this.listTrack.TabIndex = 6;
             this.listTrack.UseCompatibleStateImageBehavior = false;
-            this.listTrack.View = cadencii.java.awt.View.Details;
+            this.listTrack.View = Cadencii.Gui.View.Details;
             // 
             // btnCheckAll
             // 
@@ -570,13 +570,13 @@ namespace cadencii
             // txtOffset
             // 
             this.txtOffset.BackColor = new Color(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.txtOffset.ForeColor = cadencii.java.awt.Colors.Black;
+            this.txtOffset.ForeColor = Cadencii.Gui.Colors.Black;
             this.txtOffset.Location = new Point(81, 42);
             this.txtOffset.Name = "txtOffset";
             this.txtOffset.Size = new Dimension(100, 19);
             this.txtOffset.TabIndex = 3;
             this.txtOffset.Text = "0";
-            this.txtOffset.TextAlign = cadencii.java.awt.HorizontalAlignment.Right;
+            this.txtOffset.TextAlign = Cadencii.Gui.HorizontalAlignment.Right;
             this.txtOffset.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // lblOffset

@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using Cadencii.Gui;
 
 namespace cadencii
 {

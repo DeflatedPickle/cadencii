@@ -14,7 +14,7 @@
 using System;
 using System.IO;
 using System.Text;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.java.util;
 
 namespace cadencii.core2

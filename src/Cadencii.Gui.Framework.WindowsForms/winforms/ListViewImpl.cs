@@ -1,18 +1,18 @@
 using System;
 using System.Linq;
-using cadencii.java.awt;
-using Keys = cadencii.java.awt.Keys;
+using Cadencii.Gui;
+using Keys = Cadencii.Gui.Keys;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
 using MouseButtons = System.Windows.Forms.MouseButtons;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
-using NKeyEventArgs = cadencii.java.awt.KeyEventArgs;
-using NKeyPressEventArgs = cadencii.java.awt.KeyPressEventArgs;
-using NKeyEventHandler = cadencii.java.awt.KeyEventHandler;
-using NMouseButtons = cadencii.java.awt.MouseButtons;
-using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
-using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
+using NKeyEventArgs = Cadencii.Gui.KeyEventArgs;
+using NKeyPressEventArgs = Cadencii.Gui.KeyPressEventArgs;
+using NKeyEventHandler = Cadencii.Gui.KeyEventHandler;
+using NMouseButtons = Cadencii.Gui.MouseButtons;
+using NMouseEventArgs = Cadencii.Gui.MouseEventArgs;
+using NMouseEventHandler = Cadencii.Gui.MouseEventHandler;
 using System.Collections.Generic;
 
 namespace cadencii
@@ -51,8 +51,8 @@ namespace cadencii
 		{
 			Groups.AddRange (groups.Select (g => (System.Windows.Forms.ListViewGroup) g.Native).ToArray ());
 		}
-		cadencii.java.awt.View UiListView.View {
-			get { return (cadencii.java.awt.View) View; }
+		Cadencii.Gui.View UiListView.View {
+			get { return (Cadencii.Gui.View) View; }
 			set { View = (System.Windows.Forms.View) value; } 
 		}
 

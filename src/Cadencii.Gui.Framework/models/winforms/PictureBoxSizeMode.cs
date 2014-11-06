@@ -1,4 +1,4 @@
-namespace cadencii.java.awt {
+namespace Cadencii.Gui {
 	public enum PictureBoxSizeMode {
 		Normal = 0,
 		StretchImage = 1,

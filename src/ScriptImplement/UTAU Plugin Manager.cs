@@ -226,7 +226,7 @@ class UtauPluginManager : Form
                                                "UTAU Plugin Manager",
                                                cadencii.Dialog.MSGBOX_OK_CANCEL_OPTION,
                                                cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
-				if (dr != cadencii.java.awt.DialogResult.Yes) {
+				if (dr != Cadencii.Gui.DialogResult.Yes) {
                     return;
                 }
 
@@ -334,7 +334,7 @@ class UtauPluginManager : Form
                                        "UTAU Plugin Manager",
                                        cadencii.Dialog.MSGBOX_YES_NO_OPTION,
                                        cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
-		if (dr != cadencii.java.awt.DialogResult.Yes) {
+		if (dr != Cadencii.Gui.DialogResult.Yes) {
             return;
         }
 

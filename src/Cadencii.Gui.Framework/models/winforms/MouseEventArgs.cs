@@ -29,7 +29,7 @@
 using System.Runtime.InteropServices;
 using System;
 
-namespace cadencii.java.awt {
+namespace Cadencii.Gui {
 	public class MouseEventArgs : EventArgs {
 		private MouseButtons	buttons;
 		private int		clicks;

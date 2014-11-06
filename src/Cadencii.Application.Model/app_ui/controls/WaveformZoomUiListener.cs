@@ -14,7 +14,7 @@
 namespace cadencii
 {
     using System;
-    using cadencii.java.awt;
+    using Cadencii.Gui;
 
     public interface WaveformZoomUiListener
     {

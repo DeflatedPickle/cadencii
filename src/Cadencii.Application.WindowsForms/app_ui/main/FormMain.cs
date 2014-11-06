@@ -24,7 +24,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.ComponentModel;
 using cadencii.apputil;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.java.io;
 using cadencii.java.util;
 using cadencii.javax.sound.midi;
@@ -36,17 +36,17 @@ using cadencii.xml;
 using cadencii.utau;
 using cadencii.ui;
 using ApplicationGlobal = cadencii.core.ApplicationGlobal;
-using Keys = cadencii.java.awt.Keys;
+using Keys = Cadencii.Gui.Keys;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
 using MouseButtons = System.Windows.Forms.MouseButtons;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
-using NMouseButtons = cadencii.java.awt.MouseButtons;
-using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
-using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
-using NKeyEventArgs = cadencii.java.awt.KeyEventArgs;
-using NKeyEventHandler = cadencii.java.awt.KeyEventHandler;
+using NMouseButtons = Cadencii.Gui.MouseButtons;
+using NMouseEventArgs = Cadencii.Gui.MouseEventArgs;
+using NMouseEventHandler = Cadencii.Gui.MouseEventHandler;
+using NKeyEventArgs = Cadencii.Gui.KeyEventArgs;
+using NKeyEventHandler = Cadencii.Gui.KeyEventHandler;
 using PaintEventArgs = cadencii.PaintEventArgs;
 
 namespace cadencii
@@ -328,7 +328,7 @@ namespace cadencii
         public MidiInDevice m_midi_in_mtc = null;
 #endif
 		public FormMidiImExport mDialogMidiImportAndExport { get; set; }
-        public SortedDictionary<EditTool, java.awt.Cursor> mCursor = new SortedDictionary<EditTool, java.awt.Cursor>();
+        public SortedDictionary<EditTool, Cadencii.Gui.Cursor> mCursor = new SortedDictionary<EditTool, Cadencii.Gui.Cursor>();
 		public Preference mDialogPreference { get; set; }
 #if ENABLE_PROPERTY
         public PropertyPanelContainer mPropertyPanelContainer;
@@ -367,7 +367,7 @@ namespace cadencii
 		public UiOpenFileDialog openMidiDialog { get; set; }
 		public UiSaveFileDialog saveMidiDialog { get; set; }
 		public UiOpenFileDialog openWaveDialog { get; set; }
-		public Timer timer { get; set; }
+		public Cadencii.Gui.Timer timer { get; set; }
         public System.ComponentModel.BackgroundWorker bgWorkScreen;
         /// <summary>
         /// アイコンパレットのドラッグ＆ドロップ処理中，一度でもpictPianoRoll内にマウスが入ったかどうか
@@ -459,11 +459,11 @@ namespace cadencii
 #if DEBUG
             CDebug.WriteLine("FormMain..ctor()");
 #endif
-			cadencii.core.EditorConfig.baseFont10Bold = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE10);
-			cadencii.core.EditorConfig.baseFont8 = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8);
-			cadencii.core.EditorConfig.baseFont10 = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE10);
-			cadencii.core.EditorConfig.baseFont9 = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9);
-			cadencii.core.EditorConfig.baseFont50Bold = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE50);
+			cadencii.core.EditorConfig.baseFont10Bold = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE10);
+			cadencii.core.EditorConfig.baseFont8 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8);
+			cadencii.core.EditorConfig.baseFont10 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE10);
+			cadencii.core.EditorConfig.baseFont9 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9);
+			cadencii.core.EditorConfig.baseFont50Bold = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE50);
 
             s_modifier_key = Keys.Control;
             VsqFileEx tvsq =
@@ -486,21 +486,21 @@ namespace cadencii
             panelWaveformZoom = (WaveformZoomUiImpl)(new WaveformZoomController(this, waveView)).getUi();
 
             InitializeComponent();
-			timer = ApplicationUIHost.Create<Timer> (this.components);
+			timer = ApplicationUIHost.Create<Cadencii.Gui.Timer> (this.components);
 
             panelOverview.setMainForm(this);
             pictPianoRoll.setMainForm(this);
             bgWorkScreen = new System.ComponentModel.BackgroundWorker();
 
 			this.panelWaveformZoom.AddControl (this.waveView);
-			this.waveView.Anchor = ((cadencii.java.awt.AnchorStyles)((((cadencii.java.awt.AnchorStyles.Top | cadencii.java.awt.AnchorStyles.Bottom)
-				| cadencii.java.awt.AnchorStyles.Left)
-                        | cadencii.java.awt.AnchorStyles.Right)));
-            this.waveView.BackColor = new cadencii.java.awt.Color(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
-            this.waveView.Location = new cadencii.java.awt.Point(66, 0);
-            this.waveView.Margin = new cadencii.java.awt.Padding(0);
+			this.waveView.Anchor = ((Cadencii.Gui.AnchorStyles)((((Cadencii.Gui.AnchorStyles.Top | Cadencii.Gui.AnchorStyles.Bottom)
+				| Cadencii.Gui.AnchorStyles.Left)
+                        | Cadencii.Gui.AnchorStyles.Right)));
+            this.waveView.BackColor = new Cadencii.Gui.Color(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+            this.waveView.Location = new Cadencii.Gui.Point(66, 0);
+            this.waveView.Margin = new Cadencii.Gui.Padding(0);
             this.waveView.Name = "waveView";
-            this.waveView.Size = new cadencii.java.awt.Dimension(355, 59);
+            this.waveView.Size = new Cadencii.Gui.Dimension(355, 59);
             this.waveView.TabIndex = 17;
 			openXmlVsqDialog = new OpenFileDialogImpl();
             openXmlVsqDialog.Filter = string.Join("|", new[] { "VSQ Format(*.vsq)|*.vsq", "XML-VSQ Format(*.xvsq)|*.xvsq" });
@@ -535,22 +535,22 @@ namespace cadencii
             trackSelector.setCurveVisible(true);
             trackSelector.setSelectedCurve(CurveType.VEL);
             trackSelector.setLocation(new Point(0, 242));
-            trackSelector.Margin = new cadencii.java.awt.Padding(0);
+            trackSelector.Margin = new Cadencii.Gui.Padding(0);
             trackSelector.Name = "trackSelector";
             trackSelector.setSize(446, 250);
             trackSelector.TabIndex = 0;
-            trackSelector.MouseClick += new cadencii.java.awt.MouseEventHandler(trackSelector_MouseClick);
-			trackSelector.MouseUp += new cadencii.java.awt.MouseEventHandler(trackSelector_MouseUp);
-			trackSelector.MouseDown += new cadencii.java.awt.MouseEventHandler(trackSelector_MouseDown);
-			trackSelector.MouseMove += new cadencii.java.awt.MouseEventHandler(trackSelector_MouseMove);
-            trackSelector.KeyDown += new cadencii.java.awt.KeyEventHandler(handleSpaceKeyDown);
-			trackSelector.KeyUp += new cadencii.java.awt.KeyEventHandler(handleSpaceKeyUp);
-            trackSelector.PreviewKeyDown += new cadencii.java.awt.KeyEventHandler(trackSelector_PreviewKeyDown);
+            trackSelector.MouseClick += new Cadencii.Gui.MouseEventHandler(trackSelector_MouseClick);
+			trackSelector.MouseUp += new Cadencii.Gui.MouseEventHandler(trackSelector_MouseUp);
+			trackSelector.MouseDown += new Cadencii.Gui.MouseEventHandler(trackSelector_MouseDown);
+			trackSelector.MouseMove += new Cadencii.Gui.MouseEventHandler(trackSelector_MouseMove);
+            trackSelector.KeyDown += new Cadencii.Gui.KeyEventHandler(handleSpaceKeyDown);
+			trackSelector.KeyUp += new Cadencii.Gui.KeyEventHandler(handleSpaceKeyUp);
+            trackSelector.PreviewKeyDown += new Cadencii.Gui.KeyEventHandler(trackSelector_PreviewKeyDown);
             trackSelector.SelectedTrackChanged += new SelectedTrackChangedEventHandler(trackSelector_SelectedTrackChanged);
             trackSelector.SelectedCurveChanged += new SelectedCurveChangedEventHandler(trackSelector_SelectedCurveChanged);
             trackSelector.RenderRequired += new RenderRequiredEventHandler(trackSelector_RenderRequired);
             trackSelector.PreferredMinHeightChanged += new EventHandler(trackSelector_PreferredMinHeightChanged);
-			trackSelector.MouseDoubleClick += new cadencii.java.awt.MouseEventHandler(trackSelector_MouseDoubleClick);
+			trackSelector.MouseDoubleClick += new Cadencii.Gui.MouseEventHandler(trackSelector_MouseDoubleClick);
 
             splitContainer1.Panel2MinSize = trackSelector.getPreferredMinSize();
             var minimum_size = getWindowMinimumSize();
@@ -565,26 +565,26 @@ namespace cadencii
             updatePaletteTool();
 #endif
 
-            splitContainer1.Panel1.BorderStyle = cadencii.java.awt.BorderStyle.None;
-            splitContainer1.Panel2.BorderStyle = cadencii.java.awt.BorderStyle.None;
-            splitContainer1.BackColor = new cadencii.java.awt.Color(212, 212, 212);
+            splitContainer1.Panel1.BorderStyle = Cadencii.Gui.BorderStyle.None;
+            splitContainer1.Panel2.BorderStyle = Cadencii.Gui.BorderStyle.None;
+            splitContainer1.BackColor = new Cadencii.Gui.Color(212, 212, 212);
             splitContainer2.Panel1.AddControl(panel1);
-            panel1.Dock = cadencii.java.awt.DockStyle.Fill;
+            panel1.Dock = Cadencii.Gui.DockStyle.Fill;
             splitContainer2.Panel2.AddControl(panelWaveformZoom);
             //splitContainer2.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            splitContainer2.Panel2.BorderColor = new cadencii.java.awt.Color(112, 112, 112);
+            splitContainer2.Panel2.BorderColor = new Cadencii.Gui.Color(112, 112, 112);
             splitContainer1.Panel1.AddControl(splitContainer2);
-            panelWaveformZoom.Dock = cadencii.java.awt.DockStyle.Fill;
-			splitContainer2.Dock = cadencii.java.awt.DockStyle.Fill;
+            panelWaveformZoom.Dock = Cadencii.Gui.DockStyle.Fill;
+			splitContainer2.Dock = Cadencii.Gui.DockStyle.Fill;
             splitContainer1.Panel2.AddControl(trackSelector);
-            trackSelector.Dock = cadencii.java.awt.DockStyle.Fill;
-			splitContainer1.Dock = cadencii.java.awt.DockStyle.Fill;
+            trackSelector.Dock = Cadencii.Gui.DockStyle.Fill;
+			splitContainer1.Dock = Cadencii.Gui.DockStyle.Fill;
             splitContainer1.Panel2MinSize = trackSelector.getPreferredMinSize();
-            splitContainerProperty.FixedPanel = cadencii.java.awt.FixedPanel.Panel1;
+            splitContainerProperty.FixedPanel = Cadencii.Gui.FixedPanel.Panel1;
 
 #if ENABLE_PROPERTY
             splitContainerProperty.Panel1.AddControl(mPropertyPanelContainer);
-            mPropertyPanelContainer.Dock = cadencii.java.awt.DockStyle.Fill;
+            mPropertyPanelContainer.Dock = Cadencii.Gui.DockStyle.Fill;
 #else
             splitContainerProperty.setDividerLocation( 0 );
             splitContainerProperty.setEnabled( false );
@@ -592,7 +592,7 @@ namespace cadencii
 #endif
 
             splitContainerProperty.Panel2.AddControl(splitContainer1);
-            splitContainerProperty.Dock = cadencii.java.awt.DockStyle.Fill;
+            splitContainerProperty.Dock = Cadencii.Gui.DockStyle.Fill;
 
             // コントロールの位置・サイズを調節
             splitContainer2.Panel1.SuspendLayout();
@@ -605,7 +605,7 @@ namespace cadencii
             picturePositionIndicator.Top = 0;
             picturePositionIndicator.Width = panel1.Width;
             // pictPianoRoll
-            pictPianoRoll.Bounds = new cadencii.java.awt.Rectangle(0, picturePositionIndicator.Height, panel1.Width - vScroll.Width, panel1.Height - picturePositionIndicator.Height - hScroll.Height);
+            pictPianoRoll.Bounds = new Cadencii.Gui.Rectangle(0, picturePositionIndicator.Height, panel1.Width - vScroll.Width, panel1.Height - picturePositionIndicator.Height - hScroll.Height);
             // vScroll
             vScroll.Left = pictPianoRoll.Width;
             vScroll.Top = picturePositionIndicator.Height;
@@ -651,11 +651,11 @@ namespace cadencii
             // inputTextBoxの初期化
             EditorManager.InputTextBox = new LyricTextBoxImpl();
             EditorManager.InputTextBox.Visible = false;
-            EditorManager.InputTextBox.BorderStyle = cadencii.java.awt.BorderStyle.None;
+            EditorManager.InputTextBox.BorderStyle = Cadencii.Gui.BorderStyle.None;
             EditorManager.InputTextBox.Width = 80;
             EditorManager.InputTextBox.AcceptsReturn = true;
             EditorManager.InputTextBox.BackColor = Colors.White;
-			EditorManager.InputTextBox.Font = new cadencii.java.awt.Font (new System.Drawing.Font (EditorManager.editorConfig.BaseFontName, cadencii.core.EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular));
+			EditorManager.InputTextBox.Font = new Cadencii.Gui.Font (new System.Drawing.Font (EditorManager.editorConfig.BaseFontName, cadencii.core.EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular));
             EditorManager.InputTextBox.Enabled = false;
             EditorManager.InputTextBox.KeyPress += mInputTextBox_KeyPress;
             EditorManager.InputTextBox.Parent = pictPianoRoll;
@@ -2166,7 +2166,7 @@ namespace cadencii
             int x_vibin_end = EditorManager.xCoordFromClocks(cl_vibin_end);
             Point ul = new Point(x_vibin_end, y0 - boxheight / 2 - px_shift);
             Point dl = new Point(x_vibin_end, y0 + boxheight / 2 - px_shift);
-            g.setColor(cadencii.java.awt.Colors.Black);
+            g.setColor(Cadencii.Gui.Colors.Black);
             g.drawPolyline(new int[] { x0, ul.X, dl.X },
                             new int[] { y0, ul.Y, dl.Y },
                             3);
@@ -2234,7 +2234,7 @@ namespace cadencii
                     listy[i] = (int)(y0 + buf2[i]);
                 }
                 if (listx.Length >= 2) {
-                    g.setColor(cadencii.java.awt.Colors.Red);
+                    g.setColor(Cadencii.Gui.Colors.Red);
                     g.drawPolyline(listx, listy, listx.Length);
                 }
                 //g.SmoothingMode = old;
@@ -2268,7 +2268,7 @@ namespace cadencii
 
                 // toolStripPaletteTools
                 UiToolBarButton tsb = new ToolBarButtonImpl();
-                tsb.Style = cadencii.java.awt.ToolBarButtonStyle.ToggleButton;
+                tsb.Style = Cadencii.Gui.ToolBarButtonStyle.ToggleButton;
                 if (icon != null) {
                     imageListTool.Images.Add(icon);
                     tsb.ImageIndex = imageListTool.Images.Count - 1;
@@ -2278,7 +2278,7 @@ namespace cadencii
                 tsb.Tag = id;
                 if (first) {
                     UiToolBarButton sep = new ToolBarButtonImpl();
-                    sep.Style = cadencii.java.awt.ToolBarButtonStyle.Separator;
+                    sep.Style = Cadencii.Gui.ToolBarButtonStyle.Separator;
                     toolBarTool.Buttons.Add(sep);
                     first = false;
                 }
@@ -3806,7 +3806,7 @@ namespace cadencii
                 Object tsi = toolBarTool.Buttons[i];// toolStripTool.getComponentAtIndex( i );
                 if (tsi is UiToolBarButton) {
                     UiToolBarButton tsb = (UiToolBarButton)tsi;
-                    if (tsb.Style == cadencii.java.awt.ToolBarButtonStyle.ToggleButton && tsb.Tag != null && tsb.Tag is string) {
+                    if (tsb.Style == Cadencii.Gui.ToolBarButtonStyle.ToggleButton && tsb.Tag != null && tsb.Tag is string) {
                         string id = (string)tsb.Tag;
                         if (PaletteToolServer.loadedTools.ContainsKey(id)) {
                             IPaletteTool ipt = (IPaletteTool)PaletteToolServer.loadedTools[id];
@@ -3993,7 +3993,7 @@ namespace cadencii
                 if (tsi is UiToolBarButton) {
                     UiToolBarButton tsb = (UiToolBarButton)tsi;
                     Object tag = tsb.Tag;
-                    if (tsb.Style == cadencii.java.awt.ToolBarButtonStyle.ToggleButton && tag != null && tag is string) {
+                    if (tsb.Style == Cadencii.Gui.ToolBarButtonStyle.ToggleButton && tag != null && tag is string) {
 #if ENABLE_SCRIPT
                         if (tool == EditTool.PALETTE_TOOL) {
                             string id = (string)tag;
@@ -4075,7 +4075,7 @@ namespace cadencii
                 float scalex = controller.getScaleX();
                 Font SMALL_FONT = null;
                 try {
-                    SMALL_FONT = new Font(EditorManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8);
+                    SMALL_FONT = new Font(EditorManager.editorConfig.ScreenFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8);
                     int track_height = (int)(100 * controller.getScaleY());
                     VsqFileEx vsq = MusicManager.getVsqFile();
                     int track_count = vsq.Track.Count;
@@ -4361,7 +4361,7 @@ namespace cadencii
             EditorManager.InputTextBox.KeyUp += new NKeyEventHandler(mInputTextBox_KeyUp);
             EditorManager.InputTextBox.KeyDown += new NKeyEventHandler(mInputTextBox_KeyDown);
             EditorManager.InputTextBox.ImeModeChanged += mInputTextBox_ImeModeChanged;
-            EditorManager.InputTextBox.ImeMode = mLastIsImeModeOn ? cadencii.java.awt.ImeMode.Hiragana : cadencii.java.awt.ImeMode.Off;
+            EditorManager.InputTextBox.ImeMode = mLastIsImeModeOn ? Cadencii.Gui.ImeMode.Hiragana : Cadencii.Gui.ImeMode.Off;
             if (phonetic_symbol_edit_mode) {
                 EditorManager.InputTextBox.setBufferText(phrase);
                 EditorManager.InputTextBox.setPhoneticSymbolEditMode(true);
@@ -4373,8 +4373,8 @@ namespace cadencii
                 EditorManager.InputTextBox.Text = phrase;
                 EditorManager.InputTextBox.BackColor = Colors.White;
             }
-            EditorManager.InputTextBox.Font = new cadencii.java.awt.Font (new System.Drawing.Font(EditorManager.editorConfig.BaseFontName, cadencii.core.EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular));
-            var p = new cadencii.java.awt.Point(position.X + 4, position.Y + 2);
+            EditorManager.InputTextBox.Font = new Cadencii.Gui.Font (new System.Drawing.Font(EditorManager.editorConfig.BaseFontName, cadencii.core.EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular));
+            var p = new Cadencii.Gui.Point(position.X + 4, position.Y + 2);
             EditorManager.InputTextBox.Location = p;
 
             EditorManager.InputTextBox.Parent = pictPianoRoll;
@@ -4429,11 +4429,11 @@ namespace cadencii
                 Util.applyFontRecurse(mDialogPreference, font);
             }
 
-			cadencii.core.EditorConfig.baseFont10Bold = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE10);
-			cadencii.core.EditorConfig.baseFont8 = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8);
-			cadencii.core.EditorConfig.baseFont10 = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE10);
-			cadencii.core.EditorConfig.baseFont9 = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9);
-			cadencii.core.EditorConfig.baseFont50Bold = new Font(EditorManager.editorConfig.BaseFontName, java.awt.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE50);
+			cadencii.core.EditorConfig.baseFont10Bold = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE10);
+			cadencii.core.EditorConfig.baseFont8 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8);
+			cadencii.core.EditorConfig.baseFont10 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE10);
+			cadencii.core.EditorConfig.baseFont9 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9);
+			cadencii.core.EditorConfig.baseFont50Bold = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE50);
 			EditorConfig.baseFont10OffsetHeight = Util.getStringDrawOffset(cadencii.core.EditorConfig.baseFont10);
 			EditorConfig.baseFont8OffsetHeight = Util.getStringDrawOffset(cadencii.core.EditorConfig.baseFont8);
 			EditorConfig.baseFont9OffsetHeight = Util.getStringDrawOffset(cadencii.core.EditorConfig.baseFont9);
@@ -4444,7 +4444,7 @@ namespace cadencii
 			EditorConfig.baseFont50Height = Util.measureString(Util.PANGRAM, cadencii.core.EditorConfig.baseFont50Bold).Height;
         }
 
-        public void picturePositionIndicatorDrawTo(java.awt.Graphics g1)
+        public void picturePositionIndicatorDrawTo(Cadencii.Gui.Graphics g1)
         {
             Graphics g = (Graphics)g1;
 			Font SMALL_FONT = cadencii.core.EditorConfig.baseFont8;
@@ -4467,7 +4467,7 @@ namespace cadencii
                         g.drawLine(x, 0, x, 49);
                         // 小節の数字
                         //g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                        g.setColor(cadencii.java.awt.Colors.Black);
+                        g.setColor(Cadencii.Gui.Colors.Black);
                         g.setFont(SMALL_FONT);
                         g.drawString(current + "", x + 4, 8 - small_font_offset + 1);
                         //g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
@@ -4507,7 +4507,7 @@ namespace cadencii
                             g.setColor(EditorManager.getHilightColor());
                             g.drawString(s, x + 4, 40 - small_font_offset + 1);
                         } else {
-                            g.setColor(cadencii.java.awt.Colors.Black);
+                            g.setColor(Cadencii.Gui.Colors.Black);
                             g.drawString(s, x + 4, 40 - small_font_offset + 1);
                         }
 
@@ -4540,7 +4540,7 @@ namespace cadencii
                             g.setColor(EditorManager.getHilightColor());
                             g.drawString(s, x + 4, 24 - small_font_offset + 1);
                         } else {
-                            g.setColor(cadencii.java.awt.Colors.Black);
+                            g.setColor(Cadencii.Gui.Colors.Black);
                             g.drawString(s, x + 4, 24 - small_font_offset + 1);
                         }
 
@@ -4565,7 +4565,7 @@ namespace cadencii
                 int marker_x = (int)(EditorManager.getCurrentClock() * controller.getScaleX() + xoffset);
                 if (key_width <= marker_x && marker_x <= width) {
                     g.setStroke(new Stroke(2.0f));
-                    g.setColor(cadencii.java.awt.Colors.White);
+                    g.setColor(Cadencii.Gui.Colors.White);
                     g.drawLine(marker_x, 0, marker_x, height);
                     g.setStroke(new Stroke());
                 }
@@ -4581,7 +4581,7 @@ namespace cadencii
                         right = true;
                     } else {
                         g.drawImage(
-                            new java.awt.Image () { NativeImage = Properties.Resources.start_marker }, x, 3, this);
+                            new Cadencii.Gui.Image () { NativeImage = Properties.Resources.start_marker }, x, 3, this);
                     }
                 }
                 if (vsq.config.EndMarkerEnabled) {
@@ -4592,20 +4592,20 @@ namespace cadencii
                         right = true;
                     } else {
                         g.drawImage(
-                            new java.awt.Image () { NativeImage = Properties.Resources.end_marker }, x, 3, this);
+                            new Cadencii.Gui.Image () { NativeImage = Properties.Resources.end_marker }, x, 3, this);
                     }
                 }
 
                 // 範囲外にスタートマーカーとエンドマーカーがある場合のマーク
                 if (right) {
-                    g.setColor(cadencii.java.awt.Colors.White);
+                    g.setColor(Cadencii.Gui.Colors.White);
                     g.fillPolygon(
                         new int[] { width - 6, width, width - 6 },
                         new int[] { 3, 10, 16 },
                         3);
                 }
                 if (left) {
-                    g.setColor(cadencii.java.awt.Colors.White);
+                    g.setColor(Cadencii.Gui.Colors.White);
                     g.fillPolygon(
                         new int[] { key_width + 7, key_width + 1, key_width + 7 },
                         new int[] { 3, 10, 16 },
@@ -4630,7 +4630,7 @@ namespace cadencii
                 /* TEMPO&BEATとピアノロールの境界 */
                 g.drawLine(EditorManager.keyWidth, 48, width - 18, 48);
                 g.setFont(SMALL_FONT);
-                g.setColor(cadencii.java.awt.Colors.Black);
+                g.setColor(Cadencii.Gui.Colors.Black);
                 g.drawString("TEMPO", 11, 24 - small_font_offset + 1);
                 g.drawString("BEAT", 11, 40 - small_font_offset + 1);
                 #endregion
@@ -5172,10 +5172,10 @@ namespace cadencii
 
         public void mInputTextBox_ImeModeChanged(Object sender, EventArgs e)
         {
-            mLastIsImeModeOn = EditorManager.InputTextBox.ImeMode == cadencii.java.awt.ImeMode.Hiragana;
+            mLastIsImeModeOn = EditorManager.InputTextBox.ImeMode == Cadencii.Gui.ImeMode.Hiragana;
         }
 
-        public void mInputTextBox_KeyPress(Object sender, cadencii.java.awt.KeyPressEventArgs e)
+        public void mInputTextBox_KeyPress(Object sender, Cadencii.Gui.KeyPressEventArgs e)
         {
 #if DEBUG
             sout.println("FormMain#mInputTextBox_KeyPress");
@@ -5344,7 +5344,7 @@ namespace cadencii
                         bool result = PaletteToolServer.invokePaletteTool(EditorManager.mSelectedPaletteTool,
                                                                               selected,
                                                                               internal_ids.ToArray(),
-                                                                              (cadencii.java.awt.MouseButtons) btn);
+                                                                              (Cadencii.Gui.MouseButtons) btn);
                         if (result) {
                             setEdited(true);
                             EditorManager.itemSelection.clearEvent();
@@ -5477,7 +5477,7 @@ namespace cadencii
                         bool result = PaletteToolServer.invokePaletteTool(EditorManager.mSelectedPaletteTool,
                                                                            EditorManager.Selected,
                                                                            internal_ids.ToArray(),
-                                                                           (cadencii.java.awt.MouseButtons) e.Button);
+                                                                           (Cadencii.Gui.MouseButtons) e.Button);
                         if (result) {
                             setEdited(true);
                             EditorManager.itemSelection.clearEvent();
@@ -7043,7 +7043,7 @@ namespace cadencii
                         // マウスのスクリーン座標
 						Point screen_p_at_mouse = cadencii.core2.PortUtil.getMousePosition();
                         // ピアノロール上でのマウスのx座標
-                        int x_at_mouse = pictPianoRoll.PointToClient(new cadencii.java.awt.Point(screen_p_at_mouse.X, screen_p_at_mouse.Y)).X;
+                        int x_at_mouse = pictPianoRoll.PointToClient(new Cadencii.Gui.Point(screen_p_at_mouse.X, screen_p_at_mouse.Y)).X;
                         // マウス位置でのクロック -> こいつが保存される
                         int clock_at_mouse = EditorManager.clockFromXCoord(x_at_mouse);
                         // 古い拡大率
@@ -7288,7 +7288,7 @@ namespace cadencii
             if (EditorManager.EditMode != EditMode.DRAG_DROP) {
                 return;
             }
-            var pt = pictPianoRoll.PointToScreen(cadencii.java.awt.Point.Empty);
+            var pt = pictPianoRoll.PointToScreen(Cadencii.Gui.Point.Empty);
             if (!mIconPaletteOnceDragEntered) {
                 int keywidth = EditorManager.keyWidth;
                 Rectangle rc = new Rectangle(pt.X + keywidth, pt.Y, pictPianoRoll.Width - keywidth, pictPianoRoll.Height);
@@ -7319,7 +7319,7 @@ namespace cadencii
             if (handle == null) {
                 return;
             }
-			var locPianoroll = pictPianoRoll.PointToScreen(cadencii.java.awt.Point.Empty);
+			var locPianoroll = pictPianoRoll.PointToScreen(Cadencii.Gui.Point.Empty);
             // ドロップ位置を特定して，アイテムを追加する
             int x = screen_x - locPianoroll.X;
             int y = screen_y - locPianoroll.Y;
@@ -7367,7 +7367,7 @@ namespace cadencii
             if (!e.Data.GetDataPresent(typeof(IconDynamicsHandle))) {
                 return;
             }
-			var locPianoroll = pictPianoRoll.PointToScreen(cadencii.java.awt.Point.Empty);
+			var locPianoroll = pictPianoRoll.PointToScreen(Cadencii.Gui.Point.Empty);
             int keywidth = EditorManager.keyWidth;
             Rectangle rcPianoroll = new Rectangle(locPianoroll.X + keywidth,
                                                    locPianoroll.Y,
@@ -7478,10 +7478,10 @@ namespace cadencii
                                                                _("Affirmation"),
                                                                cadencii.Dialog.MSGBOX_YES_NO_CANCEL_OPTION,
                                                                cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
-				if (ret == cadencii.java.awt.DialogResult.Yes) {
+				if (ret == Cadencii.Gui.DialogResult.Yes) {
                     if (MusicManager.getFileName().Equals("")) {
                         var dr = DialogManager.showModalFileDialog(saveXmlVsqDialog, false, this);
-						if (dr == cadencii.java.awt.DialogResult.OK) {
+						if (dr == Cadencii.Gui.DialogResult.OK) {
                             EditorManager.saveTo(saveXmlVsqDialog.FileName);
                         } else {
                             return true;
@@ -7490,7 +7490,7 @@ namespace cadencii
                         EditorManager.saveTo(MusicManager.getFileName());
                     }
 
-				} else if (ret == cadencii.java.awt.DialogResult.Cancel) {
+				} else if (ret == Cadencii.Gui.DialogResult.Cancel) {
                     return true;
                 }
             }
@@ -8555,7 +8555,7 @@ namespace cadencii
                             break;
                         }
                         string s = PortUtil.formatDecimal("#.00", 60e6 / (float)MusicManager.getVsqFile().TempoTable[i].Tempo);
-                        Dimension size = Util.measureString(s, new Font(EditorManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8));
+                        Dimension size = Util.measureString(s, new Font(EditorManager.editorConfig.ScreenFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8));
                         if (Utility.isInRect(new Point(e.X, e.Y), new Rectangle(x, 14, (int)size.Width, 14))) {
                             index = i;
                             break;
@@ -8613,7 +8613,7 @@ namespace cadencii
                     for (int i = 0; i < MusicManager.getVsqFile().TimesigTable.Count; i++) {
                         string s = MusicManager.getVsqFile().TimesigTable[i].Numerator + "/" + MusicManager.getVsqFile().TimesigTable[i].Denominator;
                         int x = EditorManager.xCoordFromClocks(MusicManager.getVsqFile().TimesigTable[i].Clock);
-                        Dimension size = Util.measureString(s, new Font(EditorManager.editorConfig.ScreenFontName, java.awt.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8));
+                        Dimension size = Util.measureString(s, new Font(EditorManager.editorConfig.ScreenFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8));
                         if (Utility.isInRect(new Point(e.X, e.Y), new Rectangle(x, 28, (int)size.Width, 14))) {
                             index = i;
                             break;
@@ -8894,7 +8894,7 @@ namespace cadencii
             Graphics g = e.Graphics;
             picturePositionIndicatorDrawTo(g);
 #if MONITOR_FPS
-            g.setColor(cadencii.java.awt.Colors.Red);
+            g.setColor(Cadencii.Gui.Colors.Red);
             g.setFont(cadencii.core.EditorConfig.baseFont10Bold);
             g.drawString(PortUtil.formatDecimal("#.00", mFps) + " / " + PortUtil.formatDecimal("#.00", mFps2), 5, 5);
 #endif
@@ -9584,25 +9584,25 @@ namespace cadencii
             mGraphicsPictureBox2.setColor(FormMainModel.ColorR214G214B214);
             mGraphicsPictureBox2.fillRect(0, 0, width, height);
             if (mPianoRollScaleYMouseStatus > 0) {
-                mGraphicsPictureBox2.setColor(cadencii.java.awt.Colors.Gray);
+                mGraphicsPictureBox2.setColor(Cadencii.Gui.Colors.Gray);
                 mGraphicsPictureBox2.fillRect(0, 0, width, unit_height);
             } else if (mPianoRollScaleYMouseStatus < 0) {
-                mGraphicsPictureBox2.setColor(cadencii.java.awt.Colors.Gray);
+                mGraphicsPictureBox2.setColor(Cadencii.Gui.Colors.Gray);
                 mGraphicsPictureBox2.fillRect(0, unit_height * 2, width, unit_height);
             }
             mGraphicsPictureBox2.setStroke(getStrokeDefault());
-            mGraphicsPictureBox2.setColor(cadencii.java.awt.Colors.Gray);
+            mGraphicsPictureBox2.setColor(Cadencii.Gui.Colors.Gray);
             //mGraphicsPictureBox2.drawRect( 0, 0, width - 1, unit_height * 2 );
             mGraphicsPictureBox2.drawLine(0, unit_height, width, unit_height);
             mGraphicsPictureBox2.drawLine(0, unit_height * 2, width, unit_height * 2);
             mGraphicsPictureBox2.setStroke(getStroke2px());
             int cx = width / 2;
             int cy = unit_height / 2;
-            mGraphicsPictureBox2.setColor((mPianoRollScaleYMouseStatus > 0) ? cadencii.java.awt.Colors.LightGray : cadencii.java.awt.Colors.Gray);
+            mGraphicsPictureBox2.setColor((mPianoRollScaleYMouseStatus > 0) ? Cadencii.Gui.Colors.LightGray : Cadencii.Gui.Colors.Gray);
             mGraphicsPictureBox2.drawLine(cx - 4, cy, cx + 4, cy);
             mGraphicsPictureBox2.drawLine(cx, cy - 4, cx, cy + 4);
             cy += unit_height * 2;
-            mGraphicsPictureBox2.setColor((mPianoRollScaleYMouseStatus < 0) ? cadencii.java.awt.Colors.LightGray : cadencii.java.awt.Colors.Gray);
+            mGraphicsPictureBox2.setColor((mPianoRollScaleYMouseStatus < 0) ? Cadencii.Gui.Colors.LightGray : Cadencii.Gui.Colors.Gray);
             mGraphicsPictureBox2.drawLine(cx - 4, cy, cx + 4, cy);
         }
 
@@ -9819,7 +9819,7 @@ namespace cadencii
                 var rc = stripDDBtnQuantizeParent.Rectangle;
                 stripDDBtnQuantize.Show(
                     toolBarMeasure,
-                    new cadencii.java.awt.Point(rc.Left, rc.Bottom));
+                    new Cadencii.Gui.Point(rc.Left, rc.Bottom));
             }
         }
 
@@ -10082,7 +10082,7 @@ namespace cadencii
                 Object item = toolBarTool.Buttons[i];
                 if (item is UiToolBarButton) {
                     UiToolBarButton button = (UiToolBarButton)item;
-                    if (button.Style == cadencii.java.awt.ToolBarButtonStyle.ToggleButton && button.Tag != null && button.Tag is string) {
+                    if (button.Style == Cadencii.Gui.ToolBarButtonStyle.ToggleButton && button.Tag != null && button.Tag is string) {
                         if (((string)button.Tag).Equals(id)) {
                             button.Pushed = true;
                         } else {
@@ -10419,7 +10419,7 @@ namespace cadencii
             string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("wav");
             openWaveDialog.SetSelectedFile(dir);
             var ret = DialogManager.showModalFileDialog(openWaveDialog, true, this);
-            if (ret != cadencii.java.awt.DialogResult.OK) {
+            if (ret != Cadencii.Gui.DialogResult.OK) {
                 return;
             }
 
@@ -10462,7 +10462,7 @@ namespace cadencii
             if (DialogManager.showMessageBox(PortUtil.formatMessage(_("remove '{0}'?"), bgm.file),
                                   "Cadencii",
                                   cadencii.Dialog.MSGBOX_YES_NO_OPTION,
-                                  cadencii.Dialog.MSGBOX_QUESTION_MESSAGE) != cadencii.java.awt.DialogResult.Yes) {
+                                  cadencii.Dialog.MSGBOX_QUESTION_MESSAGE) != Cadencii.Gui.DialogResult.Yes) {
                 return;
             }
             EditorManager.removeBgm(index);
@@ -10483,7 +10483,7 @@ namespace cadencii
             }
             Object instance = PaletteToolServer.loadedTools[id];
             IPaletteTool ipt = (IPaletteTool)instance;
-            if (ipt.openDialog() == cadencii.java.awt.DialogResult.OK) {
+            if (ipt.openDialog() == Cadencii.Gui.DialogResult.OK) {
                 XmlSerializer xsms = new XmlSerializer(instance.GetType(), true);
                 string dir = Path.Combine(ApplicationGlobal.getApplicationDataPath(), "tool");
                 if (!Directory.Exists(dir)) {

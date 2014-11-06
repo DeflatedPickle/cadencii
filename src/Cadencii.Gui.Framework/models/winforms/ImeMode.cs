@@ -1,4 +1,4 @@
-namespace cadencii.java.awt
+namespace Cadencii.Gui
 {
 	public enum ImeMode
 	{

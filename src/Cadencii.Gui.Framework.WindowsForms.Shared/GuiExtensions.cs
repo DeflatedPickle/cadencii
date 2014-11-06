@@ -1,11 +1,11 @@
 using System;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using MouseButtons = System.Windows.Forms.MouseButtons;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
-using NMouseButtons = cadencii.java.awt.MouseButtons;
-using NMouseEventArgs = cadencii.java.awt.MouseEventArgs;
-using NMouseEventHandler = cadencii.java.awt.MouseEventHandler;
+using NMouseButtons = Cadencii.Gui.MouseButtons;
+using NMouseEventArgs = Cadencii.Gui.MouseEventArgs;
+using NMouseEventHandler = Cadencii.Gui.MouseEventHandler;
 
 namespace cadencii
 {
@@ -33,19 +33,19 @@ namespace cadencii
 			return (System.Windows.Forms.Cursor)c.NativeCursor;
 		}
 
-		public static cadencii.java.awt.Point ToAwt (this System.Drawing.Point point)
+		public static Cadencii.Gui.Point ToAwt (this System.Drawing.Point point)
 		{
-			return new cadencii.java.awt.Point (point.X, point.Y);
+			return new Cadencii.Gui.Point (point.X, point.Y);
 		}
 
-		public static System.Drawing.Point ToWF (this cadencii.java.awt.Point point)
+		public static System.Drawing.Point ToWF (this Cadencii.Gui.Point point)
 		{
 			return new System.Drawing.Point (point.X, point.Y);
 		}
 
-		public static cadencii.java.awt.Dimension ToAwt (this System.Drawing.Size size)
+		public static Cadencii.Gui.Dimension ToAwt (this System.Drawing.Size size)
 		{
-			return new cadencii.java.awt.Dimension (size.Width, size.Height);
+			return new Cadencii.Gui.Dimension (size.Width, size.Height);
 		}
 
 		public static System.Drawing.Size ToWF (this Dimension size)

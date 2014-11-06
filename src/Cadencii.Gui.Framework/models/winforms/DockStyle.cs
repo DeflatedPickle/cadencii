@@ -1,4 +1,4 @@
-namespace cadencii.java.awt {
+namespace Cadencii.Gui {
 	public enum DockStyle {
 		None	= 0,
 		Top	= 1,

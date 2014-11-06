@@ -15,7 +15,7 @@ using System;
 using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.java.util;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
@@ -452,7 +452,7 @@ namespace cadencii
             //
             this.txtLeftClock.BackColor = new Color(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txtLeftClock.Enabled = false;
-			this.txtLeftClock.ForeColor = cadencii.java.awt.Colors.Black;
+			this.txtLeftClock.ForeColor = Cadencii.Gui.Colors.Black;
             this.txtLeftClock.Location = new Point(66, 26);
             this.txtLeftClock.Name = "txtLeftClock";
             this.txtLeftClock.Size = new Dimension(61, 19);
@@ -464,7 +464,7 @@ namespace cadencii
             //
             this.txtLeftValue.BackColor = new Color(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txtLeftValue.Enabled = false;
-			this.txtLeftValue.ForeColor = cadencii.java.awt.Colors.Black;
+			this.txtLeftValue.ForeColor = Cadencii.Gui.Colors.Black;
             this.txtLeftValue.Location = new Point(66, 51);
             this.txtLeftValue.Name = "txtLeftValue";
             this.txtLeftValue.Size = new Dimension(61, 19);

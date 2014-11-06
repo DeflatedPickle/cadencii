@@ -17,7 +17,7 @@ using System.Threading;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.java.io;
 using cadencii.java.util;
 using cadencii.media;

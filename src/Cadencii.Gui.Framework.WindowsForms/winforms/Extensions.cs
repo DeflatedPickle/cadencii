@@ -5,12 +5,12 @@ namespace cadencii
 {
 	public static class WinformsExtensions
 	{
-		public static void Add (this IList<UiToolStripItem> list, string s, cadencii.java.awt.Image o, EventHandler h)
+		public static void Add (this IList<UiToolStripItem> list, string s, Cadencii.Gui.Image o, EventHandler h)
 		{
 			list.Add (new ToolStripMenuItemImpl (s, o, h));
 		}
 
-		public static void Add<C> (this IList<C> list, string s, cadencii.java.awt.Image o, EventHandler h) where C : UiToolStripMenuItem
+		public static void Add<C> (this IList<C> list, string s, Cadencii.Gui.Image o, EventHandler h) where C : UiToolStripMenuItem
 		{
 			list.Add ((C) (object) new ToolStripMenuItemImpl (s, o, h));
 		}

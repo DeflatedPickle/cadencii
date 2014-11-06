@@ -29,7 +29,7 @@ namespace cadencii.windows.forms
     /// </summary>
     public class RebarImpl : UserControlImpl, Rebar
     {
-		cadencii.java.awt.Image Rebar.BackgroundImage {
+		Cadencii.Gui.Image Rebar.BackgroundImage {
 			get { return BackgroundImage.ToAwt (); }
 			set { BackgroundImage = (Bitmap) value.ToWF (); }
 		}
@@ -150,7 +150,7 @@ namespace cadencii.windows.forms
             {
                 base.BackgroundImage = value;
                 foreach (RebarBand band in _bands) {
-                    if (band.UseCoolbarPicture & band.FixedBackground) band.BackgroundImage = new cadencii.java.awt.Image () { NativeImage = (Bitmap)base.BackgroundImage };
+                    if (band.UseCoolbarPicture & band.FixedBackground) band.BackgroundImage = new Cadencii.Gui.Image () { NativeImage = (Bitmap)base.BackgroundImage };
 
                 }
             }
@@ -829,7 +829,7 @@ namespace cadencii.windows.forms
             int index = nrch.wID;
             if ((index >= 0) && (index < this._bands.Count) &&
                 (this._bands[index] != null)) {
-                var chevron_rc = new cadencii.java.awt.Rectangle(
+                var chevron_rc = new Cadencii.Gui.Rectangle(
                     nrch.rc.left, nrch.rc.top,
                     nrch.rc.right - nrch.rc.left, nrch.rc.bottom - nrch.rc.top);
                 int chevron_width = chevron_rc.Width;

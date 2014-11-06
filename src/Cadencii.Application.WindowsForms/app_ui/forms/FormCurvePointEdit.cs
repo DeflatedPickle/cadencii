@@ -143,9 +143,9 @@ namespace cadencii
             btnForward2.Click += new EventHandler(commonButton_Click);
             btnApply.Click += new EventHandler(btnApply_Click);
             txtDataPointClock.TextChanged += new EventHandler(commonTextBox_TextChanged);
-            txtDataPointClock.KeyUp += new cadencii.java.awt.KeyEventHandler(commonTextBox_KeyUp);
+            txtDataPointClock.KeyUp += new Cadencii.Gui.KeyEventHandler(commonTextBox_KeyUp);
             txtDataPointValue.TextChanged += new EventHandler(commonTextBox_TextChanged);
-			txtDataPointValue.KeyUp += new cadencii.java.awt.KeyEventHandler(commonTextBox_KeyUp);
+			txtDataPointValue.KeyUp += new Cadencii.Gui.KeyEventHandler(commonTextBox_KeyUp);
             btnBackward3.Click += new EventHandler(commonButton_Click);
             btnForward3.Click += new EventHandler(commonButton_Click);
             btnUndo.Click += new EventHandler(handleUndoRedo_Click);
@@ -155,9 +155,9 @@ namespace cadencii
         #endregion
 
         #region event handlers
-        public void commonTextBox_KeyUp(Object sender, cadencii.java.awt.KeyEventArgs e)
+        public void commonTextBox_KeyUp(Object sender, Cadencii.Gui.KeyEventArgs e)
         {
-			if ((e.KeyCode & cadencii.java.awt.Keys.Enter) != cadencii.java.awt.Keys.Enter) {
+			if ((e.KeyCode & Cadencii.Gui.Keys.Enter) != Cadencii.Gui.Keys.Enter) {
                 return;
             }
             applyValue((sender == txtDataPointClock));
@@ -384,17 +384,17 @@ namespace cadencii
             // 
             // txtDataPointClock
             // 
-            this.txtDataPointClock.Location = new cadencii.java.awt.Point(89, 77);
+            this.txtDataPointClock.Location = new Cadencii.Gui.Point(89, 77);
             this.txtDataPointClock.Name = "txtDataPointClock";
-            this.txtDataPointClock.Size = new cadencii.java.awt.Dimension(71, 19);
+            this.txtDataPointClock.Size = new Cadencii.Gui.Dimension(71, 19);
             this.txtDataPointClock.TabIndex = 2;
             this.txtDataPointClock.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // txtDataPointValue
             // 
-            this.txtDataPointValue.Location = new cadencii.java.awt.Point(89, 52);
+            this.txtDataPointValue.Location = new Cadencii.Gui.Point(89, 52);
             this.txtDataPointValue.Name = "txtDataPointValue";
-            this.txtDataPointValue.Size = new cadencii.java.awt.Dimension(71, 19);
+            this.txtDataPointValue.Size = new Cadencii.Gui.Dimension(71, 19);
             this.txtDataPointValue.TabIndex = 1;
             this.txtDataPointValue.Type = cadencii.NumberTextBoxValueType.Integer;
             // 

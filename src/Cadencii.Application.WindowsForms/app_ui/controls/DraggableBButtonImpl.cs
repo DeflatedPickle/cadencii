@@ -16,11 +16,11 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Collections.Generic;
 using cadencii.apputil;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.java.util;
 using cadencii.vsq;
 using cadencii.windows.forms;
-using Keys = cadencii.java.awt.Keys;
+using Keys = Cadencii.Gui.Keys;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 
@@ -28,13 +28,13 @@ namespace cadencii
 {
     class DraggableBButtonImpl : ButtonImpl, DraggableBButton
     {
-		void DraggableBButton.DoDragDrop (IconDynamicsHandle handle, cadencii.java.awt.DragDropEffects all)
+		void DraggableBButton.DoDragDrop (IconDynamicsHandle handle, Cadencii.Gui.DragDropEffects all)
 		{
 			DoDragDrop (handle, (System.Windows.Forms.DragDropEffects) all);
 		}
 
-		cadencii.java.awt.Image DraggableBButton.Image {
-			get { return new cadencii.java.awt.Image () { NativeImage = Image }; }
+		Cadencii.Gui.Image DraggableBButton.Image {
+			get { return new Cadencii.Gui.Image () { NativeImage = Image }; }
 			set { Image = (System.Drawing.Image) value.NativeImage; }
 		}
 

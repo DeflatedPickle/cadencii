@@ -90,7 +90,7 @@ namespace cadencii
 					DialogManager.showMessageBox (
 						_ ("Log file has not generated yet."),
 						_ ("Info"),
-						cadencii.java.awt.AwtHost.OK_OPTION,
+						Cadencii.Gui.AwtHost.OK_OPTION,
 						cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
 					return;
 				}

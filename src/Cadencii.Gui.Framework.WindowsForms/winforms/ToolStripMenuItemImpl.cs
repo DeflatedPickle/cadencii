@@ -1,5 +1,5 @@
 using System;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using System.Collections.Generic;
 
 namespace cadencii
@@ -10,7 +10,7 @@ namespace cadencii
 		{
 		}
 
-		public ToolStripMenuItemImpl (string s, cadencii.java.awt.Image o, EventHandler e)
+		public ToolStripMenuItemImpl (string s, Cadencii.Gui.Image o, EventHandler e)
 			: base (s, (System.Drawing.Image) o.NativeImage, e)
 		{
 		}
@@ -20,7 +20,7 @@ namespace cadencii
 			remove { throw new NotImplementedException (); }
 		}
 
-		void UiToolStripMenuItem.Mnemonic (cadencii.java.awt.Keys keys)
+		void UiToolStripMenuItem.Mnemonic (Cadencii.Gui.Keys keys)
 		{
 			this.Mnemonic (keys);
 		}

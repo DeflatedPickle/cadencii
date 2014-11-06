@@ -1,5 +1,5 @@
 using System;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.apputil;
 
 namespace cadencii
@@ -20,7 +20,7 @@ namespace cadencii
 
 		void setAppNameColor (Color value);
 
-		void setCredit (java.awt.Image value);
+		void setCredit (Cadencii.Gui.Image value);
 
 		string getAppName ();
 

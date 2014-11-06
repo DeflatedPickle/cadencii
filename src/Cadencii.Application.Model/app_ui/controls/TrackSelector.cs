@@ -1,5 +1,5 @@
 using System;
-using cadencii.java.awt;
+using Cadencii.Gui;
 using cadencii.vsq;
 
 namespace cadencii
@@ -58,37 +58,37 @@ namespace cadencii
 
 		void setBounds (int x, int y, int width, int height);
 
-		void setBounds (cadencii.java.awt.Rectangle rc);
+		void setBounds (Cadencii.Gui.Rectangle rc);
 
-		cadencii.java.awt.Cursor getCursor ();
+		Cadencii.Gui.Cursor getCursor ();
 
-		void setCursor (cadencii.java.awt.Cursor value);
+		void setCursor (Cadencii.Gui.Cursor value);
 
 		Object getParent ();
 
-		cadencii.java.awt.Point getLocationOnScreen ();
+		Cadencii.Gui.Point getLocationOnScreen ();
 
-		cadencii.java.awt.Point getLocation ();
+		Cadencii.Gui.Point getLocation ();
 
 		void setLocation (int x, int y);
 
-		void setLocation (cadencii.java.awt.Point p);
+		void setLocation (Cadencii.Gui.Point p);
 
-		cadencii.java.awt.Rectangle getBounds ();
+		Cadencii.Gui.Rectangle getBounds ();
 
-		cadencii.java.awt.Dimension getSize ();
+		Cadencii.Gui.Dimension getSize ();
 
 		void setSize (int width, int height);
 
-		void setSize (cadencii.java.awt.Dimension d);
+		void setSize (Cadencii.Gui.Dimension d);
 
-		void setBackground (cadencii.java.awt.Color color);
+		void setBackground (Cadencii.Gui.Color color);
 
-		cadencii.java.awt.Color getBackground ();
+		Cadencii.Gui.Color getBackground ();
 
-		void setForeground (cadencii.java.awt.Color color);
+		void setForeground (Cadencii.Gui.Color color);
 
-		cadencii.java.awt.Color getForeground ();
+		Cadencii.Gui.Color getForeground ();
 
 		bool isEnabled ();
 
@@ -98,15 +98,15 @@ namespace cadencii
 
 		bool isFocusOwner ();
 
-		void setPreferredSize (cadencii.java.awt.Dimension size);
+		void setPreferredSize (Cadencii.Gui.Dimension size);
 
-		cadencii.java.awt.Font getFont ();
+		Cadencii.Gui.Font getFont ();
 
-		void setFont (cadencii.java.awt.Font font);
+		void setFont (Cadencii.Gui.Font font);
 
-		java.awt.Point pointToScreen (java.awt.Point point_on_client);
+		Cadencii.Gui.Point pointToScreen (Cadencii.Gui.Point point_on_client);
 
-		java.awt.Point pointToClient (java.awt.Point point_on_screen);
+		Cadencii.Gui.Point pointToClient (Cadencii.Gui.Point point_on_screen);
 
 		Object getTag ();
 
@@ -114,7 +114,7 @@ namespace cadencii
 
 		void applyLanguage ();
 
-		void applyFont (java.awt.Font font);
+		void applyFont (Cadencii.Gui.Font font);
 
 		int getRowsPerColumn ();
 

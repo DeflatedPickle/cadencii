@@ -144,7 +144,7 @@ namespace cadencii
         /// <param name="vsq_event_intrenal_ids">編集対象のInternalIDのリスト</param>
         /// <param name="button">パレットツールが押し下げられた時のマウスボタンの種類</param>
         /// <returns>パレットツールによって編集が加えられた場合true。そうでなければfalse(パレットツールがエラーを起こした場合も含む)。</returns>
-        public static bool invokePaletteTool(string id, int track, int[] vsq_event_intrenal_ids, cadencii.java.awt.MouseButtons button)
+        public static bool invokePaletteTool(string id, int track, int[] vsq_event_intrenal_ids, Cadencii.Gui.MouseButtons button)
         {
             if (loadedTools.ContainsKey(id)) {
                 VsqFileEx vsq = MusicManager.getVsqFile();

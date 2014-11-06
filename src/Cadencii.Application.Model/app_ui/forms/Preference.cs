@@ -214,13 +214,13 @@ namespace cadencii
 
 		void setWheelOrder (int value);
 
-		java.awt.Font getScreenFont ();
+		Cadencii.Gui.Font getScreenFont ();
 
-		void setScreenFont (java.awt.Font value);
+		void setScreenFont (Cadencii.Gui.Font value);
 
-		java.awt.Font getBaseFont ();
+		Cadencii.Gui.Font getBaseFont ();
 
-		void setBaseFont (java.awt.Font value);
+		void setBaseFont (Cadencii.Gui.Font value);
 
 		string getDefaultSingerName ();
 
