@@ -660,7 +660,7 @@ namespace cadencii
                 g.fillRect(0, 0, width, height);
 
                 g.setStroke(getStroke2px());
-                g.setColor(FormMain.mColorNoteFill);
+                g.setColor(FormMainModel.ColorNoteFill);
                 int key_width = EditorManager.keyWidth;
                 int xoffset = key_width + EditorManager.keyOffset;
                 VsqFileEx vsq = MusicManager.getVsqFile();

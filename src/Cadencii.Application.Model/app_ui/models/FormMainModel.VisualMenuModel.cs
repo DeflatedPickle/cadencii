@@ -43,7 +43,7 @@ namespace cadencii
 			public void RunVisualMixerCommand()
 			{
 				bool v = !EditorManager.editorConfig.MixerVisible;
-				parent.flipMixerDialogVisible(v);
+				parent.FlipMixerDialogVisible(v);
 				parent.form.Focus();
 			}
 
@@ -56,7 +56,7 @@ namespace cadencii
 			public void RunVisualIconPaletteCommand()
 			{
 				bool v = !EditorManager.editorConfig.IconPaletteVisible;
-				parent.flipIconPaletteVisible(v);
+				parent.FlipIconPaletteVisible(v);
 			}
 
 			public void RunVisualLyricsCheckedChanged()
@@ -77,7 +77,7 @@ namespace cadencii
 
 			public void RunVisualControlTrackCheckedChanged()
 			{
-				parent.flipControlCurveVisible(parent.form.menuVisualControlTrack.Checked);
+				parent.FlipControlCurveVisible(parent.form.menuVisualControlTrack.Checked);
 			}
 
 			public void RunVisualWaveformCheckedChanged()

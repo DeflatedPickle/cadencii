@@ -12,6 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System.Collections.Generic;
+using cadencii.java.awt;
 
 
 namespace cadencii
@@ -22,6 +23,11 @@ namespace cadencii
     public interface UiFormMain : UiForm
     {
 		FormMainModel Model { get; }
+
+		void ensureCursorVisible();
+		void showInputTextBox (string phrase, string phonetic_symbol, Point position, bool phonetic_symbol_edit_mode);
+		bool mLastSymbolEditMode { get; set; }
+		void moveUpDownLeftRight (int upDown, int leftRight);
 
 		UiToolStripMenuItem menuHelpLogSwitch { get; set; }
 

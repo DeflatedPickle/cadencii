@@ -109,19 +109,6 @@ namespace cadencii
         /// <param name="value"></param>
         delegate void DelegateRefreshScreen(bool value);
 
-        #region static readonly field
-        /// <summary>
-        /// ピアノロールでの，音符の塗りつぶし色
-        /// </summary>
-        public static readonly Color mColorNoteFill = new Color(181, 220, 86);
-        private readonly Color mColorR105G105B105 = new Color(105, 105, 105);
-        private readonly Color mColorR187G187B255 = new Color(187, 187, 255);
-        private readonly Color mColorR007G007B151 = new Color(7, 7, 151);
-        private readonly Color mColorR065G065B065 = new Color(65, 65, 65);
-        private readonly Color mColorTextboxBackcolor = new Color(128, 128, 128);
-        private readonly Color mColorR214G214B214 = new Color(214, 214, 214);
-        #endregion
-
         #region constants and internal enums
         /// <summary>
         /// カーブエディタ画面の編集モード
@@ -305,7 +292,7 @@ namespace cadencii
         public Thread mMouseHoverThread = null;
 #endif
         public bool mLastIsImeModeOn = true;
-        public bool mLastSymbolEditMode = false;
+		public bool mLastSymbolEditMode { get; set; }
         /// <summary>
         /// 鉛筆のモード
         /// </summary>
@@ -889,7 +876,7 @@ namespace cadencii
 #endif
             updateBgmMenuState();
             EditorManager.mLastTrackSelectorHeight = trackSelector.getPreferredMinSize();
-            model.flipControlCurveVisible(true);
+            model.FlipControlCurveVisible(true);
 
             Refresh();
             updateLayout();
@@ -1310,84 +1297,11 @@ namespace cadencii
         }
 
         /// <summary>
-        /// 選択された音符の長さを、指定したゲートタイム分長くします。
-        /// </summary>
-        /// <param name="delta_length"></param>
-        private void lengthenSelectedEvent(int delta_length)
-        {
-            if (delta_length == 0) {
-                return;
-            }
-
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            if (vsq == null) {
-                return;
-            }
-
-            int selected = EditorManager.Selected;
-
-            List<VsqEvent> items = new List<VsqEvent>();
-            foreach (var item in EditorManager.itemSelection.getEventIterator()) {
-                if (item.editing.ID.type != VsqIDType.Anote &&
-                     item.editing.ID.type != VsqIDType.Aicon) {
-                    continue;
-                }
-
-                // クレッシェンド、デクレッシェンドでないものを省く
-                if (item.editing.ID.type == VsqIDType.Aicon) {
-                    if (item.editing.ID.IconDynamicsHandle == null) {
-                        continue;
-                    }
-                    if (!item.editing.ID.IconDynamicsHandle.isCrescendType() &&
-                         !item.editing.ID.IconDynamicsHandle.isDecrescendType()) {
-                        continue;
-                    }
-                }
-
-                // 長さを変える。0未満になると0に直す
-                int length = item.editing.ID.getLength();
-                int draft = length + delta_length;
-                if (draft < 0) {
-                    draft = 0;
-                }
-                if (length == draft) {
-                    continue;
-                }
-
-                // ビブラートの長さを変更
-                VsqEvent add = (VsqEvent)item.editing.clone();
-				EditorManager.editLengthOfVsqEvent(add, draft, EditorManager.vibratoLengthEditingRule);
-                items.Add(add);
-            }
-
-            if (items.Count <= 0) {
-                return;
-            }
-
-            // コマンドを発行
-            CadenciiCommand run = new CadenciiCommand(
-                VsqCommand.generateCommandEventReplaceRange(
-                    selected, items.ToArray()));
-            EditorManager.editHistory.register(vsq.executeCommand(run));
-
-            // 編集されたものを再選択する
-            foreach (var item in items) {
-                EditorManager.itemSelection.addEvent(item.InternalID);
-            }
-
-            // 編集が施された。
-            setEdited(true);
-            updateDrawObjectList();
-
-            refreshScreen();
-        }
-
-        /// <summary>
         /// 選択された音符の音程とゲートタイムを、指定されたノートナンバーおよびゲートタイム分上下させます。
         /// </summary>
         /// <param name="delta_note"></param>
         /// <param name="delta_clock"></param>
-        private void moveUpDownLeftRight(int delta_note, int delta_clock)
+        public void moveUpDownLeftRight(int delta_note, int delta_clock)
         {
             VsqFileEx vsq = MusicManager.getVsqFile();
             if (vsq == null) {
@@ -1918,122 +1832,6 @@ namespace cadencii
             return (int)(hScroll.Value * controller.getScaleX());
         }
 
-        /// <summary>
-        /// 現在選択されている音符よりも1個前方の音符を選択しなおします。
-        /// </summary>
-        public void selectBackward()
-        {
-            int count = EditorManager.itemSelection.getEventCount();
-            if (count <= 0) {
-                return;
-            }
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            if (vsq == null) {
-                return;
-            }
-            int selected = EditorManager.Selected;
-            VsqTrack vsq_track = vsq.Track[selected];
-
-            // 選択されている音符のうち、最も前方にあるものがどれかを調べる
-            int min_clock = int.MaxValue;
-            int internal_id = -1;
-            VsqIDType type = VsqIDType.Unknown;
-            foreach (var item in EditorManager.itemSelection.getEventIterator()) {
-                if (item.editing.Clock <= min_clock) {
-                    min_clock = item.editing.Clock;
-                    internal_id = item.original.InternalID;
-                    type = item.original.ID.type;
-                }
-            }
-            if (internal_id == -1 || type == VsqIDType.Unknown) {
-                return;
-            }
-
-            // 1個前のアイテムのIDを検索
-            int last_id = -1;
-            int clock = EditorManager.getCurrentClock();
-            for (Iterator<VsqEvent> itr = vsq_track.getEventIterator(); itr.hasNext(); ) {
-                VsqEvent item = itr.next();
-                if (item.ID.type != type) {
-                    continue;
-                }
-                if (item.InternalID == internal_id) {
-                    break;
-                }
-                last_id = item.InternalID;
-                clock = item.Clock;
-            }
-            if (last_id == -1) {
-                return;
-            }
-
-            // 選択しなおす
-            EditorManager.itemSelection.clearEvent();
-            EditorManager.itemSelection.addEvent(last_id);
-            ensureVisible(clock);
-        }
-
-        /// <summary>
-        /// 現在選択されている音符よりも1個後方の音符を選択しなおします。
-        /// </summary>
-        public void selectForward()
-        {
-            int count = EditorManager.itemSelection.getEventCount();
-            if (count <= 0) {
-                return;
-            }
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            if (vsq == null) {
-                return;
-            }
-            int selected = EditorManager.Selected;
-            VsqTrack vsq_track = vsq.Track[selected];
-
-            // 選択されている音符のうち、最も後方にあるものがどれかを調べる
-            int max_clock = int.MinValue;
-            int internal_id = -1;
-            VsqIDType type = VsqIDType.Unknown;
-            foreach (var item in EditorManager.itemSelection.getEventIterator()) {
-                if (max_clock <= item.editing.Clock) {
-                    max_clock = item.editing.Clock;
-                    internal_id = item.original.InternalID;
-                    type = item.original.ID.type;
-                }
-            }
-            if (internal_id == -1 || type == VsqIDType.Unknown) {
-                return;
-            }
-
-            // 1個後ろのアイテムのIDを検索
-            int last_id = -1;
-            int clock = EditorManager.getCurrentClock();
-            bool break_next = false;
-            for (Iterator<VsqEvent> itr = vsq_track.getEventIterator(); itr.hasNext(); ) {
-                VsqEvent item = itr.next();
-                if (item.ID.type != type) {
-                    continue;
-                }
-                if (item.InternalID == internal_id) {
-                    break_next = true;
-                    last_id = item.InternalID;
-                    clock = item.Clock;
-                    continue;
-                }
-                last_id = item.InternalID;
-                clock = item.Clock;
-                if (break_next) {
-                    break;
-                }
-            }
-            if (last_id == -1) {
-                return;
-            }
-
-            // 選択しなおす
-            EditorManager.itemSelection.clearEvent();
-            EditorManager.itemSelection.addEvent(last_id);
-            ensureVisible(clock);
-        }
 
         public void invalidatePictOverview(Object sender, EventArgs e)
         {
@@ -4568,7 +4366,7 @@ namespace cadencii
                 EditorManager.InputTextBox.setBufferText(phrase);
                 EditorManager.InputTextBox.setPhoneticSymbolEditMode(true);
                 EditorManager.InputTextBox.Text = phonetic_symbol;
-				EditorManager.InputTextBox.BackColor = mColorTextboxBackcolor;
+				EditorManager.InputTextBox.BackColor = FormMainModel.ColorTextboxBackcolor;
             } else {
                 EditorManager.InputTextBox.setBufferText(phonetic_symbol);
                 EditorManager.InputTextBox.setPhoneticSymbolEditMode(false);
@@ -4596,22 +4394,6 @@ namespace cadencii
             EditorManager.InputTextBox.Parent = null;
             EditorManager.InputTextBox.Enabled = false;
             focusPianoRoll();
-        }
-
-        /// <summary>
-        /// 歌詞入力用テキストボックスのモード（歌詞/発音記号）を切り替えます
-        /// </summary>
-        public void flipInputTextBoxMode()
-        {
-            string new_value = EditorManager.InputTextBox.Text;
-            if (!EditorManager.InputTextBox.isPhoneticSymbolEditMode()) {
-				EditorManager.InputTextBox.BackColor = mColorTextboxBackcolor;
-            } else {
-                EditorManager.InputTextBox.BackColor = Colors.White;
-            }
-            EditorManager.InputTextBox.Text = EditorManager.InputTextBox.getBufferText();
-            EditorManager.InputTextBox.setBufferText(new_value);
-            EditorManager.InputTextBox.setPhoneticSymbolEditMode(!EditorManager.InputTextBox.isPhoneticSymbolEditMode());
         }
 
         public void updateMenuFonts()
@@ -4681,7 +4463,7 @@ namespace cadencii
                     int x = EditorManager.xCoordFromClocks(blt.clock());
                     if (blt.isSeparator()) {
                         int current = blt.getBarCount() - vsq.getPreMeasure() + 1;
-                        g.setColor(mColorR105G105B105);
+                        g.setColor(FormMainModel.ColorR105G105B105);
                         g.drawLine(x, 0, x, 49);
                         // 小節の数字
                         //g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
@@ -4690,7 +4472,7 @@ namespace cadencii
                         g.drawString(current + "", x + 4, 8 - small_font_offset + 1);
                         //g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
                     } else {
-                        g.setColor(mColorR105G105B105);
+						g.setColor(FormMainModel.ColorR105G105B105);
                         g.drawLine(x, 11, x, 16);
                         g.drawLine(x, 26, x, 31);
                         g.drawLine(x, 41, x, 46);
@@ -4699,7 +4481,7 @@ namespace cadencii
                         int numDashedLine = local_clock_step / dashed_line_step;
                         for (int i = 1; i < numDashedLine; i++) {
                             int x2 = EditorManager.xCoordFromClocks(blt.clock() + i * dashed_line_step);
-                            g.setColor(mColorR065G065B065);
+							g.setColor(FormMainModel.ColorR065G065B065);
                             g.drawLine(x2, 9 + 5, x2, 14 + 3);
                             g.drawLine(x2, 24 + 5, x2, 29 + 3);
                             g.drawLine(x2, 39 + 5, x2, 44 + 3);
@@ -4732,10 +4514,10 @@ namespace cadencii
                         if (mPositionIndicatorMouseDownMode == PositionIndicatorMouseDownMode.TIMESIG) {
                             if (EditorManager.itemSelection.isTimesigContains(barcount)) {
                                 int edit_clock_x = EditorManager.xCoordFromClocks(vsq.getClockFromBarCount(EditorManager.itemSelection.getTimesig(barcount).editing.BarCount));
-                                g.setColor(mColorR187G187B255);
+								g.setColor(FormMainModel.ColorR187G187B255);
                                 g.drawLine(edit_clock_x - 1, 32,
                                             edit_clock_x - 1, picturePositionIndicator.Height - 1);
-                                g.setColor(mColorR007G007B151);
+								g.setColor(FormMainModel.ColorR007G007B151);
                                 g.drawLine(edit_clock_x, 32,
                                             edit_clock_x, picturePositionIndicator.Height - 1);
                             }
@@ -4765,10 +4547,10 @@ namespace cadencii
                         if (mPositionIndicatorMouseDownMode == PositionIndicatorMouseDownMode.TEMPO) {
                             if (EditorManager.itemSelection.isTempoContains(clock)) {
                                 int edit_clock_x = EditorManager.xCoordFromClocks(EditorManager.itemSelection.getTempo(clock).editing.Clock);
-                                g.setColor(mColorR187G187B255);
+								g.setColor(FormMainModel.ColorR187G187B255);
                                 g.drawLine(edit_clock_x - 1, 18,
                                             edit_clock_x - 1, 32);
-                                g.setColor(mColorR007G007B151);
+								g.setColor(FormMainModel.ColorR007G007B151);
                                 g.drawLine(edit_clock_x, 18,
                                             edit_clock_x, 32);
                             }
@@ -5045,29 +4827,29 @@ namespace cadencii
 			menuHelpLogSwitch.CheckedChanged += (o, e) => model.HelpMenu.RunHelpLogSwitchCheckedChanged ();
 			menuHelpLogOpen.Click += (o, e) => model.HelpMenu.RunHelpLogOpenCommand ();
 			menuHelpDebug.Click += (o, e) => model.HelpMenu.RunHelpDebugCommand ();
-            menuHiddenEditLyric.Click += new EventHandler(menuHiddenEditLyric_Click);
-            menuHiddenEditFlipToolPointerPencil.Click += new EventHandler(menuHiddenEditFlipToolPointerPencil_Click);
-            menuHiddenEditFlipToolPointerEraser.Click += new EventHandler(menuHiddenEditFlipToolPointerEraser_Click);
-            menuHiddenVisualForwardParameter.Click += new EventHandler(menuHiddenVisualForwardParameter_Click);
-            menuHiddenVisualBackwardParameter.Click += new EventHandler(menuHiddenVisualBackwardParameter_Click);
-            menuHiddenTrackNext.Click += new EventHandler(menuHiddenTrackNext_Click);
-            menuHiddenTrackBack.Click += new EventHandler(menuHiddenTrackBack_Click);
+			menuHiddenEditLyric.Click += (o, e) => model.HiddenMenu.RunHiddenEditLyricCommand ();
+			menuHiddenEditFlipToolPointerPencil.Click += (o, e) => model.HiddenMenu.RunHiddenEditFlipToolPointerPencilCommand ();
+			menuHiddenEditFlipToolPointerEraser.Click += (o, e) => model.HiddenMenu.RunHiddenEditFlipToolPointerEraserCommand ();
+			menuHiddenVisualForwardParameter.Click += (o, e) => model.HiddenMenu.RunHiddenVisualForwardParameterCommand ();
+			menuHiddenVisualBackwardParameter.Click += (o, e) => model.HiddenMenu.RunHiddenVisualBackwardParameterCommand ();
+			menuHiddenTrackNext.Click += (o, e) => model.HiddenMenu.RunHiddenTrackNextCommand ();
+			menuHiddenTrackBack.Click += (o, e) => model.HiddenMenu.RunHiddenTrackBackCommand ();
 			menuHiddenCopy.Click += (o, e) => model.Copy ();
 			menuHiddenPaste.Click += (o, e) => model.Paste ();
 			menuHiddenCut.Click += (o, e) => model.Cut ();
-            menuHiddenSelectBackward.Click += new EventHandler(menuHiddenSelectBackward_Click);
-            menuHiddenSelectForward.Click += new EventHandler(menuHiddenSelectForward_Click);
-            menuHiddenMoveUp.Click += new EventHandler(menuHiddenMoveUp_Click);
-            menuHiddenMoveDown.Click += new EventHandler(menuHiddenMoveDown_Click);
-            menuHiddenMoveLeft.Click += new EventHandler(menuHiddenMoveLeft_Click);
-            menuHiddenMoveRight.Click += new EventHandler(menuHiddenMoveRight_Click);
-            menuHiddenLengthen.Click += new EventHandler(menuHiddenLengthen_Click);
-            menuHiddenShorten.Click += new EventHandler(menuHiddenShorten_Click);
-            menuHiddenGoToEndMarker.Click += new EventHandler(menuHiddenGoToEndMarker_Click);
-            menuHiddenGoToStartMarker.Click += new EventHandler(menuHiddenGoToStartMarker_Click);
-            menuHiddenPlayFromStartMarker.Click += new EventHandler(menuHiddenPlayFromStartMarker_Click);
-            menuHiddenPrintPoToCSV.Click += new EventHandler(menuHiddenPrintPoToCSV_Click);
-            menuHiddenFlipCurveOnPianorollMode.Click += new EventHandler(menuHiddenFlipCurveOnPianorollMode_Click);
+			menuHiddenSelectBackward.Click += (o, e) => model.HiddenMenu.RunHiddenSelectBackwardCommand ();
+			menuHiddenSelectForward.Click += (o, e) => model.HiddenMenu.RunHiddenSelectForwardCommand ();
+			menuHiddenMoveUp.Click += (o, e) => model.HiddenMenu.RunHiddenMoveUpCommand ();
+			menuHiddenMoveDown.Click += (o, e) => model.HiddenMenu.RunHiddenMoveDownCommand ();
+			menuHiddenMoveLeft.Click += (o, e) => model.HiddenMenu.RunHiddenMoveLeftCommand ();
+			menuHiddenMoveRight.Click += (o, e) => model.HiddenMenu.RunHiddenMoveRightCommand ();
+			menuHiddenLengthen.Click += (o, e) => model.HiddenMenu.RunHiddenLengthenCommand ();
+			menuHiddenShorten.Click += (o, e) => model.HiddenMenu.RunHiddenShortenCommand ();
+			menuHiddenGoToEndMarker.Click += (o, e) => model.HiddenMenu.RunHiddenGoToEndMarkerCommand ();
+			menuHiddenGoToStartMarker.Click += (o, e) => model.HiddenMenu.RunHiddenGoToStartMarkerCommand ();
+			menuHiddenPlayFromStartMarker.Click += (o, e) => model.HiddenMenu.RunHiddenPlayFromStartMarkerCommand ();
+			menuHiddenPrintPoToCSV.Click += (o, e) => model.HiddenMenu.RunHiddenPrintPoToCSVCommand ();
+			menuHiddenFlipCurveOnPianorollMode.Click += (o, e) => model.HiddenMenu.RunHiddenFlipCurveOnPianorollModeCommand ();
 
             cMenuPiano.Opening += (o, e) => cMenuPiano_Opening ();
             cMenuPianoPointer.Click += new EventHandler(cMenuPianoPointer_Click);
@@ -5114,7 +4896,7 @@ namespace cadencii
             cMenuTrackTabRenderCurrent.Click += new EventHandler(cMenuTrackTabRenderCurrent_Click);
 			cMenuTrackTabRenderAll.Click += (o, e) => model.TrackMenu.RunTrackRenderAllCommand ();
             cMenuTrackTabOverlay.Click += new EventHandler(cMenuTrackTabOverlay_Click);
-            cMenuTrackTabRenderer.DropDownOpening += new EventHandler(cMenuTrackTabRenderer_DropDownOpening);
+			cMenuTrackTabRenderer.DropDownOpening += (o, e) => updateRendererMenu ();
 			cMenuTrackTabRendererVOCALOID1.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.VOCALOID1, -1);
 			cMenuTrackTabRendererVOCALOID2.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.VOCALOID2, -1);
 			cMenuTrackTabRendererStraight.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.STRAIGHT_UTAU, -1);
@@ -5381,7 +5163,7 @@ namespace cadencii
 
             if (flip) {
                 if (EditorManager.InputTextBox.Visible) {
-                    flipInputTextBoxMode();
+                    model.FlipInputTextBoxMode();
                 }
             } else if (hide) {
                 hideInputTextBox();
@@ -7333,7 +7115,7 @@ namespace cadencii
 
         public void iconPalette_FormClosing(Object sender, EventArgs e)
         {
-            model.flipIconPaletteVisible(EditorManager.iconPalette.Visible);
+            model.FlipIconPaletteVisible(EditorManager.iconPalette.Visible);
         }
         #endregion
 
@@ -7342,7 +7124,7 @@ namespace cadencii
         #region mixerWindow
         public void mixerWindow_FormClosing(Object sender, EventArgs e)
         {
-            model.flipMixerDialogVisible(EditorManager.MixerWindow.Visible);
+            model.FlipMixerDialogVisible(EditorManager.MixerWindow.Visible);
         }
 
         public void mixerWindow_SoloChanged(int track, bool solo)
@@ -9551,241 +9333,6 @@ namespace cadencii
         }
         #endregion
 
-        //BOOKMARK: menuHidden
-        #region menuHidden*
-        public void menuHiddenVisualForwardParameter_Click(Object sender, EventArgs e)
-        {
-            trackSelector.SelectNextCurve();
-        }
-
-        public void menuHiddenVisualBackwardParameter_Click(Object sender, EventArgs e)
-        {
-            trackSelector.SelectPreviousCurve();
-        }
-
-        public void menuHiddenTrackNext_Click(Object sender, EventArgs e)
-        {
-            if (EditorManager.Selected == MusicManager.getVsqFile().Track.Count - 1) {
-                EditorManager.Selected = (1);
-            } else {
-                EditorManager.Selected = (EditorManager.Selected + 1);
-            }
-            refreshScreen();
-        }
-
-        public void menuHiddenShorten_Click(Object sender, EventArgs e)
-        {
-            QuantizeMode qmode = EditorManager.editorConfig.getLengthQuantize();
-            bool triplet = EditorManager.editorConfig.isLengthQuantizeTriplet();
-            int delta = -QuantizeModeUtil.getQuantizeClock(qmode, triplet);
-            lengthenSelectedEvent(delta);
-        }
-
-        public void menuHiddenTrackBack_Click(Object sender, EventArgs e)
-        {
-            if (EditorManager.Selected == 1) {
-                EditorManager.Selected = (MusicManager.getVsqFile().Track.Count - 1);
-            } else {
-                EditorManager.Selected = (EditorManager.Selected - 1);
-            }
-            refreshScreen();
-        }
-
-        public void menuHiddenEditPaste_Click(Object sender, EventArgs e)
-        {
-            model.Paste();
-        }
-
-        public void menuHiddenFlipCurveOnPianorollMode_Click(Object sender, EventArgs e)
-        {
-            EditorManager.mCurveOnPianoroll = !EditorManager.mCurveOnPianoroll;
-            refreshScreen();
-        }
-
-        public void menuHiddenGoToEndMarker_Click(Object sender, EventArgs e)
-        {
-            if (EditorManager.isPlaying()) {
-                return;
-            }
-
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            if (vsq.config.EndMarkerEnabled) {
-                EditorManager.setCurrentClock(vsq.config.EndMarker);
-                ensureCursorVisible();
-                refreshScreen();
-            }
-        }
-
-        public void menuHiddenGoToStartMarker_Click(Object sender, EventArgs e)
-        {
-            if (EditorManager.isPlaying()) {
-                return;
-            }
-
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            if (vsq.config.StartMarkerEnabled) {
-                EditorManager.setCurrentClock(vsq.config.StartMarker);
-                ensureCursorVisible();
-                refreshScreen();
-            }
-        }
-
-        public void menuHiddenLengthen_Click(Object sender, EventArgs e)
-        {
-            QuantizeMode qmode = EditorManager.editorConfig.getLengthQuantize();
-            bool triplet = EditorManager.editorConfig.isLengthQuantizeTriplet();
-            int delta = QuantizeModeUtil.getQuantizeClock(qmode, triplet);
-            lengthenSelectedEvent(delta);
-        }
-
-        public void menuHiddenMoveDown_Click(Object sender, EventArgs e)
-        {
-            moveUpDownLeftRight(-1, 0);
-        }
-
-        public void menuHiddenMoveUp_Click(Object sender, EventArgs e)
-        {
-            moveUpDownLeftRight(1, 0);
-        }
-
-        public void menuHiddenPlayFromStartMarker_Click(Object sender, EventArgs e)
-        {
-            if (EditorManager.isPlaying()) {
-                return;
-            }
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            if (!vsq.config.StartMarkerEnabled) {
-                return;
-            }
-
-            EditorManager.setCurrentClock(vsq.config.StartMarker);
-            EditorManager.setPlaying(true, this);
-        }
-
-        void menuHiddenPrintPoToCSV_Click(Object sender, EventArgs e)
-        {
-#if DEBUG
-            sout.println("FormMain#menuHiddenPrintPoToCSV_Click");
-#endif
-
-            List<string> keys = new List<string>();
-            string[] langs = Messaging.getRegisteredLanguage();
-            foreach (string lang in langs) {
-                foreach (string key in Messaging.getKeys(lang)) {
-                    if (!keys.Contains(key)) {
-                        keys.Add(key);
-                    }
-                }
-            }
-
-            keys.Sort();
-            string dir = PortUtil.getApplicationStartupPath();
-            string fname = Path.Combine(dir, "cadencii_trans.csv");
-#if DEBUG
-            sout.println("FormMain#menuHiddenPrintPoToCSV_Click; fname=" + fname);
-#endif
-            string old_lang = Messaging.getLanguage();
-            StreamWriter br = null;
-            try {
-                br = new StreamWriter(fname, false, new UTF8Encoding(false));
-                string line = "\"en\"";
-                foreach (string lang in langs) {
-                    line += ",\"" + lang + "\"";
-                }
-                br.WriteLine(line);
-                foreach (string key in keys) {
-                    line = "\"" + key + "\"";
-                    foreach (string lang in langs) {
-                        Messaging.setLanguage(lang);
-                        line += ",\"" + Messaging.getMessage(key) + "\"";
-                    }
-                    br.WriteLine(line);
-                }
-            } catch (Exception ex) {
-                serr.println("FormMain#menuHiddenPrintPoToCSV_Click; ex=" + ex);
-            } finally {
-                if (br != null) {
-                    try {
-                        br.Close();
-                    } catch (Exception ex2) {
-                    }
-                }
-            }
-            Messaging.setLanguage(old_lang);
-        }
-
-        public void menuHiddenMoveLeft_Click(Object sender, EventArgs e)
-        {
-            QuantizeMode mode = EditorManager.editorConfig.getPositionQuantize();
-            bool triplet = EditorManager.editorConfig.isPositionQuantizeTriplet();
-            int delta = -QuantizeModeUtil.getQuantizeClock(mode, triplet);
-#if DEBUG
-            sout.println("FormMain#menuHiddenMoveLeft_Click; delta=" + delta);
-#endif
-            moveUpDownLeftRight(0, delta);
-        }
-
-        public void menuHiddenMoveRight_Click(Object sender, EventArgs e)
-        {
-            QuantizeMode mode = EditorManager.editorConfig.getPositionQuantize();
-            bool triplet = EditorManager.editorConfig.isPositionQuantizeTriplet();
-            int delta = QuantizeModeUtil.getQuantizeClock(mode, triplet);
-            moveUpDownLeftRight(0, delta);
-        }
-
-        public void menuHiddenSelectBackward_Click(Object sender, EventArgs e)
-        {
-            selectBackward();
-        }
-
-        public void menuHiddenSelectForward_Click(Object sender, EventArgs e)
-        {
-            selectForward();
-        }
-
-        public void menuHiddenEditFlipToolPointerPencil_Click(Object sender, EventArgs e)
-        {
-            if (EditorManager.SelectedTool == EditTool.ARROW) {
-                EditorManager.SelectedTool = (EditTool.PENCIL);
-            } else {
-                EditorManager.SelectedTool = (EditTool.ARROW);
-            }
-            refreshScreen();
-        }
-
-        public void menuHiddenEditFlipToolPointerEraser_Click(Object sender, EventArgs e)
-        {
-            if (EditorManager.SelectedTool == EditTool.ARROW) {
-                EditorManager.SelectedTool = (EditTool.ERASER);
-            } else {
-                EditorManager.SelectedTool = (EditTool.ARROW);
-            }
-            refreshScreen();
-        }
-
-        public void menuHiddenEditLyric_Click(Object sender, EventArgs e)
-        {
-            bool input_enabled = EditorManager.InputTextBox.Enabled;
-            if (!input_enabled && EditorManager.itemSelection.getEventCount() > 0) {
-                VsqEvent original = EditorManager.itemSelection.getLastEvent().original;
-                int clock = original.Clock;
-                int note = original.ID.Note;
-                Point pos = new Point(EditorManager.xCoordFromClocks(clock), EditorManager.yCoordFromNote(note));
-                if (!EditorManager.editorConfig.KeepLyricInputMode) {
-                    mLastSymbolEditMode = false;
-                }
-                showInputTextBox(original.ID.LyricHandle.L0.Phrase,
-                                  original.ID.LyricHandle.L0.getPhoneticSymbol(),
-                                  pos, mLastSymbolEditMode);
-                refreshScreen();
-            } else if (input_enabled) {
-                if (EditorManager.InputTextBox.isPhoneticSymbolEditMode()) {
-                    flipInputTextBoxMode();
-                }
-            }
-        }
-        #endregion
-
         //BOOKMARK: cMenuTrackTab
         #region cMenuTrackTab
 
@@ -9847,10 +9394,6 @@ namespace cadencii
 			EditorManager.patchWorkToFreeze(this, tracks);
         }
 
-        public void cMenuTrackTabRenderer_DropDownOpening(Object sender, EventArgs e)
-        {
-            updateRendererMenu();
-        }
         #endregion
 
         #region cPotisionIndicator
@@ -10038,7 +9581,7 @@ namespace cadencii
             int width = pictureBox2.Width;
             int height = pictureBox2.Height;
             int unit_height = height / 4;
-            mGraphicsPictureBox2.setColor(mColorR214G214B214);
+            mGraphicsPictureBox2.setColor(FormMainModel.ColorR214G214B214);
             mGraphicsPictureBox2.fillRect(0, 0, width, height);
             if (mPianoRollScaleYMouseStatus > 0) {
                 mGraphicsPictureBox2.setColor(cadencii.java.awt.Colors.Gray);

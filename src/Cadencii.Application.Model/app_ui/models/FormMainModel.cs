@@ -20,6 +20,19 @@ namespace cadencii
 		/// </summary>
 		public const int _SPL_SPLITTER_WIDTH = 4;
 
+		#region static readonly field
+		/// <summary>
+		/// ピアノロールでの，音符の塗りつぶし色
+		/// </summary>
+		public static readonly Color ColorNoteFill = new Color(181, 220, 86);
+		public static readonly Color ColorR105G105B105 = new Color(105, 105, 105);
+		public static readonly Color ColorR187G187B255 = new Color(187, 187, 255);
+		public static readonly Color ColorR007G007B151 = new Color(7, 7, 151);
+		public static readonly Color ColorR065G065B065 = new Color(65, 65, 65);
+		public static readonly Color ColorTextboxBackcolor = new Color(128, 128, 128);
+		public static readonly Color ColorR214G214B214 = new Color(214, 214, 214);
+		#endregion
+
 		private static readonly AuthorListEntry[] _CREDIT = new AuthorListEntry[]{
 			new AuthorListEntry( "is developped by:", 2 ),
 			new AuthorListEntry( "kbinani", "@kbinani" ),
@@ -123,6 +136,7 @@ namespace cadencii
 			LyricMenu = new LyricMenuModel (this);
 			SettingsMenu = new SettingsMenuModel (this);
 			HelpMenu = new HelpMenuModel (this);
+			HiddenMenu = new HiddenMenuModel (this);
 
 			form.initializeRendererMenuHandler();
 		}
@@ -136,6 +150,7 @@ namespace cadencii
 		public LyricMenuModel LyricMenu { get; private set; }
 		public SettingsMenuModel SettingsMenu { get; private set; }
 		public HelpMenuModel HelpMenu { get; private set; }
+		public HiddenMenuModel HiddenMenu { get; private set; }
 
 		/// <summary>
 		/// 合成器の種類のメニュー項目を管理するハンドラをまとめたリスト
@@ -769,7 +784,7 @@ namespace cadencii
 		/// ミキサーダイアログの表示・非表示状態を更新します
 		/// </summary>
 		/// <param name="visible">表示状態にする場合true，そうでなければfalse</param>
-		public void flipMixerDialogVisible(bool visible)
+		public void FlipMixerDialogVisible(bool visible)
 		{
 			EditorManager.MixerWindow.Visible = visible;
 			EditorManager.editorConfig.MixerVisible = visible;
@@ -781,7 +796,7 @@ namespace cadencii
 		/// <summary>
 		/// アイコンパレットの表示・非表示状態を更新します
 		/// </summary>
-		public void flipIconPaletteVisible(bool visible)
+		public void FlipIconPaletteVisible(bool visible)
 		{
 			EditorManager.iconPalette.Visible = visible;
 			EditorManager.editorConfig.IconPaletteVisible = visible;
@@ -793,7 +808,7 @@ namespace cadencii
 		/// <summary>
 		/// コントロールトラックの表示・非表示状態を更新します
 		/// </summary>
-		public void flipControlCurveVisible(bool visible)
+		public void FlipControlCurveVisible(bool visible)
 		{
 			form.TrackSelector.setCurveVisible(visible);
 			if (visible) {
@@ -1069,6 +1084,212 @@ namespace cadencii
 			form.applyShortcut();
 		}
 		#endif
+
+		/// <summary>
+		/// 現在選択されている音符よりも1個前方の音符を選択しなおします。
+		/// </summary>
+		public void SelectBackward()
+		{
+			int count = EditorManager.itemSelection.getEventCount();
+			if (count <= 0) {
+				return;
+			}
+			VsqFileEx vsq = MusicManager.getVsqFile();
+			if (vsq == null) {
+				return;
+			}
+			int selected = EditorManager.Selected;
+			VsqTrack vsq_track = vsq.Track[selected];
+
+			// 選択されている音符のうち、最も前方にあるものがどれかを調べる
+			int min_clock = int.MaxValue;
+			int internal_id = -1;
+			VsqIDType type = VsqIDType.Unknown;
+			foreach (var item in EditorManager.itemSelection.getEventIterator()) {
+				if (item.editing.Clock <= min_clock) {
+					min_clock = item.editing.Clock;
+					internal_id = item.original.InternalID;
+					type = item.original.ID.type;
+				}
+			}
+			if (internal_id == -1 || type == VsqIDType.Unknown) {
+				return;
+			}
+
+			// 1個前のアイテムのIDを検索
+			int last_id = -1;
+			int clock = EditorManager.getCurrentClock();
+			for (Iterator<VsqEvent> itr = vsq_track.getEventIterator(); itr.hasNext(); ) {
+				VsqEvent item = itr.next();
+				if (item.ID.type != type) {
+					continue;
+				}
+				if (item.InternalID == internal_id) {
+					break;
+				}
+				last_id = item.InternalID;
+				clock = item.Clock;
+			}
+			if (last_id == -1) {
+				return;
+			}
+
+			// 選択しなおす
+			EditorManager.itemSelection.clearEvent();
+			EditorManager.itemSelection.addEvent(last_id);
+			form.ensureVisible(clock);
+		}
+
+		/// <summary>
+		/// 現在選択されている音符よりも1個後方の音符を選択しなおします。
+		/// </summary>
+		public void SelectForward()
+		{
+			int count = EditorManager.itemSelection.getEventCount();
+			if (count <= 0) {
+				return;
+			}
+			VsqFileEx vsq = MusicManager.getVsqFile();
+			if (vsq == null) {
+				return;
+			}
+			int selected = EditorManager.Selected;
+			VsqTrack vsq_track = vsq.Track[selected];
+
+			// 選択されている音符のうち、最も後方にあるものがどれかを調べる
+			int max_clock = int.MinValue;
+			int internal_id = -1;
+			VsqIDType type = VsqIDType.Unknown;
+			foreach (var item in EditorManager.itemSelection.getEventIterator()) {
+				if (max_clock <= item.editing.Clock) {
+					max_clock = item.editing.Clock;
+					internal_id = item.original.InternalID;
+					type = item.original.ID.type;
+				}
+			}
+			if (internal_id == -1 || type == VsqIDType.Unknown) {
+				return;
+			}
+
+			// 1個後ろのアイテムのIDを検索
+			int last_id = -1;
+			int clock = EditorManager.getCurrentClock();
+			bool break_next = false;
+			for (Iterator<VsqEvent> itr = vsq_track.getEventIterator(); itr.hasNext(); ) {
+				VsqEvent item = itr.next();
+				if (item.ID.type != type) {
+					continue;
+				}
+				if (item.InternalID == internal_id) {
+					break_next = true;
+					last_id = item.InternalID;
+					clock = item.Clock;
+					continue;
+				}
+				last_id = item.InternalID;
+				clock = item.Clock;
+				if (break_next) {
+					break;
+				}
+			}
+			if (last_id == -1) {
+				return;
+			}
+
+			// 選択しなおす
+			EditorManager.itemSelection.clearEvent();
+			EditorManager.itemSelection.addEvent(last_id);
+			form.ensureVisible(clock);
+		}
+
+		/// <summary>
+		/// 歌詞入力用テキストボックスのモード（歌詞/発音記号）を切り替えます
+		/// </summary>
+		public void FlipInputTextBoxMode()
+		{
+			string new_value = EditorManager.InputTextBox.Text;
+			if (!EditorManager.InputTextBox.isPhoneticSymbolEditMode()) {
+				EditorManager.InputTextBox.BackColor = ColorTextboxBackcolor;
+			} else {
+				EditorManager.InputTextBox.BackColor = Colors.White;
+			}
+			EditorManager.InputTextBox.Text = EditorManager.InputTextBox.getBufferText();
+			EditorManager.InputTextBox.setBufferText(new_value);
+			EditorManager.InputTextBox.setPhoneticSymbolEditMode(!EditorManager.InputTextBox.isPhoneticSymbolEditMode());
+		}
+
+		/// <summary>
+		/// 選択された音符の長さを、指定したゲートタイム分長くします。
+		/// </summary>
+		/// <param name="delta_length"></param>
+		public void LengthenSelectedEvent(int delta_length)
+		{
+			if (delta_length == 0) {
+				return;
+			}
+
+			VsqFileEx vsq = MusicManager.getVsqFile();
+			if (vsq == null) {
+				return;
+			}
+
+			int selected = EditorManager.Selected;
+
+			List<VsqEvent> items = new List<VsqEvent>();
+			foreach (var item in EditorManager.itemSelection.getEventIterator()) {
+				if (item.editing.ID.type != VsqIDType.Anote &&
+					item.editing.ID.type != VsqIDType.Aicon) {
+					continue;
+				}
+
+				// クレッシェンド、デクレッシェンドでないものを省く
+				if (item.editing.ID.type == VsqIDType.Aicon) {
+					if (item.editing.ID.IconDynamicsHandle == null) {
+						continue;
+					}
+					if (!item.editing.ID.IconDynamicsHandle.isCrescendType() &&
+						!item.editing.ID.IconDynamicsHandle.isDecrescendType()) {
+						continue;
+					}
+				}
+
+				// 長さを変える。0未満になると0に直す
+				int length = item.editing.ID.getLength();
+				int draft = length + delta_length;
+				if (draft < 0) {
+					draft = 0;
+				}
+				if (length == draft) {
+					continue;
+				}
+
+				// ビブラートの長さを変更
+				VsqEvent add = (VsqEvent)item.editing.clone();
+				EditorManager.editLengthOfVsqEvent(add, draft, EditorManager.vibratoLengthEditingRule);
+				items.Add(add);
+			}
+
+			if (items.Count <= 0) {
+				return;
+			}
+
+			// コマンドを発行
+			CadenciiCommand run = new CadenciiCommand(
+				VsqCommand.generateCommandEventReplaceRange(
+					selected, items.ToArray()));
+			EditorManager.editHistory.register(vsq.executeCommand(run));
+
+			// 編集されたものを再選択する
+			foreach (var item in items) {
+				EditorManager.itemSelection.addEvent(item.InternalID);
+			}
+
+			// 編集が施された。
+			form.setEdited(true);
+			form.updateDrawObjectList();
+
+			form.refreshScreen();
+		}
 	}
 }
 
