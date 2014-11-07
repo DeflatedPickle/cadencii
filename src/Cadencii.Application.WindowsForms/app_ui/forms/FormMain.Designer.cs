@@ -3079,10 +3079,10 @@ namespace cadencii
         public UiToolStripSeparator toolStripMenuItem27;
         public UiToolStripMenuItem cMenuTrackTabOverlay;
         public UiContextMenuStrip cMenuTrackSelector;
-        public UiToolStripMenuItem cMenuTrackSelectorPointer;
-        public UiToolStripMenuItem cMenuTrackSelectorPencil;
-        public UiToolStripMenuItem cMenuTrackSelectorLine;
-        public UiToolStripMenuItem cMenuTrackSelectorEraser;
+		public UiToolStripMenuItem cMenuTrackSelectorPointer { get; set; }
+		public UiToolStripMenuItem cMenuTrackSelectorPencil { get;set; }
+		public UiToolStripMenuItem cMenuTrackSelectorLine { get; set; }
+		public UiToolStripMenuItem cMenuTrackSelectorEraser { get; set; }
         public UiToolStripSeparator toolStripMenuItem28;
 		public UiToolStripMenuItem cMenuTrackSelectorUndo { get; set; }
 		public UiToolStripMenuItem cMenuTrackSelectorRedo { get; set; }
@@ -3118,7 +3118,7 @@ namespace cadencii
         public UiToolStripMenuItem menuHiddenTrackBack;
         public UiToolStripMenuItem menuJobReloadVsti;
         public UiToolStripMenuItem cMenuPianoCurve;
-        public UiToolStripMenuItem cMenuTrackSelectorCurve;
+		public UiToolStripMenuItem cMenuTrackSelectorCurve { get; set; }
         public UiTrackBar trackBar;
         public UiToolBarButton stripBtnPointer;
         public UiToolBarButton stripBtnLine;

@@ -138,6 +138,7 @@ namespace cadencii
 			HelpMenu = new HelpMenuModel (this);
 			HiddenMenu = new HiddenMenuModel (this);
 			PianoMenu = new PianoMenuModel (this);
+			TrackSelectorMenu = new TrackSelectorMenuModel (this);
 
 			form.initializeRendererMenuHandler();
 		}
@@ -153,6 +154,7 @@ namespace cadencii
 		public HelpMenuModel HelpMenu { get; private set; }
 		public HiddenMenuModel HiddenMenu { get; private set; }
 		public PianoMenuModel PianoMenu { get; private set; }
+		public TrackSelectorMenuModel TrackSelectorMenu { get; private set; }
 
 		/// <summary>
 		/// 合成器の種類のメニュー項目を管理するハンドラをまとめたリスト

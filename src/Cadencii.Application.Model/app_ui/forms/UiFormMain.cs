@@ -24,6 +24,12 @@ namespace cadencii
     {
 		FormMainModel Model { get; }
 
+		UiToolStripMenuItem cMenuTrackSelectorPointer { get; set; }
+		UiToolStripMenuItem cMenuTrackSelectorPencil { get;set; }
+		UiToolStripMenuItem cMenuTrackSelectorLine { get; set; }
+		UiToolStripMenuItem cMenuTrackSelectorEraser { get; set; }
+		UiToolStripMenuItem cMenuTrackSelectorCurve { get; set; }
+
 		PencilMode mPencilMode { get; set; }
 		UiToolStripMenuItem cMenuPianoGrid { get; set; }
 		UiToolStripMenuItem cMenuPianoImportLyric { get; set; }

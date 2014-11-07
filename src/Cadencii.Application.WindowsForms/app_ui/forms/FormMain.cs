@@ -4795,8 +4795,8 @@ namespace cadencii
 			menuTrackRenderer.DropDownOpening += (o, e) => model.TrackMenu.RunTrackRendererDropDownOpening ();
 			menuTrackRendererVOCALOID1.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.VOCALOID1, -1);
 			menuTrackRendererVOCALOID2.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.VOCALOID2, -1);
-            //UTAUはresamplerを識別するのでmenuTrackRendererUtauのサブアイテムのClickイベントを拾う
-            //menuTrackRendererUtau.Click += new EventHandler( handleChangeRenderer );
+			//UTAUはresamplerを識別するのでmenuTrackRendererUtauのサブアイテムのClickイベントを拾う
+			//menuTrackRendererUtau.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.UTAU, xxx);
 			menuTrackRendererVCNT.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.VCNT, -1);
 			menuTrackRendererAquesTone.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.AQUES_TONE, -1);
 			menuLyric.DropDownOpening += (o, e) => model.LyricMenu.RunLyricDropDownOpening ();
@@ -4901,20 +4901,20 @@ namespace cadencii
 			cMenuTrackTabRendererVOCALOID2.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.VOCALOID2, -1);
 			cMenuTrackTabRendererStraight.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.STRAIGHT_UTAU, -1);
 			cMenuTrackTabRendererAquesTone.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.AQUES_TONE, -1);
-            cMenuTrackSelector.Opening += (o, e) => cMenuTrackSelector_Opening ();
-            cMenuTrackSelectorPointer.Click += new EventHandler(cMenuTrackSelectorPointer_Click);
-            cMenuTrackSelectorPencil.Click += new EventHandler(cMenuTrackSelectorPencil_Click);
-            cMenuTrackSelectorLine.Click += new EventHandler(cMenuTrackSelectorLine_Click);
-            cMenuTrackSelectorEraser.Click += new EventHandler(cMenuTrackSelectorEraser_Click);
-            cMenuTrackSelectorCurve.Click += new EventHandler(cMenuTrackSelectorCurve_Click);
-            cMenuTrackSelectorUndo.Click += new EventHandler(cMenuTrackSelectorUndo_Click);
-            cMenuTrackSelectorRedo.Click += new EventHandler(cMenuTrackSelectorRedo_Click);
-            cMenuTrackSelectorCut.Click += new EventHandler(cMenuTrackSelectorCut_Click);
-            cMenuTrackSelectorCopy.Click += new EventHandler(cMenuTrackSelectorCopy_Click);
-            cMenuTrackSelectorPaste.Click += new EventHandler(cMenuTrackSelectorPaste_Click);
-            cMenuTrackSelectorDelete.Click += new EventHandler(cMenuTrackSelectorDelete_Click);
-            cMenuTrackSelectorDeleteBezier.Click += new EventHandler(cMenuTrackSelectorDeleteBezier_Click);
-            cMenuTrackSelectorSelectAll.Click += new EventHandler(cMenuTrackSelectorSelectAll_Click);
+			cMenuTrackSelector.Opening += (o, e) => model.TrackSelectorMenu.RunOpening ();
+			cMenuTrackSelectorPointer.Click += (o, e) => model.TrackSelectorMenu.RunPointerCommand ();
+			cMenuTrackSelectorPencil.Click += (o, e) => model.TrackSelectorMenu.RunPencilCommand ();
+			cMenuTrackSelectorLine.Click += (o, e) => model.TrackSelectorMenu.RunLineCommand ();
+			cMenuTrackSelectorEraser.Click += (o, e) => model.TrackSelectorMenu.RunEraserCommand ();
+			cMenuTrackSelectorCurve.Click += (o, e) => model.TrackSelectorMenu.RunCurveCommand ();
+			cMenuTrackSelectorUndo.Click += (o, e) => model.Undo ();
+			cMenuTrackSelectorRedo.Click += (o, e) => model.Redo ();
+			cMenuTrackSelectorCut.Click += (o, e) => model.Cut ();
+			cMenuTrackSelectorCopy.Click += (o, e) => model.Copy ();
+			cMenuTrackSelectorPaste.Click += (o, e) => model.Paste ();
+			cMenuTrackSelectorDelete.Click += (o, e) => model.DeleteEvent ();
+			cMenuTrackSelectorDeleteBezier.Click += (o, e) => model.TrackSelectorMenu.RunDeleteBezierCommand ();
+			cMenuTrackSelectorSelectAll.Click += (o, e) => model.SelectAllEvent ();
             cMenuPositionIndicatorEndMarker.Click += new EventHandler(cMenuPositionIndicatorEndMarker_Click);
             cMenuPositionIndicatorStartMarker.Click += new EventHandler(cMenuPositionIndicatorStartMarker_Click);
             trackBar.ValueChanged += new EventHandler(trackBar_ValueChanged);
@@ -9219,140 +9219,6 @@ namespace cadencii
             picturePositionIndicator.Refresh();
         }
         #endregion
-
-        //BOOKMARK: cMenuTrackSelector
-        #region cMenuTrackSelector
-        public void cMenuTrackSelector_Opening()
-        {
-            updateCopyAndPasteButtonStatus();
-
-            // 選択ツールの状態に合わせて表示を更新
-            cMenuTrackSelectorPointer.Checked = false;
-            cMenuTrackSelectorPencil.Checked = false;
-            cMenuTrackSelectorLine.Checked = false;
-            cMenuTrackSelectorEraser.Checked = false;
-            EditTool tool = EditorManager.SelectedTool;
-            if (tool == EditTool.ARROW) {
-                cMenuTrackSelectorPointer.Checked = true;
-            } else if (tool == EditTool.PENCIL) {
-                cMenuTrackSelectorPencil.Checked = true;
-            } else if (tool == EditTool.LINE) {
-                cMenuTrackSelectorLine.Checked = true;
-            } else if (tool == EditTool.ERASER) {
-                cMenuTrackSelectorEraser.Checked = true;
-            }
-            cMenuTrackSelectorCurve.Checked = EditorManager.isCurveMode();
-        }
-
-        public void cMenuTrackSelectorPointer_Click(Object sender, EventArgs e)
-        {
-            EditorManager.SelectedTool = (EditTool.ARROW);
-            refreshScreen();
-        }
-
-        public void cMenuTrackSelectorPencil_Click(Object sender, EventArgs e)
-        {
-            EditorManager.SelectedTool = (EditTool.PENCIL);
-            refreshScreen();
-        }
-
-        public void cMenuTrackSelectorLine_Click(Object sender, EventArgs e)
-        {
-            EditorManager.SelectedTool = (EditTool.LINE);
-        }
-
-        public void cMenuTrackSelectorEraser_Click(Object sender, EventArgs e)
-        {
-            EditorManager.SelectedTool = (EditTool.ERASER);
-        }
-
-        public void cMenuTrackSelectorCurve_Click(Object sender, EventArgs e)
-        {
-            EditorManager.setCurveMode(!EditorManager.isCurveMode());
-        }
-
-        public void cMenuTrackSelectorSelectAll_Click(Object sender, EventArgs e)
-        {
-            model.SelectAllEvent();
-        }
-
-        public void cMenuTrackSelectorCut_Click(Object sender, EventArgs e)
-        {
-            model.Cut();
-        }
-
-        public void cMenuTrackSelectorCopy_Click(Object sender, EventArgs e)
-        {
-            model.Copy();
-        }
-
-        public void cMenuTrackSelectorDelete_Click(Object sender, EventArgs e)
-        {
-            model.DeleteEvent();
-        }
-
-        public void cMenuTrackSelectorDeleteBezier_Click(Object sender, EventArgs e)
-        {
-            foreach (var sbp in EditorManager.itemSelection.getBezierIterator()) {
-                int chain_id = sbp.chainID;
-                int point_id = sbp.pointID;
-                VsqFileEx vsq = MusicManager.getVsqFile();
-                int selected = EditorManager.Selected;
-                BezierChain chain = (BezierChain)vsq.AttachedCurves.get(selected - 1).getBezierChain(trackSelector.getSelectedCurve(), chain_id).clone();
-                int index = -1;
-                for (int i = 0; i < chain.points.Count; i++) {
-                    if (chain.points[i].getID() == point_id) {
-                        index = i;
-                        break;
-                    }
-                }
-                if (index >= 0) {
-                    chain.points.RemoveAt(index);
-                    if (chain.points.Count == 0) {
-                        CadenciiCommand run = VsqFileEx.generateCommandDeleteBezierChain(selected,
-                                                                                          trackSelector.getSelectedCurve(),
-                                                                                          chain_id,
-                                                                                          ApplicationGlobal.appConfig.getControlCurveResolutionValue());
-                        EditorManager.editHistory.register(vsq.executeCommand(run));
-                    } else {
-                        CadenciiCommand run = VsqFileEx.generateCommandReplaceBezierChain(selected,
-                                                                                           trackSelector.getSelectedCurve(),
-                                                                                           chain_id,
-                                                                                           chain,
-                                                                                           ApplicationGlobal.appConfig.getControlCurveResolutionValue());
-                        EditorManager.editHistory.register(vsq.executeCommand(run));
-                    }
-                    setEdited(true);
-                    refreshScreen();
-                    break;
-                }
-            }
-        }
-
-        public void cMenuTrackSelectorPaste_Click(Object sender, EventArgs e)
-        {
-            model.Paste();
-        }
-
-        public void cMenuTrackSelectorUndo_Click(Object sender, EventArgs e)
-        {
-#if DEBUG
-            CDebug.WriteLine("cMenuTrackSelectorUndo_Click");
-#endif
-            model.Undo();
-            refreshScreen();
-        }
-
-        public void cMenuTrackSelectorRedo_Click(Object sender, EventArgs e)
-        {
-#if DEBUG
-            CDebug.WriteLine("cMenuTrackSelectorRedo_Click");
-#endif
-            model.Redo();
-            refreshScreen();
-        }
-        #endregion
-
         #region buttonVZoom & buttonVMooz
         public void buttonVZoom_Click(Object sender, EventArgs e)
         {
