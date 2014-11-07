@@ -20,7 +20,7 @@ namespace cadencii
 			return ret;
 		}
 
-		public override bool ShowDialogTo (FormWorker formWorker, object mainWindow)
+		public override bool ShowDialogTo (FormWorker formWorker, UiForm mainWindow)
 		{
 			BeforeShowDialog ();
 			bool ret = formWorker.getUi ().showDialogTo ((FormMain) mainWindow);
@@ -104,19 +104,12 @@ namespace cadencii
 			AfterShowDialog ();
 			return (Cadencii.Gui.DialogResult) ret;
 		}
-		public override int ShowModalDialog (UiForm dialog, object parentForm)
-		{
-			BeforeShowDialog ();
-			int ret = dialog.showDialog (parentForm);
-			AfterShowDialog ();
-			return ret;
-		}
-		public override Cadencii.Gui.DialogResult ShowModalDialog (object dialog, object parentForm)
+		public override Cadencii.Gui.DialogResult ShowModalDialog (UiForm dialog, UiForm parentForm)
 		{
 			BeforeShowDialog ();
 			var ret = ((Form) dialog).ShowDialog ((Form) parentForm);
 			AfterShowDialog ();
-			return (Cadencii.Gui.DialogResult)ret;
+			return (Cadencii.Gui.DialogResult) ret;
 		}
 		public override bool IsShowingDialog {
 			get { return mShowingDialog; }

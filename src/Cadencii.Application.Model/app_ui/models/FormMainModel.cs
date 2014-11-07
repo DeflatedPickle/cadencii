@@ -267,13 +267,13 @@ namespace cadencii
 				} else {
 					file = PortUtil.getFileName(file);
 				}
-				var dr = DialogManager.showMessageBox(_("Save this sequence?"),
+				var dr = DialogManager.ShowMessageBox(_("Save this sequence?"),
 					_("Affirmation"),
 					cadencii.Dialog.MSGBOX_YES_NO_CANCEL_OPTION,
 					cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
 				if (dr == Cadencii.Gui.DialogResult.Yes) {
 					if (MusicManager.getFileName() == "") {
-						var dr2 = DialogManager.showModalFileDialog(form.saveXmlVsqDialog, false, form);
+						var dr2 = DialogManager.ShowModalFileDialog(form.saveXmlVsqDialog, false, form);
 						if (dr2 == Cadencii.Gui.DialogResult.OK) {
 							string sf = form.saveXmlVsqDialog.FileName;
 							EditorManager.saveTo(sf);
@@ -381,7 +381,7 @@ namespace cadencii
 						} catch (Exception ex) {
 							Logger.write(GetType () + ".openVsqCor; ex=" + ex + "\n");
 							serr.println("FormMain#openVsqCor; ex=" + ex);
-							DialogManager.showMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
+							DialogManager.ShowMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
 								_("Info."),
 								Cadencii.Gui.AwtHost.OK_OPTION,
 								cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
@@ -423,7 +423,7 @@ namespace cadencii
 					} catch (Exception ex) {
 						Logger.write(GetType () + ".openVsqCor; ex=" + ex + "\n");
 						serr.println("FormMain#openVsqCor; ex=" + ex);
-						DialogManager.showMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
+						DialogManager.ShowMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
 							_("Info."),
 							Cadencii.Gui.AwtHost.OK_OPTION,
 							cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
@@ -526,8 +526,8 @@ namespace cadencii
 				if (check_unknown_singer || check_unknwon_resampler) {
 					dialog = ApplicationUIHost.Create<FormCheckUnknownSingerAndResampler>(singer_path.value, check_unknown_singer, resampler_path.value, check_unknwon_resampler);
 					dialog.Location = GetFormPreferedLocation(dialog.Width, dialog.Height);
-					var dr = DialogManager.showModalDialog(dialog, form);
-					if (dr != 1) {
+					var dr = DialogManager.ShowModalDialog(dialog, form);
+					if (dr != DialogResult.OK) {
 						return;
 					}
 
@@ -699,8 +699,8 @@ namespace cadencii
 				dlg.DEMaccent = (ev.ID.DEMaccent);
 
 				dlg.Location = GetFormPreferedLocation(dlg.Width, dlg.Height);
-				var dr = DialogManager.showModalDialog(dlg, form);
-				if (dr == 1) {
+				var dr = DialogManager.ShowModalDialog(dlg, form);
+				if (dr == DialogResult.OK) {
 					VsqEvent edited = (VsqEvent)ev.clone();
 					edited.ID.PMBendDepth = dlg.PMBendDepth;
 					edited.ID.PMBendLength = dlg.PMBendLength;
@@ -754,8 +754,8 @@ namespace cadencii
 					type,
 					ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType);
 				dlg.Location = GetFormPreferedLocation(dlg);
-				var dr = DialogManager.showModalDialog(dlg, form);
-				if (dr == 1) {
+				var dr = DialogManager.ShowModalDialog(dlg, form);
+				if (dr == DialogResult.OK) {
 					VsqEvent edited = (VsqEvent)ev.clone();
 					if (dlg.getVibratoHandle() != null) {
 						edited.ID.VibratoHandle = (VibratoHandle)dlg.getVibratoHandle().clone();
@@ -857,8 +857,8 @@ namespace cadencii
 				}
 				var dlg = form.mDialogImportLyric;
 				dlg.Location = GetFormPreferedLocation(dlg);
-				var dr = DialogManager.showModalDialog(dlg, form);
-				if (dr == 1) {
+				var dr = DialogManager.ShowModalDialog(dlg, form);
+				if (dr == DialogResult.OK) {
 					string[] phrases = dlg.Letters;
 					#if DEBUG
 					foreach (string s in phrases) {
@@ -978,8 +978,8 @@ namespace cadencii
 				ib = ApplicationUIHost.Create<InputBox>(_("Input new name of track"));
 				ib.setResult(vsq.Track[selected].getName());
 				ib.Location = GetFormPreferedLocation(ib);
-				var dr = DialogManager.showModalDialog(ib, form);
-				if (dr == 1) {
+				var dr = DialogManager.ShowModalDialog(ib, form);
+				if (dr == DialogResult.OK) {
 					string ret = ib.getResult();
 					CadenciiCommand run = new CadenciiCommand(
 						VsqCommand.generateCommandTrackChangeName(selected, ret));
@@ -1002,7 +1002,7 @@ namespace cadencii
 		{
 			int selected = EditorManager.Selected;
 			VsqFileEx vsq = MusicManager.getVsqFile();
-			if (DialogManager.showMessageBox(
+			if (DialogManager.ShowMessageBox(
 				PortUtil.formatMessage(_("Do you wish to remove track? {0} : '{1}'"), selected, vsq.Track[selected].getName()),
 				FormMainModel.ApplicationName,
 				cadencii.Dialog.MSGBOX_YES_NO_OPTION,

@@ -111,7 +111,7 @@ namespace cadencii
             } catch (Exception ex) {
             }
             if ((minor % 2) != 0) {
-                DialogManager.showMessageBox(
+                DialogManager.ShowMessageBox(
                     PortUtil.formatMessage(
                         _("Info: This is test version of Cadencii version {0}"),
                         BAssemblyInfo.fileVersionMeasure + "." + (minor + 1)),

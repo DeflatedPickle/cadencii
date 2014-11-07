@@ -41,7 +41,7 @@ namespace cadencii
 						ScriptServer.reload(id);
 					}
 					if (ScriptServer.isAvailable(id)) {
-						if (ScriptServer.invokeScript(id, MusicManager.getVsqFile(), (p1,p2,p3,p4) => DialogManager.showMessageBox (p1, p2, p3, p4))) {
+						if (ScriptServer.invokeScript(id, MusicManager.getVsqFile(), (p1,p2,p3,p4) => DialogManager.ShowMessageBox (p1, p2, p3, p4))) {
 							parent.form.setEdited(true);
 							parent.form.updateDrawObjectList();
 							int selected = EditorManager.Selected;
@@ -56,7 +56,7 @@ namespace cadencii
 						FormCompileResult dlg = null;
 						try {
 							dlg = ApplicationUIHost.Create<FormCompileResult>(_("Failed loading script."), ScriptServer.getCompileMessage(id));
-							DialogManager.showModalDialog(dlg, parent.form);
+							DialogManager.ShowModalDialog(dlg, parent.form);
 						} catch (Exception ex) {
 							Logger.write(GetType () + ".handleScriptMenuItem_Click; ex=" + ex + "\n");
 						} finally {

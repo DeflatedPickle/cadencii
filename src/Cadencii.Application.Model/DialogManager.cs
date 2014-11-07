@@ -21,33 +21,20 @@ namespace cadencii
 	{
 		#region MessageBoxのラッパー
 
-		public static DialogResult showMessageBox (string text)
+		public static DialogResult ShowMessageBox (string text)
 		{
-			return showMessageBox (text, "", cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_PLAIN_MESSAGE);
+			return ShowMessageBox (text, "", cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_PLAIN_MESSAGE);
 		}
 
-		public static DialogResult showMessageBox (string text, string caption)
+		public static DialogResult ShowMessageBox (string text, string caption)
 		{
-			return showMessageBox (text, caption, cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_PLAIN_MESSAGE);
+			return ShowMessageBox (text, caption, cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_PLAIN_MESSAGE);
 		}
 
-		public static DialogResult showMessageBox (string text, string caption, int optionType)
+		public static DialogResult ShowMessageBox (string text, string caption, int optionType)
 		{
-			return showMessageBox (text, caption, optionType, cadencii.Dialog.MSGBOX_PLAIN_MESSAGE);
+			return ShowMessageBox (text, caption, optionType, cadencii.Dialog.MSGBOX_PLAIN_MESSAGE);
 		}
-
-		/*
-		/// <summary>
-		/// ダイアログを，メインウィンドウに対してモーダルに表示し，ダイアログの結果を取得します
-		/// </summary>
-		/// <param name="dialog"></param>
-		/// <param name="main_form"></param>
-		/// <returns></returns>
-		public static DialogResult showModalDialog (object dialogForm, object parentForm)
-		{
-			return ApplicationUIHost.Instance.Dialogs.ShowModalDialog (dialogForm, parentForm);
-		}
-		*/
 
 		/// <summary>
 		/// ダイアログを，メインウィンドウに対してモーダルに表示し，ダイアログの結果を取得します
@@ -55,7 +42,7 @@ namespace cadencii
 		/// <param name="dialog"></param>
 		/// <param name="main_form"></param>
 		/// <returns></returns>
-		public static int showModalDialog (UiForm dialog, UiForm parent_form)
+		public static DialogResult ShowModalDialog (UiForm dialog, UiForm parent_form)
 		{
 			return ApplicationUIHost.Instance.Dialogs.ShowModalDialog (dialog, parent_form);
 		}
@@ -66,7 +53,7 @@ namespace cadencii
 		/// <param name="dialog"></param>
 		/// <param name="main_form"></param>
 		/// <returns></returns>
-		public static DialogResult showModalFolderDialog (UiFolderBrowserDialog folderBrowserDialog, UiForm mainForm)
+		public static DialogResult ShowModalFolderDialog (UiFolderBrowserDialog folderBrowserDialog, UiForm mainForm)
 		{
 			return ApplicationUIHost.Instance.Dialogs.ShowModalFolderDialog (folderBrowserDialog, mainForm);
 		}
@@ -78,7 +65,7 @@ namespace cadencii
 		/// <param name="open_mode"></param>
 		/// <param name="main_form"></param>
 		/// <returns></returns>
-		public static DialogResult showModalFileDialog (UiFileDialog fileDialog, bool open_mode, UiForm mainForm)
+		public static DialogResult ShowModalFileDialog (UiFileDialog fileDialog, bool open_mode, UiForm mainForm)
 		{
 			return ApplicationUIHost.Instance.Dialogs.ShowModalFileDialog (fileDialog, open_mode, mainForm);
 		}
@@ -87,19 +74,19 @@ namespace cadencii
 		/// beginShowDialogが呼ばれた後，endShowDialogがまだ呼ばれていないときにtrue
 		/// </summary>
 		/// <returns></returns>
-		public static bool isShowingDialog ()
+		public static bool IsShowingDialog ()
 		{
 			return ApplicationUIHost.Instance.Dialogs.IsShowingDialog;
 		}
 
-		public static DialogResult showMessageBox (string text, string caption, int optionType, int messageType)
+		public static DialogResult ShowMessageBox (string text, string caption, int optionType, int messageType)
 		{
 			return ApplicationUIHost.Instance.Dialogs.ShowMessageBox (text, caption, optionType, messageType);
 		}
 
 		#endregion
 
-		public static bool showDialogTo (FormWorker formWorker, object mainFormWindow)
+		public static bool ShowDialogTo (FormWorker formWorker, UiForm mainFormWindow)
 		{
 			return ApplicationUIHost.Instance.Dialogs.ShowDialogTo (formWorker, mainFormWindow);
 		}

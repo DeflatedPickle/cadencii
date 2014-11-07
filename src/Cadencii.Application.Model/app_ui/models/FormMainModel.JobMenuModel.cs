@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using cadencii.windows.forms;
 using cadencii.core;
 using System.Text;
+using Cadencii.Gui;
 
 namespace cadencii
 {
@@ -130,8 +131,8 @@ namespace cadencii
 					dlg.Position = (draft);
 
 					dlg.Location = parent.GetFormPreferedLocation(dlg);
-					var dr = DialogManager.showModalDialog(dlg, parent.form);
-					if (dr == 1) {
+					var dr = DialogManager.ShowModalDialog(dlg, parent.form);
+					if (dr == DialogResult.OK) {
 						int pos = dlg.Position + MusicManager.getVsqFile().getPreMeasure() - 1;
 						int length = dlg.Length;
 
@@ -247,8 +248,8 @@ namespace cadencii
 					int old_pre_measure = MusicManager.getVsqFile().getPreMeasure();
 					dialog.setResult(old_pre_measure + "");
 					dialog.Location = parent.GetFormPreferedLocation(dialog);
-					var ret = DialogManager.showModalDialog(dialog, parent.form);
-					if (ret == 1) {
+					var ret = DialogManager.ShowModalDialog(dialog, parent.form);
+					if (ret == DialogResult.OK) {
 						string str_result = dialog.getResult();
 						int result = old_pre_measure;
 						try {
@@ -299,8 +300,8 @@ namespace cadencii
 					dlg.End = (draft + 1);
 
 					dlg.Location = parent.GetFormPreferedLocation(dlg);
-					var dr = DialogManager.showModalDialog(dlg, parent.form);
-					if (dr == 1) {
+					var dr = DialogManager.ShowModalDialog(dlg, parent.form);
+					if (dr == DialogResult.OK) {
 						VsqFileEx temp = (VsqFileEx)MusicManager.getVsqFile().clone();
 						int start = dlg.Start + MusicManager.getVsqFile().getPreMeasure() - 1;
 						int end = dlg.End + MusicManager.getVsqFile().getPreMeasure() - 1;
@@ -452,8 +453,8 @@ namespace cadencii
 				try {
 					dlg = ApplicationUIHost.Create<FormRandomize>();
 					dlg.Location = parent.GetFormPreferedLocation(dlg);
-					var dr = DialogManager.showModalDialog(dlg, parent.form);
-					if (dr == 1) {
+					var dr = DialogManager.ShowModalDialog(dlg, parent.form);
+					if (dr == DialogResult.OK) {
 						VsqFileEx vsq = MusicManager.getVsqFile();
 						int preMeasure = vsq.getPreMeasure();
 						int startBar = dlg.getStartBar() + (preMeasure - 1);

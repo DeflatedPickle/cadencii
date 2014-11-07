@@ -395,7 +395,7 @@ namespace cadencii
 
         public void btnApply_Click(Object sender, EventArgs e)
         {
-            if (DialogManager.showMessageBox(_("Would you like to change singer style for all events?"),
+            if (DialogManager.ShowMessageBox(_("Would you like to change singer style for all events?"),
 				FormMainModel.ApplicationName,
                                   cadencii.Dialog.MSGBOX_YES_NO_OPTION,
                                   cadencii.Dialog.MSGBOX_WARNING_MESSAGE) == Cadencii.Gui.DialogResult.Yes) {

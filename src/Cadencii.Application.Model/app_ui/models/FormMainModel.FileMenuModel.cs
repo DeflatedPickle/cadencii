@@ -60,7 +60,7 @@ namespace cadencii
 				}
 				string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("xvsq");
 				parent.form.openXmlVsqDialog.SetSelectedFile(dir);
-				var dialog_result = DialogManager.showModalFileDialog(parent.form.openXmlVsqDialog, true, parent.form);
+				var dialog_result = DialogManager.ShowModalFileDialog(parent.form.openXmlVsqDialog, true, parent.form);
 				if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 					return;
 				}
@@ -70,7 +70,7 @@ namespace cadencii
 				string file = parent.form.openXmlVsqDialog.FileName;
 				ApplicationGlobal.appConfig.setLastUsedPathIn(file, ".xvsq");
 				if (parent.OpenVsqCor(file)) {
-					DialogManager.showMessageBox(
+					DialogManager.ShowMessageBox(
 						_("Invalid XVSQ file"),
 						_("Error"),
 						cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
@@ -109,7 +109,7 @@ namespace cadencii
 			{
 				for (int track = 1; track < MusicManager.getVsqFile().Track.Count; track++) {
 					if (MusicManager.getVsqFile().Track[track].getEventCount() == 0) {
-						DialogManager.showMessageBox(
+						DialogManager.ShowMessageBox(
 							PortUtil.formatMessage(
 								_("Invalid note data.\nTrack {0} : {1}\n\n-> Piano roll : Blank sequence."),
 								track,
@@ -127,7 +127,7 @@ namespace cadencii
 						string dir = PortUtil.getDirectoryName(last_file);
 						parent.form.saveXmlVsqDialog.SetSelectedFile(dir);
 					}
-					var dr = DialogManager.showModalFileDialog(parent.form.saveXmlVsqDialog, false, parent.form);
+					var dr = DialogManager.ShowModalFileDialog(parent.form.saveXmlVsqDialog, false, parent.form);
 					if (dr == Cadencii.Gui.DialogResult.OK) {
 						file = parent.form.saveXmlVsqDialog.FileName;
 						ApplicationGlobal.appConfig.setLastUsedPathOut(file, ".xvsq");
@@ -144,7 +144,7 @@ namespace cadencii
 			{
 				for (int track = 1; track < MusicManager.getVsqFile().Track.Count; track++) {
 					if (MusicManager.getVsqFile().Track[track].getEventCount() == 0) {
-						DialogManager.showMessageBox(
+						DialogManager.ShowMessageBox(
 							PortUtil.formatMessage(
 								_("Invalid note data.\nTrack {0} : {1}\n\n-> Piano roll : Blank sequence."), track, MusicManager.getVsqFile().Track[track].getName()
 							),
@@ -157,7 +157,7 @@ namespace cadencii
 
 				string dir = ApplicationGlobal.appConfig.getLastUsedPathOut("xvsq");
 				parent.form.saveXmlVsqDialog.SetSelectedFile(dir);
-				var dr = DialogManager.showModalFileDialog(parent.form.saveXmlVsqDialog, false, parent.form);
+				var dr = DialogManager.ShowModalFileDialog(parent.form.saveXmlVsqDialog, false, parent.form);
 				if (dr == Cadencii.Gui.DialogResult.OK) {
 					string file = parent.form.saveXmlVsqDialog.FileName;
 					ApplicationGlobal.appConfig.setLastUsedPathOut(file, ".xvsq");
@@ -186,7 +186,7 @@ namespace cadencii
 				parent.form.openMidiDialog.FilterIndex = filter_index;
 				string dir = ApplicationGlobal.appConfig.getLastUsedPathIn(filter);
 				parent.form.openMidiDialog.SetSelectedFile(dir);
-				var dialog_result = DialogManager.showModalFileDialog(parent.form.openMidiDialog, true, parent.form);
+				var dialog_result = DialogManager.ShowModalFileDialog(parent.form.openMidiDialog, true, parent.form);
 				string ext = ".vsq";
 				if (dialog_result == Cadencii.Gui.DialogResult.OK) {
 					#if DEBUG
@@ -226,7 +226,7 @@ namespace cadencii
 					#if DEBUG
 					sout.println("FormMain#menuFileOpenVsq_Click; ex=" + ex);
 					#endif
-					DialogManager.showMessageBox(
+					DialogManager.ShowMessageBox(
 						_("Invalid VSQ/VOCALOID MIDI file"),
 						_("Error"),
 						cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
@@ -250,7 +250,7 @@ namespace cadencii
 
 				string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("ust");
 				parent.form.openUstDialog.SetSelectedFile(dir);
-				var dialog_result = DialogManager.showModalFileDialog(parent.form.openUstDialog, true, parent.form);
+				var dialog_result = DialogManager.ShowModalFileDialog(parent.form.openUstDialog, true, parent.form);
 
 				if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 					return;
@@ -347,7 +347,7 @@ namespace cadencii
 					string dir = ApplicationGlobal.appConfig.getLastUsedPathIn ("ust");
 					dialog = ApplicationUIHost.Create<UiOpenFileDialog> ();
 					dialog.SetSelectedFile (dir);
-					var dialog_result = DialogManager.showModalFileDialog (dialog, true, parent.form);
+					var dialog_result = DialogManager.ShowModalFileDialog (dialog, true, parent.form);
 					if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 						return;
 					}
@@ -463,7 +463,7 @@ namespace cadencii
 
 				string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("mid");
 				parent.form.openMidiDialog.SetSelectedFile(dir);
-				var dialog_result = DialogManager.showModalFileDialog(parent.form.openMidiDialog, true, parent.form);
+				var dialog_result = DialogManager.ShowModalFileDialog(parent.form.openMidiDialog, true, parent.form);
 
 				if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 					return;
@@ -476,7 +476,7 @@ namespace cadencii
 					mf = new MidiFile(filename);
 				} catch (Exception ex) {
 					Logger.write(GetType () + ".menuFileImportMidi_Click; ex=" + ex + "\n");
-					DialogManager.showMessageBox(
+					DialogManager.ShowMessageBox(
 						_("Invalid MIDI file."),
 						_("Error"),
 						cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
@@ -484,7 +484,7 @@ namespace cadencii
 					return;
 				}
 				if (mf == null) {
-					DialogManager.showMessageBox(
+					DialogManager.ShowMessageBox(
 						_("Invalid MIDI file."),
 						_("Error"),
 						cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
@@ -535,8 +535,8 @@ namespace cadencii
 						new string[] { i + "", track_name, notes + "" }, true);
 				}
 
-				var dr = DialogManager.showModalDialog(dlg, parent.form);
-				if (dr != 1) {
+				var dr = DialogManager.ShowModalDialog(dlg, parent.form);
+				if (dr != DialogResult.OK) {
 					return;
 				}
 
@@ -858,7 +858,7 @@ namespace cadencii
 			{
 				string dir = ApplicationGlobal.appConfig.getLastUsedPathIn(EditorManager.editorConfig.LastUsedExtension);
 				parent.form.openMidiDialog.SetSelectedFile(dir);
-				var dialog_result = DialogManager.showModalFileDialog(parent.form.openMidiDialog, true, parent.form);
+				var dialog_result = DialogManager.ShowModalFileDialog(parent.form.openMidiDialog, true, parent.form);
 
 				if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 					return;
@@ -870,7 +870,7 @@ namespace cadencii
 					vsq = new VsqFileEx(filename, "Shift_JIS");
 				} catch (Exception ex) {
 					Logger.write(GetType () + ".menuFileImportVsq_Click; ex=" + ex + "\n");
-					DialogManager.showMessageBox(_("Invalid VSQ/VOCALOID MIDI file"), _("Error"), cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
+					DialogManager.ShowMessageBox(_("Invalid VSQ/VOCALOID MIDI file"), _("Error"), cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
 					return;
 				}
 				if (parent.form.mDialogMidiImportAndExport == null) {
@@ -888,8 +888,8 @@ namespace cadencii
 				dlg.setTempo(false);
 				dlg.setTimesig(false);
 				dlg.Location = parent.GetFormPreferedLocation(dlg.Width, dlg.Height);
-				var dr = DialogManager.showModalDialog(dlg, parent.form);
-				if (dr != 1) {
+				var dr = DialogManager.ShowModalDialog(dlg, parent.form);
+				if (dr != DialogResult.OK) {
 					return;
 				}
 
@@ -1018,7 +1018,7 @@ namespace cadencii
 					sfd.SetSelectedFile(last_path);
 					sfd.Title = _("Wave Export");
 					sfd.Filter = string.Join("|", new[] { _("Wave File(*.wav)|*.wav"), _("All Files(*.*)|*.*") });
-					dialog_result = DialogManager.showModalFileDialog(sfd, false, parent.form);
+					dialog_result = DialogManager.ShowModalFileDialog(sfd, false, parent.form);
 					if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 						return;
 					}
@@ -1040,7 +1040,7 @@ namespace cadencii
 				int clockStart = vsq.config.StartMarkerEnabled ? vsq.config.StartMarker : 0;
 				int clockEnd = vsq.config.EndMarkerEnabled ? vsq.config.EndMarker : vsq.TotalClocks + 240;
 				if (clockStart > clockEnd) {
-					DialogManager.showMessageBox(
+					DialogManager.ShowMessageBox(
 						_("invalid rendering region; start>=end"),
 						_("Error"),
 						Cadencii.Gui.AwtHost.OK_OPTION,
@@ -1081,7 +1081,7 @@ namespace cadencii
 					}
 
 					fs.startJob();
-					DialogManager.showModalDialog(fs.getUi(), parent.form);
+					DialogManager.ShowModalDialog(fs.getUi(), parent.form);
 				} catch (Exception ex) {
 					Logger.write(GetType () + ".menuFileExportWave_Click; ex=" + ex + "\n");
 				} finally {
@@ -1105,7 +1105,7 @@ namespace cadencii
 					string initial_dir = ApplicationGlobal.appConfig.getLastUsedPathOut("wav");
 					file_dialog.Description = _("Choose destination directory");
 					file_dialog.SelectedPath = initial_dir;
-					var ret = DialogManager.showModalFolderDialog(file_dialog, parent.form);
+					var ret = DialogManager.ShowModalFolderDialog(file_dialog, parent.form);
 					if (ret != Cadencii.Gui.DialogResult.OK) {
 						return;
 					}
@@ -1136,7 +1136,7 @@ namespace cadencii
 				int clockStart = vsq.config.StartMarkerEnabled ? vsq.config.StartMarker : 0;
 				int clockEnd = vsq.config.EndMarkerEnabled ? vsq.config.EndMarker : vsq.TotalClocks + 240;
 				if (clockStart > clockEnd) {
-					DialogManager.showMessageBox(
+					DialogManager.ShowMessageBox(
 						_("invalid rendering region; start>=end"),
 						_("Error"),
 						Cadencii.Gui.AwtHost.OK_OPTION,
@@ -1170,7 +1170,7 @@ namespace cadencii
 					}
 
 					fw.startJob();
-					DialogManager.showModalDialog(fw.getUi(), parent.form);
+					DialogManager.ShowModalDialog(fw.getUi(), parent.form);
 				} catch (Exception ex) {
 					Logger.write(GetType () + ".menuFileExportParaWave; ex=" + ex + "\n");
 				} finally {
@@ -1202,8 +1202,8 @@ namespace cadencii
 				}
 				dlg.Mode = (FormMidiMode.EXPORT);
 				dlg.Location = parent.GetFormPreferedLocation(dlg.Width, dlg.Height);
-				var dr = DialogManager.showModalDialog(dlg, parent.form);
-				if (dr == 1) {
+				var dr = DialogManager.ShowModalDialog(dlg, parent.form);
+				if (dr == DialogResult.OK) {
 					if (!dlg.isPreMeasure()) {
 						vsq.removePart(0, vsq.getPreMeasureClocks());
 					}
@@ -1219,7 +1219,7 @@ namespace cadencii
 
 					string dir = ApplicationGlobal.appConfig.getLastUsedPathOut("mid");
 					parent.form.saveMidiDialog.SetSelectedFile(dir);
-					var dialog_result = DialogManager.showModalFileDialog(parent.form.saveMidiDialog, false, parent.form);
+					var dialog_result = DialogManager.ShowModalFileDialog(parent.form.saveMidiDialog, false, parent.form);
 
 					if (dialog_result == Cadencii.Gui.DialogResult.OK) {
 						FileStream fs = null;
@@ -1443,7 +1443,7 @@ namespace cadencii
 					dialog = ApplicationUIHost.Create<UiSaveFileDialog> ();
 					dialog.SetSelectedFile(first);
 					dialog.Filter = string.Join("|", new[] { _("MusicXML(*.xml)|*.xml"), _("All Files(*.*)|*.*") });
-					var result = DialogManager.showModalFileDialog(dialog, false, parent.form);
+					var result = DialogManager.ShowModalFileDialog(dialog, false, parent.form);
 					if (result != Cadencii.Gui.DialogResult.OK) {
 						return;
 					}
@@ -1483,7 +1483,7 @@ namespace cadencii
 					dialog.SetSelectedFile(last_path);
 					dialog.Title = _("Export UTAU (*.ust)");
 					dialog.Filter = string.Join("|", new[] { _("UTAU Script Format(*.ust)|*.ust"), _("All Files(*.*)|*.*") });
-					dialog_result = DialogManager.showModalFileDialog(dialog, false, parent.form);
+					dialog_result = DialogManager.ShowModalFileDialog(dialog, false, parent.form);
 					if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 						return;
 					}
@@ -1540,7 +1540,7 @@ namespace cadencii
 					dialog.SetSelectedFile(last_path);
 					dialog.Title = _("Export VSQ (*.vsq)");
 					dialog.Filter = string.Join("|", new[] { _("VSQ Format(*.vsq)|*.vsq"), _("All Files(*.*)|*.*") });
-					dialog_result = DialogManager.showModalFileDialog(dialog, false, parent.form);
+					dialog_result = DialogManager.ShowModalFileDialog(dialog, false, parent.form);
 					if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 						return;
 					}
@@ -1581,7 +1581,7 @@ namespace cadencii
 			{
 				// UTAUの歌手が登録されていない場合は警告を表示
 				if (ApplicationGlobal.appConfig.UtauSingers.Count <= 0) {
-					var dr = DialogManager.showMessageBox(
+					var dr = DialogManager.ShowMessageBox(
 						_("UTAU singer not registered yet.\nContinue ?"),
 						_("Info"),
 						cadencii.Dialog.MSGBOX_YES_NO_OPTION,
@@ -1603,7 +1603,7 @@ namespace cadencii
 					dialog.SetSelectedFile(last_path);
 					dialog.Title = _("Metatext for vConnect");
 					dialog.Filter = string.Join("|", new[] { _("Text File(*.txt)|*.txt"), _("All Files(*.*)|*.*") });
-					dialog_result = DialogManager.showModalFileDialog(dialog, false, parent.form);
+					dialog_result = DialogManager.ShowModalFileDialog(dialog, false, parent.form);
 					if (dialog_result != Cadencii.Gui.DialogResult.OK) {
 						return;
 					}

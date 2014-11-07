@@ -5277,7 +5277,7 @@ namespace cadencii
                                     {//TODO:
                                         sout.println("TrackSelector_MouseDoubleClick; start to show editor");
                                     }
-                                    int ret = DialogManager.showModalDialog(fbpe.getUi(), mMainWindow);
+                                    var ret = DialogManager.ShowModalDialog(fbpe.getUi(), mMainWindow);
                                     {//TODO:
                                         sout.println("TrackSelector_MouseDoubleCLick; ret=" + ret);
                                     }
@@ -5293,7 +5293,7 @@ namespace cadencii
                                             before,
                                             ApplicationGlobal.appConfig.getControlCurveResolutionValue());
                                     executeCommand(revert, false);
-                                    if (ret == 1) {
+									if (ret == Cadencii.Gui.DialogResult.OK) {
                                         // ダイアログの結果がOKで、かつベジエ曲線が単調増加なら編集を適用
                                         if (BezierChain.isBezierImplicit(target_chain)) {
                                             CadenciiCommand run =
@@ -5352,7 +5352,7 @@ namespace cadencii
                                     Invalidate();
                                     dialog.Location =
                                         new Point(pt.X - dialog.Width / 2, pt.Y - dialog.Height);
-                                    DialogManager.showModalDialog(dialog, mMainWindow);
+                                    DialogManager.ShowModalDialog(dialog, mMainWindow);
                                 }
                                 #endregion
                             }

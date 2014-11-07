@@ -138,8 +138,8 @@ namespace cadencii
 					dlg = new FormWordDictionaryController(c => ApplicationUIHost.Create<FormWordDictionaryUi> (c));
 					var p =parent.GetFormPreferedLocation(dlg.getWidth(), dlg.getHeight());
 					dlg.setLocation(p.X, p.Y);
-					int dr = DialogManager.showModalDialog(dlg.getUi(), parent.form);
-					if (dr == 1) {
+					var dr = DialogManager.ShowModalDialog(dlg.getUi(), parent.form);
+					if (dr == DialogResult.OK) {
 						List<ValuePair<string, Boolean>> result = dlg.getResult();
 						SymbolTable.changeOrder(result);
 					}

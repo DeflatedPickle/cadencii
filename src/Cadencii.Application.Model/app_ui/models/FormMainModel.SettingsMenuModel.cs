@@ -38,8 +38,8 @@ namespace cadencii
 
 					int selected = EditorManager.Selected;
 					dlg.Location = parent.GetFormPreferedLocation (dlg.Width, dlg.Height);
-					var dr = DialogManager.showModalDialog (dlg, parent.form);
-					if (dr == 1) {
+					var dr = DialogManager.ShowModalDialog (dlg, parent.form);
+					if (dr == DialogResult.OK) {
 						ApplicationGlobal.appConfig.DefaultPMBendDepth = dlg.PMBendDepth;
 						ApplicationGlobal.appConfig.DefaultPMBendLength = dlg.PMBendLength;
 						ApplicationGlobal.appConfig.DefaultPMbPortamentoUse = dlg.PMbPortamentoUse;
@@ -87,8 +87,8 @@ namespace cadencii
 				try {
 					dlg = ApplicationUIHost.Create<FormGameControllerConfig> ();
 					dlg.Location = parent.GetFormPreferedLocation (dlg.Width, dlg.Height);
-					var dr = DialogManager.showModalDialog (dlg, parent.form);
-					if (dr == 1) {
+					var dr = DialogManager.ShowModalDialog (dlg, parent.form);
+					if (dr == DialogResult.OK) {
 						EditorManager.editorConfig.GameControlerRectangle = dlg.getRectangle ();
 						EditorManager.editorConfig.GameControlerTriangle = dlg.getTriangle ();
 						EditorManager.editorConfig.GameControlerCircle = dlg.getCircle ();
@@ -197,8 +197,8 @@ namespace cadencii
 
 					dlg.Location = parent.GetFormPreferedLocation (dlg.Width, dlg.Height);
 
-					var dr = DialogManager.showModalDialog (dlg, parent.form);
-					if (dr == 1) {
+					var dr = DialogManager.ShowModalDialog (dlg, parent.form);
+					if (dr == DialogResult.OK) {
 						string old_base_font_name = EditorManager.editorConfig.BaseFontName;
 						float old_base_font_size = EditorManager.editorConfig.BaseFontSize;
 						Font new_base_font = dlg.getBaseFont ();
@@ -513,8 +513,8 @@ namespace cadencii
 				try {
 					form = ApplicationUIHost.Create<FormShortcutKeys> (dict, parent.form);
 					form.Location = parent.GetFormPreferedLocation (form.Width, form.Height);
-					var dr = DialogManager.showModalDialog (form, parent.form);
-					if (dr == 1) {
+					var dr = DialogManager.ShowModalDialog (form, parent.form);
+					if (dr == DialogResult.OK) {
 						SortedDictionary<string, ValuePair<string, Keys[]>> res = form.getResult ();
 						foreach (var display in res.Keys) {
 							string name = res [display].getKey ();
@@ -556,8 +556,8 @@ namespace cadencii
 				try {
 					dialog = ApplicationUIHost.Create<FormVibratoPreset> (EditorManager.editorConfig.AutoVibratoCustom);
 					dialog.Location = parent.GetFormPreferedLocation (dialog.Width, dialog.Height);
-					var ret = DialogManager.showModalDialog (dialog, parent.form);
-					if (ret != 1) {
+					var ret = DialogManager.ShowModalDialog (dialog, parent.form);
+					if (ret != DialogResult.OK) {
 						return;
 					}
 
@@ -602,7 +602,7 @@ namespace cadencii
 				dialog.setPreMeasure(old_pre_measure);
 
 				dialog.Location = parent.GetFormPreferedLocation(dialog);
-				if (DialogManager.showModalDialog(dialog, parent.form) != 1) {
+				if (DialogManager.ShowModalDialog(dialog, parent.form) != DialogResult.OK) {
 					return;
 				}
 

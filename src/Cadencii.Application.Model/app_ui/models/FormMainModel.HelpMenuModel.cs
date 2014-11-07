@@ -62,7 +62,7 @@ namespace cadencii
 					pdf = Path.Combine (PortUtil.getApplicationStartupPath (), "manual_en.pdf");
 				}
 				if (!System.IO.File.Exists (pdf)) {
-					DialogManager.showMessageBox (
+					DialogManager.ShowMessageBox (
 						_ ("file not found"),
 						FormMainModel.ApplicationName,
 						cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
@@ -87,7 +87,7 @@ namespace cadencii
 				string file = Logger.getPath ();
 				if (file == null || (file != null && (!System.IO.File.Exists (file)))) {
 					// ログがまだできてないのでダイアログ出す
-					DialogManager.showMessageBox (
+					DialogManager.ShowMessageBox (
 						_ ("Log file has not generated yet."),
 						_ ("Info"),
 						Cadencii.Gui.AwtHost.OK_OPTION,

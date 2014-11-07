@@ -96,7 +96,7 @@ namespace cadencii
                 x = int.Parse(this.ui.getDataPointClockText());
                 y = int.Parse(this.ui.getDataPointValueText());
                 if (y < this.m_min || this.m_max < y) {
-                    DialogManager.showMessageBox(
+                    DialogManager.ShowMessageBox(
                         _("Invalid value"),
                         _("Error"),
                         cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
@@ -112,7 +112,7 @@ namespace cadencii
                 }
                 this.ui.setDialogResult(true);
             } catch (Exception ex) {
-                DialogManager.showMessageBox(
+                DialogManager.ShowMessageBox(
                     _("Integer format error"),
                     _("Error"),
                     cadencii.Dialog.MSGBOX_DEFAULT_OPTION,

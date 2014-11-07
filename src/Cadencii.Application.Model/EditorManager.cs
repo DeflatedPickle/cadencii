@@ -1220,7 +1220,7 @@ namespace cadencii
 			fw.startJob ();
 
 			// ダイアログを表示する
-			var ret = DialogManager.showDialogTo (fw, main_window);
+			var ret = DialogManager.ShowDialogTo (fw, main_window);
 
 			return ret;
 		}
@@ -2155,7 +2155,7 @@ namespace cadencii
 
 		public static void saveTo (string file)
 		{
-			MusicManager.saveTo (file, (a, b, c, d) => DialogManager.showMessageBox (a, b, c, d), _, mFile => {
+			MusicManager.saveTo (file, (a, b, c, d) => DialogManager.ShowMessageBox (a, b, c, d), _, mFile => {
 				EditorManager.editorConfig.pushRecentFiles (mFile);
 				if (!mAutoBackupTimer.Enabled && EditorManager.editorConfig.AutoBackupIntervalMinutes > 0) {
 					double millisec = EditorManager.editorConfig.AutoBackupIntervalMinutes * 60.0 * 1000.0;

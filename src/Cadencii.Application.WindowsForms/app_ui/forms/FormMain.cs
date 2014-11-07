@@ -777,7 +777,7 @@ namespace cadencii
             // RunOnceという名前のスクリプトがあれば，そいつを実行
             foreach (var id in ScriptServer.getScriptIdIterator()) {
                 if (PortUtil.getFileNameWithoutExtension(id).ToLower() == "runonce") {
-                    ScriptServer.invokeScript(id, MusicManager.getVsqFile(), (x1,x2,x3,x4) => DialogManager.showMessageBox (x1, x2, x3, x4));
+                    ScriptServer.invokeScript(id, MusicManager.getVsqFile(), (x1,x2,x3,x4) => DialogManager.ShowMessageBox (x1, x2, x3, x4));
                     break;
                 }
             }
@@ -5471,8 +5471,8 @@ namespace cadencii
                                     dlg.DEMdecGainRate = (selectedEvent.ID.DEMdecGainRate);
                                     dlg.DEMaccent = (selectedEvent.ID.DEMaccent);
                                     dlg.Location = model.GetFormPreferedLocation(dlg);
-                                    var dr = DialogManager.showModalDialog(dlg, this);
-					if (dr == 1) {
+                                    var dr = DialogManager.ShowModalDialog(dlg, this);
+									if (dr == Cadencii.Gui.DialogResult.OK) {
                                         VsqID id = (VsqID)selectedEvent.ID.clone();
                                         id.PMBendDepth = dlg.PMBendDepth;
                                         id.PMBendLength = dlg.PMBendLength;
@@ -5542,8 +5542,8 @@ namespace cadencii
                                         type,
                                         ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType);
                                     dlg.Location = model.GetFormPreferedLocation(dlg);
-                                    var dr = DialogManager.showModalDialog(dlg, this);
-									if (dr == 1) {
+                                    var dr = DialogManager.ShowModalDialog(dlg, this);
+									if (dr == Cadencii.Gui.DialogResult.OK) {
                                         VsqID t = (VsqID)selectedEvent.ID.clone();
                                         VibratoHandle handle = dlg.getVibratoHandle();
 #if DEBUG
@@ -7382,13 +7382,13 @@ namespace cadencii
                 } else {
                     file = PortUtil.getFileName(file);
                 }
-                var ret = DialogManager.showMessageBox(_("Save this sequence?"),
+                var ret = DialogManager.ShowMessageBox(_("Save this sequence?"),
                                                                _("Affirmation"),
                                                                cadencii.Dialog.MSGBOX_YES_NO_CANCEL_OPTION,
                                                                cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
 				if (ret == Cadencii.Gui.DialogResult.Yes) {
                     if (MusicManager.getFileName().Equals("")) {
-                        var dr = DialogManager.showModalFileDialog(saveXmlVsqDialog, false, this);
+                        var dr = DialogManager.ShowModalFileDialog(saveXmlVsqDialog, false, this);
 						if (dr == Cadencii.Gui.DialogResult.OK) {
                             EditorManager.saveTo(saveXmlVsqDialog.FileName);
                         } else {
@@ -7595,13 +7595,13 @@ namespace cadencii
             bool init_key_sound_player_immediately = true; //FormGenerateKeySoundの終了を待たずにKeySoundPlayer.initするかどうか。
             if (!ApplicationGlobal.appConfig.DoNotAskKeySoundGeneration && cache_is_incomplete) {
                 FormAskKeySoundGenerationController dialog = null;
-                int dialog_result = 0;
                 bool always_check_this = !ApplicationGlobal.appConfig.DoNotAskKeySoundGeneration;
+				Cadencii.Gui.DialogResult dialog_result = Cadencii.Gui.DialogResult.None;
                 try {
                     dialog = new FormAskKeySoundGenerationController();
                     dialog.setupUi(new FormAskKeySoundGenerationUiImpl(dialog));
                     dialog.getUi().setAlwaysPerformThisCheck(always_check_this);
-                    dialog_result = DialogManager.showModalDialog(dialog.getUi(), this);
+                    dialog_result = DialogManager.ShowModalDialog(dialog.getUi(), this);
                     always_check_this = dialog.getUi().isAlwaysPerformThisCheck();
                 } catch (Exception ex) {
                     Logger.write(typeof(FormMain) + ".FormMain_Load; ex=" + ex + "\n");
@@ -7618,7 +7618,7 @@ namespace cadencii
                 }
                 ApplicationGlobal.appConfig.DoNotAskKeySoundGeneration = !always_check_this;
 
-                if (dialog_result == 1) {
+				if (dialog_result == Cadencii.Gui.DialogResult.OK) {
                     FormGenerateKeySound form = null;
                     try {
                         form = ApplicationUIHost.Create<FormGenerateKeySound>(true);
@@ -7959,8 +7959,8 @@ namespace cadencii
                                 try {
                                     dlg = ApplicationUIHost.Create<FormTempoConfig>(bar_count, beat_in_bar, timesig.numerator, clocks_in_beat, clock_per_beat, (float)(6e7 / tte.Tempo), MusicManager.getVsqFile().getPreMeasure());
                                     dlg.Location = getFormPreferedLocation((Form)dlg.Native).ToAwt ();
-                                    var dr = DialogManager.showModalDialog(dlg, this);
-                                    if (dr == 1) {
+                                    var dr = DialogManager.ShowModalDialog(dlg, this);
+									if (dr == Cadencii.Gui.DialogResult.OK) {
                                         int new_beat = dlg.getBeatCount();
                                         int new_clocks_in_beat = dlg.getClock();
                                         int new_clock = bar_top_clock + (new_beat - 1) * clock_per_beat + new_clocks_in_beat;
@@ -8030,8 +8030,8 @@ namespace cadencii
                                                            (float)(6e7 / changing_tempo),
                                                            vsq.getPreMeasure());
                                 dlg.Location = model.GetFormPreferedLocation(dlg);
-                                var dr = DialogManager.showModalDialog(dlg, this);
-                                if (dr == 1) {
+                                var dr = DialogManager.ShowModalDialog(dlg, this);
+								if (dr == Cadencii.Gui.DialogResult.OK) {
                                     int new_beat = dlg.getBeatCount();
                                     int new_clocks_in_beat = dlg.getClock();
                                     int new_clock = bar_top_clock + (new_beat - 1) * clock_per_beat + new_clocks_in_beat;
@@ -8103,8 +8103,8 @@ namespace cadencii
                                 dlg = new FormBeatConfigController(c => new FormBeatConfigUiImpl (c), bar_count - pre_measure + 1, timesig.numerator, timesig.denominator, num_enabled, pre_measure);
                                 var p = getFormPreferedLocation(dlg.getWidth(), dlg.getHeight());
                                 dlg.setLocation(p.X, p.Y);
-                                int dr = DialogManager.showModalDialog(dlg.getUi(), this);
-                                if (dr == 1) {
+                                var dr = DialogManager.ShowModalDialog(dlg.getUi(), this);
+								if (dr == Cadencii.Gui.DialogResult.OK) {
                                     if (dlg.isEndSpecified()) {
                                         int[] new_barcounts = new int[2];
                                         int[] numerators = new int[2];
@@ -8177,8 +8177,8 @@ namespace cadencii
                                 dlg = new FormBeatConfigController(c => new FormBeatConfigUiImpl (c), bar_count - pre_measure + 1, timesig.numerator, timesig.denominator, true, pre_measure);
                                 var p = getFormPreferedLocation(dlg.getWidth(), dlg.getHeight());
                                 dlg.setLocation(p.X, p.Y);
-                                int dr = DialogManager.showModalDialog(dlg.getUi(), this);
-                                if (dr == 1) {
+                                var dr = DialogManager.ShowModalDialog(dlg.getUi(), this);
+								if (dr == Cadencii.Gui.DialogResult.OK) {
                                     if (dlg.isEndSpecified()) {
                                         int[] new_barcounts = new int[2];
                                         int[] numerators = new int[2];
@@ -9744,8 +9744,8 @@ namespace cadencii
                 ib = ApplicationUIHost.Create<InputBox>(_("Input Offset Seconds"));
                 ib.Location = model.GetFormPreferedLocation(ib);
                 ib.setResult(MusicManager.getBgm(index).readOffsetSeconds + "");
-                var dr = DialogManager.showModalDialog(ib, this);
-                if (dr != 1) {
+                var dr = DialogManager.ShowModalDialog(ib, this);
+			if (dr != Cadencii.Gui.DialogResult.OK) {
                     return;
                 }
                 List<BgmFile> list = new List<BgmFile>();
@@ -9810,7 +9810,7 @@ namespace cadencii
         {
             string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("wav");
             openWaveDialog.SetSelectedFile(dir);
-            var ret = DialogManager.showModalFileDialog(openWaveDialog, true, this);
+            var ret = DialogManager.ShowModalFileDialog(openWaveDialog, true, this);
             if (ret != Cadencii.Gui.DialogResult.OK) {
                 return;
             }
@@ -9829,7 +9829,7 @@ namespace cadencii
                 }
             }
             if (found) {
-                DialogManager.showMessageBox(
+                DialogManager.ShowMessageBox(
                     PortUtil.formatMessage(_("file '{0}' is already registered as BGM."), file),
                     _("Error"),
                     cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
@@ -9851,7 +9851,7 @@ namespace cadencii
             BgmMenuItem parent = (BgmMenuItem)sender;
             int index = parent.getBgmIndex();
             BgmFile bgm = MusicManager.getBgm(index);
-            if (DialogManager.showMessageBox(PortUtil.formatMessage(_("remove '{0}'?"), bgm.file),
+            if (DialogManager.ShowMessageBox(PortUtil.formatMessage(_("remove '{0}'?"), bgm.file),
                                   "Cadencii",
                                   cadencii.Dialog.MSGBOX_YES_NO_OPTION,
                                   cadencii.Dialog.MSGBOX_QUESTION_MESSAGE) != Cadencii.Gui.DialogResult.Yes) {

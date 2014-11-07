@@ -37,7 +37,6 @@ Projects / Assemblies
 - Cadencii.Gui.Framework - awt-based API
 - Cadencii.Core - fundamental API for every other library
 - Cadencii.Gui.Framework.WindowsForms - winforms GUI framework implementation
-- Cadencii.Gui.Framework.WindowsForms.Shared - hack for winforms Color
 - Cadencii.Platform.Windows - P/Invokes and marshals for Windows API.
 
 - Cadencii.Media.Base - base audio and MIDI library
@@ -54,7 +53,7 @@ Projects / Assemblies
 Milestones
 ----------
 
-- Replace event handler methods into UI commands and actions.
+- Replace winforms event handler methods into UI commands and actions.
 - Reduce Win32-ism.
 - Modify GUI framework to better fit with either WPF or Xwt.
 
