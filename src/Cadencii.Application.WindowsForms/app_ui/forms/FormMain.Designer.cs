@@ -3003,7 +3003,7 @@ namespace cadencii
         public UiPictureBox pictureBox2;
         public UiPictureBox pictureBox3;
         public UiPictureBox picturePositionIndicator;
-        public UiContextMenuStrip cMenuPiano;
+		public UiContextMenuStrip cMenuPiano { get; set; }
         public UiToolStripMenuItem cMenuPianoPointer;
         public UiToolStripMenuItem cMenuPianoPencil;
         public UiToolStripMenuItem cMenuPianoEraser;
@@ -3119,7 +3119,7 @@ namespace cadencii
         public UiToolStripMenuItem menuJobReloadVsti;
         public UiToolStripMenuItem cMenuPianoCurve;
 		public UiToolStripMenuItem cMenuTrackSelectorCurve { get; set; }
-        public UiTrackBar trackBar;
+		public UiTrackBar trackBar { get; set; }
         public UiToolBarButton stripBtnPointer;
         public UiToolBarButton stripBtnLine;
         public UiToolBarButton stripBtnPencil;

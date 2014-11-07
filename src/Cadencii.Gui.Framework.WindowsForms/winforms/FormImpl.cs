@@ -19,6 +19,11 @@ namespace cadencii
 {
 	public class FormImpl : System.Windows.Forms.Form, UiForm
  	{
+		Cursor UiForm.Cursor {
+			get { return Cursor.ToAwt (); }
+			set { Cursor = value.ToNative (); }
+		}
+
 		Cadencii.Gui.DialogResult UiForm.ShowDialog ()
 		{
 			return (Cadencii.Gui.DialogResult) ShowDialog ();

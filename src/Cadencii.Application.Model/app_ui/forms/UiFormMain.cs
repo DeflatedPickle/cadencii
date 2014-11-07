@@ -13,16 +13,48 @@
  */
 using System.Collections.Generic;
 using Cadencii.Gui;
+using cadencii.vsq;
 
 
 namespace cadencii
 {
+	public static class FormMainConsts
+	{
+		/// <summary>
+		/// エントリの端を移動する時の、ハンドル許容範囲の幅
+		/// </summary>
+		public const int _EDIT_HANDLE_WIDTH = 7;
+		/// <summary>
+		/// 表情線の先頭部分のピクセル幅
+		/// </summary>
+		public const int _PX_ACCENT_HEADER = 21;
+	}
     /// <summary>
     /// メイン画面の実装クラスが持つべきメソッドを定義するインターフェース
     /// </summary>
     public interface UiFormMain : UiForm
     {
 		FormMainModel Model { get; }
+
+		UiContextMenuStrip cMenuPiano { get; set; }
+		UiTrackBar trackBar { get; set; }
+		double mTimerDragLastIgnitted { get; set; }
+		bool mMouseDowned { get; set; }
+		Point mButtonInitial { get; set; }
+		int mMiddleButtonVScroll { get; set; }
+		int mMiddleButtonHScroll { get; set; }
+		Keys s_modifier_key { get; set; }
+		void updateContextMenuPiano (Point mouseAt);
+		void fixAddingEvent ();
+		void hideInputTextBox();
+		void executeLyricChangeCommand();
+		int computeScrollValueFromWheelDelta(int delta);
+		float getScaleXFromTrackBarValue(int value);
+		void zoomY(int delta);
+		int computeHScrollValueForMiddleDrag(int mouse_x);
+		int computeVScrollValueForMiddleDrag (int mouse_y);
+		void processSpecialShortcutKey (KeyEventArgs e, bool onPreviewKeyDown);
+		VsqEvent getItemAtClickedPosition (Point mouse_position, ByRef<Rectangle> rect);
 
 		Image Resource_piano { get; }
 		Image Resource_slash { get; }

@@ -236,6 +236,9 @@
     <Compile Include="app_ui\models\FormMainModel.TrackSelectorMenuModel.cs" />
     <Compile Include="app_ui\models\FormMainModel.GameController.cs" />
     <Compile Include="gui_fx_extended\GameControllerManager.cs" />
+    <Compile Include="app_ui\models\FormMainModel.PictPianoRollModel.cs" />
+    <Compile Include="app_ui\models\ExtDragXMode.cs" />
+    <Compile Include="app_ui\models\ExtDragYMode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

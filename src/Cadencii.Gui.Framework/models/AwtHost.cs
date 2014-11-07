@@ -28,11 +28,19 @@ namespace Cadencii.Gui
 		public const int OK_OPTION = 0;
 		public const int CLOSED_OPTION = -1;
 
+		public static Keys ModifierKeys { get; private set; }
+
 		static AwtHost ()
 		{
 			var type = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (a => a.GetTypes ()).First (t => t.IsSubclassOf (typeof(AwtHost)));
-			Current = (AwtHost)Activator.CreateInstance (type);
+			Current = (AwtHost) Activator.CreateInstance (type);
+			ModifierKeys = Current.DefaultModifierKeys ();
+			Current.InitializeCursors ();
 		}
+
+		public abstract void InitializeCursors ();
+
+		public abstract Keys DefaultModifierKeys ();
 
 		public abstract string getComponentName (Object obj);
 

@@ -15,6 +15,7 @@ namespace cadencii
 		event EventHandler FormClosing;
 		event EventHandler FormClosed;
 
+		Cursor Cursor { get; set; }
 		Point Location { get; set; }
 
 		string Text { get; set; }

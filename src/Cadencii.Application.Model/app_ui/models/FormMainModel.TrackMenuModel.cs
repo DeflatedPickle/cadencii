@@ -124,6 +124,32 @@ namespace cadencii
 				parent.form.setEdited (true);
 				parent.form.refreshScreen ();
 			}
+
+			//BOOKMARK: cMenuTrackTab
+			#region cMenuTrackTab
+
+			public void RunTrackTabOpening()
+			{
+				#if DEBUG
+				sout.println(GetType () + ".cMenuTrackTab_Opening");
+				#endif
+				parent.form.updateTrackMenuStatus();
+			}
+
+			public void RunTrackTabOverlayCommand()
+			{
+				EditorManager.TrackOverlay = (!EditorManager.TrackOverlay);
+				parent.form.refreshScreen();
+			}
+
+			public void RunTrackTabRenderCurrentCommand ()
+			{
+				List<int> tracks = new List<int>();
+				tracks.Add(EditorManager.Selected);
+				EditorManager.patchWorkToFreeze(parent.form, tracks);
+			}
+
+			#endregion
 		}
 	}
 }

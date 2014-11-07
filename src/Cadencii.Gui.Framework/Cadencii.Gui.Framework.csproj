@@ -134,6 +134,7 @@
     <Compile Include="models\winforms\UiToolTip.cs" />
     <Compile Include="models\winforms\DrawToolTipEventArgs.cs" />
     <Compile Include="models\winforms\TextFormatFlags.cs" />
+    <Compile Include="models\Cursors.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

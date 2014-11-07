@@ -28,6 +28,18 @@ namespace Cadencii.Gui
 			Types [typeof(Graphics.GraphicsAdapter)] = typeof(GraphicsAdapterWF);
 		}
 
+		public override void InitializeCursors ()
+		{
+			Cursors.Default = System.Windows.Forms.Cursors.Default.ToAwt ();
+			Cursors.Hand = System.Windows.Forms.Cursors.Hand.ToAwt ();
+			Cursors.VSplit = System.Windows.Forms.Cursors.VSplit.ToAwt ();
+		}
+
+		public override Cadencii.Gui.Keys DefaultModifierKeys ()
+		{
+			return (Cadencii.Gui.Keys) Control.ModifierKeys;
+		}
+
 		/// <summary>
 		/// java:コンポーネントのnameプロパティを返します。C#:コントロールのNameプロパティを返します。
 		/// objがnullだったり、型がComponent/Controlでない場合は空文字を返します。
