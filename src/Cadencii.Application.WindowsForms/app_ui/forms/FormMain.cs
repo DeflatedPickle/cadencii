@@ -296,7 +296,7 @@ namespace cadencii
         /// <summary>
         /// 鉛筆のモード
         /// </summary>
-        public PencilMode mPencilMode = new PencilMode();
+		public PencilMode mPencilMode { get; set; } = new PencilMode();
         /// <summary>
         /// ビブラート範囲を編集中の音符のInternalID
         /// </summary>
@@ -4851,22 +4851,22 @@ namespace cadencii
 			menuHiddenPrintPoToCSV.Click += (o, e) => model.HiddenMenu.RunHiddenPrintPoToCSVCommand ();
 			menuHiddenFlipCurveOnPianorollMode.Click += (o, e) => model.HiddenMenu.RunHiddenFlipCurveOnPianorollModeCommand ();
 
-            cMenuPiano.Opening += (o, e) => cMenuPiano_Opening ();
-            cMenuPianoPointer.Click += new EventHandler(cMenuPianoPointer_Click);
-            cMenuPianoPencil.Click += new EventHandler(cMenuPianoPencil_Click);
-            cMenuPianoEraser.Click += new EventHandler(cMenuPianoEraser_Click);
-            cMenuPianoCurve.Click += new EventHandler(cMenuPianoCurve_Click);
-            cMenuPianoFixed01.Click += new EventHandler(cMenuPianoFixed01_Click);
-            cMenuPianoFixed02.Click += new EventHandler(cMenuPianoFixed02_Click);
-            cMenuPianoFixed04.Click += new EventHandler(cMenuPianoFixed04_Click);
-            cMenuPianoFixed08.Click += new EventHandler(cMenuPianoFixed08_Click);
-            cMenuPianoFixed16.Click += new EventHandler(cMenuPianoFixed16_Click);
-            cMenuPianoFixed32.Click += new EventHandler(cMenuPianoFixed32_Click);
-            cMenuPianoFixed64.Click += new EventHandler(cMenuPianoFixed64_Click);
-            cMenuPianoFixed128.Click += new EventHandler(cMenuPianoFixed128_Click);
-            cMenuPianoFixedOff.Click += new EventHandler(cMenuPianoFixedOff_Click);
-            cMenuPianoFixedTriplet.Click += new EventHandler(cMenuPianoFixedTriplet_Click);
-            cMenuPianoFixedDotted.Click += new EventHandler(cMenuPianoFixedDotted_Click);
+			cMenuPiano.Opening += (o, e) => model.PianoMenu.RunPianoOpeningCommand ();
+			cMenuPianoPointer.Click += (o, e) => model.PianoMenu.RunPianoPointerCommand ();
+			cMenuPianoPencil.Click += (o, e) => model.PianoMenu.RunPianoPencilCommand ();
+			cMenuPianoEraser.Click += (o, e) => model.PianoMenu.RunPianoEraserCommand ();
+			cMenuPianoCurve.Click += (o, e) => model.PianoMenu.RunPianoCurveCommand ();
+			cMenuPianoFixed01.Click += (o, e) => model.PianoMenu.RunPianoFixed01Command ();
+			cMenuPianoFixed02.Click += (o, e) => model.PianoMenu.RunPianoFixed02Command ();
+			cMenuPianoFixed04.Click += (o, e) => model.PianoMenu.RunPianoFixed04Command ();
+			cMenuPianoFixed08.Click += (o, e) => model.PianoMenu.RunPianoFixed08Command ();
+			cMenuPianoFixed16.Click += (o, e) => model.PianoMenu.RunPianoFixed16Command ();
+			cMenuPianoFixed32.Click += (o, e) => model.PianoMenu.RunPianoFixed32Command ();
+			cMenuPianoFixed64.Click += (o, e) => model.PianoMenu.RunPianoFixed64Command ();
+			cMenuPianoFixed128.Click += (o, e) => model.PianoMenu.RunPianoFixed128Command ();
+			cMenuPianoFixedOff.Click += (o, e) => model.PianoMenu.RunPianoFixedOffCommand ();
+			cMenuPianoFixedTriplet.Click += (o, e) => model.PianoMenu.RunPianoFixedTripletCommand ();
+			cMenuPianoFixedDotted.Click += (o, e) => model.PianoMenu.RunPianoFixedDottedCommand ();
 			cMenuPianoQuantize04.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p4);
 			cMenuPianoQuantize08.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p8);
 			cMenuPianoQuantize16.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p16);
@@ -4875,18 +4875,18 @@ namespace cadencii
 			cMenuPianoQuantize128.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p128);
 			cMenuPianoQuantizeOff.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.off);
 			cMenuPianoQuantizeTriplet.Click += (o, e) => model.HandlePositionQuantizeTriplet ();
-            cMenuPianoGrid.Click += new EventHandler(cMenuPianoGrid_Click);
-            cMenuPianoUndo.Click += new EventHandler(cMenuPianoUndo_Click);
-            cMenuPianoRedo.Click += new EventHandler(cMenuPianoRedo_Click);
-            cMenuPianoCut.Click += new EventHandler(cMenuPianoCut_Click);
-            cMenuPianoCopy.Click += new EventHandler(cMenuPianoCopy_Click);
-            cMenuPianoPaste.Click += new EventHandler(cMenuPianoPaste_Click);
-            cMenuPianoDelete.Click += new EventHandler(cMenuPianoDelete_Click);
-            cMenuPianoSelectAll.Click += new EventHandler(cMenuPianoSelectAll_Click);
-            cMenuPianoSelectAllEvents.Click += new EventHandler(cMenuPianoSelectAllEvents_Click);
-            cMenuPianoImportLyric.Click += new EventHandler(cMenuPianoImportLyric_Click);
-            cMenuPianoExpressionProperty.Click += new EventHandler(cMenuPianoProperty_Click);
-            cMenuPianoVibratoProperty.Click += new EventHandler(cMenuPianoVibratoProperty_Click);
+			cMenuPianoGrid.Click += (o, e) => model.PianoMenu.RunPianoGridCommand ();
+			cMenuPianoUndo.Click += (o, e) => model.Undo ();
+			cMenuPianoRedo.Click += (o, e) => model.Redo ();
+			cMenuPianoCut.Click += (o, e) => model.Cut ();
+			cMenuPianoCopy.Click += (o, e) => model.Copy ();
+			cMenuPianoPaste.Click += (o, e) => model.Paste ();
+			cMenuPianoDelete.Click += (o, e) => model.DeleteEvent ();
+			cMenuPianoSelectAll.Click += (o, e) => model.SelectAll ();
+			cMenuPianoSelectAllEvents.Click += (o, e) => model.SelectAllEvent ();
+			cMenuPianoImportLyric.Click += (o, e) => model.ImportLyric ();
+			cMenuPianoExpressionProperty.Click += (o, e) => model.EditNoteExpressionProperty ();
+			cMenuPianoVibratoProperty.Click += (o, e) => model.EditNoteVibratoProperty ();
             cMenuTrackTab.Opening += (o, e) => cMenuTrackTab_Opening();
 			cMenuTrackTabTrackOn.Click += (o, e) => model.TrackMenu.RunTrackOnCommand ();
 			cMenuTrackTabAdd.Click += (o, e) => model.AddTrack ();
@@ -9124,212 +9124,6 @@ namespace cadencii
             EditorManager.itemSelection.clearPoint();
             updateDrawObjectList();
             refreshScreen();
-        }
-        #endregion
-
-        //BOOKMARK: cMenuPiano
-        #region cMenuPiano*
-        public void cMenuPianoDelete_Click(Object sender, EventArgs e)
-        {
-            model.DeleteEvent();
-        }
-
-        public void cMenuPianoVibratoProperty_Click(Object sender, EventArgs e)
-        {
-            model.EditNoteVibratoProperty();
-        }
-
-        public void cMenuPianoPaste_Click(Object sender, EventArgs e)
-        {
-            model.Paste();
-        }
-
-        public void cMenuPianoCopy_Click(Object sender, EventArgs e)
-        {
-            model.Copy();
-        }
-
-        public void cMenuPianoCut_Click(Object sender, EventArgs e)
-        {
-            model.Cut();
-        }
-
-        public void cMenuPianoExpression_Click(Object sender, EventArgs e)
-        {
-            if (EditorManager.itemSelection.getEventCount() > 0) {
-                VsqFileEx vsq = MusicManager.getVsqFile();
-                int selected = EditorManager.Selected;
-                SynthesizerType type = SynthesizerType.VOCALOID2;
-                RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[selected]);
-                if (kind == RendererKind.VOCALOID1) {
-                    type = SynthesizerType.VOCALOID1;
-                }
-                VsqEvent original = EditorManager.itemSelection.getLastEvent().original;
-                FormNoteExpressionConfig dlg = null;
-                try {
-                    dlg = ApplicationUIHost.Create<FormNoteExpressionConfig>(type, original.ID.NoteHeadHandle);
-                    int id = EditorManager.itemSelection.getLastEvent().original.InternalID;
-                    dlg.PMBendDepth = (original.ID.PMBendDepth);
-                    dlg.PMBendLength = (original.ID.PMBendLength);
-                    dlg.PMbPortamentoUse = (original.ID.PMbPortamentoUse);
-                    dlg.DEMdecGainRate = (original.ID.DEMdecGainRate);
-                    dlg.DEMaccent = (original.ID.DEMaccent);
-                    var dr = DialogManager.showModalDialog(dlg, this);
-                    if (dr == 1) {
-                        VsqID copy = (VsqID)original.ID.clone();
-                        copy.PMBendDepth = dlg.PMBendDepth;
-                        copy.PMBendLength = dlg.PMBendLength;
-                        copy.PMbPortamentoUse = dlg.PMbPortamentoUse;
-                        copy.DEMdecGainRate = dlg.DEMdecGainRate;
-                        copy.DEMaccent = dlg.DEMaccent;
-                        copy.NoteHeadHandle = dlg.EditedNoteHeadHandle;
-                        CadenciiCommand run = new CadenciiCommand(
-                            VsqCommand.generateCommandEventChangeIDContaints(selected, id, copy));
-                        EditorManager.editHistory.register(vsq.executeCommand(run));
-                        setEdited(true);
-                    }
-                } catch (Exception ex) {
-                    Logger.write(typeof(FormMain) + ".cMenuPianoExpression_Click; ex=" + ex + "\n");
-                } finally {
-                    if (dlg != null) {
-                        try {
-                            dlg.Close();
-                        } catch (Exception ex2) {
-                            Logger.write(typeof(FormMain) + ".cMenuPianoExpression_Click; ex=" + ex2 + "\n");
-                        }
-                    }
-                }
-            }
-        }
-
-        public void cMenuPianoPointer_Click(Object sender, EventArgs e)
-        {
-            EditorManager.SelectedTool = (EditTool.ARROW);
-        }
-
-        public void cMenuPianoPencil_Click(Object sender, EventArgs e)
-        {
-            EditorManager.SelectedTool = (EditTool.PENCIL);
-        }
-
-        public void cMenuPianoEraser_Click(Object sender, EventArgs e)
-        {
-            EditorManager.SelectedTool = (EditTool.ERASER);
-        }
-
-        public void cMenuPianoGrid_Click(Object sender, EventArgs e)
-        {
-            bool new_v = !EditorManager.isGridVisible();
-            cMenuPianoGrid.Checked = new_v;
-            EditorManager.setGridVisible(new_v);
-        }
-
-        public void cMenuPianoUndo_Click(Object sender, EventArgs e)
-        {
-            model.Undo();
-        }
-
-        public void cMenuPianoRedo_Click(Object sender, EventArgs e)
-        {
-            model.Redo();
-        }
-
-        public void cMenuPianoSelectAllEvents_Click(Object sender, EventArgs e)
-        {
-            model.SelectAllEvent();
-        }
-
-        public void cMenuPianoProperty_Click(Object sender, EventArgs e)
-        {
-            model.EditNoteExpressionProperty();
-        }
-
-        public void cMenuPianoImportLyric_Click(Object sender, EventArgs e)
-        {
-            model.ImportLyric();
-        }
-
-        public void cMenuPiano_Opening()
-        {
-            updateCopyAndPasteButtonStatus();
-            cMenuPianoImportLyric.Enabled = EditorManager.itemSelection.getLastEvent() != null;
-        }
-
-        public void cMenuPianoSelectAll_Click(Object sender, EventArgs e)
-        {
-            model.SelectAll();
-        }
-
-        public void cMenuPianoFixed01_Click(Object sender, EventArgs e)
-        {
-            mPencilMode.setMode(PencilModeEnum.L1);
-            updateCMenuPianoFixed();
-        }
-
-        public void cMenuPianoFixed02_Click(Object sender, EventArgs e)
-        {
-            mPencilMode.setMode(PencilModeEnum.L2);
-            updateCMenuPianoFixed();
-        }
-
-        public void cMenuPianoFixed04_Click(Object sender, EventArgs e)
-        {
-            mPencilMode.setMode(PencilModeEnum.L4);
-            updateCMenuPianoFixed();
-        }
-
-        public void cMenuPianoFixed08_Click(Object sender, EventArgs e)
-        {
-            mPencilMode.setMode(PencilModeEnum.L8);
-            updateCMenuPianoFixed();
-        }
-
-        public void cMenuPianoFixed16_Click(Object sender, EventArgs e)
-        {
-            mPencilMode.setMode(PencilModeEnum.L16);
-            updateCMenuPianoFixed();
-        }
-
-        public void cMenuPianoFixed32_Click(Object sender, EventArgs e)
-        {
-            mPencilMode.setMode(PencilModeEnum.L32);
-            updateCMenuPianoFixed();
-        }
-
-        public void cMenuPianoFixed64_Click(Object sender, EventArgs e)
-        {
-            mPencilMode.setMode(PencilModeEnum.L64);
-            updateCMenuPianoFixed();
-        }
-
-        public void cMenuPianoFixed128_Click(Object sender, EventArgs e)
-        {
-            mPencilMode.setMode(PencilModeEnum.L128);
-            updateCMenuPianoFixed();
-        }
-
-        public void cMenuPianoFixedOff_Click(Object sender, EventArgs e)
-        {
-            mPencilMode.setMode(PencilModeEnum.Off);
-            updateCMenuPianoFixed();
-        }
-
-        public void cMenuPianoFixedTriplet_Click(Object sender, EventArgs e)
-        {
-            mPencilMode.setTriplet(!mPencilMode.isTriplet());
-            updateCMenuPianoFixed();
-        }
-
-        public void cMenuPianoFixedDotted_Click(Object sender, EventArgs e)
-        {
-            mPencilMode.setDot(!mPencilMode.isDot());
-            updateCMenuPianoFixed();
-        }
-
-        public void cMenuPianoCurve_Click(Object sender, EventArgs e)
-        {
-            EditorManager.setCurveMode(!EditorManager.isCurveMode());
-            applySelectedTool();
         }
         #endregion
 

@@ -3010,7 +3010,7 @@ namespace cadencii
         public UiToolStripSeparator toolStripMenuItem13;
         public UiToolStripMenuItem cMenuPianoFixed;
         public UiToolStripMenuItem cMenuPianoQuantize;
-        public UiToolStripMenuItem cMenuPianoGrid;
+		public UiToolStripMenuItem cMenuPianoGrid { get; set; }
         public UiToolStripSeparator toolStripMenuItem14;
 		public UiToolStripMenuItem cMenuPianoUndo { get; set; }
 		public UiToolStripMenuItem cMenuPianoRedo { get; set; }
@@ -3034,7 +3034,7 @@ namespace cadencii
         public UiToolStripMenuItem cMenuPianoSelectAll;
         public UiToolStripMenuItem cMenuPianoSelectAllEvents;
         public UiToolStripSeparator toolStripMenuItem17;
-        public UiToolStripMenuItem cMenuPianoImportLyric;
+		public UiToolStripMenuItem cMenuPianoImportLyric { get; set; }
         public UiToolStripMenuItem cMenuPianoExpressionProperty;
         public UiToolStripMenuItem cMenuPianoQuantize04;
         public UiToolStripMenuItem cMenuPianoQuantize08;

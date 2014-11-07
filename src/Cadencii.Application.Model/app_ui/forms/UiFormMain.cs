@@ -24,6 +24,13 @@ namespace cadencii
     {
 		FormMainModel Model { get; }
 
+		PencilMode mPencilMode { get; set; }
+		UiToolStripMenuItem cMenuPianoGrid { get; set; }
+		UiToolStripMenuItem cMenuPianoImportLyric { get; set; }
+		void updateCopyAndPasteButtonStatus();
+		void updateCMenuPianoFixed();
+		void applySelectedTool();
+
 		void ensureCursorVisible();
 		void showInputTextBox (string phrase, string phonetic_symbol, Point position, bool phonetic_symbol_edit_mode);
 		bool mLastSymbolEditMode { get; set; }

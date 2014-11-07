@@ -155,10 +155,6 @@
     <Compile Include="app_ui\forms\UpdateCheckForm.cs" />
     <Compile Include="app_ui\forms\VersionInfoImpl.cs" />
     <Compile Include="app_ui\forms\WaveformZoomUiImpl.cs" />
-    <Compile Include="app_ui\main\FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="app_ui\main\FormMain.cs" />
     <Compile Include="app_ui\controls\PaletteToolMenuItemImpl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -171,6 +167,13 @@
     <Compile Include="app_ui\controls\TrackSelectorSingerPopupMenuImpl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="app_ui\forms\FormMain.cs" />
+    <Compile Include="app_ui\forms\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="app_ui\forms\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />
@@ -419,9 +422,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="app_ui\forms\UpdateCheckForm.resx">
       <DependentUpon>UpdateCheckForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="app_ui\main\FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

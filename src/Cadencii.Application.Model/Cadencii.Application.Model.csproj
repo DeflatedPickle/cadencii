@@ -232,6 +232,7 @@
     <Compile Include="app_ui\controls\BgmMenuItem.cs" />
     <Compile Include="app_ui\controls\TrackSelectorSingerDropdownMenuItem.cs" />
     <Compile Include="app_ui\controls\TrackSelectorSingerPopupMenu.cs" />
+    <Compile Include="app_ui\models\FormMainModel.PianoMenuModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
