@@ -140,6 +140,7 @@ namespace cadencii
 			PianoMenu = new PianoMenuModel (this);
 			TrackSelectorMenu = new TrackSelectorMenuModel (this);
 			PianoRoll = new PictPianoRollModel (this);
+			TrackSelector = new TrackSelectorModel (this);
 
 			form.initializeRendererMenuHandler(this);
 		}
@@ -157,6 +158,7 @@ namespace cadencii
 		public PianoMenuModel PianoMenu { get; private set; }
 		public TrackSelectorMenuModel TrackSelectorMenu { get; private set; }
 		public PictPianoRollModel PianoRoll { get; private set; }
+		public TrackSelectorModel TrackSelector { get; private set; }
 
 		/// <summary>
 		/// 合成器の種類のメニュー項目を管理するハンドラをまとめたリスト
@@ -1295,6 +1297,43 @@ namespace cadencii
 			form.updateDrawObjectList();
 
 			form.refreshScreen();
+		}
+
+		bool mSpacekeyDown = false;
+
+		/// <summary>
+		/// マウスの真ん中ボタンが押されたかどうかを調べます。
+		/// スペースキー+左ボタンで真ん中ボタンとみなすかどうか、というオプションも考慮される。
+		/// </summary>
+		/// <param name="button"></param>
+		/// <returns></returns>
+		public bool IsMouseMiddleButtonDown(MouseButtons button)
+		{
+			bool ret = false;
+			if (EditorManager.editorConfig.UseSpaceKeyAsMiddleButtonModifier) {
+				if (mSpacekeyDown && button == MouseButtons.Left) {
+					ret = true;
+				}
+			} else {
+				if (button == MouseButtons.Middle) {
+					ret = true;
+				}
+			}
+			return ret;
+		}
+
+		public void HandleSpaceKeyDown(KeyEventArgs e)
+		{
+			if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
+				mSpacekeyDown = true;
+			}
+		}
+
+		public void HandleSpaceKeyUp(KeyEventArgs e)
+		{
+			if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
+				mSpacekeyDown = false;
+			}
 		}
 	}
 }

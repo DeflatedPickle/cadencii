@@ -110,37 +110,6 @@ namespace cadencii
         delegate void DelegateRefreshScreen(bool value);
 
         #region constants and internal enums
-        /// <summary>
-        /// カーブエディタ画面の編集モード
-        /// </summary>
-        enum CurveEditMode
-        {
-            /// <summary>
-            /// 何もしていない
-            /// </summary>
-            NONE,
-            /// <summary>
-            /// 鉛筆ツールで編集するモード
-            /// </summary>
-            EDIT,
-            /// <summary>
-            /// ラインツールで編集するモード
-            /// </summary>
-            LINE,
-            /// <summary>
-            /// 鉛筆ツールでVELを編集するモード
-            /// </summary>
-            EDIT_VEL,
-            /// <summary>
-            /// ラインツールでVELを編集するモード
-            /// </summary>
-            LINE_VEL,
-            /// <summary>
-            /// 真ん中ボタンでドラッグ中
-            /// </summary>
-            MIDDLE_DRAG,
-        }
-
         enum PositionIndicatorMouseDownMode
         {
             NONE,
@@ -224,7 +193,7 @@ namespace cadencii
         /// <summary>
         /// カーブエディタの編集モード
         /// </summary>
-        private CurveEditMode mEditCurveMode = CurveEditMode.NONE;
+		public CurveEditMode mEditCurveMode { get; set; } = CurveEditMode.NONE;
         /// <summary>
         /// ピアノロールの画面外へのドラッグ時、前回自動スクロール操作を行った時刻
         /// </summary>
@@ -235,9 +204,6 @@ namespace cadencii
 		public bool mMouseDowned { get; set; }
         public int mTempoDraggingDeltaClock = 0;
         public int mTimesigDraggingDeltaClock = 0;
-        public bool mMouseDownedTrackSelector = false;
-        private ExtDragXMode mExtDragXTrackSelector = ExtDragXMode.NONE;
-		public bool mSpacekeyDowned = false;
         public bool mLastIsImeModeOn = true;
 		public bool mLastSymbolEditMode { get; set; }
         /// <summary>
@@ -450,18 +416,6 @@ namespace cadencii
             trackSelector.Name = "trackSelector";
             trackSelector.setSize(446, 250);
             trackSelector.TabIndex = 0;
-            trackSelector.MouseClick += new Cadencii.Gui.MouseEventHandler(trackSelector_MouseClick);
-			trackSelector.MouseUp += new Cadencii.Gui.MouseEventHandler(trackSelector_MouseUp);
-			trackSelector.MouseDown += new Cadencii.Gui.MouseEventHandler(trackSelector_MouseDown);
-			trackSelector.MouseMove += new Cadencii.Gui.MouseEventHandler(trackSelector_MouseMove);
-            trackSelector.KeyDown += new Cadencii.Gui.KeyEventHandler(handleSpaceKeyDown);
-			trackSelector.KeyUp += new Cadencii.Gui.KeyEventHandler(handleSpaceKeyUp);
-            trackSelector.PreviewKeyDown += new Cadencii.Gui.KeyEventHandler(trackSelector_PreviewKeyDown);
-            trackSelector.SelectedTrackChanged += new SelectedTrackChangedEventHandler(trackSelector_SelectedTrackChanged);
-            trackSelector.SelectedCurveChanged += new SelectedCurveChangedEventHandler(trackSelector_SelectedCurveChanged);
-            trackSelector.RenderRequired += new RenderRequiredEventHandler(trackSelector_RenderRequired);
-            trackSelector.PreferredMinHeightChanged += new EventHandler(trackSelector_PreferredMinHeightChanged);
-			trackSelector.MouseDoubleClick += new Cadencii.Gui.MouseEventHandler(trackSelector_MouseDoubleClick);
 
             splitContainer1.Panel2MinSize = trackSelector.getPreferredMinSize();
             var minimum_size = getWindowMinimumSize();
@@ -543,8 +497,6 @@ namespace cadencii
 
             updatePropertyPanelState(EditorManager.editorConfig.PropertyWindowStatus.State);
 
-			pictPianoRoll.MouseWheel += (o, e) => model.PianoRoll.RunPianoRollMouseWheelCommand (e);
-            trackSelector.MouseWheel += trackSelector_MouseWheel;
             picturePositionIndicator.MouseWheel += picturePositionIndicator_MouseWheel;
 
 			menuVisualOverview.CheckedChanged += (o, e) => model.VisualMenu.RunVisualOverviewCheckedChanged ();
@@ -704,7 +656,6 @@ namespace cadencii
             EditorManager.iconPalette.FormClosing += new EventHandler(iconPalette_FormClosing);
             EditorManager.iconPalette.LocationChanged += new EventHandler(iconPalette_LocationChanged);
 
-            trackSelector.CommandExecuted += new EventHandler(trackSelector_CommandExecuted);
 
 #if ENABLE_SCRIPT
             model.UpdateScriptShortcut();
@@ -1635,27 +1586,6 @@ namespace cadencii
                 new ValuePairOfStringArrayOfKeys( menuHiddenPlayFromStartMarker.Name, new Keys[]{ ctrl, Keys.Enter } ),
                 new ValuePairOfStringArrayOfKeys( menuHiddenFlipCurveOnPianorollMode.Name, new Keys[]{ Keys.Tab } ),
             });
-            return ret;
-        }
-
-        /// <summary>
-        /// マウスの真ん中ボタンが押されたかどうかを調べます。
-        /// スペースキー+左ボタンで真ん中ボタンとみなすかどうか、というオプションも考慮される。
-        /// </summary>
-        /// <param name="button"></param>
-        /// <returns></returns>
-        public bool isMouseMiddleButtonDowned(NMouseButtons button)
-        {
-            bool ret = false;
-            if (EditorManager.editorConfig.UseSpaceKeyAsMiddleButtonModifier) {
-                if (mSpacekeyDowned && button == NMouseButtons.Left) {
-                    ret = true;
-                }
-            } else {
-                if (button == NMouseButtons.Middle) {
-                    ret = true;
-                }
-            }
             return ret;
         }
 
@@ -4780,8 +4710,8 @@ namespace cadencii
             pictKeyLengthSplitter.MouseMove += pictKeyLengthSplitter_MouseMove;
             pictKeyLengthSplitter.MouseDown += pictKeyLengthSplitter_MouseDown;
             pictKeyLengthSplitter.MouseUp += pictKeyLengthSplitter_MouseUp;
-            panelOverview.KeyUp += new NKeyEventHandler(handleSpaceKeyUp);
-            panelOverview.KeyDown += new NKeyEventHandler(handleSpaceKeyDown);
+			panelOverview.KeyUp += (o,e) => model.HandleSpaceKeyUp (e);
+			panelOverview.KeyDown += (o,e) => model.HandleSpaceKeyDown (e);
             vScroll.ValueChanged += new EventHandler(vScroll_ValueChanged);
             //this.Resize += new EventHandler( handleVScrollResize );
             pictPianoRoll.Resize += new EventHandler(handleVScrollResize);
@@ -4797,14 +4727,29 @@ namespace cadencii
             picturePositionIndicator.MouseUp += picturePositionIndicator_MouseUp;
             picturePositionIndicator.Paint += picturePositionIndicator_Paint;
 			pictPianoRoll.PreviewKeyDown += (o, e) => model.PianoRoll.RunPianoRollPreviewKeyDown2 (e);
-            pictPianoRoll.KeyUp += new NKeyEventHandler(handleSpaceKeyUp);
+			pictPianoRoll.KeyUp += (o,e) => model.HandleSpaceKeyUp (e);
 			pictPianoRoll.KeyUp += (o, e) => model.PianoRoll.RunPianoRollKeyUp (e);
 			pictPianoRoll.MouseMove += (o, e) => model.PianoRoll.RunPianoRollMouseMove (e);
 			pictPianoRoll.MouseDoubleClick += (o, e) => model.PianoRoll.RunPianoRollMouseDoubleClick (e);
 			pictPianoRoll.MouseClick += (o, e) => model.PianoRoll.RunPianoRollMouseClick (e);
 			pictPianoRoll.MouseDown += (o, e) => model.PianoRoll.RunPianoRollMouseDown (e);
 			pictPianoRoll.MouseUp += (o, e) => model.PianoRoll.RunPianoRollMouseUp (e);
-            pictPianoRoll.KeyDown += new NKeyEventHandler(handleSpaceKeyDown);
+			pictPianoRoll.KeyDown += (o,e) => model.HandleSpaceKeyDown (e);
+			pictPianoRoll.MouseWheel += (o, e) => model.PianoRoll.RunPianoRollMouseWheelCommand (e);
+			trackSelector.MouseClick += (o, e) => model.TrackSelector.RunMouseClick (e);
+			trackSelector.MouseUp += (o, e) => model.TrackSelector.RunMouseUp (e);
+			trackSelector.MouseDown += (o, e) => model.TrackSelector.RunMouseDown (e);
+			trackSelector.MouseMove += (o, e) => model.TrackSelector.RunMouseMove (e);
+			trackSelector.KeyDown += (o,e) => model.HandleSpaceKeyDown (e);
+			trackSelector.KeyUp += (o,e) => model.HandleSpaceKeyUp (e);
+			trackSelector.PreviewKeyDown += (o, e) => model.TrackSelector.RunPreviewKeyDown (e);
+			trackSelector.SelectedTrackChanged += (o, trk) => model.TrackSelector.RunSelectedTrackChanged (trk);
+			trackSelector.SelectedCurveChanged += (o, type) => model.TrackSelector.RunSelectedCurveChanged (type);
+			trackSelector.RenderRequired += (o, trk) => model.TrackSelector.RunRenderRequired (trk);
+			trackSelector.PreferredMinHeightChanged += (o, e) => model.TrackSelector.RunPreferredMinHeightChanged ();
+			trackSelector.MouseDoubleClick += (o, e) => model.TrackSelector.RunMouseDoubleClick (e);
+			trackSelector.MouseWheel += (o, e) => model.TrackSelector.RunMouseWheel (e);
+			trackSelector.CommandExecuted += (o, e) => model.TrackSelector.RunCommandExecuted ();
             waveView.MouseDoubleClick += new NMouseEventHandler(waveView_MouseDoubleClick);
             waveView.MouseDown += new NMouseEventHandler(waveView_MouseDown);
             waveView.MouseUp += new NMouseEventHandler(waveView_MouseUp);
@@ -5943,9 +5888,9 @@ namespace cadencii
         public void waveView_MouseDown(Object sender, NMouseEventArgs e)
         {
 #if DEBUG
-            sout.println("waveView_MouseDown; isMiddleButtonDowned=" + isMouseMiddleButtonDowned(e.Button));
+            sout.println("waveView_MouseDown; isMiddleButtonDowned=" + model.IsMouseMiddleButtonDown(e.Button));
 #endif
-            if (isMouseMiddleButtonDowned(e.Button)) {
+            if (model.IsMouseMiddleButtonDown(e.Button)) {
                 mEditCurveMode = CurveEditMode.MIDDLE_DRAG;
                 mButtonInitial = new Point(e.X, e.Y);
                 mMiddleButtonHScroll = hScroll.Value;
@@ -6775,211 +6720,6 @@ namespace cadencii
         }
         #endregion
 
-        //BOOKMARK: trackSelector
-        #region trackSelector
-        public void trackSelector_CommandExecuted(Object sender, EventArgs e)
-        {
-            setEdited(true);
-            refreshScreen();
-        }
-
-        public void trackSelector_MouseClick(Object sender, NMouseEventArgs e)
-        {
-            if (e.Button == NMouseButtons.Right) {
-                if (EditorManager.keyWidth < e.X && e.X < trackSelector.Width) {
-                    if (trackSelector.Height - TrackSelectorConsts.OFFSET_TRACK_TAB <= e.Y && e.Y <= trackSelector.Height) {
-                        cMenuTrackTab.Show(trackSelector, e.X, e.Y);
-                    } else {
-                        cMenuTrackSelector.Show(trackSelector, e.X, e.Y);
-                    }
-                }
-            }
-        }
-
-        public void trackSelector_MouseDoubleClick(Object sender, NMouseEventArgs e)
-        {
-            if (e.Button == NMouseButtons.Middle) {
-                // ツールをポインター <--> 鉛筆に切り替える
-                if (EditorManager.keyWidth < e.X &&
-                     e.Y < trackSelector.Height - TrackSelectorConsts.OFFSET_TRACK_TAB * 2) {
-                    if (EditorManager.SelectedTool == EditTool.ARROW) {
-                        EditorManager.SelectedTool = (EditTool.PENCIL);
-                    } else {
-                        EditorManager.SelectedTool = (EditTool.ARROW);
-                    }
-                }
-            }
-        }
-
-        public void trackSelector_MouseDown(Object sender, NMouseEventArgs e)
-        {
-            if (EditorManager.keyWidth < e.X) {
-                mMouseDownedTrackSelector = true;
-                if (isMouseMiddleButtonDowned(e.Button)) {
-                    mEditCurveMode = CurveEditMode.MIDDLE_DRAG;
-                    mButtonInitial = new Point(e.X, e.Y);
-                    mMiddleButtonHScroll = hScroll.Value;
-                    this.Cursor = HAND;
-                }
-            }
-        }
-
-        public void trackSelector_MouseMove(Object sender, NMouseEventArgs e)
-        {
-            if (mFormActivated && EditorManager.InputTextBox != null) {
-                bool input_visible = !EditorManager.InputTextBox.IsDisposed && EditorManager.InputTextBox.Visible;
-#if ENABLE_PROPERTY
-                bool prop_editing = EditorManager.propertyPanel.isEditing();
-#else
-                bool prop_editing = false;
-#endif
-                if (!input_visible && !prop_editing) {
-                    trackSelector.requestFocus();
-                }
-            }
-            if (e.Button == NMouseButtons.None) {
-                if (!timer.Enabled) {
-                    refreshScreen(true);
-                }
-                return;
-            }
-            int parent_width = ((TrackSelector)sender).Width;
-            if (mEditCurveMode == CurveEditMode.MIDDLE_DRAG) {
-                if (EditorManager.isPlaying()) {
-                    return;
-                }
-
-                int draft = computeHScrollValueForMiddleDrag(e.X);
-                if (hScroll.Value != draft) {
-                    hScroll.Value = draft;
-                }
-            } else {
-                if (mMouseDownedTrackSelector) {
-                    if (mExtDragXTrackSelector == ExtDragXMode.NONE) {
-                        if (EditorManager.keyWidth > e.X) {
-                            mExtDragXTrackSelector = ExtDragXMode.LEFT;
-                        } else if (parent_width < e.X) {
-                            mExtDragXTrackSelector = ExtDragXMode.RIGHT;
-                        }
-                    } else {
-                        if (EditorManager.keyWidth <= e.X && e.X <= parent_width) {
-                            mExtDragXTrackSelector = ExtDragXMode.NONE;
-                        }
-                    }
-                } else {
-                    mExtDragXTrackSelector = ExtDragXMode.NONE;
-                }
-
-                if (mExtDragXTrackSelector != ExtDragXMode.NONE) {
-                    double now = PortUtil.getCurrentTime();
-                    double dt = now - mTimerDragLastIgnitted;
-                    mTimerDragLastIgnitted = now;
-                    int px_move = EditorManager.editorConfig.MouseDragIncrement;
-                    if (px_move / dt > EditorManager.editorConfig.MouseDragMaximumRate) {
-                        px_move = (int)(dt * EditorManager.editorConfig.MouseDragMaximumRate);
-                    }
-                    px_move += 5;
-                    if (mExtDragXTrackSelector == ExtDragXMode.LEFT) {
-                        px_move *= -1;
-                    }
-                    double d_draft = hScroll.Value + px_move * controller.getScaleXInv();
-                    if (d_draft < 0.0) {
-                        d_draft = 0.0;
-                    }
-                    int draft = (int)d_draft;
-                    if (hScroll.Maximum < draft) {
-                        hScroll.Maximum = draft;
-                    }
-                    if (draft < hScroll.Minimum) {
-                        draft = hScroll.Minimum;
-                    }
-                    hScroll.Value = draft;
-                }
-            }
-            if (!timer.Enabled) {
-                refreshScreen(true);
-            }
-        }
-
-        public void trackSelector_MouseUp(Object sender, NMouseEventArgs e)
-        {
-            mMouseDownedTrackSelector = false;
-            if (mEditCurveMode == CurveEditMode.MIDDLE_DRAG) {
-                mEditCurveMode = CurveEditMode.NONE;
-				this.Cursor = System.Windows.Forms.Cursors.Default;
-            }
-        }
-
-        public void trackSelector_MouseWheel(Object sender, NMouseEventArgs e)
-        {
-#if DEBUG
-            sout.println("FormMain#trackSelector_MouseWheel");
-#endif
-            if (((Keys) Control.ModifierKeys & Keys.Shift) == Keys.Shift) {
-                double new_val = (double)vScroll.Value - e.Delta;
-                int max = vScroll.Maximum - vScroll.Minimum;
-                int min = vScroll.Minimum;
-                if (new_val > max) {
-                    vScroll.Value = max;
-                } else if (new_val < min) {
-                    vScroll.Value = min;
-                } else {
-                    vScroll.Value = (int)new_val;
-                }
-            } else {
-                hScroll.Value = computeScrollValueFromWheelDelta(e.Delta);
-            }
-            refreshScreen();
-        }
-
-        public void trackSelector_PreferredMinHeightChanged(Object sender, EventArgs e)
-        {
-            if (menuVisualControlTrack.Checked) {
-                splitContainer1.Panel2MinSize = (trackSelector.getPreferredMinSize());
-#if DEBUG
-                sout.println("FormMain#trackSelector_PreferredMinHeightChanged; splitContainer1.Panel2MinSize changed");
-#endif
-            }
-        }
-
-        public void trackSelector_PreviewKeyDown(Object sender, NKeyEventArgs e)
-        {
-            var e0 = new NKeyEventArgs(e.KeyData);
-            processSpecialShortcutKey(e0, true);
-        }
-
-        public void trackSelector_RenderRequired(Object sender, int track)
-        {
-            List<int> list = new List<int>();
-            list.Add(track);
-            EditorManager.patchWorkToFreeze(this, list);
-            /*int selected = EditorManager.Selected;
-            Vector<Integer> t = new Vector<Integer>( Arrays.asList( PortUtil.convertIntArray( tracks ) ) );
-            if ( t.contains( selected) ) {
-                String file = fsys.combine( ApplicationGlobal.getTempWaveDir(), selected + ".wav" );
-                if ( PortUtil.isFileExists( file ) ) {
-                    Thread loadwave_thread = new Thread( new ParameterizedThreadStart( this.loadWave ) );
-                    loadwave_thread.IsBackground = true;
-                    loadwave_thread.Start( new Object[]{ file, selected - 1 } );
-                }
-            }*/
-        }
-
-        public void trackSelector_SelectedCurveChanged(Object sender, CurveType type)
-        {
-            refreshScreen();
-        }
-
-        public void trackSelector_SelectedTrackChanged(Object sender, int selected)
-        {
-            EditorManager.itemSelection.clearBezier();
-            EditorManager.itemSelection.clearEvent();
-            EditorManager.itemSelection.clearPoint();
-            updateDrawObjectList();
-            refreshScreen();
-        }
-        #endregion
-
 		public void updateTrackMenuStatus()
 		{
 			VsqFileEx vsq = MusicManager.getVsqFile();
@@ -7798,34 +7538,6 @@ namespace cadencii
             statusLabel.Text = text;
         }
 #endif
-
-        public void handleSpaceKeyDown(Object sender, KeyEventArgs e)
-        {
-            if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
-                mSpacekeyDowned = true;
-            }
-        }
-
-        public void handleSpaceKeyUp(Object sender, KeyEventArgs e)
-        {
-            if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
-                mSpacekeyDowned = false;
-            }
-        }
-		
-        void handleSpaceKeyDown(Object sender, NKeyEventArgs e)
-        {
-            if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
-                mSpacekeyDowned = true;
-            }
-        }
-
-        void handleSpaceKeyUp(Object sender, NKeyEventArgs e)
-        {
-            if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
-                mSpacekeyDowned = false;
-            }
-        }
 
         public void handleBgmOffsetSeconds_Click(Object sender, EventArgs e)
         {

@@ -200,7 +200,6 @@
     <Compile Include="app_ui\forms\FormWordDictionaryUiListener.cs" />
     <Compile Include="app_ui\forms\FormWorkerUi.cs" />
     <Compile Include="app_ui\forms\InputBox.cs" />
-    <Compile Include="app_ui\forms\MainFormUi.cs" />
     <Compile Include="app_ui\forms\Preference.cs" />
     <Compile Include="app_ui\forms\PropertyWindowListener.cs" />
     <Compile Include="app_ui\forms\UpdateCheckForm.cs" />
@@ -239,6 +238,8 @@
     <Compile Include="app_ui\models\FormMainModel.PictPianoRollModel.cs" />
     <Compile Include="app_ui\models\ExtDragXMode.cs" />
     <Compile Include="app_ui\models\ExtDragYMode.cs" />
+    <Compile Include="app_ui\models\FormMainModel.TrackSelectorModel.cs" />
+    <Compile Include="app_ui\models\CurveEditMode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

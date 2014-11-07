@@ -121,7 +121,7 @@ namespace cadencii
 								internal_ids.Add(see.original.InternalID);
 							}
 							var btn = e.Button;
-							if (parent.form.isMouseMiddleButtonDowned(btn)) {
+							if (parent.IsMouseMiddleButtonDown(btn)) {
 								btn = NMouseButtons.Middle;
 							}
 							bool result = PaletteToolServer.invokePaletteTool(EditorManager.mSelectedPaletteTool,
@@ -469,7 +469,7 @@ namespace cadencii
 				CDebug.WriteLine("pictPianoRoll_MouseDown");
 				#endif
 				var btn0 = e0.Button;
-				if (parent.form.isMouseMiddleButtonDowned(btn0)) {
+				if (parent.IsMouseMiddleButtonDown(btn0)) {
 					btn0 = NMouseButtons.Middle;
 				}
 				var e = new NMouseEventArgs(btn0, e0.Clicks, e0.X, e0.Y, e0.Delta);

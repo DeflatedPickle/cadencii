@@ -407,7 +407,7 @@ namespace cadencii
         public void handleMouseDown(Object sender, MouseEventArgs e)
         {
             MouseButtons btn = e.Button;
-            if (mMainForm.isMouseMiddleButtonDowned((Cadencii.Gui.MouseButtons) e.Button)) {
+            if (mMainForm.Model.IsMouseMiddleButtonDown((Cadencii.Gui.MouseButtons) e.Button)) {
                 btn = MouseButtons.Middle;
             }
             if (btn == MouseButtons.Middle) {

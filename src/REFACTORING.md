@@ -54,6 +54,19 @@ Milestones
 ----------
 
 - Replace winforms event handler methods into UI commands and actions.
+  (more code goes winforms-independent.)
 - Reduce Win32-ism.
 - Modify GUI framework to better fit with either WPF or Xwt.
 
+Application Model and Implementation
+------------------------------------
+
+Current application "model" is not really so-called "model" as in MV*.
+Current concern is separation of UI-framework dependent code and what not.
+Once we are done with that UI fx separation, we can make smarter move,
+using modern UI framework.
+
+Right now I try to not make application logic and/or structures so that
+the application would work as it used to do. It is important also because
+current application doesn't work fine on Linux, where I make code changes.
+If I make more "decent" changes, apps will get broken and won't work again.

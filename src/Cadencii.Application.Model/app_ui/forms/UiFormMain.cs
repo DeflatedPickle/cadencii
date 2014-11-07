@@ -36,6 +36,8 @@ namespace cadencii
     {
 		FormMainModel Model { get; }
 
+		CurveEditMode mEditCurveMode { get; set; }
+
 		UiContextMenuStrip cMenuPiano { get; set; }
 		UiTrackBar trackBar { get; set; }
 		double mTimerDragLastIgnitted { get; set; }
@@ -167,8 +169,6 @@ namespace cadencii
 		FormMainController controller { get; set; }
 
 		int calculateStartToDrawX ();
-
-		bool isMouseMiddleButtonDowned (Cadencii.Gui.MouseButtons mouseButtons);
 
 		UiContextMenuStrip MenuTrackTab { get; set; }
 		UiContextMenuStrip MenuTrackSelector { get; set; }
