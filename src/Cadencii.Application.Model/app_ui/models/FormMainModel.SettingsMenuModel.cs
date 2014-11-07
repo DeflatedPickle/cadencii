@@ -81,16 +81,6 @@ namespace cadencii
 				}
 			}
 
-			public void RunSettingGameControlerLoadCommand ()
-			{
-				parent.form.loadGameController ();
-			}
-
-			public void RunSettingGameControlerRemoveCommand ()
-			{
-				parent.form.removeGameControler ();
-			}
-
 			public void RunSettingGameControlerSettingCommand ()
 			{
 				FormGameControllerConfig dlg = null;

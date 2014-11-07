@@ -18,6 +18,11 @@ namespace cadencii
 			timer = new System.Windows.Forms.Timer (components);
 		}
 
+		public override void Dispose ()
+		{
+			timer.Dispose ();
+		}
+
 		public override event EventHandler Tick {
 			add { timer.Tick += value; }
 			remove { timer.Tick -= value; }

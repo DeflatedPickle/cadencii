@@ -24,6 +24,15 @@ namespace cadencii
     {
 		FormMainModel Model { get; }
 
+		Image Resource_piano { get; }
+		Image Resource_slash { get; }
+
+		bool mFormActivated { get; set; }
+		UiToolStripStatusLabel stripLblGameCtrlMode { get; set; }
+		void forward();
+		void rewind();
+		bool isEdited();
+
 		UiToolStripMenuItem cMenuTrackSelectorPointer { get; set; }
 		UiToolStripMenuItem cMenuTrackSelectorPencil { get;set; }
 		UiToolStripMenuItem cMenuTrackSelectorLine { get; set; }
@@ -46,7 +55,7 @@ namespace cadencii
 
 		UiToolStripMenuItem menuScriptUpdate { get; set; }
 
-		void initializeRendererMenuHandler();
+		void initializeRendererMenuHandler (FormMainModel model);
 		void updateTrackMenuStatus();
 		UiToolStripMenuItem menuTrackOn { get; set; }
 		UiToolStripMenuItem cMenuTrackTabTrackOn { get; set; }
@@ -103,8 +112,6 @@ namespace cadencii
 		void applyLanguage ();
 		void updateMenuFonts ();
 		Preference mDialogPreference { get; set; }
-		void loadGameController ();
-		void removeGameControler ();
 
 		FormMidiImExport mDialogMidiImportAndExport { get; set; }
 

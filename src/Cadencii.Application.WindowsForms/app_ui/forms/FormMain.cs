@@ -155,14 +155,6 @@ namespace cadencii
             NONE,
         }
 
-        enum GameControlMode
-        {
-            DISABLED,
-            NORMAL,
-            KEYBOARD,
-            CURSOR,
-        }
-
         enum PositionIndicatorMouseDownMode
         {
             NONE,
@@ -291,6 +283,7 @@ namespace cadencii
         /// </summary>
         public Thread mMouseHoverThread = null;
 #endif
+		public bool mSpacekeyDowned = false;
         public bool mLastIsImeModeOn = true;
 		public bool mLastSymbolEditMode { get; set; }
         /// <summary>
@@ -304,23 +297,7 @@ namespace cadencii
         /// <summary>
         /// このフォームがアクティブ化されているかどうか
         /// </summary>
-        public bool mFormActivated = true;
-        private GameControlMode mGameMode = GameControlMode.DISABLED;
-        public System.Windows.Forms.Timer mTimer;
-        public bool mLastPovR = false;
-        public bool mLastPovL = false;
-        public bool mLastPovU = false;
-        public bool mLastPovD = false;
-        public bool mLastBtnX = false;
-        public bool mLastBtnO = false;
-        public bool mLastBtnRe = false;
-        public bool mLastBtnTr = false;
-        public bool mLastBtnSelect = false;
-        /// <summary>
-        /// 前回ゲームコントローラのイベントを処理した時刻
-        /// </summary>
-        public double mLastEventProcessed;
-        public bool mSpacekeyDowned = false;
+		public bool mFormActivated { get; set; } = true;
 #if ENABLE_MIDI
         public MidiInDevice     mMidiIn = null;
 #endif
@@ -810,7 +787,7 @@ namespace cadencii
             updateVibratoPresetMenu();
             mPencilMode.setMode(PencilModeEnum.Off);
             updateCMenuPianoFixed();
-            loadGameController();
+            model.LoadGameController();
 #if ENABLE_MIDI
             reloadMidiIn();
 #endif
@@ -963,7 +940,7 @@ namespace cadencii
         /// <summary>
         /// renderer_menu_handler_ を初期化する
         /// </summary>
-        public void initializeRendererMenuHandler()
+		public void initializeRendererMenuHandler(FormMainModel model)
         {
             var renderer_menu_handler_ = new List<RendererMenuHandler>();
 			model.RendererMenuHandlers = renderer_menu_handler_;
@@ -1807,26 +1784,6 @@ namespace cadencii
 #endif
         }
 
-        /// <summary>
-        /// 現在のゲームコントローラのモードに応じてstripLblGameCtrlModeの表示状態を更新します。
-        /// </summary>
-        public void updateGameControlerStatus(Object sender, EventArgs e)
-        {
-            if (mGameMode == GameControlMode.DISABLED) {
-                stripLblGameCtrlMode.Text = _("Disabled");
-                stripLblGameCtrlMode.Image = Properties.Resources.slash.ToAwt ();
-            } else if (mGameMode == GameControlMode.CURSOR) {
-                stripLblGameCtrlMode.Text = _("Cursor");
-                stripLblGameCtrlMode.Image = null;
-            } else if (mGameMode == GameControlMode.KEYBOARD) {
-                stripLblGameCtrlMode.Text = _("Keyboard");
-				stripLblGameCtrlMode.Image = Properties.Resources.piano.ToAwt ();
-            } else if (mGameMode == GameControlMode.NORMAL) {
-                stripLblGameCtrlMode.Text = _("Normal");
-                stripLblGameCtrlMode.Image = null;
-            }
-        }
-
         public int calculateStartToDrawX()
         {
             return (int)(hScroll.Value * controller.getScaleX());
@@ -2654,55 +2611,6 @@ namespace cadencii
             }
         }
 
-        /// <summary>
-        /// 識別済みのゲームコントローラを取り外します
-        /// </summary>
-        public void removeGameControler()
-        {
-            if (mTimer != null) {
-                mTimer.Stop();
-                mTimer.Dispose();
-                mTimer = null;
-            }
-            mGameMode = GameControlMode.DISABLED;
-            updateGameControlerStatus(null, null);
-        }
-
-        /// <summary>
-        /// PCに接続されているゲームコントローラを識別・接続します
-        /// </summary>
-        public void loadGameController()
-        {
-            try {
-                bool init_success = false;
-                int num_joydev = winmmhelp.JoyInit();
-                if (num_joydev <= 0) {
-                    init_success = false;
-                } else {
-                    init_success = true;
-                }
-                if (init_success) {
-                    mGameMode = GameControlMode.NORMAL;
-                    stripLblGameCtrlMode.Image = null;
-                    stripLblGameCtrlMode.Text = mGameMode.ToString();
-                    mTimer = new System.Windows.Forms.Timer();
-                    mTimer.Interval = 10;
-                    mTimer.Tick += new EventHandler(mTimer_Tick);
-                    mTimer.Start();
-                } else {
-                    mGameMode = GameControlMode.DISABLED;
-                }
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".loadGameControler; ex=" + ex + "\n");
-                mGameMode = GameControlMode.DISABLED;
-#if DEBUG
-                CDebug.WriteLine("FormMain+ReloadGameControler");
-                CDebug.WriteLine("    ex=" + ex);
-#endif
-            }
-            updateGameControlerStatus(null, null);
-        }
-
 #if ENABLE_MIDI
         /// <summary>
         /// MIDI入力句デバイスを再読込みします
@@ -3446,7 +3354,7 @@ namespace cadencii
 
             stripLblGameCtrlMode.ToolTipText = _("Game controler");
 
-            this.Invoke(new EventHandler(updateGameControlerStatus));
+			this.Invoke(new Action(model.UpdateGameControlerStatus));
 
             stripBtnPointer.Text = _("Pointer");
             stripBtnPointer.ToolTipText = _("Pointer");
@@ -4808,8 +4716,8 @@ namespace cadencii
 			menuScriptUpdate.Click += (o, e) => model.ScriptMenu.RunScriptUpdateCommand ();
 			menuSettingPreference.Click += (o, e) => model.SettingsMenu.RunSettingPreferenceCommand ();
 			menuSettingGameControlerSetting.Click += (o, e) => model.SettingsMenu.RunSettingGameControlerSettingCommand();
-			menuSettingGameControlerLoad.Click += (o, e) => model.SettingsMenu.RunSettingGameControlerLoadCommand();
-			menuSettingGameControlerRemove.Click += (o, e) => model.SettingsMenu.RunSettingGameControlerRemoveCommand();
+			menuSettingGameControlerLoad.Click += (o, e) => model.LoadGameController ();
+			menuSettingGameControlerRemove.Click += (o, e) => model.RemoveGameControler ();
 			menuSettingSequence.Click += (o, e) => model.SettingsMenu.RunSettingSequenceCommand ();
 			menuSettingShortcut.Click += (o, e) => model.SettingsMenu.RunSettingShortcutCommand();
 			menuSettingVibratoPreset.Click += (o, e) => model.SettingsMenu.RunSettingVibratoPresetCommand();
@@ -7855,182 +7763,6 @@ namespace cadencii
         }
         #endregion
 
-        #region mTimer
-        public void mTimer_Tick(Object sender, EventArgs e)
-        {
-            if (!mFormActivated) {
-                return;
-            }
-            try {
-                double now = PortUtil.getCurrentTime();
-                byte[] buttons;
-                int pov0;
-                bool ret = winmmhelp.JoyGetStatus(0, out buttons, out pov0);
-                bool event_processed = false;
-                double dt_ms = (now - mLastEventProcessed) * 1000.0;
-
-                EditorConfig m = EditorManager.editorConfig;
-                bool btn_x = (0 <= m.GameControlerCross && m.GameControlerCross < buttons.Length && buttons[m.GameControlerCross] > 0x00);
-                bool btn_o = (0 <= m.GameControlerCircle && m.GameControlerCircle < buttons.Length && buttons[m.GameControlerCircle] > 0x00);
-                bool btn_tr = (0 <= m.GameControlerTriangle && m.GameControlerTriangle < buttons.Length && buttons[m.GameControlerTriangle] > 0x00);
-                bool btn_re = (0 <= m.GameControlerRectangle && m.GameControlerRectangle < buttons.Length && buttons[m.GameControlerRectangle] > 0x00);
-                bool pov_r = pov0 == m.GameControlPovRight;
-                bool pov_l = pov0 == m.GameControlPovLeft;
-                bool pov_u = pov0 == m.GameControlPovUp;
-                bool pov_d = pov0 == m.GameControlPovDown;
-                bool L1 = (0 <= m.GameControlL1 && m.GameControlL1 < buttons.Length && buttons[m.GameControlL1] > 0x00);
-                bool R1 = (0 <= m.GameControlL2 && m.GameControlL2 < buttons.Length && buttons[m.GameControlR1] > 0x00);
-                bool L2 = (0 <= m.GameControlR1 && m.GameControlR1 < buttons.Length && buttons[m.GameControlL2] > 0x00);
-                bool R2 = (0 <= m.GameControlR2 && m.GameControlR2 < buttons.Length && buttons[m.GameControlR2] > 0x00);
-                bool SELECT = (0 <= m.GameControlSelect && m.GameControlSelect <= buttons.Length && buttons[m.GameControlSelect] > 0x00);
-                if (mGameMode == GameControlMode.NORMAL) {
-                    mLastBtnX = btn_x;
-
-                    if (!event_processed && !btn_o && mLastBtnO) {
-                        if (EditorManager.isPlaying()) {
-                            timer.Stop();
-                        }
-                        EditorManager.setPlaying(!EditorManager.isPlaying(), this);
-                        mLastEventProcessed = now;
-                        event_processed = true;
-                    }
-                    mLastBtnO = btn_o;
-
-                    if (!event_processed && pov_r && dt_ms > EditorManager.editorConfig.GameControlerMinimumEventInterval) {
-                        forward();
-                        mLastEventProcessed = now;
-                        event_processed = true;
-                    }
-                    mLastPovR = pov_r;
-
-                    if (!event_processed && pov_l && dt_ms > EditorManager.editorConfig.GameControlerMinimumEventInterval) {
-                        rewind();
-                        mLastEventProcessed = now;
-                        event_processed = true;
-                    }
-                    mLastPovL = pov_l;
-
-                    if (!event_processed && pov_u && dt_ms > EditorManager.editorConfig.GameControlerMinimumEventInterval) {
-                        int draft_vscroll = vScroll.Value - (int)(100 * controller.getScaleY()) * 3;
-                        if (draft_vscroll < vScroll.Minimum) {
-                            draft_vscroll = vScroll.Minimum;
-                        }
-                        vScroll.Value = draft_vscroll;
-                        refreshScreen();
-                        mLastEventProcessed = now;
-                        event_processed = true;
-                    }
-
-                    if (!event_processed && pov_d && dt_ms > EditorManager.editorConfig.GameControlerMinimumEventInterval) {
-                        int draft_vscroll = vScroll.Value + (int)(100 * controller.getScaleY()) * 3;
-                        if (draft_vscroll > vScroll.Maximum) {
-                            draft_vscroll = vScroll.Maximum;
-                        }
-                        vScroll.Value = draft_vscroll;
-                        refreshScreen();
-                        mLastEventProcessed = now;
-                        event_processed = true;
-                    }
-
-                    if (!event_processed && !SELECT && mLastBtnSelect) {
-                        event_processed = true;
-                        mGameMode = GameControlMode.KEYBOARD;
-                        stripLblGameCtrlMode.Text = mGameMode.ToString();
-						stripLblGameCtrlMode.Image = Properties.Resources.piano.ToAwt ();
-                    }
-                    mLastBtnSelect = SELECT;
-                } else if (mGameMode == GameControlMode.KEYBOARD) {
-                    if (!event_processed && !SELECT && mLastBtnSelect) {
-                        event_processed = true;
-                        mGameMode = GameControlMode.NORMAL;
-                        updateGameControlerStatus(null, null);
-                        mLastBtnSelect = SELECT;
-                        return;
-                    }
-                    mLastBtnSelect = SELECT;
-
-                    int note = -1;
-                    if (pov_r && !mLastPovR) {
-                        note = 60;
-                    } else if (btn_re && !mLastBtnRe) {
-                        note = 62;
-                    } else if (btn_tr && !mLastBtnTr) {
-                        note = 64;
-                    } else if (btn_o && !mLastBtnO) {
-                        note = 65;
-                    } else if (btn_x && !mLastBtnX) {
-                        note = 67;
-                    } else if (pov_u && !mLastPovU) {
-                        note = 59;
-                    } else if (pov_l && !mLastPovL) {
-                        note = 57;
-                    } else if (pov_d && !mLastPovD) {
-                        note = 55;
-                    }
-                    if (note >= 0) {
-                        if (L1) {
-                            note += 12;
-                        } else if (L2) {
-                            note -= 12;
-                        }
-                        if (R1) {
-                            note += 1;
-                        } else if (R2) {
-                            note -= 1;
-                        }
-                    }
-                    mLastBtnO = btn_o;
-                    mLastBtnX = btn_x;
-                    mLastBtnRe = btn_re;
-                    mLastBtnTr = btn_tr;
-                    mLastPovL = pov_l;
-                    mLastPovD = pov_d;
-                    mLastPovR = pov_r;
-                    mLastPovU = pov_u;
-                    if (note >= 0) {
-#if DEBUG
-                        CDebug.WriteLine("FormMain#mTimer_Tick");
-                        CDebug.WriteLine("    note=" + note);
-#endif
-                        if (EditorManager.isPlaying()) {
-                            int clock = EditorManager.getCurrentClock();
-                            int selected = EditorManager.Selected;
-                            if (EditorManager.mAddingEvent != null) {
-                                EditorManager.mAddingEvent.ID.setLength(clock - EditorManager.mAddingEvent.Clock);
-                                CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandEventAdd(selected,
-                                                                                                               EditorManager.mAddingEvent));
-                                EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
-                                if (!isEdited()) {
-                                    setEdited(true);
-                                }
-                                updateDrawObjectList();
-                            }
-                            EditorManager.mAddingEvent = new VsqEvent(clock, new VsqID(0));
-                            EditorManager.mAddingEvent.ID.type = VsqIDType.Anote;
-                            EditorManager.mAddingEvent.ID.Dynamics = 64;
-                            EditorManager.mAddingEvent.ID.VibratoHandle = null;
-                            EditorManager.mAddingEvent.ID.LyricHandle = new LyricHandle("a", "a");
-                            EditorManager.mAddingEvent.ID.Note = note;
-                        }
-                        KeySoundPlayer.play(note);
-                    } else {
-                        if (EditorManager.isPlaying() && EditorManager.mAddingEvent != null) {
-                            EditorManager.mAddingEvent.ID.setLength(EditorManager.getCurrentClock() - EditorManager.mAddingEvent.Clock);
-                        }
-                    }
-                }
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".mTimer_Tick; ex=" + ex + "\n");
-#if DEBUG
-                CDebug.WriteLine("    ex=" + ex);
-#endif
-                mGameMode = GameControlMode.DISABLED;
-                updateGameControlerStatus(null, null);
-                mTimer.Stop();
-            }
-        }
-        #endregion
-
         //BOOKMARK: menuFile
         #region menuFile*
         public void menuFileExport_DropDownOpening(Object sender, EventArgs e)
@@ -10397,6 +10129,9 @@ namespace cadencii
         {
             showUpdateInformationAsync(true);
         }
+
+	public Image Resource_piano { get { return Properties.Resources.piano.ToAwt (); } }
+	public Image Resource_slash { get { return Properties.Resources.slash.ToAwt (); } }
     }
 
 }

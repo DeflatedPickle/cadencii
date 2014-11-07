@@ -3151,7 +3151,7 @@ namespace cadencii
         public UiToolStripMenuItem cMenuPianoVibratoProperty;
 		public UiToolStripMenuItem menuScriptUpdate { get; set; }
         public UiToolStripMenuItem menuSettingGameControler;
-        public UiToolStripStatusLabel stripLblGameCtrlMode;
+		public UiToolStripStatusLabel stripLblGameCtrlMode { get; set; }
         public UiToolStripSeparator toolStripSeparator10;
         public UiToolStripMenuItem menuSettingGameControlerSetting;
         public UiToolStripMenuItem menuSettingGameControlerLoad;

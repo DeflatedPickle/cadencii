@@ -140,7 +140,7 @@ namespace cadencii
 			PianoMenu = new PianoMenuModel (this);
 			TrackSelectorMenu = new TrackSelectorMenuModel (this);
 
-			form.initializeRendererMenuHandler();
+			form.initializeRendererMenuHandler(this);
 		}
 
 		public FileMenuModel FileMenu { get; private set; }

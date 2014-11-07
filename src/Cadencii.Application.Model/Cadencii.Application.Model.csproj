@@ -234,6 +234,8 @@
     <Compile Include="app_ui\controls\TrackSelectorSingerPopupMenu.cs" />
     <Compile Include="app_ui\models\FormMainModel.PianoMenuModel.cs" />
     <Compile Include="app_ui\models\FormMainModel.TrackSelectorMenuModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.GameController.cs" />
+    <Compile Include="gui_fx_extended\GameControllerManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
