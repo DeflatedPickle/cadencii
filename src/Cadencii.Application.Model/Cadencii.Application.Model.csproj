@@ -240,6 +240,7 @@
     <Compile Include="app_ui\models\ExtDragYMode.cs" />
     <Compile Include="app_ui\models\FormMainModel.TrackSelectorModel.cs" />
     <Compile Include="app_ui\models\CurveEditMode.cs" />
+    <Compile Include="app_ui\models\FormMainModel.Playing.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

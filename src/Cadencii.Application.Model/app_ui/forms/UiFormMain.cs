@@ -36,6 +36,8 @@ namespace cadencii
     {
 		FormMainModel Model { get; }
 
+		UiToolBarButton stripBtnPlay { get; set; }
+
 		CurveEditMode mEditCurveMode { get; set; }
 
 		UiContextMenuStrip cMenuPiano { get; set; }
@@ -63,8 +65,6 @@ namespace cadencii
 
 		bool mFormActivated { get; set; }
 		UiToolStripStatusLabel stripLblGameCtrlMode { get; set; }
-		void forward();
-		void rewind();
 		bool isEdited();
 
 		UiToolStripMenuItem cMenuTrackSelectorPointer { get; set; }
@@ -140,7 +140,6 @@ namespace cadencii
 		void updateRendererMenu();
 		void reloadMidiIn();
 		void updateMidiInStatus();
-		Timer timer { get; set; }
 		VersionInfo mVersionInfo { get; set; }
 		void applyShortcut ();
 		void applyLanguage ();

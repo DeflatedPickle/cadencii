@@ -855,7 +855,7 @@ namespace cadencii
 
 					if (edit_mode == EditMode.CURVE_ON_PIANOROLL && EditorManager.mCurveOnPianoroll) {
 						parent.form.pictPianoRoll.mMouseTracer.append(e.X + stdx, e.Y + stdy);
-						if (!parent.form.timer.Enabled) {
+						if (!parent.timer.Enabled) {
 							parent.form.refreshScreen();
 						}
 						return;
@@ -1223,7 +1223,7 @@ namespace cadencii
 						}
 						EditorManager.mAddingEvent.Clock = new_vibrato_start;
 						EditorManager.mAddingEvent.ID.setLength(new_vibrato_length);
-						if (!parent.form.timer.Enabled) {
+						if (!parent.timer.Enabled) {
 							parent.form.refreshScreen();
 						}
 						#endregion
@@ -1320,7 +1320,7 @@ namespace cadencii
 							parent.form.Cursor = Cursors.Default;
 						}
 					}
-					if (!parent.form.timer.Enabled) {
+					if (!parent.timer.Enabled) {
 						parent.form.refreshScreen(true);
 					}
 				}

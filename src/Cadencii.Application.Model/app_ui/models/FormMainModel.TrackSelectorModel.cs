@@ -81,7 +81,7 @@ namespace cadencii
 					}
 				}
 				if (e.Button == MouseButtons.None) {
-					if (!parent.form.timer.Enabled) {
+					if (!parent.timer.Enabled) {
 						parent.form.refreshScreen(true);
 					}
 					return;
@@ -139,7 +139,7 @@ namespace cadencii
 						parent.form.hScroll.Value = draft;
 					}
 				}
-				if (!parent.form.timer.Enabled) {
+				if (!parent.timer.Enabled) {
 					parent.form.refreshScreen(true);
 				}
 			}

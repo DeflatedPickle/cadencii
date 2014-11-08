@@ -244,7 +244,7 @@ namespace cadencii
 						EditorManager.editorConfig.ScrollHorizontalOnWheel = dlg.isScrollHorizontalOnWheel ();
 						EditorManager.editorConfig.MaximumFrameRate = dlg.getMaximumFrameRate ();
 						int fps = 1000 / EditorManager.editorConfig.MaximumFrameRate;
-						parent.form.timer.Interval = (fps <= 0) ? 1 : fps;
+						parent.SetTimerInterval ((fps <= 0) ? 1 : fps);
 						parent.form.applyShortcut ();
 						EditorManager.editorConfig.KeepLyricInputMode = dlg.isKeepLyricInputMode ();
 						if (EditorManager.editorConfig.PxTrackHeight != dlg.getPxTrackHeight ()) {

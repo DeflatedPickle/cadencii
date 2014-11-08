@@ -3129,7 +3129,7 @@ namespace cadencii
         public UiToolBarButton stripBtnRewind;
         public UiToolBarButton stripBtnForward;
         public UiToolBarButton stripBtnMoveEnd;
-        public UiToolBarButton stripBtnPlay;
+		public UiToolBarButton stripBtnPlay { get; set; }
         public UiToolBarButton stripBtnScroll;
         public UiToolBarButton stripBtnLoop;
         public UiToolBarButton stripBtnCurve;

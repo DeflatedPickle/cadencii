@@ -134,7 +134,7 @@ namespace cadencii
 
 					if (!event_processed && !btn_o && mLastBtnO) {
 						if (EditorManager.isPlaying()) {
-							form.timer.Stop();
+							timer.Stop();
 						}
 						EditorManager.setPlaying(!EditorManager.isPlaying(), form);
 						mLastEventProcessed = now;
@@ -143,14 +143,14 @@ namespace cadencii
 					mLastBtnO = btn_o;
 
 					if (!event_processed && pov_r && dt_ms > EditorManager.editorConfig.GameControlerMinimumEventInterval) {
-						form.forward();
+						Forward();
 						mLastEventProcessed = now;
 						event_processed = true;
 					}
 					mLastPovR = pov_r;
 
 					if (!event_processed && pov_l && dt_ms > EditorManager.editorConfig.GameControlerMinimumEventInterval) {
-						form.rewind();
+						Rewind();
 						mLastEventProcessed = now;
 						event_processed = true;
 					}

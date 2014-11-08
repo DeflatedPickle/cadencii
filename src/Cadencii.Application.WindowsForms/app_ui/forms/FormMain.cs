@@ -260,7 +260,6 @@ namespace cadencii
 		public UiOpenFileDialog openMidiDialog { get; set; }
 		public UiSaveFileDialog saveMidiDialog { get; set; }
 		public UiOpenFileDialog openWaveDialog { get; set; }
-		public Cadencii.Gui.Timer timer { get; set; }
         public System.ComponentModel.BackgroundWorker bgWorkScreen;
         /// <summary>
         /// アイコンパレットのドラッグ＆ドロップ処理中，一度でもpictPianoRoll内にマウスが入ったかどうか
@@ -292,10 +291,6 @@ namespace cadencii
         /// </summary>
         private int mPianoRollScaleYMouseStatus = 0;
         /// <summary>
-        /// 再生中にソングポジションが前進だけしてほしいので，逆行を防ぐために前回のソングポジションを覚えておく
-        /// </summary>
-        private int mLastClock = 0;
-        /// <summary>
         /// PositionIndicatorに表示しているポップアップのクロック位置
         /// </summary>
         private int mPositionIndicatorPopupShownClock;
@@ -319,6 +314,7 @@ namespace cadencii
         public FormMain(FormMainController controller, string file)
         {
 			model = new FormMainModel (this);
+			model.InitializeTimer (components);
 
 		this.appId = Handle.ToString ("X32");
             this.controller = controller;
@@ -363,7 +359,6 @@ namespace cadencii
             panelWaveformZoom = (WaveformZoomUiImpl)(new WaveformZoomController(this, waveView)).getUi();
 
             InitializeComponent();
-			timer = ApplicationUIHost.Create<Cadencii.Gui.Timer> (this.components);
 
             panelOverview.setMainForm(this);
             pictPianoRoll.setMainForm(this);
@@ -524,9 +519,6 @@ namespace cadencii
             EditorManager.InputTextBox.Parent = pictPianoRoll;
             panel1.AddControl(EditorManager.InputTextBox);
 
-            int fps = 1000 / EditorManager.editorConfig.MaximumFrameRate;
-            timer.Interval = (fps <= 0) ? 1 : fps;
-
 #if DEBUG
             menuHelpDebug.Visible = true;
 #endif // DEBUG
@@ -589,8 +581,8 @@ namespace cadencii
             EditorManager.setCurrentClock(0);
             setEdited(false);
 
-			EditorManager.PreviewStarted += new EventHandler(EditorManager_PreviewStarted);
-			EditorManager.PreviewAborted += new EventHandler(EditorManager_PreviewAborted);
+			EditorManager.PreviewStarted += (o, e) => model.StartPreview ();
+			EditorManager.PreviewAborted += (o, e) => model.AbortPreview ();
             EditorManager.GridVisibleChanged += new EventHandler(EditorManager_GridVisibleChanged);
             EditorManager.itemSelection.SelectedEventChanged += new SelectedEventChangedEventHandler(ItemSelectionModel_SelectedEventChanged);
             EditorManager.SelectedToolChanged += new EventHandler(EditorManager_SelectedToolChanged);
@@ -943,33 +935,6 @@ namespace cadencii
                 VibratoHandle handle = EditorManager.editorConfig.AutoVibratoCustom[i];
                 menuLyricCopyVibratoToPreset.DropDownItems[i].Text = handle.getCaption();
             }
-        }
-
-        /// <summary>
-        /// MIDIステップ入力中に，ソングポジションが動いたときの処理を行います
-        /// EditorManager.mAddingEventが非nullの時，音符の先頭は決まっているので，
-        /// ソングポジションと，音符の先頭との距離から音符の長さを算出し，更新する
-        /// EditorManager.mAddingEventがnullの時は何もしない
-        /// </summary>
-        private void updateNoteLengthStepSequencer()
-        {
-            if (!controller.isStepSequencerEnabled()) {
-                return;
-            }
-
-            VsqEvent item = EditorManager.mAddingEvent;
-            if (item == null) {
-                return;
-            }
-
-            int song_position = EditorManager.getCurrentClock();
-            int start = item.Clock;
-            int length = song_position - start;
-            if (length < 0) length = 0;
-            EditorManager.editLengthOfVsqEvent(
-                item,
-                length,
-				EditorManager.vibratoLengthEditingRule);
         }
 
         /// <summary>
@@ -2748,11 +2713,11 @@ namespace cadencii
                 }
             } else if ((Keys) e.KeyCode == Keys.Add || (Keys) e.KeyCode == Keys.Oemplus || (Keys) e.KeyCode == Keys.Right) {
                 if (onPreviewKeyDown) {
-                    forward();
+                    model.Forward();
                 }
             } else if ((Keys) e.KeyCode == Keys.Subtract || (Keys) e.KeyCode == Keys.OemMinus || (Keys) e.KeyCode == Keys.Left) {
                 if (onPreviewKeyDown) {
-                    rewind();
+                    model.Rewind();
                 }
             } else if ((Keys) e.KeyCode == Keys.Escape) {
                 // ステップ入力中の場合，入力中の音符をクリアする
@@ -2785,19 +2750,7 @@ namespace cadencii
                 }
             }
             if (!onPreviewKeyDown && flipPlaying) {
-                if (EditorManager.isPlaying()) {
-                    double elapsed = PlaySound.getPosition();
-                    double threshold = EditorManager.mForbidFlipPlayingThresholdSeconds;
-                    if (threshold < 0) {
-                        threshold = 0.0;
-                    }
-                    if (elapsed > threshold) {
-                        timer.Stop();
-                        EditorManager.setPlaying(false, this);
-                    }
-                } else {
-                    EditorManager.setPlaying(true, this);
-                }
+				model.FlipPlaying ();
             }
             if ((Keys) e.KeyCode == Keys.Tab) {
                 focusPianoRoll();
@@ -3044,70 +2997,6 @@ namespace cadencii
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".applyMenuItemShortcut; ex=" + ex + "\n");
             }
-        }
-
-        /// <summary>
-        /// ソングポジションを1小節進めます
-        /// </summary>
-        public void forward()
-        {
-            bool playing = EditorManager.isPlaying();
-            if (playing) {
-                return;
-            }
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            if (vsq == null) {
-                return;
-            }
-            int cl_clock = EditorManager.getCurrentClock();
-            int unit = QuantizeModeUtil.getQuantizeClock(
-                EditorManager.editorConfig.getPositionQuantize(),
-                EditorManager.editorConfig.isPositionQuantizeTriplet());
-            int cl_new = FormMainModel.Quantize(cl_clock + unit, unit);
-
-            if (cl_new <= hScroll.Maximum + (pictPianoRoll.Width - EditorManager.keyWidth) * controller.getScaleXInv()) {
-                // 表示の更新など
-                EditorManager.setCurrentClock(cl_new);
-
-                // ステップ入力時の処理
-                updateNoteLengthStepSequencer();
-
-                ensureCursorVisible();
-                EditorManager.setPlaying(playing, this);
-                refreshScreen();
-            }
-        }
-
-        /// <summary>
-        /// ソングポジションを1小節戻します
-        /// </summary>
-        public void rewind()
-        {
-            bool playing = EditorManager.isPlaying();
-            if (playing) {
-                return;
-            }
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            if (vsq == null) {
-                return;
-            }
-            int cl_clock = EditorManager.getCurrentClock();
-            int unit = QuantizeModeUtil.getQuantizeClock(
-                EditorManager.editorConfig.getPositionQuantize(),
-                EditorManager.editorConfig.isPositionQuantizeTriplet());
-            int cl_new = FormMainModel.Quantize(cl_clock - unit, unit);
-            if (cl_new < 0) {
-                cl_new = 0;
-            }
-
-            EditorManager.setCurrentClock(cl_new);
-
-            // ステップ入力時の処理
-            updateNoteLengthStepSequencer();
-
-            ensureCursorVisible();
-            EditorManager.setPlaying(playing, this);
-            refreshScreen();
         }
 
         /// <summary>
@@ -4706,7 +4595,6 @@ namespace cadencii
             trackBar.ValueChanged += new EventHandler(trackBar_ValueChanged);
             trackBar.Enter += new EventHandler(trackBar_Enter);
             bgWorkScreen.DoWork += new DoWorkEventHandler(bgWorkScreen_DoWork);
-            timer.Tick += new EventHandler(timer_Tick);
             pictKeyLengthSplitter.MouseMove += pictKeyLengthSplitter_MouseMove;
             pictKeyLengthSplitter.MouseDown += pictKeyLengthSplitter_MouseDown;
             pictKeyLengthSplitter.MouseUp += pictKeyLengthSplitter_MouseUp;
@@ -5003,41 +4891,6 @@ namespace cadencii
         public void EditorManager_MainWindowFocusRequired(Object sender, EventArgs e)
         {
             this.Focus();
-        }
-
-        public void EditorManager_PreviewAborted(Object sender, EventArgs e)
-        {
-#if DEBUG
-            sout.println("FormMain#EditorManager_PreviewAborted");
-#endif
-            stripBtnPlay.ImageKey = "control.png";
-            stripBtnPlay.Text = _("Play");
-            timer.Stop();
-
-            for (int i = 0; i < EditorManager.mDrawStartIndex.Length; i++) {
-                EditorManager.mDrawStartIndex[i] = 0;
-            }
-#if ENABLE_MIDI
-            //MidiPlayer.stop();
-#endif // ENABLE_MIDI
-        }
-
-        public void EditorManager_PreviewStarted(Object sender, EventArgs e)
-        {
-#if DEBUG
-            sout.println("FormMain#EditorManager_PreviewStarted");
-#endif
-            EditorManager.mAddingEvent = null;
-            int selected = EditorManager.Selected;
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            RendererKind renderer = VsqFileEx.getTrackRendererKind(vsq.Track[selected]);
-            int clock = EditorManager.getCurrentClock();
-            mLastClock = clock;
-            double now = PortUtil.getCurrentTime();
-            EditorManager.mPreviewStartedTime = now;
-            timer.Start();
-            stripBtnPlay.ImageKey = "control_pause.png";
-            stripBtnPlay.Text = _("Stop");
         }
 
         public void EditorManager_SelectedToolChanged(Object sender, EventArgs e)
@@ -6947,9 +6800,7 @@ namespace cadencii
 
         public void stripBtnStop_Click(Object sender, EventArgs e)
         {
-            EditorManager.setPlaying(false, this);
-            timer.Stop();
-            focusPianoRoll();
+			model.Stop ();
         }
 
         public void stripBtnMoveEnd_Click(Object sender, EventArgs e)
@@ -6974,12 +6825,12 @@ namespace cadencii
 
         public void stripBtnRewind_Click(Object sender, EventArgs e)
         {
-            rewind();
+            model.Rewind();
         }
 
         public void stripBtnForward_Click(Object sender, EventArgs e)
         {
-            forward();
+            model.Forward();
         }
         #endregion
 
@@ -7187,44 +7038,6 @@ namespace cadencii
             } else {
                 target.setDepthBP((VibratoBPList)h.getDepthBP().clone());
             }
-        }
-
-        public void timer_Tick(Object sender, EventArgs e)
-        {
-            if (EditorManager.isGeneratorRunning()) {
-                MonitorWaveReceiver monitor = MonitorWaveReceiver.getInstance();
-                double play_time = 0.0;
-                if (monitor != null) {
-                    play_time = monitor.getPlayTime();
-                }
-                double now = play_time + EditorManager.mDirectPlayShift;
-                int clock = (int)MusicManager.getVsqFile().getClockFromSec(now);
-                if (mLastClock <= clock) {
-                    mLastClock = clock;
-                    EditorManager.setCurrentClock(clock);
-                    if (EditorManager.mAutoScroll) {
-                        ensureCursorVisible();
-                    }
-                }
-            } else {
-                EditorManager.setPlaying(false, this);
-                int ending_clock = EditorManager.getPreviewEndingClock();
-                EditorManager.setCurrentClock(ending_clock);
-                if (EditorManager.mAutoScroll) {
-                    ensureCursorVisible();
-                }
-                refreshScreen(true);
-                if (EditorManager.IsPreviewRepeatMode) {
-                    int dest_clock = 0;
-                    VsqFileEx vsq = MusicManager.getVsqFile();
-                    if (vsq.config.StartMarkerEnabled) {
-                        dest_clock = vsq.config.StartMarker;
-                    }
-                    EditorManager.setCurrentClock(dest_clock);
-                    EditorManager.setPlaying(true, this);
-                }
-            }
-            refreshScreen();
         }
 
         public void bgWorkScreen_DoWork(Object sender, DoWorkEventArgs e)
