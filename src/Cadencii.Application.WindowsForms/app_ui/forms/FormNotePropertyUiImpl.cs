@@ -54,7 +54,7 @@ namespace cadencii
 
         public void deiconfyWindow()
         {
-            this.WindowState = FormWindowState.Normal;
+            this.WindowState = System.Windows.Forms.FormWindowState.Normal;
         }
 
         public void setTitle(string title)

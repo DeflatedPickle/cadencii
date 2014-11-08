@@ -794,7 +794,7 @@ namespace cadencii.windows.forms
                         case win32.RBN_CHILDSIZE: {
                             NMREBARCHILDSIZE ChildSize = (NMREBARCHILDSIZE)Marshal.PtrToStructure(m.LParam, typeof(NMREBARCHILDSIZE));
                             Form form = this.FindForm();
-                            if (form != null && !form.IsDisposed && form.WindowState == FormWindowState.Minimized) {
+							if (form != null && !form.IsDisposed && form.WindowState == System.Windows.Forms.FormWindowState.Minimized) {
                                 // 親フォームが最小化された状態の場合，Resizeを送信しない
                                 break;
                             }

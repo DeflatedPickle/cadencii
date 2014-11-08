@@ -308,7 +308,7 @@ class UtauPluginManager : Form
     {
         ColumnWidthName = headerName.Width;
         ColumnWidthPath = headerPath.Width;
-        if (WindowState == FormWindowState.Normal) {
+		if (WindowState == System.Windows.Forms.FormWindowState.Normal) {
             DialogWidth = Width;
             DialogHeight = Height;
         }

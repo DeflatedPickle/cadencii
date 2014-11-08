@@ -179,7 +179,6 @@
     <Compile Include="app_ui\forms\FormImportLyric.cs" />
     <Compile Include="app_ui\forms\FormInsertBar.cs" />
     <Compile Include="app_ui\forms\FormMainController.cs" />
-    <Compile Include="app_ui\forms\FormMainUiListener.cs" />
     <Compile Include="app_ui\forms\FormMidiImExport.cs" />
     <Compile Include="app_ui\forms\FormMixerUi.cs" />
     <Compile Include="app_ui\forms\FormNoteExpressionConfig.cs" />
@@ -242,8 +241,8 @@
     <Compile Include="app_ui\models\CurveEditMode.cs" />
     <Compile Include="app_ui\models\FormMainModel.Playing.cs" />
     <Compile Include="app_ui\models\PositionIndicatorMouseDownMode.cs" />
-    <Compile Include="app_ui\models\FormMainModel.PicturePositionIndicatorModel.cs" />
     <Compile Include="Resources.cs" />
+    <Compile Include="app_ui\models\FormMainModel.PositionIndicatorModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

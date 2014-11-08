@@ -9,11 +9,11 @@ namespace cadencii
 
 	public partial class FormMainModel
 	{
-		public class PicturePositionIndicatorModel
+		public class PositionIndicatorModel
 		{
 			readonly FormMainModel parent;
 
-			public PicturePositionIndicatorModel (FormMainModel parent)
+			public PositionIndicatorModel (FormMainModel parent)
 			{
 				this.parent = parent;
 			}

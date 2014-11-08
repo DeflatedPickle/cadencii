@@ -228,7 +228,7 @@ namespace cadencii
 				vsq.config.StartMarkerEnabled = !vsq.config.StartMarkerEnabled;
 				parent.form.menuVisualStartMarker.Checked = vsq.config.StartMarkerEnabled;
 				parent.form.setEdited(true);
-				parent.form.focusPianoRoll();
+				parent.form.pictPianoRoll.Focus();
 				parent.form.refreshScreen();
 			}
 
@@ -239,7 +239,7 @@ namespace cadencii
 				parent.form.stripBtnEndMarker.Pushed = vsq.config.EndMarkerEnabled;
 				parent.form.menuVisualEndMarker.Checked = vsq.config.EndMarkerEnabled;
 				parent.form.setEdited(true);
-				parent.form.focusPianoRoll();
+				parent.form.pictPianoRoll.Focus();
 				parent.form.refreshScreen();
 			}
 

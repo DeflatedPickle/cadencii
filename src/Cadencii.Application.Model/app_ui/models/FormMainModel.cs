@@ -152,7 +152,7 @@ namespace cadencii
 			TrackSelectorMenu = new TrackSelectorMenuModel (this);
 			PianoRoll = new PictPianoRollModel (this);
 			TrackSelector = new TrackSelectorModel (this);
-			PicturePositionIndicator = new PicturePositionIndicatorModel (this);
+			PositionIndicator = new PositionIndicatorModel (this);
 
 			form.initializeRendererMenuHandler(this);
 		}
@@ -171,7 +171,7 @@ namespace cadencii
 		public TrackSelectorMenuModel TrackSelectorMenu { get; private set; }
 		public PictPianoRollModel PianoRoll { get; private set; }
 		public TrackSelectorModel TrackSelector { get; private set; }
-		public PicturePositionIndicatorModel PicturePositionIndicator { get; private set; }
+		public PositionIndicatorModel PositionIndicator { get; private set; }
 
 		/// <summary>
 		/// 合成器の種類のメニュー項目を管理するハンドラをまとめたリスト

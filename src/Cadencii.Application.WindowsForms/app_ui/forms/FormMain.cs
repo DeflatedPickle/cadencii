@@ -78,6 +78,10 @@ namespace cadencii
 			set { trackSelector = value; }
 		}
 
+		FormWindowState UiFormMain.WindowState {
+			get { return (FormWindowState)WindowState; }
+		}
+
         /// <summary>
         /// 特殊なキーの組み合わせのショートカットと、メニューアイテムとの紐付けを保持するクラスです。
         /// </summary>
@@ -474,7 +478,7 @@ namespace cadencii
 
             updatePropertyPanelState(EditorManager.editorConfig.PropertyWindowStatus.State);
 
-			picturePositionIndicator.MouseWheel += (o,e) => model.PicturePositionIndicator.RunMouseWheel (e);
+			picturePositionIndicator.MouseWheel += (o,e) => model.PositionIndicator.RunMouseWheel (e);
 
 			menuVisualOverview.CheckedChanged += (o, e) => model.VisualMenu.RunVisualOverviewCheckedChanged ();
 
@@ -629,9 +633,9 @@ namespace cadencii
 
             // ウィンドウの位置・サイズを再現
             if (EditorManager.editorConfig.WindowMaximized) {
-                this.WindowState = FormWindowState.Maximized;
+				this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             } else {
-                this.WindowState = FormWindowState.Normal;
+				this.WindowState = System.Windows.Forms.FormWindowState.Normal;
             }
             Rectangle bounds = EditorManager.editorConfig.WindowRect;
             this.Bounds = new System.Drawing.Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
@@ -757,15 +761,6 @@ namespace cadencii
             }
 #endif
         }
-        #endregion
-
-        #region FormMainUiの実装
-
-        public void focusPianoRoll()
-        {
-            pictPianoRoll.Focus();
-        }
-
         #endregion
 
         #region helper methods
@@ -2537,7 +2532,7 @@ namespace cadencii
                             serr.println("FormMain#processSpecialShortcutKey; ex=" + ex);
                         }
                         if ((Keys) e.KeyCode == Keys.Tab) {
-                            focusPianoRoll();
+                            pictPianoRoll.Focus();
                         }
                         return;
                     }
@@ -2623,7 +2618,7 @@ namespace cadencii
 				model.FlipPlaying ();
             }
             if ((Keys) e.KeyCode == Keys.Tab) {
-                focusPianoRoll();
+                pictPianoRoll.Focus();
             }
         }
 
@@ -3938,7 +3933,7 @@ namespace cadencii
             EditorManager.InputTextBox.Visible = false;
             EditorManager.InputTextBox.Parent = null;
             EditorManager.InputTextBox.Enabled = false;
-            focusPianoRoll();
+            pictPianoRoll.Focus();
         }
 
         public void updateMenuFonts()
@@ -4264,8 +4259,8 @@ namespace cadencii
 			cMenuTrackSelectorDelete.Click += (o, e) => model.DeleteEvent ();
 			cMenuTrackSelectorDeleteBezier.Click += (o, e) => model.TrackSelectorMenu.RunDeleteBezierCommand ();
 			cMenuTrackSelectorSelectAll.Click += (o, e) => model.SelectAllEvent ();
-			cMenuPositionIndicatorEndMarker.Click += (o,e) => model.PicturePositionIndicator.RunEndMarkerCommand ();
-			cMenuPositionIndicatorStartMarker.Click += (o,e) => model.PicturePositionIndicator.RunStartMarkerCommand ();
+			cMenuPositionIndicatorEndMarker.Click += (o,e) => model.PositionIndicator.RunEndMarkerCommand ();
+			cMenuPositionIndicatorStartMarker.Click += (o,e) => model.PositionIndicator.RunStartMarkerCommand ();
             trackBar.ValueChanged += new EventHandler(trackBar_ValueChanged);
             trackBar.Enter += new EventHandler(trackBar_Enter);
             bgWorkScreen.DoWork += new DoWorkEventHandler(bgWorkScreen_DoWork);
@@ -4276,18 +4271,18 @@ namespace cadencii
 			panelOverview.KeyDown += (o,e) => model.HandleSpaceKeyDown (e);
             vScroll.ValueChanged += new EventHandler(vScroll_ValueChanged);
             //this.Resize += new EventHandler( handleVScrollResize );
-            pictPianoRoll.Resize += new EventHandler(handleVScrollResize);
+			pictPianoRoll.Resize += (o, e) => model.PianoRoll.RunPianoRollResize ();
             vScroll.Enter += new EventHandler(vScroll_Enter);
             hScroll.ValueChanged += new EventHandler(hScroll_ValueChanged);
             hScroll.Resize += new EventHandler(hScroll_Resize);
             hScroll.Enter += new EventHandler(hScroll_Enter);
-			picturePositionIndicator.PreviewKeyDown += (o,e) => model.PicturePositionIndicator.RunPreviewKeyDown (e);
-			picturePositionIndicator.MouseMove += (o,e) => model.PicturePositionIndicator.RunMouseMove (e);
-			picturePositionIndicator.MouseClick += (o,e) => model.PicturePositionIndicator.RunMouseClick (e);
-			picturePositionIndicator.MouseDoubleClick += (o,e) => model.PicturePositionIndicator.RunMouseDoubleClick (e);
-			picturePositionIndicator.MouseDown += (o,e) => model.PicturePositionIndicator.RunMouseDown (e);
-			picturePositionIndicator.MouseUp += (o,e) => model.PicturePositionIndicator.RunMouseUp (e);
-			picturePositionIndicator.Paint += (o,e) => model.PicturePositionIndicator.RunPaint (e);
+			picturePositionIndicator.PreviewKeyDown += (o,e) => model.PositionIndicator.RunPreviewKeyDown (e);
+			picturePositionIndicator.MouseMove += (o,e) => model.PositionIndicator.RunMouseMove (e);
+			picturePositionIndicator.MouseClick += (o,e) => model.PositionIndicator.RunMouseClick (e);
+			picturePositionIndicator.MouseDoubleClick += (o,e) => model.PositionIndicator.RunMouseDoubleClick (e);
+			picturePositionIndicator.MouseDown += (o,e) => model.PositionIndicator.RunMouseDown (e);
+			picturePositionIndicator.MouseUp += (o,e) => model.PositionIndicator.RunMouseUp (e);
+			picturePositionIndicator.Paint += (o,e) => model.PositionIndicator.RunPaint (e);
 			pictPianoRoll.PreviewKeyDown += (o, e) => model.PianoRoll.RunPianoRollPreviewKeyDown2 (e);
 			pictPianoRoll.KeyUp += (o,e) => model.HandleSpaceKeyUp (e);
 			pictPianoRoll.KeyUp += (o, e) => model.PianoRoll.RunPianoRollKeyUp (e);
@@ -4366,9 +4361,9 @@ namespace cadencii
         #region event handlers
         public void menuWindowMinimize_Click(Object sender, EventArgs e)
         {
-            var state = this.WindowState;
+			var state = (FormWindowState) this.WindowState;
             if (state != FormWindowState.Minimized) {
-                this.WindowState = FormWindowState.Minimized;
+                this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             }
         }
 
@@ -4376,7 +4371,7 @@ namespace cadencii
         #region panelOverview
         public void panelOverview_Enter(Object sender, EventArgs e)
         {
-            controller.navigationPanelGotFocus();
+			pictPianoRoll.Focus ();
         }
         #endregion
 
@@ -4995,7 +4990,7 @@ namespace cadencii
                     return true;
                 }
             }
-            EditorManager.editorConfig.WindowMaximized = (this.WindowState == FormWindowState.Maximized);
+            EditorManager.editorConfig.WindowMaximized = (this.WindowState == System.Windows.Forms.FormWindowState.Maximized);
             EditorManager.saveConfig();
             UtauWaveGenerator.clearCache();
             VConnectWaveGenerator.clearCache();
@@ -5011,7 +5006,7 @@ namespace cadencii
 
         public void FormMain_LocationChanged(Object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Normal) {
+			if (this.WindowState == System.Windows.Forms.FormWindowState.Normal) {
                 var bounds = this.Bounds;
                 EditorManager.editorConfig.WindowRect = new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
             }
@@ -5251,10 +5246,10 @@ namespace cadencii
 
         void FormMain_SizeChanged(object sender, EventArgs e)
         {
-            if (mWindowState == this.WindowState) {
+			if (mWindowState == (FormWindowState) this.WindowState) {
                 return;
             }
-            var state = this.WindowState;
+			var state = (FormWindowState) this.WindowState;
             if (state == FormWindowState.Normal || state == FormWindowState.Maximized) {
                 if (state == FormWindowState.Normal) {
                     var bounds = this.Bounds;
@@ -5337,14 +5332,6 @@ namespace cadencii
             processSpecialShortcutKey(ex, true);
         }
 
-        public void handleVScrollResize(Object sender, EventArgs e)
-        {
-            if (this.WindowState != FormWindowState.Minimized) {
-                updateScrollRangeVertical();
-                controller.setStartToDrawY(calculateStartToDrawY(vScroll.Value));
-            }
-        }
-
         public void FormMain_Deactivate(Object sender, EventArgs e)
         {
             mFormActivated = false;
@@ -5383,7 +5370,7 @@ namespace cadencii
         #region vScroll
         public void vScroll_Enter(Object sender, EventArgs e)
         {
-            focusPianoRoll();
+            pictPianoRoll.Focus();
         }
 
         public void vScroll_ValueChanged(Object sender, EventArgs e)
@@ -5448,12 +5435,12 @@ namespace cadencii
         #region hScroll
         public void hScroll_Enter(Object sender, EventArgs e)
         {
-            focusPianoRoll();
+            pictPianoRoll.Focus();
         }
 
         public void hScroll_Resize(Object sender, EventArgs e)
         {
-            if (this.WindowState != FormWindowState.Minimized) {
+			if (this.WindowState != System.Windows.Forms.FormWindowState.Minimized) {
                 updateScrollRangeHorizontal();
             }
         }
@@ -5473,7 +5460,7 @@ namespace cadencii
         #region trackBar
         public void trackBar_Enter(Object sender, EventArgs e)
         {
-            focusPianoRoll();
+            pictPianoRoll.Focus();
         }
 
         public void trackBar_ValueChanged(Object sender, EventArgs e)
@@ -5643,7 +5630,7 @@ namespace cadencii
         public void stripBtnPlay_Click(Object sender, EventArgs e)
         {
             EditorManager.setPlaying(!EditorManager.isPlaying(), this);
-            focusPianoRoll();
+            pictPianoRoll.Focus();
         }
 
         public void stripBtnScroll_CheckedChanged(Object sender, EventArgs e)
@@ -5653,14 +5640,14 @@ namespace cadencii
 #if DEBUG
             sout.println("FormMain#stripBtnScroll_CheckedChanged; pushed=" + pushed);
 #endif
-            focusPianoRoll();
+            pictPianoRoll.Focus();
         }
 
         public void stripBtnLoop_CheckedChanged(Object sender, EventArgs e)
         {
             bool pushed = stripBtnLoop.Pushed;
             EditorManager.IsPreviewRepeatMode = pushed;
-            focusPianoRoll();
+            pictPianoRoll.Focus();
         }
 
         public void stripBtnStepSequencer_CheckedChanged(Object sender, EventArgs e)
@@ -5954,7 +5941,7 @@ namespace cadencii
 
         public void toolStripContainer_TopToolStripPanel_SizeChanged(Object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Minimized) {
+			if (this.WindowState == System.Windows.Forms.FormWindowState.Minimized) {
                 return;
             }
             Dimension minsize = getWindowMinimumSize();

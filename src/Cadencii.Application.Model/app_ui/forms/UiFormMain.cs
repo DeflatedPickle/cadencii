@@ -25,6 +25,9 @@ namespace cadencii
     {
 		FormMainModel Model { get; }
 
+		FormWindowState WindowState { get; }
+		void updateScrollRangeVertical ();
+
 		UiPictureBox picturePositionIndicator { get; set; }
 		UiContextMenuStrip cMenuPositionIndicator { get; set; }
 		float mFps { get; set; }
@@ -176,12 +179,6 @@ namespace cadencii
 		void setEdited (bool b);
 
 		void updateDrawObjectList ();
-
-        /// <summary>
-        /// ピアノロールの部品にフォーカスを持たせる
-        /// </summary>
-        [PureVirtualFunction]
-        void focusPianoRoll();
     }
 
 }

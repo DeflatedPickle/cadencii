@@ -843,7 +843,7 @@ namespace cadencii
 						#else
 						if (EditorManager.InputTextBox != null && !EditorManager.InputTextBox.IsDisposed && !EditorManager.InputTextBox.Visible) {
 						#endif
-							parent.form.focusPianoRoll();
+							parent.form.pictPianoRoll.Focus();
 						}
 					}
 
@@ -1857,6 +1857,14 @@ namespace cadencii
 					}
 				}
 				parent.form.refreshScreen();
+			}
+
+			public void RunPianoRollResize ()
+			{
+				if (parent.form.WindowState != FormWindowState.Minimized) {
+					parent.form.updateScrollRangeVertical();
+					parent.form.controller.setStartToDrawY(parent.form.calculateStartToDrawY(parent.form.vScroll.Value));
+				}
 			}
 
 			public void RunPianoRollPreviewKeyDown(KeyEventArgs e)

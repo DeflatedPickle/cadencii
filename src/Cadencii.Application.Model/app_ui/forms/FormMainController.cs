@@ -19,7 +19,7 @@ namespace cadencii
     /// <summary>
     /// メイン画面のコントローラ
     /// </summary>
-    public class FormMainController : ControllerBase, FormMainUiListener
+    public class FormMainController : ControllerBase
     {
         /// <summary>
         /// x方向の表示倍率(pixel/clock)
@@ -55,15 +55,6 @@ namespace cadencii
             mScaleX = 0.1f;
             mInvScaleX = 1.0f / mScaleX;
         }
-
-        #region FormMainUiListenerの実装
-
-        public void navigationPanelGotFocus()
-        {
-            ui.focusPianoRoll();
-        }
-
-        #endregion
 
         /// <summary>
         /// MIDIステップ入力モードがONかどうかを取得します

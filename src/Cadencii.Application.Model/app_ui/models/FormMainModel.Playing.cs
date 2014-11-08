@@ -82,7 +82,7 @@ namespace cadencii
 		{
 			EditorManager.setPlaying(false, form);
 			timer.Stop();
-			form.focusPianoRoll();
+			form.pictPianoRoll.Focus();
 		}
 
 		void OnTimerTick()
