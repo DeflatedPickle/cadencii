@@ -29,6 +29,42 @@ namespace cadencii
 			/// 表情線の先頭部分のピクセル幅
 			/// </summary>
 			public const int _PX_ACCENT_HEADER = 21;
+
+			#region constants and internal enums
+			/// <summary>
+			/// スクロールバーの最小サイズ(ピクセル)
+			/// </summary>
+			public const int MIN_BAR_ACTUAL_LENGTH = 17;
+			public const int _TOOL_BAR_HEIGHT = 46;
+			/// <summary>
+			/// 単音プレビュー時に、wave生成完了を待つ最大の秒数
+			/// </summary>
+			public const double _WAIT_LIMIT = 5.0;
+			public const string RECENT_UPDATE_INFO_URL = "http://www.cadencii.info/recent.php";
+			/// <summary>
+			/// splitContainer2.Panel2の最小サイズ
+			/// </summary>
+			public const int _SPL2_PANEL2_MIN_HEIGHT = 25;
+			public const int _PICT_POSITION_INDICATOR_HEIGHT = 48;
+			public const int _SCROLL_WIDTH = 16;
+			/// <summary>
+			/// Overviewペインの高さ
+			/// </summary>
+			public const int _OVERVIEW_HEIGHT = 50;
+			/// <summary>
+			/// splitContainerPropertyの最小幅
+			/// </summary>
+			public const int _PROPERTY_DOCK_MIN_WIDTH = 50;
+			/// <summary>
+			/// WAVE再生時のバッファーサイズの最大値
+			/// </summary>
+			public const int MAX_WAVE_MSEC_RESOLUTION = 1000;
+			/// <summary>
+			/// WAVE再生時のバッファーサイズの最小値
+			/// </summary>
+			public const int MIN_WAVE_MSEC_RESOLUTION = 100;
+			#endregion
+
 		}
 
 		#region static readonly field

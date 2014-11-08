@@ -22,6 +22,7 @@ using cadencii.windows.forms;
 using MouseButtons = System.Windows.Forms.MouseButtons;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
+using Consts = cadencii.FormMainModel.Consts;
 
 namespace cadencii
 {
@@ -107,7 +108,7 @@ namespace cadencii
             this.SetStyle(System.Windows.Forms.ControlStyles.DoubleBuffer, true);
             this.SetStyle(System.Windows.Forms.ControlStyles.UserPaint, true);
             mDrawerSyncRoot = new Object();
-            mDrawer = new ImageCachedComponentDrawer(100, FormMain._OVERVIEW_HEIGHT);
+            mDrawer = new ImageCachedComponentDrawer(100, Consts._OVERVIEW_HEIGHT);
             registerEventHandlers();
         }
 

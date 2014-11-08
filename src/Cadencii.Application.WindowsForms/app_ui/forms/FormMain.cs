@@ -113,41 +113,6 @@ namespace cadencii
             }
         }
 
-        #region constants and internal enums
-        /// <summary>
-        /// スクロールバーの最小サイズ(ピクセル)
-        /// </summary>
-        public const int MIN_BAR_ACTUAL_LENGTH = 17;
-        public const int _TOOL_BAR_HEIGHT = 46;
-        /// <summary>
-        /// 単音プレビュー時に、wave生成完了を待つ最大の秒数
-        /// </summary>
-        public const double _WAIT_LIMIT = 5.0;
-        public const string RECENT_UPDATE_INFO_URL = "http://www.cadencii.info/recent.php";
-        /// <summary>
-        /// splitContainer2.Panel2の最小サイズ
-        /// </summary>
-        public const int _SPL2_PANEL2_MIN_HEIGHT = 25;
-        const int _PICT_POSITION_INDICATOR_HEIGHT = 48;
-        const int _SCROLL_WIDTH = 16;
-        /// <summary>
-        /// Overviewペインの高さ
-        /// </summary>
-        public const int _OVERVIEW_HEIGHT = 50;
-        /// <summary>
-        /// splitContainerPropertyの最小幅
-        /// </summary>
-        const int _PROPERTY_DOCK_MIN_WIDTH = 50;
-        /// <summary>
-        /// WAVE再生時のバッファーサイズの最大値
-        /// </summary>
-        const int MAX_WAVE_MSEC_RESOLUTION = 1000;
-        /// <summary>
-        /// WAVE再生時のバッファーサイズの最小値
-        /// </summary>
-        const int MIN_WAVE_MSEC_RESOLUTION = 100;
-        #endregion
-
         #region static field
         /// <summary>
         /// refreshScreenが呼ばれている最中かどうか
@@ -1156,7 +1121,7 @@ namespace cadencii
         {
             var xml_contents = "";
             try {
-                var url = RECENT_UPDATE_INFO_URL;
+                var url = Consts.RECENT_UPDATE_INFO_URL;
                 var request = (HttpWebRequest)WebRequest.Create(url);
                 var response = (HttpWebResponse)request.GetResponse();
                 using (var reader = new StreamReader(response.GetResponseStream())) {
@@ -1511,10 +1476,10 @@ namespace cadencii
                 splitContainerProperty.Panel1Hidden = (false);
                 splitContainerProperty.SplitterFixed = (false);
 				splitContainerProperty.DividerSize = (Consts._SPL_SPLITTER_WIDTH);
-                splitContainerProperty.Panel1MinSize = _PROPERTY_DOCK_MIN_WIDTH;
+				splitContainerProperty.Panel1MinSize = Consts._PROPERTY_DOCK_MIN_WIDTH;
                 int w = EditorManager.editorConfig.PropertyWindowStatus.DockWidth;
-                if (w < _PROPERTY_DOCK_MIN_WIDTH) {
-                    w = _PROPERTY_DOCK_MIN_WIDTH;
+				if (w < Consts._PROPERTY_DOCK_MIN_WIDTH) {
+					w = Consts._PROPERTY_DOCK_MIN_WIDTH;
                 }
                 splitContainerProperty.DividerLocation = (w);
 #if DEBUG
@@ -1653,7 +1618,7 @@ namespace cadencii
             int height = panel1.Height;
 
             if (EditorManager.editorConfig.OverviewEnabled) {
-                panelOverview.Height = _OVERVIEW_HEIGHT;
+				panelOverview.Height = Consts._OVERVIEW_HEIGHT;
             } else {
                 panelOverview.Height = 0;
             }
@@ -1664,24 +1629,24 @@ namespace cadencii
             btnZoom.setBounds( 26, 12, 23, 23 );*/
 
             picturePositionIndicator.Width = width;
-            picturePositionIndicator.Height = _PICT_POSITION_INDICATOR_HEIGHT;
+			picturePositionIndicator.Height = Consts._PICT_POSITION_INDICATOR_HEIGHT;
 
             hScroll.Top = 0;
             hScroll.Left = key_width;
-            hScroll.Width = width - key_width - _SCROLL_WIDTH - trackBar.Width;
-            hScroll.Height = _SCROLL_WIDTH;
+			hScroll.Width = width - key_width - Consts._SCROLL_WIDTH - trackBar.Width;
+			hScroll.Height = Consts._SCROLL_WIDTH;
 
-            vScroll.Width = _SCROLL_WIDTH;
-            vScroll.Height = height - _PICT_POSITION_INDICATOR_HEIGHT - _SCROLL_WIDTH * 4 - panelOverview.Height;
+			vScroll.Width = Consts._SCROLL_WIDTH;
+			vScroll.Height = height - Consts._PICT_POSITION_INDICATOR_HEIGHT - Consts._SCROLL_WIDTH * 4 - panelOverview.Height;
 
-            pictPianoRoll.Width = width - _SCROLL_WIDTH;
-            pictPianoRoll.Height = height - _PICT_POSITION_INDICATOR_HEIGHT - _SCROLL_WIDTH - panelOverview.Height;
+			pictPianoRoll.Width = width - Consts._SCROLL_WIDTH;
+			pictPianoRoll.Height = height - Consts._PICT_POSITION_INDICATOR_HEIGHT - Consts._SCROLL_WIDTH - panelOverview.Height;
 
-            pictureBox3.Width = key_width - _SCROLL_WIDTH;
-            pictKeyLengthSplitter.Width = _SCROLL_WIDTH;
-            pictureBox3.Height = _SCROLL_WIDTH;
-            pictureBox2.Height = _SCROLL_WIDTH * 4;
-            trackBar.Height = _SCROLL_WIDTH;
+			pictureBox3.Width = key_width - Consts._SCROLL_WIDTH;
+			pictKeyLengthSplitter.Width = Consts._SCROLL_WIDTH;
+			pictureBox3.Height = Consts._SCROLL_WIDTH;
+			pictureBox2.Height = Consts._SCROLL_WIDTH * 4;
+			trackBar.Height = Consts._SCROLL_WIDTH;
 
             panelOverview.Top = 0;
             panelOverview.Left = 0;
@@ -1689,25 +1654,25 @@ namespace cadencii
             picturePositionIndicator.Top = panelOverview.Height;
             picturePositionIndicator.Left = 0;
 
-            pictPianoRoll.Top = _PICT_POSITION_INDICATOR_HEIGHT + panelOverview.Height;
+			pictPianoRoll.Top = Consts._PICT_POSITION_INDICATOR_HEIGHT + panelOverview.Height;
             pictPianoRoll.Left = 0;
 
-            vScroll.Top = _PICT_POSITION_INDICATOR_HEIGHT + panelOverview.Height;
-            vScroll.Left = width - _SCROLL_WIDTH;
+			vScroll.Top = Consts._PICT_POSITION_INDICATOR_HEIGHT + panelOverview.Height;
+			vScroll.Left = width - Consts._SCROLL_WIDTH;
 
-            pictureBox3.Top = height - _SCROLL_WIDTH;
+			pictureBox3.Top = height - Consts._SCROLL_WIDTH;
             pictureBox3.Left = 0;
-            pictKeyLengthSplitter.Top = height - _SCROLL_WIDTH;
+			pictKeyLengthSplitter.Top = height - Consts._SCROLL_WIDTH;
             pictKeyLengthSplitter.Left = pictureBox3.Width;
 
-            hScroll.Top = height - _SCROLL_WIDTH;
+			hScroll.Top = height - Consts._SCROLL_WIDTH;
             hScroll.Left = pictureBox3.Width + pictKeyLengthSplitter.Width;
 
-            trackBar.Top = height - _SCROLL_WIDTH;
-            trackBar.Left = width - _SCROLL_WIDTH - trackBar.Width;
+			trackBar.Top = height - Consts._SCROLL_WIDTH;
+			trackBar.Left = width - Consts._SCROLL_WIDTH - trackBar.Width;
 
-            pictureBox2.Top = height - _SCROLL_WIDTH * 4;
-            pictureBox2.Left = width - _SCROLL_WIDTH;
+			pictureBox2.Top = height - Consts._SCROLL_WIDTH * 4;
+			pictureBox2.Left = width - Consts._SCROLL_WIDTH;
 
             waveView.Top = 0;
             waveView.Left = key_width;
@@ -2016,7 +1981,7 @@ namespace cadencii
         public void updateSplitContainer2Size(bool save_to_config)
         {
 			if (ApplicationGlobal.appConfig.ViewWaveform) {
-                splitContainer2.Panel2MinSize = (_SPL2_PANEL2_MIN_HEIGHT);
+				splitContainer2.Panel2MinSize = (Consts._SPL2_PANEL2_MIN_HEIGHT);
                 splitContainer2.SplitterFixed = (false);
                 splitContainer2.Panel2Hidden = (false);
                 splitContainer2.DividerSize = (Consts._SPL_SPLITTER_WIDTH);
@@ -2053,7 +2018,7 @@ namespace cadencii
             Dimension current = new Dimension(this.Size.Width, this.Size.Height);
             return new Dimension(current_minsize.Width,
                                   splitContainer1.Panel2MinSize +
-                                  _SCROLL_WIDTH + _PICT_POSITION_INDICATOR_HEIGHT + pictPianoRoll.MinimumSize.Height +
+				Consts._SCROLL_WIDTH + Consts._PICT_POSITION_INDICATOR_HEIGHT + pictPianoRoll.MinimumSize.Height +
                                   rebar.Height +
                                   menuStripMain.Height + statusStrip.Height +
                                   (current.Height - client.Height) +
