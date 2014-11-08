@@ -121,7 +121,7 @@ namespace cadencii
         /// <summary>
         /// CTRLキー。MacOSXの場合はMenu
         /// </summary>
-		public Keys s_modifier_key { get; set; } = Keys.Control;
+		public Keys s_modifier_key { get; set; }
         #endregion
 
         #region fields
@@ -136,7 +136,7 @@ namespace cadencii
         /// <summary>
         /// ボタンがDownされた位置。(座標はpictureBox基準)
         /// </summary>
-		public Point mButtonInitial { get; set; } = new Point();
+		public Point mButtonInitial { get; set; }
         /// <summary>
         /// 真ん中ボタンがダウンされたときのvscrollのvalue値
         /// </summary>
@@ -153,7 +153,7 @@ namespace cadencii
         /// <summary>
         /// カーブエディタの編集モード
         /// </summary>
-		public CurveEditMode mEditCurveMode { get; set; } = CurveEditMode.NONE;
+		public CurveEditMode mEditCurveMode { get; set; }
         /// <summary>
         /// ピアノロールの画面外へのドラッグ時、前回自動スクロール操作を行った時刻
         /// </summary>
@@ -167,11 +167,11 @@ namespace cadencii
         /// <summary>
         /// 鉛筆のモード
         /// </summary>
-		public PencilMode mPencilMode { get; set; } = new PencilMode();
+		public PencilMode mPencilMode { get; set; }
         /// <summary>
         /// このフォームがアクティブ化されているかどうか
         /// </summary>
-		public bool mFormActivated { get; set; } = true;
+		public bool mFormActivated { get; set; }
 #if ENABLE_MTC
         public MidiInDevice m_midi_in_mtc = null;
 #endif
@@ -228,11 +228,15 @@ namespace cadencii
         public FormMain(FormMainController controller, string file)
         {
 			model = new FormMainModel (this);
-			model.InitializeTimer (components);
 
 		this.appId = Handle.ToString ("X32");
             this.controller = controller;
             this.controller.setupUi(this);
+			s_modifier_key = Keys.Control;
+			mButtonInitial = new Point();
+			mEditCurveMode = CurveEditMode.NONE;
+			mPencilMode = new PencilMode();
+			mFormActivated = true;
 
             // 言語設定を反映させる
             Messaging.setLanguage(ApplicationGlobal.appConfig.Language);
@@ -273,6 +277,9 @@ namespace cadencii
             panelWaveformZoom = (WaveformZoomUiImpl)(new WaveformZoomController(this, waveView)).getUi();
 
             InitializeComponent();
+
+			// call this after "components" is set.
+			model.InitializeTimer (components);
 
             panelOverview.setMainForm(this);
             pictPianoRoll.setMainForm(this);
