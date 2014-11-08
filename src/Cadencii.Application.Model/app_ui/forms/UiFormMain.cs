@@ -25,8 +25,6 @@ namespace cadencii
     public interface UiFormMain : UiForm
     {
 		FormWindowState WindowState { get; }
-		bool InvokeRequired { get; }
-		void Invoke (Delegate d, params object [] b);
 
 		FormMainModel Model { get; }
 

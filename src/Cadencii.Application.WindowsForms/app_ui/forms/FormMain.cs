@@ -82,11 +82,6 @@ namespace cadencii
 			get { return (FormWindowState)WindowState; }
 		}
 
-		void UiFormMain.Invoke (Delegate action, params object [] args)
-		{
-			Invoke (action, args);
-		}
-
         /// <summary>
         /// 特殊なキーの組み合わせのショートカットと、メニューアイテムとの紐付けを保持するクラスです。
         /// </summary>

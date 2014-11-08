@@ -7,7 +7,8 @@ namespace cadencii
 	{
 		bool TopMost { get; set; }
 
-		object Invoke (Delegate d);
+		bool InvokeRequired { get; }
+		object Invoke (Delegate d, params object [] args);
 
 		void Close ();
 
