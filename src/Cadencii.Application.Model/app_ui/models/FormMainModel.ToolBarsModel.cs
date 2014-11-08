@@ -34,7 +34,7 @@ namespace cadencii
 			UiToolStripButton stripBtnStepSequencer;
 
 			#region toolBarMeasure
-			public void toolBarMeasure_MouseDown(MouseEventArgs e)
+			public void MeasureMouseDown(MouseEventArgs e)
 			{
 				EnsureFieldReferences ();
 
@@ -59,7 +59,7 @@ namespace cadencii
 				}
 			}
 
-			public void toolBarMeasure_ButtonClick(ToolBarButtonClickEventArgs e)
+			public void MeasureButtonClick(ToolBarButtonClickEventArgs e)
 			{
 				EnsureFieldReferences ();
 
@@ -81,7 +81,7 @@ namespace cadencii
 			}
 			#endregion
 
-			public void toolBarTool_ButtonClick(ToolBarButtonClickEventArgs e)
+			public void ToolButtonClick(ToolBarButtonClickEventArgs e)
 			{
 				EnsureFieldReferences ();
 
@@ -102,7 +102,7 @@ namespace cadencii
 				}
 			}
 
-			public void toolBarPosition_ButtonClick(ToolBarButtonClickEventArgs e)
+			public void PositionButtonClick(ToolBarButtonClickEventArgs e)
 			{
 				EnsureFieldReferences ();
 
@@ -125,7 +125,7 @@ namespace cadencii
 				}
 			}
 
-			public void toolBarFile_ButtonClick(ToolBarButtonClickEventArgs e)
+			public void FileButtonClick(ToolBarButtonClickEventArgs e)
 			{
 				EnsureFieldReferences ();
 
@@ -150,45 +150,45 @@ namespace cadencii
 
 			//BOOKMARK: stripBtn
 			#region stripBtn*
-			public void stripBtnGrid_Click()
+			void stripBtnGrid_Click()
 			{
 				bool new_v = !EditorManager.isGridVisible();
 				stripBtnGrid.Pushed = new_v;
 				EditorManager.setGridVisible(new_v);
 			}
 
-			public void stripBtnArrow_Click()
+			void stripBtnArrow_Click()
 			{
 				EditorManager.SelectedTool = (EditTool.ARROW);
 			}
 
-			public void stripBtnPencil_Click()
+			void stripBtnPencil_Click()
 			{
 				EditorManager.SelectedTool = (EditTool.PENCIL);
 			}
 
-			public void stripBtnLine_Click()
+			void stripBtnLine_Click()
 			{
 				EditorManager.SelectedTool = (EditTool.LINE);
 			}
 
-			public void stripBtnEraser_Click()
+			void stripBtnEraser_Click()
 			{
 				EditorManager.SelectedTool = (EditTool.ERASER);
 			}
 
-			public void stripBtnCurve_Click()
+			void stripBtnCurve_Click()
 			{
 				EditorManager.setCurveMode(!EditorManager.isCurveMode());
 			}
 
-			public void stripBtnPlay_Click()
+			void stripBtnPlay_Click()
 			{
 				EditorManager.setPlaying(!EditorManager.isPlaying(), parent.form);
 				parent.form.pictPianoRoll.Focus();
 			}
 
-			public void stripBtnScroll_CheckedChanged()
+			void stripBtnScroll_CheckedChanged()
 			{
 				bool pushed = stripBtnScroll.Pushed;
 				EditorManager.mAutoScroll = pushed;
@@ -198,14 +198,14 @@ namespace cadencii
 				parent.form.pictPianoRoll.Focus();
 			}
 
-			public void stripBtnLoop_CheckedChanged()
+			void stripBtnLoop_CheckedChanged()
 			{
 				bool pushed = stripBtnLoop.Pushed;
 				EditorManager.IsPreviewRepeatMode = pushed;
 				parent.form.pictPianoRoll.Focus();
 			}
 
-			public void stripBtnStepSequencer_CheckedChanged()
+			public void StepSequencerCheckedChanged()
 			{
 				EnsureFieldReferences ();
 
@@ -224,7 +224,7 @@ namespace cadencii
 				#endif
 			}
 
-			public void stripBtnStop_Click()
+			void stripBtnStop_Click()
 			{
 				parent.Stop ();
 			}

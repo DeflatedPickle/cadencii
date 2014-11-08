@@ -4192,7 +4192,7 @@ namespace cadencii
             pictureBox2.MouseDown += pictureBox2_MouseDown;
             pictureBox2.MouseUp += pictureBox2_MouseUp;
             pictureBox2.Paint += pictureBox2_Paint;
-			toolBarTool.ButtonClick += (o,e) => model.ToolBars.toolBarTool_ButtonClick (e);
+			toolBarTool.ButtonClick += (o,e) => model.ToolBars.ToolButtonClick (e);
             rebar.SizeChanged += new EventHandler(toolStripContainer_TopToolStripPanel_SizeChanged);
 			stripDDBtnQuantize04.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p4);
 			stripDDBtnQuantize08.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p8);
@@ -4202,11 +4202,11 @@ namespace cadencii
 			stripDDBtnQuantize128.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p128);
 			stripDDBtnQuantizeOff.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.off);
 			stripDDBtnQuantizeTriplet.Click += (o, e) => model.HandlePositionQuantizeTriplet ();
-			toolBarFile.ButtonClick += (o, e) => model.ToolBars.toolBarFile_ButtonClick (e);
-			toolBarPosition.ButtonClick += (o, e) => model.ToolBars.toolBarPosition_ButtonClick (e);
-			toolBarMeasure.ButtonClick += (o, e) => model.ToolBars.toolBarMeasure_ButtonClick (e);
-			toolBarMeasure.MouseDown += (o, e) => model.ToolBars.toolBarMeasure_MouseDown (e);
-			stripBtnStepSequencer.CheckedChanged += (o, e) => model.ToolBars.stripBtnStepSequencer_CheckedChanged ();
+			toolBarFile.ButtonClick += (o, e) => model.ToolBars.FileButtonClick (e);
+			toolBarPosition.ButtonClick += (o, e) => model.ToolBars.PositionButtonClick (e);
+			toolBarMeasure.ButtonClick += (o, e) => model.ToolBars.MeasureButtonClick (e);
+			toolBarMeasure.MouseDown += (o, e) => model.ToolBars.MeasureMouseDown (e);
+			stripBtnStepSequencer.CheckedChanged += (o, e) => model.ToolBars.StepSequencerCheckedChanged ();
             this.Deactivate += new EventHandler(FormMain_Deactivate);
             this.Activated += new EventHandler(FormMain_Activated);
             this.FormClosed += new FormClosedEventHandler(FormMain_FormClosed);
