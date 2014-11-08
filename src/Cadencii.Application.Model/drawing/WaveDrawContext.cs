@@ -502,7 +502,7 @@ namespace cadencii
                 }
 
                 // 
-                int xoffset = (int)(cStart * pixel_per_clock) - EditorManager.MainWindowController.StartToDrawX + EditorManager.keyOffset;
+                int xoffset = (int)(cStart * pixel_per_clock) - EditorManager.MainWindow.Model.StartToDrawX + EditorManager.keyOffset;
                 double sec_per_clock = lastTempo * 1e-6 / 480.0;
                 lastTempo = tempo;
                 double pixel_per_sample = 1.0 / mSampleRate / sec_per_clock * pixel_per_clock;

@@ -139,8 +139,7 @@ namespace cadencii
                 Logger.write(typeof(CadenciiDriver) + ".Main; ex=" + ex + "\n");
             }
 #endif
-            EditorManager.MainWindowController = new FormMainController();
-            EditorManager.MainWindow = new FormMain(EditorManager.MainWindowController, file);
+            EditorManager.MainWindow = new FormMain(file);
 #if !MONO
             ((FormMain) EditorManager.MainWindow).Load += mainWindow_Load;
 #endif

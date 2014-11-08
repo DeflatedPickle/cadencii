@@ -150,19 +150,19 @@ namespace cadencii
 						}
 						if (EditorManager.SelectedTool == EditTool.ERASER) {
 							// マウス位置にビブラートの波波があったら削除する
-							int stdx = parent.form.controller.StartToDrawX;
-							int stdy = parent.form.controller.StartToDrawY;
+							int stdx = parent.form.Model.StartToDrawX;
+							int stdy = parent.form.Model.StartToDrawY;
 							for (int i = 0; i < EditorManager.mDrawObjects[selected - 1].Count; i++) {
 								DrawObject dobj = EditorManager.mDrawObjects[selected - 1][i];
-								if (dobj.mRectangleInPixel.X + parent.form.controller.StartToDrawX + dobj.mRectangleInPixel.Width - stdx < 0) {
+								if (dobj.mRectangleInPixel.X + parent.form.Model.StartToDrawX + dobj.mRectangleInPixel.Width - stdx < 0) {
 									continue;
 								} else if (parent.form.pictPianoRoll.Width < dobj.mRectangleInPixel.X + EditorManager.keyWidth - stdx) {
 									break;
 								}
 								Rectangle rc = new Rectangle(dobj.mRectangleInPixel.X + EditorManager.keyWidth + dobj.mVibratoDelayInPixel - stdx,
-									dobj.mRectangleInPixel.Y + (int)(100 * parent.form.controller.ScaleY) - stdy,
+									dobj.mRectangleInPixel.Y + (int)(100 * parent.form.Model.ScaleY) - stdy,
 									dobj.mRectangleInPixel.Width - dobj.mVibratoDelayInPixel,
-									(int)(100 * parent.form.controller.ScaleY));
+									(int)(100 * parent.form.Model.ScaleY));
 								if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
 									//ビブラートの範囲なのでビブラートを消す
 									VsqEvent item3 = null;
@@ -291,15 +291,15 @@ namespace cadencii
 					EditorManager.itemSelection.clearEvent();
 					parent.form.hideInputTextBox();
 					if (EditorManager.editorConfig.ShowExpLine && EditorManager.keyWidth <= e.X) {
-						int stdx = parent.form.controller.StartToDrawX;
-						int stdy = parent.form.controller.StartToDrawY;
+						int stdx = parent.form.Model.StartToDrawX;
+						int stdy = parent.form.Model.StartToDrawY;
 						foreach (var dobj in EditorManager.mDrawObjects[selected - 1]) {
 							// 表情コントロールプロパティを表示するかどうかを決める
 							rect = new Rectangle(
 								dobj.mRectangleInPixel.X + EditorManager.keyWidth - stdx,
-								dobj.mRectangleInPixel.Y - stdy + (int)(100 * parent.form.controller.ScaleY),
+								dobj.mRectangleInPixel.Y - stdy + (int)(100 * parent.form.Model.ScaleY),
 								21,
-								(int)(100 * parent.form.controller.ScaleY));
+								(int)(100 * parent.form.Model.ScaleY));
 							if (Utility.isInRect(new Point(e.X, e.Y), rect)) {
 								VsqEvent selectedEvent = null;
 								for (Iterator<VsqEvent> itr2 = vsq.Track[selected].getEventIterator(); itr2.hasNext(); ) {
@@ -365,9 +365,9 @@ namespace cadencii
 							// ビブラートプロパティダイアログを表示するかどうかを決める
 							rect = new Rectangle(
 								dobj.mRectangleInPixel.X + EditorManager.keyWidth - stdx + 21,
-								dobj.mRectangleInPixel.Y - stdy + (int)(100 * parent.form.controller.ScaleY),
+								dobj.mRectangleInPixel.Y - stdy + (int)(100 * parent.form.Model.ScaleY),
 								dobj.mRectangleInPixel.Width - 21,
-								(int)(100 * parent.form.controller.ScaleY));
+								(int)(100 * parent.form.Model.ScaleY));
 							if (Utility.isInRect(new Point(e.X, e.Y), rect)) {
 								VsqEvent selectedEvent = null;
 								for (Iterator<VsqEvent> itr2 = vsq.Track[selected].getEventIterator(); itr2.hasNext(); ) {
@@ -508,8 +508,8 @@ namespace cadencii
 					return;
 				}
 
-				int stdx = parent.form.controller.StartToDrawX;
-				int stdy = parent.form.controller.StartToDrawY;
+				int stdx = parent.form.Model.StartToDrawX;
+				int stdy = parent.form.Model.StartToDrawY;
 				if (e.Button == NMouseButtons.Left && EditorManager.mCurveOnPianoroll && (selected_tool == EditTool.PENCIL || selected_tool == EditTool.LINE)) {
 					parent.form.pictPianoRoll.mMouseTracer.clear();
 					parent.form.pictPianoRoll.mMouseTracer.appendFirst(e.X + stdx, e.Y + stdy);
@@ -583,9 +583,9 @@ namespace cadencii
 									break;
 								}
 								Rectangle rc = new Rectangle(dobj.mRectangleInPixel.X + key_width + dobj.mVibratoDelayInPixel - stdx - Consts._EDIT_HANDLE_WIDTH / 2,
-									dobj.mRectangleInPixel.Y + (int)(100 * parent.form.controller.ScaleY) - stdy,
+									dobj.mRectangleInPixel.Y + (int)(100 * parent.form.Model.ScaleY) - stdy,
 									Consts._EDIT_HANDLE_WIDTH,
-									(int)(100 * parent.form.controller.ScaleY));
+									(int)(100 * parent.form.Model.ScaleY));
 								if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
 									vibrato_dobj = dobj;
 									//vibrato_found = true;
@@ -608,7 +608,7 @@ namespace cadencii
 								EditorManager.mAddingEvent.ID.Note = note;
 								EditorManager.mAddingEvent.ID.setLength(length);
 								EditorManager.mAddingEventLength = vibrato_dobj.mLength;
-								EditorManager.mAddingEvent.ID.VibratoDelay = length - (int)(px_vibrato_length * parent.form.controller.ScaleXInv);
+								EditorManager.mAddingEvent.ID.VibratoDelay = length - (int)(px_vibrato_length * parent.form.Model.ScaleXInv);
 								EditorManager.EditMode = EditMode.EDIT_VIBRATO_DELAY;
 								start_mouse_hover_generator = false;
 							}
@@ -618,7 +618,7 @@ namespace cadencii
 								e.Button == NMouseButtons.Left &&
 								e.X >= key_width) {
 								int clock = EditorManager.clockFromXCoord(e.X);
-								if (MusicManager.getVsqFile().getPreMeasureClocks() - EditorManager.editorConfig.PxTolerance * parent.form.controller.ScaleXInv <= clock) {
+								if (MusicManager.getVsqFile().getPreMeasureClocks() - EditorManager.editorConfig.PxTolerance * parent.form.Model.ScaleXInv <= clock) {
 									//10ピクセルまでは許容範囲
 									if (MusicManager.getVsqFile().getPreMeasureClocks() > clock) { //だけど矯正するよ。
 										clock = MusicManager.getVsqFile().getPreMeasureClocks();
@@ -848,8 +848,8 @@ namespace cadencii
 					}
 
 					EditMode edit_mode = EditorManager.EditMode;
-					int stdx = parent.form.controller.StartToDrawX;
-					int stdy = parent.form.controller.StartToDrawY;
+					int stdx = parent.form.Model.StartToDrawX;
+					int stdy = parent.form.Model.StartToDrawY;
 					int selected = EditorManager.Selected;
 					EditTool selected_tool = EditorManager.SelectedTool;
 
@@ -943,7 +943,7 @@ namespace cadencii
 							px_move *= -1;
 						}
 						int left_clock = EditorManager.clockFromXCoord(EditorManager.keyWidth);
-						float inv_scale_x = parent.form.controller.ScaleXInv;
+						float inv_scale_x = parent.form.Model.ScaleXInv;
 						int dclock = (int)(px_move * inv_scale_x);
 						d_draft = 5 * inv_scale_x + left_clock + dclock;
 						if (d_draft < 0.0) {
@@ -1109,7 +1109,7 @@ namespace cadencii
 						int odd = length % unit;
 						int new_length = length - odd;
 
-						if (unit * parent.form.controller.ScaleX > 10) { //これをしないと、グリッド2個分増えることがある
+						if (unit * parent.form.Model.ScaleX > 10) { //これをしないと、グリッド2個分増えることがある
 							int next_clock = EditorManager.clockFromXCoord(e.X + 10);
 							int next_length = next_clock - EditorManager.mAddingEvent.Clock;
 							int next_new_length = next_length - (next_length % unit);
@@ -1209,7 +1209,7 @@ namespace cadencii
 						int new_vibrato_start = clock;
 						int old_vibrato_end = EditorManager.mAddingEvent.Clock + EditorManager.mAddingEvent.ID.getLength();
 						int new_vibrato_length = old_vibrato_end - new_vibrato_start;
-						int max_length = (int)(EditorManager.mAddingEventLength - Consts._PX_ACCENT_HEADER * parent.form.controller.ScaleXInv);
+						int max_length = (int)(EditorManager.mAddingEventLength - Consts._PX_ACCENT_HEADER * parent.form.Model.ScaleXInv);
 						if (max_length < 0) {
 							max_length = 0;
 						}
@@ -1259,7 +1259,7 @@ namespace cadencii
 									dobj.mRectangleInPixel.X + EditorManager.keyWidth - stdx,
 									dobj.mRectangleInPixel.Y - stdy,
 									edit_handle_width,
-									(int)(100 * parent.form.controller.ScaleY));
+									(int)(100 * parent.form.Model.ScaleY));
 								if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
 									split_cursor = true;
 									break;
@@ -1269,7 +1269,7 @@ namespace cadencii
 								rc = new Rectangle(dobj.mRectangleInPixel.X + EditorManager.keyWidth + dobj.mRectangleInPixel.Width - stdx - edit_handle_width,
 									dobj.mRectangleInPixel.Y - stdy,
 									edit_handle_width,
-									(int)(100 * parent.form.controller.ScaleY));
+									(int)(100 * parent.form.Model.ScaleY));
 								if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
 									split_cursor = true;
 									break;
@@ -1287,9 +1287,9 @@ namespace cadencii
 									if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
 										// ビブラートの開始位置
 										rc = new Rectangle(dobj.mRectangleInPixel.X + EditorManager.keyWidth + dobj.mVibratoDelayInPixel - stdx - Consts._EDIT_HANDLE_WIDTH / 2,
-											dobj.mRectangleInPixel.Y + (int)(100 * parent.form.controller.ScaleY) - stdy,
+											dobj.mRectangleInPixel.Y + (int)(100 * parent.form.Model.ScaleY) - stdy,
 											Consts._EDIT_HANDLE_WIDTH,
-											(int)(100 * parent.form.controller.ScaleY));
+											(int)(100 * parent.form.Model.ScaleY));
 										if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
 											split_cursor = true;
 											break;
@@ -1347,10 +1347,10 @@ namespace cadencii
 				int selected = EditorManager.Selected;
 				VsqTrack vsq_track = vsq.Track[selected];
 				CurveType selected_curve = parent.form.TrackSelector.getSelectedCurve();
-				int stdx = parent.form.controller.StartToDrawX;
-				int stdy = parent.form.controller.StartToDrawY;
+				int stdx = parent.form.Model.StartToDrawX;
+				int stdy = parent.form.Model.StartToDrawY;
 				double d2_13 = 8192; // = 2^13
-				int track_height = (int)(100 * parent.form.controller.ScaleY);
+				int track_height = (int)(100 * parent.form.Model.ScaleY);
 				int half_track_height = track_height / 2;
 
 				if (edit_mode == EditMode.CURVE_ON_PIANOROLL) {
@@ -1612,7 +1612,7 @@ namespace cadencii
 				} else if (edit_mode == EditMode.EDIT_VIBRATO_DELAY) {
 					#region EditVibratoDelay
 					if (mMouseMoved) {
-						double max_length = EditorManager.mAddingEventLength - Consts._PX_ACCENT_HEADER * parent.form.controller.ScaleXInv;
+						double max_length = EditorManager.mAddingEventLength - Consts._PX_ACCENT_HEADER * parent.form.Model.ScaleXInv;
 						double rate = EditorManager.mAddingEvent.ID.getLength() / max_length;
 						if (rate > 0.99) {
 							rate = 1.0;
@@ -1813,11 +1813,11 @@ namespace cadencii
 							// マウス位置でのクロック -> こいつが保存される
 							int clock_at_mouse = EditorManager.clockFromXCoord(x_at_mouse);
 							// 古い拡大率
-							float scale0 = parent.form.controller.ScaleX;
+							float scale0 = parent.form.Model.ScaleX;
 							// 新しい拡大率
 							float scale1 = parent.form.getScaleXFromTrackBarValue(draft);
 							// 古いstdx
-							int stdx0 = parent.form.controller.StartToDrawX;
+							int stdx0 = parent.form.Model.StartToDrawX;
 							int stdx1 = (int)(clock_at_mouse * (scale1 - scale0) + stdx0);
 							// 新しいhScroll.Value
 							int hscroll_value = (int)(stdx1 / scale1);
@@ -1828,8 +1828,8 @@ namespace cadencii
 								hscroll_value = parent.form.hScroll.Maximum;
 							}
 
-							parent.form.controller.ScaleX = (scale1);
-							parent.form.controller.StartToDrawX = (stdx1);
+							parent.form.Model.ScaleX = (scale1);
+							parent.form.Model.StartToDrawX = (stdx1);
 							parent.form.hScroll.Value = hscroll_value;
 							parent.form.trackBar.Value = draft;
 						}
@@ -1863,7 +1863,7 @@ namespace cadencii
 			{
 				if (parent.form.WindowState != FormWindowState.Minimized) {
 					parent.form.updateScrollRangeVertical();
-					parent.form.controller.StartToDrawY = (parent.form.calculateStartToDrawY(parent.form.vScroll.Value));
+					parent.form.Model.StartToDrawY = (parent.form.calculateStartToDrawY(parent.form.vScroll.Value));
 				}
 			}
 

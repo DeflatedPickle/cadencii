@@ -157,7 +157,7 @@ namespace cadencii
 					mLastPovL = pov_l;
 
 					if (!event_processed && pov_u && dt_ms > EditorManager.editorConfig.GameControlerMinimumEventInterval) {
-						int draft_vscroll = form.vScroll.Value - (int)(100 * form.controller.ScaleY) * 3;
+						int draft_vscroll = form.vScroll.Value - (int)(100 * form.Model.ScaleY) * 3;
 						if (draft_vscroll < form.vScroll.Minimum) {
 							draft_vscroll = form.vScroll.Minimum;
 						}
@@ -168,7 +168,7 @@ namespace cadencii
 					}
 
 					if (!event_processed && pov_d && dt_ms > EditorManager.editorConfig.GameControlerMinimumEventInterval) {
-						int draft_vscroll = form.vScroll.Value + (int)(100 * form.controller.ScaleY) * 3;
+						int draft_vscroll = form.vScroll.Value + (int)(100 * form.Model.ScaleY) * 3;
 						if (draft_vscroll > form.vScroll.Maximum) {
 							draft_vscroll = form.vScroll.Maximum;
 						}

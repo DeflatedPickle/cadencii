@@ -194,6 +194,8 @@ namespace cadencii
 			OtherItems = new OtherItemsModel (this);
 
 			form.initializeRendererMenuHandler(this);
+
+			ScaleX = 0.1f;
 		}
 
 		public FileMenuModel FileMenu { get; private set; }
@@ -214,6 +216,61 @@ namespace cadencii
 		public WaveViewModel WaveView { get; private set; }
 		public ToolBarsModel ToolBars { get; private set; }
 		public OtherItemsModel OtherItems { get; private set; }
+
+		#region FormMainController
+		/// <summary>
+		/// MIDIステップ入力モードがONかどうかを取得します
+		/// </summary>
+		/// <returns></returns>
+		public bool IsStepSequencerEnabled { get; set; }
+
+		/// <summary>
+		/// ピアノロールの，Y方向のスケールを取得します(pixel/cent)
+		/// </summary>
+		/// <returns></returns>
+		public float ScaleY {
+			get {
+				if (EditorManager.editorConfig.PianoRollScaleY < EditorConfig.MIN_PIANOROLL_SCALEY) {
+					EditorManager.editorConfig.PianoRollScaleY = EditorConfig.MIN_PIANOROLL_SCALEY;
+				} else if (EditorConfig.MAX_PIANOROLL_SCALEY < EditorManager.editorConfig.PianoRollScaleY) {
+					EditorManager.editorConfig.PianoRollScaleY = EditorConfig.MAX_PIANOROLL_SCALEY;
+				}
+				if (EditorManager.editorConfig.PianoRollScaleY == 0) {
+					return EditorManager.editorConfig.PxTrackHeight / 100.0f;
+				} else if (EditorManager.editorConfig.PianoRollScaleY > 0) {
+					return (2 * EditorManager.editorConfig.PianoRollScaleY + 5) * EditorManager.editorConfig.PxTrackHeight / 5 / 100.0f;
+				} else {
+					return (EditorManager.editorConfig.PianoRollScaleY + 8) * EditorManager.editorConfig.PxTrackHeight / 8 / 100.0f;
+				}
+			}
+		}
+
+		/// <summary>
+		/// ピアノロールの，X方向のスケールを取得します(pixel/clock)
+		/// </summary>
+		/// <returns></returns>
+		public float ScaleX { get; set; }
+
+		/// <summary>
+		/// ピアノロールの，X方向のスケールの逆数を取得します(clock/pixel)
+		/// </summary>
+		/// <returns></returns>
+		public float ScaleXInv {
+			get { return 1.0f / ScaleX; }
+		}
+
+		/// <summary>
+		/// ピアノロール画面の，ビューポートと仮想スクリーンとの横方向のオフセットを取得します
+		/// </summary>
+		/// <returns></returns>
+		public int StartToDrawX { get; set; }
+
+		/// <summary>
+		/// ピアノロール画面の，ビューポートと仮想スクリーンとの縦方向のオフセットを取得します
+		/// </summary>
+		/// <returns></returns>
+		public int StartToDrawY { get; set; }
+		#endregion
 
 		/// <summary>
 		/// 合成器の種類のメニュー項目を管理するハンドラをまとめたリスト
@@ -1417,18 +1474,18 @@ namespace cadencii
 			int noteBottom = EditorManager.noteFromYCoord(height); // 画面下端でのノートナンバー
 
 			int maximum = vScroll.Maximum;
-			int track_height = (int)(100 * form.controller.ScaleY);
+			int track_height = (int)(100 * ScaleY);
 			// ノートナンバーnoteの現在のy座標がいくらか？
 			int note_y = EditorManager.yCoordFromNote(note);
 			if (note < noteBottom) {
 				// ノートナンバーnoteBottomの現在のy座標が新しいnoteのy座標と同一になるよう，startToDrawYを変える
 				// startToDrawYを次の値にする必要がある
-				int new_start_to_draw_y = form.controller.StartToDrawY + (note_y - height);
+				int new_start_to_draw_y = StartToDrawY + (note_y - height);
 				int value = CalculateVScrollValueFromStartToDrawY(new_start_to_draw_y);
 				setVScrollValue(value);
 			} else if (noteTop < note) {
 				// ノートナンバーnoteTopの現在のy座標が，ノートナンバーnoteの新しいy座標と同一になるよう，startToDrawYを変える
-				int new_start_to_draw_y = form.controller.StartToDrawY + (note_y - 0);
+				int new_start_to_draw_y = StartToDrawY + (note_y - 0);
 				int value = CalculateVScrollValueFromStartToDrawY(new_start_to_draw_y);
 				setVScrollValue(value);
 			}
@@ -1440,7 +1497,7 @@ namespace cadencii
 		/// </summary>
 		int CalculateVScrollValueFromStartToDrawY(int start_to_draw_y)
 		{
-			return (int)(start_to_draw_y / form.controller.ScaleY);
+			return (int)(start_to_draw_y / ScaleY);
 		}
 
 		/// <summary>
@@ -1457,7 +1514,7 @@ namespace cadencii
 			int uwidth = clock_right - clock_left;
 			if (clock < clock_left || clock_right < clock) {
 				int cl_new_center = (clock / uwidth) * uwidth + uwidth / 2;
-				float f_draft = cl_new_center - (form.pictPianoRoll.Width / 2 + 34 - 70) * form.controller.ScaleXInv;
+				float f_draft = cl_new_center - (form.pictPianoRoll.Width / 2 + 34 - 70) * ScaleXInv;
 				if (f_draft < 0f) {
 					f_draft = 0;
 				}
@@ -1557,7 +1614,7 @@ namespace cadencii
 			if (scaley != draft) {
 				EditorManager.editorConfig.PianoRollScaleY = draft;
 				form.updateScrollRangeVertical();
-				form.controller.StartToDrawY = (form.calculateStartToDrawY(form.vScroll.Value));
+				StartToDrawY = (form.calculateStartToDrawY(form.vScroll.Value));
 				form.updateDrawObjectList();
 			}
 		}

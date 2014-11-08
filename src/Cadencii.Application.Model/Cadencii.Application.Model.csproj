@@ -178,7 +178,6 @@
     <Compile Include="app_ui\forms\FormIconPaletteUi.cs" />
     <Compile Include="app_ui\forms\FormImportLyric.cs" />
     <Compile Include="app_ui\forms\FormInsertBar.cs" />
-    <Compile Include="app_ui\forms\FormMainController.cs" />
     <Compile Include="app_ui\forms\FormMidiImExport.cs" />
     <Compile Include="app_ui\forms\FormMixerUi.cs" />
     <Compile Include="app_ui\forms\FormNoteExpressionConfig.cs" />

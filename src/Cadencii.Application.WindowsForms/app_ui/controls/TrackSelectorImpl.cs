@@ -958,7 +958,7 @@ namespace cadencii
             VsqFileEx vsq = MusicManager.getVsqFile();
             int selected = EditorManager.Selected;
             int key_width = EditorManager.keyWidth;
-            int stdx = EditorManager.MainWindowController.StartToDrawX;
+            int stdx = EditorManager.MainWindow.Model.StartToDrawX;
             int graph_max_y = TS.HEADER + graph_height;
             int graph_min_y = TS.HEADER;
 
@@ -2068,11 +2068,11 @@ namespace cadencii
             int width = getWidth();
             int oy = height - 42;
             Shape last_clip = g.getClip();
-            int stdx = EditorManager.MainWindowController.StartToDrawX;
+            int stdx = EditorManager.MainWindow.Model.StartToDrawX;
             int key_width = EditorManager.keyWidth;
             int xoffset = key_width - stdx;
             g.clipRect(key_width, header, width - key_width, graph_height);
-            float scale = EditorManager.MainWindowController.ScaleX;
+            float scale = EditorManager.MainWindow.Model.ScaleX;
             int selected = EditorManager.Selected;
 
 			g.setFont(cadencii.core.EditorConfig.baseFont10Bold);
@@ -2543,7 +2543,7 @@ namespace cadencii
 
             // 移動中のデータ点をハイライト表示する
             if (mMouseDownMode == MouseDownMode.POINT_MOVE) {
-                int dx = pmouse.X + EditorManager.MainWindowController.StartToDrawX - mMouseDownLocation.X;
+                int dx = pmouse.X + EditorManager.MainWindow.Model.StartToDrawX - mMouseDownLocation.X;
                 int dy = pmouse.Y - mMouseDownLocation.Y;
                 foreach (var item in mMovingPoints) {
                     int x = EditorManager.xCoordFromClocks(item.Clock) + dx;
@@ -2793,7 +2793,7 @@ namespace cadencii
                     break;
                 }
             }
-            float scale_x = EditorManager.MainWindowController.ScaleX;
+            float scale_x = EditorManager.MainWindow.Model.ScaleX;
             float scale_y = getScaleY();
             BezierPoint ret = new BezierPoint(0, 0);
             if (index >= 0) {
@@ -2974,7 +2974,7 @@ namespace cadencii
             if (e.Button == MouseButtons.None) {
                 return;
             }
-            int stdx = EditorManager.MainWindowController.StartToDrawX;
+            int stdx = EditorManager.MainWindow.Model.StartToDrawX;
             if ((e.X + stdx != mMouseDownLocation.X || e.Y != mMouseDownLocation.Y)) {
                 if (mMouseHoverThread != null && mMouseHoverThread.IsAlive) {
                     mMouseHoverThread.Abort();
@@ -3257,7 +3257,7 @@ namespace cadencii
             CDebug.WriteLine("TrackSelector_MouseDown");
 #endif
             VsqFileEx vsq = MusicManager.getVsqFile();
-            mMouseDownLocation.X = e.X + EditorManager.MainWindowController.StartToDrawX;
+            mMouseDownLocation.X = e.X + EditorManager.MainWindow.Model.StartToDrawX;
             mMouseDownLocation.Y = e.Y;
             int clock = EditorManager.clockFromXCoord(e.X);
             int selected = EditorManager.Selected;
@@ -3271,7 +3271,7 @@ namespace cadencii
                 System.Media.SystemSounds.Asterisk.Play();
                 return;
             }
-            int stdx = EditorManager.MainWindowController.StartToDrawX;
+            int stdx = EditorManager.MainWindow.Model.StartToDrawX;
             mModifierOnMouseDown = (Keys) Control.ModifierKeys;
             int max = mSelectedCurve.getMaximum();
             int min = mSelectedCurve.getMinimum();
@@ -3496,7 +3496,7 @@ namespace cadencii
                                     }
                                 }
                                 mMouseTracer.clear();
-                                int x = e.X + EditorManager.MainWindowController.StartToDrawX;
+                                int x = e.X + EditorManager.MainWindow.Model.StartToDrawX;
                                 mMouseTracer.appendFirst(x, e.Y);
                                 mPencilMoved = false;
 
@@ -4191,7 +4191,7 @@ namespace cadencii
 
             int selected = EditorManager.Selected;
             bool is_utau_mode = EditorManager.mDrawIsUtau[selected - 1];
-            int stdx = EditorManager.MainWindowController.StartToDrawX;
+            int stdx = EditorManager.MainWindow.Model.StartToDrawX;
 
             int max = mSelectedCurve.getMaximum();
             int min = mSelectedCurve.getMinimum();
@@ -4612,7 +4612,7 @@ namespace cadencii
                             } else if (mSelectedCurve.equals(CurveType.VibratoRate) || mSelectedCurve.equals(CurveType.VibratoDepth)) {
                                 #region VibratoRate || VibratoDepth
                                 int step_clock = ApplicationGlobal.appConfig.getControlCurveResolutionValue();
-                                int step_px = (int)(step_clock * EditorManager.MainWindowController.ScaleX);
+                                int step_px = (int)(step_clock * EditorManager.MainWindow.Model.ScaleX);
                                 if (step_px <= 0) {
                                     step_px = 1;
                                 }
@@ -4733,7 +4733,7 @@ namespace cadencii
                                 #region Other Curves
                                 int track = selected;
                                 int step_clock = ApplicationGlobal.appConfig.getControlCurveResolutionValue();
-                                int step_px = (int)(step_clock * EditorManager.MainWindowController.ScaleX);
+                                int step_px = (int)(step_clock * EditorManager.MainWindow.Model.ScaleX);
                                 if (step_px <= 0) {
                                     step_px = 1;
                                 }
@@ -4972,7 +4972,7 @@ namespace cadencii
                 if (mMouseMoved) {
 					Point pmouse = pointToClient(cadencii.core2.PortUtil.getMousePosition());
                     Point mouse = new Point(pmouse.X, pmouse.Y);
-                    int dx = mouse.X + EditorManager.MainWindowController.StartToDrawX - mMouseDownLocation.X;
+                    int dx = mouse.X + EditorManager.MainWindow.Model.StartToDrawX - mMouseDownLocation.X;
                     int dy = mouse.Y - mMouseDownLocation.Y;
 
                     string curve = mSelectedCurve.getName();

@@ -125,7 +125,7 @@ namespace cadencii
 						if (mExtDragXTrackSelector == ExtDragXMode.LEFT) {
 							px_move *= -1;
 						}
-						double d_draft = parent.form.hScroll.Value + px_move * parent.form.controller.ScaleXInv;
+						double d_draft = parent.form.hScroll.Value + px_move * parent.form.Model.ScaleXInv;
 						if (d_draft < 0.0) {
 							d_draft = 0.0;
 						}

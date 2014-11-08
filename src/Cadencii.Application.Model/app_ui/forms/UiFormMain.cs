@@ -178,8 +178,6 @@ namespace cadencii
 
 		bool mEdited { get; set; }
 
-		FormMainController controller { get; set; }
-
 		int calculateStartToDrawX ();
 
 		UiContextMenuStrip MenuTrackTab { get; set; }

@@ -191,9 +191,9 @@ namespace cadencii
 				return;
 			}
 		#if DEBUG
-			sout.println("FormMain#mMidiIn_MidiReceived; isStepSequencerEnabeld()=" + form.controller.IsStepSequencerEnabled);
+			sout.println("FormMain#mMidiIn_MidiReceived; isStepSequencerEnabeld()=" + form.Model.IsStepSequencerEnabled);
 		#endif
-	if (false == form.controller.IsStepSequencerEnabled) {
+	if (false == form.Model.IsStepSequencerEnabled) {
 				return;
 			}
 			int code = data[0] & 0xf0;
