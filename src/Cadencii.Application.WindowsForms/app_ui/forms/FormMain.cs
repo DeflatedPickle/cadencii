@@ -1583,12 +1583,6 @@ namespace cadencii
             return (int)(hScroll.Value * controller.getScaleX());
         }
 
-
-        public void invalidatePictOverview(Object sender, EventArgs e)
-        {
-            panelOverview.Invalidate();
-        }
-
         public void updateBgmMenuState()
         {
             menuTrackBgm.DropDownItems.Clear();
@@ -1778,26 +1772,6 @@ namespace cadencii
                 }
                 return null;
             }
-        }
-
-        /// <summary>
-        /// フォームをマウス位置に出す場合に推奨されるフォーム位置を計算します
-        /// </summary>
-        /// <param name="dlg"></param>
-        /// <returns></returns>
-        public System.Drawing.Point getFormPreferedLocation(int dialogWidth, int dialogHeight)
-        {
-			return model.GetFormPreferedLocation (dialogWidth, dialogHeight).ToWF ();
-        }
-
-        /// <summary>
-        /// フォームをマウス位置に出す場合に推奨されるフォーム位置を計算します
-        /// </summary>
-        /// <param name="dlg"></param>
-        /// <returns></returns>
-        public System.Drawing.Point getFormPreferedLocation(Form dlg)
-        {
-            return getFormPreferedLocation(dlg.Width, dlg.Height);
         }
 
         public void updateLayout()
@@ -4307,10 +4281,10 @@ namespace cadencii
 			trackSelector.MouseDoubleClick += (o, e) => model.TrackSelector.RunMouseDoubleClick (e);
 			trackSelector.MouseWheel += (o, e) => model.TrackSelector.RunMouseWheel (e);
 			trackSelector.CommandExecuted += (o, e) => model.TrackSelector.RunCommandExecuted ();
-            waveView.MouseDoubleClick += new NMouseEventHandler(waveView_MouseDoubleClick);
-            waveView.MouseDown += new NMouseEventHandler(waveView_MouseDown);
-            waveView.MouseUp += new NMouseEventHandler(waveView_MouseUp);
-            waveView.MouseMove += new NMouseEventHandler(waveView_MouseMove);
+			waveView.MouseDoubleClick += (o, e) => model.WaveView.RunMouseDoubleClick (e);
+			waveView.MouseDown += (o, e) => model.WaveView.RunMouseDown (e);
+			waveView.MouseUp += (o, e) => model.WaveView.RunMouseUp (e);
+			waveView.MouseMove += (o, e) => model.WaveView.RunMouseMove (e);
             this.DragEnter += FormMain_DragEnter;
             this.DragDrop += FormMain_DragDrop;
             this.DragOver += FormMain_DragOver;
@@ -5379,54 +5353,6 @@ namespace cadencii
             if (EditorManager.EditMode != EditMode.MIDDLE_DRAG) {
                 // MIDDLE_DRAGのときは，pictPianoRoll_MouseMoveでrefreshScreenされるので，それ以外のときだけ描画・
                 refreshScreen(true);
-            }
-        }
-        #endregion
-
-        //BOOKMARK: waveView
-        #region waveView
-        public void waveView_MouseDoubleClick(Object sender, NMouseEventArgs e)
-        {
-            if (e.Button == NMouseButtons.Middle) {
-                // ツールをポインター <--> 鉛筆に切り替える
-                if (e.Y < trackSelector.Height - TrackSelectorConsts.OFFSET_TRACK_TAB * 2) {
-                    if (EditorManager.SelectedTool == EditTool.ARROW) {
-                        EditorManager.SelectedTool = (EditTool.PENCIL);
-                    } else {
-                        EditorManager.SelectedTool = (EditTool.ARROW);
-                    }
-                }
-            }
-        }
-
-        public void waveView_MouseDown(Object sender, NMouseEventArgs e)
-        {
-#if DEBUG
-            sout.println("waveView_MouseDown; isMiddleButtonDowned=" + model.IsMouseMiddleButtonDown(e.Button));
-#endif
-            if (model.IsMouseMiddleButtonDown(e.Button)) {
-                mEditCurveMode = CurveEditMode.MIDDLE_DRAG;
-                mButtonInitial = new Point(e.X, e.Y);
-                mMiddleButtonHScroll = hScroll.Value;
-				this.Cursor = Cadencii.Gui.Cursors.Hand.ToNative ();
-            }
-        }
-
-        public void waveView_MouseUp(Object sender, NMouseEventArgs e)
-        {
-            if (mEditCurveMode == CurveEditMode.MIDDLE_DRAG) {
-                mEditCurveMode = CurveEditMode.NONE;
-				this.Cursor = System.Windows.Forms.Cursors.Default;
-            }
-        }
-
-        public void waveView_MouseMove(Object sender, NMouseEventArgs e)
-        {
-            if (mEditCurveMode == CurveEditMode.MIDDLE_DRAG) {
-                int draft = computeHScrollValueForMiddleDrag(e.X);
-                if (hScroll.Value != draft) {
-                    hScroll.Value = draft;
-                }
             }
         }
         #endregion

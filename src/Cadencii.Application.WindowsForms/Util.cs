@@ -45,12 +45,7 @@ namespace cadencii.apputil
 			applyFontRecurseW ((Control)c, font);
         }
 
-		/// <summary>
-		/// 指定したコントロールと、その子コントロールのフォントを再帰的に変更します
-		/// </summary>
-		/// <param name="c"></param>
-		/// <param name="font"></param>
-		public static void applyFontRecurseW(Control c, Cadencii.Gui.Font font)
+		static void applyFontRecurseW(Control c, Cadencii.Gui.Font font)
 		{
 			if (!Utility.isApplyFontRecurseEnabled) {
 				return;

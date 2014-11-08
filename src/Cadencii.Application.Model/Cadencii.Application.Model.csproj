@@ -243,6 +243,7 @@
     <Compile Include="app_ui\models\PositionIndicatorMouseDownMode.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="app_ui\models\FormMainModel.PositionIndicatorModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.WaveViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
