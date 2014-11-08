@@ -1,6 +1,6 @@
 using System;
-using System.Drawing;
 using System.Reflection;
+using Cadencii.Gui;
 
 namespace cadencii
 {
@@ -20,9 +20,9 @@ namespace cadencii
 				if (pi.PropertyType.IsEnum)
 					pi.SetValue (null, Convert.ChangeType (obj, pi.PropertyType));
 				else if (pi.PropertyType == typeof (Image))
-					pi.SetValue (null, cadencii.ExtensionsWF.ToAwt ((Image) obj));
+					pi.SetValue (null, cadencii.ExtensionsWF.ToAwt ((System.Drawing.Image) obj));
 				else
-					throw new NotImplementedException ();
+					throw new NotImplementedException (pi.PropertyType.FullName);
 			}
 		}
 	}

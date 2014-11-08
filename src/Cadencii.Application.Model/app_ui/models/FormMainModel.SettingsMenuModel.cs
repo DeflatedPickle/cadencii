@@ -284,8 +284,8 @@ namespace cadencii
 						EditorManager.editorConfig.MidiInPortMtc.PortNumber = m_preference_dlg.getMtcMidiInPort();
 						#endif
 						#if ENABLE_MIDI || ENABLE_MTC
-						parent.form.updateMidiInStatus ();
-						parent.form.reloadMidiIn ();
+						parent.updateMidiInStatus ();
+						parent.reloadMidiIn ();
 						#endif
 
 						List<string> new_resamplers = new List<string> ();

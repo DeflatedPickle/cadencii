@@ -3134,7 +3134,7 @@ namespace cadencii
         public UiToolBarButton stripBtnLoop;
         public UiToolBarButton stripBtnCurve;
         public UiToolStripSeparator toolStripSeparator2;
-        public UiContextMenu stripDDBtnQuantize;
+		public UiContextMenu stripDDBtnQuantize { get;set; }
         public UiMenuItem stripDDBtnQuantize04;
         public UiMenuItem stripDDBtnQuantize08;
         public UiMenuItem stripDDBtnQuantize16;
@@ -3162,7 +3162,7 @@ namespace cadencii
 		public UiToolStripMenuItem menuVisualWaveform { get; set; }
         private WaveformZoomUi panelWaveformZoom;
         public UiToolStripMenuItem cMenuTrackSelectorDeleteBezier;
-        public UiToolStripStatusLabel stripLblMidiIn;
+		public UiToolStripStatusLabel stripLblMidiIn { get;set ; }
         public UiToolStripSeparator toolStripSeparator11;
         //public UiToolStripMenuItem menuJobRealTime;
         public UiToolStripMenuItem cMenuTrackTabRenderer;
@@ -3182,8 +3182,8 @@ namespace cadencii
         public UiToolBarButton stripBtnFileNew;
         public UiToolBarButton stripBtnUndo;
         public UiToolBarButton stripBtnRedo;
-        public UiToolStripMenuItem cMenuTrackSelectorPaletteTool;
-        public UiToolStripMenuItem cMenuPianoPaletteTool;
+		public UiToolStripMenuItem cMenuTrackSelectorPaletteTool { get; set; }
+		public UiToolStripMenuItem cMenuPianoPaletteTool { get; set; }
         public UiToolStripSeparator toolStripSeparator14;
         public UiToolStripSeparator toolStripSeparator15;
         public UiToolStripMenuItem menuSettingPaletteTool;
@@ -3250,14 +3250,14 @@ namespace cadencii
         private UiImageList imageListFile;
         private UiToolBarButton toolBarButton1;
         private UiToolBarButton toolBarButton2;
-        private UiToolBar toolBarTool;
+		public UiToolBar toolBarTool { get; set; }
         private UiToolBarButton toolBarButton3;
         private UiImageList imageListTool;
         private UiToolBar toolBarPosition;
         private UiToolBarButton toolBarButton4;
         private UiImageList imageListPosition;
-        private UiToolBar toolBarMeasure;
-        private UiToolBarButton stripDDBtnQuantizeParent;
+		public UiToolBar toolBarMeasure { get; set; }
+		public UiToolBarButton stripDDBtnQuantizeParent { get; set; }
         private UiMenuItem menuItem2;
         private UiToolBarButton toolBarButton5;
         private UiImageList imageListMeasure;

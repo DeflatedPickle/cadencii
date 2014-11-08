@@ -82,6 +82,11 @@ namespace cadencii
 			get { return (FormWindowState)WindowState; }
 		}
 
+		void UiFormMain.Invoke (Delegate action, params object [] args)
+		{
+			Invoke (action, args);
+		}
+
         /// <summary>
         /// 特殊なキーの組み合わせのショートカットと、メニューアイテムとの紐付けを保持するクラスです。
         /// </summary>
@@ -107,12 +112,6 @@ namespace cadencii
                 this.menu = menu;
             }
         }
-
-        /// <summary>
-        /// refreshScreenを呼び出す時に使うデリゲート
-        /// </summary>
-        /// <param name="value"></param>
-        delegate void DelegateRefreshScreen(bool value);
 
         #region constants and internal enums
         /// <summary>
@@ -208,9 +207,6 @@ namespace cadencii
         /// このフォームがアクティブ化されているかどうか
         /// </summary>
 		public bool mFormActivated { get; set; } = true;
-#if ENABLE_MIDI
-        public MidiInDevice     mMidiIn = null;
-#endif
 #if ENABLE_MTC
         public MidiInDevice m_midi_in_mtc = null;
 #endif
@@ -625,7 +621,7 @@ namespace cadencii
             updateCMenuPianoFixed();
             model.LoadGameController();
 #if ENABLE_MIDI
-            reloadMidiIn();
+            model.reloadMidiIn();
 #endif
 			menuVisualWaveform.Checked = ApplicationGlobal.appConfig.ViewWaveform;
 
@@ -2014,14 +2010,14 @@ namespace cadencii
 				PaletteToolMenuItem tsmi = ApplicationUIHost.Create<PaletteToolMenuItem> (id);
                 tsmi.Text = name;
                 tsmi.ToolTipText = desc;
-                tsmi.Click += new EventHandler(handleStripPaletteTool_Click);
+				tsmi.Click += (o, e) => model.handleStripPaletteTool_Click (null, tsmi);
                 cMenuTrackSelectorPaletteTool.DropDownItems.Add(tsmi);
 
                 // cMenuPiano
 				PaletteToolMenuItem tsmi2 = ApplicationUIHost.Create<PaletteToolMenuItem> (id);
                 tsmi2.Text = name;
                 tsmi2.ToolTipText = desc;
-                tsmi2.Click += new EventHandler(handleStripPaletteTool_Click);
+				tsmi2.Click += (o, e) => model.handleStripPaletteTool_Click (null, tsmi2);
                 cMenuPianoPaletteTool.DropDownItems.Add(tsmi2);
 
                 // menuSettingPaletteTool
@@ -2379,98 +2375,6 @@ namespace cadencii
             }
         }
 
-#if ENABLE_MIDI
-        /// <summary>
-        /// MIDI入力句デバイスを再読込みします
-        /// </summary>
-        public void reloadMidiIn()
-        {
-            if (mMidiIn != null) {
-                mMidiIn.MidiReceived -= new MidiReceivedEventHandler(mMidiIn_MidiReceived);
-                mMidiIn.close();
-                mMidiIn = null;
-            }
-            int portNumber = EditorManager.editorConfig.MidiInPort.PortNumber;
-            int portNumberMtc = EditorManager.editorConfig.MidiInPortMtc.PortNumber;
-#if DEBUG
-            sout.println("FormMain#reloadMidiIn; portNumber=" + portNumber + "; portNumberMtc=" + portNumberMtc);
-#endif
-            try {
-                mMidiIn = new MidiInDevice(portNumber);
-                mMidiIn.MidiReceived += new MidiReceivedEventHandler(mMidiIn_MidiReceived);
-#if ENABLE_MTC
-                if ( portNumber == portNumberMtc ) {
-                    m_midi_in.setReceiveSystemCommonMessage( true );
-                    m_midi_in.setReceiveSystemRealtimeMessage( true );
-                    m_midi_in.MidiReceived += handleMtcMidiReceived;
-                    m_midi_in.Start();
-                } else {
-                    m_midi_in.setReceiveSystemCommonMessage( false );
-                    m_midi_in.setReceiveSystemRealtimeMessage( false );
-                }
-#else
-                mMidiIn.setReceiveSystemCommonMessage(false);
-                mMidiIn.setReceiveSystemRealtimeMessage(false);
-#endif
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".reloadMidiIn; ex=" + ex + "\n");
-                serr.println("FormMain#reloadMidiIn; ex=" + ex);
-            }
-
-#if ENABLE_MTC
-            if ( m_midi_in_mtc != null ) {
-                m_midi_in_mtc.MidiReceived -= handleMtcMidiReceived;
-                m_midi_in_mtc.Dispose();
-                m_midi_in_mtc = null;
-            }
-            if ( portNumber != portNumberMtc ) {
-                try {
-                    m_midi_in_mtc = new MidiInDevice( EditorManager.editorConfig.MidiInPortMtc.PortNumber );
-                    m_midi_in_mtc.MidiReceived += handleMtcMidiReceived;
-                    m_midi_in_mtc.setReceiveSystemCommonMessage( true );
-                    m_midi_in_mtc.setReceiveSystemRealtimeMessage( true );
-                    m_midi_in_mtc.Start();
-                } catch ( Exception ex ) {
-                    Logger.write( typeof( FormMain ) + ".reloadMidiIn; ex=" + ex + "\n" );
-                    serr.println( "FormMain#reloadMidiIn; ex=" + ex );
-                }
-            }
-#endif
-            updateMidiInStatus();
-        }
-#endif
-
-#if ENABLE_MIDI
-        public void updateMidiInStatus()
-        {
-            int midiport = EditorManager.editorConfig.MidiInPort.PortNumber;
-            List<MidiDevice.Info> devices = new List<MidiDevice.Info>();
-            foreach (MidiDevice.Info info in MidiSystem.getMidiDeviceInfo()) {
-                MidiDevice device = null;
-                try {
-                    device = MidiSystem.getMidiDevice(info);
-                } catch (Exception ex) {
-                    device = null;
-                }
-                if (device == null) continue;
-                int max = device.getMaxTransmitters();
-                if (max > 0 || max == -1) {
-                    devices.Add(info);
-                }
-            }
-            if (midiport < 0 || devices.Count <= 0) {
-                stripLblMidiIn.Text = _("Disabled");
-				stripLblMidiIn.Image = Properties.Resources.slash.ToAwt ();
-            } else {
-                if (midiport >= devices.Count) {
-                    midiport = 0;
-                    EditorManager.editorConfig.MidiInPort.PortNumber = midiport;
-                }
-                stripLblMidiIn.Text = devices[midiport].getName();
-				stripLblMidiIn.Image = Properties.Resources.piano.ToAwt ();
-            }
-        }
-#endif
         /// <summary>
         /// 特殊なショートカットキーを処理します。
         /// </summary>
@@ -4293,7 +4197,7 @@ namespace cadencii
             pictureBox2.MouseDown += pictureBox2_MouseDown;
             pictureBox2.MouseUp += pictureBox2_MouseUp;
             pictureBox2.Paint += pictureBox2_Paint;
-            toolBarTool.ButtonClick += toolBarTool_ButtonClick;
+			toolBarTool.ButtonClick += (o,e) => model.ToolBars.toolBarTool_ButtonClick (e);
             rebar.SizeChanged += new EventHandler(toolStripContainer_TopToolStripPanel_SizeChanged);
 			stripDDBtnQuantize04.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p4);
 			stripDDBtnQuantize08.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p8);
@@ -4303,11 +4207,11 @@ namespace cadencii
 			stripDDBtnQuantize128.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p128);
 			stripDDBtnQuantizeOff.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.off);
 			stripDDBtnQuantizeTriplet.Click += (o, e) => model.HandlePositionQuantizeTriplet ();
-            toolBarFile.ButtonClick += toolBarFile_ButtonClick;
-            toolBarPosition.ButtonClick += toolBarPosition_ButtonClick;
-            toolBarMeasure.ButtonClick += toolBarMeasure_ButtonClick;
-            toolBarMeasure.MouseDown += toolBarMeasure_MouseDown;
-            stripBtnStepSequencer.CheckedChanged += new EventHandler(stripBtnStepSequencer_CheckedChanged);
+			toolBarFile.ButtonClick += (o, e) => model.ToolBars.toolBarFile_ButtonClick (e);
+			toolBarPosition.ButtonClick += (o, e) => model.ToolBars.toolBarPosition_ButtonClick (e);
+			toolBarMeasure.ButtonClick += (o, e) => model.ToolBars.toolBarMeasure_ButtonClick (e);
+			toolBarMeasure.MouseDown += (o, e) => model.ToolBars.toolBarMeasure_MouseDown (e);
+			stripBtnStepSequencer.CheckedChanged += (o, e) => model.ToolBars.stripBtnStepSequencer_CheckedChanged ();
             this.Deactivate += new EventHandler(FormMain_Deactivate);
             this.Activated += new EventHandler(FormMain_Activated);
             this.FormClosed += new FormClosedEventHandler(FormMain_FormClosed);
@@ -4901,8 +4805,8 @@ namespace cadencii
             VSTiDllManager.terminate();
 #if ENABLE_MIDI
             //MidiPlayer.stop();
-            if (mMidiIn != null) {
-                mMidiIn.close();
+            if (model.mMidiIn != null) {
+				model.mMidiIn.close();
             }
 #endif
 #if ENABLE_MTC
@@ -4970,8 +4874,8 @@ namespace cadencii
             VConnectWaveGenerator.clearCache();
 
 #if ENABLE_MIDI
-            if (mMidiIn != null) {
-                mMidiIn.close();
+			if (model.mMidiIn != null) {
+				model.mMidiIn.close();
             }
 #endif
             bgWorkScreen.Dispose();
@@ -5519,116 +5423,6 @@ namespace cadencii
         }
         #endregion
 
-        //BOOKMARK: stripBtn
-        #region stripBtn*
-        public void stripBtnGrid_Click(Object sender, EventArgs e)
-        {
-            bool new_v = !EditorManager.isGridVisible();
-            stripBtnGrid.Pushed = new_v;
-            EditorManager.setGridVisible(new_v);
-        }
-
-        public void stripBtnArrow_Click(Object sender, EventArgs e)
-        {
-            EditorManager.SelectedTool = (EditTool.ARROW);
-        }
-
-        public void stripBtnPencil_Click(Object sender, EventArgs e)
-        {
-            EditorManager.SelectedTool = (EditTool.PENCIL);
-        }
-
-        public void stripBtnLine_Click(Object sender, EventArgs e)
-        {
-            EditorManager.SelectedTool = (EditTool.LINE);
-        }
-
-        public void stripBtnEraser_Click(Object sender, EventArgs e)
-        {
-            EditorManager.SelectedTool = (EditTool.ERASER);
-        }
-
-        public void stripBtnCurve_Click(Object sender, EventArgs e)
-        {
-            EditorManager.setCurveMode(!EditorManager.isCurveMode());
-        }
-
-        public void stripBtnPlay_Click(Object sender, EventArgs e)
-        {
-            EditorManager.setPlaying(!EditorManager.isPlaying(), this);
-            pictPianoRoll.Focus();
-        }
-
-        public void stripBtnScroll_CheckedChanged(Object sender, EventArgs e)
-        {
-            bool pushed = stripBtnScroll.Pushed;
-            EditorManager.mAutoScroll = pushed;
-#if DEBUG
-            sout.println("FormMain#stripBtnScroll_CheckedChanged; pushed=" + pushed);
-#endif
-            pictPianoRoll.Focus();
-        }
-
-        public void stripBtnLoop_CheckedChanged(Object sender, EventArgs e)
-        {
-            bool pushed = stripBtnLoop.Pushed;
-            EditorManager.IsPreviewRepeatMode = pushed;
-            pictPianoRoll.Focus();
-        }
-
-        public void stripBtnStepSequencer_CheckedChanged(Object sender, EventArgs e)
-        {
-            // EditorManager.mAddingEventがnullかどうかで処理が変わるのでnullにする
-            EditorManager.mAddingEvent = null;
-            // モードを切り替える
-            controller.setStepSequencerEnabled(stripBtnStepSequencer.Checked);
-
-            // MIDIの受信を開始
-#if ENABLE_MIDI
-            if (controller.isStepSequencerEnabled()) {
-                mMidiIn.start();
-            } else {
-                mMidiIn.stop();
-            }
-#endif
-        }
-
-        public void stripBtnStop_Click(Object sender, EventArgs e)
-        {
-			model.Stop ();
-        }
-
-        public void stripBtnMoveEnd_Click(Object sender, EventArgs e)
-        {
-            if (EditorManager.isPlaying()) {
-                EditorManager.setPlaying(false, this);
-            }
-            EditorManager.setCurrentClock(MusicManager.getVsqFile().TotalClocks);
-			model.EnsurePlayerCursorVisible();
-            refreshScreen();
-        }
-
-        public void stripBtnMoveTop_Click(Object sender, EventArgs e)
-        {
-            if (EditorManager.isPlaying()) {
-                EditorManager.setPlaying(false, this);
-            }
-            EditorManager.setCurrentClock(0);
-			model.EnsurePlayerCursorVisible();
-            refreshScreen();
-        }
-
-        public void stripBtnRewind_Click(Object sender, EventArgs e)
-        {
-            model.Rewind();
-        }
-
-        public void stripBtnForward_Click(Object sender, EventArgs e)
-        {
-            model.Forward();
-        }
-        #endregion
-
         //BOOKMARK: pictKeyLengthSplitter
         #region pictKeyLengthSplitter
         public void pictKeyLengthSplitter_MouseDown(Object sender, NMouseEventArgs e)
@@ -5671,113 +5465,6 @@ namespace cadencii
             mKeyLengthSplitterMouseDowned = false;
         }
         #endregion
-
-        #region toolBarMeasure
-        void toolBarMeasure_MouseDown(Object sender, NMouseEventArgs e)
-        {
-            // マウス位置にあるボタンを捜す
-            UiToolBarButton c = null;
-            foreach (UiToolBarButton btn in toolBarMeasure.Buttons) {
-                var rc = btn.Rectangle;
-                if (Utility.isInRect(e.X, e.Y, rc.Left, rc.Top, rc.Width, rc.Height)) {
-                    c = btn;
-                    break;
-                }
-            }
-            if (c == null) {
-                return;
-            }
-
-            if (c == stripDDBtnQuantizeParent) {
-                var rc = stripDDBtnQuantizeParent.Rectangle;
-                stripDDBtnQuantize.Show(
-                    toolBarMeasure,
-                    new Cadencii.Gui.Point(rc.Left, rc.Bottom));
-            }
-        }
-
-        void toolBarMeasure_ButtonClick(Object sender, ToolBarButtonClickEventArgs e)
-        {
-            if (e.Button == stripBtnStartMarker) {
-				model.VisualMenu.RunStartMarkerCommand ();
-            } else if (e.Button == stripBtnEndMarker) {
-				model.VisualMenu.RunEndMarkerCommand ();
-            }/* else if ( e.Button == stripDDBtnLengthParent ) {
-                System.Drawing.Rectangle rc = stripDDBtnLengthParent.Rectangle;
-                stripDDBtnLength.Show(
-                    toolBarMeasure,
-                    new System.Drawing.Point( rc.Left, rc.Bottom ) );
-            } else if ( e.Button == stripDDBtnQuantizeParent ) {
-                System.Drawing.Rectangle rc = stripDDBtnQuantizeParent.Rectangle;
-                stripDDBtnQuantize.Show(
-                    toolBarMeasure,
-                    new System.Drawing.Point( rc.Left, rc.Bottom ) );
-            }*/
-        }
-        #endregion
-
-        void toolBarTool_ButtonClick(Object sender, ToolBarButtonClickEventArgs e)
-        {
-            if (e.Button == stripBtnPointer) {
-                stripBtnArrow_Click(e.Button, new EventArgs());
-            } else if (e.Button == stripBtnPencil) {
-                stripBtnPencil_Click(e.Button, new EventArgs());
-            } else if (e.Button == stripBtnLine) {
-                stripBtnLine_Click(e.Button, new EventArgs());
-            } else if (e.Button == stripBtnEraser) {
-                stripBtnEraser_Click(e.Button, new EventArgs());
-            } else if (e.Button == stripBtnGrid) {
-                stripBtnGrid_Click(e.Button, new EventArgs());
-            } else if (e.Button == stripBtnCurve) {
-                stripBtnCurve_Click(e.Button, new EventArgs());
-            } else {
-                handleStripPaletteTool_Click(e.Button, new EventArgs());
-            }
-        }
-
-        void toolBarPosition_ButtonClick(Object sender, ToolBarButtonClickEventArgs e)
-        {
-            if (e.Button == stripBtnMoveTop) {
-                stripBtnMoveTop_Click(e.Button, new EventArgs());
-            } else if (e.Button == stripBtnRewind) {
-                stripBtnRewind_Click(e.Button, new EventArgs());
-            } else if (e.Button == stripBtnForward) {
-                stripBtnForward_Click(e.Button, new EventArgs());
-            } else if (e.Button == stripBtnMoveEnd) {
-                stripBtnMoveEnd_Click(e.Button, new EventArgs());
-            } else if (e.Button == stripBtnPlay) {
-                stripBtnPlay_Click(e.Button, new EventArgs());
-                //} else if ( e.Button == stripBtnStop ) {
-                //stripBtnStop_Click( e.Button, new EventArgs() );
-            } else if (e.Button == stripBtnScroll) {
-                stripBtnScroll.Pushed = !stripBtnScroll.Pushed;
-                stripBtnScroll_CheckedChanged(e.Button, new EventArgs());
-            } else if (e.Button == stripBtnLoop) {
-                stripBtnLoop.Pushed = !stripBtnLoop.Pushed;
-                stripBtnLoop_CheckedChanged(e.Button, new EventArgs());
-            }
-        }
-
-        void toolBarFile_ButtonClick(Object sender, ToolBarButtonClickEventArgs e)
-		{
-			if (e.Button == stripBtnFileNew) {
-				model.FileMenu.RunFileNewCommand ();
-			} else if (e.Button == stripBtnFileOpen) {
-				model.FileMenu.RunFileOpenCommand ();
-			} else if (e.Button == stripBtnFileSave) {
-				model.FileMenu.RunFileSaveCommand ();
-			} else if (e.Button == stripBtnCut) {
-				model.Cut ();
-			} else if (e.Button == stripBtnCopy) {
-				model.Copy ();
-			} else if (e.Button == stripBtnPaste) {
-				model.Paste ();
-			} else if (e.Button == stripBtnUndo) {
-				model.EditMenu.RunEditUndoCommand ();
-			} else if (e.Button == stripBtnRedo) {
-				model.EditMenu.RunEditRedoCommand ();
-			}
-		}
 
         public void handleVibratoPresetSubelementClick(Object sender, EventArgs e)
         {
@@ -5888,65 +5575,6 @@ namespace cadencii
                 this.Size = new System.Drawing.Size(wid, hei);
             }
         }
-
-        public void handleStripPaletteTool_Click(Object sender, EventArgs e)
-        {
-            string id = "";  //選択されたツールのID
-#if ENABLE_SCRIPT
-            if (sender is UiToolBarButton) {
-                UiToolBarButton tsb = (UiToolBarButton)sender;
-                if (tsb.Tag != null && tsb.Tag is string) {
-                    id = (string)tsb.Tag;
-                    EditorManager.mSelectedPaletteTool = id;
-                    EditorManager.SelectedTool = (EditTool.PALETTE_TOOL);
-                    tsb.Pushed = true;
-                }
-            } else if (sender is ToolStripMenuItem) {
-                ToolStripMenuItem tsmi = (ToolStripMenuItem)sender;
-                if (tsmi.Tag != null && tsmi.Tag is string) {
-                    id = (string)tsmi.Tag;
-                    EditorManager.mSelectedPaletteTool = id;
-                    EditorManager.SelectedTool = (EditTool.PALETTE_TOOL);
-                    tsmi.Checked = true;
-                }
-            }
-#endif
-
-            int count = toolBarTool.Buttons.Count;
-            for (int i = 0; i < count; i++) {
-                Object item = toolBarTool.Buttons[i];
-                if (item is UiToolBarButton) {
-                    UiToolBarButton button = (UiToolBarButton)item;
-                    if (button.Style == Cadencii.Gui.ToolBarButtonStyle.ToggleButton && button.Tag != null && button.Tag is string) {
-                        if (((string)button.Tag).Equals(id)) {
-                            button.Pushed = true;
-                        } else {
-                            button.Pushed = false;
-                        }
-                    }
-                }
-            }
-
-            foreach (var item in cMenuPianoPaletteTool.DropDownItems) {
-                if (item is PaletteToolMenuItem) {
-                    PaletteToolMenuItem menu = (PaletteToolMenuItem)item;
-                    string tagged_id = menu.getPaletteToolID();
-                    menu.Checked = (id == tagged_id);
-                }
-            }
-
-            //MenuElement[] sub_cmenu_track_selectro_palette_tool = cMenuTrackSelectorPaletteTool.getSubElements();
-            //for ( int i = 0; i < sub_cmenu_track_selectro_palette_tool.Length; i++ ) {
-            //MenuElement item = sub_cmenu_track_selectro_palette_tool[i];
-            foreach (var item in cMenuTrackSelectorPaletteTool.DropDownItems) {
-                if (item is PaletteToolMenuItem) {
-                    PaletteToolMenuItem menu = (PaletteToolMenuItem)item;
-                    string tagged_id = menu.getPaletteToolID();
-                    menu.Checked = (id == tagged_id);
-                }
-            }
-        }
-
 #if ENABLE_MOUSE_ENTER_STATUS_LABEL
         /// <summary>
         /// メニューの説明をステータスバーに表示するための共通のイベントハンドラ
@@ -6306,185 +5934,7 @@ namespace cadencii
             }
 #endif
         }
-
-#if ENABLE_MTC
-        /// <summary>
-        /// MTC用のMIDI-INデバイスからMIDIを受信します。
-        /// </summary>
-        /// <param name="now"></param>
-        /// <param name="dataArray"></param>
-        private void handleMtcMidiReceived( double now, byte[] dataArray ) {
-            byte data = (byte)(dataArray[1] & 0x0f);
-            byte type = (byte)((dataArray[1] >> 4) & 0x0f);
-            if ( type == 0 ) {
-                mtcFrameLsb = data;
-            } else if ( type == 1 ) {
-                mtcFrameMsb = data;
-            } else if ( type == 2 ) {
-                mtcSecLsb = data;
-            } else if ( type == 3 ) {
-                mtcSecMsb = data;
-            } else if ( type == 4 ) {
-                mtcMinLsb = data;
-            } else if ( type == 5 ) {
-                mtcMinMsb = data;
-            } else if ( type == 6 ) {
-                mtcHourLsb = data;
-            } else if ( type == 7 ) {
-                mtcHourMsb = (byte)(data & 1);
-                int fpsType = (data & 6) >> 1;
-                double fps = 30.0;
-                if ( fpsType == 0 ) {
-                    fps = 24.0;
-                } else if ( fpsType == 1 ) {
-                    fps = 25;
-                } else if ( fpsType == 2 ) {
-                    fps = 30000.0 / 1001.0;
-                } else if ( fpsType == 3 ) {
-                    fps = 30.0;
-                }
-                int hour = (mtcHourMsb << 4 | mtcHourLsb);
-                int min = (mtcMinMsb << 4 | mtcMinLsb);
-                int sec = (mtcSecMsb << 4 | mtcSecLsb);
-                int frame = (mtcFrameMsb << 4 | mtcFrameLsb) + 2;
-                double time = (hour * 60.0 + min) * 60.0 + sec + frame / fps;
-                mtcLastReceived = now;
-#if DEBUG
-                int clock = (int)MusicManager.getVsqFile().getClockFromSec( time );
-                EditorManager.setCurrentClock( clock );
-#endif
-                /*if ( !EditorManager.isPlaying() ) {
-                    EditorManager.EditMode = EditMode.REALTIME_MTC );
-                    EditorManager.setPlaying( true );
-                    EventHandler handler = new EventHandler( EditorManager_PreviewStarted );
-                    if ( handler != null ) {
-                        this.Invoke( handler );
-                        while ( VSTiProxy.getPlayTime() <= 0.0 ) {
-                            System.Windows.Forms.Application.DoEvents();
-                        }
-                        EditorManager.setPlaying( true );
-                    }
-                }*/
-#if DEBUG
-                sout.println( "FormMain#handleMtcMidiReceived; time=" + time );
-#endif
-            }
-        }
-#endif
-
-#if ENABLE_MIDI
-        public void mMidiIn_MidiReceived(Object sender, javax.sound.midi.MidiMessage message)
-        {
-            byte[] data = message.getMessage();
-#if DEBUG
-            sout.println("FormMain#mMidiIn_MidiReceived; data.Length=" + data.Length);
-#endif
-            if (data.Length <= 2) {
-                return;
-            }
-#if DEBUG
-            sout.println("FormMain#mMidiIn_MidiReceived; EditorManager.isPlaying()=" + EditorManager.isPlaying());
-#endif
-            if (EditorManager.isPlaying()) {
-                return;
-            }
-#if DEBUG
-            sout.println("FormMain#mMidiIn_MidiReceived; isStepSequencerEnabeld()=" + controller.isStepSequencerEnabled());
-#endif
-            if (false == controller.isStepSequencerEnabled()) {
-                return;
-            }
-            int code = data[0] & 0xf0;
-            if (code != 0x80 && code != 0x90) {
-                return;
-            }
-            if (code == 0x90 && data[2] == 0x00) {
-                code = 0x80;//ベロシティ0のNoteOnはNoteOff
-            }
-
-            int note = (0xff & data[1]);
-
-            int clock = EditorManager.getCurrentClock();
-            int unit = EditorManager.getPositionQuantizeClock();
-            if (unit > 1) {
-                clock = FormMainModel.Quantize(clock, unit);
-            }
-
-#if DEBUG
-            sout.println("FormMain#mMidiIn_Received; clock=" + clock + "; note=" + note);
-#endif
-            if (code == 0x80) {
-                /*if ( EditorManager.mAddingEvent != null ) {
-                    int len = clock - EditorManager.mAddingEvent.Clock;
-                    if ( len <= 0 ) {
-                        len = unit;
-                    }
-                    EditorManager.mAddingEvent.ID.Length = len;
-                    int selected = EditorManager.Selected;
-                    CadenciiCommand run = new CadenciiCommand( VsqCommand.generateCommandEventAdd( selected,
-                                                                                                   EditorManager.mAddingEvent ) );
-                    EditorManager.register( MusicManager.getVsqFile().executeCommand( run ) );
-                    if ( !isEdited() ) {
-                        setEdited( true );
-                    }
-                    updateDrawObjectList();
-                }*/
-            } else if (code == 0x90) {
-                if (EditorManager.mAddingEvent != null) {
-                    // mAddingEventがnullでない場合は打ち込みの試行中(未確定の音符がある)
-                    // であるので，ノートだけが変わるようにする
-                    clock = EditorManager.mAddingEvent.Clock;
-                } else {
-                    EditorManager.mAddingEvent = new VsqEvent();
-                }
-                EditorManager.mAddingEvent.Clock = clock;
-                if (EditorManager.mAddingEvent.ID == null) {
-                    EditorManager.mAddingEvent.ID = new VsqID();
-                }
-                EditorManager.mAddingEvent.ID.type = VsqIDType.Anote;
-                EditorManager.mAddingEvent.ID.Dynamics = 64;
-                EditorManager.mAddingEvent.ID.VibratoHandle = null;
-                if (EditorManager.mAddingEvent.ID.LyricHandle == null) {
-                    EditorManager.mAddingEvent.ID.LyricHandle = new LyricHandle("a", "a");
-                }
-                EditorManager.mAddingEvent.ID.LyricHandle.L0.Phrase = "a";
-                EditorManager.mAddingEvent.ID.LyricHandle.L0.setPhoneticSymbol("a");
-                EditorManager.mAddingEvent.ID.Note = note;
-
-                // 音符の長さを計算
-                int length = QuantizeModeUtil.getQuantizeClock(
-                        EditorManager.editorConfig.getLengthQuantize(),
-                        EditorManager.editorConfig.isLengthQuantizeTriplet());
-
-                // 音符の長さを設定
-	EditorManager.editLengthOfVsqEvent(
-                    EditorManager.mAddingEvent,
-                    length,
-		EditorManager.vibratoLengthEditingRule);
-
-                // 現在位置は，音符の末尾になる
-                EditorManager.setCurrentClock(clock + length);
-
-                // 画面を再描画
-                if (this.InvokeRequired) {
-                    DelegateRefreshScreen deleg = null;
-                    try {
-                        deleg = new DelegateRefreshScreen(refreshScreen);
-                    } catch (Exception ex4) {
-                        deleg = null;
-                    }
-                    if (deleg != null) {
-                        this.Invoke(deleg, true);
-                    }
-                } else {
-                    refreshScreen(true);
-                }
-                // 鍵盤音を鳴らす
-                KeySoundPlayer.play(note);
-            }
-        }
-#endif
-        #endregion
+#endregion
 
         #region public static methods
         /// <summary>

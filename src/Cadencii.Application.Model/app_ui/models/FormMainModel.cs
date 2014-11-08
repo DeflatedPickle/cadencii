@@ -154,6 +154,7 @@ namespace cadencii
 			TrackSelector = new TrackSelectorModel (this);
 			PositionIndicator = new PositionIndicatorModel (this);
 			WaveView = new WaveViewModel (this);
+			ToolBars = new ToolBarsModel (this);
 
 			form.initializeRendererMenuHandler(this);
 		}
@@ -174,6 +175,7 @@ namespace cadencii
 		public TrackSelectorModel TrackSelector { get; private set; }
 		public PositionIndicatorModel PositionIndicator { get; private set; }
 		public WaveViewModel WaveView { get; private set; }
+		public ToolBarsModel ToolBars { get; private set; }
 
 		/// <summary>
 		/// 合成器の種類のメニュー項目を管理するハンドラをまとめたリスト
@@ -1443,6 +1445,63 @@ namespace cadencii
 		}
 
 		#endregion
+
+		public void handleStripPaletteTool_Click(UiToolBarButton tsb, UiToolStripMenuItem tsmi)
+		{
+			string id = "";  //選択されたツールのID
+			#if ENABLE_SCRIPT
+			if (tsb != null) {
+				if (tsb.Tag != null && tsb.Tag is string) {
+					id = (string)tsb.Tag;
+					EditorManager.mSelectedPaletteTool = id;
+					EditorManager.SelectedTool = (EditTool.PALETTE_TOOL);
+					tsb.Pushed = true;
+				}
+			} else if (tsmi != null) {
+				if (tsmi.Tag != null && tsmi.Tag is string) {
+					id = (string)tsmi.Tag;
+					EditorManager.mSelectedPaletteTool = id;
+					EditorManager.SelectedTool = (EditTool.PALETTE_TOOL);
+					tsmi.Checked = true;
+				}
+			}
+			#endif
+
+			int count = form.toolBarTool.Buttons.Count;
+			for (int i = 0; i < count; i++) {
+				Object item = form.toolBarTool.Buttons[i];
+				if (item is UiToolBarButton) {
+					UiToolBarButton button = (UiToolBarButton)item;
+					if (button.Style == Cadencii.Gui.ToolBarButtonStyle.ToggleButton && button.Tag != null && button.Tag is string) {
+						if (((string)button.Tag).Equals(id)) {
+							button.Pushed = true;
+						} else {
+							button.Pushed = false;
+						}
+					}
+				}
+			}
+
+			foreach (var item in form.cMenuPianoPaletteTool.DropDownItems) {
+				if (item is PaletteToolMenuItem) {
+					PaletteToolMenuItem menu = (PaletteToolMenuItem)item;
+					string tagged_id = menu.getPaletteToolID();
+					menu.Checked = (id == tagged_id);
+				}
+			}
+
+			//MenuElement[] sub_cmenu_track_selectro_palette_tool = cMenuTrackSelectorPaletteTool.getSubElements();
+			//for ( int i = 0; i < sub_cmenu_track_selectro_palette_tool.Length; i++ ) {
+			//MenuElement item = sub_cmenu_track_selectro_palette_tool[i];
+			foreach (var item in form.cMenuTrackSelectorPaletteTool.DropDownItems) {
+				if (item is PaletteToolMenuItem) {
+					PaletteToolMenuItem menu = (PaletteToolMenuItem)item;
+					string tagged_id = menu.getPaletteToolID();
+					menu.Checked = (id == tagged_id);
+				}
+			}
+		}
+
 	}
 }
 

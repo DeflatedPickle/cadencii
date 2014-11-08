@@ -14,6 +14,7 @@
 using System.Collections.Generic;
 using Cadencii.Gui;
 using cadencii.vsq;
+using System;
 
 
 namespace cadencii
@@ -23,9 +24,21 @@ namespace cadencii
     /// </summary>
     public interface UiFormMain : UiForm
     {
+		FormWindowState WindowState { get; }
+		bool InvokeRequired { get; }
+		void Invoke (Delegate d, params object [] b);
+
 		FormMainModel Model { get; }
 
-		FormWindowState WindowState { get; }
+		UiToolStripStatusLabel stripLblMidiIn { get;set ; }
+
+		UiToolBar toolBarMeasure { get; set; }
+		UiToolBar toolBarTool { get; set; }
+		UiToolStripMenuItem cMenuPianoPaletteTool { get; set; }
+		UiToolStripMenuItem cMenuTrackSelectorPaletteTool { get; set; }
+		UiToolBarButton stripDDBtnQuantizeParent { get; set; }
+		UiContextMenu stripDDBtnQuantize { get;set; }
+
 		void updateScrollRangeVertical ();
 
 		UiPictureBox picturePositionIndicator { get; set; }
@@ -131,8 +144,6 @@ namespace cadencii
 		int calculateStartToDrawY(int vscroll_value);
 		void updateVibratoPresetMenu();
 		void updateRendererMenu();
-		void reloadMidiIn();
-		void updateMidiInStatus();
 		VersionInfo mVersionInfo { get; set; }
 		void applyShortcut ();
 		void applyLanguage ();
