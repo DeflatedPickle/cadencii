@@ -241,6 +241,9 @@
     <Compile Include="app_ui\models\FormMainModel.TrackSelectorModel.cs" />
     <Compile Include="app_ui\models\CurveEditMode.cs" />
     <Compile Include="app_ui\models\FormMainModel.Playing.cs" />
+    <Compile Include="app_ui\models\PositionIndicatorMouseDownMode.cs" />
+    <Compile Include="app_ui\models\FormMainModel.PicturePositionIndicatorModel.cs" />
+    <Compile Include="Resources.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

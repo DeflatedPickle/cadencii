@@ -83,7 +83,6 @@
       <Link>GuiExtensions.cs</Link>
     </Compile>
     <Compile Include="Util.cs" />
-    <Compile Include="WFUtility.cs" />
     <Compile Include="gui_fx_extended\ApplicationUIHostWF.cs" />
     <Compile Include="gui_fx_extended\ClipboardWF.cs" />
     <Compile Include="gui_fx_extended\DialogsWF.cs" />

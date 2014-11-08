@@ -93,8 +93,8 @@ namespace cadencii
         {
             string about = PortUtil.formatMessage(_("About {0}"), m_app_name);
             string credit = _("Credit");
-            Dimension size1 = Util.measureString(about, btnFlip.Font);
-            Dimension size2 = Util.measureString(credit, btnFlip.Font);
+			Dimension size1 = Utility.measureString(about, btnFlip.Font.ToAwt ());
+			Dimension size2 = Utility.measureString(credit, btnFlip.Font.ToAwt ());
             m_button_width_about = Math.Max(75, (int)(size1.Width * 1.3));
             m_button_width_credit = Math.Max(75, (int)(size2.Width * 1.3));
             if (m_credit_mode) {
@@ -166,14 +166,14 @@ namespace cadencii
             int shadow_shift = 2;
             string font_name = "Arial";
             Font font = new Font(font_name, Cadencii.Gui.Font.PLAIN, FONT_SIZE);
-            Dimension size = Util.measureString("the quick brown fox jumped over the lazy dogs. THE QUICK BROWN FOX JUMPED OVER THE LAZY DOGS. 0123456789", font);
+            Dimension size = Utility.measureString("the quick brown fox jumped over the lazy dogs. THE QUICK BROWN FOX JUMPED OVER THE LAZY DOGS. 0123456789", font);
             int width = this.Width;
             int height = size.Height;
             //StringFormat sf = new StringFormat();
             Image ret = new Image((int)width, (int)(40f + m_credit.Length * height * 1.1f));
             Graphics g = new Graphics(ret);
 			g.setColor(Cadencii.Gui.Colors.White);
-            g.fillRect(0, 0, ret.getWidth(null), ret.getHeight(null));
+            g.fillRect(0, 0, ret.Width, ret.Height);
             int align = 0;
             int valign = 0;
             //sf.Alignment = StringAlignment.Center;
@@ -301,9 +301,9 @@ namespace cadencii
                 m_last_speed = speed;
                 Image image = m_show_twitter_id ? m_scroll_with_id : m_scroll;
                 if (image != null) {
-                    float dx = (this.Width - image.getWidth(null)) * 0.5f;
+                    float dx = (this.Width - image.Width) * 0.5f;
                     g.drawImage(image, (int)dx, (int)(90f - m_shift), null);
-                    if (90f - m_shift + image.getHeight(null) < 0) {
+                    if (90f - m_shift + image.Height < 0) {
                         m_shift = -m_height * 1.5f;
                     }
                 }

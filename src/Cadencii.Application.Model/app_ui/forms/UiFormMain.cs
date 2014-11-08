@@ -25,6 +25,11 @@ namespace cadencii
     {
 		FormMainModel Model { get; }
 
+		UiPictureBox picturePositionIndicator { get; set; }
+		UiContextMenuStrip cMenuPositionIndicator { get; set; }
+		float mFps { get; set; }
+		float mFps2 { get; set; }
+
 		UiToolBarButton stripBtnPlay { get; set; }
 
 		CurveEditMode mEditCurveMode { get; set; }
@@ -48,9 +53,6 @@ namespace cadencii
 		int computeVScrollValueForMiddleDrag (int mouse_y);
 		void processSpecialShortcutKey (KeyEventArgs e, bool onPreviewKeyDown);
 		VsqEvent getItemAtClickedPosition (Point mouse_position, ByRef<Rectangle> rect);
-
-		Image Resource_piano { get; }
-		Image Resource_slash { get; }
 
 		bool mFormActivated { get; set; }
 		UiToolStripStatusLabel stripLblGameCtrlMode { get; set; }

@@ -494,6 +494,11 @@ namespace Cadencii.Gui
 			}
 			nativeGraphics.DrawString (s, (System.Drawing.Font)font.NativeFont, brush, new System.Drawing.RectangleF (rect.X, rect.Y, rect.Width, rect.Height), mStringFormat);
 		}
+
+		public override Dimension measureString (string s, Font font)
+		{
+			return nativeGraphics.MeasureString (s, font.ToWF ()).ToSize ().ToAwt ();
+		}
 	}
 
 	class StrokeAdapterWF : Stroke.StrokeAdapter

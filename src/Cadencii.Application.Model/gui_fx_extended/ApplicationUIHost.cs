@@ -16,7 +16,10 @@ namespace cadencii
 		static ApplicationUIHost ()
 		{
 			Instance = Create<ApplicationUIHost> ();
+			Instance.InitializeResources ();
 		}
+
+		public abstract void InitializeResources ();
 
 		public abstract Dialogs Dialogs { get; }
 

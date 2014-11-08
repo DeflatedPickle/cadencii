@@ -53,8 +53,8 @@ namespace cadencii
                 g = new Graphics(bmp);
                 ((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                 if (img != null) {
-                    int img_width = img.getWidth(null);
-                    int img_height = img.getHeight(null);
+                    int img_width = img.Width;
+                    int img_height = img.Height;
                     double a = img_height / (double)img_width;
                     double aspecto = ICON_HEIGHT / (double)ICON_WIDTH;
 

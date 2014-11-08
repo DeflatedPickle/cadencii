@@ -215,6 +215,11 @@ namespace Cadencii.Gui
 			a.drawStringEx (s, font, rect, align, valign);
 		}
 
+		public Dimension measureString (string s, Font font)
+		{
+			return a.measureString (s, font);
+		}
+
 		public const int STRING_ALIGN_FAR = 1;
 		public const int STRING_ALIGN_NEAR = -1;
 		public const int STRING_ALIGN_CENTER = 0;
@@ -292,6 +297,8 @@ namespace Cadencii.Gui
 			public abstract void translate(double tx, double ty);
 
 			public abstract void drawStringEx(string s, Font font, Rectangle rect, int align, int valign);
+
+			public abstract Dimension measureString (string s, Font font);
 		}
 	}
 

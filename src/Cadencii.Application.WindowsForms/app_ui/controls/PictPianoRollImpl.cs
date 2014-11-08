@@ -985,7 +985,7 @@ namespace cadencii
                         }
                         int rate = (int)(drate * 100.0);
                         string percent = rate + "%";
-						Dimension size = Util.measureString(percent, cadencii.core.EditorConfig.baseFont9);
+						Dimension size = Utility.measureString(percent, cadencii.core.EditorConfig.baseFont9);
                         int delay_x = (int)((EditorManager.mAddingEvent.Clock + EditorManager.mAddingEvent.ID.getLength() - EditorManager.mAddingEvent.ID.Length + EditorManager.mAddingEvent.ID.VibratoDelay) * scalex + xoffset);
                         Rectangle pxArea = new Rectangle(delay_x,
                                                           (int)(y + track_height * 2.5),

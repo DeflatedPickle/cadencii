@@ -3002,7 +3002,7 @@ namespace cadencii
         public UiToolStripSeparator toolStripMenuItem5;
         public UiPictureBox pictureBox2;
         public UiPictureBox pictureBox3;
-        public UiPictureBox picturePositionIndicator;
+		public UiPictureBox picturePositionIndicator { get; set; }
 		public UiContextMenuStrip cMenuPiano { get; set; }
         public UiToolStripMenuItem cMenuPianoPointer;
         public UiToolStripMenuItem cMenuPianoPencil;
@@ -3274,7 +3274,7 @@ namespace cadencii
         public UiToolStripMenuItem menuFileExportParaWave;
         public UiToolStripMenuItem menuFileImportUst;
         private UiToolStripButton stripBtnStepSequencer;
-        public UiContextMenuStrip cMenuPositionIndicator;
+		public UiContextMenuStrip cMenuPositionIndicator { get; set; }
         public UiToolStripMenuItem cMenuPositionIndicatorStartMarker;
         public UiToolStripMenuItem cMenuPositionIndicatorEndMarker;
         public UiToolStripMenuItem menuHelpManual;

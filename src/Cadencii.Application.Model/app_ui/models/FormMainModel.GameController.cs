@@ -38,13 +38,13 @@ namespace cadencii
 		{
 			if (mGameMode == GameControlMode.DISABLED) {
 				form.stripLblGameCtrlMode.Text = _("Disabled");
-				form.stripLblGameCtrlMode.Image = form.Resource_slash;
+				form.stripLblGameCtrlMode.Image = Resources.slash;
 			} else if (mGameMode == GameControlMode.CURSOR) {
 				form.stripLblGameCtrlMode.Text = _("Cursor");
 				form.stripLblGameCtrlMode.Image = null;
 			} else if (mGameMode == GameControlMode.KEYBOARD) {
 				form.stripLblGameCtrlMode.Text = _("Keyboard");
-				form.stripLblGameCtrlMode.Image = form.Resource_piano;
+				form.stripLblGameCtrlMode.Image = Resources.piano;
 			} else if (mGameMode == GameControlMode.NORMAL) {
 				form.stripLblGameCtrlMode.Text = _("Normal");
 				form.stripLblGameCtrlMode.Image = null;
@@ -182,7 +182,7 @@ namespace cadencii
 						event_processed = true;
 						mGameMode = GameControlMode.KEYBOARD;
 						form.stripLblGameCtrlMode.Text = mGameMode.ToString();
-						form.stripLblGameCtrlMode.Image = form.Resource_piano;
+						form.stripLblGameCtrlMode.Image = Resources.piano;
 					}
 					mLastBtnSelect = SELECT;
 				} else if (mGameMode == GameControlMode.KEYBOARD) {

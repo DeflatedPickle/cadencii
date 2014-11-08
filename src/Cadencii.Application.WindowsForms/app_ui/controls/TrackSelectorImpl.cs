@@ -1635,7 +1635,7 @@ namespace cadencii
         {
             if (mTextWidthPerLetter <= 0.0f) {
 				Font font = cadencii.core.EditorConfig.baseFont10;
-                Dimension s = Util.measureString(flag_title + " ", font);
+                Dimension s = Utility.measureString(flag_title + " ", font);
                 mTextWidthPerLetter = s.Width / (float)flag_title.Length;
                 mTextHeight = s.Height;
             }
@@ -1996,7 +1996,7 @@ namespace cadencii
                             destRect.X + destRect.Width - 10, destRect.Y + destRect.Height - 1);
             }
             g.clipRect(destRect.X, destRect.Y, destRect.Width, destRect.Height);
-			string title = cadencii.windows.forms.Utility.trimString(name, cadencii.core.EditorConfig.baseFont8, panel_width);
+			string title = Utility.trimString(name, cadencii.core.EditorConfig.baseFont8, panel_width);
 			g.setFont(cadencii.core.EditorConfig.baseFont8);
             g.setColor(panel_title);
             g.drawString(title, destRect.X + 2, destRect.Y + destRect.Height / 2 - EditorConfig.baseFont8OffsetHeight);

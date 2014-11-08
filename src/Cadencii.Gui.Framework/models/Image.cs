@@ -38,14 +38,12 @@ namespace Cadencii.Gui
 			a.Dispose ();
 		}
 
-		public int getWidth(object observer)
-		{
-			return a.Width;
+		public int Width {
+			get { return a.Width; }
 		}
 
-		public int getHeight(object observer)
-		{
-			return a.Height;
+		public int Height {
+			get { return a.Height; }
 		}
 
 		public void Save (System.IO.Stream stream)
