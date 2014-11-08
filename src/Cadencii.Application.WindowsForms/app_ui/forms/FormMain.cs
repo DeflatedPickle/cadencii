@@ -48,6 +48,7 @@ using NMouseEventHandler = Cadencii.Gui.MouseEventHandler;
 using NKeyEventArgs = Cadencii.Gui.KeyEventArgs;
 using NKeyEventHandler = Cadencii.Gui.KeyEventHandler;
 using PaintEventArgs = cadencii.PaintEventArgs;
+using Consts = cadencii.FormMainModel.Consts;
 
 namespace cadencii
 {
@@ -1221,20 +1222,20 @@ namespace cadencii
                 if (127 < note_max) {
                     note_max = 127;
                 }
-                ensureVisibleY(note_max);
+                model.EnsureNoteVisibleOnPianoRoll(note_max);
             } else if (delta_note < 0) {
                 note_min -= 2;
                 if (note_min < 0) {
                     note_min = 0;
                 }
-                ensureVisibleY(note_min);
+				model.EnsureNoteVisibleOnPianoRoll(note_min);
             }
 
             // 音符が見えるようにする。時間方向
             if (delta_clock > 0) {
-                ensureVisible(clock_max);
+				model.EnsureClockVisibleOnPianoRoll(clock_max);
             } else if (delta_clock < 0) {
-                ensureVisible(clock_min);
+				model.EnsureClockVisibleOnPianoRoll(clock_min);
             }
             refreshScreen();
         }
@@ -1344,15 +1345,6 @@ namespace cadencii
                 value = max;
             }
             return value;
-        }
-
-        /// <summary>
-        /// 仮想スクリーン上でみた時の，現在のピアノロール画面の上端のy座標が指定した値とするための，vScrollの値を計算します
-        /// calculateStartToDrawYの逆関数です
-        /// </summary>
-        private int calculateVScrollValueFromStartToDrawY(int start_to_draw_y)
-        {
-            return (int)(start_to_draw_y / controller.getScaleY());
         }
 
         /// <summary>
@@ -1702,7 +1694,7 @@ namespace cadencii
                 EditorManager.editorConfig.PropertyWindowStatus.State = PanelState.Docked;
                 splitContainerProperty.Panel1Hidden = (false);
                 splitContainerProperty.SplitterFixed = (false);
-				splitContainerProperty.DividerSize = (FormMainModel._SPL_SPLITTER_WIDTH);
+				splitContainerProperty.DividerSize = (Consts._SPL_SPLITTER_WIDTH);
                 splitContainerProperty.Panel1MinSize = _PROPERTY_DOCK_MIN_WIDTH;
                 int w = EditorManager.editorConfig.PropertyWindowStatus.DockWidth;
                 if (w < _PROPERTY_DOCK_MIN_WIDTH) {
@@ -2231,7 +2223,7 @@ namespace cadencii
                 splitContainer2.Panel2MinSize = (_SPL2_PANEL2_MIN_HEIGHT);
                 splitContainer2.SplitterFixed = (false);
                 splitContainer2.Panel2Hidden = (false);
-                splitContainer2.DividerSize = (FormMainModel._SPL_SPLITTER_WIDTH);
+                splitContainer2.DividerSize = (Consts._SPL_SPLITTER_WIDTH);
                 int lastloc = EditorManager.editorConfig.SplitContainer2LastDividerLocation;
                 if (lastloc <= 0 || lastloc > splitContainer2.Height) {
                     int draft = splitContainer2.Height- 100;
@@ -2557,82 +2549,6 @@ namespace cadencii
         }
 #endif
         /// <summary>
-        /// 指定したノートナンバーが可視状態となるよう、縦スクロールバーを移動させます。
-        /// </summary>
-        /// <param name="note"></param>
-        public void ensureVisibleY(int note)
-        {
-            Action<int> setVScrollValue = (value) => {
-                int draft = Math.Min(Math.Max(value, vScroll.Minimum), vScroll.Maximum);
-                vScroll.Value = draft;
-            };
-            if (note <= 0) {
-                setVScrollValue(vScroll.Maximum - vScroll.LargeChange);
-                return;
-            } else if (note >= 127) {
-                vScroll.Value = vScroll.Minimum;
-                return;
-            }
-            int height = pictPianoRoll.Height;
-            int noteTop = EditorManager.noteFromYCoord(0); //画面上端でのノートナンバー
-            int noteBottom = EditorManager.noteFromYCoord(height); // 画面下端でのノートナンバー
-
-            int maximum = vScroll.Maximum;
-            int track_height = (int)(100 * controller.getScaleY());
-            // ノートナンバーnoteの現在のy座標がいくらか？
-            int note_y = EditorManager.yCoordFromNote(note);
-            if (note < noteBottom) {
-                // ノートナンバーnoteBottomの現在のy座標が新しいnoteのy座標と同一になるよう，startToDrawYを変える
-                // startToDrawYを次の値にする必要がある
-                int new_start_to_draw_y = controller.getStartToDrawY() + (note_y - height);
-                int value = calculateVScrollValueFromStartToDrawY(new_start_to_draw_y);
-                setVScrollValue(value);
-            } else if (noteTop < note) {
-                // ノートナンバーnoteTopの現在のy座標が，ノートナンバーnoteの新しいy座標と同一になるよう，startToDrawYを変える
-                int new_start_to_draw_y = controller.getStartToDrawY() + (note_y - 0);
-                int value = calculateVScrollValueFromStartToDrawY(new_start_to_draw_y);
-                setVScrollValue(value);
-            }
-        }
-
-        /// <summary>
-        /// 指定したゲートタイムがピアノロール上で可視状態となるよう、横スクロールバーを移動させます。
-        /// </summary>
-        /// <param name="clock"></param>
-        public void ensureVisible(int clock)
-        {
-            // カーソルが画面内にあるかどうか検査
-            int clock_left = EditorManager.clockFromXCoord(EditorManager.keyWidth);
-            int clock_right = EditorManager.clockFromXCoord(pictPianoRoll.Width);
-            int uwidth = clock_right - clock_left;
-            if (clock < clock_left || clock_right < clock) {
-                int cl_new_center = (clock / uwidth) * uwidth + uwidth / 2;
-                float f_draft = cl_new_center - (pictPianoRoll.Width / 2 + 34 - 70) * controller.getScaleXInv();
-                if (f_draft < 0f) {
-                    f_draft = 0;
-                }
-                int draft = (int)(f_draft);
-                if (draft < hScroll.Minimum) {
-                    draft = hScroll.Minimum;
-                } else if (hScroll.Maximum < draft) {
-                    draft = hScroll.Maximum;
-                }
-                if (hScroll.Value != draft) {
-                    EditorManager.mDrawStartIndex[EditorManager.Selected - 1] = 0;
-                    hScroll.Value = draft;
-                }
-            }
-        }
-
-        /// <summary>
-        /// プレイカーソルが見えるようスクロールする
-        /// </summary>
-        public void ensureCursorVisible()
-        {
-            ensureVisible(EditorManager.getCurrentClock());
-        }
-
-        /// <summary>
         /// 特殊なショートカットキーを処理します。
         /// </summary>
         /// <param name="e"></param>
@@ -2743,7 +2659,7 @@ namespace cadencii
                         Keys shortcut = specialGoToFirst.Aggregate(Keys.None, (seed, key) => seed | key);
                         if ((Keys) e.KeyCode == shortcut) {
                             EditorManager.setCurrentClock(0);
-                            ensureCursorVisible();
+							model.EnsurePlayerCursorVisible();
                             refreshScreen();
                         }
                     }
@@ -3784,7 +3700,7 @@ namespace cadencii
                             if (item.ID.VibratoHandle != null) {
                                 vib_delay = item.ID.VibratoDelay;
                                 double rate = (double)vib_delay / (double)length;
-                                px_vibrato_delay = FormMainConsts._PX_ACCENT_HEADER + (int)((lyric_width - FormMainConsts._PX_ACCENT_HEADER) * rate);
+                                px_vibrato_delay = Consts._PX_ACCENT_HEADER + (int)((lyric_width - Consts._PX_ACCENT_HEADER) * rate);
                             }
                             VibratoBPList rate_bp = null;
                             VibratoBPList depth_bp = null;
@@ -3999,7 +3915,7 @@ namespace cadencii
             if (mEdited) {
                 file += " *";
             }
-			string title = file + " - " + FormMainModel.ApplicationName;
+			string title = file + " - " + Consts.ApplicationName;
             if (this.Text != title) {
                 this.Text = title;
             }
@@ -4828,7 +4744,7 @@ namespace cadencii
                         if (note < 0) {
                             note = 0;
                         }
-                        ensureVisibleY(note);
+						model.EnsureNoteVisibleOnPianoRoll(note);
                     }
                     if (refresh_screen) {
                         refreshScreen();
@@ -5467,7 +5383,7 @@ namespace cadencii
 
             updateSplitContainer2Size(false);
 
-            ensureVisibleY(60);
+			model.EnsureNoteVisibleOnPianoRoll(60);
 
             // 鍵盤用の音源の準備．Javaはこの機能は削除で．
             // 鍵盤用のキャッシュが古い位置に保存されている場合。
@@ -6809,7 +6725,7 @@ namespace cadencii
                 EditorManager.setPlaying(false, this);
             }
             EditorManager.setCurrentClock(MusicManager.getVsqFile().TotalClocks);
-            ensureCursorVisible();
+			model.EnsurePlayerCursorVisible();
             refreshScreen();
         }
 
@@ -6819,7 +6735,7 @@ namespace cadencii
                 EditorManager.setPlaying(false, this);
             }
             EditorManager.setCurrentClock(0);
-            ensureCursorVisible();
+			model.EnsurePlayerCursorVisible();
             refreshScreen();
         }
 

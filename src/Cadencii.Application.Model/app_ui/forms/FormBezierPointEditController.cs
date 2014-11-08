@@ -339,7 +339,7 @@ namespace cadencii
                 // スクリーン上でデータ点が見えるようにする
                 var main = m_parent.getMainForm();
                 if (main != null) {
-                    main.ensureVisible((int)m_point.getBase().getX());
+                    main.Model.EnsureClockVisibleOnPianoRoll((int)m_point.getBase().getX());
                 }
             }
         }

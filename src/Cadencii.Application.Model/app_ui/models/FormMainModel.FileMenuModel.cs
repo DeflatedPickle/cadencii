@@ -114,7 +114,7 @@ namespace cadencii
 								_("Invalid note data.\nTrack {0} : {1}\n\n-> Piano roll : Blank sequence."),
 								track,
 								MusicManager.getVsqFile().Track[track].getName()),
-							FormMainModel.ApplicationName,
+							FormMainModel.Consts.ApplicationName,
 							cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
 							cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
 						return;
@@ -148,7 +148,7 @@ namespace cadencii
 							PortUtil.formatMessage(
 								_("Invalid note data.\nTrack {0} : {1}\n\n-> Piano roll : Blank sequence."), track, MusicManager.getVsqFile().Track[track].getName()
 							),
-							FormMainModel.ApplicationName,
+							FormMainModel.Consts.ApplicationName,
 							cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
 							cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
 						return;

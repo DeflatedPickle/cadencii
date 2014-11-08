@@ -115,7 +115,7 @@ namespace cadencii
 
             if (mMainWindow != null) {
                 mMainWindow.setEdited(true);
-                mMainWindow.ensureVisible(clock);
+                mMainWindow.Model.EnsureClockVisibleOnPianoRoll(clock);
                 mMainWindow.refreshScreen();
             }
 
@@ -206,7 +206,7 @@ namespace cadencii
             EditorManager.itemSelection.clearPoint();
             EditorManager.itemSelection.addPoint(m_curve, bp.id);
             if (mMainWindow != null) {
-                mMainWindow.ensureVisible(clock);
+                mMainWindow.Model.EnsureClockVisibleOnPianoRoll(clock);
                 mMainWindow.refreshScreen();
             }
         }

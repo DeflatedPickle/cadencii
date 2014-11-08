@@ -582,9 +582,9 @@ namespace cadencii
 								} else if (parent.form.pictPianoRoll.Width < dobj.mRectangleInPixel.X + key_width - stdx) {
 									break;
 								}
-								Rectangle rc = new Rectangle(dobj.mRectangleInPixel.X + key_width + dobj.mVibratoDelayInPixel - stdx - FormMainConsts._EDIT_HANDLE_WIDTH / 2,
+								Rectangle rc = new Rectangle(dobj.mRectangleInPixel.X + key_width + dobj.mVibratoDelayInPixel - stdx - Consts._EDIT_HANDLE_WIDTH / 2,
 									dobj.mRectangleInPixel.Y + (int)(100 * parent.form.controller.getScaleY()) - stdy,
-									FormMainConsts._EDIT_HANDLE_WIDTH,
+									Consts._EDIT_HANDLE_WIDTH,
 									(int)(100 * parent.form.controller.getScaleY()));
 								if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
 									vibrato_dobj = dobj;
@@ -697,9 +697,9 @@ namespace cadencii
 						#else
 						if ( selected_tool != EditTool.ERASER && e.Button == BMouseButtons.Left ) {
 						#endif
-							int min_width = 4 * FormMainConsts._EDIT_HANDLE_WIDTH;
+							int min_width = 4 * Consts._EDIT_HANDLE_WIDTH;
 							foreach (var dobj in EditorManager.mDrawObjects[selected - 1]) {
-								int edit_handle_width = FormMainConsts._EDIT_HANDLE_WIDTH;
+								int edit_handle_width = Consts._EDIT_HANDLE_WIDTH;
 								if (dobj.mRectangleInPixel.Width < min_width) {
 									edit_handle_width = dobj.mRectangleInPixel.Width / 4;
 								}
@@ -1209,7 +1209,7 @@ namespace cadencii
 						int new_vibrato_start = clock;
 						int old_vibrato_end = EditorManager.mAddingEvent.Clock + EditorManager.mAddingEvent.ID.getLength();
 						int new_vibrato_length = old_vibrato_end - new_vibrato_start;
-						int max_length = (int)(EditorManager.mAddingEventLength - FormMainConsts._PX_ACCENT_HEADER * parent.form.controller.getScaleXInv());
+						int max_length = (int)(EditorManager.mAddingEventLength - Consts._PX_ACCENT_HEADER * parent.form.controller.getScaleXInv());
 						if (max_length < 0) {
 							max_length = 0;
 						}
@@ -1245,11 +1245,11 @@ namespace cadencii
 						!(EditorManager.mCurveOnPianoroll && (selected_tool == EditTool.PENCIL || selected_tool == EditTool.LINE))) {
 						bool split_cursor = false;
 						bool hand_cursor = false;
-						int min_width = 4 * FormMainConsts._EDIT_HANDLE_WIDTH;
+						int min_width = 4 * Consts._EDIT_HANDLE_WIDTH;
 						foreach (var dobj in EditorManager.mDrawObjects[selected - 1]) {
 							Rectangle rc;
 							if (dobj.mType != DrawObjectType.Dynaff) {
-								int edit_handle_width = FormMainConsts._EDIT_HANDLE_WIDTH;
+								int edit_handle_width = Consts._EDIT_HANDLE_WIDTH;
 								if (dobj.mRectangleInPixel.Width < min_width) {
 									edit_handle_width = dobj.mRectangleInPixel.Width / 4;
 								}
@@ -1286,9 +1286,9 @@ namespace cadencii
 									rc.Height *= 2;
 									if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
 										// ビブラートの開始位置
-										rc = new Rectangle(dobj.mRectangleInPixel.X + EditorManager.keyWidth + dobj.mVibratoDelayInPixel - stdx - FormMainConsts._EDIT_HANDLE_WIDTH / 2,
+										rc = new Rectangle(dobj.mRectangleInPixel.X + EditorManager.keyWidth + dobj.mVibratoDelayInPixel - stdx - Consts._EDIT_HANDLE_WIDTH / 2,
 											dobj.mRectangleInPixel.Y + (int)(100 * parent.form.controller.getScaleY()) - stdy,
-											FormMainConsts._EDIT_HANDLE_WIDTH,
+											Consts._EDIT_HANDLE_WIDTH,
 											(int)(100 * parent.form.controller.getScaleY()));
 										if (Utility.isInRect(new Point(e.X, e.Y), rc)) {
 											split_cursor = true;
@@ -1612,7 +1612,7 @@ namespace cadencii
 				} else if (edit_mode == EditMode.EDIT_VIBRATO_DELAY) {
 					#region EditVibratoDelay
 					if (mMouseMoved) {
-						double max_length = EditorManager.mAddingEventLength - FormMainConsts._PX_ACCENT_HEADER * parent.form.controller.getScaleXInv();
+						double max_length = EditorManager.mAddingEventLength - Consts._PX_ACCENT_HEADER * parent.form.controller.getScaleXInv();
 						double rate = EditorManager.mAddingEvent.ID.getLength() / max_length;
 						if (rate > 0.99) {
 							rate = 1.0;

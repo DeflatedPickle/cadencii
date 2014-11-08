@@ -18,17 +18,6 @@ using cadencii.vsq;
 
 namespace cadencii
 {
-	public static class FormMainConsts
-	{
-		/// <summary>
-		/// エントリの端を移動する時の、ハンドル許容範囲の幅
-		/// </summary>
-		public const int _EDIT_HANDLE_WIDTH = 7;
-		/// <summary>
-		/// 表情線の先頭部分のピクセル幅
-		/// </summary>
-		public const int _PX_ACCENT_HEADER = 21;
-	}
     /// <summary>
     /// メイン画面の実装クラスが持つべきメソッドを定義するインターフェース
     /// </summary>
@@ -80,7 +69,6 @@ namespace cadencii
 		void updateCMenuPianoFixed();
 		void applySelectedTool();
 
-		void ensureCursorVisible();
 		void showInputTextBox (string phrase, string phonetic_symbol, Point position, bool phonetic_symbol_edit_mode);
 		bool mLastSymbolEditMode { get; set; }
 		void moveUpDownLeftRight (int upDown, int leftRight);
@@ -192,13 +180,6 @@ namespace cadencii
         /// </summary>
         [PureVirtualFunction]
         void focusPianoRoll();
-
-	/// <summary>
-        /// 指定したゲートタイムがピアノロール上で可視状態となるよう、横スクロールバーを移動させます。
-        /// </summary>
-        /// <param name="clock"></param>
-	[PureVirtualFunction]
-	void ensureVisible(int clock);
     }
 
 }

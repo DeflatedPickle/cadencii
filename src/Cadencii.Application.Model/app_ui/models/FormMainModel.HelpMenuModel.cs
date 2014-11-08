@@ -32,12 +32,12 @@ namespace cadencii
 							.Select (a => a.GetTypes ().First ())
 							.Select (t => EditorManager.getAssemblyNameAndFileVersion (t)));
 				if (parent.form.mVersionInfo == null) {
-					parent.form.mVersionInfo = ApplicationUIHost.Create<VersionInfo> (FormMainModel.ApplicationName, version_str);
+					parent.form.mVersionInfo = ApplicationUIHost.Create<VersionInfo> (FormMainModel.Consts.ApplicationName, version_str);
 					parent.form.mVersionInfo.setAuthorList (_CREDIT);
 					parent.form.mVersionInfo.Show ();
 				} else {
 					if (parent.form.mVersionInfo.IsDisposed) {
-						parent.form.mVersionInfo = ApplicationUIHost.Create<VersionInfo> (FormMainModel.ApplicationName, version_str);
+						parent.form.mVersionInfo = ApplicationUIHost.Create<VersionInfo> (FormMainModel.Consts.ApplicationName, version_str);
 						parent.form.mVersionInfo.setAuthorList (_CREDIT);
 					}
 					parent.form.mVersionInfo.Show ();
@@ -64,7 +64,7 @@ namespace cadencii
 				if (!System.IO.File.Exists (pdf)) {
 					DialogManager.ShowMessageBox (
 						_ ("file not found"),
-						FormMainModel.ApplicationName,
+						FormMainModel.Consts.ApplicationName,
 						cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
 						cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
 					return;

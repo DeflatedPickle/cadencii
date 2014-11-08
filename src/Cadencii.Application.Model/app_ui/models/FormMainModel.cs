@@ -14,11 +14,22 @@ namespace cadencii
 {
 	public partial class FormMainModel
 	{
-		public const string ApplicationName = "Cadencii";
-		/// <summary>
-		/// splitContainer*で使用するSplitterWidthプロパティの値
-		/// </summary>
-		public const int _SPL_SPLITTER_WIDTH = 4;
+		public static class Consts
+		{
+			public const string ApplicationName = "Cadencii";
+			/// <summary>
+			/// splitContainer*で使用するSplitterWidthプロパティの値
+			/// </summary>
+			public const int _SPL_SPLITTER_WIDTH = 4;
+			/// <summary>
+			/// エントリの端を移動する時の、ハンドル許容範囲の幅
+			/// </summary>
+			public const int _EDIT_HANDLE_WIDTH = 7;
+			/// <summary>
+			/// 表情線の先頭部分のピクセル幅
+			/// </summary>
+			public const int _PX_ACCENT_HEADER = 21;
+		}
 
 		#region static readonly field
 		/// <summary>
@@ -821,7 +832,7 @@ namespace cadencii
 			form.TrackSelector.setCurveVisible(visible);
 			if (visible) {
 				form.splitContainer1.SplitterFixed = (false);
-				form.splitContainer1.DividerSize = (FormMainModel._SPL_SPLITTER_WIDTH);
+				form.splitContainer1.DividerSize = (FormMainModel.Consts._SPL_SPLITTER_WIDTH);
 				form.splitContainer1.DividerLocation = (form.splitContainer1.Height - EditorManager.mLastTrackSelectorHeight - form.splitContainer1.DividerSize);
 				form.splitContainer1.Panel2MinSize = (form.TrackSelector.getPreferredMinSize());
 			} else {
@@ -1008,7 +1019,7 @@ namespace cadencii
 			VsqFileEx vsq = MusicManager.getVsqFile();
 			if (DialogManager.ShowMessageBox(
 				PortUtil.formatMessage(_("Do you wish to remove track? {0} : '{1}'"), selected, vsq.Track[selected].getName()),
-				FormMainModel.ApplicationName,
+				FormMainModel.Consts.ApplicationName,
 				cadencii.Dialog.MSGBOX_YES_NO_OPTION,
 				cadencii.Dialog.MSGBOX_QUESTION_MESSAGE) == Cadencii.Gui.DialogResult.Yes) {
 				CadenciiCommand run = VsqFileEx.generateCommandDeleteTrack(selected);
@@ -1145,7 +1156,7 @@ namespace cadencii
 			// 選択しなおす
 			EditorManager.itemSelection.clearEvent();
 			EditorManager.itemSelection.addEvent(last_id);
-			form.ensureVisible(clock);
+			EnsureClockVisibleOnPianoRoll(clock);
 		}
 
 		/// <summary>
@@ -1207,7 +1218,7 @@ namespace cadencii
 			// 選択しなおす
 			EditorManager.itemSelection.clearEvent();
 			EditorManager.itemSelection.addEvent(last_id);
-			form.ensureVisible(clock);
+			EnsureClockVisibleOnPianoRoll(clock);
 		}
 
 		/// <summary>
@@ -1335,6 +1346,99 @@ namespace cadencii
 				mSpacekeyDown = false;
 			}
 		}
+
+		#region ensure visibility on piano roll
+
+		/// <summary>
+		/// 指定したノートナンバーが可視状態となるよう、縦スクロールバーを移動させます。
+		/// </summary>
+		/// <param name="note"></param>
+		public void EnsureNoteVisibleOnPianoRoll(int note)
+		{
+			var vScroll = form.vScroll;
+
+			Action<int> setVScrollValue = (value) => {
+				int draft = Math.Min(Math.Max(value, vScroll.Minimum), vScroll.Maximum);
+				vScroll.Value = draft;
+			};
+			if (note <= 0) {
+				setVScrollValue(vScroll.Maximum - vScroll.LargeChange);
+				return;
+			} else if (note >= 127) {
+				vScroll.Value = vScroll.Minimum;
+				return;
+			}
+			int height = form.pictPianoRoll.Height;
+			int noteTop = EditorManager.noteFromYCoord(0); //画面上端でのノートナンバー
+			int noteBottom = EditorManager.noteFromYCoord(height); // 画面下端でのノートナンバー
+
+			int maximum = vScroll.Maximum;
+			int track_height = (int)(100 * form.controller.getScaleY());
+			// ノートナンバーnoteの現在のy座標がいくらか？
+			int note_y = EditorManager.yCoordFromNote(note);
+			if (note < noteBottom) {
+				// ノートナンバーnoteBottomの現在のy座標が新しいnoteのy座標と同一になるよう，startToDrawYを変える
+				// startToDrawYを次の値にする必要がある
+				int new_start_to_draw_y = form.controller.getStartToDrawY() + (note_y - height);
+				int value = CalculateVScrollValueFromStartToDrawY(new_start_to_draw_y);
+				setVScrollValue(value);
+			} else if (noteTop < note) {
+				// ノートナンバーnoteTopの現在のy座標が，ノートナンバーnoteの新しいy座標と同一になるよう，startToDrawYを変える
+				int new_start_to_draw_y = form.controller.getStartToDrawY() + (note_y - 0);
+				int value = CalculateVScrollValueFromStartToDrawY(new_start_to_draw_y);
+				setVScrollValue(value);
+			}
+		}
+
+		/// <summary>
+		/// 仮想スクリーン上でみた時の，現在のピアノロール画面の上端のy座標が指定した値とするための，vScrollの値を計算します
+		/// calculateStartToDrawYの逆関数です
+		/// </summary>
+		int CalculateVScrollValueFromStartToDrawY(int start_to_draw_y)
+		{
+			return (int)(start_to_draw_y / form.controller.getScaleY());
+		}
+
+		/// <summary>
+		/// 指定したゲートタイムがピアノロール上で可視状態となるよう、横スクロールバーを移動させます。
+		/// </summary>
+		/// <param name="clock"></param>
+		public void EnsureClockVisibleOnPianoRoll(int clock)
+		{
+			var hScroll = form.hScroll;
+
+			// カーソルが画面内にあるかどうか検査
+			int clock_left = EditorManager.clockFromXCoord(EditorManager.keyWidth);
+			int clock_right = EditorManager.clockFromXCoord(form.pictPianoRoll.Width);
+			int uwidth = clock_right - clock_left;
+			if (clock < clock_left || clock_right < clock) {
+				int cl_new_center = (clock / uwidth) * uwidth + uwidth / 2;
+				float f_draft = cl_new_center - (form.pictPianoRoll.Width / 2 + 34 - 70) * form.controller.getScaleXInv();
+				if (f_draft < 0f) {
+					f_draft = 0;
+				}
+				int draft = (int)(f_draft);
+				if (draft < hScroll.Minimum) {
+					draft = hScroll.Minimum;
+				} else if (hScroll.Maximum < draft) {
+					draft = hScroll.Maximum;
+				}
+				if (hScroll.Value != draft) {
+					EditorManager.mDrawStartIndex[EditorManager.Selected - 1] = 0;
+					hScroll.Value = draft;
+				}
+			}
+		}
+
+		/// <summary>
+		/// プレイカーソルが見えるようスクロールする
+		/// </summary>
+		public void EnsurePlayerCursorVisible()
+		{
+			EnsureClockVisibleOnPianoRoll(EditorManager.getCurrentClock());
+		}
+
+		#endregion
 	}
 }
 

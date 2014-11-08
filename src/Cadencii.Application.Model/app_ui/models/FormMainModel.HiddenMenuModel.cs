@@ -78,7 +78,7 @@ namespace cadencii
 				VsqFileEx vsq = MusicManager.getVsqFile();
 				if (vsq.config.EndMarkerEnabled) {
 					EditorManager.setCurrentClock(vsq.config.EndMarker);
-					parent.form.ensureCursorVisible();
+					parent.EnsurePlayerCursorVisible();
 					parent.form.refreshScreen();
 				}
 			}
@@ -92,7 +92,7 @@ namespace cadencii
 				VsqFileEx vsq = MusicManager.getVsqFile();
 				if (vsq.config.StartMarkerEnabled) {
 					EditorManager.setCurrentClock(vsq.config.StartMarker);
-					parent.form.ensureCursorVisible();
+					parent.EnsurePlayerCursorVisible();
 					parent.form.refreshScreen();
 				}
 			}

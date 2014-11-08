@@ -99,7 +99,7 @@ namespace cadencii
 					mLastClock = clock;
 					EditorManager.setCurrentClock(clock);
 					if (EditorManager.mAutoScroll) {
-						form.ensureCursorVisible();
+						EnsurePlayerCursorVisible();
 					}
 				}
 			} else {
@@ -107,7 +107,7 @@ namespace cadencii
 				int ending_clock = EditorManager.getPreviewEndingClock();
 				EditorManager.setCurrentClock(ending_clock);
 				if (EditorManager.mAutoScroll) {
-					form.ensureCursorVisible();
+					EnsurePlayerCursorVisible();
 				}
 				form.refreshScreen(true);
 				if (EditorManager.IsPreviewRepeatMode) {
@@ -149,7 +149,7 @@ namespace cadencii
 				// ステップ入力時の処理
 				UpdateNoteLengthStepSequencer();
 
-				form.ensureCursorVisible();
+				EnsurePlayerCursorVisible();
 				EditorManager.setPlaying(playing, form);
 				form.refreshScreen();
 			}
@@ -182,7 +182,7 @@ namespace cadencii
 			// ステップ入力時の処理
 			UpdateNoteLengthStepSequencer();
 
-			form.ensureCursorVisible();
+			EnsurePlayerCursorVisible();
 			EditorManager.setPlaying(playing, form);
 			form.refreshScreen();
 		}
