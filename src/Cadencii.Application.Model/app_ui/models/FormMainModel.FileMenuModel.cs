@@ -1680,6 +1680,15 @@ namespace cadencii
 				parent.form.Close();
 			}
 
+			public void RunExportDropDownCommand()
+			{
+				parent.form.menuFileExportWave.Enabled = (MusicManager.getVsqFile().Track[EditorManager.Selected].getEventCount() > 0);
+			}
+
+			public void RunEditDropDownCommand ()
+			{
+				parent.form.updateCopyAndPasteButtonStatus();
+			}
 		}
 	}
 }

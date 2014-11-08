@@ -24,9 +24,21 @@ namespace cadencii
     /// </summary>
     public interface UiFormMain : UiForm
     {
-		FormWindowState WindowState { get; }
+		FormWindowState WindowState { get; set; }
 
 		FormMainModel Model { get; }
+
+		void refreshScreenCore(Object sender, EventArgs e);
+		void showUpdateInformationAsync(bool is_explicit_update_check);
+		UiToolStripMenuItem menuFileExportWave { get;set; }
+		Dimension getWindowMinimumSize ();
+		RebarBand bandFile { get; set; }
+		RebarBand bandPosition { get; set; }
+		RebarBand bandMeasure { get; set; }
+		RebarBand bandTool { get; set; }
+		void updateBgmMenuState();
+		UiPictureBox pictureBox2{ get; set; }
+		Graphics mGraphicsPictureBox2 { get;set; }
 
 		UiToolStripStatusLabel stripLblMidiIn { get;set ; }
 
@@ -62,7 +74,6 @@ namespace cadencii
 		void executeLyricChangeCommand();
 		int computeScrollValueFromWheelDelta(int delta);
 		float getScaleXFromTrackBarValue(int value);
-		void zoomY(int delta);
 		int computeHScrollValueForMiddleDrag(int mouse_x);
 		int computeVScrollValueForMiddleDrag (int mouse_y);
 		void processSpecialShortcutKey (KeyEventArgs e, bool onPreviewKeyDown);

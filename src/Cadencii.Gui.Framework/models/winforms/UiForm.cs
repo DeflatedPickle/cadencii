@@ -5,6 +5,7 @@ namespace cadencii
 {
 	public interface UiForm : UiControl
 	{
+		Dimension MinimumSize { get; set; }
 		bool TopMost { get; set; }
 
 		bool InvokeRequired { get; }

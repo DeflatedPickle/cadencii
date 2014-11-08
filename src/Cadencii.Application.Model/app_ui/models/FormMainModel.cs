@@ -155,6 +155,7 @@ namespace cadencii
 			PositionIndicator = new PositionIndicatorModel (this);
 			WaveView = new WaveViewModel (this);
 			ToolBars = new ToolBarsModel (this);
+			OtherItems = new OtherItemsModel (this);
 
 			form.initializeRendererMenuHandler(this);
 		}
@@ -176,6 +177,7 @@ namespace cadencii
 		public PositionIndicatorModel PositionIndicator { get; private set; }
 		public WaveViewModel WaveView { get; private set; }
 		public ToolBarsModel ToolBars { get; private set; }
+		public OtherItemsModel OtherItems { get; private set; }
 
 		/// <summary>
 		/// 合成器の種類のメニュー項目を管理するハンドラをまとめたリスト
@@ -1502,6 +1504,27 @@ namespace cadencii
 			}
 		}
 
+		/// <summary>
+		/// ピアノロールの縦軸の拡大率をdelta段階上げます
+		/// </summary>
+		/// <param name="delta"></param>
+		public void zoomY(int delta)
+		{
+			int scaley = EditorManager.editorConfig.PianoRollScaleY;
+			int draft = scaley + delta;
+			if (draft < EditorConfig.MIN_PIANOROLL_SCALEY) {
+				draft = EditorConfig.MIN_PIANOROLL_SCALEY;
+			}
+			if (EditorConfig.MAX_PIANOROLL_SCALEY < draft) {
+				draft = EditorConfig.MAX_PIANOROLL_SCALEY;
+			}
+			if (scaley != draft) {
+				EditorManager.editorConfig.PianoRollScaleY = draft;
+				form.updateScrollRangeVertical();
+				form.controller.setStartToDrawY(form.calculateStartToDrawY(form.vScroll.Value));
+				form.updateDrawObjectList();
+			}
+		}
 	}
 }
 

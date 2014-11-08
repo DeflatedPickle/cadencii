@@ -1834,7 +1834,7 @@ namespace cadencii
 							parent.form.trackBar.Value = draft;
 						}
 					} else {
-						parent.form.zoomY(e.Delta > 0 ? 1 : -1);
+						parent.zoomY(e.Delta > 0 ? 1 : -1);
 					}
 				} else {
 					// スクロール操作

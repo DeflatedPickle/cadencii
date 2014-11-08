@@ -94,17 +94,17 @@ namespace cadencii
 
         public void windowStateChanged()
         {
-            this.propertyWindowListener.propertyWindowStateChanged();
+			this.propertyWindowListener.Model.OtherItems.propertyWindowStateChanged();
         }
 
         public void locationOrSizeChanged()
         {
-            this.propertyWindowListener.propertyWindowLocationOrSizeChanged();
+			this.propertyWindowListener.Model.OtherItems.propertyWindowLocationOrSizeChanged();
         }
 
         public void formClosing()
         {
-            this.propertyWindowListener.propertyWindowFormClosing();
+			this.propertyWindowListener.Model.OtherItems.propertyWindowFormClosing();
         }
 
         #endregion

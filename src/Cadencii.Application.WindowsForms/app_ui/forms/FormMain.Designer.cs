@@ -1318,7 +1318,7 @@ namespace cadencii
             this.menuToolsCreateVConnectSTANDDb.Name = "menuToolsCreateVConnectSTANDDb";
             this.menuToolsCreateVConnectSTANDDb.Size = new Cadencii.Gui.Dimension(240, 22);
             this.menuToolsCreateVConnectSTANDDb.Text = "Create vConnect-STAND DB";
-            this.menuToolsCreateVConnectSTANDDb.Click += new System.EventHandler(this.menuToolsCreateVConnectSTANDDb_Click);
+			this.menuToolsCreateVConnectSTANDDb.Click += (o,e) => model.OtherItems.menuToolsCreateVConnectSTANDDb_Click ();
             // 
             // menuHelp
             // 
@@ -2906,7 +2906,7 @@ namespace cadencii
             this.menuHelpCheckForUpdates.Name = "menuHelpCheckForUpdates";
             this.menuHelpCheckForUpdates.Size = new Cadencii.Gui.Dimension(186, 22);
             this.menuHelpCheckForUpdates.Text = "Check For Updates";
-            this.menuHelpCheckForUpdates.Click += new System.EventHandler(this.menuHelpCheckForUpdates_Click);
+			this.menuHelpCheckForUpdates.Click += (o,e) => model.OtherItems.menuHelpCheckForUpdates_Click();
             // 
             // FormMain
             // 
@@ -3000,7 +3000,7 @@ namespace cadencii
 		public UiToolStripMenuItem menuEditUndo { get; set; }
 		public UiToolStripMenuItem menuEditRedo { get; set; }
         public UiToolStripSeparator toolStripMenuItem5;
-        public UiPictureBox pictureBox2;
+		public UiPictureBox pictureBox2{ get; set; }
         public UiPictureBox pictureBox3;
 		public UiPictureBox picturePositionIndicator { get; set; }
 		public UiContextMenuStrip cMenuPiano { get; set; }
@@ -3105,7 +3105,7 @@ namespace cadencii
         public UiToolStripMenuItem menuLyricDictionary;
         public UiToolStripMenuItem menuHelpAbout;
         public UiToolStripMenuItem menuHelpDebug;
-        public UiToolStripMenuItem menuFileExportWave;
+		public UiToolStripMenuItem menuFileExportWave { get;set; }
         public UiToolStripMenuItem menuFileExportMidi;
 		public UiToolStripMenuItem menuScript { get; set;}
 		public UiToolStripMenuItem menuHidden { get; set; }
@@ -3240,10 +3240,10 @@ namespace cadencii
 		public UiToolStripMenuItem menuHelpLogSwitch { get; set; }
         private UiToolStripMenuItem menuHelpLogOpen;
         private Rebar rebar;
-        private RebarBand bandFile;
-        private RebarBand bandPosition;
-        private RebarBand bandMeasure;
-        private RebarBand bandTool;
+		public RebarBand bandFile { get; set; }
+		public RebarBand bandPosition { get; set; }
+		public RebarBand bandMeasure { get; set; }
+		public RebarBand bandTool { get; set; }
         public cadencii.apputil.BSplitContainer splitContainer2;
         private UiPanel panel1;
         private UiToolBar toolBarFile;

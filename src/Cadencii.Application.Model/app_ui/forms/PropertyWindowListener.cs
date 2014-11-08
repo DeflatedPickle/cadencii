@@ -16,9 +16,7 @@ namespace cadencii
 
     public interface PropertyWindowListener
     {
-        void propertyWindowStateChanged();
-        void propertyWindowLocationOrSizeChanged();
-        void propertyWindowFormClosing();
+	FormMainModel Model { get; }
     }
 
 }

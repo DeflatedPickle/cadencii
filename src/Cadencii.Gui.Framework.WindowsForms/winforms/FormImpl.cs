@@ -19,6 +19,11 @@ namespace cadencii
 {
 	public class FormImpl : System.Windows.Forms.Form, UiForm
  	{
+		Dimension UiForm.MinimumSize {
+			get { return MinimumSize.ToAwt (); }
+			set { MinimumSize = value.ToWF (); }
+		}
+
 		Cursor UiForm.Cursor {
 			get { return Cursor.ToAwt (); }
 			set { Cursor = value.ToNative (); }
