@@ -31,8 +31,35 @@ namespace Cadencii.Gui
 		public override void InitializeCursors ()
 		{
 			Cursors.Default = System.Windows.Forms.Cursors.Default.ToAwt ();
-			Cursors.Hand = System.Windows.Forms.Cursors.Hand.ToAwt ();
+			//Cursors.Hand = System.Windows.Forms.Cursors.Hand.ToAwt ();
 			Cursors.VSplit = System.Windows.Forms.Cursors.VSplit.ToAwt ();
+
+			string _HAND = "AAACAAEAICAAABAAEADoAgAAFgAAACgAAAAgAAAAQAAAAAEABAAAAAAAgAIAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+				"AAAgAAAAACAAACAgAAAAACAAIAAgAAAgIAAwMDAAICAgAD/AAAAAP8AAP//AAAAAP8A/wD/AAD//wD///8AAAAAAAAAAAAAAAAAAAA" +
+				"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+				"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAD" +
+				"//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AAAAA/wAAAAAAAAAAA" +
+				"A//AAAAAP/wAAAAAAAAAAAP/wAAAAD/8AAAAAAAAAAAAP8AAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+				"AAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+				"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
+				"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD////////////////////////////////////////////+f////" +
+				"D////gf///4H////D///8/z//+H4f//B+D//wfg//+H4f//z/P///w////4H///+B////w////+f//////////////////////////" +
+				"//////////////////w==";
+			System.IO.MemoryStream ms = null;
+			try {
+				ms = new System.IO.MemoryStream(Base64.decode(_HAND));
+				Cursors.Hand = new System.Windows.Forms.Cursor(ms).ToAwt ();
+			} catch (Exception ex) {
+				Logger.write(GetType () + ".InitializeCursors; ex=" + ex + "\n");
+			} finally {
+				if (ms != null) {
+					try {
+						ms.Close();
+					} catch (Exception ex2) {
+						Logger.write(GetType () + ".InitializeCursors; ex=" + ex2 + "\n");
+					}
+				}
+			}
 		}
 
 		public override Cadencii.Gui.Keys DefaultModifierKeys ()

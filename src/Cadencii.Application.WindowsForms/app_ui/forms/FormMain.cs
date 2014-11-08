@@ -524,33 +524,6 @@ namespace cadencii
             menuHelpDebug.Visible = true;
 #endif // DEBUG
 
-            string _HAND = "AAACAAEAICAAABAAEADoAgAAFgAAACgAAAAgAAAAQAAAAAEABAAAAAAAgAIAAAAAAAAAAAAAAAAAAAAAAAAAA" +
-                "AAAgAAAAACAAACAgAAAAACAAIAAgAAAgIAAwMDAAICAgAD/AAAAAP8AAP//AAAAAP8A/wD/AAD//wD///8AAAAAAAAAAAAAAAAAAAA" +
-                "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
-                "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/wAAAAAAAAAAAAAAAAAAD" +
-                "//wAAAAAAAAAAAAAAAAAA//8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP8AAAAA/wAAAAAAAAAAA" +
-                "A//AAAAAP/wAAAAAAAAAAAP/wAAAAD/8AAAAAAAAAAAAP8AAAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
-                "AAAAAAAAA//8AAAAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
-                "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
-                "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD////////////////////////////////////////////+f////" +
-                "D////gf///4H////D///8/z//+H4f//B+D//wfg//+H4f//z/P///w////4H///+B////w////+f//////////////////////////" +
-                "//////////////////w==";
-            System.IO.MemoryStream ms = null;
-            try {
-                ms = new System.IO.MemoryStream(Base64.decode(_HAND));
-                HAND = new System.Windows.Forms.Cursor(ms);
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".ctor; ex=" + ex + "\n");
-            } finally {
-                if (ms != null) {
-                    try {
-                        ms.Close();
-                    } catch (Exception ex2) {
-                        Logger.write(typeof(FormMain) + ".ctor; ex=" + ex2 + "\n");
-                    }
-                }
-            }
-
             menuHelpLogSwitch.Checked = Logger.isEnabled();
             applyShortcut();
 
@@ -591,7 +564,7 @@ namespace cadencii
             EditorManager.MainWindowFocusRequired = new EventHandler(EditorManager_MainWindowFocusRequired);
             EditorManager.EditedStateChanged += new EditedStateChangedEventHandler(EditorManager_EditedStateChanged);
             EditorManager.WaveViewReloadRequired += new WaveViewRealoadRequiredEventHandler(EditorManager_WaveViewRealoadRequired);
-            EditorConfig.QuantizeModeChanged += new EventHandler(handleEditorConfig_QuantizeModeChanged);
+			EditorConfig.QuantizeModeChanged += (o, e) => applyQuantizeMode ();
 
 #if ENABLE_PROPERTY
             mPropertyPanelContainer.StateChangeRequired += new StateChangeRequiredEventHandler(mPropertyPanelContainer_StateChangeRequired);
@@ -5663,7 +5636,7 @@ namespace cadencii
                 mEditCurveMode = CurveEditMode.MIDDLE_DRAG;
                 mButtonInitial = new Point(e.X, e.Y);
                 mMiddleButtonHScroll = hScroll.Value;
-                this.Cursor = HAND;
+				this.Cursor = Cadencii.Gui.Cursors.Hand.ToNative ();
             }
         }
 
@@ -7066,16 +7039,6 @@ namespace cadencii
                     menu.Checked = (id == tagged_id);
                 }
             }
-        }
-
-        public void handleEditorConfig_QuantizeModeChanged(Object sender, EventArgs e)
-        {
-            applyQuantizeMode();
-        }
-
-        public void handleStripButton_Enter(Object sender, EventArgs e)
-        {
-            focusPianoRoll();
         }
 
 #if ENABLE_MOUSE_ENTER_STATUS_LABEL
