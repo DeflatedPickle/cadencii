@@ -340,8 +340,8 @@ namespace cadencii
         public int getOverviewStartToDrawX(int mouse_x)
         {
             float clock = mouse_x / mOverviewPixelPerClock + mOverviewStartToDrawClock;
-            int clock_at_left = (int)(clock - (mMainForm.pictPianoRoll.Width - EditorManager.keyWidth) * EditorManager.MainWindowController.getScaleXInv() / 2);
-            return (int)(clock_at_left * EditorManager.MainWindowController.getScaleX());
+            int clock_at_left = (int)(clock - (mMainForm.pictPianoRoll.Width - EditorManager.keyWidth) * EditorManager.MainWindowController.ScaleXInv / 2);
+            return (int)(clock_at_left * EditorManager.MainWindowController.ScaleX);
         }
 
         public int getOverviewXCoordFromClock(int clock)
@@ -394,7 +394,7 @@ namespace cadencii
             if (EditorManager.keyWidth < e.X && e.X < this.Width - 19) {
                 mOverviewMouseDownMode = OverviewMouseDownMode.NONE;
                 int draft_stdx = getOverviewStartToDrawX(e.X - EditorManager.keyWidth - EditorManager.keyOffset);
-                int draft = (int)(draft_stdx * EditorManager.MainWindowController.getScaleXInv());
+                int draft = (int)(draft_stdx * EditorManager.MainWindowController.ScaleXInv);
                 if (draft < mMainForm.hScroll.Minimum) {
                     draft = mMainForm.hScroll.Minimum;
                 } else if (mMainForm.hScroll.Maximum < draft) {
@@ -445,7 +445,7 @@ namespace cadencii
                         if (draft < 0) {
                             draft = 0;
                         }
-                        EditorManager.MainWindowController.setStartToDrawX(draft);
+                        EditorManager.MainWindowController.StartToDrawX = (draft);
                         mMainForm.refreshScreen();
                         return;
                     }
@@ -472,7 +472,7 @@ namespace cadencii
             mOverviewButtonZoomMouseDowned = false;
             mOverviewButtonMoozMouseDowned = false;
             if (mOverviewMouseDownMode == OverviewMouseDownMode.LEFT) {
-                EditorManager.MainWindowController.setStartToDrawX(mMainForm.calculateStartToDrawX());
+                EditorManager.MainWindowController.StartToDrawX = (mMainForm.calculateStartToDrawX());
             }
             mOverviewMouseDownMode = OverviewMouseDownMode.NONE;
             mMainForm.refreshScreen();
@@ -486,7 +486,7 @@ namespace cadencii
                 if (draft < 0) {
                     draft = 0;
                 }
-                EditorManager.MainWindowController.setStartToDrawX(draft);
+                EditorManager.MainWindowController.StartToDrawX = (draft);
                 mMainForm.refreshScreen();
             } else if (mOverviewMouseDownMode == OverviewMouseDownMode.MIDDLE) {
                 int dx = e.X - mOverviewMouseDownedLocationX;
@@ -547,8 +547,8 @@ namespace cadencii
             int x_end = getOverviewXCoordFromClock(current_end);
 
             // 移動中している最中に，移動開始直前の部分を影付で表示する
-            int stdx = EditorManager.MainWindowController.getStartToDrawX();
-            int act_start_to_draw_x = (int)(mMainForm.hScroll.Value * EditorManager.MainWindowController.getScaleX());
+            int stdx = EditorManager.MainWindowController.StartToDrawX;
+            int act_start_to_draw_x = (int)(mMainForm.hScroll.Value * EditorManager.MainWindowController.ScaleX);
             if (act_start_to_draw_x != stdx) {
                 int act_start_clock = EditorManager.clockFromXCoord(key_width - stdx + act_start_to_draw_x);
                 int act_end_clock = EditorManager.clockFromXCoord(mMainForm.pictPianoRoll.Width - stdx + act_start_to_draw_x);

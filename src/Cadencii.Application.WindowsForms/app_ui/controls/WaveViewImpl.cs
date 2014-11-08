@@ -139,7 +139,7 @@ namespace cadencii
                         EditorManager.clockFromXCoord(EditorManager.keyWidth),
                         EditorManager.clockFromXCoord(EditorManager.keyWidth + width),
                         MusicManager.getVsqFile().TempoTable,
-                        EditorManager.MainWindowController.getScaleX());
+                        EditorManager.MainWindowController.ScaleX);
                 } else {
                     context.draw(
                         g,
@@ -148,7 +148,7 @@ namespace cadencii
                         EditorManager.clockFromXCoord(EditorManager.keyWidth),
                         EditorManager.clockFromXCoord(EditorManager.keyWidth + width),
                         MusicManager.getVsqFile().TempoTable,
-                        EditorManager.MainWindowController.getScaleX(),
+                        EditorManager.MainWindowController.ScaleX,
                         mScale);
                 }
             }

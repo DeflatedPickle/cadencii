@@ -142,7 +142,7 @@ namespace cadencii
 			public void bgWorkScreen_DoWork()
 			{
 				try {
-					parent.form.Invoke(new EventHandler(parent.form.refreshScreenCore));
+					parent.form.Invoke(new Action(parent.form.refreshScreenCore));
 				} catch (Exception ex) {
 					serr.println("FormMain#bgWorkScreen_DoWork; ex=" + ex);
 					Logger.write(GetType () + ".bgWorkScreen_DoWork; ex=" + ex + "\n");
@@ -335,7 +335,7 @@ namespace cadencii
 
 			public void vScroll_ValueChanged()
 			{
-				parent.form.controller.setStartToDrawY(parent.form.calculateStartToDrawY(parent.form.vScroll.Value));
+				parent.form.controller.StartToDrawY = (parent.form.calculateStartToDrawY(parent.form.vScroll.Value));
 				if (EditorManager.EditMode != EditMode.MIDDLE_DRAG) {
 					// MIDDLE_DRAGのときは，pictPianoRoll_MouseMoveでrefreshScreenされるので，それ以外のときだけ描画・
 					parent.form.refreshScreen(true);
@@ -360,7 +360,7 @@ namespace cadencii
 			public void hScroll_ValueChanged()
 			{
 				int stdx = parent.form.calculateStartToDrawX();
-				parent.form.controller.setStartToDrawX(stdx);
+				parent.form.controller.StartToDrawX = (stdx);
 				if (EditorManager.EditMode != EditMode.MIDDLE_DRAG) {
 					// MIDDLE_DRAGのときは，pictPianoRoll_MouseMoveでrefreshScreenされるので，それ以外のときだけ描画・
 					parent.form.refreshScreen(true);
@@ -377,8 +377,8 @@ namespace cadencii
 
 			public void trackBar_ValueChanged()
 			{
-				parent.form.controller.setScaleX(parent.form.getScaleXFromTrackBarValue(parent.form.trackBar.Value));
-				parent.form.controller.setStartToDrawX(parent.form.calculateStartToDrawX());
+				parent.form.controller.ScaleX = (parent.form.getScaleXFromTrackBarValue(parent.form.trackBar.Value));
+				parent.form.controller.StartToDrawX = (parent.form.calculateStartToDrawX());
 				parent.form.updateDrawObjectList();
 				parent.form.Refresh();
 			}

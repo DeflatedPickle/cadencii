@@ -415,7 +415,7 @@ namespace cadencii
 						EditorManager.updateAutoBackupTimerStatus ();
 
 						// editorConfig.PxTrackHeightが変更されている可能性があるので，更新が必要
-						parent.form.controller.setStartToDrawY (parent.form.calculateStartToDrawY (parent.form.vScroll.Value));
+						parent.form.controller.StartToDrawY = (parent.form.calculateStartToDrawY (parent.form.vScroll.Value));
 
 						if (parent.form.menuVisualControlTrack.Checked) {
 							parent.form.splitContainer1.Panel2MinSize = (parent.form.TrackSelector.getPreferredMinSize ());

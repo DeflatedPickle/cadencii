@@ -28,7 +28,7 @@ namespace cadencii
 
 		FormMainModel Model { get; }
 
-		void refreshScreenCore(Object sender, EventArgs e);
+		void refreshScreenCore();
 		void showUpdateInformationAsync(bool is_explicit_update_check);
 		UiToolStripMenuItem menuFileExportWave { get;set; }
 		Dimension getWindowMinimumSize ();

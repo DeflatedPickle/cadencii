@@ -569,7 +569,7 @@ namespace cadencii
 		/// <summary>
 		/// メイン画面のコントローラ
 		/// </summary>
-		public static FormMainController MainWindowController = null;
+		public static FormMainController MainWindowController { get; set; }
 		/// <summary>
 		/// keyWidth+keyOffsetの位置からが、0になってる
 		/// </summary>
@@ -1509,7 +1509,7 @@ namespace cadencii
 		/// <returns></returns>
 		public static int yCoordFromNote (float note)
 		{
-			return yCoordFromNote (note, EditorManager.MainWindowController.getStartToDrawY ());
+			return yCoordFromNote (note, EditorManager.MainWindowController.StartToDrawY);
 		}
 
 		/// <summary>
@@ -1520,7 +1520,7 @@ namespace cadencii
 		/// <returns></returns>
 		public static int yCoordFromNote (float note, int start_to_draw_y)
 		{
-			return (int)(-1 * (note - 127.0f) * (int)(EditorManager.MainWindowController.getScaleY () * 100)) - start_to_draw_y;
+			return (int)(-1 * (note - 127.0f) * (int)(EditorManager.MainWindowController.ScaleY * 100)) - start_to_draw_y;
 		}
 
 		/// <summary>
@@ -1545,7 +1545,7 @@ namespace cadencii
 
 		private static double noteFromYCoordCore (int y)
 		{
-			return (double)(EditorManager.MainWindowController.getStartToDrawY () + y) / (double)((int)(EditorManager.MainWindowController.getScaleY () * 100));
+			return (double)(EditorManager.MainWindowController.StartToDrawY + y) / (double)((int)(EditorManager.MainWindowController.ScaleY * 100));
 		}
 
 		/// <summary>
@@ -1555,7 +1555,7 @@ namespace cadencii
 		/// <returns></returns>
 		public static int xCoordFromClocks (double clocks)
 		{
-			return xCoordFromClocks (clocks, EditorManager.MainWindowController.getScaleX (), EditorManager.MainWindowController.getStartToDrawX ());
+			return xCoordFromClocks (clocks, EditorManager.MainWindowController.ScaleX, EditorManager.MainWindowController.StartToDrawX);
 		}
 
 		/// <summary>
@@ -1575,7 +1575,7 @@ namespace cadencii
 		/// <returns></returns>
 		public static int clockFromXCoord (int x)
 		{
-			return (int)((x + EditorManager.MainWindowController.getStartToDrawX () - EditorManager.keyOffset - EditorManager.keyWidth) * EditorManager.MainWindowController.getScaleXInv ());
+			return (int)((x + EditorManager.MainWindowController.StartToDrawX - EditorManager.keyOffset - EditorManager.keyWidth) * EditorManager.MainWindowController.ScaleXInv);
 		}
 
 		public static void removeBgm (int index)

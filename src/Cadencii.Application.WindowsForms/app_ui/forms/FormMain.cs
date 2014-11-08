@@ -413,7 +413,7 @@ namespace cadencii
             hScroll.Maximum = MusicManager.getVsqFile().TotalClocks + 240;
             hScroll.LargeChange = 240 * 4;
 
-            vScroll.Maximum = (int)(controller.getScaleY() * 100 * 128);
+            vScroll.Maximum = (int)(controller.ScaleY * 100 * 128);
             vScroll.LargeChange = 24 * 4;
             hScroll.SmallChange = 240;
             vScroll.SmallChange = 24;
@@ -486,8 +486,8 @@ namespace cadencii
             model.UpdateRecentFileMenu();
 
             // C3が画面中央に来るように調整
-            int draft_start_to_draw_y = 68 * (int)(100 * controller.getScaleY()) - pictPianoRoll.Height / 2;
-            int draft_vscroll_value = (int)((draft_start_to_draw_y * (double)vScroll.Maximum) / (128 * (int)(100 * controller.getScaleY()) - vScroll.Height));
+            int draft_start_to_draw_y = 68 * (int)(100 * controller.ScaleY) - pictPianoRoll.Height / 2;
+            int draft_vscroll_value = (int)((draft_start_to_draw_y * (double)vScroll.Maximum) / (128 * (int)(100 * controller.ScaleY) - vScroll.Height));
             try {
                 vScroll.Value = draft_vscroll_value;
             } catch (Exception ex) {
@@ -496,7 +496,7 @@ namespace cadencii
 
             // x=97がプリメジャークロックになるように調整
             int cp = MusicManager.getVsqFile().getPreMeasureClocks();
-            int draft_hscroll_value = (int)(cp - 24.0 * controller.getScaleXInv());
+            int draft_hscroll_value = (int)(cp - 24.0 * controller.ScaleXInv);
             try {
                 hScroll.Value = draft_hscroll_value;
             } catch (Exception ex) {
@@ -1020,8 +1020,8 @@ namespace cadencii
             lock (EditorManager.mDrawObjects) {
                 List<DrawObject> dobj_list = EditorManager.mDrawObjects[selected - 1];
                 int count = dobj_list.Count;
-                int start_to_draw_x = controller.getStartToDrawX();
-                int start_to_draw_y = controller.getStartToDrawY();
+                int start_to_draw_x = controller.StartToDrawX;
+                int start_to_draw_y = controller.StartToDrawY;
                 VsqFileEx vsq = MusicManager.getVsqFile();
                 VsqTrack vsq_track = vsq.Track[selected];
 
@@ -1067,7 +1067,7 @@ namespace cadencii
             int dy = mouse_y - mButtonInitial.Y;
             int max = vScroll.Maximum - vScroll.LargeChange;
             int min = vScroll.Minimum;
-            double new_vscroll_value = (double)mMiddleButtonVScroll - dy * max / (128.0 * (int)(100.0 * controller.getScaleY()) - (double)pictPianoRoll.Height);
+            double new_vscroll_value = (double)mMiddleButtonVScroll - dy * max / (128.0 * (int)(100.0 * controller.ScaleY) - (double)pictPianoRoll.Height);
             int value = (int)new_vscroll_value;
             if (value < min) {
                 value = min;
@@ -1087,7 +1087,7 @@ namespace cadencii
             int dx = mouse_x - mButtonInitial.X;
             int max = hScroll.Maximum - hScroll.LargeChange;
             int min = hScroll.Minimum;
-            double new_hscroll_value = (double)mMiddleButtonHScroll - (double)dx * controller.getScaleXInv();
+            double new_hscroll_value = (double)mMiddleButtonHScroll - (double)dx * controller.ScaleXInv;
             int value = (int)new_hscroll_value;
             if (value < min) {
                 value = min;
@@ -1110,7 +1110,7 @@ namespace cadencii
             } else if (max < value) {
                 value = max;
             }
-            return (int)(value * controller.getScaleY());
+            return (int)(value * controller.ScaleY);
         }
 
         /// <summary>
@@ -1327,7 +1327,7 @@ namespace cadencii
                     mIsRefreshing = true;
 
                     mLastScreenRefreshedSec = now;
-                    refreshScreenCore(this, null);
+                    refreshScreenCore();
 
                     mIsRefreshing = false;
                 }
@@ -1340,7 +1340,7 @@ namespace cadencii
             refreshScreen(false);
         }
 
-        public void refreshScreenCore(Object sender, EventArgs e)
+        public void refreshScreenCore()
         {
 #if MONITOR_FPS
             double t0 = PortUtil.getCurrentTime();
@@ -1418,7 +1418,7 @@ namespace cadencii
 
         public int calculateStartToDrawX()
         {
-            return (int)(hScroll.Value * controller.getScaleX());
+            return (int)(hScroll.Value * controller.ScaleX);
         }
 
         public void updateBgmMenuState()
@@ -1721,8 +1721,8 @@ namespace cadencii
             int y0 = EditorManager.yCoordFromNote(note - 0.5f);
             int x0 = EditorManager.xCoordFromClocks(clock_start);
             int px_width = EditorManager.xCoordFromClocks(clock_start + clock_width) - x0;
-            int boxheight = (int)(vibrato.Depth * 2 / 100.0 * (int)(100.0 * controller.getScaleY()));
-            int px_shift = (int)(vibrato.Shift / 100.0 * vibrato.Depth / 100.0 * (int)(100.0 * controller.getScaleY()));
+            int boxheight = (int)(vibrato.Depth * 2 / 100.0 * (int)(100.0 * controller.ScaleY));
+            int px_shift = (int)(vibrato.Shift / 100.0 * vibrato.Depth / 100.0 * (int)(100.0 * controller.ScaleY));
 
             // vibrato in
             int cl_vibin_end = clock_start + (int)(clock_width * vibrato.In / 100.0);
@@ -1780,7 +1780,7 @@ namespace cadencii
                 double phase = 2.0 * Math.PI * vibrato.Phase / 100.0;
                 double omega = 2.0 * Math.PI / vibrato.Period;   //角速度(rad/msec)
                 double msec = MusicManager.getVsqFile().getSecFromClock(clock_start - 1) * 1000.0;
-                float px_track_height = (int)(controller.getScaleY() * 100.0f);
+                float px_track_height = (int)(controller.ScaleY * 100.0f);
                 phase -= (MusicManager.getVsqFile().getSecFromClock(clock_start) * 1000.0 - msec) * omega;
                 for (int clock = clock_start; clock <= clock_start + clock_width; clock++) {
                     int i = clock - clock_start;
@@ -2270,7 +2270,7 @@ namespace cadencii
 
             if ((Keys) e.KeyCode == Keys.Return) {
                 // MIDIステップ入力のときの処理
-                if (controller.isStepSequencerEnabled()) {
+                if (controller.IsStepSequencerEnabled) {
                     if (EditorManager.mAddingEvent != null) {
                         fixAddingEvent();
                         EditorManager.mAddingEvent = null;
@@ -2307,7 +2307,7 @@ namespace cadencii
             } else if ((Keys) e.KeyCode == Keys.Escape) {
                 // ステップ入力中の場合，入力中の音符をクリアする
                 VsqEvent item = EditorManager.mAddingEvent;
-                if (controller.isStepSequencerEnabled() && item != null) {
+                if (controller.IsStepSequencerEnabled && item != null) {
                     // 入力中だった音符の長さを取得し，
                     int length = item.ID.getLength();
                     EditorManager.mAddingEvent = null;
@@ -2354,7 +2354,7 @@ namespace cadencii
             VsqFileEx vsq = MusicManager.getVsqFile();
             if (vsq == null) return;
             int l = vsq.TotalClocks;
-            float scalex = controller.getScaleX();
+            float scalex = controller.ScaleX;
             int key_width = EditorManager.keyWidth;
             int pict_piano_roll_width = pwidth - key_width;
             int large_change = (int)(pict_piano_roll_width / scalex);
@@ -2390,7 +2390,7 @@ namespace cadencii
                 return;
             }
 
-            float scaley = controller.getScaleY();
+            float scaley = controller.ScaleY;
 
             int maximum = (int)(128 * (int)(100 * scaley) / scaley);
             int large_change = (int)(pheight / scaley);
@@ -3132,7 +3132,7 @@ namespace cadencii
         /// <returns></returns>
         public int computeScrollValueFromWheelDelta(int delta)
         {
-            double new_val = (double)hScroll.Value - delta * EditorManager.editorConfig.WheelOrder / (5.0 * controller.getScaleX());
+            double new_val = (double)hScroll.Value - delta * EditorManager.editorConfig.WheelOrder / (5.0 * controller.ScaleX);
             if (new_val < 0.0) {
                 new_val = 0;
             }
@@ -3331,12 +3331,12 @@ namespace cadencii
                 }
 
                 int xoffset = EditorManager.keyOffset;// 6 + EditorManager.keyWidth;
-                int yoffset = (int)(127 * (int)(100 * controller.getScaleY()));
-                float scalex = controller.getScaleX();
+                int yoffset = (int)(127 * (int)(100 * controller.ScaleY));
+                float scalex = controller.ScaleX;
                 Font SMALL_FONT = null;
                 try {
                     SMALL_FONT = new Font(EditorManager.editorConfig.ScreenFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8);
-                    int track_height = (int)(100 * controller.getScaleY());
+                    int track_height = (int)(100 * controller.ScaleY);
                     VsqFileEx vsq = MusicManager.getVsqFile();
                     int track_count = vsq.Track.Count;
                     Polygon env = new Polygon(new int[7], new int[7], 7);
@@ -3485,7 +3485,7 @@ namespace cadencii
                             }
                             int note = item_itr.ID.Note;
                             int x = (int)(clock * scalex + xoffset);
-                            int y = -note * (int)(100 * controller.getScaleY()) + yoffset;
+                            int y = -note * (int)(100 * controller.ScaleY) + yoffset;
                             tmp.Add(new DrawObject(type,
                                                      vsq,
                                                      new Rectangle(x, y, width, track_height),
@@ -4146,7 +4146,7 @@ namespace cadencii
                         item.ID.LyricHandle.L0.getPhoneticSymbol(),
                         new Point(x, y),
                         phonetic_symbol_edit_mode);
-                    int clWidth = (int)(EditorManager.InputTextBox.Width * controller.getScaleXInv());
+                    int clWidth = (int)(EditorManager.InputTextBox.Width * controller.ScaleXInv);
 
                     // 画面上にEditorManager.InputTextBoxが見えるように，移動
                     int SPACE = 20;
@@ -4170,7 +4170,7 @@ namespace cadencii
                             // 右方向に移動していた場合
                             clock_x = key_width + (width - key_width) / 3;
                         }
-                        double draft_d = (key_width + EditorManager.keyOffset - clock_x) * controller.getScaleXInv() + clock;
+                        double draft_d = (key_width + EditorManager.keyOffset - clock_x) * controller.ScaleXInv + clock;
                         if (draft_d < 0.0) {
                             draft_d = 0.0;
                         }
@@ -4184,7 +4184,7 @@ namespace cadencii
                         hScroll.Value = draft;
                     }
                     // y軸方向について，見えるように移動
-                    int track_height = (int)(100 * controller.getScaleY());
+                    int track_height = (int)(100 * controller.ScaleY);
                     if (y <= 0 || height - track_height <= y) {
                         int note = item.ID.Note;
                         if (y <= 0) {

@@ -142,7 +142,7 @@ namespace cadencii
 				EditorManager.editorConfig.isPositionQuantizeTriplet());
 			int cl_new = FormMainModel.Quantize(cl_clock + unit, unit);
 
-			if (cl_new <= form.hScroll.Maximum + (form.pictPianoRoll.Width - EditorManager.keyWidth) * form.controller.getScaleXInv()) {
+			if (cl_new <= form.hScroll.Maximum + (form.pictPianoRoll.Width - EditorManager.keyWidth) * form.controller.ScaleXInv) {
 				// 表示の更新など
 				EditorManager.setCurrentClock(cl_new);
 
@@ -195,7 +195,7 @@ namespace cadencii
 		/// </summary>
 		void UpdateNoteLengthStepSequencer()
 		{
-			if (!form.controller.isStepSequencerEnabled()) {
+			if (!form.controller.IsStepSequencerEnabled) {
 				return;
 			}
 

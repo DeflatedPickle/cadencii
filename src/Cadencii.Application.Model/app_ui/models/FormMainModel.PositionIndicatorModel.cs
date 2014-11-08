@@ -909,8 +909,8 @@ namespace cadencii
 
 					#region 現在のマーカー
 					// ソングポジション
-					float xoffset = key_width + EditorManager.keyOffset - parent.form.controller.getStartToDrawX();
-					int marker_x = (int)(EditorManager.getCurrentClock() * parent.form.controller.getScaleX() + xoffset);
+					float xoffset = key_width + EditorManager.keyOffset - parent.form.controller.StartToDrawX;
+					int marker_x = (int)(EditorManager.getCurrentClock() * parent.form.controller.ScaleX + xoffset);
 					if (key_width <= marker_x && marker_x <= width) {
 						g.setStroke(new Stroke(2.0f));
 						g.setColor(Cadencii.Gui.Colors.White);

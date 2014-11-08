@@ -1417,18 +1417,18 @@ namespace cadencii
 			int noteBottom = EditorManager.noteFromYCoord(height); // 画面下端でのノートナンバー
 
 			int maximum = vScroll.Maximum;
-			int track_height = (int)(100 * form.controller.getScaleY());
+			int track_height = (int)(100 * form.controller.ScaleY);
 			// ノートナンバーnoteの現在のy座標がいくらか？
 			int note_y = EditorManager.yCoordFromNote(note);
 			if (note < noteBottom) {
 				// ノートナンバーnoteBottomの現在のy座標が新しいnoteのy座標と同一になるよう，startToDrawYを変える
 				// startToDrawYを次の値にする必要がある
-				int new_start_to_draw_y = form.controller.getStartToDrawY() + (note_y - height);
+				int new_start_to_draw_y = form.controller.StartToDrawY + (note_y - height);
 				int value = CalculateVScrollValueFromStartToDrawY(new_start_to_draw_y);
 				setVScrollValue(value);
 			} else if (noteTop < note) {
 				// ノートナンバーnoteTopの現在のy座標が，ノートナンバーnoteの新しいy座標と同一になるよう，startToDrawYを変える
-				int new_start_to_draw_y = form.controller.getStartToDrawY() + (note_y - 0);
+				int new_start_to_draw_y = form.controller.StartToDrawY + (note_y - 0);
 				int value = CalculateVScrollValueFromStartToDrawY(new_start_to_draw_y);
 				setVScrollValue(value);
 			}
@@ -1440,7 +1440,7 @@ namespace cadencii
 		/// </summary>
 		int CalculateVScrollValueFromStartToDrawY(int start_to_draw_y)
 		{
-			return (int)(start_to_draw_y / form.controller.getScaleY());
+			return (int)(start_to_draw_y / form.controller.ScaleY);
 		}
 
 		/// <summary>
@@ -1457,7 +1457,7 @@ namespace cadencii
 			int uwidth = clock_right - clock_left;
 			if (clock < clock_left || clock_right < clock) {
 				int cl_new_center = (clock / uwidth) * uwidth + uwidth / 2;
-				float f_draft = cl_new_center - (form.pictPianoRoll.Width / 2 + 34 - 70) * form.controller.getScaleXInv();
+				float f_draft = cl_new_center - (form.pictPianoRoll.Width / 2 + 34 - 70) * form.controller.ScaleXInv;
 				if (f_draft < 0f) {
 					f_draft = 0;
 				}
@@ -1557,7 +1557,7 @@ namespace cadencii
 			if (scaley != draft) {
 				EditorManager.editorConfig.PianoRollScaleY = draft;
 				form.updateScrollRangeVertical();
-				form.controller.setStartToDrawY(form.calculateStartToDrawY(form.vScroll.Value));
+				form.controller.StartToDrawY = (form.calculateStartToDrawY(form.vScroll.Value));
 				form.updateDrawObjectList();
 			}
 		}

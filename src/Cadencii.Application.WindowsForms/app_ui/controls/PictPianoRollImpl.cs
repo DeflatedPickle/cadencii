@@ -222,11 +222,11 @@ namespace cadencii
 
 					var p = cadencii.core2.PortUtil.getMousePosition();
                     var mouse_position = this.PointToClient(new System.Drawing.Point(p.X, p.Y));
-                    int stdx = EditorManager.MainWindowController.getStartToDrawX();
-                    int stdy = EditorManager.MainWindowController.getStartToDrawY();
+                    int stdx = EditorManager.MainWindowController.StartToDrawX;
+                    int stdy = EditorManager.MainWindowController.StartToDrawY;
                     int key_width = EditorManager.keyWidth;
 
-                    int track_height = (int)(EditorManager.MainWindowController.getScaleY() * 100);
+                    int track_height = (int)(EditorManager.MainWindowController.ScaleY * 100);
                     int half_track_height = track_height / 2;
                     // [screen_x] = 67 + [clock] * ScaleX - StartToDrawX + 6
                     // [screen_y] = -1 * ([note] - 127) * TRACK_HEIGHT - StartToDrawY
@@ -239,8 +239,8 @@ namespace cadencii
                     // [screen_x] = [clock] * _scalex + xoffset
                     // [screen_y] = -[note] * TRACK_HEIGHT + yoffset
                     int y, dy;
-                    float scalex = EditorManager.MainWindowController.getScaleX();
-                    float inv_scalex = EditorManager.MainWindowController.getScaleXInv();
+                    float scalex = EditorManager.MainWindowController.ScaleX;
+                    float inv_scalex = EditorManager.MainWindowController.ScaleXInv;
 
                     if (EditorManager.itemSelection.getEventCount() > 0 && EditorManager.InputTextBox.Visible) {
                         VsqEvent original = EditorManager.itemSelection.getLastEvent().original;
@@ -779,7 +779,7 @@ namespace cadencii
                     if (edit_mode == EditMode.ADD_ENTRY ||
                             edit_mode == EditMode.ADD_FIXED_LENGTH_ENTRY ||
                             edit_mode == EditMode.DRAG_DROP ||
-                        EditorManager.MainWindowController.isStepSequencerEnabled()) {
+                        EditorManager.MainWindowController.IsStepSequencerEnabled) {
                         if (EditorManager.mAddingEvent != null) {
 #if DEBUG
                             sout.println("PictPianoRoll#paint; drawing mAddingEvent");
@@ -1270,7 +1270,7 @@ namespace cadencii
                 return;
             }
             int y0 = EditorManager.yCoordFromNote(note - 0.5f);
-            float px_track_height = (int)(EditorManager.MainWindowController.getScaleY() * 100);
+            float px_track_height = (int)(EditorManager.MainWindowController.ScaleY * 100);
             VsqFileEx vsq = MusicManager.getVsqFile();
             int clock_start = EditorManager.clockFromXCoord(x_start);
             int clock_end = EditorManager.clockFromXCoord(x_start + px_width);

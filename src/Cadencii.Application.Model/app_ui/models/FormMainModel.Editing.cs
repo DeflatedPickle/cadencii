@@ -100,7 +100,7 @@ namespace cadencii
 				if (EditorManager.IsWholeSelectedIntervalEnabled) {
 					VsqFileEx work = (VsqFileEx)vsq.clone();
 					work.executeCommand(run);
-					int stdx = form.controller.getStartToDrawX();
+					int stdx = form.controller.StartToDrawX;
 					int start_clock = EditorManager.mWholeSelectedInterval.getStart();
 					int end_clock = EditorManager.mWholeSelectedInterval.getEnd();
 					List<List<BPPair>> curves = new List<List<BPPair>>();
@@ -473,7 +473,7 @@ namespace cadencii
 				#if DEBUG
 				sout.println("FormMain#copyEvent; selected with CTRL key");
 				#endif
-				int stdx = form.controller.getStartToDrawX();
+				int stdx = form.controller.StartToDrawX;
 				int start_clock = EditorManager.mWholeSelectedInterval.getStart();
 				int end_clock = EditorManager.mWholeSelectedInterval.getEnd();
 				ClipboardEntry ce = new ClipboardEntry();
@@ -619,7 +619,7 @@ namespace cadencii
 
 			// Ctrlキーを押しながらドラッグしたか、そうでないかで分岐
 			if (EditorManager.IsWholeSelectedIntervalEnabled || EditorManager.itemSelection.getPointIDCount() > 0) {
-				int stdx = form.controller.getStartToDrawX();
+				int stdx = form.controller.StartToDrawX;
 				int start_clock, end_clock;
 				if (EditorManager.IsWholeSelectedIntervalEnabled) {
 					start_clock = EditorManager.mWholeSelectedInterval.getStart();

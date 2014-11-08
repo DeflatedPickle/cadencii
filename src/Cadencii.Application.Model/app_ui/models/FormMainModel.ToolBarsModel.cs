@@ -212,11 +212,11 @@ namespace cadencii
 				// EditorManager.mAddingEventがnullかどうかで処理が変わるのでnullにする
 				EditorManager.mAddingEvent = null;
 				// モードを切り替える
-				parent.form.controller.setStepSequencerEnabled(stripBtnStepSequencer.Checked);
+				parent.form.controller.IsStepSequencerEnabled = (stripBtnStepSequencer.Checked);
 
 				// MIDIの受信を開始
 				#if ENABLE_MIDI
-				if (parent.form.controller.isStepSequencerEnabled()) {
+				if (parent.form.controller.IsStepSequencerEnabled) {
 					parent.mMidiIn.start();
 				} else {
 					parent.mMidiIn.stop();
