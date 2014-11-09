@@ -2938,338 +2938,338 @@ namespace cadencii
 
         }
 
-        private System.ComponentModel.IContainer components;
+        System.ComponentModel.IContainer components;
 
-        public UiMenuStrip menuStripMain;
-        public UiToolStripMenuItem menuFile;
-        public UiToolStripMenuItem menuEdit;
-        public UiToolStripMenuItem menuVisual;
-        public UiToolStripMenuItem menuJob;
-        public UiToolStripMenuItem menuTrack;
-        public UiToolStripMenuItem menuLyric;
-        public UiToolStripMenuItem menuSetting;
-        public UiToolStripMenuItem menuHelp;
+        UiMenuStrip menuStripMain;
+        UiToolStripMenuItem menuFile;
+        UiToolStripMenuItem menuEdit;
+        UiToolStripMenuItem menuVisual;
+        UiToolStripMenuItem menuJob;
+        UiToolStripMenuItem menuTrack;
+        UiToolStripMenuItem menuLyric;
+        UiToolStripMenuItem menuSetting;
+        UiToolStripMenuItem menuHelp;
 		public UiToolStripMenuItem menuVisualControlTrack { get; set; }
 		public UiToolStripMenuItem menuVisualMixer { get; set; }
-        public UiToolStripSeparator toolStripMenuItem1;
+        UiToolStripSeparator toolStripMenuItem1;
 		public UiToolStripMenuItem menuVisualGridline { get; set; }
-        public UiToolStripSeparator toolStripMenuItem2;
+        UiToolStripSeparator toolStripMenuItem2;
 		public UiToolStripMenuItem menuVisualStartMarker { get; set; }
 		public UiToolStripMenuItem menuVisualEndMarker { get; set; }
-        public UiToolStripSeparator toolStripMenuItem3;
+        UiToolStripSeparator toolStripMenuItem3;
 		public UiToolStripMenuItem menuVisualLyrics { get; set; }
 		public UiToolStripMenuItem menuVisualNoteProperty { get; set; }
-        public UiToolStripMenuItem menuSettingPreference;
-        public UiToolStripSeparator toolStripMenuItem6;
-        public UiToolStripMenuItem menuSettingDefaultSingerStyle;
-        public UiToolStripMenuItem menuSettingPositionQuantize;
-        public UiToolStripMenuItem menuSettingPositionQuantize04;
-        public UiToolStripMenuItem menuSettingPositionQuantize08;
-        public UiToolStripMenuItem menuSettingPositionQuantize16;
-        public UiToolStripMenuItem menuSettingPositionQuantize32;
-        public UiToolStripMenuItem menuSettingPositionQuantize64;
-        public UiToolStripMenuItem menuSettingPositionQuantizeOff;
-        public UiToolStripSeparator toolStripMenuItem9;
-        public UiToolStripSeparator toolStripMenuItem8;
-        public UiToolStripMenuItem menuSettingPositionQuantizeTriplet;
-        public UiToolStripMenuItem menuFileNew;
-        public UiToolStripMenuItem menuFileOpen;
-        public UiToolStripMenuItem menuFileSave;
-        public UiToolStripMenuItem menuFileSaveNamed;
-        public UiToolStripSeparator toolStripMenuItem10;
-        public UiToolStripMenuItem menuFileImport;
-        public UiToolStripMenuItem menuFileExport;
-        public UiToolStripSeparator toolStripMenuItem11;
-        public UiToolStripSeparator toolStripMenuItem12;
-        public UiToolStripMenuItem menuFileQuit;
+        UiToolStripMenuItem menuSettingPreference;
+        UiToolStripSeparator toolStripMenuItem6;
+        UiToolStripMenuItem menuSettingDefaultSingerStyle;
+        UiToolStripMenuItem menuSettingPositionQuantize;
+        UiToolStripMenuItem menuSettingPositionQuantize04;
+        UiToolStripMenuItem menuSettingPositionQuantize08;
+        UiToolStripMenuItem menuSettingPositionQuantize16;
+        UiToolStripMenuItem menuSettingPositionQuantize32;
+        UiToolStripMenuItem menuSettingPositionQuantize64;
+        UiToolStripMenuItem menuSettingPositionQuantizeOff;
+        UiToolStripSeparator toolStripMenuItem9;
+        UiToolStripSeparator toolStripMenuItem8;
+        UiToolStripMenuItem menuSettingPositionQuantizeTriplet;
+        UiToolStripMenuItem menuFileNew;
+        UiToolStripMenuItem menuFileOpen;
+        UiToolStripMenuItem menuFileSave;
+        UiToolStripMenuItem menuFileSaveNamed;
+        UiToolStripSeparator toolStripMenuItem10;
+        UiToolStripMenuItem menuFileImport;
+        UiToolStripMenuItem menuFileExport;
+        UiToolStripSeparator toolStripMenuItem11;
+        UiToolStripSeparator toolStripMenuItem12;
+        UiToolStripMenuItem menuFileQuit;
 		public UiToolStripMenuItem menuEditUndo { get; set; }
 		public UiToolStripMenuItem menuEditRedo { get; set; }
-        public UiToolStripSeparator toolStripMenuItem5;
+        UiToolStripSeparator toolStripMenuItem5;
 		public UiPictureBox pictureBox2{ get; set; }
-        public UiPictureBox pictureBox3;
+        UiPictureBox pictureBox3;
 		public UiPictureBox picturePositionIndicator { get; set; }
 		public UiContextMenuStrip cMenuPiano { get; set; }
-        public UiToolStripMenuItem cMenuPianoPointer;
-        public UiToolStripMenuItem cMenuPianoPencil;
-        public UiToolStripMenuItem cMenuPianoEraser;
-        public UiToolStripSeparator toolStripMenuItem13;
-        public UiToolStripMenuItem cMenuPianoFixed;
-        public UiToolStripMenuItem cMenuPianoQuantize;
+        UiToolStripMenuItem cMenuPianoPointer;
+        UiToolStripMenuItem cMenuPianoPencil;
+        UiToolStripMenuItem cMenuPianoEraser;
+        UiToolStripSeparator toolStripMenuItem13;
+        UiToolStripMenuItem cMenuPianoFixed;
+        UiToolStripMenuItem cMenuPianoQuantize;
 		public UiToolStripMenuItem cMenuPianoGrid { get; set; }
-        public UiToolStripSeparator toolStripMenuItem14;
+        UiToolStripSeparator toolStripMenuItem14;
 		public UiToolStripMenuItem cMenuPianoUndo { get; set; }
 		public UiToolStripMenuItem cMenuPianoRedo { get; set; }
-        public UiToolStripSeparator toolStripMenuItem15;
-        public UiToolStripMenuItem cMenuPianoCut;
-        public UiToolStripMenuItem cMenuPianoFixed01;
-        public UiToolStripMenuItem cMenuPianoFixed02;
-        public UiToolStripMenuItem cMenuPianoFixed04;
-        public UiToolStripMenuItem cMenuPianoFixed08;
-        public UiToolStripMenuItem cMenuPianoFixed16;
-        public UiToolStripMenuItem cMenuPianoFixed32;
-        public UiToolStripMenuItem cMenuPianoFixed64;
-        public UiToolStripMenuItem cMenuPianoFixedOff;
-        public UiToolStripSeparator toolStripMenuItem18;
-        public UiToolStripMenuItem cMenuPianoFixedTriplet;
-        public UiToolStripMenuItem cMenuPianoFixedDotted;
-        public UiToolStripMenuItem cMenuPianoCopy;
-        public UiToolStripMenuItem cMenuPianoPaste;
-        public UiToolStripMenuItem cMenuPianoDelete;
-        public UiToolStripSeparator toolStripMenuItem16;
-        public UiToolStripMenuItem cMenuPianoSelectAll;
-        public UiToolStripMenuItem cMenuPianoSelectAllEvents;
-        public UiToolStripSeparator toolStripMenuItem17;
+        UiToolStripSeparator toolStripMenuItem15;
+        UiToolStripMenuItem cMenuPianoCut;
+        UiToolStripMenuItem cMenuPianoFixed01;
+        UiToolStripMenuItem cMenuPianoFixed02;
+        UiToolStripMenuItem cMenuPianoFixed04;
+        UiToolStripMenuItem cMenuPianoFixed08;
+        UiToolStripMenuItem cMenuPianoFixed16;
+        UiToolStripMenuItem cMenuPianoFixed32;
+        UiToolStripMenuItem cMenuPianoFixed64;
+        UiToolStripMenuItem cMenuPianoFixedOff;
+        UiToolStripSeparator toolStripMenuItem18;
+        UiToolStripMenuItem cMenuPianoFixedTriplet;
+        UiToolStripMenuItem cMenuPianoFixedDotted;
+        UiToolStripMenuItem cMenuPianoCopy;
+        UiToolStripMenuItem cMenuPianoPaste;
+        UiToolStripMenuItem cMenuPianoDelete;
+        UiToolStripSeparator toolStripMenuItem16;
+        UiToolStripMenuItem cMenuPianoSelectAll;
+        UiToolStripMenuItem cMenuPianoSelectAllEvents;
+        UiToolStripSeparator toolStripMenuItem17;
 		public UiToolStripMenuItem cMenuPianoImportLyric { get; set; }
-        public UiToolStripMenuItem cMenuPianoExpressionProperty;
-        public UiToolStripMenuItem cMenuPianoQuantize04;
-        public UiToolStripMenuItem cMenuPianoQuantize08;
-        public UiToolStripMenuItem cMenuPianoQuantize16;
-        public UiToolStripMenuItem cMenuPianoQuantize32;
-        public UiToolStripMenuItem cMenuPianoQuantize64;
-        public UiToolStripMenuItem cMenuPianoQuantizeOff;
-        public UiToolStripSeparator toolStripMenuItem26;
-        public UiToolStripMenuItem cMenuPianoQuantizeTriplet;
+        UiToolStripMenuItem cMenuPianoExpressionProperty;
+        UiToolStripMenuItem cMenuPianoQuantize04;
+        UiToolStripMenuItem cMenuPianoQuantize08;
+        UiToolStripMenuItem cMenuPianoQuantize16;
+        UiToolStripMenuItem cMenuPianoQuantize32;
+        UiToolStripMenuItem cMenuPianoQuantize64;
+        UiToolStripMenuItem cMenuPianoQuantizeOff;
+        UiToolStripSeparator toolStripMenuItem26;
+        UiToolStripMenuItem cMenuPianoQuantizeTriplet;
 		public UiToolStripMenuItem menuFileRecent { get; set; }
-        public UiToolTip toolTip;
-        public UiToolStripMenuItem menuEditCut;
-        public UiToolStripMenuItem menuEditCopy;
-        public UiToolStripMenuItem menuEditPaste;
-        public UiToolStripMenuItem menuEditDelete;
-        public UiToolStripSeparator toolStripMenuItem19;
+        UiToolTip toolTip;
+        UiToolStripMenuItem menuEditCut;
+        UiToolStripMenuItem menuEditCopy;
+        UiToolStripMenuItem menuEditPaste;
+        UiToolStripMenuItem menuEditDelete;
+        UiToolStripSeparator toolStripMenuItem19;
 		public UiToolStripMenuItem menuEditAutoNormalizeMode { get; set; }
-        public UiToolStripSeparator toolStripMenuItem20;
-        public UiToolStripMenuItem menuEditSelectAll;
-        public UiToolStripMenuItem menuEditSelectAllEvents;
+        UiToolStripSeparator toolStripMenuItem20;
+        UiToolStripMenuItem menuEditSelectAll;
+        UiToolStripMenuItem menuEditSelectAllEvents;
 		public UiToolStripMenuItem menuTrackOn { get; set; }
-        public UiToolStripSeparator toolStripMenuItem21;
-        public UiToolStripMenuItem menuTrackAdd;
-        public UiToolStripMenuItem menuTrackCopy;
-        public UiToolStripMenuItem menuTrackChangeName;
-        public UiToolStripMenuItem menuTrackDelete;
-        public UiToolStripSeparator toolStripMenuItem22;
-        public UiToolStripMenuItem menuTrackRenderCurrent;
-        public UiToolStripMenuItem menuTrackRenderAll;
-        public UiToolStripSeparator toolStripMenuItem23;
-        public UiToolStripMenuItem menuTrackOverlay;
+        UiToolStripSeparator toolStripMenuItem21;
+        UiToolStripMenuItem menuTrackAdd;
+        UiToolStripMenuItem menuTrackCopy;
+        UiToolStripMenuItem menuTrackChangeName;
+        UiToolStripMenuItem menuTrackDelete;
+        UiToolStripSeparator toolStripMenuItem22;
+        UiToolStripMenuItem menuTrackRenderCurrent;
+        UiToolStripMenuItem menuTrackRenderAll;
+        UiToolStripSeparator toolStripMenuItem23;
+        UiToolStripMenuItem menuTrackOverlay;
 		public UiContextMenuStrip cMenuTrackTab;
 		public UiToolStripMenuItem cMenuTrackTabTrackOn { get; set; }
-        public UiToolStripSeparator toolStripMenuItem24;
-        public UiToolStripMenuItem cMenuTrackTabAdd;
-        public UiToolStripMenuItem cMenuTrackTabCopy;
-        public UiToolStripMenuItem cMenuTrackTabChangeName;
-        public UiToolStripMenuItem cMenuTrackTabDelete;
-        public UiToolStripSeparator toolStripMenuItem25;
-        public UiToolStripMenuItem cMenuTrackTabRenderCurrent;
-        public UiToolStripMenuItem cMenuTrackTabRenderAll;
-        public UiToolStripSeparator toolStripMenuItem27;
-        public UiToolStripMenuItem cMenuTrackTabOverlay;
-        public UiContextMenuStrip cMenuTrackSelector;
+        UiToolStripSeparator toolStripMenuItem24;
+        UiToolStripMenuItem cMenuTrackTabAdd;
+        UiToolStripMenuItem cMenuTrackTabCopy;
+        UiToolStripMenuItem cMenuTrackTabChangeName;
+        UiToolStripMenuItem cMenuTrackTabDelete;
+        UiToolStripSeparator toolStripMenuItem25;
+        UiToolStripMenuItem cMenuTrackTabRenderCurrent;
+        UiToolStripMenuItem cMenuTrackTabRenderAll;
+        UiToolStripSeparator toolStripMenuItem27;
+        UiToolStripMenuItem cMenuTrackTabOverlay;
+        UiContextMenuStrip cMenuTrackSelector;
 		public UiToolStripMenuItem cMenuTrackSelectorPointer { get; set; }
 		public UiToolStripMenuItem cMenuTrackSelectorPencil { get;set; }
 		public UiToolStripMenuItem cMenuTrackSelectorLine { get; set; }
 		public UiToolStripMenuItem cMenuTrackSelectorEraser { get; set; }
-        public UiToolStripSeparator toolStripMenuItem28;
+        UiToolStripSeparator toolStripMenuItem28;
 		public UiToolStripMenuItem cMenuTrackSelectorUndo { get; set; }
 		public UiToolStripMenuItem cMenuTrackSelectorRedo { get; set; }
-        public UiToolStripSeparator toolStripMenuItem29;
-        public UiToolStripMenuItem cMenuTrackSelectorCut;
-        public UiToolStripMenuItem cMenuTrackSelectorCopy;
-        public UiToolStripMenuItem cMenuTrackSelectorPaste;
-        public UiToolStripMenuItem cMenuTrackSelectorDelete;
-        public UiToolStripSeparator toolStripMenuItem31;
-        public UiToolStripMenuItem cMenuTrackSelectorSelectAll;
-        public UiToolStripMenuItem menuJobNormalize;
-        public UiToolStripMenuItem menuJobInsertBar;
-        public UiToolStripMenuItem menuJobDeleteBar;
-        public UiToolStripMenuItem menuJobRandomize;
+        UiToolStripSeparator toolStripMenuItem29;
+        UiToolStripMenuItem cMenuTrackSelectorCut;
+        UiToolStripMenuItem cMenuTrackSelectorCopy;
+        UiToolStripMenuItem cMenuTrackSelectorPaste;
+        UiToolStripMenuItem cMenuTrackSelectorDelete;
+        UiToolStripSeparator toolStripMenuItem31;
+        UiToolStripMenuItem cMenuTrackSelectorSelectAll;
+        UiToolStripMenuItem menuJobNormalize;
+        UiToolStripMenuItem menuJobInsertBar;
+        UiToolStripMenuItem menuJobDeleteBar;
+        UiToolStripMenuItem menuJobRandomize;
 		public UiToolStripMenuItem menuJobConnect { get; set; }
 		public UiToolStripMenuItem menuJobLyric { get; set; }
-        public UiToolStripMenuItem menuJobRewire;
-        public UiToolStripMenuItem menuLyricExpressionProperty;
-        public UiToolStripMenuItem menuLyricPhonemeTransformation;
-        public UiToolStripMenuItem menuLyricDictionary;
-        public UiToolStripMenuItem menuHelpAbout;
-        public UiToolStripMenuItem menuHelpDebug;
+        UiToolStripMenuItem menuJobRewire;
+        UiToolStripMenuItem menuLyricExpressionProperty;
+        UiToolStripMenuItem menuLyricPhonemeTransformation;
+        UiToolStripMenuItem menuLyricDictionary;
+        UiToolStripMenuItem menuHelpAbout;
+        UiToolStripMenuItem menuHelpDebug;
 		public UiToolStripMenuItem menuFileExportWave { get;set; }
-        public UiToolStripMenuItem menuFileExportMidi;
+        UiToolStripMenuItem menuFileExportMidi;
 		public UiToolStripMenuItem menuScript { get; set;}
 		public UiToolStripMenuItem menuHidden { get; set; }
-        public UiToolStripMenuItem menuHiddenEditLyric;
-        public UiToolStripMenuItem menuHiddenEditFlipToolPointerPencil;
-        public UiToolStripMenuItem menuHiddenEditFlipToolPointerEraser;
-        public UiToolStripMenuItem menuHiddenVisualForwardParameter;
-        public UiToolStripMenuItem menuHiddenVisualBackwardParameter;
-        public UiToolStripMenuItem menuHiddenTrackNext;
-        public UiToolStripMenuItem menuHiddenTrackBack;
-        public UiToolStripMenuItem menuJobReloadVsti;
-        public UiToolStripMenuItem cMenuPianoCurve;
+        UiToolStripMenuItem menuHiddenEditLyric;
+        UiToolStripMenuItem menuHiddenEditFlipToolPointerPencil;
+        UiToolStripMenuItem menuHiddenEditFlipToolPointerEraser;
+        UiToolStripMenuItem menuHiddenVisualForwardParameter;
+        UiToolStripMenuItem menuHiddenVisualBackwardParameter;
+        UiToolStripMenuItem menuHiddenTrackNext;
+        UiToolStripMenuItem menuHiddenTrackBack;
+        UiToolStripMenuItem menuJobReloadVsti;
+        UiToolStripMenuItem cMenuPianoCurve;
 		public UiToolStripMenuItem cMenuTrackSelectorCurve { get; set; }
 		public UiTrackBar trackBar { get; set; }
-        public UiToolBarButton stripBtnPointer;
-        public UiToolBarButton stripBtnLine;
-        public UiToolBarButton stripBtnPencil;
-        public UiToolBarButton stripBtnEraser;
+        UiToolBarButton stripBtnPointer;
+        UiToolBarButton stripBtnLine;
+        UiToolBarButton stripBtnPencil;
+        UiToolBarButton stripBtnEraser;
 		public UiToolBarButton stripBtnGrid { get; set; }
-        public UiToolBarButton stripBtnMoveTop;
-        public UiToolBarButton stripBtnRewind;
-        public UiToolBarButton stripBtnForward;
-        public UiToolBarButton stripBtnMoveEnd;
+        UiToolBarButton stripBtnMoveTop;
+        UiToolBarButton stripBtnRewind;
+        UiToolBarButton stripBtnForward;
+        UiToolBarButton stripBtnMoveEnd;
 		public UiToolBarButton stripBtnPlay { get; set; }
-        public UiToolBarButton stripBtnScroll;
-        public UiToolBarButton stripBtnLoop;
-        public UiToolBarButton stripBtnCurve;
-        public UiToolStripSeparator toolStripSeparator2;
+        UiToolBarButton stripBtnScroll;
+        UiToolBarButton stripBtnLoop;
+        UiToolBarButton stripBtnCurve;
+        UiToolStripSeparator toolStripSeparator2;
 		public UiContextMenu stripDDBtnQuantize { get;set; }
-        public UiMenuItem stripDDBtnQuantize04;
-        public UiMenuItem stripDDBtnQuantize08;
-        public UiMenuItem stripDDBtnQuantize16;
-        public UiMenuItem stripDDBtnQuantize32;
-        public UiMenuItem stripDDBtnQuantize64;
-        public UiMenuItem stripDDBtnQuantizeOff;
-        public UiToolStripSeparator toolStripSeparator3;
-        public UiMenuItem stripDDBtnQuantizeTriplet;
-        public UiToolBarButton stripBtnStartMarker;
+        UiMenuItem stripDDBtnQuantize04;
+        UiMenuItem stripDDBtnQuantize08;
+        UiMenuItem stripDDBtnQuantize16;
+        UiMenuItem stripDDBtnQuantize32;
+        UiMenuItem stripDDBtnQuantize64;
+        UiMenuItem stripDDBtnQuantizeOff;
+        UiToolStripSeparator toolStripSeparator3;
+        UiMenuItem stripDDBtnQuantizeTriplet;
+        UiToolBarButton stripBtnStartMarker;
 		public UiToolBarButton stripBtnEndMarker { get; set; }
-        public UiHScrollBar hScroll { get; set; }
+        	public UiHScrollBar hScroll { get; set; }
 		public UiVScrollBar vScroll { get; set; }
-        public UiToolStripMenuItem menuLyricVibratoProperty;
-        public UiToolStripMenuItem cMenuPianoVibratoProperty;
+        UiToolStripMenuItem menuLyricVibratoProperty;
+        UiToolStripMenuItem cMenuPianoVibratoProperty;
 		public UiToolStripMenuItem menuScriptUpdate { get; set; }
-        public UiToolStripMenuItem menuSettingGameControler;
+        UiToolStripMenuItem menuSettingGameControler;
 		public UiToolStripStatusLabel stripLblGameCtrlMode { get; set; }
-        public UiToolStripSeparator toolStripSeparator10;
-        public UiToolStripMenuItem menuSettingGameControlerSetting;
-        public UiToolStripMenuItem menuSettingGameControlerLoad;
-        public UiMenuItem stripDDBtnQuantize128;
-        public UiToolStripMenuItem menuSettingPositionQuantize128;
-        public UiToolStripMenuItem cMenuPianoQuantize128;
-        public UiToolStripMenuItem cMenuPianoFixed128;
+        UiToolStripSeparator toolStripSeparator10;
+        UiToolStripMenuItem menuSettingGameControlerSetting;
+        UiToolStripMenuItem menuSettingGameControlerLoad;
+        UiMenuItem stripDDBtnQuantize128;
+        UiToolStripMenuItem menuSettingPositionQuantize128;
+        UiToolStripMenuItem cMenuPianoQuantize128;
+        UiToolStripMenuItem cMenuPianoFixed128;
 		public UiToolStripMenuItem menuVisualWaveform { get; set; }
-        private WaveformZoomUi panelWaveformZoom;
-        public UiToolStripMenuItem cMenuTrackSelectorDeleteBezier;
+        WaveformZoomUi panelWaveformZoom;
+        UiToolStripMenuItem cMenuTrackSelectorDeleteBezier;
 		public UiToolStripStatusLabel stripLblMidiIn { get;set ; }
-        public UiToolStripSeparator toolStripSeparator11;
-        //public UiToolStripMenuItem menuJobRealTime;
-        public UiToolStripMenuItem cMenuTrackTabRenderer;
-        public UiToolStripMenuItem cMenuTrackTabRendererVOCALOID1;
-        public UiToolStripMenuItem cMenuTrackTabRendererVOCALOID2;
-        public UiToolStripMenuItem cMenuTrackTabRendererUtau;
-        private UiToolStripMenuItem cMenuTrackTabRendererAquesTone2;
+        UiToolStripSeparator toolStripSeparator11;
+        //UiToolStripMenuItem menuJobRealTime;
+        UiToolStripMenuItem cMenuTrackTabRenderer;
+        UiToolStripMenuItem cMenuTrackTabRendererVOCALOID1;
+        UiToolStripMenuItem cMenuTrackTabRendererVOCALOID2;
+        UiToolStripMenuItem cMenuTrackTabRendererUtau;
+        UiToolStripMenuItem cMenuTrackTabRendererAquesTone2;
 		public UiToolStripMenuItem menuVisualPitchLine { get;set; }
-        public UiToolStripMenuItem menuFileImportMidi;
-        public UiToolStripStatusLabel toolStripStatusLabel1;
-        public UiToolStripStatusLabel toolStripStatusLabel2;
-        public UiToolBarButton stripBtnFileSave;
-        public UiToolBarButton stripBtnFileOpen;
-        public UiToolBarButton stripBtnCut;
-        public UiToolBarButton stripBtnCopy;
-        public UiToolBarButton stripBtnPaste;
-        public UiToolBarButton stripBtnFileNew;
-        public UiToolBarButton stripBtnUndo;
-        public UiToolBarButton stripBtnRedo;
+        UiToolStripMenuItem menuFileImportMidi;
+        UiToolStripStatusLabel toolStripStatusLabel1;
+        UiToolStripStatusLabel toolStripStatusLabel2;
+        UiToolBarButton stripBtnFileSave;
+        UiToolBarButton stripBtnFileOpen;
+        UiToolBarButton stripBtnCut;
+        UiToolBarButton stripBtnCopy;
+        UiToolBarButton stripBtnPaste;
+        UiToolBarButton stripBtnFileNew;
+        UiToolBarButton stripBtnUndo;
+        UiToolBarButton stripBtnRedo;
 		public UiToolStripMenuItem cMenuTrackSelectorPaletteTool { get; set; }
 		public UiToolStripMenuItem cMenuPianoPaletteTool { get; set; }
-        public UiToolStripSeparator toolStripSeparator14;
-        public UiToolStripSeparator toolStripSeparator15;
-        public UiToolStripMenuItem menuSettingPaletteTool;
-        public UiToolStripMenuItem menuTrackRenderer;
-        public UiToolStripMenuItem menuTrackRendererVOCALOID1;
-        public UiToolStripMenuItem menuTrackRendererVOCALOID2;
-        public UiToolStripMenuItem menuTrackRendererUtau;
-        public UiToolStripMenuItem menuFileImportVsq;
-        public UiToolStripMenuItem menuSettingShortcut;
+        UiToolStripSeparator toolStripSeparator14;
+        UiToolStripSeparator toolStripSeparator15;
+        UiToolStripMenuItem menuSettingPaletteTool;
+        UiToolStripMenuItem menuTrackRenderer;
+        UiToolStripMenuItem menuTrackRendererVOCALOID1;
+        UiToolStripMenuItem menuTrackRendererVOCALOID2;
+        UiToolStripMenuItem menuTrackRendererUtau;
+        UiToolStripMenuItem menuFileImportVsq;
+        UiToolStripMenuItem menuSettingShortcut;
 		public UiToolStripMenuItem menuVisualProperty { get; set; }
-        public UiToolStripMenuItem menuFileOpenVsq;
-        public UiToolStripMenuItem menuFileOpenUst;
-        public UiToolStripMenuItem menuSettingGameControlerRemove;
-        public UiToolStripMenuItem menuHiddenCopy;
-        public UiToolStripMenuItem menuHiddenPaste;
-        public UiToolStripMenuItem menuHiddenCut;
-        public UiToolStrip toolStripBottom;
+        UiToolStripMenuItem menuFileOpenVsq;
+        UiToolStripMenuItem menuFileOpenUst;
+        UiToolStripMenuItem menuSettingGameControlerRemove;
+        UiToolStripMenuItem menuHiddenCopy;
+        UiToolStripMenuItem menuHiddenPaste;
+        UiToolStripMenuItem menuHiddenCut;
+        UiToolStrip toolStripBottom;
 		public cadencii.apputil.BSplitContainer splitContainerProperty { get; set; }
 		public UiToolStripMenuItem menuVisualOverview { get; set; }
-        public PictOverview panelOverview;
+        PictOverview panelOverview;
 		public cadencii.apputil.BSplitContainer splitContainer1 { get; set; }
-        public UiToolStripSeparator toolStripMenuItem4;
-        public UiToolStripMenuItem menuTrackBgm;
-        public UiToolStripMenuItem menuTrackRendererVCNT;
-        //public UiToolStripMenuItem menuTrackManager;
-        public UiToolStripMenuItem cMenuTrackTabRendererStraight;
-        public PictPianoRoll pictPianoRoll { get; set; }
-        public TrackSelector trackSelector;
-        public UiPictureBox pictKeyLengthSplitter;
-        private UiToolStripMenuItem menuTrackRendererAquesTone;
-        private UiToolStripMenuItem cMenuTrackTabRendererAquesTone;
-        private UiToolStripMenuItem menuVisualPluginUi;
+        UiToolStripSeparator toolStripMenuItem4;
+        UiToolStripMenuItem menuTrackBgm;
+        UiToolStripMenuItem menuTrackRendererVCNT;
+        //UiToolStripMenuItem menuTrackManager;
+        UiToolStripMenuItem cMenuTrackTabRendererStraight;
+        	public PictPianoRoll pictPianoRoll { get; set; }
+        TrackSelector trackSelector;
+        UiPictureBox pictKeyLengthSplitter;
+        UiToolStripMenuItem menuTrackRendererAquesTone;
+        UiToolStripMenuItem cMenuTrackTabRendererAquesTone;
+        UiToolStripMenuItem menuVisualPluginUi;
 		public UiToolStripMenuItem menuVisualPluginUiAquesTone { get; set; }
 		public UiToolStripMenuItem menuVisualPluginUiVocaloid1 { get; set; }
 		public UiToolStripMenuItem menuVisualPluginUiVocaloid2 { get; set; }
 		public UiToolStripMenuItem menuTrackRendererAquesTone2 { get; set; }
 		public UiToolStripMenuItem menuVisualIconPalette { get; set; }
-        private UiToolStripMenuItem menuFileExportMusicXml;
-        public UiToolStripMenuItem menuHiddenSelectForward;
-        public UiToolStripMenuItem menuHiddenSelectBackward;
-        public UiToolStripMenuItem menuHiddenMoveUp;
-        public UiToolStripMenuItem menuHiddenMoveDown;
-        public UiToolStripMenuItem menuHiddenMoveLeft;
-        public UiToolStripMenuItem menuHiddenMoveRight;
-        public UiToolStripMenuItem menuHiddenLengthen;
-        public UiToolStripMenuItem menuHiddenShorten;
-        public UiToolStripMenuItem menuHiddenGoToStartMarker;
-        public UiToolStripMenuItem menuHiddenGoToEndMarker;
-        public UiToolStripMenuItem menuHiddenPlayFromStartMarker;
-        public UiToolStripMenuItem menuHiddenFlipCurveOnPianorollMode;
-        //public CircuitView pictCircuit;
-        private UiToolStripMenuItem menuFileExportUst;
-        private UiToolStripMenuItem menuHelpLog;
+        UiToolStripMenuItem menuFileExportMusicXml;
+        UiToolStripMenuItem menuHiddenSelectForward;
+        UiToolStripMenuItem menuHiddenSelectBackward;
+        UiToolStripMenuItem menuHiddenMoveUp;
+        UiToolStripMenuItem menuHiddenMoveDown;
+        UiToolStripMenuItem menuHiddenMoveLeft;
+        UiToolStripMenuItem menuHiddenMoveRight;
+        UiToolStripMenuItem menuHiddenLengthen;
+        UiToolStripMenuItem menuHiddenShorten;
+        UiToolStripMenuItem menuHiddenGoToStartMarker;
+        UiToolStripMenuItem menuHiddenGoToEndMarker;
+        UiToolStripMenuItem menuHiddenPlayFromStartMarker;
+        UiToolStripMenuItem menuHiddenFlipCurveOnPianorollMode;
+        //CircuitView pictCircuit;
+        UiToolStripMenuItem menuFileExportUst;
+        UiToolStripMenuItem menuHelpLog;
 		public UiToolStripMenuItem menuHelpLogSwitch { get; set; }
-        private UiToolStripMenuItem menuHelpLogOpen;
+        UiToolStripMenuItem menuHelpLogOpen;
 		public Rebar rebar { get; set; }
 		public RebarBand bandFile { get; set; }
 		public RebarBand bandPosition { get; set; }
 		public RebarBand bandMeasure { get; set; }
 		public RebarBand bandTool { get; set; }
 		public cadencii.apputil.BSplitContainer splitContainer2 { get;set; }
-        private UiPanel panel1;
+        UiPanel panel1;
 		public UiToolBar toolBarFile { get; set; }
-        private UiImageList imageListFile;
-        private UiToolBarButton toolBarButton1;
-        private UiToolBarButton toolBarButton2;
+        UiImageList imageListFile;
+        UiToolBarButton toolBarButton1;
+        UiToolBarButton toolBarButton2;
 		public UiToolBar toolBarTool { get; set; }
-        private UiToolBarButton toolBarButton3;
-        private UiImageList imageListTool;
+        UiToolBarButton toolBarButton3;
+        UiImageList imageListTool;
 		public UiToolBar toolBarPosition { get; set; }
-        private UiToolBarButton toolBarButton4;
-        private UiImageList imageListPosition;
+        UiToolBarButton toolBarButton4;
+        UiImageList imageListPosition;
 		public UiToolBar toolBarMeasure { get; set; }
 		public UiToolBarButton stripDDBtnQuantizeParent { get; set; }
-        private UiMenuItem menuItem2;
-        private UiToolBarButton toolBarButton5;
-        private UiImageList imageListMeasure;
-        private UiToolStripContainer toolStripContainer1;
-        private UiStatusStrip statusStrip;
+        UiMenuItem menuItem2;
+        UiToolBarButton toolBarButton5;
+        UiImageList imageListMeasure;
+        UiToolStripContainer toolStripContainer1;
+        UiStatusStrip statusStrip;
 		public UiToolStripStatusLabel statusLabel { get; set; }
-        private UiImageList imageListMenu;
-        public UiToolStripMenuItem menuFileExportVsq;
-        private UiToolStripMenuItem menuFileExportVxt;
+        UiImageList imageListMenu;
+        UiToolStripMenuItem menuFileExportVsq;
+        UiToolStripMenuItem menuFileExportVxt;
 		public UiToolStripMenuItem menuLyricCopyVibratoToPreset { get; set; }
-        public UiToolStripMenuItem menuSettingVibratoPreset;
-        public UiToolStripMenuItem menuSettingSequence;
-        public UiToolStripMenuItem menuHiddenPrintPoToCSV;
-        public UiToolStripMenuItem menuFileExportParaWave;
-        public UiToolStripMenuItem menuFileImportUst;
-        private UiToolStripButton stripBtnStepSequencer;
+        UiToolStripMenuItem menuSettingVibratoPreset;
+        UiToolStripMenuItem menuSettingSequence;
+        UiToolStripMenuItem menuHiddenPrintPoToCSV;
+        UiToolStripMenuItem menuFileExportParaWave;
+        UiToolStripMenuItem menuFileImportUst;
+        UiToolStripButton stripBtnStepSequencer;
 		public UiContextMenuStrip cMenuPositionIndicator { get; set; }
-        public UiToolStripMenuItem cMenuPositionIndicatorStartMarker;
-        public UiToolStripMenuItem cMenuPositionIndicatorEndMarker;
-        public UiToolStripMenuItem menuHelpManual;
+        UiToolStripMenuItem cMenuPositionIndicatorStartMarker;
+        UiToolStripMenuItem cMenuPositionIndicatorEndMarker;
+        UiToolStripMenuItem menuHelpManual;
 		public WaveView waveView { get; set; }
 		public UiToolStripMenuItem menuFileRecentClear { get; set; }
-        public UiToolStripMenuItem menuLyricApplyUtauParameters;
+        UiToolStripMenuItem menuLyricApplyUtauParameters;
 		public UiToolStripMenuItem menuVisualPluginUiAquesTone2 { get; set; }
-        private UiToolStripMenuItem menuFileExportVsqx;
-        private UiToolStripMenuItem menuTools;
-        private UiToolStripMenuItem menuToolsCreateVConnectSTANDDb;
-        private UiToolStripMenuItem menuHelpCheckForUpdates;
+        UiToolStripMenuItem menuFileExportVsqx;
+        UiToolStripMenuItem menuTools;
+        UiToolStripMenuItem menuToolsCreateVConnectSTANDDb;
+        UiToolStripMenuItem menuHelpCheckForUpdates;
     }
 }

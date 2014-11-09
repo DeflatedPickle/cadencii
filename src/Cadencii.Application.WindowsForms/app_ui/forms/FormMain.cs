@@ -137,13 +137,13 @@ namespace cadencii
         public MidiInDevice m_midi_in_mtc = null;
 #endif
 		public FormMidiImExport mDialogMidiImportAndExport { get; set; }
-        public SortedDictionary<EditTool, Cadencii.Gui.Cursor> mCursor = new SortedDictionary<EditTool, Cadencii.Gui.Cursor>();
+        SortedDictionary<EditTool, Cadencii.Gui.Cursor> mCursor = new SortedDictionary<EditTool, Cadencii.Gui.Cursor>();
 		public Preference mDialogPreference { get; set; }
 #if ENABLE_PROPERTY
-        public PropertyPanelContainer mPropertyPanelContainer;
+        PropertyPanelContainer mPropertyPanelContainer;
 #endif
 #if ENABLE_SCRIPT
-        public List<UiToolBarButton> mPaletteTools = new List<UiToolBarButton>();
+        List<UiToolBarButton> mPaletteTools = new List<UiToolBarButton>();
 #endif
 
 		public UiOpenFileDialog openXmlVsqDialog { get; set; }
@@ -156,7 +156,7 @@ namespace cadencii
         /// <summary>
         /// 特殊な取り扱いが必要なショートカットのキー列と、対応するメニューアイテムを保存しておくリスト。
         /// </summary>
-        private List<SpecialShortcutHolder> mSpecialShortcutHolders = new List<SpecialShortcutHolder>();
+        List<SpecialShortcutHolder> mSpecialShortcutHolders = new List<SpecialShortcutHolder>();
         /// <summary>
         /// 歌詞流し込み用のダイアログ
         /// </summary>
@@ -169,13 +169,13 @@ namespace cadencii
         /// <summary>
         /// パフォーマンスカウンタ
         /// </summary>
-        private double[] mFpsDrawTime = new double[128];
-        private int mFpsDrawTimeIndex = 0;
+        double[] mFpsDrawTime = new double[128];
+        int mFpsDrawTimeIndex = 0;
         /// <summary>
         /// パフォーマンスカウンタから算出される画面の更新速度
         /// </summary>
 		public float mFps { get; set; }
-        private double[] mFpsDrawTime2 = new double[128];
+        double[] mFpsDrawTime2 = new double[128];
 		public float mFps2 { get; set; }
 #endif
         #endregion
