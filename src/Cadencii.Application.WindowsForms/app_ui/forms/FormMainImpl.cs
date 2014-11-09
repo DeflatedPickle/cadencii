@@ -484,8 +484,8 @@ namespace cadencii
 			EditorManager.MixerWindow.FormClosing += (o, e) => model.OtherItems.mixerWindow_FormClosing ();
 
             Point p1 = EditorManager.editorConfig.FormIconPaletteLocation.toPoint();
-			if (!cadencii.core2.PortUtil.isPointInScreens(p1)) {
-				Rectangle workingArea = cadencii.core2.PortUtil.getWorkingArea(this);
+			if (!Screen.Instance.IsPointInScreens (p1)) {
+				Rectangle workingArea = Screen.Instance.GetWorkingArea(this);
                 p1 = new Point(workingArea.X, workingArea.Y);
             }
             EditorManager.iconPalette.Location = new Point(p1.X, p1.Y);
@@ -528,7 +528,7 @@ namespace cadencii
             Rectangle bounds = EditorManager.editorConfig.WindowRect;
             this.Bounds = new System.Drawing.Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
             // ウィンドウ位置・サイズの設定値が、使えるディスプレイのどれにも被っていない場合
-			Rectangle rc2 = cadencii.core2.PortUtil.getScreenBounds(this);
+			Rectangle rc2 = Screen.Instance.getScreenBounds(this);
             if (bounds.X < rc2.X ||
                  rc2.X + rc2.Width < bounds.X + bounds.Width ||
                  bounds.Y < rc2.Y ||
@@ -544,7 +544,7 @@ namespace cadencii
             updateScrollRangeVertical();
 
             // プロパティウィンドウの位置を復元
-			Rectangle rc1 = cadencii.core2.PortUtil.getScreenBounds(this);
+			Rectangle rc1 = Screen.Instance.getScreenBounds(this);
             Rectangle rcScreen = new Rectangle(rc1.X, rc1.Y, rc1.Width, rc1.Height);
             var p = this.Location;
             XmlRectangle xr = EditorManager.editorConfig.PropertyWindowStatus.Bounds;
@@ -2183,8 +2183,8 @@ namespace cadencii
                         UiToolStripItem subtsi_tsmi = tsmi.DropDownItems[0];
                         if (subtsi_tsmi is UiToolStripMenuItem) {
                             UiToolStripMenuItem dd_run = (UiToolStripMenuItem)subtsi_tsmi;
-							if (dict.ContainsKey(cadencii.core2.PortUtil.getComponentName(dd_run))) {
-                                applyMenuItemShortcut(dict, tsmi, cadencii.core2.PortUtil.getComponentName(tsi));
+							if (dict.ContainsKey(AwtHost.Current.GetComponentName(dd_run))) {
+								applyMenuItemShortcut(dict, tsmi, AwtHost.Current.GetComponentName(tsi));
                             }
                         }
                     }

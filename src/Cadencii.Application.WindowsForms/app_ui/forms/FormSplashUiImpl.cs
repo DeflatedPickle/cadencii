@@ -110,7 +110,7 @@ namespace cadencii
         public void handleMouseDown(Object sender, MouseEventArgs arg)
         {
             mouseDowned = true;
-			Point screen = cadencii.core2.PortUtil.getMousePosition();
+			Point screen = Cadencii.Gui.Screen.Instance.GetScreenMousePosition();
             var point = this.PointToClient(new System.Drawing.Point(screen.X, screen.Y));
             Point p = new Point(point.X, point.Y);
             mouseDownedLocation = p;
@@ -133,7 +133,7 @@ namespace cadencii
                 return;
             }
 
-			Point screen = cadencii.core2.PortUtil.getMousePosition();
+			Point screen = Cadencii.Gui.Screen.Instance.GetScreenMousePosition();
             var p = new System.Drawing.Point(screen.X - mouseDownedLocation.X, screen.Y - mouseDownedLocation.Y);
             this.Location = p;
         }

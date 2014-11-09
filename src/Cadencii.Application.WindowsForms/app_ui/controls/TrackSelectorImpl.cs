@@ -954,7 +954,7 @@ namespace cadencii
 			g.setColor(Cadencii.Gui.Colors.DarkGray);
             g.fillRect(0, size.Height - 2 * TS.OFFSET_TRACK_TAB, size.Width, 2 * TS.OFFSET_TRACK_TAB);
             int numeric_view = mMouseValue;
-			Point p = pointToClient(cadencii.core2.PortUtil.getMousePosition());
+			Point p = pointToClient(Cadencii.Gui.Screen.Instance.GetScreenMousePosition());
             Point mouse = new Point(p.X, p.Y);
             VsqFileEx vsq = MusicManager.getVsqFile();
             int selected = EditorManager.Selected;
@@ -1484,7 +1484,7 @@ namespace cadencii
             VsqEvent itr_prev = null;
             VsqEvent itr_item = null;
             VsqEvent itr_next = null;
-			Point mouse = pointToClient(cadencii.core2.PortUtil.getMousePosition());
+			Point mouse = pointToClient(Cadencii.Gui.Screen.Instance.GetScreenMousePosition());
 
             Color brs = fill_color;
             Point selected_point = new Point();
@@ -2056,7 +2056,7 @@ namespace cadencii
         /// <param name="type"></param>
         public void drawVEL(Graphics g, VsqTrack track, Color color, bool is_front, CurveType type)
         {
-			Point mouse = pointToClient(cadencii.core2.PortUtil.getMousePosition());
+			Point mouse = pointToClient(Cadencii.Gui.Screen.Instance.GetScreenMousePosition());
 
             int header = 8;
             int graph_height = getGraphHeight();
@@ -2453,7 +2453,7 @@ namespace cadencii
         /// <param name="is_front">最前面に表示するモードかどうか</param>
         public void drawVsqBPList(Graphics g, VsqBPList list, Color color, bool is_front)
         {
-			Point pmouse = pointToClient(cadencii.core2.PortUtil.getMousePosition());
+			Point pmouse = pointToClient(Cadencii.Gui.Screen.Instance.GetScreenMousePosition());
             int max = list.getMaximum();
             int min = list.getMinimum();
             int graph_height = getGraphHeight();
@@ -4971,7 +4971,7 @@ namespace cadencii
                 }
             } else if (mMouseDownMode == MouseDownMode.POINT_MOVE) {
                 if (mMouseMoved) {
-					Point pmouse = pointToClient(cadencii.core2.PortUtil.getMousePosition());
+					Point pmouse = pointToClient(Cadencii.Gui.Screen.Instance.GetScreenMousePosition());
                     Point mouse = new Point(pmouse.X, pmouse.Y);
                     int dx = mouse.X + EditorManager.MainWindow.Model.StartToDrawX - mMouseDownLocation.X;
                     int dy = mouse.Y - mMouseDownLocation.Y;
@@ -5024,7 +5024,7 @@ namespace cadencii
             }
             if (mMouseDowned && !mPencilMoved && EditorManager.SelectedTool == EditTool.PENCIL &&
                  !mSelectedCurve.equals(CurveType.VEL)) {
-				Point pmouse = pointToClient(cadencii.core2.PortUtil.getMousePosition());
+				Point pmouse = pointToClient(Cadencii.Gui.Screen.Instance.GetScreenMousePosition());
                 Point mouse = new Point(pmouse.X, pmouse.Y);
                 int clock = EditorManager.clockFromXCoord(mouse.X);
                 int value = valueFromYCoord(mouse.Y);
@@ -5547,7 +5547,7 @@ namespace cadencii
 
                 int tip_width = menu.ToolTipPxWidth;
                 var pts = cmenuSinger.PointToScreen(new Point(0, 0));
-				Rectangle rrc = cadencii.core2.PortUtil.getScreenBounds(this);
+				Rectangle rrc = Cadencii.Gui.Screen.Instance.getScreenBounds(this);
                 Rectangle rc = new Rectangle(rrc.X, rrc.Y, rrc.Width, rrc.Height);
                 mTooltipProgram = program;
                 mTooltipLanguage = language;

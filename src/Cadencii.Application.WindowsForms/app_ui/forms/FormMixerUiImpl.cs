@@ -210,7 +210,7 @@ namespace cadencii
             }
 
             // 同時に表示できるVolumeTrackerの個数を計算
-			int max = cadencii.core2.PortUtil.getWorkingArea(this).Width;
+			int max = Cadencii.Gui.Screen.Instance.GetWorkingArea(this).Width;
             int bordersize = 4;// TODO: ここもともとは SystemInformation.FrameBorderSize;だった
             int max_client_width = max - 2 * bordersize;
             int max_num = (int)Math.Floor(max_client_width / (VolumeTrackerController.WIDTH + 1.0f));

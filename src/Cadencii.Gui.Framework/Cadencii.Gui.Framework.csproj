@@ -62,7 +62,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="models\Screen.cs" />
-    <Compile Include="PortUtil2.cs" />
     <Compile Include="models\Colors.cs" />
     <Compile Include="models\Dialog.cs" />
     <Compile Include="serialization\XmlPoint.cs" />

@@ -690,8 +690,8 @@ namespace cadencii
 		/// <returns></returns>
 		public Point GetFormPreferedLocation(int dialogWidth, int dialogHeight)
 		{
-			Point mouse = cadencii.core2.PortUtil.getMousePosition();
-			Rectangle rcScreen = cadencii.core2.PortUtil.getWorkingArea(form);
+			Point mouse = Screen.Instance.GetScreenMousePosition();
+			Rectangle rcScreen = Screen.Instance.GetWorkingArea(form);
 			int top = mouse.Y - dialogHeight / 2;
 			if (top + dialogHeight > rcScreen.Y + rcScreen.Height) {
 				// ダイアログの下端が隠れる場合、位置をずらす

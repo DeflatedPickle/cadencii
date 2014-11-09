@@ -1807,7 +1807,7 @@ namespace cadencii
 
 							// マウス位置を中心に拡大されるようにしたいので．
 							// マウスのスクリーン座標
-							Point screen_p_at_mouse = cadencii.core2.PortUtil.getMousePosition();
+							Point screen_p_at_mouse = Screen.Instance.GetScreenMousePosition();
 							// ピアノロール上でのマウスのx座標
 							int x_at_mouse = parent.form.pictPianoRoll.PointToClient(new Cadencii.Gui.Point(screen_p_at_mouse.X, screen_p_at_mouse.Y)).X;
 							// マウス位置でのクロック -> こいつが保存される

@@ -27,19 +27,19 @@ namespace Cadencii.Gui
 		{
 			return a.getScreenBounds (nativeContrl);
 		}
-		public void setMousePosition (Point p)
+		public void SetScreenMousePosition (Point p)
 		{
 			a.setMousePosition (p);
 		}
-		public Point getMousePosition ()
+		public Point GetScreenMousePosition ()
 		{
 			return a.getMousePosition ();
 		}
-		public bool isPointInScreens (Point p)
+		public bool IsPointInScreens (Point p)
 		{
 			return a.isPointInScreens (p);
 		}
-		public Rectangle getWorkingArea (UiForm nativeWindow)
+		public Rectangle GetWorkingArea (UiForm nativeWindow)
 		{
 			return a.getWorkingArea (nativeWindow.Native);
 		}

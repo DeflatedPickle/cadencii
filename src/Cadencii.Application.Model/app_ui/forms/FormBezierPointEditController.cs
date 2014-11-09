@@ -186,21 +186,21 @@ namespace cadencii
 
             this.ui.setOpacity(1.0);
 
-            Point loc_on_screen = cadencii.core2.PortUtil.getMousePosition();
+            Point loc_on_screen = Screen.Instance.GetScreenMousePosition();
             Point loc_trackselector = m_parent.getLocationOnScreen();
             Point loc_on_trackselector =
                 new Point(loc_on_screen.X - loc_trackselector.X, loc_on_screen.Y - loc_trackselector.Y);
             var event_arg =
                 new NMouseEventArgs(NMouseButtons.Left, 0, loc_on_trackselector.X, loc_on_trackselector.Y, 0);
             m_parent.onMouseUp(this, event_arg);
-            cadencii.core2.PortUtil.setMousePosition(m_last_mouse_global_location);
+			Screen.Instance.SetScreenMousePosition(m_last_mouse_global_location);
             m_parent.doInvalidate();
         }
 
         public void buttonsMouseMove()
         {
             if (m_btn_datapoint_downed) {
-                Point loc_on_screen = cadencii.core2.PortUtil.getMousePosition();
+                Point loc_on_screen = Screen.Instance.GetScreenMousePosition();
 
                 if (loc_on_screen.X == mScreenMouseDownLocation.X &&
                     loc_on_screen.Y == mScreenMouseDownLocation.Y) {
@@ -264,7 +264,7 @@ namespace cadencii
         {
             this.ui.setOpacity(m_min_opacity);
 
-            m_last_mouse_global_location = cadencii.core2.PortUtil.getMousePosition();
+            m_last_mouse_global_location = Screen.Instance.GetScreenMousePosition();
             PointD pd = m_point.getPosition(side);
             Point loc_on_trackselector =
                 new Point(
@@ -275,7 +275,7 @@ namespace cadencii
                 new Point(
                     loc_topleft.X + loc_on_trackselector.X,
                     loc_topleft.Y + loc_on_trackselector.Y);
-            cadencii.core2.PortUtil.setMousePosition(mScreenMouseDownLocation);
+			Screen.Instance.SetScreenMousePosition(mScreenMouseDownLocation);
             var event_arg =
                 new NMouseEventArgs(
                     NMouseButtons.Left, 0,

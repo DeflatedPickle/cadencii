@@ -53,7 +53,7 @@ namespace cadencii
 			public void pictKeyLengthSplitter_MouseDown()
 			{
 				mKeyLengthSplitterMouseDown = true;
-				mKeyLengthSplitterInitialMouse = cadencii.core2.PortUtil.getMousePosition();
+				mKeyLengthSplitterInitialMouse = Screen.Instance.GetScreenMousePosition();
 				mKeyLengthInitValue = EditorManager.keyWidth;
 				mKeyLengthTrackSelectorRowsPerColumn = parent.form.TrackSelector.getRowsPerColumn();
 				mKeyLengthSplitterDistance = parent.form.splitContainer1.DividerLocation;
@@ -64,7 +64,7 @@ namespace cadencii
 				if (!mKeyLengthSplitterMouseDown) {
 					return;
 				}
-				int dx = cadencii.core2.PortUtil.getMousePosition().X - mKeyLengthSplitterInitialMouse.X;
+				int dx = Screen.Instance.GetScreenMousePosition().X - mKeyLengthSplitterInitialMouse.X;
 				int draft = mKeyLengthInitValue + dx;
 				if (draft < AppConfig.MIN_KEY_WIDTH) {
 					draft = AppConfig.MIN_KEY_WIDTH;
