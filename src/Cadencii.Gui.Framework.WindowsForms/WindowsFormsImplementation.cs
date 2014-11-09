@@ -105,6 +105,10 @@ namespace Cadencii.Gui
 		public override int VerticalScrollBarThumbHeight {
 			get { return System.Windows.Forms.SystemInformation.VerticalScrollBarThumbHeight; }
 		}
+
+		public override Font SystemMenuFont {
+			get { return System.Windows.Forms.SystemInformation.MenuFont.ToAwt (); }
+		}
 	}
 
 	class ImageAdapterWF : Image.ImageAdapter

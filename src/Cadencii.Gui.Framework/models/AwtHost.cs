@@ -54,6 +54,8 @@ namespace Cadencii.Gui
 		public abstract int HorizontalScrollBarThumbWidth { get; }
 		public abstract int VerticalScrollBarThumbHeight { get; }
 
+		public abstract Font SystemMenuFont { get; }
+
 		public T New<T> (params object[] args)
 		{
 			Type t;

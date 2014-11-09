@@ -1624,22 +1624,21 @@ namespace cadencii
 
 		#region 自動保存
 
+		public static string CurrentFile { get; set; }
+
 		public static void updateAutoBackupTimerStatus ()
 		{
-			// FIXME: enable this (using Rx probably)
-			/*
-            if (!mFile.Equals("") && editorConfig.AutoBackupIntervalMinutes > 0) {
-                double millisec = editorConfig.AutoBackupIntervalMinutes * 60.0 * 1000.0;
-                int draft = (int)millisec;
-                if (millisec > int.MaxValue) {
-                    draft = int.MaxValue;
-                }
-                mAutoBackupTimer.Interval = draft;
-                mAutoBackupTimer.Start();
-            } else {
-                mAutoBackupTimer.Stop();
-            }
-*/
+			if (CurrentFile != null && editorConfig.AutoBackupIntervalMinutes > 0) {
+				double millisec = editorConfig.AutoBackupIntervalMinutes * 60.0 * 1000.0;
+				int draft = (int)millisec;
+				if (millisec > int.MaxValue) {
+					draft = int.MaxValue;
+				}
+				mAutoBackupTimer.Interval = draft;
+				mAutoBackupTimer.Start ();
+			} else {
+				mAutoBackupTimer.Stop ();
+			}
 		}
 
 		public static void handleAutoBackupTimerTick (Object sender, EventArgs e)

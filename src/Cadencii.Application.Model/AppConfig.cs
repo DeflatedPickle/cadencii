@@ -360,17 +360,15 @@ namespace cadencii
         /// コンストラクタ．起動したOSによって動作を変える場合がある
         /// </summary>
         public AppConfig()
-        {
-	        // FIXME: enable this.
-		/*
-            // デフォルトのフォントを，システムのメニューフォントと同じにする
-            System.Drawing.Font f = System.Windows.Forms.SystemInformation.MenuFont;
-            if (f != null) {
-                this.BaseFontName = f.Name;
-                this.ScreenFontName = f.Name;
-            }
-			*/
-        }
+		{
+			// FIXME: enable this.
+			// デフォルトのフォントを，システムのメニューフォントと同じにする
+			var f = AwtHost.Current.SystemMenuFont;
+			if (f != null) {
+				this.BaseFontName = f.getName ();
+				this.ScreenFontName = f.getName ();
+			}
+		}
 		
         /// <summary>
         /// 音符イベントに，デフォルトの歌唱スタイルを適用します

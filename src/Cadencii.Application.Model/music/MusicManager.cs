@@ -10,7 +10,11 @@ namespace cadencii
 {
 	public class MusicManager
 	{
-		private static string mFile = "";
+		private static string mFile {
+			get { return EditorManager.CurrentFile; }
+			set { EditorManager.CurrentFile = value; }
+		}
+
 		#if !TREECOM
 		private static VsqFileEx mVsq;
 		#endif
