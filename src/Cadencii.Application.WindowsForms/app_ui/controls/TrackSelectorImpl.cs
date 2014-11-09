@@ -25,7 +25,8 @@ using Cadencii.Gui;
 using cadencii.java.util;
 using cadencii.vsq;
 using cadencii.windows.forms;
-using ApplicationGlobal = cadencii.core.ApplicationGlobal;
+using cadencii.core;
+
 using Keys = Cadencii.Gui.Keys;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
@@ -707,7 +708,7 @@ namespace cadencii
 
         private int getMaxColumns()
         {
-            int max_columns = EditorManager.keyWidth / EditorConfig.MIN_KEY_WIDTH;
+            int max_columns = EditorManager.keyWidth / AppConfig.MIN_KEY_WIDTH;
             if (max_columns < 1) {
                 max_columns = 1;
             }
@@ -920,7 +921,7 @@ namespace cadencii
             }
             int ix = index / row_per_column;
             int iy = index - ix * row_per_column;
-            int x = 7 + ix * EditorConfig.MIN_KEY_WIDTH;
+            int x = 7 + ix * AppConfig.MIN_KEY_WIDTH;
             int y = centre - row_per_column * TS.UNIT_HEIGHT_PER_CURVE / 2 + 2 + TS.UNIT_HEIGHT_PER_CURVE * iy;
             int min_size = getPreferredMinSize();
             if (mLastPreferredMinHeight != min_size) {
@@ -968,12 +969,12 @@ namespace cadencii
                 g.setColor(EditorManager.COLOR_BORDER);
                 g.drawLine(0, size.Height - 2 * TS.OFFSET_TRACK_TAB,
                             size.Width - 0, size.Height - 2 * TS.OFFSET_TRACK_TAB);
-				g.setFont(cadencii.core.EditorConfig.baseFont8);
+				g.setFont(EditorConfig.baseFont8);
                 g.setColor(brs_string);
                 g.drawString(
                     "SINGER",
                     9,
-                    size.Height - 2 * TS.OFFSET_TRACK_TAB + TS.OFFSET_TRACK_TAB / 2 - EditorConfig.baseFont8OffsetHeight);
+                    size.Height - 2 * TS.OFFSET_TRACK_TAB + TS.OFFSET_TRACK_TAB / 2 - AppConfig.baseFont8OffsetHeight);
                 g.clipRect(key_width, size.Height - 2 * TS.OFFSET_TRACK_TAB,
                             size.Width - key_width, TS.OFFSET_TRACK_TAB);
                 VsqTrack vsq_track = null;
@@ -998,7 +999,7 @@ namespace cadencii
                         g.setColor(brs_string);
                         g.drawString(
                             singer_at_left.ID.IconHandle.IDS,
-                            rc.X, rc.Y + TS.OFFSET_TRACK_TAB / 2 - EditorConfig.baseFont8OffsetHeight);
+                            rc.X, rc.Y + TS.OFFSET_TRACK_TAB / 2 - AppConfig.baseFont8OffsetHeight);
                     }
 
                     // 歌手設定を順に描画
@@ -1028,7 +1029,7 @@ namespace cadencii
                         g.setColor(brs_string);
                         g.drawString(
                             singer_handle.IDS,
-                            rc.X, rc.Y + TS.OFFSET_TRACK_TAB / 2 - EditorConfig.baseFont8OffsetHeight);
+                            rc.X, rc.Y + TS.OFFSET_TRACK_TAB / 2 - AppConfig.baseFont8OffsetHeight);
                     }
                 }
                 g.setClip(last);
@@ -1040,7 +1041,7 @@ namespace cadencii
                 g.drawLine(0, size.Height - TS.OFFSET_TRACK_TAB,
                             size.Width, size.Height - TS.OFFSET_TRACK_TAB);
                 g.setColor(brs_string);
-                g.drawString("TRACK", 9, size.Height - TS.OFFSET_TRACK_TAB + TS.OFFSET_TRACK_TAB / 2 - EditorConfig.baseFont8OffsetHeight);
+                g.drawString("TRACK", 9, size.Height - TS.OFFSET_TRACK_TAB + TS.OFFSET_TRACK_TAB / 2 - AppConfig.baseFont8OffsetHeight);
                 if (vsq != null) {
                     for (int i = 0; i < ApplicationGlobal.MAX_NUM_TRACK; i++) {
                         int x = key_width + i * selecter_width;
@@ -1376,9 +1377,9 @@ namespace cadencii
 
                 if (mCurveVisible) {
                     #region カーブの種類一覧
-					Font text_font = cadencii.core.EditorConfig.baseFont9;
-                    int text_font_height = EditorConfig.baseFont9Height;
-                    int text_font_offset = EditorConfig.baseFont9OffsetHeight;
+					Font text_font = EditorConfig.baseFont9;
+                    int text_font_height = AppConfig.baseFont9Height;
+                    int text_font_offset = AppConfig.baseFont9OffsetHeight;
                     Color font_color_normal = Cadencii.Gui.Colors.Black;
                     g.setColor(new Color(212, 212, 212));
                     g.fillRect(0, 0, key_width, size.Height - 2 * TS.OFFSET_TRACK_TAB);
@@ -1438,11 +1439,11 @@ namespace cadencii
                         valign = 1;
                         shift = 100;
                     }
-					g.setFont(cadencii.core.EditorConfig.baseFont10Bold);
+					g.setFont(EditorConfig.baseFont10Bold);
                     g.setColor(Cadencii.Gui.Colors.White);
 					g.drawStringEx(
                                            mMouseValue + "",
-						cadencii.core.EditorConfig.baseFont10Bold,
+						EditorConfig.baseFont10Bold,
                                            new Rectangle(mouse.X - 100, mouse.Y - shift, 100, 100),
                                            align,
                                            valign);
@@ -1452,7 +1453,7 @@ namespace cadencii
                         valign = -1;
 						g.drawStringEx(
                                                PortUtil.formatDecimal("#0.00", delta_note),
-							cadencii.core.EditorConfig.baseFont10Bold,
+							EditorConfig.baseFont10Bold,
                                                new Rectangle(mouse.X - 100, mouse.Y, 100, 100),
                                                align,
                                                valign);
@@ -1634,7 +1635,7 @@ namespace cadencii
         private Dimension getFlagBounds(string flag_title)
         {
             if (mTextWidthPerLetter <= 0.0f) {
-				Font font = cadencii.core.EditorConfig.baseFont10;
+				Font font = EditorConfig.baseFont10;
                 Dimension s = Utility.measureString(flag_title + " ", font);
                 mTextWidthPerLetter = s.Width / (float)flag_title.Length;
                 mTextHeight = s.Height;
@@ -1660,9 +1661,9 @@ namespace cadencii
 
             string s_pre = getFlagTitle(true, preutterance);
             string s_ovl = getFlagTitle(false, overlap);
-			Font font = cadencii.core.EditorConfig.baseFont10;
-            int font_height = EditorConfig.baseFont10Height;
-            int font_offset = EditorConfig.baseFont10OffsetHeight;
+			Font font = EditorConfig.baseFont10;
+            int font_height = AppConfig.baseFont10Height;
+            int font_offset = AppConfig.baseFont10OffsetHeight;
             Dimension pre_bounds = getFlagBounds(s_pre);
             Dimension ovl_bounds = getFlagBounds(s_ovl);
 
@@ -1996,13 +1997,13 @@ namespace cadencii
                             destRect.X + destRect.Width - 10, destRect.Y + destRect.Height - 1);
             }
             g.clipRect(destRect.X, destRect.Y, destRect.Width, destRect.Height);
-			string title = Utility.trimString(name, cadencii.core.EditorConfig.baseFont8, panel_width);
-			g.setFont(cadencii.core.EditorConfig.baseFont8);
+			string title = Utility.trimString(name, EditorConfig.baseFont8, panel_width);
+			g.setFont(EditorConfig.baseFont8);
             g.setColor(panel_title);
-            g.drawString(title, destRect.X + 2, destRect.Y + destRect.Height / 2 - EditorConfig.baseFont8OffsetHeight);
+            g.drawString(title, destRect.X + 2, destRect.Y + destRect.Height / 2 - AppConfig.baseFont8OffsetHeight);
             if (render_required) {
                 g.setColor(button_title);
-                g.drawString("R", destRect.X + destRect.Width - TS.PX_WIDTH_RENDER, destRect.Y + destRect.Height / 2 - EditorConfig.baseFont8OffsetHeight);
+                g.drawString("R", destRect.X + destRect.Width - TS.PX_WIDTH_RENDER, destRect.Y + destRect.Height / 2 - AppConfig.baseFont8OffsetHeight);
             }
             if (selected) {
                 g.setColor(border);
@@ -2075,7 +2076,7 @@ namespace cadencii
             float scale = EditorManager.MainWindow.Model.ScaleX;
             int selected = EditorManager.Selected;
 
-			g.setFont(cadencii.core.EditorConfig.baseFont10Bold);
+			g.setFont(EditorConfig.baseFont10Bold);
             bool cursor_should_be_hand = false;
             lock (EditorManager.mDrawObjects) {
                 List<DrawObject> target_list = EditorManager.mDrawObjects[selected - 1];

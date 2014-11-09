@@ -3,6 +3,7 @@ using Cadencii.Gui;
 using System.Media;
 using cadencii.vsq;
 using cadencii.java.util;
+using cadencii.core;
 
 namespace cadencii
 {
@@ -441,7 +442,7 @@ namespace cadencii
 								break;
 							}
 							string s = PortUtil.formatDecimal("#.00", 60e6 / (float)MusicManager.getVsqFile().TempoTable[i].Tempo);
-							Dimension size = Utility.measureString(s, new Font(EditorManager.editorConfig.ScreenFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8));
+							Dimension size = Utility.measureString(s, new Font(EditorManager.editorConfig.ScreenFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE8));
 							if (Utility.isInRect(new Point(e.X, e.Y), new Rectangle(x, 14, (int)size.Width, 14))) {
 								index = i;
 								break;
@@ -499,7 +500,7 @@ namespace cadencii
 						for (int i = 0; i < MusicManager.getVsqFile().TimesigTable.Count; i++) {
 							string s = MusicManager.getVsqFile().TimesigTable[i].Numerator + "/" + MusicManager.getVsqFile().TimesigTable[i].Denominator;
 							int x = EditorManager.xCoordFromClocks(MusicManager.getVsqFile().TimesigTable[i].Clock);
-							Dimension size = Utility.measureString(s, new Font(EditorManager.editorConfig.ScreenFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8));
+							Dimension size = Utility.measureString(s, new Font(EditorManager.editorConfig.ScreenFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE8));
 							if (Utility.isInRect(new Point(e.X, e.Y), new Rectangle(x, 28, (int)size.Width, 14))) {
 								index = i;
 								break;
@@ -781,7 +782,7 @@ namespace cadencii
 				DrawTo(g);
 				#if MONITOR_FPS
 				g.setColor(Cadencii.Gui.Colors.Red);
-				g.setFont(cadencii.core.EditorConfig.baseFont10Bold);
+				g.setFont(EditorConfig.baseFont10Bold);
 				g.drawString(PortUtil.formatDecimal("#.00", parent.form.mFps) + " / " + PortUtil.formatDecimal("#.00", parent.form.mFps2), 5, 5);
 				#endif
 			}
@@ -795,8 +796,8 @@ namespace cadencii
 			public void DrawTo(Cadencii.Gui.Graphics g1)
 			{
 				Graphics g = (Graphics)g1;
-				Font SMALL_FONT = cadencii.core.EditorConfig.baseFont8;
-				int small_font_offset = EditorConfig.baseFont8OffsetHeight;
+				Font SMALL_FONT = EditorConfig.baseFont8;
+				int small_font_offset = AppConfig.baseFont8OffsetHeight;
 				try {
 					int key_width = EditorManager.keyWidth;
 					int width = parent.form.picturePositionIndicator.Width;

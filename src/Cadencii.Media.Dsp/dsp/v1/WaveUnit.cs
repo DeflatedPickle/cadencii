@@ -14,6 +14,7 @@
 using System;
 using Cadencii.Gui;
 using PortUtil = Cadencii.Gui.Colors;
+using cadencii.core;
 
 namespace cadencii
 {
@@ -38,7 +39,7 @@ namespace cadencii
         /// <summary>
         /// エディターの設定値
         /// </summary>
-        protected cadencii.core.EditorConfig mConfig;
+        protected EditorConfig mConfig;
 	//protected cadencii.EditorConfig mConfigUI;
 
         /// <summary>
@@ -99,7 +100,7 @@ namespace cadencii
         /// スコアエディタ全体の設定値を設定する．
         /// </summary>
         /// <param name="config"></param>
-        public virtual void setGlobalConfig(cadencii.core.EditorConfig config)
+        public virtual void setGlobalConfig(EditorConfig config)
         {
             mConfig = config;
         }

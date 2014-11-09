@@ -24,11 +24,12 @@ using cadencii.javax.sound.midi;
 using cadencii.media;
 using cadencii.vsq;
 using cadencii.windows.forms;
-using ApplicationGlobal = cadencii.core.ApplicationGlobal;
+
 using cadencii.utau;
 using Keys = Cadencii.Gui.Keys;
 using Cadencii.Gui;
 using DialogResult = Cadencii.Gui.DialogResult;
+using cadencii.core;
 
 namespace cadencii
 {
@@ -143,8 +144,8 @@ namespace cadencii
             .ForEach((kind) => comboDefaultSynthesizer.Items.Add(kind));
             comboDefaultSynthesizer.SelectedIndex = 0;
 
-            numBuffer.Maximum = cadencii.core.EditorConfig.MAX_BUFFER_MILLISEC;
-			numBuffer.Minimum = cadencii.core.EditorConfig.MIN_BUFFER_MILLIXEC;
+            numBuffer.Maximum = EditorConfig.MAX_BUFFER_MILLISEC;
+			numBuffer.Minimum = EditorConfig.MIN_BUFFER_MILLIXEC;
 
             registerEventHandlers();
             setResources();
@@ -762,7 +763,7 @@ namespace cadencii
             chkChasePastEvent.Mnemonic(Keys.C);
             lblBuffer.Text = _("Buffer Size");
             lblBuffer.Mnemonic(Keys.B);
-			lblBufferSize.Text = "msec(" + cadencii.core.EditorConfig.MIN_BUFFER_MILLIXEC + "-" + cadencii.core.EditorConfig.MAX_BUFFER_MILLISEC + ")";
+			lblBufferSize.Text = "msec(" + EditorConfig.MIN_BUFFER_MILLIXEC + "-" + EditorConfig.MAX_BUFFER_MILLISEC + ")";
             #endregion
 
             #region tabAppearance

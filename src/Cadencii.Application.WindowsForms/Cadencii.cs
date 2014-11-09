@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using System.Linq;
 using cadencii;
 using cadencii.apputil;
+using cadencii.core;
 
 namespace cadencii
 {
@@ -96,7 +97,7 @@ namespace cadencii
                 Messaging.loadMessages();
                 // システムのデフォルトの言語を調べる．
                 // EditorConfigのコンストラクタは，この判定を自動でやるのでそれを利用
-				cadencii.core.EditorConfig ec = new cadencii.core.EditorConfig();
+				EditorConfig ec = new EditorConfig();
                 Messaging.setLanguage(ec.Language);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".ctor; ex=" + ex + "\n");

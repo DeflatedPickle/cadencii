@@ -61,12 +61,12 @@ namespace cadencii
 		/// <summary>
 		/// 鍵盤の表示幅(pixel)
 		/// </summary>
-		public static int keyWidth = EditorConfig.MIN_KEY_WIDTH * 2;
+		public static int keyWidth = AppConfig.MIN_KEY_WIDTH * 2;
 
 		/// <summary>
 		/// エディタの設定
 		/// </summary>
-		public static EditorConfig editorConfig = new EditorConfig ();
+		public static AppConfig editorConfig = new AppConfig ();
 
 		static EditorManager ()
 		{
@@ -694,40 +694,40 @@ namespace cadencii
 
 		#region serialize configuration
 
-		public static void serializeEditorConfig (EditorConfig instance, string file)
+		public static void serializeEditorConfig (AppConfig instance, string file)
 		{
 			FileStream fs = null;
 			try {
 				fs = new FileStream (file, FileMode.Create, FileAccess.Write);
-				EditorConfig.getSerializer ().serialize (fs, instance);
+				AppConfig.getSerializer ().serialize (fs, instance);
 			} catch (Exception ex) {
-				Logger.write (typeof(EditorConfig) + ".serialize; ex=" + ex + "\n");
+				Logger.write (typeof(AppConfig) + ".serialize; ex=" + ex + "\n");
 			} finally {
 				if (fs != null) {
 					try {
 						fs.Close ();
 					} catch (Exception ex2) {
-						Logger.write (typeof(EditorConfig) + ".serialize; ex=" + ex2 + "\n");
+						Logger.write (typeof(AppConfig) + ".serialize; ex=" + ex2 + "\n");
 					}
 				}
 			}
 		}
 
-		public static EditorConfig deserializeEditorConfig (string file)
+		public static AppConfig deserializeEditorConfig (string file)
 		{
-			EditorConfig ret = null;
+			AppConfig ret = null;
 			FileStream fs = null;
 			try {
 				fs = new FileStream (file, FileMode.Open, FileAccess.Read);
-				ret = (EditorConfig)EditorConfig.getSerializer ().deserialize (fs);
+				ret = (AppConfig)AppConfig.getSerializer ().deserialize (fs);
 			} catch (Exception ex) {
-				Logger.write (typeof(EditorConfig) + ".deserialize; ex=" + ex + "\n");
+				Logger.write (typeof(AppConfig) + ".deserialize; ex=" + ex + "\n");
 			} finally {
 				if (fs != null) {
 					try {
 						fs.Close ();
 					} catch (Exception ex2) {
-						Logger.write (typeof(EditorConfig) + ".deserialize; ex=" + ex2 + "\n");
+						Logger.write (typeof(AppConfig) + ".deserialize; ex=" + ex2 + "\n");
 					}
 				}
 			}
@@ -753,10 +753,10 @@ namespace cadencii
 			}
 
 			// バッファーサイズを正規化
-			if (ApplicationGlobal.appConfig.BufferSizeMilliSeconds < cadencii.core.EditorConfig.MIN_BUFFER_MILLIXEC) {
-				ApplicationGlobal.appConfig.BufferSizeMilliSeconds = cadencii.core.EditorConfig.MIN_BUFFER_MILLIXEC;
-			} else if (cadencii.core.EditorConfig.MAX_BUFFER_MILLISEC < ApplicationGlobal.appConfig.BufferSizeMilliSeconds) {
-				ApplicationGlobal.appConfig.BufferSizeMilliSeconds = cadencii.core.EditorConfig.MAX_BUFFER_MILLISEC;
+			if (ApplicationGlobal.appConfig.BufferSizeMilliSeconds < EditorConfig.MIN_BUFFER_MILLIXEC) {
+				ApplicationGlobal.appConfig.BufferSizeMilliSeconds = EditorConfig.MIN_BUFFER_MILLIXEC;
+			} else if (EditorConfig.MAX_BUFFER_MILLISEC < ApplicationGlobal.appConfig.BufferSizeMilliSeconds) {
+				ApplicationGlobal.appConfig.BufferSizeMilliSeconds = EditorConfig.MAX_BUFFER_MILLISEC;
 			}
 			return ret;
 		}
@@ -807,7 +807,7 @@ namespace cadencii
 			sout.println ("EditorManager#loadConfig; appdata=" + appdata);
 #endif
 			if (appdata.Equals ("")) {
-				EditorManager.editorConfig = new EditorConfig ();
+				EditorManager.editorConfig = new AppConfig ();
 				return;
 			}
 
@@ -816,7 +816,7 @@ namespace cadencii
 #if DEBUG
 			sout.println ("EditorManager#loadConfig; config_file=" + config_file);
 #endif
-			EditorConfig ret = null;
+			AppConfig ret = null;
 			if (System.IO.File.Exists (config_file)) {
 				// このバージョン用の設定ファイルがあればそれを利用
 				try {
@@ -915,7 +915,7 @@ namespace cadencii
 			// 設定ファイルの読み込みが悉く失敗した場合，
 			// デフォルトの設定とする．
 			if (ret == null) {
-				ret = new EditorConfig ();
+				ret = new AppConfig ();
 			}
 			EditorManager.editorConfig = ret;
 

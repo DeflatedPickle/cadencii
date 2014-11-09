@@ -34,15 +34,9 @@ using cadencii.windows.forms;
 using cadencii.xml;
 using cadencii.utau;
 using cadencii.ui;
-using ApplicationGlobal = cadencii.core.ApplicationGlobal;
-using Keys = Cadencii.Gui.Keys;
-using NMouseButtons = Cadencii.Gui.MouseButtons;
-using NMouseEventArgs = Cadencii.Gui.MouseEventArgs;
-using NMouseEventHandler = Cadencii.Gui.MouseEventHandler;
-using NKeyEventArgs = Cadencii.Gui.KeyEventArgs;
-using NKeyEventHandler = Cadencii.Gui.KeyEventHandler;
-using PaintEventArgs = cadencii.PaintEventArgs;
+
 using Consts = cadencii.FormMainModel.Consts;
+using cadencii.core;
 
 namespace cadencii
 {
@@ -220,11 +214,11 @@ namespace cadencii
 #if DEBUG
             CDebug.WriteLine("FormMain..ctor()");
 #endif
-			cadencii.core.EditorConfig.baseFont10Bold = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE10);
-			cadencii.core.EditorConfig.baseFont8 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8);
-			cadencii.core.EditorConfig.baseFont10 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE10);
-			cadencii.core.EditorConfig.baseFont9 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9);
-			cadencii.core.EditorConfig.baseFont50Bold = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE50);
+			EditorConfig.baseFont10Bold = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.BOLD, EditorConfig.FONT_SIZE10);
+			EditorConfig.baseFont8 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE8);
+			EditorConfig.baseFont10 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE10);
+			EditorConfig.baseFont9 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE9);
+			EditorConfig.baseFont50Bold = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.BOLD, EditorConfig.FONT_SIZE50);
 
             VsqFileEx tvsq =
                 new VsqFileEx(
@@ -403,7 +397,7 @@ namespace cadencii
             EditorManager.InputTextBox.Width = 80;
             EditorManager.InputTextBox.AcceptsReturn = true;
             EditorManager.InputTextBox.BackColor = Colors.White;
-			EditorManager.InputTextBox.Font = new Cadencii.Gui.Font (new System.Drawing.Font (EditorManager.editorConfig.BaseFontName, cadencii.core.EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular));
+			EditorManager.InputTextBox.Font = new Cadencii.Gui.Font (new System.Drawing.Font (EditorManager.editorConfig.BaseFontName, EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular));
             EditorManager.InputTextBox.Enabled = false;
             EditorManager.InputTextBox.KeyPress += mInputTextBox_KeyPress;
             EditorManager.InputTextBox.Parent = pictPianoRoll;
@@ -453,7 +447,7 @@ namespace cadencii
             EditorManager.MainWindowFocusRequired = new EventHandler(EditorManager_MainWindowFocusRequired);
             EditorManager.EditedStateChanged += new EditedStateChangedEventHandler(EditorManager_EditedStateChanged);
             EditorManager.WaveViewReloadRequired += new WaveViewRealoadRequiredEventHandler(EditorManager_WaveViewRealoadRequired);
-			EditorConfig.QuantizeModeChanged += (o, e) => applyQuantizeMode ();
+			AppConfig.QuantizeModeChanged += (o, e) => applyQuantizeMode ();
 
 #if ENABLE_PROPERTY
 			mPropertyPanelContainer.StateChangeRequired += (o, state) => model.OtherItems.mPropertyPanelContainer_StateChangeRequired (state);
@@ -619,13 +613,13 @@ namespace cadencii
 
 #if DEBUG
             System.Collections.Generic.List<ValuePair<string, string>> list = new System.Collections.Generic.List<ValuePair<string, string>>();
-            foreach (System.Reflection.FieldInfo fi in typeof(EditorConfig).GetFields()) {
+            foreach (System.Reflection.FieldInfo fi in typeof(AppConfig).GetFields()) {
                 if (fi.IsPublic && !fi.IsStatic) {
                     list.Add(new ValuePair<string, string>(fi.Name, fi.FieldType.ToString()));
                 }
             }
 
-            foreach (System.Reflection.PropertyInfo pi in typeof(EditorConfig).GetProperties()) {
+            foreach (System.Reflection.PropertyInfo pi in typeof(AppConfig).GetProperties()) {
                 if (!pi.CanRead || !pi.CanWrite) {
                     continue;
                 }
@@ -2167,7 +2161,7 @@ namespace cadencii
         /// </summary>
         /// <param name="e"></param>
         /// <param name="onPreviewKeyDown">PreviewKeyDownイベントから送信されてきた場合、true（送る側が設定する）</param>
-        public void processSpecialShortcutKey(NKeyEventArgs e, bool onPreviewKeyDown)
+        public void processSpecialShortcutKey(KeyEventArgs e, bool onPreviewKeyDown)
         {
 #if DEBUG
             sout.println("FormMain#processSpecialShortcutKey");
@@ -3280,7 +3274,7 @@ namespace cadencii
                 float scalex = model.ScaleX;
                 Font SMALL_FONT = null;
                 try {
-                    SMALL_FONT = new Font(EditorManager.editorConfig.ScreenFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8);
+                    SMALL_FONT = new Font(EditorManager.editorConfig.ScreenFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE8);
                     int track_height = (int)(100 * model.ScaleY);
                     VsqFileEx vsq = MusicManager.getVsqFile();
                     int track_count = vsq.Track.Count;
@@ -3393,7 +3387,7 @@ namespace cadencii
                             if (handle.isDynaffType()) {
                                 // 強弱記号
                                 type = DrawObjectType.Dynaff;
-                                width = EditorConfig.DYNAFF_ITEM_WIDTH;
+                                width = AppConfig.DYNAFF_ITEM_WIDTH;
                                 int startDyn = handle.getStartDyn();
                                 if (startDyn == 120) {
                                     str = "fff";
@@ -3563,8 +3557,8 @@ namespace cadencii
 #endif
             hideInputTextBox();
 
-            EditorManager.InputTextBox.KeyUp += new NKeyEventHandler(mInputTextBox_KeyUp);
-            EditorManager.InputTextBox.KeyDown += new NKeyEventHandler(mInputTextBox_KeyDown);
+            EditorManager.InputTextBox.KeyUp += new KeyEventHandler(mInputTextBox_KeyUp);
+            EditorManager.InputTextBox.KeyDown += new KeyEventHandler(mInputTextBox_KeyDown);
             EditorManager.InputTextBox.ImeModeChanged += mInputTextBox_ImeModeChanged;
             EditorManager.InputTextBox.ImeMode = mLastIsImeModeOn ? Cadencii.Gui.ImeMode.Hiragana : Cadencii.Gui.ImeMode.Off;
             if (phonetic_symbol_edit_mode) {
@@ -3578,7 +3572,7 @@ namespace cadencii
                 EditorManager.InputTextBox.Text = phrase;
                 EditorManager.InputTextBox.BackColor = Colors.White;
             }
-            EditorManager.InputTextBox.Font = new Cadencii.Gui.Font (new System.Drawing.Font(EditorManager.editorConfig.BaseFontName, cadencii.core.EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular));
+            EditorManager.InputTextBox.Font = new Cadencii.Gui.Font (new System.Drawing.Font(EditorManager.editorConfig.BaseFontName, EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular));
             var p = new Cadencii.Gui.Point(position.X + 4, position.Y + 2);
             EditorManager.InputTextBox.Location = p;
 
@@ -3591,8 +3585,8 @@ namespace cadencii
 
         public void hideInputTextBox()
         {
-            EditorManager.InputTextBox.KeyUp -= new NKeyEventHandler(mInputTextBox_KeyUp);
-            EditorManager.InputTextBox.KeyDown -= new NKeyEventHandler(mInputTextBox_KeyDown);
+            EditorManager.InputTextBox.KeyUp -= new KeyEventHandler(mInputTextBox_KeyUp);
+            EditorManager.InputTextBox.KeyDown -= new KeyEventHandler(mInputTextBox_KeyDown);
             EditorManager.InputTextBox.ImeModeChanged -= mInputTextBox_ImeModeChanged;
             mLastSymbolEditMode = EditorManager.InputTextBox.isPhoneticSymbolEditMode();
             EditorManager.InputTextBox.Visible = false;
@@ -3634,19 +3628,19 @@ namespace cadencii
                 AwtHost.Current.ApplyFontRecurse(mDialogPreference, font);
             }
 
-			cadencii.core.EditorConfig.baseFont10Bold = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE10);
-			cadencii.core.EditorConfig.baseFont8 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE8);
-			cadencii.core.EditorConfig.baseFont10 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE10);
-			cadencii.core.EditorConfig.baseFont9 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9);
-			cadencii.core.EditorConfig.baseFont50Bold = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE50);
-			EditorConfig.baseFont10OffsetHeight = Utility.getStringDrawOffset(cadencii.core.EditorConfig.baseFont10);
-			EditorConfig.baseFont8OffsetHeight = Utility.getStringDrawOffset(cadencii.core.EditorConfig.baseFont8);
-			EditorConfig.baseFont9OffsetHeight = Utility.getStringDrawOffset(cadencii.core.EditorConfig.baseFont9);
-			EditorConfig.baseFont50OffsetHeight = Utility.getStringDrawOffset(cadencii.core.EditorConfig.baseFont50Bold);
-			EditorConfig.baseFont8Height = Utility.measureString(Utility.PANGRAM, cadencii.core.EditorConfig.baseFont8).Height;
-			EditorConfig.baseFont9Height = Utility.measureString(Utility.PANGRAM, cadencii.core.EditorConfig.baseFont9).Height;
-			EditorConfig.baseFont10Height = Utility.measureString(Utility.PANGRAM, cadencii.core.EditorConfig.baseFont10).Height;
-			EditorConfig.baseFont50Height = Utility.measureString(Utility.PANGRAM, cadencii.core.EditorConfig.baseFont50Bold).Height;
+			EditorConfig.baseFont10Bold = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.BOLD, EditorConfig.FONT_SIZE10);
+			EditorConfig.baseFont8 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE8);
+			EditorConfig.baseFont10 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE10);
+			EditorConfig.baseFont9 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE9);
+			EditorConfig.baseFont50Bold = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.BOLD, EditorConfig.FONT_SIZE50);
+			AppConfig.baseFont10OffsetHeight = Utility.getStringDrawOffset(EditorConfig.baseFont10);
+			AppConfig.baseFont8OffsetHeight = Utility.getStringDrawOffset(EditorConfig.baseFont8);
+			AppConfig.baseFont9OffsetHeight = Utility.getStringDrawOffset(EditorConfig.baseFont9);
+			AppConfig.baseFont50OffsetHeight = Utility.getStringDrawOffset(EditorConfig.baseFont50Bold);
+			AppConfig.baseFont8Height = Utility.measureString(Utility.PANGRAM, EditorConfig.baseFont8).Height;
+			AppConfig.baseFont9Height = Utility.measureString(Utility.PANGRAM, EditorConfig.baseFont9).Height;
+			AppConfig.baseFont10Height = Utility.measureString(Utility.PANGRAM, EditorConfig.baseFont10).Height;
+			AppConfig.baseFont50Height = Utility.measureString(Utility.PANGRAM, EditorConfig.baseFont50Bold).Height;
         }
 
         /// <summary>
@@ -4003,7 +3997,7 @@ namespace cadencii
 			this.AsAwt ().Activated += (o,e) => model.FormMain.RunActivated ();
 			this.AsAwt ().FormClosed += (o,e) => model.FormMain.FormMain_FormClosed ();
 			this.AsAwt ().FormClosing += (o,e ) => model.FormMain.RunFormClosing (e);
-			this.AsAwt ().PreviewKeyDown += (o, e) => model.FormMain.RunPreviewKeyDown (new NKeyEventArgs ((Keys)e.KeyData));
+			this.AsAwt ().PreviewKeyDown += (o, e) => model.FormMain.RunPreviewKeyDown (new KeyEventArgs ((Keys)e.KeyData));
 			this.AsAwt ().SizeChanged += (o,e) => model.FormMain.RunSizeChanged ();
 			panelOverview.Enter += (o,e) => model.OtherItems.panelOverview_Enter();
         }
@@ -4025,7 +4019,7 @@ namespace cadencii
 
         //BOOKMARK: inputTextBox
         #region EditorManager.InputTextBox
-	public void mInputTextBox_KeyDown(Object sender, NKeyEventArgs e)
+	public void mInputTextBox_KeyDown(Object sender, KeyEventArgs e)
         {
 #if DEBUG
             sout.println("FormMain#mInputTextBox_KeyDown");
@@ -4159,7 +4153,7 @@ namespace cadencii
             }
         }
 
-        public void mInputTextBox_KeyUp(Object sender, NKeyEventArgs e)
+        public void mInputTextBox_KeyUp(Object sender, KeyEventArgs e)
         {
 #if DEBUG
             sout.println("FormMain#mInputTextBox_KeyUp");

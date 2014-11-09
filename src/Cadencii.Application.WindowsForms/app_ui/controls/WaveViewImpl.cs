@@ -17,7 +17,8 @@ using cadencii;
 using Cadencii.Gui;
 using cadencii.media;
 using cadencii.windows.forms;
- using ApplicationGlobal = cadencii.core.ApplicationGlobal;
+using cadencii.core;
+ 
 
 
 namespace cadencii
@@ -114,7 +115,7 @@ namespace cadencii
                 g.setColor(Cadencii.Gui.Colors.Black);
 				g.drawStringEx(
                     "(hidden for performance)",
-					cadencii.core.EditorConfig.baseFont8,
+					EditorConfig.baseFont8,
                     rc,
 					Graphics.STRING_ALIGN_CENTER,
 					Graphics.STRING_ALIGN_CENTER);

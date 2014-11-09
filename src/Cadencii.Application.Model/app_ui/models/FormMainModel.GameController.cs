@@ -115,7 +115,7 @@ namespace cadencii
 				bool event_processed = false;
 				double dt_ms = (now - mLastEventProcessed) * 1000.0;
 
-				EditorConfig m = EditorManager.editorConfig;
+				AppConfig m = EditorManager.editorConfig;
 				bool btn_x = (0 <= m.GameControlerCross && m.GameControlerCross < buttons.Length && buttons[m.GameControlerCross] > 0x00);
 				bool btn_o = (0 <= m.GameControlerCircle && m.GameControlerCircle < buttons.Length && buttons[m.GameControlerCircle] > 0x00);
 				bool btn_tr = (0 <= m.GameControlerTriangle && m.GameControlerTriangle < buttons.Length && buttons[m.GameControlerTriangle] > 0x00);

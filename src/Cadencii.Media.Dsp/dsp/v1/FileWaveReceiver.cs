@@ -15,6 +15,7 @@ using System;
 using cadencii;
 using cadencii.java.util;
 using cadencii.media;
+using cadencii.core;
 
 namespace cadencii
 {
@@ -45,7 +46,7 @@ namespace cadencii
             }
         }
 
-        public void setGlobalConfig(cadencii.core.EditorConfig config)
+        public void setGlobalConfig(EditorConfig config)
         {
             // do nothing
         }

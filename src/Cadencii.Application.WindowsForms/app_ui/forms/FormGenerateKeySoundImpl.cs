@@ -19,7 +19,8 @@ using cadencii.java.util;
 using cadencii.media;
 using cadencii.vsq;
 using cadencii.windows.forms;
-using ApplicationGlobal = cadencii.core.ApplicationGlobal;
+using cadencii.core;
+
 
 namespace cadencii
 {

@@ -28,7 +28,7 @@ using cadencii.media;
 using cadencii.vsq;
 using cadencii.xml;
 using cadencii.utau;
-using ApplicationGlobal = cadencii.core.ApplicationGlobal;
+
 using Keys = Cadencii.Gui.Keys;
 using DialogResult = Cadencii.Gui.DialogResult;
 

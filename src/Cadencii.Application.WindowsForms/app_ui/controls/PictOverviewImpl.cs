@@ -23,6 +23,7 @@ using MouseButtons = System.Windows.Forms.MouseButtons;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using Consts = cadencii.FormMainModel.Consts;
+using cadencii.core;
 
 namespace cadencii
 {
@@ -732,8 +733,8 @@ namespace cadencii
                             g.setStroke(getStrokeDefault());
                             if (!barcountstr.Equals("")) {
 								g.setColor(Cadencii.Gui.Colors.White);
-                                g.setFont(cadencii.core.EditorConfig.baseFont9);
-                                g.drawString(barcountstr, barcountx + 1 + xoffset, 1 + EditorConfig.baseFont9Height / 2 - EditorConfig.baseFont9OffsetHeight + 1);
+                                g.setFont(EditorConfig.baseFont9);
+                                g.drawString(barcountstr, barcountx + 1 + xoffset, 1 + AppConfig.baseFont9Height / 2 - AppConfig.baseFont9OffsetHeight + 1);
                             }
                             barcountstr = barcount + "";
                             barcountx = x;

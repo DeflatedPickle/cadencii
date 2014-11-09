@@ -29,7 +29,7 @@ namespace cadencii
     /// <summary>
     /// Cadenciiの環境設定
     /// </summary>
-    public class EditorConfig
+    public class AppConfig
     {
 	public const int MIN_KEY_WIDTH = 68;
         public const int MAX_KEY_WIDTH = MIN_KEY_WIDTH * 5;
@@ -171,19 +171,19 @@ namespace cadencii
         /// <summary>
         /// フォントオブジェクトbaseFont8の描画時の高さ
         /// </summary>
-		public static int baseFont8Height = cadencii.core.EditorConfig.FONT_SIZE8;
+		public static int baseFont8Height = EditorConfig.FONT_SIZE8;
         /// <summary>
         /// フォントオブジェクトbaseFont9の描画時の高さ
         /// </summary>
-		public static int baseFont9Height = cadencii.core.EditorConfig.FONT_SIZE9;
+		public static int baseFont9Height = EditorConfig.FONT_SIZE9;
         /// <summary>
         /// フォントオブジェクトbaseFont1-の描画時の高さ
         /// </summary>
-		public static int baseFont10Height = cadencii.core.EditorConfig.FONT_SIZE10;
+		public static int baseFont10Height = EditorConfig.FONT_SIZE10;
         /// <summary>
         /// フォントオブジェクトbaseFont50の描画時の高さ
         /// </summary>
-		public static int baseFont50Height = cadencii.core.EditorConfig.FONT_SIZE50;
+		public static int baseFont50Height = EditorConfig.FONT_SIZE50;
 
 	/// <summary>
         /// ユーザー定義のビブラート設定．
@@ -205,7 +205,7 @@ namespace cadencii
         public FormMidiImExportConfig MidiImExportConfigImport = new FormMidiImExportConfig();
         public FormMidiImExportConfig MidiImExportConfigImportVsq = new FormMidiImExportConfig();
 		#region static fields
-        private static cadencii.xml.XmlSerializer s_serializer = new cadencii.xml.XmlSerializer(typeof(EditorConfig));
+        private static cadencii.xml.XmlSerializer s_serializer = new cadencii.xml.XmlSerializer(typeof(AppConfig));
         #endregion
 		/// <summary>
         /// デフォルトの横軸方向のスケール
@@ -359,7 +359,7 @@ namespace cadencii
         /// <summary>
         /// コンストラクタ．起動したOSによって動作を変える場合がある
         /// </summary>
-        public EditorConfig()
+        public AppConfig()
         {
 	        // FIXME: enable this.
 		/*
@@ -440,7 +440,7 @@ namespace cadencii
                             index = (int)PortUtil.fromHexString(s);
                             index--;
                         } catch (Exception ex) {
-                            serr.println(typeof(EditorConfig) + ".createAutoVibrato; ex=" + ex + "; AutoVibratoTypeCustom=" + AutoVibratoTypeCustom + "; s=" + s);
+                            serr.println(typeof(AppConfig) + ".createAutoVibrato; ex=" + ex + "; AutoVibratoTypeCustom=" + AutoVibratoTypeCustom + "; s=" + s);
                             index = 0;
                         }
                     }
@@ -536,7 +536,7 @@ namespace cadencii
                 try {
                     invokeQuantizeModeChangedEvent();
                 } catch (Exception ex) {
-                    Logger.write(typeof(EditorConfig) + ".getPositionQuantize; ex=" + ex + "\n");
+                    Logger.write(typeof(AppConfig) + ".getPositionQuantize; ex=" + ex + "\n");
                     serr.println("EditorConfig#setPositionQuantize; ex=" + ex);
                 }
             }
@@ -568,7 +568,7 @@ namespace cadencii
                     invokeQuantizeModeChangedEvent();
                 } catch (Exception ex) {
                     serr.println("EditorConfig#setPositionQuantizeTriplet; ex=" + ex);
-                    Logger.write(typeof(EditorConfig) + ".setPositionQuantizeTriplet; ex=" + ex + "\n");
+                    Logger.write(typeof(AppConfig) + ".setPositionQuantizeTriplet; ex=" + ex + "\n");
                 }
             }
         }
@@ -599,7 +599,7 @@ namespace cadencii
                     invokeQuantizeModeChangedEvent();
                 } catch (Exception ex) {
                     serr.println("EditorConfig#setLengthQuantize; ex=" + ex);
-                    Logger.write(typeof(EditorConfig) + ".setLengthQuantize; ex=" + ex + "\n");
+                    Logger.write(typeof(AppConfig) + ".setLengthQuantize; ex=" + ex + "\n");
                 }
             }
         }
@@ -629,7 +629,7 @@ namespace cadencii
                     invokeQuantizeModeChangedEvent();
                 } catch (Exception ex) {
                     serr.println("EditorConfig#setLengthQuantizeTriplet; ex=" + ex);
-                    Logger.write(typeof(EditorConfig) + ".setLengthQuantizeTriplet; ex=" + ex + "\n");
+                    Logger.write(typeof(AppConfig) + ".setLengthQuantizeTriplet; ex=" + ex + "\n");
                 }
             }
         }
@@ -640,7 +640,7 @@ namespace cadencii
         private void invokeQuantizeModeChangedEvent()
         {
             if (QuantizeModeChanged != null) {
-                QuantizeModeChanged.Invoke(typeof(EditorConfig), new EventArgs());
+                QuantizeModeChanged.Invoke(typeof(AppConfig), new EventArgs());
             }
         }
 

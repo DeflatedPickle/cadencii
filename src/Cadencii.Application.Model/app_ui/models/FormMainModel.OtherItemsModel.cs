@@ -67,10 +67,10 @@ namespace cadencii
 				}
 				int dx = cadencii.core2.PortUtil.getMousePosition().X - mKeyLengthSplitterInitialMouse.X;
 				int draft = mKeyLengthInitValue + dx;
-				if (draft < EditorConfig.MIN_KEY_WIDTH) {
-					draft = EditorConfig.MIN_KEY_WIDTH;
-				} else if (EditorConfig.MAX_KEY_WIDTH < draft) {
-					draft = EditorConfig.MAX_KEY_WIDTH;
+				if (draft < AppConfig.MIN_KEY_WIDTH) {
+					draft = AppConfig.MIN_KEY_WIDTH;
+				} else if (AppConfig.MAX_KEY_WIDTH < draft) {
+					draft = AppConfig.MAX_KEY_WIDTH;
 				}
 				EditorManager.keyWidth = draft;
 				int current = parent.form.TrackSelector.getRowsPerColumn();
@@ -441,14 +441,14 @@ namespace cadencii
 				if (0 <= e.X && e.X < width) {
 					int scaley = EditorManager.editorConfig.PianoRollScaleY;
 					if (0 <= e.Y && e.Y < height4) {
-						if (scaley + 1 <= EditorConfig.MAX_PIANOROLL_SCALEY) {
+						if (scaley + 1 <= AppConfig.MAX_PIANOROLL_SCALEY) {
 							parent.zoomY(1);
 							mPianoRollScaleYMouseStatus = 1;
 						} else {
 							mPianoRollScaleYMouseStatus = 0;
 						}
 					} else if (height4 * 2 <= e.Y && e.Y < height4 * 3) {
-						if (scaley - 1 >= EditorConfig.MIN_PIANOROLL_SCALEY) {
+						if (scaley - 1 >= AppConfig.MIN_PIANOROLL_SCALEY) {
 							parent.zoomY(-1);
 							mPianoRollScaleYMouseStatus = -1;
 						} else {

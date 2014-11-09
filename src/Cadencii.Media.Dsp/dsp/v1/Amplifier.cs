@@ -16,6 +16,7 @@ using System;
 using cadencii.java.util;
 using Cadencii.Gui;
 using PortUtil = Cadencii.Gui.Colors;
+using cadencii.core;
 
 namespace cadencii
 {
@@ -58,7 +59,7 @@ namespace cadencii
 			paintBackground(graphics, mStroke, x, y, width, height, Cadencii.Gui.Colors.Black, Cadencii.Gui.Colors.Pink);
 
             // デバイス名を書く
-			graphics.drawStringEx("Amplifier", cadencii.core.EditorConfig.baseFont10,
+			graphics.drawStringEx("Amplifier", EditorConfig.baseFont10,
                 new Rectangle(x, y, width, height),
 				Graphics.STRING_ALIGN_CENTER, Graphics.STRING_ALIGN_CENTER);
 

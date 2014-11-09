@@ -12,6 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using Cadencii.Gui;
+using cadencii.core;
 
 namespace cadencii
 {
@@ -102,11 +103,11 @@ namespace cadencii
                 g.fillRect(SPACE + 3, SPACE + 3, 11, 11);
             }
             g.setColor(Cadencii.Gui.Colors.Black);
-            g.setFont(cadencii.core.EditorConfig.baseFont8);
+            g.setFont(EditorConfig.baseFont8);
             g.drawString(
                 "Auto Maximize",
                 SPACE + 16 + SPACE,
-                SPACE + EditorConfig.baseFont8Height / 2 - EditorConfig.baseFont8OffsetHeight + 1);
+                SPACE + AppConfig.baseFont8Height / 2 - AppConfig.baseFont8OffsetHeight + 1);
 
             // ズーム用ボタンを描く
             int zoom_button_y = SPACE + 16 + SPACE;
@@ -121,7 +122,7 @@ namespace cadencii
 			g.setColor(mWaveViewAutoMaximize ? Cadencii.Gui.Colors.Gray : Cadencii.Gui.Colors.Black);
             rc.Y = rc.Y + 1;
 			g.drawStringEx(
-				(mWaveViewButtonZoomMouseDowned ? "↑Move Mouse↓" : "Zoom"), cadencii.core.EditorConfig.baseFont9,
+				(mWaveViewButtonZoomMouseDowned ? "↑Move Mouse↓" : "Zoom"), EditorConfig.baseFont9,
 				rc, Graphics.STRING_ALIGN_CENTER, Graphics.STRING_ALIGN_CENTER);
         }
 

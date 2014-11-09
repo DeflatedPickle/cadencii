@@ -60,7 +60,7 @@ namespace cadencii
         /// 合成器が使用可能かどうかを元に、メニューのアイコンを更新する
         /// </summary>
         /// <param name="config">エディタの設定情報</param>
-        public void updateRendererAvailability(EditorConfig config)
+        public void updateRendererAvailability(AppConfig config)
         {
 			Cadencii.Gui.Image icon = null;
             if (!VSTiDllManager.isRendererAvailable(kind_)) {

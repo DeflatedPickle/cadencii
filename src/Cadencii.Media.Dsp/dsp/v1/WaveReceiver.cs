@@ -12,6 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
+using cadencii.core;
 
 namespace cadencii
 {
@@ -40,7 +41,7 @@ namespace cadencii
         /// </summary>
         void end();
 
-        void setGlobalConfig(cadencii.core.EditorConfig config);
+        void setGlobalConfig(EditorConfig config);
     }
 
 }

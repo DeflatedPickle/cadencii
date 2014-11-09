@@ -232,10 +232,10 @@ namespace cadencii
 		/// <returns></returns>
 		public float ScaleY {
 			get {
-				if (EditorManager.editorConfig.PianoRollScaleY < EditorConfig.MIN_PIANOROLL_SCALEY) {
-					EditorManager.editorConfig.PianoRollScaleY = EditorConfig.MIN_PIANOROLL_SCALEY;
-				} else if (EditorConfig.MAX_PIANOROLL_SCALEY < EditorManager.editorConfig.PianoRollScaleY) {
-					EditorManager.editorConfig.PianoRollScaleY = EditorConfig.MAX_PIANOROLL_SCALEY;
+				if (EditorManager.editorConfig.PianoRollScaleY < AppConfig.MIN_PIANOROLL_SCALEY) {
+					EditorManager.editorConfig.PianoRollScaleY = AppConfig.MIN_PIANOROLL_SCALEY;
+				} else if (AppConfig.MAX_PIANOROLL_SCALEY < EditorManager.editorConfig.PianoRollScaleY) {
+					EditorManager.editorConfig.PianoRollScaleY = AppConfig.MAX_PIANOROLL_SCALEY;
 				}
 				if (EditorManager.editorConfig.PianoRollScaleY == 0) {
 					return EditorManager.editorConfig.PxTrackHeight / 100.0f;
@@ -1607,11 +1607,11 @@ namespace cadencii
 		{
 			int scaley = EditorManager.editorConfig.PianoRollScaleY;
 			int draft = scaley + delta;
-			if (draft < EditorConfig.MIN_PIANOROLL_SCALEY) {
-				draft = EditorConfig.MIN_PIANOROLL_SCALEY;
+			if (draft < AppConfig.MIN_PIANOROLL_SCALEY) {
+				draft = AppConfig.MIN_PIANOROLL_SCALEY;
 			}
-			if (EditorConfig.MAX_PIANOROLL_SCALEY < draft) {
-				draft = EditorConfig.MAX_PIANOROLL_SCALEY;
+			if (AppConfig.MAX_PIANOROLL_SCALEY < draft) {
+				draft = AppConfig.MAX_PIANOROLL_SCALEY;
 			}
 			if (scaley != draft) {
 				EditorManager.editorConfig.PianoRollScaleY = draft;

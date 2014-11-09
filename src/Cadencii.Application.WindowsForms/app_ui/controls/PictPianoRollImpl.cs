@@ -22,6 +22,7 @@ using cadencii.vsq;
 using cadencii.windows.forms;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
+using cadencii.core;
 
 namespace cadencii
 {
@@ -66,7 +67,7 @@ namespace cadencii
         private readonly Color COLOR_NOTE_FILL = new Color(181, 220, 86);
 		private readonly Color COLOR_DYNAFF_FILL = Cadencii.Gui.Colors.Pink;
         private readonly Color COLOR_DYNAFF_FILL_HIGHLIGHT = new Color(66, 193, 169);
-		private readonly Font FONT_9PT = new Font("SansSerif", Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9);
+		private readonly Font FONT_9PT = new Font("SansSerif", Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE9);
         /// <summary>
         /// 表情線の先頭部分のピクセル幅
         /// </summary>
@@ -207,7 +208,7 @@ namespace cadencii
                 if (EditorManager.editorConfig.SkipDrawWhilePlaying && EditorManager.isPlaying()) {
 					g1.drawStringEx(
                         "(hidden for performance)",
-						cadencii.core.EditorConfig.baseFont10,
+						EditorConfig.baseFont10,
                         new Rectangle(0, 0, width, height),
 						Graphics.STRING_ALIGN_CENTER,
 						Graphics.STRING_ALIGN_CENTER);
@@ -404,8 +405,8 @@ namespace cadencii
                         }
                         if (odd2 == 0 || hilighted) {
                             g.setColor(COLOR_R072G077B098);
-							g.setFont(cadencii.core.EditorConfig.baseFont8);
-                            g.drawString(VsqNote.getNoteString(i), 42, y + half_track_height - EditorConfig.baseFont8OffsetHeight + 1);
+							g.setFont(EditorConfig.baseFont8);
+                            g.drawString(VsqNote.getNoteString(i), 42, y + half_track_height - AppConfig.baseFont8OffsetHeight + 1);
                         }
                         if (!VsqNote.isNoteWhiteKey(i)) {
                             g.setColor(COLOR_R125G123B124);
@@ -449,7 +450,7 @@ namespace cadencii
 
                     // 現在選択されている歌声合成システムの名前をオーバーレイ表示する
                     if (EditorManager.drawOverSynthNameOnPianoroll) {
-						g.setFont(cadencii.core.EditorConfig.baseFont50Bold);
+						g.setFont(EditorConfig.baseFont50Bold);
                         g.setColor(new Color(0, 0, 0, 32));
                         string str = "VOCALOID2";
                         //FIXME: この分岐無くしたい
@@ -464,7 +465,7 @@ namespace cadencii
                         } else if (renderer == RendererKind.UTAU) {
                             str = "UTAU";
                         }
-                        g.drawString(str, key_width + 10, 10 + EditorConfig.baseFont50Height / 2 - EditorConfig.baseFont50OffsetHeight + 1);
+                        g.drawString(str, key_width + 10, 10 + AppConfig.baseFont50Height / 2 - AppConfig.baseFont50OffsetHeight + 1);
                     }
 
                     #region トラックのエントリを描画
@@ -565,7 +566,7 @@ namespace cadencii
                                 }
                                 g.setColor(id_fill);
                                 g.fillRect(x, y + 1, lyric_width, track_height - 1);
-								Font lyric_font = dobj.mIsSymbolProtected ? cadencii.core.EditorConfig.baseFont10Bold : cadencii.core.EditorConfig.baseFont10;
+								Font lyric_font = dobj.mIsSymbolProtected ? EditorConfig.baseFont10Bold : EditorConfig.baseFont10;
                                 if (dobj.mIsOverlapped) {
                                     g.setColor(COLOR_R125G123B124);
                                     g.drawRect(x, y + 1, lyric_width, track_height - 1);
@@ -577,7 +578,7 @@ namespace cadencii
                                         } else {
                                             g.setColor(COLOR_R147G147B147);
                                         }
-                                        g.drawString(dobj.mText, x + 1, y + half_track_height - EditorConfig.baseFont10OffsetHeight + 1);
+                                        g.drawString(dobj.mText, x + 1, y + half_track_height - AppConfig.baseFont10OffsetHeight + 1);
                                     }
                                 } else {
                                     g.setColor(COLOR_R125G123B124);
@@ -712,7 +713,7 @@ namespace cadencii
                                         } else {
                                             g.setColor(Cadencii.Gui.Colors.Black);
                                         }
-                                        g.drawString(dobj.mText, x + 1, y + half_track_height - EditorConfig.baseFont10OffsetHeight + 1);
+                                        g.drawString(dobj.mText, x + 1, y + half_track_height - AppConfig.baseFont10OffsetHeight + 1);
                                     }
                                 }
                                 #endregion
@@ -727,7 +728,7 @@ namespace cadencii
                                 g.setColor(COLOR_R125G123B124);
                                 g.drawRect(x, y, 40, track_height);
                                 g.setColor(Cadencii.Gui.Colors.Black);
-								g.setFont(cadencii.core.EditorConfig.baseFont10);
+								g.setFont(EditorConfig.baseFont10);
                                 if (dobj.mIsOverlapped) {
                                     g.setColor(COLOR_R147G147B147);
                                 }
@@ -735,7 +736,7 @@ namespace cadencii
 #if DEBUG
                                 str += "(" + dobj.mInternalID + ")";
 #endif
-                                g.drawString(str, x + 1, y + half_track_height - EditorConfig.baseFont10OffsetHeight + 1);
+                                g.drawString(str, x + 1, y + half_track_height - AppConfig.baseFont10OffsetHeight + 1);
                                 #endregion
                             } else {
                                 #region Crescend and Descrescend
@@ -753,12 +754,12 @@ namespace cadencii
                                 } else {
                                     g.setColor(Cadencii.Gui.Colors.Black);
                                 }
-								g.setFont(cadencii.core.EditorConfig.baseFont10);
+								g.setFont(EditorConfig.baseFont10);
                                 string str = dobj.mText;
 #if DEBUG
                                 str += "(" + dobj.mInternalID + ")";
 #endif
-                                g.drawString(str, x + 1, y + track_height + half_track_height - EditorConfig.baseFont10OffsetHeight + 1);
+                                g.drawString(str, x + 1, y + track_height + half_track_height - AppConfig.baseFont10OffsetHeight + 1);
 								System.Drawing.Drawing2D.SmoothingMode old = ((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode;
 								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
                                 if (dobj.mType == DrawObjectType.Crescend) {
@@ -789,7 +790,7 @@ namespace cadencii
                             int length = (int)(EditorManager.mAddingEvent.ID.getLength() * scalex);
                             if (EditorManager.mAddingEvent.ID.type == VsqIDType.Aicon) {
                                 if (EditorManager.mAddingEvent.ID.IconDynamicsHandle.isDynaffType()) {
-                                    length = EditorConfig.DYNAFF_ITEM_WIDTH;
+                                    length = AppConfig.DYNAFF_ITEM_WIDTH;
                                 }
                             }
                             if (EditorManager.mAddingEvent.ID.getLength() <= 0) {
@@ -821,7 +822,7 @@ namespace cadencii
                                 }
                                 int length = 0;
                                 if (ev.editing.ID.IconDynamicsHandle.isDynaffType()) {
-                                    length = EditorConfig.DYNAFF_ITEM_WIDTH;
+                                    length = AppConfig.DYNAFF_ITEM_WIDTH;
                                 } else {
                                     length = (int)(ev.editing.ID.getLength() * scalex);
                                 }
@@ -886,7 +887,7 @@ namespace cadencii
 
                             if (last.ID.type == VsqIDType.Aicon) {
                                 if (last.ID.IconDynamicsHandle.isDynaffType()) {
-                                    length = EditorConfig.DYNAFF_ITEM_WIDTH;
+                                    length = AppConfig.DYNAFF_ITEM_WIDTH;
                                 }
                             }
 
@@ -919,7 +920,7 @@ namespace cadencii
 
                         if (EditorManager.mAddingEvent.ID.type == VsqIDType.Aicon) {
                             if (EditorManager.mAddingEvent.ID.IconDynamicsHandle.isDynaffType()) {
-                                length = EditorConfig.DYNAFF_ITEM_WIDTH;
+                                length = AppConfig.DYNAFF_ITEM_WIDTH;
                             }
                         }
 
@@ -985,7 +986,7 @@ namespace cadencii
                         }
                         int rate = (int)(drate * 100.0);
                         string percent = rate + "%";
-						Dimension size = Utility.measureString(percent, cadencii.core.EditorConfig.baseFont9);
+						Dimension size = Utility.measureString(percent, EditorConfig.baseFont9);
                         int delay_x = (int)((EditorManager.mAddingEvent.Clock + EditorManager.mAddingEvent.ID.getLength() - EditorManager.mAddingEvent.ID.Length + EditorManager.mAddingEvent.ID.VibratoDelay) * scalex + xoffset);
                         Rectangle pxArea = new Rectangle(delay_x,
                                                           (int)(y + track_height * 2.5),
@@ -998,11 +999,11 @@ namespace cadencii
                         // StringFormat sf = new StringFormat();
                         //sf.Alignment = StringAlignment.Center;
                         //sf.LineAlignment = StringAlignment.Center;
-						g.setFont(cadencii.core.EditorConfig.baseFont9);
+						g.setFont(EditorConfig.baseFont9);
                         g.drawString(
                             percent,
                             pxArea.X + 3,
-                            pxArea.Y + EditorConfig.baseFont9Height / 2 - EditorConfig.baseFont9OffsetHeight + 2);
+                            pxArea.Y + AppConfig.baseFont9Height / 2 - AppConfig.baseFont9OffsetHeight + 2);
                         #endregion
                     }
 
@@ -1013,7 +1014,7 @@ namespace cadencii
                         g.setColor(Cadencii.Gui.Colors.Black);
 						g.drawStringEx(
                                                VsqNote.getNoteString(hilighted_note),
-							cadencii.core.EditorConfig.baseFont10Bold,
+							EditorConfig.baseFont10Bold,
                                                new Rectangle(mouse_position.X - 110, mouse_position.Y - 50, 100, 100),
                                                align,
                                                valign);
