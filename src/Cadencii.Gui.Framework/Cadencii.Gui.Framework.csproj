@@ -139,6 +139,7 @@
     <Compile Include="models\winforms\DragEventArgs.cs" />
     <Compile Include="models\winforms\IDataObject.cs" />
     <Compile Include="models\winforms\FormClosingEventArgs.cs" />
+    <Compile Include="models\winforms\AutoScaleMode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

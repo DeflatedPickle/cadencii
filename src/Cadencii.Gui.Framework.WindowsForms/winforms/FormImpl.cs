@@ -19,6 +19,16 @@ namespace cadencii
 {
 	public class FormImpl : System.Windows.Forms.Form, UiForm
  	{
+		AutoScaleMode UiForm.AutoScaleMode {
+			get { return (AutoScaleMode)AutoScaleMode; }
+			set { AutoScaleMode = (System.Windows.Forms.AutoScaleMode)value; }
+		}
+
+		UiMenuStrip UiForm.MainMenuStrip {
+			get { return (UiMenuStrip)MainMenuStrip; }
+			set { MainMenuStrip = (System.Windows.Forms.MenuStrip) value.Native; }
+		}
+
 		event EventHandler<DragEventArgs> UiForm.DragEnter {
 			add { DragEnter += (sender, e) => value (sender, e.ToAwt ()); }
 			remove {

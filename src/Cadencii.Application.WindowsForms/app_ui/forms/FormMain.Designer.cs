@@ -2,23 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 using cadencii.windows.forms;
-
-using ToolStripRenderMode = Cadencii.Gui.ToolStripRenderMode;
-using ToolStripItemDisplayStyle = Cadencii.Gui.ToolStripItemDisplayStyle;
-using ToolStripItemImageScaling = Cadencii.Gui.ToolStripItemImageScaling;
-using TextImageRelation = Cadencii.Gui.TextImageRelation;
-using CheckState = Cadencii.Gui.CheckState;
-using TickStyle = Cadencii.Gui.TickStyle;
-using Keys = Cadencii.Gui.Keys;
-using AnchorStyles = Cadencii.Gui.AnchorStyles;
-using Color = Cadencii.Gui.Color;
-using BorderStyle = Cadencii.Gui.BorderStyle;
-using DockStyle = Cadencii.Gui.DockStyle;
-using ToolBarButtonStyle = Cadencii.Gui.ToolBarButtonStyle;
-using ToolBarAppearance = Cadencii.Gui.ToolBarAppearance;
-using ToolBarTextAlign = Cadencii.Gui.ToolBarTextAlign;
+using Cadencii.Gui;
 
 namespace cadencii
 {
@@ -247,7 +232,7 @@ namespace cadencii
             this.cMenuPianoImportLyric = new ToolStripMenuItemImpl();
             this.cMenuPianoExpressionProperty = new ToolStripMenuItemImpl();
             this.cMenuPianoVibratoProperty = new ToolStripMenuItemImpl();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip = new ToolTipImpl(this.components);
             this.cMenuTrackTab = new ContextMenuStripImpl(this.components);
             this.cMenuTrackTabTrackOn = new ToolStripMenuItemImpl();
             this.toolStripMenuItem24 = new ToolStripSeparatorImpl();
@@ -2182,7 +2167,7 @@ namespace cadencii
             this.pictKeyLengthSplitter.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
             this.pictKeyLengthSplitter.BackColor = System.Drawing.SystemColors.Control.ToAwt ();
             this.pictKeyLengthSplitter.BorderStyle = BorderStyle.Fixed3D;
-			this.pictKeyLengthSplitter.Cursor = System.Windows.Forms.Cursors.NoMoveHoriz.ToAwt ();
+			this.pictKeyLengthSplitter.Cursor = Cadencii.Gui.Cursors.NoMoveHoriz;
             this.pictKeyLengthSplitter.Location = new  Cadencii.Gui.Point(49, 263);
             this.pictKeyLengthSplitter.Margin = new Cadencii.Gui.Padding(0);
             this.pictKeyLengthSplitter.Name = "pictKeyLengthSplitter";
@@ -2912,16 +2897,16 @@ namespace cadencii
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.AsAwt ().AutoScaleMode = Cadencii.Gui.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(955, 689);
-			this.Controls.Add((Control)this.toolStripContainer1.Native);
-            this.Controls.Add((Control) this.rebar.Native);
-			this.Controls.Add((Control)this.menuStripMain.Native);
-            this.Controls.Add((Control)this.splitContainer1.Native);
+			this.AsAwt ().AddControl(this.toolStripContainer1);
+			this.AsAwt ().AddControl(this.rebar);
+			this.AsAwt ().AddControl(this.menuStripMain);
+			this.AsAwt ().AddControl(this.splitContainer1);
             this.DoubleBuffered = true;
             this.KeyPreview = true;
-			this.MainMenuStrip = (MenuStrip) this.menuStripMain.Native;
+			this.AsAwt ().MainMenuStrip = this.menuStripMain;
             this.Name = "FormMain";
             this.Text = "Cadencii";
             this.menuStripMain.ResumeLayout(false);
@@ -3045,7 +3030,7 @@ namespace cadencii
         public UiToolStripSeparator toolStripMenuItem26;
         public UiToolStripMenuItem cMenuPianoQuantizeTriplet;
 		public UiToolStripMenuItem menuFileRecent { get; set; }
-        public System.Windows.Forms.ToolTip toolTip;
+        public UiToolTip toolTip;
         public UiToolStripMenuItem menuEditCut;
         public UiToolStripMenuItem menuEditCopy;
         public UiToolStripMenuItem menuEditPaste;

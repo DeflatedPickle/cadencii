@@ -7,6 +7,7 @@ namespace Cadencii.Gui
 		public static Cursor Default { get; set; }
 		public static Cursor VSplit { get; set; }
 		public static Cursor Hand { get; set; }
+		public static Cursor NoMoveHoriz { get; set; }
 	}
 }
 

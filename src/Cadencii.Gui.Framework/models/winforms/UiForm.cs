@@ -7,6 +7,9 @@ namespace cadencii
 	{
 		UiForm AsAwt ();
 
+		AutoScaleMode AutoScaleMode { get ;set ;}
+		UiMenuStrip MainMenuStrip { get; set; }
+
 		FormWindowState WindowState { get; set; }
 		event EventHandler Load;
 		event EventHandler Activated;
