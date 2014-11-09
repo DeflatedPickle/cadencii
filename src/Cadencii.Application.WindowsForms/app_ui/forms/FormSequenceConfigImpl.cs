@@ -20,7 +20,7 @@ using cadencii.media;
 using cadencii.vsq;
 
 using cadencii.core;
-using Keys = Cadencii.Gui.Keys;
+using Keys = Cadencii.Gui.Toolkit.Keys;
 
 
 

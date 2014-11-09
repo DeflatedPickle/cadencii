@@ -4,6 +4,7 @@ using cadencii.core;
 using System.IO;
 using cadencii.media;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

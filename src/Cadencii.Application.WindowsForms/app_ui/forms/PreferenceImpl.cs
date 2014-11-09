@@ -25,11 +25,12 @@ using cadencii.vsq;
 
 
 using cadencii.utau;
-using Keys = Cadencii.Gui.Keys;
+using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui;
 using DialogResult = Cadencii.Gui.DialogResult;
 using cadencii.core;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

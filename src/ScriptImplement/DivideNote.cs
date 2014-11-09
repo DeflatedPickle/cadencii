@@ -98,14 +98,14 @@ namespace cadencii
             }
         }
 
-        public bool edit(VsqTrack track, int[] event_internal_ids, Cadencii.Gui.MouseButtons button)
+        public bool edit(VsqTrack track, int[] event_internal_ids, Cadencii.Gui.Toolkit.MouseButtons button)
         {
             bool edited = false;
             try {
                 int divide_threshold = Numerator * 480 * 4 / Denominator;
                 Console.WriteLine("s_divide_threshold=" + divide_threshold);
                 Keys modifier = (Keys) Control.ModifierKeys;
-				bool middle_mode = button == Cadencii.Gui.MouseButtons.Middle;
+				bool middle_mode = button == Cadencii.Gui.Toolkit.MouseButtons.Middle;
                 if (getModifier().Equals("Alt")) {
                     if ((modifier & Keys.Alt) == Keys.Alt) {
                         middle_mode = true;

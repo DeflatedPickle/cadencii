@@ -9,6 +9,7 @@ using System.IO;
 using Cadencii.Xml;
 using System.Diagnostics;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

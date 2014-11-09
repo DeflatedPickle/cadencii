@@ -19,6 +19,7 @@ using System.Runtime.InteropServices;
 using System.ComponentModel;
 using cadencii;
 using Cadencii.Platform.Windows;
+using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 
 namespace cadencii
 {
@@ -38,7 +39,7 @@ namespace cadencii
     {
 		#region RebarBand implementation
 
-		void RebarBand.Show (UiControl control, Cadencii.Gui.Rectangle chevronRect)
+		void RebarBand.Show (Cadencii.Gui.Toolkit.UiControl control, Cadencii.Gui.Rectangle chevronRect)
 		{
 			Show ((Control)control.Native, chevronRect.ToWF ());
 		}
@@ -46,27 +47,27 @@ namespace cadencii
 		{
 			OnResize (e);
 		}
-		void RebarBand.OnMouseDown (Cadencii.Gui.MouseEventArgs e)
+		void RebarBand.OnMouseDown (Cadencii.Gui.Toolkit.MouseEventArgs e)
 		{
 			OnMouseDown (e.ToWF ());
 		}
-		void RebarBand.OnMouseMove (Cadencii.Gui.MouseEventArgs e)
+		void RebarBand.OnMouseMove (Cadencii.Gui.Toolkit.MouseEventArgs e)
 		{
 			OnMouseMove (e.ToWF ());
 		}
-		void RebarBand.OnMouseUp (Cadencii.Gui.MouseEventArgs e)
+		void RebarBand.OnMouseUp (Cadencii.Gui.Toolkit.MouseEventArgs e)
 		{
 			OnMouseUp (e.ToWF ());
 	}
-		void RebarBand.OnMouseWheel (Cadencii.Gui.MouseEventArgs e)
+		void RebarBand.OnMouseWheel (Cadencii.Gui.Toolkit.MouseEventArgs e)
 		{
 			OnMouseWheel (e.ToWF ());
 		}
 		Cadencii.Gui.Point RebarBand.Location {
 			get { return Location.ToAwt (); }
 		}
-		UiControl RebarBand.Child {
-			get { return (UiControl)Child; }
+		Cadencii.Gui.Toolkit.UiControl RebarBand.Child {
+			get { return (Cadencii.Gui.Toolkit.UiControl)Child; }
 			set { Child = (Control)value.Native; }
 		}
 		Cadencii.Gui.Image RebarBand.BackgroundImage {

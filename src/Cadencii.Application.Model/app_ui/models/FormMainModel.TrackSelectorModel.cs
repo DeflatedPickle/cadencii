@@ -2,6 +2,7 @@
 using Cadencii.Gui;
 using System.Collections.Generic;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

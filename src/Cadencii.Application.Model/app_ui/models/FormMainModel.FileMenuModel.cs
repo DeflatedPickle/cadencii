@@ -11,6 +11,7 @@ using System.Linq;
 using cadencii.java.util;
 using Cadencii.Gui;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

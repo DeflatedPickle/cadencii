@@ -8,6 +8,7 @@ using cadencii.core;
 using cadencii.media;
 using Cadencii.Utilities;
 using Cadencii.Media.Windows;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

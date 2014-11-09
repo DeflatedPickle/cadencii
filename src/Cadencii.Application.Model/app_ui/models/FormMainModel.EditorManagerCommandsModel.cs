@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

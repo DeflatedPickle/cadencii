@@ -17,8 +17,8 @@ using Cadencii.Gui;
 
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
-using NMouseEventArgs = Cadencii.Gui.MouseEventArgs;
-using NMouseEventHandler = Cadencii.Gui.MouseEventHandler;
+using NMouseEventArgs = Cadencii.Gui.Toolkit.MouseEventArgs;
+using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventArgs>;
 
 namespace cadencii
 {
@@ -110,7 +110,7 @@ namespace cadencii
         public void handleMouseDown(Object sender, MouseEventArgs arg)
         {
             mouseDowned = true;
-			Point screen = Cadencii.Gui.Screen.Instance.GetScreenMousePosition();
+			Point screen = Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition();
             var point = this.PointToClient(new System.Drawing.Point(screen.X, screen.Y));
             Point p = new Point(point.X, point.Y);
             mouseDownedLocation = p;
@@ -133,7 +133,7 @@ namespace cadencii
                 return;
             }
 
-			Point screen = Cadencii.Gui.Screen.Instance.GetScreenMousePosition();
+			Point screen = Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition();
             var p = new System.Drawing.Point(screen.X - mouseDownedLocation.X, screen.Y - mouseDownedLocation.Y);
             this.Location = p;
         }

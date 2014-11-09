@@ -17,10 +17,11 @@ using cadencii.apputil;
 using cadencii;
 using Cadencii.Gui;
 
-using Keys = Cadencii.Gui.Keys;
+using Keys = Cadencii.Gui.Toolkit.Keys;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {
@@ -275,7 +276,7 @@ namespace cadencii
             Invalidate();
         }
 
-        public void VersionInfo_Paint(Object sender, PaintEventArgs e)
+        public void VersionInfo_Paint(Object sender, Cadencii.Gui.Toolkit.PaintEventArgs e)
         {
             try {
 				paintCor(new Graphics() {NativeGraphics = e.Graphics});

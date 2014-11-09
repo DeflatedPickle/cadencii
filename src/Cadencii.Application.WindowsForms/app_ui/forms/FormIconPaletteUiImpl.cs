@@ -20,9 +20,10 @@ using Cadencii.Gui;
 using cadencii.java.util;
 using cadencii.vsq;
 
-using Keys = Cadencii.Gui.Keys;
+using Keys = Cadencii.Gui.Toolkit.Keys;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {
@@ -157,7 +158,7 @@ namespace cadencii
                         btn.Text = str;
                     }
                 }
-                btn.MouseDown += new Cadencii.Gui.MouseEventHandler(handleCommonMouseDown);
+                btn.MouseDown += new EventHandler<Cadencii.Gui.Toolkit.MouseEventArgs>(handleCommonMouseDown);
                 btn.Size = new Cadencii.Gui.Dimension(buttonWidth, buttonWidth);
                 int iw = 0;
                 int ih = 0;
@@ -213,7 +214,7 @@ namespace cadencii
             this.TopMost = true;
         }
 
-        public void FormIconPalette_FormClosing(Object sender, Cadencii.Gui.FormClosingEventArgs e)
+		public void FormIconPalette_FormClosing(Object sender, Cadencii.Gui.Toolkit.FormClosingEventArgs e)
         {
             this.Visible = false;
             e.Cancel = true;
@@ -224,7 +225,7 @@ namespace cadencii
             this.Visible = false;
         }
 
-        public void handleCommonMouseDown(Object sender, Cadencii.Gui.MouseEventArgs e)
+        public void handleCommonMouseDown(Object sender, Cadencii.Gui.Toolkit.MouseEventArgs e)
         {
             if (EditorManager.EditMode != EditMode.NONE) {
                 return;
@@ -247,7 +248,7 @@ namespace cadencii
             item.ID.setLength(length);
             EditorManager.mAddingEvent = item;
 
-            btn.DoDragDrop(handle, Cadencii.Gui.DragDropEffects.All);
+            btn.DoDragDrop(handle, Cadencii.Gui.Toolkit.DragDropEffects.All);
         }
         #endregion
 

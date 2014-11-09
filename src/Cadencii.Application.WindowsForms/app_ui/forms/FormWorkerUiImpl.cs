@@ -21,6 +21,7 @@ using System.Windows.Forms;
 
 
 using cadencii.apputil;
+using Cadencii.Gui.Toolkit;
 
 
 
@@ -329,7 +330,7 @@ namespace cadencii
             mControl.cancelJobSlot();
         }
 
-        private void FormWorkerUi_FormClosing(object sender, FormClosingEventArgs e)
+        private void FormWorkerUi_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
             mControl.cancelJobSlot();
         }

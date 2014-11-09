@@ -13,7 +13,7 @@
  */
 using System;
 using cadencii;
-using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
 using System.Windows.Forms;
 using System.Linq;
 
@@ -62,9 +62,9 @@ namespace Cadencii.Gui
 			}
 		}
 
-		public override Cadencii.Gui.Keys DefaultModifierKeys ()
+		public override Cadencii.Gui.Toolkit.Keys DefaultModifierKeys ()
 		{
-			return (Cadencii.Gui.Keys) Control.ModifierKeys;
+			return (Cadencii.Gui.Toolkit.Keys) Control.ModifierKeys;
 		}
 
 		/// <summary>
@@ -719,7 +719,7 @@ namespace Cadencii.Gui
 		}
 	}
 
-	class ScreenAdapterWF : Screen.ScreenAdapter
+	class ScreenAdapterWF : Cadencii.Gui.Toolkit.Screen.ScreenAdapter
 	{
 		public override Rectangle getScreenBounds (object nativeControl)
 		{

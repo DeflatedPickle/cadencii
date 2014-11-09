@@ -17,8 +17,9 @@ using cadencii.apputil;
 using Cadencii.Gui;
 
 
-using AnchorStyles = Cadencii.Gui.AnchorStyles;
-using HorizontalAlignment = Cadencii.Gui.HorizontalAlignment;
+using AnchorStyles = Cadencii.Gui.Toolkit.AnchorStyles;
+using HorizontalAlignment = Cadencii.Gui.Toolkit.HorizontalAlignment;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {
@@ -411,7 +412,7 @@ namespace cadencii
             this.listTrack.Size = new Dimension(324, 216);
             this.listTrack.TabIndex = 6;
             this.listTrack.UseCompatibleStateImageBehavior = false;
-            this.listTrack.View = Cadencii.Gui.View.Details;
+            this.listTrack.View = Cadencii.Gui.Toolkit.View.Details;
             // 
             // btnCheckAll
             // 
@@ -576,7 +577,7 @@ namespace cadencii
             this.txtOffset.Size = new Dimension(100, 19);
             this.txtOffset.TabIndex = 3;
             this.txtOffset.Text = "0";
-            this.txtOffset.TextAlign = Cadencii.Gui.HorizontalAlignment.Right;
+            this.txtOffset.TextAlign = Cadencii.Gui.Toolkit.HorizontalAlignment.Right;
             this.txtOffset.Type = cadencii.NumberTextBoxValueType.Integer;
             // 
             // lblOffset

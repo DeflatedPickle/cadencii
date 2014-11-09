@@ -9,6 +9,7 @@ using cadencii.apputil;
 using cadencii.utau;
 using cadencii.java.util;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {
@@ -1560,7 +1561,7 @@ namespace cadencii
 				Object item = form.toolBarTool.Buttons[i];
 				if (item is UiToolBarButton) {
 					UiToolBarButton button = (UiToolBarButton)item;
-					if (button.Style == Cadencii.Gui.ToolBarButtonStyle.ToggleButton && button.Tag != null && button.Tag is string) {
+					if (button.Style == ToolBarButtonStyle.ToggleButton && button.Tag != null && button.Tag is string) {
 						if (((string)button.Tag).Equals(id)) {
 							button.Pushed = true;
 						} else {
@@ -1759,10 +1760,10 @@ namespace cadencii
 			#endif
 			hideInputTextBox();
 
-			EditorManager.InputTextBox.KeyUp += new KeyEventHandler(InputTextBox.mInputTextBox_KeyUp);
-			EditorManager.InputTextBox.KeyDown += new KeyEventHandler(InputTextBox.mInputTextBox_KeyDown);
+			EditorManager.InputTextBox.KeyUp += InputTextBox.mInputTextBox_KeyUp;
+			EditorManager.InputTextBox.KeyDown += InputTextBox.mInputTextBox_KeyDown;
 			EditorManager.InputTextBox.ImeModeChanged += InputTextBox.mInputTextBox_ImeModeChanged;
-			EditorManager.InputTextBox.ImeMode = mLastIsImeModeOn ? Cadencii.Gui.ImeMode.Hiragana : Cadencii.Gui.ImeMode.Off;
+			EditorManager.InputTextBox.ImeMode = mLastIsImeModeOn ? ImeMode.Hiragana : ImeMode.Off;
 			if (phonetic_symbol_edit_mode) {
 				EditorManager.InputTextBox.setBufferText(phrase);
 				EditorManager.InputTextBox.setPhoneticSymbolEditMode(true);
@@ -1787,8 +1788,8 @@ namespace cadencii
 
 		public void hideInputTextBox()
 		{
-			EditorManager.InputTextBox.KeyUp -= new KeyEventHandler(InputTextBox.mInputTextBox_KeyUp);
-			EditorManager.InputTextBox.KeyDown -= new KeyEventHandler(InputTextBox.mInputTextBox_KeyDown);
+			EditorManager.InputTextBox.KeyUp -= InputTextBox.mInputTextBox_KeyUp;
+			EditorManager.InputTextBox.KeyDown -= InputTextBox.mInputTextBox_KeyDown;
 			EditorManager.InputTextBox.ImeModeChanged -= InputTextBox.mInputTextBox_ImeModeChanged;
 			mLastSymbolEditMode = EditorManager.InputTextBox.isPhoneticSymbolEditMode();
 			EditorManager.InputTextBox.Visible = false;

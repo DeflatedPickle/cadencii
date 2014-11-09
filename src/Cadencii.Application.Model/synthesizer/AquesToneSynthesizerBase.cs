@@ -14,6 +14,7 @@
  */
 using cadencii.dsp.v2.generator;
 using cadencii.vsq;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii.synthesizer
 {

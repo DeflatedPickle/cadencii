@@ -1,12 +1,12 @@
 ﻿using System;
 
-using Keys = Cadencii.Gui.Keys;
-using NMouseButtons = Cadencii.Gui.MouseButtons;
-using NMouseEventArgs = Cadencii.Gui.MouseEventArgs;
-using NMouseEventHandler = Cadencii.Gui.MouseEventHandler;
-using NKeyEventArgs = Cadencii.Gui.KeyEventArgs;
-using NKeyEventHandler = Cadencii.Gui.KeyEventHandler;
-using PaintEventArgs = cadencii.PaintEventArgs;
+using Keys = Cadencii.Gui.Toolkit.Keys;
+using NMouseButtons = Cadencii.Gui.Toolkit.MouseButtons;
+using NMouseEventArgs = Cadencii.Gui.Toolkit.MouseEventArgs;
+using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventArgs>;
+using NKeyEventArgs = Cadencii.Gui.Toolkit.KeyEventArgs;
+using NKeyEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.KeyEventArgs>;
+using PaintEventArgs = Cadencii.Gui.Toolkit.PaintEventArgs;
 using System.Threading;
 using Cadencii.Gui;
 using cadencii.vsq;
@@ -15,6 +15,7 @@ using cadencii.java.util;
 using cadencii.core;
 using System.Media;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {
@@ -128,7 +129,7 @@ namespace cadencii
 							bool result = PaletteToolServer.invokePaletteTool(EditorManager.mSelectedPaletteTool,
 								selected,
 								internal_ids.ToArray(),
-								(Cadencii.Gui.MouseButtons) btn);
+								btn);
 							if (result) {
 								parent.form.setEdited(true);
 								EditorManager.itemSelection.clearEvent();
@@ -244,7 +245,7 @@ namespace cadencii
 							bool result = PaletteToolServer.invokePaletteTool(EditorManager.mSelectedPaletteTool,
 								EditorManager.Selected,
 								internal_ids.ToArray(),
-								(Cadencii.Gui.MouseButtons) e.Button);
+								e.Button);
 							if (result) {
 								parent.form.setEdited(true);
 								EditorManager.itemSelection.clearEvent();

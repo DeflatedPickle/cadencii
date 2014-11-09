@@ -28,7 +28,7 @@ using cadencii.vsq;
 using Cadencii.Xml;
 using cadencii.utau;
 
-using Keys = Cadencii.Gui.Keys;
+using Keys = Cadencii.Gui.Toolkit.Keys;
 using DialogResult = Cadencii.Gui.DialogResult;
 
 namespace cadencii

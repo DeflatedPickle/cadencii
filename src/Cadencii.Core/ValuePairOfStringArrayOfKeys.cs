@@ -15,6 +15,7 @@ using System;
 using System.Xml.Serialization;
 //
  using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

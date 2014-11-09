@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using cadencii.vsq;
 using System.Linq;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

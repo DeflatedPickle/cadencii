@@ -20,7 +20,7 @@ using Cadencii.Gui;
 using cadencii.java.util;
 using cadencii.vsq;
 
-using Keys = Cadencii.Gui.Keys;
+using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Utilities;
 
 namespace cadencii
@@ -196,7 +196,7 @@ namespace cadencii
                 int remain = num - m_tracker.Count;
                 for (int i = 0; i < remain; i++) {
                     VolumeTracker item = new VolumeTrackerImpl();
-                    item.BorderStyle = Cadencii.Gui.BorderStyle.FixedSingle;
+                    item.BorderStyle = Cadencii.Gui.Toolkit.BorderStyle.FixedSingle;
                     item.Size = volumeMaster.Size;
                     m_tracker.Add(item);
                 }
@@ -211,7 +211,7 @@ namespace cadencii
             }
 
             // 同時に表示できるVolumeTrackerの個数を計算
-			int max = Cadencii.Gui.Screen.Instance.GetWorkingArea(this).Width;
+			int max = Cadencii.Gui.Toolkit.Screen.Instance.GetWorkingArea(this).Width;
             int bordersize = 4;// TODO: ここもともとは SystemInformation.FrameBorderSize;だった
             int max_client_width = max - 2 * bordersize;
             int max_num = (int)Math.Floor(max_client_width / (VolumeTrackerController.WIDTH + 1.0f));
@@ -457,7 +457,7 @@ namespace cadencii
             this.Visible = false;
         }
 
-        void FormMixer_FormClosing(Cadencii.Gui.FormClosingEventArgs e)
+		void FormMixer_FormClosing(Cadencii.Gui.Toolkit.FormClosingEventArgs e)
         {
             this.Visible = false;
             e.Cancel = true;
@@ -585,9 +585,9 @@ namespace cadencii
             // volumeMaster
             // 
             this.volumeMaster.BackColor = new Cadencii.Gui.Color(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.volumeMaster.BorderStyle = Cadencii.Gui.BorderStyle.FixedSingle;
+            this.volumeMaster.BorderStyle = Cadencii.Gui.Toolkit.BorderStyle.FixedSingle;
             this.volumeMaster.Location = new Cadencii.Gui.Point(85, 0);
-            this.volumeMaster.Margin = new Cadencii.Gui.Padding(0);
+            this.volumeMaster.Margin = new Cadencii.Gui.Toolkit.Padding(0);
             this.volumeMaster.Name = "volumeMaster";
             this.volumeMaster.Size = new Cadencii.Gui.Dimension(85, 284);
             this.volumeMaster.TabIndex = 5;

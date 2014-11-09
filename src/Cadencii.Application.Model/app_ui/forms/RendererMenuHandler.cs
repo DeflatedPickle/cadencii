@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

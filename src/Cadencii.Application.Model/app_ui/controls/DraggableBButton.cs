@@ -1,6 +1,7 @@
 using System;
 using cadencii.vsq;
-using NMouseEventHandler = Cadencii.Gui.MouseEventHandler;
+using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventArgs>;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {
@@ -16,7 +17,7 @@ namespace cadencii
 
 		void BringToFront ();
 
-		void DoDragDrop (IconDynamicsHandle handle, Cadencii.Gui.DragDropEffects all);
+		void DoDragDrop (IconDynamicsHandle handle, DragDropEffects all);
 	}
 }
 

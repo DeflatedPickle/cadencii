@@ -21,6 +21,7 @@ using cadencii.java.util;
 
 using Cadencii.Gui;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
 
 
 namespace cadencii
@@ -289,7 +290,7 @@ namespace cadencii
             listPresets.SelectedIndex = move_to;
         }
 
-        public void pictureResulting_Paint(Object sender, PaintEventArgs e)
+        public void pictureResulting_Paint(Object sender, Cadencii.Gui.Toolkit.PaintEventArgs e)
         {
             // 背景を描画
             int raw_width = pictureResulting.Width;
@@ -361,7 +362,7 @@ namespace cadencii
             d.flush();
         }
 
-        public void pictureRate_Paint(Object sender, PaintEventArgs e)
+        public void pictureRate_Paint(Object sender, Cadencii.Gui.Toolkit.PaintEventArgs e)
         {
             // 背景を描画
             int width = pictureRate.Width;
@@ -386,7 +387,7 @@ namespace cadencii
                 width, height);
         }
 
-        public void pictureDepth_Paint(Object sender, PaintEventArgs e)
+        public void pictureDepth_Paint(Object sender, Cadencii.Gui.Toolkit.PaintEventArgs e)
         {
             // 背景を描画
             int width = pictureDepth.Width;

@@ -19,7 +19,7 @@ using cadencii;
 using Cadencii.Gui;
 using cadencii.vsq;
 
-using Keys = Cadencii.Gui.Keys;
+using Keys = Cadencii.Gui.Toolkit.Keys;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
 

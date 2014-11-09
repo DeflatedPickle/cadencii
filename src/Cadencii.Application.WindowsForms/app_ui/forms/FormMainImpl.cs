@@ -29,6 +29,7 @@ using cadencii.ui;
 using Consts = cadencii.FormMainModel.Consts;
 using cadencii.core;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {
@@ -240,12 +241,12 @@ namespace cadencii
             bgWorkScreen = new System.ComponentModel.BackgroundWorker();
 
 			this.panelWaveformZoom.AddControl (this.waveView);
-			this.waveView.Anchor = ((Cadencii.Gui.AnchorStyles)((((Cadencii.Gui.AnchorStyles.Top | Cadencii.Gui.AnchorStyles.Bottom)
-				| Cadencii.Gui.AnchorStyles.Left)
-                        | Cadencii.Gui.AnchorStyles.Right)));
+			this.waveView.Anchor = ((Cadencii.Gui.Toolkit.AnchorStyles)((((Cadencii.Gui.Toolkit.AnchorStyles.Top | Cadencii.Gui.Toolkit.AnchorStyles.Bottom)
+				| Cadencii.Gui.Toolkit.AnchorStyles.Left)
+                        | Cadencii.Gui.Toolkit.AnchorStyles.Right)));
             this.waveView.BackColor = new Cadencii.Gui.Color(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
             this.waveView.Location = new Cadencii.Gui.Point(66, 0);
-            this.waveView.Margin = new Cadencii.Gui.Padding(0);
+            this.waveView.Margin = new Cadencii.Gui.Toolkit.Padding(0);
             this.waveView.Name = "waveView";
             this.waveView.Size = new Cadencii.Gui.Dimension(355, 59);
             this.waveView.TabIndex = 17;
@@ -282,7 +283,7 @@ namespace cadencii
             trackSelector.setCurveVisible(true);
             trackSelector.setSelectedCurve(CurveType.VEL);
             trackSelector.setLocation(new Point(0, 242));
-            trackSelector.Margin = new Cadencii.Gui.Padding(0);
+            trackSelector.Margin = new Cadencii.Gui.Toolkit.Padding(0);
             trackSelector.Name = "trackSelector";
             trackSelector.setSize(446, 250);
             trackSelector.TabIndex = 0;
@@ -300,26 +301,26 @@ namespace cadencii
             updatePaletteTool();
 #endif
 
-            splitContainer1.Panel1.BorderStyle = Cadencii.Gui.BorderStyle.None;
-            splitContainer1.Panel2.BorderStyle = Cadencii.Gui.BorderStyle.None;
+            splitContainer1.Panel1.BorderStyle = Cadencii.Gui.Toolkit.BorderStyle.None;
+            splitContainer1.Panel2.BorderStyle = Cadencii.Gui.Toolkit.BorderStyle.None;
             splitContainer1.BackColor = new Cadencii.Gui.Color(212, 212, 212);
             splitContainer2.Panel1.AddControl(panel1);
-            panel1.Dock = Cadencii.Gui.DockStyle.Fill;
+            panel1.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
             splitContainer2.Panel2.AddControl(panelWaveformZoom);
             splitContainer2.Panel2.BorderStyle = BorderStyle.FixedSingle;
             splitContainer2.Panel2.BorderColor = new Cadencii.Gui.Color(112, 112, 112);
             splitContainer1.Panel1.AddControl(splitContainer2);
-            panelWaveformZoom.Dock = Cadencii.Gui.DockStyle.Fill;
-			splitContainer2.Dock = Cadencii.Gui.DockStyle.Fill;
+            panelWaveformZoom.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
+			splitContainer2.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
             splitContainer1.Panel2.AddControl(trackSelector);
-            trackSelector.Dock = Cadencii.Gui.DockStyle.Fill;
-			splitContainer1.Dock = Cadencii.Gui.DockStyle.Fill;
+            trackSelector.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
+			splitContainer1.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
             splitContainer1.Panel2MinSize = trackSelector.getPreferredMinSize();
-            splitContainerProperty.FixedPanel = Cadencii.Gui.FixedPanel.Panel1;
+            splitContainerProperty.FixedPanel = Cadencii.Gui.Toolkit.FixedPanel.Panel1;
 
 #if ENABLE_PROPERTY
             splitContainerProperty.Panel1.AddControl(mPropertyPanelContainer);
-            mPropertyPanelContainer.Dock = Cadencii.Gui.DockStyle.Fill;
+            mPropertyPanelContainer.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 #else
             splitContainerProperty.setDividerLocation( 0 );
             splitContainerProperty.setEnabled( false );
@@ -327,7 +328,7 @@ namespace cadencii
 #endif
 
             splitContainerProperty.Panel2.AddControl(splitContainer1);
-            splitContainerProperty.Dock = Cadencii.Gui.DockStyle.Fill;
+            splitContainerProperty.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 
             // コントロールの位置・サイズを調節
             splitContainer2.Panel1.SuspendLayout();
@@ -384,7 +385,7 @@ namespace cadencii
             // inputTextBoxの初期化
             EditorManager.InputTextBox = new LyricTextBoxImpl();
             EditorManager.InputTextBox.Visible = false;
-            EditorManager.InputTextBox.BorderStyle = Cadencii.Gui.BorderStyle.None;
+            EditorManager.InputTextBox.BorderStyle = Cadencii.Gui.Toolkit.BorderStyle.None;
             EditorManager.InputTextBox.Width = 80;
             EditorManager.InputTextBox.AcceptsReturn = true;
             EditorManager.InputTextBox.BackColor = Colors.White;
@@ -1712,7 +1713,7 @@ namespace cadencii
 
                 // toolStripPaletteTools
                 UiToolBarButton tsb = new ToolBarButtonImpl();
-                tsb.Style = Cadencii.Gui.ToolBarButtonStyle.ToggleButton;
+                tsb.Style = Cadencii.Gui.Toolkit.ToolBarButtonStyle.ToggleButton;
                 if (icon != null) {
                     imageListTool.Images.Add(icon);
                     tsb.ImageIndex = imageListTool.Images.Count - 1;
@@ -1722,7 +1723,7 @@ namespace cadencii
                 tsb.Tag = id;
                 if (first) {
                     UiToolBarButton sep = new ToolBarButtonImpl();
-                    sep.Style = Cadencii.Gui.ToolBarButtonStyle.Separator;
+                    sep.Style = Cadencii.Gui.Toolkit.ToolBarButtonStyle.Separator;
                     toolBarTool.Buttons.Add(sep);
                     first = false;
                 }
@@ -2713,7 +2714,7 @@ namespace cadencii
                 Object tsi = toolBarTool.Buttons[i];// toolStripTool.getComponentAtIndex( i );
                 if (tsi is UiToolBarButton) {
                     UiToolBarButton tsb = (UiToolBarButton)tsi;
-                    if (tsb.Style == Cadencii.Gui.ToolBarButtonStyle.ToggleButton && tsb.Tag != null && tsb.Tag is string) {
+                    if (tsb.Style == Cadencii.Gui.Toolkit.ToolBarButtonStyle.ToggleButton && tsb.Tag != null && tsb.Tag is string) {
                         string id = (string)tsb.Tag;
                         if (PaletteToolServer.loadedTools.ContainsKey(id)) {
                             IPaletteTool ipt = (IPaletteTool)PaletteToolServer.loadedTools[id];
@@ -2900,7 +2901,7 @@ namespace cadencii
                 if (tsi is UiToolBarButton) {
                     UiToolBarButton tsb = (UiToolBarButton)tsi;
                     Object tag = tsb.Tag;
-                    if (tsb.Style == Cadencii.Gui.ToolBarButtonStyle.ToggleButton && tag != null && tag is string) {
+                    if (tsb.Style == Cadencii.Gui.Toolkit.ToolBarButtonStyle.ToggleButton && tag != null && tag is string) {
 #if ENABLE_SCRIPT
                         if (tool == EditTool.PALETTE_TOOL) {
                             string id = (string)tag;

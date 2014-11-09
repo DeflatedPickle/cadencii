@@ -2,6 +2,7 @@ using System;
 using Cadencii.Gui;
 using cadencii.vsq;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

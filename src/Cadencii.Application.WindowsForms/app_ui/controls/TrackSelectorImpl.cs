@@ -11,8 +11,6 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
-
-
 #define COMPONENT_ENABLE_LOCATION
 //#define MONITOR_FPS
 //#define OLD_IMPL_MOUSE_TRACER
@@ -29,18 +27,20 @@ using cadencii.vsq;
 
 using cadencii.core;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
 
-using Keys = Cadencii.Gui.Keys;
+using Keys = Cadencii.Gui.Toolkit.Keys;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
 using MouseButtons = System.Windows.Forms.MouseButtons;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
-using NMouseButtons = Cadencii.Gui.MouseButtons;
-using NMouseEventArgs = Cadencii.Gui.MouseEventArgs;
-using NMouseEventHandler = Cadencii.Gui.MouseEventHandler;
-using ToolStripRenderMode = Cadencii.Gui.ToolStripRenderMode;
+using NMouseButtons = Cadencii.Gui.Toolkit.MouseButtons;
+using NMouseEventArgs = Cadencii.Gui.Toolkit.MouseEventArgs;
+using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventArgs>;
+using ToolStripRenderMode = Cadencii.Gui.Toolkit.ToolStripRenderMode;
 using TS = cadencii.TrackSelectorConsts;
+using TextFormatFlags = Cadencii.Gui.Toolkit.TextFormatFlags;
 
 namespace cadencii
 {
@@ -52,7 +52,7 @@ namespace cadencii
     public class TrackSelectorImpl : UserControlImpl, TrackSelector
     {
 
-		BezierPoint TrackSelector.HandleMouseMoveForBezierMove (Cadencii.Gui.MouseEventArgs e, BezierPickedSide picked)
+		BezierPoint TrackSelector.HandleMouseMoveForBezierMove (Cadencii.Gui.Toolkit.MouseEventArgs e, BezierPickedSide picked)
 		{
 			return HandleMouseMoveForBezierMove (e.ToWF (), picked);
 		}
@@ -62,12 +62,12 @@ namespace cadencii
 			mEditingPointID = id;
 		}
 
-		void TrackSelector.onMouseDown (object sender, Cadencii.Gui.MouseEventArgs e)
+		void TrackSelector.onMouseDown (object sender, Cadencii.Gui.Toolkit.MouseEventArgs e)
 		{
 			onMouseDown (sender, e.ToWF ());
 		}
 
-		void TrackSelector.onMouseUp (object sender, Cadencii.Gui.MouseEventArgs e)
+		void TrackSelector.onMouseUp (object sender, Cadencii.Gui.Toolkit.MouseEventArgs e)
 		{
 			onMouseUp (sender, e.ToWF ());
 		}
@@ -957,7 +957,7 @@ namespace cadencii
 			g.setColor(Cadencii.Gui.Colors.DarkGray);
             g.fillRect(0, size.Height - 2 * TS.OFFSET_TRACK_TAB, size.Width, 2 * TS.OFFSET_TRACK_TAB);
             int numeric_view = mMouseValue;
-			Point p = pointToClient(Cadencii.Gui.Screen.Instance.GetScreenMousePosition());
+			Point p = pointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
             Point mouse = new Point(p.X, p.Y);
             VsqFileEx vsq = MusicManager.getVsqFile();
             int selected = EditorManager.Selected;
@@ -1487,7 +1487,7 @@ namespace cadencii
             VsqEvent itr_prev = null;
             VsqEvent itr_item = null;
             VsqEvent itr_next = null;
-			Point mouse = pointToClient(Cadencii.Gui.Screen.Instance.GetScreenMousePosition());
+			Point mouse = pointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
 
             Color brs = fill_color;
             Point selected_point = new Point();
@@ -2059,7 +2059,7 @@ namespace cadencii
         /// <param name="type"></param>
         public void drawVEL(Graphics g, VsqTrack track, Color color, bool is_front, CurveType type)
         {
-			Point mouse = pointToClient(Cadencii.Gui.Screen.Instance.GetScreenMousePosition());
+			Point mouse = pointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
 
             int header = 8;
             int graph_height = getGraphHeight();
@@ -2456,7 +2456,7 @@ namespace cadencii
         /// <param name="is_front">最前面に表示するモードかどうか</param>
         public void drawVsqBPList(Graphics g, VsqBPList list, Color color, bool is_front)
         {
-			Point pmouse = pointToClient(Cadencii.Gui.Screen.Instance.GetScreenMousePosition());
+			Point pmouse = pointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
             int max = list.getMaximum();
             int min = list.getMinimum();
             int graph_height = getGraphHeight();
@@ -4974,7 +4974,7 @@ namespace cadencii
                 }
             } else if (mMouseDownMode == MouseDownMode.POINT_MOVE) {
                 if (mMouseMoved) {
-					Point pmouse = pointToClient(Cadencii.Gui.Screen.Instance.GetScreenMousePosition());
+					Point pmouse = pointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
                     Point mouse = new Point(pmouse.X, pmouse.Y);
                     int dx = mouse.X + EditorManager.MainWindow.Model.StartToDrawX - mMouseDownLocation.X;
                     int dy = mouse.Y - mMouseDownLocation.Y;
@@ -5027,7 +5027,7 @@ namespace cadencii
             }
             if (mMouseDowned && !mPencilMoved && EditorManager.SelectedTool == EditTool.PENCIL &&
                  !mSelectedCurve.equals(CurveType.VEL)) {
-				Point pmouse = pointToClient(Cadencii.Gui.Screen.Instance.GetScreenMousePosition());
+				Point pmouse = pointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
                 Point mouse = new Point(pmouse.X, pmouse.Y);
                 int clock = EditorManager.clockFromXCoord(mouse.X);
                 int value = valueFromYCoord(mouse.Y);
@@ -5550,7 +5550,7 @@ namespace cadencii
 
                 int tip_width = menu.ToolTipPxWidth;
                 var pts = cmenuSinger.PointToScreen(new Point(0, 0));
-				Rectangle rrc = Cadencii.Gui.Screen.Instance.getScreenBounds(this);
+				Rectangle rrc = Cadencii.Gui.Toolkit.Screen.Instance.getScreenBounds(this);
                 Rectangle rc = new Rectangle(rrc.X, rrc.Y, rrc.Width, rrc.Height);
                 mTooltipProgram = program;
                 mTooltipLanguage = language;
@@ -5593,7 +5593,7 @@ namespace cadencii
             }
         }
 
-        private void toolTip_Draw(Object sender, cadencii.DrawToolTipEventArgs e)
+        private void toolTip_Draw(Object sender, Cadencii.Gui.Toolkit.DrawToolTipEventArgs e)
         {
             if (!(sender is System.Windows.Forms.ToolTip)) {
                 return;
@@ -5648,7 +5648,7 @@ namespace cadencii
 
         private void registerEventHandlers()
         {
-			this.toolTip.Draw += new EventHandler<DrawToolTipEventArgs>(this.toolTip_Draw);
+			this.toolTip.Draw += new EventHandler<Cadencii.Gui.Toolkit.DrawToolTipEventArgs>(this.toolTip_Draw);
             this.cmenuCurveVelocity.Click += new EventHandler(cmenuCurveCommon_Click);
             this.cmenuCurveAccent.Click += new EventHandler(cmenuCurveCommon_Click);
             this.cmenuCurveDecay.Click += new EventHandler(cmenuCurveCommon_Click);

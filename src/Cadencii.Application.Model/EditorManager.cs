@@ -24,6 +24,7 @@ using System.Threading;
 using cadencii.apputil;
 using Cadencii.Utilities;
 using Cadencii.Media.Windows;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

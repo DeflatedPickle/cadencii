@@ -6,6 +6,7 @@ using Cadencii.Gui;
 using cadencii.vsq;
 using cadencii.core;
 using cadencii.media;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {
@@ -174,10 +175,10 @@ namespace cadencii
 
 			public void mInputTextBox_ImeModeChanged(Object sender, EventArgs e)
 			{
-				parent.mLastIsImeModeOn = EditorManager.InputTextBox.ImeMode == Cadencii.Gui.ImeMode.Hiragana;
+				parent.mLastIsImeModeOn = EditorManager.InputTextBox.ImeMode == ImeMode.Hiragana;
 			}
 
-			public void mInputTextBox_KeyPress(Object sender, Cadencii.Gui.KeyPressEventArgs e)
+			public void mInputTextBox_KeyPress(Object sender, KeyPressEventArgs e)
 			{
 				#if DEBUG
 				Logger.StdOut("FormMain#mInputTextBox_KeyPress");

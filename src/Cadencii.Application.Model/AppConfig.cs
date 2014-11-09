@@ -21,6 +21,7 @@ using Cadencii.Xml;
 using cadencii.vsq;
 using cadencii.core;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
 
 
 

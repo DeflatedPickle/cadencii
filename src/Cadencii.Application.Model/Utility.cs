@@ -24,9 +24,10 @@ using cadencii.vsq;
 //
 using Cadencii.Xml;
 using Cadencii.Gui;
-using Keys = Cadencii.Gui.Keys;
+using Keys = Cadencii.Gui.Toolkit.Keys;
 using cadencii.core;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

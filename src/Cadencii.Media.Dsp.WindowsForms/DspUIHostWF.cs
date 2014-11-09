@@ -1,5 +1,6 @@
 using System;
 using VstSdk;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii.dsp.winforms
 {

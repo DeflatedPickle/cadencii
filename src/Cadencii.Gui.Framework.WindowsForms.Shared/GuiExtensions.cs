@@ -3,9 +3,9 @@ using Cadencii.Gui;
 using MouseButtons = System.Windows.Forms.MouseButtons;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
-using NMouseButtons = Cadencii.Gui.MouseButtons;
-using NMouseEventArgs = Cadencii.Gui.MouseEventArgs;
-using NMouseEventHandler = Cadencii.Gui.MouseEventHandler;
+using NMouseButtons = Cadencii.Gui.Toolkit.MouseButtons;
+using NMouseEventArgs = Cadencii.Gui.Toolkit.MouseEventArgs;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {
@@ -33,19 +33,19 @@ namespace cadencii
 			return (System.Windows.Forms.Cursor)c.NativeCursor;
 		}
 
-		public static Cadencii.Gui.Point ToAwt (this System.Drawing.Point point)
+		public static Point ToAwt (this System.Drawing.Point point)
 		{
-			return new Cadencii.Gui.Point (point.X, point.Y);
+			return new Point (point.X, point.Y);
 		}
 
-		public static System.Drawing.Point ToWF (this Cadencii.Gui.Point point)
+		public static System.Drawing.Point ToWF (this Point point)
 		{
 			return new System.Drawing.Point (point.X, point.Y);
 		}
 
-		public static Cadencii.Gui.Dimension ToAwt (this System.Drawing.Size size)
+		public static Dimension ToAwt (this System.Drawing.Size size)
 		{
-			return new Cadencii.Gui.Dimension (size.Width, size.Height);
+			return new Dimension (size.Width, size.Height);
 		}
 
 		public static System.Drawing.Size ToWF (this Dimension size)
@@ -103,12 +103,12 @@ namespace cadencii
 			return (System.Drawing.Graphics)g.NativeGraphics;
 		}
 
-		public static cadencii.PaintEventArgs ToAwt (this System.Windows.Forms.PaintEventArgs e)
+		public static PaintEventArgs ToAwt (this System.Windows.Forms.PaintEventArgs e)
 		{
 			return new PaintEventArgs () { Graphics = e.Graphics.ToAwt () };
 		}
 
-		public static cadencii.ToolBarButtonClickEventArgs ToAwt (this System.Windows.Forms.ToolBarButtonClickEventArgs e)
+		public static ToolBarButtonClickEventArgs ToAwt (this System.Windows.Forms.ToolBarButtonClickEventArgs e)
 		{
 			return new ToolBarButtonClickEventArgs () { Button = (UiToolBarButton)e.Button };
 		}
@@ -175,17 +175,17 @@ namespace cadencii
 			return dialog;
 		}
 
-		public static cadencii.DrawToolTipEventArgs ToAwt (this System.Windows.Forms.DrawToolTipEventArgs e)
+		public static DrawToolTipEventArgs ToAwt (this System.Windows.Forms.DrawToolTipEventArgs e)
 		{
 			return new DrawToolTipEventArgs (e.Bounds.ToAwt (), e.DrawBackground, e.DrawBorder, f => e.DrawText ((System.Windows.Forms.TextFormatFlags) f));
 		}
 
-		public static Cadencii.Gui.FormClosingEventArgs ToAwt (this System.Windows.Forms.FormClosingEventArgs e)
+		public static FormClosingEventArgs ToAwt (this System.Windows.Forms.FormClosingEventArgs e)
 		{
 			return new FormClosingEventArgs () { Cancel = e.Cancel };
 		}
 
-		public static Cadencii.Gui.DragEventArgs ToAwt (this System.Windows.Forms.DragEventArgs e)
+		public static DragEventArgs ToAwt (this System.Windows.Forms.DragEventArgs e)
 		{
 			return new DragEventArgs (new DataObjectWF (e.Data), e.KeyState, e.X, e.Y, (DragDropEffects) e.AllowedEffect, (DragDropEffects) e.Effect);
 		}

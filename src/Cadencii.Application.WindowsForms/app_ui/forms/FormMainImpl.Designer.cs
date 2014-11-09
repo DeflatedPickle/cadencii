@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {
@@ -2140,7 +2141,7 @@ namespace cadencii
             this.trackBar.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Right)));
             this.trackBar.AutoSize = false;
             this.trackBar.Location = new Cadencii.Gui.Point(322, 263);
-            this.trackBar.Margin = new  Cadencii.Gui.Padding(0);
+            this.trackBar.Margin = new  Cadencii.Gui.Toolkit.Padding(0);
             this.trackBar.Maximum = 609;
             this.trackBar.Minimum = 17;
             this.trackBar.Name = "trackBar";
@@ -2156,7 +2157,7 @@ namespace cadencii
             this.pictureBox3.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Left)));
             this.pictureBox3.BackColor = new Color (((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.pictureBox3.Location = new Cadencii.Gui.Point (0, 263);
-            this.pictureBox3.Margin = new Cadencii.Gui.Padding(0);
+            this.pictureBox3.Margin = new Cadencii.Gui.Toolkit.Padding(0);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new Cadencii.Gui.Dimension(49, 16);
             this.pictureBox3.TabIndex = 8;
@@ -2169,7 +2170,7 @@ namespace cadencii
             this.pictKeyLengthSplitter.BorderStyle = BorderStyle.Fixed3D;
 			this.pictKeyLengthSplitter.Cursor = Cadencii.Gui.Cursors.NoMoveHoriz;
             this.pictKeyLengthSplitter.Location = new  Cadencii.Gui.Point(49, 263);
-            this.pictKeyLengthSplitter.Margin = new Cadencii.Gui.Padding(0);
+            this.pictKeyLengthSplitter.Margin = new Cadencii.Gui.Toolkit.Padding(0);
             this.pictKeyLengthSplitter.Name = "pictKeyLengthSplitter";
             this.pictKeyLengthSplitter.Size = new Cadencii.Gui.Dimension(16, 16);
             this.pictKeyLengthSplitter.TabIndex = 20;
@@ -2180,7 +2181,7 @@ namespace cadencii
             this.pictureBox2.Anchor = ((AnchorStyles)((AnchorStyles.Bottom | AnchorStyles.Right)));
             this.pictureBox2.BackColor = new Color(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.pictureBox2.Location = new Cadencii.Gui.Point(405, 231);
-            this.pictureBox2.Margin = new Cadencii.Gui.Padding(0);
+            this.pictureBox2.Margin = new Cadencii.Gui.Toolkit.Padding(0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new Cadencii.Gui.Dimension(16, 48);
             this.pictureBox2.TabIndex = 5;
@@ -2200,7 +2201,7 @@ namespace cadencii
             this.picturePositionIndicator.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             this.picturePositionIndicator.BackColor = Cadencii.Gui.Colors.DarkGray;
             this.picturePositionIndicator.Location = new Cadencii.Gui.Point(0, 46);
-            this.picturePositionIndicator.Margin = new Cadencii.Gui.Padding(0);
+            this.picturePositionIndicator.Margin = new Cadencii.Gui.Toolkit.Padding(0);
             this.picturePositionIndicator.Name = "picturePositionIndicator";
             this.picturePositionIndicator.Size = new Cadencii.Gui.Dimension(700, 48);
             this.picturePositionIndicator.TabIndex = 10;
@@ -2271,19 +2272,19 @@ namespace cadencii
             // splitContainerProperty
             // 
             this.splitContainerProperty.AddControl(this.splitContainer2);
-            this.splitContainerProperty.FixedPanel = Cadencii.Gui.FixedPanel.None;
+            this.splitContainerProperty.FixedPanel = Cadencii.Gui.Toolkit.FixedPanel.None;
             this.splitContainerProperty.SplitterFixed = false;
             this.splitContainerProperty.Location = new Cadencii.Gui.Point(448, 14);
-            this.splitContainerProperty.Margin = new Cadencii.Gui.Padding(0);
+            this.splitContainerProperty.Margin = new Cadencii.Gui.Toolkit.Padding(0);
             this.splitContainerProperty.Name = "splitContainerProperty";
-            this.splitContainerProperty.Orientation = Cadencii.Gui.Orientation.Horizontal;
+            this.splitContainerProperty.Orientation = Cadencii.Gui.Toolkit.Orientation.Horizontal;
             // 
             // 
             // 
-            this.splitContainerProperty.Panel1.Anchor = Cadencii.Gui.AnchorStyles.Top | Cadencii.Gui.AnchorStyles.Bottom | Cadencii.Gui.AnchorStyles.Left | Cadencii.Gui.AnchorStyles.Right;
+            this.splitContainerProperty.Panel1.Anchor = Cadencii.Gui.Toolkit.AnchorStyles.Top | Cadencii.Gui.Toolkit.AnchorStyles.Bottom | Cadencii.Gui.Toolkit.AnchorStyles.Left | Cadencii.Gui.Toolkit.AnchorStyles.Right;
             this.splitContainerProperty.Panel1.BorderColor = Cadencii.Gui.Colors.Black;
             this.splitContainerProperty.Panel1.Location = new Cadencii.Gui.Point(0, 0);
-            this.splitContainerProperty.Panel1.Margin = new Cadencii.Gui.Padding(0, 0, 0, 4);
+            this.splitContainerProperty.Panel1.Margin = new Cadencii.Gui.Toolkit.Padding(0, 0, 0, 4);
             this.splitContainerProperty.Panel1.Name = "m_panel1";
             this.splitContainerProperty.Panel1.Size = new Cadencii.Gui.Dimension(42, 348);
             this.splitContainerProperty.Panel1.TabIndex = 0;
@@ -2291,10 +2292,10 @@ namespace cadencii
             // 
             // 
             // 
-			this.splitContainerProperty.Panel2.Anchor = Cadencii.Gui.AnchorStyles.Top | Cadencii.Gui.AnchorStyles.Bottom | Cadencii.Gui.AnchorStyles.Left | Cadencii.Gui.AnchorStyles.Right;
+			this.splitContainerProperty.Panel2.Anchor = Cadencii.Gui.Toolkit.AnchorStyles.Top | Cadencii.Gui.Toolkit.AnchorStyles.Bottom | Cadencii.Gui.Toolkit.AnchorStyles.Left | Cadencii.Gui.Toolkit.AnchorStyles.Right;
             this.splitContainerProperty.Panel2.BorderColor = Cadencii.Gui.Colors.Black;
             this.splitContainerProperty.Panel2.Location = new Cadencii.Gui.Point(46, 0);
-            this.splitContainerProperty.Panel2.Margin = new Cadencii.Gui.Padding(0);
+            this.splitContainerProperty.Panel2.Margin = new Cadencii.Gui.Toolkit.Padding(0);
             this.splitContainerProperty.Panel2.Name = "m_panel2";
             this.splitContainerProperty.Panel2.Size = new Cadencii.Gui.Dimension(66, 348);
             this.splitContainerProperty.Panel2.TabIndex = 1;
@@ -2308,19 +2309,19 @@ namespace cadencii
             // 
             // splitContainer2
             // 
-            this.splitContainer2.FixedPanel = Cadencii.Gui.FixedPanel.Panel2;
+            this.splitContainer2.FixedPanel = Cadencii.Gui.Toolkit.FixedPanel.Panel2;
             this.splitContainer2.SplitterFixed = false;
             this.splitContainer2.Location = new Cadencii.Gui.Point(0, 345);
-            this.splitContainer2.Margin = new Cadencii.Gui.Padding(0);
+            this.splitContainer2.Margin = new Cadencii.Gui.Toolkit.Padding(0);
             this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = Cadencii.Gui.Orientation.Vertical;
+            this.splitContainer2.Orientation = Cadencii.Gui.Toolkit.Orientation.Vertical;
             // 
             // 
             // 
-			this.splitContainer2.Panel2.Anchor = Cadencii.Gui.AnchorStyles.Top | Cadencii.Gui.AnchorStyles.Bottom | Cadencii.Gui.AnchorStyles.Left | Cadencii.Gui.AnchorStyles.Right;
+			this.splitContainer2.Panel2.Anchor = Cadencii.Gui.Toolkit.AnchorStyles.Top | Cadencii.Gui.Toolkit.AnchorStyles.Bottom | Cadencii.Gui.Toolkit.AnchorStyles.Left | Cadencii.Gui.Toolkit.AnchorStyles.Right;
             this.splitContainer2.Panel1.BorderColor = Cadencii.Gui.Colors.Black;
             this.splitContainer2.Panel1.Location = new Cadencii.Gui.Point(0, 0);
-            this.splitContainer2.Panel1.Margin = new Cadencii.Gui.Padding(0);
+            this.splitContainer2.Panel1.Margin = new Cadencii.Gui.Toolkit.Padding(0);
             this.splitContainer2.Panel1.Name = "m_panel1";
             this.splitContainer2.Panel1.Size = new Cadencii.Gui.Dimension(115, 25);
             this.splitContainer2.Panel1.TabIndex = 0;
@@ -2328,10 +2329,10 @@ namespace cadencii
             // 
             // 
             // 
-			this.splitContainer2.Panel2.Anchor = Cadencii.Gui.AnchorStyles.Bottom | Cadencii.Gui.AnchorStyles.Left | Cadencii.Gui.AnchorStyles.Right;
+			this.splitContainer2.Panel2.Anchor = Cadencii.Gui.Toolkit.AnchorStyles.Bottom | Cadencii.Gui.Toolkit.AnchorStyles.Left | Cadencii.Gui.Toolkit.AnchorStyles.Right;
             this.splitContainer2.Panel2.BorderColor = Cadencii.Gui.Colors.Black;
             this.splitContainer2.Panel2.Location = new Cadencii.Gui.Point(0, 29);
-            this.splitContainer2.Panel2.Margin = new Cadencii.Gui.Padding(0);
+            this.splitContainer2.Panel2.Margin = new Cadencii.Gui.Toolkit.Padding(0);
             this.splitContainer2.Panel2.Name = "m_panel2";
             this.splitContainer2.Panel2.Size = new Cadencii.Gui.Dimension(115, 105);
             this.splitContainer2.Panel2.TabIndex = 1;
@@ -2345,20 +2346,20 @@ namespace cadencii
             // 
             // splitContainer1
             // 
-            this.splitContainer1.FixedPanel = Cadencii.Gui.FixedPanel.Panel2;
+            this.splitContainer1.FixedPanel = Cadencii.Gui.Toolkit.FixedPanel.Panel2;
             this.splitContainer1.SplitterFixed = false;
             this.splitContainer1.Location = new Cadencii.Gui.Point(2, 2);
-            this.splitContainer1.Margin = new Cadencii.Gui.Padding(0);
+            this.splitContainer1.Margin = new Cadencii.Gui.Toolkit.Padding(0);
 			this.splitContainer1.MinimumSize = new Cadencii.Gui.Dimension(0, 54);
             this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = Cadencii.Gui.Orientation.Vertical;
+            this.splitContainer1.Orientation = Cadencii.Gui.Toolkit.Orientation.Vertical;
             // 
             // 
             // 
-			this.splitContainer1.Panel1.Anchor = Cadencii.Gui.AnchorStyles.Top | Cadencii.Gui.AnchorStyles.Bottom | Cadencii.Gui.AnchorStyles.Left | Cadencii.Gui.AnchorStyles.Right;
+			this.splitContainer1.Panel1.Anchor = Cadencii.Gui.Toolkit.AnchorStyles.Top | Cadencii.Gui.Toolkit.AnchorStyles.Bottom | Cadencii.Gui.Toolkit.AnchorStyles.Left | Cadencii.Gui.Toolkit.AnchorStyles.Right;
             this.splitContainer1.Panel1.BorderColor = Cadencii.Gui.Colors.Black;
             this.splitContainer1.Panel1.Location = new Cadencii.Gui.Point(0, 0);
-            this.splitContainer1.Panel1.Margin = new Cadencii.Gui.Padding(0);
+            this.splitContainer1.Panel1.Margin = new Cadencii.Gui.Toolkit.Padding(0);
             this.splitContainer1.Panel1.Name = "m_panel1";
             this.splitContainer1.Panel1.Size = new Cadencii.Gui.Dimension(953, 50);
             this.splitContainer1.Panel1.TabIndex = 0;
@@ -2366,10 +2367,10 @@ namespace cadencii
             // 
             // 
             // 
-			this.splitContainer1.Panel2.Anchor = Cadencii.Gui.AnchorStyles.Bottom | Cadencii.Gui.AnchorStyles.Left | Cadencii.Gui.AnchorStyles.Right;
+			this.splitContainer1.Panel2.Anchor = Cadencii.Gui.Toolkit.AnchorStyles.Bottom | Cadencii.Gui.Toolkit.AnchorStyles.Left | Cadencii.Gui.Toolkit.AnchorStyles.Right;
             this.splitContainer1.Panel2.BorderColor = Cadencii.Gui.Colors.Black;
             this.splitContainer1.Panel2.Location = new Cadencii.Gui.Point(0, 54);
-            this.splitContainer1.Panel2.Margin = new Cadencii.Gui.Padding(0);
+            this.splitContainer1.Panel2.Margin = new Cadencii.Gui.Toolkit.Padding(0);
             this.splitContainer1.Panel2.Name = "m_panel2";
             this.splitContainer1.Panel2.Size = new Cadencii.Gui.Dimension(953, 25);
             this.splitContainer1.Panel2.TabIndex = 1;
@@ -2520,10 +2521,10 @@ namespace cadencii
             // 
             // panelOverview
             // 
-	this.panelOverview.Anchor = ((Cadencii.Gui.AnchorStyles)(((Cadencii.Gui.AnchorStyles.Top | Cadencii.Gui.AnchorStyles.Left) | Cadencii.Gui.AnchorStyles.Right)));
+	this.panelOverview.Anchor = ((Cadencii.Gui.Toolkit.AnchorStyles)(((Cadencii.Gui.Toolkit.AnchorStyles.Top | Cadencii.Gui.Toolkit.AnchorStyles.Left) | Cadencii.Gui.Toolkit.AnchorStyles.Right)));
             this.panelOverview.BackColor = new Cadencii.Gui.Color(((int)(((byte)(106)))), ((int)(((byte)(108)))), ((int)(((byte)(108)))));
             this.panelOverview.Location = new Cadencii.Gui.Point(0, 1);
-            this.panelOverview.Margin = new Cadencii.Gui.Padding(0);
+            this.panelOverview.Margin = new Cadencii.Gui.Toolkit.Padding(0);
             this.panelOverview.Name = "panelOverview";
             this.panelOverview.Size = new Cadencii.Gui.Dimension(700, 45);
             this.panelOverview.TabIndex = 19;
@@ -2531,12 +2532,12 @@ namespace cadencii
             // 
             // pictPianoRoll
             // 
-			this.pictPianoRoll.Anchor = ((Cadencii.Gui.AnchorStyles)((((Cadencii.Gui.AnchorStyles.Top | Cadencii.Gui.AnchorStyles.Bottom)
-				| Cadencii.Gui.AnchorStyles.Left)
-				| Cadencii.Gui.AnchorStyles.Right)));
+			this.pictPianoRoll.Anchor = ((Cadencii.Gui.Toolkit.AnchorStyles)((((Cadencii.Gui.Toolkit.AnchorStyles.Top | Cadencii.Gui.Toolkit.AnchorStyles.Bottom)
+				| Cadencii.Gui.Toolkit.AnchorStyles.Left)
+				| Cadencii.Gui.Toolkit.AnchorStyles.Right)));
 			this.pictPianoRoll.BackColor = new Cadencii.Gui.Color(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
 			this.pictPianoRoll.Location = new Cadencii.Gui.Point(0, 94);
-			this.pictPianoRoll.Margin = new Cadencii.Gui.Padding(0);
+			this.pictPianoRoll.Margin = new Cadencii.Gui.Toolkit.Padding(0);
             this.pictPianoRoll.Name = "pictPianoRoll";
 			this.pictPianoRoll.Size = new Cadencii.Gui.Dimension(405, 169);
             this.pictPianoRoll.TabIndex = 12;
@@ -2544,7 +2545,7 @@ namespace cadencii
             // 
             // hScroll
             // 
-            this.hScroll.Anchor = ((Cadencii.Gui.AnchorStyles)(((AnchorStyles.Bottom | AnchorStyles.Left) | AnchorStyles.Right)));
+            this.hScroll.Anchor = ((Cadencii.Gui.Toolkit.AnchorStyles)(((AnchorStyles.Bottom | AnchorStyles.Left) | AnchorStyles.Right)));
             this.hScroll.Location = new Cadencii.Gui.Point(65, 263);
             this.hScroll.Name = "hScroll";
             this.hScroll.Size = new Cadencii.Gui.Dimension(257, 16);
@@ -2552,7 +2553,7 @@ namespace cadencii
             // 
             // rebar
             // 
-            this.rebar.Dock = Cadencii.Gui.DockStyle.Top;
+            this.rebar.Dock = Cadencii.Gui.Toolkit.DockStyle.Top;
             this.rebar.Location = new Cadencii.Gui.Point(0, 26);
             this.rebar.Name = "rebar";
             this.rebar.Size = new Cadencii.Gui.Dimension(955, 4);
@@ -2561,13 +2562,13 @@ namespace cadencii
             // 
             // imageListMenu
             // 
-			this.imageListMenu.ColorDepth = Cadencii.Gui.ColorDepth.Depth8Bit;
+			this.imageListMenu.ColorDepth = Cadencii.Gui.Toolkit.ColorDepth.Depth8Bit;
 			this.imageListMenu.ImageSize = new Cadencii.Gui.Dimension(1, 16);
             this.imageListMenu.TransparentColor = Cadencii.Gui.Colors.Transparent;
             // 
             // toolBarFile
             // 
-			this.toolBarFile.Appearance = Cadencii.Gui.ToolBarAppearance.Flat;
+			this.toolBarFile.Appearance = Cadencii.Gui.Toolkit.ToolBarAppearance.Flat;
             this.toolBarFile.Buttons.AddRange(new UiToolBarButton[] {
             this.stripBtnFileNew,
             this.stripBtnFileOpen,
@@ -2897,7 +2898,7 @@ namespace cadencii
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-			this.AsAwt ().AutoScaleMode = Cadencii.Gui.AutoScaleMode.Font;
+			this.AsAwt ().AutoScaleMode = Cadencii.Gui.Toolkit.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(955, 689);
 			this.AsAwt ().AddControl(this.toolStripContainer1);

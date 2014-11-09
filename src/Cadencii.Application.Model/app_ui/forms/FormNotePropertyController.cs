@@ -14,7 +14,7 @@
 using System;
 using cadencii.apputil;
 using cadencii;
-using Keys = Cadencii.Gui.Keys;
+using Keys = Cadencii.Gui.Toolkit.Keys;
 
 
 namespace cadencii

@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using Cadencii.Gui;
 using cadencii.vsq;
 using System;
+using Cadencii.Gui.Toolkit;
 
 
 namespace cadencii

@@ -1,6 +1,7 @@
 using System;
 using Cadencii.Gui;
 using cadencii.apputil;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

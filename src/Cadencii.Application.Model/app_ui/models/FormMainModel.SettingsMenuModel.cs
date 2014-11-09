@@ -12,6 +12,7 @@ using cadencii.java.util;
 using Cadencii.Gui;
 using cadencii.apputil;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

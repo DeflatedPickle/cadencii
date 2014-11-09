@@ -16,10 +16,11 @@ using System.Collections.Generic;
 using cadencii.apputil;
 using cadencii;
 using Cadencii.Gui;
-using NMouseButtons = Cadencii.Gui.MouseButtons;
-using NMouseEventArgs = Cadencii.Gui.MouseEventArgs;
-using NMouseEventHandler = Cadencii.Gui.MouseEventHandler;
+using NMouseButtons = Cadencii.Gui.Toolkit.MouseButtons;
+using NMouseEventArgs = Cadencii.Gui.Toolkit.MouseEventArgs;
+using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventArgs>;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

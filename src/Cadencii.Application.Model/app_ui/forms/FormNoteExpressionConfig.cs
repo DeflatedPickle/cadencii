@@ -1,5 +1,6 @@
 using System;
 using cadencii.vsq;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

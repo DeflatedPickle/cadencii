@@ -168,7 +168,7 @@ public class AutoBRITool : IPaletteTool
     /// <param name="ids">クリックされたイベントのInternalIDが格納された配列</param>
     /// <param name="button">クリックされたときのマウスボタン</param>
     /// <returns></returns>
-	public bool edit(cadencii.vsq.VsqTrack track, int[] ids, Cadencii.Gui.MouseButtons button)
+	public bool edit(cadencii.vsq.VsqTrack track, int[] ids, Cadencii.Gui.Toolkit.MouseButtons button)
     {
         // コントロールカーブの時間方向の解像度を，Cadenciiの設定値から取得
 		int resol = cadencii.core.ApplicationGlobal.appConfig.getControlCurveResolutionValue();

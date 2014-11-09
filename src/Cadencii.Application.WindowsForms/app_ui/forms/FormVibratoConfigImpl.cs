@@ -18,7 +18,7 @@ using cadencii.apputil;
 using cadencii.vsq;
 
 using cadencii.java.util;
-using Keys = Cadencii.Gui.Keys;
+using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui;
 
 

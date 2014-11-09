@@ -19,7 +19,7 @@ using cadencii;
 using cadencii.java.util;
 
 
-using Keys = Cadencii.Gui.Keys;
+using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui;
 
 namespace cadencii

@@ -14,6 +14,7 @@
 using System;
 using Cadencii.Gui;
 using DialogResult = Cadencii.Gui.DialogResult;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii
 {

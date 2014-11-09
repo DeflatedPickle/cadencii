@@ -144,9 +144,9 @@ namespace cadencii
             btnForward2.Click += new EventHandler(commonButton_Click);
             btnApply.Click += new EventHandler(btnApply_Click);
             txtDataPointClock.TextChanged += new EventHandler(commonTextBox_TextChanged);
-            txtDataPointClock.KeyUp += new Cadencii.Gui.KeyEventHandler(commonTextBox_KeyUp);
+            txtDataPointClock.KeyUp += commonTextBox_KeyUp;
             txtDataPointValue.TextChanged += new EventHandler(commonTextBox_TextChanged);
-			txtDataPointValue.KeyUp += new Cadencii.Gui.KeyEventHandler(commonTextBox_KeyUp);
+			txtDataPointValue.KeyUp += commonTextBox_KeyUp;
             btnBackward3.Click += new EventHandler(commonButton_Click);
             btnForward3.Click += new EventHandler(commonButton_Click);
             btnUndo.Click += new EventHandler(handleUndoRedo_Click);
@@ -156,9 +156,9 @@ namespace cadencii
         #endregion
 
         #region event handlers
-        public void commonTextBox_KeyUp(Object sender, Cadencii.Gui.KeyEventArgs e)
+        public void commonTextBox_KeyUp(Object sender, Cadencii.Gui.Toolkit.KeyEventArgs e)
         {
-			if ((e.KeyCode & Cadencii.Gui.Keys.Enter) != Cadencii.Gui.Keys.Enter) {
+			if ((e.KeyCode & Cadencii.Gui.Toolkit.Keys.Enter) != Cadencii.Gui.Toolkit.Keys.Enter) {
                 return;
             }
             applyValue((sender == txtDataPointClock));

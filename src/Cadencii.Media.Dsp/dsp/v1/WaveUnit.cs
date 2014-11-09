@@ -13,6 +13,7 @@
  */
 using System;
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
 using PortUtil = Cadencii.Gui.Colors;
 using cadencii.core;
 

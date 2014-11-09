@@ -221,7 +221,7 @@ namespace cadencii
                     int selected = EditorManager.Selected;
                     VsqTrack vsq_track = vsq.Track[selected];
 
-					var p = Cadencii.Gui.Screen.Instance.GetScreenMousePosition();
+					var p = Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition();
                     var mouse_position = this.PointToClient(new System.Drawing.Point(p.X, p.Y));
                     int stdx = EditorManager.MainWindow.Model.StartToDrawX;
                     int stdy = EditorManager.MainWindow.Model.StartToDrawY;
@@ -1037,7 +1037,7 @@ namespace cadencii
                         }
                     } else if (EditorManager.mIsPointerDowned) {
                         // 選択範囲を半透明で塗りつぶす
-						var mouse_location = Cadencii.Gui.Screen.Instance.GetScreenMousePosition();
+						var mouse_location = Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition();
                         var mouse = this.PointToClient(new System.Drawing.Point(mouse_location.X, mouse_location.Y));
                         // 描く四角形の位置とサイズ
                         int tx, ty, twidth, theight;

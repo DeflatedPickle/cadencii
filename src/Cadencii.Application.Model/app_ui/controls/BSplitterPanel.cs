@@ -14,6 +14,7 @@
 using System;
 using System.ComponentModel;
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
 
 namespace cadencii.apputil
 {

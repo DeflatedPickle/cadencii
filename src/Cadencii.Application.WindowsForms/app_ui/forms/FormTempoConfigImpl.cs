@@ -15,7 +15,7 @@ using System;
 using System.Windows.Forms;
 using cadencii.apputil;
 
-using Keys = Cadencii.Gui.Keys;
+using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui;
 
 

@@ -15,7 +15,7 @@ using System;
 using System.Windows.Forms;
 using System.Drawing;
 using cadencii.apputil;
-using Keys = Cadencii.Gui.Keys;
+using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui;
 using Rectangle = System.Drawing.Rectangle;
 using Screen = System.Windows.Forms.Screen;
