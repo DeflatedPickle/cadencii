@@ -23,6 +23,7 @@ using cadencii.media;
 using System.Threading;
 using cadencii.apputil;
 using Cadencii.Utilities;
+using Cadencii.Media.Windows;
 
 namespace cadencii
 {

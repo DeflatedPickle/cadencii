@@ -27,7 +27,7 @@ using Cadencii.Platform.Windows;
 
 using cadencii;
 
-namespace cadencii.media
+namespace Cadencii.Media.Windows
 {
 
     public struct _avistdindex_entry

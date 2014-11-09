@@ -21,6 +21,7 @@ using cadencii.media;
 using cadencii.vsq;
 using cadencii.core;
 using Cadencii.Utilities;
+using Cadencii.Media.Windows;
 
 
 

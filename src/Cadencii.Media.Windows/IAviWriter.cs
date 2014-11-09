@@ -14,7 +14,7 @@
 using System;
 using System.Drawing;
 
-namespace cadencii.media
+namespace Cadencii.Media.Windows
 {
 
     public interface IAviWriter

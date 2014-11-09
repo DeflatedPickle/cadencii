@@ -21,7 +21,7 @@ using System.IO;
 using cadencii;
 using Cadencii.Platform.Windows;
 
-namespace cadencii.media
+namespace Cadencii.Media.Windows
 {
 
 

@@ -18,7 +18,7 @@ using System.Runtime.InteropServices;
 using cadencii;
 using Cadencii.Platform.Windows;
 
-namespace cadencii.media
+namespace Cadencii.Media.Windows
 {
     using DWORD = System.UInt32;
     using UINT = System.UInt32;
@@ -201,6 +201,7 @@ namespace cadencii.media
 
 }
 
+#if false
 namespace cadencii.media.impl
 {
     using DWORD = System.UInt32;
@@ -496,3 +497,4 @@ namespace cadencii.media.impl
 
     }
 }
+#endif

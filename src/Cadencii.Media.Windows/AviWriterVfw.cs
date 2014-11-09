@@ -18,7 +18,7 @@ using System.Runtime.InteropServices;
 //using System.Windows.Forms;
 using System.IO;
 
-namespace cadencii.media
+namespace Cadencii.Media.Windows
 {
 
     public class AviWriterVfw : IAviWriter

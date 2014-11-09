@@ -18,8 +18,10 @@ using cadencii;
 using cadencii.core2;
 using Cadencii.Utilities;
 using Cadencii.Platform.Windows;
+using cadencii.media;
+using cadencii.javax.sound.midi;
 
-namespace cadencii.media
+namespace Cadencii.Media.Windows
 {
 
     public class MidiInDevice : IDisposable
@@ -160,8 +162,8 @@ namespace cadencii.media
                             case 0xb0:
                             case 0xe0: {
                                 if (MidiReceived != null) {
-                                    javax.sound.midi.MidiMessage msg =
-                                        new cadencii.javax.sound.midi.MidiMessage(
+                                    MidiMessage msg =
+                                        new MidiMessage(
                                             new byte[] { (byte)(receive & 0xff),
                                                          (byte)((receive & 0xffff) >> 8),
                                                          (byte)((receive & ((2 << 24) - 1)) >> 16) });
@@ -172,8 +174,8 @@ namespace cadencii.media
                             case 0xc0:
                             case 0xd0: {
                                 if (MidiReceived != null) {
-                                    javax.sound.midi.MidiMessage msg =
-                                        new cadencii.javax.sound.midi.MidiMessage(
+                                    MidiMessage msg =
+                                        new MidiMessage(
                                             new byte[] { (byte)( receive & 0xff ),
                                                          (byte)((receive & 0xffff) >> 8) });
                                     MidiReceived.Invoke(this, msg);
@@ -189,8 +191,8 @@ namespace cadencii.media
                                     if (b0 == 0xf1) {
                                         // MTC quater frame message
                                         if (MidiReceived != null) {
-                                            javax.sound.midi.MidiMessage msg =
-                                                new cadencii.javax.sound.midi.MidiMessage(new byte[] { b0, b1, b2 });
+                                            MidiMessage msg =
+                                                new MidiMessage(new byte[] { b0, b1, b2 });
                                             MidiReceived.Invoke(this, msg);
                                         }
                                     } else if (b0 == 0xf2) {
@@ -206,9 +208,9 @@ namespace cadencii.media
                                     byte b2 = (byte)((receive >> 16) & 0xff);
                                     byte b3 = (byte)((receive >> 24) & 0xff);
                                     if (b0 == 0xfa) {
-                                        MidiReceived.Invoke(this, new javax.sound.midi.MidiMessage(new byte[] { b0 }));
+                                        MidiReceived.Invoke(this, new MidiMessage(new byte[] { b0 }));
                                     } else if (b0 == 0xfc) {
-                                        MidiReceived.Invoke(this, new javax.sound.midi.MidiMessage(new byte[] { b0 }));
+                                        MidiReceived.Invoke(this, new MidiMessage(new byte[] { b0 }));
                                     }
                                 }
                                 break;

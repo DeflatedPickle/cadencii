@@ -3,6 +3,7 @@ using cadencii.media;
 using System.Collections.Generic;
 using cadencii.javax.sound.midi;
 using cadencii.vsq;
+using Cadencii.Media.Windows;
 
 namespace cadencii
 {

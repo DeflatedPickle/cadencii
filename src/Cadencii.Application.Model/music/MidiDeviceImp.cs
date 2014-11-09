@@ -14,6 +14,7 @@
 using System;
 using System.Collections.Generic;
 using cadencii.media;
+using Cadencii.Media.Windows;
 
 namespace cadencii
 {

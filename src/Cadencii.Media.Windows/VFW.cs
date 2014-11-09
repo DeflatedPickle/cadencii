@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 using cadencii;
 using Cadencii.Platform.Windows;
 
-namespace cadencii.media
+namespace Cadencii.Media.Windows
 {
 
     public static class VFW

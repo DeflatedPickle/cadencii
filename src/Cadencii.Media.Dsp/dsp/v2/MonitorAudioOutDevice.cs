@@ -12,6 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using cadencii.media;
+using Cadencii.Media.Windows;
 
 namespace cadencii.dsp.v2
 {

@@ -3,6 +3,7 @@ using System.ComponentModel;
 using cadencii.media;
 using cadencii.vsq;
 using Cadencii.Utilities;
+using Cadencii.Media.Windows;
 
 namespace cadencii
 {

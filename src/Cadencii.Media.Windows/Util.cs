@@ -16,7 +16,7 @@ using System.IO;
 
 using cadencii;
 
-namespace cadencii.media
+namespace Cadencii.Media.Windows
 {
 
     internal static class Util

@@ -7,6 +7,7 @@ using cadencii.vsq;
 using cadencii.core;
 using cadencii.media;
 using Cadencii.Utilities;
+using Cadencii.Media.Windows;
 
 namespace cadencii
 {

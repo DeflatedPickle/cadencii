@@ -16,8 +16,9 @@ using System.Runtime.InteropServices;
 
 using cadencii;
 using Cadencii.Platform.Windows;
+using cadencii.media;
 
-namespace cadencii.media
+namespace Cadencii.Media.Windows
 {
 
     public delegate void FirstBufferWrittenCallback();
