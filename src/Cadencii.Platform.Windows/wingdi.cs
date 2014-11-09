@@ -15,7 +15,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.IO;
 
-namespace cadencii
+namespace Cadencii.Platform.Windows
 {
 
     [StructLayout(LayoutKind.Sequential, Pack = 1)]

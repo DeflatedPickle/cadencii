@@ -20,6 +20,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using cadencii;
+using Cadencii.Platform.Windows;
 
 namespace cadencii
 {

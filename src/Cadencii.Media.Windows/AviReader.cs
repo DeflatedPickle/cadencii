@@ -19,6 +19,7 @@ using System.IO;
 //using System.Windows.Forms;
 
 using cadencii;
+using Cadencii.Platform.Windows;
 
 namespace cadencii.media
 {

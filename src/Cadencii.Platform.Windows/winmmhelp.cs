@@ -13,10 +13,9 @@
  */
 using System;
 using System.Runtime.InteropServices;
-
 using cadencii;
 
-namespace cadencii
+namespace Cadencii.Platform.Windows
 {
     public unsafe static class winmmhelp
     {

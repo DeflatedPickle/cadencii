@@ -13,6 +13,7 @@
  */
 using Cadencii.Gui;
 using Cadencii.Utilities;
+using Cadencii.Platform.Windows;
 
 
 #if ENABLE_AQUESTONE

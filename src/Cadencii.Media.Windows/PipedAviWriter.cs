@@ -21,6 +21,7 @@ using System.IO;
 //using System.IO.Pipes;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Cadencii.Platform.Windows;
 
 using cadencii;
 

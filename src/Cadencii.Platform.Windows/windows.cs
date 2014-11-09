@@ -17,7 +17,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace cadencii
+namespace Cadencii.Platform.Windows
 {
     using WORD = System.UInt16;
     using DWORD = System.UInt32;

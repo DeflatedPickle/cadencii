@@ -23,6 +23,7 @@ using cadencii.java.util;
 using cadencii.vsq;
 using cadencii.dsp;
 using VstSdk;
+using Cadencii.Platform.Windows;
 
 namespace cadencii
 {

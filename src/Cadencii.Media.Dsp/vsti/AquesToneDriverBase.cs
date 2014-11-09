@@ -18,6 +18,7 @@ using System.IO;
 using cadencii;
 using cadencii.vsq;
 using Cadencii.Utilities;
+using Cadencii.Platform.Windows;
 
 namespace cadencii
 {

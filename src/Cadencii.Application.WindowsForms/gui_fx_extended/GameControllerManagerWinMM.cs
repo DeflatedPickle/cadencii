@@ -1,4 +1,5 @@
 ﻿using System;
+using Cadencii.Platform.Windows;
 
 namespace cadencii
 {

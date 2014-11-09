@@ -13,6 +13,7 @@
  */
 using System;
 using System.Collections.Generic;
+using Cadencii.Platform.Windows;
 
 namespace cadencii.javax.sound.midi
 {

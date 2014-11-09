@@ -18,6 +18,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.ComponentModel;
 using cadencii;
+using Cadencii.Platform.Windows;
 
 namespace cadencii
 {

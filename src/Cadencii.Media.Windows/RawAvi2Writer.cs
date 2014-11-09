@@ -18,6 +18,9 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using Cadencii.Platform.Windows;
+
+
 #if DEBUG
 //using System.Windows.Forms;
 #endif
