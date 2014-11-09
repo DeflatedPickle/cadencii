@@ -220,7 +220,7 @@ namespace cadencii
             chkMetaText.Click += new EventHandler(chkMetaText_Click);
             chkExportVocaloidNrpn.CheckedChanged += new EventHandler(chkExportVocaloidNrpn_CheckedChanged);
             chkExportVocaloidNrpn.CheckedChanged += new EventHandler(chkExportVocaloidNrpn_CheckedChanged);
-            this.FormClosing += new FormClosingEventHandler(FormMidiImExport_FormClosing);
+			this.AsAwt ().FormClosing += (o, e) => FormMidiImExport_FormClosing ();
             btnOK.Click += new EventHandler(btnOK_Click);
             btnCancel.Click += new EventHandler(btnCancel_Click);
             radioGateTime.CheckedChanged += new EventHandler(radioGateTime_CheckedChanged);
@@ -282,7 +282,7 @@ namespace cadencii
             }
         }
 
-        public void FormMidiImExport_FormClosing(Object sender, FormClosingEventArgs e)
+        public void FormMidiImExport_FormClosing()
         {
             columnWidthTrack = listTrack.GetColumn(0).Width;
             columnWidthName = listTrack.GetColumn(1).Width;

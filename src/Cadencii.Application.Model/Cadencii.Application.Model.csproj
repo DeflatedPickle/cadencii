@@ -246,6 +246,7 @@
     <Compile Include="app_ui\models\FormMainModel.ToolBarsModel.cs" />
     <Compile Include="app_ui\models\FormMainModel.MidiDevices.cs" />
     <Compile Include="app_ui\models\FormMainModel.OtherItemsModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.FormModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

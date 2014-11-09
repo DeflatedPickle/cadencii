@@ -5,6 +5,17 @@ namespace cadencii
 {
 	public interface UiForm : UiControl
 	{
+		UiForm AsAwt ();
+
+		FormWindowState WindowState { get; set; }
+		event EventHandler Load;
+		event EventHandler Activated;
+		event EventHandler Deactivate;
+		event EventHandler<DragEventArgs> DragEnter;
+		event EventHandler<DragEventArgs> DragDrop;
+		event EventHandler<DragEventArgs> DragOver;
+		event EventHandler DragLeave;
+
 		Dimension MinimumSize { get; set; }
 		bool TopMost { get; set; }
 
@@ -14,7 +25,7 @@ namespace cadencii
 		void Close ();
 
 		event EventHandler LocationChanged;
-		event EventHandler FormClosing;
+		event EventHandler<FormClosingEventArgs> FormClosing;
 		event EventHandler FormClosed;
 
 		Cursor Cursor { get; set; }

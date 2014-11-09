@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{711A691F-2113-4EC1-8D4C-C2668C3EA219}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Cadencii.Gui.Framework</RootNamespace>
+    <RootNamespace>Cadencii.Gui</RootNamespace>
     <AssemblyName>Cadencii.Gui.Framework</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
@@ -136,6 +136,9 @@
     <Compile Include="models\winforms\TextFormatFlags.cs" />
     <Compile Include="models\Cursors.cs" />
     <Compile Include="models\winforms\FormWindowState.cs" />
+    <Compile Include="models\winforms\DragEventArgs.cs" />
+    <Compile Include="models\winforms\IDataObject.cs" />
+    <Compile Include="models\winforms\FormClosingEventArgs.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

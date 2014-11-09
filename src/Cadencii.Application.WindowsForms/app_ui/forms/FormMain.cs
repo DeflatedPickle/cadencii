@@ -82,11 +82,6 @@ namespace cadencii
 			set { trackSelector = value; }
 		}
 
-		FormWindowState UiFormMain.WindowState {
-			get { return (FormWindowState)WindowState; }
-			set { WindowState = (System.Windows.Forms.FormWindowState) value; }
-		}
-
         /// <summary>
         /// 特殊なキーの組み合わせのショートカットと、メニューアイテムとの紐付けを保持するクラスです。
         /// </summary>
@@ -187,11 +182,7 @@ namespace cadencii
 		public UiOpenFileDialog openMidiDialog { get; set; }
 		public UiSaveFileDialog saveMidiDialog { get; set; }
 		public UiOpenFileDialog openWaveDialog { get; set; }
-        public System.ComponentModel.BackgroundWorker bgWorkScreen;
-        /// <summary>
-        /// アイコンパレットのドラッグ＆ドロップ処理中，一度でもpictPianoRoll内にマウスが入ったかどうか
-        /// </summary>
-        private bool mIconPaletteOnceDragEntered = false;
+		public System.ComponentModel.BackgroundWorker bgWorkScreen { get; set; }
         /// <summary>
         /// 特殊な取り扱いが必要なショートカットのキー列と、対応するメニューアイテムを保存しておくリスト。
         /// </summary>
@@ -204,7 +195,6 @@ namespace cadencii
         /// pictureBox2の描画ループで使うグラフィックス
         /// </summary>
 		public Graphics mGraphicsPictureBox2 { get;set; }
-        private FormWindowState mWindowState = FormWindowState.Normal;
 #if MONITOR_FPS
         /// <summary>
         /// パフォーマンスカウンタ
@@ -579,7 +569,7 @@ namespace cadencii
                 this.Bounds = new System.Drawing.Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
                 EditorManager.editorConfig.WindowRect = bounds;
             }
-            this.LocationChanged += new EventHandler(FormMain_LocationChanged);
+			this.LocationChanged += (o,e) => model.FormMain.RunLocationChanged ();
 
             updateScrollRangeHorizontal();
             updateScrollRangeVertical();
@@ -1975,38 +1965,6 @@ namespace cadencii
             waveView.load(track, file);
         }
         */
-
-        /// <summary>
-        /// EditorManager.editorConfig.ViewWaveformの値をもとに、splitterContainer2の表示状態を更新します
-        /// </summary>
-        public void updateSplitContainer2Size(bool save_to_config)
-        {
-			if (ApplicationGlobal.appConfig.ViewWaveform) {
-				splitContainer2.Panel2MinSize = (Consts._SPL2_PANEL2_MIN_HEIGHT);
-                splitContainer2.SplitterFixed = (false);
-                splitContainer2.Panel2Hidden = (false);
-                splitContainer2.DividerSize = (Consts._SPL_SPLITTER_WIDTH);
-                int lastloc = EditorManager.editorConfig.SplitContainer2LastDividerLocation;
-                if (lastloc <= 0 || lastloc > splitContainer2.Height) {
-                    int draft = splitContainer2.Height- 100;
-                    if (draft <= 0) {
-                        draft = splitContainer2.Height/ 2;
-                    }
-                    splitContainer2.DividerLocation = (draft);
-                } else {
-                    splitContainer2.DividerLocation = (lastloc);
-                }
-            } else {
-                if (save_to_config) {
-                    EditorManager.editorConfig.SplitContainer2LastDividerLocation = splitContainer2.DividerLocation;
-                }
-                splitContainer2.Panel2MinSize = (0);
-                splitContainer2.Panel2Hidden = (true);
-                splitContainer2.DividerSize = (0);
-                splitContainer2.DividerLocation = (splitContainer2.Height);
-                splitContainer2.SplitterFixed = (true);
-            }
-        }
 
         /// <summary>
         /// ウィンドウの表示内容に応じて、ウィンドウサイズの最小値を計算します
@@ -3710,7 +3668,7 @@ namespace cadencii
         /// </summary>
         public void registerEventHandlers()
         {
-            this.Load += new EventHandler(FormMain_Load);
+			this.AsAwt ().Load += (o,e) => model.FormMain.RunLoad ();
 
 #if ENABLE_MOUSE_ENTER_STATUS_LABEL
 			menuFileNew.MouseEnter += new EventHandler(handleMenuMouseEnter);
@@ -4032,10 +3990,10 @@ namespace cadencii
 			waveView.MouseDown += (o, e) => model.WaveView.RunMouseDown (e);
 			waveView.MouseUp += (o, e) => model.WaveView.RunMouseUp (e);
 			waveView.MouseMove += (o, e) => model.WaveView.RunMouseMove (e);
-            this.DragEnter += FormMain_DragEnter;
-            this.DragDrop += FormMain_DragDrop;
-            this.DragOver += FormMain_DragOver;
-            this.DragLeave += new EventHandler(FormMain_DragLeave);
+			this.AsAwt ().DragEnter += (o,e) => model.FormMain.DragEnter(e);
+			this.AsAwt ().DragDrop += (o,e) => model.FormMain.DragDrop (e);
+			this.AsAwt ().DragOver += (o,e) => model.FormMain.DragOver (e);
+			this.AsAwt ().DragLeave += (o,e) => model.FormMain.DragLeave ();
 
 			pictureBox2.MouseDown += (o,e) => model.OtherItems.pictureBox2_MouseDown(e);
 			pictureBox2.MouseUp += (o,e) => model.OtherItems.pictureBox2_MouseUp ();
@@ -4055,12 +4013,12 @@ namespace cadencii
 			toolBarMeasure.ButtonClick += (o, e) => model.ToolBars.MeasureButtonClick (e);
 			toolBarMeasure.MouseDown += (o, e) => model.ToolBars.MeasureMouseDown (e);
 			stripBtnStepSequencer.CheckedChanged += (o, e) => model.ToolBars.StepSequencerCheckedChanged ();
-            this.Deactivate += new EventHandler(FormMain_Deactivate);
-            this.Activated += new EventHandler(FormMain_Activated);
-            this.FormClosed += new FormClosedEventHandler(FormMain_FormClosed);
-            this.FormClosing += new FormClosingEventHandler(FormMain_FormClosing);
-            this.PreviewKeyDown += FormMain_PreviewKeyDown;
-            this.SizeChanged += FormMain_SizeChanged;
+			this.AsAwt ().Deactivate += (o,e) => model.FormMain.RunDeactivate ();
+			this.AsAwt ().Activated += (o,e) => model.FormMain.RunActivated ();
+			this.AsAwt ().FormClosed += (o,e) => model.FormMain.FormMain_FormClosed ();
+			this.AsAwt ().FormClosing += (o,e ) => model.FormMain.RunFormClosing (e);
+			this.AsAwt ().PreviewKeyDown += (o, e) => model.FormMain.RunPreviewKeyDown (new NKeyEventArgs ((Keys)e.KeyData));
+			this.AsAwt ().SizeChanged += (o,e) => model.FormMain.RunSizeChanged ();
 			panelOverview.Enter += (o,e) => model.OtherItems.panelOverview_Enter();
         }
 
@@ -4302,586 +4260,6 @@ namespace cadencii
             } else {
                 waveView.load(track - 1, file);
             }
-        }
-        #endregion
-
-        //BOOKMARK: FormMain
-        #region FormMain
-        public void handleDragExit()
-        {
-            EditorManager.EditMode = EditMode.NONE;
-            mIconPaletteOnceDragEntered = false;
-        }
-
-        private void FormMain_DragLeave(Object sender, EventArgs e)
-        {
-            handleDragExit();
-        }
-
-        /// <summary>
-        /// アイテムがドラッグされている最中の処理を行います
-        /// </summary>
-        public void handleDragOver(int screen_x, int screen_y)
-        {
-            if (EditorManager.EditMode != EditMode.DRAG_DROP) {
-                return;
-            }
-            var pt = pictPianoRoll.PointToScreen(Cadencii.Gui.Point.Empty);
-            if (!mIconPaletteOnceDragEntered) {
-                int keywidth = EditorManager.keyWidth;
-                Rectangle rc = new Rectangle(pt.X + keywidth, pt.Y, pictPianoRoll.Width - keywidth, pictPianoRoll.Height);
-                if (Utility.isInRect(new Point(screen_x, screen_y), rc)) {
-                    mIconPaletteOnceDragEntered = true;
-                } else {
-                    return;
-                }
-            }
-            var e0 = new NMouseEventArgs(NMouseButtons.Left,
-                                                    1,
-                                                    screen_x - pt.X,
-                                                    screen_y - pt.Y,
-                                                    0);
-            model.PianoRoll.RunPianoRollMouseMove(e0);
-        }
-
-        private void FormMain_DragOver(Object sender, System.Windows.Forms.DragEventArgs e)
-        {
-            handleDragOver(e.X, e.Y);
-        }
-
-        /// <summary>
-        /// ピアノロールにドロップされたIconDynamicsHandleの受け入れ処理を行います
-        /// </summary>
-        public void handleDragDrop(IconDynamicsHandle handle, int screen_x, int screen_y)
-        {
-            if (handle == null) {
-                return;
-            }
-			var locPianoroll = pictPianoRoll.PointToScreen(Cadencii.Gui.Point.Empty);
-            // ドロップ位置を特定して，アイテムを追加する
-            int x = screen_x - locPianoroll.X;
-            int y = screen_y - locPianoroll.Y;
-            int clock1 = EditorManager.clockFromXCoord(x);
-
-            // クオンタイズの処理
-            int unit = EditorManager.getPositionQuantizeClock();
-            int clock = FormMainModel.Quantize(clock1, unit);
-
-            int note = EditorManager.noteFromYCoord(y);
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            int clockAtPremeasure = vsq.getPreMeasureClocks();
-            if (clock < clockAtPremeasure) {
-                return;
-            }
-            if (note < 0 || 128 < note) {
-                return;
-            }
-
-            int selected = EditorManager.Selected;
-            VsqTrack vsq_track = vsq.Track[selected];
-            VsqTrack work = (VsqTrack)vsq_track.clone();
-
-            if (EditorManager.mAddingEvent == null) {
-                // ここは多分起こらない
-                return;
-            }
-            VsqEvent item = (VsqEvent)EditorManager.mAddingEvent.clone();
-            item.Clock = clock;
-            item.ID.Note = note;
-            work.addEvent(item);
-            work.reflectDynamics();
-            CadenciiCommand run = VsqFileEx.generateCommandTrackReplace(selected, work, vsq.AttachedCurves.get(selected - 1));
-            EditorManager.editHistory.register(vsq.executeCommand(run));
-            setEdited(true);
-            EditorManager.EditMode = EditMode.NONE;
-            refreshScreen();
-        }
-
-        private void FormMain_DragDrop(Object sender, System.Windows.Forms.DragEventArgs e)
-        {
-            EditorManager.EditMode = EditMode.NONE;
-            mIconPaletteOnceDragEntered = false;
-            mMouseDowned = false;
-            if (!e.Data.GetDataPresent(typeof(IconDynamicsHandle))) {
-                return;
-            }
-			var locPianoroll = pictPianoRoll.PointToScreen(Cadencii.Gui.Point.Empty);
-            int keywidth = EditorManager.keyWidth;
-            Rectangle rcPianoroll = new Rectangle(locPianoroll.X + keywidth,
-                                                   locPianoroll.Y,
-                                                   pictPianoRoll.Width - keywidth,
-                                                   pictPianoRoll.Height);
-            if (!Utility.isInRect(new Point(e.X, e.Y), rcPianoroll)) {
-                return;
-            }
-
-            // dynaff, crescend, decrescend のどれがドロップされたのか検査
-            IconDynamicsHandle this_is_it = (IconDynamicsHandle)e.Data.GetData(typeof(IconDynamicsHandle));
-            if (this_is_it == null) {
-                return;
-            }
-
-            handleDragDrop(this_is_it, e.X, e.Y);
-        }
-
-        /// <summary>
-        /// ドラッグの開始処理を行います
-        /// </summary>
-        public void handleDragEnter()
-        {
-            EditorManager.EditMode = EditMode.DRAG_DROP;
-            mMouseDowned = true;
-        }
-
-        private void FormMain_DragEnter(Object sender, System.Windows.Forms.DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(typeof(IconDynamicsHandle))) {
-                // ドロップ可能
-                e.Effect = System.Windows.Forms.DragDropEffects.All;
-                handleDragEnter();
-            } else {
-                e.Effect = System.Windows.Forms.DragDropEffects.None;
-                EditorManager.EditMode = EditMode.NONE;
-            }
-        }
-        public void FormMain_FormClosed(Object sender, FormClosedEventArgs e)
-        {
-#if DEBUG
-            sout.println("FormMain#FormMain_FormClosed");
-#endif
-            model.ClearTempWave();
-            string tempdir = Path.Combine(ApplicationGlobal.getCadenciiTempDir(), ApplicationGlobal.getID());
-            if (!Directory.Exists(tempdir)) {
-                PortUtil.createDirectory(tempdir);
-            }
-            string log = Path.Combine(tempdir, "run.log");
-            cadencii.core2.debug.close();
-            try {
-                if (System.IO.File.Exists(log)) {
-                    PortUtil.deleteFile(log);
-                }
-                PortUtil.deleteDirectory(tempdir, true);
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".FormMain_FormClosed; ex=" + ex + "\n");
-                serr.println("FormMain#FormMain_FormClosed; ex=" + ex);
-            }
-            EditorManager.stopGenerator();
-            VSTiDllManager.terminate();
-#if ENABLE_MIDI
-            //MidiPlayer.stop();
-            if (model.mMidiIn != null) {
-				model.mMidiIn.close();
-            }
-#endif
-#if ENABLE_MTC
-            if ( m_midi_in_mtc != null ) {
-                m_midi_in_mtc.Close();
-            }
-#endif
-            PlaySound.kill();
-            PluginLoader.cleanupUnusedAssemblyCache();
-        }
-
-        public void FormMain_FormClosing(Object sender, FormClosingEventArgs e)
-        {
-            // 設定値を格納
-			if (ApplicationGlobal.appConfig.ViewWaveform) {
-				EditorManager.editorConfig.SplitContainer2LastDividerLocation = splitContainer2.DividerLocation;
-            }
-            if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
-                EditorManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.DividerLocation;
-            }
-            if (e.CloseReason == System.Windows.Forms.CloseReason.WindowsShutDown) {
-                return;
-            }
-            bool cancel = handleFormClosing();
-            e.Cancel = cancel;
-        }
-
-        /// <summary>
-        /// ウィンドウが閉じようとしているときの処理を行う
-        /// 戻り値がtrueの場合，ウィンドウが閉じるのをキャンセルする処理が必要
-        /// </summary>
-        /// <returns></returns>
-        public bool handleFormClosing()
-        {
-            if (isEdited()) {
-                string file = MusicManager.getFileName();
-                if (file.Equals("")) {
-                    file = "Untitled";
-                } else {
-                    file = PortUtil.getFileName(file);
-                }
-                var ret = DialogManager.ShowMessageBox(_("Save this sequence?"),
-                                                               _("Affirmation"),
-                                                               cadencii.Dialog.MSGBOX_YES_NO_CANCEL_OPTION,
-                                                               cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
-				if (ret == Cadencii.Gui.DialogResult.Yes) {
-                    if (MusicManager.getFileName().Equals("")) {
-                        var dr = DialogManager.ShowModalFileDialog(saveXmlVsqDialog, false, this);
-						if (dr == Cadencii.Gui.DialogResult.OK) {
-                            EditorManager.saveTo(saveXmlVsqDialog.FileName);
-                        } else {
-                            return true;
-                        }
-                    } else {
-                        EditorManager.saveTo(MusicManager.getFileName());
-                    }
-
-				} else if (ret == Cadencii.Gui.DialogResult.Cancel) {
-                    return true;
-                }
-            }
-            EditorManager.editorConfig.WindowMaximized = (this.WindowState == System.Windows.Forms.FormWindowState.Maximized);
-            EditorManager.saveConfig();
-            UtauWaveGenerator.clearCache();
-            VConnectWaveGenerator.clearCache();
-
-#if ENABLE_MIDI
-			if (model.mMidiIn != null) {
-				model.mMidiIn.close();
-            }
-#endif
-            bgWorkScreen.Dispose();
-            return false;
-        }
-
-        public void FormMain_LocationChanged(Object sender, EventArgs e)
-        {
-			if (this.WindowState == System.Windows.Forms.FormWindowState.Normal) {
-                var bounds = this.Bounds;
-                EditorManager.editorConfig.WindowRect = new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
-            }
-        }
-
-        public void FormMain_Load(Object sender, EventArgs e_)
-        {
-            applyLanguage();
-
-            // ツールバーの位置を復帰させる
-            // toolStipの位置を，前回終了時の位置に戻す
-            int chevron_width = EditorManager.editorConfig.ChevronWidth;
-            this.bandFile = ApplicationUIHost.Create<RebarBand>();
-            this.bandPosition = ApplicationUIHost.Create<RebarBand>();
-            this.bandMeasure = ApplicationUIHost.Create<RebarBand>();
-            this.bandTool = ApplicationUIHost.Create<RebarBand>();
-
-            bool variant_height = false;
-            this.bandFile.VariantHeight = variant_height;
-            this.bandPosition.VariantHeight = variant_height;
-            this.bandMeasure.VariantHeight = variant_height;
-            this.bandTool.VariantHeight = variant_height;
-
-            int MAX_BAND_HEIGHT = 26;// toolBarTool.Height;
-
-            this.rebar.AddControl(this.toolBarFile);
-            this.rebar.AddControl(this.toolBarTool);
-            this.rebar.AddControl(this.toolBarPosition);
-            this.rebar.AddControl(this.toolBarMeasure);
-            // bandFile
-            this.bandFile.AllowVertical = false;
-            this.bandFile.Child = this.toolBarFile;
-            this.bandFile.Header = -1;
-            this.bandFile.Integral = 1;
-            this.bandFile.MaxHeight = MAX_BAND_HEIGHT;
-            this.bandFile.UseChevron = true;
-            if (toolBarFile.Buttons.Count > 0) {
-                this.bandFile.IdealWidth =
-                    toolBarFile.Buttons[toolBarFile.Buttons.Count - 1].Rectangle.Right + chevron_width;
-            }
-            this.bandFile.BandSize = EditorManager.editorConfig.BandSizeFile;
-            this.bandFile.NewRow = EditorManager.editorConfig.BandNewRowFile;
-            // bandPosition
-            this.bandPosition.AllowVertical = false;
-            this.bandPosition.Child = this.toolBarPosition;
-            this.bandPosition.Header = -1;
-            this.bandPosition.Integral = 1;
-            this.bandPosition.MaxHeight = MAX_BAND_HEIGHT;
-            this.bandPosition.UseChevron = true;
-            if (toolBarPosition.Buttons.Count > 0) {
-                this.bandPosition.IdealWidth =
-                    toolBarPosition.Buttons[toolBarPosition.Buttons.Count - 1].Rectangle.Right + chevron_width;
-            }
-            this.bandPosition.BandSize = EditorManager.editorConfig.BandSizePosition;
-            this.bandPosition.NewRow = EditorManager.editorConfig.BandNewRowPosition;
-            // bandMeasure
-            this.bandMeasure.AllowVertical = false;
-            this.bandMeasure.Child = this.toolBarMeasure;
-            this.bandMeasure.Header = -1;
-            this.bandMeasure.Integral = 1;
-            this.bandMeasure.MaxHeight = MAX_BAND_HEIGHT;
-            this.bandMeasure.UseChevron = true;
-            if (toolBarMeasure.Buttons.Count > 0) {
-                this.bandMeasure.IdealWidth =
-                    toolBarMeasure.Buttons[toolBarMeasure.Buttons.Count - 1].Rectangle.Right + chevron_width;
-            }
-            this.bandMeasure.BandSize = EditorManager.editorConfig.BandSizeMeasure;
-            this.bandMeasure.NewRow = EditorManager.editorConfig.BandNewRowMeasure;
-            // bandTool
-            this.bandTool.AllowVertical = false;
-            this.bandTool.Child = this.toolBarTool;
-            this.bandTool.Header = -1;
-            this.bandTool.Integral = 1;
-            this.bandTool.MaxHeight = MAX_BAND_HEIGHT;
-            this.bandTool.UseChevron = true;
-            if (toolBarTool.Buttons.Count > 0) {
-                this.bandTool.IdealWidth =
-                    toolBarTool.Buttons[toolBarTool.Buttons.Count - 1].Rectangle.Right + chevron_width;
-            }
-            this.bandTool.BandSize = EditorManager.editorConfig.BandSizeTool;
-            this.bandTool.NewRow = EditorManager.editorConfig.BandNewRowTool;
-            // 一度リストに入れてから追加する
-            var bands = new RebarBand[] { null, null, null, null };
-            // 番号がおかしくないかチェック
-            if (EditorManager.editorConfig.BandOrderFile < 0 || bands.Length <= EditorManager.editorConfig.BandOrderFile) EditorManager.editorConfig.BandOrderFile = 0;
-            if (EditorManager.editorConfig.BandOrderMeasure < 0 || bands.Length <= EditorManager.editorConfig.BandOrderMeasure) EditorManager.editorConfig.BandOrderMeasure = 0;
-            if (EditorManager.editorConfig.BandOrderPosition < 0 || bands.Length <= EditorManager.editorConfig.BandOrderPosition) EditorManager.editorConfig.BandOrderPosition = 0;
-            if (EditorManager.editorConfig.BandOrderTool < 0 || bands.Length <= EditorManager.editorConfig.BandOrderTool) EditorManager.editorConfig.BandOrderTool = 0;
-            bands[EditorManager.editorConfig.BandOrderFile] = bandFile;
-            bands[EditorManager.editorConfig.BandOrderMeasure] = bandMeasure;
-            bands[EditorManager.editorConfig.BandOrderPosition] = bandPosition;
-            bands[EditorManager.editorConfig.BandOrderTool] = bandTool;
-            // nullチェック
-            bool null_exists = false;
-            for (var i = 0; i < bands.Length; i++) {
-                if (bands[i] == null) {
-                    null_exists = true;
-                    break;
-                }
-            }
-            if (null_exists) {
-                // 番号に矛盾があれば，デフォルトの並び方で
-                bands[0] = bandFile;
-                bands[1] = bandMeasure;
-                bands[2] = bandPosition;
-                bands[3] = bandTool;
-                bandFile.NewRow = true;
-                bandMeasure.NewRow = true;
-                bandPosition.NewRow = true;
-                bandTool.NewRow = true;
-            }
-
-            // 追加
-            for (var i = 0; i < bands.Length; i++) {
-                if (i == 0) bands[i].NewRow = true;
-                bands[i].MinHeight = 24;
-                this.rebar.Bands.Add(bands[i]);
-            }
-
-#if DEBUG
-            sout.println("FormMain#.ctor; this.Width=" + this.Width);
-#endif
-			bandTool.Resize += (o, e) => model.OtherItems.SaveToolbarLocation ();
-			bandMeasure.Resize += (o, e) => model.OtherItems.SaveToolbarLocation ();
-			bandPosition.Resize += (o, e) => model.OtherItems.SaveToolbarLocation ();
-			bandFile.Resize += (o, e) => model.OtherItems.SaveToolbarLocation ();
-
-            updateSplitContainer2Size(false);
-
-			model.EnsureNoteVisibleOnPianoRoll(60);
-
-            // 鍵盤用の音源の準備．Javaはこの機能は削除で．
-            // 鍵盤用のキャッシュが古い位置に保存されている場合。
-            string cache_new = ApplicationGlobal.getKeySoundPath();
-            string cache_old = Path.Combine(PortUtil.getApplicationStartupPath(), "cache");
-            if (Directory.Exists(cache_old)) {
-                bool exists = false;
-                for (int i = 0; i < 127; i++) {
-                    string s = Path.Combine(cache_new, i + ".wav");
-                    if (System.IO.File.Exists(s)) {
-                        exists = true;
-                        break;
-                    }
-                }
-
-                // 新しいキャッシュが1つも無い場合に、古いディレクトリからコピーする
-                if (!exists) {
-                    for (int i = 0; i < 127; i++) {
-                        string wav_from = Path.Combine(cache_old, i + ".wav");
-                        string wav_to = Path.Combine(cache_new, i + ".wav");
-                        if (System.IO.File.Exists(wav_from)) {
-                            try {
-                                PortUtil.copyFile(wav_from, wav_to);
-                                PortUtil.deleteFile(wav_from);
-                            } catch (Exception ex) {
-                                Logger.write(typeof(FormMain) + ".FormMain_Load; ex=" + ex + "\n");
-                                serr.println("FormMain#FormMain_Load; ex=" + ex);
-                            }
-                        }
-                    }
-                }
-            }
-
-            // 足りてないキャッシュがひとつでもあればFormGenerateKeySound発動する
-            bool cache_is_incomplete = false;
-            for (int i = 0; i < 127; i++) {
-                string wav = Path.Combine(cache_new, i + ".wav");
-                if (!System.IO.File.Exists(wav)) {
-                    cache_is_incomplete = true;
-                    break;
-                }
-            }
-
-            bool init_key_sound_player_immediately = true; //FormGenerateKeySoundの終了を待たずにKeySoundPlayer.initするかどうか。
-            if (!ApplicationGlobal.appConfig.DoNotAskKeySoundGeneration && cache_is_incomplete) {
-                FormAskKeySoundGenerationController dialog = null;
-                bool always_check_this = !ApplicationGlobal.appConfig.DoNotAskKeySoundGeneration;
-				Cadencii.Gui.DialogResult dialog_result = Cadencii.Gui.DialogResult.None;
-                try {
-                    dialog = new FormAskKeySoundGenerationController();
-                    dialog.setupUi(new FormAskKeySoundGenerationUiImpl(dialog));
-                    dialog.getUi().setAlwaysPerformThisCheck(always_check_this);
-                    dialog_result = DialogManager.ShowModalDialog(dialog.getUi(), this);
-                    always_check_this = dialog.getUi().isAlwaysPerformThisCheck();
-                } catch (Exception ex) {
-                    Logger.write(typeof(FormMain) + ".FormMain_Load; ex=" + ex + "\n");
-                    serr.println("FormMain#FormMain_Load; ex=" + ex);
-                } finally {
-                    if (dialog != null) {
-                        try {
-                            dialog.getUi().close(true);
-                        } catch (Exception ex2) {
-                            Logger.write(typeof(FormMain) + ".FormMain_Load; ex=" + ex2 + "\n");
-                            serr.println("FormMain#FormMain_Load; ex2=" + ex2);
-                        }
-                    }
-                }
-                ApplicationGlobal.appConfig.DoNotAskKeySoundGeneration = !always_check_this;
-
-				if (dialog_result == Cadencii.Gui.DialogResult.OK) {
-                    FormGenerateKeySound form = null;
-                    try {
-                        form = ApplicationUIHost.Create<FormGenerateKeySound>(true);
-                        form.FormClosed += FormGenerateKeySound_FormClosed;
-                        form.ShowDialog();
-                    } catch (Exception ex) {
-                        Logger.write(typeof(FormMain) + ".FormMain_Load; ex=" + ex + "\n");
-                        serr.println("FormMain#FormMain_Load; ex=" + ex);
-                    }
-                    init_key_sound_player_immediately = false;
-                }
-            }
-
-            if (init_key_sound_player_immediately) {
-                try {
-                    KeySoundPlayer.init();
-                } catch (Exception ex) {
-                    Logger.write(typeof(FormMain) + ".FormMain_Load; ex=" + ex + "\n");
-                    serr.println("FormMain#FormMain_Load; ex=" + ex);
-                }
-            }
-
-            if (!ApplicationGlobal.appConfig.DoNotAutomaticallyCheckForUpdates) {
-                showUpdateInformationAsync(false);
-            }
-        }
-
-        public void FormGenerateKeySound_FormClosed(Object sender, EventArgs e)
-        {
-            try {
-                KeySoundPlayer.init();
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".FormGenerateKeySound_FormClosed; ex=" + ex + "\n");
-                serr.println("FormMain#FormGenerateKeySound_FormClosed; ex=" + ex);
-            }
-        }
-
-        void FormMain_SizeChanged(object sender, EventArgs e)
-        {
-			if (mWindowState == (FormWindowState) this.WindowState) {
-                return;
-            }
-			var state = (FormWindowState) this.WindowState;
-            if (state == FormWindowState.Normal || state == FormWindowState.Maximized) {
-                if (state == FormWindowState.Normal) {
-                    var bounds = this.Bounds;
-                    EditorManager.editorConfig.WindowRect = new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
-                }
-#if ENABLE_PROPERTY
-                // プロパティウィンドウの状態を更新
-                if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
-                    if (EditorManager.propertyWindow.getUi().isWindowMinimized()) {
-                        EditorManager.propertyWindow.getUi().deiconfyWindow();
-                    }
-                    if (!EditorManager.propertyWindow.getUi().isVisible()) {
-                        EditorManager.propertyWindow.getUi().setVisible(true);
-                    }
-                }
-#endif
-                // ミキサーウィンドウの状態を更新
-                bool vm = EditorManager.editorConfig.MixerVisible;
-                if (vm != EditorManager.MixerWindow.Visible) {
-                    EditorManager.MixerWindow.Visible = vm;
-                }
-
-                // アイコンパレットの状態を更新
-                if (EditorManager.iconPalette != null && menuVisualIconPalette.Checked) {
-                    if (!EditorManager.iconPalette.Visible) {
-                        EditorManager.iconPalette.Visible = true;
-                    }
-                }
-                updateLayout();
-                this.Focus();
-            } else if (state == FormWindowState.Minimized) {
-#if ENABLE_PROPERTY
-                EditorManager.propertyWindow.getUi().setVisible(false);
-#endif
-                EditorManager.MixerWindow.Visible = false;
-                if (EditorManager.iconPalette != null) {
-                    EditorManager.iconPalette.Visible = false;
-                }
-            }/* else if ( state == BForm.MAXIMIZED_BOTH ) {
-#if ENABLE_PROPERTY
-                EditorManager.propertyWindow.setExtendedState( BForm.NORMAL );
-                EditorManager.propertyWindow.setVisible( EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window );
-#endif
-                EditorManager.MixerWindow.setVisible( EditorManager.editorConfig.MixerVisible );
-                if ( EditorManager.iconPalette != null && menuVisualIconPalette.isSelected() ) {
-                    EditorManager.iconPalette.setVisible( true );
-                }
-                this.requestFocus();
-            }*/
-        }
-
-        public void FormMain_MouseWheel(Object sender, MouseEventArgs e)
-        {
-#if DEBUG
-            sout.println("FormMain#FormMain_MouseWheel");
-#endif
-            if (((Keys) Control.ModifierKeys & Keys.Shift) == Keys.Shift) {
-                hScroll.Value = computeScrollValueFromWheelDelta(e.Delta);
-            } else {
-                int max = vScroll.Maximum - vScroll.LargeChange;
-                int min = vScroll.Minimum;
-                double new_val = (double)vScroll.Value - e.Delta;
-                if (new_val > max) {
-                    vScroll.Value = max;
-                } else if (new_val < min) {
-                    vScroll.Value = min;
-                } else {
-                    vScroll.Value = (int)new_val;
-                }
-            }
-            refreshScreen();
-        }
-
-        public void FormMain_PreviewKeyDown(Object sender, PreviewKeyDownEventArgs e)
-        {
-#if DEBUG
-            sout.println("FormMain#FormMain_PreviewKeyDown");
-#endif
-            var ex = new NKeyEventArgs((Keys) e.KeyData);
-            processSpecialShortcutKey(ex, true);
-        }
-
-        public void FormMain_Deactivate(Object sender, EventArgs e)
-        {
-            mFormActivated = false;
-        }
-
-        public void FormMain_Activated(Object sender, EventArgs e)
-        {
-            mFormActivated = true;
         }
         #endregion
 

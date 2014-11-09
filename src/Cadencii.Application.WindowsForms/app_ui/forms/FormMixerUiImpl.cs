@@ -357,7 +357,7 @@ namespace cadencii
         {
             menuVisualReturn.Click += new EventHandler(menuVisualReturn_Click);
             hScroll.ValueChanged += new EventHandler(veScrollBar_ValueChanged);
-            this.FormClosing += new FormClosingEventHandler(FormMixer_FormClosing);
+			this.AsAwt ().FormClosing += (o,e) => FormMixer_FormClosing (e);
             this.Load += new EventHandler(FormMixer_Load);
             reregisterEventHandlers();
         }
@@ -456,7 +456,7 @@ namespace cadencii
             this.Visible = false;
         }
 
-        public void FormMixer_FormClosing(Object sender, FormClosingEventArgs e)
+        void FormMixer_FormClosing(Cadencii.Gui.FormClosingEventArgs e)
         {
             this.Visible = false;
             e.Cancel = true;

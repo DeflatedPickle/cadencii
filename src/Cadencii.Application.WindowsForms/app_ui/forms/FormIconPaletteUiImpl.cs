@@ -94,7 +94,7 @@ namespace cadencii
         private void registerEventHandlers()
         {
             this.Load += new EventHandler(FormIconPalette_Load);
-            this.FormClosing += new FormClosingEventHandler(FormIconPalette_FormClosing);
+			this.AsAwt ().FormClosing += FormIconPalette_FormClosing;
             menuWindowHide.Click += new EventHandler(menuWindowHide_Click);
         }
 
@@ -213,7 +213,7 @@ namespace cadencii
             this.TopMost = true;
         }
 
-        public void FormIconPalette_FormClosing(Object sender, FormClosingEventArgs e)
+        public void FormIconPalette_FormClosing(Object sender, Cadencii.Gui.FormClosingEventArgs e)
         {
             this.Visible = false;
             e.Cancel = true;

@@ -45,7 +45,7 @@ namespace cadencii
 
 		internal Dimension WindowRect = new Dimension(373, 158);
 
-        void FormPluginUi_FormClosing(Object sender, FormClosingEventArgs e)
+        void FormPluginUi_FormClosing(Object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
             e.Cancel = true;
             this.Visible = false;

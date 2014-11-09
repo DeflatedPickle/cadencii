@@ -83,7 +83,7 @@ namespace cadencii
 			public void RunVisualWaveformCheckedChanged()
 			{
 				ApplicationGlobal.appConfig.ViewWaveform = parent.form.menuVisualWaveform.Checked;
-				parent.form.updateSplitContainer2Size(true);
+				parent.updateSplitContainer2Size(true);
 			}
 
 			public void RunVisualPluginUiDropDownOpening()

@@ -1377,7 +1377,7 @@ namespace cadencii
             numAutoBackupInterval.Enabled = chkAutoBackup.Checked;
         }
 
-        public void Preference_FormClosing(Object sender, FormClosingEventArgs e)
+        public void Preference_FormClosing()
         {
             columnWidthHeaderProgramChange = listSingers.Columns[0].Width;
             columnWidthHeaderName = listSingers.Columns[1].Width;
@@ -1549,7 +1549,7 @@ namespace cadencii
             listSingers.SelectedIndexChanged += new EventHandler(listSingers_SelectedIndexChanged);
             chkAutoBackup.CheckedChanged += new EventHandler(chkAutoBackup_CheckedChanged);
             btnOK.Click += new EventHandler(btnOK_Click);
-            this.FormClosing += new FormClosingEventHandler(Preference_FormClosing);
+			this.FormClosing += (o,e) => Preference_FormClosing ();
             btnCancel.Click += new EventHandler(btnCancel_Click);
             radioVocaloidEditorCompatible.CheckedChanged += new EventHandler(commonChangeAutoVibratoType);
         }

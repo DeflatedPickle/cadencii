@@ -179,6 +179,16 @@ namespace cadencii
 		{
 			return new DrawToolTipEventArgs (e.Bounds.ToAwt (), e.DrawBackground, e.DrawBorder, f => e.DrawText ((System.Windows.Forms.TextFormatFlags) f));
 		}
+
+		public static Cadencii.Gui.FormClosingEventArgs ToAwt (this System.Windows.Forms.FormClosingEventArgs e)
+		{
+			return new FormClosingEventArgs () { Cancel = e.Cancel };
+		}
+
+		public static Cadencii.Gui.DragEventArgs ToAwt (this System.Windows.Forms.DragEventArgs e)
+		{
+			return new DragEventArgs (new DataObjectWF (e.Data), e.KeyState, e.X, e.Y, (DragDropEffects) e.AllowedEffect, (DragDropEffects) e.Effect);
+		}
 	}
 }
 

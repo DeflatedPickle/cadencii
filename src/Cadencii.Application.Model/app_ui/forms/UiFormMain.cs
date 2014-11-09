@@ -24,9 +24,14 @@ namespace cadencii
     /// </summary>
     public interface UiFormMain : UiForm
     {
-		FormWindowState WindowState { get; set; }
-
 		FormMainModel Model { get; }
+
+		cadencii.apputil.BSplitContainer splitContainer2 { get;set; }
+		cadencii.apputil.BSplitContainer splitContainerProperty { get; set; }
+		System.ComponentModel.BackgroundWorker bgWorkScreen { get; set; }
+		UiToolBar toolBarFile { get; set; }
+		UiToolBar toolBarPosition { get; set; }
+		Rebar rebar { get; set; }
 
 		void refreshScreenCore();
 		void showUpdateInformationAsync(bool is_explicit_update_check);
@@ -132,7 +137,6 @@ namespace cadencii
 		UiToolStripMenuItem menuVisualOverview { get; set; }
 		UiToolStripMenuItem menuVisualProperty { get; set; }
 		void updatePropertyPanelState(PanelState state);
-		void updateSplitContainer2Size (bool save_to_config);
 
 		UiToolStripMenuItem cMenuTrackSelectorUndo { get; set; }
 		UiToolStripMenuItem cMenuTrackSelectorRedo { get; set; }

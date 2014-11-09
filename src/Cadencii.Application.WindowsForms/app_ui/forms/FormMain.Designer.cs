@@ -3201,7 +3201,7 @@ namespace cadencii
         public UiToolStripMenuItem menuHiddenPaste;
         public UiToolStripMenuItem menuHiddenCut;
         public UiToolStrip toolStripBottom;
-        public cadencii.apputil.BSplitContainer splitContainerProperty;
+		public cadencii.apputil.BSplitContainer splitContainerProperty { get; set; }
 		public UiToolStripMenuItem menuVisualOverview { get; set; }
         public PictOverview panelOverview;
 		public cadencii.apputil.BSplitContainer splitContainer1 { get; set; }
@@ -3239,21 +3239,21 @@ namespace cadencii
         private UiToolStripMenuItem menuHelpLog;
 		public UiToolStripMenuItem menuHelpLogSwitch { get; set; }
         private UiToolStripMenuItem menuHelpLogOpen;
-        private Rebar rebar;
+		public Rebar rebar { get; set; }
 		public RebarBand bandFile { get; set; }
 		public RebarBand bandPosition { get; set; }
 		public RebarBand bandMeasure { get; set; }
 		public RebarBand bandTool { get; set; }
-        public cadencii.apputil.BSplitContainer splitContainer2;
+		public cadencii.apputil.BSplitContainer splitContainer2 { get;set; }
         private UiPanel panel1;
-        private UiToolBar toolBarFile;
+		public UiToolBar toolBarFile { get; set; }
         private UiImageList imageListFile;
         private UiToolBarButton toolBarButton1;
         private UiToolBarButton toolBarButton2;
 		public UiToolBar toolBarTool { get; set; }
         private UiToolBarButton toolBarButton3;
         private UiImageList imageListTool;
-        private UiToolBar toolBarPosition;
+		public UiToolBar toolBarPosition { get; set; }
         private UiToolBarButton toolBarButton4;
         private UiImageList imageListPosition;
 		public UiToolBar toolBarMeasure { get; set; }

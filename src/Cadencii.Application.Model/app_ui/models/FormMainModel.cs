@@ -174,6 +174,7 @@ namespace cadencii
 		public FormMainModel (UiFormMain form)
 		{
 			this.form = form;
+			FormMain = new FormModel (this);
 			FileMenu = new FileMenuModel (this);
 			EditMenu = new EditMenuModel (this);
 			VisualMenu = new VisualMenuModel (this);
@@ -198,6 +199,7 @@ namespace cadencii
 			ScaleX = 0.1f;
 		}
 
+		public FormModel FormMain { get; private set; }
 		public FileMenuModel FileMenu { get; private set; }
 		public EditMenuModel EditMenu { get; private set; }
 		public VisualMenuModel VisualMenu { get; private set; }
@@ -1616,6 +1618,38 @@ namespace cadencii
 				form.updateScrollRangeVertical();
 				StartToDrawY = (form.calculateStartToDrawY(form.vScroll.Value));
 				form.updateDrawObjectList();
+			}
+		}
+		/// <summary>
+		/// EditorManager.editorConfig.ViewWaveformの値をもとに、splitterContainer2の表示状態を更新します
+		/// </summary>
+		public void updateSplitContainer2Size(bool save_to_config)
+		{
+			var splitContainer2 = form.splitContainer2;
+			if (ApplicationGlobal.appConfig.ViewWaveform) {
+				splitContainer2.Panel2MinSize = (Consts._SPL2_PANEL2_MIN_HEIGHT);
+				splitContainer2.SplitterFixed = (false);
+				splitContainer2.Panel2Hidden = (false);
+				splitContainer2.DividerSize = (Consts._SPL_SPLITTER_WIDTH);
+				int lastloc = EditorManager.editorConfig.SplitContainer2LastDividerLocation;
+				if (lastloc <= 0 || lastloc > splitContainer2.Height) {
+					int draft = splitContainer2.Height- 100;
+					if (draft <= 0) {
+						draft = splitContainer2.Height/ 2;
+					}
+					splitContainer2.DividerLocation = (draft);
+				} else {
+					splitContainer2.DividerLocation = (lastloc);
+				}
+			} else {
+				if (save_to_config) {
+					EditorManager.editorConfig.SplitContainer2LastDividerLocation = splitContainer2.DividerLocation;
+				}
+				splitContainer2.Panel2MinSize = (0);
+				splitContainer2.Panel2Hidden = (true);
+				splitContainer2.DividerSize = (0);
+				splitContainer2.DividerLocation = (splitContainer2.Height);
+				splitContainer2.SplitterFixed = (true);
 			}
 		}
 	}

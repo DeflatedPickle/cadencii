@@ -19,6 +19,42 @@ namespace cadencii
 {
 	public class FormImpl : System.Windows.Forms.Form, UiForm
  	{
+		event EventHandler<DragEventArgs> UiForm.DragEnter {
+			add { DragEnter += (sender, e) => value (sender, e.ToAwt ()); }
+			remove {
+				throw new NotImplementedException ();
+			}
+		}
+
+		event EventHandler<DragEventArgs> UiForm.DragDrop {
+			add { DragDrop += (sender, e) => value (sender, e.ToAwt ()); }
+			remove {
+				throw new NotImplementedException ();
+			}
+		}
+
+		event EventHandler<DragEventArgs> UiForm.DragOver {
+			add { DragOver += (sender, e) => value (sender, e.ToAwt ()); }
+			remove {
+				throw new NotImplementedException ();
+			}
+		}
+
+		event EventHandler UiForm.DragLeave {
+			add { DragLeave += value; }
+			remove { DragLeave -= value; }
+		}
+
+		FormWindowState UiForm.WindowState {
+			get { return (FormWindowState)WindowState; }
+			set { WindowState = (System.Windows.Forms.FormWindowState)value; }
+		}
+
+		public UiForm AsAwt ()
+		{
+			return this;
+		}
+
 		Dimension UiForm.MinimumSize {
 			get { return MinimumSize.ToAwt (); }
 			set { MinimumSize = value.ToWF (); }
@@ -44,9 +80,9 @@ namespace cadencii
 			set { Location = value.ToWF (); }
 		}
 
-		event EventHandler UiForm.FormClosing {
-			add { this.FormClosing += (sender, e) => value (sender, e); }
-			remove { this.FormClosing -= (sender, e) => value (sender, e); }
+		event EventHandler<FormClosingEventArgs> UiForm.FormClosing {
+			add { this.FormClosing += (sender, e) => value (sender, e.ToAwt ()); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		event EventHandler UiForm.FormClosed {
