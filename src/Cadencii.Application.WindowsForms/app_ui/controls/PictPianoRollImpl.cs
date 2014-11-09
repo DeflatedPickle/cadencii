@@ -23,6 +23,7 @@ using cadencii.vsq;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using cadencii.core;
+using Cadencii.Utilities;
 
 namespace cadencii
 {

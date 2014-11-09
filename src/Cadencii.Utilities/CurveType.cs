@@ -14,7 +14,7 @@
 using System;
 using cadencii;
 
-namespace cadencii
+namespace Cadencii.Utilities
 {
 
     enum CurveTypeImpl

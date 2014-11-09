@@ -3,6 +3,7 @@ using cadencii;
 using cadencii.vsq;
 using System;
 using System.Collections.Generic;
+using Cadencii.Utilities;
 
 namespace cadencii.test.dsp.generator
 {

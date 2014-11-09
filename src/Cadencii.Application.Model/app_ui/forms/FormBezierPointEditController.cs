@@ -19,6 +19,7 @@ using Cadencii.Gui;
 using NMouseButtons = Cadencii.Gui.MouseButtons;
 using NMouseEventArgs = Cadencii.Gui.MouseEventArgs;
 using NMouseEventHandler = Cadencii.Gui.MouseEventHandler;
+using Cadencii.Utilities;
 
 namespace cadencii
 {

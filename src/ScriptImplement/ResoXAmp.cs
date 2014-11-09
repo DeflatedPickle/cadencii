@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using cadencii.vsq;
 using cadencii;
 using System.Drawing;
+using Cadencii.Utilities;
 
 class ResoXAmp : Form
 {

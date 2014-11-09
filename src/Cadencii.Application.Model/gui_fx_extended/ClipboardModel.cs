@@ -12,6 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System.Collections.Generic;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
