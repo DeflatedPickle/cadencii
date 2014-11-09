@@ -17,7 +17,7 @@ using System.IO;
 using System.Text;
 using cadencii;
 using cadencii.java.util;
-using cadencii.java.io;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {
@@ -50,8 +50,8 @@ namespace cadencii.vsq
             try {
                 sr = new StreamReader(path, Encoding.GetEncoding("Shift_JIS"));
 #if DEBUG
-                sout.println("UstFile#.ctor; path=" + path);
-                sout.println("UstFile#.ctor; (sr==null)=" + (sr == null));
+                Logger.StdOut("UstFile#.ctor; path=" + path);
+                Logger.StdOut("UstFile#.ctor; (sr==null)=" + (sr == null));
 #endif
                 string line = sr.ReadLine();
 
@@ -59,7 +59,7 @@ namespace cadencii.vsq
                 int type = 0; //0 => reading "SETTING" section
                 while (true) {
 #if DEBUG
-                    sout.println("UstFile#.ctor; line=" + line);
+                    Logger.StdOut("UstFile#.ctor; line=" + line);
 #endif
                     UstEvent ue = null;
                     if (type == 1) {
@@ -84,12 +84,12 @@ namespace cadencii.vsq
                             index = int.Parse(s);
                         } catch (Exception ex) {
 #if DEBUG
-                            sout.println("UstFile#.ctor; ex=" + ex);
+                            Logger.StdOut("UstFile#.ctor; ex=" + ex);
 #endif
                         }
                     }
 #if DEBUG
-                    sout.println("UstFile#.ctor; index=" + index);
+                    Logger.StdOut("UstFile#.ctor; index=" + index);
 #endif
                     line = sr.ReadLine(); // "[#" 直下の行
                     if (line == null) {
@@ -97,7 +97,7 @@ namespace cadencii.vsq
                     }
                     while (!line.StartsWith("[#")) {
 #if DEBUG
-                        sout.println("line=" + line);
+                        Logger.StdOut("line=" + line);
 #endif
                         string[] spl = PortUtil.splitString(line, new char[] { '=' }, 2);
                         if (type == 0) {
@@ -241,7 +241,7 @@ namespace cadencii.vsq
                 updateTempoInfo();
             } catch (Exception ex) {
 #if DEBUG
-                serr.println("UstFile#.ctor(String); ex=" + ex);
+                Logger.StdErr("UstFile#.ctor(String); ex=" + ex);
 #endif
             } finally {
                 if (sr != null) {
@@ -298,10 +298,10 @@ namespace cadencii.vsq
             }
             // tempoの中の各要素の時刻が、vsq.TempoTableから計算した時刻と合致するよう調節
 #if DEBUG
-            sout.println("UstFile#.ctor; before; list=");
+            Logger.StdOut("UstFile#.ctor; before; list=");
             for (int i = 0; i < tempo.Count; i++) {
                 TempoTableEntry item = tempo[i];
-                sout.println("    #" + i + "; c" + item.Clock + "; T" + item.Tempo + "; t" + (60e6 / item.Tempo) + "; sec" + item.Time);
+                Logger.StdOut("    #" + i + "; c" + item.Clock + "; T" + item.Tempo + "; t" + (60e6 / item.Tempo) + "; sec" + item.Time);
             }
 #endif
             TempoTableEntry prev = tempo[0];
@@ -320,15 +320,15 @@ namespace cadencii.vsq
                 prev = item;
             }
 #if DEBUG
-            sout.println("UstFile#.ctor; after; list=");
+            Logger.StdOut("UstFile#.ctor; after; list=");
             for (int i = 0; i < tempo.Count; i++) {
                 TempoTableEntry item = tempo[i];
-                sout.println("    #" + i + "; c" + item.Clock + "; T" + item.Tempo + "; t" + (60e6 / item.Tempo) + "; sec" + item.Time);
+                Logger.StdOut("    #" + i + "; c" + item.Clock + "; T" + item.Tempo + "; t" + (60e6 / item.Tempo) + "; sec" + item.Time);
             }
-            sout.println("UstFile#.ctor; vsq.TempoTable=");
+            Logger.StdOut("UstFile#.ctor; vsq.TempoTable=");
             for (int i = 0; i < work.TempoTable.Count; i++) {
                 TempoTableEntry item = work.TempoTable[i];
-                sout.println("    #" + i + "; c" + item.Clock + "; T" + item.Tempo + "; t" + (60e6 / item.Tempo) + "; sec" + item.Time);
+                Logger.StdOut("    #" + i + "; c" + item.Clock + "; T" + item.Tempo + "; t" + (60e6 / item.Tempo) + "; sec" + item.Time);
             }
 #endif
 
@@ -656,13 +656,13 @@ namespace cadencii.vsq
                 }
                 sw.newLine();
             } catch (Exception ex) {
-                serr.println("UstFile#write; ex=" + ex);
+                Logger.StdErr("UstFile#write; ex=" + ex);
             } finally {
                 if (sw != null) {
                     try {
                         sw.close();
                     } catch (Exception ex2) {
-                        serr.println("UstFile#write; ex2=" + ex2);
+                        Logger.StdErr("UstFile#write; ex2=" + ex2);
                     }
                 }
             }

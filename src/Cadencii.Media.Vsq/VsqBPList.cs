@@ -16,8 +16,8 @@ using System.Text;
 using System.Collections.Generic;
 using System.IO;
 using cadencii;
-using cadencii.java.io;
 using cadencii.java.util;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {
@@ -249,9 +249,9 @@ namespace cadencii.vsq
                     maxId++;
                     length++;
                 } catch (Exception ex) {
-                    serr.println("VsqBPList#setData; ex=" + ex);
+                    Logger.StdErr("VsqBPList#setData; ex=" + ex);
 #if DEBUG
-                    sout.println("    i=" + i + "; spl2[0]=" + spl2[0] + "; spl2[1]=" + spl2[1]);
+                    Logger.StdOut("    i=" + i + "; spl2[0]=" + spl2[0] + "; spl2[1]=" + spl2[1]);
 #endif
                 }
             }
@@ -540,7 +540,7 @@ namespace cadencii.vsq
         public string appendFromText(TextStream reader)
         {
 #if DEBUG
-            sout.println("VsqBPList#appendFromText; start");
+            Logger.StdOut("VsqBPList#appendFromText; start");
             double started = PortUtil.getCurrentTime();
             int count = 0;
 #endif

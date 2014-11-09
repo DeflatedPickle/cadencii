@@ -15,6 +15,7 @@ using System;
 using System.IO;
 using cadencii;
 //using cadencii.java.io;
+using Cadencii.Utilities;
 
 namespace cadencii.media
 {
@@ -41,7 +42,7 @@ namespace cadencii.media
         {
             m_path = path;
 #if DEBUG
-            sout.println("WaveWriter#.ctor; m_path=" + m_path);
+            Logger.StdOut("WaveWriter#.ctor; m_path=" + m_path);
 #endif
             m_stream = new FileStream(m_path, FileMode.OpenOrCreate, FileAccess.ReadWrite);
             m_channel = channel;
@@ -203,7 +204,7 @@ namespace cadencii.media
         public void close()
         {
 #if DEBUG
-            sout.println("WaveWriter#close; m_path=" + m_path);
+            Logger.StdOut("WaveWriter#close; m_path=" + m_path);
 #endif
             if (m_stream == null) {
                 return;
@@ -224,7 +225,7 @@ namespace cadencii.media
 
                 m_stream.Close();
             } catch (Exception ex) {
-                serr.println("WaveWriter#close; ex=" + ex);
+                Logger.StdErr("WaveWriter#close; ex=" + ex);
             }
         }
 
@@ -297,7 +298,7 @@ namespace cadencii.media
                 }
                 m_total_samples += (int)length;
             } catch (Exception ex) {
-                serr.println("WaveWriter#append(double[],double[],int); ex=" + ex);
+                Logger.StdErr("WaveWriter#append(double[],double[],int); ex=" + ex);
             }
         }
 

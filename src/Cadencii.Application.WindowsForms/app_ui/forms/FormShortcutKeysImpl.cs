@@ -53,13 +53,13 @@ namespace cadencii
                 InitializeComponent();
             } catch (Exception ex) {
 #if DEBUG
-                serr.println("FormShortcutKeys#.ctor; ex=" + ex);
+                Logger.StdErr("FormShortcutKeys#.ctor; ex=" + ex);
 #endif
             }
 
 #if DEBUG
-            sout.println("FormShortcutKeys#.ctor; dict.size()=" + dict.Count);
-            sout.println("FormShortcutKeys#.ctor; mColumnWidthCommand=" + mColumnWidthCommand + "; mColumnWidthShortcutKey=" + mColumnWidthShortcutKey);
+            Logger.StdOut("FormShortcutKeys#.ctor; dict.size()=" + dict.Count);
+            Logger.StdOut("FormShortcutKeys#.ctor; mColumnWidthCommand=" + mColumnWidthCommand + "; mColumnWidthShortcutKey=" + mColumnWidthShortcutKey);
 #endif
             mMainForm = main_form;
             list.SetColumnHeaders(new string[] { _("Command"), _("Shortcut Key") });
@@ -407,7 +407,7 @@ namespace cadencii
         {
             int selected = comboCategory.SelectedIndex;
 #if DEBUG
-            sout.println("FormShortcutKeys#comboCategory_selectedIndexChanged; selected=" + selected);
+            Logger.StdOut("FormShortcutKeys#comboCategory_selectedIndexChanged; selected=" + selected);
 #endif
             if (selected < 0) {
                 comboCategory.SelectedIndex = 0;
@@ -444,7 +444,7 @@ namespace cadencii
             mColumnWidthCommand = list.Columns[0].Width;
             mColumnWidthShortcutKey = list.Columns[1].Width;
 #if DEBUG
-            sout.println("FormShortCurKeys#FormShortcutKeys_FormClosing; columnWidthCommand,columnWidthShortcutKey=" + mColumnWidthCommand + "," + mColumnWidthShortcutKey);
+            Logger.StdOut("FormShortCurKeys#FormShortcutKeys_FormClosing; columnWidthCommand,columnWidthShortcutKey=" + mColumnWidthCommand + "," + mColumnWidthShortcutKey);
 #endif
         }
 

@@ -4,6 +4,7 @@ using System.Media;
 using cadencii.vsq;
 using cadencii.java.util;
 using cadencii.core;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -36,7 +37,7 @@ namespace cadencii
 			public void RunMouseWheel(MouseEventArgs e)
 			{
 				#if DEBUG
-				sout.println("FormMain#picturePositionIndicator_MouseWheel");
+				Logger.StdOut("FormMain#picturePositionIndicator_MouseWheel");
 				#endif
 				parent.form.hScroll.Value = parent.form.computeScrollValueFromWheelDelta(e.Delta);
 			}
@@ -127,14 +128,14 @@ namespace cadencii
 										}
 									} catch (Exception ex) {
 										Logger.write(GetType () + ".picturePositionIndicator_MouseDoubleClick; ex=" + ex + "\n");
-										serr.println("FormMain#picturePositionIndicator_MouseDoubleClick; ex=" + ex);
+										Logger.StdErr("FormMain#picturePositionIndicator_MouseDoubleClick; ex=" + ex);
 									} finally {
 										if (dlg != null) {
 											try {
 												dlg.Close();
 											} catch (Exception ex2) {
 												Logger.write(GetType () + ".picturePositionIndicator_MouseDoubleClick; ex=" + ex2 + "\n");
-												serr.println("FormMain#picturePositionIndicator_MouseDoubleClick; ex2=" + ex2);
+												Logger.StdErr("FormMain#picturePositionIndicator_MouseDoubleClick; ex2=" + ex2);
 											}
 										}
 									}
@@ -279,9 +280,9 @@ namespace cadencii
 											parent.form.setEdited(true);
 										} else {
 											#if DEBUG
-											sout.println("picturePositionIndicator_MouseDoubleClick");
-											sout.println("    bar_count=" + bar_count);
-											sout.println("    dlg.Start+pre_measure-1=" + (dlg.getStart() + pre_measure - 1));
+											Logger.StdOut("picturePositionIndicator_MouseDoubleClick");
+											Logger.StdOut("    bar_count=" + bar_count);
+											Logger.StdOut("    dlg.Start+pre_measure-1=" + (dlg.getStart() + pre_measure - 1));
 											#endif
 											CadenciiCommand run = new CadenciiCommand(
 												VsqCommand.generateCommandUpdateTimesig(bar_count,
@@ -294,14 +295,14 @@ namespace cadencii
 									}
 								} catch (Exception ex) {
 									Logger.write(GetType () + ".picturePositionIndicator_MouseDoubleClick; ex=" + ex + "\n");
-									serr.println("FormMain#picturePositionIndicator_MouseDoubleClick; ex=" + ex);
+									Logger.StdErr("FormMain#picturePositionIndicator_MouseDoubleClick; ex=" + ex);
 								} finally {
 									if (dlg != null) {
 										try {
 											dlg.close();
 										} catch (Exception ex2) {
 											Logger.write(GetType () + ".picturePositionIndicator_MouseDoubleClick; ex=" + ex2 + "\n");
-											serr.println("FormMain#picturePositionIndicator_MouseDoubleClic; ex2=" + ex2);
+											Logger.StdErr("FormMain#picturePositionIndicator_MouseDoubleClic; ex2=" + ex2);
 										}
 									}
 								}
@@ -985,7 +986,7 @@ namespace cadencii
 					#endregion
 				} catch (Exception ex) {
 					Logger.write(GetType () + ".picturePositionIndicatorDrawTo; ex=" + ex + "\n");
-					serr.println("FormMain#picturePositionIndicatorDrawTo; ex=" + ex);
+					Logger.StdErr("FormMain#picturePositionIndicatorDrawTo; ex=" + ex);
 				}
 			}
 

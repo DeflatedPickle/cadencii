@@ -18,7 +18,6 @@ using System.IO;
 using System.Collections.Generic;
 using cadencii.apputil;
 using Cadencii.Gui;
-using cadencii.java.io;
 using cadencii.java.util;
 using cadencii.javax.sound.midi;
 using cadencii.media;
@@ -30,6 +29,7 @@ using Keys = Cadencii.Gui.Keys;
 using Cadencii.Gui;
 using DialogResult = Cadencii.Gui.DialogResult;
 using cadencii.core;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -1298,9 +1298,9 @@ namespace cadencii
 			if (folderBrowserSingers.ShowDialog(this) == System.Windows.Forms.DialogResult.OK) {
                 string dir = folderBrowserSingers.SelectedPath;
 #if DEBUG
-                sout.println("Preference#btnAdd_Click; dir=" + dir);
-                sout.println("Preference#btnAdd_Clicl; PortUtil.isDirectoryExists(dir)=" + Directory.Exists(dir));
-                sout.println("Preference#btnAdd_Clicl; PortUtil.isFileExists(dir)=" + System.IO.File.Exists(dir));
+                Logger.StdOut("Preference#btnAdd_Click; dir=" + dir);
+                Logger.StdOut("Preference#btnAdd_Clicl; PortUtil.isDirectoryExists(dir)=" + Directory.Exists(dir));
+                Logger.StdOut("Preference#btnAdd_Clicl; PortUtil.isFileExists(dir)=" + System.IO.File.Exists(dir));
 #endif
                 if (!Directory.Exists(dir) && System.IO.File.Exists(dir)) {
                     // dirの指すパスがフォルダではなくファイルだった場合、
@@ -1434,7 +1434,7 @@ namespace cadencii
             foreach (MidiDevice.Info info in MidiSystem.getMidiDeviceInfo()) {
 #if DEBUG
                 if (info != null) {
-                    sout.println("Preference#updateMidiDevice; info.getName()=" + info.getName());
+                    Logger.StdOut("Preference#updateMidiDevice; info.getName()=" + info.getName());
                 }
 #endif
                 MidiDevice device = null;
@@ -1445,7 +1445,7 @@ namespace cadencii
                 }
                 if (device == null) continue;
 #if DEBUG
-                sout.println("Preference#updateMidiDevice; (device is Receiver)=" + (device is Receiver));
+                Logger.StdOut("Preference#updateMidiDevice; (device is Receiver)=" + (device is Receiver));
 #endif
                 // MIDI-OUTの最大接続数．-1は制限なしを表す
                 int max = device.getMaxTransmitters();

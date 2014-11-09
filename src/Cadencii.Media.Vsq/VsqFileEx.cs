@@ -16,9 +16,9 @@ using System.IO;
 using System.Collections.Generic;
 using cadencii.vsq;
 using cadencii;
-using cadencii.java.io;
 using cadencii.java.util;
 using cadencii.xml;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -426,7 +426,7 @@ namespace cadencii
             double premeasure_sec_target = getSecFromClock(getPreMeasureClocks());
             double premeasure_sec_tempo = premeasure_sec_target;
 #if DEBUG
-            sout.println("FormMain#ShiftClockToMatchWith; premeasure_sec_target=" + premeasure_sec_target + "; premeasre_sec_tempo=" + premeasure_sec_tempo);
+            Logger.StdOut("FormMain#ShiftClockToMatchWith; premeasure_sec_target=" + premeasure_sec_target + "; premeasre_sec_tempo=" + premeasure_sec_tempo);
 #endif
 
             // テンポをリプレースする場合。
@@ -653,7 +653,7 @@ namespace cadencii
                                     new_chain.id = chain.id;
                                     list[j] = new_chain;
                                 } catch (Exception ex) {
-                                    serr.println("VsqFileEx#shift; ex=" + ex);
+                                    Logger.StdErr("VsqFileEx#shift; ex=" + ex);
                                     Logger.write(typeof(VsqFileEx) + ".shift; ex=" + ex + "\n");
                                 }
                             } else {
@@ -972,7 +972,7 @@ namespace cadencii
                                     }
                                     if (value != last_value) {
 #if DEBUG
-                                        sout.println("VsqFileEx#executeCommand; clock,value=" + clock + "," + value);
+                                        Logger.StdOut("VsqFileEx#executeCommand; clock,value=" + clock + "," + value);
 #endif
                                         index++;
                                         add[clock] = new VsqBPPair(value, list.getMaxID() + index);
@@ -1328,14 +1328,14 @@ namespace cadencii
                 xw = new FileStream(file, FileMode.Create, FileAccess.Write);
                 mVsqSerializer.serialize(xw, this);
             } catch (Exception ex) {
-                serr.println("VsqFileEx#writeAsXml; ex=" + ex);
+                Logger.StdErr("VsqFileEx#writeAsXml; ex=" + ex);
                 Logger.write(typeof(VsqFileEx) + ".writeAsXml; ex=" + ex + "\n");
             } finally {
                 if (xw != null) {
                     try {
                         xw.Close();
                     } catch (Exception ex2) {
-                        serr.println("VsqFileEx#writeAsXml; ex2=" + ex2);
+                        Logger.StdErr("VsqFileEx#writeAsXml; ex2=" + ex2);
                         Logger.write(typeof(VsqFileEx) + ".writeAsXml; ex=" + ex2 + "\n");
                     }
                 }
@@ -1350,14 +1350,14 @@ namespace cadencii
                 fs = new FileStream(file, FileMode.Open, FileAccess.Read);
                 ret = (VsqFileEx)mVsqSerializer.deserialize(fs);
             } catch (Exception ex) {
-                serr.println("VsqFileEx#readFromXml; ex=" + ex);
+                Logger.StdErr("VsqFileEx#readFromXml; ex=" + ex);
                 Logger.write(typeof(VsqFileEx) + ".readFromXml; ex=" + ex + "\n");
             } finally {
                 if (fs != null) {
                     try {
                         fs.Close();
                     } catch (Exception ex2) {
-                        serr.println("VsqFileEx#readFromXml; ex2=" + ex2);
+                        Logger.StdErr("VsqFileEx#readFromXml; ex2=" + ex2);
                         Logger.write(typeof(VsqFileEx) + ".readFromXml; ex=" + ex2 + "\n");
                     }
                 }

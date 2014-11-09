@@ -16,8 +16,8 @@ using System;
 using System.Text;
 using System.IO;
 using cadencii;
-using cadencii.java.io;
 using cadencii.vsq;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -108,7 +108,7 @@ namespace cadencii
         protected void reportError(string s)
         {
             Logger.writeLine(s);
-            serr.println(s);
+            Logger.StdErr(s);
         }
 
 #endif

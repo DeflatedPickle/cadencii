@@ -16,7 +16,7 @@ using System.Collections.Generic;
 using System.IO;
 using cadencii;
 using cadencii.java.util;
-using cadencii.java.io;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {
@@ -128,7 +128,7 @@ namespace cadencii.vsq
                 }
                 string str1 = PortUtil.getDecodedString("Shift_JIS", idat);
 #if DEBUG
-                sout.println("SingerConfig.readSingerConfig; str1=" + str1);
+                Logger.StdOut("SingerConfig.readSingerConfig; str1=" + str1);
 #endif
                 string crlf = "" + (char)0x0d + "" + (char)0x0a;
                 string[] spl = PortUtil.splitString(str1, new string[] { crlf }, true);

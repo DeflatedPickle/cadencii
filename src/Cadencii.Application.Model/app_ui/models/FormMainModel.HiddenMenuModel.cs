@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using cadencii.vsq;
 using Cadencii.Gui;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -132,7 +133,7 @@ namespace cadencii
 			public void RunHiddenPrintPoToCSVCommand()
 			{
 				#if DEBUG
-				sout.println("FormMain#menuHiddenPrintPoToCSV_Click");
+				Logger.StdOut("FormMain#menuHiddenPrintPoToCSV_Click");
 				#endif
 
 				List<string> keys = new List<string>();
@@ -149,7 +150,7 @@ namespace cadencii
 				string dir = PortUtil.getApplicationStartupPath();
 				string fname = Path.Combine(dir, "cadencii_trans.csv");
 				#if DEBUG
-				sout.println("FormMain#menuHiddenPrintPoToCSV_Click; fname=" + fname);
+				Logger.StdOut("FormMain#menuHiddenPrintPoToCSV_Click; fname=" + fname);
 				#endif
 				string old_lang = Messaging.getLanguage();
 				StreamWriter br = null;
@@ -169,7 +170,7 @@ namespace cadencii
 						br.WriteLine(line);
 					}
 				} catch (Exception ex) {
-					serr.println("FormMain#menuHiddenPrintPoToCSV_Click; ex=" + ex);
+					Logger.StdErr("FormMain#menuHiddenPrintPoToCSV_Click; ex=" + ex);
 				} finally {
 					if (br != null) {
 						try {
@@ -187,7 +188,7 @@ namespace cadencii
 				bool triplet = EditorManager.editorConfig.isPositionQuantizeTriplet();
 				int delta = -QuantizeModeUtil.getQuantizeClock(mode, triplet);
 				#if DEBUG
-				sout.println("FormMain#menuHiddenMoveLeft_Click; delta=" + delta);
+				Logger.StdOut("FormMain#menuHiddenMoveLeft_Click; delta=" + delta);
 				#endif
 				parent.form.moveUpDownLeftRight(0, delta);
 			}

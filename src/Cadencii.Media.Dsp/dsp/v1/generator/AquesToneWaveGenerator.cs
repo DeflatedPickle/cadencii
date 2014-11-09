@@ -192,7 +192,7 @@ namespace cadencii
                         // ピッチベンドの最大値を実現するのに必要なPBS
                         int required_pbs = (int)Math.Ceiling(pitmax / 100.0);
 #if DEBUG
-                        sout.println("AquesToneRenderingRunner#generateMidiEvent; required_pbs=" + required_pbs);
+                        Logger.StdOut("AquesToneRenderingRunner#generateMidiEvent; required_pbs=" + required_pbs);
 #endif
                         if (required_pbs > 13) {
                             required_pbs = 13;

@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using cadencii;
 using cadencii.java.util;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {
@@ -35,7 +36,7 @@ namespace cadencii.vsq
             try {
                 num = int.Parse(strNum);
             } catch (Exception ex) {
-                serr.println("org.kbinani.vsq.VibratoBPList#.ctor; ex=" + ex);
+                Logger.StdErr("org.kbinani.vsq.VibratoBPList#.ctor; ex=" + ex);
                 num = 0;
             }
             string[] bpx = PortUtil.splitString(strBPX, ',');
@@ -49,7 +50,7 @@ namespace cadencii.vsq
                         x[i] = (float)double.Parse(bpx[i]);
                         y[i] = int.Parse(bpy[i]);
                     } catch (Exception ex) {
-                        serr.println("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
+                        Logger.StdErr("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
                     }
                 }
 

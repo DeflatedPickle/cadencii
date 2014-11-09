@@ -19,7 +19,6 @@ using System.IO;
 using System.Text;
 using cadencii;
 using Cadencii.Gui;
-using cadencii.java.io;
 using cadencii.java.util;
 using cadencii.media;
 using cadencii.vsq;

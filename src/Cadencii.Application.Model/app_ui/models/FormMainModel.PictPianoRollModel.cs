@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using cadencii.java.util;
 using cadencii.core;
 using System.Media;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -346,14 +347,14 @@ namespace cadencii
 										}
 									} catch (Exception ex) {
 										Logger.write(GetType () + ".pictPianoRoll_MouseDoubleClick; ex=" + ex + "\n");
-										serr.println(GetType () + ".pictPianoRoll_MouseDoubleClick" + ex);
+										Logger.StdErr(GetType () + ".pictPianoRoll_MouseDoubleClick" + ex);
 									} finally {
 										if (dlg != null) {
 											try {
 												dlg.Close();
 											} catch (Exception ex2) {
 												Logger.write(GetType () + ".pictPianoRoll_MouseDoubleClick; ex=" + ex2 + "\n");
-												serr.println(GetType () + ".pictPianoRoll_MouseDoubleClick");
+												Logger.StdErr(GetType () + ".pictPianoRoll_MouseDoubleClick");
 											}
 										}
 									}
@@ -386,7 +387,7 @@ namespace cadencii
 									SynthesizerType type = SynthesizerType.VOCALOID2;
 									RendererKind kind = VsqFileEx.getTrackRendererKind(vsq.Track[selected]);
 									#if DEBUG
-									sout.println("FormMain#pictPianoRoll_MouseDoubleClick; kind=" + kind);
+									Logger.StdOut("FormMain#pictPianoRoll_MouseDoubleClick; kind=" + kind);
 									#endif
 									if (kind == RendererKind.VOCALOID1) {
 										type = SynthesizerType.VOCALOID1;
@@ -405,7 +406,7 @@ namespace cadencii
 											VsqID t = (VsqID)selectedEvent.ID.clone();
 											VibratoHandle handle = dlg.getVibratoHandle();
 											#if DEBUG
-											sout.println("FormMain#pictPianoRoll_MouseDoubleClick; (handle==null)=" + (handle == null));
+											Logger.StdOut("FormMain#pictPianoRoll_MouseDoubleClick; (handle==null)=" + (handle == null));
 											#endif
 											if (handle != null) {
 												string iconid = handle.IconID;
@@ -1192,7 +1193,7 @@ namespace cadencii
 							}
 							item.editing.ID.setLength(new_length);
 							#if DEBUG
-							sout.println("FormMain#pictPianoRoll_MouseMove; length(before,after)=(" + item.original.ID.getLength() + "," + item.editing.ID.getLength() + ")");
+							Logger.StdOut("FormMain#pictPianoRoll_MouseMove; length(before,after)=(" + item.original.ID.getLength() + "," + item.editing.ID.getLength() + ")");
 							#endif
 						}
 						#endregion
@@ -1499,12 +1500,12 @@ namespace cadencii
 				} else if (edit_mode == EditMode.MOVE_ENTRY) {
 					#region MoveEntry
 					#if DEBUG
-					sout.println("FormMain#pictPianoRoll_MouseUp; edit_mode is MOVE_ENTRY");
+					Logger.StdOut("FormMain#pictPianoRoll_MouseUp; edit_mode is MOVE_ENTRY");
 					#endif
 					if (EditorManager.itemSelection.getEventCount() > 0) {
 						SelectedEventEntry last_selected_event = EditorManager.itemSelection.getLastEvent();
 						#if DEBUG
-						sout.println("FormMain#pictPianoRoll_MouseUp; last_selected_event.original.InternalID=" + last_selected_event.original.InternalID);
+						Logger.StdOut("FormMain#pictPianoRoll_MouseUp; last_selected_event.original.InternalID=" + last_selected_event.original.InternalID);
 						#endif
 						VsqEvent original = last_selected_event.original;
 						if (original.Clock != last_selected_event.editing.Clock ||
@@ -1642,7 +1643,7 @@ namespace cadencii
 					#endregion
 				} else if (edit_mode == EditMode.MOVE_ENTRY_WHOLE) {
 					#if DEBUG
-					sout.println("FormMain#pictPianoRoll_MouseUp; EditMode.MOVE_ENTRY_WHOLE");
+					Logger.StdOut("FormMain#pictPianoRoll_MouseUp; EditMode.MOVE_ENTRY_WHOLE");
 					#endif
 					#region MOVE_ENTRY_WHOLE
 					int src_clock_start = EditorManager.mWholeSelectedInterval.getStart();
@@ -1663,12 +1664,12 @@ namespace cadencii
 						selected_ids[k] = internal_id;
 						k++;
 						#if DEBUG
-						sout.println("FormMain#pictPianoRoll_MouseUp; internal_id=" + internal_id);
+						Logger.StdOut("FormMain#pictPianoRoll_MouseUp; internal_id=" + internal_id);
 						#endif
 						foreach (var vsq_event in work.getNoteEventIterator()) {
 							if (internal_id == vsq_event.InternalID) {
 								#if DEBUG
-								sout.println("FormMain#pictPianoRoll_MouseUp; before: clock=" + vsq_event.Clock + "; after: clock=" + item.editing.Clock);
+								Logger.StdOut("FormMain#pictPianoRoll_MouseUp; before: clock=" + vsq_event.Clock + "; after: clock=" + item.editing.Clock);
 								#endif
 								vsq_event.Clock = item.editing.Clock;
 								break;
@@ -1740,7 +1741,7 @@ namespace cadencii
 					int start = EditorManager.mWholeSelectedInterval.getStart();
 					int end = EditorManager.mWholeSelectedInterval.getEnd();
 					#if DEBUG
-					sout.println("FormMain#pictPianoRoll_MouseUp; WholeSelectedInterval; (start,end)=" + start + ", " + end);
+					Logger.StdOut("FormMain#pictPianoRoll_MouseUp; WholeSelectedInterval; (start,end)=" + start + ", " + end);
 					#endif
 					EditorManager.itemSelection.clearEvent();
 

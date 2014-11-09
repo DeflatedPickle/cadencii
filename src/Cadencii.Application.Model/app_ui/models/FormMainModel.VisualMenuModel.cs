@@ -34,7 +34,7 @@ namespace cadencii
 			public void RunVisualOverviewCheckedChanged()
 			{
 				#if DEBUG
-				sout.println("FormMain#menuVisualOverview_CheckedChanged; menuVisualOverview.isSelected()=" + parent.form.menuVisualOverview.Checked);
+				Logger.StdOut("FormMain#menuVisualOverview_CheckedChanged; menuVisualOverview.isSelected()=" + parent.form.menuVisualOverview.Checked);
 				#endif
 				EditorManager.editorConfig.OverviewEnabled = parent.form.menuVisualOverview.Checked;
 				parent.form.updateLayout();
@@ -140,7 +140,7 @@ namespace cadencii
 			public void RunVisualPluginUiVocaloidCommonCommand(RendererKind search)
 			{
 				#if DEBUG
-				sout.println("FormMain#menuVisualPluginVocaloidCommon_Click; search=" + search);
+				Logger.StdOut("FormMain#menuVisualPluginVocaloidCommon_Click; search=" + search);
 				#endif
 
 				#if ENABLE_VOCALOID

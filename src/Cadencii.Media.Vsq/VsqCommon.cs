@@ -13,7 +13,7 @@
 */
 using System;
 using cadencii;
-using cadencii.java.io;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {

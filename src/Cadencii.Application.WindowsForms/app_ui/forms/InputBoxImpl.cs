@@ -45,7 +45,7 @@ namespace cadencii
         public void btnOk_Click(Object sender, EventArgs e)
         {
 #if DEBUG
-            sout.println("InputBox#btnOk_Click");
+            Logger.StdOut("InputBox#btnOk_Click");
 #endif
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }

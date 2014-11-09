@@ -18,7 +18,7 @@ using System.Text;
 using Microsoft.Win32;
 using cadencii;
 using cadencii.java.util;
-using cadencii.java.io;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {
@@ -75,7 +75,7 @@ namespace cadencii.vsq
         public static int getDefaultDseVersion()
         {
             if (!isInitialized) {
-                serr.println("VocaloSysUtil#getDefaultDseVersion; not initialized yet");
+                Logger.StdErr("VocaloSysUtil#getDefaultDseVersion; not initialized yet");
                 return 0;
             }
             return defaultDseVersion;
@@ -186,7 +186,7 @@ namespace cadencii.vsq
                                         try {
                                             defaultDseVersion = int.Parse(str_dse_version);
                                         } catch (Exception ex) {
-                                            serr.println("VocaloSysUtil#init; ex=" + ex);
+                                            Logger.StdErr("VocaloSysUtil#init; ex=" + ex);
                                             defaultDseVersion = 100;
                                         }
                                     }
@@ -194,20 +194,20 @@ namespace cadencii.vsq
                                 }
                             }
                         } catch (Exception ex) {
-                            serr.println("VocaloSysUtil#init; ex=" + ex);
+                            Logger.StdErr("VocaloSysUtil#init; ex=" + ex);
                         } finally {
                             if (br != null) {
                                 try {
                                     br.Close();
                                 } catch (Exception ex2) {
-                                    serr.println("VocaloSysUtil#init; ex2=" + ex2);
+                                    Logger.StdErr("VocaloSysUtil#init; ex2=" + ex2);
                                 }
                             }
                         }
                     }
                 }
             } catch (Exception ex) {
-                serr.println("VocaloSysUtil#init; ex=" + ex);
+                Logger.StdErr("VocaloSysUtil#init; ex=" + ex);
                 SingerConfigSys singer_config_sys = new SingerConfigSys("", new string[] { });
                 exp_config_sys1 = null;
                 s_singer_config_sys[SynthesizerType.VOCALOID1] = singer_config_sys;
@@ -248,14 +248,14 @@ namespace cadencii.vsq
                 }
                 s_singer_config_sys[SynthesizerType.VOCALOID2] = singer_config_sys;
             } catch (Exception ex) {
-                serr.println("VocaloSysUtil..cctor; ex=" + ex);
+                Logger.StdErr("VocaloSysUtil..cctor; ex=" + ex);
                 SingerConfigSys singer_config_sys = new SingerConfigSys("", new string[] { });
                 exp_config_sys2 = null;
                 s_singer_config_sys[SynthesizerType.VOCALOID2] = singer_config_sys;
             }
             if (exp_config_sys2 == null) {
 #if DEBUG
-                sout.println("VocaloSysUtil#.ctor; loading default ExpressionConfigSys...");
+                Logger.StdOut("VocaloSysUtil#.ctor; loading default ExpressionConfigSys...");
 #endif
                 exp_config_sys2 = ExpressionConfigSys.getVocaloid2Default();
             }
@@ -274,7 +274,7 @@ namespace cadencii.vsq
         public static VibratoHandle getDefaultVibratoHandle(string icon_id, int vibrato_length, SynthesizerType type)
         {
             if (!isInitialized) {
-                serr.println("VocaloSysUtil#getDefaultVibratoHandle; not initialized yet");
+                Logger.StdErr("VocaloSysUtil#getDefaultVibratoHandle; not initialized yet");
                 return null;
             }
             if (s_exp_config_sys.ContainsKey(type)) {
@@ -382,10 +382,10 @@ namespace cadencii.vsq
                 }
             }
 #if DEBUG
-            sout.println("path_vsti=" + path_vsti.value);
-            sout.println("path_voicedb=" + path_voicedb.value);
-            sout.println("path_expdb=" + path_expdb.value);
-            sout.println("installed_singers=");
+            Logger.StdOut("path_vsti=" + path_vsti.value);
+            Logger.StdOut("path_voicedb=" + path_voicedb.value);
+            Logger.StdOut("path_expdb=" + path_expdb.value);
+            Logger.StdOut("installed_singers=");
 #endif
         }
 
@@ -420,7 +420,7 @@ namespace cadencii.vsq
                 }
                 key.Close();
             } catch (Exception ex) {
-                serr.println("VocaloSysUtil#initPrint; ex=" + ex);
+                Logger.StdErr("VocaloSysUtil#initPrint; ex=" + ex);
             }
         }
 
@@ -432,7 +432,7 @@ namespace cadencii.vsq
         public static IEnumerable<NoteHeadHandle> attackConfigIterator(SynthesizerType type)
         {
             if (!isInitialized) {
-                serr.println("VocaloSysUtil#attackConfigIterator; not initialized yet");
+                Logger.StdErr("VocaloSysUtil#attackConfigIterator; not initialized yet");
                 return null;
             }
             if (s_exp_config_sys.ContainsKey(type)) {
@@ -450,7 +450,7 @@ namespace cadencii.vsq
         public static IEnumerable<VibratoHandle> vibratoConfigIterator(SynthesizerType type)
         {
             if (!isInitialized) {
-                serr.println("VocaloSysUtil#vibratoConfigIterator; not initialized yet");
+                Logger.StdErr("VocaloSysUtil#vibratoConfigIterator; not initialized yet");
                 return null;
             }
             if (s_exp_config_sys.ContainsKey(type)) {
@@ -468,7 +468,7 @@ namespace cadencii.vsq
         public static IEnumerable<IconDynamicsHandle> dynamicsConfigIterator(SynthesizerType type)
         {
             if (!isInitialized) {
-                serr.println("VocaloSysUtil#dynamicsConfigIterator; not initialized yet");
+                Logger.StdErr("VocaloSysUtil#dynamicsConfigIterator; not initialized yet");
                 return null;
             }
             if (s_exp_config_sys.ContainsKey(type)) {
@@ -488,7 +488,7 @@ namespace cadencii.vsq
         public static string getOriginalSinger(int language, int program, SynthesizerType type)
         {
             if (!isInitialized) {
-                serr.println("VocaloSysUtil#getOriginalSinger; not initialized yet");
+                Logger.StdErr("VocaloSysUtil#getOriginalSinger; not initialized yet");
                 return null;
             }
             string voiceidstr = "";
@@ -525,7 +525,7 @@ namespace cadencii.vsq
         public static VsqID getSingerID(int language, int program, SynthesizerType type)
         {
             if (!isInitialized) {
-                serr.println("VocaloSysUtil#getSingerID; not initialized yet");
+                Logger.StdErr("VocaloSysUtil#getSingerID; not initialized yet");
                 return null;
             }
             if (!s_singer_config_sys.ContainsKey(type)) {
@@ -543,7 +543,7 @@ namespace cadencii.vsq
         public static string getEditorPath(SynthesizerType type)
         {
             if (!isInitialized) {
-                serr.println("VocaloSysUtil#getEditorPath; not initialized yet");
+                Logger.StdErr("VocaloSysUtil#getEditorPath; not initialized yet");
                 return "";
             }
             if (!s_path_editor.ContainsKey(type)) {
@@ -561,7 +561,7 @@ namespace cadencii.vsq
         public static string getDllPathVsti(SynthesizerType type)
         {
             if (!isInitialized) {
-                serr.println("VocaloSysUtil#getDllPathVsti; not initialized yet");
+                Logger.StdErr("VocaloSysUtil#getDllPathVsti; not initialized yet");
                 return "";
             }
             if (!s_path_vsti.ContainsKey(type)) {
@@ -579,7 +579,7 @@ namespace cadencii.vsq
         public static SingerConfig[] getSingerConfigs(SynthesizerType type)
         {
             if (!isInitialized) {
-                serr.println("VocaloSysUtil#getSingerConfigs; not initialized yet");
+                Logger.StdErr("VocaloSysUtil#getSingerConfigs; not initialized yet");
                 return new SingerConfig[] { };
             }
             if (!s_singer_config_sys.ContainsKey(type)) {
@@ -597,7 +597,7 @@ namespace cadencii.vsq
         public static VsqVoiceLanguage getLanguageFromName(string name)
         {
             if (!isInitialized) {
-                serr.println("VocaloSysUtil#getLanguageFromName; not initialized yet");
+                Logger.StdErr("VocaloSysUtil#getLanguageFromName; not initialized yet");
                 return VsqVoiceLanguage.Japanese;
             }
             string search = name.ToLower();

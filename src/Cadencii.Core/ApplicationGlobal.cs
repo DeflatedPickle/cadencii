@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Cadencii.Utilities;
 
 namespace cadencii.core
 {
@@ -62,8 +63,8 @@ namespace cadencii.core
         public static void setTempWaveDir(string value)
         {
 #if DEBUG
-            sout.println("EditorManager#setTempWaveDir; before: \"" + mTempWaveDir + "\"");
-            sout.println("                           after:  \"" + value + "\"");
+            Logger.StdOut("EditorManager#setTempWaveDir; before: \"" + mTempWaveDir + "\"");
+            Logger.StdOut("                           after:  \"" + value + "\"");
 #endif
             mTempWaveDir = value;
         }
@@ -125,7 +126,7 @@ namespace cadencii.core
             if (!Directory.Exists(dir2)) {
                 PortUtil.createDirectory(dir2);
             }
-            sout.println("Cadencii accesses ApplicationData at" + dir2 + "\n");//Keep this line for debuging.
+            Logger.StdOut("Cadencii accesses ApplicationData at" + dir2 + "\n");//Keep this line for debuging.
 
             return dir2;
         }

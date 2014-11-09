@@ -20,6 +20,7 @@ using Cadencii.Gui;
 using cadencii.xml;
 using cadencii.vsq;
 using cadencii.core;
+using Cadencii.Utilities;
 
 
 
@@ -438,14 +439,14 @@ namespace cadencii
                             index = (int)PortUtil.fromHexString(s);
                             index--;
                         } catch (Exception ex) {
-                            serr.println(typeof(AppConfig) + ".createAutoVibrato; ex=" + ex + "; AutoVibratoTypeCustom=" + AutoVibratoTypeCustom + "; s=" + s);
+                            Logger.StdErr(typeof(AppConfig) + ".createAutoVibrato; ex=" + ex + "; AutoVibratoTypeCustom=" + AutoVibratoTypeCustom + "; s=" + s);
                             index = 0;
                         }
                     }
                 }
 
 #if DEBUG
-                sout.println("EditorConfig.createAutoVibrato; AutoVibratoTypeCustom=" + AutoVibratoTypeCustom + "; index=" + index);
+                Logger.StdOut("EditorConfig.createAutoVibrato; AutoVibratoTypeCustom=" + AutoVibratoTypeCustom + "; index=" + index);
 #endif
                 VibratoHandle ret = null;
                 if (0 <= index && index < this.AutoVibratoCustom.Count) {
@@ -535,7 +536,7 @@ namespace cadencii
                     invokeQuantizeModeChangedEvent();
                 } catch (Exception ex) {
                     Logger.write(typeof(AppConfig) + ".getPositionQuantize; ex=" + ex + "\n");
-                    serr.println("EditorConfig#setPositionQuantize; ex=" + ex);
+                    Logger.StdErr("EditorConfig#setPositionQuantize; ex=" + ex);
                 }
             }
         }
@@ -565,7 +566,7 @@ namespace cadencii
                 try {
                     invokeQuantizeModeChangedEvent();
                 } catch (Exception ex) {
-                    serr.println("EditorConfig#setPositionQuantizeTriplet; ex=" + ex);
+                    Logger.StdErr("EditorConfig#setPositionQuantizeTriplet; ex=" + ex);
                     Logger.write(typeof(AppConfig) + ".setPositionQuantizeTriplet; ex=" + ex + "\n");
                 }
             }
@@ -596,7 +597,7 @@ namespace cadencii
                 try {
                     invokeQuantizeModeChangedEvent();
                 } catch (Exception ex) {
-                    serr.println("EditorConfig#setLengthQuantize; ex=" + ex);
+                    Logger.StdErr("EditorConfig#setLengthQuantize; ex=" + ex);
                     Logger.write(typeof(AppConfig) + ".setLengthQuantize; ex=" + ex + "\n");
                 }
             }
@@ -626,7 +627,7 @@ namespace cadencii
                 try {
                     invokeQuantizeModeChangedEvent();
                 } catch (Exception ex) {
-                    serr.println("EditorConfig#setLengthQuantizeTriplet; ex=" + ex);
+                    Logger.StdErr("EditorConfig#setLengthQuantizeTriplet; ex=" + ex);
                     Logger.write(typeof(AppConfig) + ".setLengthQuantizeTriplet; ex=" + ex + "\n");
                 }
             }

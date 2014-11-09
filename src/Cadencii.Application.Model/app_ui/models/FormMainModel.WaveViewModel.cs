@@ -33,7 +33,7 @@ namespace cadencii
 			public void RunMouseDown(MouseEventArgs e)
 			{
 				#if DEBUG
-				sout.println("waveView_MouseDown; isMiddleButtonDowned=" + parent.IsMouseMiddleButtonDown(e.Button));
+				Logger.StdOut("waveView_MouseDown; isMiddleButtonDowned=" + parent.IsMouseMiddleButtonDown(e.Button));
 				#endif
 				if (parent.IsMouseMiddleButtonDown(e.Button)) {
 					parent.form.mEditCurveMode = CurveEditMode.MIDDLE_DRAG;

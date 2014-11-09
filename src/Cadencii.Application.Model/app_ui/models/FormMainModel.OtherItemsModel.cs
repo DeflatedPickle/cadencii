@@ -8,6 +8,7 @@ using cadencii.core;
 using System.IO;
 using cadencii.xml;
 using System.Diagnostics;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -143,7 +144,7 @@ namespace cadencii
 				try {
 					parent.form.Invoke(new Action(parent.form.refreshScreenCore));
 				} catch (Exception ex) {
-					serr.println("FormMain#bgWorkScreen_DoWork; ex=" + ex);
+					Logger.StdErr("FormMain#bgWorkScreen_DoWork; ex=" + ex);
 					Logger.write(GetType () + ".bgWorkScreen_DoWork; ex=" + ex + "\n");
 				}
 			}
@@ -489,7 +490,7 @@ namespace cadencii
 			public void propertyWindowFormClosing()
 			{
 			#if DEBUG
-				sout.println("FormMain#propertyWindowFormClosing");
+				Logger.StdOut("FormMain#propertyWindowFormClosing");
 			#endif
 				parent.form.updatePropertyPanelState(PanelState.Hidden);
 			}
@@ -499,11 +500,11 @@ namespace cadencii
 			public void propertyWindowStateChanged()
 			{
 			#if DEBUG
-				sout.println("FormMain#propertyWindow_WindowStateChanged");
+				Logger.StdOut("FormMain#propertyWindow_WindowStateChanged");
 			#endif
 				if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
 			#if DEBUG
-					sout.println("FormMain#proprtyWindow_WindowStateChanged; isWindowMinimized=" + EditorManager.propertyWindow.getUi().isWindowMinimized());
+					Logger.StdOut("FormMain#proprtyWindow_WindowStateChanged; isWindowMinimized=" + EditorManager.propertyWindow.getUi().isWindowMinimized());
 			#endif
 					if (EditorManager.propertyWindow.getUi().isWindowMinimized()) {
 						parent.form.updatePropertyPanelState(PanelState.Docked);
@@ -514,7 +515,7 @@ namespace cadencii
 			public void propertyWindowLocationOrSizeChanged()
 			{
 			#if DEBUG
-				sout.println("FormMain#propertyWindow_LocationOrSizeChanged");
+				Logger.StdOut("FormMain#propertyWindow_LocationOrSizeChanged");
 			#endif
 				if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Window) {
 					if (EditorManager.propertyWindow != null && false == EditorManager.propertyWindow.getUi().isWindowMinimized()) {
@@ -608,7 +609,7 @@ namespace cadencii
 			public void mixerWindow_FederChanged(int track, int feder)
 			{
 				#if DEBUG
-				sout.println("FormMain#mixerWindow_FederChanged; track=" + track + "; feder=" + feder);
+				Logger.StdOut("FormMain#mixerWindow_FederChanged; track=" + track + "; feder=" + feder);
 				#endif
 				if (track == 0) {
 					MusicManager.getVsqFile().Mixer.MasterFeder = feder;

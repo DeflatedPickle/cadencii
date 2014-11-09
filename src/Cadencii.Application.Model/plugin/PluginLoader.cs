@@ -22,6 +22,7 @@ using System.Linq;
 using cadencii;
 using cadencii.apputil;
 using cadencii.vsq;
+using Cadencii.Utilities;
 
 
 
@@ -96,7 +97,7 @@ namespace cadencii
                     ret = cr.CompiledAssembly;
                     compiled = true;
                 } catch (Exception ex) {
-                    serr.println("Utility#compileScript; ex=" + ex);
+                    Logger.StdErr("Utility#compileScript; ex=" + ex);
                     Logger.write(typeof(EditorManager) + ".compileScript; ex=" + ex + "\n");
                 }
                 if (!compiled) {
@@ -115,14 +116,14 @@ namespace cadencii
                     try {
                         PortUtil.deleteFile(cached_asm_file);
                     } catch (Exception ex) {
-                        serr.println("Utility#compileScript; ex=" + ex);
+                        Logger.StdErr("Utility#compileScript; ex=" + ex);
                         Logger.write(typeof(EditorManager) + ".compileScript; ex=" + ex + "\n");
                     }
                 }
                 try {
                     PortUtil.copyFile(cr.PathToAssembly, cached_asm_file);
                 } catch (Exception ex) {
-                    serr.println("Utility#compileScript; ex=" + ex);
+                    Logger.StdErr("Utility#compileScript; ex=" + ex);
                     Logger.write(typeof(EditorManager) + ".compileScript; ex=" + ex + "\n");
                 }
             }
@@ -155,7 +156,7 @@ namespace cadencii
                     try {
                         PortUtil.deleteFile(full);
                     } catch (Exception ex) {
-                        serr.println("Utility#cleanupUnusedAssemblyCache; ex=" + ex);
+                        Logger.StdErr("Utility#cleanupUnusedAssemblyCache; ex=" + ex);
                         Logger.write(typeof(EditorManager) + ".cleanupUnusedAssemblyCache; ex=" + ex + "\n");
                     }
                 }
@@ -245,7 +246,7 @@ namespace cadencii
                             fs = new System.IO.FileStream(config_file, System.IO.FileMode.Open, System.IO.FileAccess.Read);
                             ret.Serializer.deserialize(fs);
                         } catch (Exception ex) {
-                            serr.println("Utility#loadScript; ex=" + ex);
+                            Logger.StdErr("Utility#loadScript; ex=" + ex);
                             Logger.write(typeof(EditorManager) + ".loadScript; ex=" + ex + "\n");
                             delete_when_exit = true;
                         } finally {
@@ -256,7 +257,7 @@ namespace cadencii
                                         System.IO.File.Delete(config_file);
                                     }
                                 } catch (Exception ex2) {
-                                    serr.println("Utility#loadScript; ex2=" + ex2);
+                                    Logger.StdErr("Utility#loadScript; ex2=" + ex2);
                                     Logger.write(typeof(EditorManager) + ".loadScritp; ex=" + ex2 + "\n");
                                 }
                             }

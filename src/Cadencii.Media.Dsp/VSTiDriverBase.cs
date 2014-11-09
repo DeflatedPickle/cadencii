@@ -130,7 +130,7 @@ namespace cadencii
             try {
                 ret = aEffect.GetParameter(index);
             } catch (Exception ex) {
-                serr.println("vstidrv#getParameter; ex=" + ex);
+                Logger.StdErr("vstidrv#getParameter; ex=" + ex);
             }
             return ret;
         }
@@ -140,7 +140,7 @@ namespace cadencii
             try {
                 aEffect.SetParameter(index, value);
             } catch (Exception ex) {
-                serr.println("vstidrv#setParameter; ex=" + ex);
+                Logger.StdErr("vstidrv#setParameter; ex=" + ex);
             }
         }
 
@@ -159,7 +159,7 @@ namespace cadencii
                     }
                 }
             } catch (Exception ex) {
-                serr.println("vstidrv#getStringCore; ex=" + ex);
+                Logger.StdErr("vstidrv#getStringCore; ex=" + ex);
             }
             string ret = Encoding.ASCII.GetString(arr);
             return ret;
@@ -252,7 +252,7 @@ namespace cadencii
                     }
                 }
             } catch (Exception ex) {
-                serr.println("vstidrv#process; ex=" + ex);
+                Logger.StdErr("vstidrv#process; ex=" + ex);
             }
         }
 
@@ -292,13 +292,13 @@ namespace cadencii
                     }
                     aEffect.Dispatch(AEffectXOpcodes.effProcessEvents, 0, 0, new IntPtr(pVSTEvents), 0);
                 } catch (Exception ex) {
-                    serr.println("vstidrv#send; ex=" + ex);
+                    Logger.StdErr("vstidrv#send; ex=" + ex);
                 } finally {
                     if (mman != null) {
                         try {
                             mman.dispose();
                         } catch (Exception ex2) {
-                            serr.println("vstidrv#send; ex2=" + ex2);
+                            Logger.StdErr("vstidrv#send; ex2=" + ex2);
                         }
                     }
                 }
@@ -328,7 +328,7 @@ namespace cadencii
             int ret1 = aEffect.Dispatch(AEffectOpcodes.effSetSampleRate, 0, 0, IntPtr.Zero, (float)sampleRate);
             int ret2 = aEffect.Dispatch(AEffectOpcodes.effSetBlockSize, 0, sampleRate, IntPtr.Zero, 0);
 #if DEBUG
-            sout.println("vstidrv#setSampleRate; ret1=" + ret1 + "; ret2=" + ret2);
+            Logger.StdOut("vstidrv#setSampleRate; ret1=" + ret1 + "; ret2=" + ret2);
 #endif
         }
 
@@ -336,7 +336,7 @@ namespace cadencii
         {
             dllHandle = win32.LoadLibraryExW(path, IntPtr.Zero, win32.LOAD_WITH_ALTERED_SEARCH_PATH);
             if (dllHandle == IntPtr.Zero) {
-                serr.println("vstidrv#open; dllHandle is null");
+                Logger.StdErr("vstidrv#open; dllHandle is null");
                 return false;
             }
 
@@ -344,13 +344,13 @@ namespace cadencii
             mainDelegate = (PVSTMAIN)Marshal.GetDelegateForFunctionPointer(mainProcPointer,
                                                                             typeof(PVSTMAIN));
             if (mainDelegate == null) {
-                serr.println("vstidrv#open; mainDelegate is null");
+                Logger.StdErr("vstidrv#open; mainDelegate is null");
                 return false;
             }
 
             audioMaster = new audioMasterCallback(AudioMaster);
             if (audioMaster == null) {
-                serr.println("vstidrv#open; audioMaster is null");
+                Logger.StdErr("vstidrv#open; audioMaster is null");
                 return false;
             }
 
@@ -358,11 +358,11 @@ namespace cadencii
             try {
                 aEffectPointer = mainDelegate(audioMaster);
             } catch (Exception ex) {
-                serr.println("vstidrv#open; ex=" + ex);
+                Logger.StdErr("vstidrv#open; ex=" + ex);
                 return false;
             }
             if (aEffectPointer == IntPtr.Zero) {
-                serr.println("vstidrv#open; aEffectPointer is null");
+                Logger.StdErr("vstidrv#open; aEffectPointer is null");
                 return false;
             }
             blockSize = block_size;
@@ -372,7 +372,7 @@ namespace cadencii
             aEffect.Dispatch(AEffectOpcodes.effOpen, 0, 0, IntPtr.Zero, 0);
             int ret = aEffect.Dispatch(AEffectOpcodes.effSetSampleRate, 0, 0, IntPtr.Zero, (float)sampleRate);
 #if DEBUG
-            sout.println("vstidrv#open; dll_path=" + path + "; ret for effSetSampleRate=" + ret);
+            Logger.StdOut("vstidrv#open; dll_path=" + path + "; ret for effSetSampleRate=" + ret);
 #endif
 
             aEffect.Dispatch(AEffectOpcodes.effSetBlockSize, 0, blockSize, IntPtr.Zero, 0);
@@ -391,15 +391,15 @@ namespace cadencii
         {
             lock (mSyncRoot) {
 #if TEST
-                sout.println("vstidrv#close");
+                Logger.StdOut("vstidrv#close");
 #endif
                 uihost.ClosePluginUI ();
                 try {
-                    sout.println("vstidrv#close; (aEffect==null)=" + (aEffect == null));
+                    Logger.StdOut("vstidrv#close; (aEffect==null)=" + (aEffect == null));
                     if (aEffect != null) {
                         aEffect.Dispatch(AEffectOpcodes.effClose, 0, 0, IntPtr.Zero, 0.0f);
                     }
-                    sout.println("vstidrv#close; dllHandle=" + dllHandle);
+                    Logger.StdOut("vstidrv#close; dllHandle=" + dllHandle);
                     if (dllHandle != IntPtr.Zero) {
                         win32.FreeLibrary(dllHandle);
                     }
@@ -408,7 +408,7 @@ namespace cadencii
                     mainDelegate = null;
                     audioMaster = null;
                 } catch (Exception ex) {
-                    serr.println("vstidrv#close; ex=" + ex);
+                    Logger.StdErr("vstidrv#close; ex=" + ex);
                 }
                 releaseBuffer();
             }

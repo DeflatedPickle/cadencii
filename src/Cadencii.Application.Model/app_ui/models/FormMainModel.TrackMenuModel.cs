@@ -55,7 +55,7 @@ namespace cadencii
 			public void RunTrackDropDownOpening()
 			{
 				#if DEBUG
-				sout.println("FormMain#menuTrack_DropDownOpening");
+				Logger.StdOut("FormMain#menuTrack_DropDownOpening");
 				#endif
 				parent.form.updateTrackMenuStatus();
 			}
@@ -99,7 +99,7 @@ namespace cadencii
 				List<VsqID> singers = MusicManager.getSingerListFromRendererKind (kind);
 				string renderer = kind.getVersionString ();
 				if (singers == null) {
-					serr.println ("FormMain#changeRendererCor; singers is null");
+					Logger.StdErr ("FormMain#changeRendererCor; singers is null");
 					return;
 				}
 
@@ -131,7 +131,7 @@ namespace cadencii
 			public void RunTrackTabOpening()
 			{
 				#if DEBUG
-				sout.println(GetType () + ".cMenuTrackTab_Opening");
+				Logger.StdOut(GetType () + ".cMenuTrackTab_Opening");
 				#endif
 				parent.form.updateTrackMenuStatus();
 			}

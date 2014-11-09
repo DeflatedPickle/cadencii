@@ -33,20 +33,20 @@ namespace cadencii
         VibratoDepth,
         Accent,
         Decay,
-        harmonics,
-        fx2depth,
-        reso1freq,
-        reso1bw,
-        reso1amp,
-        reso2freq,
-        reso2bw,
-        reso2amp,
-        reso3freq,
-        reso3bw,
-        reso3amp,
-        reso4freq,
-        reso4bw,
-        reso4amp,
+        Harmonics,
+        Fx2Depth,
+        Reso1Freq,
+        Reso1Bw,
+        Reso1Amp,
+        Reso2Freq,
+        Reso2Bw,
+        Reso2Amp,
+        Reso3Freq,
+        Reso3Bw,
+        Reso3Amp,
+        Reso4Freq,
+        Reso4Bw,
+        Reso4Amp,
         Env,
         Empty,
     }
@@ -119,59 +119,59 @@ namespace cadencii
         /// <summary>
         /// Harmonics(index=11)
         /// </summary>
-        public static readonly CurveType harmonics = new CurveType(CurveTypeImpl.harmonics, false, false, 0, 127, 0, 11);
+        public static readonly CurveType Harmonics = new CurveType(CurveTypeImpl.Harmonics, false, false, 0, 127, 0, 11);
         /// <summary>
         /// FX2Depth(index=12)
         /// </summary>
-        public static readonly CurveType fx2depth = new CurveType(CurveTypeImpl.fx2depth, false, false, 0, 127, 0, 12);
+        public static readonly CurveType Fx2Depth = new CurveType(CurveTypeImpl.Fx2Depth, false, false, 0, 127, 0, 12);
         /// <summary>
         /// reso1freq(index=13)
         /// </summary>
-        public static readonly CurveType reso1freq = new CurveType(CurveTypeImpl.reso1freq, false, false, 0, 127, 0, 13);
+        public static readonly CurveType Reso1Freq = new CurveType(CurveTypeImpl.Reso1Freq, false, false, 0, 127, 0, 13);
         /// <summary>
         /// reso1bw(index=14)
         /// </summary>
-        public static readonly CurveType reso1bw = new CurveType(CurveTypeImpl.reso1bw, false, false, 0, 127, 0, 14);
+        public static readonly CurveType Reso1Bw = new CurveType(CurveTypeImpl.Reso1Bw, false, false, 0, 127, 0, 14);
         /// <summary>
         /// reso1amp(index=15)
         /// </summary>
-        public static readonly CurveType reso1amp = new CurveType(CurveTypeImpl.reso1amp, false, false, 0, 127, 0, 15);
+        public static readonly CurveType Reso1Amp = new CurveType(CurveTypeImpl.Reso1Amp, false, false, 0, 127, 0, 15);
         /// <summary>
         /// reso2freq(index=16)
         /// </summary>
-        public static readonly CurveType reso2freq = new CurveType(CurveTypeImpl.reso2freq, false, false, 0, 127, 0, 16);
+        public static readonly CurveType Reso2Freq = new CurveType(CurveTypeImpl.Reso2Freq, false, false, 0, 127, 0, 16);
         /// <summary>
         /// reso2bw(index=17)
         /// </summary>
-        public static readonly CurveType reso2bw = new CurveType(CurveTypeImpl.reso2bw, false, false, 0, 127, 0, 17);
+        public static readonly CurveType Reso2Bw = new CurveType(CurveTypeImpl.Reso2Bw, false, false, 0, 127, 0, 17);
         /// <summary>
         /// reso2amp(index=18)
         /// </summary>
-        public static readonly CurveType reso2amp = new CurveType(CurveTypeImpl.reso2amp, false, false, 0, 127, 0, 18);
+        public static readonly CurveType Reso2Amp = new CurveType(CurveTypeImpl.Reso2Amp, false, false, 0, 127, 0, 18);
         /// <summary>
         /// reso3freq(index=19)
         /// </summary>
-        public static readonly CurveType reso3freq = new CurveType(CurveTypeImpl.reso3freq, false, false, 0, 127, 0, 19);
+        public static readonly CurveType Reso3Freq = new CurveType(CurveTypeImpl.Reso3Freq, false, false, 0, 127, 0, 19);
         /// <summary>
         /// reso3bw(index=20)
         /// </summary>
-        public static readonly CurveType reso3bw = new CurveType(CurveTypeImpl.reso3bw, false, false, 0, 127, 0, 20);
+        public static readonly CurveType Reso3Bw = new CurveType(CurveTypeImpl.Reso3Bw, false, false, 0, 127, 0, 20);
         /// <summary>
         /// reso3amp(index=21)
         /// </summary>
-        public static readonly CurveType reso3amp = new CurveType(CurveTypeImpl.reso3amp, false, false, 0, 127, 0, 21);
+        public static readonly CurveType Reso3Amp = new CurveType(CurveTypeImpl.Reso3Amp, false, false, 0, 127, 0, 21);
         /// <summary>
         /// reso4freq(index=22)
         /// </summary>
-        public static readonly CurveType reso4freq = new CurveType(CurveTypeImpl.reso4freq, false, false, 0, 127, 0, 22);
+        public static readonly CurveType Reso4Freq = new CurveType(CurveTypeImpl.Reso4Freq, false, false, 0, 127, 0, 22);
         /// <summary>
         /// reso4bw(index=23)
         /// </summary>
-        public static readonly CurveType reso4bw = new CurveType(CurveTypeImpl.reso4bw, false, false, 0, 127, 0, 23);
+        public static readonly CurveType Reso4Bw = new CurveType(CurveTypeImpl.Reso4Bw, false, false, 0, 127, 0, 23);
         /// <summary>
         /// reso4amp(index=24)
         /// </summary>
-        public static readonly CurveType reso4amp = new CurveType(CurveTypeImpl.reso4amp, false, false, 0, 127, 0, 24);
+        public static readonly CurveType Reso4Amp = new CurveType(CurveTypeImpl.Reso4Amp, false, false, 0, 127, 0, 24);
         public static readonly CurveType Env = new CurveType(CurveTypeImpl.Env, true, true, 0, 200, 100, -1);
 
         public static readonly CurveType Empty = new CurveType(CurveTypeImpl.Empty, false, false, 0, 0, 0, -1);
@@ -213,39 +213,39 @@ namespace cadencii
                 mName = "Accent";
             } else if (mType == CurveTypeImpl.Decay) {
                 mName = "Decay";
-            } else if (mType == CurveTypeImpl.harmonics) {
+            } else if (mType == CurveTypeImpl.Harmonics) {
                 mName = "Harm";
-            } else if (mType == CurveTypeImpl.fx2depth) {
+            } else if (mType == CurveTypeImpl.Fx2Depth) {
                 mName = "fx2dep";
-            } else if (mType == CurveTypeImpl.reso1freq) {
+            } else if (mType == CurveTypeImpl.Reso1Freq) {
                 mName = "res1freq";
-            } else if (mType == CurveTypeImpl.reso1bw) {
+            } else if (mType == CurveTypeImpl.Reso1Bw) {
                 mName = "res1bw";
-            } else if (mType == CurveTypeImpl.reso1amp) {
+            } else if (mType == CurveTypeImpl.Reso1Amp) {
                 mName = "res1amp";
-            } else if (mType == CurveTypeImpl.reso2freq) {
+            } else if (mType == CurveTypeImpl.Reso2Freq) {
                 mName = "res2freq";
-            } else if (mType == CurveTypeImpl.reso2bw) {
+            } else if (mType == CurveTypeImpl.Reso2Bw) {
                 mName = "res2bw";
-            } else if (mType == CurveTypeImpl.reso2amp) {
+            } else if (mType == CurveTypeImpl.Reso2Amp) {
                 mName = "res2amp";
-            } else if (mType == CurveTypeImpl.reso3freq) {
+            } else if (mType == CurveTypeImpl.Reso3Freq) {
                 mName = "res3freq";
-            } else if (mType == CurveTypeImpl.reso3bw) {
+            } else if (mType == CurveTypeImpl.Reso3Bw) {
                 mName = "res3bw";
-            } else if (mType == CurveTypeImpl.reso3amp) {
+            } else if (mType == CurveTypeImpl.Reso3Amp) {
                 mName = "res3amp";
-            } else if (mType == CurveTypeImpl.reso4freq) {
+            } else if (mType == CurveTypeImpl.Reso4Freq) {
                 mName = "res4freq";
-            } else if (mType == CurveTypeImpl.reso4bw) {
+            } else if (mType == CurveTypeImpl.Reso4Bw) {
                 mName = "res4bw";
-            } else if (mType == CurveTypeImpl.reso4amp) {
+            } else if (mType == CurveTypeImpl.Reso4Amp) {
                 mName = "res4amp";
             } else if (mType == CurveTypeImpl.Env) {
                 mName = "Env";
             } else {
 #if DEBUG
-                sout.println("CurveType#.ctor; mType=" + mType);
+                Logger.StdOut("CurveType#.ctor; mType=" + mType);
 #endif
                 mName = "Empty";
             }

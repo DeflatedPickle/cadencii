@@ -9,6 +9,8 @@ using cadencii.apputil;
 using cadencii;
 using cadencii.java.util;
 using cadencii;
+using System.Text;
+using Cadencii.Utilities;
 
 
 
@@ -130,7 +132,7 @@ public class RenderAsUtau : Form
         }
         string character = Path.Combine(Singer, "character.txt");
         if (File.Exists(character)) {
-            using (cp932reader sr = new cp932reader(character)) {
+             using (var sr = new StreamReader(character, Encoding.GetEncoding (932))) {
                 string line = "";
                 while ((line = sr.ReadLine()) != null) {
                     string[] spl = line.Split("=".ToCharArray(), 2);
@@ -153,7 +155,7 @@ public class RenderAsUtau : Form
 
         string readme = Path.Combine(Singer, "readme.txt");
         if (File.Exists(readme)) {
-            using (cp932reader sr = new cp932reader(readme)) {
+            using (var sr = new StreamReader(readme, Encoding.GetEncoding (932))) {
                 txtProf.Text = sr.ReadToEnd();
             }
         } else {
@@ -187,7 +189,7 @@ public class RenderAsUtau : Form
                 sw.WriteLine("config_file=" + config_file);
 #endif
                 if (File.Exists(config_file)) {
-                    using (cp932reader sr = new cp932reader(config_file)) {
+                     using (var sr = new StreamReader (config_file, Encoding.GetEncoding (932))) {
                         string line;
                         while (sr.Peek() >= 0) {
                             try {

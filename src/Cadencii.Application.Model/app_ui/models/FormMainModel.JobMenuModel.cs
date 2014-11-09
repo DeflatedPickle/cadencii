@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using cadencii.core;
 using System.Text;
 using Cadencii.Gui;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -645,14 +646,14 @@ namespace cadencii
 					}
 				} catch (Exception ex) {
 					Logger.write(GetType () + ".menuJobRandomize_Click; ex=" + ex + "\n");
-					serr.println("FormMain#menuJobRandomize_Click; ex=" + ex);
+					Logger.StdErr("FormMain#menuJobRandomize_Click; ex=" + ex);
 				} finally {
 					if (dlg != null) {
 						try {
 							dlg.Close();
 						} catch (Exception ex2) {
 							Logger.write(GetType () + ".menuJobRandomize_Click; ex=" + ex2 + "\n");
-							serr.println("FormMain#menuJobRandomize; ex2=" + ex2);
+							Logger.StdErr("FormMain#menuJobRandomize; ex2=" + ex2);
 						}
 					}
 				}

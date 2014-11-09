@@ -1,6 +1,7 @@
 ﻿using System;
 using Cadencii.Gui;
 using System.Collections.Generic;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -156,7 +157,7 @@ namespace cadencii
 			public void RunMouseWheel(MouseEventArgs e)
 			{
 				#if DEBUG
-				sout.println("FormMain#trackSelector_MouseWheel");
+				Logger.StdOut("FormMain#trackSelector_MouseWheel");
 				#endif
 				if ((AwtHost.ModifierKeys & Keys.Shift) == Keys.Shift) {
 					double new_val = (double)parent.form.vScroll.Value - e.Delta;
@@ -180,7 +181,7 @@ namespace cadencii
 				if (parent.form.menuVisualControlTrack.Checked) {
 					parent.form.splitContainer1.Panel2MinSize = (parent.form.TrackSelector.getPreferredMinSize());
 					#if DEBUG
-					sout.println("FormMain#trackSelector_PreferredMinHeightChanged; splitContainer1.Panel2MinSize changed");
+					Logger.StdOut("FormMain#trackSelector_PreferredMinHeightChanged; splitContainer1.Panel2MinSize changed");
 					#endif
 				}
 			}

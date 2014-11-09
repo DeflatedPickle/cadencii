@@ -210,7 +210,7 @@ namespace cadencii
         public void workerCompleted(int index)
         {
 #if DEBUG
-            sout.println("FormWorker#workerCompleted; index=" + index);
+            Logger.StdOut("FormWorker#workerCompleted; index=" + index);
 #endif
             ProgressBarWithLabel label = mLabels[index];
             ptrUi.removeProgressBar(label.getUi());
@@ -273,13 +273,13 @@ namespace cadencii
                 }
                 mi = type.GetMethod(o.name, new Type[] { typeof(WorkerState), typeof(Object) });
             } catch (Exception ex) {
-                serr.println(typeof(FormWorker) + ".startWork; ex=" + ex);
+                Logger.StdErr(typeof(FormWorker) + ".startWork; ex=" + ex);
             }
             if (mi != null) {
                 try {
                     mi.Invoke(o.invoker, new object[] { o.state, o.arguments });
                 } catch (Exception ex) {
-                    serr.println(typeof(FormWorker) + ".startWork; ex=" + ex);
+                    Logger.StdErr(typeof(FormWorker) + ".startWork; ex=" + ex);
                 }
             }
         }

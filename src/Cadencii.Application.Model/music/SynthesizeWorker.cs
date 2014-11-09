@@ -18,6 +18,7 @@ using cadencii.media;
 using cadencii.vsq;
 using cadencii.java.util;
 using cadencii.core;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -34,7 +35,7 @@ namespace cadencii
         public void patchWork(WorkerState state, Object arg)
         {
 #if DEBUG
-            sout.println("SynthesizeWorker#patchWork");
+            Logger.StdOut("SynthesizeWorker#patchWork");
 #endif
             VsqFileEx vsq = MusicManager.getVsqFile();
             Object[] args = (Object[])arg;
@@ -59,8 +60,8 @@ namespace cadencii
                 }
 
 #if DEBUG
-                sout.println("EditorManager#pathWorkToFreeze; wavePath=" + wavePath + "; queue.get( queueIndex.get( 0 ) ).file=" + queue[queueIndex[0]].file);
-                sout.println("EditorManager#pathWorkToFreeze; queueIndex.size()=" + queueIndex.Count);
+                Logger.StdOut("EditorManager#pathWorkToFreeze; wavePath=" + wavePath + "; queue.get( queueIndex.get( 0 ) ).file=" + queue[queueIndex[0]].file);
+                Logger.StdOut("EditorManager#pathWorkToFreeze; queueIndex.size()=" + queueIndex.Count);
 #endif
                 if (queueIndex.Count == 1 && wavePath.Equals(queue[queueIndex[0]].file)) {
                     // 第trackトラック全体の合成を指示するキューだった場合．
@@ -115,14 +116,14 @@ namespace cadencii
                             }
                         } catch (Exception ex) {
                             Logger.write(typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex + "\n");
-                            serr.println("EditorManager#patchWorkToFreeze; ex=" + ex);
+                            Logger.StdErr("EditorManager#patchWorkToFreeze; ex=" + ex);
                         } finally {
                             if (wr != null) {
                                 try {
                                     wr.close();
                                 } catch (Exception ex2) {
                                     Logger.write(typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex2 + "\n");
-                                    serr.println("EditorManager#patchWorkToFreeze; ex2=" + ex2);
+                                    Logger.StdErr("EditorManager#patchWorkToFreeze; ex2=" + ex2);
                                 }
                             }
                         }
@@ -131,7 +132,7 @@ namespace cadencii
                             PortUtil.deleteFile(queue[i].file);
                         } catch (Exception ex) {
                             Logger.write(typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex + "\n");
-                            serr.println("EditorManager#patchWorkToFreeze; ex=" + ex);
+                            Logger.StdErr("EditorManager#patchWorkToFreeze; ex=" + ex);
                         }
                     }
 
@@ -204,14 +205,14 @@ namespace cadencii
                     state.reportComplete();
                 } catch (Exception ex) {
                     Logger.write(typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex + "\n");
-                    serr.println("EditorManager#patchWorkToFreeze; ex=" + ex);
+                    Logger.StdErr("EditorManager#patchWorkToFreeze; ex=" + ex);
                 } finally {
                     if (writer != null) {
                         try {
                             writer.close();
                         } catch (Exception ex2) {
                             Logger.write(typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex2 + "\n");
-                            serr.println("EditorManager#patchWorkToFreeze; ex2=" + ex2);
+                            Logger.StdErr("EditorManager#patchWorkToFreeze; ex2=" + ex2);
                         }
                     }
                 }
@@ -234,7 +235,7 @@ namespace cadencii
                 EditorManager.invokeWaveViewReloadRequiredEvent(track, wavePath, 1, -1);
             }
 #if DEBUG
-            sout.println("SynthesizeWorker#patchWork; done");
+            Logger.StdOut("SynthesizeWorker#patchWork; done");
 #endif
             state.reportComplete();
         }
@@ -242,7 +243,7 @@ namespace cadencii
         public void processQueue(WorkerState state, Object arg)
         {
 #if DEBUG
-            sout.println("SynthesizeWorker#processQueue");
+            Logger.StdOut("SynthesizeWorker#processQueue");
 #endif
             PatchWorkQueue q = (PatchWorkQueue)arg;
             VsqFileEx vsq = q.vsq;
@@ -313,7 +314,7 @@ namespace cadencii
                         double amp_left_i = amp_i * pan_left_i;
                         double amp_right_i = amp_i * pan_right_i;
 #if DEBUG
-                        sout.println("FormSynthesize#bgWork_DoWork; #" + i + "; amp_left_i=" + amp_left_i + "; amp_right_i=" + amp_right_i);
+                        Logger.StdOut("FormSynthesize#bgWork_DoWork; #" + i + "; amp_left_i=" + amp_left_i + "; amp_right_i=" + amp_right_i);
 #endif
                         amp_i_unit.setAmplify(amp_left_i, amp_right_i);
                         FileWaveSender wave_sender = new FileWaveSender(r);
@@ -329,7 +330,7 @@ namespace cadencii
             PortUtil.deleteFile(q.file);
             int sample_rate = vsq.config.SamplingRate;
 #if DEBUG
-            sout.println("FormSynthesize#bgWork_DoWork; q.file=" + q.file);
+            Logger.StdOut("FormSynthesize#bgWork_DoWork; q.file=" + q.file);
 #endif
             FileWaveReceiver wave_receiver = new FileWaveReceiver(q.file, channel, 16, sample_rate);
             wave_receiver.setRoot(mGenerator);

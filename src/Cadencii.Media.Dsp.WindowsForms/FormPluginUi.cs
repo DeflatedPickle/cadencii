@@ -12,6 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using Cadencii.Gui;
+using Cadencii.Utilities;
 
 
 #if ENABLE_AQUESTONE
@@ -75,7 +76,7 @@ namespace cadencii
                     try {
                         ret = win32.InvalidateRect(childWnd, IntPtr.Zero, false);
                     } catch (Exception ex) {
-                        serr.println("FormPluginUi#invalidateUi; ex=" + ex);
+                        Logger.StdErr("FormPluginUi#invalidateUi; ex=" + ex);
                         ret = false;
                     }
                     lastDrawn = now;
@@ -88,7 +89,7 @@ namespace cadencii
                 try {
                     win32.EnumChildWindows(Handle, EnumChildProc, 0);
                 } catch (Exception ex) {
-                    serr.println("vstidrv#updatePluginUiRect; ex=" + ex);
+                    Logger.StdErr("vstidrv#updatePluginUiRect; ex=" + ex);
                 }
         }
 
@@ -98,7 +99,7 @@ namespace cadencii
             try {
                 win32.GetWindowRect(hwnd, ref rc);
             } catch (Exception ex) {
-                serr.println("vstidrv#enumChildProc; ex=" + ex);
+                Logger.StdErr("vstidrv#enumChildProc; ex=" + ex);
             }
             childWnd = hwnd;
             WindowRect = new Dimension(rc.right - rc.left, rc.bottom - rc.top);

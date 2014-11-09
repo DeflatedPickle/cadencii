@@ -14,9 +14,7 @@
 using System;
 using System.IO;
 using cadencii;
-using cadencii.java.io;
-
-
+using Cadencii.Utilities;
 
 namespace cadencii
 {

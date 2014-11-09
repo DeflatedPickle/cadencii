@@ -150,7 +150,7 @@ namespace cadencii.xml
             parameters.GenerateExecutable = false;
             parameters.IncludeDebugInformation = true;
 #if DEBUG
-            sout.println( "XmlStaticMemberSerializer#Compile; code=" + code );
+            Logger.StdOut( "XmlStaticMemberSerializer#Compile; code=" + code );
 #endif
             CompilerResults results = provider.CompileAssemblyFromSource(parameters, code);
             return results.CompiledAssembly;

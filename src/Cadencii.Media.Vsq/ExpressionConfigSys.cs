@@ -15,8 +15,8 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Text;
-using cadencii.java.io;
 using cadencii.java.util;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {
@@ -979,13 +979,13 @@ namespace cadencii.vsq
                         }
                     }
                 } catch (Exception ex) {
-                    serr.println("ExpressionConfigSys#.ctor; ex=" + ex);
+                    Logger.StdErr("ExpressionConfigSys#.ctor; ex=" + ex);
                 } finally {
                     if (sr != null) {
                         try {
                             sr.Close();
                         } catch (Exception ex2) {
-                            serr.println("ExpressionConfigSys#.ctor; ex2=" + ex2);
+                            Logger.StdErr("ExpressionConfigSys#.ctor; ex2=" + ex2);
                         }
                     }
                 }
@@ -1115,25 +1115,25 @@ namespace cadencii.vsq
                             }
                         }
                     } catch (Exception ex) {
-                        serr.println("ExpressionConfigSys#.ctor; ex=" + ex);
+                        Logger.StdErr("ExpressionConfigSys#.ctor; ex=" + ex);
                     } finally {
                         if (fs_ved != null) {
                             try {
                                 fs_ved.Close();
                             } catch (Exception ex2) {
-                                serr.println("ExpressionConfigSys#.ctor; ex2=" + ex2);
+                                Logger.StdErr("ExpressionConfigSys#.ctor; ex2=" + ex2);
                             }
                         }
                     }
                 }
             } catch (Exception ex) {
-                serr.println("ExpressionConfigSys#.ctor; ex=" + ex);
+                Logger.StdErr("ExpressionConfigSys#.ctor; ex=" + ex);
             } finally {
                 if (fs != null) {
                     try {
                         fs.Close();
                     } catch (Exception ex2) {
-                        serr.println("ExpressionConfigSys#.ctor; ex2=" + ex2);
+                        Logger.StdErr("ExpressionConfigSys#.ctor; ex2=" + ex2);
                     }
                 }
             }

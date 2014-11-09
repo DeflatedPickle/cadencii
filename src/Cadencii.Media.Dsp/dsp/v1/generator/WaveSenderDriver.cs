@@ -93,7 +93,7 @@ namespace cadencii
         {
             mSampleRate = sample_rate;
 #if DEBUG
-            sout.println("WaveSenderDriver#init; sample_rate=" + sample_rate);
+            Logger.StdOut("WaveSenderDriver#init; sample_rate=" + sample_rate);
 #endif
         }
 

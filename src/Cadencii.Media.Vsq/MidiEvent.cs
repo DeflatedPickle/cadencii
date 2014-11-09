@@ -14,7 +14,7 @@
 using System;
 using System.IO;
 using cadencii;
-using cadencii.java.io;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {
@@ -258,7 +258,7 @@ namespace cadencii.vsq
             ret.firstByte = 0xff;
             int b_numer = (int)(Math.Log(denominator) / Math.Log(2) + 0.1);
 #if DEBUG
-            sout.println("VsqEvent.generateTimeSigEvent; b_number=" + b_numer + "; denominator=" + denominator);
+            Logger.StdOut("VsqEvent.generateTimeSigEvent; b_number=" + b_numer + "; denominator=" + denominator);
 #endif
             ret.data = new int[] { 0x58, numerator, b_numer, 0x18, 0x08 };
             return ret;

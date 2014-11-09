@@ -11,6 +11,7 @@ using System.Linq;
 using cadencii.java.util;
 using Cadencii.Gui;
 using cadencii.apputil;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -350,7 +351,7 @@ namespace cadencii
 												PortUtil.deleteFile (wavTo);
 											} catch (Exception ex) {
 												Logger.write (GetType () + ".menuSettingPreference_Click; ex=" + ex + "\n");
-												serr.println ("FormMain#menuSettingPreference_Click; ex=" + ex);
+												Logger.StdErr ("FormMain#menuSettingPreference_Click; ex=" + ex);
 												continue;
 											}
 										}
@@ -358,7 +359,7 @@ namespace cadencii
 											PortUtil.moveFile (wavFrom, wavTo);
 										} catch (Exception ex) {
 											Logger.write (GetType () + ".menuSettingPreference_Click; ex=" + ex + "\n");
-											serr.println ("FormMain#menuSettingPreference_Click; ex=" + ex);
+											Logger.StdErr ("FormMain#menuSettingPreference_Click; ex=" + ex);
 										}
 
 										// xmlを移動
@@ -372,7 +373,7 @@ namespace cadencii
 												PortUtil.deleteFile (xmlTo);
 											} catch (Exception ex) {
 												Logger.write (GetType () + ".menuSettingPreference_Click; ex=" + ex + "\n");
-												serr.println ("FormMain#menuSettingPreference_Click; ex=" + ex);
+												Logger.StdErr ("FormMain#menuSettingPreference_Click; ex=" + ex);
 												continue;
 											}
 										}
@@ -380,7 +381,7 @@ namespace cadencii
 											PortUtil.moveFile (xmlFrom, xmlTo);
 										} catch (Exception ex) {
 											Logger.write (GetType () + ".menuSettingPreference_Click; ex=" + ex + "\n");
-											serr.println ("FormMain#menuSettingPreference_Click; ex=" + ex);
+											Logger.StdErr ("FormMain#menuSettingPreference_Click; ex=" + ex);
 										}
 									}
 
@@ -391,7 +392,7 @@ namespace cadencii
 											PortUtil.deleteDirectory (projectCacheDir);
 										} catch (Exception ex) {
 											Logger.write (GetType () + ".menuSettingPreference_Click; ex=" + ex + "\n");
-											serr.println ("FormMain#menuSettingPreference_Click; ex=" + ex);
+											Logger.StdErr ("FormMain#menuSettingPreference_Click; ex=" + ex);
 										}
 									}
 
@@ -441,11 +442,11 @@ namespace cadencii
 				SortedDictionary<string, ValuePair<string, Keys[]>> dict = new SortedDictionary<string, ValuePair<string, Keys[]>> ();
 				SortedDictionary<string, Keys[]> configured = EditorManager.editorConfig.getShortcutKeysDictionary (parent.form.getDefaultShortcutKeys ());
 				#if DEBUG
-				sout.println ("FormMain#menuSettingShortcut_Click; configured=");
+				Logger.StdOut ("FormMain#menuSettingShortcut_Click; configured=");
 				foreach (var name in configured.Keys) {
 					Keys[] keys = configured [name];
 					string disp = Utility.getShortcutDisplayString (keys);
-					sout.println ("    " + name + " -> " + disp);
+					Logger.StdOut ("    " + name + " -> " + disp);
 				}
 				#endif
 
@@ -467,7 +468,7 @@ namespace cadencii
 					Object menu = parent.SearchMenuItemFromName (parent.form.MainMenuStrip, name, owner);
 					#if DEBUG
 					if (menu == null || owner.value == null) {
-						serr.println ("FormMain#enuSettingShrtcut_Click; name=" + name + "; menu is null");
+						Logger.StdErr ("FormMain#enuSettingShrtcut_Click; name=" + name + "; menu is null");
 						continue;
 					}
 					#endif

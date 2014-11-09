@@ -2,6 +2,7 @@
 using cadencii.apputil;
 using System.IO;
 using System.Linq;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -22,7 +23,7 @@ namespace cadencii
 			public void RunHelpAboutCommand ()
 			{
 				#if DEBUG
-				sout.println ("FormMain#menuHelpAbout_Click");
+				Logger.StdOut ("FormMain#menuHelpAbout_Click");
 				#endif
 
 				string version_str = EditorManager.getVersion () + "\n\n" +
@@ -48,7 +49,7 @@ namespace cadencii
 			{
 				#if DEBUG
 				int.Parse ("X");
-				sout.println ("FormMain#menuHelpDebug_Click");
+				Logger.StdOut ("FormMain#menuHelpDebug_Click");
 				#endif
 			}
 

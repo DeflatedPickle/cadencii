@@ -13,6 +13,7 @@
  */
 using System;
 using cadencii;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {

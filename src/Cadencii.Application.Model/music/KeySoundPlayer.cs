@@ -33,7 +33,7 @@ namespace cadencii
         public static void init()
         {
 #if DEBUG
-            sout.println("KeySoundPlayer#init");
+            Logger.StdOut("KeySoundPlayer#init");
 #endif
             m_sound_previewer = new BSoundPlayer[48];
             m_temp_player = null;
@@ -47,7 +47,7 @@ namespace cadencii
                         try {
                             m_sound_previewer[i - 36] = new BSoundPlayer(path);
                         } catch (Exception ex) {
-                            serr.println("KeySoundPlayer#init; ex=" + ex);
+                            Logger.StdErr("KeySoundPlayer#init; ex=" + ex);
                         }
                     }
                 } else {
@@ -69,7 +69,7 @@ namespace cadencii
                     try {
                         m_sound_previewer[note - 36].play();
                     } catch (Exception ex) {
-                        serr.println("KeySoundPlayer#play; ex=" + ex);
+                        Logger.StdErr("KeySoundPlayer#play; ex=" + ex);
                     }
                 }
             } else {

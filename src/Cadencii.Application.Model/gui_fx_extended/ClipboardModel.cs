@@ -95,12 +95,12 @@ namespace cadencii
                     {
                         clip = getSerializedText( item );
 #if DEBUG
-                        sout.println( "ClipboardModel#setClipboard; clip=" + clip );
+                        Logger.StdOut( "ClipboardModel#setClipboard; clip=" + clip );
 #endif
                     }
                     catch ( Exception ex )
                     {
-                        serr.println( "ClipboardModel#setClipboard; ex=" + ex );
+                        Logger.StdErr( "ClipboardModel#setClipboard; ex=" + ex );
                         Logger.write( typeof( ClipboardModel ) + ".setClipboard; ex=" + ex + "\n" );
                         return;
                     }
@@ -140,12 +140,12 @@ namespace cadencii
                     {
                         clip = getSerializedText( ce );
 #if DEBUG
-                        sout.println( "ClipboardModel#setClipboard; clip=" + clip );
+                        Logger.StdOut( "ClipboardModel#setClipboard; clip=" + clip );
 #endif
                     }
                     catch ( Exception ex )
                     {
-                        serr.println( "ClipboardModel#setClipboard; ex=" + ex );
+                        Logger.StdErr( "ClipboardModel#setClipboard; ex=" + ex );
                         Logger.write( typeof( ClipboardModel ) + ".setClipboard; ex=" + ex + "\n" );
                         return;
                     }
@@ -161,7 +161,7 @@ namespace cadencii
                 ms = new System.IO.MemoryStream();
                 bf.Serialize(ms, ce);
             } catch (Exception ex) {
-                sout.println("ClipboardModel#setClipboard; ex=" + ex);
+                Logger.StdOut("ClipboardModel#setClipboard; ex=" + ex);
             }
 #endif // DEBUG
             ApplicationUIHost.Instance.Clipboard.SetDataObject(ce, false);
@@ -182,7 +182,7 @@ namespace cadencii
                         int index2 = clip.IndexOf( ":", index1 + 1 );
                         String typename = str.sub( clip, index1 + 1, index2 - index1 - 1 );
 #if DEBUG
-                        sout.println( "ClipboardModel#getCopiedItems; typename=" + typename );
+                        Logger.StdOut( "ClipboardModel#getCopiedItems; typename=" + typename );
 #endif
                         if ( typename.Equals( typeof( ClipboardEntry ).FullName ) ) {
                             try {

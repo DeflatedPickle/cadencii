@@ -15,7 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using cadencii;
-using cadencii.java.io;
+using Cadencii.Utilities;
 
 namespace cadencii.media
 {
@@ -187,7 +187,7 @@ namespace cadencii.media
 
             double hz_from_index = 1.0 / (double)window_size * m_sample_rate * 0.5;
 #if DEBUG
-            sout.println("Wave+GetF0");
+            Logger.StdOut("Wave+GetF0");
             if (s_test) {
                 StreamWriter sw = null;
                 try {
@@ -213,7 +213,7 @@ namespace cadencii.media
                 ma_width_sample = 1;
             }
 #if DEBUG
-            sout.println("Wave#GetF0; ma_width_sample=" + ma_width_sample);
+            Logger.StdOut("Wave#GetF0; ma_width_sample=" + ma_width_sample);
 #endif
             double[] ma = new double[length];
             for (int i = 0; i < length; i++) {
@@ -318,7 +318,7 @@ namespace cadencii.media
                     min_peak_distance = Math.Min( min_peak_distance, peaks[i] - peaks[i - 1] );
                 }*/
 #if DEBUG
-                sout.println("Wave#GetF0; min_peak_distance=" + min_peak_distance);
+                Logger.StdOut("Wave#GetF0; min_peak_distance=" + min_peak_distance);
                 if (s_test) {
                     StreamWriter sw = null;
                     try {
@@ -631,7 +631,7 @@ namespace cadencii.media
         public void replace(Wave srcWave, int srcStart, int destStart, int count)
         {
 #if DEBUG
-            sout.println("Wave#replace(Wave,int,int,int)");
+            Logger.StdOut("Wave#replace(Wave,int,int,int)");
 #endif
             if (m_channel != srcWave.m_channel || m_bit_per_sample != srcWave.m_bit_per_sample) {
                 return;
@@ -1227,7 +1227,7 @@ namespace cadencii.media
                 string tag = new string(new char[] { (char)buf[0], (char)buf[1], (char)buf[2], (char)buf[3] });
                 if (!tag.Equals("AIFF")) {
 #if DEBUG
-                    serr.println("Wave#parseAiffHeader; error; tag=" + tag + " and must be AIFF");
+                    Logger.StdErr("Wave#parseAiffHeader; error; tag=" + tag + " and must be AIFF");
 #endif
                     return false;
                 }
@@ -1235,7 +1235,7 @@ namespace cadencii.media
                 tag = new string(new char[] { (char)buf[0], (char)buf[1], (char)buf[2], (char)buf[3] });
                 if (!tag.Equals("COMM")) {
 #if DEBUG
-                    serr.println("Wave#parseAiffHeader; error; tag=" + tag + " and must be COMM");
+                    Logger.StdErr("Wave#parseAiffHeader; error; tag=" + tag + " and must be COMM");
 #endif
                     return false;
                 }
@@ -1252,7 +1252,7 @@ namespace cadencii.media
                 fs.Read(buf, 0, 4); // number of samples
                 m_total_samples = PortUtil.make_uint32_be(buf);
 #if DEBUG
-                sout.println("Wave#parseAiffHeader; m_total_samples=" + m_total_samples);
+                Logger.StdOut("Wave#parseAiffHeader; m_total_samples=" + m_total_samples);
 #endif
                 fs.Read(buf, 0, 2); // block size
                 m_bit_per_sample = PortUtil.make_uint16_be(buf);
@@ -1260,7 +1260,7 @@ namespace cadencii.media
                 fs.Read(buf10, 0, 10); // sample rate
                 m_sample_rate = (long)make_double_from_extended(buf10);
 #if DEBUG
-                sout.println("Wave#parseAiffHeader; m_sample_rate=" + m_sample_rate);
+                Logger.StdOut("Wave#parseAiffHeader; m_sample_rate=" + m_sample_rate);
 #endif
                 fs.Seek(chunk_loc_comm + (long)chunk_size_comm, SeekOrigin.Begin);
 
@@ -1268,7 +1268,7 @@ namespace cadencii.media
                 tag = new string(new char[] { (char)buf[0], (char)buf[1], (char)buf[2], (char)buf[3] });
                 if (!tag.Equals("SSND")) {
 #if DEBUG
-                    serr.println("Wave#parseAiffHeader; error; tag=" + tag + " and must be SSND");
+                    Logger.StdErr("Wave#parseAiffHeader; error; tag=" + tag + " and must be SSND");
 #endif
                     return false;
                 }
@@ -1329,7 +1329,7 @@ namespace cadencii.media
                 fs.Read(buf, 0, 4);
                 long riff_chunk_size = PortUtil.make_uint32_le(buf);
 #if DEBUG
-                sout.println("Wave#parseWaveHeader; riff_chunk_size=" + riff_chunk_size);
+                Logger.StdOut("Wave#parseWaveHeader; riff_chunk_size=" + riff_chunk_size);
 #endif
 
                 // check wave header
@@ -1340,7 +1340,7 @@ namespace cadencii.media
                     buf[2] != 0x56 ||
                     buf[3] != 0x45) {
 #if DEBUG
-                    serr.println("Wave#parseWaveHeader; invalid wave header");
+                    Logger.StdErr("Wave#parseWaveHeader; invalid wave header");
 #endif
                     fs.Close();
                     return false;
@@ -1353,7 +1353,7 @@ namespace cadencii.media
                     buf[2] != 0x74 ||
                     buf[3] != 0x20) {
 #if DEBUG
-                    serr.println("Wave#parseWaveHeader; invalid fmt header");
+                    Logger.StdErr("Wave#parseWaveHeader; invalid fmt header");
 #endif
                     fs.Close();
                     return false;
@@ -1364,7 +1364,7 @@ namespace cadencii.media
                 fs.Read(buf, 0, 4);
                 fmt_chunk_bytes = PortUtil.make_uint32_le(buf);
 #if DEBUG
-                sout.println("Wave#parseWaveHeader; fmt_chunk_bytes=" + fmt_chunk_bytes);
+                Logger.StdOut("Wave#parseWaveHeader; fmt_chunk_bytes=" + fmt_chunk_bytes);
 #endif
 
                 // get format ID
@@ -1375,7 +1375,7 @@ namespace cadencii.media
                     return false;
                 }
 #if DEBUG
-                sout.println("Wave#parseWaveHeader; format_id=" + format_id);
+                Logger.StdOut("Wave#parseWaveHeader; format_id=" + format_id);
 #endif
 
                 // get the number of channel(s)
@@ -1390,14 +1390,14 @@ namespace cadencii.media
                     return false;
                 }
 #if DEBUG
-                sout.println("Wave#parseWaveHeader; num_channels=" + num_channels);
+                Logger.StdOut("Wave#parseWaveHeader; num_channels=" + num_channels);
 #endif
 
                 // get sampling rate
                 fs.Read(buf, 0, 4);
                 m_sample_rate = PortUtil.make_uint32_le(buf);
 #if DEBUG
-                sout.println("Wave#parseWaveHeader; m_sample_rate=" + m_sample_rate);
+                Logger.StdOut("Wave#parseWaveHeader; m_sample_rate=" + m_sample_rate);
 #endif
 
                 // get bit per sample
@@ -1405,7 +1405,7 @@ namespace cadencii.media
                 fs.Read(buf, 0, 2);
                 m_bit_per_sample = PortUtil.make_uint16_le(buf);
 #if DEBUG
-                sout.println("Wave#parseWaveHeader; m_bit_per_sample=" + m_bit_per_sample);
+                Logger.StdOut("Wave#parseWaveHeader; m_bit_per_sample=" + m_bit_per_sample);
 #endif
                 if (m_bit_per_sample != 0x08 && m_bit_per_sample != 0x10) {
                     fs.Close();
@@ -1419,7 +1419,7 @@ namespace cadencii.media
                 fs.Read(buf, 0, 4);
                 string tag = new string(new char[] { (char)buf[0], (char)buf[1], (char)buf[2], (char)buf[3] });
 #if DEBUG
-                sout.println("Wave#parseWaveHeader; tag=" + tag);
+                Logger.StdOut("Wave#parseWaveHeader; tag=" + tag);
 #endif
                 while (!tag.Equals("data")) {
                     fs.Read(buf, 0, 4);
@@ -1428,7 +1428,7 @@ namespace cadencii.media
                     fs.Read(buf, 0, 4);
                     tag = new string(new char[] { (char)buf[0], (char)buf[1], (char)buf[2], (char)buf[3] });
 #if DEBUG
-                    sout.println("Wave#parseWaveHeader; tag=" + tag);
+                    Logger.StdOut("Wave#parseWaveHeader; tag=" + tag);
 #endif
                 }
 
@@ -1437,12 +1437,12 @@ namespace cadencii.media
                 long data_chunk_bytes = PortUtil.make_uint32_le(buf);
                 m_total_samples = (long)(data_chunk_bytes / (num_channels * m_bit_per_sample / 8));
 #if DEBUG
-                sout.println("Wave#parseWaveHeader; m_total_samples=" + m_total_samples);
+                Logger.StdOut("Wave#parseWaveHeader; m_total_samples=" + m_total_samples);
 #endif
 
             } catch (Exception ex) {
 #if DEBUG
-                serr.println("Wave#parseWaveHeader; ex=" + ex);
+                Logger.StdErr("Wave#parseWaveHeader; ex=" + ex);
 #endif
             }
             return true;

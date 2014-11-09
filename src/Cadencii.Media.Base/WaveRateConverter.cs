@@ -12,6 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
+using Cadencii.Utilities;
 
 namespace cadencii.media
 {
@@ -71,8 +72,8 @@ namespace cadencii.media
             aRate = rate;
             bRate = reader.getSampleRate();
 #if DEBUG
-            sout.println("WaveRateConverter#.ctor; aRate=" + aRate + "; bRate=" + bRate);
-            //sout.println( "type eny key to exit..." );
+            Logger.StdOut("WaveRateConverter#.ctor; aRate=" + aRate + "; bRate=" + bRate);
+            //Logger.StdOut( "type eny key to exit..." );
             //Console.Read();
 #endif
             int gcd = (int)math.gcd(aRate, bRate);

@@ -6,6 +6,7 @@ using Cadencii.Gui;
 using cadencii.vsq;
 using cadencii.core;
 using cadencii.media;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -159,7 +160,7 @@ namespace cadencii
 			public void FormMain_FormClosed ()
 			{
 				#if DEBUG
-				sout.println ("FormMain#FormMain_FormClosed");
+				Logger.StdOut ("FormMain#FormMain_FormClosed");
 				#endif
 				parent.ClearTempWave ();
 				string tempdir = Path.Combine (ApplicationGlobal.getCadenciiTempDir (), ApplicationGlobal.getID ());
@@ -175,7 +176,7 @@ namespace cadencii
 					PortUtil.deleteDirectory (tempdir, true);
 				} catch (Exception ex) {
 					Logger.write (GetType () + ".FormMain_FormClosed; ex=" + ex + "\n");
-					serr.println ("FormMain#FormMain_FormClosed; ex=" + ex);
+					Logger.StdErr ("FormMain#FormMain_FormClosed; ex=" + ex);
 				}
 				EditorManager.stopGenerator ();
 				VSTiDllManager.terminate ();
@@ -398,7 +399,7 @@ namespace cadencii
 				}
 
 				#if DEBUG
-				sout.println ("FormMain#.ctor; this.Width=" + parent.form.Width);
+				Logger.StdOut ("FormMain#.ctor; this.Width=" + parent.form.Width);
 				#endif
 				bandTool.Resize += (o, e) => parent.OtherItems.SaveToolbarLocation ();
 				bandMeasure.Resize += (o, e) => parent.OtherItems.SaveToolbarLocation ();
@@ -434,7 +435,7 @@ namespace cadencii
 									PortUtil.deleteFile (wav_from);
 								} catch (Exception ex) {
 									Logger.write (GetType () + ".FormMain_Load; ex=" + ex + "\n");
-									serr.println ("FormMain#FormMain_Load; ex=" + ex);
+									Logger.StdErr ("FormMain#FormMain_Load; ex=" + ex);
 								}
 							}
 						}
@@ -464,14 +465,14 @@ namespace cadencii
 						always_check_this = dialog.getUi ().isAlwaysPerformThisCheck ();
 					} catch (Exception ex) {
 						Logger.write (GetType () + ".FormMain_Load; ex=" + ex + "\n");
-						serr.println ("FormMain#FormMain_Load; ex=" + ex);
+						Logger.StdErr ("FormMain#FormMain_Load; ex=" + ex);
 					} finally {
 						if (dialog != null) {
 							try {
 								dialog.getUi ().close (true);
 							} catch (Exception ex2) {
 								Logger.write (GetType () + ".FormMain_Load; ex=" + ex2 + "\n");
-								serr.println ("FormMain#FormMain_Load; ex2=" + ex2);
+								Logger.StdErr ("FormMain#FormMain_Load; ex2=" + ex2);
 							}
 						}
 					}
@@ -485,7 +486,7 @@ namespace cadencii
 							form.ShowDialog ();
 						} catch (Exception ex) {
 							Logger.write (GetType () + ".FormMain_Load; ex=" + ex + "\n");
-							serr.println ("FormMain#FormMain_Load; ex=" + ex);
+							Logger.StdErr ("FormMain#FormMain_Load; ex=" + ex);
 						}
 						init_key_sound_player_immediately = false;
 					}
@@ -496,7 +497,7 @@ namespace cadencii
 						KeySoundPlayer.init ();
 					} catch (Exception ex) {
 						Logger.write (GetType () + ".FormMain_Load; ex=" + ex + "\n");
-						serr.println ("FormMain#FormMain_Load; ex=" + ex);
+						Logger.StdErr ("FormMain#FormMain_Load; ex=" + ex);
 					}
 				}
 
@@ -511,7 +512,7 @@ namespace cadencii
 					KeySoundPlayer.init ();
 				} catch (Exception ex) {
 					Logger.write (GetType () + ".FormGenerateKeySound_FormClosed; ex=" + ex + "\n");
-					serr.println ("FormMain#FormGenerateKeySound_FormClosed; ex=" + ex);
+					Logger.StdErr ("FormMain#FormGenerateKeySound_FormClosed; ex=" + ex);
 				}
 			}
 
@@ -575,7 +576,7 @@ namespace cadencii
 			public void RunMouseWheel (MouseEventArgs e)
 			{
 				#if DEBUG
-				sout.println ("FormMain#FormMain_MouseWheel");
+				Logger.StdOut ("FormMain#FormMain_MouseWheel");
 				#endif
 				if ((AwtHost.ModifierKeys & Keys.Shift) == Keys.Shift) {
 					parent.form.hScroll.Value = parent.form.computeScrollValueFromWheelDelta (e.Delta);
@@ -598,7 +599,7 @@ namespace cadencii
 			public void RunPreviewKeyDown (KeyEventArgs e)
 			{
 				#if DEBUG
-				sout.println ("FormMain#FormMain_PreviewKeyDown");
+				Logger.StdOut ("FormMain#FormMain_PreviewKeyDown");
 				#endif
 				parent.form.processSpecialShortcutKey (e, true);
 			}

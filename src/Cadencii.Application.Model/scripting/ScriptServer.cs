@@ -16,8 +16,8 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 using cadencii.apputil;
-using cadencii.java.io;
 using cadencii.java.util;
+using Cadencii.Utilities;
 
 
 
@@ -39,7 +39,7 @@ namespace cadencii
             string dir = EditorManager.getScriptPath();
             string file = Path.Combine(dir, id);
 #if DEBUG
-            sout.println("ScriptServer#reload; file=" + file + "; isFileExists(file)=" + System.IO.File.Exists(file));
+            Logger.StdOut("ScriptServer#reload; file=" + file + "; isFileExists(file)=" + System.IO.File.Exists(file));
 #endif
             if (!System.IO.File.Exists(file)) {
                 return;
@@ -149,7 +149,7 @@ namespace cadencii
                         fs = new FileStream(config_file, FileMode.Create, FileAccess.Write);
                         script_invoker.Serializer.serialize(fs, null);
                     } catch (Exception ex) {
-                        serr.println("EditorManager#invokeScript; ex=" + ex);
+                        Logger.StdErr("EditorManager#invokeScript; ex=" + ex);
                         delete_xml_when_exit = true;
                     } finally {
                         if (fs != null) {
@@ -159,14 +159,14 @@ namespace cadencii
                                     PortUtil.deleteFile(config_file);
                                 }
                             } catch (Exception ex2) {
-                                serr.println("EditorManager#invokeScript; ex2=" + ex2);
+                                Logger.StdErr("EditorManager#invokeScript; ex2=" + ex2);
                             }
                         }
                     }
                     return (ret == ScriptReturnStatus.EDITED);
                 } catch (Exception ex) {
                     showMessageBox(_("Script runtime error:") + " " + ex, _("Error"), cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
-                    serr.println("EditorManager#invokeScript; ex=" + ex);
+                    Logger.StdErr("EditorManager#invokeScript; ex=" + ex);
                 }
             } else {
                 showMessageBox(_("Script compilation failed."), _("Error"), cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
@@ -216,7 +216,7 @@ namespace cadencii
                     try {
                         ret = invoker.getDisplayNameDelegate();
                     } catch (Exception ex) {
-                        serr.println("ScriptServer#getDisplayName; ex=" + ex);
+                        Logger.StdErr("ScriptServer#getDisplayName; ex=" + ex);
                         ret = PortUtil.getFileNameWithoutExtension(id);
                     }
                     return ret;

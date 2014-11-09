@@ -50,12 +50,12 @@ namespace cadencii
                 // ユーザー定義の中から選ぶ場合
                 int size = EditorManager.editorConfig.AutoVibratoCustom.Count;
 #if DEBUG
-                sout.println("VibratoVariationConverter#GetStandardValues; size=" + size);
+                Logger.StdOut("VibratoVariationConverter#GetStandardValues; size=" + size);
 #endif
                 for (int i = 0; i < size; i++) {
 					VibratoHandle handle = EditorManager.editorConfig.AutoVibratoCustom[i];
 #if DEBUG
-                    sout.println("VibratoVariationConverter#GetStandardValues; handle.getDisplayString()=" + handle.getDisplayString());
+                    Logger.StdOut("VibratoVariationConverter#GetStandardValues; handle.getDisplayString()=" + handle.getDisplayString());
 #endif
                     list.Add(new VibratoVariation(handle.getDisplayString()));
                 }

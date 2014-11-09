@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -29,12 +30,12 @@ namespace cadencii
 			public void RunScriptMenuItemCommand(string id)
 			{
 			#if DEBUG
-				sout.println("FormMain#handleScriptMenuItem_Click");
+				Logger.StdOut("FormMain#handleScriptMenuItem_Click");
 			#endif
 				try {
 					string dir = EditorManager.getScriptPath();
 			#if DEBUG
-					sout.println("FormMain#handleScriptMenuItem_Click; id=" + id);
+					Logger.StdOut("FormMain#handleScriptMenuItem_Click; id=" + id);
 			#endif
 					string script_file = Path.Combine(dir, id);
 					if (ScriptServer.getTimestamp(id) != PortUtil.getFileLastModified(script_file)) {
@@ -46,7 +47,7 @@ namespace cadencii
 							parent.form.updateDrawObjectList();
 							int selected = EditorManager.Selected;
 			#if DEBUG
-							sout.println("FormMain#handleScriptMenuItem_Click; ScriptServer.invokeScript has returned TRUE");
+							Logger.StdOut("FormMain#handleScriptMenuItem_Click; ScriptServer.invokeScript has returned TRUE");
 			#endif
 							EditorManager.itemSelection.updateSelectedEventInstance();
 							EditorManager.propertyPanel.updateValue(selected);
@@ -72,7 +73,7 @@ namespace cadencii
 				} catch (Exception ex3) {
 					Logger.write(GetType () + ".handleScriptMenuItem_Click; ex=" + ex3 + "\n");
 			#if DEBUG
-					sout.println("EditorManager#dd_run_Click; ex3=" + ex3);
+					Logger.StdOut("EditorManager#dd_run_Click; ex3=" + ex3);
 			#endif
 				}
 			}

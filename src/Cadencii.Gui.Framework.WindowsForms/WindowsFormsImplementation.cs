@@ -48,7 +48,7 @@ namespace Cadencii.Gui
 				"//////////////////w==";
 			System.IO.MemoryStream ms = null;
 			try {
-				ms = new System.IO.MemoryStream(Base64.decode(_HAND));
+				ms = new System.IO.MemoryStream(Convert.FromBase64String(_HAND));
 				Cursors.Hand = new System.Windows.Forms.Cursor(ms).ToAwt ();
 			} catch (Exception ex) {
 				Logger.write(GetType () + ".InitializeCursors; ex=" + ex + "\n");
@@ -442,7 +442,7 @@ namespace Cadencii.Gui
 				Rectangle rc = (Rectangle)s;
 				((System.Drawing.Graphics)NativeGraphics).FillRectangle (brush, rc.X, rc.Y, rc.Width, rc.Height);
 			} else {
-				serr.println (
+				Logger.StdErr (
 					"fixme; org.kbinani.Cadencii.Gui.Graphics#fill; type of argument s is not supported for '" +
 					s.GetType () + "'.");
 			}
@@ -470,7 +470,7 @@ namespace Cadencii.Gui
 				Rectangle rc = (Rectangle)clip;
 				nativeGraphics.Clip = new System.Drawing.Region (new System.Drawing.Rectangle (rc.X, rc.Y, rc.Width, rc.Height));
 			} else {
-				serr.println (
+				Logger.StdErr (
 					"fixme: org.kbinani.Cadencii.Gui.Graphics#setClip; argument type of clip is not supported for '" +
 					clip.GetType () + "'.");
 			}
@@ -666,7 +666,7 @@ namespace Cadencii.Gui
 				Rectangle rc = (Rectangle)s;
 				region = new System.Drawing.Region (new System.Drawing.Rectangle (rc.X, rc.Y, rc.Width, rc.Height));
 			} else {
-				serr.println (
+				Logger.StdErr (
 					"fixme: org.kbinani.Cadencii.Gui.Area#.ctor(org.kbinani.Cadencii.Gui.Shape); type of argument s is not supported for '" +
 					s.GetType () + "'.");
 				region = new System.Drawing.Region ();

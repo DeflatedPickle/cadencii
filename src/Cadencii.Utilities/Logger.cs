@@ -13,6 +13,7 @@
  */
 using System;
 using System.IO;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -26,6 +27,16 @@ namespace cadencii
         private Logger()
         {
         }
+
+		public static void StdOut (string s)
+		{
+			Console.WriteLine (s);
+		}
+
+		public static void StdErr (string s)
+		{
+			Console.Error.WriteLine (s);
+		}
 
         public static bool isEnabled()
         {
@@ -52,7 +63,7 @@ namespace cadencii
                     log = new StreamWriter(path);
                     log.AutoFlush = true;
                 } catch (Exception ex) {
-                    serr.println("Logger#write; ex=" + ex);
+                    Logger.StdErr("Logger#write; ex=" + ex);
                 }
             }
 
@@ -62,7 +73,7 @@ namespace cadencii
             try {
                 log.Write(s);
             } catch (Exception ex) {
-                serr.println("Logger#write; ex=" + ex);
+                Logger.StdErr("Logger#write; ex=" + ex);
             }
         }
 
@@ -83,20 +94,20 @@ namespace cadencii
                 try {
                     log.Close();
                 } catch (Exception ex) {
-                    serr.println("Logger#setPath; ex=" + ex);
+                    Logger.StdErr("Logger#setPath; ex=" + ex);
                 }
                 log = null;
                 if (File.Exists(file)) {
                     try {
                         PortUtil.deleteFile(file);
                     } catch (Exception ex) {
-                        serr.println("Logger#setPath; ex=" + ex);
+                        Logger.StdErr("Logger#setPath; ex=" + ex);
                     }
                 }
                 try {
                     PortUtil.moveFile(path, file);
                 } catch (Exception ex) {
-                    serr.println("Logger#setPath; ex=" + ex);
+                    Logger.StdErr("Logger#setPath; ex=" + ex);
                 }
                 append = true;
             }
@@ -107,7 +118,7 @@ namespace cadencii
                     log = new StreamWriter(path, append);
                     log.AutoFlush = true;
                 } catch (Exception ex) {
-                    serr.println("Logger#setPath; ex=" + ex);
+                    Logger.StdErr("Logger#setPath; ex=" + ex);
                 }
             }
         }

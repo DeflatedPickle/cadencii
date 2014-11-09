@@ -11,6 +11,8 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
+
+
 #define COMPONENT_ENABLE_LOCATION
 //#define MONITOR_FPS
 //#define OLD_IMPL_MOUSE_TRACER
@@ -26,6 +28,7 @@ using cadencii.java.util;
 using cadencii.vsq;
 
 using cadencii.core;
+using Cadencii.Utilities;
 
 using Keys = Cadencii.Gui.Keys;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
@@ -300,20 +303,20 @@ namespace cadencii
             mMenuMap[CurveType.VibratoRate] = cmenuCurveVibratoRate;
             mMenuMap[CurveType.VibratoDepth] = cmenuCurveVibratoDepth;
 
-            mMenuMap[CurveType.reso1amp] = cmenuCurveReso1Amp;
-            mMenuMap[CurveType.reso1bw] = cmenuCurveReso1BW;
-            mMenuMap[CurveType.reso1freq] = cmenuCurveReso1Freq;
-            mMenuMap[CurveType.reso2amp] = cmenuCurveReso2Amp;
-            mMenuMap[CurveType.reso2bw] = cmenuCurveReso2BW;
-            mMenuMap[CurveType.reso2freq] = cmenuCurveReso2Freq;
-            mMenuMap[CurveType.reso3amp] = cmenuCurveReso3Amp;
-            mMenuMap[CurveType.reso3bw] = cmenuCurveReso3BW;
-            mMenuMap[CurveType.reso3freq] = cmenuCurveReso3Freq;
-            mMenuMap[CurveType.reso4amp] = cmenuCurveReso4Amp;
-            mMenuMap[CurveType.reso4bw] = cmenuCurveReso4BW;
-            mMenuMap[CurveType.reso4freq] = cmenuCurveReso4Freq;
+            mMenuMap[CurveType.Reso1Amp] = cmenuCurveReso1Amp;
+            mMenuMap[CurveType.Reso1Bw] = cmenuCurveReso1BW;
+            mMenuMap[CurveType.Reso1Freq] = cmenuCurveReso1Freq;
+            mMenuMap[CurveType.Reso2Amp] = cmenuCurveReso2Amp;
+            mMenuMap[CurveType.Reso2Bw] = cmenuCurveReso2BW;
+            mMenuMap[CurveType.Reso2Freq] = cmenuCurveReso2Freq;
+            mMenuMap[CurveType.Reso3Amp] = cmenuCurveReso3Amp;
+            mMenuMap[CurveType.Reso3Bw] = cmenuCurveReso3BW;
+            mMenuMap[CurveType.Reso3Freq] = cmenuCurveReso3Freq;
+            mMenuMap[CurveType.Reso4Amp] = cmenuCurveReso4Amp;
+            mMenuMap[CurveType.Reso4Bw] = cmenuCurveReso4BW;
+            mMenuMap[CurveType.Reso4Freq] = cmenuCurveReso4Freq;
 
-            mMenuMap[CurveType.harmonics] = cmenuCurveHarmonics;
+            mMenuMap[CurveType.Harmonics] = cmenuCurveHarmonics;
             mMenuMap[CurveType.BRE] = cmenuCurveBreathiness;
             mMenuMap[CurveType.BRI] = cmenuCurveBrightness;
             mMenuMap[CurveType.CLE] = cmenuCurveClearness;
@@ -324,7 +327,7 @@ namespace cadencii
             mMenuMap[CurveType.PIT] = cmenuCurvePitchBend;
             mMenuMap[CurveType.PBS] = cmenuCurvePitchBendSensitivity;
 
-            mMenuMap[CurveType.fx2depth] = cmenuCurveEffect2Depth;
+            mMenuMap[CurveType.Fx2Depth] = cmenuCurveEffect2Depth;
             mMenuMap[CurveType.Env] = cmenuCurveEnvelope;
         }
 
@@ -380,30 +383,30 @@ namespace cadencii
                 mViewingCurves.Add(CurveType.VibratoDepth);
             }
             if (ApplicationGlobal.appConfig.CurveVisibleHarmonics) {
-                mViewingCurves.Add(CurveType.harmonics);
+                mViewingCurves.Add(CurveType.Harmonics);
             }
             if (ApplicationGlobal.appConfig.CurveVisibleFx2Depth) {
-                mViewingCurves.Add(CurveType.fx2depth);
+                mViewingCurves.Add(CurveType.Fx2Depth);
             }
             if (ApplicationGlobal.appConfig.CurveVisibleReso1) {
-                mViewingCurves.Add(CurveType.reso1freq);
-                mViewingCurves.Add(CurveType.reso1bw);
-                mViewingCurves.Add(CurveType.reso1amp);
+                mViewingCurves.Add(CurveType.Reso1Freq);
+                mViewingCurves.Add(CurveType.Reso1Bw);
+                mViewingCurves.Add(CurveType.Reso1Amp);
             }
             if (ApplicationGlobal.appConfig.CurveVisibleReso2) {
-                mViewingCurves.Add(CurveType.reso2freq);
-                mViewingCurves.Add(CurveType.reso2bw);
-                mViewingCurves.Add(CurveType.reso2amp);
+                mViewingCurves.Add(CurveType.Reso2Freq);
+                mViewingCurves.Add(CurveType.Reso2Bw);
+                mViewingCurves.Add(CurveType.Reso2Amp);
             }
             if (ApplicationGlobal.appConfig.CurveVisibleReso3) {
-                mViewingCurves.Add(CurveType.reso3freq);
-                mViewingCurves.Add(CurveType.reso3bw);
-                mViewingCurves.Add(CurveType.reso3amp);
+                mViewingCurves.Add(CurveType.Reso3Freq);
+                mViewingCurves.Add(CurveType.Reso3Bw);
+                mViewingCurves.Add(CurveType.Reso3Amp);
             }
             if (ApplicationGlobal.appConfig.CurveVisibleReso4) {
-                mViewingCurves.Add(CurveType.reso4freq);
-                mViewingCurves.Add(CurveType.reso4bw);
-                mViewingCurves.Add(CurveType.reso4amp);
+                mViewingCurves.Add(CurveType.Reso4Freq);
+                mViewingCurves.Add(CurveType.Reso4Bw);
+                mViewingCurves.Add(CurveType.Reso4Amp);
             }
         }
 
@@ -759,7 +762,7 @@ namespace cadencii
                     CommandExecuted.Invoke(this, new EventArgs());
                 }
             } catch (Exception ex) {
-                serr.println("TrackSelector#executeCommand; ex=" + ex);
+                Logger.StdErr("TrackSelector#executeCommand; ex=" + ex);
             }
         }
 
@@ -791,7 +794,7 @@ namespace cadencii
                         SelectedCurveChanged.Invoke(this, mSelectedCurve);
                     }
                 } catch (Exception ex) {
-                    serr.println("TrackSelector#setSelectedCurve; ex=" + ex);
+                    Logger.StdErr("TrackSelector#setSelectedCurve; ex=" + ex);
                 }
             }
         }
@@ -930,7 +933,7 @@ namespace cadencii
                         PreferredMinHeightChanged.Invoke(this, new EventArgs());
                     }
                 } catch (Exception ex) {
-                    serr.println("TrackSelector#getRectFromCurveType; ex=" + ex);
+                    Logger.StdErr("TrackSelector#getRectFromCurveType; ex=" + ex);
                 }
                 mLastPreferredMinHeight = min_size;
             }
@@ -1460,7 +1463,7 @@ namespace cadencii
                     }
                 }
             } catch (Exception ex) {
-                serr.println("TrackSelector#paint; ex= " + ex);
+                Logger.StdErr("TrackSelector#paint; ex= " + ex);
             }
         }
 
@@ -2728,10 +2731,10 @@ namespace cadencii
                                         CurveType ct2 = getCurveTypeFromMenu(tsmi2);
                                         if (ct2.equals(mSelectedCurve)) {
                                             tsmi2.Checked = true;
-                                            if (ct2.equals(CurveType.reso1amp) || ct2.equals(CurveType.reso1bw) || ct2.equals(CurveType.reso1freq) ||
-                                                 ct2.equals(CurveType.reso2amp) || ct2.equals(CurveType.reso2bw) || ct2.equals(CurveType.reso2freq) ||
-                                                 ct2.equals(CurveType.reso3amp) || ct2.equals(CurveType.reso3bw) || ct2.equals(CurveType.reso3freq) ||
-                                                 ct2.equals(CurveType.reso4amp) || ct2.equals(CurveType.reso4bw) || ct2.equals(CurveType.reso4freq)) {
+                                            if (ct2.equals(CurveType.Reso1Amp) || ct2.equals(CurveType.Reso1Bw) || ct2.equals(CurveType.Reso1Freq) ||
+                                                 ct2.equals(CurveType.Reso2Amp) || ct2.equals(CurveType.Reso2Bw) || ct2.equals(CurveType.Reso2Freq) ||
+                                                 ct2.equals(CurveType.Reso3Amp) || ct2.equals(CurveType.Reso3Bw) || ct2.equals(CurveType.Reso3Freq) ||
+                                                 ct2.equals(CurveType.Reso4Amp) || ct2.equals(CurveType.Reso4Bw) || ct2.equals(CurveType.Reso4Freq)) {
                                                 tsmi.Checked = true;//親アイテムもチェック。Resonance*用
                                             }
                                             break;
@@ -3303,7 +3306,7 @@ namespace cadencii
                                                 SelectedTrackChanged.Invoke(this, i + 1);
                                             }
                                         } catch (Exception ex) {
-                                            serr.println("TrackSelector#TrackSelector_MouseDown; ex=" + ex);
+                                            Logger.StdErr("TrackSelector#TrackSelector_MouseDown; ex=" + ex);
                                         }
                                         Invalidate();
                                         return;
@@ -3314,7 +3317,7 @@ namespace cadencii
                                                     RenderRequired.Invoke(this, EditorManager.Selected);
                                                 }
                                             } catch (Exception ex) {
-                                                serr.println("TrackSelector#TrackSelector_MouseDown; ex=" + ex);
+                                                Logger.StdErr("TrackSelector#TrackSelector_MouseDown; ex=" + ex);
                                             }
                                         }
                                     }
@@ -3839,7 +3842,7 @@ namespace cadencii
         private bool processMouseDownBezier(MouseEventArgs e)
         {
 #if DEBUG
-            sout.println("TrackSelector::processMouseDownBezier");
+            Logger.StdOut("TrackSelector::processMouseDownBezier");
 #endif
             int clock = EditorManager.clockFromXCoord(e.X);
             int max = mSelectedCurve.getMaximum();
@@ -3868,7 +3871,7 @@ namespace cadencii
                 dict, found_chain, found_point, found_side,
                 TS.DOT_WID, EditorManager.editorConfig.PxToleranceBezier);
 #if DEBUG
-            sout.println("TrackSelector::processMouseDownBezier; (found_chain.value==null)=" + (found_chain.value == null));
+            Logger.StdOut("TrackSelector::processMouseDownBezier; (found_chain.value==null)=" + (found_chain.value == null));
 #endif
 
             if (found_chain.value != null) {
@@ -3922,7 +3925,7 @@ namespace cadencii
 #if DEBUG
                     CDebug.WriteLine("    (target_chain==null)=" + (target_chain == null));
                     if (target_chain != null && found_point.value != null) {
-                        sout.println("TrackSelector::procesMouseDownBezier; before:(" + found_point.value.getPosition(found_side.value) + "," + found_point.value.getPosition(found_side.value) + "); after:(" + clock + "," + value + ")");
+                        Logger.StdOut("TrackSelector::procesMouseDownBezier; before:(" + found_point.value.getPosition(found_side.value) + "," + found_point.value.getPosition(found_side.value) + "); after:(" + clock + "," + value + ")");
                     }
 #endif
                     // fork whether target_chain is null or not
@@ -4011,7 +4014,7 @@ namespace cadencii
                 return false;
             }
 #if DEBUG
-            sout.println("processTrackSelectorMouseDownForEnvelope; internal_id=" + internal_id.value + "; point_kind=" + point_kind.value);
+            Logger.StdOut("processTrackSelectorMouseDownForEnvelope; internal_id=" + internal_id.value + "; point_kind=" + point_kind.value);
 #endif
             mEnvelopeOriginal = null;
             VsqFileEx vsq = MusicManager.getVsqFile();
@@ -4097,7 +4100,7 @@ namespace cadencii
         private void changeCurve(CurveType curve)
         {
 #if DEBUG
-            sout.println("TrackSelector#changCurve; getViewingCurveCount()=" + mViewingCurves.Count);
+            Logger.StdOut("TrackSelector#changCurve; getViewingCurveCount()=" + mViewingCurves.Count);
 #endif
             if (!mSelectedCurve.equals(curve)) {
                 mLastSelectedCurve = mSelectedCurve;
@@ -4107,7 +4110,7 @@ namespace cadencii
                         SelectedCurveChanged.Invoke(this, curve);
                     }
                 } catch (Exception ex) {
-                    serr.println("TrackSelector#changeCurve; ex=" + ex);
+                    Logger.StdErr("TrackSelector#changeCurve; ex=" + ex);
                 }
             }
         }
@@ -4279,7 +4282,7 @@ namespace cadencii
 
                                 if ((mModifierOnMouseDown & Keys.Control) != Keys.Control) {
 #if DEBUG
-                                    sout.println("TrackSelector#TrackSelector_MouseUp; CTRL was not pressed");
+                                    Logger.StdOut("TrackSelector#TrackSelector_MouseUp; CTRL was not pressed");
 #endif
                                     EditorManager.itemSelection.clearPoint();
                                 }
@@ -4296,14 +4299,14 @@ namespace cadencii
                                                                   Math.Abs(EditorManager.mCurveSelectingRectangle.Width),
                                                                   Math.Abs(EditorManager.mCurveSelectingRectangle.Height));
 #if DEBUG
-									sout.println("TrackSelectro#TrackSelectro_MouseUp; rc={x=" + rc.X + ", y=" + rc.Y + ", width=" + rc.Width + ", height=" + rc.Height + "}");
+									Logger.StdOut("TrackSelectro#TrackSelectro_MouseUp; rc={x=" + rc.X + ", y=" + rc.Y + ", width=" + rc.Width + ", height=" + rc.Height + "}");
 #endif
                                     for (int i = 0; i < count; i++) {
                                         int clock = list.getKeyClock(i);
                                         VsqBPPair item = list.getElementB(i);
                                         if (isInRect(clock, item.value, rc)) {
 #if DEBUG
-                                            sout.println("TrackSelector#TrackSelectro_MosueUp; selected; clock=" + clock + "; id=" + item.id);
+                                            Logger.StdOut("TrackSelector#TrackSelectro_MosueUp; selected; clock=" + clock + "; id=" + item.id);
 #endif
                                             EditorManager.itemSelection.addPoint(mSelectedCurve, item.id);
                                         }
@@ -4745,7 +4748,7 @@ namespace cadencii
                                 int last = start;
 
 #if DEBUG
-                                sout.println("TrackSelector#TrackSelector_MouseUp; start, end=" + start + ", " + end);
+                                Logger.StdOut("TrackSelector#TrackSelector_MouseUp; start, end=" + start + ", " + end);
 #endif
                                 VsqBPList list = vsq.Track[track].getCurve(mSelectedCurve.getName());
                                 long maxid = list.getMaxID();
@@ -5276,11 +5279,11 @@ namespace cadencii
                                     mEditingChainID = chain_id;
                                     mEditingPointID = target_point.getID();
                                     {//TODO:
-                                        sout.println("TrackSelector_MouseDoubleClick; start to show editor");
+                                        Logger.StdOut("TrackSelector_MouseDoubleClick; start to show editor");
                                     }
                                     var ret = DialogManager.ShowModalDialog(fbpe.getUi(), mMainWindow);
                                     {//TODO:
-                                        sout.println("TrackSelector_MouseDoubleCLick; ret=" + ret);
+                                        Logger.StdOut("TrackSelector_MouseDoubleCLick; ret=" + ret);
                                     }
                                     mEditingChainID = -1;
                                     mEditingPointID = -1;
@@ -5557,7 +5560,7 @@ namespace cadencii
                     toolTip.Show(tip, cmenuSinger, new Point(cmenuSinger.Width, y), 5000);
                 }
             } catch (Exception ex) {
-                sout.println("TarckSelectro.tsmi_MouseHover; ex=" + ex);
+                Logger.StdOut("TarckSelectro.tsmi_MouseHover; ex=" + ex);
                 CDebug.WriteLine("TarckSelectro.tsmi_MouseHover; ex=" + ex);
             }
         }
@@ -5598,7 +5601,7 @@ namespace cadencii
 
             var rc = e.Bounds;
 #if DEBUG
-            sout.println("TrackSelector#toolTip_Draw; sender.GetType()=" + sender.GetType());
+            Logger.StdOut("TrackSelector#toolTip_Draw; sender.GetType()=" + sender.GetType());
 #endif
 
             foreach (var tsi in cmenuSinger.Items) {

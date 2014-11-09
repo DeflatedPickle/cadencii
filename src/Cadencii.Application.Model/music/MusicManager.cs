@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using cadencii.vsq;
 using System.Linq;
 using cadencii.utau;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -37,7 +38,7 @@ namespace cadencii
 					try {
 						PortUtil.deleteFile (backup);
 					} catch (Exception ex) {
-						serr.println ("EditorManager::handleAutoBackupTimerTick; ex=" + ex);
+						Logger.StdErr ("EditorManager::handleAutoBackupTimerTick; ex=" + ex);
 						Logger.write (typeof(MusicManager) + ".handleAutoBackupTimerTick; ex=" + ex + "\n");
 					}
 				}
@@ -45,7 +46,7 @@ namespace cadencii
 					try {
 						PortUtil.deleteFile (file2);
 					} catch (Exception ex) {
-						serr.println ("EditorManager::handleAutoBackupTimerTick; ex=" + ex);
+						Logger.StdErr ("EditorManager::handleAutoBackupTimerTick; ex=" + ex);
 						Logger.write (typeof(MusicManager) + ".handleAutoBackupTimerTick; ex=" + ex + "\n");
 					}
 				}
@@ -66,7 +67,7 @@ namespace cadencii
 						System.IO.File.SetAttributes (file, System.IO.FileAttributes.Hidden);
 						//System.IO.File.SetAttributes( file2, System.IO.FileAttributes.Hidden );
 					} catch (Exception ex) {
-						serr.println ("EditorManager#saveToCor; ex=" + ex);
+						Logger.StdErr ("EditorManager#saveToCor; ex=" + ex);
 						Logger.write (typeof(MusicManager) + ".saveToCor; ex=" + ex + "\n");
 					}
 				}
@@ -86,7 +87,7 @@ namespace cadencii
 						try {
 							PortUtil.createDirectory (cacheDir);
 						} catch (Exception ex) {
-							serr.println ("EditorManager#saveTo; ex=" + ex);
+							Logger.StdErr ("EditorManager#saveTo; ex=" + ex);
 							showMessageBox (PortUtil.formatMessage (_ ("failed creating cache directory, '{0}'."), cacheDir),
 								_ ("Info."),
 								Cadencii.Gui.AwtHost.OK_OPTION,
@@ -106,14 +107,14 @@ namespace cadencii
 									try {
 										PortUtil.deleteFile (wavTo);
 									} catch (Exception ex) {
-										serr.println ("EditorManager#saveTo; ex=" + ex);
+										Logger.StdErr ("EditorManager#saveTo; ex=" + ex);
 										Logger.write (typeof(MusicManager) + ".saveTo; ex=" + ex + "\n");
 									}
 								}
 								try {
 									PortUtil.moveFile (wavFrom, wavTo);
 								} catch (Exception ex) {
-									serr.println ("EditorManager#saveTo; ex=" + ex);
+									Logger.StdErr ("EditorManager#saveTo; ex=" + ex);
 									showMessageBox (PortUtil.formatMessage (_ ("failed copying WAVE cache file, '{0}'."), wavFrom),
 										_ ("Error"),
 										Cadencii.Gui.AwtHost.OK_OPTION,
@@ -130,14 +131,14 @@ namespace cadencii
 									try {
 										PortUtil.deleteFile (xmlTo);
 									} catch (Exception ex) {
-										serr.println ("EditorManager#saveTo; ex=" + ex);
+										Logger.StdErr ("EditorManager#saveTo; ex=" + ex);
 										Logger.write (typeof(MusicManager) + ".saveTo; ex=" + ex + "\n");
 									}
 								}
 								try {
 									PortUtil.moveFile (xmlFrom, xmlTo);
 								} catch (Exception ex) {
-									serr.println ("EditorManager#saveTo; ex=" + ex);
+									Logger.StdErr ("EditorManager#saveTo; ex=" + ex);
 									showMessageBox (PortUtil.formatMessage (_ ("failed copying XML cache file, '{0}'."), xmlFrom),
 										_ ("Error"),
 										Cadencii.Gui.AwtHost.OK_OPTION,
@@ -174,7 +175,7 @@ namespace cadencii
 			try {
 				newvsq = VsqFileEx.readFromXml (file);
 			} catch (Exception ex) {
-				serr.println ("EditorManager#readVsq; ex=" + ex);
+				Logger.StdErr ("EditorManager#readVsq; ex=" + ex);
 				Logger.write (typeof(MusicManager) + ".readVsq; ex=" + ex + "\n");
 				return true;
 			}

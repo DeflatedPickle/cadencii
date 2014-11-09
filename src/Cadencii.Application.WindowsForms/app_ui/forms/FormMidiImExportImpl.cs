@@ -87,7 +87,7 @@ namespace cadencii
                 v = double.Parse(txtOffset.Text);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMidiImExport) + ".getOffsetSeconds; ex=" + ex + "\n");
-                serr.println("FormMidiImExport#getOffsetClocks; ex=" + ex);
+                Logger.StdErr("FormMidiImExport#getOffsetClocks; ex=" + ex);
             }
             return v;
         }
@@ -99,7 +99,7 @@ namespace cadencii
                 v = int.Parse(txtOffset.Text);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMidiImExport) + ".getOffsetClocks; ex=" + ex + "\n");
-                serr.println("FormMidiImExport#getOffsetClocks; ex=" + ex);
+                Logger.StdErr("FormMidiImExport#getOffsetClocks; ex=" + ex);
             }
             return v;
         }

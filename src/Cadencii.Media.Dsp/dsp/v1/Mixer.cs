@@ -131,11 +131,11 @@ namespace cadencii
             if (!mSenders.Contains(s)) {
                 mSenders.Add(s);
 #if DEBUG
-                sout.println("Mixer#addSender; sender added");
+                Logger.StdOut("Mixer#addSender; sender added");
 #endif
             } else {
 #if DEBUG
-                sout.println("Mixer#addSender; sender NOT added");
+                Logger.StdOut("Mixer#addSender; sender NOT added");
 #endif
             }
         }

@@ -178,14 +178,14 @@ namespace cadencii.generatekeysound
                                 wv.monoralize();
                                 wv.write(path);
                             } catch (Exception ex) {
-                                serr.println("Program#run; ex=" + ex);
+                                Logger.StdErr("Program#run; ex=" + ex);
                             }
                         }
                     } catch (Exception ex) {
-                        serr.println("Program#run; ex=" + ex);
+                        Logger.StdErr("Program#run; ex=" + ex);
                     }
                 }
-                sout.println(" done");
+                Logger.StdOut(" done");
             }
         }
 

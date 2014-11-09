@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Cadencii.Utilities;
 
 namespace cadencii.core2
 {
@@ -26,7 +27,7 @@ namespace cadencii.core2
             try {
                 if (s_debug_out == null) {
                     if (s_path == "") {
-						s_debug_out = new StreamWriter(Path.Combine(cadencii.PortUtil.getApplicationStartupPath (), "run.log"));
+						s_debug_out = new StreamWriter(Path.Combine(PortUtil.getApplicationStartupPath (), "run.log"));
                     } else {
                         s_debug_out = new StreamWriter(s_path);
                     }

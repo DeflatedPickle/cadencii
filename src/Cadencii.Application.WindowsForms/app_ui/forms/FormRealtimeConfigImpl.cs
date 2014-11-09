@@ -16,6 +16,7 @@ using cadencii;
 
 using cadencii.apputil;
 using Cadencii.Gui;
+using Cadencii.Utilities;
 
 namespace cadencii
 {

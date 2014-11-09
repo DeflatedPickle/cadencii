@@ -50,7 +50,7 @@ namespace cadencii
 #if DEBUG
             CDebug.WriteLine("FormVibratoConfig.ctor(Vsqhandle,int,DefaultVibratoLength)");
             CDebug.WriteLine("    (vibrato_handle==null)=" + (vibrato_handle == null));
-            sout.println("    type=" + type);
+            Logger.StdOut("    type=" + type);
 #endif
             if (use_original) {
                 radioUserDefined.Checked = true;
@@ -70,12 +70,12 @@ namespace cadencii
             // どれを選ぶか？
             if (vibrato_handle != null) {
 #if DEBUG
-                sout.println("FormVibratoConfig#.ctor; vibrato_handle.IconID=" + vibrato_handle.IconID);
+                Logger.StdOut("FormVibratoConfig#.ctor; vibrato_handle.IconID=" + vibrato_handle.IconID);
 #endif
                 for (int i = 0; i < comboVibratoType.Items.Count; i++) {
                     VibratoHandle handle = (VibratoHandle)comboVibratoType.Items[i];
 #if DEBUG
-                    sout.println("FormVibratoConfig#.ctor; handle.IconID=" + handle.IconID);
+                    Logger.StdOut("FormVibratoConfig#.ctor; handle.IconID=" + handle.IconID);
 #endif
                     if (vibrato_handle.IconID.Equals(handle.IconID)) {
                         comboVibratoType.SelectedIndex = i;
@@ -212,16 +212,16 @@ namespace cadencii
         {
             int index = comboVibratoType.SelectedIndex;
 #if DEBUG
-            sout.println("FormVibratoConfig#comboVibratoType_SelectedIndexChanged; index=" + index);
+            Logger.StdOut("FormVibratoConfig#comboVibratoType_SelectedIndexChanged; index=" + index);
 #endif
             if (index >= 0) {
                 string s = ((VibratoHandle)comboVibratoType.Items[index]).IconID;
 #if DEBUG
-                sout.println("FormVibratoConfig#comboVibratoType_SelectedIndexChanged; index=" + index + "; iconid=" + s);
+                Logger.StdOut("FormVibratoConfig#comboVibratoType_SelectedIndexChanged; index=" + index + "; iconid=" + s);
 #endif
                 if (s.Equals("$04040000")) {
 #if DEBUG
-                    sout.println("FormVibratoConfig#comboVibratoType_SelectedIndexChanged; B; m_vibrato -> null");
+                    Logger.StdOut("FormVibratoConfig#comboVibratoType_SelectedIndexChanged; B; m_vibrato -> null");
 #endif
                     m_vibrato = null;
                     txtVibratoLength.Enabled = false;
@@ -248,7 +248,7 @@ namespace cadencii
                         }
                     }
 #if DEBUG
-                    sout.println("FormVibratoConfig#comboVibratoType_SelectedIndexChanged; (src==null)=" + (src == null));
+                    Logger.StdOut("FormVibratoConfig#comboVibratoType_SelectedIndexChanged; (src==null)=" + (src == null));
 #endif
                     if (src != null) {
                         int percent;
@@ -285,7 +285,7 @@ namespace cadencii
             if (percent == 0) {
                 m_vibrato = null;
 #if DEBUG
-                sout.println("FormVibratoConfig#txtVibratoLength_TextChanged; A; m_vibrato -> null");
+                Logger.StdOut("FormVibratoConfig#txtVibratoLength_TextChanged; A; m_vibrato -> null");
 #endif
                 txtVibratoLength.Enabled = false;
             } else {

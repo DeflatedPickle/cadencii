@@ -6,6 +6,7 @@ using NUnit.Framework;
 using cadencii;
 using Microsoft.CSharp;
 using System.IO;
+using Cadencii.Utilities;
 
 namespace cadencii
 {

@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -19,10 +20,10 @@ namespace cadencii
 				}
 				mDebugLog.WriteLine(message);
 			} catch (Exception ex) {
-				serr.println("Debug#WriteLine; ex=" + ex);
+				Logger.StdErr("Debug#WriteLine; ex=" + ex);
 				Logger.write(typeof(CDebug) + ".WriteLine; ex=" + ex + "\n");
 			}
-			sout.println(message);
+			Logger.StdOut(message);
 #endif
 		}
 	}

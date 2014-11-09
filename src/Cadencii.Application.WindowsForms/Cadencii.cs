@@ -18,6 +18,7 @@ using System.Linq;
 using cadencii;
 using cadencii.apputil;
 using cadencii.core;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -63,7 +64,7 @@ namespace cadencii
         [STAThread]
         public static void Main(string[] args)
         {
-			cadencii.PortUtil.SetApplicationStartupPath(System.Windows.Forms.Application.StartupPath);
+			PortUtil.SetApplicationStartupPath(System.Windows.Forms.Application.StartupPath);
 			Cadencii.Gui.AwtHost.Current = new Cadencii.Gui.AwtHostWindowsForms ();
 			cadencii.dsp.DspUIHost.CurrentType = typeof (cadencii.dsp.winforms.DspUIHostWF);
             Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
@@ -101,7 +102,7 @@ namespace cadencii
                 Messaging.setLanguage(ec.Language);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMainImpl) + ".ctor; ex=" + ex + "\n");
-                serr.println("FormMain#.ctor; ex=" + ex);
+                Logger.StdErr("FormMain#.ctor; ex=" + ex);
             }
 
             // 開発版の場合の警告ダイアログ
@@ -136,7 +137,7 @@ namespace cadencii
                 ScriptServer.reload();
                 PaletteToolServer.init();
             } catch (Exception ex) {
-                serr.println("Cadencii::Main; ex=" + ex);
+                Logger.StdErr("Cadencii::Main; ex=" + ex);
                 Logger.write(typeof(CadenciiDriver) + ".Main; ex=" + ex + "\n");
             }
 #endif

@@ -15,7 +15,7 @@ using System;
 using System.Text;
 using cadencii;
 using cadencii.java.util;
-using cadencii.java.io;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {

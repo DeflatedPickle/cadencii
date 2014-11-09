@@ -16,7 +16,7 @@ using System.Collections.Generic;
 using System.IO;
 using cadencii;
 using cadencii.java.util;
-using cadencii.java.io;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {
@@ -295,7 +295,7 @@ namespace cadencii.vsq
                 this.reso4FreqBPList = value;
             } else {
 #if DEBUG
-                sout.println("VsqMetaText#setElement; warning:unknown curve; curve=" + curve);
+                Logger.StdOut("VsqMetaText#setElement; warning:unknown curve; curve=" + curve);
 #endif
             }
         }
@@ -807,7 +807,7 @@ namespace cadencii.vsq
                     buffer = buffer.Replace("[", "");
                     buffer = buffer.Replace("]", "");
 #if DEBUG
-                    sout.println("VsqMetaText#.ctor; buffer=" + buffer);
+                    Logger.StdOut("VsqMetaText#.ctor; buffer=" + buffer);
 #endif
                     string[] spl = PortUtil.splitString(buffer, new char[] { '#' });
                     int index = int.Parse(spl[1]);

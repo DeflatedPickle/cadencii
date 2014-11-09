@@ -236,7 +236,7 @@ namespace cadencii
                 exists = vsq.Track[EditorManager.Selected].getCurve(m_curve.getName()).findElement(m_editing_id).index >= 0;
             }
 #if DEBUG
-            sout.println("FormCurvePointEdit#handleUndoRedo_Click; exists=" + exists);
+            Logger.StdOut("FormCurvePointEdit#handleUndoRedo_Click; exists=" + exists);
 #endif
             txtDataPointClock.Enabled = exists;
             txtDataPointValue.Enabled = exists;

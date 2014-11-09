@@ -20,6 +20,7 @@ using Cadencii.Gui;
 using Keys = Cadencii.Gui.Keys;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -280,7 +281,7 @@ namespace cadencii
 				paintCor(new Graphics() {NativeGraphics = e.Graphics});
             } catch (Exception ex) {
 #if DEBUG
-                serr.println("VersionInfo_Paint; ex=" + ex);
+                Logger.StdErr("VersionInfo_Paint; ex=" + ex);
 #endif
             }
         }

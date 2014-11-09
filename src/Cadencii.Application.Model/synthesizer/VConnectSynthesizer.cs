@@ -22,6 +22,7 @@ using cadencii.utau;
 using cadencii.vsq;
 using System.Linq;
 using cadencii.core;
+using Cadencii.Utilities;
 
 namespace cadencii.synthesizer
 {
@@ -584,7 +585,7 @@ namespace cadencii.synthesizer
                         }
                     }
                 } catch (Exception ex) {
-                    serr.println(typeof(VConnectSynthesizer) + "#begin; ex=" + ex);
+                    Logger.StdErr(typeof(VConnectSynthesizer) + "#begin; ex=" + ex);
                 }
 
                 processed_samples += queue.abstractSamples;

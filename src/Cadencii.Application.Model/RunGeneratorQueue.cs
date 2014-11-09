@@ -22,7 +22,6 @@ using System.Collections.Generic;
 using Microsoft.CSharp;
 using cadencii.apputil;
 using Cadencii.Gui;
-using cadencii.java.io;
 using cadencii.java.util;
 using cadencii.media;
 using cadencii.vsq;

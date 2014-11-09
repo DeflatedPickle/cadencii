@@ -30,20 +30,20 @@ namespace cadencii.vsq
             tv.updateTempoInfo();
             for (int i = 0; i < tv.Count; i++) {
                 TempoTableEntry itemi = tv[i];
-                sout.println("   #" + i + "; " + itemi.Clock + "; " + itemi.Time + "; " + (60e6 / itemi.Tempo));
+                Logger.StdOut("   #" + i + "; " + itemi.Clock + "; " + itemi.Time + "; " + (60e6 / itemi.Tempo));
             }
             TempoVectorSearchContext c = new TempoVectorSearchContext();
-            sout.println("getClockFromSec; time=1.0; c.mSec2ClockIndex=" + c.mSec2ClockIndex + "; c.mSec2ClockSec=" + c.mSec2ClockSec);
+            Logger.StdOut("getClockFromSec; time=1.0; c.mSec2ClockIndex=" + c.mSec2ClockIndex + "; c.mSec2ClockSec=" + c.mSec2ClockSec);
             double cl = tv.getClockFromSec(1.0, c);
-            sout.println("cl=" + cl + "; c.mSec2ClockIndex=" + c.mSec2ClockIndex + "; c.mSec2ClockSec=" + c.mSec2ClockSec);
+            Logger.StdOut("cl=" + cl + "; c.mSec2ClockIndex=" + c.mSec2ClockIndex + "; c.mSec2ClockSec=" + c.mSec2ClockSec);
 
-            sout.println("getClockFromSec; time=2.5; c.mSec2ClockIndex=" + c.mSec2ClockIndex + "; c.mSec2ClockSec=" + c.mSec2ClockSec);
+            Logger.StdOut("getClockFromSec; time=2.5; c.mSec2ClockIndex=" + c.mSec2ClockIndex + "; c.mSec2ClockSec=" + c.mSec2ClockSec);
             cl = tv.getClockFromSec(2.5, c);
-            sout.println("cl=" + cl + "; c.mSec2ClockIndex=" + c.mSec2ClockIndex + "; c.mSec2ClockSec=" + c.mSec2ClockSec);
+            Logger.StdOut("cl=" + cl + "; c.mSec2ClockIndex=" + c.mSec2ClockIndex + "; c.mSec2ClockSec=" + c.mSec2ClockSec);
 
-            sout.println("getClockFromSec; time=4.0; c.mSec2ClockIndex=" + c.mSec2ClockIndex + "; c.mSec2ClockSec=" + c.mSec2ClockSec);
+            Logger.StdOut("getClockFromSec; time=4.0; c.mSec2ClockIndex=" + c.mSec2ClockIndex + "; c.mSec2ClockSec=" + c.mSec2ClockSec);
             cl = tv.getClockFromSec(4.0, c);
-            sout.println("cl=" + cl + "; c.mSec2ClockIndex=" + c.mSec2ClockIndex + "; c.mSec2ClockSec=" + c.mSec2ClockSec);
+            Logger.StdOut("cl=" + cl + "; c.mSec2ClockIndex=" + c.mSec2ClockIndex + "; c.mSec2ClockSec=" + c.mSec2ClockSec);
         }
     }
 #endif

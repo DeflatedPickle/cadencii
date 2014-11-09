@@ -20,9 +20,9 @@ using cadencii.media;
 using cadencii.vsq;
 using cadencii;
 using Cadencii.Gui;
-using cadencii.java.io;
 using cadencii.java.util;
 using cadencii.utau;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -164,8 +164,8 @@ namespace cadencii
             mResampler = mConfig.getResamplerAt(resampler_index);
             mWavtool = mConfig.PathWavtool;
 #if DEBUG
-            sout.println("UtauWaveGenerator#init; mResampler=" + mResampler + "; exists=" + System.IO.File.Exists(mResampler));
-            sout.println("UtauWaveGenerator#init; mWavtool=" + mWavtool + "; exists=" + System.IO.File.Exists(mWavtool));
+            Logger.StdOut("UtauWaveGenerator#init; mResampler=" + mResampler + "; exists=" + System.IO.File.Exists(mResampler));
+            Logger.StdOut("UtauWaveGenerator#init; mWavtool=" + mWavtool + "; exists=" + System.IO.File.Exists(mWavtool));
 #endif
             mSampleRate = sample_rate;
             string id = cadencii.core.ApplicationGlobal.getID();
@@ -181,7 +181,7 @@ namespace cadencii
             }
             */
 #if DEBUG
-            sout.println("UtauWaveGenerator#init; mTempDir=" + mTempDir + "; exists=" + Directory.Exists(mTempDir));
+            Logger.StdOut("UtauWaveGenerator#init; mTempDir=" + mTempDir + "; exists=" + Directory.Exists(mTempDir));
 #endif
             mVsq = (VsqFileEx)vsq.clone();
             mVsq.updateTotalClocks();
@@ -255,7 +255,7 @@ namespace cadencii
                 }
             }
 #if DEBUG
-            sout.println( "UtauWaveGenerator#getShortPathName; before=" + before + "; after=" + path );
+            Logger.StdOut( "UtauWaveGenerator#getShortPathName; before=" + before + "; after=" + path );
 #endif
             return path;
         }*/
@@ -281,7 +281,7 @@ namespace cadencii
                 try {
                     PortUtil.deleteFile(file);
                 } catch (Exception ex) {
-                    serr.println("UtauWaveGenerator#clearCache; ex=" + ex);
+                    Logger.StdErr("UtauWaveGenerator#clearCache; ex=" + ex);
                     Logger.write("UtauWaveGenerator::clearCache; ex=" + ex + "\n");
                 }
             }
@@ -383,7 +383,7 @@ namespace cadencii
                         */
                     }
 #if DEBUG
-                    sout.println("UtauWaveGenerator#begin; singer=" + singer + "; singer_raw=" + singer_raw);
+                    Logger.StdOut("UtauWaveGenerator#begin; singer=" + singer + "; singer_raw=" + singer_raw);
 #endif
 #if MAKEBAT_SP
                     log.Write( "; pc=" + program_change );
@@ -626,7 +626,7 @@ namespace cadencii
                             try {
                                 PortUtil.deleteFile(delfile);
                             } catch (Exception ex) {
-                                serr.println("UtauWaveGenerator#begin; ex=" + ex);
+                                Logger.StdErr("UtauWaveGenerator#begin; ex=" + ex);
                                 Logger.write("UtauWaveGenerator#begin(long): ex=" + ex + "\n");
                             }
                             mCache.Remove(delkey);
@@ -704,8 +704,8 @@ namespace cadencii
                             process.StartInfo.FileName = "\"" + mResampler + "\"";
                             process.StartInfo.Arguments = rq.getResamplerArgString();
 #if DEBUG
-                            sout.println("UtauWaveGenerator#begin; FileName=" + process.StartInfo.FileName);
-                            sout.println("UtauWaveGenerator#begin; Arguments=" + process.StartInfo.Arguments);
+                            Logger.StdOut("UtauWaveGenerator#begin; FileName=" + process.StartInfo.FileName);
+                            Logger.StdOut("UtauWaveGenerator#begin; Arguments=" + process.StartInfo.Arguments);
 #endif
                             process.StartInfo.WorkingDirectory = mTempDir;
                             process.StartInfo.CreateNoWindow = true;
@@ -720,7 +720,7 @@ namespace cadencii
                         } catch (Exception ex) {
                             Logger.write(typeof(UtauWaveGenerator) + ".begin; ex=" + ex + "\n");
 #if DEBUG
-                            sout.println(typeof(UtauWaveGenerator) + ".begin; ex=" + ex);
+                            Logger.StdOut(typeof(UtauWaveGenerator) + ".begin; ex=" + ex);
 #endif
                         } finally {
                             if (process != null) {
@@ -855,14 +855,14 @@ namespace cadencii
                             //int total_samples = size / (channel * byte_per_sample);
                             #endregion
                         } catch (Exception ex) {
-                            serr.println("UtauWaveGenerator#begin; ex=" + ex);
+                            Logger.StdErr("UtauWaveGenerator#begin; ex=" + ex);
                             Logger.write("UtauWaveGenerator::begin(long); ex=" + ex + "\n");
                         } finally {
                             if (whd != null) {
                                 try {
                                     whd.Close();
                                 } catch (Exception ex2) {
-                                    serr.println("UtauWaveGenerator#begin; ex2=" + ex2);
+                                    Logger.StdErr("UtauWaveGenerator#begin; ex2=" + ex2);
                                     Logger.write("UtauWaveGenerator::begin(long); ex=" + ex2 + "\n");
                                 }
                             }
@@ -1027,14 +1027,14 @@ namespace cadencii
                             }
                             #endregion
                         } catch (Exception ex) {
-                            serr.println("UtauWaveGenerator#run; ex=" + ex);
+                            Logger.StdErr("UtauWaveGenerator#run; ex=" + ex);
                             Logger.write("UtauWaveGenerator::begin(long); ex=" + ex + "\n");
                         } finally {
                             if (dat != null) {
                                 try {
                                     dat.Close();
                                 } catch (Exception ex2) {
-                                    serr.println("UtauWaveGenerator#run; ex2=" + ex2);
+                                    Logger.StdErr("UtauWaveGenerator#run; ex2=" + ex2);
                                     Logger.write(typeof(UtauWaveGenerator) + "::begin(long); ex=" + ex2 + "\n");
                                 }
                                 dat = null;
@@ -1081,7 +1081,7 @@ namespace cadencii
                     tremain -= amount;
                 }
             } catch (Exception ex) {
-                serr.println("UtauWaveGenerator.begin; ex=" + ex);
+                Logger.StdErr("UtauWaveGenerator.begin; ex=" + ex);
                 Logger.write(typeof(UtauWaveGenerator) + ".begin; ex=" + ex + "\n");
             } finally {
 #if MAKEBAT_SP
@@ -1107,7 +1107,7 @@ namespace cadencii
         {
 #if DEBUG
             if (!mIsQuiet) {
-                sout.println(value);
+                Logger.StdOut(value);
             }
 #endif
         }
@@ -1139,21 +1139,21 @@ namespace cadencii
                     argument += arg[i] + (i == size - 1 ? "" : " ");
                 }
                 /*if ( __a != arg ) {
-                    serr.println( "UtauWaveGenerator#processWavtool; warning; (__a != arg);" );
-                    serr.println( "  __a=" + __a );
-                    serr.println( "  arg=" + arg );
+                    Logger.StdErr( "UtauWaveGenerator#processWavtool; warning; (__a != arg);" );
+                    Logger.StdErr( "  __a=" + __a );
+                    Logger.StdErr( "  arg=" + arg );
                 }*/
                 process.StartInfo.Arguments = argument;
                 process.StartInfo.WorkingDirectory = temp_dir;
                 process.StartInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
 #if DEBUG
-                sout.println("UtauWaveGenerator#processWavTool; .FileName=" + process.StartInfo.FileName);
-                sout.println("UtauWaveGenerator#processWavtool; .Arguments=" + process.StartInfo.Arguments);
+                Logger.StdOut("UtauWaveGenerator#processWavTool; .FileName=" + process.StartInfo.FileName);
+                Logger.StdOut("UtauWaveGenerator#processWavtool; .Arguments=" + process.StartInfo.Arguments);
 #endif
                 process.Start();
                 process.WaitForExit();
             } catch (Exception ex) {
-                serr.println(typeof(UtauWaveGenerator) + ".processWavtool; ex=" + ex);
+                Logger.StdErr(typeof(UtauWaveGenerator) + ".processWavtool; ex=" + ex);
                 Logger.write(typeof(UtauWaveGenerator) + ".processWavtool; ex=" + ex + "\n");
             } finally {
                 if (process != null) {

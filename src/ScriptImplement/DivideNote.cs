@@ -64,7 +64,7 @@ namespace cadencii
             }
 
             // アイコンを作成
-            byte[] b = Base64.decode(iconbase64);
+			byte[] b = Convert.FromBase64String (iconbase64);
             using (MemoryStream ms = new MemoryStream(b)) {
                 m_icon = new Bitmap(ms);
             }

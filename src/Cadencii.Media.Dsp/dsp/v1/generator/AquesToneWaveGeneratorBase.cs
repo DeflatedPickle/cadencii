@@ -18,6 +18,7 @@ using Cadencii.Gui;
 using cadencii.java.util;
 using cadencii.media;
 using cadencii.vsq;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -122,7 +123,7 @@ namespace cadencii
             mTrimRemain = (int)(trim_sec * mSampleRate);
             //mTrimRemain = 0;
 #if DEBUG
-            sout.println("AeuqsToneWaveGenerator#init; mTrimRemain=" + mTrimRemain);
+            Logger.StdOut("AeuqsToneWaveGenerator#init; mTrimRemain=" + mTrimRemain);
 #endif
         }
 
@@ -148,7 +149,7 @@ namespace cadencii
         {
             var mDriver = getDriver();
 #if DEBUG
-            sout.println("AquesToneRenderingRunner#begin; (mDriver==null)=" + (mDriver == null));
+            Logger.StdOut("AquesToneRenderingRunner#begin; (mDriver==null)=" + (mDriver == null));
             string file = System.IO.Path.Combine(PortUtil.getApplicationStartupPath (), "AquesToneWaveGenerator.txt");
             log = new System.IO.StreamWriter(file);
             log.AutoFlush = true;
@@ -164,7 +165,7 @@ namespace cadencii
             }
 
 #if DEBUG
-            sout.println("AquesToneRenderingRunner#begin; mDriver.loaded=" + mDriver.loaded);
+            Logger.StdOut("AquesToneRenderingRunner#begin; mDriver.loaded=" + mDriver.loaded);
 #endif
             if (!mDriver.loaded) {
 #if DEBUG
@@ -180,7 +181,7 @@ namespace cadencii
             //mAbortRequired = false;
             mTotalSamples = total_samples;
 #if DEBUG
-            sout.println("AquesToneWaveGenerator#begin; mTotalSamples=" + mTotalSamples);
+            Logger.StdOut("AquesToneWaveGenerator#begin; mTotalSamples=" + mTotalSamples);
             log.WriteLine("mTotalSamples=" + mTotalSamples);
             log.WriteLine("mTrimRemain=" + mTrimRemain);
 #endif
@@ -222,7 +223,7 @@ namespace cadencii
             // レンダリング開始位置での、パラメータの値をセットしておく
             foreach (var item in track.getNoteEventIterator()) {
 #if DEBUG
-                sout.println("AquesToneWaveGenerator#begin; item.Clock=" + item.Clock);
+                Logger.StdOut("AquesToneWaveGenerator#begin; item.Clock=" + item.Clock);
                 log.WriteLine("*********************************************************");
                 log.WriteLine("item.Clock=" + item.Clock);
 #endif
@@ -238,7 +239,7 @@ namespace cadencii
                     // まず直前までの分を合成
 #if DEBUG
                     log.WriteLine("-------------------------------------------------------");
-                    sout.println("AquesToneWaveGenerator#begin;     clock=" + clock);
+                    Logger.StdOut("AquesToneWaveGenerator#begin;     clock=" + clock);
 #endif
                     long saStart = (long)(mVsq.getSecFromClock(clock) * mSampleRate);
                     saRemain = (int)(saStart - saProcessed);
@@ -272,7 +273,7 @@ namespace cadencii
                             for (int j = 0; j < itemi.data.Length; j++) {
                                 str += "0x" + PortUtil.toHexString(itemi.data[j], 2) + " ";
                             }
-                            sout.println(typeof(AquesToneWaveGenerator) + "#begin;         noteoff; " + str);
+                            Logger.StdOut(typeof(AquesToneWaveGenerator) + "#begin;         noteoff; " + str);
                         }
 #endif
                         mDriver.send(queue.noteoff.ToArray());
@@ -282,7 +283,7 @@ namespace cadencii
                     if (queue.param.Count > 0) {
                         foreach (var pe in queue.param) {
 #if DEBUG
-                            sout.println(typeof(AquesToneWaveGenerator) + "#begin;         param;   index=" + pe.index + "; value=" + pe.value);
+                            Logger.StdOut(typeof(AquesToneWaveGenerator) + "#begin;         param;   index=" + pe.index + "; value=" + pe.value);
 #endif
                             mDriver.setParameter(pe.index, pe.value);
                         }
@@ -302,7 +303,7 @@ namespace cadencii
                             for (int j = 0; j < itemi.data.Length; j++) {
                                 str += "0x" + PortUtil.toHexString(itemi.data[j], 2) + " ";
                             }
-                            sout.println(typeof(AquesToneWaveGenerator) + "#begin;         noteon;  " + str);
+                            Logger.StdOut(typeof(AquesToneWaveGenerator) + "#begin;         noteon;  " + str);
                         }
 #endif
                         mDriver.send(queue.noteon.ToArray());
@@ -317,7 +318,7 @@ namespace cadencii
                             for (int j = 0; j < itemi.data.Length; j++) {
                                 str += "0x" + PortUtil.toHexString(itemi.data[j], 2) + " ";
                             }
-                            sout.println(typeof(AquesToneWaveGenerator) + "#begin;         pit;     " + str);
+                            Logger.StdOut(typeof(AquesToneWaveGenerator) + "#begin;         pit;     " + str);
                         }
 #endif
                         mDriver.send(queue.pit.ToArray());
@@ -331,7 +332,7 @@ namespace cadencii
             // totalSamplesに足りなかったら、追加してレンダリング
             saRemain = (int)(mTotalSamples - mTotalAppend);
 #if DEBUG
-            sout.println("AquesToneRenderingRunner#run; totalSamples=" + mTotalSamples + "; mTotalAppend=" + mTotalAppend + "; saRemain=" + saRemain);
+            Logger.StdOut("AquesToneRenderingRunner#run; totalSamples=" + mTotalSamples + "; mTotalAppend=" + mTotalAppend + "; saRemain=" + saRemain);
 #endif
             while (saRemain > 0) {
                 if (state.isCancelRequested()) {

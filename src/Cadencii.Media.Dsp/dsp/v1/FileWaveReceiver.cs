@@ -74,7 +74,7 @@ namespace cadencii
             lock (mSyncRoot) {
 #if DEBUG
                 if (mAdapter == null) {
-                    sout.println("FileWaveReceiver#end; warning; 'end' when mAdapter is null");
+                    Logger.StdOut("FileWaveReceiver#end; warning; 'end' when mAdapter is null");
                 }
 #endif
                 if (mAdapter != null) {

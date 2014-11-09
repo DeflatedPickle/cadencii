@@ -15,8 +15,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using cadencii.java.io;
 using cadencii.java.util;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -346,13 +346,13 @@ namespace cadencii
                         }
                     }
                 } catch (Exception ex) {
-                    serr.println("SymbolTable#.ctor; ex=" + ex);
+                    Logger.StdErr("SymbolTable#.ctor; ex=" + ex);
                 } finally {
                     if (sr != null) {
                         try {
                             sr.Close();
                         } catch (Exception ex2) {
-                            serr.println("SymbolTable#.ctor; ex=" + ex2);
+                            Logger.StdErr("SymbolTable#.ctor; ex=" + ex2);
                         }
                     }
                 }

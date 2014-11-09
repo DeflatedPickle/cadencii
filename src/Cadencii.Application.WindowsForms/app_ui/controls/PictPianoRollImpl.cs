@@ -783,7 +783,7 @@ namespace cadencii
                         EditorManager.MainWindow.Model.IsStepSequencerEnabled) {
                         if (EditorManager.mAddingEvent != null) {
 #if DEBUG
-                            sout.println("PictPianoRoll#paint; drawing mAddingEvent");
+                            Logger.StdOut("PictPianoRoll#paint; drawing mAddingEvent");
 #endif
                             int x = (int)(EditorManager.mAddingEvent.Clock * scalex + xoffset);
                             y = -EditorManager.mAddingEvent.ID.Note * track_height + yoffset + 1;
@@ -1024,7 +1024,7 @@ namespace cadencii
                     #region pictPianoRoll_Paintより
                     if (EditorManager.IsWholeSelectedIntervalEnabled) {
 #if DEBUG
-                        sout.println("pictPianoRoll#paint; EditorManager.IsWholeSelectedIntervalEnabled=" + EditorManager.IsWholeSelectedIntervalEnabled);
+                        Logger.StdOut("pictPianoRoll#paint; EditorManager.IsWholeSelectedIntervalEnabled=" + EditorManager.IsWholeSelectedIntervalEnabled);
 #endif
                         int start = (int)(EditorManager.mWholeSelectedInterval.getStart() * scalex) + xoffset;
                         if (start < key_width) {
@@ -1222,7 +1222,7 @@ namespace cadencii
                     }
                 } catch (Exception ex) {
 #if DEBUG
-                    serr.println("PictPianoRoll#paint; ex=" + ex);
+                    Logger.StdErr("PictPianoRoll#paint; ex=" + ex);
 #endif
                 }
             }

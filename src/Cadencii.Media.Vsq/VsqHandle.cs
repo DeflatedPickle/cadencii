@@ -15,8 +15,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using cadencii;
-using cadencii.java.io;
 using cadencii.java.util;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {
@@ -351,7 +351,7 @@ namespace cadencii.vsq
         private void print()
         {
             string result = toString();
-            sout.println(result);
+            Logger.StdOut(result);
         }
 
         /// <summary>

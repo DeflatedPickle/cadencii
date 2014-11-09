@@ -19,8 +19,8 @@ using cadencii;
 using cadencii.java.util;
 using cadencii.media;
 using cadencii.vsq;
-using cadencii.java.io;
 using cadencii.core;
+using Cadencii.Utilities;
 
 
 
@@ -122,7 +122,7 @@ namespace cadencii
                     }
                     vocaloidDriver[i].loaded = loaded;
                 } catch (Exception ex) {
-                    serr.println("VSTiProxy#initCor; ex=" + ex);
+                    Logger.StdErr("VSTiProxy#initCor; ex=" + ex);
                 }
             }
 #endif // ENABLE_VOCALOID

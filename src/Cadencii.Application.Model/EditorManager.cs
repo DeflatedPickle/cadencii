@@ -22,6 +22,7 @@ using cadencii.utau;
 using cadencii.media;
 using System.Threading;
 using cadencii.apputil;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -431,7 +432,7 @@ namespace cadencii
 		public static void editLengthOfVsqEvent (VsqEvent vsq_event, int new_length, VibratoLengthEditingRule rule)
 		{
 #if DEBUG
-			sout.println ("Utility#editLengthOfVsqEvent; rule=" + rule);
+			Logger.StdOut ("Utility#editLengthOfVsqEvent; rule=" + rule);
 #endif
 			if (vsq_event.ID.VibratoHandle != null) {
 				int oldlength = vsq_event.ID.getLength ();
@@ -602,14 +603,14 @@ namespace cadencii
 				} catch (Exception ex) {
 					Logger.write (typeof(EditorManager) + ".deserializeRederingStatus; ex=" + ex + "\n");
 					status = null;
-					serr.println ("EditorManager#deserializeRederingStatus; ex=" + ex);
+					Logger.StdErr ("EditorManager#deserializeRederingStatus; ex=" + ex);
 				} finally {
 					if (fs != null) {
 						try {
 							fs.Close ();
 						} catch (Exception ex2) {
 							Logger.write (typeof(EditorManager) + ".deserializeRederingStatus; ex=" + ex2 + "\n");
-							serr.println ("EditorManager#deserializeRederingStatus; ex2=" + ex2);
+							Logger.StdErr ("EditorManager#deserializeRederingStatus; ex2=" + ex2);
 						}
 					}
 				}
@@ -632,14 +633,14 @@ namespace cadencii
 				EditorManager.RenderingStatusSerializer.serialize (fs, EditorManager.LastRenderedStatus [track - 1]);
 				failed = false;
 			} catch (Exception ex) {
-				serr.println ("FormMain#patchWorkToFreeze; ex=" + ex);
+				Logger.StdErr ("FormMain#patchWorkToFreeze; ex=" + ex);
 				Logger.write (typeof(EditorManager) + ".serializeRenderingStauts; ex=" + ex + "\n");
 			} finally {
 				if (fs != null) {
 					try {
 						fs.Close ();
 					} catch (Exception ex2) {
-						serr.println ("FormMain#patchWorkToFreeze; ex2=" + ex2);
+						Logger.StdErr ("FormMain#patchWorkToFreeze; ex2=" + ex2);
 						Logger.write (typeof(EditorManager) + ".serializeRenderingStatus; ex=" + ex2 + "\n");
 					}
 				}
@@ -679,7 +680,7 @@ namespace cadencii
 				}
 			} catch (Exception ex) {
 				Logger.write (typeof(EditorManager) + ".invokeWaveViewReloadRequiredEvent; ex=" + ex + "\n");
-				sout.println (typeof(EditorManager) + ".invokeWaveViewReloadRequiredEvent; ex=" + ex);
+				Logger.StdOut (typeof(EditorManager) + ".invokeWaveViewReloadRequiredEvent; ex=" + ex);
 			}
 		}
 
@@ -786,12 +787,12 @@ namespace cadencii
 			// シリアライズして保存
 			string file = Path.Combine (Utility.getConfigPath (), ApplicationGlobal.CONFIG_FILE_NAME);
 #if DEBUG
-			sout.println ("EditorManager#saveConfig; file=" + file);
+			Logger.StdOut ("EditorManager#saveConfig; file=" + file);
 #endif
 			try {
 				serializeEditorConfig (EditorManager.editorConfig, file);
 			} catch (Exception ex) {
-				serr.println ("EditorManager#saveConfig; ex=" + ex);
+				Logger.StdErr ("EditorManager#saveConfig; ex=" + ex);
 				Logger.write (typeof(EditorManager) + ".saveConfig; ex=" + ex + "\n");
 			}
 		}
@@ -804,7 +805,7 @@ namespace cadencii
 		{
 			string appdata = cadencii.core.ApplicationGlobal.getApplicationDataPath ();
 #if DEBUG
-			sout.println ("EditorManager#loadConfig; appdata=" + appdata);
+			Logger.StdOut ("EditorManager#loadConfig; appdata=" + appdata);
 #endif
 			if (appdata.Equals ("")) {
 				EditorManager.editorConfig = new AppConfig ();
@@ -814,7 +815,7 @@ namespace cadencii
 			// バージョン番号付きのファイル
 			string config_file = Path.Combine (Utility.getConfigPath (), ApplicationGlobal.CONFIG_FILE_NAME);
 #if DEBUG
-			sout.println ("EditorManager#loadConfig; config_file=" + config_file);
+			Logger.StdOut ("EditorManager#loadConfig; config_file=" + config_file);
 #endif
 			AppConfig ret = null;
 			if (System.IO.File.Exists (config_file)) {
@@ -822,7 +823,7 @@ namespace cadencii
 				try {
 					ret = deserializeEditorConfig (config_file);
 				} catch (Exception ex) {
-					serr.println ("EditorManager#loadConfig; ex=" + ex);
+					Logger.StdErr ("EditorManager#loadConfig; ex=" + ex);
 					ret = null;
 					Logger.write (typeof(EditorManager) + ".loadConfig; ex=" + ex + "\n");
 				}
@@ -904,7 +905,7 @@ namespace cadencii
 						try {
 							ret = deserializeEditorConfig (config_file);
 						} catch (Exception ex) {
-							serr.println ("EditorManager#locdConfig; ex=" + ex);
+							Logger.StdErr ("EditorManager#locdConfig; ex=" + ex);
 							ret = null;
 							Logger.write (typeof(EditorManager) + ".loadConfig; ex=" + ex + "\n");
 						}
@@ -955,7 +956,7 @@ namespace cadencii
 				try {
 					db = new UtauVoiceDB (config);
 				} catch (Exception ex) {
-					serr.println ("EditorManager#reloadUtauVoiceDB; ex=" + ex);
+					Logger.StdErr ("EditorManager#reloadUtauVoiceDB; ex=" + ex);
 					db = null;
 					Logger.write (typeof(EditorManager) + ".reloadUtauVoiceDB; ex=" + ex + "\n");
 				}
@@ -1119,10 +1120,10 @@ namespace cadencii
 							}
 #if DEBUG
 							if (e.mStart != exStart) {
-								sout.println ("FormMain#patchWorkToFreeze; start extended; " + e.mStart + " => " + exStart);
+								Logger.StdOut ("FormMain#patchWorkToFreeze; start extended; " + e.mStart + " => " + exStart);
 							}
 							if (e.mEnd != exEnd) {
-								sout.println ("FormMain#patchWorkToFreeze; end extended; " + e.mEnd + " => " + exEnd);
+								Logger.StdOut ("FormMain#patchWorkToFreeze; end extended; " + e.mEnd + " => " + exEnd);
 							}
 #endif
 
@@ -1130,14 +1131,14 @@ namespace cadencii
 						}
 					} catch (Exception ex) {
 						Logger.write (typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex + "\n");
-						serr.println ("FormMain#patchWorkToFreeze; ex=" + ex);
+						Logger.StdErr ("FormMain#patchWorkToFreeze; ex=" + ex);
 					} finally {
 						if (wr != null) {
 							try {
 								wr.close ();
 							} catch (Exception ex2) {
 								Logger.write (typeof(EditorManager) + ".patchWorkToFreeze; ex=" + ex2 + "\n");
-								serr.println ("FormMain#patchWorkToFreeze; ex2=" + ex2);
+								Logger.StdErr ("FormMain#patchWorkToFreeze; ex2=" + ex2);
 							}
 						}
 					}
@@ -1146,7 +1147,7 @@ namespace cadencii
 				// zoneに、レンダリングが必要なアイテムの範囲が格納されているので。
 				int j = -1;
 #if DEBUG
-				sout.println ("EditorManager#patchWorkCreateQueue; track#" + track);
+				Logger.StdOut ("EditorManager#patchWorkCreateQueue; track#" + track);
 #endif
 				foreach (var unit in zone.iterator()) {
 					j++;
@@ -1155,7 +1156,7 @@ namespace cadencii
 					q.clockStart = unit.mStart;
 					q.clockEnd = unit.mEnd;
 #if DEBUG
-					sout.println ("    start=" + unit.mStart + "; end=" + unit.mEnd);
+					Logger.StdOut ("    start=" + unit.mStart + "; end=" + unit.mEnd);
 #endif
 					q.file = Path.Combine (temppath, track + "_" + j + ".wav");
 					q.vsq = mVsq;
@@ -1189,7 +1190,7 @@ namespace cadencii
 			MusicManager.getVsqFile ().updateTotalClocks ();
 			List<PatchWorkQueue> queue = EditorManager.patchWorkCreateQueue (tracks);
 #if DEBUG
-			sout.println ("EditorManager#patchWorkToFreeze; queue.size()=" + queue.Count);
+			Logger.StdOut ("EditorManager#patchWorkToFreeze; queue.size()=" + queue.Count);
 #endif
 
 			FormWorker fw = new FormWorker ();
@@ -1448,12 +1449,12 @@ namespace cadencii
 		{
 			lock (mLocker) {
 #if DEBUG
-				sout.println ("EditorManager#runGenerator; (mPreviewThread==null)=" + (mPreviewThread == null));
+				Logger.StdOut ("EditorManager#runGenerator; (mPreviewThread==null)=" + (mPreviewThread == null));
 #endif
 				Thread t = mPreviewThread;
 				if (t != null) {
 #if DEBUG
-					sout.println ("EditorManager#runGenerator; mPreviewThread.ThreadState=" + t.ThreadState);
+					Logger.StdOut ("EditorManager#runGenerator; mPreviewThread.ThreadState=" + t.ThreadState);
 #endif
 					if (t.ThreadState != ThreadState.Stopped) {
 						WaveGenerator g = mWaveGenerator;
@@ -1464,13 +1465,13 @@ namespace cadencii
 							}
 						}
 #if DEBUG
-						sout.println ("EditorManager#runGenerator; waiting stop...");
+						Logger.StdOut ("EditorManager#runGenerator; waiting stop...");
 #endif
 						while (t.ThreadState != ThreadState.Stopped) {
 							Thread.Sleep (100);
 						}
 #if DEBUG
-						sout.println ("EditorManager#runGenerator; waiting stop... done");
+						Logger.StdOut ("EditorManager#runGenerator; waiting stop... done");
 #endif
 					}
 				}
@@ -1494,7 +1495,7 @@ namespace cadencii
 				g.begin (samples, mWaveGeneratorState);
 			} catch (Exception ex) {
 				Logger.write (typeof(EditorManager) + ".runGeneratorCore; ex=" + ex + "\n");
-				sout.println ("EditorManager#runGeneratorCore; ex=" + ex);
+				Logger.StdOut ("EditorManager#runGeneratorCore; ex=" + ex);
 			}
 		}
 
@@ -1584,7 +1585,7 @@ namespace cadencii
 					}
 				} catch (Exception ex) {
 					Logger.write (typeof(EditorManager) + ".removeBgm; ex=" + ex + "\n");
-					serr.println (typeof(EditorManager) + ".removeBgm; ex=" + ex);
+					Logger.StdErr (typeof(EditorManager) + ".removeBgm; ex=" + ex);
 				}
 				EditorManager.MixerWindow.updateStatus ();
 			});
@@ -1600,7 +1601,7 @@ namespace cadencii
 					}
 				} catch (Exception ex) {
 					Logger.write (typeof(EditorManager) + ".removeBgm; ex=" + ex + "\n");
-					serr.println (typeof(EditorManager) + ".removeBgm; ex=" + ex);
+					Logger.StdErr (typeof(EditorManager) + ".removeBgm; ex=" + ex);
 				}
 				EditorManager.MixerWindow.updateStatus ();
 			});
@@ -1616,7 +1617,7 @@ namespace cadencii
 					}
 				} catch (Exception ex) {
 					Logger.write (typeof(EditorManager) + ".removeBgm; ex=" + ex + "\n");
-					serr.println (typeof(EditorManager) + ".removeBgm; ex=" + ex);
+					Logger.StdErr (typeof(EditorManager) + ".removeBgm; ex=" + ex);
 				}
 				EditorManager.MixerWindow.updateStatus ();
 			});
@@ -1644,7 +1645,7 @@ namespace cadencii
 		public static void handleAutoBackupTimerTick (Object sender, EventArgs e)
 		{
 #if DEBUG
-			sout.println ("EditorManager::handleAutoBackupTimerTick");
+			Logger.StdOut ("EditorManager::handleAutoBackupTimerTick");
 #endif
 			MusicManager.ProcessAutoBackup ();
 		}
@@ -1674,7 +1675,7 @@ namespace cadencii
 						SelectedToolChanged.Invoke (typeof(EditorManager), new EventArgs ());
 					}
 				} catch (Exception ex) {
-					serr.println ("EditorManager#setSelectedTool; ex=" + ex);
+					Logger.StdErr ("EditorManager#setSelectedTool; ex=" + ex);
 					Logger.write (typeof(EditorManager) + ".setSelectedTool; ex=" + ex + "\n");
 				}
 			}
@@ -1708,7 +1709,7 @@ namespace cadencii
 						SelectedToolChanged.Invoke (typeof(EditorManager), new EventArgs ());
 					}
 				} catch (Exception ex) {
-					serr.println ("EditorManager#setCurveMode; ex=" + ex);
+					Logger.StdErr ("EditorManager#setCurveMode; ex=" + ex);
 					Logger.write (typeof(EditorManager) + ".setCurveMode; ex=" + ex + "\n");
 				}
 			}
@@ -1748,7 +1749,7 @@ namespace cadencii
 						GridVisibleChanged.Invoke (typeof(EditorManager), new EventArgs ());
 					}
 				} catch (Exception ex) {
-					serr.println ("EditorManager#setGridVisible; ex=" + ex);
+					Logger.StdErr ("EditorManager#setGridVisible; ex=" + ex);
 					Logger.write (typeof(EditorManager) + ".setGridVisible; ex=" + ex + "\n");
 				}
 			}
@@ -1797,7 +1798,7 @@ namespace cadencii
 						}
 					} catch (Exception ex) {
 						Logger.write (typeof(EditorManager) + ".undo; ex=" + ex + "\n");
-						serr.println (typeof(EditorManager) + ".undo; ex=" + ex);
+						Logger.StdErr (typeof(EditorManager) + ".undo; ex=" + ex);
 					}
 				}
 				EditorManager.editHistory.registerAfterUndo (inv);
@@ -1836,7 +1837,7 @@ namespace cadencii
 						}
 					} catch (Exception ex) {
 						Logger.write (typeof(EditorManager) + ".redo; ex=" + ex + "\n");
-						serr.println (typeof(EditorManager) + ".redo; ex=" + ex);
+						Logger.StdErr (typeof(EditorManager) + ".redo; ex=" + ex);
 					}
 				}
 				EditorManager.editHistory.registerAfterRedo (inv);
@@ -1923,7 +1924,7 @@ namespace cadencii
 		public static void setPlaying (bool value, UiForm formMain)
 		{
 #if DEBUG
-			sout.println ("EditorManager#setPlaying; value=" + value);
+			Logger.StdOut ("EditorManager#setPlaying; value=" + value);
 #endif
 			lock (mLockerPlayingProperty) {
 				bool previous = mPlaying;
@@ -1933,7 +1934,7 @@ namespace cadencii
 						try {
 							if (previewStart (formMain)) {
 #if DEBUG
-								sout.println ("EditorManager#setPlaying; previewStart returns true");
+								Logger.StdOut ("EditorManager#setPlaying; previewStart returns true");
 #endif
 								mPlaying = false;
 								return;
@@ -1942,20 +1943,20 @@ namespace cadencii
 								PreviewStarted.Invoke (typeof(EditorManager), new EventArgs ());
 							}
 						} catch (Exception ex) {
-							serr.println ("EditorManager#setPlaying; ex=" + ex);
+							Logger.StdErr ("EditorManager#setPlaying; ex=" + ex);
 							Logger.write (typeof(EditorManager) + ".setPlaying; ex=" + ex + "\n");
 						}
 					} else if (!mPlaying) {
 						try {
 							previewStop ();
 #if DEBUG
-							sout.println ("EditorManager#setPlaying; raise previewAbortedEvent");
+							Logger.StdOut ("EditorManager#setPlaying; raise previewAbortedEvent");
 #endif
 							if (PreviewAborted != null) {
 								PreviewAborted.Invoke (typeof(EditorManager), new EventArgs ());
 							}
 						} catch (Exception ex) {
-							serr.println ("EditorManager#setPlaying; ex=" + ex);
+							Logger.StdErr ("EditorManager#setPlaying; ex=" + ex);
 							Logger.write (typeof(EditorManager) + ".setPlaying; ex=" + ex + "\n");
 						}
 					}
@@ -1996,7 +1997,7 @@ namespace cadencii
 			if (EditorManager.patchWorkToFreeze (formMain, tracks)) {
 				// キャンセルされた
 #if DEBUG
-				sout.println ("EditorManager#previewStart; patchWorkToFreeze returns true");
+				Logger.StdOut ("EditorManager#previewStart; patchWorkToFreeze returns true");
 #endif
 				return true;
 			}
@@ -2019,7 +2020,7 @@ namespace cadencii
 					f.setRoot (driver);
 				} catch (Exception ex) {
 					Logger.write (typeof(EditorManager) + ".previewStart; ex=" + ex + "\n");
-					serr.println ("EditorManager.previewStart; ex=" + ex);
+					Logger.StdErr ("EditorManager.previewStart; ex=" + ex);
 				}
 			}
 
@@ -2045,7 +2046,7 @@ namespace cadencii
 					}
 					wr.setOffsetSeconds (offset);
 #if DEBUG
-					sout.println ("EditorManager.previewStart; bgm.file=" + bgm.file + "; offset=" + offset);
+					Logger.StdOut ("EditorManager.previewStart; bgm.file=" + bgm.file + "; offset=" + offset);
 
 #endif
 					Amplifier a = new Amplifier ();
@@ -2057,7 +2058,7 @@ namespace cadencii
 					f.setRoot (driver);
 				} catch (Exception ex) {
 					Logger.write (typeof(EditorManager) + ".previewStart; ex=" + ex + "\n");
-					serr.println ("EditorManager.previewStart; ex=" + ex);
+					Logger.StdErr ("EditorManager.previewStart; ex=" + ex);
 				}
 			}
 
@@ -2089,11 +2090,11 @@ namespace cadencii
 			long samples = (long)((end_sec - mDirectPlayShift) * sample_rate);
 			driver.init (mVsq, EditorManager.Selected, 0, end_clock, sample_rate);
 #if DEBUG
-			sout.println ("EditorManager.previewStart; calling runGenerator...");
+			Logger.StdOut ("EditorManager.previewStart; calling runGenerator...");
 #endif
 			EditorManager.runGenerator (samples);
 #if DEBUG
-			sout.println ("EditorManager.previewStart; calling runGenerator... done");
+			Logger.StdOut ("EditorManager.previewStart; calling runGenerator... done");
 #endif
 			return false;
 		}
@@ -2125,7 +2126,7 @@ namespace cadencii
 						EditorManager.UpdateBgmStatusRequired (typeof(EditorManager), new EventArgs ());
 				} catch (Exception ex) {
 					Logger.write (typeof(EditorManager) + ".readVsq; ex=" + ex + "\n");
-					serr.println (typeof(EditorManager) + ".readVsq; ex=" + ex);
+					Logger.StdErr (typeof(EditorManager) + ".readVsq; ex=" + ex);
 				}
 			});
 		}
@@ -2141,7 +2142,7 @@ namespace cadencii
 					}
 				} catch (Exception ex) {
 					Logger.write (typeof(EditorManager) + ".setVsqFile; ex=" + ex + "\n");
-					serr.println (typeof(EditorManager) + ".setVsqFile; ex=" + ex);
+					Logger.StdErr (typeof(EditorManager) + ".setVsqFile; ex=" + ex);
 				}
 			});
 		}
@@ -2324,13 +2325,13 @@ namespace cadencii
 				string path_image = Utau.readUtauSingerConfig (dir, sc_temp);
 
 #if DEBUG
-				sout.println ("EditorManager#init; path_image=" + path_image);
+				Logger.StdOut ("EditorManager#init; path_image=" + path_image);
 #endif
 				if (EditorManager.splash != null) {
 					try {
 						EditorManager.splash.addIconThreadSafe (path_image, sc.VOICENAME);
 					} catch (Exception ex) {
-						serr.println ("EditorManager#init; ex=" + ex);
+						Logger.StdErr ("EditorManager#init; ex=" + ex);
 						Logger.write (typeof(EditorManager) + ".init; ex=" + ex + "\n");
 					}
 				}
@@ -2354,13 +2355,13 @@ namespace cadencii
 							                    PortUtil.getApplicationStartupPath (), "resources"),
 						                    name + ".png");
 #if DEBUG
-					sout.println ("EditorManager#init; path_image=" + path_image);
+					Logger.StdOut ("EditorManager#init; path_image=" + path_image);
 #endif
 					if (EditorManager.splash != null) {
 						try {
 							EditorManager.splash.addIconThreadSafe (path_image, sc.VOICENAME);
 						} catch (Exception ex) {
-							serr.println ("EditorManager#init; ex=" + ex);
+							Logger.StdErr ("EditorManager#init; ex=" + ex);
 							Logger.write (typeof(EditorManager) + ".init; ex=" + ex + "\n");
 						}
 					}
@@ -2380,13 +2381,13 @@ namespace cadencii
 							                    PortUtil.getApplicationStartupPath (), "resources"),
 						                    name + ".png");
 #if DEBUG
-					sout.println ("EditorManager#init; path_image=" + path_image);
+					Logger.StdOut ("EditorManager#init; path_image=" + path_image);
 #endif
 					if (EditorManager.splash != null) {
 						try {
 							EditorManager.splash.addIconThreadSafe (path_image, sc.VOICENAME);
 						} catch (Exception ex) {
-							serr.println ("EditorManager#init; ex=" + ex);
+							Logger.StdErr ("EditorManager#init; ex=" + ex);
 							Logger.write (typeof(EditorManager) + ".init; ex=" + ex + "\n");
 						}
 					}
@@ -2447,7 +2448,7 @@ namespace cadencii
 				}
 				SymbolTable.changeOrder (common);
 			} catch (Exception ex) {
-				serr.println ("EditorManager#init; ex=" + ex);
+				Logger.StdErr ("EditorManager#init; ex=" + ex);
 			}
 
 			EditorManager.reloadUtauVoiceDB ();

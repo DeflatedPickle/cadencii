@@ -8,6 +8,7 @@ using System.Threading;
 using cadencii.apputil;
 using cadencii.utau;
 using cadencii.java.util;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -494,14 +495,14 @@ namespace cadencii
 
 					// estimatedCacheDirが存在しない場合、新しく作る
 					#if DEBUG
-					sout.println("FormMain#openVsqCor;fsys.isDirectoryExists( estimatedCacheDir )=" + Directory.Exists(estimatedCacheDir));
+					Logger.StdOut("FormMain#openVsqCor;fsys.isDirectoryExists( estimatedCacheDir )=" + Directory.Exists(estimatedCacheDir));
 					#endif
 					if (!Directory.Exists(estimatedCacheDir)) {
 						try {
 							PortUtil.createDirectory(estimatedCacheDir);
 						} catch (Exception ex) {
 							Logger.write(GetType () + ".openVsqCor; ex=" + ex + "\n");
-							serr.println("FormMain#openVsqCor; ex=" + ex);
+							Logger.StdErr("FormMain#openVsqCor; ex=" + ex);
 							DialogManager.ShowMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
 								_("Info."),
 								Cadencii.Gui.AwtHost.OK_OPTION,
@@ -522,7 +523,7 @@ namespace cadencii
 								PortUtil.moveFile(wavFrom, wavTo);
 							} catch (Exception ex) {
 								Logger.write(GetType () + ".openVsqCor; ex=" + ex + "\n");
-								serr.println("FormMain#openVsqCor; ex=" + ex);
+								Logger.StdErr("FormMain#openVsqCor; ex=" + ex);
 							}
 						}
 						if (System.IO.File.Exists(xmlFrom)) {
@@ -530,7 +531,7 @@ namespace cadencii
 								PortUtil.moveFile(xmlFrom, xmlTo);
 							} catch (Exception ex) {
 								Logger.write(GetType () + ".openVsqCor; ex=" + ex + "\n");
-								serr.println("FormMain#openVsqCor; ex=" + ex);
+								Logger.StdErr("FormMain#openVsqCor; ex=" + ex);
 							}
 						}
 					}
@@ -543,7 +544,7 @@ namespace cadencii
 						PortUtil.createDirectory(cacheDir);
 					} catch (Exception ex) {
 						Logger.write(GetType () + ".openVsqCor; ex=" + ex + "\n");
-						serr.println("FormMain#openVsqCor; ex=" + ex);
+						Logger.StdErr("FormMain#openVsqCor; ex=" + ex);
 						DialogManager.ShowMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
 							_("Info."),
 							Cadencii.Gui.AwtHost.OK_OPTION,
@@ -562,7 +563,7 @@ namespace cadencii
 				for (int i = 1; i < vsq.Track.Count; i++) {
 					string wav = Path.Combine(cacheDir, i + ".wav");
 					#if DEBUG
-					sout.println("FormMain#openVsqCor; wav=" + wav + "; isExists=" + System.IO.File.Exists(wav));
+					Logger.StdOut("FormMain#openVsqCor; wav=" + wav + "; isExists=" + System.IO.File.Exists(wav));
 					#endif
 					if (!System.IO.File.Exists(wav)) {
 						continue;
@@ -620,7 +621,7 @@ namespace cadencii
 			// リサンプラーが知っているやつかどうか
 			bool check_unknwon_resampler = false;
 			#if DEBUG
-			sout.println("FormMain#checkUnknownResamplerAndSinger; resampler_path.value=" + resampler_path.value);
+			Logger.StdOut("FormMain#checkUnknownResamplerAndSinger; resampler_path.value=" + resampler_path.value);
 			#endif
 			string resampler_dir = PortUtil.getDirectoryName(resampler_path.value);
 			if (resampler_dir == "") {
@@ -983,7 +984,7 @@ namespace cadencii
 					string[] phrases = dlg.Letters;
 					#if DEBUG
 					foreach (string s in phrases) {
-						sout.println("FormMain#importLyric; phrases; s=" + s);
+						Logger.StdOut("FormMain#importLyric; phrases; s=" + s);
 					}
 					#endif
 					int min = Math.Min(count, phrases.Length);
@@ -1937,7 +1938,7 @@ namespace cadencii
 							phonetic_symbol[0] = entry.getSymbol();
 							// 分節の分割記号'-'が入っている場合
 							#if DEBUG
-							sout.println("FormMain#executeLyricChangeCommand; word=" + entry.Word + "; symbol=" + entry.getSymbol() + "; rawSymbol=" + entry.getRawSymbol());
+							Logger.StdOut("FormMain#executeLyricChangeCommand; word=" + entry.Word + "; symbol=" + entry.getSymbol() + "; rawSymbol=" + entry.getRawSymbol());
 							#endif
 							if (entry.Word.IndexOf('-') >= 0) {
 								string[] spl_phrase = PortUtil.splitString(entry.Word, '\t');

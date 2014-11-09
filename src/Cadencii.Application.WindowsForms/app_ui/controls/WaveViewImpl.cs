@@ -260,12 +260,12 @@ namespace cadencii
         {
             if (index < 0 || mDrawer.Length <= index) {
 #if DEBUG
-                sout.println("WaveView#load; index out of range");
+                Logger.StdOut("WaveView#load; index out of range");
 #endif
                 return;
             }
 #if DEBUG
-            sout.println("WaveView#load; index=" + index);
+            Logger.StdOut("WaveView#load; index=" + index);
 #endif
             if (mDrawer[index] == null) {
                 mDrawer[index] = new WaveDrawContext();

@@ -21,6 +21,7 @@ using cadencii.apputil;
 using cadencii.java.util;
 using cadencii.vsq;
 using cadencii.xml;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -69,7 +70,7 @@ namespace cadencii
                 try {
                     asm = (new PluginLoader()).compileScript(code, errors);
                 } catch (Exception ex) {
-                    serr.println("PaletteToolServer#init; ex=" + ex);
+                    Logger.StdErr("PaletteToolServer#init; ex=" + ex);
                     asm = null;
                 }
                 if (asm == null) {
@@ -100,16 +101,16 @@ namespace cadencii
                                         xsms.Deserialize(fs);
                                     } catch (Exception ex) {
                                         errorOnDeserialize = true;
-                                        serr.println("PaletteToolServer#init; ex=" + ex);
+                                        Logger.StdErr("PaletteToolServer#init; ex=" + ex);
                                     }
                                 } catch (Exception ex) {
-                                    serr.println("PaletteToolServer#init; ex=" + ex);
+                                    Logger.StdErr("PaletteToolServer#init; ex=" + ex);
                                 } finally {
                                     if (fs != null) {
                                         try {
                                             fs.Close();
                                         } catch (Exception ex2) {
-                                            serr.println("PaletteToolServer#init; ex2=" + ex2);
+                                            Logger.StdErr("PaletteToolServer#init; ex2=" + ex2);
                                         }
                                     }
                                 }
@@ -117,14 +118,14 @@ namespace cadencii
                                     try {
                                         PortUtil.deleteFile(config);
                                     } catch (Exception ex) {
-                                        serr.println("PaletteToolServer#init; ex=" + ex);
+                                        Logger.StdErr("PaletteToolServer#init; ex=" + ex);
                                     }
                                 }
                             }
                             string id = Path.GetFileNameWithoutExtension(file.FullName);
                             loadedTools[id] = instance;
                         } catch (Exception ex) {
-                            serr.println("PlaetteToolServer#init; ex=" + ex);
+                            Logger.StdErr("PlaetteToolServer#init; ex=" + ex);
                         }
                     }
                 }
@@ -166,7 +167,7 @@ namespace cadencii
                         "Error",
                         cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
                         cadencii.Dialog.MSGBOX_ERROR_MESSAGE);
-                    serr.println(typeof(PaletteToolServer) + ".invokePaletteTool; ex=" + ex);
+                    Logger.StdErr(typeof(PaletteToolServer) + ".invokePaletteTool; ex=" + ex);
                     edited = false;
                 }
                 if (edited) {

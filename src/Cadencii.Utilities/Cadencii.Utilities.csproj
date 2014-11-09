@@ -35,13 +35,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="io.cs" />
-    <Compile Include="cp932.cs" />
-    <Compile Include="cp932reader.cs" />
-    <Compile Include="cp932writer.cs" />
-    <Compile Include="serr.cs" />
-    <Compile Include="sout.cs" />
     <Compile Include="ByRef.cs" />
-    <Compile Include="Base64.cs" />
     <Compile Include="fft.cs" />
     <Compile Include="math.cs" />
     <Compile Include="misc.cs" />
@@ -50,8 +44,8 @@
     <Compile Include="CDebug.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="PortUtil.cs" />
-    <Compile Include="BooleanEnum.cs" />
     <Compile Include="CurveType.cs" />
+    <Compile Include="BooleanEnum.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

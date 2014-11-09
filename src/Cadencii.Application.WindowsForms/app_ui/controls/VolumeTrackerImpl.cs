@@ -281,7 +281,7 @@ namespace cadencii
                         FederChanged.Invoke(mTrack, mFeder);
                     }
                 } catch (Exception ex) {
-                    serr.println("VolumeTracker#setFeder; ex=" + ex);
+                    Logger.StdErr("VolumeTracker#setFeder; ex=" + ex);
                 }
             }
             int v = 177 - getYCoordFromFeder(mFeder);
@@ -348,7 +348,7 @@ namespace cadencii
                     FederChanged.Invoke(mTrack, mFeder);
                 }
             } catch (Exception ex) {
-                serr.println("VolumeTracker#trackFeder_ValueChanged; ex=" + ex);
+                Logger.StdErr("VolumeTracker#trackFeder_ValueChanged; ex=" + ex);
             }
         }
 
@@ -361,7 +361,7 @@ namespace cadencii
                     PanpotChanged.Invoke(mTrack, mPanpot);
                 }
             } catch (Exception ex) {
-                serr.println("VolumeTracker#trackPanpot_ValueChanged; ex=" + ex);
+                Logger.StdErr("VolumeTracker#trackPanpot_ValueChanged; ex=" + ex);
             }
         }
 
@@ -383,7 +383,7 @@ namespace cadencii
                 txtFeder.Focus();
                 txtFeder.SelectAll();
             } catch (Exception ex) {
-                serr.println("VolumeTracker#txtFeder_KeyDown; ex=" + ex);
+                Logger.StdErr("VolumeTracker#txtFeder_KeyDown; ex=" + ex);
             }
         }
 
@@ -405,7 +405,7 @@ namespace cadencii
                 txtPanpot.Focus();
                 txtPanpot.SelectAll();
             } catch (Exception ex) {
-                serr.println("VolumeTracker#txtPanpot_KeyDown; ex=" + ex);
+                Logger.StdErr("VolumeTracker#txtPanpot_KeyDown; ex=" + ex);
             }
         }
 
@@ -416,7 +416,7 @@ namespace cadencii
                     SoloButtonClick.Invoke(this, e);
                 }
             } catch (Exception ex) {
-                serr.println("VolumeTracker#chkSolo_Click; ex=" + ex);
+                Logger.StdErr("VolumeTracker#chkSolo_Click; ex=" + ex);
             }
         }
 
@@ -428,7 +428,7 @@ namespace cadencii
                     MuteButtonClick.Invoke(this, e);
                 }
             } catch (Exception ex) {
-                serr.println("VolumeTracker#chkMute_Click; ex=" + ex);
+                Logger.StdErr("VolumeTracker#chkMute_Click; ex=" + ex);
             }
         }
         #endregion

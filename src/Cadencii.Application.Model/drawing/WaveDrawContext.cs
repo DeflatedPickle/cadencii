@@ -18,6 +18,7 @@ using Cadencii.Gui;
 using cadencii.java.util;
 using cadencii.vsq;
 using cadencii.apputil;
+using Cadencii.Utilities;
 
 
 
@@ -251,13 +252,13 @@ namespace cadencii
                     mActualMaxAmplitude = (d > mActualMaxAmplitude) ? (float)d : mActualMaxAmplitude;
                 }
             } catch (Exception ex) {
-                serr.println("WaveDrawContext#reloadPartial; ex=" + ex);
+                Logger.StdErr("WaveDrawContext#reloadPartial; ex=" + ex);
             } finally {
                 if (wr != null) {
                     try {
                         wr.close();
                     } catch (Exception ex2) {
-                        serr.println("WaveDrawContext#reloadPartial; ex2=" + ex2);
+                        Logger.StdErr("WaveDrawContext#reloadPartial; ex2=" + ex2);
                     }
                 }
             }

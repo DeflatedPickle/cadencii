@@ -193,7 +193,7 @@ namespace cadencii
 				bool pushed = stripBtnScroll.Pushed;
 				EditorManager.mAutoScroll = pushed;
 				#if DEBUG
-				sout.println("FormMain#stripBtnScroll_CheckedChanged; pushed=" + pushed);
+				Logger.StdOut("FormMain#stripBtnScroll_CheckedChanged; pushed=" + pushed);
 				#endif
 				parent.form.pictPianoRoll.Focus();
 			}

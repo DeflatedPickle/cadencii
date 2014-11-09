@@ -96,7 +96,7 @@ namespace cadencii.media
             try {
                 SoundSetResolution(value);
             } catch (Exception ex) {
-                serr.println("PlaySound#setResolution; ex=" + ex);
+                Logger.StdErr("PlaySound#setResolution; ex=" + ex);
             }
         }
 
@@ -109,7 +109,7 @@ namespace cadencii.media
                 SoundInit();
                 _is_initialized = true;
             } catch (Exception ex) {
-                sout.println("PlaySound#init; ex=" + ex);
+                Logger.StdOut("PlaySound#init; ex=" + ex);
             }
         }
 
@@ -118,7 +118,7 @@ namespace cadencii.media
             try {
                 SoundKill();
             } catch (Exception ex) {
-                sout.println("PlaySound#kill; ex=" + ex);
+                Logger.StdOut("PlaySound#kill; ex=" + ex);
             }
         }
 
@@ -127,7 +127,7 @@ namespace cadencii.media
             try {
                 return SoundGetPosition();
             } catch (Exception ex) {
-                sout.println("PlaySound#getPosition; ex=" + ex);
+                Logger.StdOut("PlaySound#getPosition; ex=" + ex);
                 return 0.0;
             }
         }
@@ -137,7 +137,7 @@ namespace cadencii.media
             try {
                 SoundWaitForExit();
             } catch (Exception ex) {
-                sout.println("PlaySound#waitForExit; ex=" + ex);
+                Logger.StdOut("PlaySound#waitForExit; ex=" + ex);
             }
         }
 
@@ -148,7 +148,7 @@ namespace cadencii.media
                 IntPtr r = Marshal.UnsafeAddrOfPinnedArrayElement(right, 0);
                 SoundAppend(l, r, length);
             } catch (Exception ex) {
-                sout.println("PlaySound#append; ex=" + ex);
+                Logger.StdOut("PlaySound#append; ex=" + ex);
             }
         }
 
@@ -169,10 +169,10 @@ namespace cadencii.media
             try {
                 int ret = SoundPrepare(sample_rate);
 #if DEBUG
-                sout.println("PlaySound#prepare; ret=" + ret);
+                Logger.StdOut("PlaySound#prepare; ret=" + ret);
 #endif
             } catch (Exception ex) {
-                sout.println("PlaySound#prepare; ex=" + ex);
+                Logger.StdOut("PlaySound#prepare; ex=" + ex);
             }
         }
 
@@ -184,7 +184,7 @@ namespace cadencii.media
             try {
                 SoundExit();
             } catch (Exception ex) {
-                sout.println("PlaySound#exit; ex=" + ex);
+                Logger.StdOut("PlaySound#exit; ex=" + ex);
             }
         }
 
@@ -193,7 +193,7 @@ namespace cadencii.media
             try {
                 SoundUnprepare();
             } catch (Exception ex) {
-                sout.println("PlaySound#unprepare; ex=" + ex);
+                Logger.StdOut("PlaySound#unprepare; ex=" + ex);
             }
         }
     }

@@ -15,8 +15,9 @@ using System;
 using System.IO;
 using System.Text;
 using cadencii.java.util;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Utilities
 {
 
     public class PortUtil

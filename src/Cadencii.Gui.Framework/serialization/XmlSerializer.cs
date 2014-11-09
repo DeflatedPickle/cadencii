@@ -60,7 +60,7 @@ namespace cadencii.xml
                     xw.Formatting = System.Xml.Formatting.None;
                     m_serializer.Serialize(xw, obj);
                 } catch (Exception ex) {
-                    serr.println("XmlSerializer#serialize; ex=" + ex);
+                    Logger.StdErr("XmlSerializer#serialize; ex=" + ex);
                 }
             }
         }

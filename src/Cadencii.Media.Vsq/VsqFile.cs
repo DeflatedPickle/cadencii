@@ -11,6 +11,8 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
+
+
 #define NEW_IMPL
 
 using System;
@@ -19,7 +21,7 @@ using System.IO;
 using System.Text;
 using cadencii;
 using cadencii.java.util;
-using cadencii.java.io;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {
@@ -224,11 +226,11 @@ namespace cadencii.vsq
 #endif
             reflectPitch(this, 1, pitch);
 #if DEBUG
-            sout.println("VsqFile#.ctor(UstFile)");
+            Logger.StdOut("VsqFile#.ctor(UstFile)");
             //VsqTrack vsq_track = Track.get( 1 );
             for (int i = 0; i < vsq_track.getEventCount(); i++) {
                 VsqEvent item = vsq_track.getEvent(i);
-                sout.println("    #" + i + "; type=" + item.ID.type + "; clock=" + item.Clock + "; length=" + item.ID.getLength());
+                Logger.StdOut("    #" + i + "; type=" + item.ID.type + "; clock=" + item.Clock + "; length=" + item.ID.getLength());
             }
 #endif
         }
@@ -489,7 +491,7 @@ namespace cadencii.vsq
         public VsqCommand executeCommand(VsqCommand command)
         {
 #if DEBUG
-            sout.println("VsqFile#executeCommand(VsqCommand); type=" + command.Type);
+            Logger.StdOut("VsqFile#executeCommand(VsqCommand); type=" + command.Type);
 #endif
             VsqCommandType type = command.Type;
             if (type == VsqCommandType.CHANGE_PRE_MEASURE) {
@@ -705,7 +707,7 @@ namespace cadencii.vsq
             } else if (type == VsqCommandType.EVENT_ADD_RANGE) {
                 #region EVENT_ADD_RANGE
 #if DEBUG
-                sout.println("    TrackAddNoteRange");
+                Logger.StdOut("    TrackAddNoteRange");
 #endif
                 int track = (int)command.Args[0];
                 VsqEvent[] items = (VsqEvent[])command.Args[1];
@@ -718,12 +720,12 @@ namespace cadencii.vsq
                     min_clock = Math.Min(min_clock, item.Clock);
                     max_clock = Math.Max(max_clock, item.Clock + item.ID.getLength());
 #if DEBUG
-                    sout.println("        i=" + i + "; item.InternalID=" + item.InternalID);
+                    Logger.StdOut("        i=" + i + "; item.InternalID=" + item.InternalID);
 #endif
                     target.addEvent(item);
                     inv_ids.Add(item.InternalID);
 #if DEBUG
-                    sout.println(" => " + item.InternalID);
+                    Logger.StdOut(" => " + item.InternalID);
 #endif
                 }
                 updateTotalClocks();
@@ -1431,9 +1433,9 @@ namespace cadencii.vsq
         public void removePart(int clock_start, int clock_end)
         {
 #if DEBUG
-            sout.println("VsqFile#removePart; before:");
+            Logger.StdOut("VsqFile#removePart; before:");
             for (int i = 0; i < TempoTable.Count; i++) {
-                sout.println("    c" + TempoTable[i].Clock + ", s" + TempoTable[i].Time + ", t" + TempoTable[i].Tempo);
+                Logger.StdOut("    c" + TempoTable[i].Clock + ", s" + TempoTable[i].Time + ", t" + TempoTable[i].Tempo);
             }
 #endif
             int dclock = clock_end - clock_start;
@@ -1474,9 +1476,9 @@ namespace cadencii.vsq
                 vsqTrack.removePart(clock_start, clock_end);
             }
 #if DEBUG
-            sout.println("VsqFile#removePart; after:");
+            Logger.StdOut("VsqFile#removePart; after:");
             for (int i = 0; i < TempoTable.Count; i++) {
-                sout.println("    c" + TempoTable[i].Clock + ", s" + TempoTable[i].Time + ", t" + TempoTable[i].Tempo);
+                Logger.StdOut("    c" + TempoTable[i].Clock + ", s" + TempoTable[i].Time + ", t" + TempoTable[i].Tempo);
             }
 #endif
         }
@@ -1853,7 +1855,7 @@ namespace cadencii.vsq
             Track = new List<VsqTrack>();
             int num_track = mf.getTrackCount();
 #if DEBUG
-            sout.println("VsqFile#.ctor; num_track=" + num_track);
+            Logger.StdOut("VsqFile#.ctor; num_track=" + num_track);
 #endif
             for (int i = 0; i < num_track; i++) {
                 Track.Add(new VsqTrack(mf.getMidiEventList(i), encoding));
@@ -1879,12 +1881,12 @@ namespace cadencii.vsq
             Track[1].setMixer(null);
 
 #if DEBUG
-            sout.println("VsqFile#ctor(String,String)");
+            Logger.StdOut("VsqFile#ctor(String,String)");
 #endif
             int master_track = -1;
             for (int i = 0; i < Track.Count; i++) {
 #if DEBUG
-                sout.println("    m_tracks[i].Name=" + Track[i].getName());
+                Logger.StdOut("    m_tracks[i].Name=" + Track[i].getName());
 #endif
                 if (Track[i].getName().Equals("Master Track")) {
                     master_track = i;
@@ -1969,7 +1971,7 @@ namespace cadencii.vsq
             updateTimesigInfo();
             updateTotalClocks();
 #if DEBUG
-            sout.println("    m_total_clocks=" + TotalClocks);
+            Logger.StdOut("    m_total_clocks=" + TotalClocks);
 #endif
         }
 
@@ -2216,18 +2218,18 @@ namespace cadencii.vsq
 #endif
                 }
             } catch (Exception ex) {
-                serr.println("VsqFile#generateMetaTextEvent; ex=" + ex);
+                Logger.StdErr("VsqFile#generateMetaTextEvent; ex=" + ex);
             } finally {
                 if (sr != null) {
                     try {
                         sr.close();
                     } catch (Exception ex2) {
-                        serr.println("VsqFile#generateMetaTextEvent; ex2=" + ex2);
+                        Logger.StdErr("VsqFile#generateMetaTextEvent; ex2=" + ex2);
                     }
                 }
             }
 #if DEBUG
-            sout.println("VsqFile#generateMetaTextEvent; ret.size()=" + ret.Count);
+            Logger.StdOut("VsqFile#generateMetaTextEvent; ret.size()=" + ret.Count);
 #endif
             return ret;
         }
@@ -2454,8 +2456,8 @@ namespace cadencii.vsq
             double msEnd = vsq.getSecFromClock(ve.Clock + ve.ID.getLength()) * 1000.0;
             int duration = (int)Math.Ceiling(msEnd - clock_msec);
 #if DEBUG
-            sout.println("GenerateNoteNRPN");
-            sout.println("    duration=" + duration);
+            Logger.StdOut("GenerateNoteNRPN");
+            Logger.StdOut("    duration=" + duration);
 #endif
             ValuePair<Byte, Byte> d = getMsbAndLsb(duration);
             byte duration0 = d.getKey();
@@ -2695,7 +2697,7 @@ namespace cadencii.vsq
         public static VsqNrpn[] generateNRPN(VsqFile vsq, int track, int msPreSend)
         {
 #if DEBUG
-            sout.println("GenerateNRPN(VsqTrack,int,int,int,int)");
+            Logger.StdOut("GenerateNRPN(VsqTrack,int,int,int,int)");
 #endif
             List<VsqNrpn> list = new List<VsqNrpn>();
 
@@ -3043,7 +3045,7 @@ namespace cadencii.vsq
         public void write(string file, int msPreSend, string encoding)
         {
 #if DEBUG
-            sout.println("VsqFile.Write(String)");
+            Logger.StdOut("VsqFile.Write(String)");
 #endif
             int last_clock = 0;
             int track_size = Track.Count;
@@ -3108,13 +3110,13 @@ namespace cadencii.vsq
                     last_clock = Math.Max(last_clock, entry.Clock);
                 }
 #if DEBUG
-                sout.println("    events.Count=" + events.Count);
+                Logger.StdOut("    events.Count=" + events.Count);
 #endif
                 events.Sort();
                 long last = 0;
                 foreach (var me in events) {
 #if DEBUG
-                    sout.println("me.Clock=" + me.clock);
+                    Logger.StdOut("me.Clock=" + me.clock);
 #endif
                     writeFlexibleLengthUnsignedLong(fs, (long)(me.clock - last));
                     me.writeData(fs);

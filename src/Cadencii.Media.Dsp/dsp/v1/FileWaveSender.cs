@@ -67,7 +67,7 @@ namespace cadencii
                     mConverter.read(mPosition, length, l, r);
                     mPosition += length;
                 } catch (Exception ex) {
-                    serr.println("FileWaveSender#pull; ex=" + ex);
+                    Logger.StdErr("FileWaveSender#pull; ex=" + ex);
                     Logger.write(typeof(FileWaveSender) + ".pull; ex=" + ex + "\n");
                 }
             }
@@ -77,7 +77,7 @@ namespace cadencii
         {
 #if DEBUG
             mNumInstance--;
-            sout.println("FileWaveSender#end; mNumInstance=" + mNumInstance);
+            Logger.StdOut("FileWaveSender#end; mNumInstance=" + mNumInstance);
 #endif
             lock (mSyncRoot) {
                 try {
@@ -89,7 +89,7 @@ namespace cadencii
                         }
                     }
                 } catch (Exception ex) {
-                    sout.println("FileWaveSender#end; ex=" + ex);
+                    Logger.StdOut("FileWaveSender#end; ex=" + ex);
                     Logger.write(typeof(FileWaveSender) + ".end; ex=" + ex + "\n");
                 }
             }

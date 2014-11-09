@@ -66,7 +66,7 @@ namespace cadencii.dsp.winforms
 						ui.UI.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 						ui.IsOpened = true;
 					} catch (Exception ex) {
-						serr.println ("vstidrv#open; ex=" + ex);
+						Logger.StdErr ("vstidrv#open; ex=" + ex);
 						ui.IsOpened = false;
 					}
 				}

@@ -18,7 +18,7 @@
  */
 using System;
 
-namespace cadencii
+namespace Cadencii.Utilities
 {
 
     public static unsafe class fft_test

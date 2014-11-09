@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 using cadencii.vsq;
+using Cadencii.Utilities;
 
 namespace cadencii.utau
 {
@@ -50,21 +51,21 @@ namespace cadencii.utau
                             }
                         }
                     } catch (Exception ex) {
-                        serr.println("Utility#readUtausingerConfig; ex=" + ex);
+                        Logger.StdErr("Utility#readUtausingerConfig; ex=" + ex);
                         Logger.write(typeof(Utau) + ".readUtausingerConfig; ex=" + ex + "\n");
                     } finally {
                         if (sr2 != null) {
                             try {
                                 sr2.Close();
                             } catch (Exception ex2) {
-                                serr.println("Utility#readUtausingerConfig; ex2=" + ex2);
+                                Logger.StdErr("Utility#readUtausingerConfig; ex2=" + ex2);
                                 Logger.write(typeof(Utau) + ".readUtausingerConfig; ex= " + ex2 + "\n");
                             }
                         }
                     }
                     if (name != null) {
 #if DEBUG
-                        sout.println("Utility#readUtausingerConfig; name=" + name + "; encoding=" + encoding);
+                        Logger.StdOut("Utility#readUtausingerConfig; name=" + name + "; encoding=" + encoding);
 #endif
                         break;
                     }

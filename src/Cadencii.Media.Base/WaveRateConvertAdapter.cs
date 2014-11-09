@@ -45,7 +45,7 @@ namespace cadencii.media
         public void close()
         {
 #if DEBUG
-            sout.println("WaveRateConvertAdapter#close");
+            Logger.StdOut("WaveRateConvertAdapter#close");
 #endif
             mReceiver.close();
         }

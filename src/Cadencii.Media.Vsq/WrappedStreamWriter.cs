@@ -14,7 +14,6 @@
 using System;
 using System.IO;
 using cadencii;
-using cadencii.java.io;
 
 namespace cadencii.vsq
 {

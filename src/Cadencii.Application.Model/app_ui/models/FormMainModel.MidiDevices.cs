@@ -31,7 +31,7 @@ namespace cadencii
 			int portNumber = EditorManager.editorConfig.MidiInPort.PortNumber;
 			int portNumberMtc = EditorManager.editorConfig.MidiInPortMtc.PortNumber;
 		#if DEBUG
-			sout.println("FormMain#reloadMidiIn; portNumber=" + portNumber + "; portNumberMtc=" + portNumberMtc);
+			Logger.StdOut("FormMain#reloadMidiIn; portNumber=" + portNumber + "; portNumberMtc=" + portNumberMtc);
 		#endif
 			try {
 				mMidiIn = new MidiInDevice(portNumber);
@@ -52,7 +52,7 @@ namespace cadencii
 		#endif
 			} catch (Exception ex) {
 				Logger.write(GetType () + ".reloadMidiIn; ex=" + ex + "\n");
-				serr.println("FormMain#reloadMidiIn; ex=" + ex);
+				Logger.StdErr("FormMain#reloadMidiIn; ex=" + ex);
 			}
 
 		#if ENABLE_MTC
@@ -70,7 +70,7 @@ namespace cadencii
 		m_midi_in_mtc.Start();
 		} catch ( Exception ex ) {
 		Logger.write( typeof( FormMain ) + ".reloadMidiIn; ex=" + ex + "\n" );
-		serr.println( "FormMain#reloadMidiIn; ex=" + ex );
+		Logger.StdErr( "FormMain#reloadMidiIn; ex=" + ex );
 		}
 		}
 		#endif
@@ -137,7 +137,7 @@ namespace cadencii
                     }
                 }*/
 		#if DEBUG
-		sout.println( "FormMain#handleMtcMidiReceived; time=" + time );
+		Logger.StdOut( "FormMain#handleMtcMidiReceived; time=" + time );
 		#endif
 	}
 }
@@ -179,19 +179,19 @@ namespace cadencii
 		{
 			byte[] data = message.getMessage();
 		#if DEBUG
-			sout.println("FormMain#mMidiIn_MidiReceived; data.Length=" + data.Length);
+			Logger.StdOut("FormMain#mMidiIn_MidiReceived; data.Length=" + data.Length);
 		#endif
 			if (data.Length <= 2) {
 				return;
 			}
 		#if DEBUG
-			sout.println("FormMain#mMidiIn_MidiReceived; EditorManager.isPlaying()=" + EditorManager.isPlaying());
+			Logger.StdOut("FormMain#mMidiIn_MidiReceived; EditorManager.isPlaying()=" + EditorManager.isPlaying());
 		#endif
 			if (EditorManager.isPlaying()) {
 				return;
 			}
 		#if DEBUG
-			sout.println("FormMain#mMidiIn_MidiReceived; isStepSequencerEnabeld()=" + form.Model.IsStepSequencerEnabled);
+			Logger.StdOut("FormMain#mMidiIn_MidiReceived; isStepSequencerEnabeld()=" + form.Model.IsStepSequencerEnabled);
 		#endif
 	if (false == form.Model.IsStepSequencerEnabled) {
 				return;
@@ -213,7 +213,7 @@ namespace cadencii
 			}
 
 		#if DEBUG
-			sout.println("FormMain#mMidiIn_Received; clock=" + clock + "; note=" + note);
+			Logger.StdOut("FormMain#mMidiIn_Received; clock=" + clock + "; note=" + note);
 		#endif
 			if (code == 0x80) {
 				/*if ( EditorManager.mAddingEvent != null ) {

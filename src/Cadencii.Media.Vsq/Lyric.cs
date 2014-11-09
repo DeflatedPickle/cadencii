@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 
 using cadencii;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {
@@ -106,7 +107,7 @@ namespace cadencii.vsq
                 try {
                     v = int.Parse(spl[i]);
                 } catch (Exception ex) {
-                    serr.println("Lyric#setCosonantAdjustment; ex=" + ex);
+                    Logger.StdErr("Lyric#setCosonantAdjustment; ex=" + ex);
                 }
                 arr.Add(v);
             }

@@ -15,6 +15,7 @@ using System;
 using System.ComponentModel;
 using cadencii.vsq;
 using cadencii.utau;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -1320,7 +1321,7 @@ namespace cadencii
         public void setVibratoLength(int value)
         {
 #if DEBUG
-            sout.println("VsqEventItemProxy#set_VibratoLength; value=" + value);
+            Logger.StdOut("VsqEventItemProxy#set_VibratoLength; value=" + value);
 #endif
             if (value <= 0) {
                 m_vibrato = new VibratoVariation(VibratoVariation.empty.description);
@@ -1399,7 +1400,7 @@ namespace cadencii
                 try {
                     value = int.Parse(v);
                 } catch (Exception ex) {
-                    serr.println("VsqEventItemProxy#get_Release; ex=" + ex);
+                    Logger.StdErr("VsqEventItemProxy#get_Release; ex=" + ex);
                     value = 64;
                 }
             }

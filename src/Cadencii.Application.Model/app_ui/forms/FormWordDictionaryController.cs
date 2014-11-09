@@ -62,7 +62,7 @@ namespace cadencii
 
                     ui.listDictionariesSetSelectedRow(index + 1);
                 } catch (Exception ex) {
-                    serr.println("FormWordDictionary#btnDown_Click; ex=" + ex);
+                    Logger.StdErr("FormWordDictionary#btnDown_Click; ex=" + ex);
                 }
             }
         }
@@ -85,7 +85,7 @@ namespace cadencii
 
                     ui.listDictionariesSetSelectedRow(index - 1);
                 } catch (Exception ex) {
-                    serr.println("FormWordDictionary#btnUp_Click; ex=" + ex);
+                    Logger.StdErr("FormWordDictionary#btnUp_Click; ex=" + ex);
                 }
             }
         }
@@ -157,7 +157,7 @@ namespace cadencii
             List<ValuePair<string, Boolean>> ret = new List<ValuePair<string, Boolean>>();
             int count = ui.listDictionariesGetItemCountRow();
 #if DEBUG
-            sout.println("FormWordDictionary#getResult; count=" + count);
+            Logger.StdOut("FormWordDictionary#getResult; count=" + count);
 #endif
             for (int i = 0; i < count; i++) {
                 string name = ui.listDictionariesGetItemAt(i);

@@ -21,6 +21,7 @@ using cadencii.java.util;
 using cadencii.vsq;
 
 using Keys = Cadencii.Gui.Keys;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -244,7 +245,7 @@ namespace cadencii
             foreach (var vme in vsq.Mixer.Slave) {
                 j++;
 #if DEBUG
-                sout.println("FormMixer#updateStatus; #" + j + "; feder=" + vme.Feder + "; panpot=" + vme.Panpot);
+                Logger.StdOut("FormMixer#updateStatus; #" + j + "; feder=" + vme.Feder + "; panpot=" + vme.Panpot);
 #endif
                 VolumeTracker tracker = m_tracker[j];
                 tracker.setFeder(vme.Feder);
@@ -277,7 +278,7 @@ namespace cadencii
                 addToPanelSlaves(tracker, j);
             }
 #if DEBUG
-            sout.println("FormMixer#updateStatus; vsq.Mixer.MasterFeder=" + vsq.Mixer.MasterFeder);
+            Logger.StdOut("FormMixer#updateStatus; vsq.Mixer.MasterFeder=" + vsq.Mixer.MasterFeder);
 #endif
             volumeMaster.setFeder(vsq.Mixer.MasterFeder);
             volumeMaster.setPanpot(vsq.Mixer.MasterPanpot);
@@ -400,7 +401,7 @@ namespace cadencii
         public void FormMixer_Load(Object sender, EventArgs e)
         {
 #if DEBUG
-            sout.println("FormMixer#FormMixer_Load");
+            Logger.StdOut("FormMixer#FormMixer_Load");
 #endif
             this.TopMost = true;
         }
@@ -411,7 +412,7 @@ namespace cadencii
                 invokePanpotChangedEvent(track, panpot);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMixerUiImpl) + ".FormMixer_PanpotChanged; ex=" + ex + "\n");
-                serr.println("FormMixer#FormMixer_PanpotChanged; ex=" + ex);
+                Logger.StdErr("FormMixer#FormMixer_PanpotChanged; ex=" + ex);
             }
         }
 
@@ -421,7 +422,7 @@ namespace cadencii
                 invokeFederChangedEvent(track, feder);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMixerUiImpl) + ".FormMixer_FederChanged; ex=" + ex + "\n");
-                serr.println("FormMixer#FormMixer_FederChanged; ex=" + ex);
+                Logger.StdErr("FormMixer#FormMixer_FederChanged; ex=" + ex);
             }
         }
 
@@ -433,7 +434,7 @@ namespace cadencii
                 invokeSoloChangedEvent(track, parent.isSolo());
             } catch (Exception ex) {
                 Logger.write(typeof(FormMixerUiImpl) + ".FormMixer_SoloButtonClick; ex=" + ex + "\n");
-                serr.println("FormMixer#FormMixer_IsSoloChanged; ex=" + ex);
+                Logger.StdErr("FormMixer#FormMixer_IsSoloChanged; ex=" + ex);
             }
             updateSoloMute();
         }
@@ -446,7 +447,7 @@ namespace cadencii
                 invokeMuteChangedEvent(track, parent.isMuted());
             } catch (Exception ex) {
                 Logger.write(typeof(FormMixerUiImpl) + ".FormMixer_MuteButtonClick; ex=" + ex + "\n");
-                serr.println("FormMixer#FormMixer_IsMutedChanged; ex=" + ex);
+                Logger.StdErr("FormMixer#FormMixer_IsMutedChanged; ex=" + ex);
             }
             updateSoloMute();
         }
@@ -477,7 +478,7 @@ namespace cadencii
                 invokeFederChangedEvent(0, feder);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMixerUiImpl) + ".volumeMaster_FederChanged; ex=" + ex + "\n");
-                serr.println("FormMixer#volumeMaster_FederChanged; ex=" + ex);
+                Logger.StdErr("FormMixer#volumeMaster_FederChanged; ex=" + ex);
             }
         }
 
@@ -487,7 +488,7 @@ namespace cadencii
                 invokePanpotChangedEvent(0, panpot);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMixerUiImpl) + ".volumeMaster_PanpotChanged; ex=" + ex + "\n");
-                serr.println("FormMixer#volumeMaster_PanpotChanged; ex=" + ex);
+                Logger.StdErr("FormMixer#volumeMaster_PanpotChanged; ex=" + ex);
             }
         }
 
@@ -497,7 +498,7 @@ namespace cadencii
                 invokeMuteChangedEvent(0, volumeMaster.isMuted());
             } catch (Exception ex) {
                 Logger.write(typeof(FormMixerUiImpl) + ".volumeMaster_MuteButtonClick; ex=" + ex + "\n");
-                serr.println("FormMixer#volumeMaster_IsMutedChanged; ex=" + ex);
+                Logger.StdErr("FormMixer#volumeMaster_IsMutedChanged; ex=" + ex);
             }
         }
         #endregion

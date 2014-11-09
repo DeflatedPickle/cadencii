@@ -27,9 +27,9 @@ namespace cadencii.vsq
         public void updateTimesigInfo()
         {
 #if DEBUG
-            sout.println("TimesigVector#updateTimesigInfo; before:");
+            Logger.StdOut("TimesigVector#updateTimesigInfo; before:");
             for (int i = 0; i < Count; i++) {
-                sout.println("    " + this[i].Clock + " " + this[i].Numerator + "/" + this[i].Denominator);
+                Logger.StdOut("    " + this[i].Clock + " " + this[i].Numerator + "/" + this[i].Denominator);
             }
 #endif
             if (this[0].Clock != 0) {
@@ -49,9 +49,9 @@ namespace cadencii.vsq
                 this[j].Clock = clock;
             }
 #if DEBUG
-            sout.println("TimesigVector#updateTimesigInfo; after:");
+            Logger.StdOut("TimesigVector#updateTimesigInfo; after:");
             for (int i = 0; i < Count; i++) {
-                sout.println("    " + this[i].Clock + " " + this[i].Numerator + "/" + this[i].Denominator);
+                Logger.StdOut("    " + this[i].Clock + " " + this[i].Numerator + "/" + this[i].Denominator);
             }
 #endif
         }

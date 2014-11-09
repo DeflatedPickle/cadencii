@@ -54,7 +54,7 @@ namespace cadencii
         public void sendButtonClick()
         {
 #if DEBUG
-            sout.println("ExceptionNotifyFormController::sendButtonClick");
+            Logger.StdOut("ExceptionNotifyFormController::sendButtonClick");
 #endif
             string url = "http://www.cadencii.info/error_report.php";
             try {

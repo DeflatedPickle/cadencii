@@ -11,6 +11,7 @@ using System.Linq;
 using cadencii.java.util;
 using Cadencii.Gui;
 using System.Media;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -247,8 +248,8 @@ namespace cadencii
 			int copy_started_clock = ce.copyStartedClock;
 			List<VsqEvent> copied_events = ce.events;
 			#if DEBUG
-			sout.println("FormMain#pasteEvent; copy_started_clock=" + copy_started_clock);
-			sout.println("FormMain#pasteEvent; copied_events.size()=" + copied_events.Count);
+			Logger.StdOut("FormMain#pasteEvent; copy_started_clock=" + copy_started_clock);
+			Logger.StdOut("FormMain#pasteEvent; copied_events.size()=" + copied_events.Count);
 			#endif
 			if (copied_events.Count != 0) {
 				// VsqEventのペーストを行うコマンドを発行
@@ -316,7 +317,7 @@ namespace cadencii
 			VsqCommand edit_bpcurve = null; // BPListを変更するコマンド
 			SortedDictionary<CurveType, VsqBPList> copied_curve = ce.points;
 			#if DEBUG
-			sout.println("FormMain#pasteEvent; copied_curve.size()=" + copied_curve.Count);
+			Logger.StdOut("FormMain#pasteEvent; copied_curve.size()=" + copied_curve.Count);
 			#endif
 			if (copied_curve.Count > 0) {
 				int dclock = clock - copy_started_clock;
@@ -339,7 +340,7 @@ namespace cadencii
 						VsqBPList target = (VsqBPList)MusicManager.getVsqFile().Track[EditorManager.Selected].getCurve(curve.getName()).clone();
 						int count = list.size();
 						#if DEBUG
-						sout.println("FormMain#pasteEvent; list.getCount()=" + count);
+						Logger.StdOut("FormMain#pasteEvent; list.getCount()=" + count);
 						#endif
 						int min = list.getKeyClock(0) + dclock;
 						int max = list.getKeyClock(count - 1) + dclock;
@@ -369,7 +370,7 @@ namespace cadencii
 					}
 				}
 				#if DEBUG
-				sout.println("FormMain#pasteEvent; work.size()=" + work.Count);
+				Logger.StdOut("FormMain#pasteEvent; work.size()=" + work.Count);
 				#endif
 				if (work.Count > 0) {
 					string[] curves = new string[work.Count];
@@ -389,7 +390,7 @@ namespace cadencii
 			CadenciiCommand edit_bezier = null;
 			SortedDictionary<CurveType, List<BezierChain>> copied_bezier = ce.beziers;
 			#if DEBUG
-			sout.println("FormMain#pasteEvent; copied_bezier.size()=" + copied_bezier.Count);
+			Logger.StdOut("FormMain#pasteEvent; copied_bezier.size()=" + copied_bezier.Count);
 			#endif
 			if (copied_bezier.Count > 0) {
 				int dclock = clock - copy_started_clock;
@@ -471,7 +472,7 @@ namespace cadencii
 
 			if (EditorManager.IsWholeSelectedIntervalEnabled) {
 				#if DEBUG
-				sout.println("FormMain#copyEvent; selected with CTRL key");
+				Logger.StdOut("FormMain#copyEvent; selected with CTRL key");
 				#endif
 				int stdx = form.Model.StartToDrawX;
 				int start_clock = EditorManager.mWholeSelectedInterval.getStart();

@@ -57,7 +57,7 @@ namespace cadencii
         {
             string message = _("track") + "#" + this.track + " ";
 #if DEBUG
-            sout.println("PatchWorkQueue#getMessage; q.clockStart=" + this.clockStart + "; q.clockEnd=" + this.clockEnd);
+            Logger.StdOut("PatchWorkQueue#getMessage; q.clockStart=" + this.clockStart + "; q.clockEnd=" + this.clockEnd);
 #endif
             double start = this.vsq.getSecFromClock(this.clockStart);
             double cend = this.clockEnd;

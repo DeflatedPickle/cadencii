@@ -49,7 +49,7 @@ namespace cadencii
                 SingerConfig sc = new SingerConfig();
                 string path_image = cadencii.utau.Utau.readUtauSingerConfig(singer, sc);
 #if DEBUG
-                sout.println("FormCheckUnknownSingerAndResampler#.ctor;  path_image=" + path_image);
+                Logger.StdOut("FormCheckUnknownSingerAndResampler#.ctor;  path_image=" + path_image);
 #endif
 		pictureSinger.Image = IconParaderController.createIconImage(path_image, sc.VOICENAME);
                 labelSingerName.Text = sc.VOICENAME;

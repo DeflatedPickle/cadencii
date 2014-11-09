@@ -15,7 +15,7 @@ using System;
 using System.Collections.Generic;
 using cadencii;
 using cadencii.java.util;
-using cadencii.java.io;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {
@@ -807,13 +807,13 @@ namespace cadencii.vsq
                     sw.newLine();
                 }
             } catch (Exception ex) {
-                serr.println("VsqTrack#printMetaText; ex=" + ex);
+                Logger.StdErr("VsqTrack#printMetaText; ex=" + ex);
             } finally {
                 if (sw != null) {
                     try {
                         sw.close();
                     } catch (Exception ex2) {
-                        serr.println("VsqTrack#printMetaText; ex2=" + ex2);
+                        Logger.StdErr("VsqTrack#printMetaText; ex2=" + ex2);
                     }
                 }
             }
@@ -840,7 +840,7 @@ namespace cadencii.vsq
             if (MetaText != null) {
                 MetaText.master = value;
             } else {
-                serr.println("VsqTrack#setMaster; MetaText is null");
+                Logger.StdErr("VsqTrack#setMaster; MetaText is null");
             }
         }
 
@@ -865,7 +865,7 @@ namespace cadencii.vsq
             if (MetaText != null) {
                 MetaText.mixer = value;
             } else {
-                serr.println("VsqTrack#setMixer; MetaText is null");
+                Logger.StdErr("VsqTrack#setMixer; MetaText is null");
             }
         }
 
@@ -1135,13 +1135,13 @@ namespace cadencii.vsq
                 MetaText = new VsqMetaText(sw);
                 setName(track_name);
             } catch (Exception ex) {
-                serr.println("org.kbinani.vsq.VsqTrack#.ctor; ex=" + ex);
+                Logger.StdErr("org.kbinani.vsq.VsqTrack#.ctor; ex=" + ex);
             } finally {
                 if (sw != null) {
                     try {
                         sw.close();
                     } catch (Exception ex2) {
-                        serr.println("org.kbinani.vsq.VsqTrack#.ctor; ex2=" + ex2);
+                        Logger.StdErr("org.kbinani.vsq.VsqTrack#.ctor; ex2=" + ex2);
                     }
                 }
             }

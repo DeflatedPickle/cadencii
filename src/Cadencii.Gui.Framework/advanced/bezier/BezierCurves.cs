@@ -35,20 +35,20 @@ namespace cadencii
                                                                           CurveType.PBS,
                                                                           CurveType.VibratoRate,
                                                                           CurveType.VibratoDepth,
-                                                                          CurveType.harmonics,
-                                                                          CurveType.fx2depth,
-                                                                          CurveType.reso1amp,
-                                                                          CurveType.reso1bw,
-                                                                          CurveType.reso1freq,
-                                                                          CurveType.reso2amp,
-                                                                          CurveType.reso2bw,
-                                                                          CurveType.reso2freq,
-                                                                          CurveType.reso3amp,
-                                                                          CurveType.reso3bw,
-                                                                          CurveType.reso3freq,
-                                                                          CurveType.reso4amp,
-                                                                          CurveType.reso4bw,
-                                                                          CurveType.reso4freq };
+                                                                          CurveType.Harmonics,
+                                                                          CurveType.Fx2Depth,
+                                                                          CurveType.Reso1Amp,
+                                                                          CurveType.Reso1Bw,
+                                                                          CurveType.Reso1Freq,
+                                                                          CurveType.Reso2Amp,
+                                                                          CurveType.Reso2Bw,
+                                                                          CurveType.Reso2Freq,
+                                                                          CurveType.Reso3Amp,
+                                                                          CurveType.Reso3Bw,
+                                                                          CurveType.Reso3Freq,
+                                                                          CurveType.Reso4Amp,
+                                                                          CurveType.Reso4Bw,
+                                                                          CurveType.Reso4Freq };
         public static readonly CurveType[] CURVES = new CurveType[]{
             CurveType.DYN,
             CurveType.BRE,
@@ -59,20 +59,20 @@ namespace cadencii
             CurveType.POR,
             CurveType.VibratoRate,
             CurveType.VibratoDepth,
-            CurveType.harmonics,
-            CurveType.fx2depth,
-            CurveType.reso1freq,
-            CurveType.reso1bw,
-            CurveType.reso1amp,
-            CurveType.reso2freq,
-            CurveType.reso2bw,
-            CurveType.reso2amp,
-            CurveType.reso3freq,
-            CurveType.reso3bw,
-            CurveType.reso3amp,
-            CurveType.reso4freq,
-            CurveType.reso4bw,
-            CurveType.reso4amp,
+            CurveType.Harmonics,
+            CurveType.Fx2Depth,
+            CurveType.Reso1Freq,
+            CurveType.Reso1Bw,
+            CurveType.Reso1Amp,
+            CurveType.Reso2Freq,
+            CurveType.Reso2Bw,
+            CurveType.Reso2Amp,
+            CurveType.Reso3Freq,
+            CurveType.Reso3Bw,
+            CurveType.Reso3Amp,
+            CurveType.Reso4Freq,
+            CurveType.Reso4Bw,
+            CurveType.Reso4Amp,
             CurveType.PIT,
             CurveType.PBS, };
 
@@ -585,11 +585,11 @@ namespace cadencii
                 return Clearness;
             } else if (curve.equals(CurveType.DYN)) {
                 return Dynamics;
-            } else if (curve.equals(CurveType.fx2depth)) {
+            } else if (curve.equals(CurveType.Fx2Depth)) {
                 return FX2Depth;
             } else if (curve.equals(CurveType.GEN)) {
                 return GenderFactor;
-            } else if (curve.equals(CurveType.harmonics)) {
+            } else if (curve.equals(CurveType.Harmonics)) {
                 return Harmonics;
             } else if (curve.equals(CurveType.OPE)) {
                 return Opening;
@@ -599,29 +599,29 @@ namespace cadencii
                 return PitchBend;
             } else if (curve.equals(CurveType.PBS)) {
                 return PitchBendSensitivity;
-            } else if (curve.equals(CurveType.reso1amp)) {
+            } else if (curve.equals(CurveType.Reso1Amp)) {
                 return Reso1Amp;
-            } else if (curve.equals(CurveType.reso1bw)) {
+            } else if (curve.equals(CurveType.Reso1Bw)) {
                 return Reso1BW;
-            } else if (curve.equals(CurveType.reso1freq)) {
+            } else if (curve.equals(CurveType.Reso1Freq)) {
                 return Reso1Freq;
-            } else if (curve.equals(CurveType.reso2amp)) {
+            } else if (curve.equals(CurveType.Reso2Amp)) {
                 return Reso2Amp;
-            } else if (curve.equals(CurveType.reso2bw)) {
+            } else if (curve.equals(CurveType.Reso2Bw)) {
                 return Reso2BW;
-            } else if (curve.equals(CurveType.reso2freq)) {
+            } else if (curve.equals(CurveType.Reso2Freq)) {
                 return Reso2Freq;
-            } else if (curve.equals(CurveType.reso3amp)) {
+            } else if (curve.equals(CurveType.Reso3Amp)) {
                 return Reso3Amp;
-            } else if (curve.equals(CurveType.reso3bw)) {
+            } else if (curve.equals(CurveType.Reso3Bw)) {
                 return Reso3BW;
-            } else if (curve.equals(CurveType.reso3freq)) {
+            } else if (curve.equals(CurveType.Reso3Freq)) {
                 return Reso3Freq;
-            } else if (curve.equals(CurveType.reso4amp)) {
+            } else if (curve.equals(CurveType.Reso4Amp)) {
                 return Reso4Amp;
-            } else if (curve.equals(CurveType.reso4bw)) {
+            } else if (curve.equals(CurveType.Reso4Bw)) {
                 return Reso4BW;
-            } else if (curve.equals(CurveType.reso4freq)) {
+            } else if (curve.equals(CurveType.Reso4Freq)) {
                 return Reso4Freq;
             } else if (curve.equals(CurveType.VibratoDepth)) {
                 return VibratoDepth;
@@ -642,11 +642,11 @@ namespace cadencii
                 Clearness = value;
             } else if (curve.equals(CurveType.DYN)) {
                 Dynamics = value;
-            } else if (curve.equals(CurveType.fx2depth)) {
+            } else if (curve.equals(CurveType.Fx2Depth)) {
                 FX2Depth = value;
             } else if (curve.equals(CurveType.GEN)) {
                 GenderFactor = value;
-            } else if (curve.equals(CurveType.harmonics)) {
+            } else if (curve.equals(CurveType.Harmonics)) {
                 Harmonics = value;
             } else if (curve.equals(CurveType.OPE)) {
                 Opening = value;
@@ -656,29 +656,29 @@ namespace cadencii
                 PitchBend = value;
             } else if (curve.equals(CurveType.PBS)) {
                 PitchBendSensitivity = value;
-            } else if (curve.equals(CurveType.reso1amp)) {
+            } else if (curve.equals(CurveType.Reso1Amp)) {
                 Reso1Amp = value;
-            } else if (curve.equals(CurveType.reso1bw)) {
+            } else if (curve.equals(CurveType.Reso1Bw)) {
                 Reso1BW = value;
-            } else if (curve.equals(CurveType.reso1freq)) {
+            } else if (curve.equals(CurveType.Reso1Freq)) {
                 Reso1Freq = value;
-            } else if (curve.equals(CurveType.reso2amp)) {
+            } else if (curve.equals(CurveType.Reso2Amp)) {
                 Reso2Amp = value;
-            } else if (curve.equals(CurveType.reso2bw)) {
+            } else if (curve.equals(CurveType.Reso2Bw)) {
                 Reso2BW = value;
-            } else if (curve.equals(CurveType.reso2freq)) {
+            } else if (curve.equals(CurveType.Reso2Freq)) {
                 Reso2Freq = value;
-            } else if (curve.equals(CurveType.reso3amp)) {
+            } else if (curve.equals(CurveType.Reso3Amp)) {
                 Reso3Amp = value;
-            } else if (curve.equals(CurveType.reso3bw)) {
+            } else if (curve.equals(CurveType.Reso3Bw)) {
                 Reso3BW = value;
-            } else if (curve.equals(CurveType.reso3freq)) {
+            } else if (curve.equals(CurveType.Reso3Freq)) {
                 Reso3Freq = value;
-            } else if (curve.equals(CurveType.reso4amp)) {
+            } else if (curve.equals(CurveType.Reso4Amp)) {
                 Reso4Amp = value;
-            } else if (curve.equals(CurveType.reso4bw)) {
+            } else if (curve.equals(CurveType.Reso4Bw)) {
                 Reso4BW = value;
-            } else if (curve.equals(CurveType.reso4freq)) {
+            } else if (curve.equals(CurveType.Reso4Freq)) {
                 Reso4Freq = value;
             } else if (curve.equals(CurveType.VibratoDepth)) {
                 VibratoDepth = value;

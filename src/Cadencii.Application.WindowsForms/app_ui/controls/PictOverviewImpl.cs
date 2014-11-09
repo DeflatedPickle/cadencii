@@ -24,6 +24,7 @@ using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using Consts = cadencii.FormMainModel.Consts;
 using cadencii.core;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -149,7 +150,7 @@ namespace cadencii
                         System.Windows.Forms.Application.DoEvents();
                     }
                 } catch (Exception ex) {
-                    serr.println("FormMain#btnLeft_MouseDown; ex=" + ex);
+                    Logger.StdErr("FormMain#btnLeft_MouseDown; ex=" + ex);
                     Logger.write(typeof(FormMainImpl) + ".btnLeft_MouseDown; ex=" + ex + "\n");
                 }
                 mOverviewUpdateThread = null;
@@ -174,7 +175,7 @@ namespace cadencii
                         System.Windows.Forms.Application.DoEvents();
                     }
                 } catch (Exception ex) {
-                    serr.println("FormMain#btnRight_MouseDown; ex=" + ex);
+                    Logger.StdErr("FormMain#btnRight_MouseDown; ex=" + ex);
                     Logger.write(typeof(FormMainImpl) + ".btnRight_MouseDown; ex=" + ex + "\n");
                 }
                 mOverviewUpdateThread = null;
@@ -302,7 +303,7 @@ namespace cadencii
             for (; д; ) {
 #if DEBUG
                 count++;
-                sout.println("FormMain#updateOverview; count=" + count);
+                Logger.StdOut("FormMain#updateOverview; count=" + count);
 #endif
                 Thread.Sleep(100);
                 int key_width = EditorManager.keyWidth;

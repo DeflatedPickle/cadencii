@@ -64,7 +64,7 @@ namespace cadencii
                 try {
                     Marshal.FreeHGlobal(v);
                 } catch (Exception ex) {
-                    serr.println("MemoryManager#dispose; ex=" + ex);
+                    Logger.StdErr("MemoryManager#dispose; ex=" + ex);
                 }
             }
             mList.Clear();

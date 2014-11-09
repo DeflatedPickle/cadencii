@@ -16,7 +16,7 @@ using System.IO;
 using System.Collections.Generic;
 using cadencii;
 using cadencii.java.util;
-using cadencii.java.io;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {
@@ -45,7 +45,7 @@ namespace cadencii.vsq
             for (int j = 0; j < path_installed_singers.Length; j++) {
                 string ipath = path_installed_singers[j];
 #if DEBUG
-                sout.println("SingerConfigSys#.ctor; path_installed_singers[" + j + "]=" + path_installed_singers[j]);
+                Logger.StdOut("SingerConfigSys#.ctor; path_installed_singers[" + j + "]=" + path_installed_singers[j]);
 #endif
                 //TODO: ここでエラー起こる場合があるよ。SingerConfigSys::.ctor
                 //      実際にディレクトリがある場合にのみ，ファイルのリストアップをするようにした．
@@ -78,13 +78,13 @@ namespace cadencii.vsq
                     }
                 }
             } catch (Exception ex) {
-                serr.println("SingerConfigSys#.ctor; ex=" + ex);
+                Logger.StdErr("SingerConfigSys#.ctor; ex=" + ex);
             } finally {
                 if (fs != null) {
                     try {
                         fs.Close();
                     } catch (Exception ex2) {
-                        serr.println("SingerConfigSys#.ctor; ex2=" + ex2);
+                        Logger.StdErr("SingerConfigSys#.ctor; ex2=" + ex2);
                     }
                 }
             }

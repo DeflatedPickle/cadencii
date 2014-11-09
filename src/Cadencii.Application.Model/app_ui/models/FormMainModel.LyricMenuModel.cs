@@ -10,6 +10,7 @@ using System.Text;
 using System.Linq;
 using cadencii.java.util;
 using Cadencii.Gui;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -145,7 +146,7 @@ namespace cadencii
 					}
 				} catch (Exception ex) {
 					Logger.write(GetType () + ".menuLyricDictionary_Click; ex=" + ex + "\n");
-					serr.println("FormMain#menuLyricDictionary_Click; ex=" + ex);
+					Logger.StdErr("FormMain#menuLyricDictionary_Click; ex=" + ex);
 				} finally {
 					if (dlg != null) {
 						try {

@@ -3,6 +3,7 @@ using System.IO;
 using cadencii;
 using cadencii.xml;
 using NUnit.Framework;
+using Cadencii.Utilities;
 
 namespace cadencii
 {

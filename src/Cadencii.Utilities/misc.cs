@@ -17,50 +17,11 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Collections.Generic;
 
-namespace cadencii
+namespace Cadencii.Utilities
 {
 
     public static class Misc
     {
-        /// <summary>
-        /// Reflectionを利用して、インスタンスのディープなクローニングを行います。
-        /// クローン操作の対象はインスタンスのフィールドであり、値型のものは単なる代入を、
-        /// 参照型の物であってかつClone(void)メソッドが実装されているものはCloneしたものを、
-        /// それ以外は単に参照が代入されます
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static object obj_clone(object obj)
-        {
-            Type t = obj.GetType();
-            object ret;
-            if (t.IsValueType) {
-                return obj; //値型の場合
-            } else {
-                System.Reflection.MethodInfo mi = t.GetMethod("Clone", new Type[] { });
-                if (mi != null && (mi.ReturnType == typeof(object) || mi.ReturnType == t)) {
-                    // return値がobject型またはt型のCloneメソッドを持っている場合
-                    ret = mi.Invoke(obj, new object[] { });
-                } else {
-                    // Cloneメソッドが無い場合。型のフィールドを列挙してobj_cloneをRecursiveに呼び出す
-                    // 最初にコンストラクタを取得
-                    System.Reflection.ConstructorInfo ctor = t.GetConstructor(new Type[] { });
-                    if (ctor == null) {
-                        // 引数無しのコンストラクタが必要。無い場合はどうしようもないので例外を投げる
-                        throw new ApplicationException("obj_clone requires zero-argument constructor");
-                    }
-                    // インスタンスを作成
-                    ret = ctor.Invoke(new object[] { });
-                    // 全てのフィールドに対してobj_cloneを呼び、値をセットする
-                    foreach (System.Reflection.FieldInfo fi in t.GetFields()) {
-                        Type fieldtype = fi.FieldType;
-                        fi.SetValue(ret, obj_clone(obj));
-                    }
-                }
-                return ret;
-            }
-        }
-
         public static string getmd5(string s)
         {
             MD5 md5 = MD5.Create();

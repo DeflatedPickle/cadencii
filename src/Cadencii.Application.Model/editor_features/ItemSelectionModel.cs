@@ -12,6 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System.Collections.Generic;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -552,7 +553,7 @@ namespace cadencii
                     SelectedEventChanged.Invoke(typeof(ItemSelectionModel), ret);
                 }
             } catch (Exception ex) {
-                serr.println("ItemSelectionModel#checkSelectedItemExistence; ex=" + ex);
+                Logger.StdErr("ItemSelectionModel#checkSelectedItemExistence; ex=" + ex);
                 Logger.write(typeof(ItemSelectionModel) + ".checkSelectedItemExistence; ex=" + ex + "\n");
             }
         }

@@ -10,6 +10,7 @@ using System.Text;
 using System.Linq;
 using cadencii.java.util;
 using Cadencii.Gui;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -224,7 +225,7 @@ namespace cadencii
 				} catch (Exception ex) {
 					Logger.write(GetType () + ".menuFileOpenVsq_Click; ex=" + ex + "\n");
 					#if DEBUG
-					sout.println("FormMain#menuFileOpenVsq_Click; ex=" + ex);
+					Logger.StdOut("FormMain#menuFileOpenVsq_Click; ex=" + ex);
 					#endif
 					DialogManager.ShowMessageBox(
 						_("Invalid VSQ/VOCALOID MIDI file"),
@@ -334,7 +335,7 @@ namespace cadencii
 				} catch (Exception ex) {
 					Logger.write(GetType () + ".menuFileOpenUst_Click; ex=" + ex + "\n");
 					#if DEBUG
-					sout.println("FormMain#menuFileOpenUst_Click; ex=" + ex);
+					Logger.StdOut("FormMain#menuFileOpenUst_Click; ex=" + ex);
 					#endif
 				}
 			}
@@ -664,7 +665,7 @@ namespace cadencii
 				bool import_tempo = dlg.isTempo();
 				if (import_tempo) {
 					#if DEBUG
-					sout.println("FormMain#menuFileImportMidi_Click; sec_at_premeasure=" + sec_at_premeasure);
+					Logger.StdOut("FormMain#menuFileImportMidi_Click; sec_at_premeasure=" + sec_at_premeasure);
 					#endif
 					// 最初に、workにある全てのイベント・コントロールカーブ・ベジエ曲線をtempoのテンポテーブルに合うように、シフトする
 					//ShiftClockToMatchWith( work, copy_src, work.getSecFromClock( work.getPreMeasureClocks() ) );
@@ -741,7 +742,7 @@ namespace cadencii
 								}
 							}
 							#if DEBUG
-							sout.println("FormMain#menuFileImprotMidi_Click; not_closed_note=" + not_closed_note);
+							Logger.StdOut("FormMain#menuFileImprotMidi_Click; not_closed_note=" + not_closed_note);
 							#endif
 							if (((itemj.firstByte & 0xf0) == 0x90 && itemj.data.Length >= 2 && itemj.data[1] == 0) ||
 								((itemj.firstByte & 0xf0) == 0x80 && itemj.data.Length >= 2) ||
@@ -773,7 +774,7 @@ namespace cadencii
 									vid.type = VsqIDType.Anote;
 									vid.setLength(add_clock_off - add_clock_on);
 									#if DEBUG
-									sout.println("FormMain#menuFileImportMidi_Click; vid.Length=" + vid.getLength());
+									Logger.StdOut("FormMain#menuFileImportMidi_Click; vid.Length=" + vid.getLength());
 									#endif
 									string phrase = "a";
 									if (dlg.isLyric()) {
@@ -1012,7 +1013,7 @@ namespace cadencii
 				try {
 					string last_path = ApplicationGlobal.appConfig.getLastUsedPathOut("wav");
 					#if DEBUG
-					sout.println("FormMain#menuFileExportWave_Click; last_path=" + last_path);
+					Logger.StdOut("FormMain#menuFileExportWave_Click; last_path=" + last_path);
 					#endif
 					sfd = ApplicationUIHost.Create<UiSaveFileDialog> ();
 					sfd.SetSelectedFile(last_path);
@@ -1358,8 +1359,8 @@ namespace cadencii
 									vocaloid_nrpn_midievent = new List<MidiEvent>();
 								}
 								#if DEBUG
-								sout.println("menuFileExportMidi_Click");
-								sout.println("    vocaloid_nrpn_midievent.size()=" + vocaloid_nrpn_midievent.Count);
+								Logger.StdOut("menuFileExportMidi_Click");
+								Logger.StdOut("    vocaloid_nrpn_midievent.size()=" + vocaloid_nrpn_midievent.Count);
 								#endif
 
 								// midi eventを出力
@@ -1453,14 +1454,14 @@ namespace cadencii
 					ApplicationGlobal.appConfig.setLastUsedPathOut(file, ".xml");
 				} catch (Exception ex) {
 					Logger.write(GetType () + ".menuFileExportMusicXml_Click; ex=" + ex + "\n");
-					serr.println("FormMain#menuFileExportMusicXml_Click; ex=" + ex);
+					Logger.StdErr("FormMain#menuFileExportMusicXml_Click; ex=" + ex);
 				} finally {
 					if (dialog != null) {
 						try {
 							dialog.Dispose();
 						} catch (Exception ex2) {
 							Logger.write(GetType () + ".menuFileExportMusicXml_Click; ex=" + ex2 + "\n");
-							serr.println("FormMain#menuFileExportMusicXml_Click; ex2=" + ex2);
+							Logger.StdErr("FormMain#menuFileExportMusicXml_Click; ex2=" + ex2);
 						}
 					}
 				}
@@ -1656,7 +1657,7 @@ namespace cadencii
 						bw, vsq_track, oto_ini, vsq.TotalClocks, false);
 				} catch (Exception ex) {
 					Logger.write(GetType () + ".menuFileExportVxt_Click; ex=" + ex + "\n");
-					serr.println(GetType () + ".menuFileExportVxt_Click; ex=" + ex);
+					Logger.StdErr(GetType () + ".menuFileExportVxt_Click; ex=" + ex);
 				} finally {
 					if (bw != null) {
 						try {

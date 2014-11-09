@@ -11,13 +11,15 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
+
+
 #define MIDI_PRINT_TO_FILE
 using System;
 using System.IO;
 using System.Collections.Generic;
 using cadencii;
 using cadencii.java.util;
-using cadencii.java.io;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {
@@ -147,13 +149,13 @@ namespace cadencii.vsq
                 }
 #endif
             } catch (Exception ex) {
-                serr.println("MidiFile#.ctor; ex=" + ex);
+                Logger.StdErr("MidiFile#.ctor; ex=" + ex);
             } finally {
                 if (stream != null) {
                     try {
                         stream.Close();
                     } catch (Exception ex2) {
-                        serr.println("MidiFile#.ctor; ex2=" + ex2);
+                        Logger.StdErr("MidiFile#.ctor; ex2=" + ex2);
                     }
                 }
             }

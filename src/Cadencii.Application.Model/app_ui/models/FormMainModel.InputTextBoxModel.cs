@@ -24,7 +24,7 @@ namespace cadencii
 			public void mInputTextBox_KeyDown(Object sender, KeyEventArgs e)
 			{
 				#if DEBUG
-				sout.println("FormMain#mInputTextBox_KeyDown");
+				Logger.StdOut("FormMain#mInputTextBox_KeyDown");
 				#endif
 				bool shift = ((Keys) e.Modifiers & Keys.Shift) == Keys.Shift;
 				bool tab = (Keys) e.KeyCode == Keys.Tab;
@@ -158,7 +158,7 @@ namespace cadencii
 			public void mInputTextBox_KeyUp(Object sender, KeyEventArgs e)
 			{
 				#if DEBUG
-				sout.println("FormMain#mInputTextBox_KeyUp");
+				Logger.StdOut("FormMain#mInputTextBox_KeyUp");
 				#endif
 				bool flip = ((Keys) e.KeyCode == Keys.Up || (Keys) e.KeyCode == Keys.Down) && ((Keys) e.Modifiers == Keys.Alt);
 				bool hide = (Keys) e.KeyCode == Keys.Escape;
@@ -180,7 +180,7 @@ namespace cadencii
 			public void mInputTextBox_KeyPress(Object sender, Cadencii.Gui.KeyPressEventArgs e)
 			{
 				#if DEBUG
-				sout.println("FormMain#mInputTextBox_KeyPress");
+				Logger.StdOut("FormMain#mInputTextBox_KeyPress");
 				#endif
 				//           Enter                                  Tab
 				e.Handled = (e.KeyChar == Convert.ToChar(13)) || (e.KeyChar == Convert.ToChar(09));

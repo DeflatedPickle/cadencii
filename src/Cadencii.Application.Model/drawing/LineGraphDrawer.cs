@@ -175,7 +175,7 @@ namespace cadencii
             }
 
 #if DEBUG
-            sout.println("LineGraphDrawer#mMaxPoints=" + mMaxPoints);
+            Logger.StdOut("LineGraphDrawer#mMaxPoints=" + mMaxPoints);
 #endif
             mFirst = true;
         }

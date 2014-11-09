@@ -23,7 +23,7 @@ namespace cadencii
 			get {
 				return (string path_image, string singer_name) => {
 #if DEBUG
-					sout.println ("IconParader#createIconImage; path_image=" + path_image);
+					Logger.StdOut ("IconParader#createIconImage; path_image=" + path_image);
 #endif
 					Image ret = null;
 					if (System.IO.File.Exists (path_image)) {
@@ -33,13 +33,13 @@ namespace cadencii
 							System.Drawing.Image img = System.Drawing.Image.FromStream (fs);
 							ret.NativeImage = img;
 						} catch (Exception ex) {
-							serr.println ("IconParader#createIconImage; ex=" + ex);
+							Logger.StdErr ("IconParader#createIconImage; ex=" + ex);
 						} finally {
 							if (fs != null) {
 								try {
 									fs.Close ();
 								} catch (Exception ex2) {
-									serr.println ("IconParader#createIconImage; ex2=" + ex2);
+									Logger.StdErr ("IconParader#createIconImage; ex2=" + ex2);
 								}
 							}
 						}

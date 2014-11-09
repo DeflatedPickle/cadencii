@@ -20,6 +20,7 @@ using cadencii.media;
 using cadencii.vsq;
 
 using cadencii.core;
+using Cadencii.Utilities;
 
 
 namespace cadencii
@@ -173,7 +174,7 @@ namespace cadencii
         public void bgWork_DoWork(Object sender, DoWorkEventArgs e)
         {
 #if DEBUG
-            sout.println("FormGenerateKeySound#bgWork_DoWork");
+            Logger.StdOut("FormGenerateKeySound#bgWork_DoWork");
 #endif
             PrepareStartArgument arg = (PrepareStartArgument)e.Argument;
             string singer = arg.singer;
@@ -187,7 +188,7 @@ namespace cadencii
 
             for (int i = 0; i < 127; i++) {
                 string path = Path.Combine(dir, i + ".wav");
-                sout.println("writing \"" + path + "\" ...");
+                Logger.StdOut("writing \"" + path + "\" ...");
                 if (replace || (!replace && !File.Exists(path))) {
                     try {
                         FormGenerateKeySoundStatic.GenerateSinglePhone(i, singer, path, amp);
@@ -198,16 +199,16 @@ namespace cadencii
                                 wv.monoralize();
                                 wv.write(path);
                             } catch (Exception ex0) {
-                                serr.println("FormGenerateKeySound#bgWork_DoWork; ex0=" + ex0);
+                                Logger.StdErr("FormGenerateKeySound#bgWork_DoWork; ex0=" + ex0);
                                 Logger.write(typeof(FormGenerateKeySound) + ".bgWork_DoWork; ex=" + ex0 + "\n");
                             }
                         }
                     } catch (Exception ex) {
                         Logger.write(typeof(FormGenerateKeySound) + ".bgWork_DoWork; ex=" + ex + "\n");
-                        serr.println("FormGenerateKeySound#bgWork_DoWork; ex=" + ex);
+                        Logger.StdErr("FormGenerateKeySound#bgWork_DoWork; ex=" + ex);
                     }
                 }
-                sout.println(" done");
+                Logger.StdOut(" done");
                 if (m_cancel_required) {
                     m_cancel_required = false;
                     break;

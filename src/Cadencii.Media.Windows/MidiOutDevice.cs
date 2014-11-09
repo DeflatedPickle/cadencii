@@ -119,7 +119,7 @@ namespace cadencii.media
                 //}
                 win32.midiOutUnprepareHeader(m_handle, ref hdr, size);
             } catch (Exception ex) {
-                serr.println("MidiOutDevice#SendLong; ex=" + ex);
+                Logger.StdErr("MidiOutDevice#SendLong; ex=" + ex);
             } finally {
                 if (ptrData != IntPtr.Zero) {
                     Marshal.FreeHGlobal(ptrData);

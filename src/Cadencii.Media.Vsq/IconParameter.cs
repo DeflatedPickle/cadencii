@@ -14,7 +14,7 @@
 using System;
 using System.IO;
 using System.Text;
-using cadencii.java.io;
+using Cadencii.Utilities;
 
 namespace cadencii.vsq
 {
@@ -161,55 +161,55 @@ namespace cadencii.vsq
                         try {
                             length = int.Parse(value);
                         } catch (Exception ex) {
-                            serr.println("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
+                            Logger.StdErr("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
                         }
                     } else if (name == "StartDepth") {
                         try {
                             startDepth = int.Parse(value);
                         } catch (Exception ex) {
-                            serr.println("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
+                            Logger.StdErr("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
                         }
                     } else if (name == "EndDepth") {
                         try {
                             endDepth = int.Parse(value);
                         } catch (Exception ex) {
-                            serr.println("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
+                            Logger.StdErr("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
                         }
                     } else if (name == "StartRate") {
                         try {
                             startRate = int.Parse(value);
                         } catch (Exception ex) {
-                            serr.println("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
+                            Logger.StdErr("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
                         }
                     } else if (name == "EndRate") {
                         try {
                             endRate = int.Parse(value);
                         } catch (Exception ex) {
-                            serr.println("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
+                            Logger.StdErr("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
                         }
                     } else if (name == "StartDyn") {
                         try {
                             startDyn = int.Parse(value);
                         } catch (Exception ex) {
-                            serr.println("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
+                            Logger.StdErr("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
                         }
                     } else if (name == "EndDyn") {
                         try {
                             endDyn = int.Parse(value);
                         } catch (Exception ex) {
-                            serr.println("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
+                            Logger.StdErr("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
                         }
                     } else if (name == "Duration") {
                         try {
                             duration = int.Parse(value);
                         } catch (Exception ex) {
-                            serr.println("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
+                            Logger.StdErr("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
                         }
                     } else if (name == "Depth") {
                         try {
                             depth = int.Parse(value);
                         } catch (Exception ex) {
-                            serr.println("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
+                            Logger.StdErr("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
                         }
                     } else if (name == "DynBPNum") {
                         strDynBPNum = value;
@@ -235,7 +235,7 @@ namespace cadencii.vsq
                 rateBP = getBPListFromText(strRateBPNum, strRateBPX, strRateBPY);
                 depthBP = getBPListFromText(strDepthBPNum, strDepthBPX, strDepthBPY);
             } catch (Exception ex) {
-                serr.println("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
+                Logger.StdErr("org.kbinani.vsq.IconParameter#.ctor; ex=" + ex);
             } finally {
                 if (sr != null) {
                     try {
@@ -263,7 +263,7 @@ namespace cadencii.vsq
             try {
                 num = int.Parse(strNum);
             } catch (Exception ex) {
-                serr.println("org.kbinani.vsq.IconParameter.getBPListFromText; ex=" + ex);
+                Logger.StdErr("org.kbinani.vsq.IconParameter.getBPListFromText; ex=" + ex);
                 num = 0;
             }
             string[] sx = PortUtil.splitString(strBPX, ',');
@@ -277,7 +277,7 @@ namespace cadencii.vsq
                         x[i] = (float)double.Parse(sx[i]);
                         y[i] = int.Parse(sy[i]);
                     } catch (Exception ex) {
-                        serr.println("org.kbinani.vsq.IconParameter.getBPListFromText; ex=" + ex);
+                        Logger.StdErr("org.kbinani.vsq.IconParameter.getBPListFromText; ex=" + ex);
                     }
                 }
                 ret = new VibratoBPList(x, y);

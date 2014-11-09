@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using cadencii;
 using cadencii.core2;
+using Cadencii.Utilities;
 
 namespace cadencii.media
 {
@@ -131,7 +132,7 @@ namespace cadencii.media
                 MIDIINCAPS m = new MIDIINCAPS();
                 uint r = win32.midiInGetDevCaps( i, ref m, (uint)Marshal.SizeOf( m ) );
 #if DEBUG
-                sout.println( "MidiInDevice#GetMidiDevices; #" + i + "; r=" + r + "; m=" + m );
+                Logger.StdOut( "MidiInDevice#GetMidiDevices; #" + i + "; r=" + r + "; m=" + m );
 #endif
                 ret.Add( m );
             }
@@ -194,7 +195,7 @@ namespace cadencii.media
                                     } else if (b0 == 0xf2) {
                                         // song position pointer
 #if DEBUG
-                                        sout.println("MidiInDevice#MidiInProc; 0xf2; b0=" + PortUtil.toHexString(b0, 2) + "; b1=" + PortUtil.toHexString(b1, 2) + "; b2=" + PortUtil.toHexString(b2, 2));
+                                        Logger.StdOut("MidiInDevice#MidiInProc; 0xf2; b0=" + PortUtil.toHexString(b0, 2) + "; b1=" + PortUtil.toHexString(b1, 2) + "; b2=" + PortUtil.toHexString(b2, 2));
 #endif
                                     }
                                 }

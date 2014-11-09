@@ -18,11 +18,11 @@ using System.IO;
 using System.Collections.Generic;
 using System.Text;
 using Cadencii.Gui;
-using cadencii.java.io;
 using cadencii.java.util;
 using cadencii.media;
 using cadencii.vsq;
 using cadencii.utau;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -219,7 +219,7 @@ namespace cadencii
             string straight_synth = Path.Combine(PortUtil.getApplicationStartupPath(), STRAIGHT_SYNTH);
             if (!System.IO.File.Exists(straight_synth)) {
 #if DEBUG
-                sout.println("VConnectWaveGenerator#begin; \"" + straight_synth + "\" does not exists");
+                Logger.StdOut("VConnectWaveGenerator#begin; \"" + straight_synth + "\" does not exists");
 #endif
                 exitBegin();
                 return;
@@ -232,12 +232,12 @@ namespace cadencii
                 total_samples += mQueue[i].abstractSamples;
             }
 #if DEBUG
-            sout.println("VConnectWaveGenerator#begin; total_samples=" + total_samples);
+            Logger.StdOut("VConnectWaveGenerator#begin; total_samples=" + total_samples);
 #endif
 
             mTrimRemain = (int)(mTrimMillisec / 1000.0 * mSampleRate); //先頭から省かなければならないサンプル数の残り
 #if DEBUG
-            sout.println("VConnectWaveGenerator#begin; m_trim_remain=" + mTrimRemain);
+            Logger.StdOut("VConnectWaveGenerator#begin; m_trim_remain=" + mTrimRemain);
 #endif
             long max_next_wave_start = mVsqLengthSamples;
 
@@ -277,7 +277,7 @@ namespace cadencii
 
                 string tmp_file = Path.Combine(tmp_dir, "tmp.usq");
 #if DEBUG
-                sout.println("VConnectWaveGenerator#begin; tmp_file=" + tmp_file);
+                Logger.StdOut("VConnectWaveGenerator#begin; tmp_file=" + tmp_file);
 #endif
                 string hash = "";
                 StreamWriter sw = null;
@@ -286,7 +286,7 @@ namespace cadencii
                     prepareMetaText(sw, queue.track, queue.oto_ini, queue.endClock);
                 } catch (Exception ex) {
 #if DEBUG
-                    sout.println("VConnectWaveGenerator#begin; ex=" + ex);
+                    Logger.StdOut("VConnectWaveGenerator#begin; ex=" + ex);
 #endif
                 } finally {
                     if (sw != null) {
@@ -294,7 +294,7 @@ namespace cadencii
                             sw.Close();
                         } catch (Exception ex2) {
 #if DEBUG
-                            serr.println("VConnectWaveGenerator#begin; ex2=" + ex2);
+                            Logger.StdErr("VConnectWaveGenerator#begin; ex2=" + ex2);
 #endif
                         }
                     }
@@ -303,7 +303,7 @@ namespace cadencii
                     hash = PortUtil.getMD5(tmp_file).Replace("_", "");
                 } catch (Exception ex) {
 #if DEBUG
-                    serr.println("VConnectWaveGenerator#begin; ex=" + ex);
+                    Logger.StdErr("VConnectWaveGenerator#begin; ex=" + ex);
 #endif
                 }
                 try {
@@ -319,7 +319,7 @@ namespace cadencii
                         process.StartInfo.FileName = straight_synth;
                         process.StartInfo.Arguments = "\"" + tmp_file + ".usq\" \"" + tmp_file + ".wav\"";
 #if DEBUG
-                        sout.println("VConnectWaveGenerator#begin; StartInfo.FileName=" + process.StartInfo.FileName + "; .Arguments=" + process.StartInfo.Arguments);
+                        Logger.StdOut("VConnectWaveGenerator#begin; StartInfo.FileName=" + process.StartInfo.FileName + "; .Arguments=" + process.StartInfo.Arguments);
 #endif
                         process.StartInfo.WorkingDirectory = PortUtil.getApplicationStartupPath();
                         process.StartInfo.CreateNoWindow = true;
@@ -396,7 +396,7 @@ namespace cadencii
 
                     if (cached_data_length == 0) {
 #if DEBUG
-                        sout.println("VConnectWaveGenerator#begin; cache is null; queue=" + queue.__DEBUG__toString());
+                        Logger.StdOut("VConnectWaveGenerator#begin; cache is null; queue=" + queue.__DEBUG__toString());
 #endif
                         // キャッシュが残っていない場合
                         int remain = wave_samples;
@@ -453,7 +453,7 @@ namespace cadencii
                         }
                     } else {
 #if DEBUG
-                        sout.println("VConnectWaveGenerator#begin; cache is NOT null");
+                        Logger.StdOut("VConnectWaveGenerator#begin; cache is NOT null");
 #endif
                         // キャッシュが残っている場合
                         int rendered_length = 0;
@@ -463,7 +463,7 @@ namespace cadencii
                         if (rendered_length < cached_data_length) {
                             if (next_wave_start < queue.startSample + cached_data_length) {
 #if DEBUG
-                                sout.println("VConnectWaveGenerator#begin; (i) or (ii);" + queue.__DEBUG__toString());
+                                Logger.StdOut("VConnectWaveGenerator#begin; (i) or (ii);" + queue.__DEBUG__toString());
 #endif
                                 // PATTERN A
                                 //  ----[*****************************]----------------->  cache
@@ -513,7 +513,7 @@ namespace cadencii
                                 }
                             } else {
 #if DEBUG
-                                sout.println("VConnectWaveGenerator#begin; (iii);" + queue.__DEBUG__toString());
+                                Logger.StdOut("VConnectWaveGenerator#begin; (iii);" + queue.__DEBUG__toString());
 #endif
                                 // PATTERN C
                                 //  ----[*****************************]----------------->   cache
@@ -564,7 +564,7 @@ namespace cadencii
                         } else {
                             if (next_wave_start < queue.startSample + cached_data_length) {
 #if DEBUG
-                                sout.println("VConnectWaveGenerator#begin; (iv);" + queue.__DEBUG__toString());
+                                Logger.StdOut("VConnectWaveGenerator#begin; (iv);" + queue.__DEBUG__toString());
 #endif
                                 // PATTERN D
                                 //  ----[*************]--------------------------------->  cache
@@ -630,7 +630,7 @@ namespace cadencii
                                 }
                             } else if (next_wave_start < queue.startSample + rendered_length) {
 #if DEBUG
-                                sout.println("VConnectWaveGenerator#begin; (v);" + queue.__DEBUG__toString());
+                                Logger.StdOut("VConnectWaveGenerator#begin; (v);" + queue.__DEBUG__toString());
 #endif
                                 // PATTERN E
                                 //  ----[*************]--------------------------------->  cache
@@ -684,7 +684,7 @@ namespace cadencii
                                 }
                             } else {
 #if DEBUG
-                                sout.println("VConnectWaveGenerator#begin; (vi);" + queue.__DEBUG__toString());
+                                Logger.StdOut("VConnectWaveGenerator#begin; (vi);" + queue.__DEBUG__toString());
 #endif
                                 // PATTERN F
                                 //  ----[*************]--------------------------------->  cache
@@ -743,13 +743,13 @@ namespace cadencii
                         }
                     }
                 } catch (Exception ex) {
-                    serr.println("VConnectWaveGenerator#begin; ex=" + ex);
+                    Logger.StdErr("VConnectWaveGenerator#begin; ex=" + ex);
                 } finally {
                     if (wr != null) {
                         try {
                             wr.close();
                         } catch (Exception ex2) {
-                            serr.println("VConnectWaveGenerator#begin; ex2=" + ex2);
+                            Logger.StdErr("VConnectWaveGenerator#begin; ex2=" + ex2);
                         }
                         wr = null;
                     }
@@ -768,7 +768,7 @@ namespace cadencii
             }
             int tremain = (int)(mTotalSamples - mTotalAppend);
 #if DEBUG
-            sout.println("UtauRenderingRunner#run; tremain=" + tremain);
+            Logger.StdOut("UtauRenderingRunner#run; tremain=" + tremain);
 #endif
             while (tremain > 0 && !state.isCancelRequested()) {
                 int tlength = tremain > BUFLEN ? BUFLEN : tremain;

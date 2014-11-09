@@ -20,6 +20,7 @@ using cadencii.dsp.v2.generator;
 using cadencii.media;
 using cadencii.utau;
 using cadencii.vsq;
+using Cadencii.Utilities;
 
 namespace cadencii.synthesizer
 {
@@ -135,7 +136,7 @@ namespace cadencii.synthesizer
                 try {
                     PortUtil.deleteFile(file);
                 } catch (Exception ex) {
-                    serr.println("UtauWaveGenerator#clearCache; ex=" + ex);
+                    Logger.StdErr("UtauWaveGenerator#clearCache; ex=" + ex);
                     Logger.write("UtauWaveGenerator::clearCache; ex=" + ex + "\n");
                 }
             }
@@ -388,7 +389,7 @@ namespace cadencii.synthesizer
                             try {
                                 PortUtil.deleteFile(delfile);
                             } catch (Exception ex) {
-                                serr.println("UtauWaveGenerator#begin; ex=" + ex);
+                                Logger.StdErr("UtauWaveGenerator#begin; ex=" + ex);
                                 Logger.write("UtauWaveGenerator#begin(long): ex=" + ex + "\n");
                             }
                             cache_.Remove(delkey);
@@ -706,7 +707,7 @@ namespace cadencii.synthesizer
                 }
                 while (Rendered(session_.buffer_left_, session_.buffer_right_, BUFLEN)) ;
             } catch (Exception ex) {
-                serr.println("UtauWaveGenerator.begin; ex=" + ex);
+                Logger.StdErr("UtauWaveGenerator.begin; ex=" + ex);
                 Logger.write(typeof(UtauWaveGenerator) + ".begin; ex=" + ex + "\n");
             }
         }

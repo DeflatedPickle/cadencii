@@ -19,7 +19,6 @@ using System.IO;
 using System.Text;
 using Microsoft.CSharp;
 using cadencii.apputil;
-using cadencii.java.io;
 using cadencii.java.util;
 using cadencii.vsq;
 //
@@ -27,6 +26,7 @@ using cadencii.xml;
 using Cadencii.Gui;
 using Keys = Cadencii.Gui.Keys;
 using cadencii.core;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -1060,7 +1060,7 @@ namespace cadencii
 				int center = (firsty + endy) / 2;
 				ret = center - string_desty;
 			} catch (Exception ex) {
-				serr.println("Util#getStringDrawOffset; ex=" + ex);
+				Logger.StdErr("Util#getStringDrawOffset; ex=" + ex);
 			} finally {
 				if (b != null) {
 					b.Dispose();

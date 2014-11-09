@@ -14,7 +14,7 @@
 using System;
 using System.IO;
 using cadencii;
-using cadencii.java.io;
+using Cadencii.Utilities;
 
 namespace cadencii.media
 {
@@ -121,7 +121,7 @@ namespace cadencii.media
         public bool open(string file)
         {
 #if DEBUG
-            sout.println("WaveReader#open; file=" + file);
+            Logger.StdOut("WaveReader#open; file=" + file);
 #endif
             if (m_opened) {
                 m_stream.Close();
@@ -134,7 +134,7 @@ namespace cadencii.media
             if (buf[0] != 'R' || buf[1] != 'I' || buf[2] != 'F' || buf[3] != 'F') {
                 m_stream.Close();
 #if DEBUG
-                serr.println("WaveReader#open; header error(RIFF)");
+                Logger.StdErr("WaveReader#open; header error(RIFF)");
 #endif
                 return false;
             }
@@ -147,7 +147,7 @@ namespace cadencii.media
             if (buf[0] != 'W' || buf[1] != 'A' || buf[2] != 'V' || buf[3] != 'E') {
                 m_stream.Close();
 #if DEBUG
-                serr.println("WaveReader#open; header error(WAVE)");
+                Logger.StdErr("WaveReader#open; header error(WAVE)");
 #endif
                 return false;
             }
@@ -157,7 +157,7 @@ namespace cadencii.media
             if (buf[0] != 'f' || buf[1] != 'm' || buf[2] != 't' || buf[3] != ' ') {
                 m_stream.Close();
 #if DEBUG
-                serr.println("WaveReader#open; header error(fmt )");
+                Logger.StdErr("WaveReader#open; header error(fmt )");
 #endif
                 return false;
             }
@@ -174,14 +174,14 @@ namespace cadencii.media
             m_stream.Read(buf, 0, 2);
             m_channel = buf[1] << 8 | buf[0];
 #if DEBUG
-            sout.println("WaveReader#open; m_channel=" + m_channel);
+            Logger.StdOut("WaveReader#open; m_channel=" + m_channel);
 #endif
 
             // サンプリングレート
             m_stream.Read(buf, 0, 4);
             m_sample_per_sec = (int)PortUtil.make_uint32_le(buf);
 #if DEBUG
-            sout.println("WaveReader#open; m_sample_per_sec=" + m_sample_per_sec);
+            Logger.StdOut("WaveReader#open; m_sample_per_sec=" + m_sample_per_sec);
 #endif
 
             // データ速度
@@ -195,7 +195,7 @@ namespace cadencii.media
             int bit_per_sample = buf[1] << 8 | buf[0];
             m_byte_per_sample = bit_per_sample / 8;
 #if DEBUG
-            sout.println("WaveReader#open; m_byte_per_sample=" + m_byte_per_sample);
+            Logger.StdOut("WaveReader#open; m_byte_per_sample=" + m_byte_per_sample);
 #endif
 
             // 拡張部分
@@ -207,7 +207,7 @@ namespace cadencii.media
             if (buf[0] != 'd' || buf[1] != 'a' || buf[2] != 't' || buf[3] != 'a') {
                 m_stream.Close();
 #if DEBUG
-                serr.println("WaveReader#open; header error (data)");
+                Logger.StdErr("WaveReader#open; header error (data)");
 #endif
                 return false;
             }
@@ -217,7 +217,7 @@ namespace cadencii.media
             int size = (int)PortUtil.make_uint32_le(buf);
             m_total_samples = size / (m_channel * m_byte_per_sample);
 #if DEBUG
-            sout.println("WaveReader#open; m_total_samples=" + m_total_samples + "; total sec=" + (m_total_samples / (double)m_sample_per_sec));
+            Logger.StdOut("WaveReader#open; m_total_samples=" + m_total_samples + "; total sec=" + (m_total_samples / (double)m_sample_per_sec));
 #endif
 
             m_opened = true;
@@ -385,7 +385,7 @@ namespace cadencii.media
         public void close()
         {
 #if DEBUG
-            sout.println("WaveReader#close; m_file=" + m_file);
+            Logger.StdOut("WaveReader#close; m_file=" + m_file);
 #endif
             m_opened = false;
             if (m_stream != null) {

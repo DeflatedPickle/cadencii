@@ -117,7 +117,7 @@ namespace cadencii
                     DelegateArgIntReturnVoid deleg = new DelegateArgIntReturnVoid(setTotalProgressUnsafe);
                     this.Invoke(deleg, percentage);
                 } catch (Exception ex) {
-                    serr.println(typeof(FormWorkerUi) + ".setTotalProgress; ex=" + ex);
+                    Logger.StdErr(typeof(FormWorkerUi) + ".setTotalProgress; ex=" + ex);
                 }
             } else {
                 setTotalProgressUnsafe(percentage);
@@ -160,7 +160,7 @@ namespace cadencii
                     DelegateArgStringReturnVoid deleg = new DelegateArgStringReturnVoid(setTitleUnsafe);
                     this.Invoke(deleg, p);
                 } catch (Exception ex) {
-                    serr.println(typeof(FormWorkerUi) + ".setTitle; ex=" + ex);
+                    Logger.StdErr(typeof(FormWorkerUi) + ".setTitle; ex=" + ex);
                 }
             } else {
                 setTitleUnsafe(p);
@@ -178,7 +178,7 @@ namespace cadencii
                     DelegateArgStringReturnVoid deleg = new DelegateArgStringReturnVoid(setTextUnsafe);
                     this.Invoke(deleg, p);
                 } catch (Exception ex) {
-                    serr.println(typeof(FormWorkerUi) + ".setText; ex=" + ex);
+                    Logger.StdErr(typeof(FormWorkerUi) + ".setText; ex=" + ex);
                 }
             } else {
                 setTextUnsafe(p);

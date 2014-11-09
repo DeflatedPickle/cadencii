@@ -14,6 +14,7 @@
 using System;
 using System.Text;
 using System.Runtime.InteropServices;
+using Cadencii.Utilities;
 
 namespace cadencii.media
 {
@@ -251,7 +252,7 @@ namespace cadencii.media
                 Close();
             }
             this.m_filename = filename;
-            m_alias = cadencii.Misc.getmd5(m_filename);
+            m_alias = Misc.getmd5(m_filename);
 #if DEBUG
             Console.WriteLine("    m_alias=" + m_alias);
 #endif

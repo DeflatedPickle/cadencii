@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using cadencii.media;
 using cadencii.vsq;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -29,7 +30,7 @@ namespace cadencii
 		public void StartPreview()
 		{
 			#if DEBUG
-			sout.println("FormMain#EditorManager_PreviewStarted");
+			Logger.StdOut("FormMain#EditorManager_PreviewStarted");
 			#endif
 			EditorManager.mAddingEvent = null;
 			int selected = EditorManager.Selected;
@@ -47,7 +48,7 @@ namespace cadencii
 		public void AbortPreview()
 		{
 			#if DEBUG
-			sout.println("FormMain#EditorManager_PreviewAborted");
+			Logger.StdOut("FormMain#EditorManager_PreviewAborted");
 			#endif
 			form.stripBtnPlay.ImageKey = "control.png";
 			form.stripBtnPlay.Text = _("Play");

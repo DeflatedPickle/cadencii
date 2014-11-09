@@ -44,7 +44,7 @@ namespace cadencii
             for (int i = 0; i < amount; i++) {
                 // 中止処理後にreportCompleteを送ってはいけない
                 if (receiver.isCancelRequested()) {
-                    sout.println("TestFormWorker#testMethod; cancel requested");
+                    Logger.StdOut("TestFormWorker#testMethod; cancel requested");
                     return;
                 }
                 receiver.reportProgress(proc);
@@ -52,7 +52,7 @@ namespace cadencii
                 proc += wait_ms;
             }
             receiver.reportComplete();
-            sout.println("TestFormWorker#testMethod; job done");
+            Logger.StdOut("TestFormWorker#testMethod; job done");
         }
     }
 

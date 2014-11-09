@@ -20,6 +20,7 @@ using cadencii;
 using cadencii.java.util;
 
 using Cadencii.Gui;
+using Cadencii.Utilities;
 
 
 namespace cadencii
@@ -127,13 +128,13 @@ namespace cadencii
             // インデックスを取得
             int index = listPresets.SelectedIndex;
 #if DEBUG
-            sout.println("FormVibratoPreset#listPresets_SelectedIndexChanged; index=" + index);
+            Logger.StdOut("FormVibratoPreset#listPresets_SelectedIndexChanged; index=" + index);
 #endif
 
             // 範囲外ならbailout
             if ((index < 0) || (mHandles.Count <= index)) {
 #if DEBUG
-                sout.println("FormVibratoPreset#listPresets_SelectedIndexChanged; bail-out, mSelected -> null; index=" + index);
+                Logger.StdOut("FormVibratoPreset#listPresets_SelectedIndexChanged; bail-out, mSelected -> null; index=" + index);
 #endif
                 mSelected = null;
                 return;
@@ -568,7 +569,7 @@ namespace cadencii
             int size = mHandles.Count;
             int delta = size - listPresets.Items.Count;
 #if DEBUG
-            sout.println("FormVibratoPreset#updateStatus; delta=" + delta);
+            Logger.StdOut("FormVibratoPreset#updateStatus; delta=" + delta);
 #endif
             if (delta > 0) {
                 for (int i = 0; i < delta; i++) {
@@ -591,11 +592,11 @@ namespace cadencii
                 old_select = size - 1;
             }
 #if DEBUG
-            sout.println("FormVibratoPreset#updateStatus; A; old_selected=" + old_select);
+            Logger.StdOut("FormVibratoPreset#updateStatus; A; old_selected=" + old_select);
 #endif
             if (old_select >= 0) {
 #if DEBUG
-                sout.println("FormVibratoPreset#updateStatus; B; old_selected=" + old_select);
+                Logger.StdOut("FormVibratoPreset#updateStatus; B; old_selected=" + old_select);
 #endif
                 listPresets.SelectedIndex = old_select;
             }

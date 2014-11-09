@@ -407,13 +407,13 @@ namespace cadencii
                     aEffect.Dispatch(AEffectOpcodes.effMainsChanged, 0, 0, IntPtr.Zero, 0);
                     lpEvents.Clear();
                 } catch (Exception ex) {
-                    serr.println("VocaloidDriver#startRendering; ex=" + ex);
+                    Logger.StdErr("VocaloidDriver#startRendering; ex=" + ex);
                 } finally {
                     if (mman != null) {
                         try {
                             mman.dispose();
                         } catch (Exception ex2) {
-                            serr.println("VocaloidDriver#startRendering; ex2=" + ex2);
+                            Logger.StdErr("VocaloidDriver#startRendering; ex2=" + ex2);
                         }
                     }
                 }

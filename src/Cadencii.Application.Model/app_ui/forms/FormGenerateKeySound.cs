@@ -3,6 +3,7 @@ using cadencii.vsq;
 using cadencii.core;
 using System.IO;
 using cadencii.media;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -85,7 +86,7 @@ namespace cadencii
                     PortUtil.createDirectory(tempdir);
                 } catch (Exception ex) {
                     Logger.write(typeof(FormGenerateKeySound) + ".GenerateSinglePhone; ex=" + ex + "\n");
-                    serr.println("Program#GenerateSinglePhone; ex=" + ex);
+                    Logger.StdErr("Program#GenerateSinglePhone; ex=" + ex);
                     return;
                 }
             }
@@ -99,14 +100,14 @@ namespace cadencii
                 generator.setReceiver(receiver);
 				generator.setGlobalConfig(ApplicationGlobal.appConfig);
 #if DEBUG
-                sout.println("FormGenerateKeySound#GenerateSinglePhone; sample_rate=" + sample_rate);
+                Logger.StdOut("FormGenerateKeySound#GenerateSinglePhone; sample_rate=" + sample_rate);
 #endif
                 generator.init(vsq, 1, 0, vsq.TotalClocks, sample_rate);
                 double total_sec = vsq.getSecFromClock(vsq.TotalClocks) + 1.0;
                 WorkerStateImp state = new WorkerStateImp();
                 generator.begin((long)(total_sec * sample_rate), state);
             } catch (Exception ex) {
-                serr.println("FormGenerateKeySound#GenerateSinglePhone; ex=" + ex);
+                Logger.StdErr("FormGenerateKeySound#GenerateSinglePhone; ex=" + ex);
                 Logger.write(typeof(FormGenerateKeySound) + ".GenerateSinglePhone; ex=" + ex + "\n");
             } finally {
                 if (ww != null) {
@@ -114,7 +115,7 @@ namespace cadencii
                         ww.close();
                     } catch (Exception ex2) {
                         Logger.write(typeof(FormGenerateKeySound) + ".GenerateSinglePhone; ex=" + ex2 + "\n");
-                        serr.println("FormGenerateKeySound#GenerateSinglePhone; ex2=" + ex2);
+                        Logger.StdErr("FormGenerateKeySound#GenerateSinglePhone; ex2=" + ex2);
                     }
                 }
             }

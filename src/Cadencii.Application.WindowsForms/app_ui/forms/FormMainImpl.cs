@@ -28,6 +28,7 @@ using cadencii.ui;
 
 using Consts = cadencii.FormMainModel.Consts;
 using cadencii.core;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -418,7 +419,7 @@ namespace cadencii
                             updateBgmMenuState();
                         } catch (Exception ex) {
                             Logger.write(typeof(FormMainImpl) + ".ctor; ex=" + ex + "\n");
-                            serr.println("FormMain#.ctor; ex=" + ex);
+                            Logger.StdErr("FormMain#.ctor; ex=" + ex);
                         }
                     }
                 }
@@ -1418,7 +1419,7 @@ namespace cadencii
         public void updatePropertyPanelState(PanelState state)
         {
 #if DEBUG
-            sout.println("FormMain#updatePropertyPanelState; state=" + state);
+            Logger.StdOut("FormMain#updatePropertyPanelState; state=" + state);
 #endif
             if (state == PanelState.Docked) {
                 mPropertyPanelContainer.addComponent(EditorManager.propertyPanel);
@@ -1434,7 +1435,7 @@ namespace cadencii
                 }
                 splitContainerProperty.DividerLocation = (w);
 #if DEBUG
-                sout.println("FormMain#updatePropertyPanelState; state=Docked; w=" + w);
+                Logger.StdOut("FormMain#updatePropertyPanelState; state=Docked; w=" + w);
 #endif
                 EditorManager.editorConfig.PropertyWindowStatus.IsMinimized = true;
                 EditorManager.propertyWindow.getUi().hideWindow();
@@ -1880,7 +1881,7 @@ namespace cadencii
         public void processSpecialShortcutKey(KeyEventArgs e, bool onPreviewKeyDown)
         {
 #if DEBUG
-            sout.println("FormMain#processSpecialShortcutKey");
+            Logger.StdOut("FormMain#processSpecialShortcutKey");
 #endif
             // 歌詞入力用のテキストボックスが表示されていたら，何もしない
             if (EditorManager.InputTextBox.Enabled) {
@@ -1899,12 +1900,12 @@ namespace cadencii
                     if (stroke == holder.shortcut) {
                         try {
 #if DEBUG
-                            sout.println("FormMain#processSpecialShortcutKey; perform click: name=" + holder.menu.Name);
+                            Logger.StdOut("FormMain#processSpecialShortcutKey; perform click: name=" + holder.menu.Name);
 #endif
                             holder.menu.PerformClick();
                         } catch (Exception ex) {
                             Logger.write(typeof(FormMainImpl) + ".processSpecialShortcutKey; ex=" + ex + "\n");
-                            serr.println("FormMain#processSpecialShortcutKey; ex=" + ex);
+                            Logger.StdErr("FormMain#processSpecialShortcutKey; ex=" + ex);
                         }
                         if ((Keys) e.KeyCode == Keys.Tab) {
                             pictPianoRoll.Focus();
@@ -1916,7 +1917,7 @@ namespace cadencii
 
             if ((Keys) e.Modifiers != Keys.None) {
 #if DEBUG
-                sout.println("FormMain#processSpecialShortcutKey; bailout with (modifier != VK_UNDEFINED)");
+                Logger.StdOut("FormMain#processSpecialShortcutKey; bailout with (modifier != VK_UNDEFINED)");
 #endif
                 return;
             }
@@ -3201,7 +3202,7 @@ namespace cadencii
                     }
                 } catch (Exception ex) {
                     Logger.write(typeof(FormMainImpl) + ".updateDrawObjectList; ex=" + ex + "\n");
-                    serr.println("FormMain#updateDrawObjectList; ex=" + ex);
+                    Logger.StdErr("FormMain#updateDrawObjectList; ex=" + ex);
                 } finally {
                     if (SMALL_FONT != null) {
                         SMALL_FONT.Dispose();
@@ -3667,7 +3668,7 @@ namespace cadencii
                 this.Icon = Properties.Resources.Icon1;
             } catch (Exception ex) {
                 Logger.write(typeof(FormMainImpl) + ".setResources; ex=" + ex + "\n");
-                serr.println("FormMain#setResources; ex=" + ex);
+                Logger.StdErr("FormMain#setResources; ex=" + ex);
             }
         }
         #endregion // public methods

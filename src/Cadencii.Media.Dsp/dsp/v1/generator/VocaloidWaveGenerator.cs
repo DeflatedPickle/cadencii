@@ -19,10 +19,10 @@ using System.IO;
 using System.Text;
 using cadencii;
 using Cadencii.Gui;
-using cadencii.java.io;
 using cadencii.java.util;
 using cadencii.media;
 using cadencii.vsq;
+using Cadencii.Utilities;
 
 namespace cadencii
 {
@@ -242,7 +242,7 @@ namespace cadencii
             // NRPNを作成
             int ms_present = mConfig.PreSendTime;
 #if DEBUG
-            sout.println("VocaloidWaveGenerator#begin; ms_present=" + ms_present);
+            Logger.StdOut("VocaloidWaveGenerator#begin; ms_present=" + ms_present);
 #endif
             VsqNrpn[] vsq_nrpn = VsqFile.generateNRPN(split, mTrack, ms_present);
 #if DEBUG
@@ -284,12 +284,12 @@ namespace cadencii
             // 今後トリムする予定のサンプル数と、
             mTrimRemain = errorSamples + (int)(trim_sec * mDriverSampleRate);
 #if DEBUG
-            sout.println("VocaloidWaveGenerator#begin; trim_sec=" + trim_sec + "; mTrimRemain=" + mTrimRemain);
+            Logger.StdOut("VocaloidWaveGenerator#begin; trim_sec=" + trim_sec + "; mTrimRemain=" + mTrimRemain);
 #endif
             // 合計合成する予定のサンプル数を決める
             mTotalSamples = (long)((end_sec - start_sec) * mDriverSampleRate) + errorSamples;
 #if DEBUG
-            sout.println("VocaloidWaveGenerator#begin; mTotalSamples=" + mTotalSamples + "; start_sec,end_sec=" + start_sec + "," + end_sec + "; errorSamples=" + errorSamples);
+            Logger.StdOut("VocaloidWaveGenerator#begin; mTotalSamples=" + mTotalSamples + "; start_sec,end_sec=" + start_sec + "," + end_sec + "; errorSamples=" + errorSamples);
 #endif
 
             // アボート要求フラグを初期化
