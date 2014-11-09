@@ -1815,7 +1815,7 @@ namespace cadencii
 							// 古い拡大率
 							float scale0 = parent.form.Model.ScaleX;
 							// 新しい拡大率
-							float scale1 = parent.form.getScaleXFromTrackBarValue(draft);
+							float scale1 = parent.GetScaleXFromTrackBarValue(draft);
 							// 古いstdx
 							int stdx0 = parent.form.Model.StartToDrawX;
 							int stdx1 = (int)(clock_at_mouse * (scale1 - scale0) + stdx0);
@@ -1834,7 +1834,7 @@ namespace cadencii
 							parent.form.trackBar.Value = draft;
 						}
 					} else {
-						parent.zoomY(e.Delta > 0 ? 1 : -1);
+						parent.ZoomPianoRollHeight(e.Delta > 0 ? 1 : -1);
 					}
 				} else {
 					// スクロール操作

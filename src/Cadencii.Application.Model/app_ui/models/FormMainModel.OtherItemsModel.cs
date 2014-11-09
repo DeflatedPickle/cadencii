@@ -377,7 +377,7 @@ namespace cadencii
 
 			public void trackBar_ValueChanged()
 			{
-				parent.form.Model.ScaleX = (parent.form.getScaleXFromTrackBarValue(parent.form.trackBar.Value));
+				parent.form.Model.ScaleX = (parent.GetScaleXFromTrackBarValue(parent.form.trackBar.Value));
 				parent.form.Model.StartToDrawX = (parent.form.calculateStartToDrawX());
 				parent.form.updateDrawObjectList();
 				parent.form.Refresh();
@@ -387,12 +387,12 @@ namespace cadencii
 
 			public void buttonVZoom_Click()
 			{
-				parent.zoomY(1);
+				parent.ZoomPianoRollHeight(1);
 			}
 
 			public void buttonVMooz_Click()
 			{
-				parent.zoomY(-1);
+				parent.ZoomPianoRollHeight(-1);
 			}
 			#endregion
 
@@ -442,14 +442,14 @@ namespace cadencii
 					int scaley = EditorManager.editorConfig.PianoRollScaleY;
 					if (0 <= e.Y && e.Y < height4) {
 						if (scaley + 1 <= AppConfig.MAX_PIANOROLL_SCALEY) {
-							parent.zoomY(1);
+							parent.ZoomPianoRollHeight(1);
 							mPianoRollScaleYMouseStatus = 1;
 						} else {
 							mPianoRollScaleYMouseStatus = 0;
 						}
 					} else if (height4 * 2 <= e.Y && e.Y < height4 * 3) {
 						if (scaley - 1 >= AppConfig.MIN_PIANOROLL_SCALEY) {
-							parent.zoomY(-1);
+							parent.ZoomPianoRollHeight(-1);
 							mPianoRollScaleYMouseStatus = -1;
 						} else {
 							mPianoRollScaleYMouseStatus = 0;

@@ -1413,7 +1413,7 @@ namespace cadencii
 			form.refreshScreen();
 		}
 
-		bool mSpacekeyDown = false;
+		bool is_space_key_down = false;
 
 		/// <summary>
 		/// マウスの真ん中ボタンが押されたかどうかを調べます。
@@ -1425,7 +1425,7 @@ namespace cadencii
 		{
 			bool ret = false;
 			if (EditorManager.editorConfig.UseSpaceKeyAsMiddleButtonModifier) {
-				if (mSpacekeyDown && button == MouseButtons.Left) {
+				if (is_space_key_down && button == MouseButtons.Left) {
 					ret = true;
 				}
 			} else {
@@ -1439,14 +1439,14 @@ namespace cadencii
 		public void HandleSpaceKeyDown(KeyEventArgs e)
 		{
 			if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
-				mSpacekeyDown = true;
+				is_space_key_down = true;
 			}
 		}
 
 		public void HandleSpaceKeyUp(KeyEventArgs e)
 		{
 			if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
-				mSpacekeyDown = false;
+				is_space_key_down = false;
 			}
 		}
 
@@ -1543,25 +1543,12 @@ namespace cadencii
 
 		#endregion
 
-		public void handleStripPaletteTool_Click(UiToolBarButton tsb, UiToolStripMenuItem tsmi)
+		public void RunStripPaletteToolSelected(string id, Action selectTarget)
 		{
-			string id = "";  //選択されたツールのID
 			#if ENABLE_SCRIPT
-			if (tsb != null) {
-				if (tsb.Tag != null && tsb.Tag is string) {
-					id = (string)tsb.Tag;
-					EditorManager.mSelectedPaletteTool = id;
-					EditorManager.SelectedTool = (EditTool.PALETTE_TOOL);
-					tsb.Pushed = true;
-				}
-			} else if (tsmi != null) {
-				if (tsmi.Tag != null && tsmi.Tag is string) {
-					id = (string)tsmi.Tag;
-					EditorManager.mSelectedPaletteTool = id;
-					EditorManager.SelectedTool = (EditTool.PALETTE_TOOL);
-					tsmi.Checked = true;
-				}
-			}
+			EditorManager.mSelectedPaletteTool = id;
+			EditorManager.SelectedTool = (EditTool.PALETTE_TOOL);
+			selectTarget ();
 			#endif
 
 			int count = form.toolBarTool.Buttons.Count;
@@ -1603,7 +1590,7 @@ namespace cadencii
 		/// ピアノロールの縦軸の拡大率をdelta段階上げます
 		/// </summary>
 		/// <param name="delta"></param>
-		public void zoomY(int delta)
+		public void ZoomPianoRollHeight(int delta)
 		{
 			int scaley = EditorManager.editorConfig.PianoRollScaleY;
 			int draft = scaley + delta;
@@ -1656,7 +1643,7 @@ namespace cadencii
 		/// <summary>
 		/// スクリーンに対して、ウィンドウの最適な位置を取得する
 		/// </summary>
-		public static Point getAppropriateDialogLocation(int x, int y, int width, int height, int workingAreaX, int workingAreaY, int workingAreaWidth, int workingAreaHeight)
+		public static Point GetAppropriateDialogLocation(int x, int y, int width, int height, int workingAreaX, int workingAreaY, int workingAreaWidth, int workingAreaHeight)
 		{
 			int top = y;
 			if (top + height > workingAreaY + workingAreaHeight) {
@@ -1676,6 +1663,83 @@ namespace cadencii
 			}
 			return new Point(left, top);
 		}
+
+		/// <summary>
+		/// ズームスライダの現在の値から，横方向の拡大率を計算します
+		/// </summary>
+		/// <param name="value"></param>
+		/// <returns></returns>
+		public float GetScaleXFromTrackBarValue(int value)
+		{
+			return value / 480.0f;
+		}
+		/// <summary>
+		/// メインメニュー項目の中から，Nameプロパティがnameであるものを検索します．見つからなければnullを返す．
+		/// </summary>
+		/// <param name="name"></param>
+		/// <param name="parent"></param>
+		/// <returns></returns>
+		public UiToolStripItem SearchMenuItemFromName(UiMenuStrip menuStrip, string name, ByRef<Object> parent)
+		{
+			int count = menuStrip.Items.Count;
+			for (int i = 0; i < count; i++) {
+				var tsi = menuStrip.Items[i];
+				var ret = SearchMenuItemRecurse(name, tsi, parent);
+				if (ret != null) {
+					if (parent.value == null) {
+						parent.value = tsi;
+					}
+					return ret;
+				}
+			}
+			return null;
+		}
+
+		/// <summary>
+		/// 指定されたメニューアイテムから，Nameプロパティがnameであるものを再帰的に検索します．見つからなければnullを返す
+		/// </summary>
+		/// <param name="name"></param>
+		/// <param name="tree"></param>
+		/// <returns></returns>
+		UiToolStripItem SearchMenuItemRecurse(string name, UiToolStripItem tree, ByRef<Object> parent)
+		{
+			string tree_name = "";
+			UiToolStripMenuItem menu = null;
+			if (tree is UiToolStripMenuItem) {
+				menu = (UiToolStripMenuItem)tree;
+			}
+			tree_name = tree.Name;
+
+			if (tree_name == name) {
+				parent.value = null;
+				return tree;
+			} else {
+				if (menu == null) {
+					return null;
+				}
+				int count = menu.DropDownItems.Count;
+				for (int i = 0; i < count; i++) {
+					UiToolStripItem tsi = menu.DropDownItems[i];
+					string tsi_name = "";
+					if (tsi is UiToolStripItem) {
+						tsi_name = ((UiToolStripItem)tsi).Name;
+					} else {
+						continue;
+					}
+
+					if (tsi_name == name) {
+						return tsi;
+					}
+					var ret = SearchMenuItemRecurse(name, tsi, parent);
+					if (ret != null) {
+						parent.value = tsi;
+						return ret;
+					}
+				}
+				return null;
+			}
+		}
+
 	}
 }
 

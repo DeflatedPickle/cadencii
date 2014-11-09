@@ -98,7 +98,7 @@ namespace cadencii
 				} else if (e.Button == stripBtnCurve) {
 					stripBtnCurve_Click();
 				} else {
-					parent.handleStripPaletteTool_Click (e.Button, null);
+					parent.RunStripPaletteToolSelected (e.Button.Tag as string, () => e.Button.Pushed = true);
 				}
 			}
 

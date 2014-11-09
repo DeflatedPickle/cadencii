@@ -698,16 +698,6 @@ namespace cadencii
         }
 
 
-        /// <summary>
-        /// ズームスライダの現在の値から，横方向の拡大率を計算します
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public float getScaleXFromTrackBarValue(int value)
-        {
-            return value / 480.0f;
-        }
-
 		public void updateContextMenuPiano (Point mouseAt)
 		{
 			ByRef<Rectangle> out_id_rect = new ByRef<Rectangle>();
@@ -1120,7 +1110,7 @@ namespace cadencii
         /// </summary>
         public void showUpdateInformationAsync(bool is_explicit_update_check)
         {
-			#if SUPPORT_UPDATE_FORM
+			#if true//SUPPORT_UPDATE_FORM
             menuHelpCheckForUpdates.Enabled = false;
             updater.UpdateInfo update_info = null;
             var worker = new System.ComponentModel.BackgroundWorker();
@@ -1133,7 +1123,7 @@ namespace cadencii
                     var recent_version_string = string.Format("{0}.{1}.{2}", update_info.Major, update_info.Minor, update_info.Build);
                     var recent_version = new Version(recent_version_string);
                     if (current_version < recent_version) {
-                        var form = Factory.createUpdateCheckForm();
+			var form = ApplicationUIHost.Create<UpdateCheckForm>();
                         form.setDownloadUrl(update_info.DownloadUrl);
                         form.setFont(EditorManager.editorConfig.getBaseFont());
                         form.setOkButtonText(_("OK"));
@@ -1149,16 +1139,16 @@ namespace cadencii
                         form.showDialog(this);
 						ApplicationGlobal.appConfig.DoNotAutomaticallyCheckForUpdates = !form.isAutomaticallyCheckForUpdates();
                     } else if (is_explicit_update_check) {
-                        MessageBox.Show(_("Cadencii is up to date"),
+			System.Windows.Forms.MessageBox.Show(_("Cadencii is up to date"),
                                         _("Info"),
-                                        MessageBoxButtons.OK,
-                                        MessageBoxIcon.Information);
+			System.Windows.Forms.MessageBoxButtons.OK,
+			System.Windows.Forms.MessageBoxIcon.Information);
                     }
                 } else if (is_explicit_update_check) {
-                    MessageBox.Show(_("Can't get update information. Please retry after few minutes."),
+			System.Windows.Forms.MessageBox.Show(_("Can't get update information. Please retry after few minutes."),
                                     _("Error"),
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Information);
+			System.Windows.Forms.MessageBoxButtons.OK,
+			System.Windows.Forms.MessageBoxIcon.Information);
                 }
                 var t = new System.Windows.Forms.Timer();
                 t.Tick += (timer_sender, timer_args) => {
@@ -1486,7 +1476,7 @@ namespace cadencii
                 int workingAreaY = EditorManager.propertyWindow.getUi().getWorkingAreaY();
                 int workingAreaWidth = EditorManager.propertyWindow.getUi().getWorkingAreaWidth();
                 int workingAreaHeight = EditorManager.propertyWindow.getUi().getWorkingAreaHeight();
-                Point appropriateLocation = FormMainModel.getAppropriateDialogLocation(
+                Point appropriateLocation = FormMainModel.GetAppropriateDialogLocation(
                     x, y, width, height,
                     workingAreaX, workingAreaY, workingAreaWidth, workingAreaHeight
                 );
@@ -1511,77 +1501,6 @@ namespace cadencii
         }
 #endif
 
-
-        /// <summary>
-        /// メインメニュー項目の中から，Nameプロパティがnameであるものを検索します．見つからなければnullを返す．
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="parent"></param>
-        /// <returns></returns>
-        public Object searchMenuItemFromName(string name, ByRef<Object> parent)
-        {
-            int count = menuStripMain.Items.Count;
-            for (int i = 0; i < count; i++) {
-                Object tsi = menuStripMain.Items[i];
-                Object ret = searchMenuItemRecurse(name, tsi, parent);
-                if (ret != null) {
-                    if (parent.value == null) {
-                        parent.value = tsi;
-                    }
-                    return ret;
-                }
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// 指定されたメニューアイテムから，Nameプロパティがnameであるものを再帰的に検索します．見つからなければnullを返す
-        /// </summary>
-        /// <param name="name"></param>
-        /// <param name="tree"></param>
-        /// <returns></returns>
-        public Object searchMenuItemRecurse(string name, Object tree, ByRef<Object> parent)
-        {
-            string tree_name = "";
-            UiToolStripMenuItem menu = null;
-            if (tree is UiToolStripItem) {
-                if (tree is UiToolStripMenuItem) {
-                    menu = (UiToolStripMenuItem)tree;
-                }
-                tree_name = ((UiToolStripItem)tree).Name;
-            } else {
-                return null;
-            }
-
-            if (tree_name == name) {
-                parent.value = null;
-                return tree;
-            } else {
-                if (menu == null) {
-                    return null;
-                }
-                int count = menu.DropDownItems.Count;
-                for (int i = 0; i < count; i++) {
-                    UiToolStripItem tsi = menu.DropDownItems[i];
-                    string tsi_name = "";
-                    if (tsi is UiToolStripItem) {
-                        tsi_name = ((UiToolStripItem)tsi).Name;
-                    } else {
-                        continue;
-                    }
-
-                    if (tsi_name == name) {
-                        return tsi;
-                    }
-                    Object ret = searchMenuItemRecurse(name, tsi, parent);
-                    if (ret != null) {
-                        parent.value = tsi;
-                        return ret;
-                    }
-                }
-                return null;
-            }
-        }
 
         public void updateLayout()
         {
@@ -1823,14 +1742,14 @@ namespace cadencii
 				PaletteToolMenuItem tsmi = ApplicationUIHost.Create<PaletteToolMenuItem> (id);
                 tsmi.Text = name;
                 tsmi.ToolTipText = desc;
-				tsmi.Click += (o, e) => model.handleStripPaletteTool_Click (null, tsmi);
+				tsmi.Click += (o, e) => model.RunStripPaletteToolSelected (tsmi.Tag as string, () => tsmi.Checked = true);
                 cMenuTrackSelectorPaletteTool.DropDownItems.Add(tsmi);
 
                 // cMenuPiano
 				PaletteToolMenuItem tsmi2 = ApplicationUIHost.Create<PaletteToolMenuItem> (id);
                 tsmi2.Text = name;
                 tsmi2.ToolTipText = desc;
-				tsmi2.Click += (o, e) => model.handleStripPaletteTool_Click (null, tsmi2);
+				tsmi2.Click += (o, e) => model.RunStripPaletteToolSelected (tsmi2.Tag as string, () => tsmi2.Checked = true);
                 cMenuPianoPaletteTool.DropDownItems.Add(tsmi2);
 
                 // menuSettingPaletteTool
@@ -2371,7 +2290,7 @@ namespace cadencii
                 if (key == "menuEditCopy" || key == "menuEditCut" || key == "menuEditPaste" || key == "SpecialShortcutGoToFirst") {
                     continue;
                 }
-                Object menu = searchMenuItemFromName(key, parent);
+				var menu = model.SearchMenuItemFromName(menuStripMain, key, parent);
                 if (menu != null) {
                     string menu_name = "";
                     if (menu is UiToolStripMenuItem) {
@@ -2561,15 +2480,6 @@ namespace cadencii
             }
             cMenuPianoFixedTriplet.Checked = mPencilMode.isTriplet();
             cMenuPianoFixedDotted.Checked = mPencilMode.isDot();
-        }
-
-        /// <summary>
-        /// 鍵盤音キャッシュの中から指定したノートナンバーの音源を捜し、再生します。
-        /// </summary>
-        /// <param name="note">再生する音の高さを指定するノートナンバー</param>
-        public void playPreviewSound(int note)
-        {
-            KeySoundPlayer.play(note);
         }
 
         /// <summary>

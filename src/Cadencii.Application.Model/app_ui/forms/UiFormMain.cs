@@ -77,7 +77,6 @@ namespace cadencii
 		void hideInputTextBox();
 		void executeLyricChangeCommand();
 		int computeScrollValueFromWheelDelta(int delta);
-		float getScaleXFromTrackBarValue(int value);
 		int computeHScrollValueForMiddleDrag(int mouse_x);
 		int computeVScrollValueForMiddleDrag (int mouse_y);
 		void processSpecialShortcutKey (KeyEventArgs e, bool onPreviewKeyDown);
@@ -147,7 +146,6 @@ namespace cadencii
 
 		UiToolStripMenuItem menuLyricCopyVibratoToPreset { get; set; }
 
-		object searchMenuItemFromName (string name, ByRef<object> parent);
 		cadencii.apputil.BSplitContainer splitContainer1 { get; set;}
 		UiToolStripMenuItem menuHidden { get; set; }
 		UiToolStripMenuItem menuScript { get; set;}

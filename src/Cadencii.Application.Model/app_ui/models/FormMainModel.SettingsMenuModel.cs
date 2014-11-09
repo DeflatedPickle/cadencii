@@ -464,7 +464,7 @@ namespace cadencii
 
 				foreach (var name in configured.Keys) {
 					ByRef<Object> owner = new ByRef<Object> (null);
-					Object menu = parent.form.searchMenuItemFromName (name, owner);
+					Object menu = parent.SearchMenuItemFromName (parent.form.MainMenuStrip, name, owner);
 					#if DEBUG
 					if (menu == null || owner.value == null) {
 						serr.println ("FormMain#enuSettingShrtcut_Click; name=" + name + "; menu is null");
