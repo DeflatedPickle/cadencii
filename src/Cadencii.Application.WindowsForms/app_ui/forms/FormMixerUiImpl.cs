@@ -28,7 +28,7 @@ namespace cadencii
 	public class FormMixerUiImpl : FormImpl, FormMixerUi
     {
 
-        private FormMain m_parent;
+        private FormMainImpl m_parent;
         private List<VolumeTracker> m_tracker = null;
         private bool mPreviousAlwaysOnTop;
 
@@ -40,7 +40,7 @@ namespace cadencii
 
         public event MuteChangedEventHandler MuteChanged;
 
-        public FormMixerUiImpl(FormMain parent)
+        public FormMixerUiImpl(FormMainImpl parent)
         {
             InitializeComponent();
             registerEventHandlers();

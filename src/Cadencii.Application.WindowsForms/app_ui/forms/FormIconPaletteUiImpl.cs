@@ -37,10 +37,10 @@ namespace cadencii
 		private List<DraggableBButton> crescendButtons = new List<DraggableBButton>();
 		private List<DraggableBButton> decrescendButtons = new List<DraggableBButton>();
         private int buttonWidth = 40;
-        private FormMain mMainWindow = null;
+        private FormMainImpl mMainWindow = null;
         private bool mPreviousAlwaysOnTop;
 
-        public FormIconPaletteUiImpl(FormMain main_window)
+        public FormIconPaletteUiImpl(FormMainImpl main_window)
         {
             InitializeComponent();
             mMainWindow = main_window;

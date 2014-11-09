@@ -30,7 +30,7 @@ namespace cadencii
     {
 		bool FormWorkerUi.showDialogTo (UiForm formMainWindow)
 		{
-			return showDialogTo ((FormMain) formMainWindow);
+			return showDialogTo ((FormMainImpl) formMainWindow);
 		}
 
 		int UiForm.showDialog (object parent_form)
@@ -208,7 +208,7 @@ namespace cadencii
         /// </summary>
         /// <param name="main_window"></param>
         /// <returns></returns>
-        public bool showDialogTo(FormMain main_window)
+        public bool showDialogTo(FormMainImpl main_window)
         {
             if (ShowDialog(main_window) == DialogResult.Cancel) {
                 return true;

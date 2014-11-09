@@ -154,12 +154,8 @@
     <Compile Include="app_ui\controls\TrackSelectorSingerPopupMenuImpl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="app_ui\forms\FormMain.cs" />
-    <Compile Include="app_ui\forms\FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="app_ui\forms\FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
+      <DependentUpon>FormMainImpl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>
@@ -170,6 +166,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="gui_fx_extended\GameControllerManagerWinMM.cs" />
+    <Compile Include="app_ui\forms\FormMainImpl.cs" />
+    <Compile Include="app_ui\forms\FormMainImpl.Designer.cs">
+      <DependentUpon>FormMainImpl.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />

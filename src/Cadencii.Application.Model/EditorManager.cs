@@ -30,7 +30,7 @@ namespace cadencii
 		/// <summary>
 		/// メインの編集画面のインスタンス
 		/// </summary>
-		public static UiFormMain MainWindow = null;
+		public static FormMain MainWindow = null;
 		#if ENABLE_PROPERTY
 		/// <summary>
 		/// プロパティパネルのインスタンス

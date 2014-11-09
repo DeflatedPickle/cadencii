@@ -169,9 +169,9 @@ namespace cadencii
 			return Messaging.getMessage(id);
 		}
 
-		readonly UiFormMain form;
+		readonly FormMain form;
 
-		public FormMainModel (UiFormMain form)
+		public FormMainModel (FormMain form)
 		{
 			this.form = form;
 			FormMain = new FormModel (this);
@@ -283,7 +283,7 @@ namespace cadencii
 		/// </summary>
 		public List<RendererMenuHandler> RendererMenuHandlers;
 
-		public static void TrackSelector_MouseClick (UiFormMain window, MouseEventArgs e)
+		public static void TrackSelector_MouseClick (FormMain window, MouseEventArgs e)
 		{
 			if (e.Button == MouseButtons.Right) {
 				if (EditorManager.keyWidth < e.X && e.X < window.TrackSelector.Width) {

@@ -53,7 +53,7 @@ namespace cadencii
 		public override bool ShowDialogTo (FormWorker formWorker, UiForm mainWindow)
 		{
 			BeforeShowDialog ();
-			bool ret = formWorker.getUi ().showDialogTo ((FormMain) mainWindow);
+			bool ret = formWorker.getUi ().showDialogTo ((FormMainImpl) mainWindow);
 #if DEBUG
 			sout.println ("EditorManager#patchWorkToFreeze; showDialog returns " + ret);
 #endif

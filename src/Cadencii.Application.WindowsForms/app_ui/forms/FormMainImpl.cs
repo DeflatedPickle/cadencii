@@ -34,7 +34,7 @@ namespace cadencii
     /// <summary>
     /// エディタのメイン画面クラス
     /// </summary>
-	public partial class FormMain : FormImpl, UiFormMain, PropertyWindowListener
+	public partial class FormMainImpl : FormImpl, FormMain, PropertyWindowListener
     {
 		FormMainModel model;
 
@@ -42,21 +42,21 @@ namespace cadencii
 			get { return model; }
 		}
 
-		FormMainModel UiFormMain.Model {
+		FormMainModel FormMain.Model {
 			get { return model; }
 		}
 
-		UiContextMenuStrip UiFormMain.MenuTrackTab {
+		UiContextMenuStrip FormMain.MenuTrackTab {
 			get { return cMenuTrackTab; }
 			set { cMenuTrackTab = value; }
 		}
 
-		UiContextMenuStrip UiFormMain.MenuTrackSelector {
+		UiContextMenuStrip FormMain.MenuTrackSelector {
 			get { return cMenuTrackSelector; }
 			set { cMenuTrackSelector = value; }
 		}
 
-		TrackSelector UiFormMain.TrackSelector {
+		TrackSelector FormMain.TrackSelector {
 			get { return trackSelector; }
 			set { trackSelector = value; }
 		}
@@ -181,8 +181,9 @@ namespace cadencii
         #endregion
 
         #region constructor
-        public FormMain(string file)
+        public FormMainImpl(string file)
         {
+			EditorManager.MainWindow = this;
 			model = new FormMainModel (this);
 
 		this.appId = Handle.ToString ("X32");
@@ -416,7 +417,7 @@ namespace cadencii
                             EditorManager.setVsqFile(vsq);
                             updateBgmMenuState();
                         } catch (Exception ex) {
-                            Logger.write(typeof(FormMain) + ".ctor; ex=" + ex + "\n");
+                            Logger.write(typeof(FormMainImpl) + ".ctor; ex=" + ex + "\n");
                             serr.println("FormMain#.ctor; ex=" + ex);
                         }
                     }
@@ -450,7 +451,7 @@ namespace cadencii
             try {
                 vScroll.Value = draft_vscroll_value;
             } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".FormMain_Load; ex=" + ex + "\n");
+                Logger.write(typeof(FormMainImpl) + ".FormMain_Load; ex=" + ex + "\n");
             }
 
             // x=97がプリメジャークロックになるように調整
@@ -459,7 +460,7 @@ namespace cadencii
             try {
                 hScroll.Value = draft_hscroll_value;
             } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".FormMain_Load; ex=" + ex + "\n");
+                Logger.write(typeof(FormMainImpl) + ".FormMain_Load; ex=" + ex + "\n");
             }
 
             //s_pen_dashed_171_171_171.DashPattern = new float[] { 3, 3 };
@@ -636,13 +637,13 @@ namespace cadencii
                     sw.WriteLine(s.Value + "\t" + s.Key + ";");
                 }
             } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".ctor; ex=" + ex + "\n");
+                Logger.write(typeof(FormMainImpl) + ".ctor; ex=" + ex + "\n");
             } finally {
                 if (sw != null) {
                     try {
                         sw.Close();
                     } catch (Exception ex2) {
-                        Logger.write(typeof(FormMain) + ".ctor; ex=" + ex2 + "\n");
+                        Logger.write(typeof(FormMainImpl) + ".ctor; ex=" + ex2 + "\n");
                     }
                 }
             }
@@ -1681,7 +1682,7 @@ namespace cadencii
                 }
                 //g.SmoothingMode = old;
             } catch (Exception oex) {
-                Logger.write(typeof(FormMain) + ".drawUtauVibato; ex=" + oex + "\n");
+                Logger.write(typeof(FormMainImpl) + ".drawUtauVibato; ex=" + oex + "\n");
 #if DEBUG
                 CDebug.WriteLine("DrawUtauVibrato; oex=" + oex);
 #endif
@@ -1902,7 +1903,7 @@ namespace cadencii
 #endif
                             holder.menu.PerformClick();
                         } catch (Exception ex) {
-                            Logger.write(typeof(FormMain) + ".processSpecialShortcutKey; ex=" + ex + "\n");
+                            Logger.write(typeof(FormMainImpl) + ".processSpecialShortcutKey; ex=" + ex + "\n");
                             serr.println("FormMain#processSpecialShortcutKey; ex=" + ex);
                         }
                         if ((Keys) e.KeyCode == Keys.Tab) {
@@ -2234,7 +2235,7 @@ namespace cadencii
                     }
                 }
             } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".applyMenuItemShortcut; ex=" + ex + "\n");
+                Logger.write(typeof(FormMainImpl) + ".applyMenuItemShortcut; ex=" + ex + "\n");
             }
         }
 
@@ -2287,7 +2288,7 @@ namespace cadencii
             try {
                 openXmlVsqDialog.Filter = string.Join("|", new[] { _("XML-VSQ Format(*.xvsq)|*.xvsq"), _("All Files(*.*)|*.*") });
             } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".applyLanguage; ex=" + ex + "\n");
+                Logger.write(typeof(FormMainImpl) + ".applyLanguage; ex=" + ex + "\n");
                 openXmlVsqDialog.Filter = string.Join("|", new[] { "XML-VSQ Format(*.xvsq)|*.xvsq", "All Files(*.*)|*.*" });
             }
 
@@ -2295,7 +2296,7 @@ namespace cadencii
             try {
                 saveXmlVsqDialog.Filter = string.Join("|", new[] { _("XML-VSQ Format(*.xvsq)|*.xvsq"), _("All Files(*.*)|*.*") });
             } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".applyLanguage; ex=" + ex + "\n");
+                Logger.write(typeof(FormMainImpl) + ".applyLanguage; ex=" + ex + "\n");
                 saveXmlVsqDialog.Filter = string.Join("|", new[] { "XML-VSQ Format(*.xvsq)|*.xvsq", "All Files(*.*)|*.*" });
             }
 
@@ -2303,7 +2304,7 @@ namespace cadencii
             try {
                 openUstDialog.Filter = string.Join("|", new[] { _("UTAU Script Format(*.ust)|*.ust"), _("All Files(*.*)|*.*") });
             } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".applyLanguage; ex=" + ex + "\n");
+                Logger.write(typeof(FormMainImpl) + ".applyLanguage; ex=" + ex + "\n");
                 openUstDialog.Filter = string.Join("|", new[] { "UTAU Script Format(*.ust)|*.ust", "All Files(*.*)|*.*" });
             }
 
@@ -2315,7 +2316,7 @@ namespace cadencii
                     _( "VSQX Format(*.vsqx)|*.vsqx" ),
                     _( "All Files(*.*)|*.*" ) });
             } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".applyLanguage; ex=" + ex + "\n");
+                Logger.write(typeof(FormMainImpl) + ".applyLanguage; ex=" + ex + "\n");
                 openMidiDialog.Filter = string.Join("|", new[] {
                     "MIDI Format(*.mid)|*.mid",
                     "VSQ Format(*.vsq)|*.vsq",
@@ -2330,7 +2331,7 @@ namespace cadencii
                     _( "VSQ Format(*.vsq)|*.vsq" ),
                     _( "All Files(*.*)|*.*" ) });
             } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".applyLanguage; ex=" + ex + "\n");
+                Logger.write(typeof(FormMainImpl) + ".applyLanguage; ex=" + ex + "\n");
                 saveMidiDialog.Filter = string.Join("|", new[] {
                     "MIDI Format(*.mid)|*.mid",
                     "VSQ Format(*.vsq)|*.vsq",
@@ -2343,7 +2344,7 @@ namespace cadencii
                     _( "Wave File(*.wav)|*.wav" ),
                     _( "All Files(*.*)|*.*" ) });
             } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".applyLanguage; ex=" + ex + "\n");
+                Logger.write(typeof(FormMainImpl) + ".applyLanguage; ex=" + ex + "\n");
                 openWaveDialog.Filter = string.Join("|", new[] {
                     "Wave File(*.wav)|*.wav",
                     "All Files(*.*)|*.*" });
@@ -3199,7 +3200,7 @@ namespace cadencii
                         tmp.Sort();
                     }
                 } catch (Exception ex) {
-                    Logger.write(typeof(FormMain) + ".updateDrawObjectList; ex=" + ex + "\n");
+                    Logger.write(typeof(FormMainImpl) + ".updateDrawObjectList; ex=" + ex + "\n");
                     serr.println("FormMain#updateDrawObjectList; ex=" + ex);
                 } finally {
                     if (SMALL_FONT != null) {
@@ -3665,7 +3666,7 @@ namespace cadencii
             try {
                 this.Icon = Properties.Resources.Icon1;
             } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".setResources; ex=" + ex + "\n");
+                Logger.write(typeof(FormMainImpl) + ".setResources; ex=" + ex + "\n");
                 serr.println("FormMain#setResources; ex=" + ex);
             }
         }

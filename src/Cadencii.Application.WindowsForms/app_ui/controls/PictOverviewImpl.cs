@@ -100,7 +100,7 @@ namespace cadencii
         /// ミニチュアピアノロールの縮小ボタン上でマウスが下りている状態かどうか
         /// </summary>
         private bool mOverviewButtonMoozMouseDowned = false;
-        private UiFormMain mMainForm = null;
+        private FormMain mMainForm = null;
         private Color mBackgroundColor = new Color(106, 108, 108);
         private Object mDrawerSyncRoot;
 
@@ -113,7 +113,7 @@ namespace cadencii
             registerEventHandlers();
         }
 
-        public void setMainForm(UiFormMain form)
+        public void setMainForm(FormMain form)
         {
             mMainForm = form;
         }
@@ -132,7 +132,7 @@ namespace cadencii
                         System.Windows.Forms.Application.DoEvents();
                     }
                 } catch (Exception ex) {
-                    Logger.write(typeof(FormMain) + ".overviewStopThread; ex=" + ex + "\n");
+                    Logger.write(typeof(FormMainImpl) + ".overviewStopThread; ex=" + ex + "\n");
                 }
                 mOverviewUpdateThread = null;
             }
@@ -150,7 +150,7 @@ namespace cadencii
                     }
                 } catch (Exception ex) {
                     serr.println("FormMain#btnLeft_MouseDown; ex=" + ex);
-                    Logger.write(typeof(FormMain) + ".btnLeft_MouseDown; ex=" + ex + "\n");
+                    Logger.write(typeof(FormMainImpl) + ".btnLeft_MouseDown; ex=" + ex + "\n");
                 }
                 mOverviewUpdateThread = null;
             }
@@ -175,7 +175,7 @@ namespace cadencii
                     }
                 } catch (Exception ex) {
                     serr.println("FormMain#btnRight_MouseDown; ex=" + ex);
-                    Logger.write(typeof(FormMain) + ".btnRight_MouseDown; ex=" + ex + "\n");
+                    Logger.write(typeof(FormMainImpl) + ".btnRight_MouseDown; ex=" + ex + "\n");
                 }
                 mOverviewUpdateThread = null;
             }

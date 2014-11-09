@@ -6,7 +6,7 @@ namespace cadencii
 	{
 		void updateCachedImage ();
 
-		void setMainForm (UiFormMain formMain);
+		void setMainForm (FormMain formMain);
 	}
 }
 

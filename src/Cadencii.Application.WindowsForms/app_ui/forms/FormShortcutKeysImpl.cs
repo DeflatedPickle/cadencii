@@ -41,13 +41,13 @@ namespace cadencii
         private SortedDictionary<string, ValuePair<string, Keys[]>> mDict;
         private SortedDictionary<string, ValuePair<string, Keys[]>> mFirstDict;
         private List<string> mFieldName = new List<string>();
-        private FormMain mMainForm = null;
+        private FormMainImpl mMainForm = null;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
         /// <param name="dict">メニューアイテムの表示文字列をキーとする，メニューアイテムのフィールド名とショートカットキーのペアを格納したマップ</param>
-        public FormShortcutKeysImpl(SortedDictionary<string, ValuePair<string, Keys[]>> dict, FormMain main_form)
+        public FormShortcutKeysImpl(SortedDictionary<string, ValuePair<string, Keys[]>> dict, FormMainImpl main_form)
         {
             try {
                 InitializeComponent();

@@ -120,7 +120,7 @@ namespace cadencii
 
 		int getPreferredMinSize ();
 
-		UiFormMain getMainForm ();
+		FormMain getMainForm ();
 
 		ValuePair<int, int> getSelectedRegion ();
 

@@ -85,7 +85,7 @@ namespace cadencii
 
 		public static Font ToAwt (this System.Drawing.Font f)
 		{
-			return AwtHost.Current.New<Font> (f);
+			return new Font (f);
 		}
 
 		public static System.Drawing.Font ToWF (this Font f)

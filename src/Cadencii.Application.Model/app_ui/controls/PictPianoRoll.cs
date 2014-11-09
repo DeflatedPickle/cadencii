@@ -8,7 +8,7 @@ namespace cadencii
 
 		Cadencii.Gui.Dimension getMinimumSize ();
 
-		void setMainForm (UiFormMain formMain);
+		void setMainForm (FormMain formMain);
 	}
 }
 

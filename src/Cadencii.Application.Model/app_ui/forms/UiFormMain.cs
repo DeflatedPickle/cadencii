@@ -22,7 +22,7 @@ namespace cadencii
     /// <summary>
     /// メイン画面の実装クラスが持つべきメソッドを定義するインターフェース
     /// </summary>
-    public interface UiFormMain : UiForm
+    public interface FormMain : UiForm
     {
 		FormMainModel Model { get; }
 

@@ -233,7 +233,7 @@ namespace cadencii
         /// <summary>
         /// メイン画面への参照
         /// </summary>
-        private FormMain mMainWindow = null;
+        private FormMainImpl mMainWindow = null;
         /// <summary>
         /// Overlap, Presendを描画するときに使うフォントで，一文字あたり何ピクセルになるか
         /// </summary>
@@ -283,7 +283,7 @@ namespace cadencii
         /// <summary>
         /// コンストラクタ．
         /// </summary>
-        public TrackSelectorImpl(FormMain main_window)
+        public TrackSelectorImpl(FormMainImpl main_window)
         {
             this.SetStyle(System.Windows.Forms.ControlStyles.DoubleBuffer, true);
             this.SetStyle(System.Windows.Forms.ControlStyles.UserPaint, true);
@@ -737,7 +737,7 @@ namespace cadencii
         /// このコントロールの親ウィンドウを取得します
         /// </summary>
         /// <returns></returns>
-        public UiFormMain getMainForm()
+        public FormMain getMainForm()
         {
             return mMainWindow;
         }

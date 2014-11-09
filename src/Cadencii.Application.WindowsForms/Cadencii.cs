@@ -100,7 +100,7 @@ namespace cadencii
 				EditorConfig ec = new EditorConfig();
                 Messaging.setLanguage(ec.Language);
             } catch (Exception ex) {
-                Logger.write(typeof(FormMain) + ".ctor; ex=" + ex + "\n");
+                Logger.write(typeof(FormMainImpl) + ".ctor; ex=" + ex + "\n");
                 serr.println("FormMain#.ctor; ex=" + ex);
             }
 
@@ -140,9 +140,9 @@ namespace cadencii
                 Logger.write(typeof(CadenciiDriver) + ".Main; ex=" + ex + "\n");
             }
 #endif
-            EditorManager.MainWindow = new FormMain(file);
+			var formMain = new FormMainImpl(file);
 #if !MONO
-            ((FormMain) EditorManager.MainWindow).Load += mainWindow_Load;
+			formMain.Load += mainWindow_Load;
 #endif
             Application.Run((Form) EditorManager.MainWindow);
 #if !DEBUG

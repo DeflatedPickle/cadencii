@@ -7,7 +7,7 @@ using Cadencii.Gui;
 
 namespace cadencii
 {
-    public partial class FormMain
+    public partial class FormMainImpl
     {
         /// <summary>
         /// 使用中のリソースをすべてクリーンアップします。
@@ -28,7 +28,7 @@ namespace cadencii
         public void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainImpl));
             this.menuStripMain = new MenuStripImpl();
             this.menuFile = new ToolStripMenuItemImpl();
             this.menuFileNew = new ToolStripMenuItemImpl();
