@@ -193,6 +193,8 @@ namespace cadencii
 			WaveView = new WaveViewModel (this);
 			ToolBars = new ToolBarsModel (this);
 			OtherItems = new OtherItemsModel (this);
+			EditorManagerCommands = new EditorManagerCommandsModel (this);
+			InputTextBox = new InputTextBoxModel (this);
 
 			form.initializeRendererMenuHandler(this);
 
@@ -218,6 +220,8 @@ namespace cadencii
 		public WaveViewModel WaveView { get; private set; }
 		public ToolBarsModel ToolBars { get; private set; }
 		public OtherItemsModel OtherItems { get; private set; }
+		public EditorManagerCommandsModel EditorManagerCommands { get; private set; }
+		public InputTextBoxModel InputTextBox { get; private set; }
 
 		#region FormMainController
 		/// <summary>
@@ -1740,6 +1744,252 @@ namespace cadencii
 			}
 		}
 
+		#region InputTextBox
+
+		bool mLastSymbolEditMode { get; set; }
+		bool mLastIsImeModeOn = true;
+
+		/// <summary>
+		/// 入力用のテキストボックスを初期化します
+		/// </summary>
+		public void showInputTextBox(string phrase, string phonetic_symbol, Point position, bool phonetic_symbol_edit_mode)
+		{
+			#if DEBUG
+			CDebug.WriteLine("InitializeInputTextBox");
+			#endif
+			hideInputTextBox();
+
+			EditorManager.InputTextBox.KeyUp += new KeyEventHandler(InputTextBox.mInputTextBox_KeyUp);
+			EditorManager.InputTextBox.KeyDown += new KeyEventHandler(InputTextBox.mInputTextBox_KeyDown);
+			EditorManager.InputTextBox.ImeModeChanged += InputTextBox.mInputTextBox_ImeModeChanged;
+			EditorManager.InputTextBox.ImeMode = mLastIsImeModeOn ? Cadencii.Gui.ImeMode.Hiragana : Cadencii.Gui.ImeMode.Off;
+			if (phonetic_symbol_edit_mode) {
+				EditorManager.InputTextBox.setBufferText(phrase);
+				EditorManager.InputTextBox.setPhoneticSymbolEditMode(true);
+				EditorManager.InputTextBox.Text = phonetic_symbol;
+				EditorManager.InputTextBox.BackColor = FormMainModel.ColorTextboxBackcolor;
+			} else {
+				EditorManager.InputTextBox.setBufferText(phonetic_symbol);
+				EditorManager.InputTextBox.setPhoneticSymbolEditMode(false);
+				EditorManager.InputTextBox.Text = phrase;
+				EditorManager.InputTextBox.BackColor = Colors.White;
+			}
+			EditorManager.InputTextBox.Font = new Cadencii.Gui.Font (EditorManager.editorConfig.BaseFontName, Font.PLAIN, EditorConfig.FONT_SIZE9);
+			var p = new Cadencii.Gui.Point(position.X + 4, position.Y + 2);
+			EditorManager.InputTextBox.Location = p;
+
+			EditorManager.InputTextBox.Parent = form.pictPianoRoll;
+			EditorManager.InputTextBox.Enabled = true;
+			EditorManager.InputTextBox.Visible = true;
+			EditorManager.InputTextBox.Focus();
+			EditorManager.InputTextBox.SelectAll();
+		}
+
+		public void hideInputTextBox()
+		{
+			EditorManager.InputTextBox.KeyUp -= new KeyEventHandler(InputTextBox.mInputTextBox_KeyUp);
+			EditorManager.InputTextBox.KeyDown -= new KeyEventHandler(InputTextBox.mInputTextBox_KeyDown);
+			EditorManager.InputTextBox.ImeModeChanged -= InputTextBox.mInputTextBox_ImeModeChanged;
+			mLastSymbolEditMode = EditorManager.InputTextBox.isPhoneticSymbolEditMode();
+			EditorManager.InputTextBox.Visible = false;
+			EditorManager.InputTextBox.Parent = null;
+			EditorManager.InputTextBox.Enabled = false;
+			form.pictPianoRoll.Focus();
+		}
+
+		/// <summary>
+		/// 現在のEditorManager.InputTextBoxの状態を元に、歌詞の変更を反映させるコマンドを実行します
+		/// </summary>
+		public void executeLyricChangeCommand()
+		{
+			if (!EditorManager.InputTextBox.Enabled) {
+				return;
+			}
+			if (EditorManager.InputTextBox.IsDisposed) {
+				return;
+			}
+			SelectedEventEntry last_selected_event = EditorManager.itemSelection.getLastEvent();
+			bool phonetic_symbol_edit_mode = EditorManager.InputTextBox.isPhoneticSymbolEditMode();
+
+			int selected = EditorManager.Selected;
+			VsqFileEx vsq = MusicManager.getVsqFile();
+			VsqTrack vsq_track = vsq.Track[selected];
+
+			// 後続に、連続している音符が何個あるか検査
+			int maxcount = SymbolTable.getMaxDivisions(); // 音節の分割によって，高々maxcount個までにしか分割されない
+			bool check_started = false;
+			int endclock = 0;  // 直前の音符の終了クロック
+			int count = 0;     // 後続音符の連続個数
+			int start_index = -1;
+			int indx = -1;
+			for (Iterator<int> itr = vsq_track.indexIterator(IndexIteratorKind.NOTE); itr.hasNext(); ) {
+				indx = itr.next();
+				VsqEvent itemi = vsq_track.getEvent(indx);
+				if (itemi.InternalID == last_selected_event.original.InternalID) {
+					check_started = true;
+					endclock = itemi.Clock + itemi.ID.getLength();
+					count = 1;
+					start_index = indx;
+					continue;
+				}
+				if (check_started) {
+					if (count + 1 > maxcount) {
+						break;
+					}
+					if (itemi.Clock <= endclock) {
+						count++;
+						endclock = itemi.Clock + itemi.ID.getLength();
+					} else {
+						break;
+					}
+				}
+			}
+
+			// 後続の音符をリストアップ
+			VsqEvent[] items = new VsqEvent[count];
+			string[] original_symbol = new string[count];
+			string[] original_phrase = new string[count];
+			bool[] symbol_protected = new bool[count];
+			indx = -1;
+			for (Iterator<int> itr = vsq_track.indexIterator(IndexIteratorKind.NOTE); itr.hasNext(); ) {
+				int index = itr.next();
+				if (index < start_index) {
+					continue;
+				}
+				indx++;
+				if (count <= indx) {
+					break;
+				}
+				VsqEvent ve = vsq_track.getEvent(index);
+				items[indx] = (VsqEvent)ve.clone();
+				original_symbol[indx] = ve.ID.LyricHandle.L0.getPhoneticSymbol();
+				original_phrase[indx] = ve.ID.LyricHandle.L0.Phrase;
+				symbol_protected[indx] = ve.ID.LyricHandle.L0.PhoneticSymbolProtected;
+			}
+
+			#if DEBUG
+			CDebug.WriteLine("    original_phase,symbol=" + original_phrase + "," + original_symbol[0]);
+			CDebug.WriteLine("    phonetic_symbol_edit_mode=" + phonetic_symbol_edit_mode);
+			CDebug.WriteLine("    EditorManager.InputTextBox.setText(=" + EditorManager.InputTextBox.Text);
+			#endif
+			string[] phrase = new string[count];
+			string[] phonetic_symbol = new string[count];
+			for (int i = 0; i < count; i++) {
+				phrase[i] = original_phrase[i];
+				phonetic_symbol[i] = original_symbol[i];
+			}
+			string txt = EditorManager.InputTextBox.Text;
+			int txtlen = PortUtil.getStringLength(txt);
+			if (txtlen > 0) {
+				// 1文字目は，UTAUの連続音入力のハイフンの可能性があるので，無駄に置換されるのを回避
+				phrase[0] = txt.Substring(0, 1) + ((txtlen > 1) ? txt.Substring(1).Replace("-", "") : "");
+			} else {
+				phrase[0] = "";
+			}
+			if (!phonetic_symbol_edit_mode) {
+				// 歌詞を編集するモードで、
+				if (EditorManager.editorConfig.SelfDeRomanization) {
+					// かつローマ字の入力を自動でひらがなに展開する設定だった場合。
+					// ローマ字をひらがなに展開
+					phrase[0] = KanaDeRomanization.Attach(phrase[0]);
+				}
+			}
+
+			// 発音記号または歌詞が変更された場合の処理
+			if ((phonetic_symbol_edit_mode && EditorManager.InputTextBox.Text != original_symbol[0]) ||
+				(!phonetic_symbol_edit_mode && phrase[0] != original_phrase[0])) {
+				if (phonetic_symbol_edit_mode) {
+					// 発音記号を編集するモード
+					phrase[0] = EditorManager.InputTextBox.getBufferText();
+					phonetic_symbol[0] = EditorManager.InputTextBox.Text;
+
+					// 入力された発音記号のうち、有効なものだけをピックアップ
+					string[] spl = PortUtil.splitString(phonetic_symbol[0], new char[] { ' ' }, true);
+					List<string> list = new List<string>();
+					for (int i = 0; i < spl.Length; i++) {
+						string s = spl[i];
+						if (VsqPhoneticSymbol.isValidSymbol(s)) {
+							list.Add(s);
+						}
+					}
+
+					// ピックアップした発音記号をスペース区切りで結合
+					phonetic_symbol[0] = "";
+					bool first = true;
+					foreach (var s in list) {
+						if (first) {
+							phonetic_symbol[0] += s;
+							first = false;
+						} else {
+							phonetic_symbol[0] += " " + s;
+						}
+					}
+
+					// 発音記号を編集すると、自動で「発音記号をプロテクトする」モードになるよ
+					symbol_protected[0] = true;
+				} else {
+					// 歌詞を編集するモード
+					if (!symbol_protected[0]) {
+						// 発音記号をプロテクトしない場合、歌詞から発音記号を引当てる
+						SymbolTableEntry entry = SymbolTable.attatch(phrase[0]);
+						if (entry == null) {
+							phonetic_symbol[0] = "a";
+						} else {
+							phonetic_symbol[0] = entry.getSymbol();
+							// 分節の分割記号'-'が入っている場合
+							#if DEBUG
+							sout.println("FormMain#executeLyricChangeCommand; word=" + entry.Word + "; symbol=" + entry.getSymbol() + "; rawSymbol=" + entry.getRawSymbol());
+							#endif
+							if (entry.Word.IndexOf('-') >= 0) {
+								string[] spl_phrase = PortUtil.splitString(entry.Word, '\t');
+								if (spl_phrase.Length <= count) {
+									// 分節の分割数が，後続の音符数と同じか少ない場合
+									string[] spl_symbol = PortUtil.splitString(entry.getRawSymbol(), '\t');
+									for (int i = 0; i < spl_phrase.Length; i++) {
+										phrase[i] = spl_phrase[i];
+										phonetic_symbol[i] = spl_symbol[i];
+									}
+								} else {
+									// 後続の音符の個数が足りない
+									phrase[0] = entry.Word.Replace("\t", "");
+								}
+							}
+						}
+					} else {
+						// 発音記号をプロテクトする場合、発音記号は最初のやつを使う
+						phonetic_symbol[0] = original_symbol[0];
+					}
+				}
+				#if DEBUG
+				CDebug.WriteLine("    phrase,phonetic_symbol=" + phrase + "," + phonetic_symbol);
+				#endif
+
+				for (int j = 0; j < count; j++) {
+					if (phonetic_symbol_edit_mode) {
+						items[j].ID.LyricHandle.L0.setPhoneticSymbol(phonetic_symbol[j]);
+					} else {
+						items[j].ID.LyricHandle.L0.Phrase = phrase[j];
+						items[j].ID.LyricHandle.L0.setPhoneticSymbol(phonetic_symbol[j]);
+						MusicManager.applyUtauParameter(vsq_track, items[j]);
+					}
+					if (original_symbol[j] != phonetic_symbol[j]) {
+						List<string> spl = items[j].ID.LyricHandle.L0.getPhoneticSymbolList();
+						List<int> adjustment = new List<int>();
+						for (int i = 0; i < spl.Count; i++) {
+							string s = spl[i];
+							adjustment.Add(VsqPhoneticSymbol.isConsonant(s) ? 64 : 0);
+						}
+						items[j].ID.LyricHandle.L0.setConsonantAdjustmentList(adjustment);
+					}
+				}
+
+				CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandEventReplaceRange(selected, items));
+				EditorManager.editHistory.register(vsq.executeCommand(run));
+				form.setEdited(true);
+			}
+		}
+
+		#endregion
 	}
 }
 

@@ -239,11 +239,11 @@ namespace cadencii
 					int note = original.ID.Note;
 					Point pos = new Point(EditorManager.xCoordFromClocks(clock), EditorManager.yCoordFromNote(note));
 					if (!EditorManager.editorConfig.KeepLyricInputMode) {
-						parent.form.mLastSymbolEditMode = false;
+						parent.mLastSymbolEditMode = false;
 					}
-					parent.form.showInputTextBox(original.ID.LyricHandle.L0.Phrase,
+					parent.showInputTextBox(original.ID.LyricHandle.L0.Phrase,
 						original.ID.LyricHandle.L0.getPhoneticSymbol(),
-						pos, parent.form.mLastSymbolEditMode);
+						pos, parent.mLastSymbolEditMode);
 					parent.form.refreshScreen();
 				} else if (input_enabled) {
 					if (EditorManager.InputTextBox.isPhoneticSymbolEditMode()) {

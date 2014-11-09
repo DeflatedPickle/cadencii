@@ -14,23 +14,14 @@
 //#define USE_BGWORK_SCREEN
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Media;
-using System.Text;
-using System.Threading;
 using System.Linq;
 using System.IO;
 using System.Net;
 using System.ComponentModel;
 using cadencii.apputil;
 using Cadencii.Gui;
-using cadencii.java.io;
 using cadencii.java.util;
-using cadencii.javax.sound.midi;
-using cadencii.media;
 using cadencii.vsq;
-using cadencii.vsq.io;
-using cadencii.windows.forms;
 using cadencii.xml;
 using cadencii.utau;
 using cadencii.ui;
@@ -134,8 +125,6 @@ namespace cadencii
         /// マウスが降りているかどうかを表すフラグ．EditorManager.isPointerDownedとは別なので注意
         /// </summary>
 		public bool mMouseDowned { get; set; }
-        public bool mLastIsImeModeOn = true;
-		public bool mLastSymbolEditMode { get; set; }
         /// <summary>
         /// 鉛筆のモード
         /// </summary>
@@ -298,7 +287,7 @@ namespace cadencii
 
             splitContainer1.Panel2MinSize = trackSelector.getPreferredMinSize();
             var minimum_size = getWindowMinimumSize();
-            this.MinimumSize = new System.Drawing.Size(minimum_size.Width, minimum_size.Height);
+			this.AsAwt ().MinimumSize = new Dimension(minimum_size.Width, minimum_size.Height);
             stripBtnScroll.Pushed = EditorManager.mAutoScroll;
 
             applySelectedTool();
@@ -397,9 +386,9 @@ namespace cadencii
             EditorManager.InputTextBox.Width = 80;
             EditorManager.InputTextBox.AcceptsReturn = true;
             EditorManager.InputTextBox.BackColor = Colors.White;
-			EditorManager.InputTextBox.Font = new Cadencii.Gui.Font (new System.Drawing.Font (EditorManager.editorConfig.BaseFontName, EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular));
+			EditorManager.InputTextBox.Font = new Font (EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE9);
             EditorManager.InputTextBox.Enabled = false;
-            EditorManager.InputTextBox.KeyPress += mInputTextBox_KeyPress;
+            EditorManager.InputTextBox.KeyPress += model.InputTextBox.mInputTextBox_KeyPress;
             EditorManager.InputTextBox.Parent = pictPianoRoll;
             panel1.AddControl(EditorManager.InputTextBox);
 
@@ -440,13 +429,13 @@ namespace cadencii
 
 			EditorManager.PreviewStarted += (o, e) => model.StartPreview ();
 			EditorManager.PreviewAborted += (o, e) => model.AbortPreview ();
-            EditorManager.GridVisibleChanged += new EventHandler(EditorManager_GridVisibleChanged);
-            EditorManager.itemSelection.SelectedEventChanged += new SelectedEventChangedEventHandler(ItemSelectionModel_SelectedEventChanged);
-            EditorManager.SelectedToolChanged += new EventHandler(EditorManager_SelectedToolChanged);
-            EditorManager.UpdateBgmStatusRequired += new EventHandler(EditorManager_UpdateBgmStatusRequired);
-            EditorManager.MainWindowFocusRequired = new EventHandler(EditorManager_MainWindowFocusRequired);
-            EditorManager.EditedStateChanged += new EditedStateChangedEventHandler(EditorManager_EditedStateChanged);
-            EditorManager.WaveViewReloadRequired += new WaveViewRealoadRequiredEventHandler(EditorManager_WaveViewRealoadRequired);
+			EditorManager.GridVisibleChanged += model.EditorManagerCommands.EditorManager_GridVisibleChanged;
+			EditorManager.itemSelection.SelectedEventChanged += model.EditorManagerCommands.ItemSelectionModel_SelectedEventChanged;
+			EditorManager.SelectedToolChanged += model.EditorManagerCommands.EditorManager_SelectedToolChanged;
+			EditorManager.UpdateBgmStatusRequired += model.EditorManagerCommands.EditorManager_UpdateBgmStatusRequired;
+			EditorManager.MainWindowFocusRequired = model.EditorManagerCommands.EditorManager_MainWindowFocusRequired;
+			EditorManager.EditedStateChanged += model.EditorManagerCommands.EditorManager_EditedStateChanged;
+			EditorManager.WaveViewReloadRequired += model.EditorManagerCommands.EditorManager_WaveViewRealoadRequired;
 			AppConfig.QuantizeModeChanged += (o, e) => applyQuantizeMode ();
 
 #if ENABLE_PROPERTY
@@ -1882,199 +1871,6 @@ namespace cadencii
                                   (current.Height - client.Height) +
                                   20);
         }
-
-        /// <summary>
-        /// 現在のEditorManager.InputTextBoxの状態を元に、歌詞の変更を反映させるコマンドを実行します
-        /// </summary>
-        public void executeLyricChangeCommand()
-        {
-            if (!EditorManager.InputTextBox.Enabled) {
-                return;
-            }
-            if (EditorManager.InputTextBox.IsDisposed) {
-                return;
-            }
-            SelectedEventEntry last_selected_event = EditorManager.itemSelection.getLastEvent();
-            bool phonetic_symbol_edit_mode = EditorManager.InputTextBox.isPhoneticSymbolEditMode();
-
-            int selected = EditorManager.Selected;
-            VsqFileEx vsq = MusicManager.getVsqFile();
-            VsqTrack vsq_track = vsq.Track[selected];
-
-            // 後続に、連続している音符が何個あるか検査
-            int maxcount = SymbolTable.getMaxDivisions(); // 音節の分割によって，高々maxcount個までにしか分割されない
-            bool check_started = false;
-            int endclock = 0;  // 直前の音符の終了クロック
-            int count = 0;     // 後続音符の連続個数
-            int start_index = -1;
-            int indx = -1;
-            for (Iterator<int> itr = vsq_track.indexIterator(IndexIteratorKind.NOTE); itr.hasNext(); ) {
-                indx = itr.next();
-                VsqEvent itemi = vsq_track.getEvent(indx);
-                if (itemi.InternalID == last_selected_event.original.InternalID) {
-                    check_started = true;
-                    endclock = itemi.Clock + itemi.ID.getLength();
-                    count = 1;
-                    start_index = indx;
-                    continue;
-                }
-                if (check_started) {
-                    if (count + 1 > maxcount) {
-                        break;
-                    }
-                    if (itemi.Clock <= endclock) {
-                        count++;
-                        endclock = itemi.Clock + itemi.ID.getLength();
-                    } else {
-                        break;
-                    }
-                }
-            }
-
-            // 後続の音符をリストアップ
-            VsqEvent[] items = new VsqEvent[count];
-            string[] original_symbol = new string[count];
-            string[] original_phrase = new string[count];
-            bool[] symbol_protected = new bool[count];
-            indx = -1;
-            for (Iterator<int> itr = vsq_track.indexIterator(IndexIteratorKind.NOTE); itr.hasNext(); ) {
-                int index = itr.next();
-                if (index < start_index) {
-                    continue;
-                }
-                indx++;
-                if (count <= indx) {
-                    break;
-                }
-                VsqEvent ve = vsq_track.getEvent(index);
-                items[indx] = (VsqEvent)ve.clone();
-                original_symbol[indx] = ve.ID.LyricHandle.L0.getPhoneticSymbol();
-                original_phrase[indx] = ve.ID.LyricHandle.L0.Phrase;
-                symbol_protected[indx] = ve.ID.LyricHandle.L0.PhoneticSymbolProtected;
-            }
-
-#if DEBUG
-            CDebug.WriteLine("    original_phase,symbol=" + original_phrase + "," + original_symbol[0]);
-            CDebug.WriteLine("    phonetic_symbol_edit_mode=" + phonetic_symbol_edit_mode);
-            CDebug.WriteLine("    EditorManager.InputTextBox.setText(=" + EditorManager.InputTextBox.Text);
-#endif
-            string[] phrase = new string[count];
-            string[] phonetic_symbol = new string[count];
-            for (int i = 0; i < count; i++) {
-                phrase[i] = original_phrase[i];
-                phonetic_symbol[i] = original_symbol[i];
-            }
-            string txt = EditorManager.InputTextBox.Text;
-            int txtlen = PortUtil.getStringLength(txt);
-            if (txtlen > 0) {
-                // 1文字目は，UTAUの連続音入力のハイフンの可能性があるので，無駄に置換されるのを回避
-                phrase[0] = txt.Substring(0, 1) + ((txtlen > 1) ? txt.Substring(1).Replace("-", "") : "");
-            } else {
-                phrase[0] = "";
-            }
-            if (!phonetic_symbol_edit_mode) {
-                // 歌詞を編集するモードで、
-                if (EditorManager.editorConfig.SelfDeRomanization) {
-                    // かつローマ字の入力を自動でひらがなに展開する設定だった場合。
-                    // ローマ字をひらがなに展開
-                    phrase[0] = KanaDeRomanization.Attach(phrase[0]);
-                }
-            }
-
-            // 発音記号または歌詞が変更された場合の処理
-            if ((phonetic_symbol_edit_mode && EditorManager.InputTextBox.Text != original_symbol[0]) ||
-                 (!phonetic_symbol_edit_mode && phrase[0] != original_phrase[0])) {
-                if (phonetic_symbol_edit_mode) {
-                    // 発音記号を編集するモード
-                    phrase[0] = EditorManager.InputTextBox.getBufferText();
-                    phonetic_symbol[0] = EditorManager.InputTextBox.Text;
-
-                    // 入力された発音記号のうち、有効なものだけをピックアップ
-                    string[] spl = PortUtil.splitString(phonetic_symbol[0], new char[] { ' ' }, true);
-                    List<string> list = new List<string>();
-                    for (int i = 0; i < spl.Length; i++) {
-                        string s = spl[i];
-                        if (VsqPhoneticSymbol.isValidSymbol(s)) {
-                            list.Add(s);
-                        }
-                    }
-
-                    // ピックアップした発音記号をスペース区切りで結合
-                    phonetic_symbol[0] = "";
-                    bool first = true;
-                    foreach (var s in list) {
-                        if (first) {
-                            phonetic_symbol[0] += s;
-                            first = false;
-                        } else {
-                            phonetic_symbol[0] += " " + s;
-                        }
-                    }
-
-                    // 発音記号を編集すると、自動で「発音記号をプロテクトする」モードになるよ
-                    symbol_protected[0] = true;
-                } else {
-                    // 歌詞を編集するモード
-                    if (!symbol_protected[0]) {
-                        // 発音記号をプロテクトしない場合、歌詞から発音記号を引当てる
-                        SymbolTableEntry entry = SymbolTable.attatch(phrase[0]);
-                        if (entry == null) {
-                            phonetic_symbol[0] = "a";
-                        } else {
-                            phonetic_symbol[0] = entry.getSymbol();
-                            // 分節の分割記号'-'が入っている場合
-#if DEBUG
-                            sout.println("FormMain#executeLyricChangeCommand; word=" + entry.Word + "; symbol=" + entry.getSymbol() + "; rawSymbol=" + entry.getRawSymbol());
-#endif
-                            if (entry.Word.IndexOf('-') >= 0) {
-                                string[] spl_phrase = PortUtil.splitString(entry.Word, '\t');
-                                if (spl_phrase.Length <= count) {
-                                    // 分節の分割数が，後続の音符数と同じか少ない場合
-                                    string[] spl_symbol = PortUtil.splitString(entry.getRawSymbol(), '\t');
-                                    for (int i = 0; i < spl_phrase.Length; i++) {
-                                        phrase[i] = spl_phrase[i];
-                                        phonetic_symbol[i] = spl_symbol[i];
-                                    }
-                                } else {
-                                    // 後続の音符の個数が足りない
-                                    phrase[0] = entry.Word.Replace("\t", "");
-                                }
-                            }
-                        }
-                    } else {
-                        // 発音記号をプロテクトする場合、発音記号は最初のやつを使う
-                        phonetic_symbol[0] = original_symbol[0];
-                    }
-                }
-#if DEBUG
-                CDebug.WriteLine("    phrase,phonetic_symbol=" + phrase + "," + phonetic_symbol);
-#endif
-
-                for (int j = 0; j < count; j++) {
-                    if (phonetic_symbol_edit_mode) {
-                        items[j].ID.LyricHandle.L0.setPhoneticSymbol(phonetic_symbol[j]);
-                    } else {
-                        items[j].ID.LyricHandle.L0.Phrase = phrase[j];
-                        items[j].ID.LyricHandle.L0.setPhoneticSymbol(phonetic_symbol[j]);
-                        MusicManager.applyUtauParameter(vsq_track, items[j]);
-                    }
-                    if (original_symbol[j] != phonetic_symbol[j]) {
-                        List<string> spl = items[j].ID.LyricHandle.L0.getPhoneticSymbolList();
-                        List<int> adjustment = new List<int>();
-                        for (int i = 0; i < spl.Count; i++) {
-                            string s = spl[i];
-                            adjustment.Add(VsqPhoneticSymbol.isConsonant(s) ? 64 : 0);
-                        }
-                        items[j].ID.LyricHandle.L0.setConsonantAdjustmentList(adjustment);
-                    }
-                }
-
-                CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandEventReplaceRange(selected, items));
-                EditorManager.editHistory.register(vsq.executeCommand(run));
-                setEdited(true);
-            }
-        }
-
         /// <summary>
         /// 特殊なショートカットキーを処理します。
         /// </summary>
@@ -3457,54 +3253,6 @@ namespace cadencii
 #endif
         }
 
-        /// <summary>
-        /// 入力用のテキストボックスを初期化します
-        /// </summary>
-        public void showInputTextBox(string phrase, string phonetic_symbol, Point position, bool phonetic_symbol_edit_mode)
-        {
-#if DEBUG
-            CDebug.WriteLine("InitializeInputTextBox");
-#endif
-            hideInputTextBox();
-
-            EditorManager.InputTextBox.KeyUp += new KeyEventHandler(mInputTextBox_KeyUp);
-            EditorManager.InputTextBox.KeyDown += new KeyEventHandler(mInputTextBox_KeyDown);
-            EditorManager.InputTextBox.ImeModeChanged += mInputTextBox_ImeModeChanged;
-            EditorManager.InputTextBox.ImeMode = mLastIsImeModeOn ? Cadencii.Gui.ImeMode.Hiragana : Cadencii.Gui.ImeMode.Off;
-            if (phonetic_symbol_edit_mode) {
-                EditorManager.InputTextBox.setBufferText(phrase);
-                EditorManager.InputTextBox.setPhoneticSymbolEditMode(true);
-                EditorManager.InputTextBox.Text = phonetic_symbol;
-				EditorManager.InputTextBox.BackColor = FormMainModel.ColorTextboxBackcolor;
-            } else {
-                EditorManager.InputTextBox.setBufferText(phonetic_symbol);
-                EditorManager.InputTextBox.setPhoneticSymbolEditMode(false);
-                EditorManager.InputTextBox.Text = phrase;
-                EditorManager.InputTextBox.BackColor = Colors.White;
-            }
-            EditorManager.InputTextBox.Font = new Cadencii.Gui.Font (new System.Drawing.Font(EditorManager.editorConfig.BaseFontName, EditorConfig.FONT_SIZE9, System.Drawing.FontStyle.Regular));
-            var p = new Cadencii.Gui.Point(position.X + 4, position.Y + 2);
-            EditorManager.InputTextBox.Location = p;
-
-            EditorManager.InputTextBox.Parent = pictPianoRoll;
-            EditorManager.InputTextBox.Enabled = true;
-            EditorManager.InputTextBox.Visible = true;
-            EditorManager.InputTextBox.Focus();
-            EditorManager.InputTextBox.SelectAll();
-        }
-
-        public void hideInputTextBox()
-        {
-            EditorManager.InputTextBox.KeyUp -= new KeyEventHandler(mInputTextBox_KeyUp);
-            EditorManager.InputTextBox.KeyDown -= new KeyEventHandler(mInputTextBox_KeyDown);
-            EditorManager.InputTextBox.ImeModeChanged -= mInputTextBox_ImeModeChanged;
-            mLastSymbolEditMode = EditorManager.InputTextBox.isPhoneticSymbolEditMode();
-            EditorManager.InputTextBox.Visible = false;
-            EditorManager.InputTextBox.Parent = null;
-            EditorManager.InputTextBox.Enabled = false;
-            pictPianoRoll.Focus();
-        }
-
         public void updateMenuFonts()
         {
             if (EditorManager.editorConfig.BaseFontName == "") {
@@ -3927,231 +3675,6 @@ namespace cadencii
         }
         #endregion // public methods
 
-        //BOOKMARK: inputTextBox
-        #region EditorManager.InputTextBox
-	public void mInputTextBox_KeyDown(Object sender, KeyEventArgs e)
-        {
-#if DEBUG
-            sout.println("FormMain#mInputTextBox_KeyDown");
-#endif
-            bool shift = ((Keys) e.Modifiers & Keys.Shift) == Keys.Shift;
-            bool tab = (Keys) e.KeyCode == Keys.Tab;
-            bool enter = (Keys) e.KeyCode == Keys.Return;
-            if (tab || enter) {
-                executeLyricChangeCommand();
-                int selected = EditorManager.Selected;
-                int index = -1;
-                int width = pictPianoRoll.Width;
-                int height = pictPianoRoll.Height;
-                int key_width = EditorManager.keyWidth;
-                VsqTrack track = MusicManager.getVsqFile().Track[selected];
-                track.sortEvent();
-                if (tab) {
-                    int clock = 0;
-                    int search_index = EditorManager.itemSelection.getLastEvent().original.InternalID;
-                    int c = track.getEventCount();
-                    for (int i = 0; i < c; i++) {
-                        VsqEvent item = track.getEvent(i);
-                        if (item.InternalID == search_index) {
-                            index = i;
-                            clock = item.Clock;
-                            break;
-                        }
-                    }
-                    if (shift) {
-                        // 1個前の音符イベントを検索
-                        int tindex = -1;
-                        for (int i = track.getEventCount() - 1; i >= 0; i--) {
-                            VsqEvent ve = track.getEvent(i);
-                            if (ve.ID.type == VsqIDType.Anote && i != index && ve.Clock <= clock) {
-                                tindex = i;
-                                break;
-                            }
-                        }
-                        index = tindex;
-                    } else {
-                        // 1個後の音符イベントを検索
-                        int tindex = -1;
-                        int c2 = track.getEventCount();
-                        for (int i = 0; i < c2; i++) {
-                            VsqEvent ve = track.getEvent(i);
-                            if (ve.ID.type == VsqIDType.Anote && i != index && ve.Clock >= clock) {
-                                tindex = i;
-                                break;
-                            }
-                        }
-                        index = tindex;
-                    }
-                }
-                if (0 <= index && index < track.getEventCount()) {
-                    EditorManager.itemSelection.clearEvent();
-                    VsqEvent item = track.getEvent(index);
-                    EditorManager.itemSelection.addEvent(item.InternalID);
-                    int x = EditorManager.xCoordFromClocks(item.Clock);
-                    int y = EditorManager.yCoordFromNote(item.ID.Note);
-                    bool phonetic_symbol_edit_mode = EditorManager.InputTextBox.isPhoneticSymbolEditMode();
-                    showInputTextBox(
-                        item.ID.LyricHandle.L0.Phrase,
-                        item.ID.LyricHandle.L0.getPhoneticSymbol(),
-                        new Point(x, y),
-                        phonetic_symbol_edit_mode);
-                    int clWidth = (int)(EditorManager.InputTextBox.Width * model.ScaleXInv);
-
-                    // 画面上にEditorManager.InputTextBoxが見えるように，移動
-                    int SPACE = 20;
-                    // vScrollやhScrollをいじった場合はfalseにする．
-                    bool refresh_screen = true;
-                    // X軸方向について，見えるように移動
-                    if (x < key_width || width < x + EditorManager.InputTextBox.Width) {
-                        int clock, clock_x;
-                        if (x < key_width) {
-                            // 左に隠れてしまう場合
-                            clock = item.Clock;
-                        } else {
-                            // 右に隠れてしまう場合
-                            clock = item.Clock + clWidth;
-                        }
-                        if (shift) {
-                            // 左方向に移動していた場合
-                            // 右から３分の１の位置に移動させる
-                            clock_x = width - (width - key_width) / 3;
-                        } else {
-                            // 右方向に移動していた場合
-                            clock_x = key_width + (width - key_width) / 3;
-                        }
-                        double draft_d = (key_width + EditorManager.keyOffset - clock_x) * model.ScaleXInv + clock;
-                        if (draft_d < 0.0) {
-                            draft_d = 0.0;
-                        }
-                        int draft = (int)draft_d;
-                        if (draft < hScroll.Minimum) {
-                            draft = hScroll.Minimum;
-                        } else if (hScroll.Maximum < draft) {
-                            draft = hScroll.Maximum;
-                        }
-                        refresh_screen = false;
-                        hScroll.Value = draft;
-                    }
-                    // y軸方向について，見えるように移動
-                    int track_height = (int)(100 * model.ScaleY);
-                    if (y <= 0 || height - track_height <= y) {
-                        int note = item.ID.Note;
-                        if (y <= 0) {
-                            // 上にはみ出してしまう場合
-                            note = item.ID.Note + 1;
-                        } else {
-                            // 下にはみ出してしまう場合
-                            note = item.ID.Note - 2;
-                        }
-                        if (127 < note) {
-                            note = 127;
-                        }
-                        if (note < 0) {
-                            note = 0;
-                        }
-						model.EnsureNoteVisibleOnPianoRoll(note);
-                    }
-                    if (refresh_screen) {
-                        refreshScreen();
-                    }
-                } else {
-                    int id = EditorManager.itemSelection.getLastEvent().original.InternalID;
-                    EditorManager.itemSelection.clearEvent();
-                    EditorManager.itemSelection.addEvent(id);
-                    hideInputTextBox();
-                }
-            }
-        }
-
-        public void mInputTextBox_KeyUp(Object sender, KeyEventArgs e)
-        {
-#if DEBUG
-            sout.println("FormMain#mInputTextBox_KeyUp");
-#endif
-            bool flip = ((Keys) e.KeyCode == Keys.Up || (Keys) e.KeyCode == Keys.Down) && ((Keys) e.Modifiers == Keys.Alt);
-            bool hide = (Keys) e.KeyCode == Keys.Escape;
-
-            if (flip) {
-                if (EditorManager.InputTextBox.Visible) {
-                    model.FlipInputTextBoxMode();
-                }
-            } else if (hide) {
-                hideInputTextBox();
-            }
-        }
-
-        public void mInputTextBox_ImeModeChanged(Object sender, EventArgs e)
-        {
-            mLastIsImeModeOn = EditorManager.InputTextBox.ImeMode == Cadencii.Gui.ImeMode.Hiragana;
-        }
-
-        public void mInputTextBox_KeyPress(Object sender, Cadencii.Gui.KeyPressEventArgs e)
-        {
-#if DEBUG
-            sout.println("FormMain#mInputTextBox_KeyPress");
-#endif
-            //           Enter                                  Tab
-            e.Handled = (e.KeyChar == Convert.ToChar(13)) || (e.KeyChar == Convert.ToChar(09));
-        }
-        #endregion
-
-        //BOOKMARK: EditorManager
-        #region EditorManager
-        public void EditorManager_EditedStateChanged(Object sender, bool edited)
-        {
-            setEdited(edited);
-        }
-
-        public void EditorManager_GridVisibleChanged(Object sender, EventArgs e)
-        {
-            menuVisualGridline.Checked = EditorManager.isGridVisible();
-            stripBtnGrid.Pushed = EditorManager.isGridVisible();
-            cMenuPianoGrid.Checked = EditorManager.isGridVisible();
-        }
-
-        public void EditorManager_MainWindowFocusRequired(Object sender, EventArgs e)
-        {
-            this.Focus();
-        }
-
-        public void EditorManager_SelectedToolChanged(Object sender, EventArgs e)
-        {
-            applySelectedTool();
-        }
-
-        public void ItemSelectionModel_SelectedEventChanged(Object sender, bool selected_event_is_null)
-        {
-            menuEditCut.Enabled = !selected_event_is_null;
-            menuEditPaste.Enabled = !selected_event_is_null;
-            menuEditDelete.Enabled = !selected_event_is_null;
-            cMenuPianoCut.Enabled = !selected_event_is_null;
-            cMenuPianoCopy.Enabled = !selected_event_is_null;
-            cMenuPianoDelete.Enabled = !selected_event_is_null;
-            cMenuPianoExpressionProperty.Enabled = !selected_event_is_null;
-            menuLyricVibratoProperty.Enabled = !selected_event_is_null;
-            menuLyricExpressionProperty.Enabled = !selected_event_is_null;
-            stripBtnCut.Enabled = !selected_event_is_null;
-            stripBtnCopy.Enabled = !selected_event_is_null;
-        }
-
-        public void EditorManager_UpdateBgmStatusRequired(Object sender, EventArgs e)
-        {
-            updateBgmMenuState();
-        }
-
-        public void EditorManager_WaveViewRealoadRequired(Object sender, WaveViewRealoadRequiredEventArgs arg)
-        {
-            int track = arg.track;
-            string file = arg.file;
-            double sec_start = arg.secStart;
-            double sec_end = arg.secEnd;
-            if (sec_start <= sec_end) {
-                waveView.reloadPartial(track - 1, file, sec_start, sec_end);
-            } else {
-                waveView.load(track - 1, file);
-            }
-        }
-        #endregion
 
 #if ENABLE_MOUSE_ENTER_STATUS_LABEL
         /// <summary>

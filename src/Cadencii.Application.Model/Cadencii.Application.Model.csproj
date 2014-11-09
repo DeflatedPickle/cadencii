@@ -247,6 +247,8 @@
     <Compile Include="app_ui\models\FormMainModel.OtherItemsModel.cs" />
     <Compile Include="app_ui\models\FormMainModel.FormModel.cs" />
     <Compile Include="AppConfig.cs" />
+    <Compile Include="app_ui\models\FormMainModel.EditorManagerCommandsModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.InputTextBoxModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

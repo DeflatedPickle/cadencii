@@ -6,6 +6,11 @@ namespace cadencii
 {
 	public interface UiMenuItem
 	{
+		bool Enabled {
+			get;
+			set;
+		}
+
 		string Text {
 			get;
 			set;

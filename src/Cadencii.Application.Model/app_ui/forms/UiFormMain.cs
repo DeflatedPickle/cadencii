@@ -26,6 +26,8 @@ namespace cadencii
     {
 		FormMainModel Model { get; }
 
+		UiToolBarButton stripBtnGrid { get; set; }
+
 		cadencii.apputil.BSplitContainer splitContainer2 { get;set; }
 		cadencii.apputil.BSplitContainer splitContainerProperty { get; set; }
 		System.ComponentModel.BackgroundWorker bgWorkScreen { get; set; }
@@ -74,8 +76,6 @@ namespace cadencii
 		int mMiddleButtonHScroll { get; set; }
 		void updateContextMenuPiano (Point mouseAt);
 		void fixAddingEvent ();
-		void hideInputTextBox();
-		void executeLyricChangeCommand();
 		int computeScrollValueFromWheelDelta(int delta);
 		int computeHScrollValueForMiddleDrag(int mouse_x);
 		int computeVScrollValueForMiddleDrag (int mouse_y);
@@ -99,8 +99,6 @@ namespace cadencii
 		void updateCMenuPianoFixed();
 		void applySelectedTool();
 
-		void showInputTextBox (string phrase, string phonetic_symbol, Point position, bool phonetic_symbol_edit_mode);
-		bool mLastSymbolEditMode { get; set; }
 		void moveUpDownLeftRight (int upDown, int leftRight);
 
 		UiToolStripMenuItem menuHelpLogSwitch { get; set; }

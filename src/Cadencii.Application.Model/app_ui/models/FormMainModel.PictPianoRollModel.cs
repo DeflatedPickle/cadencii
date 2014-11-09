@@ -107,7 +107,7 @@ namespace cadencii
 						}
 						EditorManager.itemSelection.addEvent(item.InternalID);
 						int internal_id = item.InternalID;
-						parent.form.hideInputTextBox();
+						parent.hideInputTextBox();
 						if (EditorManager.SelectedTool == EditTool.ERASER) {
 							CadenciiCommand run = new CadenciiCommand(VsqCommand.generateCommandEventDelete(selected, internal_id));
 							EditorManager.editHistory.register(MusicManager.getVsqFile().executeCommand(run));
@@ -146,7 +146,7 @@ namespace cadencii
 							if (!EditorManager.mIsPointerDowned) {
 								EditorManager.itemSelection.clearEvent();
 							}
-							parent.form.hideInputTextBox();
+							parent.hideInputTextBox();
 						}
 						if (EditorManager.SelectedTool == EditTool.ERASER) {
 							// マウス位置にビブラートの波波があったら削除する
@@ -277,19 +277,19 @@ namespace cadencii
 						mMouseHoverThread.Abort();
 						#endif
 						if (!EditorManager.editorConfig.KeepLyricInputMode) {
-							parent.form.mLastSymbolEditMode = false;
+							parent.mLastSymbolEditMode = false;
 						}
-						parent.form.showInputTextBox(
+						parent.showInputTextBox(
 							item.ID.LyricHandle.L0.Phrase,
 							item.ID.LyricHandle.L0.getPhoneticSymbol(),
 							new Point(rect.X, rect.Y),
-							parent.form.mLastSymbolEditMode);
+							parent.mLastSymbolEditMode);
 						parent.form.refreshScreen();
 						return;
 					}
 				} else {
 					EditorManager.itemSelection.clearEvent();
-					parent.form.hideInputTextBox();
+					parent.hideInputTextBox();
 					if (EditorManager.editorConfig.ShowExpLine && EditorManager.keyWidth <= e.X) {
 						int stdx = parent.form.Model.StartToDrawX;
 						int stdy = parent.form.Model.StartToDrawY;
@@ -546,7 +546,7 @@ namespace cadencii
 					CDebug.WriteLine("    No Event");
 					#endif
 					if (EditorManager.itemSelection.getLastEvent() != null) {
-						parent.form.executeLyricChangeCommand();
+						parent.executeLyricChangeCommand();
 					}
 					bool start_mouse_hover_generator = true;
 
@@ -679,9 +679,9 @@ namespace cadencii
 					CDebug.WriteLine("    Event Found");
 					#endif
 					if (EditorManager.itemSelection.isEventContains(selected, item.InternalID)) {
-						parent.form.executeLyricChangeCommand();
+						parent.executeLyricChangeCommand();
 					}
-					parent.form.hideInputTextBox();
+					parent.hideInputTextBox();
 					if (selected_tool != EditTool.ERASER) {
 						#if ENABLE_MOUSEHOVER
 						mMouseHoverThread = new Thread( new ParameterizedThreadStart( MouseHoverEventGenerator ) );
