@@ -180,7 +180,7 @@ namespace cadencii
 				try {
 					ib = ApplicationUIHost.Create<InputBox>(_("Input Offset Seconds"));
 					ib.Location = parent.GetFormPreferedLocation(ib);
-					ib.setResult(MusicManager.getBgm(index).readOffsetSeconds + "");
+					ib.Result = (MusicManager.getBgm(index).readOffsetSeconds + "");
 					var dr = DialogManager.ShowModalDialog(ib, parent.form);
 					if (dr != Cadencii.Gui.DialogResult.OK) {
 						return;
@@ -198,7 +198,7 @@ namespace cadencii
 					}
 					double draft;
 					try {
-						draft = double.Parse(ib.getResult());
+						draft = double.Parse(ib.Result);
 						item.readOffsetSeconds = draft;
 						menu.ToolTipText = draft + " " + _("seconds");
 					} catch (Exception ex3) {

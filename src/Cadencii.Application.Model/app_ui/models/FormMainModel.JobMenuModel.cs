@@ -246,11 +246,11 @@ namespace cadencii
 				try {
 					dialog = ApplicationUIHost.Create<InputBox>(_("input pre-measure"));
 					int old_pre_measure = MusicManager.getVsqFile().getPreMeasure();
-					dialog.setResult(old_pre_measure + "");
+					dialog.Result = (old_pre_measure + "");
 					dialog.Location = parent.GetFormPreferedLocation(dialog);
 					var ret = DialogManager.ShowModalDialog(dialog, parent.form);
 					if (ret == DialogResult.OK) {
-						string str_result = dialog.getResult();
+						string str_result = dialog.Result;
 						int result = old_pre_measure;
 						try {
 							result = int.Parse(str_result);

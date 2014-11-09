@@ -13,11 +13,11 @@ public class GenerateVLF
     {
         int track = 1;
         InputBox ib = ApplicationUIHost.Create<InputBox>("Input target track index");
-        ib.setResult(track.ToString());
+        ib.Result = (track.ToString());
         if (ib.ShowDialog() != Cadencii.Gui.DialogResult.OK) {
             return false;
         }
-        if (!int.TryParse(ib.getResult(), out track)) {
+        if (!int.TryParse(ib.Result, out track)) {
             MessageBox.Show("integer parse error");
             return false;
         }

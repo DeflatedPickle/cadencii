@@ -205,50 +205,50 @@
     <Compile Include="app_ui\forms\UiFormNoteProperty.cs" />
     <Compile Include="app_ui\forms\UiFormMain.cs" />
     <Compile Include="app_ui\controls\TrackSelectorConsts.cs" />
-    <Compile Include="app_ui\models\FormMainModel.cs" />
     <Compile Include="app_ui\controls\RecentFileMenuItem.cs" />
-    <Compile Include="app_ui\models\FormMainModel.FileMenuModel.cs" />
-    <Compile Include="app_ui\models\FormMainModel.SettingsMenuModel.cs" />
-    <Compile Include="app_ui\models\FormMainModel.LyricMenuModel.cs" />
-    <Compile Include="app_ui\models\FormMainModel.EditMenuModel.cs" />
-    <Compile Include="app_ui\models\FormMainModel.Editing.cs" />
-    <Compile Include="app_ui\models\FormMainModel.VisualMenuModel.cs" />
     <Compile Include="gui_fx_extended\Clipboard.cs" />
     <Compile Include="gui_fx_extended\ClipboardEntry.cs" />
     <Compile Include="gui_fx_extended\ClipboardModel.cs" />
     <Compile Include="gui_fx_extended\ApplicationUIHost.cs" />
     <Compile Include="gui_fx_extended\Dialogs.cs" />
-    <Compile Include="app_ui\models\FormMainModel.JobMenuModel.cs" />
-    <Compile Include="app_ui\models\FormMainModel.TrackMenuModel.cs" />
-    <Compile Include="app_ui\models\FormMainModel.ScriptMenuModel.cs" />
     <Compile Include="app_ui\controls\PaletteToolMenuItem.cs" />
     <Compile Include="app_ui\forms\RendererMenuHandler.cs" />
-    <Compile Include="app_ui\models\FormMainModel.HelpMenuModel.cs" />
-    <Compile Include="app_ui\models\FormMainModel.HiddenMenuModel.cs" />
     <Compile Include="app_ui\controls\BgmMenuItem.cs" />
     <Compile Include="app_ui\controls\TrackSelectorSingerDropdownMenuItem.cs" />
     <Compile Include="app_ui\controls\TrackSelectorSingerPopupMenu.cs" />
-    <Compile Include="app_ui\models\FormMainModel.PianoMenuModel.cs" />
-    <Compile Include="app_ui\models\FormMainModel.TrackSelectorMenuModel.cs" />
-    <Compile Include="app_ui\models\FormMainModel.GameController.cs" />
     <Compile Include="gui_fx_extended\GameControllerManager.cs" />
-    <Compile Include="app_ui\models\FormMainModel.PictPianoRollModel.cs" />
+    <Compile Include="Resources.cs" />
+    <Compile Include="AppConfig.cs" />
+    <Compile Include="app_ui\models\CurveEditMode.cs" />
     <Compile Include="app_ui\models\ExtDragXMode.cs" />
     <Compile Include="app_ui\models\ExtDragYMode.cs" />
-    <Compile Include="app_ui\models\FormMainModel.TrackSelectorModel.cs" />
-    <Compile Include="app_ui\models\CurveEditMode.cs" />
-    <Compile Include="app_ui\models\FormMainModel.Playing.cs" />
-    <Compile Include="app_ui\models\PositionIndicatorMouseDownMode.cs" />
-    <Compile Include="Resources.cs" />
-    <Compile Include="app_ui\models\FormMainModel.PositionIndicatorModel.cs" />
-    <Compile Include="app_ui\models\FormMainModel.WaveViewModel.cs" />
-    <Compile Include="app_ui\models\FormMainModel.ToolBarsModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.Editing.cs" />
+    <Compile Include="app_ui\models\FormMainModel.EditMenuModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.EditorManagerCommandsModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.FileMenuModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.FormModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.GameController.cs" />
+    <Compile Include="app_ui\models\FormMainModel.HelpMenuModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.HiddenMenuModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.InputTextBoxModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.JobMenuModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.LyricMenuModel.cs" />
     <Compile Include="app_ui\models\FormMainModel.MidiDevices.cs" />
     <Compile Include="app_ui\models\FormMainModel.OtherItemsModel.cs" />
-    <Compile Include="app_ui\models\FormMainModel.FormModel.cs" />
-    <Compile Include="AppConfig.cs" />
-    <Compile Include="app_ui\models\FormMainModel.EditorManagerCommandsModel.cs" />
-    <Compile Include="app_ui\models\FormMainModel.InputTextBoxModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.PianoMenuModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.PictPianoRollModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.Playing.cs" />
+    <Compile Include="app_ui\models\FormMainModel.PositionIndicatorModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.ScriptMenuModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.SettingsMenuModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.ToolBarsModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.TrackMenuModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.TrackSelectorMenuModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.TrackSelectorModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.VisualMenuModel.cs" />
+    <Compile Include="app_ui\models\FormMainModel.WaveViewModel.cs" />
+    <Compile Include="app_ui\models\PositionIndicatorMouseDownMode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -290,5 +290,11 @@
     <Folder Include="app_ui\" />
     <Folder Include="app_ui\models\" />
     <Folder Include="gui_fx_extended\" />
+    <Folder Include="app_ui\models\main\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="app_ui\forms\InputBox.xml">
+      <DependentUpon>InputBox.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

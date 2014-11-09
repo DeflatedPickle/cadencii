@@ -12,7 +12,9 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
+using System.Linq;
 using System.Windows.Forms;
+using System.Xml;
 
 
 namespace cadencii
@@ -27,15 +29,10 @@ namespace cadencii
             lblMessage.Text = message;
         }
 
-        public string getResult()
-        {
-            return txtInput.Text;
-        }
-
-        public void setResult(string value)
-        {
-            txtInput.Text = value;
-        }
+		public string Result {
+			get { return txtInput.Text; }
+			set { txtInput.Text = value; }
+		}
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
@@ -81,6 +78,12 @@ namespace cadencii
         /// </summary>
         private void InitializeComponent()
         {
+			#if true
+			this.SuspendLayout();
+			ApplicationUIHost.Instance.ApplyXml (this, "Cadencii.Application.Model.app_ui.forms.InputBox.xml");
+			this.ResumeLayout(false);
+			this.PerformLayout();
+			#else
             this.txtInput = new TextBox();
             this.btnOk = new Button();
             this.lblMessage = new Label();
@@ -145,7 +148,7 @@ namespace cadencii
             this.Text = "InputBox";
             this.ResumeLayout(false);
             this.PerformLayout();
-
+			#endif
         }
         #endregion
 

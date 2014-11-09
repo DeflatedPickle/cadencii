@@ -5,8 +5,7 @@ namespace cadencii
 {
 	public interface InputBox : UiForm
 	{
-		string getResult();
-		void setResult(string value);
+		string Result { get; set; }
 	}
 }
 

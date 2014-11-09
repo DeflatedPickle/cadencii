@@ -1099,11 +1099,11 @@ namespace cadencii
 				int selected = EditorManager.Selected;
 				VsqFileEx vsq = MusicManager.getVsqFile();
 				ib = ApplicationUIHost.Create<InputBox>(_("Input new name of track"));
-				ib.setResult(vsq.Track[selected].getName());
+				ib.Result = (vsq.Track[selected].getName());
 				ib.Location = GetFormPreferedLocation(ib);
 				var dr = DialogManager.ShowModalDialog(ib, form);
 				if (dr == DialogResult.OK) {
-					string ret = ib.getResult();
+					string ret = ib.Result;
 					CadenciiCommand run = new CadenciiCommand(
 						VsqCommand.generateCommandTrackChangeName(selected, ret));
 					EditorManager.editHistory.register(vsq.executeCommand(run));

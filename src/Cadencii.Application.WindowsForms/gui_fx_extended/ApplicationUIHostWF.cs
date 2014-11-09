@@ -1,6 +1,9 @@
 using System;
 using System.Reflection;
 using Cadencii.Gui;
+using System.Xml;
+using System.Windows.Forms;
+using System.Linq;
 
 namespace cadencii
 {
@@ -25,6 +28,64 @@ namespace cadencii
 					throw new NotImplementedException (pi.PropertyType.FullName);
 			}
 		}
+
+		#region XML Control Tree support
+
+		object FindControlTreeItem (Control c, string name)
+		{
+			if (c.Name == name)
+				return c;
+			return c.Controls.OfType<Control> ()
+				.Select (cc => FindControlTreeItem (cc, name))
+				.FirstOrDefault (x => x != null);
+		}
+
+		object Deserialize (Control root, string value, Type t)
+		{
+			if (t.IsEnum)
+				return Enum.Parse (t, value);
+			else if (Type.GetTypeCode (t) != TypeCode.Object)
+				return Convert.ChangeType (value, t);
+			else if (typeof (Cadencii.Gui.Toolkit.UiControl).IsAssignableFrom (t) && value.FirstOrDefault () == '#')
+				return FindControlTreeItem (root, value.Substring (1));
+			else {
+				var argStrings = value.TrimStart ('(').TrimEnd (')').Split (',').Select (x => x.Trim ()).ToArray ();
+				var ctor = t.GetConstructors ().First (c => c.GetParameters ().Length == argStrings.Length);
+				var argObjs = argStrings.Zip (ctor.GetParameters (), (s, pi) => Deserialize (root, s, pi.ParameterType));
+				return Activator.CreateInstance (t, argObjs);
+			}
+		}
+
+		void ApplyXml (Control root, XmlElement e, object o)
+		{
+			var t = o.GetType ();
+			foreach (XmlElement c in e.ChildNodes) {
+				var ct = typeof(System.Windows.Forms.Form).Assembly.GetType ("System.Windows.Forms." + c.LocalName);
+				var obj = ct != null ? Activator.CreateInstance (ct) : ApplicationUIHost.Create (c.LocalName);
+				ApplyXml (root, c, obj);
+				((Control) o).Controls.Add ((Control) obj);
+			}
+			foreach (XmlAttribute a in e.Attributes) {
+				if (a.LocalName == "id") {
+					var pi = root.GetType ().GetProperty (a.Value, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+					if (pi != null)
+						pi.SetValue (root, o);
+				} else {
+					var p = t.GetProperty (a.LocalName);
+					var v = Deserialize (root, a.Value, p.PropertyType);
+					p.SetValue (o, v);
+				}
+			}
+		}
+
+		public override void ApplyXml (Cadencii.Gui.Toolkit.UiControl control, string xmlResourceName)
+		{
+			var xml = new XmlDocument ();
+			xml.Load (typeof (FormMainModel).Assembly.GetManifestResourceStream (xmlResourceName));
+			ApplyXml ((Control) control.Native, xml.DocumentElement, control);
+		}
+
+		#endregion
 	}
 }
 
