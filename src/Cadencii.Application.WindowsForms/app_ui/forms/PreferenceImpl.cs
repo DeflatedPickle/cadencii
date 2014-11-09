@@ -1507,7 +1507,7 @@ namespace cadencii
                 return;
             }
             Font font = new Font(font_name, Cadencii.Gui.Font.PLAIN, (int)f.SizeInPoints);
-            Util.applyFontRecurse(this, font);
+            AwtHost.Current.ApplyFontRecurse(this, font);
         }
 
         private void UpdateUtausingerList()

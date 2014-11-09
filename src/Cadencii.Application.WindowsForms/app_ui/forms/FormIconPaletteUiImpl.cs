@@ -45,7 +45,7 @@ namespace cadencii
             InitializeComponent();
             mMainWindow = main_window;
             applyLanguage();
-            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
             init();
             registerEventHandlers();
             SortedDictionary<string, Keys[]> dict = EditorManager.editorConfig.getShortcutKeysDictionary(mMainWindow.getDefaultShortcutKeys());

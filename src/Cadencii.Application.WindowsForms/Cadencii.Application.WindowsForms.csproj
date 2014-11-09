@@ -82,7 +82,6 @@
     <Compile Include="..\Cadencii.Gui.Framework.WindowsForms.Shared\GuiExtensions.cs">
       <Link>GuiExtensions.cs</Link>
     </Compile>
-    <Compile Include="Util.cs" />
     <Compile Include="gui_fx_extended\ApplicationUIHostWF.cs" />
     <Compile Include="gui_fx_extended\ClipboardWF.cs" />
     <Compile Include="gui_fx_extended\DialogsWF.cs" />

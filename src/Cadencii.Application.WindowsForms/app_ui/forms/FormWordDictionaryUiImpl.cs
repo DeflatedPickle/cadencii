@@ -18,6 +18,8 @@ using cadencii.vsq;
 using cadencii;
 using cadencii.java.util;
 using cadencii.windows.forms;
+using Cadencii.Gui;
+using DialogResult = System.Windows.Forms.DialogResult;
 
 namespace cadencii
 {
@@ -29,7 +31,7 @@ namespace cadencii
         {
             this.listener = listener;
             InitializeComponent();
-            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         public void listDictionariesSetColumnWidth(int columnWidth)

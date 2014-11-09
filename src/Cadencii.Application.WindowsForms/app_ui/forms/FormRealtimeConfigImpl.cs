@@ -15,6 +15,7 @@ using System;
 using cadencii;
 using cadencii.windows.forms;
 using cadencii.apputil;
+using Cadencii.Gui;
 
 namespace cadencii
 {
@@ -32,7 +33,7 @@ namespace cadencii
             timer.Interval = 10;
             registerEventHandlers();
             setResources();
-            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods

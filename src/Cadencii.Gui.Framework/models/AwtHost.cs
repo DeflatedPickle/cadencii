@@ -17,6 +17,7 @@ using Cadencii.Gui.geom;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
+using cadencii;
 
 namespace Cadencii.Gui
 {
@@ -42,7 +43,9 @@ namespace Cadencii.Gui
 
 		public abstract Keys DefaultModifierKeys ();
 
-		public abstract string getComponentName (Object obj);
+		public abstract string GetComponentName (Object obj);
+
+		public abstract void ApplyFontRecurse (UiControl control, Font font);
 
 		public static AwtHost Current { get; set; }
 

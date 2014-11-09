@@ -15,6 +15,7 @@ using System;
 using cadencii.vsq;
 using cadencii.apputil;
 using cadencii.windows.forms;
+using Cadencii.Gui;
 
 
 
@@ -87,7 +88,7 @@ namespace cadencii
             numEndBar.Value = lastEndBar;
             numEndBeat.Value = lastEndBeat;
             lockRequired = false;
-            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region helper methods

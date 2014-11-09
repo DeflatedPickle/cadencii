@@ -17,6 +17,7 @@ using cadencii.apputil;
 using cadencii;
 using cadencii.java.util;
 using cadencii.windows.forms;
+using Cadencii.Gui;
 
 
 
@@ -58,7 +59,7 @@ namespace cadencii
                 btnSkip.Enabled = false;
                 btnReset.Enabled = false;
             }
-            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods

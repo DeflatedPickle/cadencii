@@ -46,7 +46,7 @@ namespace cadencii
 
             registerEventHandlers();
             setResources();
-            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
             applyLanguage();
         }
 

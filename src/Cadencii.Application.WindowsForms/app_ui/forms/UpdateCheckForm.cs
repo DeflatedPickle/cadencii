@@ -51,7 +51,7 @@ namespace cadencii.ui.dotnet
 
         public void setFont(Cadencii.Gui.Font font)
         {
-            cadencii.apputil.Util.applyFontRecurse(this, font);
+            cadencii.apputil.AwtHost.Current.ApplyFontRecurse(this, font);
         }
 
         public void setOkButtonText(string text)

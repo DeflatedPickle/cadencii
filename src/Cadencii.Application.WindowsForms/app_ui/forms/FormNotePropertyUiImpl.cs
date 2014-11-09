@@ -16,6 +16,9 @@ using System.Windows.Forms;
 using System.Drawing;
 using cadencii.apputil;
 using Keys = Cadencii.Gui.Keys;
+using Cadencii.Gui;
+using Rectangle = System.Drawing.Rectangle;
+using Screen = System.Windows.Forms.Screen;
 
 namespace cadencii
 {
@@ -28,7 +31,7 @@ namespace cadencii
         {
             this.listener = listener;
             InitializeComponent();
-            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
 
@@ -268,7 +271,7 @@ namespace cadencii
             this.listener.locationOrSizeChanged();
         }
 
-        private void FormNotePropertyUiImpl_FormClosing(object sender, FormClosingEventArgs e)
+        private void FormNotePropertyUiImpl_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
             if (e.CloseReason != System.Windows.Forms.CloseReason.UserClosing) {
                 return;

@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii.windows.forms;
 using Keys = Cadencii.Gui.Keys;
+using Cadencii.Gui;
 
 
 namespace cadencii
@@ -40,7 +41,7 @@ namespace cadencii
             numClock.Maximum = clock_max;
             numClock.Value = clock;
             numTempo.Value = (decimal)tempo;
-            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods

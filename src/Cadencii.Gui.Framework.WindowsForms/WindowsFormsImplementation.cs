@@ -73,7 +73,7 @@ namespace Cadencii.Gui
 		/// </summary>
 		/// <param name="obj"></param>
 		/// <returns></returns>
-		public override string getComponentName (Object obj)
+		public override string GetComponentName (Object obj)
 		{
 			if (obj == null) {
 				return "";
@@ -82,6 +82,19 @@ namespace Cadencii.Gui
 				return ((System.Windows.Forms.Control)obj).Name;
 			} else {
 				return "";
+			}
+		}
+
+		public override void ApplyFontRecurse (UiControl control, Font font)
+		{
+			ApplyFontRecurseW ((Control) control, font);
+		}
+
+		void ApplyFontRecurseW (Control c, Cadencii.Gui.Font font)
+		{
+			c.Font = (System.Drawing.Font) font.NativeFont;
+			foreach (Control cc in c.Controls) {
+				ApplyFontRecurseW (cc, font);
 			}
 		}
 	}

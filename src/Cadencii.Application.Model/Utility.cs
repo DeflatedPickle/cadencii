@@ -960,17 +960,8 @@ namespace cadencii
             return dir3;
         }
 
-		/// <summary>
-		/// このクラスのメソッド'applyFontRecurse', 'applyToolStripFontRecurse', 'applyContextMenuFontRecurse'の呼び出しを有効とするかどうか。
-		/// デフォルトではtrue
-		/// </summary>
-		public static bool isApplyFontRecurseEnabled = true;
-
 		public static void applyContextMenuFontRecurse(UiContextMenuStrip item, Cadencii.Gui.Font font)
 		{
-			if (!isApplyFontRecurseEnabled) {
-				return;
-			}
 			item.Font = font;
 			foreach (var tsi in item.Items) {
 				applyToolStripFontRecurse(tsi, font);
@@ -979,9 +970,6 @@ namespace cadencii
 
 		public static void applyToolStripFontRecurse(UiToolStripItem item, Cadencii.Gui.Font font)
 		{
-			if (!isApplyFontRecurseEnabled) {
-				return;
-			}
 			item.Font = font;
 			if (item is UiToolStripMenuItem) {
 				var tsmi = (UiToolStripMenuItem)item;

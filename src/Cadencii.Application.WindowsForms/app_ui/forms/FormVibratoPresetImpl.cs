@@ -19,6 +19,7 @@ using cadencii.vsq;
 using cadencii;
 using cadencii.java.util;
 using cadencii.windows.forms;
+using Cadencii.Gui;
 
 
 namespace cadencii
@@ -73,7 +74,7 @@ namespace cadencii
         {
             InitializeComponent();
             applyLanguage();
-            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
             this.Size = new System.Drawing.Size(mPreviousWidth, mPreviousHeight);
             registerEventHandlers();
 

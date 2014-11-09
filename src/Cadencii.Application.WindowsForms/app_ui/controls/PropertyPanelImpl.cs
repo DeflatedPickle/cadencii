@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using cadencii.apputil;
 using cadencii.java.util;
 using cadencii.vsq;
+using Cadencii.Gui;
 
 namespace cadencii
 {
@@ -35,7 +36,7 @@ namespace cadencii
             registerEventHandlers();
             setResources();
             m_items = new List<SelectedEventEntry>();
-            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         public bool isEditing()

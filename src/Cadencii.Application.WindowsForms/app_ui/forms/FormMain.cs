@@ -37,11 +37,6 @@ using cadencii.utau;
 using cadencii.ui;
 using ApplicationGlobal = cadencii.core.ApplicationGlobal;
 using Keys = Cadencii.Gui.Keys;
-using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
-using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
-using MouseButtons = System.Windows.Forms.MouseButtons;
-using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
-using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using NMouseButtons = Cadencii.Gui.MouseButtons;
 using NMouseEventArgs = Cadencii.Gui.MouseEventArgs;
 using NMouseEventHandler = Cadencii.Gui.MouseEventHandler;
@@ -3613,12 +3608,12 @@ namespace cadencii
                 return;
             }
             Font font = EditorManager.editorConfig.getBaseFont();
-            Util.applyFontRecurse((UiForm) this, font);
+            AwtHost.Current.ApplyFontRecurse((UiForm) this, font);
 #if !JAVA_MAC
             Utility.applyContextMenuFontRecurse(cMenuPiano, font);
             Utility.applyContextMenuFontRecurse(cMenuTrackSelector, font);
             if (EditorManager.MixerWindow != null) {
-                Util.applyFontRecurse(EditorManager.MixerWindow, font);
+                AwtHost.Current.ApplyFontRecurse(EditorManager.MixerWindow, font);
             }
             Utility.applyContextMenuFontRecurse(cMenuTrackTab, font);
             trackSelector.applyFont(font);
@@ -3632,12 +3627,12 @@ namespace cadencii
             Utility.applyToolStripFontRecurse(menuSetting, font);
             Utility.applyToolStripFontRecurse(menuHelp, font);
 #endif
-            Util.applyFontRecurse(toolBarFile, font);
-            Util.applyFontRecurse(toolBarMeasure, font);
-            Util.applyFontRecurse(toolBarPosition, font);
-            Util.applyFontRecurse(toolBarTool, font);
+            AwtHost.Current.ApplyFontRecurse(toolBarFile, font);
+            AwtHost.Current.ApplyFontRecurse(toolBarMeasure, font);
+            AwtHost.Current.ApplyFontRecurse(toolBarPosition, font);
+            AwtHost.Current.ApplyFontRecurse(toolBarTool, font);
             if (mDialogPreference != null) {
-                Util.applyFontRecurse(mDialogPreference, font);
+                AwtHost.Current.ApplyFontRecurse(mDialogPreference, font);
             }
 
 			cadencii.core.EditorConfig.baseFont10Bold = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE10);

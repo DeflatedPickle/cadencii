@@ -19,6 +19,7 @@ using cadencii.vsq;
 using cadencii.windows.forms;
 using cadencii.java.util;
 using Keys = Cadencii.Gui.Keys;
+using Cadencii.Gui;
 
 namespace cadencii
 {
@@ -32,7 +33,7 @@ namespace cadencii
             InitializeComponent();
             registerEventHandlers();
             setResources();
-            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
             applyLanguage();
 
             if (note_head_handle != null) {

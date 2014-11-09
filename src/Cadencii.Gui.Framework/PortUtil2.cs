@@ -60,7 +60,7 @@ namespace cadencii.core2
         /// <returns></returns>
         public static string getComponentName(Object obj)
         {
-        	return AwtHost.Current.getComponentName (obj);
+        	return AwtHost.Current.GetComponentName (obj);
         }
     }
 }

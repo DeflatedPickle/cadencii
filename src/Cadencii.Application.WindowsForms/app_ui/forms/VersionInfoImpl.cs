@@ -341,7 +341,7 @@ namespace cadencii
         private void VersionInfo_FontChanged(Object sender, EventArgs e)
         {
             for (int i = 0; i < this.Controls.Count; i++) {
-				Util.applyFontRecurse((UiControl) this.Controls[i], new Cadencii.Gui.Font(this.Font));
+				AwtHost.Current.ApplyFontRecurse((UiControl) this.Controls[i], new Cadencii.Gui.Font(this.Font));
             }
         }
 

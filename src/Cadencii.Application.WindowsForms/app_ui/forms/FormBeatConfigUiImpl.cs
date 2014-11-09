@@ -15,6 +15,7 @@ using System;
 using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii;
+using Cadencii.Gui;
 
 namespace cadencii
 {
@@ -123,7 +124,7 @@ namespace cadencii
 
         public void setFont(string fontName, float fontSize)
         {
-            Util.applyFontRecurse(this, new Cadencii.Gui.Font(new System.Drawing.Font(fontName, fontSize)));
+            AwtHost.Current.ApplyFontRecurse(this, new Cadencii.Gui.Font(new System.Drawing.Font(fontName, fontSize)));
         }
 
         public void setTextPositionGroup(string value)

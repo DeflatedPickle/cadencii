@@ -35,7 +35,7 @@ namespace cadencii
             InitializeComponent();
             applyLanguage();
             setMode(FormMidiMode.EXPORT);
-            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
             listTrack.SetColumnHeaders(new string[] { _("Track"), _("Name"), _("Notes") });
             listTrack.GetColumn(0).Width = columnWidthTrack;
             listTrack.GetColumn(1).Width = columnWidthName;

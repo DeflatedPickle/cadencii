@@ -700,7 +700,7 @@ namespace cadencii
 
         public void applyFont(Cadencii.Gui.Font font)
         {
-            Util.applyFontRecurse(this, font);
+            AwtHost.Current.ApplyFontRecurse(this, font);
             Utility.applyContextMenuFontRecurse(cmenuSinger, font);
             Utility.applyContextMenuFontRecurse(cmenuCurve, font);
         }

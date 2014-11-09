@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii;
 using cadencii.windows.forms;
+using Cadencii.Gui;
 
 
 
@@ -34,7 +35,7 @@ namespace cadencii
             applyLanguage();
             m_master_tuning = master_tuning_in_cent;
             txtMasterTuning.Text = master_tuning_in_cent + "";
-            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods

@@ -20,6 +20,7 @@ using cadencii.java.util;
 using cadencii.windows.forms;
 
 using Keys = Cadencii.Gui.Keys;
+using Cadencii.Gui;
 
 namespace cadencii
 {
@@ -104,7 +105,7 @@ namespace cadencii
 
             registerEventHandlers();
             updateList();
-            Util.applyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods
@@ -438,7 +439,7 @@ namespace cadencii
             updateList();
         }
 
-        public void FormShortcutKeys_FormClosing(Object sender, FormClosingEventArgs e)
+        public void FormShortcutKeys_FormClosing(Object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
             mColumnWidthCommand = list.Columns[0].Width;
             mColumnWidthShortcutKey = list.Columns[1].Width;
