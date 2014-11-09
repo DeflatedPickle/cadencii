@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using cadencii;
-using cadencii.xml;
+using Cadencii.Xml;
 using NUnit.Framework;
 using Cadencii.Utilities;
 

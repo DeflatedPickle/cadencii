@@ -13,7 +13,6 @@
  */
 using System;
 using Cadencii.Gui;
-using Cadencii.Gui.geom;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;

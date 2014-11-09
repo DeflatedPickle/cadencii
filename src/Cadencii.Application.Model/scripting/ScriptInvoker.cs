@@ -14,7 +14,7 @@
  */
 using System;
 using cadencii.vsq;
-using cadencii.xml;
+using Cadencii.Xml;
 
 
 

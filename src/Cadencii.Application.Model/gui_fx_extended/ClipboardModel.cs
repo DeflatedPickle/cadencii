@@ -13,6 +13,7 @@
  */
 using System.Collections.Generic;
 using Cadencii.Utilities;
+using Cadencii.Gui;
 
 namespace cadencii
 {

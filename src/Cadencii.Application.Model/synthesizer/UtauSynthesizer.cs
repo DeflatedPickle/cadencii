@@ -21,6 +21,7 @@ using cadencii.media;
 using cadencii.utau;
 using cadencii.vsq;
 using Cadencii.Utilities;
+using Cadencii.Gui;
 
 namespace cadencii.synthesizer
 {

@@ -12,9 +12,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using Cadencii.Gui;
 
-namespace cadencii.apputil
+namespace Cadencii.Gui
 {
 
     public enum ColorBarType

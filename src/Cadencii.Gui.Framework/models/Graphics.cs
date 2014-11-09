@@ -13,7 +13,6 @@
  */
 using System;
 using Cadencii.Gui;
-using Cadencii.Gui.geom;
 
 namespace Cadencii.Gui
 {

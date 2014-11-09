@@ -15,8 +15,9 @@ using System;
 using System.Collections.Generic;
 using cadencii.java.util;
 using Cadencii.Utilities;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Gui
 {
 
     /// <summary>

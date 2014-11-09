@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using cadencii.vsq;
 using Cadencii.Gui;
-using cadencii.xml;
+using Cadencii.Xml;
 using cadencii.utau;
 using cadencii.media;
 using System.Threading;

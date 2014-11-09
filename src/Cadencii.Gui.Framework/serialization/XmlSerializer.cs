@@ -2,7 +2,7 @@
  * XmlSerializer.cs
  * Copyright © 2009-2011 kbinani
  *
- * This file is part of cadencii.xml.
+ * This file is part of Cadencii.Xml.
  *
  * cadencii.xml is free software; you can redistribute it and/or
  * modify it under the terms of the BSD License.
@@ -13,9 +13,10 @@
  */
 using System;
 using System.IO;
-using cadencii.xml;
+using Cadencii.Xml;
+using cadencii;
 
-namespace cadencii.xml
+namespace Cadencii.Xml
 {
 
     public class XmlSerializer

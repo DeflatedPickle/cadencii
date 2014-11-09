@@ -16,7 +16,6 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using cadencii.apputil;
 using Cadencii.Gui;
-using Cadencii.Gui.geom;
 using cadencii.java.util;
 using cadencii.vsq;
 

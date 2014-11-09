@@ -17,7 +17,7 @@ using System.IO;
 using System.Collections.Generic;
 using cadencii;
 using Cadencii.Gui;
-using cadencii.xml;
+using Cadencii.Xml;
 using cadencii.vsq;
 using cadencii.core;
 using Cadencii.Utilities;
@@ -206,7 +206,7 @@ namespace cadencii
         public FormMidiImExportConfig MidiImExportConfigImport = new FormMidiImExportConfig();
         public FormMidiImExportConfig MidiImExportConfigImportVsq = new FormMidiImExportConfig();
 		#region static fields
-        private static cadencii.xml.XmlSerializer s_serializer = new cadencii.xml.XmlSerializer(typeof(AppConfig));
+        private static Cadencii.Xml.XmlSerializer s_serializer = new Cadencii.Xml.XmlSerializer(typeof(AppConfig));
         #endregion
 		/// <summary>
         /// デフォルトの横軸方向のスケール
@@ -350,7 +350,7 @@ namespace cadencii
         /// EditorConfigのインスタンスをxmlシリアライズするためのシリアライザを取得します
         /// </summary>
         /// <returns></returns>
-        public static cadencii.xml.XmlSerializer getSerializer()
+        public static Cadencii.Xml.XmlSerializer getSerializer()
         {
             return s_serializer;
         }

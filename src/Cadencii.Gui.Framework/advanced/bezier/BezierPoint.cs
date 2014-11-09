@@ -15,7 +15,7 @@ using System;
 using System.Xml.Serialization;
 using System.ComponentModel;
 
-namespace cadencii
+namespace Cadencii.Gui
 {
 
     /// <summary>

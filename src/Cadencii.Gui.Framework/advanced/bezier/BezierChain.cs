@@ -14,10 +14,10 @@
 using System;
 using System.Runtime.Serialization;
 using System.Collections.Generic;
-using Cadencii.Gui;
 using cadencii.java.util;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Gui
 {
 
     [Serializable]

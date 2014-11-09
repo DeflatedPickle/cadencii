@@ -14,7 +14,7 @@
 using System;
 using Cadencii.Gui;
 
-namespace cadencii
+namespace Cadencii.Gui
 {
 
     [Serializable]

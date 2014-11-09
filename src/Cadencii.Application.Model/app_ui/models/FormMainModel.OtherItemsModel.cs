@@ -6,7 +6,7 @@ using System.Linq;
 using System.ComponentModel;
 using cadencii.core;
 using System.IO;
-using cadencii.xml;
+using Cadencii.Xml;
 using System.Diagnostics;
 using Cadencii.Utilities;
 

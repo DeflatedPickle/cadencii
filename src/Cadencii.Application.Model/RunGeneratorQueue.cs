@@ -25,7 +25,7 @@ using Cadencii.Gui;
 using cadencii.java.util;
 using cadencii.media;
 using cadencii.vsq;
-using cadencii.xml;
+using Cadencii.Xml;
 using cadencii.utau;
 
 using Keys = Cadencii.Gui.Keys;

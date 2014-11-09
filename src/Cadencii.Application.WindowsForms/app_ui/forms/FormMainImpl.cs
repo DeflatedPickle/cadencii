@@ -22,7 +22,7 @@ using cadencii.apputil;
 using Cadencii.Gui;
 using cadencii.java.util;
 using cadencii.vsq;
-using cadencii.xml;
+using Cadencii.Xml;
 using cadencii.utau;
 using cadencii.ui;
 

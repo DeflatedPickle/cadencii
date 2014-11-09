@@ -13,7 +13,7 @@
  */
 using cadencii;
 using Cadencii.Gui;
-using cadencii.xml;
+using Cadencii.Xml;
 
 namespace cadencii
 {

@@ -20,7 +20,7 @@ using cadencii;
 using Cadencii.Gui;
 using cadencii.java.util;
 //
-//using cadencii.xml;
+//using Cadencii.Xml;
 using cadencii.vsq;
 using cadencii.apputil;
 //using cadencii.uicore;

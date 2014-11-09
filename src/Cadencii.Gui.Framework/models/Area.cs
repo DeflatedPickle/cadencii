@@ -12,10 +12,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using Cadencii.Gui;
-using Cadencii.Gui.geom;
 
-namespace Cadencii.Gui.geom
+namespace Cadencii.Gui
 {
     public class Area : Shape
     {

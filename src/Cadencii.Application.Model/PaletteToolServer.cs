@@ -20,7 +20,7 @@ using System.Collections.Generic;
 using cadencii.apputil;
 using cadencii.java.util;
 using cadencii.vsq;
-using cadencii.xml;
+using Cadencii.Xml;
 using Cadencii.Utilities;
 
 namespace cadencii

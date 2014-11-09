@@ -14,6 +14,7 @@
 using System;
 using cadencii.vsq;
 using cadencii.java.util;
+using Cadencii.Gui;
 
 namespace cadencii
 {

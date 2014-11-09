@@ -13,7 +13,7 @@
  */
 using System;
 
-namespace cadencii.apputil
+namespace Cadencii.Gui
 {
 
     public class CubicSpline : ICloneable, IDisposable

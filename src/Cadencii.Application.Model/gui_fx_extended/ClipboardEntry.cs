@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using cadencii.vsq;
 using cadencii.java.util;
 using Cadencii.Utilities;
+using Cadencii.Gui;
 
 namespace cadencii
 {
