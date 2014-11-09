@@ -272,7 +272,7 @@ namespace cadencii
 #endif
 
             registerEventHandlers();
-            setResources();
+            this.Icon = Properties.Resources.Icon1;
 
 #if !ENABLE_SCRIPT
             menuSettingPaletteTool.setVisible( false );
@@ -3309,8 +3309,6 @@ namespace cadencii
         /// </summary>
         public void registerEventHandlers()
         {
-			this.AsAwt ().Load += (o,e) => model.FormMain.RunLoad ();
-
 #if ENABLE_MOUSE_ENTER_STATUS_LABEL
 			menuFileNew.MouseEnter += new EventHandler(handleMenuMouseEnter);
 			menuFileOpen.MouseEnter += new EventHandler(handleMenuMouseEnter);
@@ -3393,6 +3391,16 @@ namespace cadencii
 			menuSettingPositionQuantize.MouseEnter += new EventHandler(handleMenuMouseEnter);
 			menuTrackRendererAquesTone2.MouseEnter += new System.EventHandler(this.handleMenuMouseEnter);
 #endif
+
+			var mainForm = this.AsAwt ();
+			mainForm.Load += (o,e) => model.FormMain.RunLoad ();
+			mainForm.Deactivate += (o,e) => model.FormMain.RunDeactivate ();
+			mainForm.Activated += (o,e) => model.FormMain.RunActivated ();
+			mainForm.FormClosed += (o,e) => model.FormMain.FormMain_FormClosed ();
+			mainForm.FormClosing += (o,e ) => model.FormMain.RunFormClosing (e);
+			mainForm.PreviewKeyDown += (o, e) => model.FormMain.RunPreviewKeyDown (e);
+			mainForm.SizeChanged += (o,e) => model.FormMain.RunSizeChanged ();
+			//mainForm.Resize += new EventHandler( handleVScrollResize );
 
 			menuFileNew.Click += (o, e) => model.FileMenu.RunFileNewCommand ();
 			menuFileOpen.Click += (o, e) => model.FileMenu.RunFileOpenCommand ();
@@ -3590,7 +3598,6 @@ namespace cadencii
 			panelOverview.KeyUp += (o,e) => model.HandleSpaceKeyUp (e);
 			panelOverview.KeyDown += (o,e) => model.HandleSpaceKeyDown (e);
 			vScroll.ValueChanged += (o,e) => model.OtherItems.vScroll_ValueChanged ();
-            //this.Resize += new EventHandler( handleVScrollResize );
 			pictPianoRoll.Resize += (o, e) => model.PianoRoll.RunPianoRollResize ();
 			vScroll.Enter += (o,e) => model.OtherItems.vScroll_Enter();
 			hScroll.ValueChanged += (o,e) => model.OtherItems.hScroll_ValueChanged();
@@ -3654,24 +3661,9 @@ namespace cadencii
 			toolBarMeasure.ButtonClick += (o, e) => model.ToolBars.MeasureButtonClick (e);
 			toolBarMeasure.MouseDown += (o, e) => model.ToolBars.MeasureMouseDown (e);
 			stripBtnStepSequencer.CheckedChanged += (o, e) => model.ToolBars.StepSequencerCheckedChanged ();
-			this.AsAwt ().Deactivate += (o,e) => model.FormMain.RunDeactivate ();
-			this.AsAwt ().Activated += (o,e) => model.FormMain.RunActivated ();
-			this.AsAwt ().FormClosed += (o,e) => model.FormMain.FormMain_FormClosed ();
-			this.AsAwt ().FormClosing += (o,e ) => model.FormMain.RunFormClosing (e);
-			this.AsAwt ().PreviewKeyDown += (o, e) => model.FormMain.RunPreviewKeyDown (new KeyEventArgs ((Keys)e.KeyData));
-			this.AsAwt ().SizeChanged += (o,e) => model.FormMain.RunSizeChanged ();
 			panelOverview.Enter += (o,e) => model.OtherItems.panelOverview_Enter();
         }
 
-        public void setResources()
-        {
-            try {
-                this.Icon = Properties.Resources.Icon1;
-            } catch (Exception ex) {
-                Logger.write(typeof(FormMainImpl) + ".setResources; ex=" + ex + "\n");
-                Logger.StdErr("FormMain#setResources; ex=" + ex);
-            }
-        }
         #endregion // public methods
 
 
