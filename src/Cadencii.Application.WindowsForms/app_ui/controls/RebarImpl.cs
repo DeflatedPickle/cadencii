@@ -21,7 +21,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using cadencii;
 
-namespace cadencii.windows.forms
+namespace cadencii
 {
 
     /// <summary>

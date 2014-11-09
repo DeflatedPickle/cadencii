@@ -13,7 +13,7 @@
  */
 using System;
 using System.Xml.Serialization;
-//using cadencii.windows.forms;
+//
  using Cadencii.Gui;
 
 namespace cadencii

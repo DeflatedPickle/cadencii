@@ -18,7 +18,7 @@ using System.ComponentModel;
 using cadencii.java.util;
 using cadencii.media;
 using cadencii.vsq;
-using cadencii.windows.forms;
+
 using cadencii.core;
 
 

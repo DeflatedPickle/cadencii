@@ -23,7 +23,7 @@ using cadencii.java.util;
 using cadencii.javax.sound.midi;
 using cadencii.media;
 using cadencii.vsq;
-using cadencii.windows.forms;
+
 
 using cadencii.utau;
 using Keys = Cadencii.Gui.Keys;

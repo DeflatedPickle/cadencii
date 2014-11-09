@@ -15,7 +15,7 @@ using System;
 using System.Windows.Forms;
 using cadencii.apputil;
 using Cadencii.Gui;
-using cadencii.windows.forms;
+
 
 using AnchorStyles = Cadencii.Gui.AnchorStyles;
 using HorizontalAlignment = Cadencii.Gui.HorizontalAlignment;

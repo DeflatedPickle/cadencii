@@ -15,7 +15,7 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using cadencii;
-using cadencii.windows.forms;
+
 using Cadencii.Gui;
 using cadencii.vsq;
 

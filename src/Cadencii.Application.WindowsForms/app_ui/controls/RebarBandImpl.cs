@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 using System.ComponentModel;
 using cadencii;
 
-namespace cadencii.windows.forms
+namespace cadencii
 {
     /// <summary>
     /// Summary description for BandWrapper.

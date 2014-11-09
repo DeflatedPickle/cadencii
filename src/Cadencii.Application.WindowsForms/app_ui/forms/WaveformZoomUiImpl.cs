@@ -15,7 +15,7 @@ using System;
 using System.Windows.Forms;
 
 using Cadencii.Gui;
-using cadencii.windows.forms;
+
 
 namespace cadencii
 {

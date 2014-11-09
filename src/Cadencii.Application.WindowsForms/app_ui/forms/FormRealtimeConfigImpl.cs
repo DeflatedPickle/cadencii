@@ -13,7 +13,7 @@
  */
 using System;
 using cadencii;
-using cadencii.windows.forms;
+
 using cadencii.apputil;
 using Cadencii.Gui;
 

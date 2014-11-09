@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii.vsq;
-using cadencii.windows.forms;
+
 using cadencii;
 
 public class GenerateVLF

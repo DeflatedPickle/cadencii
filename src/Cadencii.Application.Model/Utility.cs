@@ -22,7 +22,7 @@ using cadencii.apputil;
 using cadencii.java.io;
 using cadencii.java.util;
 using cadencii.vsq;
-//using cadencii.windows.forms;
+//
 using cadencii.xml;
 using Cadencii.Gui;
 using Keys = Cadencii.Gui.Keys;

@@ -20,7 +20,7 @@ using cadencii;
 using Cadencii.Gui;
 using cadencii.java.io;
 using cadencii.java.util;
-//using cadencii.windows.forms;
+//
 //using cadencii.xml;
 using cadencii.vsq;
 using cadencii.apputil;

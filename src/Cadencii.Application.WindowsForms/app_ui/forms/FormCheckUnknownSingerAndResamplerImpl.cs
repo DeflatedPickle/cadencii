@@ -16,7 +16,7 @@ using cadencii.apputil;
 using cadencii.vsq;
 using cadencii;
 using cadencii.java.util;
-using cadencii.windows.forms;
+
 using Cadencii.Gui;
 
 

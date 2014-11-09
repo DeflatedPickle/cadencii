@@ -16,7 +16,7 @@ using System.Collections.Generic;
 using cadencii;
 using cadencii.java.util;
 using cadencii.java.io;
-//using cadencii.windows.forms;
+//
 using cadencii.xml;
 
 namespace cadencii

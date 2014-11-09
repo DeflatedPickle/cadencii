@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using cadencii.windows.forms;
+
 using Cadencii.Gui;
 
 namespace cadencii

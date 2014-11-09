@@ -8,7 +8,6 @@ using System.Threading;
 using cadencii.apputil;
 using cadencii.utau;
 using cadencii.java.util;
-using cadencii.windows.forms;
 
 namespace cadencii
 {

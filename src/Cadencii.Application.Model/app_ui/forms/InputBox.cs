@@ -1,6 +1,6 @@
 using System;
 
-namespace cadencii.windows.forms
+namespace cadencii
 {
 	public interface InputBox : UiForm
 	{

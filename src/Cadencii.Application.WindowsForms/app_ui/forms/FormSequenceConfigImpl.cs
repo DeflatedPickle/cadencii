@@ -19,7 +19,7 @@ using cadencii.java.io;
 using cadencii.java.util;
 using cadencii.media;
 using cadencii.vsq;
-using cadencii.windows.forms;
+
 using cadencii.core;
 using Keys = Cadencii.Gui.Keys;
 

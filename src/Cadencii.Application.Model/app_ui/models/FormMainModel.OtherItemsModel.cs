@@ -7,7 +7,6 @@ using System.ComponentModel;
 using cadencii.core;
 using System.IO;
 using cadencii.xml;
-using cadencii.windows.forms;
 using System.Diagnostics;
 
 namespace cadencii

@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using cadencii.apputil;
 using cadencii.vsq;
 using cadencii;
-using cadencii.windows.forms;
+
 using cadencii.java.util;
 
 namespace cadencii

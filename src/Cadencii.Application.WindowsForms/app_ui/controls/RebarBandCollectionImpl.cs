@@ -18,7 +18,7 @@ using System.Collections;
 using System.Windows.Forms;
 using System.ComponentModel;
 
-namespace cadencii.windows.forms
+namespace cadencii
 {
 
     /// <summary>

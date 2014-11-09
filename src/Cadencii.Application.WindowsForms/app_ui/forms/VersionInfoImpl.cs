@@ -16,7 +16,7 @@ using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii;
 using Cadencii.Gui;
-using cadencii.windows.forms;
+
 using Keys = Cadencii.Gui.Keys;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 using KeyEventHandler = System.Windows.Forms.KeyEventHandler;

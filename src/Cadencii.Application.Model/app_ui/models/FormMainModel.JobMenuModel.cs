@@ -1,7 +1,6 @@
 ﻿using System;
 using cadencii.vsq;
 using System.Collections.Generic;
-using cadencii.windows.forms;
 using cadencii.core;
 using System.Text;
 using Cadencii.Gui;

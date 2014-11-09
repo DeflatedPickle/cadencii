@@ -75,6 +75,7 @@ namespace cadencii
                     }
                 }
 
+				// FIXME: they need to be updated to enumerate all the latest files.
                 CompilerParameters parameters = new CompilerParameters(new string[] {
                     Path.Combine( path, "cadencii.vsq.dll" ),
                     Path.Combine( path, "Cadencii.exe" ),

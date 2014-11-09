@@ -16,7 +16,7 @@ using System.Windows.Forms;
 using cadencii;
 using cadencii.apputil;
 using cadencii.vsq;
-using cadencii.windows.forms;
+
 using cadencii.java.util;
 using Keys = Cadencii.Gui.Keys;
 using Cadencii.Gui;

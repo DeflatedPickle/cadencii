@@ -19,7 +19,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-using cadencii.windows.forms;
+
 using cadencii.apputil;
 
 

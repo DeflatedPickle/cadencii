@@ -24,7 +24,7 @@ using cadencii.apputil;
 using Cadencii.Gui;
 using cadencii.java.util;
 using cadencii.vsq;
-using cadencii.windows.forms;
+
 using cadencii.core;
 
 using Keys = Cadencii.Gui.Keys;

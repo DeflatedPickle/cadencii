@@ -1,4 +1,4 @@
-using cadencii.windows.forms;
+
 using Cadencii.Gui;
 
 namespace cadencii
