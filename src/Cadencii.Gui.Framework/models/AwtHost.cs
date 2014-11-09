@@ -51,6 +51,9 @@ namespace Cadencii.Gui
 
 		protected Dictionary<Type,Type> Types = new Dictionary<Type,Type> ();
 
+		public abstract int HorizontalScrollBarThumbWidth { get; }
+		public abstract int VerticalScrollBarThumbHeight { get; }
+
 		public T New<T> (params object[] args)
 		{
 			Type t;

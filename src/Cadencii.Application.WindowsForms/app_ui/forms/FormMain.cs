@@ -20,7 +20,6 @@ using System.Text;
 using System.Threading;
 using System.Linq;
 using System.IO;
-using System.Windows.Forms;
 using System.Net;
 using System.ComponentModel;
 using cadencii.apputil;
@@ -112,7 +111,6 @@ namespace cadencii
         string appId;
 
 		public VersionInfo mVersionInfo { get; set; }
-        public System.Windows.Forms.Cursor HAND;
         /// <summary>
         /// ボタンがDownされた位置。(座標はpictureBox基準)
         /// </summary>
@@ -323,7 +321,7 @@ namespace cadencii
             splitContainer2.Panel1.AddControl(panel1);
             panel1.Dock = Cadencii.Gui.DockStyle.Fill;
             splitContainer2.Panel2.AddControl(panelWaveformZoom);
-            //splitContainer2.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            splitContainer2.Panel2.BorderStyle = BorderStyle.FixedSingle;
             splitContainer2.Panel2.BorderColor = new Cadencii.Gui.Color(112, 112, 112);
             splitContainer1.Panel1.AddControl(splitContainer2);
             panelWaveformZoom.Dock = Cadencii.Gui.DockStyle.Fill;
@@ -539,9 +537,9 @@ namespace cadencii
 
             // ウィンドウの位置・サイズを再現
             if (EditorManager.editorConfig.WindowMaximized) {
-				this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+				this.AsAwt ().WindowState = FormWindowState.Maximized;
             } else {
-				this.WindowState = System.Windows.Forms.FormWindowState.Normal;
+				this.AsAwt ().WindowState = FormWindowState.Normal;
             }
             Rectangle bounds = EditorManager.editorConfig.WindowRect;
             this.Bounds = new System.Drawing.Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
@@ -1128,7 +1126,6 @@ namespace cadencii
         /// </summary>
         public void showUpdateInformationAsync(bool is_explicit_update_check)
         {
-			MessageBox.Show ("Automatic Update is not supported in this buid");
 			#if SUPPORT_UPDATE_FORM
             menuHelpCheckForUpdates.Enabled = false;
             updater.UpdateInfo update_info = null;
@@ -1178,6 +1175,8 @@ namespace cadencii
                 t.Start();
             };
             worker.RunWorkerAsync();
+			#else
+			System.Windows.Forms.MessageBox.Show ("Automatic Update is not supported in this buid");
 			#endif
         }
         #endregion
@@ -2306,7 +2305,7 @@ namespace cadencii
             int large_change = (int)(pict_piano_roll_width / scalex);
             int maximum = (int)(l + large_change);
 
-            int thumb_width = System.Windows.Forms.SystemInformation.HorizontalScrollBarThumbWidth;
+            int thumb_width = AwtHost.Current.HorizontalScrollBarThumbWidth;
             int box_width = (int)(large_change / (float)maximum * (hwidth - 2 * thumb_width));
             if (box_width < EditorManager.editorConfig.MinimumScrollHandleWidth) {
                 box_width = EditorManager.editorConfig.MinimumScrollHandleWidth;
@@ -2341,7 +2340,7 @@ namespace cadencii
             int maximum = (int)(128 * (int)(100 * scaley) / scaley);
             int large_change = (int)(pheight / scaley);
 
-            int thumb_height = System.Windows.Forms.SystemInformation.VerticalScrollBarThumbHeight;
+			int thumb_height = AwtHost.Current.VerticalScrollBarThumbHeight;
             int box_height = (int)(large_change / (float)maximum * (vheight - 2 * thumb_height));
             if (box_height < EditorManager.editorConfig.MinimumScrollHandleWidth) {
                 box_height = EditorManager.editorConfig.MinimumScrollHandleWidth;
@@ -2381,8 +2380,8 @@ namespace cadencii
                 Object menu = searchMenuItemFromName(key, parent);
                 if (menu != null) {
                     string menu_name = "";
-                    if (menu is ToolStripMenuItem) {
-                        menu_name = ((ToolStripMenuItem)menu).Name;
+                    if (menu is UiToolStripMenuItem) {
+                        menu_name = ((UiToolStripMenuItem)menu).Name;
                     } else {
                         continue;
                     }
@@ -2495,7 +2494,7 @@ namespace cadencii
             try {
                 if (dict.ContainsKey(item_name)) {
 #if DEBUG
-                    if (!(item is ToolStripMenuItem)) {
+                    if (!(item is UiToolStripMenuItem)) {
                         throw new Exception("FormMain#applyMenuItemShortcut; item is NOT BMenuItem");
                     }
 #endif // DEBUG

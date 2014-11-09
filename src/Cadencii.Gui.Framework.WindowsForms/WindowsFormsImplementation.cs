@@ -97,6 +97,13 @@ namespace Cadencii.Gui
 				ApplyFontRecurseW (cc, font);
 			}
 		}
+
+		public override int HorizontalScrollBarThumbWidth {
+			get { return System.Windows.Forms.SystemInformation.HorizontalScrollBarThumbWidth; }
+		}
+		public override int VerticalScrollBarThumbHeight {
+			get { return System.Windows.Forms.SystemInformation.VerticalScrollBarThumbHeight; }
+		}
 	}
 
 	class ImageAdapterWF : Image.ImageAdapter
