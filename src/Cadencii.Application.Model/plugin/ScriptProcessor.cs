@@ -41,7 +41,7 @@ namespace cadencii
                 .Replace("bocoreex", "cadencii.javax")
                 .Replace("bocoree", "cadencii.java")
                 // FIXME: may need some fix
-				.Replace("InputBox", "cadencii.InputTextBoxImpl") // typeof (cadencii.InputTextBox).FullName
+				.Replace("InputBox", "cadencii.InputBoxImpl") // typeof (cadencii.InputBox).FullName
                 ;
         }
     }
