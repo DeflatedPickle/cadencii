@@ -3663,10 +3663,6 @@ namespace cadencii
         public void setResources()
         {
             try {
-				this.stripLblGameCtrlMode.Image = Properties.Resources.slash.ToAwt ();
-				this.stripLblMidiIn.Image = Properties.Resources.slash.ToAwt ();
-
-                this.stripBtnStepSequencer.Image = Properties.Resources.piano.ToAwt ();
                 this.Icon = Properties.Resources.Icon1;
             } catch (Exception ex) {
                 Logger.write(typeof(FormMain) + ".setResources; ex=" + ex + "\n");

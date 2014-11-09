@@ -2262,7 +2262,7 @@ namespace cadencii
             // stripBtnStepSequencer
             // 
             this.stripBtnStepSequencer.CheckOnClick = true;
-			this.stripBtnStepSequencer.Image = ((System.Drawing.Image)(resources.GetObject("stripBtnStepSequencer.Image"))).ToAwt ();
+			this.stripBtnStepSequencer.Image = Resources.piano;
 			this.stripBtnStepSequencer.ImageTransparentColor = Cadencii.Gui.Colors.Magenta;
             this.stripBtnStepSequencer.Name = "stripBtnStepSequencer";
             this.stripBtnStepSequencer.Size = new Cadencii.Gui.Dimension(55, 22);
