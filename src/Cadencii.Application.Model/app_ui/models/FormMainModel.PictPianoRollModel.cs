@@ -102,7 +102,7 @@ namespace cadencii
 						edit_mode != EditMode.EDIT_RIGHT_EDGE &&
 						edit_mode != EditMode.MIDDLE_DRAG &&
 						edit_mode != EditMode.CURVE_ON_PIANOROLL) {
-						if ((modefiers & Keys.Shift) != Keys.Shift && (modefiers & parent.form.s_modifier_key) != parent.form.s_modifier_key) {
+						if ((modefiers & Keys.Shift) != Keys.Shift && (modefiers & AwtHost.ModifierKeys) != AwtHost.ModifierKeys) {
 							EditorManager.itemSelection.clearEvent();
 						}
 						EditorManager.itemSelection.addEvent(item.InternalID);
@@ -551,7 +551,7 @@ namespace cadencii
 					bool start_mouse_hover_generator = true;
 
 					// CTRLキーを押しながら範囲選択
-					if ((modefier & parent.form.s_modifier_key) == parent.form.s_modifier_key) {
+					if ((modefier & AwtHost.ModifierKeys) == AwtHost.ModifierKeys) {
 						EditorManager.IsWholeSelectedIntervalEnabled = true;
 						EditorManager.IsCurveSelectedIntervalEnabled = false;
 						EditorManager.itemSelection.clearPoint();
@@ -796,7 +796,7 @@ namespace cadencii
 										}
 									}
 									EditorManager.itemSelection.addEventAll(add_required);
-								} else if ((modefier & parent.form.s_modifier_key) == parent.form.s_modifier_key) {
+								} else if ((modefier & AwtHost.ModifierKeys) == AwtHost.ModifierKeys) {
 									// CTRLキーを押しながら選択／選択解除
 									if (EditorManager.itemSelection.isEventContains(selected, item.InternalID)) {
 										EditorManager.itemSelection.removeEvent(item.InternalID);

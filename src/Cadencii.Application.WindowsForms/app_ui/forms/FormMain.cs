@@ -108,16 +108,10 @@ namespace cadencii
             }
         }
 
-        #region static field
         /// <summary>
         /// refreshScreenが呼ばれている最中かどうか
         /// </summary>
-        private static bool mIsRefreshing = false;
-        /// <summary>
-        /// CTRLキー。MacOSXの場合はMenu
-        /// </summary>
-		public Keys s_modifier_key { get; set; }
-        #endregion
+        private bool mIsRefreshing = false;
 
         #region fields
         string appId;
@@ -216,7 +210,6 @@ namespace cadencii
 			model = new FormMainModel (this);
 
 		this.appId = Handle.ToString ("X32");
-			s_modifier_key = Keys.Control;
 			mButtonInitial = new Point();
 			mEditCurveMode = CurveEditMode.NONE;
 			mPencilMode = new PencilMode();
@@ -240,7 +233,6 @@ namespace cadencii
 			cadencii.core.EditorConfig.baseFont9 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, cadencii.core.EditorConfig.FONT_SIZE9);
 			cadencii.core.EditorConfig.baseFont50Bold = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.BOLD, cadencii.core.EditorConfig.FONT_SIZE50);
 
-            s_modifier_key = Keys.Control;
             VsqFileEx tvsq =
                 new VsqFileEx(
 					ApplicationGlobal.appConfig.DefaultSingerName,
@@ -1506,7 +1498,7 @@ namespace cadencii
                 int workingAreaY = EditorManager.propertyWindow.getUi().getWorkingAreaY();
                 int workingAreaWidth = EditorManager.propertyWindow.getUi().getWorkingAreaWidth();
                 int workingAreaHeight = EditorManager.propertyWindow.getUi().getWorkingAreaHeight();
-                Point appropriateLocation = getAppropriateDialogLocation(
+                Point appropriateLocation = FormMainModel.getAppropriateDialogLocation(
                     x, y, width, height,
                     workingAreaX, workingAreaY, workingAreaWidth, workingAreaHeight
                 );
@@ -4462,30 +4454,6 @@ namespace cadencii
         public static string _(string id)
         {
             return Messaging.getMessage(id);
-        }
-
-        /// <summary>
-        /// スクリーンに対して、ウィンドウの最適な位置を取得する
-        /// </summary>
-        public static Point getAppropriateDialogLocation(int x, int y, int width, int height, int workingAreaX, int workingAreaY, int workingAreaWidth, int workingAreaHeight)
-        {
-            int top = y;
-            if (top + height > workingAreaY + workingAreaHeight) {
-                // ダイアログの下端が隠れる場合、位置をずらす
-                top = workingAreaY + workingAreaHeight - height;
-            }
-            if (top < workingAreaY) {
-                // ダイアログの上端が隠れる場合、位置をずらす
-                top = workingAreaY;
-            }
-            int left = x;
-            if (left + width > workingAreaX + workingAreaWidth) {
-                left = workingAreaX + workingAreaWidth - width;
-            }
-            if (left < workingAreaX) {
-                left = workingAreaX;
-            }
-            return new Point(left, top);
         }
         #endregion
     }

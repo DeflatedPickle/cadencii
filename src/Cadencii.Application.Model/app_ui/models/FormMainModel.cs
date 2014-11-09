@@ -1652,6 +1652,30 @@ namespace cadencii
 				splitContainer2.SplitterFixed = (true);
 			}
 		}
+
+		/// <summary>
+		/// スクリーンに対して、ウィンドウの最適な位置を取得する
+		/// </summary>
+		public static Point getAppropriateDialogLocation(int x, int y, int width, int height, int workingAreaX, int workingAreaY, int workingAreaWidth, int workingAreaHeight)
+		{
+			int top = y;
+			if (top + height > workingAreaY + workingAreaHeight) {
+				// ダイアログの下端が隠れる場合、位置をずらす
+				top = workingAreaY + workingAreaHeight - height;
+			}
+			if (top < workingAreaY) {
+				// ダイアログの上端が隠れる場合、位置をずらす
+				top = workingAreaY;
+			}
+			int left = x;
+			if (left + width > workingAreaX + workingAreaWidth) {
+				left = workingAreaX + workingAreaWidth - width;
+			}
+			if (left < workingAreaX) {
+				left = workingAreaX;
+			}
+			return new Point(left, top);
+		}
 	}
 }
 

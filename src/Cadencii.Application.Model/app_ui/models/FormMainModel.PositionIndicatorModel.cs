@@ -474,7 +474,7 @@ namespace cadencii
 								} else {
 									EditorManager.itemSelection.addTempo(clock);
 								}
-							} else if ((modifiers & parent.form.s_modifier_key) == parent.form.s_modifier_key) {
+							} else if ((modifiers & AwtHost.ModifierKeys) == AwtHost.ModifierKeys) {
 								if (EditorManager.itemSelection.isTempoContains(clock)) {
 									EditorManager.itemSelection.removeTempo(clock);
 								} else {
@@ -533,7 +533,7 @@ namespace cadencii
 								} else {
 									EditorManager.itemSelection.addTimesig(barcount);
 								}
-							} else if ((modifiers & parent.form.s_modifier_key) == parent.form.s_modifier_key) {
+							} else if ((modifiers & AwtHost.ModifierKeys) == AwtHost.ModifierKeys) {
 								if (EditorManager.itemSelection.isTimesigContains(barcount)) {
 									EditorManager.itemSelection.removeTimesig(barcount);
 								} else {

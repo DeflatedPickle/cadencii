@@ -72,7 +72,6 @@ namespace cadencii
 		Point mButtonInitial { get; set; }
 		int mMiddleButtonVScroll { get; set; }
 		int mMiddleButtonHScroll { get; set; }
-		Keys s_modifier_key { get; set; }
 		void updateContextMenuPiano (Point mouseAt);
 		void fixAddingEvent ();
 		void hideInputTextBox();
