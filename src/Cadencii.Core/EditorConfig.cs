@@ -21,7 +21,7 @@ using Cadencii.Gui;
 using cadencii.java.util;
 //
 //using Cadencii.Xml;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii.apputil;
 //using cadencii.uicore;
 using Cadencii.Utilities;

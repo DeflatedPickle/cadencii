@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 
 using cadencii;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii;
 using cadencii.java.util;
 

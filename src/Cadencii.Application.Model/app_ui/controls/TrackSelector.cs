@@ -1,6 +1,6 @@
 using System;
 using Cadencii.Gui;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
 

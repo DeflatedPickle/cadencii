@@ -1,8 +1,8 @@
 using System;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii.core;
 using System.IO;
-using cadencii.media;
+using Cadencii.Media;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
 

@@ -16,7 +16,7 @@ using System;
 using System.Text;
 using System.IO;
 using cadencii;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using Cadencii.Utilities;
 using Cadencii.Platform.Windows;
 

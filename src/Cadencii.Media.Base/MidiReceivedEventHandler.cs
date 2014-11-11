@@ -14,7 +14,7 @@
 using System;
 using cadencii;
 
-namespace cadencii.media
+namespace Cadencii.Media
 {
 
     public delegate void MidiReceivedEventHandler(Object sender, cadencii.javax.sound.midi.MidiMessage message);

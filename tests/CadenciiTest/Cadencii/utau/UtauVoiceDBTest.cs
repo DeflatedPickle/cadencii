@@ -1,6 +1,6 @@
 using NUnit.Framework;
 using cadencii;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii.utau;
 
 namespace cadencii.test.utau

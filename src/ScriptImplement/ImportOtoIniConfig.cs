@@ -1,5 +1,5 @@
 using cadencii;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii.java.util;
 using cadencii.apputil;
 using cadencii.utau;

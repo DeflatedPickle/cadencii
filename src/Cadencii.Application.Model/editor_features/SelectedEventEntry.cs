@@ -13,7 +13,7 @@
  */
 using System;
 using System.ComponentModel;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii.utau;
 using Cadencii.Utilities;
 

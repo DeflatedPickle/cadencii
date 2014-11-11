@@ -3,9 +3,9 @@ using cadencii.apputil;
 using System.IO;
 using System.Linq;
 using Cadencii.Gui;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii.core;
-using cadencii.media;
+using Cadencii.Media;
 using Cadencii.Gui.Toolkit;
 
 namespace cadencii

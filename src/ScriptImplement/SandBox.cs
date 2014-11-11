@@ -3,8 +3,8 @@ using System.IO;
 using System.Windows.Forms;
 using System.Linq;
 using cadencii;
-using cadencii.media;
-using cadencii.vsq;
+using Cadencii.Media;
+using Cadencii.Media.Vsq;
 using cadencii.java.util;
 
 using System;
@@ -89,7 +89,7 @@ public class SmartHtml
 
 public static class AutoBRI
 {
-    public static bool Edit(cadencii.vsq.VsqFile vsq)
+    public static bool Edit(Cadencii.Media.Vsq.VsqFile vsq)
     {
         // 選択されているアイテム（のInternalID）をリストアップ
         System.Collections.Generic.List<int> ids = new System.Collections.Generic.List<int>();
@@ -97,7 +97,7 @@ public static class AutoBRI
             ids.Add(entry.original.InternalID);
         }
 
-        cadencii.vsq.VsqTrack track = vsq.Track[EditorManager.Selected];
+        Cadencii.Media.Vsq.VsqTrack track = vsq.Track[EditorManager.Selected];
 
         // コントロールカーブの時間方向の解像度を，Cadenciiの設定値から取得
         int resol = cadencii.core.ApplicationGlobal.appConfig.getControlCurveResolutionValue();
@@ -108,7 +108,7 @@ public static class AutoBRI
                 // 指定されたInternalIDと同じなら，編集する
                 if (item.InternalID == internal_id) {
                     // Brightnessカーブを取得
-                    cadencii.vsq.VsqBPList bri = track.getCurve("BRI");
+                    Cadencii.Media.Vsq.VsqBPList bri = track.getCurve("BRI");
 
                     // 音符の最後の位置でのBRIを取得．処理の最後で追加
                     int value_at_end = bri.getValue(item.Clock + item.ID.Length);
@@ -168,7 +168,7 @@ public class AutoBRITool : IPaletteTool
     /// <param name="ids">クリックされたイベントのInternalIDが格納された配列</param>
     /// <param name="button">クリックされたときのマウスボタン</param>
     /// <returns></returns>
-	public bool edit(cadencii.vsq.VsqTrack track, int[] ids, Cadencii.Gui.Toolkit.MouseButtons button)
+	public bool edit(Cadencii.Media.Vsq.VsqTrack track, int[] ids, Cadencii.Gui.Toolkit.MouseButtons button)
     {
         // コントロールカーブの時間方向の解像度を，Cadenciiの設定値から取得
 		int resol = cadencii.core.ApplicationGlobal.appConfig.getControlCurveResolutionValue();
@@ -179,7 +179,7 @@ public class AutoBRITool : IPaletteTool
                 // 指定されたInternalIDと同じなら，編集する
                 if (item.InternalID == internal_id) {
                     // Brightnessカーブを取得
-                    cadencii.vsq.VsqBPList bri = track.getCurve("BRI");
+                    Cadencii.Media.Vsq.VsqBPList bri = track.getCurve("BRI");
 
                     // 音符の最後の位置でのBRIを取得．処理の最後で追加
                     int value_at_end = bri.getValue(item.Clock + item.ID.Length);
@@ -288,7 +288,7 @@ public class AutoBRITool : IPaletteTool
 
 public static class SaveMetaText
 {
-    public static bool Edit(cadencii.vsq.VsqFile vsq)
+    public static bool Edit(Cadencii.Media.Vsq.VsqFile vsq)
     {
         vsq.Track[1].printMetaText(@"c:\meta_text.txt", "Shift_JIS");
         return true;
@@ -297,7 +297,7 @@ public static class SaveMetaText
 
 public static class PrintLyric
 {
-    public static bool Edit(cadencii.vsq.VsqFile Vsq)
+    public static bool Edit(Cadencii.Media.Vsq.VsqFile Vsq)
     {
         System.IO.StreamWriter sw = null;
         try {
@@ -322,7 +322,7 @@ public static class PrintLyric
 
 public static class UpHalfStep
 {
-    public static bool Edit(cadencii.vsq.VsqFile Vsq)
+    public static bool Edit(Cadencii.Media.Vsq.VsqFile Vsq)
     {
         for (int i = 1; i < Vsq.Track.Count; i++) {
             foreach (var item in Vsq.Track[i].getNoteEventIterator()) {
@@ -337,7 +337,7 @@ public static class UpHalfStep
 
 public static class Trim32
 {
-    public static bool Edit(cadencii.vsq.VsqFile Vsq)
+    public static bool Edit(Cadencii.Media.Vsq.VsqFile Vsq)
     {
         for (int i = 1; i < Vsq.Track.Count; i++) {
             foreach (var item in Vsq.Track[i].getNoteEventIterator()) {

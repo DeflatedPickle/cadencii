@@ -13,6 +13,7 @@
  */
 using System;
 using cadencii.apputil;
+using Cadencii.Media.Vsq;
 
 
 

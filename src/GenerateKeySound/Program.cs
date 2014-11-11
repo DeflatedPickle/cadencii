@@ -17,8 +17,8 @@ using System.Windows.Forms;
 using System.IO;
 using cadencii;
 using cadencii.java.util;
-using cadencii.media;
-using cadencii.vsq;
+using Cadencii.Media;
+using Cadencii.Media.Vsq;
 
 
 

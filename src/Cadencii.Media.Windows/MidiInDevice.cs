@@ -18,7 +18,7 @@ using cadencii;
 using cadencii.core2;
 using Cadencii.Utilities;
 using Cadencii.Platform.Windows;
-using cadencii.media;
+using Cadencii.Media;
 using cadencii.javax.sound.midi;
 
 namespace Cadencii.Media.Windows

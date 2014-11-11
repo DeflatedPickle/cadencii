@@ -1,6 +1,6 @@
 using NUnit.Framework;
 using cadencii;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using System;
 using System.Collections.Generic;
 using Cadencii.Utilities;

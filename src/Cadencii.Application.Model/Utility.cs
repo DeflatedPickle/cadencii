@@ -20,7 +20,7 @@ using System.Text;
 using Microsoft.CSharp;
 using cadencii.apputil;
 using cadencii.java.util;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 //
 using Cadencii.Xml;
 using Cadencii.Gui;

@@ -15,7 +15,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 
 namespace cadencii
 {

@@ -14,14 +14,14 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii;
 using cadencii.java.util;
 using Cadencii.Xml;
 using Cadencii.Utilities;
 using Cadencii.Gui;
 
-namespace cadencii
+namespace Cadencii.Media.Vsq
 {
 
     [Serializable]

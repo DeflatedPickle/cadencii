@@ -21,7 +21,7 @@ using System.ComponentModel;
 using cadencii.apputil;
 using Cadencii.Gui;
 using cadencii.java.util;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using Cadencii.Xml;
 using cadencii.utau;
 using cadencii.ui;

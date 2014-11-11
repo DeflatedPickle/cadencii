@@ -311,6 +311,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="app_ui\forms\FormInsertBar.xml">
       <LogicalName>FormInsertBar.xml</LogicalName>
+      <DependentUpon>FormInsertBar.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

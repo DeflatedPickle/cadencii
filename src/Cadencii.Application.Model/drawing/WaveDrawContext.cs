@@ -12,11 +12,11 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using cadencii.media;
+using Cadencii.Media;
 using cadencii;
 using Cadencii.Gui;
 using cadencii.java.util;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii.apputil;
 using Cadencii.Utilities;
 

@@ -1,5 +1,5 @@
 using System;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using Cadencii.Gui.Toolkit;
 
 namespace cadencii

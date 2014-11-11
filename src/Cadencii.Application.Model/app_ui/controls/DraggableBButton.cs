@@ -1,5 +1,5 @@
 using System;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventArgs>;
 using Cadencii.Gui.Toolkit;
 

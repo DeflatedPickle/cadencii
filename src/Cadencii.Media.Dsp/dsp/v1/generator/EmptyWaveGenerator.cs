@@ -13,6 +13,7 @@
  */
 using System;
 using System.Threading;
+using Cadencii.Media.Vsq;
 
 namespace cadencii
 {

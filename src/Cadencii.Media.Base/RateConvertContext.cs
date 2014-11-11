@@ -13,7 +13,7 @@
  */
 using System;
 
-namespace cadencii.media
+namespace Cadencii.Media
 {
 
     /// <summary>

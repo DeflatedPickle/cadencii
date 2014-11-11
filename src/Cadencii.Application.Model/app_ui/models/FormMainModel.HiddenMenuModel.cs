@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using cadencii.apputil;
 using System.IO;
 using System.Text;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using Cadencii.Gui;
 using Cadencii.Utilities;
 

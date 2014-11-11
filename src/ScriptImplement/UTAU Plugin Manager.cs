@@ -7,6 +7,7 @@ using cadencii;
 using cadencii.apputil;
 using cadencii;
 using Cadencii.Utilities;
+using Cadencii.Media.Vsq;
 
 
 

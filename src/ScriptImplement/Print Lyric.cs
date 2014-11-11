@@ -1,13 +1,13 @@
 public static class Print_Lyric
 {
-    public static bool Edit(cadencii.vsq.VsqFile Vsq)
+    public static bool Edit(Cadencii.Media.Vsq.VsqFile Vsq)
     {
         System.IO.StreamWriter sw = null;
         try {
             sw = new System.IO.StreamWriter(@"c:\lyrics.txt");
             for (int i = 0; i < Vsq.Track[1].getEventCount(); i++) {
-                cadencii.vsq.VsqEvent item = Vsq.Track[1].getEvent(i);
-                if (item.ID.type == cadencii.vsq.VsqIDType.Anote) {
+                Cadencii.Media.Vsq.VsqEvent item = Vsq.Track[1].getEvent(i);
+                if (item.ID.type == Cadencii.Media.Vsq.VsqIDType.Anote) {
                     int clStart = item.Clock;
                     int clEnd = clStart + item.ID.Length;
                     double secStart = Vsq.getSecFromClock(clStart);

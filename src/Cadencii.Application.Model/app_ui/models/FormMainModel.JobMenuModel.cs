@@ -1,5 +1,5 @@
 ﻿using System;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using System.Collections.Generic;
 using cadencii.core;
 using System.Text;

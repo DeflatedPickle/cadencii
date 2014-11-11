@@ -16,7 +16,7 @@ using System.Text;
 using System.Runtime.InteropServices;
 using Cadencii.Utilities;
 
-namespace cadencii.media
+namespace Cadencii.Media
 {
 
     /// <summary>

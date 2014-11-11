@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using cadencii.core;
 using System.Collections.Generic;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using System.Linq;
 using cadencii.utau;
 using Cadencii.Utilities;

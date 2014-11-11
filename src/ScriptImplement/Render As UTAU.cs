@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii.apputil;
 using cadencii;
 using cadencii.java.util;

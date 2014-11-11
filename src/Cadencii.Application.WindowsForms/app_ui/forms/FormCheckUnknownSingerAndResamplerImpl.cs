@@ -13,7 +13,7 @@
  */
 using System;
 using cadencii.apputil;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii;
 using cadencii.java.util;
 

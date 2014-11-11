@@ -11,7 +11,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 
 namespace cadencii.dsp.v2.generator
 {

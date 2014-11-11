@@ -5,8 +5,8 @@ using System.IO;
 using System.Xml;
 using System.Linq;
 using System.Xml.Linq;
-using cadencii.vsq;
-using cadencii.vsq.io;
+using Cadencii.Media.Vsq;
+using Cadencii.Media.Vsq.IO;
 
 namespace cadencii.test.vsq.io
 {

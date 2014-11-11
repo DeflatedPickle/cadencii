@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii;
-using cadencii.vsq.io;
+using Cadencii.Media.Vsq.IO;
 using Cadencii.Xml;
 using NUnit.Framework;
 

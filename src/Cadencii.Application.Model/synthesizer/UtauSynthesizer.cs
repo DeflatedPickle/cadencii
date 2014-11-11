@@ -17,9 +17,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using cadencii.dsp.v2.generator;
-using cadencii.media;
+using Cadencii.Media;
 using cadencii.utau;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using Cadencii.Utilities;
 using Cadencii.Gui;
 

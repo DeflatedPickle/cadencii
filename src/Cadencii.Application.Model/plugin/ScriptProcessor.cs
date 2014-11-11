@@ -103,12 +103,12 @@ namespace cadencii
             return
                 "using System;" +
                 "using System.IO;" +
-                "using cadencii.vsq;" +
+                "using Cadencii.Media.Vsq;" +
                 "using cadencii;" +
                 "using cadencii.java.io;" +
                 "using cadencii.java.util;" +
                 "using Cadencii.Gui;" +
-                "using cadencii.media;" +
+                "using Cadencii.Media;" +
                 "using cadencii.apputil;" +
                 "using System.Windows.Forms;" +
                 "using System.Collections.Generic;" +

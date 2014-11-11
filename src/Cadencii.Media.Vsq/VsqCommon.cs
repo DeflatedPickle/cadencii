@@ -2,7 +2,7 @@
  * VsqCommon.cs
  * Copyright © 2008-2011 kbinani
  *
- * This file is part of cadencii.vsq.
+ * This file is part of Cadencii.Media.Vsq.
  *
  * cadencii.vsq is free software; you can redistribute it and/or
  * modify it under the terms of the BSD License.
@@ -15,7 +15,7 @@ using System;
 using cadencii;
 using Cadencii.Utilities;
 
-namespace cadencii.vsq
+namespace Cadencii.Media.Vsq
 {
 
     /// <summary>
@@ -30,15 +30,15 @@ namespace cadencii.vsq
         /// <summary>
         /// Dynamicsカーブを表示するモード(Expert)なら1、しない(Standard)なら0。
         /// </summary>
-        public int DynamicsMode = cadencii.vsq.DynamicsMode.Expert;
+        public int DynamicsMode = Cadencii.Media.Vsq.DynamicsMode.Expert;
         /// <summary>
         /// Play With Synthesisなら1、Play After Synthesiなら0、Offなら-1。
         /// </summary>
-        public int PlayMode = cadencii.vsq.PlayMode.PlayWithSynth;
+        public int PlayMode = Cadencii.Media.Vsq.PlayMode.PlayWithSynth;
         /// <summary>
         /// PlayModeがOff(-1)にされる直前に，PlayAfterSynthかPlayWithSynthのどちらが指定されていたかを記憶しておく．
         /// </summary>
-        public int LastPlayMode = cadencii.vsq.PlayMode.PlayWithSynth;
+        public int LastPlayMode = Cadencii.Media.Vsq.PlayMode.PlayWithSynth;
 
         public object Clone()
         {

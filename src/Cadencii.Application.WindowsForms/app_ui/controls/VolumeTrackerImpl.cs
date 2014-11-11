@@ -17,7 +17,7 @@ using System.Windows.Forms;
 using cadencii;
 
 using Cadencii.Gui;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 
 using Keys = Cadencii.Gui.Toolkit.Keys;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;

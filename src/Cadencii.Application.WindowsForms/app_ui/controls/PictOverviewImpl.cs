@@ -17,7 +17,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using Cadencii.Gui;
 using cadencii.java.util;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 
 using MouseButtons = System.Windows.Forms.MouseButtons;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;

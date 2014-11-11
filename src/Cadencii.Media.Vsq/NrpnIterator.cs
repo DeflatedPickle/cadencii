@@ -2,7 +2,7 @@
  * NrpnIterator.cs
  * Copyright © 2009-2013 kbinani
  *
- * This file is part of cadencii.vsq.
+ * This file is part of Cadencii.Media.Vsq.
  *
  * cadencii.vsq is free software; you can redistribute it and/or
  * modify it under the terms of the BSD License.
@@ -14,8 +14,9 @@
 using System;
 using System.Reflection;
 using System.Collections.Generic;
+using cadencii;
 
-namespace cadencii.vsq
+namespace Cadencii.Media.Vsq
 {
     class NrpnIterator : IEnumerable<ValuePair<string, int>>
     {

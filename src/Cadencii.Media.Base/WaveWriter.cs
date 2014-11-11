@@ -17,7 +17,7 @@ using cadencii;
 //using cadencii.java.io;
 using Cadencii.Utilities;
 
-namespace cadencii.media
+namespace Cadencii.Media
 {
 
     public class WaveWriter : IDisposable, IWaveReceiver

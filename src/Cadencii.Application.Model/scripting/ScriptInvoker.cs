@@ -13,7 +13,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using Cadencii.Xml;
 
 

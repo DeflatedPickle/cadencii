@@ -9,7 +9,7 @@ using NKeyEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.KeyEventArgs>;
 using PaintEventArgs = Cadencii.Gui.Toolkit.PaintEventArgs;
 using System.Threading;
 using Cadencii.Gui;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using System.Collections.Generic;
 using cadencii.java.util;
 using cadencii.core;

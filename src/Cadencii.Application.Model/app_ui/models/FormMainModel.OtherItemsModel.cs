@@ -1,6 +1,6 @@
 ﻿using System;
 using Cadencii.Gui;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel;

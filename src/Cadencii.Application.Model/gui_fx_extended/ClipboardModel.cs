@@ -19,7 +19,7 @@ namespace cadencii
 {
 
     using System;
-    using cadencii.vsq;
+    using Cadencii.Media.Vsq;
     using cadencii.java.util;
 
     /// <summary>

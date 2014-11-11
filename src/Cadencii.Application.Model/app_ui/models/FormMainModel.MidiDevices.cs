@@ -1,8 +1,8 @@
 ﻿using System;
-using cadencii.media;
+using Cadencii.Media;
 using System.Collections.Generic;
 using cadencii.javax.sound.midi;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using Cadencii.Media.Windows;
 
 namespace cadencii

@@ -14,6 +14,7 @@
 using System;
 using cadencii.core;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Media.Vsq;
 
 namespace cadencii
 {

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using System.Threading;
 using cadencii;
 using cadencii.java.util;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii;
 using Cadencii.Utilities;
 

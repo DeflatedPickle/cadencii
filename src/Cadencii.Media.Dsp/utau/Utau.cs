@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using System.Text;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using Cadencii.Utilities;
 
 namespace cadencii.utau

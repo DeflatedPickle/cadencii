@@ -15,11 +15,11 @@ using System.IO;
 using cadencii.core;
 using System.Collections.Generic;
 using System.Reflection;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using Cadencii.Gui;
 using Cadencii.Xml;
 using cadencii.utau;
-using cadencii.media;
+using Cadencii.Media;
 using System.Threading;
 using cadencii.apputil;
 using Cadencii.Utilities;
@@ -2510,12 +2510,12 @@ namespace cadencii
 		public static readonly string[] usingS = new string[] {
 			"using System;",
 			"using System.IO;",
-			"using cadencii.vsq;",
+			"using Cadencii.Media.Vsq;",
 			"using cadencii;",
 			"using cadencii.java.io;",
 			"using cadencii.java.util;",
 			"using Cadencii.Gui;",
-			"using cadencii.media;",
+			"using Cadencii.Media;",
 			"using cadencii.apputil;",
 			"using System.Windows.Forms;",
 			"using System.Collections.Generic;",

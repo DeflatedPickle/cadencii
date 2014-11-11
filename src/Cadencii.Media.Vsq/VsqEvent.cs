@@ -2,7 +2,7 @@
  * VsqEvent.cs
  * Copyright © 2008-2011 kbinani
  *
- * This file is part of cadencii.vsq.
+ * This file is part of Cadencii.Media.Vsq.
  *
  * cadencii.vsq is free software; you can redistribute it and/or
  * modify it under the terms of the BSD License.
@@ -18,7 +18,7 @@ using cadencii;
 using cadencii.java.util;
 using Cadencii.Utilities;
 
-namespace cadencii.vsq
+namespace Cadencii.Media.Vsq
 {
 
     /// <summary>

@@ -21,6 +21,7 @@ using NMouseEventArgs = Cadencii.Gui.Toolkit.MouseEventArgs;
 using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventArgs>;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Media.Vsq;
 
 namespace cadencii
 {

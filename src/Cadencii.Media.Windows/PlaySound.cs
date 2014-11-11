@@ -202,7 +202,7 @@ namespace Cadencii.Media.Windows
 }
 
 #if false
-namespace cadencii.media.impl
+namespace Cadencii.Media.impl
 {
     using DWORD = System.UInt32;
     using UINT = System.UInt32;

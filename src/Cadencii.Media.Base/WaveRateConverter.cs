@@ -13,8 +13,9 @@
  */
 using System;
 using Cadencii.Utilities;
+using cadencii;
 
-namespace cadencii.media
+namespace Cadencii.Media
 {
 
     /// <summary>

@@ -21,7 +21,7 @@ using System.Threading;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 using cadencii.java.util;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii.dsp;
 using VstSdk;
 using Cadencii.Platform.Windows;

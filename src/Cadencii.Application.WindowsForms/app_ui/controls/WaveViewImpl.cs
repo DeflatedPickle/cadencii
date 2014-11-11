@@ -15,7 +15,7 @@ using System;
 using System.Windows.Forms;
 using cadencii;
 using Cadencii.Gui;
-using cadencii.media;
+using Cadencii.Media;
 
 using cadencii.core;
  

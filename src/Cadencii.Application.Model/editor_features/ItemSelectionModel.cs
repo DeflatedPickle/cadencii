@@ -19,7 +19,7 @@ namespace cadencii
 
     using System;
     using cadencii.java.util;
-    using cadencii.vsq;
+    using Cadencii.Media.Vsq;
 
     /// <summary>
     /// アイテムの選択状態を管理するクラスです．

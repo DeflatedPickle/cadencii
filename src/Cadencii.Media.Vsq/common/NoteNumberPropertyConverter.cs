@@ -16,7 +16,7 @@ using System;
 using System.ComponentModel;
 using System.Globalization;
 using cadencii;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 
 
 

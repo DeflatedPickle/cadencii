@@ -12,8 +12,9 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
+using cadencii;
 
-namespace cadencii.media
+namespace Cadencii.Media
 {
 
     /// <summary>

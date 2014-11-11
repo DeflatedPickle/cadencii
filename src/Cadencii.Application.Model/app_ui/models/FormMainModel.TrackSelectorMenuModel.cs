@@ -1,6 +1,7 @@
 ﻿using System;
 using cadencii.core;
 using Cadencii.Gui;
+using Cadencii.Media.Vsq;
 
 namespace cadencii
 {

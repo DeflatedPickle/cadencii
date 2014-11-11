@@ -14,7 +14,7 @@
 using System;
 using cadencii;
 using cadencii.java.util;
-using cadencii.media;
+using Cadencii.Media;
 using cadencii.core;
 
 namespace cadencii

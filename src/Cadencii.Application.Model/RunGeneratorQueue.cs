@@ -23,8 +23,8 @@ using Microsoft.CSharp;
 using cadencii.apputil;
 using Cadencii.Gui;
 using cadencii.java.util;
-using cadencii.media;
-using cadencii.vsq;
+using Cadencii.Media;
+using Cadencii.Media.Vsq;
 using Cadencii.Xml;
 using cadencii.utau;
 

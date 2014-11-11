@@ -16,7 +16,7 @@ using System.IO;
 using cadencii;
 using Cadencii.Utilities;
 
-namespace cadencii.media
+namespace Cadencii.Media
 {
 
     public class WaveReader : IDisposable

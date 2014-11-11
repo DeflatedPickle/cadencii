@@ -13,7 +13,7 @@
  */
 using System;
 using System.IO;
-using cadencii.media;
+using Cadencii.Media;
 using cadencii;
 using cadencii.core;
 

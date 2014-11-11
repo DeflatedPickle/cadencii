@@ -11,7 +11,7 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
-using cadencii.media;
+using Cadencii.Media;
 using Cadencii.Media.Windows;
 
 namespace cadencii.dsp.v2

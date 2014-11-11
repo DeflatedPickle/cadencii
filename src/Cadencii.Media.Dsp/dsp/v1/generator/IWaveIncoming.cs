@@ -20,8 +20,8 @@ using System.Text;
 using cadencii;
 using Cadencii.Gui;
 using cadencii.java.util;
-using cadencii.media;
-using cadencii.vsq;
+using Cadencii.Media;
+using Cadencii.Media.Vsq;
 
 namespace cadencii
 {

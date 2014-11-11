@@ -1,6 +1,6 @@
 using System;
 using System.Windows.Forms;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii;
 using System.Drawing;
 using Cadencii.Utilities;

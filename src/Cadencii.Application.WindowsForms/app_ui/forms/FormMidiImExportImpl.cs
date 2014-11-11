@@ -20,6 +20,7 @@ using Cadencii.Gui;
 using AnchorStyles = Cadencii.Gui.Toolkit.AnchorStyles;
 using HorizontalAlignment = Cadencii.Gui.Toolkit.HorizontalAlignment;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Media.Vsq;
 
 namespace cadencii
 {

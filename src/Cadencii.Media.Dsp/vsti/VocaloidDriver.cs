@@ -15,7 +15,7 @@
 using System;
 using System.Collections.Generic;
 using cadencii.java.util;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii;
 using VstSdk;
 

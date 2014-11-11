@@ -18,7 +18,7 @@ using System.Collections.Generic;
 using cadencii;
 using Cadencii.Gui;
 using Cadencii.Xml;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii.core;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;

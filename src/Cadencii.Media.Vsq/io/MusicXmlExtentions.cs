@@ -2,7 +2,7 @@
  * MusicXmlExtentions.cs
  * Copyright © 2013 kbinani
  *
- * This file is part of cadencii.vsq.
+ * This file is part of Cadencii.Media.Vsq.
  *
  * cadencii.vsq is free software; you can redistribute it and/or
  * modify it under the terms of the BSD License.
@@ -14,7 +14,7 @@
 using System.Linq;
 using System.Collections.Generic;
 
-namespace MusicXML
+namespace Cadencii.Media.Vsq.IO.MusicXML
 {
     partial class time
     {

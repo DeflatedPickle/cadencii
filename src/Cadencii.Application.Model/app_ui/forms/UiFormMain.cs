@@ -13,7 +13,7 @@
  */
 using System.Collections.Generic;
 using Cadencii.Gui;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using System;
 using Cadencii.Gui.Toolkit;
 

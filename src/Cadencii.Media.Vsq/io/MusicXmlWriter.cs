@@ -2,7 +2,7 @@
  * MusicXmlWriter.cs
  * Copyright © 2013 kbinani
  *
- * This file is part of cadencii.vsq.
+ * This file is part of Cadencii.Media.Vsq.
  *
  * cadencii.vsq is free software; you can redistribute it and/or
  * modify it under the terms of the BSD License.
@@ -17,9 +17,9 @@ using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using MusicXML;
+using Cadencii.Media.Vsq.IO.MusicXML;
 
-namespace cadencii.vsq.io
+namespace Cadencii.Media.Vsq.IO
 {
     static class MusicXmlNoteUtil
     {

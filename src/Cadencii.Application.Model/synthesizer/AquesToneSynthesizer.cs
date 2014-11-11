@@ -14,7 +14,7 @@
  */
 using System;
 using System.Collections.Generic;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 

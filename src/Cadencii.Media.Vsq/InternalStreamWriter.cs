@@ -2,7 +2,7 @@
  * InternalStreamWriter.cs
  * Copyright © 2011 kbinani
  *
- * This file is part of cadencii.vsq.
+ * This file is part of Cadencii.Media.Vsq.
  *
  * cadencii.vsq is free software; you can redistribute it and/or
  * modify it under the terms of the BSD License.
@@ -13,7 +13,7 @@
  */
 using System;
 
-namespace cadencii.vsq
+namespace Cadencii.Media.Vsq
 {
     /// <summary>
     /// 改行コードに0x0d 0x0aを用いるテキストライター

@@ -2,7 +2,7 @@
  * VsqNrpn.cs
  * Copyright © 2008-2011 kbinani
  *
- * This file is part of cadencii.vsq.
+ * This file is part of Cadencii.Media.Vsq.
  *
  * cadencii.vsq is free software; you can redistribute it and/or
  * modify it under the terms of the BSD License.
@@ -16,7 +16,7 @@ using System.Collections.Generic;
 using cadencii;
 using cadencii.java.util;
 
-namespace cadencii.vsq
+namespace Cadencii.Media.Vsq
 {
 
     public class VsqNrpn : IComparable<VsqNrpn>

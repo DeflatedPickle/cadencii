@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
-using cadencii.media;
-using cadencii.vsq;
+using Cadencii.Media;
+using Cadencii.Media.Vsq;
 using Cadencii.Utilities;
 using Cadencii.Media.Windows;
 

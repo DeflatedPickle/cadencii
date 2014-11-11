@@ -16,7 +16,7 @@ using System.Collections.Generic;
 using System.Linq;
 using VstSdk;
 using cadencii.dsp.v2.generator;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 
 namespace cadencii.synthesizer
 {

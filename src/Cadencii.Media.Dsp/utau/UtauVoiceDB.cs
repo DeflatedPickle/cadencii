@@ -14,7 +14,7 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 
 namespace cadencii.utau
 {

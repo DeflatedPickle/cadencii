@@ -21,7 +21,7 @@ using Microsoft.CSharp;
 using System.Linq;
 using cadencii;
 using cadencii.apputil;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using Cadencii.Utilities;
 
 
@@ -78,7 +78,7 @@ namespace cadencii
 
 				// FIXME: they need to be updated to enumerate all the latest files.
                 CompilerParameters parameters = new CompilerParameters(new string[] {
-                    Path.Combine( path, "cadencii.vsq.dll" ),
+                    Path.Combine( path, "Cadencii.Media.Vsq.dll" ),
                     Path.Combine( path, "Cadencii.exe" ),
                     Path.Combine( path, "cadencii.media.dll" ),
                     Path.Combine( path, "cadencii.apputil.dll" ),

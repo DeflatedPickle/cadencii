@@ -20,8 +20,8 @@ using cadencii.apputil;
 using Cadencii.Gui;
 using cadencii.java.util;
 using cadencii.javax.sound.midi;
-using cadencii.media;
-using cadencii.vsq;
+using Cadencii.Media;
+using Cadencii.Media.Vsq;
 
 
 using cadencii.utau;

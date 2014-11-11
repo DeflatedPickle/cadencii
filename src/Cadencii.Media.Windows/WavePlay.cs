@@ -16,7 +16,7 @@ using System.Runtime.InteropServices;
 
 using cadencii;
 using Cadencii.Platform.Windows;
-using cadencii.media;
+using Cadencii.Media;
 
 namespace Cadencii.Media.Windows
 {

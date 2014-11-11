@@ -109,14 +109,14 @@
     <Compile Include="VsqTrack.cs" />
     <Compile Include="VsqVoiceLanguage.cs" />
     <Compile Include="WrappedStreamWriter.cs" />
-    <Compile Include="VsqFileEx.cs" />
-    <Compile Include="CadenciiCommand.cs" />
-    <Compile Include="NoteNumberProperty.cs" />
-    <Compile Include="NoteNumberPropertyConverter.cs" />
-    <Compile Include="NoteNumberExpressionType.cs" />
     <Compile Include="VibratoHandle.cs" />
-    <Compile Include="VibratoPointIteratorByClock.cs" />
-    <Compile Include="VibratoPointIteratorBySec.cs" />
+    <Compile Include="common\CadenciiCommand.cs" />
+    <Compile Include="common\NoteNumberExpressionType.cs" />
+    <Compile Include="common\NoteNumberProperty.cs" />
+    <Compile Include="common\NoteNumberPropertyConverter.cs" />
+    <Compile Include="common\VibratoPointIteratorByClock.cs" />
+    <Compile Include="common\VibratoPointIteratorBySec.cs" />
+    <Compile Include="VsqFileEx.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cadencii.Core\Cadencii.Core.csproj">
@@ -144,4 +144,7 @@
     <PostBuildEvent>
     </PostBuildEvent>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="common\" />
+  </ItemGroup>
 </Project>

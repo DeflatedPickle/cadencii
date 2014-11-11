@@ -2,7 +2,7 @@
  * VsqxReader.cs
  * Copyright © 2011,2013 kbinani
  *
- * This file is part of cadencii.vsq.
+ * This file is part of Cadencii.Media.Vsq.
  *
  * cadencii.vsq is free software; you can redistribute it and/or
  * modify it under the terms of the BSD License.
@@ -16,7 +16,7 @@ using System.Xml;
 using System.Collections.Generic;
 using System.IO;
 
-namespace cadencii.vsq.io
+namespace Cadencii.Media.Vsq.IO
 {
 
     /// <summary>

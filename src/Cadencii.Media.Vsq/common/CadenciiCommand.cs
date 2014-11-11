@@ -13,7 +13,7 @@
  */
 using System;
 using System.Collections.Generic;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 using cadencii.java.util;
 
 namespace cadencii

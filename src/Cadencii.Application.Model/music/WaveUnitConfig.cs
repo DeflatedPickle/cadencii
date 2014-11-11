@@ -13,7 +13,7 @@
  */
 using System.Collections.Generic;
 using System.Text;
-using cadencii.vsq;
+using Cadencii.Media.Vsq;
 
 namespace cadencii
 {

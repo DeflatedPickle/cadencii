@@ -16,7 +16,7 @@ public class Hamori : System.Windows.Forms.Form
         this.cbbSlide.SelectedIndex = 0;
     }
 
-    public static bool Edit(cadencii.vsq.VsqFile vsq)
+    public static bool Edit(Cadencii.Media.Vsq.VsqFile vsq)
     {
         using (Hamori d = new Hamori()) {
             if (d.ShowDialog() != System.Windows.Forms.DialogResult.OK) {
@@ -105,7 +105,7 @@ public class Hamori : System.Windows.Forms.Form
 
     }
 
-    private static void hamori(cadencii.vsq.VsqFile vsq, int basecode, int opt)
+    private static void hamori(Cadencii.Media.Vsq.VsqFile vsq, int basecode, int opt)
     {
         // opt : 0 -> 3度上, 1 -> 5度上, 2 -> 4度下
         //            4(or 3)     7           -5
@@ -123,8 +123,8 @@ public class Hamori : System.Windows.Forms.Form
         int tmp;
         if (opt == 0) {
             for (int j = 0; j < vsq.Track[track].getEventCount(); j++) {
-                cadencii.vsq.VsqEvent item = vsq.Track[track].getEvent(j);
-                if (item.ID.type == cadencii.vsq.VsqIDType.Anote && target_ids.ContainsKey(item.InternalID)) {
+                Cadencii.Media.Vsq.VsqEvent item = vsq.Track[track].getEvent(j);
+                if (item.ID.type == Cadencii.Media.Vsq.VsqIDType.Anote && target_ids.ContainsKey(item.InternalID)) {
                     tmp = (item.ID.Note + 12 - basecode) % 12;
                     step = ((1 < tmp && tmp < 5) || 8 < tmp) ? 3 : 4;
                     note = item.ID.Note + step;
@@ -137,8 +137,8 @@ public class Hamori : System.Windows.Forms.Form
             }
         } else {
             for (int j = 0; j < vsq.Track[track].getEventCount(); j++) {
-                cadencii.vsq.VsqEvent item = vsq.Track[track].getEvent(j);
-                if (item.ID.type == cadencii.vsq.VsqIDType.Anote && target_ids.ContainsKey(item.InternalID)) {
+                Cadencii.Media.Vsq.VsqEvent item = vsq.Track[track].getEvent(j);
+                if (item.ID.type == Cadencii.Media.Vsq.VsqIDType.Anote && target_ids.ContainsKey(item.InternalID)) {
                     tmp = (item.ID.Note + 12 - basecode) % 12;
                     tmp = tmp == 11 ? step - 1 : step;
                     note = item.ID.Note + tmp;
