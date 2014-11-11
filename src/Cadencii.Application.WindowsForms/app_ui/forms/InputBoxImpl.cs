@@ -78,77 +78,10 @@ namespace cadencii
         /// </summary>
         private void InitializeComponent()
         {
-			#if true
 			this.SuspendLayout();
-			ApplicationUIHost.Instance.ApplyXml (this, "Cadencii.Application.Model.app_ui.forms.InputBox.xml");
+			ApplicationUIHost.Instance.ApplyXml (this, "InputBox.xml");
 			this.ResumeLayout(false);
 			this.PerformLayout();
-			#else
-            this.txtInput = new TextBox();
-            this.btnOk = new Button();
-            this.lblMessage = new Label();
-            this.btnCancel = new Button();
-            this.SuspendLayout();
-            //
-            // txtInput
-            //
-            this.txtInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInput.Location = new System.Drawing.Point(12, 24);
-            this.txtInput.Name = "txtInput";
-            this.txtInput.Size = new System.Drawing.Size(309, 19);
-            this.txtInput.TabIndex = 0;
-            //
-            // btnOk
-            //
-            this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOk.Location = new System.Drawing.Point(165, 49);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 23);
-            this.btnOk.TabIndex = 1;
-            this.btnOk.Text = "OK";
-            this.btnOk.UseVisualStyleBackColor = true;
-            //
-            // lblMessage
-            //
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(12, 9);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(0, 12);
-            this.lblMessage.TabIndex = 2;
-            //
-            // btnCancel
-            //
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(246, 49);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            //
-            // InputBox
-            //
-            this.AcceptButton = this.btnOk;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(333, 82);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.lblMessage);
-            this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.txtInput);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "InputBox";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "InputBox";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-			#endif
         }
         #endregion
 

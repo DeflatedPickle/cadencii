@@ -5,6 +5,7 @@ using System.Xml;
 using System.Windows.Forms;
 using System.Linq;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace cadencii
 {
@@ -41,8 +42,14 @@ namespace cadencii
 				.FirstOrDefault (x => x != null);
 		}
 
-		object Deserialize (Control root, Dictionary<string, object> ctlsAndIds, string value, Type t)
+		object Deserialize (Control root, string value, Type t)
 		{
+			if (value.FirstOrDefault () == '$') {
+				if (t == typeof (System.Drawing.Color))
+					return typeof (System.Drawing.Color).GetProperty (value.Substring (1)).GetValue (null);
+				else
+					throw new NotSupportedException ();
+			}
 			if (t.IsEnum)
 				return Enum.ToObject (t, value.Split ('\'')
 					.Select (s => s.Trim ())
@@ -57,7 +64,7 @@ namespace cadencii
 			} else {
 				var argStrings = value.TrimStart ('(').TrimEnd (')').Split (',').Select (x => x.Trim ()).ToArray ();
 				var ctor = t.GetConstructors ().First (c => c.GetParameters ().Length == argStrings.Length);
-				var argObjs = argStrings.Zip (ctor.GetParameters (), (s, pi) => Deserialize (root, ctlsAndIds, s, pi.ParameterType)).ToArray ();
+				var argObjs = argStrings.Zip (ctor.GetParameters (), (s, pi) => Deserialize (root, s, pi.ParameterType)).ToArray ();
 				return Activator.CreateInstance (t, argObjs);
 			}
 		}
@@ -66,12 +73,17 @@ namespace cadencii
 		{
 			var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
 			var t = o.GetType ();
-			var ctlsAndIds = new Dictionary<string, object> ();
 			foreach (XmlElement c in e.ChildNodes) {
 				var ct = typeof(System.Windows.Forms.Form).Assembly.GetType ("System.Windows.Forms." + c.LocalName);
 				var obj = ct != null ? Activator.CreateInstance (ct) : ApplicationUIHost.Create (c.LocalName);
+				// optionally call ISupportInitialize. It is not strictly the same as designer generated code, but still hopefully works...
+				var isi = obj as ISupportInitialize;
+				if (isi != null)
+					((ISupportInitialize)obj).BeginInit ();
 				ApplyXml (root, c, obj);
 				((Control) o).Controls.Add ((Control) obj);
+				if (isi != null)
+					((ISupportInitialize)obj).EndInit ();
 			}
 			foreach (XmlAttribute a in e.Attributes) {
 				if (a.LocalName == "id") {
@@ -85,7 +97,7 @@ namespace cadencii
 					}
 				} else {
 					var p = t.GetProperty (a.LocalName);
-					var v = Deserialize (root, ctlsAndIds, a.Value, p.PropertyType);
+					var v = Deserialize (root, a.Value, p.PropertyType);
 					p.SetValue (o, v);
 				}
 			}

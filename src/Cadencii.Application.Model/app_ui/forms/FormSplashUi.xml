@@ -1,0 +1,18 @@
+﻿<Form id="FormSplashUi"
+	ClientSize = "(500, 335)"
+	FormBorderStyle = "None"
+	MaximizeBox = "false"
+	MinimizeBox = "false"
+	Name = "FormSplash"
+	ShowIcon = "false"
+	ShowInTaskbar = "false"
+	StartPosition = "CenterScreen"
+	TransparencyKey = "$Fuchsia">
+    <FlowLayoutPanel id="panelIcon"
+		Anchor = "Bottom,Left,Right"
+		BackColor = "$Transparent"
+		Location = "(12, 200)"
+		Name = "panelIcon"
+		Size = "(476, 123)"
+		TabIndex = "1"/>
+</Form>

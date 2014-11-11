@@ -295,6 +295,22 @@
   <ItemGroup>
     <EmbeddedResource Include="app_ui\forms\InputBox.xml">
       <DependentUpon>InputBox.cs</DependentUpon>
+      <LogicalName>InputBox.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormSplashUi.xml">
+      <LogicalName>FormSplashUi.xml</LogicalName>
+      <DependentUpon>FormSplashUi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormImportLyric.xml">
+      <LogicalName>FormImportLyric.xml</LogicalName>
+      <DependentUpon>FormImportLyric.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormTrackProperty.xml">
+      <LogicalName>FormTrackProperty.xml</LogicalName>
+      <DependentUpon>FormTrackProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormInsertBar.xml">
+      <LogicalName>FormInsertBar.xml</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

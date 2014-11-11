@@ -181,71 +181,8 @@ namespace cadencii
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtLyrics = new System.Windows.Forms.TextBox();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.lblNotes = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // txtLyrics
-            // 
-            this.txtLyrics.AcceptsReturn = true;
-            this.txtLyrics.AcceptsTab = true;
-            this.txtLyrics.Location = new System.Drawing.Point(12, 35);
-            this.txtLyrics.Multiline = true;
-            this.txtLyrics.Name = "txtLyrics";
-            this.txtLyrics.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtLyrics.Size = new System.Drawing.Size(426, 263);
-            this.txtLyrics.TabIndex = 0;
-            this.txtLyrics.WordWrap = false;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(363, 317);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnOK
-            // 
-            this.btnOK.Location = new System.Drawing.Point(269, 317);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 1;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            // 
-            // lblNotes
-            // 
-            this.lblNotes.AutoSize = true;
-            this.lblNotes.Location = new System.Drawing.Point(15, 16);
-            this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Size = new System.Drawing.Size(78, 12);
-            this.lblNotes.TabIndex = 3;
-            this.lblNotes.Text = "Max : *[notes]";
-            // 
-            // FormImportLyric
-            // 
-            this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(450, 352);
-            this.Controls.Add(this.lblNotes);
-            this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.txtLyrics);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FormImportLyric";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Import lyrics";
+			ApplicationUIHost.Instance.ApplyXml (this, "FormImportLyric.xml");
             this.ResumeLayout(false);
             this.PerformLayout();
 

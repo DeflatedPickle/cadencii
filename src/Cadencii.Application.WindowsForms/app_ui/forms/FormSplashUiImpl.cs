@@ -143,32 +143,9 @@ namespace cadencii
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.panelIcon = new System.Windows.Forms.FlowLayoutPanel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
-            // 
-            // panelIcon
-            // 
-            this.panelIcon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelIcon.BackColor = System.Drawing.Color.Transparent;
-            this.panelIcon.Location = new System.Drawing.Point(12, 200);
-            this.panelIcon.Name = "panelIcon";
-            this.panelIcon.Size = new System.Drawing.Size(476, 123);
-            this.panelIcon.TabIndex = 1;
-            // 
-            // FormSplash
-            // 
-            this.ClientSize = new System.Drawing.Size(500, 335);
-            this.Controls.Add(this.panelIcon);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FormSplash";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.TransparencyKey = System.Drawing.Color.Fuchsia;
+		ApplicationUIHost.Instance.ApplyXml (this, "FormSplashUi.xml");
             this.ResumeLayout(false);
 
         }
