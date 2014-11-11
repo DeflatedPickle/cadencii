@@ -4,6 +4,7 @@ using Cadencii.Gui;
 using System.Xml;
 using System.Windows.Forms;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace cadencii
 {
@@ -40,25 +41,32 @@ namespace cadencii
 				.FirstOrDefault (x => x != null);
 		}
 
-		object Deserialize (Control root, string value, Type t)
+		object Deserialize (Control root, Dictionary<string, object> ctlsAndIds, string value, Type t)
 		{
 			if (t.IsEnum)
-				return Enum.Parse (t, value);
+				return Enum.ToObject (t, value.Split ('\'')
+					.Select (s => s.Trim ())
+					.Select (s => Enum.Parse (t, s))
+					.Select (e => Convert.ChangeType (e, typeof(int)))
+					.Cast<int> ()
+					.Sum ());
 			else if (Type.GetTypeCode (t) != TypeCode.Object)
 				return Convert.ChangeType (value, t);
-			else if (typeof (Cadencii.Gui.Toolkit.UiControl).IsAssignableFrom (t) && value.FirstOrDefault () == '#')
+			else if (value.FirstOrDefault () == '#') {
 				return FindControlTreeItem (root, value.Substring (1));
-			else {
+			} else {
 				var argStrings = value.TrimStart ('(').TrimEnd (')').Split (',').Select (x => x.Trim ()).ToArray ();
 				var ctor = t.GetConstructors ().First (c => c.GetParameters ().Length == argStrings.Length);
-				var argObjs = argStrings.Zip (ctor.GetParameters (), (s, pi) => Deserialize (root, s, pi.ParameterType));
+				var argObjs = argStrings.Zip (ctor.GetParameters (), (s, pi) => Deserialize (root, ctlsAndIds, s, pi.ParameterType)).ToArray ();
 				return Activator.CreateInstance (t, argObjs);
 			}
 		}
 
 		void ApplyXml (Control root, XmlElement e, object o)
 		{
+			var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
 			var t = o.GetType ();
+			var ctlsAndIds = new Dictionary<string, object> ();
 			foreach (XmlElement c in e.ChildNodes) {
 				var ct = typeof(System.Windows.Forms.Form).Assembly.GetType ("System.Windows.Forms." + c.LocalName);
 				var obj = ct != null ? Activator.CreateInstance (ct) : ApplicationUIHost.Create (c.LocalName);
@@ -67,12 +75,17 @@ namespace cadencii
 			}
 			foreach (XmlAttribute a in e.Attributes) {
 				if (a.LocalName == "id") {
-					var pi = root.GetType ().GetProperty (a.Value, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+					var pi = root.GetType ().GetProperty (a.Value, bf);
 					if (pi != null)
 						pi.SetValue (root, o);
+					else {
+						var fi = root.GetType ().GetField (a.Value, bf);
+						if (fi != null)
+							fi.SetValue (root, o);
+					}
 				} else {
 					var p = t.GetProperty (a.LocalName);
-					var v = Deserialize (root, a.Value, p.PropertyType);
+					var v = Deserialize (root, ctlsAndIds, a.Value, p.PropertyType);
 					p.SetValue (o, v);
 				}
 			}
