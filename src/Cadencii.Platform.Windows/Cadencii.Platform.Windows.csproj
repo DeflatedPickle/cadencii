@@ -51,5 +51,9 @@
       <Project>{F4F8F601-4E3D-43F5-A8A8-AA1FB7F48452}</Project>
       <Name>Cadencii.Media.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Cadencii.Utilities\Cadencii.Utilities.csproj">
+      <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
+      <Name>Cadencii.Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

@@ -15,7 +15,6 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using cadencii;
-using cadencii.core2;
 using Cadencii.Utilities;
 using Cadencii.Platform.Windows;
 using Cadencii.Media;
@@ -73,8 +72,8 @@ namespace Cadencii.Media.Windows
                 try {
                     win32.midiInStart(m_hmidiin);
                 } catch (Exception ex) {
-                    debug.push_log("MidiInDevice.Start");
-                    debug.push_log("    ex=" + ex);
+                    MMDebug.push_log("MidiInDevice.Start");
+                    MMDebug.push_log("    ex=" + ex);
                 }
             }
         }
@@ -86,8 +85,8 @@ namespace Cadencii.Media.Windows
                 try {
                     win32.midiInReset(m_hmidiin);
                 } catch (Exception ex) {
-                    debug.push_log("MidiInDevice.Stop");
-                    debug.push_log("    ex=" + ex);
+                    MMDebug.push_log("MidiInDevice.Stop");
+                    MMDebug.push_log("    ex=" + ex);
                 }
             }
         }
@@ -99,8 +98,8 @@ namespace Cadencii.Media.Windows
                 try {
                     win32.midiInClose(m_hmidiin);
                 } catch (Exception ex) {
-                    debug.push_log("MidiInDevice.Close");
-                    debug.push_log("    ex=" + ex);
+                    MMDebug.push_log("MidiInDevice.Close");
+                    MMDebug.push_log("    ex=" + ex);
                 }
             }
             m_hmidiin = 0;
@@ -229,8 +228,8 @@ namespace Cadencii.Media.Windows
                     }
                 }
             } catch (Exception ex) {
-                debug.push_log("MidiInDevice.MidiInProc");
-                debug.push_log("    ex=" + ex);
+                MMDebug.push_log("MidiInDevice.MidiInProc");
+                MMDebug.push_log("    ex=" + ex);
             }
         }
     }

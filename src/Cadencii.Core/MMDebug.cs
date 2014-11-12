@@ -2,10 +2,10 @@ using System;
 using System.IO;
 using Cadencii.Utilities;
 
-namespace cadencii.core2
+namespace Cadencii.Media.Windows
 {
 	
-    public static class debug
+    public static class MMDebug
     {
         private static StreamWriter s_debug_out = null;
         private static string s_path = "";

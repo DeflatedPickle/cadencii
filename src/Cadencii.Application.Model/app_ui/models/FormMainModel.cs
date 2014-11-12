@@ -349,9 +349,9 @@ namespace cadencii
 						} catch (Exception ex) {
 							Logger.write(GetType () + ".clearTempWave; ex=" + ex + "\n");
 							#if DEBUG
-							cadencii.core2.debug.push_log("FormMain+ClearTempWave()");
-							cadencii.core2.debug.push_log("    ex=" + ex.ToString());
-							cadencii.core2.debug.push_log("    error_count=" + error);
+							Cadencii.Media.Windows.MMDebug.push_log("FormMain+ClearTempWave()");
+							Cadencii.Media.Windows.MMDebug.push_log("    ex=" + ex.ToString());
+							Cadencii.Media.Windows.MMDebug.push_log("    error_count=" + error);
 							#endif
 
 							Thread.Sleep(100);

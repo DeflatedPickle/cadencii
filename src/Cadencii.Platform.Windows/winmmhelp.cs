@@ -65,8 +65,8 @@ namespace Cadencii.Platform.Windows
             s_initialized = true;
             int num_joydev = (int)win32.joyGetNumDevs();
 #if DEBUG
-            cadencii.core2.debug.push_log("winmmhelp.JoyInit");
-            cadencii.core2.debug.push_log("    num_joydev=" + num_joydev);
+            Cadencii.Media.Windows.MMDebug.push_log("winmmhelp.JoyInit");
+            Cadencii.Media.Windows.MMDebug.push_log("    num_joydev=" + num_joydev);
 #endif
             if (num_joydev <= 0) {
                 num_joydev = 0;

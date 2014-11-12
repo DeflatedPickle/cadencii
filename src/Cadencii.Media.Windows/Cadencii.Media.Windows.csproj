@@ -52,10 +52,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Cadencii.Utilities\Cadencii.Utilities.csproj">
-      <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
-      <Name>Cadencii.Utilities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Cadencii.Core\Cadencii.Core.csproj">
       <Project>{C8AAE632-9C6C-4372-8175-811528A66742}</Project>
       <Name>Cadencii.Core</Name>
@@ -67,6 +63,10 @@
     <ProjectReference Include="..\Cadencii.Platform.Windows\Cadencii.Platform.Windows.csproj">
       <Project>{FD4F54BB-55D1-41FF-8378-B8B414AEE6A1}</Project>
       <Name>Cadencii.Platform.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cadencii.Utilities\Cadencii.Utilities.csproj">
+      <Project>{1785CCD0-43CB-459A-9AFF-4E59DB966DF0}</Project>
+      <Name>Cadencii.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

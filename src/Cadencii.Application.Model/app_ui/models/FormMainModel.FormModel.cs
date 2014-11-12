@@ -170,7 +170,7 @@ namespace cadencii
 					PortUtil.createDirectory (tempdir);
 				}
 				string log = Path.Combine (tempdir, "run.log");
-				cadencii.core2.debug.close ();
+				Cadencii.Media.Windows.MMDebug.close ();
 				try {
 					if (System.IO.File.Exists (log)) {
 						PortUtil.deleteFile (log);

@@ -92,9 +92,9 @@ namespace Cadencii.Media.Windows
         {
 #if DEBUG
 
-			cadencii.core2.debug.push_log("append_cor *************************************************************");
-			cadencii.core2.debug.push_log("    length=" + length);
-			cadencii.core2.debug.push_log("    s_hwave_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
+			Cadencii.Media.Windows.MMDebug.push_log("append_cor *************************************************************");
+			Cadencii.Media.Windows.MMDebug.push_log("    length=" + length);
+			Cadencii.Media.Windows.MMDebug.push_log("    s_hwave_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
 #endif
             s_playing = true;
             int jmax = (int)length;
@@ -113,7 +113,7 @@ namespace Cadencii.Media.Windows
                 cleaning_required = true;
                 int actual_length = (int)length - s_error_samples;
 #if DEBUG
-                cadencii.core2.debug.push_log("    actual_length=" + actual_length);
+                Cadencii.Media.Windows.MMDebug.push_log("    actual_length=" + actual_length);
 #endif
                 ptr_data0 = Marshal.AllocHGlobal(sizeof(float) * actual_length);
                 ptr_data1 = Marshal.AllocHGlobal(sizeof(float) * actual_length);
@@ -146,7 +146,7 @@ namespace Cadencii.Media.Windows
             if (s_buffer_loc >= s_block_size) {
                 // バッファー充填完了．バッファーを転送し、waveOutWriteが書き込めるタイミングまで待機
 #if DEBUG
-                cadencii.core2.debug.push_log("append_cor; waiting(1) " + s_current_buffer + "...");
+                Cadencii.Media.Windows.MMDebug.push_log("append_cor; waiting(1) " + s_current_buffer + "...");
 #endif
                 while (true) {
                     if (s_abort_required) {
@@ -158,7 +158,7 @@ namespace Cadencii.Media.Windows
                     }
                 }
 #if DEBUG
-                cadencii.core2.debug.push_log("append_cor; ...exit");
+                Cadencii.Media.Windows.MMDebug.push_log("append_cor; ...exit");
 #endif
 
                 s_processed_count++;
@@ -167,40 +167,40 @@ namespace Cadencii.Media.Windows
                 if (s_processed_count == _NUM_BUF) {
                     s_done[0] = false;
 #if DEBUG
-                    cadencii.core2.debug.push_log("calling waveOutWrite...; s_hawve_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
+                    Cadencii.Media.Windows.MMDebug.push_log("calling waveOutWrite...; s_hawve_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
 #endif
                     uint ret = win32.waveOutWrite(s_hwave_out, ref s_wave_header[0], (uint)sizeof(WAVEHDR));
 #if DEBUG
-                    cadencii.core2.debug.push_log("...done; ret=" + ret);
+                    Cadencii.Media.Windows.MMDebug.push_log("...done; ret=" + ret);
 #endif
 #if DEBUG
-                    cadencii.core2.debug.push_log("(s_first_buffer_wirtten_callback==null)=" + (s_first_buffer_written_callback == null));
+                    Cadencii.Media.Windows.MMDebug.push_log("(s_first_buffer_wirtten_callback==null)=" + (s_first_buffer_written_callback == null));
 #endif
                     if (s_first_buffer_written_callback != null) {
 #if DEBUG
-                        cadencii.core2.debug.push_log("append_cor; calling s_first_buffer_written_callback");
+                        Cadencii.Media.Windows.MMDebug.push_log("append_cor; calling s_first_buffer_written_callback");
 #endif
                         s_first_buffer_written_callback();
                     }
                     for (int buffer_index = 1; buffer_index < _NUM_BUF; buffer_index++) {
                         s_done[buffer_index] = false;
 #if DEBUG
-                        cadencii.core2.debug.push_log("calling waveOutWrite...; s_hawve_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
+                        Cadencii.Media.Windows.MMDebug.push_log("calling waveOutWrite...; s_hawve_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
 #endif
                         uint ret2 = win32.waveOutWrite(s_hwave_out, ref s_wave_header[buffer_index], (uint)sizeof(WAVEHDR));
 #if DEBUG
-                        cadencii.core2.debug.push_log("...done; ret2=" + ret2);
+                        Cadencii.Media.Windows.MMDebug.push_log("...done; ret2=" + ret2);
 #endif
                     }
                     s_current_buffer = _NUM_BUF - 1;
                 } else if (s_processed_count > _NUM_BUF) {
                     s_done[s_current_buffer] = false;
 #if DEBUG
-                    cadencii.core2.debug.push_log("calling waveOutWrite...; s_hawve_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
+                    Cadencii.Media.Windows.MMDebug.push_log("calling waveOutWrite...; s_hawve_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
 #endif
                     uint ret3 = win32.waveOutWrite(s_hwave_out, ref s_wave_header[s_current_buffer], (uint)sizeof(WAVEHDR));
 #if DEBUG
-                    cadencii.core2.debug.push_log("...done; ret3=" + ret3);
+                    Cadencii.Media.Windows.MMDebug.push_log("...done; ret3=" + ret3);
 #endif
                 }
                 s_current_buffer++;
@@ -233,16 +233,16 @@ namespace Cadencii.Media.Windows
                     mix((int)s_processed_count, aleft, aright);
                     s_done[0] = false;
 #if DEBUG
-                    cadencii.core2.debug.push_log("calling waveOutWrite...; s_hawve_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
+                    Cadencii.Media.Windows.MMDebug.push_log("calling waveOutWrite...; s_hawve_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
 #endif
                     uint ret35 = win32.waveOutWrite(s_hwave_out, ref s_wave_header[0], (uint)sizeof(WAVEHDR));
 #if DEBUG
-                    cadencii.core2.debug.push_log("...done; ret35=" + ret35);
-                    cadencii.core2.debug.push_log("(s_first_buffer_written_callback==null)=" + (s_first_buffer_written_callback == null));
+                    Cadencii.Media.Windows.MMDebug.push_log("...done; ret35=" + ret35);
+                    Cadencii.Media.Windows.MMDebug.push_log("(s_first_buffer_written_callback==null)=" + (s_first_buffer_written_callback == null));
 #endif
                     if (s_first_buffer_written_callback != null) {
 #if DEBUG
-                        cadencii.core2.debug.push_log("append_cor; calling s_first_buffer_written_callback");
+                        Cadencii.Media.Windows.MMDebug.push_log("append_cor; calling s_first_buffer_written_callback");
 #endif
                         s_first_buffer_written_callback();
                     }
@@ -251,11 +251,11 @@ namespace Cadencii.Media.Windows
                         mix((int)s_processed_count, aleft, aright);
                         s_done[i] = false;
 #if DEBUG
-                        cadencii.core2.debug.push_log("calling waveOutWrite...; s_hawve_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
+                        Cadencii.Media.Windows.MMDebug.push_log("calling waveOutWrite...; s_hawve_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
 #endif
                         uint ret36 = win32.waveOutWrite(s_hwave_out, ref s_wave_header[i], (uint)sizeof(WAVEHDR));
 #if DEBUG
-                        cadencii.core2.debug.push_log("...done; ret36=" + ret36);
+                        Cadencii.Media.Windows.MMDebug.push_log("...done; ret36=" + ret36);
 #endif
                     }
                 }
@@ -265,7 +265,7 @@ namespace Cadencii.Media.Windows
                     s_wave_buffer_r[j] = 0.0f;
                 }
 #if DEBUG
-                cadencii.core2.debug.push_log("append_cor; waiting(3) " + s_current_buffer + "...");
+                Cadencii.Media.Windows.MMDebug.push_log("append_cor; waiting(3) " + s_current_buffer + "...");
 #endif
                 while (!s_done[s_current_buffer]) {
                     if (s_abort_required) {
@@ -274,17 +274,17 @@ namespace Cadencii.Media.Windows
                     }
                 }
 #if DEBUG
-                cadencii.core2.debug.push_log("append_cor; ...exit");
+                Cadencii.Media.Windows.MMDebug.push_log("append_cor; ...exit");
 #endif
                 s_processed_count++;
                 mix((int)s_processed_count, aleft, aright);
                 s_done[s_current_buffer] = false;
 #if DEBUG
-                cadencii.core2.debug.push_log("calling waveOutWrite...; s_hawve_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
+                Cadencii.Media.Windows.MMDebug.push_log("calling waveOutWrite...; s_hawve_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
 #endif
                 uint ret4 = win32.waveOutWrite(s_hwave_out, ref s_wave_header[s_current_buffer], (uint)sizeof(WAVEHDR));
 #if DEBUG
-                cadencii.core2.debug.push_log("...done; ret4=" + ret4);
+                Cadencii.Media.Windows.MMDebug.push_log("...done; ret4=" + ret4);
 #endif
             }
         clean_and_exit:
@@ -377,7 +377,7 @@ namespace Cadencii.Media.Windows
                                             (uint)win32.CALLBACK_FUNCTION);
             Console.WriteLine("    ...done; ret=" + ret);
 #if DEBUG
-            cadencii.core2.debug.push_log("    s_hwave_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
+            Cadencii.Media.Windows.MMDebug.push_log("    s_hwave_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
 #endif
 
             for (int k = 0; k < _NUM_BUF; k++) {
@@ -400,7 +400,7 @@ namespace Cadencii.Media.Windows
                 s_wave_header[k].dwUser = new IntPtr(k);
             }
 #if DEBUG
-            cadencii.core2.debug.push_log("   exit waveplay..ctor; s_hwave_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
+            Cadencii.Media.Windows.MMDebug.push_log("   exit waveplay..ctor; s_hwave_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
 #endif
         }
 
@@ -437,7 +437,7 @@ namespace Cadencii.Media.Windows
         public float get_play_time()
         {
 #if DEBUG
-            cadencii.core2.debug.push_log("WavePlay.get_play_time");
+            Cadencii.Media.Windows.MMDebug.push_log("WavePlay.get_play_time");
 #endif
             if (s_playing) {
                 MMTIME mmt = new MMTIME();
@@ -445,7 +445,7 @@ namespace Cadencii.Media.Windows
                 mmt.wType = win32.TIME_MS;
                 uint ret = win32.waveOutGetPosition(s_hwave_out, ref mmt, (uint)sizeof(MMTIME));
 #if DEBUG
-                cadencii.core2.debug.push_log("    ret=" + ret);
+                Cadencii.Media.Windows.MMDebug.push_log("    ret=" + ret);
 #endif
                 float ms = 0.0f;
                 switch (mmt.wType) {
@@ -489,7 +489,7 @@ namespace Cadencii.Media.Windows
         public int on_your_mark(string[] files, long wave_read_offset_samples)
         {
 #if DEBUG
-            cadencii.core2.debug.push_log("on_your_mark; s_hwave_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
+            Cadencii.Media.Windows.MMDebug.push_log("on_your_mark; s_hwave_out=0x" + Convert.ToString(s_hwave_out.ToInt32(), 16));
 #endif
             int num_files = files.Length;
             reset();
@@ -581,7 +581,7 @@ namespace Cadencii.Media.Windows
             if (s_hwave_out.ToInt32() != 0) {
                 win32.waveOutReset(s_hwave_out);
 #if DEBUG
-                cadencii.core2.debug.push_log("waveplay::terminate; waveOutReset");
+                Cadencii.Media.Windows.MMDebug.push_log("waveplay::terminate; waveOutReset");
 #endif
                 for (int k = 0; k < _NUM_BUF; k++) {
                     win32.waveOutUnprepareHeader(s_hwave_out, ref s_wave_header[k], (uint)sizeof(WAVEHDR));
