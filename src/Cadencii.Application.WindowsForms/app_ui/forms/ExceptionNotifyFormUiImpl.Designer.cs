@@ -1,4 +1,4 @@
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
     partial class ExceptionNotifyFormUiImpl
     {

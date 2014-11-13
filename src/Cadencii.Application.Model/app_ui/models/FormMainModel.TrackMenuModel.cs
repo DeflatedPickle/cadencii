@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using Cadencii.Media.Vsq;
 using System.Linq;
 using Cadencii.Gui.Toolkit;
+using cadencii;
+using Cadencii.Application.Media;
+using Cadencii.Application.Drawing;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	public partial class FormMainModel
 	{

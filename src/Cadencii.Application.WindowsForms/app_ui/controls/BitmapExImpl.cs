@@ -16,7 +16,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace cadencii.apputil
+namespace Cadencii.Application.Controls
 {
 
     unsafe class BitmapExImpl : BitmapEx, IDisposable

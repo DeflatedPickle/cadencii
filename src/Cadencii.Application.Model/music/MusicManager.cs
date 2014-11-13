@@ -6,8 +6,10 @@ using Cadencii.Media.Vsq;
 using System.Linq;
 using cadencii.utau;
 using Cadencii.Utilities;
+using Cadencii.Media;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Media
 {
 	public class MusicManager
 	{

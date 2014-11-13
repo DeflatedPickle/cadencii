@@ -18,10 +18,12 @@ using Cadencii.Gui;
 using Cadencii.Media;
 
 using cadencii.core;
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Media;
  
 
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 
     /// <summary>

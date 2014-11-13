@@ -20,7 +20,10 @@ using cadencii.apputil;
 using cadencii.core;
 using Cadencii.Utilities;
 
-namespace cadencii
+using App = System.Windows.Forms.Application;
+using Cadencii.Application.Forms;
+
+namespace Cadencii.Application.Forms
 {
     public class CadenciiDriver
     {
@@ -67,11 +70,11 @@ namespace cadencii
 			PortUtil.SetApplicationStartupPath(System.Windows.Forms.Application.StartupPath);
 			Cadencii.Gui.AwtHost.Current = new Cadencii.Gui.AwtHostWindowsForms ();
 			cadencii.dsp.DspUIHost.CurrentType = typeof (cadencii.dsp.winforms.DspUIHostWF);
-            Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
+			App.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
             Thread.GetDomain().UnhandledException += new UnhandledExceptionEventHandler(Cadencii_UnhandledException);
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            App.EnableVisualStyles();
+            App.SetCompatibleTextRenderingDefault(false);
 
             // 引数を解釈
             parseArguments(args);
@@ -145,7 +148,7 @@ namespace cadencii
 #if !MONO
 			formMain.Load += mainWindow_Load;
 #endif
-            Application.Run((Form) EditorManager.MainWindow);
+            App.Run((Form) EditorManager.MainWindow);
 #if !DEBUG
             } catch ( Exception ex ) {
                 String str_ex = getExceptionText( ex, 0 );

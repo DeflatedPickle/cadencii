@@ -15,7 +15,7 @@ using System;
 using cadencii;
 using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public interface FormBezierPointEditUi : UiForm

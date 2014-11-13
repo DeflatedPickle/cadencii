@@ -6,8 +6,9 @@ using Cadencii.Gui;
 using System.Collections;
 using System.ComponentModel;
 using Cadencii.Gui.Toolkit;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Gui.Toolkit
 {
 	// cannot derive from System.Windows.Forms.ImageList, so it delegates to impl.
 	public class ImageListImpl : UiImageList

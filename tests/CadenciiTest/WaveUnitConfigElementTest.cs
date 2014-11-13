@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using NUnit.Framework;
+using Cadencii.Application.Media;
 
 namespace cadencii
 {

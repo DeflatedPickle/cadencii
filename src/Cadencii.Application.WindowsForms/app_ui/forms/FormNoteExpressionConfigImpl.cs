@@ -20,8 +20,12 @@ using Cadencii.Media.Vsq;
 using cadencii.java.util;
 using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
+using cadencii;
+using Cadencii.Application.Models;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
     public class FormNoteExpressionConfigImpl : FormImpl, FormNoteExpressionConfig
     {
@@ -507,8 +511,8 @@ namespace cadencii
             this.groupPitchControl = new GroupBox();
             this.label5 = new Label();
             this.label4 = new Label();
-            this.txtBendLength = ApplicationUIHost.Create<cadencii.NumberTextBox>();
-            this.txtBendDepth = ApplicationUIHost.Create<cadencii.NumberTextBox>();
+            this.txtBendLength = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox>();
+            this.txtBendDepth = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox>();
             this.trackBendLength = new TrackBar();
             this.trackBendDepth = new TrackBar();
             this.chkDownPortamento = new CheckBox();
@@ -518,8 +522,8 @@ namespace cadencii
             this.groupDynamicsControl = new GroupBox();
             this.label7 = new Label();
             this.label6 = new Label();
-			this.txtAccent = ApplicationUIHost.Create<cadencii.NumberTextBox>();
-			this.txtDecay = ApplicationUIHost.Create<cadencii.NumberTextBox>();
+			this.txtAccent = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox>();
+			this.txtDecay = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox>();
             this.trackAccent = new TrackBar();
             this.trackDecay = new TrackBar();
             this.lblAccent = new Label();
@@ -531,8 +535,8 @@ namespace cadencii
             this.groupAttack = new GroupBox();
             this.lblAttackTemplate = new Label();
             this.comboAttackTemplate = new ComboBox();
-			this.txtDepth = ApplicationUIHost.Create<cadencii.NumberTextBox>();
-			this.txtDuration = ApplicationUIHost.Create<cadencii.NumberTextBox>();
+			this.txtDepth = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox>();
+			this.txtDuration = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox>();
             this.trackDepth = new TrackBar();
             this.trackDuration = new TrackBar();
             this.lblDepth = new Label();
@@ -601,7 +605,7 @@ namespace cadencii
             this.txtBendLength.TabIndex = 5;
             this.txtBendLength.Text = "0";
             this.txtBendLength.TextAlign = Cadencii.Gui.Toolkit.HorizontalAlignment.Right;
-            this.txtBendLength.Type = cadencii.NumberTextBoxValueType.Integer;
+            this.txtBendLength.Type = Cadencii.Application.Controls.NumberTextBoxValueType.Integer;
             // 
             // txtBendDepth
             // 
@@ -613,7 +617,7 @@ namespace cadencii
             this.txtBendDepth.TabIndex = 2;
             this.txtBendDepth.Text = "8";
             this.txtBendDepth.TextAlign = Cadencii.Gui.Toolkit.HorizontalAlignment.Right;
-            this.txtBendDepth.Type = cadencii.NumberTextBoxValueType.Integer;
+            this.txtBendDepth.Type = Cadencii.Application.Controls.NumberTextBoxValueType.Integer;
             // 
             // trackBendLength
             // 
@@ -719,7 +723,7 @@ namespace cadencii
             this.txtAccent.TabIndex = 13;
             this.txtAccent.Text = "50";
             this.txtAccent.TextAlign = Cadencii.Gui.Toolkit.HorizontalAlignment.Right;
-            this.txtAccent.Type = cadencii.NumberTextBoxValueType.Integer;
+            this.txtAccent.Type = Cadencii.Application.Controls.NumberTextBoxValueType.Integer;
             // 
             // txtDecay
             // 
@@ -731,7 +735,7 @@ namespace cadencii
             this.txtDecay.TabIndex = 10;
             this.txtDecay.Text = "50";
             this.txtDecay.TextAlign = Cadencii.Gui.Toolkit.HorizontalAlignment.Right;
-            this.txtDecay.Type = cadencii.NumberTextBoxValueType.Integer;
+            this.txtDecay.Type = Cadencii.Application.Controls.NumberTextBoxValueType.Integer;
             // 
             // trackAccent
             // 
@@ -864,7 +868,7 @@ namespace cadencii
             this.txtDepth.TabIndex = 13;
             this.txtDepth.Text = "64";
             this.txtDepth.TextAlign = Cadencii.Gui.Toolkit.HorizontalAlignment.Right;
-            this.txtDepth.Type = cadencii.NumberTextBoxValueType.Integer;
+            this.txtDepth.Type = Cadencii.Application.Controls.NumberTextBoxValueType.Integer;
             // 
             // txtDuration
             // 
@@ -876,7 +880,7 @@ namespace cadencii
             this.txtDuration.TabIndex = 10;
             this.txtDuration.Text = "64";
             this.txtDuration.TextAlign = Cadencii.Gui.Toolkit.HorizontalAlignment.Right;
-            this.txtDuration.Type = cadencii.NumberTextBoxValueType.Integer;
+            this.txtDuration.Type = Cadencii.Application.Controls.NumberTextBoxValueType.Integer;
             // 
             // trackDepth
             // 

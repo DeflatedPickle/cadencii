@@ -16,7 +16,7 @@ using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventAr
 using System.Collections.Generic;
 using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Gui.Toolkit
 {
 
 	public class ListViewColumnImpl : UiListViewColumn

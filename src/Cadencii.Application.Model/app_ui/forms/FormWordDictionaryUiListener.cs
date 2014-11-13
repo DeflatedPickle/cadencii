@@ -12,7 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public interface FormWordDictionaryUiListener

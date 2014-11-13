@@ -37,7 +37,7 @@ namespace cadencii
             InitializeComponent();
             this.FormClosing += new FormClosingEventHandler(FormPluginUi_FormClosing);
             // FIXME: bring this back
-            //this.Icon = Properties.Resources._switch;
+            //this.Icon = cadencii.Properties.Resources._switch;
         }
 
 		public bool IsOpened {

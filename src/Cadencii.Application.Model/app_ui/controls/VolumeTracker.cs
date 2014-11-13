@@ -1,7 +1,8 @@
 using System;
 using Cadencii.Gui.Toolkit;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 	public static class VolumeTrackerController
 	{

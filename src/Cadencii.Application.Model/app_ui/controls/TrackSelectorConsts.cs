@@ -2,7 +2,7 @@ using System;
 using Cadencii.Gui;
 using Cadencii.Media.Vsq;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 
 	public static class TrackSelectorConsts

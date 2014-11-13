@@ -16,10 +16,11 @@ using cadencii.apputil;
 using cadencii;
 
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
 
 
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class FormCompileResultImpl : FormImpl, FormCompileResult

@@ -15,6 +15,7 @@
 using System;
 using Cadencii.Media.Vsq;
 using Cadencii.Xml;
+using Cadencii.Application;
 
 
 

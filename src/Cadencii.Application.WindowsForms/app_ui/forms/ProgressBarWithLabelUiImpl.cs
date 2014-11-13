@@ -18,8 +18,10 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class ProgressBarWithLabelUiImpl : UserControlImpl, ProgressBarWithLabelUi

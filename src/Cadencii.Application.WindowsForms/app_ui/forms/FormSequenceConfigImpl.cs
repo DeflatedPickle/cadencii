@@ -21,10 +21,12 @@ using Cadencii.Media.Vsq;
 
 using cadencii.core;
 using Keys = Cadencii.Gui.Toolkit.Keys;
+using Cadencii.Gui.Toolkit;
+using cadencii;
 
 
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
 	class FormSequenceConfigImpl : FormImpl, FormSequenceConfig

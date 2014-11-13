@@ -19,12 +19,12 @@ using cadencii.java.util;
 using Cadencii.Media.Vsq;
 using cadencii.apputil;
 using Cadencii.Utilities;
+using Cadencii.Application;
 
 
 
-namespace cadencii.new_
+namespace Cadencii.Application.Drawing
 {
-
     public class WaveDrawContext : IDisposable
     {
         private short[] mEnvOut = null;

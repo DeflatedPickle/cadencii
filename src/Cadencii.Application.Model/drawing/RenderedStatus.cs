@@ -14,8 +14,9 @@
 using System;
 using cadencii.java.util;
 using Cadencii.Media.Vsq;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Drawing
 {
 
     public class RenderedStatus

@@ -1,7 +1,8 @@
 using System;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 	public interface FormWorkerUi : UiForm
 	{

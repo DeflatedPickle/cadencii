@@ -2,7 +2,7 @@ using System;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 	public interface FormIconPaletteUi : UiForm
 	{

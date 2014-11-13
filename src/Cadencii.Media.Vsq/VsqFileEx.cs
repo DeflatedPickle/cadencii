@@ -20,6 +20,7 @@ using cadencii.java.util;
 using Cadencii.Xml;
 using Cadencii.Utilities;
 using Cadencii.Gui;
+using Cadencii.Application;
 
 namespace Cadencii.Media.Vsq
 {

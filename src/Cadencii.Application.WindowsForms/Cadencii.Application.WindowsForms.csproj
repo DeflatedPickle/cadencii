@@ -6,7 +6,7 @@
     <ProjectGuid>{A97A6445-5A48-4CEC-A7CE-05B10126CA2A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>cadencii</RootNamespace>
+    <RootNamespace>Cadencii.Application</RootNamespace>
     <AssemblyName>Cadencii</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -162,6 +162,7 @@
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LogicalName>cadencii.Properties.Resources.resources</LogicalName>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>

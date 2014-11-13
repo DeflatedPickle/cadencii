@@ -2,7 +2,7 @@
 using Cadencii.Gui;
 using System.Reflection;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 	public static class Resources
 	{

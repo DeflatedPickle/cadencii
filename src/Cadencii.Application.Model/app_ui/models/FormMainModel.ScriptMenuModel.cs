@@ -1,8 +1,11 @@
 ﻿using System;
 using System.IO;
 using Cadencii.Utilities;
+using cadencii;
+using Cadencii.Application.Media;
+using Cadencii.Application.Forms;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	public partial class FormMainModel
 	{

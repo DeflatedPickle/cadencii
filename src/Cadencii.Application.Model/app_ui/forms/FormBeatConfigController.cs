@@ -15,9 +15,7 @@ using System;
 using cadencii.apputil;
 using cadencii;
 
-
-
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class FormBeatConfigController : ControllerBase, FormBeatConfigUiListener

@@ -20,8 +20,11 @@ using cadencii;
 
 using cadencii.java.util;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
+using Cadencii.Application.Media;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class FormCurvePointEditImpl : FormImpl, FormCurvePointEdit
@@ -300,8 +303,8 @@ namespace cadencii
             this.btnBackward2 = new Button();
             this.btnForward2 = new Button();
             this.btnApply = new Button();
-            this.txtDataPointClock = ApplicationUIHost.Create<cadencii.NumberTextBox>();
-		this.txtDataPointValue = ApplicationUIHost.Create<cadencii.NumberTextBox>();
+            this.txtDataPointClock = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox>();
+		this.txtDataPointValue = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox>();
             this.btnBackward3 = new Button();
             this.btnForward3 = new Button();
             this.btnUndo = new Button();
@@ -389,7 +392,7 @@ namespace cadencii
             this.txtDataPointClock.Name = "txtDataPointClock";
             this.txtDataPointClock.Size = new Cadencii.Gui.Dimension(71, 19);
             this.txtDataPointClock.TabIndex = 2;
-            this.txtDataPointClock.Type = cadencii.NumberTextBoxValueType.Integer;
+            this.txtDataPointClock.Type = Cadencii.Application.Controls.NumberTextBoxValueType.Integer;
             // 
             // txtDataPointValue
             // 
@@ -397,7 +400,7 @@ namespace cadencii
             this.txtDataPointValue.Name = "txtDataPointValue";
             this.txtDataPointValue.Size = new Cadencii.Gui.Dimension(71, 19);
             this.txtDataPointValue.TabIndex = 1;
-            this.txtDataPointValue.Type = cadencii.NumberTextBoxValueType.Integer;
+            this.txtDataPointValue.Type = Cadencii.Application.Controls.NumberTextBoxValueType.Integer;
             // 
             // btnBackward3
             // 

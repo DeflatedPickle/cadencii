@@ -13,9 +13,11 @@
  */
 using System;
 using System.Windows.Forms;
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
 
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 
 	public class TrackSelectorSingerDropdownMenuItemImpl : ToolStripMenuItemImpl, TrackSelectorSingerDropdownMenuItem

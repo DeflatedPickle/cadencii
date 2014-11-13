@@ -21,8 +21,9 @@ using cadencii.java.util;
 
 using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class FormShortcutKeysImpl : FormImpl, FormShortcutKeys

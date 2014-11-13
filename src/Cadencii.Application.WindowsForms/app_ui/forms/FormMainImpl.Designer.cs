@@ -5,8 +5,10 @@ using System.Text;
 
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
     public partial class FormMainImpl
     {
@@ -286,9 +288,9 @@ namespace cadencii
             this.stripLblMidiIn = new ToolStripStatusLabelImpl();
             this.toolStripSeparator11 = new ToolStripSeparatorImpl();
             this.stripBtnStepSequencer = new ToolStripButtonImpl();
-            this.splitContainerProperty = ApplicationUIHost.Create<cadencii.apputil.BSplitContainer>();
-            this.splitContainer2 = ApplicationUIHost.Create<cadencii.apputil.BSplitContainer>();
-            this.splitContainer1 = ApplicationUIHost.Create<cadencii.apputil.BSplitContainer>();
+            this.splitContainerProperty = ApplicationUIHost.Create<BSplitContainer>();
+            this.splitContainer2 = ApplicationUIHost.Create<BSplitContainer>();
+            this.splitContainer1 = ApplicationUIHost.Create<BSplitContainer>();
             this.toolStripSeparator2 = new ToolStripSeparatorImpl();
             this.stripDDBtnQuantize = new ContextMenuImpl();
             this.stripDDBtnQuantize04 = new MenuItemImpl();
@@ -306,10 +308,10 @@ namespace cadencii
             this.imageListMeasure = new ImageListImpl(this.components);
             this.imageListTool = new ImageListImpl(this.components);
             this.panel1 = new PanelImpl();
-            this.panelOverview = ApplicationUIHost.Create<cadencii.PictOverview>();
-            this.pictPianoRoll = new cadencii.PictPianoRollImpl();
+            this.panelOverview = ApplicationUIHost.Create<PictOverview>();
+            this.pictPianoRoll = new PictPianoRollImpl();
             this.hScroll = new HScrollBarImpl();
-            this.rebar = ApplicationUIHost.Create<cadencii.Rebar>();
+            this.rebar = ApplicationUIHost.Create<Rebar>();
             this.imageListMenu = new ImageListImpl(this.components);
             this.toolBarFile = new ToolBarImpl();
             this.stripBtnFileNew = new ToolBarButtonImpl ();
@@ -3187,10 +3189,10 @@ namespace cadencii
         UiToolStripMenuItem menuHiddenPaste;
         UiToolStripMenuItem menuHiddenCut;
         UiToolStrip toolStripBottom;
-		public cadencii.apputil.BSplitContainer splitContainerProperty { get; set; }
+		public BSplitContainer splitContainerProperty { get; set; }
 		public UiToolStripMenuItem menuVisualOverview { get; set; }
         PictOverview panelOverview;
-		public cadencii.apputil.BSplitContainer splitContainer1 { get; set; }
+		public BSplitContainer splitContainer1 { get; set; }
         UiToolStripSeparator toolStripMenuItem4;
         UiToolStripMenuItem menuTrackBgm;
         UiToolStripMenuItem menuTrackRendererVCNT;
@@ -3230,7 +3232,7 @@ namespace cadencii
 		public RebarBand bandPosition { get; set; }
 		public RebarBand bandMeasure { get; set; }
 		public RebarBand bandTool { get; set; }
-		public cadencii.apputil.BSplitContainer splitContainer2 { get;set; }
+		public BSplitContainer splitContainer2 { get;set; }
         UiPanel panel1;
 		public UiToolBar toolBarFile { get; set; }
         UiImageList imageListFile;

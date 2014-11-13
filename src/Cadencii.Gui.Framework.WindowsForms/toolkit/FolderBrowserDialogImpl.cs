@@ -1,7 +1,7 @@
 ﻿using System;
 using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Gui.Toolkit
 {
 	public class FolderBrowserDialogImpl : UiFolderBrowserDialog
 	{

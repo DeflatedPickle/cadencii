@@ -1,7 +1,7 @@
 ﻿using System;
 using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Gui.Toolkit
 {
 	public class MenuItemImpl : System.Windows.Forms.MenuItem, UiMenuItem
 	{

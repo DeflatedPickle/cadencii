@@ -18,9 +18,9 @@ using System.Collections.Generic;
 using cadencii.java.util;
 using Cadencii.Media.Vsq;
 using cadencii.core;
+using cadencii;
 
-
-namespace cadencii
+namespace Cadencii.Application.Media
 {
 
     public class VibratoVariationConverter : TypeConverter

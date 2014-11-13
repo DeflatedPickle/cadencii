@@ -16,10 +16,13 @@ using Cadencii.Media.Vsq;
 using cadencii.apputil;
 
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
+using Cadencii.Application.Media;
 
 
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class FormRandomizeImpl : FormImpl, FormRandomize
@@ -364,11 +367,11 @@ namespace cadencii
             this.lblResolution = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.numResolution = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
-            this.numEndBeat = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
-            this.numEndBar = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
-            this.numStartBeat = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
-            this.numStartBar = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numResolution = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
+            this.numEndBeat = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
+            this.numEndBar = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
+            this.numStartBeat = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
+            this.numStartBar = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
             ((System.ComponentModel.ISupportInitialize)(this.numResolution)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numEndBeat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numEndBar)).BeginInit();

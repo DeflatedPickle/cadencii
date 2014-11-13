@@ -14,8 +14,9 @@
 using System;
 using Cadencii.Media.Vsq;
 using Cadencii.Gui;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Drawing
 {
 
     /// <summary>

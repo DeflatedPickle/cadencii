@@ -11,8 +11,9 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
     using System;
     using cadencii.apputil;

@@ -22,8 +22,13 @@ using Cadencii.Media.Vsq;
 
 using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
+using cadencii;
+using Cadencii.Application.Media;
+using Cadencii.Media;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
 	public class FormMixerUiImpl : FormImpl, FormMixerUi
@@ -365,7 +370,7 @@ namespace cadencii
 
         private void setResources()
         {
-            this.Icon = Properties.Resources.Icon1;
+            this.Icon = cadencii.Properties.Resources.Icon1;
         }
 
         private void invokePanpotChangedEvent(int track, int panpot)
@@ -535,7 +540,7 @@ namespace cadencii
             this.menuVisualReturn = new ToolStripMenuItemImpl();
             this.panelSlaves = new UserControl();
             this.hScroll = new HScrollBar();
-            this.volumeMaster = new cadencii.VolumeTrackerImpl();
+            this.volumeMaster = new VolumeTrackerImpl();
             this.menuMain.SuspendLayout();
             this.SuspendLayout();
             // 

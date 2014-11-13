@@ -10,8 +10,13 @@ using cadencii.utau;
 using cadencii.java.util;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Forms;
+using cadencii;
+using Cadencii.Application.Media;
+using Cadencii.Application.Controls;
+using Cadencii.Application.Drawing;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	public partial class FormMainModel
 	{

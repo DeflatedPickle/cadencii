@@ -9,8 +9,12 @@ using Cadencii.Media;
 using Cadencii.Utilities;
 using Cadencii.Media.Windows;
 using Cadencii.Gui.Toolkit;
+using cadencii;
+using Cadencii.Application.Media;
+using Cadencii.Application.Controls;
+using Cadencii.Application.Forms;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	public partial class FormMainModel
 	{

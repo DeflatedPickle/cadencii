@@ -14,9 +14,8 @@
 using System.Collections.Generic;
 using cadencii.java.util;
 
-namespace cadencii
+namespace Cadencii.Application
 {
-
     /// <summary>
     /// 編集操作の履歴を管理するModel
     /// </summary>

@@ -22,9 +22,11 @@ using cadencii.java.util;
 using Cadencii.Gui;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
+using Cadencii.Application.Drawing;
 
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class FormVibratoPresetImpl : FormImpl
@@ -652,8 +654,8 @@ namespace cadencii
             this.labelName = new Label();
             this.groupPreview = new System.Windows.Forms.GroupBox();
             this.listPresets = new ListBox();
-            this.textDepth = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
-            this.textRate = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
+            this.textDepth = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox> ();
+            this.textRate = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox> ();
             ((System.ComponentModel.ISupportInitialize)(this.pictureRate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureDepth)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -926,7 +928,7 @@ namespace cadencii
             this.textDepth.Name = "textDepth";
             this.textDepth.Size = new Cadencii.Gui.Dimension(72, 19);
             this.textDepth.TabIndex = 8;
-            this.textDepth.Type = cadencii.NumberTextBoxValueType.Integer;
+            this.textDepth.Type = Cadencii.Application.Controls.NumberTextBoxValueType.Integer;
             // 
             // textRate
             // 
@@ -936,7 +938,7 @@ namespace cadencii
             this.textRate.Name = "textRate";
             this.textRate.Size = new Cadencii.Gui.Dimension(72, 19);
             this.textRate.TabIndex = 7;
-            this.textRate.Type = cadencii.NumberTextBoxValueType.Integer;
+            this.textRate.Type = Cadencii.Application.Controls.NumberTextBoxValueType.Integer;
             // 
             // FormVibratoPreset
             // 

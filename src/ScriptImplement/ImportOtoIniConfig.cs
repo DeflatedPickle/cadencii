@@ -3,6 +3,8 @@ using Cadencii.Media.Vsq;
 using cadencii.java.util;
 using cadencii.apputil;
 using cadencii.utau;
+using Cadencii.Application;
+using Cadencii.Application.Media;
 
 public class ImportOtoIniConfig
 {

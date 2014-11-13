@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 	public abstract class Clipboard
 	{

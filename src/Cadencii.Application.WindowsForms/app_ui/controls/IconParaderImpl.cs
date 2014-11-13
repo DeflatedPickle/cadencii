@@ -14,10 +14,10 @@
 using System;
 using System.Linq;
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
+using cadencii;
 
-
-
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 
     /// <summary>

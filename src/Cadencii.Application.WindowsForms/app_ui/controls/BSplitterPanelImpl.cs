@@ -15,11 +15,12 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Drawing;
+using cadencii;
 
-namespace cadencii.apputil
+namespace Cadencii.Application.Controls
 {
 
-    public class BSplitterPanelImpl : PanelImpl, BSplitterPanel
+    public class BSplitterPanelImpl : Cadencii.Gui.Toolkit.PanelImpl, BSplitterPanel
     {
 		Cadencii.Gui.Color BSplitterPanel.BorderColor {
 			get { return BorderColor.ToAwt (); }

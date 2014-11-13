@@ -14,7 +14,7 @@
 using System;
 using Cadencii.Media.Vsq;
 
-namespace cadencii
+namespace Cadencii.Application.Media
 {
 
     /// <summary>

@@ -5,8 +5,9 @@ using System.IO;
 using Cadencii.Media;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 	public class PrepareStartArgument
         {

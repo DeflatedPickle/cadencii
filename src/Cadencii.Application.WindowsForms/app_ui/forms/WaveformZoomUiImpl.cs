@@ -15,9 +15,11 @@ using System;
 using System.Windows.Forms;
 
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
 
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
     /// <summary>
     /// 波形表示の拡大・縮小を行うためのパネルです．

@@ -18,7 +18,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Collections.Generic;
 
-namespace cadencii.ui.dotnet
+namespace Cadencii.Application.Forms.ui.dotnet
 {
     class UpdateCheckForm : Form, cadencii.ui.UpdateCheckForm
     {

@@ -14,7 +14,7 @@
 using System.Collections.Generic;
 using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
     using System;
     using cadencii.apputil;

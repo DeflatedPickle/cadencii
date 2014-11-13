@@ -4,6 +4,7 @@ using Cadencii.Media.Vsq;
 using cadencii;
 using System.Drawing;
 using Cadencii.Utilities;
+using Cadencii.Application;
 
 class ResoXAmp : Form
 {

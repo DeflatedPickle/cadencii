@@ -19,9 +19,11 @@ using Cadencii.Gui;
 using cadencii.java.util;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
 
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
     public class FormBezierPointEditUiImpl : FormImpl, FormBezierPointEditUi
     {
@@ -264,9 +266,9 @@ namespace cadencii
 
         private void setResources()
         {
-            this.btnLeft.Image = Properties.Resources.target__pencil;
-            this.btnDataPoint.Image = Properties.Resources.target__pencil;
-            this.btnRight.Image = Properties.Resources.target__pencil;
+			this.btnLeft.Image = cadencii.Properties.Resources.target__pencil;
+			this.btnDataPoint.Image = cadencii.Properties.Resources.target__pencil;
+			this.btnRight.Image = cadencii.Properties.Resources.target__pencil;
         }
         #endregion
 
@@ -351,20 +353,20 @@ namespace cadencii
             this.lblLeftClock = new Label();
             this.groupLeft = new GroupBox();
             this.btnLeft = new Button();
-            this.txtLeftClock = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
-            this.txtLeftValue = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
+            this.txtLeftClock = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox> ();
+            this.txtLeftValue = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox> ();
             this.groupDataPoint = new GroupBox();
             this.btnDataPoint = new Button();
             this.lblDataPointValue = new Label();
-            this.txtDataPointClock = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
+            this.txtDataPointClock = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox> ();
             this.lblDataPointClock = new Label();
-            this.txtDataPointValue = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
+            this.txtDataPointValue = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox> ();
             this.groupRight = new GroupBox();
             this.btnRight = new Button();
             this.lblRightValue = new Label();
-            this.txtRightClock = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
+            this.txtRightClock = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox> ();
             this.lblRightClock = new Label();
-            this.txtRightValue = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
+            this.txtRightValue = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox> ();
             this.btnBackward = new Button();
             this.btnForward = new Button();
             this.groupLeft.SuspendLayout();

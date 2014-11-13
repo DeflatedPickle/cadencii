@@ -1,8 +1,9 @@
 
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     partial class PreferenceImpl
@@ -78,7 +79,7 @@ namespace cadencii
             System.Windows.Forms.ListViewGroup listViewGroup44 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             this.tabPreference = new System.Windows.Forms.TabControl();
             this.tabSequence = new System.Windows.Forms.TabPage();
-            this.txtAutoVibratoThresholdLength = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
+            this.txtAutoVibratoThresholdLength = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox> ();
             this.bLabel1 = new System.Windows.Forms.Label();
             this.radioUserDefined = new System.Windows.Forms.RadioButton();
             this.lblAutoVibratoType = new System.Windows.Forms.Label();
@@ -113,9 +114,9 @@ namespace cadencii
             this.lblWait = new System.Windows.Forms.Label();
             this.lblPreSendTime = new System.Windows.Forms.Label();
             this.lblDefaultSinger = new System.Windows.Forms.Label();
-            this.numBuffer = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
-            this.numWait = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
-            this.numPreSendTime = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numBuffer = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
+            this.numWait = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
+            this.numPreSendTime = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
             this.tabAppearance = new System.Windows.Forms.TabPage();
             this.groupFont = new System.Windows.Forms.GroupBox();
             this.labelMenu = new System.Windows.Forms.Label();
@@ -149,23 +150,23 @@ namespace cadencii
             this.lblTrackHeight = new System.Windows.Forms.Label();
             this.comboLanguage = new System.Windows.Forms.ComboBox();
             this.lblLanguage = new System.Windows.Forms.Label();
-            this.numTrackHeight = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numTrackHeight = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
             this.tabOperation = new System.Windows.Forms.TabPage();
             this.groupMisc = new System.Windows.Forms.GroupBox();
             this.comboMtcMidiInPortNumber = new System.Windows.Forms.ComboBox();
             this.labelMtcMidiInPort = new System.Windows.Forms.Label();
             this.lblMaximumFrameRate = new System.Windows.Forms.Label();
             this.comboMidiInPortNumber = new System.Windows.Forms.ComboBox();
-            this.numMaximumFrameRate = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numMaximumFrameRate = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
             this.lblMidiInPort = new System.Windows.Forms.Label();
             this.lblMouseHoverTime = new System.Windows.Forms.Label();
             this.lblMilliSecond = new System.Windows.Forms.Label();
-            this.numMouseHoverTime = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numMouseHoverTime = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
             this.groupPianoroll = new System.Windows.Forms.GroupBox();
             this.chkTranslateRoman = new System.Windows.Forms.CheckBox();
             this.chkUseSpaceKeyAsMiddleButtonModifier = new System.Windows.Forms.CheckBox();
             this.labelWheelOrder = new System.Windows.Forms.Label();
-            this.numericUpDownEx1 = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numericUpDownEx1 = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
             this.chkCursorFix = new System.Windows.Forms.CheckBox();
             this.chkCurveSelectingQuantized = new System.Windows.Forms.CheckBox();
             this.chkScrollHorizontal = new System.Windows.Forms.CheckBox();
@@ -196,7 +197,7 @@ namespace cadencii
             this.lblAutoBackupMinutes = new System.Windows.Forms.Label();
             this.lblAutoBackupInterval = new System.Windows.Forms.Label();
             this.chkAutoBackup = new System.Windows.Forms.CheckBox();
-            this.numAutoBackupInterval = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numAutoBackupInterval = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
             this.tabSingingSynth = new System.Windows.Forms.TabPage();
             this.groupDefaultSynthesizer = new System.Windows.Forms.GroupBox();
             this.comboDefaultSynthesizer = new System.Windows.Forms.ComboBox();
@@ -306,7 +307,7 @@ namespace cadencii
             this.txtAutoVibratoThresholdLength.Name = "txtAutoVibratoThresholdLength";
             this.txtAutoVibratoThresholdLength.Size = new Dimension(55, 19);
             this.txtAutoVibratoThresholdLength.TabIndex = 6;
-            this.txtAutoVibratoThresholdLength.Type = cadencii.NumberTextBoxValueType.Integer;
+            this.txtAutoVibratoThresholdLength.Type = Cadencii.Application.Controls.NumberTextBoxValueType.Integer;
             // 
             // bLabel1
             // 

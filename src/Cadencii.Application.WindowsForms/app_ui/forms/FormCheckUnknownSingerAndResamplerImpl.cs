@@ -19,10 +19,11 @@ using cadencii.java.util;
 
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
 
 
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
 	public class FormCheckUnknownSingerAndResamplerImpl : FormImpl, FormCheckUnknownSingerAndResampler
@@ -158,7 +159,7 @@ namespace cadencii
             this.buttonOk = new System.Windows.Forms.Button();
             this.labelMessage = new System.Windows.Forms.Label();
             this.checkSingerImport = new System.Windows.Forms.CheckBox();
-            this.pictureSinger = ApplicationUIHost.Create<cadencii.IconParader> ();
+            this.pictureSinger = ApplicationUIHost.Create<Cadencii.Application.Controls.IconParader> ();
             this.labelSingerName = new System.Windows.Forms.Label();
             this.textSingerPath = new System.Windows.Forms.TextBox();
             this.checkResamplerImport = new System.Windows.Forms.CheckBox();

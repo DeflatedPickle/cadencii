@@ -19,8 +19,9 @@ using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui;
 using Rectangle = System.Drawing.Rectangle;
 using Screen = System.Windows.Forms.Screen;
+using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
     public class FormNotePropertyUiImpl : FormImpl, UiFormNoteProperty
     {

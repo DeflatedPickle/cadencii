@@ -2,8 +2,9 @@
 using cadencii.core;
 using Cadencii.Gui;
 using Cadencii.Media.Vsq;
+using Cadencii.Application.Media;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	public partial class FormMainModel
 	{

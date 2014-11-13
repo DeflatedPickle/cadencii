@@ -1,3 +1,6 @@
+#define COMPONENT_ENABLE_LOCATION
+//#define MONITOR_FPS
+//#define OLD_IMPL_MOUSE_TRACER
 /*
  * TrackSelector.cs
  * Copyright © 2008-2011 kbinani
@@ -11,9 +14,6 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
-#define COMPONENT_ENABLE_LOCATION
-//#define MONITOR_FPS
-//#define OLD_IMPL_MOUSE_TRACER
 using System;
 using System.Threading;
 using System.Linq;
@@ -28,6 +28,7 @@ using Cadencii.Media.Vsq;
 using cadencii.core;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
 
 using Keys = Cadencii.Gui.Toolkit.Keys;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
@@ -39,10 +40,14 @@ using NMouseButtons = Cadencii.Gui.Toolkit.MouseButtons;
 using NMouseEventArgs = Cadencii.Gui.Toolkit.MouseEventArgs;
 using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventArgs>;
 using ToolStripRenderMode = Cadencii.Gui.Toolkit.ToolStripRenderMode;
-using TS = cadencii.TrackSelectorConsts;
+using TS = Cadencii.Application.Controls.TrackSelectorConsts;
 using TextFormatFlags = Cadencii.Gui.Toolkit.TextFormatFlags;
+using Cadencii.Application;
+using Cadencii.Application.Forms;
+using Cadencii.Application.Media;
+using Cadencii.Application.Drawing;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
     using Graphics = Cadencii.Gui.Graphics;
 

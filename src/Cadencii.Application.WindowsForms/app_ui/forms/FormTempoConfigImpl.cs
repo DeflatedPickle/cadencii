@@ -17,9 +17,12 @@ using cadencii.apputil;
 
 using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
+using cadencii;
 
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     class FormTempoConfigImpl : FormImpl, FormTempoConfig
@@ -132,15 +135,15 @@ namespace cadencii
         private void InitializeComponent()
         {
             this.groupPosition = new System.Windows.Forms.GroupBox();
-            this.numClock = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
-            this.numBeat = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
-            this.numBar = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numClock = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
+            this.numBeat = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
+            this.numBar = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
             this.lblClock = new System.Windows.Forms.Label();
             this.lblBeat = new System.Windows.Forms.Label();
             this.lblBar = new System.Windows.Forms.Label();
             this.groupTempo = new System.Windows.Forms.GroupBox();
             this.lblTempoRange = new System.Windows.Forms.Label();
-            this.numTempo = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numTempo = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupPosition.SuspendLayout();

@@ -3,7 +3,7 @@ using Cadencii.Gui;
 using System.Media;
 using Cadencii.Media.Vsq;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	public enum PositionIndicatorMouseDownMode
 	{

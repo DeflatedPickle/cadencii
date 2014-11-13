@@ -6,8 +6,10 @@ using System.Text;
 using Cadencii.Media.Vsq;
 using Cadencii.Gui;
 using Cadencii.Utilities;
+using cadencii;
+using Cadencii.Application.Media;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	public partial class FormMainModel
 	{

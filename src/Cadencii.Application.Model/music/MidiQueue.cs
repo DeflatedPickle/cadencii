@@ -16,7 +16,7 @@ using System.Collections.Generic;
 using cadencii;
 using cadencii.java.util;
 
-namespace cadencii
+namespace Cadencii.Application.Media
 {
 
     public delegate List<MidiQueue> MidiQueueDoneEventHandler(MidiQueue sender);

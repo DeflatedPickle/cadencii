@@ -14,7 +14,7 @@
 using Cadencii.Gui.Toolkit;
 
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 
     using System;

@@ -16,7 +16,7 @@ using Cadencii.Gui;
 using DialogResult = Cadencii.Gui.DialogResult;
 using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 	public class DialogManager
 	{

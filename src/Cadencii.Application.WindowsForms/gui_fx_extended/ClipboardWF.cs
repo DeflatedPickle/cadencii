@@ -1,7 +1,8 @@
 using System;
 using WClipboard = System.Windows.Forms.Clipboard;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 	class ClipboardWF : Clipboard
 	{

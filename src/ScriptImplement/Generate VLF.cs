@@ -6,6 +6,8 @@ using cadencii.apputil;
 using Cadencii.Media.Vsq;
 
 using cadencii;
+using Cadencii.Application.Forms;
+using Cadencii.Application;
 
 public class GenerateVLF
 {

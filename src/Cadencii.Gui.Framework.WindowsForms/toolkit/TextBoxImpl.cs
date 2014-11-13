@@ -15,8 +15,9 @@ using NMouseEventArgs = Cadencii.Gui.Toolkit.MouseEventArgs;
 using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventArgs>;
 using System.Collections.Generic;
 using Cadencii.Gui.Toolkit;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Gui.Toolkit
 {
 	public class TextBoxImpl : System.Windows.Forms.TextBox, UiTextBox
 	{

@@ -14,8 +14,9 @@
  */
 using System;
 using System.Threading;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class TestFormWorker

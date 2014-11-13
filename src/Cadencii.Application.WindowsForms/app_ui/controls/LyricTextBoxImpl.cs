@@ -16,14 +16,12 @@ using System.Windows.Forms;
 
 using cadencii;
 
-
-
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
     /// <summary>
     /// 歌詞入力用のテキストボックス
     /// </summary>
-    public class LyricTextBoxImpl : TextBoxImpl, LyricTextBox
+    public class LyricTextBoxImpl : Cadencii.Gui.Toolkit.TextBoxImpl, LyricTextBox
     {
 		PictPianoRoll LyricTextBox.Parent {
 			get { return (PictPianoRoll) this.Parent; }

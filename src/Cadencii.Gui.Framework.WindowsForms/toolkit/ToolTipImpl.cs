@@ -16,8 +16,9 @@ using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventAr
 using System.Collections.Generic;
 using System.ComponentModel;
 using Cadencii.Gui.Toolkit;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Gui.Toolkit
 {
 	public class ToolTipImpl : System.Windows.Forms.ToolTip, UiToolTip
 	{

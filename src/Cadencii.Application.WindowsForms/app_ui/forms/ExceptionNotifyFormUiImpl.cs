@@ -18,8 +18,9 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 	public partial class ExceptionNotifyFormUiImpl : FormImpl, ExceptionNotifyFormUi
     {

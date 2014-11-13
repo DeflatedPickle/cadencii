@@ -13,8 +13,11 @@ using Cadencii.Gui;
 using cadencii.apputil;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Forms;
+using Cadencii.Application.Media;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	public partial class FormMainModel
 	{

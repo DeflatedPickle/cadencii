@@ -19,8 +19,9 @@ using cadencii.java.util;
 
 using Cadencii.Gui;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     class FormImportLyricImpl : FormImpl, FormImportLyric

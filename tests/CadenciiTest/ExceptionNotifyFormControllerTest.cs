@@ -2,6 +2,7 @@ using System;
 using System.Windows.Forms;
 using NUnit.Framework;
 using cadencii;
+using Cadencii.Application.Forms;
 
 namespace cadencii
 {

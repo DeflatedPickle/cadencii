@@ -12,8 +12,9 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Media
 {
 
     public class DefaultVibratoLengthUtil

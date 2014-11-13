@@ -15,7 +15,7 @@ using System;
 using System.Collections.Generic;
 using cadencii.java.util;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     public class Config

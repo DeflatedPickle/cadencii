@@ -15,10 +15,9 @@
 using System;
 using cadencii;
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
 
-
-
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 
     public class NumberTextBoxImpl : TextBoxImpl, NumberTextBox

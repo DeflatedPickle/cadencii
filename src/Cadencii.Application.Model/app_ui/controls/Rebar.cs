@@ -2,7 +2,7 @@ using System;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 	public interface Rebar : UiControl
 	{

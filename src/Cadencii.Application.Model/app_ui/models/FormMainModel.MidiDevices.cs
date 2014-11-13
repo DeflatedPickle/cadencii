@@ -4,8 +4,10 @@ using System.Collections.Generic;
 using cadencii.javax.sound.midi;
 using Cadencii.Media.Vsq;
 using Cadencii.Media.Windows;
+using cadencii;
+using Cadencii.Application.Media;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	public partial class FormMainModel
 	{

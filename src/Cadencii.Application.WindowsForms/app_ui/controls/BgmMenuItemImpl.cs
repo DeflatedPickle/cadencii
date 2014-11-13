@@ -15,8 +15,9 @@ using System;
 using System.Windows.Forms;
 
 using cadencii;
+using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 
 	public class BgmMenuItemImpl : ToolStripMenuItemImpl, BgmMenuItem

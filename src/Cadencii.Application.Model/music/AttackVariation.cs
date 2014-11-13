@@ -15,7 +15,7 @@ using System;
 using System.ComponentModel;
 //using System.Drawing.Design;
 
-namespace cadencii
+namespace Cadencii.Application.Media
 {
 
     [TypeConverter(typeof(AttackVariationConverter))]

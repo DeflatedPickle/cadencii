@@ -17,6 +17,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Text;
 using cadencii;
+using Cadencii.Application;
 
 namespace cadencii.utils.PostBuildCreateVersionInfo
 {
@@ -30,7 +31,7 @@ namespace cadencii.utils.PostBuildCreateVersionInfo
             }
             var output_file = args[0];
 
-            var info = new cadencii.updater.UpdateInfo();
+            var info = new UpdateInfo();
 
             var version = new Version(BAssemblyInfo.fileVersion);
             info.Major = version.Major;
@@ -39,7 +40,7 @@ namespace cadencii.utils.PostBuildCreateVersionInfo
             info.ReleaseDate = DateTime.UtcNow;
             info.DownloadUrl = BAssemblyInfo.downloadUrl;
 
-            var serializer = new XmlSerializer(typeof(cadencii.updater.UpdateInfo));
+            var serializer = new XmlSerializer(typeof(UpdateInfo));
             using (var stream = new FileStream(output_file, FileMode.Create, FileAccess.Write)) {
                 var writer = new XmlTextWriter(stream, Encoding.UTF8);
                 writer.Formatting = Formatting.Indented;

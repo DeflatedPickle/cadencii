@@ -18,8 +18,9 @@ using cadencii.apputil;
 using Cadencii.Gui;
 using Cadencii.Utilities;
 using Cadencii.Platform.Windows;
+using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class FormRealtimeConfigImpl : FormImpl, FormRealtimeConfig

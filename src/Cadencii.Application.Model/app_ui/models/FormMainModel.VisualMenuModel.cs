@@ -3,8 +3,10 @@ using cadencii.core;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Media.Vsq;
+using cadencii;
+using Cadencii.Application.Media;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	public partial class FormMainModel
 	{

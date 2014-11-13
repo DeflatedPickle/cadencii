@@ -26,13 +26,15 @@ using Cadencii.Media.Vsq;
 
 using cadencii.utau;
 using Keys = Cadencii.Gui.Toolkit.Keys;
-using Cadencii.Gui;
 using DialogResult = Cadencii.Gui.DialogResult;
 using cadencii.core;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
+using cadencii;
+using Cadencii.Application.Media;
+using Cadencii.Application.Drawing;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
 

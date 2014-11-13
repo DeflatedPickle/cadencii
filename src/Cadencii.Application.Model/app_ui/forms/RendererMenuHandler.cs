@@ -16,8 +16,9 @@ using System.Collections.Generic;
 using System.Text;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
     /// <summary>
     /// 合成器のメニュー項目へのアクションに応答するハンドラ

@@ -19,10 +19,11 @@ using cadencii.java.util;
 
 using Cadencii.Gui;
 using Cadencii.Platform.Windows;
+using Cadencii.Gui.Toolkit;
 
 
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class FormGameControllerConfigImpl : FormImpl, FormGameControllerConfig
@@ -48,7 +49,7 @@ namespace cadencii
             applyLanguage();
             int num_dev = winmmhelp.JoyGetNumJoyDev();
             if (num_dev > 0) {
-                pictButton.Image = Properties.Resources.btn1;
+                pictButton.Image = cadencii.Properties.Resources.btn1;
                 progressCount.Maximum = 8;
                 progressCount.Minimum = 0;
                 progressCount.Value = 0;
@@ -207,11 +208,11 @@ namespace cadencii
                 }
 
                 if (index == 8) {
-                    pictButton.Image = Properties.Resources.btn2;
+                    pictButton.Image = cadencii.Properties.Resources.btn2;
                     progressCount.Value = 0;
                     progressCount.Maximum = 4;
                 } else if (index == 12) {
-                    pictButton.Image = Properties.Resources.btn3;
+                    pictButton.Image = cadencii.Properties.Resources.btn3;
                     progressCount.Value = 0;
                     progressCount.Maximum = 2;
                 }
@@ -240,11 +241,11 @@ namespace cadencii
             }
 
             if (index == 8) {
-                pictButton.Image = Properties.Resources.btn2;
+                pictButton.Image = cadencii.Properties.Resources.btn2;
                 progressCount.Value = 0;
                 progressCount.Maximum = 4;
             } else if (index == 12) {
-                pictButton.Image = Properties.Resources.btn3;
+                pictButton.Image = cadencii.Properties.Resources.btn3;
                 progressCount.Value = 0;
                 progressCount.Maximum = 2;
             }

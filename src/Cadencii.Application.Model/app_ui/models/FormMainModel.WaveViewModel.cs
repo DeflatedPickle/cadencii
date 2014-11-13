@@ -1,8 +1,10 @@
 ﻿using System;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	public partial class FormMainModel
 	{

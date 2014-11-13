@@ -13,7 +13,7 @@
  */
 using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     using System;

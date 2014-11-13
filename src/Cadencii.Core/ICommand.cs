@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using cadencii;
 using cadencii.java.util;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     public interface ICommand

@@ -1,8 +1,9 @@
 using System;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Gui.Toolkit
 {
 	public class ToolBarButtonImpl : System.Windows.Forms.ToolBarButton, UiToolBarButton
 	{

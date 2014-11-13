@@ -18,7 +18,7 @@ using Cadencii.Media.Vsq;
 using cadencii;
 using cadencii.java.util;
 
-namespace cadencii
+namespace Cadencii.Application.Media
 {
 
     public class AttackVariationConverter : TypeConverter

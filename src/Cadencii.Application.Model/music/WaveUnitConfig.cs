@@ -14,8 +14,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Cadencii.Media.Vsq;
+using Cadencii.Application.Media;
 
-namespace cadencii
+namespace Cadencii.Application.Media
 {
 
     /// <summary>

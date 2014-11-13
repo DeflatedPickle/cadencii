@@ -22,13 +22,13 @@ using System.Runtime.InteropServices;
 using cadencii;
 using Cadencii.Platform.Windows;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 
     /// <summary>
     /// Summary description for UserControl1.
     /// </summary>
-    public class RebarImpl : UserControlImpl, Rebar
+    public class RebarImpl : Cadencii.Gui.Toolkit.UserControlImpl, Rebar
     {
 		Cadencii.Gui.Image Rebar.BackgroundImage {
 			get { return BackgroundImage.ToAwt (); }

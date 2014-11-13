@@ -5,7 +5,7 @@ using System.Linq;
 using Cadencii.Gui;
 using System.Collections;
 
-namespace cadencii
+namespace Cadencii.Gui.Toolkit
 {
 	public static class ListExtensions
 	{

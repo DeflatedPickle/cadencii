@@ -14,8 +14,9 @@
 using System;
 //using System.Drawing;
  using Cadencii.Gui;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Drawing
 {
 
     /// <summary>

@@ -19,8 +19,9 @@ using Cadencii.Gui;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using Cadencii.Gui.Toolkit;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 
     public class PropertyPanelContainerImpl : UserControlImpl, PropertyPanelContainer
@@ -104,8 +105,8 @@ namespace cadencii
 
         private void setResources()
         {
-            this.btnClose.Image = Properties.Resources.cross_small;
-            this.btnWindow.Image = Properties.Resources.chevron_small_collapse;
+            this.btnClose.Image = cadencii.Properties.Resources.cross_small;
+			this.btnWindow.Image = cadencii.Properties.Resources.chevron_small_collapse;
         }
 
         #region ui impl for C#

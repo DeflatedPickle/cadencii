@@ -16,8 +16,10 @@ using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii;
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class FormBeatConfigUiImpl : FormImpl, FormBeatConfigUi
@@ -306,15 +308,15 @@ namespace cadencii
             this.groupPosition = new System.Windows.Forms.GroupBox();
             this.lblBar2 = new System.Windows.Forms.Label();
             this.lblBar1 = new System.Windows.Forms.Label();
-            this.numEnd = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
-            this.numStart = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numEnd = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
+            this.numStart = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
             this.chkEnd = new System.Windows.Forms.CheckBox();
             this.lblStart = new System.Windows.Forms.Label();
             this.groupBeat = new System.Windows.Forms.GroupBox();
             this.comboDenominator = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.numNumerator = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numNumerator = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupPosition.SuspendLayout();

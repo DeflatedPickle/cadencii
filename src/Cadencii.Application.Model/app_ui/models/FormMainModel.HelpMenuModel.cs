@@ -3,8 +3,10 @@ using cadencii.apputil;
 using System.IO;
 using System.Linq;
 using Cadencii.Utilities;
+using cadencii;
+using Cadencii.Application.Forms;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	public partial class FormMainModel
 	{

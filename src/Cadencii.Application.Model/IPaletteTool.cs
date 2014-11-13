@@ -20,7 +20,7 @@ using Cadencii.Gui.Toolkit;
 
 
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     public interface IPaletteTool

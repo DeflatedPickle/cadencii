@@ -16,7 +16,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     public class BAssemblyInfo

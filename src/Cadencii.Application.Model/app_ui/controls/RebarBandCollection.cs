@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using Cadencii.Gui;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 	public interface RebarBandCollection : IList
 	{

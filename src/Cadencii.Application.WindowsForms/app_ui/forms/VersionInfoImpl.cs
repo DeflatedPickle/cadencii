@@ -23,7 +23,7 @@ using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
     using Graphics = Cadencii.Gui.Graphics;
 
@@ -366,7 +366,7 @@ namespace cadencii
 
         private void setResources()
         {
-            pictVstLogo.Image = Properties.Resources.VSTonWht;
+            pictVstLogo.Image = cadencii.Properties.Resources.VSTonWht;
         }
 
         #region ui implementation

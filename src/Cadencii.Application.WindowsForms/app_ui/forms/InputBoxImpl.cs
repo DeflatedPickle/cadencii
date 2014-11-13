@@ -15,9 +15,11 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using System.Xml;
+using Cadencii.Gui.Toolkit;
+using cadencii;
 
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class InputBoxImpl : FormImpl, InputBox

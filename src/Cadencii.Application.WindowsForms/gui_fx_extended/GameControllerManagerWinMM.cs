@@ -1,7 +1,8 @@
 ﻿using System;
 using Cadencii.Platform.Windows;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 	public class GameControllerManagerWinMM : GameControllerManager
 	{

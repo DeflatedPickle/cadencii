@@ -20,8 +20,10 @@ using cadencii.java.util;
 using cadencii.core;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
+using cadencii;
+using Cadencii.Application.Drawing;
 
-namespace cadencii
+namespace Cadencii.Application.Media
 {
     public class SynthesizeWorker
     {

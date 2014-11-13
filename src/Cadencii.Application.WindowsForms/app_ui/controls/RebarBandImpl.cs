@@ -21,7 +21,7 @@ using cadencii;
 using Cadencii.Platform.Windows;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
     /// <summary>
     /// Summary description for BandWrapper.

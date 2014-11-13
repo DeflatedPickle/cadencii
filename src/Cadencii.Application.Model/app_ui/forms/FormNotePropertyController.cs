@@ -16,8 +16,7 @@ using cadencii.apputil;
 using cadencii;
 using Keys = Cadencii.Gui.Toolkit.Keys;
 
-
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class FormNotePropertyController : FormNotePropertyUiListener

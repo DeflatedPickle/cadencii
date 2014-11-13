@@ -1,6 +1,7 @@
 using System;
 using NUnit.Framework;
 using cadencii;
+using Cadencii.Application.Forms;
 
 namespace cadencii
 {

@@ -53,6 +53,7 @@ Projects / Assemblies
 Milestones
 ----------
 
+- Replace winforms designer generated code to XML form in *.Model dll.
 - Replace winforms event handler methods into UI commands and actions.
   (more code goes winforms-independent.)
 - Reduce Win32-ism.

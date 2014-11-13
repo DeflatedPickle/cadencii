@@ -4,6 +4,7 @@ using cadencii;
 using Cadencii.Xml;
 using NUnit.Framework;
 using Cadencii.Utilities;
+using Cadencii.Application.Media;
 
 namespace cadencii
 {

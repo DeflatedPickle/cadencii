@@ -13,6 +13,8 @@
  */
 using System.Collections.Generic;
 using Cadencii.Utilities;
+using Cadencii.Application.Media;
+using Cadencii.Application;
 
 namespace cadencii
 {

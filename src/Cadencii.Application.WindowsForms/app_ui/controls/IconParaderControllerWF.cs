@@ -14,8 +14,9 @@
 using System;
 using System.Linq;
 using Cadencii.Gui;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 	public class IconParaderControllerWF : IconParaderController
 	{

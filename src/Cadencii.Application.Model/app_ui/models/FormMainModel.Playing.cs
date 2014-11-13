@@ -4,8 +4,10 @@ using Cadencii.Media;
 using Cadencii.Media.Vsq;
 using Cadencii.Utilities;
 using Cadencii.Media.Windows;
+using cadencii;
+using Cadencii.Application.Media;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	public partial class FormMainModel
 	{

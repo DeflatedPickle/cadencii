@@ -16,7 +16,7 @@ using System.Collections.Generic;
 using Cadencii.Media;
 using Cadencii.Media.Windows;
 
-namespace cadencii
+namespace Cadencii.Application.Media
 {
     public class MidiDeviceImp
     {

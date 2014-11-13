@@ -13,7 +13,7 @@
  */
 using System;
 
-namespace cadencii.updater
+namespace Cadencii.Application
 {
     public class UpdateInfo
     {

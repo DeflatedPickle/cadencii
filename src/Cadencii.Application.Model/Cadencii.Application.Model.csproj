@@ -122,7 +122,6 @@
     <Compile Include="editor_features\TopMostChangedEventHandler.cs" />
     <Compile Include="editor_features\UpdateProgressEventHandler.cs" />
     <Compile Include="ui_abstraction\ControllerBase.cs" />
-    <Compile Include="editor_features\CommandExecuteRequiredEventHandler.cs" />
     <Compile Include="scripting\ScriptInvoker.cs" />
     <Compile Include="scripting\ScriptReturnStatus.cs" />
     <Compile Include="scripting\ScriptServer.cs" />
@@ -249,6 +248,7 @@
     <Compile Include="app_ui\models\FormMainModel.VisualMenuModel.cs" />
     <Compile Include="app_ui\models\FormMainModel.WaveViewModel.cs" />
     <Compile Include="app_ui\models\PositionIndicatorMouseDownMode.cs" />
+    <Compile Include="ui_abstraction\CommandExecuteRequiredEventHandler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -290,7 +290,6 @@
     <Folder Include="app_ui\" />
     <Folder Include="app_ui\models\" />
     <Folder Include="gui_fx_extended\" />
-    <Folder Include="app_ui\models\main\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="app_ui\forms\InputBox.xml">

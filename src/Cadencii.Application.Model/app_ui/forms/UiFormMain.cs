@@ -16,9 +16,11 @@ using Cadencii.Gui;
 using Cadencii.Media.Vsq;
 using System;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Models;
+using Cadencii.Application.Controls;
+using cadencii;
 
-
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
     /// <summary>
     /// メイン画面の実装クラスが持つべきメソッドを定義するインターフェース
@@ -29,8 +31,8 @@ namespace cadencii
 
 		UiToolBarButton stripBtnGrid { get; set; }
 
-		cadencii.apputil.BSplitContainer splitContainer2 { get;set; }
-		cadencii.apputil.BSplitContainer splitContainerProperty { get; set; }
+		BSplitContainer splitContainer2 { get;set; }
+		BSplitContainer splitContainerProperty { get; set; }
 		System.ComponentModel.BackgroundWorker bgWorkScreen { get; set; }
 		UiToolBar toolBarFile { get; set; }
 		UiToolBar toolBarPosition { get; set; }
@@ -145,7 +147,7 @@ namespace cadencii
 
 		UiToolStripMenuItem menuLyricCopyVibratoToPreset { get; set; }
 
-		cadencii.apputil.BSplitContainer splitContainer1 { get; set;}
+		BSplitContainer splitContainer1 { get; set;}
 		UiToolStripMenuItem menuHidden { get; set; }
 		UiToolStripMenuItem menuScript { get; set;}
 		UiToolStripMenuItem menuVisualControlTrack { get; set; }

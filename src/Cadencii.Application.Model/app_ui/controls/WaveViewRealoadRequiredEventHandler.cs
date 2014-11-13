@@ -13,7 +13,7 @@
  */
 using System;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 
     public delegate void WaveViewRealoadRequiredEventHandler(Object sender, WaveViewRealoadRequiredEventArgs arg);

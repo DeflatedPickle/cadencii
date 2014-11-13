@@ -22,8 +22,9 @@ using Cadencii.Media.Vsq;
 using Keys = Cadencii.Gui.Toolkit.Keys;
 using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
 using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
+using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 
     public class VolumeTrackerImpl : UserControlImpl, VolumeTracker

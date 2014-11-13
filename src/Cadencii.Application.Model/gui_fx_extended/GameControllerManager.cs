@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 	public interface GameControllerManager
 	{

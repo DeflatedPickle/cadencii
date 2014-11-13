@@ -21,10 +21,10 @@ using AnchorStyles = Cadencii.Gui.Toolkit.AnchorStyles;
 using UiControl = Cadencii.Gui.Toolkit.UiControl;
 using Orientation = Cadencii.Gui.Toolkit.Orientation;
 
-namespace cadencii.apputil
+namespace Cadencii.Application.Controls
 {
     [Serializable]
-    public partial class BSplitContainerImpl : ContainerControlImpl, BSplitContainer
+    public partial class BSplitContainerImpl : Cadencii.Gui.Toolkit.ContainerControlImpl, BSplitContainer
     {
 		Cadencii.Gui.Toolkit.FixedPanel BSplitContainer.FixedPanel {
 			get { return (Cadencii.Gui.Toolkit.FixedPanel)FixedPanel; }
@@ -217,8 +217,8 @@ namespace cadencii.apputil
         private void InitializeComponent()
         {
             this.m_lbl_splitter = new System.Windows.Forms.PictureBox();
-            this.m_panel2 = ApplicationUIHost.Create<cadencii.apputil.BSplitterPanel>();
-            this.m_panel1 = ApplicationUIHost.Create<cadencii.apputil.BSplitterPanel>();
+            this.m_panel2 = ApplicationUIHost.Create<BSplitterPanel>();
+            this.m_panel1 = ApplicationUIHost.Create<BSplitterPanel>();
             ((System.ComponentModel.ISupportInitialize)(this.m_lbl_splitter)).BeginInit();
             this.SuspendLayout();
             // 

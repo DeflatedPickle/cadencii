@@ -2,7 +2,7 @@
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Gui.Toolkit
 {
 	public class OpenFileDialogImpl : FileDialogImpl, UiOpenFileDialog
 	{

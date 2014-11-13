@@ -13,7 +13,7 @@
  */
 using Cadencii.Gui;
 
-namespace cadencii
+namespace Cadencii.Application.Drawing
 {
 
     /// <summary>

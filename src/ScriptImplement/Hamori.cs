@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using cadencii;
+using Cadencii.Application;
 
 public class Hamori : System.Windows.Forms.Form
 {

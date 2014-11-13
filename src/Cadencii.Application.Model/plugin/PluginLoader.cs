@@ -23,6 +23,7 @@ using cadencii;
 using cadencii.apputil;
 using Cadencii.Media.Vsq;
 using Cadencii.Utilities;
+using Cadencii.Application;
 
 
 

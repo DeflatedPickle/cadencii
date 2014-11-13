@@ -25,8 +25,14 @@ using cadencii.apputil;
 using Cadencii.Utilities;
 using Cadencii.Media.Windows;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Forms;
+using Cadencii.Application.Controls;
+using Cadencii.Application.Media;
+using cadencii;
+using Cadencii.Application.Media;
+using Cadencii.Application.Drawing;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 	public static class EditorManager
 	{

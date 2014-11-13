@@ -12,8 +12,10 @@ using cadencii.java.util;
 using Cadencii.Gui;
 using System.Media;
 using Cadencii.Utilities;
+using cadencii;
+using Cadencii.Application.Media;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	public partial class FormMainModel
 	{

@@ -11,7 +11,10 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
-namespace cadencii
+using Cadencii.Application.Models;
+
+
+namespace Cadencii.Application.Forms
 {
 
     public interface PropertyWindowListener

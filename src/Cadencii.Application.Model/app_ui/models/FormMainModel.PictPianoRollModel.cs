@@ -16,12 +16,13 @@ using cadencii.core;
 using System.Media;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
+using cadencii;
+using Cadencii.Application.Media;
+using Cadencii.Application.Forms;
+using Cadencii.Application.Drawing;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
-
-
-
 	public partial class FormMainModel
 	{
 		public class PictPianoRollModel

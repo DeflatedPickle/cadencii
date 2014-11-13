@@ -1,7 +1,8 @@
 ﻿using System;
 using Cadencii.Media.Vsq;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	public partial class FormMainModel
 	{

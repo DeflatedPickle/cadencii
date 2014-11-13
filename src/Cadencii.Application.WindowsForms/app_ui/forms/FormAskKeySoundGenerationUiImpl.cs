@@ -16,10 +16,11 @@ using System;
 using System.Windows.Forms;
 using cadencii.apputil;
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
 
 
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class FormAskKeySoundGenerationUiImpl : FormImpl, FormAskKeySoundGenerationUi

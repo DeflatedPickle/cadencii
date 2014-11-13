@@ -1,5 +1,7 @@
 using cadencii;
 using Cadencii.Media.Vsq;
+using Cadencii.Application;
+using Cadencii.Application.Media;
 
 public class RunOnce
 {

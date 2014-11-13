@@ -28,8 +28,12 @@ using Keys = Cadencii.Gui.Toolkit.Keys;
 using cadencii.core;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
+using cadencii;
+using Cadencii.Application.Media;
+using Cadencii.Application.Controls;
+using Cadencii.Application.Drawing;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     public class Utility

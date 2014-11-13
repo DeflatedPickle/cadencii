@@ -19,8 +19,11 @@ using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using NMouseEventArgs = Cadencii.Gui.Toolkit.MouseEventArgs;
 using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventArgs>;
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     /// <summary>
@@ -87,7 +90,7 @@ namespace cadencii
         #region helper methods
         private void setResources()
         {
-            this.BackgroundImage = Properties.Resources.splash;
+            this.BackgroundImage = cadencii.Properties.Resources.splash;
         }
 
         private void registerEventHandlers()

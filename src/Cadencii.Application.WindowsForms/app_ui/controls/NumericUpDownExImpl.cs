@@ -12,12 +12,11 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-
 using System.Windows.Forms;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
-    public class NumericUpDownExImpl : NumericUpDownImpl, NumericUpDownEx
+    public class NumericUpDownExImpl : Cadencii.Gui.Toolkit.NumericUpDownImpl, NumericUpDownEx
     {
 		event EventHandler NumericUpDownEx.ValueChanged {
 			add { ValueChanged += value; }

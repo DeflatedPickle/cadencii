@@ -13,11 +13,9 @@
  */
 using System;
 using System.Windows.Forms;
+using Cadencii.Gui.Toolkit;
 
-
-
-
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 
     public class RecentFileMenuItemImpl : ToolStripMenuItemImpl, RecentFileMenuItem

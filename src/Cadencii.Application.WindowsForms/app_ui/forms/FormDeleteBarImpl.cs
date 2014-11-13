@@ -16,10 +16,12 @@ using cadencii.apputil;
 using cadencii;
 
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
 
 
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     class FormDeleteBarImpl : FormImpl, FormDeleteBar
@@ -115,8 +117,8 @@ namespace cadencii
             this.label3 = new System.Windows.Forms.Label();
             this.lblEnd = new System.Windows.Forms.Label();
             this.lblStart = new System.Windows.Forms.Label();
-            this.numEnd = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
-			this.numStart = ApplicationUIHost.Create<cadencii.NumericUpDownEx>();
+            this.numEnd = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
+			this.numStart = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
             ((System.ComponentModel.ISupportInitialize)(this.numEnd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numStart)).BeginInit();
             this.SuspendLayout();

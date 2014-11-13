@@ -14,10 +14,10 @@
 using System;
 using cadencii.apputil;
 using Cadencii.Media.Vsq;
+using cadencii;
 
 
-
-namespace cadencii
+namespace Cadencii.Application
 {
 
     /// <summary>

@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using Cadencii.Media.Vsq;
 using Cadencii.Gui.Toolkit;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 	public interface Preference : UiForm
 	{

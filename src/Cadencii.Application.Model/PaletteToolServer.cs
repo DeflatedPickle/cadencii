@@ -23,8 +23,10 @@ using Cadencii.Media.Vsq;
 using Cadencii.Xml;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
+using cadencii;
+using Cadencii.Application.Media;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     /// <summary>

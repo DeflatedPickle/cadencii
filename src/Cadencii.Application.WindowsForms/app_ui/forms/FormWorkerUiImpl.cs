@@ -22,10 +22,12 @@ using System.Windows.Forms;
 
 using cadencii.apputil;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
+using cadencii;
 
 
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
     public class FormWorkerUiImpl : FormImpl, FormWorkerUi
     {

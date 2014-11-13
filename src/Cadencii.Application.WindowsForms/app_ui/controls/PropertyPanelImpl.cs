@@ -19,8 +19,10 @@ using cadencii.apputil;
 using cadencii.java.util;
 using Cadencii.Media.Vsq;
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 
     public class PropertyPanelImpl : UserControlImpl, PropertyPanel

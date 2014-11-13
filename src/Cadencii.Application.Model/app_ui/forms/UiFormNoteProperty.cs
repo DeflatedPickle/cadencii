@@ -15,7 +15,7 @@ using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public interface UiFormNoteProperty : UiForm

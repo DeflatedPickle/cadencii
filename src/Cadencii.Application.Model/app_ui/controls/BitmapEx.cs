@@ -1,7 +1,7 @@
 using System;
 using Cadencii.Gui;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 	public interface BitmapEx : IDisposable
 	{

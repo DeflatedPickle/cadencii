@@ -2,7 +2,7 @@ using System;
 using Cadencii.Gui;
 using System.Collections.Generic;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	/// <summary>
 	/// カーブエディタ画面の編集モード

@@ -16,10 +16,12 @@ using System.Windows.Forms;
 using cadencii.apputil;
 
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
 
 
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class FormInsertBarImpl : FormImpl, FormInsertBar

@@ -5,8 +5,11 @@ using cadencii.core;
 using System.Text;
 using Cadencii.Gui;
 using Cadencii.Utilities;
+using Cadencii.Application.Media;
+using Cadencii.Application.Forms;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	public partial class FormMainModel
 	{

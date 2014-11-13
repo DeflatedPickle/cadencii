@@ -22,11 +22,18 @@ using Cadencii.Media.Vsq;
 using MouseButtons = System.Windows.Forms.MouseButtons;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
-using Consts = cadencii.FormMainModel.Consts;
+using Consts = Cadencii.Application.Models.FormMainModel.Consts;
 using cadencii.core;
 using Cadencii.Utilities;
+using Cadencii.Application.Controls;
+using Cadencii.Gui.Toolkit;
+using cadencii;
+using Cadencii.Application.Forms;
+using Cadencii.Application.Media;
+using Cadencii.Application.Models;
+using Cadencii.Application.Drawing;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 
     /// <summary>
@@ -133,7 +140,7 @@ namespace cadencii
                         System.Windows.Forms.Application.DoEvents();
                     }
                 } catch (Exception ex) {
-                    Logger.write(typeof(FormMainImpl) + ".overviewStopThread; ex=" + ex + "\n");
+                    Logger.write(GetType () + ".overviewStopThread; ex=" + ex + "\n");
                 }
                 mOverviewUpdateThread = null;
             }
@@ -151,7 +158,7 @@ namespace cadencii
                     }
                 } catch (Exception ex) {
                     Logger.StdErr("FormMain#btnLeft_MouseDown; ex=" + ex);
-                    Logger.write(typeof(FormMainImpl) + ".btnLeft_MouseDown; ex=" + ex + "\n");
+                    Logger.write(GetType () + ".btnLeft_MouseDown; ex=" + ex + "\n");
                 }
                 mOverviewUpdateThread = null;
             }
@@ -176,7 +183,7 @@ namespace cadencii
                     }
                 } catch (Exception ex) {
                     Logger.StdErr("FormMain#btnRight_MouseDown; ex=" + ex);
-                    Logger.write(typeof(FormMainImpl) + ".btnRight_MouseDown; ex=" + ex + "\n");
+                    Logger.write(GetType () + ".btnRight_MouseDown; ex=" + ex + "\n");
                 }
                 mOverviewUpdateThread = null;
             }

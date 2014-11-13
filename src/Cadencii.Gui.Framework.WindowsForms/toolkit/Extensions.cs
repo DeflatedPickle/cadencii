@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Gui.Toolkit
 {
 	public static class WinformsExtensions
 	{

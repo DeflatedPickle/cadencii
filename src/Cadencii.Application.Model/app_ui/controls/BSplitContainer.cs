@@ -2,7 +2,7 @@ using System;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 
-namespace cadencii.apputil
+namespace Cadencii.Application.Controls
 {
 
 	public interface BSplitContainer : UiControl

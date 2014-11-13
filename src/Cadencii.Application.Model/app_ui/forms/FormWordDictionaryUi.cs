@@ -13,8 +13,7 @@
  */
 using Cadencii.Gui.Toolkit;
 
-
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
     public interface FormWordDictionaryUi : UiForm
     {

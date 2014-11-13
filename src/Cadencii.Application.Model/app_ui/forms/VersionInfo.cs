@@ -2,8 +2,9 @@ using System;
 using Cadencii.Gui;
 using cadencii.apputil;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 	public interface VersionInfo : UiForm
 	{

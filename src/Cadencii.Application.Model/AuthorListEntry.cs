@@ -14,7 +14,7 @@
 using System;
 using Cadencii.Gui;
 
-namespace cadencii.apputil
+namespace Cadencii.Application
 {
 
     public class AuthorListEntry

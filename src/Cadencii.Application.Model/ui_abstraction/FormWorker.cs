@@ -17,8 +17,11 @@ using System.ComponentModel;
 using System.Reflection;
 using System.Collections.Generic;
 using cadencii.java.util;
+using cadencii;
+using Cadencii.Application.Forms;
+using Cadencii.Application.Controls;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     class FormWorkerJobArgument

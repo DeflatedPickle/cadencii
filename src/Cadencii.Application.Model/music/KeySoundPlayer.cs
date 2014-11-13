@@ -17,10 +17,8 @@ using Cadencii.Media;
 using cadencii;
 using cadencii.core;
 
-
-namespace cadencii
+namespace Cadencii.Application.Media
 {
-
     public class KeySoundPlayer
     {
         /// <summary>

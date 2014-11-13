@@ -1,8 +1,9 @@
 using System;
 using System.Windows.Forms;
 using Cadencii.Gui.Toolkit;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 	public class DialogsWF : Dialogs
 	{

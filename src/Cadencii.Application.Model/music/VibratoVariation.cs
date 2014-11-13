@@ -15,9 +15,7 @@
 using System;
 using System.ComponentModel;
 
-
-
-namespace cadencii
+namespace Cadencii.Application.Media
 {
 
     [TypeConverter(typeof(VibratoVariationConverter))]

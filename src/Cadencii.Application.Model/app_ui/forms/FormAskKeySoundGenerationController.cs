@@ -14,9 +14,7 @@
 using System;
 using cadencii.apputil;
 
-
-
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class FormAskKeySoundGenerationController : ControllerBase, FormAskKeySoundGenerationUiListener

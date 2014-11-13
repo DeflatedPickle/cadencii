@@ -23,8 +23,13 @@ using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using cadencii.core;
 using Cadencii.Utilities;
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Forms;
+using Cadencii.Application.Media;
+using cadencii;
+using Cadencii.Application.Drawing;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
     /// <summary>
     /// ピアノロール用のコンポーネント

@@ -14,8 +14,9 @@
 using System.Collections.Generic;
 using Cadencii.Utilities;
 using Cadencii.Gui;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     using System;

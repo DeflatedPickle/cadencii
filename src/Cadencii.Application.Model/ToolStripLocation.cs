@@ -15,7 +15,7 @@ using cadencii;
 using Cadencii.Gui;
 using Cadencii.Xml;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     /// <summary>

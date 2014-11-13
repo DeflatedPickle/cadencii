@@ -27,11 +27,12 @@ using Cadencii.Media;
 using Cadencii.Media.Vsq;
 using Cadencii.Xml;
 using cadencii.utau;
+using cadencii;
 
 using Keys = Cadencii.Gui.Toolkit.Keys;
 using DialogResult = Cadencii.Gui.DialogResult;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     class RunGeneratorQueue

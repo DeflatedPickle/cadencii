@@ -20,8 +20,9 @@ using cadencii.java.util;
 
 using Cadencii.Gui;
 using DialogResult = System.Windows.Forms.DialogResult;
+using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
     class FormWordDictionaryUiImpl : FormImpl, FormWordDictionaryUi
     {

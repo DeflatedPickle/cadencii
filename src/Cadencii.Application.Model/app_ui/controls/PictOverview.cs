@@ -1,7 +1,8 @@
 using System;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Forms;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 	public interface PictOverview : UiPictureBox
 	{

@@ -6,8 +6,10 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
+using cadencii;
+using Cadencii.Application.Models;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 	public class ApplicationUIHostWF : ApplicationUIHost
 	{

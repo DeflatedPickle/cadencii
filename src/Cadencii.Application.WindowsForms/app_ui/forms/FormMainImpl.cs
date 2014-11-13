@@ -24,14 +24,19 @@ using cadencii.java.util;
 using Cadencii.Media.Vsq;
 using Cadencii.Xml;
 using cadencii.utau;
-using cadencii.ui;
 
-using Consts = cadencii.FormMainModel.Consts;
+using Consts = Cadencii.Application.Models.FormMainModel.Consts;
 using cadencii.core;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Models;
+using cadencii;
+using Cadencii.Application.Controls;
+using Cadencii.Application.Media;
+using Cadencii.Media;
+using Cadencii.Application.Drawing;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
     /// <summary>
     /// エディタのメイン画面クラス
@@ -272,7 +277,7 @@ namespace cadencii
 #endif
 
             registerEventHandlers();
-            this.Icon = Properties.Resources.Icon1;
+            this.Icon = cadencii.Properties.Resources.Icon1;
 
 #if !ENABLE_SCRIPT
             menuSettingPaletteTool.setVisible( false );
@@ -662,7 +667,7 @@ namespace cadencii
             var renderer_menu_handler_ = new List<RendererMenuHandler>();
 			model.RendererMenuHandlers = renderer_menu_handler_;
             renderer_menu_handler_.Clear();
-			var icon = Properties.Resources.slash.ToAwt ();
+			var icon = cadencii.Properties.Resources.slash.ToAwt ();
 			renderer_menu_handler_.Add(new RendererMenuHandler(icon, RendererKind.VOCALOID1,
                                                                  menuTrackRendererVOCALOID1,
                                                                  cMenuTrackTabRendererVOCALOID1,
@@ -1069,7 +1074,7 @@ namespace cadencii
         /// Downloads update information xml, and deserialize it.
         /// </summary>
         /// <returns></returns>
-        private updater.UpdateInfo downloadUpdateInfo()
+        private UpdateInfo downloadUpdateInfo()
         {
             var xml_contents = "";
             try {
@@ -1083,15 +1088,15 @@ namespace cadencii
                 return null;
             }
 
-            updater.UpdateInfo update_info = null;
+            UpdateInfo update_info = null;
             var xml = new System.Xml.XmlDocument();
-            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(updater.UpdateInfo));
+            var serializer = new System.Xml.Serialization.XmlSerializer(typeof(UpdateInfo));
             try {
                 xml.LoadXml(xml_contents);
                 using (var stream = new MemoryStream()) {
                     xml.Save(stream);
                     stream.Seek(0, SeekOrigin.Begin);
-                    update_info = serializer.Deserialize(stream) as updater.UpdateInfo;
+                    update_info = serializer.Deserialize(stream) as UpdateInfo;
                 }
             } catch { }
             return update_info;
@@ -1104,7 +1109,7 @@ namespace cadencii
         {
 			#if true//SUPPORT_UPDATE_FORM
             menuHelpCheckForUpdates.Enabled = false;
-            updater.UpdateInfo update_info = null;
+            UpdateInfo update_info = null;
             var worker = new System.ComponentModel.BackgroundWorker();
             worker.DoWork += (s, e) => {
                 update_info = downloadUpdateInfo();

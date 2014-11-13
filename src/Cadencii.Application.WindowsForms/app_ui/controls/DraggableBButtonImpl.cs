@@ -22,8 +22,9 @@ using Cadencii.Media.Vsq;
 using Keys = Cadencii.Gui.Toolkit.Keys;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
+using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
     class DraggableBButtonImpl : ButtonImpl, DraggableBButton
     {

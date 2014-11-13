@@ -10,8 +10,13 @@ using Cadencii.Xml;
 using System.Diagnostics;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
+using cadencii;
+using Cadencii.Application.Forms;
+using Cadencii.Application.Media;
+using Cadencii.Media;
 
-namespace cadencii
+namespace Cadencii.Application.Models
 {
 	public partial class FormMainModel
 	{

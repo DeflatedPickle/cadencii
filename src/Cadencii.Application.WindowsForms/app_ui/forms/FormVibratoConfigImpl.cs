@@ -20,9 +20,11 @@ using Cadencii.Media.Vsq;
 using cadencii.java.util;
 using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
 
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
 	public class FormVibratoConfigImpl : FormImpl, FormVibratoConfig
@@ -330,7 +332,7 @@ namespace cadencii
         {
             this.lblVibratoLength = new System.Windows.Forms.Label();
             this.lblVibratoType = new System.Windows.Forms.Label();
-            this.txtVibratoLength = ApplicationUIHost.Create<cadencii.NumberTextBox> ();
+            this.txtVibratoLength = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox> ();
             this.label3 = new System.Windows.Forms.Label();
             this.comboVibratoType = new System.Windows.Forms.ComboBox();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -367,7 +369,7 @@ namespace cadencii
             this.txtVibratoLength.Name = "txtVibratoLength";
             this.txtVibratoLength.Size = new Cadencii.Gui.Dimension(61, 19);
             this.txtVibratoLength.TabIndex = 2;
-            this.txtVibratoLength.Type = cadencii.NumberTextBoxValueType.Integer;
+            this.txtVibratoLength.Type = Cadencii.Application.Controls.NumberTextBoxValueType.Integer;
             // 
             // label3
             // 

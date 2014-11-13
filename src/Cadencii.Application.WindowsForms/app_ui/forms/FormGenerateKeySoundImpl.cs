@@ -21,9 +21,10 @@ using Cadencii.Media.Vsq;
 
 using cadencii.core;
 using Cadencii.Utilities;
+using cadencii;
 
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class FormGenerateKeySoundImpl : Form
@@ -153,7 +154,7 @@ namespace cadencii
             if (bgWork.IsBusy) {
                 m_cancel_required = true;
                 while (m_cancel_required) {
-                    Application.DoEvents();
+                    System.Windows.Forms.Application.DoEvents();
                 }
             } else {
                 this.Close();

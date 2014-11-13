@@ -24,8 +24,10 @@ using Keys = Cadencii.Gui.Toolkit.Keys;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
     public class FormIconPaletteUiImpl : FormImpl, FormIconPaletteUi
     {
@@ -116,25 +118,25 @@ namespace cadencii
                     string str = "";
                     string caption = handle.IDS;
                     if (caption.Equals("cresc_1")) {
-                        img = Properties.Resources.cresc1;
+                        img = cadencii.Properties.Resources.cresc1;
                     } else if (caption.Equals("cresc_2")) {
-                        img = Properties.Resources.cresc2;
+                        img = cadencii.Properties.Resources.cresc2;
                     } else if (caption.Equals("cresc_3")) {
-                        img = Properties.Resources.cresc3;
+                        img = cadencii.Properties.Resources.cresc3;
                     } else if (caption.Equals("cresc_4")) {
-                        img = Properties.Resources.cresc4;
+                        img = cadencii.Properties.Resources.cresc4;
                     } else if (caption.Equals("cresc_5")) {
-                        img = Properties.Resources.cresc5;
+                        img = cadencii.Properties.Resources.cresc5;
                     } else if (caption.Equals("dim_1")) {
-                        img = Properties.Resources.dim1;
+                        img = cadencii.Properties.Resources.dim1;
                     } else if (caption.Equals("dim_2")) {
-                        img = Properties.Resources.dim2;
+                        img = cadencii.Properties.Resources.dim2;
                     } else if (caption.Equals("dim_3")) {
-                        img = Properties.Resources.dim3;
+                        img = cadencii.Properties.Resources.dim3;
                     } else if (caption.Equals("dim_4")) {
-                        img = Properties.Resources.dim4;
+                        img = cadencii.Properties.Resources.dim4;
                     } else if (caption.Equals("dim_5")) {
-                        img = Properties.Resources.dim5;
+                        img = cadencii.Properties.Resources.dim5;
                     } else if (caption.Equals("Dynaff11")) {
                         str = "fff";
                     } else if (caption.Equals("Dynaff12")) {

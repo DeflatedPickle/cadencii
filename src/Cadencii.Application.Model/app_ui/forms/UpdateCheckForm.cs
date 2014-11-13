@@ -13,7 +13,7 @@
  */
 using System;
 
-namespace cadencii.ui
+namespace Cadencii.Application.Forms
 {
     public interface UpdateCheckForm
     {

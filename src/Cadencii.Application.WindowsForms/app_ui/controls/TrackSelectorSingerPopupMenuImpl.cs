@@ -11,9 +11,11 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
+using cadencii;
 
-
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
 
 	public class TrackSelectorSingerPopupMenuImpl : ContextMenuStripImpl, TrackSelectorSingerPopupMenu

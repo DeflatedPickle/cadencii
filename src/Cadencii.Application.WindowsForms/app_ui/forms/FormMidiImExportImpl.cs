@@ -21,8 +21,10 @@ using AnchorStyles = Cadencii.Gui.Toolkit.AnchorStyles;
 using HorizontalAlignment = Cadencii.Gui.Toolkit.HorizontalAlignment;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Media.Vsq;
+using Cadencii.Application.Controls;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
     public class FormMidiImExportImpl : FormImpl
     {
@@ -361,7 +363,7 @@ namespace cadencii
             this.chkExportVocaloidNrpn = new CheckBox();
             this.groupMode = new System.Windows.Forms.GroupBox();
             this.lblOffsetUnit = new Label();
-            this.txtOffset = ApplicationUIHost.Create<cadencii.NumberTextBox>();
+            this.txtOffset = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox>();
             this.lblOffset = new Label();
             this.radioPlayTime = new RadioButton();
             this.radioGateTime = new RadioButton();
@@ -579,7 +581,7 @@ namespace cadencii
             this.txtOffset.TabIndex = 3;
             this.txtOffset.Text = "0";
             this.txtOffset.TextAlign = Cadencii.Gui.Toolkit.HorizontalAlignment.Right;
-            this.txtOffset.Type = cadencii.NumberTextBoxValueType.Integer;
+            this.txtOffset.Type = Cadencii.Application.Controls.NumberTextBoxValueType.Integer;
             // 
             // lblOffset
             // 

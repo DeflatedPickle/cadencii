@@ -16,6 +16,8 @@ using System.ComponentModel;
 using Cadencii.Media.Vsq;
 using cadencii.utau;
 using Cadencii.Utilities;
+using Cadencii.Application.Media;
+using Cadencii.Application;
 
 namespace cadencii
 {

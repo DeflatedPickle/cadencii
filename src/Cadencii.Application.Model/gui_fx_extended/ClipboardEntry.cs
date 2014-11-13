@@ -18,7 +18,7 @@ using cadencii.java.util;
 using Cadencii.Utilities;
 using Cadencii.Gui;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     [Serializable]

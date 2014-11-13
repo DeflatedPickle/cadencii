@@ -13,8 +13,10 @@
  */
 using Cadencii.Gui;
 using cadencii.core;
+using Cadencii.Application.Forms;
+using Cadencii.Application.Controls;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class WaveformZoomController : ControllerBase, WaveformZoomUiListener

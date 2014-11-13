@@ -3,8 +3,10 @@ using Cadencii.Gui;
 using Cadencii.Media.Vsq;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Forms;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application.Controls
 {
         public enum MouseDownMode
         {

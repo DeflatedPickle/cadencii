@@ -22,8 +22,10 @@ using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventAr
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Media.Vsq;
+using Cadencii.Application.Controls;
+using Cadencii.Application.Media;
 
-namespace cadencii
+namespace Cadencii.Application.Forms
 {
 
     public class FormBezierPointEditController : ControllerBase, FormBezierPointEditUiListener
