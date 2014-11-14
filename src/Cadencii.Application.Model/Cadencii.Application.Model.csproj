@@ -346,5 +346,17 @@
       <LogicalName>FormCheckUnknownSingerAndResampler.xml</LogicalName>
       <DependentUpon>FormCheckUnknownSingerAndResampler.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormCompileResult.xml">
+      <LogicalName>FormCompileResult.xml</LogicalName>
+      <DependentUpon>FormCompileResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormCurvePointEdit.xml">
+      <LogicalName>FormCurvePointEdit.xml</LogicalName>
+      <DependentUpon>FormCurvePointEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormDeleteBar.xml">
+      <LogicalName>FormDeleteBar.xml</LogicalName>
+      <DependentUpon>FormDeleteBar.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
