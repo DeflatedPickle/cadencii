@@ -312,5 +312,17 @@
       <LogicalName>FormInsertBar.xml</LogicalName>
       <DependentUpon>FormInsertBar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\ExceptionNotifyFormUi.xml">
+      <LogicalName>ExceptionNotifyFormUi.xml</LogicalName>
+      <DependentUpon>ExceptionNotifyFormUi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormAskKeySoundGenerationUi.xml">
+      <DependentUpon>FormAskKeySoundGenerationUi.cs</DependentUpon>
+      <LogicalName>FormAskKeySoundGenerationUi.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormBeatConfigUi.xml">
+      <LogicalName>FormBeatConfigUi.xml</LogicalName>
+      <DependentUpon>FormBeatConfigUi.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

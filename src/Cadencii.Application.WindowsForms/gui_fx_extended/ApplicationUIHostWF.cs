@@ -78,14 +78,24 @@ namespace Cadencii.Application.Forms
 			foreach (XmlElement c in e.ChildNodes) {
 				var ct = typeof(System.Windows.Forms.Form).Assembly.GetType ("System.Windows.Forms." + c.LocalName);
 				var obj = ct != null ? Activator.CreateInstance (ct) : ApplicationUIHost.Create (c.LocalName);
+
 				// optionally call ISupportInitialize. It is not strictly the same as designer generated code, but still hopefully works...
 				var isi = obj as ISupportInitialize;
 				if (isi != null)
 					((ISupportInitialize)obj).BeginInit ();
+				// optionally call SuspendLayout(). Dunno when winforms generates this, so far AFAIK it is invoked for GroupBox.
+				if (obj is GroupBox)
+					((Control) obj).SuspendLayout ();
+
 				ApplyXml (root, c, obj);
 				((Control) o).Controls.Add ((Control) obj);
+
 				if (isi != null)
 					((ISupportInitialize)obj).EndInit ();
+				if (obj is GroupBox) {
+					((Control) obj).ResumeLayout (false);
+					((Control) obj).PerformLayout ();
+				}
 			}
 			foreach (XmlAttribute a in e.Attributes) {
 				if (a.LocalName == "id") {
