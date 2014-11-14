@@ -149,23 +149,37 @@
     <Compile Include="app_ui\controls\WaveView.cs" />
     <Compile Include="app_ui\controls\WaveViewRealoadRequiredEventArgs.cs" />
     <Compile Include="app_ui\controls\WaveViewRealoadRequiredEventHandler.cs" />
-    <Compile Include="app_ui\forms\ExceptionNotifyFormController.cs" />
+    <Compile Include="app_ui\forms\ExceptionNotifyFormController.cs">
+      <DependentUpon>ExceptionNotifyFormUi.cs</DependentUpon>
+    </Compile>
     <Compile Include="app_ui\forms\ExceptionNotifyFormUi.cs" />
-    <Compile Include="app_ui\forms\ExceptionNotifyFormUiListener.cs" />
-    <Compile Include="app_ui\forms\FormAskKeySoundGenerationController.cs" />
+    <Compile Include="app_ui\forms\ExceptionNotifyFormUiListener.cs">
+      <DependentUpon>ExceptionNotifyFormUi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app_ui\forms\FormAskKeySoundGenerationController.cs">
+      <DependentUpon>FormAskKeySoundGenerationUi.cs</DependentUpon>
+    </Compile>
     <Compile Include="app_ui\forms\FormAskKeySoundGenerationUi.cs" />
-    <Compile Include="app_ui\forms\FormAskKeySoundGenerationUiListener.cs" />
-    <Compile Include="app_ui\forms\FormBeatConfigController.cs" />
+    <Compile Include="app_ui\forms\FormAskKeySoundGenerationUiListener.cs">
+      <DependentUpon>FormAskKeySoundGenerationUi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="app_ui\forms\FormBeatConfigController.cs">
+      <DependentUpon>FormBeatConfigUi.cs</DependentUpon>
+    </Compile>
     <Compile Include="app_ui\forms\FormBeatConfigUi.cs" />
-    <Compile Include="app_ui\forms\FormBeatConfigUiListener.cs" />
+    <Compile Include="app_ui\forms\FormBeatConfigUiListener.cs">
+      <DependentUpon>FormBeatConfigUi.cs</DependentUpon>
+    </Compile>
     <Compile Include="app_ui\forms\FormBezierPointEditController.cs">
       <SubType>Code</SubType>
+      <DependentUpon>FormBezierPointEditUi.cs</DependentUpon>
     </Compile>
     <Compile Include="app_ui\forms\FormBezierPointEditUi.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="app_ui\forms\FormBezierPointEditUiListener.cs">
       <SubType>Code</SubType>
+      <DependentUpon>FormBezierPointEditUi.cs</DependentUpon>
     </Compile>
     <Compile Include="app_ui\forms\FormCheckUnknownSingerAndResampler.cs" />
     <Compile Include="app_ui\forms\FormCompileResult.cs" />
@@ -323,6 +337,14 @@
     <EmbeddedResource Include="app_ui\forms\FormBeatConfigUi.xml">
       <LogicalName>FormBeatConfigUi.xml</LogicalName>
       <DependentUpon>FormBeatConfigUi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormBezierPointEditUi.xml">
+      <LogicalName>FormBezierPointEditUi.xml</LogicalName>
+      <DependentUpon>FormBezierPointEditUi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormCheckUnknownSingerAndResampler.xml">
+      <LogicalName>FormCheckUnknownSingerAndResampler.xml</LogicalName>
+      <DependentUpon>FormCheckUnknownSingerAndResampler.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
 </Project>
