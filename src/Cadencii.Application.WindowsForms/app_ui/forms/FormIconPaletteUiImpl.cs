@@ -262,45 +262,7 @@ namespace Cadencii.Application.Forms
             this.menuWindowHide = new ToolStripMenuItemImpl();
             this.menuBar.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuBar
-            // 
-            this.menuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuWindow});
-            this.menuBar.Location = new System.Drawing.Point(0, 0);
-            this.menuBar.Name = "menuBar";
-            this.menuBar.Size = new System.Drawing.Size(458, 24);
-            this.menuBar.TabIndex = 0;
-            this.menuBar.Text = "bMenuBar1";
-            // 
-            // menuWindow
-            // 
-            this.menuWindow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuWindowHide});
-            this.menuWindow.Name = "menuWindow";
-            this.menuWindow.Size = new System.Drawing.Size(55, 20);
-            this.menuWindow.Text = "Window";
-            // 
-            // menuWindowHide
-            // 
-            this.menuWindowHide.Name = "menuWindowHide";
-            this.menuWindowHide.Size = new System.Drawing.Size(93, 22);
-            this.menuWindowHide.Text = "Hide";
-            // 
-            // FormIconPalette
-            // 
-            this.ClientSize = new System.Drawing.Size(458, 342);
-            this.Controls.Add(this.menuBar);
-            this.MainMenuStrip = this.menuBar;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FormIconPalette";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Icon Palette";
-            this.menuBar.ResumeLayout(false);
-            this.menuBar.PerformLayout();
+			ApplicationUIHost.Instance.ApplyXml (this, "FormIconPaletteUi.xml");
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -358,5 +358,17 @@
       <LogicalName>FormDeleteBar.xml</LogicalName>
       <DependentUpon>FormDeleteBar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormGameControllerConfig.xml">
+      <LogicalName>FormGameControllerConfig.xml</LogicalName>
+      <DependentUpon>FormGameControllerConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormGenerateKeySound.xml">
+      <LogicalName>FormGenerateKeySound.xml</LogicalName>
+      <DependentUpon>FormGenerateKeySound.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormIconPaletteUi.xml">
+      <LogicalName>FormIconPaletteUi.xml</LogicalName>
+      <DependentUpon>FormIconPaletteUi.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

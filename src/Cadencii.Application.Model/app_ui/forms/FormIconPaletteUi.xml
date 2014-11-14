@@ -1,0 +1,33 @@
+﻿<Form id="FormIconPalette"
+            ClientSize = "(458, 342)"
+            MainMenuStrip = "#menuBar"
+            MaximizeBox = "false"
+            MinimizeBox = "false"
+            Name = "FormIconPalette"
+            ShowIcon = "false"
+            ShowInTaskbar = "false"
+            StartPosition = "Manual"
+            Text = "Icon Palette"
+            >
+	<MenuStrip id="menuBar"
+            Location = "(0, 0)"
+            Name = "menuBar"
+            Size = "(458, 24)"
+            TabIndex = "0"
+            Text = "bMenuBar1"
+            >
+	    <_Items>
+			<ToolStripMenuItem id="menuWindow"
+	            Name = "menuWindow"
+	            Size = "(55, 20)"
+	            Text = "Window">
+	            <_DropDownItems>
+	            	<ToolStripMenuItem id="menuWindowHide"
+			            Name = "menuWindowHide"
+			            Size = "(93, 22)"
+			            Text = "Hide" />
+	            </_DropDownItems>
+	        </ToolStripMenuItem>
+		</_Items>
+	</MenuStrip>
+</Form>

@@ -71,30 +71,38 @@ namespace Cadencii.Application.Forms
 			}
 		}
 
-		void ApplyXml (Control root, XmlElement e, object o)
+		void ApplyXml (Control root, XmlElement e, object o, bool asCollection)
 		{
 			var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
-			var t = o.GetType ();
 			foreach (XmlElement c in e.ChildNodes) {
-				var ct = typeof(System.Windows.Forms.Form).Assembly.GetType ("System.Windows.Forms." + c.LocalName);
-				var obj = ct != null ? Activator.CreateInstance (ct) : ApplicationUIHost.Create (c.LocalName);
+				if (c.LocalName.First () == '_') {
+					// collection property
+					var pv = o.GetType ().GetProperty (c.LocalName.Substring (1), bf).GetValue (o);
+					ApplyXml (root, c, pv, true);
+				} else {
+					var ct = typeof (System.Windows.Forms.Form).Assembly.GetType ("System.Windows.Forms." + c.LocalName);
+					var obj = ct != null ? Activator.CreateInstance (ct) : ApplicationUIHost.Create (c.LocalName);
 
-				// optionally call ISupportInitialize. It is not strictly the same as designer generated code, but still hopefully works...
-				var isi = obj as ISupportInitialize;
-				if (isi != null)
-					((ISupportInitialize)obj).BeginInit ();
-				// optionally call SuspendLayout(). Dunno when winforms generates this, so far AFAIK it is invoked for GroupBox.
-				if (obj is GroupBox)
-					((Control) obj).SuspendLayout ();
+					// optionally call ISupportInitialize. It is not strictly the same as designer generated code, but still hopefully works...
+					var isi = obj as ISupportInitialize;
+					if (isi != null)
+						((ISupportInitialize) obj).BeginInit ();
+					// optionally call SuspendLayout(). Dunno when winforms generates this, so far AFAIK it is invoked for GroupBox.
+					if (obj is GroupBox)
+						((Control) obj).SuspendLayout ();
 
-				ApplyXml (root, c, obj);
-				((Control) o).Controls.Add ((Control) obj);
+					ApplyXml (root, c, obj, false);
+					if (asCollection)
+						o.GetType ().GetMethods ().First (m => m.Name == "Add" && m.GetParameters ().First ().ParameterType.IsAssignableFrom (obj.GetType ())).Invoke (o, new object [] {obj});
+					else
+						((Control) o).Controls.Add ((Control) obj);
 
-				if (isi != null)
-					((ISupportInitialize)obj).EndInit ();
-				if (obj is GroupBox) {
-					((Control) obj).ResumeLayout (false);
-					((Control) obj).PerformLayout ();
+					if (isi != null)
+						((ISupportInitialize) obj).EndInit ();
+					if (obj is GroupBox) {
+						((Control) obj).ResumeLayout (false);
+						((Control) obj).PerformLayout ();
+					}
 				}
 			}
 			foreach (XmlAttribute a in e.Attributes) {
@@ -108,6 +116,7 @@ namespace Cadencii.Application.Forms
 							fi.SetValue (root, o);
 					}
 				} else {
+					var t = o.GetType ();
 					var p = t.GetProperty (a.LocalName);
 					var v = Deserialize (root, a.Value, p.PropertyType);
 					p.SetValue (o, v);
@@ -119,7 +128,7 @@ namespace Cadencii.Application.Forms
 		{
 			var xml = new XmlDocument ();
 			xml.Load (typeof (FormMainModel).Assembly.GetManifestResourceStream (xmlResourceName));
-			ApplyXml ((Control) control.Native, xml.DocumentElement, control);
+			ApplyXml ((Control) control.Native, xml.DocumentElement, control, false);
 		}
 
 		#endregion
