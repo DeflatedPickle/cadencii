@@ -13,7 +13,7 @@ namespace Cadencii.Application.Forms
 	public interface FormMidiImExport : UiForm
 	{
 		FormMidiMode Mode { get; set; }
-		UiListView listTrack { get ; set; }
+		UiListView ListTrack { get; }
 		void applyLanguage();
 
          double getOffsetSeconds();
@@ -21,10 +21,6 @@ namespace Cadencii.Application.Forms
          int getOffsetClocks();
 
         bool isSecondBasis();
-
-        FormMidiMode getMode();
-
-        void setMode(FormMidiMode value);
 
          bool isVocaloidMetatext();
 

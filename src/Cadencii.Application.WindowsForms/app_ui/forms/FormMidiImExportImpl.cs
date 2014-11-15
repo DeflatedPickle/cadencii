@@ -26,31 +26,33 @@ using cadencii;
 
 namespace Cadencii.Application.Forms
 {
-    public class FormMidiImExportImpl : FormImpl
+	public class FormMidiImExportImpl : FormImpl, FormMidiImExport
     {
         private FormMidiMode m_mode;
         private VsqFileEx m_vsq;
-        private static int columnWidthTrack = 55;
-        private static int columnWidthName = 217;
-        private static int columnWidthNotes = 58;
+        private static int columnWidthTrack;
+        private static int columnWidthName;
+        private static int columnWidthNotes;
 
         public FormMidiImExportImpl()
         {
             InitializeComponent();
             applyLanguage();
-            setMode(FormMidiMode.EXPORT);
+            Mode = FormMidiMode.EXPORT;
             AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
-            listTrack.SetColumnHeaders(new string[] { _("Track"), _("Name"), _("Notes") });
-            listTrack.GetColumn(0).Width = columnWidthTrack;
-            listTrack.GetColumn(1).Width = columnWidthName;
-            listTrack.GetColumn(2).Width = columnWidthNotes;
 
+		/* It should not be done like this...
             System.Drawing.Point p = btnCheckAll.Location;
             btnUncheckAll.Location = new System.Drawing.Point(p.X + btnCheckAll.Width + 6, p.Y);
+		*/
 
             registerEventHandlers();
             setResources();
         }
+
+		UiListView FormMidiImExport.ListTrack {
+			get { return listTrack; }
+		}
 
         #region public methods
         public void applyLanguage()
@@ -113,52 +115,50 @@ namespace Cadencii.Application.Forms
             return radioPlayTime.Checked;
         }
 
-        public FormMidiMode getMode()
-        {
-            return m_mode;
-        }
+		public FormMidiMode Mode {
+			get { return m_mode; }
 
-        public void setMode(FormMidiMode value)
-        {
-            m_mode = value;
-            chkExportVocaloidNrpn.Enabled = (m_mode == FormMidiMode.EXPORT);
-            chkLyric.Enabled = (m_mode != FormMidiMode.IMPORT_VSQ);
-            chkNote.Enabled = (m_mode != FormMidiMode.IMPORT_VSQ);
-            chkPreMeasure.Enabled = (m_mode != FormMidiMode.IMPORT_VSQ);
-            if (m_mode == FormMidiMode.EXPORT) {
-                this.Text = _("Midi Export");
-                chkPreMeasure.Text = _("Export pre-measure part");
-                if (chkExportVocaloidNrpn.Checked) {
-                    chkPreMeasure.Enabled = false;
-                    EditorManager.editorConfig.MidiImExportConfigExport.LastPremeasureCheckStatus = chkPreMeasure.Checked;
-                    chkPreMeasure.Checked = true;
-                } else {
-                    chkPreMeasure.Checked = EditorManager.editorConfig.MidiImExportConfigExport.LastPremeasureCheckStatus;
-                }
-                if (chkNote.Checked) {
-                    chkMetaText.Enabled = false;
-                    EditorManager.editorConfig.MidiImExportConfigExport.LastMetatextCheckStatus = chkMetaText.Checked;
-                    chkMetaText.Checked = false;
-                } else {
-                    chkMetaText.Checked = EditorManager.editorConfig.MidiImExportConfigExport.LastMetatextCheckStatus;
-                }
-                groupMode.Enabled = false;
-            } else if (m_mode == FormMidiMode.IMPORT) {
-                this.Text = _("Midi Import");
-                chkPreMeasure.Text = _("Inserting start at pre-measure");
-                chkMetaText.Enabled = false;
-                EditorManager.editorConfig.MidiImExportConfigImport.LastMetatextCheckStatus = chkMetaText.Checked;
-                chkMetaText.Checked = false;
-                groupMode.Enabled = true;
-            } else {
-                this.Text = _("VSQ/Vocaloid Midi Import");
-                chkPreMeasure.Text = _("Inserting start at pre-measure");
-                chkPreMeasure.Checked = false;
-                EditorManager.editorConfig.MidiImExportConfigImportVsq.LastMetatextCheckStatus = chkMetaText.Checked;
-                chkMetaText.Checked = true;
-                groupMode.Enabled = false;
-            }
-        }
+			set {
+				m_mode = value;
+				chkExportVocaloidNrpn.Enabled = (m_mode == FormMidiMode.EXPORT);
+				chkLyric.Enabled = (m_mode != FormMidiMode.IMPORT_VSQ);
+				chkNote.Enabled = (m_mode != FormMidiMode.IMPORT_VSQ);
+				chkPreMeasure.Enabled = (m_mode != FormMidiMode.IMPORT_VSQ);
+				if (m_mode == FormMidiMode.EXPORT) {
+					this.Text = _ ("Midi Export");
+					chkPreMeasure.Text = _ ("Export pre-measure part");
+					if (chkExportVocaloidNrpn.Checked) {
+						chkPreMeasure.Enabled = false;
+						EditorManager.editorConfig.MidiImExportConfigExport.LastPremeasureCheckStatus = chkPreMeasure.Checked;
+						chkPreMeasure.Checked = true;
+					} else {
+						chkPreMeasure.Checked = EditorManager.editorConfig.MidiImExportConfigExport.LastPremeasureCheckStatus;
+					}
+					if (chkNote.Checked) {
+						chkMetaText.Enabled = false;
+						EditorManager.editorConfig.MidiImExportConfigExport.LastMetatextCheckStatus = chkMetaText.Checked;
+						chkMetaText.Checked = false;
+					} else {
+						chkMetaText.Checked = EditorManager.editorConfig.MidiImExportConfigExport.LastMetatextCheckStatus;
+					}
+					groupMode.Enabled = false;
+				} else if (m_mode == FormMidiMode.IMPORT) {
+					this.Text = _ ("Midi Import");
+					chkPreMeasure.Text = _ ("Inserting start at pre-measure");
+					chkMetaText.Enabled = false;
+					EditorManager.editorConfig.MidiImExportConfigImport.LastMetatextCheckStatus = chkMetaText.Checked;
+					chkMetaText.Checked = false;
+					groupMode.Enabled = true;
+				} else {
+					this.Text = _ ("VSQ/Vocaloid Midi Import");
+					chkPreMeasure.Text = _ ("Inserting start at pre-measure");
+					chkPreMeasure.Checked = false;
+					EditorManager.editorConfig.MidiImExportConfigImportVsq.LastMetatextCheckStatus = chkMetaText.Checked;
+					chkMetaText.Checked = true;
+					groupMode.Enabled = false;
+				}
+			}
+		}
 
         public bool isVocaloidMetatext()
         {
@@ -239,6 +239,7 @@ namespace Cadencii.Application.Forms
         #region event handlers
         public void btnCheckAll_Click(Object sender, EventArgs e)
         {
+			var listTrack = (UiListView) this.listTrack;
             for (int i = 0; i < listTrack.ItemCount; i++) {
                 listTrack.GetItem(i).Checked = true;
             }
@@ -246,6 +247,7 @@ namespace Cadencii.Application.Forms
 
         public void btnUnckeckAll_Click(Object sender, EventArgs e)
         {
+			var listTrack = (UiListView) this.listTrack;
             for (int i = 0; i < listTrack.ItemCount; i++) {
                 listTrack.GetItem(i).Checked = false;
             }
@@ -288,6 +290,7 @@ namespace Cadencii.Application.Forms
 
         public void FormMidiImExport_FormClosing()
         {
+			var listTrack = (UiListView) this.listTrack;
             columnWidthTrack = listTrack.GetColumn(0).Width;
             columnWidthName = listTrack.GetColumn(1).Width;
             columnWidthNotes = listTrack.GetColumn(2).Width;
@@ -344,302 +347,8 @@ namespace Cadencii.Application.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            UiListViewGroup listViewGroup1 = new ListViewGroupImpl("ListViewGroup", HorizontalAlignment.Left);
-            UiListViewGroup listViewGroup2 = new ListViewGroupImpl("ListViewGroup", HorizontalAlignment.Left);
-            UiListViewGroup listViewGroup3 = new ListViewGroupImpl("ListViewGroup", HorizontalAlignment.Left);
-            UiListViewGroup listViewGroup4 = new ListViewGroupImpl("ListViewGroup", HorizontalAlignment.Left);
-            this.btnCancel = new Button();
-            this.btnOK = new Button();
-            this.listTrack = new ListViewImpl();
-            this.btnCheckAll = new Button();
-            this.btnUncheckAll = new Button();
-            this.chkBeat = new CheckBox();
-            this.chkTempo = new CheckBox();
-            this.chkNote = new CheckBox();
-            this.chkLyric = new CheckBox();
-            this.groupCommonOption = new System.Windows.Forms.GroupBox();
-            this.chkMetaText = new CheckBox();
-            this.chkPreMeasure = new CheckBox();
-            this.chkExportVocaloidNrpn = new CheckBox();
-            this.groupMode = new System.Windows.Forms.GroupBox();
-            this.lblOffsetUnit = new Label();
-            this.txtOffset = ApplicationUIHost.Create<Cadencii.Application.Controls.NumberTextBox>();
-            this.lblOffset = new Label();
-            this.radioPlayTime = new RadioButton();
-            this.radioGateTime = new RadioButton();
-            this.groupCommonOption.SuspendLayout();
-            this.groupMode.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(261, 435);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
-            // btnOK
-            // 
-            this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOK.Location = new System.Drawing.Point(180, 435);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 4;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            // 
-            // listTrack
-            // 
-            this.listTrack.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            this.listTrack.CheckBoxes = true;
-            this.listTrack.FullRowSelect = true;
-            listViewGroup1.Header = "ListViewGroup";
-            listViewGroup2.Header = "ListViewGroup";
-            listViewGroup2.Name = null;
-            listViewGroup3.Header = "ListViewGroup";
-            listViewGroup3.Name = null;
-            listViewGroup4.Header = "ListViewGroup";
-            listViewGroup4.Name = null;
-            this.listTrack.AddGroups(new UiListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3,
-            listViewGroup4});
-            this.listTrack.Location = new Point(12, 41);
-            this.listTrack.Name = "listTrack";
-            this.listTrack.Size = new Dimension(324, 216);
-            this.listTrack.TabIndex = 6;
-            this.listTrack.UseCompatibleStateImageBehavior = false;
-            this.listTrack.View = Cadencii.Gui.Toolkit.View.Details;
-            // 
-            // btnCheckAll
-            // 
-            this.btnCheckAll.AutoSize = true;
-            this.btnCheckAll.Location = new System.Drawing.Point(12, 12);
-            this.btnCheckAll.Name = "btnCheckAll";
-            this.btnCheckAll.Size = new System.Drawing.Size(75, 23);
-            this.btnCheckAll.TabIndex = 7;
-            this.btnCheckAll.Text = "Check All";
-            this.btnCheckAll.UseVisualStyleBackColor = true;
-            // 
-            // btnUncheckAll
-            // 
-            this.btnUncheckAll.AutoSize = true;
-            this.btnUncheckAll.Location = new System.Drawing.Point(93, 12);
-            this.btnUncheckAll.Name = "btnUncheckAll";
-            this.btnUncheckAll.Size = new System.Drawing.Size(77, 23);
-            this.btnUncheckAll.TabIndex = 8;
-            this.btnUncheckAll.Text = "Uncheck All";
-            this.btnUncheckAll.UseVisualStyleBackColor = true;
-            // 
-            // chkBeat
-            // 
-            this.chkBeat.AutoSize = true;
-            this.chkBeat.Checked = true;
-            this.chkBeat.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkBeat.Location = new System.Drawing.Point(81, 18);
-            this.chkBeat.Name = "chkBeat";
-            this.chkBeat.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.chkBeat.Size = new System.Drawing.Size(58, 16);
-            this.chkBeat.TabIndex = 9;
-            this.chkBeat.Text = "Beat";
-            this.chkBeat.UseVisualStyleBackColor = true;
-            // 
-            // chkTempo
-            // 
-            this.chkTempo.AutoSize = true;
-            this.chkTempo.Checked = true;
-            this.chkTempo.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkTempo.Location = new System.Drawing.Point(10, 18);
-            this.chkTempo.Name = "chkTempo";
-            this.chkTempo.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.chkTempo.Size = new System.Drawing.Size(68, 16);
-            this.chkTempo.TabIndex = 10;
-            this.chkTempo.Text = "Tempo";
-            this.chkTempo.UseVisualStyleBackColor = true;
-            // 
-            // chkNote
-            // 
-            this.chkNote.AutoSize = true;
-            this.chkNote.Checked = true;
-            this.chkNote.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkNote.Location = new System.Drawing.Point(10, 40);
-            this.chkNote.Name = "chkNote";
-            this.chkNote.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.chkNote.Size = new System.Drawing.Size(58, 16);
-            this.chkNote.TabIndex = 11;
-            this.chkNote.Text = "Note";
-            this.chkNote.UseVisualStyleBackColor = true;
-            // 
-            // chkLyric
-            // 
-            this.chkLyric.AutoSize = true;
-            this.chkLyric.Checked = true;
-            this.chkLyric.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkLyric.Location = new System.Drawing.Point(145, 18);
-            this.chkLyric.Name = "chkLyric";
-            this.chkLyric.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.chkLyric.Size = new System.Drawing.Size(65, 16);
-            this.chkLyric.TabIndex = 12;
-            this.chkLyric.Text = "Lyrics";
-            this.chkLyric.UseVisualStyleBackColor = true;
-            // 
-            // groupCommonOption
-            // 
-            this.groupCommonOption.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupCommonOption.Controls.Add(this.chkMetaText);
-            this.groupCommonOption.Controls.Add(this.chkPreMeasure);
-            this.groupCommonOption.Controls.Add(this.chkExportVocaloidNrpn);
-            this.groupCommonOption.Controls.Add(this.chkLyric);
-            this.groupCommonOption.Controls.Add(this.chkNote);
-            this.groupCommonOption.Controls.Add(this.chkBeat);
-            this.groupCommonOption.Controls.Add(this.chkTempo);
-            this.groupCommonOption.Location = new System.Drawing.Point(12, 263);
-            this.groupCommonOption.Name = "groupCommonOption";
-            this.groupCommonOption.Size = new System.Drawing.Size(324, 88);
-            this.groupCommonOption.TabIndex = 13;
-            this.groupCommonOption.TabStop = false;
-            this.groupCommonOption.Text = "Option";
-            // 
-            // chkMetaText
-            // 
-            this.chkMetaText.AutoSize = true;
-            this.chkMetaText.Checked = true;
-            this.chkMetaText.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkMetaText.Location = new System.Drawing.Point(74, 40);
-            this.chkMetaText.Name = "chkMetaText";
-            this.chkMetaText.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.chkMetaText.Size = new System.Drawing.Size(131, 16);
-            this.chkMetaText.TabIndex = 16;
-            this.chkMetaText.Text = "vocaloid meta-text";
-            this.chkMetaText.UseVisualStyleBackColor = true;
-            // 
-            // chkPreMeasure
-            // 
-            this.chkPreMeasure.AutoSize = true;
-            this.chkPreMeasure.Checked = true;
-            this.chkPreMeasure.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkPreMeasure.Location = new System.Drawing.Point(127, 62);
-            this.chkPreMeasure.Name = "chkPreMeasure";
-            this.chkPreMeasure.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.chkPreMeasure.Size = new System.Drawing.Size(160, 16);
-            this.chkPreMeasure.TabIndex = 15;
-            this.chkPreMeasure.Text = "Export pre-measure part";
-            this.chkPreMeasure.UseVisualStyleBackColor = true;
-            // 
-            // chkExportVocaloidNrpn
-            // 
-            this.chkExportVocaloidNrpn.AutoSize = true;
-            this.chkExportVocaloidNrpn.Checked = true;
-            this.chkExportVocaloidNrpn.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkExportVocaloidNrpn.Location = new System.Drawing.Point(10, 62);
-            this.chkExportVocaloidNrpn.Name = "chkExportVocaloidNrpn";
-            this.chkExportVocaloidNrpn.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.chkExportVocaloidNrpn.Size = new System.Drawing.Size(111, 16);
-            this.chkExportVocaloidNrpn.TabIndex = 14;
-            this.chkExportVocaloidNrpn.Text = "vocaloid NRPN";
-            this.chkExportVocaloidNrpn.UseVisualStyleBackColor = true;
-            // 
-            // groupMode
-            // 
-            this.groupMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupMode.Controls.Add(this.lblOffsetUnit);
-            this.groupMode.Controls.Add((Control)this.txtOffset.Native);
-            this.groupMode.Controls.Add(this.lblOffset);
-            this.groupMode.Controls.Add(this.radioPlayTime);
-            this.groupMode.Controls.Add(this.radioGateTime);
-            this.groupMode.Location = new System.Drawing.Point(12, 357);
-            this.groupMode.Name = "groupMode";
-            this.groupMode.Size = new System.Drawing.Size(324, 72);
-            this.groupMode.TabIndex = 14;
-            this.groupMode.TabStop = false;
-            this.groupMode.Text = "Import Basis";
-            // 
-            // lblOffsetUnit
-            // 
-            this.lblOffsetUnit.AutoSize = true;
-            this.lblOffsetUnit.Location = new System.Drawing.Point(187, 45);
-            this.lblOffsetUnit.Name = "lblOffsetUnit";
-            this.lblOffsetUnit.Size = new System.Drawing.Size(38, 12);
-            this.lblOffsetUnit.TabIndex = 4;
-            this.lblOffsetUnit.Text = "clocks";
-            // 
-            // txtOffset
-            // 
-            this.txtOffset.BackColor = new Color(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.txtOffset.ForeColor = Cadencii.Gui.Colors.Black;
-            this.txtOffset.Location = new Point(81, 42);
-            this.txtOffset.Name = "txtOffset";
-            this.txtOffset.Size = new Dimension(100, 19);
-            this.txtOffset.TabIndex = 3;
-            this.txtOffset.Text = "0";
-            this.txtOffset.TextAlign = Cadencii.Gui.Toolkit.HorizontalAlignment.Right;
-            this.txtOffset.Type = Cadencii.Application.Controls.NumberTextBoxValueType.Integer;
-            // 
-            // lblOffset
-            // 
-            this.lblOffset.AutoSize = true;
-            this.lblOffset.Location = new System.Drawing.Point(14, 45);
-            this.lblOffset.Name = "lblOffset";
-            this.lblOffset.Size = new System.Drawing.Size(35, 12);
-            this.lblOffset.TabIndex = 2;
-            this.lblOffset.Text = "offset";
-            // 
-            // radioPlayTime
-            // 
-            this.radioPlayTime.AutoSize = true;
-            this.radioPlayTime.Location = new System.Drawing.Point(168, 18);
-            this.radioPlayTime.Name = "radioPlayTime";
-            this.radioPlayTime.Size = new System.Drawing.Size(72, 16);
-            this.radioPlayTime.TabIndex = 1;
-            this.radioPlayTime.TabStop = true;
-            this.radioPlayTime.Text = "play-time";
-            this.radioPlayTime.UseVisualStyleBackColor = true;
-            // 
-            // radioGateTime
-            // 
-            this.radioGateTime.AutoSize = true;
-            this.radioGateTime.Checked = true;
-            this.radioGateTime.Location = new System.Drawing.Point(10, 18);
-            this.radioGateTime.Name = "radioGateTime";
-            this.radioGateTime.Size = new System.Drawing.Size(73, 16);
-            this.radioGateTime.TabIndex = 0;
-            this.radioGateTime.TabStop = true;
-            this.radioGateTime.Text = "gate-time";
-            this.radioGateTime.UseVisualStyleBackColor = true;
-            // 
-            // FormMidiImExport
-            // 
-            this.AcceptButton = this.btnOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(348, 470);
-            this.Controls.Add(this.groupMode);
-            this.Controls.Add(this.groupCommonOption);
-            this.Controls.Add(this.btnUncheckAll);
-            this.Controls.Add(this.btnCheckAll);
-            this.Controls.Add((Control)this.listTrack.Native);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOK);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FormMidiImExport";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "FormMidiInExport";
-            this.groupCommonOption.ResumeLayout(false);
-            this.groupCommonOption.PerformLayout();
-            this.groupMode.ResumeLayout(false);
-            this.groupMode.PerformLayout();
+			ApplicationUIHost.Instance.ApplyXml (this, "FormMidiImExport.xml");
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -655,7 +364,7 @@ namespace Cadencii.Application.Forms
         private CheckBox chkLyric;
         private GroupBox groupCommonOption;
         private CheckBox chkExportVocaloidNrpn;
-        public UiListView listTrack { get ; set; }
+        public ListViewImpl listTrack { get ; set; }
         private CheckBox chkPreMeasure;
         private CheckBox chkMetaText;
         private GroupBox groupMode;

@@ -1,3 +1,4 @@
+#if false
 using System;
 using System.Linq;
 using Cadencii.Gui;
@@ -39,5 +40,5 @@ namespace Cadencii.Gui.Toolkit
 			set { impl.Name = value; }
 		}
 	}
-	
 }
+#endif

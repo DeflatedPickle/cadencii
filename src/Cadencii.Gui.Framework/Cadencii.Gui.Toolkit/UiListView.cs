@@ -13,18 +13,20 @@ namespace Cadencii.Gui.Toolkit
 		UiListViewItem GetItem (int i);
 		void ClearItems ();
 		void AddRow(string[] items, bool selected);
-		void SetColumnHeaders(string[] headers);
+		//void SetColumnHeaders(string[] headers);
 		UiListViewColumn GetColumn(int i);
-		void AddGroups (IEnumerable<UiListViewGroup> groups);
+		//void AddGroups (IEnumerable<UiListViewGroup> groups);
 		View View { get; set; } 
 	}
 
+	/*
 	public interface UiListViewGroup
 	{
 		object Native { get; }
 		string Header { get; set; }
 		string Name { get; set; }
 	}
+	*/
 
 	public interface UiListViewColumn
 	{

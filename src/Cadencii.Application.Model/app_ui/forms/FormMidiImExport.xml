@@ -1,0 +1,255 @@
+﻿<Form id="FormMidiImExport"
+            
+            AcceptButton = "#btnOK"
+            AutoScaleDimensions = "(96, 96)"
+            AutoScaleMode = "Dpi"
+            CancelButton = "#btnCancel"
+            ClientSize = "(348, 470)"
+            MaximizeBox = "false"
+            MinimizeBox = "false"
+            Name = "FormMidiImExport"
+            ShowIcon = "false"
+            ShowInTaskbar = "false"
+            StartPosition = "Manual"
+            Text = "FormMidiInExport"
+			>
+	<Button id="btnCancel"            
+            Anchor = "Bottom,Right"
+            DialogResult = "Cancel"
+            Location = "(261, 435)"
+            Name = "btnCancel"
+            Size = "(75, 23)"
+            TabIndex = "5"
+            Text = "Cancel"
+            UseVisualStyleBackColor = "true"
+            />
+    <Button id="btnOK"            
+            Anchor = "Bottom,Right"
+            DialogResult = "OK"
+            Location = "(180, 435)"
+            Name = "btnOK"
+            Size = "(75, 23)"
+            TabIndex = "4"
+            Text = "OK"
+            UseVisualStyleBackColor = "true"
+            />
+            
+    <UiListView id="listTrack"
+            Anchor = "Top,Bottom,Left,Right"
+            CheckBoxes = "true"
+            FullRowSelect = "true"
+            Location = "(12, 41)"
+            Name = "listTrack"
+            Size = "(324, 216)"
+            TabIndex = "6"
+            UseCompatibleStateImageBehavior = "false"
+            View = "Details">
+		<_Groups>
+			<ListViewGroup.WithConstructorArguments>(ListViewGroup,Left)</ListViewGroup.WithConstructorArguments>
+			<ListViewGroup.WithConstructorArguments>(ListViewGroup,Left)</ListViewGroup.WithConstructorArguments>
+			<ListViewGroup.WithConstructorArguments>(ListViewGroup,Left)</ListViewGroup.WithConstructorArguments>
+			<ListViewGroup.WithConstructorArguments>(ListViewGroup,Left)</ListViewGroup.WithConstructorArguments>
+		</_Groups>
+		<_Columns>
+			<ColumnHeader Text="Track" Width="55" />
+			<ColumnHeader Text="Name" Width="217" />
+			<ColumnHeader Text="Notes" Width="58" />
+		</_Columns>
+	</UiListView>
+            
+    <Button id="btnCheckAll"            
+            AutoSize = "true"
+            Location = "(12, 12)"
+            Name = "btnCheckAll"
+            Size = "(75, 23)"
+            TabIndex = "7"
+            Text = "Check All"
+            UseVisualStyleBackColor = "true"
+            />
+    <Button id="btnUncheckAll"            
+            AutoSize = "true"
+            Location = "(93, 12)"
+            Name = "btnUncheckAll"
+            Size = "(77, 23)"
+            TabIndex = "8"
+            Text = "Uncheck All"
+            UseVisualStyleBackColor = "true"
+            />
+    <GroupBox id="groupCommonOption"            
+            Anchor = "Bottom,Left,Right"
+            Location = "(12, 263)"
+            Name = "groupCommonOption"
+            Size = "(324, 88)"
+            TabIndex = "13"
+            TabStop = "false"
+            Text = "Option"
+            >
+	    <CheckBox id="chkBeat"
+	            
+	            AutoSize = "true"
+	            Checked = "true"
+	            CheckState = "Checked"
+	            Location = "(81, 18)"
+	            Name = "chkBeat"
+	            Padding = "(5, 0, 5, 0)"
+	            Size = "(58, 16)"
+	            TabIndex = "9"
+	            Text = "Beat"
+	            UseVisualStyleBackColor = "true"
+            />
+	            
+	    <CheckBox id="chkTempo"
+	            
+	            AutoSize = "true"
+	            Checked = "true"
+	            CheckState = "Checked"
+	            Location = "(10, 18)"
+	            Name = "chkTempo"
+	            Padding = "(5, 0, 5, 0)"
+	            Size = "(68, 16)"
+	            TabIndex = "10"
+	            Text = "Tempo"
+	            UseVisualStyleBackColor = "true"
+            />
+	            
+	    <CheckBox id="chkNote"
+	            
+	            AutoSize = "true"
+	            Checked = "true"
+	            CheckState = "Checked"
+	            Location = "(10, 40)"
+	            Name = "chkNote"
+	            Padding = "(5, 0, 5, 0)"
+	            Size = "(58, 16)"
+	            TabIndex = "11"
+	            Text = "Note"
+	            UseVisualStyleBackColor = "true"
+            />
+	            
+	    <CheckBox id="chkLyric"
+	            
+	            AutoSize = "true"
+	            Checked = "true"
+	            CheckState = "Checked"
+	            Location = "(145, 18)"
+	            Name = "chkLyric"
+	            Padding = "(5, 0, 5, 0)"
+	            Size = "(65, 16)"
+	            TabIndex = "12"
+	            Text = "Lyrics"
+	            UseVisualStyleBackColor = "true"
+            />
+	            
+	    <CheckBox id="chkMetaText"
+	            
+	            AutoSize = "true"
+	            Checked = "true"
+	            CheckState = "Checked"
+	            Location = "(74, 40)"
+	            Name = "chkMetaText"
+	            Padding = "(5, 0, 5, 0)"
+	            Size = "(131, 16)"
+	            TabIndex = "16"
+	            Text = "vocaloid meta-text"
+	            UseVisualStyleBackColor = "true"
+            />
+	            
+	    <CheckBox id="chkPreMeasure"
+	            
+	            AutoSize = "true"
+	            Checked = "true"
+	            CheckState = "Checked"
+	            Location = "(127, 62)"
+	            Name = "chkPreMeasure"
+	            Padding = "(5, 0, 5, 0)"
+	            Size = "(160, 16)"
+	            TabIndex = "15"
+	            Text = "Export pre-measure part"
+	            UseVisualStyleBackColor = "true"
+            />
+	            
+	    <CheckBox id="chkExportVocaloidNrpn"
+	            
+	            AutoSize = "true"
+	            Checked = "true"
+	            CheckState = "Checked"
+	            Location = "(10, 62)"
+	            Name = "chkExportVocaloidNrpn"
+	            Padding = "(5, 0, 5, 0)"
+	            Size = "(111, 16)"
+	            TabIndex = "14"
+	            Text = "vocaloid NRPN"
+	            UseVisualStyleBackColor = "true"
+            />
+
+    </GroupBox>            
+
+    <GroupBox id="groupMode"
+            
+            Anchor = "Bottom,Left,Right"
+            Location = "(12, 357)"
+            Name = "groupMode"
+            Size = "(324, 72)"
+            TabIndex = "14"
+            TabStop = "false"
+            Text = "Import Basis"
+	            >
+	    <Label id="lblOffsetUnit"
+	            
+	            AutoSize = "true"
+	            Location = "(187, 45)"
+	            Name = "lblOffsetUnit"
+	            Size = "(38, 12)"
+	            TabIndex = "4"
+	            Text = "clocks"
+            />
+	            
+	    <NumberTextBox id="txtOffset"
+	            
+	            BackColor = "$White"
+	            ForeColor = "$Black"
+	            Location = "(81, 42)"
+	            Name = "txtOffset"
+	            Size = "(100, 19)"
+	            TabIndex = "3"
+	            Text = "0"
+	            TextAlign = "Right"
+	            Type = "Integer"
+            />
+	            
+	    <Label id="lblOffset"
+	            
+	            AutoSize = "true"
+	            Location = "(14, 45)"
+	            Name = "lblOffset"
+	            Size = "(35, 12)"
+	            TabIndex = "2"
+	            Text = "offset"
+            />
+	            
+	    <RadioButton id="radioPlayTime"
+	            
+	            AutoSize = "true"
+	            Location = "(168, 18)"
+	            Name = "radioPlayTime"
+	            Size = "(72, 16)"
+	            TabIndex = "1"
+	            TabStop = "true"
+	            Text = "play-time"
+	            UseVisualStyleBackColor = "true"
+            />
+	            
+	    <RadioButton id="radioGateTime"
+	            
+	            AutoSize = "true"
+	            Checked = "true"
+	            Location = "(10, 18)"
+	            Name = "radioGateTime"
+	            Size = "(73, 16)"
+	            TabIndex = "0"
+	            TabStop = "true"
+	            Text = "gate-time"
+	            UseVisualStyleBackColor = "true"
+            />
+	</GroupBox>
+</Form>

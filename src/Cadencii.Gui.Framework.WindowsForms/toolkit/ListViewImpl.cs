@@ -32,10 +32,12 @@ namespace Cadencii.Gui.Toolkit
 			WinformsExtensions.AddRow (this, items, selected);
 		}
 
+		/*
 		void UiListView.SetColumnHeaders (string[] headers)
 		{
 			WinformsExtensions.SetColumnHeaders (this, headers);
 		}
+		*/
 
 		UiListViewItem UiListView.GetItem (int i)
 		{
@@ -49,10 +51,12 @@ namespace Cadencii.Gui.Toolkit
 		{
 			return new ListViewColumnImpl (Columns [i]);
 		}
+		/*
 		void UiListView.AddGroups (IEnumerable<UiListViewGroup> groups)
 		{
 			Groups.AddRange (groups.Select (g => (System.Windows.Forms.ListViewGroup) g.Native).ToArray ());
 		}
+		*/
 		Cadencii.Gui.Toolkit.View UiListView.View {
 			get { return (Cadencii.Gui.Toolkit.View) View; }
 			set { View = (System.Windows.Forms.View) value; } 

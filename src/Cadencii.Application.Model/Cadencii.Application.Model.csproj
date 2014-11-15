@@ -215,8 +215,6 @@
     <Compile Include="app_ui\forms\UpdateCheckForm.cs" />
     <Compile Include="app_ui\forms\VersionInfo.cs" />
     <Compile Include="app_ui\forms\WaveformZoomController.cs" />
-    <Compile Include="app_ui\forms\UiFormNoteProperty.cs" />
-    <Compile Include="app_ui\forms\UiFormMain.cs" />
     <Compile Include="app_ui\controls\TrackSelectorConsts.cs" />
     <Compile Include="app_ui\controls\RecentFileMenuItem.cs" />
     <Compile Include="gui_fx_extended\Clipboard.cs" />
@@ -263,6 +261,8 @@
     <Compile Include="app_ui\models\FormMainModel.WaveViewModel.cs" />
     <Compile Include="app_ui\models\PositionIndicatorMouseDownMode.cs" />
     <Compile Include="ui_abstraction\CommandExecuteRequiredEventHandler.cs" />
+    <Compile Include="app_ui\forms\FormMain.cs" />
+    <Compile Include="app_ui\forms\FormNoteProperty.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -369,6 +369,10 @@
     <EmbeddedResource Include="app_ui\forms\FormIconPaletteUi.xml">
       <LogicalName>FormIconPaletteUi.xml</LogicalName>
       <DependentUpon>FormIconPaletteUi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormMidiImExport.xml">
+      <LogicalName>FormMidiImExport.xml</LogicalName>
+      <DependentUpon>FormMidiImExport.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

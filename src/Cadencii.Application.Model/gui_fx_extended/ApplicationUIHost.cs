@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application
 {
@@ -7,7 +8,9 @@ namespace Cadencii.Application
 	{
 		public static object Create (string name, params object [] args)
 		{
-			var type = typeof(ApplicationUIHost).Assembly.GetTypes ().First (t => t.Name == name);
+			var type = new Type [] { typeof (ApplicationUIHost), typeof (UiControl) }
+				.SelectMany (t => t.Assembly.GetTypes ())
+				.First (t => t.Name == name);
 			return Create (type, args);
 		}
 

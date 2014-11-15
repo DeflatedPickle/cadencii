@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using cadencii;
 using Cadencii.Application.Models;
+using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application.Forms
 {
@@ -56,14 +57,14 @@ namespace Cadencii.Application.Forms
 				return Enum.ToObject (t, value.Split ('\'')
 					.Select (s => s.Trim ())
 					.Select (s => Enum.Parse (t, s))
-					.Select (e => Convert.ChangeType (e, typeof(int)))
+					.Select (e => Convert.ChangeType (e, typeof (int)))
 					.Cast<int> ()
 					.Sum ());
 			else if (Type.GetTypeCode (t) != TypeCode.Object)
 				return Convert.ChangeType (value, t);
-			else if (value.FirstOrDefault () == '#') {
+			else if (value.FirstOrDefault () == '#')
 				return FindControlTreeItem (root, value.Substring (1));
-			} else {
+			else {
 				var argStrings = value.TrimStart ('(').TrimEnd (')').Split (',').Select (x => x.Trim ()).ToArray ();
 				var ctor = t.GetConstructors ().First (c => c.GetParameters ().Length == argStrings.Length);
 				var argObjs = argStrings.Zip (ctor.GetParameters (), (s, pi) => Deserialize (root, s, pi.ParameterType)).ToArray ();
@@ -71,17 +72,35 @@ namespace Cadencii.Application.Forms
 			}
 		}
 
+		object CreateObject (string name)
+		{
+			var ct = typeof (System.Windows.Forms.Form).Assembly.GetType ("System.Windows.Forms." + name);
+			var obj = ct != null ? Activator.CreateInstance (ct) : ApplicationUIHost.Create (name);
+			return obj;
+		}
+
 		void ApplyXml (Control root, XmlElement e, object o, bool asCollection)
 		{
 			var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
-			foreach (XmlElement c in e.ChildNodes) {
+			foreach (XmlElement c in e.SelectNodes ("*")) {
 				if (c.LocalName.First () == '_') {
 					// collection property
 					var pv = o.GetType ().GetProperty (c.LocalName.Substring (1), bf).GetValue (o);
 					ApplyXml (root, c, pv, true);
 				} else {
-					var ct = typeof (System.Windows.Forms.Form).Assembly.GetType ("System.Windows.Forms." + c.LocalName);
-					var obj = ct != null ? Activator.CreateInstance (ct) : ApplicationUIHost.Create (c.LocalName);
+					object obj;
+					if (c.LocalName.Contains ('.')) {
+						// special cases
+						switch (c.LocalName) {
+						case "ListViewGroup.WithConstructorArguments":
+							obj = Deserialize (root, c.InnerText, typeof (ListViewGroup));
+							break;
+						default:
+							throw new NotImplementedException ();
+						}
+					}
+					else
+						obj = CreateObject (c.LocalName);
 
 					// optionally call ISupportInitialize. It is not strictly the same as designer generated code, but still hopefully works...
 					var isi = obj as ISupportInitialize;
