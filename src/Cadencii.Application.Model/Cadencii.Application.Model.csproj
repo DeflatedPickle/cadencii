@@ -374,5 +374,13 @@
       <LogicalName>FormMidiImExport.xml</LogicalName>
       <DependentUpon>FormMidiImExport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormMixerUi.xml">
+      <LogicalName>FormMixerUi.xml</LogicalName>
+      <DependentUpon>FormMixerUi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormNoteExpressionConfig.xml">
+      <LogicalName>FormNoteExpressionConfig.xml</LogicalName>
+      <DependentUpon>FormNoteExpressionConfig.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

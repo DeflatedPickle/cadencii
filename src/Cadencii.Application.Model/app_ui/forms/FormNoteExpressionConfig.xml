@@ -1,0 +1,412 @@
+﻿<Form id="FormNoteExpressionConfig"
+            
+            AcceptButton = "#btnOK"
+            AutoScaleDimensions = "(6, 12)"
+            AutoScaleMode = "Font"
+            CancelButton = "#btnCancel"
+            ClientSize = "(390, 514)"
+            MaximizeBox = "false"
+            MaximumSize = "(6000, 6000)"
+            MinimizeBox = "false"
+            Name = "FormNoteExpressionConfig"
+            ShowIcon = "false"
+            ShowInTaskbar = "false"
+            StartPosition = "Manual"
+            Text = "Default Singer Style"
+            >
+	<FlowLayoutPanel id="flowLayoutPanel"
+            
+            AutoSize = "true"
+            AutoSizeMode = "GrowAndShrink"
+            FlowDirection = "TopDown"
+            Location = "(9, 9)"
+            Margin = "(0)"
+            Name = "flowLayoutPanel"
+            Size = "(373, 418)"
+            TabIndex = "18"
+            >
+		<GroupBox id="groupPitchControl"
+            
+            Location = "(3, 38)"
+            Name = "groupPitchControl"
+            Size = "(367, 130)"
+            TabIndex = "0"
+            TabStop = "false"
+            Text = "Pitch Control (VOCALOID2)"
+            >
+				<Label id="label5"
+            
+            AutoSize = "true"
+            Location = "(345, 42)"
+            Name = "label5"
+            Size = "(11, 12)"
+            TabIndex = "9"
+            Text = "%"
+            />
+            
+                <Label id="label4"
+            
+            AutoSize = "true"
+            Location = "(345, 16)"
+            Name = "label4"
+            Size = "(11, 12)"
+            TabIndex = "8"
+            Text = "%"
+            />
+            
+                <NumberTextBox id="txtBendLength"
+            
+            BackColor = "$SystemColors.Window"
+            ForeColor = "$SystemColors.WindowText"
+            Location = "(300, 39)"
+            Name = "txtBendLength"
+            Size = "(39, 19)"
+            TabIndex = "5"
+            Text = "0"
+            TextAlign = "Right"
+            Type = "Integer"
+            />
+            
+                <NumberTextBox id="txtBendDepth"
+            
+            BackColor = "$SystemColors.Window"
+            ForeColor = "$SystemColors.WindowText"
+            Location = "(300, 13)"
+            Name = "txtBendDepth"
+            Size = "(39, 19)"
+            TabIndex = "2"
+            Text = "8"
+            TextAlign = "Right"
+            Type = "Integer"
+            />
+            
+                <TrackBar id="trackBendLength"
+            
+            AutoSize = "false"
+            Location = "(138, 40)"
+            Maximum = "100"
+            Name = "trackBendLength"
+            Size = "(156, 18)"
+            TabIndex = "4"
+            TickFrequency = "10"
+            />
+            
+                <TrackBar id="trackBendDepth"
+            
+            AutoSize = "false"
+            Location = "(138, 14)"
+            Maximum = "100"
+            Name = "trackBendDepth"
+            Size = "(156, 18)"
+            TabIndex = "1"
+            TickFrequency = "10"
+            Value = "8"
+            />
+            
+                <CheckBox id="chkDownPortamento"
+            
+            AutoSize = "true"
+            Location = "(20, 96)"
+            Name = "chkDownPortamento"
+            Size = "(224, 16)"
+            TabIndex = "7"
+            Text = "Add portamento in falling movement(&amp;F)"
+            UseVisualStyleBackColor = "true"
+            />
+            
+                <CheckBox id="chkUpPortamento"
+            
+            AutoSize = "true"
+            Location = "(20, 71)"
+            Name = "chkUpPortamento"
+            Size = "(222, 16)"
+            TabIndex = "6"
+            Text = "Add portamento in rising movement(&amp;R)"
+            UseVisualStyleBackColor = "true"
+            />
+            
+                <Label id="lblBendLength"
+            
+            AutoSize = "true"
+            Location = "(20, 46)"
+            Name = "lblBendLength"
+            Size = "(83, 12)"
+            TabIndex = "3"
+            Text = "Bend Length(&amp;L)"
+            />
+            
+                <Label id="lblBendDepth"
+            
+            AutoSize = "true"
+            Location = "(20, 20)"
+            Name = "lblBendDepth"
+            Size = "(81, 12)"
+            TabIndex = "0"
+            Text = "Bend Depth(&amp;B)"
+            />
+    </GroupBox>
+	<GroupBox id="groupDynamicsControl"
+            Location = "(3, 174)"
+            Name = "groupDynamicsControl"
+            Size = "(367, 74)"
+            TabIndex = "1"
+            TabStop = "false"
+            Text = "Dynamics Control (VOCALOID2)"
+            >
+            
+                <Label id="label7"
+            
+            AutoSize = "true"
+            Location = "(345, 46)"
+            Name = "label7"
+            Size = "(11, 12)"
+            TabIndex = "11"
+            Text = "%"
+            />
+            
+                <Label id="label6"
+            
+            AutoSize = "true"
+            Location = "(345, 20)"
+            Name = "label6"
+            Size = "(11, 12)"
+            TabIndex = "10"
+            Text = "%"
+            />
+            
+                <NumberTextBox id="txtAccent"
+            
+            BackColor = "$SystemColors.Window"
+            ForeColor = "$SystemColors.WindowText"
+            Location = "(300, 43)"
+            Name = "txtAccent"
+            Size = "(39, 19)"
+            TabIndex = "13"
+            Text = "50"
+            TextAlign = "Right"
+            Type = "Integer"
+            />
+            
+                <NumberTextBox id="txtDecay"
+            
+            BackColor = "$SystemColors.Window"
+            ForeColor = "$SystemColors.WindowText"
+            Location = "(300, 17)"
+            Name = "txtDecay"
+            Size = "(39, 19)"
+            TabIndex = "10"
+            Text = "50"
+            TextAlign = "Right"
+            Type = "Integer"
+            />
+            
+                <TrackBar id="trackAccent"
+            
+            AutoSize = "false"
+            Location = "(138, 44)"
+            Maximum = "100"
+            Name = "trackAccent"
+            Size = "(156, 18)"
+            TabIndex = "12"
+            TickFrequency = "10"
+            Value = "50"
+            />
+            
+                <TrackBar id="trackDecay"
+            
+            AutoSize = "false"
+            Location = "(138, 18)"
+            Maximum = "100"
+            Name = "trackDecay"
+            Size = "(156, 18)"
+            TabIndex = "9"
+            TickFrequency = "10"
+            Value = "50"
+            />
+            
+                <Label id="lblAccent"
+            
+            AutoSize = "true"
+            Location = "(18, 50)"
+            Name = "lblAccent"
+            Size = "(57, 12)"
+            TabIndex = "11"
+            Text = "Accent(&amp;A)"
+            />
+            
+                <Label id="lblDecay"
+            
+            AutoSize = "true"
+            Location = "(18, 24)"
+            Name = "lblDecay"
+            Size = "(53, 12)"
+            TabIndex = "8"
+            Text = "Decay(&amp;D)"
+            />
+	</GroupBox>
+            
+    <GroupBox id="groupAttack"
+            
+            Location = "(3, 254)"
+            Name = "groupAttack"
+            Size = "(367, 107)"
+            TabIndex = "17"
+            TabStop = "false"
+            Text = "Attack (VOCALOID1)"
+            >
+                <Label id="lblAttackTemplate"
+            
+            AutoSize = "true"
+            Location = "(18, 23)"
+            Name = "lblAttackTemplate"
+            Size = "(105, 12)"
+            TabIndex = "2"
+            Text = "Attack Variation(&amp;V)"
+            />
+            
+                <ComboBox id="comboAttackTemplate"
+            
+            FormattingEnabled = "true"
+            Location = "(143, 20)"
+            Name = "comboAttackTemplate"
+            Size = "(121, 20)"
+            TabIndex = "0"
+            Text = "[Non Attack]"
+            />
+            
+                <NumberTextBox id="txtDepth"
+            
+            BackColor = "$SystemColors.Window"
+            ForeColor = "$SystemColors.WindowText"
+            Location = "(300, 72)"
+            Name = "txtDepth"
+            Size = "(39, 19)"
+            TabIndex = "13"
+            Text = "64"
+            TextAlign = "Right"
+            Type = "Integer"
+            />
+            
+                <NumberTextBox id="txtDuration"
+            
+            BackColor = "$SystemColors.Window"
+            ForeColor = "$SystemColors.WindowText"
+            Location = "(300, 46)"
+            Name = "txtDuration"
+            Size = "(39, 19)"
+            TabIndex = "10"
+            Text = "64"
+            TextAlign = "Right"
+            Type = "Integer"
+            />
+            
+                <TrackBar id="trackDepth"
+            
+            AutoSize = "false"
+            Location = "(138, 69)"
+            Maximum = "127"
+            Name = "trackDepth"
+            Size = "(156, 18)"
+            TabIndex = "12"
+            TickFrequency = "10"
+            Value = "64"
+            />
+            
+                <TrackBar id="trackDuration"
+            
+            AutoSize = "false"
+            Location = "(138, 43)"
+            Maximum = "127"
+            Name = "trackDuration"
+            Size = "(156, 18)"
+            TabIndex = "9"
+            TickFrequency = "10"
+            Value = "64"
+            />
+            
+                <Label id="lblDepth"
+            
+            AutoSize = "true"
+            Location = "(18, 75)"
+            Name = "lblDepth"
+            Size = "(51, 12)"
+            TabIndex = "11"
+            Text = "Depth(&amp;D)"
+            />
+            
+                <Label id="lblDuration"
+            
+            AutoSize = "true"
+            Location = "(18, 49)"
+            Name = "lblDuration"
+            Size = "(64, 12)"
+            TabIndex = "8"
+            Text = "Duration(&amp;D)"
+            />
+	</GroupBox>
+	<Panel id="panelVocaloid2Template"
+            
+            Location = "(3, 3)"
+            Name = "panelVocaloid2Template"
+            Size = "(367, 29)"
+            TabIndex = "19"
+            >
+            <ComboBox id="comboTemplate"
+            
+            FormattingEnabled = "true"
+	            Location = "(242, 3)"
+            Name = "comboTemplate"
+            Size = "(121, 20)"
+            TabIndex = "0"
+            Text = "[Select a template]"
+            >
+	            <_Items>
+		            <String>[Select a template]</String>
+		            <String>normal</String>
+		            <String>accent</String>
+		            <String>strong accent</String>
+		            <String>legato</String>
+		            <String>slow legato</String>
+	            </_Items>
+            </ComboBox>
+                <Label id="lblTemplate"
+            
+            AutoSize = "true"
+            Location = "(165, 6)"
+            Name = "lblTemplate"
+            Size = "(67, 12)"
+            TabIndex = "2"
+            Text = "Template(&amp;T)"
+            />
+            </Panel>
+		<Panel id="panelButtons"
+            Location = "(3, 367)"
+            Name = "panelButtons"
+            Size = "(367, 48)"
+            TabIndex = "19"
+            >
+                <Button id="btnCancel"
+            
+            Anchor = "Top,Right"
+            DialogResult = "Cancel"
+            Location = "(285, 12)"
+            Name = "btnCancel"
+            Size = "(78, 23)"
+            TabIndex = "16"
+            Text = "Cancel"
+            UseVisualStyleBackColor = "true"
+            />
+                <Button id="btnOK"
+            
+            Anchor = "Top,Right"
+            Location = "(198, 12)"
+            Name = "btnOK"
+            Size = "(78, 23)"
+            TabIndex = "15"
+            Text = "OK"
+            UseVisualStyleBackColor = "true"
+            />
+            
+		</Panel>
+    </FlowLayoutPanel>
+</Form>

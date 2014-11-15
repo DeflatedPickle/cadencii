@@ -1,0 +1,67 @@
+﻿<Form id="FormMixer"
+            AutoScaleMode = "None"
+            BackColor = "$(180,180,180)"
+            ClientSize = "(170, 304)"
+            DoubleBuffered = "true"
+            MainMenuStrip = "#menuMain"
+            MaximizeBox = "false"
+            MinimizeBox = "false"
+            Name = "FormMixer"
+            ShowInTaskbar = "false"
+            Text = "Mixer"
+            >
+    <MenuStrip id="menuMain"
+            Location = "(0, 0)"
+            Name = "menuMain"
+            Size = "(170, 26)"
+            TabIndex = "1"
+            Text = "menuStrip1"
+            Visible = "false"
+            >
+        <_Items>
+	        <ToolStripMenuItem id="menuVisual"
+
+            Name = "menuVisual"
+            Size = "(57, 22)"
+            Text = "表示(&amp;V)"
+            >
+    	        <_DropDownItems>
+        	    	<ToolStripMenuItem id="menuVisualReturn"
+
+			            Name = "menuVisualReturn"
+			            ShortcutKeys = "F3"
+			            Size = "(177, 22)"
+			            Text = "エディタ画面へ戻る"
+			            />
+	            </_DropDownItems>
+            </ToolStripMenuItem>
+		</_Items>
+	</MenuStrip>
+	<Panel id="panelSlaves"
+
+            Location = "(0, 0)"
+            Margin = "(0)"
+            Name = "panelSlaves"
+            Size = "(85, 284)"
+            TabIndex = "6"
+		/>
+    <HScrollBar id="hScroll"
+
+            LargeChange = "2"
+            Location = "(0, 284)"
+            Maximum = "1"
+            Name = "hScroll"
+            Size = "(85, 19)"
+            TabIndex = "0"
+        />
+	<VolumeTracker id="volumeMaster"
+
+            BackColor = "$(180,180,180)"
+            BorderStyle = "FixedSingle"
+            Location = "(85, 0)"
+            Margin = "(0)"
+            Name = "volumeMaster"
+            Size = "(85, 284)"
+            TabIndex = "5"
+            />
+ </Form>

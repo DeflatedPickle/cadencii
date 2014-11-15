@@ -22,7 +22,7 @@ namespace Cadencii.Gui.Toolkit
 	public class FormImpl : System.Windows.Forms.Form, UiForm
  	{
 		AutoScaleMode UiForm.AutoScaleMode {
-			get { return (AutoScaleMode)AutoScaleMode; }
+			get { return (AutoScaleMode)AutoScaleMode;  }
 			set { AutoScaleMode = (System.Windows.Forms.AutoScaleMode)value; }
 		}
 

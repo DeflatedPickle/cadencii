@@ -48,8 +48,14 @@ namespace Cadencii.Application.Forms
 		object Deserialize (Control root, string value, Type t)
 		{
 			if (value.FirstOrDefault () == '$') {
-				if (t == typeof (System.Drawing.Color))
-					return typeof (System.Drawing.Color).GetProperty (value.Substring (1)).GetValue (null);
+				if (t == typeof (System.Drawing.Color)) {
+					if (value [1] == '(')
+						return typeof (System.Drawing.Color).GetMethods ().First (m => m.Name == "FromArgb").Invoke (null, value.Substring (2, value.Length - 3).Split (',').Select (tk => int.Parse (tk)).Cast<object> ().ToArray ());
+					else if (value.StartsWith ("$SystemColors"))
+						return typeof (System.Drawing.SystemColors).GetProperty (value.Substring (value.IndexOf ('.') + 1)).GetValue (null);
+					else
+						return typeof (System.Drawing.Color).GetProperty (value.Substring (1)).GetValue (null);
+				}
 				else
 					throw new NotSupportedException ();
 			}
@@ -98,7 +104,8 @@ namespace Cadencii.Application.Forms
 						default:
 							throw new NotImplementedException ();
 						}
-					}
+					} else if (c.LocalName == "String")
+						obj = c.InnerText;
 					else
 						obj = CreateObject (c.LocalName);
 
@@ -110,7 +117,9 @@ namespace Cadencii.Application.Forms
 					if (obj is GroupBox)
 						((Control) obj).SuspendLayout ();
 
-					ApplyXml (root, c, obj, false);
+					if (!(c is string))
+						ApplyXml (root, c, obj, false);
+
 					if (asCollection)
 						o.GetType ().GetMethods ().First (m => m.Name == "Add" && m.GetParameters ().First ().ParameterType.IsAssignableFrom (obj.GetType ())).Invoke (o, new object [] {obj});
 					else

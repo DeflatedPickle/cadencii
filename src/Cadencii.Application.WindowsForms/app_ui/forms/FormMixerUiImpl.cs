@@ -33,6 +33,11 @@ namespace Cadencii.Application.Forms
 
 	public class FormMixerUiImpl : FormImpl, FormMixerUi
     {
+		// it hides protected Control.DoubleBuffered.
+		public new bool DoubleBuffered { 
+			get { return base.DoubleBuffered; }
+			set { base.DoubleBuffered = value; }
+		}
 
         private FormMainImpl m_parent;
         private List<VolumeTracker> m_tracker = null;
@@ -543,78 +548,7 @@ namespace Cadencii.Application.Forms
             this.volumeMaster = new VolumeTrackerImpl();
             this.menuMain.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuMain
-            // 
-            this.menuMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuVisual});
-            this.menuMain.Location = new System.Drawing.Point(0, 0);
-            this.menuMain.Name = "menuMain";
-            this.menuMain.Size = new System.Drawing.Size(170, 26);
-            this.menuMain.TabIndex = 1;
-            this.menuMain.Text = "menuStrip1";
-            this.menuMain.Visible = false;
-            // 
-            // menuVisual
-            // 
-            this.menuVisual.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuVisualReturn});
-            this.menuVisual.Name = "menuVisual";
-            this.menuVisual.Size = new System.Drawing.Size(57, 22);
-            this.menuVisual.Text = "表示(&V)";
-            // 
-            // menuVisualReturn
-            // 
-            this.menuVisualReturn.Name = "menuVisualReturn";
-            this.menuVisualReturn.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.menuVisualReturn.Size = new System.Drawing.Size(177, 22);
-            this.menuVisualReturn.Text = "エディタ画面へ戻る";
-            // 
-            // panelSlaves
-            // 
-            this.panelSlaves.Location = new System.Drawing.Point(0, 0);
-            this.panelSlaves.Margin = new System.Windows.Forms.Padding(0);
-            this.panelSlaves.Name = "panelSlaves";
-            this.panelSlaves.Size = new System.Drawing.Size(85, 284);
-            this.panelSlaves.TabIndex = 6;
-            // 
-            // hScroll
-            // 
-            this.hScroll.LargeChange = 2;
-            this.hScroll.Location = new System.Drawing.Point(0, 284);
-            this.hScroll.Maximum = 1;
-            this.hScroll.Name = "hScroll";
-            this.hScroll.Size = new System.Drawing.Size(85, 19);
-            this.hScroll.TabIndex = 0;
-            // 
-            // volumeMaster
-            // 
-            this.volumeMaster.BackColor = new Cadencii.Gui.Color(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.volumeMaster.BorderStyle = Cadencii.Gui.Toolkit.BorderStyle.FixedSingle;
-            this.volumeMaster.Location = new Cadencii.Gui.Point(85, 0);
-            this.volumeMaster.Margin = new Cadencii.Gui.Toolkit.Padding(0);
-            this.volumeMaster.Name = "volumeMaster";
-            this.volumeMaster.Size = new Cadencii.Gui.Dimension(85, 284);
-            this.volumeMaster.TabIndex = 5;
-            // 
-            // FormMixer
-            // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.ClientSize = new System.Drawing.Size(170, 304);
-            this.Controls.Add(this.hScroll);
-            this.Controls.Add(this.panelSlaves);
-            this.Controls.Add((Control)this.volumeMaster.Native);
-            this.Controls.Add(this.menuMain);
-            this.DoubleBuffered = true;
-            this.MainMenuStrip = this.menuMain;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FormMixer";
-            this.ShowInTaskbar = false;
-            this.Text = "Mixer";
-            this.menuMain.ResumeLayout(false);
-            this.menuMain.PerformLayout();
+			ApplicationUIHost.Instance.ApplyXml (this, "FormMixerUi.xml");
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -626,7 +560,7 @@ namespace Cadencii.Application.Forms
         private ToolStripMenuItem menuVisual;
         private ToolStripMenuItem menuVisualReturn;
         private VolumeTracker volumeMaster;
-        private UserControl panelSlaves;
+        private Control panelSlaves;
         private HScrollBar hScroll;
         #endregion
         #endregion
