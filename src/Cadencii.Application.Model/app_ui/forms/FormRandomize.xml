@@ -1,0 +1,236 @@
+﻿<Form id="FormRandomize"
+            
+            AcceptButton = "#btnOK"
+            AutoScaleDimensions = "(96, 96)"
+            AutoScaleMode = "Dpi"
+            CancelButton = "#btnCancel"
+            ClientSize = "(347, 286)"
+            FormBorderStyle = "FixedDialog"
+            MaximizeBox = "false"
+            MinimizeBox = "false"
+            Name = "FormRandomize"
+            ShowIcon = "false"
+            ShowInTaskbar = "false"
+            StartPosition = "Manual"
+            Text = "Randomize"
+            >
+<Label id="lblStart"
+            
+            Location = "(12, 26)"
+            Name = "lblStart"
+            Size = "(35, 17)"
+            TabIndex = "2"
+            Text = "start"
+            TextAlign = "TopRight"
+            />
+<Label id="lblStartBar"
+            AutoSize = "true"
+            Location = "(58, 9)"
+            Name = "lblStartBar"
+            Size = "(21, 12)"
+            TabIndex = "3"
+            Text = "bar"
+            />
+<Label id="lblStartBeat"            
+            AutoSize = "true"
+            Location = "(116, 9)"
+            Name = "lblStartBeat"
+            Size = "(27, 12)"
+            TabIndex = "5"
+            Text = "beat"
+            />
+<Label id="bLabel1"            
+            AutoSize = "true"
+            Location = "(173, 26)"
+            Name = "bLabel1"
+            Size = "(11, 12)"
+            TabIndex = "6"
+            Text = "-"
+            />
+<Label id="lblEndBeat"            
+            AutoSize = "true"
+            Location = "(285, 9)"
+            Name = "lblEndBeat"
+            Size = "(27, 12)"
+            TabIndex = "11"
+            Text = "beat"
+            />
+<Label id="lblEndBar"
+            AutoSize = "true"
+            Location = "(225, 9)"
+            Name = "lblEndBar"
+            Size = "(21, 12)"
+            TabIndex = "9"
+            Text = "bar"
+            />
+<Label id="lblEnd"
+            Location = "(190, 26)"
+            Name = "lblEnd"
+            Size = "(26, 17)"
+            TabIndex = "8"
+            Text = "end"
+            TextAlign = "TopRight"
+            />
+<CheckBox id="chkShift"            
+            AutoSize = "true"
+            CheckAlign = "MiddleRight"
+            Checked = "true"
+            CheckState = "Checked"
+            Location = "(14, 70)"
+            Name = "chkShift"
+            Size = "(76, 16)"
+            TabIndex = "12"
+            Text = "Note Shift"
+            UseVisualStyleBackColor = "true"
+            />
+<Label id="lblShiftValue"
+            AutoSize = "true"
+            Location = "(51, 98)"
+            Name = "lblShiftValue"
+            Size = "(34, 12)"
+            TabIndex = "13"
+            Text = "Value"
+            />
+<ComboBox id="comboShiftValue"
+            FormattingEnabled = "true"
+            Location = "(103, 95)"
+            Name = "comboShiftValue"
+            Size = "(218, 20)"
+            TabIndex = "14"
+            >
+	<_Items>
+            <String>1(small)</String>
+            <String>2</String>
+            <String>3(medium)</String>
+            <String>4</String>
+            <String>5(large)</String>
+	</_Items>
+</ComboBox>
+<ComboBox id="comboPitPattern"
+            
+            FormattingEnabled = "true"
+            Location = "(103, 173)"
+            Name = "comboPitPattern"
+            Size = "(218, 20)"
+            TabIndex = "17"
+            >
+	<_Items>
+            <String>Pattern 1</String>
+            <String>Pattern 2</String>
+            <String>Pattern 3</String>
+	</_Items>
+</ComboBox>
+<Label id="lblPitPattern"
+            
+            AutoSize = "true"
+            Location = "(51, 176)"
+            Name = "lblPitPattern"
+            Size = "(42, 12)"
+            TabIndex = "16"
+            Text = "Pattern"
+            />
+<CheckBox id="chkPit"
+            
+            AutoSize = "true"
+            CheckAlign = "MiddleRight"
+            Checked = "true"
+            CheckState = "Checked"
+            Location = "(14, 148)"
+            Name = "chkPit"
+            Size = "(111, 16)"
+            TabIndex = "15"
+            Text = "Pitch Fluctuation"
+            UseVisualStyleBackColor = "true"
+            />
+<ComboBox id="comboPitValue"
+            
+            FormattingEnabled = "true"
+            Location = "(103, 199)"
+            Name = "comboPitValue"
+            Size = "(218, 20)"
+            TabIndex = "19"
+            >
+	<_Items>
+            <String>1(small)</String>
+            <String>2</String>
+            <String>3(medium)</String>
+            <String>4</String>
+            <String>5(large)</String>
+	</_Items>
+</ComboBox>
+<Label id="lblPitValue"            
+            AutoSize = "true"
+            Location = "(51, 202)"
+            Name = "lblPitValue"
+            Size = "(34, 12)"
+            TabIndex = "18"
+            Text = "Value"
+            />
+<Label id="lblResolution"
+            Location = "(175, 149)"
+            Name = "lblResolution"
+            Size = "(86, 15)"
+            TabIndex = "20"
+            Text = "Resolution"
+            TextAlign = "MiddleRight"
+            />
+<Button id="btnCancel"
+            DialogResult = "Cancel"
+            Location = "(246, 246)"
+            Name = "btnCancel"
+            Size = "(75, 23)"
+            TabIndex = "23"
+            Text = "Cancel"
+            UseVisualStyleBackColor = "true"
+            />
+<Button id="btnOK"
+            Location = "(165, 246)"
+            Name = "btnOK"
+            Size = "(75, 23)"
+            TabIndex = "22"
+            Text = "OK"
+            UseVisualStyleBackColor = "true"
+            />
+<NumericUpDownEx id="numResolution"
+            
+            Location = "(267, 147)"
+            Maximum = "30"
+            Minimum = "1"
+            Name = "numResolution"
+            Size = "(54, 19)"
+            TabIndex = "21"
+            Value = "5"
+            />
+<NumericUpDownEx id="numEndBeat"
+            
+            Location = "(282, 24)"
+            Name = "numEndBeat"
+            Size = "(54, 19)"
+            TabIndex = "10"
+            Value = "1"
+            />
+<NumericUpDownEx id="numEndBar"
+            
+            Location = "(222, 24)"
+            Maximum = "2147483647"
+            Name = "numEndBar"
+            Size = "(54, 19)"
+            TabIndex = "7"
+            Value = "2"
+            />
+<NumericUpDownEx id="numStartBeat"            
+            Location = "(113, 24)"
+            Name = "numStartBeat"
+            Size = "(54, 19)"
+            TabIndex = "4"
+            Value = "1"
+            />
+<NumericUpDownEx id="numStartBar"
+            
+            Location = "(53, 24)"
+            Name = "numStartBar"
+            Size = "(54, 19)"
+            TabIndex = "1"
+            Value = "1"
+            />
+</Form>

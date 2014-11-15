@@ -193,8 +193,9 @@
     <Compile Include="app_ui\forms\FormMidiImExport.cs" />
     <Compile Include="app_ui\forms\FormMixerUi.cs" />
     <Compile Include="app_ui\forms\FormNoteExpressionConfig.cs" />
-    <Compile Include="app_ui\forms\FormNotePropertyController.cs" />
-    <Compile Include="app_ui\forms\FormNotePropertyUiListener.cs" />
+    <Compile Include="app_ui\forms\FormNotePropertyController.cs">
+      <DependentUpon>FormNoteProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="app_ui\forms\FormRandomize.cs" />
     <Compile Include="app_ui\forms\FormRealtimeConfig.cs" />
     <Compile Include="app_ui\forms\FormSequenceConfig.cs" />
@@ -263,6 +264,9 @@
     <Compile Include="ui_abstraction\CommandExecuteRequiredEventHandler.cs" />
     <Compile Include="app_ui\forms\FormMain.cs" />
     <Compile Include="app_ui\forms\FormNoteProperty.cs" />
+    <Compile Include="app_ui\forms\FormNotePropertyListener.cs">
+      <DependentUpon>FormNoteProperty.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -381,6 +385,14 @@
     <EmbeddedResource Include="app_ui\forms\FormNoteExpressionConfig.xml">
       <LogicalName>FormNoteExpressionConfig.xml</LogicalName>
       <DependentUpon>FormNoteExpressionConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormNoteProperty.xml">
+      <LogicalName>FormNoteProperty.xml</LogicalName>
+      <DependentUpon>FormNoteProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormRandomize.xml">
+      <LogicalName>FormRandomize.xml</LogicalName>
+      <DependentUpon>FormRandomize.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

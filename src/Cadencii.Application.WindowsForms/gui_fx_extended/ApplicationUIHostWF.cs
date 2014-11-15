@@ -117,7 +117,7 @@ namespace Cadencii.Application.Forms
 					if (obj is GroupBox)
 						((Control) obj).SuspendLayout ();
 
-					if (!(c is string))
+					if (!(obj is string))
 						ApplyXml (root, c, obj, false);
 
 					if (asCollection)

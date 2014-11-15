@@ -19,7 +19,7 @@ using Keys = Cadencii.Gui.Toolkit.Keys;
 namespace Cadencii.Application.Forms
 {
 
-    public class FormNotePropertyController : FormNotePropertyUiListener
+    public class FormNotePropertyController : FormNotePropertyListener
     {
         private bool mPreviousAlwaysOnTop;
         private UiFormNoteProperty ui;

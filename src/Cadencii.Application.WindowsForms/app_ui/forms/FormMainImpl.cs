@@ -204,7 +204,7 @@ namespace Cadencii.Application.Forms
 
 #if ENABLE_PROPERTY
             EditorManager.propertyPanel = new PropertyPanelImpl();
-            EditorManager.propertyWindow = new FormNotePropertyController(c => new FormNotePropertyUiImpl(c), this);
+            EditorManager.propertyWindow = new FormNotePropertyController(c => new FormNotePropertyImpl(c), this);
             EditorManager.propertyWindow.getUi().addComponent(EditorManager.propertyPanel);
 #endif
 

@@ -1,0 +1,45 @@
+﻿<Form id="FormNotePropertyUiImpl"
+            
+            AutoScaleDimensions = "(6, 12)"
+            AutoScaleMode = "Font"
+            BackColor = "$SystemColors.Control"
+            ClientSize = "(188, 291)"
+            KeyPreview = "true"
+            MainMenuStrip = "#menuStrip"
+            MaximizeBox = "false"
+            Name = "FormNotePropertyUiImpl"
+            ShowIcon = "false"
+            ShowInTaskbar = "false"
+            StartPosition = "Manual"
+            Text = "Note Property"
+            TopMost = "true"
+            >
+    <MenuStrip id="menuStrip"            
+            Location = "(0, 0)"
+            Name = "menuStrip"
+            Size = "(188, 24)"
+            TabIndex = "1"
+            Text = "menuStrip1"
+            Visible = "false"
+            >
+        <_Items>
+            
+            <ToolStripMenuItem id="menuWindow"
+            
+	            Name = "menuWindow"
+	            Size = "(72, 20)"
+	            Text = "Window(&amp;W)"
+	            >
+	            <_DropDownItems>
+	            
+		            <ToolStripMenuItem id="menuClose"
+		            
+		            Name = "menuClose"
+		            Size = "(115, 22)"
+		            Text = "Close(&amp;C)"
+		            />
+		        </_DropDownItems>
+			</ToolStripMenuItem>
+        </_Items>
+	</MenuStrip>
+</Form>

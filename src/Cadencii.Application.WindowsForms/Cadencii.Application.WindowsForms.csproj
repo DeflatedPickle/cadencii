@@ -123,7 +123,6 @@
     <Compile Include="app_ui\forms\FormMidiImExportImpl.cs" />
     <Compile Include="app_ui\forms\FormMixerUiImpl.cs" />
     <Compile Include="app_ui\forms\FormNoteExpressionConfigImpl.cs" />
-    <Compile Include="app_ui\forms\FormNotePropertyUiImpl.cs" />
     <Compile Include="app_ui\forms\FormRandomizeImpl.cs" />
     <Compile Include="app_ui\forms\FormRealtimeConfigImpl.cs" />
     <Compile Include="app_ui\forms\FormSequenceConfigImpl.cs" />
@@ -172,6 +171,7 @@
     <Compile Include="app_ui\forms\FormMainImpl.Designer.cs">
       <DependentUpon>FormMainImpl.cs</DependentUpon>
     </Compile>
+    <Compile Include="app_ui\forms\FormNotePropertyImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />

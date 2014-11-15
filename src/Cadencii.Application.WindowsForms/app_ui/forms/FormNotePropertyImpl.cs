@@ -23,12 +23,12 @@ using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application.Forms
 {
-    public class FormNotePropertyUiImpl : FormImpl, UiFormNoteProperty
+    public class FormNotePropertyImpl : FormImpl, UiFormNoteProperty
     {
-        private FormNotePropertyUiListener listener;
+        private FormNotePropertyListener listener;
         protected System.Windows.Forms.FormWindowState lastWindowState = System.Windows.Forms.FormWindowState.Normal;
 
-        public FormNotePropertyUiImpl(FormNotePropertyUiListener listener)
+        public FormNotePropertyImpl(FormNotePropertyListener listener)
         {
             this.listener = listener;
             InitializeComponent();
@@ -187,62 +187,16 @@ namespace Cadencii.Application.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.menuWindow = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuClose = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStrip
-            // 
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuWindow});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(188, 24);
-            this.menuStrip.TabIndex = 1;
-            this.menuStrip.Text = "menuStrip1";
-            this.menuStrip.Visible = false;
-            // 
-            // menuWindow
-            // 
-            this.menuWindow.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuClose});
-            this.menuWindow.Name = "menuWindow";
-            this.menuWindow.Size = new System.Drawing.Size(72, 20);
-            this.menuWindow.Text = "Window(&W)";
-            // 
-            // menuClose
-            // 
-            this.menuClose.Name = "menuClose";
-            this.menuClose.Size = new System.Drawing.Size(115, 22);
-            this.menuClose.Text = "Close(&C)";
-            this.menuClose.Click += new System.EventHandler(this.menuClose_Click);
-            // 
-            // FormNotePropertyUiImpl
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(188, 291);
-            this.Controls.Add(this.menuStrip);
-            this.KeyPreview = true;
-            this.MainMenuStrip = this.menuStrip;
-            this.MaximizeBox = false;
-            this.Name = "FormNotePropertyUiImpl";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Note Property";
-            this.TopMost = true;
-            this.Load += new System.EventHandler(this.FormNotePropertyUiImpl_Load);
-            this.SizeChanged += new System.EventHandler(this.FormNotePropertyUiImpl_SizeChanged);
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormNotePropertyUiImpl_FormClosing);
-            this.LocationChanged += new System.EventHandler(this.FormNotePropertyUiImpl_LocationChanged);
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
+			ApplicationUIHost.Instance.ApplyXml (this, "FormNoteProperty.xml");
             this.ResumeLayout(false);
             this.PerformLayout();
+
+			Load += new System.EventHandler (FormNotePropertyUiImpl_Load);
+			SizeChanged += new System.EventHandler (FormNotePropertyUiImpl_SizeChanged);
+			FormClosing += new System.Windows.Forms.FormClosingEventHandler (FormNotePropertyUiImpl_FormClosing);
+			LocationChanged += new System.EventHandler (FormNotePropertyUiImpl_LocationChanged);
+			menuClose.Click += new System.EventHandler (menuClose_Click);
 
         }
 

@@ -14,7 +14,7 @@
 namespace Cadencii.Application.Forms
 {
 
-    public interface FormNotePropertyUiListener
+    public interface FormNotePropertyListener
     {
         /// <summary>
         /// ウィンドウの読み込みが完了したとき呼ばれる
