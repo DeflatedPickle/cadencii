@@ -85,14 +85,19 @@ namespace Cadencii.Application.Forms
 			return obj;
 		}
 
+		void AddToCollection (object c, object obj)
+		{
+			c.GetType ().GetMethods ().First (m => m.Name == "Add" && m.GetParameters ().First ().ParameterType.IsAssignableFrom (obj.GetType ())).Invoke (c, new object [] { obj });
+		}
+
 		void ApplyXml (Control root, XmlElement e, object o, bool asCollection)
 		{
 			var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
 			foreach (XmlElement c in e.SelectNodes ("*")) {
 				if (c.LocalName.First () == '_') {
-					// collection property
+					// get property, can be collection ("MenuStrip.Items") or non-collection ("SplitContainer.Panel1")
 					var pv = o.GetType ().GetProperty (c.LocalName.Substring (1), bf).GetValue (o);
-					ApplyXml (root, c, pv, true);
+					ApplyXml (root, c, pv, pv is System.Collections.ICollection);
 				} else {
 					object obj;
 					if (c.LocalName.Contains ('.')) {
@@ -121,7 +126,7 @@ namespace Cadencii.Application.Forms
 						ApplyXml (root, c, obj, false);
 
 					if (asCollection)
-						o.GetType ().GetMethods ().First (m => m.Name == "Add" && m.GetParameters ().First ().ParameterType.IsAssignableFrom (obj.GetType ())).Invoke (o, new object [] {obj});
+						AddToCollection (o, obj);
 					else
 						((Control) o).Controls.Add ((Control) obj);
 

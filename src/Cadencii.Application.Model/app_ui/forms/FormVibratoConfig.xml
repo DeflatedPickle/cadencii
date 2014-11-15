@@ -1,0 +1,140 @@
+﻿<Form id="FormVibratoConfig"
+
+            AcceptButton = "#btnOK"
+            AutoScaleDimensions = "(6, 12)"
+            AutoScaleMode = "Font"
+            CancelButton = "#btnCancel"
+            ClientSize = "(327, 164)"
+            FormBorderStyle = "FixedDialog"
+            MaximizeBox = "false"
+            MinimizeBox = "false"
+            Name = "FormVibratoConfig"
+            ShowIcon = "false"
+            ShowInTaskbar = "false"
+            StartPosition = "Manual"
+            Text = "Vibrato property"
+            >
+
+<Label id="lblVibratoLength"
+
+            AutoSize = "true"
+            Location = "(12, 15)"
+            Name = "lblVibratoLength"
+            Size = "(94, 12)"
+            TabIndex = "0"
+            Text = "Vibrato Length(&amp;L)"
+            />
+
+<Label id="lblVibratoType"
+
+            AutoSize = "true"
+            Location = "(12, 39)"
+            Name = "lblVibratoType"
+            Size = "(86, 12)"
+            TabIndex = "1"
+            Text = "Vibrato Type(&amp;T)"
+            />
+
+    <NumberTextBox id="txtVibratoLength"
+
+            Enabled = "false"
+            Location = "(143, 12)"
+            Name = "txtVibratoLength"
+            Size = "(61, 19)"
+            TabIndex = "2"
+            Type = "Integer"
+            />
+
+    <Label id="label3"
+
+            AutoSize = "true"
+            Location = "(210, 15)"
+            Name = "label3"
+            Size = "(49, 12)"
+            TabIndex = "3"
+            Text = "%(0-100)"
+            />
+
+    <ComboBox id="comboVibratoType"
+
+            Anchor = "Top,Left,Right"
+            FormattingEnabled = "true"
+            Location = "(143, 36)"
+            Name = "comboVibratoType"
+            Size = "(167, 20)"
+            TabIndex = "4"
+            />
+
+    <Button id="btnCancel"
+
+            Anchor = "Bottom,Right"
+            DialogResult = "Cancel"
+            Location = "(240, 129)"
+            Name = "btnCancel"
+            Size = "(75, 23)"
+            TabIndex = "7"
+            Text = "Cancel"
+            UseVisualStyleBackColor = "true"
+            />
+
+    <Button id="btnOK"
+
+            Anchor = "Bottom,Right"
+            DialogResult = "OK"
+            Location = "(159, 129)"
+            Name = "btnOK"
+            Size = "(75, 23)"
+            TabIndex = "6"
+            Text = "OK"
+            UseVisualStyleBackColor = "true"
+            />
+
+    <GroupBox id="groupSelect"
+
+            Anchor = "Top,Left,Right"
+            Location = "(14, 61)"
+            Name = "groupSelect"
+            Size = "(301, 55)"
+            TabIndex = "9"
+            TabStop = "false"
+            Text = "Select from"
+            >
+
+    <RadioButton id="radioUserDefined"
+
+            AutoSize = "true"
+            Location = "(198, 21)"
+            Name = "radioUserDefined"
+            Size = "(88, 16)"
+            TabIndex = "11"
+            TabStop = "true"
+            Text = "User defined"
+            UseVisualStyleBackColor = "true"
+            />
+
+    <RadioButton id="radioVocaloid2"
+
+            AutoSize = "true"
+            Checked = "true"
+            Location = "(106, 21)"
+            Name = "radioVocaloid2"
+            Size = "(86, 16)"
+            TabIndex = "10"
+            TabStop = "true"
+            Text = "VOCALOID2"
+            UseVisualStyleBackColor = "true"
+            />
+
+    <RadioButton id="radioVocaloid1"
+
+            AutoSize = "true"
+            Location = "(14, 21)"
+            Name = "radioVocaloid1"
+            Size = "(86, 16)"
+            TabIndex = "9"
+            TabStop = "true"
+            Text = "VOCALOID1"
+            UseVisualStyleBackColor = "true"
+            />
+    </GroupBox>
+</Form>

@@ -414,5 +414,13 @@
       <LogicalName>FormTempoConfig.xml</LogicalName>
       <DependentUpon>FormTempoConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormVibratoConfig.xml">
+      <DependentUpon>FormVibratoConfig.cs</DependentUpon>
+      <LogicalName>FormVibratoConfig.xml</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormVibratoPreset.xml">
+      <LogicalName>FormVibratoPreset.xml</LogicalName>
+      <DependentUpon>FormVibratoPreset.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

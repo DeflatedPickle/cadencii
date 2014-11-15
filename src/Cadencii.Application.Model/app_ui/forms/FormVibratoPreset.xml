@@ -1,0 +1,264 @@
+﻿<Form id="FormVibratoPreset"
+    AcceptButton = "#buttonOk"
+    AutoScaleDimensions = "(96, 96)"
+    AutoScaleMode = "Dpi"
+    CancelButton = "#buttonCancel"
+    ClientSize = "(511, 380)"
+    MaximizeBox = "false"
+    MinimizeBox = "false"
+    Name = "FormVibratoPreset"
+    ShowIcon = "false"
+    ShowInTaskbar = "false"
+    StartPosition = "Manual"
+    Text = "Vibrato preset"
+    >
+
+    <ListBox id="listPresets"
+        Anchor = "Top,Bottom,Left"
+        FormattingEnabled = "true"
+        ItemHeight = "12"
+        Location = "(12, 30)"
+        Name = "listPresets"
+        Size = "(165, 232)"
+        TabIndex = "1"
+	    />
+
+    <GroupBox id="groupPreview"
+        Anchor = "Top,Bottom,Left,Right"
+        Location = "(183, 111)"
+        Name = "groupPreview"
+        Size = "(316, 213)"
+        TabIndex = "142"
+        TabStop = "false"
+        Text = "Preview"
+        >
+        <SplitContainer id="splitContainer2"
+
+            Dock = "Fill"
+            IsSplitterFixed = "true"
+            Location = "(3, 15)"
+            Name = "splitContainer2"
+	        Orientation = "Horizontal"
+            Size = "(310, 195)"
+            SplitterDistance = "97"
+            SplitterWidth = "1"
+            TabIndex = "140"
+            >
+	        <_Panel1>
+	            <SplitContainer id="splitContainer1"
+		            Dock = "Fill"
+		            IsSplitterFixed = "true"
+		            Location = "(0, 0)"
+		            Name = "splitContainer1"
+		            Size = "(310, 97)"
+		            SplitterDistance = "148"
+		            SplitterWidth = "1"
+		            TabIndex = "139">
+		            >
+			        <_Panel1>
+			            <PictureBox id="pictureRate"
+				            Anchor = "Top,Bottom,Left,Right"
+				            BorderStyle = "FixedSingle"
+				            Location = "(12, 20)"
+				            Name = "pictureRate"
+				            Size = "(133, 74)"
+				            TabIndex = "135"
+				            TabStop = "false"
+				            />
+
+			            <Label id="labelRateCurve"
+				            AutoSize = "true"
+				            Location = "(10, 5)"
+				            Name = "labelRateCurve"
+				            Size = "(61, 12)"
+				            TabIndex = "136"
+				            Text = "Rate curve"
+				            />
+			        </_Panel1>
+
+			        <_Panel2>
+			            <PictureBox id="pictureDepth"
+				            Anchor = "Top,Bottom,Left,Right"
+				            BorderStyle = "FixedSingle"
+				            Location = "(12, 20)"
+				            Name = "pictureDepth"
+				            Size = "(146, 73)"
+				            TabIndex = "138"
+				            TabStop = "false"
+				            />
+
+			            <Label id="labelDepthCurve"
+				            AutoSize = "true"
+				            Location = "(10, 5)"
+				            Name = "labelDepthCurve"
+				            Size = "(67, 12)"
+				            TabIndex = "137"
+				            Text = "Depth curve"
+				            />
+			        </_Panel2>
+		        </SplitContainer>
+	        </_Panel1>
+	        <_Panel2>
+	            <Label id="labelResulting"
+		            AutoSize = "true"
+		            Location = "(10, 5)"
+		            Name = "labelResulting"
+		            Size = "(110, 12)"
+		            TabIndex = "137"
+		            Text = "Resulting pitch bend"
+		            />
+	            <PictureBox id="pictureResulting"
+		            Anchor = "Top,Bottom,Left,Right"
+		            BorderStyle = "FixedSingle"
+		            Location = "(12, 20)"
+		            Name = "pictureResulting"
+		            Size = "(295, 71)"
+		            TabIndex = "136"
+		            TabStop = "false"
+		            />
+	        </_Panel2>
+        </SplitContainer>
+	</GroupBox>
+    <GroupBox id="groupEdit"
+
+        Anchor = "Top,Left,Right"
+        Location = "(183, 15)"
+        Name = "groupEdit"
+        Size = "(316, 90)"
+        TabIndex = "6"
+        TabStop = "false"
+        Text = "Edit"
+        >
+        <TextBox id="textName"
+
+            Location = "(86, 62)"
+            Name = "textName"
+            Size = "(169, 19)"
+            TabIndex = "9"
+            />
+        <Label id="labelName"
+
+            AutoSize = "true"
+            Location = "(10, 65)"
+            Name = "labelName"
+            Size = "(34, 12)"
+            TabIndex = "133"
+            Text = "Name"
+            />
+        <Label id="labelDepth"
+
+            AutoSize = "true"
+            Location = "(10, 40)"
+            Name = "labelDepth"
+            Size = "(62, 12)"
+            TabIndex = "130"
+            Text = "Start depth"
+            />
+        <NumberTextBox id="textDepth"
+
+            BackColor = "$(240,128,128)"
+            ForeColor = "$White"
+            Location = "(86, 37)"
+            Name = "textDepth"
+            Size = "(72, 19)"
+            TabIndex = "8"
+            Type = "Integer"
+            />
+        <NumberTextBox id="textRate"
+
+            BackColor = "$(240,128,128)"
+            ForeColor = "$White"
+            Location = "(86, 12)"
+            Name = "textRate"
+            Size = "(72, 19)"
+            TabIndex = "7"
+            Type = "Integer"
+            />
+        <Label id="labelRate"
+
+            AutoSize = "true"
+            Location = "(10, 15)"
+            Name = "labelRate"
+            Size = "(54, 12)"
+            TabIndex = "129"
+            Text = "Start rate"
+            />
+
+    </GroupBox>
+    <Label id="labelPresets"
+
+            AutoSize = "true"
+            Location = "(12, 15)"
+            Name = "labelPresets"
+            Size = "(113, 12)"
+            TabIndex = "134"
+            Text = "List of preset vibrato"
+            />
+
+    <Button id="buttonCancel"
+
+            Anchor = "Bottom,Right"
+            DialogResult = "Cancel"
+            Location = "(424, 345)"
+            Name = "buttonCancel"
+            Size = "(75, 23)"
+            TabIndex = "11"
+            Text = "Cancel"
+            UseVisualStyleBackColor = "true"
+            />
+    <Button id="buttonOk"
+
+            Anchor = "Bottom,Right"
+            DialogResult = "OK"
+            Location = "(343, 345)"
+            Name = "buttonOk"
+            Size = "(75, 23)"
+            TabIndex = "10"
+            Text = "OK"
+            UseVisualStyleBackColor = "true"
+            />
+
+    <Button id="buttonRemove"
+
+            Anchor = "Bottom,Left"
+            Location = "(12, 301)"
+            Name = "buttonRemove"
+            Size = "(75, 23)"
+            TabIndex = "3"
+            Text = "Remove"
+            UseVisualStyleBackColor = "true"
+            />
+
+    <Button id="buttonAdd"
+
+            Anchor = "Bottom,Left"
+            Location = "(12, 272)"
+            Name = "buttonAdd"
+            Size = "(75, 23)"
+            TabIndex = "2"
+            Text = "Add"
+            UseVisualStyleBackColor = "true"
+            />
+
+    <Button id="buttonUp"
+
+            Anchor = "Bottom,Left"
+            Location = "(102, 272)"
+            Name = "buttonUp"
+            Size = "(75, 23)"
+            TabIndex = "4"
+            Text = "Up"
+            UseVisualStyleBackColor = "true"
+            />
+
+    <Button id="buttonDown"
+
+            Anchor = "Bottom,Left"
+            Location = "(102, 301)"
+            Name = "buttonDown"
+            Size = "(75, 23)"
+            TabIndex = "5"
+            Text = "Down"
+            UseVisualStyleBackColor = "true"
+            />
+</Form>
