@@ -1,0 +1,202 @@
+﻿<Form id="FormShortcutKeys"
+            
+            AcceptButton = "#btnOK"
+            AutoScaleDimensions = "(6, 12)"
+            AutoScaleMode = "Font"
+            CancelButton = "btnCancel"
+            ClientSize = "(412, 438)"
+            MaximizeBox = "false"
+            MinimizeBox = "false"
+            Name = "FormShortcutKeys"
+            ShowIcon = "false"
+            ShowInTaskbar = "false"
+            StartPosition = "Manual"
+            Text = "Shortcut Config"
+            >
+            
+            <Button id="btnCancel"
+            
+            Anchor = "Bottom,Right"
+            DialogResult = "Cancel"
+            Location = "(325, 403)"
+            Name = "btnCancel"
+            Size = "(75, 23)"
+            TabIndex = "7"
+            Text = "Cancel"
+            UseVisualStyleBackColor = "true"
+            />
+            <Button id="btnOK"
+            
+            Anchor = "Bottom,Right"
+            DialogResult = "OK"
+            Location = "(244, 403)"
+            Name = "btnOK"
+            Size = "(75, 23)"
+            TabIndex = "6"
+            Text = "OK"
+            UseVisualStyleBackColor = "true"
+            />
+            
+            <ListView id="list"
+            
+            Anchor = "Top,Bottom,Left,Right"
+            FullRowSelect = "true"
+            Location = "(36, 76)"
+            MultiSelect = "false"
+            Name = "list"
+            Size = "(364, 182)"
+            TabIndex = "9"
+            UseCompatibleStateImageBehavior = "false"
+            View = "Details"
+            />
+            
+            <Button id="btnLoadDefault"
+            
+            Anchor = "Bottom,Left"
+            Location = "(113, 361)"
+            Name = "btnLoadDefault"
+            Size = "(122, 23)"
+            TabIndex = "11"
+            Text = "Load Default"
+            UseVisualStyleBackColor = "true"
+            />
+            
+            <Button id="btnRevert"
+            
+            Anchor = "Bottom,Left"
+            Location = "(12, 361)"
+            Name = "btnRevert"
+            Size = "(95, 23)"
+            TabIndex = "10"
+            Text = "Revert"
+            UseVisualStyleBackColor = "true"
+            />
+            
+            <Label id="labelCategory"
+            
+            AutoSize = "true"
+            Location = "(12, 12)"
+            Name = "labelCategory"
+            Size = "(51, 12)"
+            TabIndex = "12"
+            Text = "Category"
+            />
+            
+            <ComboBox id="comboCategory"
+            
+            Anchor = "(Top,Left)
+                       ,Right"
+            FormattingEnabled = "true"
+            Location = "(36, 27)"
+            Name = "comboCategory"
+            Size = "(364, 20)"
+            TabIndex = "13"
+            />
+            
+            <Label id="labelCommand"
+            
+            AutoSize = "true"
+            Location = "(12, 61)"
+            Name = "labelCommand"
+            Size = "(55, 12)"
+            TabIndex = "14"
+            Text = "Command"
+            />
+            
+            <Label id="labelEdit"
+            
+            Anchor = "Bottom,Left"
+            AutoSize = "true"
+            Location = "(12, 276)"
+            Name = "labelEdit"
+            Size = "(25, 12)"
+            TabIndex = "15"
+            Text = "Edit"
+            />
+            
+            <Label id="labelEditKey"
+            
+            Anchor = "Bottom,Left"
+            AutoSize = "true"
+            Location = "(34, 293)"
+            Name = "labelEditKey"
+            Size = "(26, 12)"
+            TabIndex = "16"
+            Text = "Key:"
+            />
+            
+            <Label id="labelEditModifier"
+            
+            Anchor = "Bottom,Left"
+            AutoSize = "true"
+            Location = "(34, 317)"
+            Name = "labelEditModifier"
+            Size = "(48, 12)"
+            TabIndex = "17"
+            Text = "Modifier:"
+            />
+            
+            <ComboBox id="comboEditKey"
+            
+            Anchor = "(Bottom,Left)
+                       ,Right"
+            FormattingEnabled = "true"
+            Location = "(101, 290)"
+            Name = "comboEditKey"
+            Size = "(299, 20)"
+            TabIndex = "18"
+            />
+            
+            <CheckBox id="checkCommand"
+            
+            Anchor = "Bottom,Left"
+            AutoSize = "true"
+            Location = "(101, 316)"
+            Name = "checkCommand"
+            Padding = "(5, 0, 5, 0)"
+            Size = "(82, 16)"
+            TabIndex = "153"
+            Text = "command"
+            UseVisualStyleBackColor = "true"
+            />
+            
+            <CheckBox id="checkShift"
+            
+            Anchor = "Bottom,Left"
+            AutoSize = "true"
+            Location = "(189, 316)"
+            Name = "checkShift"
+            Padding = "(5, 0, 5, 0)"
+            Size = "(57, 16)"
+            TabIndex = "154"
+            Text = "shift"
+            UseVisualStyleBackColor = "true"
+            />
+            
+            <CheckBox id="checkControl"
+            
+            Anchor = "Bottom,Left"
+            AutoSize = "true"
+            Location = "(252, 316)"
+            Name = "checkControl"
+            Padding = "(5, 0, 5, 0)"
+            Size = "(69, 16)"
+            TabIndex = "155"
+            Text = "control"
+            UseVisualStyleBackColor = "true"
+            />
+            
+            <CheckBox id="checkOption"
+            
+            Anchor = "Bottom,Left"
+            AutoSize = "true"
+            Location = "(325, 316)"
+            Name = "checkOption"
+            Padding = "(5, 0, 5, 0)"
+            Size = "(65, 16)"
+            TabIndex = "156"
+            Text = "option"
+            UseVisualStyleBackColor = "true"
+            />
+
+</Form>

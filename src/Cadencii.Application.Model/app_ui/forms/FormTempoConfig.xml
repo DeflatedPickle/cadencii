@@ -1,0 +1,134 @@
+﻿<Form id="FormTempoConfig"
+
+            AcceptButton = "#btnOK"
+            AutoScaleDimensions = "(6, 12)"
+            AutoScaleMode = "Font"
+            CancelButton = "#btnCancel"
+            ClientSize = "(332, 164)"
+            FormBorderStyle = "FixedDialog"
+            MaximizeBox = "false"
+            MinimizeBox = "false"
+            Name = "FormTempoConfig"
+            ShowIcon = "false"
+            ShowInTaskbar = "false"
+            StartPosition = "Manual"
+            Text = "Global Tempo"
+            >
+<GroupBox id="groupPosition"
+
+            Location = "(11, 10)"
+            Name = "groupPosition"
+            Size = "(147, 113)"
+            TabIndex = "0"
+            TabStop = "false"
+            Text = "Position"
+            >
+<NumericUpDownEx id="numClock"
+
+            Location = "(90, 77)"
+            Name = "numClock"
+            Size = "(45, 19)"
+            TabIndex = "5"
+            />
+<NumericUpDownEx id="numBeat"
+
+            Location = "(90, 48)"
+            Name = "numBeat"
+            Size = "(45, 19)"
+            TabIndex = "4"
+            />
+
+<NumericUpDownEx id="numBar"
+
+            Enabled = "false"
+            Location = "(90, 19)"
+            Name = "numBar"
+            Size = "(45, 19)"
+            TabIndex = "3"
+            />
+
+<Label id="lblClock"
+
+            AutoSize = "true"
+            Location = "(12, 79)"
+            Name = "lblClock"
+            Size = "(48, 12)"
+            TabIndex = "2"
+            Text = "Clock(&amp;L)"
+            />
+
+<Label id="lblBeat"
+
+            AutoSize = "true"
+            Location = "(12, 50)"
+            Name = "lblBeat"
+            Size = "(45, 12)"
+            TabIndex = "1"
+            Text = "Beat(&amp;B)"
+            />
+
+<Label id="lblBar"
+
+            AutoSize = "true"
+            Location = "(12, 21)"
+            Name = "lblBar"
+            Size = "(65, 12)"
+            TabIndex = "0"
+            Text = "Measure(&amp;M)"
+            />
+
+</GroupBox>
+<GroupBox id="groupTempo"
+
+            Location = "(173, 10)"
+            Name = "groupTempo"
+            Size = "(143, 113)"
+            TabIndex = "1"
+            TabStop = "false"
+            Text = "Tempo"
+            >
+<Label id="lblTempoRange"
+
+            AutoSize = "true"
+            Location = "(78, 21)"
+            Name = "lblTempoRange"
+            Size = "(61, 12)"
+            TabIndex = "6"
+            Text = "(20 to 300)"
+            />
+
+<NumericUpDownEx id="numTempo"
+
+            DecimalPlaces = "2"
+            Location = "(13, 19)"
+            Maximum = "300"
+            Minimum = "20"
+            Name = "numTempo"
+            Size = "(59, 19)"
+            TabIndex = "5"
+            Value = "120"
+            />
+</GroupBox>
+
+<Button id="btnOK"
+
+            Location = "(156, 132)"
+            Name = "btnOK"
+            Size = "(75, 23)"
+            TabIndex = "2"
+            Text = "OK"
+            UseVisualStyleBackColor = "true"
+            />
+
+<Button id="btnCancel"
+
+            DialogResult = "Cancel"
+            Location = "(241, 132)"
+            Name = "btnCancel"
+            Size = "(75, 23)"
+            TabIndex = "3"
+            Text = "Cancel"
+            UseVisualStyleBackColor = "true"
+            />
+
+</Form>

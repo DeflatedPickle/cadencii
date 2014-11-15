@@ -402,5 +402,17 @@
       <LogicalName>FormSequenceConfig.xml</LogicalName>
       <DependentUpon>FormSequenceConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormShortcutKeys.xml">
+      <LogicalName>FormShortcutKeys.xml</LogicalName>
+      <DependentUpon>FormShortcutKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormSingerStyleConfig.xml">
+      <LogicalName>FormSingerStyleConfig.xml</LogicalName>
+      <DependentUpon>FormSingerStyleConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormTempoConfig.xml">
+      <LogicalName>FormTempoConfig.xml</LogicalName>
+      <DependentUpon>FormTempoConfig.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
