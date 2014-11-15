@@ -394,5 +394,13 @@
       <LogicalName>FormRandomize.xml</LogicalName>
       <DependentUpon>FormRandomize.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormRealtimeConfig.xml">
+      <LogicalName>FormRealtimeConfig.xml</LogicalName>
+      <DependentUpon>FormRealtimeConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormSequenceConfig.xml">
+      <LogicalName>FormSequenceConfig.xml</LogicalName>
+      <DependentUpon>FormSequenceConfig.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

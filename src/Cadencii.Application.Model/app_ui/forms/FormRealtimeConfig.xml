@@ -1,0 +1,73 @@
+﻿<Form id="FormRealtimeConfig"
+            
+            AcceptButton = "#btnStart"
+            AutoScaleDimensions = "(6, 12)"
+            AutoScaleMode = "Font"
+            BackColor = "$SystemColors.Control"
+            CancelButton = "#btnCancel"
+            ClientSize = "(347, 161)"
+            FormBorderStyle = "None"
+            MaximizeBox = "false"
+            MinimizeBox = "false"
+            Name = "FormRealtimeConfig"
+            ShowIcon = "false"
+            ShowInTaskbar = "false"
+            StartPosition = "CenterParent"
+            Text = "FormRealtimeConfig"
+            >
+<Button id="btnStart"
+            
+            FlatStyle = "Flat"
+            Location = "(25, 52)"
+            Name = "btnStart"
+            Size = "(120, 33)"
+            TabIndex = "0"
+            Text = "Start"
+            UseVisualStyleBackColor = "true"
+            />
+<Button id="btnCancel"
+            
+            DialogResult = "Cancel"
+            FlatStyle = "Flat"
+            Location = "(196, 52)"
+            Name = "btnCancel"
+            Size = "(120, 33)"
+            TabIndex = "1"
+            Text = "Cancel"
+            UseVisualStyleBackColor = "true"
+            />
+<Label id="lblRealTimeInput"
+            
+            Location = "(23, 9)"
+            Name = "lblRealTimeInput"
+            Size = "(293, 28)"
+            TabIndex = "2"
+            Text = "Realtime Input"
+            TextAlign = "MiddleCenter"
+            >
+			<!-- disable pointless font specification here
+            	Font = "(Verdana, 15.75, Regular, Point, 0)" -->
+            	</Label>
+<Label id="lblSpeed"
+            
+            AutoSize = "true"
+            Location = "(49, 114)"
+            Name = "lblSpeed"
+            Size = "(36, 12)"
+            TabIndex = "3"
+            Text = "Speed"
+            />
+<NumericUpDownEx id="numSpeed"
+            
+            DecimalPlaces = "1"
+            Increment = "1"
+            Location = "(107, 112)"
+            Maximum = "3.0"
+            Minimum = "0.1"
+            Name = "numSpeed"
+            Size = "(120, 19)"
+            TabIndex = "4"
+            TextAlign = "Right"
+            Value = "1"
+            />
+</Form>

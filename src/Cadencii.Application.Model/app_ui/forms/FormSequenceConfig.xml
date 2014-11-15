@@ -1,0 +1,148 @@
+﻿<Form id="FormSequenceConfig"
+            
+            AcceptButton = "#btnOK"
+            AutoScaleDimensions = "(96, 96)"
+            AutoScaleMode = "Dpi"
+            CancelButton = "#btnCancel"
+            ClientSize = "(341, 246)"
+            FormBorderStyle = "FixedSingle"
+            MaximizeBox = "false"
+            MinimizeBox = "false"
+            Name = "FormSequenceConfig"
+            ShowIcon = "false"
+            ShowInTaskbar = "false"
+            StartPosition = "Manual"
+            Text = "Sequence config"
+            >
+<GroupBox id="groupWaveFileOutput"
+            
+            Anchor = "Top,Left,Right"
+            Location = "(12, 12)"
+            Name = "groupWaveFileOutput"
+            Size = "(316, 107)"
+            TabIndex = "28"
+            TabStop = "false"
+            Text = "Wave File Output"
+            >
+<ComboBox id="comboSampleRate"
+            
+            Location = "(135, 48)"
+            Name = "comboSampleRate"
+            Size = "(117, 20)"
+            TabIndex = "31"
+            >
+            <_Items>
+	            <String>Mono</String>
+	            <String>Stereo</String>
+            </_Items>
+</ComboBox>
+<Label id="labelSampleRate"
+            
+            AutoSize = "true"
+            Location = "(22, 51)"
+            Name = "labelSampleRate"
+            Size = "(66, 12)"
+            TabIndex = "30"
+            Text = "Sample rate"
+            />
+<RadioButton id="radioCurrentTrack"
+            
+            AutoSize = "true"
+            Checked = "true"
+            Location = "(155, 75)"
+            Name = "radioCurrentTrack"
+            Size = "(61, 16)"
+            TabIndex = "29"
+            TabStop = "true"
+            Text = "Current"
+            UseVisualStyleBackColor = "true"
+            />
+<RadioButton id="radioMasterTrack"
+            
+            AutoSize = "true"
+            Location = "(24, 75)"
+            Name = "radioMasterTrack"
+            Size = "(91, 16)"
+            TabIndex = "28"
+            Text = "Master Track"
+            UseVisualStyleBackColor = "true"
+            />
+<Label id="lblChannel"
+            
+            AutoSize = "true"
+            Location = "(22, 27)"
+            Name = "lblChannel"
+            Size = "(66, 12)"
+            TabIndex = "25"
+            Text = "Channel (&amp;C)"
+            />
+<ComboBox id="comboChannel"
+            
+            FormattingEnabled = "true"
+            Location = "(135, 24)"
+            Name = "comboChannel"
+            Size = "(97, 20)"
+            TabIndex = "27"
+            >
+            <_Items>
+	            <String>Mono</String>
+	            <String>Stereo</String>
+            </_Items>
+</ComboBox>
+</GroupBox>            
+            
+<Button id="btnCancel"
+            
+            Anchor = "Bottom,Right"
+            DialogResult = "Cancel"
+            Location = "(240, 207)"
+            Name = "btnCancel"
+            Size = "(88, 23)"
+            TabIndex = "201"
+            Text = "Cancel"
+            UseVisualStyleBackColor = "true"
+            />
+<Button id="btnOK"
+            
+            Anchor = "Bottom,Right"
+            Location = "(146, 207)"
+            Name = "btnOK"
+            Size = "(88, 23)"
+            TabIndex = "200"
+            Text = "OK"
+            UseVisualStyleBackColor = "true"
+            />
+<GroupBox id="groupSequence"
+            
+            Anchor = "Top,Left,Right"
+            Location = "(12, 125)"
+            Name = "groupSequence"
+            Size = "(316, 62)"
+            TabIndex = "202"
+            TabStop = "false"
+            Text = "Sequence"
+            >
+<Label id="labelPreMeasure"
+            
+            AutoSize = "true"
+            Location = "(22, 27)"
+            Name = "labelPreMeasure"
+            Size = "(71, 12)"
+            TabIndex = "25"
+            Text = "Pre-measure"
+            />
+<ComboBox id="comboPreMeasure"
+            
+            FormattingEnabled = "true"
+            Location = "(135, 24)"
+            Name = "comboPreMeasure"
+            Size = "(97, 20)"
+            TabIndex = "27"
+            >
+            <_Items>
+	            <String>Mono</String>
+	            <String>"Stereo</String>
+            </_Items>
+</ComboBox>
+</GroupBox>
+</Form>
