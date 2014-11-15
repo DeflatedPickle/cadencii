@@ -59,9 +59,9 @@ namespace Cadencii.Application.Forms
         public void setDialogResult(bool value)
         {
             if (value) {
-                this.DialogResult = DialogResult.OK;
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
             } else {
-                this.DialogResult = DialogResult.Cancel;
+                this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             }
         }
 
@@ -229,7 +229,8 @@ namespace Cadencii.Application.Forms
                 Form form = (Form)parent;
                 ret = base.ShowDialog(form);
             }
-            if (ret == DialogResult.OK || ret == DialogResult.Yes) {
+            if (ret == System.Windows.Forms.DialogResult.OK || ret == System.Windows.Forms.DialogResult.Yes)
+            {
                 return 1;
             } else {
                 return 0;
