@@ -434,5 +434,8 @@
       <LogicalName>FormWorkerUi.xml</LogicalName>
       <DependentUpon>FormWorkerUi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\Preference.xml">
+      <LogicalName>Preference.xml</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

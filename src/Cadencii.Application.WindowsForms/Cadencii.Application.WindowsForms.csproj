@@ -136,7 +136,9 @@
     <Compile Include="app_ui\forms\FormWordDictionaryUiImpl.cs" />
     <Compile Include="app_ui\forms\FormWorkerUiImpl.cs" />
     <Compile Include="app_ui\forms\InputBoxImpl.cs" />
-    <Compile Include="app_ui\forms\PreferenceImpl.Designer.cs" />
+    <Compile Include="app_ui\forms\PreferenceImpl.Designer.cs">
+      <DependentUpon>PreferenceImpl.cs</DependentUpon>
+    </Compile>
     <Compile Include="app_ui\forms\PreferenceImpl.cs" />
     <Compile Include="app_ui\forms\ProgressBarWithLabelUiImpl.cs" />
     <Compile Include="app_ui\forms\UpdateCheckForm.cs" />

@@ -1,0 +1,1591 @@
+﻿<Form id="preference"
+        AcceptButton = "#btnOK"
+        AutoScaleDimensions = "(96, 96)"
+        AutoScaleMode = "Dpi"
+        CancelButton = "#btnCancel"
+        ClientSize = "(475, 577)"
+        FormBorderStyle = "FixedSingle"
+        MaximizeBox = "false"
+        MinimizeBox = "false"
+        Name = "Preference"
+        ShowIcon = "false"
+        ShowInTaskbar = "false"
+        StartPosition = "Manual"
+        Text = "Preference"
+        >
+    <TabControl id="tabPreference"
+
+            Anchor = "Top,Bottom,Left,Right"
+            Location = "(7, 7)"
+            Margin = "(0, 0, 0, 3)"
+            Multiline = "true"
+            Name = "tabPreference"
+            SelectedIndex = "0"
+            Size = "(462, 515)"
+            TabIndex = "0"
+            >
+	    <TabPage id="tabSequence"
+	            Location = "(4, 40)"
+	            Name = "tabSequence"
+	            Padding = "(3)"
+	            Size = "(454, 471)"
+	            TabIndex = "0"
+	            Text = "Sequence"
+	            UseVisualStyleBackColor = "true"
+	            >
+		    <NumberTextBox id="txtAutoVibratoThresholdLength"
+
+		            Anchor = "Top,Right"
+		            BackColor = "$(240,128,128)"
+		            ForeColor = "$White"
+		            Location = "(329, 122)"
+		            Name = "txtAutoVibratoThresholdLength"
+		            Size = "(55, 19)"
+		            TabIndex = "6"
+		            Type = "Integer"
+		            />
+
+		    <Label id="bLabel1"
+
+		            Anchor = "Top,Right"
+		            BackColor = "$SystemColors.ActiveBorder"
+		            Location = "(121, 161)"
+		            Name = "bLabel1"
+		            Size = "(314, 1)"
+		            TabIndex = "36"
+		            />
+
+		    <RadioButton id="radioUserDefined"
+
+		            AutoSize = "true"
+		            Location = "(246, 176)"
+		            Name = "radioUserDefined"
+		            Size = "(90, 16)"
+		            TabIndex = "9"
+		            Text = "User Defined"
+		            UseVisualStyleBackColor = "true"
+		            />
+
+		    <Label id="lblAutoVibratoType"
+
+		            AutoSize = "true"
+		            Location = "(13, 155)"
+		            Name = "lblAutoVibratoType"
+		            Size = "(99, 12)"
+		            TabIndex = "35"
+		            Text = "Auto Vibrato Type"
+		            />
+
+		    <RadioButton id="radioVocaloidEditorCompatible"
+
+		            AutoSize = "true"
+		            Checked = "true"
+		            Location = "(37, 176)"
+		            Name = "radioVocaloidEditorCompatible"
+		            Size = "(175, 16)"
+		            TabIndex = "8"
+		            TabStop = "true"
+		            Text = "VOCALOID Editor Compatible"
+		            UseVisualStyleBackColor = "true"
+		            />
+
+		    <GroupBox id="groupUserDefined"
+		            Enabled = "false"
+		            Location = "(63, 291)"
+		            Name = "groupUserDefined"
+		            Size = "(372, 58)"
+		            TabIndex = "15"
+		            TabStop = "false"
+		            Text = "User Defined"
+		            >
+			    <ComboBox id="comboAutoVibratoTypeCustom"
+
+			            FormattingEnabled = "true"
+			            Location = "(225, 22)"
+			            Name = "comboAutoVibratoTypeCustom"
+			            Size = "(131, 20)"
+			            TabIndex = "14"
+			            />
+
+			    <Label id="lblAutoVibratoTypeCustom"
+
+			            AutoSize = "true"
+			            Location = "(18, 25)"
+			            Name = "lblAutoVibratoTypeCustom"
+			            Size = "(131, 12)"
+			            TabIndex = "13"
+			            Text = "Vibrato Type: Custom(&amp;T)"
+			            />
+			</GroupBox>
+
+		    <Label id="label6"
+
+		            Anchor = "Top,Right"
+		            AutoSize = "true"
+		            Location = "(390, 125)"
+		            Name = "label6"
+		            Size = "(38, 12)"
+		            TabIndex = "26"
+		            Text = "clocks"
+		            />
+
+		    <Label id="lblAutoVibratoThresholdLength"
+
+		            AutoSize = "true"
+		            Location = "(35, 125)"
+		            Name = "lblAutoVibratoThresholdLength"
+		            Size = "(243, 12)"
+		            TabIndex = "6"
+		            Text = "Minimum note length for Automatic Vibrato(&amp;M)"
+		            />
+
+		    <Label id="label2"
+
+		            AutoSize = "true"
+		            Location = "(317, 38)"
+		            Name = "label2"
+		            Size = "(38, 12)"
+		            TabIndex = "32"
+		            Text = "clocks"
+		            />
+
+		    <CheckBox id="chkEnableAutoVibrato"
+
+		            AutoSize = "true"
+		            Location = "(15, 67)"
+		            Name = "chkEnableAutoVibrato"
+		            Size = "(170, 16)"
+		            TabIndex = "3"
+		            Text = "Enable Automatic Vibrato(&amp;E)"
+		            UseVisualStyleBackColor = "true"
+		            />
+
+		    <ComboBox id="comboResolControlCurve"
+
+		            FormattingEnabled = "true"
+		            Location = "(210, 35)"
+		            Name = "comboResolControlCurve"
+		            Size = "(101, 20)"
+		            TabIndex = "1"
+		            />
+
+		    <Label id="lblResolControlCurve"
+
+		            AutoSize = "true"
+		            Location = "(35, 38)"
+		            Name = "lblResolControlCurve"
+		            Size = "(92, 12)"
+		            TabIndex = "26"
+		            Text = "Control Curve(&amp;C)"
+		            />
+
+		    <Label id="label1"
+
+		            BackColor = "$SystemColors.ActiveBorder"
+		            Location = "(115, 17)"
+		            Name = "label1"
+		            Size = "(323, 1)"
+		            TabIndex = "25"
+		            />
+
+		    <Label id="lblResolution"
+
+		            AutoSize = "true"
+		            Location = "(15, 13)"
+		            Name = "lblResolution"
+		            Size = "(92, 12)"
+		            TabIndex = "24"
+		            Text = "Resolution(VSTi)"
+		            />
+
+		    <Label id="label7"
+
+		            Anchor = "Top,Right"
+		            BackColor = "$SystemColors.ActiveBorder"
+		            Location = "(189, 74)"
+		            Name = "label7"
+		            Size = "(246, 1)"
+		            TabIndex = "5"
+		            />
+
+		    <GroupBox id="groupVocaloidEditorCompatible"
+
+		            Location = "(63, 204)"
+		            Name = "groupVocaloidEditorCompatible"
+		            Size = "(372, 81)"
+		            TabIndex = "10"
+		            TabStop = "false"
+		            Text = "VOCALOID Editor Compatible"
+		            >
+			    <ComboBox id="comboAutoVibratoType2"
+
+			            FormattingEnabled = "true"
+			            Location = "(225, 51)"
+			            Name = "comboAutoVibratoType2"
+			            Size = "(131, 20)"
+			            TabIndex = "14"
+			            >
+		            <_Items>
+			            <String>[Normal] Type 1</String>
+			            <String>[Normal] Type 2</String>
+			            <String>[Normal] Type 3</String>
+			            <String>[Normal] Type 4</String>
+			            <String>[Extreme] Type 1</String>
+			            <String>[Extreme] Type 2</String>
+			            <String>[Extreme] Type 3</String>
+			            <String>[Extreme] Type 4</String>
+			            <String>[Fast] Type 1</String>
+			            <String>[Fast] Type 2</String>
+			            <String>[Fast] Type 3</String>
+			            <String>[Fast] Type 4</String>
+			            <String>[Slight] Type 1</String>
+			            <String>[Slight] Type 2</String>
+			            <String>[Slight] Type 3</String>
+			            <String>[Slight] Type 4</String>
+		            </_Items>
+				</ComboBox>
+
+			    <Label id="lblAutoVibratoType2"
+
+			            AutoSize = "true"
+			            Location = "(18, 54)"
+			            Name = "lblAutoVibratoType2"
+			            Size = "(155, 12)"
+			            TabIndex = "13"
+			            Text = "Vibrato Type: VOCALOID2(&amp;T)"
+			            />
+
+			    <ComboBox id="comboAutoVibratoType1"
+
+			            FormattingEnabled = "true"
+			            Location = "(225, 22)"
+			            Name = "comboAutoVibratoType1"
+			            Size = "(131, 20)"
+			            TabIndex = "12"
+			            >
+		            <_Items>
+			            <String>[Normal] Type 1</String>
+			            <String>[Normal] Type 2</String>
+			            <String>[Normal] Type 3</String>
+			            <String>[Normal] Type 4</String>
+			            <String>[Extreme] Type 1</String>
+			            <String>[Extreme] Type 2</String>
+			            <String>[Extreme] Type 3</String>
+			            <String>[Extreme] Type 4</String>
+			            <String>[Fast] Type 1</String>
+			            <String>[Fast] Type 2</String>
+			            <String>[Fast] Type 3</String>
+			            <String>[Fast] Type 4</String>
+			            <String>[Slight] Type 1</String>
+			            <String>[Slight] Type 2</String>
+			            <String>[Slight] Type 3</String>
+			            <String>[Slight] Type 4</String>
+		            </_Items>
+				</ComboBox>
+
+			    <Label id="lblAutoVibratoType1"
+
+			            AutoSize = "true"
+			            Location = "(18, 25)"
+			            Name = "lblAutoVibratoType1"
+			            Size = "(155, 12)"
+			            TabIndex = "11"
+			            Text = "Vibrato Type: VOCALOID1(&amp;T)"
+			            />
+	        </GroupBox>
+
+		    <Label id="label3"
+
+		            AutoSize = "true"
+		            Location = "(313, 96)"
+		            Name = "label3"
+		            Size = "(11, 12)"
+		            TabIndex = "22"
+		            Text = "%"
+		            />
+
+		    <ComboBox id="comboVibratoLength"
+
+		            FormattingEnabled = "true"
+		            Location = "(213, 93)"
+		            Name = "comboVibratoLength"
+		            Size = "(86, 20)"
+		            TabIndex = "5"
+		            >
+		        <_Items>
+		            <String>50</String>
+		            <String>66</String>
+		            <String>75</String>
+		            <String>100</String>
+		        </_Items>
+		    </ComboBox>
+
+		    <Label id="lblVibratoLength"
+
+		            AutoSize = "true"
+		            Location = "(35, 96)"
+		            Name = "lblVibratoLength"
+		            Size = "(135, 12)"
+		            TabIndex = "4"
+		            Text = "Default Vibrato Length(&amp;L)"
+		            />
+		</TabPage>
+
+	    <TabPage id="tabAnother"
+	            Location = "(4, 40)"
+	            Name = "tabAnother"
+	            Padding = "(3)"
+	            Size = "(454, 471)"
+	            TabIndex = "2"
+	            Text = "Other Settings"
+	            UseVisualStyleBackColor = "true"
+	            >
+		    <Label id="lblBufferSize"
+
+		            AutoSize = "true"
+		            Location = "(305, 150)"
+		            Name = "lblBufferSize"
+		            Size = "(88, 12)"
+		            TabIndex = "30"
+		            Text = "msec(100-1000)"
+		            />
+
+		    <Label id="lblBuffer"
+
+		            AutoSize = "true"
+		            Location = "(29, 150)"
+		            Name = "lblBuffer"
+		            Size = "(78, 12)"
+		            TabIndex = "29"
+		            Text = "Buffer Size(&amp;B)"
+		            />
+
+		    <Label id="label13"
+
+		            AutoSize = "true"
+		            Location = "(305, 89)"
+		            Name = "label13"
+		            Size = "(88, 12)"
+		            TabIndex = "17"
+		            Text = "msec(200-2000)"
+		            />
+
+		    <Label id="label12"
+
+		            AutoSize = "true"
+		            Location = "(305, 58)"
+		            Name = "label12"
+		            Size = "(88, 12)"
+		            TabIndex = "16"
+		            Text = "msec(500-5000)"
+		            />
+
+		    <ComboBox id="comboDefualtSinger"
+
+		            Enabled = "false"
+		            FormattingEnabled = "true"
+		            Location = "(216, 24)"
+		            Name = "comboDefualtSinger"
+		            Size = "(222, 20)"
+		            TabIndex = "20"
+		            />
+
+		    <CheckBox id="chkChasePastEvent"
+
+		            AutoSize = "true"
+		            Enabled = "false"
+		            Location = "(31, 119)"
+		            Name = "chkChasePastEvent"
+		            Size = "(105, 16)"
+		            TabIndex = "24"
+		            Text = "Chase Event(&amp;C)"
+		            UseVisualStyleBackColor = "true"
+		            />
+
+		    <Label id="lblWait"
+
+		            AutoSize = "true"
+		            Location = "(29, 89)"
+		            Name = "lblWait"
+		            Size = "(88, 12)"
+		            TabIndex = "2"
+		            Text = "Waiting Time(&amp;W)"
+		            />
+
+		    <Label id="lblPreSendTime"
+
+		            AutoSize = "true"
+		            Location = "(29, 58)"
+		            Name = "lblPreSendTime"
+		            Size = "(94, 12)"
+		            TabIndex = "1"
+		            Text = "Pre-Send time(&amp;P)"
+		            />
+
+		    <Label id="lblDefaultSinger"
+
+		            AutoSize = "true"
+		            Location = "(29, 27)"
+		            Name = "lblDefaultSinger"
+		            Size = "(93, 12)"
+		            TabIndex = "0"
+		            Text = "Default Singer(&amp;S)"
+		            />
+
+		    <NumericUpDownEx id="numBuffer"
+
+		            Location = "(216, 148)"
+		            Maximum = "1000"
+		            Minimum = "100"
+		            Name = "numBuffer"
+		            Size = "(68, 19)"
+		            TabIndex = "31"
+		            Value = "1000"
+		            />
+
+		    <NumericUpDownEx id="numWait"
+
+		            Enabled = "false"
+		            Location = "(216, 87)"
+		            Maximum = "2000"
+		            Minimum = "200"
+		            Name = "numWait"
+		            Size = "(68, 19)"
+		            TabIndex = "22"
+		            Value = "300"
+		            />
+
+		    <NumericUpDownEx id="numPreSendTime"
+
+		            Location = "(216, 56)"
+		            Maximum = "5000"
+		            Minimum = "500"
+		            Name = "numPreSendTime"
+		            Size = "(68, 19)"
+		            TabIndex = "21"
+		            Value = "500"
+		            />
+	    </TabPage>
+	    <TabPage id="tabAppearance"
+	            Location = "(4, 40)"
+	            Name = "tabAppearance"
+	            Padding = "(3)"
+	            Size = "(454, 471)"
+	            TabIndex = "3"
+	            Text = "Appearance"
+	            UseVisualStyleBackColor = "true"
+	            >
+		    <GroupBox id="groupFont"
+		            Location = "(23, 9)"
+		            Name = "groupFont"
+		            Size = "(407, 78)"
+		            TabIndex = "40"
+		            TabStop = "false"
+		            Text = "Font"
+		            >
+
+			    <Label id="labelMenu"
+
+			            AutoSize = "true"
+			            Location = "(15, 22)"
+			            Name = "labelMenu"
+			            Size = "(77, 12)"
+			            TabIndex = "0"
+			            Text = "Menu / Lyrics"
+			            />
+
+			    <Label id="labelScreenFontName"
+
+			            AutoSize = "true"
+			            Location = "(111, 49)"
+			            Name = "labelScreenFontName"
+			            Size = "(35, 12)"
+			            TabIndex = "4"
+			            Text = "label1"
+			            />
+
+			    <Button id="btnChangeScreenFont"
+
+			            Location = "(270, 44)"
+			            Name = "btnChangeScreenFont"
+			            Size = "(75, 23)"
+			            TabIndex = "42"
+			            Text = "Change"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <Label id="labelScreen"
+
+			            AutoSize = "true"
+			            Location = "(15, 49)"
+			            Name = "labelScreen"
+			            Size = "(40, 12)"
+			            TabIndex = "3"
+			            Text = "Screen"
+			            />
+
+			    <Label id="labelMenuFontName"
+
+			            AutoSize = "true"
+			            Location = "(111, 22)"
+			            Name = "labelMenuFontName"
+			            Size = "(35, 12)"
+			            TabIndex = "2"
+			            Text = "label1"
+			            />
+
+			    <Button id="btnChangeMenuFont"
+
+			            Location = "(270, 17)"
+			            Name = "btnChangeMenuFont"
+			            Size = "(75, 23)"
+			            TabIndex = "41"
+			            Text = "Change"
+			            UseVisualStyleBackColor = "true"
+			            />
+		    </GroupBox>
+
+		    <GroupBox id="groupVisibleCurve"
+	            Location = "(23, 173)"
+	            Name = "groupVisibleCurve"
+	            Size = "(407, 169)"
+	            TabIndex = "46"
+	            TabStop = "false"
+	            Text = "Visible Control Curve"
+	            >
+			    <CheckBox id="chkEnvelope"
+
+			            AutoSize = "true"
+			            Location = "(17, 140)"
+			            Name = "chkEnvelope"
+			            Size = "(70, 16)"
+			            TabIndex = "67"
+			            Text = "Envelope"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkPbs"
+
+			            AutoSize = "true"
+			            Location = "(114, 94)"
+			            Name = "chkPbs"
+			            Size = "(46, 16)"
+			            TabIndex = "60"
+			            Text = "PBS"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkReso4"
+
+			            AutoSize = "true"
+			            Location = "(308, 118)"
+			            Name = "chkReso4"
+			            Size = "(60, 16)"
+			            TabIndex = "66"
+			            Text = "Reso 4"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkReso3"
+
+			            AutoSize = "true"
+			            Location = "(211, 118)"
+			            Name = "chkReso3"
+			            Size = "(60, 16)"
+			            TabIndex = "65"
+			            Text = "Reso 3"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkReso2"
+
+			            AutoSize = "true"
+			            Location = "(113, 118)"
+			            Name = "chkReso2"
+			            Size = "(60, 16)"
+			            TabIndex = "64"
+			            Text = "Reso 2"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkReso1"
+
+			            AutoSize = "true"
+			            Location = "(17, 118)"
+			            Name = "chkReso1"
+			            Size = "(60, 16)"
+			            TabIndex = "63"
+			            Text = "Reso 1"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkFx2Depth"
+
+			            AutoSize = "true"
+			            Location = "(308, 94)"
+			            Name = "chkFx2Depth"
+			            Size = "(74, 16)"
+			            TabIndex = "62"
+			            Text = "FX2Depth"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkHarmonics"
+
+			            AutoSize = "true"
+			            Location = "(211, 94)"
+			            Name = "chkHarmonics"
+			            Size = "(78, 16)"
+			            TabIndex = "61"
+			            Text = "Harmonics"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkPit"
+
+			            AutoSize = "true"
+			            Location = "(17, 94)"
+			            Name = "chkPit"
+			            Size = "(41, 16)"
+			            TabIndex = "59"
+			            Text = "PIT"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkPor"
+
+			            AutoSize = "true"
+			            Location = "(308, 70)"
+			            Name = "chkPor"
+			            Size = "(47, 16)"
+			            TabIndex = "58"
+			            Text = "POR"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkGen"
+
+			            AutoSize = "true"
+			            Location = "(211, 70)"
+			            Name = "chkGen"
+			            Size = "(47, 16)"
+			            TabIndex = "57"
+			            Text = "GEN"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkOpe"
+
+			            AutoSize = "true"
+			            Location = "(114, 70)"
+			            Name = "chkOpe"
+			            Size = "(46, 16)"
+			            TabIndex = "56"
+			            Text = "OPE"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkCle"
+
+			            AutoSize = "true"
+			            Location = "(17, 70)"
+			            Name = "chkCle"
+			            Size = "(45, 16)"
+			            TabIndex = "55"
+			            Text = "CLE"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkBri"
+
+			            AutoSize = "true"
+			            Location = "(308, 46)"
+			            Name = "chkBri"
+			            Size = "(43, 16)"
+			            TabIndex = "54"
+			            Text = "BRI"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkBre"
+
+			            AutoSize = "true"
+			            Location = "(211, 46)"
+			            Name = "chkBre"
+			            Size = "(47, 16)"
+			            TabIndex = "53"
+			            Text = "BRE"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkDyn"
+
+			            AutoSize = "true"
+			            Location = "(114, 46)"
+			            Name = "chkDyn"
+			            Size = "(47, 16)"
+			            TabIndex = "52"
+			            Text = "DYN"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkVel"
+
+			            AutoSize = "true"
+			            Location = "(17, 46)"
+			            Name = "chkVel"
+			            Size = "(45, 16)"
+			            TabIndex = "51"
+			            Text = "VEL"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkVibratoDepth"
+
+			            AutoSize = "true"
+			            Location = "(308, 22)"
+			            Name = "chkVibratoDepth"
+			            Size = "(91, 16)"
+			            TabIndex = "50"
+			            Text = "VibratoDepth"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkVibratoRate"
+
+			            AutoSize = "true"
+			            Location = "(211, 22)"
+			            Name = "chkVibratoRate"
+			            Size = "(85, 16)"
+			            TabIndex = "49"
+			            Text = "VibratoRate"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkDecay"
+
+			            AutoSize = "true"
+			            Location = "(114, 22)"
+			            Name = "chkDecay"
+			            Size = "(56, 16)"
+			            TabIndex = "48"
+			            Text = "Decay"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkAccent"
+
+			            AutoSize = "true"
+			            Location = "(17, 22)"
+			            Name = "chkAccent"
+			            Size = "(60, 16)"
+			            TabIndex = "47"
+			            Text = "Accent"
+			            UseVisualStyleBackColor = "true"
+			            />
+			</GroupBox>
+
+	    <Label id="lblTrackHeight"
+
+	            AutoSize = "true"
+	            Location = "(31, 141)"
+	            Name = "lblTrackHeight"
+	            Size = "(107, 12)"
+	            TabIndex = "13"
+	            Text = "Track Height (pixel)"
+	            />
+
+	    <ComboBox id="comboLanguage"
+
+	            FormattingEnabled = "true"
+	            Location = "(148, 105)"
+	            Name = "comboLanguage"
+	            Size = "(121, 20)"
+	            TabIndex = "44"
+	            />
+
+	    <Label id="lblLanguage"
+
+	            AutoSize = "true"
+	            Location = "(31, 108)"
+	            Name = "lblLanguage"
+	            Size = "(68, 12)"
+	            TabIndex = "9"
+	            Text = "UI Language"
+	            />
+
+	    <NumericUpDownEx id="numTrackHeight"
+
+	            Location = "(210, 139)"
+	            Maximum = "50"
+	            Minimum = "5"
+	            Name = "numTrackHeight"
+	            Size = "(120, 19)"
+	            TabIndex = "45"
+	            Value = "14"
+	            />
+		</TabPage>
+	    <TabPage id="tabOperation"
+	            Location = "(4, 40)"
+	            Name = "tabOperation"
+	            Padding = "(3)"
+	            Size = "(454, 471)"
+	            TabIndex = "5"
+	            Text = "Operation"
+	            UseVisualStyleBackColor = "true"
+	            >
+		    <GroupBox id="groupMisc"
+		            Location = "(23, 253)"
+		            Name = "groupMisc"
+		            Size = "(407, 143)"
+		            TabIndex = "91"
+		            TabStop = "false"
+		            Text = "Misc"
+		            >
+			    <ComboBox id="comboMtcMidiInPortNumber"
+
+			            Anchor = "Top,Left,Right"
+			            FormattingEnabled = "true"
+			            Location = "(176, 101)"
+			            Name = "comboMtcMidiInPortNumber"
+			            Size = "(225, 20)"
+			            TabIndex = "91"
+			            />
+
+			    <Label id="labelMtcMidiInPort"
+
+			            AutoSize = "true"
+			            Location = "(16, 104)"
+			            Name = "labelMtcMidiInPort"
+			            Size = "(137, 12)"
+			            TabIndex = "90"
+			            Text = "MTC MIDI In Port Number"
+			            />
+
+			    <Label id="lblMaximumFrameRate"
+
+			            AutoSize = "true"
+			            Location = "(16, 23)"
+			            Name = "lblMaximumFrameRate"
+			            Size = "(117, 12)"
+			            TabIndex = "5"
+			            Text = "Maximum Frame Rate"
+			            />
+
+			    <ComboBox id="comboMidiInPortNumber"
+
+			            Anchor = "Top,Left,Right"
+			            FormattingEnabled = "true"
+			            Location = "(176, 74)"
+			            Name = "comboMidiInPortNumber"
+			            Size = "(225, 20)"
+			            TabIndex = "89"
+			            />
+
+			    <NumericUpDownEx id="numMaximumFrameRate"
+
+			            Location = "(176, 21)"
+			            Maximum = "1000"
+			            Minimum = "5"
+			            Name = "numMaximumFrameRate"
+			            Size = "(120, 19)"
+			            TabIndex = "84"
+			            Value = "30"
+			            />
+
+			    <Label id="lblMidiInPort"
+
+			            AutoSize = "true"
+			            Location = "(16, 77)"
+			            Name = "lblMidiInPort"
+			            Size = "(109, 12)"
+			            TabIndex = "13"
+			            Text = "MIDI In Port Number"
+			            />
+
+			    <Label id="lblMouseHoverTime"
+
+			            AutoSize = "true"
+			            Location = "(16, 50)"
+			            Name = "lblMouseHoverTime"
+			            Size = "(133, 12)"
+			            TabIndex = "8"
+			            Text = "Waiting Time for Preview"
+			            />
+
+			    <Label id="lblMilliSecond"
+
+			            AutoSize = "true"
+			            Location = "(302, 50)"
+			            Name = "lblMilliSecond"
+			            Size = "(66, 12)"
+			            TabIndex = "10"
+			            Text = "milli second"
+			            />
+
+			    <NumericUpDownEx id="numMouseHoverTime"
+
+			            Location = "(176, 48)"
+			            Maximum = "2000"
+			            Name = "numMouseHoverTime"
+			            Size = "(120, 19)"
+			            TabIndex = "86"
+			            Value = "500"
+			            />
+		    </GroupBox>
+		    <GroupBox id="groupPianoroll"
+		            Location = "(23, 9)"
+		            Name = "groupPianoroll"
+		            Size = "(407, 238)"
+		            TabIndex = "90"
+		            TabStop = "false"
+		            Text = "Piano Roll"
+		            >
+			    <CheckBox id="chkTranslateRoman"
+
+			            AutoSize = "true"
+			            Location = "(16, 208)"
+			            Name = "chkTranslateRoman"
+			            Size = "(200, 16)"
+			            TabIndex = "104"
+			            Text = "Translate Roman letters into Kana"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkUseSpaceKeyAsMiddleButtonModifier"
+
+			            AutoSize = "true"
+			            Location = "(16, 181)"
+			            Name = "chkUseSpaceKeyAsMiddleButtonModifier"
+			            Size = "(234, 16)"
+			            TabIndex = "89"
+			            Text = "Use space key as Middle button modifier"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <Label id="labelWheelOrder"
+
+			            AutoSize = "true"
+			            Location = "(16, 23)"
+			            Name = "labelWheelOrder"
+			            Size = "(99, 12)"
+			            TabIndex = "1"
+			            Text = "Mouse wheel Rate"
+			            />
+
+			    <NumericUpDownEx id="numericUpDownEx1"
+
+			            Location = "(199, 21)"
+			            Maximum = "50"
+			            Minimum = "5"
+			            Name = "numericUpDownEx1"
+			            Size = "(120, 19)"
+			            TabIndex = "80"
+			            Value = "20"
+			            />
+
+			    <CheckBox id="chkCursorFix"
+
+			            AutoSize = "true"
+			            Location = "(16, 46)"
+			            Name = "chkCursorFix"
+			            Size = "(156, 16)"
+			            TabIndex = "81"
+			            Text = "Fix Play Cursor to Center"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkCurveSelectingQuantized"
+
+			            AutoSize = "true"
+			            Location = "(16, 154)"
+			            Name = "chkCurveSelectingQuantized"
+			            Size = "(209, 16)"
+			            TabIndex = "88"
+			            Text = "Enable Quantize for Curve Selecting"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkScrollHorizontal"
+
+			            AutoSize = "true"
+			            Location = "(16, 73)"
+			            Name = "chkScrollHorizontal"
+			            Size = "(208, 16)"
+			            TabIndex = "82"
+			            Text = "Horizontal Scroll when Mouse wheel"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkPlayPreviewWhenRightClick"
+
+			            AutoSize = "true"
+			            Location = "(16, 127)"
+			            Name = "chkPlayPreviewWhenRightClick"
+			            Size = "(169, 16)"
+			            TabIndex = "87"
+			            Text = "Play Preview On Right Click"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <CheckBox id="chkKeepLyricInputMode"
+
+			            AutoSize = "true"
+			            Location = "(16, 100)"
+			            Name = "chkKeepLyricInputMode"
+			            Size = "(138, 16)"
+			            TabIndex = "85"
+			            Text = "Keep Lyric Input Mode"
+			            UseVisualStyleBackColor = "true"
+			            />
+			</GroupBox>
+		</TabPage>
+	    <TabPage id="tabPlatform"
+
+	            Location = "(4, 40)"
+	            Name = "tabPlatform"
+	            Padding = "(3)"
+	            Size = "(454, 471)"
+	            TabIndex = "4"
+	            Text = "Platform"
+	            UseVisualStyleBackColor = "true"
+	            >
+		    <GroupBox id="groupUtauCores"
+		            Location = "(23, 9)"
+		            Name = "groupUtauCores"
+		            Size = "(407, 289)"
+		            TabIndex = "108"
+		            TabStop = "false"
+		            Text = "UTAU Cores"
+		            >
+			    <CheckBox id="checkEnableWideCharacterWorkaround"
+
+			            AutoSize = "true"
+			            Location = "(19, 260)"
+			            Name = "checkEnableWideCharacterWorkaround"
+			            Size = "(205, 16)"
+			            TabIndex = "122"
+			            Text = "Enable Wide-Character Workaround"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <Label id="labelWavtoolPath"
+
+			            AutoSize = "true"
+			            Location = "(44, 49)"
+			            Name = "labelWavtoolPath"
+			            Size = "(30, 12)"
+			            TabIndex = "120"
+			            Text = "Path:"
+			            />
+
+			    <Button id="buttonResamplerUp"
+
+			            Anchor = "Top,Right"
+			            Location = "(326, 184)"
+			            Name = "buttonResamplerUp"
+			            Size = "(75, 23)"
+			            TabIndex = "119"
+			            Text = "Up"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <Button id="buttonResamplerDown"
+
+			            Anchor = "Top,Right"
+			            Location = "(326, 213)"
+			            Name = "buttonResamplerDown"
+			            Size = "(75, 23)"
+			            TabIndex = "118"
+			            Text = "Down"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <Button id="buttonResamplerRemove"
+
+			            Anchor = "Top,Right"
+			            Location = "(326, 131)"
+			            Name = "buttonResamplerRemove"
+			            Size = "(75, 23)"
+			            TabIndex = "117"
+			            Text = "Remove"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <Button id="buttonResamplerAdd"
+
+			            Anchor = "Top,Right"
+			            Location = "(326, 102)"
+			            Name = "buttonResamplerAdd"
+			            Size = "(75, 23)"
+			            TabIndex = "116"
+			            Text = "Add"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <ListView id="listResampler"
+			            Anchor = "Top,Left,Right"
+			            FullRowSelect = "true"
+			            HideSelection = "false"
+			            Location = "(46, 102)"
+			            MultiSelect = "false"
+			            Name = "listResampler"
+			            ShowGroups = "false"
+			            Size = "(274, 134)"
+			            TabIndex = "115"
+			            UseCompatibleStateImageBehavior = "false"
+			            View = "Details"
+			            >
+		            <_Columns>
+					    <ColumnHeader id="columnHeaderPath"
+					            Text = "path"
+					            Width = "280"
+					            />
+		            </_Columns>
+	            </ListView>
+			    <Label id="lblResampler"
+			            AutoSize = "true"
+			            Location = "(17, 82)"
+			            Name = "lblResampler"
+			            Size = "(55, 12)"
+			            TabIndex = "111"
+			            Text = "resampler"
+			            />
+
+			    <Button id="btnWavtool"
+
+			            Anchor = "Top,Right"
+			            Location = "(326, 44)"
+			            Name = "btnWavtool"
+			            Size = "(75, 23)"
+			            TabIndex = "112"
+			            Text = "Browse"
+			            UseVisualStyleBackColor = "true"
+			            />
+
+			    <Label id="lblWavtool"
+
+			            AutoSize = "true"
+			            Location = "(17, 25)"
+			            Name = "lblWavtool"
+			            Size = "(44, 12)"
+			            TabIndex = "114"
+			            Text = "wavtool"
+			            />
+
+			    <TextBox id="txtWavtool"
+			            Anchor = "Top,Left,Right"
+			            Location = "(100, 46)"
+			            Name = "txtWavtool"
+			            Size = "(220, 19)"
+			            TabIndex = "111"
+			            />
+	        </GroupBox>
+	    </TabPage>
+	    <TabPage id="tabUtausingers"
+	            AutoScroll = "true"
+	            Location = "(4, 40)"
+	            Name = "tabUtausingers"
+	            Padding = "(3)"
+	            Size = "(454, 471)"
+	            TabIndex = "6"
+	            Text = "UTAU Singers"
+	            UseVisualStyleBackColor = "true"
+	            >
+	    <Button id="btnRemove"
+
+	            Anchor = "Bottom,Left"
+	            Location = "(98, 401)"
+	            Name = "btnRemove"
+	            Size = "(75, 23)"
+	            TabIndex = "122"
+	            Text = "Remove"
+	            UseVisualStyleBackColor = "true"
+	            />
+
+	    <Button id="btnAdd"
+
+	            Anchor = "Bottom,Left"
+	            Location = "(17, 401)"
+	            Name = "btnAdd"
+	            Size = "(75, 23)"
+	            TabIndex = "121"
+	            Text = "Add"
+	            UseVisualStyleBackColor = "true"
+	            />
+
+	    <Button id="btnUp"
+
+	            Anchor = "Bottom,Right"
+	            Location = "(279, 401)"
+	            Name = "btnUp"
+	            Size = "(75, 23)"
+	            TabIndex = "123"
+	            Text = "Up"
+	            UseVisualStyleBackColor = "true"
+	            />
+
+	    <Button id="btnDown"
+
+	            Anchor = "Bottom,Right"
+	            Location = "(360, 401)"
+	            Name = "btnDown"
+	            Size = "(75, 23)"
+	            TabIndex = "124"
+	            Text = "Down"
+	            UseVisualStyleBackColor = "true"
+	            />
+
+	    <ListView id="listSingers"
+
+	            Anchor = "Top,Bottom,Left,Right"
+	            FullRowSelect = "true"
+	            HeaderStyle = "Nonclickable"
+	            HideSelection = "false"
+	            Location = "(17, 23)"
+	            MultiSelect = "false"
+	            Name = "listSingers"
+	            Size = "(418, 372)"
+	            TabIndex = "120"
+	            UseCompatibleStateImageBehavior = "false"
+	            View = "Details"
+	            >
+            <_Groups>
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+            </_Groups>
+	        </ListView>
+	    </TabPage>
+	    <TabPage id="tabFile"
+	            Location = "(4, 40)"
+	            Name = "tabFile"
+	            Padding = "(3)"
+	            Size = "(454, 471)"
+	            TabIndex = "7"
+	            Text = "File"
+	            UseVisualStyleBackColor = "true"
+	            >
+
+		    <CheckBox id="chkKeepProjectCache"
+
+		            AutoSize = "true"
+		            Location = "(23, 54)"
+		            Name = "chkKeepProjectCache"
+		            Size = "(125, 16)"
+		            TabIndex = "4"
+		            Text = "Keep Project Cache"
+		            UseVisualStyleBackColor = "true"
+		            />
+
+		    <Label id="lblAutoBackupMinutes"
+
+		            AutoSize = "true"
+		            Location = "(331, 24)"
+		            Name = "lblAutoBackupMinutes"
+		            Size = "(53, 12)"
+		            TabIndex = "3"
+		            Text = "minute(s)"
+		            />
+
+		    <Label id="lblAutoBackupInterval"
+
+		            AutoSize = "true"
+		            Location = "(207, 24)"
+		            Name = "lblAutoBackupInterval"
+		            Size = "(43, 12)"
+		            TabIndex = "1"
+		            Text = "interval"
+		            />
+
+		    <CheckBox id="chkAutoBackup"
+
+		            AutoSize = "true"
+		            Location = "(23, 23)"
+		            Name = "chkAutoBackup"
+		            Size = "(127, 16)"
+		            TabIndex = "0"
+		            Text = "Automatical Backup"
+		            UseVisualStyleBackColor = "true"
+		            />
+		    <NumericUpDownEx id="numAutoBackupInterval"
+
+		            Location = "(256, 22)"
+		            Minimum = "1"
+		            Name = "numAutoBackupInterval"
+		            Size = "(69, 19)"
+		            TabIndex = "2"
+		            TextAlign = "Center"
+		            Value = "10"
+		            />
+	    </TabPage>
+	    <TabPage id="tabSingingSynth"
+	            Location = "(4, 40)"
+	            Name = "tabSingingSynth"
+	            Padding = "(3)"
+	            Size = "(454, 471)"
+	            TabIndex = "8"
+	            Text = "Synthesizer"
+	            UseVisualStyleBackColor = "true"
+	            >
+
+	    <GroupBox id="groupDefaultSynthesizer"
+	            Location = "(23, 271)"
+	            Name = "groupDefaultSynthesizer"
+	            Size = "(407, 71)"
+	            TabIndex = "111"
+	            TabStop = "false"
+	            Text = "Default Synthesizer"
+	            >
+
+		    <ComboBox id="comboDefaultSynthesizer"
+
+		            FormattingEnabled = "true"
+		            Location = "(18, 29)"
+		            Name = "comboDefaultSynthesizer"
+		            Size = "(182, 20)"
+		            TabIndex = "11"
+		            >
+	            <_Items>
+		            <String>[Normal] Type 1</String>
+		            <String>[Normal] Type 2</String>
+		            <String>[Normal] Type 3</String>
+		            <String>[Normal] Type 4</String>
+		            <String>[Extreme] Type 1</String>
+		            <String>[Extreme] Type 2</String>
+		            <String>[Extreme] Type 3</String>
+		            <String>[Extreme] Type 4</String>
+		            <String>[Fast] Type 1</String>
+		            <String>[Fast] Type 2</String>
+		            <String>[Fast] Type 3</String>
+		            <String>[Fast] Type 4</String>
+		            <String>[Slight] Type 1</String>
+		            <String>[Slight] Type 2</String>
+		            <String>[Slight] Type 3</String>
+		            <String>[Slight] Type 4</String>
+	            </_Items>
+			</ComboBox>
+        </GroupBox>
+	    <GroupBox id="groupSynthesizerDll"
+	            Location = "(23, 147)"
+	            Name = "groupSynthesizerDll"
+	            Size = "(407, 118)"
+	            TabIndex = "110"
+	            TabStop = "false"
+	            Text = "Synthesizer DLL Usage"
+	            >
+		    <CheckBox id="chkLoadAquesTone2"
+
+		            AutoSize = "true"
+		            Location = "(18, 88)"
+		            Name = "chkLoadAquesTone2"
+		            Size = "(87, 16)"
+		            TabIndex = "117"
+		            Text = "AquesTone2"
+		            UseVisualStyleBackColor = "true"
+		            />
+
+		    <CheckBox id="chkLoadAquesTone"
+
+		            AutoSize = "true"
+		            Location = "(18, 66)"
+		            Name = "chkLoadAquesTone"
+		            Size = "(81, 16)"
+		            TabIndex = "116"
+		            Text = "AquesTone"
+		            UseVisualStyleBackColor = "true"
+		            />
+
+		    <CheckBox id="chkLoadVocaloid2"
+
+		            AutoSize = "true"
+		            Location = "(18, 44)"
+		            Name = "chkLoadVocaloid2"
+		            Size = "(87, 16)"
+		            TabIndex = "115"
+		            Text = "VOCALOID2"
+		            UseVisualStyleBackColor = "true"
+		            />
+
+		    <CheckBox id="chkLoadVocaloid1"
+
+		            AutoSize = "true"
+		            Location = "(18, 22)"
+		            Name = "chkLoadVocaloid1"
+		            Size = "(87, 16)"
+		            TabIndex = "113"
+		            Text = "VOCALOID1"
+		            UseVisualStyleBackColor = "true"
+		            />
+        </GroupBox>
+	    <GroupBox id="groupVsti"
+	            Location = "(23, 9)"
+	            Name = "groupVsti"
+	            Size = "(407, 132)"
+	            TabIndex = "109"
+	            TabStop = "false"
+	            Text = "VST Instruments"
+	            >
+
+		    <Button id="btnAquesTone2"
+
+		            Anchor = "Top,Right"
+		            Location = "(351, 94)"
+		            Name = "btnAquesTone2"
+		            Size = "(41, 23)"
+		            TabIndex = "9"
+		            Text = "..."
+		            UseVisualStyleBackColor = "true"
+		            />
+		    <Label id="lblAquesTone2"
+
+		            AutoSize = "true"
+		            Location = "(16, 99)"
+		            Name = "lblAquesTone2"
+		            Size = "(68, 12)"
+		            TabIndex = "7"
+		            Text = "AquesTone2"
+		            />
+
+		    <TextBox id="txtAquesTone2"
+
+		            Location = "(99, 96)"
+		            Name = "txtAquesTone2"
+		            Size = "(246, 19)"
+		            TabIndex = "8"
+		            />
+
+		    <Button id="btnAquesTone"
+
+		            Anchor = "Top,Right"
+		            Location = "(351, 69)"
+		            Name = "btnAquesTone"
+		            Size = "(41, 23)"
+		            TabIndex = "6"
+		            Text = "..."
+		            UseVisualStyleBackColor = "true"
+		            />
+
+		    <TextBox id="txtAquesTone"
+
+		            Location = "(99, 71)"
+		            Name = "txtAquesTone"
+		            Size = "(246, 19)"
+		            TabIndex = "5"
+		            />
+
+		    <Label id="lblAquesTone"
+
+		            AutoSize = "true"
+		            Location = "(16, 74)"
+		            Name = "lblAquesTone"
+		            Size = "(62, 12)"
+		            TabIndex = "4"
+		            Text = "AquesTone"
+		            />
+
+		    <TextBox id="txtVOCALOID2"
+
+		            Location = "(99, 46)"
+		            Name = "txtVOCALOID2"
+		            ReadOnly = "true"
+		            Size = "(246, 19)"
+		            TabIndex = "3"
+		            />
+
+		    <TextBox id="txtVOCALOID1"
+
+		            Location = "(99, 21)"
+		            Name = "txtVOCALOID1"
+		            ReadOnly = "true"
+		            Size = "(246, 19)"
+		            TabIndex = "1"
+		            />
+
+		    <Label id="lblVOCALOID2"
+
+		            AutoSize = "true"
+		            Location = "(16, 49)"
+		            Name = "lblVOCALOID2"
+		            Size = "(68, 12)"
+		            TabIndex = "2"
+		            Text = "VOCALOID2"
+		            />
+
+		    <Label id="lblVOCALOID1"
+
+		            AutoSize = "true"
+		            Location = "(16, 24)"
+		            Name = "lblVOCALOID1"
+		            Size = "(68, 12)"
+		            TabIndex = "0"
+		            Text = "VOCALOID1"
+		            />
+	        </GroupBox>
+	    </TabPage>
+	</TabControl>
+
+    <Button id="btnCancel"
+
+            Anchor = "Bottom,Right"
+            DialogResult = "Cancel"
+            Location = "(374, 538)"
+            Name = "btnCancel"
+            Size = "(88, 23)"
+            TabIndex = "201"
+            Text = "Cancel"
+            UseVisualStyleBackColor = "true"
+            />
+
+    <Button id="btnOK"
+
+            Anchor = "Bottom,Right"
+            Location = "(280, 538)"
+            Name = "btnOK"
+            Size = "(88, 23)"
+            TabIndex = "200"
+            Text = "OK"
+            UseVisualStyleBackColor = "true"
+            />
+</Form>
