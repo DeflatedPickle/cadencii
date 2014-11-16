@@ -23,11 +23,11 @@ namespace Cadencii.Application.Forms
     {
         private bool mPreviousAlwaysOnTop;
         private UiFormNoteProperty ui;
-        private PropertyWindowListener propertyWindowListener;
+		private FormMain main;
 
-		public FormNotePropertyController(Func<FormNotePropertyController,UiFormNoteProperty> createUi, PropertyWindowListener propertyWindowListener)
+		public FormNotePropertyController(Func<FormNotePropertyController,UiFormNoteProperty> createUi, FormMain propertyWindowListener)
         {
-            this.propertyWindowListener = propertyWindowListener;
+            this.main = propertyWindowListener;
             this.ui = createUi (this);
             applyLanguage();
         }
@@ -93,17 +93,17 @@ namespace Cadencii.Application.Forms
 
         public void windowStateChanged()
         {
-			this.propertyWindowListener.Model.OtherItems.propertyWindowStateChanged();
+			this.main.Model.OtherItems.propertyWindowStateChanged();
         }
 
         public void locationOrSizeChanged()
         {
-			this.propertyWindowListener.Model.OtherItems.propertyWindowLocationOrSizeChanged();
+			this.main.Model.OtherItems.propertyWindowLocationOrSizeChanged();
         }
 
         public void formClosing()
         {
-			this.propertyWindowListener.Model.OtherItems.propertyWindowFormClosing();
+			this.main.Model.OtherItems.propertyWindowFormClosing();
         }
 
         #endregion

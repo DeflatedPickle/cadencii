@@ -1,0 +1,53 @@
+﻿<Form id="UpdateCheckForm"
+
+            ClientSize = "(382, 142)"
+            FormBorderStyle = "FixedDialog"
+            MaximizeBox = "false"
+            MinimizeBox = "false"
+            Name = "UpdateCheckForm"
+            StartPosition = "CenterParent"
+            >
+    <Button id="button1"
+
+            Anchor = "Bottom,Right"
+            DialogResult = "Cancel"
+            Location = "(274, 97)"
+            Name = "button1"
+            Size = "(75, 23)"
+            TabIndex = "0"
+            Text = "button1"
+            UseVisualStyleBackColor = "true"
+            />
+
+	<Label id="label1"
+
+            AutoSize = "true"
+            Location = "(23, 20)"
+            Name = "label1"
+            Size = "(35, 12)"
+            TabIndex = "1"
+            Text = "label1"
+            />
+    <LinkLabel id="linkLabel1"
+
+            Anchor = "Top,Left,Right"
+            AutoEllipsis = "true"
+            Location = "(23, 50)"
+            Name = "linkLabel1"
+            Size = "(335, 36)"
+            TabIndex = "2"
+            TabStop = "true"
+            Text = "linkLabel1"
+            />
+
+    <CheckBox id="checkBox1"
+
+            AutoSize = "true"
+            Location = "(25, 101)"
+            Name = "checkBox1"
+            Size = "(80, 16)"
+            TabIndex = "3"
+            Text = "checkBox1"
+            UseVisualStyleBackColor = "true"
+            />
+</Form>

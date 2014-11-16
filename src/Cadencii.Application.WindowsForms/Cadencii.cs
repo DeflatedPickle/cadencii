@@ -67,6 +67,7 @@ namespace Cadencii.Application.Forms
         [STAThread]
         public static void Main(string[] args)
         {
+			new UpdateCheckFormImpl ().ShowDialog ();
 			PortUtil.SetApplicationStartupPath(System.Windows.Forms.Application.StartupPath);
 			Cadencii.Gui.AwtHost.Current = new Cadencii.Gui.AwtHostWindowsForms ();
 			cadencii.dsp.DspUIHost.CurrentType = typeof (cadencii.dsp.winforms.DspUIHostWF);

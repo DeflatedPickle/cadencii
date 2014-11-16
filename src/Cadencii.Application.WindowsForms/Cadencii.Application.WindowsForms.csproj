@@ -140,10 +140,7 @@
       <DependentUpon>PreferenceImpl.cs</DependentUpon>
     </Compile>
     <Compile Include="app_ui\forms\PreferenceImpl.cs" />
-    <Compile Include="app_ui\forms\ProgressBarWithLabelUiImpl.cs" />
-    <Compile Include="app_ui\forms\UpdateCheckForm.cs" />
     <Compile Include="app_ui\forms\VersionInfoImpl.cs" />
-    <Compile Include="app_ui\forms\WaveformZoomUiImpl.cs" />
     <Compile Include="app_ui\controls\PaletteToolMenuItemImpl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -174,6 +171,12 @@
       <DependentUpon>FormMainImpl.cs</DependentUpon>
     </Compile>
     <Compile Include="app_ui\forms\FormNotePropertyImpl.cs" />
+    <Compile Include="app_ui\controls\ProgressBarWithLabelUiImpl.cs" />
+    <EmbeddedResource Include="app_ui\controls\ProgressBarWithLabelUiImpl.resx">
+      <DependentUpon>ProgressBarWithLabelUiImpl.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="app_ui\controls\WaveformZoomUiImpl.cs" />
+    <Compile Include="app_ui\forms\UpdateCheckFormImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />
@@ -406,11 +409,8 @@
     <EmbeddedResource Include="app_ui\forms\PreferenceImpl.resx">
       <DependentUpon>PreferenceImpl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="app_ui\forms\ProgressBarWithLabelUiImpl.resx">
-      <DependentUpon>ProgressBarWithLabelUiImpl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="app_ui\forms\UpdateCheckForm.resx">
-      <DependentUpon>UpdateCheckForm.cs</DependentUpon>
+      <DependentUpon>UpdateCheckFormImpl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="resources\minus8x8.png" />
     <None Include="resources\note001.png" />

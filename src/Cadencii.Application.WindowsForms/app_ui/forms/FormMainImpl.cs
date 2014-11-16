@@ -41,13 +41,9 @@ namespace Cadencii.Application.Forms
     /// <summary>
     /// エディタのメイン画面クラス
     /// </summary>
-	public partial class FormMainImpl : FormImpl, FormMain, PropertyWindowListener
+	public partial class FormMainImpl : FormImpl, FormMain
     {
 		FormMainModel model;
-
-		FormMainModel PropertyWindowListener.Model {
-			get { return model; }
-		}
 
 		FormMainModel FormMain.Model {
 			get { return model; }

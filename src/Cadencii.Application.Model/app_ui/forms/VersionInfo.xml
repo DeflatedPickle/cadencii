@@ -1,0 +1,73 @@
+﻿<Form id="VersionInfo"
+            AcceptButton = "#btnOK"
+            AutoScaleMode = "None"
+            ClientSize = "(300, 419)"
+            FormBorderStyle = "FixedDialog"
+            KeyPreview = "true"
+            MaximizeBox = "false"
+            MaximumSize = "(306, 451)"
+            MinimizeBox = "false"
+            MinimumSize = "(306, 451)"
+            Name = "VersionInfo"
+            ShowIcon = "false"
+            StartPosition = "CenterScreen"
+            Text = "VersionInfoEx"
+            >
+    <Button id="btnFlip"
+
+            Anchor = "Bottom,Left"
+            Location = "(13, 391)"
+            Name = "btnFlip"
+            Size = "(75, 21)"
+            TabIndex = "2"
+            Text = "クレジット"
+            UseVisualStyleBackColor = "true"
+            />
+
+    <Button id="btnOK"
+
+            Anchor = "Bottom,Right"
+            DialogResult = "OK"
+            Location = "(211, 391)"
+            Name = "btnOK"
+            Size = "(75, 21)"
+            TabIndex = "1"
+            Text = "OK"
+            UseVisualStyleBackColor = "true"
+            />
+
+    <Label id="lblVstLogo"
+
+            BackColor = "$White"
+            Location = "(25, 277)"
+            Name = "lblVstLogo"
+            Size = "(263, 32)"
+            TabIndex = "5"
+            Text = "VST PlugIn Technology by Steinberg Media Technologies GmbH"
+            />
+
+    <PictureBox id="pictVstLogo"
+
+            BackColor = "$White"
+            Location = "(27, 304)"
+            Name = "pictVstLogo"
+            Size = "(88, 60)"
+            SizeMode = "Zoom"
+            TabIndex = "4"
+            TabStop = "false"
+            />
+
+    <CheckBox id="chkTwitterID"
+
+            Anchor = "Bottom,Right"
+            Appearance = "Button"
+            FlatStyle = "System"
+            Location = "(148, 391)"
+            Name = "chkTwitterID"
+            Size = "(57, 21)"
+            TabIndex = "8"
+            Text = "Twtr ID"
+            TextAlign = "MiddleCenter"
+            UseVisualStyleBackColor = "true"
+            />
+</Form>
