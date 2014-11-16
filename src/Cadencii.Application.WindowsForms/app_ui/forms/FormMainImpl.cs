@@ -1386,13 +1386,15 @@ namespace Cadencii.Application.Forms
                     menu.Text = PortUtil.getFileName(item.file);
                     menu.ToolTipText = item.file;
 
-					BgmMenuItem menu_remove = ApplicationUIHost.Create<BgmMenuItem>(i);
+					BgmMenuItem menu_remove = ApplicationUIHost.Create<BgmMenuItem>();
+					menu_remove.BgmIndex = i;
                     menu_remove.Text = _("Remove");
                     menu_remove.ToolTipText = item.file;
 					menu_remove.Click += (o,e) => model.OtherItems.handleBgmRemove_Click ((BgmMenuItem) o);
                     menu.DropDownItems.Add(menu_remove);
 
-					BgmMenuItem menu_start_after_premeasure = ApplicationUIHost.Create<BgmMenuItem>(i);
+					BgmMenuItem menu_start_after_premeasure = ApplicationUIHost.Create<BgmMenuItem>();
+					menu_start_after_premeasure.BgmIndex = i;
                     menu_start_after_premeasure.Text = _("Start After Premeasure");
                     menu_start_after_premeasure.Name = "menu_start_after_premeasure" + i;
                     menu_start_after_premeasure.CheckOnClick = true;
@@ -1400,7 +1402,8 @@ namespace Cadencii.Application.Forms
 					menu_start_after_premeasure.CheckedChanged += (o,e) => model.OtherItems.handleBgmStartAfterPremeasure_CheckedChanged((BgmMenuItem) o);
                     menu.DropDownItems.Add(menu_start_after_premeasure);
 
-					BgmMenuItem menu_offset_second = ApplicationUIHost.Create<BgmMenuItem>(i);
+					BgmMenuItem menu_offset_second = ApplicationUIHost.Create<BgmMenuItem>();
+					menu_offset_second.BgmIndex = i;
                     menu_offset_second.Text = _("Set Offset Seconds");
                     menu_offset_second.ToolTipText = item.readOffsetSeconds + " " + _("seconds");
 					menu_offset_second.Click += (o,e) => model.OtherItems.handleBgmOffsetSeconds_Click((BgmMenuItem) o);

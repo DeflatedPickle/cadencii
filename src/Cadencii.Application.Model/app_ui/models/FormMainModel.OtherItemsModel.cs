@@ -180,7 +180,7 @@ namespace Cadencii.Application.Models
 			}
 			public void handleBgmOffsetSeconds_Click(BgmMenuItem menu)
 			{
-				int index = menu.getBgmIndex();
+				int index = menu.BgmIndex;
 				InputBox ib = null;
 				try {
 					ib = ApplicationUIHost.Create<InputBox>(_("Input Offset Seconds"));
@@ -227,7 +227,7 @@ namespace Cadencii.Application.Models
 
 			public void handleBgmStartAfterPremeasure_CheckedChanged(BgmMenuItem menu)
 			{
-				int index = menu.getBgmIndex();
+				int index = menu.BgmIndex;
 				List<BgmFile> list = new List<BgmFile>();
 				int count = MusicManager.getBgmCount();
 				for (int i = 0; i < count; i++) {
@@ -283,7 +283,7 @@ namespace Cadencii.Application.Models
 
 			public void handleBgmRemove_Click(BgmMenuItem item)
 			{
-				int index = item.getBgmIndex();
+				int index = item.BgmIndex;
 				BgmFile bgm = MusicManager.getBgm(index);
 				if (DialogManager.ShowMessageBox(PortUtil.formatMessage(_("remove '{0}'?"), bgm.file),
 					"Cadencii",

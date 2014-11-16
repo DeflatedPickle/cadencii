@@ -5,7 +5,7 @@ namespace Cadencii.Application.Controls
 {
 	public interface BgmMenuItem : UiToolStripMenuItem
 	{
-		int getBgmIndex();
+		int BgmIndex { get; set; }
 	}
 }
 

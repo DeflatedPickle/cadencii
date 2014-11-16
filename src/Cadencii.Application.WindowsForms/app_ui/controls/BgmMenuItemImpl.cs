@@ -21,23 +21,12 @@ namespace Cadencii.Application.Controls
 {
 
 	public class BgmMenuItemImpl : ToolStripMenuItemImpl, BgmMenuItem
-    {
-        private int mBgmIndex;
+	{
+		public BgmMenuItemImpl ()
+		{
+		}
 
-        public BgmMenuItemImpl(int bgm_index)
-            : base()
-        {
-            mBgmIndex = bgm_index;
-        }
-
-        /// <summary>
-        /// このメニューアイテムが担当しているBGMのインデックスを取得します
-        /// </summary>
-        /// <returns>BGMのインデックス</returns>
-        public int getBgmIndex()
-        {
-            return mBgmIndex;
-        }
-    }
+		public int BgmIndex { get; set; }
+	}
 
 }
