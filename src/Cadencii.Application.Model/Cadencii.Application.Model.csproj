@@ -206,9 +206,13 @@
     <Compile Include="app_ui\forms\FormTrackProperty.cs" />
     <Compile Include="app_ui\forms\FormVibratoConfig.cs" />
     <Compile Include="app_ui\forms\FormVibratoPreset.cs" />
-    <Compile Include="app_ui\forms\FormWordDictionaryController.cs" />
+    <Compile Include="app_ui\forms\FormWordDictionaryController.cs">
+      <DependentUpon>FormWordDictionaryUi.cs</DependentUpon>
+    </Compile>
     <Compile Include="app_ui\forms\FormWordDictionaryUi.cs" />
-    <Compile Include="app_ui\forms\FormWordDictionaryUiListener.cs" />
+    <Compile Include="app_ui\forms\FormWordDictionaryUiListener.cs">
+      <DependentUpon>FormWordDictionaryUi.cs</DependentUpon>
+    </Compile>
     <Compile Include="app_ui\forms\FormWorkerUi.cs" />
     <Compile Include="app_ui\forms\InputBox.cs" />
     <Compile Include="app_ui\forms\Preference.cs" />
@@ -421,6 +425,14 @@
     <EmbeddedResource Include="app_ui\forms\FormVibratoPreset.xml">
       <LogicalName>FormVibratoPreset.xml</LogicalName>
       <DependentUpon>FormVibratoPreset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormWordDictionaryUi.xml">
+      <LogicalName>FormWordDictionaryUi.xml</LogicalName>
+      <DependentUpon>FormWordDictionaryUi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormWorkerUi.xml">
+      <LogicalName>FormWorkerUi.xml</LogicalName>
+      <DependentUpon>FormWorkerUi.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

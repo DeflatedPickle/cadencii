@@ -61,6 +61,7 @@ namespace Cadencii.Application.Forms
         public FormWorkerUiImpl(IFormWorkerControl control)
         {
             InitializeComponent();
+			registerEventHandlers ();
             mControl = control;
             mFullHeight = this.Height;
         }
@@ -240,90 +241,19 @@ namespace Cadencii.Application.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonDetail = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            //
-            // progressBar1
-            //
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(12, 40);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(400, 23);
-            this.progressBar1.TabIndex = 1;
-            //
-            // flowLayoutPanel1
-            //
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 109);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(400, 126);
-            this.flowLayoutPanel1.TabIndex = 2;
-            this.flowLayoutPanel1.WrapContents = false;
-            //
-            // label1
-            //
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(400, 28);
-            this.label1.TabIndex = 3;
-            //
-            // buttonCancel
-            //
-            this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(332, 69);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(80, 23);
-            this.buttonCancel.TabIndex = 4;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-            //
-            // buttonDetail
-            //
-            this.buttonDetail.Location = new System.Drawing.Point(12, 69);
-            this.buttonDetail.Name = "buttonDetail";
-            this.buttonDetail.Size = new System.Drawing.Size(80, 23);
-            this.buttonDetail.TabIndex = 5;
-            this.buttonDetail.Text = "detail";
-            this.buttonDetail.UseVisualStyleBackColor = true;
-            this.buttonDetail.Click += new System.EventHandler(this.buttonDetail_Click);
-            //
-            // FormWorkerUi
-            //
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(424, 247);
-            this.Controls.Add(this.buttonDetail);
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.progressBar1);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FormWorkerUi";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FormWorker";
-            this.SizeChanged += new System.EventHandler(this.FormWorkerUi_SizeChanged);
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormWorkerUi_FormClosing);
+			ApplicationUIHost.Instance.ApplyXml (this, "FormWorkerUi.xml");
             this.ResumeLayout(false);
 
         }
+
+		void registerEventHandlers ()
+		{
+			this.buttonCancel.Click += new System.EventHandler(buttonCancel_Click);
+			this.buttonDetail.Click += new System.EventHandler (buttonDetail_Click);
+			this.SizeChanged += new System.EventHandler(this.FormWorkerUi_SizeChanged);
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormWorkerUi_FormClosing);
+		}
 
         #endregion
 

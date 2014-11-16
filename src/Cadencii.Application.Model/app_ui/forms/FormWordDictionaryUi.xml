@@ -1,0 +1,90 @@
+﻿<Form id="FormWordDictionaryUi"
+            AcceptButton = "#btnOK"
+            AutoScaleDimensions = "(6, 12)"
+            AutoScaleMode = "Font"
+            CancelButton = "#btnCancel"
+            ClientSize = "(272, 315)"
+            FormBorderStyle = "FixedDialog"
+            MaximizeBox = "false"
+            MinimizeBox = "false"
+            Name = "FormWordDictionaryUiImpl"
+            ShowIcon = "false"
+            ShowInTaskbar = "false"
+            StartPosition = "Manual"
+            Text = "User Dictionary Configuration"
+            >
+    <ListView id="listDictionaries"
+            Anchor = "Top,Bottom,Left,Right"
+            CheckBoxes = "true"
+            HideSelection = "false"
+            Location = "(12, 33)"
+            Name = "listDictionaries"
+            Size = "(248, 186)"
+            TabIndex = "0"
+            UseCompatibleStateImageBehavior = "false"
+            View = "List"
+            >
+        <_Columns>
+        	<ColumnHeader />
+        </_Columns>
+        <_Groups>
+			<ListViewGroup id="listViewGroup1"
+				Header="ListViewGroup" HeaderAlignment="Left" />
+			<ListViewGroup id="listViewGroup2"
+				Header="ListViewGroup" HeaderAlignment="Left" />
+			<ListViewGroup id="listViewGroup3"
+				Header="ListViewGroup" HeaderAlignment="Left" />
+        </_Groups>
+        <_Items>
+        	<ListViewItem Text="DEFAULT_JP" Checked="true" Group="#listViewGroup3" StateImageIndex="1" />
+        </_Items>
+    </ListView>
+    <Label id="lblAvailableDictionaries"
+
+            AutoSize = "true"
+            Location = "(12, 13)"
+            Name = "lblAvailableDictionaries"
+            Size = "(117, 12)"
+            TabIndex = "1"
+            Text = "Available Dictionaries"
+            />
+    <Button id="btnOK"
+
+            Anchor = "Bottom,Right"
+            Location = "(91, 277)"
+            Name = "btnOK"
+            Size = "(75, 23)"
+            TabIndex = "4"
+            Text = "OK"
+            UseVisualStyleBackColor = "true"
+            />
+    <Button id="btnCancel"
+
+            Anchor = "Bottom,Right"
+            DialogResult = "Cancel"
+            Location = "(185, 277)"
+            Name = "btnCancel"
+            Size = "(75, 23)"
+            TabIndex = "3"
+            Text = "Cancel"
+            UseVisualStyleBackColor = "true"
+            />
+    <Button id="btnUp"
+            Anchor = "Bottom,Right"
+            Location = "(142, 229)"
+            Name = "btnUp"
+            Size = "(56, 23)"
+            TabIndex = "5"
+            Text = "Up"
+            UseVisualStyleBackColor = "true"
+            />
+    <Button id="btnDown"
+            Anchor = "Bottom,Right"
+            Location = "(204, 229)"
+            Name = "btnDown"
+            Size = "(56, 23)"
+            TabIndex = "6"
+            Text = "Down"
+            UseVisualStyleBackColor = "true"
+            />
+</Form>
