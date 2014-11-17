@@ -445,5 +445,8 @@
       <LogicalName>UpdateCheckForm.xml</LogicalName>
       <DependentUpon>UpdateCheckForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\forms\FormMain.xml">
+      <LogicalName>FormMain.xml</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

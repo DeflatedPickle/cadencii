@@ -45,6 +45,9 @@ namespace Cadencii.Application.Forms
 				.FirstOrDefault (x => x != null);
 		}
 
+		Func<Type,string, object> get_static_property = (type,value) => type.GetProperty (value.Contains ('.') ? value.Substring (value.IndexOf ('.') + 1) : value.Substring (1)).GetValue (null);
+		Func<Type,string, object> get_static_field = (type,value) => type.GetField (value.Contains ('.') ? value.Substring (value.IndexOf ('.') + 1) : value.Substring (1)).GetValue (null);
+
 		object Deserialize (Control root, string value, Type t)
 		{
 			if (value.FirstOrDefault () == '$') {
@@ -52,10 +55,16 @@ namespace Cadencii.Application.Forms
 					if (value [1] == '(')
 						return typeof (System.Drawing.Color).GetMethods ().First (m => m.Name == "FromArgb").Invoke (null, value.Substring (2, value.Length - 3).Split (',').Select (tk => int.Parse (tk)).Cast<object> ().ToArray ());
 					else if (value.StartsWith ("$SystemColors"))
-						return typeof (System.Drawing.SystemColors).GetProperty (value.Substring (value.IndexOf ('.') + 1)).GetValue (null);
+						return get_static_property (typeof (System.Drawing.SystemColors), value);
 					else
-						return typeof (System.Drawing.Color).GetProperty (value.Substring (1)).GetValue (null);
+						return get_static_property (typeof (System.Drawing.Color), value);
 				}
+				else if (t == typeof (Cadencii.Gui.Color))
+					return get_static_field (typeof (Cadencii.Gui.Colors), value);
+				else if (t == typeof (System.Windows.Forms.Cursor))
+					return get_static_property (typeof (System.Windows.Forms.Cursors), value);
+				else if (t == typeof (Cadencii.Gui.Cursor))
+					return get_static_property (typeof (Cadencii.Gui.Cursors), value);
 				else
 					throw new NotSupportedException ();
 			}
@@ -78,10 +87,10 @@ namespace Cadencii.Application.Forms
 			}
 		}
 
-		object CreateObject (string name)
+		object CreateObject (string name, params object [] additionalConstructorArguments)
 		{
 			var ct = typeof (System.Windows.Forms.Form).Assembly.GetType ("System.Windows.Forms." + name);
-			var obj = ct != null ? Activator.CreateInstance (ct) : ApplicationUIHost.Create (name);
+			var obj = ct != null ? Activator.CreateInstance (ct, additionalConstructorArguments) : ApplicationUIHost.Create (name, additionalConstructorArguments);
 			return obj;
 		}
 
@@ -148,9 +157,14 @@ namespace Cadencii.Application.Forms
 						if (fi != null)
 							fi.SetValue (root, o);
 					}
-				} else {
+				}
+				else if (a.LocalName == "use-default-constructor")
+					continue;
+				else {
 					var t = o.GetType ();
 					var p = t.GetProperty (a.LocalName);
+					if (p == null)
+						throw new ArgumentException ("Property '" + a.LocalName + "' was not found");
 					var v = Deserialize (root, a.Value, p.PropertyType);
 					p.SetValue (o, v);
 				}
@@ -161,7 +175,20 @@ namespace Cadencii.Application.Forms
 		{
 			var xml = new XmlDocument ();
 			xml.Load (typeof (FormMainModel).Assembly.GetManifestResourceStream (xmlResourceName));
-			ApplyXml ((Control) control.Native, xml.DocumentElement, control, false);
+			if (xml.DocumentElement.LocalName == "Widgets") {
+				foreach (XmlElement el in xml.DocumentElement.SelectNodes ("*")) {
+					if (el.LocalName == "Form")
+						ApplyXml ((Control) control.Native, el, control, false);
+					else if (el.LocalName == "____UNKNOWN____")
+						continue; // skip
+					else {
+						var obj = el.GetAttribute ("use-default-constructor") == "true" ? CreateObject (el.LocalName) : CreateObject (el.LocalName, ((UiForm) control).Components);
+						ApplyXml ((Control) control.Native, el, obj, false);
+					}
+				}
+			}
+			else
+				ApplyXml ((Control) control.Native, xml.DocumentElement, control, false);
 		}
 
 		#endregion

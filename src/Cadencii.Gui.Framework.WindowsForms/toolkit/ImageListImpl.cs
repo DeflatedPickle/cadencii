@@ -29,37 +29,33 @@ namespace Cadencii.Gui.Toolkit
 			get { return impl; }
 		}
 
-		#region UiImageList implementation
-
-		void UiImageList.SetImagesKeyName (int i, string name)
+		public void SetImagesKeyName (int i, string name)
 		{
 			impl.Images.SetKeyName (i, name);
 		}
 
-		ColorDepth UiImageList.ColorDepth {
+		public ColorDepth ColorDepth {
 			set { impl.ColorDepth = (System.Windows.Forms.ColorDepth) value; }
 			get { return (ColorDepth)impl.ColorDepth; }
 		}
 
-		object UiImageList.ImageStream {
+		public object ImageStream {
 			get { return impl.ImageStream; }
 			set { impl.ImageStream = (System.Windows.Forms.ImageListStreamer) value; }
 		}
 
-		Cadencii.Gui.Dimension UiImageList.ImageSize {
+		public Cadencii.Gui.Dimension ImageSize {
 			get { return impl.ImageSize.ToAwt (); }
 			set { impl.ImageSize = value.ToWF (); }
 		}
 
-		Cadencii.Gui.Color UiImageList.TransparentColor {
+		public Cadencii.Gui.Color TransparentColor {
 			get { return impl.TransparentColor.ToAwt (); }
 			set { impl.TransparentColor = value.ToNative (); }
 		}
 
-		ICollection<Cadencii.Gui.Image> UiImageList.Images {
+		public ICollection<Cadencii.Gui.Image> Images {
 			get { return new CastingList<Cadencii.Gui.Image,System.Drawing.Image> (impl.Images, ExtensionsWF.ToAwt, ExtensionsWF.ToWF); }
 		}
-
-		#endregion
 	}
 }

@@ -95,7 +95,7 @@ namespace Cadencii.Application.Models
 
 			public void ShowRecentFileInMenuItem (RecentFileMenuItem item)
 			{
-				string filename = item.getFilePath();
+				string filename = item.FilePath;
 				if (!parent.DirtyCheck()) {
 					return;
 				}

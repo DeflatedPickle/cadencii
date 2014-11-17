@@ -18,20 +18,9 @@ using Cadencii.Gui.Toolkit;
 namespace Cadencii.Application.Controls
 {
 
-    public class RecentFileMenuItemImpl : ToolStripMenuItemImpl, RecentFileMenuItem
-    {
-        private string mFilePath;
-
-        public RecentFileMenuItemImpl(string file_path)
-            : base()
-        {
-            mFilePath = file_path;
-        }
-
-        public string getFilePath()
-        {
-            return mFilePath;
-        }
-    }
+	public class RecentFileMenuItemImpl : ToolStripMenuItemImpl, RecentFileMenuItem
+	{
+		public string FilePath { get; set; }
+	}
 
 }

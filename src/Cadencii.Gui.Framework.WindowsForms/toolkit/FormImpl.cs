@@ -16,11 +16,22 @@ using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventAr
 using System.Collections.Generic;
 using Cadencii.Gui.Toolkit;
 using cadencii;
+using System.ComponentModel;
 
 namespace Cadencii.Gui.Toolkit
 {
 	public class FormImpl : System.Windows.Forms.Form, UiForm
  	{
+		public virtual IContainer Components {
+			get { return null; }
+		}
+
+		// it hides protected Control.DoubleBuffered.
+		public new bool DoubleBuffered { 
+			get { return base.DoubleBuffered; }
+			set { base.DoubleBuffered = value; }
+		}
+
 		AutoScaleMode UiForm.AutoScaleMode {
 			get { return (AutoScaleMode)AutoScaleMode;  }
 			set { AutoScaleMode = (System.Windows.Forms.AutoScaleMode)value; }

@@ -124,7 +124,6 @@ namespace Cadencii.Application.Forms
 		UiToolStripMenuItem menuVisualPluginUiAquesTone { get; set; }
 		UiToolStripMenuItem menuVisualPluginUiVocaloid1 { get; set; }
 		UiToolStripMenuItem menuVisualPluginUiVocaloid2 { get; set; }
-		UiToolStripMenuItem menuTrackRendererAquesTone2 { get; set; }
 		UiToolStripMenuItem menuVisualPluginUiAquesTone2 { get; set; }
 		UiToolStripMenuItem menuVisualIconPalette { get; set; }
 		UiToolStripMenuItem menuVisualWaveform { get; set; }

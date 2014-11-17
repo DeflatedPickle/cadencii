@@ -276,17 +276,18 @@ namespace Cadencii.Application.Models
 				}
 			}
 
-			public void RunLoad ()
+			void CustomizeRebar ()
 			{
-				parent.form.applyLanguage ();
-
 				// ツールバーの位置を復帰させる
 				// toolStipの位置を，前回終了時の位置に戻す
 				int chevron_width = EditorManager.editorConfig.ChevronWidth;
+
+				/*
 				parent.form.bandFile = ApplicationUIHost.Create<RebarBand> ();
 				parent.form.bandPosition = ApplicationUIHost.Create<RebarBand> ();
 				parent.form.bandMeasure = ApplicationUIHost.Create<RebarBand> ();
 				parent.form.bandTool = ApplicationUIHost.Create<RebarBand> ();
+				*/
 
 				var bandFile = parent.form.bandFile;
 				var bandPosition = parent.form.bandPosition;
@@ -301,6 +302,11 @@ namespace Cadencii.Application.Models
 
 				int MAX_BAND_HEIGHT = 26;// toolBarTool.Height;
 
+				var toolBarFile = (UiToolBar) bandFile.Child;
+				var toolBarPosition = (UiToolBar) bandPosition.Child;
+				var toolBarMeasure = (UiToolBar) bandMeasure.Child;
+				var toolBarTool = (UiToolBar) bandTool.Child;
+				/*
 				var toolBarFile = parent.form.toolBarFile;
 				var toolBarPosition = parent.form.toolBarPosition;
 				var toolBarMeasure = parent.form.toolBarMeasure;
@@ -309,13 +315,8 @@ namespace Cadencii.Application.Models
 				parent.form.rebar.AddControl (toolBarTool);
 				parent.form.rebar.AddControl (toolBarPosition);
 				parent.form.rebar.AddControl (toolBarMeasure);
+				*/
 				// bandFile
-				bandFile.AllowVertical = false;
-				bandFile.Child = toolBarFile;
-				bandFile.Header = -1;
-				bandFile.Integral = 1;
-				bandFile.MaxHeight = MAX_BAND_HEIGHT;
-				bandFile.UseChevron = true;
 				if (toolBarFile.Buttons.Count > 0) {
 					bandFile.IdealWidth =
 					toolBarFile.Buttons [toolBarFile.Buttons.Count - 1].Rectangle.Right + chevron_width;
@@ -323,12 +324,6 @@ namespace Cadencii.Application.Models
 				bandFile.BandSize = EditorManager.editorConfig.BandSizeFile;
 				bandFile.NewRow = EditorManager.editorConfig.BandNewRowFile;
 				// bandPosition
-				bandPosition.AllowVertical = false;
-				bandPosition.Child = toolBarPosition;
-				bandPosition.Header = -1;
-				bandPosition.Integral = 1;
-				bandPosition.MaxHeight = MAX_BAND_HEIGHT;
-				bandPosition.UseChevron = true;
 				if (toolBarPosition.Buttons.Count > 0) {
 					bandPosition.IdealWidth =
 					toolBarPosition.Buttons [toolBarPosition.Buttons.Count - 1].Rectangle.Right + chevron_width;
@@ -336,12 +331,6 @@ namespace Cadencii.Application.Models
 				bandPosition.BandSize = EditorManager.editorConfig.BandSizePosition;
 				bandPosition.NewRow = EditorManager.editorConfig.BandNewRowPosition;
 				// bandMeasure
-				bandMeasure.AllowVertical = false;
-				bandMeasure.Child = toolBarMeasure;
-				bandMeasure.Header = -1;
-				bandMeasure.Integral = 1;
-				bandMeasure.MaxHeight = MAX_BAND_HEIGHT;
-				bandMeasure.UseChevron = true;
 				if (toolBarMeasure.Buttons.Count > 0) {
 					bandMeasure.IdealWidth =
 					toolBarMeasure.Buttons [toolBarMeasure.Buttons.Count - 1].Rectangle.Right + chevron_width;
@@ -349,18 +338,15 @@ namespace Cadencii.Application.Models
 				bandMeasure.BandSize = EditorManager.editorConfig.BandSizeMeasure;
 				bandMeasure.NewRow = EditorManager.editorConfig.BandNewRowMeasure;
 				// bandTool
-				bandTool.AllowVertical = false;
-				bandTool.Child = toolBarTool;
-				bandTool.Header = -1;
-				bandTool.Integral = 1;
-				bandTool.MaxHeight = MAX_BAND_HEIGHT;
-				bandTool.UseChevron = true;
 				if (toolBarTool.Buttons.Count > 0) {
 					bandTool.IdealWidth =
 					toolBarTool.Buttons [toolBarTool.Buttons.Count - 1].Rectangle.Right + chevron_width;
 				}
 				bandTool.BandSize = EditorManager.editorConfig.BandSizeTool;
 				bandTool.NewRow = EditorManager.editorConfig.BandNewRowTool;
+
+				// it's possible to support this later, but now I want cleaner XMLization.
+				#if false
 				// 一度リストに入れてから追加する
 				var bands = new RebarBand[] { null, null, null, null };
 				// 番号がおかしくないかチェック
@@ -403,14 +389,18 @@ namespace Cadencii.Application.Models
 					bands [i].MinHeight = 24;
 					parent.form.rebar.Bands.Add (bands [i]);
 				}
+				#endif
 
 				#if DEBUG
-				Logger.StdOut ("FormMain#.ctor; this.Width=" + parent.form.Width);
+				Logger.StdOut (GetType () + ".ctor; this.Width=" + parent.form.Width);
 				#endif
-				bandTool.Resize += (o, e) => parent.OtherItems.SaveToolbarLocation ();
-				bandMeasure.Resize += (o, e) => parent.OtherItems.SaveToolbarLocation ();
-				bandPosition.Resize += (o, e) => parent.OtherItems.SaveToolbarLocation ();
-				bandFile.Resize += (o, e) => parent.OtherItems.SaveToolbarLocation ();
+			}
+
+			public void RunLoad ()
+			{
+				parent.form.applyLanguage ();
+
+				CustomizeRebar ();
 
 				parent.updateSplitContainer2Size (false);
 

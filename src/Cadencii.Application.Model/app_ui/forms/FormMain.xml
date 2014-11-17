@@ -1,0 +1,2559 @@
+﻿<Widgets>
+	<Form id="FormMain"
+
+	            AllowDrop = "true"
+	            AutoScaleDimensions = "(6, 12)"
+            AutoScaleMode = "Font"
+	            BackColor = "$SystemColors.Control"
+	            ClientSize = "(955, 689)"
+	            DoubleBuffered = "true"
+	            KeyPreview = "true"
+            MainMenuStrip = "#menuStripMain"
+	            Name = "FormMain"
+	            Text = "Cadencii"
+	            >
+		<UiToolStripContainer id="toolStripContainer1"
+
+	            Dock = "Fill"
+	            LeftToolStripPanelVisible = "false"
+            Location = "(0, 30)"
+	            Name = "toolStripContainer1"
+	            RightToolStripPanelVisible = "false"
+	            Size = "(955, 659)"
+	            TabIndex = "26"
+	            Text = "toolStripContainer1"
+	            TopToolStripPanelVisible = "false"
+	            >
+
+		    <_BottomToolStripPanel
+	            RenderMode = "System"
+	            >
+			    <UiToolStrip id="toolStripBottom"
+			            Dock = "None"
+            Location = "(15, 0)"
+			            Name = "toolStripBottom"
+			            RenderMode = "System"
+			            Size = "(347, 25)"
+			            TabIndex = "22"
+			            >
+		            <_Items>
+
+				        <UiToolStripStatusLabel id="toolStripStatusLabel1"
+
+				            Name = "toolStripStatusLabel1"
+				            Size = "(101, 20)"
+				            Text = "Game Controler"
+				            />
+
+				        <UiToolStripStatusLabel id="stripLblGameCtrlMode"
+
+				            Name = "stripLblGameCtrlMode"
+				            Size = "(57, 20)"
+				            Text = "Disabled"
+				            ToolTipText = "Game Controler"
+				            />
+
+				        <UiToolStripSeparator id="toolStripSeparator10"
+
+				            Name = "toolStripSeparator10"
+				            Size = "(6, 25)"
+				            />
+
+				        <UiToolStripStatusLabel id="toolStripStatusLabel2"
+
+				            Name = "toolStripStatusLabel2"
+				            Size = "(53, 20)"
+				            Text = "MIDI In"
+				            />
+
+				        <UiToolStripStatusLabel id="stripLblMidiIn"
+
+				            Name = "stripLblMidiIn"
+				            Size = "(57, 20)"
+				            Text = "Disabled"
+				            ToolTipText = "Midi In Device"
+				            />
+
+				        <UiToolStripSeparator id="toolStripSeparator11"
+
+				            Name = "toolStripSeparator11"
+				            Size = "(6, 25)"
+				            />
+
+				        <UiToolStripButton id="stripBtnStepSequencer"
+				            CheckOnClick = "true"
+				            ImageTransparentColor = "$Magenta"
+				            Name = "stripBtnStepSequencer"
+				            Size = "(55, 22)"
+				            Text = "Step"
+				            />
+		            </_Items>
+			    </UiToolStrip>
+			    <UiStatusStrip id="statusStrip"
+			            Dock = "None"
+            Location = "(0, 25)"
+			            Name = "statusStrip"
+			            Size = "(955, 22)"
+			            TabIndex = "25"
+			            Text = "statusStrip1"
+			            >
+			        <_Items>
+				        <UiToolStripStatusLabel id="statusLabel"
+
+				            Name = "statusLabel"
+				            Size = "(0, 17)"
+				            />
+			        </_Items>
+			    </UiStatusStrip>
+		    </_BottomToolStripPanel>
+
+	        <_ContentPanel
+	            Size = "(955, 612)"
+				>
+				<UiPanel id="panel1"
+			            Location = "(15, 13)"
+			            Name = "panel1"
+			            Size = "(421, 279)"
+			            TabIndex = "24"
+			            >
+
+			        <UiPictureBox id="pictKeyLengthSplitter"
+
+			            Anchor = "Bottom,Left"
+			            BackColor = "$SystemColors.Control"
+			            BorderStyle = "Fixed3D"
+            			Cursor = "$NoMoveHoriz"
+			            Location = "(49, 263)"
+			            Margin = "(0)"
+			            Name = "pictKeyLengthSplitter"
+			            Size = "(16, 16)"
+			            TabIndex = "20"
+			            TabStop = "false"
+			            />
+
+				    <PictOverview id="panelOverview"
+
+				            Anchor = "Top,Left,Right"
+				            BackColor = "$(106,108,108)"
+				            Location = "(0, 1)"
+				            Margin = "(0)"
+				            Name = "panelOverview"
+				            Size = "(700, 45)"
+				            TabIndex = "19"
+				            TabStop = "false"
+				            />
+
+			        <UiPictureBox id="picturePositionIndicator"
+
+			            Anchor = "Top,Left,Right"
+			            BackColor = "$DarkGray"
+			            Location = "(0, 46)"
+			            Margin = "(0)"
+			            Name = "picturePositionIndicator"
+			            Size = "(700, 48)"
+			            TabIndex = "10"
+			            TabStop = "false"
+			            />
+
+				    <PictPianoRoll id="pictPianoRoll"
+
+            Anchor = "Top,Bottom,Left,Right"
+            BackColor = "$(240,240,240)"
+            Location = "(0, 94)"
+            Margin = "(0)"
+				            Name = "pictPianoRoll"
+            Size = "(405, 169)"
+				            TabIndex = "12"
+				            TabStop = "false"
+				            />
+
+			        <UiVScrollBar id="vScroll"
+
+			            Anchor = "Top,Bottom,Right"
+			            Location = "(405, 94)"
+			            Name = "vScroll"
+			            Size = "(16, 137)"
+			            TabIndex = "17"
+			            />
+
+			        <UiPictureBox id="pictureBox3"
+
+			            Anchor = "Bottom,Left"
+			            BackColor = "$(224,224,224)"
+			            Location = "(0, 263)"
+			            Margin = "(0)"
+			            Name = "pictureBox3"
+			            Size = "(49, 16)"
+			            TabIndex = "8"
+			            TabStop = "false"
+			            />
+
+			        <UiPictureBox id="pictureBox2"
+
+			            Anchor = "Bottom,Right"
+			            BackColor = "$(224,224,224)"
+			            Location = "(405, 231)"
+			            Margin = "(0)"
+			            Name = "pictureBox2"
+			            Size = "(16, 48)"
+			            TabIndex = "5"
+			            TabStop = "false"
+			            />
+
+				    <UiHScrollBar id="hScroll"
+
+				            Anchor = "Bottom,Left,Right"
+				            Location = "(65, 263)"
+				            Name = "hScroll"
+				            Size = "(257, 16)"
+				            TabIndex = "16"
+				            />
+
+			        <UiTrackBar id="trackBar"
+
+			            Anchor = "Bottom,Right"
+			            AutoSize = "false"
+			            Location = "(322, 263)"
+			            Margin = "(0)"
+			            Maximum = "609"
+			            Minimum = "17"
+			            Name = "trackBar"
+			            Size = "(83, 16)"
+			            TabIndex = "15"
+			            TabStop = "false"
+			            TickFrequency = "100"
+			            TickStyle = "None"
+			            Value = "17"
+			            />
+
+				</UiPanel>
+		        <BSplitContainer id="splitContainerProperty"
+		            FixedPanel = "None"
+		            SplitterFixed = "false"
+		            Location = "(448, 14)"
+		            Margin = "(0)"
+		            Name = "splitContainerProperty"
+		            Orientation = "Horizontal"
+		            Panel1MinSize = "25"
+		            Panel2MinSize = "25"
+		            Size = "(112, 348)"
+		            SplitterDistance = "42"
+		            SplitterWidth = "4"
+		            TabIndex = "20"
+		            TabStop = "false"
+		            Text = "bSplitContainer1"
+		            >
+		            <_Panel1
+			            Anchor = "Top,Bottom,Left,Right"
+			            BorderColor = "$Black"
+			            Location = "(0, 0)"
+			            Margin = "(0, 0, 0, 4)"
+			            Name = "m_panel1"
+			            Size = "(42, 348)"
+			            TabIndex = "0"
+			            >
+		            </_Panel1>
+		            <_Panel2
+            Anchor = "Top,Bottom,Left,Right"
+		            BorderColor = "$Black"
+		            Location = "(46, 0)"
+		            Margin = "(0)"
+		            Name = "m_panel2"
+		            Size = "(66, 348)"
+		            TabIndex = "1"
+		            	>
+		            </_Panel2>
+
+			        <BSplitContainer id="splitContainer2"
+
+			            FixedPanel = "Panel2"
+			            SplitterFixed = "false"
+			            Location = "(0, 345)"
+			            Margin = "(0)"
+			            Name = "splitContainer2"
+			            Orientation = "Vertical"
+			            Panel1MinSize = "25"
+			            Panel2MinSize = "25"
+			            Size = "(115, 134)"
+			            SplitterDistance = "25"
+			            SplitterWidth = "4"
+			            TabIndex = "23"
+			            TabStop = "false"
+			            Text = "bSplitContainer1"
+			            >
+			            <_Panel1
+				            Anchor = "Top,Bottom,Left,Right"
+				            BorderColor = "$Black"
+				            Location = "(0, 0)"
+				            Margin = "(0)"
+				            Name = "m_panel1"
+				            Size = "(115, 25)"
+				            TabIndex = "0"
+				            />
+			            <_Panel2
+            				Anchor = "Bottom,Left,Right"
+				            BorderColor = "$Black"
+				            Location = "(0, 29)"
+				            Margin = "(0)"
+				            Name = "m_panel2"
+				            Size = "(115, 105)"
+				            TabIndex = "1"
+				            />
+			        </BSplitContainer>
+		        </BSplitContainer>
+	        </_ContentPanel>
+		</UiToolStripContainer>
+
+		<Rebar id="rebar"
+	            Dock = "Top"
+	            Location = "(0, 26)"
+	            Name = "rebar"
+	            Size = "(955, 4)"
+	            TabIndex = "19"
+	            ToggleDoubleClick = "true"
+	            >
+	        <_Bands>
+		        <RebarBand id="bandFile"
+		        	BandSize = "236"
+		        	NewRow = "true"
+	            AllowVertical = "false"
+	            Child = "toolBarFile"
+	            Header = "-1"
+	            Integral = "1"
+	            MaxHeight = "26"
+	            UseChevron = "true"
+					>
+		        </RebarBand>
+		        <RebarBand id="bandPosition"
+		        	BandSize = "234"
+		        	NewRow = "true"
+	            AllowVertical = "false"
+	            Child = "#toolBarPosition"
+	            Header = "-1"
+	            Integral = "1"
+	            MaxHeight = "26"
+	            UseChevron = "true"
+					>
+		        </RebarBand>
+		        <RebarBand id="bandMeasure"
+		        	BandSize = "714"
+		        	NewRow = "true"
+	            AllowVertical = "false"
+	            Child = "#toolBarMeasure"
+	            Header = "-1"
+	            Integral = "1"
+	            MaxHeight = "26"
+	            UseChevron = "true"
+					>
+		        </RebarBand>
+		        <RebarBand id="bandTool"
+		        	BandSize = "712"
+		        	NewRow = "true"
+	            AllowVertical = "false"
+	            Child = "#toolBarTool"
+	            Header = "-1"
+	            Integral = "1"
+	            MaxHeight = "26"
+	            UseChevron = "true"
+					>
+		        </RebarBand>
+	        </_Bands>
+
+		    <UiToolBar id="toolBarFile"
+
+            Appearance = "Flat"
+            ButtonSize = "(23, 22)"
+		            Divider = "false"
+		            Dock = "None"
+		            DropDownArrows = "true"
+		            ImageList = "#imageListFile"
+            Location = "(11, 2)"
+		            Name = "toolBarFile"
+		            ShowToolTips = "true"
+		            Size = "(944, 26)"
+		            TabIndex = "25"
+		            Wrappable = "false"
+		            >
+	            <_Buttons>
+			        <UiToolBarButton id="stripBtnFileNew"
+
+			            ImageIndex = "0"
+			            Name = "stripBtnFileNew"
+			            ToolTipText = "New"
+			            />
+
+			        <UiToolBarButton id="stripBtnFileOpen"
+
+			            ImageIndex = "1"
+			            Name = "stripBtnFileOpen"
+			            ToolTipText = "Open"
+			            />
+
+			        <UiToolBarButton id="stripBtnFileSave"
+
+			            ImageIndex = "2"
+			            Name = "stripBtnFileSave"
+			            ToolTipText = "Save"
+			            />
+
+			        <UiToolBarButton id="toolBarButton1"
+
+			            Name = "toolBarButton1"
+			            Style = "Separator"
+			            />
+
+			        <UiToolBarButton id="stripBtnCut"
+
+			            ImageIndex = "3"
+			            Name = "stripBtnCut"
+			            ToolTipText = "Cut"
+			            />
+
+			        <UiToolBarButton id="stripBtnCopy"
+
+			            ImageIndex = "4"
+			            Name = "stripBtnCopy"
+			            ToolTipText = "Copy"
+			            />
+
+			        <UiToolBarButton id="stripBtnPaste"
+
+			            ImageIndex = "5"
+			            Name = "stripBtnPaste"
+			            ToolTipText = "Paste"
+			            />
+
+			        <UiToolBarButton id="toolBarButton2"
+
+			            Name = "toolBarButton2"
+			            Style = "Separator"
+			            />
+
+			        <UiToolBarButton id="stripBtnUndo"
+
+			            ImageIndex = "6"
+			            Name = "stripBtnUndo"
+			            ToolTipText = "Undo"
+			            />
+
+			        <UiToolBarButton id="stripBtnRedo"
+
+			            ImageIndex = "7"
+			            Name = "stripBtnRedo"
+			            ToolTipText = "Redo"
+			            />
+	            </_Buttons>
+			</UiToolBar>
+
+		    <UiToolBar id="toolBarPosition"
+
+		            Appearance = "Flat"
+		            Divider = "false"
+		            Dock = "None"
+		            DropDownArrows = "true"
+		            ImageList = "#imageListPosition"
+            Location = "(11, 32)"
+		            Name = "toolBarPosition"
+		            ShowToolTips = "true"
+		            Size = "(944, 40)"
+		            TabIndex = "25"
+		            TextAlign = "Right"
+		            Wrappable = "false"
+		            >
+	            <_Buttons>
+			        <UiToolBarButton id="stripBtnMoveTop"
+
+			            ImageIndex = "0"
+			            Name = "stripBtnMoveTop"
+			            ToolTipText = "MoveTop"
+			            />
+
+			        <UiToolBarButton id="stripBtnRewind"
+
+			            ImageIndex = "1"
+			            Name = "stripBtnRewind"
+			            ToolTipText = "Rewind"
+			            />
+
+			        <UiToolBarButton id="stripBtnForward"
+
+			            ImageIndex = "2"
+			            Name = "stripBtnForward"
+			            ToolTipText = "Forward"
+			            />
+
+			        <UiToolBarButton id="stripBtnMoveEnd"
+
+			            ImageIndex = "3"
+			            Name = "stripBtnMoveEnd"
+			            ToolTipText = "MoveEnd"
+			            />
+
+			        <UiToolBarButton id="stripBtnPlay"
+
+			            ImageIndex = "4"
+			            Name = "stripBtnPlay"
+			            ToolTipText = "Play"
+			            />
+
+			        <UiToolBarButton id="toolBarButton4"
+
+			            Name = "toolBarButton4"
+			            Style = "Separator"
+			            />
+
+			        <UiToolBarButton id="stripBtnScroll"
+
+			            ImageIndex = "6"
+			            Name = "stripBtnScroll"
+			            />
+
+			        <UiToolBarButton id="stripBtnLoop"
+
+			            ImageIndex = "7"
+			            Name = "stripBtnLoop"
+			            />
+	            </_Buttons>
+			</UiToolBar>
+
+		    <UiToolBar id="toolBarMeasure"
+
+		            Appearance = "Flat"
+		            Divider = "false"
+		            Dock = "None"
+		            DropDownArrows = "true"
+		            ImageList = "#imageListMeasure"
+            Location = "(11, 62)"
+		            Name = "toolBarMeasure"
+		            ShowToolTips = "true"
+		            Size = "(944, 40)"
+		            TabIndex = "25"
+		            TextAlign = "Right"
+		            Wrappable = "false"
+		            >
+	            <_Buttons>
+
+			        <UiToolBarButton id="stripDDBtnQuantizeParent"
+
+			            Name = "stripDDBtnQuantizeParent"
+			            />
+
+			        <UiToolBarButton id="toolBarButton5"
+
+			            Name = "toolBarButton5"
+			            Style = "Separator"
+			            />
+
+			        <UiToolBarButton id="stripBtnStartMarker"
+
+			            ImageIndex = "0"
+			            Name = "stripBtnStartMarker"
+			            Style = "ToggleButton"
+			            />
+
+			        <UiToolBarButton id="stripBtnEndMarker"
+
+			            ImageIndex = "1"
+			            Name = "stripBtnEndMarker"
+			            Style = "ToggleButton"
+			            />
+	            </_Buttons>
+			</UiToolBar>
+
+		    <UiToolBar id="toolBarTool"
+
+		            Appearance = "Flat"
+		            Divider = "false"
+		            Dock = "None"
+		            DropDownArrows = "true"
+		            ImageList = "#imageListTool"
+            Location = "(11, 92)"
+		            Name = "toolBarTool"
+		            ShowToolTips = "true"
+		            Size = "(944, 40)"
+		            TabIndex = "25"
+		            TextAlign = "Right"
+		            Wrappable = "false"
+		            >
+	            <_Buttons>
+			        <UiToolBarButton id="stripBtnPointer"
+
+			            ImageIndex = "0"
+			            Name = "stripBtnPointer"
+			            Pushed = "true"
+			            ToolTipText = "Pointer"
+			            />
+
+			        <UiToolBarButton id="stripBtnPencil"
+
+			            ImageIndex = "1"
+			            Name = "stripBtnPencil"
+			            ToolTipText = "Pencil"
+			            />
+
+			        <UiToolBarButton id="stripBtnLine"
+
+			            ImageIndex = "2"
+			            Name = "stripBtnLine"
+			            ToolTipText = "Line"
+			            />
+
+			        <UiToolBarButton id="stripBtnEraser"
+
+			            ImageIndex = "3"
+			            Name = "stripBtnEraser"
+			            ToolTipText = "Eraser"
+			            />
+
+			        <UiToolBarButton id="toolBarButton3"
+
+			            Name = "toolBarButton3"
+			            Style = "Separator"
+			            />
+
+			        <UiToolBarButton id="stripBtnGrid"
+
+			            ImageIndex = "4"
+			            Name = "stripBtnGrid"
+			            ToolTipText = "Grid"
+			            />
+
+			        <UiToolBarButton id="stripBtnCurve"
+
+			            ImageIndex = "5"
+			            Name = "stripBtnCurve"
+			            ToolTipText = "Curve"
+			            />
+	            </_Buttons>
+		    </UiToolBar>
+	    </Rebar>
+
+		<UiMenuStrip id="menuStripMain"
+	            Location = "(0, 0)"
+	            Name = "menuStripMain"
+	            RenderMode = "System"
+	            Size = "(955, 26)"
+	            TabIndex = "0"
+	            Text = "menuStrip1"
+	            >
+            <_Items>
+
+		        <UiToolStripMenuItem id="menuFile"
+		            DisplayStyle = "Text"
+		            ImageScaling = "None"
+		            Name = "menuFile"
+		            Size = "(57, 22)"
+		            Text = "File(&amp;F)"
+		            >
+		            <_DropDownItems>
+				        <UiToolStripMenuItem id="menuFileNew"
+
+				            DisplayStyle = "Text"
+				            Name = "menuFileNew"
+				            Size = "(270, 22)"
+				            Text = "New(N)"
+				            TextImageRelation = "Overlay"
+				            />
+
+				        <UiToolStripMenuItem id="menuFileOpen"
+
+				            DisplayStyle = "Text"
+				            Name = "menuFileOpen"
+				            Size = "(270, 22)"
+				            Text = "Open(&amp;O)"
+				            TextImageRelation = "Overlay"
+				            />
+
+				        <UiToolStripMenuItem id="menuFileSave"
+
+				            DisplayStyle = "Text"
+				            Name = "menuFileSave"
+				            Size = "(270, 22)"
+				            Text = "Save(&amp;S)"
+				            TextImageRelation = "Overlay"
+				            />
+
+				        <UiToolStripMenuItem id="menuFileSaveNamed"
+
+				            DisplayStyle = "Text"
+				            Name = "menuFileSaveNamed"
+				            Size = "(270, 22)"
+				            Text = "Save As(&amp;A)"
+				            TextImageRelation = "Overlay"
+				            />
+
+				        <UiToolStripSeparator id="toolStripMenuItem10"
+
+				            Name = "toolStripMenuItem10"
+				            Size = "(267, 6)"
+				            />
+
+				        <UiToolStripMenuItem id="menuFileOpenVsq"
+
+				            DisplayStyle = "Text"
+				            Name = "menuFileOpenVsq"
+				            Size = "(270, 22)"
+				            Text = "Open VSQX/VSQ/Vocaloid Midi(&amp;V)"
+				            TextImageRelation = "Overlay"
+				            />
+
+				        <UiToolStripMenuItem id="menuFileOpenUst"
+
+				            DisplayStyle = "Text"
+				            Name = "menuFileOpenUst"
+				            Size = "(270, 22)"
+				            Text = "Open UTAU Project File(&amp;U)"
+				            TextImageRelation = "Overlay"
+				            />
+
+				        <UiToolStripMenuItem id="menuFileImport"
+				            DisplayStyle = "Text"
+				            Name = "menuFileImport"
+				            Size = "(270, 22)"
+				            Text = "Import(&amp;I)"
+				            TextImageRelation = "Overlay"
+				            >
+				            <_DropDownItems>
+						        <UiToolStripMenuItem id="menuFileImportVsq"
+						            Name = "menuFileImportVsq"
+						            Size = "(175, 22)"
+						            Text = "VSQ File"
+						            />
+						        <UiToolStripMenuItem id="menuFileImportMidi"
+						            Name = "menuFileImportMidi"
+						            Size = "(175, 22)"
+						            Text = "Standard MIDI"
+						            />
+						        <UiToolStripMenuItem id="menuFileImportUst"
+						            Name = "menuFileImportUst"
+						            Size = "(175, 22)"
+						            Text = "UTAU project file"
+						            />
+				            </_DropDownItems>
+				        </UiToolStripMenuItem>
+
+				        <UiToolStripMenuItem id="menuFileExport"
+				            DisplayStyle = "Text"
+				            Name = "menuFileExport"
+				            Size = "(270, 22)"
+				            Text = "Export(&amp;E)"
+				            TextImageRelation = "Overlay"
+				            >
+				            <_DropDownItems>
+						        <UiToolStripMenuItem id="menuFileExportWave"
+						            Name = "menuFileExportWave"
+						            Size = "(268, 22)"
+						            Text = "Wave"
+						            />
+						        <UiToolStripMenuItem id="menuFileExportParaWave"
+						            Name = "menuFileExportParaWave"
+						            Size = "(268, 22)"
+						            Text = "Serial numbered Wave"
+						            />
+						        <UiToolStripMenuItem id="menuFileExportVsq"
+						            Name = "menuFileExportVsq"
+						            Size = "(268, 22)"
+						            Text = "VSQ File"
+						            />
+						        <UiToolStripMenuItem id="menuFileExportVsqx"
+						            Name = "menuFileExportVsqx"
+						            Size = "(268, 22)"
+						            Text = "VSQX File"
+						            />
+						        <UiToolStripMenuItem id="menuFileExportMidi"
+						            Name = "menuFileExportMidi"
+						            Size = "(268, 22)"
+						            Text = "MIDI"
+						            />
+						        <UiToolStripMenuItem id="menuFileExportMusicXml"
+						            Name = "menuFileExportMusicXml"
+						            Size = "(268, 22)"
+						            Text = "MusicXML"
+						            />
+						        <UiToolStripMenuItem id="menuFileExportUst"
+						            Name = "menuFileExportUst"
+						            Size = "(268, 22)"
+						            Text = "UTAU Project File (current track)"
+						            />
+						        <UiToolStripMenuItem id="menuFileExportVxt"
+						            Name = "menuFileExportVxt"
+						            Size = "(268, 22)"
+						            Text = "Metatext for vConnect"
+						            />
+				            </_DropDownItems>
+						</UiToolStripMenuItem>
+				        <UiToolStripSeparator id="toolStripMenuItem11"
+				            Name = "toolStripMenuItem11"
+				            Size = "(267, 6)"
+				            />
+				        <UiToolStripMenuItem id="menuFileRecent"
+				            DisplayStyle = "Text"
+				            Name = "menuFileRecent"
+				            Size = "(270, 22)"
+				            Text = "Recent Files(&amp;R)"
+				            TextImageRelation = "Overlay"
+				            >
+				            <_DropDownItems>
+						        <UiToolStripMenuItem id="menuFileRecentClear"
+						            DisplayStyle = "Text"
+						            Name = "menuFileRecentClear"
+						            Size = "(141, 22)"
+						            Text = "Clear Menu"
+						            TextImageRelation = "Overlay"
+						            />
+				            </_DropDownItems>
+						</UiToolStripMenuItem>
+
+				        <UiToolStripSeparator id="toolStripMenuItem12"
+				            Name = "toolStripMenuItem12"
+				            Size = "(267, 6)"
+				            />
+				        <UiToolStripMenuItem id="menuFileQuit"
+				            DisplayStyle = "Text"
+				            Name = "menuFileQuit"
+				            Size = "(270, 22)"
+				            Text = "Quit(&amp;Q)"
+				            TextImageRelation = "Overlay"
+				            />
+		            </_DropDownItems>
+		        </UiToolStripMenuItem>
+
+		        <UiToolStripMenuItem id="menuEdit"
+		            Name = "menuEdit"
+		            Size = "(59, 22)"
+		            Text = "Edit(&amp;E)"
+		            >
+		            <_DropDownItems>
+
+				        <UiToolStripMenuItem id="menuEditUndo"
+
+				            Name = "menuEditUndo"
+				            Size = "(220, 22)"
+				            Text = "Undo(&amp;U)"
+				            />
+
+				        <UiToolStripMenuItem id="menuEditRedo"
+
+				            Name = "menuEditRedo"
+				            Size = "(220, 22)"
+				            Text = "Redo(&amp;R)"
+				            />
+
+				        <UiToolStripSeparator id="toolStripMenuItem5"
+
+				            Name = "toolStripMenuItem5"
+				            Size = "(217, 6)"
+				            />
+
+				        <UiToolStripMenuItem id="menuEditCut"
+
+				            Name = "menuEditCut"
+				            Size = "(220, 22)"
+				            Text = "Cut(&amp;T)"
+				            />
+
+				        <UiToolStripMenuItem id="menuEditCopy"
+
+				            Name = "menuEditCopy"
+				            Size = "(220, 22)"
+				            Text = "Copy(&amp;C)"
+				            />
+
+				        <UiToolStripMenuItem id="menuEditPaste"
+
+				            Name = "menuEditPaste"
+				            Size = "(220, 22)"
+				            Text = "Paste(&amp;P)"
+				            />
+
+				        <UiToolStripMenuItem id="menuEditDelete"
+
+				            Name = "menuEditDelete"
+				            Size = "(220, 22)"
+				            Text = "Delete(&amp;D)"
+				            />
+
+				        <UiToolStripSeparator id="toolStripMenuItem19"
+
+				            Name = "toolStripMenuItem19"
+				            Size = "(217, 6)"
+				            />
+
+				        <UiToolStripMenuItem id="menuEditAutoNormalizeMode"
+
+				            Name = "menuEditAutoNormalizeMode"
+				            Size = "(220, 22)"
+				            Text = "Auto Normalize Mode(&amp;N)"
+				            />
+
+				        <UiToolStripSeparator id="toolStripMenuItem20"
+
+				            Name = "toolStripMenuItem20"
+				            Size = "(217, 6)"
+				            />
+
+				        <UiToolStripMenuItem id="menuEditSelectAll"
+
+				            Name = "menuEditSelectAll"
+				            Size = "(220, 22)"
+				            Text = "Select All(&amp;A)"
+				            />
+
+				        <UiToolStripMenuItem id="menuEditSelectAllEvents"
+
+				            Name = "menuEditSelectAllEvents"
+				            Size = "(220, 22)"
+				            Text = "Select All Events(&amp;E)"
+				            />
+		            </_DropDownItems>
+				</UiToolStripMenuItem>
+
+		        <UiToolStripMenuItem id="menuVisual"
+		            DisplayStyle = "Text"
+		            Name = "menuVisual"
+		            Size = "(66, 22)"
+		            Text = "View(&amp;V)"
+		            >
+		            <_DropDownItems>
+
+				        <UiToolStripMenuItem id="menuVisualControlTrack"
+
+				            Checked = "true"
+				            CheckOnClick = "true"
+				            CheckState = "Checked"
+				            DisplayStyle = "Text"
+				            Name = "menuVisualControlTrack"
+				            Size = "(237, 22)"
+				            Text = "Control Track(&amp;C)"
+				            />
+
+				        <UiToolStripMenuItem id="menuVisualMixer"
+
+				            DisplayStyle = "Text"
+				            Name = "menuVisualMixer"
+				            Size = "(237, 22)"
+				            Text = "Mixer(&amp;X)"
+				            />
+
+				        <UiToolStripMenuItem id="menuVisualWaveform"
+
+				            CheckOnClick = "true"
+				            Name = "menuVisualWaveform"
+				            Size = "(237, 22)"
+				            Text = "Waveform(&amp;W)"
+				            />
+
+				        <UiToolStripMenuItem id="menuVisualIconPalette"
+
+				            CheckOnClick = "true"
+				            Name = "menuVisualIconPalette"
+				            Size = "(237, 22)"
+				            Text = "Icon Palette(&amp;I)"
+				            />
+
+				        <UiToolStripMenuItem id="menuVisualProperty"
+
+				            CheckOnClick = "true"
+				            Name = "menuVisualProperty"
+				            Size = "(237, 22)"
+				            Text = "Property Window(&amp;C)"
+				            />
+
+				        <UiToolStripMenuItem id="menuVisualOverview"
+
+				            CheckOnClick = "true"
+				            Name = "menuVisualOverview"
+				            Size = "(237, 22)"
+				            Text = "Overview(&amp;O)"
+				            />
+
+				        <UiToolStripMenuItem id="menuVisualPluginUi"
+				            Name = "menuVisualPluginUi"
+				            Size = "(237, 22)"
+				            Text = "VSTi Plugin UI(&amp;U)"
+				            >
+				            <_DropDownItems>
+
+						        <UiToolStripMenuItem id="menuVisualPluginUiVocaloid1"
+
+						            Name = "menuVisualPluginUiVocaloid1"
+						            Size = "(157, 22)"
+						            Text = "VOCALOID1"
+						            />
+
+						        <UiToolStripMenuItem id="menuVisualPluginUiVocaloid2"
+
+						            Name = "menuVisualPluginUiVocaloid2"
+						            Size = "(157, 22)"
+						            Text = "VOCALOID2"
+						            />
+
+						        <UiToolStripMenuItem id="menuVisualPluginUiAquesTone"
+
+						            Name = "menuVisualPluginUiAquesTone"
+						            Size = "(157, 22)"
+						            Text = "AquesTone(&amp;A)"
+						            />
+
+						        <UiToolStripMenuItem id="menuVisualPluginUiAquesTone2"
+
+						            Name = "menuVisualPluginUiAquesTone2"
+						            Size = "(157, 22)"
+						            Text = "AquesTone2"
+						            />
+				            </_DropDownItems>
+						</UiToolStripMenuItem>
+
+				        <UiToolStripSeparator id="toolStripMenuItem1"
+
+				            Name = "toolStripMenuItem1"
+				            Size = "(234, 6)"
+				            />
+
+				        <UiToolStripMenuItem id="menuVisualGridline"
+
+				            CheckOnClick = "true"
+				            DisplayStyle = "Text"
+				            Name = "menuVisualGridline"
+				            Size = "(237, 22)"
+				            Text = "Grid Line(&amp;G)"
+				            />
+
+				        <UiToolStripSeparator id="toolStripMenuItem2"
+
+				            Name = "toolStripMenuItem2"
+				            Size = "(234, 6)"
+				            />
+
+				        <UiToolStripMenuItem id="menuVisualStartMarker"
+
+				            DisplayStyle = "Text"
+				            Name = "menuVisualStartMarker"
+				            Size = "(237, 22)"
+				            Text = "Start Marker(&amp;S)"
+				            />
+
+				        <UiToolStripMenuItem id="menuVisualEndMarker"
+
+				            DisplayStyle = "Text"
+				            Name = "menuVisualEndMarker"
+				            Size = "(237, 22)"
+				            Text = "End Marker(&amp;E)"
+				            />
+
+				        <UiToolStripSeparator id="toolStripMenuItem3"
+
+				            Name = "toolStripMenuItem3"
+				            Size = "(234, 6)"
+				            />
+
+				        <UiToolStripMenuItem id="menuVisualLyrics"
+
+				            Checked = "true"
+				            CheckOnClick = "true"
+				            CheckState = "Checked"
+				            DisplayStyle = "Text"
+				            Name = "menuVisualLyrics"
+				            Size = "(237, 22)"
+				            Text = "Lyric/Phoneme(&amp;L)"
+				            />
+
+				        <UiToolStripMenuItem id="menuVisualNoteProperty"
+
+				            Checked = "true"
+				            CheckOnClick = "true"
+				            CheckState = "Checked"
+				            DisplayStyle = "Text"
+				            Name = "menuVisualNoteProperty"
+				            Size = "(237, 22)"
+				            Text = "Note Expression/Vibrato(&amp;N)"
+				            />
+
+				        <UiToolStripMenuItem id="menuVisualPitchLine"
+
+				            CheckOnClick = "true"
+				            Name = "menuVisualPitchLine"
+				            Size = "(237, 22)"
+				            Text = "Pitch Line(&amp;P)"
+				            />
+		            </_DropDownItems>
+		        </UiToolStripMenuItem>
+
+		        <UiToolStripMenuItem id="menuJob"
+		            Name = "menuJob"
+		            Size = "(54, 22)"
+		            Text = "Job(&amp;J)"
+		            >
+		            <_DropDownItems>
+
+				        <UiToolStripMenuItem id="menuJobNormalize"
+
+				            Name = "menuJobNormalize"
+				            Size = "(256, 22)"
+				            Text = "Normalize Notes(&amp;N)"
+				            />
+
+				        <UiToolStripMenuItem id="menuJobInsertBar"
+
+				            Name = "menuJobInsertBar"
+				            Size = "(256, 22)"
+				            Text = "Insert Bars(&amp;I)"
+				            />
+
+				        <UiToolStripMenuItem id="menuJobDeleteBar"
+
+				            Name = "menuJobDeleteBar"
+				            Size = "(256, 22)"
+				            Text = "Delete Bars(&amp;D)"
+				            />
+
+				        <UiToolStripMenuItem id="menuJobRandomize"
+
+				            Name = "menuJobRandomize"
+				            Size = "(256, 22)"
+				            Text = "Randomize(&amp;R)"
+				            />
+
+				        <UiToolStripMenuItem id="menuJobConnect"
+
+				            Name = "menuJobConnect"
+				            Size = "(256, 22)"
+				            Text = "Connect Notes(&amp;C)"
+				            />
+
+				        <UiToolStripMenuItem id="menuJobLyric"
+
+				            Name = "menuJobLyric"
+				            Size = "(256, 22)"
+				            Text = "Insert Lyrics(&amp;L)"
+				            />
+
+				        <UiToolStripMenuItem id="menuJobRewire"
+
+				            Enabled = "false"
+				            Name = "menuJobRewire"
+				            Size = "(256, 22)"
+				            Text = "Import ReWire Host Tempo(&amp;T)"
+				            />
+
+				        <UiToolStripMenuItem id="menuJobReloadVsti"
+
+				            Name = "menuJobReloadVsti"
+				            Size = "(256, 22)"
+				            Text = "Reload VSTi(&amp;R)"
+				            Visible = "false"
+				            />
+		            </_DropDownItems>
+		        </UiToolStripMenuItem>
+
+		        <UiToolStripMenuItem id="menuTrack"
+		            Name = "menuTrack"
+		            Size = "(70, 22)"
+		            Text = "Track(&amp;T)"
+		            >
+		            <_DropDownItems>
+
+				        <UiToolStripMenuItem id="menuTrackOn"
+
+				            Name = "menuTrackOn"
+				            Size = "(219, 22)"
+				            Text = "Track On(&amp;K)"
+				            />
+
+				        <UiToolStripSeparator id="toolStripMenuItem21"
+
+				            Name = "toolStripMenuItem21"
+				            Size = "(216, 6)"
+				            />
+
+				        <UiToolStripMenuItem id="menuTrackAdd"
+
+				            Name = "menuTrackAdd"
+				            Size = "(219, 22)"
+				            Text = "Add Track(&amp;A)"
+				            />
+
+				        <UiToolStripMenuItem id="menuTrackCopy"
+
+				            Name = "menuTrackCopy"
+				            Size = "(219, 22)"
+				            Text = "Copy Track(&amp;C)"
+				            />
+
+				        <UiToolStripMenuItem id="menuTrackChangeName"
+
+				            Name = "menuTrackChangeName"
+				            Size = "(219, 22)"
+				            Text = "Rename Track"
+				            />
+
+				        <UiToolStripMenuItem id="menuTrackDelete"
+
+				            Name = "menuTrackDelete"
+				            Size = "(219, 22)"
+				            Text = "Delete Track(&amp;D)"
+				            />
+
+				        <UiToolStripSeparator id="toolStripMenuItem22"
+
+				            Name = "toolStripMenuItem22"
+				            Size = "(216, 6)"
+				            />
+
+				        <UiToolStripMenuItem id="menuTrackRenderCurrent"
+
+				            Name = "menuTrackRenderCurrent"
+				            Size = "(219, 22)"
+				            Text = "Render Current Track(&amp;T)"
+				            />
+
+				        <UiToolStripMenuItem id="menuTrackRenderAll"
+
+				            Enabled = "false"
+				            Name = "menuTrackRenderAll"
+				            Size = "(219, 22)"
+				            Text = "Render All Tracks(&amp;S)"
+				            />
+
+				        <UiToolStripSeparator id="toolStripMenuItem23"
+
+				            Name = "toolStripMenuItem23"
+				            Size = "(216, 6)"
+				            />
+
+				        <UiToolStripMenuItem id="menuTrackOverlay"
+
+				            Name = "menuTrackOverlay"
+				            Size = "(219, 22)"
+				            Text = "Overlay(&amp;O)"
+				            />
+
+				        <UiToolStripMenuItem id="menuTrackRenderer"
+				            Name = "menuTrackRenderer"
+				            Size = "(219, 22)"
+				            Text = "Renderer(&amp;R)"
+				            >
+				            <_DropDownItems>
+
+						        <UiToolStripMenuItem id="menuTrackRendererVOCALOID1"
+
+						            Name = "menuTrackRendererVOCALOID1"
+						            Size = "(193, 22)"
+						            Text = "VOCALOID1(&amp;1)"
+						            />
+
+						        <UiToolStripMenuItem id="menuTrackRendererVOCALOID2"
+
+						            Name = "menuTrackRendererVOCALOID2"
+						            Size = "(193, 22)"
+						            Text = "VOCALOID2(&amp;2)"
+						            />
+
+						        <UiToolStripMenuItem id="menuTrackRendererUtau"
+
+						            Name = "menuTrackRendererUtau"
+						            Size = "(193, 22)"
+						            Text = "UTAU(&amp;3)"
+						            />
+
+						        <UiToolStripMenuItem id="menuTrackRendererVCNT"
+
+						            Name = "menuTrackRendererVCNT"
+						            Size = "(193, 22)"
+						            Text = "vConnect-STAND(&amp;4)"
+						            />
+
+						        <UiToolStripMenuItem id="menuTrackRendererAquesTone"
+
+						            Name = "menuTrackRendererAquesTone"
+						            Size = "(193, 22)"
+						            Text = "AquesTone(&amp;5)"
+						            />
+
+						        <UiToolStripMenuItem id="menuTrackRendererAquesTone2"
+
+						            Name = "menuTrackRendererAquesTone2"
+						            Size = "(193, 22)"
+						            Text = "AquesTone2(&amp;6)"
+						            />
+				            </_DropDownItems>
+						</UiToolStripMenuItem>
+
+				        <UiToolStripSeparator id="toolStripMenuItem4"
+
+				            Name = "toolStripMenuItem4"
+				            Size = "(216, 6)"
+				            />
+
+				        <UiToolStripMenuItem id="menuTrackBgm"
+
+				            Name = "menuTrackBgm"
+				            Size = "(219, 22)"
+				            Text = "BGM(&amp;B)"
+				            />
+		            </_DropDownItems>
+				</UiToolStripMenuItem>
+
+		        <UiToolStripMenuItem id="menuLyric"
+		            Name = "menuLyric"
+		            Size = "(70, 22)"
+		            Text = "Lyrics(&amp;L)"
+		            >
+		            <_DropDownItems>
+
+				        <UiToolStripMenuItem id="menuLyricExpressionProperty"
+
+				            Name = "menuLyricExpressionProperty"
+				            Size = "(262, 22)"
+				            Text = "Note Expression Property(&amp;E)"
+				            />
+
+				        <UiToolStripMenuItem id="menuLyricVibratoProperty"
+
+				            Name = "menuLyricVibratoProperty"
+				            Size = "(262, 22)"
+				            Text = "Note Vibrato Property(&amp;V)"
+				            />
+
+				        <UiToolStripMenuItem id="menuLyricApplyUtauParameters"
+
+				            Name = "menuLyricApplyUtauParameters"
+				            Size = "(262, 22)"
+				            Text = "Apply UTAU Parameters(&amp;A)"
+				            />
+
+				        <UiToolStripMenuItem id="menuLyricPhonemeTransformation"
+
+				            Name = "menuLyricPhonemeTransformation"
+				            Size = "(262, 22)"
+				            Text = "Phoneme Transformation(&amp;T)"
+				            />
+
+				        <UiToolStripMenuItem id="menuLyricDictionary"
+
+				            Name = "menuLyricDictionary"
+				            Size = "(262, 22)"
+				            Text = "User Word Dictionary(&amp;C)"
+				            />
+
+				        <UiToolStripMenuItem id="menuLyricCopyVibratoToPreset"
+
+				            Name = "menuLyricCopyVibratoToPreset"
+				            Size = "(262, 22)"
+				            Text = "Copy vibrato config to preset(&amp;P)"
+				            />
+		            </_DropDownItems>
+				</UiToolStripMenuItem>
+
+		        <UiToolStripMenuItem id="menuScript"
+		            Name = "menuScript"
+		            Size = "(72, 22)"
+		            Text = "Script(&amp;C)"
+		            >
+		            <_DropDownItems>
+
+				        <UiToolStripMenuItem id="menuScriptUpdate"
+
+				            Name = "menuScriptUpdate"
+				            Size = "(200, 22)"
+				            Text = "Update Script List(&amp;U)"
+				            />
+		            </_DropDownItems>
+		        </UiToolStripMenuItem>
+
+		        <UiToolStripMenuItem id="menuSetting"
+		            Name = "menuSetting"
+		            Size = "(80, 22)"
+		            Text = "Setting(&amp;S)"
+		            >
+		            <_DropDownItems>
+
+				        <UiToolStripMenuItem id="menuSettingPreference"
+
+				            Name = "menuSettingPreference"
+				            Size = "(223, 22)"
+				            Text = "Preference(&amp;P)"
+				            />
+
+				        <UiToolStripMenuItem id="menuSettingSequence"
+
+				            Name = "menuSettingSequence"
+				            Size = "(223, 22)"
+				            Text = "Sequence config(&amp;S)"
+				            />
+
+				        <UiToolStripMenuItem id="menuSettingPositionQuantize"
+				            Name = "menuSettingPositionQuantize"
+				            Size = "(223, 22)"
+				            Text = "Quantize(&amp;Q)"
+				            >
+				            <_DropDownItems>
+
+						        <UiToolStripMenuItem id="menuSettingPositionQuantize04"
+
+						            Name = "menuSettingPositionQuantize04"
+						            Size = "(113, 22)"
+						            Text = "1/4"
+						            />
+
+						        <UiToolStripMenuItem id="menuSettingPositionQuantize08"
+
+						            Name = "menuSettingPositionQuantize08"
+						            Size = "(113, 22)"
+						            Text = "1/8"
+						            />
+
+						        <UiToolStripMenuItem id="menuSettingPositionQuantize16"
+
+						            Name = "menuSettingPositionQuantize16"
+						            Size = "(113, 22)"
+						            Text = "1/16"
+						            />
+
+						        <UiToolStripMenuItem id="menuSettingPositionQuantize32"
+
+						            Name = "menuSettingPositionQuantize32"
+						            Size = "(113, 22)"
+						            Text = "1/32"
+						            />
+
+						        <UiToolStripMenuItem id="menuSettingPositionQuantize64"
+
+						            Name = "menuSettingPositionQuantize64"
+						            Size = "(113, 22)"
+						            Text = "1/64"
+						            />
+
+						        <UiToolStripMenuItem id="menuSettingPositionQuantize128"
+
+						            Name = "menuSettingPositionQuantize128"
+						            Size = "(113, 22)"
+						            Text = "1/128"
+						            />
+
+						        <UiToolStripMenuItem id="menuSettingPositionQuantizeOff"
+
+						            Name = "menuSettingPositionQuantizeOff"
+						            Size = "(113, 22)"
+						            Text = "Off"
+						            />
+
+						        <UiToolStripSeparator id="toolStripMenuItem9"
+
+						            Name = "toolStripMenuItem9"
+						            Size = "(110, 6)"
+						            />
+
+						        <UiToolStripMenuItem id="menuSettingPositionQuantizeTriplet"
+
+						            Name = "menuSettingPositionQuantizeTriplet"
+						            Size = "(113, 22)"
+						            Text = "Triplet"
+						            />
+				            </_DropDownItems>
+						</UiToolStripMenuItem>
+
+				        <UiToolStripSeparator id="toolStripMenuItem8"
+
+				            Name = "toolStripMenuItem8"
+				            Size = "(220, 6)"
+				            />
+
+				        <UiToolStripMenuItem id="menuSettingGameControler"
+				            Name = "menuSettingGameControler"
+				            Size = "(223, 22)"
+				            Text = "Game Controler(&amp;G)"
+				            >
+				            <_DropDownItems>
+
+						        <UiToolStripMenuItem id="menuSettingGameControlerSetting"
+
+						            Name = "menuSettingGameControlerSetting"
+						            Size = "(142, 22)"
+						            Text = "Setting(&amp;S)"
+						            />
+
+						        <UiToolStripMenuItem id="menuSettingGameControlerLoad"
+
+						            Name = "menuSettingGameControlerLoad"
+						            Size = "(142, 22)"
+						            Text = "Load(&amp;L)"
+						            />
+
+						        <UiToolStripMenuItem id="menuSettingGameControlerRemove"
+
+						            Name = "menuSettingGameControlerRemove"
+						            Size = "(142, 22)"
+						            Text = "Remove(&amp;R)"
+						            />
+				            </_DropDownItems>
+			            </UiToolStripMenuItem>
+
+				        <UiToolStripMenuItem id="menuSettingPaletteTool"
+
+				            Name = "menuSettingPaletteTool"
+				            Size = "(223, 22)"
+				            Text = "Palette Tool(&amp;T)"
+				            />
+
+				        <UiToolStripMenuItem id="menuSettingShortcut"
+
+				            Name = "menuSettingShortcut"
+				            Size = "(223, 22)"
+				            Text = "Shortcut Key(&amp;K)"
+				            />
+
+				        <UiToolStripMenuItem id="menuSettingVibratoPreset"
+
+				            Name = "menuSettingVibratoPreset"
+				            Size = "(223, 22)"
+				            Text = "Vibrato preset(&amp;V)"
+				            />
+
+				        <UiToolStripSeparator id="toolStripMenuItem6"
+
+				            Name = "toolStripMenuItem6"
+				            Size = "(220, 6)"
+				            />
+
+				        <UiToolStripMenuItem id="menuSettingDefaultSingerStyle"
+
+				            Name = "menuSettingDefaultSingerStyle"
+				            Size = "(223, 22)"
+				            Text = "Singing Style Defaults(&amp;D)"
+				            />
+			        </_DropDownItems>
+				</UiToolStripMenuItem>
+
+		        <UiToolStripMenuItem id="menuTools"
+		            Name = "menuTools"
+		            Size = "(69, 22)"
+		            Text = "Tools(&amp;O)"
+		            >
+		            <_DropDownItems>
+
+				        <UiToolStripMenuItem id="menuToolsCreateVConnectSTANDDb"
+
+				            Name = "menuToolsCreateVConnectSTANDDb"
+				            Size = "(240, 22)"
+				            Text = "Create vConnect-STAND DB"
+				            />
+		            </_DropDownItems>
+				</UiToolStripMenuItem>
+
+		        <UiToolStripMenuItem id="menuHelp"
+		            Name = "menuHelp"
+		            Size = "(65, 22)"
+		            Text = "Help(&amp;H)"
+		            >
+		            <_DropDownItems>
+				        <UiToolStripMenuItem id="menuHelpAbout"
+
+				            Name = "menuHelpAbout"
+				            Size = "(186, 22)"
+				            Text = "About Cadencii(&amp;A)"
+				            />
+
+				        <UiToolStripMenuItem id="menuHelpManual"
+
+				            Name = "menuHelpManual"
+				            Size = "(186, 22)"
+				            Text = "Manual (PDF)"
+				            />
+
+				        <UiToolStripMenuItem id="menuHelpCheckForUpdates"
+
+				            Name = "menuHelpCheckForUpdates"
+				            Size = "(186, 22)"
+				            Text = "Check For Updates"
+				            />
+
+				        <UiToolStripMenuItem id="menuHelpLog"
+				            Name = "menuHelpLog"
+				            Size = "(186, 22)"
+				            Text = "Log(&amp;L)"
+				            >
+				            <_DropDownItems>
+						        <UiToolStripMenuItem id="menuHelpLogSwitch"
+
+						            CheckOnClick = "true"
+						            Name = "menuHelpLogSwitch"
+						            Size = "(156, 22)"
+						            Text = "Enable Log(&amp;L)"
+						            />
+
+						        <UiToolStripMenuItem id="menuHelpLogOpen"
+
+						            Name = "menuHelpLogOpen"
+						            Size = "(156, 22)"
+						            Text = "Open(&amp;O)"
+						            />
+
+						        <UiToolStripMenuItem id="menuHelpDebug"
+
+						            Name = "menuHelpDebug"
+						            Size = "(186, 22)"
+						            Text = "Debug"
+						            Visible = "false"
+						            />
+				            </_DropDownItems>
+				        </UiToolStripMenuItem>
+		            </_DropDownItems>
+		        </UiToolStripMenuItem>
+
+		        <UiToolStripMenuItem id="menuHidden"
+		            Name = "menuHidden"
+		            Size = "(91, 22)"
+		            Text = "MenuHidden"
+		            Visible = "false"
+		            >
+		            <_DropDownItems>
+
+				        <UiToolStripMenuItem id="menuHiddenEditLyric"
+
+				            Name = "menuHiddenEditLyric"
+				            ShortcutKeys = "F2"
+				            Size = "(304, 22)"
+				            Text = "Start Lyric Input"
+				            Visible = "false"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenEditFlipToolPointerPencil"
+
+				            Name = "menuHiddenEditFlipToolPointerPencil"
+				            ShortcutKeys = "Control,W"
+				            Size = "(304, 22)"
+				            Text = "Change Tool Pointer / Pencil"
+				            Visible = "false"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenEditFlipToolPointerEraser"
+
+				            Name = "menuHiddenEditFlipToolPointerEraser"
+				            ShortcutKeys = "Control,E"
+				            Size = "(304, 22)"
+				            Text = "Change Tool Pointer/ Eraser"
+				            Visible = "false"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenVisualForwardParameter"
+
+				            Name = "menuHiddenVisualForwardParameter"
+				            ShortcutKeys = "Control,Alt,Next"
+				            Size = "(304, 22)"
+				            Text = "Next Control Curve"
+				            Visible = "false"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenVisualBackwardParameter"
+
+				            Name = "menuHiddenVisualBackwardParameter"
+				            ShortcutKeys = "Control,Alt,PageUp"
+				            Size = "(304, 22)"
+				            Text = "Previous Control Curve"
+				            Visible = "false"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenTrackNext"
+
+				            Name = "menuHiddenTrackNext"
+				            ShortcutKeys = "Control,Next"
+				            Size = "(304, 22)"
+				            Text = "Next Track"
+				            Visible = "false"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenTrackBack"
+
+				            Name = "menuHiddenTrackBack"
+				            ShortcutKeys = "Control,PageUp"
+				            Size = "(304, 22)"
+				            Text = "Previous Track"
+				            Visible = "false"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenCopy"
+
+				            Name = "menuHiddenCopy"
+				            Size = "(304, 22)"
+				            Text = "Copy"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenPaste"
+
+				            Name = "menuHiddenPaste"
+				            Size = "(304, 22)"
+				            Text = "Paste"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenCut"
+
+				            Name = "menuHiddenCut"
+				            Size = "(304, 22)"
+				            Text = "Cut"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenSelectForward"
+
+				            Name = "menuHiddenSelectForward"
+				            ShortcutKeys = "Alt,Right"
+				            Size = "(304, 22)"
+				            Text = "Select Forward"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenSelectBackward"
+
+				            Name = "menuHiddenSelectBackward"
+				            ShortcutKeys = "Alt,Left"
+				            Size = "(304, 22)"
+				            Text = "Select Backward"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenMoveUp"
+
+				            Name = "menuHiddenMoveUp"
+				            Size = "(304, 22)"
+				            Text = "Move Up"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenMoveDown"
+
+				            Name = "menuHiddenMoveDown"
+				            Size = "(304, 22)"
+				            Text = "Move Down"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenMoveLeft"
+
+				            Name = "menuHiddenMoveLeft"
+				            Size = "(304, 22)"
+				            Text = "Move Left"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenMoveRight"
+
+				            Name = "menuHiddenMoveRight"
+				            Size = "(304, 22)"
+				            Text = "Move Right"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenLengthen"
+
+				            Name = "menuHiddenLengthen"
+				            Size = "(304, 22)"
+				            Text = "Lengthen"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenShorten"
+
+				            Name = "menuHiddenShorten"
+				            Size = "(304, 22)"
+				            Text = "Shorten"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenGoToStartMarker"
+
+				            Name = "menuHiddenGoToStartMarker"
+				            Size = "(304, 22)"
+				            Text = "GoTo Start Marker"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenGoToEndMarker"
+
+				            Name = "menuHiddenGoToEndMarker"
+				            Size = "(304, 22)"
+				            Text = "GoTo End Marker"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenPlayFromStartMarker"
+
+				            Name = "menuHiddenPlayFromStartMarker"
+				            Size = "(304, 22)"
+				            Text = "Play From Start Marker"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenFlipCurveOnPianorollMode"
+
+				            Name = "menuHiddenFlipCurveOnPianorollMode"
+				            Size = "(304, 22)"
+				            Text = "Change pitch drawing mode"
+				            />
+
+				        <UiToolStripMenuItem id="menuHiddenPrintPoToCSV"
+				            Name = "menuHiddenPrintPoToCSV"
+				            Size = "(304, 22)"
+				            Text = "Print language configs to CSV"
+				            />
+		            </_DropDownItems>
+		        </UiToolStripMenuItem>
+            </_Items>
+	    </UiMenuStrip>
+
+	    <BSplitContainer id="splitContainer1"
+
+            FixedPanel = "Panel2"
+            SplitterFixed = "false"
+            Location = "(2, 2)"
+            Margin = "(0)"
+            MinimumSize = "(0, 54)"
+            Name = "splitContainer1"
+            Orientation = "Vertical"
+            Panel1MinSize = "25"
+            Panel2MinSize = "25"
+            Size = "(953, 54)"
+            SplitterDistance = "50"
+            SplitterWidth = "4"
+            TabIndex = "4"
+            TabStop = "false"
+            Text = "splitContainerEx1"
+	        >
+	        <_Panel1
+            Anchor = "Top,Bottom,Left,Right"
+            BorderColor = "$Black"
+            Location = "(0, 0)"
+            Margin = "(0)"
+            Name = "m_panel1"
+            Size = "(953, 50)"
+            TabIndex = "0"
+	        />
+	        <_Panel2
+            Anchor = "Bottom,Left,Right"
+            BorderColor = "$Black"
+            Location = "(0, 54)"
+            Margin = "(0)"
+            Name = "m_panel2"
+            Size = "(953, 25)"
+            TabIndex = "1"
+	        />
+        </BSplitContainer>
+	</Form>
+
+	<!-- programmatically initialized -->
+    <UiContextMenu id="stripDDBtnQuantize" use-default-constructor="true"
+            >
+        <_MenuItems>
+	        <UiMenuItem id="stripDDBtnQuantize04"
+
+	            Index = "0"
+	            Text = "1/4"
+	            />
+
+	        <UiMenuItem id="stripDDBtnQuantize08"
+
+	            Index = "1"
+	            Text = "1/8"
+	            />
+
+	        <UiMenuItem id="stripDDBtnQuantize16"
+
+	            Index = "2"
+	            Text = "1/16"
+	            />
+
+	        <UiMenuItem id="stripDDBtnQuantize32"
+
+	            Index = "3"
+	            Text = "1/32"
+	            />
+
+	        <UiMenuItem id="stripDDBtnQuantize64"
+
+	            Index = "4"
+	            Text = "1/64"
+	            />
+
+	        <UiMenuItem id="stripDDBtnQuantize128"
+
+	            Index = "5"
+	            Text = "1/128"
+	            />
+
+	        <UiMenuItem id="stripDDBtnQuantizeOff"
+
+	            Index = "6"
+	            Text = "Off"
+	            />
+
+	        <UiMenuItem id="menuItem2"
+
+	            Index = "7"
+	            Text = "-"
+	            />
+
+	        <UiMenuItem id="stripDDBtnQuantizeTriplet"
+
+	            Index = "8"
+	            Text = "Triplet"
+	            />
+        </_MenuItems>
+    </UiContextMenu>
+
+    <!-- ToolBars in Rebar use these as ImageList -->
+    <UiImageList id="imageListFile"
+
+            TransparentColor = "$Transparent"
+            />
+
+    <UiImageList id="imageListPosition"
+
+            TransparentColor = "$Transparent"
+            />
+
+    <UiImageList id="imageListMeasure"
+
+            TransparentColor = "$Transparent"
+            />
+
+    <UiImageList id="imageListTool"
+
+            TransparentColor = "$Transparent"
+            />
+
+    <!-- programmatically instantiated and shown -->
+    <UiContextMenuStrip id="cMenuPiano"
+            Name = "cMenuPiano"
+            RenderMode = "System"
+            ShowCheckMargin = "true"
+            ShowImageMargin = "false"
+            Size = "(242, 458)"
+            >
+        <_Items>
+
+	        <UiToolStripMenuItem id="cMenuPianoPointer"
+
+	            Name = "cMenuPianoPointer"
+	            Size = "(241, 22)"
+	            Text = "Arrow(&amp;A)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuPianoPencil"
+
+	            Name = "cMenuPianoPencil"
+	            Size = "(241, 22)"
+	            Text = "Pencil(&amp;W)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuPianoEraser"
+
+	            Name = "cMenuPianoEraser"
+	            Size = "(241, 22)"
+	            Text = "Eraser(&amp;E)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuPianoPaletteTool"
+
+	            Name = "cMenuPianoPaletteTool"
+	            Size = "(241, 22)"
+	            Text = "Palette Tool"
+	            />
+
+	        <UiToolStripSeparator id="toolStripSeparator15"
+
+	            Name = "toolStripSeparator15"
+	            Size = "(238, 6)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuPianoCurve"
+
+	            Name = "cMenuPianoCurve"
+	            Size = "(241, 22)"
+	            Text = "Curve(&amp;V)"
+	            />
+
+	        <UiToolStripSeparator id="toolStripMenuItem13"
+
+	            Name = "toolStripMenuItem13"
+	            Size = "(238, 6)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuPianoFixed"
+	            Name = "cMenuPianoFixed"
+	            Size = "(241, 22)"
+	            Text = "Note Fixed Length(&amp;N)"
+	            >
+	            <_DropDownItems>
+			        <UiToolStripMenuItem id="cMenuPianoFixed01"
+
+			            Name = "cMenuPianoFixed01"
+			            Size = "(141, 22)"
+			            Text = "1/ 1 [1920]"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuPianoFixed02"
+
+			            Name = "cMenuPianoFixed02"
+			            Size = "(141, 22)"
+			            Text = "1/ 2 [960]"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuPianoFixed04"
+
+			            Name = "cMenuPianoFixed04"
+			            Size = "(141, 22)"
+			            Text = "1/ 4 [480]"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuPianoFixed08"
+
+			            Name = "cMenuPianoFixed08"
+			            Size = "(141, 22)"
+			            Text = "1/ 8 [240]"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuPianoFixed16"
+
+			            Name = "cMenuPianoFixed16"
+			            Size = "(141, 22)"
+			            Text = "1/16 [120]"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuPianoFixed32"
+
+			            Name = "cMenuPianoFixed32"
+			            Size = "(141, 22)"
+			            Text = "1/32 [60]"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuPianoFixed64"
+
+			            Name = "cMenuPianoFixed64"
+			            Size = "(141, 22)"
+			            Text = "1/64 [30]"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuPianoFixed128"
+
+			            Name = "cMenuPianoFixed128"
+			            Size = "(141, 22)"
+			            Text = "1/128[15]"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuPianoFixedOff"
+
+			            Name = "cMenuPianoFixedOff"
+			            Size = "(141, 22)"
+			            Text = "オフ"
+			            />
+
+			        <UiToolStripSeparator id="toolStripMenuItem18"
+
+			            Name = "toolStripMenuItem18"
+			            Size = "(138, 6)"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuPianoFixedTriplet"
+
+			            Name = "cMenuPianoFixedTriplet"
+			            Size = "(141, 22)"
+			            Text = "3連符"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuPianoFixedDotted"
+
+			            Name = "cMenuPianoFixedDotted"
+			            Size = "(141, 22)"
+			            Text = "付点"
+			            />
+	            </_DropDownItems>
+            </UiToolStripMenuItem>
+
+	        <UiToolStripMenuItem id="cMenuPianoQuantize"
+	            Name = "cMenuPianoQuantize"
+	            Size = "(241, 22)"
+	            Text = "Quantize(&amp;Q)"
+	            >
+	            <_DropDownItems>
+
+			        <UiToolStripMenuItem id="cMenuPianoQuantize04"
+
+			            Name = "cMenuPianoQuantize04"
+			            Size = "(109, 22)"
+			            Text = "1/4"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuPianoQuantize08"
+
+			            Name = "cMenuPianoQuantize08"
+			            Size = "(109, 22)"
+			            Text = "1/8"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuPianoQuantize16"
+
+			            Name = "cMenuPianoQuantize16"
+			            Size = "(109, 22)"
+			            Text = "1/16"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuPianoQuantize32"
+
+			            Name = "cMenuPianoQuantize32"
+			            Size = "(109, 22)"
+			            Text = "1/32"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuPianoQuantize64"
+
+			            Name = "cMenuPianoQuantize64"
+			            Size = "(109, 22)"
+			            Text = "1/64"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuPianoQuantize128"
+
+			            Name = "cMenuPianoQuantize128"
+			            Size = "(109, 22)"
+			            Text = "1/128"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuPianoQuantizeOff"
+
+			            Name = "cMenuPianoQuantizeOff"
+			            Size = "(109, 22)"
+			            Text = "オフ"
+			            />
+
+			        <UiToolStripSeparator id="toolStripMenuItem26"
+
+			            Name = "toolStripMenuItem26"
+			            Size = "(106, 6)"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuPianoQuantizeTriplet"
+
+			            Name = "cMenuPianoQuantizeTriplet"
+			            Size = "(109, 22)"
+			            Text = "3連符"
+			            />
+	            </_DropDownItems>
+            </UiToolStripMenuItem>
+
+	        <UiToolStripMenuItem id="cMenuPianoGrid"
+
+	            Name = "cMenuPianoGrid"
+	            Size = "(241, 22)"
+	            Text = "Show/Hide Grid Line(&amp;S)"
+	            />
+
+	        <UiToolStripSeparator id="toolStripMenuItem14"
+
+	            Name = "toolStripMenuItem14"
+	            Size = "(238, 6)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuPianoUndo"
+
+	            Name = "cMenuPianoUndo"
+	            Size = "(241, 22)"
+	            Text = "Undo(&amp;U)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuPianoRedo"
+
+	            Name = "cMenuPianoRedo"
+	            Size = "(241, 22)"
+	            Text = "Redo(&amp;R)"
+	            />
+
+	        <UiToolStripSeparator id="toolStripMenuItem15"
+
+	            Name = "toolStripMenuItem15"
+	            Size = "(238, 6)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuPianoCut"
+
+	            Name = "cMenuPianoCut"
+	            Size = "(241, 22)"
+	            Text = "Cut(&amp;T)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuPianoCopy"
+
+	            Name = "cMenuPianoCopy"
+	            Size = "(241, 22)"
+	            Text = "Copy(&amp;C)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuPianoPaste"
+
+	            Name = "cMenuPianoPaste"
+	            Size = "(241, 22)"
+	            Text = "Paste(&amp;P)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuPianoDelete"
+
+	            Name = "cMenuPianoDelete"
+	            Size = "(241, 22)"
+	            Text = "Delete(&amp;D)"
+	            />
+
+	        <UiToolStripSeparator id="toolStripMenuItem16"
+
+	            Name = "toolStripMenuItem16"
+	            Size = "(238, 6)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuPianoSelectAll"
+
+	            Name = "cMenuPianoSelectAll"
+	            Size = "(241, 22)"
+	            Text = "Select All(&amp;A)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuPianoSelectAllEvents"
+
+	            Name = "cMenuPianoSelectAllEvents"
+	            Size = "(241, 22)"
+	            Text = "Select All Events(&amp;E)"
+	            />
+
+	        <UiToolStripSeparator id="toolStripMenuItem17"
+
+	            Name = "toolStripMenuItem17"
+	            Size = "(238, 6)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuPianoImportLyric"
+
+	            Name = "cMenuPianoImportLyric"
+	            Size = "(241, 22)"
+	            Text = "Insert Lyrics(&amp;L)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuPianoExpressionProperty"
+
+	            Name = "cMenuPianoExpressionProperty"
+	            Size = "(241, 22)"
+	            Text = "Note Expression Property(&amp;P)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuPianoVibratoProperty"
+
+	            Name = "cMenuPianoVibratoProperty"
+	            Size = "(241, 22)"
+	            Text = "Note Vibrato Property"
+	            />
+        </_Items>
+    </UiContextMenuStrip>
+
+    <UiContextMenuStrip id="cMenuTrackTab"
+            Name = "cMenuTrackTab"
+            RenderMode = "System"
+            ShowCheckMargin = "true"
+            ShowImageMargin = "false"
+            Size = "(220, 220)"
+        >
+        <_Items>
+
+	        <UiToolStripMenuItem id="cMenuTrackTabTrackOn"
+
+	            Name = "cMenuTrackTabTrackOn"
+	            Size = "(219, 22)"
+	            Text = "Track On(&amp;K)"
+	            />
+
+	        <UiToolStripSeparator id="toolStripMenuItem24"
+
+	            Name = "toolStripMenuItem24"
+	            Size = "(216, 6)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackTabAdd"
+
+	            Name = "cMenuTrackTabAdd"
+	            Size = "(219, 22)"
+	            Text = "Add Track(&amp;A)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackTabCopy"
+
+	            Name = "cMenuTrackTabCopy"
+	            Size = "(219, 22)"
+	            Text = "Copy Track(&amp;C)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackTabChangeName"
+
+	            Name = "cMenuTrackTabChangeName"
+	            Size = "(219, 22)"
+	            Text = "Rename Track"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackTabDelete"
+
+	            Name = "cMenuTrackTabDelete"
+	            Size = "(219, 22)"
+	            Text = "Delete Track(&amp;D)"
+	            />
+
+	        <UiToolStripSeparator id="toolStripMenuItem25"
+
+	            Name = "toolStripMenuItem25"
+	            Size = "(216, 6)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackTabRenderCurrent"
+
+	            Name = "cMenuTrackTabRenderCurrent"
+	            Size = "(219, 22)"
+	            Text = "Render Current Track(&amp;T)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackTabRenderAll"
+
+	            Name = "cMenuTrackTabRenderAll"
+	            Size = "(219, 22)"
+	            Text = "Render All Tracks(&amp;S)"
+	            />
+
+	        <UiToolStripSeparator id="toolStripMenuItem27"
+
+	            Name = "toolStripMenuItem27"
+	            Size = "(216, 6)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackTabOverlay"
+
+	            Name = "cMenuTrackTabOverlay"
+	            Size = "(219, 22)"
+	            Text = "Overlay(&amp;O)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackTabRenderer"
+	            Name = "cMenuTrackTabRenderer"
+	            Size = "(219, 22)"
+	            Text = "Renderer(&amp;R)"
+	            >
+	            <_DropDownItems>
+			        <UiToolStripMenuItem id="cMenuTrackTabRendererVOCALOID1"
+
+			            Name = "cMenuTrackTabRendererVOCALOID1"
+			            Size = "(197, 22)"
+			            Text = "VOCALOID1(&amp;1)"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuTrackTabRendererVOCALOID2"
+
+			            Name = "cMenuTrackTabRendererVOCALOID2"
+			            Size = "(197, 22)"
+			            Text = "VOCALOID2(&amp;2)"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuTrackTabRendererUtau"
+
+			            Name = "cMenuTrackTabRendererUtau"
+			            Size = "(197, 22)"
+			            Text = "UTAU(&amp;3)"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuTrackTabRendererStraight"
+
+			            Name = "cMenuTrackTabRendererStraight"
+			            Size = "(197, 22)"
+			            Text = "vConnect-STAND(&amp;4) "
+			            />
+
+			        <UiToolStripMenuItem id="cMenuTrackTabRendererAquesTone"
+
+			            Name = "cMenuTrackTabRendererAquesTone"
+			            Size = "(197, 22)"
+			            Text = "AquesTone(&amp;5)"
+			            />
+
+			        <UiToolStripMenuItem id="cMenuTrackTabRendererAquesTone2"
+
+			            Name = "cMenuTrackTabRendererAquesTone2"
+			            Size = "(197, 22)"
+			            Text = "AquesTone2(&amp;6)"
+			            />
+	            </_DropDownItems>
+            </UiToolStripMenuItem>
+        </_Items>
+    </UiContextMenuStrip>
+
+    <UiContextMenuStrip id="cMenuTrackSelector"
+            Name = "cMenuTrackSelector"
+            RenderMode = "System"
+            ShowCheckMargin = "true"
+            ShowImageMargin = "false"
+            Size = "(206, 336)"
+        >
+        <_Items>
+	        <UiToolStripMenuItem id="cMenuTrackSelectorPointer"
+
+	            Name = "cMenuTrackSelectorPointer"
+	            Size = "(205, 22)"
+	            Text = "Arrow(&amp;A)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackSelectorPencil"
+
+	            Name = "cMenuTrackSelectorPencil"
+	            Size = "(205, 22)"
+	            Text = "Pencil(&amp;W)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackSelectorLine"
+
+	            Name = "cMenuTrackSelectorLine"
+	            Size = "(205, 22)"
+	            Text = "Line(&amp;L)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackSelectorEraser"
+
+	            Name = "cMenuTrackSelectorEraser"
+	            Size = "(205, 22)"
+	            Text = "Eraser(&amp;E)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackSelectorPaletteTool"
+
+	            Name = "cMenuTrackSelectorPaletteTool"
+	            Size = "(205, 22)"
+	            Text = "Palette Tool"
+	            />
+
+	        <UiToolStripSeparator id="toolStripSeparator14"
+
+	            Name = "toolStripSeparator14"
+	            Size = "(202, 6)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackSelectorCurve"
+
+	            Name = "cMenuTrackSelectorCurve"
+	            Size = "(205, 22)"
+	            Text = "Curve(&amp;V)"
+	            />
+
+	        <UiToolStripSeparator id="toolStripMenuItem28"
+
+	            Name = "toolStripMenuItem28"
+	            Size = "(202, 6)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackSelectorUndo"
+
+	            Name = "cMenuTrackSelectorUndo"
+	            Size = "(205, 22)"
+	            Text = "Undo(&amp;U)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackSelectorRedo"
+
+	            Name = "cMenuTrackSelectorRedo"
+	            Size = "(205, 22)"
+	            Text = "Redo(&amp;R)"
+	            />
+
+	        <UiToolStripSeparator id="toolStripMenuItem29"
+
+	            Name = "toolStripMenuItem29"
+	            Size = "(202, 6)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackSelectorCut"
+
+	            Name = "cMenuTrackSelectorCut"
+	            Size = "(205, 22)"
+	            Text = "Cut(&amp;T)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackSelectorCopy"
+
+	            Name = "cMenuTrackSelectorCopy"
+	            Size = "(205, 22)"
+	            Text = "Copy(&amp;C)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackSelectorPaste"
+
+	            Name = "cMenuTrackSelectorPaste"
+	            Size = "(205, 22)"
+	            Text = "Paste(&amp;P)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackSelectorDelete"
+
+	            Name = "cMenuTrackSelectorDelete"
+	            Size = "(205, 22)"
+	            Text = "Delete(&amp;D)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackSelectorDeleteBezier"
+
+	            Name = "cMenuTrackSelectorDeleteBezier"
+	            Size = "(205, 22)"
+	            Text = "Delete Bezier Point(&amp;B)"
+	            />
+
+	        <UiToolStripSeparator id="toolStripMenuItem31"
+
+	            Name = "toolStripMenuItem31"
+	            Size = "(202, 6)"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuTrackSelectorSelectAll"
+
+	            Name = "cMenuTrackSelectorSelectAll"
+	            Size = "(205, 22)"
+	            Text = "Select All Events(&amp;E)"
+	            />
+        </_Items>
+    </UiContextMenuStrip>
+
+    <UiContextMenuStrip id="cMenuPositionIndicator"
+            Name = "cMenuTrackTab"
+            RenderMode = "System"
+            ShowImageMargin = "false"
+            Size = "(151, 48)"
+        >
+        <_Items>
+	        <UiToolStripMenuItem id="cMenuPositionIndicatorStartMarker"
+
+	            Name = "cMenuPositionIndicatorStartMarker"
+	            Size = "(150, 22)"
+	            Text = "Set start marker"
+	            />
+
+	        <UiToolStripMenuItem id="cMenuPositionIndicatorEndMarker"
+
+	            Name = "cMenuPositionIndicatorEndMarker"
+	            Size = "(150, 22)"
+	            Text = "Set end marker"
+	            />
+        </_Items>
+    </UiContextMenuStrip>
+
+<____UNKNOWN____>
+
+		<!-- No known place to be used -->
+        <UiToolStripSeparator id="toolStripSeparator2"
+
+            Name = "toolStripSeparator2"
+            Size = "(57, 6)"
+            />
+
+		<!-- No known place to be used -->
+        <UiToolStripSeparator id="toolStripSeparator3"
+
+            Name = "toolStripSeparator3"
+            Size = "(57, 6)"
+            />
+
+		<!-- No known place to be used -->
+	    <UiImageList id="imageListMenu"
+
+            ColorDepth = "Depth8Bit"
+            ImageSize = "(1, 16)"
+	            TransparentColor = "$Transparent"
+	            />
+
+	    
+
+    </____UNKNOWN____>
+
+</Widgets>

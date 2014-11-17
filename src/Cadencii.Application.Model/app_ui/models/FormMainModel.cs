@@ -439,7 +439,8 @@ namespace Cadencii.Application.Models
 					if (item != "") {
 						string short_name = PortUtil.getFileName(item);
 						bool available = System.IO.File.Exists(item);
-						var itm = ApplicationUIHost.Create<RecentFileMenuItem> (item);
+						var itm = ApplicationUIHost.Create<RecentFileMenuItem> ();
+						itm.FilePath = item;
 						itm.Text = short_name;
 						string tooltip = "";
 						if (!available) {

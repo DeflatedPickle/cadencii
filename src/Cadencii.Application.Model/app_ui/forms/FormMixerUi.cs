@@ -8,11 +8,6 @@ namespace Cadencii.Application.Forms
 {
 	public interface FormMixerUi : UiForm
 	{
-		// This is not a form specific feature, but since Control.DoubleBuffered is protected,
-		// it cannot be an interface member (technically it can, but it's annoying to add impl.
-		// all around) so expose it here.
-		bool DoubleBuffered { get; set; }
-
 		void setPreviousAlwaysOnTop (bool previous);
 
 		bool getPreviousAlwaysOnTop ();

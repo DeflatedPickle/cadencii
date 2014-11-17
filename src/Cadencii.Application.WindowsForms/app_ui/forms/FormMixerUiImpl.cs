@@ -33,12 +33,6 @@ namespace Cadencii.Application.Forms
 
 	public class FormMixerUiImpl : FormImpl, FormMixerUi
     {
-		// it hides protected Control.DoubleBuffered.
-		public new bool DoubleBuffered { 
-			get { return base.DoubleBuffered; }
-			set { base.DoubleBuffered = value; }
-		}
-
         private FormMainImpl m_parent;
         private List<VolumeTracker> m_tracker = null;
         private bool mPreviousAlwaysOnTop;

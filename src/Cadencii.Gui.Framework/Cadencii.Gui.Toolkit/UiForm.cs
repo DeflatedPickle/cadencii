@@ -1,10 +1,18 @@
 using System;
 using Cadencii.Gui;
+using System.ComponentModel;
 
 namespace Cadencii.Gui.Toolkit
 {
 	public interface UiForm : UiControl
 	{
+		IContainer Components { get; }
+
+		// This is not a form specific feature, but since Control.DoubleBuffered is protected,
+		// it cannot be an interface member (technically it can, but it's annoying to add impl.
+		// all around) so expose it here.
+		bool DoubleBuffered { get; set; }
+
 		UiForm AsAwt ();
 
 		AutoScaleMode AutoScaleMode { get ;set ;}

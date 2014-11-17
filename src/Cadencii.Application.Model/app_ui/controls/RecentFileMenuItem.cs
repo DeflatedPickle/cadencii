@@ -5,7 +5,7 @@ namespace Cadencii.Application.Controls
 {
 	public interface RecentFileMenuItem : UiToolStripMenuItem
 	{
-		string getFilePath();
+		string FilePath { get; set; }
 	}
 }
 

@@ -3452,6 +3452,7 @@ namespace Cadencii.Application.Forms
 			menuVisualPluginUiVocaloid1.Click += (o, e) => model.VisualMenu.RunVisualPluginUiVocaloidCommonCommand (RendererKind.VOCALOID1);
 			menuVisualPluginUiVocaloid2.Click += (o, e) => model.VisualMenu.RunVisualPluginUiVocaloidCommonCommand (RendererKind.VOCALOID2);
 			menuVisualPluginUiAquesTone.Click += (o, e) => model.VisualMenu.RunVisualPluginUiAquesToneCommand ();
+			menuVisualPluginUiAquesTone2.Click += (o, e) => model.VisualMenu.RunVisualPluginUiAquesTone2Command ();
 			menuJob.DropDownOpening += (o, e) => model.JobMenu.RunJobDropDownOpening ();
 			menuJobNormalize.Click += (o, e) => model.JobMenu.RunJobNormalizeCommand ();
 			menuJobInsertBar.Click += (o, e) => model.JobMenu.RunJobInsertBarCommand ();
@@ -3475,6 +3476,7 @@ namespace Cadencii.Application.Forms
 			//menuTrackRendererUtau.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.UTAU, xxx);
 			menuTrackRendererVCNT.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.VCNT, -1);
 			menuTrackRendererAquesTone.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.AQUES_TONE, -1);
+			menuTrackRendererAquesTone2.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.AQUES_TONE2, -1);
 			menuLyric.DropDownOpening += (o, e) => model.LyricMenu.RunLyricDropDownOpening ();
 			menuLyricExpressionProperty.Click += (o, e) => model.LyricMenu.RunLyricExpressionPropertyCommand ();
 			menuLyricVibratoProperty.Click += (o, e) => model.LyricMenu.RunLyricVibratoPropertyCommand ();
@@ -3498,11 +3500,13 @@ namespace Cadencii.Application.Forms
 			menuSettingPositionQuantize128.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p128);
 			menuSettingPositionQuantizeOff.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.off);
 			menuSettingPositionQuantizeTriplet.Click += (o, e) => model.HandlePositionQuantizeTriplet ();
+			menuToolsCreateVConnectSTANDDb.Click += (o, e) => model.OtherItems.menuToolsCreateVConnectSTANDDb_Click ();
 			menuHelpAbout.Click += (o, e) => model.HelpMenu.RunHelpAboutCommand ();
 			menuHelpManual.Click += (o, e) => model.HelpMenu.RunHelpManualCommand ();
 			menuHelpLogSwitch.CheckedChanged += (o, e) => model.HelpMenu.RunHelpLogSwitchCheckedChanged ();
 			menuHelpLogOpen.Click += (o, e) => model.HelpMenu.RunHelpLogOpenCommand ();
 			menuHelpDebug.Click += (o, e) => model.HelpMenu.RunHelpDebugCommand ();
+			menuHelpCheckForUpdates.Click += (o, e) => model.OtherItems.menuHelpCheckForUpdates_Click ();
 			menuHiddenEditLyric.Click += (o, e) => model.HiddenMenu.RunHiddenEditLyricCommand ();
 			menuHiddenEditFlipToolPointerPencil.Click += (o, e) => model.HiddenMenu.RunHiddenEditFlipToolPointerPencilCommand ();
 			menuHiddenEditFlipToolPointerEraser.Click += (o, e) => model.HiddenMenu.RunHiddenEditFlipToolPointerEraserCommand ();
@@ -3577,6 +3581,7 @@ namespace Cadencii.Application.Forms
 			cMenuTrackTabRendererVOCALOID2.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.VOCALOID2, -1);
 			cMenuTrackTabRendererStraight.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.STRAIGHT_UTAU, -1);
 			cMenuTrackTabRendererAquesTone.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.AQUES_TONE, -1);
+			cMenuTrackTabRendererAquesTone2.Click += (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.AQUES_TONE2, -1);
 			cMenuTrackSelector.Opening += (o, e) => model.TrackSelectorMenu.RunOpening ();
 			cMenuTrackSelectorPointer.Click += (o, e) => model.TrackSelectorMenu.RunPointerCommand ();
 			cMenuTrackSelectorPencil.Click += (o, e) => model.TrackSelectorMenu.RunPencilCommand ();
@@ -3650,8 +3655,16 @@ namespace Cadencii.Application.Forms
 			pictureBox2.MouseDown += (o,e) => model.OtherItems.pictureBox2_MouseDown(e);
 			pictureBox2.MouseUp += (o,e) => model.OtherItems.pictureBox2_MouseUp ();
 			pictureBox2.Paint += (o,e) => model.OtherItems.pictureBox2_Paint (e);
-			toolBarTool.ButtonClick += (o,e) => model.ToolBars.ToolButtonClick (e);
 			rebar.SizeChanged += (o,e) => model.OtherItems.toolStripContainer_TopToolStripPanel_SizeChanged ();
+			bandTool.Resize += (o, e) => model.OtherItems.SaveToolbarLocation ();
+			bandMeasure.Resize += (o, e) => model.OtherItems.SaveToolbarLocation ();
+			bandPosition.Resize += (o, e) => model.OtherItems.SaveToolbarLocation ();
+			bandFile.Resize += (o, e) => model.OtherItems.SaveToolbarLocation ();
+			toolBarFile.ButtonClick += (o, e) => model.ToolBars.FileButtonClick (e);
+			toolBarPosition.ButtonClick += (o, e) => model.ToolBars.PositionButtonClick (e);
+			toolBarMeasure.ButtonClick += (o, e) => model.ToolBars.MeasureButtonClick (e);
+			toolBarMeasure.MouseDown += (o, e) => model.ToolBars.MeasureMouseDown (e);
+			toolBarTool.ButtonClick += (o,e) => model.ToolBars.ToolButtonClick (e);
 			stripDDBtnQuantize04.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p4);
 			stripDDBtnQuantize08.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p8);
 			stripDDBtnQuantize16.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p16);
@@ -3660,10 +3673,6 @@ namespace Cadencii.Application.Forms
 			stripDDBtnQuantize128.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.p128);
 			stripDDBtnQuantizeOff.Click += (o, e) => model.HandlePositionQuantize (QuantizeMode.off);
 			stripDDBtnQuantizeTriplet.Click += (o, e) => model.HandlePositionQuantizeTriplet ();
-			toolBarFile.ButtonClick += (o, e) => model.ToolBars.FileButtonClick (e);
-			toolBarPosition.ButtonClick += (o, e) => model.ToolBars.PositionButtonClick (e);
-			toolBarMeasure.ButtonClick += (o, e) => model.ToolBars.MeasureButtonClick (e);
-			toolBarMeasure.MouseDown += (o, e) => model.ToolBars.MeasureMouseDown (e);
 			stripBtnStepSequencer.CheckedChanged += (o, e) => model.ToolBars.StepSequencerCheckedChanged ();
 			panelOverview.Enter += (o,e) => model.OtherItems.panelOverview_Enter();
         }
@@ -3860,6 +3869,10 @@ namespace Cadencii.Application.Forms
             statusLabel.Text = text;
         }
 #endif
+
+	public override IContainer Components {
+		get { return components; }
+	}
 
         #region public static methods
         /// <summary>
