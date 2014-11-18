@@ -75,7 +75,7 @@ namespace Cadencii.Application.Models
 					int point_id = sbp.pointID;
 					VsqFileEx vsq = MusicManager.getVsqFile();
 					int selected = EditorManager.Selected;
-					BezierChain chain = (BezierChain)vsq.AttachedCurves.get(selected - 1).getBezierChain(parent.form.TrackSelector.getSelectedCurve(), chain_id).clone();
+					BezierChain chain = (BezierChain)vsq.AttachedCurves.get(selected - 1).getBezierChain(parent.form.TrackSelector.SelectedCurve, chain_id).clone();
 					int index = -1;
 					for (int i = 0; i < chain.points.Count; i++) {
 						if (chain.points[i].getID() == point_id) {
@@ -87,13 +87,13 @@ namespace Cadencii.Application.Models
 						chain.points.RemoveAt(index);
 						if (chain.points.Count == 0) {
 							CadenciiCommand run = VsqFileEx.generateCommandDeleteBezierChain(selected,
-								parent.form.TrackSelector.getSelectedCurve(),
+								parent.form.TrackSelector.SelectedCurve,
 								chain_id,
 								ApplicationGlobal.appConfig.getControlCurveResolutionValue());
 							EditorManager.editHistory.register(vsq.executeCommand(run));
 						} else {
 							CadenciiCommand run = VsqFileEx.generateCommandReplaceBezierChain(selected,
-								parent.form.TrackSelector.getSelectedCurve(),
+								parent.form.TrackSelector.SelectedCurve,
 								chain_id,
 								chain,
 								ApplicationGlobal.appConfig.getControlCurveResolutionValue());

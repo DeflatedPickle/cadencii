@@ -423,7 +423,7 @@ namespace Cadencii.Application.Models
 						parent.form.Model.StartToDrawY = (parent.form.calculateStartToDrawY (parent.form.vScroll.Value));
 
 						if (parent.form.menuVisualControlTrack.Checked) {
-							parent.form.splitContainer1.Panel2MinSize = (parent.form.TrackSelector.getPreferredMinSize ());
+							parent.form.splitContainer1.Panel2MinSize = (parent.form.TrackSelector.PreferredMinSize);
 						}
 
 						EditorManager.saveConfig ();

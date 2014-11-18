@@ -60,91 +60,63 @@ namespace Cadencii.Application.Controls
 	{
 		void updateVisibleCurves ();
 
-		void setBounds (int x, int y, int width, int height);
+		Cadencii.Gui.Cursor Cursor { get; set; }
 
-		void setBounds (Cadencii.Gui.Rectangle rc);
+		Object Parent { get; }
 
-		Cadencii.Gui.Cursor getCursor ();
+		Point LocationOnScreen { get; }
 
-		void setCursor (Cadencii.Gui.Cursor value);
+		Point Location { get; set; }
 
-		Object getParent ();
+		Cadencii.Gui.Rectangle Bounds { get; set; }
 
-		Cadencii.Gui.Point getLocationOnScreen ();
+		Cadencii.Gui.Dimension Size { get; set; }
 
-		Cadencii.Gui.Point getLocation ();
+		Cadencii.Gui.Color Background { get; set; }
 
-		void setLocation (int x, int y);
+		Cadencii.Gui.Color Foreground { get; set; }
 
-		void setLocation (Cadencii.Gui.Point p);
+		bool Enabled { get; set; }
 
-		Cadencii.Gui.Rectangle getBounds ();
+		void RequestFocus ();
 
-		Cadencii.Gui.Dimension getSize ();
-
-		void setSize (int width, int height);
-
-		void setSize (Cadencii.Gui.Dimension d);
-
-		void setBackground (Cadencii.Gui.Color color);
-
-		Cadencii.Gui.Color getBackground ();
-
-		void setForeground (Cadencii.Gui.Color color);
-
-		Cadencii.Gui.Color getForeground ();
-
-		bool isEnabled ();
-
-		void setEnabled (bool value);
-
-		void requestFocus ();
-
-		bool isFocusOwner ();
+		bool IsFocusOwner ();
 
 		void setPreferredSize (Cadencii.Gui.Dimension size);
 
-		Cadencii.Gui.Font getFont ();
+		Cadencii.Gui.Font Font { get; set; }
 
-		void setFont (Cadencii.Gui.Font font);
+		Cadencii.Gui.Point PointToScreen (Cadencii.Gui.Point point_on_client);
 
-		Cadencii.Gui.Point pointToScreen (Cadencii.Gui.Point point_on_client);
+		Cadencii.Gui.Point PointToClient (Cadencii.Gui.Point point_on_screen);
 
-		Cadencii.Gui.Point pointToClient (Cadencii.Gui.Point point_on_screen);
-
-		Object getTag ();
-
-		void setTag (Object value);
+		Object Tag { get; set; }
 
 		void applyLanguage ();
 
 		void applyFont (Cadencii.Gui.Font font);
 
-		int getRowsPerColumn ();
+		int RowsPerColumn { get; }
 
-		int getPreferredMinSize ();
+		int PreferredMinSize { get; }
 
-		FormMain getMainForm ();
+		FormMain MainForm { get; }
 
 		ValuePair<int, int> getSelectedRegion ();
 
-		CurveType getSelectedCurve ();
+		CurveType SelectedCurve { get; set; }
 
-		void setSelectedCurve (CurveType value);
+		int ValueFromYCoord (int y);
 
-		int valueFromYCoord (int y);
+		int ValueFromYCoord (int y, int max, int min);
 
-		int valueFromYCoord (int y, int max, int min);
+		int YCoordFromValue (int value);
 
-		int yCoordFromValue (int value);
+		int YCoordFromValue (int value, int max, int min);
 
-		int yCoordFromValue (int value, int max, int min);
+		bool CurveVisible { get; set; }
 
-		bool isCurveVisible ();
-
-		void setCurveVisible (bool value);
-
-		float getScaleY ();
+		float ScaleY { get; }
 
 		Rectangle getRectFromCurveType (CurveType curve);
 
@@ -156,8 +128,8 @@ namespace Cadencii.Application.Controls
 
 		void SelectPreviousCurve();
 		void SelectNextCurve();
-		void onMouseDown(Object sender, MouseEventArgs e);
-		void onMouseUp(Object sender, MouseEventArgs e);
+		void OnMouseDown(Object sender, MouseEventArgs e);
+		void OnMouseUp(Object sender, MouseEventArgs e);
 		void TrackSelector_MouseHover(Object sender, EventArgs e);
 		void prepareSingerMenu(RendererKind renderer);
 		BezierPoint HandleMouseMoveForBezierMove(int clock, int value, int value_raw, BezierPickedSide picked);

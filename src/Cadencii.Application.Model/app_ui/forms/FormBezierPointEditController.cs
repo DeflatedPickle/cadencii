@@ -192,12 +192,12 @@ namespace Cadencii.Application.Forms
             this.ui.setOpacity(1.0);
 
             Point loc_on_screen = Screen.Instance.GetScreenMousePosition();
-            Point loc_trackselector = m_parent.getLocationOnScreen();
+            Point loc_trackselector = m_parent.LocationOnScreen;
             Point loc_on_trackselector =
                 new Point(loc_on_screen.X - loc_trackselector.X, loc_on_screen.Y - loc_trackselector.Y);
             var event_arg =
                 new NMouseEventArgs(NMouseButtons.Left, 0, loc_on_trackselector.X, loc_on_trackselector.Y, 0);
-            m_parent.onMouseUp(this, event_arg);
+            m_parent.OnMouseUp(this, event_arg);
 			Screen.Instance.SetScreenMousePosition(m_last_mouse_global_location);
             m_parent.doInvalidate();
         }
@@ -213,7 +213,7 @@ namespace Cadencii.Application.Forms
                     return;
                 }
 
-                Point loc_trackselector = m_parent.getLocationOnScreen();
+                Point loc_trackselector = m_parent.LocationOnScreen;
                 Point loc_on_trackselector =
                     new Point(loc_on_screen.X - loc_trackselector.X, loc_on_screen.Y - loc_trackselector.Y);
                 var event_arg =
@@ -274,8 +274,8 @@ namespace Cadencii.Application.Forms
             Point loc_on_trackselector =
                 new Point(
                     EditorManager.xCoordFromClocks((int)pd.getX()),
-                    m_parent.yCoordFromValue((int)pd.getY()));
-            Point loc_topleft = m_parent.getLocationOnScreen();
+                    m_parent.YCoordFromValue((int)pd.getY()));
+            Point loc_topleft = m_parent.LocationOnScreen;
             mScreenMouseDownLocation =
                 new Point(
                     loc_topleft.X + loc_on_trackselector.X,
@@ -285,7 +285,7 @@ namespace Cadencii.Application.Forms
                 new NMouseEventArgs(
                     NMouseButtons.Left, 0,
                     loc_on_trackselector.X, loc_on_trackselector.Y, 0);
-            m_parent.onMouseDown(this, event_arg);
+            m_parent.OnMouseDown(this, event_arg);
             m_picked_side = side;
             m_btn_datapoint_downed = true;
         }
@@ -342,7 +342,7 @@ namespace Cadencii.Application.Forms
                 m_parent.doInvalidate();
 
                 // スクリーン上でデータ点が見えるようにする
-                var main = m_parent.getMainForm();
+                var main = m_parent.MainForm;
                 if (main != null) {
                     main.Model.EnsureClockVisibleOnPianoRoll((int)m_point.getBase().getX());
                 }

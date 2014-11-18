@@ -280,16 +280,16 @@ namespace Cadencii.Application.Forms
             menuScript.setVisible( false );
 #endif
             trackSelector.updateVisibleCurves();
-            trackSelector.setBackground(new Color(108, 108, 108));
-            trackSelector.setCurveVisible(true);
-            trackSelector.setSelectedCurve(CurveType.VEL);
-            trackSelector.setLocation(new Point(0, 242));
+            trackSelector.Background = (new Color(108, 108, 108));
+            trackSelector.CurveVisible = true;
+            trackSelector.SelectedCurve = (CurveType.VEL);
+            trackSelector.Location = (new Point(0, 242));
             trackSelector.Margin = new Cadencii.Gui.Toolkit.Padding(0);
             trackSelector.Name = "trackSelector";
-            trackSelector.setSize(446, 250);
+            trackSelector.Size = new Dimension (446, 250);
             trackSelector.TabIndex = 0;
 
-            splitContainer1.Panel2MinSize = trackSelector.getPreferredMinSize();
+            splitContainer1.Panel2MinSize = trackSelector.PreferredMinSize;
             var minimum_size = getWindowMinimumSize();
 			this.AsAwt ().MinimumSize = new Dimension(minimum_size.Width, minimum_size.Height);
             stripBtnScroll.Pushed = EditorManager.mAutoScroll;
@@ -316,7 +316,7 @@ namespace Cadencii.Application.Forms
             splitContainer1.Panel2.AddControl(trackSelector);
             trackSelector.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 			splitContainer1.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
-            splitContainer1.Panel2MinSize = trackSelector.getPreferredMinSize();
+            splitContainer1.Panel2MinSize = trackSelector.PreferredMinSize;
             splitContainerProperty.FixedPanel = Cadencii.Gui.Toolkit.FixedPanel.Panel1;
 
 #if ENABLE_PROPERTY
@@ -381,7 +381,7 @@ namespace Cadencii.Application.Forms
             hScroll.SmallChange = 240;
             vScroll.SmallChange = 24;
 
-            trackSelector.setCurveVisible(true);
+            trackSelector.CurveVisible = (true);
 
             // inputTextBoxの初期化
             EditorManager.InputTextBox = new LyricTextBoxImpl();
@@ -579,7 +579,7 @@ namespace Cadencii.Application.Forms
 			EditorManager.propertyPanel.CommandExecuteRequired += (o, c) => model.OtherItems.propertyPanel_CommandExecuteRequired (c);
 #endif
             updateBgmMenuState();
-            EditorManager.mLastTrackSelectorHeight = trackSelector.getPreferredMinSize();
+            EditorManager.mLastTrackSelectorHeight = trackSelector.PreferredMinSize;
             model.FlipControlCurveVisible(true);
 
             Refresh();
@@ -1814,7 +1814,7 @@ namespace Cadencii.Application.Forms
                 foreach (var c in copied_curve.Keys) {
                     ct = c;
                 }
-                CurveType selected = trackSelector.getSelectedCurve();
+                CurveType selected = trackSelector.SelectedCurve;
                 if (ct.getMaximum() == selected.getMaximum() &&
                      ct.getMinimum() == selected.getMinimum() &&
                      !selected.isScalar() && !selected.isAttachNote()) {

@@ -208,8 +208,8 @@ namespace Cadencii.Application.Models
 				CDebug.WriteLine("    Curve");
 				#endif
 				string curve;
-				if (!form.TrackSelector.getSelectedCurve().isAttachNote()) {
-					curve = form.TrackSelector.getSelectedCurve().getName();
+				if (!form.TrackSelector.SelectedCurve.isAttachNote()) {
+					curve = form.TrackSelector.SelectedCurve.getName();
 					VsqBPList src = vsq_track.getCurve(curve);
 					VsqBPList list = (VsqBPList)src.clone();
 					List<int> remove_clock_queue = new List<int>();
@@ -226,7 +226,7 @@ namespace Cadencii.Application.Models
 					}
 					CadenciiCommand run = new CadenciiCommand(
 						VsqCommand.generateCommandTrackCurveReplace(selected,
-							form.TrackSelector.getSelectedCurve().getName(),
+							form.TrackSelector.SelectedCurve.getName(),
 							list));
 					EditorManager.editHistory.register(vsq.executeCommand(run));
 					form.setEdited(true);
@@ -365,7 +365,7 @@ namespace Cadencii.Application.Models
 						}
 						target.add(max, valueAtEnd);
 						if (copied_curve.Count == 1) {
-							work[form.TrackSelector.getSelectedCurve().getName()] = target;
+							work[form.TrackSelector.SelectedCurve.getName()] = target;
 						} else {
 							work[curve.getName()] = target;
 						}
@@ -556,15 +556,15 @@ namespace Cadencii.Application.Models
 				ce.copyStartedClock = start;
 				List<BezierChain> tmp_bezier = new List<BezierChain>();
 				CopyCurveCor(EditorManager.Selected,
-					form.TrackSelector.getSelectedCurve(),
+					form.TrackSelector.SelectedCurve,
 					start,
 					end,
 					tmp_bezier);
 				if (tmp_bezier.Count > 0) {
 					// ベジエ曲線が1個以上コピーされた場合
 					// 範囲内のデータ点を追加する
-					ce.beziers[form.TrackSelector.getSelectedCurve()] = tmp_bezier;
-					CurveType curve = form.TrackSelector.getSelectedCurve();
+					ce.beziers[form.TrackSelector.SelectedCurve] = tmp_bezier;
+					CurveType curve = form.TrackSelector.SelectedCurve;
 					VsqBPList list = MusicManager.getVsqFile().Track[EditorManager.Selected].getCurve(curve.getName());
 					if (list != null) {
 						VsqBPList tmp_bplist = new VsqBPList(list.getName(), list.getDefault(), list.getMinimum(), list.getMaximum());
@@ -582,7 +582,7 @@ namespace Cadencii.Application.Models
 				} else {
 					// ベジエ曲線がコピーされなかった場合
 					// EditorManager.selectedPointIDIteratorの中身のみを選択
-					CurveType curve = form.TrackSelector.getSelectedCurve();
+					CurveType curve = form.TrackSelector.SelectedCurve;
 					VsqBPList list = MusicManager.getVsqFile().Track[EditorManager.Selected].getCurve(curve.getName());
 					if (list != null) {
 						VsqBPList tmp_bplist = new VsqBPList(curve.getName(), curve.getDefault(), curve.getMinimum(), curve.getMaximum());
@@ -681,7 +681,7 @@ namespace Cadencii.Application.Models
 					}
 				} else {
 					// 普通の選択モード
-					target_curve.Add(form.TrackSelector.getSelectedCurve());
+					target_curve.Add(form.TrackSelector.SelectedCurve);
 				}
 				work.AttachedCurves.get(EditorManager.Selected - 1).deleteBeziers(target_curve, start_clock, end_clock);
 

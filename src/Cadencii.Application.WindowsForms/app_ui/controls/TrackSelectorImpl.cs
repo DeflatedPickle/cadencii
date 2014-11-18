@@ -54,8 +54,11 @@ namespace Cadencii.Application.Controls
     /// <summary>
     /// コントロールカーブ，トラックの一覧，歌手変更イベントなどを表示するコンポーネント．
     /// </summary>
-    public class TrackSelectorImpl : UserControlImpl, TrackSelector
+	public class TrackSelectorImpl : UserControlImpl, TrackSelector
     {
+		object TrackSelector.Parent {
+			get { return base.Parent; }
+		}
 
 		BezierPoint TrackSelector.HandleMouseMoveForBezierMove (Cadencii.Gui.Toolkit.MouseEventArgs e, BezierPickedSide picked)
 		{
@@ -67,12 +70,12 @@ namespace Cadencii.Application.Controls
 			mEditingPointID = id;
 		}
 
-		void TrackSelector.onMouseDown (object sender, Cadencii.Gui.Toolkit.MouseEventArgs e)
+		void TrackSelector.OnMouseDown (object sender, Cadencii.Gui.Toolkit.MouseEventArgs e)
 		{
 			onMouseDown (sender, e.ToWF ());
 		}
 
-		void TrackSelector.onMouseUp (object sender, Cadencii.Gui.Toolkit.MouseEventArgs e)
+		void TrackSelector.OnMouseUp (object sender, Cadencii.Gui.Toolkit.MouseEventArgs e)
 		{
 			onMouseUp (sender, e.ToWF ());
 		}
@@ -86,10 +89,6 @@ namespace Cadencii.Application.Controls
         /// 現在最前面カーブのすぐ後ろに表示されているカーブ
         /// </summary>
         private CurveType mLastSelectedCurve = CurveType.DYN;
-        /// <summary>
-        /// コントロールカーブを表示するモードかどうか
-        /// </summary>
-        private bool mCurveVisible = true;
         /// <summary>
         /// 現在のマウス位置におけるカーブの値
         /// </summary>
@@ -430,122 +429,27 @@ namespace Cadencii.Application.Controls
         }
 
         #region Cadencii.Gui.Component
-        public void setBounds(int x, int y, int width, int height)
-        {
-            base.Bounds = new System.Drawing.Rectangle(x, y, width, height);
-        }
 
-        public void setBounds(Cadencii.Gui.Rectangle rc)
-        {
-            base.Bounds = new System.Drawing.Rectangle(rc.X, rc.Y, rc.Width, rc.Height);
-        }
+		public Rectangle Bounds {
+			get { return base.Bounds.ToAwt (); }
+			set { base.Bounds = value.ToWF (); }
+		}
 
-        public Cadencii.Gui.Cursor getCursor()
-        {
-            System.Windows.Forms.Cursor c = base.Cursor;
-            Cadencii.Gui.Cursor ret = null;
-            if (c.Equals(System.Windows.Forms.Cursors.Arrow)) {
-                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.DEFAULT_CURSOR);
-            } else if (c.Equals(System.Windows.Forms.Cursors.Cross)) {
-                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.CROSSHAIR_CURSOR);
-            } else if (c.Equals(System.Windows.Forms.Cursors.Default)) {
-                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.DEFAULT_CURSOR);
-            } else if (c.Equals(System.Windows.Forms.Cursors.Hand)) {
-                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.HAND_CURSOR);
-            } else if (c.Equals(System.Windows.Forms.Cursors.IBeam)) {
-                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.TEXT_CURSOR);
-            } else if (c.Equals(System.Windows.Forms.Cursors.PanEast)) {
-                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.E_RESIZE_CURSOR);
-            } else if (c.Equals(System.Windows.Forms.Cursors.PanNE)) {
-                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.NE_RESIZE_CURSOR);
-            } else if (c.Equals(System.Windows.Forms.Cursors.PanNorth)) {
-                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.N_RESIZE_CURSOR);
-            } else if (c.Equals(System.Windows.Forms.Cursors.PanNW)) {
-                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.NW_RESIZE_CURSOR);
-            } else if (c.Equals(System.Windows.Forms.Cursors.PanSE)) {
-                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.SE_RESIZE_CURSOR);
-            } else if (c.Equals(System.Windows.Forms.Cursors.PanSouth)) {
-                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.S_RESIZE_CURSOR);
-            } else if (c.Equals(System.Windows.Forms.Cursors.PanSW)) {
-                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.SW_RESIZE_CURSOR);
-            } else if (c.Equals(System.Windows.Forms.Cursors.PanWest)) {
-                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.W_RESIZE_CURSOR);
-            } else if (c.Equals(System.Windows.Forms.Cursors.SizeAll)) {
-                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.MOVE_CURSOR);
-            } else {
-                ret = new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.CUSTOM_CURSOR);
-            }
-            ret.NativeCursor = c;
-            return ret;
-        }
-
-        public void setCursor(Cadencii.Gui.Cursor value)
-        {
-            base.Cursor = (System.Windows.Forms.Cursor) value.NativeCursor;
-        }
-
-#if COMPONENT_ENABLE_TOOL_TIP_TEXT
-        public void setToolTipText( String value )
-        {
-            base.ToolTipText = value;
-        }
-
-        public String getToolTipText()
-        {
-            return base.ToolTipText;
-        }
-#endif
-
-#if COMPONENT_PARENT_AS_OWNERITEM
-        public Object getParent() {
-            return base.OwnerItem;
-        }
-#else
-        public Object getParent()
-        {
-            return base.Parent;
-        }
-#endif
-
-        public string getName()
-        {
-            return base.Name;
-        }
-
-        public void setName(string value)
-        {
-            base.Name = value;
-        }
-
+		public Cadencii.Gui.Cursor Cursor {
+			get{ return base.Cursor.ToAwt (); }
+			set { base.Cursor = value.ToNative (); }
+		}
+			
 #if COMPONENT_ENABLE_LOCATION
-        public Cadencii.Gui.Point getLocationOnScreen()
-        {
-            System.Drawing.Point p = base.PointToScreen(base.Location);
-            return new Cadencii.Gui.Point(p.X, p.Y);
-        }
+		public Cadencii.Gui.Point LocationOnScreen {
+			get { return base.PointToScreen (base.Location).ToAwt (); }
+		}
 
-        public Cadencii.Gui.Point getLocation()
-        {
-            System.Drawing.Point loc = this.Location;
-            return new Cadencii.Gui.Point(loc.X, loc.Y);
-        }
-
-        public void setLocation(int x, int y)
-        {
-            base.Location = new System.Drawing.Point(x, y);
-        }
-
-        public void setLocation(Cadencii.Gui.Point p)
-        {
-            base.Location = new System.Drawing.Point(p.X, p.Y);
-        }
+		public Cadencii.Gui.Point Location {
+			get { return base.Location.ToAwt (); }
+			set { base.Location = value.ToWF (); }
+		}
 #endif
-
-        public Cadencii.Gui.Rectangle getBounds()
-        {
-            System.Drawing.Rectangle r = base.Bounds;
-            return new Cadencii.Gui.Rectangle(r.X, r.Y, r.Width, r.Height);
-        }
 
 #if COMPONENT_ENABLE_X
         public int getX() {
@@ -559,67 +463,27 @@ namespace Cadencii.Application.Controls
         }
 #endif
 
-        public int getWidth()
-        {
-            return base.Width;
-        }
+		public Cadencii.Gui.Dimension Size {
+			get { return base.Size.ToAwt (); }
+			set { base.Size = value.ToWF (); }
+		}
 
-        public int getHeight()
-        {
-            return base.Height;
-        }
+		public Cadencii.Gui.Color Background {
+			get { return base.BackColor.ToAwt (); }
+			set { base.BackColor = value.ToNative (); }
+		}
 
-        public Cadencii.Gui.Dimension getSize()
-        {
-            return new Cadencii.Gui.Dimension(base.Size.Width, base.Size.Height);
-        }
+		public Cadencii.Gui.Color Foreground {
+			get { return base.ForeColor.ToAwt (); }
+			set { base.ForeColor = value.ToNative (); }
+		}
 
-        public void setSize(int width, int height)
-        {
-			base.Size =new System.Drawing.Size(width, height);
-        }
-
-        public void setSize(Cadencii.Gui.Dimension d)
-        {
-            setSize(d.Width, d.Height);
-        }
-
-        public void setBackground(Cadencii.Gui.Color color)
-        {
-            base.BackColor = System.Drawing.Color.FromArgb(color.R, color.G, color.B);
-        }
-
-        public Cadencii.Gui.Color getBackground()
-        {
-            return new Cadencii.Gui.Color(base.BackColor.R, base.BackColor.G, base.BackColor.B);
-        }
-
-        public void setForeground(Cadencii.Gui.Color color)
-        {
-			base.ForeColor = color.ToNative ();
-        }
-
-        public Cadencii.Gui.Color getForeground()
-        {
-            return new Cadencii.Gui.Color(base.ForeColor.R, base.ForeColor.G, base.ForeColor.B);
-        }
-
-        public bool isEnabled()
-        {
-            return base.Enabled;
-        }
-
-        public void setEnabled(bool value)
-        {
-            base.Enabled = value;
-        }
-
-        public void requestFocus()
+        public void RequestFocus()
         {
             base.Focus();
         }
 
-        public bool isFocusOwner()
+        public bool IsFocusOwner()
         {
             return base.Focused;
         }
@@ -629,45 +493,24 @@ namespace Cadencii.Application.Controls
 			base.Size =new System.Drawing.Size(size.Width, size.Height);
         }
 
-        public Cadencii.Gui.Font getFont()
-        {
-            return new Cadencii.Gui.Font(base.Font);
-        }
-
-        public void setFont(Cadencii.Gui.Font font)
-        {
-            if (font == null) {
-                return;
-            }
-			if ((System.Drawing.Font) font.NativeFont == null) {
-                return;
-            }
-			base.Font = (System.Drawing.Font) font.NativeFont;
-        }
+		public Cadencii.Gui.Font Font {
+			get { return base.Font.ToAwt (); }
+			set { base.Font = value.ToWF (); }
+		}
         #endregion
 
         #region common APIs of org.kbinani.*
         // root implementation is in BForm.cs
-        public Cadencii.Gui.Point pointToScreen(Cadencii.Gui.Point point_on_client)
+        public Cadencii.Gui.Point PointToScreen(Cadencii.Gui.Point point_on_client)
         {
-            Cadencii.Gui.Point p = getLocationOnScreen();
+            Cadencii.Gui.Point p = LocationOnScreen;
             return new Cadencii.Gui.Point(p.X + point_on_client.X, p.Y + point_on_client.Y);
         }
 
-        public Cadencii.Gui.Point pointToClient(Cadencii.Gui.Point point_on_screen)
+        public Cadencii.Gui.Point PointToClient(Cadencii.Gui.Point point_on_screen)
         {
-            Cadencii.Gui.Point p = getLocationOnScreen();
+            Cadencii.Gui.Point p = LocationOnScreen;
             return new Cadencii.Gui.Point(point_on_screen.X - p.X, point_on_screen.Y - p.Y);
-        }
-
-        public Object getTag()
-        {
-            return base.Tag;
-        }
-
-        public void setTag(Object value)
-        {
-            base.Tag = value;
         }
         #endregion
 
@@ -723,32 +566,33 @@ namespace Cadencii.Application.Controls
             return max_columns;
         }
 
-        public int getRowsPerColumn()
-        {
-            int max_columns = getMaxColumns();
-            int row_per_column = mViewingCurves.Count / max_columns;
-            if (row_per_column * max_columns < mViewingCurves.Count) {
-                row_per_column++;
-            }
-            return row_per_column;
-        }
+		public int RowsPerColumn {
+			get {
+				int max_columns = getMaxColumns ();
+				int row_per_column = mViewingCurves.Count / max_columns;
+				if (row_per_column * max_columns < mViewingCurves.Count) {
+					row_per_column++;
+				}
+				return row_per_column;
+			}
+		}
 
         /// <summary>
         /// このコントロールの推奨最小表示高さを取得します
         /// </summary>
-        public int getPreferredMinSize()
-        {
-            return TS.HEIGHT_WITHOUT_CURVE + TS.UNIT_HEIGHT_PER_CURVE * getRowsPerColumn();
-        }
+		public int PreferredMinSize {
+			get {
+				return TS.HEIGHT_WITHOUT_CURVE + TS.UNIT_HEIGHT_PER_CURVE * RowsPerColumn;
+			}
+		}
 
         /// <summary>
         /// このコントロールの親ウィンドウを取得します
         /// </summary>
         /// <returns></returns>
-        public FormMain getMainForm()
-        {
-            return mMainWindow;
-        }
+		public FormMain MainForm {
+			get { return mMainWindow; }
+		}
 
         /// <summary>
         ///
@@ -783,33 +627,30 @@ namespace Cadencii.Application.Controls
         /// <summary>
         /// 現在最前面に表示され，編集可能となっているカーブの種類を取得または設定します
         /// </summary>
-        public CurveType getSelectedCurve()
-        {
-            return mSelectedCurve;
-        }
-
-        public void setSelectedCurve(CurveType value)
-        {
-            CurveType old = mSelectedCurve;
-            mSelectedCurve = value;
-            if (!old.equals(mSelectedCurve)) {
-                mLastSelectedCurve = old;
-                try {
-                    if (SelectedCurveChanged != null) {
-                        SelectedCurveChanged.Invoke(this, mSelectedCurve);
-                    }
-                } catch (Exception ex) {
-                    Logger.StdErr("TrackSelector#setSelectedCurve; ex=" + ex);
-                }
-            }
-        }
+		public CurveType SelectedCurve {
+			get { return mSelectedCurve; }
+			set {
+				CurveType old = mSelectedCurve;
+				mSelectedCurve = value;
+				if (!old.equals (mSelectedCurve)) {
+					mLastSelectedCurve = old;
+					try {
+						if (SelectedCurveChanged != null) {
+							SelectedCurveChanged.Invoke (this, mSelectedCurve);
+						}
+					} catch (Exception ex) {
+						Logger.StdErr ("TrackSelector#setSelectedCurve; ex=" + ex);
+					}
+				}
+			}
+		}
 
         /// <summary>
         /// エディタのy方向の位置から，カーブの値を求めます
         /// </summary>
         /// <param name="y"></param>
         /// <returns></returns>
-        public int valueFromYCoord(int y)
+        public int ValueFromYCoord(int y)
         {
             int max = 127;
             int min = 0;
@@ -826,17 +667,17 @@ namespace Cadencii.Application.Controls
                 max = mSelectedCurve.getMaximum();
                 min = mSelectedCurve.getMinimum();
             }
-            return valueFromYCoord(y, max, min);
+            return ValueFromYCoord(y, max, min);
         }
 
-        public int valueFromYCoord(int y, int max, int min)
+        public int ValueFromYCoord(int y, int max, int min)
         {
-            int oy = getHeight() - 42;
+            int oy = Height - 42;
             float order = getGraphHeight() / (float)(max - min);
             return (int)((oy - y) / order) + min;
         }
 
-        public int yCoordFromValue(int value)
+        public int YCoordFromValue(int value)
         {
             int max = 127;
             int min = 0;
@@ -853,12 +694,12 @@ namespace Cadencii.Application.Controls
                 max = mSelectedCurve.getMaximum();
                 min = mSelectedCurve.getMinimum();
             }
-            return yCoordFromValue(value, max, min);
+            return YCoordFromValue(value, max, min);
         }
 
-        public int yCoordFromValue(int value, int max, int min)
+        public int YCoordFromValue(int value, int max, int min)
         {
-            int oy = getHeight() - 42;
+            int oy = Height - 42;
             float order = getGraphHeight() / (float)(max - min);
             return oy - (int)((value - min) * order);
         }
@@ -866,19 +707,7 @@ namespace Cadencii.Application.Controls
         /// <summary>
         /// カーブエディタを表示するかどうかを取得します
         /// </summary>
-        public bool isCurveVisible()
-        {
-            return mCurveVisible;
-        }
-
-        /// <summary>
-        /// カーブエディタを表示するかどうかを設定します
-        /// </summary>
-        /// <param name="value"></param>
-        public void setCurveVisible(bool value)
-        {
-            mCurveVisible = value;
-        }
+		public bool CurveVisible { get; set; }
 
         private Graphics getGraphics()
         {
@@ -902,13 +731,14 @@ namespace Cadencii.Application.Controls
         /// <summary>
         /// x軸方向の表示倍率。pixel/clock
         /// </summary>
-        public float getScaleY()
-        {
-            int max = mSelectedCurve.getMaximum();
-            int min = mSelectedCurve.getMinimum();
-            int oy = getHeight() - 42;
-            return getGraphHeight() / (float)(max - min);
-        }
+		public float ScaleY {
+			get {
+				int max = mSelectedCurve.getMaximum ();
+				int min = mSelectedCurve.getMinimum ();
+				int oy = Height - 42;
+				return getGraphHeight () / (float) (max - min);
+			}
+		}
 
         /// <summary>
         /// 指定したコントロールカーブの名前を表示するボックスが，どの位置にあるかを計算します．
@@ -917,7 +747,7 @@ namespace Cadencii.Application.Controls
         /// <returns></returns>
         public Rectangle getRectFromCurveType(CurveType curve)
         {
-            int row_per_column = getRowsPerColumn();
+            int row_per_column = RowsPerColumn;
 
             int centre = (getGraphHeight() + TS.UNIT_HEIGHT_PER_CURVE) / 2 + 3;
             int index = 100;
@@ -931,7 +761,7 @@ namespace Cadencii.Application.Controls
             int iy = index - ix * row_per_column;
             int x = 7 + ix * AppConfig.MIN_KEY_WIDTH;
             int y = centre - row_per_column * TS.UNIT_HEIGHT_PER_CURVE / 2 + 2 + TS.UNIT_HEIGHT_PER_CURVE * iy;
-            int min_size = getPreferredMinSize();
+            int min_size = PreferredMinSize;
             if (mLastPreferredMinHeight != min_size) {
                 try {
                     if (PreferredMinHeightChanged != null) {
@@ -951,8 +781,8 @@ namespace Cadencii.Application.Controls
         /// <param name="graphics"></param>
         public void paint(Graphics graphics)
         {
-            int width = getWidth();
-            int height = getHeight();
+            int width = Width;
+            int height = Height;
             int graph_height = getGraphHeight();
             Dimension size = new Dimension(width + 2, height);
             Graphics g = (Graphics)graphics;
@@ -962,7 +792,7 @@ namespace Cadencii.Application.Controls
 			g.setColor(Cadencii.Gui.Colors.DarkGray);
             g.fillRect(0, size.Height - 2 * TS.OFFSET_TRACK_TAB, size.Width, 2 * TS.OFFSET_TRACK_TAB);
             int numeric_view = mMouseValue;
-			Point p = pointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
+			Point p = PointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
             Point mouse = new Point(p.X, p.Y);
             VsqFileEx vsq = MusicManager.getVsqFile();
             int selected = EditorManager.Selected;
@@ -1075,7 +905,7 @@ namespace Cadencii.Application.Controls
 
                 int clock_at_mouse = EditorManager.clockFromXCoord(mouse.X);
                 int pbs_at_mouse = 0;
-                if (mCurveVisible) {
+                if (CurveVisible) {
                     #region カーブエディタ
                     // カーブエディタの下の線
                     g.setColor(new Color(156, 161, 169));
@@ -1183,7 +1013,7 @@ namespace Cadencii.Application.Controls
                                 }
                                 int last_pbs = pbs.getValue(clock_start);
                                 int last_clock = clock_start;
-                                int ycenter = yCoordFromValue(0);
+                                int ycenter = YCoordFromValue(0);
                                 g.setColor(nrml);
                                 g.drawLine(key_width, ycenter, width, ycenter);
                                 for (int i = 0; i < c; i++) {
@@ -1207,7 +1037,7 @@ namespace Cadencii.Application.Controls
                                         if (j == 0) {
                                             continue;
                                         }
-                                        int y = yCoordFromValue((int)(j * 8192 / (double)last_pbs));
+                                        int y = YCoordFromValue((int)(j * 8192 / (double)last_pbs));
                                         if (j % 2 == 0) {
                                             g.setColor(nrml);
                                             g.setStroke(nrml_stroke);
@@ -1230,7 +1060,7 @@ namespace Cadencii.Application.Controls
                                     if (j == 0) {
                                         continue;
                                     }
-                                    int y = yCoordFromValue((int)(j * 8192 / (double)last_pbs));
+                                    int y = YCoordFromValue((int)(j * 8192 / (double)last_pbs));
                                     Color pen = dash;
                                     if (j % 2 == 0) {
                                         pen = nrml;
@@ -1254,7 +1084,7 @@ namespace Cadencii.Application.Controls
 
                     if (mMouseDowned) {
                         #region 選択されたツールに応じて描画
-                        int value = valueFromYCoord(mouse.Y);
+                        int value = ValueFromYCoord(mouse.Y);
                         if (clock_at_mouse < vsq.getPreMeasure()) {
                             clock_at_mouse = vsq.getPreMeasure();
                         }
@@ -1269,9 +1099,9 @@ namespace Cadencii.Application.Controls
                         if (tool == EditTool.LINE) {
 #if OLD_IMPL_MOUSE_TRACER
                             int xini = EditorManager.xCoordFromClocks( m_line_start.x );
-                            int yini = yCoordFromValue( m_line_start.y );
+                            int yini = YCoordFromValue( m_line_start.y );
                             g.setColor( s_pen_050_140_150 );
-                            g.drawLine( xini, yini, EditorManager.xCoordFromClocks( clock_at_mouse ), yCoordFromValue( value ) );
+                            g.drawLine( xini, yini, EditorManager.xCoordFromClocks( clock_at_mouse ), YCoordFromValue( value ) );
 #else
                             if (mMouseTracer.size() > 0) {
                                 Point pt = mMouseTracer.iterator().First();
@@ -1280,7 +1110,7 @@ namespace Cadencii.Application.Controls
                                 g.setColor(Cadencii.Gui.Colors.Orange);
                                 g.setStroke(getStroke2px());
 								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                                g.drawLine(xini, yini, EditorManager.xCoordFromClocks(clock_at_mouse), yCoordFromValue(value));
+                                g.drawLine(xini, yini, EditorManager.xCoordFromClocks(clock_at_mouse), YCoordFromValue(value));
 								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
                                 g.setStroke(getStrokeDefault());
                             }
@@ -1309,7 +1139,7 @@ namespace Cadencii.Application.Controls
 
                                 /*Vector<Integer> ptx = new Vector<Integer>();
                                 Vector<Integer> pty = new Vector<Integer>();
-                                int height = getHeight() - 42;
+                                int height = Height - 42;
 
                                 int count = 0;
                                 int lastx = 0;
@@ -1350,8 +1180,8 @@ namespace Cadencii.Application.Controls
                                     x_start = key_width;
                                 }
                                 int x_end = Math.Max(xini, xend);
-                                int yini = yCoordFromValue(EditorManager.mCurveSelectingRectangle.Y);
-                                int yend = yCoordFromValue(EditorManager.mCurveSelectingRectangle.Y + EditorManager.mCurveSelectingRectangle.Height);
+                                int yini = YCoordFromValue(EditorManager.mCurveSelectingRectangle.Y);
+                                int yend = YCoordFromValue(EditorManager.mCurveSelectingRectangle.Y + EditorManager.mCurveSelectingRectangle.Height);
                                 int y_start = Math.Min(yini, yend);
                                 int y_end = Math.Max(yini, yend);
                                 if (y_start < 8) y_start = 8;
@@ -1383,7 +1213,7 @@ namespace Cadencii.Application.Controls
                     #endregion
                 }
 
-                if (mCurveVisible) {
+                if (CurveVisible) {
                     #region カーブの種類一覧
 					Font text_font = EditorConfig.baseFont9;
                     int text_font_height = AppConfig.baseFont9Height;
@@ -1481,8 +1311,8 @@ namespace Cadencii.Application.Controls
         private void drawEnvelope(Graphics g, int track_index, Color fill_color)
         {
             int key_width = EditorManager.keyWidth;
-            int width = getWidth();
-            int height = getHeight();
+            int width = Width;
+            int height = Height;
             g.setClip(key_width, 0, width - key_width, height);
             int clock_start = EditorManager.clockFromXCoord(key_width);
             int clock_end = EditorManager.clockFromXCoord(width);
@@ -1492,7 +1322,7 @@ namespace Cadencii.Application.Controls
             VsqEvent itr_prev = null;
             VsqEvent itr_item = null;
             VsqEvent itr_next = null;
-			Point mouse = pointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
+			Point mouse = PointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
 
             Color brs = fill_color;
             Point selected_point = new Point();
@@ -1721,10 +1551,10 @@ namespace Cadencii.Application.Controls
                     if (x + TS.DOT_WID < EditorManager.keyWidth) {
                         continue;
                     }
-                    if (getWidth() < x - TS.DOT_WID) {
+                    if (Width < x - TS.DOT_WID) {
                         break;
                     }
-                    int y = yCoordFromValue(item.value);
+                    int y = YCoordFromValue(item.value);
                     Rectangle rc = new Rectangle(x - TS.DOT_WID, y - TS.DOT_WID, w, w);
                     if (isInRect(locx, locy, rc)) {
                         return item.id;
@@ -1780,7 +1610,7 @@ namespace Cadencii.Application.Controls
             }
 
             int clock_start = EditorManager.clockFromXCoord(EditorManager.keyWidth);
-            int clock_end = EditorManager.clockFromXCoord(getWidth());
+            int clock_end = EditorManager.clockFromXCoord(Width);
             int dotwid = TS.DOT_WID * 2 + 1;
             VsqFileEx vsq = MusicManager.getVsqFile();
             IEnumerator<VsqEvent> itr = vsq.Track[EditorManager.Selected].getNoteEventIterator().GetEnumerator();
@@ -1914,12 +1744,12 @@ namespace Cadencii.Application.Controls
                     EditorManager.xCoordFromClocks(
                         (int)tempo_table.getClockFromSec(sec_env_start1.value + sec_overlap1, context));
             }
-            int v1 = yCoordFromValue(draw_target.v1);
-            int v2 = yCoordFromValue(draw_target.v2);
-            int v3 = yCoordFromValue(draw_target.v3);
-            int v4 = yCoordFromValue(draw_target.v4);
-            int v5 = yCoordFromValue(draw_target.v5);
-            int y = yCoordFromValue(0);
+            int v1 = YCoordFromValue(draw_target.v1);
+            int v2 = YCoordFromValue(draw_target.v2);
+            int v3 = YCoordFromValue(draw_target.v3);
+            int v4 = YCoordFromValue(draw_target.v4);
+            int v5 = YCoordFromValue(draw_target.v5);
+            int y = YCoordFromValue(0);
             return new Polygon(new int[] { px_env_start1, p1, p2, p5, p3, p4, px_env_end1 },
                                 new int[] { y, v1, v2, v5, v3, v4, y },
                                 7);
@@ -2033,7 +1863,7 @@ namespace Cadencii.Application.Controls
         public int getSelectorWidth()
         {
             int draft = TS.TRACK_SELECTOR_MAX_WIDTH;
-            int maxTotalWidth = getWidth() - EditorManager.keyWidth; // トラックの一覧を表示するのに利用できる最大の描画幅
+            int maxTotalWidth = Width - EditorManager.keyWidth; // トラックの一覧を表示するのに利用できる最大の描画幅
             int numTrack = 1;
             VsqFileEx vsq = MusicManager.getVsqFile();
             if (vsq != null) {
@@ -2064,7 +1894,7 @@ namespace Cadencii.Application.Controls
         /// <param name="type"></param>
         public void drawVEL(Graphics g, VsqTrack track, Color color, bool is_front, CurveType type)
         {
-			Point mouse = pointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
+			Point mouse = PointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
 
             int header = 8;
             int graph_height = getGraphHeight();
@@ -2073,8 +1903,8 @@ namespace Cadencii.Application.Controls
             // 描画する値の最小値
             int min = 0;
 
-            int height = getHeight();
-            int width = getWidth();
+            int height = Height;
+            int width = Width;
             int oy = height - 42;
             Shape last_clip = g.getClip();
             int stdx = EditorManager.MainWindow.Model.StartToDrawX;
@@ -2164,12 +1994,12 @@ namespace Cadencii.Application.Controls
                 }
             }
             if (cursor_should_be_hand) {
-                if (getCursor().getType() != Cadencii.Gui.Cursor.HAND_CURSOR) {
-                    setCursor(new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.HAND_CURSOR));
+                if (Cursor.getType() != Cadencii.Gui.Cursor.HAND_CURSOR) {
+                    Cursor = (new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.HAND_CURSOR));
                 }
             } else {
-                if (getCursor().getType() != Cadencii.Gui.Cursor.DEFAULT_CURSOR) {
-                    setCursor(new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.DEFAULT_CURSOR));
+                if (Cursor.getType() != Cadencii.Gui.Cursor.DEFAULT_CURSOR) {
+                    Cursor = (new Cadencii.Gui.Cursor(Cadencii.Gui.Cursor.DEFAULT_CURSOR));
                 }
             }
             g.setClip(last_clip);
@@ -2204,7 +2034,7 @@ namespace Cadencii.Application.Controls
                     for (int j = 0; j < target_chain_points_count; j++) {
                         next = target_chain.points[j];
                         int next_x = EditorManager.xCoordFromClocks((int)next.getBase().getX());
-                        pxNext = new Point(next_x, yCoordFromValue((int)next.getBase().getY()));
+                        pxNext = new Point(next_x, YCoordFromValue((int)next.getBase().getY()));
                         Point pxControlCurrent = getScreenCoord(current.getControlRight());
                         Point pxControlNext = getScreenCoord(next.getControlLeft());
 
@@ -2341,7 +2171,7 @@ namespace Cadencii.Application.Controls
 
         private Point getScreenCoord(PointD pt)
         {
-            return new Point(EditorManager.xCoordFromClocks((int)pt.getX()), yCoordFromValue((int)pt.getY()));
+            return new Point(EditorManager.xCoordFromClocks((int)pt.getX()), YCoordFromValue((int)pt.getY()));
         }
 
         /// <summary>
@@ -2360,8 +2190,8 @@ namespace Cadencii.Application.Controls
             Shape last_clip = g.getClip();
             int graph_height = getGraphHeight();
             int key_width = EditorManager.keyWidth;
-            int width = getWidth();
-            int height = getHeight();
+            int width = Width;
+            int height = Height;
             g.clipRect(key_width, TS.HEADER,
                         width - key_width, graph_height);
 
@@ -2461,12 +2291,12 @@ namespace Cadencii.Application.Controls
         /// <param name="is_front">最前面に表示するモードかどうか</param>
         public void drawVsqBPList(Graphics g, VsqBPList list, Color color, bool is_front)
         {
-			Point pmouse = pointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
+			Point pmouse = PointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
             int max = list.getMaximum();
             int min = list.getMinimum();
             int graph_height = getGraphHeight();
-            int width = getWidth();
-            int height = getHeight();
+            int width = Width;
+            int height = Height;
             float order = graph_height / (float)(max - min);
             int oy = height - 42;
             int key_width = EditorManager.keyWidth;
@@ -2556,7 +2386,7 @@ namespace Cadencii.Application.Controls
                 int dy = pmouse.Y - mMouseDownLocation.Y;
                 foreach (var item in mMovingPoints) {
                     int x = EditorManager.xCoordFromClocks(item.Clock) + dx;
-                    int y = yCoordFromValue(item.Value) + dy;
+                    int y = YCoordFromValue(item.Value) + dy;
                     g.setColor(TS.COLOR_DOT_HILIGHT);
                     g.fillRect(x - TS.DOT_WID, y - TS.DOT_WID, w, w);
                 }
@@ -2568,7 +2398,7 @@ namespace Cadencii.Application.Controls
         /// </summary>
         public int getGraphHeight()
         {
-            return getHeight() - 42 - 8;
+            return Height - 42 - 8;
         }
 
         /// <summary>
@@ -2576,7 +2406,7 @@ namespace Cadencii.Application.Controls
         /// </summary>
         public int getGraphWidth()
         {
-            return getWidth() - EditorManager.keyWidth;
+            return Width - EditorManager.keyWidth;
         }
 
         public void TrackSelector_Load(Object sender, EventArgs e)
@@ -2588,7 +2418,7 @@ namespace Cadencii.Application.Controls
 
         public void TrackSelector_MouseClick(Object sender, MouseEventArgs e)
         {
-            if (mCurveVisible) {
+            if (CurveVisible) {
                 if (e.Button == MouseButtons.Left) {
                     // カーブの種類一覧上で発生したイベントかどうかを検査
                     for (int i = 0; i < mViewingCurves.Count; i++) {
@@ -2601,7 +2431,7 @@ namespace Cadencii.Application.Controls
                     }
                 } else if (e.Button == MouseButtons.Right) {
                     if (0 <= e.X && e.X <= EditorManager.keyWidth &&
-                         0 <= e.Y && e.Y <= getHeight() - 2 * TS.OFFSET_TRACK_TAB) {
+                         0 <= e.Y && e.Y <= Height - 2 * TS.OFFSET_TRACK_TAB) {
                         foreach (var tsi in cmenuCurve.Items) {
                             if (tsi is ToolStripMenuItem) {
                                 ToolStripMenuItem tsmi = (ToolStripMenuItem)tsi;
@@ -2803,7 +2633,7 @@ namespace Cadencii.Application.Controls
                 }
             }
             float scale_x = EditorManager.MainWindow.Model.ScaleX;
-            float scale_y = getScaleY();
+            float scale_y = ScaleY;
             BezierPoint ret = new BezierPoint(0, 0);
             if (index >= 0) {
                 BezierPoint item = target.points[index];
@@ -2945,7 +2775,7 @@ namespace Cadencii.Application.Controls
         public BezierPoint HandleMouseMoveForBezierMove(MouseEventArgs e, BezierPickedSide picked)
         {
             int clock = EditorManager.clockFromXCoord(e.X);
-            int value = valueFromYCoord(e.Y);
+            int value = ValueFromYCoord(e.Y);
             int value_raw = value;
 
             if (clock < MusicManager.getVsqFile().getPreMeasure()) {
@@ -2963,7 +2793,7 @@ namespace Cadencii.Application.Controls
 
         public void TrackSelector_MouseMove(Object sender, MouseEventArgs e)
         {
-            int value = valueFromYCoord(e.Y);
+            int value = ValueFromYCoord(e.Y);
             int value_raw = value;
             int max = mSelectedCurve.getMaximum();
             int min = mSelectedCurve.getMinimum();
@@ -3004,7 +2834,7 @@ namespace Cadencii.Application.Controls
             }
 
             if (e.Button == MouseButtons.Left &&
-                 0 <= e.Y && e.Y <= getHeight() - 2 * TS.OFFSET_TRACK_TAB &&
+                 0 <= e.Y && e.Y <= Height - 2 * TS.OFFSET_TRACK_TAB &&
                  mMouseDownMode == MouseDownMode.CURVE_EDIT) {
                 EditTool selected_tool = EditorManager.SelectedTool;
                 if (selected_tool == EditTool.PENCIL) {
@@ -3036,7 +2866,7 @@ namespace Cadencii.Application.Controls
                     item.editing.Clock = item.original.Clock + dclock;
                 }
             } else if (mMouseDownMode == MouseDownMode.VEL_EDIT) {
-                int t_value = valueFromYCoord(e.Y - mVelEditShiftY);
+                int t_value = ValueFromYCoord(e.Y - mVelEditShiftY);
                 int d_vel = 0;
                 VsqEvent ve_original = mVelEditSelected[mVelEditLastSelectedID].original;
                 if (mSelectedCurve.equals(CurveType.VEL)) {
@@ -3126,7 +2956,7 @@ namespace Cadencii.Application.Controls
                 }
             } else if (mMouseDownMode == MouseDownMode.ENVELOPE_MOVE) {
                 double sec = vsq.getSecFromClock(EditorManager.clockFromXCoord(e.X));
-                int v = valueFromYCoord(e.Y);
+                int v = ValueFromYCoord(e.Y);
                 if (v < 0) {
                     v = 0;
                 } else if (200 < v) {
@@ -3246,7 +3076,7 @@ namespace Cadencii.Application.Controls
 
             int max = mSelectedCurve.getMaximum();
             int min = mSelectedCurve.getMinimum();
-            int value = valueFromYCoord(e.Y);
+            int value = ValueFromYCoord(e.Y);
             if (value < min) {
                 value = min;
             } else if (max < value) {
@@ -3270,8 +3100,8 @@ namespace Cadencii.Application.Controls
             mMouseDownLocation.Y = e.Y;
             int clock = EditorManager.clockFromXCoord(e.X);
             int selected = EditorManager.Selected;
-            int height = getHeight();
-            int width = getWidth();
+            int height = Height;
+            int width = Width;
             int key_width = EditorManager.keyWidth;
             VsqTrack vsq_track = vsq.Track[selected];
             mMouseMoved = false;
@@ -3284,7 +3114,7 @@ namespace Cadencii.Application.Controls
             mModifierOnMouseDown = (Keys) Control.ModifierKeys;
             int max = mSelectedCurve.getMaximum();
             int min = mSelectedCurve.getMinimum();
-            int value = valueFromYCoord(e.Y);
+            int value = ValueFromYCoord(e.Y);
             if (value < min) {
                 value = min;
             } else if (max < value) {
@@ -3394,7 +3224,7 @@ namespace Cadencii.Application.Controls
                 #region MouseDown occred on other position
                 bool clock_inner_note = false; //マウスの降りたクロックが，ノートの範囲内かどうかをチェック
                 int left_clock = EditorManager.clockFromXCoord(EditorManager.keyWidth);
-                int right_clock = EditorManager.clockFromXCoord(getWidth());
+                int right_clock = EditorManager.clockFromXCoord(Width);
                 for (Iterator<VsqEvent> itr = vsq_track.getEventIterator(); itr.hasNext(); ) {
                     VsqEvent ve = itr.next();
                     if (ve.ID.type == VsqIDType.Anote) {
@@ -3625,14 +3455,14 @@ namespace Cadencii.Application.Controls
                                     mVelEditLastSelectedID = ve.InternalID;
                                     if (mSelectedCurve.equals(CurveType.VEL)) {
                                         if (EditorManager.mDrawIsUtau[selected - 1]) {
-                                            mVelEditShiftY = e.Y - yCoordFromValue(ve.UstEvent == null ? 100 : ve.UstEvent.getIntensity());
+                                            mVelEditShiftY = e.Y - YCoordFromValue(ve.UstEvent == null ? 100 : ve.UstEvent.getIntensity());
                                         } else {
-                                            mVelEditShiftY = e.Y - yCoordFromValue(ve.ID.Dynamics);
+                                            mVelEditShiftY = e.Y - YCoordFromValue(ve.ID.Dynamics);
                                         }
                                     } else if (mSelectedCurve.equals(CurveType.Accent)) {
-                                        mVelEditShiftY = e.Y - yCoordFromValue(ve.ID.DEMaccent);
+                                        mVelEditShiftY = e.Y - YCoordFromValue(ve.ID.DEMaccent);
                                     } else if (mSelectedCurve.equals(CurveType.Decay)) {
-                                        mVelEditShiftY = e.Y - yCoordFromValue(ve.ID.DEMdecGainRate);
+                                        mVelEditShiftY = e.Y - YCoordFromValue(ve.ID.DEMdecGainRate);
                                     }
                                     mVelEditSelected.Clear();
                                     if (EditorManager.itemSelection.isEventContains(EditorManager.Selected, mVelEditLastSelectedID)) {
@@ -3852,7 +3682,7 @@ namespace Cadencii.Application.Controls
             int clock = EditorManager.clockFromXCoord(e.X);
             int max = mSelectedCurve.getMaximum();
             int min = mSelectedCurve.getMinimum();
-            int value = valueFromYCoord(e.Y);
+            int value = ValueFromYCoord(e.Y);
             if (value < min) {
                 value = min;
             } else if (max < value) {
@@ -4150,28 +3980,28 @@ namespace Cadencii.Application.Controls
                 VsqEvent ve = target.getEvent(i);
                 if (ve.ID.type == VsqIDType.Singer) {
                     int x = EditorManager.xCoordFromClocks(ve.Clock);
-                    if (getHeight() - 2 * TS.OFFSET_TRACK_TAB <= locy &&
-                         locy <= getHeight() - TS.OFFSET_TRACK_TAB &&
+                    if (Height - 2 * TS.OFFSET_TRACK_TAB <= locy &&
+                         locy <= Height - TS.OFFSET_TRACK_TAB &&
                          x <= locx && locx <= x + TS.SINGER_ITEM_WIDTH) {
                         return ve;
-                    } else if (getWidth() < x) {
+                    } else if (Width < x) {
                         //return null;
                     }
                 } else if (ve.ID.type == VsqIDType.Anote) {
                     int x = EditorManager.xCoordFromClocks(ve.Clock);
                     int y = 0;
                     if (mSelectedCurve.equals(CurveType.VEL)) {
-                        y = yCoordFromValue(ve.ID.Dynamics);
+                        y = YCoordFromValue(ve.ID.Dynamics);
                     } else if (mSelectedCurve.equals(CurveType.Accent)) {
-                        y = yCoordFromValue(ve.ID.DEMaccent);
+                        y = YCoordFromValue(ve.ID.DEMaccent);
                     } else if (mSelectedCurve.equals(CurveType.Decay)) {
-                        y = yCoordFromValue(ve.ID.DEMdecGainRate);
+                        y = YCoordFromValue(ve.ID.DEMdecGainRate);
                     } else {
                         continue;
                     }
-                    if (0 <= locy && locy <= getHeight() - 2 * TS.OFFSET_TRACK_TAB &&
-                         EditorManager.keyWidth <= locx && locx <= getWidth()) {
-                    if (y <= locy && locy <= getHeight() - TS.FOOTER && x <= locx && locx <= x + TS.VEL_BAR_WIDTH) {
+                    if (0 <= locy && locy <= Height - 2 * TS.OFFSET_TRACK_TAB &&
+                         EditorManager.keyWidth <= locx && locx <= Width) {
+                    if (y <= locy && locy <= Height - TS.FOOTER && x <= locx && locx <= x + TS.VEL_BAR_WIDTH) {
                             return ve;
                         }
                     }
@@ -4192,7 +4022,7 @@ namespace Cadencii.Application.Controls
                 }
             }
 
-            if (!mCurveVisible) {
+            if (!CurveVisible) {
                 mMouseDownMode = MouseDownMode.NONE;
                 Invalidate();
                 return;
@@ -4564,16 +4394,16 @@ namespace Cadencii.Application.Controls
                                             CDebug.WriteLine("        key0,key1=" + key0 + "," + key1);
 #endif
                                             if (key0_clock < ve.Clock && ve.Clock < key1_clock) {
-                                                int key0_value = valueFromYCoord(lvalue);
-                                                int key1_value = valueFromYCoord(value);
+                                                int key0_value = ValueFromYCoord(lvalue);
+                                                int key1_value = ValueFromYCoord(value);
                                                 float a = (key1_value - key0_value) / (float)(key1_clock - key0_clock);
                                                 float b = key0_value - a * key0_clock;
                                                 int new_value = (int)(a * ve.Clock + b);
                                                 velocity[ve.InternalID] = new_value;
                                             } else if (key0_clock == ve.Clock) {
-                                                velocity[ve.InternalID] = valueFromYCoord(lvalue);
+                                                velocity[ve.InternalID] = ValueFromYCoord(lvalue);
                                             } else if (key1_clock == ve.Clock) {
-                                                velocity[ve.InternalID] = valueFromYCoord(value);
+                                                velocity[ve.InternalID] = ValueFromYCoord(value);
                                             }
                                             lkey = key;
                                             lvalue = value;
@@ -4670,7 +4500,7 @@ namespace Cadencii.Application.Controls
                                         if (clock - lclock < step_clock) {
                                             continue;
                                         }
-                                        int val = valueFromYCoord(p.Y);
+                                        int val = ValueFromYCoord(p.Y);
                                         if (val < min) {
                                             val = min;
                                         } else if (max < val) {
@@ -4784,7 +4614,7 @@ namespace Cadencii.Application.Controls
                                     if (clock - lclock < step_clock) {
                                         continue;
                                     }
-                                    int value = valueFromYCoord(p.Y);
+                                    int value = ValueFromYCoord(p.Y);
                                     if (value < min) {
                                         value = min;
                                     } else if (max < value) {
@@ -4979,7 +4809,7 @@ namespace Cadencii.Application.Controls
                 }
             } else if (mMouseDownMode == MouseDownMode.POINT_MOVE) {
                 if (mMouseMoved) {
-					Point pmouse = pointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
+					Point pmouse = PointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
                     Point mouse = new Point(pmouse.X, pmouse.Y);
                     int dx = mouse.X + EditorManager.MainWindow.Model.StartToDrawX - mMouseDownLocation.X;
                     int dy = mouse.Y - mMouseDownLocation.Y;
@@ -4996,10 +4826,10 @@ namespace Cadencii.Application.Controls
                         VsqBPPair item = list.getElementB(i);
                         if (EditorManager.itemSelection.isPointContains(item.id)) {
                             int x = EditorManager.xCoordFromClocks(clock) + dx + 1;
-                            int y = yCoordFromValue(item.value) + dy - 1;
+                            int y = YCoordFromValue(item.value) + dy - 1;
 
                             int nclock = EditorManager.clockFromXCoord(x);
-                            int nvalue = valueFromYCoord(y);
+                            int nvalue = ValueFromYCoord(y);
                             if (nvalue < min0) {
                                 nvalue = min0;
                             }
@@ -5032,10 +4862,10 @@ namespace Cadencii.Application.Controls
             }
             if (mMouseDowned && !mPencilMoved && EditorManager.SelectedTool == EditTool.PENCIL &&
                  !mSelectedCurve.equals(CurveType.VEL)) {
-				Point pmouse = pointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
+				Point pmouse = PointToClient(Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition());
                 Point mouse = new Point(pmouse.X, pmouse.Y);
                 int clock = EditorManager.clockFromXCoord(mouse.X);
-                int value = valueFromYCoord(mouse.Y);
+                int value = ValueFromYCoord(mouse.Y);
                 int min = mSelectedCurve.getMinimum();
                 int max = mSelectedCurve.getMaximum();
 
@@ -5214,8 +5044,8 @@ namespace Cadencii.Application.Controls
             VsqFileEx vsq = MusicManager.getVsqFile();
             int selected = EditorManager.Selected;
             VsqTrack vsq_track = vsq.Track[selected];
-            int height = getHeight();
-            int width = getWidth();
+            int height = Height;
+            int width = Width;
             int key_width = EditorManager.keyWidth;
 
             if (e.Button == MouseButtons.Left) {
@@ -5341,7 +5171,7 @@ namespace Cadencii.Application.Controls
                                         }
                                         if (bpx - TS.DOT_WID <= e.X && e.X <= bpx + TS.DOT_WID) {
                                             VsqBPPair bp = list.getElementB(i);
-                                            int bpy = yCoordFromValue(bp.value);
+                                            int bpy = YCoordFromValue(bp.value);
                                             if (bpy - TS.DOT_WID <= e.Y && e.Y <= bpy + TS.DOT_WID) {
                                                 bp_found = true;
                                                 bp_id = bp.id;
@@ -5357,7 +5187,7 @@ namespace Cadencii.Application.Controls
                                     EditorManager.itemSelection.addPoint(mSelectedCurve, bp_id);
                                     FormCurvePointEdit dialog = ApplicationUIHost.Create<FormCurvePointEdit> (mMainWindow, bp_id, mSelectedCurve);
                                     int tx = EditorManager.xCoordFromClocks(tclock);
-                                    Point pt = pointToScreen(new Point(tx, 0));
+                                    Point pt = PointToScreen(new Point(tx, 0));
                                     Invalidate();
                                     dialog.Location =
                                         new Point(pt.X - dialog.Width / 2, pt.Y - dialog.Height);
@@ -6064,7 +5894,7 @@ namespace Cadencii.Application.Controls
             this.BackColor = System.Drawing.Color.DarkGray;
             this.DoubleBuffered = true;
             this.Name = "TrackSelector";
-			this.Size =new System.Drawing.Size(430, 228);
+			this.Size = new Dimension (430, 228);
             this.cmenuCurve.ResumeLayout(false);
             this.ResumeLayout(false);
 
