@@ -137,6 +137,8 @@
     <Compile Include="Cadencii.Gui\bezier\BezierCurves.cs" />
     <Compile Include="Cadencii.Gui\bezier\BezierPickedSide.cs" />
     <Compile Include="Cadencii.Gui\bezier\BezierPoint.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\UiButton.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\UiLabel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

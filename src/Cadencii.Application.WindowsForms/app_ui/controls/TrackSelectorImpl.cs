@@ -4010,7 +4010,7 @@ namespace Cadencii.Application.Controls
             return null;
         }
 
-        public void onMouseUp(Object sender, MouseEventArgs e)
+        void onMouseUp(Object sender, MouseEventArgs e)
         {
 #if DEBUG
             CDebug.WriteLine("TrackSelector_MouseUp");
@@ -4850,7 +4850,7 @@ namespace Cadencii.Application.Controls
             Invalidate();
         }
 
-        public void TrackSelector_MouseHover(Object sender, EventArgs e)
+        void TrackSelector_MouseHover(Object sender, EventArgs e)
         {
 #if DEBUG
             CDebug.WriteLine("TrackSelector_MouseHover");
@@ -5035,7 +5035,7 @@ namespace Cadencii.Application.Controls
             Invoke(new EventHandler(TrackSelector_MouseHover));
         }
 
-        public void TrackSelector_MouseDoubleClick(Object sender, MouseEventArgs e)
+        void TrackSelector_MouseDoubleClick(Object sender, MouseEventArgs e)
         {
             if (mMouseHoverThread != null && mMouseHoverThread.IsAlive) {
                 mMouseHoverThread.Abort();
@@ -5105,18 +5105,15 @@ namespace Cadencii.Application.Controls
                                 #region ダブルクリックした位置にベジエデータ点があった場合
                                 int chain_id = target_chain.id;
                                 BezierChain before = (BezierChain)target_chain.clone();
-                                FormBezierPointEditController fbpe = null;
+                                FormBezierPointEditUi fbpe = null;
                                 try {
-                                    fbpe = new FormBezierPointEditController(this,
-                                                                    mSelectedCurve,
-                                                                    chain_id,
-                                                                    target_point.getID());
+					fbpe = new FormBezierPointEditUiImpl (this, mSelectedCurve, chain_id, target_point.getID());
                                     mEditingChainID = chain_id;
                                     mEditingPointID = target_point.getID();
                                     {//TODO:
                                         Logger.StdOut("TrackSelector_MouseDoubleClick; start to show editor");
                                     }
-                                    var ret = DialogManager.ShowModalDialog(fbpe.getUi(), mMainWindow);
+                                    var ret = DialogManager.ShowModalDialog(fbpe, mMainWindow);
                                     {//TODO:
                                         Logger.StdOut("TrackSelector_MouseDoubleCLick; ret=" + ret);
                                     }
@@ -5149,7 +5146,7 @@ namespace Cadencii.Application.Controls
                                 } finally {
                                     if (fbpe != null) {
                                         try {
-                                            fbpe.getUi().close();
+                                            fbpe.Close();
                                         } catch (Exception ex2) {
                                         }
                                     }

@@ -128,9 +128,9 @@ namespace Cadencii.Application.Controls
 
 		void SelectPreviousCurve();
 		void SelectNextCurve();
+		// FIXME: these are ugly and should be eliminated.
 		void OnMouseDown(Object sender, MouseEventArgs e);
 		void OnMouseUp(Object sender, MouseEventArgs e);
-		void TrackSelector_MouseHover(Object sender, EventArgs e);
 		void prepareSingerMenu(RendererKind renderer);
 		BezierPoint HandleMouseMoveForBezierMove(int clock, int value, int value_raw, BezierPickedSide picked);
 		BezierPoint HandleMouseMoveForBezierMove(MouseEventArgs e, BezierPickedSide picked);

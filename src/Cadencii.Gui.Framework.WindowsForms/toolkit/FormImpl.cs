@@ -22,6 +22,11 @@ namespace Cadencii.Gui.Toolkit
 {
 	public class FormImpl : System.Windows.Forms.Form, UiForm
  	{
+		DialogResult UiForm.DialogResult {
+			get { return (DialogResult) DialogResult; }
+			set { DialogResult = (System.Windows.Forms.DialogResult) value; }
+		}
+
 		public virtual IContainer Components {
 			get { return null; }
 		}
@@ -96,11 +101,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiForm.LocationChanged {
 			add { this.LocationChanged += (sender, e) => value (sender, e); }
 			remove { this.LocationChanged -= (sender, e) => value (sender, e); }
-		}
-
-		Point UiForm.Location {
-			get { return Location.ToAwt (); }
-			set { Location = value.ToWF (); }
 		}
 
 		event EventHandler<FormClosingEventArgs> UiForm.FormClosing {

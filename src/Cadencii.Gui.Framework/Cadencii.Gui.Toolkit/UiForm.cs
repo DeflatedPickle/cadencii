@@ -6,6 +6,9 @@ namespace Cadencii.Gui.Toolkit
 {
 	public interface UiForm : UiControl
 	{
+		double Opacity { get; set; }
+		DialogResult DialogResult { get; set; }
+
 		IContainer Components { get; }
 
 		// This is not a form specific feature, but since Control.DoubleBuffered is protected,
@@ -40,7 +43,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler FormClosed;
 
 		Cursor Cursor { get; set; }
-		Point Location { get; set; }
 
 		string Text { get; set; }
 

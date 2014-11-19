@@ -170,16 +170,8 @@
     <Compile Include="app_ui\forms\FormBeatConfigUiListener.cs">
       <DependentUpon>FormBeatConfigUi.cs</DependentUpon>
     </Compile>
-    <Compile Include="app_ui\forms\FormBezierPointEditController.cs">
-      <SubType>Code</SubType>
-      <DependentUpon>FormBezierPointEditUi.cs</DependentUpon>
-    </Compile>
     <Compile Include="app_ui\forms\FormBezierPointEditUi.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="app_ui\forms\FormBezierPointEditUiListener.cs">
-      <SubType>Code</SubType>
-      <DependentUpon>FormBezierPointEditUi.cs</DependentUpon>
     </Compile>
     <Compile Include="app_ui\forms\FormCheckUnknownSingerAndResampler.cs" />
     <Compile Include="app_ui\forms\FormCompileResult.cs" />
@@ -270,6 +262,9 @@
     <Compile Include="app_ui\models\main\FormMainModel.WaveViewModel.cs" />
     <Compile Include="app_ui\models\main\PositionIndicatorMouseDownMode.cs" />
     <Compile Include="app_ui\models\main\RendererMenuHandler.cs" />
+    <Compile Include="app_ui\models\FormBezierPointEditModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

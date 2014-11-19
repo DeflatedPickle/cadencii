@@ -21,18 +21,24 @@ using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
 using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
+using Cadencii.Utilities;
 
 
 namespace Cadencii.Application.Forms
 {
     public class FormBezierPointEditUiImpl : FormImpl, FormBezierPointEditUi
     {
-        private FormBezierPointEditUiListener listener;
+		private FormBezierPointEditModel model;
 
-        public FormBezierPointEditUiImpl(FormBezierPointEditUiListener listener)
+		public FormBezierPointEditUiImpl(TrackSelector parent,
+			CurveType curve_type,
+			int selected_chain_id,
+			int selected_point_id)
         {
-            this.listener = listener;
+			this.model = new FormBezierPointEditModel (parent, curve_type, selected_chain_id, selected_point_id);
+			applyLanguage ();
             InitializeComponent();
+			model.Initialize (this);
             registerEventHandlers();
             setResources();
             AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
@@ -62,40 +68,35 @@ namespace Cadencii.Application.Forms
 
         #region FormBezierPointEditUiインターフェースの実装
 
-        public void setDataPointValueText(string value)
-        {
-            txtDataPointValue.Text = value;
-        }
+		public string DataPointValueText {
+			get { return txtDataPointValue.Text; }
+			set { txtDataPointValue.Text = value; }
+		}
 
-        public void setDataPointClockText(string value)
-        {
-            txtDataPointClock.Text = value;
-        }
+		public string DataPointClockText {
+			get { return txtDataPointClock.Text; }
+			set { txtDataPointClock.Text = value; }
+		}
 
-        public void setRightValueText(string value)
-        {
-            txtRightValue.Text = value;
-        }
+		public string RightValueText {
+			get { return txtRightValue.Text; }
+			set { txtRightValue.Text = value; }
+		}
 
-        public void setRightClockText(string value)
-        {
-            txtRightClock.Text = value;
-        }
+		public string RightClockText {
+			get { return txtRightClock.Text; }
+			set { txtRightClock.Text = value; }
+		}
 
-        public void setLeftValueText(string value)
-        {
-            txtLeftValue.Text = value;
-        }
+		public string LeftValueText {
+			get { return txtLeftValue.Text; }
+			set { txtLeftValue.Text = value; }
+		}
 
-        public void setLeftClockText(string value)
-        {
-            txtLeftClock.Text = value;
-        }
-
-        public void setLeftClockEnabled(bool value)
-        {
-            txtLeftClock.Enabled = value;
-        }
+		public string LeftClockText {
+			get { return txtLeftClock.Text; }
+			set { txtLeftClock.Text = value; }
+		}
 
         public bool isEnableSmoothSelected()
         {
@@ -105,61 +106,6 @@ namespace Cadencii.Application.Forms
         public void setEnableSmoothSelected(bool value)
         {
             chkEnableSmooth.Checked = value;
-        }
-
-        public void setRightButtonEnabled(bool value)
-        {
-            btnRight.Enabled = value;
-        }
-
-        public void setRightValueEnabled(bool value)
-        {
-            txtRightValue.Enabled = value;
-        }
-
-        public void setRightClockEnabled(bool value)
-        {
-            txtRightClock.Enabled = value;
-        }
-
-        public void setLeftButtonEnabled(bool value)
-        {
-            btnLeft.Enabled = value;
-        }
-
-        public void setLeftValueEnabled(bool value)
-        {
-            txtLeftValue.Enabled = value;
-        }
-
-        public string getRightValueText()
-        {
-            return txtRightValue.Text;
-        }
-
-        public string getRightClockText()
-        {
-            return txtRightClock.Text;
-        }
-
-        public string getLeftValueText()
-        {
-            return txtLeftValue.Text;
-        }
-
-        public string getLeftClockText()
-        {
-            return txtLeftClock.Text;
-        }
-
-        public string getDataPointValueText()
-        {
-            return txtDataPointValue.Text;
-        }
-
-        public string getDataPointClockText()
-        {
-            return txtDataPointClock.Text;
         }
 
         public void setCheckboxEnableSmoothText(string value)
@@ -212,29 +158,25 @@ namespace Cadencii.Application.Forms
             groupDataPoint.Text = value;
         }
 
-        public void setDialogResult(bool result)
-        {
-            if (result) {
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-            } else {
-		this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            }
-        }
+		// FIXME: this should rather be implemented as in XML UI.
+		public void applyLanguage()
+		{
+			this.Text = _("Edit Bezier Data Point");
 
-        public void setOpacity(double opacity)
-        {
-            this.Opacity = opacity;
-        }
+			this.setGroupDataPointTitle(_("Data Poin"));
+			this.setLabelDataPointClockText(_("Clock"));
+			this.setLabelDataPointValueText(_("Value"));
 
-        public void close()
-        {
-            this.Close();
-        }
+			this.setGroupLeftTitle(_("Left Control Point"));
+			this.setLabelLeftClockText(_("Clock"));
+			this.setLabelLeftValueText(_("Value"));
 
-        public void setTitle(string value)
-        {
-            this.Text = value;
-        }
+			this.setGroupRightTitle(_("Right Control Point"));
+			this.setLabelRightClockText(_("Clock"));
+			this.setLabelRightValueText(_("Value"));
+
+			this.setCheckboxEnableSmoothText(_("Smooth"));
+		}
 
         #endregion
 
@@ -248,79 +190,28 @@ namespace Cadencii.Application.Forms
 
         private void registerEventHandlers()
         {
-            btnOK.Click += new EventHandler(btnOK_Click);
-            btnCancel.Click += new EventHandler(btnCancel_Click);
-            chkEnableSmooth.CheckedChanged += new EventHandler(chkEnableSmooth_CheckedChanged);
-            btnLeft.MouseMove += new MouseEventHandler(common_MouseMove);
-            btnLeft.MouseDown += new MouseEventHandler(handleOperationButtonMouseDown);
-            btnLeft.MouseUp += new MouseEventHandler(common_MouseUp);
-            btnDataPoint.MouseMove += new MouseEventHandler(common_MouseMove);
-            btnDataPoint.MouseDown += new MouseEventHandler(handleOperationButtonMouseDown);
-            btnDataPoint.MouseUp += new MouseEventHandler(common_MouseUp);
-            btnRight.MouseMove += new MouseEventHandler(common_MouseMove);
-            btnRight.MouseDown += new MouseEventHandler(handleOperationButtonMouseDown);
-            btnRight.MouseUp += new MouseEventHandler(common_MouseUp);
-            btnBackward.Click += new EventHandler(btnBackward_Click);
-            btnForward.Click += new EventHandler(btnForward_Click);
+			btnOK.Click += (o,e) => model.buttonOkClick ();
+			btnCancel.Click += (o,e) => model.buttonCancelClick ();
+			chkEnableSmooth.CheckedChanged += (o,e) => model.checkboxEnableSmoothCheckedChanged ();
+			btnLeft.MouseMove += (o,e) => model.buttonsMouseMove ();
+			btnLeft.MouseDown += (o,e) => model.buttonLeftMouseDown ();
+			btnLeft.MouseUp += (o,e) => model.buttonsMouseUp();
+			btnDataPoint.MouseMove += (o,e) => model.buttonsMouseMove();
+			btnDataPoint.MouseDown += (o,e) => model.buttonCenterMouseDown ();
+			btnDataPoint.MouseUp += (o,e) => model.buttonsMouseUp();
+			btnRight.MouseMove += (o,e) => model.buttonsMouseMove();
+			btnRight.MouseDown += (o,e) => model.buttonLeftMouseDown ();
+			btnRight.MouseUp += (o,e) => model.buttonsMouseUp();
+			btnBackward.Click += (o,e) => model.buttonBackwardClick();
+			btnForward.Click += (o,e) => model.buttonForwardClick();
         }
 
         private void setResources()
         {
-			this.btnLeft.Image = cadencii.Properties.Resources.target__pencil;
-			this.btnDataPoint.Image = cadencii.Properties.Resources.target__pencil;
-			this.btnRight.Image = cadencii.Properties.Resources.target__pencil;
+			this.btnLeft.Image = cadencii.Properties.Resources.target__pencil.ToAwt ();
+			this.btnDataPoint.Image = cadencii.Properties.Resources.target__pencil.ToAwt ();
+			this.btnRight.Image = cadencii.Properties.Resources.target__pencil.ToAwt ();
         }
-        #endregion
-
-
-        #region event handlers
-
-        public void btnOK_Click(object sender, EventArgs e)
-        {
-            this.listener.buttonOkClick();
-        }
-
-        public void chkEnableSmooth_CheckedChanged(object sender, EventArgs e)
-        {
-            this.listener.checkboxEnableSmoothCheckedChanged();
-        }
-
-        public void handleOperationButtonMouseDown(object sender, MouseEventArgs e)
-        {
-            if (sender == btnLeft) {
-                this.listener.buttonLeftMouseDown();
-            } else if (sender == btnRight) {
-                this.listener.buttonRightMouseDown();
-            } else {
-                this.listener.buttonCenterMouseDown();
-            }
-        }
-
-        public void common_MouseUp(object sender, MouseEventArgs e)
-        {
-            this.listener.buttonsMouseUp();
-        }
-
-        public void common_MouseMove(object sender, MouseEventArgs e)
-        {
-            this.listener.buttonsMouseMove();
-        }
-
-        private void btnForward_Click(object sender, EventArgs e)
-        {
-            this.listener.buttonForwardClick();
-        }
-
-        private void btnBackward_Click(object sender, EventArgs e)
-        {
-            this.listener.buttonBackwardClick();
-        }
-
-        public void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.listener.buttonCancelClick();
-        }
-
         #endregion
 
         /// <summary>
@@ -352,29 +243,29 @@ namespace Cadencii.Application.Forms
             this.PerformLayout();
         }
 
-        private Button btnCancel;
-        private Button btnOK;
+        private UiButton btnCancel;
+        private UiButton btnOK;
         private CheckBox chkEnableSmooth;
         private Label lblLeftValue;
         private Label lblLeftClock;
-        private NumberTextBox txtLeftValue;
-        private NumberTextBox txtLeftClock;
+		public NumberTextBox txtLeftValue { get; set; }
+		public NumberTextBox txtLeftClock { get; set; }
         private GroupBox groupLeft;
         private GroupBox groupDataPoint;
         private Label lblDataPointValue;
-        private NumberTextBox txtDataPointClock;
+		public NumberTextBox txtDataPointClock { get; set; }
         private Label lblDataPointClock;
-        private NumberTextBox txtDataPointValue;
+		public NumberTextBox txtDataPointValue { get; set; }
         private GroupBox groupRight;
         private Label lblRightValue;
-        private NumberTextBox txtRightClock;
+		public NumberTextBox txtRightClock { get; set; }
         private Label lblRightClock;
-        private NumberTextBox txtRightValue;
-        private Button btnDataPoint;
-        private Button btnLeft;
-        private Button btnRight;
-        private Button btnBackward;
-        private Button btnForward;
+		public NumberTextBox txtRightValue { get; set; }
+        private UiButton btnDataPoint;
+		public UiButton btnLeft { get; set; }
+		public UiButton btnRight { get; set; }
+        private UiButton btnBackward;
+        private UiButton btnForward;
 
     }
 

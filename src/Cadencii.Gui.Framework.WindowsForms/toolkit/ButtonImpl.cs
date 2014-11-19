@@ -19,8 +19,15 @@ using cadencii;
 
 namespace Cadencii.Gui.Toolkit
 {
-	public class ButtonImpl : System.Windows.Forms.Button, UiControl
+	public class ButtonImpl : System.Windows.Forms.Button, UiButton
 	{
+		// UiButton
+
+		Image UiButton.Image {
+			get { return this.Image.ToAwt (); }
+			set { this.Image = value.ToWF (); }
+		}
+
 		// UiControl
 
 		IList<UiControl> UiControl.Controls {
