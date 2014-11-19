@@ -312,53 +312,6 @@
 	            TabIndex = "19"
 	            ToggleDoubleClick = "true"
 	            >
-	        <_Bands>
-		        <RebarBand id="bandFile"
-		        	BandSize = "236"
-		        	NewRow = "true"
-	            AllowVertical = "false"
-	            Child = "toolBarFile"
-	            Header = "-1"
-	            Integral = "1"
-	            MaxHeight = "26"
-	            UseChevron = "true"
-					>
-		        </RebarBand>
-		        <RebarBand id="bandPosition"
-		        	BandSize = "234"
-		        	NewRow = "true"
-	            AllowVertical = "false"
-	            Child = "#toolBarPosition"
-	            Header = "-1"
-	            Integral = "1"
-	            MaxHeight = "26"
-	            UseChevron = "true"
-					>
-		        </RebarBand>
-		        <RebarBand id="bandMeasure"
-		        	BandSize = "714"
-		        	NewRow = "true"
-	            AllowVertical = "false"
-	            Child = "#toolBarMeasure"
-	            Header = "-1"
-	            Integral = "1"
-	            MaxHeight = "26"
-	            UseChevron = "true"
-					>
-		        </RebarBand>
-		        <RebarBand id="bandTool"
-		        	BandSize = "712"
-		        	NewRow = "true"
-	            AllowVertical = "false"
-	            Child = "#toolBarTool"
-	            Header = "-1"
-	            Integral = "1"
-	            MaxHeight = "26"
-	            UseChevron = "true"
-					>
-		        </RebarBand>
-	        </_Bands>
-
 		    <UiToolBar id="toolBarFile"
 
             Appearance = "Flat"
@@ -626,6 +579,54 @@
 			            />
 	            </_Buttons>
 		    </UiToolBar>
+
+	        <_Bands>
+		        <RebarBand id="bandFile"
+		        	BandSize = "236"
+		        	NewRow = "true"
+	            AllowVertical = "false"
+	            Child = "#toolBarFile"
+	            Header = "-1"
+	            Integral = "1"
+	            MaxHeight = "26"
+	            UseChevron = "true"
+					>
+		        </RebarBand>
+		        <RebarBand id="bandPosition"
+		        	BandSize = "234"
+		        	NewRow = "true"
+	            AllowVertical = "false"
+	            Child = "#toolBarPosition"
+	            Header = "-1"
+	            Integral = "1"
+	            MaxHeight = "26"
+	            UseChevron = "true"
+					>
+		        </RebarBand>
+		        <RebarBand id="bandMeasure"
+		        	BandSize = "714"
+		        	NewRow = "true"
+	            AllowVertical = "false"
+	            Child = "#toolBarMeasure"
+	            Header = "-1"
+	            Integral = "1"
+	            MaxHeight = "26"
+	            UseChevron = "true"
+					>
+		        </RebarBand>
+		        <RebarBand id="bandTool"
+		        	BandSize = "712"
+		        	NewRow = "true"
+	            AllowVertical = "false"
+	            Child = "#toolBarTool"
+	            Header = "-1"
+	            Integral = "1"
+	            MaxHeight = "26"
+	            UseChevron = "true"
+					>
+		        </RebarBand>
+	        </_Bands>
+
 	    </Rebar>
 
 		<UiMenuStrip id="menuStripMain"

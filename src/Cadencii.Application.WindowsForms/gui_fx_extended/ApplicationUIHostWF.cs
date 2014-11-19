@@ -53,7 +53,7 @@ namespace Cadencii.Application.Forms
 			if (value.FirstOrDefault () == '$') {
 				if (t == typeof (System.Drawing.Color)) {
 					if (value [1] == '(')
-						return typeof (System.Drawing.Color).GetMethods ().First (m => m.Name == "FromArgb").Invoke (null, value.Substring (2, value.Length - 3).Split (',').Select (tk => int.Parse (tk)).Cast<object> ().ToArray ());
+						return typeof (System.Drawing.Color).GetMethods ().First (m => m.Name == "FromArgb" && m.GetParameters ().Length == 3).Invoke (null, value.Substring (2, value.Length - 3).Split (',').Select (tk => int.Parse (tk)).Cast<object> ().ToArray ());
 					else if (value.StartsWith ("$SystemColors"))
 						return get_static_property (typeof (System.Drawing.SystemColors), value);
 					else
@@ -131,13 +131,14 @@ namespace Cadencii.Application.Forms
 					if (obj is GroupBox)
 						((Control) obj).SuspendLayout ();
 
-					if (!(obj is string))
-						ApplyXml (root, c, obj, false);
-
+					// add to tree first, then apply xml, so that some reference to controls (#blah) can be resolved as expected.
 					if (asCollection)
 						AddToCollection (o, obj);
 					else
 						((Control) o).Controls.Add ((Control) obj);
+
+					if (!(obj is string))
+						ApplyXml (root, c, obj, false);
 
 					if (isi != null)
 						((ISupportInitialize) obj).EndInit ();
