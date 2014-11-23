@@ -2,7 +2,7 @@
 
 namespace Cadencii.Gui.Toolkit
 {
-	public interface UiLabel : UiControl
+	public interface UiGroupBox : UiControl
 	{
 		string Text { get; set; }
 	}

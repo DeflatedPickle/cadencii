@@ -29,42 +29,16 @@ namespace Cadencii.Application.Forms
 		NumberTextBox txtRightValue { get; }
 		UiButton btnLeft { get; set; }
 		UiButton btnRight { get; set; }
-
-        [PureVirtualFunction]
-        bool isEnableSmoothSelected();
-
-        [PureVirtualFunction]
-        void setEnableSmoothSelected(bool value);
-
-        [PureVirtualFunction]
-        void setGroupDataPointTitle(string value);
-
-        [PureVirtualFunction]
-        void setLabelDataPointClockText(string value);
-
-        [PureVirtualFunction]
-        void setLabelDataPointValueText(string value);
-
-        [PureVirtualFunction]
-        void setGroupLeftTitle(string value);
-
-        [PureVirtualFunction]
-        void setLabelLeftClockText(string value);
-
-        [PureVirtualFunction]
-        void setLabelLeftValueText(string value);
-
-        [PureVirtualFunction]
-        void setGroupRightTitle(string value);
-
-        [PureVirtualFunction]
-        void setLabelRightClockText(string value);
-
-        [PureVirtualFunction]
-        void setLabelRightValueText(string value);
-
-        [PureVirtualFunction]
-        void setCheckboxEnableSmoothText(string value);
+		UiCheckBox chkEnableSmooth { get; set; }
+		UiLabel lblLeftValue { get; set; }
+		UiLabel lblLeftClock { get; set; }
+		UiLabel lblDataPointValue { get; set; }
+		UiLabel lblDataPointClock { get; set; }
+		UiLabel lblRightValue { get; set; }
+		UiLabel lblRightClock { get; set; }
+		UiGroupBox groupDataPoint { get; set; }
+		UiGroupBox groupLeft { get; set; }
+		UiGroupBox groupRight { get; set; }
     }
 
 }

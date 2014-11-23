@@ -79,6 +79,9 @@
     <Compile Include="toolkit\FileDialogImpl.cs" />
     <Compile Include="toolkit\FolderBrowserDialogImpl.cs" />
     <Compile Include="toolkit\ToolTipImpl.cs" />
+    <Compile Include="toolkit\LabelImpl.cs" />
+    <Compile Include="toolkit\CheckBoxImpl.cs" />
+    <Compile Include="toolkit\GroupBoxImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

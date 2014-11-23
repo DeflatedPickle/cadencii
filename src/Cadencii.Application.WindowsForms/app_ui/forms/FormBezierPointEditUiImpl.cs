@@ -68,114 +68,24 @@ namespace Cadencii.Application.Forms
 
         #region FormBezierPointEditUiインターフェースの実装
 
-		public string DataPointValueText {
-			get { return txtDataPointValue.Text; }
-			set { txtDataPointValue.Text = value; }
-		}
-
-		public string DataPointClockText {
-			get { return txtDataPointClock.Text; }
-			set { txtDataPointClock.Text = value; }
-		}
-
-		public string RightValueText {
-			get { return txtRightValue.Text; }
-			set { txtRightValue.Text = value; }
-		}
-
-		public string RightClockText {
-			get { return txtRightClock.Text; }
-			set { txtRightClock.Text = value; }
-		}
-
-		public string LeftValueText {
-			get { return txtLeftValue.Text; }
-			set { txtLeftValue.Text = value; }
-		}
-
-		public string LeftClockText {
-			get { return txtLeftClock.Text; }
-			set { txtLeftClock.Text = value; }
-		}
-
-        public bool isEnableSmoothSelected()
-        {
-            return chkEnableSmooth.Checked;
-        }
-
-        public void setEnableSmoothSelected(bool value)
-        {
-            chkEnableSmooth.Checked = value;
-        }
-
-        public void setCheckboxEnableSmoothText(string value)
-        {
-            chkEnableSmooth.Text = value;
-        }
-
-        public void setLabelRightValueText(string value)
-        {
-            lblRightValue.Text = value;
-        }
-
-        public void setGroupRightTitle(string value)
-        {
-            groupRight.Text = value;
-        }
-
-        public void setLabelRightClockText(string value)
-        {
-            lblRightClock.Text = value;
-        }
-
-        public void setLabelLeftValueText(string value)
-        {
-            lblLeftValue.Text = value;
-        }
-
-        public void setLabelLeftClockText(string value)
-        {
-            lblLeftClock.Text = value;
-        }
-
-        public void setGroupLeftTitle(string value)
-        {
-            groupLeft.Text = value;
-        }
-
-        public void setLabelDataPointValueText(string value)
-        {
-            lblDataPointValue.Text = value;
-        }
-
-        public void setLabelDataPointClockText(string value)
-        {
-            lblDataPointClock.Text = value;
-        }
-
-        public void setGroupDataPointTitle(string value)
-        {
-            groupDataPoint.Text = value;
-        }
-
 		// FIXME: this should rather be implemented as in XML UI.
 		public void applyLanguage()
 		{
 			this.Text = _("Edit Bezier Data Point");
 
-			this.setGroupDataPointTitle(_("Data Poin"));
-			this.setLabelDataPointClockText(_("Clock"));
-			this.setLabelDataPointValueText(_("Value"));
+			this.groupDataPoint.Text = (_("Data Poin"));
+			this.lblDataPointClock.Text = _("Clock");
+			this.lblDataPointValue.Text = _("Value");
 
-			this.setGroupLeftTitle(_("Left Control Point"));
-			this.setLabelLeftClockText(_("Clock"));
-			this.setLabelLeftValueText(_("Value"));
+			this.groupLeft.Text = (_("Left Control Point"));
+			this.lblLeftClock.Text = (_("Clock"));
+			this.lblLeftValue.Text = (_("Value"));
 
-			this.setGroupRightTitle(_("Right Control Point"));
-			this.setLabelRightClockText(_("Clock"));
-			this.setLabelRightValueText(_("Value"));
+			this.groupRight.Text = (_("Right Control Point"));
+			this.lblRightClock.Text = (_("Clock"));
+			this.lblRightValue.Text = (_("Value"));
 
-			this.setCheckboxEnableSmoothText(_("Smooth"));
+			this.chkEnableSmooth.Text = _("Smooth");
 		}
 
         #endregion
@@ -245,21 +155,21 @@ namespace Cadencii.Application.Forms
 
         private UiButton btnCancel;
         private UiButton btnOK;
-        private CheckBox chkEnableSmooth;
-        private Label lblLeftValue;
-        private Label lblLeftClock;
+		public UiCheckBox chkEnableSmooth { get; set; }
+		public UiLabel lblLeftValue { get; set; }
+		public UiLabel lblLeftClock { get; set; }
 		public NumberTextBox txtLeftValue { get; set; }
 		public NumberTextBox txtLeftClock { get; set; }
-        private GroupBox groupLeft;
-        private GroupBox groupDataPoint;
-        private Label lblDataPointValue;
+		public UiGroupBox groupDataPoint { get; set; }
+		public UiGroupBox groupLeft { get; set; }
+		public UiGroupBox groupRight { get; set; }
+		public UiLabel lblDataPointValue { get; set; }
 		public NumberTextBox txtDataPointClock { get; set; }
-        private Label lblDataPointClock;
+		public UiLabel lblDataPointClock { get; set; }
 		public NumberTextBox txtDataPointValue { get; set; }
-        private GroupBox groupRight;
-        private Label lblRightValue;
+		public UiLabel lblRightValue { get; set; }
 		public NumberTextBox txtRightClock { get; set; }
-        private Label lblRightClock;
+		public UiLabel lblRightClock { get; set; }
 		public NumberTextBox txtRightValue { get; set; }
         private UiButton btnDataPoint;
 		public UiButton btnLeft { get; set; }

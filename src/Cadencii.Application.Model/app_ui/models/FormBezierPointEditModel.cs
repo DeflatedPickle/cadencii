@@ -110,7 +110,7 @@ namespace Cadencii.Application.Forms
 					);
 					return;
 				}
-				if (form.isEnableSmoothSelected ()) {
+				if (form.chkEnableSmooth.Checked) {
 					x = int.Parse (this.form.txtLeftClock.Text);
 					y = int.Parse (this.form.txtLeftValue.Text);
 					x = int.Parse (this.form.txtRightClock.Text);
@@ -146,7 +146,7 @@ namespace Cadencii.Application.Forms
 
 		public void checkboxEnableSmoothCheckedChanged ()
 		{
-			bool value = this.form.isEnableSmoothSelected ();
+			bool value = this.form.chkEnableSmooth.Checked;
 			this.form.txtLeftClock.Enabled = value;
 			this.form.txtLeftValue.Enabled = value;
 			this.form.btnLeft.Enabled = value;
@@ -267,7 +267,7 @@ namespace Cadencii.Application.Forms
 			bool smooth =
 				(m_point.getControlLeftType () != BezierControlType.None) ||
 				(m_point.getControlRightType () != BezierControlType.None);
-			this.form.setEnableSmoothSelected (smooth);
+			this.form.chkEnableSmooth.Checked = smooth;
 			this.form.btnLeft.Enabled = smooth;
 			this.form.btnRight.Enabled = smooth;
 			m_min = m_curve_type.getMinimum ();
