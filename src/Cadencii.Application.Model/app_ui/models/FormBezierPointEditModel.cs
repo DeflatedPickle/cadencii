@@ -105,7 +105,7 @@ namespace Cadencii.Application.Forms
 					DialogManager.ShowMessageBox (
 						_ ("Invalid value"),
 						_ ("Error"),
-						cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
+						MessageBoxButtons.OK,
 						cadencii.Dialog.MSGBOX_ERROR_MESSAGE
 					);
 					return;
@@ -121,7 +121,7 @@ namespace Cadencii.Application.Forms
 				DialogManager.ShowMessageBox (
 					_ ("Integer format error"),
 					_ ("Error"),
-					cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
+					MessageBoxButtons.OK,
 					cadencii.Dialog.MSGBOX_ERROR_MESSAGE
 				);
 				this.form.DialogResult = DialogResult.Cancel;

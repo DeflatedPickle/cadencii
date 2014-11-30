@@ -8,6 +8,7 @@ using cadencii.utau;
 using Cadencii.Utilities;
 using Cadencii.Media;
 using cadencii;
+using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application.Media
 {
@@ -76,7 +77,7 @@ namespace Cadencii.Application.Media
 			}
 		}
 
-		public static void saveTo (string file, Action<string,string,int,int> showMessageBox, Func<string,string> _, Action<string> postProcess)
+		public static void saveTo (string file, Action<string,string,MessageBoxButtons,int> showMessageBox, Func<string,string> _, Action<string> postProcess)
 		{
 			if (mVsq != null) {
 				if (ApplicationGlobal.appConfig.UseProjectCache) {

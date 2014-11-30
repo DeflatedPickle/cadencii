@@ -1177,7 +1177,7 @@ namespace Cadencii.Application.Forms
             if (was_modified) {
                 DialogManager.ShowMessageBox(_("Restart Cadencii to complete your changes\n(restart will NOT be automatically done)"),
                                            "Cadencii",
-                                           cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
+                                           Cadencii.Gui.Toolkit.MessageBoxButtons.OK,
                                            cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
             }
 

@@ -236,7 +236,7 @@ namespace Cadencii.Application.Models
 					}
 					var ret = DialogManager.ShowMessageBox (_ ("Save this sequence?"),
 						         _ ("Affirmation"),
-						         cadencii.Dialog.MSGBOX_YES_NO_CANCEL_OPTION,
+						MessageBoxButtons.YesNoCancel,
 						         cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
 					if (ret == Cadencii.Gui.DialogResult.Yes) {
 						if (MusicManager.getFileName ().Equals ("")) {

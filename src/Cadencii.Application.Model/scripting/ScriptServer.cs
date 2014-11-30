@@ -20,6 +20,7 @@ using cadencii.java.util;
 using Cadencii.Utilities;
 using Cadencii.Media.Vsq;
 using Cadencii.Application;
+using Cadencii.Gui.Toolkit;
 
 
 
@@ -105,7 +106,7 @@ namespace cadencii
         /// スクリプトを実行します。
         /// </summary>
         /// <param name="evsd"></param>
-        public static bool invokeScript(string id, VsqFileEx vsq, Action<string,string,int,int> showMessageBox)
+		public static bool invokeScript(string id, VsqFileEx vsq, Action<string,string,MessageBoxButtons,int> showMessageBox)
         {
             ScriptInvoker script_invoker = null;
             if (scripts.ContainsKey(id)) {
@@ -139,7 +140,7 @@ namespace cadencii
                         ret = ScriptReturnStatus.ERROR;
                     }
                     if (ret == ScriptReturnStatus.ERROR) {
-                        showMessageBox(_("Script aborted"), "Cadencii", cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
+                        showMessageBox(_("Script aborted"), "Cadencii", MessageBoxButtons.OK, cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
                     } else if (ret == ScriptReturnStatus.EDITED) {
                         CadenciiCommand run = VsqFileEx.generateCommandReplace(work);
                         EditorManager.editHistory.register(vsq.executeCommand(run));
@@ -167,11 +168,11 @@ namespace cadencii
                     }
                     return (ret == ScriptReturnStatus.EDITED);
                 } catch (Exception ex) {
-                    showMessageBox(_("Script runtime error:") + " " + ex, _("Error"), cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
+					showMessageBox(_("Script runtime error:") + " " + ex, _("Error"), MessageBoxButtons.OK, cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
                     Logger.StdErr("EditorManager#invokeScript; ex=" + ex);
                 }
             } else {
-                showMessageBox(_("Script compilation failed."), _("Error"), cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
+                showMessageBox(_("Script compilation failed."), _("Error"), MessageBoxButtons.OK, cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
             }
             return false;
         }

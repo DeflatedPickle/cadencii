@@ -397,7 +397,7 @@ namespace Cadencii.Application.Models
 				}
 				var dr = DialogManager.ShowMessageBox(_("Save this sequence?"),
 					_("Affirmation"),
-					cadencii.Dialog.MSGBOX_YES_NO_CANCEL_OPTION,
+					MessageBoxButtons.YesNoCancel,
 					cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
 				if (dr == Cadencii.Gui.DialogResult.Yes) {
 					if (MusicManager.getFileName() == "") {
@@ -1134,7 +1134,7 @@ namespace Cadencii.Application.Models
 			if (DialogManager.ShowMessageBox(
 				PortUtil.formatMessage(_("Do you wish to remove track? {0} : '{1}'"), selected, vsq.Track[selected].getName()),
 				FormMainModel.Consts.ApplicationName,
-				cadencii.Dialog.MSGBOX_YES_NO_OPTION,
+				MessageBoxButtons.YesNo,
 				cadencii.Dialog.MSGBOX_QUESTION_MESSAGE) == Cadencii.Gui.DialogResult.Yes) {
 				CadenciiCommand run = VsqFileEx.generateCommandDeleteTrack(selected);
 				if (selected >= 2) {

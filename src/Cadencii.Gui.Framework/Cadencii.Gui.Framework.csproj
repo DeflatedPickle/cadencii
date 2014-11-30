@@ -141,6 +141,7 @@
     <Compile Include="Cadencii.Gui.Toolkit\UiLabel.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiCheckBox.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiGroupBox.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\MessageBoxButtons.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

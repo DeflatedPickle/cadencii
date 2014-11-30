@@ -5,6 +5,7 @@ using System.Linq;
 using Cadencii.Utilities;
 using cadencii;
 using Cadencii.Application.Forms;
+using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application.Models
 {
@@ -68,7 +69,7 @@ namespace Cadencii.Application.Models
 					DialogManager.ShowMessageBox (
 						_ ("file not found"),
 						FormMainModel.Consts.ApplicationName,
-						cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
+						MessageBoxButtons.OK,
 						cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
 					return;
 				}

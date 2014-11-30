@@ -14,7 +14,7 @@ namespace Cadencii.Application.Forms
 
 		#region implemented abstract members of Dialogs
 
-		public override Cadencii.Gui.DialogResult ShowMessageBox (string text, string caption, int optionType, int messageType)
+		public override Cadencii.Gui.DialogResult ShowMessageBox (string text, string caption, Cadencii.Gui.Toolkit.MessageBoxButtons optionType, int messageType)
 		{
 			BeforeShowDialog ();
 			var ret = (Cadencii.Gui.DialogResult) showMessageBoxCore (text, caption, optionType, messageType);
@@ -22,19 +22,10 @@ namespace Cadencii.Application.Forms
 			return ret;
 		}
 
-		static DialogResult showMessageBoxCore(string text, string caption, int optionType, int messageType)
+		static DialogResult showMessageBoxCore(string text, string caption, Cadencii.Gui.Toolkit.MessageBoxButtons optionType, int messageType)
 		{
 			System.Windows.Forms.DialogResult ret = System.Windows.Forms.DialogResult.Cancel;
-			System.Windows.Forms.MessageBoxButtons btn = System.Windows.Forms.MessageBoxButtons.OK;
-			if (optionType == Dialog.MSGBOX_YES_NO_CANCEL_OPTION) {
-				btn = System.Windows.Forms.MessageBoxButtons.YesNoCancel;
-			} else if (optionType == Dialog.MSGBOX_YES_NO_OPTION) {
-				btn = System.Windows.Forms.MessageBoxButtons.YesNo;
-			} else if (optionType == Dialog.MSGBOX_OK_CANCEL_OPTION) {
-				btn = System.Windows.Forms.MessageBoxButtons.OKCancel;
-			} else {
-				btn = System.Windows.Forms.MessageBoxButtons.OK;
-			}
+			System.Windows.Forms.MessageBoxButtons btn = (System.Windows.Forms.MessageBoxButtons) optionType;
 
 			System.Windows.Forms.MessageBoxIcon icon = System.Windows.Forms.MessageBoxIcon.None;
 			if (messageType == Dialog.MSGBOX_ERROR_MESSAGE) {

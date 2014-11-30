@@ -80,7 +80,7 @@ namespace Cadencii.Application.Models
 					DialogManager.ShowMessageBox(
 						_("Invalid XVSQ file"),
 						_("Error"),
-						cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
+						MessageBoxButtons.OK,
 						cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
 					return;
 				}
@@ -122,7 +122,7 @@ namespace Cadencii.Application.Models
 								track,
 								MusicManager.getVsqFile().Track[track].getName()),
 							FormMainModel.Consts.ApplicationName,
-							cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
+							MessageBoxButtons.OK,
 							cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
 						return;
 					}
@@ -156,7 +156,7 @@ namespace Cadencii.Application.Models
 								_("Invalid note data.\nTrack {0} : {1}\n\n-> Piano roll : Blank sequence."), track, MusicManager.getVsqFile().Track[track].getName()
 							),
 							FormMainModel.Consts.ApplicationName,
-							cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
+							MessageBoxButtons.OK,
 							cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
 						return;
 					}
@@ -236,7 +236,7 @@ namespace Cadencii.Application.Models
 					DialogManager.ShowMessageBox(
 						_("Invalid VSQ/VOCALOID MIDI file"),
 						_("Error"),
-						cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
+						MessageBoxButtons.OK,
 						cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
 					return;
 				}
@@ -486,7 +486,7 @@ namespace Cadencii.Application.Models
 					DialogManager.ShowMessageBox(
 						_("Invalid MIDI file."),
 						_("Error"),
-						cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
+						MessageBoxButtons.OK,
 						cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
 					return;
 				}
@@ -494,7 +494,7 @@ namespace Cadencii.Application.Models
 					DialogManager.ShowMessageBox(
 						_("Invalid MIDI file."),
 						_("Error"),
-						cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
+						MessageBoxButtons.OK,
 						cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
 					return;
 				}
@@ -877,7 +877,7 @@ namespace Cadencii.Application.Models
 					vsq = new VsqFileEx(filename, "Shift_JIS");
 				} catch (Exception ex) {
 					Logger.write(GetType () + ".menuFileImportVsq_Click; ex=" + ex + "\n");
-					DialogManager.ShowMessageBox(_("Invalid VSQ/VOCALOID MIDI file"), _("Error"), cadencii.Dialog.MSGBOX_DEFAULT_OPTION, cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
+					DialogManager.ShowMessageBox(_("Invalid VSQ/VOCALOID MIDI file"), _("Error"), MessageBoxButtons.OK, cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
 					return;
 				}
 				if (parent.form.mDialogMidiImportAndExport == null) {
@@ -1591,7 +1591,7 @@ namespace Cadencii.Application.Models
 					var dr = DialogManager.ShowMessageBox(
 						_("UTAU singer not registered yet.\nContinue ?"),
 						_("Info"),
-						cadencii.Dialog.MSGBOX_YES_NO_OPTION,
+						MessageBoxButtons.OK,
 						cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
 					if (dr != Cadencii.Gui.DialogResult.Yes) {
 						return;

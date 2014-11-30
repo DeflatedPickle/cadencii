@@ -168,7 +168,7 @@ namespace Cadencii.Application
                     DialogManager.ShowMessageBox(
                         PortUtil.formatMessage(_("Palette tool '{0}' reported an error.\nPlease copy the exception text and report it to developper."), id),
                         "Error",
-                        cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
+						MessageBoxButtons.OK,
                         cadencii.Dialog.MSGBOX_ERROR_MESSAGE);
                     Logger.StdErr(typeof(PaletteToolServer) + ".invokePaletteTool; ex=" + ex);
                     edited = false;

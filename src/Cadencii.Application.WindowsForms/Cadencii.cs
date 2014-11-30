@@ -116,13 +116,13 @@ namespace Cadencii.Application.Forms
             } catch (Exception ex) {
             }
             if ((minor % 2) != 0) {
-                DialogManager.ShowMessageBox(
-                    PortUtil.formatMessage(
-                        _("Info: This is test version of Cadencii version {0}"),
-                        BAssemblyInfo.fileVersionMeasure + "." + (minor + 1)),
-                    "Cadencii",
-                    cadencii.Dialog.MSGBOX_DEFAULT_OPTION,
-                    cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
+					DialogManager.ShowMessageBox (
+						PortUtil.formatMessage (
+							_ ("Info: This is test version of Cadencii version {0}"),
+							BAssemblyInfo.fileVersionMeasure + "." + (minor + 1)),
+						"Cadencii",
+						Cadencii.Gui.Toolkit.MessageBoxButtons.OK,
+						cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
             }
 
             // スプラッシュを表示するスレッドを開始
