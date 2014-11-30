@@ -271,7 +271,7 @@ namespace Cadencii.Application.Models
 						PortUtil.formatMessage(_("file '{0}' is already registered as BGM."), file),
 						_("Error"),
 						MessageBoxButtons.OK,
-						cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
+						MessageBoxIcon.Warning);
 					return;
 				}
 
@@ -288,7 +288,7 @@ namespace Cadencii.Application.Models
 				if (DialogManager.ShowMessageBox(PortUtil.formatMessage(_("remove '{0}'?"), bgm.file),
 					"Cadencii",
 					MessageBoxButtons.YesNo,
-					cadencii.Dialog.MSGBOX_QUESTION_MESSAGE) != Cadencii.Gui.DialogResult.Yes) {
+					MessageBoxIcon.Question) != Cadencii.Gui.DialogResult.Yes) {
 					return;
 				}
 				EditorManager.removeBgm(index);

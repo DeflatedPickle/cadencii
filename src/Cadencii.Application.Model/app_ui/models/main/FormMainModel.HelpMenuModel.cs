@@ -70,7 +70,7 @@ namespace Cadencii.Application.Models
 						_ ("file not found"),
 						FormMainModel.Consts.ApplicationName,
 						MessageBoxButtons.OK,
-						cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
+						MessageBoxIcon.Warning);
 					return;
 				}
 				System.Diagnostics.Process.Start (pdf);
@@ -95,7 +95,7 @@ namespace Cadencii.Application.Models
 						_ ("Log file has not generated yet."),
 						_ ("Info"),
 						Cadencii.Gui.AwtHost.OK_OPTION,
-						cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
+						MessageBoxIcon.Information);
 					return;
 				}
 

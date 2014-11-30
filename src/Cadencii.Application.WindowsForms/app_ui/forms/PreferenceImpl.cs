@@ -1178,7 +1178,7 @@ namespace Cadencii.Application.Forms
                 DialogManager.ShowMessageBox(_("Restart Cadencii to complete your changes\n(restart will NOT be automatically done)"),
                                            "Cadencii",
                                            Cadencii.Gui.Toolkit.MessageBoxButtons.OK,
-                                           cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
+					Cadencii.Gui.Toolkit.MessageBoxIcon.Information);
             }
 
             this.DialogResult = System.Windows.Forms.DialogResult.OK;

@@ -24,17 +24,17 @@ namespace Cadencii.Application
 
 		public static DialogResult ShowMessageBox (string text)
 		{
-			return ShowMessageBox (text, "", MessageBoxButtons.OK, cadencii.Dialog.MSGBOX_PLAIN_MESSAGE);
+			return ShowMessageBox (text, "", MessageBoxButtons.OK, MessageBoxIcon.None);
 		}
 
 		public static DialogResult ShowMessageBox (string text, string caption)
 		{
-			return ShowMessageBox (text, caption, MessageBoxButtons.OK, cadencii.Dialog.MSGBOX_PLAIN_MESSAGE);
+			return ShowMessageBox (text, caption, MessageBoxButtons.OK, MessageBoxIcon.None);
 		}
 
 		public static DialogResult ShowMessageBox (string text, string caption, MessageBoxButtons optionType)
 		{
-			return ShowMessageBox (text, caption, optionType, cadencii.Dialog.MSGBOX_PLAIN_MESSAGE);
+			return ShowMessageBox (text, caption, optionType, MessageBoxIcon.None);
 		}
 
 		/// <summary>
@@ -80,7 +80,7 @@ namespace Cadencii.Application
 			return ApplicationUIHost.Instance.Dialogs.IsShowingDialog;
 		}
 
-		public static DialogResult ShowMessageBox (string text, string caption, MessageBoxButtons optionType, int messageType)
+		public static DialogResult ShowMessageBox (string text, string caption, MessageBoxButtons optionType, MessageBoxIcon messageType)
 		{
 			return ApplicationUIHost.Instance.Dialogs.ShowMessageBox (text, caption, optionType, messageType);
 		}

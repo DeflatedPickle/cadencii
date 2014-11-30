@@ -11,6 +11,6 @@ namespace Cadencii.Application
 		public abstract DialogResult ShowModalFileDialog (UiFileDialog fileDialog, bool openMode, UiForm mainForm);
 		public abstract DialogResult ShowModalFolderDialog (UiFolderBrowserDialog folderBrowserDialog, UiForm mainForm);
 		public abstract DialogResult ShowModalDialog (UiForm dialog, UiForm parentForm);
-		public abstract DialogResult ShowMessageBox(string text, string caption, MessageBoxButtons optionType, int messageType);
+		public abstract DialogResult ShowMessageBox(string text, string caption, MessageBoxButtons optionType, MessageBoxIcon messageType);
 	}
 }

@@ -114,7 +114,6 @@
     <Compile Include="Cadencii.Gui\models\Colors.cs" />
     <Compile Include="Cadencii.Gui\models\Cursor.cs" />
     <Compile Include="Cadencii.Gui\models\Cursors.cs" />
-    <Compile Include="Cadencii.Gui\models\Dialog.cs" />
     <Compile Include="Cadencii.Gui\models\DialogResult.cs" />
     <Compile Include="Cadencii.Gui\models\Dimension.cs" />
     <Compile Include="Cadencii.Gui\models\Font.cs" />
@@ -142,6 +141,7 @@
     <Compile Include="Cadencii.Gui.Toolkit\UiCheckBox.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiGroupBox.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\MessageBoxButtons.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\MessageBoxIcon.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

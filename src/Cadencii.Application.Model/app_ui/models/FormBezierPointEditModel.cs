@@ -106,7 +106,7 @@ namespace Cadencii.Application.Forms
 						_ ("Invalid value"),
 						_ ("Error"),
 						MessageBoxButtons.OK,
-						cadencii.Dialog.MSGBOX_ERROR_MESSAGE
+						MessageBoxIcon.Error
 					);
 					return;
 				}
@@ -122,7 +122,7 @@ namespace Cadencii.Application.Forms
 					_ ("Integer format error"),
 					_ ("Error"),
 					MessageBoxButtons.OK,
-					cadencii.Dialog.MSGBOX_ERROR_MESSAGE
+					MessageBoxIcon.Error
 				);
 				this.form.DialogResult = DialogResult.Cancel;
 				Logger.write (typeof (FormBezierPointEditModel) + ".btnOK_Click; ex=" + ex + "\n");

@@ -237,7 +237,7 @@ namespace Cadencii.Application.Models
 					var ret = DialogManager.ShowMessageBox (_ ("Save this sequence?"),
 						         _ ("Affirmation"),
 						MessageBoxButtons.YesNoCancel,
-						         cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
+						MessageBoxIcon.Question);
 					if (ret == Cadencii.Gui.DialogResult.Yes) {
 						if (MusicManager.getFileName ().Equals ("")) {
 							var dr = DialogManager.ShowModalFileDialog (parent.form.saveXmlVsqDialog, false, parent.form);

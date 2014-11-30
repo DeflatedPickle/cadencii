@@ -14,7 +14,7 @@ namespace Cadencii.Application.Forms
 
 		#region implemented abstract members of Dialogs
 
-		public override Cadencii.Gui.DialogResult ShowMessageBox (string text, string caption, Cadencii.Gui.Toolkit.MessageBoxButtons optionType, int messageType)
+		public override Cadencii.Gui.DialogResult ShowMessageBox (string text, string caption, Cadencii.Gui.Toolkit.MessageBoxButtons optionType, Cadencii.Gui.Toolkit.MessageBoxIcon messageType)
 		{
 			BeforeShowDialog ();
 			var ret = (Cadencii.Gui.DialogResult) showMessageBoxCore (text, caption, optionType, messageType);
@@ -22,23 +22,12 @@ namespace Cadencii.Application.Forms
 			return ret;
 		}
 
-		static DialogResult showMessageBoxCore(string text, string caption, Cadencii.Gui.Toolkit.MessageBoxButtons optionType, int messageType)
+		static DialogResult showMessageBoxCore(string text, string caption, Cadencii.Gui.Toolkit.MessageBoxButtons optionType, Cadencii.Gui.Toolkit.MessageBoxIcon messageType)
 		{
 			System.Windows.Forms.DialogResult ret = System.Windows.Forms.DialogResult.Cancel;
 			System.Windows.Forms.MessageBoxButtons btn = (System.Windows.Forms.MessageBoxButtons) optionType;
 
-			System.Windows.Forms.MessageBoxIcon icon = System.Windows.Forms.MessageBoxIcon.None;
-			if (messageType == Dialog.MSGBOX_ERROR_MESSAGE) {
-				icon = System.Windows.Forms.MessageBoxIcon.Error;
-			} else if (messageType == Dialog.MSGBOX_INFORMATION_MESSAGE) {
-				icon = System.Windows.Forms.MessageBoxIcon.Information;
-			} else if (messageType == Dialog.MSGBOX_PLAIN_MESSAGE) {
-				icon = System.Windows.Forms.MessageBoxIcon.None;
-			} else if (messageType == Dialog.MSGBOX_QUESTION_MESSAGE) {
-				icon = System.Windows.Forms.MessageBoxIcon.Question;
-			} else if (messageType == Dialog.MSGBOX_WARNING_MESSAGE) {
-				icon = System.Windows.Forms.MessageBoxIcon.Warning;
-			}
+			System.Windows.Forms.MessageBoxIcon icon = (System.Windows.Forms.MessageBoxIcon) messageType;
 
 			return System.Windows.Forms.MessageBox.Show(text, caption, btn, icon);
 		}

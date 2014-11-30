@@ -81,7 +81,7 @@ namespace Cadencii.Application.Models
 						_("Invalid XVSQ file"),
 						_("Error"),
 						MessageBoxButtons.OK,
-						cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
+						MessageBoxIcon.Warning);
 					return;
 				}
 				parent.ClearExistingData();
@@ -123,7 +123,7 @@ namespace Cadencii.Application.Models
 								MusicManager.getVsqFile().Track[track].getName()),
 							FormMainModel.Consts.ApplicationName,
 							MessageBoxButtons.OK,
-							cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
+							MessageBoxIcon.Warning);
 						return;
 					}
 				}
@@ -157,7 +157,7 @@ namespace Cadencii.Application.Models
 							),
 							FormMainModel.Consts.ApplicationName,
 							MessageBoxButtons.OK,
-							cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
+							MessageBoxIcon.Warning);
 						return;
 					}
 				}
@@ -237,7 +237,7 @@ namespace Cadencii.Application.Models
 						_("Invalid VSQ/VOCALOID MIDI file"),
 						_("Error"),
 						MessageBoxButtons.OK,
-						cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
+						MessageBoxIcon.Warning);
 					return;
 				}
 				EditorManager.Selected = (1);
@@ -487,7 +487,7 @@ namespace Cadencii.Application.Models
 						_("Invalid MIDI file."),
 						_("Error"),
 						MessageBoxButtons.OK,
-						cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
+						MessageBoxIcon.Warning);
 					return;
 				}
 				if (mf == null) {
@@ -495,7 +495,7 @@ namespace Cadencii.Application.Models
 						_("Invalid MIDI file."),
 						_("Error"),
 						MessageBoxButtons.OK,
-						cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
+						MessageBoxIcon.Warning);
 					return;
 				}
 				int count = mf.getTrackCount();
@@ -877,7 +877,7 @@ namespace Cadencii.Application.Models
 					vsq = new VsqFileEx(filename, "Shift_JIS");
 				} catch (Exception ex) {
 					Logger.write(GetType () + ".menuFileImportVsq_Click; ex=" + ex + "\n");
-					DialogManager.ShowMessageBox(_("Invalid VSQ/VOCALOID MIDI file"), _("Error"), MessageBoxButtons.OK, cadencii.Dialog.MSGBOX_WARNING_MESSAGE);
+					DialogManager.ShowMessageBox(_("Invalid VSQ/VOCALOID MIDI file"), _("Error"), MessageBoxButtons.OK, MessageBoxIcon.Warning);
 					return;
 				}
 				if (parent.form.mDialogMidiImportAndExport == null) {
@@ -1051,7 +1051,7 @@ namespace Cadencii.Application.Models
 						_("invalid rendering region; start>=end"),
 						_("Error"),
 						Cadencii.Gui.AwtHost.OK_OPTION,
-						cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
+						MessageBoxIcon.Information);
 					return;
 				}
 				List<int> other_tracks = new List<int>();
@@ -1147,7 +1147,7 @@ namespace Cadencii.Application.Models
 						_("invalid rendering region; start>=end"),
 						_("Error"),
 						Cadencii.Gui.AwtHost.OK_OPTION,
-						cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
+						MessageBoxIcon.Information);
 					return;
 				}
 				for (int i = 1; i < size; i++) {
@@ -1592,7 +1592,7 @@ namespace Cadencii.Application.Models
 						_("UTAU singer not registered yet.\nContinue ?"),
 						_("Info"),
 						MessageBoxButtons.OK,
-						cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
+						MessageBoxIcon.Information);
 					if (dr != Cadencii.Gui.DialogResult.Yes) {
 						return;
 					}

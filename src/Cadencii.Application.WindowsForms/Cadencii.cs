@@ -122,7 +122,7 @@ namespace Cadencii.Application.Forms
 							BAssemblyInfo.fileVersionMeasure + "." + (minor + 1)),
 						"Cadencii",
 						Cadencii.Gui.Toolkit.MessageBoxButtons.OK,
-						cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
+					Cadencii.Gui.Toolkit.MessageBoxIcon.Information);
             }
 
             // スプラッシュを表示するスレッドを開始

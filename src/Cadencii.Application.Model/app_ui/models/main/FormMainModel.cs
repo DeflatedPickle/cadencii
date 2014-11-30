@@ -398,7 +398,7 @@ namespace Cadencii.Application.Models
 				var dr = DialogManager.ShowMessageBox(_("Save this sequence?"),
 					_("Affirmation"),
 					MessageBoxButtons.YesNoCancel,
-					cadencii.Dialog.MSGBOX_QUESTION_MESSAGE);
+					MessageBoxIcon.Question);
 				if (dr == Cadencii.Gui.DialogResult.Yes) {
 					if (MusicManager.getFileName() == "") {
 						var dr2 = DialogManager.ShowModalFileDialog(form.saveXmlVsqDialog, false, form);
@@ -513,7 +513,7 @@ namespace Cadencii.Application.Models
 							DialogManager.ShowMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
 								_("Info."),
 								Cadencii.Gui.AwtHost.OK_OPTION,
-								cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
+								MessageBoxIcon.Information);
 							return true;
 						}
 					}
@@ -555,7 +555,7 @@ namespace Cadencii.Application.Models
 						DialogManager.ShowMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
 							_("Info."),
 							Cadencii.Gui.AwtHost.OK_OPTION,
-							cadencii.Dialog.MSGBOX_INFORMATION_MESSAGE);
+							MessageBoxIcon.Information);
 						return true;
 					}
 				}
@@ -1135,7 +1135,7 @@ namespace Cadencii.Application.Models
 				PortUtil.formatMessage(_("Do you wish to remove track? {0} : '{1}'"), selected, vsq.Track[selected].getName()),
 				FormMainModel.Consts.ApplicationName,
 				MessageBoxButtons.YesNo,
-				cadencii.Dialog.MSGBOX_QUESTION_MESSAGE) == Cadencii.Gui.DialogResult.Yes) {
+				MessageBoxIcon.Question) == Cadencii.Gui.DialogResult.Yes) {
 				CadenciiCommand run = VsqFileEx.generateCommandDeleteTrack(selected);
 				if (selected >= 2) {
 					EditorManager.Selected = selected - 1;

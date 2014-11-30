@@ -77,7 +77,7 @@ namespace Cadencii.Application.Media
 			}
 		}
 
-		public static void saveTo (string file, Action<string,string,MessageBoxButtons,int> showMessageBox, Func<string,string> _, Action<string> postProcess)
+		public static void saveTo (string file, Action<string,string,MessageBoxButtons,MessageBoxIcon> showMessageBox, Func<string,string> _, Action<string> postProcess)
 		{
 			if (mVsq != null) {
 				if (ApplicationGlobal.appConfig.UseProjectCache) {
@@ -94,7 +94,7 @@ namespace Cadencii.Application.Media
 							showMessageBox (PortUtil.formatMessage (_ ("failed creating cache directory, '{0}'."), cacheDir),
 								_ ("Info."),
 								Cadencii.Gui.AwtHost.OK_OPTION,
-								Dialog.MSGBOX_INFORMATION_MESSAGE);
+								MessageBoxIcon.Information);
 							Logger.write (typeof(MusicManager) + ".saveTo; ex=" + ex + "\n");
 							return;
 						}
@@ -121,7 +121,7 @@ namespace Cadencii.Application.Media
 									showMessageBox (PortUtil.formatMessage (_ ("failed copying WAVE cache file, '{0}'."), wavFrom),
 										_ ("Error"),
 										Cadencii.Gui.AwtHost.OK_OPTION,
-										Dialog.MSGBOX_WARNING_MESSAGE);
+										MessageBoxIcon.Warning);
 									Logger.write (typeof(MusicManager) + ".saveTo; ex=" + ex + "\n");
 									break;
 								}
@@ -145,7 +145,7 @@ namespace Cadencii.Application.Media
 									showMessageBox (PortUtil.formatMessage (_ ("failed copying XML cache file, '{0}'."), xmlFrom),
 										_ ("Error"),
 										Cadencii.Gui.AwtHost.OK_OPTION,
-										Dialog.MSGBOX_WARNING_MESSAGE);
+										MessageBoxIcon.Warning);
 									Logger.write (typeof(MusicManager) + ".saveTo; ex=" + ex + "\n");
 									break;
 								}
