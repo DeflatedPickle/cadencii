@@ -105,7 +105,7 @@ namespace Cadencii.Application.Models
 						edit_mode != EditMode.EDIT_RIGHT_EDGE &&
 						edit_mode != EditMode.MIDDLE_DRAG &&
 						edit_mode != EditMode.CURVE_ON_PIANOROLL) {
-						if ((modefiers & Keys.Shift) != Keys.Shift && (modefiers & AwtHost.ModifierKeys) != AwtHost.ModifierKeys) {
+						if ((modefiers & Keys.Shift) != Keys.Shift && (modefiers & parent.form.s_modifier_key) != parent.form.s_modifier_key) {
 							EditorManager.itemSelection.clearEvent();
 						}
 						EditorManager.itemSelection.addEvent(item.InternalID);
@@ -554,7 +554,7 @@ namespace Cadencii.Application.Models
 					bool start_mouse_hover_generator = true;
 
 					// CTRLキーを押しながら範囲選択
-					if ((modefier & AwtHost.ModifierKeys) == AwtHost.ModifierKeys) {
+					if ((modefier & parent.form.s_modifier_key) == parent.form.s_modifier_key) {
 						EditorManager.IsWholeSelectedIntervalEnabled = true;
 						EditorManager.IsCurveSelectedIntervalEnabled = false;
 						EditorManager.itemSelection.clearPoint();
@@ -799,7 +799,7 @@ namespace Cadencii.Application.Models
 										}
 									}
 									EditorManager.itemSelection.addEventAll(add_required);
-								} else if ((modefier & AwtHost.ModifierKeys) == AwtHost.ModifierKeys) {
+								} else if ((modefier & parent.form.s_modifier_key) == parent.form.s_modifier_key) {
 									// CTRLキーを押しながら選択／選択解除
 									if (EditorManager.itemSelection.isEventContains(selected, item.InternalID)) {
 										EditorManager.itemSelection.removeEvent(item.InternalID);

@@ -480,7 +480,7 @@ namespace Cadencii.Application.Models
 								} else {
 									EditorManager.itemSelection.addTempo(clock);
 								}
-							} else if ((modifiers & AwtHost.ModifierKeys) == AwtHost.ModifierKeys) {
+							} else if ((modifiers & parent.form.s_modifier_key) == parent.form.s_modifier_key) {
 								if (EditorManager.itemSelection.isTempoContains(clock)) {
 									EditorManager.itemSelection.removeTempo(clock);
 								} else {
@@ -539,7 +539,7 @@ namespace Cadencii.Application.Models
 								} else {
 									EditorManager.itemSelection.addTimesig(barcount);
 								}
-							} else if ((modifiers & AwtHost.ModifierKeys) == AwtHost.ModifierKeys) {
+							} else if ((modifiers & parent.form.s_modifier_key) == parent.form.s_modifier_key) {
 								if (EditorManager.itemSelection.isTimesigContains(barcount)) {
 									EditorManager.itemSelection.removeTimesig(barcount);
 								} else {

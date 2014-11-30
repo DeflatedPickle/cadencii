@@ -77,6 +77,7 @@ namespace Cadencii.Application.Forms
 		Point mButtonInitial { get; set; }
 		int mMiddleButtonVScroll { get; set; }
 		int mMiddleButtonHScroll { get; set; }
+		Keys s_modifier_key { get; set; }
 		void updateContextMenuPiano (Point mouseAt);
 		void fixAddingEvent ();
 		int computeScrollValueFromWheelDelta(int delta);

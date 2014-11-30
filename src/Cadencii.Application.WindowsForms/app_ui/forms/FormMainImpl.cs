@@ -90,10 +90,16 @@ namespace Cadencii.Application.Forms
             }
         }
 
+        #region static field
         /// <summary>
         /// refreshScreenが呼ばれている最中かどうか
         /// </summary>
-        private bool mIsRefreshing = false;
+        private static bool mIsRefreshing = false;
+        /// <summary>
+        /// CTRLキー。MacOSXの場合はMenu
+        /// </summary>
+		public Keys s_modifier_key { get; set; }
+        #endregion
 
         #region fields
         string appId;
@@ -190,6 +196,7 @@ namespace Cadencii.Application.Forms
 			model = new FormMainModel (this);
 
 		this.appId = Handle.ToString ("X32");
+			s_modifier_key = Keys.Control;
 			mButtonInitial = new Point();
 			mEditCurveMode = CurveEditMode.NONE;
 			mPencilMode = new PencilMode();
@@ -213,6 +220,7 @@ namespace Cadencii.Application.Forms
 			EditorConfig.baseFont9 = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE9);
 			EditorConfig.baseFont50Bold = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.BOLD, EditorConfig.FONT_SIZE50);
 
+            s_modifier_key = Keys.Control;
             VsqFileEx tvsq =
                 new VsqFileEx(
 					ApplicationGlobal.appConfig.DefaultSingerName,
