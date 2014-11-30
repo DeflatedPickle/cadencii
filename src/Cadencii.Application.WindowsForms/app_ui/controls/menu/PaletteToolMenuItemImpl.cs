@@ -20,18 +20,7 @@ namespace Cadencii.Application.Controls
 
 	public class PaletteToolMenuItemImpl : ToolStripMenuItemImpl, PaletteToolMenuItem
     {
-        private string mPaletteToolID;
-
-        public PaletteToolMenuItemImpl(string id)
-            : base()
-        {
-            mPaletteToolID = id;
-        }
-
-        public string getPaletteToolID()
-        {
-            return mPaletteToolID;
-        }
+		public string PaletteToolId { get; set; }
     }
 
 }

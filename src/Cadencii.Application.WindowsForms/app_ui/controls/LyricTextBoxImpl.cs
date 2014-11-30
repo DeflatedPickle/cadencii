@@ -23,51 +23,14 @@ namespace Cadencii.Application.Controls
     /// </summary>
     public class LyricTextBoxImpl : Cadencii.Gui.Toolkit.TextBoxImpl, LyricTextBox
     {
-		PictPianoRoll LyricTextBox.Parent {
+		PictPianoRoll LyricTextBox.ParentPianoRoll {
 			get { return (PictPianoRoll) this.Parent; }
 			set { Parent = (Control) value; }
 		}
 
-        private string m_buf_text;
-        private bool m_phonetic_symbol_edit_mode;
+		public bool IsPhoneticSymbolEditMode { get; set; }
 
-        /// <summary>
-        /// 発音記号を編集するモードかどうかを表すブール値を取得します
-        /// </summary>
-        /// <returns></returns>
-        public bool isPhoneticSymbolEditMode()
-        {
-            return m_phonetic_symbol_edit_mode;
-        }
-
-        /// <summary>
-        /// 発音記号を編集するモードかどうかを表すブール値を設定します
-        /// </summary>
-        /// <param name="value"></param>
-        public void setPhoneticSymbolEditMode(bool value)
-        {
-            m_phonetic_symbol_edit_mode = value;
-        }
-
-        /// <summary>
-        /// バッファーテキストを取得します
-        /// (バッファーテキストには，発音記号モードでは歌詞，歌詞モードでは発音記号がそれぞれ格納される)
-        /// </summary>
-        /// <returns></returns>
-        public string getBufferText()
-        {
-            return m_buf_text;
-        }
-
-        /// <summary>
-        /// バッファーテキストを設定します
-        /// (バッファーテキストには，発音記号モードでは歌詞，歌詞モードでは発音記号がそれぞれ格納される)
-        /// </summary>
-        /// <param name="value"></param>
-        public void setBufferText(string value)
-        {
-            m_buf_text = value;
-        }
+		public string BufferText { get; set; }
 
         /// <summary>
         /// オーバーライド．(Tab)または(Tab+Shift)も入力キーとみなすようオーバーライドされている

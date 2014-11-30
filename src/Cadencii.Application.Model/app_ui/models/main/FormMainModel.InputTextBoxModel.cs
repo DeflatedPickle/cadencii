@@ -84,7 +84,7 @@ namespace Cadencii.Application.Models
 						EditorManager.itemSelection.addEvent(item.InternalID);
 						int x = EditorManager.xCoordFromClocks(item.Clock);
 						int y = EditorManager.yCoordFromNote(item.ID.Note);
-						bool phonetic_symbol_edit_mode = EditorManager.InputTextBox.isPhoneticSymbolEditMode();
+						bool phonetic_symbol_edit_mode = EditorManager.InputTextBox.IsPhoneticSymbolEditMode;
 						parent.showInputTextBox(
 							item.ID.LyricHandle.L0.Phrase,
 							item.ID.LyricHandle.L0.getPhoneticSymbol(),

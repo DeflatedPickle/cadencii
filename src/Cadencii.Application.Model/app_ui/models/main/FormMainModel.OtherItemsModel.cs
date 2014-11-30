@@ -299,7 +299,7 @@ namespace Cadencii.Application.Models
 			public void handleSettingPaletteTool(PaletteToolMenuItem tsmi)
 			{
 				#if ENABLE_SCRIPT
-				string id = tsmi.getPaletteToolID();
+				string id = tsmi.PaletteToolId;
 				if (!PaletteToolServer.loadedTools.ContainsKey(id)) {
 					return;
 				}

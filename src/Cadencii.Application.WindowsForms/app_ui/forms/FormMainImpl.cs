@@ -401,7 +401,7 @@ namespace Cadencii.Application.Forms
 			EditorManager.InputTextBox.Font = new Font (EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE9);
             EditorManager.InputTextBox.Enabled = false;
             EditorManager.InputTextBox.KeyPress += model.InputTextBox.mInputTextBox_KeyPress;
-            EditorManager.InputTextBox.Parent = pictPianoRoll;
+			EditorManager.InputTextBox.ParentPianoRoll = pictPianoRoll;
             panel1.AddControl(EditorManager.InputTextBox);
 
 #if DEBUG
@@ -1743,14 +1743,16 @@ namespace Cadencii.Application.Forms
                 toolBarTool.Buttons.Add(tsb);
 
                 // cMenuTrackSelector
-				PaletteToolMenuItem tsmi = ApplicationUIHost.Create<PaletteToolMenuItem> (id);
+				PaletteToolMenuItem tsmi = ApplicationUIHost.Create<PaletteToolMenuItem> ();
+				tsmi.PaletteToolId = id;
                 tsmi.Text = name;
                 tsmi.ToolTipText = desc;
 				tsmi.Click += (o, e) => model.RunStripPaletteToolSelected (tsmi.Tag as string, () => tsmi.Checked = true);
                 cMenuTrackSelectorPaletteTool.DropDownItems.Add(tsmi);
 
                 // cMenuPiano
-				PaletteToolMenuItem tsmi2 = ApplicationUIHost.Create<PaletteToolMenuItem> (id);
+				PaletteToolMenuItem tsmi2 = ApplicationUIHost.Create<PaletteToolMenuItem> ();
+				tsmi2.PaletteToolId = id;
                 tsmi2.Text = name;
                 tsmi2.ToolTipText = desc;
 				tsmi2.Click += (o, e) => model.RunStripPaletteToolSelected (tsmi2.Tag as string, () => tsmi2.Checked = true);
@@ -1758,7 +1760,8 @@ namespace Cadencii.Application.Forms
 
                 // menuSettingPaletteTool
                 if (ipt.hasDialog()) {
-					PaletteToolMenuItem tsmi3 = ApplicationUIHost.Create<PaletteToolMenuItem> (id);
+					PaletteToolMenuItem tsmi3 = ApplicationUIHost.Create<PaletteToolMenuItem> ();
+					tsmi3.PaletteToolId = id;
                     tsmi3.Text = name;
 					tsmi3.Click += (o,e) => model.OtherItems.handleSettingPaletteTool ((PaletteToolMenuItem) o);
                     menuSettingPaletteTool.DropDownItems.Add(tsmi3);
@@ -2929,7 +2932,7 @@ namespace Cadencii.Application.Forms
             foreach (var tsi in cMenuTrackSelectorPaletteTool.DropDownItems) {
                 if (tsi is PaletteToolMenuItem) {
                     PaletteToolMenuItem tsmi = (PaletteToolMenuItem)tsi;
-                    string id = tsmi.getPaletteToolID();
+                    string id = tsmi.PaletteToolId;
                     bool sel = false;
 #if ENABLE_SCRIPT
                     if (tool == EditTool.PALETTE_TOOL) {
@@ -2943,7 +2946,7 @@ namespace Cadencii.Application.Forms
             foreach (var tsi in cMenuPianoPaletteTool.DropDownItems) {
                 if (tsi is PaletteToolMenuItem) {
                     PaletteToolMenuItem tsmi = (PaletteToolMenuItem)tsi;
-                    string id = tsmi.getPaletteToolID();
+                    string id = tsmi.PaletteToolId;
                     bool sel = false;
 #if ENABLE_SCRIPT
                     if (tool == EditTool.PALETTE_TOOL) {

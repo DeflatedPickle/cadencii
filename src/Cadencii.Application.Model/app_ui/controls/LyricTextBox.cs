@@ -6,15 +6,11 @@ namespace Cadencii.Application.Controls
 {
 	public interface LyricTextBox : UiTextBox
 	{
-		void setPhoneticSymbolEditMode (bool b);
+		bool IsPhoneticSymbolEditMode { get; set; }
 
-		void setBufferText (string phrase);
+		string BufferText { get; set; }
 
-		string getBufferText ();
-
-		bool isPhoneticSymbolEditMode ();
-
-		PictPianoRoll Parent {
+		PictPianoRoll ParentPianoRoll {
 			get;
 			set;
 		}

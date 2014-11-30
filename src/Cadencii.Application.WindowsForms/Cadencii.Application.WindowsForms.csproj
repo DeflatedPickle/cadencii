@@ -102,7 +102,6 @@
     <Compile Include="app_ui\controls\RebarBandCollectionImpl.cs" />
     <Compile Include="app_ui\controls\RebarBandImpl.cs" />
     <Compile Include="app_ui\controls\RebarImpl.cs" />
-    <Compile Include="app_ui\controls\RecentFileMenuItemImpl.cs" />
     <Compile Include="app_ui\controls\TrackSelectorImpl.cs" />
     <Compile Include="app_ui\controls\VolumeTrackerImpl.cs" />
     <Compile Include="app_ui\controls\WaveViewImpl.cs" />
@@ -141,15 +140,6 @@
     </Compile>
     <Compile Include="app_ui\forms\PreferenceImpl.cs" />
     <Compile Include="app_ui\forms\VersionInfoImpl.cs" />
-    <Compile Include="app_ui\controls\PaletteToolMenuItemImpl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="app_ui\controls\BgmMenuItemImpl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="app_ui\controls\TrackSelectorSingerDropdownMenuItemImpl.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="app_ui\controls\TrackSelectorSingerPopupMenuImpl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -177,6 +167,16 @@
     </EmbeddedResource>
     <Compile Include="app_ui\controls\WaveformZoomUiImpl.cs" />
     <Compile Include="app_ui\forms\UpdateCheckFormImpl.cs" />
+    <Compile Include="app_ui\controls\menu\BgmMenuItemImpl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="app_ui\controls\menu\RecentFileMenuItemImpl.cs" />
+    <Compile Include="app_ui\controls\menu\PaletteToolMenuItemImpl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="app_ui\controls\menu\TrackSelectorSingerDropdownMenuItemImpl.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />
@@ -502,6 +502,7 @@
     <Folder Include="po\" />
     <Folder Include="gui_fx_extended\" />
     <Folder Include="app_ui\" />
+    <Folder Include="app_ui\controls\menu\" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

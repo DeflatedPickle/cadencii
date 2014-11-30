@@ -249,7 +249,7 @@ namespace Cadencii.Application.Models
 						pos, parent.mLastSymbolEditMode);
 					parent.form.refreshScreen();
 				} else if (input_enabled) {
-					if (EditorManager.InputTextBox.isPhoneticSymbolEditMode()) {
+					if (EditorManager.InputTextBox.IsPhoneticSymbolEditMode) {
 						parent.FlipInputTextBoxMode();
 					}
 				}

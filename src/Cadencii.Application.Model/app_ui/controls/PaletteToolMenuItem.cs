@@ -5,7 +5,7 @@ namespace Cadencii.Application.Controls
 {
 	public interface PaletteToolMenuItem : UiToolStripMenuItem
 	{
-		string getPaletteToolID();
+		string PaletteToolId { get; set; }
 	}
 }
 

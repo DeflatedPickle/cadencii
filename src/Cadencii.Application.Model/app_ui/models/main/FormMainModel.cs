@@ -1200,10 +1200,11 @@ namespace Cadencii.Application.Models
 				// こうしておくと，menuSettingShortcut_Clickで，スクリプトのメニューが
 				// menuScriptの子だと自動で認識される
 				string name = "menuScript" + id.Replace('.', '_');
-				PaletteToolMenuItem item = ApplicationUIHost.Create<PaletteToolMenuItem> (id);
+				PaletteToolMenuItem item = ApplicationUIHost.Create<PaletteToolMenuItem> ();
+				item.PaletteToolId = id;
 				item.Text = display;
 				item.Name = name;
-				item.Click += (o, e) => ScriptMenu.RunScriptMenuItemCommand (item.getPaletteToolID ());
+				item.Click += (o, e) => ScriptMenu.RunScriptMenuItemCommand (item.PaletteToolId);
 				form.menuScript.DropDownItems.Add(item);
 				count++;
 			}
@@ -1341,14 +1342,14 @@ namespace Cadencii.Application.Models
 		public void FlipInputTextBoxMode()
 		{
 			string new_value = EditorManager.InputTextBox.Text;
-			if (!EditorManager.InputTextBox.isPhoneticSymbolEditMode()) {
+			if (!EditorManager.InputTextBox.IsPhoneticSymbolEditMode) {
 				EditorManager.InputTextBox.BackColor = ColorTextboxBackcolor;
 			} else {
 				EditorManager.InputTextBox.BackColor = Colors.White;
 			}
-			EditorManager.InputTextBox.Text = EditorManager.InputTextBox.getBufferText();
-			EditorManager.InputTextBox.setBufferText(new_value);
-			EditorManager.InputTextBox.setPhoneticSymbolEditMode(!EditorManager.InputTextBox.isPhoneticSymbolEditMode());
+			EditorManager.InputTextBox.Text = EditorManager.InputTextBox.BufferText;
+			EditorManager.InputTextBox.BufferText = new_value;
+			EditorManager.InputTextBox.IsPhoneticSymbolEditMode = (!EditorManager.InputTextBox.IsPhoneticSymbolEditMode);
 		}
 
 		/// <summary>
@@ -1580,7 +1581,7 @@ namespace Cadencii.Application.Models
 			foreach (var item in form.cMenuPianoPaletteTool.DropDownItems) {
 				if (item is PaletteToolMenuItem) {
 					PaletteToolMenuItem menu = (PaletteToolMenuItem)item;
-					string tagged_id = menu.getPaletteToolID();
+					string tagged_id = menu.PaletteToolId;
 					menu.Checked = (id == tagged_id);
 				}
 			}
@@ -1591,7 +1592,7 @@ namespace Cadencii.Application.Models
 			foreach (var item in form.cMenuTrackSelectorPaletteTool.DropDownItems) {
 				if (item is PaletteToolMenuItem) {
 					PaletteToolMenuItem menu = (PaletteToolMenuItem)item;
-					string tagged_id = menu.getPaletteToolID();
+					string tagged_id = menu.PaletteToolId;
 					menu.Checked = (id == tagged_id);
 				}
 			}
@@ -1771,13 +1772,13 @@ namespace Cadencii.Application.Models
 			EditorManager.InputTextBox.ImeModeChanged += InputTextBox.mInputTextBox_ImeModeChanged;
 			EditorManager.InputTextBox.ImeMode = mLastIsImeModeOn ? ImeMode.Hiragana : ImeMode.Off;
 			if (phonetic_symbol_edit_mode) {
-				EditorManager.InputTextBox.setBufferText(phrase);
-				EditorManager.InputTextBox.setPhoneticSymbolEditMode(true);
+				EditorManager.InputTextBox.BufferText = phrase;
+				EditorManager.InputTextBox.IsPhoneticSymbolEditMode = true;
 				EditorManager.InputTextBox.Text = phonetic_symbol;
 				EditorManager.InputTextBox.BackColor = FormMainModel.ColorTextboxBackcolor;
 			} else {
-				EditorManager.InputTextBox.setBufferText(phonetic_symbol);
-				EditorManager.InputTextBox.setPhoneticSymbolEditMode(false);
+				EditorManager.InputTextBox.BufferText = phonetic_symbol;
+				EditorManager.InputTextBox.IsPhoneticSymbolEditMode = false;
 				EditorManager.InputTextBox.Text = phrase;
 				EditorManager.InputTextBox.BackColor = Colors.White;
 			}
@@ -1785,7 +1786,7 @@ namespace Cadencii.Application.Models
 			var p = new Cadencii.Gui.Point(position.X + 4, position.Y + 2);
 			EditorManager.InputTextBox.Location = p;
 
-			EditorManager.InputTextBox.Parent = form.pictPianoRoll;
+			EditorManager.InputTextBox.ParentPianoRoll = form.pictPianoRoll;
 			EditorManager.InputTextBox.Enabled = true;
 			EditorManager.InputTextBox.Visible = true;
 			EditorManager.InputTextBox.Focus();
@@ -1797,9 +1798,9 @@ namespace Cadencii.Application.Models
 			EditorManager.InputTextBox.KeyUp -= InputTextBox.mInputTextBox_KeyUp;
 			EditorManager.InputTextBox.KeyDown -= InputTextBox.mInputTextBox_KeyDown;
 			EditorManager.InputTextBox.ImeModeChanged -= InputTextBox.mInputTextBox_ImeModeChanged;
-			mLastSymbolEditMode = EditorManager.InputTextBox.isPhoneticSymbolEditMode();
+			mLastSymbolEditMode = EditorManager.InputTextBox.IsPhoneticSymbolEditMode;
 			EditorManager.InputTextBox.Visible = false;
-			EditorManager.InputTextBox.Parent = null;
+			EditorManager.InputTextBox.ParentPianoRoll = null;
 			EditorManager.InputTextBox.Enabled = false;
 			form.pictPianoRoll.Focus();
 		}
@@ -1816,7 +1817,7 @@ namespace Cadencii.Application.Models
 				return;
 			}
 			SelectedEventEntry last_selected_event = EditorManager.itemSelection.getLastEvent();
-			bool phonetic_symbol_edit_mode = EditorManager.InputTextBox.isPhoneticSymbolEditMode();
+			bool phonetic_symbol_edit_mode = EditorManager.InputTextBox.IsPhoneticSymbolEditMode;
 
 			int selected = EditorManager.Selected;
 			VsqFileEx vsq = MusicManager.getVsqFile();
@@ -1907,7 +1908,7 @@ namespace Cadencii.Application.Models
 				(!phonetic_symbol_edit_mode && phrase[0] != original_phrase[0])) {
 				if (phonetic_symbol_edit_mode) {
 					// 発音記号を編集するモード
-					phrase[0] = EditorManager.InputTextBox.getBufferText();
+					phrase[0] = EditorManager.InputTextBox.BufferText;
 					phonetic_symbol[0] = EditorManager.InputTextBox.Text;
 
 					// 入力された発音記号のうち、有効なものだけをピックアップ

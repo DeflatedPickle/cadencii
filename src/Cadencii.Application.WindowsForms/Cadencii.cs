@@ -70,8 +70,8 @@ namespace Cadencii.Application.Forms
 			PortUtil.SetApplicationStartupPath(System.Windows.Forms.Application.StartupPath);
 			Cadencii.Gui.AwtHost.Current = new Cadencii.Gui.AwtHostWindowsForms ();
 			cadencii.dsp.DspUIHost.CurrentType = typeof (cadencii.dsp.winforms.DspUIHostWF);
-			App.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
-            Thread.GetDomain().UnhandledException += new UnhandledExceptionEventHandler(Cadencii_UnhandledException);
+			//App.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
+            //Thread.GetDomain().UnhandledException += new UnhandledExceptionEventHandler(Cadencii_UnhandledException);
 
             App.EnableVisualStyles();
             App.SetCompatibleTextRenderingDefault(false);
