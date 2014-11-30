@@ -36,6 +36,16 @@ namespace Cadencii.Application.Forms
 
 		#region XML Control Tree support
 
+		object FindControlTreeItem (Dictionary<string,object> roots, string name)
+		{
+			object dummy;
+
+			return roots.TryGetValue (name, out dummy) ? dummy : roots.Where (p => p.Value is Control)
+				.Select (p => (Control) p.Value)
+				.Select (c => FindControlTreeItem (c, name))
+				.FirstOrDefault (c => c != null);
+		}
+
 		object FindControlTreeItem (Control c, string name)
 		{
 			if (c.Name == name)
@@ -48,7 +58,7 @@ namespace Cadencii.Application.Forms
 		Func<Type,string, object> get_static_property = (type,value) => type.GetProperty (value.Contains ('.') ? value.Substring (value.IndexOf ('.') + 1) : value.Substring (1)).GetValue (null);
 		Func<Type,string, object> get_static_field = (type,value) => type.GetField (value.Contains ('.') ? value.Substring (value.IndexOf ('.') + 1) : value.Substring (1)).GetValue (null);
 
-		object Deserialize (Control root, string value, Type t)
+		object Deserialize (Dictionary<string,object> roots, string value, Type t)
 		{
 			if (value.FirstOrDefault () == '$') {
 				if (t == typeof (System.Drawing.Color)) {
@@ -72,17 +82,20 @@ namespace Cadencii.Application.Forms
 				return Enum.ToObject (t, value.Split ('\'')
 					.Select (s => s.Trim ())
 					.Select (s => Enum.Parse (t, s))
-					.Select (e => Convert.ChangeType (e, typeof (int)))
+					.Select (e => Convert.ChangeType (e, typeof(int)))
 					.Cast<int> ()
 					.Sum ());
 			else if (Type.GetTypeCode (t) != TypeCode.Object)
 				return Convert.ChangeType (value, t);
-			else if (value.FirstOrDefault () == '#')
-				return FindControlTreeItem (root, value.Substring (1));
-			else {
+			else if (value.FirstOrDefault () == '#') {
+				var ctrl = FindControlTreeItem (roots, value.Substring (1));
+				if (ctrl == null)
+					throw new Exception ("Control not found: " + value);
+				return ctrl;
+			} else {
 				var argStrings = value.TrimStart ('(').TrimEnd (')').Split (',').Select (x => x.Trim ()).ToArray ();
 				var ctor = t.GetConstructors ().First (c => c.GetParameters ().Length == argStrings.Length);
-				var argObjs = argStrings.Zip (ctor.GetParameters (), (s, pi) => Deserialize (root, s, pi.ParameterType)).ToArray ();
+				var argObjs = argStrings.Zip (ctor.GetParameters (), (s, pi) => Deserialize (roots, s, pi.ParameterType)).ToArray ();
 				return Activator.CreateInstance (t, argObjs);
 			}
 		}
@@ -99,21 +112,22 @@ namespace Cadencii.Application.Forms
 			c.GetType ().GetMethods ().First (m => m.Name == "Add" && m.GetParameters ().First ().ParameterType.IsAssignableFrom (obj.GetType ())).Invoke (c, new object [] { obj });
 		}
 
-		void ApplyXml (Control root, XmlElement e, object o, bool asCollection)
+		void ApplyXml (Dictionary<string,object> roots, XmlElement e, object o, bool asCollection)
 		{
 			var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
+			var root = roots.Values.First (c => c is Form);
 			foreach (XmlElement c in e.SelectNodes ("*")) {
 				if (c.LocalName.First () == '_') {
 					// get property, can be collection ("MenuStrip.Items") or non-collection ("SplitContainer.Panel1")
 					var pv = o.GetType ().GetProperty (c.LocalName.Substring (1), bf).GetValue (o);
-					ApplyXml (root, c, pv, pv is System.Collections.ICollection);
+					ApplyXml (roots, c, pv, pv is System.Collections.ICollection);
 				} else {
 					object obj;
 					if (c.LocalName.Contains ('.')) {
 						// special cases
 						switch (c.LocalName) {
 						case "ListViewGroup.WithConstructorArguments":
-							obj = Deserialize (root, c.InnerText, typeof (ListViewGroup));
+							obj = Deserialize (roots, c.InnerText, typeof (ListViewGroup));
 							break;
 						default:
 							throw new NotImplementedException ();
@@ -138,7 +152,7 @@ namespace Cadencii.Application.Forms
 						((Control) o).Controls.Add ((Control) obj);
 
 					if (!(obj is string))
-						ApplyXml (root, c, obj, false);
+						ApplyXml (roots, c, obj, false);
 
 					if (isi != null)
 						((ISupportInitialize) obj).EndInit ();
@@ -166,7 +180,7 @@ namespace Cadencii.Application.Forms
 					var p = t.GetProperty (a.LocalName);
 					if (p == null)
 						throw new ArgumentException ("Property '" + a.LocalName + "' was not found");
-					var v = Deserialize (root, a.Value, p.PropertyType);
+					var v = Deserialize (roots, a.Value, p.PropertyType);
 					p.SetValue (o, v);
 				}
 			}
@@ -176,20 +190,23 @@ namespace Cadencii.Application.Forms
 		{
 			var xml = new XmlDocument ();
 			xml.Load (typeof (FormMainModel).Assembly.GetManifestResourceStream (xmlResourceName));
+			var roots = new Dictionary<string,object> ();
+			roots.Add (string.Empty, (Control) control.Native);
 			if (xml.DocumentElement.LocalName == "Widgets") {
 				foreach (XmlElement el in xml.DocumentElement.SelectNodes ("*")) {
 					if (el.LocalName == "Form")
-						ApplyXml ((Control) control.Native, el, control, false);
+						ApplyXml (roots, el, control, false);
 					else if (el.LocalName == "____UNKNOWN____")
 						continue; // skip
 					else {
 						var obj = el.GetAttribute ("use-default-constructor") == "true" ? CreateObject (el.LocalName) : CreateObject (el.LocalName, ((UiForm) control).Components);
-						ApplyXml ((Control) control.Native, el, obj, false);
+						ApplyXml (roots, el, obj, false);
+						roots.Add (el.GetAttribute ("id"), obj);
 					}
 				}
 			}
 			else
-				ApplyXml ((Control) control.Native, xml.DocumentElement, control, false);
+				ApplyXml (roots, xml.DocumentElement, control, false);
 		}
 
 		#endregion

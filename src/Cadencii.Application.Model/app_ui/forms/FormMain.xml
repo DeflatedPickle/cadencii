@@ -1,4 +1,25 @@
 ﻿<Widgets>
+    <!-- ToolBars in Rebar use these as ImageList -->
+    <UiImageList id="imageListFile"
+
+            TransparentColor = "$Transparent"
+            />
+
+    <UiImageList id="imageListPosition"
+
+            TransparentColor = "$Transparent"
+            />
+
+    <UiImageList id="imageListMeasure"
+
+            TransparentColor = "$Transparent"
+            />
+
+    <UiImageList id="imageListTool"
+
+            TransparentColor = "$Transparent"
+            />
+
 	<Form id="FormMain"
 
 	            AllowDrop = "true"
@@ -319,7 +340,7 @@
 		            Divider = "false"
 		            Dock = "None"
 		            DropDownArrows = "true"
-		            ImageList = "#imageListFile"
+		            UiImageList = "#imageListFile"
             Location = "(11, 2)"
 		            Name = "toolBarFile"
 		            ShowToolTips = "true"
@@ -404,7 +425,7 @@
 		            Divider = "false"
 		            Dock = "None"
 		            DropDownArrows = "true"
-		            ImageList = "#imageListPosition"
+		            UiImageList = "#imageListPosition"
             Location = "(11, 32)"
 		            Name = "toolBarPosition"
 		            ShowToolTips = "true"
@@ -475,7 +496,7 @@
 		            Divider = "false"
 		            Dock = "None"
 		            DropDownArrows = "true"
-		            ImageList = "#imageListMeasure"
+		            UiImageList = "#imageListMeasure"
             Location = "(11, 62)"
 		            Name = "toolBarMeasure"
 		            ShowToolTips = "true"
@@ -519,7 +540,7 @@
 		            Divider = "false"
 		            Dock = "None"
 		            DropDownArrows = "true"
-		            ImageList = "#imageListTool"
+		            UiImageList = "#imageListTool"
             Location = "(11, 92)"
 		            Name = "toolBarTool"
 		            ShowToolTips = "true"
@@ -1888,27 +1909,6 @@
 	            />
         </_MenuItems>
     </UiContextMenu>
-
-    <!-- ToolBars in Rebar use these as ImageList -->
-    <UiImageList id="imageListFile"
-
-            TransparentColor = "$Transparent"
-            />
-
-    <UiImageList id="imageListPosition"
-
-            TransparentColor = "$Transparent"
-            />
-
-    <UiImageList id="imageListMeasure"
-
-            TransparentColor = "$Transparent"
-            />
-
-    <UiImageList id="imageListTool"
-
-            TransparentColor = "$Transparent"
-            />
 
     <!-- programmatically instantiated and shown -->
     <UiContextMenuStrip id="cMenuPiano"

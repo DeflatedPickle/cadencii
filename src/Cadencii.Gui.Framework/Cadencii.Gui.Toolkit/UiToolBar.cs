@@ -21,7 +21,7 @@ namespace Cadencii.Gui.Toolkit
 			set;
 		}
 
-		UiImageList ImageList {
+		UiImageList UiImageList {
 			get;
 			set;
 		}

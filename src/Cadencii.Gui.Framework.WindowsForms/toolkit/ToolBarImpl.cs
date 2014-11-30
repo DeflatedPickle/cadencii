@@ -41,7 +41,7 @@ namespace Cadencii.Gui.Toolkit
 			set { TextAlign = (System.Windows.Forms.ToolBarTextAlign) value; }
 		}
 
-		UiImageList UiToolBar.ImageList {
+		public UiImageList UiImageList {
 			get { return image_list; }
 			set {
 				image_list = value;
