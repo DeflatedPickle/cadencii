@@ -451,6 +451,12 @@ namespace Cadencii.Application.Controls
         }
 
         #region UI Impl for C#
+
+		public new bool DoubleBuffered {
+			get { return base.DoubleBuffered; }
+			set { base.DoubleBuffered = value; }
+		}
+
         /// <summary> 
         /// 必要なデザイナ変数です。
         /// </summary>
@@ -476,122 +482,8 @@ namespace Cadencii.Application.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            this.trackFeder = new TrackBar();
-            this.trackPanpot = new TrackBar();
-            this.txtPanpot = new TextBox();
-            this.lblTitle = new Label();
-            this.txtFeder = new TextBox();
-            this.chkMute = new CheckBox();
-            this.chkSolo = new CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.trackFeder)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackPanpot)).BeginInit();
             this.SuspendLayout();
-            // 
-            // trackFeder
-            // 
-            this.trackFeder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackFeder.AutoSize = false;
-            this.trackFeder.Location = new System.Drawing.Point(21, 58);
-            this.trackFeder.Maximum = 151;
-            this.trackFeder.Minimum = 26;
-            this.trackFeder.Name = "trackFeder";
-            this.trackFeder.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackFeder.Size = new System.Drawing.Size(45, 144);
-            this.trackFeder.TabIndex = 0;
-            this.trackFeder.TickFrequency = 10;
-            this.trackFeder.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.trackFeder.Value = 100;
-            // 
-            // trackPanpot
-            // 
-            this.trackPanpot.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackPanpot.AutoSize = false;
-            this.trackPanpot.Location = new System.Drawing.Point(3, 208);
-            this.trackPanpot.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.trackPanpot.Maximum = 64;
-            this.trackPanpot.Minimum = -64;
-            this.trackPanpot.Name = "trackPanpot";
-            this.trackPanpot.Size = new System.Drawing.Size(79, 21);
-            this.trackPanpot.TabIndex = 2;
-            this.trackPanpot.TickStyle = System.Windows.Forms.TickStyle.None;
-            // 
-            // txtPanpot
-            // 
-            this.txtPanpot.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPanpot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.txtPanpot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPanpot.Location = new System.Drawing.Point(10, 229);
-            this.txtPanpot.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.txtPanpot.Name = "txtPanpot";
-            this.txtPanpot.Size = new System.Drawing.Size(65, 19);
-            this.txtPanpot.TabIndex = 3;
-            this.txtPanpot.Text = "0";
-            this.txtPanpot.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.BackColor = System.Drawing.Color.White;
-            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblTitle.Location = new System.Drawing.Point(0, 261);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(0);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(85, 23);
-            this.lblTitle.TabIndex = 4;
-            this.lblTitle.Text = "TITLE";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtFeder
-            // 
-            this.txtFeder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFeder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.txtFeder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFeder.Location = new System.Drawing.Point(3, 33);
-            this.txtFeder.Name = "txtFeder";
-            this.txtFeder.Size = new System.Drawing.Size(79, 19);
-            this.txtFeder.TabIndex = 5;
-            this.txtFeder.Text = "0";
-            this.txtFeder.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // chkMute
-            // 
-            this.chkMute.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chkMute.Location = new System.Drawing.Point(4, 5);
-            this.chkMute.Name = "chkMute";
-            this.chkMute.Size = new System.Drawing.Size(22, 22);
-            this.chkMute.TabIndex = 6;
-            this.chkMute.Text = "M";
-            this.chkMute.UseVisualStyleBackColor = true;
-            // 
-            // chkSolo
-            // 
-            this.chkSolo.Appearance = System.Windows.Forms.Appearance.Button;
-            this.chkSolo.Location = new System.Drawing.Point(28, 5);
-            this.chkSolo.Name = "chkSolo";
-            this.chkSolo.Size = new System.Drawing.Size(22, 22);
-            this.chkSolo.TabIndex = 7;
-            this.chkSolo.Text = "S";
-            this.chkSolo.UseVisualStyleBackColor = true;
-            // 
-            // VolumeTracker
-            // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.Controls.Add(this.chkSolo);
-            this.Controls.Add(this.chkMute);
-            this.Controls.Add(this.txtFeder);
-            this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.txtPanpot);
-            this.Controls.Add(this.trackPanpot);
-            this.Controls.Add(this.trackFeder);
-            this.DoubleBuffered = true;
-            this.Name = "VolumeTracker";
-            this.Size = new System.Drawing.Size(85, 284);
-            ((System.ComponentModel.ISupportInitialize)(this.trackFeder)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackPanpot)).EndInit();
+			ApplicationUIHost.Instance.ApplyXml (this, "VolumeTracker.xml");
             this.ResumeLayout(false);
             this.PerformLayout();
 

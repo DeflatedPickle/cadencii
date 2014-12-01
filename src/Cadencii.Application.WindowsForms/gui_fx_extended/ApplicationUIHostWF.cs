@@ -115,7 +115,7 @@ namespace Cadencii.Application.Forms
 		void ApplyXml (Dictionary<string,object> roots, XmlElement e, object o, bool asCollection)
 		{
 			var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
-			var root = roots.Values.First (c => c is Form);
+			var root = roots.Count > 1 ? roots.Values.First (c => c is Form) : roots.Values.First ();
 			foreach (XmlElement c in e.SelectNodes ("*")) {
 				if (c.LocalName.First () == '_') {
 					// get property, can be collection ("MenuStrip.Items") or non-collection ("SplitContainer.Panel1")

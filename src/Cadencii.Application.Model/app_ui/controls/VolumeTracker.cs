@@ -12,6 +12,8 @@ namespace Cadencii.Application.Controls
 
 	public interface VolumeTracker : UiUserControl, IAmplifierView
 	{
+		bool DoubleBuffered { get; set; }
+
 		int getTrack ();
 
 		void setLocation (int i, int i2);

@@ -445,5 +445,9 @@
       <LogicalName>FormMain.xml</LogicalName>
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\controls\VolumeTracker.xml">
+      <LogicalName>VolumeTracker.xml</LogicalName>
+      <DependentUpon>VolumeTracker.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
