@@ -64,6 +64,11 @@ namespace Cadencii.Gui.Toolkit
 
 		// UiControl
 
+		Cursor UiControl.Cursor {
+			get { return this.Cursor.ToAwt (); }
+			set { Cursor = value.ToNative (); }
+		}
+
 		IList<UiControl> UiControl.Controls {
 			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Items, null, null); }
 		}
@@ -73,16 +78,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.SizeChanged -= value; }
 		}
 
-		void UiControl.AddControl (UiControl child)
-		{
-			Controls.Add ((System.Windows.Forms.Control) child.Native);
-		}
-
-		void UiControl.ClearControls ()
-		{
-			Controls.Clear ();
-		}
-	
 		object UiControl.Native {
 			get { return this; }
 		}

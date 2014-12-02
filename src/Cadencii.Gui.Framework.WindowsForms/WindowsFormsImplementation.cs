@@ -31,6 +31,7 @@ namespace Cadencii.Gui
 		{
 			Cursors.Default = System.Windows.Forms.Cursors.Default.ToAwt ();
 			//Cursors.Hand = System.Windows.Forms.Cursors.Hand.ToAwt ();
+			Cursors.HSplit = System.Windows.Forms.Cursors.HSplit.ToAwt ();
 			Cursors.VSplit = System.Windows.Forms.Cursors.VSplit.ToAwt ();
 			Cursors.NoMoveHoriz = System.Windows.Forms.Cursors.NoMoveHoriz.ToAwt ();
 

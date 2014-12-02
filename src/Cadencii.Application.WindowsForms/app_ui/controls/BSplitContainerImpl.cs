@@ -13,29 +13,19 @@
  */
 using System;
 using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
 using cadencii;
 
 using AnchorStyles = Cadencii.Gui.Toolkit.AnchorStyles;
 using UiControl = Cadencii.Gui.Toolkit.UiControl;
 using Orientation = Cadencii.Gui.Toolkit.Orientation;
+using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application.Controls
 {
     [Serializable]
 	public partial class BSplitContainerImpl : Cadencii.Gui.Toolkit.ContainerControlImpl, BSplitContainer
     {
-		Cadencii.Gui.Toolkit.FixedPanel BSplitContainer.FixedPanel {
-			get { return (Cadencii.Gui.Toolkit.FixedPanel)FixedPanel; }
-			set { FixedPanel = (System.Windows.Forms.FixedPanel)value; }
-		}
-
-		void BSplitContainer.AddControl (UiControl child)
-		{
-			Controls.Add ((Control) child.Native);
-		}
-
 		Cadencii.Gui.Dimension BSplitContainer.MinimumSize {
 			get { return MinimumSize.ToAwt (); }
 			set { MinimumSize = value.ToWF (); }
@@ -72,28 +62,21 @@ namespace Cadencii.Application.Controls
         private int m_splitter_width = 4;
         private bool m_splitter_moving = false;
         private int m_splitter_distance_draft = 50;
-        private BSplitterPanel m_panel1;
-        private BSplitterPanel m_panel2;
         private System.ComponentModel.IContainer components = null;
         private bool m_splitter_fixed = false;
-        private Pen m_panel1_border = null;
-        private Pen m_panel2_border = null;
-        private System.Windows.Forms.FixedPanel m_fixed_panel;
-        private PictureBox m_lbl_splitter;
+        private System.Drawing.Pen m_panel1_border = null;
+        private System.Drawing.Pen m_panel2_border = null;
+        private FixedPanel m_fixed_panel;
         private int m_panel2_distance = 1;
         private double m_distance_rate = 0.5;
-
-        public event SplitterEventHandler SplitterMoved;
-        [Browsable(false)]
-        public event ControlEventHandler ControlAdded;
 
         public BSplitContainerImpl()
         {
             InitializeComponent();
 			if (m_orientation == Cadencii.Gui.Toolkit.Orientation.Horizontal) {
-                m_lbl_splitter.Cursor = Cursors.VSplit;
+				Splitter.Cursor = Cadencii.Gui.Cursors.VSplit;
             } else {
-                m_lbl_splitter.Cursor = Cursors.HSplit;
+				Splitter.Cursor = Cadencii.Gui.Cursors.HSplit;
             }
 			if (m_orientation == Cadencii.Gui.Toolkit.Orientation.Horizontal) {
                 m_panel2_distance = this.Width - m_splitter_distance;
@@ -111,9 +94,9 @@ namespace Cadencii.Application.Controls
                 } else {
                     setDividerLocation(Height);
                 }
-                setSplitterFixed(true);
+                SplitterFixed = true;
             } else {
-                setSplitterFixed(false);
+                SplitterFixed = false;
             }
         }
 
@@ -121,13 +104,13 @@ namespace Cadencii.Application.Controls
         {
             if (value) {
                 setDividerLocation(0);
-                setSplitterFixed(true);
+                SplitterFixed = true;
             } else {
-                setSplitterFixed(false);
+                SplitterFixed = false;
             }
         }
 
-        public System.Windows.Forms.FixedPanel FixedPanel
+        public FixedPanel FixedPanel
         {
             get
             {
@@ -135,22 +118,22 @@ namespace Cadencii.Application.Controls
             }
             set
             {
-                System.Windows.Forms.FixedPanel old = m_fixed_panel;
+                var old = m_fixed_panel;
                 m_fixed_panel = value;
-                if (m_fixed_panel != FixedPanel.None && m_fixed_panel != old) {
-                    if (m_fixed_panel == FixedPanel.Panel1) {
-                        m_panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+				if (m_fixed_panel != Cadencii.Gui.Toolkit.FixedPanel.None && m_fixed_panel != old) {
+					if (m_fixed_panel == Cadencii.Gui.Toolkit.FixedPanel.Panel1) {
+                        Panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
                         if (m_orientation == Orientation.Vertical) {
-                            m_panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+                            Panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
                         } else {
-                            m_panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+							Panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
                         }
                     } else {
-                        m_panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+						Panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
                         if (m_orientation == Orientation.Vertical) {
-                            m_panel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+							Panel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
                         } else {
-                            m_panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+							Panel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
                         }
                     }
                 }
@@ -167,25 +150,15 @@ namespace Cadencii.Application.Controls
             {
                 m_splitter_fixed = value;
                 if (m_splitter_fixed) {
-                    m_lbl_splitter.Cursor = Cursors.Default;
+                    Splitter.Cursor = Cursors.Default;
                 } else {
                     if (m_orientation == Orientation.Horizontal) {
-                        m_lbl_splitter.Cursor = Cursors.VSplit;
+                        Splitter.Cursor = Cursors.VSplit;
                     } else {
-                        m_lbl_splitter.Cursor = Cursors.HSplit;
+                        Splitter.Cursor = Cursors.HSplit;
                     }
                 }
             }
-        }
-
-        public bool isSplitterFixed()
-        {
-            return this.SplitterFixed;
-        }
-
-        public void setSplitterFixed(bool value)
-        {
-            this.SplitterFixed = value;
         }
 
         /// <summary> 
@@ -210,13 +183,13 @@ namespace Cadencii.Application.Controls
 			ApplicationUIHost.Instance.ApplyXml (this, "BSplitContainer.xml");
             this.ResumeLayout(false);
 
-			m_lbl_splitter.MouseMove += new System.Windows.Forms.MouseEventHandler (m_lbl_splitter_MouseMove);
-			m_lbl_splitter.MouseDown += new System.Windows.Forms.MouseEventHandler (m_lbl_splitter_MouseDown);
-			m_lbl_splitter.MouseUp += new System.Windows.Forms.MouseEventHandler (m_lbl_splitter_MouseUp);
-			m_panel2.BorderStyleChanged += new System.EventHandler (m_panel2_BorderStyleChanged);
-			m_panel2.SizeChanged += new System.EventHandler (m_panel2_SizeChanged);
-			m_panel1.BorderStyleChanged += new System.EventHandler (m_panel1_BorderStyleChanged);
-			m_panel1.SizeChanged += new System.EventHandler (m_panel1_SizeChanged);
+			Splitter.MouseMove += m_lbl_splitter_MouseMove;
+			Splitter.MouseDown += m_lbl_splitter_MouseDown;
+			Splitter.MouseUp += m_lbl_splitter_MouseUp;
+			Panel2.BorderStyleChanged += m_panel2_BorderStyleChanged;
+			Panel2.SizeChanged += m_panel2_SizeChanged;
+			Panel1.BorderStyleChanged += m_panel1_BorderStyleChanged;
+			Panel1.SizeChanged += m_panel1_SizeChanged;
 			this.Paint += (o, e) => this.SplitContainerEx_Paint (o, new Cadencii.Gui.Toolkit.PaintEventArgs () { Graphics = new Cadencii.Gui.Graphics () { NativeGraphics = e.Graphics } });
         }
 
@@ -224,46 +197,46 @@ namespace Cadencii.Application.Controls
         {
             bool panel1_visible = true;
             if (Orientation == Cadencii.Gui.Toolkit.Orientation.Horizontal) {
-                if (m_panel1.Width == 0) {
+				if (Panel1.Width == 0) {
                     panel1_visible = false;
                 }
             } else {
-                if (m_panel1.Height == 0) {
+				if (Panel1.Height == 0) {
                     panel1_visible = false;
                 }
             }
-            if (m_panel1.BorderStyle == Cadencii.Gui.Toolkit.BorderStyle.FixedSingle && panel1_visible) {
+			if (Panel1.BorderStyle == Cadencii.Gui.Toolkit.BorderStyle.FixedSingle && panel1_visible) {
                 if (m_panel1_border == null) {
-                    m_panel1_border = new Pen(m_panel1.BorderColor.ToNative ());
+					m_panel1_border = new System.Drawing.Pen(Panel1.BorderColor.ToNative ());
                 } else {
-                    if (!m_panel1.BorderColor.Equals(m_panel1_border.Color)) {
-                        m_panel1_border = new Pen(m_panel1.BorderColor.ToNative ());
+					if (!Panel1.BorderColor.Equals(m_panel1_border.Color)) {
+						m_panel1_border = new System.Drawing.Pen(Panel1.BorderColor.ToNative ());
                     }
                 }
 				e.Graphics.drawRect(new Cadencii.Gui.Stroke () { NativePen = m_panel1_border },
-                                          new Cadencii.Gui.Rectangle(m_panel1.Left - 1, m_panel1.Top - 1, m_panel1.Width + 1, m_panel1.Height + 1));
+					new Cadencii.Gui.Rectangle(Panel1.Left - 1, Panel1.Top - 1, Panel1.Width + 1, Panel1.Height + 1));
             }
 
             bool panel2_visible = true;
             if (Orientation == Orientation.Horizontal) {
-                if (m_panel2.Width == 0) {
+                if (Panel2.Width == 0) {
                     panel2_visible = false;
                 }
             } else {
-                if (m_panel2.Height == 0) {
+                if (Panel2.Height == 0) {
                     panel2_visible = false;
                 }
             }
-            if (m_panel2.BorderStyle == Cadencii.Gui.Toolkit.BorderStyle.FixedSingle && panel2_visible) {
+            if (Panel2.BorderStyle == Cadencii.Gui.Toolkit.BorderStyle.FixedSingle && panel2_visible) {
                 if (m_panel2_border == null) {
-                    m_panel2_border = new Pen(m_panel2.BorderColor.ToNative ());
+                    m_panel2_border = new System.Drawing.Pen(Panel2.BorderColor.ToNative ());
                 } else {
-                    if (!m_panel2.BorderColor.Equals(m_panel2_border.Color)) {
-                        m_panel2_border = new Pen(m_panel2.BorderColor.ToNative ());
+                    if (!Panel2.BorderColor.Equals(m_panel2_border.Color)) {
+                        m_panel2_border = new System.Drawing.Pen(Panel2.BorderColor.ToNative ());
                     }
                 }
 				e.Graphics.drawRect(new Cadencii.Gui.Stroke () { NativePen = m_panel2_border },
-					new Cadencii.Gui.Rectangle(m_panel2.Left - 1, m_panel2.Top - 1, m_panel2.Width + 1, m_panel2.Height + 1));
+					new Cadencii.Gui.Rectangle(Panel2.Left - 1, Panel2.Top - 1, Panel2.Width + 1, Panel2.Height + 1));
             }
         }
 
@@ -279,12 +252,12 @@ namespace Cadencii.Application.Controls
 
         private void m_panel2_SizeChanged(object sender, EventArgs e)
         {
-            m_panel2.Invalidate(true);
+            Panel2.Invalidate(true);
         }
 
         private void m_panel1_SizeChanged(object sender, EventArgs e)
         {
-            m_panel1.Invalidate(true);
+			Panel1.Invalidate(true);
         }
 
         public int getPanel1MinSize()
@@ -368,9 +341,9 @@ namespace Cadencii.Application.Controls
 
         private bool UpdateLayout(int splitter_distance, int splitter_width, int panel1_min, int panel2_min, bool check_only)
         {
-            Point mouse = this.PointToClient(Control.MousePosition);
-            int pad1 = (m_panel1.BorderStyle == Cadencii.Gui.Toolkit.BorderStyle.FixedSingle) ? 1 : 0;
-            int pad2 = (m_panel2.BorderStyle == Cadencii.Gui.Toolkit.BorderStyle.FixedSingle) ? 1 : 0;
+			Cadencii.Gui.Point mouse = ((UiControl) this).PointToClient(Screen.Instance.GetScreenMousePosition ());
+			int pad1 = (Panel1.BorderStyle == Cadencii.Gui.Toolkit.BorderStyle.FixedSingle) ? 1 : 0;
+            int pad2 = (Panel2.BorderStyle == Cadencii.Gui.Toolkit.BorderStyle.FixedSingle) ? 1 : 0;
             if (m_orientation == Orientation.Horizontal) {
                 int p1 = splitter_distance;
                 if (p1 < 0) {
@@ -394,30 +367,28 @@ namespace Cadencii.Application.Controls
                     }
                 }
                 if (!check_only) {
-                    m_panel1.Left = pad1;
-                    m_panel1.Top = pad1;
-                    m_panel1.Width = (p1 - 2 * pad1 >= 0) ? (p1 - 2 * pad1) : 0;
-                    m_panel1.Height = (this.Height - 2 * pad1 >= 0) ? (this.Height - 2 * pad1) : 0;
+                    Panel1.Left = pad1;
+                    Panel1.Top = pad1;
+                    Panel1.Width = (p1 - 2 * pad1 >= 0) ? (p1 - 2 * pad1) : 0;
+                    Panel1.Height = (this.Height - 2 * pad1 >= 0) ? (this.Height - 2 * pad1) : 0;
 
-                    m_panel2.Left = p1 + splitter_width + pad2;
-                    m_panel2.Top = pad2;
-                    m_panel2.Width = (p2 - 2 * pad2 >= 0) ? (p2 - 2 * pad2) : 0;
-                    m_panel2.Height = (this.Height - 2 * pad2 >= 0) ? (this.Height - 2 * pad2) : 0;
+                    Panel2.Left = p1 + splitter_width + pad2;
+                    Panel2.Top = pad2;
+                    Panel2.Width = (p2 - 2 * pad2 >= 0) ? (p2 - 2 * pad2) : 0;
+                    Panel2.Height = (this.Height - 2 * pad2 >= 0) ? (this.Height - 2 * pad2) : 0;
 
                     m_splitter_distance = p1;
                     m_panel2_distance = this.Width - m_splitter_distance;
                     m_distance_rate = m_splitter_distance / (double)(m_splitter_distance + m_panel2_distance);
-                    if (SplitterMoved != null) {
-                        SplitterMoved(this, new SplitterEventArgs(mouse.X, mouse.Y, p1, 0));
-                    }
-                    m_splitter_width = splitter_width;
+
+					m_splitter_width = splitter_width;
                     m_panel1_min = panel1_min;
                     m_panel2_min = panel2_min;
 
-                    m_lbl_splitter.Left = p1;
-                    m_lbl_splitter.Top = 0;
-                    m_lbl_splitter.Width = splitter_width;
-                    m_lbl_splitter.Height = this.Height;
+                    Splitter.Left = p1;
+                    Splitter.Top = 0;
+                    Splitter.Width = splitter_width;
+                    Splitter.Height = this.Height;
                 }
             } else {
                 int p1 = splitter_distance;
@@ -442,30 +413,28 @@ namespace Cadencii.Application.Controls
                     }
                 }
                 if (!check_only) {
-                    m_panel1.Left = pad1;
-                    m_panel1.Top = pad1;
-                    m_panel1.Width = (this.Width - 2 * pad1 >= 0) ? (this.Width - 2 * pad1) : 0;
-                    m_panel1.Height = (p1 - 2 * pad1 >= 0) ? (p1 - 2 * pad1) : 0;
+                    Panel1.Left = pad1;
+                    Panel1.Top = pad1;
+                    Panel1.Width = (this.Width - 2 * pad1 >= 0) ? (this.Width - 2 * pad1) : 0;
+                    Panel1.Height = (p1 - 2 * pad1 >= 0) ? (p1 - 2 * pad1) : 0;
 
-                    m_panel2.Left = pad2;
-                    m_panel2.Top = p1 + splitter_width + pad2;
-                    m_panel2.Width = (this.Width - 2 * pad2 >= 0) ? (this.Width - 2 * pad2) : 0;
-                    m_panel2.Height = (p2 - 2 * pad2 >= 0) ? (p2 - 2 * pad2) : 0;
+                    Panel2.Left = pad2;
+                    Panel2.Top = p1 + splitter_width + pad2;
+                    Panel2.Width = (this.Width - 2 * pad2 >= 0) ? (this.Width - 2 * pad2) : 0;
+                    Panel2.Height = (p2 - 2 * pad2 >= 0) ? (p2 - 2 * pad2) : 0;
 
                     m_splitter_distance = p1;
                     m_panel2_distance = this.Height - m_splitter_distance;
                     m_distance_rate = m_splitter_distance / (double)(m_splitter_distance + m_panel2_distance);
-                    if (SplitterMoved != null) {
-                        SplitterMoved(this, new SplitterEventArgs(mouse.X, mouse.Y, 0, p1));
-                    }
-                    m_splitter_width = splitter_width;
+
+					m_splitter_width = splitter_width;
                     m_panel1_min = panel1_min;
                     m_panel2_min = panel2_min;
 
-                    m_lbl_splitter.Left = 0;
-                    m_lbl_splitter.Top = p1;
-                    m_lbl_splitter.Width = this.Width;
-                    m_lbl_splitter.Height = splitter_width;
+                    Splitter.Left = 0;
+                    Splitter.Top = p1;
+                    Splitter.Width = this.Width;
+                    Splitter.Height = splitter_width;
                 }
             }
             return true;
@@ -510,31 +479,21 @@ namespace Cadencii.Application.Controls
                     m_orientation = value;
                     UpdateLayout(m_splitter_distance, m_splitter_width, m_panel1_min, m_panel2_min, false);
                     if (m_orientation == Orientation.Horizontal) {
-                        m_lbl_splitter.Cursor = Cursors.VSplit;
+                        Splitter.Cursor = Cursors.VSplit;
                     } else {
-                        m_lbl_splitter.Cursor = Cursors.HSplit;
+                        Splitter.Cursor = Cursors.HSplit;
                     }
                 }
             }
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public BSplitterPanel Panel1
-        {
-            get
-            {
-                return m_panel1;
-            }
-        }
+		public BSplitterPanel Panel1 { get; private set; }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public BSplitterPanel Panel2
-        {
-            get
-            {
-                return m_panel2;
-            }
-        }
+		public BSplitterPanel Panel2 { get; private set; }
+
+		public Cadencii.Gui.Toolkit.UiPictureBox Splitter { get; private set; }
 
         public void setTopComponent(UiControl comp)
         {
@@ -548,14 +507,14 @@ namespace Cadencii.Application.Controls
 
         public void setRightComponent(UiControl comp)
         {
-            m_panel2.ClearControls();
-            m_panel2.AddControl(comp);
+			Panel2.Controls.Clear ();
+			Panel2.Controls.Add (comp);
         }
 
         public void setLeftComponent(UiControl comp)
         {
-            m_panel1.ClearControls();
-            m_panel1.AddControl(comp);
+			Panel1.Controls.Clear();
+			Panel1.Controls.Add(comp);
         }
 
         protected override void OnSizeChanged(EventArgs e)
@@ -596,9 +555,9 @@ namespace Cadencii.Application.Controls
             if (!m_splitter_fixed) {
                 m_splitter_moving = true;
                 m_splitter_distance_draft = m_splitter_distance;
-                this.Cursor = (m_orientation == Orientation.Horizontal) ? Cursors.VSplit : Cursors.HSplit;
-                m_lbl_splitter.BackColor = SystemColors.ControlDark;
-                m_lbl_splitter.BringToFront();
+				((UiControl) this).Cursor = (m_orientation == Orientation.Horizontal) ? Cursors.VSplit : Cursors.HSplit;
+				Splitter.BackColor = System.Drawing.SystemColors.ControlDark.ToAwt ();
+				((System.Windows.Forms.Control) Splitter).BringToFront();
             }
         }
 
@@ -607,18 +566,18 @@ namespace Cadencii.Application.Controls
             if (m_splitter_moving) {
                 m_splitter_moving = false;
                 UpdateLayout(m_splitter_distance_draft, m_splitter_width, m_panel1_min, m_panel2_min, false);
-                this.Cursor = Cursors.Default;
-                m_lbl_splitter.BackColor = SystemColors.Control;
+				((UiControl) this).Cursor = Cursors.Default;
+				Splitter.BackColor = System.Drawing.SystemColors.Control.ToAwt ();
             }
         }
 
         private void m_lbl_splitter_MouseMove(object sender, MouseEventArgs e)
         {
-            base.OnMouseMove(e);
+			base.OnMouseMove(e.ToWF ());
             if (m_splitter_fixed) {
                 return;
             }
-            Point mouse_local = this.PointToClient(Control.MousePosition);
+			var mouse_local = ((UiControl) this).PointToClient(Screen.Instance.GetScreenMousePosition ());
             if (m_splitter_moving) {
                 int new_distance = m_splitter_distance;
                 if (m_orientation == Orientation.Horizontal) {
@@ -629,9 +588,9 @@ namespace Cadencii.Application.Controls
                 if (UpdateLayout(new_distance, m_splitter_width, m_panel1_min, m_panel2_min, true)) {
                     m_splitter_distance_draft = new_distance;
                     if (m_orientation == Orientation.Horizontal) {
-                        m_lbl_splitter.Left = m_splitter_distance_draft;
+                        Splitter.Left = m_splitter_distance_draft;
                     } else {
-                        m_lbl_splitter.Top = m_splitter_distance_draft;
+                        Splitter.Top = m_splitter_distance_draft;
                     }
                 }
             }

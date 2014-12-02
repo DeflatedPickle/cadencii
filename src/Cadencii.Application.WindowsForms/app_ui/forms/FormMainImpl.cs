@@ -313,22 +313,22 @@ namespace Cadencii.Application.Forms
             splitContainer1.Panel1.BorderStyle = Cadencii.Gui.Toolkit.BorderStyle.None;
             splitContainer1.Panel2.BorderStyle = Cadencii.Gui.Toolkit.BorderStyle.None;
             splitContainer1.BackColor = new Cadencii.Gui.Color(212, 212, 212);
-            splitContainer2.Panel1.AddControl(panel1);
+            splitContainer2.Panel1.Controls.Add(panel1);
             panel1.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
-            splitContainer2.Panel2.AddControl(panelWaveformZoom);
+            splitContainer2.Panel2.Controls.Add(panelWaveformZoom);
             splitContainer2.Panel2.BorderStyle = BorderStyle.FixedSingle;
             splitContainer2.Panel2.BorderColor = new Cadencii.Gui.Color(112, 112, 112);
-            splitContainer1.Panel1.AddControl(splitContainer2);
+            splitContainer1.Panel1.Controls.Add(splitContainer2);
             panelWaveformZoom.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 			splitContainer2.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
-            splitContainer1.Panel2.AddControl(trackSelector);
+            splitContainer1.Panel2.Controls.Add(trackSelector);
             trackSelector.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 			splitContainer1.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
             splitContainer1.Panel2MinSize = trackSelector.PreferredMinSize;
             splitContainerProperty.FixedPanel = Cadencii.Gui.Toolkit.FixedPanel.Panel1;
 
 #if ENABLE_PROPERTY
-            splitContainerProperty.Panel1.AddControl(mPropertyPanelContainer);
+			splitContainerProperty.Panel1.Controls.Add (mPropertyPanelContainer);
             mPropertyPanelContainer.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 #else
             splitContainerProperty.setDividerLocation( 0 );
@@ -336,7 +336,7 @@ namespace Cadencii.Application.Forms
             menuVisualProperty.setVisible( false );
 #endif
 
-            splitContainerProperty.Panel2.AddControl(splitContainer1);
+            splitContainerProperty.Panel2.Controls.Add(splitContainer1);
             splitContainerProperty.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 
             // コントロールの位置・サイズを調節
@@ -402,7 +402,7 @@ namespace Cadencii.Application.Forms
             EditorManager.InputTextBox.Enabled = false;
             EditorManager.InputTextBox.KeyPress += model.InputTextBox.mInputTextBox_KeyPress;
 			EditorManager.InputTextBox.ParentPianoRoll = pictPianoRoll;
-            panel1.AddControl(EditorManager.InputTextBox);
+            panel1.Controls.Add(EditorManager.InputTextBox);
 
 #if DEBUG
             menuHelpDebug.Visible = true;

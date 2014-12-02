@@ -5,11 +5,6 @@ namespace Cadencii.Gui.Toolkit
 {
 	public interface UiPictureBox : UiControl
 	{
-		Cadencii.Gui.Cursor Cursor {
-			get;
-			set;
-		}
-
 		BorderStyle BorderStyle { get; set; }
 
 		PictureBoxSizeMode SizeMode { get; set; }

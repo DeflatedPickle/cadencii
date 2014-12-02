@@ -37,8 +37,6 @@ namespace Cadencii.Application.Controls
 			set;
 		}
 
-		void AddControl (UiControl child);
-
 		bool Panel2Hidden {
 			set;
 		}
@@ -69,6 +67,8 @@ namespace Cadencii.Application.Controls
 		BSplitterPanel Panel1 { get; }
 
 		BSplitterPanel Panel2 { get; }
+
+		UiPictureBox Splitter { get; }
 
 		int Panel2MinSize { get; set; }
 	}

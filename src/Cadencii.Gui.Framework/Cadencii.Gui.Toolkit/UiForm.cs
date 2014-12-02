@@ -42,8 +42,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler<FormClosingEventArgs> FormClosing;
 		event EventHandler FormClosed;
 
-		Cursor Cursor { get; set; }
-
 		string Text { get; set; }
 
 		int showDialog (object parentForm);

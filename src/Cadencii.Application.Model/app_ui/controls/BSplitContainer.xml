@@ -1,9 +1,7 @@
 ﻿<CustomControl
             Size = "(441, 348)"
 	>
-
-    <PictureBox id="m_lbl_splitter"
-
+    <UiPictureBox id="Splitter"
             BackColor = "$Transparent"
             Location = "(0, 0)"
             Name = "m_lbl_splitter"
@@ -11,8 +9,7 @@
             TabIndex = "0"
             TabStop = "false"
             />
-    <BSplitterPanel id="m_panel2"
-
+    <BSplitterPanel id="Panel2"
             Anchor = "Top,Bottom,Left,Right"
             BorderColor = "$Black"
             Location = "(0, 103)"
@@ -21,8 +18,7 @@
             Size = "(441, 245)"
             TabIndex = "1"
             />
-    <BSplitterPanel id="m_panel1"
-
+    <BSplitterPanel id="Panel1"
             Anchor = "Top,Bottom,Left,Right"
 			BorderColor = "$Black"
             Location = "(0, 0)"

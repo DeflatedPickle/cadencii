@@ -6,6 +6,8 @@ namespace Cadencii.Gui.Toolkit
 {
 	public interface UiControl : IDisposable
 	{
+		Cursor Cursor { get; set; }
+
 		IList<UiControl> Controls { get; }
 
 		void PerformLayout ();
@@ -46,9 +48,6 @@ namespace Cadencii.Gui.Toolkit
 
 		Point PointToClient (Point point);
 		Point PointToScreen (Point point);
-
-		void AddControl (UiControl child);
-		void ClearControls ();
 
 		void SuspendLayout ();
 		void ResumeLayout ();
