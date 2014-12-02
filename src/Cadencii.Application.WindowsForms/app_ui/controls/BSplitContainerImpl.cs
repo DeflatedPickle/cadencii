@@ -24,7 +24,7 @@ using Orientation = Cadencii.Gui.Toolkit.Orientation;
 namespace Cadencii.Application.Controls
 {
     [Serializable]
-    public partial class BSplitContainerImpl : Cadencii.Gui.Toolkit.ContainerControlImpl, BSplitContainer
+	public partial class BSplitContainerImpl : Cadencii.Gui.Toolkit.ContainerControlImpl, BSplitContainer
     {
 		Cadencii.Gui.Toolkit.FixedPanel BSplitContainer.FixedPanel {
 			get { return (Cadencii.Gui.Toolkit.FixedPanel)FixedPanel; }
@@ -103,23 +103,13 @@ namespace Cadencii.Application.Controls
             m_distance_rate = m_splitter_distance / (double)(m_splitter_distance + m_panel2_distance);
         }
 
-        public int getHeight()
-        {
-            return this.Height;
-        }
-
-        public int getWidth()
-        {
-            return this.Width;
-        }
-
-        public void setPanel2Hidden(bool value)
+        void setPanel2Hidden(bool value)
         {
             if (value) {
 				if (m_orientation == Cadencii.Gui.Toolkit.Orientation.Horizontal) {
-                    setDividerLocation(getWidth());
+                    setDividerLocation(Width);
                 } else {
-                    setDividerLocation(getHeight());
+                    setDividerLocation(Height);
                 }
                 setSplitterFixed(true);
             } else {
@@ -127,7 +117,7 @@ namespace Cadencii.Application.Controls
             }
         }
 
-        public void setPanel1Hidden(bool value)
+        void setPanel1Hidden(bool value)
         {
             if (value) {
                 setDividerLocation(0);
@@ -216,79 +206,18 @@ namespace Cadencii.Application.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            this.m_lbl_splitter = new System.Windows.Forms.PictureBox();
-            this.m_panel2 = ApplicationUIHost.Create<BSplitterPanel>();
-            this.m_panel1 = ApplicationUIHost.Create<BSplitterPanel>();
-            ((System.ComponentModel.ISupportInitialize)(this.m_lbl_splitter)).BeginInit();
             this.SuspendLayout();
-            // 
-            // m_lbl_splitter
-            // 
-            this.m_lbl_splitter.BackColor = System.Drawing.Color.Transparent;
-            this.m_lbl_splitter.Location = new System.Drawing.Point(0, 0);
-            this.m_lbl_splitter.Name = "m_lbl_splitter";
-            this.m_lbl_splitter.Size = new System.Drawing.Size(100, 50);
-            this.m_lbl_splitter.TabIndex = 0;
-            this.m_lbl_splitter.TabStop = false;
-            this.m_lbl_splitter.MouseMove += new System.Windows.Forms.MouseEventHandler(this.m_lbl_splitter_MouseMove);
-            this.m_lbl_splitter.MouseDown += new System.Windows.Forms.MouseEventHandler(this.m_lbl_splitter_MouseDown);
-            this.m_lbl_splitter.MouseUp += new System.Windows.Forms.MouseEventHandler(this.m_lbl_splitter_MouseUp);
-            // 
-            // m_panel2
-            // 
-            this.m_panel2.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
-                        | AnchorStyles.Left)
-                        | AnchorStyles.Right)));
-            this.m_panel2.BorderColor = Cadencii.Gui.Colors.Black;
-            this.m_panel2.Location = new Cadencii.Gui.Point(0, 103);
-            this.m_panel2.Margin = new Cadencii.Gui.Toolkit.Padding(0);
-            this.m_panel2.Name = "m_panel2";
-            this.m_panel2.Size = new Cadencii.Gui.Dimension(441, 245);
-            this.m_panel2.TabIndex = 1;
-            this.m_panel2.BorderStyleChanged += new System.EventHandler(this.m_panel2_BorderStyleChanged);
-            this.m_panel2.SizeChanged += new System.EventHandler(this.m_panel2_SizeChanged);
-            // 
-            // m_panel1
-            // 
-            this.m_panel1.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom)
-                        | AnchorStyles.Left)
-                        | AnchorStyles.Right)));
-			this.m_panel1.BorderColor = Cadencii.Gui.Colors.Black;
-            this.m_panel1.Location = new Cadencii.Gui.Point(0, 0);
-            this.m_panel1.Margin = new Cadencii.Gui.Toolkit.Padding(0, 0, 0, 4);
-            this.m_panel1.Name = "m_panel1";
-            this.m_panel1.Size = new Cadencii.Gui.Dimension(441, 99);
-            this.m_panel1.TabIndex = 0;
-            this.m_panel1.BorderStyleChanged += new System.EventHandler(this.m_panel1_BorderStyleChanged);
-            this.m_panel1.SizeChanged += new System.EventHandler(this.m_panel1_SizeChanged);
-            // 
-            // SplitContainerEx
-            // 
-			this.Controls.Add((System.Windows.Forms.Control)this.m_panel2.Native);
-			this.Controls.Add((System.Windows.Forms.Control)this.m_panel1.Native);
-            this.Controls.Add(this.m_lbl_splitter);
-            this.Size = new Size(441, 348);
-			this.Paint += (o,e) => this.SplitContainerEx_Paint (o, new Cadencii.Gui.Toolkit.PaintEventArgs () { Graphics = new Cadencii.Gui.Graphics () { NativeGraphics = e.Graphics } });
-            ((System.ComponentModel.ISupportInitialize)(this.m_lbl_splitter)).EndInit();
+			ApplicationUIHost.Instance.ApplyXml (this, "BSplitContainer.xml");
             this.ResumeLayout(false);
-        }
 
-        /// <summary>
-        /// コントロールがユーザーとの対話に応答できるかどうかを示す値を設定します。
-        /// </summary>
-        /// <param name="value"></param>
-        public void setEnabled(bool value)
-        {
-            base.Enabled = value;
-        }
-
-        /// <summary>
-        /// コントロールがユーザーとの対話に応答できるかどうかを示す値を取得します。
-        /// </summary>
-        /// <returns></returns>
-        public bool isEnabled()
-        {
-            return base.Enabled;
+			m_lbl_splitter.MouseMove += new System.Windows.Forms.MouseEventHandler (m_lbl_splitter_MouseMove);
+			m_lbl_splitter.MouseDown += new System.Windows.Forms.MouseEventHandler (m_lbl_splitter_MouseDown);
+			m_lbl_splitter.MouseUp += new System.Windows.Forms.MouseEventHandler (m_lbl_splitter_MouseUp);
+			m_panel2.BorderStyleChanged += new System.EventHandler (m_panel2_BorderStyleChanged);
+			m_panel2.SizeChanged += new System.EventHandler (m_panel2_SizeChanged);
+			m_panel1.BorderStyleChanged += new System.EventHandler (m_panel1_BorderStyleChanged);
+			m_panel1.SizeChanged += new System.EventHandler (m_panel1_SizeChanged);
+			this.Paint += (o, e) => this.SplitContainerEx_Paint (o, new Cadencii.Gui.Toolkit.PaintEventArgs () { Graphics = new Cadencii.Gui.Graphics () { NativeGraphics = e.Graphics } });
         }
 
         private void SplitContainerEx_Paint(object sender, Cadencii.Gui.Toolkit.PaintEventArgs e)
