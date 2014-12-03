@@ -71,6 +71,10 @@ namespace Cadencii.Application.Controls
 		UiPictureBox Splitter { get; }
 
 		int Panel2MinSize { get; set; }
+
+		event EventHandler<PaintEventArgs> Paint;
+
+		void SplitterMouseMove (object o, MouseEventArgs e);
 	}
 }
 
