@@ -495,28 +495,6 @@ namespace Cadencii.Application.Controls
 
 		public Cadencii.Gui.Toolkit.UiPictureBox Splitter { get; private set; }
 
-        public void setTopComponent(UiControl comp)
-        {
-            setLeftComponent(comp);
-        }
-
-        public void setBottomComponent(UiControl comp)
-        {
-            setRightComponent(comp);
-        }
-
-        public void setRightComponent(UiControl comp)
-        {
-			Panel2.Controls.Clear ();
-			Panel2.Controls.Add (comp);
-        }
-
-        public void setLeftComponent(UiControl comp)
-        {
-			Panel1.Controls.Clear();
-			Panel1.Controls.Add(comp);
-        }
-
         protected override void OnSizeChanged(EventArgs e)
         {
 #if DEBUG

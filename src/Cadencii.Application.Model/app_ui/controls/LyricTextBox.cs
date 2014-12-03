@@ -9,11 +9,6 @@ namespace Cadencii.Application.Controls
 		bool IsPhoneticSymbolEditMode { get; set; }
 
 		string BufferText { get; set; }
-
-		PictPianoRoll ParentPianoRoll {
-			get;
-			set;
-		}
 	}
 }
 

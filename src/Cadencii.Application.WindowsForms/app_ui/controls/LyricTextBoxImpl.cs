@@ -23,11 +23,6 @@ namespace Cadencii.Application.Controls
     /// </summary>
     public class LyricTextBoxImpl : Cadencii.Gui.Toolkit.TextBoxImpl, LyricTextBox
     {
-		PictPianoRoll LyricTextBox.ParentPianoRoll {
-			get { return (PictPianoRoll) this.Parent; }
-			set { Parent = (Control) value; }
-		}
-
 		public bool IsPhoneticSymbolEditMode { get; set; }
 
 		public string BufferText { get; set; }

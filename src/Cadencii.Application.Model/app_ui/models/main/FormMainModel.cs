@@ -1786,7 +1786,6 @@ namespace Cadencii.Application.Models
 			var p = new Cadencii.Gui.Point(position.X + 4, position.Y + 2);
 			EditorManager.InputTextBox.Location = p;
 
-			EditorManager.InputTextBox.ParentPianoRoll = form.pictPianoRoll;
 			EditorManager.InputTextBox.Enabled = true;
 			EditorManager.InputTextBox.Visible = true;
 			EditorManager.InputTextBox.Focus();
@@ -1800,7 +1799,6 @@ namespace Cadencii.Application.Models
 			EditorManager.InputTextBox.ImeModeChanged -= InputTextBox.mInputTextBox_ImeModeChanged;
 			mLastSymbolEditMode = EditorManager.InputTextBox.IsPhoneticSymbolEditMode;
 			EditorManager.InputTextBox.Visible = false;
-			EditorManager.InputTextBox.ParentPianoRoll = null;
 			EditorManager.InputTextBox.Enabled = false;
 			form.pictPianoRoll.Focus();
 		}

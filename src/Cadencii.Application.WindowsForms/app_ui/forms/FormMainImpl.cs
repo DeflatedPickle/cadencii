@@ -401,7 +401,6 @@ namespace Cadencii.Application.Forms
 			EditorManager.InputTextBox.Font = new Font (EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE9);
             EditorManager.InputTextBox.Enabled = false;
             EditorManager.InputTextBox.KeyPress += model.InputTextBox.mInputTextBox_KeyPress;
-			EditorManager.InputTextBox.ParentPianoRoll = pictPianoRoll;
             panel1.Controls.Add(EditorManager.InputTextBox);
 
 #if DEBUG
