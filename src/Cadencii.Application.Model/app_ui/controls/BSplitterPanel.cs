@@ -22,6 +22,7 @@ namespace Cadencii.Application.Controls
 	{
 		Color BorderColor { get; set; }
 		event EventHandler BorderStyleChanged;
+		BorderStyle BorderStyle { get; set; }
 	}
 
 

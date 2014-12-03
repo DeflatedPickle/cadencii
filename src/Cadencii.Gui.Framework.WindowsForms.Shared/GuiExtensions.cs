@@ -63,6 +63,16 @@ namespace cadencii
 			return new System.Drawing.Rectangle (rect.X, rect.Y, rect.Width, rect.Height);
 		}
 
+		public static Padding ToAwt (this System.Windows.Forms.Padding padding)
+		{
+			return new Padding (padding.All);
+		}
+
+		public static System.Windows.Forms.Padding ToWF (this Padding padding)
+		{
+			return new System.Windows.Forms.Padding (padding.All);
+		}
+
 		public static Image ToAwt (this System.Drawing.Image image)
 		{
 			return image == null ? null : new Image () { NativeImage = image };

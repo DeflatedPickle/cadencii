@@ -13,22 +13,16 @@
  */
 using System;
 using System.ComponentModel;
-using System.Windows.Forms;
-using System.Drawing;
 using cadencii;
+using Cadencii.Gui.Toolkit;
+using Cadencii.Gui;
 
 namespace Cadencii.Application.Controls
 {
 
     public class BSplitterPanelImpl : Cadencii.Gui.Toolkit.PanelImpl, BSplitterPanel
     {
-		Cadencii.Gui.Color BSplitterPanel.BorderColor {
-			get { return BorderColor.ToAwt (); }
-			set { BorderColor = value.ToNative (); }
-		}
-
         private BorderStyle m_border_style = BorderStyle.None;
-		private Color m_border_color = Cadencii.Gui.Colors.Black.ToNative ();
 
         public event EventHandler BorderStyleChanged;
 
@@ -36,20 +30,11 @@ namespace Cadencii.Application.Controls
             : base()
         {
             base.AutoScroll = false;
+			BorderColor = Colors.Black;
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public Color BorderColor
-        {
-            get
-            {
-                return m_border_color;
-            }
-            set
-            {
-                m_border_color = value;
-            }
-        }
+		public Color BorderColor { get; set; }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public new BorderStyle BorderStyle
@@ -63,13 +48,13 @@ namespace Cadencii.Application.Controls
                 BorderStyle old = m_border_style;
                 m_border_style = value;
                 if (m_border_style == BorderStyle.Fixed3D) {
-                    base.BorderStyle = BorderStyle.Fixed3D;
+					base.BorderStyle = (System.Windows.Forms.BorderStyle) BorderStyle.Fixed3D;
                 } else if (m_border_style == BorderStyle.FixedSingle) {
-                    base.BorderStyle = BorderStyle.None;
-                    base.Padding = new Padding(1);
+					base.BorderStyle = (System.Windows.Forms.BorderStyle) BorderStyle.None;
+					base.Padding = new Padding(1).ToWF ();
                 } else {
-                    base.Padding = new Padding(0);
-                    base.BorderStyle = BorderStyle.None;
+					base.Padding = new Padding(0).ToWF ();
+					base.BorderStyle = (System.Windows.Forms.BorderStyle) BorderStyle.None;
                 }
                 if (old != m_border_style && BorderStyleChanged != null) {
                     BorderStyleChanged(this, new EventArgs());
