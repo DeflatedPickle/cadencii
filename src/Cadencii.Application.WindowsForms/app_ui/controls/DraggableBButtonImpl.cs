@@ -33,22 +33,7 @@ namespace Cadencii.Application.Controls
 			DoDragDrop (handle, (System.Windows.Forms.DragDropEffects) all);
 		}
 
-		Cadencii.Gui.Image DraggableBButton.Image {
-			get { return new Cadencii.Gui.Image () { NativeImage = Image }; }
-			set { Image = (System.Drawing.Image) value.NativeImage; }
-		}
-
-        private IconDynamicsHandle mHandle = null;
-
-        public IconDynamicsHandle getHandle()
-        {
-            return mHandle;
-        }
-
-        public void setHandle(IconDynamicsHandle value)
-        {
-            mHandle = value;
-        }
+		public IconDynamicsHandle IconHandle { get; set; }
     }
 
 }

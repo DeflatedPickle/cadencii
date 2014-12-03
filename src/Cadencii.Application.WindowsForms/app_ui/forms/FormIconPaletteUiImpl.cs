@@ -107,7 +107,7 @@ namespace Cadencii.Application.Forms
                 string icon_id = handle.IconID;
                 DraggableBButton btn = ApplicationUIHost.Create<DraggableBButton> ();
                 btn.Name = icon_id;
-                btn.setHandle(handle);
+                btn.IconHandle = handle;
                 string buttonIconPath = handle.getButtonImageFullPath();
 
                 bool setimg = System.IO.File.Exists(buttonIconPath);
@@ -237,7 +237,7 @@ namespace Cadencii.Application.Forms
                 mMainWindow.BringToFront();
             }
 
-            IconDynamicsHandle handle = btn.getHandle();
+            IconDynamicsHandle handle = btn.IconHandle;
             VsqEvent item = new VsqEvent();
             item.Clock = 0;
             item.ID.Note = 60;
@@ -257,10 +257,6 @@ namespace Cadencii.Application.Forms
         #region UI implementation
         private void InitializeComponent()
         {
-            this.menuBar = new MenuStrip();
-            this.menuWindow = new ToolStripMenuItemImpl();
-            this.menuWindowHide = new ToolStripMenuItemImpl();
-            this.menuBar.SuspendLayout();
             this.SuspendLayout();
 			ApplicationUIHost.Instance.ApplyXml (this, "FormIconPaletteUi.xml");
             this.ResumeLayout(false);

@@ -5,15 +5,9 @@ using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application.Controls
 {
-	public interface DraggableBButton : UiControl
+	public interface DraggableBButton : UiButton
 	{
-		string Text { get; set; }
-
-		Cadencii.Gui.Image Image { get; set; }
-
-		IconDynamicsHandle getHandle ();
-
-		void setHandle (IconDynamicsHandle handle);
+		IconDynamicsHandle IconHandle { get; set; }
 
 		void DoDragDrop (IconDynamicsHandle handle, DragDropEffects all);
 	}
