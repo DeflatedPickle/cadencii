@@ -39,6 +39,8 @@ namespace Cadencii.Gui
 			Current.InitializeCursors ();
 		}
 
+		public abstract void InitializeSystemColors ();
+
 		public abstract void InitializeCursors ();
 
 		public abstract Keys DefaultModifierKeys ();

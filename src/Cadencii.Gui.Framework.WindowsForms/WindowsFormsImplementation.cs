@@ -27,6 +27,16 @@ namespace Cadencii.Gui
 			Types [typeof(Graphics.GraphicsAdapter)] = typeof(GraphicsAdapterWF);
 		}
 
+		public override void InitializeSystemColors ()
+		{
+			SystemColors.ActiveBorder = System.Drawing.SystemColors.ActiveBorder.ToAwt ();
+			SystemColors.Control = System.Drawing.SystemColors.Control.ToAwt ();
+			SystemColors.ControlDark = System.Drawing.SystemColors.ControlDark.ToAwt ();
+			SystemColors.ControlText = System.Drawing.SystemColors.ControlText.ToAwt ();
+			SystemColors.Window = System.Drawing.SystemColors.Window.ToAwt ();
+			SystemColors.WindowText = System.Drawing.SystemColors.WindowText.ToAwt ();
+		}
+
 		public override void InitializeCursors ()
 		{
 			Cursors.Default = System.Windows.Forms.Cursors.Default.ToAwt ();
@@ -279,9 +289,13 @@ namespace Cadencii.Gui
 			nativeGraphics.DrawRectangle ((System.Drawing.Pen)stroke.NativePen, x, y, width, height);
 		}
 
-		public override void drawRect (Stroke pen, Rectangle rect)
+		System.Drawing.Pen pen_cache;
+
+		public override void drawRect (Color pen, Rectangle rect)
 		{
-			nativeGraphics.DrawRectangle ((System.Drawing.Pen) pen.NativePen, rect.X, rect.Y, rect.Width, rect.Height);
+			if (pen_cache == null || !pen_cache.Color.Equals (pen.ToNative ()))
+				pen_cache = new System.Drawing.Pen (pen.ToNative ());
+			nativeGraphics.DrawRectangle (pen_cache, rect.X, rect.Y, rect.Width, rect.Height);
 		}
 
 		public override void fillRect (int x, int y, int width, int height)

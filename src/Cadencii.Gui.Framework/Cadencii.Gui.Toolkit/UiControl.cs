@@ -6,6 +6,8 @@ namespace Cadencii.Gui.Toolkit
 {
 	public interface UiControl : IDisposable
 	{
+		void BringToFront ();
+
 		Cursor Cursor { get; set; }
 
 		IList<UiControl> Controls { get; }

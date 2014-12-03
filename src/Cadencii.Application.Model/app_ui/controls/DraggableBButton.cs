@@ -15,8 +15,6 @@ namespace Cadencii.Application.Controls
 
 		void setHandle (IconDynamicsHandle handle);
 
-		void BringToFront ();
-
 		void DoDragDrop (IconDynamicsHandle handle, DragDropEffects all);
 	}
 }

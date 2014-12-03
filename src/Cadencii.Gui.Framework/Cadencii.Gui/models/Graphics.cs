@@ -61,7 +61,7 @@ namespace Cadencii.Gui
 			a.drawRect (x, y, width, height);
 		}
 
-		public void drawRect(Stroke pen, Rectangle rect)
+		public void drawRect(Color pen, Rectangle rect)
 		{
 			a.drawRect (pen, rect);
 		}
@@ -237,7 +237,7 @@ namespace Cadencii.Gui
 
 			public abstract void drawRect(int x, int y, int width, int height);
 
-			public abstract void drawRect(Stroke pen, Rectangle rect);
+			public abstract void drawRect(Color pen, Rectangle rect);
 
 			public abstract void drawBezier(float x1, float y1, float ctrlx1, float ctrly1, float ctrlx2, float ctrly2, float x2, float y2);
 

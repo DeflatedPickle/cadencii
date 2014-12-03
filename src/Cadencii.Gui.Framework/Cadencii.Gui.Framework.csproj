@@ -142,6 +142,7 @@
     <Compile Include="Cadencii.Gui.Toolkit\UiGroupBox.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\MessageBoxButtons.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\MessageBoxIcon.cs" />
+    <Compile Include="Cadencii.Gui\models\SystemColors.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
