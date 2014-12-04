@@ -266,6 +266,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="app_ui\models\BSplitContainerModel.cs" />
+    <Compile Include="app_ui\models\PictOverviewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
