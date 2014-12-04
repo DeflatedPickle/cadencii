@@ -9,6 +9,8 @@ namespace Cadencii.Application.Controls
 		void updateCachedImage ();
 
 		void setMainForm (FormMain formMain);
+
+		event EventHandler MouseLeave;
 	}
 }
 

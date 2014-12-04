@@ -134,7 +134,8 @@ namespace Cadencii.Application.Models
                     if ( handler != null ) {
                         this.Invoke( handler );
                         while ( VSTiProxy.getPlayTime() <= 0.0 ) {
-                            System.Windows.Forms.Application.DoEvents();
+						AwtHost.Current.ApplicationDoEvents();
+
                         }
                         EditorManager.setPlaying( true );
                     }

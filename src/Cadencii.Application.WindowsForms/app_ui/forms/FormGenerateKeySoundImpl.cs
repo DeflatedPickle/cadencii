@@ -23,6 +23,7 @@ using cadencii.core;
 using Cadencii.Utilities;
 using cadencii;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Gui;
 
 
 namespace Cadencii.Application.Forms
@@ -161,7 +162,7 @@ namespace Cadencii.Application.Forms
             if (bgWork.IsBusy) {
                 m_cancel_required = true;
                 while (m_cancel_required) {
-                    System.Windows.Forms.Application.DoEvents();
+					AwtHost.Current.ApplicationDoEvents();
                 }
             } else {
                 this.Close();

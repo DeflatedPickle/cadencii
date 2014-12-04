@@ -45,6 +45,8 @@ namespace Cadencii.Gui
 
 		public abstract Keys DefaultModifierKeys ();
 
+		public abstract void ApplicationDoEvents ();
+
 		public abstract string GetComponentName (Object obj);
 
 		public abstract void ApplyFontRecurse (UiControl control, Font font);

@@ -13,15 +13,11 @@
  */
 using System;
 using System.Threading;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using Cadencii.Gui;
 using cadencii.java.util;
 using Cadencii.Media.Vsq;
 
-using MouseButtons = System.Windows.Forms.MouseButtons;
-using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
-using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using Consts = Cadencii.Application.Models.FormMainModel.Consts;
 using cadencii.core;
 using Cadencii.Utilities;
@@ -137,7 +133,7 @@ namespace Cadencii.Application.Controls
                 try {
                     mOverviewUpdateThread.Abort();
                     while (mOverviewUpdateThread != null && mOverviewUpdateThread.IsAlive) {
-                        System.Windows.Forms.Application.DoEvents();
+						AwtHost.Current.ApplicationDoEvents();
                     }
                 } catch (Exception ex) {
                     Logger.write(GetType () + ".overviewStopThread; ex=" + ex + "\n");
@@ -154,7 +150,7 @@ namespace Cadencii.Application.Controls
                 try {
                     mOverviewUpdateThread.Abort();
                     while (mOverviewUpdateThread.IsAlive) {
-                        System.Windows.Forms.Application.DoEvents();
+						AwtHost.Current.ApplicationDoEvents();
                     }
                 } catch (Exception ex) {
                     Logger.StdErr("FormMain#btnLeft_MouseDown; ex=" + ex);
@@ -179,7 +175,7 @@ namespace Cadencii.Application.Controls
             if (mOverviewUpdateThread != null) {
                 try {
                     while (mOverviewUpdateThread.IsAlive) {
-                        System.Windows.Forms.Application.DoEvents();
+						AwtHost.Current.ApplicationDoEvents();
                     }
                 } catch (Exception ex) {
                     Logger.StdErr("FormMain#btnRight_MouseDown; ex=" + ex);
@@ -370,12 +366,13 @@ namespace Cadencii.Application.Controls
 
         private void registerEventHandlers()
         {
-            this.MouseDown += new MouseEventHandler(handleMouseDown);
-            this.MouseUp += new MouseEventHandler(handleMouseUp);
-            this.MouseMove += new MouseEventHandler(handleMouseMove);
-            this.MouseDoubleClick += new MouseEventHandler(handleMouseDoubleClick);
-            this.MouseLeave += new EventHandler(handleMouseLeave);
-            this.Resize += new EventHandler(handleResize);
+			var f = this as PictOverview;
+			f.MouseDown += new EventHandler<MouseEventArgs> (handleMouseDown);
+			f.MouseUp += new EventHandler<MouseEventArgs> (handleMouseUp);
+			f.MouseMove += new EventHandler<MouseEventArgs> (handleMouseMove);
+			f.MouseDoubleClick += new EventHandler<MouseEventArgs> (handleMouseDoubleClick);
+            f.MouseLeave += new EventHandler(handleMouseLeave);
+            f.Resize += new EventHandler(handleResize);
         }
 
         public void handleResize(Object sender, EventArgs e)
@@ -417,14 +414,14 @@ namespace Cadencii.Application.Controls
         public void handleMouseDown(Object sender, MouseEventArgs e)
         {
             MouseButtons btn = e.Button;
-            if (mMainForm.Model.IsMouseMiddleButtonDown((Cadencii.Gui.Toolkit.MouseButtons) e.Button)) {
-                btn = MouseButtons.Middle;
+            if (mMainForm.Model.IsMouseMiddleButtonDown((MouseButtons) e.Button)) {
+				btn = Cadencii.Gui.Toolkit.MouseButtons.Middle;
             }
-            if (btn == MouseButtons.Middle) {
+			if (btn == Cadencii.Gui.Toolkit.MouseButtons.Middle) {
                 mOverviewMouseDownMode = OverviewMouseDownMode.MIDDLE;
                 mOverviewMouseDownedLocationX = e.X;
                 mOverviewStartToDrawClockInitialValue = mOverviewStartToDrawClock;
-            } else if (e.Button == MouseButtons.Left) {
+			} else if (e.Button == Cadencii.Gui.Toolkit.MouseButtons.Left) {
                 if (e.X <= EditorManager.keyWidth || this.Width - 19 <= e.X) {
                     Point mouse = new Point(e.X, e.Y);
                     if (Utility.isInRect(mouse, getButtonBoundsLeft1())) {

@@ -73,6 +73,11 @@ namespace Cadencii.Gui
 			}
 		}
 
+		public override void ApplicationDoEvents ()
+		{
+			System.Windows.Forms.Application.DoEvents ();
+		}
+
 		public override Cadencii.Gui.Toolkit.Keys DefaultModifierKeys ()
 		{
 			return (Cadencii.Gui.Toolkit.Keys) Control.ModifierKeys;
