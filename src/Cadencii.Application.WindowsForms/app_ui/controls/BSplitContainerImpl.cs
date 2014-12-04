@@ -27,66 +27,66 @@ namespace Cadencii.Application.Controls
     [Serializable]
 	public partial class BSplitContainerImpl : ContainerControlImpl, BSplitContainer
     {
-		event EventHandler<PaintEventArgs> BSplitContainer.Paint {
-			add { this.Paint += (o, e) => value (o, e.ToAwt ()); }
+		public event EventHandler<PaintEventArgs> Paint {
+			add { base.Paint += (o, e) => value (o, e.ToAwt ()); }
 			remove { throw new NotImplementedException (); }
 		}
 
-		int BSplitContainer.SplitterWidth {
+		public int SplitterWidth {
 			get { return model.SplitterWidth; }
 			set { model.SplitterWidth = value; }
 		}
 
-		int BSplitContainer.SplitterDistance {
+		public int SplitterDistance {
 			get { return model.SplitterDistance; }
 			set { model.SplitterDistance = value; }
 		}
 
-		Orientation BSplitContainer.Orientation {
+		public Orientation Orientation {
 			get { return model.Orientation; }
 			set { model.Orientation = value; }
 		}
 
-		bool BSplitContainer.SplitterFixed {
+		public bool SplitterFixed {
 			get { return model.SplitterFixed; }
 			set { model.SplitterFixed = value; }
 		}
 
-		int BSplitContainer.Panel1MinSize {
+		public int Panel1MinSize {
 			get { return model.Panel1MinSize; }
 			set { model.Panel1MinSize = value; }
 		}
 
-		FixedPanel BSplitContainer.FixedPanel {
+		public FixedPanel FixedPanel {
 			get { return model.FixedPanel; }
 			set { model.FixedPanel = value; }
 		}
 
-		int BSplitContainer.Panel2MinSize {
+		public int Panel2MinSize {
 			get { return model.Panel2MinSize; }
 			set { model.Panel2MinSize = value; }
 		}
 
-		Cadencii.Gui.Dimension BSplitContainer.MinimumSize {
-			get { return MinimumSize.ToAwt (); }
-			set { MinimumSize = value.ToWF (); }
+		public Cadencii.Gui.Dimension MinimumSize {
+			get { return base.MinimumSize.ToAwt (); }
+			set { base.MinimumSize = value.ToWF (); }
 		}
 
-		bool BSplitContainer.Panel2Hidden {
+		public bool Panel2Hidden {
 			set { model.setPanel2Hidden (value); }
 		}
 
-		int BSplitContainer.DividerLocation {
+		public int DividerLocation {
 			get { return model.getDividerLocation (); }
 			set { model.setDividerLocation (value); }
 		}
 
-		int BSplitContainer.DividerSize {
+		public int DividerSize {
 			get { return model.getDividerSize (); }
 			set { model.setDividerSize (value); }
 		}
 
-		bool BSplitContainer.Panel1Hidden {
+		public bool Panel1Hidden {
 			set { model.setPanel1Hidden (value); }
 		}
 

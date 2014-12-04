@@ -273,6 +273,11 @@ namespace Cadencii.Gui
 
 		public override object NativeBrush { get { return brush; } set { brush = (System.Drawing.SolidBrush)value; } }
 
+		public override SmoothingMode SmoothingMode {
+			get { return (SmoothingMode) nativeGraphics.SmoothingMode; }
+			set { nativeGraphics.SmoothingMode = (System.Drawing.Drawing2D.SmoothingMode) value; }
+		}
+
 		public override void Dispose ()
 		{
 			if (should_dispose && nativeGraphics != null)

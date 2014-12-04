@@ -286,7 +286,7 @@ namespace Cadencii.Application.Models
 
 		private bool UpdateLayout(int splitter_distance, int splitter_width, int panel1_min, int panel2_min, bool check_only)
 		{
-			Cadencii.Gui.Point mouse = ((UiControl) this).PointToClient(Screen.Instance.GetScreenMousePosition ());
+			Cadencii.Gui.Point mouse = control.PointToClient(Screen.Instance.GetScreenMousePosition ());
 			int pad1 = (Panel1.BorderStyle == Cadencii.Gui.Toolkit.BorderStyle.FixedSingle) ? 1 : 0;
 			int pad2 = (Panel2.BorderStyle == Cadencii.Gui.Toolkit.BorderStyle.FixedSingle) ? 1 : 0;
 			if (m_orientation == Orientation.Horizontal) {
@@ -473,7 +473,7 @@ namespace Cadencii.Application.Models
 			if (!m_splitter_fixed) {
 				m_splitter_moving = true;
 				m_splitter_distance_draft = m_splitter_distance;
-				((UiControl) this).Cursor = (m_orientation == Orientation.Horizontal) ? Cursors.VSplit : Cursors.HSplit;
+				control.Cursor = (m_orientation == Orientation.Horizontal) ? Cursors.VSplit : Cursors.HSplit;
 				Splitter.BackColor = SystemColors.ControlDark;
 				Splitter.BringToFront();
 			}
@@ -484,7 +484,7 @@ namespace Cadencii.Application.Models
 			if (m_splitter_moving) {
 				m_splitter_moving = false;
 				UpdateLayout(m_splitter_distance_draft, m_splitter_width, m_panel1_min, m_panel2_min, false);
-				((UiControl) this).Cursor = Cursors.Default;
+				control.Cursor = Cursors.Default;
 				Splitter.BackColor = SystemColors.Control;
 			}
 		}

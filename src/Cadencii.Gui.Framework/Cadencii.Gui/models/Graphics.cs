@@ -37,6 +37,8 @@ namespace Cadencii.Gui
 
 		public GraphicsAdapter Adapter { get { return a; } }
 
+		public SmoothingMode SmoothingMode { get { return a.SmoothingMode; } set { a.SmoothingMode = value; } }
+
 		public object NativeGraphics { get { return a.NativeGraphics; } set { a.NativeGraphics = value; } }
 
 		public object NativeBrush { get { return a.NativeBrush; } set { a.NativeBrush = value; } }
@@ -228,6 +230,8 @@ namespace Cadencii.Gui
 			public abstract object NativeGraphics { get; set; }
 
 			public abstract object NativeBrush { get; set; }
+
+			public abstract SmoothingMode SmoothingMode { get; set; }
 
 			public abstract void Dispose ();
 

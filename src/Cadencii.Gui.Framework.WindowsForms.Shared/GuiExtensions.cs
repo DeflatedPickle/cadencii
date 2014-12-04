@@ -115,7 +115,12 @@ namespace cadencii
 
 		public static PaintEventArgs ToAwt (this System.Windows.Forms.PaintEventArgs e)
 		{
-			return new PaintEventArgs () { Graphics = e.Graphics.ToAwt () };
+			return new PaintEventArgs () { Graphics = e.Graphics.ToAwt (), ClipRectangle = e.ClipRectangle.ToAwt () };
+		}
+
+		public static System.Windows.Forms.PaintEventArgs ToWF (this PaintEventArgs e)
+		{
+			return new System.Windows.Forms.PaintEventArgs (e.Graphics.ToWF (), e.ClipRectangle.ToWF ());
 		}
 
 		public static ToolBarButtonClickEventArgs ToAwt (this System.Windows.Forms.ToolBarButtonClickEventArgs e)

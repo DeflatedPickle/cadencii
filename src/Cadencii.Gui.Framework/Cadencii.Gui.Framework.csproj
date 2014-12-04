@@ -143,6 +143,7 @@
     <Compile Include="Cadencii.Gui.Toolkit\MessageBoxButtons.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\MessageBoxIcon.cs" />
     <Compile Include="Cadencii.Gui\models\SystemColors.cs" />
+    <Compile Include="Cadencii.Gui\models\SmoothingMode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
