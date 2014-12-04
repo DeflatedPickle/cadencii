@@ -8,8 +8,6 @@ namespace Cadencii.Application.Controls
 	{
 		MouseTracer mMouseTracer { get; set; }
 
-		Cadencii.Gui.Dimension getMinimumSize ();
-
 		void setMainForm (FormMain formMain);
 	}
 }

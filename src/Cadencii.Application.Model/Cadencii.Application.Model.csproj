@@ -267,6 +267,7 @@
     </Compile>
     <Compile Include="app_ui\models\BSplitContainerModel.cs" />
     <Compile Include="app_ui\models\PictOverviewModel.cs" />
+    <Compile Include="app_ui\models\PictPianoRollModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
