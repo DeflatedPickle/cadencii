@@ -12,15 +12,12 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using cadencii.apputil;
 using Cadencii.Gui;
 using cadencii.java.util;
 using Cadencii.Media.Vsq;
 
-using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
-using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using cadencii.core;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
@@ -105,7 +102,15 @@ namespace Cadencii.Application.Controls
         private FormMain mMainForm = null;
 
         public PictPianoRollImpl()
-        { }
+        {
+			registerEventHandlers ();
+		}
+
+		void registerEventHandlers ()
+		{
+			((PictPianoRoll) this).MouseDown += OnMouseDown;
+			((PictPianoRoll) this).Paint += OnPaint;
+		}
 
         /// <summary>
         /// メイン画面への参照を設定します
@@ -116,16 +121,14 @@ namespace Cadencii.Application.Controls
 		mMainForm = form;
         }
 
-        protected override void OnMouseDown(MouseEventArgs e)
+        void OnMouseDown(object sender, MouseEventArgs e)
         {
-            base.OnMouseDown(e);
             this.Focus();
         }
 
-        protected override void OnPaint(System.Windows.Forms.PaintEventArgs pe)
+        void OnPaint(object sender, PaintEventArgs pe)
         {
-            base.OnPaint(pe);
-			paint(new Graphics() {NativeGraphics = pe.Graphics});
+			paint(pe.Graphics);
         }
 
         #region common APIs of org.kbinani.*
@@ -227,7 +230,7 @@ namespace Cadencii.Application.Controls
                     VsqTrack vsq_track = vsq.Track[selected];
 
 					var p = Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition();
-                    var mouse_position = this.PointToClient(new System.Drawing.Point(p.X, p.Y));
+					var mouse_position = ((UiControl) this).PointToClient(new Point(p.X, p.Y));
                     int stdx = EditorManager.MainWindow.Model.StartToDrawX;
                     int stdy = EditorManager.MainWindow.Model.StartToDrawY;
                     int key_width = EditorManager.keyWidth;
@@ -622,7 +625,7 @@ namespace Cadencii.Application.Controls
                                         int cl_end = cl_start + dobj.mLength;
 
                                         commonDrawer.clear();
-                                        //g.nativeGraphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                                        g.SmoothingMode = SmoothingMode.AntiAlias;
 										Color color_normal_picthbend = Cadencii.Gui.Colors.DarkOrchid;
                                         Color color_thin_pitchbend = new Color(color_normal_picthbend.R, color_normal_picthbend.G, color_normal_picthbend.B, 128);
                                         int viblength = dobj.mLength - dobj.mVibDelay;
@@ -705,7 +708,7 @@ namespace Cadencii.Application.Controls
                                             }
                                         }
                                         commonDrawer.flush();
-                                        ((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
+                                        g.SmoothingMode = SmoothingMode.Default;
                                         g.setStroke(getStrokeDefault());
                                     }
                                     #endregion
@@ -765,8 +768,8 @@ namespace Cadencii.Application.Controls
                                 str += "(" + dobj.mInternalID + ")";
 #endif
                                 g.drawString(str, x + 1, y + track_height + half_track_height - AppConfig.baseFont10OffsetHeight + 1);
-								System.Drawing.Drawing2D.SmoothingMode old = ((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode;
-								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+								SmoothingMode old = g.SmoothingMode;
+								g.SmoothingMode = SmoothingMode.AntiAlias;
                                 if (dobj.mType == DrawObjectType.Crescend) {
                                     g.drawLine(xend - 2, y + 4, x + 3, y + half_track_height);
                                     g.drawLine(x + 3, y + half_track_height, xend - 2, y + track_height - 3);
@@ -774,7 +777,7 @@ namespace Cadencii.Application.Controls
                                     g.drawLine(x + 3, y + 4, xend - 2, y + half_track_height);
                                     g.drawLine(xend - 2, y + half_track_height, x + 3, y + track_height - 3);
                                 }
-								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = old;
+								g.SmoothingMode = old;
                                 #endregion
                             }
                         }
@@ -1092,7 +1095,7 @@ namespace Cadencii.Application.Controls
                         Color pen = new Color(0, 0, 0, 200);
                         g.setColor(new Color(0, 0, 0, 100));
                         g.fillRect(tx, ty, twidth, theight);
-						((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+						g.SmoothingMode = SmoothingMode.AntiAlias;
                         g.setColor(pen);
                         if (vtop && twidth > 1 && ty < height) {
                             g.drawLine(tx, ty, tx + twidth - 1, ty);
@@ -1109,7 +1112,7 @@ namespace Cadencii.Application.Controls
                     }
                     #endregion
 
-					((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
+					g.SmoothingMode = SmoothingMode.Default;
 
                     #region コントロールカーブのオーバーレイ表示
                     if (EditorManager.mCurveOnPianoroll) {
@@ -1243,13 +1246,13 @@ namespace Cadencii.Application.Controls
             int x0 = origin.X + 1;
             int y0 = origin.Y + 10;
             int height = 4 + accent * 4 / 100;
-            //SmoothingMode sm = g.SmoothingMode;
-            //g.SmoothingMode = SmoothingMode.AntiAlias;
+            SmoothingMode sm = g.SmoothingMode;
+            g.SmoothingMode = SmoothingMode.AntiAlias;
             g.setColor(Cadencii.Gui.Colors.Black);
             g.drawPolyline(new int[] { x0, x0 + 2, x0 + 8, x0 + 13, x0 + 16, x0 + 20 },
                             new int[] { y0, y0, y0 - height, y0, y0, y0 - 4 },
                             6);
-            //g.SmoothingMode = sm;
+            g.SmoothingMode = sm;
         }
 
         /// <summary>
@@ -1296,8 +1299,8 @@ namespace Cadencii.Application.Controls
 #if DEBUG
 			g.setColor(Cadencii.Gui.Colors.Red);
 #endif
-			System.Drawing.Drawing2D.SmoothingMode sm = ((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode;
-			((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+			SmoothingMode sm = g.SmoothingMode;
+			g.SmoothingMode = SmoothingMode.AntiAlias;
             int lx = 0;
             for (; itr.hasNext(); ) {
                 PointD p = itr.next();
@@ -1310,7 +1313,7 @@ namespace Cadencii.Application.Controls
                 lx = x;
             }
             drawer.flush();
-			((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = sm;
+			g.SmoothingMode = sm;
         }
 
         private void drawVibratoLine(Graphics g, int origin_x, int origin_y, int vibrato_length)
@@ -1326,8 +1329,8 @@ namespace Cadencii.Application.Controls
                     return;
                 }
             }
-            //SmoothingMode sm = g.SmoothingMode;
-            //g.SmoothingMode = SmoothingMode.AntiAlias;
+            SmoothingMode sm = g.SmoothingMode;
+            g.SmoothingMode = SmoothingMode.AntiAlias;
             int _UWID = 10;
             int count = vibrato_length / _UWID + 1;
             int[] _BASE_X = new int[] { x0 - _UWID, x0 + 2 - _UWID, x0 + 4 - _UWID, x0 + 7 - _UWID, x0 + 9 - _UWID, x0 + 10 - _UWID };
@@ -1341,7 +1344,7 @@ namespace Cadencii.Application.Controls
                 }
                 g.drawPolyline(_BASE_X, _BASE_Y, _BASE_X.Length);
             }
-            //g.SmoothingMode = sm;
+            g.SmoothingMode = sm;
             g.setClip(old);
         }
 
