@@ -132,7 +132,7 @@ namespace Cadencii.Application.Forms
         /// 追加されたプログレスバーをこのフォームから削除します
         /// </summary>
         /// <param name="ui"></param>
-        public void removeProgressBar(ProgressBarWithLabelUi ui)
+        public void removeProgressBar(ProgressBarWithLabel ui)
         {
             flowLayoutPanel1.Controls.Remove((Control) ui.Native);
         }
@@ -141,7 +141,7 @@ namespace Cadencii.Application.Forms
         /// プログレスバーをこのフォームに追加します．
         /// </summary>
         /// <param name="ui"></param>
-        public void addProgressBar(ProgressBarWithLabelUi ui)
+        public void addProgressBar(ProgressBarWithLabel ui)
         {
             int draft_width = flowLayoutPanel1.Width - 10 - SystemInformation.VerticalScrollBarWidth;
             if (draft_width < 1) {

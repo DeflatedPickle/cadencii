@@ -24,7 +24,7 @@ using Cadencii.Application.Controls;
 namespace Cadencii.Application.Forms
 {
 
-    public class ProgressBarWithLabelUiImpl : UserControlImpl, ProgressBarWithLabelUi
+    public class ProgressBarWithLabelUiImpl : UserControlImpl, ProgressBarWithLabel
     {
         private ProgressBar progressBar1;
         private Label label1;
@@ -36,11 +36,6 @@ namespace Cadencii.Application.Forms
         public ProgressBarWithLabelUiImpl()
         {
             InitializeComponent();
-        }
-
-        public void setWidth(int value)
-        {
-            this.Width = value;
         }
 
         public string Text {

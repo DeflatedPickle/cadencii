@@ -135,8 +135,6 @@
     <Compile Include="app_ui\controls\NumericUpDownEx.cs" />
     <Compile Include="app_ui\controls\PictOverview.cs" />
     <Compile Include="app_ui\controls\PictPianoRoll.cs" />
-    <Compile Include="app_ui\controls\ProgressBarWithLabel.cs" />
-    <Compile Include="app_ui\controls\ProgressBarWithLabelUi.cs" />
     <Compile Include="app_ui\controls\PropertyPanel.cs" />
     <Compile Include="app_ui\controls\PropertyPanelContainer.cs" />
     <Compile Include="app_ui\controls\Rebar.cs" />
@@ -268,6 +266,8 @@
     <Compile Include="app_ui\models\BSplitContainerModel.cs" />
     <Compile Include="app_ui\models\PictOverviewModel.cs" />
     <Compile Include="app_ui\models\PictPianoRollModel.cs" />
+    <Compile Include="app_ui\controls\ProgressBarWithLabelModel.cs" />
+    <Compile Include="app_ui\controls\ProgressBarWithLabel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

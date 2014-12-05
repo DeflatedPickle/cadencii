@@ -86,7 +86,7 @@ namespace Cadencii.Application
     public class FormWorker : IFormWorkerControl
     {
         private FormWorkerUi ptrUi = null;
-        private List<ProgressBarWithLabel> mLabels;
+        private List<ProgressBarWithLabelModel> mLabels;
         private mman mMemManager;
         private List<FormWorkerJobArgument> mArguments;
         private List<BackgroundWorker> mThreads;
@@ -96,7 +96,7 @@ namespace Cadencii.Application
         /// </summary>
 	public FormWorker()
         {
-            mLabels = new List<ProgressBarWithLabel>();
+            mLabels = new List<ProgressBarWithLabelModel>();
             mMemManager = new mman();
             mArguments = new List<FormWorkerJobArgument>();
 
@@ -138,10 +138,10 @@ namespace Cadencii.Application
         public void addJob(Object obj, string method_name, string job_description, double job_amount, Object argument)
         {
             // プログレスバーのUIを作成
-		ProgressBarWithLabelUi ui = ApplicationUIHost.Create<ProgressBarWithLabelUi> ();
-            ProgressBarWithLabel label = new ProgressBarWithLabel();
+		ProgressBarWithLabel ui = ApplicationUIHost.Create<ProgressBarWithLabel> ();
+            ProgressBarWithLabelModel label = new ProgressBarWithLabelModel();
             label.setupUi(ui);
-            label.setText(job_description);
+            label.Text = job_description;
             // フォームのビューにUIを追加
             ptrUi.addProgressBar(ui);
 
@@ -190,9 +190,9 @@ namespace Cadencii.Application
 
         public void workerProgressChanged(int index, int percentage)
         {
-            ProgressBarWithLabel label = mLabels[index];
+            ProgressBarWithLabelModel label = mLabels[index];
             if (label != null) {
-                label.setProgress(percentage);
+                label.Progress = percentage;
             }
             int size = mArguments.Count;
             double total = 0.0;
@@ -215,7 +215,7 @@ namespace Cadencii.Application
 #if DEBUG
             Logger.StdOut("FormWorker#workerCompleted; index=" + index);
 #endif
-            ProgressBarWithLabel label = mLabels[index];
+            ProgressBarWithLabelModel label = mLabels[index];
             ptrUi.removeProgressBar(label.getUi());
             mman.del(label);
             mLabels[index] = null;

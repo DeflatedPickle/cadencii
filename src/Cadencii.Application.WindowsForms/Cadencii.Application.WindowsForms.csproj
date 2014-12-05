@@ -161,9 +161,8 @@
       <DependentUpon>FormMainImpl.cs</DependentUpon>
     </Compile>
     <Compile Include="app_ui\forms\FormNotePropertyImpl.cs" />
-    <Compile Include="app_ui\controls\ProgressBarWithLabelUiImpl.cs" />
     <EmbeddedResource Include="app_ui\controls\ProgressBarWithLabelUiImpl.resx">
-      <DependentUpon>ProgressBarWithLabelUiImpl.cs</DependentUpon>
+      <DependentUpon>ProgressBarWithLabelImpl.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="app_ui\controls\WaveformZoomUiImpl.cs" />
     <Compile Include="app_ui\forms\UpdateCheckFormImpl.cs" />
@@ -177,6 +176,7 @@
     <Compile Include="app_ui\controls\menu\TrackSelectorSingerDropdownMenuItemImpl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="app_ui\controls\ProgressBarWithLabelImpl.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />

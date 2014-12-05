@@ -13,8 +13,8 @@ namespace Cadencii.Application.Forms
 		void show(object obj);
 		bool showDialogTo(UiForm formMainWindow);
 		void applyLanguage();
-		void addProgressBar (ProgressBarWithLabelUi ui);
-		void removeProgressBar (ProgressBarWithLabelUi progressBarWithLabelUi);
+		void addProgressBar (ProgressBarWithLabel ui);
+		void removeProgressBar (ProgressBarWithLabel progressBarWithLabelUi);
 		void setTotalProgress (int i);
 		void Refresh ();
 	}
