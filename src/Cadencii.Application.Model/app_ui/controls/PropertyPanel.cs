@@ -3,7 +3,7 @@ using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application.Controls
 {
-	public interface PropertyPanel : UiControl
+	public interface PropertyPanel : UiUserControl
 	{
 		event CommandExecuteRequiredEventHandler CommandExecuteRequired;
 

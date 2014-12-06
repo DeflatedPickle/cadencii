@@ -74,24 +74,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { throw new NotImplementedException (); }
 		}
 
-		event EventHandler UiControl.Click {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		event EventHandler UiControl.Leave {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		// UiControl
 
 		Cursor UiControl.Cursor {
