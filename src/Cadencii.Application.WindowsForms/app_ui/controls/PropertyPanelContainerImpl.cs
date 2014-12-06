@@ -13,11 +13,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using Cadencii.Gui;
 
-using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
-using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using Cadencii.Gui.Toolkit;
 using cadencii;
 
@@ -26,11 +23,6 @@ namespace Cadencii.Application.Controls
 
     public class PropertyPanelContainerImpl : UserControlImpl, PropertyPanelContainer
     {
-		void PropertyPanelContainer.addComponent (UiControl control)
-		{
-			addComponent ((Control)control.Native);
-		}
-
         public const int _TITLE_HEIGHT = 29;
         public event StateChangeRequiredEventHandler StateChangeRequired;
 
@@ -41,10 +33,10 @@ namespace Cadencii.Application.Controls
             setResources();
         }
 
-        public void addComponent(Control c)
+        public void addComponent(UiControl c)
         {
             panelMain.Controls.Add(c);
-            c.Dock = System.Windows.Forms.DockStyle.Fill;
+            c.Dock = DockStyle.Fill;
         }
 
         public void panelTitle_MouseDoubleClick(Object sender, MouseEventArgs e)
@@ -100,13 +92,13 @@ namespace Cadencii.Application.Controls
             this.panelMain.SizeChanged += new EventHandler(panelMain_SizeChanged);
             this.btnClose.Click += new EventHandler(btnClose_Click);
             this.btnWindow.Click += new EventHandler(btnWindow_Click);
-            this.panelTitle.MouseDoubleClick += new MouseEventHandler(panelTitle_MouseDoubleClick);
+            this.panelTitle.MouseDoubleClick += panelTitle_MouseDoubleClick;
         }
 
         private void setResources()
         {
-            this.btnClose.Image = cadencii.Properties.Resources.cross_small;
-			this.btnWindow.Image = cadencii.Properties.Resources.chevron_small_collapse;
+			this.btnClose.Image = cadencii.Properties.Resources.cross_small.ToAwt ();
+			this.btnWindow.Image = cadencii.Properties.Resources.chevron_small_collapse.ToAwt ();
         }
 
         #region ui impl for C#
@@ -135,72 +127,17 @@ namespace Cadencii.Application.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelMain = new System.Windows.Forms.Panel();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnWindow = new System.Windows.Forms.Button();
-            this.panelTitle = new System.Windows.Forms.Panel();
-            this.panelTitle.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelMain
-            // 
-            this.panelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelMain.Location = new System.Drawing.Point(0, 29);
-            this.panelMain.Margin = new System.Windows.Forms.Padding(0);
-            this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(159, 283);
-            this.panelMain.TabIndex = 0;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(133, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(23, 23);
-            this.btnClose.TabIndex = 1;
-            this.btnClose.UseVisualStyleBackColor = true;
-            // 
-            // btnWindow
-            // 
-            this.btnWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnWindow.Location = new System.Drawing.Point(104, 3);
-            this.btnWindow.Name = "btnWindow";
-            this.btnWindow.Size = new System.Drawing.Size(23, 23);
-            this.btnWindow.TabIndex = 2;
-            this.btnWindow.UseVisualStyleBackColor = true;
-            // 
-            // panelTitle
-            // 
-            this.panelTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelTitle.Controls.Add(this.btnWindow);
-            this.panelTitle.Controls.Add(this.btnClose);
-            this.panelTitle.Location = new System.Drawing.Point(0, 0);
-            this.panelTitle.Margin = new System.Windows.Forms.Padding(0);
-            this.panelTitle.Name = "panelTitle";
-            this.panelTitle.Size = new System.Drawing.Size(159, 29);
-            this.panelTitle.TabIndex = 3;
-            // 
-            // PropertyPanelContainer
-            // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.Controls.Add(this.panelTitle);
-            this.Controls.Add(this.panelMain);
-            this.Name = "PropertyPanelContainer";
-            this.Size = new System.Drawing.Size(159, 312);
-            this.panelTitle.ResumeLayout(false);
+			ApplicationUIHost.Instance.ApplyXml (this, "PropertyPanelContainer.xml");
             this.ResumeLayout(false);
-
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panelMain;
-        private Button btnClose;
-        private Button btnWindow;
-        private System.Windows.Forms.Panel panelTitle;
+        private UiPanel panelMain;
+        private UiButton btnClose;
+        private UiButton btnWindow;
+        private UiPanel panelTitle;
         #endregion
     }
 

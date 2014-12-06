@@ -1,0 +1,39 @@
+﻿<CustomControl id="PropertyPanelContainer"
+            AutoScaleMode = "None"
+            Name = "PropertyPanelContainer"
+            Size = "(159, 312)"
+            >
+    <Panel id="panelMain"             
+            Anchor = "Top,Bottom,Left,Right"
+            Location = "(0, 29)"
+            Margin = "(0)"
+            Name = "panelMain"
+            Size = "(159, 283)"
+            TabIndex = "0"
+             />
+	<Panel id="panelTitle"             
+            Anchor = "Top,Left,Right"
+            Location = "(0, 0)"
+            Margin = "(0)"
+            Name = "panelTitle"
+            Size = "(159, 29)"
+            TabIndex = "3"
+            >
+		<Button id="btnClose"             
+	            Anchor = "Top,Right"
+	            Location = "(133, 3)"
+	            Name = "btnClose"
+	            Size = "(23, 23)"
+	            TabIndex = "1"
+	            UseVisualStyleBackColor = "true"
+	             />
+	    <Button id="btnWindow"
+	            Anchor = "(((Top | Right)))"
+	            Location = "(104, 3)"
+	            Name = "btnWindow"
+	            Size = "(23, 23)"
+	            TabIndex = "2"
+	            UseVisualStyleBackColor = "true"
+	             />
+    </Panel>
+</CustomControl>

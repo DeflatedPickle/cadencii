@@ -456,5 +456,8 @@
       <LogicalName>BSplitContainer.xml</LogicalName>
       <DependentUpon>BSplitContainer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="app_ui\controls\PropertyPanelContainer.xml">
+      <LogicalName>PropertyPanelContainer.xml</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
