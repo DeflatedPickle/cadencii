@@ -8,6 +8,7 @@ namespace Cadencii.Application.Controls
 	{
 		void addComponent (UiControl propertyPanel);
 		event StateChangeRequiredEventHandler StateChangeRequired;
+		void setResources (UiButton btnClose, UiButton btnWindow);
 	}
 }
 

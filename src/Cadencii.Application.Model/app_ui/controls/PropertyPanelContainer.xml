@@ -3,7 +3,7 @@
             Name = "PropertyPanelContainer"
             Size = "(159, 312)"
             >
-    <Panel id="panelMain"             
+    <UiPanel id="panelMain"             
             Anchor = "Top,Bottom,Left,Right"
             Location = "(0, 29)"
             Margin = "(0)"
@@ -11,7 +11,7 @@
             Size = "(159, 283)"
             TabIndex = "0"
              />
-	<Panel id="panelTitle"             
+	<UiPanel id="panelTitle"             
             Anchor = "Top,Left,Right"
             Location = "(0, 0)"
             Margin = "(0)"
@@ -19,7 +19,7 @@
             Size = "(159, 29)"
             TabIndex = "3"
             >
-		<Button id="btnClose"             
+		<UiButton id="btnClose"             
 	            Anchor = "Top,Right"
 	            Location = "(133, 3)"
 	            Name = "btnClose"
@@ -27,13 +27,13 @@
 	            TabIndex = "1"
 	            UseVisualStyleBackColor = "true"
 	             />
-	    <Button id="btnWindow"
-	            Anchor = "(((Top | Right)))"
+	    <UiButton id="btnWindow"
+	            Anchor = "Top,Right"
 	            Location = "(104, 3)"
 	            Name = "btnWindow"
 	            Size = "(23, 23)"
 	            TabIndex = "2"
 	            UseVisualStyleBackColor = "true"
 	             />
-    </Panel>
+    </UiPanel>
 </CustomControl>
