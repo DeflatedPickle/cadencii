@@ -82,6 +82,7 @@
     <Compile Include="toolkit\LabelImpl.cs" />
     <Compile Include="toolkit\CheckBoxImpl.cs" />
     <Compile Include="toolkit\GroupBoxImpl.cs" />
+    <Compile Include="toolkit\PropertyGridImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

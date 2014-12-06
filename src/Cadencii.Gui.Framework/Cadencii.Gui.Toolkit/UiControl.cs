@@ -74,6 +74,7 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler<MouseEventArgs> MouseWheel;
 		event EventHandler Click;
 		event EventHandler Enter;
+		event EventHandler Leave;
 		event EventHandler SizeChanged;
 		event EventHandler Resize;
 		event EventHandler ImeModeChanged;

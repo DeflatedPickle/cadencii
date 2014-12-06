@@ -13,7 +13,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using cadencii.apputil;
 using cadencii.java.util;
@@ -51,21 +50,21 @@ namespace Cadencii.Application.Controls
             m_editing = value;
         }
 
-        private void popGridItemExpandStatus()
+        private void popUiGridItemExpandStatus()
         {
             if (propertyGrid.SelectedGridItem == null) {
                 return;
             }
 
-            GridItem root = findRootGridItem(propertyGrid.SelectedGridItem);
+            UiGridItem root = findRootGridItem(propertyGrid.SelectedGridItem);
             if (root == null) {
                 return;
             }
 
-            popGridItemExpandStatusCore(root);
+            popUiGridItemExpandStatusCore(root);
         }
 
-        private void popGridItemExpandStatusCore(GridItem item)
+        private void popUiGridItemExpandStatusCore(UiGridItem item)
         {
             if (item.Expandable) {
                 string s = getGridItemIdentifier(item);
@@ -80,26 +79,26 @@ namespace Cadencii.Application.Controls
                     }
                 }
             }
-            foreach (GridItem child in item.GridItems) {
-                popGridItemExpandStatusCore(child);
+            foreach (UiGridItem child in item.GridItems) {
+                popUiGridItemExpandStatusCore(child);
             }
         }
 
-        private void pushGridItemExpandStatus()
+        private void pushUiGridItemExpandStatus()
         {
             if (propertyGrid.SelectedGridItem == null) {
                 return;
             }
 
-            GridItem root = findRootGridItem(propertyGrid.SelectedGridItem);
+            UiGridItem root = findRootGridItem(propertyGrid.SelectedGridItem);
             if (root == null) {
                 return;
             }
 
-            pushGridItemExpandStatusCore(root);
+            pushUiGridItemExpandStatusCore(root);
         }
 
-        private void pushGridItemExpandStatusCore(GridItem item)
+        private void pushUiGridItemExpandStatusCore(UiGridItem item)
         {
             if (item.Expandable) {
                 string s = getGridItemIdentifier(item);
@@ -118,8 +117,8 @@ namespace Cadencii.Application.Controls
                     EditorManager.editorConfig.PropertyWindowStatus.ExpandStatus.Add(new ValuePairOfStringBoolean(s, item.Expanded));
                 }
             }
-            foreach (GridItem child in item.GridItems) {
-                pushGridItemExpandStatusCore(child);
+            foreach (UiGridItem child in item.GridItems) {
+                pushUiGridItemExpandStatusCore(child);
             }
         }
 
@@ -128,8 +127,8 @@ namespace Cadencii.Application.Controls
             m_track = track;
             m_items.Clear();
 
-            // 現在のGridItemの展開状態を取得
-            pushGridItemExpandStatus();
+            // 現在のUiGridItemの展開状態を取得
+            pushUiGridItemExpandStatus();
 
             Object[] objs = new Object[EditorManager.itemSelection.getEventCount()];
             int i = -1;
@@ -139,11 +138,11 @@ namespace Cadencii.Application.Controls
             }
 
             propertyGrid.SelectedObjects = objs;
-            popGridItemExpandStatus();
+            popUiGridItemExpandStatus();
             setEditing(false);
         }
 
-        public void propertyGrid_PropertyValueChanged(Object s, PropertyValueChangedEventArgs e)
+        public void propertyGrid_PropertyValueChanged()
         {
             Object[] selobj = propertyGrid.SelectedObjects;
             int len = selobj.Length;
@@ -164,11 +163,11 @@ namespace Cadencii.Application.Controls
         }
 
         /// <summary>
-        /// itemが属しているGridItemツリーの基点にある親を探します
+        /// itemが属しているUiGridItemツリーの基点にある親を探します
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        private GridItem findRootGridItem(GridItem item)
+        private UiGridItem findRootGridItem(UiGridItem item)
         {
             if (item.Parent == null) {
                 return item;
@@ -178,11 +177,11 @@ namespace Cadencii.Application.Controls
         }
 
         /// <summary>
-        /// itemが属しているGridItemツリーの中で，itemを特定するための文字列を取得します
+        /// itemが属しているUiGridItemツリーの中で，itemを特定するための文字列を取得します
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        private string getGridItemIdentifier(GridItem item)
+        private string getGridItemIdentifier(UiGridItem item)
         {
             if (item.Parent == null) {
                 if (item.PropertyDescriptor != null) {
@@ -199,7 +198,7 @@ namespace Cadencii.Application.Controls
             }
         }
 
-        private void propertyGrid_SelectedGridItemChanged(Object sender, SelectedGridItemChangedEventArgs e)
+        private void propertyGrid_SelectedGridItemChanged()
         {
             setEditing(true);
         }
@@ -216,10 +215,10 @@ namespace Cadencii.Application.Controls
 
         private void registerEventHandlers()
         {
-            propertyGrid.SelectedGridItemChanged += new SelectedGridItemChangedEventHandler(propertyGrid_SelectedGridItemChanged);
-            propertyGrid.Leave += new EventHandler(propertyGrid_Leave);
-            propertyGrid.Enter += new EventHandler(propertyGrid_Enter);
-            propertyGrid.PropertyValueChanged += new PropertyValueChangedEventHandler(propertyGrid_PropertyValueChanged);
+			propertyGrid.SelectedGridItemChanged += (o,e) => propertyGrid_SelectedGridItemChanged ();
+            propertyGrid.Leave += propertyGrid_Leave;
+            propertyGrid.Enter += propertyGrid_Enter;
+			propertyGrid.PropertyValueChanged += (o,e) => propertyGrid_PropertyValueChanged ();
         }
 
         private void setResources()
@@ -252,33 +251,34 @@ namespace Cadencii.Application.Controls
         /// </summary>
         private void InitializeComponent()
         {
-            this.propertyGrid = new System.Windows.Forms.PropertyGrid();
+			this.propertyGrid = ApplicationUIHost.Create<UiPropertyGrid>();
             this.SuspendLayout();
             // 
             // propertyGrid
             // 
-            this.propertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGrid.Dock = DockStyle.Fill;
             this.propertyGrid.HelpVisible = false;
-            this.propertyGrid.Location = new System.Drawing.Point(0, 0);
+            this.propertyGrid.Location = new Point(0, 0);
             this.propertyGrid.Name = "propertyGrid";
-            this.propertyGrid.PropertySort = System.Windows.Forms.PropertySort.Categorized;
-            this.propertyGrid.Size = new System.Drawing.Size(191, 298);
+            this.propertyGrid.PropertySort = PropertySort.Categorized;
+			this.propertyGrid.Size = new Dimension(191, 298);
             this.propertyGrid.TabIndex = 0;
             this.propertyGrid.ToolbarVisible = false;
             // 
             // PropertyPanel
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.Controls.Add(this.propertyGrid);
-            this.Name = "PropertyPanel";
-            this.Size = new System.Drawing.Size(191, 298);
-            this.ResumeLayout(false);
+			var ctrl = (UiUserControl) this;
+			ctrl.AutoScaleMode = Cadencii.Gui.Toolkit.AutoScaleMode.None;
+			ctrl.Controls.Add(this.propertyGrid);
+			ctrl.Name = "PropertyPanel";
+			ctrl.Size = new Dimension(191, 298);
+			ctrl.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PropertyGrid propertyGrid;
+        UiPropertyGrid propertyGrid;
         #endregion
     }
 

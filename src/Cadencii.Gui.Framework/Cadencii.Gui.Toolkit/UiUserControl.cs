@@ -7,6 +7,9 @@ namespace Cadencii.Gui.Toolkit
 	{
 		BorderStyle BorderStyle { get; set; }
 		void AddControl (UiControl control);
+
+		// actually ContainerControl member.
+		AutoScaleMode AutoScaleMode { get; set; }
 	}
 	
 }
