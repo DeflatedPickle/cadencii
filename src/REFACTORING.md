@@ -66,6 +66,19 @@ Milestones
 - Reduce Win32-ism.
 - Modify GUI framework to better fit with either WPF or Xwt.
 
+
+Control Neutralization
+----------------------
+
+Some controls are strongly tied to Windows API. Depending on the controls,
+they don't really have to be ported. That includes:
+
+- Rebar* : it is basically a toolbar, which is movable. This can be just
+  a toolbar.
+- IconParader : it is used only in the splash screen, which is not
+  significant at all.
+
+
 Application Model and Implementation
 ------------------------------------
 

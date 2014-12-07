@@ -219,14 +219,14 @@ namespace Cadencii.Application.Models
 					return;
 				}
 
-				try {
+				//try {
 					PolylineDrawer commonDrawer = getCommonPolylineDrawer(g);
 					VsqFileEx vsq = MusicManager.getVsqFile();
 					int selected = EditorManager.Selected;
 					VsqTrack vsq_track = vsq.Track[selected];
 
 					var p = Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition();
-					var mouse_position = ((UiControl) this).PointToClient(new Point(p.X, p.Y));
+					var mouse_position = control.PointToClient(new Point(p.X, p.Y));
 					int stdx = EditorManager.MainWindow.Model.StartToDrawX;
 					int stdy = EditorManager.MainWindow.Model.StartToDrawY;
 					int key_width = EditorManager.keyWidth;
@@ -1224,11 +1224,12 @@ namespace Cadencii.Application.Models
 						g.drawLine(marker_x, 0, marker_x, Height);
 						g.setStroke(getStrokeDefault());
 					}
+				/*
 				} catch (Exception ex) {
 					#if DEBUG
 					Logger.StdErr("PictPianoRoll#paint; ex=" + ex);
 					#endif
-				}
+				}*/
 			}
 		}
 
