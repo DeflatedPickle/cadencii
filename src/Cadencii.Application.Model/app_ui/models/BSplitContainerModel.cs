@@ -62,7 +62,7 @@ namespace Cadencii.Application.Models
 			Panel2.SizeChanged += m_panel2_SizeChanged;
 			Panel1.BorderStyleChanged += m_panel1_BorderStyleChanged;
 			Panel1.SizeChanged += m_panel1_SizeChanged;
-			control.Paint += (o, e) => this.SplitContainerEx_Paint (o, new Cadencii.Gui.Toolkit.PaintEventArgs () { Graphics = new Cadencii.Gui.Graphics () { NativeGraphics = e.Graphics } });
+			control.Paint += SplitContainerEx_Paint;
 
 			if (m_orientation == Cadencii.Gui.Toolkit.Orientation.Horizontal) {
 				Splitter.Cursor = Cadencii.Gui.Cursors.VSplit;
@@ -494,7 +494,7 @@ namespace Cadencii.Application.Models
 			if (m_splitter_fixed) {
 				return;
 			}
-			var mouse_local = ((UiControl) this).PointToClient(Screen.Instance.GetScreenMousePosition ());
+			var mouse_local = control.PointToClient(Screen.Instance.GetScreenMousePosition ());
 			if (m_splitter_moving) {
 				int new_distance = m_splitter_distance;
 				if (m_orientation == Orientation.Horizontal) {
