@@ -37,7 +37,7 @@ namespace Cadencii.Gui.Toolkit
 				get { return item.PropertyDescriptor; }
 			}
 			UiGridItem UiGridItem.Parent {
-				get { return new GridItemImpl (item.Parent); }
+				get { return item.Parent == null ? null : new GridItemImpl (item.Parent); }
 			}
 			bool UiGridItem.Expandable {
 				get { return item.Expandable; }
