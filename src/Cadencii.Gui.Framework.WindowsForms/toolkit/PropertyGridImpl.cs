@@ -25,6 +25,8 @@ namespace Cadencii.Gui.Toolkit
 		{
 			public GridItemImpl (System.Windows.Forms.GridItem item)
 			{
+                if (item == null)
+                    throw new ArgumentNullException("item");
 				this.item = item;
 			}
 
@@ -56,7 +58,7 @@ namespace Cadencii.Gui.Toolkit
 		// UiPropertyGrid
 
 		UiGridItem UiPropertyGrid.SelectedGridItem {
-			get { return new GridItemImpl (SelectedGridItem); }
+			get { return SelectedGridItem == null ? null : new GridItemImpl (SelectedGridItem); }
 		}
 
 		PropertySort UiPropertyGrid.PropertySort {

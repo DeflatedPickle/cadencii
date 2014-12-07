@@ -151,7 +151,7 @@ namespace Cadencii.Application.Forms
         public void btnBrowse_Click(Object sender, EventArgs e)
         {
             folderBrowser.SelectedPath = txtDir.Text;
-            if (folderBrowser.ShowDialog(this) != DialogResult.OK) {
+            if (folderBrowser.ShowDialog(this) != System.Windows.Forms.DialogResult.OK) {
                 return;
             }
             txtDir.Text = folderBrowser.SelectedPath;

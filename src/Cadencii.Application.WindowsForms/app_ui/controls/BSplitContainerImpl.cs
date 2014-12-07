@@ -67,7 +67,7 @@ namespace Cadencii.Application.Controls
 			set { model.Panel2MinSize = value; }
 		}
 
-		public Cadencii.Gui.Dimension MinimumSize {
+		Cadencii.Gui.Dimension BSplitContainer.MinimumSize {
 			get { return base.MinimumSize.ToAwt (); }
 			set { base.MinimumSize = value.ToWF (); }
 		}
