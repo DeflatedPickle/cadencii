@@ -23,6 +23,16 @@ namespace Cadencii.Gui.Toolkit
 	{
 		// UiUserControl
 
+		public bool UserPaint {
+			get { return this.GetStyle (System.Windows.Forms.ControlStyles.UserPaint); }
+			set { this.SetStyle (System.Windows.Forms.ControlStyles.UserPaint, value); }
+		}
+
+		public bool AllPaintingInWmPaint {
+			get { return this.GetStyle (System.Windows.Forms.ControlStyles.AllPaintingInWmPaint); }
+			set { this.SetStyle (System.Windows.Forms.ControlStyles.AllPaintingInWmPaint, value); }
+		}
+
 		void UiUserControl.AddControl (UiControl c)
 		{
 			Controls.Add ((System.Windows.Forms.Control) c.Native);
@@ -36,6 +46,16 @@ namespace Cadencii.Gui.Toolkit
 		AutoScaleMode UiUserControl.AutoScaleMode {
 			get { return (AutoScaleMode)AutoScaleMode; }
 			set { AutoScaleMode = (System.Windows.Forms.AutoScaleMode)value; }
+		}
+
+		bool UiUserControl.DoubleBuffered {
+			get { return DoubleBuffered; }
+			set { DoubleBuffered = true; }
+		}
+
+		Dimension UiUserControl.AutoScaleDimensions {
+			get { return new Dimension ((int) AutoScaleDimensions.Width, (int) AutoScaleDimensions.Height); }
+			set { AutoScaleDimensions = new System.Drawing.SizeF (value.Width, value.Height); }
 		}
 
 		// UiControl

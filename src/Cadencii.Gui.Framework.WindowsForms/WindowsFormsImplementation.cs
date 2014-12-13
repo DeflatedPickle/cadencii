@@ -83,6 +83,10 @@ namespace Cadencii.Gui
 			return (Cadencii.Gui.Toolkit.Keys) Control.ModifierKeys;
 		}
 
+		public override int PlatformMouseHoverTime {
+			get { return (int)(System.Windows.Forms.SystemInformation.MouseHoverTime * 0.8); }
+		}
+
 		/// <summary>
 		/// java:コンポーネントのnameプロパティを返します。C#:コントロールのNameプロパティを返します。
 		/// objがnullだったり、型がComponent/Controlでない場合は空文字を返します。

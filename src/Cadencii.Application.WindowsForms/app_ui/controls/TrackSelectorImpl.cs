@@ -17,7 +17,6 @@
 using System;
 using System.Threading;
 using System.Linq;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using cadencii;
 using cadencii.apputil;
@@ -31,11 +30,6 @@ using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
 
 using Keys = Cadencii.Gui.Toolkit.Keys;
-using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
-using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
-using MouseButtons = System.Windows.Forms.MouseButtons;
-using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
-using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using NMouseButtons = Cadencii.Gui.Toolkit.MouseButtons;
 using NMouseEventArgs = Cadencii.Gui.Toolkit.MouseEventArgs;
 using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventArgs>;
@@ -62,7 +56,7 @@ namespace Cadencii.Application.Controls
 
 		BezierPoint TrackSelector.HandleMouseMoveForBezierMove (Cadencii.Gui.Toolkit.MouseEventArgs e, BezierPickedSide picked)
 		{
-			return HandleMouseMoveForBezierMove (e.ToWF (), picked);
+			return HandleMouseMoveForBezierMove (e, picked);
 		}
 
 		void TrackSelector.setEditingPointID (int id)
@@ -72,12 +66,12 @@ namespace Cadencii.Application.Controls
 
 		void TrackSelector.OnMouseDown (object sender, Cadencii.Gui.Toolkit.MouseEventArgs e)
 		{
-			onMouseDown (sender, e.ToWF ());
+			onMouseDown (sender, e);
 		}
 
 		void TrackSelector.OnMouseUp (object sender, Cadencii.Gui.Toolkit.MouseEventArgs e)
 		{
-			onMouseUp (sender, e.ToWF ());
+			onMouseUp (sender, e);
 		}
 
 
@@ -292,8 +286,8 @@ namespace Cadencii.Application.Controls
         /// </summary>
         public TrackSelectorImpl(FormMainImpl main_window)
         {
-            this.SetStyle(System.Windows.Forms.ControlStyles.DoubleBuffer, true);
-            this.SetStyle(System.Windows.Forms.ControlStyles.UserPaint, true);
+			this.DoubleBuffered = true;
+			this.UserPaint = true;
             InitializeComponent();
             mMainWindow = main_window;
             registerEventHandlers();
@@ -490,7 +484,7 @@ namespace Cadencii.Application.Controls
 
         public void setPreferredSize(Cadencii.Gui.Dimension size)
         {
-			base.Size =new System.Drawing.Size(size.Width, size.Height);
+			this.Size =new Dimension(size.Width, size.Height);
         }
 
 		public Cadencii.Gui.Font Font {
@@ -721,7 +715,7 @@ namespace Cadencii.Application.Controls
         /// オーバーライドされます
         /// </summary>
         /// <param name="e"></param>
-        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
+		protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
         {
             Graphics g = getGraphics();
 		g.NativeGraphics = e.Graphics;
@@ -996,8 +990,8 @@ namespace Cadencii.Application.Controls
                             }
                             if (mSelectedCurve.equals(CurveType.PIT)) {
                                 #region PBSの値に応じて，メモリを記入する
-								System.Drawing.Drawing2D.SmoothingMode old = ((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode;
-								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+								var old = g.SmoothingMode;
+								g.SmoothingMode = SmoothingMode.AntiAlias;
                                 Color nrml = new Color(0, 0, 0, 190);
                                 Color dash = new Color(0, 0, 0, 128);
                                 Stroke nrml_stroke = new Stroke();
@@ -1068,7 +1062,7 @@ namespace Cadencii.Application.Controls
                                     g.setColor(pen);
                                     g.drawLine(x10, y, x20, y);
                                 }
-								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = old;
+								g.SmoothingMode = old;
                                 #endregion
                             }
                             drawAttachedCurve(g, vsq.AttachedCurves.get(EditorManager.Selected - 1).get(mSelectedCurve));
@@ -1109,9 +1103,9 @@ namespace Cadencii.Application.Controls
                                 int yini = pt.Y;
                                 g.setColor(Cadencii.Gui.Colors.Orange);
                                 g.setStroke(getStroke2px());
-								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+								g.SmoothingMode = SmoothingMode.AntiAlias;
                                 g.drawLine(xini, yini, EditorManager.xCoordFromClocks(clock_at_mouse), YCoordFromValue(value));
-								((System.Drawing.Graphics) g.NativeGraphics).SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.Default;
+								g.SmoothingMode = SmoothingMode.Default;
                                 g.setStroke(getStrokeDefault());
                             }
 #endif
@@ -2411,15 +2405,15 @@ namespace Cadencii.Application.Controls
 
         public void TrackSelector_Load(Object sender, EventArgs e)
         {
-            this.SetStyle(System.Windows.Forms.ControlStyles.DoubleBuffer, true);
-            this.SetStyle(System.Windows.Forms.ControlStyles.UserPaint, true);
-            this.SetStyle(System.Windows.Forms.ControlStyles.AllPaintingInWmPaint, true);
+			DoubleBuffered = true;
+			UserPaint = true;
+			AllPaintingInWmPaint = true;
         }
 
         public void TrackSelector_MouseClick(Object sender, MouseEventArgs e)
         {
             if (CurveVisible) {
-                if (e.Button == MouseButtons.Left) {
+				if (e.Button == Cadencii.Gui.Toolkit.MouseButtons.Left) {
                     // カーブの種類一覧上で発生したイベントかどうかを検査
                     for (int i = 0; i < mViewingCurves.Count; i++) {
                         CurveType curve = mViewingCurves[i];
@@ -2429,16 +2423,16 @@ namespace Cadencii.Application.Controls
                             return;
                         }
                     }
-                } else if (e.Button == MouseButtons.Right) {
+                } else if (e.Button == Cadencii.Gui.Toolkit.MouseButtons.Right) {
                     if (0 <= e.X && e.X <= EditorManager.keyWidth &&
                          0 <= e.Y && e.Y <= Height - 2 * TS.OFFSET_TRACK_TAB) {
                         foreach (var tsi in cmenuCurve.Items) {
-                            if (tsi is ToolStripMenuItem) {
-                                ToolStripMenuItem tsmi = (ToolStripMenuItem)tsi;
+                            if (tsi is UiToolStripMenuItem) {
+                                var tsmi = (UiToolStripMenuItem)tsi;
                                 tsmi.Checked = false;
                                 foreach (var tsi2 in tsmi.DropDownItems) {
-                                    if (tsi2 is System.Windows.Forms.ToolStripMenuItem) {
-                                        System.Windows.Forms.ToolStripMenuItem tsmi2 = (System.Windows.Forms.ToolStripMenuItem)tsi2;
+                                    if (tsi2 is UiToolStripMenuItem) {
+                                        var tsmi2 = (UiToolStripMenuItem) tsi2;
                                         tsmi2.Checked = false;
                                     }
                                 }
@@ -2810,7 +2804,7 @@ namespace Cadencii.Application.Controls
             }
             mMouseValue = value;
 
-            if (e.Button == MouseButtons.None) {
+            if (e.Button == Cadencii.Gui.Toolkit.MouseButtons.None) {
                 return;
             }
             int stdx = EditorManager.MainWindow.Model.StartToDrawX;
@@ -2833,7 +2827,7 @@ namespace Cadencii.Application.Controls
                 clock = vsq.getPreMeasure();
             }
 
-            if (e.Button == MouseButtons.Left &&
+            if (e.Button == Cadencii.Gui.Toolkit.MouseButtons.Left &&
                  0 <= e.Y && e.Y <= Height - 2 * TS.OFFSET_TRACK_TAB &&
                  mMouseDownMode == MouseDownMode.CURVE_EDIT) {
                 EditTool selected_tool = EditorManager.SelectedTool;
@@ -3061,7 +3055,7 @@ namespace Cadencii.Application.Controls
 
         private void processMouseDownSelectRegion(MouseEventArgs e)
         {
-            if (((Keys) Control.ModifierKeys & Keys.Control) != Keys.Control) {
+			if ((AwtHost.ModifierKeys & Keys.Control) != Keys.Control) {
                 EditorManager.itemSelection.clearPoint();
             }
 
@@ -3111,7 +3105,7 @@ namespace Cadencii.Application.Controls
                 return;
             }
             int stdx = EditorManager.MainWindow.Model.StartToDrawX;
-            mModifierOnMouseDown = (Keys) Control.ModifierKeys;
+			mModifierOnMouseDown = AwtHost.ModifierKeys;
             int max = mSelectedCurve.getMaximum();
             int min = mSelectedCurve.getMinimum();
             int value = ValueFromYCoord(e.Y);
@@ -3122,7 +3116,7 @@ namespace Cadencii.Application.Controls
             }
 
             if (height - TS.OFFSET_TRACK_TAB <= e.Y && e.Y < height) {
-                if (e.Button == MouseButtons.Left) {
+                if (e.Button == Cadencii.Gui.Toolkit.MouseButtons.Left) {
                     #region MouseDown occured on track list
                     mMouseDownMode = MouseDownMode.TRACK_LIST;
                     //EditorManager.IsCurveSelectedIntervalEnabled = false;
@@ -3194,7 +3188,7 @@ namespace Cadencii.Application.Controls
                             } else {
                                 EditorManager.itemSelection.addEvent(ve.InternalID);
                             }
-                        } else if (((Keys) Control.ModifierKeys & Keys.Shift) == Keys.Shift) {
+                        } else if ((AwtHost.ModifierKeys & Keys.Shift) == Keys.Shift) {
                             int last_clock = EditorManager.itemSelection.getLastEvent().original.Clock;
                             int tmin = Math.Min(ve.Clock, last_clock);
                             int tmax = Math.Max(ve.Clock, last_clock);
@@ -3246,7 +3240,7 @@ namespace Cadencii.Application.Controls
                 CDebug.WriteLine("    clock_inner_note=" + clock_inner_note);
 #endif
                 if (EditorManager.keyWidth <= e.X) {
-                    if (e.Button == MouseButtons.Left && !mSpaceKeyDowned) {
+                    if (e.Button == Cadencii.Gui.Toolkit.MouseButtons.Left && !mSpaceKeyDowned) {
                         mMouseDownMode = MouseDownMode.CURVE_EDIT;
                         int quantized_clock = clock;
                         int unit = EditorManager.getPositionQuantizeClock();
@@ -3426,7 +3420,7 @@ namespace Cadencii.Application.Controls
                                         }
                                         EditorManager.itemSelection.clearEvent();
                                         EditorManager.itemSelection.addEventAll(list);
-                                    } else if (((Keys) Control.ModifierKeys & Keys.Shift) == Keys.Shift) {
+                                    } else if ((AwtHost.ModifierKeys & Keys.Shift) == Keys.Shift) {
                                         // clicked with Shift key
                                         SelectedEventEntry last_selected = EditorManager.itemSelection.getLastEvent();
                                         if (last_selected != null) {
@@ -3642,7 +3636,7 @@ namespace Cadencii.Application.Controls
                             }
                             #endregion
                         }
-                    } else if (e.Button == MouseButtons.Right) {
+                    } else if (e.Button == Cadencii.Gui.Toolkit.MouseButtons.Right) {
                         if (EditorManager.isCurveMode()) {
                             if (!mSelectedCurve.equals(CurveType.VEL) && !mSelectedCurve.equals(CurveType.Env)) {
                                 List<BezierChain> dict = MusicManager.getVsqFile().AttachedCurves.get(EditorManager.Selected - 1).get(mSelectedCurve);
@@ -3690,7 +3684,7 @@ namespace Cadencii.Application.Controls
             }
             int px_shift = TS.DOT_WID + EditorManager.editorConfig.PxToleranceBezier;
             int px_width = px_shift * 2 + 1;
-            Keys modifier = (Keys) Control.ModifierKeys;
+            Keys modifier = AwtHost.ModifierKeys;
 
             int track = EditorManager.Selected;
             bool too_near = false; // clicked position is too near to existing bezier points
@@ -4042,7 +4036,7 @@ namespace Cadencii.Application.Controls
             if (mMouseDownMode == MouseDownMode.BEZIER_ADD_NEW ||
                  mMouseDownMode == MouseDownMode.BEZIER_MODE ||
                  mMouseDownMode == MouseDownMode.BEZIER_EDIT) {
-                if (e.Button == MouseButtons.Left && sender is TrackSelector) {
+                if (e.Button == Cadencii.Gui.Toolkit.MouseButtons.Left && sender is TrackSelector) {
                     int chain_id = EditorManager.itemSelection.getLastBezier().chainID;
                     BezierChain edited = (BezierChain)vsq.AttachedCurves.get(selected - 1).getBezierChain(mSelectedCurve, chain_id).clone();
                     if (mMouseDownMode == MouseDownMode.BEZIER_ADD_NEW) {
@@ -4088,7 +4082,7 @@ namespace Cadencii.Application.Controls
                 }
             } else if (mMouseDownMode == MouseDownMode.CURVE_EDIT ||
                       mMouseDownMode == MouseDownMode.VEL_WAIT_HOVER) {
-                if (e.Button == MouseButtons.Left) {
+                if (e.Button == Cadencii.Gui.Toolkit.MouseButtons.Left) {
                     if (EditorManager.SelectedTool == EditTool.ARROW) {
                         #region Arrow
                         if (mSelectedCurve.equals(CurveType.Env)) {
@@ -5031,7 +5025,7 @@ namespace Cadencii.Application.Controls
 
         private void MouseHoverEventGenerator()
         {
-            Thread.Sleep((int)(System.Windows.Forms.SystemInformation.MouseHoverTime * 0.8));
+            Thread.Sleep(AwtHost.MouseHoverTime);
             Invoke(new EventHandler(TrackSelector_MouseHover));
         }
 
@@ -5048,7 +5042,7 @@ namespace Cadencii.Application.Controls
             int width = Width;
             int key_width = EditorManager.keyWidth;
 
-            if (e.Button == MouseButtons.Left) {
+            if (e.Button == Cadencii.Gui.Toolkit.MouseButtons.Left) {
                 if (0 <= e.Y && e.Y <= height - 2 * TS.OFFSET_TRACK_TAB) {
                     #region MouseDown occured on curve-pane
                     if (key_width <= e.X && e.X <= width) {
@@ -5256,7 +5250,7 @@ namespace Cadencii.Application.Controls
                             cmenuSinger.SingerChangeExists = false;
                             cmenuSinger.Clock = clock;
                             foreach (var item in cmenuSinger.Items) {
-                                var tsmi = item as ToolStripMenuItem;
+                                var tsmi = item as UiToolStripMenuItem;
                                 tsmi.Checked = false;
                             }
                             cmenuSinger.Show(this, e.X, e.Y);
@@ -5427,7 +5421,7 @@ namespace Cadencii.Application.Controls
 
         private void toolTip_Draw(Object sender, Cadencii.Gui.Toolkit.DrawToolTipEventArgs e)
         {
-            if (!(sender is System.Windows.Forms.ToolTip)) {
+            if (!(sender is UiToolTip)) {
                 return;
             }
 
@@ -5512,13 +5506,14 @@ namespace Cadencii.Application.Controls
             this.cmenuCurveEnvelope.Click += new EventHandler(cmenuCurveCommon_Click);
             this.Load += new EventHandler(this.TrackSelector_Load);
 
-            this.MouseMove += new MouseEventHandler(TrackSelector_MouseMove);
-            this.MouseDoubleClick += new MouseEventHandler(TrackSelector_MouseDoubleClick);
-            this.KeyUp += new KeyEventHandler(TrackSelector_KeyUp);
-            this.MouseClick += new MouseEventHandler(TrackSelector_MouseClick);
-            this.MouseDown += new MouseEventHandler(onMouseDown);
-            this.MouseUp += new MouseEventHandler(onMouseUp);
-            this.KeyDown += new KeyEventHandler(TrackSelector_KeyDown);
+			UiUserControl ctrl = this;
+			ctrl.MouseMove += TrackSelector_MouseMove;
+			ctrl.MouseDoubleClick += TrackSelector_MouseDoubleClick;
+			ctrl.KeyUp += TrackSelector_KeyUp;
+			ctrl.MouseClick += TrackSelector_MouseClick;
+			ctrl.MouseDown += onMouseDown;
+			ctrl.MouseUp += onMouseUp;
+			ctrl.KeyDown += TrackSelector_KeyDown;
         }
 
         private void setResources()
@@ -5886,14 +5881,15 @@ namespace Cadencii.Application.Controls
             //
             // TrackSelector
             //
-			this.AutoScaleDimensions =new  System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkGray;
-            this.DoubleBuffered = true;
-            this.Name = "TrackSelector";
-			this.Size = new Dimension (430, 228);
-            this.cmenuCurve.ResumeLayout(false);
-            this.ResumeLayout(false);
+			var ctrl = (UiUserControl) this;
+			ctrl.AutoScaleDimensions = new Dimension (6, 12);
+			ctrl.AutoScaleMode = Cadencii.Gui.Toolkit.AutoScaleMode.Font;
+			ctrl.BackColor = Colors.DarkGray;
+			ctrl.DoubleBuffered = true;
+			ctrl.Name = "TrackSelector";
+			ctrl.Size = new Dimension (430, 228);
+			this.cmenuCurve.ResumeLayout(false);
+			this.ResumeLayout(false);
 
         }
 

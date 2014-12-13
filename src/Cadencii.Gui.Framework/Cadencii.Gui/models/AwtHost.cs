@@ -31,11 +31,14 @@ namespace Cadencii.Gui
 
 		public static Keys ModifierKeys { get; private set; }
 
+		public static int MouseHoverTime { get; private set; }
+
 		static AwtHost ()
 		{
 			var type = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (a => a.GetTypes ()).First (t => t.IsSubclassOf (typeof(AwtHost)));
 			Current = (AwtHost) Activator.CreateInstance (type);
 			ModifierKeys = Current.DefaultModifierKeys ();
+			MouseHoverTime = Current.PlatformMouseHoverTime;
 			Current.InitializeCursors ();
 		}
 
@@ -44,6 +47,8 @@ namespace Cadencii.Gui
 		public abstract void InitializeCursors ();
 
 		public abstract Keys DefaultModifierKeys ();
+
+		public abstract int PlatformMouseHoverTime { get; }
 
 		public abstract void ApplicationDoEvents ();
 
