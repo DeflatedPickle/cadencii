@@ -21,6 +21,28 @@ namespace Cadencii.Gui.Toolkit
 {
 	public class PictureBoxImpl : System.Windows.Forms.PictureBox, UiPictureBox
 	{
+		// These are actually for Control, not PictureBox specific.
+		public virtual void OnPaint (PaintEventArgs e)
+		{
+			// could be overriden.
+			base.OnPaint (e.ToWF ());
+		}
+
+		protected override void OnPaint (System.Windows.Forms.PaintEventArgs e)
+		{
+			this.OnPaint (e.ToAwt ());
+		}
+
+		bool UiPictureBox.DoubleBuffered {
+			get { return DoubleBuffered; }
+			set { DoubleBuffered = true; }
+		}
+
+		public bool UserPaint {
+			get { return this.GetStyle (System.Windows.Forms.ControlStyles.UserPaint); }
+			set { this.SetStyle (System.Windows.Forms.ControlStyles.UserPaint, value); }
+		}
+
 		event EventHandler<PaintEventArgs> UiPictureBox.Paint {
 			add { Paint += (sender, e) => value (sender, e.ToAwt ()); }
 			remove {

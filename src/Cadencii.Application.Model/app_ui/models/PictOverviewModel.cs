@@ -767,14 +767,5 @@ namespace Cadencii.Application.Models
 		{
 			mOffsetX = value;
 		}
-
-		public void CallPaint(object nativeGraphics)
-		{
-			if (mGraphics == null) {
-				mGraphics = new Graphics();
-			}
-			mGraphics.NativeGraphics = nativeGraphics;
-			paint(mGraphics);
-		}
 	}
 }

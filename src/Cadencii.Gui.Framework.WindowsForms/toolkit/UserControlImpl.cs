@@ -23,6 +23,18 @@ namespace Cadencii.Gui.Toolkit
 	{
 		// UiUserControl
 
+		// implementation should either invoke this base method or dispatch to S.W.F.OnPaint().
+		public virtual void OnPaint (PaintEventArgs e)
+		{
+			// could be overriden.
+			base.OnPaint (e.ToWF ());
+		}
+
+		protected override void OnPaint (System.Windows.Forms.PaintEventArgs e)
+		{
+			this.OnPaint (e.ToAwt ());
+		}
+
 		public bool UserPaint {
 			get { return this.GetStyle (System.Windows.Forms.ControlStyles.UserPaint); }
 			set { this.SetStyle (System.Windows.Forms.ControlStyles.UserPaint, value); }

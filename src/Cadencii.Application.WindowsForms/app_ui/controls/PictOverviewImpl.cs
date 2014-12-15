@@ -61,16 +61,16 @@ namespace Cadencii.Application.Controls
 
         public PictOverviewImpl()
         {
-            this.SetStyle(System.Windows.Forms.ControlStyles.DoubleBuffer, true);
-            this.SetStyle(System.Windows.Forms.ControlStyles.UserPaint, true);
+			DoubleBuffered = true;
+			UserPaint = true;
 
 			model = new PictOverviewModel (this);
         }
 
-		protected override void OnPaint(System.Windows.Forms.PaintEventArgs pevent)
+		public override void OnPaint(PaintEventArgs pevent)
         {
             base.OnPaint(pevent);
-			model.CallPaint (pevent.Graphics);
+			model.paint (pevent.Graphics);
         }
     }
 }

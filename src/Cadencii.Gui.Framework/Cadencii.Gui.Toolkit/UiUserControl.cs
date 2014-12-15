@@ -23,6 +23,8 @@ namespace Cadencii.Gui.Toolkit
 		// custom property that accesses "Styles"
 		bool UserPaint { get; set; }
 		bool AllPaintingInWmPaint { get; set; }
+
+		void OnPaint (PaintEventArgs e);
 	}
 	
 }

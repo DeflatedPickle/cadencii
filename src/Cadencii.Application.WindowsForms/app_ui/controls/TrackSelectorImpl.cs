@@ -715,11 +715,9 @@ namespace Cadencii.Application.Controls
         /// オーバーライドされます
         /// </summary>
         /// <param name="e"></param>
-		protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
+		public override void OnPaint(PaintEventArgs e)
         {
-            Graphics g = getGraphics();
-		g.NativeGraphics = e.Graphics;
-            paint(g);
+			paint (e.Graphics);
         }
 
         /// <summary>
