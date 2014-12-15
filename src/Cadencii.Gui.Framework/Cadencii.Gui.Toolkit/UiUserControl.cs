@@ -5,6 +5,8 @@ namespace Cadencii.Gui.Toolkit
 {
 	public interface UiUserControl : UiControl
 	{
+		event EventHandler Load;
+
 		BorderStyle BorderStyle { get; set; }
 		void AddControl (UiControl control);
 

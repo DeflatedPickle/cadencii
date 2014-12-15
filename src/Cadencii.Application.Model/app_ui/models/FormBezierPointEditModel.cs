@@ -168,7 +168,7 @@ namespace Cadencii.Application.Forms
 			this.form.txtLeftValue.Text = (((int) (m_point.getBase ().getY () + m_point.controlLeft.getY ())) + "");
 			this.form.txtRightClock.Text = (((int) (m_point.getBase ().getX () + m_point.controlRight.getX ())) + "");
 			this.form.txtRightValue.Text = (((int) (m_point.getBase ().getY () + m_point.controlRight.getY ())) + "");
-			m_parent.doInvalidate ();
+			m_parent.Model.doInvalidate ();
 		}
 
 		public void buttonLeftMouseDown ()
@@ -193,12 +193,12 @@ namespace Cadencii.Application.Forms
 			this.form.Opacity = 1.0;
 
 			Point loc_on_screen = Screen.Instance.GetScreenMousePosition ();
-			Point loc_trackselector = m_parent.LocationOnScreen;
+			Point loc_trackselector = m_parent.Model.LocationOnScreen;
 			Point loc_on_trackselector = new Point (loc_on_screen.X - loc_trackselector.X, loc_on_screen.Y - loc_trackselector.Y);
 			var event_arg = new NMouseEventArgs (NMouseButtons.Left, 0, loc_on_trackselector.X, loc_on_trackselector.Y, 0);
 			m_parent.OnMouseUp (this, event_arg);
 			Screen.Instance.SetScreenMousePosition (m_last_mouse_global_location);
-			m_parent.doInvalidate ();
+			m_parent.Model.doInvalidate ();
 		}
 
 		public void buttonsMouseMove ()
@@ -212,12 +212,12 @@ namespace Cadencii.Application.Forms
 					return;
 				}
 
-				Point loc_trackselector = m_parent.LocationOnScreen;
+				Point loc_trackselector = m_parent.Model.LocationOnScreen;
 				Point loc_on_trackselector =
 					new Point (loc_on_screen.X - loc_trackselector.X, loc_on_screen.Y - loc_trackselector.Y);
 				var event_arg =
 					new NMouseEventArgs (NMouseButtons.Left, 0, loc_on_trackselector.X, loc_on_trackselector.Y, 0);
-				BezierPoint ret = m_parent.HandleMouseMoveForBezierMove (event_arg, m_picked_side);
+				BezierPoint ret = m_parent.Model.HandleMouseMoveForBezierMove (event_arg, m_picked_side);
 
 				this.form.txtDataPointClock.Text = (((int) ret.getBase ().getX ()) + "");
 				this.form.txtDataPointValue.Text = (((int) ret.getBase ().getY ()) + "");
@@ -226,7 +226,7 @@ namespace Cadencii.Application.Forms
 				this.form.txtRightClock.Text = (((int) ret.getControlRight ().getX ()) + "");
 				this.form.txtRightValue.Text = (((int) ret.getControlRight ().getY ()) + "");
 
-				m_parent.doInvalidate ();
+				m_parent.Model.doInvalidate ();
 			}
 		}
 
@@ -242,8 +242,8 @@ namespace Cadencii.Application.Forms
 			PointD pd = m_point.getPosition (side);
 			Point loc_on_trackselector = new Point (
 				                             EditorManager.xCoordFromClocks ((int) pd.getX ()),
-				                             m_parent.YCoordFromValue ((int) pd.getY ()));
-			Point loc_topleft = m_parent.LocationOnScreen;
+				m_parent.Model.YCoordFromValue ((int) pd.getY ()));
+			Point loc_topleft = m_parent.Model.LocationOnScreen;
 			mScreenMouseDownLocation = new Point (
 				loc_topleft.X + loc_on_trackselector.X,
 				loc_topleft.Y + loc_on_trackselector.Y);
@@ -304,11 +304,11 @@ namespace Cadencii.Application.Forms
 				m_point_id = target.points [index].getID ();
 				m_point = target.points [index];
 				updateStatus ();
-				m_parent.setEditingPointID (m_point_id);
-				m_parent.doInvalidate ();
+				m_parent.Model.setEditingPointID (m_point_id);
+				m_parent.Model.doInvalidate ();
 
 				// スクリーン上でデータ点が見えるようにする
-				var main = m_parent.MainForm;
+				var main = m_parent.Model.MainForm;
 				if (main != null) {
 					main.Model.EnsureClockVisibleOnPianoRoll ((int) m_point.getBase ().getX ());
 				}

@@ -62,7 +62,7 @@ namespace Cadencii.Application.Models
 				mKeyLengthSplitterMouseDown = true;
 				mKeyLengthSplitterInitialMouse = Screen.Instance.GetScreenMousePosition();
 				mKeyLengthInitValue = EditorManager.keyWidth;
-				mKeyLengthTrackSelectorRowsPerColumn = parent.form.TrackSelector.RowsPerColumn;
+				mKeyLengthTrackSelectorRowsPerColumn = parent.form.TrackSelector.Model.RowsPerColumn;
 				mKeyLengthSplitterDistance = parent.form.splitContainer1.DividerLocation;
 			}
 
@@ -79,7 +79,7 @@ namespace Cadencii.Application.Models
 					draft = AppConfig.MAX_KEY_WIDTH;
 				}
 				EditorManager.keyWidth = draft;
-				int current = parent.form.TrackSelector.RowsPerColumn;
+				int current = parent.form.TrackSelector.Model.RowsPerColumn;
 				if (current >= mKeyLengthTrackSelectorRowsPerColumn) {
 					int max_divider_location = parent.form.splitContainer1.Height - parent.form.splitContainer1.DividerSize - parent.form.splitContainer1.Panel2MinSize;
 					if (max_divider_location < mKeyLengthSplitterDistance) {

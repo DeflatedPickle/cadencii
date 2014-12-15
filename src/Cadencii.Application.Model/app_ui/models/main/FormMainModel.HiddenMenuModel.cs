@@ -25,12 +25,12 @@ namespace Cadencii.Application.Models
 			#region menuHidden*
 			public void RunHiddenVisualForwardParameterCommand()
 			{
-				parent.form.TrackSelector.SelectNextCurve();
+				parent.form.TrackSelector.Model.SelectNextCurve();
 			}
 
 			public void RunHiddenVisualBackwardParameterCommand()
 			{
-				parent.form.TrackSelector.SelectPreviousCurve();
+				parent.form.TrackSelector.Model.SelectPreviousCurve();
 			}
 
 			public void RunHiddenTrackNextCommand()

@@ -270,6 +270,7 @@
     <Compile Include="app_ui\controls\ProgressBarWithLabel.cs" />
     <Compile Include="app_ui\models\PropertyPanelContainerModel.cs" />
     <Compile Include="app_ui\models\PropertyPanelModel.cs" />
+    <Compile Include="app_ui\models\TrackSelectorModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

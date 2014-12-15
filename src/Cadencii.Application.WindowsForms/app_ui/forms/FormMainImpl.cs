@@ -287,17 +287,17 @@ namespace Cadencii.Application.Forms
             menuSettingPaletteTool.setVisible( false );
             menuScript.setVisible( false );
 #endif
-            trackSelector.updateVisibleCurves();
-            trackSelector.Background = (new Color(108, 108, 108));
-            trackSelector.CurveVisible = true;
-            trackSelector.SelectedCurve = (CurveType.VEL);
-            trackSelector.Location = (new Point(0, 242));
-            trackSelector.Margin = new Cadencii.Gui.Toolkit.Padding(0);
-            trackSelector.Name = "trackSelector";
-            trackSelector.Size = new Dimension (446, 250);
+            trackSelector.Model.updateVisibleCurves();
+			trackSelector.Model.Background = (new Color(108, 108, 108));
+			trackSelector.Model.CurveVisible = true;
+			trackSelector.Model.SelectedCurve = (CurveType.VEL);
+			trackSelector.Model.Location = (new Point(0, 242));
+			trackSelector.Margin = new Cadencii.Gui.Toolkit.Padding(0);
+			trackSelector.Name = "trackSelector";
+			trackSelector.Model.Size = new Dimension (446, 250);
             trackSelector.TabIndex = 0;
 
-            splitContainer1.Panel2MinSize = trackSelector.PreferredMinSize;
+            splitContainer1.Panel2MinSize = trackSelector.Model.PreferredMinSize;
             var minimum_size = getWindowMinimumSize();
 			this.AsAwt ().MinimumSize = new Dimension(minimum_size.Width, minimum_size.Height);
             stripBtnScroll.Pushed = EditorManager.mAutoScroll;
@@ -324,7 +324,7 @@ namespace Cadencii.Application.Forms
             splitContainer1.Panel2.Controls.Add(trackSelector);
             trackSelector.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 			splitContainer1.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
-            splitContainer1.Panel2MinSize = trackSelector.PreferredMinSize;
+			splitContainer1.Panel2MinSize = trackSelector.Model.PreferredMinSize;
             splitContainerProperty.FixedPanel = Cadencii.Gui.Toolkit.FixedPanel.Panel1;
 
 #if ENABLE_PROPERTY
@@ -389,7 +389,7 @@ namespace Cadencii.Application.Forms
             hScroll.SmallChange = 240;
             vScroll.SmallChange = 24;
 
-            trackSelector.CurveVisible = (true);
+			trackSelector.Model.CurveVisible = (true);
 
             // inputTextBoxの初期化
             EditorManager.InputTextBox = new LyricTextBoxImpl();
@@ -586,7 +586,7 @@ namespace Cadencii.Application.Forms
 			EditorManager.propertyPanel.CommandExecuteRequired += (o, c) => model.OtherItems.propertyPanel_CommandExecuteRequired (c);
 #endif
             updateBgmMenuState();
-            EditorManager.mLastTrackSelectorHeight = trackSelector.PreferredMinSize;
+			EditorManager.mLastTrackSelectorHeight = trackSelector.Model.PreferredMinSize;
             model.FlipControlCurveVisible(true);
 
             Refresh();
@@ -1824,7 +1824,7 @@ namespace Cadencii.Application.Forms
                 foreach (var c in copied_curve.Keys) {
                     ct = c;
                 }
-                CurveType selected = trackSelector.SelectedCurve;
+				CurveType selected = trackSelector.Model.SelectedCurve;
                 if (ct.getMaximum() == selected.getMaximum() &&
                      ct.getMinimum() == selected.getMinimum() &&
                      !selected.isScalar() && !selected.isAttachNote()) {
@@ -3284,7 +3284,7 @@ namespace Cadencii.Application.Forms
                 AwtHost.Current.ApplyFontRecurse(EditorManager.MixerWindow, font);
             }
             Utility.applyContextMenuFontRecurse(cMenuTrackTab, font);
-            trackSelector.applyFont(font);
+			trackSelector.Model.applyFont(font);
             Utility.applyToolStripFontRecurse(menuFile, font);
             Utility.applyToolStripFontRecurse(menuEdit, font);
             Utility.applyToolStripFontRecurse(menuVisual, font);
@@ -3646,13 +3646,13 @@ namespace Cadencii.Application.Forms
 			trackSelector.KeyDown += (o,e) => model.HandleSpaceKeyDown (e);
 			trackSelector.KeyUp += (o,e) => model.HandleSpaceKeyUp (e);
 			trackSelector.PreviewKeyDown += (o, e) => model.TrackSelector.RunPreviewKeyDown (e);
-			trackSelector.SelectedTrackChanged += (o, trk) => model.TrackSelector.RunSelectedTrackChanged (trk);
-			trackSelector.SelectedCurveChanged += (o, type) => model.TrackSelector.RunSelectedCurveChanged (type);
-			trackSelector.RenderRequired += (o, trk) => model.TrackSelector.RunRenderRequired (trk);
-			trackSelector.PreferredMinHeightChanged += (o, e) => model.TrackSelector.RunPreferredMinHeightChanged ();
+			trackSelector.Model.SelectedTrackChanged += (o, trk) => model.TrackSelector.RunSelectedTrackChanged (trk);
+			trackSelector.Model.SelectedCurveChanged += (o, type) => model.TrackSelector.RunSelectedCurveChanged (type);
+			trackSelector.Model.RenderRequired += (o, trk) => model.TrackSelector.RunRenderRequired (trk);
+			trackSelector.Model.PreferredMinHeightChanged += (o, e) => model.TrackSelector.RunPreferredMinHeightChanged ();
 			trackSelector.MouseDoubleClick += (o, e) => model.TrackSelector.RunMouseDoubleClick (e);
 			trackSelector.MouseWheel += (o, e) => model.TrackSelector.RunMouseWheel (e);
-			trackSelector.CommandExecuted += (o, e) => model.TrackSelector.RunCommandExecuted ();
+			trackSelector.Model.CommandExecuted += (o, e) => model.TrackSelector.RunCommandExecuted ();
 			waveView.MouseDoubleClick += (o, e) => model.WaveView.RunMouseDoubleClick (e);
 			waveView.MouseDown += (o, e) => model.WaveView.RunMouseDown (e);
 			waveView.MouseUp += (o, e) => model.WaveView.RunMouseUp (e);

@@ -4,6 +4,7 @@ using Cadencii.Media.Vsq;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Forms;
+using Cadencii.Application.Models;
 using cadencii;
 
 namespace Cadencii.Application.Controls
@@ -56,105 +57,16 @@ namespace Cadencii.Application.Controls
             POINT_MOVE,
         }
 
-	public interface TrackSelector : UiControl
+	public interface TrackSelector : UiUserControl
 	{
-		void updateVisibleCurves ();
-
-		Cadencii.Gui.Cursor Cursor { get; set; }
+		TrackSelectorModel Model { get; }
 
 		Object Parent { get; }
 
-		Point LocationOnScreen { get; }
-
-		Point Location { get; set; }
-
-		Cadencii.Gui.Rectangle Bounds { get; set; }
-
-		Cadencii.Gui.Dimension Size { get; set; }
-
-		Cadencii.Gui.Color Background { get; set; }
-
-		Cadencii.Gui.Color Foreground { get; set; }
-
-		bool Enabled { get; set; }
-
 		void RequestFocus ();
 
-		bool IsFocusOwner ();
-
-		void setPreferredSize (Cadencii.Gui.Dimension size);
-
-		Cadencii.Gui.Font Font { get; set; }
-
-		Cadencii.Gui.Point PointToScreen (Cadencii.Gui.Point point_on_client);
-
-		Cadencii.Gui.Point PointToClient (Cadencii.Gui.Point point_on_screen);
-
-		Object Tag { get; set; }
-
-		void applyLanguage ();
-
-		void applyFont (Cadencii.Gui.Font font);
-
-		int RowsPerColumn { get; }
-
-		int PreferredMinSize { get; }
-
-		FormMain MainForm { get; }
-
-		ValuePair<int, int> getSelectedRegion ();
-
-		CurveType SelectedCurve { get; set; }
-
-		int ValueFromYCoord (int y);
-
-		int ValueFromYCoord (int y, int max, int min);
-
-		int YCoordFromValue (int value);
-
-		int YCoordFromValue (int value, int max, int min);
-
-		bool CurveVisible { get; set; }
-
-		float ScaleY { get; }
-
-		Rectangle getRectFromCurveType (CurveType curve);
-
-		void paint (Graphics graphics);
-
-		void doInvalidate ();
-
-		void drawVEL (Graphics g, VsqTrack track, Color color, bool is_front, CurveType type);
-
-		void SelectPreviousCurve();
-		void SelectNextCurve();
 		// FIXME: these are ugly and should be eliminated.
 		void OnMouseDown(Object sender, MouseEventArgs e);
 		void OnMouseUp(Object sender, MouseEventArgs e);
-		void prepareSingerMenu(RendererKind renderer);
-		BezierPoint HandleMouseMoveForBezierMove(int clock, int value, int value_raw, BezierPickedSide picked);
-		BezierPoint HandleMouseMoveForBezierMove(MouseEventArgs e, BezierPickedSide picked);
-		void setEditingPointID(int id);
-
-		/// <summary>
-		/// 最前面に表示するカーブの種類が変更されたとき発生するイベント．
-		/// </summary>
-		event SelectedCurveChangedEventHandler SelectedCurveChanged;
-		/// <summary>
-		/// 表示するトラック番号が変更されたとき発生するイベント．
-		/// </summary>
-		event SelectedTrackChangedEventHandler SelectedTrackChanged;
-		/// <summary>
-		/// VSQの編集コマンドが発行されたとき発生するイベント．
-		/// </summary>
-		event EventHandler CommandExecuted;
-		/// <summary>
-		/// トラックの歌声合成が要求されたとき発生するイベント．
-		/// </summary>
-		event RenderRequiredEventHandler RenderRequired;
-		/// <summary>
-		/// このコントロールの推奨最少表示高さが変わったとき発生するイベント．
-		/// </summary>
-		event EventHandler PreferredMinHeightChanged;
 	}
 }

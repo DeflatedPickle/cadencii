@@ -943,12 +943,12 @@ namespace Cadencii.Application.Models
 		/// </summary>
 		public void FlipControlCurveVisible(bool visible)
 		{
-			form.TrackSelector.CurveVisible = visible;
+			form.TrackSelector.Model.CurveVisible = visible;
 			if (visible) {
 				form.splitContainer1.SplitterFixed = (false);
 				form.splitContainer1.DividerSize = (FormMainModel.Consts._SPL_SPLITTER_WIDTH);
 				form.splitContainer1.DividerLocation = (form.splitContainer1.Height - EditorManager.mLastTrackSelectorHeight - form.splitContainer1.DividerSize);
-				form.splitContainer1.Panel2MinSize = (form.TrackSelector.PreferredMinSize);
+				form.splitContainer1.Panel2MinSize = (form.TrackSelector.Model.PreferredMinSize);
 			} else {
 				EditorManager.mLastTrackSelectorHeight = form.splitContainer1.Height - form.splitContainer1.DividerLocation - form.splitContainer1.DividerSize;
 				form.splitContainer1.SplitterFixed = (true);

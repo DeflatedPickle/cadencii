@@ -413,8 +413,8 @@ namespace Cadencii.Application.Models
 						ApplicationGlobal.appConfig.UseUserDefinedAutoVibratoType = dlg.isUseUserDefinedAutoVibratoType ();
 						ApplicationGlobal.appConfig.UseWideCharacterWorkaround = dlg.isEnableWideCharacterWorkaround ();
 
-						parent.form.TrackSelector.prepareSingerMenu (VsqFileEx.getTrackRendererKind (MusicManager.getVsqFile ().Track [EditorManager.Selected]));
-						parent.form.TrackSelector.updateVisibleCurves ();
+						parent.form.TrackSelector.Model.prepareSingerMenu (VsqFileEx.getTrackRendererKind (MusicManager.getVsqFile ().Track [EditorManager.Selected]));
+						parent.form.TrackSelector.Model.updateVisibleCurves ();
 
 						parent.form.updateRendererMenu ();
 						EditorManager.updateAutoBackupTimerStatus ();
@@ -423,7 +423,7 @@ namespace Cadencii.Application.Models
 						parent.form.Model.StartToDrawY = (parent.form.calculateStartToDrawY (parent.form.vScroll.Value));
 
 						if (parent.form.menuVisualControlTrack.Checked) {
-							parent.form.splitContainer1.Panel2MinSize = (parent.form.TrackSelector.PreferredMinSize);
+							parent.form.splitContainer1.Panel2MinSize = (parent.form.TrackSelector.Model.PreferredMinSize);
 						}
 
 						EditorManager.saveConfig ();

@@ -72,7 +72,6 @@
     <Compile Include="toolkit\TrackBarImpl.cs" />
     <Compile Include="toolkit\UserControlImpl.cs" />
     <Compile Include="toolkit\VScrollBarImpl.cs" />
-    <Compile Include="toolkit\CastingList.cs" />
     <Compile Include="toolkit\ContextMenuStripImpl.cs" />
     <Compile Include="toolkit\SaveFileDialogImpl.cs" />
     <Compile Include="toolkit\OpenFileDialogImpl.cs" />

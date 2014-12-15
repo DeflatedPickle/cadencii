@@ -1349,7 +1349,7 @@ namespace Cadencii.Application.Models
 				VsqFileEx vsq = MusicManager.getVsqFile();
 				int selected = EditorManager.Selected;
 				VsqTrack vsq_track = vsq.Track[selected];
-				CurveType selected_curve = parent.form.TrackSelector.SelectedCurve;
+				CurveType selected_curve = parent.form.TrackSelector.Model.SelectedCurve;
 				int stdx = parent.form.Model.StartToDrawX;
 				int stdy = parent.form.Model.StartToDrawY;
 				double d2_13 = 8192; // = 2^13

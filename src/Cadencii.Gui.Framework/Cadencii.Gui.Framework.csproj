@@ -148,6 +148,7 @@
     <Compile Include="Cadencii.Gui.Toolkit\UiGridItem.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\PropertyValueChangedEventArgs.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\PropertySort.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\CastingList.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
