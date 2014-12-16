@@ -24,6 +24,7 @@
     <Prefer32Bit>false</Prefer32Bit>
     <WarningLevel>4</WarningLevel>
     <Optimize>false</Optimize>
+    <NoWarn>1572,1573,1591</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
