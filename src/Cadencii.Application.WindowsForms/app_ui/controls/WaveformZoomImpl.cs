@@ -29,9 +29,11 @@ namespace Cadencii.Application.Controls
     {
 		WaveformZoomModel model;
 
-		public WaveformZoomImpl (FormMain main, WaveView waveView)
+		public WaveformZoomImpl ()
 		{
-			model = new WaveformZoomModel (this, waveView);
+			model = new WaveformZoomModel (this);
 		}
+
+		public WaveView WaveView { get; set; }
     }
 }

@@ -236,8 +236,10 @@ namespace Cadencii.Application.Forms
 
             trackSelector = new TrackSelectorImpl(this); // initializeで引数なしのコンストラクタが呼ばれるのを予防
             //TODO: javaのwaveViewはどこで作られるんだっけ？
-            waveView = new WaveViewImpl();
-			panelWaveformZoom = ApplicationUIHost.Create<WaveformZoom> (this, waveView);
+			panelWaveformZoom = ApplicationUIHost.Create<WaveformZoom> ();
+			waveView = ApplicationUIHost.Create<WaveView> ();
+			panelWaveformZoom.WaveView = waveView;
+			this.panelWaveformZoom.Controls.Add (waveView);
 
             InitializeComponent();
 
@@ -248,16 +250,15 @@ namespace Cadencii.Application.Forms
             pictPianoRoll.setMainForm(this);
             bgWorkScreen = new System.ComponentModel.BackgroundWorker();
 
-			this.panelWaveformZoom.Controls.Add (this.waveView);
-			this.waveView.Anchor = ((Cadencii.Gui.Toolkit.AnchorStyles)((((Cadencii.Gui.Toolkit.AnchorStyles.Top | Cadencii.Gui.Toolkit.AnchorStyles.Bottom)
+			waveView.Anchor = ((Cadencii.Gui.Toolkit.AnchorStyles)((((Cadencii.Gui.Toolkit.AnchorStyles.Top | Cadencii.Gui.Toolkit.AnchorStyles.Bottom)
 				| Cadencii.Gui.Toolkit.AnchorStyles.Left)
                         | Cadencii.Gui.Toolkit.AnchorStyles.Right)));
-            this.waveView.BackColor = new Cadencii.Gui.Color(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
-            this.waveView.Location = new Cadencii.Gui.Point(66, 0);
-            this.waveView.Margin = new Cadencii.Gui.Toolkit.Padding(0);
-            this.waveView.Name = "waveView";
-            this.waveView.Size = new Cadencii.Gui.Dimension(355, 59);
-            this.waveView.TabIndex = 17;
+            waveView.BackColor = new Cadencii.Gui.Color(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
+            waveView.Location = new Cadencii.Gui.Point(66, 0);
+            waveView.Margin = new Cadencii.Gui.Toolkit.Padding(0);
+            waveView.Name = "waveView";
+            waveView.Size = new Cadencii.Gui.Dimension(355, 59);
+            waveView.TabIndex = 17;
 			openXmlVsqDialog = new OpenFileDialogImpl();
             openXmlVsqDialog.Filter = string.Join("|", new[] { "VSQ Format(*.vsq)|*.vsq", "XML-VSQ Format(*.xvsq)|*.xvsq" });
 

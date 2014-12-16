@@ -19,5 +19,6 @@ namespace Cadencii.Application.Controls
 {
     public interface WaveformZoom : UiUserControl
     {
+		WaveView WaveView { get; set; }
     }
 }
