@@ -13,15 +13,11 @@
  */
 using System;
 using System.Linq;
-using System.Windows.Forms;
 using cadencii;
 
 using Cadencii.Gui;
 using Cadencii.Media.Vsq;
-
-using Keys = Cadencii.Gui.Toolkit.Keys;
-using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
-using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
+using Cadencii.Application.Models;
 using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application.Controls
@@ -29,13 +25,9 @@ namespace Cadencii.Application.Controls
 
     public class VolumeTrackerImpl : UserControlImpl, VolumeTracker
     {
-
-        private int mFeder = 0;
+		int logical_feder;
         private string m_number = "0";
         private string m_title = "";
-        private Object m_tag = null;
-        private bool mMuted = false;
-        private int mPanpot = 0;
         private int mTrack = 0;
 
         #region Constants
@@ -141,64 +133,41 @@ namespace Cadencii.Application.Controls
             InitializeComponent();
             registerEventHandlers();
             setResources();
-            this.SetStyle(ControlStyles.DoubleBuffer, true);
-            setMuted(false);
-            setSolo(false);
+			this.DoubleBuffered = true;
+            Muted = false;
+            Solo = false;
         }
 
-        public int getTrack()
-        {
-            return mTrack;
-        }
+		public int Track {
+			get { return mTrack; }
+			set { mTrack = value; }
+		}
+		public double AmplifyL {
+			get {
+				double ret = 0.0;
+				if (!Muted) {
+					ret = VocaloSysUtil.getAmplifyCoeffFromFeder (Feder) * VocaloSysUtil.getAmplifyCoeffFromPanLeft (Panpot);
+				}
+				return ret;
+			}
+		}
+		public double AmplifyR {
+			get {
+				double ret = 0.0;
+				if (!Muted) {
+					ret = VocaloSysUtil.getAmplifyCoeffFromFeder (Feder) * VocaloSysUtil.getAmplifyCoeffFromPanRight (Panpot);
+				}
+				return ret;
+			}
+		}
 
-        public void setTrack(int value)
-        {
-            mTrack = value;
-        }
-
-        public double getAmplifyL()
-        {
-            double ret = 0.0;
-            if (!mMuted) {
-                ret = VocaloSysUtil.getAmplifyCoeffFromFeder(mFeder) * VocaloSysUtil.getAmplifyCoeffFromPanLeft(mPanpot);
-            }
-            return ret;
-        }
-
-        public double getAmplifyR()
-        {
-            double ret = 0.0;
-            if (!mMuted) {
-                ret = VocaloSysUtil.getAmplifyCoeffFromFeder(mFeder) * VocaloSysUtil.getAmplifyCoeffFromPanRight(mPanpot);
-            }
-            return ret;
-        }
-
-        public void setLocation(int x, int y)
-        {
-            base.Location = new System.Drawing.Point(x, y);
-        }
-
-        public void setTag(Object value)
-        {
-            m_tag = value;
-        }
-
-        public Object getTag()
-        {
-            return m_tag;
-        }
-
-        public string getTitle()
-        {
-            return m_title;
-        }
-
-        public void setTitle(string value)
-        {
-            m_title = value;
-            updateTitle();
-        }
+		public string Title {
+			get { return m_title; }
+			set {
+				m_title = value;
+	            updateTitle();
+			}
+		}
 
         private void updateTitle()
         {
@@ -211,85 +180,62 @@ namespace Cadencii.Application.Controls
             }
         }
 
-        public string getNumber()
-        {
-            return m_number;
-        }
+		public string Number {
+			get { return m_number; }
+			set {
+				m_number = value;
+				updateTitle ();
+			}
+		}
 
-        public void setNumber(string value)
-        {
-            m_number = value;
-            updateTitle();
-        }
+		public bool Muted {
+			get { return chkMute.Checked; }
+			set {
+				bool old = chkMute.Checked;
+				chkMute.Checked = value;
+				chkMute.BackColor = value ? Colors.DimGray : Colors.White;
+			}
+		}
 
-        public bool isMuted()
-        {
-            return chkMute.Checked;
-        }
+		public bool Solo {
+			get { return chkSolo.Checked; }
+			set {
+				bool old = chkSolo.Checked;
+				chkSolo.Checked = value;
+				chkSolo.BackColor = value ? Colors.DarkCyan : Colors.White;
+			}
+		}
 
-        public void setMuted(bool value)
-        {
-            bool old = chkMute.Checked;
-            chkMute.Checked = value;
-            chkMute.BackColor = value ? System.Drawing.Color.DimGray : System.Drawing.Color.White;
-            mMuted = value;
-        }
+		public int Panpot {
+			get { return trackPanpot.Value; }
+			set { trackPanpot.Value = Math.Min (trackPanpot.Maximum, Math.Max (trackPanpot.Minimum, value)); }
+		}
 
-        public bool isSolo()
-        {
-            return chkSolo.Checked;
-        }
+		public bool SoloButtonVisible {
+			get { return chkSolo.Visible; }
+			set { chkSolo.Visible = value; }
+		}
 
-        public void setSolo(bool value)
-        {
-            bool old = chkSolo.Checked;
-            chkSolo.Checked = value;
-            chkSolo.BackColor = value ? System.Drawing.Color.DarkCyan : System.Drawing.Color.White;
-        }
+		public int Feder {
+			get { return logical_feder; }
+			set {
+				int old = logical_feder;
+				logical_feder = value;
+				if (old != logical_feder) {
+					try {
+						if (FederChanged != null) {
+							FederChanged.Invoke (mTrack, logical_feder);
+						}
+					} catch (Exception ex) {
+						Logger.StdErr ("VolumeTracker#setFeder; ex=" + ex);
+					}
+				}
+				int v = 177 - FederToYCoord (logical_feder);
+				trackFeder.Value = v;
+			}
+		}
 
-        public int getPanpot()
-        {
-            return trackPanpot.Value;
-        }
-
-        public void setPanpot(int value)
-        {
-            trackPanpot.Value = Math.Min(trackPanpot.Maximum, Math.Max(trackPanpot.Minimum, value));
-        }
-
-        public bool isSoloButtonVisible()
-        {
-            return chkSolo.Visible;
-        }
-
-        public void setSoloButtonVisible(bool value)
-        {
-            chkSolo.Visible = value;
-        }
-
-        public int getFeder()
-        {
-            return mFeder;
-        }
-
-        public void setFeder(int value)
-        {
-            int old = mFeder;
-            mFeder = value;
-            if (old != mFeder) {
-                try {
-                    if (FederChanged != null) {
-                        FederChanged.Invoke(mTrack, mFeder);
-                    }
-                } catch (Exception ex) {
-                    Logger.StdErr("VolumeTracker#setFeder; ex=" + ex);
-                }
-            }
-            int v = 177 - getYCoordFromFeder(mFeder);
-            trackFeder.Value = v;
-        }
-
-        private static int getFederFromYCoord(int y)
+        private static int YCoordToFeder(int y)
         {
             int feder = _KEY[0, 0];
             int min_diff = Math.Abs(_KEY[0, 1] - y);
@@ -306,7 +252,7 @@ namespace Cadencii.Application.Controls
             return feder;
         }
 
-        private static int getYCoordFromFeder(int feder)
+        private static int FederToYCoord (int feder)
         {
             int y = _KEY[0, 1];
             int min_diff = Math.Abs(_KEY[0, 0] - feder);
@@ -342,11 +288,11 @@ namespace Cadencii.Application.Controls
 
         public void trackFeder_ValueChanged(Object sender, EventArgs e)
         {
-            mFeder = getFederFromYCoord(151 - (trackFeder.Value - 26));
-            txtFeder.Text = (mFeder / 10.0) + "";
+			logical_feder = YCoordToFeder (151 - (trackFeder.Value - 26));
+			txtFeder.Text = (logical_feder / 10.0) + "";
             try {
                 if (FederChanged != null) {
-                    FederChanged.Invoke(mTrack, mFeder);
+					FederChanged.Invoke(mTrack, logical_feder);
                 }
             } catch (Exception ex) {
                 Logger.StdErr("VolumeTracker#trackFeder_ValueChanged; ex=" + ex);
@@ -355,7 +301,7 @@ namespace Cadencii.Application.Controls
 
         public void trackPanpot_ValueChanged(Object sender, EventArgs e)
         {
-            mPanpot = trackPanpot.Value;
+            var mPanpot = trackPanpot.Value;
             txtPanpot.Text = mPanpot + "";
             try {
                 if (PanpotChanged != null) {
@@ -379,8 +325,8 @@ namespace Cadencii.Application.Controls
                 if (feder < -898) {
                     feder = -898;
                 }
-                setFeder(feder);
-                txtFeder.Text = getFeder() / 10.0f + "";
+                Feder = feder;
+                txtFeder.Text = Feder / 10.0f + "";
                 txtFeder.Focus();
                 txtFeder.SelectAll();
             } catch (Exception ex) {
@@ -401,8 +347,8 @@ namespace Cadencii.Application.Controls
                 if (64 < panpot) {
                     panpot = 64;
                 }
-                setPanpot(panpot);
-                txtPanpot.Text = getPanpot() + "";
+                Panpot = panpot;
+                txtPanpot.Text = Panpot + "";
                 txtPanpot.Focus();
                 txtPanpot.SelectAll();
             } catch (Exception ex) {
@@ -423,7 +369,7 @@ namespace Cadencii.Application.Controls
 
         public void chkMute_Click(Object sender, EventArgs e)
         {
-            mMuted = chkMute.Checked;
+            Muted = chkMute.Checked;
             try {
                 if (MuteButtonClick != null) {
                     MuteButtonClick.Invoke(this, e);
@@ -436,14 +382,14 @@ namespace Cadencii.Application.Controls
 
         private void registerEventHandlers()
         {
-            trackFeder.ValueChanged += new EventHandler(trackFeder_ValueChanged);
-            trackPanpot.ValueChanged += new EventHandler(trackPanpot_ValueChanged);
-            txtPanpot.KeyDown += new KeyEventHandler(txtPanpot_KeyDown);
-            txtFeder.KeyDown += new KeyEventHandler(txtFeder_KeyDown);
-            chkSolo.Click += new EventHandler(chkSolo_Click);
-            chkMute.Click += new EventHandler(chkMute_Click);
-            txtFeder.Enter += new EventHandler(txtFeder_Enter);
-            txtPanpot.Enter += new EventHandler(txtPanpot_Enter);
+            trackFeder.ValueChanged += trackFeder_ValueChanged;
+            trackPanpot.ValueChanged += trackPanpot_ValueChanged;
+            txtPanpot.KeyDown += txtPanpot_KeyDown;
+            txtFeder.KeyDown += txtFeder_KeyDown;
+            chkSolo.Click += chkSolo_Click;
+            chkMute.Click += chkMute_Click;
+            txtFeder.Enter += txtFeder_Enter;
+            txtPanpot.Enter += txtPanpot_Enter;
         }
 
         private void setResources()
@@ -491,15 +437,14 @@ namespace Cadencii.Application.Controls
 
         #endregion
 
-        private TrackBar trackFeder;
-        private TrackBar trackPanpot;
-        private TextBox txtPanpot;
-        private Label lblTitle;
-        private TextBox txtFeder;
-        private System.Windows.Forms.CheckBox chkMute;
-        private System.Windows.Forms.CheckBox chkSolo;
+        private UiTrackBar trackFeder;
+        private UiTrackBar trackPanpot;
+        private UiTextBox txtPanpot;
+        private UiLabel lblTitle;
+        private UiTextBox txtFeder;
+        private UiCheckBox chkMute;
+        private UiCheckBox chkSolo;
 
         #endregion
     }
-
 }

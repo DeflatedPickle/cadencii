@@ -131,8 +131,8 @@ namespace cadencii
                 }
                 int offset = length - remain;
                 if (mView != null) {
-                    mAmpL = mView.getAmplifyL();
-                    mAmpR = mView.getAmplifyR();
+                    mAmpL = mView.AmplifyL;
+                    mAmpR = mView.AmplifyR;
                 }
 
                 // 左チャンネル
@@ -195,8 +195,8 @@ namespace cadencii
                 int offset = length - remain;
                 mSender.pull(mBufferL, mBufferR, amount);
                 if (mView != null) {
-                    mAmpL = mView.getAmplifyL();
-                    mAmpR = mView.getAmplifyR();
+                    mAmpL = mView.AmplifyL;
+                    mAmpR = mView.AmplifyR;
                 }
                 for (int i = 0; i < amount; i++) {
                     l[i + offset] += mBufferL[i] * mAmpL;

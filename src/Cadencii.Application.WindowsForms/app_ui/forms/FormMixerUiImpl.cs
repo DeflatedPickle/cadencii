@@ -50,13 +50,13 @@ namespace Cadencii.Application.Forms
             InitializeComponent();
             registerEventHandlers();
             setResources();
-            volumeMaster.setFeder(0);
-            volumeMaster.setMuted(false);
-            volumeMaster.setSolo(true);
-            volumeMaster.setNumber("Master");
-            volumeMaster.setPanpot(0);
-            volumeMaster.setSoloButtonVisible(false);
-            volumeMaster.setTitle("");
+            volumeMaster.Feder = 0;
+            volumeMaster.Muted = false;
+            volumeMaster.Solo = true;
+            volumeMaster.Number = "Master";
+            volumeMaster.Panpot = 0;
+            volumeMaster.SoloButtonVisible = (false);
+            volumeMaster.Title = "";
             applyLanguage();
             m_parent = parent;
             this.TopMost = true;
@@ -134,7 +134,7 @@ namespace Cadencii.Application.Forms
             }
             // マスター
             bool masterMuted = vsq.getMasterMute();
-            volumeMaster.setMuted(masterMuted);
+            volumeMaster.Muted = masterMuted;
 
             // VSQのトラック
             bool soloSpecificationExists = false; // 1トラックでもソロ指定があればtrue
@@ -147,22 +147,22 @@ namespace Cadencii.Application.Forms
             for (int track = 1; track < vsq.Track.Count; track++) {
                 if (soloSpecificationExists) {
                     if (vsq.getSolo(track)) {
-                        m_tracker[track - 1].setSolo(true);
-                        m_tracker[track - 1].setMuted(masterMuted ? true : vsq.getMute(track));
+                        m_tracker[track - 1].Solo = (true);
+                        m_tracker[track - 1].Muted = (masterMuted ? true : vsq.getMute(track));
                     } else {
-                        m_tracker[track - 1].setSolo(false);
-                        m_tracker[track - 1].setMuted(true);
+                        m_tracker[track - 1].Solo = (false);
+                        m_tracker[track - 1].Muted = (true);
                     }
                 } else {
-                    m_tracker[track - 1].setSolo(vsq.getSolo(track));
-                    m_tracker[track - 1].setMuted(masterMuted ? true : vsq.getMute(track));
+                    m_tracker[track - 1].Solo = (vsq.getSolo(track));
+                    m_tracker[track - 1].Muted = (masterMuted ? true : vsq.getMute(track));
                 }
             }
 
             // BGM
             int offset = vsq.Track.Count - 1;
             for (int i = 0; i < vsq.BgmFiles.Count; i++) {
-                m_tracker[offset + i].setMuted(masterMuted ? true : vsq.BgmFiles[i].mute == 1);
+                m_tracker[offset + i].Muted = (masterMuted ? true : vsq.BgmFiles[i].mute == 1);
             }
 
             this.Refresh();
@@ -252,16 +252,16 @@ namespace Cadencii.Application.Forms
                 Logger.StdOut("FormMixer#updateStatus; #" + j + "; feder=" + vme.Feder + "; panpot=" + vme.Panpot);
 #endif
                 VolumeTracker tracker = m_tracker[j];
-                tracker.setFeder(vme.Feder);
-                tracker.setPanpot(vme.Panpot);
-                tracker.setTitle(vsq.Track[j + 1].getName());
-                tracker.setNumber((j + 1) + "");
-				tracker.setLocation(j * (VolumeTrackerController.WIDTH + 1), 0);
-                tracker.setSoloButtonVisible(true);
-                tracker.setMuted((vme.Mute == 1));
-                tracker.setSolo((vme.Solo == 1));
-                tracker.setTrack(j + 1);
-                tracker.setSoloButtonVisible(true);
+                tracker.Feder = (vme.Feder);
+                tracker.Panpot = (vme.Panpot);
+                tracker.Title = (vsq.Track[j + 1].getName());
+                tracker.Number = ((j + 1) + "");
+				tracker.Location = new Cadencii.Gui.Point (j * (VolumeTrackerController.WIDTH + 1), 0);
+                tracker.SoloButtonVisible = (true);
+                tracker.Muted = ((vme.Mute == 1));
+                tracker.Solo = ((vme.Solo == 1));
+                tracker.Track = (j + 1);
+                tracker.SoloButtonVisible = (true);
                 addToPanelSlaves(tracker, j);
             }
             int count = MusicManager.getBgmCount();
@@ -269,24 +269,24 @@ namespace Cadencii.Application.Forms
                 j++;
                 BgmFile item = MusicManager.getBgm(i);
                 VolumeTracker tracker = m_tracker[j];
-                tracker.setFeder(item.feder);
-                tracker.setPanpot(item.panpot);
-                tracker.setTitle(PortUtil.getFileName(item.file));
-                tracker.setNumber("");
-				tracker.setLocation(j * (VolumeTrackerController.WIDTH + 1), 0);
-                tracker.setSoloButtonVisible(false);
-                tracker.setMuted((item.mute == 1));
-                tracker.setSolo(false);
-                tracker.setTrack(-i - 1);
-                tracker.setSoloButtonVisible(false);
+                tracker.Feder = (item.feder);
+                tracker.Panpot = (item.panpot);
+                tracker.Title = (PortUtil.getFileName(item.file));
+                tracker.Number = ("");
+				tracker.Location = new Cadencii.Gui.Point (j * (VolumeTrackerController.WIDTH + 1), 0);
+                tracker.SoloButtonVisible = (false);
+                tracker.Muted = ((item.mute == 1));
+                tracker.Solo = (false);
+                tracker.Track = (-i - 1);
+                tracker.SoloButtonVisible = (false);
                 addToPanelSlaves(tracker, j);
             }
 #if DEBUG
             Logger.StdOut("FormMixer#updateStatus; vsq.Mixer.MasterFeder=" + vsq.Mixer.MasterFeder);
 #endif
-            volumeMaster.setFeder(vsq.Mixer.MasterFeder);
-            volumeMaster.setPanpot(vsq.Mixer.MasterPanpot);
-            volumeMaster.setSoloButtonVisible(false);
+            volumeMaster.Feder = (vsq.Mixer.MasterFeder);
+            volumeMaster.Panpot = (vsq.Mixer.MasterPanpot);
+            volumeMaster.SoloButtonVisible = (false);
 
             updateSoloMute();
 
@@ -433,9 +433,9 @@ namespace Cadencii.Application.Forms
         public void FormMixer_SoloButtonClick(Object sender, EventArgs e)
         {
             VolumeTracker parent = (VolumeTracker)sender;
-            int track = parent.getTrack();
+            int track = parent.Track;
             try {
-                invokeSoloChangedEvent(track, parent.isSolo());
+                invokeSoloChangedEvent(track, parent.Solo);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMixerUiImpl) + ".FormMixer_SoloButtonClick; ex=" + ex + "\n");
                 Logger.StdErr("FormMixer#FormMixer_IsSoloChanged; ex=" + ex);
@@ -446,9 +446,9 @@ namespace Cadencii.Application.Forms
         public void FormMixer_MuteButtonClick(Object sender, EventArgs e)
         {
             VolumeTracker parent = (VolumeTracker)sender;
-            int track = parent.getTrack();
+            int track = parent.Track;
             try {
-                invokeMuteChangedEvent(track, parent.isMuted());
+                invokeMuteChangedEvent(track, parent.Muted);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMixerUiImpl) + ".FormMixer_MuteButtonClick; ex=" + ex + "\n");
                 Logger.StdErr("FormMixer#FormMixer_IsMutedChanged; ex=" + ex);
@@ -471,7 +471,7 @@ namespace Cadencii.Application.Forms
         {
             int stdx = hScroll.Value;
             for (int i = 0; i < m_tracker.Count; i++) {
-                m_tracker[i].setLocation(-stdx + (VolumeTrackerController.WIDTH + 1) * i, 0);
+				m_tracker[i].Location = new Cadencii.Gui.Point (-stdx + (VolumeTrackerController.WIDTH + 1) * i, 0);
             }
             this.Invalidate();
         }
@@ -499,7 +499,7 @@ namespace Cadencii.Application.Forms
         public void volumeMaster_MuteButtonClick(Object sender, EventArgs e)
         {
             try {
-                invokeMuteChangedEvent(0, volumeMaster.isMuted());
+                invokeMuteChangedEvent(0, volumeMaster.Muted);
             } catch (Exception ex) {
                 Logger.write(typeof(FormMixerUiImpl) + ".volumeMaster_MuteButtonClick; ex=" + ex + "\n");
                 Logger.StdErr("FormMixer#volumeMaster_IsMutedChanged; ex=" + ex);

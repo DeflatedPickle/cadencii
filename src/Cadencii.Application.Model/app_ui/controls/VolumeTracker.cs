@@ -14,29 +14,21 @@ namespace Cadencii.Application.Controls
 	{
 		bool DoubleBuffered { get; set; }
 
-		int getTrack ();
+		int Track { get; set; }
 
-		void setLocation (int i, int i2);
+		bool SoloButtonVisible { get; set; }
 
-		void setTrack (int i);
+		bool Solo { get; set; }
 
-		void setTitle (string empty);
+		bool Muted { get; set; }
 
-		void setSoloButtonVisible (bool b);
+		string Number { set; }
 
-		void setPanpot (int i);
+		int Panpot { set; }
 
-		void setNumber (string master);
+		int Feder { get; set; }
 
-		bool isSolo ();
-
-		void setSolo (bool b);
-
-		bool isMuted ();
-
-		void setMuted (bool b);
-
-		void setFeder (int i);
+		string Title { get; set; }
 
 		event PanpotChangedEventHandler PanpotChanged;
 

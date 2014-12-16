@@ -16,9 +16,9 @@ namespace cadencii
 
     public interface IAmplifierView
     {
-        double getAmplifyL();
+		double AmplifyL { get; }
 
-        double getAmplifyR();
+		double AmplifyR { get; }
     }
 
 }

@@ -140,9 +140,6 @@
     </Compile>
     <Compile Include="app_ui\forms\PreferenceImpl.cs" />
     <Compile Include="app_ui\forms\VersionInfoImpl.cs" />
-    <Compile Include="app_ui\controls\TrackSelectorSingerPopupMenuImpl.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <EmbeddedResource Include="app_ui\forms\FormMain.resx">
       <DependentUpon>FormMainImpl.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +174,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="app_ui\controls\ProgressBarWithLabelImpl.cs" />
+    <Compile Include="app_ui\controls\menu\TrackSelectorSingerPopupMenuImpl.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />
