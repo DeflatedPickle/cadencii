@@ -16,10 +16,10 @@ using cadencii.core;
 using Cadencii.Application.Forms;
 using Cadencii.Application.Controls;
 
-namespace Cadencii.Application.Forms
+namespace Cadencii.Application.Models
 {
 
-    public class WaveformZoomController : ControllerBase, WaveformZoomUiListener
+    public class WaveformZoomModel
     {
         /// <summary>
         /// 波形表示部の拡大ボタン上でマウスが下りた状態かどうか
@@ -44,19 +44,19 @@ namespace Cadencii.Application.Forms
 
         private WaveView mWaveView = null;
         private FormMain mFormMain = null;
-        private WaveformZoomUi mUi = null;
+        private WaveformZoom mUi = null;
 
         /// <summary>
         /// Wave表示部等のボタンと他のコンポーネントの間のスペース
         /// </summary>
         const int SPACE = 4;
 
-        public WaveformZoomController(FormMain form_main, WaveView wave_view)
+        public WaveformZoomModel(FormMain form_main, WaveView wave_view)
         {
             mWaveView = wave_view;
             mFormMain = form_main;
 
-            mUi = ApplicationUIHost.Create<WaveformZoomUi> ();
+            mUi = ApplicationUIHost.Create<WaveformZoom> ();
             mUi.setListener(this);
         }
 
@@ -80,7 +80,7 @@ namespace Cadencii.Application.Forms
             mWaveView.setScale(value);
         }
 
-        public WaveformZoomUi getUi()
+        public WaveformZoom getUi()
         {
             return mUi;
         }
@@ -89,7 +89,7 @@ namespace Cadencii.Application.Forms
         {
             int key_width = EditorManager.keyWidth;
             int width = key_width - 1;
-            int height = mUi.getHeight() - 1;
+            int height = mUi.Height - 1;
 
             // 背景を塗る
 			g.setColor(Cadencii.Gui.Colors.DarkGray);
@@ -133,7 +133,7 @@ namespace Cadencii.Application.Forms
             Point p = new Point(x, y);
 
             int width = EditorManager.keyWidth - 1;
-            int height = mUi.getHeight();
+            int height = mUi.Height;
 
             // AutoMaximizeボタン
             Rectangle rc = new Rectangle(SPACE, SPACE, width - SPACE - SPACE, 16);
@@ -141,7 +141,7 @@ namespace Cadencii.Application.Forms
                 mWaveViewButtonAutoMaximizeMouseDowned = true;
                 mWaveViewButtonZoomMouseDowned = false;
 
-                mUi.repaint();
+                mUi.Refresh();
                 return;
             }
 
@@ -154,14 +154,14 @@ namespace Cadencii.Application.Forms
                     mWaveViewButtonAutoMaximizeMouseDowned = false;
                     mWaveViewInitScale = mWaveView.getScale();
 
-                    mUi.repaint();
+                    mUi.Refresh();
                     return;
                 }
             }
 
             mWaveViewButtonAutoMaximizeMouseDowned = false;
             mWaveViewButtonZoomMouseDowned = false;
-            mUi.repaint();
+            mUi.Refresh();
         }
 
         public void receiveMouseMoveSignal(int x, int y)
@@ -170,7 +170,7 @@ namespace Cadencii.Application.Forms
                 return;
             }
 
-            int height = mUi.getHeight();
+            int height = mUi.Height;
             int delta = mWaveViewMouseDownedLocationY - y;
             float scale = mWaveViewInitScale + delta * 3.0f / height * mWaveViewInitScale;
             mWaveView.setScale(scale);
@@ -181,7 +181,7 @@ namespace Cadencii.Application.Forms
         public void receiveMouseUpSignal(int x, int y)
         {
             int width = EditorManager.keyWidth - 1;
-            int height = mUi.getHeight();
+            int height = mUi.Height;
 
             // AutoMaximizeボタン
             if (Utility.isInRect(x, y, SPACE, SPACE, width - SPACE - SPACE, 16)) {
@@ -193,7 +193,7 @@ namespace Cadencii.Application.Forms
 
             mWaveViewButtonAutoMaximizeMouseDowned = false;
             mWaveViewButtonZoomMouseDowned = false;
-            mUi.repaint();
+            mUi.Refresh();
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace Cadencii.Application.Forms
         private Rectangle getButtonBoundsWaveViewZoom()
         {
             int width = EditorManager.keyWidth - 1;
-            int height = mUi.getHeight() - 1;
+            int height = mUi.Height - 1;
 
             int y = SPACE + 16 + SPACE;
             return new Rectangle(SPACE, y, width - SPACE - SPACE, height - SPACE - y);

@@ -5,7 +5,7 @@
             Name = "VolumeTracker"
             Size = "(85, 284)"
             >
-    <TrackBar id="trackFeder"
+    <UiTrackBar id="trackFeder"
             Anchor = "Top,Left,Right"
             AutoSize = "false"
             Location = "(21, 58)"
@@ -19,7 +19,7 @@
             TickStyle = "Both"
             Value = "100"
             />
-    <TrackBar id="trackPanpot"
+    <UiTrackBar id="trackPanpot"
             Anchor = "Top,Left,Right"
             AutoSize = "false"
             Location = "(3, 208)"
@@ -31,7 +31,7 @@
             TabIndex = "2"
             TickStyle = "None"
             />
-    <TextBox id="txtPanpot"
+    <UiTextBox id="txtPanpot"
             Anchor = "Top,Left,Right"
             BackColor = "$(180,180,180)"
             BorderStyle = "FixedSingle"
@@ -43,7 +43,7 @@
             Text = "0"
             TextAlign = "Center"
             />
-    <Label id="lblTitle"
+    <UiLabel id="lblTitle"
             BackColor = "$White"
             Dock = "Bottom"
             Location = "(0, 261)"
@@ -54,7 +54,7 @@
             Text = "TITLE"
             TextAlign = "MiddleCenter"
             />
-    <TextBox id="txtFeder"
+    <UiTextBox id="txtFeder"
             Anchor = "Top,Left,Right"
             BackColor = "$(180,180,180)"
             BorderStyle = "FixedSingle"
@@ -65,7 +65,7 @@
             Text = "0"
             TextAlign = "Center"
             />
-    <CheckBox id="chkMute"
+    <UiCheckBox id="chkMute"
             Appearance = "Button"
             Location = "(4, 5)"
             Name = "chkMute"
@@ -74,7 +74,7 @@
             Text = "M"
             UseVisualStyleBackColor = "true"
             />
-    <CheckBox id="chkSolo"
+    <UiCheckBox id="chkSolo"
             Appearance = "Button"
             Location = "(28, 5)"
             Name = "chkSolo"

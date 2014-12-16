@@ -1,5 +1,5 @@
 /*
- * WaveformZoomUiListener.cs
+ * WaveformZoomUi.cs
  * Copyright © 2011 kbinani
  *
  * This file is part of cadencii.
@@ -11,21 +11,19 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
+using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Models;
+
+
 namespace Cadencii.Application.Controls
 {
+
     using System;
-    using Cadencii.Gui;
+    using cadencii;
 
-    public interface WaveformZoomUiListener
+    public interface WaveformZoom : UiUserControl
     {
-        void receivePaintSignal(Graphics g);
-
-        void receiveMouseDownSignal(int x, int y);
-
-        void receiveMouseMoveSignal(int x, int y);
-
-        void receiveMouseUpSignal(int x, int y);
-    };
-
+        void setListener(WaveformZoomModel listener);
+    }
 
 }

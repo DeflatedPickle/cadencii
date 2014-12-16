@@ -142,8 +142,6 @@
     <Compile Include="app_ui\controls\RebarBandCollection.cs" />
     <Compile Include="app_ui\controls\TrackSelector.cs" />
     <Compile Include="app_ui\controls\VolumeTracker.cs" />
-    <Compile Include="app_ui\controls\WaveformZoomUi.cs" />
-    <Compile Include="app_ui\controls\WaveformZoomUiListener.cs" />
     <Compile Include="app_ui\controls\WaveView.cs" />
     <Compile Include="app_ui\controls\WaveViewRealoadRequiredEventArgs.cs" />
     <Compile Include="app_ui\controls\WaveViewRealoadRequiredEventHandler.cs" />
@@ -224,7 +222,6 @@
     <Compile Include="app_ui\forms\FormNotePropertyListener.cs">
       <DependentUpon>FormNoteProperty.cs</DependentUpon>
     </Compile>
-    <Compile Include="app_ui\controls\WaveformZoomController.cs" />
     <Compile Include="app_ui\models\main\CurveEditMode.cs" />
     <Compile Include="app_ui\models\main\ExtDragXMode.cs" />
     <Compile Include="app_ui\models\main\ExtDragYMode.cs" />
@@ -272,6 +269,8 @@
     <Compile Include="app_ui\controls\menu\TrackSelectorSingerDropdownMenuItem.cs" />
     <Compile Include="app_ui\controls\menu\TrackSelectorSingerPopupMenu.cs" />
     <Compile Include="app_ui\models\VolumeTrackerModel.cs" />
+    <Compile Include="app_ui\controls\WaveformZoom.cs" />
+    <Compile Include="app_ui\models\WaveformZoomModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

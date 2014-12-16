@@ -16,41 +16,26 @@ using System.Windows.Forms;
 
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
-using Cadencii.Application.Controls;
+using Cadencii.Application.Models;
 
 
-namespace Cadencii.Application.Forms
+namespace Cadencii.Application.Controls
 {
     /// <summary>
     /// 波形表示の拡大・縮小を行うためのパネルです．
     /// </summary>
-    class WaveformZoomUiImpl : UserControlImpl, WaveformZoomUi
+    class WaveformZoomImpl : UserControlImpl, WaveformZoom
     {
 
         /// <summary>
         /// このビューのController
         /// </summary>
-        private WaveformZoomUiListener mListener = null;
+        private WaveformZoomModel mListener = null;
         private Graphics mGraphicsPanel2 = null;
 
-        public void setListener(WaveformZoomUiListener listener)
+        public void setListener(WaveformZoomModel listener)
         {
             mListener = listener;
-        }
-
-        public void repaint()
-        {
-            Refresh();
-        }
-
-        public int getHeight()
-        {
-            return Height;
-        }
-
-        public int getWidth()
-        {
-            return Width;
         }
 
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)

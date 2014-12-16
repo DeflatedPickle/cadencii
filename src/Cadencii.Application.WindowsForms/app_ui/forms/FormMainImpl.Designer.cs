@@ -287,7 +287,7 @@ namespace Cadencii.Application.Forms
         UiToolStripMenuItem cMenuPianoQuantize128;
         UiToolStripMenuItem cMenuPianoFixed128;
 		public UiToolStripMenuItem menuVisualWaveform { get; set; }
-        WaveformZoomUi panelWaveformZoom;
+        WaveformZoom panelWaveformZoom;
         UiToolStripMenuItem cMenuTrackSelectorDeleteBezier;
 		public UiToolStripStatusLabel stripLblMidiIn { get;set ; }
         UiToolStripSeparator toolStripSeparator11;

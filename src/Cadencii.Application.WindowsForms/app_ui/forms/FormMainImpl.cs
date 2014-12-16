@@ -238,7 +238,7 @@ namespace Cadencii.Application.Forms
             //TODO: javaのwaveViewはどこで作られるんだっけ？
             waveView = new WaveViewImpl();
             //TODO: これはひどい
-            panelWaveformZoom = (WaveformZoomUiImpl)(new WaveformZoomController(this, waveView)).getUi();
+            panelWaveformZoom = (WaveformZoomImpl)(new WaveformZoomModel(this, waveView)).getUi();
 
             InitializeComponent();
 
