@@ -6,6 +6,8 @@ namespace Cadencii.Gui.Toolkit
 {
 	public interface UiControl : IDisposable
 	{
+		UiControl Parent { get; }
+
 		object Invoke (Delegate e);
 
 		void BringToFront ();

@@ -23,6 +23,11 @@ namespace Cadencii.Gui.Toolkit
 	{
 		// UiUserControl
 
+		public event EventHandler<PaintEventArgs> Paint {
+			add { base.Paint += (object o, System.Windows.Forms.PaintEventArgs e) => value (o, e.ToAwt ()); }
+			remove { throw new NotImplementedException (); }
+		}
+
 		// implementation should either invoke this base method or dispatch to S.W.F.OnPaint().
 		public virtual void OnPaint (PaintEventArgs e)
 		{
@@ -43,11 +48,6 @@ namespace Cadencii.Gui.Toolkit
 		public bool AllPaintingInWmPaint {
 			get { return this.GetStyle (System.Windows.Forms.ControlStyles.AllPaintingInWmPaint); }
 			set { this.SetStyle (System.Windows.Forms.ControlStyles.AllPaintingInWmPaint, value); }
-		}
-
-		void UiUserControl.AddControl (UiControl c)
-		{
-			Controls.Add ((System.Windows.Forms.Control) c.Native);
 		}
 
 		BorderStyle UiUserControl.BorderStyle {
@@ -71,6 +71,10 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// UiControl
+
+		UiControl UiControl.Parent {
+			get { return Parent as UiControl; }
+		}
 
 		Cursor UiControl.Cursor {
 			get { return this.Cursor.ToAwt (); }

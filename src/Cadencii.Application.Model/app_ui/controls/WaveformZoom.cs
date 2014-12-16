@@ -17,13 +17,7 @@ using Cadencii.Application.Models;
 
 namespace Cadencii.Application.Controls
 {
-
-    using System;
-    using cadencii;
-
     public interface WaveformZoom : UiUserControl
     {
-        void setListener(WaveformZoomModel listener);
     }
-
 }

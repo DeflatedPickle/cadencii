@@ -237,8 +237,7 @@ namespace Cadencii.Application.Forms
             trackSelector = new TrackSelectorImpl(this); // initializeで引数なしのコンストラクタが呼ばれるのを予防
             //TODO: javaのwaveViewはどこで作られるんだっけ？
             waveView = new WaveViewImpl();
-            //TODO: これはひどい
-            panelWaveformZoom = (WaveformZoomImpl)(new WaveformZoomModel(this, waveView)).getUi();
+			panelWaveformZoom = ApplicationUIHost.Create<WaveformZoom> (this, waveView);
 
             InitializeComponent();
 
@@ -249,7 +248,7 @@ namespace Cadencii.Application.Forms
             pictPianoRoll.setMainForm(this);
             bgWorkScreen = new System.ComponentModel.BackgroundWorker();
 
-			this.panelWaveformZoom.AddControl (this.waveView);
+			this.panelWaveformZoom.Controls.Add (this.waveView);
 			this.waveView.Anchor = ((Cadencii.Gui.Toolkit.AnchorStyles)((((Cadencii.Gui.Toolkit.AnchorStyles.Top | Cadencii.Gui.Toolkit.AnchorStyles.Bottom)
 				| Cadencii.Gui.Toolkit.AnchorStyles.Left)
                         | Cadencii.Gui.Toolkit.AnchorStyles.Right)));

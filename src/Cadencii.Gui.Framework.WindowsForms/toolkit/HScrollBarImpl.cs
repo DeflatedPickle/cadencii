@@ -23,6 +23,10 @@ namespace Cadencii.Gui.Toolkit
 	{
 		// UiHScrollBar
 
+		UiControl UiControl.Parent {
+			get { return Parent as UiControl; }
+		}
+
 		event EventHandler UiHScrollBar.ValueChanged {
 			add { ValueChanged += value; }
 			remove { ValueChanged -= value; }

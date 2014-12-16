@@ -17,6 +17,7 @@ using System.Windows.Forms;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Models;
+using Cadencii.Application.Forms;
 
 
 namespace Cadencii.Application.Controls
@@ -26,46 +27,11 @@ namespace Cadencii.Application.Controls
     /// </summary>
     class WaveformZoomImpl : UserControlImpl, WaveformZoom
     {
+		WaveformZoomModel model;
 
-        /// <summary>
-        /// このビューのController
-        /// </summary>
-        private WaveformZoomModel mListener = null;
-        private Graphics mGraphicsPanel2 = null;
-
-        public void setListener(WaveformZoomModel listener)
-        {
-            mListener = listener;
-        }
-
-        protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
-        {
-            base.OnPaint(e);
-            if (mGraphicsPanel2 == null) {
-                mGraphicsPanel2 = new Graphics();
-            }
-            mGraphicsPanel2.NativeGraphics = e.Graphics;
-            Graphics g = mGraphicsPanel2;
-            mListener.receivePaintSignal(g);
-        }
-
-        protected override void OnMouseDown(System.Windows.Forms.MouseEventArgs e)
-        {
-            base.OnMouseDown(e);
-            mListener.receiveMouseDownSignal(e.X, e.Y);
-        }
-
-        protected override void OnMouseMove(System.Windows.Forms.MouseEventArgs e)
-        {
-            base.OnMouseMove(e);
-            mListener.receiveMouseMoveSignal(e.X, e.Y);
-        }
-
-        protected override void OnMouseUp(System.Windows.Forms.MouseEventArgs e)
-        {
-            base.OnMouseUp(e);
-            mListener.receiveMouseUpSignal(e.X, e.Y);
-        }
+		public WaveformZoomImpl (FormMain main, WaveView waveView)
+		{
+			model = new WaveformZoomModel (this, waveView);
+		}
     }
-
 }

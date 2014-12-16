@@ -5,10 +5,11 @@ namespace Cadencii.Gui.Toolkit
 {
 	public interface UiUserControl : UiControl
 	{
+		event EventHandler<PaintEventArgs> Paint;
+
 		event EventHandler Load;
 
 		BorderStyle BorderStyle { get; set; }
-		void AddControl (UiControl control);
 
 		// actually ContainerControl member.
 		AutoScaleMode AutoScaleMode { get; set; }

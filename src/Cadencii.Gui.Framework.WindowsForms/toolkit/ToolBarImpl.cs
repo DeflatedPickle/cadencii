@@ -65,6 +65,10 @@ namespace Cadencii.Gui.Toolkit
 
 		// UiControl
 
+		UiControl UiControl.Parent {
+			get { return Parent as UiControl; }
+		}
+
 		Cursor UiControl.Cursor {
 			get { return this.Cursor.ToAwt (); }
 			set { Cursor = value.ToNative (); }

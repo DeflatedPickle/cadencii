@@ -15,6 +15,7 @@ using Cadencii.Gui;
 using cadencii.core;
 using Cadencii.Application.Forms;
 using Cadencii.Application.Controls;
+using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application.Models
 {
@@ -43,26 +44,36 @@ namespace Cadencii.Application.Models
         private float mWaveViewInitScale;
 
         private WaveView mWaveView = null;
-        private FormMain mFormMain = null;
-        private WaveformZoom mUi = null;
+        private WaveformZoom control = null;
 
         /// <summary>
         /// Wave表示部等のボタンと他のコンポーネントの間のスペース
         /// </summary>
         const int SPACE = 4;
 
-        public WaveformZoomModel(FormMain form_main, WaveView wave_view)
+		public WaveformZoomModel(WaveformZoom control, WaveView wave_view)
         {
+			this.control = control;
             mWaveView = wave_view;
-            mFormMain = form_main;
 
-            mUi = ApplicationUIHost.Create<WaveformZoom> ();
-            mUi.setListener(this);
+			control.MouseMove += (sender, e) => receiveMouseMoveSignal (e.X, e.Y);
+			control.MouseDown += (sender, e) => receiveMouseDownSignal (e.X, e.Y);
+			control.MouseUp += (sender, e) => receiveMouseUpSignal (e.X, e.Y);
+			control.Paint += (o, e) => receivePaintSignal (e.Graphics);
         }
+
+		FormMain Main {
+			get {
+				for (UiControl c = control.Parent; c != null; c = c.Parent)
+					if (c is FormMain)
+						return c as FormMain;
+				return null;
+			}
+		}
 
         public void refreshScreen()
         {
-            mFormMain.refreshScreen();
+            Main.refreshScreen();
         }
 
         public void setAutoMaximize(bool value)
@@ -80,16 +91,11 @@ namespace Cadencii.Application.Models
             mWaveView.setScale(value);
         }
 
-        public WaveformZoom getUi()
-        {
-            return mUi;
-        }
-
         public void receivePaintSignal(Graphics g)
         {
             int key_width = EditorManager.keyWidth;
             int width = key_width - 1;
-            int height = mUi.Height - 1;
+			int height = control.Height - 1;
 
             // 背景を塗る
 			g.setColor(Cadencii.Gui.Colors.DarkGray);
@@ -133,7 +139,7 @@ namespace Cadencii.Application.Models
             Point p = new Point(x, y);
 
             int width = EditorManager.keyWidth - 1;
-            int height = mUi.Height;
+			int height = control.Height;
 
             // AutoMaximizeボタン
             Rectangle rc = new Rectangle(SPACE, SPACE, width - SPACE - SPACE, 16);
@@ -141,7 +147,7 @@ namespace Cadencii.Application.Models
                 mWaveViewButtonAutoMaximizeMouseDowned = true;
                 mWaveViewButtonZoomMouseDowned = false;
 
-                mUi.Refresh();
+                control.Refresh();
                 return;
             }
 
@@ -154,14 +160,14 @@ namespace Cadencii.Application.Models
                     mWaveViewButtonAutoMaximizeMouseDowned = false;
                     mWaveViewInitScale = mWaveView.getScale();
 
-                    mUi.Refresh();
+                    control.Refresh();
                     return;
                 }
             }
 
             mWaveViewButtonAutoMaximizeMouseDowned = false;
             mWaveViewButtonZoomMouseDowned = false;
-            mUi.Refresh();
+            control.Refresh();
         }
 
         public void receiveMouseMoveSignal(int x, int y)
@@ -170,18 +176,18 @@ namespace Cadencii.Application.Models
                 return;
             }
 
-            int height = mUi.Height;
+			int height = control.Height;
             int delta = mWaveViewMouseDownedLocationY - y;
             float scale = mWaveViewInitScale + delta * 3.0f / height * mWaveViewInitScale;
             mWaveView.setScale(scale);
 
-            mFormMain.refreshScreen();
+            Main.refreshScreen();
         }
 
         public void receiveMouseUpSignal(int x, int y)
         {
             int width = EditorManager.keyWidth - 1;
-            int height = mUi.Height;
+			int height = control.Height;
 
             // AutoMaximizeボタン
             if (Utility.isInRect(x, y, SPACE, SPACE, width - SPACE - SPACE, 16)) {
@@ -193,7 +199,7 @@ namespace Cadencii.Application.Models
 
             mWaveViewButtonAutoMaximizeMouseDowned = false;
             mWaveViewButtonZoomMouseDowned = false;
-            mUi.Refresh();
+            control.Refresh();
         }
 
         /// <summary>
@@ -203,7 +209,7 @@ namespace Cadencii.Application.Models
         private Rectangle getButtonBoundsWaveViewZoom()
         {
             int width = EditorManager.keyWidth - 1;
-            int height = mUi.Height - 1;
+            int height = control.Height - 1;
 
             int y = SPACE + 16 + SPACE;
             return new Rectangle(SPACE, y, width - SPACE - SPACE, height - SPACE - y);
