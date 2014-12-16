@@ -1,6 +1,7 @@
 using System;
 using Cadencii.Gui.Toolkit;
 using cadencii;
+using Cadencii.Application.Models;
 
 namespace Cadencii.Application.Controls
 {
@@ -12,31 +13,16 @@ namespace Cadencii.Application.Controls
 
 	public interface VolumeTracker : UiUserControl, IAmplifierView
 	{
+		VolumeTrackerModel Model { get; }
 		bool DoubleBuffered { get; set; }
 
-		int Track { get; set; }
-
-		bool SoloButtonVisible { get; set; }
-
-		bool Solo { get; set; }
-
-		bool Muted { get; set; }
-
-		string Number { set; }
-
-		int Panpot { set; }
-
-		int Feder { get; set; }
-
-		string Title { get; set; }
-
-		event PanpotChangedEventHandler PanpotChanged;
-
-		event FederChangedEventHandler FederChanged;
-
-		event EventHandler MuteButtonClick;
-
-		event EventHandler SoloButtonClick;
+		UiTrackBar trackFeder { get; }
+		UiTrackBar trackPanpot { get; }
+		UiTextBox txtPanpot { get; }
+		UiLabel lblTitle { get; }
+		UiTextBox txtFeder { get; }
+		UiCheckBox chkMute { get; }
+		UiCheckBox chkSolo { get; }
 	}
 }
 

@@ -271,6 +271,7 @@
     <Compile Include="app_ui\controls\menu\PaletteToolMenuItem.cs" />
     <Compile Include="app_ui\controls\menu\TrackSelectorSingerDropdownMenuItem.cs" />
     <Compile Include="app_ui\controls\menu\TrackSelectorSingerPopupMenu.cs" />
+    <Compile Include="app_ui\models\VolumeTrackerModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

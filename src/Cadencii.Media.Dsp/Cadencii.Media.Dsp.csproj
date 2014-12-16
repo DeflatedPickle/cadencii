@@ -95,6 +95,7 @@
     <Compile Include="cadencii_app\QuantizeModeUtil.cs" />
     <Compile Include="cadencii_app\UtauFreq.cs" />
     <Compile Include="DspUIHost.cs" />
+    <Compile Include="dsp\v1\IAmplifierView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
