@@ -275,7 +275,7 @@
 			            >
 		            </_Panel1>
 		            <_Panel2
-            Anchor = "Top,Bottom,Left,Right"
+		            Anchor = "Top,Bottom,Left,Right"
 		            BorderColor = "$Black"
 		            Location = "(46, 0)"
 		            Margin = "(0)"
@@ -286,7 +286,7 @@
 		            </_Panel2>
 
 			        <BSplitContainer id="splitContainer2"
-
+			        	Dock = "Fill"
 			            FixedPanel = "Panel2"
 			            SplitterFixed = "false"
 			            Location = "(0, 345)"
@@ -313,13 +313,29 @@
 				            />
 			            <_Panel2
             				Anchor = "Bottom,Left,Right"
-				            BorderColor = "$Black"
+				            BorderColor = "$(112, 112, 112)"
+				            BorderStyle = "FixedSingle"
 				            Location = "(0, 29)"
 				            Margin = "(0)"
 				            Name = "m_panel2"
 				            Size = "(115, 105)"
 				            TabIndex = "1"
-				            />
+				            >
+				            <WaveformZoom id="panelWaveformZoom"
+				            	Dock = "Fill"
+				            	WaveView = "#waveView"
+				            	>
+			            		<WaveView id="waveView"
+									Anchor = "Top,Bottom,Right,Left"
+					            	BackColor = "$(212,212,212)"
+					            	Location = "(66, 0)"
+					            	Margin = "(0)"
+					            	Name = "waveView"
+					            	Size = "(355, 59)"
+					            	TabIndex = "17"
+				            		/>
+				            </WaveformZoom>
+				        </_Panel2>
 			        </BSplitContainer>
 		        </BSplitContainer>
 	        </_ContentPanel>

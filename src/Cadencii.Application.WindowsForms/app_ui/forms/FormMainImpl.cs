@@ -235,11 +235,6 @@ namespace Cadencii.Application.Forms
             EditorManager.setVsqFile(tvsq);
 
             trackSelector = new TrackSelectorImpl(this); // initializeで引数なしのコンストラクタが呼ばれるのを予防
-            //TODO: javaのwaveViewはどこで作られるんだっけ？
-			panelWaveformZoom = ApplicationUIHost.Create<WaveformZoom> ();
-			waveView = ApplicationUIHost.Create<WaveView> ();
-			panelWaveformZoom.WaveView = waveView;
-			this.panelWaveformZoom.Controls.Add (waveView);
 
             InitializeComponent();
 
@@ -250,15 +245,6 @@ namespace Cadencii.Application.Forms
             pictPianoRoll.setMainForm(this);
             bgWorkScreen = new System.ComponentModel.BackgroundWorker();
 
-			waveView.Anchor = ((Cadencii.Gui.Toolkit.AnchorStyles)((((Cadencii.Gui.Toolkit.AnchorStyles.Top | Cadencii.Gui.Toolkit.AnchorStyles.Bottom)
-				| Cadencii.Gui.Toolkit.AnchorStyles.Left)
-                        | Cadencii.Gui.Toolkit.AnchorStyles.Right)));
-            waveView.BackColor = new Cadencii.Gui.Color(((int)(((byte)(212)))), ((int)(((byte)(212)))), ((int)(((byte)(212)))));
-            waveView.Location = new Cadencii.Gui.Point(66, 0);
-            waveView.Margin = new Cadencii.Gui.Toolkit.Padding(0);
-            waveView.Name = "waveView";
-            waveView.Size = new Cadencii.Gui.Dimension(355, 59);
-            waveView.TabIndex = 17;
 			openXmlVsqDialog = new OpenFileDialogImpl();
             openXmlVsqDialog.Filter = string.Join("|", new[] { "VSQ Format(*.vsq)|*.vsq", "XML-VSQ Format(*.xvsq)|*.xvsq" });
 
@@ -315,11 +301,7 @@ namespace Cadencii.Application.Forms
             splitContainer1.BackColor = new Cadencii.Gui.Color(212, 212, 212);
             splitContainer2.Panel1.Controls.Add(panel1);
             panel1.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
-            splitContainer2.Panel2.Controls.Add(panelWaveformZoom);
-            splitContainer2.Panel2.BorderStyle = BorderStyle.FixedSingle;
-            splitContainer2.Panel2.BorderColor = new Cadencii.Gui.Color(112, 112, 112);
             splitContainer1.Panel1.Controls.Add(splitContainer2);
-            panelWaveformZoom.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 			splitContainer2.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
             splitContainer1.Panel2.Controls.Add(trackSelector);
             trackSelector.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;

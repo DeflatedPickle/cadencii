@@ -34,6 +34,11 @@ namespace Cadencii.Gui.Toolkit
 			get { return impl.SelectedPath; }
 			set { impl.SelectedPath = value; }
 		}
+
+		public DialogResult ShowDialog (UiForm form)
+		{
+			return (DialogResult) impl.ShowDialog ((System.Windows.Forms.IWin32Window)form);
+		}
 	}
 }
 
