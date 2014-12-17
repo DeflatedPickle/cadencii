@@ -12,13 +12,10 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii;
 using Cadencii.Gui;
 using cadencii.java.util;
-using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
-using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
 using Cadencii.Utilities;
@@ -43,28 +40,6 @@ namespace Cadencii.Application.Forms
             setResources();
             AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
-
-
-        #region UiBaseインターフェースの実装
-
-        public int showDialog(object obj)
-        {
-            System.Windows.Forms.DialogResult ret;
-            if (obj == null || (obj != null && !(obj is System.Windows.Forms.Form))) {
-                ret = base.ShowDialog();
-            } else {
-                System.Windows.Forms.Form form = (System.Windows.Forms.Form)obj;
-                ret = base.ShowDialog(form);
-            }
-            if (ret == System.Windows.Forms.DialogResult.OK || ret == System.Windows.Forms.DialogResult.Yes) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
-
-        #endregion
-
 
         #region FormBezierPointEditUiインターフェースの実装
 
@@ -153,6 +128,7 @@ namespace Cadencii.Application.Forms
             this.PerformLayout();
         }
 
+		#pragma warning disable 0649
         private UiButton btnCancel;
         private UiButton btnOK;
 		public UiCheckBox chkEnableSmooth { get; set; }
@@ -176,6 +152,7 @@ namespace Cadencii.Application.Forms
 		public UiButton btnRight { get; set; }
         private UiButton btnBackward;
         private UiButton btnForward;
+		#pragma warning restore 0649
 
     }
 

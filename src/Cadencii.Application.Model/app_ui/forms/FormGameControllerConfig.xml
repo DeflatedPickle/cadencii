@@ -13,7 +13,7 @@
             StartPosition = "Manual"
             Text = "Game Controler Configuration"
             >
-<Label id="lblMessage"
+	<UiLabel id="lblMessage"
             AutoSize = "true"
             Location = "(15, 17)"
             Name = "lblMessage"
@@ -21,14 +21,14 @@
             TabIndex = "0"
             Text = " "
             />
-<PictureBox id="pictButton"
+	<UiPictureBox id="pictButton"
             Location = "(12, 49)"
             Name = "pictButton"
             Size = "(316, 36)"
             TabIndex = "1"
             TabStop = "false"
             />
-<ProgressBar id="progressCount"
+	<UiProgressBar id="progressCount"
             Location = "(12, 101)"
             Maximum = "8"
             Name = "progressCount"
@@ -36,7 +36,7 @@
             TabIndex = "2"
             Value = "1"
             />
-<Button id="btnSkip"
+	<UiButton id="btnSkip"
             Location = "(27, 127)"
             Name = "btnSkip"
             Size = "(75, 23)"
@@ -44,7 +44,7 @@
             Text = "Skip"
             UseVisualStyleBackColor = "true"
             />
-<Button id="btnOK"
+	<UiButton id="btnOK"
             Anchor = "Top,Right"
             DialogResult = "OK"
             Enabled = "false"
@@ -55,7 +55,7 @@
             Text = "OK"
             UseVisualStyleBackColor = "true"
             />
-<Button id="btnCancel"
+	<UiButton id="btnCancel"
             Anchor = "Top,Right"
             DialogResult = "Cancel"
             Location = "(253, 159)"
@@ -65,7 +65,7 @@
             Text = "Cancel"
             UseVisualStyleBackColor = "true"
             />
-<Button id="btnReset"
+	<UiButton id="btnReset"
             Anchor = "Top,Right"
             DialogResult = "OK"
             Location = "(197, 127)"

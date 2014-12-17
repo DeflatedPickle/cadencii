@@ -83,6 +83,7 @@
     <Compile Include="toolkit\GroupBoxImpl.cs" />
     <Compile Include="toolkit\PropertyGridImpl.cs" />
     <Compile Include="toolkit\ComboBoxImpl.cs" />
+    <Compile Include="toolkit\ProgressBarImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -261,8 +261,9 @@ namespace Cadencii.Application.Models
 								FormBeatConfigController dlg = null;
 								try {
 									dlg = new FormBeatConfigController(c => ApplicationUIHost.Create<FormBeatConfigUi> (c), bar_count - pre_measure + 1, timesig.numerator, timesig.denominator, num_enabled, pre_measure);
-									var p = parent.GetFormPreferedLocation (dlg.getWidth(), dlg.getHeight());
-									dlg.setLocation(p.X, p.Y);
+									var dlgUi = dlg.getUi ();
+									var p = parent.GetFormPreferedLocation (dlgUi.Width, dlgUi.Height);
+									dlgUi.Location = new Point (p.X, p.Y);
 									var dr = DialogManager.ShowModalDialog(dlg.getUi(), parent.form);
 									if (dr == Cadencii.Gui.DialogResult.OK) {
 										if (dlg.isEndSpecified()) {
@@ -335,8 +336,9 @@ namespace Cadencii.Application.Models
 								FormBeatConfigController dlg = null;
 								try {
 									dlg = new FormBeatConfigController(c => ApplicationUIHost.Create<FormBeatConfigUi> (c), bar_count - pre_measure + 1, timesig.numerator, timesig.denominator, true, pre_measure);
-									var p = parent.GetFormPreferedLocation(dlg.getWidth(), dlg.getHeight());
-									dlg.setLocation(p.X, p.Y);
+									var dlgUi = dlg.getUi ();
+									var p = parent.GetFormPreferedLocation(dlgUi.Width, dlgUi.Height);
+									dlgUi.Location = new Point (p.X, p.Y);
 									var dr = DialogManager.ShowModalDialog(dlg.getUi(), parent.form);
 									if (dr == Cadencii.Gui.DialogResult.OK) {
 										if (dlg.isEndSpecified()) {

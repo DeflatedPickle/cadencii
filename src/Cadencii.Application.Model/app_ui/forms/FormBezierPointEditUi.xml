@@ -12,7 +12,7 @@
             StartPosition = "CenterParent"
             Text = "Edit Bezier Data Point"
             >
-	<Button id="btnCancel"
+	<UiButton id="btnCancel"
             Anchor = "Bottom,Right"
             AutoSize = "true"
             DialogResult = "Cancel"
@@ -22,7 +22,7 @@
             TabIndex = "14"
             Text = "Cancel"
             UseVisualStyleBackColor = "true" />
-	<Button id="btnOK"
+	<UiButton id="btnOK"
             Anchor = "Bottom,Right"
             AutoSize = "true"
             Location = "(293, 170)"
@@ -31,7 +31,7 @@
             TabIndex = "13"
             Text = "OK"
             UseVisualStyleBackColor = "true" />
-	<CheckBox id="chkEnableSmooth"
+	<UiCheckBox id="chkEnableSmooth"
             AutoSize = "true"
             Location = "(196, 12)"
             Name = "chkEnableSmooth"
@@ -40,7 +40,7 @@
             Text = "Smooth"
             UseVisualStyleBackColor = "true" />
 
-	<GroupBox id="groupLeft"
+	<UiGroupBox id="groupLeft"
             AutoSize = "true"
             Location = "(14, 38)"
             Name = "groupLeft"
@@ -48,21 +48,21 @@
             TabIndex = "17"
             TabStop = "false"
             Text = "Left Control Point">
-		<Label id="lblLeftValue"
+		<UiLabel id="lblLeftValue"
 			AutoSize = "true"
             Location = "(12, 54)"
             Name = "lblLeftValue"
             Size = "(34, 12)"
             TabIndex = "16"
             Text = "Value" />
-        <Label id="lblLeftClock"
+        <UiLabel id="lblLeftClock"
             AutoSize = "true"
             Location = "(12, 29)"
             Name = "lblLeftClock"
             Size = "(34, 12)"
             TabIndex = "15"
             Text = "Clock" />
-        <Button id="btnLeft"
+        <UiButton id="btnLeft"
             AutoSize = "true"
             ImageAlign = "TopCenter"
             Location = "(14, 76)"
@@ -90,8 +90,8 @@
             TabIndex = "5"
             Text = "0"
             Type = "Integer" />
-	</GroupBox>
-	<GroupBox id="groupDataPoint"
+	</UiGroupBox>
+	<UiGroupBox id="groupDataPoint"
             AutoSize = "true"
             Location = "(161, 38)"
             Name = "groupDataPoint"
@@ -99,7 +99,7 @@
             TabIndex = "18"
             TabStop = "false"
             Text = "Data Point">
-		<Button id="btnDataPoint"
+		<UiButton id="btnDataPoint"
             AutoSize = "true"
             ImageAlign = "TopCenter"
             Location = "(14, 76)"
@@ -107,7 +107,7 @@
             Size = "(113, 27)"
             TabIndex = "9"
             UseVisualStyleBackColor = "true" />
-		<Label id="lblDataPointValue"
+		<UiLabel id="lblDataPointValue"
             AutoSize = "true"
             Location = "(12, 54)"
             Name = "lblDataPointValue"
@@ -120,7 +120,7 @@
             Size = "(61, 19)"
             TabIndex = "7"
             Type = "Integer" />
-        <Label id="lblDataPointClock"
+        <UiLabel id="lblDataPointClock"
             AutoSize = "true"
             Location = "(12, 29)"
             Name = "lblDataPointClock"
@@ -133,8 +133,8 @@
             Size = "(61, 19)"
             TabIndex = "8"
             Type = "Integer" />
-    </GroupBox>
-	<GroupBox id="groupRight"
+    </UiGroupBox>
+	<UiGroupBox id="groupRight"
             AutoSize = "true"
             Location = "(308, 38)"
             Name = "groupRight"
@@ -142,7 +142,7 @@
             TabIndex = "19"
             TabStop = "false"
             Text = "Right Control Point">
-		<Button id="btnRight"
+		<UiButton id="btnRight"
             AutoSize = "true"
             ImageAlign = "TopCenter"
             Location = "(14, 76)"
@@ -150,7 +150,7 @@
             Size = "(113, 27)"
             TabIndex = "12"
             UseVisualStyleBackColor = "true" />
-        <Label id="lblRightValue"
+        <UiLabel id="lblRightValue"
             AutoSize = "true"
             Location = "(12, 54)"
             Name = "lblRightValue"
@@ -164,7 +164,7 @@
             Size = "(61, 19)"
             TabIndex = "10"
             Type = "Integer" />
-        <Label id="lblRightClock"
+        <UiLabel id="lblRightClock"
             AutoSize = "true"
             Location = "(12, 29)"
             Name = "lblRightClock"
@@ -178,8 +178,8 @@
             Size = "(61, 19)"
             TabIndex = "11"
             Type = "Integer" />
-    </GroupBox>
-	<Button id="btnBackward"
+    </UiGroupBox>
+	<UiButton id="btnBackward"
             AutoSize = "true"
             Location = "(99, 8)"
             Name = "btnBackward"
@@ -187,7 +187,7 @@
             TabIndex = "1"
             Text = "&lt;&lt;"
             UseVisualStyleBackColor = "true" />
-	<Button id="btnForward"
+	<UiButton id="btnForward"
             AutoSize = "true"
             Location = "(290, 9)"
             Name = "btnForward"

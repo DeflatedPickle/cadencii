@@ -23,7 +23,6 @@ using Cadencii.Application.Controls;
 
 namespace Cadencii.Application.Forms
 {
-
     class FormDeleteBarImpl : FormImpl, FormDeleteBar
     {
         public FormDeleteBarImpl(int max_barcount)
@@ -78,33 +77,16 @@ namespace Cadencii.Application.Forms
         #region event handlers
         public void btnOK_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
         }
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
         #endregion
 
         #region UI implementation
-        /// <summary>
-        /// 必要なデザイナ変数です。
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
-
-        /// <summary>
-        /// 使用中のリソースをすべてクリーンアップします。
-        /// </summary>
-        /// <param name="disposing">マネージ リソースが破棄される場合 true、破棄されない場合は false です。</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null)) {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
         /// <summary>
         /// デザイナ サポートに必要なメソッドです。このメソッドの内容を
         /// コード エディタで変更しないでください。
@@ -118,14 +100,16 @@ namespace Cadencii.Application.Forms
 
         }
 
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblEnd;
-        private System.Windows.Forms.Label lblStart;
-        private NumericUpDownEx numEnd;
-        private NumericUpDownEx numStart;
+		#pragma warning disable 0649
+        UiButton btnOK;
+        UiButton btnCancel;
+        UiLabel label4;
+        UiLabel label3;
+        UiLabel lblEnd;
+        UiLabel lblStart;
+        NumericUpDownEx numEnd;
+        NumericUpDownEx numStart;
+		#pragma warning restore 0649
 
         #endregion
     }

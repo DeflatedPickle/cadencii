@@ -13,7 +13,7 @@
             StartPosition = "Manual"
             Text = "Delete Bars"
             >
-<Button id="btnOK"
+	<UiButton id="btnOK"
             Location = "(37, 66)"
             Name = "btnOK"
             Size = "(75, 23)"
@@ -21,7 +21,7 @@
             Text = "OK"
             UseVisualStyleBackColor = "true"
             />
-<Button id="btnCancel"
+	<UiButton id="btnCancel"
             DialogResult = "Cancel"
             Location = "(118, 66)"
             Name = "btnCancel"
@@ -30,7 +30,7 @@
             Text = "Cancel"
             UseVisualStyleBackColor = "true"
             />
-<Label id="label4"
+	<UiLabel id="label4"
             AutoSize = "true"
             Location = "(125, 38)"
             Name = "label4"
@@ -38,7 +38,7 @@
             TabIndex = "13"
             Text = ":0:000"
             />
-<Label id="label3"
+	<UiLabel id="label3"
             AutoSize = "true"
             Location = "(125, 13)"
             Name = "label3"
@@ -46,7 +46,7 @@
             TabIndex = "12"
             Text = ":0:000"
             />
-<Label id="lblEnd"
+	<UiLabel id="lblEnd"
             Location = "(12, 35)"
             Name = "lblEnd"
             Size = "(49, 18)"
@@ -54,7 +54,7 @@
             Text = "End"
             TextAlign = "MiddleRight"
             />
-<Label id="lblStart"
+	<UiLabel id="lblStart"
             Location = "(12, 10)"
             Name = "lblStart"
             Size = "(49, 18)"
@@ -62,7 +62,7 @@
             Text = "Start"
             TextAlign = "MiddleRight"
             />
-<NumericUpDownEx id="numEnd"
+	<NumericUpDownEx id="numEnd"
             Location = "(67, 36)"
             Maximum = "32"
             Minimum = "1"
@@ -71,7 +71,7 @@
             TabIndex = "9"
             Value = "1"
             />
-<NumericUpDownEx id="numStart"
+	<NumericUpDownEx id="numStart"
             Location = "(67, 11)"
             Minimum = "1"
             Name = "numStart"

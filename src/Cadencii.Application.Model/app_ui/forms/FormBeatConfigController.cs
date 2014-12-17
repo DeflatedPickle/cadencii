@@ -86,12 +86,12 @@ namespace Cadencii.Application.Forms
 
         public void buttonOkClickedSlot()
         {
-            mUi.setDialogResult(true);
+			mUi.DialogResult = Cadencii.Gui.DialogResult.OK;
         }
 
         public void buttonCancelClickedSlot()
         {
-            mUi.setDialogResult(false);
+			mUi.DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
 
         public void checkboxEndCheckedChangedSlot()
@@ -108,21 +108,6 @@ namespace Cadencii.Application.Forms
         public void close()
         {
             mUi.Close();
-        }
-
-        public void setLocation(int x, int y)
-        {
-            mUi.setLocation(x, y);
-        }
-
-        public int getWidth()
-        {
-            return mUi.getWidth();
-        }
-
-        public int getHeight()
-        {
-            return mUi.getHeight();
         }
 
         public FormBeatConfigUi getUi()

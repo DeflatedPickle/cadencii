@@ -31,13 +31,13 @@ namespace Cadencii.Application.Forms
         private List<int> m_list = new List<int>();
         private List<int> m_povs = new List<int>();
         private int index;
-        private System.Windows.Forms.Timer timer;
+        private Timer timer;
 
         public FormGameControllerConfigImpl()
         {
             InitializeComponent();
 
-            timer = new System.Windows.Forms.Timer(this.components);
+			timer = ApplicationUIHost.Create<Timer> (this.components);
             registerEventHandlers();
             setResources();
             for (int i = 0; i < 10; i++) {
@@ -49,7 +49,7 @@ namespace Cadencii.Application.Forms
             applyLanguage();
             int num_dev = winmmhelp.JoyGetNumJoyDev();
             if (num_dev > 0) {
-                pictButton.Image = cadencii.Properties.Resources.btn1;
+				pictButton.Image = Resources.btn1;
                 progressCount.Maximum = 8;
                 progressCount.Minimum = 0;
                 progressCount.Value = 0;
@@ -208,11 +208,11 @@ namespace Cadencii.Application.Forms
                 }
 
                 if (index == 8) {
-                    pictButton.Image = cadencii.Properties.Resources.btn2;
+                    pictButton.Image = Resources.btn2;
                     progressCount.Value = 0;
                     progressCount.Maximum = 4;
                 } else if (index == 12) {
-                    pictButton.Image = cadencii.Properties.Resources.btn3;
+                    pictButton.Image = Resources.btn3;
                     progressCount.Value = 0;
                     progressCount.Maximum = 2;
                 }
@@ -241,11 +241,11 @@ namespace Cadencii.Application.Forms
             }
 
             if (index == 8) {
-                pictButton.Image = cadencii.Properties.Resources.btn2;
+                pictButton.Image = Resources.btn2;
                 progressCount.Value = 0;
                 progressCount.Maximum = 4;
             } else if (index == 12) {
-                pictButton.Image = cadencii.Properties.Resources.btn3;
+                pictButton.Image = Resources.btn3;
                 progressCount.Value = 0;
                 progressCount.Maximum = 2;
             }
@@ -319,13 +319,15 @@ namespace Cadencii.Application.Forms
 
         }
 
-        private System.Windows.Forms.Label lblMessage;
-        private System.Windows.Forms.PictureBox pictButton;
-        private System.Windows.Forms.ProgressBar progressCount;
-        private System.Windows.Forms.Button btnSkip;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnReset;
+		#pragma warning disable 0649
+        UiLabel lblMessage;
+        UiPictureBox pictButton;
+        UiProgressBar progressCount;
+        UiButton btnSkip;
+        UiButton btnOK;
+        UiButton btnCancel;
+        UiButton btnReset;
+		#pragma warning restore 0649
 
         #endregion
 

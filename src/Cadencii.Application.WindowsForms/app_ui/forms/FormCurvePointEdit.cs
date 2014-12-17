@@ -12,7 +12,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using cadencii.apputil;
 using Cadencii.Media.Vsq;
@@ -302,20 +301,22 @@ namespace Cadencii.Application.Forms
 
         }
 
-        private System.Windows.Forms.Button btnForward;
-        private System.Windows.Forms.Button btnBackward;
-        private Label lblDataPointValue;
-        private NumberTextBox txtDataPointClock;
-        private Label lblDataPointClock;
-        private NumberTextBox txtDataPointValue;
-        private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnBackward2;
-        private System.Windows.Forms.Button btnForward2;
-        private System.Windows.Forms.Button btnApply;
-        private System.Windows.Forms.Button btnBackward3;
-        private System.Windows.Forms.Button btnForward3;
-        private System.Windows.Forms.Button btnUndo;
-        private System.Windows.Forms.Button btnRedo;
+		#pragma warning disable 0649
+        UiButton btnForward;
+        UiButton btnBackward;
+        UiLabel lblDataPointValue;
+        NumberTextBox txtDataPointClock;
+        UiLabel lblDataPointClock;
+        NumberTextBox txtDataPointValue;
+        UiButton btnExit;
+        UiButton btnBackward2;
+        UiButton btnForward2;
+        UiButton btnApply;
+        UiButton btnBackward3;
+        UiButton btnForward3;
+        UiButton btnUndo;
+        UiButton btnRedo;
+		#pragma warning restore 0649
 
         #endregion
 

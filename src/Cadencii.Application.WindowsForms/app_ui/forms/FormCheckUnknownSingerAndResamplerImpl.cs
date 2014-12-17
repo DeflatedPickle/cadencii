@@ -163,15 +163,17 @@ namespace Cadencii.Application.Forms
         }
         #endregion
 
-        private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.Button buttonOk;
-        private System.Windows.Forms.Label labelMessage;
-        private System.Windows.Forms.CheckBox checkSingerImport;
-        private System.Windows.Forms.Label labelSingerName;
-        private System.Windows.Forms.TextBox textSingerPath;
-        private System.Windows.Forms.CheckBox checkResamplerImport;
-        private System.Windows.Forms.TextBox textResamplerPath;
-        private IconParader pictureSinger;
+		#pragma warning disable 0649
+        UiButton buttonCancel;
+        UiButton buttonOk;
+        UiLabel labelMessage;
+        UiCheckBox checkSingerImport;
+        UiLabel labelSingerName;
+        UiTextBox textSingerPath;
+        UiCheckBox checkResamplerImport;
+        UiTextBox textResamplerPath;
+        IconParader pictureSinger;
+		#pragma warning restore 0649
 
         #endregion
     }

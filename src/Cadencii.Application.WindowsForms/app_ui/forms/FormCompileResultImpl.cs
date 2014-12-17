@@ -97,9 +97,11 @@ namespace Cadencii.Application.Forms
 
         }
 
+		#pragma warning disable 0649
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnOK;
+		#pragma warning restore 0649
 
         #endregion
     }

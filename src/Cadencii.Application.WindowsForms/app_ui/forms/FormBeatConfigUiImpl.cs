@@ -35,30 +35,6 @@ namespace Cadencii.Application.Forms
 
         #region FormBeatConfigUiインターフェースの実装
 
-        public int getWidth()
-        {
-            return this.Width;
-        }
-
-        public int getHeight()
-        {
-            return this.Height;
-        }
-
-        public void setLocation(int x, int y)
-        {
-            this.Location = new System.Drawing.Point(x, y);
-        }
-
-        public void setDialogResult(bool value)
-        {
-            if (value) {
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-            } else {
-                this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            }
-        }
-
         public int getSelectedIndexDenominatorCombobox()
         {
             return comboDenominator.SelectedIndex;

@@ -19,6 +19,8 @@ namespace Cadencii.Gui.Toolkit
 		int SelectionStart { get; set; }
 
 		string Text { get; set; }
+
+		bool ReadOnly { get; set; }
 	}
 	
 }

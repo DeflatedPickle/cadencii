@@ -24,18 +24,6 @@ namespace Cadencii.Application.Forms
         void setTitle(string value);
 
         [PureVirtualFunction]
-        void setDialogResult(bool value);
-
-        [PureVirtualFunction]
-        void setLocation(int x, int y);
-
-        [PureVirtualFunction]
-        int getWidth();
-
-        [PureVirtualFunction]
-        int getHeight();
-
-        [PureVirtualFunction]
         void setTextBar1Label(string value);
 
         [PureVirtualFunction]
