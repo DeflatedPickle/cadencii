@@ -1,21 +1,12 @@
 using System;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Models;
 
 namespace Cadencii.Application.Controls
 {
-	public interface WaveView : UiControl
+	public interface WaveView : UiUserControl
 	{
-		void setScale (float value);
-
-		float getScale ();
-
-		void setAutoMaximize (bool value);
-
-		void reloadPartial (int i, string file, double sec_start, double sec_end);
-
-		void load (int track, string file);
-
-		void unloadAll ();
+		WaveViewModel Model { get; }
 	}
 }
 

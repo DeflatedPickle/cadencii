@@ -272,6 +272,7 @@
     <Compile Include="app_ui\models\VolumeTrackerModel.cs" />
     <Compile Include="app_ui\controls\WaveformZoom.cs" />
     <Compile Include="app_ui\models\WaveformZoomModel.cs" />
+    <Compile Include="app_ui\models\WaveViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

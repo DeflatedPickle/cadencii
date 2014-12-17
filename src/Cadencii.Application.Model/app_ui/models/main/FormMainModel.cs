@@ -330,7 +330,7 @@ namespace Cadencii.Application.Models
 			if (EditorManager.isPlaying()) {
 				EditorManager.setPlaying(false, form);
 			}
-			form.waveView.unloadAll();
+			form.waveView.Model.unloadAll();
 		}
 
 		public void ClearTempWave()
@@ -566,7 +566,7 @@ namespace Cadencii.Application.Models
 				}
 
 				// キャッシュ内のwavを、waveViewに読み込む
-				form.waveView.unloadAll();
+				form.waveView.Model.unloadAll();
 				for (int i = 1; i < vsq.Track.Count; i++) {
 					string wav = Path.Combine(cacheDir, i + ".wav");
 					#if DEBUG
@@ -575,7 +575,7 @@ namespace Cadencii.Application.Models
 					if (!System.IO.File.Exists(wav)) {
 						continue;
 					}
-					form.waveView.load(i - 1, wav);
+					form.waveView.Model.load(i - 1, wav);
 				}
 
 				// 一時ディレクトリを、cachedirに変更

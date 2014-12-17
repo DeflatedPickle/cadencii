@@ -81,9 +81,9 @@ namespace Cadencii.Application.Models
 				double sec_start = arg.secStart;
 				double sec_end = arg.secEnd;
 				if (sec_start <= sec_end) {
-					parent.form.waveView.reloadPartial(track - 1, file, sec_start, sec_end);
+					parent.form.waveView.Model.reloadPartial(track - 1, file, sec_start, sec_end);
 				} else {
-					parent.form.waveView.load(track - 1, file);
+					parent.form.waveView.Model.load(track - 1, file);
 				}
 			}
 			#endregion

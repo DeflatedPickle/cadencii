@@ -78,21 +78,6 @@ namespace Cadencii.Application.Models
             Main.refreshScreen();
         }
 
-        public void setAutoMaximize(bool value)
-        {
-            WaveView.setAutoMaximize(value);
-        }
-
-        public float getScale()
-        {
-            return WaveView.getScale();
-        }
-
-        public void setScale(float value)
-        {
-            WaveView.setScale(value);
-        }
-
         public void receivePaintSignal(Graphics g)
         {
             int key_width = EditorManager.keyWidth;
@@ -160,7 +145,7 @@ namespace Cadencii.Application.Models
                     mWaveViewMouseDownedLocationY = p.Y;
                     mWaveViewButtonZoomMouseDowned = true;
                     mWaveViewButtonAutoMaximizeMouseDowned = false;
-                    mWaveViewInitScale = WaveView.getScale();
+					mWaveViewInitScale = WaveView.Model.Scale;
 
                     control.Refresh();
                     return;
@@ -181,7 +166,7 @@ namespace Cadencii.Application.Models
 			int height = control.Height;
             int delta = mWaveViewMouseDownedLocationY - y;
             float scale = mWaveViewInitScale + delta * 3.0f / height * mWaveViewInitScale;
-            WaveView.setScale(scale);
+			WaveView.Model.Scale = scale;
 
             Main.refreshScreen();
         }
@@ -195,7 +180,7 @@ namespace Cadencii.Application.Models
             if (Utility.isInRect(x, y, SPACE, SPACE, width - SPACE - SPACE, 16)) {
                 if (mWaveViewButtonAutoMaximizeMouseDowned) {
                     mWaveViewAutoMaximize = !mWaveViewAutoMaximize;
-                    WaveView.setAutoMaximize(mWaveViewAutoMaximize);
+					WaveView.Model.setAutoMaximize(mWaveViewAutoMaximize);
                 }
             }
 
