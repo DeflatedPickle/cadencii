@@ -3,6 +3,10 @@
   <Major>3</Major>
   <Minor>5</Minor>
   <Build>4</Build>
+<<<<<<< HEAD
   <ReleaseDate>2014-12-17T14:04:44.611275Z</ReleaseDate>
+=======
+  <ReleaseDate>2014-12-17T11:42:55.835323Z</ReleaseDate>
+>>>>>>> 1a936fb9a5ae1abbdc075a603f06dad1b3260e7d
   <DownloadUrl>http://sourceforge.jp/projects/cadencii/releases/59580/Cadencii_v3.5.4</DownloadUrl>
 </UpdateInfo>
