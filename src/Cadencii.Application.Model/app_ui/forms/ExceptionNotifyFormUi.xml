@@ -11,7 +11,7 @@
 	StartPosition = "CenterParent"
 	Text = "ExceptionNotifyFormUiImpl"
 	>
-	<TextBox id="textMessage"
+	<UiTextBox id="textMessage"
             Anchor = "Top,Bottom,Left,Right"
             Location = "(22, 46)"
             Multiline = "true"
@@ -21,7 +21,7 @@
             Size = "(328, 268)"
             TabIndex = "0"
             WordWrap = "false" />
-	<Button id="buttonCancel"
+	<UiButton id="buttonCancel"
             Anchor = "Bottom,Left"
             DialogResult = "Cancel"
             Location = "(22, 339)"
@@ -30,7 +30,7 @@
             TabIndex = "0"
             Text = "Cancel"
             UseVisualStyleBackColor = "true" />
-	<Button id="buttonSend"
+	<UiButton id="buttonSend"
             Anchor = "Bottom,Right"
             DialogResult = "OK"
             Location = "(223, 339)"
@@ -39,7 +39,7 @@
             TabIndex = "1"
             Text = "Send"
             UseVisualStyleBackColor = "true" />
-	<Label id="labelDescription"
+	<UiLabel id="labelDescription"
             Anchor = "Top,Left,Right"
             Location = "(22, 18)"
             Name = "labelDescription"

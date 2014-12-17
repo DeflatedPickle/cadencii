@@ -43,12 +43,14 @@ namespace Cadencii.Application.Forms
 
         public void buttonCancelClickedSlot()
         {
-            mUi.close(true);
+			mUi.DialogResult = Cadencii.Gui.DialogResult.Cancel;
+            mUi.Close();
         }
 
         public void buttonOkClickedSlot()
         {
-            mUi.close(false);
+			mUi.DialogResult = Cadencii.Gui.DialogResult.OK;
+            mUi.Close();
         }
         #endregion
 

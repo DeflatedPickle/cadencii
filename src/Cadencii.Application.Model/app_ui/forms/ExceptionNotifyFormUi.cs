@@ -45,12 +45,6 @@ namespace Cadencii.Application.Forms
 
         [PureVirtualFunction]
         void setSendButtonText(string value);
-
-        /// <summary>
-        /// ダイアログを閉じる
-        /// </summary>
-        [PureVirtualFunction]
-        void close();
     }
 
 }

@@ -36,10 +36,6 @@ namespace Cadencii.Application.Forms
         int getHeight();
 
         [PureVirtualFunction]
-        void close();
-
-
-        [PureVirtualFunction]
         void setTextBar1Label(string value);
 
         [PureVirtualFunction]

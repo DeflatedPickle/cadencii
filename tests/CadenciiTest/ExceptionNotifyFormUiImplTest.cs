@@ -14,22 +14,6 @@ namespace cadencii
         }
 
         [Test]
-        public void testSetCancelButtonText()
-        {
-            string expected = "キャンセル";
-            this.setCancelButtonText(expected);
-            Assert.AreEqual(expected, base.buttonCancel.Text);
-        }
-
-        [Test]
-        public void testSetSendButtonText()
-        {
-            string expected = "送信";
-            this.setSendButtonText(expected);
-            Assert.AreEqual(expected, base.buttonSend.Text);
-        }
-
-        [Test]
         public void testSetTitle()
         {
             string expected = "たいとる";

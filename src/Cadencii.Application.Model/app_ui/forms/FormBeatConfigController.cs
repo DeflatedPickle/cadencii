@@ -107,7 +107,7 @@ namespace Cadencii.Application.Forms
 
         public void close()
         {
-            mUi.close();
+            mUi.Close();
         }
 
         public void setLocation(int x, int y)

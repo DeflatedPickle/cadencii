@@ -106,7 +106,9 @@
     <Compile Include="app_ui\controls\TrackSelectorImpl.cs" />
     <Compile Include="app_ui\controls\VolumeTrackerImpl.cs" />
     <Compile Include="app_ui\controls\WaveViewImpl.cs" />
-    <Compile Include="app_ui\forms\ExceptionNotifyFormUiImpl.Designer.cs" />
+    <Compile Include="app_ui\forms\ExceptionNotifyFormUiImpl.Designer.cs">
+      <DependentUpon>ExceptionNotifyFormUiImpl.cs</DependentUpon>
+    </Compile>
     <Compile Include="app_ui\forms\ExceptionNotifyFormUiImpl.cs" />
     <Compile Include="app_ui\forms\FormAskKeySoundGenerationUiImpl.cs" />
     <Compile Include="app_ui\forms\FormBeatConfigUiImpl.cs" />

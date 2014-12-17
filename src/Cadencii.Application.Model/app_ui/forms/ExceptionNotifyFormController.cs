@@ -67,12 +67,12 @@ namespace Cadencii.Application.Forms
                 client.UploadString(url, postData);
             } catch (Exception ex) {
             }
-            ui.close();
+            ui.Close();
         }
 
         public void cancelButtonClick()
         {
-            ui.close();
+            ui.Close();
         }
 
         #endregion

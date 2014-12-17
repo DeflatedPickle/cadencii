@@ -465,7 +465,9 @@ namespace Cadencii.Application.Models
 					} finally {
 						if (dialog != null) {
 							try {
-								dialog.getUi ().close (true);
+								var dui = dialog.getUi ();
+								dui.DialogResult = DialogResult.Cancel;
+								dui.Close ();
 							} catch (Exception ex2) {
 								Logger.write (GetType () + ".FormMain_Load; ex=" + ex2 + "\n");
 								Logger.StdErr ("FormMain#FormMain_Load; ex2=" + ex2);

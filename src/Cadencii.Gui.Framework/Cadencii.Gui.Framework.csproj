@@ -149,6 +149,7 @@
     <Compile Include="Cadencii.Gui.Toolkit\PropertyValueChangedEventArgs.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\PropertySort.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\CastingList.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\UiComboBox.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

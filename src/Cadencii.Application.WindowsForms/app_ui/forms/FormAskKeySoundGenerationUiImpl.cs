@@ -13,11 +13,9 @@
  */
 using System;
 
-using System.Windows.Forms;
 using cadencii.apputil;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
-
 
 
 namespace Cadencii.Application.Forms
@@ -74,55 +72,7 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-
-
-        #region UiBaseインターフェースの実装
-
-        public int showDialog(Object parent_form)
-        {
-			System.Windows.Forms.DialogResult ret;
-            if (parent_form == null || (parent_form != null && !(parent_form is Form))) {
-                ret = base.ShowDialog();
-            } else {
-                Form form = (Form)parent_form;
-                ret = base.ShowDialog(form);
-            }
-            if (ret == System.Windows.Forms.DialogResult.OK || ret == System.Windows.Forms.DialogResult.Yes)
-            {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
-
-        #endregion
-
-
-
-        #region public methods
-        /// <summary>
-        /// フォームを閉じます．
-        /// valueがtrueのときダイアログの結果をCancelに，それ以外の場合はOKとなるようにします．
-        /// </summary>
-        public void close(bool value)
-        {
-            if (value) {
-                this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            } else {
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
-            }
-        }
-        #endregion
-
-
-
         #region helper methods
-
-        private static string _(string id)
-        {
-            return Messaging.getMessage(id);
-        }
-
         private void registerEventHandlers()
         {
             btnYes.Click += new EventHandler(btnYes_Click);
@@ -152,10 +102,6 @@ namespace Cadencii.Application.Forms
 
         private void InitializeComponent()
         {
-            this.btnNo = new Button();
-            this.btnYes = new Button();
-            this.chkAlwaysPerformThisCheck = new CheckBox();
-            this.lblMessage = new Label();
             this.SuspendLayout();
 			ApplicationUIHost.Instance.ApplyXml (this, "FormAskKeySoundGenerationUi.xml");
             this.ResumeLayout(false);
@@ -163,10 +109,12 @@ namespace Cadencii.Application.Forms
 
         }
 
-        private Button btnNo;
-        private CheckBox chkAlwaysPerformThisCheck;
-        private Label lblMessage;
-        private Button btnYes;
+		#pragma warning disable 0649
+        UiButton btnNo;
+        UiCheckBox chkAlwaysPerformThisCheck;
+        UiLabel lblMessage;
+        UiButton btnYes;
+		#pragma warning restore 0649
 
         #endregion
     }

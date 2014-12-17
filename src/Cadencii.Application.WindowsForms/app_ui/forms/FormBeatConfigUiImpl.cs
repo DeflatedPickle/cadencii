@@ -12,7 +12,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii;
 using Cadencii.Gui;
@@ -35,11 +34,6 @@ namespace Cadencii.Application.Forms
 
 
         #region FormBeatConfigUiインターフェースの実装
-
-        public void close()
-        {
-            this.Close();
-        }
 
         public int getWidth()
         {
@@ -220,23 +214,6 @@ namespace Cadencii.Application.Forms
             this.Text = value;
         }
 
-        public int showDialog(object parent)
-        {
-			System.Windows.Forms.DialogResult ret;
-            if (parent == null || (parent != null && !(parent is Form))) {
-                ret = base.ShowDialog();
-            } else {
-                Form form = (Form)parent;
-                ret = base.ShowDialog(form);
-            }
-            if (ret == System.Windows.Forms.DialogResult.OK || ret == System.Windows.Forms.DialogResult.Yes)
-            {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
-
         public void removeAllItemsDenominatorCombobox()
         {
             comboDenominator.Items.Clear();
@@ -319,20 +296,22 @@ namespace Cadencii.Application.Forms
 			btnCancel.Click += new System.EventHandler (btnCancel_Click);
 		}
 
-        private GroupBox groupPosition;
-        private GroupBox groupBeat;
-        private Button btnOK;
-        private Button btnCancel;
-        private NumericUpDownEx numStart;
-        private CheckBox chkEnd;
-        private Label lblStart;
-        private Label lblBar2;
-        private Label lblBar1;
-        private NumericUpDownEx numEnd;
-        private Label label1;
-        private NumericUpDownEx numNumerator;
-        private Label label2;
-        private ComboBox comboDenominator;
+		#pragma warning disable 0649
+        UiGroupBox groupPosition;
+        UiGroupBox groupBeat;
+        UiButton btnOK;
+        UiButton btnCancel;
+        NumericUpDownEx numStart;
+        UiCheckBox chkEnd;
+        UiLabel lblStart;
+        UiLabel lblBar2;
+        UiLabel lblBar1;
+        NumericUpDownEx numEnd;
+        UiLabel label1;
+        NumericUpDownEx numNumerator;
+        UiLabel label2;
+        UiComboBox comboDenominator;
+		#pragma warning restore 0649
 
         #endregion
     }

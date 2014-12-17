@@ -15,9 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Text;
-using System.Windows.Forms;
 using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application.Forms
@@ -33,22 +31,6 @@ namespace Cadencii.Application.Forms
         }
 
         #region ExceptionNotifyFormUiの実装
-
-        public int showDialog(object parent_form)
-        {
-            System.Windows.Forms.DialogResult ret;
-            if (parent_form == null || (parent_form != null && !(parent_form is Form))) {
-                ret = base.ShowDialog();
-            } else {
-                Form form = (Form)parent_form;
-                ret = base.ShowDialog(form);
-            }
-            if (ret == DialogResult.OK || ret == DialogResult.Yes) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
 
         public void setTitle(string value)
         {

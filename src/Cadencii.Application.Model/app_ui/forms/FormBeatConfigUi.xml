@@ -13,7 +13,7 @@
     StartPosition = "Manual"
     Text = "Beat Change"
 	>
-	<GroupBox id="groupPosition"
+	<UiGroupBox id="groupPosition"
         Anchor = "Top,Left,Right"
         Location = "(7, 7)"
         Name = "groupPosition"
@@ -23,14 +23,14 @@
         Text = "Position"
         >
 
-		<Label id="lblBar2"
+		<UiLabel id="lblBar2"
             AutoSize = "true"
             Location = "(176, 46)"
             Name = "lblBar2"
             Size = "(48, 12)"
             TabIndex = "5"
             Text = "Measure" />
-        <Label id="lblBar1"
+        <UiLabel id="lblBar1"
             AutoSize = "true"
             Location = "(176, 20)"
             Name = "lblBar1"
@@ -47,7 +47,7 @@
             Name = "numStart"
             Size = "(73, 19)"
             TabIndex = "7" />
-        <CheckBox id="chkEnd"
+        <UiCheckBox id="chkEnd"
             AutoSize = "true"
             Location = "(23, 45)"
             Name = "chkEnd"
@@ -55,16 +55,16 @@
             TabIndex = "1"
             Text = "To(&amp;T)"
             UseVisualStyleBackColor = "true" />
-        <Label id="lblStart"
+        <UiLabel id="lblStart"
             AutoSize = "true"
             Location = "(21, 20)"
             Name = "lblStart"
             Size = "(46, 12)"
             TabIndex = "0"
             Text = "From(&amp;F)" />
-	</GroupBox>
+	</UiGroupBox>
 
-	<GroupBox id="groupBeat"
+	<UiGroupBox id="groupBeat"
             Anchor = "Top,Left,Right"
             Location = "(7, 84)"
             Name = "groupBeat"
@@ -73,20 +73,20 @@
             TabStop = "false"
             Text = "Beat"
             >
-		<ComboBox id="comboDenominator"
+		<UiComboBox id="comboDenominator"
             FormattingEnabled = "true"
             Location = "(182, 20)"
             Name = "comboDenominator"
             Size = "(73, 20)"
             TabIndex = "8" />
-		<Label id="label2"
+		<UiLabel id="label2"
             AutoSize = "true"
             Location = "(160, 23)"
             Name = "label2"
             Size = "(11, 12)"
             TabIndex = "7"
             Text = "/" />
-		<Label id="label1"
+		<UiLabel id="label1"
             AutoSize = "true"
             Location = "(102, 23)"
             Name = "label1"
@@ -98,8 +98,8 @@
             Name = "numNumerator"
             Size = "(73, 19)"
             TabIndex = "9" />
-	</GroupBox>
-	<Button id="btnOK"
+	</UiGroupBox>
+	<UiButton id="btnOK"
         Location = "(113, 150)"
         Name = "btnOK"
         Size = "(75, 23)"
@@ -107,7 +107,7 @@
         Text = "OK"
         UseVisualStyleBackColor = "true"
         />
-	<Button id="btnCancel"
+	<UiButton id="btnCancel"
         DialogResult = "Cancel"
         Location = "(194, 150)"
         Name = "btnCancel"
