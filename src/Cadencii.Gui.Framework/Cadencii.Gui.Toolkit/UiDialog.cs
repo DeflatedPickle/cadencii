@@ -31,6 +31,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 		string Description { get; set; }
 		string SelectedPath { get; set; }
+		DialogResult ShowDialog (UiForm parentForm);
 	}
 }
 

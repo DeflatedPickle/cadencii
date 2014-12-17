@@ -12,7 +12,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using System.IO;
 using System.ComponentModel;
 using cadencii.java.util;
@@ -29,13 +28,13 @@ using Cadencii.Gui;
 namespace Cadencii.Application.Forms
 {
 
-    public class FormGenerateKeySoundImpl : FormImpl
+    public class FormGenerateKeySoundImpl : FormImpl, UiForm
     {
         private delegate void updateTitleDelegate(string title);
 
         const int _SAMPLE_RATE = 44100;
 
-        private FolderBrowserDialog folderBrowser;
+		private UiFolderBrowserDialog folderBrowser;
         private System.ComponentModel.BackgroundWorker bgWork;
         private SingerConfig[] m_singer_config1;
         private SingerConfig[] m_singer_config2;
@@ -52,7 +51,7 @@ namespace Cadencii.Application.Forms
             bgWork = new System.ComponentModel.BackgroundWorker();
             bgWork.WorkerReportsProgress = true;
             bgWork.WorkerSupportsCancellation = true;
-            folderBrowser = new FolderBrowserDialog();
+			folderBrowser = ApplicationUIHost.Create<UiFolderBrowserDialog> ();
 
             m_close_when_finished = close_when_finished;
             m_singer_config1 = VocaloSysUtil.getSingerConfigs(SynthesizerType.VOCALOID1);
@@ -85,14 +84,14 @@ namespace Cadencii.Application.Forms
         private void registerEventHandlers()
         {
 
-			btnExecute.Click += new EventHandler (btnExecute_Click);
-			btnCancel.Click += new EventHandler (btnCancel_Click);
-			comboSingingSynthSystem.SelectedIndexChanged += new EventHandler (comboSingingSynthSystem_SelectedIndexChanged);
-			btnBrowse.Click += new EventHandler(btnBrowse_Click);
-			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Program_FormClosed);
-            bgWork.DoWork += new DoWorkEventHandler(bgWork_DoWork);
-            bgWork.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bgWork_RunWorkerCompleted);
-            bgWork.ProgressChanged += new ProgressChangedEventHandler(bgWork_ProgressChanged);
+			btnExecute.Click += btnExecute_Click;
+			btnCancel.Click += btnCancel_Click;
+			comboSingingSynthSystem.SelectedIndexChanged += comboSingingSynthSystem_SelectedIndexChanged;
+			btnBrowse.Click += btnBrowse_Click;
+			this.FormClosed += (o,e) => Program_FormClosed ();
+            bgWork.DoWork += bgWork_DoWork;
+            bgWork.RunWorkerCompleted += bgWork_RunWorkerCompleted;
+            bgWork.ProgressChanged += bgWork_ProgressChanged;
         }
 
         private void updateSinger()
@@ -151,7 +150,7 @@ namespace Cadencii.Application.Forms
         public void btnBrowse_Click(Object sender, EventArgs e)
         {
             folderBrowser.SelectedPath = txtDir.Text;
-            if (folderBrowser.ShowDialog(this) != System.Windows.Forms.DialogResult.OK) {
+			if (folderBrowser.ShowDialog(this) != Cadencii.Gui.DialogResult.OK) {
                 return;
             }
             txtDir.Text = folderBrowser.SelectedPath;
@@ -233,7 +232,7 @@ namespace Cadencii.Application.Forms
             this.Invoke(new updateTitleDelegate(this.updateTitle), new Object[] { title });
         }
 
-        public void Program_FormClosed(Object sender, FormClosedEventArgs e)
+        public void Program_FormClosed()
         {
             VSTiDllManager.terminate();
         }
@@ -255,16 +254,18 @@ namespace Cadencii.Application.Forms
             this.PerformLayout();
         }
 
-        private System.Windows.Forms.Button btnExecute;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.ComboBox comboSingingSynthSystem;
-        private Label lblSingingSynthSystem;
-        private Label lblSinger;
-        private System.Windows.Forms.ComboBox comboSinger;
-        private CheckBox chkIgnoreExistingWavs;
-        private TextBox txtDir;
-        private System.Windows.Forms.Button btnBrowse;
-        private Label lblDir;
+		#pragma warning disable 0649
+        UiButton btnExecute;
+        UiButton btnCancel;
+        UiComboBox comboSingingSynthSystem;
+        UiLabel lblSingingSynthSystem;
+        UiLabel lblSinger;
+        UiComboBox comboSinger;
+        UiCheckBox chkIgnoreExistingWavs;
+        UiTextBox txtDir;
+        UiButton btnBrowse;
+        UiLabel lblDir;
+		#pragma warning restore 0649
 
         #endregion
 

@@ -12,7 +12,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using System.Linq;
 using System.Collections.Generic;
 using cadencii.apputil;
@@ -20,9 +19,6 @@ using Cadencii.Gui;
 using cadencii.java.util;
 using Cadencii.Media.Vsq;
 
-using Keys = Cadencii.Gui.Toolkit.Keys;
-using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
-using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
 using cadencii;
@@ -31,11 +27,6 @@ namespace Cadencii.Application.Forms
 {
     public class FormIconPaletteUiImpl : FormImpl, FormIconPaletteUi
     {
-		int UiForm.showDialog (object parent_form)
-		{
-			throw new NotImplementedException ();
-		}
-
 		private List<DraggableBButton> dynaffButtons = new List<DraggableBButton>();
 		private List<DraggableBButton> crescendButtons = new List<DraggableBButton>();
 		private List<DraggableBButton> decrescendButtons = new List<DraggableBButton>();
@@ -56,7 +47,7 @@ namespace Cadencii.Application.Forms
                 Keys[] keys = dict["menuVisualIconPalette"];
                 Keys shortcut = Keys.None;
                 keys.Aggregate(shortcut, (seed, key) => seed | key);
-                menuWindowHide.ShortcutKeys = (System.Windows.Forms.Keys) shortcut;
+                menuWindowHide.ShortcutKeys = shortcut;
             }
         }
 
@@ -84,7 +75,7 @@ namespace Cadencii.Application.Forms
 
         public void applyShortcut(Keys shortcut)
         {
-            menuWindowHide.ShortcutKeys = (System.Windows.Forms.Keys) shortcut;
+            menuWindowHide.ShortcutKeys = shortcut;
         }
         #endregion
 
@@ -183,7 +174,7 @@ namespace Cadencii.Application.Forms
                     continue;
                 }
                 btn.Location = new Cadencii.Gui.Point(iw * buttonWidth, ih * buttonWidth);
-                this.Controls.Add((Control) btn.Native);
+				this.AsAwt ().Controls.Add(btn);
                 btn.BringToFront();
             }
 
@@ -264,9 +255,11 @@ namespace Cadencii.Application.Forms
 
         }
 
-        private MenuStrip menuBar;
-        private ToolStripMenuItem menuWindow;
-        private ToolStripMenuItem menuWindowHide;
+		#pragma warning disable 0649
+        UiMenuStrip menuBar;
+        UiToolStripMenuItem menuWindow;
+        UiToolStripMenuItem menuWindowHide;
+		#pragma warning restore 0649
 
         #endregion
 
