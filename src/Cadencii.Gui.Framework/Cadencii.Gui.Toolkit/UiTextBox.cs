@@ -21,6 +21,12 @@ namespace Cadencii.Gui.Toolkit
 		string Text { get; set; }
 
 		bool ReadOnly { get; set; }
+
+		string [] Lines { get; }
+
+		bool HideSelection { get; set; }
+
+		int GetFirstCharIndexFromLine (int line);
 	}
 	
 }

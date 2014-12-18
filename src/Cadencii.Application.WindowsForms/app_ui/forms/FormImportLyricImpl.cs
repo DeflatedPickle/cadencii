@@ -82,7 +82,7 @@ namespace Cadencii.Application.Forms
 						int end = txtLyrics.GetFirstCharIndexFromLine (i) + txtLyrics.Lines [i].Length;
 						tmp += txtLyrics.Text.Substring (start, end - start) + " ";
 					} catch (Exception ex) {
-						Logger.write (typeof(FormImportLyric) + ".getLetters; ex=" + ex + "\n");
+						Logger.write (typeof(FormImportLyric) + ".Letters; ex=" + ex + "\n");
 					}
 				}
 				string[] spl = PortUtil.splitString (tmp, new char[] {
@@ -189,10 +189,12 @@ namespace Cadencii.Application.Forms
 
         }
 
-        private System.Windows.Forms.TextBox txtLyrics;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Label lblNotes;
+		#pragma warning disable 0649
+        UiTextBox txtLyrics;
+        UiButton btnCancel;
+        UiButton btnOK;
+        UiLabel lblNotes;
+		#pragma warning restore 0649
         #endregion
 
     }

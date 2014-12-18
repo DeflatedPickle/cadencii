@@ -12,13 +12,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
-using System.Drawing;
 using cadencii.apputil;
-using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui;
-using Rectangle = System.Drawing.Rectangle;
-using Screen = System.Windows.Forms.Screen;
 using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application.Forms
@@ -43,22 +38,22 @@ namespace Cadencii.Application.Forms
             if (c == null) {
                 return;
             }
-            if (!(c is Control)) {
+            if (!(c is UiControl)) {
                 return;
             }
-            Control control = (Control)c;
-            this.Controls.Add(control);
-            control.Dock = System.Windows.Forms.DockStyle.Fill;
+            var control = (UiControl)c;
+			this.AsAwt ().Controls.Add(control);
+            control.Dock = DockStyle.Fill;
         }
 
         public bool isWindowMinimized()
         {
-            return this.WindowState == System.Windows.Forms.FormWindowState.Minimized;
+			return this.AsAwt ().WindowState == FormWindowState.Minimized;
         }
 
         public void deiconfyWindow()
         {
-            this.WindowState = System.Windows.Forms.FormWindowState.Normal;
+			this.AsAwt ().WindowState = FormWindowState.Normal;
         }
 
         public void setTitle(string title)
@@ -73,7 +68,7 @@ namespace Cadencii.Application.Forms
 
         public void setMenuCloseAccelerator(Keys value)
         {
-            this.menuClose.ShortcutKeys = (System.Windows.Forms.Keys) value;
+            this.menuClose.ShortcutKeys = value;
         }
 
         public void setAlwaysOnTop(bool alwaysOnTop)
@@ -88,7 +83,7 @@ namespace Cadencii.Application.Forms
 
         public void setBounds(int x, int y, int width, int height)
         {
-            this.Bounds = new System.Drawing.Rectangle(x, y, width, height);
+			this.AsAwt ().Bounds = new Rectangle(x, y, width, height);
         }
 
         public int getX()
@@ -123,25 +118,25 @@ namespace Cadencii.Application.Forms
 
         public int getWorkingAreaX()
         {
-            Rectangle r = Screen.GetWorkingArea(this);
+            Rectangle r = Screen.Instance.GetWorkingArea(this);
             return r.X;
         }
 
         public int getWorkingAreaY()
         {
-            Rectangle r = Screen.GetWorkingArea(this);
+            Rectangle r = Screen.Instance.GetWorkingArea(this);
             return r.Y;
         }
 
         public int getWorkingAreaWidth()
         {
-            Rectangle r = Screen.GetWorkingArea(this);
+            Rectangle r = Screen.Instance.GetWorkingArea(this);
             return r.Width;
         }
 
         public int getWorkingAreaHeight()
         {
-            Rectangle r = Screen.GetWorkingArea(this);
+            Rectangle r = Screen.Instance.GetWorkingArea(this);
             return r.Height;
         }
 
@@ -194,6 +189,7 @@ namespace Cadencii.Application.Forms
 
 			Load += new System.EventHandler (FormNotePropertyUiImpl_Load);
 			SizeChanged += new System.EventHandler (FormNotePropertyUiImpl_SizeChanged);
+			// FIXME: examine this later if it's really needed. We don't have FormClosingEventArgs yet.
 			FormClosing += new System.Windows.Forms.FormClosingEventHandler (FormNotePropertyUiImpl_FormClosing);
 			LocationChanged += new System.EventHandler (FormNotePropertyUiImpl_LocationChanged);
 			menuClose.Click += new System.EventHandler (menuClose_Click);
@@ -202,9 +198,11 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-        private MenuStrip menuStrip;
-        private ToolStripMenuItem menuWindow;
-        private ToolStripMenuItem menuClose;
+		#pragma warning disable 0649
+        UiMenuStrip menuStrip;
+        UiToolStripMenuItem menuWindow;
+        UiToolStripMenuItem menuClose;
+		#pragma warning restore 0649
 
         private void FormNotePropertyUiImpl_Load(object sender, System.EventArgs e)
         {

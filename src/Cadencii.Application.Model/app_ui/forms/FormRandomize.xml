@@ -14,7 +14,7 @@
             StartPosition = "Manual"
             Text = "Randomize"
             >
-<Label id="lblStart"
+	<UiLabel id="lblStart"
             
             Location = "(12, 26)"
             Name = "lblStart"
@@ -23,7 +23,7 @@
             Text = "start"
             TextAlign = "TopRight"
             />
-<Label id="lblStartBar"
+	<UiLabel id="lblStartBar"
             AutoSize = "true"
             Location = "(58, 9)"
             Name = "lblStartBar"
@@ -31,7 +31,7 @@
             TabIndex = "3"
             Text = "bar"
             />
-<Label id="lblStartBeat"            
+	<UiLabel id="lblStartBeat"            
             AutoSize = "true"
             Location = "(116, 9)"
             Name = "lblStartBeat"
@@ -39,7 +39,7 @@
             TabIndex = "5"
             Text = "beat"
             />
-<Label id="bLabel1"            
+	<UiLabel id="bLabel1"            
             AutoSize = "true"
             Location = "(173, 26)"
             Name = "bLabel1"
@@ -47,7 +47,7 @@
             TabIndex = "6"
             Text = "-"
             />
-<Label id="lblEndBeat"            
+	<UiLabel id="lblEndBeat"            
             AutoSize = "true"
             Location = "(285, 9)"
             Name = "lblEndBeat"
@@ -55,7 +55,7 @@
             TabIndex = "11"
             Text = "beat"
             />
-<Label id="lblEndBar"
+	<UiLabel id="lblEndBar"
             AutoSize = "true"
             Location = "(225, 9)"
             Name = "lblEndBar"
@@ -63,7 +63,7 @@
             TabIndex = "9"
             Text = "bar"
             />
-<Label id="lblEnd"
+	<UiLabel id="lblEnd"
             Location = "(190, 26)"
             Name = "lblEnd"
             Size = "(26, 17)"
@@ -71,7 +71,7 @@
             Text = "end"
             TextAlign = "TopRight"
             />
-<CheckBox id="chkShift"            
+	<UiCheckBox id="chkShift"            
             AutoSize = "true"
             CheckAlign = "MiddleRight"
             Checked = "true"
@@ -83,7 +83,7 @@
             Text = "Note Shift"
             UseVisualStyleBackColor = "true"
             />
-<Label id="lblShiftValue"
+	<UiLabel id="lblShiftValue"
             AutoSize = "true"
             Location = "(51, 98)"
             Name = "lblShiftValue"
@@ -91,22 +91,22 @@
             TabIndex = "13"
             Text = "Value"
             />
-<ComboBox id="comboShiftValue"
+	<UiComboBox id="comboShiftValue"
             FormattingEnabled = "true"
             Location = "(103, 95)"
             Name = "comboShiftValue"
             Size = "(218, 20)"
             TabIndex = "14"
             >
-	<_Items>
+		<_Items>
             <String>1(small)</String>
             <String>2</String>
             <String>3(medium)</String>
             <String>4</String>
             <String>5(large)</String>
-	</_Items>
-</ComboBox>
-<ComboBox id="comboPitPattern"
+		</_Items>
+	</UiComboBox>
+	<UiComboBox id="comboPitPattern"
             
             FormattingEnabled = "true"
             Location = "(103, 173)"
@@ -114,13 +114,13 @@
             Size = "(218, 20)"
             TabIndex = "17"
             >
-	<_Items>
+		<_Items>
             <String>Pattern 1</String>
             <String>Pattern 2</String>
             <String>Pattern 3</String>
-	</_Items>
-</ComboBox>
-<Label id="lblPitPattern"
+		</_Items>
+	</UIComboBox>
+	<UiLabel id="lblPitPattern"
             
             AutoSize = "true"
             Location = "(51, 176)"
@@ -129,7 +129,7 @@
             TabIndex = "16"
             Text = "Pattern"
             />
-<CheckBox id="chkPit"
+	<UiCheckBox id="chkPit"
             
             AutoSize = "true"
             CheckAlign = "MiddleRight"
@@ -142,7 +142,7 @@
             Text = "Pitch Fluctuation"
             UseVisualStyleBackColor = "true"
             />
-<ComboBox id="comboPitValue"
+	<UiComboBox id="comboPitValue"
             
             FormattingEnabled = "true"
             Location = "(103, 199)"
@@ -150,15 +150,15 @@
             Size = "(218, 20)"
             TabIndex = "19"
             >
-	<_Items>
+		<_Items>
             <String>1(small)</String>
             <String>2</String>
             <String>3(medium)</String>
             <String>4</String>
             <String>5(large)</String>
-	</_Items>
-</ComboBox>
-<Label id="lblPitValue"            
+		</_Items>
+	</UiComboBox>
+	<UiLabel id="lblPitValue"            
             AutoSize = "true"
             Location = "(51, 202)"
             Name = "lblPitValue"
@@ -166,7 +166,7 @@
             TabIndex = "18"
             Text = "Value"
             />
-<Label id="lblResolution"
+	<UiLabel id="lblResolution"
             Location = "(175, 149)"
             Name = "lblResolution"
             Size = "(86, 15)"
@@ -174,7 +174,7 @@
             Text = "Resolution"
             TextAlign = "MiddleRight"
             />
-<Button id="btnCancel"
+	<UiButton id="btnCancel"
             DialogResult = "Cancel"
             Location = "(246, 246)"
             Name = "btnCancel"
@@ -183,7 +183,7 @@
             Text = "Cancel"
             UseVisualStyleBackColor = "true"
             />
-<Button id="btnOK"
+	<UiButton id="btnOK"
             Location = "(165, 246)"
             Name = "btnOK"
             Size = "(75, 23)"
@@ -191,7 +191,7 @@
             Text = "OK"
             UseVisualStyleBackColor = "true"
             />
-<NumericUpDownEx id="numResolution"
+	<NumericUpDownEx id="numResolution"
             
             Location = "(267, 147)"
             Maximum = "30"
@@ -201,7 +201,7 @@
             TabIndex = "21"
             Value = "5"
             />
-<NumericUpDownEx id="numEndBeat"
+	<NumericUpDownEx id="numEndBeat"
             
             Location = "(282, 24)"
             Name = "numEndBeat"
@@ -209,7 +209,7 @@
             TabIndex = "10"
             Value = "1"
             />
-<NumericUpDownEx id="numEndBar"
+	<NumericUpDownEx id="numEndBar"
             
             Location = "(222, 24)"
             Maximum = "2147483647"
@@ -218,14 +218,14 @@
             TabIndex = "7"
             Value = "2"
             />
-<NumericUpDownEx id="numStartBeat"            
+	<NumericUpDownEx id="numStartBeat"            
             Location = "(113, 24)"
             Name = "numStartBeat"
             Size = "(54, 19)"
             TabIndex = "4"
             Value = "1"
             />
-<NumericUpDownEx id="numStartBar"
+	<NumericUpDownEx id="numStartBar"
             
             Location = "(53, 24)"
             Name = "numStartBar"

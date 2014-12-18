@@ -6,6 +6,7 @@ namespace Cadencii.Gui.Toolkit
 {
 	public interface UiForm : UiControl
 	{
+		FormBorderStyle FormBorderStyle { get; set; }
 		Dimension ClientSize { get; set; }
 		double Opacity { get; set; }
 		DialogResult DialogResult { get; set; }

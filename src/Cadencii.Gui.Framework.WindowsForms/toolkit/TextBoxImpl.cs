@@ -31,6 +31,10 @@ namespace Cadencii.Gui.Toolkit
 			set { TextAlign = (System.Windows.Forms.HorizontalAlignment) value; }
 		}
 
+		string [] UiTextBox.Lines {
+			get { return this.Lines; }
+		}
+
 		// UiControl
 
 		UiControl UiControl.Parent {

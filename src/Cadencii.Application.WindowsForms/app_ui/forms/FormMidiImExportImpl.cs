@@ -12,13 +12,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using cadencii.apputil;
 using Cadencii.Gui;
-
-
-using AnchorStyles = Cadencii.Gui.Toolkit.AnchorStyles;
-using HorizontalAlignment = Cadencii.Gui.Toolkit.HorizontalAlignment;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Media.Vsq;
 using Cadencii.Application.Controls;
@@ -291,9 +286,9 @@ namespace Cadencii.Application.Forms
         public void FormMidiImExport_FormClosing()
         {
 			var listTrack = (UiListView) this.listTrack;
-            columnWidthTrack = listTrack.GetColumn(0).Width;
-            columnWidthName = listTrack.GetColumn(1).Width;
-            columnWidthNotes = listTrack.GetColumn(2).Width;
+            columnWidthTrack = listTrack.Columns [0].Width;
+            columnWidthName = listTrack.Columns [1].Width;
+            columnWidthNotes = listTrack.Columns [2].Width;
         }
 
         public void btnCancel_Click(Object sender, EventArgs e)
@@ -354,25 +349,27 @@ namespace Cadencii.Application.Forms
 
         }
 
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Button btnCheckAll;
-        private System.Windows.Forms.Button btnUncheckAll;
-        private CheckBox chkBeat;
-        private CheckBox chkTempo;
-        private CheckBox chkNote;
-        private CheckBox chkLyric;
-        private GroupBox groupCommonOption;
-        private CheckBox chkExportVocaloidNrpn;
-        public ListViewImpl listTrack { get ; set; }
-        private CheckBox chkPreMeasure;
-        private CheckBox chkMetaText;
-        private GroupBox groupMode;
-        private RadioButton radioPlayTime;
-        private RadioButton radioGateTime;
-        private Label lblOffset;
-        private NumberTextBox txtOffset;
-        private Label lblOffsetUnit;
+		#pragma warning disable 0649
+        UiButton btnCancel;
+        UiButton btnOK;
+        UiButton btnCheckAll;
+        UiButton btnUncheckAll;
+        UiCheckBox chkBeat;
+        UiCheckBox chkTempo;
+        UiCheckBox chkNote;
+        UiCheckBox chkLyric;
+        UiGroupBox groupCommonOption;
+        UiCheckBox chkExportVocaloidNrpn;
+		UiListView listTrack { get ; set; }
+        UiCheckBox chkPreMeasure;
+        UiCheckBox chkMetaText;
+        UiGroupBox groupMode;
+        UiRadioButton radioPlayTime;
+        UiRadioButton radioGateTime;
+        UiLabel lblOffset;
+        NumberTextBox txtOffset;
+        UiLabel lblOffsetUnit;
+		#pragma warning restore 0649
 
         #endregion
 

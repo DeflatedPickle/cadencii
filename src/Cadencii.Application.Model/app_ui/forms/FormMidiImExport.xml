@@ -13,7 +13,7 @@
             StartPosition = "Manual"
             Text = "FormMidiInExport"
 			>
-	<Button id="btnCancel"            
+	<UiButton id="btnCancel"            
             Anchor = "Bottom,Right"
             DialogResult = "Cancel"
             Location = "(261, 435)"
@@ -23,7 +23,7 @@
             Text = "Cancel"
             UseVisualStyleBackColor = "true"
             />
-    <Button id="btnOK"            
+    <UiButton id="btnOK"            
             Anchor = "Bottom,Right"
             DialogResult = "OK"
             Location = "(180, 435)"
@@ -51,13 +51,13 @@
 			<ListViewGroup.WithConstructorArguments>(ListViewGroup,Left)</ListViewGroup.WithConstructorArguments>
 		</_Groups>
 		<_Columns>
-			<ColumnHeader Text="Track" Width="55" />
-			<ColumnHeader Text="Name" Width="217" />
-			<ColumnHeader Text="Notes" Width="58" />
+			<UiListViewColumn Text="Track" Width="55" />
+			<UiListViewColumn Text="Name" Width="217" />
+			<UiListViewColumn Text="Notes" Width="58" />
 		</_Columns>
 	</UiListView>
             
-    <Button id="btnCheckAll"            
+    <UiButton id="btnCheckAll"            
             AutoSize = "true"
             Location = "(12, 12)"
             Name = "btnCheckAll"
@@ -66,7 +66,7 @@
             Text = "Check All"
             UseVisualStyleBackColor = "true"
             />
-    <Button id="btnUncheckAll"            
+    <UiButton id="btnUncheckAll"            
             AutoSize = "true"
             Location = "(93, 12)"
             Name = "btnUncheckAll"
@@ -75,7 +75,7 @@
             Text = "Uncheck All"
             UseVisualStyleBackColor = "true"
             />
-    <GroupBox id="groupCommonOption"            
+    <UiGroupBox id="groupCommonOption"            
             Anchor = "Bottom,Left,Right"
             Location = "(12, 263)"
             Name = "groupCommonOption"
@@ -84,7 +84,7 @@
             TabStop = "false"
             Text = "Option"
             >
-	    <CheckBox id="chkBeat"
+	    <UiCheckBox id="chkBeat"
 	            
 	            AutoSize = "true"
 	            Checked = "true"
@@ -98,7 +98,7 @@
 	            UseVisualStyleBackColor = "true"
             />
 	            
-	    <CheckBox id="chkTempo"
+	    <UiCheckBox id="chkTempo"
 	            
 	            AutoSize = "true"
 	            Checked = "true"
@@ -112,7 +112,7 @@
 	            UseVisualStyleBackColor = "true"
             />
 	            
-	    <CheckBox id="chkNote"
+	    <UiCheckBox id="chkNote"
 	            
 	            AutoSize = "true"
 	            Checked = "true"
@@ -126,7 +126,7 @@
 	            UseVisualStyleBackColor = "true"
             />
 	            
-	    <CheckBox id="chkLyric"
+	    <UiCheckBox id="chkLyric"
 	            
 	            AutoSize = "true"
 	            Checked = "true"
@@ -140,7 +140,7 @@
 	            UseVisualStyleBackColor = "true"
             />
 	            
-	    <CheckBox id="chkMetaText"
+	    <UiCheckBox id="chkMetaText"
 	            
 	            AutoSize = "true"
 	            Checked = "true"
@@ -154,7 +154,7 @@
 	            UseVisualStyleBackColor = "true"
             />
 	            
-	    <CheckBox id="chkPreMeasure"
+	    <UiCheckBox id="chkPreMeasure"
 	            
 	            AutoSize = "true"
 	            Checked = "true"
@@ -168,7 +168,7 @@
 	            UseVisualStyleBackColor = "true"
             />
 	            
-	    <CheckBox id="chkExportVocaloidNrpn"
+	    <UiCheckBox id="chkExportVocaloidNrpn"
 	            
 	            AutoSize = "true"
 	            Checked = "true"
@@ -182,9 +182,9 @@
 	            UseVisualStyleBackColor = "true"
             />
 
-    </GroupBox>            
+    </UiGroupBox>            
 
-    <GroupBox id="groupMode"
+    <UiGroupBox id="groupMode"
             
             Anchor = "Bottom,Left,Right"
             Location = "(12, 357)"
@@ -194,7 +194,7 @@
             TabStop = "false"
             Text = "Import Basis"
 	            >
-	    <Label id="lblOffsetUnit"
+	    <UiLabel id="lblOffsetUnit"
 	            
 	            AutoSize = "true"
 	            Location = "(187, 45)"
@@ -217,7 +217,7 @@
 	            Type = "Integer"
             />
 	            
-	    <Label id="lblOffset"
+	    <UiLabel id="lblOffset"
 	            
 	            AutoSize = "true"
 	            Location = "(14, 45)"
@@ -227,7 +227,7 @@
 	            Text = "offset"
             />
 	            
-	    <RadioButton id="radioPlayTime"
+	    <UiRadioButton id="radioPlayTime"
 	            
 	            AutoSize = "true"
 	            Location = "(168, 18)"
@@ -239,7 +239,7 @@
 	            UseVisualStyleBackColor = "true"
             />
 	            
-	    <RadioButton id="radioGateTime"
+	    <UiRadioButton id="radioGateTime"
 	            
 	            AutoSize = "true"
 	            Checked = "true"
@@ -251,5 +251,5 @@
 	            Text = "gate-time"
 	            UseVisualStyleBackColor = "true"
             />
-	</GroupBox>
+	</UiGroupBox>
 </Form>

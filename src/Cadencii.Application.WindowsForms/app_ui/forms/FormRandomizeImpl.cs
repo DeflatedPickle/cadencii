@@ -216,7 +216,7 @@ namespace Cadencii.Application.Forms
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
 
         public void btnOK_Click(Object sender, EventArgs e)
@@ -231,7 +231,7 @@ namespace Cadencii.Application.Forms
             lastStartBeat = getStartBeat();
             lastEndBar = getEndBar();
             lastEndBeat = getEndBeat();
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
         }
         #endregion
 
@@ -357,29 +357,31 @@ namespace Cadencii.Application.Forms
         }
         #endregion
 
-        private NumericUpDownEx numStartBar;
-        private System.Windows.Forms.Label lblStart;
-        private System.Windows.Forms.Label lblStartBar;
-        private NumericUpDownEx numStartBeat;
-        private System.Windows.Forms.Label lblStartBeat;
-        private System.Windows.Forms.Label bLabel1;
-        private System.Windows.Forms.Label lblEndBeat;
-        private NumericUpDownEx numEndBeat;
-        private System.Windows.Forms.Label lblEndBar;
-        private System.Windows.Forms.Label lblEnd;
-        private NumericUpDownEx numEndBar;
-        private System.Windows.Forms.CheckBox chkShift;
-        private System.Windows.Forms.Label lblShiftValue;
-        private System.Windows.Forms.ComboBox comboShiftValue;
-        private System.Windows.Forms.ComboBox comboPitPattern;
-        private System.Windows.Forms.Label lblPitPattern;
-        private System.Windows.Forms.CheckBox chkPit;
-        private System.Windows.Forms.ComboBox comboPitValue;
-        private System.Windows.Forms.Label lblPitValue;
-        private System.Windows.Forms.Label lblResolution;
-        private NumericUpDownEx numResolution;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnOK;
+		#pragma warning disable 0649
+        NumericUpDownEx numStartBar;
+        UiLabel lblStart;
+        UiLabel lblStartBar;
+        NumericUpDownEx numStartBeat;
+        UiLabel lblStartBeat;
+        UiLabel bLabel1;
+        UiLabel lblEndBeat;
+        NumericUpDownEx numEndBeat;
+        UiLabel lblEndBar;
+        UiLabel lblEnd;
+        NumericUpDownEx numEndBar;
+        UiCheckBox chkShift;
+        UiLabel lblShiftValue;
+        UiComboBox comboShiftValue;
+        UiComboBox comboPitPattern;
+        UiLabel lblPitPattern;
+        UiCheckBox chkPit;
+        UiComboBox comboPitValue;
+        UiLabel lblPitValue;
+        UiLabel lblResolution;
+        NumericUpDownEx numResolution;
+        UiButton btnCancel;
+        UiButton btnOK;
+		#pragma warning restore 0649
 
         #endregion
         #endregion

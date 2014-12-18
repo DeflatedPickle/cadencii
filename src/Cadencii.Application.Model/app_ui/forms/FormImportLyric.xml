@@ -13,7 +13,7 @@
     StartPosition = "Manual"
     Text = "Import lyrics"
 	>
-	<TextBox id="txtLyrics"
+	<UiTextBox id="txtLyrics"
             AcceptsReturn = "true"
             AcceptsTab = "true"
             Location = "(12, 35)"
@@ -23,7 +23,7 @@
             Size = "(426, 263)"
             TabIndex = "0"
             WordWrap = "false" />
-	<Button id="btnCancel"
+	<UiButton id="btnCancel"
             DialogResult = "Cancel"
             Location = "(363, 317)"
             Name = "btnCancel"
@@ -31,14 +31,14 @@
             TabIndex = "2"
             Text = "Cancel"
             UseVisualStyleBackColor = "true" />
-	<Button id="btnOK"
+	<UiButton id="btnOK"
             Location = "(269, 317)"
             Name = "btnOK"
             Size = "(75, 23)"
             TabIndex = "1"
             Text = "OK"
             UseVisualStyleBackColor = "true" />
-	<Label id="lblNotes"
+	<UiLabel id="lblNotes"
             AutoSize = "true"
             Location = "(15, 16)"
             Name = "lblNotes"

@@ -22,6 +22,11 @@ namespace Cadencii.Gui.Toolkit
 {
 	public class FormImpl : System.Windows.Forms.Form, UiForm
  	{
+		FormBorderStyle UiForm.FormBorderStyle {
+			get { return (FormBorderStyle) FormBorderStyle; }
+			set { FormBorderStyle = (System.Windows.Forms.FormBorderStyle) value; }
+		}
+
 		Dimension UiForm.ClientSize {
 			get { return ClientSize.ToAwt (); }
 			set { ClientSize = value.ToWF (); }

@@ -36,6 +36,11 @@ namespace Cadencii.Gui.Toolkit
 			get { return impl.Width; }
 			set { impl.Width = value; }
 		}
+
+		string UiListViewColumn.Text {
+			get { return impl.Text; }
+			set { impl.Text = value; }
+		}
 	}
 	
 }

@@ -159,6 +159,7 @@
     <Compile Include="Cadencii.Gui.Toolkit\Extensions.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\IHasText.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\JoyPads.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\FormBorderStyle.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

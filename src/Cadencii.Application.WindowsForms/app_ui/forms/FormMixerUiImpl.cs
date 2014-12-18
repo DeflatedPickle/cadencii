@@ -12,15 +12,11 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Drawing;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using cadencii.apputil;
 using Cadencii.Gui;
 using cadencii.java.util;
 using Cadencii.Media.Vsq;
-
-using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
@@ -33,7 +29,6 @@ namespace Cadencii.Application.Forms
 
 	public class FormMixerUiImpl : FormImpl, FormMixerUi
     {
-        private FormMainImpl m_parent;
         private List<VolumeTracker> m_tracker = null;
         private bool mPreviousAlwaysOnTop;
 
@@ -58,9 +53,8 @@ namespace Cadencii.Application.Forms
 			volumeMaster.Model.SoloButtonVisible = (false);
 			volumeMaster.Model.Title = "";
             applyLanguage();
-            m_parent = parent;
             this.TopMost = true;
-            this.SetStyle(ControlStyles.DoubleBuffer, true);
+			DoubleBuffered = true;
         }
 
         #region public methods
@@ -170,7 +164,7 @@ namespace Cadencii.Application.Forms
 
         public void applyShortcut(Keys shortcut)
         {
-            menuVisualReturn.ShortcutKeys = (System.Windows.Forms.Keys) shortcut;
+            menuVisualReturn.ShortcutKeys = shortcut;
         }
 
         public void applyLanguage()
@@ -234,16 +228,16 @@ namespace Cadencii.Application.Forms
                 hScroll.Value = 0;
                 hScroll.Maximum = 0;
                 hScroll.LargeChange = 1;
-                hScroll.Size = new System.Drawing.Size((VolumeTrackerController.WIDTH + 1) * num_vtracker_on_panel, 15);
+				hScroll.Size = new Dimension((VolumeTrackerController.WIDTH + 1) * num_vtracker_on_panel, 15);
             } else {
                 // num_vtracker_on_panel個のVolumeTrackerのうち，panel_capacity個しか，画面上に同時表示できない
                 hScroll.Minimum = 0;
                 hScroll.Value = 0;
 				hScroll.Maximum = num_vtracker_on_panel * VolumeTrackerController.WIDTH;
 				hScroll.LargeChange = panel_capacity * VolumeTrackerController.WIDTH;
-				hScroll.Size = new System.Drawing.Size((VolumeTrackerController.WIDTH + 1) * panel_capacity, 15);
+				hScroll.Size = new Dimension((VolumeTrackerController.WIDTH + 1) * panel_capacity, 15);
             }
-			hScroll.Location = new System.Drawing.Point(0, VolumeTrackerController.HEIGHT);
+			hScroll.Location = new Point(0, VolumeTrackerController.HEIGHT);
 
             int j = -1;
             foreach (var vme in vsq.Mixer.Slave) {
@@ -303,7 +297,6 @@ namespace Cadencii.Application.Forms
                 this.MinimumSize = this.Size;
                 this.MaximumSize = this.Size;
                 this.Invalidate();
-                //m_parent.requestFocusInWindow(); // <-要る？
             }
         }
         #endregion
@@ -311,7 +304,7 @@ namespace Cadencii.Application.Forms
         #region helper methods
         private void addToPanelSlaves(VolumeTracker item, int ix)
         {
-            panelSlaves.Controls.Add((Control) item.Native);
+            panelSlaves.Controls.Add(item);
         }
 
         private static string _(string id)
@@ -534,13 +527,6 @@ namespace Cadencii.Application.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuMain = new MenuStrip();
-            this.menuVisual = new ToolStripMenuItemImpl();
-            this.menuVisualReturn = new ToolStripMenuItemImpl();
-            this.panelSlaves = new UserControl();
-            this.hScroll = new HScrollBar();
-            this.volumeMaster = new VolumeTrackerImpl();
-            this.menuMain.SuspendLayout();
             this.SuspendLayout();
 			ApplicationUIHost.Instance.ApplyXml (this, "FormMixerUi.xml");
             this.ResumeLayout(false);
@@ -550,12 +536,14 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-        private MenuStrip menuMain;
-        private ToolStripMenuItem menuVisual;
-        private ToolStripMenuItem menuVisualReturn;
+		#pragma warning disable 0649
+        private UiMenuStrip menuMain;
+        private UiToolStripMenuItem menuVisual;
+        private UiToolStripMenuItem menuVisualReturn;
         private VolumeTracker volumeMaster;
-        private Control panelSlaves;
-        private HScrollBar hScroll;
+        private UiControl panelSlaves;
+        private UiHScrollBar hScroll;
+		#pragma warning restore 0649
         #endregion
         #endregion
 

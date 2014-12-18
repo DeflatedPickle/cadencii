@@ -16,6 +16,7 @@ using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventAr
 using System.Collections.Generic;
 using Cadencii.Gui.Toolkit;
 using cadencii;
+using System.Collections.ObjectModel;
 
 namespace Cadencii.Gui.Toolkit
 {
@@ -32,13 +33,6 @@ namespace Cadencii.Gui.Toolkit
 			WinformsExtensions.AddRow (this, items, selected);
 		}
 
-		/*
-		void UiListView.SetColumnHeaders (string[] headers)
-		{
-			WinformsExtensions.SetColumnHeaders (this, headers);
-		}
-		*/
-
 		UiListViewItem UiListView.GetItem (int i)
 		{
 			return new ListViewItemImpl (Items [i]);
@@ -47,10 +41,45 @@ namespace Cadencii.Gui.Toolkit
 		{
 			Items.Clear ();
 		}
-		UiListViewColumn UiListView.GetColumn (int i)
-		{
-			return new ListViewColumnImpl (Columns [i]);
+
+		IList<UiListViewColumn> UiListView.Columns {
+			get { return columns ?? (columns = new ColumnCollection (this)); }
 		}
+
+		Collection<UiListViewColumn> columns;
+
+		class ColumnCollection : Collection<UiListViewColumn>
+		{
+			System.Windows.Forms.ListView lv;
+			public ColumnCollection (System.Windows.Forms.ListView lv)
+			{
+				this.lv = lv;
+			}
+
+			protected override void InsertItem (int index, UiListViewColumn item)
+			{
+				base.InsertItem (index, item);
+				lv.Columns.Add ((System.Windows.Forms.ColumnHeader) item.Native);
+			}
+
+			protected override void ClearItems ()
+			{
+				base.ClearItems ();
+				lv.Columns.Clear ();
+			}
+
+			protected override void RemoveItem (int index)
+			{
+				base.RemoveItem (index);
+				lv.Columns.RemoveAt (index);
+			}
+
+			protected override void SetItem (int index, UiListViewColumn item)
+			{
+				throw new NotSupportedException ();
+			}
+		}
+
 		/*
 		void UiListView.AddGroups (IEnumerable<UiListViewGroup> groups)
 		{

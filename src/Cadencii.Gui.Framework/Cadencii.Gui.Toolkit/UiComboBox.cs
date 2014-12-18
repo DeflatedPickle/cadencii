@@ -9,7 +9,7 @@ namespace Cadencii.Gui.Toolkit
 		IList Items { get; }
 		int SelectedIndex { get; set; }
 		event EventHandler SelectedIndexChanged;
-		object SelectedItem { get; }
+		object SelectedItem { get; set; }
 	}
 }
 

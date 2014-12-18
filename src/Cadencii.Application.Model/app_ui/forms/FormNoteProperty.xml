@@ -14,7 +14,7 @@
             Text = "Note Property"
             TopMost = "true"
             >
-    <MenuStrip id="menuStrip"            
+    <UiMenuStrip id="menuStrip"            
             Location = "(0, 0)"
             Name = "menuStrip"
             Size = "(188, 24)"
@@ -24,7 +24,7 @@
             >
         <_Items>
             
-            <ToolStripMenuItem id="menuWindow"
+            <UiToolStripMenuItem id="menuWindow"
             
 	            Name = "menuWindow"
 	            Size = "(72, 20)"
@@ -32,14 +32,14 @@
 	            >
 	            <_DropDownItems>
 	            
-		            <ToolStripMenuItem id="menuClose"
+		            <UiToolStripMenuItem id="menuClose"
 		            
 		            Name = "menuClose"
 		            Size = "(115, 22)"
 		            Text = "Close(&amp;C)"
 		            />
 		        </_DropDownItems>
-			</ToolStripMenuItem>
+			</UiToolStripMenuItem>
         </_Items>
-	</MenuStrip>
+	</UiMenuStrip>
 </Form>

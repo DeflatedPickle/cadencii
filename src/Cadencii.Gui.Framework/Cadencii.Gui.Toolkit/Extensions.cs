@@ -38,6 +38,18 @@ namespace Cadencii.Gui.Toolkit
 			}
 			return text + "(&" + new string ((char)value, 1) + ")";
 		}
+
+		public static void SetColumnHeaders(this UiListView list_view, string[] headers)
+		{
+			if (list_view.Columns.Count < headers.Length) {
+				for (int i = list_view.Columns.Count; i < headers.Length; i++) {
+					list_view.Columns.Add (AwtHost.Current.New<UiListViewColumn> (""));
+				}
+			}
+			for (int i = 0; i < headers.Length; i++) {
+				list_view.Columns [i].Text = headers[i];
+			}
+		}
 	}
 }
 

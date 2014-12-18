@@ -14,7 +14,7 @@
             StartPosition = "Manual"
             Text = "Default Singer Style"
             >
-	<FlowLayoutPanel id="flowLayoutPanel"
+	<UiFlowLayoutPanel id="flowLayoutPanel"
             
             AutoSize = "true"
             AutoSizeMode = "GrowAndShrink"
@@ -25,7 +25,7 @@
             Size = "(373, 418)"
             TabIndex = "18"
             >
-		<GroupBox id="groupPitchControl"
+		<UiGroupBox id="groupPitchControl"
             
             Location = "(3, 38)"
             Name = "groupPitchControl"
@@ -34,7 +34,7 @@
             TabStop = "false"
             Text = "Pitch Control (VOCALOID2)"
             >
-				<Label id="label5"
+				<UiLabel id="label5"
             
             AutoSize = "true"
             Location = "(345, 42)"
@@ -44,7 +44,7 @@
             Text = "%"
             />
             
-                <Label id="label4"
+                <UiLabel id="label4"
             
             AutoSize = "true"
             Location = "(345, 16)"
@@ -80,7 +80,7 @@
             Type = "Integer"
             />
             
-                <TrackBar id="trackBendLength"
+                <UiTrackBar id="trackBendLength"
             
             AutoSize = "false"
             Location = "(138, 40)"
@@ -91,7 +91,7 @@
             TickFrequency = "10"
             />
             
-                <TrackBar id="trackBendDepth"
+                <UiTrackBar id="trackBendDepth"
             
             AutoSize = "false"
             Location = "(138, 14)"
@@ -103,7 +103,7 @@
             Value = "8"
             />
             
-                <CheckBox id="chkDownPortamento"
+                <UiCheckBox id="chkDownPortamento"
             
             AutoSize = "true"
             Location = "(20, 96)"
@@ -114,7 +114,7 @@
             UseVisualStyleBackColor = "true"
             />
             
-                <CheckBox id="chkUpPortamento"
+                <UiCheckBox id="chkUpPortamento"
             
             AutoSize = "true"
             Location = "(20, 71)"
@@ -125,7 +125,7 @@
             UseVisualStyleBackColor = "true"
             />
             
-                <Label id="lblBendLength"
+                <UiLabel id="lblBendLength"
             
             AutoSize = "true"
             Location = "(20, 46)"
@@ -135,7 +135,7 @@
             Text = "Bend Length(&amp;L)"
             />
             
-                <Label id="lblBendDepth"
+                <UiLabel id="lblBendDepth"
             
             AutoSize = "true"
             Location = "(20, 20)"
@@ -144,8 +144,8 @@
             TabIndex = "0"
             Text = "Bend Depth(&amp;B)"
             />
-    </GroupBox>
-	<GroupBox id="groupDynamicsControl"
+    </UiGroupBox>
+	<UiGroupBox id="groupDynamicsControl"
             Location = "(3, 174)"
             Name = "groupDynamicsControl"
             Size = "(367, 74)"
@@ -154,7 +154,7 @@
             Text = "Dynamics Control (VOCALOID2)"
             >
             
-                <Label id="label7"
+                <UiLabel id="label7"
             
             AutoSize = "true"
             Location = "(345, 46)"
@@ -164,7 +164,7 @@
             Text = "%"
             />
             
-                <Label id="label6"
+                <UiLabel id="label6"
             
             AutoSize = "true"
             Location = "(345, 20)"
@@ -200,7 +200,7 @@
             Type = "Integer"
             />
             
-                <TrackBar id="trackAccent"
+                <UiTrackBar id="trackAccent"
             
             AutoSize = "false"
             Location = "(138, 44)"
@@ -212,7 +212,7 @@
             Value = "50"
             />
             
-                <TrackBar id="trackDecay"
+                <UiTrackBar id="trackDecay"
             
             AutoSize = "false"
             Location = "(138, 18)"
@@ -224,7 +224,7 @@
             Value = "50"
             />
             
-                <Label id="lblAccent"
+                <UiLabel id="lblAccent"
             
             AutoSize = "true"
             Location = "(18, 50)"
@@ -234,7 +234,7 @@
             Text = "Accent(&amp;A)"
             />
             
-                <Label id="lblDecay"
+                <UiLabel id="lblDecay"
             
             AutoSize = "true"
             Location = "(18, 24)"
@@ -243,9 +243,9 @@
             TabIndex = "8"
             Text = "Decay(&amp;D)"
             />
-	</GroupBox>
+	</UiGroupBox>
             
-    <GroupBox id="groupAttack"
+    <UiGroupBox id="groupAttack"
             
             Location = "(3, 254)"
             Name = "groupAttack"
@@ -254,7 +254,7 @@
             TabStop = "false"
             Text = "Attack (VOCALOID1)"
             >
-                <Label id="lblAttackTemplate"
+                <UiLabel id="lblAttackTemplate"
             
             AutoSize = "true"
             Location = "(18, 23)"
@@ -264,7 +264,7 @@
             Text = "Attack Variation(&amp;V)"
             />
             
-                <ComboBox id="comboAttackTemplate"
+                <UiComboBox id="comboAttackTemplate"
             
             FormattingEnabled = "true"
             Location = "(143, 20)"
@@ -300,7 +300,7 @@
             Type = "Integer"
             />
             
-                <TrackBar id="trackDepth"
+                <UiTrackBar id="trackDepth"
             
             AutoSize = "false"
             Location = "(138, 69)"
@@ -312,7 +312,7 @@
             Value = "64"
             />
             
-                <TrackBar id="trackDuration"
+                <UiTrackBar id="trackDuration"
             
             AutoSize = "false"
             Location = "(138, 43)"
@@ -324,7 +324,7 @@
             Value = "64"
             />
             
-                <Label id="lblDepth"
+                <UiLabel id="lblDepth"
             
             AutoSize = "true"
             Location = "(18, 75)"
@@ -334,7 +334,7 @@
             Text = "Depth(&amp;D)"
             />
             
-                <Label id="lblDuration"
+                <UiLabel id="lblDuration"
             
             AutoSize = "true"
             Location = "(18, 49)"
@@ -343,15 +343,15 @@
             TabIndex = "8"
             Text = "Duration(&amp;D)"
             />
-	</GroupBox>
-	<Panel id="panelVocaloid2Template"
+	</UiGroupBox>
+	<UiPanel id="panelVocaloid2Template"
             
             Location = "(3, 3)"
             Name = "panelVocaloid2Template"
             Size = "(367, 29)"
             TabIndex = "19"
             >
-            <ComboBox id="comboTemplate"
+            <UiComboBox id="comboTemplate"
             
             FormattingEnabled = "true"
 	            Location = "(242, 3)"
@@ -368,8 +368,8 @@
 		            <String>legato</String>
 		            <String>slow legato</String>
 	            </_Items>
-            </ComboBox>
-                <Label id="lblTemplate"
+            </UiComboBox>
+                <UiLabel id="lblTemplate"
             
             AutoSize = "true"
             Location = "(165, 6)"
@@ -378,14 +378,14 @@
             TabIndex = "2"
             Text = "Template(&amp;T)"
             />
-            </Panel>
-		<Panel id="panelButtons"
+            </UiPanel>
+		<UiPanel id="panelButtons"
             Location = "(3, 367)"
             Name = "panelButtons"
             Size = "(367, 48)"
             TabIndex = "19"
             >
-                <Button id="btnCancel"
+            <UiButton id="btnCancel"
             
             Anchor = "Top,Right"
             DialogResult = "Cancel"
@@ -396,7 +396,7 @@
             Text = "Cancel"
             UseVisualStyleBackColor = "true"
             />
-                <Button id="btnOK"
+            <UiButton id="btnOK"
             
             Anchor = "Top,Right"
             Location = "(198, 12)"
@@ -407,6 +407,6 @@
             UseVisualStyleBackColor = "true"
             />
             
-		</Panel>
-    </FlowLayoutPanel>
+		</UiPanel>
+    </UiFlowLayoutPanel>
 </Form>

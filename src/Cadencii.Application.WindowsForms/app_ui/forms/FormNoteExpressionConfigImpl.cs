@@ -13,7 +13,6 @@
  */
 using System;
 using System.Drawing;
-using System.Windows.Forms;
 using cadencii.apputil;
 using Cadencii.Media.Vsq;
 
@@ -93,7 +92,7 @@ namespace Cadencii.Application.Forms
 
             Size current_size = this.ClientSize;
             this.ClientSize = new Size(current_size.Width, flowLayoutPanel.ClientSize.Height + flowLayoutPanel.Top * 2);
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+			this.AsAwt ().FormBorderStyle = Cadencii.Gui.Toolkit.FormBorderStyle.FixedDialog;
         }
 
         #region public methods
@@ -377,7 +376,7 @@ namespace Cadencii.Application.Forms
 
         public void btnOK_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
         }
 
         public void comboBox1_SelectedIndexChanged(Object sender, EventArgs e)
@@ -405,7 +404,7 @@ namespace Cadencii.Application.Forms
 				Cadencii.Gui.Toolkit.MessageBoxButtons.YesNo,
 				Cadencii.Gui.Toolkit.MessageBoxIcon.Warning) == Cadencii.Gui.DialogResult.Yes) {
                 m_apply_current_track = true;
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+				this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
             }
         }
 
@@ -477,7 +476,7 @@ namespace Cadencii.Application.Forms
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
         #endregion
 
@@ -517,42 +516,44 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-        private GroupBox groupPitchControl;
-        private GroupBox groupDynamicsControl;
-        private Label lblBendDepth;
-        private Label lblTemplate;
-        private Label lblBendLength;
-        private CheckBox chkDownPortamento;
-        private CheckBox chkUpPortamento;
-        private TrackBar trackBendDepth;
-        private TrackBar trackBendLength;
-        private TrackBar trackAccent;
-        private TrackBar trackDecay;
-        private Label lblAccent;
-        private Label lblDecay;
-        private NumberTextBox txtBendLength;
-        private NumberTextBox txtBendDepth;
-        private NumberTextBox txtAccent;
-        private NumberTextBox txtDecay;
-        private Label label5;
-        private Label label4;
-        private Label label7;
-        private Label label6;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnOK;
-        private ComboBox comboTemplate;
-        private GroupBox groupAttack;
-        private NumberTextBox txtDepth;
-        private NumberTextBox txtDuration;
-        private TrackBar trackDepth;
-        private TrackBar trackDuration;
-        private Label lblDepth;
-        private Label lblDuration;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
-        private Panel panelButtons;
-        private Panel panelVocaloid2Template;
-        private ComboBox comboAttackTemplate;
-        private Label lblAttackTemplate;
+		#pragma warning disable 0649
+        UiGroupBox groupPitchControl;
+        UiGroupBox groupDynamicsControl;
+        UiLabel lblBendDepth;
+        UiLabel lblTemplate;
+        UiLabel lblBendLength;
+        UiCheckBox chkDownPortamento;
+        UiCheckBox chkUpPortamento;
+        UiTrackBar trackBendDepth;
+        UiTrackBar trackBendLength;
+        UiTrackBar trackAccent;
+        UiTrackBar trackDecay;
+        UiLabel lblAccent;
+        UiLabel lblDecay;
+        NumberTextBox txtBendLength;
+        NumberTextBox txtBendDepth;
+        NumberTextBox txtAccent;
+        NumberTextBox txtDecay;
+        UiLabel label5;
+        UiLabel label4;
+        UiLabel label7;
+        UiLabel label6;
+        UiButton btnCancel;
+        UiButton btnOK;
+        UiComboBox comboTemplate;
+        UiGroupBox groupAttack;
+        NumberTextBox txtDepth;
+        NumberTextBox txtDuration;
+        UiTrackBar trackDepth;
+        UiTrackBar trackDuration;
+        UiLabel lblDepth;
+        UiLabel lblDuration;
+        UiFlowLayoutPanel flowLayoutPanel;
+        UiPanel panelButtons;
+        UiPanel panelVocaloid2Template;
+        UiComboBox comboAttackTemplate;
+        UiLabel lblAttackTemplate;
+		#pragma warning restore 0649
         #endregion
         #endregion
 

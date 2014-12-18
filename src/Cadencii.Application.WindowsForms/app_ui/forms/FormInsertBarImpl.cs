@@ -12,9 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using cadencii.apputil;
-
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
@@ -106,16 +104,18 @@ namespace Cadencii.Application.Forms
         #endregion
 
         #region UI implementation
+		#pragma warning disable 0649
         private System.ComponentModel.IContainer components = null;
-        private NumericUpDownEx numPosition;
-        private NumericUpDownEx numLength;
-        private Label lblPosition;
-        private Label lblLength;
-        private Label lblThBar;
-        private Label lblBar;
-        private Button btnCancel;
-        private Button btnOK;
-        private Label lblPositionPrefix;
+        NumericUpDownEx numPosition;
+        NumericUpDownEx numLength;
+        UiLabel lblPosition;
+        UiLabel lblLength;
+        UiLabel lblThBar;
+        UiLabel lblBar;
+        UiButton btnCancel;
+        UiButton btnOK;
+        UiLabel lblPositionPrefix;
+		#pragma warning restore 0649
 
         /// <summary>
         /// 使用中のリソースをすべてクリーンアップします。
