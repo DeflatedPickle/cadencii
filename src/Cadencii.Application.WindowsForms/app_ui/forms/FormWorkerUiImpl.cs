@@ -15,12 +15,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Text;
-using System.Windows.Forms;
-
-
 using cadencii.apputil;
+using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
 using cadencii;
@@ -36,17 +33,12 @@ namespace Cadencii.Application.Forms
 			return showDialogTo ((FormMainImpl) formMainWindow);
 		}
 
-		int UiForm.showDialog (object parent_form)
-		{
-			throw new NotImplementedException (); // not needed
-		}
-
-        private ProgressBar progressBar1;
-        private FlowLayoutPanel flowLayoutPanel1;
-        private Label label1;
-        private IFormWorkerControl mControl;
-        private Button buttonCancel;
-        private Button buttonDetail;
+        UiProgressBar progressBar1;
+        UiFlowLayoutPanel flowLayoutPanel1;
+        UiLabel label1;
+        IFormWorkerControl mControl;
+        UiButton buttonCancel;
+        UiButton buttonDetail;
         private bool mDetailVisible = true;
         private int mFullHeight = 1;
 
@@ -77,36 +69,12 @@ namespace Cadencii.Application.Forms
             buttonDetail.Text = _("detail");
         }
 
-        public void show(Object obj)
-        {
-            if (obj != null && obj is IWin32Window) {
-                Show((IWin32Window)obj);
-            } else {
-                Show();
-            }
-        }
-
-        /// <summary>
-        /// フォームを閉じます．
-        /// valueがtrueのときダイアログの結果をCancelに，それ以外の場合はOKとなるようにします．
-        /// </summary>
-        /// <param name="value"></param>
-        public void close(bool value)
-        {
-            if (value) {
-                this.DialogResult = DialogResult.Cancel;
-            } else {
-                this.DialogResult = DialogResult.OK;
-            }
-            this.Close();
-        }
-
         /// <summary>
         /// フォームを閉じます
         /// </summary>
         public void close()
         {
-            this.DialogResult = DialogResult.OK;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
             Close();
         }
 
@@ -134,7 +102,7 @@ namespace Cadencii.Application.Forms
         /// <param name="ui"></param>
         public void removeProgressBar(ProgressBarWithLabel ui)
         {
-            flowLayoutPanel1.Controls.Remove((Control) ui.Native);
+            flowLayoutPanel1.Controls.Remove(ui);
         }
 
         /// <summary>
@@ -143,14 +111,14 @@ namespace Cadencii.Application.Forms
         /// <param name="ui"></param>
         public void addProgressBar(ProgressBarWithLabel ui)
         {
-            int draft_width = flowLayoutPanel1.Width - 10 - SystemInformation.VerticalScrollBarWidth;
+			int draft_width = flowLayoutPanel1.Width - 10 - AwtHost.Current.VerticalScrollBarWidth;
             if (draft_width < 1) {
                 draft_width = 1;
             }
             ui.Width = draft_width;
             //ui.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             //ui.Dock = DockStyle.Top;
-            flowLayoutPanel1.Controls.Add((Control)ui.Native);
+            flowLayoutPanel1.Controls.Add(ui);
         }
 
         /// <summary>
@@ -214,7 +182,7 @@ namespace Cadencii.Application.Forms
         /// <returns></returns>
         public bool showDialogTo(FormMainImpl main_window)
         {
-            if (ShowDialog(main_window) == DialogResult.Cancel) {
+			if (AsAwt ().ShowDialog (main_window) == Cadencii.Gui.DialogResult.Cancel) {
                 return true;
             } else {
                 return false;
@@ -271,11 +239,11 @@ namespace Cadencii.Application.Forms
         {
             if (flowLayoutPanel1.Visible) {
                 mFullHeight = this.Height;
-                int draft_width = flowLayoutPanel1.Width - 10 - SystemInformation.VerticalScrollBarWidth;
+				int draft_width = flowLayoutPanel1.Width - 10 - AwtHost.Current.VerticalScrollBarWidth;
                 if (draft_width < 1) {
                     draft_width = 1;
                 }
-                foreach (Control c in flowLayoutPanel1.Controls) {
+                foreach (UiControl c in flowLayoutPanel1.Controls) {
                     c.Width = draft_width;
                 }
             }
@@ -290,7 +258,7 @@ namespace Cadencii.Application.Forms
                 int w = this.ClientSize.Width;
                 int delta = flowLayoutPanel1.Top - buttonCancel.Bottom;
                 int h = buttonCancel.Bottom + delta - 2;
-                this.ClientSize = new Size(w, h);
+				this.AsAwt ().ClientSize = new Dimension(w, h);
             }
         }
     }

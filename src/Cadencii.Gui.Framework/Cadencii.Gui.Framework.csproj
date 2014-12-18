@@ -151,6 +151,10 @@
     <Compile Include="Cadencii.Gui.Toolkit\CastingList.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiComboBox.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiProgressBar.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\UiLinkLabel.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\UiFlowLayoutPanel.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\UiSplitContainer.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\UiListBox.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -1094,7 +1094,7 @@ namespace Cadencii.Application.Models
 				} finally {
 					if (fs != null) {
 						try {
-							fs.getUi().close();
+							fs.getUi().Close();
 						} catch (Exception ex2) {
 							Logger.write(GetType () + ".menuFileExportWave_Click; ex=" + ex2 + "\n");
 						}
@@ -1183,7 +1183,7 @@ namespace Cadencii.Application.Models
 				} finally {
 					if (fw != null) {
 						try {
-							fw.getUi().close();
+							fw.getUi().Close();
 						} catch (Exception ex2) {
 						}
 					}

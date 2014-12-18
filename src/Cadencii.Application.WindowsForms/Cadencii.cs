@@ -61,7 +61,7 @@ namespace Cadencii.Application.Forms
         {
 			ExceptionNotifyFormController controller = new ExceptionNotifyFormController(c => new ExceptionNotifyFormUiImpl(c));
             controller.setReportTarget(ex);
-            controller.getUi().showDialog(null);
+            controller.getUi().ShowDialog();
         }
 
         [STAThread]
@@ -206,7 +206,7 @@ namespace Cadencii.Application.Forms
         static void showSplash()
         {
             EditorManager.splash = new FormSplashUiImpl();
-            splash.showDialog(null);
+            splash.ShowDialog();
         }
 
         static void closeSplash()

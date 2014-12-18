@@ -12,18 +12,15 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
+using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application.Forms
 {
-    public interface UpdateCheckForm
+    public interface UpdateCheckForm : UiForm
     {
-        void showDialog(object parent);
         void setMessage(string message);
         void setDownloadUrl(string url);
-        void setFont(Cadencii.Gui.Font font);
         void setOkButtonText(string text);
-        void setTitle(string title);
-        void close();
         bool isAutomaticallyCheckForUpdates();
         void setAutomaticallyCheckForUpdates(bool check_always);
         void setAutomaticallyCheckForUpdatesMessage(string message);

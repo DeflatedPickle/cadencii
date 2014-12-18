@@ -84,6 +84,9 @@
     <Compile Include="toolkit\PropertyGridImpl.cs" />
     <Compile Include="toolkit\ComboBoxImpl.cs" />
     <Compile Include="toolkit\ProgressBarImpl.cs" />
+    <Compile Include="toolkit\LinkLabelImpl.cs" />
+    <Compile Include="toolkit\SplitContainerImpl.cs" />
+    <Compile Include="toolkit\ListBoxImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

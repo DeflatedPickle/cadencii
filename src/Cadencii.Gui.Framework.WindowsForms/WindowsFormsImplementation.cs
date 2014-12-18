@@ -124,6 +124,9 @@ namespace Cadencii.Gui
 		public override int VerticalScrollBarThumbHeight {
 			get { return System.Windows.Forms.SystemInformation.VerticalScrollBarThumbHeight; }
 		}
+		public override int VerticalScrollBarWidth {
+			get { return System.Windows.Forms.SystemInformation.VerticalScrollBarWidth; }
+		}
 
 		public override Font SystemMenuFont {
 			get { return System.Windows.Forms.SystemInformation.MenuFont.ToAwt (); }

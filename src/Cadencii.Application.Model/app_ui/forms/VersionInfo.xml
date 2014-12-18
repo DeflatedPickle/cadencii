@@ -13,7 +13,7 @@
             StartPosition = "CenterScreen"
             Text = "VersionInfoEx"
             >
-    <Button id="btnFlip"
+    <UiButton id="btnFlip"
 
             Anchor = "Bottom,Left"
             Location = "(13, 391)"
@@ -24,7 +24,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-    <Button id="btnOK"
+    <UiButton id="btnOK"
 
             Anchor = "Bottom,Right"
             DialogResult = "OK"
@@ -36,7 +36,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-    <Label id="lblVstLogo"
+    <UiLabel id="lblVstLogo"
 
             BackColor = "$White"
             Location = "(25, 277)"
@@ -46,7 +46,7 @@
             Text = "VST PlugIn Technology by Steinberg Media Technologies GmbH"
             />
 
-    <PictureBox id="pictVstLogo"
+    <UiPictureBox id="pictVstLogo"
 
             BackColor = "$White"
             Location = "(27, 304)"
@@ -57,7 +57,7 @@
             TabStop = "false"
             />
 
-    <CheckBox id="chkTwitterID"
+    <UiCheckBox id="chkTwitterID"
 
             Anchor = "Bottom,Right"
             Appearance = "Button"

@@ -26,6 +26,8 @@ namespace Cadencii.Gui.Toolkit
 
 		int Top { get; set; }
 		int Left { get; set; }
+		int Bottom { get; }
+		int Right { get; }
 
 		ImeMode ImeMode { get; set; }
 

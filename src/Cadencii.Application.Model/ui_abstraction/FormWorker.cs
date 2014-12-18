@@ -224,7 +224,8 @@ namespace Cadencii.Application
             if (index < size) {
                 startWorker(index);
             } else {
-                ptrUi.close(false);//.setDialogResult( BDialogResult.OK );//.close();
+				ptrUi.DialogResult = Cadencii.Gui.DialogResult.OK;
+                ptrUi.Close();
             }
         }
 

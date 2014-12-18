@@ -32,7 +32,7 @@ namespace cadencii
         public void test()
         {
             this.setReportTarget(this.prepareException());
-            this.getUi().showDialog(null);
+            this.getUi().ShowDialog(null);
         }
 
         private Exception prepareException()

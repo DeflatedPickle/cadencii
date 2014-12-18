@@ -25,7 +25,7 @@ namespace Cadencii.Application.Forms
         {
 			FormWorker fw = new FormWorker();
             fw.setupUi(new FormWorkerUiImpl(fw));
-            fw.getUi().show(null);
+            fw.getUi().Show();
             TestFormWorker test_instance = new TestFormWorker();
             fw.addJob(test_instance, "testMethod", "job1", 5000, 5000);
             fw.addJob(test_instance, "testMethod", "job2", 10000, 10000);

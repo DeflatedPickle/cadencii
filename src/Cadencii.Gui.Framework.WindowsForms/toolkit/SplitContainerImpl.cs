@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using Cadencii.Gui;
 using Keys = Cadencii.Gui.Toolkit.Keys;
@@ -16,118 +16,11 @@ using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventAr
 using System.Collections.Generic;
 using Cadencii.Gui.Toolkit;
 using cadencii;
-using System.ComponentModel;
 
 namespace Cadencii.Gui.Toolkit
 {
-	public class FormImpl : System.Windows.Forms.Form, UiForm
- 	{
-		Dimension UiForm.ClientSize {
-			get { return ClientSize.ToAwt (); }
-			set { ClientSize = value.ToWF (); }
-		}
-
-		DialogResult UiForm.DialogResult {
-			get { return (DialogResult) DialogResult; }
-			set { DialogResult = (System.Windows.Forms.DialogResult) value; }
-		}
-
-		public virtual IContainer Components {
-			get { return null; }
-		}
-
-		// it hides protected Control.DoubleBuffered.
-		public new bool DoubleBuffered { 
-			get { return base.DoubleBuffered; }
-			set { base.DoubleBuffered = value; }
-		}
-
-		public bool UserPaint {
-			get { return this.GetStyle (System.Windows.Forms.ControlStyles.UserPaint); }
-			set { this.SetStyle (System.Windows.Forms.ControlStyles.UserPaint, value); }
-		}
-
-		public bool AllPaintingInWmPaint {
-			get { return this.GetStyle (System.Windows.Forms.ControlStyles.AllPaintingInWmPaint); }
-			set { this.SetStyle (System.Windows.Forms.ControlStyles.AllPaintingInWmPaint, value); }
-		}
-
-		AutoScaleMode UiForm.AutoScaleMode {
-			get { return (AutoScaleMode)AutoScaleMode;  }
-			set { AutoScaleMode = (System.Windows.Forms.AutoScaleMode)value; }
-		}
-
-		UiMenuStrip UiForm.MainMenuStrip {
-			get { return (UiMenuStrip)MainMenuStrip; }
-			set { MainMenuStrip = (System.Windows.Forms.MenuStrip) value.Native; }
-		}
-
-		event EventHandler<DragEventArgs> UiForm.DragEnter {
-			add { DragEnter += (sender, e) => value (sender, e.ToAwt ()); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		event EventHandler<DragEventArgs> UiForm.DragDrop {
-			add { DragDrop += (sender, e) => value (sender, e.ToAwt ()); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		event EventHandler<DragEventArgs> UiForm.DragOver {
-			add { DragOver += (sender, e) => value (sender, e.ToAwt ()); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		event EventHandler UiForm.DragLeave {
-			add { DragLeave += value; }
-			remove { DragLeave -= value; }
-		}
-
-		FormWindowState UiForm.WindowState {
-			get { return (FormWindowState)WindowState; }
-			set { WindowState = (System.Windows.Forms.FormWindowState)value; }
-		}
-
-		public UiForm AsAwt ()
-		{
-			return this;
-		}
-
-		Dimension UiForm.MinimumSize {
-			get { return MinimumSize.ToAwt (); }
-			set { MinimumSize = value.ToWF (); }
-		}
-
-		Cadencii.Gui.DialogResult UiForm.ShowDialog ()
-		{
-			return (Cadencii.Gui.DialogResult) ShowDialog ();
-		}
-
-		Cadencii.Gui.DialogResult UiForm.ShowDialog (object owner)
-		{
-			return (Cadencii.Gui.DialogResult) ShowDialog (owner as System.Windows.Forms.IWin32Window);
-		}
-
-		event EventHandler UiForm.LocationChanged {
-			add { this.LocationChanged += (sender, e) => value (sender, e); }
-			remove { this.LocationChanged -= (sender, e) => value (sender, e); }
-		}
-
-		event EventHandler<FormClosingEventArgs> UiForm.FormClosing {
-			add { this.FormClosing += (sender, e) => value (sender, e.ToAwt ()); }
-			remove { throw new NotImplementedException (); }
-		}
-
-		event EventHandler UiForm.FormClosed {
-			add { this.FormClosed += (sender, e) => value (sender, e); }
-			remove { this.FormClosed -= (sender, e) => value (sender, e); }
-		}
-
+	public class SplitContainerImpl : System.Windows.Forms.SplitContainer, UiSplitContainer
+	{
 		// UiControl
 
 		UiControl UiControl.Parent {

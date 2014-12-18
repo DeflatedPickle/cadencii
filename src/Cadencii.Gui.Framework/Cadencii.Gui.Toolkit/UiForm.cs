@@ -6,6 +6,7 @@ namespace Cadencii.Gui.Toolkit
 {
 	public interface UiForm : UiControl
 	{
+		Dimension ClientSize { get; set; }
 		double Opacity { get; set; }
 		DialogResult DialogResult { get; set; }
 
@@ -15,6 +16,10 @@ namespace Cadencii.Gui.Toolkit
 		// it cannot be an interface member (technically it can, but it's annoying to add impl.
 		// all around) so expose it here.
 		bool DoubleBuffered { get; set; }
+
+		// custom property that accesses "Styles"
+		bool UserPaint { get; set; }
+		bool AllPaintingInWmPaint { get; set; }
 
 		UiForm AsAwt ();
 
@@ -44,9 +49,8 @@ namespace Cadencii.Gui.Toolkit
 
 		string Text { get; set; }
 
-		int showDialog (object parentForm);
-
 		void Show ();
 		DialogResult ShowDialog ();
+		DialogResult ShowDialog (object parentForm);
 	}
 }

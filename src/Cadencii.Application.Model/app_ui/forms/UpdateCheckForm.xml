@@ -7,7 +7,7 @@
             Name = "UpdateCheckForm"
             StartPosition = "CenterParent"
             >
-    <Button id="button1"
+    <UiButton id="button1"
 
             Anchor = "Bottom,Right"
             DialogResult = "Cancel"
@@ -19,7 +19,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-	<Label id="label1"
+	<UiLabel id="label1"
 
             AutoSize = "true"
             Location = "(23, 20)"
@@ -28,7 +28,7 @@
             TabIndex = "1"
             Text = "label1"
             />
-    <LinkLabel id="linkLabel1"
+    <UiLinkLabel id="linkLabel1"
 
             Anchor = "Top,Left,Right"
             AutoEllipsis = "true"
@@ -40,7 +40,7 @@
             Text = "linkLabel1"
             />
 
-    <CheckBox id="checkBox1"
+    <UiCheckBox id="checkBox1"
 
             AutoSize = "true"
             Location = "(25, 101)"

@@ -1107,18 +1107,18 @@ namespace Cadencii.Application.Forms
                     if (current_version < recent_version) {
 			var form = ApplicationUIHost.Create<UpdateCheckForm>();
                         form.setDownloadUrl(update_info.DownloadUrl);
-                        form.setFont(EditorManager.editorConfig.getBaseFont());
+			AwtHost.Current.ApplyFontRecurse (form, EditorManager.editorConfig.getBaseFont());
                         form.setOkButtonText(_("OK"));
-                        form.setTitle(_("Check For Updates"));
+                        form.Text = (_("Check For Updates"));
                         form.setMessage(string.Format(_("New version {0} is available."), recent_version_string));
                         form.setAutomaticallyCheckForUpdates(!ApplicationGlobal.appConfig.DoNotAutomaticallyCheckForUpdates);
                         form.setAutomaticallyCheckForUpdatesMessage(_("Automatically check for updates"));
-                        form.okButtonClicked += () => form.close();
+                        form.okButtonClicked += () => form.Close();
                         form.downloadLinkClicked += () => {
-                            form.close();
+                            form.Close();
                             System.Diagnostics.Process.Start(update_info.DownloadUrl);
                         };
-                        form.showDialog(this);
+                        form.ShowDialog(this);
 						ApplicationGlobal.appConfig.DoNotAutomaticallyCheckForUpdates = !form.isAutomaticallyCheckForUpdates();
                     } else if (is_explicit_update_check) {
 			System.Windows.Forms.MessageBox.Show(_("Cadencii is up to date"),

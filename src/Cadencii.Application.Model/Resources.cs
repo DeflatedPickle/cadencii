@@ -6,6 +6,7 @@ namespace Cadencii.Application
 {
 	public static class Resources
 	{
+		public static Image VSTonWht { get; set; }
 		public static Image btn1 { get; set; }
 		public static Image btn2 { get; set; }
 		public static Image btn3 { get; set; }

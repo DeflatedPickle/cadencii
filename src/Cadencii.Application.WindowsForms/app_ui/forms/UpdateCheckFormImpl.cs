@@ -13,19 +13,20 @@
  */
 using System;
 using System.Linq;
-using System.Windows.Forms;
-using System.Drawing;
 using System.Collections.Generic;
 using Cadencii.Gui;
+using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application.Forms
 {
     class UpdateCheckFormImpl : Cadencii.Gui.Toolkit.FormImpl, UpdateCheckForm
     {
-        private Label label1;
-        private LinkLabel linkLabel1;
-        private CheckBox checkBox1;
-        private Button button1;
+		#pragma warning disable 0649
+        UiLabel label1;
+        UiLinkLabel linkLabel1;
+        UiCheckBox checkBox1;
+        UiButton button1;
+		#pragma warning restore 0649
 
         public event Action okButtonClicked;
         public event Action downloadLinkClicked;
@@ -33,25 +34,6 @@ namespace Cadencii.Application.Forms
         public UpdateCheckFormImpl()
         {
             InitializeComponent();
-        }
-
-        public void showDialog(object parent)
-        {
-            if (parent != null && parent is IWin32Window) {
-                ShowDialog(parent as IWin32Window);
-            } else {
-                ShowDialog();
-            }
-        }
-
-        public void setTitle(string title)
-        {
-            Text = title;
-        }
-
-        public void setFont(Cadencii.Gui.Font font)
-        {
-            AwtHost.Current.ApplyFontRecurse(this, font);
         }
 
         public void setOkButtonText(string text)
@@ -67,11 +49,6 @@ namespace Cadencii.Application.Forms
         public void setMessage(string text)
         {
             label1.Text = text;
-        }
-
-        public void close()
-        {
-            DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
         public bool isAutomaticallyCheckForUpdates()
@@ -97,7 +74,7 @@ namespace Cadencii.Application.Forms
             this.PerformLayout();
 
 			button1.Click += new System.EventHandler (button1_Click);
-			linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler (linkLabel1_LinkClicked);
+			linkLabel1.LinkClicked += linkLabel1_LinkClicked;
         }
 
         private void button1_Click(object sender, System.EventArgs e)
@@ -107,7 +84,7 @@ namespace Cadencii.Application.Forms
             }
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void linkLabel1_LinkClicked(object sender, EventArgs e)
         {
             if (downloadLinkClicked != null) {
                 downloadLinkClicked.Invoke();

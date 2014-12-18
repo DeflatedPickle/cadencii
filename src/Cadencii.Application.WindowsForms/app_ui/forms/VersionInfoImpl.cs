@@ -12,14 +12,10 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii;
 using Cadencii.Gui;
 
-using Keys = Cadencii.Gui.Toolkit.Keys;
-using KeyEventArgs = System.Windows.Forms.KeyEventArgs;
-using KeyEventHandler = System.Windows.Forms.KeyEventHandler;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
 
@@ -50,7 +46,7 @@ namespace Cadencii.Application.Forms
         private Color m_app_name_color = Cadencii.Gui.Colors.Black;
         private Color m_version_color = new Color(105, 105, 105);
         private bool m_shadow_enablde = false;
-        private System.Windows.Forms.Timer timer;
+        Timer timer;
         private bool m_show_twitter_id = false;
 
         public VersionInfoImpl(string app_name, string version)
@@ -59,7 +55,7 @@ namespace Cadencii.Application.Forms
             if (this.components == null) {
                 this.components = new System.ComponentModel.Container();
             }
-            timer = new System.Windows.Forms.Timer(this.components);
+			timer = ApplicationUIHost.Create<Timer> (this.components);
             m_version = version;
             m_app_name = app_name;
 
@@ -68,12 +64,12 @@ namespace Cadencii.Application.Forms
             setResources();
             applyLanguage();
 
-            this.SetStyle(ControlStyles.DoubleBuffer, true);
-            this.SetStyle(ControlStyles.UserPaint, true);
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+			DoubleBuffered = true;
+			UserPaint = true;
+			AllPaintingInWmPaint = true;
 
             m_credit = new AuthorListEntry[] { };
-			lblVstLogo.ForeColor = m_version_color.ToNative ();
+			lblVstLogo.ForeColor = m_version_color;
 #if DEBUG
             //m_scroll = generateAuthorListB( false );
             //m_scroll_with_id = generateAuthorListB( true );
@@ -95,15 +91,15 @@ namespace Cadencii.Application.Forms
         {
             string about = PortUtil.formatMessage(_("About {0}"), m_app_name);
             string credit = _("Credit");
-			Dimension size1 = Utility.measureString(about, btnFlip.Font.ToAwt ());
-			Dimension size2 = Utility.measureString(credit, btnFlip.Font.ToAwt ());
+			Dimension size1 = Utility.measureString(about, btnFlip.Font);
+			Dimension size2 = Utility.measureString(credit, btnFlip.Font);
             m_button_width_about = Math.Max(75, (int)(size1.Width * 1.3));
             m_button_width_credit = Math.Max(75, (int)(size2.Width * 1.3));
             if (m_credit_mode) {
-                btnFlip.Size = new System.Drawing.Size(m_button_width_about, btnFlip.Height);
+				btnFlip.Size = new Dimension(m_button_width_about, btnFlip.Height);
                 btnFlip.Text = about;
             } else {
-                btnFlip.Size = new System.Drawing.Size(m_button_width_credit, btnFlip.Height);
+				btnFlip.Size = new Dimension(m_button_width_credit, btnFlip.Height);
                 btnFlip.Text = credit;
             }
             this.Text = about;
@@ -125,7 +121,7 @@ namespace Cadencii.Application.Forms
         public void setVersionColor(Color value)
         {
             m_version_color = value;
-			lblVstLogo.ForeColor = value.ToNative ();
+			lblVstLogo.ForeColor = value;
         }
 
         /// <summary>
@@ -227,8 +223,8 @@ namespace Cadencii.Application.Forms
         void btnSaveAuthorList_Click(Object sender, EventArgs e)
         {
 #if DEBUG
-            using (var dlg = new SaveFileDialog()) {
-				if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+			using (var dlg = ApplicationUIHost.Create<UiSaveFileDialog>()) {
+				if (dlg.ShowDialog() == Cadencii.Gui.DialogResult.OK) {
                     using (var stream = new System.IO.FileStream(dlg.FileName, System.IO.FileMode.Create, System.IO.FileAccess.Write)) {
                         m_scroll.Save(stream);
                     }
@@ -239,7 +235,7 @@ namespace Cadencii.Application.Forms
 
         public void btnOK_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
             timer.Stop();
             Close();
         }
@@ -335,7 +331,7 @@ namespace Cadencii.Application.Forms
         private void VersionInfo_KeyDown(Object sender, KeyEventArgs e)
         {
             if (((Keys) e.KeyCode & Keys.Escape) == Keys.Escape) {
-                this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+				this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
                 Close();
             }
         }
@@ -356,17 +352,17 @@ namespace Cadencii.Application.Forms
         private void registerEventHandlers()
         {
 			this.Paint += (o, e) => this.VersionInfo_Paint (o, e.ToAwt ());
-            this.KeyDown += new KeyEventHandler(this.VersionInfo_KeyDown);
-            this.FontChanged += new EventHandler(this.VersionInfo_FontChanged);
-            this.timer.Tick += new EventHandler(timer_Tick);
-            this.btnFlip.Click += new EventHandler(btnFlip_Click);
-            this.btnOK.Click += new EventHandler(btnOK_Click);
-            this.chkTwitterID.CheckedChanged += new EventHandler(chkTwitterID_CheckedChanged);
+			this.AsAwt ().KeyDown += this.VersionInfo_KeyDown;
+            this.FontChanged += this.VersionInfo_FontChanged;
+            this.timer.Tick += timer_Tick;
+            this.btnFlip.Click += btnFlip_Click;
+            this.btnOK.Click += btnOK_Click;
+            this.chkTwitterID.CheckedChanged += chkTwitterID_CheckedChanged;
         }
 
         private void setResources()
         {
-            pictVstLogo.Image = cadencii.Properties.Resources.VSTonWht;
+            pictVstLogo.Image = Resources.VSTonWht;
         }
 
         #region ui implementation
@@ -395,11 +391,11 @@ namespace Cadencii.Application.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnFlip = new Button();
-            this.btnOK = new Button();
-            this.lblVstLogo = new System.Windows.Forms.Label();
-            this.pictVstLogo = new PictureBox();
-            this.chkTwitterID = new CheckBox();
+			this.btnFlip = ApplicationUIHost.Create<UiButton>();
+			this.btnOK = ApplicationUIHost.Create<UiButton>();
+			this.lblVstLogo = ApplicationUIHost.Create<UiLabel>();
+			this.pictVstLogo = ApplicationUIHost.Create<UiPictureBox>();
+			this.chkTwitterID = ApplicationUIHost.Create<UiCheckBox>();
             ((System.ComponentModel.ISupportInitialize)(this.pictVstLogo)).BeginInit();
             this.SuspendLayout();
 			ApplicationUIHost.Instance.ApplyXml (this, "VersionInfo.xml");
@@ -409,11 +405,11 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-        private System.Windows.Forms.Button btnFlip;
-        private System.Windows.Forms.Button btnOK;
-        private PictureBox pictVstLogo;
-        private Label lblVstLogo;
-        private CheckBox chkTwitterID;
+        UiButton btnFlip;
+        UiButton btnOK;
+        UiPictureBox pictVstLogo;
+        UiLabel lblVstLogo;
+        UiCheckBox chkTwitterID;
         #endregion
     }
 

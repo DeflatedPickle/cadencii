@@ -12,7 +12,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using cadencii.apputil;
 using Cadencii.Media.Vsq;
@@ -118,12 +117,12 @@ namespace Cadencii.Application.Forms
         #region event handlers
         public void buttonOk_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
         }
 
         public void buttonCancel_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
 
         public void listPresets_SelectedIndexChanged(Object sender, EventArgs e)
@@ -416,7 +415,7 @@ namespace Cadencii.Application.Forms
 
         public void FormVibratoPreset_Resize(Object sender, EventArgs e)
         {
-            if (this.WindowState == System.Windows.Forms.FormWindowState.Normal) {
+			if (this.AsAwt ().WindowState == FormWindowState.Normal) {
                 mPreviousWidth = this.Width;
                 mPreviousHeight = this.Height;
             }
@@ -439,9 +438,9 @@ namespace Cadencii.Application.Forms
             buttonUp.Click += new EventHandler(handleUpDownButtonClick);
             buttonDown.Click += new EventHandler(handleUpDownButtonClick);
 
-			pictureDepth.Paint += (o, e) => pictureDepth_Paint (o, e.ToAwt ());
-			pictureRate.Paint += (o, e) => pictureRate_Paint (o, e.ToAwt ());
-			pictureResulting.Paint += (o, e) => pictureResulting_Paint (o, e.ToAwt ());
+			pictureDepth.Paint += pictureDepth_Paint;
+			pictureRate.Paint += pictureRate_Paint;
+			pictureResulting.Paint += pictureResulting_Paint;
 
             this.Resize += new EventHandler(FormVibratoPreset_Resize);
             buttonOk.Click += new EventHandler(buttonOk_Click);
@@ -640,30 +639,32 @@ namespace Cadencii.Application.Forms
         }
         #endregion
 
-        private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.Button buttonOk;
-        private System.Windows.Forms.Button buttonRemove;
-        private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.Button buttonUp;
-        private Label labelRate;
-        private Label labelDepth;
-        private NumberTextBox textRate;
-        private NumberTextBox textDepth;
-        private Label labelPresets;
-        private PictureBox pictureRate;
-        private Label labelRateCurve;
-        private Label labelDepthCurve;
-        private PictureBox pictureDepth;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private Label labelResulting;
-        private PictureBox pictureResulting;
-        private GroupBox groupEdit;
-        private Label labelName;
-        private TextBox textName;
-        private GroupBox groupPreview;
-        private ListBox listPresets;
-        private System.Windows.Forms.Button buttonDown;
+		#pragma warning disable 0649
+        UiButton buttonCancel;
+        UiButton buttonOk;
+        UiButton buttonRemove;
+        UiButton buttonAdd;
+        UiButton buttonUp;
+        UiLabel labelRate;
+        UiLabel labelDepth;
+        NumberTextBox textRate;
+        NumberTextBox textDepth;
+        UiLabel labelPresets;
+        UiPictureBox pictureRate;
+        UiLabel labelRateCurve;
+        UiLabel labelDepthCurve;
+        UiPictureBox pictureDepth;
+        UiSplitContainer splitContainer1;
+        UiSplitContainer splitContainer2;
+        UiLabel labelResulting;
+        UiPictureBox pictureResulting;
+        UiGroupBox groupEdit;
+        UiLabel labelName;
+        UiTextBox textName;
+        UiGroupBox groupPreview;
+        UiListBox listPresets;
+        UiButton buttonDown;
+		#pragma warning restore 0649
         #endregion
     }
 

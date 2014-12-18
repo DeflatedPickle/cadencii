@@ -13,7 +13,7 @@
     Text = "Vibrato preset"
     >
 
-    <ListBox id="listPresets"
+    <UiListBox id="listPresets"
         Anchor = "Top,Bottom,Left"
         FormattingEnabled = "true"
         ItemHeight = "12"
@@ -23,7 +23,7 @@
         TabIndex = "1"
 	    />
 
-    <GroupBox id="groupPreview"
+    <UiGroupBox id="groupPreview"
         Anchor = "Top,Bottom,Left,Right"
         Location = "(183, 111)"
         Name = "groupPreview"
@@ -32,7 +32,7 @@
         TabStop = "false"
         Text = "Preview"
         >
-        <SplitContainer id="splitContainer2"
+        <UiSplitContainer id="splitContainer2"
 
             Dock = "Fill"
             IsSplitterFixed = "true"
@@ -45,7 +45,7 @@
             TabIndex = "140"
             >
 	        <_Panel1>
-	            <SplitContainer id="splitContainer1"
+	            <UiSplitContainer id="splitContainer1"
 		            Dock = "Fill"
 		            IsSplitterFixed = "true"
 		            Location = "(0, 0)"
@@ -56,7 +56,7 @@
 		            TabIndex = "139">
 		            >
 			        <_Panel1>
-			            <PictureBox id="pictureRate"
+			            <UiPictureBox id="pictureRate"
 				            Anchor = "Top,Bottom,Left,Right"
 				            BorderStyle = "FixedSingle"
 				            Location = "(12, 20)"
@@ -66,7 +66,7 @@
 				            TabStop = "false"
 				            />
 
-			            <Label id="labelRateCurve"
+			            <UiLabel id="labelRateCurve"
 				            AutoSize = "true"
 				            Location = "(10, 5)"
 				            Name = "labelRateCurve"
@@ -77,7 +77,7 @@
 			        </_Panel1>
 
 			        <_Panel2>
-			            <PictureBox id="pictureDepth"
+			            <UiPictureBox id="pictureDepth"
 				            Anchor = "Top,Bottom,Left,Right"
 				            BorderStyle = "FixedSingle"
 				            Location = "(12, 20)"
@@ -87,7 +87,7 @@
 				            TabStop = "false"
 				            />
 
-			            <Label id="labelDepthCurve"
+			            <UiLabel id="labelDepthCurve"
 				            AutoSize = "true"
 				            Location = "(10, 5)"
 				            Name = "labelDepthCurve"
@@ -96,10 +96,10 @@
 				            Text = "Depth curve"
 				            />
 			        </_Panel2>
-		        </SplitContainer>
+		        </UiSplitContainer>
 	        </_Panel1>
 	        <_Panel2>
-	            <Label id="labelResulting"
+	            <UiLabel id="labelResulting"
 		            AutoSize = "true"
 		            Location = "(10, 5)"
 		            Name = "labelResulting"
@@ -107,7 +107,7 @@
 		            TabIndex = "137"
 		            Text = "Resulting pitch bend"
 		            />
-	            <PictureBox id="pictureResulting"
+	            <UiPictureBox id="pictureResulting"
 		            Anchor = "Top,Bottom,Left,Right"
 		            BorderStyle = "FixedSingle"
 		            Location = "(12, 20)"
@@ -117,9 +117,9 @@
 		            TabStop = "false"
 		            />
 	        </_Panel2>
-        </SplitContainer>
-	</GroupBox>
-    <GroupBox id="groupEdit"
+        </UiSplitContainer>
+	</UiGroupBox>
+    <UiGroupBox id="groupEdit"
 
         Anchor = "Top,Left,Right"
         Location = "(183, 15)"
@@ -129,14 +129,14 @@
         TabStop = "false"
         Text = "Edit"
         >
-        <TextBox id="textName"
+        <UiTextBox id="textName"
 
             Location = "(86, 62)"
             Name = "textName"
             Size = "(169, 19)"
             TabIndex = "9"
             />
-        <Label id="labelName"
+        <UiLabel id="labelName"
 
             AutoSize = "true"
             Location = "(10, 65)"
@@ -145,7 +145,7 @@
             TabIndex = "133"
             Text = "Name"
             />
-        <Label id="labelDepth"
+        <UiLabel id="labelDepth"
 
             AutoSize = "true"
             Location = "(10, 40)"
@@ -154,7 +154,7 @@
             TabIndex = "130"
             Text = "Start depth"
             />
-        <NumberTextBox id="textDepth"
+        <UiNumberTextBox id="textDepth"
 
             BackColor = "$(240,128,128)"
             ForeColor = "$White"
@@ -164,7 +164,7 @@
             TabIndex = "8"
             Type = "Integer"
             />
-        <NumberTextBox id="textRate"
+        <UiNumberTextBox id="textRate"
 
             BackColor = "$(240,128,128)"
             ForeColor = "$White"
@@ -174,7 +174,7 @@
             TabIndex = "7"
             Type = "Integer"
             />
-        <Label id="labelRate"
+        <UiLabel id="labelRate"
 
             AutoSize = "true"
             Location = "(10, 15)"
@@ -184,8 +184,8 @@
             Text = "Start rate"
             />
 
-    </GroupBox>
-    <Label id="labelPresets"
+    </UiGroupBox>
+    <UiLabel id="labelPresets"
 
             AutoSize = "true"
             Location = "(12, 15)"
@@ -195,7 +195,7 @@
             Text = "List of preset vibrato"
             />
 
-    <Button id="buttonCancel"
+    <UiButton id="buttonCancel"
 
             Anchor = "Bottom,Right"
             DialogResult = "Cancel"
@@ -206,7 +206,7 @@
             Text = "Cancel"
             UseVisualStyleBackColor = "true"
             />
-    <Button id="buttonOk"
+    <UiButton id="buttonOk"
 
             Anchor = "Bottom,Right"
             DialogResult = "OK"
@@ -218,7 +218,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-    <Button id="buttonRemove"
+    <UiButton id="buttonRemove"
 
             Anchor = "Bottom,Left"
             Location = "(12, 301)"
@@ -229,7 +229,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-    <Button id="buttonAdd"
+    <UiButton id="buttonAdd"
 
             Anchor = "Bottom,Left"
             Location = "(12, 272)"
@@ -240,7 +240,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-    <Button id="buttonUp"
+    <UiButton id="buttonUp"
 
             Anchor = "Bottom,Left"
             Location = "(102, 272)"
@@ -251,7 +251,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-    <Button id="buttonDown"
+    <UiButton id="buttonDown"
 
             Anchor = "Bottom,Left"
             Location = "(102, 301)"

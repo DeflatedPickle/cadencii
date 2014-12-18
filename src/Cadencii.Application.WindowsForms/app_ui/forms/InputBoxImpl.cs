@@ -13,7 +13,6 @@
  */
 using System;
 using System.Linq;
-using System.Windows.Forms;
 using System.Xml;
 using Cadencii.Gui.Toolkit;
 using cadencii;
@@ -38,7 +37,7 @@ namespace Cadencii.Application.Forms
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
 
         public void btnOk_Click(Object sender, EventArgs e)
@@ -46,7 +45,7 @@ namespace Cadencii.Application.Forms
 #if DEBUG
             Logger.StdOut("InputBox#btnOk_Click");
 #endif
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
         }
 
         private void registerEventHandlers()
@@ -87,10 +86,11 @@ namespace Cadencii.Application.Forms
         }
         #endregion
 
-        private Label lblMessage;
-        private Button btnCancel;
-        private TextBox txtInput;
-        private Button btnOk;
+		#pragma warning disable 0649
+        UiLabel lblMessage;
+        UiButton btnCancel;
+        UiTextBox txtInput;
+        UiButton btnOk;
+		#pragma warning restore 0649
     }
-
 }
