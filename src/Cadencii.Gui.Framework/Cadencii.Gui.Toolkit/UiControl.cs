@@ -6,6 +6,8 @@ namespace Cadencii.Gui.Toolkit
 {
 	public interface UiControl : IDisposable
 	{
+		bool Focused { get; }
+
 		UiControl Parent { get; }
 
 		object Invoke (Delegate e);

@@ -158,6 +158,7 @@
     <Compile Include="Cadencii.Gui.Toolkit\UiRadioButton.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\Extensions.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\IHasText.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\JoyPads.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

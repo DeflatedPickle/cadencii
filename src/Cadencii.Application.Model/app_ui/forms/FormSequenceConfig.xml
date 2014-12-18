@@ -14,8 +14,8 @@
             StartPosition = "Manual"
             Text = "Sequence config"
             >
-<GroupBox id="groupWaveFileOutput"
-            
+	<UiGroupBox id="groupWaveFileOutput"
+
             Anchor = "Top,Left,Right"
             Location = "(12, 12)"
             Name = "groupWaveFileOutput"
@@ -24,7 +24,7 @@
             TabStop = "false"
             Text = "Wave File Output"
             >
-<ComboBox id="comboSampleRate"
+		<UiComboBox id="comboSampleRate"
             
             Location = "(135, 48)"
             Name = "comboSampleRate"
@@ -35,8 +35,8 @@
 	            <String>Mono</String>
 	            <String>Stereo</String>
             </_Items>
-</ComboBox>
-<Label id="labelSampleRate"
+		</UiComboBox>
+		<UiLabel id="labelSampleRate"
             
             AutoSize = "true"
             Location = "(22, 51)"
@@ -45,7 +45,7 @@
             TabIndex = "30"
             Text = "Sample rate"
             />
-<RadioButton id="radioCurrentTrack"
+		<UiRadioButton id="radioCurrentTrack"
             
             AutoSize = "true"
             Checked = "true"
@@ -57,7 +57,7 @@
             Text = "Current"
             UseVisualStyleBackColor = "true"
             />
-<RadioButton id="radioMasterTrack"
+		<UiRadioButton id="radioMasterTrack"
             
             AutoSize = "true"
             Location = "(24, 75)"
@@ -67,7 +67,7 @@
             Text = "Master Track"
             UseVisualStyleBackColor = "true"
             />
-<Label id="lblChannel"
+		<UiLabel id="lblChannel"
             
             AutoSize = "true"
             Location = "(22, 27)"
@@ -76,7 +76,7 @@
             TabIndex = "25"
             Text = "Channel (&amp;C)"
             />
-<ComboBox id="comboChannel"
+		<UiComboBox id="comboChannel"
             
             FormattingEnabled = "true"
             Location = "(135, 24)"
@@ -88,10 +88,10 @@
 	            <String>Mono</String>
 	            <String>Stereo</String>
             </_Items>
-</ComboBox>
-</GroupBox>            
+		</UiComboBox>
+	</UiGroupBox>            
             
-<Button id="btnCancel"
+	<UiButton id="btnCancel"
             
             Anchor = "Bottom,Right"
             DialogResult = "Cancel"
@@ -102,7 +102,7 @@
             Text = "Cancel"
             UseVisualStyleBackColor = "true"
             />
-<Button id="btnOK"
+	<UiButton id="btnOK"
             
             Anchor = "Bottom,Right"
             Location = "(146, 207)"
@@ -112,7 +112,7 @@
             Text = "OK"
             UseVisualStyleBackColor = "true"
             />
-<GroupBox id="groupSequence"
+	<UiGroupBox id="groupSequence"
             
             Anchor = "Top,Left,Right"
             Location = "(12, 125)"
@@ -122,7 +122,7 @@
             TabStop = "false"
             Text = "Sequence"
             >
-<Label id="labelPreMeasure"
+		<UiLabel id="labelPreMeasure"
             
             AutoSize = "true"
             Location = "(22, 27)"
@@ -131,7 +131,7 @@
             TabIndex = "25"
             Text = "Pre-measure"
             />
-<ComboBox id="comboPreMeasure"
+		<UiComboBox id="comboPreMeasure"
             
             FormattingEnabled = "true"
             Location = "(135, 24)"
@@ -143,6 +143,6 @@
 	            <String>Mono</String>
 	            <String>"Stereo</String>
             </_Items>
-</ComboBox>
-</GroupBox>
+		</UiComboBox>
+	</UiGroupBox>
 </Form>

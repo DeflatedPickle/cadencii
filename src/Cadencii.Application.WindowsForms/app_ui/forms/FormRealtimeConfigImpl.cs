@@ -17,8 +17,8 @@ using cadencii;
 using cadencii.apputil;
 using Cadencii.Gui;
 using Cadencii.Utilities;
-using Cadencii.Platform.Windows;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Application.Controls;
 
 namespace Cadencii.Application.Forms
 {
@@ -27,12 +27,12 @@ namespace Cadencii.Application.Forms
     {
         private bool m_game_ctrl_enabled = false;
         private double m_last_event_processed;
-        private System.Windows.Forms.Timer timer;
+        Timer timer;
 
         public FormRealtimeConfigImpl()
         {
             InitializeComponent();
-            timer = new System.Windows.Forms.Timer(this.components);
+			timer = ApplicationUIHost.Create<Timer> (this.components);
             timer.Interval = 10;
             registerEventHandlers();
             setResources();
@@ -49,7 +49,7 @@ namespace Cadencii.Application.Forms
         #region event handlers
         public void FormRealtimeConfig_Load(Object sender, EventArgs e)
         {
-            int num_joydev = winmmhelp.JoyGetNumJoyDev();
+			int num_joydev = AwtHost.Current.JoyPads.GetNumberOfDevices ();
             m_game_ctrl_enabled = (num_joydev > 0);
             if (m_game_ctrl_enabled) {
                 timer.Start();
@@ -62,10 +62,10 @@ namespace Cadencii.Application.Forms
                 double now = PortUtil.getCurrentTime();
                 double dt_ms = (now - m_last_event_processed) * 1000.0;
                 //JoystickState state = m_game_ctrl.CurrentJoystickState;
-                int len = winmmhelp.JoyGetNumButtons(0);
+				int len = AwtHost.Current.JoyPads.GetNumberOfButtons(0);
                 byte[] buttons = new byte[len];
                 int pov0;
-                winmmhelp.JoyGetStatus(0, out buttons, out pov0);
+				AwtHost.Current.JoyPads.GetStatus (0, out buttons, out pov0);
                 //int[] pov = state.GetPointOfView();
                 //int pov0 = pov[0];
                 bool btn_x = (buttons[EditorManager.editorConfig.GameControlerCross] > 0x00);
@@ -97,7 +97,7 @@ namespace Cadencii.Application.Forms
                     } else if (btnCancel.Focused) {
                         if (btn_o) {
                             timer.Stop();
-                            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+							this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
                             Close();
                         } else if (pov_l) {
                             btnStart.Focus();
@@ -132,13 +132,13 @@ namespace Cadencii.Application.Forms
 
         public void btnStart_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
             Close();
         }
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
         #endregion
 
@@ -193,11 +193,13 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-        private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label lblRealTimeInput;
-        private System.Windows.Forms.Label lblSpeed;
-        private System.Windows.Forms.NumericUpDown numSpeed;
+		#pragma warning disable 0649
+        UiButton btnStart;
+        UiButton btnCancel;
+        UiLabel lblRealTimeInput;
+        UiLabel lblSpeed;
+        NumericUpDownEx numSpeed;
+		#pragma warning restore 0649
         #endregion
         #endregion
     }

@@ -12,13 +12,9 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii;
 using Cadencii.Gui;
-
-
-using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
 using Cadencii.Application.Models;
@@ -371,31 +367,33 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-        private GroupBox groupPitchControl;
-        private GroupBox groupDynamicsControl;
-        private Label lblBendDepth;
-        private Label lblTemplate;
-        private Label lblBendLength;
-        private CheckBox chkDownPortamento;
-        private CheckBox chkUpPortamento;
-        private TrackBar trackBendDepth;
-        private TrackBar trackBendLength;
-        private TrackBar trackAccent;
-        private TrackBar trackDecay;
-        private Label lblAccent;
-        private Label lblDecay;
-        private NumberTextBox txtBendLength;
-        private NumberTextBox txtBendDepth;
-        private NumberTextBox txtAccent;
-        private NumberTextBox txtDecay;
-        private Label label5;
-        private Label label4;
-        private Label label7;
-        private Label label6;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Button btnApply;
-        private System.Windows.Forms.ComboBox comboTemplate;
+		#pragma warning disable 0649
+        UiGroupBox groupPitchControl;
+        UiGroupBox groupDynamicsControl;
+        UiLabel lblBendDepth;
+        UiLabel lblTemplate;
+        UiLabel lblBendLength;
+        UiCheckBox chkDownPortamento;
+        UiCheckBox chkUpPortamento;
+        UiTrackBar trackBendDepth;
+        UiTrackBar trackBendLength;
+        UiTrackBar trackAccent;
+        UiTrackBar trackDecay;
+        UiLabel lblAccent;
+        UiLabel lblDecay;
+        NumberTextBox txtBendLength;
+        NumberTextBox txtBendDepth;
+        NumberTextBox txtAccent;
+        NumberTextBox txtDecay;
+        UiLabel label5;
+        UiLabel label4;
+        UiLabel label7;
+        UiLabel label6;
+        UiButton btnCancel;
+        UiButton btnOK;
+        UiButton btnApply;
+        UiComboBox comboTemplate;
+		#pragma warning restore 0649
         #endregion
         #endregion
 

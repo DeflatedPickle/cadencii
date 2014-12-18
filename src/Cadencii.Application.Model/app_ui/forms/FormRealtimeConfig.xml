@@ -15,7 +15,7 @@
             StartPosition = "CenterParent"
             Text = "FormRealtimeConfig"
             >
-<Button id="btnStart"
+	<UiButton id="btnStart"
             
             FlatStyle = "Flat"
             Location = "(25, 52)"
@@ -25,7 +25,7 @@
             Text = "Start"
             UseVisualStyleBackColor = "true"
             />
-<Button id="btnCancel"
+	<UiButton id="btnCancel"
             
             DialogResult = "Cancel"
             FlatStyle = "Flat"
@@ -36,7 +36,7 @@
             Text = "Cancel"
             UseVisualStyleBackColor = "true"
             />
-<Label id="lblRealTimeInput"
+	<UiLabel id="lblRealTimeInput"
             
             Location = "(23, 9)"
             Name = "lblRealTimeInput"
@@ -48,7 +48,7 @@
 			<!-- disable pointless font specification here
             	Font = "(Verdana, 15.75, Regular, Point, 0)" -->
             	</Label>
-<Label id="lblSpeed"
+	<UiLabel id="lblSpeed"
             
             AutoSize = "true"
             Location = "(49, 114)"
@@ -57,7 +57,7 @@
             TabIndex = "3"
             Text = "Speed"
             />
-<NumericUpDownEx id="numSpeed"
+	<NumericUpDownEx id="numSpeed"
             
             DecimalPlaces = "1"
             Increment = "1"

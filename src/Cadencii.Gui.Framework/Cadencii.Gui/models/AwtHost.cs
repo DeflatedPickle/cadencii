@@ -56,6 +56,8 @@ namespace Cadencii.Gui
 
 		public abstract void ApplyFontRecurse (UiControl control, Font font);
 
+		public abstract JoyPads JoyPads { get; }
+
 		public static AwtHost Current { get; set; }
 
 		protected Dictionary<Type,Type> Types = new Dictionary<Type,Type> ();

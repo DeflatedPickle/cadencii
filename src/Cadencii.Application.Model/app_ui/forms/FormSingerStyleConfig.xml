@@ -16,7 +16,7 @@
             Text = "Default Singer Style"
             >
 
-            <GroupBox id="groupPitchControl"
+    <UiGroupBox id="groupPitchControl"
 
             Location = "(8, 38)"
             Name = "groupPitchControl"
@@ -25,7 +25,7 @@
             TabStop = "false"
             Text = "Pitch Control"
             >
-            <Label id="label5"
+        <UiLabel id="label5"
 
             AutoSize = "true"
             Location = "(345, 42)"
@@ -35,7 +35,7 @@
             Text = "%"
             />
 
-            <Label id="label4"
+        <UiLabel id="label4"
 
             AutoSize = "true"
             Location = "(345, 16)"
@@ -45,7 +45,7 @@
             Text = "%"
             />
 
-            <NumberTextBox id="txtBendLength"
+        <NumberTextBox id="txtBendLength"
 
             BackColor = "$SystemColors.Window"
             ForeColor = "$SystemColors.WindowText"
@@ -58,7 +58,7 @@
             Type = "Integer"
             />
 
-            <NumberTextBox id="txtBendDepth"
+        <NumberTextBox id="txtBendDepth"
 
             BackColor = "$SystemColors.Window"
             ForeColor = "$SystemColors.WindowText"
@@ -71,7 +71,7 @@
             Type = "Integer"
             />
 
-            <TrackBar id="trackBendLength"
+        <UiTrackBar id="trackBendLength"
 
             AutoSize = "false"
             Location = "(138, 40)"
@@ -82,7 +82,7 @@
             TickFrequency = "10"
             />
 
-            <TrackBar id="trackBendDepth"
+        <UiTrackBar id="trackBendDepth"
 
             AutoSize = "false"
             Location = "(138, 14)"
@@ -94,7 +94,7 @@
             Value = "8"
             />
 
-            <CheckBox id="chkDownPortamento"
+        <UiCheckBox id="chkDownPortamento"
 
             AutoSize = "true"
             Location = "(20, 96)"
@@ -105,7 +105,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-            <CheckBox id="chkUpPortamento"
+        <UiCheckBox id="chkUpPortamento"
 
             AutoSize = "true"
             Location = "(20, 71)"
@@ -116,7 +116,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-            <Label id="lblBendLength"
+        <UiLabel id="lblBendLength"
 
             AutoSize = "true"
             Location = "(20, 46)"
@@ -126,7 +126,7 @@
             Text = "Bend Length(&amp;L)"
             />
 
-            <Label id="lblBendDepth"
+        <UiLabel id="lblBendDepth"
 
             AutoSize = "true"
             Location = "(20, 20)"
@@ -135,8 +135,8 @@
             TabIndex = "0"
             Text = "Bend Depth(&amp;B)"
             />
-	</GroupBox>
-    <GroupBox id="groupDynamicsControl"
+	</UiGroupBox>
+    <UiGroupBox id="groupDynamicsControl"
 
             Location = "(8, 174)"
             Name = "groupDynamicsControl"
@@ -145,7 +145,7 @@
             TabStop = "false"
             Text = "Dynamics Control"
             >
-            <Label id="label7"
+        <UiLabel id="label7"
 
             AutoSize = "true"
             Location = "(345, 46)"
@@ -155,7 +155,7 @@
             Text = "%"
             />
 
-            <Label id="label6"
+        <UiLabel id="label6"
 
             AutoSize = "true"
             Location = "(345, 20)"
@@ -165,7 +165,7 @@
             Text = "%"
             />
 
-            <NumberTextBox id="txtAccent"
+        <NumberTextBox id="txtAccent"
 
             BackColor = "$SystemColors.Window"
             ForeColor = "$SystemColors.WindowText"
@@ -178,7 +178,7 @@
             Type = "Integer"
             />
 
-            <NumberTextBox id="txtDecay"
+        <NumberTextBox id="txtDecay"
 
             BackColor = "$SystemColors.Window"
             ForeColor = "$SystemColors.WindowText"
@@ -191,7 +191,7 @@
             Type = "Integer"
             />
 
-            <TrackBar id="trackAccent"
+        <UiTrackBar id="trackAccent"
 
             AutoSize = "false"
             Location = "(138, 44)"
@@ -203,7 +203,7 @@
             Value = "50"
             />
 
-            <TrackBar id="trackDecay"
+        <UiTrackBar id="trackDecay"
 
             AutoSize = "false"
             Location = "(138, 18)"
@@ -215,7 +215,7 @@
             Value = "50"
             />
 
-            <Label id="lblAccent"
+        <UiLabel id="lblAccent"
 
             AutoSize = "true"
             Location = "(18, 50)"
@@ -225,7 +225,7 @@
             Text = "Accent(&amp;A)"
             />
 
-            <Label id="lblDecay"
+        <UiLabel id="lblDecay"
 
             AutoSize = "true"
             Location = "(18, 24)"
@@ -234,9 +234,9 @@
             TabIndex = "8"
             Text = "Decay(&amp;D)"
             />
-    </GroupBox>
+    </UiGroupBox>
 
-            <Label id="lblTemplate"
+    <UiLabel id="lblTemplate"
 
             AutoSize = "true"
             Location = "(163, 15)"
@@ -246,7 +246,7 @@
             Text = "Template(&amp;T)"
             />
 
-            <Button id="btnCancel"
+    <UiButton id="btnCancel"
 
             Anchor = "Top,Right"
             DialogResult = "Cancel"
@@ -258,7 +258,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-            <Button id="btnOK"
+    <UiButton id="btnOK"
 
             Anchor = "Top,Right"
             Location = "(203, 259)"
@@ -269,7 +269,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-            <Button id="btnApply"
+    <UiButton id="btnApply"
 
             Location = "(8, 259)"
             Name = "btnApply"
@@ -279,7 +279,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-            <ComboBox id="comboTemplate"
+    <UiComboBox id="comboTemplate"
 
             FormattingEnabled = "true"
             Location = "(253, 12)"
@@ -288,7 +288,7 @@
             TabIndex = "0"
             Text = "[Select a template]"
             >
-            	<_Items>
+    	<_Items>
             <String>[Select a template]</String>
             <String>normal</String>
             <String>accent</String>
@@ -296,6 +296,6 @@
             <String>legato</String>
             <String>slow legato</String>
 
-            	</_Items>
-            </ComboBox>
+    	</_Items>
+    </UiComboBox>
 </Form>

@@ -12,15 +12,12 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using cadencii.apputil;
 using Cadencii.Gui;
 using cadencii.java.util;
 using Cadencii.Media;
 using Cadencii.Media.Vsq;
-
 using cadencii.core;
-using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui.Toolkit;
 using cadencii;
 
@@ -265,18 +262,20 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Label lblChannel;
-        private System.Windows.Forms.ComboBox comboChannel;
-        private System.Windows.Forms.GroupBox groupWaveFileOutput;
-        private System.Windows.Forms.RadioButton radioCurrentTrack;
-        private System.Windows.Forms.RadioButton radioMasterTrack;
-        private System.Windows.Forms.Label labelSampleRate;
-        private System.Windows.Forms.GroupBox groupSequence;
-        private System.Windows.Forms.Label labelPreMeasure;
-        private System.Windows.Forms.ComboBox comboPreMeasure;
-        private System.Windows.Forms.ComboBox comboSampleRate;
+		#pragma warning disable 0649
+        UiButton btnCancel;
+        UiButton btnOK;
+        UiLabel lblChannel;
+        UiComboBox comboChannel;
+        UiGroupBox groupWaveFileOutput;
+        UiRadioButton radioCurrentTrack;
+        UiRadioButton radioMasterTrack;
+        UiLabel labelSampleRate;
+        UiGroupBox groupSequence;
+        UiLabel labelPreMeasure;
+        UiComboBox comboPreMeasure;
+        UiComboBox comboSampleRate;
+		#pragma warning restore 0649
 
         #endregion
 

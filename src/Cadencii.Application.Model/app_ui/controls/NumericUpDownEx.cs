@@ -29,6 +29,8 @@ namespace Cadencii.Application.Controls
 			get;
 			set;
 		}
+
+		decimal Increment { get; set; }
 	}
 }
 
