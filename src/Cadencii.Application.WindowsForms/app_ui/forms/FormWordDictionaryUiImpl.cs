@@ -12,14 +12,12 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using cadencii.apputil;
 using Cadencii.Media.Vsq;
 using cadencii;
 using cadencii.java.util;
 
 using Cadencii.Gui;
-using DialogResult = System.Windows.Forms.DialogResult;
 using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application.Forms
@@ -38,12 +36,12 @@ namespace Cadencii.Application.Forms
 
         public void listDictionariesSetColumnWidth(int columnWidth)
         {
-            listDictionaries.Columns[0].Width = columnWidth;
+			listDictionaries.Columns[0].Width = columnWidth;
         }
 
         public int listDictionariesGetColumnWidth()
         {
-            return listDictionaries.Columns[0].Width;
+			return listDictionaries.Columns[0].Width;
         }
 
 
@@ -66,7 +64,7 @@ namespace Cadencii.Application.Forms
 
         public void setLocation(int x, int y)
         {
-            this.Location = new System.Drawing.Point(x, y);
+			this.AsAwt ().Location = new Point(x, y);
         }
 
         public void close()
@@ -90,39 +88,39 @@ namespace Cadencii.Application.Forms
 
         public void listDictionariesAddRow(string value, bool selected)
         {
-            ListViewItem item = new ListViewItem(new string[] { value });
+			var item = ApplicationUIHost.Create<UiListViewItem> (new string[] { value });
             if (listDictionaries.Columns.Count < 1) {
-                listDictionaries.Columns.Add("");
+				listDictionaries.Columns.Add(ApplicationUIHost.Create<UiListViewColumn> (""));
             }
             item.Selected = selected;
-            listDictionaries.Items.Add(item);
+            listDictionaries.AddItem (item);
         }
 
         public void listDictionariesSetRowChecked(int row, bool value)
         {
-            listDictionaries.Items[row].Checked = value;
+            listDictionaries.GetItem(row).Checked = value;
         }
 
         public void listDictionariesSetSelectedRow(int row)
         {
-            for (int i = 0; i < listDictionaries.Items.Count; i++) {
-                listDictionaries.Items[i].Selected = (i == row);
+            for (int i = 0; i < listDictionaries.ItemCount; i++) {
+				listDictionaries.GetItem(i).Selected = (i == row);
             }
         }
 
         public void listDictionariesSetItemAt(int row, string value)
         {
-            listDictionaries.Items[row].SubItems[0].Text = value;
+            listDictionaries.GetItem(row).GetSubItem(0).Text = value;
         }
 
         public bool listDictionariesIsRowChecked(int row)
         {
-            return listDictionaries.Items[row].Checked;
+            return listDictionaries.GetItem(row).Checked;
         }
 
         public string listDictionariesGetItemAt(int row)
         {
-            return listDictionaries.Items[row].SubItems[0].Text;
+            return listDictionaries.GetItem(row).GetSubItem(0).Text;
         }
 
         public int listDictionariesGetSelectedRow()
@@ -130,18 +128,18 @@ namespace Cadencii.Application.Forms
             if (listDictionaries.SelectedIndices.Count == 0) {
                 return -1;
             } else {
-                return listDictionaries.SelectedIndices[0];
+				return (int) listDictionaries.SelectedIndices[0];
             }
         }
 
         public int listDictionariesGetItemCountRow()
         {
-            return listDictionaries.Items.Count;
+            return listDictionaries.ItemCount;
         }
 
         public void listDictionariesClear()
         {
-            listDictionaries.Items.Clear();
+			listDictionaries.ClearItems();
         }
 
         public void buttonDownSetText(string value)
@@ -171,41 +169,19 @@ namespace Cadencii.Application.Forms
 
         public void setSize(int width, int height)
         {
-            this.Size = new System.Drawing.Size(width, height);
+			this.AsAwt ().Size = new Dimension(width, height);
         }
 
         public void setDialogResult(bool value)
         {
             if (value) {
-                this.DialogResult = DialogResult.OK;
+				this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
             } else {
-                this.DialogResult = DialogResult.Cancel;
+				this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
             }
         }
 
         #endregion
-
-
-        #region UiBaseの実装
-
-        public int showDialog(object parent_form)
-        {
-            DialogResult ret;
-            if (parent_form == null || (parent_form != null && !(parent_form is Form))) {
-                ret = base.ShowDialog();
-            } else {
-                Form form = (Form)parent_form;
-                ret = base.ShowDialog(form);
-            }
-            if (ret == DialogResult.OK || ret == DialogResult.Yes) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
-
-        #endregion
-
 
         #region イベントハンドラ
 
@@ -237,7 +213,7 @@ namespace Cadencii.Application.Forms
             }
         }
 
-        void FormWordDictionaryUiImpl_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        void FormWordDictionaryUiImpl_FormClosing()
         {
             if (listener != null) {
                 listener.formClosing();
@@ -253,7 +229,7 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-        private ColumnHeader columnHeader1;
+		private UiListViewColumn columnHeader1;
 
 
         #region UI implementation
@@ -296,17 +272,17 @@ namespace Cadencii.Application.Forms
 			this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
 			this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
 			this.Load += new System.EventHandler(this.FormWordDictionaryUiImpl_Load);
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormWordDictionaryUiImpl_FormClosing);
+			this.FormClosing += (o,e) => this.FormWordDictionaryUiImpl_FormClosing ();
 		}
 
         #endregion
 
-        private ListView listDictionaries;
-        private Label lblAvailableDictionaries;
-        private Button btnOK;
-        private Button btnCancel;
-        private Button btnUp;
-        private Button btnDown;
+        private UiListView listDictionaries;
+        private UiLabel lblAvailableDictionaries;
+        private UiButton btnOK;
+        private UiButton btnCancel;
+        private UiButton btnUp;
+        private UiButton btnDown;
         #endregion
 
     }

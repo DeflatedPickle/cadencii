@@ -15,6 +15,7 @@ namespace Cadencii.Gui.Toolkit
 		UiListViewItem GetItem (int i);
 		void RemoveItemAt (int i);
 		void ClearItems ();
+		void AddItem (UiListViewItem item);
 		void AddRow(string[] items, bool selected);
 		//void AddGroups (IEnumerable<UiListViewGroup> groups);
 		View View { get; set; } 

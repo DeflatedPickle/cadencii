@@ -25,6 +25,11 @@ namespace Cadencii.Gui.Toolkit
 	{
 		// UiListView
 
+		void UiListView.AddItem (UiListViewItem item)
+		{
+			Items.Add ((System.Windows.Forms.ListViewItem) item.Native);
+		}
+
 		void UiListView.RemoveItemAt (int i)
 		{
 			Items.RemoveAt (i);
