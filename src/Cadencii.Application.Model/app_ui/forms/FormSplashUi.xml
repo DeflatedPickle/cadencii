@@ -8,7 +8,7 @@
 	ShowInTaskbar = "false"
 	StartPosition = "CenterScreen"
 	TransparencyKey = "$Fuchsia">
-    <FlowLayoutPanel id="panelIcon"
+    <UiFlowLayoutPanel id="panelIcon"
 		Anchor = "Bottom,Left,Right"
 		BackColor = "$Transparent"
 		Location = "(12, 200)"

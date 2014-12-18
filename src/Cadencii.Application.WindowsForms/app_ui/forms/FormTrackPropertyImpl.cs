@@ -12,7 +12,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using cadencii.apputil;
 using cadencii;
 
@@ -23,7 +22,6 @@ using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application.Forms
 {
-
     public class FormTrackPropertyImpl : FormImpl, FormTrackProperty
     {
         private int m_master_tuning;
@@ -85,12 +83,12 @@ namespace Cadencii.Application.Forms
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
 
         public void btnOK_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
         }
         #endregion
 
@@ -130,10 +128,12 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-        private Button btnOK;
-        private Button btnCancel;
-        private Label lblMasterTuning;
-        private TextBox txtMasterTuning;
+		#pragma warning disable 0649
+        UiButton btnOK;
+        UiButton btnCancel;
+        UiLabel lblMasterTuning;
+        UiTextBox txtMasterTuning;
+		#pragma warning restore 0649
         #endregion
         #endregion
 

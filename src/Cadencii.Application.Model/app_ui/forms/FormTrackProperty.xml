@@ -13,7 +13,7 @@
     StartPosition = "Manual"
     Text = "Project Property"
 	>
-	<Button id="btnOK"
+	<UiButton id="btnOK"
         Anchor = "Bottom,Right"
         DialogResult = "OK"
         Location = "(92, 62)"
@@ -22,7 +22,7 @@
         TabIndex = "26"
         Text = "OK"
         UseVisualStyleBackColor = "true" />
-	<Button id="btnCancel"
+	<UiButton id="btnCancel"
         Anchor = "Bottom,Right"
         DialogResult = "Cancel"
         Location = "(186, 62)"
@@ -31,14 +31,14 @@
         TabIndex = "27"
         Text = "Cancel"
         UseVisualStyleBackColor = "true" />
-	<Label id="lblMasterTuning"
+	<UiLabel id="lblMasterTuning"
         AutoSize = "true"
         Location = "(15, 14)"
         Name = "lblMasterTuning"
         Size = "(119, 12)"
         TabIndex = "28"
         Text = "Master Tuning in Cent" />
-	<TextBox id="txtMasterTuning"
+	<UiTextBox id="txtMasterTuning"
         Location = "(46, 29)"
         Name = "txtMasterTuning"
         Size = "(187, 19)"

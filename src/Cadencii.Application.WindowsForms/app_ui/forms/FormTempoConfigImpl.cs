@@ -12,10 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using cadencii.apputil;
-
-using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
@@ -82,12 +79,12 @@ namespace Cadencii.Application.Forms
         #region event handlers
         public void btnOK_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
         }
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
         #endregion
 
@@ -134,24 +131,6 @@ namespace Cadencii.Application.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupPosition = new System.Windows.Forms.GroupBox();
-            this.numClock = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
-            this.numBeat = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
-            this.numBar = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
-            this.lblClock = new System.Windows.Forms.Label();
-            this.lblBeat = new System.Windows.Forms.Label();
-            this.lblBar = new System.Windows.Forms.Label();
-            this.groupTempo = new System.Windows.Forms.GroupBox();
-            this.lblTempoRange = new System.Windows.Forms.Label();
-            this.numTempo = ApplicationUIHost.Create<Cadencii.Application.Controls.NumericUpDownEx>();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.groupPosition.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numClock)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numBeat)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numBar)).BeginInit();
-            this.groupTempo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numTempo)).BeginInit();
             this.SuspendLayout();
 			ApplicationUIHost.Instance.ApplyXml (this, "FormTempoConfig.xml");
             this.ResumeLayout(false);
@@ -160,18 +139,18 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupPosition;
-        private System.Windows.Forms.Label lblClock;
-        private System.Windows.Forms.Label lblBeat;
-        private System.Windows.Forms.Label lblBar;
-        private System.Windows.Forms.GroupBox groupTempo;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.Button btnCancel;
-        private NumericUpDownEx numBar;
-        private NumericUpDownEx numClock;
-        private NumericUpDownEx numBeat;
-        private System.Windows.Forms.Label lblTempoRange;
-        private NumericUpDownEx numTempo;
+        UiGroupBox groupPosition;
+        UiLabel lblClock;
+        UiLabel lblBeat;
+        UiLabel lblBar;
+        UiGroupBox groupTempo;
+        UiButton btnOK;
+        UiButton btnCancel;
+        NumericUpDownEx numBar;
+        NumericUpDownEx numClock;
+        NumericUpDownEx numBeat;
+        UiLabel lblTempoRange;
+        NumericUpDownEx numTempo;
         #endregion
 
     }

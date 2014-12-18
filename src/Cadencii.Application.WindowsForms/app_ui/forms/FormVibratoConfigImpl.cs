@@ -12,7 +12,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using cadencii;
 using cadencii.apputil;
 using Cadencii.Media.Vsq;
@@ -207,7 +206,7 @@ namespace Cadencii.Application.Forms
         #region event handlers
         public void btnOK_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
         }
 
         public void comboVibratoType_SelectedIndexChanged(Object sender, EventArgs e)
@@ -300,7 +299,7 @@ namespace Cadencii.Application.Forms
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
         #endregion
 
@@ -338,17 +337,19 @@ namespace Cadencii.Application.Forms
         }
         #endregion
 
-        private System.Windows.Forms.Label lblVibratoLength;
-        private System.Windows.Forms.Label lblVibratoType;
-        private NumberTextBox txtVibratoLength;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboVibratoType;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnOK;
-        private System.Windows.Forms.GroupBox groupSelect;
-        private System.Windows.Forms.RadioButton radioVocaloid2;
-        private System.Windows.Forms.RadioButton radioVocaloid1;
-        private System.Windows.Forms.RadioButton radioUserDefined;
+		#pragma warning disable 0649
+        UiLabel lblVibratoLength;
+        UiLabel lblVibratoType;
+        NumberTextBox txtVibratoLength;
+        UiLabel label3;
+        UiComboBox comboVibratoType;
+        UiButton btnCancel;
+        UiButton btnOK;
+        UiGroupBox groupSelect;
+        UiRadioButton radioVocaloid2;
+        UiRadioButton radioVocaloid1;
+        UiRadioButton radioUserDefined;
+		#pragma warning restore 0649
         #endregion
     }
 

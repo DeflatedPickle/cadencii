@@ -87,6 +87,7 @@
     <Compile Include="toolkit\LinkLabelImpl.cs" />
     <Compile Include="toolkit\SplitContainerImpl.cs" />
     <Compile Include="toolkit\ListBoxImpl.cs" />
+    <Compile Include="toolkit\RadioButtonImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

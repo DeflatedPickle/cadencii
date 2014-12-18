@@ -12,13 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using Cadencii.Gui;
-
-using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
-using MouseEventHandler = System.Windows.Forms.MouseEventHandler;
-using NMouseEventArgs = Cadencii.Gui.Toolkit.MouseEventArgs;
-using NMouseEventHandler = System.EventHandler<Cadencii.Gui.Toolkit.MouseEventArgs>;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
 using cadencii;
@@ -39,8 +33,6 @@ namespace Cadencii.Application.Forms
         private delegate void AddIconThreadSafeDelegate(string path_image, string singer_name);
 
         bool mouseDowned = false;
-        private FlowLayoutPanel panelIcon;
-        private ToolTip toolTip;
         private System.ComponentModel.IContainer components;
         Point mouseDownedLocation = new Point(0, 0);
 
@@ -78,11 +70,11 @@ namespace Cadencii.Application.Forms
             IconParader p = ApplicationUIHost.Create<IconParader> ();
             var img = IconParaderController.createIconImage(path_image, singer_name);
             p.setImage(img);
-            p.MouseDown += (sender, e) => handleMouseDown (sender, e.ToWF ());
-            p.MouseUp += (sender, e) => handleMouseUp (sender, e.ToWF ());
-            p.MouseMove += (sender, e) => handleMouseMove (sender, e.ToWF ());
+			p.MouseDown += handleMouseDown;
+			p.MouseUp += handleMouseUp;
+			p.MouseMove += handleMouseMove;
             panelIcon.BringToFront();
-            panelIcon.Controls.Add((Control) p.Native);
+            panelIcon.Controls.Add(p);
         }
 
         #endregion
@@ -95,12 +87,13 @@ namespace Cadencii.Application.Forms
 
         private void registerEventHandlers()
         {
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(handleMouseDown);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(handleMouseUp);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(handleMouseMove);
-            panelIcon.MouseDown += new MouseEventHandler(handleMouseDown);
-            panelIcon.MouseUp += new MouseEventHandler(handleMouseUp);
-            panelIcon.MouseMove += new MouseEventHandler(handleMouseMove);
+			var form = AsAwt ();
+            form.MouseDown += handleMouseDown;
+            form.MouseUp += handleMouseUp;
+            form.MouseMove += handleMouseMove;
+            panelIcon.MouseDown += handleMouseDown;
+            panelIcon.MouseUp += handleMouseUp;
+            panelIcon.MouseMove += handleMouseMove;
         }
         #endregion
 
@@ -137,8 +130,8 @@ namespace Cadencii.Application.Forms
             }
 
 			Point screen = Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition();
-            var p = new System.Drawing.Point(screen.X - mouseDownedLocation.X, screen.Y - mouseDownedLocation.Y);
-            this.Location = p;
+			var p = new Point(screen.X - mouseDownedLocation.X, screen.Y - mouseDownedLocation.Y);
+			this.AsAwt ().Location = p;
         }
         #endregion
 
@@ -146,14 +139,18 @@ namespace Cadencii.Application.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+			this.toolTip = ApplicationUIHost.Create<UiToolTip>(this.components);
             this.SuspendLayout();
-		ApplicationUIHost.Instance.ApplyXml (this, "FormSplashUi.xml");
+			ApplicationUIHost.Instance.ApplyXml (this, "FormSplashUi.xml");
             this.ResumeLayout(false);
 
         }
         #endregion
 
+		#pragma warning disable 0649
+		private UiFlowLayoutPanel panelIcon;
+		private UiToolTip toolTip;
+		#pragma warning restore 0649
     }
 
 }

@@ -15,7 +15,7 @@
             Text = "Vibrato property"
             >
 
-<Label id="lblVibratoLength"
+	<UiLabel id="lblVibratoLength"
 
             AutoSize = "true"
             Location = "(12, 15)"
@@ -25,7 +25,7 @@
             Text = "Vibrato Length(&amp;L)"
             />
 
-<Label id="lblVibratoType"
+	<UiLabel id="lblVibratoType"
 
             AutoSize = "true"
             Location = "(12, 39)"
@@ -45,7 +45,7 @@
             Type = "Integer"
             />
 
-    <Label id="label3"
+    <UiLabel id="label3"
 
             AutoSize = "true"
             Location = "(210, 15)"
@@ -55,7 +55,7 @@
             Text = "%(0-100)"
             />
 
-    <ComboBox id="comboVibratoType"
+    <UiComboBox id="comboVibratoType"
 
             Anchor = "Top,Left,Right"
             FormattingEnabled = "true"
@@ -65,7 +65,7 @@
             TabIndex = "4"
             />
 
-    <Button id="btnCancel"
+    <UiButton id="btnCancel"
 
             Anchor = "Bottom,Right"
             DialogResult = "Cancel"
@@ -77,7 +77,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-    <Button id="btnOK"
+    <UiButton id="btnOK"
 
             Anchor = "Bottom,Right"
             DialogResult = "OK"
@@ -89,7 +89,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-    <GroupBox id="groupSelect"
+    <UiGroupBox id="groupSelect"
 
             Anchor = "Top,Left,Right"
             Location = "(14, 61)"
@@ -100,7 +100,7 @@
             Text = "Select from"
             >
 
-    <RadioButton id="radioUserDefined"
+    <UiRadioButton id="radioUserDefined"
 
             AutoSize = "true"
             Location = "(198, 21)"
@@ -112,7 +112,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-    <RadioButton id="radioVocaloid2"
+    <UiRadioButton id="radioVocaloid2"
 
             AutoSize = "true"
             Checked = "true"
@@ -125,7 +125,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-    <RadioButton id="radioVocaloid1"
+    <UiRadioButton id="radioVocaloid1"
 
             AutoSize = "true"
             Location = "(14, 21)"
@@ -136,5 +136,5 @@
             Text = "VOCALOID1"
             UseVisualStyleBackColor = "true"
             />
-    </GroupBox>
+    </UiGroupBox>
 </Form>

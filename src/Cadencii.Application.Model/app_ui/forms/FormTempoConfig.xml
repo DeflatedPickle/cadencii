@@ -14,7 +14,7 @@
             StartPosition = "Manual"
             Text = "Global Tempo"
             >
-<GroupBox id="groupPosition"
+	<UiGroupBox id="groupPosition"
 
             Location = "(11, 10)"
             Name = "groupPosition"
@@ -23,14 +23,14 @@
             TabStop = "false"
             Text = "Position"
             >
-<NumericUpDownEx id="numClock"
+		<NumericUpDownEx id="numClock"
 
             Location = "(90, 77)"
             Name = "numClock"
             Size = "(45, 19)"
             TabIndex = "5"
             />
-<NumericUpDownEx id="numBeat"
+		<NumericUpDownEx id="numBeat"
 
             Location = "(90, 48)"
             Name = "numBeat"
@@ -38,7 +38,7 @@
             TabIndex = "4"
             />
 
-<NumericUpDownEx id="numBar"
+		<NumericUpDownEx id="numBar"
 
             Enabled = "false"
             Location = "(90, 19)"
@@ -47,7 +47,7 @@
             TabIndex = "3"
             />
 
-<Label id="lblClock"
+		<UiLabel id="lblClock"
 
             AutoSize = "true"
             Location = "(12, 79)"
@@ -57,7 +57,7 @@
             Text = "Clock(&amp;L)"
             />
 
-<Label id="lblBeat"
+		<UiLabel id="lblBeat"
 
             AutoSize = "true"
             Location = "(12, 50)"
@@ -67,7 +67,7 @@
             Text = "Beat(&amp;B)"
             />
 
-<Label id="lblBar"
+		<UiLabel id="lblBar"
 
             AutoSize = "true"
             Location = "(12, 21)"
@@ -77,8 +77,8 @@
             Text = "Measure(&amp;M)"
             />
 
-</GroupBox>
-<GroupBox id="groupTempo"
+	</UiGroupBox>
+	<UiGroupBox id="groupTempo"
 
             Location = "(173, 10)"
             Name = "groupTempo"
@@ -87,7 +87,7 @@
             TabStop = "false"
             Text = "Tempo"
             >
-<Label id="lblTempoRange"
+		<UiLabel id="lblTempoRange"
 
             AutoSize = "true"
             Location = "(78, 21)"
@@ -97,7 +97,7 @@
             Text = "(20 to 300)"
             />
 
-<NumericUpDownEx id="numTempo"
+		<NumericUpDownEx id="numTempo"
 
             DecimalPlaces = "2"
             Location = "(13, 19)"
@@ -108,9 +108,9 @@
             TabIndex = "5"
             Value = "120"
             />
-</GroupBox>
+	</UiGroupBox>
 
-<Button id="btnOK"
+	<UiButton id="btnOK"
 
             Location = "(156, 132)"
             Name = "btnOK"
@@ -120,7 +120,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-<Button id="btnCancel"
+	<UiButton id="btnCancel"
 
             DialogResult = "Cancel"
             Location = "(241, 132)"

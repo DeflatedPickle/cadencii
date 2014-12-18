@@ -155,6 +155,9 @@
     <Compile Include="Cadencii.Gui.Toolkit\UiFlowLayoutPanel.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiSplitContainer.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiListBox.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\UiRadioButton.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\Extensions.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\IHasText.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

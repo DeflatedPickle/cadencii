@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Cadencii.Gui.Toolkit
 {
-	public interface UiMenuItem
+	public interface UiMenuItem : IHasText
 	{
 		bool Enabled {
 			get;
