@@ -7,7 +7,7 @@ using NMouseButtons = Cadencii.Gui.Toolkit.MouseButtons;
 using NMouseEventArgs = Cadencii.Gui.Toolkit.MouseEventArgs;
 using Cadencii.Gui.Toolkit;
 
-namespace cadencii
+namespace Cadencii.Gui
 {
 	// This file is directly added to Cadencii.Appication.WindowsForms.csproj because
 	// the shared project somehow causes resgen compilation error.

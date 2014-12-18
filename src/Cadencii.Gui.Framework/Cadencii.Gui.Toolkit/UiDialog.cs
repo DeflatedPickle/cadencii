@@ -8,6 +8,16 @@ namespace Cadencii.Gui.Toolkit
 		object Native { get; }
 	}
 
+	public interface UiFontDialog : UiDialog
+	{
+		Font Font { get; set; }
+		bool AllowVectorFonts { get; set; }
+		bool AllowVerticalFonts { get; set; }
+		bool FontMustExist { get; set; }
+		bool ShowEffects { get; set; }
+		DialogResult ShowDialog ();
+	}
+
 	public interface UiFileDialog : UiDialog
 	{
 		string FileName { get; }
@@ -29,6 +39,7 @@ namespace Cadencii.Gui.Toolkit
 
 	public interface UiFolderBrowserDialog : UiDialog
 	{
+		bool ShowNewFolderButton { get; set; }
 		string Description { get; set; }
 		string SelectedPath { get; set; }
 		DialogResult ShowDialog (UiForm parentForm);

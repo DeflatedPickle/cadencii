@@ -17,12 +17,22 @@ using System.Collections.Generic;
 using Cadencii.Gui.Toolkit;
 using cadencii;
 using System.Collections.ObjectModel;
+using System.Collections;
 
 namespace Cadencii.Gui.Toolkit
 {
 	public class ListViewImpl : System.Windows.Forms.ListView, UiListView
 	{
 		// UiListView
+
+		void UiListView.RemoveItemAt (int i)
+		{
+			Items.RemoveAt (i);
+		}
+
+		IList UiListView.SelectedIndices {
+			get { return SelectedIndices; }
+		}
 
 		int UiListView.ItemCount {
 			get { return Items.Count; }

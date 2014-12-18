@@ -17,9 +17,14 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.ComponentModel;
-using cadencii;
 using Cadencii.Platform.Windows;
+using Cadencii.Gui;
 using MouseEventArgs = System.Windows.Forms.MouseEventArgs;
+using Color = System.Drawing.Color;
+using Rectangle = System.Drawing.Rectangle;
+using SystemColors = System.Drawing.SystemColors;
+using Point = System.Drawing.Point;
+using Image = System.Drawing.Image;
 
 namespace Cadencii.Application.Controls
 {

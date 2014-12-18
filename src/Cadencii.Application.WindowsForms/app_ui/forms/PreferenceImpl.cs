@@ -13,7 +13,6 @@
  */
 using System;
 using System.Linq;
-using System.Windows.Forms;
 using System.IO;
 using System.Collections.Generic;
 using cadencii.apputil;
@@ -22,17 +21,13 @@ using cadencii.java.util;
 using cadencii.javax.sound.midi;
 using Cadencii.Media;
 using Cadencii.Media.Vsq;
-
-
 using cadencii.utau;
-using Keys = Cadencii.Gui.Toolkit.Keys;
-using DialogResult = Cadencii.Gui.DialogResult;
 using cadencii.core;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
-using cadencii;
 using Cadencii.Application.Media;
 using Cadencii.Application.Drawing;
+using cadencii;
 
 namespace Cadencii.Application.Forms
 {
@@ -47,24 +42,23 @@ namespace Cadencii.Application.Forms
         Font m_base_font;
         Font m_screen_font;
         List<string> m_program_change = null;
-        private PlatformEnum m_platform = PlatformEnum.Windows;
         private List<SingerConfig> m_utau_singers = new List<SingerConfig>();
 
         private UiOpenFileDialog openUtauCore;
-        private FontDialog fontDialog;
-        private FolderBrowserDialog folderBrowserSingers;
+        private UiFontDialog fontDialog;
+        private UiFolderBrowserDialog folderBrowserSingers;
 
         public PreferenceImpl()
         {
             InitializeComponent();
-            fontDialog = new FontDialog();
+			fontDialog = ApplicationUIHost.Create<UiFontDialog> ();
             fontDialog.AllowVectorFonts = false;
             fontDialog.AllowVerticalFonts = false;
             fontDialog.FontMustExist = true;
             fontDialog.ShowEffects = false;
 			openUtauCore = ApplicationUIHost.Create<UiOpenFileDialog>();
 
-            folderBrowserSingers = new FolderBrowserDialog();
+			folderBrowserSingers = ApplicationUIHost.Create<UiFolderBrowserDialog> ();
             folderBrowserSingers.ShowNewFolderButton = false;
             applyLanguage();
 
@@ -173,11 +167,11 @@ namespace Cadencii.Application.Forms
             checkEnableWideCharacterWorkaround.Checked = value;
         }
 
-        public System.Windows.Forms.DialogResult ShowDialog(System.Windows.Forms.Form parent)
+        public DialogResult ShowDialog(UiForm parent)
         {
             updateMidiDevice();
             updateCustomVibrato();
-            return base.ShowDialog(parent);
+			return (DialogResult) base.ShowDialog((System.Windows.Forms.Form) parent);
         }
 
         /// <summary>
@@ -1094,22 +1088,22 @@ namespace Cadencii.Application.Forms
 
         public void copyResamplersConfig(List<string> ret)
         {
-            for (int i = 0; i < listResampler.Items.Count; i++) {
-                ret.Add((string)listResampler.Items[i].SubItems[0].Text);
+            for (int i = 0; i < listResampler.ItemCount; i++) {
+				ret.Add((string)listResampler.GetItem(i).GetSubItem(0).Text);
             }
         }
 
         public void setResamplersConfig(List<string> path)
         {
-            int size = listResampler.Items.Count;
+            int size = listResampler.ItemCount;
             for (int i = 0; i < size; i++) {
-                listResampler.Items.RemoveAt(0);
+                listResampler.RemoveItemAt (0);
             }
             if (path == null) {
                 return;
             }
             for (int i = 0; i < path.Count; i++) {
-                listResampler.AddRow(new string[] { path[i] });
+                listResampler.AddRow(new string[] { path[i] }, false);
             }
         }
 
@@ -1155,10 +1149,10 @@ namespace Cadencii.Application.Forms
         #region event handlers
         public void btnChangeMenuFont_Click(Object sender, EventArgs e)
         {
-			fontDialog.Font = (System.Drawing.Font) getBaseFont().NativeFont;
-            if (fontDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+			fontDialog.Font = getBaseFont();
+            if (fontDialog.ShowDialog() == Cadencii.Gui.DialogResult.OK) {
                 if (fontDialog.Font != null) {
-                    Cadencii.Gui.Font f = new Cadencii.Gui.Font(fontDialog.Font);
+                    Cadencii.Gui.Font f = fontDialog.Font;
                     m_base_font = f;
                     labelMenuFontName.Text = f.getName();
                 }
@@ -1181,13 +1175,13 @@ namespace Cadencii.Application.Forms
 					Cadencii.Gui.Toolkit.MessageBoxIcon.Information);
             }
 
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
         }
 
         public void btnChangeScreenFont_Click(Object sender, EventArgs e)
         {
-			fontDialog.Font = (System.Drawing.Font) m_screen_font.NativeFont;
-            if (fontDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+			fontDialog.Font = m_screen_font;
+			if (fontDialog.ShowDialog() == Cadencii.Gui.DialogResult.OK) {
                 if (fontDialog.Font != null) {
                     Cadencii.Gui.Font f = new Cadencii.Gui.Font(fontDialog.Font);
                     m_screen_font = f;
@@ -1202,7 +1196,7 @@ namespace Cadencii.Application.Forms
             var dr = DialogManager.ShowModalFileDialog(openUtauCore, true, this);
             if (dr == Cadencii.Gui.DialogResult.OK) {
                 string path = openUtauCore.FileName;
-                listResampler.AddRow(new string[] { path });
+                listResampler.AddRow(new string[] { path }, false);
                 if (txtWavtool.Text == "") {
                     // wavtoolの欄が空欄だった場合のみ，
                     // wavtoolの候補を登録する(wavtoolがあれば)
@@ -1220,43 +1214,43 @@ namespace Cadencii.Application.Forms
             if (sender == buttonResamplerUp) {
                 delta = -1;
             }
-            int count = listResampler.Items.Count;
+            int count = listResampler.ItemCount;
             if (listResampler.SelectedIndices.Count == 0) {
                 return;
             }
-            int index = listResampler.SelectedIndices[0];
+			int index = (int) listResampler.SelectedIndices[0];
             if (index + delta < 0 || count <= index + delta) {
                 return;
             }
 
-            string sel = (string)listResampler.Items[index].SubItems[0].Text;
-            bool chk = listResampler.Items[index].Checked;
-            listResampler.Items[index].SubItems[0].Text = listResampler.Items[index + delta].SubItems[0].Text;
-            listResampler.Items[index].Checked = listResampler.Items[index + delta].Checked;
-            listResampler.Items[index + delta].SubItems[0].Text = sel;
-            listResampler.Items[index + delta].Checked = chk;
-            if (!listResampler.Items[index + delta].Selected) {
+            string sel = (string)listResampler.GetItem(index).GetSubItem (0).Text;
+            bool chk = listResampler.GetItem(index).Checked;
+            listResampler.GetItem(index).GetSubItem (0).Text = listResampler.GetItem (index + delta).GetSubItem (0).Text;
+            listResampler.GetItem(index).Checked = listResampler.GetItem (index + delta).Checked;
+            listResampler.GetItem (index + delta).GetSubItem (0).Text = sel;
+            listResampler.GetItem (index + delta).Checked = chk;
+            if (!listResampler.GetItem (index + delta).Selected) {
                 listResampler.SelectedIndices.Clear();
-                listResampler.Items[index + delta].Selected = true;
+                listResampler.GetItem (index + delta).Selected = true;
             }
         }
 
         public void buttonResamplerRemove_Click(Object sender, EventArgs e)
         {
-            int count = listResampler.Items.Count;
+            int count = listResampler.ItemCount;
             if (listResampler.SelectedIndices.Count == 0) {
                 return;
             }
-            int index = listResampler.SelectedIndices[0];
-            listResampler.Items.RemoveAt(index);
+			int index = (int) listResampler.SelectedIndices[0];
+            listResampler.RemoveItemAt(index);
             // 選択し直す
             if (index >= count - 1) {
                 index--;
             }
             if (0 <= index && index < count - 1) {
-                if (!listResampler.Items[index].Selected) {
+                if (!listResampler.GetItem(index).Selected) {
                     listResampler.SelectedIndices.Clear();
-                    listResampler.Items[index].Selected = true;
+                    listResampler.GetItem(index).Selected = true;
                 }
             }
         }
@@ -1270,10 +1264,10 @@ namespace Cadencii.Application.Forms
 			if (dr == Cadencii.Gui.DialogResult.OK) {
                 string path = openUtauCore.FileName;
                 txtWavtool.Text = path;
-                if (listResampler.Items.Count == 0) {
+                if (listResampler.ItemCount == 0) {
                     string resampler = Path.Combine(PortUtil.getDirectoryName(path), "resampler.exe");
                     if (System.IO.File.Exists(resampler)) {
-                        listResampler.AddRow(new string[] { resampler });
+                        listResampler.AddRow(new string[] { resampler }, false);
                     }
                 }
             }
@@ -1283,7 +1277,7 @@ namespace Cadencii.Application.Forms
 
         private void btnAquesTone2_Click(object sender, EventArgs e) { onAquesToneChooseButtonClicked(txtAquesTone2); }
 
-        private void onAquesToneChooseButtonClicked(System.Windows.Forms.TextBox text_box)
+        private void onAquesToneChooseButtonClicked(UiTextBox text_box)
         {
 			UiOpenFileDialog dialog = ApplicationUIHost.Create<UiOpenFileDialog>();
             if (text_box.Text != "" && Directory.Exists(PortUtil.getDirectoryName(text_box.Text))) {
@@ -1298,7 +1292,7 @@ namespace Cadencii.Application.Forms
 
         public void btnAdd_Click(Object sender, EventArgs e)
         {
-			if (folderBrowserSingers.ShowDialog(this) == System.Windows.Forms.DialogResult.OK) {
+			if (folderBrowserSingers.ShowDialog(this) == Cadencii.Gui.DialogResult.OK) {
                 string dir = folderBrowserSingers.SelectedPath;
 #if DEBUG
                 Logger.StdOut("Preference#btnAdd_Click; dir=" + dir);
@@ -1351,9 +1345,9 @@ namespace Cadencii.Application.Forms
                 m_utau_singers[index] = (SingerConfig)m_utau_singers[index + 1].clone();
                 m_utau_singers[index + 1] = buf;
                 UpdateUtausingerList();
-                if (!listSingers.Items[index + 1].Selected) {
+				if (!listSingers.GetItem(index + 1).Selected) {
                     listSingers.SelectedIndices.Clear();
-                    listSingers.Items[index + 1].Selected = true;
+					listSingers.GetItem(index + 1).Selected = true;
                 }
             }
         }
@@ -1369,9 +1363,9 @@ namespace Cadencii.Application.Forms
                 m_utau_singers[index] = (SingerConfig)m_utau_singers[index - 1].clone();
                 m_utau_singers[index - 1] = buf;
                 UpdateUtausingerList();
-                if (!listSingers.Items[index - 1].Selected) {
+				if (!listSingers.GetItem(index - 1).Selected) {
                     listSingers.SelectedIndices.Clear();
-                    listSingers.Items[index - 1].Selected = true;
+					listSingers.GetItem(index - 1).Selected = true;
                 }
             }
         }
@@ -1390,7 +1384,7 @@ namespace Cadencii.Application.Forms
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
 
         public void commonChangeAutoVibratoType(Object sender, EventArgs e)
@@ -1516,14 +1510,14 @@ namespace Cadencii.Application.Forms
 
         private void UpdateUtausingerList()
         {
-            listSingers.Items.Clear();
+            listSingers.ClearItems();
             for (int i = 0; i < m_utau_singers.Count; i++) {
                 m_utau_singers[i].Program = i;
                 listSingers.AddRow(
                     new string[] { 
                         m_utau_singers[ i ].Program + "",
                         m_utau_singers[ i ].VOICENAME, 
-                        m_utau_singers[ i ].VOICEIDSTR });
+                        m_utau_singers[ i ].VOICEIDSTR }, false);
             }
         }
 
@@ -1532,7 +1526,7 @@ namespace Cadencii.Application.Forms
             if (listSingers.SelectedIndices.Count == 0) {
                 return -1;
             } else {
-                return listSingers.SelectedIndices[0];
+				return (int) listSingers.SelectedIndices[0];
             }
         }
 

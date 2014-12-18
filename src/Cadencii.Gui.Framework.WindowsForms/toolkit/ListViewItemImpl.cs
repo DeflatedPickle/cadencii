@@ -28,6 +28,11 @@ namespace Cadencii.Gui.Toolkit
 			this.impl = impl;
 		}
 
+		bool UiListViewItem.Selected {
+			get { return impl.Selected; }
+			set { impl.Selected = value; }
+		}
+
 		UiListViewItem UiListViewItem.GetSubItem (int i)
 		{
 			return new ListViewItemImpl (impl);
@@ -37,8 +42,14 @@ namespace Cadencii.Gui.Toolkit
 			get { return impl; }
 		}
 
+		Color UiListViewItem.BackColor {
+			get { return impl.BackColor.ToAwt (); }
+			set { impl.BackColor = value.ToNative (); }
+		}
+
 		string UiListViewItem.Text {
 			get { return impl.Text; }
+			set { impl.Text = value; }
 		}
 
 		bool UiListViewItem.Checked {

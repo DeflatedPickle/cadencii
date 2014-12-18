@@ -17,6 +17,11 @@ namespace Cadencii.Gui.Toolkit
 			this.impl = impl;
 		}
 
+		public bool ShowNewFolderButton {
+			get { return impl.ShowNewFolderButton; }
+			set { impl.ShowNewFolderButton = value; }
+		}
+
 		public object Native {
 			get { return impl; }
 		}

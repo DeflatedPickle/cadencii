@@ -12,14 +12,10 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 using System.Collections.Generic;
 using cadencii.apputil;
 using cadencii;
 using cadencii.java.util;
-
-
-using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 
@@ -102,7 +98,7 @@ namespace Cadencii.Application.Forms
             foreach (Keys key in keys) {
                 comboEditKey.Items.Add(key);
             }
-            this.Size = new System.Drawing.Size(mWindowWidth, mWindowHeight);
+			this.AsAwt ().Size = new Dimension (mWindowWidth, mWindowHeight);
 
             registerEventHandlers();
             updateList();
@@ -194,7 +190,7 @@ namespace Cadencii.Application.Forms
         private void updateList()
         {
             list.SelectedIndexChanged -= new EventHandler(list_SelectedIndexChanged);
-            list.Items.Clear();
+            list.ClearItems();
             list.SelectedIndexChanged += new EventHandler(list_SelectedIndexChanged);
             mFieldName.Clear();
 
@@ -229,7 +225,7 @@ namespace Cadencii.Application.Forms
                     }
                 }
                 if (add_this_one) {
-                    list.AddRow(new string[] { display, Utility.getShortcutDisplayString(keys) });
+                    list.AddRow(new string[] { display, Utility.getShortcutDisplayString(keys) }, false);
                     mFieldName.Add(field_name);
                 }
             }
@@ -244,14 +240,14 @@ namespace Cadencii.Application.Forms
         /// </summary>
         private void updateColor()
         {
-            int size = list.Items.Count;
+            int size = list.ItemCount;
             for (int i = 0; i < size; i++) {
                 //BListViewItem list_item = list.getItemAt( i );
                 string field_name = mFieldName[i];
-                string key_display = list.Items[i].SubItems[1].Text;
+				string key_display = list.GetItem (i).GetSubItem (1).Text;
                 if (key_display == "") {
                     // ショートカットキーが割り当てられていないのでスルー
-                    list.Items[i].BackColor = System.Drawing.Color.White;
+					list.GetItem (i).BackColor = Colors.White;
                     continue;
                 }
 
@@ -274,9 +270,9 @@ namespace Cadencii.Application.Forms
 
                 // 背景色を変える
                 if (found) {
-                    list.Items[i].BackColor = System.Drawing.Color.Yellow;
+                    list.GetItem(i).BackColor = Colors.Yellow;
                 } else {
-                    list.Items[i].BackColor = System.Drawing.Color.White;
+                    list.GetItem(i).BackColor = Colors.White;
                 }
             }
         }
@@ -285,7 +281,7 @@ namespace Cadencii.Application.Forms
         {
             btnLoadDefault.Click += new EventHandler(btnLoadDefault_Click);
             btnRevert.Click += new EventHandler(btnRevert_Click);
-            this.FormClosing += new FormClosingEventHandler(FormShortcutKeys_FormClosing);
+			this.FormClosing += (o,e) => FormShortcutKeys_FormClosing ();
             btnOK.Click += new EventHandler(btnOK_Click);
             btnCancel.Click += new EventHandler(btnCancel_Click);
             comboCategory.SelectedIndexChanged += new EventHandler(comboCategory_SelectedIndexChanged);
@@ -347,9 +343,9 @@ namespace Cadencii.Application.Forms
             if (list.SelectedIndices.Count == 0) {
                 return;
             }
-            int indx_row = list.SelectedIndices[0];
+			int indx_row = (int) list.SelectedIndices[0];
             Keys key = (Keys)comboEditKey.Items[indx];
-            string display = list.Items[indx_row].SubItems[0].Text;
+			string display = list.GetItem(indx_row).GetSubItem(0).Text;
             if (!mDict.ContainsKey(display)) {
                 return;
             }
@@ -371,7 +367,7 @@ namespace Cadencii.Application.Forms
             }
             Keys[] keys = capturelist.ToArray();
             mDict[display].setValue(keys);
-            list.Items[indx_row].SubItems[1].Text = Utility.getShortcutDisplayString(keys);
+			list.GetItem(indx_row).GetSubItem(1).Text = Utility.getShortcutDisplayString(keys);
         }
 
         public void list_SelectedIndexChanged(Object sender, EventArgs e)
@@ -379,8 +375,8 @@ namespace Cadencii.Application.Forms
             if (list.SelectedIndices.Count == 0) {
                 return;
             }
-            int indx = list.SelectedIndices[0];
-            string display = list.Items[indx].SubItems[0].Text;
+			int indx = (int) list.SelectedIndices[0];
+			string display = list.GetItem(indx).GetSubItem(0).Text;
             if (!mDict.ContainsKey(display)) {
                 return;
             }
@@ -440,7 +436,7 @@ namespace Cadencii.Application.Forms
             updateList();
         }
 
-        public void FormShortcutKeys_FormClosing(Object sender, System.Windows.Forms.FormClosingEventArgs e)
+        public void FormShortcutKeys_FormClosing()
         {
             mColumnWidthCommand = list.Columns[0].Width;
             mColumnWidthShortcutKey = list.Columns[1].Width;
@@ -451,12 +447,12 @@ namespace Cadencii.Application.Forms
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
 
         public void btnOK_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
         }
         #endregion
 
@@ -497,23 +493,25 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnOK;
-        private ListView list;
-        private System.Windows.Forms.Button btnLoadDefault;
-        private System.Windows.Forms.Button btnRevert;
-        private System.Windows.Forms.ToolTip toolTip;
-        private Label labelCategory;
-        private ComboBox comboCategory;
-        private Label labelCommand;
-        private Label labelEdit;
-        private Label labelEditKey;
-        private Label labelEditModifier;
-        private ComboBox comboEditKey;
-        private System.Windows.Forms.CheckBox checkCommand;
-        private System.Windows.Forms.CheckBox checkShift;
-        private System.Windows.Forms.CheckBox checkControl;
-        private System.Windows.Forms.CheckBox checkOption;
+		#pragma warning disable 0649
+        UiButton btnCancel;
+        UiButton btnOK;
+        UiListView list;
+        UiButton btnLoadDefault;
+        UiButton btnRevert;
+        UiToolTip toolTip;
+        UiLabel labelCategory;
+        UiComboBox comboCategory;
+        UiLabel labelCommand;
+        UiLabel labelEdit;
+        UiLabel labelEditKey;
+        UiLabel labelEditModifier;
+        UiComboBox comboEditKey;
+        UiCheckBox checkCommand;
+        UiCheckBox checkShift;
+        UiCheckBox checkControl;
+        UiCheckBox checkOption;
+		#pragma warning restore 0649
 
         #endregion
         #endregion

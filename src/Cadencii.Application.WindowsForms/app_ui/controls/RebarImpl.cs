@@ -19,8 +19,12 @@ using System.IO;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using cadencii;
+using Cadencii.Gui;
 using Cadencii.Platform.Windows;
+using Color = System.Drawing.Color;
+using Rectangle = System.Drawing.Rectangle;
+using SystemColors = System.Drawing.SystemColors;
+using Point = System.Drawing.Point;
 
 namespace Cadencii.Application.Controls
 {

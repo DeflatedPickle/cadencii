@@ -160,6 +160,8 @@
     <Compile Include="Cadencii.Gui.Toolkit\IHasText.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\JoyPads.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\FormBorderStyle.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\UiTabControl.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\UiTabPage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
