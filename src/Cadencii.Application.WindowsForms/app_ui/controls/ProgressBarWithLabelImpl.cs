@@ -14,10 +14,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Text;
-using System.Windows.Forms;
+using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
 
@@ -26,8 +25,8 @@ namespace Cadencii.Application.Forms
 
     public class ProgressBarWithLabelUiImpl : UserControlImpl, ProgressBarWithLabel
     {
-        private ProgressBar progressBar1;
-        private Label label1;
+        private UiProgressBar progressBar1;
+        private UiLabel label1;
         /// <summary>
         /// 必要なデザイナ変数です。
         /// </summary>
@@ -43,7 +42,7 @@ namespace Cadencii.Application.Forms
 			set { label1.Text = value; }
 		}
 
-	public int Progress {
+		public int Progress {
 			set {
 				if (value < progressBar1.Minimum)
 					value = progressBar1.Minimum;
@@ -77,38 +76,36 @@ namespace Cadencii.Application.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
+            this.progressBar1 = ApplicationUIHost.Create<UiProgressBar> ();
+			this.label1 = ApplicationUIHost.Create<UiLabel> ();
             this.SuspendLayout();
             //
             // progressBar1
             //
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(16, 11);
+            this.progressBar1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			this.progressBar1.Location = new Cadencii.Gui.Point(16, 11);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(290, 10);
+			this.progressBar1.Size = new Dimension (290, 10);
             this.progressBar1.TabIndex = 0;
             //
             // label1
             //
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Location = new System.Drawing.Point(14, 24);
+            this.label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+			this.label1.Location = new Cadencii.Gui.Point (14, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(292, 12);
+			this.label1.Size = new  Cadencii.Gui.Dimension(292, 12);
             this.label1.TabIndex = 1;
             //
             // ProgressBarWithLabelUi
             //
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.progressBar1);
-            this.Name = "ProgressBarWithLabelUi";
-            this.Size = new System.Drawing.Size(322, 45);
-            this.ResumeLayout(false);
-
+			var control = (UiUserControl) this;
+			control.AutoScaleDimensions = new Cadencii.Gui.Dimension(6, 12);
+			control.AutoScaleMode = Cadencii.Gui.Toolkit.AutoScaleMode.Font;
+			control.Controls.Add(this.label1);
+			control.Controls.Add(this.progressBar1);
+			control.Name = "ProgressBarWithLabelUi";
+			control.Size = new  Cadencii.Gui.Dimension(322, 45);
+			control.ResumeLayout(false);
         }
 
         #endregion

@@ -13,7 +13,6 @@
  */
 using System;
 using System.Threading;
-using System.Windows.Forms;
 using System.Linq;
 using cadencii;
 using cadencii.apputil;
@@ -148,7 +147,7 @@ namespace Cadencii.Application.Forms
 #if !MONO
 			formMain.Load += mainWindow_Load;
 #endif
-            App.Run((Form) EditorManager.MainWindow);
+            App.Run((System.Windows.Forms.Form) EditorManager.MainWindow);
 #if !DEBUG
             } catch ( Exception ex ) {
                 String str_ex = getExceptionText( ex, 0 );
@@ -229,7 +228,7 @@ namespace Cadencii.Application.Forms
                 driver.getUi(EditorManager.MainWindow);
             }
 
-            ((Form) EditorManager.MainWindow).Load -= mainWindow_Load;
+            ((System.Windows.Forms.Form) EditorManager.MainWindow).Load -= mainWindow_Load;
         }
     }
 

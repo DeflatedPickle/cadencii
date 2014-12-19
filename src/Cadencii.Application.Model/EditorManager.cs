@@ -88,6 +88,8 @@ namespace Cadencii.Application
 			mAutoBackupTimer.Tick += new EventHandler (EditorManager.handleAutoBackupTimerTick);
 		}
 
+		public static readonly GameControllerManager GameControllerManager = ApplicationUIHost.Create<GameControllerManager> ();
+
 		static int mSelected;
 
 		/// <summary>

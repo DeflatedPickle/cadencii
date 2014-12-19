@@ -12,7 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
+using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application.Controls
 {
@@ -40,7 +40,7 @@ namespace Cadencii.Application.Controls
             this.Select(0, 10);
         }
 
-        protected override void OnMouseWheel(MouseEventArgs e)
+		protected override void OnMouseWheel(System.Windows.Forms.MouseEventArgs e)
         {
             decimal new_val;
             if (e.Delta > 0) {

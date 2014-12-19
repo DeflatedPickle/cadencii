@@ -12,16 +12,16 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using System;
-using System.Windows.Forms;
 
 using cadencii;
+using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Application.Controls
 {
     /// <summary>
     /// 歌詞入力用のテキストボックス
     /// </summary>
-    public class LyricTextBoxImpl : Cadencii.Gui.Toolkit.TextBoxImpl, LyricTextBox
+    public class LyricTextBoxImpl : TextBoxImpl, LyricTextBox
     {
 		public bool IsPhoneticSymbolEditMode { get; set; }
 
@@ -32,14 +32,14 @@ namespace Cadencii.Application.Controls
         /// </summary>
         /// <param name="keyData">キーの値の一つ</param>
         /// <returns>指定されているキーが入力キーである場合は true．それ以外の場合は false．</returns>
-        protected override bool IsInputKey(Keys keyData)
+		protected override bool IsInputKey(System.Windows.Forms.Keys keyData)
         {
             switch (keyData) {
-                case Keys.Tab:
-                case Keys.Tab | Keys.Shift:
-                break;
-                default:
-                return base.IsInputKey(keyData);
+			case System.Windows.Forms.Keys.Tab:
+			case (System.Windows.Forms.Keys) (Keys.Tab | Keys.Shift):
+				break;
+			default:
+				return base.IsInputKey((System.Windows.Forms.Keys) keyData);
             }
             return true;
         }

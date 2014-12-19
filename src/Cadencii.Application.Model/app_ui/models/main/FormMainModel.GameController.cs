@@ -19,7 +19,6 @@ namespace Cadencii.Application.Models
 		}
 
 		GameControlMode mGameMode = GameControlMode.DISABLED;
-		GameControllerManager game_controller_manager = ApplicationUIHost.Create<GameControllerManager> ();
 		Cadencii.Gui.Timer mTimer;
 		/// <summary>
 		/// 前回ゲームコントローラのイベントを処理した時刻
@@ -76,7 +75,7 @@ namespace Cadencii.Application.Models
 		{
 			try {
 				bool init_success = false;
-				int num_joydev = game_controller_manager.InitializeJoyPad ();
+				int num_joydev = EditorManager.GameControllerManager.InitializeJoyPad ();
 				if (num_joydev <= 0) {
 					init_success = false;
 				} else {
@@ -113,9 +112,9 @@ namespace Cadencii.Application.Models
 			try {
 				double now = PortUtil.getCurrentTime();
 
-				var ret = game_controller_manager.GetJoyPadStatus ();
+				var ret = EditorManager.GameControllerManager.GetJoyPadStatus ();
 				var buttons = ret.Buttons;
-				var pov0 = ret.Pov0;
+				var pov0 = ret.Pov;
 				bool event_processed = false;
 				double dt_ms = (now - mLastEventProcessed) * 1000.0;
 

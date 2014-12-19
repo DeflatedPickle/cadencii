@@ -16,7 +16,6 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.IO;
-//using System.Windows.Forms;
 
 using cadencii;
 using Cadencii.Platform.Windows;

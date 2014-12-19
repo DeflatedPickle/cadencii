@@ -132,11 +132,6 @@ namespace Cadencii.Gui
 		public override Font SystemMenuFont {
 			get { return System.Windows.Forms.SystemInformation.MenuFont.ToAwt (); }
 		}
-
-		JoyPads joypads = new JoyPadsWF ();
-		public override JoyPads JoyPads {
-			get { return joypads; }
-		}
 	}
 
 	class ImageAdapterWF : Image.ImageAdapter
@@ -801,24 +796,6 @@ namespace Cadencii.Gui
 			var w = (System.Windows.Forms.Form)nativeWindow;
 			System.Drawing.Rectangle r = System.Windows.Forms.Screen.GetWorkingArea (w);
 			return new Rectangle (r.X, r.Y, r.Width, r.Height);
-		}
-	}
-
-	public class JoyPadsWF : JoyPads
-	{
-		public override int GetNumberOfDevices ()
-		{
-			return winmmhelp.JoyGetNumJoyDev();
-		}
-
-		public override int GetNumberOfButtons (int deviceIndex)
-		{
-			return winmmhelp.JoyGetNumButtons (deviceIndex);
-		}
-
-		public override bool GetStatus (int deviceIndex, out byte[] buttons, out int pov)
-		{
-			return winmmhelp.JoyGetStatus (deviceIndex, out buttons, out pov);
 		}
 	}
 }

@@ -49,7 +49,7 @@ namespace Cadencii.Application.Forms
         #region event handlers
         public void FormRealtimeConfig_Load(Object sender, EventArgs e)
         {
-			int num_joydev = AwtHost.Current.JoyPads.GetNumberOfDevices ();
+			int num_joydev = EditorManager.GameControllerManager.GetNumberOfJoyPads ();
             m_game_ctrl_enabled = (num_joydev > 0);
             if (m_game_ctrl_enabled) {
                 timer.Start();
@@ -62,12 +62,10 @@ namespace Cadencii.Application.Forms
                 double now = PortUtil.getCurrentTime();
                 double dt_ms = (now - m_last_event_processed) * 1000.0;
                 //JoystickState state = m_game_ctrl.CurrentJoystickState;
-				int len = AwtHost.Current.JoyPads.GetNumberOfButtons(0);
-                byte[] buttons = new byte[len];
-                int pov0;
-				AwtHost.Current.JoyPads.GetStatus (0, out buttons, out pov0);
-                //int[] pov = state.GetPointOfView();
-                //int pov0 = pov[0];
+				int len = EditorManager.GameControllerManager.GetNumberOfButtons(0);
+				var stat = EditorManager.GameControllerManager.GetJoyPadStatus ();
+				byte[] buttons = stat.Buttons;
+				int pov0 = stat.Pov;
                 bool btn_x = (buttons[EditorManager.editorConfig.GameControlerCross] > 0x00);
                 bool btn_o = (buttons[EditorManager.editorConfig.GameControlerCircle] > 0x00);
                 bool btn_tr = (buttons[EditorManager.editorConfig.GameControlerTriangle] > 0x00);

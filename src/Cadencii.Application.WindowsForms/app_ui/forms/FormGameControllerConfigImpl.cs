@@ -47,7 +47,7 @@ namespace Cadencii.Application.Forms
                 m_povs.Add(int.MinValue);
             }
             applyLanguage();
-            int num_dev = winmmhelp.JoyGetNumJoyDev();
+			int num_dev = EditorManager.GameControllerManager.GetNumberOfJoyPads ();
             if (num_dev > 0) {
 				pictButton.Image = Resources.btn1;
                 progressCount.Maximum = 8;
@@ -67,7 +67,7 @@ namespace Cadencii.Application.Forms
         #region public methods
         public void applyLanguage()
         {
-            int num_dev = winmmhelp.JoyGetNumJoyDev();
+			int num_dev = EditorManager.GameControllerManager.GetNumberOfJoyPads ();
             if (num_dev > 0) {
                 lblMessage.Text = _("Push buttons in turn as shown below");
             } else {
@@ -177,7 +177,9 @@ namespace Cadencii.Application.Forms
             //int num_btn = vstidrv.JoyGetNumButtons( 0 );
             byte[] btn;
             int pov;
-            winmmhelp.JoyGetStatus(0, out btn, out pov);
+			var stat = EditorManager.GameControllerManager.GetJoyPadStatus ();
+			btn = stat.Buttons;
+			pov = stat.Pov;
 
 #if DEBUG
             CDebug.WriteLine("FormGameControlerConfig+timer_Tick");

@@ -13,6 +13,16 @@ namespace Cadencii.Application.Forms
 			return winmmhelp.JoyInit();
 		}
 
+		int GameControllerManager.GetNumberOfJoyPads ()
+		{
+			return winmmhelp.JoyGetNumJoyDev ();
+		}
+
+		int GameControllerManager.GetNumberOfButtons (int deviceIndex)
+		{
+			return winmmhelp.JoyGetNumButtons (deviceIndex);
+		}
+
 		JoyPadStatus GameControllerManager.GetJoyPadStatus ()
 		{
 			byte[] buttons;

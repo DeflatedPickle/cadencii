@@ -15,7 +15,6 @@ using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
-//using System.Windows.Forms;
 using System.IO;
 
 namespace Cadencii.Media.Windows
