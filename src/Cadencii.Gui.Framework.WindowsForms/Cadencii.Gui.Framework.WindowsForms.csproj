@@ -89,6 +89,7 @@
     <Compile Include="toolkit\ListBoxImpl.cs" />
     <Compile Include="toolkit\RadioButtonImpl.cs" />
     <Compile Include="toolkit\FontDialogImpl.cs" />
+    <Compile Include="toolkit\FlowLayoutPanelImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
