@@ -133,7 +133,7 @@ namespace Cadencii.Application.Forms
         UiButton btnCancel;
         UiLabel lblMasterTuning;
         UiTextBox txtMasterTuning;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
         #endregion
         #endregion
 

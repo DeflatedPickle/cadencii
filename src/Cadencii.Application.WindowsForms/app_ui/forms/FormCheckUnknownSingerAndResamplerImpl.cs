@@ -163,7 +163,7 @@ namespace Cadencii.Application.Forms
         }
         #endregion
 
-		#pragma warning disable 0649
+		#pragma warning disable 0169,0649
         UiButton buttonCancel;
         UiButton buttonOk;
         UiLabel labelMessage;
@@ -173,7 +173,7 @@ namespace Cadencii.Application.Forms
         UiCheckBox checkResamplerImport;
         UiTextBox textResamplerPath;
         IconParader pictureSinger;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
 
         #endregion
     }

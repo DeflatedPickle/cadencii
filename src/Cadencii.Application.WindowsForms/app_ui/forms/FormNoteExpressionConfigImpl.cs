@@ -516,7 +516,7 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-		#pragma warning disable 0649
+		#pragma warning disable 0169,0649
         UiGroupBox groupPitchControl;
         UiGroupBox groupDynamicsControl;
         UiLabel lblBendDepth;
@@ -553,7 +553,7 @@ namespace Cadencii.Application.Forms
         UiPanel panelVocaloid2Template;
         UiComboBox comboAttackTemplate;
         UiLabel lblAttackTemplate;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
         #endregion
         #endregion
 

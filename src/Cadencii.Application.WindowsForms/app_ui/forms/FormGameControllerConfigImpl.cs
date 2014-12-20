@@ -321,7 +321,7 @@ namespace Cadencii.Application.Forms
 
         }
 
-		#pragma warning disable 0649
+		#pragma warning disable 0169,0649
         UiLabel lblMessage;
         UiPictureBox pictButton;
         UiProgressBar progressCount;
@@ -329,7 +329,7 @@ namespace Cadencii.Application.Forms
         UiButton btnOK;
         UiButton btnCancel;
         UiButton btnReset;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
 
         #endregion
 

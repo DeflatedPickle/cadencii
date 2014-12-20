@@ -21,12 +21,12 @@ namespace Cadencii.Application.Forms
 {
     class UpdateCheckFormImpl : Cadencii.Gui.Toolkit.FormImpl, UpdateCheckForm
     {
-		#pragma warning disable 0649
+		#pragma warning disable 0169,0649
         UiLabel label1;
         UiLinkLabel linkLabel1;
         UiCheckBox checkBox1;
         UiButton button1;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
 
         public event Action okButtonClicked;
         public event Action downloadLinkClicked;

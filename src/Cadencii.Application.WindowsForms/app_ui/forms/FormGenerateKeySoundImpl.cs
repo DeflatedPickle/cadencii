@@ -265,7 +265,7 @@ namespace Cadencii.Application.Forms
         UiTextBox txtDir;
         UiButton btnBrowse;
         UiLabel lblDir;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
 
         #endregion
 

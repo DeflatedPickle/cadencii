@@ -536,14 +536,14 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-		#pragma warning disable 0649
+		#pragma warning disable 0169,0649
         private UiMenuStrip menuMain;
         private UiToolStripMenuItem menuVisual;
         private UiToolStripMenuItem menuVisualReturn;
         private VolumeTracker volumeMaster;
         private UiControl panelSlaves;
         private UiHScrollBar hScroll;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
         #endregion
         #endregion
 

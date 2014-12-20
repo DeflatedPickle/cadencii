@@ -147,10 +147,10 @@ namespace Cadencii.Application.Forms
         }
         #endregion
 
-		#pragma warning disable 0649
+		#pragma warning disable 0169,0649
 		private UiFlowLayoutPanel panelIcon;
 		private UiToolTip toolTip;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
     }
 
 }

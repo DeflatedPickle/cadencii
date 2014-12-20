@@ -255,11 +255,11 @@ namespace Cadencii.Application.Forms
 
         }
 
-		#pragma warning disable 0649
+		#pragma warning disable 0169,0649
         UiMenuStrip menuBar;
         UiToolStripMenuItem menuWindow;
         UiToolStripMenuItem menuWindowHide;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
 
         #endregion
 

@@ -194,7 +194,7 @@ namespace Cadencii.Application.Forms
         UiButton btnCancel;
         UiButton btnOK;
         UiLabel lblNotes;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
         #endregion
 
     }

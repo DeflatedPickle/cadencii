@@ -128,7 +128,7 @@ namespace Cadencii.Application.Forms
             this.PerformLayout();
         }
 
-		#pragma warning disable 0649
+		#pragma warning disable 0169,0649
         private UiButton btnCancel;
         private UiButton btnOK;
 		public UiCheckBox chkEnableSmooth { get; set; }
@@ -152,7 +152,7 @@ namespace Cadencii.Application.Forms
 		public UiButton btnRight { get; set; }
         private UiButton btnBackward;
         private UiButton btnForward;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
 
     }
 

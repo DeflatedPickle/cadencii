@@ -272,7 +272,7 @@ namespace Cadencii.Application.Forms
 			btnCancel.Click += new System.EventHandler (btnCancel_Click);
 		}
 
-		#pragma warning disable 0649
+		#pragma warning disable 0169,0649
         UiGroupBox groupPosition;
         UiGroupBox groupBeat;
         UiButton btnOK;
@@ -287,7 +287,7 @@ namespace Cadencii.Application.Forms
         NumericUpDownEx numNumerator;
         UiLabel label2;
         UiComboBox comboDenominator;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
 
         #endregion
     }

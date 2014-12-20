@@ -42,7 +42,7 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-		#pragma warning disable 0649
+		#pragma warning disable 0169,0649
         UiTabControl tabPreference;
         UiTabPage tabSequence;
         UiButton btnCancel;
@@ -185,6 +185,6 @@ namespace Cadencii.Application.Forms
         UiLabel lblAquesTone2;
         UiTextBox txtAquesTone2;
         UiCheckBox chkLoadAquesTone2;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
     }
 }

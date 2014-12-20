@@ -86,11 +86,11 @@ namespace Cadencii.Application.Forms
         }
         #endregion
 
-		#pragma warning disable 0649
+		#pragma warning disable 0169,0649
         UiLabel lblMessage;
         UiButton btnCancel;
         UiTextBox txtInput;
         UiButton btnOk;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
     }
 }

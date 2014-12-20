@@ -104,7 +104,7 @@ namespace Cadencii.Application.Forms
         #endregion
 
         #region UI implementation
-		#pragma warning disable 0649
+		#pragma warning disable 0169,0649
         private System.ComponentModel.IContainer components = null;
         NumericUpDownEx numPosition;
         NumericUpDownEx numLength;
@@ -115,7 +115,7 @@ namespace Cadencii.Application.Forms
         UiButton btnCancel;
         UiButton btnOK;
         UiLabel lblPositionPrefix;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
 
         /// <summary>
         /// 使用中のリソースをすべてクリーンアップします。

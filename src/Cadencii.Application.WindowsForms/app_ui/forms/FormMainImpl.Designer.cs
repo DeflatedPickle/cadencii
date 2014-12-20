@@ -82,6 +82,7 @@ namespace Cadencii.Application.Forms
 
         System.ComponentModel.IContainer components;
 
+		#pragma warning disable 0169,0649
         UiMenuStrip menuStripMain;
         UiToolStripMenuItem menuFile;
         UiToolStripMenuItem menuEdit;
@@ -413,5 +414,6 @@ namespace Cadencii.Application.Forms
         UiToolStripMenuItem menuTools;
         UiToolStripMenuItem menuToolsCreateVConnectSTANDDb;
         UiToolStripMenuItem menuHelpCheckForUpdates;
-    }
+		#pragma warning restore 0169,0649
+		   }
 }

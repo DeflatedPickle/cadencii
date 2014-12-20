@@ -337,7 +337,7 @@ namespace Cadencii.Application.Forms
         }
         #endregion
 
-		#pragma warning disable 0649
+		#pragma warning disable 0169,0649
         UiLabel lblVibratoLength;
         UiLabel lblVibratoType;
         NumberTextBox txtVibratoLength;
@@ -349,7 +349,7 @@ namespace Cadencii.Application.Forms
         UiRadioButton radioVocaloid2;
         UiRadioButton radioVocaloid1;
         UiRadioButton radioUserDefined;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
         #endregion
     }
 

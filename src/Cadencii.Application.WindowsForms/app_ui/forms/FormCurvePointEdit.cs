@@ -301,7 +301,7 @@ namespace Cadencii.Application.Forms
 
         }
 
-		#pragma warning disable 0649
+		#pragma warning disable 0169,0649
         UiButton btnForward;
         UiButton btnBackward;
         UiLabel lblDataPointValue;
@@ -316,7 +316,7 @@ namespace Cadencii.Application.Forms
         UiButton btnForward3;
         UiButton btnUndo;
         UiButton btnRedo;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
 
         #endregion
 

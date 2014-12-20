@@ -381,7 +381,7 @@ namespace Cadencii.Application.Forms
         NumericUpDownEx numResolution;
         UiButton btnCancel;
         UiButton btnOK;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
 
         #endregion
         #endregion

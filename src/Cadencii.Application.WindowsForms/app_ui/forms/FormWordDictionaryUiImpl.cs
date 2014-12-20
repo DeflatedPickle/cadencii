@@ -277,14 +277,14 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-		#pragma warning disable 0649
+		#pragma warning disable 0169,0649
         private UiListView listDictionaries;
         private UiLabel lblAvailableDictionaries;
         private UiButton btnOK;
         private UiButton btnCancel;
         private UiButton btnUp;
         private UiButton btnDown;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
         #endregion
 
     }

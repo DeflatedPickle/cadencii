@@ -198,11 +198,11 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-		#pragma warning disable 0649
+		#pragma warning disable 0169,0649
         UiMenuStrip menuStrip;
         UiToolStripMenuItem menuWindow;
         UiToolStripMenuItem menuClose;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
 
         private void FormNotePropertyUiImpl_Load(object sender, System.EventArgs e)
         {

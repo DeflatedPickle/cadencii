@@ -109,12 +109,12 @@ namespace Cadencii.Application.Forms
 
         }
 
-		#pragma warning disable 0649
+		#pragma warning disable 0169,0649
         UiButton btnNo;
         UiCheckBox chkAlwaysPerformThisCheck;
         UiLabel lblMessage;
         UiButton btnYes;
-		#pragma warning restore 0649
+		#pragma warning restore 0169,0649
 
         #endregion
     }
