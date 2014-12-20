@@ -6,6 +6,7 @@ namespace Cadencii.Application.Controls
 {
 	public interface Rebar : UiControl
 	{
+		// usable only within winforms implementation. Do not expect to be usable outside the impl.
 		IntPtr RebarHwnd { get; }
 		Image BackgroundImage { get; set; }
 		bool ToggleDoubleClick { get; set; }

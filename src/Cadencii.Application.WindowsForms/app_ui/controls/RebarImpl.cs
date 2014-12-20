@@ -1,3 +1,4 @@
+#if !MONO
 /*
  * Rebar.cs
  * Copyright © Anthony Baraff
@@ -927,3 +928,4 @@ namespace Cadencii.Application.Controls
 
     internal delegate void NativeRebarEventHandler(object sender, NativeRebarEventArgs e);
 }
+#endif

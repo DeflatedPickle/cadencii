@@ -1,3 +1,4 @@
+#if !MONO
 /*
  * RebarBandCollection.cs
  * Copyright © Anthony Baraff
@@ -163,3 +164,4 @@ namespace Cadencii.Application.Controls
         }
     }
 }
+#endif
