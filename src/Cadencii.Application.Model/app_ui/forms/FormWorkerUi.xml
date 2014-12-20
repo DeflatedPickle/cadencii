@@ -11,14 +11,14 @@
             StartPosition = "CenterParent"
             Text = "FormWorker"
             >
-    <ProgressBar id="progressBar1"
+    <UiProgressBar id="progressBar1"
             Anchor = "Top,Left,Right"
             Location = "(12, 40)"
             Name = "progressBar1"
             Size = "(400, 23)"
             TabIndex = "1"
             />
-    <FlowLayoutPanel id="flowLayoutPanel1"
+    <UiFlowLayoutPanel id="flowLayoutPanel1"
             Anchor = "Top,Bottom,Left,Right"
             AutoScroll = "true"
             BorderStyle = "Fixed3D"
@@ -29,14 +29,14 @@
             TabIndex = "2"
             WrapContents = "false"
             />
-    <Label id="label1"
+    <UiLabel id="label1"
             Anchor = "Top,Left,Right"
             Location = "(12, 9)"
             Name = "label1"
             Size = "(400, 28)"
             TabIndex = "3"
             />
-    <Button id="buttonCancel"
+    <UiButton id="buttonCancel"
             Anchor = "Top,Right"
             DialogResult = "Cancel"
             Location = "(332, 69)"
@@ -46,7 +46,7 @@
             Text = "Cancel"
             UseVisualStyleBackColor = "true"
             />
-    <Button id="buttonDetail"
+    <UiButton id="buttonDetail"
             Location = "(12, 69)"
             Name = "buttonDetail"
             Size = "(80, 23)"

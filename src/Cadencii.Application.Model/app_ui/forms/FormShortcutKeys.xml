@@ -14,7 +14,7 @@
             Text = "Shortcut Config"
             >
             
-            <Button id="btnCancel"
+    <UiButton id="btnCancel"
             
             Anchor = "Bottom,Right"
             DialogResult = "Cancel"
@@ -25,7 +25,7 @@
             Text = "Cancel"
             UseVisualStyleBackColor = "true"
             />
-            <Button id="btnOK"
+    <UiButton id="btnOK"
             
             Anchor = "Bottom,Right"
             DialogResult = "OK"
@@ -37,7 +37,7 @@
             UseVisualStyleBackColor = "true"
             />
             
-            <ListView id="list"
+    <UiListView id="list"
             
             Anchor = "Top,Bottom,Left,Right"
             FullRowSelect = "true"
@@ -50,7 +50,7 @@
             View = "Details"
             />
             
-            <Button id="btnLoadDefault"
+    <UiButton id="btnLoadDefault"
             
             Anchor = "Bottom,Left"
             Location = "(113, 361)"
@@ -61,7 +61,7 @@
             UseVisualStyleBackColor = "true"
             />
             
-            <Button id="btnRevert"
+    <UiButton id="btnRevert"
             
             Anchor = "Bottom,Left"
             Location = "(12, 361)"
@@ -72,7 +72,7 @@
             UseVisualStyleBackColor = "true"
             />
             
-            <Label id="labelCategory"
+    <UiLabel id="labelCategory"
             
             AutoSize = "true"
             Location = "(12, 12)"
@@ -82,10 +82,9 @@
             Text = "Category"
             />
             
-            <ComboBox id="comboCategory"
+    <UiComboBox id="comboCategory"
             
-            Anchor = "(Top,Left)
-                       ,Right"
+            Anchor = "Top,Left,Right"
             FormattingEnabled = "true"
             Location = "(36, 27)"
             Name = "comboCategory"
@@ -93,7 +92,7 @@
             TabIndex = "13"
             />
             
-            <Label id="labelCommand"
+    <UiLabel id="labelCommand"
             
             AutoSize = "true"
             Location = "(12, 61)"
@@ -103,7 +102,7 @@
             Text = "Command"
             />
             
-            <Label id="labelEdit"
+    <UiLabel id="labelEdit"
             
             Anchor = "Bottom,Left"
             AutoSize = "true"
@@ -114,7 +113,7 @@
             Text = "Edit"
             />
             
-            <Label id="labelEditKey"
+    <UiLabel id="labelEditKey"
             
             Anchor = "Bottom,Left"
             AutoSize = "true"
@@ -125,7 +124,7 @@
             Text = "Key:"
             />
             
-            <Label id="labelEditModifier"
+    <UiLabel id="labelEditModifier"
             
             Anchor = "Bottom,Left"
             AutoSize = "true"
@@ -136,10 +135,9 @@
             Text = "Modifier:"
             />
             
-            <ComboBox id="comboEditKey"
+    <UiComboBox id="comboEditKey"
             
-            Anchor = "(Bottom,Left)
-                       ,Right"
+            Anchor = "Bottom,Left,Right"
             FormattingEnabled = "true"
             Location = "(101, 290)"
             Name = "comboEditKey"
@@ -147,7 +145,7 @@
             TabIndex = "18"
             />
             
-            <CheckBox id="checkCommand"
+    <UiCheckBox id="checkCommand"
             
             Anchor = "Bottom,Left"
             AutoSize = "true"
@@ -160,7 +158,7 @@
             UseVisualStyleBackColor = "true"
             />
             
-            <CheckBox id="checkShift"
+    <UiCheckBox id="checkShift"
             
             Anchor = "Bottom,Left"
             AutoSize = "true"
@@ -173,7 +171,7 @@
             UseVisualStyleBackColor = "true"
             />
             
-            <CheckBox id="checkControl"
+    <UiCheckBox id="checkControl"
             
             Anchor = "Bottom,Left"
             AutoSize = "true"
@@ -186,7 +184,7 @@
             UseVisualStyleBackColor = "true"
             />
             
-            <CheckBox id="checkOption"
+    <UiCheckBox id="checkOption"
             
             Anchor = "Bottom,Left"
             AutoSize = "true"

@@ -9,7 +9,7 @@
             ShowInTaskbar = "false"
             StartPosition = "CenterParent"
             >
-	<Button id="btnNo"
+	<UiButton id="btnNo"
             Anchor = "Bottom,Right"
             DialogResult = "Cancel"
             Location = "(183, 112)"
@@ -18,7 +18,7 @@
             TabIndex = "5"
             Text = "No"
             UseVisualStyleBackColor = "true" />
-	<Button id="btnYes"
+	<UiButton id="btnYes"
             Anchor = "Bottom,Right"
             DialogResult = "Cancel"
             Location = "(63, 112)"
@@ -27,7 +27,7 @@
             TabIndex = "4"
             Text = "Yes"
             UseVisualStyleBackColor = "true" />
-	<CheckBox id="chkAlwaysPerformThisCheck"
+	<UiCheckBox id="chkAlwaysPerformThisCheck"
             Anchor = "Bottom,Left"
             AutoSize = "true"
             Checked = "true"
@@ -38,7 +38,7 @@
             TabIndex = "6"
             Text = "Always perform this check when starting Cadencii."
             UseVisualStyleBackColor = "true" />
-	<Label id="lblMessage"
+	<UiLabel id="lblMessage"
             Anchor = "Top,Bottom,Left,Right"
             AutoEllipsis = "true"
             Location = "(12, 21)"

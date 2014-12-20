@@ -80,17 +80,15 @@ namespace Cadencii.Gui
 			return (T)Activator.CreateInstance (t, args);
 		}
 
-		public static object Create (string name, params object [] args)
-		{
-			var type = new Type [] { typeof (AwtHost), typeof (UiControl) }
-				.SelectMany (t => t.Assembly.GetTypes ())
-				.First (t => t.Name == name);
-			return Create (type, args);
-		}
+		static Dictionary<Type,Type> created_types = new Dictionary<Type,Type> ();
 
 		public static object Create (Type type, params object [] args)
 		{
-			var implType = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (a => a.GetTypes ()).Where (t => t.IsClass).First (t => type.IsInterface ? t.GetInterfaces ().Contains (type) : t.IsSubclassOf (type));
+			Type implType;
+			if (!created_types.TryGetValue (type, out implType)) {
+				implType = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (a => a.GetTypes ()).Where (t => t.IsClass).First (t => type.IsInterface ? t.GetInterfaces ().Contains (type) : t.IsSubclassOf (type));
+				created_types [type] = implType;
+			}
 			return Activator.CreateInstance (implType, args, null);
 		}
 

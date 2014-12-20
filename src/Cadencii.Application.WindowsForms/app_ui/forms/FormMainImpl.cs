@@ -238,6 +238,8 @@ namespace Cadencii.Application.Forms
 
             InitializeComponent();
 
+			model.InitializeControls ();
+
 			// call this after "components" is set.
 			model.InitializeTimer (components);
 

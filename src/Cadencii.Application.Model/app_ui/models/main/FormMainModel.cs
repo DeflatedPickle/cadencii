@@ -207,6 +207,11 @@ namespace Cadencii.Application.Models
 			ScaleX = 0.1f;
 		}
 
+		public void InitializeControls ()
+		{
+			EditorManagerCommands.InitializeControls ();
+		}
+
 		public FormModel FormMain { get; private set; }
 		public FileMenuModel FileMenu { get; private set; }
 		public EditMenuModel EditMenu { get; private set; }
