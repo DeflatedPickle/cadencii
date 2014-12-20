@@ -154,7 +154,7 @@
             TabIndex = "130"
             Text = "Start depth"
             />
-        <UiNumberTextBox id="textDepth"
+        <NumberTextBox id="textDepth"
 
             BackColor = "$(240,128,128)"
             ForeColor = "$White"
@@ -164,7 +164,7 @@
             TabIndex = "8"
             Type = "Integer"
             />
-        <UiNumberTextBox id="textRate"
+        <NumberTextBox id="textRate"
 
             BackColor = "$(240,128,128)"
             ForeColor = "$White"

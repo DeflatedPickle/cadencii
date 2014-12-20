@@ -43,7 +43,7 @@ namespace Cadencii.Gui.Toolkit
 		{
 			if (list_view.Columns.Count < headers.Length) {
 				for (int i = list_view.Columns.Count; i < headers.Length; i++) {
-					list_view.Columns.Add (AwtHost.Current.New<UiListViewColumn> ());
+					list_view.Columns.Add (AwtHost.Create<UiListViewColumn> ());
 				}
 			}
 			for (int i = 0; i < headers.Length; i++) {

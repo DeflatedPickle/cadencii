@@ -66,6 +66,7 @@ namespace Cadencii.Gui
 
 		public abstract Font SystemMenuFont { get; }
 
+		[Obsolete ("Use Create<T>")]
 		public T New<T> (params object[] args)
 		{
 			Type t;
@@ -78,5 +79,25 @@ namespace Cadencii.Gui
 			}
 			return (T)Activator.CreateInstance (t, args);
 		}
+
+		public static object Create (string name, params object [] args)
+		{
+			var type = new Type [] { typeof (AwtHost), typeof (UiControl) }
+				.SelectMany (t => t.Assembly.GetTypes ())
+				.First (t => t.Name == name);
+			return Create (type, args);
+		}
+
+		public static object Create (Type type, params object [] args)
+		{
+			var implType = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (a => a.GetTypes ()).Where (t => t.IsClass).First (t => type.IsInterface ? t.GetInterfaces ().Contains (type) : t.IsSubclassOf (type));
+			return Activator.CreateInstance (implType, args, null);
+		}
+
+		public static T Create<T> (params object [] args)
+		{
+			return (T) Create (typeof(T), args);
+		}
+
 	}
 }

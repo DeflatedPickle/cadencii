@@ -16,7 +16,7 @@ namespace Cadencii.Application
 
 		public static object Create (Type type, params object [] args)
 		{
-			var implType = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (a => a.GetTypes ()).First (t => type.IsInterface ? t.GetInterfaces ().Contains (type) : t.IsSubclassOf (type));
+			var implType = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (a => a.GetTypes ()).Where (t => t.IsClass).First (t => type.IsInterface ? t.GetInterfaces ().Contains (type) : t.IsSubclassOf (type));
 			return Activator.CreateInstance (implType, args, null);
 		}
 

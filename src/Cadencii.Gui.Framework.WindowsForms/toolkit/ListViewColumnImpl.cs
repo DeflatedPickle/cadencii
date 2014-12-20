@@ -22,6 +22,8 @@ namespace Cadencii.Gui.Toolkit
 	public class ListViewColumnImpl : UiListViewColumn
 	{
 		System.Windows.Forms.ColumnHeader impl;
+		int? width;
+		string text;
 
 		public ListViewColumnImpl ()
 		{
@@ -29,17 +31,31 @@ namespace Cadencii.Gui.Toolkit
 
 		public object Native {
 			get { return impl; }
-            set { impl = (System.Windows.Forms.ColumnHeader) value; }
+            set {
+				impl = (System.Windows.Forms.ColumnHeader) value;
+				if (width != null)
+					impl.Width = (int) width;
+				if (text != null)
+					impl.Text = text;
+			}
 		}
 
-		int UiListViewColumn.Width {
-			get { return impl.Width; }
-			set { impl.Width = value; }
+		public int Width {
+			get { return impl != null ? impl.Width : width ?? 0; }
+			set {
+				width = value;
+				if (impl != null)
+					impl.Width = value;
+			}
 		}
 
-		string UiListViewColumn.Text {
-			get { return impl.Text; }
-			set { impl.Text = value; }
+		public string Text {
+			get { return impl != null ? impl.Text : text; }
+			set {
+				text = value;
+				if (impl != null)
+					impl.Text = value;
+			}
 		}
 	}
 	

@@ -209,7 +209,6 @@
     <Compile Include="app_ui\forms\VersionInfo.cs" />
     <Compile Include="app_ui\controls\TrackSelectorConsts.cs" />
     <Compile Include="app_ui\controls\RecentFileMenuItem.cs" />
-    <Compile Include="gui_fx_extended\Clipboard.cs" />
     <Compile Include="gui_fx_extended\ClipboardEntry.cs" />
     <Compile Include="gui_fx_extended\ClipboardModel.cs" />
     <Compile Include="gui_fx_extended\ApplicationUIHost.cs" />

@@ -16,16 +16,16 @@ namespace Cadencii.Application.Forms
 			return WClipboard.GetText ();
 		}
 
-		public override void SetDataObject (ClipboardEntry data, bool copy)
+		public override void SetDataObject (object data, bool copy)
 		{
 			WClipboard.SetDataObject (data, copy);
 		}
 
-		public override ClipboardEntry GetDataObject ()
+		public override object GetDataObject (Type dataType)
 		{
 			var dobj = WClipboard.GetDataObject ();
 			if (dobj != null)
-				return (ClipboardEntry) dobj.GetData (typeof(ClipboardEntry));
+				return dobj.GetData (dataType);
 			return null;
 		}
 	}

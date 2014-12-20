@@ -196,7 +196,7 @@ namespace Cadencii.Application
                         }
                     }
 #else
-            ce = ApplicationUIHost.Instance.Clipboard.GetDataObject();
+			ce = (ClipboardEntry) ApplicationUIHost.Instance.Clipboard.GetDataObject(typeof (ClipboardEntry));
 #endif
             if (ce == null) {
                 ce = new ClipboardEntry();

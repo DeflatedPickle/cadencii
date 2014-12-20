@@ -33,7 +33,7 @@
 	            Text = "Sequence"
 	            UseVisualStyleBackColor = "true"
 	            >
-		    <UiNumberTextBox id="txtAutoVibratoThresholdLength"
+		    <NumberTextBox id="txtAutoVibratoThresholdLength"
 
 		            Anchor = "Top,Right"
 		            BackColor = "$(240,128,128)"
@@ -226,22 +226,22 @@
 			            TabIndex = "14"
 			            >
 		            <_Items>
-			            <UiString>[Normal] Type 1</UiString>
-			            <UiString>[Normal] Type 2</UiString>
-			            <UiString>[Normal] Type 3</UiString>
-			            <UiString>[Normal] Type 4</UiString>
-			            <UiString>[Extreme] Type 1</UiString>
-			            <UiString>[Extreme] Type 2</UiString>
-			            <UiString>[Extreme] Type 3</UiString>
-			            <UiString>[Extreme] Type 4</UiString>
-			            <UiString>[Fast] Type 1</UiString>
-			            <UiString>[Fast] Type 2</UiString>
-			            <UiString>[Fast] Type 3</UiString>
-			            <UiString>[Fast] Type 4</UiString>
-			            <UiString>[Slight] Type 1</UiString>
-			            <UiString>[Slight] Type 2</UiString>
-			            <UiString>[Slight] Type 3</UiString>
-			            <UiString>[Slight] Type 4</UiString>
+			            <String>[Normal] Type 1</String>
+			            <String>[Normal] Type 2</String>
+			            <String>[Normal] Type 3</String>
+			            <String>[Normal] Type 4</String>
+			            <String>[Extreme] Type 1</String>
+			            <String>[Extreme] Type 2</String>
+			            <String>[Extreme] Type 3</String>
+			            <String>[Extreme] Type 4</String>
+			            <String>[Fast] Type 1</String>
+			            <String>[Fast] Type 2</String>
+			            <String>[Fast] Type 3</String>
+			            <String>[Fast] Type 4</String>
+			            <String>[Slight] Type 1</String>
+			            <String>[Slight] Type 2</String>
+			            <String>[Slight] Type 3</String>
+			            <String>[Slight] Type 4</String>
 		            </_Items>
 				</UiComboBox>
 
@@ -264,22 +264,22 @@
 			            TabIndex = "12"
 			            >
 		            <_Items>
-			            <UiString>[Normal] Type 1</UiString>
-			            <UiString>[Normal] Type 2</UiString>
-			            <UiString>[Normal] Type 3</UiString>
-			            <UiString>[Normal] Type 4</UiString>
-			            <UiString>[Extreme] Type 1</UiString>
-			            <UiString>[Extreme] Type 2</UiString>
-			            <UiString>[Extreme] Type 3</UiString>
-			            <UiString>[Extreme] Type 4</UiString>
-			            <UiString>[Fast] Type 1</UiString>
-			            <UiString>[Fast] Type 2</UiString>
-			            <UiString>[Fast] Type 3</UiString>
-			            <UiString>[Fast] Type 4</UiString>
-			            <UiString>[Slight] Type 1</UiString>
-			            <UiString>[Slight] Type 2</UiString>
-			            <UiString>[Slight] Type 3</UiString>
-			            <UiString>[Slight] Type 4</UiString>
+			            <String>[Normal] Type 1</String>
+			            <String>[Normal] Type 2</String>
+			            <String>[Normal] Type 3</String>
+			            <String>[Normal] Type 4</String>
+			            <String>[Extreme] Type 1</String>
+			            <String>[Extreme] Type 2</String>
+			            <String>[Extreme] Type 3</String>
+			            <String>[Extreme] Type 4</String>
+			            <String>[Fast] Type 1</String>
+			            <String>[Fast] Type 2</String>
+			            <String>[Fast] Type 3</String>
+			            <String>[Fast] Type 4</String>
+			            <String>[Slight] Type 1</String>
+			            <String>[Slight] Type 2</String>
+			            <String>[Slight] Type 3</String>
+			            <String>[Slight] Type 4</String>
 		            </_Items>
 				</UiComboBox>
 
@@ -313,10 +313,10 @@
 		            TabIndex = "5"
 		            >
 		        <_Items>
-		            <UiString>50</UiString>
-		            <UiString>66</UiString>
-		            <UiString>75</UiString>
-		            <UiString>100</UiString>
+		            <String>50</String>
+		            <String>66</String>
+		            <String>75</String>
+		            <String>100</String>
 		        </_Items>
 		    </UiComboBox>
 
@@ -432,7 +432,7 @@
 		            Text = "Default Singer(&amp;S)"
 		            />
 
-		    <UiNumericUpDownEx id="numBuffer"
+		    <NumericUpDownEx id="numBuffer"
 
 		            Location = "(216, 148)"
 		            Maximum = "1000"
@@ -443,7 +443,7 @@
 		            Value = "1000"
 		            />
 
-		    <UiNumericUpDownEx id="numWait"
+		    <NumericUpDownEx id="numWait"
 
 		            Enabled = "false"
 		            Location = "(216, 87)"
@@ -455,7 +455,7 @@
 		            Value = "300"
 		            />
 
-		    <UiNumericUpDownEx id="numPreSendTime"
+		    <NumericUpDownEx id="numPreSendTime"
 
 		            Location = "(216, 56)"
 		            Maximum = "5000"
@@ -814,7 +814,7 @@
 	            Text = "UI Language"
 	            />
 
-	    <UiNumericUpDownEx id="numTrackHeight"
+	    <NumericUpDownEx id="numTrackHeight"
 
 	            Location = "(210, 139)"
 	            Maximum = "50"
@@ -882,7 +882,7 @@
 			            TabIndex = "89"
 			            />
 
-			    <UiNumericUpDownEx id="numMaximumFrameRate"
+			    <NumericUpDownEx id="numMaximumFrameRate"
 
 			            Location = "(176, 21)"
 			            Maximum = "1000"
@@ -923,7 +923,7 @@
 			            Text = "milli second"
 			            />
 
-			    <UiNumericUpDownEx id="numMouseHoverTime"
+			    <NumericUpDownEx id="numMouseHoverTime"
 
 			            Location = "(176, 48)"
 			            Maximum = "2000"
@@ -973,7 +973,7 @@
 			            Text = "Mouse wheel Rate"
 			            />
 
-			    <UiNumericUpDownEx id="numericUpDownEx1"
+			    <NumericUpDownEx id="numericUpDownEx1"
 
 			            Location = "(199, 21)"
 			            Maximum = "50"
@@ -1136,12 +1136,13 @@
 			            UseCompatibleStateImageBehavior = "false"
 			            View = "Details"
 			            >
-		            <_Columns>
-					    <UiColumnHeader id="columnHeaderPath"
+			        <!-- kind of nasty workaround... -->
+		            <_Cadencii.Gui.Toolkit.UiListView.Columns>
+					    <UiListViewColumn id="columnHeaderPath"
 					            Text = "path"
 					            Width = "280"
 					            />
-		            </_Columns>
+		            </_Cadencii.Gui.Toolkit.UiListView.Columns>
 	            </UiListView>
 			    <UiLabel id="lblResampler"
 			            AutoSize = "true"
@@ -1251,50 +1252,50 @@
 	            View = "Details"
 	            >
             <_Groups>
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
             </_Groups>
 	        </UiListView>
 	    </UiTabPage>
@@ -1349,7 +1350,7 @@
 		            Text = "Automatical Backup"
 		            UseVisualStyleBackColor = "true"
 		            />
-		    <UiNumericUpDownEx id="numAutoBackupInterval"
+		    <NumericUpDownEx id="numAutoBackupInterval"
 
 		            Location = "(256, 22)"
 		            Minimum = "1"
@@ -1388,22 +1389,22 @@
 		            TabIndex = "11"
 		            >
 	            <_Items>
-		            <UiString>[Normal] Type 1</UiString>
-		            <UiString>[Normal] Type 2</UiString>
-		            <UiString>[Normal] Type 3</UiString>
-		            <UiString>[Normal] Type 4</UiString>
-		            <UiString>[Extreme] Type 1</UiString>
-		            <UiString>[Extreme] Type 2</UiString>
-		            <UiString>[Extreme] Type 3</UiString>
-		            <UiString>[Extreme] Type 4</UiString>
-		            <UiString>[Fast] Type 1</UiString>
-		            <UiString>[Fast] Type 2</UiString>
-		            <UiString>[Fast] Type 3</UiString>
-		            <UiString>[Fast] Type 4</UiString>
-		            <UiString>[Slight] Type 1</UiString>
-		            <UiString>[Slight] Type 2</UiString>
-		            <UiString>[Slight] Type 3</UiString>
-		            <UiString>[Slight] Type 4</UiString>
+		            <String>[Normal] Type 1</String>
+		            <String>[Normal] Type 2</String>
+		            <String>[Normal] Type 3</String>
+		            <String>[Normal] Type 4</String>
+		            <String>[Extreme] Type 1</String>
+		            <String>[Extreme] Type 2</String>
+		            <String>[Extreme] Type 3</String>
+		            <String>[Extreme] Type 4</String>
+		            <String>[Fast] Type 1</String>
+		            <String>[Fast] Type 2</String>
+		            <String>[Fast] Type 3</String>
+		            <String>[Fast] Type 4</String>
+		            <String>[Slight] Type 1</String>
+		            <String>[Slight] Type 2</String>
+		            <String>[Slight] Type 3</String>
+		            <String>[Slight] Type 4</String>
 	            </_Items>
 			</UiComboBox>
         </UiGroupBox>
