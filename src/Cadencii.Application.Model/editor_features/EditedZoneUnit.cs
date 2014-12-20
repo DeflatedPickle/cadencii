@@ -13,7 +13,7 @@
  */
 using System;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     public class EditedZoneUnit : ICloneable, IComparable<EditedZoneUnit>

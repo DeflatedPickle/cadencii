@@ -14,7 +14,7 @@
 
 using System;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     public delegate void SoloChangedEventHandler(int track, bool solo);

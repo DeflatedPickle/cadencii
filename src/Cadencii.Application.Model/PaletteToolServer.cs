@@ -25,6 +25,7 @@ using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
 using cadencii;
 using Cadencii.Application.Media;
+using Cadencii.Application.Plugins;
 
 namespace Cadencii.Application
 {

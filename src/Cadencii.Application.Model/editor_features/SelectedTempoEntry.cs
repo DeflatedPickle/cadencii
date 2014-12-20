@@ -12,10 +12,10 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using Cadencii.Media.Vsq;
+using Cadencii.Media;
 
-namespace cadencii
+namespace Cadencii.Application
 {
-
     public class SelectedTempoEntry
     {
         public TempoTableEntry original;
@@ -27,5 +27,4 @@ namespace cadencii
             editing = editing_;
         }
     }
-
 }

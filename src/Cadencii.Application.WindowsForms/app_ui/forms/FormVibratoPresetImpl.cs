@@ -23,6 +23,7 @@ using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
 using Cadencii.Application.Drawing;
+using Cadencii.Media;
 
 
 namespace Cadencii.Application.Forms

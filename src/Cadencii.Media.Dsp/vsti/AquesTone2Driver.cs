@@ -11,6 +11,9 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
+using Cadencii.Media;
+
+
 #if ENABLE_AQUESTONE
 
 using System;

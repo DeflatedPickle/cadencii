@@ -15,9 +15,7 @@
 using System;
 using Cadencii.Utilities;
 
-namespace cadencii
+namespace Cadencii.Application
 {
-
     public delegate void SelectedCurveChangedEventHandler(Object sender, CurveType curve_type);
-
 }

@@ -17,6 +17,7 @@ using System.Text;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 using cadencii;
+using Cadencii.Media.Vsq;
 
 namespace Cadencii.Application.Forms
 {

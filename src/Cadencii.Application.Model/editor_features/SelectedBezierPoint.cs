@@ -14,7 +14,7 @@
 using Cadencii.Gui;
 
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     public class SelectedBezierPoint

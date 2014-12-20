@@ -13,7 +13,7 @@
  */
 using System;
 
-namespace Cadencii.Media.Vsq
+namespace Cadencii.Media
 {
 
     [Serializable]

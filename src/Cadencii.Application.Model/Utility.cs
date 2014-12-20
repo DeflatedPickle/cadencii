@@ -32,6 +32,7 @@ using cadencii;
 using Cadencii.Application.Media;
 using Cadencii.Application.Controls;
 using Cadencii.Application.Drawing;
+using Cadencii.Media;
 
 namespace Cadencii.Application
 {

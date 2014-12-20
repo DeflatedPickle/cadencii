@@ -17,7 +17,7 @@ using System.Linq;
 using cadencii;
 using Cadencii.Gui;
 
-namespace Cadencii.Application.Drawing
+namespace Cadencii.Media.Vsq
 {
 
     /// <summary>

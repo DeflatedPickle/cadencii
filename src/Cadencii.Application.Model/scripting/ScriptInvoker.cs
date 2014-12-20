@@ -19,7 +19,7 @@ using Cadencii.Application;
 
 
 
-namespace cadencii
+namespace Cadencii.Application.Scripts
 {
     public delegate bool EditVsqScriptDelegate(VsqFile vsq);
     public delegate bool EditVsqScriptDelegateEx(VsqFileEx vsq);

@@ -14,11 +14,8 @@
 using System;
 using cadencii;
 
-
-
-namespace cadencii
+namespace Cadencii.Media
 {
-
     public class KanaDeRomanization
     {
         const int _MAX_MATCH = 4;

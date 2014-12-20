@@ -16,7 +16,7 @@ using System.Collections.Generic;
 using cadencii.java.util;
 using cadencii;
 
-namespace Cadencii.Media.Vsq
+namespace Cadencii.Media
 {
 
 #if DEBUG

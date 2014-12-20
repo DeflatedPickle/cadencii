@@ -34,6 +34,7 @@ using Cadencii.Application.Drawing;
 using Cadencii.Application.Controls;
 
 using TS = Cadencii.Application.Controls.TrackSelectorConsts;
+using Cadencii.Media;
 
 namespace Cadencii.Application.Models
 {

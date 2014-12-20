@@ -13,7 +13,7 @@
  */
 using System;
 
-namespace cadencii
+namespace Cadencii.Media.Vsq
 {
 
     /// <summary>

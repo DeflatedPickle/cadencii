@@ -24,10 +24,11 @@ using cadencii.apputil;
 using Cadencii.Media.Vsq;
 using Cadencii.Utilities;
 using Cadencii.Application;
+using Cadencii.Application.Scripts;
 
 
 
-namespace cadencii
+namespace Cadencii.Application.Plugins
 {
     /// <summary>
     /// プラグインファイルを読み込み、コンパイルするクラス

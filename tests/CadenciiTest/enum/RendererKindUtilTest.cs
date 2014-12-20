@@ -4,6 +4,7 @@ using System.Text;
 using NUnit.Framework;
 using cadencii;
 using Cadencii.Application.Drawing;
+using Cadencii.Media.Vsq;
 
 namespace cadencii.test.enums
 {

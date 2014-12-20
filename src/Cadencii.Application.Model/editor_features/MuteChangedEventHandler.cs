@@ -14,9 +14,7 @@
 
 using System;
 
-namespace cadencii
+namespace Cadencii.Application
 {
-
     public delegate void MuteChangedEventHandler(int track, bool mute);
-
 }

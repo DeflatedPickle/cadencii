@@ -13,7 +13,7 @@
  */
 using Cadencii.Media.Vsq;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     public class SelectedTimesigEntry

@@ -5,6 +5,7 @@ using cadencii.apputil;
 using cadencii.utau;
 using Cadencii.Application;
 using Cadencii.Application.Media;
+using Cadencii.Application.Scripts;
 
 public class ImportOtoIniConfig
 {

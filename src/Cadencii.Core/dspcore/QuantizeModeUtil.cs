@@ -15,7 +15,7 @@ using System;
 
 
 
-namespace cadencii
+namespace Cadencii.Media
 {
 
     public class QuantizeModeUtil

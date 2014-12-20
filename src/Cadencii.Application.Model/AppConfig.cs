@@ -22,6 +22,7 @@ using Cadencii.Media.Vsq;
 using cadencii.core;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Media;
 
 
 

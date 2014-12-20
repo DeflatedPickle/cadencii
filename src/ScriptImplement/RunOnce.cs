@@ -2,6 +2,7 @@ using cadencii;
 using Cadencii.Media.Vsq;
 using Cadencii.Application;
 using Cadencii.Application.Media;
+using Cadencii.Application.Scripts;
 
 public class RunOnce
 {

@@ -72,12 +72,10 @@
     <Compile Include="music\WaveUnitConfig.cs" />
     <Compile Include="music\WaveUnitConfigElement.cs" />
     <Compile Include="music\KeySoundPlayer.cs" />
-    <Compile Include="music\DefaultVibratoLengthUtil.cs" />
     <Compile Include="drawing\DrawObject.cs" />
     <Compile Include="drawing\DrawObjectType.cs" />
     <Compile Include="drawing\LineGraphDrawer.cs" />
     <Compile Include="drawing\RenderedStatus.cs" />
-    <Compile Include="drawing\RendererKindUtil.cs" />
     <Compile Include="drawing\WaveDrawContext.cs" />
     <Compile Include="music\VsqBPListComparisonContext.cs" />
     <Compile Include="editor_features\EditedStateChangedEventHandler.cs">
@@ -272,6 +270,7 @@
     <Compile Include="app_ui\controls\WaveformZoom.cs" />
     <Compile Include="app_ui\models\WaveformZoomModel.cs" />
     <Compile Include="app_ui\models\WaveViewModel.cs" />
+    <Compile Include="editor_features\FormMidiImExportConfig.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

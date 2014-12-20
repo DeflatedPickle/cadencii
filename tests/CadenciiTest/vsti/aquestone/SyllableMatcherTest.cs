@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using NUnit.Framework;
 using cadencii;
+using Cadencii.Media;
 
 namespace cadencii.test.vsti.aquestone
 {

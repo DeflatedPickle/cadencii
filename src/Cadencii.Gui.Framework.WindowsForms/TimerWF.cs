@@ -2,7 +2,7 @@ using System;
 using System.ComponentModel;
 using Cadencii.Gui;
 
-namespace cadencii
+namespace Cadencii.Gui
 {
 	public class TimerWF : Timer
 	{

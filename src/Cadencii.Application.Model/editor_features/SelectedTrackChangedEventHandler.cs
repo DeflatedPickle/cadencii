@@ -14,7 +14,7 @@
 
 using System;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     public delegate void SelectedTrackChangedEventHandler(Object sender, int track);

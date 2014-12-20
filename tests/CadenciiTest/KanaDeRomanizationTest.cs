@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using cadencii;
 using NUnit.Framework;
+using Cadencii.Media;
 
 namespace cadencii.test
 {

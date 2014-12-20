@@ -20,6 +20,7 @@ using cadencii;
 using Cadencii.Application.Media;
 using Cadencii.Application.Forms;
 using Cadencii.Application.Drawing;
+using Cadencii.Media;
 
 namespace Cadencii.Application.Models
 {

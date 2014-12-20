@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Cadencii.Media.Vsq;
 using Cadencii.Gui.Toolkit;
 using cadencii;
+using Cadencii.Media;
 
 namespace Cadencii.Application.Forms
 {

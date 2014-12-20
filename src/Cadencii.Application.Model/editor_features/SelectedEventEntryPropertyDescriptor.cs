@@ -19,7 +19,7 @@ using cadencii.apputil;
 
 
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     public class SelectedEventEntryPropertyDescriptor : PropertyDescriptor

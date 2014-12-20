@@ -35,6 +35,7 @@ using Cadencii.Application.Controls;
 using Cadencii.Application.Media;
 using Cadencii.Media;
 using Cadencii.Application.Drawing;
+using Cadencii.Application.Scripts;
 
 namespace Cadencii.Application.Forms
 {

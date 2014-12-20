@@ -24,6 +24,7 @@ using Cadencii.Media.Vsq;
 using cadencii.apputil;
 //using cadencii.uicore;
 using Cadencii.Utilities;
+using Cadencii.Media;
 
 
 

@@ -9,6 +9,7 @@ using cadencii;
 using Cadencii.Utilities;
 using Cadencii.Media.Vsq;
 using Cadencii.Application;
+using Cadencii.Application.Scripts;
 
 
 

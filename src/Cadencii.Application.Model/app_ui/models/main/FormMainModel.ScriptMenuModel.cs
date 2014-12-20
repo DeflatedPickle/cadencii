@@ -4,6 +4,7 @@ using Cadencii.Utilities;
 using cadencii;
 using Cadencii.Application.Media;
 using Cadencii.Application.Forms;
+using Cadencii.Application.Scripts;
 
 namespace Cadencii.Application.Models
 {

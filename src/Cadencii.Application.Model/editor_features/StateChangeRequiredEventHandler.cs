@@ -15,9 +15,7 @@
 using System;
 using Cadencii.Gui;
 
-namespace cadencii
+namespace Cadencii.Application
 {
-
     public delegate void StateChangeRequiredEventHandler(Object sender, PanelState state);
-
 }

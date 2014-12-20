@@ -15,7 +15,7 @@
 using System;
 using System.ComponentModel;
 
-namespace cadencii
+namespace Cadencii.Application
 {
     public class SelectedEventEntryTypeConverter : TypeConverter
     {

@@ -4,6 +4,7 @@ using Cadencii.Media.Vsq;
 using System;
 using System.Collections.Generic;
 using Cadencii.Utilities;
+using Cadencii.Media;
 
 namespace cadencii.test.dsp.generator
 {

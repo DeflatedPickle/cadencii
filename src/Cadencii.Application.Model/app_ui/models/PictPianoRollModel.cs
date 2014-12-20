@@ -26,6 +26,7 @@ using Cadencii.Application.Media;
 using cadencii;
 using Cadencii.Application.Drawing;
 using Cadencii.Application.Controls;
+using Cadencii.Media;
 
 namespace Cadencii.Application.Models
 {

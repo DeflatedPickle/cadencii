@@ -17,7 +17,7 @@ using System.Text;
 using System.IO;
 using System.Linq;
 
-namespace cadencii
+namespace Cadencii.Application.Plugins
 {
     abstract class ScriptProcessor
     {

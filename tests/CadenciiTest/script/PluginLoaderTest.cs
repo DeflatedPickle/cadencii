@@ -7,6 +7,8 @@ using cadencii;
 using Microsoft.CSharp;
 using System.IO;
 using Cadencii.Utilities;
+using Cadencii.Application.Plugins;
+using Cadencii.Application.Scripts;
 
 namespace cadencii
 {

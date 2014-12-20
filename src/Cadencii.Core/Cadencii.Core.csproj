@@ -51,7 +51,6 @@
     <Compile Include="ICommandRunnable.cs" />
     <Compile Include="IComparisonContext.cs" />
     <Compile Include="BgmFile.cs" />
-    <Compile Include="RendererKind.cs" />
     <Compile Include="SequenceConfig.cs" />
     <Compile Include="ApplicationGlobal.cs" />
     <Compile Include="EditorStatus.cs" />
@@ -74,13 +73,16 @@
     <Compile Include="dspcore\TempoVectorSearchContext.cs" />
     <Compile Include="vsq\SingerConfig.cs" />
     <Compile Include="vsq\TransCodeUtil.cs" />
-    <Compile Include="FormMidiImExportConfig.cs" />
     <Compile Include="MidiPortConfig.cs" />
     <Compile Include="EditorConfig.cs" />
     <Compile Include="ISO639.cs" />
     <Compile Include="ValuePairOfStringArrayOfKeys.cs" />
     <Compile Include="VersionString.cs" />
     <Compile Include="MMDebug.cs" />
+    <Compile Include="dspcore\QuantizeModeUtil.cs" />
+    <Compile Include="dspcore\DefaultVibratoLengthUtil.cs" />
+    <Compile Include="dspcore\RendererKind.cs" />
+    <Compile Include="dspcore\RendererKindUtil.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

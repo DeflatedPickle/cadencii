@@ -15,9 +15,8 @@ using System;
 using System.Collections.Generic;
 using cadencii.java.util;
 
-namespace cadencii
+namespace Cadencii.Application
 {
-
     public class EditedZone : ICloneable
     {
         private List<EditedZoneUnit> mSeries = new List<EditedZoneUnit>();

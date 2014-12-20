@@ -13,9 +13,8 @@
  */
 using System;
 
-namespace cadencii
+namespace Cadencii.Media
 {
-
     public enum DefaultVibratoLengthEnum
     {
         L50,

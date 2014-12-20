@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using Cadencii.Media.Vsq;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Media;
 
 namespace cadencii.synthesizer
 {

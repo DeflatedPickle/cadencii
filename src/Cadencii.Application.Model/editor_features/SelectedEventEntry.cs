@@ -18,10 +18,11 @@ using cadencii.utau;
 using Cadencii.Utilities;
 using Cadencii.Application.Media;
 using Cadencii.Application;
+using Cadencii.Media;
+using cadencii;
 
-namespace cadencii
+namespace Cadencii.Application
 {
-
     struct PositionSpec
     {
         public int measure;

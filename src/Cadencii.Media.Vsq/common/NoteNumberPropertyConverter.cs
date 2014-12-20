@@ -20,7 +20,7 @@ using Cadencii.Media.Vsq;
 
 
 
-namespace cadencii
+namespace Cadencii.Media.Vsq
 {
 
     public class NoteNumberPropertyConverter : TypeConverter

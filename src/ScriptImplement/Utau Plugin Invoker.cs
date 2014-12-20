@@ -10,6 +10,8 @@ using Cadencii.Media.Vsq;
 using cadencii;
 using Cadencii.Utilities;
 using Cadencii.Application;
+using Cadencii.Application.Scripts;
+using Cadencii.Media;
 
 
 

@@ -15,7 +15,7 @@
 using System;
 using System.ComponentModel;
 
-namespace cadencii
+namespace Cadencii.Media.Vsq
 {
 
     [TypeConverter(typeof(NoteNumberPropertyConverter))]

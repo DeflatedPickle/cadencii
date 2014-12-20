@@ -18,7 +18,7 @@ using cadencii.java.util;
 
 
 
-namespace cadencii
+namespace Cadencii.Media
 {
     /// <summary>
     /// AquesTone2 で利用できる音素を、歌詞文字列から検索するクラス

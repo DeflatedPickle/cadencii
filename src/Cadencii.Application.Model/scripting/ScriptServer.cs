@@ -21,10 +21,12 @@ using Cadencii.Utilities;
 using Cadencii.Media.Vsq;
 using Cadencii.Application;
 using Cadencii.Gui.Toolkit;
+using cadencii;
+using Cadencii.Application.Plugins;
 
 
 
-namespace cadencii
+namespace Cadencii.Application.Scripts
 {
     /// <summary>
     /// スクリプトを管理するクラス

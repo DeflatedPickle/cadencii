@@ -21,6 +21,7 @@ using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
+using Cadencii.Media;
 
 
 namespace Cadencii.Application.Forms

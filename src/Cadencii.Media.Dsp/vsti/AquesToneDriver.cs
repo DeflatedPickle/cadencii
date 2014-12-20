@@ -18,6 +18,7 @@ using System.Linq;
 using System.Collections.Generic;
 using cadencii;
 using Cadencii.Media.Vsq;
+using Cadencii.Media;
 
 
 

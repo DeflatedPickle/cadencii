@@ -14,9 +14,7 @@
 
 using System;
 
-namespace cadencii
+namespace Cadencii.Application
 {
-
     public delegate void PanpotChangedEventHandler(int track, int panpot);
-
 }

@@ -8,6 +8,7 @@ using Cadencii.Gui;
 using Cadencii.Utilities;
 using cadencii;
 using Cadencii.Application.Media;
+using Cadencii.Media;
 
 namespace Cadencii.Application.Models
 {

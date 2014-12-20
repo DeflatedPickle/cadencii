@@ -15,8 +15,10 @@ using System.Collections.Generic;
 using Cadencii.Utilities;
 using Cadencii.Application.Media;
 using Cadencii.Application;
+using cadencii;
+using Cadencii.Media;
 
-namespace cadencii
+namespace Cadencii.Application
 {
 
     using System;

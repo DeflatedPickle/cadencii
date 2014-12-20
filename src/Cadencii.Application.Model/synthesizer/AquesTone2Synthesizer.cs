@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using cadencii.dsp.v2.generator;
 using Cadencii.Media.Vsq;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Media;
 
 namespace cadencii.synthesizer
 {

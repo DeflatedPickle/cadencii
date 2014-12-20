@@ -16,7 +16,7 @@ using Cadencii.Media.Vsq;
 using cadencii.java.util;
 using Cadencii.Gui;
 
-namespace cadencii
+namespace Cadencii.Media
 {
 
     /// <summary>

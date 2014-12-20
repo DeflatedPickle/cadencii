@@ -15,6 +15,7 @@ using System;
 using cadencii.java.util;
 using Cadencii.Media.Vsq;
 using cadencii;
+using Cadencii.Media;
 
 namespace Cadencii.Application.Drawing
 {

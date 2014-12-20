@@ -21,6 +21,7 @@ using Cadencii.Utilities;
 
 using App = System.Windows.Forms.Application;
 using Cadencii.Application.Forms;
+using Cadencii.Application.Scripts;
 
 namespace Cadencii.Application.Forms
 {

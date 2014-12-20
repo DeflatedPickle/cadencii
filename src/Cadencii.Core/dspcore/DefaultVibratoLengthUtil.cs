@@ -14,7 +14,7 @@
 using System;
 using cadencii;
 
-namespace Cadencii.Application.Media
+namespace Cadencii.Media
 {
 
     public class DefaultVibratoLengthUtil
