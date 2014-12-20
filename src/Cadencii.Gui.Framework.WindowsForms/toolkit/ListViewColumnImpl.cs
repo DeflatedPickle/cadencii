@@ -23,13 +23,13 @@ namespace Cadencii.Gui.Toolkit
 	{
 		System.Windows.Forms.ColumnHeader impl;
 
-		public ListViewColumnImpl (System.Windows.Forms.ColumnHeader impl)
+		public ListViewColumnImpl ()
 		{
-			this.impl = impl;
 		}
 
 		public object Native {
 			get { return impl; }
+            set { impl = (System.Windows.Forms.ColumnHeader) value; }
 		}
 
 		int UiListViewColumn.Width {

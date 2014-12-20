@@ -90,7 +90,7 @@ namespace Cadencii.Application.Forms
         {
 			var item = ApplicationUIHost.Create<UiListViewItem> (new string[] { value });
             if (listDictionaries.Columns.Count < 1) {
-				listDictionaries.Columns.Add(ApplicationUIHost.Create<UiListViewColumn> (""));
+				listDictionaries.Columns.Add(ApplicationUIHost.Create<UiListViewColumn> ());
             }
             item.Selected = selected;
             listDictionaries.AddItem (item);

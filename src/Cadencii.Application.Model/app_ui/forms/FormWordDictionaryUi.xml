@@ -25,7 +25,7 @@
             View = "List"
             >
         <_Columns>
-        	<UiColumnHeader />
+        	<UiListViewColumn />
         </_Columns>
         <_Groups>
 			<UiListViewGroup id="listViewGroup1"

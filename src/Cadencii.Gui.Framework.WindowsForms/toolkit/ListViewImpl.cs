@@ -73,6 +73,8 @@ namespace Cadencii.Gui.Toolkit
 
 			protected override void InsertItem (int index, UiListViewColumn item)
 			{
+                if (item.Native == null)
+                    item.Native = new System.Windows.Forms.ColumnHeader (item.Text) { Width = item.Width };
 				base.InsertItem (index, item);
 				lv.Columns.Add ((System.Windows.Forms.ColumnHeader) item.Native);
 			}

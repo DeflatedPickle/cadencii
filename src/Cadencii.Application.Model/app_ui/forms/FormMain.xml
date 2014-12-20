@@ -313,7 +313,7 @@
 				            />
 			            <_Panel2
             				Anchor = "Bottom,Left,Right"
-				            BorderColor = "$(112, 112, 112)"
+				            BorderColor = "(112, 112, 112)"
 				            BorderStyle = "FixedSingle"
 				            Location = "(0, 29)"
 				            Margin = "(0)"

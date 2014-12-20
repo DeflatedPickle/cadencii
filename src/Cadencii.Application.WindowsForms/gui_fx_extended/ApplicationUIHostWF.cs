@@ -177,7 +177,7 @@ namespace Cadencii.Application.Forms
 					continue;
 				else {
 					var t = o.GetType ();
-					var p = t.GetProperty (a.LocalName);
+					var p = t.GetProperty (a.LocalName, bf | BindingFlags.DeclaredOnly) ?? t.GetProperty (a.LocalName, bf);
 					if (p == null)
 						throw new ArgumentException ("Property '" + a.LocalName + "' was not found");
 					var v = Deserialize (roots, a.Value, p.PropertyType);

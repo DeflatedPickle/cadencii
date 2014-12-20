@@ -1,4 +1,4 @@
-﻿<Form id="preference"
+﻿<UiForm id="preference"
         AcceptButton = "#btnOK"
         AutoScaleDimensions = "(96, 96)"
         AutoScaleMode = "Dpi"
@@ -13,7 +13,7 @@
         StartPosition = "Manual"
         Text = "Preference"
         >
-    <TabControl id="tabPreference"
+    <UiTabControl id="tabPreference"
 
             Anchor = "Top,Bottom,Left,Right"
             Location = "(7, 7)"
@@ -24,7 +24,7 @@
             Size = "(462, 515)"
             TabIndex = "0"
             >
-	    <TabPage id="tabSequence"
+	    <UiTabPage id="tabSequence"
 	            Location = "(4, 40)"
 	            Name = "tabSequence"
 	            Padding = "(3)"
@@ -33,7 +33,7 @@
 	            Text = "Sequence"
 	            UseVisualStyleBackColor = "true"
 	            >
-		    <NumberTextBox id="txtAutoVibratoThresholdLength"
+		    <UiNumberTextBox id="txtAutoVibratoThresholdLength"
 
 		            Anchor = "Top,Right"
 		            BackColor = "$(240,128,128)"
@@ -45,7 +45,7 @@
 		            Type = "Integer"
 		            />
 
-		    <Label id="bLabel1"
+		    <UiLabel id="bLabel1"
 
 		            Anchor = "Top,Right"
 		            BackColor = "$SystemColors.ActiveBorder"
@@ -55,7 +55,7 @@
 		            TabIndex = "36"
 		            />
 
-		    <RadioButton id="radioUserDefined"
+		    <UiRadioButton id="radioUserDefined"
 
 		            AutoSize = "true"
 		            Location = "(246, 176)"
@@ -66,7 +66,7 @@
 		            UseVisualStyleBackColor = "true"
 		            />
 
-		    <Label id="lblAutoVibratoType"
+		    <UiLabel id="lblAutoVibratoType"
 
 		            AutoSize = "true"
 		            Location = "(13, 155)"
@@ -76,7 +76,7 @@
 		            Text = "Auto Vibrato Type"
 		            />
 
-		    <RadioButton id="radioVocaloidEditorCompatible"
+		    <UiRadioButton id="radioVocaloidEditorCompatible"
 
 		            AutoSize = "true"
 		            Checked = "true"
@@ -89,7 +89,7 @@
 		            UseVisualStyleBackColor = "true"
 		            />
 
-		    <GroupBox id="groupUserDefined"
+		    <UiGroupBox id="groupUserDefined"
 		            Enabled = "false"
 		            Location = "(63, 291)"
 		            Name = "groupUserDefined"
@@ -98,7 +98,7 @@
 		            TabStop = "false"
 		            Text = "User Defined"
 		            >
-			    <ComboBox id="comboAutoVibratoTypeCustom"
+			    <UiComboBox id="comboAutoVibratoTypeCustom"
 
 			            FormattingEnabled = "true"
 			            Location = "(225, 22)"
@@ -107,7 +107,7 @@
 			            TabIndex = "14"
 			            />
 
-			    <Label id="lblAutoVibratoTypeCustom"
+			    <UiLabel id="lblAutoVibratoTypeCustom"
 
 			            AutoSize = "true"
 			            Location = "(18, 25)"
@@ -116,9 +116,9 @@
 			            TabIndex = "13"
 			            Text = "Vibrato Type: Custom(&amp;T)"
 			            />
-			</GroupBox>
+			</UiGroupBox>
 
-		    <Label id="label6"
+		    <UiLabel id="label6"
 
 		            Anchor = "Top,Right"
 		            AutoSize = "true"
@@ -129,7 +129,7 @@
 		            Text = "clocks"
 		            />
 
-		    <Label id="lblAutoVibratoThresholdLength"
+		    <UiLabel id="lblAutoVibratoThresholdLength"
 
 		            AutoSize = "true"
 		            Location = "(35, 125)"
@@ -139,7 +139,7 @@
 		            Text = "Minimum note length for Automatic Vibrato(&amp;M)"
 		            />
 
-		    <Label id="label2"
+		    <UiLabel id="label2"
 
 		            AutoSize = "true"
 		            Location = "(317, 38)"
@@ -149,7 +149,7 @@
 		            Text = "clocks"
 		            />
 
-		    <CheckBox id="chkEnableAutoVibrato"
+		    <UiCheckBox id="chkEnableAutoVibrato"
 
 		            AutoSize = "true"
 		            Location = "(15, 67)"
@@ -160,7 +160,7 @@
 		            UseVisualStyleBackColor = "true"
 		            />
 
-		    <ComboBox id="comboResolControlCurve"
+		    <UiComboBox id="comboResolControlCurve"
 
 		            FormattingEnabled = "true"
 		            Location = "(210, 35)"
@@ -169,7 +169,7 @@
 		            TabIndex = "1"
 		            />
 
-		    <Label id="lblResolControlCurve"
+		    <UiLabel id="lblResolControlCurve"
 
 		            AutoSize = "true"
 		            Location = "(35, 38)"
@@ -179,7 +179,7 @@
 		            Text = "Control Curve(&amp;C)"
 		            />
 
-		    <Label id="label1"
+		    <UiLabel id="label1"
 
 		            BackColor = "$SystemColors.ActiveBorder"
 		            Location = "(115, 17)"
@@ -188,7 +188,7 @@
 		            TabIndex = "25"
 		            />
 
-		    <Label id="lblResolution"
+		    <UiLabel id="lblResolution"
 
 		            AutoSize = "true"
 		            Location = "(15, 13)"
@@ -198,7 +198,7 @@
 		            Text = "Resolution(VSTi)"
 		            />
 
-		    <Label id="label7"
+		    <UiLabel id="label7"
 
 		            Anchor = "Top,Right"
 		            BackColor = "$SystemColors.ActiveBorder"
@@ -208,7 +208,7 @@
 		            TabIndex = "5"
 		            />
 
-		    <GroupBox id="groupVocaloidEditorCompatible"
+		    <UiGroupBox id="groupVocaloidEditorCompatible"
 
 		            Location = "(63, 204)"
 		            Name = "groupVocaloidEditorCompatible"
@@ -217,7 +217,7 @@
 		            TabStop = "false"
 		            Text = "VOCALOID Editor Compatible"
 		            >
-			    <ComboBox id="comboAutoVibratoType2"
+			    <UiComboBox id="comboAutoVibratoType2"
 
 			            FormattingEnabled = "true"
 			            Location = "(225, 51)"
@@ -226,26 +226,26 @@
 			            TabIndex = "14"
 			            >
 		            <_Items>
-			            <String>[Normal] Type 1</String>
-			            <String>[Normal] Type 2</String>
-			            <String>[Normal] Type 3</String>
-			            <String>[Normal] Type 4</String>
-			            <String>[Extreme] Type 1</String>
-			            <String>[Extreme] Type 2</String>
-			            <String>[Extreme] Type 3</String>
-			            <String>[Extreme] Type 4</String>
-			            <String>[Fast] Type 1</String>
-			            <String>[Fast] Type 2</String>
-			            <String>[Fast] Type 3</String>
-			            <String>[Fast] Type 4</String>
-			            <String>[Slight] Type 1</String>
-			            <String>[Slight] Type 2</String>
-			            <String>[Slight] Type 3</String>
-			            <String>[Slight] Type 4</String>
+			            <UiString>[Normal] Type 1</UiString>
+			            <UiString>[Normal] Type 2</UiString>
+			            <UiString>[Normal] Type 3</UiString>
+			            <UiString>[Normal] Type 4</UiString>
+			            <UiString>[Extreme] Type 1</UiString>
+			            <UiString>[Extreme] Type 2</UiString>
+			            <UiString>[Extreme] Type 3</UiString>
+			            <UiString>[Extreme] Type 4</UiString>
+			            <UiString>[Fast] Type 1</UiString>
+			            <UiString>[Fast] Type 2</UiString>
+			            <UiString>[Fast] Type 3</UiString>
+			            <UiString>[Fast] Type 4</UiString>
+			            <UiString>[Slight] Type 1</UiString>
+			            <UiString>[Slight] Type 2</UiString>
+			            <UiString>[Slight] Type 3</UiString>
+			            <UiString>[Slight] Type 4</UiString>
 		            </_Items>
-				</ComboBox>
+				</UiComboBox>
 
-			    <Label id="lblAutoVibratoType2"
+			    <UiLabel id="lblAutoVibratoType2"
 
 			            AutoSize = "true"
 			            Location = "(18, 54)"
@@ -255,7 +255,7 @@
 			            Text = "Vibrato Type: VOCALOID2(&amp;T)"
 			            />
 
-			    <ComboBox id="comboAutoVibratoType1"
+			    <UiComboBox id="comboAutoVibratoType1"
 
 			            FormattingEnabled = "true"
 			            Location = "(225, 22)"
@@ -264,26 +264,26 @@
 			            TabIndex = "12"
 			            >
 		            <_Items>
-			            <String>[Normal] Type 1</String>
-			            <String>[Normal] Type 2</String>
-			            <String>[Normal] Type 3</String>
-			            <String>[Normal] Type 4</String>
-			            <String>[Extreme] Type 1</String>
-			            <String>[Extreme] Type 2</String>
-			            <String>[Extreme] Type 3</String>
-			            <String>[Extreme] Type 4</String>
-			            <String>[Fast] Type 1</String>
-			            <String>[Fast] Type 2</String>
-			            <String>[Fast] Type 3</String>
-			            <String>[Fast] Type 4</String>
-			            <String>[Slight] Type 1</String>
-			            <String>[Slight] Type 2</String>
-			            <String>[Slight] Type 3</String>
-			            <String>[Slight] Type 4</String>
+			            <UiString>[Normal] Type 1</UiString>
+			            <UiString>[Normal] Type 2</UiString>
+			            <UiString>[Normal] Type 3</UiString>
+			            <UiString>[Normal] Type 4</UiString>
+			            <UiString>[Extreme] Type 1</UiString>
+			            <UiString>[Extreme] Type 2</UiString>
+			            <UiString>[Extreme] Type 3</UiString>
+			            <UiString>[Extreme] Type 4</UiString>
+			            <UiString>[Fast] Type 1</UiString>
+			            <UiString>[Fast] Type 2</UiString>
+			            <UiString>[Fast] Type 3</UiString>
+			            <UiString>[Fast] Type 4</UiString>
+			            <UiString>[Slight] Type 1</UiString>
+			            <UiString>[Slight] Type 2</UiString>
+			            <UiString>[Slight] Type 3</UiString>
+			            <UiString>[Slight] Type 4</UiString>
 		            </_Items>
-				</ComboBox>
+				</UiComboBox>
 
-			    <Label id="lblAutoVibratoType1"
+			    <UiLabel id="lblAutoVibratoType1"
 
 			            AutoSize = "true"
 			            Location = "(18, 25)"
@@ -292,9 +292,9 @@
 			            TabIndex = "11"
 			            Text = "Vibrato Type: VOCALOID1(&amp;T)"
 			            />
-	        </GroupBox>
+	        </UiGroupBox>
 
-		    <Label id="label3"
+		    <UiLabel id="label3"
 
 		            AutoSize = "true"
 		            Location = "(313, 96)"
@@ -304,7 +304,7 @@
 		            Text = "%"
 		            />
 
-		    <ComboBox id="comboVibratoLength"
+		    <UiComboBox id="comboVibratoLength"
 
 		            FormattingEnabled = "true"
 		            Location = "(213, 93)"
@@ -313,14 +313,14 @@
 		            TabIndex = "5"
 		            >
 		        <_Items>
-		            <String>50</String>
-		            <String>66</String>
-		            <String>75</String>
-		            <String>100</String>
+		            <UiString>50</UiString>
+		            <UiString>66</UiString>
+		            <UiString>75</UiString>
+		            <UiString>100</UiString>
 		        </_Items>
-		    </ComboBox>
+		    </UiComboBox>
 
-		    <Label id="lblVibratoLength"
+		    <UiLabel id="lblVibratoLength"
 
 		            AutoSize = "true"
 		            Location = "(35, 96)"
@@ -329,9 +329,9 @@
 		            TabIndex = "4"
 		            Text = "Default Vibrato Length(&amp;L)"
 		            />
-		</TabPage>
+		</UiTabPage>
 
-	    <TabPage id="tabAnother"
+	    <UiTabPage id="tabAnother"
 	            Location = "(4, 40)"
 	            Name = "tabAnother"
 	            Padding = "(3)"
@@ -340,7 +340,7 @@
 	            Text = "Other Settings"
 	            UseVisualStyleBackColor = "true"
 	            >
-		    <Label id="lblBufferSize"
+		    <UiLabel id="lblBufferSize"
 
 		            AutoSize = "true"
 		            Location = "(305, 150)"
@@ -350,7 +350,7 @@
 		            Text = "msec(100-1000)"
 		            />
 
-		    <Label id="lblBuffer"
+		    <UiLabel id="lblBuffer"
 
 		            AutoSize = "true"
 		            Location = "(29, 150)"
@@ -360,7 +360,7 @@
 		            Text = "Buffer Size(&amp;B)"
 		            />
 
-		    <Label id="label13"
+		    <UiLabel id="label13"
 
 		            AutoSize = "true"
 		            Location = "(305, 89)"
@@ -370,7 +370,7 @@
 		            Text = "msec(200-2000)"
 		            />
 
-		    <Label id="label12"
+		    <UiLabel id="label12"
 
 		            AutoSize = "true"
 		            Location = "(305, 58)"
@@ -380,7 +380,7 @@
 		            Text = "msec(500-5000)"
 		            />
 
-		    <ComboBox id="comboDefualtSinger"
+		    <UiComboBox id="comboDefualtSinger"
 
 		            Enabled = "false"
 		            FormattingEnabled = "true"
@@ -390,7 +390,7 @@
 		            TabIndex = "20"
 		            />
 
-		    <CheckBox id="chkChasePastEvent"
+		    <UiCheckBox id="chkChasePastEvent"
 
 		            AutoSize = "true"
 		            Enabled = "false"
@@ -402,7 +402,7 @@
 		            UseVisualStyleBackColor = "true"
 		            />
 
-		    <Label id="lblWait"
+		    <UiLabel id="lblWait"
 
 		            AutoSize = "true"
 		            Location = "(29, 89)"
@@ -412,7 +412,7 @@
 		            Text = "Waiting Time(&amp;W)"
 		            />
 
-		    <Label id="lblPreSendTime"
+		    <UiLabel id="lblPreSendTime"
 
 		            AutoSize = "true"
 		            Location = "(29, 58)"
@@ -422,7 +422,7 @@
 		            Text = "Pre-Send time(&amp;P)"
 		            />
 
-		    <Label id="lblDefaultSinger"
+		    <UiLabel id="lblDefaultSinger"
 
 		            AutoSize = "true"
 		            Location = "(29, 27)"
@@ -432,7 +432,7 @@
 		            Text = "Default Singer(&amp;S)"
 		            />
 
-		    <NumericUpDownEx id="numBuffer"
+		    <UiNumericUpDownEx id="numBuffer"
 
 		            Location = "(216, 148)"
 		            Maximum = "1000"
@@ -443,7 +443,7 @@
 		            Value = "1000"
 		            />
 
-		    <NumericUpDownEx id="numWait"
+		    <UiNumericUpDownEx id="numWait"
 
 		            Enabled = "false"
 		            Location = "(216, 87)"
@@ -455,7 +455,7 @@
 		            Value = "300"
 		            />
 
-		    <NumericUpDownEx id="numPreSendTime"
+		    <UiNumericUpDownEx id="numPreSendTime"
 
 		            Location = "(216, 56)"
 		            Maximum = "5000"
@@ -465,8 +465,8 @@
 		            TabIndex = "21"
 		            Value = "500"
 		            />
-	    </TabPage>
-	    <TabPage id="tabAppearance"
+	    </UiTabPage>
+	    <UiTabPage id="tabAppearance"
 	            Location = "(4, 40)"
 	            Name = "tabAppearance"
 	            Padding = "(3)"
@@ -475,7 +475,7 @@
 	            Text = "Appearance"
 	            UseVisualStyleBackColor = "true"
 	            >
-		    <GroupBox id="groupFont"
+		    <UiGroupBox id="groupFont"
 		            Location = "(23, 9)"
 		            Name = "groupFont"
 		            Size = "(407, 78)"
@@ -484,7 +484,7 @@
 		            Text = "Font"
 		            >
 
-			    <Label id="labelMenu"
+			    <UiLabel id="labelMenu"
 
 			            AutoSize = "true"
 			            Location = "(15, 22)"
@@ -494,7 +494,7 @@
 			            Text = "Menu / Lyrics"
 			            />
 
-			    <Label id="labelScreenFontName"
+			    <UiLabel id="labelScreenFontName"
 
 			            AutoSize = "true"
 			            Location = "(111, 49)"
@@ -504,7 +504,7 @@
 			            Text = "label1"
 			            />
 
-			    <Button id="btnChangeScreenFont"
+			    <UiButton id="btnChangeScreenFont"
 
 			            Location = "(270, 44)"
 			            Name = "btnChangeScreenFont"
@@ -514,7 +514,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <Label id="labelScreen"
+			    <UiLabel id="labelScreen"
 
 			            AutoSize = "true"
 			            Location = "(15, 49)"
@@ -524,7 +524,7 @@
 			            Text = "Screen"
 			            />
 
-			    <Label id="labelMenuFontName"
+			    <UiLabel id="labelMenuFontName"
 
 			            AutoSize = "true"
 			            Location = "(111, 22)"
@@ -534,7 +534,7 @@
 			            Text = "label1"
 			            />
 
-			    <Button id="btnChangeMenuFont"
+			    <UiButton id="btnChangeMenuFont"
 
 			            Location = "(270, 17)"
 			            Name = "btnChangeMenuFont"
@@ -543,9 +543,9 @@
 			            Text = "Change"
 			            UseVisualStyleBackColor = "true"
 			            />
-		    </GroupBox>
+		    </UiGroupBox>
 
-		    <GroupBox id="groupVisibleCurve"
+		    <UiGroupBox id="groupVisibleCurve"
 	            Location = "(23, 173)"
 	            Name = "groupVisibleCurve"
 	            Size = "(407, 169)"
@@ -553,7 +553,7 @@
 	            TabStop = "false"
 	            Text = "Visible Control Curve"
 	            >
-			    <CheckBox id="chkEnvelope"
+			    <UiCheckBox id="chkEnvelope"
 
 			            AutoSize = "true"
 			            Location = "(17, 140)"
@@ -564,7 +564,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkPbs"
+			    <UiCheckBox id="chkPbs"
 
 			            AutoSize = "true"
 			            Location = "(114, 94)"
@@ -575,7 +575,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkReso4"
+			    <UiCheckBox id="chkReso4"
 
 			            AutoSize = "true"
 			            Location = "(308, 118)"
@@ -586,7 +586,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkReso3"
+			    <UiCheckBox id="chkReso3"
 
 			            AutoSize = "true"
 			            Location = "(211, 118)"
@@ -597,7 +597,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkReso2"
+			    <UiCheckBox id="chkReso2"
 
 			            AutoSize = "true"
 			            Location = "(113, 118)"
@@ -608,7 +608,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkReso1"
+			    <UiCheckBox id="chkReso1"
 
 			            AutoSize = "true"
 			            Location = "(17, 118)"
@@ -619,7 +619,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkFx2Depth"
+			    <UiCheckBox id="chkFx2Depth"
 
 			            AutoSize = "true"
 			            Location = "(308, 94)"
@@ -630,7 +630,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkHarmonics"
+			    <UiCheckBox id="chkHarmonics"
 
 			            AutoSize = "true"
 			            Location = "(211, 94)"
@@ -641,7 +641,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkPit"
+			    <UiCheckBox id="chkPit"
 
 			            AutoSize = "true"
 			            Location = "(17, 94)"
@@ -652,7 +652,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkPor"
+			    <UiCheckBox id="chkPor"
 
 			            AutoSize = "true"
 			            Location = "(308, 70)"
@@ -663,7 +663,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkGen"
+			    <UiCheckBox id="chkGen"
 
 			            AutoSize = "true"
 			            Location = "(211, 70)"
@@ -674,7 +674,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkOpe"
+			    <UiCheckBox id="chkOpe"
 
 			            AutoSize = "true"
 			            Location = "(114, 70)"
@@ -685,7 +685,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkCle"
+			    <UiCheckBox id="chkCle"
 
 			            AutoSize = "true"
 			            Location = "(17, 70)"
@@ -696,7 +696,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkBri"
+			    <UiCheckBox id="chkBri"
 
 			            AutoSize = "true"
 			            Location = "(308, 46)"
@@ -707,7 +707,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkBre"
+			    <UiCheckBox id="chkBre"
 
 			            AutoSize = "true"
 			            Location = "(211, 46)"
@@ -718,7 +718,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkDyn"
+			    <UiCheckBox id="chkDyn"
 
 			            AutoSize = "true"
 			            Location = "(114, 46)"
@@ -729,7 +729,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkVel"
+			    <UiCheckBox id="chkVel"
 
 			            AutoSize = "true"
 			            Location = "(17, 46)"
@@ -740,7 +740,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkVibratoDepth"
+			    <UiCheckBox id="chkVibratoDepth"
 
 			            AutoSize = "true"
 			            Location = "(308, 22)"
@@ -751,7 +751,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkVibratoRate"
+			    <UiCheckBox id="chkVibratoRate"
 
 			            AutoSize = "true"
 			            Location = "(211, 22)"
@@ -762,7 +762,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkDecay"
+			    <UiCheckBox id="chkDecay"
 
 			            AutoSize = "true"
 			            Location = "(114, 22)"
@@ -773,7 +773,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkAccent"
+			    <UiCheckBox id="chkAccent"
 
 			            AutoSize = "true"
 			            Location = "(17, 22)"
@@ -783,9 +783,9 @@
 			            Text = "Accent"
 			            UseVisualStyleBackColor = "true"
 			            />
-			</GroupBox>
+			</UiGroupBox>
 
-	    <Label id="lblTrackHeight"
+	    <UiLabel id="lblTrackHeight"
 
 	            AutoSize = "true"
 	            Location = "(31, 141)"
@@ -795,7 +795,7 @@
 	            Text = "Track Height (pixel)"
 	            />
 
-	    <ComboBox id="comboLanguage"
+	    <UiComboBox id="comboLanguage"
 
 	            FormattingEnabled = "true"
 	            Location = "(148, 105)"
@@ -804,7 +804,7 @@
 	            TabIndex = "44"
 	            />
 
-	    <Label id="lblLanguage"
+	    <UiLabel id="lblLanguage"
 
 	            AutoSize = "true"
 	            Location = "(31, 108)"
@@ -814,7 +814,7 @@
 	            Text = "UI Language"
 	            />
 
-	    <NumericUpDownEx id="numTrackHeight"
+	    <UiNumericUpDownEx id="numTrackHeight"
 
 	            Location = "(210, 139)"
 	            Maximum = "50"
@@ -824,8 +824,8 @@
 	            TabIndex = "45"
 	            Value = "14"
 	            />
-		</TabPage>
-	    <TabPage id="tabOperation"
+		</UiTabPage>
+	    <UiTabPage id="tabOperation"
 	            Location = "(4, 40)"
 	            Name = "tabOperation"
 	            Padding = "(3)"
@@ -834,7 +834,7 @@
 	            Text = "Operation"
 	            UseVisualStyleBackColor = "true"
 	            >
-		    <GroupBox id="groupMisc"
+		    <UiGroupBox id="groupMisc"
 		            Location = "(23, 253)"
 		            Name = "groupMisc"
 		            Size = "(407, 143)"
@@ -842,7 +842,7 @@
 		            TabStop = "false"
 		            Text = "Misc"
 		            >
-			    <ComboBox id="comboMtcMidiInPortNumber"
+			    <UiComboBox id="comboMtcMidiInPortNumber"
 
 			            Anchor = "Top,Left,Right"
 			            FormattingEnabled = "true"
@@ -852,7 +852,7 @@
 			            TabIndex = "91"
 			            />
 
-			    <Label id="labelMtcMidiInPort"
+			    <UiLabel id="labelMtcMidiInPort"
 
 			            AutoSize = "true"
 			            Location = "(16, 104)"
@@ -862,7 +862,7 @@
 			            Text = "MTC MIDI In Port Number"
 			            />
 
-			    <Label id="lblMaximumFrameRate"
+			    <UiLabel id="lblMaximumFrameRate"
 
 			            AutoSize = "true"
 			            Location = "(16, 23)"
@@ -872,7 +872,7 @@
 			            Text = "Maximum Frame Rate"
 			            />
 
-			    <ComboBox id="comboMidiInPortNumber"
+			    <UiComboBox id="comboMidiInPortNumber"
 
 			            Anchor = "Top,Left,Right"
 			            FormattingEnabled = "true"
@@ -882,7 +882,7 @@
 			            TabIndex = "89"
 			            />
 
-			    <NumericUpDownEx id="numMaximumFrameRate"
+			    <UiNumericUpDownEx id="numMaximumFrameRate"
 
 			            Location = "(176, 21)"
 			            Maximum = "1000"
@@ -893,7 +893,7 @@
 			            Value = "30"
 			            />
 
-			    <Label id="lblMidiInPort"
+			    <UiLabel id="lblMidiInPort"
 
 			            AutoSize = "true"
 			            Location = "(16, 77)"
@@ -903,7 +903,7 @@
 			            Text = "MIDI In Port Number"
 			            />
 
-			    <Label id="lblMouseHoverTime"
+			    <UiLabel id="lblMouseHoverTime"
 
 			            AutoSize = "true"
 			            Location = "(16, 50)"
@@ -913,7 +913,7 @@
 			            Text = "Waiting Time for Preview"
 			            />
 
-			    <Label id="lblMilliSecond"
+			    <UiLabel id="lblMilliSecond"
 
 			            AutoSize = "true"
 			            Location = "(302, 50)"
@@ -923,7 +923,7 @@
 			            Text = "milli second"
 			            />
 
-			    <NumericUpDownEx id="numMouseHoverTime"
+			    <UiNumericUpDownEx id="numMouseHoverTime"
 
 			            Location = "(176, 48)"
 			            Maximum = "2000"
@@ -932,8 +932,8 @@
 			            TabIndex = "86"
 			            Value = "500"
 			            />
-		    </GroupBox>
-		    <GroupBox id="groupPianoroll"
+		    </UiGroupBox>
+		    <UiGroupBox id="groupPianoroll"
 		            Location = "(23, 9)"
 		            Name = "groupPianoroll"
 		            Size = "(407, 238)"
@@ -941,7 +941,7 @@
 		            TabStop = "false"
 		            Text = "Piano Roll"
 		            >
-			    <CheckBox id="chkTranslateRoman"
+			    <UiCheckBox id="chkTranslateRoman"
 
 			            AutoSize = "true"
 			            Location = "(16, 208)"
@@ -952,7 +952,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkUseSpaceKeyAsMiddleButtonModifier"
+			    <UiCheckBox id="chkUseSpaceKeyAsMiddleButtonModifier"
 
 			            AutoSize = "true"
 			            Location = "(16, 181)"
@@ -963,7 +963,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <Label id="labelWheelOrder"
+			    <UiLabel id="labelWheelOrder"
 
 			            AutoSize = "true"
 			            Location = "(16, 23)"
@@ -973,7 +973,7 @@
 			            Text = "Mouse wheel Rate"
 			            />
 
-			    <NumericUpDownEx id="numericUpDownEx1"
+			    <UiNumericUpDownEx id="numericUpDownEx1"
 
 			            Location = "(199, 21)"
 			            Maximum = "50"
@@ -984,7 +984,7 @@
 			            Value = "20"
 			            />
 
-			    <CheckBox id="chkCursorFix"
+			    <UiCheckBox id="chkCursorFix"
 
 			            AutoSize = "true"
 			            Location = "(16, 46)"
@@ -995,7 +995,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkCurveSelectingQuantized"
+			    <UiCheckBox id="chkCurveSelectingQuantized"
 
 			            AutoSize = "true"
 			            Location = "(16, 154)"
@@ -1006,7 +1006,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkScrollHorizontal"
+			    <UiCheckBox id="chkScrollHorizontal"
 
 			            AutoSize = "true"
 			            Location = "(16, 73)"
@@ -1017,7 +1017,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkPlayPreviewWhenRightClick"
+			    <UiCheckBox id="chkPlayPreviewWhenRightClick"
 
 			            AutoSize = "true"
 			            Location = "(16, 127)"
@@ -1028,7 +1028,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <CheckBox id="chkKeepLyricInputMode"
+			    <UiCheckBox id="chkKeepLyricInputMode"
 
 			            AutoSize = "true"
 			            Location = "(16, 100)"
@@ -1038,9 +1038,9 @@
 			            Text = "Keep Lyric Input Mode"
 			            UseVisualStyleBackColor = "true"
 			            />
-			</GroupBox>
-		</TabPage>
-	    <TabPage id="tabPlatform"
+			</UiGroupBox>
+		</UiTabPage>
+	    <UiTabPage id="tabPlatform"
 
 	            Location = "(4, 40)"
 	            Name = "tabPlatform"
@@ -1050,7 +1050,7 @@
 	            Text = "Platform"
 	            UseVisualStyleBackColor = "true"
 	            >
-		    <GroupBox id="groupUtauCores"
+		    <UiGroupBox id="groupUtauCores"
 		            Location = "(23, 9)"
 		            Name = "groupUtauCores"
 		            Size = "(407, 289)"
@@ -1058,7 +1058,7 @@
 		            TabStop = "false"
 		            Text = "UTAU Cores"
 		            >
-			    <CheckBox id="checkEnableWideCharacterWorkaround"
+			    <UiCheckBox id="checkEnableWideCharacterWorkaround"
 
 			            AutoSize = "true"
 			            Location = "(19, 260)"
@@ -1069,7 +1069,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <Label id="labelWavtoolPath"
+			    <UiLabel id="labelWavtoolPath"
 
 			            AutoSize = "true"
 			            Location = "(44, 49)"
@@ -1079,7 +1079,7 @@
 			            Text = "Path:"
 			            />
 
-			    <Button id="buttonResamplerUp"
+			    <UiButton id="buttonResamplerUp"
 
 			            Anchor = "Top,Right"
 			            Location = "(326, 184)"
@@ -1090,7 +1090,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <Button id="buttonResamplerDown"
+			    <UiButton id="buttonResamplerDown"
 
 			            Anchor = "Top,Right"
 			            Location = "(326, 213)"
@@ -1101,7 +1101,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <Button id="buttonResamplerRemove"
+			    <UiButton id="buttonResamplerRemove"
 
 			            Anchor = "Top,Right"
 			            Location = "(326, 131)"
@@ -1112,7 +1112,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <Button id="buttonResamplerAdd"
+			    <UiButton id="buttonResamplerAdd"
 
 			            Anchor = "Top,Right"
 			            Location = "(326, 102)"
@@ -1123,7 +1123,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <ListView id="listResampler"
+			    <UiListView id="listResampler"
 			            Anchor = "Top,Left,Right"
 			            FullRowSelect = "true"
 			            HideSelection = "false"
@@ -1137,13 +1137,13 @@
 			            View = "Details"
 			            >
 		            <_Columns>
-					    <ColumnHeader id="columnHeaderPath"
+					    <UiColumnHeader id="columnHeaderPath"
 					            Text = "path"
 					            Width = "280"
 					            />
 		            </_Columns>
-	            </ListView>
-			    <Label id="lblResampler"
+	            </UiListView>
+			    <UiLabel id="lblResampler"
 			            AutoSize = "true"
 			            Location = "(17, 82)"
 			            Name = "lblResampler"
@@ -1152,7 +1152,7 @@
 			            Text = "resampler"
 			            />
 
-			    <Button id="btnWavtool"
+			    <UiButton id="btnWavtool"
 
 			            Anchor = "Top,Right"
 			            Location = "(326, 44)"
@@ -1163,7 +1163,7 @@
 			            UseVisualStyleBackColor = "true"
 			            />
 
-			    <Label id="lblWavtool"
+			    <UiLabel id="lblWavtool"
 
 			            AutoSize = "true"
 			            Location = "(17, 25)"
@@ -1173,16 +1173,16 @@
 			            Text = "wavtool"
 			            />
 
-			    <TextBox id="txtWavtool"
+			    <UiTextBox id="txtWavtool"
 			            Anchor = "Top,Left,Right"
 			            Location = "(100, 46)"
 			            Name = "txtWavtool"
 			            Size = "(220, 19)"
 			            TabIndex = "111"
 			            />
-	        </GroupBox>
-	    </TabPage>
-	    <TabPage id="tabUtausingers"
+	        </UiGroupBox>
+	    </UiTabPage>
+	    <UiTabPage id="tabUtausingers"
 	            AutoScroll = "true"
 	            Location = "(4, 40)"
 	            Name = "tabUtausingers"
@@ -1192,7 +1192,7 @@
 	            Text = "UTAU Singers"
 	            UseVisualStyleBackColor = "true"
 	            >
-	    <Button id="btnRemove"
+	    <UiButton id="btnRemove"
 
 	            Anchor = "Bottom,Left"
 	            Location = "(98, 401)"
@@ -1203,7 +1203,7 @@
 	            UseVisualStyleBackColor = "true"
 	            />
 
-	    <Button id="btnAdd"
+	    <UiButton id="btnAdd"
 
 	            Anchor = "Bottom,Left"
 	            Location = "(17, 401)"
@@ -1214,7 +1214,7 @@
 	            UseVisualStyleBackColor = "true"
 	            />
 
-	    <Button id="btnUp"
+	    <UiButton id="btnUp"
 
 	            Anchor = "Bottom,Right"
 	            Location = "(279, 401)"
@@ -1225,7 +1225,7 @@
 	            UseVisualStyleBackColor = "true"
 	            />
 
-	    <Button id="btnDown"
+	    <UiButton id="btnDown"
 
 	            Anchor = "Bottom,Right"
 	            Location = "(360, 401)"
@@ -1236,7 +1236,7 @@
 	            UseVisualStyleBackColor = "true"
 	            />
 
-	    <ListView id="listSingers"
+	    <UiListView id="listSingers"
 
 	            Anchor = "Top,Bottom,Left,Right"
 	            FullRowSelect = "true"
@@ -1251,54 +1251,54 @@
 	            View = "Details"
 	            >
             <_Groups>
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
             </_Groups>
-	        </ListView>
-	    </TabPage>
-	    <TabPage id="tabFile"
+	        </UiListView>
+	    </UiTabPage>
+	    <UiTabPage id="tabFile"
 	            Location = "(4, 40)"
 	            Name = "tabFile"
 	            Padding = "(3)"
@@ -1308,7 +1308,7 @@
 	            UseVisualStyleBackColor = "true"
 	            >
 
-		    <CheckBox id="chkKeepProjectCache"
+		    <UiCheckBox id="chkKeepProjectCache"
 
 		            AutoSize = "true"
 		            Location = "(23, 54)"
@@ -1319,7 +1319,7 @@
 		            UseVisualStyleBackColor = "true"
 		            />
 
-		    <Label id="lblAutoBackupMinutes"
+		    <UiLabel id="lblAutoBackupMinutes"
 
 		            AutoSize = "true"
 		            Location = "(331, 24)"
@@ -1329,7 +1329,7 @@
 		            Text = "minute(s)"
 		            />
 
-		    <Label id="lblAutoBackupInterval"
+		    <UiLabel id="lblAutoBackupInterval"
 
 		            AutoSize = "true"
 		            Location = "(207, 24)"
@@ -1339,7 +1339,7 @@
 		            Text = "interval"
 		            />
 
-		    <CheckBox id="chkAutoBackup"
+		    <UiCheckBox id="chkAutoBackup"
 
 		            AutoSize = "true"
 		            Location = "(23, 23)"
@@ -1349,7 +1349,7 @@
 		            Text = "Automatical Backup"
 		            UseVisualStyleBackColor = "true"
 		            />
-		    <NumericUpDownEx id="numAutoBackupInterval"
+		    <UiNumericUpDownEx id="numAutoBackupInterval"
 
 		            Location = "(256, 22)"
 		            Minimum = "1"
@@ -1359,8 +1359,8 @@
 		            TextAlign = "Center"
 		            Value = "10"
 		            />
-	    </TabPage>
-	    <TabPage id="tabSingingSynth"
+	    </UiTabPage>
+	    <UiTabPage id="tabSingingSynth"
 	            Location = "(4, 40)"
 	            Name = "tabSingingSynth"
 	            Padding = "(3)"
@@ -1370,7 +1370,7 @@
 	            UseVisualStyleBackColor = "true"
 	            >
 
-	    <GroupBox id="groupDefaultSynthesizer"
+	    <UiGroupBox id="groupDefaultSynthesizer"
 	            Location = "(23, 271)"
 	            Name = "groupDefaultSynthesizer"
 	            Size = "(407, 71)"
@@ -1379,7 +1379,7 @@
 	            Text = "Default Synthesizer"
 	            >
 
-		    <ComboBox id="comboDefaultSynthesizer"
+		    <UiComboBox id="comboDefaultSynthesizer"
 
 		            FormattingEnabled = "true"
 		            Location = "(18, 29)"
@@ -1388,26 +1388,26 @@
 		            TabIndex = "11"
 		            >
 	            <_Items>
-		            <String>[Normal] Type 1</String>
-		            <String>[Normal] Type 2</String>
-		            <String>[Normal] Type 3</String>
-		            <String>[Normal] Type 4</String>
-		            <String>[Extreme] Type 1</String>
-		            <String>[Extreme] Type 2</String>
-		            <String>[Extreme] Type 3</String>
-		            <String>[Extreme] Type 4</String>
-		            <String>[Fast] Type 1</String>
-		            <String>[Fast] Type 2</String>
-		            <String>[Fast] Type 3</String>
-		            <String>[Fast] Type 4</String>
-		            <String>[Slight] Type 1</String>
-		            <String>[Slight] Type 2</String>
-		            <String>[Slight] Type 3</String>
-		            <String>[Slight] Type 4</String>
+		            <UiString>[Normal] Type 1</UiString>
+		            <UiString>[Normal] Type 2</UiString>
+		            <UiString>[Normal] Type 3</UiString>
+		            <UiString>[Normal] Type 4</UiString>
+		            <UiString>[Extreme] Type 1</UiString>
+		            <UiString>[Extreme] Type 2</UiString>
+		            <UiString>[Extreme] Type 3</UiString>
+		            <UiString>[Extreme] Type 4</UiString>
+		            <UiString>[Fast] Type 1</UiString>
+		            <UiString>[Fast] Type 2</UiString>
+		            <UiString>[Fast] Type 3</UiString>
+		            <UiString>[Fast] Type 4</UiString>
+		            <UiString>[Slight] Type 1</UiString>
+		            <UiString>[Slight] Type 2</UiString>
+		            <UiString>[Slight] Type 3</UiString>
+		            <UiString>[Slight] Type 4</UiString>
 	            </_Items>
-			</ComboBox>
-        </GroupBox>
-	    <GroupBox id="groupSynthesizerDll"
+			</UiComboBox>
+        </UiGroupBox>
+	    <UiGroupBox id="groupSynthesizerDll"
 	            Location = "(23, 147)"
 	            Name = "groupSynthesizerDll"
 	            Size = "(407, 118)"
@@ -1415,7 +1415,7 @@
 	            TabStop = "false"
 	            Text = "Synthesizer DLL Usage"
 	            >
-		    <CheckBox id="chkLoadAquesTone2"
+		    <UiCheckBox id="chkLoadAquesTone2"
 
 		            AutoSize = "true"
 		            Location = "(18, 88)"
@@ -1426,7 +1426,7 @@
 		            UseVisualStyleBackColor = "true"
 		            />
 
-		    <CheckBox id="chkLoadAquesTone"
+		    <UiCheckBox id="chkLoadAquesTone"
 
 		            AutoSize = "true"
 		            Location = "(18, 66)"
@@ -1437,7 +1437,7 @@
 		            UseVisualStyleBackColor = "true"
 		            />
 
-		    <CheckBox id="chkLoadVocaloid2"
+		    <UiCheckBox id="chkLoadVocaloid2"
 
 		            AutoSize = "true"
 		            Location = "(18, 44)"
@@ -1448,7 +1448,7 @@
 		            UseVisualStyleBackColor = "true"
 		            />
 
-		    <CheckBox id="chkLoadVocaloid1"
+		    <UiCheckBox id="chkLoadVocaloid1"
 
 		            AutoSize = "true"
 		            Location = "(18, 22)"
@@ -1458,8 +1458,8 @@
 		            Text = "VOCALOID1"
 		            UseVisualStyleBackColor = "true"
 		            />
-        </GroupBox>
-	    <GroupBox id="groupVsti"
+        </UiGroupBox>
+	    <UiGroupBox id="groupVsti"
 	            Location = "(23, 9)"
 	            Name = "groupVsti"
 	            Size = "(407, 132)"
@@ -1468,7 +1468,7 @@
 	            Text = "VST Instruments"
 	            >
 
-		    <Button id="btnAquesTone2"
+		    <UiButton id="btnAquesTone2"
 
 		            Anchor = "Top,Right"
 		            Location = "(351, 94)"
@@ -1478,7 +1478,7 @@
 		            Text = "..."
 		            UseVisualStyleBackColor = "true"
 		            />
-		    <Label id="lblAquesTone2"
+		    <UiLabel id="lblAquesTone2"
 
 		            AutoSize = "true"
 		            Location = "(16, 99)"
@@ -1488,7 +1488,7 @@
 		            Text = "AquesTone2"
 		            />
 
-		    <TextBox id="txtAquesTone2"
+		    <UiTextBox id="txtAquesTone2"
 
 		            Location = "(99, 96)"
 		            Name = "txtAquesTone2"
@@ -1496,7 +1496,7 @@
 		            TabIndex = "8"
 		            />
 
-		    <Button id="btnAquesTone"
+		    <UiButton id="btnAquesTone"
 
 		            Anchor = "Top,Right"
 		            Location = "(351, 69)"
@@ -1507,7 +1507,7 @@
 		            UseVisualStyleBackColor = "true"
 		            />
 
-		    <TextBox id="txtAquesTone"
+		    <UiTextBox id="txtAquesTone"
 
 		            Location = "(99, 71)"
 		            Name = "txtAquesTone"
@@ -1515,7 +1515,7 @@
 		            TabIndex = "5"
 		            />
 
-		    <Label id="lblAquesTone"
+		    <UiLabel id="lblAquesTone"
 
 		            AutoSize = "true"
 		            Location = "(16, 74)"
@@ -1525,7 +1525,7 @@
 		            Text = "AquesTone"
 		            />
 
-		    <TextBox id="txtVOCALOID2"
+		    <UiTextBox id="txtVOCALOID2"
 
 		            Location = "(99, 46)"
 		            Name = "txtVOCALOID2"
@@ -1534,7 +1534,7 @@
 		            TabIndex = "3"
 		            />
 
-		    <TextBox id="txtVOCALOID1"
+		    <UiTextBox id="txtVOCALOID1"
 
 		            Location = "(99, 21)"
 		            Name = "txtVOCALOID1"
@@ -1543,7 +1543,7 @@
 		            TabIndex = "1"
 		            />
 
-		    <Label id="lblVOCALOID2"
+		    <UiLabel id="lblVOCALOID2"
 
 		            AutoSize = "true"
 		            Location = "(16, 49)"
@@ -1553,7 +1553,7 @@
 		            Text = "VOCALOID2"
 		            />
 
-		    <Label id="lblVOCALOID1"
+		    <UiLabel id="lblVOCALOID1"
 
 		            AutoSize = "true"
 		            Location = "(16, 24)"
@@ -1562,11 +1562,11 @@
 		            TabIndex = "0"
 		            Text = "VOCALOID1"
 		            />
-	        </GroupBox>
-	    </TabPage>
-	</TabControl>
+	        </UiGroupBox>
+	    </UiTabPage>
+	</UiTabControl>
 
-    <Button id="btnCancel"
+    <UiButton id="btnCancel"
 
             Anchor = "Bottom,Right"
             DialogResult = "Cancel"
@@ -1578,7 +1578,7 @@
             UseVisualStyleBackColor = "true"
             />
 
-    <Button id="btnOK"
+    <UiButton id="btnOK"
 
             Anchor = "Bottom,Right"
             Location = "(280, 538)"
@@ -1588,4 +1588,4 @@
             Text = "OK"
             UseVisualStyleBackColor = "true"
             />
-</Form>
+</UiForm>

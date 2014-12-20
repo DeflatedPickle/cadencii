@@ -34,7 +34,7 @@ namespace Cadencii.Gui.Toolkit
 
 	public interface UiListViewColumn
 	{
-		object Native { get; }
+        object Native { get; set;  }
 		int Width { get; set; }
 		string Text { get; set; }
 	}
