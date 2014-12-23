@@ -1,4 +1,4 @@
-#if !MONO
+#if UI_WIN32API_DEP
 /*
  * Rebar.cs
  * Copyright © Anthony Baraff

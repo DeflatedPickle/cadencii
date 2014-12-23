@@ -1,4 +1,4 @@
-﻿#if MONO
+﻿#if !UI_WIN32API_DEP
 using System;
 using Cadencii.Gui.Toolkit;
 using System.Collections.Generic;

@@ -126,7 +126,7 @@ namespace Cadencii.Application.Forms
             }
 
             // スプラッシュを表示するスレッドを開始
-#if !MONO
+#if true//!MONO
             splashThread = new Thread(new ThreadStart(showSplash));
             splashThread.TrySetApartmentState(ApartmentState.STA);
             splashThread.Start();
@@ -145,7 +145,7 @@ namespace Cadencii.Application.Forms
             }
 #endif
 			var formMain = new FormMainImpl(file);
-#if !MONO
+#if true//!MONO
 			formMain.Load += mainWindow_Load;
 #endif
             App.Run((System.Windows.Forms.Form) EditorManager.MainWindow);

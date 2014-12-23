@@ -1,4 +1,4 @@
-#if !MONO
+#if UI_WIN32API_DEP
 /*
  * RebarBandCollection.cs
  * Copyright © Anthony Baraff
