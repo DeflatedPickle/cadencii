@@ -64,18 +64,9 @@ namespace Cadencii.Application.Models
 			get { return control.WaveView; }
 		}
 
-		FormMain Main {
-			get {
-				for (UiControl c = control.Parent; c != null; c = c.Parent)
-					if (c is FormMain)
-						return c as FormMain;
-				return null;
-			}
-		}
-
         public void refreshScreen()
         {
-            Main.refreshScreen();
+            control.Main.refreshScreen();
         }
 
         public void receivePaintSignal(Graphics g)
@@ -168,7 +159,7 @@ namespace Cadencii.Application.Models
             float scale = mWaveViewInitScale + delta * 3.0f / height * mWaveViewInitScale;
 			WaveView.Model.Scale = scale;
 
-            Main.refreshScreen();
+            control.Main.refreshScreen();
         }
 
         public void receiveMouseUpSignal(int x, int y)

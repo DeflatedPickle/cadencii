@@ -34,5 +34,18 @@ namespace Cadencii.Application.Controls
 		}
 
 		public WaveView WaveView { get; set; }
+
+		public FormMain Main {
+			get {
+				#if true
+				return (FormMain) ParentForm;
+				#else
+				for (UiControl c = (UiControl) Parent; c != null; c = (UiControl) c.Parent)
+					if (c is FormMain)
+						return c as FormMain;
+				return null;
+				#endif
+			}
+		}
     }
 }

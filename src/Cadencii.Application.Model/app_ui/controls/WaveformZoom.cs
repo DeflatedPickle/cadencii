@@ -13,6 +13,7 @@
  */
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Models;
+using Cadencii.Application.Forms;
 
 
 namespace Cadencii.Application.Controls
@@ -20,5 +21,6 @@ namespace Cadencii.Application.Controls
     public interface WaveformZoom : UiUserControl
     {
 		WaveView WaveView { get; set; }
+		FormMain Main { get; }
     }
 }
