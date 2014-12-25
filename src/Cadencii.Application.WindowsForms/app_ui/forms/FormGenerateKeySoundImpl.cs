@@ -28,7 +28,7 @@ using Cadencii.Gui;
 namespace Cadencii.Application.Forms
 {
 
-    public class FormGenerateKeySoundImpl : FormImpl, UiForm
+	public class FormGenerateKeySoundImpl : FormImpl, FormGenerateKeySound
     {
         private delegate void updateTitleDelegate(string title);
 

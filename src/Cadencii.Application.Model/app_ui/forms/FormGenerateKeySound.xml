@@ -2,7 +2,7 @@
             ClientSize = "(373, 161)"
             Name = "Program"
             >
-<Button id="btnExecute"
+	<UiButton id="btnExecute"
             Anchor = "Bottom,Right"
             Location = "(286, 126)"
             Name = "btnExecute"
@@ -11,7 +11,7 @@
             Text = "Execute"
             UseVisualStyleBackColor = "true"
             />
-<Button id="btnCancel"
+	<UiButton id="btnCancel"
             Anchor = "Bottom,Right"
             Location = "(205, 126)"
             Name = "btnCancel"
@@ -20,14 +20,14 @@
             Text = "Close"
             UseVisualStyleBackColor = "true"
             />
-<ComboBox id="comboSingingSynthSystem"
+	<UiComboBox id="comboSingingSynthSystem"
             FormattingEnabled = "true"
             Location = "(151, 12)"
             Name = "comboSingingSynthSystem"
             Size = "(121, 20)"
             TabIndex = "2"
             />
-<Label id="lblSingingSynthSystem"
+	<UiLabel id="lblSingingSynthSystem"
             AutoSize = "true"
             Location = "(12, 15)"
             Name = "lblSingingSynthSystem"
@@ -35,7 +35,7 @@
             TabIndex = "3"
             Text = "Singing Synth. System"
             />
-<Label id="lblSinger"
+	<UiLabel id="lblSinger"
             AutoSize = "true"
             Location = "(12, 39)"
             Name = "lblSinger"
@@ -43,14 +43,14 @@
             TabIndex = "4"
             Text = "Singer"
             />
-<ComboBox id="comboSinger"
+	<UiComboBox id="comboSinger"
             FormattingEnabled = "true"
             Location = "(151, 36)"
             Name = "comboSinger"
             Size = "(121, 20)"
             TabIndex = "5"
             />
-<CheckBox id="chkIgnoreExistingWavs"
+	<UiCheckBox id="chkIgnoreExistingWavs"
             AutoSize = "true"
             Checked = "true"
             CheckState = "Checked"
@@ -61,13 +61,13 @@
             Text = "Ignore Existing WAVs"
             UseVisualStyleBackColor = "true"
             />
-<TextBox id="txtDir"
+	<UiTextBox id="txtDir"
             Location = "(94, 88)"
             Name = "txtDir"
             Size = "(209, 19)"
             TabIndex = "7"
             />
-<Button id="btnBrowse"
+	<UiButton id="btnBrowse"
             Location = "(309, 86)"
             Name = "btnBrowse"
             Size = "(40, 23)"
@@ -75,7 +75,7 @@
             Text = "..."
             UseVisualStyleBackColor = "true"
             />
-<Label id="lblDir"
+	<UiLabel id="lblDir"
             AutoSize = "true"
             Location = "(12, 91)"
             Name = "lblDir"
