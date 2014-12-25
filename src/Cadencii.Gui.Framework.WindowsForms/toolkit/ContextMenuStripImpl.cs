@@ -25,8 +25,6 @@ namespace Cadencii.Gui.Toolkit
 		public ContextMenuStripImpl (System.ComponentModel.IContainer components)
 			: base (components)
 		{
-			// FIXME: there should be some weak event
-			Opening += (o, e) => opening (o, new CancelEventArgs ());
 		}
 
 		event EventHandler opening;
