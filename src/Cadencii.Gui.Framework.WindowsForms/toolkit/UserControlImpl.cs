@@ -40,6 +40,11 @@ namespace Cadencii.Gui.Toolkit
 			this.OnPaint (e.ToAwt ());
 		}
 
+		public bool DoubleBuffer {
+			get { return this.GetStyle (System.Windows.Forms.ControlStyles.OptimizedDoubleBuffer); }
+			set { this.SetStyle (System.Windows.Forms.ControlStyles.OptimizedDoubleBuffer, value); }
+		}
+
 		public bool UserPaint {
 			get { return this.GetStyle (System.Windows.Forms.ControlStyles.UserPaint); }
 			set { this.SetStyle (System.Windows.Forms.ControlStyles.UserPaint, value); }

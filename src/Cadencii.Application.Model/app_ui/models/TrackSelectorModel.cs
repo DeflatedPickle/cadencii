@@ -283,7 +283,7 @@ namespace Cadencii.Application.Models
 		/// </summary>
 		public void Initialize ()
 		{
-			control.DoubleBuffered = true;
+			control.DoubleBuffer = true;
 			control.UserPaint = true;
 			InitializeComponent();
 			registerEventHandlers();

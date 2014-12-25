@@ -24,6 +24,7 @@ namespace Cadencii.Gui.Toolkit
 		bool DoubleBuffered { get; set; }
 
 		// custom property that accesses "Styles"
+		bool DoubleBuffer { get; set; } // note that it is different from "DoubleBuffered"
 		bool UserPaint { get; set; }
 		bool AllPaintingInWmPaint { get; set; }
 
