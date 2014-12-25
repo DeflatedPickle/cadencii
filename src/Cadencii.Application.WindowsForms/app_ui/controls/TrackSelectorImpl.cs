@@ -51,17 +51,17 @@ namespace Cadencii.Application.Controls
     /// </summary>
 	public class TrackSelectorImpl : UserControlImpl, TrackSelector
     {
-		public TrackSelectorImpl(FormMainImpl main_window)
+		public TrackSelectorImpl()
 		{
 			this.Model = new TrackSelectorModel (this);
-			Model.Initialize (main_window);
+			Model.Initialize ();
+		}
+
+		public FormMain MainWindow {
+			get { return (FormMain) ParentForm; }
 		}
 
 		public TrackSelectorModel Model { get; private set; }
-
-		object TrackSelector.Parent {
-			get { return base.Parent; }
-		}
 
 		void TrackSelector.RequestFocus ()
 		{

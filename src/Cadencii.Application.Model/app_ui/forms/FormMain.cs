@@ -185,7 +185,7 @@ namespace Cadencii.Application.Forms
 		UiContextMenuStrip MenuTrackTab { get; set; }
 		UiContextMenuStrip MenuTrackSelector { get; set; }
 
-		TrackSelector TrackSelector { get; set; }
+		TrackSelector TrackSelector { get; }
 
 		UiHScrollBar hScroll { get; set; }
 

@@ -61,7 +61,7 @@ namespace Cadencii.Application.Controls
 	{
 		TrackSelectorModel Model { get; }
 
-		Object Parent { get; }
+		FormMain MainWindow { get; }
 
 		void RequestFocus ();
 

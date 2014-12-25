@@ -55,6 +55,11 @@
     <Optimize>false</Optimize>
     <DebugSymbols>true</DebugSymbols>
     <NoWarn>1572,1573,1591</NoWarn>
+    <EnvironmentVariables>
+      <EnvironmentVariables>
+        <Variable name="MONO_WINFORMS_XIM_STYLE" value="" />
+      </EnvironmentVariables>
+    </EnvironmentVariables>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>

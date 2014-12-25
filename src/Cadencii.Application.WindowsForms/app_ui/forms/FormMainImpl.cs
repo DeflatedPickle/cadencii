@@ -62,7 +62,6 @@ namespace Cadencii.Application.Forms
 
 		TrackSelector FormMain.TrackSelector {
 			get { return trackSelector; }
-			set { trackSelector = value; }
 		}
 
         /// <summary>
@@ -235,7 +234,7 @@ namespace Cadencii.Application.Forms
             tvsq.Track[1].changeRenderer(renderer, singers);
             EditorManager.setVsqFile(tvsq);
 
-            trackSelector = new TrackSelectorImpl(this); // initializeで引数なしのコンストラクタが呼ばれるのを予防
+			trackSelector = ApplicationUIHost.Create<TrackSelector>();
 
             InitializeComponent();
 

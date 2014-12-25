@@ -45,89 +45,6 @@
 	            Text = "toolStripContainer1"
 	            TopToolStripPanelVisible = "false"
 	            >
-
-		    <_BottomToolStripPanel
-	            RenderMode = "System"
-	            >
-			    <UiToolStrip id="toolStripBottom"
-			            Dock = "None"
-            Location = "(15, 0)"
-			            Name = "toolStripBottom"
-			            RenderMode = "System"
-			            Size = "(347, 25)"
-			            TabIndex = "22"
-			            >
-		            <_Items>
-
-				        <UiToolStripStatusLabel id="toolStripStatusLabel1"
-
-				            Name = "toolStripStatusLabel1"
-				            Size = "(101, 20)"
-				            Text = "Game Controler"
-				            />
-
-				        <UiToolStripStatusLabel id="stripLblGameCtrlMode"
-
-				            Name = "stripLblGameCtrlMode"
-				            Size = "(57, 20)"
-				            Text = "Disabled"
-				            ToolTipText = "Game Controler"
-				            />
-
-				        <UiToolStripSeparator id="toolStripSeparator10"
-
-				            Name = "toolStripSeparator10"
-				            Size = "(6, 25)"
-				            />
-
-				        <UiToolStripStatusLabel id="toolStripStatusLabel2"
-
-				            Name = "toolStripStatusLabel2"
-				            Size = "(53, 20)"
-				            Text = "MIDI In"
-				            />
-
-				        <UiToolStripStatusLabel id="stripLblMidiIn"
-
-				            Name = "stripLblMidiIn"
-				            Size = "(57, 20)"
-				            Text = "Disabled"
-				            ToolTipText = "Midi In Device"
-				            />
-
-				        <UiToolStripSeparator id="toolStripSeparator11"
-
-				            Name = "toolStripSeparator11"
-				            Size = "(6, 25)"
-				            />
-
-				        <UiToolStripButton id="stripBtnStepSequencer"
-				            CheckOnClick = "true"
-				            ImageTransparentColor = "$Magenta"
-				            Name = "stripBtnStepSequencer"
-				            Size = "(55, 22)"
-				            Text = "Step"
-				            />
-		            </_Items>
-			    </UiToolStrip>
-			    <UiStatusStrip id="statusStrip"
-			            Dock = "None"
-            Location = "(0, 25)"
-			            Name = "statusStrip"
-			            Size = "(955, 22)"
-			            TabIndex = "25"
-			            Text = "statusStrip1"
-			            >
-			        <_Items>
-				        <UiToolStripStatusLabel id="statusLabel"
-
-				            Name = "statusLabel"
-				            Size = "(0, 17)"
-				            />
-			        </_Items>
-			    </UiStatusStrip>
-		    </_BottomToolStripPanel>
-
 	        <_ContentPanel
 	            Size = "(955, 612)"
 				>
@@ -339,6 +256,87 @@
 			        </BSplitContainer>
 		        </BSplitContainer>
 	        </_ContentPanel>
+			<_BottomToolStripPanel
+	            RenderMode = "System"
+	            >
+			    <UiToolStrip id="toolStripBottom"
+			            Dock = "None"
+            Location = "(15, 0)"
+			            Name = "toolStripBottom"
+			            RenderMode = "System"
+			            Size = "(347, 25)"
+			            TabIndex = "22"
+			            >
+		            <_Items>
+
+				        <UiToolStripStatusLabel id="toolStripStatusLabel1"
+
+				            Name = "toolStripStatusLabel1"
+				            Size = "(101, 20)"
+				            Text = "Game Controler"
+				            />
+
+				        <UiToolStripStatusLabel id="stripLblGameCtrlMode"
+
+				            Name = "stripLblGameCtrlMode"
+				            Size = "(57, 20)"
+				            Text = "Disabled"
+				            ToolTipText = "Game Controler"
+				            />
+
+				        <UiToolStripSeparator id="toolStripSeparator10"
+
+				            Name = "toolStripSeparator10"
+				            Size = "(6, 25)"
+				            />
+
+				        <UiToolStripStatusLabel id="toolStripStatusLabel2"
+
+				            Name = "toolStripStatusLabel2"
+				            Size = "(53, 20)"
+				            Text = "MIDI In"
+				            />
+
+				        <UiToolStripStatusLabel id="stripLblMidiIn"
+
+				            Name = "stripLblMidiIn"
+				            Size = "(57, 20)"
+				            Text = "Disabled"
+				            ToolTipText = "Midi In Device"
+				            />
+
+				        <UiToolStripSeparator id="toolStripSeparator11"
+
+				            Name = "toolStripSeparator11"
+				            Size = "(6, 25)"
+				            />
+
+				        <UiToolStripButton id="stripBtnStepSequencer"
+				            CheckOnClick = "true"
+				            ImageTransparentColor = "$Magenta"
+				            Name = "stripBtnStepSequencer"
+				            Size = "(55, 22)"
+				            Text = "Step"
+				            />
+		            </_Items>
+			    </UiToolStrip>
+			    <UiStatusStrip id="statusStrip"
+			            Dock = "None"
+            Location = "(0, 25)"
+			            Name = "statusStrip"
+			            Size = "(955, 22)"
+			            TabIndex = "25"
+			            Text = "statusStrip1"
+			            >
+			        <_Items>
+				        <UiToolStripStatusLabel id="statusLabel"
+
+				            Name = "statusLabel"
+				            Size = "(0, 17)"
+				            />
+			        </_Items>
+			    </UiStatusStrip>
+		    </_BottomToolStripPanel>
 		</UiToolStripContainer>
 
 		<Rebar id="rebar"

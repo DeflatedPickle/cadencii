@@ -233,10 +233,6 @@ namespace Cadencii.Application.Models
 		private LineGraphDrawer mGraphDrawer = null;
 		private Graphics mGraphics = null;
 		/// <summary>
-		/// メイン画面への参照
-		/// </summary>
-		private FormMain mMainWindow = null;
-		/// <summary>
 		/// Overlap, Presendを描画するときに使うフォントで，一文字あたり何ピクセルになるか
 		/// </summary>
 		private float mTextWidthPerLetter = 0.0f;
@@ -285,12 +281,11 @@ namespace Cadencii.Application.Models
 		/// <summary>
 		/// コンストラクタ．
 		/// </summary>
-		public void Initialize (FormMain mainWindow)
+		public void Initialize ()
 		{
 			control.DoubleBuffered = true;
 			control.UserPaint = true;
 			InitializeComponent();
-			mMainWindow = mainWindow;
 			registerEventHandlers();
 			setResources();
 			mModifierKey = Keys.Control;
@@ -581,7 +576,7 @@ namespace Cadencii.Application.Models
 		/// </summary>
 		/// <returns></returns>
 		public FormMain MainForm {
-			get { return mMainWindow; }
+			get { return control.MainWindow; }
 		}
 
 		/// <summary>
@@ -2004,7 +1999,7 @@ namespace Cadencii.Application.Models
 			try {
 			#endif
 				int visibleMinX = EditorManager.keyWidth;
-				int visibleMaxX = mMainWindow.pictPianoRoll.Width + EditorManager.keyWidth + EditorManager.keyOffset;
+				int visibleMaxX = MainForm.pictPianoRoll.Width + EditorManager.keyWidth + EditorManager.keyOffset;
 				Color hilight = EditorManager.getHilightColor();
 				int chains_count = chains.Count;
 				for (int i = 0; i < chains_count; i++) {
@@ -5101,7 +5096,7 @@ namespace Cadencii.Application.Models
 									{//TODO:
 										Logger.StdOut("TrackSelector_MouseDoubleClick; start to show editor");
 									}
-									var ret = DialogManager.ShowModalDialog(fbpe, mMainWindow);
+									var ret = DialogManager.ShowModalDialog(fbpe, MainForm);
 									{//TODO:
 										Logger.StdOut("TrackSelector_MouseDoubleCLick; ret=" + ret);
 									}
@@ -5170,13 +5165,13 @@ namespace Cadencii.Application.Models
 								if (bp_found) {
 									EditorManager.itemSelection.clearPoint();
 									EditorManager.itemSelection.addPoint(mSelectedCurve, bp_id);
-									FormCurvePointEdit dialog = ApplicationUIHost.Create<FormCurvePointEdit> (mMainWindow, bp_id, mSelectedCurve);
+									FormCurvePointEdit dialog = ApplicationUIHost.Create<FormCurvePointEdit> (MainForm, bp_id, mSelectedCurve);
 									int tx = EditorManager.xCoordFromClocks(tclock);
 									Point pt = PointToScreen(new Point(tx, 0));
 									control.Invalidate();
 									dialog.Location =
 										new Point(pt.X - dialog.Width / 2, pt.Y - dialog.Height);
-									DialogManager.ShowModalDialog(dialog, mMainWindow);
+									DialogManager.ShowModalDialog(dialog, control.MainWindow);
 								}
 								#endregion
 							}
