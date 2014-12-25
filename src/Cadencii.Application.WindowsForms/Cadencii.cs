@@ -126,7 +126,7 @@ namespace Cadencii.Application.Forms
             }
 
             // スプラッシュを表示するスレッドを開始
-#if true//!MONO
+#if false//!MONO // cannot enable on Mono due to some threading issue
             splashThread = new Thread(new ThreadStart(showSplash));
             splashThread.TrySetApartmentState(ApartmentState.STA);
             splashThread.Start();
@@ -145,10 +145,11 @@ namespace Cadencii.Application.Forms
             }
 #endif
 			var formMain = new FormMainImpl(file);
-#if true//!MONO
+#if false//!MONO // cannot enable on Mono due to some threading issue
 			formMain.Load += mainWindow_Load;
 #endif
-            App.Run((System.Windows.Forms.Form) EditorManager.MainWindow);
+
+			App.Run((System.Windows.Forms.Form) EditorManager.MainWindow);
 #if !DEBUG
             } catch ( Exception ex ) {
                 String str_ex = getExceptionText( ex, 0 );
