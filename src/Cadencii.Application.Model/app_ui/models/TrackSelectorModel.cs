@@ -284,7 +284,8 @@ namespace Cadencii.Application.Models
 		public void Initialize ()
 		{
 			control.DoubleBuffer = true;
-			control.UserPaint = true;
+			// FIXME: maybe mono winforms X11 doesn't work as expected.
+			//control.UserPaint = true;
 			InitializeComponent();
 			registerEventHandlers();
 			setResources();
@@ -700,15 +701,6 @@ namespace Cadencii.Application.Models
 				mGraphics = new Graphics();
 			}
 			return mGraphics;
-		}
-
-		/// <summary>
-		/// オーバーライドされます
-		/// </summary>
-		/// <param name="e"></param>
-		public void OnPaint(PaintEventArgs e)
-		{
-			paint (e.Graphics);
 		}
 
 		/// <summary>

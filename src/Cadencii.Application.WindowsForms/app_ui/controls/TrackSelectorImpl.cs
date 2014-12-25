@@ -77,5 +77,10 @@ namespace Cadencii.Application.Controls
 		{
 			Model.OnMouseUp (sender, e);
 		}
+
+		public override void OnPaint (PaintEventArgs e)
+		{
+			Model.paint (e.Graphics);
+		}
     }
 }
