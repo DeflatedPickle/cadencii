@@ -3,6 +3,7 @@ using System.Linq;
 using Cadencii.Gui.Toolkit;
 using cadencii;
 using Cadencii.Application.Controls;
+using System.Reflection;
 
 namespace Cadencii.Application.Models
 {
@@ -19,9 +20,10 @@ namespace Cadencii.Application.Models
 
 			public void InitializeControls ()
 			{
-				foreach (var fi in GetType ().GetFields ().Where (f => f.FieldType == typeof (UiMenuItem) || f.FieldType == typeof (UiToolStripButton))) {
-					var spi = parent.form.GetType ().GetProperty (fi.Name);
-					var sfi = spi == null ? parent.form.GetType ().GetField (fi.Name) : null;
+				var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
+				foreach (var fi in GetType ().GetFields (bf).Where (f => f.FieldType == typeof (UiMenuItem) || f.FieldType == typeof (UiToolStripButton))) {
+					var spi = parent.form.GetType ().GetProperty (fi.Name, bf);
+					var sfi = spi == null ? parent.form.GetType ().GetField (fi.Name, bf) : null;
 					fi.SetValue (this, spi != null ? spi.GetValue (parent.form, null) : sfi.GetValue (parent.form));
 				}
 			}
@@ -50,9 +52,9 @@ namespace Cadencii.Application.Models
 				parent.form.applySelectedTool();
 			}
 
-			UiMenuItem menuEditCut, menuEditPaste, menuEditDelete, menuLyricVibratoProperty, menuLyricExpressionProperty;
-			UiMenuItem cMenuPianoCut, cMenuPianoCopy, cMenuPianoDelete, cMenuPianoExpressionProperty;
-			UiToolStripButton stripBtnCut, stripBtnCopy;
+			BgmMenuItem menuEditCut, menuEditPaste, menuEditDelete, menuLyricVibratoProperty, menuLyricExpressionProperty;
+			BgmMenuItem cMenuPianoCut, cMenuPianoCopy, cMenuPianoDelete, cMenuPianoExpressionProperty;
+			UiToolBarButton stripBtnCut, stripBtnCopy;
 
 			public void ItemSelectionModel_SelectedEventChanged(Object sender, bool selected_event_is_null)
 			{
