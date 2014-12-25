@@ -25,8 +25,13 @@ namespace Cadencii.Application.Models
 			{
 				if (!field_references_initialized) {
 					var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
-					foreach (var fi in GetType ().GetFields ().Where (f => f.FieldType == typeof (UiToolBarButton) || f.FieldType == typeof (UiToolStripButton)))
-						fi.SetValue (this, parent.form.GetType ().GetField (fi.Name, bf).GetValue (parent.form));
+					foreach (var fi in GetType ().GetFields (bf).Where (f => f.FieldType == typeof (UiToolBarButton) || f.FieldType == typeof (UiToolStripButton))) {
+						var ff = parent.form.GetType ().GetField (fi.Name, bf);
+						if (ff != null)
+							fi.SetValue (this, parent.form.GetType ().GetField (fi.Name, bf).GetValue (parent.form));
+						else
+							fi.SetValue (this, parent.form.GetType ().GetProperty (fi.Name, bf).GetValue (parent.form));
+					}
 				}
 				field_references_initialized = true;
 			}
