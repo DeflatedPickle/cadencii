@@ -51,7 +51,7 @@ namespace Cadencii.Gui
         {
                 npoints = points.Length;
                 xpoints = points.Select (p => p.X).ToArray ();
-		xpoints = points.Select (p => p.Y).ToArray ();
+                ypoints = points.Select (p => p.Y).ToArray ();
         }
     }
 
