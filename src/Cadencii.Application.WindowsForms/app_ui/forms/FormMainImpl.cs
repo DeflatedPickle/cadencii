@@ -3649,11 +3649,13 @@ namespace Cadencii.Application.Forms
 			pictureBox2.MouseDown += (o,e) => model.OtherItems.pictureBox2_MouseDown(e);
 			pictureBox2.MouseUp += (o,e) => model.OtherItems.pictureBox2_MouseUp ();
 			pictureBox2.Paint += (o,e) => model.OtherItems.pictureBox2_Paint (e);
+#if UI_WIN32API_DEP
 			rebar.SizeChanged += (o,e) => model.OtherItems.toolStripContainer_TopToolStripPanel_SizeChanged ();
 			bandTool.Resize += (o, e) => model.OtherItems.SaveToolbarLocation ();
 			bandMeasure.Resize += (o, e) => model.OtherItems.SaveToolbarLocation ();
 			bandPosition.Resize += (o, e) => model.OtherItems.SaveToolbarLocation ();
 			bandFile.Resize += (o, e) => model.OtherItems.SaveToolbarLocation ();
+#endif
 			toolBarFile.ButtonClick += (o, e) => model.ToolBars.FileButtonClick (e);
 			toolBarPosition.ButtonClick += (o, e) => model.ToolBars.PositionButtonClick (e);
 			toolBarMeasure.ButtonClick += (o, e) => model.ToolBars.MeasureButtonClick (e);

@@ -1,14 +1,21 @@
 ﻿#if !UI_WIN32API_DEP
 using System;
+using System.Linq;
 using Cadencii.Gui.Toolkit;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Cadencii.Gui;
+using System.Collections.ObjectModel;
 
 namespace Cadencii.Application.Controls
 {
 	public class RebarMonoImpl : UserControlImpl, Rebar
 	{
+		public RebarMonoImpl ()
+		{
+			Height = 40;
+		}
+
 		public IntPtr RebarHwnd {
 			get {
 				throw new NotImplementedException ();
@@ -28,7 +35,17 @@ namespace Cadencii.Application.Controls
 
 		RebarBandCollection bands;
 
-		public class RebarBandCollectionMonoImpl : List<RebarBand>, RebarBandCollection
+		protected override void OnControlAdded (System.Windows.Forms.ControlEventArgs e)
+		{
+			var tb = e.Control as RebarBand;
+			var uc = e.Control as UiControl;
+			if (tb != null) {
+				uc.Location = new Point (((int) ((Bands.Count - 1) / 2)) * 300 + 11, Bands.Count % 2 * 30);
+			}
+			base.OnControlAdded (e);
+		}
+
+		public class RebarBandCollectionMonoImpl : Collection<RebarBand>, RebarBandCollection
 		{
 			RebarMonoImpl owner;
 
@@ -44,26 +61,70 @@ namespace Cadencii.Application.Controls
 				get { return (RebarBand)this [i]; }
 			}
 			public RebarBand this [string name] {
-				get { return (RebarBand)this.Find (p => p.Key == name); }
+				get { return (RebarBand) this.FirstOrDefault (p => p.Key == name); }
+			}
+
+			protected override void InsertItem (int index, RebarBand item)
+			{
+				((UiControl) item).Location = new Point (2, 2); // force override.
+				base.InsertItem (index, item);
+				owner.Controls.Add ((System.Windows.Forms.Control) item);
+			}
+
+			protected override void SetItem (int index, RebarBand item)
+			{
+				base.SetItem (index, item);
+				owner.Controls.SetChildIndex ((System.Windows.Forms.Control) item, index);
 			}
 		}
 
-		public class RebarBandMonoImpl : ToolBarImpl, RebarBand
+		public class RebarBandMonoImpl : PanelImpl, RebarBand
 		{
 			public RebarBandMonoImpl ()
 			{
+				AllowVertical = true;
+				FixedBackground = true;
+				Header = -1;
+				Integral = 1;
+				Key = "";
+				MaxHeight = 40;
+				MinHeight = 26;
+				NewRow = true;
+				UseCoolbarPicture = true;
+				Visible = true;
+				UseChevron = true;
+
+				BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+				ForeColor = Colors.Red.ToNative ();
+				Width = 300;
+				Height = 26;
+				AutoSize = true;
 			}
 
-			int id = new Random ().Next ();
+			int id = -1;
+
+			private string _caption = "";
+			private bool _embossPicture = true;
+			//private GripperSettings _gripSettings = GripperSettings.Auto;
+			private int _image = -1;
+			private int _minWidth = 24;
+			private bool _showCaption = true;
+			private bool _throwExceptions = true;
+			private bool _useCoolbarColors = true;
+
+			private const int SPACE_CHEVRON_MENU = 6;
 
 			public void CreateBand ()
 			{
+				throw new NotSupportedException ();
 			}
 			public void DestroyBand ()
 			{
+				throw new NotSupportedException ();
 			}
 			public void Show (UiControl control, Cadencii.Gui.Rectangle chevronRect)
 			{
+				throw new NotSupportedException ();
 			}
 			public void OnMouseDown (MouseEventArgs e)
 			{
@@ -119,6 +180,19 @@ namespace Cadencii.Application.Controls
 			}
 			public int ID {
 				get { return id; }
+			}
+
+			// ignore XML settings. That is only for Windows winforms.
+			protected override void OnControlAdded (System.Windows.Forms.ControlEventArgs e)
+			{
+				var tb = e.Control as UiToolBar;
+				if (tb != null) {
+					tb.Dock = DockStyle.Top;
+					tb.Location = new Point (0, 0);
+					tb.Width = 300;
+					tb.Wrappable = true;
+				}
+				base.OnControlAdded (e);
 			}
 		}
 	}

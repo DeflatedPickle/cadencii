@@ -9,6 +9,8 @@ using System.ComponentModel;
 using cadencii;
 using Cadencii.Application.Models;
 using Cadencii.Gui.Toolkit;
+using System.Collections.ObjectModel;
+using Cadencii.Application.Controls;
 
 namespace Cadencii.Application.Forms
 {
@@ -120,7 +122,7 @@ namespace Cadencii.Application.Forms
 				if (c.LocalName.First () == '_') {
 					// get property, can be collection ("MenuStrip.Items") or non-collection ("SplitContainer.Panel1")
 					var pv = o.GetType ().GetProperty (c.LocalName.Substring (1), bf).GetValue (o);
-					ApplyXml (roots, c, pv, pv is System.Collections.ICollection);
+					ApplyXml (roots, c, pv, pv is System.Collections.ICollection || typeof (ICollection<RebarBand>).IsAssignableFrom (pv.GetType ()));
 				} else {
 					object obj;
 					if (c.LocalName.Contains ('.')) {

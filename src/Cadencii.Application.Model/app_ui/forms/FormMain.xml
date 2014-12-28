@@ -339,11 +339,12 @@
 		    </_BottomToolStripPanel>
 		</UiToolStripContainer>
 
+		<!-- Size was (955,4) ... -->
 		<Rebar id="rebar"
 	            Dock = "Top"
 	            Location = "(0, 26)"
 	            Name = "rebar"
-	            Size = "(955, 4)"
+	            Size = "(955, 60)"
 	            TabIndex = "19"
 	            ToggleDoubleClick = "true"
 	            >
