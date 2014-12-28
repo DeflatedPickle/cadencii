@@ -13,7 +13,6 @@
  */
 using System;
 using Cadencii.Gui;
-using cadencii.java.util;
 using Cadencii.Media;
 using Cadencii.Media.Windows;
 

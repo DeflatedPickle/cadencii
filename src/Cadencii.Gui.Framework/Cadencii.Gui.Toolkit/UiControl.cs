@@ -48,7 +48,7 @@ namespace Cadencii.Gui.Toolkit
 
 		Point Location { get; set; }
 
-		Dimension Size { get; set; }
+		Size Size { get; set; }
 
 		bool Enabled { get; set; }
 

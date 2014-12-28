@@ -13,9 +13,9 @@
  */
 using System;
 using cadencii;
-using cadencii.java.util;
 using Cadencii.Media;
 using cadencii.core;
+using Cadencii.Utilities;
 
 namespace cadencii
 {

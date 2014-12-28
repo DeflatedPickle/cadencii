@@ -15,7 +15,6 @@
 using System;
 using System.Collections.Generic;
 using cadencii.apputil;
-using cadencii.java.util;
 using Cadencii.Media.Vsq;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
@@ -40,7 +39,7 @@ namespace Cadencii.Application.Models
 			registerEventHandlers();
 			setResources();
 			m_items = new List<SelectedEventEntry>();
-			AwtHost.Current.ApplyFontRecurse(control, EditorManager.editorConfig.getBaseFont());
+			GuiHost.Current.ApplyFontRecurse(control, EditorManager.editorConfig.getBaseFont());
 		}
 
 		public bool isEditing()
@@ -244,7 +243,7 @@ namespace Cadencii.Application.Models
 			this.propertyGrid.Location = new Point(0, 0);
 			this.propertyGrid.Name = "propertyGrid";
 			this.propertyGrid.PropertySort = PropertySort.Categorized;
-			this.propertyGrid.Size = new Dimension(191, 298);
+			this.propertyGrid.Size = new Size(191, 298);
 			this.propertyGrid.TabIndex = 0;
 			this.propertyGrid.ToolbarVisible = false;
 			// 
@@ -253,7 +252,7 @@ namespace Cadencii.Application.Models
 			control.AutoScaleMode = Cadencii.Gui.Toolkit.AutoScaleMode.None;
 			control.Controls.Add(this.propertyGrid);
 			control.Name = "PropertyPanel";
-			control.Size = new Dimension(191, 298);
+			control.Size = new Size(191, 298);
 			control.ResumeLayout(false);
 
 		}

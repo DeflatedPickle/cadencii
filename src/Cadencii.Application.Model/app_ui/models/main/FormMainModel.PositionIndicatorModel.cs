@@ -2,7 +2,6 @@
 using Cadencii.Gui;
 using System.Media;
 using Cadencii.Media.Vsq;
-using cadencii.java.util;
 using cadencii.core;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
@@ -400,7 +399,7 @@ namespace Cadencii.Application.Models
 				}
 
 				mPositionIndicatorMouseDownMode = PositionIndicatorMouseDownMode.NONE;
-				Keys modifiers = AwtHost.ModifierKeys;
+				Keys modifiers = GuiHost.ModifierKeys;
 				VsqFileEx vsq = MusicManager.getVsqFile();
 				if (e.Button == MouseButtons.Left) {
 					if (0 <= e.Y && e.Y <= 18) {
@@ -450,7 +449,7 @@ namespace Cadencii.Application.Models
 								break;
 							}
 							string s = PortUtil.formatDecimal("#.00", 60e6 / (float)MusicManager.getVsqFile().TempoTable[i].Tempo);
-							Dimension size = Utility.measureString(s, new Font(EditorManager.editorConfig.ScreenFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE8));
+							Size size = Utility.measureString(s, new Font(EditorManager.editorConfig.ScreenFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE8));
 							if (Utility.isInRect(new Point(e.X, e.Y), new Rectangle(x, 14, (int)size.Width, 14))) {
 								index = i;
 								break;
@@ -508,7 +507,7 @@ namespace Cadencii.Application.Models
 						for (int i = 0; i < MusicManager.getVsqFile().TimesigTable.Count; i++) {
 							string s = MusicManager.getVsqFile().TimesigTable[i].Numerator + "/" + MusicManager.getVsqFile().TimesigTable[i].Denominator;
 							int x = EditorManager.xCoordFromClocks(MusicManager.getVsqFile().TimesigTable[i].Clock);
-							Dimension size = Utility.measureString(s, new Font(EditorManager.editorConfig.ScreenFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE8));
+							Size size = Utility.measureString(s, new Font(EditorManager.editorConfig.ScreenFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE8));
 							if (Utility.isInRect(new Point(e.X, e.Y), new Rectangle(x, 28, (int)size.Width, 14))) {
 								index = i;
 								break;
@@ -567,7 +566,7 @@ namespace Cadencii.Application.Models
 
 			public void RunMouseUp(MouseEventArgs e)
 			{
-				Keys modifiers = AwtHost.ModifierKeys;
+				Keys modifiers = GuiHost.ModifierKeys;
 				#if DEBUG
 				CDebug.WriteLine("picturePositionIndicator_MouseClick");
 				#endif

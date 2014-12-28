@@ -33,12 +33,12 @@ namespace Cadencii.Gui
 
         public Area()
         {
-        	a = AwtHost.Current.New<AreaAdapter> ();
+        	a = GuiHost.Current.New<AreaAdapter> ();
         }
 
         public Area(Shape s)
         {
-		a = AwtHost.Current.New<AreaAdapter> (s);
+		a = GuiHost.Current.New<AreaAdapter> (s);
         }
 
 		public object NativeRegion {
@@ -46,19 +46,14 @@ namespace Cadencii.Gui
 		set { a.NativeRegion = value; }
 		}
 
-        public void add(Area rhs)
+        public void Add(Area rhs)
         {
         	a.add(rhs);
         }
 
-        public void subtract(Area rhs)
+        public void Subtract(Area rhs)
         {
 		a.subtract(rhs);
-        }
-
-        public Object clone()
-        {
-		return a.clone();
         }
     }
 }

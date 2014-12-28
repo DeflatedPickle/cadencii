@@ -13,7 +13,6 @@
  */
 
 using System;
-using cadencii.java.util;
 using Cadencii.Gui;
 using PortUtil = Cadencii.Gui.Colors;
 using cadencii.core;

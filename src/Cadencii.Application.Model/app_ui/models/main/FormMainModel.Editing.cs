@@ -8,7 +8,6 @@ using Cadencii.Media.Vsq;
 using Cadencii.Media.Vsq.IO;
 using System.Text;
 using System.Linq;
-using cadencii.java.util;
 using Cadencii.Gui;
 using System.Media;
 using Cadencii.Utilities;

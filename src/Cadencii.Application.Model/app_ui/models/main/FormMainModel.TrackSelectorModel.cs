@@ -162,7 +162,7 @@ namespace Cadencii.Application.Models
 				#if DEBUG
 				Logger.StdOut("FormMain#trackSelector_MouseWheel");
 				#endif
-				if ((AwtHost.ModifierKeys & Keys.Shift) == Keys.Shift) {
+				if ((GuiHost.ModifierKeys & Keys.Shift) == Keys.Shift) {
 					double new_val = (double)parent.form.vScroll.Value - e.Delta;
 					int max = parent.form.vScroll.Maximum - parent.form.vScroll.Minimum;
 					int min = parent.form.vScroll.Minimum;

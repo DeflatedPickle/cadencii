@@ -14,7 +14,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace cadencii.java.util
+namespace Cadencii.Utilities
 {
 
     public class ListIterator<T> : Iterator<T>

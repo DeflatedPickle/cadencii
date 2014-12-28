@@ -36,7 +36,7 @@ namespace Cadencii.Application.Forms
             timer.Interval = 10;
             registerEventHandlers();
             setResources();
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods
@@ -95,7 +95,7 @@ namespace Cadencii.Application.Forms
                     } else if (btnCancel.Focused) {
                         if (btn_o) {
                             timer.Stop();
-							this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
+							this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
                             Close();
                         } else if (pov_l) {
                             btnStart.Focus();
@@ -130,13 +130,13 @@ namespace Cadencii.Application.Forms
 
         public void btnStart_Click(Object sender, EventArgs e)
         {
-			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
+			this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.OK;
             Close();
         }
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
+			this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
         #endregion
 

@@ -32,7 +32,7 @@ namespace Cadencii.Application.Controls
 
 		Cadencii.Gui.Point TrackSelectorSingerPopupMenu.PointToScreen (Cadencii.Gui.Point source)
 		{
-			return PointToScreen (source.ToWF ()).ToAwt ();
+			return PointToScreen (source.ToWF ()).ToGui ();
 		}
     }
 

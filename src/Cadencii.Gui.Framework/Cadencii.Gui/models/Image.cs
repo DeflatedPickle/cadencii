@@ -22,12 +22,12 @@ namespace Cadencii.Gui
 
 		public Image ()
 		{
-			a = AwtHost.Current.New<ImageAdapter> ();
+			a = GuiHost.Current.New<ImageAdapter> ();
 		}
 
 		public Image (int width, int height)
 		{
-			a = AwtHost.Current.New<ImageAdapter> (width, height);
+			a = GuiHost.Current.New<ImageAdapter> (width, height);
 		}
 
 		public object NativeImage { get { return a.NativeImage; } set { a.NativeImage = value; } }

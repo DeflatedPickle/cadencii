@@ -7,7 +7,7 @@ namespace Cadencii.Application.Controls
 
 	public interface BSplitContainer : UiControl
 	{
-		Dimension MinimumSize {
+		Size MinimumSize {
 			get;
 			set;
 		}

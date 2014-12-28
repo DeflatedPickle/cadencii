@@ -17,7 +17,7 @@ namespace Cadencii.Gui.Toolkit
 			set;
 		}
 
-		Dimension ImageSize {
+		Size ImageSize {
 			get;
 			set;
 		}

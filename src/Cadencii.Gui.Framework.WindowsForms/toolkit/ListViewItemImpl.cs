@@ -43,7 +43,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		Color UiListViewItem.BackColor {
-			get { return impl.BackColor.ToAwt (); }
+			get { return impl.BackColor.ToGui (); }
 			set { impl.BackColor = value.ToNative (); }
 		}
 

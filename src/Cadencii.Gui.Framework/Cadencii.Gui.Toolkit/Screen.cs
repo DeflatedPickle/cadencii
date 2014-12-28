@@ -1,5 +1,4 @@
 using System;
-using cadencii;
 
 namespace Cadencii.Gui.Toolkit
 {
@@ -11,7 +10,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public Screen ()
 		{
-			a = AwtHost.Current.New<ScreenAdapter> ();
+			a = GuiHost.Current.New<ScreenAdapter> ();
 		}
 
 		public abstract class ScreenAdapter

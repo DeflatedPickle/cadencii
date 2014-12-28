@@ -17,12 +17,12 @@ using Cadencii.Gui;
 namespace Cadencii.Gui
 {
 
-    public struct Dimension
+    public struct Size
     {
         public int Height;
         public int Width;
 
-        public Dimension(int width_, int height_)
+        public Size(int width_, int height_)
         {
             Width = width_;
             Height = height_;

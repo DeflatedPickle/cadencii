@@ -5,6 +5,7 @@ using Cadencii.Gui.Toolkit;
 using Cadencii.Media.Vsq;
 using cadencii;
 using Cadencii.Application.Media;
+using Cadencii.Utilities;
 
 namespace Cadencii.Application.Models
 {
@@ -39,7 +40,7 @@ namespace Cadencii.Application.Models
 			public void RunVisualOverviewCheckedChanged()
 			{
 				#if DEBUG
-				Logger.StdOut("FormMain#menuVisualOverview_CheckedChanged; menuVisualOverview.isSelected()=" + parent.form.menuVisualOverview.Checked);
+				Cadencii.Utilities.Logger.StdOut("FormMain#menuVisualOverview_CheckedChanged; menuVisualOverview.isSelected()=" + parent.form.menuVisualOverview.Checked);
 				#endif
 				EditorManager.editorConfig.OverviewEnabled = parent.form.menuVisualOverview.Checked;
 				parent.form.updateLayout();

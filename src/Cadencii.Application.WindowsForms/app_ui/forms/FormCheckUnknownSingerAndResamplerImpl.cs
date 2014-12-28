@@ -15,11 +15,10 @@ using System;
 using cadencii.apputil;
 using Cadencii.Media.Vsq;
 using cadencii;
-using cadencii.java.util;
-
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
+using Cadencii.Utilities;
 
 
 
@@ -39,7 +38,7 @@ namespace Cadencii.Application.Forms
         {
             InitializeComponent();
             applyLanguage();
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
 
             // singers
             checkSingerImport.Checked = apply_singer;

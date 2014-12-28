@@ -31,7 +31,7 @@ namespace Cadencii.Application.Forms
             setResources();
             applyLanguage();
             numPosition.Maximum = max_position;
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods

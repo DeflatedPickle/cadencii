@@ -14,7 +14,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		Font UiFontDialog.Font {
-			get { return this.Font.ToAwt (); }
+			get { return this.Font.ToGui (); }
 			set { this.Font = value.ToWF (); }
 		}
 

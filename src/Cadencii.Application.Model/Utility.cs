@@ -19,7 +19,6 @@ using System.IO;
 using System.Text;
 using Microsoft.CSharp;
 using cadencii.apputil;
-using cadencii.java.util;
 using Cadencii.Media.Vsq;
 //
 using Cadencii.Xml;
@@ -992,7 +991,7 @@ namespace Cadencii.Application
 
 		#region text drawing measurement
 
-		public static Dimension measureString (string text, Font font)
+		public static Size measureString (string text, Font font)
 		{
 			return new Graphics (new Image (1, 1)).measureString (text, font);
 		}
@@ -1007,7 +1006,7 @@ namespace Cadencii.Application
 		public static int getStringDrawOffset(Cadencii.Gui.Font font)
 		{
 			int ret = 0;
-			Cadencii.Gui.Dimension size = Utility.measureString(PANGRAM, font);
+			Cadencii.Gui.Size size = Utility.measureString(PANGRAM, font);
 			if (size.Height <= 0) {
 				return 0;
 			}
@@ -1095,7 +1094,7 @@ namespace Cadencii.Application
 			int delete_count = PortUtil.getStringLength(item);
 			bool д = true;
 			for (; д; ) {
-				Dimension measured = Utility.measureString(edited, font);
+				Size measured = Utility.measureString(edited, font);
 				if (measured.Width <= width) {
 					return edited;
 				}

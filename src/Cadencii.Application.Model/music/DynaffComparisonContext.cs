@@ -13,7 +13,7 @@
  */
 using System;
 using Cadencii.Media.Vsq;
-using cadencii.java.util;
+using Cadencii.Utilities;
 
 namespace Cadencii.Application.Media
 {

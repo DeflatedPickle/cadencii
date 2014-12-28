@@ -14,8 +14,8 @@
 using System;
 using System.Threading;
 using Cadencii.Gui;
-using cadencii.java.util;
 using Cadencii.Media.Vsq;
+using Cadencii.Utilities;
 
 namespace cadencii
 {

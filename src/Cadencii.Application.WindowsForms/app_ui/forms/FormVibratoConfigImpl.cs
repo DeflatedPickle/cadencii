@@ -15,13 +15,12 @@ using System;
 using cadencii;
 using cadencii.apputil;
 using Cadencii.Media.Vsq;
-
-using cadencii.java.util;
 using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
 using Cadencii.Media;
+using Cadencii.Utilities;
 
 
 namespace Cadencii.Application.Forms
@@ -109,7 +108,7 @@ namespace Cadencii.Application.Forms
             setResources();
             applyLanguage();
 
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods
@@ -207,7 +206,7 @@ namespace Cadencii.Application.Forms
         #region event handlers
         public void btnOK_Click(Object sender, EventArgs e)
         {
-			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
+			this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.OK;
         }
 
         public void comboVibratoType_SelectedIndexChanged(Object sender, EventArgs e)
@@ -300,7 +299,7 @@ namespace Cadencii.Application.Forms
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
+			this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
         #endregion
 

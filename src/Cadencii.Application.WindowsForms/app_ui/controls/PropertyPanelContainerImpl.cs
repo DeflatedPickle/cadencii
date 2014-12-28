@@ -64,8 +64,8 @@ namespace Cadencii.Application.Controls
 
 		public void setResources(UiButton btnClose, UiButton btnWindow)
 		{
-			btnClose.Image = cadencii.Properties.Resources.cross_small.ToAwt ();
-			btnWindow.Image = cadencii.Properties.Resources.chevron_small_collapse.ToAwt ();
+			btnClose.Image = cadencii.Properties.Resources.cross_small.ToGui ();
+			btnWindow.Image = cadencii.Properties.Resources.chevron_small_collapse.ToGui ();
 		}
 
         /// <summary> 

@@ -45,7 +45,7 @@ namespace cadencii
 			set;
 		}
 
-		internal Dimension WindowRect = new Dimension(373, 158);
+		internal Size WindowRect = new Size(373, 158);
 
         void FormPluginUi_FormClosing(Object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
@@ -103,7 +103,7 @@ namespace cadencii
                 Logger.StdErr("vstidrv#enumChildProc; ex=" + ex);
             }
             childWnd = hwnd;
-            WindowRect = new Dimension(rc.right - rc.left, rc.bottom - rc.top);
+            WindowRect = new Size(rc.right - rc.left, rc.bottom - rc.top);
             return false; //最初のやつだけ検出できればおｋなので
         }
     }

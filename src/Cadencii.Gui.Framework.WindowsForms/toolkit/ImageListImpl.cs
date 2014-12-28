@@ -44,18 +44,18 @@ namespace Cadencii.Gui.Toolkit
 			set { impl.ImageStream = (System.Windows.Forms.ImageListStreamer) value; }
 		}
 
-		public Cadencii.Gui.Dimension ImageSize {
-			get { return impl.ImageSize.ToAwt (); }
+		public Cadencii.Gui.Size ImageSize {
+			get { return impl.ImageSize.ToGui (); }
 			set { impl.ImageSize = value.ToWF (); }
 		}
 
 		public Cadencii.Gui.Color TransparentColor {
-			get { return impl.TransparentColor.ToAwt (); }
+			get { return impl.TransparentColor.ToGui (); }
 			set { impl.TransparentColor = value.ToNative (); }
 		}
 
 		public ICollection<Cadencii.Gui.Image> Images {
-			get { return new CastingList<Cadencii.Gui.Image,System.Drawing.Image> (impl.Images, ExtensionsWF.ToAwt, ExtensionsWF.ToWF); }
+			get { return new CastingList<Cadencii.Gui.Image,System.Drawing.Image> (impl.Images, ExtensionsWF.ToGui, ExtensionsWF.ToWF); }
 		}
 	}
 }

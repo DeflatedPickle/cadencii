@@ -19,6 +19,7 @@ using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Models;
 using Cadencii.Application.Controls;
 using cadencii;
+using Cadencii.Utilities;
 
 namespace Cadencii.Application.Forms
 {
@@ -41,7 +42,7 @@ namespace Cadencii.Application.Forms
 		void refreshScreenCore();
 		void showUpdateInformationAsync(bool is_explicit_update_check);
 		UiToolStripMenuItem menuFileExportWave { get;set; }
-		Dimension getWindowMinimumSize ();
+		Size getWindowMinimumSize ();
 		RebarBand bandFile { get; set; }
 		RebarBand bandPosition { get; set; }
 		RebarBand bandMeasure { get; set; }

@@ -15,6 +15,7 @@
 using System;
 using System.Threading;
 using cadencii;
+using Cadencii.Utilities;
 
 namespace Cadencii.Application.Forms
 {

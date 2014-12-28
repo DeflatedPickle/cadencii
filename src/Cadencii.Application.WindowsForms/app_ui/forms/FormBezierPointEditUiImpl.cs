@@ -15,7 +15,6 @@ using System;
 using cadencii.apputil;
 using cadencii;
 using Cadencii.Gui;
-using cadencii.java.util;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
 using Cadencii.Utilities;
@@ -38,7 +37,7 @@ namespace Cadencii.Application.Forms
 			model.Initialize (this);
             registerEventHandlers();
             setResources();
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region FormBezierPointEditUiインターフェースの実装
@@ -93,9 +92,9 @@ namespace Cadencii.Application.Forms
 
         private void setResources()
         {
-			this.btnLeft.Image = cadencii.Properties.Resources.target__pencil.ToAwt ();
-			this.btnDataPoint.Image = cadencii.Properties.Resources.target__pencil.ToAwt ();
-			this.btnRight.Image = cadencii.Properties.Resources.target__pencil.ToAwt ();
+			this.btnLeft.Image = cadencii.Properties.Resources.target__pencil.ToGui ();
+			this.btnDataPoint.Image = cadencii.Properties.Resources.target__pencil.ToGui ();
+			this.btnRight.Image = cadencii.Properties.Resources.target__pencil.ToGui ();
         }
         #endregion
 

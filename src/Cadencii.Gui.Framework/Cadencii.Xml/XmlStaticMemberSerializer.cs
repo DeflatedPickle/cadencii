@@ -19,7 +19,7 @@ using System.Reflection;
 using System.Xml.Serialization;
 
 using Microsoft.CSharp;
-using cadencii;
+using Cadencii.Utilities;
 
 namespace Cadencii.Xml
 {

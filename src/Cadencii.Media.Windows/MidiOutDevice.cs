@@ -17,6 +17,7 @@ using System.Runtime.InteropServices;
 using cadencii;
 using Cadencii.Platform.Windows;
 using Cadencii.Gui;
+using Cadencii.Utilities;
 
 namespace Cadencii.Media.Windows
 {
@@ -110,11 +111,11 @@ namespace Cadencii.Media.Windows
                 hdr.dwFlags = 0;
                 win32.midiOutPrepareHeader(m_handle, ref hdr, size);
                 while ((hdr.dwFlags & win32.WHDR_PREPARED) != win32.WHDR_PREPARED) {
-					AwtHost.Current.ApplicationDoEvents();
+					GuiHost.Current.ApplicationDoEvents();
                 }
                 win32.midiOutLongMsg(m_handle, ref hdr, size);
                 while ((hdr.dwFlags & win32.WHDR_DONE) != win32.WHDR_DONE) {
-					AwtHost.Current.ApplicationDoEvents();
+					GuiHost.Current.ApplicationDoEvents();
                 }
                 win32.midiOutUnprepareHeader(m_handle, ref hdr, size);
             } catch (Exception ex) {

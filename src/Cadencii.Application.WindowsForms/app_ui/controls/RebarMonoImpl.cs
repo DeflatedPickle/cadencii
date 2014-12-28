@@ -23,7 +23,7 @@ namespace Cadencii.Application.Controls
 		}
 
 		public Image BackgroundImage {
-			get { return base.BackgroundImage.ToAwt (); }
+			get { return base.BackgroundImage.ToGui (); }
 			set { base.BackgroundImage = value.ToWF (); }
 		}
 
@@ -150,7 +150,7 @@ namespace Cadencii.Application.Controls
 			public string Key { get; set; }
 			public int BandSize { get; set; }
 			public Cadencii.Gui.Point Location {
-				get { return base.Location.ToAwt (); }
+				get { return base.Location.ToGui (); }
 				set { base.Location = value.ToWF (); }
 			}
 			public bool VariantHeight { get; set; }
@@ -172,11 +172,11 @@ namespace Cadencii.Application.Controls
 			public bool UseCoolbarPicture { get; set; }
 			public bool FixedBackground { get; set; }
 			public Cadencii.Gui.Image BackgroundImage {
-				get { return base.BackgroundImage.ToAwt (); }
+				get { return base.BackgroundImage.ToGui (); }
 				set { base.BackgroundImage = value.ToWF (); }
 			}
 			public Cadencii.Gui.Rectangle Bounds {
-				get { return base.Bounds.ToAwt (); }
+				get { return base.Bounds.ToGui (); }
 			}
 			public int ID {
 				get { return id; }

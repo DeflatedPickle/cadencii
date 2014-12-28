@@ -15,10 +15,10 @@
 using System;
 using System.ComponentModel;
 using System.Collections.Generic;
-using cadencii.java.util;
 using Cadencii.Media.Vsq;
 using cadencii.core;
 using cadencii;
+using Cadencii.Utilities;
 
 namespace Cadencii.Application.Media
 {

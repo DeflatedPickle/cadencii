@@ -87,7 +87,7 @@ namespace Cadencii.Application.Forms
 
         private void registerEventHandlers()
         {
-			var form = AsAwt ();
+			var form = AsGui ();
             form.MouseDown += handleMouseDown;
             form.MouseUp += handleMouseUp;
             form.MouseMove += handleMouseMove;
@@ -131,7 +131,7 @@ namespace Cadencii.Application.Forms
 
 			Point screen = Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition();
 			var p = new Point(screen.X - mouseDownedLocation.X, screen.Y - mouseDownedLocation.Y);
-			this.AsAwt ().Location = p;
+			this.AsGui ().Location = p;
         }
         #endregion
 

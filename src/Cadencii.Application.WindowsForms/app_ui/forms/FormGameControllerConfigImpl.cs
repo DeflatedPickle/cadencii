@@ -15,11 +15,10 @@ using System;
 using System.Collections.Generic;
 using cadencii.apputil;
 using cadencii;
-using cadencii.java.util;
-
 using Cadencii.Gui;
 using Cadencii.Platform.Windows;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Utilities;
 
 
 
@@ -61,7 +60,7 @@ namespace Cadencii.Application.Forms
                 btnSkip.Enabled = false;
                 btnReset.Enabled = false;
             }
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods

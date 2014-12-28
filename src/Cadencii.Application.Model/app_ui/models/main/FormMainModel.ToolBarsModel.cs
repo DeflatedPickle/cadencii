@@ -5,6 +5,7 @@ using System.Linq;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Media;
 using cadencii;
+using Cadencii.Utilities;
 
 namespace Cadencii.Application.Models
 {

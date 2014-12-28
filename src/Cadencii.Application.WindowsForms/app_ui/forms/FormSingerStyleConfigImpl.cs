@@ -45,7 +45,7 @@ namespace Cadencii.Application.Forms
 
             registerEventHandlers();
             setResources();
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
             applyLanguage();
         }
 

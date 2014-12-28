@@ -18,6 +18,7 @@ using Cadencii.Gui.Toolkit;
 using Cadencii.Media.Vsq;
 using Cadencii.Application.Controls;
 using cadencii;
+using Cadencii.Utilities;
 
 namespace Cadencii.Application.Forms
 {
@@ -34,7 +35,7 @@ namespace Cadencii.Application.Forms
             InitializeComponent();
             applyLanguage();
             Mode = FormMidiMode.EXPORT;
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
 
 		/* It should not be done like this...
             System.Drawing.Point p = btnCheckAll.Location;
@@ -219,7 +220,7 @@ namespace Cadencii.Application.Forms
             chkMetaText.Click += new EventHandler(chkMetaText_Click);
             chkExportVocaloidNrpn.CheckedChanged += new EventHandler(chkExportVocaloidNrpn_CheckedChanged);
             chkExportVocaloidNrpn.CheckedChanged += new EventHandler(chkExportVocaloidNrpn_CheckedChanged);
-			this.AsAwt ().FormClosing += (o, e) => FormMidiImExport_FormClosing ();
+			this.AsGui ().FormClosing += (o, e) => FormMidiImExport_FormClosing ();
             btnOK.Click += new EventHandler(btnOK_Click);
             btnCancel.Click += new EventHandler(btnCancel_Click);
             radioGateTime.CheckedChanged += new EventHandler(radioGateTime_CheckedChanged);

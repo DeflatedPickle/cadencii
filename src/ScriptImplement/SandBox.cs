@@ -5,7 +5,6 @@ using System.Linq;
 using cadencii;
 using Cadencii.Media;
 using Cadencii.Media.Vsq;
-using cadencii.java.util;
 
 using System;
 using System.Collections.Generic;

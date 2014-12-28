@@ -6,7 +6,7 @@ namespace Cadencii.Gui
 	{
 		static SystemColors ()
 		{
-			AwtHost.Current.InitializeSystemColors ();
+			GuiHost.Current.InitializeSystemColors ();
 		}
 
 		public static Color Control { get; set; }

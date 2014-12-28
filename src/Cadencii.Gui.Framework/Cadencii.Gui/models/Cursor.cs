@@ -31,7 +31,7 @@ namespace Cadencii.Gui
 
 		public Cursor (int type)
 		{
-			a = AwtHost.Current.New<CursorAdapter> (type);
+			a = GuiHost.Current.New<CursorAdapter> (type);
 		}
 
 		public const int CROSSHAIR_CURSOR = 1;

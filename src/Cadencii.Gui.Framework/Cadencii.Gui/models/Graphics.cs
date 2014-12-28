@@ -22,17 +22,17 @@ namespace Cadencii.Gui
 
 		public Graphics ()
 		{
-			a = AwtHost.Current.New<GraphicsAdapter> ();
+			a = GuiHost.Current.New<GraphicsAdapter> ();
 		}
 
 		public Graphics (Image image)
 		{
-			a = AwtHost.Current.New<GraphicsAdapter> (image);
+			a = GuiHost.Current.New<GraphicsAdapter> (image);
 		}
 
 		public Graphics (Graphics other)
 		{
-			a = AwtHost.Current.New<GraphicsAdapter> (other);
+			a = GuiHost.Current.New<GraphicsAdapter> (other);
 		}
 
 		public GraphicsAdapter Adapter { get { return a; } }
@@ -216,7 +216,7 @@ namespace Cadencii.Gui
 			a.drawStringEx (s, font, rect, align, valign);
 		}
 
-		public Dimension measureString (string s, Font font)
+		public Size measureString (string s, Font font)
 		{
 			return a.measureString (s, font);
 		}
@@ -301,7 +301,7 @@ namespace Cadencii.Gui
 
 			public abstract void drawStringEx(string s, Font font, Rectangle rect, int align, int valign);
 
-			public abstract Dimension measureString (string s, Font font);
+			public abstract Size measureString (string s, Font font);
 		}
 	}
 

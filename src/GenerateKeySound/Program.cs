@@ -16,11 +16,11 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.IO;
 using cadencii;
-using cadencii.java.util;
 using Cadencii.Media;
 using Cadencii.Media.Vsq;
 using Cadencii.Application.Forms;
 using Cadencii.Application;
+using Cadencii.Utilities;
 
 
 

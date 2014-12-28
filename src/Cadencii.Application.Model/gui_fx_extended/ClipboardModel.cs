@@ -22,7 +22,6 @@ namespace Cadencii.Application
 
     using System;
     using Cadencii.Media.Vsq;
-    using cadencii.java.util;
 
     /// <summary>
     /// クリップボードを管理するクラスです．

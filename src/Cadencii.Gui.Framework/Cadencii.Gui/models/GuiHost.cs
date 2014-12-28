@@ -16,12 +16,11 @@ using Cadencii.Gui;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
-using cadencii;
 using Cadencii.Gui.Toolkit;
 
 namespace Cadencii.Gui
 {
-	public abstract partial class AwtHost
+	public abstract partial class GuiHost
 	{
 		public const int YES_OPTION = 0;
 		public const int NO_OPTION = 1;
@@ -33,10 +32,10 @@ namespace Cadencii.Gui
 
 		public static int MouseHoverTime { get; private set; }
 
-		static AwtHost ()
+		static GuiHost ()
 		{
-			var type = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (a => a.GetTypes ()).First (t => t.IsSubclassOf (typeof(AwtHost)));
-			Current = (AwtHost) Activator.CreateInstance (type);
+			var type = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (a => a.GetTypes ()).First (t => t.IsSubclassOf (typeof(GuiHost)));
+			Current = (GuiHost) Activator.CreateInstance (type);
 			ModifierKeys = Current.DefaultModifierKeys ();
 			MouseHoverTime = Current.PlatformMouseHoverTime;
 			Current.InitializeCursors ();
@@ -56,7 +55,7 @@ namespace Cadencii.Gui
 
 		public abstract void ApplyFontRecurse (UiControl control, Font font);
 
-		public static AwtHost Current { get; set; }
+		public static GuiHost Current { get; set; }
 
 		protected Dictionary<Type,Type> Types = new Dictionary<Type,Type> ();
 

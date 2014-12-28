@@ -15,7 +15,7 @@ using System;
 using System.IO;
 using Cadencii.Utilities;
 
-namespace cadencii
+namespace Cadencii.Utilities
 {
 
     public class Logger

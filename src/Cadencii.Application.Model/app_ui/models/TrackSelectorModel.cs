@@ -21,7 +21,6 @@ using System.Collections.Generic;
 using cadencii;
 using cadencii.apputil;
 using Cadencii.Gui;
-using cadencii.java.util;
 using Cadencii.Media.Vsq;
 
 using cadencii.core;
@@ -454,7 +453,7 @@ namespace Cadencii.Application.Models
 		}
 		#endif
 
-		public Cadencii.Gui.Dimension Size {
+		public Cadencii.Gui.Size Size {
 			get { return control.Size; }
 			set { control.Size = value; }
 		}
@@ -474,9 +473,9 @@ namespace Cadencii.Application.Models
 			control.Focus();
 		}
 
-		public void setPreferredSize(Cadencii.Gui.Dimension size)
+		public void setPreferredSize(Cadencii.Gui.Size size)
 		{
-			control.Size =new Dimension(size.Width, size.Height);
+			control.Size =new Size(size.Width, size.Height);
 		}
 
 		public Cadencii.Gui.Font Font {
@@ -538,7 +537,7 @@ namespace Cadencii.Application.Models
 
 		public void applyFont(Cadencii.Gui.Font font)
 		{
-			AwtHost.Current.ApplyFontRecurse(control, font);
+			GuiHost.Current.ApplyFontRecurse(control, font);
 			Utility.applyContextMenuFontRecurse(cmenuSinger, font);
 			Utility.applyContextMenuFontRecurse(cmenuCurve, font);
 		}
@@ -759,7 +758,7 @@ namespace Cadencii.Application.Models
 			int width = Width;
 			int height = Height;
 			int graph_height = getGraphHeight();
-			Dimension size = new Dimension(width + 2, height);
+			Size size = new Size(width + 2, height);
 			Graphics g = (Graphics)graphics;
 			Color brs_string = Cadencii.Gui.Colors.Black;
 			Color rect_curve = new Color(41, 46, 55);
@@ -1445,15 +1444,15 @@ namespace Cadencii.Application.Models
 		/// 指定した文字列を旗に書いたときの，旗のサイズを計算します
 		/// </summary>
 		/// <param name="flag_title"></param>
-		private Dimension getFlagBounds(string flag_title)
+		private Size getFlagBounds(string flag_title)
 		{
 			if (mTextWidthPerLetter <= 0.0f) {
 				Font font = EditorConfig.baseFont10;
-				Dimension s = Utility.measureString(flag_title + " ", font);
+				Size s = Utility.measureString(flag_title + " ", font);
 				mTextWidthPerLetter = s.Width / (float)flag_title.Length;
 				mTextHeight = s.Height;
 			}
-			return new Dimension((int)(flag_title.Length * mTextWidthPerLetter), mTextHeight);
+			return new Size((int)(flag_title.Length * mTextWidthPerLetter), mTextHeight);
 		}
 
 		/// <summary>
@@ -1477,8 +1476,8 @@ namespace Cadencii.Application.Models
 			Font font = EditorConfig.baseFont10;
 			int font_height = AppConfig.baseFont10Height;
 			int font_offset = AppConfig.baseFont10OffsetHeight;
-			Dimension pre_bounds = getFlagBounds(s_pre);
-			Dimension ovl_bounds = getFlagBounds(s_ovl);
+			Size pre_bounds = getFlagBounds(s_pre);
+			Size ovl_bounds = getFlagBounds(s_ovl);
 
 			Color pen = new Color(0, 0, 0, 50);
 			Color transp = new Color(Cadencii.Gui.Colors.Orange.R, Cadencii.Gui.Colors.Orange.G, Cadencii.Gui.Colors.Orange.B, 50);
@@ -1594,7 +1593,7 @@ namespace Cadencii.Application.Models
 			VsqEvent itr_next = null;
 			ByRef<int> px_preutterance = new ByRef<int>();
 			ByRef<int> px_overlap = new ByRef<int>();
-			Dimension size = new Dimension();
+			Size size = new Size();
 			while (true) {
 				itr_prev = itr_item;
 				itr_item = itr_next;
@@ -3036,7 +3035,7 @@ namespace Cadencii.Application.Models
 
 		private void processMouseDownSelectRegion(MouseEventArgs e)
 		{
-			if ((AwtHost.ModifierKeys & Keys.Control) != Keys.Control) {
+			if ((GuiHost.ModifierKeys & Keys.Control) != Keys.Control) {
 				EditorManager.itemSelection.clearPoint();
 			}
 
@@ -3086,7 +3085,7 @@ namespace Cadencii.Application.Models
 				return;
 			}
 			int stdx = EditorManager.MainWindow.Model.StartToDrawX;
-			mModifierOnMouseDown = AwtHost.ModifierKeys;
+			mModifierOnMouseDown = GuiHost.ModifierKeys;
 			int max = mSelectedCurve.getMaximum();
 			int min = mSelectedCurve.getMinimum();
 			int value = ValueFromYCoord(e.Y);
@@ -3169,7 +3168,7 @@ namespace Cadencii.Application.Models
 							} else {
 								EditorManager.itemSelection.addEvent(ve.InternalID);
 							}
-						} else if ((AwtHost.ModifierKeys & Keys.Shift) == Keys.Shift) {
+						} else if ((GuiHost.ModifierKeys & Keys.Shift) == Keys.Shift) {
 							int last_clock = EditorManager.itemSelection.getLastEvent().original.Clock;
 							int tmin = Math.Min(ve.Clock, last_clock);
 							int tmax = Math.Max(ve.Clock, last_clock);
@@ -3401,7 +3400,7 @@ namespace Cadencii.Application.Models
 										}
 										EditorManager.itemSelection.clearEvent();
 										EditorManager.itemSelection.addEventAll(list);
-									} else if ((AwtHost.ModifierKeys & Keys.Shift) == Keys.Shift) {
+									} else if ((GuiHost.ModifierKeys & Keys.Shift) == Keys.Shift) {
 										// clicked with Shift key
 										SelectedEventEntry last_selected = EditorManager.itemSelection.getLastEvent();
 										if (last_selected != null) {
@@ -3665,7 +3664,7 @@ namespace Cadencii.Application.Models
 			}
 			int px_shift = TS.DOT_WID + EditorManager.editorConfig.PxToleranceBezier;
 			int px_width = px_shift * 2 + 1;
-			Keys modifier = AwtHost.ModifierKeys;
+			Keys modifier = GuiHost.ModifierKeys;
 
 			int track = EditorManager.Selected;
 			bool too_near = false; // clicked position is too near to existing bezier points
@@ -5006,7 +5005,7 @@ namespace Cadencii.Application.Models
 
 		private void MouseHoverEventGenerator()
 		{
-			Thread.Sleep(AwtHost.MouseHoverTime);
+			Thread.Sleep(GuiHost.MouseHoverTime);
 			control.Invoke(new EventHandler(TrackSelector_MouseHover));
 		}
 
@@ -5583,7 +5582,7 @@ namespace Cadencii.Application.Models
 			this.cmenuSinger.RenderMode = ToolStripRenderMode.System;
 			this.cmenuSinger.ShowCheckMargin = true;
 			this.cmenuSinger.ShowImageMargin = false;
-			this.cmenuSinger.Size =new Dimension(153, 26);
+			this.cmenuSinger.Size =new Size(153, 26);
 			//
 			// toolTip
 			//
@@ -5624,53 +5623,53 @@ namespace Cadencii.Application.Models
 			this.cmenuCurve.Name = "cmenuCurve";
 			this.cmenuCurve.RenderMode = ToolStripRenderMode.System;
 			this.cmenuCurve.ShowImageMargin = false;
-			this.cmenuCurve.Size = new Dimension(160, 496);
+			this.cmenuCurve.Size = new Size(160, 496);
 			//
 			// cmenuCurveVelocity
 			//
 			this.cmenuCurveVelocity.Name = "cmenuCurveVelocity";
-			this.cmenuCurveVelocity.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveVelocity.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveVelocity.Text = "Velocity(&V)";
 			//
 			// cmenuCurveAccent
 			//
 			this.cmenuCurveAccent.Name = "cmenuCurveAccent";
-			this.cmenuCurveAccent.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveAccent.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveAccent.Text = "Accent";
 			//
 			// cmenuCurveDecay
 			//
 			this.cmenuCurveDecay.Name = "cmenuCurveDecay";
-			this.cmenuCurveDecay.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveDecay.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveDecay.Text = "Decay";
 			//
 			// cmenuCurveSeparator1
 			//
 			this.cmenuCurveSeparator1.Name = "cmenuCurveSeparator1";
-			this.cmenuCurveSeparator1.Size =new Cadencii.Gui.Dimension(156, 6);
+			this.cmenuCurveSeparator1.Size =new Cadencii.Gui.Size(156, 6);
 			//
 			// cmenuCurveDynamics
 			//
 			this.cmenuCurveDynamics.Name = "cmenuCurveDynamics";
-			this.cmenuCurveDynamics.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveDynamics.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveDynamics.Text = "Dynamics";
 			//
 			// cmenuCurveVibratoRate
 			//
 			this.cmenuCurveVibratoRate.Name = "cmenuCurveVibratoRate";
-			this.cmenuCurveVibratoRate.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveVibratoRate.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveVibratoRate.Text = "Vibrato Rate";
 			//
 			// cmenuCurveVibratoDepth
 			//
 			this.cmenuCurveVibratoDepth.Name = "cmenuCurveVibratoDepth";
-			this.cmenuCurveVibratoDepth.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveVibratoDepth.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveVibratoDepth.Text = "Vibrato Depth";
 			//
 			// cmenuCurveSeparator2
 			//
 			this.cmenuCurveSeparator2.Name = "cmenuCurveSeparator2";
-			this.cmenuCurveSeparator2.Size =new Cadencii.Gui.Dimension(156, 6);
+			this.cmenuCurveSeparator2.Size =new Cadencii.Gui.Size(156, 6);
 			//
 			// cmenuCurveReso1
 			//
@@ -5679,25 +5678,25 @@ namespace Cadencii.Application.Models
 				this.cmenuCurveReso1BW,
 				this.cmenuCurveReso1Amp});
 			this.cmenuCurveReso1.Name = "cmenuCurveReso1";
-			this.cmenuCurveReso1.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveReso1.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveReso1.Text = "Resonance 1";
 			//
 			// cmenuCurveReso1Freq
 			//
 			this.cmenuCurveReso1Freq.Name = "cmenuCurveReso1Freq";
-			this.cmenuCurveReso1Freq.Size =new Cadencii.Gui.Dimension(128, 22);
+			this.cmenuCurveReso1Freq.Size =new Cadencii.Gui.Size(128, 22);
 			this.cmenuCurveReso1Freq.Text = "Frequency";
 			//
 			// cmenuCurveReso1BW
 			//
 			this.cmenuCurveReso1BW.Name = "cmenuCurveReso1BW";
-			this.cmenuCurveReso1BW.Size =new Cadencii.Gui.Dimension(128, 22);
+			this.cmenuCurveReso1BW.Size =new Cadencii.Gui.Size(128, 22);
 			this.cmenuCurveReso1BW.Text = "Band Width";
 			//
 			// cmenuCurveReso1Amp
 			//
 			this.cmenuCurveReso1Amp.Name = "cmenuCurveReso1Amp";
-			this.cmenuCurveReso1Amp.Size =new Cadencii.Gui.Dimension(128, 22);
+			this.cmenuCurveReso1Amp.Size =new Cadencii.Gui.Size(128, 22);
 			this.cmenuCurveReso1Amp.Text = "Amplitude";
 			//
 			// cmenuCurveReso2
@@ -5707,25 +5706,25 @@ namespace Cadencii.Application.Models
 				this.cmenuCurveReso2BW,
 				this.cmenuCurveReso2Amp});
 			this.cmenuCurveReso2.Name = "cmenuCurveReso2";
-			this.cmenuCurveReso2.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveReso2.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveReso2.Text = "Resonance 2";
 			//
 			// cmenuCurveReso2Freq
 			//
 			this.cmenuCurveReso2Freq.Name = "cmenuCurveReso2Freq";
-			this.cmenuCurveReso2Freq.Size =new Cadencii.Gui.Dimension(128, 22);
+			this.cmenuCurveReso2Freq.Size =new Cadencii.Gui.Size(128, 22);
 			this.cmenuCurveReso2Freq.Text = "Frequency";
 			//
 			// cmenuCurveReso2BW
 			//
 			this.cmenuCurveReso2BW.Name = "cmenuCurveReso2BW";
-			this.cmenuCurveReso2BW.Size =new Cadencii.Gui.Dimension(128, 22);
+			this.cmenuCurveReso2BW.Size =new Cadencii.Gui.Size(128, 22);
 			this.cmenuCurveReso2BW.Text = "Band Width";
 			//
 			// cmenuCurveReso2Amp
 			//
 			this.cmenuCurveReso2Amp.Name = "cmenuCurveReso2Amp";
-			this.cmenuCurveReso2Amp.Size =new Cadencii.Gui.Dimension(128, 22);
+			this.cmenuCurveReso2Amp.Size =new Cadencii.Gui.Size(128, 22);
 			this.cmenuCurveReso2Amp.Text = "Amplitude";
 			//
 			// cmenuCurveReso3
@@ -5735,25 +5734,25 @@ namespace Cadencii.Application.Models
 				this.cmenuCurveReso3BW,
 				this.cmenuCurveReso3Amp});
 			this.cmenuCurveReso3.Name = "cmenuCurveReso3";
-			this.cmenuCurveReso3.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveReso3.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveReso3.Text = "Resonance 3";
 			//
 			// cmenuCurveReso3Freq
 			//
 			this.cmenuCurveReso3Freq.Name = "cmenuCurveReso3Freq";
-			this.cmenuCurveReso3Freq.Size =new Cadencii.Gui.Dimension(128, 22);
+			this.cmenuCurveReso3Freq.Size =new Cadencii.Gui.Size(128, 22);
 			this.cmenuCurveReso3Freq.Text = "Frequency";
 			//
 			// cmenuCurveReso3BW
 			//
 			this.cmenuCurveReso3BW.Name = "cmenuCurveReso3BW";
-			this.cmenuCurveReso3BW.Size =new Cadencii.Gui.Dimension(128, 22);
+			this.cmenuCurveReso3BW.Size =new Cadencii.Gui.Size(128, 22);
 			this.cmenuCurveReso3BW.Text = "Band Width";
 			//
 			// cmenuCurveReso3Amp
 			//
 			this.cmenuCurveReso3Amp.Name = "cmenuCurveReso3Amp";
-			this.cmenuCurveReso3Amp.Size =new Cadencii.Gui.Dimension(128, 22);
+			this.cmenuCurveReso3Amp.Size =new Cadencii.Gui.Size(128, 22);
 			this.cmenuCurveReso3Amp.Text = "Amplitude";
 			//
 			// cmenuCurveReso4
@@ -5763,117 +5762,117 @@ namespace Cadencii.Application.Models
 				this.cmenuCurveReso4BW,
 				this.cmenuCurveReso4Amp});
 			this.cmenuCurveReso4.Name = "cmenuCurveReso4";
-			this.cmenuCurveReso4.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveReso4.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveReso4.Text = "Resonance 4";
 			//
 			// cmenuCurveReso4Freq
 			//
 			this.cmenuCurveReso4Freq.Name = "cmenuCurveReso4Freq";
-			this.cmenuCurveReso4Freq.Size =new Cadencii.Gui.Dimension(128, 22);
+			this.cmenuCurveReso4Freq.Size =new Cadencii.Gui.Size(128, 22);
 			this.cmenuCurveReso4Freq.Text = "Frequency";
 			//
 			// cmenuCurveReso4BW
 			//
 			this.cmenuCurveReso4BW.Name = "cmenuCurveReso4BW";
-			this.cmenuCurveReso4BW.Size =new Cadencii.Gui.Dimension(128, 22);
+			this.cmenuCurveReso4BW.Size =new Cadencii.Gui.Size(128, 22);
 			this.cmenuCurveReso4BW.Text = "Band Width";
 			//
 			// cmenuCurveReso4Amp
 			//
 			this.cmenuCurveReso4Amp.Name = "cmenuCurveReso4Amp";
-			this.cmenuCurveReso4Amp.Size =new Cadencii.Gui.Dimension(128, 22);
+			this.cmenuCurveReso4Amp.Size =new Cadencii.Gui.Size(128, 22);
 			this.cmenuCurveReso4Amp.Text = "Amplitude";
 			//
 			// cmenuCurveSeparator3
 			//
 			this.cmenuCurveSeparator3.Name = "cmenuCurveSeparator3";
-			this.cmenuCurveSeparator3.Size =new Cadencii.Gui.Dimension(156, 6);
+			this.cmenuCurveSeparator3.Size =new Cadencii.Gui.Size(156, 6);
 			//
 			// cmenuCurveHarmonics
 			//
 			this.cmenuCurveHarmonics.Name = "cmenuCurveHarmonics";
-			this.cmenuCurveHarmonics.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveHarmonics.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveHarmonics.Text = "Harmonics";
 			//
 			// cmenuCurveBreathiness
 			//
 			this.cmenuCurveBreathiness.Name = "cmenuCurveBreathiness";
-			this.cmenuCurveBreathiness.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveBreathiness.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveBreathiness.Text = "Noise";
 			//
 			// cmenuCurveBrightness
 			//
 			this.cmenuCurveBrightness.Name = "cmenuCurveBrightness";
-			this.cmenuCurveBrightness.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveBrightness.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveBrightness.Text = "Brightness";
 			//
 			// cmenuCurveClearness
 			//
 			this.cmenuCurveClearness.Name = "cmenuCurveClearness";
-			this.cmenuCurveClearness.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveClearness.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveClearness.Text = "Clearness";
 			//
 			// cmenuCurveOpening
 			//
 			this.cmenuCurveOpening.Name = "cmenuCurveOpening";
-			this.cmenuCurveOpening.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveOpening.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveOpening.Text = "Opening";
 			//
 			// cmenuCurveGenderFactor
 			//
 			this.cmenuCurveGenderFactor.Name = "cmenuCurveGenderFactor";
-			this.cmenuCurveGenderFactor.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveGenderFactor.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveGenderFactor.Text = "Gender Factor";
 			//
 			// cmenuCurveSeparator4
 			//
 			this.cmenuCurveSeparator4.Name = "cmenuCurveSeparator4";
-			this.cmenuCurveSeparator4.Size =new Cadencii.Gui.Dimension(156, 6);
+			this.cmenuCurveSeparator4.Size =new Cadencii.Gui.Size(156, 6);
 			//
 			// cmenuCurvePortamentoTiming
 			//
 			this.cmenuCurvePortamentoTiming.Name = "cmenuCurvePortamentoTiming";
-			this.cmenuCurvePortamentoTiming.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurvePortamentoTiming.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurvePortamentoTiming.Text = "Portamento Timing";
 			//
 			// cmenuCurvePitchBend
 			//
 			this.cmenuCurvePitchBend.Name = "cmenuCurvePitchBend";
-			this.cmenuCurvePitchBend.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurvePitchBend.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurvePitchBend.Text = "Pitch Bend";
 			//
 			// cmenuCurvePitchBendSensitivity
 			//
 			this.cmenuCurvePitchBendSensitivity.Name = "cmenuCurvePitchBendSensitivity";
-			this.cmenuCurvePitchBendSensitivity.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurvePitchBendSensitivity.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurvePitchBendSensitivity.Text = "Pitch Bend Sensitivity";
 			//
 			// cmenuCurveSeparator5
 			//
 			this.cmenuCurveSeparator5.Name = "cmenuCurveSeparator5";
-			this.cmenuCurveSeparator5.Size =new Cadencii.Gui.Dimension(156, 6);
+			this.cmenuCurveSeparator5.Size =new Cadencii.Gui.Size(156, 6);
 			//
 			// cmenuCurveEffect2Depth
 			//
 			this.cmenuCurveEffect2Depth.Name = "cmenuCurveEffect2Depth";
-			this.cmenuCurveEffect2Depth.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveEffect2Depth.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveEffect2Depth.Text = "Effect2 Depth";
 			//
 			// cmenuCurveEnvelope
 			//
 			this.cmenuCurveEnvelope.Name = "cmenuCurveEnvelope";
-			this.cmenuCurveEnvelope.Size =new Cadencii.Gui.Dimension(159, 22);
+			this.cmenuCurveEnvelope.Size =new Cadencii.Gui.Size(159, 22);
 			this.cmenuCurveEnvelope.Text = "Envelope";
 			//
 			// TrackSelector
 			//
 			var ctrl = (UiUserControl) control;
-			ctrl.AutoScaleDimensions = new Dimension (6, 12);
+			ctrl.AutoScaleDimensions = new Size (6, 12);
 			ctrl.AutoScaleMode = Cadencii.Gui.Toolkit.AutoScaleMode.Font;
 			ctrl.BackColor = Colors.DarkGray;
 			ctrl.DoubleBuffered = true;
 			ctrl.Name = "TrackSelector";
-			ctrl.Size = new Dimension (430, 228);
+			ctrl.Size = new Size (430, 228);
 			this.cmenuCurve.ResumeLayout(false);
 			control.ResumeLayout(false);
 

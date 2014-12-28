@@ -109,13 +109,11 @@
     <Compile Include="Cadencii.Gui\models\Area.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cadencii.Gui\models\AwtHost.cs" />
     <Compile Include="Cadencii.Gui\models\Color.cs" />
     <Compile Include="Cadencii.Gui\models\Colors.cs" />
     <Compile Include="Cadencii.Gui\models\Cursor.cs" />
     <Compile Include="Cadencii.Gui\models\Cursors.cs" />
     <Compile Include="Cadencii.Gui\models\DialogResult.cs" />
-    <Compile Include="Cadencii.Gui\models\Dimension.cs" />
     <Compile Include="Cadencii.Gui\models\Font.cs" />
     <Compile Include="Cadencii.Gui\models\Graphics.cs" />
     <Compile Include="Cadencii.Gui\models\Image.cs" />
@@ -162,6 +160,8 @@
     <Compile Include="Cadencii.Gui.Toolkit\UiTabControl.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiTabPage.cs" />
     <Compile Include="Cadencii.Gui\models\Clipboard.cs" />
+    <Compile Include="Cadencii.Gui\models\Size.cs" />
+    <Compile Include="Cadencii.Gui\models\GuiHost.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

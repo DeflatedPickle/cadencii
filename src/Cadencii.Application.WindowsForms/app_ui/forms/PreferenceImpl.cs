@@ -17,7 +17,6 @@ using System.IO;
 using System.Collections.Generic;
 using cadencii.apputil;
 using Cadencii.Gui;
-using cadencii.java.util;
 using cadencii.javax.sound.midi;
 using Cadencii.Media;
 using Cadencii.Media.Vsq;
@@ -1175,7 +1174,7 @@ namespace Cadencii.Application.Forms
 					Cadencii.Gui.Toolkit.MessageBoxIcon.Information);
             }
 
-			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
+			this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.OK;
         }
 
         public void btnChangeScreenFont_Click(Object sender, EventArgs e)
@@ -1384,7 +1383,7 @@ namespace Cadencii.Application.Forms
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
+			this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
 
         public void commonChangeAutoVibratoType(Object sender, EventArgs e)
@@ -1505,7 +1504,7 @@ namespace Cadencii.Application.Forms
                 return;
             }
             Font font = new Font(font_name, Cadencii.Gui.Font.PLAIN, (int)f.SizeInPoints);
-            AwtHost.Current.ApplyFontRecurse(this, font);
+            GuiHost.Current.ApplyFontRecurse(this, font);
         }
 
         private void UpdateUtausingerList()

@@ -97,7 +97,7 @@ namespace Cadencii.Application.Forms
 
         public void setFont(string fontName, float fontSize)
         {
-            AwtHost.Current.ApplyFontRecurse(this, new Cadencii.Gui.Font(new System.Drawing.Font(fontName, fontSize)));
+            GuiHost.Current.ApplyFontRecurse(this, new Cadencii.Gui.Font(new System.Drawing.Font(fontName, fontSize)));
         }
 
         public void setTextPositionGroup(string value)

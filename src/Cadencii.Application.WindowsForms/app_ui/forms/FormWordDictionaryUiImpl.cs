@@ -15,8 +15,6 @@ using System;
 using cadencii.apputil;
 using Cadencii.Media.Vsq;
 using cadencii;
-using cadencii.java.util;
-
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 
@@ -31,7 +29,7 @@ namespace Cadencii.Application.Forms
             this.listener = listener;
             InitializeComponent();
 			registerEventHandlers ();
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         public void listDictionariesSetColumnWidth(int columnWidth)
@@ -64,7 +62,7 @@ namespace Cadencii.Application.Forms
 
         public void setLocation(int x, int y)
         {
-			this.AsAwt ().Location = new Point(x, y);
+			this.AsGui ().Location = new Point(x, y);
         }
 
         public void close()
@@ -169,15 +167,15 @@ namespace Cadencii.Application.Forms
 
         public void setSize(int width, int height)
         {
-			this.AsAwt ().Size = new Dimension(width, height);
+			this.AsGui ().Size = new Size(width, height);
         }
 
         public void setDialogResult(bool value)
         {
             if (value) {
-				this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
+				this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.OK;
             } else {
-				this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
+				this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
             }
         }
 

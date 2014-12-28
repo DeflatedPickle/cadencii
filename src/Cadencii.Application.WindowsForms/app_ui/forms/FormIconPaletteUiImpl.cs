@@ -16,9 +16,7 @@ using System.Linq;
 using System.Collections.Generic;
 using cadencii.apputil;
 using Cadencii.Gui;
-using cadencii.java.util;
 using Cadencii.Media.Vsq;
-
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
 using cadencii;
@@ -39,7 +37,7 @@ namespace Cadencii.Application.Forms
             InitializeComponent();
             mMainWindow = main_window;
             applyLanguage();
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
             init();
             registerEventHandlers();
             SortedDictionary<string, Keys[]> dict = EditorManager.editorConfig.getShortcutKeysDictionary(mMainWindow.getDefaultShortcutKeys());
@@ -88,7 +86,7 @@ namespace Cadencii.Application.Forms
         private void registerEventHandlers()
         {
             this.Load += new EventHandler(FormIconPalette_Load);
-			this.AsAwt ().FormClosing += FormIconPalette_FormClosing;
+			this.AsGui ().FormClosing += FormIconPalette_FormClosing;
             menuWindowHide.Click += new EventHandler(menuWindowHide_Click);
         }
 
@@ -152,7 +150,7 @@ namespace Cadencii.Application.Forms
                     }
                 }
                 btn.MouseDown += new EventHandler<Cadencii.Gui.Toolkit.MouseEventArgs>(handleCommonMouseDown);
-                btn.Size = new Cadencii.Gui.Dimension(buttonWidth, buttonWidth);
+                btn.Size = new Cadencii.Gui.Size(buttonWidth, buttonWidth);
                 int iw = 0;
                 int ih = 0;
                 if (icon_id.StartsWith(IconDynamicsHandle.ICONID_HEAD_DYNAFF)) {
@@ -174,7 +172,7 @@ namespace Cadencii.Application.Forms
                     continue;
                 }
                 btn.Location = new Cadencii.Gui.Point(iw * buttonWidth, ih * buttonWidth);
-				this.AsAwt ().Controls.Add(btn);
+				this.AsGui ().Controls.Add(btn);
                 btn.BringToFront();
             }
 

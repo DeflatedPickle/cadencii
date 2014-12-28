@@ -17,7 +17,6 @@ using System.IO;
 using System.Text;
 using Microsoft.Win32;
 using cadencii;
-using cadencii.java.util;
 using Cadencii.Utilities;
 
 namespace Cadencii.Media.Vsq

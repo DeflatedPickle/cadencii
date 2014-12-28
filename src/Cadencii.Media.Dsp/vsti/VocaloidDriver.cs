@@ -14,10 +14,10 @@
  */
 using System;
 using System.Collections.Generic;
-using cadencii.java.util;
 using Cadencii.Media.Vsq;
 using cadencii;
 using VstSdk;
+using Cadencii.Utilities;
 
 namespace cadencii
 {

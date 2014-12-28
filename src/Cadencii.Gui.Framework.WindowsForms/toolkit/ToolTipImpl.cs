@@ -23,7 +23,7 @@ namespace Cadencii.Gui.Toolkit
 	public class ToolTipImpl : System.Windows.Forms.ToolTip, UiToolTip
 	{
 		event EventHandler<DrawToolTipEventArgs> UiToolTip.Draw {
-			add { Draw += (sender, e) => value (sender, e.ToAwt ()); }
+			add { Draw += (sender, e) => value (sender, e.ToGui ()); }
 			remove {
 				throw new NotImplementedException ();
 			}

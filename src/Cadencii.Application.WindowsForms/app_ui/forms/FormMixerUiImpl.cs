@@ -15,7 +15,6 @@ using System;
 using System.Collections.Generic;
 using cadencii.apputil;
 using Cadencii.Gui;
-using cadencii.java.util;
 using Cadencii.Media.Vsq;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
@@ -228,14 +227,14 @@ namespace Cadencii.Application.Forms
                 hScroll.Value = 0;
                 hScroll.Maximum = 0;
                 hScroll.LargeChange = 1;
-				hScroll.Size = new Dimension((VolumeTrackerController.WIDTH + 1) * num_vtracker_on_panel, 15);
+				hScroll.Size = new Size((VolumeTrackerController.WIDTH + 1) * num_vtracker_on_panel, 15);
             } else {
                 // num_vtracker_on_panel個のVolumeTrackerのうち，panel_capacity個しか，画面上に同時表示できない
                 hScroll.Minimum = 0;
                 hScroll.Value = 0;
 				hScroll.Maximum = num_vtracker_on_panel * VolumeTrackerController.WIDTH;
 				hScroll.LargeChange = panel_capacity * VolumeTrackerController.WIDTH;
-				hScroll.Size = new Dimension((VolumeTrackerController.WIDTH + 1) * panel_capacity, 15);
+				hScroll.Size = new Size((VolumeTrackerController.WIDTH + 1) * panel_capacity, 15);
             }
 			hScroll.Location = new Point(0, VolumeTrackerController.HEIGHT);
 
@@ -355,7 +354,7 @@ namespace Cadencii.Application.Forms
         {
             menuVisualReturn.Click += new EventHandler(menuVisualReturn_Click);
             hScroll.ValueChanged += new EventHandler(veScrollBar_ValueChanged);
-			this.AsAwt ().FormClosing += (o,e) => FormMixer_FormClosing (e);
+			this.AsGui ().FormClosing += (o,e) => FormMixer_FormClosing (e);
             this.Load += new EventHandler(FormMixer_Load);
             reregisterEventHandlers();
         }

@@ -14,7 +14,6 @@
 using System;
 using System.Collections.Generic;
 using Cadencii.Media.Vsq;
-using cadencii.java.util;
 using Cadencii.Utilities;
 using Cadencii.Gui;
 using Cadencii.Media;

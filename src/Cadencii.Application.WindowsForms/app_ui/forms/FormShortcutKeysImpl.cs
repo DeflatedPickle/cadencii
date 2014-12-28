@@ -15,9 +15,9 @@ using System;
 using System.Collections.Generic;
 using cadencii.apputil;
 using cadencii;
-using cadencii.java.util;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Utilities;
 
 namespace Cadencii.Application.Forms
 {
@@ -98,11 +98,11 @@ namespace Cadencii.Application.Forms
             foreach (Keys key in keys) {
                 comboEditKey.Items.Add(key);
             }
-			this.AsAwt ().Size = new Dimension (mWindowWidth, mWindowHeight);
+			this.AsGui ().Size = new Size (mWindowWidth, mWindowHeight);
 
             registerEventHandlers();
             updateList();
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods
@@ -447,12 +447,12 @@ namespace Cadencii.Application.Forms
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-            this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
+            this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
 
         public void btnOK_Click(Object sender, EventArgs e)
         {
-            this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
+            this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.OK;
         }
         #endregion
 

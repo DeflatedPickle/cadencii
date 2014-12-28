@@ -15,14 +15,13 @@ using System;
 using System.Drawing;
 using cadencii.apputil;
 using Cadencii.Media.Vsq;
-
-using cadencii.java.util;
 using Keys = Cadencii.Gui.Toolkit.Keys;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
 using cadencii;
 using Cadencii.Application.Models;
+using Cadencii.Utilities;
 
 namespace Cadencii.Application.Forms
 {
@@ -36,7 +35,7 @@ namespace Cadencii.Application.Forms
             InitializeComponent();
             registerEventHandlers();
             setResources();
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
             applyLanguage();
 
             if (note_head_handle != null) {
@@ -90,9 +89,9 @@ namespace Cadencii.Application.Forms
                 comboTemplate.Items.Add(strs[i]);
             }
 
-            Size current_size = this.ClientSize;
-            this.ClientSize = new Size(current_size.Width, flowLayoutPanel.ClientSize.Height + flowLayoutPanel.Top * 2);
-			this.AsAwt ().FormBorderStyle = Cadencii.Gui.Toolkit.FormBorderStyle.FixedDialog;
+            var current_size = this.ClientSize;
+            this.ClientSize = new System.Drawing.Size(current_size.Width, flowLayoutPanel.ClientSize.Height + flowLayoutPanel.Top * 2);
+			this.AsGui ().FormBorderStyle = Cadencii.Gui.Toolkit.FormBorderStyle.FixedDialog;
         }
 
         #region public methods
@@ -376,7 +375,7 @@ namespace Cadencii.Application.Forms
 
         public void btnOK_Click(Object sender, EventArgs e)
         {
-			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
+			this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.OK;
         }
 
         public void comboBox1_SelectedIndexChanged(Object sender, EventArgs e)
@@ -404,7 +403,7 @@ namespace Cadencii.Application.Forms
 				Cadencii.Gui.Toolkit.MessageBoxButtons.YesNo,
 				Cadencii.Gui.Toolkit.MessageBoxIcon.Warning) == Cadencii.Gui.DialogResult.Yes) {
                 m_apply_current_track = true;
-				this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
+				this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.OK;
             }
         }
 
@@ -476,7 +475,7 @@ namespace Cadencii.Application.Forms
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
+			this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
         #endregion
 

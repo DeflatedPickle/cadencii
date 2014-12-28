@@ -42,7 +42,7 @@ namespace Cadencii.Gui.Toolkit
 
 		IList<UiControl> ContentPanel_Controls { get; }
 
-		Dimension ContentPanel_Size {
+		Size ContentPanel_Size {
 			get;
 			set;
 		}

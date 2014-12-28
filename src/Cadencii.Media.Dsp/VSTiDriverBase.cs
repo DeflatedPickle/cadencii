@@ -20,11 +20,11 @@ using System.Text;
 using System.Threading;
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
-using cadencii.java.util;
 using Cadencii.Media.Vsq;
 using cadencii.dsp;
 using VstSdk;
 using Cadencii.Platform.Windows;
+using Cadencii.Utilities;
 
 namespace cadencii
 {

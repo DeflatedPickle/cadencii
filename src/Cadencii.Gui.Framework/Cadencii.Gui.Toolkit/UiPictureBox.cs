@@ -9,8 +9,8 @@ namespace Cadencii.Gui.Toolkit
 
 		PictureBoxSizeMode SizeMode { get; set; }
 
-		Dimension MaximumSize { get; set; }
-		Dimension MinimumSize { get; set; }
+		Size MaximumSize { get; set; }
+		Size MinimumSize { get; set; }
 
 		Image Image { get; set; }
 

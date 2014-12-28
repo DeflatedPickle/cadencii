@@ -366,7 +366,7 @@ namespace Cadencii.Application
 		{
 			// FIXME: enable this.
 			// デフォルトのフォントを，システムのメニューフォントと同じにする
-			var f = AwtHost.Current.SystemMenuFont;
+			var f = GuiHost.Current.SystemMenuFont;
 			if (f != null) {
 				this.BaseFontName = f.getName ();
 				this.ScreenFontName = f.getName ();

@@ -13,7 +13,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		Cadencii.Gui.Rectangle UiToolBarButton.Rectangle {
-			get { return Rectangle.ToAwt (); }
+			get { return Rectangle.ToGui (); }
 		}
 	}
 }

@@ -91,7 +91,7 @@ namespace Cadencii.Application.Forms
             numEndBar.Value = lastEndBar;
             numEndBeat.Value = lastEndBeat;
             lockRequired = false;
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region helper methods
@@ -216,7 +216,7 @@ namespace Cadencii.Application.Forms
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
+			this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
 
         public void btnOK_Click(Object sender, EventArgs e)
@@ -231,7 +231,7 @@ namespace Cadencii.Application.Forms
             lastStartBeat = getStartBeat();
             lastEndBar = getEndBar();
             lastEndBeat = getEndBeat();
-			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
+			this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.OK;
         }
         #endregion
 

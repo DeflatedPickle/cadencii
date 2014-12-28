@@ -16,8 +16,6 @@ using System.Collections.Generic;
 using cadencii.apputil;
 using Cadencii.Media.Vsq;
 using cadencii;
-using cadencii.java.util;
-
 using Cadencii.Gui;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
@@ -78,7 +76,7 @@ namespace Cadencii.Application.Forms
         {
             InitializeComponent();
             applyLanguage();
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
             this.Size = new System.Drawing.Size(mPreviousWidth, mPreviousHeight);
             registerEventHandlers();
 
@@ -118,12 +116,12 @@ namespace Cadencii.Application.Forms
         #region event handlers
         public void buttonOk_Click(Object sender, EventArgs e)
         {
-			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
+			this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.OK;
         }
 
         public void buttonCancel_Click(Object sender, EventArgs e)
         {
-			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
+			this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
 
         public void listPresets_SelectedIndexChanged(Object sender, EventArgs e)
@@ -416,7 +414,7 @@ namespace Cadencii.Application.Forms
 
         public void FormVibratoPreset_Resize(Object sender, EventArgs e)
         {
-			if (this.AsAwt ().WindowState == FormWindowState.Normal) {
+			if (this.AsGui ().WindowState == FormWindowState.Normal) {
                 mPreviousWidth = this.Width;
                 mPreviousHeight = this.Height;
             }

@@ -33,7 +33,7 @@ namespace Cadencii.Application.Forms
             applyLanguage();
             label1.Text = message;
             textBox1.Text = errors;
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods

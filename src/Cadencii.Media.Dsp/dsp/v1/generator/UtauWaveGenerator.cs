@@ -20,7 +20,6 @@ using Cadencii.Media;
 using Cadencii.Media.Vsq;
 using cadencii;
 using Cadencii.Gui;
-using cadencii.java.util;
 using cadencii.utau;
 using Cadencii.Utilities;
 

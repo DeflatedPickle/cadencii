@@ -30,7 +30,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<ToolBarButtonClickEventArgs> UiToolBar.ButtonClick {
-			add { ButtonClick += (sender, e) => value (sender, ExtensionsWF.ToAwt (e)); }
+			add { ButtonClick += (sender, e) => value (sender, ExtensionsWF.ToGui (e)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -49,8 +49,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Dimension UiToolBar.ButtonSize {
-			get { return ButtonSize.ToAwt (); }
+		Size UiToolBar.ButtonSize {
+			get { return ButtonSize.ToGui (); }
 			set { ButtonSize = value.ToWF (); }
 		}
 
@@ -70,7 +70,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		Cursor UiControl.Cursor {
-			get { return this.Cursor.ToAwt (); }
+			get { return this.Cursor.ToGui (); }
 			set { Cursor = value.ToNative (); }
 		}
 
@@ -97,7 +97,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		Rectangle UiControl.Bounds {
-			get { return Bounds.ToAwt (); }
+			get { return Bounds.ToGui (); }
 			set { this.Bounds = value.ToWF (); }
 		}
 
@@ -107,27 +107,27 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		Font UiControl.Font {
-			get { return Font.ToAwt (); }
+			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
 		}
 
 		Color UiControl.ForeColor {
-			get { return ForeColor.ToAwt (); }
+			get { return ForeColor.ToGui (); }
 			set { ForeColor = value.ToNative (); }
 		}
 
 		Color UiControl.BackColor {
-			get { return BackColor.ToAwt (); }
+			get { return BackColor.ToGui (); }
 			set { BackColor = value.ToNative (); }
 		}
 
 		Point UiControl.Location {
-			get { return Location.ToAwt (); }
+			get { return Location.ToGui (); }
 			set { Location = value.ToWF (); }
 		}
 
-		Dimension UiControl.Size {
-			get { return new Dimension (Size.Width, Size.Height); }
+		Size UiControl.Size {
+			get { return new Size (Size.Width, Size.Height); }
 			set { this.Size = new System.Drawing.Size (value.Width, value.Height); }
 		}
 
@@ -153,12 +153,12 @@ namespace Cadencii.Gui.Toolkit
 
 		Point UiControl.PointToClient (Point point)
 		{
-			return PointToClient (point.ToWF ()).ToAwt ();
+			return PointToClient (point.ToWF ()).ToGui ();
 		}
 
 		Point UiControl.PointToScreen (Point point)
 		{
-			return PointToScreen (point.ToWF ()).ToAwt ();
+			return PointToScreen (point.ToWF ()).ToGui ();
 		}
 
 		event EventHandler UiControl.Enter {
@@ -197,32 +197,32 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event NMouseEventHandler UiControl.MouseClick {
-			add { this.MouseClick += (sender, e) => value (sender, e.ToAwt ()); }
-			remove { this.MouseClick -= (sender, e) => value (sender, e.ToAwt ()); }
+			add { this.MouseClick += (sender, e) => value (sender, e.ToGui ()); }
+			remove { this.MouseClick -= (sender, e) => value (sender, e.ToGui ()); }
 		}
 
 		event NMouseEventHandler UiControl.MouseDoubleClick {
-			add { this.MouseDoubleClick += (sender, e) => value (sender, e.ToAwt ()); }
-			remove { this.MouseDoubleClick -= (sender, e) => value (sender, e.ToAwt ()); }
+			add { this.MouseDoubleClick += (sender, e) => value (sender, e.ToGui ()); }
+			remove { this.MouseDoubleClick -= (sender, e) => value (sender, e.ToGui ()); }
 		}
 
 		event NMouseEventHandler UiControl.MouseDown {
-			add { this.MouseDown += (sender, e) => value (sender, e.ToAwt ()); }
-			remove { this.MouseDown -= (sender, e) => value (sender, e.ToAwt ()); }
+			add { this.MouseDown += (sender, e) => value (sender, e.ToGui ()); }
+			remove { this.MouseDown -= (sender, e) => value (sender, e.ToGui ()); }
 		}
 
 		event NMouseEventHandler UiControl.MouseUp {
-			add { this.MouseUp += (sender, e) => value (sender, e.ToAwt ()); }
-			remove { this.MouseUp -= (sender, e) => value (sender, e.ToAwt ()); }
+			add { this.MouseUp += (sender, e) => value (sender, e.ToGui ()); }
+			remove { this.MouseUp -= (sender, e) => value (sender, e.ToGui ()); }
 		}
 
 		event NMouseEventHandler UiControl.MouseMove {
-			add { this.MouseMove += (sender, e) => value (sender, e.ToAwt ()); }
-			remove { this.MouseMove -= (sender, e) => value (sender, e.ToAwt ()); }
+			add { this.MouseMove += (sender, e) => value (sender, e.ToGui ()); }
+			remove { this.MouseMove -= (sender, e) => value (sender, e.ToGui ()); }
 		}
 		event NMouseEventHandler UiControl.MouseWheel {
-			add { this.MouseWheel += (sender, e) => value (sender, e.ToAwt ()); }
-			remove { this.MouseWheel -= (sender, e) => value (sender, e.ToAwt ()); }
+			add { this.MouseWheel += (sender, e) => value (sender, e.ToGui ()); }
+			remove { this.MouseWheel -= (sender, e) => value (sender, e.ToGui ()); }
 		}
 	}
 }

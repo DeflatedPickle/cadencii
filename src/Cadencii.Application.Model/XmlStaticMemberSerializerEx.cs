@@ -13,7 +13,6 @@
  */
 using System;
 using System.Collections.Generic;
-using cadencii.java.util;
 using Cadencii.Xml;
 using cadencii;
 using Cadencii.Application.Plugins;

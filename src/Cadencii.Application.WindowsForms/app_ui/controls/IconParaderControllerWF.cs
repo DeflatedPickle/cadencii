@@ -15,6 +15,7 @@ using System;
 using System.Linq;
 using Cadencii.Gui;
 using cadencii;
+using Cadencii.Utilities;
 
 namespace Cadencii.Application.Controls
 {

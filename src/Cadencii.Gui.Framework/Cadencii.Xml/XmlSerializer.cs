@@ -14,7 +14,7 @@
 using System;
 using System.IO;
 using Cadencii.Xml;
-using cadencii;
+using Cadencii.Utilities;
 
 namespace Cadencii.Xml
 {

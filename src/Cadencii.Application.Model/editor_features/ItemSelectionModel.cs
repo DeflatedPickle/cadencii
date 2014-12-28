@@ -22,7 +22,6 @@ namespace Cadencii.Application
 {
 
     using System;
-    using cadencii.java.util;
     using Cadencii.Media.Vsq;
 
     /// <summary>

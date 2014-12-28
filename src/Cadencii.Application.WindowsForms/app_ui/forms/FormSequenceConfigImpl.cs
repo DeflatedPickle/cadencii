@@ -14,7 +14,6 @@
 using System;
 using cadencii.apputil;
 using Cadencii.Gui;
-using cadencii.java.util;
 using Cadencii.Media;
 using Cadencii.Media.Vsq;
 using cadencii.core;
@@ -53,7 +52,7 @@ namespace Cadencii.Application.Forms
 
             registerEventHandlers();
             setResources();
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods

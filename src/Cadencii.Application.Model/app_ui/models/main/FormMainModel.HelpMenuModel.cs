@@ -94,7 +94,7 @@ namespace Cadencii.Application.Models
 					DialogManager.ShowMessageBox (
 						_ ("Log file has not generated yet."),
 						_ ("Info"),
-						Cadencii.Gui.AwtHost.OK_OPTION,
+						Cadencii.Gui.GuiHost.OK_OPTION,
 						MessageBoxIcon.Information);
 					return;
 				}

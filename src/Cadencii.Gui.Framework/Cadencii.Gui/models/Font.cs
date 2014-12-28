@@ -39,12 +39,12 @@ namespace Cadencii.Gui
 
 	public Font(object value)
         {
-        	a = AwtHost.Current.New<FontAdapter> (value);
+        	a = GuiHost.Current.New<FontAdapter> (value);
         }
 
         public Font (string name, int style, int size)
 		{
-			a = AwtHost.Current.New<FontAdapter> (name, style, size);
+			a = GuiHost.Current.New<FontAdapter> (name, style, size);
 		}
 
 		public object NativeFont {

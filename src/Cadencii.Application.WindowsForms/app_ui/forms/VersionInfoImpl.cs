@@ -91,15 +91,15 @@ namespace Cadencii.Application.Forms
         {
             string about = PortUtil.formatMessage(_("About {0}"), m_app_name);
             string credit = _("Credit");
-			Dimension size1 = Utility.measureString(about, btnFlip.Font);
-			Dimension size2 = Utility.measureString(credit, btnFlip.Font);
+			var size1 = Utility.measureString(about, btnFlip.Font);
+			var size2 = Utility.measureString(credit, btnFlip.Font);
             m_button_width_about = Math.Max(75, (int)(size1.Width * 1.3));
             m_button_width_credit = Math.Max(75, (int)(size2.Width * 1.3));
             if (m_credit_mode) {
-				btnFlip.Size = new Dimension(m_button_width_about, btnFlip.Height);
+				btnFlip.Size = new Size(m_button_width_about, btnFlip.Height);
                 btnFlip.Text = about;
             } else {
-				btnFlip.Size = new Dimension(m_button_width_credit, btnFlip.Height);
+				btnFlip.Size = new Size(m_button_width_credit, btnFlip.Height);
                 btnFlip.Text = credit;
             }
             this.Text = about;
@@ -164,7 +164,7 @@ namespace Cadencii.Application.Forms
             int shadow_shift = 2;
             string font_name = "Arial";
             Font font = new Font(font_name, Cadencii.Gui.Font.PLAIN, FONT_SIZE);
-            Dimension size = Utility.measureString("the quick brown fox jumped over the lazy dogs. THE QUICK BROWN FOX JUMPED OVER THE LAZY DOGS. 0123456789", font);
+            var size = Utility.measureString("the quick brown fox jumped over the lazy dogs. THE QUICK BROWN FOX JUMPED OVER THE LAZY DOGS. 0123456789", font);
             int width = this.Width;
             int height = size.Height;
             //StringFormat sf = new StringFormat();
@@ -235,7 +235,7 @@ namespace Cadencii.Application.Forms
 
         public void btnOK_Click(Object sender, EventArgs e)
         {
-			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
+			this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.OK;
             timer.Stop();
             Close();
         }
@@ -331,7 +331,7 @@ namespace Cadencii.Application.Forms
         private void VersionInfo_KeyDown(Object sender, KeyEventArgs e)
         {
             if (((Keys) e.KeyCode & Keys.Escape) == Keys.Escape) {
-				this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
+				this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
                 Close();
             }
         }
@@ -339,7 +339,7 @@ namespace Cadencii.Application.Forms
         private void VersionInfo_FontChanged(Object sender, EventArgs e)
         {
             for (int i = 0; i < this.Controls.Count; i++) {
-				AwtHost.Current.ApplyFontRecurse((UiControl) this.Controls[i], new Cadencii.Gui.Font(this.Font));
+				GuiHost.Current.ApplyFontRecurse((UiControl) this.Controls[i], new Cadencii.Gui.Font(this.Font));
             }
         }
 
@@ -351,8 +351,8 @@ namespace Cadencii.Application.Forms
 
         private void registerEventHandlers()
         {
-			this.Paint += (o, e) => this.VersionInfo_Paint (o, e.ToAwt ());
-			this.AsAwt ().KeyDown += this.VersionInfo_KeyDown;
+			this.Paint += (o, e) => this.VersionInfo_Paint (o, e.ToGui ());
+			this.AsGui ().KeyDown += this.VersionInfo_KeyDown;
             this.FontChanged += this.VersionInfo_FontChanged;
             this.timer.Tick += timer_Tick;
             this.btnFlip.Click += btnFlip_Click;

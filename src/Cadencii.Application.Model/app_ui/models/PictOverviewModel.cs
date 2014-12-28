@@ -15,7 +15,6 @@ using System;
 using System.Threading;
 using System.Collections.Generic;
 using Cadencii.Gui;
-using cadencii.java.util;
 using Cadencii.Media.Vsq;
 
 using Consts = Cadencii.Application.Models.FormMainModel.Consts;
@@ -142,7 +141,7 @@ namespace Cadencii.Application.Models
 				try {
 					mOverviewUpdateThread.Abort();
 					while (mOverviewUpdateThread != null && mOverviewUpdateThread.IsAlive) {
-						AwtHost.Current.ApplicationDoEvents();
+						GuiHost.Current.ApplicationDoEvents();
 					}
 				} catch (Exception ex) {
 					Logger.write(GetType () + ".overviewStopThread; ex=" + ex + "\n");
@@ -159,7 +158,7 @@ namespace Cadencii.Application.Models
 				try {
 					mOverviewUpdateThread.Abort();
 					while (mOverviewUpdateThread.IsAlive) {
-						AwtHost.Current.ApplicationDoEvents();
+						GuiHost.Current.ApplicationDoEvents();
 					}
 				} catch (Exception ex) {
 					Logger.StdErr("FormMain#btnLeft_MouseDown; ex=" + ex);
@@ -184,7 +183,7 @@ namespace Cadencii.Application.Models
 			if (mOverviewUpdateThread != null) {
 				try {
 					while (mOverviewUpdateThread.IsAlive) {
-						AwtHost.Current.ApplicationDoEvents();
+						GuiHost.Current.ApplicationDoEvents();
 					}
 				} catch (Exception ex) {
 					Logger.StdErr("FormMain#btnRight_MouseDown; ex=" + ex);

@@ -13,8 +13,8 @@
  */
 using System;
 using System.Collections.Generic;
-using cadencii.java.util;
 using cadencii;
+using Cadencii.Utilities;
 
 namespace Cadencii.Media
 {

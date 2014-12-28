@@ -14,8 +14,6 @@
 using System;
 using System.IO;
 using System.Text;
-using cadencii.java.util;
-using cadencii;
 
 namespace Cadencii.Utilities
 {

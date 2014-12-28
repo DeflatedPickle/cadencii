@@ -7,7 +7,6 @@ using System.IO;
 using System.Threading;
 using cadencii.apputil;
 using cadencii.utau;
-using cadencii.java.util;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Forms;
@@ -519,7 +518,7 @@ namespace Cadencii.Application.Models
 							Logger.StdErr("FormMain#openVsqCor; ex=" + ex);
 							DialogManager.ShowMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
 								_("Info."),
-								Cadencii.Gui.AwtHost.OK_OPTION,
+								Cadencii.Gui.GuiHost.OK_OPTION,
 								MessageBoxIcon.Information);
 							return true;
 						}
@@ -561,7 +560,7 @@ namespace Cadencii.Application.Models
 						Logger.StdErr("FormMain#openVsqCor; ex=" + ex);
 						DialogManager.ShowMessageBox(PortUtil.formatMessage(_("cannot create cache directory: '{0}'"), estimatedCacheDir),
 							_("Info."),
-							Cadencii.Gui.AwtHost.OK_OPTION,
+							Cadencii.Gui.GuiHost.OK_OPTION,
 							MessageBoxIcon.Information);
 						return true;
 					}

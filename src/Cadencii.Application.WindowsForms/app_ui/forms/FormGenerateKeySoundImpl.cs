@@ -14,10 +14,8 @@
 using System;
 using System.IO;
 using System.ComponentModel;
-using cadencii.java.util;
 using Cadencii.Media;
 using Cadencii.Media.Vsq;
-
 using cadencii.core;
 using Cadencii.Utilities;
 using cadencii;
@@ -161,7 +159,7 @@ namespace Cadencii.Application.Forms
             if (bgWork.IsBusy) {
                 m_cancel_required = true;
                 while (m_cancel_required) {
-					AwtHost.Current.ApplicationDoEvents();
+					GuiHost.Current.ApplicationDoEvents();
                 }
             } else {
                 this.Close();

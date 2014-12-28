@@ -20,7 +20,6 @@ using System.Net;
 using System.ComponentModel;
 using cadencii.apputil;
 using Cadencii.Gui;
-using cadencii.java.util;
 using Cadencii.Media.Vsq;
 using Cadencii.Xml;
 using cadencii.utau;
@@ -282,12 +281,12 @@ namespace Cadencii.Application.Forms
 			trackSelector.Model.Location = (new Point(0, 242));
 			trackSelector.Margin = new Cadencii.Gui.Toolkit.Padding(0);
 			trackSelector.Name = "trackSelector";
-			trackSelector.Model.Size = new Dimension (446, 250);
+			trackSelector.Model.Size = new Size (446, 250);
             trackSelector.TabIndex = 0;
 
             splitContainer1.Panel2MinSize = trackSelector.Model.PreferredMinSize;
             var minimum_size = getWindowMinimumSize();
-			this.AsAwt ().MinimumSize = new Dimension(minimum_size.Width, minimum_size.Height);
+			this.AsGui ().MinimumSize = new Size(minimum_size.Width, minimum_size.Height);
             stripBtnScroll.Pushed = EditorManager.mAutoScroll;
 
             applySelectedTool();
@@ -515,9 +514,9 @@ namespace Cadencii.Application.Forms
 
             // ウィンドウの位置・サイズを再現
             if (EditorManager.editorConfig.WindowMaximized) {
-				this.AsAwt ().WindowState = FormWindowState.Maximized;
+				this.AsGui ().WindowState = FormWindowState.Maximized;
             } else {
-				this.AsAwt ().WindowState = FormWindowState.Normal;
+				this.AsGui ().WindowState = FormWindowState.Normal;
             }
             Rectangle bounds = EditorManager.editorConfig.WindowRect;
             this.Bounds = new System.Drawing.Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
@@ -654,7 +653,7 @@ namespace Cadencii.Application.Forms
             var renderer_menu_handler_ = new List<RendererMenuHandler>();
 			model.RendererMenuHandlers = renderer_menu_handler_;
             renderer_menu_handler_.Clear();
-			var icon = cadencii.Properties.Resources.slash.ToAwt ();
+			var icon = cadencii.Properties.Resources.slash.ToGui ();
 			renderer_menu_handler_.Add(new RendererMenuHandler(icon, RendererKind.VOCALOID1,
                                                                  menuTrackRendererVOCALOID1,
                                                                  cMenuTrackTabRendererVOCALOID1,
@@ -1109,7 +1108,7 @@ namespace Cadencii.Application.Forms
                     if (current_version < recent_version) {
 			var form = ApplicationUIHost.Create<UpdateCheckForm>();
                         form.setDownloadUrl(update_info.DownloadUrl);
-			AwtHost.Current.ApplyFontRecurse (form, EditorManager.editorConfig.getBaseFont());
+			GuiHost.Current.ApplyFontRecurse (form, EditorManager.editorConfig.getBaseFont());
                         form.setOkButtonText(_("OK"));
                         form.Text = (_("Check For Updates"));
                         form.setMessage(string.Format(_("New version {0} is available."), recent_version_string));
@@ -1859,12 +1858,12 @@ namespace Cadencii.Application.Forms
         /// ウィンドウの表示内容に応じて、ウィンドウサイズの最小値を計算します
         /// </summary>
         /// <returns></returns>
-        public Dimension getWindowMinimumSize()
+        public Size getWindowMinimumSize()
         {
-            Dimension current_minsize = new Dimension(MinimumSize.Width, MinimumSize.Height);
-            Dimension client = new Dimension(this.ClientSize.Width, this.ClientSize.Height);
-            Dimension current = new Dimension(this.Size.Width, this.Size.Height);
-            return new Dimension(current_minsize.Width,
+            Size current_minsize = new Size(MinimumSize.Width, MinimumSize.Height);
+            Size client = new Size(this.ClientSize.Width, this.ClientSize.Height);
+            Size current = new Size(this.Size.Width, this.Size.Height);
+            return new Size(current_minsize.Width,
                                   splitContainer1.Panel2MinSize +
 				Consts._SCROLL_WIDTH + Consts._PICT_POSITION_INDICATOR_HEIGHT + pictPianoRoll.MinimumSize.Height +
                                   rebar.Height +
@@ -2015,7 +2014,7 @@ namespace Cadencii.Application.Forms
             int large_change = (int)(pict_piano_roll_width / scalex);
             int maximum = (int)(l + large_change);
 
-            int thumb_width = AwtHost.Current.HorizontalScrollBarThumbWidth;
+            int thumb_width = GuiHost.Current.HorizontalScrollBarThumbWidth;
             int box_width = (int)(large_change / (float)maximum * (hwidth - 2 * thumb_width));
             if (box_width < EditorManager.editorConfig.MinimumScrollHandleWidth) {
                 box_width = EditorManager.editorConfig.MinimumScrollHandleWidth;
@@ -2050,7 +2049,7 @@ namespace Cadencii.Application.Forms
             int maximum = (int)(128 * (int)(100 * scaley) / scaley);
             int large_change = (int)(pheight / scaley);
 
-			int thumb_height = AwtHost.Current.VerticalScrollBarThumbHeight;
+			int thumb_height = GuiHost.Current.VerticalScrollBarThumbHeight;
             int box_height = (int)(large_change / (float)maximum * (vheight - 2 * thumb_height));
             if (box_height < EditorManager.editorConfig.MinimumScrollHandleWidth) {
                 box_height = EditorManager.editorConfig.MinimumScrollHandleWidth;
@@ -2183,8 +2182,8 @@ namespace Cadencii.Application.Forms
                         UiToolStripItem subtsi_tsmi = tsmi.DropDownItems[0];
                         if (subtsi_tsmi is UiToolStripMenuItem) {
                             UiToolStripMenuItem dd_run = (UiToolStripMenuItem)subtsi_tsmi;
-							if (dict.ContainsKey(AwtHost.Current.GetComponentName(dd_run))) {
-								applyMenuItemShortcut(dict, tsmi, AwtHost.Current.GetComponentName(tsi));
+							if (dict.ContainsKey(GuiHost.Current.GetComponentName(dd_run))) {
+								applyMenuItemShortcut(dict, tsmi, GuiHost.Current.GetComponentName(tsi));
                             }
                         }
                     }
@@ -3260,12 +3259,12 @@ namespace Cadencii.Application.Forms
                 return;
             }
             Font font = EditorManager.editorConfig.getBaseFont();
-            AwtHost.Current.ApplyFontRecurse((UiForm) this, font);
+            GuiHost.Current.ApplyFontRecurse((UiForm) this, font);
 #if !JAVA_MAC
             Utility.applyContextMenuFontRecurse(cMenuPiano, font);
             Utility.applyContextMenuFontRecurse(cMenuTrackSelector, font);
             if (EditorManager.MixerWindow != null) {
-                AwtHost.Current.ApplyFontRecurse(EditorManager.MixerWindow, font);
+                GuiHost.Current.ApplyFontRecurse(EditorManager.MixerWindow, font);
             }
             Utility.applyContextMenuFontRecurse(cMenuTrackTab, font);
 			trackSelector.Model.applyFont(font);
@@ -3279,12 +3278,12 @@ namespace Cadencii.Application.Forms
             Utility.applyToolStripFontRecurse(menuSetting, font);
             Utility.applyToolStripFontRecurse(menuHelp, font);
 #endif
-            AwtHost.Current.ApplyFontRecurse(toolBarFile, font);
-            AwtHost.Current.ApplyFontRecurse(toolBarMeasure, font);
-            AwtHost.Current.ApplyFontRecurse(toolBarPosition, font);
-            AwtHost.Current.ApplyFontRecurse(toolBarTool, font);
+            GuiHost.Current.ApplyFontRecurse(toolBarFile, font);
+            GuiHost.Current.ApplyFontRecurse(toolBarMeasure, font);
+            GuiHost.Current.ApplyFontRecurse(toolBarPosition, font);
+            GuiHost.Current.ApplyFontRecurse(toolBarTool, font);
             if (mDialogPreference != null) {
-                AwtHost.Current.ApplyFontRecurse(mDialogPreference, font);
+                GuiHost.Current.ApplyFontRecurse(mDialogPreference, font);
             }
 
 			EditorConfig.baseFont10Bold = new Font(EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.BOLD, EditorConfig.FONT_SIZE10);
@@ -3390,7 +3389,7 @@ namespace Cadencii.Application.Forms
 			menuTrackRendererAquesTone2.MouseEnter += new System.EventHandler(this.handleMenuMouseEnter);
 #endif
 
-			var mainForm = this.AsAwt ();
+			var mainForm = this.AsGui ();
 			mainForm.Load += (o,e) => model.FormMain.RunLoad ();
 			mainForm.Deactivate += (o,e) => model.FormMain.RunDeactivate ();
 			mainForm.Activated += (o,e) => model.FormMain.RunActivated ();
@@ -3641,10 +3640,10 @@ namespace Cadencii.Application.Forms
 			waveView.MouseDown += (o, e) => model.WaveView.RunMouseDown (e);
 			waveView.MouseUp += (o, e) => model.WaveView.RunMouseUp (e);
 			waveView.MouseMove += (o, e) => model.WaveView.RunMouseMove (e);
-			this.AsAwt ().DragEnter += (o,e) => model.FormMain.DragEnter(e);
-			this.AsAwt ().DragDrop += (o,e) => model.FormMain.DragDrop (e);
-			this.AsAwt ().DragOver += (o,e) => model.FormMain.DragOver (e);
-			this.AsAwt ().DragLeave += (o,e) => model.FormMain.DragLeave ();
+			this.AsGui ().DragEnter += (o,e) => model.FormMain.DragEnter(e);
+			this.AsGui ().DragDrop += (o,e) => model.FormMain.DragDrop (e);
+			this.AsGui ().DragOver += (o,e) => model.FormMain.DragOver (e);
+			this.AsGui ().DragLeave += (o,e) => model.FormMain.DragLeave ();
 
 			pictureBox2.MouseDown += (o,e) => model.OtherItems.pictureBox2_MouseDown(e);
 			pictureBox2.MouseUp += (o,e) => model.OtherItems.pictureBox2_MouseUp ();

@@ -17,7 +17,7 @@ namespace Cadencii.Gui.Toolkit
 		object Tag { get; set; }
 		string Text { get; set; }
 		string ToolTipText { get; set; }
-		Dimension Size { get; set; }
+		Size Size { get; set; }
 
 		void PerformClick ();
 

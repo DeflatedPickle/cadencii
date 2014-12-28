@@ -28,7 +28,7 @@ namespace Cadencii.Application.Controls
 	public partial class BSplitContainerImpl : ContainerControlImpl, BSplitContainer
     {
 		public event EventHandler<PaintEventArgs> Paint {
-			add { base.Paint += (o, e) => value (o, e.ToAwt ()); }
+			add { base.Paint += (o, e) => value (o, e.ToGui ()); }
 			remove { throw new NotImplementedException (); }
 		}
 
@@ -67,8 +67,8 @@ namespace Cadencii.Application.Controls
 			set { model.Panel2MinSize = value; }
 		}
 
-		Cadencii.Gui.Dimension BSplitContainer.MinimumSize {
-			get { return base.MinimumSize.ToAwt (); }
+		Cadencii.Gui.Size BSplitContainer.MinimumSize {
+			get { return base.MinimumSize.ToGui (); }
 			set { base.MinimumSize = value.ToWF (); }
 		}
 

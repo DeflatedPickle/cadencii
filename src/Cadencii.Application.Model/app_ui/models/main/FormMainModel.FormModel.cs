@@ -577,7 +577,7 @@ namespace Cadencii.Application.Models
 				#if DEBUG
 				Logger.StdOut ("FormMain#FormMain_MouseWheel");
 				#endif
-				if ((AwtHost.ModifierKeys & Keys.Shift) == Keys.Shift) {
+				if ((GuiHost.ModifierKeys & Keys.Shift) == Keys.Shift) {
 					parent.form.hScroll.Value = parent.form.computeScrollValueFromWheelDelta (e.Delta);
 				} else {
 					var vScroll = parent.form.vScroll;

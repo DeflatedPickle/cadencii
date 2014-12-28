@@ -6,6 +6,7 @@ using Cadencii.Media.Vsq;
 using Cadencii.Media.Windows;
 using cadencii;
 using Cadencii.Application.Media;
+using Cadencii.Utilities;
 
 namespace Cadencii.Application.Models
 {
@@ -134,7 +135,7 @@ namespace Cadencii.Application.Models
                     if ( handler != null ) {
                         this.Invoke( handler );
                         while ( VSTiProxy.getPlayTime() <= 0.0 ) {
-						AwtHost.Current.ApplicationDoEvents();
+						GuiHost.Current.ApplicationDoEvents();
 
                         }
                         EditorManager.setPlaying( true );

@@ -13,6 +13,7 @@
  */
 using System.Collections.Generic;
 using Cadencii.Gui.Toolkit;
+using Cadencii.Utilities;
 
 namespace Cadencii.Application.Forms
 {
@@ -20,7 +21,6 @@ namespace Cadencii.Application.Forms
     using cadencii.apputil;
     using Cadencii.Media.Vsq;
     using cadencii;
-    using cadencii.java.util;
 
     public class FormWordDictionaryController : ControllerBase, FormWordDictionaryUiListener
     {

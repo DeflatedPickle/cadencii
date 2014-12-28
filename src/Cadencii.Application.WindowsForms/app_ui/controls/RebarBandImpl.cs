@@ -70,18 +70,18 @@ namespace Cadencii.Application.Controls
 			OnMouseWheel (e.ToWF ());
 		}
 		Cadencii.Gui.Point RebarBand.Location {
-			get { return Location.ToAwt (); }
+			get { return Location.ToGui (); }
 		}
 		Cadencii.Gui.Toolkit.UiControl RebarBand.Child {
 			get { return (Cadencii.Gui.Toolkit.UiControl)Child; }
 			set { Child = (Control)value.Native; }
 		}
 		Cadencii.Gui.Image RebarBand.BackgroundImage {
-			get { return BackgroundImage.ToAwt (); }
+			get { return BackgroundImage.ToGui (); }
 			set { BackgroundImage = (Bitmap) value.ToWF (); }
 		}
 		Cadencii.Gui.Rectangle RebarBand.Bounds {
-			get { return Bounds.ToAwt (); }
+			get { return Bounds.ToGui (); }
 		}
 		#endregion
 

@@ -16,7 +16,6 @@ using System.Threading;
 using System.IO;
 using System.Collections.Generic;
 using cadencii;
-using cadencii.java.util;
 using Cadencii.Media;
 using Cadencii.Media.Vsq;
 using cadencii.core;

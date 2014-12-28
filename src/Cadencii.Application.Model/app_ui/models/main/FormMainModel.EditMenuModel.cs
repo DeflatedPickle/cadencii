@@ -1,5 +1,6 @@
 ﻿using System;
 using cadencii;
+using Cadencii.Utilities;
 
 namespace Cadencii.Application.Models
 {

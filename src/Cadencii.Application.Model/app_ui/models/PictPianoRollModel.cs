@@ -15,7 +15,6 @@ using System;
 using System.Collections.Generic;
 using cadencii.apputil;
 using Cadencii.Gui;
-using cadencii.java.util;
 using Cadencii.Media.Vsq;
 
 using cadencii.core;
@@ -991,7 +990,7 @@ namespace Cadencii.Application.Models
 						}
 						int rate = (int)(drate * 100.0);
 						string percent = rate + "%";
-						Dimension size = Utility.measureString(percent, EditorConfig.baseFont9);
+					Size size = Utility.measureString(percent, EditorConfig.baseFont9);
 						int delay_x = (int)((EditorManager.mAddingEvent.Clock + EditorManager.mAddingEvent.ID.getLength() - EditorManager.mAddingEvent.ID.Length + EditorManager.mAddingEvent.ID.VibratoDelay) * scalex + xoffset);
 						Rectangle pxArea = new Rectangle(delay_x,
 							(int)(y + track_height * 2.5),
@@ -1160,7 +1159,7 @@ namespace Cadencii.Application.Models
 									last_x = key_width;
 								}
 								int x = (int)((clock + dobj.mLength) * scalex + xoffset);
-								fillarea.subtract(new Area(new Rectangle(last_x, y_top, x - last_x, y_bottom - y_top)));
+								fillarea.Subtract(new Area(new Rectangle(last_x, y_top, x - last_x, y_bottom - y_top)));
 								last_x = x;
 							} else {
 								// データ点がある場合
@@ -1193,7 +1192,7 @@ namespace Cadencii.Application.Models
 										last_x = key_width;
 									}
 
-									fillarea.subtract(new Area(new Rectangle(last_x, y_top, x - last_x, y_bottom - y_top)));
+									fillarea.Subtract(new Area(new Rectangle(last_x, y_top, x - last_x, y_bottom - y_top)));
 
 									last_x = x;
 									last_pbs_value = pbs_value;

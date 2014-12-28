@@ -15,7 +15,7 @@ using System;
 using System.IO;
 using System.Text;
 using Cadencii.Gui;
-using cadencii.java.util;
+using Cadencii.Utilities;
 
 namespace Cadencii.Gui
 {

@@ -30,7 +30,7 @@ namespace Cadencii.Application.Forms
 				if (pi.PropertyType.IsEnum)
 					pi.SetValue (null, Convert.ChangeType (obj, pi.PropertyType));
 				else if (pi.PropertyType == typeof (Image))
-					pi.SetValue (null, ((System.Drawing.Image) obj).ToAwt ());
+					pi.SetValue (null, ((System.Drawing.Image) obj).ToGui ());
 				else
 					throw new NotImplementedException (pi.PropertyType.FullName);
 			}

@@ -15,6 +15,7 @@ using System;
 using cadencii.apputil;
 using Cadencii.Media.Vsq;
 using cadencii;
+using Cadencii.Utilities;
 
 
 namespace Cadencii.Application

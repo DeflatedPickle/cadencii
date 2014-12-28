@@ -11,7 +11,6 @@ using System.Threading;
 using Cadencii.Gui;
 using Cadencii.Media.Vsq;
 using System.Collections.Generic;
-using cadencii.java.util;
 using cadencii.core;
 using System.Media;
 using Cadencii.Utilities;
@@ -77,7 +76,7 @@ namespace Cadencii.Application.Models
 				#if DEBUG
 				CDebug.WriteLine("pictPianoRoll_MouseClick");
 				#endif
-				Keys modefiers = AwtHost.ModifierKeys;
+				Keys modefiers = GuiHost.ModifierKeys;
 				EditMode edit_mode = EditorManager.EditMode;
 
 				bool is_button_left = e.Button == NMouseButtons.Left;
@@ -498,7 +497,7 @@ namespace Cadencii.Application.Models
 
 				parent.form.mMouseDowned = true;
 				parent.form.mButtonInitial = new Point(e.X, e.Y);
-				Keys modefier = AwtHost.ModifierKeys;
+				Keys modefier = GuiHost.ModifierKeys;
 
 				EditTool selected_tool = EditorManager.SelectedTool;
 				#if ENABLE_SCRIPT
@@ -1344,7 +1343,7 @@ namespace Cadencii.Application.Models
 				EditorManager.mIsPointerDowned = false;
 				parent.form.mMouseDowned = false;
 
-				Keys modefiers = AwtHost.ModifierKeys;
+				Keys modefiers = GuiHost.ModifierKeys;
 
 				EditMode edit_mode = EditorManager.EditMode;
 				VsqFileEx vsq = MusicManager.getVsqFile();
@@ -1787,7 +1786,7 @@ namespace Cadencii.Application.Models
 
 			public void RunPianoRollMouseWheelCommand(MouseEventArgs e)
 			{
-				Keys modifier = AwtHost.ModifierKeys;
+				Keys modifier = GuiHost.ModifierKeys;
 				bool horizontal = (modifier & Keys.Shift) == Keys.Shift;
 				if (EditorManager.editorConfig.ScrollHorizontalOnWheel) {
 					horizontal = !horizontal;

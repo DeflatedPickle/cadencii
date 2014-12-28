@@ -27,7 +27,7 @@ namespace Cadencii.Application.Forms
         {
             this.listener = listener;
             InitializeComponent();
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
 
@@ -42,18 +42,18 @@ namespace Cadencii.Application.Forms
                 return;
             }
             var control = (UiControl)c;
-			this.AsAwt ().Controls.Add(control);
+			this.AsGui ().Controls.Add(control);
             control.Dock = DockStyle.Fill;
         }
 
         public bool isWindowMinimized()
         {
-			return this.AsAwt ().WindowState == FormWindowState.Minimized;
+			return this.AsGui ().WindowState == FormWindowState.Minimized;
         }
 
         public void deiconfyWindow()
         {
-			this.AsAwt ().WindowState = FormWindowState.Normal;
+			this.AsGui ().WindowState = FormWindowState.Normal;
         }
 
         public void setTitle(string title)
@@ -83,7 +83,7 @@ namespace Cadencii.Application.Forms
 
         public void setBounds(int x, int y, int width, int height)
         {
-			this.AsAwt ().Bounds = new Rectangle(x, y, width, height);
+			this.AsGui ().Bounds = new Rectangle(x, y, width, height);
         }
 
         public int getX()

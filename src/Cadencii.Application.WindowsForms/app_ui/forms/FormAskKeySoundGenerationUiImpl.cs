@@ -30,7 +30,7 @@ namespace Cadencii.Application.Forms
             InitializeComponent();
             mListener = controller;
             registerEventHandlers();
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
 

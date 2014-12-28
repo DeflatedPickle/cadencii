@@ -160,7 +160,7 @@ namespace Cadencii.Application.Models
 				if (parent.form.WindowState == FormWindowState.Minimized) {
 					return;
 				}
-				Dimension minsize = parent.form.getWindowMinimumSize();
+				Size minsize = parent.form.getWindowMinimumSize();
 				int wid = parent.form.Width;
 				int hei = parent.form.Height;
 				bool change_size_required = false;
@@ -173,9 +173,9 @@ namespace Cadencii.Application.Models
 					change_size_required = true;
 				}
 				var min_size = parent.form.getWindowMinimumSize();
-				parent.form.MinimumSize = new Dimension (min_size.Width, min_size.Height);
+				parent.form.MinimumSize = new Size (min_size.Width, min_size.Height);
 				if (change_size_required) {
-					parent.form.Size = new Dimension(wid, hei);
+					parent.form.Size = new Size(wid, hei);
 				}
 			}
 			public void handleBgmOffsetSeconds_Click(BgmMenuItem menu)

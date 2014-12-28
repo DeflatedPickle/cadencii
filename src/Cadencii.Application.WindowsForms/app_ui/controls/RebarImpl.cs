@@ -36,7 +36,7 @@ namespace Cadencii.Application.Controls
     public class RebarImpl : Cadencii.Gui.Toolkit.UserControlImpl, Rebar
     {
 		Cadencii.Gui.Image Rebar.BackgroundImage {
-			get { return BackgroundImage.ToAwt (); }
+			get { return BackgroundImage.ToGui (); }
 			set { BackgroundImage = (Bitmap) value.ToWF (); }
 		}
 
@@ -191,7 +191,7 @@ namespace Cadencii.Application.Controls
         public RebarBand BandHitTest(Point pt)
         {
             foreach (RebarBand band in _bands) {
-                if (band.Bounds.Contains(pt.ToAwt ()))
+                if (band.Bounds.Contains(pt.ToGui ()))
                     return band;
             }
             return null;
@@ -378,7 +378,7 @@ namespace Cadencii.Application.Controls
                 if (value != _showBackgroundImage) {
                     _showBackgroundImage = value;
                     foreach (RebarBand band in _bands) {
-                        if (band.UseCoolbarPicture & band.FixedBackground) band.BackgroundImage = (_showBackgroundImage) ? BackgroundImage.ToAwt () : null;
+                        if (band.UseCoolbarPicture & band.FixedBackground) band.BackgroundImage = (_showBackgroundImage) ? BackgroundImage.ToGui () : null;
                     }
                 }
             }
@@ -631,7 +631,7 @@ namespace Cadencii.Application.Controls
             base.OnMouseDown(e);
             RebarBand band = BandHitTest(new Point(e.X, e.Y));
             if (band != null) {
-                band.OnMouseDown(e.ToAwt ());
+                band.OnMouseDown(e.ToGui ());
             }
         }
 
@@ -655,7 +655,7 @@ namespace Cadencii.Application.Controls
             base.OnMouseMove(e);
             RebarBand band = BandHitTest(new Point(e.X, e.Y));
             if (band != null) {
-                band.OnMouseMove(e.ToAwt ());
+                band.OnMouseMove(e.ToGui ());
             }
         }
 
@@ -664,7 +664,7 @@ namespace Cadencii.Application.Controls
             base.OnMouseUp(e);
             RebarBand band = BandHitTest(new Point(e.X, e.Y));
             if (band != null) {
-                band.OnMouseUp(e.ToAwt ());
+                band.OnMouseUp(e.ToGui ());
             }
         }
 
@@ -673,7 +673,7 @@ namespace Cadencii.Application.Controls
             base.OnMouseWheel(e);
             RebarBand band = BandHitTest(new Point(e.X, e.Y));
             if (band != null) {
-                band.OnMouseWheel(e.ToAwt ());
+                band.OnMouseWheel(e.ToGui ());
             }
         }
 

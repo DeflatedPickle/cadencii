@@ -8,7 +8,6 @@ using Cadencii.Media.Vsq;
 using Cadencii.Media.Vsq.IO;
 using System.Text;
 using System.Linq;
-using cadencii.java.util;
 using Cadencii.Gui;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
@@ -1051,7 +1050,7 @@ namespace Cadencii.Application.Models
 					DialogManager.ShowMessageBox(
 						_("invalid rendering region; start>=end"),
 						_("Error"),
-						Cadencii.Gui.AwtHost.OK_OPTION,
+						Cadencii.Gui.GuiHost.OK_OPTION,
 						MessageBoxIcon.Information);
 					return;
 				}
@@ -1147,7 +1146,7 @@ namespace Cadencii.Application.Models
 					DialogManager.ShowMessageBox(
 						_("invalid rendering region; start>=end"),
 						_("Error"),
-						Cadencii.Gui.AwtHost.OK_OPTION,
+						Cadencii.Gui.GuiHost.OK_OPTION,
 						MessageBoxIcon.Information);
 					return;
 				}

@@ -37,27 +37,27 @@ namespace Cadencii.Gui
 
 		public Stroke()
 		{
-			a = AwtHost.Current.New<StrokeAdapter> ();
+			a = GuiHost.Current.New<StrokeAdapter> ();
 		}
 
 		public Stroke(float width)
 		{
-			a = AwtHost.Current.New<StrokeAdapter> (width);
+			a = GuiHost.Current.New<StrokeAdapter> (width);
 		}
 
 		public Stroke(float width, int cap, int join)
 		{
-			a = AwtHost.Current.New<StrokeAdapter> (width, cap, join);
+			a = GuiHost.Current.New<StrokeAdapter> (width, cap, join);
 		}
 
 		public Stroke(float width, int cap, int join, float miterlimit)
 		{
-			a = AwtHost.Current.New<StrokeAdapter> (width, cap, join, miterlimit);
+			a = GuiHost.Current.New<StrokeAdapter> (width, cap, join, miterlimit);
 		}
 
 		public Stroke (float width, int cap, int join, float miterlimit, float[] dash, float dash_phase)
 		{
-			a = AwtHost.Current.New<StrokeAdapter> (width, cap, join, miterlimit, dash, dash_phase);
+			a = GuiHost.Current.New<StrokeAdapter> (width, cap, join, miterlimit, dash, dash_phase);
 		}
 	}
 

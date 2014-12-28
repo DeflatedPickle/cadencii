@@ -14,11 +14,11 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 		Cadencii.Gui.Color UiToolStripButton.ImageTransparentColor {
-			get { return ImageTransparentColor.ToAwt (); }
+			get { return ImageTransparentColor.ToGui (); }
 			set { ImageTransparentColor = value.ToNative (); }
 		}
 		Cadencii.Gui.Image UiToolStripButton.Image {
-			get { return Image.ToAwt (); }
+			get { return Image.ToGui (); }
 			set { Image = value.ToWF (); }
 		}
 
@@ -39,12 +39,12 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		Font UiToolStripItem.Font {
-			get { return Font.ToAwt (); }
+			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
 		}
 
-		Dimension UiToolStripItem.Size {
-			get { return Size.ToAwt (); }
+		Size UiToolStripItem.Size {
+			get { return Size.ToGui (); }
 			set { Size = value.ToWF (); }
 		}
 	}

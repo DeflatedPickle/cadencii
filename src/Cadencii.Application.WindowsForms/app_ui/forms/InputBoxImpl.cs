@@ -16,6 +16,7 @@ using System.Linq;
 using System.Xml;
 using Cadencii.Gui.Toolkit;
 using cadencii;
+using Cadencii.Utilities;
 
 
 namespace Cadencii.Application.Forms
@@ -37,7 +38,7 @@ namespace Cadencii.Application.Forms
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
+			this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.Cancel;
         }
 
         public void btnOk_Click(Object sender, EventArgs e)
@@ -45,7 +46,7 @@ namespace Cadencii.Application.Forms
 #if DEBUG
             Logger.StdOut("InputBox#btnOk_Click");
 #endif
-			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
+			this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.OK;
         }
 
         private void registerEventHandlers()

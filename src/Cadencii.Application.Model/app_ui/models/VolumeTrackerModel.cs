@@ -4,6 +4,7 @@ using cadencii;
 using Cadencii.Media.Vsq;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Gui;
+using Cadencii.Utilities;
 
 namespace Cadencii.Application.Models
 {
@@ -263,7 +264,7 @@ namespace Cadencii.Application.Models
 
 		public void VolumeTracker_Resize(Object sender, EventArgs e)
 		{
-			control.Size = new Dimension (VolumeTrackerController.WIDTH, VolumeTrackerController.HEIGHT);
+			control.Size = new Size (VolumeTrackerController.WIDTH, VolumeTrackerController.HEIGHT);
 		}
 
 		public void trackFeder_ValueChanged(Object sender, EventArgs e)

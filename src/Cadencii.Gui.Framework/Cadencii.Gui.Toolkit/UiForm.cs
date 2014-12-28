@@ -7,7 +7,7 @@ namespace Cadencii.Gui.Toolkit
 	public interface UiForm : UiControl
 	{
 		FormBorderStyle FormBorderStyle { get; set; }
-		Dimension ClientSize { get; set; }
+		Size ClientSize { get; set; }
 		double Opacity { get; set; }
 		DialogResult DialogResult { get; set; }
 
@@ -22,7 +22,7 @@ namespace Cadencii.Gui.Toolkit
 		bool UserPaint { get; set; }
 		bool AllPaintingInWmPaint { get; set; }
 
-		UiForm AsAwt ();
+		UiForm AsGui ();
 
 		AutoScaleMode AutoScaleMode { get ;set ;}
 		UiMenuStrip MainMenuStrip { get; set; }
@@ -36,7 +36,7 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler<DragEventArgs> DragOver;
 		event EventHandler DragLeave;
 
-		Dimension MinimumSize { get; set; }
+		Size MinimumSize { get; set; }
 		bool TopMost { get; set; }
 
 		bool InvokeRequired { get; }

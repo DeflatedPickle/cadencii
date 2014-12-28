@@ -85,7 +85,7 @@ namespace Cadencii.Application.Forms
             this.progressBar1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			this.progressBar1.Location = new Cadencii.Gui.Point(16, 11);
             this.progressBar1.Name = "progressBar1";
-			this.progressBar1.Size = new Dimension (290, 10);
+			this.progressBar1.Size = new Size (290, 10);
             this.progressBar1.TabIndex = 0;
             //
             // label1
@@ -93,18 +93,18 @@ namespace Cadencii.Application.Forms
             this.label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
 			this.label1.Location = new Cadencii.Gui.Point (14, 24);
             this.label1.Name = "label1";
-			this.label1.Size = new  Cadencii.Gui.Dimension(292, 12);
+			this.label1.Size = new  Cadencii.Gui.Size(292, 12);
             this.label1.TabIndex = 1;
             //
             // ProgressBarWithLabelUi
             //
 			var control = (UiUserControl) this;
-			control.AutoScaleDimensions = new Cadencii.Gui.Dimension(6, 12);
+			control.AutoScaleDimensions = new Cadencii.Gui.Size(6, 12);
 			control.AutoScaleMode = Cadencii.Gui.Toolkit.AutoScaleMode.Font;
 			control.Controls.Add(this.label1);
 			control.Controls.Add(this.progressBar1);
 			control.Name = "ProgressBarWithLabelUi";
-			control.Size = new  Cadencii.Gui.Dimension(322, 45);
+			control.Size = new  Cadencii.Gui.Size(322, 45);
 			control.ResumeLayout(false);
         }
 

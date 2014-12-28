@@ -12,6 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
 using cadencii;
+using Cadencii.Utilities;
 
 namespace Cadencii.Application.Forms
 {

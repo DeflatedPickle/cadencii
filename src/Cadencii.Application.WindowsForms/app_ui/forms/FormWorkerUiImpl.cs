@@ -21,6 +21,7 @@ using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
 using cadencii;
+using Cadencii.Utilities;
 
 
 
@@ -74,7 +75,7 @@ namespace Cadencii.Application.Forms
         /// </summary>
         public void close()
         {
-			this.AsAwt ().DialogResult = Cadencii.Gui.DialogResult.OK;
+			this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.OK;
             Close();
         }
 
@@ -111,7 +112,7 @@ namespace Cadencii.Application.Forms
         /// <param name="ui"></param>
         public void addProgressBar(ProgressBarWithLabel ui)
         {
-			int draft_width = flowLayoutPanel1.Width - 10 - AwtHost.Current.VerticalScrollBarWidth;
+			int draft_width = flowLayoutPanel1.Width - 10 - GuiHost.Current.VerticalScrollBarWidth;
             if (draft_width < 1) {
                 draft_width = 1;
             }
@@ -182,7 +183,7 @@ namespace Cadencii.Application.Forms
         /// <returns></returns>
         public bool showDialogTo(FormMainImpl main_window)
         {
-			if (AsAwt ().ShowDialog (main_window) == Cadencii.Gui.DialogResult.Cancel) {
+			if (AsGui ().ShowDialog (main_window) == Cadencii.Gui.DialogResult.Cancel) {
                 return true;
             } else {
                 return false;
@@ -239,7 +240,7 @@ namespace Cadencii.Application.Forms
         {
             if (flowLayoutPanel1.Visible) {
                 mFullHeight = this.Height;
-				int draft_width = flowLayoutPanel1.Width - 10 - AwtHost.Current.VerticalScrollBarWidth;
+				int draft_width = flowLayoutPanel1.Width - 10 - GuiHost.Current.VerticalScrollBarWidth;
                 if (draft_width < 1) {
                     draft_width = 1;
                 }
@@ -258,7 +259,7 @@ namespace Cadencii.Application.Forms
                 int w = this.ClientSize.Width;
                 int delta = flowLayoutPanel1.Top - buttonCancel.Bottom;
                 int h = buttonCancel.Bottom + delta - 2;
-				this.AsAwt ().ClientSize = new Dimension(w, h);
+				this.AsGui ().ClientSize = new Size(w, h);
             }
         }
     }

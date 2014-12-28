@@ -17,12 +17,13 @@ using Cadencii.Gui.Toolkit;
 using System.Windows.Forms;
 using System.Linq;
 using Cadencii.Platform.Windows;
+using Cadencii.Utilities;
 
 namespace Cadencii.Gui
 {
-	public partial class AwtHostWindowsForms : AwtHost
+	public partial class GuiHostWindowsForms : GuiHost
 	{
-		public AwtHostWindowsForms ()
+		public GuiHostWindowsForms ()
 		{
 			Types [typeof(Image.ImageAdapter)] = typeof(ImageAdapterWF);
 			Types [typeof(Graphics.GraphicsAdapter)] = typeof(GraphicsAdapterWF);
@@ -30,21 +31,21 @@ namespace Cadencii.Gui
 
 		public override void InitializeSystemColors ()
 		{
-			SystemColors.ActiveBorder = System.Drawing.SystemColors.ActiveBorder.ToAwt ();
-			SystemColors.Control = System.Drawing.SystemColors.Control.ToAwt ();
-			SystemColors.ControlDark = System.Drawing.SystemColors.ControlDark.ToAwt ();
-			SystemColors.ControlText = System.Drawing.SystemColors.ControlText.ToAwt ();
-			SystemColors.Window = System.Drawing.SystemColors.Window.ToAwt ();
-			SystemColors.WindowText = System.Drawing.SystemColors.WindowText.ToAwt ();
+			SystemColors.ActiveBorder = System.Drawing.SystemColors.ActiveBorder.ToGui ();
+			SystemColors.Control = System.Drawing.SystemColors.Control.ToGui ();
+			SystemColors.ControlDark = System.Drawing.SystemColors.ControlDark.ToGui ();
+			SystemColors.ControlText = System.Drawing.SystemColors.ControlText.ToGui ();
+			SystemColors.Window = System.Drawing.SystemColors.Window.ToGui ();
+			SystemColors.WindowText = System.Drawing.SystemColors.WindowText.ToGui ();
 		}
 
 		public override void InitializeCursors ()
 		{
-			Cursors.Default = System.Windows.Forms.Cursors.Default.ToAwt ();
-			//Cursors.Hand = System.Windows.Forms.Cursors.Hand.ToAwt ();
-			Cursors.HSplit = System.Windows.Forms.Cursors.HSplit.ToAwt ();
-			Cursors.VSplit = System.Windows.Forms.Cursors.VSplit.ToAwt ();
-			Cursors.NoMoveHoriz = System.Windows.Forms.Cursors.NoMoveHoriz.ToAwt ();
+			Cursors.Default = System.Windows.Forms.Cursors.Default.ToGui ();
+			//Cursors.Hand = System.Windows.Forms.Cursors.Hand.ToGui ();
+			Cursors.HSplit = System.Windows.Forms.Cursors.HSplit.ToGui ();
+			Cursors.VSplit = System.Windows.Forms.Cursors.VSplit.ToGui ();
+			Cursors.NoMoveHoriz = System.Windows.Forms.Cursors.NoMoveHoriz.ToGui ();
 
 			string _HAND = "AAACAAEAICAAABAAEADoAgAAFgAAACgAAAAgAAAAQAAAAAEABAAAAAAAgAIAAAAAAAAAAAAAAAAAAAAAAAAAA" +
 				"AAAgAAAAACAAACAgAAAAACAAIAAgAAAgIAAwMDAAICAgAD/AAAAAP8AAP//AAAAAP8A/wD/AAD//wD///8AAAAAAAAAAAAAAAAAAAA" +
@@ -60,7 +61,7 @@ namespace Cadencii.Gui
 			System.IO.MemoryStream ms = null;
 			try {
 				ms = new System.IO.MemoryStream(Convert.FromBase64String(_HAND));
-				Cursors.Hand = new System.Windows.Forms.Cursor(ms).ToAwt ();
+				Cursors.Hand = new System.Windows.Forms.Cursor(ms).ToGui ();
 			} catch (Exception ex) {
 				Logger.write(GetType () + ".InitializeCursors; ex=" + ex + "\n");
 			} finally {
@@ -130,7 +131,7 @@ namespace Cadencii.Gui
 		}
 
 		public override Font SystemMenuFont {
-			get { return System.Windows.Forms.SystemInformation.MenuFont.ToAwt (); }
+			get { return System.Windows.Forms.SystemInformation.MenuFont.ToGui (); }
 		}
 	}
 
@@ -552,9 +553,9 @@ namespace Cadencii.Gui
 			nativeGraphics.DrawString (s, (System.Drawing.Font)font.NativeFont, brush, new System.Drawing.RectangleF (rect.X, rect.Y, rect.Width, rect.Height), mStringFormat);
 		}
 
-		public override Dimension measureString (string s, Font font)
+		public override Size measureString (string s, Font font)
 		{
-			return nativeGraphics.MeasureString (s, font.ToWF ()).ToSize ().ToAwt ();
+			return nativeGraphics.MeasureString (s, font.ToWF ()).ToSize ().ToGui ();
 		}
 	}
 

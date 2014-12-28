@@ -11,9 +11,8 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  */
-namespace cadencii.java.util
+namespace Cadencii.Utilities
 {
-
     public interface Iterator<E>
     {
         bool hasNext();

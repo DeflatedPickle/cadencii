@@ -15,8 +15,6 @@ using System;
 using System.Collections.Generic;
 using cadencii.apputil;
 using cadencii;
-using cadencii.java.util;
-
 using Cadencii.Gui;
 using Cadencii.Utilities;
 using Cadencii.Gui.Toolkit;
@@ -35,7 +33,7 @@ namespace Cadencii.Application.Forms
             setResources();
             applyLanguage();
             setMaxNotes(max_notes);
-            AwtHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
+            GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
         #region public methods

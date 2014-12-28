@@ -13,7 +13,7 @@ namespace Cadencii.Gui
 	// the shared project somehow causes resgen compilation error.
 	static class ExtensionsWF
 	{
-		public static Color ToAwt (this System.Drawing.Color c)
+		public static Color ToGui (this System.Drawing.Color c)
 		{
 			return new Color (c.R, c.G, c.B, c.A);
 		}
@@ -23,7 +23,7 @@ namespace Cadencii.Gui
 			return System.Drawing.Color.FromArgb (c.R, c.G, c.B);
 		}
 
-		public static Cursor ToAwt (this System.Windows.Forms.Cursor c)
+		public static Cursor ToGui (this System.Windows.Forms.Cursor c)
 		{
 			return new Cursor (0) { NativeCursor = c };
 		}
@@ -33,7 +33,7 @@ namespace Cadencii.Gui
 			return (System.Windows.Forms.Cursor)c.NativeCursor;
 		}
 
-		public static Point ToAwt (this System.Drawing.Point point)
+		public static Point ToGui (this System.Drawing.Point point)
 		{
 			return new Point (point.X, point.Y);
 		}
@@ -43,17 +43,17 @@ namespace Cadencii.Gui
 			return new System.Drawing.Point (point.X, point.Y);
 		}
 
-		public static Dimension ToAwt (this System.Drawing.Size size)
+		public static Size ToGui (this System.Drawing.Size size)
 		{
-			return new Dimension (size.Width, size.Height);
+			return new Size (size.Width, size.Height);
 		}
 
-		public static System.Drawing.Size ToWF (this Dimension size)
+		public static System.Drawing.Size ToWF (this Size size)
 		{
 			return new System.Drawing.Size (size.Width, size.Height);
 		}
 
-		public static Rectangle ToAwt (this System.Drawing.Rectangle rect)
+		public static Rectangle ToGui (this System.Drawing.Rectangle rect)
 		{
 			return new Rectangle (rect.X, rect.Y, rect.Width, rect.Height);
 		}
@@ -63,7 +63,7 @@ namespace Cadencii.Gui
 			return new System.Drawing.Rectangle (rect.X, rect.Y, rect.Width, rect.Height);
 		}
 
-		public static Padding ToAwt (this System.Windows.Forms.Padding padding)
+		public static Padding ToGui (this System.Windows.Forms.Padding padding)
 		{
 			return new Padding (padding.All);
 		}
@@ -73,7 +73,7 @@ namespace Cadencii.Gui
 			return new System.Windows.Forms.Padding (padding.All);
 		}
 
-		public static Image ToAwt (this System.Drawing.Image image)
+		public static Image ToGui (this System.Drawing.Image image)
 		{
 			return image == null ? null : new Image () { NativeImage = image };
 		}
@@ -88,12 +88,12 @@ namespace Cadencii.Gui
 			return new MouseEventArgs ((MouseButtons)e.Button, e.Clicks, e.X, e.Y, e.Delta);
 		}
 
-		public static NMouseEventArgs ToAwt (this MouseEventArgs e)
+		public static NMouseEventArgs ToGui (this MouseEventArgs e)
 		{
 			return new NMouseEventArgs ((NMouseButtons)e.Button, e.Clicks, e.X, e.Y, e.Delta);
 		}
 
-		public static Font ToAwt (this System.Drawing.Font f)
+		public static Font ToGui (this System.Drawing.Font f)
 		{
 			return new Font (f);
 		}
@@ -103,7 +103,7 @@ namespace Cadencii.Gui
 			return (System.Drawing.Font)f.NativeFont;
 		}
 
-		public static Graphics ToAwt (this System.Drawing.Graphics g)
+		public static Graphics ToGui (this System.Drawing.Graphics g)
 		{
 			return new Graphics () { NativeGraphics = g };
 		}
@@ -113,9 +113,9 @@ namespace Cadencii.Gui
 			return (System.Drawing.Graphics)g.NativeGraphics;
 		}
 
-		public static PaintEventArgs ToAwt (this System.Windows.Forms.PaintEventArgs e)
+		public static PaintEventArgs ToGui (this System.Windows.Forms.PaintEventArgs e)
 		{
-			return new PaintEventArgs () { Graphics = e.Graphics.ToAwt (), ClipRectangle = e.ClipRectangle.ToAwt () };
+			return new PaintEventArgs () { Graphics = e.Graphics.ToGui (), ClipRectangle = e.ClipRectangle.ToGui () };
 		}
 
 		public static System.Windows.Forms.PaintEventArgs ToWF (this PaintEventArgs e)
@@ -123,7 +123,7 @@ namespace Cadencii.Gui
 			return new System.Windows.Forms.PaintEventArgs (e.Graphics.ToWF (), e.ClipRectangle.ToWF ());
 		}
 
-		public static ToolBarButtonClickEventArgs ToAwt (this System.Windows.Forms.ToolBarButtonClickEventArgs e)
+		public static ToolBarButtonClickEventArgs ToGui (this System.Windows.Forms.ToolBarButtonClickEventArgs e)
 		{
 			return new ToolBarButtonClickEventArgs () { Button = (UiToolBarButton)e.Button };
 		}
@@ -190,17 +190,17 @@ namespace Cadencii.Gui
 			return dialog;
 		}
 
-		public static DrawToolTipEventArgs ToAwt (this System.Windows.Forms.DrawToolTipEventArgs e)
+		public static DrawToolTipEventArgs ToGui (this System.Windows.Forms.DrawToolTipEventArgs e)
 		{
-			return new DrawToolTipEventArgs (e.Bounds.ToAwt (), e.DrawBackground, e.DrawBorder, f => e.DrawText ((System.Windows.Forms.TextFormatFlags) f));
+			return new DrawToolTipEventArgs (e.Bounds.ToGui (), e.DrawBackground, e.DrawBorder, f => e.DrawText ((System.Windows.Forms.TextFormatFlags) f));
 		}
 
-		public static FormClosingEventArgs ToAwt (this System.Windows.Forms.FormClosingEventArgs e)
+		public static FormClosingEventArgs ToGui (this System.Windows.Forms.FormClosingEventArgs e)
 		{
 			return new FormClosingEventArgs () { Cancel = e.Cancel };
 		}
 
-		public static DragEventArgs ToAwt (this System.Windows.Forms.DragEventArgs e)
+		public static DragEventArgs ToGui (this System.Windows.Forms.DragEventArgs e)
 		{
 			return new DragEventArgs (new DataObjectWF (e.Data), e.KeyState, e.X, e.Y, (DragDropEffects) e.AllowedEffect, (DragDropEffects) e.Effect);
 		}

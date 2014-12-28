@@ -8,7 +8,7 @@ namespace Cadencii.Gui.Toolkit
 	public class ToolStripStatusLabelImpl : System.Windows.Forms.ToolStripStatusLabel, UiToolStripStatusLabel
 	{
 		Cadencii.Gui.Image UiToolStripStatusLabel.Image {
-			get { return Image.ToAwt (); }
+			get { return Image.ToGui (); }
 			set { Image = value.ToWF (); }
 		}
 
@@ -29,12 +29,12 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		Font UiToolStripItem.Font {
-			get { return Font.ToAwt (); }
+			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
 		}
 
-		Dimension UiToolStripItem.Size {
-			get { return Size.ToAwt (); }
+		Size UiToolStripItem.Size {
+			get { return Size.ToGui (); }
 			set { Size = value.ToWF (); }
 		}
 	}

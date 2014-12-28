@@ -36,7 +36,7 @@ namespace Cadencii.Gui.Toolkit
 			set;
 		}
 
-		Dimension ButtonSize {
+		Size ButtonSize {
 			get;
 			set;
 		}

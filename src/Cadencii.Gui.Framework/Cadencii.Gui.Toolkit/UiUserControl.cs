@@ -15,7 +15,7 @@ namespace Cadencii.Gui.Toolkit
 		AutoScaleMode AutoScaleMode { get; set; }
 
 		// actually ContainerControl member and SizeF.
-		Dimension AutoScaleDimensions { get; set; }
+		Size AutoScaleDimensions { get; set; }
 
 		// The same as UiForm property.
 		// This is not a form specific feature, but since Control.DoubleBuffered is protected,
