@@ -583,6 +583,7 @@ namespace Cadencii.Gui
 		}
 
 		public StrokeAdapterWF (float width, int cap, int join, float miterlimit)
+			: this ()
 		{
 			pen = new System.Drawing.Pen (Cadencii.Gui.Colors.Black.ToNative (), width);
 			System.Drawing.Drawing2D.LineCap linecap = System.Drawing.Drawing2D.LineCap.Flat;
