@@ -10,7 +10,7 @@ namespace Cadencii.Gui.Toolkit
 
 		UiControl Parent { get; }
 
-		object Invoke (Delegate e);
+		void Invoke (Delegate e);
 
 		void BringToFront ();
 
