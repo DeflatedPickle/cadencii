@@ -41,6 +41,11 @@
     <Compile Include="GuiExtensions.cs" />
     <Compile Include="StrokeXwt.cs" />
     <Compile Include="toolkit\OpenFileDialogImpl.cs" />
+    <Compile Include="toolkit\ButtonImpl.cs" />
+    <Compile Include="toolkit\ControlImpl.cs">
+      <DependentUpon>ControlImpl.tt</DependentUpon>
+    </Compile>
+    <Compile Include="toolkit\GuiXwtControlTypes.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -63,5 +68,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="toolkit\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="toolkit\ControlImpl.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ControlImpl.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 </Project>

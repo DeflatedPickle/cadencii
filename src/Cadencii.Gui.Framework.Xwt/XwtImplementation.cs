@@ -398,7 +398,7 @@ namespace Cadencii.Gui
 			if (points.Length > 0)
 				path.MoveTo (points [0].ToWF ());
 			for (int i = 1; i < points.Length; i++)
-				path.RelLineTo (points [i].ToWF ());
+				path.LineTo (points [i].ToWF ());
 			builder.Context.AppendPath (path);
 			builder.Context.Stroke ();
 		}
@@ -682,7 +682,7 @@ namespace Cadencii.Gui
 			if (region == null) {
 				region = new Xwt.Drawing.DrawingPath ();
 			}
-			region.Union (a.region);
+			region.AppendPath (a.region);
 		}
 
 		public override void subtract (Area rhs)
@@ -722,7 +722,7 @@ namespace Cadencii.Gui
 		{
 			var w = (Xwt.Widget) nativeControl;
 			Xwt.Rectangle rc = w.ScreenBounds;
-			return new Rectangle (rc.X, rc.Y, rc.Width, rc.Height);
+			return new Rectangle ((int) rc.X, (int) rc.Y, (int) rc.Width, (int) rc.Height);
 		}
 
 		public override void setMousePosition (Point p)

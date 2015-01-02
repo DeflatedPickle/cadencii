@@ -17,12 +17,12 @@ namespace Cadencii.Gui
 	{
 		public static Color ToGui (this Xwt.Drawing.Color c)
 		{
-			return new Color (c.Red, c.Green, c.Blue, c.Alpha);
+			return new Color ((int) c.Red * 256, (int) c.Green * 256, (int) c.Blue * 256, (int) c.Alpha * 256);
 		}
 
 		public static Xwt.Drawing.Color ToNative (this Color c)
 		{
-			return Xwt.Drawing.Color.FromBytes (c.R, c.G, c.B);
+			return Xwt.Drawing.Color.FromBytes ((byte) c.R, (byte) c.G, (byte) c.B);
 		}
 
 		public static Cursor ToGui (this Xwt.CursorType c)
@@ -37,7 +37,7 @@ namespace Cadencii.Gui
 
 		public static Point ToGui (this Xwt.Point point)
 		{
-			return new Point (point.X, point.Y);
+			return new Point ((int) point.X, (int) point.Y);
 		}
 
 		public static Xwt.Point ToWF (this Point point)
@@ -47,7 +47,7 @@ namespace Cadencii.Gui
 
 		public static Size ToGui (this Xwt.Size size)
 		{
-			return new Size (size.Width, size.Height);
+			return new Size ((int) size.Width, (int) size.Height);
 		}
 
 		public static Xwt.Size ToWF (this Size size)
@@ -57,7 +57,7 @@ namespace Cadencii.Gui
 
 		public static Rectangle ToGui (this Xwt.Rectangle rect)
 		{
-			return new Rectangle (rect.X, rect.Y, rect.Width, rect.Height);
+			return new Rectangle ((int) rect.X, (int) rect.Y, (int) rect.Width, (int) rect.Height);
 		}
 
 		public static Xwt.Rectangle ToWF (this Rectangle rect)
@@ -65,14 +65,14 @@ namespace Cadencii.Gui
 			return new Xwt.Rectangle (rect.X, rect.Y, rect.Width, rect.Height);
 		}
 
-		public static Padding ToGui (this Padding padding)
+		public static Padding ToGui (this Xwt.WidgetSpacing padding)
 		{
-			return padding;
+			return new Padding ((int) padding.Left, (int) padding.Top, (int) padding.Right, (int) padding.Bottom);
 		}
 
-		public static Padding ToWF (this Padding padding)
+		public static Xwt.WidgetSpacing ToWF (this Padding padding)
 		{
-			return padding;
+			return new Xwt.WidgetSpacing (padding.Left, padding.Top, padding.Right, padding.Bottom);
 		}
 
 		public static Image ToGui (this Xwt.Drawing.Image image)
@@ -87,13 +87,13 @@ namespace Cadencii.Gui
 
 		public static MouseEventArgs ToWF (this NMouseEventArgs e)
 		{
-			return new MouseEventArgs ((MouseButtons)e.Button, e.Clicks, e.X, e.Y);
+			return new MouseEventArgs () { Button = (MouseButtons)e.Button, MultiplePress = e.Clicks, X = e.X, Y = e.Y };
 		}
 
 		public static NMouseEventArgs ToGui (this MouseEventArgs e)
 		{
 			// There is no wheel delta value in Xwt. Actually neither in WPF mouse event, so use fixed value.
-			return new NMouseEventArgs ((NMouseButtons)e.Button, e.MultiplePress, e.X, e.Y, 120);
+			return new NMouseEventArgs ((NMouseButtons)e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 120);
 		}
 
 		public static Font ToGui (this Xwt.Drawing.Font f)
@@ -184,7 +184,7 @@ namespace Cadencii.Gui
 			string file_name = string.Empty;
 			string initial_directory = System.IO.Directory.Exists(file_path) ? file_path : (System.IO.File.Exists(file_path) ? System.IO.Path.GetDirectoryName(file_path) : file_path);
 
-			dialog.FileName = file_name;
+			dialog.InitialFileName = file_name;
 			dialog.CurrentFolder = initial_directory;
 			return dialog;
 		}
@@ -205,6 +205,57 @@ namespace Cadencii.Gui
 			return new DragEventArgs (new DataObjectWF (e.Data), e.KeyState, e.X, e.Y, (DragDropEffects) e.AllowedEffect, (DragDropEffects) e.Effect);
 		}
 		*/
+
+		public static DockStyle ToDock (this UiControl control, Xwt.WidgetPlacement h, Xwt.WidgetPlacement v)
+		{
+			DockStyle ret = DockStyle.None;
+			bool both = false;
+
+			switch (h) {
+			case Xwt.WidgetPlacement.Fill:
+				both = true;
+				goto case Xwt.WidgetPlacement.Start;
+			case Xwt.WidgetPlacement.Start:
+				ret |= DockStyle.Left;
+				if (both)
+					goto case Xwt.WidgetPlacement.End;
+				break;
+			case Xwt.WidgetPlacement.End:
+				ret |= DockStyle.Right;
+				break;
+			}
+
+			both = false;
+			switch (v) {
+			case Xwt.WidgetPlacement.Fill:
+				both = true;
+				goto case Xwt.WidgetPlacement.Start;
+			case Xwt.WidgetPlacement.Start:
+				ret |= DockStyle.Top;
+				if (both)
+					goto case Xwt.WidgetPlacement.End;
+				break;
+			case Xwt.WidgetPlacement.End:
+				ret |= DockStyle.Bottom;
+				break;
+			}
+
+			return ret;
+		}
+
+		public static Xwt.WidgetPlacement ToHorizontalPlacement (this UiControl control, DockStyle d)
+		{
+			bool l = (d & DockStyle.Left) != 0;
+			bool r = (d & DockStyle.Right) != 0;
+			return l && r ? Xwt.WidgetPlacement.Fill : l ? Xwt.WidgetPlacement.Start : r ? Xwt.WidgetPlacement.End : Xwt.WidgetPlacement.Center;
+		}
+
+		public static Xwt.WidgetPlacement ToVerticalPlacement (this UiControl control, DockStyle d)
+		{
+			bool t = (d & DockStyle.Top) != 0;
+			bool b = (d & DockStyle.Bottom) != 0;
+			return t && b ? Xwt.WidgetPlacement.Fill : t ? Xwt.WidgetPlacement.Start : b ? Xwt.WidgetPlacement.End : Xwt.WidgetPlacement.Center;
+		}
 	}
 }
 
