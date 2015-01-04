@@ -20,7 +20,6 @@
     <ConsolePause>false</ConsolePause>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>1572,1573,1591</NoWarn>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -30,7 +29,6 @@
     <ConsolePause>false</ConsolePause>
     <DefineConstants>ENABLE_VOCALOID;ENABLE_AQUESTONE;ENABLE_PROPERTY</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugWin|AnyCPU' ">
     <Optimize>false</Optimize>

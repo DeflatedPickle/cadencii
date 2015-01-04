@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Cadencii.Gui;
 using System.Collections.Generic;
@@ -30,16 +30,13 @@ namespace Cadencii.Gui.Toolkit
 
 	public partial class FlowLayoutPanelBase : Xwt.Frame
 	{
-		protected virtual void Dispose (bool disposing)
-		{
-		}
 	}
 
 	public partial class FormBase : Xwt.Window
 	{
 	}
 
-	public partial class GroupBoxBase : Xwt.FrameBox
+	public partial class GroupBoxBase : Xwt.Frame
 	{
 	}
 

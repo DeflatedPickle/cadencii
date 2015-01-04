@@ -46,6 +46,14 @@
       <DependentUpon>ControlImpl.tt</DependentUpon>
     </Compile>
     <Compile Include="toolkit\GuiXwtControlTypes.cs" />
+    <Compile Include="toolkit\CheckBoxImpl.cs" />
+    <Compile Include="toolkit\ComboBoxImpl.cs" />
+    <Compile Include="toolkit\ContainerControlImpl.cs" />
+    <Compile Include="toolkit\FlowLayoutPanelImpl.cs" />
+    <Compile Include="toolkit\GroupBoxImpl.cs" />
+    <Compile Include="toolkit\HScrollBarImpl.cs" />
+    <Compile Include="toolkit\VScrollBarImpl.cs" />
+    <Compile Include="toolkit\ListBoxImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

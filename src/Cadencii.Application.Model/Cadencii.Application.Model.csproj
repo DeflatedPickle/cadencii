@@ -20,7 +20,6 @@
     <ConsolePause>false</ConsolePause>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <NoWarn>1572,1573,1591</NoWarn>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -30,7 +29,6 @@
     <ConsolePause>false</ConsolePause>
     <DefineConstants>__TEMPORALY_DISABLED__USE_OLD_SYNTH_IMPL;ENABLE_PROPERTY; ENABLE_VOCALOID; ENABLE_SCRIPT; ENABLE_MIDI;ENABLE_STRIP_DROPDOWN;ENABLE_MOUSEHOVER;ENABLE_AQUESTONE;ENABLE_GENERAL_VST;MONITOR_FPS;COMPONENT_ENABLE_LOCATION;CSHARP</DefineConstants>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugWin|AnyCPU' ">
     <Optimize>false</Optimize>

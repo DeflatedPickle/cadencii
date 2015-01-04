@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Cadencii.Gui;
 using System.Linq;
 
