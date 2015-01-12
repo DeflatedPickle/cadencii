@@ -169,6 +169,7 @@
     <Compile Include="Cadencii.Gui\models\GuiHost.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiContainerControl.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiNumericUpDown.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\IControlContainer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

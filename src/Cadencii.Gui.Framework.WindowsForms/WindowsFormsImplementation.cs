@@ -120,13 +120,13 @@ namespace Cadencii.Gui
 			}
 		}
 
-		public override int HorizontalScrollBarThumbWidth {
+		public /*override*/ int HorizontalScrollBarThumbWidth {
 			get { return System.Windows.Forms.SystemInformation.HorizontalScrollBarThumbWidth; }
 		}
-		public override int VerticalScrollBarThumbHeight {
+		public /*override*/ int VerticalScrollBarThumbHeight {
 			get { return System.Windows.Forms.SystemInformation.VerticalScrollBarThumbHeight; }
 		}
-		public override int VerticalScrollBarWidth {
+		public /*override*/ int VerticalScrollBarWidth {
 			get { return System.Windows.Forms.SystemInformation.VerticalScrollBarWidth; }
 		}
 

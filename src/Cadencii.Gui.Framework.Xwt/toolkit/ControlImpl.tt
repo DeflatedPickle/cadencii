@@ -248,10 +248,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Cursor = value.ToNative (); }
 		}
 
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
-		}
-
 		AnchorStyles UiControl.Anchor {
 			get {
 				throw new NotImplementedException ();

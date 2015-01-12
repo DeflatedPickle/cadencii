@@ -17,7 +17,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class ContainerControlBase : Xwt.Panel
+	public partial class ContainerControlBase : Xwt.Frame
 	{
 		protected virtual void Dispose (bool disposing)
 		{

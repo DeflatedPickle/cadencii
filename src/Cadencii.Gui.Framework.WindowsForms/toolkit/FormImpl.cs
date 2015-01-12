@@ -22,6 +22,14 @@ namespace Cadencii.Gui.Toolkit
 {
 	public partial class FormImpl : System.Windows.Forms.Form, UiForm
  	{
+		// IControlContainer
+
+		IList<UiControl> IControlContainer.Controls {
+			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
+		}
+
+		// UiForm
+
 		FormBorderStyle UiForm.FormBorderStyle {
 			get { return (FormBorderStyle) FormBorderStyle; }
 			set { FormBorderStyle = (System.Windows.Forms.FormBorderStyle) value; }

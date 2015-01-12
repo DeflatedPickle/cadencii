@@ -29,7 +29,7 @@ namespace Cadencii.Gui
 			get { return Filters.Any () ? Filters.FirstOrDefault ().Patterns.First () : null; }
 			set {
 				Filters.Clear ();
-				Filters.Add (value);
+				Filters.Add (new Xwt.FileDialogFilter (value, value));
 			}
 		}
 		int UiFileDialog.FilterIndex { get; set; }

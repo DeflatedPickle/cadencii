@@ -1,4 +1,4 @@
-
+﻿
 
 using System;
 using System.Linq;
@@ -198,10 +198,6 @@ namespace Cadencii.Gui.Toolkit
 		Cadencii.Gui.Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { this.Cursor = value.ToNative (); }
-		}
-
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
 		}
 
 		AnchorStyles UiControl.Anchor {
@@ -531,10 +527,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Cursor = value.ToNative (); }
 		}
 
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
-		}
-
 		AnchorStyles UiControl.Anchor {
 			get {
 				throw new NotImplementedException ();
@@ -860,10 +852,6 @@ namespace Cadencii.Gui.Toolkit
 		Cadencii.Gui.Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { this.Cursor = value.ToNative (); }
-		}
-
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
 		}
 
 		AnchorStyles UiControl.Anchor {
@@ -1193,10 +1181,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Cursor = value.ToNative (); }
 		}
 
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
-		}
-
 		AnchorStyles UiControl.Anchor {
 			get {
 				throw new NotImplementedException ();
@@ -1522,10 +1506,6 @@ namespace Cadencii.Gui.Toolkit
 		Cadencii.Gui.Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { this.Cursor = value.ToNative (); }
-		}
-
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
 		}
 
 		AnchorStyles UiControl.Anchor {
@@ -1855,10 +1835,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Cursor = value.ToNative (); }
 		}
 
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
-		}
-
 		AnchorStyles UiControl.Anchor {
 			get {
 				throw new NotImplementedException ();
@@ -2184,10 +2160,6 @@ namespace Cadencii.Gui.Toolkit
 		Cadencii.Gui.Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { this.Cursor = value.ToNative (); }
-		}
-
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
 		}
 
 		AnchorStyles UiControl.Anchor {
@@ -2517,10 +2489,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Cursor = value.ToNative (); }
 		}
 
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
-		}
-
 		AnchorStyles UiControl.Anchor {
 			get {
 				throw new NotImplementedException ();
@@ -2846,10 +2814,6 @@ namespace Cadencii.Gui.Toolkit
 		Cadencii.Gui.Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { this.Cursor = value.ToNative (); }
-		}
-
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
 		}
 
 		AnchorStyles UiControl.Anchor {
@@ -3179,10 +3143,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Cursor = value.ToNative (); }
 		}
 
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
-		}
-
 		AnchorStyles UiControl.Anchor {
 			get {
 				throw new NotImplementedException ();
@@ -3508,10 +3468,6 @@ namespace Cadencii.Gui.Toolkit
 		Cadencii.Gui.Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { this.Cursor = value.ToNative (); }
-		}
-
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
 		}
 
 		AnchorStyles UiControl.Anchor {
@@ -3841,10 +3797,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Cursor = value.ToNative (); }
 		}
 
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
-		}
-
 		AnchorStyles UiControl.Anchor {
 			get {
 				throw new NotImplementedException ();
@@ -4170,10 +4122,6 @@ namespace Cadencii.Gui.Toolkit
 		Cadencii.Gui.Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { this.Cursor = value.ToNative (); }
-		}
-
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
 		}
 
 		AnchorStyles UiControl.Anchor {
@@ -4503,10 +4451,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Cursor = value.ToNative (); }
 		}
 
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
-		}
-
 		AnchorStyles UiControl.Anchor {
 			get {
 				throw new NotImplementedException ();
@@ -4832,10 +4776,6 @@ namespace Cadencii.Gui.Toolkit
 		Cadencii.Gui.Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { this.Cursor = value.ToNative (); }
-		}
-
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
 		}
 
 		AnchorStyles UiControl.Anchor {
@@ -5165,10 +5105,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Cursor = value.ToNative (); }
 		}
 
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
-		}
-
 		AnchorStyles UiControl.Anchor {
 			get {
 				throw new NotImplementedException ();
@@ -5494,10 +5430,6 @@ namespace Cadencii.Gui.Toolkit
 		Cadencii.Gui.Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { this.Cursor = value.ToNative (); }
-		}
-
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
 		}
 
 		AnchorStyles UiControl.Anchor {
@@ -5827,10 +5759,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Cursor = value.ToNative (); }
 		}
 
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
-		}
-
 		AnchorStyles UiControl.Anchor {
 			get {
 				throw new NotImplementedException ();
@@ -6156,10 +6084,6 @@ namespace Cadencii.Gui.Toolkit
 		Cadencii.Gui.Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { this.Cursor = value.ToNative (); }
-		}
-
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
 		}
 
 		AnchorStyles UiControl.Anchor {
@@ -6489,10 +6413,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Cursor = value.ToNative (); }
 		}
 
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
-		}
-
 		AnchorStyles UiControl.Anchor {
 			get {
 				throw new NotImplementedException ();
@@ -6818,10 +6738,6 @@ namespace Cadencii.Gui.Toolkit
 		Cadencii.Gui.Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { this.Cursor = value.ToNative (); }
-		}
-
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
 		}
 
 		AnchorStyles UiControl.Anchor {
@@ -7151,10 +7067,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Cursor = value.ToNative (); }
 		}
 
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
-		}
-
 		AnchorStyles UiControl.Anchor {
 			get {
 				throw new NotImplementedException ();
@@ -7480,10 +7392,6 @@ namespace Cadencii.Gui.Toolkit
 		Cadencii.Gui.Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { this.Cursor = value.ToNative (); }
-		}
-
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
 		}
 
 		AnchorStyles UiControl.Anchor {
@@ -7813,10 +7721,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Cursor = value.ToNative (); }
 		}
 
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
-		}
-
 		AnchorStyles UiControl.Anchor {
 			get {
 				throw new NotImplementedException ();
@@ -8142,10 +8046,6 @@ namespace Cadencii.Gui.Toolkit
 		Cadencii.Gui.Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { this.Cursor = value.ToNative (); }
-		}
-
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
 		}
 
 		AnchorStyles UiControl.Anchor {
@@ -8475,10 +8375,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Cursor = value.ToNative (); }
 		}
 
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
-		}
-
 		AnchorStyles UiControl.Anchor {
 			get {
 				throw new NotImplementedException ();
@@ -8804,10 +8700,6 @@ namespace Cadencii.Gui.Toolkit
 		Cadencii.Gui.Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { this.Cursor = value.ToNative (); }
-		}
-
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
 		}
 
 		AnchorStyles UiControl.Anchor {
@@ -9137,10 +9029,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Cursor = value.ToNative (); }
 		}
 
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
-		}
-
 		AnchorStyles UiControl.Anchor {
 			get {
 				throw new NotImplementedException ();
@@ -9466,10 +9354,6 @@ namespace Cadencii.Gui.Toolkit
 		Cadencii.Gui.Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { this.Cursor = value.ToNative (); }
-		}
-
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
 		}
 
 		AnchorStyles UiControl.Anchor {
@@ -9799,10 +9683,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Cursor = value.ToNative (); }
 		}
 
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
-		}
-
 		AnchorStyles UiControl.Anchor {
 			get {
 				throw new NotImplementedException ();
@@ -10128,10 +10008,6 @@ namespace Cadencii.Gui.Toolkit
 		Cadencii.Gui.Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { this.Cursor = value.ToNative (); }
-		}
-
-		System.Collections.Generic.IList<UiControl> UiControl.Controls {
-			get { return this.Surface.Children.Cast<UiControl> (); }
 		}
 
 		AnchorStyles UiControl.Anchor {

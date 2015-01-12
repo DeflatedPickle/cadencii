@@ -91,15 +91,18 @@ namespace Cadencii.Gui
 			// no way to retrieve "Controls". Also not likely needed.
 		}
 
+		/*
+		// that's what mono Windows.Forms does...
 		public override int HorizontalScrollBarThumbWidth {
-			get { return System.Windows.Forms.SystemInformation.HorizontalScrollBarThumbWidth; }
+			get { return 16; } // System.Windows.Forms.SystemInformation.HorizontalScrollBarThumbWidth; }
 		}
 		public override int VerticalScrollBarThumbHeight {
-			get { return System.Windows.Forms.SystemInformation.VerticalScrollBarThumbHeight; }
+			get { return 16; } // System.Windows.Forms.SystemInformation.VerticalScrollBarThumbHeight; }
 		}
 		public override int VerticalScrollBarWidth {
-			get { return System.Windows.Forms.SystemInformation.VerticalScrollBarWidth; }
+			get { return 16; } // System.Windows.Forms.SystemInformation.VerticalScrollBarWidth; }
 		}
+		*/
 
 		public override Font SystemMenuFont {
 			get { return Xwt.Drawing.Font.SystemFont.ToGui (); }

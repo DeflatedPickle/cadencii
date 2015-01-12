@@ -112,7 +112,7 @@ namespace Cadencii.Application.Forms
         /// <param name="ui"></param>
         public void addProgressBar(ProgressBarWithLabel ui)
         {
-			int draft_width = flowLayoutPanel1.Width - 10 - GuiHost.Current.VerticalScrollBarWidth;
+			int draft_width = flowLayoutPanel1.Width - 10 - ((GuiHostWindowsForms) GuiHost.Current).VerticalScrollBarWidth;
             if (draft_width < 1) {
                 draft_width = 1;
             }
@@ -240,7 +240,7 @@ namespace Cadencii.Application.Forms
         {
             if (flowLayoutPanel1.Visible) {
                 mFullHeight = this.Height;
-				int draft_width = flowLayoutPanel1.Width - 10 - GuiHost.Current.VerticalScrollBarWidth;
+				int draft_width = flowLayoutPanel1.Width - 10 - ((GuiHostWindowsForms) GuiHost.Current).VerticalScrollBarWidth;
                 if (draft_width < 1) {
                     draft_width = 1;
                 }

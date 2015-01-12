@@ -3,7 +3,7 @@ using Cadencii.Gui;
 
 namespace Cadencii.Gui.Toolkit
 {
-	public interface UiUserControl : UiControl
+	public interface UiUserControl : UiControl, IControlContainer
 	{
 		event EventHandler<PaintEventArgs> Paint;
 

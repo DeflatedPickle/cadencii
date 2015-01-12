@@ -37,10 +37,6 @@ namespace Cadencii.Gui.Toolkit
 			set { Cursor = value.ToNative (); }
 		}
 
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
-		}
-
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }
 			remove { this.SizeChanged -= value; }
@@ -204,10 +200,6 @@ namespace Cadencii.Gui.Toolkit
 		Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { Cursor = value.ToNative (); }
-		}
-
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -375,10 +367,6 @@ namespace Cadencii.Gui.Toolkit
 			set { Cursor = value.ToNative (); }
 		}
 
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
-		}
-
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }
 			remove { this.SizeChanged -= value; }
@@ -542,10 +530,6 @@ namespace Cadencii.Gui.Toolkit
 		Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { Cursor = value.ToNative (); }
-		}
-
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -713,10 +697,6 @@ namespace Cadencii.Gui.Toolkit
 			set { Cursor = value.ToNative (); }
 		}
 
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
-		}
-
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }
 			remove { this.SizeChanged -= value; }
@@ -880,10 +860,6 @@ namespace Cadencii.Gui.Toolkit
 		Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { Cursor = value.ToNative (); }
-		}
-
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -1051,10 +1027,6 @@ namespace Cadencii.Gui.Toolkit
 			set { Cursor = value.ToNative (); }
 		}
 
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
-		}
-
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }
 			remove { this.SizeChanged -= value; }
@@ -1218,10 +1190,6 @@ namespace Cadencii.Gui.Toolkit
 		Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { Cursor = value.ToNative (); }
-		}
-
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -1389,10 +1357,6 @@ namespace Cadencii.Gui.Toolkit
 			set { Cursor = value.ToNative (); }
 		}
 
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
-		}
-
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }
 			remove { this.SizeChanged -= value; }
@@ -1556,10 +1520,6 @@ namespace Cadencii.Gui.Toolkit
 		Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { Cursor = value.ToNative (); }
-		}
-
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -1727,10 +1687,6 @@ namespace Cadencii.Gui.Toolkit
 			set { Cursor = value.ToNative (); }
 		}
 
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
-		}
-
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }
 			remove { this.SizeChanged -= value; }
@@ -1894,10 +1850,6 @@ namespace Cadencii.Gui.Toolkit
 		Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { Cursor = value.ToNative (); }
-		}
-
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -2065,10 +2017,6 @@ namespace Cadencii.Gui.Toolkit
 			set { Cursor = value.ToNative (); }
 		}
 
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
-		}
-
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }
 			remove { this.SizeChanged -= value; }
@@ -2232,10 +2180,6 @@ namespace Cadencii.Gui.Toolkit
 		Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { Cursor = value.ToNative (); }
-		}
-
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -2403,10 +2347,6 @@ namespace Cadencii.Gui.Toolkit
 			set { Cursor = value.ToNative (); }
 		}
 
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
-		}
-
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }
 			remove { this.SizeChanged -= value; }
@@ -2570,10 +2510,6 @@ namespace Cadencii.Gui.Toolkit
 		Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { Cursor = value.ToNative (); }
-		}
-
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -2741,10 +2677,6 @@ namespace Cadencii.Gui.Toolkit
 			set { Cursor = value.ToNative (); }
 		}
 
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
-		}
-
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }
 			remove { this.SizeChanged -= value; }
@@ -2908,10 +2840,6 @@ namespace Cadencii.Gui.Toolkit
 		Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { Cursor = value.ToNative (); }
-		}
-
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -3079,10 +3007,6 @@ namespace Cadencii.Gui.Toolkit
 			set { Cursor = value.ToNative (); }
 		}
 
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
-		}
-
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }
 			remove { this.SizeChanged -= value; }
@@ -3246,10 +3170,6 @@ namespace Cadencii.Gui.Toolkit
 		Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { Cursor = value.ToNative (); }
-		}
-
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -3417,10 +3337,6 @@ namespace Cadencii.Gui.Toolkit
 			set { Cursor = value.ToNative (); }
 		}
 
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
-		}
-
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }
 			remove { this.SizeChanged -= value; }
@@ -3584,10 +3500,6 @@ namespace Cadencii.Gui.Toolkit
 		Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { Cursor = value.ToNative (); }
-		}
-
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -3755,10 +3667,6 @@ namespace Cadencii.Gui.Toolkit
 			set { Cursor = value.ToNative (); }
 		}
 
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
-		}
-
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }
 			remove { this.SizeChanged -= value; }
@@ -3922,10 +3830,6 @@ namespace Cadencii.Gui.Toolkit
 		Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { Cursor = value.ToNative (); }
-		}
-
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -4093,10 +3997,6 @@ namespace Cadencii.Gui.Toolkit
 			set { Cursor = value.ToNative (); }
 		}
 
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
-		}
-
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }
 			remove { this.SizeChanged -= value; }
@@ -4260,10 +4160,6 @@ namespace Cadencii.Gui.Toolkit
 		Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { Cursor = value.ToNative (); }
-		}
-
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -4431,10 +4327,6 @@ namespace Cadencii.Gui.Toolkit
 			set { Cursor = value.ToNative (); }
 		}
 
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
-		}
-
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }
 			remove { this.SizeChanged -= value; }
@@ -4598,10 +4490,6 @@ namespace Cadencii.Gui.Toolkit
 		Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { Cursor = value.ToNative (); }
-		}
-
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -4769,10 +4657,6 @@ namespace Cadencii.Gui.Toolkit
 			set { Cursor = value.ToNative (); }
 		}
 
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
-		}
-
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }
 			remove { this.SizeChanged -= value; }
@@ -4938,10 +4822,6 @@ namespace Cadencii.Gui.Toolkit
 			set { Cursor = value.ToNative (); }
 		}
 
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
-		}
-
 		event EventHandler UiControl.SizeChanged {
 			add { this.SizeChanged += value; }
 			remove { this.SizeChanged -= value; }
@@ -5105,10 +4985,6 @@ namespace Cadencii.Gui.Toolkit
 		Cursor UiControl.Cursor {
 			get { return this.Cursor.ToGui (); }
 			set { Cursor = value.ToNative (); }
-		}
-
-		IList<UiControl> UiControl.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
 		}
 
 		event EventHandler UiControl.SizeChanged {

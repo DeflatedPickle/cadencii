@@ -59,9 +59,11 @@ namespace Cadencii.Gui
 
 		protected Dictionary<Type,Type> Types = new Dictionary<Type,Type> ();
 
+		/*
 		public abstract int HorizontalScrollBarThumbWidth { get; }
 		public abstract int VerticalScrollBarThumbHeight { get; }
 		public abstract int VerticalScrollBarWidth { get; }
+		*/
 
 		public abstract Font SystemMenuFont { get; }
 

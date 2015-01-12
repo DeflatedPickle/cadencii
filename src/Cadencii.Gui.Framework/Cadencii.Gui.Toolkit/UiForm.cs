@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace Cadencii.Gui.Toolkit
 {
-	public interface UiForm : UiControl
+	public interface UiForm : UiControl, IControlContainer
 	{
 		FormBorderStyle FormBorderStyle { get; set; }
 		Size ClientSize { get; set; }

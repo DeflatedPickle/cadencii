@@ -21,6 +21,12 @@ namespace Cadencii.Gui.Toolkit
 {
 	public partial class PanelImpl : System.Windows.Forms.Panel, UiPanel
 	{
+		// IControlContainer
+
+		IList<UiControl> IControlContainer.Controls {
+			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
+		}
+
 		// UiPanel
 
 		BorderStyle UiPanel.BorderStyle {

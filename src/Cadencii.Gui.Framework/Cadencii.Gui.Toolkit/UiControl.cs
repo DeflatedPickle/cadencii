@@ -16,8 +16,6 @@ namespace Cadencii.Gui.Toolkit
 
 		Cursor Cursor { get; set; }
 
-		IList<UiControl> Controls { get; }
-
 		void PerformLayout ();
 
 		AnchorStyles Anchor { get; set; }

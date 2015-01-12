@@ -540,7 +540,7 @@ namespace Cadencii.Application.Forms
         private UiToolStripMenuItem menuVisual;
         private UiToolStripMenuItem menuVisualReturn;
         private VolumeTracker volumeMaster;
-        private UiControl panelSlaves;
+        private UiPanel panelSlaves;
         private UiHScrollBar hScroll;
 		#pragma warning restore 0169,0649
         #endregion
