@@ -21,10 +21,11 @@ namespace Cadencii.Application.Models
 			public void InitializeControls ()
 			{
 				var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
-				foreach (var fi in GetType ().GetFields (bf).Where (f => f.FieldType == typeof (UiMenuItem) || f.FieldType == typeof (UiToolStripButton))) {
+				foreach (var fi in GetType ().GetFields (bf).Where (f => f.FieldType == typeof (BgmMenuItem) || f.FieldType == typeof (UiToolBarButton))) {
 					var spi = parent.form.GetType ().GetProperty (fi.Name, bf);
 					var sfi = spi == null ? parent.form.GetType ().GetField (fi.Name, bf) : null;
-					fi.SetValue (this, spi != null ? spi.GetValue (parent.form, null) : sfi.GetValue (parent.form));
+					var value = spi != null ? spi.GetValue (parent.form, null) : sfi.GetValue (parent.form);
+					fi.SetValue (this, value);
 				}
 			}
 
