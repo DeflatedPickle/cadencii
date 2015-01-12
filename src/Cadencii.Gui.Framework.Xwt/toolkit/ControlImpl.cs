@@ -93,11 +93,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
-		}
-
 		event EventHandler UiControl.Enter {
 			add { this.MouseEntered += value; }
 			remove { this.MouseEntered -= value; }
@@ -418,11 +413,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
 		}
 
 		event EventHandler UiControl.Enter {
@@ -747,11 +737,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
-		}
-
 		event EventHandler UiControl.Enter {
 			add { this.MouseEntered += value; }
 			remove { this.MouseEntered -= value; }
@@ -1072,11 +1057,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
 		}
 
 		event EventHandler UiControl.Enter {
@@ -1401,11 +1381,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
-		}
-
 		event EventHandler UiControl.Enter {
 			add { this.MouseEntered += value; }
 			remove { this.MouseEntered -= value; }
@@ -1726,11 +1701,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
 		}
 
 		event EventHandler UiControl.Enter {
@@ -2055,11 +2025,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
-		}
-
 		event EventHandler UiControl.Enter {
 			add { this.MouseEntered += value; }
 			remove { this.MouseEntered -= value; }
@@ -2380,11 +2345,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
 		}
 
 		event EventHandler UiControl.Enter {
@@ -2709,11 +2669,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
-		}
-
 		event EventHandler UiControl.Enter {
 			add { this.MouseEntered += value; }
 			remove { this.MouseEntered -= value; }
@@ -3034,11 +2989,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
 		}
 
 		event EventHandler UiControl.Enter {
@@ -3363,11 +3313,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
-		}
-
 		event EventHandler UiControl.Enter {
 			add { this.MouseEntered += value; }
 			remove { this.MouseEntered -= value; }
@@ -3688,11 +3633,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
 		}
 
 		event EventHandler UiControl.Enter {
@@ -4017,11 +3957,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
-		}
-
 		event EventHandler UiControl.Enter {
 			add { this.MouseEntered += value; }
 			remove { this.MouseEntered -= value; }
@@ -4342,11 +4277,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
 		}
 
 		event EventHandler UiControl.Enter {
@@ -4671,11 +4601,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
-		}
-
 		event EventHandler UiControl.Enter {
 			add { this.MouseEntered += value; }
 			remove { this.MouseEntered -= value; }
@@ -4996,11 +4921,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
 		}
 
 		event EventHandler UiControl.Enter {
@@ -5325,11 +5245,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
-		}
-
 		event EventHandler UiControl.Enter {
 			add { this.MouseEntered += value; }
 			remove { this.MouseEntered -= value; }
@@ -5650,11 +5565,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
 		}
 
 		event EventHandler UiControl.Enter {
@@ -5979,11 +5889,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
-		}
-
 		event EventHandler UiControl.Enter {
 			add { this.MouseEntered += value; }
 			remove { this.MouseEntered -= value; }
@@ -6304,11 +6209,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
 		}
 
 		event EventHandler UiControl.Enter {
@@ -6633,11 +6533,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
-		}
-
 		event EventHandler UiControl.Enter {
 			add { this.MouseEntered += value; }
 			remove { this.MouseEntered -= value; }
@@ -6958,11 +6853,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
 		}
 
 		event EventHandler UiControl.Enter {
@@ -7287,11 +7177,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
-		}
-
 		event EventHandler UiControl.Enter {
 			add { this.MouseEntered += value; }
 			remove { this.MouseEntered -= value; }
@@ -7612,11 +7497,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
 		}
 
 		event EventHandler UiControl.Enter {
@@ -7941,11 +7821,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
-		}
-
 		event EventHandler UiControl.Enter {
 			add { this.MouseEntered += value; }
 			remove { this.MouseEntered -= value; }
@@ -8266,11 +8141,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
 		}
 
 		event EventHandler UiControl.Enter {
@@ -8595,11 +8465,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
-		}
-
 		event EventHandler UiControl.Enter {
 			add { this.MouseEntered += value; }
 			remove { this.MouseEntered -= value; }
@@ -8920,11 +8785,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
 		}
 
 		event EventHandler UiControl.Enter {
@@ -9249,11 +9109,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
-		}
-
 		event EventHandler UiControl.Enter {
 			add { this.MouseEntered += value; }
 			remove { this.MouseEntered -= value; }
@@ -9576,11 +9431,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
-		}
-
 		event EventHandler UiControl.Enter {
 			add { this.MouseEntered += value; }
 			remove { this.MouseEntered -= value; }
@@ -9901,11 +9751,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Click {
-			add { this.Clicked += value; }
-			remove { this.Clicked -= value; }
 		}
 
 		event EventHandler UiControl.Enter {

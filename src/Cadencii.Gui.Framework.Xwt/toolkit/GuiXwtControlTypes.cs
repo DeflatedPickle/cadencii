@@ -68,14 +68,15 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class PanelBase : Xwt.Panel
+	public partial class PanelBase : Xwt.Frame
 	{
 		protected virtual void Dispose (bool disposing)
 		{
 		}
 	}
 
-	public partial class PictureBoxBase : Xwt.ImageView
+	// content will be ImageView
+	public partial class PictureBoxBase : Xwt.Frame
 	{
 	}
 

@@ -78,7 +78,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler<MouseEventArgs> MouseUp;
 		event EventHandler<MouseEventArgs> MouseMove;
 		event EventHandler<MouseEventArgs> MouseWheel;
-		event EventHandler Click;
 		event EventHandler Enter;
 		event EventHandler Leave;
 		event EventHandler SizeChanged;

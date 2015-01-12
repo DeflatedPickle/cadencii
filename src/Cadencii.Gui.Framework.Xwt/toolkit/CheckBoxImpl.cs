@@ -4,6 +4,11 @@ namespace Cadencii.Gui.Toolkit
 {
 	public partial class CheckBoxImpl
 	{
+		event EventHandler UiCheckBox.Click {
+			add { this.Clicked += value; }
+			remove { this.Clicked -= value; }
+		}
+
 		event EventHandler UiCheckBox.CheckedChanged {
 			add { this.Toggled += value; }
 			remove { this.Toggled -= value; }

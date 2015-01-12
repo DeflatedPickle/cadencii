@@ -8,6 +8,10 @@ namespace Cadencii.Gui.Toolkit
 	{
 		// UiButton
 
+		event EventHandler UiButton.Click {
+			add { this.Clicked += value; }
+			remove { this.Clicked -= value; }
+		}
 		Cadencii.Gui.Image UiButton.Image {
 			get { return this.Image.ToGui (); }
 			set { this.Image = value.ToWF (); }
