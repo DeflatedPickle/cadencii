@@ -69,7 +69,6 @@ namespace Cadencii.Gui.Toolkit
 		void Invalidate (bool invalidateChildren);
 
 		event EventHandler<KeyEventArgs> PreviewKeyDown;
-		event EventHandler<KeyPressEventArgs> KeyPress;
 		event EventHandler<KeyEventArgs> KeyUp;
 		event EventHandler<KeyEventArgs> KeyDown;
 		event EventHandler<MouseEventArgs> MouseClick;

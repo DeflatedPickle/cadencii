@@ -140,11 +140,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-		}
-
 		event NKeyEventHandler UiControl.KeyUp {
 			add { this.KeyUp += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.KeyUp -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -303,11 +298,6 @@ namespace Cadencii.Gui.Toolkit
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
-		}
-
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
 		}
 
 		event NKeyEventHandler UiControl.KeyUp {
@@ -470,11 +460,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-		}
-
 		event NKeyEventHandler UiControl.KeyUp {
 			add { this.KeyUp += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.KeyUp -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -633,11 +618,6 @@ namespace Cadencii.Gui.Toolkit
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
-		}
-
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
 		}
 
 		event NKeyEventHandler UiControl.KeyUp {
@@ -800,11 +780,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-		}
-
 		event NKeyEventHandler UiControl.KeyUp {
 			add { this.KeyUp += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.KeyUp -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -963,11 +938,6 @@ namespace Cadencii.Gui.Toolkit
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
-		}
-
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
 		}
 
 		event NKeyEventHandler UiControl.KeyUp {
@@ -1130,11 +1100,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-		}
-
 		event NKeyEventHandler UiControl.KeyUp {
 			add { this.KeyUp += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.KeyUp -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -1293,11 +1258,6 @@ namespace Cadencii.Gui.Toolkit
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
-		}
-
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
 		}
 
 		event NKeyEventHandler UiControl.KeyUp {
@@ -1460,11 +1420,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-		}
-
 		event NKeyEventHandler UiControl.KeyUp {
 			add { this.KeyUp += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.KeyUp -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -1623,11 +1578,6 @@ namespace Cadencii.Gui.Toolkit
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
-		}
-
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
 		}
 
 		event NKeyEventHandler UiControl.KeyUp {
@@ -1790,11 +1740,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-		}
-
 		event NKeyEventHandler UiControl.KeyUp {
 			add { this.KeyUp += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.KeyUp -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -1953,11 +1898,6 @@ namespace Cadencii.Gui.Toolkit
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
-		}
-
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
 		}
 
 		event NKeyEventHandler UiControl.KeyUp {
@@ -2120,11 +2060,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-		}
-
 		event NKeyEventHandler UiControl.KeyUp {
 			add { this.KeyUp += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.KeyUp -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -2283,11 +2218,6 @@ namespace Cadencii.Gui.Toolkit
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
-		}
-
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
 		}
 
 		event NKeyEventHandler UiControl.KeyUp {
@@ -2450,11 +2380,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-		}
-
 		event NKeyEventHandler UiControl.KeyUp {
 			add { this.KeyUp += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.KeyUp -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -2613,11 +2538,6 @@ namespace Cadencii.Gui.Toolkit
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
-		}
-
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
 		}
 
 		event NKeyEventHandler UiControl.KeyUp {
@@ -2780,11 +2700,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-		}
-
 		event NKeyEventHandler UiControl.KeyUp {
 			add { this.KeyUp += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.KeyUp -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -2943,11 +2858,6 @@ namespace Cadencii.Gui.Toolkit
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
-		}
-
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
 		}
 
 		event NKeyEventHandler UiControl.KeyUp {
@@ -3110,11 +3020,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-		}
-
 		event NKeyEventHandler UiControl.KeyUp {
 			add { this.KeyUp += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.KeyUp -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -3273,11 +3178,6 @@ namespace Cadencii.Gui.Toolkit
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
-		}
-
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
 		}
 
 		event NKeyEventHandler UiControl.KeyUp {
@@ -3440,11 +3340,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-		}
-
 		event NKeyEventHandler UiControl.KeyUp {
 			add { this.KeyUp += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.KeyUp -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -3603,11 +3498,6 @@ namespace Cadencii.Gui.Toolkit
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
-		}
-
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
 		}
 
 		event NKeyEventHandler UiControl.KeyUp {
@@ -3770,11 +3660,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-		}
-
 		event NKeyEventHandler UiControl.KeyUp {
 			add { this.KeyUp += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.KeyUp -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -3933,11 +3818,6 @@ namespace Cadencii.Gui.Toolkit
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
-		}
-
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
 		}
 
 		event NKeyEventHandler UiControl.KeyUp {
@@ -4100,11 +3980,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-		}
-
 		event NKeyEventHandler UiControl.KeyUp {
 			add { this.KeyUp += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.KeyUp -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -4263,11 +4138,6 @@ namespace Cadencii.Gui.Toolkit
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
-		}
-
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
 		}
 
 		event NKeyEventHandler UiControl.KeyUp {
@@ -4430,11 +4300,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-		}
-
 		event NKeyEventHandler UiControl.KeyUp {
 			add { this.KeyUp += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.KeyUp -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -4593,11 +4458,6 @@ namespace Cadencii.Gui.Toolkit
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
-		}
-
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
 		}
 
 		event NKeyEventHandler UiControl.KeyUp {
@@ -4760,11 +4620,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-		}
-
 		event NKeyEventHandler UiControl.KeyUp {
 			add { this.KeyUp += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.KeyUp -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -4925,11 +4780,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 		}
 
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-		}
-
 		event NKeyEventHandler UiControl.KeyUp {
 			add { this.KeyUp += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.KeyUp -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -5088,11 +4938,6 @@ namespace Cadencii.Gui.Toolkit
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
-		}
-
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPress += (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
-			remove { this.KeyPress -= (sender,  e) => value (sender, new NKeyPressEventArgs (e.KeyChar) { Handled = e.Handled}); }
 		}
 
 		event NKeyEventHandler UiControl.KeyUp {

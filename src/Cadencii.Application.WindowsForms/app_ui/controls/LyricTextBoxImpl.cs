@@ -23,6 +23,11 @@ namespace Cadencii.Application.Controls
     /// </summary>
     public class LyricTextBoxImpl : TextBoxImpl, LyricTextBox
     {
+		public event EventHandler<KeyPressEventArgs> KeyPress {
+			add { base.KeyPress += (sender, e) => value (sender, new KeyPressEventArgs (e.KeyChar) { Handled = e.Handled }); }
+			remove { throw new NotImplementedException (); }
+		}
+
 		public bool IsPhoneticSymbolEditMode { get; set; }
 
 		public string BufferText { get; set; }

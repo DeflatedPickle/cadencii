@@ -16,14 +16,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler<KeyEventArgs> UiControl.KeyUp {
 			add { this.KeyReleased += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Key)); }
 			remove {
@@ -333,14 +325,6 @@ namespace Cadencii.Gui.Toolkit
 	{
 		event EventHandler<KeyEventArgs> UiControl.PreviewKeyDown {
 			add { this.PreviewTextInput += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Text.FirstOrDefault ())); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -660,14 +644,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler<KeyEventArgs> UiControl.KeyUp {
 			add { this.KeyReleased += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Key)); }
 			remove {
@@ -977,14 +953,6 @@ namespace Cadencii.Gui.Toolkit
 	{
 		event EventHandler<KeyEventArgs> UiControl.PreviewKeyDown {
 			add { this.PreviewTextInput += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Text.FirstOrDefault ())); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -1304,14 +1272,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler<KeyEventArgs> UiControl.KeyUp {
 			add { this.KeyReleased += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Key)); }
 			remove {
@@ -1621,14 +1581,6 @@ namespace Cadencii.Gui.Toolkit
 	{
 		event EventHandler<KeyEventArgs> UiControl.PreviewKeyDown {
 			add { this.PreviewTextInput += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Text.FirstOrDefault ())); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -1948,14 +1900,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler<KeyEventArgs> UiControl.KeyUp {
 			add { this.KeyReleased += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Key)); }
 			remove {
@@ -2265,14 +2209,6 @@ namespace Cadencii.Gui.Toolkit
 	{
 		event EventHandler<KeyEventArgs> UiControl.PreviewKeyDown {
 			add { this.PreviewTextInput += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Text.FirstOrDefault ())); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -2592,14 +2528,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler<KeyEventArgs> UiControl.KeyUp {
 			add { this.KeyReleased += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Key)); }
 			remove {
@@ -2909,14 +2837,6 @@ namespace Cadencii.Gui.Toolkit
 	{
 		event EventHandler<KeyEventArgs> UiControl.PreviewKeyDown {
 			add { this.PreviewTextInput += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Text.FirstOrDefault ())); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -3236,14 +3156,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler<KeyEventArgs> UiControl.KeyUp {
 			add { this.KeyReleased += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Key)); }
 			remove {
@@ -3553,14 +3465,6 @@ namespace Cadencii.Gui.Toolkit
 	{
 		event EventHandler<KeyEventArgs> UiControl.PreviewKeyDown {
 			add { this.PreviewTextInput += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Text.FirstOrDefault ())); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -3880,14 +3784,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler<KeyEventArgs> UiControl.KeyUp {
 			add { this.KeyReleased += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Key)); }
 			remove {
@@ -4197,14 +4093,6 @@ namespace Cadencii.Gui.Toolkit
 	{
 		event EventHandler<KeyEventArgs> UiControl.PreviewKeyDown {
 			add { this.PreviewTextInput += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Text.FirstOrDefault ())); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -4524,14 +4412,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler<KeyEventArgs> UiControl.KeyUp {
 			add { this.KeyReleased += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Key)); }
 			remove {
@@ -4841,14 +4721,6 @@ namespace Cadencii.Gui.Toolkit
 	{
 		event EventHandler<KeyEventArgs> UiControl.PreviewKeyDown {
 			add { this.PreviewTextInput += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Text.FirstOrDefault ())); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -5168,14 +5040,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler<KeyEventArgs> UiControl.KeyUp {
 			add { this.KeyReleased += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Key)); }
 			remove {
@@ -5485,14 +5349,6 @@ namespace Cadencii.Gui.Toolkit
 	{
 		event EventHandler<KeyEventArgs> UiControl.PreviewKeyDown {
 			add { this.PreviewTextInput += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Text.FirstOrDefault ())); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -5812,14 +5668,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler<KeyEventArgs> UiControl.KeyUp {
 			add { this.KeyReleased += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Key)); }
 			remove {
@@ -6129,14 +5977,6 @@ namespace Cadencii.Gui.Toolkit
 	{
 		event EventHandler<KeyEventArgs> UiControl.PreviewKeyDown {
 			add { this.PreviewTextInput += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Text.FirstOrDefault ())); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -6456,14 +6296,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler<KeyEventArgs> UiControl.KeyUp {
 			add { this.KeyReleased += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Key)); }
 			remove {
@@ -6773,14 +6605,6 @@ namespace Cadencii.Gui.Toolkit
 	{
 		event EventHandler<KeyEventArgs> UiControl.PreviewKeyDown {
 			add { this.PreviewTextInput += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Text.FirstOrDefault ())); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -7100,14 +6924,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler<KeyEventArgs> UiControl.KeyUp {
 			add { this.KeyReleased += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Key)); }
 			remove {
@@ -7417,14 +7233,6 @@ namespace Cadencii.Gui.Toolkit
 	{
 		event EventHandler<KeyEventArgs> UiControl.PreviewKeyDown {
 			add { this.PreviewTextInput += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Text.FirstOrDefault ())); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -7744,14 +7552,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler<KeyEventArgs> UiControl.KeyUp {
 			add { this.KeyReleased += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Key)); }
 			remove {
@@ -8061,14 +7861,6 @@ namespace Cadencii.Gui.Toolkit
 	{
 		event EventHandler<KeyEventArgs> UiControl.PreviewKeyDown {
 			add { this.PreviewTextInput += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Text.FirstOrDefault ())); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -8388,14 +8180,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler<KeyEventArgs> UiControl.KeyUp {
 			add { this.KeyReleased += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Key)); }
 			remove {
@@ -8705,14 +8489,6 @@ namespace Cadencii.Gui.Toolkit
 	{
 		event EventHandler<KeyEventArgs> UiControl.PreviewKeyDown {
 			add { this.PreviewTextInput += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Text.FirstOrDefault ())); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -9032,14 +8808,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler<KeyEventArgs> UiControl.KeyUp {
 			add { this.KeyReleased += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Key)); }
 			remove {
@@ -9354,14 +9122,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler<KeyEventArgs> UiControl.KeyUp {
 			add { this.KeyReleased += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Key)); }
 			remove {
@@ -9671,14 +9431,6 @@ namespace Cadencii.Gui.Toolkit
 	{
 		event EventHandler<KeyEventArgs> UiControl.PreviewKeyDown {
 			add { this.PreviewTextInput += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Text.FirstOrDefault ())); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
 			remove {
 				throw new NotImplementedException ();
 			}

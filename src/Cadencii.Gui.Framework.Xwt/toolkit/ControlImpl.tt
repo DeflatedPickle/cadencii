@@ -64,14 +64,6 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		// FIXME: apparently Xwt has different concept of KeyPress and KeyDown than Windows key events.
-		event EventHandler<KeyPressEventArgs> UiControl.KeyPress {
-			add { this.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.Key)); }
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		event EventHandler<KeyEventArgs> UiControl.KeyUp {
 			add { this.KeyReleased += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Key)); }
 			remove {
