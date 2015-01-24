@@ -58,7 +58,7 @@ namespace Cadencii.Application.Controls
 
 		public void addComponent(UiControl c)
 		{
-			panelMain.Controls.Add(c);
+			panelMain.AddControl(c);
 			c.Dock = DockStyle.Fill;
 		}
 

@@ -101,8 +101,8 @@ namespace Cadencii.Application.Forms
 			var control = (UiUserControl) this;
 			control.AutoScaleDimensions = new Cadencii.Gui.Size(6, 12);
 			control.AutoScaleMode = Cadencii.Gui.Toolkit.AutoScaleMode.Font;
-			control.Controls.Add(this.label1);
-			control.Controls.Add(this.progressBar1);
+			control.AddControl(this.label1);
+			control.AddControl(this.progressBar1);
 			control.Name = "ProgressBarWithLabelUi";
 			control.Size = new  Cadencii.Gui.Size(322, 45);
 			control.ResumeLayout(false);

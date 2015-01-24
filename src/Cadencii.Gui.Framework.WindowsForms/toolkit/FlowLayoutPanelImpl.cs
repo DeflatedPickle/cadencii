@@ -21,14 +21,24 @@ namespace Cadencii.Gui.Toolkit
 {
 	public partial class FlowLayoutPanelImpl : System.Windows.Forms.FlowLayoutPanel, UiFlowLayoutPanel
 	{
-		// IControlContainer
-
-		IList<UiControl> IControlContainer.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
+		IEnumerable<UiControl> UiFlowLayoutPanel.Controls {
+			get { return this.Controls.Cast<UiControl> (); }
 		}
 
 		Size UiFlowLayoutPanel.ClientSize {
 			get { return ClientSize.ToGui (); }
+		}
+
+		// IControlContainer
+
+		void IControlContainer.AddControl (UiControl control)
+		{
+			Controls.Add ((System.Windows.Forms.Control) control);
+		}
+
+		void IControlContainer.RemoveControl (UiControl control)
+		{
+			Controls.Remove ((System.Windows.Forms.Control) control);
 		}
 	}
 }

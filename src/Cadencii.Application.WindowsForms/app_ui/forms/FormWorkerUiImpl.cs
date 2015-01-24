@@ -103,7 +103,7 @@ namespace Cadencii.Application.Forms
         /// <param name="ui"></param>
         public void removeProgressBar(ProgressBarWithLabel ui)
         {
-            flowLayoutPanel1.Controls.Remove(ui);
+			flowLayoutPanel1.RemoveControl(ui);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Cadencii.Application.Forms
             ui.Width = draft_width;
             //ui.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             //ui.Dock = DockStyle.Top;
-            flowLayoutPanel1.Controls.Add(ui);
+            flowLayoutPanel1.AddControl(ui);
         }
 
         /// <summary>

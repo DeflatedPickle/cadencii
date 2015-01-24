@@ -300,18 +300,18 @@ namespace Cadencii.Application.Forms
             splitContainer1.Panel1.BorderStyle = Cadencii.Gui.Toolkit.BorderStyle.None;
             splitContainer1.Panel2.BorderStyle = Cadencii.Gui.Toolkit.BorderStyle.None;
             splitContainer1.BackColor = new Cadencii.Gui.Color(212, 212, 212);
-            splitContainer2.Panel1.Controls.Add(panel1);
+            splitContainer2.Panel1.AddControl(panel1);
             panel1.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
-            splitContainer1.Panel1.Controls.Add(splitContainer2);
+            splitContainer1.Panel1.AddControl(splitContainer2);
 			splitContainer2.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
-            splitContainer1.Panel2.Controls.Add(trackSelector);
+            splitContainer1.Panel2.AddControl(trackSelector);
             trackSelector.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 			splitContainer1.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 			splitContainer1.Panel2MinSize = trackSelector.Model.PreferredMinSize;
             splitContainerProperty.FixedPanel = Cadencii.Gui.Toolkit.FixedPanel.Panel1;
 
 #if ENABLE_PROPERTY
-			splitContainerProperty.Panel1.Controls.Add (mPropertyPanelContainer);
+			splitContainerProperty.Panel1.AddControl (mPropertyPanelContainer);
             mPropertyPanelContainer.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 #else
             splitContainerProperty.setDividerLocation( 0 );
@@ -319,7 +319,7 @@ namespace Cadencii.Application.Forms
             menuVisualProperty.setVisible( false );
 #endif
 
-            splitContainerProperty.Panel2.Controls.Add(splitContainer1);
+            splitContainerProperty.Panel2.AddControl (splitContainer1);
             splitContainerProperty.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 
             // コントロールの位置・サイズを調節
@@ -384,7 +384,7 @@ namespace Cadencii.Application.Forms
 			EditorManager.InputTextBox.Font = new Font (EditorManager.editorConfig.BaseFontName, Cadencii.Gui.Font.PLAIN, EditorConfig.FONT_SIZE9);
             EditorManager.InputTextBox.Enabled = false;
             EditorManager.InputTextBox.KeyPress += model.InputTextBox.mInputTextBox_KeyPress;
-            panel1.Controls.Add(EditorManager.InputTextBox);
+            panel1.AddControl(EditorManager.InputTextBox);
 
 #if DEBUG
             menuHelpDebug.Visible = true;

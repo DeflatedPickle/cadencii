@@ -74,7 +74,7 @@ namespace Cadencii.Application.Forms
 			p.MouseUp += handleMouseUp;
 			p.MouseMove += handleMouseMove;
             panelIcon.BringToFront();
-            panelIcon.Controls.Add(p);
+            panelIcon.AddControl(p);
         }
 
         #endregion

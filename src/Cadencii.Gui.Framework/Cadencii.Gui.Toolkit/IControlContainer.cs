@@ -5,7 +5,9 @@ namespace Cadencii.Gui.Toolkit
 {
 	public interface IControlContainer
 	{
-		IList<UiControl> Controls { get; }
+		void AddControl (UiControl control);
+		void RemoveControl (UiControl control);
+		//IList<UiControl> Controls { get; }
 	}
 }
 

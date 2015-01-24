@@ -172,7 +172,7 @@ namespace Cadencii.Application.Forms
                     continue;
                 }
                 btn.Location = new Cadencii.Gui.Point(iw * buttonWidth, ih * buttonWidth);
-				this.AsGui ().Controls.Add(btn);
+				this.AsGui ().AddControl(btn);
                 btn.BringToFront();
             }
 

@@ -42,7 +42,7 @@ namespace Cadencii.Application.Forms
                 return;
             }
             var control = (UiControl)c;
-			this.AsGui ().Controls.Add(control);
+			this.AsGui ().AddControl(control);
             control.Dock = DockStyle.Fill;
         }
 

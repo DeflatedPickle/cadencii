@@ -250,7 +250,7 @@ namespace Cadencii.Application.Models
 			// PropertyPanel
 			// 
 			control.AutoScaleMode = Cadencii.Gui.Toolkit.AutoScaleMode.None;
-			control.Controls.Add(this.propertyGrid);
+			control.AddControl (this.propertyGrid);
 			control.Name = "PropertyPanel";
 			control.Size = new Size(191, 298);
 			control.ResumeLayout(false);

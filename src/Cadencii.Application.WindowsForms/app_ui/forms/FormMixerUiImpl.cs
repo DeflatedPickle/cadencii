@@ -303,7 +303,7 @@ namespace Cadencii.Application.Forms
         #region helper methods
         private void addToPanelSlaves(VolumeTracker item, int ix)
         {
-            panelSlaves.Controls.Add(item);
+            panelSlaves.AddControl(item);
         }
 
         private static string _(string id)

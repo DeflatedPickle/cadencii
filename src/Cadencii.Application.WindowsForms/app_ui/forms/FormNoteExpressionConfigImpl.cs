@@ -43,11 +43,11 @@ namespace Cadencii.Application.Forms
             }
 
             if (type == SynthesizerType.VOCALOID1) {
-                flowLayoutPanel.Controls.Remove(groupDynamicsControl);
-                flowLayoutPanel.Controls.Remove(panelVocaloid2Template);
-                flowLayoutPanel.Controls.Remove(groupPitchControl);
+                flowLayoutPanel.RemoveControl(groupDynamicsControl);
+				flowLayoutPanel.RemoveControl(panelVocaloid2Template);
+				flowLayoutPanel.RemoveControl(groupPitchControl);
             } else {
-                flowLayoutPanel.Controls.Remove(groupAttack);
+				flowLayoutPanel.RemoveControl(groupAttack);
             }
 
             //comboAttackTemplateを更新

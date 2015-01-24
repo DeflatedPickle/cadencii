@@ -23,8 +23,14 @@ namespace Cadencii.Gui.Toolkit
 	{
 		// IControlContainer
 
-		IList<UiControl> IControlContainer.Controls {
-			get { return new CastingList<UiControl, System.Windows.Forms.Control> (Controls, null, null); }
+		void IControlContainer.AddControl (UiControl control)
+		{
+			Controls.Add ((System.Windows.Forms.Control) control);
+		}
+
+		void IControlContainer.RemoveControl (UiControl control)
+		{
+			Controls.Remove ((System.Windows.Forms.Control) control);
 		}
 
 		// UiUserControl
