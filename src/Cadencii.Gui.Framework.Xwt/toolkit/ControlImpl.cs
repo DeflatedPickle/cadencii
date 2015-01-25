@@ -30,6 +30,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -83,16 +93,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -344,6 +344,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -397,16 +407,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -658,6 +658,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -711,16 +721,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -972,6 +972,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -1025,16 +1035,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -1286,6 +1286,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -1339,16 +1349,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -1600,6 +1600,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -1653,16 +1663,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -1914,6 +1914,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -1967,16 +1977,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -2228,6 +2228,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -2281,16 +2291,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -2542,6 +2542,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -2595,16 +2605,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -2856,6 +2856,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -2909,16 +2919,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -3170,6 +3170,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -3223,16 +3233,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -3484,6 +3484,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -3537,16 +3547,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -3798,6 +3798,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -3851,16 +3861,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -4112,6 +4112,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -4165,16 +4175,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -4426,6 +4426,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -4479,16 +4489,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -4740,6 +4740,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -4793,16 +4803,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -5054,6 +5054,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -5107,16 +5117,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -5368,6 +5368,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -5421,16 +5431,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -5682,6 +5682,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -5735,16 +5745,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -5996,6 +5996,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -6049,16 +6059,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -6310,6 +6310,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -6363,16 +6373,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -6624,6 +6624,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -6677,16 +6687,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -6938,6 +6938,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -6991,16 +7001,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -7252,6 +7252,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -7305,16 +7315,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -7566,6 +7566,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -7619,16 +7629,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -7880,6 +7880,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -7933,16 +7943,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -8194,6 +8194,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -8247,16 +8257,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -8508,6 +8508,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -8561,16 +8571,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -8822,6 +8822,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -8875,16 +8885,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -9136,6 +9136,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -9189,16 +9199,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {
@@ -9450,6 +9450,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
+		event EventHandler UiControl.Enter {
+			add { this.MouseEntered += value; }
+			remove { this.MouseEntered -= value; }
+		}
+
+		event EventHandler UiControl.Leave {
+			add { this.MouseExited += value; }
+			remove { this.MouseExited -= value; }
+		}
+
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
 			add {
 				throw new NotImplementedException ();
@@ -9503,16 +9513,6 @@ namespace Cadencii.Gui.Toolkit
 			remove {
 				throw new NotImplementedException ();
 			}
-		}
-
-		event EventHandler UiControl.Enter {
-			add { this.MouseEntered += value; }
-			remove { this.MouseEntered -= value; }
-		}
-
-		event EventHandler UiControl.Leave {
-			add { this.MouseExited += value; }
-			remove { this.MouseExited -= value; }
 		}
 
 		event EventHandler UiControl.SizeChanged {

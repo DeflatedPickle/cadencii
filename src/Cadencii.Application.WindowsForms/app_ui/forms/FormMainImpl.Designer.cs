@@ -83,6 +83,7 @@ namespace Cadencii.Application.Forms
         System.ComponentModel.IContainer components;
 
 		#pragma warning disable 0169,0649
+		UiPanel PanelMain { get; set; }
         UiMenuStrip menuStripMain;
         UiToolStripMenuItem menuFile;
         UiToolStripMenuItem menuEdit;

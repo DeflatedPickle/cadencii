@@ -88,9 +88,6 @@ namespace Cadencii.Application.Forms
         private void registerEventHandlers()
         {
 			var form = AsGui ();
-            form.MouseDown += handleMouseDown;
-            form.MouseUp += handleMouseUp;
-            form.MouseMove += handleMouseMove;
             panelIcon.MouseDown += handleMouseDown;
             panelIcon.MouseUp += handleMouseUp;
             panelIcon.MouseMove += handleMouseMove;

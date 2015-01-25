@@ -44,7 +44,7 @@ namespace Cadencii.Gui.Toolkit
 
 		void Close ();
 
-		event EventHandler LocationChanged;
+		event EventHandler BoundsChanged;
 		event EventHandler<FormClosingEventArgs> FormClosing;
 		event EventHandler FormClosed;
 

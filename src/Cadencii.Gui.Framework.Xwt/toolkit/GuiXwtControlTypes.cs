@@ -32,7 +32,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class FormBase : Xwt.Window
+	public partial class FormBase : FlowLayoutPanelImpl
 	{
 	}
 

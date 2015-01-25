@@ -13,6 +13,9 @@
             StartPosition = "CenterScreen"
             Text = "VersionInfoEx"
             >
+  <UiPanel id="mainPanel"
+  		Dock = "Fill"
+  		>
     <UiButton id="btnFlip"
 
             Anchor = "Bottom,Left"
@@ -70,4 +73,5 @@
             TextAlign = "MiddleCenter"
             UseVisualStyleBackColor = "true"
             />
+  </UiPanel>
 </Form>

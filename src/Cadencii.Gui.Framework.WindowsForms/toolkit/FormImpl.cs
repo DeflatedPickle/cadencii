@@ -132,7 +132,7 @@ namespace Cadencii.Gui.Toolkit
 			return (Cadencii.Gui.DialogResult) ShowDialog (owner as System.Windows.Forms.IWin32Window);
 		}
 
-		event EventHandler UiForm.LocationChanged {
+		event EventHandler UiForm.BoundsChanged {
 			add { this.LocationChanged += (sender, e) => value (sender, e); }
 			remove { this.LocationChanged -= (sender, e) => value (sender, e); }
 		}

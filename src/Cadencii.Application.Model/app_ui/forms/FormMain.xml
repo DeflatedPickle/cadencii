@@ -33,6 +33,9 @@
 	            Name = "FormMain"
 	            Text = "Cadencii"
 	            >
+	  <UiPanel id="PanelMain"
+		  	Dock = "Fill"
+			>
 		<UiToolStripContainer id="toolStripContainer1"
 
 	            Dock = "Fill"
@@ -1863,6 +1866,7 @@
             TabIndex = "1"
 	        />
         </BSplitContainer>
+      </UiPanel>
 	</Form>
 
 	<!-- programmatically initialized -->

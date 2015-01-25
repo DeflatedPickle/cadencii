@@ -405,6 +405,7 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
+		UiPanel mainPanel;
         UiButton btnFlip;
         UiButton btnOK;
         UiPictureBox pictVstLogo;

@@ -486,7 +486,7 @@ namespace Cadencii.Application.Forms
                 EditorManager.iconPalette.Visible = true;
             }
 			EditorManager.iconPalette.FormClosing += (o, e) => model.OtherItems.iconPalette_FormClosing ();
-			EditorManager.iconPalette.LocationChanged += (o, e) => model.OtherItems.iconPalette_LocationChanged ();
+			EditorManager.iconPalette.BoundsChanged += (o, e) => model.OtherItems.iconPalette_LocationChanged ();
 
 
 #if ENABLE_SCRIPT
@@ -3395,9 +3395,10 @@ namespace Cadencii.Application.Forms
 			mainForm.Activated += (o,e) => model.FormMain.RunActivated ();
 			mainForm.FormClosed += (o,e) => model.FormMain.FormMain_FormClosed ();
 			mainForm.FormClosing += (o,e ) => model.FormMain.RunFormClosing (e);
-			mainForm.PreviewKeyDown += (o, e) => model.FormMain.RunPreviewKeyDown (e);
 			mainForm.SizeChanged += (o,e) => model.FormMain.RunSizeChanged ();
 			//mainForm.Resize += new EventHandler( handleVScrollResize );
+
+			this.PanelMain.PreviewKeyDown += (o, e) => model.FormMain.RunPreviewKeyDown (e);
 
 			menuFileNew.Click += (o, e) => model.FileMenu.RunFileNewCommand ();
 			menuFileOpen.Click += (o, e) => model.FileMenu.RunFileOpenCommand ();

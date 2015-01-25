@@ -55,6 +55,7 @@
     <Compile Include="toolkit\VScrollBarImpl.cs" />
     <Compile Include="toolkit\ListBoxImpl.cs" />
     <Compile Include="toolkit\ContextMenuStripImpl.cs" />
+    <Compile Include="toolkit\FormImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
