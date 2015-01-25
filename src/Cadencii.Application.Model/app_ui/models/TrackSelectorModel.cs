@@ -146,11 +146,6 @@ namespace Cadencii.Application.Models
 		/// </summary>
 		private Keys mModifierKey = Keys.Control;
 		/// <summary>
-		/// スペースキーが押されているかどうか。
-		/// MouseDown時に範囲選択モードをスキップする必要があるので、FormMainでの処理に加えてこのクラス内部でも処理する必要がある
-		/// </summary>
-		private bool mSpaceKeyDowned = false;
-		/// <summary>
 		/// マウスがDownした位置の座標．xは仮想スクリーン座標．yは通常のe.Location.Y
 		/// </summary>
 		private Point mMouseDownLocation = new Point();
@@ -3220,7 +3215,7 @@ namespace Cadencii.Application.Models
 				CDebug.WriteLine("    clock_inner_note=" + clock_inner_note);
 				#endif
 				if (EditorManager.keyWidth <= e.X) {
-					if (e.Button == Cadencii.Gui.Toolkit.MouseButtons.Left && !mSpaceKeyDowned) {
+					if (e.Button == Cadencii.Gui.Toolkit.MouseButtons.Left) {
 						mMouseDownMode = MouseDownMode.CURVE_EDIT;
 						int quantized_clock = clock;
 						int unit = EditorManager.getPositionQuantizeClock();
@@ -5427,20 +5422,6 @@ namespace Cadencii.Application.Models
 			e.DrawText(TextFormatFlags.VerticalCenter | TextFormatFlags.Left | TextFormatFlags.NoFullWidthCharacterBreak);
 		}
 
-		public void TrackSelector_KeyDown(Object sender, KeyEventArgs e)
-		{
-			if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
-				mSpaceKeyDowned = true;
-			}
-		}
-
-		public void TrackSelector_KeyUp(Object sender, KeyEventArgs e)
-		{
-			if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
-				mSpaceKeyDowned = false;
-			}
-		}
-
 		public void cmenuCurveCommon_Click(Object sender, EventArgs e)
 		{
 			if (sender is UiToolStripMenuItem) {
@@ -5489,11 +5470,9 @@ namespace Cadencii.Application.Models
 			UiUserControl ctrl = control;
 			ctrl.MouseMove += TrackSelector_MouseMove;
 			ctrl.MouseDoubleClick += TrackSelector_MouseDoubleClick;
-			ctrl.KeyUp += TrackSelector_KeyUp;
 			ctrl.MouseClick += TrackSelector_MouseClick;
 			ctrl.MouseDown += onMouseDown;
 			ctrl.MouseUp += onMouseUp;
-			ctrl.KeyDown += TrackSelector_KeyDown;
 		}
 
 		private void setResources()

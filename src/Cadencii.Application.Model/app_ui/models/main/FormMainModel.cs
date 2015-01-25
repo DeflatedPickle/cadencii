@@ -1431,41 +1431,14 @@ namespace Cadencii.Application.Models
 			form.refreshScreen();
 		}
 
-		bool is_space_key_down = false;
-
 		/// <summary>
 		/// マウスの真ん中ボタンが押されたかどうかを調べます。
-		/// スペースキー+左ボタンで真ん中ボタンとみなすかどうか、というオプションも考慮される。
 		/// </summary>
 		/// <param name="button"></param>
 		/// <returns></returns>
 		public bool IsMouseMiddleButtonDown(MouseButtons button)
 		{
-			bool ret = false;
-			if (EditorManager.editorConfig.UseSpaceKeyAsMiddleButtonModifier) {
-				if (is_space_key_down && button == MouseButtons.Left) {
-					ret = true;
-				}
-			} else {
-				if (button == MouseButtons.Middle) {
-					ret = true;
-				}
-			}
-			return ret;
-		}
-
-		public void HandleSpaceKeyDown(KeyEventArgs e)
-		{
-			if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
-				is_space_key_down = true;
-			}
-		}
-
-		public void HandleSpaceKeyUp(KeyEventArgs e)
-		{
-			if (((Keys) e.KeyCode & Keys.Space) == Keys.Space) {
-				is_space_key_down = false;
-			}
+			return (button == MouseButtons.Middle);
 		}
 
 		#region ensure visibility on piano roll
