@@ -70,9 +70,6 @@ namespace Cadencii.Gui.Toolkit
 
 	public partial class PanelBase : Xwt.Frame
 	{
-		protected virtual void Dispose (bool disposing)
-		{
-		}
 	}
 
 	// content will be ImageView
@@ -127,7 +124,11 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class TrackBarBase : Xwt.Widget
+	public partial class HTrackBarBase : Xwt.HSlider
+	{
+	}
+
+	public partial class VTrackBarBase : Xwt.VSlider
 	{
 	}
 

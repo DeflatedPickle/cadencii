@@ -71,7 +71,7 @@
             Type = "Integer"
             />
 
-        <UiTrackBar id="trackBendLength"
+        <UiHTrackBar id="trackBendLength"
 
             AutoSize = "false"
             Location = "(138, 40)"
@@ -82,7 +82,7 @@
             TickFrequency = "10"
             />
 
-        <UiTrackBar id="trackBendDepth"
+        <UiHTrackBar id="trackBendDepth"
 
             AutoSize = "false"
             Location = "(138, 14)"
@@ -191,7 +191,7 @@
             Type = "Integer"
             />
 
-        <UiTrackBar id="trackAccent"
+        <UiHTrackBar id="trackAccent"
 
             AutoSize = "false"
             Location = "(138, 44)"
@@ -203,7 +203,7 @@
             Value = "50"
             />
 
-        <UiTrackBar id="trackDecay"
+        <UiHTrackBar id="trackDecay"
 
             AutoSize = "false"
             Location = "(138, 18)"

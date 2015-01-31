@@ -150,7 +150,7 @@
 				            TabIndex = "16"
 				            />
 
-			        <UiTrackBar id="trackBar"
+			        <UiHTrackBar id="trackBar"
 
 			            Anchor = "Bottom,Right"
 			            AutoSize = "false"

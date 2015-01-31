@@ -107,8 +107,8 @@ namespace Cadencii.Application.Controls
 
         #endregion
 
-		public UiTrackBar trackFeder { get; set; }
-		public UiTrackBar trackPanpot { get; set; }
+		public UiVTrackBar trackFeder { get; set; }
+		public UiHTrackBar trackPanpot { get; set; }
 		public UiTextBox txtPanpot { get; set; }
 		public UiLabel lblTitle { get; set; }
 		public UiTextBox txtFeder { get; set; }

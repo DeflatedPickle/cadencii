@@ -14,10 +14,9 @@ namespace Cadencii.Application.Controls
 	public interface VolumeTracker : UiUserControl, IAmplifierView
 	{
 		VolumeTrackerModel Model { get; }
-		bool DoubleBuffered { get; set; }
 
-		UiTrackBar trackFeder { get; }
-		UiTrackBar trackPanpot { get; }
+		UiVTrackBar trackFeder { get; }
+		UiHTrackBar trackPanpot { get; }
 		UiTextBox txtPanpot { get; }
 		UiLabel lblTitle { get; }
 		UiTextBox txtFeder { get; }

@@ -99,6 +99,11 @@ namespace Cadencii.Gui.Toolkit
 			remove { window.Closed -= value; }
 		}
 
+		void UiForm.Close ()
+		{
+			window.Close ();
+		}
+
 		UiForm UiForm.AsGui ()
 		{
 			return this;
@@ -107,7 +112,7 @@ namespace Cadencii.Gui.Toolkit
 		object UiForm.Invoke (Delegate d, params object[] args)
 		{
 			object ret = null;
-			SynchronizationContext.Current.Send (o => ret = d (args), null);
+			SynchronizationContext.Current.Send (o => ret = d.DynamicInvoke (args), null);
 			return ret;
 		}
 
@@ -164,15 +169,15 @@ namespace Cadencii.Gui.Toolkit
 				switch (value) {
 				case FormWindowState.Maximized:
 					window.FullScreen = true;
-					window.ScreenBounds = window.Size;
+					window.Show ();
 					break;
 				case FormWindowState.Minimized:
 					window.FullScreen = false;
-					window.ScreenBounds = new Size ();
+					window.Hide ();
 					break;
 				default:
 					window.FullScreen = false;
-					window.ScreenBounds = window.Size;
+					window.Show ();
 					break;
 				}
 			}

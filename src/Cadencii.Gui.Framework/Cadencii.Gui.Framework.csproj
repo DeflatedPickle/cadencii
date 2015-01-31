@@ -101,7 +101,6 @@
     <Compile Include="Cadencii.Gui.Toolkit\UiToolStripSeparator.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiToolStripStatusLabel.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiToolTip.cs" />
-    <Compile Include="Cadencii.Gui.Toolkit\UiTrackBar.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiUserControl.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiVScrollBar.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\View.cs" />
@@ -170,6 +169,7 @@
     <Compile Include="Cadencii.Gui.Toolkit\UiContainerControl.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiNumericUpDown.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\IControlContainer.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\UiTrackBar.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

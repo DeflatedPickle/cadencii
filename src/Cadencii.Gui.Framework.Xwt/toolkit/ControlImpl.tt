@@ -28,6 +28,7 @@ namespace Cadencii.Gui.Toolkit
 		"Form",
 		"GroupBox",
 		"HScrollBar",
+		"HTrackBar",
 		//"ImageList",
 		"Label",
 		"LinkLabel",
@@ -48,9 +49,9 @@ namespace Cadencii.Gui.Toolkit
 		"ToolBar",
 		"ToolStrip",
 		"ToolStripContainer",
-		"TrackBar",
 		"UserControl",
 		"VScrollBar",
+		"VTrackBar",
 		};
 
 		foreach (var controlName in controlNames) {

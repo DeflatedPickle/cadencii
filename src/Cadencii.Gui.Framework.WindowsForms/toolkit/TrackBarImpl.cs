@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Linq;
 using Cadencii.Gui;
 using Keys = Cadencii.Gui.Toolkit.Keys;
@@ -32,6 +32,14 @@ namespace Cadencii.Gui.Toolkit
 			get { return (TickStyle)TickStyle; }
 			set { TickStyle = (System.Windows.Forms.TickStyle) value; }
 		}
+	}
+
+	public partial class HTrackBarImpl : TrackBarImpl, UiHTrackBar
+	{
+	}
+
+	public partial class VTrackBarImpl : TrackBarImpl, UiVTrackBar
+	{
 	}
 }
 

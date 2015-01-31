@@ -72,7 +72,7 @@ namespace Cadencii.Application.Forms
 		CurveEditMode mEditCurveMode { get; set; }
 
 		UiContextMenuStrip cMenuPiano { get; set; }
-		UiTrackBar trackBar { get; set; }
+		UiHTrackBar trackBar { get; set; }
 		double mTimerDragLastIgnitted { get; set; }
 		bool mMouseDowned { get; set; }
 		Point mButtonInitial { get; set; }

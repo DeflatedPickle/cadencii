@@ -56,6 +56,11 @@
     <Compile Include="toolkit\ListBoxImpl.cs" />
     <Compile Include="toolkit\ContextMenuStripImpl.cs" />
     <Compile Include="toolkit\FormImpl.cs" />
+    <Compile Include="toolkit\LinkLabelImpl.cs" />
+    <Compile Include="toolkit\UserControlImpl.cs" />
+    <Compile Include="toolkit\VTrackBarImpl.cs" />
+    <Compile Include="toolkit\HTrackBarImpl.cs" />
+    <Compile Include="toolkit\ProgressBarImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

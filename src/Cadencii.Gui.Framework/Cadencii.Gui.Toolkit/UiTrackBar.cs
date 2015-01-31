@@ -1,8 +1,16 @@
-using System;
+﻿using System;
 using Cadencii.Gui;
 
 namespace Cadencii.Gui.Toolkit
 {
+	public interface UiHTrackBar : UiTrackBar
+	{
+	}
+
+	public interface UiVTrackBar : UiTrackBar
+	{
+	}
+
 	public interface UiTrackBar : UiControl
 	{
 		TickStyle TickStyle {

@@ -74,7 +74,6 @@
     <Compile Include="toolkit\ToolStripMenuItemImpl.cs" />
     <Compile Include="toolkit\ToolStripSeparatorImpl.cs" />
     <Compile Include="toolkit\ToolStripStatusLabelImpl.cs" />
-    <Compile Include="toolkit\TrackBarImpl.cs" />
     <Compile Include="toolkit\UserControlImpl.cs" />
     <Compile Include="toolkit\VScrollBarImpl.cs" />
     <Compile Include="toolkit\ContextMenuStripImpl.cs" />
@@ -100,6 +99,7 @@
     <Compile Include="toolkit\ControlImpl.cs">
       <DependentUpon>ControlImpl.tt</DependentUpon>
     </Compile>
+    <Compile Include="toolkit\TrackBarImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

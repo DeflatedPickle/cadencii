@@ -523,10 +523,10 @@ namespace Cadencii.Application.Forms
         UiLabel lblBendLength;
         UiCheckBox chkDownPortamento;
         UiCheckBox chkUpPortamento;
-        UiTrackBar trackBendDepth;
-        UiTrackBar trackBendLength;
-        UiTrackBar trackAccent;
-        UiTrackBar trackDecay;
+        UiHTrackBar trackBendDepth;
+        UiHTrackBar trackBendLength;
+        UiHTrackBar trackAccent;
+        UiHTrackBar trackDecay;
         UiLabel lblAccent;
         UiLabel lblDecay;
         NumberTextBox txtBendLength;
@@ -543,8 +543,8 @@ namespace Cadencii.Application.Forms
         UiGroupBox groupAttack;
         NumberTextBox txtDepth;
         NumberTextBox txtDuration;
-        UiTrackBar trackDepth;
-        UiTrackBar trackDuration;
+        UiHTrackBar trackDepth;
+        UiHTrackBar trackDuration;
         UiLabel lblDepth;
         UiLabel lblDuration;
         UiFlowLayoutPanel flowLayoutPanel;

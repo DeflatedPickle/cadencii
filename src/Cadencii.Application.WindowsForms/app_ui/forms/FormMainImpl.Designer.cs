@@ -248,7 +248,7 @@ namespace Cadencii.Application.Forms
         UiToolStripMenuItem menuJobReloadVsti;
         UiToolStripMenuItem cMenuPianoCurve;
 		public UiToolStripMenuItem cMenuTrackSelectorCurve { get; set; }
-		public UiTrackBar trackBar { get; set; }
+		public UiHTrackBar trackBar { get; set; }
         UiToolBarButton stripBtnPointer;
         UiToolBarButton stripBtnLine;
         UiToolBarButton stripBtnPencil;
