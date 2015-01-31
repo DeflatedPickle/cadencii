@@ -29,8 +29,6 @@ namespace Cadencii.Gui.Toolkit
 		int Bottom { get; }
 		int Right { get; }
 
-		ImeMode ImeMode { get; set; }
-
 		bool IsDisposed { get; }
 
 		object Native { get; }

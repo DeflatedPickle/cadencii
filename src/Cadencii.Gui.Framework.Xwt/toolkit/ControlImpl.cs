@@ -222,11 +222,6 @@ namespace Cadencii.Gui.Toolkit
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
-
 		bool is_disposed;
 
 		protected override void Dispose (bool disposing)
@@ -525,11 +520,6 @@ namespace Cadencii.Gui.Toolkit
 
 		int UiControl.Right {
 			get { return (int) this.ScreenBounds.Right; }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
 		}
 
 		bool is_disposed;
@@ -832,11 +822,6 @@ namespace Cadencii.Gui.Toolkit
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
-
 		bool is_disposed;
 
 		protected override void Dispose (bool disposing)
@@ -1135,11 +1120,6 @@ namespace Cadencii.Gui.Toolkit
 
 		int UiControl.Right {
 			get { return (int) this.ScreenBounds.Right; }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
 		}
 
 		bool is_disposed;
@@ -1442,11 +1422,6 @@ namespace Cadencii.Gui.Toolkit
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
-
 		bool is_disposed;
 
 		protected override void Dispose (bool disposing)
@@ -1745,11 +1720,6 @@ namespace Cadencii.Gui.Toolkit
 
 		int UiControl.Right {
 			get { return (int) this.ScreenBounds.Right; }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
 		}
 
 		bool is_disposed;
@@ -2052,11 +2022,6 @@ namespace Cadencii.Gui.Toolkit
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
-
 		bool is_disposed;
 
 		protected override void Dispose (bool disposing)
@@ -2355,11 +2320,6 @@ namespace Cadencii.Gui.Toolkit
 
 		int UiControl.Right {
 			get { return (int) this.ScreenBounds.Right; }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
 		}
 
 		bool is_disposed;
@@ -2662,11 +2622,6 @@ namespace Cadencii.Gui.Toolkit
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
-
 		bool is_disposed;
 
 		protected override void Dispose (bool disposing)
@@ -2965,11 +2920,6 @@ namespace Cadencii.Gui.Toolkit
 
 		int UiControl.Right {
 			get { return (int) this.ScreenBounds.Right; }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
 		}
 
 		bool is_disposed;
@@ -3272,11 +3222,6 @@ namespace Cadencii.Gui.Toolkit
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
-
 		bool is_disposed;
 
 		protected override void Dispose (bool disposing)
@@ -3575,11 +3520,6 @@ namespace Cadencii.Gui.Toolkit
 
 		int UiControl.Right {
 			get { return (int) this.ScreenBounds.Right; }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
 		}
 
 		bool is_disposed;
@@ -3882,11 +3822,6 @@ namespace Cadencii.Gui.Toolkit
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
-
 		bool is_disposed;
 
 		protected override void Dispose (bool disposing)
@@ -4185,11 +4120,6 @@ namespace Cadencii.Gui.Toolkit
 
 		int UiControl.Right {
 			get { return (int) this.ScreenBounds.Right; }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
 		}
 
 		bool is_disposed;
@@ -4492,11 +4422,6 @@ namespace Cadencii.Gui.Toolkit
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
-
 		bool is_disposed;
 
 		protected override void Dispose (bool disposing)
@@ -4795,11 +4720,6 @@ namespace Cadencii.Gui.Toolkit
 
 		int UiControl.Right {
 			get { return (int) this.ScreenBounds.Right; }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
 		}
 
 		bool is_disposed;
@@ -5102,11 +5022,6 @@ namespace Cadencii.Gui.Toolkit
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
-
 		bool is_disposed;
 
 		protected override void Dispose (bool disposing)
@@ -5405,11 +5320,6 @@ namespace Cadencii.Gui.Toolkit
 
 		int UiControl.Right {
 			get { return (int) this.ScreenBounds.Right; }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
 		}
 
 		bool is_disposed;
@@ -5712,11 +5622,6 @@ namespace Cadencii.Gui.Toolkit
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
-
 		bool is_disposed;
 
 		protected override void Dispose (bool disposing)
@@ -6015,11 +5920,6 @@ namespace Cadencii.Gui.Toolkit
 
 		int UiControl.Right {
 			get { return (int) this.ScreenBounds.Right; }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
 		}
 
 		bool is_disposed;
@@ -6322,11 +6222,6 @@ namespace Cadencii.Gui.Toolkit
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
-
 		bool is_disposed;
 
 		protected override void Dispose (bool disposing)
@@ -6625,11 +6520,6 @@ namespace Cadencii.Gui.Toolkit
 
 		int UiControl.Right {
 			get { return (int) this.ScreenBounds.Right; }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
 		}
 
 		bool is_disposed;
@@ -6932,11 +6822,6 @@ namespace Cadencii.Gui.Toolkit
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
-
 		bool is_disposed;
 
 		protected override void Dispose (bool disposing)
@@ -7235,11 +7120,6 @@ namespace Cadencii.Gui.Toolkit
 
 		int UiControl.Right {
 			get { return (int) this.ScreenBounds.Right; }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
 		}
 
 		bool is_disposed;
@@ -7542,11 +7422,6 @@ namespace Cadencii.Gui.Toolkit
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
-
 		bool is_disposed;
 
 		protected override void Dispose (bool disposing)
@@ -7845,11 +7720,6 @@ namespace Cadencii.Gui.Toolkit
 
 		int UiControl.Right {
 			get { return (int) this.ScreenBounds.Right; }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
 		}
 
 		bool is_disposed;
@@ -8152,11 +8022,6 @@ namespace Cadencii.Gui.Toolkit
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
-
 		bool is_disposed;
 
 		protected override void Dispose (bool disposing)
@@ -8455,11 +8320,6 @@ namespace Cadencii.Gui.Toolkit
 
 		int UiControl.Right {
 			get { return (int) this.ScreenBounds.Right; }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
 		}
 
 		bool is_disposed;
@@ -8762,11 +8622,6 @@ namespace Cadencii.Gui.Toolkit
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
-
 		bool is_disposed;
 
 		protected override void Dispose (bool disposing)
@@ -9065,11 +8920,6 @@ namespace Cadencii.Gui.Toolkit
 
 		int UiControl.Right {
 			get { return (int) this.ScreenBounds.Right; }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
 		}
 
 		bool is_disposed;
@@ -9372,11 +9222,6 @@ namespace Cadencii.Gui.Toolkit
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
-
 		bool is_disposed;
 
 		protected override void Dispose (bool disposing)
@@ -9675,11 +9520,6 @@ namespace Cadencii.Gui.Toolkit
 
 		int UiControl.Right {
 			get { return (int) this.ScreenBounds.Right; }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
 		}
 
 		bool is_disposed;

@@ -103,9 +103,6 @@ namespace Cadencii.Gui.Toolkit
 
 	public partial class TabPageBase : FlowLayoutPanelImpl
 	{
-		protected virtual void Dispose (bool disposing)
-		{
-		}
 	}
 
 	public partial class TextBoxBase : Xwt.TextEntry
@@ -132,7 +129,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class UserControlBase : Xwt.Widget
+	public partial class UserControlBase : FlowLayoutPanelImpl
 	{
 	}
 

@@ -21,6 +21,11 @@ namespace Cadencii.Gui.Toolkit
 {
 	public partial class TextBoxImpl : System.Windows.Forms.TextBox, UiTextBox
 	{
+		ImeMode UiTextBox.ImeMode {
+			get { return (ImeMode)ImeMode; }
+			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
+		}
+
 		BorderStyle UiTextBox.BorderStyle {
 			get { return (BorderStyle)BorderStyle; }
 			set { BorderStyle = (System.Windows.Forms.BorderStyle) value; }

@@ -4,6 +4,9 @@ namespace Cadencii.Gui.Toolkit
 {
 	public partial class TextBoxImpl : TextBoxBase, UiTextBox
 	{
+		// FIXME: this cannot work on Xwt.
+		ImeMode UiTextBox.ImeMode { get; set; }
+
 		event EventHandler UiTextBox.TextChanged {
 			add { base.Changed += value; }
 			remove { base.Changed -= value; }
@@ -17,7 +20,7 @@ namespace Cadencii.Gui.Toolkit
 
 		int UiTextBox.GetFirstCharIndexFromLine (int line)
 		{
-			var texts = Text.Split (Environment.NewLine, StringSplitOptions.None);
+			var texts = Text.Split (new String [] {Environment.NewLine}, StringSplitOptions.None);
 			if (line >= texts.Length)
 				throw new ArgumentOutOfRangeException ("line", string.Format ("Requested line #{0}, but current max line is {0}.", line, texts.Length));
 
@@ -57,7 +60,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		string[] UiTextBox.Lines {
-			get { return base.Text.Split (Environment.NewLine); }
+			get { return base.Text.Split (new String [] {Environment.NewLine}, StringSplitOptions.None); }
 		}
 
 		// FIXME: this won't work on Xwt. Do not use it.

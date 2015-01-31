@@ -60,11 +60,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Bounds = value.ToWF (); }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
-		}
-
 		Font UiControl.Font {
 			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
@@ -213,11 +208,6 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return Bounds.ToGui (); }
 			set { this.Bounds = value.ToWF (); }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
 		}
 
 		Font UiControl.Font {
@@ -370,11 +360,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Bounds = value.ToWF (); }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
-		}
-
 		Font UiControl.Font {
 			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
@@ -523,11 +508,6 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return Bounds.ToGui (); }
 			set { this.Bounds = value.ToWF (); }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
 		}
 
 		Font UiControl.Font {
@@ -680,11 +660,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Bounds = value.ToWF (); }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
-		}
-
 		Font UiControl.Font {
 			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
@@ -833,11 +808,6 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return Bounds.ToGui (); }
 			set { this.Bounds = value.ToWF (); }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
 		}
 
 		Font UiControl.Font {
@@ -990,11 +960,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Bounds = value.ToWF (); }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
-		}
-
 		Font UiControl.Font {
 			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
@@ -1143,11 +1108,6 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return Bounds.ToGui (); }
 			set { this.Bounds = value.ToWF (); }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
 		}
 
 		Font UiControl.Font {
@@ -1300,11 +1260,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Bounds = value.ToWF (); }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
-		}
-
 		Font UiControl.Font {
 			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
@@ -1453,11 +1408,6 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return Bounds.ToGui (); }
 			set { this.Bounds = value.ToWF (); }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
 		}
 
 		Font UiControl.Font {
@@ -1610,11 +1560,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Bounds = value.ToWF (); }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
-		}
-
 		Font UiControl.Font {
 			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
@@ -1763,11 +1708,6 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return Bounds.ToGui (); }
 			set { this.Bounds = value.ToWF (); }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
 		}
 
 		Font UiControl.Font {
@@ -1920,11 +1860,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Bounds = value.ToWF (); }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
-		}
-
 		Font UiControl.Font {
 			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
@@ -2073,11 +2008,6 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return Bounds.ToGui (); }
 			set { this.Bounds = value.ToWF (); }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
 		}
 
 		Font UiControl.Font {
@@ -2230,11 +2160,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Bounds = value.ToWF (); }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
-		}
-
 		Font UiControl.Font {
 			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
@@ -2383,11 +2308,6 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return Bounds.ToGui (); }
 			set { this.Bounds = value.ToWF (); }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
 		}
 
 		Font UiControl.Font {
@@ -2540,11 +2460,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Bounds = value.ToWF (); }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
-		}
-
 		Font UiControl.Font {
 			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
@@ -2693,11 +2608,6 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return Bounds.ToGui (); }
 			set { this.Bounds = value.ToWF (); }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
 		}
 
 		Font UiControl.Font {
@@ -2850,11 +2760,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Bounds = value.ToWF (); }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
-		}
-
 		Font UiControl.Font {
 			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
@@ -3003,11 +2908,6 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return Bounds.ToGui (); }
 			set { this.Bounds = value.ToWF (); }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
 		}
 
 		Font UiControl.Font {
@@ -3160,11 +3060,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Bounds = value.ToWF (); }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
-		}
-
 		Font UiControl.Font {
 			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
@@ -3313,11 +3208,6 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return Bounds.ToGui (); }
 			set { this.Bounds = value.ToWF (); }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
 		}
 
 		Font UiControl.Font {
@@ -3470,11 +3360,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Bounds = value.ToWF (); }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
-		}
-
 		Font UiControl.Font {
 			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
@@ -3623,11 +3508,6 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return Bounds.ToGui (); }
 			set { this.Bounds = value.ToWF (); }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
 		}
 
 		Font UiControl.Font {
@@ -3780,11 +3660,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Bounds = value.ToWF (); }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
-		}
-
 		Font UiControl.Font {
 			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
@@ -3933,11 +3808,6 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return Bounds.ToGui (); }
 			set { this.Bounds = value.ToWF (); }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
 		}
 
 		Font UiControl.Font {
@@ -4090,11 +3960,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Bounds = value.ToWF (); }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
-		}
-
 		Font UiControl.Font {
 			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
@@ -4243,11 +4108,6 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return Bounds.ToGui (); }
 			set { this.Bounds = value.ToWF (); }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
 		}
 
 		Font UiControl.Font {
@@ -4400,11 +4260,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Bounds = value.ToWF (); }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
-		}
-
 		Font UiControl.Font {
 			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
@@ -4555,11 +4410,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Bounds = value.ToWF (); }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
-		}
-
 		Font UiControl.Font {
 			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
@@ -4708,11 +4558,6 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return Bounds.ToGui (); }
 			set { this.Bounds = value.ToWF (); }
-		}
-
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
 		}
 
 		Font UiControl.Font {

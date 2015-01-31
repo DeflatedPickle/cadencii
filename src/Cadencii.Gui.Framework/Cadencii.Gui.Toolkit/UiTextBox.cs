@@ -6,6 +6,8 @@ namespace Cadencii.Gui.Toolkit
 
 	public interface UiTextBox : UiControl
 	{
+		ImeMode ImeMode { get; set; }
+
 		event EventHandler TextChanged;
 
 		void SelectAll ();

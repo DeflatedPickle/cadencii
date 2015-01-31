@@ -103,11 +103,6 @@ namespace Cadencii.Gui.Toolkit
 			set { this.Bounds = value.ToWF (); }
 		}
 
-		ImeMode UiControl.ImeMode {
-			get { return (ImeMode)ImeMode; }
-			set { ImeMode = (System.Windows.Forms.ImeMode) value; }
-		}
-
 		Font UiControl.Font {
 			get { return Font.ToGui (); }
 			set { Font = value.ToWF (); }
