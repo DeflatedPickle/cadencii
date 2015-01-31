@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Cadencii.Gui.Toolkit
 {
@@ -34,27 +35,22 @@ namespace Cadencii.Gui.Toolkit
 		// FIXME: ignore... cannot be supported in Xwt as is.
 		bool UiToolBar.Divider { get; set; }
 
-		Cadencii.Gui.Size UiToolBar.ButtonSize {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		Cadencii.Gui.Size UiToolBar.ButtonSize { get; set; }
 
 		// ignore... Flat or Normal, doesn't matter.
 		ToolBarAppearance UiToolBar.Appearance { get; set; }
 
 		IEnumerable<UiToolBarButton> UiToolBar.Buttons {
-			get {
-				throw new NotImplementedException ();
-			}
+			get { return Items.Cast<UiToolBarButton> (); }
 		}
 
 		void UiToolBar.AddButton (UiToolBarButton button)
 		{
-			throw new NotImplementedException ();
+			var tb = (UiToolBar)this;
+			var b = (Xwt.Button) button;
+			b.WidthRequest = tb.ButtonSize.Width;
+			b.HeightRequest = tb.ButtonSize.Height;
+			Items.Add (b);
 		}
 	}
 }
