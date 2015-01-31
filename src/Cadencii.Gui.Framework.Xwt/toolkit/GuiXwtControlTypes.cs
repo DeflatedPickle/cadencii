@@ -117,7 +117,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class ToolStripContainerBase : Xwt.Widget
+	public partial class ToolStripContainerBase : FlowLayoutPanelImpl
 	{
 	}
 

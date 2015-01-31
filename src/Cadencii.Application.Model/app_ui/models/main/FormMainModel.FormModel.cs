@@ -318,30 +318,26 @@ namespace Cadencii.Application.Models
 				parent.form.rebar.AddControl (toolBarMeasure);
 				*/
 				// bandFile
-				if (toolBarFile.Buttons.Count > 0) {
-					bandFile.IdealWidth =
-					toolBarFile.Buttons [toolBarFile.Buttons.Count - 1].Rectangle.Right + chevron_width;
+				if (toolBarFile.Buttons.Any ()) {
+					bandFile.IdealWidth = toolBarFile.Buttons.Last ().Rectangle.Right + chevron_width;
 				}
 				bandFile.BandSize = EditorManager.editorConfig.BandSizeFile;
 				bandFile.NewRow = EditorManager.editorConfig.BandNewRowFile;
 				// bandPosition
-				if (toolBarPosition.Buttons.Count > 0) {
-					bandPosition.IdealWidth =
-					toolBarPosition.Buttons [toolBarPosition.Buttons.Count - 1].Rectangle.Right + chevron_width;
+				if (toolBarPosition.Buttons.Any ()) {
+					bandPosition.IdealWidth = toolBarPosition.Buttons.Last ().Rectangle.Right + chevron_width;
 				}
 				bandPosition.BandSize = EditorManager.editorConfig.BandSizePosition;
 				bandPosition.NewRow = EditorManager.editorConfig.BandNewRowPosition;
 				// bandMeasure
-				if (toolBarMeasure.Buttons.Count > 0) {
-					bandMeasure.IdealWidth =
-					toolBarMeasure.Buttons [toolBarMeasure.Buttons.Count - 1].Rectangle.Right + chevron_width;
+				if (toolBarMeasure.Buttons.Any ()) {
+					bandMeasure.IdealWidth = toolBarMeasure.Buttons.Last ().Rectangle.Right + chevron_width;
 				}
 				bandMeasure.BandSize = EditorManager.editorConfig.BandSizeMeasure;
 				bandMeasure.NewRow = EditorManager.editorConfig.BandNewRowMeasure;
 				// bandTool
-				if (toolBarTool.Buttons.Count > 0) {
-					bandTool.IdealWidth =
-					toolBarTool.Buttons [toolBarTool.Buttons.Count - 1].Rectangle.Right + chevron_width;
+				if (toolBarTool.Buttons.Any ()) {
+					bandTool.IdealWidth = toolBarTool.Buttons.Last ().Rectangle.Right + chevron_width;
 				}
 				bandTool.BandSize = EditorManager.editorConfig.BandSizeTool;
 				bandTool.NewRow = EditorManager.editorConfig.BandNewRowTool;

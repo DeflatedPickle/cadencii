@@ -364,6 +364,7 @@
 		            ShowToolTips = "true"
 		            Size = "(944, 26)"
 		            TabIndex = "25"
+		            TextAlign = "Right"
 		            Wrappable = "false"
 		            >
 	            <_Buttons>
@@ -388,10 +389,9 @@
 			            ToolTipText = "Save"
 			            />
 
-			        <UiToolBarButton id="toolBarButton1"
+			        <UiToolBarSeparatorButton id="toolBarButton1"
 
 			            Name = "toolBarButton1"
-			            Style = "Separator"
 			            />
 
 			        <UiToolBarButton id="stripBtnCut"
@@ -415,10 +415,9 @@
 			            ToolTipText = "Paste"
 			            />
 
-			        <UiToolBarButton id="toolBarButton2"
+			        <UiToolBarSeparatorButton id="toolBarButton2"
 
 			            Name = "toolBarButton2"
-			            Style = "Separator"
 			            />
 
 			        <UiToolBarButton id="stripBtnUndo"
@@ -488,10 +487,9 @@
 			            ToolTipText = "Play"
 			            />
 
-			        <UiToolBarButton id="toolBarButton4"
+			        <UiToolBarSeparatorButton id="toolBarButton4"
 
 			            Name = "toolBarButton4"
-			            Style = "Separator"
 			            />
 
 			        <UiToolBarButton id="stripBtnScroll"
@@ -530,24 +528,21 @@
 			            Name = "stripDDBtnQuantizeParent"
 			            />
 
-			        <UiToolBarButton id="toolBarButton5"
+			        <UiToolBarSeparatorButton id="toolBarButton5"
 
 			            Name = "toolBarButton5"
-			            Style = "Separator"
 			            />
 
-			        <UiToolBarButton id="stripBtnStartMarker"
+			        <UiToolBarToggleButton id="stripBtnStartMarker"
 
 			            ImageIndex = "0"
 			            Name = "stripBtnStartMarker"
-			            Style = "ToggleButton"
 			            />
 
-			        <UiToolBarButton id="stripBtnEndMarker"
+			        <UiToolBarToggleButton id="stripBtnEndMarker"
 
 			            ImageIndex = "1"
 			            Name = "stripBtnEndMarker"
-			            Style = "ToggleButton"
 			            />
 	            </_Buttons>
 			</UiToolBar>
@@ -597,10 +592,9 @@
 			            ToolTipText = "Eraser"
 			            />
 
-			        <UiToolBarButton id="toolBarButton3"
+			        <UiToolBarSeparatorButton id="toolBarButton3"
 
 			            Name = "toolBarButton3"
-			            Style = "Separator"
 			            />
 
 			        <UiToolBarButton id="stripBtnGrid"

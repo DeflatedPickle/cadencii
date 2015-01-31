@@ -1694,7 +1694,7 @@ namespace Cadencii.Application.Forms
             int count = 0;
             int num_has_dialog = 0;
             foreach (var item in mPaletteTools) {
-                toolBarTool.Buttons.Add(item);
+                toolBarTool.AddButton(item);
             }
             string lang = Messaging.getLanguage();
             bool first = true;
@@ -1706,8 +1706,7 @@ namespace Cadencii.Application.Forms
                 string desc = ipt.getDescription(lang);
 
                 // toolStripPaletteTools
-                UiToolBarButton tsb = new ToolBarButtonImpl();
-                tsb.Style = Cadencii.Gui.Toolkit.ToolBarButtonStyle.ToggleButton;
+                var tsb = new ToolBarToggleButtonImpl();
                 if (icon != null) {
                     imageListTool.Images.Add(icon);
                     tsb.ImageIndex = imageListTool.Images.Count - 1;
@@ -1716,13 +1715,12 @@ namespace Cadencii.Application.Forms
                 tsb.ToolTipText = desc;
                 tsb.Tag = id;
                 if (first) {
-                    UiToolBarButton sep = new ToolBarButtonImpl();
-                    sep.Style = Cadencii.Gui.Toolkit.ToolBarButtonStyle.Separator;
-                    toolBarTool.Buttons.Add(sep);
+                    var sep = new ToolBarSeparatorButtonImpl();
+					toolBarTool.AddButton(sep);
                     first = false;
                 }
                 mPaletteTools.Add(tsb);
-                toolBarTool.Buttons.Add(tsb);
+				toolBarTool.AddButton(tsb);
 
                 // cMenuTrackSelector
 				PaletteToolMenuItem tsmi = ApplicationUIHost.Create<PaletteToolMenuItem> ();
@@ -2706,12 +2704,10 @@ namespace Cadencii.Application.Forms
             CDebug.WriteLine("FormMain#applyLanguage; Messaging.Language=" + Messaging.getLanguage());
 #endif
 #if ENABLE_SCRIPT
-            int count = toolBarTool.Buttons.Count;// toolStripTool.getComponentCount();
-            for (int i = 0; i < count; i++) {
-                Object tsi = toolBarTool.Buttons[i];// toolStripTool.getComponentAtIndex( i );
+			foreach (var tsi in toolBarTool.Buttons) {
                 if (tsi is UiToolBarButton) {
                     UiToolBarButton tsb = (UiToolBarButton)tsi;
-                    if (tsb.Style == Cadencii.Gui.Toolkit.ToolBarButtonStyle.ToggleButton && tsb.Tag != null && tsb.Tag is string) {
+					if (tsb is UiToolBarToggleButton) {
                         string id = (string)tsb.Tag;
                         if (PaletteToolServer.loadedTools.ContainsKey(id)) {
                             IPaletteTool ipt = (IPaletteTool)PaletteToolServer.loadedTools[id];
@@ -2892,13 +2888,11 @@ namespace Cadencii.Application.Forms
         {
             EditTool tool = EditorManager.SelectedTool;
 
-            int count = toolBarTool.Buttons.Count;
-            for (int i = 0; i < count; i++) {
-                Object tsi = toolBarTool.Buttons[i];
+			foreach (var tsi in toolBarTool.Buttons) {
                 if (tsi is UiToolBarButton) {
                     UiToolBarButton tsb = (UiToolBarButton)tsi;
                     Object tag = tsb.Tag;
-                    if (tsb.Style == Cadencii.Gui.Toolkit.ToolBarButtonStyle.ToggleButton && tag != null && tag is string) {
+					if (tsb is UiToolBarToggleButton) {
 #if ENABLE_SCRIPT
                         if (tool == EditTool.PALETTE_TOOL) {
                             string id = (string)tag;

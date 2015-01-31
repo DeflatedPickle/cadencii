@@ -170,6 +170,8 @@
     <Compile Include="Cadencii.Gui.Toolkit\UiNumericUpDown.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\IControlContainer.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiTrackBar.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\UiToolBarToggleButton.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\UiToolBarSeparatorButton.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

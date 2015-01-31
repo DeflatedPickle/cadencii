@@ -1542,12 +1542,10 @@ namespace Cadencii.Application.Models
 			selectTarget ();
 			#endif
 
-			int count = form.toolBarTool.Buttons.Count;
-			for (int i = 0; i < count; i++) {
-				Object item = form.toolBarTool.Buttons[i];
+			foreach (var item in form.toolBarTool.Buttons) {
 				if (item is UiToolBarButton) {
 					UiToolBarButton button = (UiToolBarButton)item;
-					if (button.Style == ToolBarButtonStyle.ToggleButton && button.Tag != null && button.Tag is string) {
+					if (button is UiToolBarToggleButton) {
 						if (((string)button.Tag).Equals(id)) {
 							button.Pushed = true;
 						} else {

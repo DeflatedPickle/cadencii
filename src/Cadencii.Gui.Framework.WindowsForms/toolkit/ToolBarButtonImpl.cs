@@ -7,13 +7,24 @@ namespace Cadencii.Gui.Toolkit
 {
 	public class ToolBarButtonImpl : System.Windows.Forms.ToolBarButton, UiToolBarButton
 	{
-		ToolBarButtonStyle UiToolBarButton.Style {
-			get { return (ToolBarButtonStyle) Style; }
-			set { Style = (System.Windows.Forms.ToolBarButtonStyle) value; }
-		}
-
 		Cadencii.Gui.Rectangle UiToolBarButton.Rectangle {
 			get { return Rectangle.ToGui (); }
+		}
+	}
+
+	public class ToolBarToggleButtonImpl : ToolBarButtonImpl, UiToolBarToggleButton
+	{
+		public ToolBarToggleButtonImpl ()
+		{
+			this.Style = System.Windows.Forms.ToolBarButtonStyle.ToggleButton;
+		}
+	}
+
+	public class ToolBarSeparatorButtonImpl : ToolBarButtonImpl, UiToolBarSeparatorButton
+	{
+		public ToolBarSeparatorButtonImpl ()
+		{
+			this.Style = System.Windows.Forms.ToolBarButtonStyle.Separator;
 		}
 	}
 }
