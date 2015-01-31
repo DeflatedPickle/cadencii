@@ -1748,7 +1748,7 @@ namespace Cadencii.Application.Models
 
 			EditorManager.InputTextBox.KeyUp += InputTextBox.mInputTextBox_KeyUp;
 			EditorManager.InputTextBox.KeyDown += InputTextBox.mInputTextBox_KeyDown;
-			EditorManager.InputTextBox.ImeModeChanged += InputTextBox.mInputTextBox_ImeModeChanged;
+			EditorManager.InputTextBox.TextChanged += InputTextBox.mInputTextBox_ImeModeChanged;
 			EditorManager.InputTextBox.ImeMode = mLastIsImeModeOn ? ImeMode.Hiragana : ImeMode.Off;
 			if (phonetic_symbol_edit_mode) {
 				EditorManager.InputTextBox.BufferText = phrase;
@@ -1775,7 +1775,7 @@ namespace Cadencii.Application.Models
 		{
 			EditorManager.InputTextBox.KeyUp -= InputTextBox.mInputTextBox_KeyUp;
 			EditorManager.InputTextBox.KeyDown -= InputTextBox.mInputTextBox_KeyDown;
-			EditorManager.InputTextBox.ImeModeChanged -= InputTextBox.mInputTextBox_ImeModeChanged;
+			EditorManager.InputTextBox.TextChanged -= InputTextBox.mInputTextBox_ImeModeChanged;
 			mLastSymbolEditMode = EditorManager.InputTextBox.IsPhoneticSymbolEditMode;
 			EditorManager.InputTextBox.Visible = false;
 			EditorManager.InputTextBox.Enabled = false;

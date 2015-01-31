@@ -81,7 +81,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler Leave;
 		event EventHandler SizeChanged;
 		event EventHandler Resize;
-		event EventHandler ImeModeChanged;
 	}
 	
 }

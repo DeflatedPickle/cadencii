@@ -105,15 +105,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		void UiControl.Invoke (Delegate e)
 		{
 			Xwt.Application.Invoke ((Action) e);
@@ -417,15 +408,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
 		}
 
 		void UiControl.Invoke (Delegate e)
@@ -733,15 +715,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		void UiControl.Invoke (Delegate e)
 		{
 			Xwt.Application.Invoke ((Action) e);
@@ -1045,15 +1018,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
 		}
 
 		void UiControl.Invoke (Delegate e)
@@ -1361,15 +1325,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		void UiControl.Invoke (Delegate e)
 		{
 			Xwt.Application.Invoke ((Action) e);
@@ -1673,15 +1628,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
 		}
 
 		void UiControl.Invoke (Delegate e)
@@ -1989,15 +1935,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		void UiControl.Invoke (Delegate e)
 		{
 			Xwt.Application.Invoke ((Action) e);
@@ -2301,15 +2238,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
 		}
 
 		void UiControl.Invoke (Delegate e)
@@ -2617,15 +2545,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		void UiControl.Invoke (Delegate e)
 		{
 			Xwt.Application.Invoke ((Action) e);
@@ -2929,15 +2848,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
 		}
 
 		void UiControl.Invoke (Delegate e)
@@ -3245,15 +3155,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		void UiControl.Invoke (Delegate e)
 		{
 			Xwt.Application.Invoke ((Action) e);
@@ -3557,15 +3458,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
 		}
 
 		void UiControl.Invoke (Delegate e)
@@ -3873,15 +3765,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		void UiControl.Invoke (Delegate e)
 		{
 			Xwt.Application.Invoke ((Action) e);
@@ -4185,15 +4068,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
 		}
 
 		void UiControl.Invoke (Delegate e)
@@ -4501,15 +4375,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		void UiControl.Invoke (Delegate e)
 		{
 			Xwt.Application.Invoke ((Action) e);
@@ -4813,15 +4678,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
 		}
 
 		void UiControl.Invoke (Delegate e)
@@ -5129,15 +4985,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		void UiControl.Invoke (Delegate e)
 		{
 			Xwt.Application.Invoke ((Action) e);
@@ -5441,15 +5288,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
 		}
 
 		void UiControl.Invoke (Delegate e)
@@ -5757,15 +5595,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		void UiControl.Invoke (Delegate e)
 		{
 			Xwt.Application.Invoke ((Action) e);
@@ -6069,15 +5898,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
 		}
 
 		void UiControl.Invoke (Delegate e)
@@ -6385,15 +6205,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		void UiControl.Invoke (Delegate e)
 		{
 			Xwt.Application.Invoke ((Action) e);
@@ -6697,15 +6508,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
 		}
 
 		void UiControl.Invoke (Delegate e)
@@ -7013,15 +6815,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		void UiControl.Invoke (Delegate e)
 		{
 			Xwt.Application.Invoke ((Action) e);
@@ -7325,15 +7118,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
 		}
 
 		void UiControl.Invoke (Delegate e)
@@ -7641,15 +7425,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		void UiControl.Invoke (Delegate e)
 		{
 			Xwt.Application.Invoke ((Action) e);
@@ -7953,15 +7728,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
 		}
 
 		void UiControl.Invoke (Delegate e)
@@ -8269,15 +8035,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		void UiControl.Invoke (Delegate e)
 		{
 			Xwt.Application.Invoke ((Action) e);
@@ -8581,15 +8338,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
 		}
 
 		void UiControl.Invoke (Delegate e)
@@ -8897,15 +8645,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		void UiControl.Invoke (Delegate e)
 		{
 			Xwt.Application.Invoke ((Action) e);
@@ -9209,15 +8948,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
 		}
 
 		void UiControl.Invoke (Delegate e)
@@ -9525,15 +9255,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
-
 		void UiControl.Invoke (Delegate e)
 		{
 			Xwt.Application.Invoke ((Action) e);
@@ -9837,15 +9558,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
 		}
 
 		void UiControl.Invoke (Delegate e)

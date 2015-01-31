@@ -61,6 +61,8 @@
     <Compile Include="toolkit\VTrackBarImpl.cs" />
     <Compile Include="toolkit\HTrackBarImpl.cs" />
     <Compile Include="toolkit\ProgressBarImpl.cs" />
+    <Compile Include="toolkit\TextBoxImpl.cs" />
+    <Compile Include="toolkit\RadioButtonImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

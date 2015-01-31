@@ -130,11 +130,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.Resize -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
-		}
-
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -288,11 +283,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.Resize += value; }
 			remove { this.Resize -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
 		}
 
 		event NKeyEventHandler UiControl.PreviewKeyDown {
@@ -450,11 +440,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.Resize -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
-		}
-
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -608,11 +593,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.Resize += value; }
 			remove { this.Resize -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
 		}
 
 		event NKeyEventHandler UiControl.PreviewKeyDown {
@@ -770,11 +750,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.Resize -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
-		}
-
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -928,11 +903,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.Resize += value; }
 			remove { this.Resize -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
 		}
 
 		event NKeyEventHandler UiControl.PreviewKeyDown {
@@ -1090,11 +1060,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.Resize -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
-		}
-
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -1248,11 +1213,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.Resize += value; }
 			remove { this.Resize -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
 		}
 
 		event NKeyEventHandler UiControl.PreviewKeyDown {
@@ -1410,11 +1370,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.Resize -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
-		}
-
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -1568,11 +1523,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.Resize += value; }
 			remove { this.Resize -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
 		}
 
 		event NKeyEventHandler UiControl.PreviewKeyDown {
@@ -1730,11 +1680,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.Resize -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
-		}
-
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -1888,11 +1833,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.Resize += value; }
 			remove { this.Resize -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
 		}
 
 		event NKeyEventHandler UiControl.PreviewKeyDown {
@@ -2050,11 +1990,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.Resize -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
-		}
-
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -2208,11 +2143,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.Resize += value; }
 			remove { this.Resize -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
 		}
 
 		event NKeyEventHandler UiControl.PreviewKeyDown {
@@ -2370,11 +2300,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.Resize -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
-		}
-
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -2528,11 +2453,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.Resize += value; }
 			remove { this.Resize -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
 		}
 
 		event NKeyEventHandler UiControl.PreviewKeyDown {
@@ -2690,11 +2610,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.Resize -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
-		}
-
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -2848,11 +2763,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.Resize += value; }
 			remove { this.Resize -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
 		}
 
 		event NKeyEventHandler UiControl.PreviewKeyDown {
@@ -3010,11 +2920,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.Resize -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
-		}
-
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -3168,11 +3073,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.Resize += value; }
 			remove { this.Resize -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
 		}
 
 		event NKeyEventHandler UiControl.PreviewKeyDown {
@@ -3330,11 +3230,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.Resize -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
-		}
-
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -3488,11 +3383,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.Resize += value; }
 			remove { this.Resize -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
 		}
 
 		event NKeyEventHandler UiControl.PreviewKeyDown {
@@ -3650,11 +3540,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.Resize -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
-		}
-
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -3808,11 +3693,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.Resize += value; }
 			remove { this.Resize -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
 		}
 
 		event NKeyEventHandler UiControl.PreviewKeyDown {
@@ -3970,11 +3850,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.Resize -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
-		}
-
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -4128,11 +4003,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.Resize += value; }
 			remove { this.Resize -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
 		}
 
 		event NKeyEventHandler UiControl.PreviewKeyDown {
@@ -4290,11 +4160,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.Resize -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
-		}
-
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -4448,11 +4313,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.Resize += value; }
 			remove { this.Resize -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
 		}
 
 		event NKeyEventHandler UiControl.PreviewKeyDown {
@@ -4610,11 +4470,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.Resize -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
-		}
-
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -4770,11 +4625,6 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.Resize -= value; }
 		}
 
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
-		}
-
 		event NKeyEventHandler UiControl.PreviewKeyDown {
 			add { this.PreviewKeyDown += (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
 			remove { this.PreviewKeyDown -= (sender, e) => value (sender, new NKeyEventArgs ((Keys) e.KeyData)); }
@@ -4928,11 +4778,6 @@ namespace Cadencii.Gui.Toolkit
 		event EventHandler UiControl.Resize {
 			add { this.Resize += value; }
 			remove { this.Resize -= value; }
-		}
-
-		event EventHandler UiControl.ImeModeChanged {
-			add { this.ImeModeChanged += value; }
-			remove { this.ImeModeChanged -= value; }
 		}
 
 		event NKeyEventHandler UiControl.PreviewKeyDown {

@@ -101,7 +101,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class TabPageBase : Xwt.NotebookTab
+	public partial class TabPageBase : FlowLayoutPanelImpl
 	{
 		protected virtual void Dispose (bool disposing)
 		{

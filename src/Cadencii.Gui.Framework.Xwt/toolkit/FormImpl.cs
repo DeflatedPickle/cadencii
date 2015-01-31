@@ -184,21 +184,15 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		Cadencii.Gui.Size UiForm.MinimumSize {
-			get { return new Size (base.MinWidth, base.MinHeight); }
+			get { return new Size ((int) base.MinWidth, (int) base.MinHeight); }
 			set {
 				base.MinWidth = value.Width;
 				base.MinHeight = value.Height;
 			}
 		}
 
-		bool UiForm.TopMost {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: maybe better be implemented, but we can live without it.
+		bool UiForm.TopMost { get; set; }
 
 		string UiForm.Text {
 			get { return window.Title; }

@@ -10,7 +10,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		int Cadencii.Gui.Toolkit.UiVScrollBar.LargeChange {
-			get { return this.PageIncrement; }
+			get { return (int) this.PageIncrement; }
 			set { this.PageIncrement = value; }
 		}
 
