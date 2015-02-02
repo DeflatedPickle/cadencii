@@ -61,15 +61,9 @@ namespace Cadencii.Application.Controls
         public PictOverviewImpl()
         {
 			DoubleBuffered = true;
-			UserPaint = true;
+			Paint += (o, e) => model.paint (e.Graphics.ToGui ());
 
 			model = new PictOverviewModel (this);
-        }
-
-		public override void OnPaint(PaintEventArgs pevent)
-        {
-            base.OnPaint(pevent);
-			model.paint (pevent.Graphics);
         }
     }
 }

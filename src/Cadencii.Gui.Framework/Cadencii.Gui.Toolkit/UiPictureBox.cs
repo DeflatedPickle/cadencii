@@ -21,11 +21,6 @@ namespace Cadencii.Gui.Toolkit
 		// it cannot be an interface member (technically it can, but it's annoying to add impl.
 		// all around) so expose it here.
 		bool DoubleBuffered { get; set; }
-
-		// custom property that accesses "Styles"
-		bool UserPaint { get; set; }
-
-		void OnPaint (PaintEventArgs e);
 	}
 }
 

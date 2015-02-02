@@ -190,7 +190,7 @@ namespace Cadencii.Application
 		{
 			Assembly a = Assembly.GetAssembly (t);
 			AssemblyFileVersionAttribute afva = (AssemblyFileVersionAttribute)Attribute.GetCustomAttribute (a, typeof(AssemblyFileVersionAttribute));
-			return a.GetName ().Name + " v" + afva.Version;
+			return a.GetName ().Name + (afva != null ? " v" + afva.Version : null);
 		}
 
 		#endregion

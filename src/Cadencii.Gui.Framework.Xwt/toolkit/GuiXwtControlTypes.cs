@@ -68,7 +68,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class PanelBase : Xwt.Frame
+	public partial class PanelBase : FlowLayoutPanelImpl
 	{
 	}
 
