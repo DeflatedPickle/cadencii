@@ -106,14 +106,14 @@ namespace Cadencii.Gui
 			return (Xwt.Drawing.Font)f.NativeFont;
 		}
 
-		public static Graphics ToGui (this Xwt.Drawing.ImageBuilder g)
+		public static Graphics ToGui (this Xwt.Drawing.Context g)
 		{
 			return new Graphics () { NativeGraphics = g };
 		}
 
-		public static Xwt.Drawing.ImageBuilder ToWF (this Graphics g)
+		public static Xwt.Drawing.Context ToWF (this Graphics g)
 		{
-			return (Xwt.Drawing.ImageBuilder) g.NativeGraphics;
+			return (Xwt.Drawing.Context) g.NativeGraphics;
 		}
 
 		/*
