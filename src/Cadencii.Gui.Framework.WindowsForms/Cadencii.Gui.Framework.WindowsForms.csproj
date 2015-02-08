@@ -56,7 +56,6 @@
     <Compile Include="toolkit\HScrollBarImpl.cs" />
     <Compile Include="toolkit\ImageListImpl.cs" />
     <Compile Include="toolkit\ListViewColumnImpl.cs" />
-    <Compile Include="toolkit\ListViewGroupImpl.cs" />
     <Compile Include="toolkit\ListViewImpl.cs" />
     <Compile Include="toolkit\ListViewItemImpl.cs" />
     <Compile Include="toolkit\MenuItemImpl.cs" />

@@ -11,7 +11,6 @@ namespace Cadencii.Gui.Toolkit
 		bool UseCompatibleStateImageBehavior { get; set; }
 		bool CheckBoxes { get; set; }
 		bool FullRowSelect { get; set; }
-		void AddRow (string[] items, bool selected);
 		View View { get; set; } 
 		IList<UiListViewColumn> Columns { get; }
 		IList SelectedIndices { get; }
@@ -19,12 +18,13 @@ namespace Cadencii.Gui.Toolkit
 		IList<UiListViewGroup> Groups { get; }
 	}
 
-	public interface UiListViewGroup
+	// OK, I'm redesigning this as a class, but keeping name as is (to not get confused as winforms class)
+	public class UiListViewGroup
 	{
-		object Native { get; set; }
-		string Header { get; set; }
-		string Name { get; set; }
-		HorizontalAlignment HeaderAlignment { get; set; }
+		public object Native { get; set; }
+		public string Header { get; set; }
+		public string Name { get; set; }
+		public HorizontalAlignment HeaderAlignment { get; set; }
 	}
 
 	public interface UiListViewColumn
@@ -42,6 +42,7 @@ namespace Cadencii.Gui.Toolkit
 		bool Checked { get; set; }
 		bool Selected { get; set; }
 		UiListViewItem GetSubItem (int i);
+		void AddSubItem (string subText);
 	}
 }
 

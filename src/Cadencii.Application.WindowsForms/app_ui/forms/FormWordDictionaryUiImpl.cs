@@ -32,17 +32,6 @@ namespace Cadencii.Application.Forms
             GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
         }
 
-        public void listDictionariesSetColumnWidth(int columnWidth)
-        {
-			listDictionaries.Columns[0].Width = columnWidth;
-        }
-
-        public int listDictionariesGetColumnWidth()
-        {
-			return listDictionaries.Columns[0].Width;
-        }
-
-
         #region FormWordDictionaryUiの実装
 
         public void setTitle(string value)
@@ -70,55 +59,11 @@ namespace Cadencii.Application.Forms
             this.Close();
         }
 
-        /*public void listDictionariesSetColumnHeader( string header )
-        {
-            if ( listDictionaries.Columns.Count < 1 )
-            {
-                listDictionaries.Columns.Add( "" );
-            }
-            listDictionaries.Columns[0].Text = header;
-        }*/
-
-        public void listDictionariesClearSelection()
-        {
-            listDictionaries.SelectedIndices.Clear();
-        }
-
-        public void listDictionariesAddRow(string value, bool selected)
-        {
-			var item = ApplicationUIHost.Create<UiListViewItem> (new string[] { value });
-            if (listDictionaries.Columns.Count < 1) {
-				listDictionaries.Columns.Add(ApplicationUIHost.Create<UiListViewColumn> ());
-            }
-            item.Selected = selected;
-            listDictionaries.Items.Add (item);
-        }
-
-        public void listDictionariesSetRowChecked(int row, bool value)
-        {
-            listDictionaries.Items[row].Checked = value;
-        }
-
         public void SetSelectedRow(int row)
         {
             for (int i = 0; i < listDictionaries.Items.Count; i++) {
 				listDictionaries.Items[i].Selected = (i == row);
             }
-        }
-
-        public void listDictionariesSetItemAt(int row, string value)
-        {
-            listDictionaries.Items[row].GetSubItem(0).Text = value;
-        }
-
-        public bool listDictionariesIsRowChecked(int row)
-        {
-            return listDictionaries.Items[row].Checked;
-        }
-
-        public string listDictionariesGetItemAt(int row)
-        {
-            return listDictionaries.Items[row].GetSubItem(0).Text;
         }
 
         public void buttonDownSetText(string value)

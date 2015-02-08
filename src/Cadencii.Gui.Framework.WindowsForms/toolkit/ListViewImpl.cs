@@ -1,4 +1,4 @@
-using System;
+ using System;
 using System.Linq;
 using Cadencii.Gui;
 using Keys = Cadencii.Gui.Toolkit.Keys;
@@ -27,11 +27,6 @@ namespace Cadencii.Gui.Toolkit
 
 		IList UiListView.SelectedIndices {
 			get { return SelectedIndices; }
-		}
-
-		void UiListView.AddRow(string[] items, bool selected)
-		{
-			WinformsExtensions.AddRow (this, items, selected);
 		}
 
 		Cadencii.Gui.Toolkit.View UiListView.View {

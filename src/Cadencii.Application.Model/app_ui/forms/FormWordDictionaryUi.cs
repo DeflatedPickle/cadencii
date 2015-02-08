@@ -105,9 +105,6 @@ namespace Cadencii.Application.Forms
         /// <param name="value">設定する文字列</param>
         [PureVirtualFunction]
         void buttonDownSetText(string value);
-
-	int listDictionariesGetColumnWidth();
-        void listDictionariesSetColumnWidth(int columnWidth);
     };
 
 }

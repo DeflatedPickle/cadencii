@@ -46,13 +46,7 @@ namespace Cadencii.Application.Forms
         /// <param name="dict">メニューアイテムの表示文字列をキーとする，メニューアイテムのフィールド名とショートカットキーのペアを格納したマップ</param>
         public FormShortcutKeysImpl(SortedDictionary<string, ValuePair<string, Keys[]>> dict, FormMainImpl main_form)
         {
-            try {
-                InitializeComponent();
-            } catch (Exception ex) {
-#if DEBUG
-                Logger.StdErr("FormShortcutKeys#.ctor; ex=" + ex);
-#endif
-            }
+            InitializeComponent();
 
 #if DEBUG
             Logger.StdOut("FormShortcutKeys#.ctor; dict.size()=" + dict.Count);

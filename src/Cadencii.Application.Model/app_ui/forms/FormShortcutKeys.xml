@@ -3,7 +3,7 @@
             AcceptButton = "#btnOK"
             AutoScaleDimensions = "(6, 12)"
             AutoScaleMode = "Font"
-            CancelButton = "btnCancel"
+            CancelButton = "#btnCancel"
             ClientSize = "(412, 438)"
             MaximizeBox = "false"
             MinimizeBox = "false"

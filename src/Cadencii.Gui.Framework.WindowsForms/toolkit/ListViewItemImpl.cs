@@ -43,6 +43,11 @@ namespace Cadencii.Gui.Toolkit
 			return new ListViewItemImpl (impl);
 		}
 
+		void UiListViewItem.AddSubItem (string subText)
+		{
+			impl.SubItems.Add (subText);
+		}
+
 		public object Native {
 			get { return impl; }
 			set { impl = (System.Windows.Forms.ListViewItem) value; }

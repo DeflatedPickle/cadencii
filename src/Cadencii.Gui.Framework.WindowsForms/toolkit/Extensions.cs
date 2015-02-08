@@ -16,18 +16,6 @@ namespace Cadencii.Gui.Toolkit
 			list.Add ((C) (object) new ToolStripMenuItemImpl (s, o, h));
 		}
 
-		public static void AddRow(this System.Windows.Forms.ListView list_view, string[] items, bool selected = false)
-		{
-			var item = new System.Windows.Forms.ListViewItem(items);
-			item.Checked = selected;
-			if (list_view.Columns.Count < items.Length) {
-				for (int i = list_view.Columns.Count; i < items.Length; i++) {
-					list_view.Columns.Add("");
-				}
-			}
-			list_view.Items.Add(item);
-		}
-
 		public static void SetColumnHeaders(this System.Windows.Forms.ListView list_view, string[] headers)
 		{
 			if (list_view.Columns.Count < headers.Length) {

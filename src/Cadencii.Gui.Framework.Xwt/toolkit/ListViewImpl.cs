@@ -1,19 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Cadencii.Gui.Toolkit
 {
 	public partial class ListViewImpl : ListViewBase, UiListView
 	{
+		public ListViewImpl ()
+		{
+			var chkbox = new Xwt.DataField<bool> ();
+			var ls = new Xwt.ListStore ();
+			var cc = new Xwt.ListViewColumn ();
+			cc.Views.Add (new Xwt.CellView () { VisibleField = chkbox });
+			base.Columns.Add (cc);
+			base.DataSource = ls;
+		}
+
 		event EventHandler UiListView.SelectedIndexChanged {
 			add { base.SelectionChanged += value; }
 			remove { base.SelectionChanged -= value; }
 		}
 
-		void UiListView.AddRow (string[] items, bool selected)
+		Dictionary<UiListViewColumn, Xwt.IDataField<string>> data_fields =
+			new Dictionary<UiListViewColumn, Xwt.IDataField<string>> ();
+
+		Xwt.IDataField<string> GetField (UiListViewColumn c)
 		{
-			throw new NotImplementedException ();
+			Xwt.IDataField<string> f;
+			if (!data_fields.TryGetValue (c, out f)) {
+				f = new Xwt.DataField<string> ();
+				data_fields [c] = f;
+			}
+			return f;
 		}
 
 		bool UiListView.UseCompatibleStateImageBehavior {
@@ -34,23 +53,17 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiListView.FullRowSelect {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// ignore. Always full row select.
+		bool UiListView.FullRowSelect { get; set; }
 
 		// ignore. There is only FormWordDictionaryUi that makes use of "List" and everything else uses "Details".
 		View UiListView.View { get; set; }
 
 		System.Collections.IList UiListView.SelectedIndices {
-			get {
-				throw new NotImplementedException ();
-			}
+			get { return base.SelectedRows; }
 		}
+
+		// Columns
 
 		ColumnCollection columns;
 
@@ -60,9 +73,9 @@ namespace Cadencii.Gui.Toolkit
 
 		class ColumnCollection : Collection<UiListViewColumn>
 		{
-			Xwt.TreeView lv;
+			Xwt.ListView lv;
 
-			public ColumnCollection (Xwt.TreeView lv)
+			public ColumnCollection (Xwt.ListView lv)
 			{
 				this.lv = lv;
 			}
@@ -103,9 +116,9 @@ namespace Cadencii.Gui.Toolkit
 
 		class GroupCollection : Collection<UiListViewGroup>
 		{
-			Xwt.TreeView lv;
+			Xwt.ListView lv;
 
-			public GroupCollection (Xwt.TreeView lv)
+			public GroupCollection (Xwt.ListView lv)
 			{
 				this.lv = lv;
 			}
@@ -143,19 +156,20 @@ namespace Cadencii.Gui.Toolkit
 
 		class ItemCollection : Collection<UiListViewItem>
 		{
-			Xwt.TreeView lv;
+			Xwt.ListView lv;
 
-			public ItemCollection (Xwt.TreeView lv)
+			public ItemCollection (Xwt.ListView lv)
 			{
 				this.lv = lv;
 			}
 
 			protected override void InsertItem (int index, UiListViewItem item)
 			{
-				if (item.Native == null)
-					item.Native = new { Selected = item.Selected, Checked = item.Checked, BackColor = item.BackColor.ToNative () };
 				base.InsertItem (index, item);
-				//lv.Items.Add (item.Native);
+				lv.DataSource.SetValue (index, 0, item.Checked);
+				lv.DataSource.SetValue (index, 1, item.Text);
+				if (item.Selected)
+					lv.SelectRow (index);
 			}
 
 			protected override void ClearItems ()

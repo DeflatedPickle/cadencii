@@ -29,12 +29,12 @@ namespace Cadencii.Application.Forms
         private static int mWidth = 327;
         private static int mHeight = 404;
 
-	public FormWordDictionaryController(Func<FormWordDictionaryController,FormWordDictionaryUi> createUi)
+	    public FormWordDictionaryController(Func<FormWordDictionaryController,FormWordDictionaryUi> createUi)
         {
             ui = createUi (this);
             applyLanguage();
             ui.setSize(mWidth, mHeight);
-            ui.listDictionariesSetColumnWidth(mColumnWidth);
+			ui.listDictionaries.Columns[0].Width = mColumnWidth;
         }
 
 
@@ -110,7 +110,7 @@ namespace Cadencii.Application.Forms
 
         public void formClosing()
         {
-            mColumnWidth = ui.listDictionariesGetColumnWidth();
+			mColumnWidth = ui.listDictionaries.Columns [0].Width;
             mWidth = ui.getWidth();
             mHeight = ui.getHeight();
         }

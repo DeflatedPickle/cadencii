@@ -96,7 +96,9 @@ namespace Cadencii.Application.Forms
 				return ctrl;
 			} else {
 				var argStrings = value.TrimStart ('(').TrimEnd (')').Split (',').Select (x => x.Trim ()).ToArray ();
-				var ctor = t.GetConstructors ().First (c => c.GetParameters ().Length == argStrings.Length);
+				var ctor = t.GetConstructors ().FirstOrDefault (c => c.GetParameters ().Length == argStrings.Length);
+				if (ctor == null)
+					throw new ArgumentException (string.Format ("Constructor for {0} with {1} parameters was not found", t, argStrings.Length));
 				var argObjs = argStrings.Zip (ctor.GetParameters (), (s, pi) => Deserialize (roots, s, pi.ParameterType)).ToArray ();
 				return Activator.CreateInstance (t, argObjs);
 			}

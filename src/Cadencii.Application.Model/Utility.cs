@@ -36,7 +36,7 @@ using Cadencii.Media;
 namespace Cadencii.Application
 {
 
-    public class Utility
+    public static class Utility
     {
         private static int[] RANDOMIZE_PIT_PATTERN1 = null;
         private static int[] RANDOMIZE_PIT_PATTERN2 = null;
@@ -1115,6 +1115,22 @@ namespace Cadencii.Application
             return Messaging.getMessage(id);
         }
 
+
+		public static void AddRow(this UiListView list_view, string[] items, bool selected = false)
+		{
+			var item = ApplicationUIHost.Create<UiListViewItem>();
+			if (items != null) {
+				if (items.Length > 0)
+					item.Text = items [0];
+				for (int i = 1; i < items.Length; i++)
+					item.AddSubItem (items [i]);
+			}
+			item.Checked = selected;
+			if (list_view.Columns.Count < items.Length)
+				for (int i = list_view.Columns.Count; i < items.Length; i++)
+					list_view.Columns.Add (ApplicationUIHost.Create<UiListViewColumn> ());
+			list_view.Items.Add(item);
+		}
     }
 
 }
