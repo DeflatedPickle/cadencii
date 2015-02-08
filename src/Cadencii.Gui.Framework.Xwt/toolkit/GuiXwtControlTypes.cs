@@ -17,7 +17,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class ContainerControlBase : Xwt.Frame
+	public partial class ContainerControlBase : AbsoluteLayoutBase
 	{
 		protected virtual void Dispose (bool disposing)
 		{
@@ -32,7 +32,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class FormBase : FlowLayoutPanelImpl
+	public partial class FormBase : AbsoluteLayoutBase
 	{
 	}
 
@@ -68,7 +68,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class PanelBase : FlowLayoutPanelImpl
+	public partial class PanelBase : AbsoluteLayoutBase
 	{
 	}
 
@@ -101,7 +101,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class TabPageBase : FlowLayoutPanelImpl
+	public partial class TabPageBase : AbsoluteLayoutBase
 	{
 	}
 
@@ -117,7 +117,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class ToolStripContainerBase : FlowLayoutPanelImpl
+	public partial class ToolStripContainerBase : Xwt.Canvas
 	{
 	}
 
@@ -129,11 +129,26 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class UserControlBase : FlowLayoutPanelImpl
+	public partial class UserControlBase : AbsoluteLayoutBase
 	{
 	}
 
 	public partial class VScrollBarBase : Xwt.VScrollbar
 	{
+	}
+
+	public abstract class AbsoluteLayoutBase : Xwt.Canvas, IControlContainer
+	{
+		#region IControlContainer implementation
+		public void AddControl (UiControl control)
+		{
+			base.AddChild ((Xwt.Widget)control, control.Left, control.Top);
+		}
+
+		public void RemoveControl (UiControl control)
+		{
+			base.RemoveChild ((Xwt.Widget)control);
+		}
+		#endregion
 	}
 }
