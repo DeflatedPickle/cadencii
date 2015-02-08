@@ -45,10 +45,10 @@
             UseCompatibleStateImageBehavior = "false"
             View = "Details">
 		<_Groups>
-			<ListViewGroup.WithConstructorArguments>(ListViewGroup,Left)</ListViewGroup.WithConstructorArguments>
-			<ListViewGroup.WithConstructorArguments>(ListViewGroup,Left)</ListViewGroup.WithConstructorArguments>
-			<ListViewGroup.WithConstructorArguments>(ListViewGroup,Left)</ListViewGroup.WithConstructorArguments>
-			<ListViewGroup.WithConstructorArguments>(ListViewGroup,Left)</ListViewGroup.WithConstructorArguments>
+			<UiListViewGroup Header = "ListViewGroup" HeaderAlignment = "Left" />
+			<UiListViewGroup Header = "ListViewGroup" HeaderAlignment = "Left" />
+			<UiListViewGroup Header = "ListViewGroup" HeaderAlignment = "Left" />
+			<UiListViewGroup Header = "ListViewGroup" HeaderAlignment = "Left" />
 		</_Groups>
 		<_Columns>
 			<UiListViewColumn Text="Track" Width="55" />

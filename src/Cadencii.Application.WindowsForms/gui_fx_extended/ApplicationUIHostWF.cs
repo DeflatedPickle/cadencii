@@ -137,16 +137,7 @@ namespace Cadencii.Application.Forms
 					ApplyXml (roots, c, pv, pv is System.Collections.ICollection || typeof (ICollection<RebarBand>).IsAssignableFrom (pv.GetType ()));
 				} else {
 					object obj;
-					if (c.LocalName.Contains ('.')) {
-						// special cases
-						switch (c.LocalName) {
-						case "ListViewGroup.WithConstructorArguments":
-							obj = Deserialize (roots, c.InnerText, typeof (ListViewGroup));
-							break;
-						default:
-							throw new NotImplementedException ();
-						}
-					} else if (c.LocalName == "String")
+					if (c.LocalName == "String")
 						obj = c.InnerText;
 					else
 						obj = CreateObject (c.LocalName);

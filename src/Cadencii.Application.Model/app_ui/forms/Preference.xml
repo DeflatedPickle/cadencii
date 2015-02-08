@@ -1250,6 +1250,7 @@
 	            UseCompatibleStateImageBehavior = "false"
 	            View = "Details"
 	            >
+          	<!--
             <_Groups>
 				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
 				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
@@ -1296,6 +1297,7 @@
 				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
 				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
             </_Groups>
+            -->
 	        </UiListView>
 	    </UiTabPage>
 	    <UiTabPage id="tabFile"
