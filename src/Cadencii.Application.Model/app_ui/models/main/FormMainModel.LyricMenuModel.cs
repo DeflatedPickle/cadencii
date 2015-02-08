@@ -146,9 +146,6 @@ namespace Cadencii.Application.Models
 						List<ValuePair<string, Boolean>> result = dlg.getResult();
 						SymbolTable.changeOrder(result);
 					}
-				} catch (Exception ex) {
-					Logger.write(GetType () + ".menuLyricDictionary_Click; ex=" + ex + "\n");
-					Logger.StdErr("FormMain#menuLyricDictionary_Click; ex=" + ex);
 				} finally {
 					if (dlg != null) {
 						try {

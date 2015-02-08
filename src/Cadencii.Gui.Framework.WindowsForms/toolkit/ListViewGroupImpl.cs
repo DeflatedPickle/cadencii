@@ -1,4 +1,3 @@
-#if false
 using System;
 using System.Linq;
 using Cadencii.Gui;
@@ -22,6 +21,11 @@ namespace Cadencii.Gui.Toolkit
 	public class ListViewGroupImpl : UiListViewGroup
 	{
 		System.Windows.Forms.ListViewGroup impl;
+		public ListViewGroupImpl ()
+		{
+			impl = new System.Windows.Forms.ListViewGroup ();
+		}
+
 		public ListViewGroupImpl (string header, HorizontalAlignment alignment)
 		{
 			impl = new System.Windows.Forms.ListViewGroup (header, (System.Windows.Forms.HorizontalAlignment) alignment);
@@ -29,6 +33,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public object Native {
 			get { return impl; }
+			set { impl = (System.Windows.Forms.ListViewGroup) value; }
 		}
 
 		public string Header {
@@ -39,6 +44,10 @@ namespace Cadencii.Gui.Toolkit
 			get { return impl.Name; }
 			set { impl.Name = value; }
 		}
+
+		public HorizontalAlignment HeaderAlignment {
+			get { return (HorizontalAlignment)impl.HeaderAlignment; }
+			set { impl.HeaderAlignment = (System.Windows.Forms.HorizontalAlignment)value; }
+		}
 	}
 }
-#endif

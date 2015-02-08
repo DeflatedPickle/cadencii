@@ -190,7 +190,7 @@ namespace Cadencii.Application.Forms
         private void updateList()
         {
             list.SelectedIndexChanged -= new EventHandler(list_SelectedIndexChanged);
-            list.ClearItems();
+			list.Items.Clear();
             list.SelectedIndexChanged += new EventHandler(list_SelectedIndexChanged);
             mFieldName.Clear();
 
@@ -240,14 +240,13 @@ namespace Cadencii.Application.Forms
         /// </summary>
         private void updateColor()
         {
-            int size = list.ItemCount;
-            for (int i = 0; i < size; i++) {
+			for (int i = 0; i < list.Items.Count; i++) {
                 //BListViewItem list_item = list.getItemAt( i );
                 string field_name = mFieldName[i];
-				string key_display = list.GetItem (i).GetSubItem (1).Text;
+				string key_display = list.Items [i].GetSubItem (1).Text;
                 if (key_display == "") {
                     // ショートカットキーが割り当てられていないのでスルー
-					list.GetItem (i).BackColor = Colors.White;
+					list.Items [i].BackColor = Colors.White;
                     continue;
                 }
 
@@ -270,9 +269,9 @@ namespace Cadencii.Application.Forms
 
                 // 背景色を変える
                 if (found) {
-                    list.GetItem(i).BackColor = Colors.Yellow;
+                    list.Items[i].BackColor = Colors.Yellow;
                 } else {
-                    list.GetItem(i).BackColor = Colors.White;
+                    list.Items[i].BackColor = Colors.White;
                 }
             }
         }
@@ -345,7 +344,7 @@ namespace Cadencii.Application.Forms
             }
 			int indx_row = (int) list.SelectedIndices[0];
             Keys key = (Keys)comboEditKey.Items[indx];
-			string display = list.GetItem(indx_row).GetSubItem(0).Text;
+			string display = list.Items[indx_row].GetSubItem(0).Text;
             if (!mDict.ContainsKey(display)) {
                 return;
             }
@@ -367,7 +366,7 @@ namespace Cadencii.Application.Forms
             }
             Keys[] keys = capturelist.ToArray();
             mDict[display].setValue(keys);
-			list.GetItem(indx_row).GetSubItem(1).Text = Utility.getShortcutDisplayString(keys);
+			list.Items[indx_row].GetSubItem(1).Text = Utility.getShortcutDisplayString(keys);
         }
 
         public void list_SelectedIndexChanged(Object sender, EventArgs e)
@@ -376,7 +375,7 @@ namespace Cadencii.Application.Forms
                 return;
             }
 			int indx = (int) list.SelectedIndices[0];
-			string display = list.GetItem(indx).GetSubItem(0).Text;
+			string display = list.Items[indx].GetSubItem(0).Text;
             if (!mDict.ContainsKey(display)) {
                 return;
             }

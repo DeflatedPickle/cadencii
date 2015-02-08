@@ -17,6 +17,8 @@ namespace Cadencii.Application.Forms
 {
     public interface FormWordDictionaryUi : UiForm
     {
+		UiListView listDictionaries { get; set; }
+		
         /// <summary>
         /// ウィンドウのタイトル文字列を設定します
         /// </summary>
@@ -67,80 +69,7 @@ namespace Cadencii.Application.Forms
         [PureVirtualFunction]
         void close();
 
-        /// <summary>
-        /// TODO: comment
-        /// </summary>
-        /// <returns></returns>
-        [PureVirtualFunction]
-        int listDictionariesGetSelectedRow();
-
-        /// <summary>
-        /// リストに登録されたアイテムの個数を取得します
-        /// </summary>
-        /// <returns>アイテムの個数</returns>
-        [PureVirtualFunction]
-        int listDictionariesGetItemCountRow();
-
-        /// <summary>
-        /// TODO: comment
-        /// </summary>
-        [PureVirtualFunction]
-        void listDictionariesClear();
-
-        /// <summary>
-        /// TODO: comment
-        /// </summary>
-        /// <param name="row"></param>
-        /// <param name="column"></param>
-        /// <returns></returns>
-        [PureVirtualFunction]
-        string listDictionariesGetItemAt(int row);
-
-        /// <summary>
-        /// TODO:
-        /// </summary>
-        /// <param name="row"></param>
-        /// <returns></returns>
-        [PureVirtualFunction]
-        bool listDictionariesIsRowChecked(int row);
-
-        /// <summary>
-        /// TODO:
-        /// </summary>
-        /// <param name="row"></param>
-        /// <param name="column"></param>
-        /// <param name="value"></param>
-        [PureVirtualFunction]
-        void listDictionariesSetItemAt(int row, string value);
-
-        /// <summary>
-        /// TODO:
-        /// </summary>
-        /// <param name="row"></param>
-        /// <param name="value"></param>
-        [PureVirtualFunction]
-        void listDictionariesSetRowChecked(int row, bool isChecked);
-
-        /// <summary>
-        /// TODO:
-        /// </summary>
-        /// <param name="row"></param>
-        [PureVirtualFunction]
-        void listDictionariesSetSelectedRow(int row);
-
-        /// <summary>
-        /// TODO: comment
-        /// </summary>
-        [PureVirtualFunction]
-        void listDictionariesClearSelection();
-
-        /// <summary>
-        /// TODO: comment
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="selected"></param>
-        [PureVirtualFunction]
-        void listDictionariesAddRow(string value, bool isChecked);
+		void SetSelectedRow (int index);
 
         /// <summary>
         /// 「利用可能な辞書」という意味の説明文の文字列を設定します．

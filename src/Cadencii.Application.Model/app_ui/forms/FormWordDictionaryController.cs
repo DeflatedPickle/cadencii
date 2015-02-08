@@ -47,21 +47,22 @@ namespace Cadencii.Application.Forms
 
         public void buttonDownClick()
         {
-            int index = ui.listDictionariesGetSelectedRow();
-            if (0 <= index && index + 1 < ui.listDictionariesGetItemCountRow()) {
+			var selected = ui.listDictionaries.SelectedIndices;
+			int index = selected.Count > 0 ? (int) selected [0] : -1;
+			if (0 <= index && index + 1 < ui.listDictionaries.Items.Count) {
                 try {
-                    ui.listDictionariesClear();
-                    string upper_name = ui.listDictionariesGetItemAt(index);
-                    bool upper_enabled = ui.listDictionariesIsRowChecked(index);
-                    string lower_name = ui.listDictionariesGetItemAt(index + 1);
-                    bool lower_enabled = ui.listDictionariesIsRowChecked(index + 1);
+					ui.listDictionaries.Items.Clear();
+					string upper_name = ui.listDictionaries.Items[index].Text;
+					bool upper_enabled = ui.listDictionaries.Items[index].Checked;
+					string lower_name = ui.listDictionaries.Items[index + 1].Text;
+					bool lower_enabled = ui.listDictionaries.Items[index + 1].Checked;
 
-                    ui.listDictionariesSetItemAt(index + 1, upper_name);
-                    ui.listDictionariesSetRowChecked(index + 1, upper_enabled);
-                    ui.listDictionariesSetItemAt(index, lower_name);
-                    ui.listDictionariesSetRowChecked(index, lower_enabled);
+					ui.listDictionaries.Items[index + 1].Text = upper_name;
+					ui.listDictionaries.Items[index + 1].Checked = upper_enabled;
+					ui.listDictionaries.Items[index].Text = lower_name;
+					ui.listDictionaries.Items[index].Checked = lower_enabled;
 
-                    ui.listDictionariesSetSelectedRow(index + 1);
+                    ui.SetSelectedRow(index + 1);
                 } catch (Exception ex) {
                     Logger.StdErr("FormWordDictionary#btnDown_Click; ex=" + ex);
                 }
@@ -70,21 +71,22 @@ namespace Cadencii.Application.Forms
 
         public void buttonUpClick()
         {
-            int index = ui.listDictionariesGetSelectedRow();
+			var selected = ui.listDictionaries.SelectedIndices;
+			int index = selected.Count > 0 ? (int) selected [0] : -1;
             if (index >= 1) {
                 try {
-                    ui.listDictionariesClearSelection();
-                    string upper_name = ui.listDictionariesGetItemAt(index - 1);
-                    bool upper_enabled = ui.listDictionariesIsRowChecked(index - 1);
-                    string lower_name = ui.listDictionariesGetItemAt(index);
-                    bool lower_enabled = ui.listDictionariesIsRowChecked(index);
+					ui.listDictionaries.SelectedIndices.Clear();
+					string upper_name = ui.listDictionaries.Items[index - 1].Text;
+					bool upper_enabled = ui.listDictionaries.Items[index - 1].Checked;
+					string lower_name = ui.listDictionaries.Items[index].Text;
+					bool lower_enabled = ui.listDictionaries.Items[index].Checked;
 
-                    ui.listDictionariesSetItemAt(index - 1, lower_name);
-                    ui.listDictionariesSetRowChecked(index - 1, lower_enabled);
-                    ui.listDictionariesSetItemAt(index, upper_name);
-                    ui.listDictionariesSetRowChecked(index, upper_enabled);
+					ui.listDictionaries.Items[index - 1].Text = lower_name;
+					ui.listDictionaries.Items[index - 1].Checked = lower_enabled;
+					ui.listDictionaries.Items[index].Text = upper_name;
+					ui.listDictionaries.Items[index].Checked = upper_enabled;
 
-                    ui.listDictionariesSetSelectedRow(index - 1);
+                    ui.SetSelectedRow(index - 1);
                 } catch (Exception ex) {
                     Logger.StdErr("FormWordDictionary#btnUp_Click; ex=" + ex);
                 }
@@ -98,11 +100,11 @@ namespace Cadencii.Application.Forms
 
         public void formLoad()
         {
-            ui.listDictionariesClear();
+			ui.listDictionaries.Items.Clear();
             for (int i = 0; i < SymbolTable.getCount(); i++) {
                 string name = SymbolTable.getSymbolTable(i).getName();
                 bool enabled = SymbolTable.getSymbolTable(i).isEnabled();
-                ui.listDictionariesAddRow(name, enabled);
+				ui.listDictionaries.AddRow(new string[] {name}, enabled);
             }
         }
 
@@ -156,15 +158,14 @@ namespace Cadencii.Application.Forms
         public List<ValuePair<string, Boolean>> getResult()
         {
             List<ValuePair<string, Boolean>> ret = new List<ValuePair<string, Boolean>>();
-            int count = ui.listDictionariesGetItemCountRow();
 #if DEBUG
-            Logger.StdOut("FormWordDictionary#getResult; count=" + count);
+			Logger.StdOut("FormWordDictionary#getResult; count=" + ui.listDictionaries.Items.Count);
 #endif
-            for (int i = 0; i < count; i++) {
-                string name = ui.listDictionariesGetItemAt(i);
+			for (int i = 0; i < ui.listDictionaries.Items.Count; i++) {
+				string name = ui.listDictionaries.Items[i].Text;
 
                 ret.Add(new ValuePair<string, Boolean>(
-                    ui.listDictionariesGetItemAt(i), ui.listDictionariesIsRowChecked(i)));
+					ui.listDictionaries.Items[i].Text, ui.listDictionaries.Items[i].Checked));
             }
             return ret;
         }

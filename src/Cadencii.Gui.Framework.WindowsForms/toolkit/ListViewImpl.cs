@@ -25,22 +25,8 @@ namespace Cadencii.Gui.Toolkit
 	{
 		// UiListView
 
-		void UiListView.AddItem (UiListViewItem item)
-		{
-			Items.Add ((System.Windows.Forms.ListViewItem) item.Native);
-		}
-
-		void UiListView.RemoveItemAt (int i)
-		{
-			Items.RemoveAt (i);
-		}
-
 		IList UiListView.SelectedIndices {
 			get { return SelectedIndices; }
-		}
-
-		int UiListView.ItemCount {
-			get { return Items.Count; }
 		}
 
 		void UiListView.AddRow(string[] items, bool selected)
@@ -48,24 +34,23 @@ namespace Cadencii.Gui.Toolkit
 			WinformsExtensions.AddRow (this, items, selected);
 		}
 
-		UiListViewItem UiListView.GetItem (int i)
-		{
-			return new ListViewItemImpl (Items [i]);
-		}
-		void UiListView.ClearItems ()
-		{
-			Items.Clear ();
+		Cadencii.Gui.Toolkit.View UiListView.View {
+			get { return (Cadencii.Gui.Toolkit.View) View; }
+			set { View = (System.Windows.Forms.View) value; } 
 		}
 
-		IList<UiListViewColumn> UiListView.Columns {
+		// Columns
+
+		public IList<UiListViewColumn> Columns {
 			get { return columns ?? (columns = new ColumnCollection (this)); }
 		}
 
-		Collection<UiListViewColumn> columns;
+		ColumnCollection columns;
 
 		class ColumnCollection : Collection<UiListViewColumn>
 		{
 			System.Windows.Forms.ListView lv;
+
 			public ColumnCollection (System.Windows.Forms.ListView lv)
 			{
 				this.lv = lv;
@@ -97,15 +82,90 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		/*
-		void UiListView.AddGroups (IEnumerable<UiListViewGroup> groups)
-		{
-			Groups.AddRange (groups.Select (g => (System.Windows.Forms.ListViewGroup) g.Native).ToArray ());
+		// Groups
+
+		public IList<UiListViewGroup> Groups {
+			get { return groups ?? (groups = new GroupCollection (this)); }
 		}
-		*/
-		Cadencii.Gui.Toolkit.View UiListView.View {
-			get { return (Cadencii.Gui.Toolkit.View) View; }
-			set { View = (System.Windows.Forms.View) value; } 
+
+		GroupCollection groups;
+
+		class GroupCollection : Collection<UiListViewGroup>
+		{
+			System.Windows.Forms.ListView lv;
+
+			public GroupCollection (System.Windows.Forms.ListView lv)
+			{
+				this.lv = lv;
+			}
+
+			protected override void InsertItem (int index, UiListViewGroup group)
+			{
+				if (group.Native == null)
+					group.Native = new System.Windows.Forms.ListViewGroup (group.Name, group.Header);
+				base.InsertItem (index, group);
+				lv.Groups.Add ((System.Windows.Forms.ListViewGroup) group.Native);
+			}
+
+			protected override void ClearItems ()
+			{
+				base.ClearItems ();
+				lv.Groups.Clear ();
+			}
+
+			protected override void RemoveItem (int index)
+			{
+				base.RemoveItem (index);
+				lv.Groups.RemoveAt (index);
+			}
+
+			protected override void SetItem (int index, UiListViewGroup item)
+			{
+				throw new NotSupportedException ();
+			}
+		}
+
+		// Items
+
+		public IList<UiListViewItem> Items {
+			get { return items ?? (items = new ItemCollection (this)); }
+		}
+
+		ItemCollection items;
+
+		class ItemCollection : Collection<UiListViewItem>
+		{
+			System.Windows.Forms.ListView lv;
+
+			public ItemCollection (System.Windows.Forms.ListView lv)
+			{
+				this.lv = lv;
+			}
+
+			protected override void InsertItem (int index, UiListViewItem item)
+			{
+				if (item.Native == null)
+					item.Native = new System.Windows.Forms.ListViewItem (item.Text) { Selected = item.Selected, Checked = item.Checked, BackColor = item.BackColor.ToNative () };
+				base.InsertItem (index, item);
+				lv.Items.Add ((System.Windows.Forms.ListViewItem) item.Native);
+			}
+
+			protected override void ClearItems ()
+			{
+				base.ClearItems ();
+				lv.Items.Clear ();
+			}
+
+			protected override void RemoveItem (int index)
+			{
+				base.RemoveItem (index);
+				lv.Items.RemoveAt (index);
+			}
+
+			protected override void SetItem (int index, UiListViewItem item)
+			{
+				throw new NotSupportedException ();
+			}
 		}
 	}
 }

@@ -465,7 +465,7 @@ namespace Cadencii.Application.Models
 					parent.form.mDialogMidiImportAndExport = ApplicationUIHost.Create<FormMidiImExport>();
 				}
 				var dlg = parent.form.mDialogMidiImportAndExport;
-				dlg.ListTrack.ClearItems();
+				dlg.ListTrack.Items.Clear();
 				dlg.Mode = (FormMidiMode.IMPORT);
 
 				string dir = ApplicationGlobal.appConfig.getLastUsedPathIn("mid");
@@ -708,14 +708,14 @@ namespace Cadencii.Application.Models
 					work.updateTimesigInfo();
 				}
 
-				for (int i = 0; i < dlg.ListTrack.ItemCount; i++) {
-					if (!dlg.ListTrack.GetItem(i).Checked) {
+				for (int i = 0; i < dlg.ListTrack.Items.Count; i++) {
+					if (!dlg.ListTrack.Items[i].Checked) {
 						continue;
 					}
 					if (work.Track.Count + 1 > ApplicationGlobal.MAX_NUM_TRACK) {
 						break;
 					}
-					VsqTrack work_track = new VsqTrack(dlg.ListTrack.GetItem(i).GetSubItem(1).Text, "Miku");
+					VsqTrack work_track = new VsqTrack(dlg.ListTrack.Items[i].GetSubItem(1).Text, "Miku");
 
 					// デフォルトの音声合成システムに切り替え
 					RendererKind kind = ApplicationGlobal.appConfig.DefaultSynthesizer;
@@ -884,7 +884,7 @@ namespace Cadencii.Application.Models
 					parent.form.mDialogMidiImportAndExport = ApplicationUIHost.Create<FormMidiImExport>();
 				}
 				var dlg = parent.form.mDialogMidiImportAndExport;
-				dlg.ListTrack.ClearItems();
+				dlg.ListTrack.Items.Clear();
 				for (int track = 1; track < vsq.Track.Count; track++) {
 					dlg.ListTrack.AddRow(new string[] {
 						track + "",
@@ -901,8 +901,8 @@ namespace Cadencii.Application.Models
 				}
 
 				List<int> add_track = new List<int>();
-				for (int i = 0; i < dlg.ListTrack.ItemCount; i++) {
-					if (dlg.ListTrack.GetItem(i).Checked) {
+				for (int i = 0; i < dlg.ListTrack.Items.Count; i++) {
+					if (dlg.ListTrack.Items[i].Checked) {
 						add_track.Add(i + 1);
 					}
 				}
@@ -1196,7 +1196,7 @@ namespace Cadencii.Application.Models
 					parent.form.mDialogMidiImportAndExport = ApplicationUIHost.Create<FormMidiImExport>();
 				}
 				var dlg = parent.form.mDialogMidiImportAndExport;
-				dlg.ListTrack.ClearItems();
+				dlg.ListTrack.Items.Clear();
 				VsqFileEx vsq = (VsqFileEx)MusicManager.getVsqFile().clone();
 
 				for (int i = 0; i < vsq.Track.Count; i++) {
@@ -1215,8 +1215,8 @@ namespace Cadencii.Application.Models
 						vsq.removePart(0, vsq.getPreMeasureClocks());
 					}
 					int track_count = 0;
-					for (int i = 0; i < dlg.ListTrack.ItemCount; i++) {
-						if (dlg.ListTrack.GetItem(i).Checked) {
+					for (int i = 0; i < dlg.ListTrack.Items.Count; i++) {
+						if (dlg.ListTrack.Items[i].Checked) {
 							track_count++;
 						}
 					}
@@ -1250,8 +1250,8 @@ namespace Cadencii.Application.Models
 							fs.WriteByte((byte)0x01);
 							fs.WriteByte((byte)0xe0);
 							int count = -1;
-							for (int i = 0; i < dlg.ListTrack.ItemCount; i++) {
-								if (!dlg.ListTrack.GetItem (i).Checked) {
+							for (int i = 0; i < dlg.ListTrack.Items.Count; i++) {
+								if (!dlg.ListTrack.Items [i].Checked) {
 									continue;
 								}
 								VsqTrack track = vsq.Track[i];

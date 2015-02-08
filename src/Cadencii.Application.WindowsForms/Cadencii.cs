@@ -131,7 +131,6 @@ namespace Cadencii.Application.Forms
             splashThread.TrySetApartmentState(ApartmentState.STA);
             splashThread.Start();
 #endif
-
             // EditorManagerの初期化
             EditorManager.init();
 

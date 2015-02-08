@@ -111,7 +111,16 @@ namespace Cadencii.Application.Forms
 
 		void AddToCollection (object c, object obj)
 		{
-			c.GetType ().GetMethods ().First (m => m.Name == "Add" && m.GetParameters ().First ().ParameterType.IsAssignableFrom (obj.GetType ())).Invoke (c, new object [] { obj });
+			var method = c.GetType ().GetMethods ().FirstOrDefault (m => m.Name == "Add" && m.GetParameters ().First ().ParameterType.IsAssignableFrom (obj.GetType ()));
+			if (method == null)
+				throw new Exception (string.Format ("Add method for '{0}' not found in the object of type {1}", obj.GetType (), c.GetType ()));
+			method.Invoke (c, new object [] { obj });
+		}
+
+		PropertyInfo GetPropertyFrom (Type type, string name)
+		{
+			var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
+			return type.GetProperty (name, bf | BindingFlags.DeclaredOnly) ?? type.GetProperty (name, bf) ?? type.GetProperties (bf).FirstOrDefault (p => p.Name.EndsWith ('.' + name));
 		}
 
 		void ApplyXml (Dictionary<string,object> roots, XmlElement e, object o, bool asCollection)
@@ -121,7 +130,10 @@ namespace Cadencii.Application.Forms
 			foreach (XmlElement c in e.SelectNodes ("*")) {
 				if (c.LocalName.First () == '_') {
 					// get property, can be collection ("MenuStrip.Items") or non-collection ("SplitContainer.Panel1")
-					var pv = o.GetType ().GetProperty (c.LocalName.Substring (1), bf).GetValue (o);
+					var pi = GetPropertyFrom (o.GetType (), c.LocalName.Substring (1));
+					if (pi == null)
+						throw new ArgumentException (string.Format ("Property '{0}' was not found in type {1}", c.LocalName.Substring (1), o.GetType ()));
+					var pv = pi.GetValue (o);
 					ApplyXml (roots, c, pv, pv is System.Collections.ICollection || typeof (ICollection<RebarBand>).IsAssignableFrom (pv.GetType ()));
 				} else {
 					object obj;
@@ -179,9 +191,9 @@ namespace Cadencii.Application.Forms
 					continue;
 				else {
 					var t = o.GetType ();
-					var p = t.GetProperty (a.LocalName, bf | BindingFlags.DeclaredOnly) ?? t.GetProperty (a.LocalName, bf);
+					var p = GetPropertyFrom (t, a.LocalName);
 					if (p == null)
-						throw new ArgumentException ("Property '" + a.LocalName + "' was not found");
+						throw new ArgumentException (string.Format ("Property '{0}' was not found on {1}", a.LocalName, t));
 					var v = Deserialize (roots, a.Value, p.PropertyType);
 					p.SetValue (o, v);
 				}

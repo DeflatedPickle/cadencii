@@ -23,6 +23,11 @@ namespace Cadencii.Gui.Toolkit
 	{
 		System.Windows.Forms.ListViewItem impl;
 
+		public ListViewItemImpl ()
+		{
+			impl = new System.Windows.Forms.ListViewItem ();
+		}
+
 		public ListViewItemImpl (System.Windows.Forms.ListViewItem impl)
 		{
 			this.impl = impl;
@@ -40,6 +45,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public object Native {
 			get { return impl; }
+			set { impl = (System.Windows.Forms.ListViewItem) value; }
 		}
 
 		Color UiListViewItem.BackColor {

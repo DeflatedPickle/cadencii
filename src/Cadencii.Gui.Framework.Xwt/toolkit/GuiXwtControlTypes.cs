@@ -56,7 +56,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class ListViewBase : Xwt.ListView
+	public partial class ListViewBase : Xwt.TreeView
 	{
 	}
 

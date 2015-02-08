@@ -36,7 +36,8 @@
 				Header="ListViewGroup" HeaderAlignment="Left" />
         </_Groups>
         <_Items>
-        	<UiListViewItem Text="DEFAULT_JP" Checked="true" Group="#listViewGroup3" StateImageIndex="1" />
+        	<!-- FIXME: add these: Group="#listViewGroup3" StateImageIndex="1" -->
+        	<UiListViewItem Text="DEFAULT_JP" Checked="true" />
         </_Items>
     </UiListView>
     <UiLabel id="lblAvailableDictionaries"

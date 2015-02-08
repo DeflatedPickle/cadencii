@@ -1087,16 +1087,15 @@ namespace Cadencii.Application.Forms
 
         public void copyResamplersConfig(List<string> ret)
         {
-            for (int i = 0; i < listResampler.ItemCount; i++) {
-				ret.Add((string)listResampler.GetItem(i).GetSubItem(0).Text);
+            for (int i = 0; i < listResampler.Items.Count; i++) {
+				ret.Add((string)listResampler.Items[i].GetSubItem(0).Text);
             }
         }
 
         public void setResamplersConfig(List<string> path)
         {
-            int size = listResampler.ItemCount;
-            for (int i = 0; i < size; i++) {
-                listResampler.RemoveItemAt (0);
+			for (int i = 0; i < listResampler.Items.Count; i++) {
+							listResampler.Items.RemoveAt (0);
             }
             if (path == null) {
                 return;
@@ -1213,7 +1212,7 @@ namespace Cadencii.Application.Forms
             if (sender == buttonResamplerUp) {
                 delta = -1;
             }
-            int count = listResampler.ItemCount;
+            int count = listResampler.Items.Count;
             if (listResampler.SelectedIndices.Count == 0) {
                 return;
             }
@@ -1222,34 +1221,33 @@ namespace Cadencii.Application.Forms
                 return;
             }
 
-            string sel = (string)listResampler.GetItem(index).GetSubItem (0).Text;
-            bool chk = listResampler.GetItem(index).Checked;
-            listResampler.GetItem(index).GetSubItem (0).Text = listResampler.GetItem (index + delta).GetSubItem (0).Text;
-            listResampler.GetItem(index).Checked = listResampler.GetItem (index + delta).Checked;
-            listResampler.GetItem (index + delta).GetSubItem (0).Text = sel;
-            listResampler.GetItem (index + delta).Checked = chk;
-            if (!listResampler.GetItem (index + delta).Selected) {
+            string sel = (string)listResampler.Items[index].GetSubItem (0).Text;
+            bool chk = listResampler.Items[index].Checked;
+            listResampler.Items[index].GetSubItem (0).Text = listResampler.Items [index + delta].GetSubItem (0).Text;
+            listResampler.Items[index].Checked = listResampler.Items [index + delta].Checked;
+            listResampler.Items [index + delta].GetSubItem (0).Text = sel;
+            listResampler.Items [index + delta].Checked = chk;
+            if (!listResampler.Items [index + delta].Selected) {
                 listResampler.SelectedIndices.Clear();
-                listResampler.GetItem (index + delta).Selected = true;
+                listResampler.Items [index + delta].Selected = true;
             }
         }
 
         public void buttonResamplerRemove_Click(Object sender, EventArgs e)
         {
-            int count = listResampler.ItemCount;
             if (listResampler.SelectedIndices.Count == 0) {
                 return;
             }
 			int index = (int) listResampler.SelectedIndices[0];
-            listResampler.RemoveItemAt(index);
+						listResampler.Items.RemoveAt(index);
             // 選択し直す
-            if (index >= count - 1) {
+			if (index >= listResampler.Items.Count - 1) {
                 index--;
             }
-            if (0 <= index && index < count - 1) {
-                if (!listResampler.GetItem(index).Selected) {
+			if (0 <= index && index < listResampler.Items.Count - 1) {
+                if (!listResampler.Items[index].Selected) {
                     listResampler.SelectedIndices.Clear();
-                    listResampler.GetItem(index).Selected = true;
+                    listResampler.Items[index].Selected = true;
                 }
             }
         }
@@ -1263,7 +1261,7 @@ namespace Cadencii.Application.Forms
 			if (dr == Cadencii.Gui.DialogResult.OK) {
                 string path = openUtauCore.FileName;
                 txtWavtool.Text = path;
-                if (listResampler.ItemCount == 0) {
+                if (listResampler.Items.Count == 0) {
                     string resampler = Path.Combine(PortUtil.getDirectoryName(path), "resampler.exe");
                     if (System.IO.File.Exists(resampler)) {
                         listResampler.AddRow(new string[] { resampler }, false);
@@ -1344,9 +1342,9 @@ namespace Cadencii.Application.Forms
                 m_utau_singers[index] = (SingerConfig)m_utau_singers[index + 1].clone();
                 m_utau_singers[index + 1] = buf;
                 UpdateUtausingerList();
-				if (!listSingers.GetItem(index + 1).Selected) {
+				if (!listSingers.Items[index + 1].Selected) {
                     listSingers.SelectedIndices.Clear();
-					listSingers.GetItem(index + 1).Selected = true;
+					listSingers.Items[index + 1].Selected = true;
                 }
             }
         }
@@ -1362,9 +1360,9 @@ namespace Cadencii.Application.Forms
                 m_utau_singers[index] = (SingerConfig)m_utau_singers[index - 1].clone();
                 m_utau_singers[index - 1] = buf;
                 UpdateUtausingerList();
-				if (!listSingers.GetItem(index - 1).Selected) {
+				if (!listSingers.Items[index - 1].Selected) {
                     listSingers.SelectedIndices.Clear();
-					listSingers.GetItem(index - 1).Selected = true;
+					listSingers.Items[index - 1].Selected = true;
                 }
             }
         }
@@ -1509,7 +1507,7 @@ namespace Cadencii.Application.Forms
 
         private void UpdateUtausingerList()
         {
-            listSingers.ClearItems();
+										listSingers.Items.Clear();
             for (int i = 0; i < m_utau_singers.Count; i++) {
                 m_utau_singers[i].Program = i;
                 listSingers.AddRow(

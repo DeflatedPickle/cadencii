@@ -1136,13 +1136,12 @@
 			            UseCompatibleStateImageBehavior = "false"
 			            View = "Details"
 			            >
-			        <!-- kind of nasty workaround... -->
-		            <_Cadencii.Gui.Toolkit.UiListView.Columns>
+		            <_Columns>
 					    <UiListViewColumn id="columnHeaderPath"
 					            Text = "path"
 					            Width = "280"
 					            />
-		            </_Cadencii.Gui.Toolkit.UiListView.Columns>
+		            </_Columns>
 	            </UiListView>
 			    <UiLabel id="lblResampler"
 			            AutoSize = "true"
@@ -1252,50 +1251,50 @@
 	            View = "Details"
 	            >
             <_Groups>
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
-				<ListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
+				<UiListViewGroup Header="ListViewGroup" HeaderAlignment="Left" />
             </_Groups>
 	        </UiListView>
 	    </UiTabPage>

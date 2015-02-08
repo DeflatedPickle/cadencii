@@ -74,6 +74,9 @@ namespace Cadencii.Application.Models
 					}
 				} catch (Exception ex) {
 					Logger.write (GetType () + ".menuSettingDefaultSingerStyle_Click; ex=" + ex + "\n");
+					#if DEBUG
+					throw;
+					#endif
 				} finally {
 					if (dlg != null) {
 						try {
@@ -110,6 +113,9 @@ namespace Cadencii.Application.Models
 					}
 				} catch (Exception ex) {
 					Logger.write (GetType () + ".menuSettingGrameControlerSetting_Click; ex=" + ex + "\n");
+					#if DEBUG
+					throw;
+					#endif
 				} finally {
 					if (dlg != null) {
 						try {
@@ -123,7 +129,7 @@ namespace Cadencii.Application.Models
 
 			public void RunSettingPreferenceCommand ()
 			{
-				try {
+				{
 					if (parent.form.mDialogPreference == null) {
 						parent.form.mDialogPreference = ApplicationUIHost.Create<Preference> ();
 					}
@@ -434,9 +440,6 @@ namespace Cadencii.Application.Models
 						parent.form.updateDrawObjectList ();
 						parent.form.refreshScreen ();
 					}
-				} catch (Exception ex) {
-					Logger.write (GetType () + ".menuSettingPreference_Click; ex=" + ex + "\n");
-					CDebug.WriteLine ("FormMain#menuSettingPreference_Click; ex=" + ex);
 				}
 			}
 
@@ -543,6 +546,9 @@ namespace Cadencii.Application.Models
 					}
 				} catch (Exception ex) {
 					Logger.write (GetType () + ".menuSettingShortcut_Click; ex=" + ex + "\n");
+					#if DEBUG
+					throw;
+					#endif
 				} finally {
 					if (form != null) {
 						try {
@@ -580,6 +586,9 @@ namespace Cadencii.Application.Models
 					parent.form.updateVibratoPresetMenu ();
 				} catch (Exception ex) {
 					Logger.write (GetType () + ".menuSettingVibratoPreset_Click; ex=" + ex + "\n");
+					#if DEBUG
+					throw;
+					#endif
 				} finally {
 					if (dialog != null) {
 						try {

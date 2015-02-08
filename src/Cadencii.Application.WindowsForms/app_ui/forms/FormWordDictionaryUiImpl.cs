@@ -91,53 +91,34 @@ namespace Cadencii.Application.Forms
 				listDictionaries.Columns.Add(ApplicationUIHost.Create<UiListViewColumn> ());
             }
             item.Selected = selected;
-            listDictionaries.AddItem (item);
+            listDictionaries.Items.Add (item);
         }
 
         public void listDictionariesSetRowChecked(int row, bool value)
         {
-            listDictionaries.GetItem(row).Checked = value;
+            listDictionaries.Items[row].Checked = value;
         }
 
-        public void listDictionariesSetSelectedRow(int row)
+        public void SetSelectedRow(int row)
         {
-            for (int i = 0; i < listDictionaries.ItemCount; i++) {
-				listDictionaries.GetItem(i).Selected = (i == row);
+            for (int i = 0; i < listDictionaries.Items.Count; i++) {
+				listDictionaries.Items[i].Selected = (i == row);
             }
         }
 
         public void listDictionariesSetItemAt(int row, string value)
         {
-            listDictionaries.GetItem(row).GetSubItem(0).Text = value;
+            listDictionaries.Items[row].GetSubItem(0).Text = value;
         }
 
         public bool listDictionariesIsRowChecked(int row)
         {
-            return listDictionaries.GetItem(row).Checked;
+            return listDictionaries.Items[row].Checked;
         }
 
         public string listDictionariesGetItemAt(int row)
         {
-            return listDictionaries.GetItem(row).GetSubItem(0).Text;
-        }
-
-        public int listDictionariesGetSelectedRow()
-        {
-            if (listDictionaries.SelectedIndices.Count == 0) {
-                return -1;
-            } else {
-				return (int) listDictionaries.SelectedIndices[0];
-            }
-        }
-
-        public int listDictionariesGetItemCountRow()
-        {
-            return listDictionaries.ItemCount;
-        }
-
-        public void listDictionariesClear()
-        {
-			listDictionaries.ClearItems();
+            return listDictionaries.Items[row].GetSubItem(0).Text;
         }
 
         public void buttonDownSetText(string value)
@@ -276,7 +257,7 @@ namespace Cadencii.Application.Forms
         #endregion
 
 		#pragma warning disable 0169,0649
-        private UiListView listDictionaries;
+		public UiListView listDictionaries { get; set; }
         private UiLabel lblAvailableDictionaries;
         private UiButton btnOK;
         private UiButton btnCancel;

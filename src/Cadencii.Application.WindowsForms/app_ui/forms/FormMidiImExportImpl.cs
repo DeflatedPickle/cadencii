@@ -236,16 +236,16 @@ namespace Cadencii.Application.Forms
         public void btnCheckAll_Click(Object sender, EventArgs e)
         {
 			var listTrack = (UiListView) this.listTrack;
-            for (int i = 0; i < listTrack.ItemCount; i++) {
-                listTrack.GetItem(i).Checked = true;
+            for (int i = 0; i < listTrack.Items.Count; i++) {
+                listTrack.Items[i].Checked = true;
             }
         }
 
         public void btnUnckeckAll_Click(Object sender, EventArgs e)
         {
 			var listTrack = (UiListView) this.listTrack;
-            for (int i = 0; i < listTrack.ItemCount; i++) {
-                listTrack.GetItem(i).Checked = false;
+            for (int i = 0; i < listTrack.Items.Count; i++) {
+                listTrack.Items[i].Checked = false;
             }
         }
 

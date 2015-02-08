@@ -11,26 +11,21 @@ namespace Cadencii.Gui.Toolkit
 		bool UseCompatibleStateImageBehavior { get; set; }
 		bool CheckBoxes { get; set; }
 		bool FullRowSelect { get; set; }
-		int ItemCount { get; }
-		UiListViewItem GetItem (int i);
-		void RemoveItemAt (int i);
-		void ClearItems ();
-		void AddItem (UiListViewItem item);
-		void AddRow(string[] items, bool selected);
-		//void AddGroups (IEnumerable<UiListViewGroup> groups);
+		void AddRow (string[] items, bool selected);
 		View View { get; set; } 
 		IList<UiListViewColumn> Columns { get; }
 		IList SelectedIndices { get; }
+		IList<UiListViewItem> Items { get; }
+		IList<UiListViewGroup> Groups { get; }
 	}
 
-	/*
 	public interface UiListViewGroup
 	{
-		object Native { get; }
+		object Native { get; set; }
 		string Header { get; set; }
 		string Name { get; set; }
+		HorizontalAlignment HeaderAlignment { get; set; }
 	}
-	*/
 
 	public interface UiListViewColumn
 	{
@@ -41,7 +36,7 @@ namespace Cadencii.Gui.Toolkit
 
 	public interface UiListViewItem
 	{
-		object Native { get; }
+		object Native { get; set; }
 		string Text { get; set; }
 		Color BackColor { get; set; }
 		bool Checked { get; set; }

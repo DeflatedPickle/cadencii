@@ -10,7 +10,9 @@ namespace Cadencii.Application
 		{
 			var type = new Type [] { typeof (ApplicationUIHost), typeof (UiControl) }
 				.SelectMany (t => t.Assembly.GetTypes ())
-				.First (t => t.Name == name);
+				.FirstOrDefault (t => t.Name == name);
+			if (type == null)
+				throw new Exception (string.Format ("Specified type {0} not found.", name));
 			return Create (type, args);
 		}
 
