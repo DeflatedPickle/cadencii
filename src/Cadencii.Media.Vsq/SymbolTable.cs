@@ -300,7 +300,7 @@ namespace Cadencii.Media.Vsq
             /// <param name="encoding">辞書ファイルのテキストエンコーディング</param>
             public SymbolTable(string path, bool is_udc_mode, bool enabled, string encoding)
             {
-                mDict = new SortedDictionary<string, SymbolTableEntry>();
+			var dic = new Dictionary<string, SymbolTableEntry> ();
                 mEnabled = enabled;
                 if (!System.IO.File.Exists(path)) {
                     return;
@@ -313,6 +313,8 @@ namespace Cadencii.Media.Vsq
                         return;
                     }
                     string line;
+				var sep1 = new string[] { "\t" };
+				var sep2 = new string[] { "\t\t" };
                     while ((line = sr.ReadLine()) != null) {
                         if (line.StartsWith("//")) {
                             continue;
@@ -321,14 +323,14 @@ namespace Cadencii.Media.Vsq
                         string word = "";
                         string symbol = "";
                         if (is_udc_mode) {
-                            string[] spl = PortUtil.splitString(line, new string[] { "\t" }, 2, true);
+                            string[] spl = PortUtil.splitString(line, sep1, 2, true);
                             if (spl.Length >= 2) {
                                 key = spl[0].ToLower();
                                 word = key;
                                 symbol = spl[1];
                             }
                         } else {
-                            string[] spl = PortUtil.splitString(line, new string[] { "\t\t" }, 2, true);
+                            string[] spl = PortUtil.splitString(line, sep2, 2, true);
                             if (spl.Length >= 2) {
                                 string[] spl_word = PortUtil.splitString(spl[0], '\t');
                                 mMaxDivisions = Math.Max(spl_word.Length, mMaxDivisions);
@@ -338,8 +340,8 @@ namespace Cadencii.Media.Vsq
                             }
                         }
                         if (!key.Equals("")) {
-                            if (!mDict.ContainsKey(key)) {
-                                mDict[key] = new SymbolTableEntry(word, symbol);
+                            if (!dic.ContainsKey(key)) {
+                                dic[key] = new SymbolTableEntry(word, symbol);
                             }
                         }
                     }
@@ -354,6 +356,7 @@ namespace Cadencii.Media.Vsq
                         }
                     }
                 }
+			mDict = new SortedDictionary<string, SymbolTableEntry> (dic);
             }
 
             /// <summary>
