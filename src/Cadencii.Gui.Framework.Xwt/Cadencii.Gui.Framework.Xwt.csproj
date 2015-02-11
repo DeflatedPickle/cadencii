@@ -67,6 +67,8 @@
     <Compile Include="toolkit\ToolBarButtonImpl.cs" />
     <Compile Include="toolkit\PictureBoxImpl.cs" />
     <Compile Include="toolkit\ListViewImpl.cs" />
+    <Compile Include="toolkit\ListViewColumnImpl.cs" />
+    <Compile Include="toolkit\ListViewItemImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
