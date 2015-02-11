@@ -43,7 +43,6 @@
     <Compile Include="Cadencii.Gui.Toolkit\AnchorStyles.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\AutoScaleMode.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\BorderStyle.cs" />
-    <Compile Include="Cadencii.Gui.Toolkit\CheckState.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\ColorDepth.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\DockStyle.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\DragDropEffects.cs" />
@@ -65,14 +64,11 @@
     <Compile Include="Cadencii.Gui.Toolkit\PaintEventArgs.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\PictureBoxSizeMode.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\TextFormatFlags.cs" />
-    <Compile Include="Cadencii.Gui.Toolkit\TextImageRelation.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\TickStyle.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\ToolBarAppearance.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\ToolBarButtonClickEventArgs.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\ToolBarButtonStyle.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\ToolBarTextAlign.cs" />
-    <Compile Include="Cadencii.Gui.Toolkit\ToolStripItemDisplayStyle.cs" />
-    <Compile Include="Cadencii.Gui.Toolkit\ToolStripItemImageScaling.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\ToolStripRenderMode.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiComponent.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiContextMenu.cs" />

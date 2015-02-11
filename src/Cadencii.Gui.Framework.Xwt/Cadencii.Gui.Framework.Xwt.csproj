@@ -71,6 +71,7 @@
     <Compile Include="toolkit\ListViewItemImpl.cs" />
     <Compile Include="toolkit\PanelImpl.cs" />
     <Compile Include="toolkit\MenuStripImpl.cs" />
+    <Compile Include="toolkit\ToolStripMenuItemImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

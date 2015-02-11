@@ -2210,11 +2210,7 @@ namespace Cadencii.Application.Forms
                         Keys[] keys = dict[item_name];
                         Keys shortcut = keys.Aggregate(Keys.None, (seed, key) => seed | key);
 
-                        if (shortcut == Keys.Delete) {
-                            menu.ShortcutKeyDisplayString = "Delete";
-                            menu.ShortcutKeys = Keys.None;
-                            mSpecialShortcutHolders.Add(new SpecialShortcutHolder(shortcut, menu));
-                        } else {
+                        {
                             try {
                                 menu.ShortcutKeyDisplayString = "";
 						menu.ShortcutKeys = shortcut;

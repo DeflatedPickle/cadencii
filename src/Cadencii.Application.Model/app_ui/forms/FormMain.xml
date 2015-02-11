@@ -41,47 +41,33 @@
             <_Items>
 
 		        <UiToolStripMenuItem id="menuFile"
-		            DisplayStyle = "Text"
-		            ImageScaling = "None"
 		            Name = "menuFile"
 		            Size = "(57, 22)"
 		            Text = "File(&amp;F)"
 		            >
 		            <_DropDownItems>
 				        <UiToolStripMenuItem id="menuFileNew"
-
-				            DisplayStyle = "Text"
 				            Name = "menuFileNew"
 				            Size = "(270, 22)"
 				            Text = "New(N)"
-				            TextImageRelation = "Overlay"
 				            />
 
 				        <UiToolStripMenuItem id="menuFileOpen"
-
-				            DisplayStyle = "Text"
 				            Name = "menuFileOpen"
 				            Size = "(270, 22)"
 				            Text = "Open(&amp;O)"
-				            TextImageRelation = "Overlay"
 				            />
 
 				        <UiToolStripMenuItem id="menuFileSave"
-
-				            DisplayStyle = "Text"
 				            Name = "menuFileSave"
 				            Size = "(270, 22)"
 				            Text = "Save(&amp;S)"
-				            TextImageRelation = "Overlay"
 				            />
 
 				        <UiToolStripMenuItem id="menuFileSaveNamed"
-
-				            DisplayStyle = "Text"
 				            Name = "menuFileSaveNamed"
 				            Size = "(270, 22)"
 				            Text = "Save As(&amp;A)"
-				            TextImageRelation = "Overlay"
 				            />
 
 				        <UiToolStripSeparator id="toolStripMenuItem10"
@@ -91,29 +77,21 @@
 				            />
 
 				        <UiToolStripMenuItem id="menuFileOpenVsq"
-
-				            DisplayStyle = "Text"
 				            Name = "menuFileOpenVsq"
 				            Size = "(270, 22)"
 				            Text = "Open VSQX/VSQ/Vocaloid Midi(&amp;V)"
-				            TextImageRelation = "Overlay"
 				            />
 
 				        <UiToolStripMenuItem id="menuFileOpenUst"
-
-				            DisplayStyle = "Text"
 				            Name = "menuFileOpenUst"
 				            Size = "(270, 22)"
 				            Text = "Open UTAU Project File(&amp;U)"
-				            TextImageRelation = "Overlay"
 				            />
 
 				        <UiToolStripMenuItem id="menuFileImport"
-				            DisplayStyle = "Text"
 				            Name = "menuFileImport"
 				            Size = "(270, 22)"
 				            Text = "Import(&amp;I)"
-				            TextImageRelation = "Overlay"
 				            >
 				            <_DropDownItems>
 						        <UiToolStripMenuItem id="menuFileImportVsq"
@@ -135,11 +113,9 @@
 				        </UiToolStripMenuItem>
 
 				        <UiToolStripMenuItem id="menuFileExport"
-				            DisplayStyle = "Text"
 				            Name = "menuFileExport"
 				            Size = "(270, 22)"
 				            Text = "Export(&amp;E)"
-				            TextImageRelation = "Overlay"
 				            >
 				            <_DropDownItems>
 						        <UiToolStripMenuItem id="menuFileExportWave"
@@ -189,19 +165,15 @@
 				            Size = "(267, 6)"
 				            />
 				        <UiToolStripMenuItem id="menuFileRecent"
-				            DisplayStyle = "Text"
 				            Name = "menuFileRecent"
 				            Size = "(270, 22)"
 				            Text = "Recent Files(&amp;R)"
-				            TextImageRelation = "Overlay"
 				            >
 				            <_DropDownItems>
 						        <UiToolStripMenuItem id="menuFileRecentClear"
-						            DisplayStyle = "Text"
 						            Name = "menuFileRecentClear"
 						            Size = "(141, 22)"
 						            Text = "Clear Menu"
-						            TextImageRelation = "Overlay"
 						            />
 				            </_DropDownItems>
 						</UiToolStripMenuItem>
@@ -211,11 +183,9 @@
 				            Size = "(267, 6)"
 				            />
 				        <UiToolStripMenuItem id="menuFileQuit"
-				            DisplayStyle = "Text"
 				            Name = "menuFileQuit"
 				            Size = "(270, 22)"
 				            Text = "Quit(&amp;Q)"
-				            TextImageRelation = "Overlay"
 				            />
 		            </_DropDownItems>
 		        </UiToolStripMenuItem>
@@ -311,7 +281,6 @@
 				</UiToolStripMenuItem>
 
 		        <UiToolStripMenuItem id="menuVisual"
-		            DisplayStyle = "Text"
 		            Name = "menuVisual"
 		            Size = "(66, 22)"
 		            Text = "View(&amp;V)"
@@ -319,19 +288,14 @@
 		            <_DropDownItems>
 
 				        <UiToolStripMenuItem id="menuVisualControlTrack"
-
 				            Checked = "true"
 				            CheckOnClick = "true"
-				            CheckState = "Checked"
-				            DisplayStyle = "Text"
 				            Name = "menuVisualControlTrack"
 				            Size = "(237, 22)"
 				            Text = "Control Track(&amp;C)"
 				            />
 
 				        <UiToolStripMenuItem id="menuVisualMixer"
-
-				            DisplayStyle = "Text"
 				            Name = "menuVisualMixer"
 				            Size = "(237, 22)"
 				            Text = "Mixer(&amp;X)"
@@ -415,7 +379,6 @@
 				        <UiToolStripMenuItem id="menuVisualGridline"
 
 				            CheckOnClick = "true"
-				            DisplayStyle = "Text"
 				            Name = "menuVisualGridline"
 				            Size = "(237, 22)"
 				            Text = "Grid Line(&amp;G)"
@@ -428,51 +391,39 @@
 				            />
 
 				        <UiToolStripMenuItem id="menuVisualStartMarker"
-
-				            DisplayStyle = "Text"
 				            Name = "menuVisualStartMarker"
 				            Size = "(237, 22)"
 				            Text = "Start Marker(&amp;S)"
 				            />
 
 				        <UiToolStripMenuItem id="menuVisualEndMarker"
-
-				            DisplayStyle = "Text"
 				            Name = "menuVisualEndMarker"
 				            Size = "(237, 22)"
 				            Text = "End Marker(&amp;E)"
 				            />
 
 				        <UiToolStripSeparator id="toolStripMenuItem3"
-
 				            Name = "toolStripMenuItem3"
 				            Size = "(234, 6)"
 				            />
 
 				        <UiToolStripMenuItem id="menuVisualLyrics"
-
 				            Checked = "true"
 				            CheckOnClick = "true"
-				            CheckState = "Checked"
-				            DisplayStyle = "Text"
 				            Name = "menuVisualLyrics"
 				            Size = "(237, 22)"
 				            Text = "Lyric/Phoneme(&amp;L)"
 				            />
 
 				        <UiToolStripMenuItem id="menuVisualNoteProperty"
-
 				            Checked = "true"
 				            CheckOnClick = "true"
-				            CheckState = "Checked"
-				            DisplayStyle = "Text"
 				            Name = "menuVisualNoteProperty"
 				            Size = "(237, 22)"
 				            Text = "Note Expression/Vibrato(&amp;N)"
 				            />
 
 				        <UiToolStripMenuItem id="menuVisualPitchLine"
-
 				            CheckOnClick = "true"
 				            Name = "menuVisualPitchLine"
 				            Size = "(237, 22)"

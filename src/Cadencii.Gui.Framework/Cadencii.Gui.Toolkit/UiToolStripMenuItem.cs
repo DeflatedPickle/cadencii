@@ -11,11 +11,7 @@ namespace Cadencii.Gui.Toolkit
 			set;
 		}
 
-		CheckState CheckState { get; set; }
 		string ShortcutKeyDisplayString { get; set; }
-		ToolStripItemDisplayStyle DisplayStyle { get; set; }
-		ToolStripItemImageScaling ImageScaling { get; set; }
-		TextImageRelation TextImageRelation { get; set; }
 		Keys ShortcutKeys { get; set; }
 		bool Checked { get; set; }
 		bool CheckOnClick { get; set; }

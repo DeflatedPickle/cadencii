@@ -2613,7 +2613,7 @@ namespace Cadencii.Application
 			Keys.X,
 			Keys.Y,
 			Keys.Z,
-			Keys.Delete,
+//			Keys.Delete,  // prohibit. This causes problem on shortcut string
 			Keys.Home,
 			Keys.End,
 		});
