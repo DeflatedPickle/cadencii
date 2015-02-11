@@ -5,7 +5,6 @@
             BackColor = "$SystemColors.Control"
             ClientSize = "(188, 291)"
             KeyPreview = "true"
-            MainMenuStrip = "#menuStrip"
             MaximizeBox = "false"
             Name = "FormNotePropertyUiImpl"
             ShowIcon = "false"
@@ -14,14 +13,12 @@
             Text = "Note Property"
             TopMost = "true"
             >
-    <UiMenuStrip id="menuStrip"            
-            Location = "(0, 0)"
-            Name = "menuStrip"
-            Size = "(188, 24)"
-            TabIndex = "1"
-            Text = "menuStrip1"
-            Visible = "false"
-            >
+    <_MainMenuStrip>
+      <UiMenuStrip id="menuStrip"            
+		            Name = "menuStrip"
+		            Text = "menuStrip1"
+		            Visible = "false"
+		            >
         <_Items>
             
             <UiToolStripMenuItem id="menuWindow"
@@ -41,5 +38,6 @@
 		        </_DropDownItems>
 			</UiToolStripMenuItem>
         </_Items>
-	</UiMenuStrip>
+      </UiMenuStrip>
+    </_MainMenuStrip>
 </Form>

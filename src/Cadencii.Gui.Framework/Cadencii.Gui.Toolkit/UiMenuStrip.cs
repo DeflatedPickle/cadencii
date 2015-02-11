@@ -4,8 +4,10 @@ using Cadencii.Gui;
 
 namespace Cadencii.Gui.Toolkit
 {
-	public interface UiMenuStrip : UiControl
+	public interface UiMenuStrip : UiComponent
 	{
+		object Native { get; }
+
 		ToolStripRenderMode RenderMode { get; set; }
 
 		string Text { get; set; }

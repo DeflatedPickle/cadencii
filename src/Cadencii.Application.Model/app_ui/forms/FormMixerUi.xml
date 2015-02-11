@@ -3,21 +3,18 @@
             BackColor = "$(180,180,180)"
             ClientSize = "(170, 304)"
             DoubleBuffered = "true"
-            MainMenuStrip = "#menuMain"
             MaximizeBox = "false"
             MinimizeBox = "false"
             Name = "FormMixer"
             ShowInTaskbar = "false"
             Text = "Mixer"
             >
-    <UiMenuStrip id="menuMain"
-            Location = "(0, 0)"
-            Name = "menuMain"
-            Size = "(170, 26)"
-            TabIndex = "1"
-            Text = "menuStrip1"
-            Visible = "false"
-            >
+    <_MainMenuStrip>
+      <UiMenuStrip id="menuMain"
+	            Name = "menuMain"
+	            Text = "menuStrip1"
+	            Visible = "false"
+	            >
         <_Items>
 	        <UiToolStripMenuItem id="menuVisual"
 
@@ -36,7 +33,8 @@
 	            </_DropDownItems>
             </UiToolStripMenuItem>
 		</_Items>
-	</UiMenuStrip>
+	  </UiMenuStrip>
+    </_MainMenuStrip>
 	<UiPanel id="panelSlaves"
 
             Location = "(0, 0)"

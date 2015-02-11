@@ -76,9 +76,16 @@ namespace Cadencii.Gui.Toolkit
 			set { AutoScaleMode = (System.Windows.Forms.AutoScaleMode)value; }
 		}
 
-		UiMenuStrip UiForm.MainMenuStrip {
-			get { return (UiMenuStrip)MainMenuStrip; }
-			set { MainMenuStrip = (System.Windows.Forms.MenuStrip) value.Native; }
+		// needs to hide base.
+		public new UiMenuStrip MainMenuStrip {
+			get { return (UiMenuStrip) base.MainMenuStrip; }
+			set {
+				if (base.MainMenuStrip != null && base.MainMenuStrip != value.Native)
+					Controls.Remove (base.MainMenuStrip);
+				base.MainMenuStrip = (System.Windows.Forms.MenuStrip) value.Native;
+				if (!Controls.Contains (base.MainMenuStrip))
+					Controls.Add (base.MainMenuStrip);
+			}
 		}
 
 		event EventHandler<DragEventArgs> UiForm.DragEnter {

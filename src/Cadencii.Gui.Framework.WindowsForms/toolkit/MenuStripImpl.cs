@@ -21,6 +21,10 @@ namespace Cadencii.Gui.Toolkit
 {
 	public partial class MenuStripImpl : System.Windows.Forms.MenuStrip, UiMenuStrip
 	{
+		object UiMenuStrip.Native {
+			get { return this; }
+		}
+
 		ToolStripRenderMode UiMenuStrip.RenderMode {
 			get { return (ToolStripRenderMode)RenderMode; }
 			set { RenderMode = (System.Windows.Forms.ToolStripRenderMode) value; }

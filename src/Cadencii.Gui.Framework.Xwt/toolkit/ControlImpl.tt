@@ -34,7 +34,6 @@ namespace Cadencii.Gui.Toolkit
 		"LinkLabel",
 		"ListBox",
 		"ListView",
-		"MenuStrip",
 		"NumericUpDown",
 		"Panel",
 		"PictureBox",

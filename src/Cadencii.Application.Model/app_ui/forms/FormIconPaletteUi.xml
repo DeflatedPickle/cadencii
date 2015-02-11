@@ -1,6 +1,5 @@
 ﻿<UiForm id="FormIconPalette"
             ClientSize = "(458, 342)"
-            MainMenuStrip = "#menuBar"
             MaximizeBox = "false"
             MinimizeBox = "false"
             Name = "FormIconPalette"
@@ -9,25 +8,24 @@
             StartPosition = "Manual"
             Text = "Icon Palette"
             >
-	<UiMenuStrip id="menuBar"
-            Location = "(0, 0)"
+    <_MainMenuStrip>
+		<UiMenuStrip id="menuBar"
             Name = "menuBar"
-            Size = "(458, 24)"
-            TabIndex = "0"
             Text = "bMenuBar1"
             >
-	    <_Items>
-			<UiToolStripMenuItem id="menuWindow"
-	            Name = "menuWindow"
-	            Size = "(55, 20)"
-	            Text = "Window">
-	            <_DropDownItems>
-	            	<UiToolStripMenuItem id="menuWindowHide"
-			            Name = "menuWindowHide"
-			            Size = "(93, 22)"
-			            Text = "Hide" />
-	            </_DropDownItems>
-	        </UiToolStripMenuItem>
-		</_Items>
-	</UiMenuStrip>
+		    <_Items>
+				<UiToolStripMenuItem id="menuWindow"
+		            Name = "menuWindow"
+		            Size = "(55, 20)"
+		            Text = "Window">
+		            <_DropDownItems>
+		            	<UiToolStripMenuItem id="menuWindowHide"
+				            Name = "menuWindowHide"
+				            Size = "(93, 22)"
+				            Text = "Hide" />
+		            </_DropDownItems>
+		        </UiToolStripMenuItem>
+			</_Items>
+		</UiMenuStrip>
+	</_MainMenuStrip>
 </UiForm>

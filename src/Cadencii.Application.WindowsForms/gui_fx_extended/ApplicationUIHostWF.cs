@@ -131,12 +131,21 @@ namespace Cadencii.Application.Forms
 			var root = roots.Count > 1 ? roots.Values.First (c => c is Form) : roots.Values.First ();
 			foreach (XmlElement c in e.SelectNodes ("*")) {
 				if (c.LocalName.First () == '_') {
-					// get property, can be collection ("MenuStrip.Items") or non-collection ("SplitContainer.Panel1")
 					var pi = GetPropertyFrom (o.GetType (), c.LocalName.Substring (1));
 					if (pi == null)
 						throw new ArgumentException (string.Format ("Property '{0}' was not found in type {1}", c.LocalName.Substring (1), o.GetType ()));
 					var pv = pi.GetValue (o);
-					ApplyXml (roots, c, pv, pv is System.Collections.ICollection || typeof (ICollection<RebarBand>).IsAssignableFrom (pv.GetType ()));
+					if (pv == null) {
+						// set property. "_MainMenuStrip"
+						foreach (XmlElement d in c.SelectNodes ("*")) {
+							var dec = CreateObject (d.LocalName);
+							ApplyXml (roots, d, dec, true);
+							pi.SetValue (o, dec); // should be only once though.
+						}
+					} else {
+						// get property, can be collection ("MenuStrip.Items") or non-collection ("SplitContainer.Panel1")
+						ApplyXml (roots, c, pv, pv is System.Collections.ICollection || typeof(ICollection<RebarBand>).IsAssignableFrom (pv.GetType ()));
+					}
 				} else {
 					object obj;
 					if (c.LocalName == "String")

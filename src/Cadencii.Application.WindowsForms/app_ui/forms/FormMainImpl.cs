@@ -1865,7 +1865,7 @@ namespace Cadencii.Application.Forms
                                   splitContainer1.Panel2MinSize +
 				Consts._SCROLL_WIDTH + Consts._PICT_POSITION_INDICATOR_HEIGHT + pictPianoRoll.MinimumSize.Height +
                                   rebar.Height +
-                                  menuStripMain.Height + statusStrip.Height +
+				((System.Windows.Forms.MenuStrip) menuStripMain.Native).Height + statusStrip.Height +
                                   (current.Height - client.Height) +
                                   20);
         }
