@@ -69,6 +69,7 @@
     <Compile Include="toolkit\ListViewImpl.cs" />
     <Compile Include="toolkit\ListViewColumnImpl.cs" />
     <Compile Include="toolkit\ListViewItemImpl.cs" />
+    <Compile Include="toolkit\PanelImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
