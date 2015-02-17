@@ -32,7 +32,674 @@
 	            Name = "FormMain"
 	            Text = "Cadencii"
 	            >
-    <_MainMenuStrip>
+	  <UiPanel id="PanelMain"
+		  	Dock = "Fill"
+			>
+		<UiToolStripContainer id="toolStripContainer1"
+
+	            Dock = "Fill"
+	            LeftToolStripPanelVisible = "false"
+            Location = "(0, 30)"
+	            Name = "toolStripContainer1"
+	            RightToolStripPanelVisible = "false"
+	            Size = "(955, 659)"
+	            TabIndex = "26"
+	            Text = "toolStripContainer1"
+	            TopToolStripPanelVisible = "false"
+	            >
+	        <_ContentPanel
+	            Size = "(955, 612)"
+				>
+				<UiPanel id="panel1"
+			            Location = "(15, 13)"
+			            Name = "panel1"
+			            Size = "(421, 279)"
+			            TabIndex = "24"
+			            >
+
+			        <UiPictureBox id="pictKeyLengthSplitter"
+
+			            Anchor = "Bottom,Left"
+			            BackColor = "$SystemColors.Control"
+			            BorderStyle = "Fixed3D"
+            			Cursor = "$NoMoveHoriz"
+			            Location = "(49, 263)"
+			            Margin = "(0)"
+			            Name = "pictKeyLengthSplitter"
+			            Size = "(16, 16)"
+			            TabIndex = "20"
+			            TabStop = "false"
+			            />
+
+				    <PictOverview id="panelOverview"
+
+				            Anchor = "Top,Left,Right"
+				            BackColor = "$(106,108,108)"
+				            Location = "(0, 1)"
+				            Margin = "(0)"
+				            Name = "panelOverview"
+				            Size = "(700, 45)"
+				            TabIndex = "19"
+				            TabStop = "false"
+				            />
+
+			        <UiPictureBox id="picturePositionIndicator"
+
+			            Anchor = "Top,Left,Right"
+			            BackColor = "$DarkGray"
+			            Location = "(0, 46)"
+			            Margin = "(0)"
+			            Name = "picturePositionIndicator"
+			            Size = "(700, 48)"
+			            TabIndex = "10"
+			            TabStop = "false"
+			            />
+
+				    <PictPianoRoll id="pictPianoRoll"
+
+            Anchor = "Top,Bottom,Left,Right"
+            BackColor = "$(240,240,240)"
+            Location = "(0, 94)"
+            Margin = "(0)"
+				            Name = "pictPianoRoll"
+            Size = "(405, 169)"
+				            TabIndex = "12"
+				            TabStop = "false"
+				            />
+
+			        <UiVScrollBar id="vScroll"
+
+			            Anchor = "Top,Bottom,Right"
+			            Location = "(405, 94)"
+			            Name = "vScroll"
+			            Size = "(16, 137)"
+			            TabIndex = "17"
+			            />
+
+			        <UiPictureBox id="pictureBox3"
+
+			            Anchor = "Bottom,Left"
+			            BackColor = "$(224,224,224)"
+			            Location = "(0, 263)"
+			            Margin = "(0)"
+			            Name = "pictureBox3"
+			            Size = "(49, 16)"
+			            TabIndex = "8"
+			            TabStop = "false"
+			            />
+
+			        <UiPictureBox id="pictureBox2"
+
+			            Anchor = "Bottom,Right"
+			            BackColor = "$(224,224,224)"
+			            Location = "(405, 231)"
+			            Margin = "(0)"
+			            Name = "pictureBox2"
+			            Size = "(16, 48)"
+			            TabIndex = "5"
+			            TabStop = "false"
+			            />
+
+				    <UiHScrollBar id="hScroll"
+
+				            Anchor = "Bottom,Left,Right"
+				            Location = "(65, 263)"
+				            Name = "hScroll"
+				            Size = "(257, 16)"
+				            TabIndex = "16"
+				            />
+
+			        <UiHTrackBar id="trackBar"
+
+			            Anchor = "Bottom,Right"
+			            AutoSize = "false"
+			            Location = "(322, 263)"
+			            Margin = "(0)"
+			            Maximum = "609"
+			            Minimum = "17"
+			            Name = "trackBar"
+			            Size = "(83, 16)"
+			            TabIndex = "15"
+			            TabStop = "false"
+			            TickFrequency = "100"
+			            TickStyle = "None"
+			            Value = "17"
+			            />
+
+				</UiPanel>
+		        <BSplitContainer id="splitContainerProperty"
+		            FixedPanel = "None"
+		            SplitterFixed = "false"
+		            Location = "(448, 14)"
+		            Margin = "(0)"
+		            Name = "splitContainerProperty"
+		            Orientation = "Horizontal"
+		            Panel1MinSize = "25"
+		            Panel2MinSize = "25"
+		            Size = "(112, 348)"
+		            SplitterDistance = "42"
+		            SplitterWidth = "4"
+		            TabIndex = "20"
+		            TabStop = "false"
+		            Text = "bSplitContainer1"
+		            >
+		            <_Panel1
+			            Anchor = "Top,Bottom,Left,Right"
+			            BorderColor = "$Black"
+			            Location = "(0, 0)"
+			            Margin = "(0, 0, 0, 4)"
+			            Name = "m_panel1"
+			            Size = "(42, 348)"
+			            TabIndex = "0"
+			            >
+		            </_Panel1>
+		            <_Panel2
+		            Anchor = "Top,Bottom,Left,Right"
+		            BorderColor = "$Black"
+		            Location = "(46, 0)"
+		            Margin = "(0)"
+		            Name = "m_panel2"
+		            Size = "(66, 348)"
+		            TabIndex = "1"
+		            	>
+		            </_Panel2>
+
+			        <BSplitContainer id="splitContainer2"
+			        	Dock = "Fill"
+			            FixedPanel = "Panel2"
+			            SplitterFixed = "false"
+			            Location = "(0, 345)"
+			            Margin = "(0)"
+			            Name = "splitContainer2"
+			            Orientation = "Vertical"
+			            Panel1MinSize = "25"
+			            Panel2MinSize = "25"
+			            Size = "(115, 134)"
+			            SplitterDistance = "25"
+			            SplitterWidth = "4"
+			            TabIndex = "23"
+			            TabStop = "false"
+			            Text = "bSplitContainer1"
+			            >
+			            <_Panel1
+				            Anchor = "Top,Bottom,Left,Right"
+				            BorderColor = "$Black"
+				            Location = "(0, 0)"
+				            Margin = "(0)"
+				            Name = "m_panel1"
+				            Size = "(115, 25)"
+				            TabIndex = "0"
+				            />
+			            <_Panel2
+            				Anchor = "Bottom,Left,Right"
+				            BorderColor = "(112, 112, 112)"
+				            BorderStyle = "FixedSingle"
+				            Location = "(0, 29)"
+				            Margin = "(0)"
+				            Name = "m_panel2"
+				            Size = "(115, 105)"
+				            TabIndex = "1"
+				            >
+				            <WaveformZoom id="panelWaveformZoom"
+				            	Dock = "Fill"
+				            	WaveView = "#waveView"
+				            	>
+			            		<WaveView id="waveView"
+									Anchor = "Top,Bottom,Right,Left"
+					            	BackColor = "$(212,212,212)"
+					            	Location = "(66, 0)"
+					            	Margin = "(0)"
+					            	Name = "waveView"
+					            	Size = "(355, 59)"
+					            	TabIndex = "17"
+				            		/>
+				            </WaveformZoom>
+				        </_Panel2>
+			        </BSplitContainer>
+		        </BSplitContainer>
+	        </_ContentPanel>
+			<_BottomToolStripPanel
+	            RenderMode = "System"
+	            >
+			    <UiToolStrip id="toolStripBottom"
+			            Dock = "None"
+            Location = "(15, 0)"
+			            Name = "toolStripBottom"
+			            RenderMode = "System"
+			            Size = "(347, 25)"
+			            TabIndex = "22"
+			            >
+		            <_Items>
+
+				        <UiToolStripStatusLabel id="toolStripStatusLabel1"
+
+				            Name = "toolStripStatusLabel1"
+				            Size = "(101, 20)"
+				            Text = "Game Controler"
+				            />
+
+				        <UiToolStripStatusLabel id="stripLblGameCtrlMode"
+
+				            Name = "stripLblGameCtrlMode"
+				            Size = "(57, 20)"
+				            Text = "Disabled"
+				            ToolTipText = "Game Controler"
+				            />
+
+				        <UiToolStripSeparator id="toolStripSeparator10"
+
+				            Name = "toolStripSeparator10"
+				            Size = "(6, 25)"
+				            />
+
+				        <UiToolStripStatusLabel id="toolStripStatusLabel2"
+
+				            Name = "toolStripStatusLabel2"
+				            Size = "(53, 20)"
+				            Text = "MIDI In"
+				            />
+
+				        <UiToolStripStatusLabel id="stripLblMidiIn"
+
+				            Name = "stripLblMidiIn"
+				            Size = "(57, 20)"
+				            Text = "Disabled"
+				            ToolTipText = "Midi In Device"
+				            />
+
+				        <UiToolStripSeparator id="toolStripSeparator11"
+
+				            Name = "toolStripSeparator11"
+				            Size = "(6, 25)"
+				            />
+
+				        <UiToolStripButton id="stripBtnStepSequencer"
+				            CheckOnClick = "true"
+				            ImageTransparentColor = "$Magenta"
+				            Name = "stripBtnStepSequencer"
+				            Size = "(55, 22)"
+				            Text = "Step"
+				            />
+		            </_Items>
+			    </UiToolStrip>
+			    <UiStatusStrip id="statusStrip"
+			            Dock = "None"
+            Location = "(0, 25)"
+			            Name = "statusStrip"
+			            Size = "(955, 22)"
+			            TabIndex = "25"
+			            Text = "statusStrip1"
+			            >
+			        <_Items>
+				        <UiToolStripStatusLabel id="statusLabel"
+
+				            Name = "statusLabel"
+				            Size = "(0, 17)"
+				            />
+			        </_Items>
+			    </UiStatusStrip>
+		    </_BottomToolStripPanel>
+		</UiToolStripContainer>
+
+		<!-- Size was (955,4) ... -->
+		<Rebar id="rebar"
+	            Dock = "Top"
+	            Location = "(0, 26)"
+	            Name = "rebar"
+	            Size = "(955, 60)"
+	            TabIndex = "19"
+	            ToggleDoubleClick = "true"
+	            >
+		    <UiToolBar id="toolBarFile"
+
+            Appearance = "Flat"
+            ButtonSize = "(23, 22)"
+		            Divider = "false"
+		            Dock = "None"
+		            DropDownArrows = "true"
+		            UiImageList = "#imageListFile"
+            Location = "(11, 2)"
+		            Name = "toolBarFile"
+		            ShowToolTips = "true"
+		            Size = "(944, 26)"
+		            TabIndex = "25"
+		            TextAlign = "Right"
+		            Wrappable = "false"
+		            >
+	            <_Buttons>
+			        <UiToolBarButton id="stripBtnFileNew"
+
+			            ImageIndex = "0"
+			            Name = "stripBtnFileNew"
+			            ToolTipText = "New"
+			            />
+
+			        <UiToolBarButton id="stripBtnFileOpen"
+
+			            ImageIndex = "1"
+			            Name = "stripBtnFileOpen"
+			            ToolTipText = "Open"
+			            />
+
+			        <UiToolBarButton id="stripBtnFileSave"
+
+			            ImageIndex = "2"
+			            Name = "stripBtnFileSave"
+			            ToolTipText = "Save"
+			            />
+
+			        <UiToolBarSeparatorButton id="toolBarButton1"
+
+			            Name = "toolBarButton1"
+			            />
+
+			        <UiToolBarButton id="stripBtnCut"
+
+			            ImageIndex = "3"
+			            Name = "stripBtnCut"
+			            ToolTipText = "Cut"
+			            />
+
+			        <UiToolBarButton id="stripBtnCopy"
+
+			            ImageIndex = "4"
+			            Name = "stripBtnCopy"
+			            ToolTipText = "Copy"
+			            />
+
+			        <UiToolBarButton id="stripBtnPaste"
+
+			            ImageIndex = "5"
+			            Name = "stripBtnPaste"
+			            ToolTipText = "Paste"
+			            />
+
+			        <UiToolBarSeparatorButton id="toolBarButton2"
+
+			            Name = "toolBarButton2"
+			            />
+
+			        <UiToolBarButton id="stripBtnUndo"
+
+			            ImageIndex = "6"
+			            Name = "stripBtnUndo"
+			            ToolTipText = "Undo"
+			            />
+
+			        <UiToolBarButton id="stripBtnRedo"
+
+			            ImageIndex = "7"
+			            Name = "stripBtnRedo"
+			            ToolTipText = "Redo"
+			            />
+	            </_Buttons>
+			</UiToolBar>
+
+		    <UiToolBar id="toolBarPosition"
+
+		            Appearance = "Flat"
+		            Divider = "false"
+		            Dock = "None"
+		            DropDownArrows = "true"
+		            UiImageList = "#imageListPosition"
+            Location = "(11, 32)"
+		            Name = "toolBarPosition"
+		            ShowToolTips = "true"
+		            Size = "(944, 40)"
+		            TabIndex = "25"
+		            TextAlign = "Right"
+		            Wrappable = "false"
+		            >
+	            <_Buttons>
+			        <UiToolBarButton id="stripBtnMoveTop"
+
+			            ImageIndex = "0"
+			            Name = "stripBtnMoveTop"
+			            ToolTipText = "MoveTop"
+			            />
+
+			        <UiToolBarButton id="stripBtnRewind"
+
+			            ImageIndex = "1"
+			            Name = "stripBtnRewind"
+			            ToolTipText = "Rewind"
+			            />
+
+			        <UiToolBarButton id="stripBtnForward"
+
+			            ImageIndex = "2"
+			            Name = "stripBtnForward"
+			            ToolTipText = "Forward"
+			            />
+
+			        <UiToolBarButton id="stripBtnMoveEnd"
+
+			            ImageIndex = "3"
+			            Name = "stripBtnMoveEnd"
+			            ToolTipText = "MoveEnd"
+			            />
+
+			        <UiToolBarButton id="stripBtnPlay"
+
+			            ImageIndex = "4"
+			            Name = "stripBtnPlay"
+			            ToolTipText = "Play"
+			            />
+
+			        <UiToolBarSeparatorButton id="toolBarButton4"
+
+			            Name = "toolBarButton4"
+			            />
+
+			        <UiToolBarButton id="stripBtnScroll"
+
+			            ImageIndex = "6"
+			            Name = "stripBtnScroll"
+			            />
+
+			        <UiToolBarButton id="stripBtnLoop"
+
+			            ImageIndex = "7"
+			            Name = "stripBtnLoop"
+			            />
+	            </_Buttons>
+			</UiToolBar>
+
+		    <UiToolBar id="toolBarMeasure"
+
+		            Appearance = "Flat"
+		            Divider = "false"
+		            Dock = "None"
+		            DropDownArrows = "true"
+		            UiImageList = "#imageListMeasure"
+            Location = "(11, 62)"
+		            Name = "toolBarMeasure"
+		            ShowToolTips = "true"
+		            Size = "(944, 40)"
+		            TabIndex = "25"
+		            TextAlign = "Right"
+		            Wrappable = "false"
+		            >
+	            <_Buttons>
+
+			        <UiToolBarButton id="stripDDBtnQuantizeParent"
+
+			            Name = "stripDDBtnQuantizeParent"
+			            />
+
+			        <UiToolBarSeparatorButton id="toolBarButton5"
+
+			            Name = "toolBarButton5"
+			            />
+
+			        <UiToolBarToggleButton id="stripBtnStartMarker"
+
+			            ImageIndex = "0"
+			            Name = "stripBtnStartMarker"
+			            />
+
+			        <UiToolBarToggleButton id="stripBtnEndMarker"
+
+			            ImageIndex = "1"
+			            Name = "stripBtnEndMarker"
+			            />
+	            </_Buttons>
+			</UiToolBar>
+
+		    <UiToolBar id="toolBarTool"
+
+		            Appearance = "Flat"
+		            Divider = "false"
+		            Dock = "None"
+		            DropDownArrows = "true"
+		            UiImageList = "#imageListTool"
+            Location = "(11, 92)"
+		            Name = "toolBarTool"
+		            ShowToolTips = "true"
+		            Size = "(944, 40)"
+		            TabIndex = "25"
+		            TextAlign = "Right"
+		            Wrappable = "false"
+		            >
+	            <_Buttons>
+			        <UiToolBarButton id="stripBtnPointer"
+
+			            ImageIndex = "0"
+			            Name = "stripBtnPointer"
+			            Pushed = "true"
+			            ToolTipText = "Pointer"
+			            />
+
+			        <UiToolBarButton id="stripBtnPencil"
+
+			            ImageIndex = "1"
+			            Name = "stripBtnPencil"
+			            ToolTipText = "Pencil"
+			            />
+
+			        <UiToolBarButton id="stripBtnLine"
+
+			            ImageIndex = "2"
+			            Name = "stripBtnLine"
+			            ToolTipText = "Line"
+			            />
+
+			        <UiToolBarButton id="stripBtnEraser"
+
+			            ImageIndex = "3"
+			            Name = "stripBtnEraser"
+			            ToolTipText = "Eraser"
+			            />
+
+			        <UiToolBarSeparatorButton id="toolBarButton3"
+
+			            Name = "toolBarButton3"
+			            />
+
+			        <UiToolBarButton id="stripBtnGrid"
+
+			            ImageIndex = "4"
+			            Name = "stripBtnGrid"
+			            ToolTipText = "Grid"
+			            />
+
+			        <UiToolBarButton id="stripBtnCurve"
+
+			            ImageIndex = "5"
+			            Name = "stripBtnCurve"
+			            ToolTipText = "Curve"
+			            />
+	            </_Buttons>
+		    </UiToolBar>
+
+	        <_Bands>
+		        <RebarBand id="bandFile"
+		        	BandSize = "236"
+		        	NewRow = "true"
+	            AllowVertical = "false"
+	            Child = "#toolBarFile"
+	            Header = "-1"
+	            Integral = "1"
+	            MaxHeight = "26"
+	            UseChevron = "true"
+					>
+		        </RebarBand>
+		        <RebarBand id="bandPosition"
+		        	BandSize = "234"
+		        	NewRow = "true"
+	            AllowVertical = "false"
+	            Child = "#toolBarPosition"
+	            Header = "-1"
+	            Integral = "1"
+	            MaxHeight = "26"
+	            UseChevron = "true"
+					>
+		        </RebarBand>
+		        <RebarBand id="bandMeasure"
+		        	BandSize = "714"
+		        	NewRow = "true"
+	            AllowVertical = "false"
+	            Child = "#toolBarMeasure"
+	            Header = "-1"
+	            Integral = "1"
+	            MaxHeight = "26"
+	            UseChevron = "true"
+					>
+		        </RebarBand>
+		        <RebarBand id="bandTool"
+		        	BandSize = "712"
+		        	NewRow = "true"
+	            AllowVertical = "false"
+	            Child = "#toolBarTool"
+	            Header = "-1"
+	            Integral = "1"
+	            MaxHeight = "26"
+	            UseChevron = "true"
+					>
+		        </RebarBand>
+	        </_Bands>
+
+	    </Rebar>
+
+	    <BSplitContainer id="splitContainer1"
+
+            FixedPanel = "Panel2"
+            SplitterFixed = "false"
+            Location = "(2, 2)"
+            Margin = "(0)"
+            MinimumSize = "(0, 54)"
+            Name = "splitContainer1"
+            Orientation = "Vertical"
+            Panel1MinSize = "25"
+            Panel2MinSize = "25"
+            Size = "(953, 54)"
+            SplitterDistance = "50"
+            SplitterWidth = "4"
+            TabIndex = "4"
+            TabStop = "false"
+            Text = "splitContainerEx1"
+	        >
+	        <_Panel1
+            Anchor = "Top,Bottom,Left,Right"
+            BorderColor = "$Black"
+            Location = "(0, 0)"
+            Margin = "(0)"
+            Name = "m_panel1"
+            Size = "(953, 50)"
+            TabIndex = "0"
+	        />
+	        <_Panel2
+            Anchor = "Bottom,Left,Right"
+            BorderColor = "$Black"
+            Location = "(0, 54)"
+            Margin = "(0)"
+            Name = "m_panel2"
+            Size = "(953, 25)"
+            TabIndex = "1"
+	        />
+        </BSplitContainer>
+      </UiPanel>
+      <_MainMenuStrip>
 	    <UiMenuStrip id="menuStripMain"
 	            Name = "menuStripMain"
 	            RenderMode = "System"
@@ -1142,673 +1809,6 @@
             </_Items>
           </UiMenuStrip>
       </_MainMenuStrip>
-	  <UiPanel id="PanelMain"
-		  	Dock = "Fill"
-			>
-		<UiToolStripContainer id="toolStripContainer1"
-
-	            Dock = "Fill"
-	            LeftToolStripPanelVisible = "false"
-            Location = "(0, 30)"
-	            Name = "toolStripContainer1"
-	            RightToolStripPanelVisible = "false"
-	            Size = "(955, 659)"
-	            TabIndex = "26"
-	            Text = "toolStripContainer1"
-	            TopToolStripPanelVisible = "false"
-	            >
-	        <_ContentPanel
-	            Size = "(955, 612)"
-				>
-				<UiPanel id="panel1"
-			            Location = "(15, 13)"
-			            Name = "panel1"
-			            Size = "(421, 279)"
-			            TabIndex = "24"
-			            >
-
-			        <UiPictureBox id="pictKeyLengthSplitter"
-
-			            Anchor = "Bottom,Left"
-			            BackColor = "$SystemColors.Control"
-			            BorderStyle = "Fixed3D"
-            			Cursor = "$NoMoveHoriz"
-			            Location = "(49, 263)"
-			            Margin = "(0)"
-			            Name = "pictKeyLengthSplitter"
-			            Size = "(16, 16)"
-			            TabIndex = "20"
-			            TabStop = "false"
-			            />
-
-				    <PictOverview id="panelOverview"
-
-				            Anchor = "Top,Left,Right"
-				            BackColor = "$(106,108,108)"
-				            Location = "(0, 1)"
-				            Margin = "(0)"
-				            Name = "panelOverview"
-				            Size = "(700, 45)"
-				            TabIndex = "19"
-				            TabStop = "false"
-				            />
-
-			        <UiPictureBox id="picturePositionIndicator"
-
-			            Anchor = "Top,Left,Right"
-			            BackColor = "$DarkGray"
-			            Location = "(0, 46)"
-			            Margin = "(0)"
-			            Name = "picturePositionIndicator"
-			            Size = "(700, 48)"
-			            TabIndex = "10"
-			            TabStop = "false"
-			            />
-
-				    <PictPianoRoll id="pictPianoRoll"
-
-            Anchor = "Top,Bottom,Left,Right"
-            BackColor = "$(240,240,240)"
-            Location = "(0, 94)"
-            Margin = "(0)"
-				            Name = "pictPianoRoll"
-            Size = "(405, 169)"
-				            TabIndex = "12"
-				            TabStop = "false"
-				            />
-
-			        <UiVScrollBar id="vScroll"
-
-			            Anchor = "Top,Bottom,Right"
-			            Location = "(405, 94)"
-			            Name = "vScroll"
-			            Size = "(16, 137)"
-			            TabIndex = "17"
-			            />
-
-			        <UiPictureBox id="pictureBox3"
-
-			            Anchor = "Bottom,Left"
-			            BackColor = "$(224,224,224)"
-			            Location = "(0, 263)"
-			            Margin = "(0)"
-			            Name = "pictureBox3"
-			            Size = "(49, 16)"
-			            TabIndex = "8"
-			            TabStop = "false"
-			            />
-
-			        <UiPictureBox id="pictureBox2"
-
-			            Anchor = "Bottom,Right"
-			            BackColor = "$(224,224,224)"
-			            Location = "(405, 231)"
-			            Margin = "(0)"
-			            Name = "pictureBox2"
-			            Size = "(16, 48)"
-			            TabIndex = "5"
-			            TabStop = "false"
-			            />
-
-				    <UiHScrollBar id="hScroll"
-
-				            Anchor = "Bottom,Left,Right"
-				            Location = "(65, 263)"
-				            Name = "hScroll"
-				            Size = "(257, 16)"
-				            TabIndex = "16"
-				            />
-
-			        <UiHTrackBar id="trackBar"
-
-			            Anchor = "Bottom,Right"
-			            AutoSize = "false"
-			            Location = "(322, 263)"
-			            Margin = "(0)"
-			            Maximum = "609"
-			            Minimum = "17"
-			            Name = "trackBar"
-			            Size = "(83, 16)"
-			            TabIndex = "15"
-			            TabStop = "false"
-			            TickFrequency = "100"
-			            TickStyle = "None"
-			            Value = "17"
-			            />
-
-				</UiPanel>
-		        <BSplitContainer id="splitContainerProperty"
-		            FixedPanel = "None"
-		            SplitterFixed = "false"
-		            Location = "(448, 14)"
-		            Margin = "(0)"
-		            Name = "splitContainerProperty"
-		            Orientation = "Horizontal"
-		            Panel1MinSize = "25"
-		            Panel2MinSize = "25"
-		            Size = "(112, 348)"
-		            SplitterDistance = "42"
-		            SplitterWidth = "4"
-		            TabIndex = "20"
-		            TabStop = "false"
-		            Text = "bSplitContainer1"
-		            >
-		            <_Panel1
-			            Anchor = "Top,Bottom,Left,Right"
-			            BorderColor = "$Black"
-			            Location = "(0, 0)"
-			            Margin = "(0, 0, 0, 4)"
-			            Name = "m_panel1"
-			            Size = "(42, 348)"
-			            TabIndex = "0"
-			            >
-		            </_Panel1>
-		            <_Panel2
-		            Anchor = "Top,Bottom,Left,Right"
-		            BorderColor = "$Black"
-		            Location = "(46, 0)"
-		            Margin = "(0)"
-		            Name = "m_panel2"
-		            Size = "(66, 348)"
-		            TabIndex = "1"
-		            	>
-		            </_Panel2>
-
-			        <BSplitContainer id="splitContainer2"
-			        	Dock = "Fill"
-			            FixedPanel = "Panel2"
-			            SplitterFixed = "false"
-			            Location = "(0, 345)"
-			            Margin = "(0)"
-			            Name = "splitContainer2"
-			            Orientation = "Vertical"
-			            Panel1MinSize = "25"
-			            Panel2MinSize = "25"
-			            Size = "(115, 134)"
-			            SplitterDistance = "25"
-			            SplitterWidth = "4"
-			            TabIndex = "23"
-			            TabStop = "false"
-			            Text = "bSplitContainer1"
-			            >
-			            <_Panel1
-				            Anchor = "Top,Bottom,Left,Right"
-				            BorderColor = "$Black"
-				            Location = "(0, 0)"
-				            Margin = "(0)"
-				            Name = "m_panel1"
-				            Size = "(115, 25)"
-				            TabIndex = "0"
-				            />
-			            <_Panel2
-            				Anchor = "Bottom,Left,Right"
-				            BorderColor = "(112, 112, 112)"
-				            BorderStyle = "FixedSingle"
-				            Location = "(0, 29)"
-				            Margin = "(0)"
-				            Name = "m_panel2"
-				            Size = "(115, 105)"
-				            TabIndex = "1"
-				            >
-				            <WaveformZoom id="panelWaveformZoom"
-				            	Dock = "Fill"
-				            	WaveView = "#waveView"
-				            	>
-			            		<WaveView id="waveView"
-									Anchor = "Top,Bottom,Right,Left"
-					            	BackColor = "$(212,212,212)"
-					            	Location = "(66, 0)"
-					            	Margin = "(0)"
-					            	Name = "waveView"
-					            	Size = "(355, 59)"
-					            	TabIndex = "17"
-				            		/>
-				            </WaveformZoom>
-				        </_Panel2>
-			        </BSplitContainer>
-		        </BSplitContainer>
-	        </_ContentPanel>
-			<_BottomToolStripPanel
-	            RenderMode = "System"
-	            >
-			    <UiToolStrip id="toolStripBottom"
-			            Dock = "None"
-            Location = "(15, 0)"
-			            Name = "toolStripBottom"
-			            RenderMode = "System"
-			            Size = "(347, 25)"
-			            TabIndex = "22"
-			            >
-		            <_Items>
-
-				        <UiToolStripStatusLabel id="toolStripStatusLabel1"
-
-				            Name = "toolStripStatusLabel1"
-				            Size = "(101, 20)"
-				            Text = "Game Controler"
-				            />
-
-				        <UiToolStripStatusLabel id="stripLblGameCtrlMode"
-
-				            Name = "stripLblGameCtrlMode"
-				            Size = "(57, 20)"
-				            Text = "Disabled"
-				            ToolTipText = "Game Controler"
-				            />
-
-				        <UiToolStripSeparator id="toolStripSeparator10"
-
-				            Name = "toolStripSeparator10"
-				            Size = "(6, 25)"
-				            />
-
-				        <UiToolStripStatusLabel id="toolStripStatusLabel2"
-
-				            Name = "toolStripStatusLabel2"
-				            Size = "(53, 20)"
-				            Text = "MIDI In"
-				            />
-
-				        <UiToolStripStatusLabel id="stripLblMidiIn"
-
-				            Name = "stripLblMidiIn"
-				            Size = "(57, 20)"
-				            Text = "Disabled"
-				            ToolTipText = "Midi In Device"
-				            />
-
-				        <UiToolStripSeparator id="toolStripSeparator11"
-
-				            Name = "toolStripSeparator11"
-				            Size = "(6, 25)"
-				            />
-
-				        <UiToolStripButton id="stripBtnStepSequencer"
-				            CheckOnClick = "true"
-				            ImageTransparentColor = "$Magenta"
-				            Name = "stripBtnStepSequencer"
-				            Size = "(55, 22)"
-				            Text = "Step"
-				            />
-		            </_Items>
-			    </UiToolStrip>
-			    <UiStatusStrip id="statusStrip"
-			            Dock = "None"
-            Location = "(0, 25)"
-			            Name = "statusStrip"
-			            Size = "(955, 22)"
-			            TabIndex = "25"
-			            Text = "statusStrip1"
-			            >
-			        <_Items>
-				        <UiToolStripStatusLabel id="statusLabel"
-
-				            Name = "statusLabel"
-				            Size = "(0, 17)"
-				            />
-			        </_Items>
-			    </UiStatusStrip>
-		    </_BottomToolStripPanel>
-		</UiToolStripContainer>
-
-		<!-- Size was (955,4) ... -->
-		<Rebar id="rebar"
-	            Dock = "Top"
-	            Location = "(0, 26)"
-	            Name = "rebar"
-	            Size = "(955, 60)"
-	            TabIndex = "19"
-	            ToggleDoubleClick = "true"
-	            >
-		    <UiToolBar id="toolBarFile"
-
-            Appearance = "Flat"
-            ButtonSize = "(23, 22)"
-		            Divider = "false"
-		            Dock = "None"
-		            DropDownArrows = "true"
-		            UiImageList = "#imageListFile"
-            Location = "(11, 2)"
-		            Name = "toolBarFile"
-		            ShowToolTips = "true"
-		            Size = "(944, 26)"
-		            TabIndex = "25"
-		            TextAlign = "Right"
-		            Wrappable = "false"
-		            >
-	            <_Buttons>
-			        <UiToolBarButton id="stripBtnFileNew"
-
-			            ImageIndex = "0"
-			            Name = "stripBtnFileNew"
-			            ToolTipText = "New"
-			            />
-
-			        <UiToolBarButton id="stripBtnFileOpen"
-
-			            ImageIndex = "1"
-			            Name = "stripBtnFileOpen"
-			            ToolTipText = "Open"
-			            />
-
-			        <UiToolBarButton id="stripBtnFileSave"
-
-			            ImageIndex = "2"
-			            Name = "stripBtnFileSave"
-			            ToolTipText = "Save"
-			            />
-
-			        <UiToolBarSeparatorButton id="toolBarButton1"
-
-			            Name = "toolBarButton1"
-			            />
-
-			        <UiToolBarButton id="stripBtnCut"
-
-			            ImageIndex = "3"
-			            Name = "stripBtnCut"
-			            ToolTipText = "Cut"
-			            />
-
-			        <UiToolBarButton id="stripBtnCopy"
-
-			            ImageIndex = "4"
-			            Name = "stripBtnCopy"
-			            ToolTipText = "Copy"
-			            />
-
-			        <UiToolBarButton id="stripBtnPaste"
-
-			            ImageIndex = "5"
-			            Name = "stripBtnPaste"
-			            ToolTipText = "Paste"
-			            />
-
-			        <UiToolBarSeparatorButton id="toolBarButton2"
-
-			            Name = "toolBarButton2"
-			            />
-
-			        <UiToolBarButton id="stripBtnUndo"
-
-			            ImageIndex = "6"
-			            Name = "stripBtnUndo"
-			            ToolTipText = "Undo"
-			            />
-
-			        <UiToolBarButton id="stripBtnRedo"
-
-			            ImageIndex = "7"
-			            Name = "stripBtnRedo"
-			            ToolTipText = "Redo"
-			            />
-	            </_Buttons>
-			</UiToolBar>
-
-		    <UiToolBar id="toolBarPosition"
-
-		            Appearance = "Flat"
-		            Divider = "false"
-		            Dock = "None"
-		            DropDownArrows = "true"
-		            UiImageList = "#imageListPosition"
-            Location = "(11, 32)"
-		            Name = "toolBarPosition"
-		            ShowToolTips = "true"
-		            Size = "(944, 40)"
-		            TabIndex = "25"
-		            TextAlign = "Right"
-		            Wrappable = "false"
-		            >
-	            <_Buttons>
-			        <UiToolBarButton id="stripBtnMoveTop"
-
-			            ImageIndex = "0"
-			            Name = "stripBtnMoveTop"
-			            ToolTipText = "MoveTop"
-			            />
-
-			        <UiToolBarButton id="stripBtnRewind"
-
-			            ImageIndex = "1"
-			            Name = "stripBtnRewind"
-			            ToolTipText = "Rewind"
-			            />
-
-			        <UiToolBarButton id="stripBtnForward"
-
-			            ImageIndex = "2"
-			            Name = "stripBtnForward"
-			            ToolTipText = "Forward"
-			            />
-
-			        <UiToolBarButton id="stripBtnMoveEnd"
-
-			            ImageIndex = "3"
-			            Name = "stripBtnMoveEnd"
-			            ToolTipText = "MoveEnd"
-			            />
-
-			        <UiToolBarButton id="stripBtnPlay"
-
-			            ImageIndex = "4"
-			            Name = "stripBtnPlay"
-			            ToolTipText = "Play"
-			            />
-
-			        <UiToolBarSeparatorButton id="toolBarButton4"
-
-			            Name = "toolBarButton4"
-			            />
-
-			        <UiToolBarButton id="stripBtnScroll"
-
-			            ImageIndex = "6"
-			            Name = "stripBtnScroll"
-			            />
-
-			        <UiToolBarButton id="stripBtnLoop"
-
-			            ImageIndex = "7"
-			            Name = "stripBtnLoop"
-			            />
-	            </_Buttons>
-			</UiToolBar>
-
-		    <UiToolBar id="toolBarMeasure"
-
-		            Appearance = "Flat"
-		            Divider = "false"
-		            Dock = "None"
-		            DropDownArrows = "true"
-		            UiImageList = "#imageListMeasure"
-            Location = "(11, 62)"
-		            Name = "toolBarMeasure"
-		            ShowToolTips = "true"
-		            Size = "(944, 40)"
-		            TabIndex = "25"
-		            TextAlign = "Right"
-		            Wrappable = "false"
-		            >
-	            <_Buttons>
-
-			        <UiToolBarButton id="stripDDBtnQuantizeParent"
-
-			            Name = "stripDDBtnQuantizeParent"
-			            />
-
-			        <UiToolBarSeparatorButton id="toolBarButton5"
-
-			            Name = "toolBarButton5"
-			            />
-
-			        <UiToolBarToggleButton id="stripBtnStartMarker"
-
-			            ImageIndex = "0"
-			            Name = "stripBtnStartMarker"
-			            />
-
-			        <UiToolBarToggleButton id="stripBtnEndMarker"
-
-			            ImageIndex = "1"
-			            Name = "stripBtnEndMarker"
-			            />
-	            </_Buttons>
-			</UiToolBar>
-
-		    <UiToolBar id="toolBarTool"
-
-		            Appearance = "Flat"
-		            Divider = "false"
-		            Dock = "None"
-		            DropDownArrows = "true"
-		            UiImageList = "#imageListTool"
-            Location = "(11, 92)"
-		            Name = "toolBarTool"
-		            ShowToolTips = "true"
-		            Size = "(944, 40)"
-		            TabIndex = "25"
-		            TextAlign = "Right"
-		            Wrappable = "false"
-		            >
-	            <_Buttons>
-			        <UiToolBarButton id="stripBtnPointer"
-
-			            ImageIndex = "0"
-			            Name = "stripBtnPointer"
-			            Pushed = "true"
-			            ToolTipText = "Pointer"
-			            />
-
-			        <UiToolBarButton id="stripBtnPencil"
-
-			            ImageIndex = "1"
-			            Name = "stripBtnPencil"
-			            ToolTipText = "Pencil"
-			            />
-
-			        <UiToolBarButton id="stripBtnLine"
-
-			            ImageIndex = "2"
-			            Name = "stripBtnLine"
-			            ToolTipText = "Line"
-			            />
-
-			        <UiToolBarButton id="stripBtnEraser"
-
-			            ImageIndex = "3"
-			            Name = "stripBtnEraser"
-			            ToolTipText = "Eraser"
-			            />
-
-			        <UiToolBarSeparatorButton id="toolBarButton3"
-
-			            Name = "toolBarButton3"
-			            />
-
-			        <UiToolBarButton id="stripBtnGrid"
-
-			            ImageIndex = "4"
-			            Name = "stripBtnGrid"
-			            ToolTipText = "Grid"
-			            />
-
-			        <UiToolBarButton id="stripBtnCurve"
-
-			            ImageIndex = "5"
-			            Name = "stripBtnCurve"
-			            ToolTipText = "Curve"
-			            />
-	            </_Buttons>
-		    </UiToolBar>
-
-	        <_Bands>
-		        <RebarBand id="bandFile"
-		        	BandSize = "236"
-		        	NewRow = "true"
-	            AllowVertical = "false"
-	            Child = "#toolBarFile"
-	            Header = "-1"
-	            Integral = "1"
-	            MaxHeight = "26"
-	            UseChevron = "true"
-					>
-		        </RebarBand>
-		        <RebarBand id="bandPosition"
-		        	BandSize = "234"
-		        	NewRow = "true"
-	            AllowVertical = "false"
-	            Child = "#toolBarPosition"
-	            Header = "-1"
-	            Integral = "1"
-	            MaxHeight = "26"
-	            UseChevron = "true"
-					>
-		        </RebarBand>
-		        <RebarBand id="bandMeasure"
-		        	BandSize = "714"
-		        	NewRow = "true"
-	            AllowVertical = "false"
-	            Child = "#toolBarMeasure"
-	            Header = "-1"
-	            Integral = "1"
-	            MaxHeight = "26"
-	            UseChevron = "true"
-					>
-		        </RebarBand>
-		        <RebarBand id="bandTool"
-		        	BandSize = "712"
-		        	NewRow = "true"
-	            AllowVertical = "false"
-	            Child = "#toolBarTool"
-	            Header = "-1"
-	            Integral = "1"
-	            MaxHeight = "26"
-	            UseChevron = "true"
-					>
-		        </RebarBand>
-	        </_Bands>
-
-	    </Rebar>
-
-	    <BSplitContainer id="splitContainer1"
-
-            FixedPanel = "Panel2"
-            SplitterFixed = "false"
-            Location = "(2, 2)"
-            Margin = "(0)"
-            MinimumSize = "(0, 54)"
-            Name = "splitContainer1"
-            Orientation = "Vertical"
-            Panel1MinSize = "25"
-            Panel2MinSize = "25"
-            Size = "(953, 54)"
-            SplitterDistance = "50"
-            SplitterWidth = "4"
-            TabIndex = "4"
-            TabStop = "false"
-            Text = "splitContainerEx1"
-	        >
-	        <_Panel1
-            Anchor = "Top,Bottom,Left,Right"
-            BorderColor = "$Black"
-            Location = "(0, 0)"
-            Margin = "(0)"
-            Name = "m_panel1"
-            Size = "(953, 50)"
-            TabIndex = "0"
-	        />
-	        <_Panel2
-            Anchor = "Bottom,Left,Right"
-            BorderColor = "$Black"
-            Location = "(0, 54)"
-            Margin = "(0)"
-            Name = "m_panel2"
-            Size = "(953, 25)"
-            TabIndex = "1"
-	        />
-        </BSplitContainer>
-      </UiPanel>
 	</Form>
 
 	<!-- programmatically initialized -->

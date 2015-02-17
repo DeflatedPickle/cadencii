@@ -80,11 +80,12 @@ namespace Cadencii.Gui.Toolkit
 		public new UiMenuStrip MainMenuStrip {
 			get { return (UiMenuStrip) base.MainMenuStrip; }
 			set {
-				if (base.MainMenuStrip != null && base.MainMenuStrip != value.Native)
+				var m = (System.Windows.Forms.MenuStrip) value.Native;
+				if (base.MainMenuStrip != null && base.MainMenuStrip != m)
 					Controls.Remove (base.MainMenuStrip);
-				base.MainMenuStrip = (System.Windows.Forms.MenuStrip) value.Native;
-				if (!Controls.Contains (base.MainMenuStrip))
-					Controls.Add (base.MainMenuStrip);
+				base.MainMenuStrip = m;
+				if (!Controls.Contains (m))
+					Controls.Add (m);
 			}
 		}
 
