@@ -67,7 +67,7 @@ namespace Cadencii.Gui.Toolkit
 
 		ColumnCollection columns;
 
-		public IList<UiListViewColumn> Columns {
+		public new IList<UiListViewColumn> Columns {
 			get { return columns ?? (columns = new ColumnCollection (this)); }
 		}
 

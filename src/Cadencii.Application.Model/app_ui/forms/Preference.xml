@@ -24,6 +24,7 @@
             Size = "(462, 515)"
             TabIndex = "0"
             >
+      <_Tabs>
 	    <UiTabPage id="tabSequence"
 	            Location = "(4, 40)"
 	            Name = "tabSequence"
@@ -1566,6 +1567,7 @@
 		            />
 	        </UiGroupBox>
 	    </UiTabPage>
+      </_Tabs>
 	</UiTabControl>
 
     <UiButton id="btnCancel"

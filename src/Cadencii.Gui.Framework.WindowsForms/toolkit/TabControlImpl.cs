@@ -21,6 +21,8 @@ namespace Cadencii.Gui.Toolkit
 {
 	public partial class TabControlImpl : System.Windows.Forms.TabControl, UiTabControl
 	{
+		public IList<UiTabPage> Tabs {
+			get { return new CastingList<UiTabPage,System.Windows.Forms.Control> (base.Controls, x => (UiTabPage)x, x => (System.Windows.Forms.Control) x); }
+		}
 	}
 }
-

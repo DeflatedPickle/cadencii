@@ -19,9 +19,6 @@ namespace Cadencii.Gui.Toolkit
 
 	public partial class ContainerControlBase : AbsoluteLayoutBase
 	{
-		protected virtual void Dispose (bool disposing)
-		{
-		}
 	}
 
 	public partial class ContextMenuStripBase : Xwt.Widget
