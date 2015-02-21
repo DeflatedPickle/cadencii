@@ -21,47 +21,32 @@ namespace Cadencii.Gui.Toolkit
 {
 	public partial class ToolStripContainerImpl : System.Windows.Forms.ToolStripContainer, UiToolStripContainer
 	{
-		void UiToolStripContainer.BottomToolStripPanel_SuspendLayout ()
+		class PanelWrapper : IControlContainer
 		{
-			BottomToolStripPanel.SuspendLayout ();
+			System.Windows.Forms.Control panel;
+
+			public PanelWrapper (System.Windows.Forms.Control panel)
+			{
+				this.panel = panel;
+			}
+			
+			#region IControlContainer implementation
+			void IControlContainer.AddControl (UiControl control)
+			{
+				panel.Controls.Add ((System.Windows.Forms.Control) control);
+			}
+			void IControlContainer.RemoveControl (UiControl control)
+			{
+				panel.Controls.Remove ((System.Windows.Forms.Control) control);
+			}
+			#endregion
 		}
 
-		void UiToolStripContainer.ContentPanel_SuspendLayout ()
-		{
-			ContentPanel.SuspendLayout ();
+		IControlContainer UiToolStripContainer.ContentPanel {
+			get { return new PanelWrapper (ContentPanel); }
 		}
-
-		void UiToolStripContainer.BottomToolStripPanel_ResumeLayout (bool b)
-		{
-			BottomToolStripPanel.ResumeLayout (b);
-		}
-
-		void UiToolStripContainer.BottomToolStripPanel_PerformLayout ()
-		{
-			BottomToolStripPanel.PerformLayout ();
-		}
-
-		void UiToolStripContainer.ContentPanel_ResumeLayout (bool b)
-		{
-			ContentPanel.ResumeLayout (b);
-		}
-
-		IList<UiControl> UiToolStripContainer.BottomToolStripPanel_Controls {
-			get { return new CastingList<UiControl,System.Windows.Forms.Control> (BottomToolStripPanel.Controls, null, null); }
-		}
-
-		ToolStripRenderMode UiToolStripContainer.BottomToolStripPanel_RenderMode {
-			get { return (ToolStripRenderMode)BottomToolStripPanel.RenderMode; }
-			set { BottomToolStripPanel.RenderMode = (System.Windows.Forms.ToolStripRenderMode) value;}
-		}
-
-		IList<UiControl> UiToolStripContainer.ContentPanel_Controls {
-			get { return new CastingList<UiControl,System.Windows.Forms.Control> (ContentPanel.Controls, null, null); }
-		}
-
-		Size UiToolStripContainer.ContentPanel_Size {
-			get { return ContentPanel.Size.ToGui (); }
-			set { ContentPanel.Size = value.ToWF (); }
+		IControlContainer UiToolStripContainer.BottomToolStripPanel {
+			get { return new PanelWrapper (BottomToolStripPanel); }
 		}
 	}
 }

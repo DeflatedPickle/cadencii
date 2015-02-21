@@ -117,7 +117,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class ToolStripContainerBase : Xwt.Canvas
+	public partial class ToolStripContainerBase : Xwt.VBox
 	{
 	}
 
