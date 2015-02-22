@@ -8,7 +8,7 @@ namespace Cadencii.Gui.Toolkit
 	public partial class StatusStripImpl : StatusStripBase, UiStatusStrip
 	{
 		UiToolStripItem UiStatusStrip.Content {
-			get { return base.Children.FirstOrDefault (); }
+			get { return (UiToolStripItem) base.Children.FirstOrDefault (); }
 			set {
 				base.Clear ();
 				base.PackStart ((Xwt.Widget) value);

@@ -76,6 +76,7 @@
     <Compile Include="toolkit\TabPageImpl.cs" />
     <Compile Include="toolkit\TabControlImpl.cs" />
     <Compile Include="toolkit\StatusStripImpl.cs" />
+    <Compile Include="toolkit\ToolStripImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

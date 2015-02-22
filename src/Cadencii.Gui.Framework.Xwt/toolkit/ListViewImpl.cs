@@ -82,6 +82,8 @@ namespace Cadencii.Gui.Toolkit
 
 			protected override void InsertItem (int index, UiListViewColumn item)
 			{
+				if (index != lv.Columns.Count)
+					throw new NotSupportedException ();
 				if (item.Native == null)
 					item.Native = new Xwt.ListViewColumn (item.Text); // FIXME: item.Width is ignored.
 				base.InsertItem (index, item);

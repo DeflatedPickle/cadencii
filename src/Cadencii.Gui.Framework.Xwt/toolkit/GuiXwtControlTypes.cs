@@ -110,7 +110,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class ToolStripBase : Xwt.SegmentedButton
+	public partial class ToolStripBase : Xwt.HBox
 	{
 	}
 
