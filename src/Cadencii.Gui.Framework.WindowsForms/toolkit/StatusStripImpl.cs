@@ -21,8 +21,12 @@ namespace Cadencii.Gui.Toolkit
 {
 	public partial class StatusStripImpl : System.Windows.Forms.StatusStrip, UiStatusStrip
 	{
-		System.Collections.Generic.IList<UiToolStripItem> UiStatusStrip.Items {
-			get { return new CastingList<UiToolStripItem, System.Windows.Forms.ToolStripItem> (Items, null, null); }
+		UiToolStripItem UiStatusStrip.Content {
+			get { return Items.Count > 0 ? (UiToolStripItem) Items [0] : null; }
+			set {
+				Items.Clear ();
+				Items.Add ((System.Windows.Forms.ToolStripItem) value);
+			}
 		}
 	}
 }

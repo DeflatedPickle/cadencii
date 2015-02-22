@@ -90,7 +90,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class StatusStripBase : Xwt.Widget
+	public partial class StatusStripBase : Xwt.HBox
 	{
 	}
 

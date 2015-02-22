@@ -5,14 +5,7 @@ namespace Cadencii.Gui.Toolkit
 {
 	public interface UiStatusStrip : UiControl
 	{
-		string Text {
-			get;
-			set;
-		}
-
-		IList<UiToolStripItem> Items {
-			get;
-		}
+		UiToolStripItem Content { get; set; }
 	}
 }
 

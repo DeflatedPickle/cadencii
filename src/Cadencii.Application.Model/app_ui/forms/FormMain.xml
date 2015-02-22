@@ -324,15 +324,14 @@
 			            Name = "statusStrip"
 			            Size = "(955, 22)"
 			            TabIndex = "25"
-			            Text = "statusStrip1"
 			            >
-			        <_Items>
+			        <_Content>
 				        <UiToolStripStatusLabel id="statusLabel"
 
 				            Name = "statusLabel"
 				            Size = "(0, 17)"
 				            />
-			        </_Items>
+			        </_Content>
 			    </UiStatusStrip>
 		    </_BottomToolStripPanel>
 		</UiToolStripContainer>

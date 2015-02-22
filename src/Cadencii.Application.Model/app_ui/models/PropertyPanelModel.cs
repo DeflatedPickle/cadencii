@@ -239,13 +239,11 @@ namespace Cadencii.Application.Models
 			// propertyGrid
 			// 
 			this.propertyGrid.Dock = DockStyle.Fill;
-			this.propertyGrid.HelpVisible = false;
 			this.propertyGrid.Location = new Point(0, 0);
 			this.propertyGrid.Name = "propertyGrid";
 			this.propertyGrid.PropertySort = PropertySort.Categorized;
 			this.propertyGrid.Size = new Size(191, 298);
 			this.propertyGrid.TabIndex = 0;
-			this.propertyGrid.ToolbarVisible = false;
 			// 
 			// PropertyPanel
 			// 
