@@ -77,6 +77,8 @@
     <Compile Include="toolkit\TabControlImpl.cs" />
     <Compile Include="toolkit\StatusStripImpl.cs" />
     <Compile Include="toolkit\ToolStripImpl.cs" />
+    <Compile Include="toolkit\PropertyGridImpl.cs" />
+    <Compile Include="toolkit\DataObjectXwt.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -21,6 +21,11 @@ namespace Cadencii.Gui.Toolkit
 
 		// UiForm
 
+		// FIXME: how to implement?
+		bool UiForm.InvokeRequired {
+			get { return true; }
+		}
+
 		void RegisterLoad (EventHandler loaded)
 		{
 			if (!load_registered)

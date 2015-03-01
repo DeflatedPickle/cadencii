@@ -29,12 +29,12 @@ namespace Cadencii.Gui
 
 		public override void InitializeSystemColors ()
 		{
-			SystemColors.ActiveBorder = System.Drawing.SystemColors.ActiveBorder.ToGui ();
-			SystemColors.Control = System.Drawing.SystemColors.Control.ToGui ();
-			SystemColors.ControlDark = System.Drawing.SystemColors.ControlDark.ToGui ();
-			SystemColors.ControlText = System.Drawing.SystemColors.ControlText.ToGui ();
-			SystemColors.Window = System.Drawing.SystemColors.Window.ToGui ();
-			SystemColors.WindowText = System.Drawing.SystemColors.WindowText.ToGui ();
+			SystemColors.ActiveBorder = Colors.Black;// System.Drawing.SystemColors.ActiveBorder.ToGui ();
+			SystemColors.Control = Colors.White; // System.Drawing.SystemColors.Control.ToGui ();
+			SystemColors.ControlDark = Colors.Black; // System.Drawing.SystemColors.ControlDark.ToGui ();
+			SystemColors.ControlText = Colors.Black; // System.Drawing.SystemColors.ControlText.ToGui ();
+			SystemColors.Window = Colors.Blue; // System.Drawing.SystemColors.Window.ToGui ();
+			SystemColors.WindowText = Colors.White; // System.Drawing.SystemColors.WindowText.ToGui ();
 		}
 
 		public override void InitializeCursors ()

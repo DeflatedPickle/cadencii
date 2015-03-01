@@ -199,12 +199,29 @@ namespace Cadencii.Gui
 		{
 			return new FormClosingEventArgs () { Cancel = e.Cancel };
 		}
-
-		public static DragEventArgs ToGui (this System.Windows.Forms.DragEventArgs e)
-		{
-			return new DragEventArgs (new DataObjectWF (e.Data), e.KeyState, e.X, e.Y, (DragDropEffects) e.AllowedEffect, (DragDropEffects) e.Effect);
-		}
 		*/
+
+		static DragDropEffects ToGui (this Xwt.DragDropAction src)
+		{
+			DragDropEffects eff = default (DragDropEffects);
+			if ((src & Xwt.DragDropAction.Copy) != 0)
+				eff |= DragDropEffects.Copy;
+			if ((src & Xwt.DragDropAction.Link) != 0)
+				eff |= DragDropEffects.Link;
+			if ((src & Xwt.DragDropAction.Move) != 0)
+				eff |= DragDropEffects.Move;
+			return eff;
+		}
+
+		public static DragEventArgs ToGui (this Xwt.DragEventArgs e)
+		{
+			return new DragEventArgs (new DataObjectXwt (e.Data), 0, (int) e.Position.X, (int) e.Position.Y, e.Action.ToGui (), e.Action.ToGui ());
+		}
+
+		public static DragEventArgs ToGui (this Xwt.DragOverEventArgs e)
+		{
+			return new DragEventArgs (new DataObjectXwt (e.Data), 0, (int) e.Position.X, (int) e.Position.Y, e.AllowedAction.ToGui (), e.Action.ToGui ());
+		}
 
 		public static DockStyle ToDock (this UiControl control, Xwt.WidgetPlacement h, Xwt.WidgetPlacement v)
 		{

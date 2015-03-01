@@ -78,7 +78,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class PropertyGridBase : Xwt.Widget
+	public partial class PropertyGridBase : Xwt.VBox
 	{
 	}
 
@@ -86,7 +86,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class SplitContainerBase : Xwt.Separator
+	public partial class SplitContainerBase : Xwt.VPaned
 	{
 	}
 
