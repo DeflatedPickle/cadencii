@@ -38,7 +38,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XwtImplementation.cs" />
-    <Compile Include="GuiExtensions.cs" />
     <Compile Include="StrokeXwt.cs" />
     <Compile Include="toolkit\OpenFileDialogImpl.cs" />
     <Compile Include="toolkit\ButtonImpl.cs" />
@@ -79,6 +78,9 @@
     <Compile Include="toolkit\ToolStripImpl.cs" />
     <Compile Include="toolkit\PropertyGridImpl.cs" />
     <Compile Include="toolkit\DataObjectXwt.cs" />
+    <Compile Include="..\Cadencii.Gui.Framework.Xwt.Shared\GuiExtensions.cs">
+      <Link>GuiExtensions.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
