@@ -77,9 +77,9 @@ namespace Cadencii.Application.Controls
 			Model.OnMouseUp (sender, e);
 		}
 
-		public override void OnPaint (PaintEventArgs e)
+		protected override void OnDraw (Xwt.Drawing.Context ctx, Xwt.Rectangle dirtyRect)
 		{
-			Model.paint (e.Graphics);
+			Model.paint (ctx.ToGui ());
 		}
     }
 }

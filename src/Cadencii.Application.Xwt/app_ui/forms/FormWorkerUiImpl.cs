@@ -22,6 +22,7 @@ using Cadencii.Gui.Toolkit;
 using Cadencii.Application.Controls;
 using cadencii;
 using Cadencii.Utilities;
+using System.Threading;
 
 
 
@@ -56,7 +57,7 @@ namespace Cadencii.Application.Forms
             InitializeComponent();
 			registerEventHandlers ();
             mControl = control;
-            mFullHeight = this.Height;
+			mFullHeight = this.AsGui ().Height;
         }
 
         private static string _(string id)
@@ -76,7 +77,7 @@ namespace Cadencii.Application.Forms
         public void close()
         {
 			this.AsGui ().DialogResult = Cadencii.Gui.DialogResult.OK;
-            Close();
+			this.AsGui ().Close();
         }
 
         /// <summary>
@@ -85,16 +86,7 @@ namespace Cadencii.Application.Forms
         /// <param name="percentage"></param>
         public void setTotalProgress(int percentage)
         {
-            if (this.InvokeRequired) {
-                try {
-                    DelegateArgIntReturnVoid deleg = new DelegateArgIntReturnVoid(setTotalProgressUnsafe);
-                    this.Invoke(deleg, percentage);
-                } catch (Exception ex) {
-                    Logger.StdErr(typeof(FormWorkerUi) + ".setTotalProgress; ex=" + ex);
-                }
-            } else {
-                setTotalProgressUnsafe(percentage);
-            }
+			SynchronizationContext.Send (o => setTotalProgressUnsafe (percentage), null);
         }
 
         /// <summary>
@@ -112,7 +104,8 @@ namespace Cadencii.Application.Forms
         /// <param name="ui"></param>
         public void addProgressBar(ProgressBarWithLabel ui)
         {
-			int draft_width = flowLayoutPanel1.Width - 10 - ((GuiHostWindowsForms) GuiHost.Current).VerticalScrollBarWidth;
+			// FIXME: not sure if it works (commented WF-dependent code)
+			int draft_width = flowLayoutPanel1.Width - 10;// - ((GuiHostWindowsForms) GuiHost.Current).VerticalScrollBarWidth;
             if (draft_width < 1) {
                 draft_width = 1;
             }
@@ -128,16 +121,7 @@ namespace Cadencii.Application.Forms
         /// <param name="p"></param>
         public void setTitle(string p)
         {
-            if (this.InvokeRequired) {
-                try {
-                    DelegateArgStringReturnVoid deleg = new DelegateArgStringReturnVoid(setTitleUnsafe);
-                    this.Invoke(deleg, p);
-                } catch (Exception ex) {
-                    Logger.StdErr(typeof(FormWorkerUi) + ".setTitle; ex=" + ex);
-                }
-            } else {
-                setTitleUnsafe(p);
-            }
+			SynchronizationContext.Send (o => setTitleUnsafe (p), null);
         }
 
         /// <summary>
@@ -146,21 +130,12 @@ namespace Cadencii.Application.Forms
         /// <param name="p"></param>
         public void setText(string p)
         {
-            if (this.InvokeRequired) {
-                try {
-                    DelegateArgStringReturnVoid deleg = new DelegateArgStringReturnVoid(setTextUnsafe);
-                    this.Invoke(deleg, p);
-                } catch (Exception ex) {
-                    Logger.StdErr(typeof(FormWorkerUi) + ".setText; ex=" + ex);
-                }
-            } else {
-                setTextUnsafe(p);
-            }
+			SynchronizationContext.Send (o => setTextUnsafe (p), null);
         }
 
         private void setTitleUnsafe(string value)
         {
-            this.Text = value;
+			this.AsGui ().Text = value;
         }
 
         private void setTextUnsafe(string value)
@@ -210,18 +185,15 @@ namespace Cadencii.Application.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
 			ApplicationUIHost.Instance.ApplyXml (this, "FormWorkerUi.xml");
-            this.ResumeLayout(false);
-
         }
 
 		void registerEventHandlers ()
 		{
 			this.buttonCancel.Click += new System.EventHandler(buttonCancel_Click);
 			this.buttonDetail.Click += new System.EventHandler (buttonDetail_Click);
-			this.SizeChanged += new System.EventHandler(this.FormWorkerUi_SizeChanged);
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormWorkerUi_FormClosing);
+			this.ParentWindow.BoundsChanged += FormWorkerUi_SizeChanged;
+			this.ParentWindow.CloseRequested += FormWorkerUi_FormClosing;
 		}
 
         #endregion
@@ -231,7 +203,7 @@ namespace Cadencii.Application.Forms
             mControl.cancelJobSlot();
         }
 
-        private void FormWorkerUi_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+		private void FormWorkerUi_FormClosing(object sender, Xwt.CloseRequestedEventArgs e)
         {
             mControl.cancelJobSlot();
         }
@@ -239,8 +211,9 @@ namespace Cadencii.Application.Forms
         private void FormWorkerUi_SizeChanged(object sender, EventArgs e)
         {
             if (flowLayoutPanel1.Visible) {
-                mFullHeight = this.Height;
-				int draft_width = flowLayoutPanel1.Width - 10 - ((GuiHostWindowsForms) GuiHost.Current).VerticalScrollBarWidth;
+                mFullHeight = this.ParentWindow.Height;
+				// FIXME: not sure if this works (commented out WF-dependent code)
+				int draft_width = flowLayoutPanel1.Width - 10;// - ((GuiHostWindowsForms) GuiHost.Current).VerticalScrollBarWidth;
                 if (draft_width < 1) {
                     draft_width = 1;
                 }
@@ -254,9 +227,9 @@ namespace Cadencii.Application.Forms
         {
             flowLayoutPanel1.Visible = !flowLayoutPanel1.Visible;
             if (flowLayoutPanel1.Visible) {
-                this.Height = mFullHeight;
+                this.ParentWindow.Height = mFullHeight;
             } else {
-                int w = this.ClientSize.Width;
+				int w = this.ParentWindow.Size.Width;
                 int delta = flowLayoutPanel1.Top - buttonCancel.Bottom;
                 int h = buttonCancel.Bottom + delta - 2;
 				this.AsGui ().ClientSize = new Size(w, h);

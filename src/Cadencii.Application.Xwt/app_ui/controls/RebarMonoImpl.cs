@@ -35,6 +35,7 @@ namespace Cadencii.Application.Controls
 
 		RebarBandCollection bands;
 
+		/*
 		protected override void OnControlAdded (System.Windows.Forms.ControlEventArgs e)
 		{
 			var tb = e.Control as RebarBand;
@@ -44,6 +45,7 @@ namespace Cadencii.Application.Controls
 			}
 			base.OnControlAdded (e);
 		}
+		*/
 
 		public class RebarBandCollectionMonoImpl : Collection<RebarBand>, RebarBandCollection
 		{
@@ -183,6 +185,7 @@ namespace Cadencii.Application.Controls
 			}
 
 			// ignore XML settings. That is only for Windows winforms.
+			/*
 			protected override void OnControlAdded (System.Windows.Forms.ControlEventArgs e)
 			{
 				var tb = e.Control as UiToolBar;
@@ -194,6 +197,7 @@ namespace Cadencii.Application.Controls
 				}
 				base.OnControlAdded (e);
 			}
+			*/
 		}
 	}
 }

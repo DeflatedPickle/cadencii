@@ -17,6 +17,7 @@ using cadencii;
 
 using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
+using Xwt;
 
 
 
@@ -55,7 +56,7 @@ namespace Cadencii.Application.Forms
 
         private void registerEventHandlers()
         {
-            btnOK.Click += new EventHandler(btnOK_Click);
+            btnOK.Clicked += new EventHandler(btnOK_Click);
         }
         #endregion
 
@@ -90,17 +91,13 @@ namespace Cadencii.Application.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
 			ApplicationUIHost.Instance.ApplyXml (this, "FormCompileResult.xml");
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
         }
 
 		#pragma warning disable 0169,0649
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button btnOK;
+        private Label label1;
+		private TextEntry textBox1;
+        private Button btnOK;
 		#pragma warning restore 0169,0649
 
         #endregion

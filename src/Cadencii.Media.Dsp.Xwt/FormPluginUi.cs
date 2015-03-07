@@ -13,6 +13,7 @@
  */
 using Cadencii.Gui;
 using Cadencii.Utilities;
+using Cadencii.Platform.Windows;
 
 
 #if ENABLE_AQUESTONE
@@ -34,7 +35,7 @@ namespace cadencii
 			//this.SetStyle(System.Windows.Forms.ControlStyles.DoubleBuffer, true);
 			//this.SetStyle(System.Windows.Forms.ControlStyles.UserPaint, true);
 			InitializeComponent();
-			this.CloseRequested += (sender, args) => FormPluginUi_FormClosing (sender, args);
+			this.CloseRequested += FormPluginUi_FormClosing;
 			// FIXME: bring this back
 			//this.Icon = cadencii.Properties.Resources._switch;
 		}
@@ -42,6 +43,15 @@ namespace cadencii
 		public bool IsOpened {
 			get;
 			set;
+		}
+
+		public bool IsDisposed {
+			get;
+			set;
+		}
+
+		public IntPtr Handle {
+			get { throw new NotImplementedException (); }
 		}
 
 		internal Xwt.Size WindowRect = new Xwt.Size(373, 158);

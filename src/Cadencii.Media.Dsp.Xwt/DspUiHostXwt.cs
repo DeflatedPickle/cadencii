@@ -2,6 +2,7 @@
 using Cadencii.Gui.Toolkit;
 using Cadencii.Utilities;
 using VstSdk;
+using System.Threading;
 
 namespace cadencii.dsp.xwt
 {
@@ -35,8 +36,7 @@ namespace cadencii.dsp.xwt
 		{
 			if (ui == null) {
 				if (main_window != null) {
-					// mainWindowのスレッドで、uiが作成されるようにする
-					main_window.Invoke (new Action (createPluginUi));
+					SynchronizationContext.Current.Send (o => createPluginUi (), null);
 				}
 			}
 			return ui;

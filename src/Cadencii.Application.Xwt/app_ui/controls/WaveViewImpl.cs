@@ -41,14 +41,9 @@ namespace Cadencii.Application.Controls
 			get { return model; }
 		}
 
-		/// <summary>
-		/// オーバーライドされます。
-		/// <seealso cref="M:System.Windows.Forms.Control.OnPaint"/>
-		/// </summary>
-		/// <param name="e"></param>
-		public override void OnPaint(PaintEventArgs e)
+		protected override void OnDraw (Xwt.Drawing.Context ctx, Xwt.Rectangle dirtyRect)
 		{
-			model.paint(e.Graphics);
+			model.paint(ctx.ToGui ());
 		}
     }
 

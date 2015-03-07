@@ -11,11 +11,11 @@ namespace Cadencii.Gui.Toolkit
 		{
 			this.ExpandHorizontal = true;
 			this.ExpandVertical = true;
-			window = new Xwt.Window ();
+			window = new Xwt.Dialog ();
 			window.Content = this;
 		}
 
-		Xwt.Window window;
+		Xwt.Dialog window;
 		bool load_registered, load_invoked;
 		event EventHandler UiFormLoad;
 
@@ -109,7 +109,7 @@ namespace Cadencii.Gui.Toolkit
 			window.Close ();
 		}
 
-		UiForm UiForm.AsGui ()
+		public UiForm AsGui ()
 		{
 			return this;
 		}

@@ -21,7 +21,7 @@ namespace Cadencii.Application.Forms
     public class FormNotePropertyImpl : FormImpl, UiFormNoteProperty
     {
         private FormNotePropertyListener listener;
-        protected System.Windows.Forms.FormWindowState lastWindowState = System.Windows.Forms.FormWindowState.Normal;
+        protected FormWindowState lastWindowState = FormWindowState.Normal;
 
         public FormNotePropertyImpl(FormNotePropertyListener listener)
         {
@@ -58,12 +58,12 @@ namespace Cadencii.Application.Forms
 
         public void setTitle(string title)
         {
-            this.Text = title;
+			this.AsGui ().Text = title;
         }
 
         public void close()
         {
-            this.Close();
+			this.AsGui ().Close ();
         }
 
         public void setMenuCloseAccelerator(Keys value)
@@ -73,12 +73,12 @@ namespace Cadencii.Application.Forms
 
         public void setAlwaysOnTop(bool alwaysOnTop)
         {
-            this.TopMost = alwaysOnTop;
+			this.AsGui ().TopMost = alwaysOnTop;
         }
 
         public bool isAlwaysOnTop()
         {
-            return this.TopMost;
+			return this.AsGui ().TopMost;
         }
 
         public void setBounds(int x, int y, int width, int height)
@@ -88,22 +88,22 @@ namespace Cadencii.Application.Forms
 
         public int getX()
         {
-            return this.Location.X;
+			return this.AsGui ().Location.X;
         }
 
         public int getY()
         {
-            return this.Location.Y;
+			return this.AsGui ().Location.Y;
         }
 
         public int getWidth()
         {
-            return this.Width;
+			return this.AsGui ().Width;
         }
 
         public int getHeight()
         {
-            return this.Height;
+			return this.AsGui ().Height;
         }
 
         public void setVisible(bool visible)
@@ -147,7 +147,8 @@ namespace Cadencii.Application.Forms
 
         #endregion
 
-
+		// FIXME: I don't think xwt can support this.
+		/*
         protected override void OnSizeChanged(EventArgs e)
         {
             base.OnSizeChanged(e);
@@ -156,6 +157,7 @@ namespace Cadencii.Application.Forms
             }
             this.lastWindowState = this.WindowState;
         }
+        */
 
         /// <summary>
         /// 必要なデザイナ変数です。
@@ -182,18 +184,12 @@ namespace Cadencii.Application.Forms
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
 			ApplicationUIHost.Instance.ApplyXml (this, "FormNoteProperty.xml");
-            this.ResumeLayout(false);
-            this.PerformLayout();
 
-			Load += new System.EventHandler (FormNotePropertyUiImpl_Load);
-			SizeChanged += new System.EventHandler (FormNotePropertyUiImpl_SizeChanged);
-			// FIXME: examine this later if it's really needed. We don't have FormClosingEventArgs yet.
-			FormClosing += new System.Windows.Forms.FormClosingEventHandler (FormNotePropertyUiImpl_FormClosing);
-			LocationChanged += new System.EventHandler (FormNotePropertyUiImpl_LocationChanged);
+			this.ParentWindow.Shown += FormNotePropertyUiImpl_Load;
+			this.ParentWindow.BoundsChanged += FormNotePropertyUiImpl_SizeChanged;
+			this.ParentWindow.CloseRequested += FormNotePropertyUiImpl_FormClosing;
 			menuClose.Click += new System.EventHandler (menuClose_Click);
-
         }
 
         #endregion
@@ -219,18 +215,16 @@ namespace Cadencii.Application.Forms
             this.listener.locationOrSizeChanged();
         }
 
-        private void FormNotePropertyUiImpl_LocationChanged(object sender, System.EventArgs e)
+        private void FormNotePropertyUiImpl_FormClosing(object sender, Xwt.CloseRequestedEventArgs e)
         {
-            this.listener.locationOrSizeChanged();
-        }
-
-        private void FormNotePropertyUiImpl_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
-        {
+			// FIXME: dunno if we can support that. Just close it.
+			/*
             if (e.CloseReason != System.Windows.Forms.CloseReason.UserClosing) {
                 return;
             }
             e.Cancel = true;
             this.listener.formClosing();
+            */
         }
     }
 }

@@ -3850,7 +3850,7 @@ namespace Cadencii.Application.Forms
         }
 #endif
 
-	public override IContainer Components {
+	public IContainer Components {
 		get { return components; }
 	}
 

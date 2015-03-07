@@ -143,15 +143,6 @@
     <EmbeddedResource Include="app_ui\forms\FormMain.resx">
       <DependentUpon>FormMainImpl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <SubType>Designer</SubType>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <LogicalName>cadencii.Properties.Resources.resources</LogicalName>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="gui_fx_extended\GameControllerManagerWinMM.cs" />
     <Compile Include="app_ui\forms\FormMainImpl.cs" />
     <Compile Include="app_ui\forms\FormMainImpl.Designer.cs">

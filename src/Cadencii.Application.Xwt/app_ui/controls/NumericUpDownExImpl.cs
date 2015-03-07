@@ -23,12 +23,10 @@ namespace Cadencii.Application.Controls
 			remove { ValueChanged -= value; }
 		}
 
-		Cadencii.Gui.Toolkit.HorizontalAlignment NumericUpDownEx.TextAlign {
-			get { return (Cadencii.Gui.Toolkit.HorizontalAlignment)TextAlign; }
-			set { TextAlign = (System.Windows.Forms.HorizontalAlignment)value; }
-		}
+		// FIXME: cannot support in Xwt.
+		Cadencii.Gui.Toolkit.HorizontalAlignment NumericUpDownEx.TextAlign { get; set; }
 
-        private const long serialVersionUID = -4608658084088065812L;
+        //private const long serialVersionUID = -4608658084088065812L;
 
         public NumericUpDownExImpl()
         {
@@ -37,10 +35,12 @@ namespace Cadencii.Application.Controls
 
         private void NumericUpDownEx_GotFocus(Object sender, EventArgs e)
         {
-            this.Select(0, 10);
+            //this.Select(0, 10);
         }
 
-		protected override void OnMouseWheel(Xwt.MouseScrolledEventArgs e)
+		// FIXME: dunno if it is needed for Xwt
+		/*
+		protected override void OnMouseScrolled (Xwt.MouseScrolledEventArgs e)
         {
             decimal new_val;
             if (e.Delta > 0) {
@@ -54,6 +54,6 @@ namespace Cadencii.Application.Controls
                 this.Value = new_val;
             }
         }
+        */
     }
-
 }

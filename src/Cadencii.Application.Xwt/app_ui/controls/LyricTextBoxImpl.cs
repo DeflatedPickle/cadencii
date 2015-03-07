@@ -37,6 +37,9 @@ namespace Cadencii.Application.Controls
         /// </summary>
         /// <param name="keyData">キーの値の一つ</param>
         /// <returns>指定されているキーが入力キーである場合は true．それ以外の場合は false．</returns>
+		//
+		// FIXME: cannot implement in XWT. Not sure if it is even necessary. 
+		/*
 		protected override bool IsInputKey(System.Windows.Forms.Keys keyData)
         {
             switch (keyData) {
@@ -48,6 +51,6 @@ namespace Cadencii.Application.Controls
             }
             return true;
         }
+        */
     }
-
 }

@@ -15,6 +15,7 @@ using System;
 using Xwt;
 using Xwt.Drawing;
 using System.IO;
+using Cadencii.Gui;
 
 namespace Cadencii.Application.Controls
 {
@@ -22,108 +23,15 @@ namespace Cadencii.Application.Controls
     unsafe class BitmapExImpl : BitmapEx, IDisposable
     {
         private BitmapImage m_base;
-        private bool m_locked = false;
-        private BitmapData m_bd;
-        private int m_stride;
-        private int m_byte_per_pixel;
 
-        public int Width
+        public void Dispose ()
         {
-            get
-            {
-                return m_base.Width;
-            }
-        }
-
-        public int Height
-        {
-            get
-            {
-                return m_base.Height;
-            }
-        }
-
-        public void Dispose()
-        {
-            EndLock();
-            m_base.Dispose();
-        }
-
-        public void EndLock()
-        {
-            if (m_locked) {
-                //m_base.UnlockBits(m_bd);
-                m_locked = false;
-            }
-        }
-
-        public BitmapImage GetBitmap()
-        {
-            return (BitmapImage)m_base.Clone();
+            m_base.Dispose ();
         }
 
         public Cadencii.Gui.Color GetPixel(int x, int y)
         {
-            if (!m_locked) {
-                BeginLock();
-            }
-            int location = y * m_stride + m_byte_per_pixel * x;
-            byte* dat = (byte*)m_bd.Scan0;
-            byte b = dat[location];
-            byte g = dat[location + 1];
-            byte r = dat[location + 2];
-            byte a = 255;
-			/*
-            if (m_base.PixelFormat == PixelFormat.Format32bppArgb) {
-                a = dat[location + 3];
-            }
-            */
-            return new Cadencii.Gui.Color(r, g, b, a);
-        }
-
-        public void SetPixel(int x, int y, Color color)
-        {
-            if (!m_locked) {
-                BeginLock();
-            }
-            int location = y * m_stride + m_byte_per_pixel * x;
-            byte* dat = (byte*)m_bd.Scan0;
-            dat[location] = (byte)color.B;
-            dat[location + 1] = (byte)color.G;
-            dat[location + 2] = (byte)color.R;
-			/*
-            if (m_base.PixelFormat == PixelFormat.Format32bppArgb) {
-                dat[location + 3] = (byte)color.A;
-            }
-            */
-        }
-
-        public void BeginLock()
-        {
-            if (!m_locked) {
-				/*
-                m_bd = m_base.LockBits(new Rectangle(0, 0, m_base.Width, m_base.Height),
-                                        ImageLockMode.ReadWrite,
-                                        m_base.PixelFormat);
-                m_stride = m_bd.Stride;
-                switch (m_base.PixelFormat) {
-                    case PixelFormat.Format24bppRgb:
-                    m_byte_per_pixel = 3;
-                    break;
-                    case PixelFormat.Format32bppArgb:
-                    m_byte_per_pixel = 4;
-                    break;
-                    default:
-                    throw new Exception("unsuported pixel format");
-                }
-                */
-                m_locked = true;
-            }
-        }
-
-        ~BitmapExImpl()
-        {
-            m_base.Dispose();
+			return m_base.GetPixel (x, y).ToGui ();
         }
 
         public BitmapExImpl(Cadencii.Gui.Image original)

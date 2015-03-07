@@ -61,7 +61,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class NumericUpDownBase : Xwt.Spinner
+	public partial class NumericUpDownBase : Xwt.SpinButton
 	{
 	}
 

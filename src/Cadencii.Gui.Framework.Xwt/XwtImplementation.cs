@@ -534,7 +534,6 @@ namespace Cadencii.Gui
 	class StrokeAdapterWF : Stroke.StrokeAdapter
 	{
 		StrokeXwt pen;
-		bool should_dispose;
 
 		public override object NativePen { get { return pen; } set { pen = (StrokeXwt) value; } }
 
