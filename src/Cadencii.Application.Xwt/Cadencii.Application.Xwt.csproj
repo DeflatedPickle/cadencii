@@ -474,10 +474,6 @@
       <Project>{18E7D0BD-734D-482E-BAE8-2512147D88F0}</Project>
       <Name>Cadencii.Media.Dsp</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cadencii.Media.Dsp.WindowsForms\Cadencii.Media.Dsp.WindowsForms.csproj">
-      <Project>{5F65872D-0431-4C76-973F-CD5DECD388A4}</Project>
-      <Name>Cadencii.Media.Dsp.WindowsForms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Cadencii.Media.Vsq\Cadencii.Media.Vsq.csproj">
       <Project>{673347F3-6FC2-4F82-9273-BF158E0F8CB1}</Project>
       <Name>Cadencii.Media.Vsq</Name>
@@ -501,6 +497,10 @@
     <ProjectReference Include="..\external\xwt\Xwt.Gtk\Xwt.Gtk.csproj">
       <Project>{C3887A93-B2BD-4097-8E2F-3A063EFF32FD}</Project>
       <Name>Xwt.Gtk</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cadencii.Media.Dsp.Xwt\Cadencii.Media.Dsp.Xwt.csproj">
+      <Project>{F9410917-9A8E-4637-AE44-61E8D1B24C76}</Project>
+      <Name>Cadencii.Media.Dsp.Xwt</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

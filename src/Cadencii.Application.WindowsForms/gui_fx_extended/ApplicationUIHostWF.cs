@@ -122,7 +122,8 @@ namespace Cadencii.Application.Forms
 		PropertyInfo GetPropertyFrom (Type type, string name)
 		{
 			var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
-			return type.GetProperty (name, bf | BindingFlags.DeclaredOnly) ?? type.GetProperty (name, bf) ?? type.GetProperties (bf).FirstOrDefault (p => p.Name.EndsWith ('.' + name));
+			// first GetProperties() cannot be replaced with GetProperty() because it can match more than one properties (e.g. FormImpl.MainMenuStrip)
+			return type.GetProperty (name, bf | BindingFlags.DeclaredOnly) ?? type.GetProperties (bf).FirstOrDefault (p => p.Name == name) ?? type.GetProperties (bf).FirstOrDefault (p => p.Name.EndsWith ('.' + name));
 		}
 
 		void ApplyXml (Dictionary<string,object> roots, XmlElement e, object o, bool asCollection)

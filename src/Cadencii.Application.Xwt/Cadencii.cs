@@ -67,14 +67,15 @@ namespace Cadencii.Application.Forms
         [STAThread]
         public static void Main(string[] args)
         {
-			PortUtil.SetApplicationStartupPath(System.Windows.Forms.Application.StartupPath);
-			Cadencii.Gui.GuiHost.Current = new Cadencii.Gui.GuiHostWindowsForms ();
-			cadencii.dsp.DspUIHost.CurrentType = typeof (cadencii.dsp.winforms.DspUIHostWF);
+			PortUtil.SetApplicationStartupPath(new Uri (System.Reflection.Assembly.GetEntryAssembly ().CodeBase).LocalPath);
+			Cadencii.Gui.GuiHost.Current = new Cadencii.Gui.GuiHostXwt ();
+			cadencii.dsp.DspUIHost.CurrentType = typeof (cadencii.dsp.xwt.DspUIHostXwt);
 			//App.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
             //Thread.GetDomain().UnhandledException += new UnhandledExceptionEventHandler(Cadencii_UnhandledException);
 
-            App.EnableVisualStyles();
-            App.SetCompatibleTextRenderingDefault(false);
+			// nothing corresponding in Xwt.
+            //App.EnableVisualStyles();
+            //App.SetCompatibleTextRenderingDefault(false);
 
             // 引数を解釈
             parseArguments(args);
@@ -148,7 +149,8 @@ namespace Cadencii.Application.Forms
 			formMain.Load += mainWindow_Load;
 #endif
 
-			App.Run((System.Windows.Forms.Form) EditorManager.MainWindow);
+			App.Run();
+			EditorManager.MainWindow.Show ();
 #if !DEBUG
             } catch ( Exception ex ) {
                 String str_ex = getExceptionText( ex, 0 );
@@ -229,7 +231,7 @@ namespace Cadencii.Application.Forms
                 driver.getUi(EditorManager.MainWindow);
             }
 
-            ((System.Windows.Forms.Form) EditorManager.MainWindow).Load -= mainWindow_Load;
+            //((System.Windows.Forms.Form) EditorManager.MainWindow).Load -= mainWindow_Load;
         }
     }
 

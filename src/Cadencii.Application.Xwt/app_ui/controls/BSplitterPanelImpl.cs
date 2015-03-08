@@ -29,38 +29,16 @@ namespace Cadencii.Application.Controls
         public BSplitterPanelImpl()
             : base()
         {
-            base.AutoScroll = false;
+			((UiPanel) this).AutoScroll = false;
 			BorderColor = Colors.Black;
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
 		public Color BorderColor { get; set; }
 
+		// FIXME: ignore so far.
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-        public new BorderStyle BorderStyle
-        {
-            get
-            {
-                return m_border_style;
-            }
-            set
-            {
-                BorderStyle old = m_border_style;
-                m_border_style = value;
-                if (m_border_style == BorderStyle.Fixed3D) {
-					base.BorderStyle = (System.Windows.Forms.BorderStyle) BorderStyle.Fixed3D;
-                } else if (m_border_style == BorderStyle.FixedSingle) {
-					base.BorderStyle = (System.Windows.Forms.BorderStyle) BorderStyle.None;
-					base.Padding = new Padding(1).ToWF ();
-                } else {
-					base.Padding = new Padding(0).ToWF ();
-					base.BorderStyle = (System.Windows.Forms.BorderStyle) BorderStyle.None;
-                }
-                if (old != m_border_style && BorderStyleChanged != null) {
-                    BorderStyleChanged(this, new EventArgs());
-                }
-            }
-        }
+		public new BorderStyle BorderStyle { get; set; }
     }
 
 }

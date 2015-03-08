@@ -27,10 +27,7 @@ namespace Cadencii.Application.Controls
     [Serializable]
 	public partial class BSplitContainerImpl : ContainerControlImpl, BSplitContainer
     {
-		public event EventHandler<PaintEventArgs> Paint {
-			add { base.Paint += (o, e) => value (o, e.ToGui ()); }
-			remove { throw new NotImplementedException (); }
-		}
+		public event EventHandler<PaintEventArgs> Paint;
 
 		public int SplitterWidth {
 			get { return model.SplitterWidth; }
@@ -68,8 +65,11 @@ namespace Cadencii.Application.Controls
 		}
 
 		Cadencii.Gui.Size BSplitContainer.MinimumSize {
-			get { return base.MinimumSize.ToGui (); }
-			set { base.MinimumSize = value.ToWF (); }
+			get { return new Cadencii.Gui.Size ((int) base.MinWidth, (int) base.MinHeight); }
+			set {
+				base.MinWidth = value.Width;
+				base.MinHeight = value.Height;
+			}
 		}
 
 		public bool Panel2Hidden {
@@ -109,9 +109,9 @@ namespace Cadencii.Application.Controls
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.SuspendLayout();
+			SuspendLayout();
 			ApplicationUIHost.Instance.ApplyXml (this, "BSplitContainer.xml");
-			this.ResumeLayout(false);
+			ResumeLayout(false);
 		}
 
         /// <summary> 
@@ -136,9 +136,16 @@ namespace Cadencii.Application.Controls
 
 		public void SplitterMouseMove (object sender, MouseEventArgs e)
 		{
-			base.OnMouseMove(e.ToWF ());
+			base.OnMouseMoved(e.ToWF ());
 			model.ProcessSplitterMouseMove ();
         }
+
+		protected override void OnDraw (Xwt.Drawing.Context ctx, Xwt.Rectangle dirtyRect)
+		{
+			base.OnDraw (ctx, dirtyRect);
+			if (Paint != null)
+				Paint (this, new PaintEventArgs () { Graphics = ctx.ToGui (), ClipRectangle = dirtyRect.ToGui () });
+		}
     }
 
 }

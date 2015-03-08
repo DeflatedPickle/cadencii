@@ -153,7 +153,7 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.BoundsChanged -= value; }
 		}
 
-		void UiControl.Invoke (Delegate e)
+		public void Invoke (Delegate e)
 		{
 			Xwt.Application.Invoke ((Action) e);
 		}
@@ -178,22 +178,22 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.SuspendLayout ()
+		public void SuspendLayout ()
 		{
-			// no way to support this.
+			// no need to support this.
 		}
 
-		void UiControl.ResumeLayout ()
+		public void ResumeLayout ()
 		{
-			// no way to support this.
+			// no need to support this.
 		}
 
-		void UiControl.ResumeLayout (bool performLayout)
+		public void ResumeLayout (bool performLayout)
 		{
-			// no way to support this.
+			// no need to support this.
 		}
 
-		void UiControl.Focus ()
+		public void Focus ()
 		{
 			this.SetFocus ();
 		}
@@ -351,8 +351,8 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		Cadencii.Gui.Font UiControl.Font {
-			get { return this.Font.ToGui (); }
-			set { this.Font = value.ToWF (); }
+			get { return base.Font.ToGui (); }
+			set { base.Font = value.ToWF (); }
 		}
 	}
 <#
