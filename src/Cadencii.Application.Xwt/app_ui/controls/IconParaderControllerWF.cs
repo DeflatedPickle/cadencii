@@ -32,7 +32,7 @@ namespace Cadencii.Application.Controls
 						System.IO.FileStream fs = null;
 						try {
 							fs = new System.IO.FileStream (path_image, System.IO.FileMode.Open, System.IO.FileAccess.Read);
-							System.Drawing.Image img = System.Drawing.Image.FromStream (fs);
+							Xwt.Drawing.Image img = Xwt.Drawing.Image.FromStream (fs);
 							ret.NativeImage = img;
 						} catch (Exception ex) {
 							Logger.StdErr ("IconParader#createIconImage; ex=" + ex);
@@ -54,7 +54,7 @@ namespace Cadencii.Application.Controls
 						Image bmp = new Image (ICON_WIDTH, ICON_HEIGHT);
 						Graphics g = new Graphics (bmp);
 						g.clearRect (0, 0, ICON_WIDTH, ICON_HEIGHT);
-						Font font = new Font (System.Windows.Forms.SystemInformation.MenuFont);
+						Font font = GuiHost.Current.SystemMenuFont;
 						g.drawStringEx (
 							singer_name, font, new Rectangle (1, 1, ICON_WIDTH - 2, ICON_HEIGHT - 2),
 							Graphics.STRING_ALIGN_NEAR, Graphics.STRING_ALIGN_NEAR);

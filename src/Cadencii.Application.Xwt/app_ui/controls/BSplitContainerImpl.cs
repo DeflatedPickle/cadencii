@@ -29,6 +29,9 @@ namespace Cadencii.Application.Controls
     {
 		public event EventHandler<PaintEventArgs> Paint;
 
+		// FIXME: not sure if it can be supported in Xwt.
+		public string Text { get; set; }
+
 		public int SplitterWidth {
 			get { return model.SplitterWidth; }
 			set { model.SplitterWidth = value; }

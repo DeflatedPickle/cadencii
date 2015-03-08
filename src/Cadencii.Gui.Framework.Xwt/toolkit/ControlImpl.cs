@@ -115,7 +115,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -415,7 +415,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -715,7 +715,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -1015,7 +1015,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -1315,7 +1315,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -1615,7 +1615,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -1915,7 +1915,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -2215,7 +2215,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -2515,7 +2515,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -2815,7 +2815,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -3115,7 +3115,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -3415,7 +3415,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -3715,7 +3715,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -4015,7 +4015,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -4315,7 +4315,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -4615,7 +4615,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -4915,7 +4915,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -5215,7 +5215,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -5515,7 +5515,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -5815,7 +5815,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -6115,7 +6115,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -6415,7 +6415,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -6715,7 +6715,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -7015,7 +7015,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -7315,7 +7315,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -7615,7 +7615,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -7915,7 +7915,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -8215,7 +8215,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -8515,7 +8515,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -8815,7 +8815,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}
@@ -9115,7 +9115,7 @@ namespace Cadencii.Gui.Toolkit
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.PerformLayout ()
+		public void PerformLayout ()
 		{
 			// no way to support this.
 		}

@@ -93,12 +93,12 @@ namespace Cadencii.Application.Controls
 			panelTitle.Left = 0;
 			panelTitle.Top = 0;
 			panelTitle.Height = _TITLE_HEIGHT;
-			panelTitle.Width = this.Width;
+			panelTitle.Width = ((UiControl) this).Width;
 
 			panelMain.Top = _TITLE_HEIGHT;
 			panelMain.Left = 0;
-			panelMain.Width = this.Width;
-			panelMain.Height = this.Height - _TITLE_HEIGHT;
+			panelMain.Width = ((UiControl) this).Width;
+			panelMain.Height = ((UiControl) this).Height - _TITLE_HEIGHT;
 		}
 
 		private UiPanel panelMain;

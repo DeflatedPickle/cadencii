@@ -114,36 +114,36 @@ namespace Cadencii.Gui.Toolkit
 			return this;
 		}
 
-		object UiForm.Invoke (Delegate d, params object[] args)
+		public object Invoke (Delegate d, params object[] args)
 		{
 			object ret = null;
 			SynchronizationContext.Current.Send (o => ret = d.DynamicInvoke (args), null);
 			return ret;
 		}
 
-		DialogResult UiForm.ShowDialog ()
+		public DialogResult ShowDialog ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		DialogResult UiForm.ShowDialog (object parentForm)
+		public DialogResult ShowDialog (object parentForm)
 		{
 			throw new NotImplementedException ();
 		}
 
 		// FIXME: no effect now
-		FormBorderStyle UiForm.FormBorderStyle { get; set; }
+		public FormBorderStyle FormBorderStyle { get; set; }
 
 		// FIXME: is it correct?
-		Cadencii.Gui.Size UiForm.ClientSize {
+		public Cadencii.Gui.Size ClientSize {
 			get { return window.Size.ToGui (); }
 			set { window.Size = value.ToWF (); }
 		}
 
 		// FIXME: no effect now
-		DialogResult UiForm.DialogResult { get; set; }
+		public DialogResult DialogResult { get; set; }
 
-		System.ComponentModel.IContainer UiForm.Components {
+		public System.ComponentModel.IContainer Components {
 			get { return null; }
 		}
 

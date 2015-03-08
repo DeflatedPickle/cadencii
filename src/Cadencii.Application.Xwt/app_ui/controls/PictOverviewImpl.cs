@@ -60,8 +60,8 @@ namespace Cadencii.Application.Controls
 
         public PictOverviewImpl()
         {
-			DoubleBuffered = true;
-			Paint += (o, e) => model.paint (e.Graphics.ToGui ());
+			((PictOverview) this).DoubleBuffered = true;
+			((PictOverview) this).Paint += (o, e) => model.paint (e.Graphics);
 
 			model = new PictOverviewModel (this);
         }

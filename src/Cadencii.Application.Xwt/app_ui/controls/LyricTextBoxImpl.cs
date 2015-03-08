@@ -24,7 +24,7 @@ namespace Cadencii.Application.Controls
     public class LyricTextBoxImpl : TextBoxImpl, LyricTextBox
     {
 		public event EventHandler<KeyPressEventArgs> KeyPress {
-			add { base.KeyPress += (sender, e) => value (sender, new KeyPressEventArgs (e.KeyChar) { Handled = e.Handled }); }
+			add { base.KeyPressed += (sender, e) => value (sender, new KeyPressEventArgs ((char) e.NativeKeyCode) { Handled = e.Handled }); }
 			remove { throw new NotImplementedException (); }
 		}
 

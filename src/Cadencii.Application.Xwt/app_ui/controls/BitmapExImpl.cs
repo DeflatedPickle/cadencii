@@ -36,7 +36,7 @@ namespace Cadencii.Application.Controls
 
         public BitmapExImpl(Cadencii.Gui.Image original)
         {
-			m_base = new BitmapImage((Xwt.Drawing.Image) original.NativeImage);
+			m_base = ((Xwt.Drawing.Image) original.NativeImage).ToBitmap (ImageFormat.ARGB32);
         }
     }
 

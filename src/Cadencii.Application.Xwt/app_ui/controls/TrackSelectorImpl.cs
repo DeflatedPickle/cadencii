@@ -57,7 +57,7 @@ namespace Cadencii.Application.Controls
 		}
 
 		public FormMain MainWindow {
-			get { return (FormMain) ParentForm; }
+			get { return (FormMain) ((Xwt.Window) base.ParentWindow).Content; }
 		}
 
 		public TrackSelectorModel Model { get; private set; }
