@@ -95,12 +95,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -110,7 +110,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -120,12 +120,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -150,17 +150,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -200,25 +200,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -256,12 +256,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -395,12 +395,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -410,7 +410,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -420,12 +420,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -450,17 +450,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -500,25 +500,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -556,12 +556,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -695,12 +695,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -710,7 +710,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -720,12 +720,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -750,17 +750,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -800,25 +800,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -856,12 +856,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -995,12 +995,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -1010,7 +1010,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -1020,12 +1020,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -1050,17 +1050,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -1100,25 +1100,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -1156,12 +1156,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -1295,12 +1295,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -1310,7 +1310,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -1320,12 +1320,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -1350,17 +1350,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -1400,25 +1400,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -1456,12 +1456,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -1595,12 +1595,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -1610,7 +1610,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -1620,12 +1620,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -1650,17 +1650,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -1700,25 +1700,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -1756,12 +1756,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -1895,12 +1895,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -1910,7 +1910,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -1920,12 +1920,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -1950,17 +1950,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -2000,25 +2000,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -2056,12 +2056,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -2195,12 +2195,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -2210,7 +2210,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -2220,12 +2220,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -2250,17 +2250,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -2300,25 +2300,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -2356,12 +2356,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -2495,12 +2495,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -2510,7 +2510,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -2520,12 +2520,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -2550,17 +2550,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -2600,25 +2600,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -2656,12 +2656,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -2795,12 +2795,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -2810,7 +2810,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -2820,12 +2820,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -2850,17 +2850,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -2900,25 +2900,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -2956,12 +2956,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -3095,12 +3095,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -3110,7 +3110,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -3120,12 +3120,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -3150,17 +3150,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -3200,25 +3200,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -3256,12 +3256,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -3395,12 +3395,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -3410,7 +3410,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -3420,12 +3420,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -3450,17 +3450,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -3500,25 +3500,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -3556,12 +3556,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -3695,12 +3695,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -3710,7 +3710,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -3720,12 +3720,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -3750,17 +3750,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -3800,25 +3800,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -3856,12 +3856,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -3995,12 +3995,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -4010,7 +4010,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -4020,12 +4020,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -4050,17 +4050,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -4100,25 +4100,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -4156,12 +4156,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -4295,12 +4295,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -4310,7 +4310,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -4320,12 +4320,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -4350,17 +4350,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -4400,25 +4400,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -4456,12 +4456,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -4595,12 +4595,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -4610,7 +4610,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -4620,12 +4620,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -4650,17 +4650,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -4700,25 +4700,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -4756,12 +4756,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -4895,12 +4895,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -4910,7 +4910,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -4920,12 +4920,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -4950,17 +4950,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -5000,25 +5000,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -5056,12 +5056,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -5195,12 +5195,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -5210,7 +5210,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -5220,12 +5220,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -5250,17 +5250,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -5300,25 +5300,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -5356,12 +5356,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -5495,12 +5495,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -5510,7 +5510,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -5520,12 +5520,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -5550,17 +5550,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -5600,25 +5600,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -5656,12 +5656,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -5795,12 +5795,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -5810,7 +5810,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -5820,12 +5820,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -5850,17 +5850,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -5900,25 +5900,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -5956,12 +5956,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -6095,12 +6095,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -6110,7 +6110,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -6120,12 +6120,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -6150,17 +6150,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -6200,25 +6200,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -6256,12 +6256,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -6395,12 +6395,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -6410,7 +6410,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -6420,12 +6420,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -6450,17 +6450,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -6500,25 +6500,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -6556,12 +6556,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -6695,12 +6695,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -6710,7 +6710,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -6720,12 +6720,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -6750,17 +6750,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -6800,25 +6800,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -6856,12 +6856,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -6995,12 +6995,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -7010,7 +7010,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -7020,12 +7020,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -7050,17 +7050,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -7100,25 +7100,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -7156,12 +7156,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -7295,12 +7295,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -7310,7 +7310,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -7320,12 +7320,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -7350,17 +7350,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -7400,25 +7400,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -7456,12 +7456,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -7595,12 +7595,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -7610,7 +7610,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -7620,12 +7620,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -7650,17 +7650,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -7700,25 +7700,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -7756,12 +7756,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -7895,12 +7895,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -7910,7 +7910,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -7920,12 +7920,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -7950,17 +7950,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -8000,25 +8000,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -8056,12 +8056,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -8195,12 +8195,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -8210,7 +8210,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -8220,12 +8220,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -8250,17 +8250,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -8300,25 +8300,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -8356,12 +8356,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -8495,12 +8495,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -8510,7 +8510,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -8520,12 +8520,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -8550,17 +8550,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -8600,25 +8600,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -8656,12 +8656,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -8795,12 +8795,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -8810,7 +8810,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -8820,12 +8820,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -8850,17 +8850,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -8900,25 +8900,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -8956,12 +8956,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}
@@ -9095,12 +9095,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiControl.SizeChanged {
+		public event EventHandler SizeChanged {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
 
-		event EventHandler UiControl.Resize {
+		public event EventHandler Resize {
 			add { this.BoundsChanged += value; }
 			remove { this.BoundsChanged -= value; }
 		}
@@ -9110,7 +9110,7 @@ namespace Cadencii.Gui.Toolkit
 			Xwt.Application.Invoke ((Action) e);
 		}
 
-		void UiControl.BringToFront ()
+		public void BringToFront ()
 		{
 			throw new NotImplementedException ();
 		}
@@ -9120,12 +9120,12 @@ namespace Cadencii.Gui.Toolkit
 			// no way to support this.
 		}
 
-		Point UiControl.PointToClient (Point point)
+		public Point PointToClient (Point point)
 		{
 			throw new NotImplementedException ();
 		}
 
-		Point UiControl.PointToScreen (Point point)
+		public Point PointToScreen (Point point)
 		{
 			throw new NotImplementedException ();
 		}
@@ -9150,17 +9150,17 @@ namespace Cadencii.Gui.Toolkit
 			this.SetFocus ();
 		}
 
-		void UiControl.Refresh ()
+		public void Refresh ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate ()
+		public void Invalidate ()
 		{
 			throw new NotImplementedException ();
 		}
 
-		void UiControl.Invalidate (bool invalidateChildren)
+		public void Invalidate (bool invalidateChildren)
 		{
 			throw new NotImplementedException ();
 		}
@@ -9200,25 +9200,25 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Top {
+		public int Top {
 			get { return (int) this.ScreenBounds.Top; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Left {
+		public int Left {
 			get { return (int) this.ScreenBounds.Left; }
 			set {
 				throw new NotImplementedException ();
 			}
 		}
 
-		int UiControl.Bottom {
+		public int Bottom {
 			get { return (int) this.ScreenBounds.Bottom; }
 		}
 
-		int UiControl.Right {
+		public int Right {
 			get { return (int) this.ScreenBounds.Right; }
 		}
 
@@ -9256,12 +9256,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		int UiControl.Width {
+		public int Width {
 			get { return (int) this.WidthRequest; }
 			set { this.WidthRequest = value; }
 		}
 
-		int UiControl.Height {
+		public int Height {
 			get { return (int) this.HeightRequest; }
 			set { this.HeightRequest = value; }
 		}

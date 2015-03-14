@@ -69,8 +69,8 @@ namespace Cadencii.Application.Controls
         #region UI Impl for C#
 
 		public new bool DoubleBuffered {
-			get { return base.DoubleBuffered; }
-			set { base.DoubleBuffered = value; }
+			get { return true; }
+			set { }
 		}
 
         /// <summary> 

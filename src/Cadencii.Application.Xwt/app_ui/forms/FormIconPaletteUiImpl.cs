@@ -101,9 +101,9 @@ namespace Cadencii.Application.Forms
 
                 bool setimg = System.IO.File.Exists(buttonIconPath);
                 if (setimg) {
-                    btn.Image = new Cadencii.Gui.Image () { NativeImage = System.Drawing.Image.FromStream(new System.IO.FileStream(buttonIconPath, System.IO.FileMode.Open, System.IO.FileAccess.Read)) };
+                    btn.Image = new Cadencii.Gui.Image () { NativeImage = Xwt.Drawing.Image.FromStream(new System.IO.FileStream(buttonIconPath, System.IO.FileMode.Open, System.IO.FileAccess.Read)) };
                 } else {
-                    System.Drawing.Image img = null;
+                    Xwt.Drawing.Image img = null;
                     string str = "";
                     string caption = handle.IDS;
                     if (caption.Equals("cresc_1")) {
@@ -191,10 +191,10 @@ namespace Cadencii.Application.Forms
                 height += buttonWidth;
             }
             width = Math.Max(width, buttonWidth * decrescendButtons.Count);
-            this.ClientSize = new System.Drawing.Size(width, height);
+            this.ClientSize = new Size(width, height);
             var size = this.Size;
-            this.MaximumSize = new System.Drawing.Size(size.Width, size.Height);
-            this.MinimumSize = new System.Drawing.Size(size.Width, size.Height);
+            this.MaximumSize = new Size(size.Width, size.Height);
+            this.MinimumSize = new Size(size.Width, size.Height);
         }
         #endregion
 

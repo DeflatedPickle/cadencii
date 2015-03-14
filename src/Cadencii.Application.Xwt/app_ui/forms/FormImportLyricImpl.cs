@@ -147,12 +147,12 @@ namespace Cadencii.Application.Forms
         #region event handlers
         public void btnOK_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.DialogResult = DialogResult.OK;
         }
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.DialogResult = DialogResult.Cancel;
         }
         #endregion
 

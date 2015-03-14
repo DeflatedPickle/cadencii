@@ -47,22 +47,22 @@ namespace Cadencii.Gui.Toolkit
 			UiFormLoad (o, e);
 		}
 
-		event EventHandler UiForm.Load {
+		public event EventHandler Load {
 			add { RegisterLoad (value); }
 			remove { UnregisterLoad (value); }
 		}
 
-		event EventHandler UiForm.Activated {
+		public event EventHandler Activated {
 			add { window.Shown += value; }
 			remove { window.Shown -= value; }
 		}
 
-		event EventHandler UiForm.Deactivate {
+		public event EventHandler Deactivate {
 			add { window.Hidden += value; }
 			remove { window.Hidden -= value; }
 		}
 
-		event EventHandler<DragEventArgs> UiForm.DragEnter {
+		public event EventHandler<DragEventArgs> DragEnter {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -86,7 +86,7 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.DragLeave -= value; }
 		}
 
-		event EventHandler<FormClosingEventArgs> UiForm.FormClosing {
+		public event EventHandler<FormClosingEventArgs> FormClosing {
 			add {
 				window.CloseRequested += (o, e) => {
 					var xe = new FormClosingEventArgs ();
@@ -99,12 +99,12 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler UiForm.FormClosed {
+		public event EventHandler FormClosed {
 			add { window.Closed += value; }
 			remove { window.Closed -= value; }
 		}
 
-		void UiForm.Close ()
+		public void Close ()
 		{
 			window.Close ();
 		}
@@ -148,16 +148,16 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: no effect. Xwt ckaims it is double buffered by default (which seems sometimes false though).
-		bool UiForm.DoubleBuffered { get; set; }
+		public bool DoubleBuffered { get; set; }
 
 		// FIXME: no effect
-		bool UiForm.UserPaint { get; set; }
+		public bool UserPaint { get; set; }
 
 		// FIXME: no effect
-		bool UiForm.AllPaintingInWmPaint { get; set; }
+		public bool AllPaintingInWmPaint { get; set; }
 
 		// FIXME: no effect
-		AutoScaleMode UiForm.AutoScaleMode { get; set; }
+		public AutoScaleMode AutoScaleMode { get; set; }
 
 		UiMenuStrip UiForm.MainMenuStrip {
 			get {
@@ -168,7 +168,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		FormWindowState UiForm.WindowState {
+		public FormWindowState WindowState {
 			get { return window.FullScreen ? FormWindowState.Maximized : window.ScreenBounds.IsEmpty ? FormWindowState.Minimized : FormWindowState.Normal; }
 			set {
 				switch (value) {
@@ -188,7 +188,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Cadencii.Gui.Size UiForm.MinimumSize {
+		public Cadencii.Gui.Size MinimumSize {
 			get { return new Size ((int) base.MinWidth, (int) base.MinHeight); }
 			set {
 				base.MinWidth = value.Width;
@@ -197,9 +197,9 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: maybe better be implemented, but we can live without it.
-		bool UiForm.TopMost { get; set; }
+		public bool TopMost { get; set; }
 
-		string UiForm.Text {
+		public string Text {
 			get { return window.Title; }
 			set { window.Title = value; }
 		}

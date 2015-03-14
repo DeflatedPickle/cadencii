@@ -1860,7 +1860,7 @@ namespace Cadencii.Application.Forms
         {
             Size current_minsize = new Size(MinimumSize.Width, MinimumSize.Height);
             Size client = new Size(this.ClientSize.Width, this.ClientSize.Height);
-            Size current = new Size(this.Size.Width, this.Size.Height);
+			Size current = new Size((int) this.Size.Width, (int) this.Size.Height);
             return new Size(current_minsize.Width,
                                   splitContainer1.Panel2MinSize +
 				Consts._SCROLL_WIDTH + Consts._PICT_POSITION_INDICATOR_HEIGHT + pictPianoRoll.MinimumSize.Height +
@@ -2012,7 +2012,8 @@ namespace Cadencii.Application.Forms
             int large_change = (int)(pict_piano_roll_width / scalex);
             int maximum = (int)(l + large_change);
 
-			int thumb_width = ((GuiHostWindowsForms) GuiHost.Current).HorizontalScrollBarThumbWidth;
+			// FIXME: Xwt has value?
+			int thumb_width = 0;// ((GuiHostWindowsForms) GuiHost.Current).HorizontalScrollBarThumbWidth;
             int box_width = (int)(large_change / (float)maximum * (hwidth - 2 * thumb_width));
             if (box_width < EditorManager.editorConfig.MinimumScrollHandleWidth) {
                 box_width = EditorManager.editorConfig.MinimumScrollHandleWidth;
@@ -2047,7 +2048,8 @@ namespace Cadencii.Application.Forms
             int maximum = (int)(128 * (int)(100 * scaley) / scaley);
             int large_change = (int)(pheight / scaley);
 
-			int thumb_height = ((GuiHostWindowsForms) GuiHost.Current).VerticalScrollBarThumbHeight;
+			// FIXME: Xwt has value?
+			int thumb_height = 0;//((GuiHostWindowsForms) GuiHost.Current).VerticalScrollBarThumbHeight;
             int box_height = (int)(large_change / (float)maximum * (vheight - 2 * thumb_height));
             if (box_height < EditorManager.editorConfig.MinimumScrollHandleWidth) {
                 box_height = EditorManager.editorConfig.MinimumScrollHandleWidth;

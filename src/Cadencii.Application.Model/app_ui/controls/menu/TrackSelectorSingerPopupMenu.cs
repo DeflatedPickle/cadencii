@@ -9,7 +9,6 @@ namespace Cadencii.Application.Controls
 		bool SingerChangeExists { get; set; }
 		int Clock { get; set; }
 		int InternalID { get; set; }
-		Point PointToScreen (Point source);
 	}
 }
 

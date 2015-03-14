@@ -211,7 +211,7 @@ namespace Cadencii.Application.Forms
         private void FormWorkerUi_SizeChanged(object sender, EventArgs e)
         {
             if (flowLayoutPanel1.Visible) {
-                mFullHeight = this.ParentWindow.Height;
+				mFullHeight = (int) this.ParentWindow.Height;
 				// FIXME: not sure if this works (commented out WF-dependent code)
 				int draft_width = flowLayoutPanel1.Width - 10;// - ((GuiHostWindowsForms) GuiHost.Current).VerticalScrollBarWidth;
                 if (draft_width < 1) {
@@ -229,7 +229,7 @@ namespace Cadencii.Application.Forms
             if (flowLayoutPanel1.Visible) {
                 this.ParentWindow.Height = mFullHeight;
             } else {
-				int w = this.ParentWindow.Size.Width;
+				int w = (int) this.ParentWindow.Size.Width;
                 int delta = flowLayoutPanel1.Top - buttonCancel.Bottom;
                 int h = buttonCancel.Bottom + delta - 2;
 				this.AsGui ().ClientSize = new Size(w, h);

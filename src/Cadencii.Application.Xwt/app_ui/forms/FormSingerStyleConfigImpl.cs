@@ -293,7 +293,7 @@ namespace Cadencii.Application.Forms
 
         public void btnOK_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.DialogResult = DialogResult.OK;
         }
 
         public void comboBox1_SelectedIndexChanged(Object sender, EventArgs e)
@@ -321,13 +321,13 @@ namespace Cadencii.Application.Forms
 				Cadencii.Gui.Toolkit.MessageBoxButtons.YesNo,
 				Cadencii.Gui.Toolkit.MessageBoxIcon.Warning) == Cadencii.Gui.DialogResult.Yes) {
                 m_apply_current_track = true;
-                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                this.DialogResult = DialogResult.OK;
             }
         }
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.DialogResult = DialogResult.Cancel;
         }
         #endregion
 

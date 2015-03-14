@@ -59,7 +59,7 @@ namespace Cadencii.Application.Forms
 
         public void close()
         {
-            this.Close();
+            this.ParentWindow.Close();
         }
 
         #endregion

@@ -29,11 +29,6 @@ namespace Cadencii.Application.Controls
             : base(cont)
         {
         }
-
-		Cadencii.Gui.Point TrackSelectorSingerPopupMenu.PointToScreen (Cadencii.Gui.Point source)
-		{
-			return PointToScreen (source.ToWF ()).ToGui ();
-		}
     }
 
 }

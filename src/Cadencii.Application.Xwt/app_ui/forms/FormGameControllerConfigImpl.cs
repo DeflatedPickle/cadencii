@@ -274,17 +274,17 @@ namespace Cadencii.Application.Forms
             m_povs[1] = 27000; // left
             m_povs[2] = 0; // up
             m_povs[3] = 9000; // right
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.DialogResult = DialogResult.OK;
         }
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.DialogResult = DialogResult.Cancel;
         }
 
         public void btnOK_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.DialogResult = DialogResult.OK;
         }
         #endregion
 

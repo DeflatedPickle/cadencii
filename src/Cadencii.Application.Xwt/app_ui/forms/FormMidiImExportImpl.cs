@@ -294,12 +294,12 @@ namespace Cadencii.Application.Forms
 
         public void btnCancel_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.DialogResult = DialogResult.Cancel;
         }
 
         public void btnOK_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.DialogResult = DialogResult.OK;
         }
 
         public void radioGateTime_CheckedChanged(Object sender, EventArgs e)
