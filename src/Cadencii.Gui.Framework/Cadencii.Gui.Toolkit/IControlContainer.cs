@@ -7,7 +7,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 		void AddControl (UiControl control);
 		void RemoveControl (UiControl control);
-		//IList<UiControl> Controls { get; }
+		IEnumerable<UiControl> GetControls ();
 	}
 }
 

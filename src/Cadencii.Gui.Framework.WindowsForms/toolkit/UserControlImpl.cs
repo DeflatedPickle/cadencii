@@ -33,6 +33,12 @@ namespace Cadencii.Gui.Toolkit
 			Controls.Remove ((System.Windows.Forms.Control) control);
 		}
 
+		IEnumerable<UiControl> IControlContainer.GetControls ()
+		{
+			foreach (UiControl c in Controls)
+				yield return c;
+		}
+
 		// UiUserControl
 
 		public event EventHandler<PaintEventArgs> Paint {

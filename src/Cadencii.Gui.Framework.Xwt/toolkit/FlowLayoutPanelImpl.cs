@@ -25,6 +25,12 @@ namespace Cadencii.Gui.Toolkit
 		{
 			content.Remove ((Xwt.Widget) control);
 		}
+
+		IEnumerable<UiControl> IControlContainer.GetControls ()
+		{
+			foreach (UiControl c in ((UiFlowLayoutPanel) this).Controls)
+				yield return c;
+		}
 	}
 }
 

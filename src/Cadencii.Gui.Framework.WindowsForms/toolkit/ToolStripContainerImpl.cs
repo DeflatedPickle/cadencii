@@ -39,6 +39,12 @@ namespace Cadencii.Gui.Toolkit
 			{
 				panel.Controls.Remove ((System.Windows.Forms.Control) control);
 			}
+
+			IEnumerable<UiControl> IControlContainer.GetControls ()
+			{
+				foreach (UiControl c in panel.Controls)
+					yield return c;
+			}
 			#endregion
 		}
 

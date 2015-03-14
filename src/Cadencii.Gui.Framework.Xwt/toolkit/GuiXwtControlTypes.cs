@@ -146,6 +146,12 @@ namespace Cadencii.Gui.Toolkit
 		{
 			base.RemoveChild ((Xwt.Widget)control);
 		}
+
+		IEnumerable<UiControl> IControlContainer.GetControls ()
+		{
+			foreach (UiControl c in base.Children)
+				yield return c;
+		}
 		#endregion
 	}
 }

@@ -33,6 +33,12 @@ namespace Cadencii.Gui.Toolkit
 			{
 				panel.RemoveChild ((Xwt.Widget) control);
 			}
+
+			IEnumerable<UiControl> IControlContainer.GetControls ()
+			{
+				foreach (UiControl c in panel.Children)
+					yield return c;
+			}
 			#endregion
 		}
 

@@ -57,7 +57,7 @@ namespace Cadencii.Application.Forms
 			var p = c as IControlContainer;
 			if (p == null)
 				return null;
-			return p.Controls.OfType<Control> ()
+			return p.GetControls ().OfType<Control> ()
 				.Select (cc => FindControlTreeItem (cc, name))
 				.FirstOrDefault (x => x != null);
 		}
@@ -72,7 +72,7 @@ namespace Cadencii.Application.Forms
 					if (value [1] == '(')
 						return typeof (Xwt.Drawing.Color).GetMethods ().First (m => m.Name == "FromArgb" && m.GetParameters ().Length == 3).Invoke (null, value.Substring (2, value.Length - 3).Split (',').Select (tk => int.Parse (tk)).Cast<object> ().ToArray ());
 					else if (value.StartsWith ("$SystemColors"))
-						return get_static_property (typeof (System.Drawing.SystemColors), value);
+						return get_static_property (typeof (Cadencii.Gui.SystemColors), value);
 					else
 						return get_static_property (typeof (Xwt.Drawing.Color), value);
 				}
