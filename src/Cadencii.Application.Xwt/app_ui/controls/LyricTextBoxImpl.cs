@@ -32,6 +32,7 @@ namespace Cadencii.Application.Controls
 
 		public string BufferText { get; set; }
 
+		/*
         /// <summary>
         /// オーバーライド．(Tab)または(Tab+Shift)も入力キーとみなすようオーバーライドされている
         /// </summary>
@@ -39,7 +40,6 @@ namespace Cadencii.Application.Controls
         /// <returns>指定されているキーが入力キーである場合は true．それ以外の場合は false．</returns>
 		//
 		// FIXME: cannot implement in XWT. Not sure if it is even necessary. 
-		/*
 		protected override bool IsInputKey(System.Windows.Forms.Keys keyData)
         {
             switch (keyData) {

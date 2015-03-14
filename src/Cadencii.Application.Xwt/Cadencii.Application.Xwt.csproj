@@ -79,6 +79,8 @@
     <Reference Include="System.Design" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Dynamic" />
+    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cadencii.cs" />
@@ -175,6 +177,7 @@
     <Compile Include="gui_fx_extended\ClipboardXwt.cs" />
     <Compile Include="gui_fx_extended\DialogsXwt.cs" />
     <Compile Include="gui_fx_extended\ApplicationUIHostXwt.cs" />
+    <Compile Include="Properties.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />
