@@ -139,7 +139,8 @@ namespace Cadencii.Application.Controls
 
 		public void SplitterMouseMove (object sender, MouseEventArgs e)
 		{
-			base.OnMouseMoved(e.ToWF ());
+			// FIXME: does this work?
+			base.OnMouseMoved(new Xwt.MouseMovedEventArgs (DateTime.Now.Ticks, e.X, e.Y));
 			model.ProcessSplitterMouseMove ();
         }
 

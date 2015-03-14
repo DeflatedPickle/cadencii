@@ -42,6 +42,7 @@ namespace Cadencii.Application.Forms
 			case MessageBoxButtons.YesNoCancel:
 				return MessageDialog.AskQuestion (caption, text, new Command [] { Command.Yes, Command.No, Command.Cancel });
 			}
+			throw new NotSupportedException ();
 		}
 
 		public override bool ShowDialogTo (FormWorker formWorker, UiForm mainWindow)
@@ -133,7 +134,7 @@ namespace Cadencii.Application.Forms
 			BeforeShowDialog ();
 			var ret = ((Dialog) dialog).Run ((Window) parentForm);
 			AfterShowDialog ();
-			return ret ? Cadencii.Gui.DialogResult.OK : Cadencii.Gui.DialogResult.Cancel;
+			return ret;
 		}
 		public override bool IsShowingDialog {
 			get { return mShowingDialog; }

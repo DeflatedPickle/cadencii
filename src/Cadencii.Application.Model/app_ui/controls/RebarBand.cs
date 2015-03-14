@@ -22,7 +22,6 @@ namespace Cadencii.Application.Controls
 		bool NewRow { get; set; }
 		bool UseCoolbarPicture { get; set; }
 		bool FixedBackground { get; set; }
-		Image BackgroundImage { get; set; }
 		Rectangle Bounds { get; }
 		int ID { get; }
 
@@ -30,11 +29,6 @@ namespace Cadencii.Application.Controls
 		void DestroyBand ();
 		void Show (UiControl control, Rectangle chevronRect);
 
-		void OnResize (EventArgs e);
-		void OnMouseDown (MouseEventArgs e);
-		void OnMouseMove (MouseEventArgs e);
-		void OnMouseUp (MouseEventArgs e);
-		void OnMouseWheel (MouseEventArgs e);
 		event EventHandler Resize;
 	}
 }

@@ -272,10 +272,10 @@ namespace Cadencii.Application.Forms
             Invalidate();
         }
 
-        public void VersionInfo_Paint(Object sender, Cadencii.Gui.Toolkit.PaintEventArgs e)
-        {
+		protected override void OnDraw (Xwt.Drawing.Context ctx, Xwt.Rectangle dirtyRect)
+		{
             try {
-				paintCor(new Graphics() {NativeGraphics = e.Graphics});
+				paintCor(new Graphics() {NativeGraphics = ctx});
             } catch (Exception ex) {
 #if DEBUG
                 Logger.StdErr("VersionInfo_Paint; ex=" + ex);
@@ -338,9 +338,10 @@ namespace Cadencii.Application.Forms
 
         private void VersionInfo_FontChanged(Object sender, EventArgs e)
         {
-            for (int i = 0; i < this.Controls.Count; i++) {
-				GuiHost.Current.ApplyFontRecurse((UiControl) this.Controls[i], new Cadencii.Gui.Font(this.Font));
-            }
+			// skip
+            //for (int i = 0; i < this.Controls.Count; i++) {
+			//	GuiHost.Current.ApplyFontRecurse((UiControl) this.Controls[i], new Cadencii.Gui.Font(this.Font));
+            //}
         }
 
         public void chkTwitterID_CheckedChanged(Object sender, EventArgs e)
@@ -351,7 +352,6 @@ namespace Cadencii.Application.Forms
 
         private void registerEventHandlers()
         {
-			this.Paint += (o, e) => this.VersionInfo_Paint (o, e.ToGui ());
 			this.AsGui ().KeyDown += this.VersionInfo_KeyDown;
             this.FontChanged += this.VersionInfo_FontChanged;
             this.timer.Tick += timer_Tick;

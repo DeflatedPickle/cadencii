@@ -246,18 +246,18 @@ namespace Cadencii.Application.Forms
             pictPianoRoll.setMainForm(this);
             bgWorkScreen = new System.ComponentModel.BackgroundWorker();
 
-			openXmlVsqDialog = new OpenFileDialogImpl();
+			openXmlVsqDialog = ApplicationUIHost.Create<UiOpenFileDialog> ();
             openXmlVsqDialog.Filter = string.Join("|", new[] { "VSQ Format(*.vsq)|*.vsq", "XML-VSQ Format(*.xvsq)|*.xvsq" });
 
-            saveXmlVsqDialog = new SaveFileDialogImpl();
+			saveXmlVsqDialog = ApplicationUIHost.Create<UiSaveFileDialog> ();
             saveXmlVsqDialog.Filter = string.Join("|", new[] { "VSQ Format(*.vsq)|*.vsq", "XML-VSQ Format(*.xvsq)|*.xvsq", "All files(*.*)|*.*" });
 
-            openUstDialog = new OpenFileDialogImpl();
+			openUstDialog = ApplicationUIHost.Create<UiOpenFileDialog> ();
             openUstDialog.Filter = string.Join("|", new[] { "UTAU Project File(*.ust)|*.ust", "All Files(*.*)|*.*" });
 
-            openMidiDialog = new OpenFileDialogImpl();
-            saveMidiDialog = new SaveFileDialogImpl();
-            openWaveDialog = new OpenFileDialogImpl();
+			openMidiDialog = ApplicationUIHost.Create<UiOpenFileDialog> ();
+			saveMidiDialog = ApplicationUIHost.Create<UiSaveFileDialog> ();
+			openWaveDialog = ApplicationUIHost.Create<UiOpenFileDialog> ();
 
             /*mOverviewScaleCount = EditorManager.editorConfig.OverviewScaleCount;
             mOverviewPixelPerClock = getOverviewScaleX( mOverviewScaleCount );*/
@@ -716,7 +716,7 @@ namespace Cadencii.Application.Forms
             if (delta > 0) {
                 // 項目を増やさないといけない
                 for (int i = 0; i < delta; i++) {
-                    var item = new ToolStripMenuItemImpl(
+					var item = ApplicationUIHost.Create<UiToolStripMenuItem> (
 						"", null, (o,e) => model.OtherItems.handleVibratoPresetSubelementClick ((UiToolStripMenuItem) o));
                     menuLyricCopyVibratoToPreset.DropDownItems.Add(item);
                 }
@@ -1396,9 +1396,9 @@ namespace Cadencii.Application.Forms
 
                     menuTrackBgm.DropDownItems.Add(menu);
                 }
-                menuTrackBgm.DropDownItems.Add(new ToolStripSeparatorImpl());
+				menuTrackBgm.DropDownItems.Add(ApplicationUIHost.Create<UiToolStripSeparator> ());
             }
-            var menu_add = new ToolStripMenuItemImpl();
+			var menu_add = ApplicationUIHost.Create<UiToolStripMenuItem> ();
             menu_add.Text = _("Add");
 			menu_add.Click += (o, e) => model.OtherItems.handleBgmAdd_Click ();
             menuTrackBgm.DropDownItems.Add(menu_add);
@@ -1701,7 +1701,7 @@ namespace Cadencii.Application.Forms
                 string desc = ipt.getDescription(lang);
 
                 // toolStripPaletteTools
-                var tsb = new ToolBarToggleButtonImpl();
+				var tsb = ApplicationUIHost.Create<UiToolBarToggleButton> ();
                 if (icon != null) {
                     imageListTool.Images.Add(icon);
                     tsb.ImageIndex = imageListTool.Images.Count - 1;
@@ -1860,7 +1860,7 @@ namespace Cadencii.Application.Forms
                                   splitContainer1.Panel2MinSize +
 				Consts._SCROLL_WIDTH + Consts._PICT_POSITION_INDICATOR_HEIGHT + pictPianoRoll.MinimumSize.Height +
                                   rebar.Height +
-				((System.Windows.Forms.MenuStrip) menuStripMain.Native).Height + statusStrip.Height +
+				/*((System.Windows.Forms.MenuStrip) menuStripMain.Native).Height +*/ statusStrip.Height +
                                   (current.Height - client.Height) +
                                   20);
         }

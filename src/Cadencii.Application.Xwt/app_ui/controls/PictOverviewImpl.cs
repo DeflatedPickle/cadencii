@@ -34,8 +34,13 @@ namespace Cadencii.Application.Controls
     /// <summary>
     /// ナビゲーションバーを描画するコンポーネント
     /// </summary>
-    public class PictOverviewImpl : PictureBoxImpl, PictOverview
+	public class PictOverviewImpl : PictureBoxImpl, PictOverview
     {
+		event EventHandler PictOverview.MouseLeave {
+			add { base.MouseExited += value; }
+			remove { base.MouseExited -= value; }
+		}
+
 		void PictOverview.InvokeOnUiThread (Action action)
 		{
 			this.Invoke(action);

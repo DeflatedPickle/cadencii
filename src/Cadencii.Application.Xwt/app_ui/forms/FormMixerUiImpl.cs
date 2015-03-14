@@ -293,7 +293,7 @@ namespace Cadencii.Application.Forms
                 //this.MaximumSize = Size.Zero;
 				this.MinimumSize = Cadencii.Gui.Size.Empty;
 				this.ClientSize = new Size(screen_num * (VolumeTrackerController.WIDTH + 1) + 3, VolumeTrackerController.HEIGHT + hScroll.Height);
-                this.MinimumSize = this.Size;
+				this.MinimumSize = this.Size.ToGui ();
                 //this.MaximumSize = this.Size;
                 this.Invalidate();
             }
@@ -361,7 +361,7 @@ namespace Cadencii.Application.Forms
 
         private void setResources()
         {
-            this.Icon = cadencii.Properties.Resources.Icon1;
+			this.ParentWindow.Icon = cadencii.Properties.Resources.Icon1;
         }
 
         private void invokePanpotChangedEvent(int track, int panpot)

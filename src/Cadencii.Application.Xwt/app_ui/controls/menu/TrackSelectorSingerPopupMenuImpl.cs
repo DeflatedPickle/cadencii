@@ -26,7 +26,7 @@ namespace Cadencii.Application.Controls
 		public int InternalID { get; set; }
 
         public TrackSelectorSingerPopupMenuImpl(System.ComponentModel.IContainer cont)
-            : base(cont)
+            : base()
         {
         }
     }

@@ -65,13 +65,14 @@ namespace Cadencii.Application.Controls
 			{
 				((UiControl) item).Location = new Point (2, 2); // force override.
 				base.InsertItem (index, item);
-				owner.Controls.Add ((System.Windows.Forms.Control) item);
+				owner.AddControl ((UiControl) item);
 			}
 
 			protected override void SetItem (int index, RebarBand item)
 			{
 				base.SetItem (index, item);
-				owner.Controls.SetChildIndex ((System.Windows.Forms.Control) item, index);
+				throw new NotImplementedException ();
+				//owner.Controls.SetChildIndex ((System.Windows.Forms.Control) item, index);
 			}
 		}
 
@@ -92,10 +93,10 @@ namespace Cadencii.Application.Controls
 				UseChevron = true;
 
 				BorderStyle = BorderStyle.FixedSingle;
-				ForeColor = Colors.Red.ToNative ();
+				ForeColor = Colors.Red;
 				Width = 300;
 				Height = 26;
-				AutoSize = true;
+				//AutoSize = true;
 			}
 
 			int id = -1;
@@ -123,37 +124,14 @@ namespace Cadencii.Application.Controls
 			{
 				throw new NotSupportedException ();
 			}
-			public void OnMouseDown (MouseEventArgs e)
-			{
-				base.OnMouseDown (e.ToWF ());
-			}
-			public void OnMouseMove (MouseEventArgs e)
-			{
-				base.OnMouseMove (e.ToWF ());
-			}
-			public void OnMouseUp (MouseEventArgs e)
-			{
-				base.OnMouseUp (e.ToWF ());
-			}
-			public void OnMouseWheel (MouseEventArgs e)
-			{
-				base.OnMouseWheel (e.ToWF ());
-			}
-			public void OnResize (EventArgs e)
-			{
-				base.OnResize (e);
-			}
 			public RebarBandCollection Bands { get; set; }
 			public string Key { get; set; }
 			public int BandSize { get; set; }
 			public bool VariantHeight { get; set; }
 			public bool AllowVertical { get; set; }
 			public UiControl Child {
-				get { return Controls.Count > 0 ? (UiControl)Controls [0] : null; }
-				set {
-					Controls.Clear ();
-					Controls.Add ((System.Windows.Forms.Control)value.Native);
-				}
+				get { return (UiControl) base.Content; }
+				set { base.Content = (Xwt.Widget) value.Native; }
 			}
 			public int Header { get; set; }
 			public int Integral { get; set; }
@@ -164,10 +142,6 @@ namespace Cadencii.Application.Controls
 			public bool NewRow { get; set; }
 			public bool UseCoolbarPicture { get; set; }
 			public bool FixedBackground { get; set; }
-			public Cadencii.Gui.Image BackgroundImage {
-				get { return base.BackgroundImage.ToGui (); }
-				set { base.BackgroundImage = value.ToWF (); }
-			}
 			public Cadencii.Gui.Rectangle Bounds {
 				get { return base.Bounds.ToGui (); }
 			}
