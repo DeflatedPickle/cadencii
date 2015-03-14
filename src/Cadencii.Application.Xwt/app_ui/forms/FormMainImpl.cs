@@ -268,7 +268,7 @@ namespace Cadencii.Application.Forms
 #endif
 
             registerEventHandlers();
-            this.Icon = cadencii.Properties.Resources.Icon1;
+			this.ParentWindow.Icon = cadencii.Properties.Resources.Icon1;
 
 #if !ENABLE_SCRIPT
             menuSettingPaletteTool.setVisible( false );
@@ -518,7 +518,9 @@ namespace Cadencii.Application.Forms
             } else {
 				this.AsGui ().WindowState = FormWindowState.Normal;
             }
-            Rectangle bounds = EditorManager.editorConfig.WindowRect;
+			// skip this, it's only about restoring window size.
+            /*
+			Rectangle bounds = EditorManager.editorConfig.WindowRect;
             this.Bounds = new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
             // ウィンドウ位置・サイズの設定値が、使えるディスプレイのどれにも被っていない場合
 			Rectangle rc2 = Screen.Instance.getScreenBounds(this);
@@ -531,7 +533,9 @@ namespace Cadencii.Application.Forms
                 this.Bounds = new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
                 EditorManager.editorConfig.WindowRect = bounds;
             }
-			this.LocationChanged += (o,e) => model.FormMain.RunLocationChanged ();
+            */
+			// skip this, it's only about saving window location.
+			//this.LocationChanged += (o,e) => model.FormMain.RunLocationChanged ();
 
             updateScrollRangeHorizontal();
             updateScrollRangeVertical();
@@ -717,7 +721,7 @@ namespace Cadencii.Application.Forms
                 // 項目を増やさないといけない
                 for (int i = 0; i < delta; i++) {
 					var item = ApplicationUIHost.Create<UiToolStripMenuItem> (
-						"", null, (o,e) => model.OtherItems.handleVibratoPresetSubelementClick ((UiToolStripMenuItem) o));
+						"", null, new EventHandler ((o, e) => model.OtherItems.handleVibratoPresetSubelementClick ((UiToolStripMenuItem) o)));
                     menuLyricCopyVibratoToPreset.DropDownItems.Add(item);
                 }
             } else if (delta < 0) {
@@ -1562,8 +1566,8 @@ namespace Cadencii.Application.Forms
             if (delta > 0) {
                 // 増やす
                 for (int i = 0; i < delta; i++) {
-					cMenuTrackTabRendererUtau.DropDownItems.Add("", null, (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.UTAU, count + i));
-					menuTrackRendererUtau.DropDownItems.Add("", null, (o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.UTAU, count + i));
+					cMenuTrackTabRendererUtau.DropDownItems.Add (ApplicationUIHost.Create<UiToolStripMenuItem> ("", null, new EventHandler ((o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.UTAU, count + i))));
+					menuTrackRendererUtau.DropDownItems.Add (ApplicationUIHost.Create<UiToolStripMenuItem> ("", null, new EventHandler ((o, e) => model.TrackMenu.RunChangeRendererCommand (RendererKind.UTAU, count + i))));
                 }
             } else if (delta < 0) {
                 // 減らす

@@ -1,5 +1,6 @@
 using System;
 using Xwt;
+using Cadencii.Gui;
 using Cadencii.Gui.Toolkit;
 using cadencii;
 using Cadencii.Utilities;
@@ -20,7 +21,7 @@ namespace Cadencii.Application.Forms
 			BeforeShowDialog ();
 			var ret = showMessageBoxCore (text, caption, optionType, messageType);
 			AfterShowDialog ();
-			return ret;
+			return ret.ToGui ();
 		}
 
 		static Command showMessageBoxCore(string text, string caption, Cadencii.Gui.Toolkit.MessageBoxButtons optionType, Cadencii.Gui.Toolkit.MessageBoxIcon messageType)
@@ -134,7 +135,7 @@ namespace Cadencii.Application.Forms
 			BeforeShowDialog ();
 			var ret = ((Dialog) dialog).Run ((Window) parentForm);
 			AfterShowDialog ();
-			return ret;
+			return ret.ToGui ();
 		}
 		public override bool IsShowingDialog {
 			get { return mShowingDialog; }

@@ -353,7 +353,7 @@ namespace Cadencii.Application.Forms
         private void registerEventHandlers()
         {
 			this.AsGui ().KeyDown += this.VersionInfo_KeyDown;
-            this.FontChanged += this.VersionInfo_FontChanged;
+            //this.FontChanged += this.VersionInfo_FontChanged;
             this.timer.Tick += timer_Tick;
             this.btnFlip.Click += btnFlip_Click;
             this.btnOK.Click += btnOK_Click;

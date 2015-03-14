@@ -65,7 +65,7 @@ namespace Cadencii.Gui
 		}
 
 		public override int PlatformMouseHoverTime {
-			get { throw new NotImplementedException (); }
+			get { return 500; } // throw new NotImplementedException (); }
 		}
 
 		/// <summary>

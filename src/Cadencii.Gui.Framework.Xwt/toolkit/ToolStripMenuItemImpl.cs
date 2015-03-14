@@ -14,6 +14,14 @@ namespace Cadencii.Gui.Toolkit
 			};
 		}
 
+		public ToolStripMenuItemImpl (string s, Cadencii.Gui.Image o, EventHandler e)
+			: this ()
+		{
+			Label = s;
+			Image = (Xwt.Drawing.Image) o.NativeImage;
+			Clicked += e;
+		}
+
 		event EventHandler UiToolStripMenuItem.CheckedChanged {
 			add { throw new NotImplementedException (); }
 			remove { throw new NotImplementedException (); }

@@ -67,6 +67,8 @@ namespace Cadencii.Application.Forms
         [STAThread]
         public static void Main(string[] args)
         {
+			Xwt.Application.Initialize ();
+			
 			PortUtil.SetApplicationStartupPath(new Uri (System.Reflection.Assembly.GetEntryAssembly ().CodeBase).LocalPath);
 			Cadencii.Gui.GuiHost.Current = new Cadencii.Gui.GuiHostXwt ();
 			cadencii.dsp.DspUIHost.CurrentType = typeof (cadencii.dsp.xwt.DspUIHostXwt);

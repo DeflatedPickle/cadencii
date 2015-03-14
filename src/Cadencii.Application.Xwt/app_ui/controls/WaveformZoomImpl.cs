@@ -38,7 +38,7 @@ namespace Cadencii.Application.Controls
 		public FormMain Main {
 			get {
 				#if true
-				return (FormMain) ParentForm;
+				return (FormMain) ((Xwt.Window) base.ParentWindow).Content;
 				#else
 				for (UiControl c = (UiControl) Parent; c != null; c = (UiControl) c.Parent)
 					if (c is FormMain)

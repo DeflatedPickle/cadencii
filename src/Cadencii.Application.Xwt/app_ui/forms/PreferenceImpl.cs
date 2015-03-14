@@ -170,7 +170,7 @@ namespace Cadencii.Application.Forms
         {
             updateMidiDevice();
             updateCustomVibrato();
-			return (DialogResult) base.ShowDialog((System.Windows.Forms.Form) parent);
+			return base.ShowDialog ();//(System.Windows.Forms.Form) parent);
         }
 
         /// <summary>
@@ -1501,8 +1501,9 @@ namespace Cadencii.Application.Forms
             if (f == null) {
                 return;
             }
-            Font font = new Font(font_name, Cadencii.Gui.Font.PLAIN, (int)f.SizeInPoints);
-            GuiHost.Current.ApplyFontRecurse(this, font);
+			// ignore.
+            //Font font = new Font(font_name, Cadencii.Gui.Font.PLAIN, (int)f.SizeInPoints);
+            //GuiHost.Current.ApplyFontRecurse(this, font);
         }
 
         private void UpdateUtausingerList()

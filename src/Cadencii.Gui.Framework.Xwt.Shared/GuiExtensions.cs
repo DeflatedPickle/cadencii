@@ -273,6 +273,19 @@ namespace Cadencii.Gui
 			bool b = (d & DockStyle.Bottom) != 0;
 			return t && b ? Xwt.WidgetPlacement.Fill : t ? Xwt.WidgetPlacement.Start : b ? Xwt.WidgetPlacement.End : Xwt.WidgetPlacement.Center;
 		}
+
+		public static DialogResult ToGui (this Xwt.Command command)
+		{
+			if (command == Xwt.Command.Ok)
+				return DialogResult.OK;
+			if (command == Xwt.Command.Cancel)
+				return DialogResult.Cancel;
+			if (command == Xwt.Command.Yes)
+				return DialogResult.Yes;
+			if (command == Xwt.Command.No)
+				return DialogResult.No;
+			throw new NotImplementedException ();
+		}
 	}
 }
 

@@ -37,10 +37,11 @@ namespace Cadencii.Application.Forms
 			ApplicationUIHost.Instance.ApplyXml (this, "FormMain.xml");
 
 			stripBtnStepSequencer.Image = Resources.piano;
-			imageListFile.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListFile.ImageStream")));
-			imageListPosition.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListPosition.ImageStream")));
-			imageListMeasure.ImageStream = ((System.Windows.Forms.ImageListStreamer) (resources.GetObject ("imageListMeasure.ImageStream")));
-			imageListTool.ImageStream = ((System.Windows.Forms.ImageListStreamer) (resources.GetObject ("imageListTool.ImageStream")));
+			// FIXME: implement alternative to ImageListStreamer.
+			//imageListFile.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListFile.ImageStream")));
+			//imageListPosition.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListPosition.ImageStream")));
+			//imageListMeasure.ImageStream = ((System.Windows.Forms.ImageListStreamer) (resources.GetObject ("imageListMeasure.ImageStream")));
+			//imageListTool.ImageStream = ((System.Windows.Forms.ImageListStreamer) (resources.GetObject ("imageListTool.ImageStream")));
 			imageListFile.SetImagesKeyName (0, "disk__plus.png");
 			imageListFile.SetImagesKeyName (1, "folder_horizontal_open.png");
 			imageListFile.SetImagesKeyName (2, "disk.png");

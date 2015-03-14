@@ -13,8 +13,10 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public ToolStripMenuItemImpl (string s, Cadencii.Gui.Image o, EventHandler e)
-			: base (s, (System.Drawing.Image) o.NativeImage, e)
 		{
+			Text = s;
+			Image = (System.Drawing.Image) o.NativeImage;
+			Click += e;
 		}
 
 		void UiToolStripMenuItem.Mnemonic (Cadencii.Gui.Toolkit.Keys keys)
