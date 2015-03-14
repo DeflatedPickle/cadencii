@@ -58,7 +58,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -67,7 +67,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -76,7 +76,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -86,7 +86,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -266,12 +266,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -280,7 +280,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -358,7 +358,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -367,7 +367,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -376,7 +376,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -386,7 +386,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -566,12 +566,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -580,7 +580,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -658,7 +658,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -667,7 +667,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -676,7 +676,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -686,7 +686,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -866,12 +866,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -880,7 +880,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -958,7 +958,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -967,7 +967,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -976,7 +976,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -986,7 +986,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -1166,12 +1166,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -1180,7 +1180,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -1258,7 +1258,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -1267,7 +1267,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -1276,7 +1276,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -1286,7 +1286,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -1466,12 +1466,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -1480,7 +1480,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -1558,7 +1558,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -1567,7 +1567,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -1576,7 +1576,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -1586,7 +1586,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -1766,12 +1766,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -1780,7 +1780,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -1858,7 +1858,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -1867,7 +1867,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -1876,7 +1876,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -1886,7 +1886,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -2066,12 +2066,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -2080,7 +2080,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -2158,7 +2158,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -2167,7 +2167,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -2176,7 +2176,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -2186,7 +2186,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -2366,12 +2366,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -2380,7 +2380,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -2458,7 +2458,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -2467,7 +2467,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -2476,7 +2476,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -2486,7 +2486,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -2666,12 +2666,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -2680,7 +2680,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -2758,7 +2758,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -2767,7 +2767,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -2776,7 +2776,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -2786,7 +2786,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -2966,12 +2966,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -2980,7 +2980,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -3058,7 +3058,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -3067,7 +3067,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -3076,7 +3076,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -3086,7 +3086,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -3266,12 +3266,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -3280,7 +3280,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -3358,7 +3358,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -3367,7 +3367,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -3376,7 +3376,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -3386,7 +3386,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -3566,12 +3566,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -3580,7 +3580,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -3658,7 +3658,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -3667,7 +3667,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -3676,7 +3676,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -3686,7 +3686,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -3866,12 +3866,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -3880,7 +3880,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -3958,7 +3958,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -3967,7 +3967,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -3976,7 +3976,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -3986,7 +3986,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -4166,12 +4166,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -4180,7 +4180,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -4258,7 +4258,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -4267,7 +4267,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -4276,7 +4276,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -4286,7 +4286,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -4466,12 +4466,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -4480,7 +4480,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -4558,7 +4558,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -4567,7 +4567,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -4576,7 +4576,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -4586,7 +4586,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -4766,12 +4766,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -4780,7 +4780,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -4858,7 +4858,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -4867,7 +4867,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -4876,7 +4876,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -4886,7 +4886,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -5066,12 +5066,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -5080,7 +5080,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -5158,7 +5158,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -5167,7 +5167,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -5176,7 +5176,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -5186,7 +5186,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -5366,12 +5366,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -5380,7 +5380,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -5458,7 +5458,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -5467,7 +5467,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -5476,7 +5476,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -5486,7 +5486,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -5666,12 +5666,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -5680,7 +5680,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -5758,7 +5758,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -5767,7 +5767,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -5776,7 +5776,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -5786,7 +5786,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -5966,12 +5966,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -5980,7 +5980,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -6058,7 +6058,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -6067,7 +6067,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -6076,7 +6076,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -6086,7 +6086,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -6266,12 +6266,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -6280,7 +6280,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -6358,7 +6358,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -6367,7 +6367,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -6376,7 +6376,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -6386,7 +6386,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -6566,12 +6566,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -6580,7 +6580,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -6658,7 +6658,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -6667,7 +6667,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -6676,7 +6676,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -6686,7 +6686,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -6866,12 +6866,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -6880,7 +6880,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -6958,7 +6958,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -6967,7 +6967,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -6976,7 +6976,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -6986,7 +6986,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -7166,12 +7166,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -7180,7 +7180,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -7258,7 +7258,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -7267,7 +7267,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -7276,7 +7276,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -7286,7 +7286,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -7466,12 +7466,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -7480,7 +7480,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -7558,7 +7558,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -7567,7 +7567,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -7576,7 +7576,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -7586,7 +7586,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -7766,12 +7766,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -7780,7 +7780,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -7858,7 +7858,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -7867,7 +7867,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -7876,7 +7876,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -7886,7 +7886,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -8066,12 +8066,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -8080,7 +8080,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -8158,7 +8158,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -8167,7 +8167,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -8176,7 +8176,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -8186,7 +8186,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -8366,12 +8366,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -8380,7 +8380,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -8458,7 +8458,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -8467,7 +8467,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -8476,7 +8476,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -8486,7 +8486,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -8666,12 +8666,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -8680,7 +8680,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -8758,7 +8758,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -8767,7 +8767,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -8776,7 +8776,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -8786,7 +8786,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -8966,12 +8966,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -8980,7 +8980,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -9058,7 +9058,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseDown {
+		public event EventHandler<MouseEventArgs> MouseDown {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -9067,7 +9067,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseUp {
+		public event EventHandler<MouseEventArgs> MouseUp {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -9076,7 +9076,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		event EventHandler<MouseEventArgs> UiControl.MouseMove {
+		public event EventHandler<MouseEventArgs> MouseMove {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -9086,7 +9086,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// FIXME: MouseScrolled maybe?
-		event EventHandler<MouseEventArgs> UiControl.MouseWheel {
+		public event EventHandler<MouseEventArgs> MouseWheel {
 			add {
 				throw new NotImplementedException ();
 			}
@@ -9266,12 +9266,12 @@ namespace Cadencii.Gui.Toolkit
 			set { this.HeightRequest = value; }
 		}
 
-		Color UiControl.BackColor {
+		public Color BackColor {
 			get { return this.BackgroundColor.ToGui (); }
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		Color UiControl.ForeColor {
+		public Color ForeColor {
 			get {
 				throw new NotImplementedException ();
 			}
@@ -9280,7 +9280,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		Point UiControl.Location {
+		public Point Location {
 			get {
 				throw new NotImplementedException ();
 			}

@@ -86,7 +86,7 @@ namespace Cadencii.Application.Forms
         /// <param name="percentage"></param>
         public void setTotalProgress(int percentage)
         {
-			SynchronizationContext.Send (o => setTotalProgressUnsafe (percentage), null);
+			SynchronizationContext.Current.Send (o => setTotalProgressUnsafe (percentage), null);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Cadencii.Application.Forms
         /// <param name="p"></param>
         public void setTitle(string p)
         {
-			SynchronizationContext.Send (o => setTitleUnsafe (p), null);
+			SynchronizationContext.Current.Send (o => setTitleUnsafe (p), null);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Cadencii.Application.Forms
         /// <param name="p"></param>
         public void setText(string p)
         {
-			SynchronizationContext.Send (o => setTextUnsafe (p), null);
+			SynchronizationContext.Current.Send (o => setTextUnsafe (p), null);
         }
 
         private void setTitleUnsafe(string value)

@@ -19,6 +19,8 @@ namespace Cadencii.Gui
 
     public struct Size
     {
+		public static readonly Size Empty = new Size (0, 0);
+
         public int Height;
         public int Width;
 

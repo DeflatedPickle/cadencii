@@ -194,7 +194,7 @@ namespace Cadencii.Application.Forms
 			EditorManager.MainWindow = this;
 			model = new FormMainModel (this);
 
-		this.appId = Handle.ToString ("X32");
+			this.appId = System.Diagnostics.Process.GetCurrentProcess ().Id.ToString ("X32");//Handle.ToString ("X32");
 			s_modifier_key = Keys.Control;
 			mButtonInitial = new Point();
 			mEditCurveMode = CurveEditMode.NONE;
@@ -519,7 +519,7 @@ namespace Cadencii.Application.Forms
 				this.AsGui ().WindowState = FormWindowState.Normal;
             }
             Rectangle bounds = EditorManager.editorConfig.WindowRect;
-            this.Bounds = new System.Drawing.Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
+            this.Bounds = new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
             // ウィンドウ位置・サイズの設定値が、使えるディスプレイのどれにも被っていない場合
 			Rectangle rc2 = Screen.Instance.getScreenBounds(this);
             if (bounds.X < rc2.X ||
@@ -528,7 +528,7 @@ namespace Cadencii.Application.Forms
                  rc2.Y + rc2.Height < bounds.Y + bounds.Height) {
                 bounds.X = rc2.X;
                 bounds.Y = rc2.Y;
-                this.Bounds = new System.Drawing.Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
+                this.Bounds = new Rectangle(bounds.X, bounds.Y, bounds.Width, bounds.Height);
                 EditorManager.editorConfig.WindowRect = bounds;
             }
 			this.LocationChanged += (o,e) => model.FormMain.RunLocationChanged ();
@@ -1122,18 +1122,13 @@ namespace Cadencii.Application.Forms
                         form.ShowDialog(this);
 						ApplicationGlobal.appConfig.DoNotAutomaticallyCheckForUpdates = !form.isAutomaticallyCheckForUpdates();
                     } else if (is_explicit_update_check) {
-			System.Windows.Forms.MessageBox.Show(_("Cadencii is up to date"),
-                                        _("Info"),
-			System.Windows.Forms.MessageBoxButtons.OK,
-			System.Windows.Forms.MessageBoxIcon.Information);
+			Xwt.MessageDialog.ShowMessage (_("Cadencii is up to date"), _("Info"));
                     }
                 } else if (is_explicit_update_check) {
-			System.Windows.Forms.MessageBox.Show(_("Can't get update information. Please retry after few minutes."),
-                                    _("Error"),
-			System.Windows.Forms.MessageBoxButtons.OK,
-			System.Windows.Forms.MessageBoxIcon.Information);
+			Xwt.MessageDialog.ShowMessage(_("Can't get update information. Please retry after few minutes."),
+                                    _("Error"));
                 }
-                var t = new System.Windows.Forms.Timer();
+			var t = ApplicationUIHost.Create<Timer> ();
                 t.Tick += (timer_sender, timer_args) => {
                     menuHelpCheckForUpdates.Enabled = true;
                     t.Stop();

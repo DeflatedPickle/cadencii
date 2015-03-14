@@ -90,7 +90,7 @@ namespace Cadencii.Application.Forms
             }
 
             var current_size = this.ClientSize;
-            this.ClientSize = new System.Drawing.Size(current_size.Width, flowLayoutPanel.ClientSize.Height + flowLayoutPanel.Top * 2);
+            this.ClientSize = new Size(current_size.Width, flowLayoutPanel.ClientSize.Height + flowLayoutPanel.Top * 2);
 			this.AsGui ().FormBorderStyle = Cadencii.Gui.Toolkit.FormBorderStyle.FixedDialog;
         }
 

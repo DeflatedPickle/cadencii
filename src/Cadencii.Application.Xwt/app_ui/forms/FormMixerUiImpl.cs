@@ -290,11 +290,11 @@ namespace Cadencii.Application.Forms
             if (num_changed) {
 				panelSlaves.Width = (VolumeTrackerController.WIDTH + 1) * (screen_num - 1);
 				volumeMaster.Location = new Cadencii.Gui.Point((screen_num - 1) * (VolumeTrackerController.WIDTH + 1) + 3, 0);
-                this.MaximumSize = System.Drawing.Size.Empty;
-				this.MinimumSize = System.Drawing.Size.Empty;
-				this.ClientSize = new System.Drawing.Size(screen_num * (VolumeTrackerController.WIDTH + 1) + 3, VolumeTrackerController.HEIGHT + hScroll.Height);
+                //this.MaximumSize = Size.Zero;
+				this.MinimumSize = Cadencii.Gui.Size.Empty;
+				this.ClientSize = new Size(screen_num * (VolumeTrackerController.WIDTH + 1) + 3, VolumeTrackerController.HEIGHT + hScroll.Height);
                 this.MinimumSize = this.Size;
-                this.MaximumSize = this.Size;
+                //this.MaximumSize = this.Size;
                 this.Invalidate();
             }
         }

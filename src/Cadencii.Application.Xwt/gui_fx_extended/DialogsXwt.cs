@@ -18,7 +18,7 @@ namespace Cadencii.Application.Forms
 		public override Cadencii.Gui.DialogResult ShowMessageBox (string text, string caption, Cadencii.Gui.Toolkit.MessageBoxButtons optionType, Cadencii.Gui.Toolkit.MessageBoxIcon messageType)
 		{
 			BeforeShowDialog ();
-			var ret = (Cadencii.Gui.DialogResult) showMessageBoxCore (text, caption, optionType, messageType);
+			var ret = showMessageBoxCore (text, caption, optionType, messageType);
 			AfterShowDialog ();
 			return ret;
 		}
@@ -119,21 +119,21 @@ namespace Cadencii.Application.Forms
 			BeforeShowDialog ();
 			var ret = ((FileDialog) fileDialog.Native).Run ((Window) mainForm);
 			AfterShowDialog ();
-			return (Cadencii.Gui.DialogResult) ret;
+			return ret ? Cadencii.Gui.DialogResult.OK : Cadencii.Gui.DialogResult.Cancel;
 		}
 		public override Cadencii.Gui.DialogResult ShowModalFolderDialog (UiFolderBrowserDialog folderBrowserDialog, UiForm mainForm)
 		{
 			BeforeShowDialog ();
 			var ret = ((SelectFolderDialog)folderBrowserDialog.Native).Run ((Window) mainForm);
 			AfterShowDialog ();
-			return (Cadencii.Gui.DialogResult) ret;
+			return ret ? Cadencii.Gui.DialogResult.OK : Cadencii.Gui.DialogResult.Cancel;
 		}
 		public override Cadencii.Gui.DialogResult ShowModalDialog (UiForm dialog, UiForm parentForm)
 		{
 			BeforeShowDialog ();
 			var ret = ((Dialog) dialog).Run ((Window) parentForm);
 			AfterShowDialog ();
-			return (Cadencii.Gui.DialogResult) ret;
+			return ret ? Cadencii.Gui.DialogResult.OK : Cadencii.Gui.DialogResult.Cancel;
 		}
 		public override bool IsShowingDialog {
 			get { return mShowingDialog; }

@@ -193,8 +193,8 @@ namespace Cadencii.Application.Forms
             width = Math.Max(width, buttonWidth * decrescendButtons.Count);
             this.ClientSize = new Size(width, height);
             var size = this.Size;
-            this.MaximumSize = new Size(size.Width, size.Height);
-            this.MinimumSize = new Size(size.Width, size.Height);
+			this.MaximumSize = size.ToGui ();
+			this.MinimumSize = size.ToGui ();
         }
         #endregion
 

@@ -22,11 +22,6 @@ namespace Cadencii.Application.Controls
 			}
 		}
 
-		public Image BackgroundImage {
-			get { return base.BackgroundImage.ToGui (); }
-			set { base.BackgroundImage = value.ToWF (); }
-		}
-
 		public bool ToggleDoubleClick { get; set; }
 
 		public RebarBandCollection Bands {
@@ -96,7 +91,7 @@ namespace Cadencii.Application.Controls
 				Visible = true;
 				UseChevron = true;
 
-				BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+				BorderStyle = BorderStyle.FixedSingle;
 				ForeColor = Colors.Red.ToNative ();
 				Width = 300;
 				Height = 26;
@@ -151,10 +146,6 @@ namespace Cadencii.Application.Controls
 			public RebarBandCollection Bands { get; set; }
 			public string Key { get; set; }
 			public int BandSize { get; set; }
-			public Cadencii.Gui.Point Location {
-				get { return base.Location.ToGui (); }
-				set { base.Location = value.ToWF (); }
-			}
 			public bool VariantHeight { get; set; }
 			public bool AllowVertical { get; set; }
 			public UiControl Child {

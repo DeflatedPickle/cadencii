@@ -22,11 +22,6 @@ namespace Cadencii.Application.Controls
 			}
 		}
 
-		public Image BackgroundImage {
-			get { return base.BackgroundImage.ToGui (); }
-			set { base.BackgroundImage = value.ToWF (); }
-		}
-
 		public bool ToggleDoubleClick { get; set; }
 
 		public RebarBandCollection Bands {

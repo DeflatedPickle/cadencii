@@ -77,7 +77,8 @@ namespace Cadencii.Application.Forms
             InitializeComponent();
             applyLanguage();
             GuiHost.Current.ApplyFontRecurse(this, EditorManager.editorConfig.getBaseFont());
-            this.Size = new System.Drawing.Size(mPreviousWidth, mPreviousHeight);
+			this.Width = mPreviousWidth;
+			this.Height = mPreviousHeight;
             registerEventHandlers();
 
             // ハンドルのリストをクローン
@@ -295,8 +296,7 @@ namespace Cadencii.Application.Forms
             // 背景を描画
             int raw_width = pictureResulting.Width;
             int raw_height = pictureResulting.Height;
-			var g = (System.Drawing.Graphics) e.Graphics.NativeGraphics;
-            g.FillRectangle(System.Drawing.Brushes.LightGray, 0, 0, raw_width, raw_height);
+			e.Graphics.fillRectangle(Colors.LightGray, 0, 0, raw_width, raw_height);
 
             // 選択中のハンドルを取得
             VibratoHandle handle = mSelected;
@@ -306,7 +306,7 @@ namespace Cadencii.Application.Forms
 
             // 描画の準備
             LineGraphDrawer d = getDrawerResulting();
-			d.setGraphics(new Cadencii.Gui.Graphics () { NativeGraphics = g});
+			d.setGraphics(e.Graphics);
 
             // ビブラートのピッチベンドを取得するイテレータを取得
             int width = raw_width;
@@ -367,8 +367,7 @@ namespace Cadencii.Application.Forms
             // 背景を描画
             int width = pictureRate.Width;
             int height = pictureRate.Height;
-			var g = (System.Drawing.Graphics) e.Graphics.NativeGraphics;
-            g.FillRectangle(System.Drawing.Brushes.LightGray, 0, 0, width, height);
+			e.Graphics.fillRectangle (Colors.LightGray, 0, 0, width, height);
 
             // 選択中のハンドルを取得
             VibratoHandle handle = mSelected;
@@ -379,7 +378,7 @@ namespace Cadencii.Application.Forms
             // 描画の準備
             LineGraphDrawer d = getDrawerRate();
             d.clear();
-			d.setGraphics(new Cadencii.Gui.Graphics () { NativeGraphics = g});
+			d.setGraphics(e.Graphics);
             drawVibratoCurve(
                 handle.getRateBP(),
                 handle.getStartRate(),
@@ -392,8 +391,7 @@ namespace Cadencii.Application.Forms
             // 背景を描画
             int width = pictureDepth.Width;
             int height = pictureDepth.Height;
-			var g = (System.Drawing.Graphics) e.Graphics.NativeGraphics;
-            g.FillRectangle(System.Drawing.Brushes.LightGray, 0, 0, width, height);
+			e.Graphics.fillRectangle(Colors.LightGray, 0, 0, width, height);
 
             // 選択中のハンドルを取得
             VibratoHandle handle = mSelected;
@@ -404,7 +402,7 @@ namespace Cadencii.Application.Forms
             // 描画の準備
             LineGraphDrawer d = getDrawerDepth();
             d.clear();
-            d.setGraphics(new Cadencii.Gui.Graphics () { NativeGraphics = g});
+			d.setGraphics(new Cadencii.Gui.Graphics () { NativeGraphics = e.Graphics });
             drawVibratoCurve(
                 handle.getDepthBP(),
                 handle.getStartDepth(),

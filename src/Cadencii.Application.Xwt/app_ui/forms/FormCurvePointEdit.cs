@@ -264,7 +264,7 @@ namespace Cadencii.Application.Forms
 
         public void btnExit_Click(Object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.DialogResult = DialogResult.Cancel;
         }
         #endregion
 

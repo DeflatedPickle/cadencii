@@ -82,7 +82,8 @@ namespace Cadencii.Application.Forms
         #region helper methods
         private void setResources()
         {
-            this.BackgroundImage = cadencii.Properties.Resources.splash;
+			// skip it, we don't show splash screen anymore.
+            //this.BackgroundImage = cadencii.Properties.Resources.splash;
         }
 
         private void registerEventHandlers()
@@ -104,7 +105,7 @@ namespace Cadencii.Application.Forms
         {
             mouseDowned = true;
 			Point screen = Cadencii.Gui.Toolkit.Screen.Instance.GetScreenMousePosition();
-            var point = this.PointToClient(new System.Drawing.Point(screen.X, screen.Y));
+            var point = this.PointToClient(new Point(screen.X, screen.Y));
             Point p = new Point(point.X, point.Y);
             mouseDownedLocation = p;
         }
