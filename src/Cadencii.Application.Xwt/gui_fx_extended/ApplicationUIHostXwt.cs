@@ -25,10 +25,9 @@ namespace Cadencii.Application.Forms
 
 		public override void InitializeResources ()
 		{
-			var resources = cadencii.Properties.Resources;
 			var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static;
 			foreach (var pi in typeof (Resources).GetProperties ()) {
-				var obj = ((DynamicResource)resources).GetResource (pi.Name);
+				var obj = typeof (Resources).GetProperty (pi.Name).GetValue (null);
 				if (pi.PropertyType.IsEnum)
 					pi.SetValue (null, Convert.ChangeType (obj, pi.PropertyType));
 				else if (pi.PropertyType == typeof (Image))
