@@ -6,6 +6,13 @@ namespace Cadencii.Gui.Toolkit
 {
 	public interface UiForm : UiControl, IControlContainer
 	{
+		FormStartPosition StartPosition { get; set; }
+		bool ShowInTaskbar { get; set; }
+		bool ShowIcon { get; set; }
+		bool MaximizeBox { get; set; }
+		bool KeyPreview { get; set; }
+		Size AutoScaleDimensions { get; set; }
+
 		FormBorderStyle FormBorderStyle { get; set; }
 		Size ClientSize { get; set; }
 		double Opacity { get; set; }

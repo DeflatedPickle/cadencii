@@ -10,6 +10,10 @@ namespace Cadencii.Gui.Toolkit
 
 		ToolStripRenderMode RenderMode { get; set; }
 
+		bool Visible { get; set; }
+
+		string Name { get; set; }
+
 		string Text { get; set; }
 
 		IList<UiToolStripItem> Items { get; }

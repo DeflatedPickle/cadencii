@@ -82,6 +82,8 @@
       <Link>GuiExtensions.cs</Link>
     </Compile>
     <Compile Include="TimerXwt.cs" />
+    <Compile Include="toolkit\ToolTipImpl.cs" />
+    <Compile Include="toolkit\ToolStripSeparatorImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

@@ -78,7 +78,7 @@ namespace Cadencii.Gui.Toolkit
 
 			protected override void InsertItem (int index, UiToolStripItem item)
 			{
-				menu.Items.Insert (index, (MenuItemImpl) item);
+				menu.Items.Insert (index, (Xwt.MenuItem) item);
 			}
 
 			protected override void RemoveItem (int index)

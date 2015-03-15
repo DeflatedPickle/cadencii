@@ -118,10 +118,10 @@ namespace Cadencii.Gui.Toolkit
 			remove { throw new NotImplementedException (); }
 		}
 
-		// and this is actually different from Xwt.MenuItem.Clicked...
+		// FIXME: this is actually different from Xwt.MenuItem.Clicked...
 		event EventHandler UiToolStripItem.Click {
-			add { throw new NotImplementedException (); }
-			remove { throw new NotImplementedException (); }
+			add { base.Clicked += value; }
+			remove { base.Clicked -= value; }
 		}
 
 		void UiToolStripItem.PerformClick ()
@@ -150,23 +150,11 @@ namespace Cadencii.Gui.Toolkit
 			set { base.Label = value; }
 		}
 
-		string UiToolStripItem.ToolTipText {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: maybe we can do something but ignore this so far.
+		string UiToolStripItem.ToolTipText { get; set; }
 
-		Size UiToolStripItem.Size {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// ignore
+		Size UiToolStripItem.Size { get; set; }
 	}
 }
 

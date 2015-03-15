@@ -42,6 +42,11 @@ namespace Cadencii.Gui.Toolkit
 
 		// UiForm
 
+		FormStartPosition UiForm.StartPosition {
+			get { return (FormStartPosition) StartPosition; }
+			set { StartPosition = (System.Windows.Forms.FormStartPosition) value; }
+		}
+
 		FormBorderStyle UiForm.FormBorderStyle {
 			get { return (FormBorderStyle) FormBorderStyle; }
 			set { FormBorderStyle = (System.Windows.Forms.FormBorderStyle) value; }
@@ -50,6 +55,11 @@ namespace Cadencii.Gui.Toolkit
 		Size UiForm.ClientSize {
 			get { return ClientSize.ToGui (); }
 			set { ClientSize = value.ToWF (); }
+		}
+
+		Size UiForm.AutoScaleDimensions {
+			get { return AutoScaleDimensions.ToSize ().ToGui (); }
+			set { AutoScaleDimensions = new System.Drawing.SizeF (value.Width, value.Height); }
 		}
 
 		DialogResult UiForm.DialogResult {

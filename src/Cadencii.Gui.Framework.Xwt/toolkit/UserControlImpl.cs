@@ -4,20 +4,13 @@ namespace Cadencii.Gui.Toolkit
 {
 	public partial class UserControlImpl
 	{
-		event EventHandler<PaintEventArgs> UiUserControl.Paint{
-			add { throw new NotImplementedException (); }
-			remove { throw new NotImplementedException (); }
-		}
+		public event EventHandler<PaintEventArgs> Paint;
 
-		event EventHandler UiUserControl.Load{
-			add { throw new NotImplementedException (); }
-			remove { throw new NotImplementedException (); }
-		}
+		// FIXME: how to support this?
+		public event EventHandler Load;
 
-		BorderStyle UiUserControl.BorderStyle {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
+		// FIXME: ignore so far.
+		BorderStyle UiUserControl.BorderStyle { get; set; }
 
 		// actually ContainerControl member.
 		// ignorable
@@ -36,7 +29,17 @@ namespace Cadencii.Gui.Toolkit
 
 		void UiUserControl.OnPaint (PaintEventArgs e)
 		{
-			throw new NotImplementedException ();
+			OnDraw ((Xwt.Drawing.Context)e.Graphics.NativeGraphics, e.ClipRectangle.ToWF ());
+		}
+
+		protected override void OnDraw (Xwt.Drawing.Context ctx, Xwt.Rectangle dirtyRect)
+		{
+			base.OnDraw (ctx, dirtyRect);
+			if (Paint != null)
+				Paint (this, new PaintEventArgs () {
+					Graphics = new Graphics () { NativeGraphics = ctx },
+					ClipRectangle = dirtyRect.ToGui ()
+				});
 		}
 	}
 }

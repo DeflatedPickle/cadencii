@@ -16,8 +16,13 @@ namespace Cadencii.Gui.Toolkit
 		// ignore.
 		ToolStripRenderMode UiMenuStrip.RenderMode { get; set; }
 
+		string UiMenuStrip.Name { get; set; }
+
 		// ignore. Why Text on Menu??
 		string UiMenuStrip.Text { get; set; }
+
+		// ignore, it doesn't make sense.
+		bool UiMenuStrip.Visible { get; set; }
 
 		System.Collections.Generic.IList<UiToolStripItem> UiMenuStrip.Items {
 			get { return items ?? (items = new MenuItemCollection (menu)); }

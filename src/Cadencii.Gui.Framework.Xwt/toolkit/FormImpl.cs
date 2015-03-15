@@ -22,6 +22,23 @@ namespace Cadencii.Gui.Toolkit
 
 		// UiForm
 
+		// ignore.
+		FormStartPosition UiForm.StartPosition { get; set; }
+
+		bool UiForm.ShowInTaskbar {
+			get { return base.ParentWindow.ShowInTaskbar; }
+			set { base.ParentWindow.ShowInTaskbar = value; }
+		}
+
+		// ignore. Just don't set icon if you don't want to show any.
+		bool UiForm.ShowIcon { get; set; }
+
+		// FIXME: how to implement?
+		bool UiForm.MaximizeBox { get; set; }
+
+		// FIXME: how to implement?
+		bool UiForm.KeyPreview { get; set; }
+
 		// FIXME: how to implement?
 		bool UiForm.InvokeRequired {
 			get { return true; }
@@ -140,6 +157,9 @@ namespace Cadencii.Gui.Toolkit
 			get { return window.Size.ToGui (); }
 			set { window.Size = value.ToWF (); }
 		}
+
+		// igore.
+		public Cadencii.Gui.Size AutoScaleDimensions { get; set; }
 
 		// FIXME: no effect now
 		public DialogResult DialogResult { get; set; }

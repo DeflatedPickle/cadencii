@@ -67,17 +67,17 @@ namespace Cadencii.Application.Forms
 		object Deserialize (Dictionary<string,object> roots, string value, Type t)
 		{
 			if (value.FirstOrDefault () == '$') {
-				if (t == typeof (Xwt.Drawing.Color)) {
+				if (t == typeof(Xwt.Drawing.Color)) {
 					if (value [1] == '(')
-						return typeof (Xwt.Drawing.Color).GetMethods ().First (m => m.Name == "FromArgb" && m.GetParameters ().Length == 3).Invoke (null, value.Substring (2, value.Length - 3).Split (',').Select (tk => int.Parse (tk)).Cast<object> ().ToArray ());
-					else if (value.StartsWith ("$SystemColors"))
-						return get_static_property (typeof (Cadencii.Gui.SystemColors), value);
+						return typeof(Xwt.Drawing.Color).GetMethods ().First (m => m.Name == "FromArgb" && m.GetParameters ().Length == 3).Invoke (null, value.Substring (2, value.Length - 3).Split (',').Select (tk => int.Parse (tk)).Cast<object> ().ToArray ());
 					else
-						return get_static_property (typeof (Xwt.Drawing.Color), value);
-				}
-				else if (t == typeof (Cadencii.Gui.Color))
-					return get_static_field (typeof (Cadencii.Gui.Colors), value);
-				else if (t == typeof (Xwt.CursorType))
+						return get_static_property (typeof(Xwt.Drawing.Color), value);
+				} else if (t == typeof(Cadencii.Gui.Color)) {
+					if (value.StartsWith ("$SystemColors"))
+						return get_static_property (typeof(Cadencii.Gui.SystemColors), value);
+					else
+						return get_static_field (typeof(Cadencii.Gui.Colors), value);
+				} else if (t == typeof (Xwt.CursorType))
 					return get_static_property (typeof (Xwt.CursorType), value);
 				else if (t == typeof (Cadencii.Gui.Cursor))
 					return get_static_property (typeof (Cadencii.Gui.Cursors), value);
@@ -125,7 +125,24 @@ namespace Cadencii.Application.Forms
 		PropertyInfo GetPropertyFrom (Type type, string name)
 		{
 			var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
-			return type.GetProperty (name, bf | BindingFlags.DeclaredOnly) ?? type.GetProperty (name, bf) ?? type.GetProperties (bf).FirstOrDefault (p => p.Name.EndsWith ('.' + name));
+			var ret = type.GetProperty (name, bf | BindingFlags.DeclaredOnly) ?? type.GetProperty (name, bf) ?? type.GetProperties (bf).FirstOrDefault (p => p.Name.EndsWith ('.' + name));
+			if (ret != null)
+				return ret;
+			foreach (var t in GetAllInterfaces (type)) {
+				ret = t.GetProperty (name, bf);
+				if (ret != null)
+					return ret;
+			}
+			return null;
+		}
+
+		IEnumerable<Type> GetAllInterfaces (Type type)
+		{
+			foreach (var t in type.GetInterfaces ()) {
+				yield return t;
+				foreach (var tt in GetAllInterfaces (t))
+					yield return tt;
+			}
 		}
 
 		void ApplyXml (Dictionary<string,object> roots, XmlElement e, object o, bool asCollection)
