@@ -18,6 +18,7 @@ namespace Cadencii.Gui.Toolkit
 		Xwt.Dialog window;
 		bool load_registered, load_invoked;
 		event EventHandler UiFormLoad;
+		MenuStripImpl main_menu;
 
 		// UiForm
 
@@ -159,12 +160,11 @@ namespace Cadencii.Gui.Toolkit
 		// FIXME: no effect
 		public AutoScaleMode AutoScaleMode { get; set; }
 
-		UiMenuStrip UiForm.MainMenuStrip {
-			get {
-				throw new NotImplementedException ();
-			}
+		public UiMenuStrip MainMenuStrip {
+			get { return main_menu; }
 			set {
-				throw new NotImplementedException ();
+				main_menu = (MenuStripImpl) value;
+				window.MainMenu = (Xwt.Menu) ((UiMenuStrip) main_menu).Native;
 			}
 		}
 

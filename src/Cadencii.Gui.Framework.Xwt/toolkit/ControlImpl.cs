@@ -280,14 +280,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -580,14 +574,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -880,14 +868,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -1180,14 +1162,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -1480,14 +1456,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -1780,14 +1750,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -2080,14 +2044,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -2380,14 +2338,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -2680,14 +2632,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -2980,14 +2926,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -3280,14 +3220,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -3580,14 +3514,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -3880,14 +3808,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -4180,14 +4102,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -4480,14 +4396,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -4780,14 +4690,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -5080,14 +4984,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -5380,14 +5278,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -5680,14 +5572,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -5980,14 +5866,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -6280,14 +6160,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -6580,14 +6454,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -6880,14 +6748,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -7180,14 +7042,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -7480,14 +7336,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -7780,14 +7630,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -8080,14 +7924,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -8380,14 +8218,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -8680,14 +8512,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -8980,14 +8806,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }
@@ -9280,14 +9100,8 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		public Point Location {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Point Location { get; set; }
 
 		Cadencii.Gui.Size UiControl.Size {
 			get { return this.Size.ToGui (); }

@@ -167,7 +167,7 @@ namespace Cadencii.Application.Forms
 					// add to tree first, then apply xml, so that some reference to controls (#blah) can be resolved as expected.
 					if (asCollection)
 						AddToCollection (o, obj);
-					//else
+					else
 						((IControlContainer) o).AddControl ((UiControl) obj);
 
 					if (!(obj is string))

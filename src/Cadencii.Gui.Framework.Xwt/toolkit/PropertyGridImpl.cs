@@ -4,23 +4,11 @@ namespace Cadencii.Gui.Toolkit
 {
 	public partial class PropertyGridImpl : PropertyGridBase, UiPropertyGrid
 	{
-		event EventHandler UiPropertyGrid.SelectedGridItemChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public event EventHandler SelectedGridItemChanged;
 
-		event EventHandler UiPropertyGrid.PropertyValueChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public event EventHandler PropertyValueChanged;
 
 		UiGridItem UiPropertyGrid.SelectedGridItem {
 			get {
@@ -28,23 +16,11 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		object[] UiPropertyGrid.SelectedObjects {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		object[] UiPropertyGrid.SelectedObjects { get; set; }
 
-		PropertySort UiPropertyGrid.PropertySort {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		PropertySort UiPropertyGrid.PropertySort { get; set; }
 	}
 }
 

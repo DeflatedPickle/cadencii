@@ -20,15 +20,11 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		// actually ContainerControl member.
-		AutoScaleMode UiUserControl.AutoScaleMode {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
+		// ignorable
+		AutoScaleMode UiUserControl.AutoScaleMode { get; set; }
 
-		Size UiUserControl.AutoScaleDimensions {
-			get { throw new NotImplementedException (); }
-			set { throw new NotImplementedException (); }
-		}
+		// ignorable
+		Size UiUserControl.AutoScaleDimensions { get; set; }
 
 		// FIXME: no effect (Xwt claims that it defaults to double buffered by default).
 		bool UiUserControl.DoubleBuffered { get; set; }

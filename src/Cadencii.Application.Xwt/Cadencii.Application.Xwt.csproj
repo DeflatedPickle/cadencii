@@ -142,6 +142,7 @@
     <Compile Include="app_ui\forms\VersionInfoImpl.cs" />
     <EmbeddedResource Include="app_ui\forms\FormMain.resx">
       <DependentUpon>FormMainImpl.cs</DependentUpon>
+      <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <Compile Include="gui_fx_extended\GameControllerManagerWinMM.cs" />
     <Compile Include="app_ui\forms\FormMainImpl.cs" />

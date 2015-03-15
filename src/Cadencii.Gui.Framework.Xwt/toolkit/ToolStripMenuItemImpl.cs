@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace Cadencii.Gui.Toolkit
 {
@@ -65,9 +66,48 @@ namespace Cadencii.Gui.Toolkit
 			remove { base.Clicked -= value; }
 		}
 
-		System.Collections.Generic.IList<UiToolStripItem> UiToolStripDropDownItem.DropDownItems {
-			get {
+		class UiMenuItemCollection : Collection<UiToolStripItem>
+		{
+			Xwt.Menu menu;
+
+			public UiMenuItemCollection (Xwt.Menu menu)
+			{
+				this.menu = menu;
+			}
+
+			protected override void ClearItems ()
+			{
+				base.ClearItems ();
+				menu.Items.Clear ();
+			}
+
+			protected override void InsertItem (int index, UiToolStripItem item)
+			{
+				base.InsertItem (index, item);
+				menu.Items.Insert (index, (Xwt.MenuItem) item);
+			}
+
+			protected override void RemoveItem (int index)
+			{
+				base.RemoveItem (index);
+				menu.Items.RemoveAt (index);
+			}
+
+			protected override void SetItem (int index, UiToolStripItem item)
+			{
 				throw new NotImplementedException ();
+			}
+		}
+
+		UiMenuItemCollection dropdown_items;
+
+		public System.Collections.Generic.IList<UiToolStripItem> DropDownItems {
+			get {
+				if (dropdown_items == null) {
+					var sub = base.SubMenu ?? (base.SubMenu = new Xwt.Menu ());
+					dropdown_items = new UiMenuItemCollection (sub);
+				}
+				return dropdown_items;
 			}
 		}
 
