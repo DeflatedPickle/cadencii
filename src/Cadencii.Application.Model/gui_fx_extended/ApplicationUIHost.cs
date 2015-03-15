@@ -18,7 +18,9 @@ namespace Cadencii.Application
 
 		public static object Create (Type type, params object [] args)
 		{
-			var implType = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (a => a.GetTypes ()).Where (t => t.IsClass).First (t => type.IsInterface ? t.GetInterfaces ().Contains (type) : !type.IsAbstract && t == type || t.IsSubclassOf (type));
+			var implType = AppDomain.CurrentDomain.GetAssemblies ().SelectMany (a => a.GetTypes ()).Where (t => t.IsClass).FirstOrDefault (t => type.IsInterface ? t.GetInterfaces ().Contains (type) : !type.IsAbstract && t == type || t.IsSubclassOf (type));
+			if (implType == null)
+				throw new InvalidOperationException ("Implementation was not found for " + type);
 			return Activator.CreateInstance (implType, args, null);
 		}
 

@@ -28,7 +28,7 @@ namespace Cadencii.Application.Forms
 			var resources = cadencii.Properties.Resources;
 			var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static;
 			foreach (var pi in typeof (Resources).GetProperties ()) {
-				var obj = resources.GetType ().GetProperty (pi.Name, bf).GetValue (resources);
+				var obj = ((DynamicResource)resources).GetResource (pi.Name);
 				if (pi.PropertyType.IsEnum)
 					pi.SetValue (null, Convert.ChangeType (obj, pi.PropertyType));
 				else if (pi.PropertyType == typeof (Image))

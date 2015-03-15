@@ -81,6 +81,7 @@
     <Compile Include="..\Cadencii.Gui.Framework.Xwt.Shared\GuiExtensions.cs">
       <Link>GuiExtensions.cs</Link>
     </Compile>
+    <Compile Include="TimerXwt.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

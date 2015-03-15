@@ -2,6 +2,7 @@
 using System.Dynamic;
 using System.Linq;
 using System.IO;
+using System.Reflection;
 
 namespace cadencii
 {
@@ -12,26 +13,28 @@ namespace cadencii
 
 	public class DynamicResource : DynamicObject
 	{
-		static readonly string [] resource_names = 
-			typeof (Properties).Assembly.GetManifestResourceNames ();
-		
+		static readonly string[] resource_names = new DirectoryInfo (".").GetFiles ("resources/*").Select (d => d.ToString ()).ToArray ();
+
 		public override bool TryGetMember (GetMemberBinder binder, out object result)
 		{
-			if (resource_names.Contains (binder.Name)) {
-				switch (Path.GetExtension (binder.Name)) {
+			result = GetResource (binder.Name);
+			return result != null;
+		}
+
+		public object GetResource (string name)
+		{
+			var res = resource_names.FirstOrDefault (n => Path.GetFileNameWithoutExtension (n) == name);
+			if (res != null) {
+				switch (Path.GetExtension (res)) {
 				case ".png":
-					result = Xwt.Drawing.BitmapImage.FromResource (binder.Name);
-					return true;
+					return Xwt.Drawing.BitmapImage.FromFile (res);
 				case ".ico":
-					result = null;
-					return false;
+					return null;
 				case ".txt":
-					result = new StreamReader (GetType ().Assembly.GetManifestResourceStream (binder.Name)).ReadToEnd ();
-					return true;
+					return File.ReadAllText (res);
 				}
 			}
-			result = null;
-			return false;
+			return null;
 		}
 	}
 }
