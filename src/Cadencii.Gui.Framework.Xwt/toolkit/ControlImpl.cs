@@ -41,9 +41,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -51,48 +49,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -173,19 +156,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -335,9 +312,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -345,48 +320,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -467,19 +427,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -629,9 +583,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -639,48 +591,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -761,19 +698,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -923,9 +854,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -933,48 +862,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -1055,19 +969,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -1217,9 +1125,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -1227,48 +1133,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -1349,19 +1240,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -1511,9 +1396,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -1521,48 +1404,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -1643,19 +1511,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -1805,9 +1667,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -1815,48 +1675,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -1937,19 +1782,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -2099,9 +1938,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -2109,48 +1946,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -2231,19 +2053,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -2393,9 +2209,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -2403,48 +2217,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -2525,19 +2324,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -2687,9 +2480,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -2697,48 +2488,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -2819,19 +2595,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -2981,9 +2751,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -2991,48 +2759,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -3113,19 +2866,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -3275,9 +3022,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -3285,48 +3030,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -3407,19 +3137,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -3569,9 +3293,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -3579,48 +3301,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -3701,19 +3408,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -3863,9 +3564,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -3873,48 +3572,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -3995,19 +3679,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -4157,9 +3835,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -4167,48 +3843,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -4289,19 +3950,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -4451,9 +4106,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -4461,48 +4114,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -4583,19 +4221,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -4745,9 +4377,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -4755,48 +4385,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -4877,19 +4492,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -5039,9 +4648,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -5049,48 +4656,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -5171,19 +4763,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -5333,9 +4919,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -5343,48 +4927,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -5465,19 +5034,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -5627,9 +5190,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -5637,48 +5198,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -5759,19 +5305,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -5921,9 +5461,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -5931,48 +5469,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -6053,19 +5576,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -6215,9 +5732,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -6225,48 +5740,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -6347,19 +5847,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -6509,9 +6003,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -6519,48 +6011,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -6641,19 +6118,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -6803,9 +6274,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -6813,48 +6282,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -6935,19 +6389,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -7097,9 +6545,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -7107,48 +6553,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -7229,19 +6660,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -7391,9 +6816,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -7401,48 +6824,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -7523,19 +6931,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -7685,9 +7087,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -7695,48 +7095,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -7817,19 +7202,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -7979,9 +7358,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -7989,48 +7366,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -8111,19 +7473,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -8273,9 +7629,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -8283,48 +7637,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -8405,19 +7744,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -8567,9 +7900,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -8577,48 +7908,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -8699,19 +8015,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...
@@ -8861,9 +8171,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		event EventHandler<MouseEventArgs> UiControl.MouseClick {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, e.MultiplePress, (int) e.X, (int) e.Y, 0)); }
 			remove {
 				throw new NotImplementedException ();
 			}
@@ -8871,48 +8179,33 @@ namespace Cadencii.Gui.Toolkit
 
 		event EventHandler<MouseEventArgs> UiControl.MouseDoubleClick {
 			add {
-				throw new NotImplementedException ();
+				base.ButtonPressed += (o, e) => {
+					if (e.MultiplePress == 2)
+						value (o, new MouseEventArgs ((MouseButtons) e.Button, 2, (int) e.X, (int) e.Y, 0));
+				};
 			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseDown {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonPressed += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseUp {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.ButtonReleased += (o, e) => value (o, new MouseEventArgs ((MouseButtons) e.Button, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler<MouseEventArgs> MouseMove {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseMoved += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 0)); }
+			remove { throw new NotImplementedException (); }
 		}
 
-		// FIXME: MouseScrolled maybe?
+		// FIXME: "delta" is not given, so am passing some dummy value.
 		public event EventHandler<MouseEventArgs> MouseWheel {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { MouseScrolled += (o, e) => value (o, new MouseEventArgs (MouseButtons.None, 0, (int) e.X, (int) e.Y, 8)); }
+			remove { throw new NotImplementedException (); }
 		}
 
 		public event EventHandler SizeChanged {
@@ -8993,19 +8286,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return (UiControl) this.Parent; }
 		}
 
-		Cadencii.Gui.Cursor UiControl.Cursor {
-			get { return this.Cursor.ToGui (); }
-			set { this.Cursor = value.ToNative (); }
+		public new Cadencii.Gui.Cursor Cursor {
+			get { return base.Cursor.ToGui (); }
+			set { base.Cursor = value.ToNative (); }
 		}
 
-		AnchorStyles UiControl.Anchor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: replace any control that depends on this property with VBox/HBox.
+		AnchorStyles UiControl.Anchor { get; set; }
 
 		bool UiControl.TabStop {
 			// not really sure if there is any more appropriate property...

@@ -286,6 +286,16 @@ namespace Cadencii.Gui
 				return DialogResult.No;
 			throw new NotImplementedException ();
 		}
+
+		public static MouseButtons ToMouseButtons (this Xwt.PointerButton e)
+		{
+			return (MouseButtons) e;
+		}
+
+		public static Xwt.PointerButton ToPointerButton (this MouseButtons e)
+		{
+			return (Xwt.PointerButton) e;
+		}
 	}
 }
 

@@ -73,6 +73,8 @@ namespace Cadencii.Application.Forms
 					else
 						return get_static_property (typeof(Xwt.Drawing.Color), value);
 				} else if (t == typeof(Cadencii.Gui.Color)) {
+					if (value [1] == '(')
+						return Activator.CreateInstance (typeof (Cadencii.Gui.Color), value.Substring (2, value.Length - 3).Split (',').Select (tk => int.Parse (tk)).Cast<object> ().ToArray ());
 					if (value.StartsWith ("$SystemColors"))
 						return get_static_property (typeof(Cadencii.Gui.SystemColors), value);
 					else
@@ -124,10 +126,13 @@ namespace Cadencii.Application.Forms
 
 		PropertyInfo GetPropertyFrom (Type type, string name)
 		{
-			var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
-			var ret = type.GetProperty (name, bf | BindingFlags.DeclaredOnly) ?? type.GetProperty (name, bf) ?? type.GetProperties (bf).FirstOrDefault (p => p.Name.EndsWith ('.' + name));
-			if (ret != null)
-				return ret;
+			var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly;
+			PropertyInfo ret;
+			for (var t = type; t != null; t = t.BaseType) {
+				ret = type.GetProperty (name, bf) ?? type.GetProperties (bf).FirstOrDefault (p => p.Name.EndsWith ('.' + name));
+				if (ret != null)
+					return ret;
+			}
 			foreach (var t in GetAllInterfaces (type)) {
 				ret = t.GetProperty (name, bf);
 				if (ret != null)
@@ -148,7 +153,7 @@ namespace Cadencii.Application.Forms
 		void ApplyXml (Dictionary<string,object> roots, XmlElement e, object o, bool asCollection)
 		{
 			var bf = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
-			var root = roots.Count > 1 ? roots.Values.First (c => c is Xwt.Window) : roots.Values.First ();
+			var root = roots.Count > 1 ? roots.Values.First (c => c is FormImpl) : roots.Values.First ();
 			foreach (XmlElement c in e.SelectNodes ("*")) {
 				if (c.LocalName.First () == '_') {
 					var pi = GetPropertyFrom (o.GetType (), c.LocalName.Substring (1));
