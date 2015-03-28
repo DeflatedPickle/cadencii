@@ -10,10 +10,11 @@ namespace Cadencii.Gui.Toolkit
 		// FIXME: implement
 		public event EventHandler PropertyValueChanged;
 
+		internal UiGridItem SelectedGridItem;
+
+		// FIXME: implement
 		UiGridItem UiPropertyGrid.SelectedGridItem {
-			get {
-				throw new NotImplementedException ();
-			}
+			get { return SelectedGridItem; }
 		}
 
 		// FIXME: implement

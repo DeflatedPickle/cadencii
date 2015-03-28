@@ -40,6 +40,9 @@ namespace Cadencii.Gui.Toolkit
 		bool UiForm.MaximizeBox { get; set; }
 
 		// FIXME: how to implement?
+		bool UiForm.MinimizeBox { get; set; }
+
+		// FIXME: how to implement?
 		bool UiForm.KeyPreview { get; set; }
 
 		// FIXME: how to implement?
@@ -121,6 +124,12 @@ namespace Cadencii.Gui.Toolkit
 		public event EventHandler FormClosed {
 			add { window.Closed += value; }
 			remove { window.Closed -= value; }
+		}
+
+		// this needs to be explicitly overriden to show *window*, not content Widget.
+		void UiForm.Show ()
+		{
+			window.Show ();
 		}
 
 		public void Close ()

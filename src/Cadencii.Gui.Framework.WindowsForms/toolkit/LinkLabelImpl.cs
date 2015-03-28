@@ -27,6 +27,11 @@ namespace Cadencii.Gui.Toolkit
 			add { LinkClicked += (sender, e) => value (sender, e); }
 			remove { throw new NotImplementedException (); }
 		}
+
+		ContentAlignment UiLabel.TextAlign {
+			get { return (ContentAlignment) base.TextAlign; }
+			set { base.TextAlign = (System.Drawing.ContentAlignment) value; }
+		}
 	}
 }
 

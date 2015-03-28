@@ -21,6 +21,10 @@ namespace Cadencii.Gui.Toolkit
 {
 	public partial class CheckBoxImpl : System.Windows.Forms.CheckBox, UiCheckBox
 	{
+		Appearance UiCheckBox.Appearance {
+			get { return (Appearance) base.Appearance; }
+			set { base.Appearance = (System.Windows.Forms.Appearance) value; }
+		}
 	}
 }
 

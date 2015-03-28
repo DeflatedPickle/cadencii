@@ -21,6 +21,10 @@ namespace Cadencii.Gui.Toolkit
 {
 	public partial class LabelImpl : System.Windows.Forms.Label, UiLabel
 	{
+		ContentAlignment UiLabel.TextAlign {
+			get { return (ContentAlignment) base.TextAlign; }
+			set { base.TextAlign = (System.Drawing.ContentAlignment) value; }
+		}
 	}
 }
 

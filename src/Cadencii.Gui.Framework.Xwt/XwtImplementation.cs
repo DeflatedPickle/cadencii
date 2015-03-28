@@ -747,7 +747,7 @@ namespace Cadencii.Gui
 		public override Rectangle getWorkingArea (object nativeWindow)
 		{
 			var w = (Xwt.Widget) nativeWindow;
-			return w.ScreenBounds.ToGui ();
+			return w.ParentWindow.Screen.Bounds.ToGui ();
 		}
 	}
 }

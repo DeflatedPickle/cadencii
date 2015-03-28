@@ -11,6 +11,7 @@ namespace Cadencii.Gui.Toolkit
 		bool ShowInTaskbar { get; set; }
 		bool ShowIcon { get; set; }
 		bool MaximizeBox { get; set; }
+		bool MinimizeBox { get; set; }
 		bool KeyPreview { get; set; }
 		Size AutoScaleDimensions { get; set; }
 

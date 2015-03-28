@@ -268,7 +268,8 @@ namespace Cadencii.Application.Forms
 #endif
 
             registerEventHandlers();
-			this.ParentWindow.Icon = cadencii.Properties.Resources.Icon1;
+			if (cadencii.Properties.Resources.Icon1 != null) // .ico file is not supported yet.
+				this.ParentWindow.Icon = cadencii.Properties.Resources.Icon1;
 
 #if !ENABLE_SCRIPT
             menuSettingPaletteTool.setVisible( false );
@@ -300,11 +301,11 @@ namespace Cadencii.Application.Forms
             splitContainer1.Panel1.BorderStyle = Cadencii.Gui.Toolkit.BorderStyle.None;
             splitContainer1.Panel2.BorderStyle = Cadencii.Gui.Toolkit.BorderStyle.None;
             splitContainer1.BackColor = new Cadencii.Gui.Color(212, 212, 212);
-            splitContainer2.Panel1.AddControl(panel1);
+            //splitContainer2.Panel1.AddControl(panel1);
             panel1.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
-            splitContainer1.Panel1.AddControl(splitContainer2);
+            //splitContainer1.Panel1.AddControl(splitContainer2);
 			splitContainer2.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
-            splitContainer1.Panel2.AddControl(trackSelector);
+            //splitContainer1.Panel2.AddControl(trackSelector);
             trackSelector.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 			splitContainer1.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 			splitContainer1.Panel2MinSize = trackSelector.Model.PreferredMinSize;
@@ -319,7 +320,7 @@ namespace Cadencii.Application.Forms
             menuVisualProperty.setVisible( false );
 #endif
 
-            splitContainerProperty.Panel2.AddControl (splitContainer1);
+            //splitContainerProperty.Panel2.AddControl (splitContainer1);
             splitContainerProperty.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 
             // コントロールの位置・サイズを調節
@@ -1416,7 +1417,9 @@ namespace Cadencii.Application.Forms
             Logger.StdOut("FormMain#updatePropertyPanelState; state=" + state);
 #endif
             if (state == PanelState.Docked) {
-                mPropertyPanelContainer.addComponent(EditorManager.propertyPanel);
+				// FIXME: this condition looks wrong.
+				if (EditorManager.propertyPanel.Parent == null)
+	                mPropertyPanelContainer.addComponent(EditorManager.propertyPanel);
                 menuVisualProperty.Checked = true;
                 EditorManager.editorConfig.PropertyWindowStatus.State = PanelState.Docked;
                 splitContainerProperty.Panel1Hidden = (false);

@@ -8,6 +8,9 @@ namespace Cadencii.Gui.Toolkit
 			add { base.LinkClicked += (o, e) => value (o, e); }
 			remove { throw new NotImplementedException (); }
 		}
+
+		// ignore
+		ContentAlignment UiLabel.TextAlign { get; set; }
 	}
 }
 

@@ -7,6 +7,8 @@ namespace Cadencii.Gui.Toolkit
 		// should be almost ignorable
 		bool UseVisualStyleBackColor { get; set; }
 
+		Appearance Appearance { get; set; }
+
 		bool Checked { get; set; }
 		event EventHandler Click;
 		event EventHandler CheckedChanged;

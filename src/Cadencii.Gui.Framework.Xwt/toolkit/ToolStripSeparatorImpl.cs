@@ -25,43 +25,30 @@ namespace Cadencii.Gui.Toolkit
 		{
 			throw new NotImplementedException ();
 		}
-		Font UiToolStripItem.Font {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+
+		// ignore
+		Font UiToolStripItem.Font { get; set; }
+
 		bool UiToolStripItem.Enabled {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return base.Sensitive; }
+			set { base.Sensitive = value; }
 		}
+
 		int UiToolStripItem.Height {
 			// hacky
 			get { return GuiHost.Current.SystemMenuFont.getSize (); }
 		}
+
 		string UiToolStripItem.Name { get; set; }
+
 		string UiToolStripItem.Text {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return base.Label; }
+			set { base.Label = value; }
 		}
-		string UiToolStripItem.ToolTipText {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+
+		// FIXME: implement?
+		string UiToolStripItem.ToolTipText { get; set; }
+
 		// ignore.
 		Size UiToolStripItem.Size { get; set; }
 

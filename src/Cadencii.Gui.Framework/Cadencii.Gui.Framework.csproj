@@ -167,6 +167,8 @@
     <Compile Include="Cadencii.Gui.Toolkit\UiToolBarToggleButton.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiToolBarSeparatorButton.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\FormStartPosition.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\Appearance.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\ContentAlignment.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

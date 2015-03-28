@@ -17,6 +17,10 @@ namespace Cadencii.Gui.Toolkit
 		// should be almost ignorable
 		public bool UseVisualStyleBackColor { get; set; }
 
+
+		// can't do anything. ignore so far.
+		Appearance UiCheckBox.Appearance { get; set; }
+
 		bool UiCheckBox.Checked {
 			get { return this.State == Xwt.CheckBoxState.On; }
 			set { this.State = value ? Xwt.CheckBoxState.On : Xwt.CheckBoxState.Off; } 

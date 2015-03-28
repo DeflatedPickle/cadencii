@@ -95,7 +95,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -136,17 +136,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -174,7 +174,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -357,7 +360,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -398,17 +401,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -436,7 +439,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -619,7 +625,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -660,17 +666,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -698,7 +704,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -881,7 +890,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -922,17 +931,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -960,7 +969,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -1143,7 +1155,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -1184,17 +1196,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -1222,7 +1234,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -1405,7 +1420,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -1446,17 +1461,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -1484,7 +1499,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -1667,7 +1685,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -1708,17 +1726,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -1746,7 +1764,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -1929,7 +1950,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -1970,17 +1991,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -2008,7 +2029,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -2191,7 +2215,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -2232,17 +2256,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -2270,7 +2294,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -2453,7 +2480,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -2494,17 +2521,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -2532,7 +2559,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -2715,7 +2745,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -2756,17 +2786,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -2794,7 +2824,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -2977,7 +3010,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -3018,17 +3051,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -3056,7 +3089,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -3239,7 +3275,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -3280,17 +3316,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -3318,7 +3354,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -3501,7 +3540,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -3542,17 +3581,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -3580,7 +3619,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -3763,7 +3805,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -3804,17 +3846,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -3842,7 +3884,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -4025,7 +4070,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -4066,17 +4111,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -4104,7 +4149,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -4287,7 +4335,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -4328,17 +4376,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -4366,7 +4414,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -4549,7 +4600,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -4590,17 +4641,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -4628,7 +4679,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -4811,7 +4865,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -4852,17 +4906,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -4890,7 +4944,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -5073,7 +5130,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -5114,17 +5171,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -5152,7 +5209,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -5335,7 +5395,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -5376,17 +5436,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -5414,7 +5474,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -5597,7 +5660,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -5638,17 +5701,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -5676,7 +5739,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -5859,7 +5925,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -5900,17 +5966,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -5938,7 +6004,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -6121,7 +6190,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -6162,17 +6231,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -6200,7 +6269,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -6383,7 +6455,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -6424,17 +6496,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -6462,7 +6534,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -6645,7 +6720,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -6686,17 +6761,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -6724,7 +6799,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -6907,7 +6985,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -6948,17 +7026,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -6986,7 +7064,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -7169,7 +7250,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -7210,17 +7291,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -7248,7 +7329,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -7431,7 +7515,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -7472,17 +7556,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -7510,7 +7594,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -7693,7 +7780,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -7734,17 +7821,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -7772,7 +7859,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
@@ -7955,7 +8045,7 @@ namespace Cadencii.Gui.Toolkit
 
 		public void BringToFront ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement.
 		}
 
 		public void PerformLayout ()
@@ -7996,17 +8086,17 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Refresh ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate ()
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		public void Invalidate (bool invalidateChildren)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		bool UiControl.Focused {
@@ -8034,7 +8124,10 @@ namespace Cadencii.Gui.Toolkit
 		Rectangle UiControl.Bounds {
 			get { return this.ScreenBounds.ToGui (); }
 			set {
-				throw new NotImplementedException ();
+				Top = value.Top;
+				Left = value.Left;
+				base.WidthRequest = value.Width;
+				base.HeightRequest = value.Height;
 			}
 		}
 
