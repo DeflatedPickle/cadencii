@@ -213,6 +213,11 @@ namespace Cadencii.Gui
 			return eff;
 		}
 
+		public static DragEventArgs ToGui (this Xwt.DragStartedEventArgs e)
+		{
+			return new DragEventArgs (null, 0, 0, 0, e.DragOperation.AllowedActions.ToGui (), DragDropEffects.None);
+		}
+
 		public static DragEventArgs ToGui (this Xwt.DragEventArgs e)
 		{
 			return new DragEventArgs (new DataObjectXwt (e.Data), 0, (int) e.Position.X, (int) e.Position.Y, e.Action.ToGui (), e.Action.ToGui ());

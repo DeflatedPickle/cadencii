@@ -8,6 +8,9 @@ namespace Cadencii.Gui.Toolkit
 	{
 		// UiButton
 
+		// ignorable
+		bool UiButton.UseVisualStyleBackColor { get; set; }
+
 		event EventHandler UiButton.Click {
 			add { this.Clicked += value; }
 			remove { this.Clicked -= value; }

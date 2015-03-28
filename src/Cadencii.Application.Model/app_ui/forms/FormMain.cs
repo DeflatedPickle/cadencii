@@ -58,7 +58,7 @@ namespace Cadencii.Application.Forms
 		UiToolStripMenuItem cMenuPianoPaletteTool { get; set; }
 		UiToolStripMenuItem cMenuTrackSelectorPaletteTool { get; set; }
 		UiToolBarButton stripDDBtnQuantizeParent { get; set; }
-		UiContextMenu stripDDBtnQuantize { get;set; }
+		UiContextMenuStrip stripDDBtnQuantize { get;set; }
 
 		void updateScrollRangeVertical ();
 

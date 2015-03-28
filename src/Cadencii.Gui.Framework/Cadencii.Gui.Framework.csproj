@@ -71,7 +71,6 @@
     <Compile Include="Cadencii.Gui.Toolkit\ToolBarTextAlign.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\ToolStripRenderMode.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiComponent.cs" />
-    <Compile Include="Cadencii.Gui.Toolkit\UiContextMenu.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiContextMenuStrip.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiControl.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiDialog.cs" />
@@ -79,7 +78,6 @@
     <Compile Include="Cadencii.Gui.Toolkit\UiHScrollBar.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiImageList.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiListView.cs" />
-    <Compile Include="Cadencii.Gui.Toolkit\UiMenuItem.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiMenuStrip.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiPanel.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\UiPictureBox.cs" />

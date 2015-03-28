@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Cadencii.Gui.Toolkit
 {
@@ -8,10 +9,12 @@ namespace Cadencii.Gui.Toolkit
 		{
 		}
 
+		Dictionary<int,string> keynames = new Dictionary<int, string> ();
+
 		#region UiImageList implementation
 		void UiImageList.SetImagesKeyName (int i, string name)
 		{
-			throw new NotImplementedException ();
+			keynames [i] = name;
 		}
 		ColorDepth UiImageList.ColorDepth { get; set; }
 		object UiImageList.ImageStream { get; set; }

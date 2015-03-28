@@ -87,7 +87,7 @@
     <Compile Include="toolkit\ImageListImpl.cs" />
     <Compile Include="toolkit\ToolStripStatusLabelImpl.cs" />
     <Compile Include="toolkit\ToolStripButtonImpl.cs" />
-    <Compile Include="toolkit\ContextMenuImpl.cs" />
+    <Compile Include="toolkit\SaveFileDialogImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

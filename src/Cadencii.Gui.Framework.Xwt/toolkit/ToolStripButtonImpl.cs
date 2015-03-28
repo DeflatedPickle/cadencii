@@ -5,12 +5,8 @@ namespace Cadencii.Gui.Toolkit
 	public class ToolStripButtonImpl : Xwt.ToggleButton, UiToolStripButton
 	{
 		event EventHandler UiToolStripButton.CheckedChanged {
-			add {
-				throw new NotImplementedException ();
-			}
-			remove {
-				throw new NotImplementedException ();
-			}
+			add { base.Toggled += value; }
+			remove { base.Toggled -= value; }
 		}
 
 		// FIXME: implement

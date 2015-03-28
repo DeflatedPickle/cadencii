@@ -263,15 +263,15 @@ namespace Cadencii.Application.Forms
         UiToolBarButton stripBtnLoop;
         UiToolBarButton stripBtnCurve;
         UiToolStripSeparator toolStripSeparator2;
-		public UiContextMenu stripDDBtnQuantize { get;set; }
-        UiMenuItem stripDDBtnQuantize04;
-        UiMenuItem stripDDBtnQuantize08;
-        UiMenuItem stripDDBtnQuantize16;
-        UiMenuItem stripDDBtnQuantize32;
-        UiMenuItem stripDDBtnQuantize64;
-        UiMenuItem stripDDBtnQuantizeOff;
+		public UiContextMenuStrip stripDDBtnQuantize { get;set; }
+        UiToolStripMenuItem stripDDBtnQuantize04;
+		UiToolStripMenuItem stripDDBtnQuantize08;
+		UiToolStripMenuItem stripDDBtnQuantize16;
+		UiToolStripMenuItem stripDDBtnQuantize32;
+		UiToolStripMenuItem stripDDBtnQuantize64;
+		UiToolStripMenuItem stripDDBtnQuantizeOff;
         UiToolStripSeparator toolStripSeparator3;
-        UiMenuItem stripDDBtnQuantizeTriplet;
+		UiToolStripMenuItem stripDDBtnQuantizeTriplet;
         UiToolBarButton stripBtnStartMarker;
 		public UiToolBarButton stripBtnEndMarker { get; set; }
         	public UiHScrollBar hScroll { get; set; }
@@ -284,7 +284,7 @@ namespace Cadencii.Application.Forms
         UiToolStripSeparator toolStripSeparator10;
         UiToolStripMenuItem menuSettingGameControlerSetting;
         UiToolStripMenuItem menuSettingGameControlerLoad;
-        UiMenuItem stripDDBtnQuantize128;
+		UiToolStripMenuItem stripDDBtnQuantize128;
         UiToolStripMenuItem menuSettingPositionQuantize128;
         UiToolStripMenuItem cMenuPianoQuantize128;
         UiToolStripMenuItem cMenuPianoFixed128;
@@ -387,7 +387,7 @@ namespace Cadencii.Application.Forms
         UiImageList imageListPosition;
 		public UiToolBar toolBarMeasure { get; set; }
 		public UiToolBarButton stripDDBtnQuantizeParent { get; set; }
-        UiMenuItem menuItem2;
+        UiToolStripMenuItem menuItem2;
         UiToolBarButton toolBarButton5;
         UiImageList imageListMeasure;
         UiToolStripContainer toolStripContainer1;

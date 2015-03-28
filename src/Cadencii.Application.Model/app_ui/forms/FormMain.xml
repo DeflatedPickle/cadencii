@@ -1807,64 +1807,46 @@
 	</Form>
 
 	<!-- programmatically initialized -->
-    <UiContextMenu id="stripDDBtnQuantize" use-default-constructor="true"
+    <UiContextMenuStrip id="stripDDBtnQuantize"
             >
-        <_MenuItems>
-	        <UiMenuItem id="stripDDBtnQuantize04"
-
-	            Index = "0"
+        <_Items>
+	        <UiToolStripMenuItem id="stripDDBtnQuantize04"
 	            Text = "1/4"
 	            />
 
-	        <UiMenuItem id="stripDDBtnQuantize08"
-
-	            Index = "1"
+	        <UiToolStripMenuItem id="stripDDBtnQuantize08"
 	            Text = "1/8"
 	            />
 
-	        <UiMenuItem id="stripDDBtnQuantize16"
-
-	            Index = "2"
+	        <UiToolStripMenuItem id="stripDDBtnQuantize16"
 	            Text = "1/16"
 	            />
 
-	        <UiMenuItem id="stripDDBtnQuantize32"
-
-	            Index = "3"
+	        <UiToolStripMenuItem id="stripDDBtnQuantize32"
 	            Text = "1/32"
 	            />
 
-	        <UiMenuItem id="stripDDBtnQuantize64"
-
-	            Index = "4"
+	        <UiToolStripMenuItem id="stripDDBtnQuantize64"
 	            Text = "1/64"
 	            />
 
-	        <UiMenuItem id="stripDDBtnQuantize128"
-
-	            Index = "5"
+	        <UiToolStripMenuItem id="stripDDBtnQuantize128"
 	            Text = "1/128"
 	            />
 
-	        <UiMenuItem id="stripDDBtnQuantizeOff"
-
-	            Index = "6"
+	        <UiToolStripMenuItem id="stripDDBtnQuantizeOff"
 	            Text = "Off"
 	            />
 
-	        <UiMenuItem id="menuItem2"
-
-	            Index = "7"
+	        <UiToolStripMenuItem id="menuItem2"
 	            Text = "-"
 	            />
 
-	        <UiMenuItem id="stripDDBtnQuantizeTriplet"
-
-	            Index = "8"
+	        <UiToolStripMenuItem id="stripDDBtnQuantizeTriplet"
 	            Text = "Triplet"
 	            />
-        </_MenuItems>
-    </UiContextMenu>
+        </_Items>
+    </UiContextMenuStrip>
 
     <!-- programmatically instantiated and shown -->
     <UiContextMenuStrip id="cMenuPiano"

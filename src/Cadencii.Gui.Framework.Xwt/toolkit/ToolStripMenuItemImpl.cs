@@ -10,8 +10,11 @@ namespace Cadencii.Gui.Toolkit
 		{
 			base.Clicked += (o, e) => {
 				var x = this as UiToolStripMenuItem;
-				if (x.CheckOnClick)
+				if (x.CheckOnClick) {
 					base.Checked = !base.Checked;
+					if (CheckedChanged != null)
+						CheckedChanged (this, EventArgs.Empty);
+				}
 			};
 		}
 
@@ -23,15 +26,10 @@ namespace Cadencii.Gui.Toolkit
 			Clicked += e;
 		}
 
-		event EventHandler UiToolStripMenuItem.CheckedChanged {
-			add { throw new NotImplementedException (); }
-			remove { throw new NotImplementedException (); }
-		}
+		public event EventHandler CheckedChanged;
 
-		event EventHandler UiToolStripMenuItem.MouseHover {
-			add { throw new NotImplementedException (); }
-			remove { throw new NotImplementedException (); }
-		}
+		// FIXME: implement
+		public event EventHandler MouseHover;
 
 		void UiToolStripMenuItem.Mnemonic (Keys keys)
 		{

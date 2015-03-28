@@ -84,9 +84,7 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public event EventHandler<DragEventArgs> DragEnter {
-			add {
-				throw new NotImplementedException ();
-			}
+			add { base.DragStarted += (o, e) => value (o, e.ToGui ()); }
 			remove {
 				throw new NotImplementedException ();
 			}

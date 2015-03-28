@@ -21,10 +21,6 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class ContextMenuBase : Xwt.Widget
-	{
-	}
-
 	public partial class ContextMenuStripBase : Xwt.Widget
 	{
 	}

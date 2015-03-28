@@ -121,13 +121,12 @@ namespace Cadencii.Gui.Toolkit
 
 		public void Show (UiControl control, int x, int y)
 		{
+			if (Opening != null)
+				Opening (this, EventArgs.Empty);
 			menu.Popup ((Xwt.Widget) control, x, y);
 		}
 
-		public event EventHandler Opening {
-			add { throw new NotImplementedException (); }
-			remove { throw new NotImplementedException (); }
-		}
+		public event EventHandler Opening;
 
 		public event EventHandler VisibleChanged {
 			add { throw new NotImplementedException (); }

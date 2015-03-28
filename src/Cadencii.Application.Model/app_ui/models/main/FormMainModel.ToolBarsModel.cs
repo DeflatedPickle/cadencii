@@ -64,7 +64,7 @@ namespace Cadencii.Application.Models
 					var rc = parent.form.stripDDBtnQuantizeParent.Rectangle;
 					parent.form.stripDDBtnQuantize.Show(
 						parent.form.toolBarMeasure,
-						new Cadencii.Gui.Point(rc.Left, rc.Bottom));
+						rc.Left, rc.Bottom);
 				}
 			}
 

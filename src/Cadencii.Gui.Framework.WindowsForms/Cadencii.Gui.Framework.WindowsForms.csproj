@@ -50,7 +50,6 @@
     <Compile Include="DataObjectWF.cs" />
     <Compile Include="toolkit\ButtonImpl.cs" />
     <Compile Include="toolkit\ContainerControlImpl.cs" />
-    <Compile Include="toolkit\ContextMenuImpl.cs" />
     <Compile Include="toolkit\Extensions.cs" />
     <Compile Include="toolkit\FormImpl.cs" />
     <Compile Include="toolkit\HScrollBarImpl.cs" />
@@ -58,7 +57,6 @@
     <Compile Include="toolkit\ListViewColumnImpl.cs" />
     <Compile Include="toolkit\ListViewImpl.cs" />
     <Compile Include="toolkit\ListViewItemImpl.cs" />
-    <Compile Include="toolkit\MenuItemImpl.cs" />
     <Compile Include="toolkit\MenuStripImpl.cs" />
     <Compile Include="toolkit\NumericUpDownImpl.cs" />
     <Compile Include="toolkit\PanelImpl.cs" />
