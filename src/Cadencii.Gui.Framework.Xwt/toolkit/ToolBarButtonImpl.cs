@@ -2,38 +2,22 @@
 
 namespace Cadencii.Gui.Toolkit
 {
-	public class ToolBarButtonImpl : Xwt.Button, UiToolBarButton
+	public class ToolBarButtonImpl : Xwt.ToggleButton, UiToolBarButton
 	{
 		bool UiToolBarButton.Enabled {
 			get { return base.Sensitive; }
 			set { base.Sensitive = value; }
 		}
+
 		// FIXME: implement
-		bool UiToolBarButton.Pushed {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		bool UiToolBarButton.Pushed { get; set; }
+
 		// FIXME: implement
-		string UiToolBarButton.ImageKey {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
-		int UiToolBarButton.ImageIndex {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		string UiToolBarButton.ImageKey { get; set; }
+
+		// FIXME: implement
+		int UiToolBarButton.ImageIndex { get; set; }
+
 		string UiToolBarButton.Text {
 			get { return base.Label; }
 			set { base.Label = value; }
@@ -57,23 +41,13 @@ namespace Cadencii.Gui.Toolkit
 			get { return base.Active; }
 			set { base.Active = value; }
 		}
+
 		// FIXME: implement
-		string UiToolBarButton.ImageKey {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
-		int UiToolBarButton.ImageIndex {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		string UiToolBarButton.ImageKey { get; set; }
+
+		// FIXME: implement
+		int UiToolBarButton.ImageIndex { get; set; }
+
 		string UiToolBarButton.Text {
 			get { return base.Label; }
 			set { base.Label = value; }

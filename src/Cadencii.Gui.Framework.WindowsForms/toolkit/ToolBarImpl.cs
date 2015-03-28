@@ -59,7 +59,7 @@ namespace Cadencii.Gui.Toolkit
 			set { Appearance = (System.Windows.Forms.ToolBarAppearance) value; }
 		}
 
-		IEnumerable<UiToolBarButton> UiToolBar.Buttons {
+		IList<UiToolBarButton> UiToolBar.Buttons {
 			get { return new CastingList<UiToolBarButton,System.Windows.Forms.ToolBarButton> (Buttons, null, null); }
 		}
 

@@ -105,12 +105,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -178,25 +179,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -248,14 +245,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -268,7 +259,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -376,12 +367,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -449,25 +441,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -519,14 +507,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -539,7 +521,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -647,12 +629,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -720,25 +703,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -790,14 +769,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -810,7 +783,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -918,12 +891,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -991,25 +965,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -1061,14 +1031,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -1081,7 +1045,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -1189,12 +1153,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -1262,25 +1227,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -1332,14 +1293,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -1352,7 +1307,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -1460,12 +1415,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -1533,25 +1489,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -1603,14 +1555,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -1623,7 +1569,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -1731,12 +1677,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -1804,25 +1751,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -1874,14 +1817,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -1894,7 +1831,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -2002,12 +1939,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -2075,25 +2013,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -2145,14 +2079,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -2165,7 +2093,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -2273,12 +2201,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -2346,25 +2275,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -2416,14 +2341,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -2436,7 +2355,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -2544,12 +2463,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -2617,25 +2537,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -2687,14 +2603,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -2707,7 +2617,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -2815,12 +2725,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -2888,25 +2799,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -2958,14 +2865,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -2978,7 +2879,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -3086,12 +2987,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -3159,25 +3061,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -3229,14 +3127,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -3249,7 +3141,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -3357,12 +3249,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -3430,25 +3323,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -3500,14 +3389,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -3520,7 +3403,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -3628,12 +3511,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -3701,25 +3585,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -3771,14 +3651,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -3791,7 +3665,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -3899,12 +3773,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -3972,25 +3847,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -4042,14 +3913,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -4062,7 +3927,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -4170,12 +4035,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -4243,25 +4109,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -4313,14 +4175,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -4333,7 +4189,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -4441,12 +4297,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -4514,25 +4371,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -4584,14 +4437,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -4604,7 +4451,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -4712,12 +4559,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -4785,25 +4633,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -4855,14 +4699,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -4875,7 +4713,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -4983,12 +4821,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -5056,25 +4895,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -5126,14 +4961,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -5146,7 +4975,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -5254,12 +5083,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -5327,25 +5157,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -5397,14 +5223,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -5417,7 +5237,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -5525,12 +5345,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -5598,25 +5419,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -5668,14 +5485,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -5688,7 +5499,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -5796,12 +5607,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -5869,25 +5681,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -5939,14 +5747,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -5959,7 +5761,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -6067,12 +5869,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -6140,25 +5943,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -6210,14 +6009,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -6230,7 +6023,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -6338,12 +6131,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -6411,25 +6205,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -6481,14 +6271,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -6501,7 +6285,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -6609,12 +6393,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -6682,25 +6467,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -6752,14 +6533,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -6772,7 +6547,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -6880,12 +6655,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -6953,25 +6729,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -7023,14 +6795,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -7043,7 +6809,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -7151,12 +6917,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -7224,25 +6991,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -7294,14 +7057,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -7314,7 +7071,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -7422,12 +7179,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -7495,25 +7253,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -7565,14 +7319,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -7585,7 +7333,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -7693,12 +7441,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -7766,25 +7515,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -7836,14 +7581,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -7856,7 +7595,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -7964,12 +7703,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -8037,25 +7777,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -8107,14 +7843,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -8127,7 +7857,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}
@@ -8235,12 +7965,13 @@ namespace Cadencii.Gui.Toolkit
 
 		public Point PointToClient (Point point)
 		{
-			throw new NotImplementedException ();
+			var sb = Screen.Instance.getScreenBounds (this);
+			return new Point (point.X - sb.X, point.Y - sb.Y);
 		}
 
 		public Point PointToScreen (Point point)
 		{
-			throw new NotImplementedException ();
+			return base.ConvertToScreenCoordinates (point.ToWF ()).ToGui ();
 		}
 
 		public void SuspendLayout ()
@@ -8308,25 +8039,21 @@ namespace Cadencii.Gui.Toolkit
 		}
 
 		public int Top {
-			get { return (int) this.ScreenBounds.Top; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginTop; }
+			set { base.MarginTop = value; }
 		}
 
 		public int Left {
-			get { return (int) this.ScreenBounds.Left; }
-			set {
-				throw new NotImplementedException ();
-			}
+			get { return (int) base.MarginLeft; }
+			set { base.MarginLeft = value; }
 		}
 
 		public int Bottom {
-			get { return (int) this.ScreenBounds.Bottom; }
+			get { return (int) base.MarginBottom; }
 		}
 
 		public int Right {
-			get { return (int) this.ScreenBounds.Right; }
+			get { return (int) base.MarginRight; }
 		}
 
 		bool is_disposed;
@@ -8378,14 +8105,8 @@ namespace Cadencii.Gui.Toolkit
 			set { this.BackgroundColor = value.ToNative (); }
 		}
 
-		public Color ForeColor {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		public Color ForeColor { get; set; }
 
 		// FIXME: implement
 		public Point Location { get; set; }
@@ -8398,7 +8119,7 @@ namespace Cadencii.Gui.Toolkit
 			}
 		}
 
-		bool UiControl.Enabled {
+		public bool Enabled {
 			get { return this.Sensitive; }
 			set { this.Sensitive = value; }
 		}

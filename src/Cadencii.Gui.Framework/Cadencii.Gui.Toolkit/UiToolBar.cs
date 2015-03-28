@@ -46,7 +46,7 @@ namespace Cadencii.Gui.Toolkit
 			set;
 		}
 
-		IEnumerable<UiToolBarButton> Buttons { get; }
+		IList<UiToolBarButton> Buttons { get; }
 		void AddButton (UiToolBarButton button);
 		event EventHandler<ToolBarButtonClickEventArgs> ButtonClick;
 	}

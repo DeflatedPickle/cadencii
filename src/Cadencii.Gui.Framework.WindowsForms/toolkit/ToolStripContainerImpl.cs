@@ -29,7 +29,7 @@ namespace Cadencii.Gui.Toolkit
 			{
 				this.panel = panel;
 			}
-			
+
 			#region IControlContainer implementation
 			void IControlContainer.AddControl (UiControl control)
 			{

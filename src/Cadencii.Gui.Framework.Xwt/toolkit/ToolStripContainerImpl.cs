@@ -24,6 +24,12 @@ namespace Cadencii.Gui.Toolkit
 				this.panel = panel;
 			}
 
+			// ignore.
+			public ToolStripRenderMode RenderMode { get; set; }
+
+			// FIXME: implement.
+			public Size Size { get; set; }
+
 			#region IControlContainer implementation
 			void IControlContainer.AddControl (UiControl control)
 			{

@@ -46,14 +46,8 @@ namespace Cadencii.Gui.Toolkit
 		// ignore.
 		string UiToolStripMenuItem.ShortcutKeyDisplayString { get; set; }
 
-		Keys UiToolStripMenuItem.ShortcutKeys {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// FIXME: implement
+		Keys UiToolStripMenuItem.ShortcutKeys { get; set; }
 
 		// this is taken care by the event handler which is registered at .ctor().
 		bool UiToolStripMenuItem.CheckOnClick { get; set; }

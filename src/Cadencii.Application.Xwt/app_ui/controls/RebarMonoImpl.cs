@@ -130,8 +130,14 @@ namespace Cadencii.Application.Controls
 			public bool VariantHeight { get; set; }
 			public bool AllowVertical { get; set; }
 			public UiControl Child {
-				get { return (UiControl) base.Content; }
-				set { base.Content = (Xwt.Widget) value.Native; }
+				get { return (UiControl) base.Children.FirstOrDefault (); }
+				set { 
+					base.Clear ();
+					var child = (Xwt.Widget)value.Native;
+					// FIXME: is this correct?
+					if (child.Parent == null)
+						base.AddChild (child);
+				}
 			}
 			public int Header { get; set; }
 			public int Integral { get; set; }

@@ -22,9 +22,9 @@ namespace Cadencii.Gui.Toolkit
 			public abstract Rectangle getWorkingArea (object nativeWindow);
 		}
 
-		public Rectangle getScreenBounds (object nativeContrl)
+		public Rectangle getScreenBounds (object nativeControl)
 		{
-			return a.getScreenBounds (nativeContrl);
+			return a.getScreenBounds (nativeControl);
 		}
 		public void SetScreenMousePosition (Point p)
 		{

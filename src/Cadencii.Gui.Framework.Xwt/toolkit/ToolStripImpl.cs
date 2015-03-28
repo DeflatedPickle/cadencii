@@ -31,7 +31,12 @@ namespace Cadencii.Gui.Toolkit
 				if (index != lv.Children.Count ())
 					throw new NotSupportedException ();
 				base.InsertItem (index, item);
-				lv.PackStart ((Xwt.Widget) item);
+				if (item is Xwt.Widget)
+					lv.PackStart ((Xwt.Widget)item);
+				else if (item is UiToolStripSeparator)
+					lv.PackStart (new Xwt.Label ("|"));
+				else
+					Console.Error.WriteLine ("Warning: non-widget item is placed on ToolStripImpl: " + item);
 			}
 
 			protected override void ClearItems ()

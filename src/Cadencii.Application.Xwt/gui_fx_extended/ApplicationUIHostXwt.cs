@@ -53,6 +53,10 @@ namespace Cadencii.Application.Forms
 		{
 			if (c.Name == name)
 				return c;
+			var b = c as Xwt.Box;
+			if (b != null)
+				return b.Children.Select (bc => FindControlTreeItem (bc, name))
+					.FirstOrDefault (x => x != null);
 			var p = c as IControlContainer;
 			if (p == null)
 				return null;
@@ -169,7 +173,7 @@ namespace Cadencii.Application.Forms
 						}
 					} else {
 						// get property, can be collection ("MenuStrip.Items") or non-collection ("SplitContainer.Panel1")
-						ApplyXml (roots, c, pv, pv is System.Collections.ICollection || typeof(ICollection<RebarBand>).IsAssignableFrom (pv.GetType ()));
+						ApplyXml (roots, c, pv, pv is System.Collections.ICollection || pv.GetType ().Name == typeof (CastingList<,>).Name || typeof(ICollection<RebarBand>).IsAssignableFrom (pv.GetType ()));
 					}
 				} else {
 					object obj;

@@ -6,6 +6,7 @@ namespace Cadencii.Gui.Toolkit
 {
 	public interface UiForm : UiControl, IControlContainer
 	{
+		bool AllowDrop { get; set; }
 		FormStartPosition StartPosition { get; set; }
 		bool ShowInTaskbar { get; set; }
 		bool ShowIcon { get; set; }

@@ -23,6 +23,9 @@ namespace Cadencii.Gui.Toolkit
 		// UiForm
 
 		// ignore.
+		bool UiForm.AllowDrop { get; set; }
+
+		// ignore.
 		FormStartPosition UiForm.StartPosition { get; set; }
 
 		bool UiForm.ShowInTaskbar {
