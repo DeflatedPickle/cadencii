@@ -704,71 +704,58 @@
 
 		        <UiToolStripMenuItem id="menuFile"
 		            Name = "menuFile"
-		            Size = "(57, 22)"
 		            Text = "File(&amp;F)"
 		            >
 		            <_DropDownItems>
 				        <UiToolStripMenuItem id="menuFileNew"
 				            Name = "menuFileNew"
-				            Size = "(270, 22)"
 				            Text = "New(N)"
 				            />
 
 				        <UiToolStripMenuItem id="menuFileOpen"
 				            Name = "menuFileOpen"
-				            Size = "(270, 22)"
 				            Text = "Open(&amp;O)"
 				            />
 
 				        <UiToolStripMenuItem id="menuFileSave"
 				            Name = "menuFileSave"
-				            Size = "(270, 22)"
 				            Text = "Save(&amp;S)"
 				            />
 
 				        <UiToolStripMenuItem id="menuFileSaveNamed"
 				            Name = "menuFileSaveNamed"
-				            Size = "(270, 22)"
 				            Text = "Save As(&amp;A)"
 				            />
 
 				        <UiToolStripSeparator id="toolStripMenuItem10"
-
 				            Name = "toolStripMenuItem10"
-				            Size = "(267, 6)"
 				            />
 
 				        <UiToolStripMenuItem id="menuFileOpenVsq"
 				            Name = "menuFileOpenVsq"
-				            Size = "(270, 22)"
 				            Text = "Open VSQX/VSQ/Vocaloid Midi(&amp;V)"
 				            />
 
 				        <UiToolStripMenuItem id="menuFileOpenUst"
 				            Name = "menuFileOpenUst"
-				            Size = "(270, 22)"
 				            Text = "Open UTAU Project File(&amp;U)"
 				            />
 
 				        <UiToolStripMenuItem id="menuFileImport"
 				            Name = "menuFileImport"
-				            Size = "(270, 22)"
 				            Text = "Import(&amp;I)"
 				            >
 				            <_DropDownItems>
 						        <UiToolStripMenuItem id="menuFileImportVsq"
 						            Name = "menuFileImportVsq"
-						            Size = "(175, 22)"
 						            Text = "VSQ File"
 						            />
 						        <UiToolStripMenuItem id="menuFileImportMidi"
 						            Name = "menuFileImportMidi"
-						            Size = "(175, 22)"
 						            Text = "Standard MIDI"
 						            />
 						        <UiToolStripMenuItem id="menuFileImportUst"
 						            Name = "menuFileImportUst"
-						            Size = "(175, 22)"
 						            Text = "UTAU project file"
 						            />
 				            </_DropDownItems>
@@ -776,65 +763,53 @@
 
 				        <UiToolStripMenuItem id="menuFileExport"
 				            Name = "menuFileExport"
-				            Size = "(270, 22)"
 				            Text = "Export(&amp;E)"
 				            >
 				            <_DropDownItems>
 						        <UiToolStripMenuItem id="menuFileExportWave"
 						            Name = "menuFileExportWave"
-						            Size = "(268, 22)"
 						            Text = "Wave"
 						            />
 						        <UiToolStripMenuItem id="menuFileExportParaWave"
 						            Name = "menuFileExportParaWave"
-						            Size = "(268, 22)"
 						            Text = "Serial numbered Wave"
 						            />
 						        <UiToolStripMenuItem id="menuFileExportVsq"
 						            Name = "menuFileExportVsq"
-						            Size = "(268, 22)"
 						            Text = "VSQ File"
 						            />
 						        <UiToolStripMenuItem id="menuFileExportVsqx"
 						            Name = "menuFileExportVsqx"
-						            Size = "(268, 22)"
 						            Text = "VSQX File"
 						            />
 						        <UiToolStripMenuItem id="menuFileExportMidi"
 						            Name = "menuFileExportMidi"
-						            Size = "(268, 22)"
 						            Text = "MIDI"
 						            />
 						        <UiToolStripMenuItem id="menuFileExportMusicXml"
 						            Name = "menuFileExportMusicXml"
-						            Size = "(268, 22)"
 						            Text = "MusicXML"
 						            />
 						        <UiToolStripMenuItem id="menuFileExportUst"
 						            Name = "menuFileExportUst"
-						            Size = "(268, 22)"
 						            Text = "UTAU Project File (current track)"
 						            />
 						        <UiToolStripMenuItem id="menuFileExportVxt"
 						            Name = "menuFileExportVxt"
-						            Size = "(268, 22)"
 						            Text = "Metatext for vConnect"
 						            />
 				            </_DropDownItems>
 						</UiToolStripMenuItem>
 				        <UiToolStripSeparator id="toolStripMenuItem11"
 				            Name = "toolStripMenuItem11"
-				            Size = "(267, 6)"
 				            />
 				        <UiToolStripMenuItem id="menuFileRecent"
 				            Name = "menuFileRecent"
-				            Size = "(270, 22)"
 				            Text = "Recent Files(&amp;R)"
 				            >
 				            <_DropDownItems>
 						        <UiToolStripMenuItem id="menuFileRecentClear"
 						            Name = "menuFileRecentClear"
-						            Size = "(141, 22)"
 						            Text = "Clear Menu"
 						            />
 				            </_DropDownItems>
@@ -842,11 +817,9 @@
 
 				        <UiToolStripSeparator id="toolStripMenuItem12"
 				            Name = "toolStripMenuItem12"
-				            Size = "(267, 6)"
 				            />
 				        <UiToolStripMenuItem id="menuFileQuit"
 				            Name = "menuFileQuit"
-				            Size = "(270, 22)"
 				            Text = "Quit(&amp;Q)"
 				            />
 		            </_DropDownItems>
@@ -854,89 +827,64 @@
 
 		        <UiToolStripMenuItem id="menuEdit"
 		            Name = "menuEdit"
-		            Size = "(59, 22)"
 		            Text = "Edit(&amp;E)"
 		            >
 		            <_DropDownItems>
 
 				        <UiToolStripMenuItem id="menuEditUndo"
-
 				            Name = "menuEditUndo"
-				            Size = "(220, 22)"
 				            Text = "Undo(&amp;U)"
 				            />
 
 				        <UiToolStripMenuItem id="menuEditRedo"
-
 				            Name = "menuEditRedo"
-				            Size = "(220, 22)"
 				            Text = "Redo(&amp;R)"
 				            />
 
 				        <UiToolStripSeparator id="toolStripMenuItem5"
-
 				            Name = "toolStripMenuItem5"
-				            Size = "(217, 6)"
 				            />
 
 				        <UiToolStripMenuItem id="menuEditCut"
-
 				            Name = "menuEditCut"
-				            Size = "(220, 22)"
 				            Text = "Cut(&amp;T)"
 				            />
 
 				        <UiToolStripMenuItem id="menuEditCopy"
-
 				            Name = "menuEditCopy"
-				            Size = "(220, 22)"
 				            Text = "Copy(&amp;C)"
 				            />
 
 				        <UiToolStripMenuItem id="menuEditPaste"
-
 				            Name = "menuEditPaste"
-				            Size = "(220, 22)"
 				            Text = "Paste(&amp;P)"
 				            />
 
 				        <UiToolStripMenuItem id="menuEditDelete"
-
 				            Name = "menuEditDelete"
-				            Size = "(220, 22)"
 				            Text = "Delete(&amp;D)"
 				            />
 
 				        <UiToolStripSeparator id="toolStripMenuItem19"
-
 				            Name = "toolStripMenuItem19"
-				            Size = "(217, 6)"
 				            />
 
 				        <UiToolStripMenuItem id="menuEditAutoNormalizeMode"
-
 				            Name = "menuEditAutoNormalizeMode"
-				            Size = "(220, 22)"
 				            Text = "Auto Normalize Mode(&amp;N)"
 				            />
 
 				        <UiToolStripSeparator id="toolStripMenuItem20"
-
 				            Name = "toolStripMenuItem20"
-				            Size = "(217, 6)"
 				            />
 
 				        <UiToolStripMenuItem id="menuEditSelectAll"
-
 				            Name = "menuEditSelectAll"
-				            Size = "(220, 22)"
 				            Text = "Select All(&amp;A)"
 				            />
 
 				        <UiToolStripMenuItem id="menuEditSelectAllEvents"
-
 				            Name = "menuEditSelectAllEvents"
-				            Size = "(220, 22)"
 				            Text = "Select All Events(&amp;E)"
 				            />
 		            </_DropDownItems>
@@ -944,7 +892,6 @@
 
 		        <UiToolStripMenuItem id="menuVisual"
 		            Name = "menuVisual"
-		            Size = "(66, 22)"
 		            Text = "View(&amp;V)"
 		            >
 		            <_DropDownItems>
@@ -953,127 +900,99 @@
 				            Checked = "true"
 				            CheckOnClick = "true"
 				            Name = "menuVisualControlTrack"
-				            Size = "(237, 22)"
 				            Text = "Control Track(&amp;C)"
 				            />
 
 				        <UiToolStripMenuItem id="menuVisualMixer"
 				            Name = "menuVisualMixer"
-				            Size = "(237, 22)"
-				            Text = "Mixer(&amp;X)"
+			            Text = "Mixer(&amp;X)"
 				            />
 
 				        <UiToolStripMenuItem id="menuVisualWaveform"
 
 				            CheckOnClick = "true"
 				            Name = "menuVisualWaveform"
-				            Size = "(237, 22)"
 				            Text = "Waveform(&amp;W)"
 				            />
 
 				        <UiToolStripMenuItem id="menuVisualIconPalette"
-
 				            CheckOnClick = "true"
 				            Name = "menuVisualIconPalette"
-				            Size = "(237, 22)"
 				            Text = "Icon Palette(&amp;I)"
 				            />
 
 				        <UiToolStripMenuItem id="menuVisualProperty"
-
 				            CheckOnClick = "true"
 				            Name = "menuVisualProperty"
-				            Size = "(237, 22)"
 				            Text = "Property Window(&amp;C)"
 				            />
 
 				        <UiToolStripMenuItem id="menuVisualOverview"
-
 				            CheckOnClick = "true"
 				            Name = "menuVisualOverview"
-				            Size = "(237, 22)"
 				            Text = "Overview(&amp;O)"
 				            />
 
 				        <UiToolStripMenuItem id="menuVisualPluginUi"
 				            Name = "menuVisualPluginUi"
-				            Size = "(237, 22)"
 				            Text = "VSTi Plugin UI(&amp;U)"
 				            >
 				            <_DropDownItems>
 
 						        <UiToolStripMenuItem id="menuVisualPluginUiVocaloid1"
-
 						            Name = "menuVisualPluginUiVocaloid1"
-						            Size = "(157, 22)"
 						            Text = "VOCALOID1"
 						            />
 
 						        <UiToolStripMenuItem id="menuVisualPluginUiVocaloid2"
-
 						            Name = "menuVisualPluginUiVocaloid2"
-						            Size = "(157, 22)"
 						            Text = "VOCALOID2"
 						            />
 
 						        <UiToolStripMenuItem id="menuVisualPluginUiAquesTone"
-
 						            Name = "menuVisualPluginUiAquesTone"
-						            Size = "(157, 22)"
 						            Text = "AquesTone(&amp;A)"
 						            />
 
 						        <UiToolStripMenuItem id="menuVisualPluginUiAquesTone2"
-
 						            Name = "menuVisualPluginUiAquesTone2"
-						            Size = "(157, 22)"
 						            Text = "AquesTone2"
 						            />
 				            </_DropDownItems>
 						</UiToolStripMenuItem>
 
 				        <UiToolStripSeparator id="toolStripMenuItem1"
-
 				            Name = "toolStripMenuItem1"
-				            Size = "(234, 6)"
 				            />
 
 				        <UiToolStripMenuItem id="menuVisualGridline"
-
 				            CheckOnClick = "true"
 				            Name = "menuVisualGridline"
-				            Size = "(237, 22)"
 				            Text = "Grid Line(&amp;G)"
 				            />
 
 				        <UiToolStripSeparator id="toolStripMenuItem2"
-
 				            Name = "toolStripMenuItem2"
-				            Size = "(234, 6)"
 				            />
 
 				        <UiToolStripMenuItem id="menuVisualStartMarker"
 				            Name = "menuVisualStartMarker"
-				            Size = "(237, 22)"
 				            Text = "Start Marker(&amp;S)"
 				            />
 
 				        <UiToolStripMenuItem id="menuVisualEndMarker"
 				            Name = "menuVisualEndMarker"
-				            Size = "(237, 22)"
 				            Text = "End Marker(&amp;E)"
 				            />
 
 				        <UiToolStripSeparator id="toolStripMenuItem3"
 				            Name = "toolStripMenuItem3"
-				            Size = "(234, 6)"
 				            />
 
 				        <UiToolStripMenuItem id="menuVisualLyrics"
 				            Checked = "true"
 				            CheckOnClick = "true"
 				            Name = "menuVisualLyrics"
-				            Size = "(237, 22)"
 				            Text = "Lyric/Phoneme(&amp;L)"
 				            />
 
@@ -1081,14 +1000,12 @@
 				            Checked = "true"
 				            CheckOnClick = "true"
 				            Name = "menuVisualNoteProperty"
-				            Size = "(237, 22)"
 				            Text = "Note Expression/Vibrato(&amp;N)"
 				            />
 
 				        <UiToolStripMenuItem id="menuVisualPitchLine"
 				            CheckOnClick = "true"
 				            Name = "menuVisualPitchLine"
-				            Size = "(237, 22)"
 				            Text = "Pitch Line(&amp;P)"
 				            />
 		            </_DropDownItems>
@@ -1096,65 +1013,48 @@
 
 		        <UiToolStripMenuItem id="menuJob"
 		            Name = "menuJob"
-		            Size = "(54, 22)"
 		            Text = "Job(&amp;J)"
 		            >
 		            <_DropDownItems>
 
 				        <UiToolStripMenuItem id="menuJobNormalize"
-
 				            Name = "menuJobNormalize"
-				            Size = "(256, 22)"
 				            Text = "Normalize Notes(&amp;N)"
 				            />
 
 				        <UiToolStripMenuItem id="menuJobInsertBar"
-
 				            Name = "menuJobInsertBar"
-				            Size = "(256, 22)"
 				            Text = "Insert Bars(&amp;I)"
 				            />
 
 				        <UiToolStripMenuItem id="menuJobDeleteBar"
-
 				            Name = "menuJobDeleteBar"
-				            Size = "(256, 22)"
 				            Text = "Delete Bars(&amp;D)"
 				            />
 
 				        <UiToolStripMenuItem id="menuJobRandomize"
-
 				            Name = "menuJobRandomize"
-				            Size = "(256, 22)"
 				            Text = "Randomize(&amp;R)"
 				            />
 
 				        <UiToolStripMenuItem id="menuJobConnect"
-
 				            Name = "menuJobConnect"
-				            Size = "(256, 22)"
 				            Text = "Connect Notes(&amp;C)"
 				            />
 
 				        <UiToolStripMenuItem id="menuJobLyric"
-
 				            Name = "menuJobLyric"
-				            Size = "(256, 22)"
 				            Text = "Insert Lyrics(&amp;L)"
 				            />
 
 				        <UiToolStripMenuItem id="menuJobRewire"
-
 				            Enabled = "false"
 				            Name = "menuJobRewire"
-				            Size = "(256, 22)"
 				            Text = "Import ReWire Host Tempo(&amp;T)"
 				            />
 
 				        <UiToolStripMenuItem id="menuJobReloadVsti"
-
 				            Name = "menuJobReloadVsti"
-				            Size = "(256, 22)"
 				            Text = "Reload VSTi(&amp;R)"
 				            Visible = "false"
 				            />
@@ -1163,147 +1063,107 @@
 
 		        <UiToolStripMenuItem id="menuTrack"
 		            Name = "menuTrack"
-		            Size = "(70, 22)"
 		            Text = "Track(&amp;T)"
 		            >
 		            <_DropDownItems>
 
 				        <UiToolStripMenuItem id="menuTrackOn"
-
 				            Name = "menuTrackOn"
-				            Size = "(219, 22)"
 				            Text = "Track On(&amp;K)"
 				            />
 
 				        <UiToolStripSeparator id="toolStripMenuItem21"
-
 				            Name = "toolStripMenuItem21"
-				            Size = "(216, 6)"
 				            />
 
 				        <UiToolStripMenuItem id="menuTrackAdd"
-
 				            Name = "menuTrackAdd"
-				            Size = "(219, 22)"
 				            Text = "Add Track(&amp;A)"
 				            />
 
 				        <UiToolStripMenuItem id="menuTrackCopy"
-
 				            Name = "menuTrackCopy"
-				            Size = "(219, 22)"
 				            Text = "Copy Track(&amp;C)"
 				            />
 
 				        <UiToolStripMenuItem id="menuTrackChangeName"
-
 				            Name = "menuTrackChangeName"
-				            Size = "(219, 22)"
 				            Text = "Rename Track"
 				            />
 
 				        <UiToolStripMenuItem id="menuTrackDelete"
-
 				            Name = "menuTrackDelete"
-				            Size = "(219, 22)"
 				            Text = "Delete Track(&amp;D)"
 				            />
 
 				        <UiToolStripSeparator id="toolStripMenuItem22"
-
 				            Name = "toolStripMenuItem22"
-				            Size = "(216, 6)"
 				            />
 
 				        <UiToolStripMenuItem id="menuTrackRenderCurrent"
-
 				            Name = "menuTrackRenderCurrent"
-				            Size = "(219, 22)"
 				            Text = "Render Current Track(&amp;T)"
 				            />
 
 				        <UiToolStripMenuItem id="menuTrackRenderAll"
-
 				            Enabled = "false"
 				            Name = "menuTrackRenderAll"
-				            Size = "(219, 22)"
 				            Text = "Render All Tracks(&amp;S)"
 				            />
 
 				        <UiToolStripSeparator id="toolStripMenuItem23"
-
 				            Name = "toolStripMenuItem23"
-				            Size = "(216, 6)"
 				            />
 
 				        <UiToolStripMenuItem id="menuTrackOverlay"
-
 				            Name = "menuTrackOverlay"
-				            Size = "(219, 22)"
 				            Text = "Overlay(&amp;O)"
 				            />
 
 				        <UiToolStripMenuItem id="menuTrackRenderer"
 				            Name = "menuTrackRenderer"
-				            Size = "(219, 22)"
 				            Text = "Renderer(&amp;R)"
 				            >
 				            <_DropDownItems>
 
 						        <UiToolStripMenuItem id="menuTrackRendererVOCALOID1"
-
 						            Name = "menuTrackRendererVOCALOID1"
-						            Size = "(193, 22)"
 						            Text = "VOCALOID1(&amp;1)"
 						            />
 
 						        <UiToolStripMenuItem id="menuTrackRendererVOCALOID2"
-
 						            Name = "menuTrackRendererVOCALOID2"
-						            Size = "(193, 22)"
 						            Text = "VOCALOID2(&amp;2)"
 						            />
 
 						        <UiToolStripMenuItem id="menuTrackRendererUtau"
-
 						            Name = "menuTrackRendererUtau"
-						            Size = "(193, 22)"
 						            Text = "UTAU(&amp;3)"
 						            />
 
 						        <UiToolStripMenuItem id="menuTrackRendererVCNT"
-
 						            Name = "menuTrackRendererVCNT"
-						            Size = "(193, 22)"
 						            Text = "vConnect-STAND(&amp;4)"
 						            />
 
 						        <UiToolStripMenuItem id="menuTrackRendererAquesTone"
-
 						            Name = "menuTrackRendererAquesTone"
-						            Size = "(193, 22)"
 						            Text = "AquesTone(&amp;5)"
 						            />
 
 						        <UiToolStripMenuItem id="menuTrackRendererAquesTone2"
-
 						            Name = "menuTrackRendererAquesTone2"
-						            Size = "(193, 22)"
 						            Text = "AquesTone2(&amp;6)"
 						            />
 				            </_DropDownItems>
 						</UiToolStripMenuItem>
 
 				        <UiToolStripSeparator id="toolStripMenuItem4"
-
 				            Name = "toolStripMenuItem4"
-				            Size = "(216, 6)"
 				            />
 
 				        <UiToolStripMenuItem id="menuTrackBgm"
-
 				            Name = "menuTrackBgm"
-				            Size = "(219, 22)"
 				            Text = "BGM(&amp;B)"
 				            />
 		            </_DropDownItems>
@@ -1311,50 +1171,37 @@
 
 		        <UiToolStripMenuItem id="menuLyric"
 		            Name = "menuLyric"
-		            Size = "(70, 22)"
 		            Text = "Lyrics(&amp;L)"
 		            >
 		            <_DropDownItems>
 
 				        <UiToolStripMenuItem id="menuLyricExpressionProperty"
-
 				            Name = "menuLyricExpressionProperty"
-				            Size = "(262, 22)"
 				            Text = "Note Expression Property(&amp;E)"
 				            />
 
 				        <UiToolStripMenuItem id="menuLyricVibratoProperty"
-
 				            Name = "menuLyricVibratoProperty"
-				            Size = "(262, 22)"
 				            Text = "Note Vibrato Property(&amp;V)"
 				            />
 
 				        <UiToolStripMenuItem id="menuLyricApplyUtauParameters"
-
 				            Name = "menuLyricApplyUtauParameters"
-				            Size = "(262, 22)"
 				            Text = "Apply UTAU Parameters(&amp;A)"
 				            />
 
 				        <UiToolStripMenuItem id="menuLyricPhonemeTransformation"
-
 				            Name = "menuLyricPhonemeTransformation"
-				            Size = "(262, 22)"
 				            Text = "Phoneme Transformation(&amp;T)"
 				            />
 
 				        <UiToolStripMenuItem id="menuLyricDictionary"
-
 				            Name = "menuLyricDictionary"
-				            Size = "(262, 22)"
 				            Text = "User Word Dictionary(&amp;C)"
 				            />
 
 				        <UiToolStripMenuItem id="menuLyricCopyVibratoToPreset"
-
 				            Name = "menuLyricCopyVibratoToPreset"
-				            Size = "(262, 22)"
 				            Text = "Copy vibrato config to preset(&amp;P)"
 				            />
 		            </_DropDownItems>
@@ -1362,15 +1209,12 @@
 
 		        <UiToolStripMenuItem id="menuScript"
 		            Name = "menuScript"
-		            Size = "(72, 22)"
 		            Text = "Script(&amp;C)"
 		            >
 		            <_DropDownItems>
 
 				        <UiToolStripMenuItem id="menuScriptUpdate"
-
 				            Name = "menuScriptUpdate"
-				            Size = "(200, 22)"
 				            Text = "Update Script List(&amp;U)"
 				            />
 		            </_DropDownItems>
@@ -1378,163 +1222,120 @@
 
 		        <UiToolStripMenuItem id="menuSetting"
 		            Name = "menuSetting"
-		            Size = "(80, 22)"
 		            Text = "Setting(&amp;S)"
 		            >
 		            <_DropDownItems>
 
 				        <UiToolStripMenuItem id="menuSettingPreference"
-
 				            Name = "menuSettingPreference"
-				            Size = "(223, 22)"
 				            Text = "Preference(&amp;P)"
 				            />
 
 				        <UiToolStripMenuItem id="menuSettingSequence"
-
 				            Name = "menuSettingSequence"
-				            Size = "(223, 22)"
 				            Text = "Sequence config(&amp;S)"
 				            />
 
 				        <UiToolStripMenuItem id="menuSettingPositionQuantize"
 				            Name = "menuSettingPositionQuantize"
-				            Size = "(223, 22)"
 				            Text = "Quantize(&amp;Q)"
 				            >
 				            <_DropDownItems>
 
 						        <UiToolStripMenuItem id="menuSettingPositionQuantize04"
-
 						            Name = "menuSettingPositionQuantize04"
-						            Size = "(113, 22)"
 						            Text = "1/4"
 						            />
 
 						        <UiToolStripMenuItem id="menuSettingPositionQuantize08"
-
 						            Name = "menuSettingPositionQuantize08"
-						            Size = "(113, 22)"
 						            Text = "1/8"
 						            />
 
 						        <UiToolStripMenuItem id="menuSettingPositionQuantize16"
-
 						            Name = "menuSettingPositionQuantize16"
-						            Size = "(113, 22)"
 						            Text = "1/16"
 						            />
 
 						        <UiToolStripMenuItem id="menuSettingPositionQuantize32"
-
 						            Name = "menuSettingPositionQuantize32"
-						            Size = "(113, 22)"
 						            Text = "1/32"
 						            />
 
 						        <UiToolStripMenuItem id="menuSettingPositionQuantize64"
-
 						            Name = "menuSettingPositionQuantize64"
-						            Size = "(113, 22)"
 						            Text = "1/64"
 						            />
 
 						        <UiToolStripMenuItem id="menuSettingPositionQuantize128"
-
 						            Name = "menuSettingPositionQuantize128"
-						            Size = "(113, 22)"
 						            Text = "1/128"
 						            />
 
 						        <UiToolStripMenuItem id="menuSettingPositionQuantizeOff"
-
 						            Name = "menuSettingPositionQuantizeOff"
-						            Size = "(113, 22)"
 						            Text = "Off"
 						            />
 
 						        <UiToolStripSeparator id="toolStripMenuItem9"
-
 						            Name = "toolStripMenuItem9"
-						            Size = "(110, 6)"
 						            />
 
 						        <UiToolStripMenuItem id="menuSettingPositionQuantizeTriplet"
-
 						            Name = "menuSettingPositionQuantizeTriplet"
-						            Size = "(113, 22)"
 						            Text = "Triplet"
 						            />
 				            </_DropDownItems>
 						</UiToolStripMenuItem>
 
 				        <UiToolStripSeparator id="toolStripMenuItem8"
-
 				            Name = "toolStripMenuItem8"
-				            Size = "(220, 6)"
 				            />
 
 				        <UiToolStripMenuItem id="menuSettingGameControler"
 				            Name = "menuSettingGameControler"
-				            Size = "(223, 22)"
 				            Text = "Game Controler(&amp;G)"
 				            >
 				            <_DropDownItems>
 
 						        <UiToolStripMenuItem id="menuSettingGameControlerSetting"
-
 						            Name = "menuSettingGameControlerSetting"
-						            Size = "(142, 22)"
 						            Text = "Setting(&amp;S)"
 						            />
 
 						        <UiToolStripMenuItem id="menuSettingGameControlerLoad"
-
 						            Name = "menuSettingGameControlerLoad"
-						            Size = "(142, 22)"
 						            Text = "Load(&amp;L)"
 						            />
 
 						        <UiToolStripMenuItem id="menuSettingGameControlerRemove"
-
 						            Name = "menuSettingGameControlerRemove"
-						            Size = "(142, 22)"
 						            Text = "Remove(&amp;R)"
 						            />
 				            </_DropDownItems>
 			            </UiToolStripMenuItem>
 
 				        <UiToolStripMenuItem id="menuSettingPaletteTool"
-
 				            Name = "menuSettingPaletteTool"
-				            Size = "(223, 22)"
 				            Text = "Palette Tool(&amp;T)"
 				            />
 
 				        <UiToolStripMenuItem id="menuSettingShortcut"
-
 				            Name = "menuSettingShortcut"
-				            Size = "(223, 22)"
 				            Text = "Shortcut Key(&amp;K)"
 				            />
 
 				        <UiToolStripMenuItem id="menuSettingVibratoPreset"
-
 				            Name = "menuSettingVibratoPreset"
-				            Size = "(223, 22)"
 				            Text = "Vibrato preset(&amp;V)"
 				            />
 
 				        <UiToolStripSeparator id="toolStripMenuItem6"
-
 				            Name = "toolStripMenuItem6"
-				            Size = "(220, 6)"
 				            />
 
 				        <UiToolStripMenuItem id="menuSettingDefaultSingerStyle"
-
 				            Name = "menuSettingDefaultSingerStyle"
-				            Size = "(223, 22)"
 				            Text = "Singing Style Defaults(&amp;D)"
 				            />
 			        </_DropDownItems>
@@ -1542,15 +1343,12 @@
 
 		        <UiToolStripMenuItem id="menuTools"
 		            Name = "menuTools"
-		            Size = "(69, 22)"
 		            Text = "Tools(&amp;O)"
 		            >
 		            <_DropDownItems>
 
 				        <UiToolStripMenuItem id="menuToolsCreateVConnectSTANDDb"
-
 				            Name = "menuToolsCreateVConnectSTANDDb"
-				            Size = "(240, 22)"
 				            Text = "Create vConnect-STAND DB"
 				            />
 		            </_DropDownItems>
@@ -1558,56 +1356,42 @@
 
 		        <UiToolStripMenuItem id="menuHelp"
 		            Name = "menuHelp"
-		            Size = "(65, 22)"
 		            Text = "Help(&amp;H)"
 		            >
 		            <_DropDownItems>
 				        <UiToolStripMenuItem id="menuHelpAbout"
-
 				            Name = "menuHelpAbout"
-				            Size = "(186, 22)"
 				            Text = "About Cadencii(&amp;A)"
 				            />
 
 				        <UiToolStripMenuItem id="menuHelpManual"
-
 				            Name = "menuHelpManual"
-				            Size = "(186, 22)"
 				            Text = "Manual (PDF)"
 				            />
 
 				        <UiToolStripMenuItem id="menuHelpCheckForUpdates"
-
 				            Name = "menuHelpCheckForUpdates"
-				            Size = "(186, 22)"
 				            Text = "Check For Updates"
 				            />
 
 				        <UiToolStripMenuItem id="menuHelpLog"
 				            Name = "menuHelpLog"
-				            Size = "(186, 22)"
 				            Text = "Log(&amp;L)"
 				            >
 				            <_DropDownItems>
 						        <UiToolStripMenuItem id="menuHelpLogSwitch"
-
 						            CheckOnClick = "true"
 						            Name = "menuHelpLogSwitch"
-						            Size = "(156, 22)"
 						            Text = "Enable Log(&amp;L)"
 						            />
 
 						        <UiToolStripMenuItem id="menuHelpLogOpen"
-
 						            Name = "menuHelpLogOpen"
-						            Size = "(156, 22)"
 						            Text = "Open(&amp;O)"
 						            />
 
 						        <UiToolStripMenuItem id="menuHelpDebug"
-
 						            Name = "menuHelpDebug"
-						            Size = "(186, 22)"
 						            Text = "Debug"
 						            Visible = "false"
 						            />
@@ -1618,185 +1402,139 @@
 
 		        <UiToolStripMenuItem id="menuHidden"
 		            Name = "menuHidden"
-		            Size = "(91, 22)"
 		            Text = "MenuHidden"
 		            Visible = "false"
 		            >
 		            <_DropDownItems>
 
 				        <UiToolStripMenuItem id="menuHiddenEditLyric"
-
 				            Name = "menuHiddenEditLyric"
 				            ShortcutKeys = "F2"
-				            Size = "(304, 22)"
 				            Text = "Start Lyric Input"
 				            Visible = "false"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenEditFlipToolPointerPencil"
-
 				            Name = "menuHiddenEditFlipToolPointerPencil"
 				            ShortcutKeys = "Control,W"
-				            Size = "(304, 22)"
 				            Text = "Change Tool Pointer / Pencil"
 				            Visible = "false"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenEditFlipToolPointerEraser"
-
 				            Name = "menuHiddenEditFlipToolPointerEraser"
 				            ShortcutKeys = "Control,E"
-				            Size = "(304, 22)"
 				            Text = "Change Tool Pointer/ Eraser"
 				            Visible = "false"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenVisualForwardParameter"
-
 				            Name = "menuHiddenVisualForwardParameter"
 				            ShortcutKeys = "Control,Alt,Next"
-				            Size = "(304, 22)"
 				            Text = "Next Control Curve"
 				            Visible = "false"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenVisualBackwardParameter"
-
 				            Name = "menuHiddenVisualBackwardParameter"
 				            ShortcutKeys = "Control,Alt,PageUp"
-				            Size = "(304, 22)"
 				            Text = "Previous Control Curve"
 				            Visible = "false"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenTrackNext"
-
 				            Name = "menuHiddenTrackNext"
 				            ShortcutKeys = "Control,Next"
-				            Size = "(304, 22)"
 				            Text = "Next Track"
 				            Visible = "false"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenTrackBack"
-
 				            Name = "menuHiddenTrackBack"
 				            ShortcutKeys = "Control,PageUp"
-				            Size = "(304, 22)"
 				            Text = "Previous Track"
 				            Visible = "false"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenCopy"
-
 				            Name = "menuHiddenCopy"
-				            Size = "(304, 22)"
 				            Text = "Copy"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenPaste"
-
 				            Name = "menuHiddenPaste"
-				            Size = "(304, 22)"
 				            Text = "Paste"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenCut"
-
 				            Name = "menuHiddenCut"
-				            Size = "(304, 22)"
 				            Text = "Cut"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenSelectForward"
-
 				            Name = "menuHiddenSelectForward"
 				            ShortcutKeys = "Alt,Right"
-				            Size = "(304, 22)"
 				            Text = "Select Forward"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenSelectBackward"
-
 				            Name = "menuHiddenSelectBackward"
 				            ShortcutKeys = "Alt,Left"
-				            Size = "(304, 22)"
 				            Text = "Select Backward"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenMoveUp"
-
 				            Name = "menuHiddenMoveUp"
-				            Size = "(304, 22)"
 				            Text = "Move Up"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenMoveDown"
-
 				            Name = "menuHiddenMoveDown"
-				            Size = "(304, 22)"
 				            Text = "Move Down"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenMoveLeft"
-
 				            Name = "menuHiddenMoveLeft"
-				            Size = "(304, 22)"
 				            Text = "Move Left"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenMoveRight"
-
 				            Name = "menuHiddenMoveRight"
-				            Size = "(304, 22)"
 				            Text = "Move Right"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenLengthen"
-
 				            Name = "menuHiddenLengthen"
-				            Size = "(304, 22)"
 				            Text = "Lengthen"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenShorten"
-
 				            Name = "menuHiddenShorten"
-				            Size = "(304, 22)"
 				            Text = "Shorten"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenGoToStartMarker"
-
 				            Name = "menuHiddenGoToStartMarker"
-				            Size = "(304, 22)"
 				            Text = "GoTo Start Marker"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenGoToEndMarker"
-
 				            Name = "menuHiddenGoToEndMarker"
-				            Size = "(304, 22)"
 				            Text = "GoTo End Marker"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenPlayFromStartMarker"
-
 				            Name = "menuHiddenPlayFromStartMarker"
-				            Size = "(304, 22)"
 				            Text = "Play From Start Marker"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenFlipCurveOnPianorollMode"
-
 				            Name = "menuHiddenFlipCurveOnPianorollMode"
-				            Size = "(304, 22)"
 				            Text = "Change pitch drawing mode"
 				            />
 
 				        <UiToolStripMenuItem id="menuHiddenPrintPoToCSV"
 				            Name = "menuHiddenPrintPoToCSV"
-				            Size = "(304, 22)"
 				            Text = "Print language configs to CSV"
 				            />
 		            </_DropDownItems>
