@@ -132,6 +132,11 @@ namespace Cadencii.Gui.Toolkit
 			window.Show ();
 		}
 
+		public void HideWindow ()
+		{
+			window.Hide ();
+		}
+
 		public void Close ()
 		{
 			window.Close ();

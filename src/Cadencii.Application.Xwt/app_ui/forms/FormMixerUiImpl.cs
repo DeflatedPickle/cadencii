@@ -210,7 +210,7 @@ namespace Cadencii.Application.Forms
             // 同時に表示できるVolumeTrackerの個数を計算
 			((UiForm) this).Show (); // FIXME: this is hacky. But Xwt complaints at get_Screen() without showing window.
 			int max = Cadencii.Gui.Toolkit.Screen.Instance.GetWorkingArea(this).Width;
-			((UiForm) this).Close (); // FIXME: this is hacky. But Xwt complaints at get_Screen() without showing window.
+			this.HideWindow (); // FIXME: this is hacky. But Xwt complaints at get_Screen() without showing window.
             int bordersize = 4;// TODO: ここもともとは SystemInformation.FrameBorderSize;だった
             int max_client_width = max - 2 * bordersize;
             int max_num = (int)Math.Floor(max_client_width / (VolumeTrackerController.WIDTH + 1.0f));

@@ -227,7 +227,7 @@ namespace Cadencii.Gui
 
 	class GraphicsAdapterWF : Graphics.GraphicsAdapter
 	{
-		Xwt.Drawing.ImageBuilder builder;
+		Xwt.Drawing.Context ctx;
 		StrokeXwt stroke = new StrokeXwt () { Color = Cadencii.Gui.Colors.Black.ToNative () };
 		Xwt.Drawing.Font m_font;
 		bool should_dispose;
@@ -240,18 +240,21 @@ namespace Cadencii.Gui
 		public GraphicsAdapterWF (Image image)
 		{
 			should_dispose = true;
-			builder = new Xwt.Drawing.ImageBuilder (image.Width, image.Height);
-			builder.Context.DrawImage (image.ToWF (), Point.Empty.ToWF ());
+			ctx = new Xwt.Drawing.ImageBuilder (image.Width, image.Height).Context;
+			ctx.DrawImage (image.ToWF (), Point.Empty.ToWF ());
 		}
 
 		public GraphicsAdapterWF (Graphics other)
 		{
 			var a = (GraphicsAdapterWF) other.Adapter;
-			builder = a.builder;
+			ctx = a.ctx;
 			m_font = a.m_font;
 		}
 
-		public override object NativeGraphics { get { return builder; } set { builder = (Xwt.Drawing.ImageBuilder) value; } }
+		public override object NativeGraphics {
+			get { return ctx; }
+			set { ctx = (Xwt.Drawing.Context) value; } 
+		}
 
 		// FIXME: implement
 		public override object NativeBrush { get; set; }
@@ -261,30 +264,30 @@ namespace Cadencii.Gui
 
 		public override void Dispose ()
 		{
-			if (should_dispose && builder != null)
-				builder.Dispose ();
+			if (should_dispose && ctx != null)
+				ctx.Dispose ();
 		}
 
 		public override void clearRect (int x, int y, int width, int height)
 		{
-			builder.Context.SetColor (Colors.White.ToNative ());
-			builder.Context.Rectangle (x, y, width, height);
-			builder.Context.Fill ();
+			ctx.SetColor (Colors.White.ToNative ());
+			ctx.Rectangle (x, y, width, height);
+			ctx.Fill ();
 		}
 
 		public override void drawLine (int x1, int y1, int x2, int y2)
 		{
-			builder.Context.SetColor (stroke.Color);
-			builder.Context.MoveTo (x1, y1);
-			builder.Context.LineTo (x2, y2);
-			builder.Context.Stroke ();
+			ctx.SetColor (stroke.Color);
+			ctx.MoveTo (x1, y1);
+			ctx.LineTo (x2, y2);
+			ctx.Stroke ();
 		}
 
 		public override void drawRect (int x, int y, int width, int height)
 		{
-			builder.Context.SetColor (stroke.Color);
-			builder.Context.Rectangle (x, y, width, height);
-			builder.Context.Stroke ();
+			ctx.SetColor (stroke.Color);
+			ctx.Rectangle (x, y, width, height);
+			ctx.Stroke ();
 		}
 
 		public override void drawRect (Color pen, Rectangle rect)
@@ -295,8 +298,8 @@ namespace Cadencii.Gui
 
 		public override void fillRect (int x, int y, int width, int height)
 		{
-			builder.Context.Rectangle (x, y, width, height);
-			builder.Context.Fill ();
+			ctx.Rectangle (x, y, width, height);
+			ctx.Fill ();
 		}
 
 		public override void fillRect (Color fillcolor, int x, int y, int width, int height)
@@ -325,15 +328,15 @@ namespace Cadencii.Gui
 			float ctrlx2, float ctrly2,
 			float x2, float y2)
 		{
-			builder.Context.MoveTo (x1, y1);
-			builder.Context.RelCurveTo (ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2);
-			builder.Context.Stroke ();
+			ctx.MoveTo (x1, y1);
+			ctx.RelCurveTo (ctrlx1, ctrly1, ctrlx2, ctrly2, x2, y2);
+			ctx.Stroke ();
 		}
 
 		public override void setColor (Color c)
 		{
 			stroke.Color = c.ToNative ();
-			builder.Context.SetColor (c.ToNative ());
+			ctx.SetColor (c.ToNative ());
 		}
 
 		public override Color getColor ()
@@ -361,7 +364,7 @@ namespace Cadencii.Gui
 
 		public override void drawString (string str, float x, float y)
 		{
-			builder.Context.DrawTextLayout (new Xwt.Drawing.TextLayout () { Font = m_font, Text = str }, x, y);
+			ctx.DrawTextLayout (new Xwt.Drawing.TextLayout () { Font = m_font, Text = str }, x, y);
 		}
 
 		public override void drawPolygon (Polygon p)
@@ -388,11 +391,11 @@ namespace Cadencii.Gui
 				path.RelLineTo (xPoints [i], yPoints [i]);
 			if (close)
 				path.ClosePath ();
-			builder.Context.AppendPath (path);
+			ctx.AppendPath (path);
 			if (fill)
-				builder.Context.Fill ();
+				ctx.Fill ();
 			else
-				builder.Context.Stroke ();
+				ctx.Stroke ();
 		}
 
 		public override void DrawLines (Point[] points)
@@ -402,14 +405,14 @@ namespace Cadencii.Gui
 				path.MoveTo (points [0].ToWF ());
 			for (int i = 1; i < points.Length; i++)
 				path.LineTo (points [i].ToWF ());
-			builder.Context.AppendPath (path);
-			builder.Context.Stroke ();
+			ctx.AppendPath (path);
+			ctx.Stroke ();
 		}
 
 		public override void drawLines (int mLineWidth, Color mLineColor, Point[] mPoints)
 		{
-			builder.Context.SetLineWidth (mLineWidth);
-			builder.Context.SetColor (mLineColor.ToNative ());
+			ctx.SetLineWidth (mLineWidth);
+			ctx.SetColor (mLineColor.ToNative ());
 			DrawLines (mPoints);
 		}
 
@@ -431,7 +434,7 @@ namespace Cadencii.Gui
 		void fillPolygon (Color? fillColor, int[] xPoints, int[] yPoints, int nPoints)
 		{
 			if (fillColor != null)
-				builder.Context.SetColor (fillColor.Value.ToNative ());
+				ctx.SetColor (fillColor.Value.ToNative ());
 			DrawPolySomething (xPoints, yPoints, nPoints, true, true);
 		}
 
@@ -445,14 +448,14 @@ namespace Cadencii.Gui
 				Area a = (Area)s;
 				if (a.NativeRegion != null) {
 					// FIXME: brush
-					builder.Context.AppendPath ((Xwt.Drawing.DrawingPath)a.NativeRegion);
-					builder.Context.Fill ();
+					ctx.AppendPath ((Xwt.Drawing.DrawingPath)a.NativeRegion);
+					ctx.Fill ();
 				}
 			} else if (s is Rectangle) {
 				// FIXME: brush
 				Rectangle rc = (Rectangle)s;
-				builder.Context.Rectangle (rc.ToWF ());
-				builder.Context.Fill ();
+				ctx.Rectangle (rc.ToWF ());
+				ctx.Fill ();
 			}
 			else
 				throw new NotImplementedException ();
@@ -461,25 +464,25 @@ namespace Cadencii.Gui
 		public override Shape getClip ()
 		{
 			Area ret = new Area ();
-			ret.NativeRegion = builder.Context.CopyPath ();
+			ret.NativeRegion = ctx.CopyPath ();
 			return ret;
 		}
 
 		public override void setClip (int x, int y, int width, int height)
 		{
-			builder.Context.NewPath ();
-			builder.Context.Rectangle (x, y, width, height);
-			builder.Context.Clip ();
+			ctx.NewPath ();
+			ctx.Rectangle (x, y, width, height);
+			ctx.Clip ();
 		}
 
 		public override void setClip (Shape clip)
 		{
 			if (clip == null) {
-				builder.Context.NewPath ();
+				ctx.NewPath ();
 			} else if (clip is Area) {
-				builder.Context.NewPath ();
-				builder.Context.AppendPath ((Xwt.Drawing.DrawingPath)((Area)clip).NativeRegion);
-				builder.Context.Clip ();
+				ctx.NewPath ();
+				ctx.AppendPath ((Xwt.Drawing.DrawingPath)((Area)clip).NativeRegion);
+				ctx.Clip ();
 			} else if (clip is Rectangle) {
 				Rectangle rc = (Rectangle)clip;
 				setClip (rc.X, rc.Y, rc.Width, rc.Height);
@@ -498,17 +501,17 @@ namespace Cadencii.Gui
 			if (img == null) {
 				return;
 			}
-			builder.Context.DrawImage ((Xwt.Drawing.Image) img.NativeImage, new Xwt.Point (x, y));
+			ctx.DrawImage ((Xwt.Drawing.Image) img.NativeImage, new Xwt.Point (x, y));
 		}
 
 		public override void translate (int tx, int ty)
 		{
-			builder.Context.Translate (tx, ty);
+			ctx.Translate (tx, ty);
 		}
 
 		public override void translate (double tx, double ty)
 		{
-			builder.Context.Translate (tx, ty);
+			ctx.Translate (tx, ty);
 		}
 
 		public override void drawStringEx (string s, Font font, Rectangle rect, int align, int valign)
@@ -518,11 +521,11 @@ namespace Cadencii.Gui
 				Font = (Xwt.Drawing.Font)font.NativeFont,
 				Text = s
 			};
-			builder.Context.Save ();
-			builder.Context.Rectangle (rect.ToWF ());
-			builder.Context.Clip ();
-			builder.Context.DrawTextLayout (text, rect.X, rect.Y);
-			builder.Context.Restore ();
+			ctx.Save ();
+			ctx.Rectangle (rect.ToWF ());
+			ctx.Clip ();
+			ctx.DrawTextLayout (text, rect.X, rect.Y);
+			ctx.Restore ();
 		}
 
 		public override Size measureString (string s, Font font)

@@ -4,14 +4,14 @@ using System.Collections.ObjectModel;
 
 namespace Cadencii.Gui.Toolkit
 {
-	public class ToolStripMenuItemImpl : Xwt.CheckBoxMenuItem, UiToolStripMenuItem
+	public class ToolStripMenuItemImpl : Xwt.MenuItem, UiToolStripMenuItem
 	{
 		public ToolStripMenuItemImpl ()
 		{
 			base.Clicked += (o, e) => {
 				var x = this as UiToolStripMenuItem;
 				if (x.CheckOnClick) {
-					base.Checked = !base.Checked;
+					//base.Checked = !base.Checked;
 					if (CheckedChanged != null)
 						CheckedChanged (this, EventArgs.Empty);
 				}
@@ -26,6 +26,9 @@ namespace Cadencii.Gui.Toolkit
 			Clicked += e;
 		}
 
+		// FIXME: implement
+		public bool Checked { get; set; }
+
 		public event EventHandler CheckedChanged;
 
 		// FIXME: implement
@@ -33,7 +36,7 @@ namespace Cadencii.Gui.Toolkit
 
 		void UiToolStripMenuItem.Mnemonic (Keys keys)
 		{
-			throw new NotImplementedException ();
+			// FIXME: implement
 		}
 
 		Cadencii.Gui.Image UiToolStripMenuItem.Image {
@@ -61,10 +64,12 @@ namespace Cadencii.Gui.Toolkit
 		class UiMenuItemCollection : Collection<UiToolStripItem>
 		{
 			Xwt.Menu menu;
+			Action populating;
 
-			public UiMenuItemCollection (Xwt.Menu menu)
+			public UiMenuItemCollection (Xwt.Menu menu, Action populating)
 			{
 				this.menu = menu;
+				this.populating = populating;
 			}
 
 			protected override void ClearItems ()
@@ -75,6 +80,8 @@ namespace Cadencii.Gui.Toolkit
 
 			protected override void InsertItem (int index, UiToolStripItem item)
 			{
+				if (Count == 0)
+					populating ();
 				base.InsertItem (index, item);
 				menu.Items.Insert (index, (Xwt.MenuItem) item);
 			}
@@ -96,8 +103,8 @@ namespace Cadencii.Gui.Toolkit
 		public System.Collections.Generic.IList<UiToolStripItem> DropDownItems {
 			get {
 				if (dropdown_items == null) {
-					var sub = base.SubMenu ?? (base.SubMenu = new Xwt.Menu ());
-					dropdown_items = new UiMenuItemCollection (sub);
+					var sub = new Xwt.Menu ();
+					dropdown_items = new UiMenuItemCollection (sub, () => base.SubMenu = sub);
 				}
 				return dropdown_items;
 			}
@@ -138,8 +145,8 @@ namespace Cadencii.Gui.Toolkit
 		string UiToolStripItem.Name { get; set; }
 
 		string UiToolStripItem.Text {
-			get { return base.Label; }
-			set { base.Label = value; }
+			get { return base.Label + (Checked ? " *" : string.Empty); }
+			set { base.Label = value.Replace ('&', '_'); }
 		}
 
 		// FIXME: maybe we can do something but ignore this so far.
