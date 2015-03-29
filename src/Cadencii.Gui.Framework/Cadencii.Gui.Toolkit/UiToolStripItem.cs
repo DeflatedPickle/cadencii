@@ -7,10 +7,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 		// FIXME: should be removed, cannot be implemented.
 		// only FormMainImpl.updateMenuFonts() uses this (indirectly).
-		Font Font {
-			get;
-			set;
-		}
+		Font Font { get; set; }
 
 		bool Enabled { get; set; }
 		bool Visible { get; set; }

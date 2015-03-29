@@ -169,6 +169,8 @@
     <Compile Include="Cadencii.Gui.Toolkit\FormStartPosition.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\Appearance.cs" />
     <Compile Include="Cadencii.Gui.Toolkit\ContentAlignment.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\UiVBox.cs" />
+    <Compile Include="Cadencii.Gui.Toolkit\UiHBox.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

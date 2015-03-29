@@ -60,8 +60,16 @@ namespace Cadencii.Gui.Toolkit
 		};
 
 		foreach (var controlName in controlNames) {
+
+			string baseFullName = "System.Windows.Forms." + controlName;
+			switch (controlName) {
+			case "HBox":
+			case "VBox":
+				baseFullName = "FlowLayoutPanelImpl";
+				break;
+			}
 #>
-	public partial class <#= controlName #>Impl : System.Windows.Forms.<#= controlName #>, Ui<#= controlName #>
+	public partial class <#= controlName #>Impl : <#= baseFullName #>, Ui<#= controlName #>
 	{
 		// UiControl
 

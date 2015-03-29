@@ -97,6 +97,8 @@
       <DependentUpon>ControlImpl.tt</DependentUpon>
     </Compile>
     <Compile Include="toolkit\TrackBarImpl.cs" />
+    <Compile Include="toolkit\HBoxImpl.cs" />
+    <Compile Include="toolkit\VBoxImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

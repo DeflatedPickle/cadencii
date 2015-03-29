@@ -5,6 +5,14 @@ using System.Collections.Generic;
 
 namespace Cadencii.Gui.Toolkit
 {
+	public partial class HBoxBase : Xwt.HBox
+	{
+	}
+
+	public partial class VBoxBase : Xwt.VBox
+	{
+	}
+
 	public partial class ButtonBase : Xwt.Button
 	{
 	}

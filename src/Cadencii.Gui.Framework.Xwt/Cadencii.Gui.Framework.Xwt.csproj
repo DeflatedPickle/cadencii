@@ -89,6 +89,8 @@
     <Compile Include="toolkit\ToolStripButtonImpl.cs" />
     <Compile Include="toolkit\SaveFileDialogImpl.cs" />
     <Compile Include="toolkit\LabelImpl.cs" />
+    <Compile Include="toolkit\VBoxImpl.cs" />
+    <Compile Include="toolkit\HBoxImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

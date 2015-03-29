@@ -27,6 +27,7 @@ namespace Cadencii.Gui.Toolkit
 		"FlowLayoutPanel",
 		"Form",
 		"GroupBox",
+		"HBox",
 		"HScrollBar",
 		"HTrackBar",
 		//"ImageList",
@@ -49,6 +50,7 @@ namespace Cadencii.Gui.Toolkit
 		"ToolStrip",
 		"ToolStripContainer",
 		"UserControl",
+		"VBox",
 		"VScrollBar",
 		"VTrackBar",
 		};
