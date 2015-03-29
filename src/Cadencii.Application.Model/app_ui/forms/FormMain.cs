@@ -37,16 +37,12 @@ namespace Cadencii.Application.Forms
 		System.ComponentModel.BackgroundWorker bgWorkScreen { get; set; }
 		UiToolBar toolBarFile { get; set; }
 		UiToolBar toolBarPosition { get; set; }
-		Rebar rebar { get; set; }
+		UiHBox rebar { get; set; }
 
 		void refreshScreenCore();
 		void showUpdateInformationAsync(bool is_explicit_update_check);
 		UiToolStripMenuItem menuFileExportWave { get;set; }
 		Size getWindowMinimumSize ();
-		RebarBand bandFile { get; set; }
-		RebarBand bandPosition { get; set; }
-		RebarBand bandMeasure { get; set; }
-		RebarBand bandTool { get; set; }
 		void updateBgmMenuState();
 		UiPictureBox pictureBox2{ get; set; }
 		Graphics mGraphicsPictureBox2 { get;set; }

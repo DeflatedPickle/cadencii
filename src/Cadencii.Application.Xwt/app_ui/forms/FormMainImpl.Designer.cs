@@ -369,11 +369,7 @@ namespace Cadencii.Application.Forms
         UiToolStripMenuItem menuHelpLog;
 		public UiToolStripMenuItem menuHelpLogSwitch { get; set; }
         UiToolStripMenuItem menuHelpLogOpen;
-		public Rebar rebar { get; set; }
-		public RebarBand bandFile { get; set; }
-		public RebarBand bandPosition { get; set; }
-		public RebarBand bandMeasure { get; set; }
-		public RebarBand bandTool { get; set; }
+		public UiHBox rebar { get; set; }
 		public BSplitContainer splitContainer2 { get;set; }
         UiPanel panel1;
 		public UiToolBar toolBarFile { get; set; }

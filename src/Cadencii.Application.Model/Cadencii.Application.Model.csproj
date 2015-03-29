@@ -141,9 +141,6 @@
     <Compile Include="app_ui\controls\PictPianoRoll.cs" />
     <Compile Include="app_ui\controls\PropertyPanel.cs" />
     <Compile Include="app_ui\controls\PropertyPanelContainer.cs" />
-    <Compile Include="app_ui\controls\Rebar.cs" />
-    <Compile Include="app_ui\controls\RebarBand.cs" />
-    <Compile Include="app_ui\controls\RebarBandCollection.cs" />
     <Compile Include="app_ui\controls\TrackSelector.cs" />
     <Compile Include="app_ui\controls\VolumeTracker.cs" />
     <Compile Include="app_ui\controls\WaveView.cs" />

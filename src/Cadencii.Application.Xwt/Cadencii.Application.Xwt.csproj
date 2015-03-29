@@ -97,9 +97,6 @@
     <Compile Include="app_ui\controls\PictPianoRollImpl.cs" />
     <Compile Include="app_ui\controls\PropertyPanelContainerImpl.cs" />
     <Compile Include="app_ui\controls\PropertyPanelImpl.cs" />
-    <Compile Include="app_ui\controls\RebarBandCollectionImpl.cs" />
-    <Compile Include="app_ui\controls\RebarBandImpl.cs" />
-    <Compile Include="app_ui\controls\RebarImpl.cs" />
     <Compile Include="app_ui\controls\TrackSelectorImpl.cs" />
     <Compile Include="app_ui\controls\VolumeTrackerImpl.cs" />
     <Compile Include="app_ui\controls\WaveViewImpl.cs" />
@@ -169,7 +166,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="app_ui\controls\WaveformZoomImpl.cs" />
-    <Compile Include="app_ui\controls\RebarMonoImpl.cs" />
     <Compile Include="..\Cadencii.Gui.Framework.Xwt.Shared\GuiExtensions.cs">
       <Link>GuiExtensions.cs</Link>
     </Compile>

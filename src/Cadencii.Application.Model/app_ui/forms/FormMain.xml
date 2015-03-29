@@ -336,30 +336,26 @@
 		    </_BottomToolStripPanel>
 		</UiToolStripContainer>
 
-		<!-- Size was (955,4) ... -->
-		<Rebar id="rebar"
-	            Dock = "Top"
-	            Location = "(0, 26)"
-	            Name = "rebar"
-	            Size = "(955, 60)"
-	            TabIndex = "19"
-	            ToggleDoubleClick = "true"
-	            >
+		<!-- Size was (955,4) for Rebar ... -->
+		<UiHBox id="rebar"
+			Size = "(955, 60)"
+			Anchor = "Left,Right,Top"
+			Dock = "Top">
+		  <UiVBox
+			Size = "(955, 25)">
 		    <UiToolBar id="toolBarFile"
 
             Appearance = "Flat"
             ButtonSize = "(23, 22)"
 		            Divider = "false"
-		            Dock = "None"
 		            DropDownArrows = "true"
 		            UiImageList = "#imageListFile"
-            Location = "(11, 2)"
 		            Name = "toolBarFile"
 		            ShowToolTips = "true"
-		            Size = "(944, 26)"
 		            TabIndex = "25"
 		            TextAlign = "Right"
 		            Wrappable = "false"
+		            Width = "150"
 		            >
 	            <_Buttons>
 			        <UiToolBarButton id="stripBtnFileNew"
@@ -434,16 +430,14 @@
 
 		            Appearance = "Flat"
 		            Divider = "false"
-		            Dock = "None"
 		            DropDownArrows = "true"
 		            UiImageList = "#imageListPosition"
-            Location = "(11, 32)"
 		            Name = "toolBarPosition"
 		            ShowToolTips = "true"
-		            Size = "(944, 40)"
 		            TabIndex = "25"
 		            TextAlign = "Right"
 		            Wrappable = "false"
+		            Width = "150"
 		            >
 	            <_Buttons>
 			        <UiToolBarButton id="stripBtnMoveTop"
@@ -499,21 +493,21 @@
 			            />
 	            </_Buttons>
 			</UiToolBar>
-
+		  </UiVBox>
+		  <UiVBox
+			Size = "(955, 25)">
 		    <UiToolBar id="toolBarMeasure"
 
 		            Appearance = "Flat"
 		            Divider = "false"
-		            Dock = "None"
 		            DropDownArrows = "true"
 		            UiImageList = "#imageListMeasure"
-            Location = "(11, 62)"
 		            Name = "toolBarMeasure"
 		            ShowToolTips = "true"
-		            Size = "(944, 40)"
 		            TabIndex = "25"
 		            TextAlign = "Right"
 		            Wrappable = "false"
+		            Width = "150"
 		            >
 	            <_Buttons>
 
@@ -544,17 +538,16 @@
 		    <UiToolBar id="toolBarTool"
 
 		            Appearance = "Flat"
+		            ButtonSize = "(23, 22)"
 		            Divider = "false"
-		            Dock = "None"
 		            DropDownArrows = "true"
 		            UiImageList = "#imageListTool"
-            Location = "(11, 92)"
 		            Name = "toolBarTool"
 		            ShowToolTips = "true"
-		            Size = "(944, 40)"
 		            TabIndex = "25"
 		            TextAlign = "Right"
 		            Wrappable = "false"
+		            Width = "300"
 		            >
 	            <_Buttons>
 			        <UiToolBarButton id="stripBtnPointer"
@@ -606,55 +599,8 @@
 			            />
 	            </_Buttons>
 		    </UiToolBar>
-
-	        <_Bands>
-		        <RebarBand id="bandFile"
-		        	BandSize = "236"
-		        	NewRow = "true"
-	            AllowVertical = "false"
-	            Child = "#toolBarFile"
-	            Header = "-1"
-	            Integral = "1"
-	            MaxHeight = "26"
-	            UseChevron = "true"
-					>
-		        </RebarBand>
-		        <RebarBand id="bandPosition"
-		        	BandSize = "234"
-		        	NewRow = "true"
-	            AllowVertical = "false"
-	            Child = "#toolBarPosition"
-	            Header = "-1"
-	            Integral = "1"
-	            MaxHeight = "26"
-	            UseChevron = "true"
-					>
-		        </RebarBand>
-		        <RebarBand id="bandMeasure"
-		        	BandSize = "714"
-		        	NewRow = "true"
-	            AllowVertical = "false"
-	            Child = "#toolBarMeasure"
-	            Header = "-1"
-	            Integral = "1"
-	            MaxHeight = "26"
-	            UseChevron = "true"
-					>
-		        </RebarBand>
-		        <RebarBand id="bandTool"
-		        	BandSize = "712"
-		        	NewRow = "true"
-	            AllowVertical = "false"
-	            Child = "#toolBarTool"
-	            Header = "-1"
-	            Integral = "1"
-	            MaxHeight = "26"
-	            UseChevron = "true"
-					>
-		        </RebarBand>
-	        </_Bands>
-
-	    </Rebar>
+		  </UiVBox>
+		</UiHBox>
 
 	    <BSplitContainer id="splitContainer1"
 
