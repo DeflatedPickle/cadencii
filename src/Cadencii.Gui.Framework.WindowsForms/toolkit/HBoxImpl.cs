@@ -7,6 +7,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 		public HBoxImpl ()
 		{
+			base.AutoScroll = true;
 			base.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			base.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
 		}
@@ -31,12 +32,11 @@ namespace Cadencii.Gui.Toolkit
 		{
 			var c = (System.Windows.Forms.Control)control;
 			base.Controls.Add (c);
-			base.Controls.SetChildIndex (c, 0);
 		}
 
 		void UiHBox.PackEnd (UiControl control)
 		{
-			base.Controls.Add ((System.Windows.Forms.Control)control);
+			throw new NotImplementedException ();
 		}
 	}
 }

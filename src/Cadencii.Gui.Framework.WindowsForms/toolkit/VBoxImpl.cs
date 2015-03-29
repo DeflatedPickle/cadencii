@@ -7,6 +7,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 		public VBoxImpl ()
 		{
+			base.AutoScroll = true;
 			base.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			base.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
 		}
@@ -31,12 +32,11 @@ namespace Cadencii.Gui.Toolkit
 		{
 			var c = (System.Windows.Forms.Control)control;
 			base.Controls.Add (c);
-			base.Controls.SetChildIndex (c, 0);
 		}
 
 		void UiVBox.PackEnd (UiControl control)
 		{
-			base.Controls.Add ((System.Windows.Forms.Control)control);
+			throw new NotImplementedException ();
 		}
 	}
 }

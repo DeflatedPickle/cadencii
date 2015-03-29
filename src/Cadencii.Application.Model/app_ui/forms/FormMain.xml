@@ -35,10 +35,10 @@
 	  <UiPanel id="PanelMain"
 		  	Dock = "Fill"
 			>
-		<UiToolStripContainer id="toolStripContainer1"
 
-	            Dock = "Fill"
-            Location = "(0, 30)"
+		<UiToolStripContainer id="toolStripContainer1"
+				Dock = "Fill"
+	            Location = "(0, 35)"
 	            Name = "toolStripContainer1"
 	            Size = "(955, 659)"
 	            TabIndex = "26"
@@ -336,17 +336,14 @@
 		    </_BottomToolStripPanel>
 		</UiToolStripContainer>
 
-		<!-- Size was (955,4) for Rebar ... -->
 		<UiHBox id="rebar"
-			Size = "(955, 60)"
+			Size = "(800, 65)"
 			Anchor = "Left,Right,Top"
 			Dock = "Top">
 		  <UiVBox
-			Size = "(955, 25)">
+			Size = "(250, 65)">
 		    <UiToolBar id="toolBarFile"
-
-            Appearance = "Flat"
-            ButtonSize = "(23, 22)"
+		            Appearance = "Flat"
 		            Divider = "false"
 		            DropDownArrows = "true"
 		            UiImageList = "#imageListFile"
@@ -359,75 +356,42 @@
 		            >
 	            <_Buttons>
 			        <UiToolBarButton id="stripBtnFileNew"
-
 			            ImageIndex = "0"
-			            Name = "stripBtnFileNew"
 			            ToolTipText = "New"
 			            />
-
 			        <UiToolBarButton id="stripBtnFileOpen"
-
 			            ImageIndex = "1"
-			            Name = "stripBtnFileOpen"
 			            ToolTipText = "Open"
 			            />
-
 			        <UiToolBarButton id="stripBtnFileSave"
-
 			            ImageIndex = "2"
-			            Name = "stripBtnFileSave"
 			            ToolTipText = "Save"
 			            />
-
-			        <UiToolBarSeparatorButton id="toolBarButton1"
-
-			            Name = "toolBarButton1"
-			            />
-
+			        <UiToolBarSeparatorButton id="toolBarButton1" />
 			        <UiToolBarButton id="stripBtnCut"
-
 			            ImageIndex = "3"
-			            Name = "stripBtnCut"
 			            ToolTipText = "Cut"
 			            />
-
 			        <UiToolBarButton id="stripBtnCopy"
-
 			            ImageIndex = "4"
-			            Name = "stripBtnCopy"
 			            ToolTipText = "Copy"
 			            />
-
 			        <UiToolBarButton id="stripBtnPaste"
-
 			            ImageIndex = "5"
-			            Name = "stripBtnPaste"
 			            ToolTipText = "Paste"
 			            />
-
-			        <UiToolBarSeparatorButton id="toolBarButton2"
-
-			            Name = "toolBarButton2"
-			            />
-
+			        <UiToolBarSeparatorButton id="toolBarButton2" />
 			        <UiToolBarButton id="stripBtnUndo"
-
 			            ImageIndex = "6"
-			            Name = "stripBtnUndo"
 			            ToolTipText = "Undo"
 			            />
-
 			        <UiToolBarButton id="stripBtnRedo"
-
 			            ImageIndex = "7"
-			            Name = "stripBtnRedo"
 			            ToolTipText = "Redo"
 			            />
 	            </_Buttons>
 			</UiToolBar>
-
 		    <UiToolBar id="toolBarPosition"
-
 		            Appearance = "Flat"
 		            Divider = "false"
 		            DropDownArrows = "true"
@@ -441,63 +405,38 @@
 		            >
 	            <_Buttons>
 			        <UiToolBarButton id="stripBtnMoveTop"
-
 			            ImageIndex = "0"
-			            Name = "stripBtnMoveTop"
 			            ToolTipText = "MoveTop"
 			            />
-
 			        <UiToolBarButton id="stripBtnRewind"
-
 			            ImageIndex = "1"
-			            Name = "stripBtnRewind"
 			            ToolTipText = "Rewind"
 			            />
-
 			        <UiToolBarButton id="stripBtnForward"
-
 			            ImageIndex = "2"
-			            Name = "stripBtnForward"
 			            ToolTipText = "Forward"
 			            />
-
 			        <UiToolBarButton id="stripBtnMoveEnd"
-
 			            ImageIndex = "3"
-			            Name = "stripBtnMoveEnd"
 			            ToolTipText = "MoveEnd"
 			            />
-
 			        <UiToolBarButton id="stripBtnPlay"
-
 			            ImageIndex = "4"
-			            Name = "stripBtnPlay"
 			            ToolTipText = "Play"
 			            />
-
-			        <UiToolBarSeparatorButton id="toolBarButton4"
-
-			            Name = "toolBarButton4"
-			            />
-
+			        <UiToolBarSeparatorButton id="toolBarButton4" />
 			        <UiToolBarButton id="stripBtnScroll"
-
 			            ImageIndex = "6"
-			            Name = "stripBtnScroll"
 			            />
-
 			        <UiToolBarButton id="stripBtnLoop"
-
 			            ImageIndex = "7"
-			            Name = "stripBtnLoop"
 			            />
 	            </_Buttons>
 			</UiToolBar>
 		  </UiVBox>
 		  <UiVBox
-			Size = "(955, 25)">
+			Size = "(300, 65)">
 		    <UiToolBar id="toolBarMeasure"
-
 		            Appearance = "Flat"
 		            Divider = "false"
 		            DropDownArrows = "true"
@@ -507,38 +446,21 @@
 		            TabIndex = "25"
 		            TextAlign = "Right"
 		            Wrappable = "false"
-		            Width = "150"
+		            Width = "220"
 		            >
 	            <_Buttons>
-
-			        <UiToolBarButton id="stripDDBtnQuantizeParent"
-
-			            Name = "stripDDBtnQuantizeParent"
-			            />
-
-			        <UiToolBarSeparatorButton id="toolBarButton5"
-
-			            Name = "toolBarButton5"
-			            />
-
+			        <UiToolBarButton id="stripDDBtnQuantizeParent" />
+			        <UiToolBarSeparatorButton id="toolBarButton5" />
 			        <UiToolBarToggleButton id="stripBtnStartMarker"
-
 			            ImageIndex = "0"
-			            Name = "stripBtnStartMarker"
 			            />
-
 			        <UiToolBarToggleButton id="stripBtnEndMarker"
-
 			            ImageIndex = "1"
-			            Name = "stripBtnEndMarker"
 			            />
 	            </_Buttons>
 			</UiToolBar>
-
 		    <UiToolBar id="toolBarTool"
-
 		            Appearance = "Flat"
-		            ButtonSize = "(23, 22)"
 		            Divider = "false"
 		            DropDownArrows = "true"
 		            UiImageList = "#imageListTool"
@@ -551,50 +473,29 @@
 		            >
 	            <_Buttons>
 			        <UiToolBarButton id="stripBtnPointer"
-
 			            ImageIndex = "0"
-			            Name = "stripBtnPointer"
 			            Pushed = "true"
 			            ToolTipText = "Pointer"
 			            />
-
 			        <UiToolBarButton id="stripBtnPencil"
-
 			            ImageIndex = "1"
-			            Name = "stripBtnPencil"
 			            ToolTipText = "Pencil"
 			            />
-
 			        <UiToolBarButton id="stripBtnLine"
-
 			            ImageIndex = "2"
-			            Name = "stripBtnLine"
 			            ToolTipText = "Line"
 			            />
-
 			        <UiToolBarButton id="stripBtnEraser"
-
 			            ImageIndex = "3"
-			            Name = "stripBtnEraser"
 			            ToolTipText = "Eraser"
 			            />
-
-			        <UiToolBarSeparatorButton id="toolBarButton3"
-
-			            Name = "toolBarButton3"
-			            />
-
+			        <UiToolBarSeparatorButton id="toolBarButton3" />
 			        <UiToolBarButton id="stripBtnGrid"
-
 			            ImageIndex = "4"
-			            Name = "stripBtnGrid"
 			            ToolTipText = "Grid"
 			            />
-
 			        <UiToolBarButton id="stripBtnCurve"
-
 			            ImageIndex = "5"
-			            Name = "stripBtnCurve"
 			            ToolTipText = "Curve"
 			            />
 	            </_Buttons>
@@ -603,7 +504,7 @@
 		</UiHBox>
 
 	    <BSplitContainer id="splitContainer1"
-
+	    	Dock = "Bottom"
             FixedPanel = "Panel2"
             SplitterFixed = "false"
             Location = "(2, 2)"
