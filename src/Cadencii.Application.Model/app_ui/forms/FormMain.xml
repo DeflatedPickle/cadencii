@@ -47,7 +47,8 @@
 	            Size = "(955, 612)"
 				>
 		        <BSplitContainer id="splitContainerProperty"
-		            FixedPanel = "None"
+		            FixedPanel = "Panel1"
+		            Dock = "Fill"
 		            SplitterFixed = "false"
 		            Location = "(448, 14)"
 		            Margin = "(0)"
@@ -71,7 +72,8 @@
 			            Size = "(42, 348)"
 			            TabIndex = "0"
 			            >
-			            <!-- mPropertyPanelContainer will go here -->
+			            <PropertyPanelContainer id="mPropertyPanelContainer"
+			            	Dock = "Fill" />
 		            </_Panel1>
 		            <_Panel2
 			            Anchor = "Top,Bottom,Left,Right"
@@ -83,7 +85,8 @@
 			            TabIndex = "1"
 			            >
 						<BSplitContainer id="splitContainer1"
-					    	Dock = "Bottom"
+							BackColor = "$(212, 212, 212)"
+					    	Dock = "Fill"
 				            FixedPanel = "Panel2"
 				            SplitterFixed = "false"
 				            Location = "(2, 2)"
@@ -102,7 +105,7 @@
 					        >
 					        <_Panel1
 					            Anchor = "Top,Bottom,Left,Right"
-					            BorderColor = "$Black"
+					            BorderStyle = "None"
 					            Location = "(0, 0)"
 					            Margin = "(0)"
 					            Name = "m_panel1"
@@ -136,6 +139,7 @@
 							            TabIndex = "0"
 							            >
 										<UiPanel id="panel1"
+											Dock = "Fill"
 								            Location = "(15, 13)"
 								            Name = "panel1"
 								            Size = "(421, 279)"
@@ -263,14 +267,16 @@
 					        </_Panel1>
 					        <_Panel2
 					            Anchor = "Bottom,Left,Right"
-					            BorderColor = "$Black"
+					            BorderStyle = "None"
 					            Location = "(0, 54)"
 					            Margin = "(0)"
 					            Name = "m_panel2"
 					            Size = "(953, 25)"
 					            TabIndex = "1"
 						        >
-						        <TrackSelector id = "trackSelector" />
+						        <TrackSelector id = "trackSelector"
+						        	Dock = "Fill"
+						        	 />
 						    </_Panel2>
 				        </BSplitContainer>
 		            </_Panel2>

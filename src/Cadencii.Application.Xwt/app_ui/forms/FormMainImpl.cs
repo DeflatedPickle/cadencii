@@ -204,12 +204,6 @@ namespace Cadencii.Application.Forms
             // 言語設定を反映させる
             Messaging.setLanguage(ApplicationGlobal.appConfig.Language);
 
-#if ENABLE_PROPERTY
-            EditorManager.propertyPanel = new PropertyPanelImpl();
-            EditorManager.propertyWindow = new FormNotePropertyController(c => new FormNotePropertyImpl(c), this);
-            EditorManager.propertyWindow.getUi().addComponent(EditorManager.propertyPanel);
-#endif
-
 #if DEBUG
             CDebug.WriteLine("FormMain..ctor()");
 #endif
@@ -233,9 +227,13 @@ namespace Cadencii.Application.Forms
             tvsq.Track[1].changeRenderer(renderer, singers);
             EditorManager.setVsqFile(tvsq);
 
-			//trackSelector = ApplicationUIHost.Create<TrackSelector>();
-
             InitializeComponent();
+
+			#if ENABLE_PROPERTY
+			EditorManager.propertyPanel = new PropertyPanelImpl();
+			EditorManager.propertyWindow = new FormNotePropertyController(c => new FormNotePropertyImpl(c), this);
+			EditorManager.propertyWindow.getUi().addComponent(EditorManager.propertyPanel);
+			#endif
 
 			model.InitializeControls ();
 
@@ -263,9 +261,6 @@ namespace Cadencii.Application.Forms
             mOverviewPixelPerClock = getOverviewScaleX( mOverviewScaleCount );*/
 
             menuVisualOverview.Checked = EditorManager.editorConfig.OverviewEnabled;
-#if ENABLE_PROPERTY
-            mPropertyPanelContainer = ApplicationUIHost.Create<PropertyPanelContainer> ();
-#endif
 
             registerEventHandlers();
 			if (cadencii.Properties.Resources.Icon1 != null) // .ico file is not supported yet.
@@ -298,30 +293,7 @@ namespace Cadencii.Application.Forms
             updatePaletteTool();
 #endif
 
-            splitContainer1.Panel1.BorderStyle = Cadencii.Gui.Toolkit.BorderStyle.None;
-            splitContainer1.Panel2.BorderStyle = Cadencii.Gui.Toolkit.BorderStyle.None;
-            splitContainer1.BackColor = new Cadencii.Gui.Color(212, 212, 212);
-            //splitContainer2.Panel1.AddControl(panel1);
-            panel1.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
-            //splitContainer1.Panel1.AddControl(splitContainer2);
-			splitContainer2.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
-            //splitContainer1.Panel2.AddControl(trackSelector);
-            trackSelector.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
-			splitContainer1.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 			splitContainer1.Panel2MinSize = trackSelector.Model.PreferredMinSize;
-            splitContainerProperty.FixedPanel = Cadencii.Gui.Toolkit.FixedPanel.Panel1;
-
-#if ENABLE_PROPERTY
-			splitContainerProperty.Panel1.AddControl (mPropertyPanelContainer);
-            mPropertyPanelContainer.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
-#else
-            splitContainerProperty.setDividerLocation( 0 );
-            splitContainerProperty.setEnabled( false );
-            menuVisualProperty.setVisible( false );
-#endif
-
-            //splitContainerProperty.Panel2.AddControl (splitContainer1);
-            splitContainerProperty.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 
             // コントロールの位置・サイズを調節
             splitContainer2.Panel1.SuspendLayout();
