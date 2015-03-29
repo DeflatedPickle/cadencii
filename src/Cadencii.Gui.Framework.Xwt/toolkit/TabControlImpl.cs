@@ -25,7 +25,7 @@ namespace Cadencii.Gui.Toolkit
 			{
 				var x = (TabPageImpl) item;
 				base.InsertItem (index, item);
-				x.OnAddedToTabControl (nb);
+				//x.OnAddedToTabControl (nb);
 				nb.Tabs.Add (x.NativeTab);
 			}
 

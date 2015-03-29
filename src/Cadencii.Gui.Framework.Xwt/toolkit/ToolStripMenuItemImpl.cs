@@ -36,7 +36,10 @@ namespace Cadencii.Gui.Toolkit
 
 		void UiToolStripMenuItem.Mnemonic (Keys keys)
 		{
-			// FIXME: implement
+			// no need to implement in Xwt, '_' is automatically recognized as mnemonic in Xwt,
+			// and '&' is automatically converted to '_'.
+			// FIXME: However, the app rewrites the text label without mnemonic and then calls
+			// this method to make sure mnemonic works. So, if '_' is not on the label, add it...
 		}
 
 		Cadencii.Gui.Image UiToolStripMenuItem.Image {

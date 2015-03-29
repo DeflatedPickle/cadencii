@@ -233,7 +233,7 @@ namespace Cadencii.Application.Forms
             tvsq.Track[1].changeRenderer(renderer, singers);
             EditorManager.setVsqFile(tvsq);
 
-			trackSelector = ApplicationUIHost.Create<TrackSelector>();
+			//trackSelector = ApplicationUIHost.Create<TrackSelector>();
 
             InitializeComponent();
 
@@ -2376,6 +2376,7 @@ namespace Cadencii.Application.Forms
             stripBtnLoop.ToolTipText = _("Repeat");
             stripBtnScroll.ToolTipText = _("Auto scroll");
 
+			/*
             #region main menu
             menuFile.Text = _("File");
             menuFile.Mnemonic(Keys.F);
@@ -2691,6 +2692,7 @@ namespace Cadencii.Application.Forms
             cMenuTrackSelectorSelectAll.Text = _("Select All Events");
             cMenuTrackSelectorSelectAll.Mnemonic(Keys.E);
             #endregion
+            */
 
             #region cMenuPositionIndicator
             cMenuPositionIndicatorStartMarker.Text = _("Set start marker");

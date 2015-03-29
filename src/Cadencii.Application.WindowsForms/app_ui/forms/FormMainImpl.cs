@@ -233,7 +233,7 @@ namespace Cadencii.Application.Forms
             tvsq.Track[1].changeRenderer(renderer, singers);
             EditorManager.setVsqFile(tvsq);
 
-			trackSelector = ApplicationUIHost.Create<TrackSelector>();
+			//trackSelector = ApplicationUIHost.Create<TrackSelector>();
 
             InitializeComponent();
 
@@ -300,9 +300,9 @@ namespace Cadencii.Application.Forms
             splitContainer1.Panel1.BorderStyle = Cadencii.Gui.Toolkit.BorderStyle.None;
             splitContainer1.Panel2.BorderStyle = Cadencii.Gui.Toolkit.BorderStyle.None;
             splitContainer1.BackColor = new Cadencii.Gui.Color(212, 212, 212);
-            splitContainer2.Panel1.AddControl(panel1);
+            //splitContainer2.Panel1.AddControl(panel1);
             panel1.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
-            splitContainer1.Panel1.AddControl(splitContainer2);
+            //splitContainer1.Panel1.AddControl(splitContainer2);
 			splitContainer2.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
             splitContainer1.Panel2.AddControl(trackSelector);
             trackSelector.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
@@ -319,7 +319,7 @@ namespace Cadencii.Application.Forms
             menuVisualProperty.setVisible( false );
 #endif
 
-            splitContainerProperty.Panel2.AddControl (splitContainer1);
+            //splitContainerProperty.Panel2.AddControl (splitContainer1);
             splitContainerProperty.Dock = Cadencii.Gui.Toolkit.DockStyle.Fill;
 
             // コントロールの位置・サイズを調節
