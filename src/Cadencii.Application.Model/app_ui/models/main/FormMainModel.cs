@@ -950,6 +950,7 @@ namespace Cadencii.Application.Models
 		public void FlipControlCurveVisible(bool visible)
 		{
 			form.TrackSelector.Model.CurveVisible = visible;
+			/*
 			if (visible) {
 				form.splitContainer1.SplitterFixed = (false);
 				form.splitContainer1.DividerSize = (FormMainModel.Consts._SPL_SPLITTER_WIDTH);
@@ -963,6 +964,7 @@ namespace Cadencii.Application.Models
 				form.splitContainer1.DividerLocation = (form.splitContainer1.Height - panel2height - form.splitContainer1.DividerSize);
 				form.splitContainer1.Panel2MinSize = (panel2height);
 			}
+			*/
 			form.refreshScreen();
 		}
 
@@ -1601,6 +1603,7 @@ namespace Cadencii.Application.Models
 		/// </summary>
 		public void updateSplitContainer2Size(bool save_to_config)
 		{
+			/*
 			var splitContainer2 = form.splitContainer2;
 			if (ApplicationGlobal.appConfig.ViewWaveform) {
 				splitContainer2.Panel2MinSize = (Consts._SPL2_PANEL2_MIN_HEIGHT);
@@ -1627,6 +1630,7 @@ namespace Cadencii.Application.Models
 				splitContainer2.DividerLocation = (splitContainer2.Height);
 				splitContainer2.SplitterFixed = (true);
 			}
+			*/
 		}
 
 		/// <summary>

@@ -63,7 +63,7 @@ namespace Cadencii.Application.Models
 				mKeyLengthSplitterInitialMouse = Screen.Instance.GetScreenMousePosition();
 				mKeyLengthInitValue = EditorManager.keyWidth;
 				mKeyLengthTrackSelectorRowsPerColumn = parent.form.TrackSelector.Model.RowsPerColumn;
-				mKeyLengthSplitterDistance = parent.form.splitContainer1.DividerLocation;
+				//mKeyLengthSplitterDistance = parent.form.splitContainer1.DividerLocation;
 			}
 
 			public void pictKeyLengthSplitter_MouseMove()
@@ -80,6 +80,7 @@ namespace Cadencii.Application.Models
 				}
 				EditorManager.keyWidth = draft;
 				int current = parent.form.TrackSelector.Model.RowsPerColumn;
+				/*
 				if (current >= mKeyLengthTrackSelectorRowsPerColumn) {
 					int max_divider_location = parent.form.splitContainer1.Height - parent.form.splitContainer1.DividerSize - parent.form.splitContainer1.Panel2MinSize;
 					if (max_divider_location < mKeyLengthSplitterDistance) {
@@ -88,6 +89,7 @@ namespace Cadencii.Application.Models
 						parent.form.splitContainer1.DividerLocation = (mKeyLengthSplitterDistance);
 					}
 				}
+				*/
 				parent.form.updateLayout();
 				parent.form.refreshScreen();
 			}

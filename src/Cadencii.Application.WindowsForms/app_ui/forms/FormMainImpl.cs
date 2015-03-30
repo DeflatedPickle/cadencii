@@ -279,7 +279,7 @@ namespace Cadencii.Application.Forms
 			trackSelector.Model.Size = new Size (446, 250);
             trackSelector.TabIndex = 0;
 
-            splitContainer1.Panel2MinSize = trackSelector.Model.PreferredMinSize;
+            //splitContainer1.Panel2MinSize = trackSelector.Model.PreferredMinSize;
             var minimum_size = getWindowMinimumSize();
 			this.AsGui ().MinimumSize = new Size(minimum_size.Width, minimum_size.Height);
             stripBtnScroll.Pushed = EditorManager.mAutoScroll;
@@ -292,10 +292,10 @@ namespace Cadencii.Application.Forms
             updatePaletteTool();
 #endif
 
-			splitContainer1.Panel2MinSize = trackSelector.Model.PreferredMinSize;
+			//splitContainer1.Panel2MinSize = trackSelector.Model.PreferredMinSize;
 
             // コントロールの位置・サイズを調節
-            splitContainer2.Panel1.SuspendLayout();
+            //splitContainer2.Panel1.SuspendLayout();
             panel1.SuspendLayout();
             pictPianoRoll.SuspendLayout();
             vScroll.SuspendLayout();
@@ -328,7 +328,7 @@ namespace Cadencii.Application.Forms
             vScroll.ResumeLayout();
             pictPianoRoll.ResumeLayout();
             panel1.ResumeLayout();
-            splitContainer2.Panel1.ResumeLayout();
+            //splitContainer2.Panel1.ResumeLayout();
 
             updatePropertyPanelState(EditorManager.editorConfig.PropertyWindowStatus.State);
 
@@ -1392,15 +1392,15 @@ namespace Cadencii.Application.Forms
                 mPropertyPanelContainer.addComponent(EditorManager.propertyPanel);
                 menuVisualProperty.Checked = true;
                 EditorManager.editorConfig.PropertyWindowStatus.State = PanelState.Docked;
-                splitContainerProperty.Panel1Hidden = (false);
-                splitContainerProperty.SplitterFixed = (false);
-				splitContainerProperty.DividerSize = (Consts._SPL_SPLITTER_WIDTH);
-				splitContainerProperty.Panel1MinSize = Consts._PROPERTY_DOCK_MIN_WIDTH;
+                //splitContainerProperty.Panel1Hidden = (false);
+                //splitContainerProperty.SplitterFixed = (false);
+				//splitContainerProperty.DividerSize = (Consts._SPL_SPLITTER_WIDTH);
+				//splitContainerProperty.Panel1MinSize = Consts._PROPERTY_DOCK_MIN_WIDTH;
                 int w = EditorManager.editorConfig.PropertyWindowStatus.DockWidth;
 				if (w < Consts._PROPERTY_DOCK_MIN_WIDTH) {
 					w = Consts._PROPERTY_DOCK_MIN_WIDTH;
                 }
-                splitContainerProperty.DividerLocation = (w);
+                //splitContainerProperty.DividerLocation = (w);
 #if DEBUG
                 Logger.StdOut("FormMain#updatePropertyPanelState; state=Docked; w=" + w);
 #endif
@@ -1412,14 +1412,14 @@ namespace Cadencii.Application.Forms
                 }
                 menuVisualProperty.Checked = false;
                 if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
-                    EditorManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.DividerLocation;
+                //    EditorManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.DividerLocation;
                 }
                 EditorManager.editorConfig.PropertyWindowStatus.State = PanelState.Hidden;
-                splitContainerProperty.Panel1MinSize = 0;
-                splitContainerProperty.Panel1Hidden = (true);
-                splitContainerProperty.DividerLocation = (0);
-                splitContainerProperty.DividerSize = (0);
-                splitContainerProperty.SplitterFixed = (true);
+                //splitContainerProperty.Panel1MinSize = 0;
+                //splitContainerProperty.Panel1Hidden = (true);
+                //splitContainerProperty.DividerLocation = (0);
+                //splitContainerProperty.DividerSize = (0);
+                //splitContainerProperty.SplitterFixed = (true);
             } else if (state == PanelState.Window) {
                 EditorManager.propertyWindow.getUi().addComponent(EditorManager.propertyPanel);
                 var parent = this.Location;
@@ -1446,14 +1446,14 @@ namespace Cadencii.Application.Forms
                 }
                 menuVisualProperty.Checked = true;
                 if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
-                    EditorManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.DividerLocation;
+                //    EditorManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.DividerLocation;
                 }
                 EditorManager.editorConfig.PropertyWindowStatus.State = PanelState.Window;
-                splitContainerProperty.Panel1MinSize = 0;
-                splitContainerProperty.Panel1Hidden = (true);
-                splitContainerProperty.DividerLocation = (0);
-                splitContainerProperty.DividerSize = (0);
-                splitContainerProperty.SplitterFixed = (true);
+                //splitContainerProperty.Panel1MinSize = 0;
+                //splitContainerProperty.Panel1Hidden = (true);
+                //splitContainerProperty.DividerLocation = (0);
+                //splitContainerProperty.DividerSize = (0);
+                //splitContainerProperty.SplitterFixed = (true);
                 EditorManager.editorConfig.PropertyWindowStatus.IsMinimized = false;
             }
         }
@@ -1834,7 +1834,7 @@ namespace Cadencii.Application.Forms
             Size client = new Size(this.ClientSize.Width, this.ClientSize.Height);
             Size current = new Size(this.Size.Width, this.Size.Height);
             return new Size(current_minsize.Width,
-                                  splitContainer1.Panel2MinSize +
+                                  //splitContainer1.Panel2MinSize +
 				Consts._SCROLL_WIDTH + Consts._PICT_POSITION_INDICATOR_HEIGHT + pictPianoRoll.MinimumSize.Height +
 				rebar.Height +
 				((System.Windows.Forms.MenuStrip) menuStripMain.Native).Height + statusStrip.Height +

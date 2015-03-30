@@ -427,9 +427,9 @@ namespace Cadencii.Application.Models
 						// editorConfig.PxTrackHeightが変更されている可能性があるので，更新が必要
 						parent.form.Model.StartToDrawY = (parent.form.calculateStartToDrawY (parent.form.vScroll.Value));
 
-						if (parent.form.menuVisualControlTrack.Checked) {
-							parent.form.splitContainer1.Panel2MinSize = (parent.form.TrackSelector.Model.PreferredMinSize);
-						}
+						//if (parent.form.menuVisualControlTrack.Checked) {
+						//	parent.form.splitContainer1.Panel2MinSize = (parent.form.TrackSelector.Model.PreferredMinSize);
+						//}
 
 						EditorManager.saveConfig ();
 						parent.form.applyLanguage ();

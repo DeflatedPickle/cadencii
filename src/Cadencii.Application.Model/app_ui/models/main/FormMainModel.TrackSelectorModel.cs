@@ -181,12 +181,14 @@ namespace Cadencii.Application.Models
 
 			public void RunPreferredMinHeightChanged()
 			{
+				/*
 				if (parent.form.menuVisualControlTrack.Checked) {
 					parent.form.splitContainer1.Panel2MinSize = (parent.form.TrackSelector.Model.PreferredMinSize);
 					#if DEBUG
 					Logger.StdOut("FormMain#trackSelector_PreferredMinHeightChanged; splitContainer1.Panel2MinSize changed");
 					#endif
 				}
+				*/
 			}
 
 			public void RunPreviewKeyDown(KeyEventArgs e)

@@ -145,7 +145,7 @@ namespace Cadencii.Application.Forms
 						}
 					} else {
 						// get property, can be collection ("MenuStrip.Items") or non-collection ("SplitContainer.Panel1")
-						ApplyXml (roots, c, pv, pv is System.Collections.ICollection);
+						ApplyXml (roots, c, pv, pv is System.Collections.ICollection || pv.GetType ().Name == typeof (CastingList<,>).Name);
 					}
 				} else {
 					object obj;

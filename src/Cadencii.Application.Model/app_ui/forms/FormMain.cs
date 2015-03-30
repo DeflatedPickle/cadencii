@@ -32,8 +32,7 @@ namespace Cadencii.Application.Forms
 
 		UiToolBarButton stripBtnGrid { get; set; }
 
-		BSplitContainer splitContainer2 { get;set; }
-		BSplitContainer splitContainerProperty { get; set; }
+		UiSplitContainer splitContainerProperty { get; set; }
 		System.ComponentModel.BackgroundWorker bgWorkScreen { get; set; }
 		UiToolBar toolBarFile { get; set; }
 		UiToolBar toolBarPosition { get; set; }
@@ -144,7 +143,6 @@ namespace Cadencii.Application.Forms
 
 		UiToolStripMenuItem menuLyricCopyVibratoToPreset { get; set; }
 
-		BSplitContainer splitContainer1 { get; set;}
 		UiToolStripMenuItem menuHidden { get; set; }
 		UiToolStripMenuItem menuScript { get; set;}
 		UiToolStripMenuItem menuVisualControlTrack { get; set; }

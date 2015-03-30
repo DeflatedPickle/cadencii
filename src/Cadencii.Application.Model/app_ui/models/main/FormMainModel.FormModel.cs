@@ -204,6 +204,7 @@ namespace Cadencii.Application.Models
 
 			public void RunFormClosing (FormClosingEventArgs e)
 			{
+				/*
 				// 設定値を格納
 				if (ApplicationGlobal.appConfig.ViewWaveform) {
 					EditorManager.editorConfig.SplitContainer2LastDividerLocation = parent.form.splitContainer2.DividerLocation;
@@ -211,6 +212,7 @@ namespace Cadencii.Application.Models
 				if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
 					EditorManager.editorConfig.PropertyWindowStatus.DockWidth = parent.form.splitContainerProperty.DividerLocation;
 				}
+				*/
 				/*
 			// I believe this should not be special case.
 			if (e.CloseReason == CloseReason.WindowsShutDown) {

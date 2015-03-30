@@ -331,10 +331,10 @@ namespace Cadencii.Application.Forms
         UiToolStripMenuItem menuHiddenPaste;
         UiToolStripMenuItem menuHiddenCut;
         UiToolStrip toolStripBottom;
-		public BSplitContainer splitContainerProperty { get; set; }
+		public UiSplitContainer splitContainerProperty { get; set; }
 		public UiToolStripMenuItem menuVisualOverview { get; set; }
         PictOverview panelOverview;
-		public BSplitContainer splitContainer1 { get; set; }
+		UiSplitContainer splitContainer1;
         UiToolStripSeparator toolStripMenuItem4;
         UiToolStripMenuItem menuTrackBgm;
         UiToolStripMenuItem menuTrackRendererVCNT;
@@ -370,7 +370,7 @@ namespace Cadencii.Application.Forms
 		public UiToolStripMenuItem menuHelpLogSwitch { get; set; }
         UiToolStripMenuItem menuHelpLogOpen;
 		public UiHBox rebar { get; set; }
-		public BSplitContainer splitContainer2 { get;set; }
+		UiSplitContainer splitContainer2;
         UiPanel panel1;
 		public UiToolBar toolBarFile { get; set; }
         UiImageList imageListFile;
