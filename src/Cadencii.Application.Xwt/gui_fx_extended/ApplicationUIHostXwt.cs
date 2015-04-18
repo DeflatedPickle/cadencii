@@ -57,6 +57,22 @@ namespace Cadencii.Application.Forms
 			if (b != null)
 				return b.Children.Select (bc => FindControlTreeItem (bc, name))
 					.FirstOrDefault (x => x != null);
+			var s = c as UiSplitContainer;
+			if (s != null)
+				new object [] {s.Panel1, s.Panel2}
+				.Concat (s.Panel1.GetControls ())
+				.Concat (s.Panel2.GetControls ())
+				.OfType<Control> ()
+				.Select (cc => FindControlTreeItem (cc, name))
+				.FirstOrDefault (x => x != null);
+			var t = c as UiToolStripContainer;
+			if (t != null)
+				new object [] {t.ContentPanel, t.BottomToolStripPanel}
+				.Concat (t.ContentPanel.GetControls ())
+				.Concat (t.BottomToolStripPanel.GetControls ())
+				.OfType<Control> ()
+				.Select (cc => FindControlTreeItem (cc, name))
+				.FirstOrDefault (x => x != null);
 			var p = c as IControlContainer;
 			if (p == null)
 				return null;

@@ -46,26 +46,20 @@
 	        <_ContentPanel
 	            Size = "(955, 612)"
 				>
-		        <UiSplitContainer id="splitContainerProperty"
+		        <UiVSplitContainer id="splitContainerProperty"
 		            FixedPanel = "Panel1"
 		            Dock = "Fill"
 		            Location = "(0, 14)"
-		            Margin = "(0)"
 		            Name = "splitContainerProperty"
-		            Orientation = "Vertical"
 		            Panel1MinSize = "25"
 		            Panel2MinSize = "25"
 		            Size = "(112, 348)"
-		            SplitterDistance = "42"
 		            SplitterWidth = "4"
 		            TabIndex = "20"
 		            TabStop = "false"
-		            Text = "bSplitContainer1"
 		            >
 		            <_Panel1
 			            Anchor = "Top,Bottom,Left,Right"
-			            Location = "(0, 0)"
-			            Margin = "(0, 0, 0, 4)"
 			            Name = "m_panel1"
 			            Size = "(42, 348)"
 			            TabIndex = "0"
@@ -76,57 +70,46 @@
 		            <_Panel2
 			            Anchor = "Top,Bottom,Left,Right"
 			            Location = "(46, 0)"
-			            Margin = "(0)"
 			            Name = "m_panel2"
 			            Size = "(66, 348)"
 			            TabIndex = "1"
 			            >
-						<UiSplitContainer id="splitContainer1"
+						<UiHSplitContainer id="splitContainer1"
 							BackColor = "$(212, 212, 212)"
 					    	Dock = "Fill"
 				            FixedPanel = "Panel2"
 				            Location = "(2, 2)"
-				            Margin = "(0)"
 				            MinimumSize = "(0, 54)"
 				            Name = "splitContainer1"
-				            Orientation = "Horizontal"
 				            Panel1MinSize = "25"
 				            Panel2MinSize = "25"
 				            Size = "(953, 54)"
-				            SplitterDistance = "50"
 				            SplitterWidth = "4"
 				            TabIndex = "4"
 				            TabStop = "false"
-				            Text = "splitContainerEx1"
 					        >
 					        <_Panel1
 					            Anchor = "Top,Bottom,Left,Right"
 					            Location = "(0, 0)"
-					            Margin = "(0)"
 					            Name = "m_panel1"
 					            Size = "(953, 50)"
 					            TabIndex = "0"
 						        >
-						        <UiSplitContainer id="splitContainer2"
+						        <UiHSplitContainer id="splitContainer2"
 						        	Dock = "Fill"
 						            FixedPanel = "Panel2"
 						            Location = "(0, 345)"
-						            Margin = "(0)"
 						            Name = "splitContainer2"
-						            Orientation = "Horizontal"
 						            Panel1MinSize = "25"
 						            Panel2MinSize = "25"
 						            Size = "(115, 134)"
-						            SplitterDistance = "25"
 						            SplitterWidth = "4"
 						            TabIndex = "23"
 						            TabStop = "false"
-						            Text = "bSplitContainer1"
 						            >
 						            <_Panel1
 							            Anchor = "Top,Bottom,Left,Right"
 							            Location = "(0, 0)"
-							            Margin = "(0)"
 							            Name = "m_panel1"
 							            Size = "(115, 25)"
 							            TabIndex = "0"
@@ -234,33 +217,32 @@
 						            <_Panel2
 				        				Anchor = "Bottom,Left,Right"
 							            Location = "(0, 29)"
-							            Margin = "(0)"
 							            Name = "m_panel2"
 							            Size = "(115, 105)"
 							            TabIndex = "1"
 							            >
 							            <WaveformZoom id="panelWaveformZoom"
 							            	Dock = "Fill"
-							            	WaveView = "#waveView"
 							            	>
-						            		<WaveView id="waveView"
-												Anchor = "Top,Bottom,Right,Left"
-								            	BackColor = "$(212,212,212)"
-								            	Location = "(66, 0)"
-								            	Margin = "(0)"
-								            	Name = "waveView"
-								            	Size = "(355, 59)"
-								            	TabIndex = "17"
-							            		/>
+							            	<_WaveView>
+							            		<WaveView id="waveView"
+													Anchor = "Top,Bottom,Right,Left"
+									            	BackColor = "$(212,212,212)"
+									            	Location = "(66, 0)"
+									            	Margin = "(0)"
+									            	Name = "waveView"
+									            	Size = "(355, 59)"
+									            	TabIndex = "17"
+								            		/>
+							            	</_WaveView>
 							            </WaveformZoom>
 							        </_Panel2>
-						        </UiSplitContainer>
+						        </UiHSplitContainer>
 					        </_Panel1>
 					        <_Panel2
 					            Anchor = "Bottom,Left,Right"
 					            BorderStyle = "None"
 					            Location = "(0, 54)"
-					            Margin = "(0)"
 					            Name = "m_panel2"
 					            Size = "(953, 25)"
 					            TabIndex = "1"
@@ -269,9 +251,9 @@
 						        	Dock = "Fill"
 						        	 />
 						    </_Panel2>
-				        </UiSplitContainer>
+				        </UiHSplitContainer>
 		            </_Panel2>
-		        </UiSplitContainer>
+		        </UiVSplitContainer>
 	        </_ContentPanel>
 			<_BottomToolStripPanel
 	            RenderMode = "System"

@@ -21,39 +21,39 @@ namespace Cadencii.Gui.Toolkit
 {
 	public partial class ToolStripContainerImpl : System.Windows.Forms.ToolStripContainer, UiToolStripContainer
 	{
-		class PanelWrapper : IControlContainer
-		{
-			System.Windows.Forms.Control panel;
-
-			public PanelWrapper (System.Windows.Forms.Control panel)
-			{
-				this.panel = panel;
-			}
-
-			#region IControlContainer implementation
-			void IControlContainer.AddControl (UiControl control)
-			{
-				panel.Controls.Add ((System.Windows.Forms.Control) control);
-			}
-			void IControlContainer.RemoveControl (UiControl control)
-			{
-				panel.Controls.Remove ((System.Windows.Forms.Control) control);
-			}
-
-			IEnumerable<UiControl> IControlContainer.GetControls ()
-			{
-				foreach (UiControl c in panel.Controls)
-					yield return c;
-			}
-			#endregion
-		}
-
 		IControlContainer UiToolStripContainer.ContentPanel {
 			get { return new PanelWrapper (ContentPanel); }
 		}
 		IControlContainer UiToolStripContainer.BottomToolStripPanel {
 			get { return new PanelWrapper (BottomToolStripPanel); }
 		}
+	}
+
+	class PanelWrapper : IControlContainer
+	{
+		System.Windows.Forms.Control panel;
+
+		public PanelWrapper (System.Windows.Forms.Control panel)
+		{
+			this.panel = panel;
+		}
+
+		#region IControlContainer implementation
+		void IControlContainer.AddControl (UiControl control)
+		{
+			panel.Controls.Add ((System.Windows.Forms.Control) control);
+		}
+		void IControlContainer.RemoveControl (UiControl control)
+		{
+			panel.Controls.Remove ((System.Windows.Forms.Control) control);
+		}
+
+		IEnumerable<UiControl> IControlContainer.GetControls ()
+		{
+			foreach (UiControl c in panel.Controls)
+				yield return c;
+		}
+		#endregion
 	}
 }
 

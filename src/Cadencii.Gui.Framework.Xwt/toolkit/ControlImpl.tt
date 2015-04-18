@@ -29,6 +29,7 @@ namespace Cadencii.Gui.Toolkit
 		"GroupBox",
 		"HBox",
 		"HScrollBar",
+		"HSplitContainer",
 		"HTrackBar",
 		//"ImageList",
 		"Label",
@@ -41,7 +42,6 @@ namespace Cadencii.Gui.Toolkit
 		"ProgressBar",
 		"PropertyGrid",
 		"RadioButton",
-		"SplitContainer",
 		"StatusStrip",
 		"TabControl",
 		"TabPage",
@@ -52,6 +52,7 @@ namespace Cadencii.Gui.Toolkit
 		"UserControl",
 		"VBox",
 		"VScrollBar",
+		"VSplitContainer",
 		"VTrackBar",
 		};
 

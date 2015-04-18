@@ -94,7 +94,11 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class SplitContainerBase : Xwt.VPaned
+	public partial class HSplitContainerBase : Xwt.HPaned
+	{
+	}
+
+	public partial class VSplitContainerBase : Xwt.VPaned
 	{
 	}
 

@@ -1452,7 +1452,8 @@ namespace Cadencii.Application.Forms
                 }
                 menuVisualProperty.Checked = true;
                 if (EditorManager.editorConfig.PropertyWindowStatus.State == PanelState.Docked) {
-                    EditorManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.DividerLocation;
+					// FIXME: bring it back?
+                    //EditorManager.editorConfig.PropertyWindowStatus.DockWidth = splitContainerProperty.DividerLocation;
                 }
                 EditorManager.editorConfig.PropertyWindowStatus.State = PanelState.Window;
 				/*

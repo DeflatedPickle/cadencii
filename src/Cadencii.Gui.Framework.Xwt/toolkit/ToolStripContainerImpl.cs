@@ -5,16 +5,6 @@ namespace Cadencii.Gui.Toolkit
 {
 	public partial class ToolStripContainerImpl : ToolStripContainerBase, UiToolStripContainer
 	{
-		public ToolStripContainerImpl ()
-		{
-			content = new PanelImpl ();
-			bottom = new PanelImpl ();
-			base.PackStart (content);
-			base.PackEnd (bottom);
-		}
-
-		PanelImpl content, bottom;
-
 		class PanelWrapper : IControlContainer
 		{
 			PanelImpl panel;
@@ -47,6 +37,16 @@ namespace Cadencii.Gui.Toolkit
 			}
 			#endregion
 		}
+
+		public ToolStripContainerImpl ()
+		{
+			content = new PanelImpl ();
+			bottom = new PanelImpl ();
+			base.PackStart (content);
+			base.PackEnd (bottom);
+		}
+
+		PanelImpl content, bottom;
 
 		IControlContainer UiToolStripContainer.ContentPanel {
 			get { return new PanelWrapper (content); }
