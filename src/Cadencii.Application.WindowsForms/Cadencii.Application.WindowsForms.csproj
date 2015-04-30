@@ -93,8 +93,6 @@
     <Compile Include="gui_fx_extended\ApplicationUIHostWF.cs" />
     <Compile Include="gui_fx_extended\ClipboardWF.cs" />
     <Compile Include="gui_fx_extended\DialogsWF.cs" />
-    <Compile Include="app_ui\controls\BSplitContainerImpl.cs" />
-    <Compile Include="app_ui\controls\BSplitterPanelImpl.cs" />
     <Compile Include="app_ui\controls\BitmapExImpl.cs" />
     <Compile Include="app_ui\controls\DraggableBButtonImpl.cs" />
     <Compile Include="app_ui\controls\IconParaderControllerWF.cs" />

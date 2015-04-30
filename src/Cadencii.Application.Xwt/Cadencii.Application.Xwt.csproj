@@ -84,8 +84,6 @@
     <Compile Include="Cadencii.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestFormWorker.cs" />
-    <Compile Include="app_ui\controls\BSplitContainerImpl.cs" />
-    <Compile Include="app_ui\controls\BSplitterPanelImpl.cs" />
     <Compile Include="app_ui\controls\BitmapExImpl.cs" />
     <Compile Include="app_ui\controls\DraggableBButtonImpl.cs" />
     <Compile Include="app_ui\controls\IconParaderControllerWF.cs" />

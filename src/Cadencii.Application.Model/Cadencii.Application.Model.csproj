@@ -130,7 +130,6 @@
     <Compile Include="scripting\ScriptReturnStatus.cs" />
     <Compile Include="scripting\ScriptServer.cs" />
     <Compile Include="app_ui\controls\BitmapEx.cs" />
-    <Compile Include="app_ui\controls\BSplitContainer.cs" />
     <Compile Include="app_ui\controls\BSplitterPanel.cs" />
     <Compile Include="app_ui\controls\DraggableBButton.cs" />
     <Compile Include="app_ui\controls\IconParader.cs" />
@@ -256,7 +255,6 @@
     <Compile Include="app_ui\models\FormBezierPointEditModel.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="app_ui\models\BSplitContainerModel.cs" />
     <Compile Include="app_ui\models\PictOverviewModel.cs" />
     <Compile Include="app_ui\models\PictPianoRollModel.cs" />
     <Compile Include="app_ui\controls\ProgressBarWithLabelModel.cs" />
@@ -457,10 +455,6 @@
     <EmbeddedResource Include="app_ui\controls\VolumeTracker.xml">
       <LogicalName>VolumeTracker.xml</LogicalName>
       <DependentUpon>VolumeTracker.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="app_ui\controls\BSplitContainer.xml">
-      <LogicalName>BSplitContainer.xml</LogicalName>
-      <DependentUpon>BSplitContainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="app_ui\controls\PropertyPanelContainer.xml">
       <LogicalName>PropertyPanelContainer.xml</LogicalName>

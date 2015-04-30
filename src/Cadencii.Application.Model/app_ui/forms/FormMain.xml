@@ -34,6 +34,7 @@
 	            >
 	  <UiPanel id="PanelMain"
 		  	Dock = "Fill"
+            Size = "(955, 655)"
 			>
 
 		<UiToolStripContainer id="toolStripContainer1"

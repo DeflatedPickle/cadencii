@@ -151,8 +151,21 @@ namespace Cadencii.Application.Forms
 			formMain.Load += mainWindow_Load;
 #endif
 
+			Action<int, Xwt.Widget> dump = null;
+			dump = (indent, control) =>
+			{
+				for (int i = 0; i < indent; i++)
+					Console.Write ("  ");
+				Console.WriteLine ("{0}: {1} | {2},{3}", control.GetType (), control.Name, control.WidthRequest, control.HeightRequest);
+				foreach (var child in control.Surface.Children)
+					dump (indent + 1, child);
+			};
+			dump (1, formMain);
+
 			App.Run();
+
 			EditorManager.MainWindow.Show ();
+
 #if !DEBUG
             } catch ( Exception ex ) {
                 String str_ex = getExceptionText( ex, 0 );

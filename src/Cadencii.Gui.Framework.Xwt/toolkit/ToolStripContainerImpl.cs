@@ -17,8 +17,13 @@ namespace Cadencii.Gui.Toolkit
 			// ignore.
 			public ToolStripRenderMode RenderMode { get; set; }
 
-			// FIXME: implement.
-			public Size Size { get; set; }
+			public Size Size {
+				get { return panel.Size.ToGui (); }
+				set {
+					panel.WidthRequest = value.Width;
+					panel.HeightRequest = value.Height;
+				}
+			}
 
 			#region IControlContainer implementation
 			void IControlContainer.AddControl (UiControl control)
@@ -40,8 +45,8 @@ namespace Cadencii.Gui.Toolkit
 
 		public ToolStripContainerImpl ()
 		{
-			content = new PanelImpl ();
-			bottom = new PanelImpl ();
+			content = new PanelImpl () { Name = "Content" };
+			bottom = new PanelImpl () { Name = "Bottom" };
 			base.PackStart (content);
 			base.PackEnd (bottom);
 		}

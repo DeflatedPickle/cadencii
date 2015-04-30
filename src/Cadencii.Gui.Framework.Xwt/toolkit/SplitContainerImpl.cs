@@ -15,8 +15,14 @@ namespace Cadencii.Gui.Toolkit
 		// ignore.
 		public ToolStripRenderMode RenderMode { get; set; }
 
-		// FIXME: implement.
-		public Size Size { get; set; }
+
+		public Size Size {
+			get { return panel.Content.Size.ToGui (); }
+			set {
+				panel.Content.WidthRequest = value.Width;
+				panel.Content.HeightRequest = value.Height;
+			}
+		}
 
 		// FIXME: implement.
 		public Point Location { get; set; }
