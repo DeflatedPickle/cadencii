@@ -198,7 +198,8 @@ namespace Cadencii.Application.Models
 			m_midi_in_mtc.Close();
 			}
 				#endif
-				PlaySound.kill ();
+				if (Environment.OSVersion.Platform != PlatformID.Unix)
+					PlaySound.kill ();
 				PluginLoader.cleanupUnusedAssemblyCache ();
 			}
 

@@ -94,11 +94,13 @@ namespace Cadencii.Gui.Toolkit
 	{
 	}
 
-	public partial class HSplitContainerBase : Xwt.HPaned
+	// okay, HSplitContainer splits panels by vertical splitter, hence it's VPaned
+	public partial class HSplitContainerBase : Xwt.VPaned
 	{
 	}
 
-	public partial class VSplitContainerBase : Xwt.VPaned
+	// ... and VSplitContainer by horizontal splitter, hence HPaned
+	public partial class VSplitContainerBase : Xwt.HPaned
 	{
 	}
 

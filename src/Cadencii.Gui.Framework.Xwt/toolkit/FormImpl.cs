@@ -11,11 +11,11 @@ namespace Cadencii.Gui.Toolkit
 		{
 			this.ExpandHorizontal = true;
 			this.ExpandVertical = true;
-			window = new Xwt.Dialog ();
+			window = new Xwt.Window ();
 			window.Content = this;
 		}
 
-		Xwt.Dialog window;
+		Xwt.Window window;
 		bool load_registered, load_invoked;
 		event EventHandler UiFormLoad;
 		MenuStripImpl main_menu;
@@ -226,8 +226,10 @@ namespace Cadencii.Gui.Toolkit
 		public Cadencii.Gui.Size MinimumSize {
 			get { return new Size ((int) base.MinWidth, (int) base.MinHeight); }
 			set {
-				base.MinWidth = value.Width;
-				base.MinHeight = value.Height;
+				if (value.Width >= 0)
+					base.MinWidth = value.Width;
+				if (value.Height >= 0)
+					base.MinHeight = value.Height;
 			}
 		}
 
