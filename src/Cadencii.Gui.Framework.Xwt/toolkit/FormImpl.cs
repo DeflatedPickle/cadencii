@@ -22,6 +22,10 @@ namespace Cadencii.Gui.Toolkit
 
 		// UiForm
 
+		// FIXME: implement
+		UiButton UiForm.AcceptButton { get; set; }
+		UiButton UiForm.CancelButton { get; set; }
+
 		// ignore.
 		bool UiForm.AllowDrop { get; set; }
 

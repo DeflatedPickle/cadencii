@@ -10,11 +10,9 @@ namespace Cadencii.Gui.Toolkit
 		public ListViewImpl ()
 		{
 			var chkbox = new Xwt.DataField<bool> ();
-			var ls = new Xwt.ListStore ();
 			var cc = new Xwt.ListViewColumn ();
-			cc.Views.Add (new Xwt.CellView () { VisibleField = chkbox });
+			cc.Views.Add (new Xwt.CheckBoxCellView () { VisibleField = chkbox });
 			base.Columns.Add (cc);
-			base.DataSource = ls;
 		}
 
 		event EventHandler UiListView.SelectedIndexChanged {
@@ -35,14 +33,11 @@ namespace Cadencii.Gui.Toolkit
 			return f;
 		}
 
-		bool UiListView.UseCompatibleStateImageBehavior {
-			get {
-				throw new NotImplementedException ();
-			}
-			set {
-				throw new NotImplementedException ();
-			}
-		}
+		// ignore.
+		bool UiListView.ShowGroups { get; set; }
+
+		// ignore.
+		bool UiListView.UseCompatibleStateImageBehavior { get; set; }
 
 		bool UiListView.CheckBoxes {
 			get {
@@ -82,8 +77,8 @@ namespace Cadencii.Gui.Toolkit
 
 			protected override void InsertItem (int index, UiListViewColumn item)
 			{
-				if (index != lv.Columns.Count)
-					throw new NotSupportedException ();
+				if (index + 1 != lv.Columns.Count)
+					throw new NotSupportedException (string.Format ("can only add to columns, requested index was {0}, has {1} columns", index, lv.Columns.Count));
 				if (item.Native == null)
 					item.Native = new Xwt.ListViewColumn (item.Text); // FIXME: item.Width is ignored.
 				base.InsertItem (index, item);

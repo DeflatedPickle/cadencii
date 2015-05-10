@@ -11,6 +11,9 @@ namespace Cadencii.Gui.Toolkit
 
 		// ignore
 		ContentAlignment UiLabel.TextAlign { get; set; }
+
+		// FIXME: implement?
+		bool UiLabel.AutoSize { get; set; }
 	}
 }
 

@@ -138,7 +138,7 @@ namespace Cadencii.Application.Forms
 
 		void AddToCollection (object c, object obj)
 		{
-			var method = c.GetType ().GetMethods ().FirstOrDefault (m => m.Name == "Add" && m.GetParameters ().First ().ParameterType.IsAssignableFrom (obj.GetType ()));
+			var method = c.GetType ().GetMethods ().FirstOrDefault (m => m.Name == "Add" && m.GetParameters ().Length == 1 && m.GetParameters ().First ().ParameterType.IsAssignableFrom (obj.GetType ()));
 			if (method == null)
 				throw new Exception (string.Format ("Add method for '{0}' not found in the object of type {1}", obj.GetType (), c.GetType ()));
 			method.Invoke (c, new object [] { obj });

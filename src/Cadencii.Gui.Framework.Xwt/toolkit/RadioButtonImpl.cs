@@ -18,6 +18,9 @@ namespace Cadencii.Gui.Toolkit
 			get { return base.Label; }
 			set { base.Label = value; }
 		}
+
+		// FIXME: implement?
+		bool UiRadioButton.AutoSize { get; set; }
 	}
 }
 

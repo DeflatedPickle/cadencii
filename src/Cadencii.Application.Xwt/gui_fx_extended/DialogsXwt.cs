@@ -133,9 +133,16 @@ namespace Cadencii.Application.Forms
 		public override Cadencii.Gui.DialogResult ShowModalDialog (UiForm dialog, UiForm parentForm)
 		{
 			BeforeShowDialog ();
-			var ret = ((Dialog) dialog).Run ((Window) parentForm);
+			DialogResult ret;
+			if (dialog is Dialog)
+				ret = ((Dialog) dialog).Run ((Window) parentForm).ToGui ();
+			else {
+				// no way to relate to parentForm, or even show as dialog. Just show as a window.
+				dialog.Show ();
+				ret = dialog.DialogResult;
+			}
 			AfterShowDialog ();
-			return ret.ToGui ();
+			return ret;
 		}
 		public override bool IsShowingDialog {
 			get { return mShowingDialog; }

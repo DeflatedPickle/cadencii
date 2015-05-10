@@ -32,7 +32,7 @@
 	            Size = "(454, 471)"
 	            TabIndex = "0"
 	            Text = "Sequence"
-	            UseVisualStyleBackColor = "true"
+	            
 	            >
 		    <NumberTextBox id="txtAutoVibratoThresholdLength"
 
@@ -64,7 +64,7 @@
 		            Size = "(90, 16)"
 		            TabIndex = "9"
 		            Text = "User Defined"
-		            UseVisualStyleBackColor = "true"
+		            
 		            />
 
 		    <UiLabel id="lblAutoVibratoType"
@@ -87,7 +87,7 @@
 		            TabIndex = "8"
 		            TabStop = "true"
 		            Text = "VOCALOID Editor Compatible"
-		            UseVisualStyleBackColor = "true"
+		            
 		            />
 
 		    <UiGroupBox id="groupUserDefined"
@@ -101,7 +101,7 @@
 		            >
 			    <UiComboBox id="comboAutoVibratoTypeCustom"
 
-			            FormattingEnabled = "true"
+			            
 			            Location = "(225, 22)"
 			            Name = "comboAutoVibratoTypeCustom"
 			            Size = "(131, 20)"
@@ -158,12 +158,12 @@
 		            Size = "(170, 16)"
 		            TabIndex = "3"
 		            Text = "Enable Automatic Vibrato(&amp;E)"
-		            UseVisualStyleBackColor = "true"
+		            
 		            />
 
 		    <UiComboBox id="comboResolControlCurve"
 
-		            FormattingEnabled = "true"
+		            
 		            Location = "(210, 35)"
 		            Name = "comboResolControlCurve"
 		            Size = "(101, 20)"
@@ -220,7 +220,7 @@
 		            >
 			    <UiComboBox id="comboAutoVibratoType2"
 
-			            FormattingEnabled = "true"
+			            
 			            Location = "(225, 51)"
 			            Name = "comboAutoVibratoType2"
 			            Size = "(131, 20)"
@@ -258,7 +258,7 @@
 
 			    <UiComboBox id="comboAutoVibratoType1"
 
-			            FormattingEnabled = "true"
+			            
 			            Location = "(225, 22)"
 			            Name = "comboAutoVibratoType1"
 			            Size = "(131, 20)"
@@ -307,7 +307,7 @@
 
 		    <UiComboBox id="comboVibratoLength"
 
-		            FormattingEnabled = "true"
+		            
 		            Location = "(213, 93)"
 		            Name = "comboVibratoLength"
 		            Size = "(86, 20)"
@@ -339,7 +339,7 @@
 	            Size = "(454, 471)"
 	            TabIndex = "2"
 	            Text = "Other Settings"
-	            UseVisualStyleBackColor = "true"
+	            
 	            >
 		    <UiLabel id="lblBufferSize"
 
@@ -384,7 +384,7 @@
 		    <UiComboBox id="comboDefualtSinger"
 
 		            Enabled = "false"
-		            FormattingEnabled = "true"
+		            
 		            Location = "(216, 24)"
 		            Name = "comboDefualtSinger"
 		            Size = "(222, 20)"
@@ -400,7 +400,7 @@
 		            Size = "(105, 16)"
 		            TabIndex = "24"
 		            Text = "Chase Event(&amp;C)"
-		            UseVisualStyleBackColor = "true"
+		            
 		            />
 
 		    <UiLabel id="lblWait"
@@ -474,7 +474,7 @@
 	            Size = "(454, 471)"
 	            TabIndex = "3"
 	            Text = "Appearance"
-	            UseVisualStyleBackColor = "true"
+	            
 	            >
 		    <UiGroupBox id="groupFont"
 		            Location = "(23, 9)"
@@ -512,7 +512,7 @@
 			            Size = "(75, 23)"
 			            TabIndex = "42"
 			            Text = "Change"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiLabel id="labelScreen"
@@ -542,7 +542,7 @@
 			            Size = "(75, 23)"
 			            TabIndex = "41"
 			            Text = "Change"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 		    </UiGroupBox>
 
@@ -562,7 +562,7 @@
 			            Size = "(70, 16)"
 			            TabIndex = "67"
 			            Text = "Envelope"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkPbs"
@@ -573,7 +573,7 @@
 			            Size = "(46, 16)"
 			            TabIndex = "60"
 			            Text = "PBS"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkReso4"
@@ -584,7 +584,7 @@
 			            Size = "(60, 16)"
 			            TabIndex = "66"
 			            Text = "Reso 4"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkReso3"
@@ -595,7 +595,7 @@
 			            Size = "(60, 16)"
 			            TabIndex = "65"
 			            Text = "Reso 3"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkReso2"
@@ -606,7 +606,7 @@
 			            Size = "(60, 16)"
 			            TabIndex = "64"
 			            Text = "Reso 2"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkReso1"
@@ -617,7 +617,7 @@
 			            Size = "(60, 16)"
 			            TabIndex = "63"
 			            Text = "Reso 1"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkFx2Depth"
@@ -628,7 +628,7 @@
 			            Size = "(74, 16)"
 			            TabIndex = "62"
 			            Text = "FX2Depth"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkHarmonics"
@@ -639,7 +639,7 @@
 			            Size = "(78, 16)"
 			            TabIndex = "61"
 			            Text = "Harmonics"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkPit"
@@ -650,7 +650,7 @@
 			            Size = "(41, 16)"
 			            TabIndex = "59"
 			            Text = "PIT"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkPor"
@@ -661,7 +661,7 @@
 			            Size = "(47, 16)"
 			            TabIndex = "58"
 			            Text = "POR"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkGen"
@@ -672,7 +672,7 @@
 			            Size = "(47, 16)"
 			            TabIndex = "57"
 			            Text = "GEN"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkOpe"
@@ -683,7 +683,7 @@
 			            Size = "(46, 16)"
 			            TabIndex = "56"
 			            Text = "OPE"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkCle"
@@ -694,7 +694,7 @@
 			            Size = "(45, 16)"
 			            TabIndex = "55"
 			            Text = "CLE"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkBri"
@@ -705,7 +705,7 @@
 			            Size = "(43, 16)"
 			            TabIndex = "54"
 			            Text = "BRI"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkBre"
@@ -716,7 +716,7 @@
 			            Size = "(47, 16)"
 			            TabIndex = "53"
 			            Text = "BRE"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkDyn"
@@ -727,7 +727,7 @@
 			            Size = "(47, 16)"
 			            TabIndex = "52"
 			            Text = "DYN"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkVel"
@@ -738,7 +738,7 @@
 			            Size = "(45, 16)"
 			            TabIndex = "51"
 			            Text = "VEL"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkVibratoDepth"
@@ -749,7 +749,7 @@
 			            Size = "(91, 16)"
 			            TabIndex = "50"
 			            Text = "VibratoDepth"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkVibratoRate"
@@ -760,7 +760,7 @@
 			            Size = "(85, 16)"
 			            TabIndex = "49"
 			            Text = "VibratoRate"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkDecay"
@@ -771,7 +771,7 @@
 			            Size = "(56, 16)"
 			            TabIndex = "48"
 			            Text = "Decay"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkAccent"
@@ -782,7 +782,7 @@
 			            Size = "(60, 16)"
 			            TabIndex = "47"
 			            Text = "Accent"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 			</UiGroupBox>
 
@@ -798,7 +798,7 @@
 
 	    <UiComboBox id="comboLanguage"
 
-	            FormattingEnabled = "true"
+	            
 	            Location = "(148, 105)"
 	            Name = "comboLanguage"
 	            Size = "(121, 20)"
@@ -833,7 +833,7 @@
 	            Size = "(454, 471)"
 	            TabIndex = "5"
 	            Text = "Operation"
-	            UseVisualStyleBackColor = "true"
+	            
 	            >
 		    <UiGroupBox id="groupMisc"
 		            Location = "(23, 253)"
@@ -846,7 +846,7 @@
 			    <UiComboBox id="comboMtcMidiInPortNumber"
 
 			            Anchor = "Top,Left,Right"
-			            FormattingEnabled = "true"
+			            
 			            Location = "(176, 101)"
 			            Name = "comboMtcMidiInPortNumber"
 			            Size = "(225, 20)"
@@ -876,7 +876,7 @@
 			    <UiComboBox id="comboMidiInPortNumber"
 
 			            Anchor = "Top,Left,Right"
-			            FormattingEnabled = "true"
+			            
 			            Location = "(176, 74)"
 			            Name = "comboMidiInPortNumber"
 			            Size = "(225, 20)"
@@ -950,7 +950,7 @@
 			            Size = "(200, 16)"
 			            TabIndex = "104"
 			            Text = "Translate Roman letters into Kana"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkUseSpaceKeyAsMiddleButtonModifier"
@@ -961,7 +961,7 @@
 			            Size = "(234, 16)"
 			            TabIndex = "89"
 			            Text = "Use space key as Middle button modifier"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiLabel id="labelWheelOrder"
@@ -993,7 +993,7 @@
 			            Size = "(156, 16)"
 			            TabIndex = "81"
 			            Text = "Fix Play Cursor to Center"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkCurveSelectingQuantized"
@@ -1004,7 +1004,7 @@
 			            Size = "(209, 16)"
 			            TabIndex = "88"
 			            Text = "Enable Quantize for Curve Selecting"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkScrollHorizontal"
@@ -1015,7 +1015,7 @@
 			            Size = "(208, 16)"
 			            TabIndex = "82"
 			            Text = "Horizontal Scroll when Mouse wheel"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkPlayPreviewWhenRightClick"
@@ -1026,7 +1026,7 @@
 			            Size = "(169, 16)"
 			            TabIndex = "87"
 			            Text = "Play Preview On Right Click"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiCheckBox id="chkKeepLyricInputMode"
@@ -1037,7 +1037,7 @@
 			            Size = "(138, 16)"
 			            TabIndex = "85"
 			            Text = "Keep Lyric Input Mode"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 			</UiGroupBox>
 		</UiTabPage>
@@ -1049,7 +1049,7 @@
 	            Size = "(454, 471)"
 	            TabIndex = "4"
 	            Text = "Platform"
-	            UseVisualStyleBackColor = "true"
+	            
 	            >
 		    <UiGroupBox id="groupUtauCores"
 		            Location = "(23, 9)"
@@ -1067,7 +1067,7 @@
 			            Size = "(205, 16)"
 			            TabIndex = "122"
 			            Text = "Enable Wide-Character Workaround"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiLabel id="labelWavtoolPath"
@@ -1088,7 +1088,7 @@
 			            Size = "(75, 23)"
 			            TabIndex = "119"
 			            Text = "Up"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiButton id="buttonResamplerDown"
@@ -1099,7 +1099,7 @@
 			            Size = "(75, 23)"
 			            TabIndex = "118"
 			            Text = "Down"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiButton id="buttonResamplerRemove"
@@ -1110,7 +1110,7 @@
 			            Size = "(75, 23)"
 			            TabIndex = "117"
 			            Text = "Remove"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiButton id="buttonResamplerAdd"
@@ -1121,15 +1121,13 @@
 			            Size = "(75, 23)"
 			            TabIndex = "116"
 			            Text = "Add"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiListView id="listResampler"
 			            Anchor = "Top,Left,Right"
 			            FullRowSelect = "true"
-			            HideSelection = "false"
 			            Location = "(46, 102)"
-			            MultiSelect = "false"
 			            Name = "listResampler"
 			            ShowGroups = "false"
 			            Size = "(274, 134)"
@@ -1161,7 +1159,7 @@
 			            Size = "(75, 23)"
 			            TabIndex = "112"
 			            Text = "Browse"
-			            UseVisualStyleBackColor = "true"
+			            
 			            />
 
 			    <UiLabel id="lblWavtool"
@@ -1191,7 +1189,7 @@
 	            Size = "(454, 471)"
 	            TabIndex = "6"
 	            Text = "UTAU Singers"
-	            UseVisualStyleBackColor = "true"
+	            
 	            >
 	    <UiButton id="btnRemove"
 
@@ -1201,7 +1199,7 @@
 	            Size = "(75, 23)"
 	            TabIndex = "122"
 	            Text = "Remove"
-	            UseVisualStyleBackColor = "true"
+	            
 	            />
 
 	    <UiButton id="btnAdd"
@@ -1212,7 +1210,7 @@
 	            Size = "(75, 23)"
 	            TabIndex = "121"
 	            Text = "Add"
-	            UseVisualStyleBackColor = "true"
+	            
 	            />
 
 	    <UiButton id="btnUp"
@@ -1223,7 +1221,7 @@
 	            Size = "(75, 23)"
 	            TabIndex = "123"
 	            Text = "Up"
-	            UseVisualStyleBackColor = "true"
+	            
 	            />
 
 	    <UiButton id="btnDown"
@@ -1234,17 +1232,14 @@
 	            Size = "(75, 23)"
 	            TabIndex = "124"
 	            Text = "Down"
-	            UseVisualStyleBackColor = "true"
+	            
 	            />
 
 	    <UiListView id="listSingers"
 
 	            Anchor = "Top,Bottom,Left,Right"
 	            FullRowSelect = "true"
-	            HeaderStyle = "Nonclickable"
-	            HideSelection = "false"
 	            Location = "(17, 23)"
-	            MultiSelect = "false"
 	            Name = "listSingers"
 	            Size = "(418, 372)"
 	            TabIndex = "120"
@@ -1308,7 +1303,7 @@
 	            Size = "(454, 471)"
 	            TabIndex = "7"
 	            Text = "File"
-	            UseVisualStyleBackColor = "true"
+	            
 	            >
 
 		    <UiCheckBox id="chkKeepProjectCache"
@@ -1319,7 +1314,7 @@
 		            Size = "(125, 16)"
 		            TabIndex = "4"
 		            Text = "Keep Project Cache"
-		            UseVisualStyleBackColor = "true"
+		            
 		            />
 
 		    <UiLabel id="lblAutoBackupMinutes"
@@ -1350,7 +1345,7 @@
 		            Size = "(127, 16)"
 		            TabIndex = "0"
 		            Text = "Automatical Backup"
-		            UseVisualStyleBackColor = "true"
+		            
 		            />
 		    <NumericUpDownEx id="numAutoBackupInterval"
 
@@ -1370,7 +1365,7 @@
 	            Size = "(454, 471)"
 	            TabIndex = "8"
 	            Text = "Synthesizer"
-	            UseVisualStyleBackColor = "true"
+	            
 	            >
 
 	    <UiGroupBox id="groupDefaultSynthesizer"
@@ -1384,7 +1379,7 @@
 
 		    <UiComboBox id="comboDefaultSynthesizer"
 
-		            FormattingEnabled = "true"
+		            
 		            Location = "(18, 29)"
 		            Name = "comboDefaultSynthesizer"
 		            Size = "(182, 20)"
@@ -1426,7 +1421,7 @@
 		            Size = "(87, 16)"
 		            TabIndex = "117"
 		            Text = "AquesTone2"
-		            UseVisualStyleBackColor = "true"
+		            
 		            />
 
 		    <UiCheckBox id="chkLoadAquesTone"
@@ -1437,7 +1432,7 @@
 		            Size = "(81, 16)"
 		            TabIndex = "116"
 		            Text = "AquesTone"
-		            UseVisualStyleBackColor = "true"
+		            
 		            />
 
 		    <UiCheckBox id="chkLoadVocaloid2"
@@ -1448,7 +1443,7 @@
 		            Size = "(87, 16)"
 		            TabIndex = "115"
 		            Text = "VOCALOID2"
-		            UseVisualStyleBackColor = "true"
+		            
 		            />
 
 		    <UiCheckBox id="chkLoadVocaloid1"
@@ -1459,7 +1454,7 @@
 		            Size = "(87, 16)"
 		            TabIndex = "113"
 		            Text = "VOCALOID1"
-		            UseVisualStyleBackColor = "true"
+		            
 		            />
         </UiGroupBox>
 	    <UiGroupBox id="groupVsti"
@@ -1479,7 +1474,7 @@
 		            Size = "(41, 23)"
 		            TabIndex = "9"
 		            Text = "..."
-		            UseVisualStyleBackColor = "true"
+		            
 		            />
 		    <UiLabel id="lblAquesTone2"
 
@@ -1507,7 +1502,7 @@
 		            Size = "(41, 23)"
 		            TabIndex = "6"
 		            Text = "..."
-		            UseVisualStyleBackColor = "true"
+		            
 		            />
 
 		    <UiTextBox id="txtAquesTone"
@@ -1579,7 +1574,7 @@
             Size = "(88, 23)"
             TabIndex = "201"
             Text = "Cancel"
-            UseVisualStyleBackColor = "true"
+            
             />
 
     <UiButton id="btnOK"
@@ -1590,6 +1585,6 @@
             Size = "(88, 23)"
             TabIndex = "200"
             Text = "OK"
-            UseVisualStyleBackColor = "true"
+            
             />
 </UiForm>

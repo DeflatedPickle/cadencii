@@ -9,6 +9,7 @@ namespace Cadencii.Gui.Toolkit
 	{
 		event EventHandler SelectedIndexChanged;
 		bool UseCompatibleStateImageBehavior { get; set; }
+		bool ShowGroups { get; set; }
 		bool CheckBoxes { get; set; }
 		bool FullRowSelect { get; set; }
 		View View { get; set; } 

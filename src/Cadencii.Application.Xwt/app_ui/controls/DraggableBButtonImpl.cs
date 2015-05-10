@@ -29,6 +29,7 @@ namespace Cadencii.Application.Controls
 			// FIXME: implement.
 		}
 
+		public DialogResult DialogResult { get; set; }
 		public IconDynamicsHandle IconHandle { get; set; }
     }
 

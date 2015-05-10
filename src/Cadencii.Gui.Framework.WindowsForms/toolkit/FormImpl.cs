@@ -42,6 +42,16 @@ namespace Cadencii.Gui.Toolkit
 
 		// UiForm
 
+		UiButton UiForm.AcceptButton {
+			get { return (UiButton) base.AcceptButton; }
+			set { base.AcceptButton = (System.Windows.Forms.Button) value; }
+		}
+
+		UiButton UiForm.CancelButton {
+			get { return (UiButton) base.CancelButton; }
+			set { base.CancelButton = (System.Windows.Forms.Button) value; }
+		}
+
 		FormStartPosition UiForm.StartPosition {
 			get { return (FormStartPosition) StartPosition; }
 			set { StartPosition = (System.Windows.Forms.FormStartPosition) value; }

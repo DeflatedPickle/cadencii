@@ -8,6 +8,14 @@ namespace Cadencii.Gui.Toolkit
 	{
 		TabPageCollection tabs;
 
+		int UiTabControl.SelectedIndex {
+			get { return base.CurrentTabIndex; }
+			set { base.CurrentTabIndex = value; }
+		}
+
+		// ignore.
+		bool UiTabControl.Multiline { get; set; }
+
 		public new IList<UiTabPage> Tabs {
 			get { return tabs ?? (tabs = new TabPageCollection (this)); }
 		}
@@ -25,8 +33,8 @@ namespace Cadencii.Gui.Toolkit
 			{
 				var x = (TabPageImpl) item;
 				base.InsertItem (index, item);
-				//x.OnAddedToTabControl (nb);
-				nb.Tabs.Add (x.NativeTab);
+				x.OnAddedToTabControl (nb);
+				//nb.Tabs.Add (x.NativeTab);
 			}
 
 			protected override void ClearItems ()

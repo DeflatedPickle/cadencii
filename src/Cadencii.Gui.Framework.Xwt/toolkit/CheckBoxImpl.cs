@@ -14,6 +14,9 @@ namespace Cadencii.Gui.Toolkit
 			remove { this.Toggled -= value; }
 		}
 
+		// FIXME: implement
+		public bool AutoSize { get; set; }
+
 		// should be almost ignorable
 		public bool UseVisualStyleBackColor { get; set; }
 

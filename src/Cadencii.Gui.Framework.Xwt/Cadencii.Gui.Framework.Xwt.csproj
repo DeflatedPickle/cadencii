@@ -92,6 +92,8 @@
     <Compile Include="toolkit\VBoxImpl.cs" />
     <Compile Include="toolkit\HBoxImpl.cs" />
     <Compile Include="toolkit\SplitContainerImpl.cs" />
+    <Compile Include="toolkit\FontDialogImpl.cs" />
+    <Compile Include="toolkit\FolderBrowserDialogImpl.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

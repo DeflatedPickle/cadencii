@@ -19,6 +19,12 @@ namespace Cadencii.Gui.Toolkit
 			NativeTab = parent.Tabs.Last ();
 		}
 
+		// ignore.
+		bool UiTabPage.AutoScroll { get; set; }
+
+		// ignore?
+		Padding UiTabPage.Padding { get; set; }
+
 		string text;
 
 		string Cadencii.Gui.IHasText.Text {
