@@ -94,6 +94,7 @@
     <Compile Include="toolkit\SplitContainerImpl.cs" />
     <Compile Include="toolkit\FontDialogImpl.cs" />
     <Compile Include="toolkit\FolderBrowserDialogImpl.cs" />
+    <Compile Include="ResXFileRef.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

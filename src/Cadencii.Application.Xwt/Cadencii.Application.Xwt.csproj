@@ -149,20 +149,12 @@
       <DependentUpon>ProgressBarWithLabelImpl.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="app_ui\forms\UpdateCheckFormImpl.cs" />
-    <Compile Include="app_ui\controls\menu\BgmMenuItemImpl.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="app_ui\controls\menu\BgmMenuItemImpl.cs" />
     <Compile Include="app_ui\controls\menu\RecentFileMenuItemImpl.cs" />
-    <Compile Include="app_ui\controls\menu\PaletteToolMenuItemImpl.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="app_ui\controls\menu\TrackSelectorSingerDropdownMenuItemImpl.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="app_ui\controls\menu\PaletteToolMenuItemImpl.cs" />
+    <Compile Include="app_ui\controls\menu\TrackSelectorSingerDropdownMenuItemImpl.cs" />
     <Compile Include="app_ui\controls\ProgressBarWithLabelImpl.cs" />
-    <Compile Include="app_ui\controls\menu\TrackSelectorSingerPopupMenuImpl.cs">
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="app_ui\controls\menu\TrackSelectorSingerPopupMenuImpl.cs" />
     <Compile Include="app_ui\controls\WaveformZoomImpl.cs" />
     <Compile Include="..\Cadencii.Gui.Framework.Xwt.Shared\GuiExtensions.cs">
       <Link>GuiExtensions.cs</Link>
@@ -178,7 +170,6 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ResXFileRef.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\icon1.ico" />
@@ -502,17 +493,13 @@
       <Project>{F9410917-9A8E-4637-AE44-61E8D1B24C76}</Project>
       <Name>Cadencii.Media.Dsp.Xwt</Name>
     </ProjectReference>
-    <ProjectReference Include="..\external\xwt\Xwt.Gtk\Xwt.Gtk3.csproj">
-      <Project>{3B25FD1F-CEBA-4450-8893-DC330FDB56A7}</Project>
-      <Name>Xwt.Gtk3</Name>
+    <ProjectReference Include="..\external\xwt\Xwt.WPF\Xwt.WPF.csproj">
+      <Project>{C93D746E-1586-4D4F-B411-BF5A966E6A08}</Project>
+      <Name>Xwt.WPF</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="manual\" />
-    <Folder Include="po\" />
-    <Folder Include="gui_fx_extended\" />
-    <Folder Include="app_ui\" />
-    <Folder Include="app_ui\controls\menu\" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

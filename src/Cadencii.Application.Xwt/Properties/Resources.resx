@@ -126,211 +126,211 @@
   -->
   <assembly alias="Xwt" name="Xwt, Version=0.1.0.0" />
   <assembly alias="Cadencii" name="Cadencii, Version=1.0.0.0" />
-  <data name="alarm_clock" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="alarm_clock" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\alarm-clock.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="arrow_090" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="arrow_090" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\arrow-090.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="arrow_135" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="arrow_135" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\arrow_135.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="arrow_180" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="arrow_180" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\arrow-180.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="arrow_270" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="arrow_270" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\arrow-270.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="arrow_circle_double" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="arrow_circle_double" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\arrow_circle_double.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="arrow_return" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="arrow_return" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\arrow_return.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="arrow_skip" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="arrow_skip" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\arrow_skip.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="arrow_skip_090" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="arrow_skip_090" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\arrow-skip-090.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="arrow_skip_180" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="arrow_skip_180" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\arrow_skip_180.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="btn1" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="btn1" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\btn1.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="btn2" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="btn2" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\btn2.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="btn3" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="btn3" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\btn3.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="chevron_small_collapse" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="chevron_small_collapse" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\chevron-small-collapse.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="clipboard_paste" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="clipboard_paste" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\clipboard_paste.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="control" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="control" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\control.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="control_double" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="control_double" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\control_double.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="control_double_180" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="control_double_180" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\control_double_180.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="control_pause" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="control_pause" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\control_pause.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="control_skip" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="control_skip" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\control_skip.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="control_stop" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="control_stop" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\control_stop.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="control_stop_180" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="control_stop_180" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\control_stop_180.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="cresc1" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="cresc1" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\cresc1.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="cresc2" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="cresc2" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\cresc2.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="cresc3" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="cresc3" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\cresc3.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="cresc4" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="cresc4" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\cresc4.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="cresc5" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="cresc5" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\cresc5.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="cross_small" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="cross_small" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\cross-small.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="dim1" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="dim1" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\dim1.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="dim2" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="dim2" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\dim2.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="dim3" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="dim3" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\dim3.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="dim4" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="dim4" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\dim4.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="dim5" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="dim5" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\dim5.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="disk" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="disk" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\disk.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="disk__plus" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="disk__plus" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\disk__plus.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="documents" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="documents" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\documents.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="drive" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="drive" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\drive.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="edit_list_order" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="edit_list_order" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\edit-list-order.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="end_marker" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="end_marker" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\end_marker.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="eraser" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="eraser" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\eraser.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="folder" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="folder" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\folder.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="folder_horizontal_open" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="folder_horizontal_open" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\folder_horizontal_open.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="folder__plus" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="folder__plus" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\folder--plus.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="Icon1" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="Icon1" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>icon1.ico;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="layer_shape_curve" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="layer_shape_curve" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\layer_shape_curve.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="layer_shape_line" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="layer_shape_line" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\layer_shape_line.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="minus8x8" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="minus8x8" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\minus8x8.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="note001" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="note001" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\note001.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="note002" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="note002" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\note002.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="note004" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="note004" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\note004.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="note008" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="note008" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\note008.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="note016" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="note016" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\note016.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="note032" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="note032" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\note032.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="note064" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="note064" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\note064.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="note128" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="note128" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\note128.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="notenull" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="notenull" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\notenull.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="pencil" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="pencil" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\pencil.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="piano" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="piano" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\piano.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="pin__arrow" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="pin__arrow" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\pin__arrow.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="pin__arrow_inv" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="pin__arrow_inv" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\pin__arrow_inv.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="plus8x8" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="plus8x8" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\plus8x8.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="ruler_crop" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="ruler_crop" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\ruler_crop.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="scissors" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="scissors" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\scissors.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="slash" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="slash" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\slash.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="splash" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="splash" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\splash.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="start_marker" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="start_marker" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\start_marker.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="target__pencil" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="target__pencil" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\target--pencil.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="VSTonWht" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="VSTonWht" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\VSTonWht.png;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
-  <data name="_switch" type="Cadencii.Gui.ResXFileRef, Cadencii">
+  <data name="_switch" type="Cadencii.Gui.ResXFileRef, Cadencii.Gui.Framework.Xwt">
     <value>..\resources\switch.ico;Xwt.Drawing.Bitmap, Xwt</value>
   </data>
 </root>
