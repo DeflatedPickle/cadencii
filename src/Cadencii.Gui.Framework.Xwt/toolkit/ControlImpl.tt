@@ -60,8 +60,9 @@ namespace Cadencii.Gui.Toolkit
 #>
 	public partial class <#= controlName #>Impl : <#= controlName #>Base, Ui<#= controlName #>
 	{
+		// FIXME: PreviewTextInput event has disappeared from Xwt... replacing with TextInput so far.
 		event EventHandler<KeyEventArgs> UiControl.PreviewKeyDown {
-			add { this.PreviewTextInput += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Text.FirstOrDefault ())); }
+			add { this.TextInput += (sender, e) => value (sender, new KeyEventArgs ((Keys) e.Text.FirstOrDefault ())); }
 			remove {
 				throw new NotImplementedException ();
 			}
